@@ -12,10 +12,10 @@
 // See the License for the specific language governing permissions and
 // limitations under the License.
 
+using Google.Cloud.Spanner.V1;
 using System.Collections.Generic;
 using System.Threading;
 using System.Threading.Tasks;
-using Google.Cloud.Spanner.V1;
 
 namespace Google.Cloud.Spanner.Data
 {
@@ -27,6 +27,13 @@ namespace Google.Cloud.Spanner.Data
         // Note: this returns Task<long> to reflect the results from Spanner faithfully. The caller can then decide what to
         // do if they need to return an int result type.
         Task<long> ExecuteDmlAsync(ExecuteSqlRequest request, CancellationToken cancellationToken, int timeoutSeconds);
+
+        // Note: this returns Task<IEnumerable<long>> to reflect the results from Spanner faithfully. The caller can then decide what to
+        // do if they need to return an int result type.
+        Task<IEnumerable<long>> ExecuteBatchDmlAsync(ExecuteBatchDmlRequest request, CancellationToken cancellationToken, int timeoutSeconds);
+
+        // Note: the timeout here is *not* used for the streaming result set; it's used by VolatileResourceManager to set the commit timeout.
+        // (We may wish to improve this abstraction, but it works for now...)
         Task<ReliableStreamReader> ExecuteQueryAsync(ExecuteSqlRequest request, CancellationToken cancellationToken, int timeoutSeconds);
     }
 }

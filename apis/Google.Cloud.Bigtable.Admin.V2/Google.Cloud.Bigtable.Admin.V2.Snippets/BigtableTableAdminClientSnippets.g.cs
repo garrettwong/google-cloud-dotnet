@@ -1,4 +1,4 @@
-// Copyright 2018 Google LLC
+// Copyright 2019 Google LLC
 //
 // Licensed under the Apache License, Version 2.0 (the "License");
 // you may not use this file except in compliance with the License.
@@ -20,7 +20,7 @@ namespace Google.Cloud.Bigtable.Admin.V2.Snippets
     using Google.Api.Gax.Grpc;
     using apis = Google.Cloud.Bigtable.Admin.V2;
     using Google.Cloud.Bigtable.Common.V2;
-    using Google.LongRunning;
+    using Google.Cloud.Iam.V1;
     using Google.Protobuf;
     using Google.Protobuf.WellKnownTypes;
     using Grpc.Core;
@@ -100,149 +100,6 @@ namespace Google.Cloud.Bigtable.Admin.V2.Snippets
             };
             // Make the request
             Table response = bigtableTableAdminClient.CreateTable(request);
-            // End snippet
-        }
-
-        /// <summary>Snippet for CreateTableFromSnapshotAsync</summary>
-        public async Task CreateTableFromSnapshotAsync()
-        {
-            // Snippet: CreateTableFromSnapshotAsync(InstanceName,string,SnapshotName,CallSettings)
-            // Additional: CreateTableFromSnapshotAsync(InstanceName,string,SnapshotName,CancellationToken)
-            // Create client
-            BigtableTableAdminClient bigtableTableAdminClient = await BigtableTableAdminClient.CreateAsync();
-            // Initialize request argument(s)
-            InstanceName parent = new InstanceName("[PROJECT]", "[INSTANCE]");
-            string tableId = "";
-            SnapshotName sourceSnapshot = new SnapshotName("[PROJECT]", "[INSTANCE]", "[CLUSTER]", "[SNAPSHOT]");
-            // Make the request
-            Operation<Table, CreateTableFromSnapshotMetadata> response =
-                await bigtableTableAdminClient.CreateTableFromSnapshotAsync(parent, tableId, sourceSnapshot);
-
-            // Poll until the returned long-running operation is complete
-            Operation<Table, CreateTableFromSnapshotMetadata> completedResponse =
-                await response.PollUntilCompletedAsync();
-            // Retrieve the operation result
-            Table result = completedResponse.Result;
-
-            // Or get the name of the operation
-            string operationName = response.Name;
-            // This name can be stored, then the long-running operation retrieved later by name
-            Operation<Table, CreateTableFromSnapshotMetadata> retrievedResponse =
-                await bigtableTableAdminClient.PollOnceCreateTableFromSnapshotAsync(operationName);
-            // Check if the retrieved long-running operation has completed
-            if (retrievedResponse.IsCompleted)
-            {
-                // If it has completed, then access the result
-                Table retrievedResult = retrievedResponse.Result;
-            }
-            // End snippet
-        }
-
-        /// <summary>Snippet for CreateTableFromSnapshot</summary>
-        public void CreateTableFromSnapshot()
-        {
-            // Snippet: CreateTableFromSnapshot(InstanceName,string,SnapshotName,CallSettings)
-            // Create client
-            BigtableTableAdminClient bigtableTableAdminClient = BigtableTableAdminClient.Create();
-            // Initialize request argument(s)
-            InstanceName parent = new InstanceName("[PROJECT]", "[INSTANCE]");
-            string tableId = "";
-            SnapshotName sourceSnapshot = new SnapshotName("[PROJECT]", "[INSTANCE]", "[CLUSTER]", "[SNAPSHOT]");
-            // Make the request
-            Operation<Table, CreateTableFromSnapshotMetadata> response =
-                bigtableTableAdminClient.CreateTableFromSnapshot(parent, tableId, sourceSnapshot);
-
-            // Poll until the returned long-running operation is complete
-            Operation<Table, CreateTableFromSnapshotMetadata> completedResponse =
-                response.PollUntilCompleted();
-            // Retrieve the operation result
-            Table result = completedResponse.Result;
-
-            // Or get the name of the operation
-            string operationName = response.Name;
-            // This name can be stored, then the long-running operation retrieved later by name
-            Operation<Table, CreateTableFromSnapshotMetadata> retrievedResponse =
-                bigtableTableAdminClient.PollOnceCreateTableFromSnapshot(operationName);
-            // Check if the retrieved long-running operation has completed
-            if (retrievedResponse.IsCompleted)
-            {
-                // If it has completed, then access the result
-                Table retrievedResult = retrievedResponse.Result;
-            }
-            // End snippet
-        }
-
-        /// <summary>Snippet for CreateTableFromSnapshotAsync</summary>
-        public async Task CreateTableFromSnapshotAsync_RequestObject()
-        {
-            // Snippet: CreateTableFromSnapshotAsync(CreateTableFromSnapshotRequest,CallSettings)
-            // Create client
-            BigtableTableAdminClient bigtableTableAdminClient = await BigtableTableAdminClient.CreateAsync();
-            // Initialize request argument(s)
-            CreateTableFromSnapshotRequest request = new CreateTableFromSnapshotRequest
-            {
-                ParentAsInstanceName = new InstanceName("[PROJECT]", "[INSTANCE]"),
-                TableId = "",
-                SourceSnapshotAsSnapshotName = new SnapshotName("[PROJECT]", "[INSTANCE]", "[CLUSTER]", "[SNAPSHOT]"),
-            };
-            // Make the request
-            Operation<Table, CreateTableFromSnapshotMetadata> response =
-                await bigtableTableAdminClient.CreateTableFromSnapshotAsync(request);
-
-            // Poll until the returned long-running operation is complete
-            Operation<Table, CreateTableFromSnapshotMetadata> completedResponse =
-                await response.PollUntilCompletedAsync();
-            // Retrieve the operation result
-            Table result = completedResponse.Result;
-
-            // Or get the name of the operation
-            string operationName = response.Name;
-            // This name can be stored, then the long-running operation retrieved later by name
-            Operation<Table, CreateTableFromSnapshotMetadata> retrievedResponse =
-                await bigtableTableAdminClient.PollOnceCreateTableFromSnapshotAsync(operationName);
-            // Check if the retrieved long-running operation has completed
-            if (retrievedResponse.IsCompleted)
-            {
-                // If it has completed, then access the result
-                Table retrievedResult = retrievedResponse.Result;
-            }
-            // End snippet
-        }
-
-        /// <summary>Snippet for CreateTableFromSnapshot</summary>
-        public void CreateTableFromSnapshot_RequestObject()
-        {
-            // Snippet: CreateTableFromSnapshot(CreateTableFromSnapshotRequest,CallSettings)
-            // Create client
-            BigtableTableAdminClient bigtableTableAdminClient = BigtableTableAdminClient.Create();
-            // Initialize request argument(s)
-            CreateTableFromSnapshotRequest request = new CreateTableFromSnapshotRequest
-            {
-                ParentAsInstanceName = new InstanceName("[PROJECT]", "[INSTANCE]"),
-                TableId = "",
-                SourceSnapshotAsSnapshotName = new SnapshotName("[PROJECT]", "[INSTANCE]", "[CLUSTER]", "[SNAPSHOT]"),
-            };
-            // Make the request
-            Operation<Table, CreateTableFromSnapshotMetadata> response =
-                bigtableTableAdminClient.CreateTableFromSnapshot(request);
-
-            // Poll until the returned long-running operation is complete
-            Operation<Table, CreateTableFromSnapshotMetadata> completedResponse =
-                response.PollUntilCompleted();
-            // Retrieve the operation result
-            Table result = completedResponse.Result;
-
-            // Or get the name of the operation
-            string operationName = response.Name;
-            // This name can be stored, then the long-running operation retrieved later by name
-            Operation<Table, CreateTableFromSnapshotMetadata> retrievedResponse =
-                bigtableTableAdminClient.PollOnceCreateTableFromSnapshot(operationName);
-            // Check if the retrieved long-running operation has completed
-            if (retrievedResponse.IsCompleted)
-            {
-                // If it has completed, then access the result
-                Table retrievedResult = retrievedResponse.Result;
-            }
             // End snippet
         }
 
@@ -769,452 +626,191 @@ namespace Google.Cloud.Bigtable.Admin.V2.Snippets
             // End snippet
         }
 
-        /// <summary>Snippet for SnapshotTableAsync</summary>
-        public async Task SnapshotTableAsync()
+        /// <summary>Snippet for GetIamPolicyAsync</summary>
+        public async Task GetIamPolicyAsync()
         {
-            // Snippet: SnapshotTableAsync(TableName,ClusterName,SnapshotName,string,CallSettings)
-            // Additional: SnapshotTableAsync(TableName,ClusterName,SnapshotName,string,CancellationToken)
+            // Snippet: GetIamPolicyAsync(string,CallSettings)
+            // Additional: GetIamPolicyAsync(string,CancellationToken)
             // Create client
             BigtableTableAdminClient bigtableTableAdminClient = await BigtableTableAdminClient.CreateAsync();
             // Initialize request argument(s)
-            TableName name = new TableName("[PROJECT]", "[INSTANCE]", "[TABLE]");
-            ClusterName cluster = new ClusterName("[PROJECT]", "[INSTANCE]", "[CLUSTER]");
-            SnapshotName snapshotId = new SnapshotName("[PROJECT]", "[INSTANCE]", "[CLUSTER]", "[SNAPSHOT]");
-            string description = "";
+            string formattedResource = new Google.Cloud.Bigtable.Common.V2.TableName("[PROJECT]", "[INSTANCE]", "[TABLE]").ToString();
             // Make the request
-            Operation<Snapshot, SnapshotTableMetadata> response =
-                await bigtableTableAdminClient.SnapshotTableAsync(name, cluster, snapshotId, description);
-
-            // Poll until the returned long-running operation is complete
-            Operation<Snapshot, SnapshotTableMetadata> completedResponse =
-                await response.PollUntilCompletedAsync();
-            // Retrieve the operation result
-            Snapshot result = completedResponse.Result;
-
-            // Or get the name of the operation
-            string operationName = response.Name;
-            // This name can be stored, then the long-running operation retrieved later by name
-            Operation<Snapshot, SnapshotTableMetadata> retrievedResponse =
-                await bigtableTableAdminClient.PollOnceSnapshotTableAsync(operationName);
-            // Check if the retrieved long-running operation has completed
-            if (retrievedResponse.IsCompleted)
-            {
-                // If it has completed, then access the result
-                Snapshot retrievedResult = retrievedResponse.Result;
-            }
+            Policy response = await bigtableTableAdminClient.GetIamPolicyAsync(formattedResource);
             // End snippet
         }
 
-        /// <summary>Snippet for SnapshotTable</summary>
-        public void SnapshotTable()
+        /// <summary>Snippet for GetIamPolicy</summary>
+        public void GetIamPolicy()
         {
-            // Snippet: SnapshotTable(TableName,ClusterName,SnapshotName,string,CallSettings)
+            // Snippet: GetIamPolicy(string,CallSettings)
             // Create client
             BigtableTableAdminClient bigtableTableAdminClient = BigtableTableAdminClient.Create();
             // Initialize request argument(s)
-            TableName name = new TableName("[PROJECT]", "[INSTANCE]", "[TABLE]");
-            ClusterName cluster = new ClusterName("[PROJECT]", "[INSTANCE]", "[CLUSTER]");
-            SnapshotName snapshotId = new SnapshotName("[PROJECT]", "[INSTANCE]", "[CLUSTER]", "[SNAPSHOT]");
-            string description = "";
+            string formattedResource = new Google.Cloud.Bigtable.Common.V2.TableName("[PROJECT]", "[INSTANCE]", "[TABLE]").ToString();
             // Make the request
-            Operation<Snapshot, SnapshotTableMetadata> response =
-                bigtableTableAdminClient.SnapshotTable(name, cluster, snapshotId, description);
-
-            // Poll until the returned long-running operation is complete
-            Operation<Snapshot, SnapshotTableMetadata> completedResponse =
-                response.PollUntilCompleted();
-            // Retrieve the operation result
-            Snapshot result = completedResponse.Result;
-
-            // Or get the name of the operation
-            string operationName = response.Name;
-            // This name can be stored, then the long-running operation retrieved later by name
-            Operation<Snapshot, SnapshotTableMetadata> retrievedResponse =
-                bigtableTableAdminClient.PollOnceSnapshotTable(operationName);
-            // Check if the retrieved long-running operation has completed
-            if (retrievedResponse.IsCompleted)
-            {
-                // If it has completed, then access the result
-                Snapshot retrievedResult = retrievedResponse.Result;
-            }
+            Policy response = bigtableTableAdminClient.GetIamPolicy(formattedResource);
             // End snippet
         }
 
-        /// <summary>Snippet for SnapshotTableAsync</summary>
-        public async Task SnapshotTableAsync_RequestObject()
+        /// <summary>Snippet for GetIamPolicyAsync</summary>
+        public async Task GetIamPolicyAsync_RequestObject()
         {
-            // Snippet: SnapshotTableAsync(SnapshotTableRequest,CallSettings)
+            // Snippet: GetIamPolicyAsync(GetIamPolicyRequest,CallSettings)
+            // Additional: GetIamPolicyAsync(GetIamPolicyRequest,CancellationToken)
             // Create client
             BigtableTableAdminClient bigtableTableAdminClient = await BigtableTableAdminClient.CreateAsync();
             // Initialize request argument(s)
-            SnapshotTableRequest request = new SnapshotTableRequest
+            GetIamPolicyRequest request = new GetIamPolicyRequest
             {
-                TableName = new TableName("[PROJECT]", "[INSTANCE]", "[TABLE]"),
-                ClusterAsClusterName = new ClusterName("[PROJECT]", "[INSTANCE]", "[CLUSTER]"),
-                SnapshotIdAsSnapshotName = new SnapshotName("[PROJECT]", "[INSTANCE]", "[CLUSTER]", "[SNAPSHOT]"),
-                Description = "",
+                Resource = new Google.Cloud.Bigtable.Common.V2.TableName("[PROJECT]", "[INSTANCE]", "[TABLE]").ToString(),
             };
             // Make the request
-            Operation<Snapshot, SnapshotTableMetadata> response =
-                await bigtableTableAdminClient.SnapshotTableAsync(request);
-
-            // Poll until the returned long-running operation is complete
-            Operation<Snapshot, SnapshotTableMetadata> completedResponse =
-                await response.PollUntilCompletedAsync();
-            // Retrieve the operation result
-            Snapshot result = completedResponse.Result;
-
-            // Or get the name of the operation
-            string operationName = response.Name;
-            // This name can be stored, then the long-running operation retrieved later by name
-            Operation<Snapshot, SnapshotTableMetadata> retrievedResponse =
-                await bigtableTableAdminClient.PollOnceSnapshotTableAsync(operationName);
-            // Check if the retrieved long-running operation has completed
-            if (retrievedResponse.IsCompleted)
-            {
-                // If it has completed, then access the result
-                Snapshot retrievedResult = retrievedResponse.Result;
-            }
+            Policy response = await bigtableTableAdminClient.GetIamPolicyAsync(request);
             // End snippet
         }
 
-        /// <summary>Snippet for SnapshotTable</summary>
-        public void SnapshotTable_RequestObject()
+        /// <summary>Snippet for GetIamPolicy</summary>
+        public void GetIamPolicy_RequestObject()
         {
-            // Snippet: SnapshotTable(SnapshotTableRequest,CallSettings)
+            // Snippet: GetIamPolicy(GetIamPolicyRequest,CallSettings)
             // Create client
             BigtableTableAdminClient bigtableTableAdminClient = BigtableTableAdminClient.Create();
             // Initialize request argument(s)
-            SnapshotTableRequest request = new SnapshotTableRequest
+            GetIamPolicyRequest request = new GetIamPolicyRequest
             {
-                TableName = new TableName("[PROJECT]", "[INSTANCE]", "[TABLE]"),
-                ClusterAsClusterName = new ClusterName("[PROJECT]", "[INSTANCE]", "[CLUSTER]"),
-                SnapshotIdAsSnapshotName = new SnapshotName("[PROJECT]", "[INSTANCE]", "[CLUSTER]", "[SNAPSHOT]"),
-                Description = "",
+                Resource = new Google.Cloud.Bigtable.Common.V2.TableName("[PROJECT]", "[INSTANCE]", "[TABLE]").ToString(),
             };
             // Make the request
-            Operation<Snapshot, SnapshotTableMetadata> response =
-                bigtableTableAdminClient.SnapshotTable(request);
-
-            // Poll until the returned long-running operation is complete
-            Operation<Snapshot, SnapshotTableMetadata> completedResponse =
-                response.PollUntilCompleted();
-            // Retrieve the operation result
-            Snapshot result = completedResponse.Result;
-
-            // Or get the name of the operation
-            string operationName = response.Name;
-            // This name can be stored, then the long-running operation retrieved later by name
-            Operation<Snapshot, SnapshotTableMetadata> retrievedResponse =
-                bigtableTableAdminClient.PollOnceSnapshotTable(operationName);
-            // Check if the retrieved long-running operation has completed
-            if (retrievedResponse.IsCompleted)
-            {
-                // If it has completed, then access the result
-                Snapshot retrievedResult = retrievedResponse.Result;
-            }
+            Policy response = bigtableTableAdminClient.GetIamPolicy(request);
             // End snippet
         }
 
-        /// <summary>Snippet for GetSnapshotAsync</summary>
-        public async Task GetSnapshotAsync()
+        /// <summary>Snippet for SetIamPolicyAsync</summary>
+        public async Task SetIamPolicyAsync()
         {
-            // Snippet: GetSnapshotAsync(SnapshotName,CallSettings)
-            // Additional: GetSnapshotAsync(SnapshotName,CancellationToken)
+            // Snippet: SetIamPolicyAsync(string,Policy,CallSettings)
+            // Additional: SetIamPolicyAsync(string,Policy,CancellationToken)
             // Create client
             BigtableTableAdminClient bigtableTableAdminClient = await BigtableTableAdminClient.CreateAsync();
             // Initialize request argument(s)
-            SnapshotName name = new SnapshotName("[PROJECT]", "[INSTANCE]", "[CLUSTER]", "[SNAPSHOT]");
+            string formattedResource = new Google.Cloud.Bigtable.Common.V2.TableName("[PROJECT]", "[INSTANCE]", "[TABLE]").ToString();
+            Policy policy = new Policy();
             // Make the request
-            Snapshot response = await bigtableTableAdminClient.GetSnapshotAsync(name);
+            Policy response = await bigtableTableAdminClient.SetIamPolicyAsync(formattedResource, policy);
             // End snippet
         }
 
-        /// <summary>Snippet for GetSnapshot</summary>
-        public void GetSnapshot()
+        /// <summary>Snippet for SetIamPolicy</summary>
+        public void SetIamPolicy()
         {
-            // Snippet: GetSnapshot(SnapshotName,CallSettings)
+            // Snippet: SetIamPolicy(string,Policy,CallSettings)
             // Create client
             BigtableTableAdminClient bigtableTableAdminClient = BigtableTableAdminClient.Create();
             // Initialize request argument(s)
-            SnapshotName name = new SnapshotName("[PROJECT]", "[INSTANCE]", "[CLUSTER]", "[SNAPSHOT]");
+            string formattedResource = new Google.Cloud.Bigtable.Common.V2.TableName("[PROJECT]", "[INSTANCE]", "[TABLE]").ToString();
+            Policy policy = new Policy();
             // Make the request
-            Snapshot response = bigtableTableAdminClient.GetSnapshot(name);
+            Policy response = bigtableTableAdminClient.SetIamPolicy(formattedResource, policy);
             // End snippet
         }
 
-        /// <summary>Snippet for GetSnapshotAsync</summary>
-        public async Task GetSnapshotAsync_RequestObject()
+        /// <summary>Snippet for SetIamPolicyAsync</summary>
+        public async Task SetIamPolicyAsync_RequestObject()
         {
-            // Snippet: GetSnapshotAsync(GetSnapshotRequest,CallSettings)
-            // Additional: GetSnapshotAsync(GetSnapshotRequest,CancellationToken)
+            // Snippet: SetIamPolicyAsync(SetIamPolicyRequest,CallSettings)
+            // Additional: SetIamPolicyAsync(SetIamPolicyRequest,CancellationToken)
             // Create client
             BigtableTableAdminClient bigtableTableAdminClient = await BigtableTableAdminClient.CreateAsync();
             // Initialize request argument(s)
-            GetSnapshotRequest request = new GetSnapshotRequest
+            SetIamPolicyRequest request = new SetIamPolicyRequest
             {
-                SnapshotName = new SnapshotName("[PROJECT]", "[INSTANCE]", "[CLUSTER]", "[SNAPSHOT]"),
+                Resource = new Google.Cloud.Bigtable.Common.V2.TableName("[PROJECT]", "[INSTANCE]", "[TABLE]").ToString(),
+                Policy = new Policy(),
             };
             // Make the request
-            Snapshot response = await bigtableTableAdminClient.GetSnapshotAsync(request);
+            Policy response = await bigtableTableAdminClient.SetIamPolicyAsync(request);
             // End snippet
         }
 
-        /// <summary>Snippet for GetSnapshot</summary>
-        public void GetSnapshot_RequestObject()
+        /// <summary>Snippet for SetIamPolicy</summary>
+        public void SetIamPolicy_RequestObject()
         {
-            // Snippet: GetSnapshot(GetSnapshotRequest,CallSettings)
+            // Snippet: SetIamPolicy(SetIamPolicyRequest,CallSettings)
             // Create client
             BigtableTableAdminClient bigtableTableAdminClient = BigtableTableAdminClient.Create();
             // Initialize request argument(s)
-            GetSnapshotRequest request = new GetSnapshotRequest
+            SetIamPolicyRequest request = new SetIamPolicyRequest
             {
-                SnapshotName = new SnapshotName("[PROJECT]", "[INSTANCE]", "[CLUSTER]", "[SNAPSHOT]"),
+                Resource = new Google.Cloud.Bigtable.Common.V2.TableName("[PROJECT]", "[INSTANCE]", "[TABLE]").ToString(),
+                Policy = new Policy(),
             };
             // Make the request
-            Snapshot response = bigtableTableAdminClient.GetSnapshot(request);
+            Policy response = bigtableTableAdminClient.SetIamPolicy(request);
             // End snippet
         }
 
-        /// <summary>Snippet for ListSnapshotsAsync</summary>
-        public async Task ListSnapshotsAsync()
+        /// <summary>Snippet for TestIamPermissionsAsync</summary>
+        public async Task TestIamPermissionsAsync()
         {
-            // Snippet: ListSnapshotsAsync(ClusterName,string,int?,CallSettings)
+            // Snippet: TestIamPermissionsAsync(string,IEnumerable<string>,CallSettings)
+            // Additional: TestIamPermissionsAsync(string,IEnumerable<string>,CancellationToken)
             // Create client
             BigtableTableAdminClient bigtableTableAdminClient = await BigtableTableAdminClient.CreateAsync();
             // Initialize request argument(s)
-            ClusterName parent = new ClusterName("[PROJECT]", "[INSTANCE]", "[CLUSTER]");
+            string formattedResource = new Google.Cloud.Bigtable.Common.V2.TableName("[PROJECT]", "[INSTANCE]", "[TABLE]").ToString();
+            IEnumerable<string> permissions = new List<string>();
             // Make the request
-            PagedAsyncEnumerable<ListSnapshotsResponse, Snapshot> response =
-                bigtableTableAdminClient.ListSnapshotsAsync(parent);
-
-            // Iterate over all response items, lazily performing RPCs as required
-            await response.ForEachAsync((Snapshot item) =>
-            {
-                // Do something with each item
-                Console.WriteLine(item);
-            });
-
-            // Or iterate over pages (of server-defined size), performing one RPC per page
-            await response.AsRawResponses().ForEachAsync((ListSnapshotsResponse page) =>
-            {
-                // Do something with each page of items
-                Console.WriteLine("A page of results:");
-                foreach (Snapshot item in page)
-                {
-                    Console.WriteLine(item);
-                }
-            });
-
-            // Or retrieve a single page of known size (unless it's the final page), performing as many RPCs as required
-            int pageSize = 10;
-            Page<Snapshot> singlePage = await response.ReadPageAsync(pageSize);
-            // Do something with the page of items
-            Console.WriteLine($"A page of {pageSize} results (unless it's the final page):");
-            foreach (Snapshot item in singlePage)
-            {
-                Console.WriteLine(item);
-            }
-            // Store the pageToken, for when the next page is required.
-            string nextPageToken = singlePage.NextPageToken;
+            TestIamPermissionsResponse response = await bigtableTableAdminClient.TestIamPermissionsAsync(formattedResource, permissions);
             // End snippet
         }
 
-        /// <summary>Snippet for ListSnapshots</summary>
-        public void ListSnapshots()
+        /// <summary>Snippet for TestIamPermissions</summary>
+        public void TestIamPermissions()
         {
-            // Snippet: ListSnapshots(ClusterName,string,int?,CallSettings)
+            // Snippet: TestIamPermissions(string,IEnumerable<string>,CallSettings)
             // Create client
             BigtableTableAdminClient bigtableTableAdminClient = BigtableTableAdminClient.Create();
             // Initialize request argument(s)
-            ClusterName parent = new ClusterName("[PROJECT]", "[INSTANCE]", "[CLUSTER]");
+            string formattedResource = new Google.Cloud.Bigtable.Common.V2.TableName("[PROJECT]", "[INSTANCE]", "[TABLE]").ToString();
+            IEnumerable<string> permissions = new List<string>();
             // Make the request
-            PagedEnumerable<ListSnapshotsResponse, Snapshot> response =
-                bigtableTableAdminClient.ListSnapshots(parent);
-
-            // Iterate over all response items, lazily performing RPCs as required
-            foreach (Snapshot item in response)
-            {
-                // Do something with each item
-                Console.WriteLine(item);
-            }
-
-            // Or iterate over pages (of server-defined size), performing one RPC per page
-            foreach (ListSnapshotsResponse page in response.AsRawResponses())
-            {
-                // Do something with each page of items
-                Console.WriteLine("A page of results:");
-                foreach (Snapshot item in page)
-                {
-                    Console.WriteLine(item);
-                }
-            }
-
-            // Or retrieve a single page of known size (unless it's the final page), performing as many RPCs as required
-            int pageSize = 10;
-            Page<Snapshot> singlePage = response.ReadPage(pageSize);
-            // Do something with the page of items
-            Console.WriteLine($"A page of {pageSize} results (unless it's the final page):");
-            foreach (Snapshot item in singlePage)
-            {
-                Console.WriteLine(item);
-            }
-            // Store the pageToken, for when the next page is required.
-            string nextPageToken = singlePage.NextPageToken;
+            TestIamPermissionsResponse response = bigtableTableAdminClient.TestIamPermissions(formattedResource, permissions);
             // End snippet
         }
 
-        /// <summary>Snippet for ListSnapshotsAsync</summary>
-        public async Task ListSnapshotsAsync_RequestObject()
+        /// <summary>Snippet for TestIamPermissionsAsync</summary>
+        public async Task TestIamPermissionsAsync_RequestObject()
         {
-            // Snippet: ListSnapshotsAsync(ListSnapshotsRequest,CallSettings)
+            // Snippet: TestIamPermissionsAsync(TestIamPermissionsRequest,CallSettings)
+            // Additional: TestIamPermissionsAsync(TestIamPermissionsRequest,CancellationToken)
             // Create client
             BigtableTableAdminClient bigtableTableAdminClient = await BigtableTableAdminClient.CreateAsync();
             // Initialize request argument(s)
-            ListSnapshotsRequest request = new ListSnapshotsRequest
+            TestIamPermissionsRequest request = new TestIamPermissionsRequest
             {
-                ParentAsClusterName = new ClusterName("[PROJECT]", "[INSTANCE]", "[CLUSTER]"),
+                Resource = new Google.Cloud.Bigtable.Common.V2.TableName("[PROJECT]", "[INSTANCE]", "[TABLE]").ToString(),
+                Permissions = { },
             };
             // Make the request
-            PagedAsyncEnumerable<ListSnapshotsResponse, Snapshot> response =
-                bigtableTableAdminClient.ListSnapshotsAsync(request);
-
-            // Iterate over all response items, lazily performing RPCs as required
-            await response.ForEachAsync((Snapshot item) =>
-            {
-                // Do something with each item
-                Console.WriteLine(item);
-            });
-
-            // Or iterate over pages (of server-defined size), performing one RPC per page
-            await response.AsRawResponses().ForEachAsync((ListSnapshotsResponse page) =>
-            {
-                // Do something with each page of items
-                Console.WriteLine("A page of results:");
-                foreach (Snapshot item in page)
-                {
-                    Console.WriteLine(item);
-                }
-            });
-
-            // Or retrieve a single page of known size (unless it's the final page), performing as many RPCs as required
-            int pageSize = 10;
-            Page<Snapshot> singlePage = await response.ReadPageAsync(pageSize);
-            // Do something with the page of items
-            Console.WriteLine($"A page of {pageSize} results (unless it's the final page):");
-            foreach (Snapshot item in singlePage)
-            {
-                Console.WriteLine(item);
-            }
-            // Store the pageToken, for when the next page is required.
-            string nextPageToken = singlePage.NextPageToken;
+            TestIamPermissionsResponse response = await bigtableTableAdminClient.TestIamPermissionsAsync(request);
             // End snippet
         }
 
-        /// <summary>Snippet for ListSnapshots</summary>
-        public void ListSnapshots_RequestObject()
+        /// <summary>Snippet for TestIamPermissions</summary>
+        public void TestIamPermissions_RequestObject()
         {
-            // Snippet: ListSnapshots(ListSnapshotsRequest,CallSettings)
+            // Snippet: TestIamPermissions(TestIamPermissionsRequest,CallSettings)
             // Create client
             BigtableTableAdminClient bigtableTableAdminClient = BigtableTableAdminClient.Create();
             // Initialize request argument(s)
-            ListSnapshotsRequest request = new ListSnapshotsRequest
+            TestIamPermissionsRequest request = new TestIamPermissionsRequest
             {
-                ParentAsClusterName = new ClusterName("[PROJECT]", "[INSTANCE]", "[CLUSTER]"),
+                Resource = new Google.Cloud.Bigtable.Common.V2.TableName("[PROJECT]", "[INSTANCE]", "[TABLE]").ToString(),
+                Permissions = { },
             };
             // Make the request
-            PagedEnumerable<ListSnapshotsResponse, Snapshot> response =
-                bigtableTableAdminClient.ListSnapshots(request);
-
-            // Iterate over all response items, lazily performing RPCs as required
-            foreach (Snapshot item in response)
-            {
-                // Do something with each item
-                Console.WriteLine(item);
-            }
-
-            // Or iterate over pages (of server-defined size), performing one RPC per page
-            foreach (ListSnapshotsResponse page in response.AsRawResponses())
-            {
-                // Do something with each page of items
-                Console.WriteLine("A page of results:");
-                foreach (Snapshot item in page)
-                {
-                    Console.WriteLine(item);
-                }
-            }
-
-            // Or retrieve a single page of known size (unless it's the final page), performing as many RPCs as required
-            int pageSize = 10;
-            Page<Snapshot> singlePage = response.ReadPage(pageSize);
-            // Do something with the page of items
-            Console.WriteLine($"A page of {pageSize} results (unless it's the final page):");
-            foreach (Snapshot item in singlePage)
-            {
-                Console.WriteLine(item);
-            }
-            // Store the pageToken, for when the next page is required.
-            string nextPageToken = singlePage.NextPageToken;
-            // End snippet
-        }
-
-        /// <summary>Snippet for DeleteSnapshotAsync</summary>
-        public async Task DeleteSnapshotAsync()
-        {
-            // Snippet: DeleteSnapshotAsync(SnapshotName,CallSettings)
-            // Additional: DeleteSnapshotAsync(SnapshotName,CancellationToken)
-            // Create client
-            BigtableTableAdminClient bigtableTableAdminClient = await BigtableTableAdminClient.CreateAsync();
-            // Initialize request argument(s)
-            SnapshotName name = new SnapshotName("[PROJECT]", "[INSTANCE]", "[CLUSTER]", "[SNAPSHOT]");
-            // Make the request
-            await bigtableTableAdminClient.DeleteSnapshotAsync(name);
-            // End snippet
-        }
-
-        /// <summary>Snippet for DeleteSnapshot</summary>
-        public void DeleteSnapshot()
-        {
-            // Snippet: DeleteSnapshot(SnapshotName,CallSettings)
-            // Create client
-            BigtableTableAdminClient bigtableTableAdminClient = BigtableTableAdminClient.Create();
-            // Initialize request argument(s)
-            SnapshotName name = new SnapshotName("[PROJECT]", "[INSTANCE]", "[CLUSTER]", "[SNAPSHOT]");
-            // Make the request
-            bigtableTableAdminClient.DeleteSnapshot(name);
-            // End snippet
-        }
-
-        /// <summary>Snippet for DeleteSnapshotAsync</summary>
-        public async Task DeleteSnapshotAsync_RequestObject()
-        {
-            // Snippet: DeleteSnapshotAsync(DeleteSnapshotRequest,CallSettings)
-            // Additional: DeleteSnapshotAsync(DeleteSnapshotRequest,CancellationToken)
-            // Create client
-            BigtableTableAdminClient bigtableTableAdminClient = await BigtableTableAdminClient.CreateAsync();
-            // Initialize request argument(s)
-            DeleteSnapshotRequest request = new DeleteSnapshotRequest
-            {
-                SnapshotName = new SnapshotName("[PROJECT]", "[INSTANCE]", "[CLUSTER]", "[SNAPSHOT]"),
-            };
-            // Make the request
-            await bigtableTableAdminClient.DeleteSnapshotAsync(request);
-            // End snippet
-        }
-
-        /// <summary>Snippet for DeleteSnapshot</summary>
-        public void DeleteSnapshot_RequestObject()
-        {
-            // Snippet: DeleteSnapshot(DeleteSnapshotRequest,CallSettings)
-            // Create client
-            BigtableTableAdminClient bigtableTableAdminClient = BigtableTableAdminClient.Create();
-            // Initialize request argument(s)
-            DeleteSnapshotRequest request = new DeleteSnapshotRequest
-            {
-                SnapshotName = new SnapshotName("[PROJECT]", "[INSTANCE]", "[CLUSTER]", "[SNAPSHOT]"),
-            };
-            // Make the request
-            bigtableTableAdminClient.DeleteSnapshot(request);
+            TestIamPermissionsResponse response = bigtableTableAdminClient.TestIamPermissions(request);
             // End snippet
         }
 

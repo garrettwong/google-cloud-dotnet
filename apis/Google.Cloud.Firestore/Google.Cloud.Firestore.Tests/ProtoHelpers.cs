@@ -12,7 +12,7 @@
 // See the License for the specific language governing permissions and
 // limitations under the License.
 
-using Google.Cloud.Firestore.V1Beta1;
+using Google.Cloud.Firestore.V1;
 using System.Linq;
 using wkt = Google.Protobuf.WellKnownTypes;
 
@@ -37,6 +37,7 @@ namespace Google.Cloud.Firestore.Tests
         internal static Value CreateValue(double value) => new Value { DoubleValue = value };
         internal static Value CreateValue(long value) => new Value { IntegerValue = value };
         internal static Value CreateValue(string value) => new Value { StringValue = value };
+        internal static Value CreateValue(DocumentReference reference) => new Value { ReferenceValue = reference.Path };
 
         internal static Value CreateNullValue() => new Value { NullValue = wkt.NullValue.NullValue };
 

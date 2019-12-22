@@ -13,7 +13,7 @@
 // limitations under the License.
 
 using Google.Api.Gax.Grpc;
-using Google.Cloud.Firestore.V1Beta1;
+using Google.Cloud.Firestore.V1;
 using Google.Protobuf;
 using System;
 using System.Collections.Generic;
@@ -59,6 +59,7 @@ namespace Google.Cloud.Firestore.Tests
         /// </summary>
         public TransactionTestingClient(int failures, Exception exception)
         {
+            Settings = FirestoreSettings.GetDefault();
             _failures = failures;
             _exception = exception;
         }
@@ -132,7 +133,7 @@ namespace Google.Cloud.Firestore.Tests
             return new CommitResponse
             {
                 CommitTime = commitTime,
-                WriteResults = { request.Writes.Select(write => new V1Beta1.WriteResult { UpdateTime = commitTime }) }
+                WriteResults = { request.Writes.Select(write => new V1.WriteResult { UpdateTime = commitTime }) }
             };
         }
 

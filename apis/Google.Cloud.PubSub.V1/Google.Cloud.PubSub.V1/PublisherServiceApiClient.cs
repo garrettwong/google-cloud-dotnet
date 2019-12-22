@@ -1,4 +1,4 @@
-// Copyright 2018 Google LLC
+// Copyright 2019 Google LLC
 //
 // Licensed under the Apache License, Version 2.0 (the "License");
 // you may not use this file except in compliance with the License.
@@ -73,29 +73,43 @@ namespace Google.Cloud.PubSub.V1
         /// <remarks>
         /// The eligible RPC <see cref="grpccore::StatusCode"/>s for retry for "Idempotent" RPC methods are:
         /// <list type="bullet">
-        /// <item><description><see cref="grpccore::StatusCode.DeadlineExceeded"/></description></item>
+        /// <item><description><see cref="grpccore::StatusCode.Aborted"/></description></item>
         /// <item><description><see cref="grpccore::StatusCode.Unavailable"/></description></item>
+        /// <item><description><see cref="grpccore::StatusCode.Unknown"/></description></item>
         /// </list>
         /// </remarks>
         public static sys::Predicate<grpccore::RpcException> IdempotentRetryFilter { get; } =
-            gaxgrpc::RetrySettings.FilterForStatusCodes(grpccore::StatusCode.DeadlineExceeded, grpccore::StatusCode.Unavailable);
+            gaxgrpc::RetrySettings.FilterForStatusCodes(grpccore::StatusCode.Aborted, grpccore::StatusCode.Unavailable, grpccore::StatusCode.Unknown);
 
         /// <summary>
         /// The filter specifying which RPC <see cref="grpccore::StatusCode"/>s are eligible for retry
         /// for "NonIdempotent" <see cref="PublisherServiceApiClient"/> RPC methods.
         /// </summary>
         /// <remarks>
-        /// There are no RPC <see cref="grpccore::StatusCode"/>s eligible for retry for "NonIdempotent" RPC methods.
+        /// The eligible RPC <see cref="grpccore::StatusCode"/>s for retry for "NonIdempotent" RPC methods are:
+        /// <list type="bullet">
+        /// <item><description><see cref="grpccore::StatusCode.Unavailable"/></description></item>
+        /// </list>
         /// </remarks>
         public static sys::Predicate<grpccore::RpcException> NonIdempotentRetryFilter { get; } =
+            gaxgrpc::RetrySettings.FilterForStatusCodes(grpccore::StatusCode.Unavailable);
+
+        /// <summary>
+        /// The filter specifying which RPC <see cref="grpccore::StatusCode"/>s are eligible for retry
+        /// for "None" <see cref="PublisherServiceApiClient"/> RPC methods.
+        /// </summary>
+        /// <remarks>
+        /// There are no RPC <see cref="grpccore::StatusCode"/>s eligible for retry for "None" RPC methods.
+        /// </remarks>
+        public static sys::Predicate<grpccore::RpcException> NoneRetryFilter { get; } =
             gaxgrpc::RetrySettings.FilterForStatusCodes();
 
         /// <summary>
         /// The filter specifying which RPC <see cref="grpccore::StatusCode"/>s are eligible for retry
-        /// for "OnePlusDelivery" <see cref="PublisherServiceApiClient"/> RPC methods.
+        /// for "Publish" <see cref="PublisherServiceApiClient"/> RPC methods.
         /// </summary>
         /// <remarks>
-        /// The eligible RPC <see cref="grpccore::StatusCode"/>s for retry for "OnePlusDelivery" RPC methods are:
+        /// The eligible RPC <see cref="grpccore::StatusCode"/>s for retry for "Publish" RPC methods are:
         /// <list type="bullet">
         /// <item><description><see cref="grpccore::StatusCode.Aborted"/></description></item>
         /// <item><description><see cref="grpccore::StatusCode.Cancelled"/></description></item>
@@ -106,7 +120,7 @@ namespace Google.Cloud.PubSub.V1
         /// <item><description><see cref="grpccore::StatusCode.Unknown"/></description></item>
         /// </list>
         /// </remarks>
-        public static sys::Predicate<grpccore::RpcException> OnePlusDeliveryRetryFilter { get; } =
+        public static sys::Predicate<grpccore::RpcException> PublishRetryFilter { get; } =
             gaxgrpc::RetrySettings.FilterForStatusCodes(grpccore::StatusCode.Aborted, grpccore::StatusCode.Cancelled, grpccore::StatusCode.DeadlineExceeded, grpccore::StatusCode.Internal, grpccore::StatusCode.ResourceExhausted, grpccore::StatusCode.Unavailable, grpccore::StatusCode.Unknown);
 
         /// <summary>
@@ -178,15 +192,15 @@ namespace Google.Cloud.PubSub.V1
         /// <remarks>
         /// The "Messaging" timeout backoff for <see cref="PublisherServiceApiClient"/> RPC methods is defined as:
         /// <list type="bullet">
-        /// <item><description>Initial timeout: 12000 milliseconds</description></item>
-        /// <item><description>Timeout multiplier: 1.0</description></item>
-        /// <item><description>Maximum timeout: 30000 milliseconds</description></item>
+        /// <item><description>Initial timeout: 5000 milliseconds</description></item>
+        /// <item><description>Timeout multiplier: 1.3</description></item>
+        /// <item><description>Maximum timeout: 60000 milliseconds</description></item>
         /// </list>
         /// </remarks>
         public static gaxgrpc::BackoffSettings GetMessagingTimeoutBackoff() => new gaxgrpc::BackoffSettings(
-            delay: sys::TimeSpan.FromMilliseconds(12000),
-            maxDelay: sys::TimeSpan.FromMilliseconds(30000),
-            delayMultiplier: 1.0
+            delay: sys::TimeSpan.FromMilliseconds(5000),
+            maxDelay: sys::TimeSpan.FromMilliseconds(60000),
+            delayMultiplier: 1.3
         );
 
         /// <summary>
@@ -206,7 +220,6 @@ namespace Google.Cloud.PubSub.V1
         /// </list>
         /// Retry will be attempted on the following response status codes:
         /// <list>
-        /// <item><description><see cref="grpccore::StatusCode.DeadlineExceeded"/></description></item>
         /// <item><description><see cref="grpccore::StatusCode.Unavailable"/></description></item>
         /// </list>
         /// Default RPC expiration is 600000 milliseconds.
@@ -216,7 +229,7 @@ namespace Google.Cloud.PubSub.V1
                 retryBackoff: GetDefaultRetryBackoff(),
                 timeoutBackoff: GetDefaultTimeoutBackoff(),
                 totalExpiration: gax::Expiration.FromTimeout(sys::TimeSpan.FromMilliseconds(600000)),
-                retryFilter: IdempotentRetryFilter
+                retryFilter: NonIdempotentRetryFilter
             )));
 
         /// <summary>
@@ -236,7 +249,6 @@ namespace Google.Cloud.PubSub.V1
         /// </list>
         /// Retry will be attempted on the following response status codes:
         /// <list>
-        /// <item><description><see cref="grpccore::StatusCode.DeadlineExceeded"/></description></item>
         /// <item><description><see cref="grpccore::StatusCode.Unavailable"/></description></item>
         /// </list>
         /// Default RPC expiration is 600000 milliseconds.
@@ -246,7 +258,7 @@ namespace Google.Cloud.PubSub.V1
                 retryBackoff: GetDefaultRetryBackoff(),
                 timeoutBackoff: GetDefaultTimeoutBackoff(),
                 totalExpiration: gax::Expiration.FromTimeout(sys::TimeSpan.FromMilliseconds(600000)),
-                retryFilter: IdempotentRetryFilter
+                retryFilter: NonIdempotentRetryFilter
             )));
 
         /// <summary>
@@ -260,9 +272,9 @@ namespace Google.Cloud.PubSub.V1
         /// <item><description>Initial retry delay: 100 milliseconds</description></item>
         /// <item><description>Retry delay multiplier: 1.3</description></item>
         /// <item><description>Retry maximum delay: 60000 milliseconds</description></item>
-        /// <item><description>Initial timeout: 12000 milliseconds</description></item>
-        /// <item><description>Timeout multiplier: 1.0</description></item>
-        /// <item><description>Timeout maximum delay: 30000 milliseconds</description></item>
+        /// <item><description>Initial timeout: 5000 milliseconds</description></item>
+        /// <item><description>Timeout multiplier: 1.3</description></item>
+        /// <item><description>Timeout maximum delay: 60000 milliseconds</description></item>
         /// </list>
         /// Retry will be attempted on the following response status codes:
         /// <list>
@@ -274,14 +286,14 @@ namespace Google.Cloud.PubSub.V1
         /// <item><description><see cref="grpccore::StatusCode.Unavailable"/></description></item>
         /// <item><description><see cref="grpccore::StatusCode.Unknown"/></description></item>
         /// </list>
-        /// Default RPC expiration is 600000 milliseconds.
+        /// Default RPC expiration is 60000 milliseconds.
         /// </remarks>
         public gaxgrpc::CallSettings PublishSettings { get; set; } = gaxgrpc::CallSettings.FromCallTiming(
             gaxgrpc::CallTiming.FromRetry(new gaxgrpc::RetrySettings(
                 retryBackoff: GetMessagingRetryBackoff(),
                 timeoutBackoff: GetMessagingTimeoutBackoff(),
-                totalExpiration: gax::Expiration.FromTimeout(sys::TimeSpan.FromMilliseconds(600000)),
-                retryFilter: OnePlusDeliveryRetryFilter
+                totalExpiration: gax::Expiration.FromTimeout(sys::TimeSpan.FromMilliseconds(60000)),
+                retryFilter: PublishRetryFilter
             )));
 
         /// <summary>
@@ -301,8 +313,9 @@ namespace Google.Cloud.PubSub.V1
         /// </list>
         /// Retry will be attempted on the following response status codes:
         /// <list>
-        /// <item><description><see cref="grpccore::StatusCode.DeadlineExceeded"/></description></item>
+        /// <item><description><see cref="grpccore::StatusCode.Aborted"/></description></item>
         /// <item><description><see cref="grpccore::StatusCode.Unavailable"/></description></item>
+        /// <item><description><see cref="grpccore::StatusCode.Unknown"/></description></item>
         /// </list>
         /// Default RPC expiration is 600000 milliseconds.
         /// </remarks>
@@ -331,8 +344,9 @@ namespace Google.Cloud.PubSub.V1
         /// </list>
         /// Retry will be attempted on the following response status codes:
         /// <list>
-        /// <item><description><see cref="grpccore::StatusCode.DeadlineExceeded"/></description></item>
+        /// <item><description><see cref="grpccore::StatusCode.Aborted"/></description></item>
         /// <item><description><see cref="grpccore::StatusCode.Unavailable"/></description></item>
+        /// <item><description><see cref="grpccore::StatusCode.Unknown"/></description></item>
         /// </list>
         /// Default RPC expiration is 600000 milliseconds.
         /// </remarks>
@@ -361,8 +375,9 @@ namespace Google.Cloud.PubSub.V1
         /// </list>
         /// Retry will be attempted on the following response status codes:
         /// <list>
-        /// <item><description><see cref="grpccore::StatusCode.DeadlineExceeded"/></description></item>
+        /// <item><description><see cref="grpccore::StatusCode.Aborted"/></description></item>
         /// <item><description><see cref="grpccore::StatusCode.Unavailable"/></description></item>
+        /// <item><description><see cref="grpccore::StatusCode.Unknown"/></description></item>
         /// </list>
         /// Default RPC expiration is 600000 milliseconds.
         /// </remarks>
@@ -391,7 +406,6 @@ namespace Google.Cloud.PubSub.V1
         /// </list>
         /// Retry will be attempted on the following response status codes:
         /// <list>
-        /// <item><description><see cref="grpccore::StatusCode.DeadlineExceeded"/></description></item>
         /// <item><description><see cref="grpccore::StatusCode.Unavailable"/></description></item>
         /// </list>
         /// Default RPC expiration is 600000 milliseconds.
@@ -401,7 +415,7 @@ namespace Google.Cloud.PubSub.V1
                 retryBackoff: GetDefaultRetryBackoff(),
                 timeoutBackoff: GetDefaultTimeoutBackoff(),
                 totalExpiration: gax::Expiration.FromTimeout(sys::TimeSpan.FromMilliseconds(600000)),
-                retryFilter: IdempotentRetryFilter
+                retryFilter: NonIdempotentRetryFilter
             )));
 
         /// <summary>
@@ -421,7 +435,7 @@ namespace Google.Cloud.PubSub.V1
         /// </list>
         /// Retry will be attempted on the following response status codes:
         /// <list>
-        /// <item><description>No status codes</description></item>
+        /// <item><description><see cref="grpccore::StatusCode.Unavailable"/></description></item>
         /// </list>
         /// Default RPC expiration is 600000 milliseconds.
         /// </remarks>
@@ -450,8 +464,9 @@ namespace Google.Cloud.PubSub.V1
         /// </list>
         /// Retry will be attempted on the following response status codes:
         /// <list>
-        /// <item><description><see cref="grpccore::StatusCode.DeadlineExceeded"/></description></item>
+        /// <item><description><see cref="grpccore::StatusCode.Aborted"/></description></item>
         /// <item><description><see cref="grpccore::StatusCode.Unavailable"/></description></item>
+        /// <item><description><see cref="grpccore::StatusCode.Unknown"/></description></item>
         /// </list>
         /// Default RPC expiration is 600000 milliseconds.
         /// </remarks>
@@ -480,7 +495,7 @@ namespace Google.Cloud.PubSub.V1
         /// </list>
         /// Retry will be attempted on the following response status codes:
         /// <list>
-        /// <item><description>No status codes</description></item>
+        /// <item><description><see cref="grpccore::StatusCode.Unavailable"/></description></item>
         /// </list>
         /// Default RPC expiration is 600000 milliseconds.
         /// </remarks>
@@ -497,6 +512,42 @@ namespace Google.Cloud.PubSub.V1
         /// </summary>
         /// <returns>A deep clone of this <see cref="PublisherServiceApiSettings"/> object.</returns>
         public PublisherServiceApiSettings Clone() => new PublisherServiceApiSettings(this);
+    }
+
+    /// <summary>
+    /// Builder class for <see cref="PublisherServiceApiClient"/> to provide simple configuration of credentials, endpoint etc.
+    /// </summary>
+    public sealed partial class PublisherServiceApiClientBuilder : gaxgrpc::ClientBuilderBase<PublisherServiceApiClient>
+    {
+        /// <summary>
+        /// The settings to use for RPCs, or null for the default settings.
+        /// </summary>
+        public PublisherServiceApiSettings Settings { get; set; }
+
+        /// <inheritdoc/>
+        public override PublisherServiceApiClient Build()
+        {
+            Validate();
+            grpccore::CallInvoker callInvoker = CreateCallInvoker();
+            return PublisherServiceApiClient.Create(callInvoker, Settings);
+        }
+
+        /// <inheritdoc />
+        public override async stt::Task<PublisherServiceApiClient> BuildAsync(st::CancellationToken cancellationToken = default)
+        {
+            Validate();
+            grpccore::CallInvoker callInvoker = await CreateCallInvokerAsync(cancellationToken).ConfigureAwait(false);
+            return PublisherServiceApiClient.Create(callInvoker, Settings);
+        }
+
+        /// <inheritdoc />
+        protected override gaxgrpc::ServiceEndpoint GetDefaultEndpoint() => PublisherServiceApiClient.DefaultEndpoint;
+
+        /// <inheritdoc />
+        protected override scg::IReadOnlyList<string> GetDefaultScopes() => PublisherServiceApiClient.DefaultScopes;
+
+        /// <inheritdoc />
+        protected override gaxgrpc::ChannelPool GetChannelPool() => PublisherServiceApiClient.ChannelPool;
     }
 
     /// <summary>
@@ -525,6 +576,8 @@ namespace Google.Cloud.PubSub.V1
         });
 
         private static readonly gaxgrpc::ChannelPool s_channelPool = new gaxgrpc::ChannelPool(DefaultScopes);
+
+        internal static gaxgrpc::ChannelPool ChannelPool => s_channelPool;
 
         /// <summary>
         /// Asynchronously creates a <see cref="PublisherServiceApiClient"/>, applying defaults for all unspecified settings,
@@ -657,7 +710,8 @@ namespace Google.Cloud.PubSub.V1
 
         /// <summary>
         /// Creates the given topic with the given name. See the
-        /// &lt;a href="/pubsub/docs/admin#resource_names"&gt; resource name rules&lt;/a&gt;.
+        /// &lt;a href="https://cloud.google.com/pubsub/docs/admin#resource_names"&gt;
+        /// resource name rules&lt;/a&gt;.
         /// </summary>
         /// <param name="name">
         /// The name of the topic. It must have the format
@@ -684,7 +738,8 @@ namespace Google.Cloud.PubSub.V1
 
         /// <summary>
         /// Creates the given topic with the given name. See the
-        /// &lt;a href="/pubsub/docs/admin#resource_names"&gt; resource name rules&lt;/a&gt;.
+        /// &lt;a href="https://cloud.google.com/pubsub/docs/admin#resource_names"&gt;
+        /// resource name rules&lt;/a&gt;.
         /// </summary>
         /// <param name="name">
         /// The name of the topic. It must have the format
@@ -708,7 +763,8 @@ namespace Google.Cloud.PubSub.V1
 
         /// <summary>
         /// Creates the given topic with the given name. See the
-        /// &lt;a href="/pubsub/docs/admin#resource_names"&gt; resource name rules&lt;/a&gt;.
+        /// &lt;a href="https://cloud.google.com/pubsub/docs/admin#resource_names"&gt;
+        /// resource name rules&lt;/a&gt;.
         /// </summary>
         /// <param name="name">
         /// The name of the topic. It must have the format
@@ -735,7 +791,89 @@ namespace Google.Cloud.PubSub.V1
 
         /// <summary>
         /// Creates the given topic with the given name. See the
-        /// &lt;a href="/pubsub/docs/admin#resource_names"&gt; resource name rules&lt;/a&gt;.
+        /// &lt;a href="https://cloud.google.com/pubsub/docs/admin#resource_names"&gt;
+        /// resource name rules&lt;/a&gt;.
+        /// </summary>
+        /// <param name="name">
+        /// The name of the topic. It must have the format
+        /// `"projects/{project}/topics/{topic}"`. `{topic}` must start with a letter,
+        /// and contain only letters (`[A-Za-z]`), numbers (`[0-9]`), dashes (`-`),
+        /// underscores (`_`), periods (`.`), tildes (`~`), plus (`+`) or percent
+        /// signs (`%`). It must be between 3 and 255 characters in length, and it
+        /// must not start with `"goog"`.
+        /// </param>
+        /// <param name="callSettings">
+        /// If not null, applies overrides to this RPC call.
+        /// </param>
+        /// <returns>
+        /// A Task containing the RPC response.
+        /// </returns>
+        public virtual stt::Task<Topic> CreateTopicAsync(
+            string name,
+            gaxgrpc::CallSettings callSettings = null) => CreateTopicAsync(
+                new Topic
+                {
+                    Name = gax::GaxPreconditions.CheckNotNullOrEmpty(name, nameof(name)),
+                },
+                callSettings);
+
+        /// <summary>
+        /// Creates the given topic with the given name. See the
+        /// &lt;a href="https://cloud.google.com/pubsub/docs/admin#resource_names"&gt;
+        /// resource name rules&lt;/a&gt;.
+        /// </summary>
+        /// <param name="name">
+        /// The name of the topic. It must have the format
+        /// `"projects/{project}/topics/{topic}"`. `{topic}` must start with a letter,
+        /// and contain only letters (`[A-Za-z]`), numbers (`[0-9]`), dashes (`-`),
+        /// underscores (`_`), periods (`.`), tildes (`~`), plus (`+`) or percent
+        /// signs (`%`). It must be between 3 and 255 characters in length, and it
+        /// must not start with `"goog"`.
+        /// </param>
+        /// <param name="cancellationToken">
+        /// A <see cref="st::CancellationToken"/> to use for this RPC.
+        /// </param>
+        /// <returns>
+        /// A Task containing the RPC response.
+        /// </returns>
+        public virtual stt::Task<Topic> CreateTopicAsync(
+            string name,
+            st::CancellationToken cancellationToken) => CreateTopicAsync(
+                name,
+                gaxgrpc::CallSettings.FromCancellationToken(cancellationToken));
+
+        /// <summary>
+        /// Creates the given topic with the given name. See the
+        /// &lt;a href="https://cloud.google.com/pubsub/docs/admin#resource_names"&gt;
+        /// resource name rules&lt;/a&gt;.
+        /// </summary>
+        /// <param name="name">
+        /// The name of the topic. It must have the format
+        /// `"projects/{project}/topics/{topic}"`. `{topic}` must start with a letter,
+        /// and contain only letters (`[A-Za-z]`), numbers (`[0-9]`), dashes (`-`),
+        /// underscores (`_`), periods (`.`), tildes (`~`), plus (`+`) or percent
+        /// signs (`%`). It must be between 3 and 255 characters in length, and it
+        /// must not start with `"goog"`.
+        /// </param>
+        /// <param name="callSettings">
+        /// If not null, applies overrides to this RPC call.
+        /// </param>
+        /// <returns>
+        /// The RPC response.
+        /// </returns>
+        public virtual Topic CreateTopic(
+            string name,
+            gaxgrpc::CallSettings callSettings = null) => CreateTopic(
+                new Topic
+                {
+                    Name = gax::GaxPreconditions.CheckNotNullOrEmpty(name, nameof(name)),
+                },
+                callSettings);
+
+        /// <summary>
+        /// Creates the given topic with the given name. See the
+        /// &lt;a href="https://cloud.google.com/pubsub/docs/admin#resource_names"&gt;
+        /// resource name rules&lt;/a&gt;.
         /// </summary>
         /// <param name="request">
         /// The request object containing all of the parameters for the API call.
@@ -755,7 +893,8 @@ namespace Google.Cloud.PubSub.V1
 
         /// <summary>
         /// Creates the given topic with the given name. See the
-        /// &lt;a href="/pubsub/docs/admin#resource_names"&gt; resource name rules&lt;/a&gt;.
+        /// &lt;a href="https://cloud.google.com/pubsub/docs/admin#resource_names"&gt;
+        /// resource name rules&lt;/a&gt;.
         /// </summary>
         /// <param name="request">
         /// The request object containing all of the parameters for the API call.
@@ -774,7 +913,8 @@ namespace Google.Cloud.PubSub.V1
 
         /// <summary>
         /// Creates the given topic with the given name. See the
-        /// &lt;a href="/pubsub/docs/admin#resource_names"&gt; resource name rules&lt;/a&gt;.
+        /// &lt;a href="https://cloud.google.com/pubsub/docs/admin#resource_names"&gt;
+        /// resource name rules&lt;/a&gt;.
         /// </summary>
         /// <param name="request">
         /// The request object containing all of the parameters for the API call.
@@ -936,6 +1076,87 @@ namespace Google.Cloud.PubSub.V1
         /// Adds one or more messages to the topic. Returns `NOT_FOUND` if the topic
         /// does not exist.
         /// </summary>
+        /// <param name="topic">
+        /// The messages in the request will be published on this topic.
+        /// Format is `projects/{project}/topics/{topic}`.
+        /// </param>
+        /// <param name="messages">
+        /// The messages to publish.
+        /// </param>
+        /// <param name="callSettings">
+        /// If not null, applies overrides to this RPC call.
+        /// </param>
+        /// <returns>
+        /// A Task containing the RPC response.
+        /// </returns>
+        public virtual stt::Task<PublishResponse> PublishAsync(
+            string topic,
+            scg::IEnumerable<PubsubMessage> messages,
+            gaxgrpc::CallSettings callSettings = null) => PublishAsync(
+                new PublishRequest
+                {
+                    Topic = gax::GaxPreconditions.CheckNotNullOrEmpty(topic, nameof(topic)),
+                    Messages = { gax::GaxPreconditions.CheckNotNull(messages, nameof(messages)) },
+                },
+                callSettings);
+
+        /// <summary>
+        /// Adds one or more messages to the topic. Returns `NOT_FOUND` if the topic
+        /// does not exist.
+        /// </summary>
+        /// <param name="topic">
+        /// The messages in the request will be published on this topic.
+        /// Format is `projects/{project}/topics/{topic}`.
+        /// </param>
+        /// <param name="messages">
+        /// The messages to publish.
+        /// </param>
+        /// <param name="cancellationToken">
+        /// A <see cref="st::CancellationToken"/> to use for this RPC.
+        /// </param>
+        /// <returns>
+        /// A Task containing the RPC response.
+        /// </returns>
+        public virtual stt::Task<PublishResponse> PublishAsync(
+            string topic,
+            scg::IEnumerable<PubsubMessage> messages,
+            st::CancellationToken cancellationToken) => PublishAsync(
+                topic,
+                messages,
+                gaxgrpc::CallSettings.FromCancellationToken(cancellationToken));
+
+        /// <summary>
+        /// Adds one or more messages to the topic. Returns `NOT_FOUND` if the topic
+        /// does not exist.
+        /// </summary>
+        /// <param name="topic">
+        /// The messages in the request will be published on this topic.
+        /// Format is `projects/{project}/topics/{topic}`.
+        /// </param>
+        /// <param name="messages">
+        /// The messages to publish.
+        /// </param>
+        /// <param name="callSettings">
+        /// If not null, applies overrides to this RPC call.
+        /// </param>
+        /// <returns>
+        /// The RPC response.
+        /// </returns>
+        public virtual PublishResponse Publish(
+            string topic,
+            scg::IEnumerable<PubsubMessage> messages,
+            gaxgrpc::CallSettings callSettings = null) => Publish(
+                new PublishRequest
+                {
+                    Topic = gax::GaxPreconditions.CheckNotNullOrEmpty(topic, nameof(topic)),
+                    Messages = { gax::GaxPreconditions.CheckNotNull(messages, nameof(messages)) },
+                },
+                callSettings);
+
+        /// <summary>
+        /// Adds one or more messages to the topic. Returns `NOT_FOUND` if the topic
+        /// does not exist.
+        /// </summary>
         /// <param name="request">
         /// The request object containing all of the parameters for the API call.
         /// </param>
@@ -1051,6 +1272,69 @@ namespace Google.Cloud.PubSub.V1
                 new GetTopicRequest
                 {
                     TopicAsTopicName = gax::GaxPreconditions.CheckNotNull(topic, nameof(topic)),
+                },
+                callSettings);
+
+        /// <summary>
+        /// Gets the configuration of a topic.
+        /// </summary>
+        /// <param name="topic">
+        /// The name of the topic to get.
+        /// Format is `projects/{project}/topics/{topic}`.
+        /// </param>
+        /// <param name="callSettings">
+        /// If not null, applies overrides to this RPC call.
+        /// </param>
+        /// <returns>
+        /// A Task containing the RPC response.
+        /// </returns>
+        public virtual stt::Task<Topic> GetTopicAsync(
+            string topic,
+            gaxgrpc::CallSettings callSettings = null) => GetTopicAsync(
+                new GetTopicRequest
+                {
+                    Topic = gax::GaxPreconditions.CheckNotNullOrEmpty(topic, nameof(topic)),
+                },
+                callSettings);
+
+        /// <summary>
+        /// Gets the configuration of a topic.
+        /// </summary>
+        /// <param name="topic">
+        /// The name of the topic to get.
+        /// Format is `projects/{project}/topics/{topic}`.
+        /// </param>
+        /// <param name="cancellationToken">
+        /// A <see cref="st::CancellationToken"/> to use for this RPC.
+        /// </param>
+        /// <returns>
+        /// A Task containing the RPC response.
+        /// </returns>
+        public virtual stt::Task<Topic> GetTopicAsync(
+            string topic,
+            st::CancellationToken cancellationToken) => GetTopicAsync(
+                topic,
+                gaxgrpc::CallSettings.FromCancellationToken(cancellationToken));
+
+        /// <summary>
+        /// Gets the configuration of a topic.
+        /// </summary>
+        /// <param name="topic">
+        /// The name of the topic to get.
+        /// Format is `projects/{project}/topics/{topic}`.
+        /// </param>
+        /// <param name="callSettings">
+        /// If not null, applies overrides to this RPC call.
+        /// </param>
+        /// <returns>
+        /// The RPC response.
+        /// </returns>
+        public virtual Topic GetTopic(
+            string topic,
+            gaxgrpc::CallSettings callSettings = null) => GetTopic(
+                new GetTopicRequest
+                {
+                    Topic = gax::GaxPreconditions.CheckNotNullOrEmpty(topic, nameof(topic)),
                 },
                 callSettings);
 
@@ -1181,6 +1465,74 @@ namespace Google.Cloud.PubSub.V1
         /// <summary>
         /// Lists matching topics.
         /// </summary>
+        /// <param name="project">
+        /// The name of the project in which to list topics.
+        /// Format is `projects/{project-id}`.
+        /// </param>
+        /// <param name="pageToken">
+        /// The token returned from the previous request.
+        /// A value of <c>null</c> or an empty string retrieves the first page.
+        /// </param>
+        /// <param name="pageSize">
+        /// The size of page to request. The response will not be larger than this, but may be smaller.
+        /// A value of <c>null</c> or 0 uses a server-defined page size.
+        /// </param>
+        /// <param name="callSettings">
+        /// If not null, applies overrides to this RPC call.
+        /// </param>
+        /// <returns>
+        /// A pageable asynchronous sequence of <see cref="Topic"/> resources.
+        /// </returns>
+        public virtual gax::PagedAsyncEnumerable<ListTopicsResponse, Topic> ListTopicsAsync(
+            string project,
+            string pageToken = null,
+            int? pageSize = null,
+            gaxgrpc::CallSettings callSettings = null) => ListTopicsAsync(
+                new ListTopicsRequest
+                {
+                    Project = gax::GaxPreconditions.CheckNotNullOrEmpty(project, nameof(project)),
+                    PageToken = pageToken ?? "",
+                    PageSize = pageSize ?? 0,
+                },
+                callSettings);
+
+        /// <summary>
+        /// Lists matching topics.
+        /// </summary>
+        /// <param name="project">
+        /// The name of the project in which to list topics.
+        /// Format is `projects/{project-id}`.
+        /// </param>
+        /// <param name="pageToken">
+        /// The token returned from the previous request.
+        /// A value of <c>null</c> or an empty string retrieves the first page.
+        /// </param>
+        /// <param name="pageSize">
+        /// The size of page to request. The response will not be larger than this, but may be smaller.
+        /// A value of <c>null</c> or 0 uses a server-defined page size.
+        /// </param>
+        /// <param name="callSettings">
+        /// If not null, applies overrides to this RPC call.
+        /// </param>
+        /// <returns>
+        /// A pageable sequence of <see cref="Topic"/> resources.
+        /// </returns>
+        public virtual gax::PagedEnumerable<ListTopicsResponse, Topic> ListTopics(
+            string project,
+            string pageToken = null,
+            int? pageSize = null,
+            gaxgrpc::CallSettings callSettings = null) => ListTopics(
+                new ListTopicsRequest
+                {
+                    Project = gax::GaxPreconditions.CheckNotNullOrEmpty(project, nameof(project)),
+                    PageToken = pageToken ?? "",
+                    PageSize = pageSize ?? 0,
+                },
+                callSettings);
+
+        /// <summary>
+        /// Lists matching topics.
+        /// </summary>
         /// <param name="request">
         /// The request object containing all of the parameters for the API call.
         /// </param>
@@ -1279,6 +1631,74 @@ namespace Google.Cloud.PubSub.V1
                 new ListTopicSubscriptionsRequest
                 {
                     TopicAsTopicName = gax::GaxPreconditions.CheckNotNull(topic, nameof(topic)),
+                    PageToken = pageToken ?? "",
+                    PageSize = pageSize ?? 0,
+                },
+                callSettings);
+
+        /// <summary>
+        /// Lists the names of the subscriptions on this topic.
+        /// </summary>
+        /// <param name="topic">
+        /// The name of the topic that subscriptions are attached to.
+        /// Format is `projects/{project}/topics/{topic}`.
+        /// </param>
+        /// <param name="pageToken">
+        /// The token returned from the previous request.
+        /// A value of <c>null</c> or an empty string retrieves the first page.
+        /// </param>
+        /// <param name="pageSize">
+        /// The size of page to request. The response will not be larger than this, but may be smaller.
+        /// A value of <c>null</c> or 0 uses a server-defined page size.
+        /// </param>
+        /// <param name="callSettings">
+        /// If not null, applies overrides to this RPC call.
+        /// </param>
+        /// <returns>
+        /// A pageable asynchronous sequence of <see cref="string"/> resources.
+        /// </returns>
+        public virtual gax::PagedAsyncEnumerable<ListTopicSubscriptionsResponse, SubscriptionName> ListTopicSubscriptionsAsync(
+            string topic,
+            string pageToken = null,
+            int? pageSize = null,
+            gaxgrpc::CallSettings callSettings = null) => ListTopicSubscriptionsAsync(
+                new ListTopicSubscriptionsRequest
+                {
+                    Topic = gax::GaxPreconditions.CheckNotNullOrEmpty(topic, nameof(topic)),
+                    PageToken = pageToken ?? "",
+                    PageSize = pageSize ?? 0,
+                },
+                callSettings);
+
+        /// <summary>
+        /// Lists the names of the subscriptions on this topic.
+        /// </summary>
+        /// <param name="topic">
+        /// The name of the topic that subscriptions are attached to.
+        /// Format is `projects/{project}/topics/{topic}`.
+        /// </param>
+        /// <param name="pageToken">
+        /// The token returned from the previous request.
+        /// A value of <c>null</c> or an empty string retrieves the first page.
+        /// </param>
+        /// <param name="pageSize">
+        /// The size of page to request. The response will not be larger than this, but may be smaller.
+        /// A value of <c>null</c> or 0 uses a server-defined page size.
+        /// </param>
+        /// <param name="callSettings">
+        /// If not null, applies overrides to this RPC call.
+        /// </param>
+        /// <returns>
+        /// A pageable sequence of <see cref="string"/> resources.
+        /// </returns>
+        public virtual gax::PagedEnumerable<ListTopicSubscriptionsResponse, SubscriptionName> ListTopicSubscriptions(
+            string topic,
+            string pageToken = null,
+            int? pageSize = null,
+            gaxgrpc::CallSettings callSettings = null) => ListTopicSubscriptions(
+                new ListTopicSubscriptionsRequest
+                {
+                    Topic = gax::GaxPreconditions.CheckNotNullOrEmpty(topic, nameof(topic)),
                     PageToken = pageToken ?? "",
                     PageSize = pageSize ?? 0,
                 },
@@ -1401,6 +1821,78 @@ namespace Google.Cloud.PubSub.V1
         /// configuration or subscriptions. Existing subscriptions to this topic are
         /// not deleted, but their `topic` field is set to `_deleted-topic_`.
         /// </summary>
+        /// <param name="topic">
+        /// Name of the topic to delete.
+        /// Format is `projects/{project}/topics/{topic}`.
+        /// </param>
+        /// <param name="callSettings">
+        /// If not null, applies overrides to this RPC call.
+        /// </param>
+        /// <returns>
+        /// A Task that completes when the RPC has completed.
+        /// </returns>
+        public virtual stt::Task DeleteTopicAsync(
+            string topic,
+            gaxgrpc::CallSettings callSettings = null) => DeleteTopicAsync(
+                new DeleteTopicRequest
+                {
+                    Topic = gax::GaxPreconditions.CheckNotNullOrEmpty(topic, nameof(topic)),
+                },
+                callSettings);
+
+        /// <summary>
+        /// Deletes the topic with the given name. Returns `NOT_FOUND` if the topic
+        /// does not exist. After a topic is deleted, a new topic may be created with
+        /// the same name; this is an entirely new topic with none of the old
+        /// configuration or subscriptions. Existing subscriptions to this topic are
+        /// not deleted, but their `topic` field is set to `_deleted-topic_`.
+        /// </summary>
+        /// <param name="topic">
+        /// Name of the topic to delete.
+        /// Format is `projects/{project}/topics/{topic}`.
+        /// </param>
+        /// <param name="cancellationToken">
+        /// A <see cref="st::CancellationToken"/> to use for this RPC.
+        /// </param>
+        /// <returns>
+        /// A Task that completes when the RPC has completed.
+        /// </returns>
+        public virtual stt::Task DeleteTopicAsync(
+            string topic,
+            st::CancellationToken cancellationToken) => DeleteTopicAsync(
+                topic,
+                gaxgrpc::CallSettings.FromCancellationToken(cancellationToken));
+
+        /// <summary>
+        /// Deletes the topic with the given name. Returns `NOT_FOUND` if the topic
+        /// does not exist. After a topic is deleted, a new topic may be created with
+        /// the same name; this is an entirely new topic with none of the old
+        /// configuration or subscriptions. Existing subscriptions to this topic are
+        /// not deleted, but their `topic` field is set to `_deleted-topic_`.
+        /// </summary>
+        /// <param name="topic">
+        /// Name of the topic to delete.
+        /// Format is `projects/{project}/topics/{topic}`.
+        /// </param>
+        /// <param name="callSettings">
+        /// If not null, applies overrides to this RPC call.
+        /// </param>
+        public virtual void DeleteTopic(
+            string topic,
+            gaxgrpc::CallSettings callSettings = null) => DeleteTopic(
+                new DeleteTopicRequest
+                {
+                    Topic = gax::GaxPreconditions.CheckNotNullOrEmpty(topic, nameof(topic)),
+                },
+                callSettings);
+
+        /// <summary>
+        /// Deletes the topic with the given name. Returns `NOT_FOUND` if the topic
+        /// does not exist. After a topic is deleted, a new topic may be created with
+        /// the same name; this is an entirely new topic with none of the old
+        /// configuration or subscriptions. Existing subscriptions to this topic are
+        /// not deleted, but their `topic` field is set to `_deleted-topic_`.
+        /// </summary>
         /// <param name="request">
         /// The request object containing all of the parameters for the API call.
         /// </param>
@@ -1465,8 +1957,7 @@ namespace Google.Cloud.PubSub.V1
         /// </summary>
         /// <param name="resource">
         /// REQUIRED: The resource for which the policy is being specified.
-        /// `resource` is usually specified as a path. For example, a Project
-        /// resource is specified as `projects/{project}`.
+        /// See the operation documentation for the appropriate value for this field.
         /// </param>
         /// <param name="policy">
         /// REQUIRED: The complete policy to be applied to the `resource`. The size of
@@ -1497,8 +1988,7 @@ namespace Google.Cloud.PubSub.V1
         /// </summary>
         /// <param name="resource">
         /// REQUIRED: The resource for which the policy is being specified.
-        /// `resource` is usually specified as a path. For example, a Project
-        /// resource is specified as `projects/{project}`.
+        /// See the operation documentation for the appropriate value for this field.
         /// </param>
         /// <param name="policy">
         /// REQUIRED: The complete policy to be applied to the `resource`. The size of
@@ -1526,8 +2016,7 @@ namespace Google.Cloud.PubSub.V1
         /// </summary>
         /// <param name="resource">
         /// REQUIRED: The resource for which the policy is being specified.
-        /// `resource` is usually specified as a path. For example, a Project
-        /// resource is specified as `projects/{project}`.
+        /// See the operation documentation for the appropriate value for this field.
         /// </param>
         /// <param name="policy">
         /// REQUIRED: The complete policy to be applied to the `resource`. The size of
@@ -1618,8 +2107,7 @@ namespace Google.Cloud.PubSub.V1
         /// </summary>
         /// <param name="resource">
         /// REQUIRED: The resource for which the policy is being requested.
-        /// `resource` is usually specified as a path. For example, a Project
-        /// resource is specified as `projects/{project}`.
+        /// See the operation documentation for the appropriate value for this field.
         /// </param>
         /// <param name="callSettings">
         /// If not null, applies overrides to this RPC call.
@@ -1643,8 +2131,7 @@ namespace Google.Cloud.PubSub.V1
         /// </summary>
         /// <param name="resource">
         /// REQUIRED: The resource for which the policy is being requested.
-        /// `resource` is usually specified as a path. For example, a Project
-        /// resource is specified as `projects/{project}`.
+        /// See the operation documentation for the appropriate value for this field.
         /// </param>
         /// <param name="cancellationToken">
         /// A <see cref="st::CancellationToken"/> to use for this RPC.
@@ -1665,8 +2152,7 @@ namespace Google.Cloud.PubSub.V1
         /// </summary>
         /// <param name="resource">
         /// REQUIRED: The resource for which the policy is being requested.
-        /// `resource` is usually specified as a path. For example, a Project
-        /// resource is specified as `projects/{project}`.
+        /// See the operation documentation for the appropriate value for this field.
         /// </param>
         /// <param name="callSettings">
         /// If not null, applies overrides to this RPC call.
@@ -1749,11 +2235,14 @@ namespace Google.Cloud.PubSub.V1
         /// Returns permissions that a caller has on the specified resource.
         /// If the resource does not exist, this will return an empty set of
         /// permissions, not a NOT_FOUND error.
+        ///
+        /// Note: This operation is designed to be used for building permission-aware
+        /// UIs and command-line tools, not for authorization checking. This operation
+        /// may "fail open" without warning.
         /// </summary>
         /// <param name="resource">
         /// REQUIRED: The resource for which the policy detail is being requested.
-        /// `resource` is usually specified as a path. For example, a Project
-        /// resource is specified as `projects/{project}`.
+        /// See the operation documentation for the appropriate value for this field.
         /// </param>
         /// <param name="permissions">
         /// The set of permissions to check for the `resource`. Permissions with
@@ -1782,11 +2271,14 @@ namespace Google.Cloud.PubSub.V1
         /// Returns permissions that a caller has on the specified resource.
         /// If the resource does not exist, this will return an empty set of
         /// permissions, not a NOT_FOUND error.
+        ///
+        /// Note: This operation is designed to be used for building permission-aware
+        /// UIs and command-line tools, not for authorization checking. This operation
+        /// may "fail open" without warning.
         /// </summary>
         /// <param name="resource">
         /// REQUIRED: The resource for which the policy detail is being requested.
-        /// `resource` is usually specified as a path. For example, a Project
-        /// resource is specified as `projects/{project}`.
+        /// See the operation documentation for the appropriate value for this field.
         /// </param>
         /// <param name="permissions">
         /// The set of permissions to check for the `resource`. Permissions with
@@ -1812,11 +2304,14 @@ namespace Google.Cloud.PubSub.V1
         /// Returns permissions that a caller has on the specified resource.
         /// If the resource does not exist, this will return an empty set of
         /// permissions, not a NOT_FOUND error.
+        ///
+        /// Note: This operation is designed to be used for building permission-aware
+        /// UIs and command-line tools, not for authorization checking. This operation
+        /// may "fail open" without warning.
         /// </summary>
         /// <param name="resource">
         /// REQUIRED: The resource for which the policy detail is being requested.
-        /// `resource` is usually specified as a path. For example, a Project
-        /// resource is specified as `projects/{project}`.
+        /// See the operation documentation for the appropriate value for this field.
         /// </param>
         /// <param name="permissions">
         /// The set of permissions to check for the `resource`. Permissions with
@@ -1845,6 +2340,10 @@ namespace Google.Cloud.PubSub.V1
         /// Returns permissions that a caller has on the specified resource.
         /// If the resource does not exist, this will return an empty set of
         /// permissions, not a NOT_FOUND error.
+        ///
+        /// Note: This operation is designed to be used for building permission-aware
+        /// UIs and command-line tools, not for authorization checking. This operation
+        /// may "fail open" without warning.
         /// </summary>
         /// <param name="request">
         /// The request object containing all of the parameters for the API call.
@@ -1866,6 +2365,10 @@ namespace Google.Cloud.PubSub.V1
         /// Returns permissions that a caller has on the specified resource.
         /// If the resource does not exist, this will return an empty set of
         /// permissions, not a NOT_FOUND error.
+        ///
+        /// Note: This operation is designed to be used for building permission-aware
+        /// UIs and command-line tools, not for authorization checking. This operation
+        /// may "fail open" without warning.
         /// </summary>
         /// <param name="request">
         /// The request object containing all of the parameters for the API call.
@@ -1886,6 +2389,10 @@ namespace Google.Cloud.PubSub.V1
         /// Returns permissions that a caller has on the specified resource.
         /// If the resource does not exist, this will return an empty set of
         /// permissions, not a NOT_FOUND error.
+        ///
+        /// Note: This operation is designed to be used for building permission-aware
+        /// UIs and command-line tools, not for authorization checking. This operation
+        /// may "fail open" without warning.
         /// </summary>
         /// <param name="request">
         /// The request object containing all of the parameters for the API call.
@@ -1933,25 +2440,35 @@ namespace Google.Cloud.PubSub.V1
             gaxgrpc::ClientHelper clientHelper = new gaxgrpc::ClientHelper(effectiveSettings);
             iam::IAMPolicy.IAMPolicyClient grpcIAMPolicyClient = grpcClient.CreateIAMPolicyClient();
             _callCreateTopic = clientHelper.BuildApiCall<Topic, Topic>(
-                GrpcClient.CreateTopicAsync, GrpcClient.CreateTopic, effectiveSettings.CreateTopicSettings);
+                GrpcClient.CreateTopicAsync, GrpcClient.CreateTopic, effectiveSettings.CreateTopicSettings)
+                .WithGoogleRequestParam("name", request => request.Name);
             _callUpdateTopic = clientHelper.BuildApiCall<UpdateTopicRequest, Topic>(
-                GrpcClient.UpdateTopicAsync, GrpcClient.UpdateTopic, effectiveSettings.UpdateTopicSettings);
+                GrpcClient.UpdateTopicAsync, GrpcClient.UpdateTopic, effectiveSettings.UpdateTopicSettings)
+                .WithGoogleRequestParam("topic.name", request => request.Topic?.Name);
             _callPublish = clientHelper.BuildApiCall<PublishRequest, PublishResponse>(
-                GrpcClient.PublishAsync, GrpcClient.Publish, effectiveSettings.PublishSettings);
+                GrpcClient.PublishAsync, GrpcClient.Publish, effectiveSettings.PublishSettings)
+                .WithGoogleRequestParam("topic", request => request.Topic);
             _callGetTopic = clientHelper.BuildApiCall<GetTopicRequest, Topic>(
-                GrpcClient.GetTopicAsync, GrpcClient.GetTopic, effectiveSettings.GetTopicSettings);
+                GrpcClient.GetTopicAsync, GrpcClient.GetTopic, effectiveSettings.GetTopicSettings)
+                .WithGoogleRequestParam("topic", request => request.Topic);
             _callListTopics = clientHelper.BuildApiCall<ListTopicsRequest, ListTopicsResponse>(
-                GrpcClient.ListTopicsAsync, GrpcClient.ListTopics, effectiveSettings.ListTopicsSettings);
+                GrpcClient.ListTopicsAsync, GrpcClient.ListTopics, effectiveSettings.ListTopicsSettings)
+                .WithGoogleRequestParam("project", request => request.Project);
             _callListTopicSubscriptions = clientHelper.BuildApiCall<ListTopicSubscriptionsRequest, ListTopicSubscriptionsResponse>(
-                GrpcClient.ListTopicSubscriptionsAsync, GrpcClient.ListTopicSubscriptions, effectiveSettings.ListTopicSubscriptionsSettings);
+                GrpcClient.ListTopicSubscriptionsAsync, GrpcClient.ListTopicSubscriptions, effectiveSettings.ListTopicSubscriptionsSettings)
+                .WithGoogleRequestParam("topic", request => request.Topic);
             _callDeleteTopic = clientHelper.BuildApiCall<DeleteTopicRequest, pbwkt::Empty>(
-                GrpcClient.DeleteTopicAsync, GrpcClient.DeleteTopic, effectiveSettings.DeleteTopicSettings);
+                GrpcClient.DeleteTopicAsync, GrpcClient.DeleteTopic, effectiveSettings.DeleteTopicSettings)
+                .WithGoogleRequestParam("topic", request => request.Topic);
             _callSetIamPolicy = clientHelper.BuildApiCall<iam::SetIamPolicyRequest, iam::Policy>(
-                grpcIAMPolicyClient.SetIamPolicyAsync, grpcIAMPolicyClient.SetIamPolicy, effectiveSettings.SetIamPolicySettings);
+                grpcIAMPolicyClient.SetIamPolicyAsync, grpcIAMPolicyClient.SetIamPolicy, effectiveSettings.SetIamPolicySettings)
+                .WithGoogleRequestParam("resource", request => request.Resource);
             _callGetIamPolicy = clientHelper.BuildApiCall<iam::GetIamPolicyRequest, iam::Policy>(
-                grpcIAMPolicyClient.GetIamPolicyAsync, grpcIAMPolicyClient.GetIamPolicy, effectiveSettings.GetIamPolicySettings);
+                grpcIAMPolicyClient.GetIamPolicyAsync, grpcIAMPolicyClient.GetIamPolicy, effectiveSettings.GetIamPolicySettings)
+                .WithGoogleRequestParam("resource", request => request.Resource);
             _callTestIamPermissions = clientHelper.BuildApiCall<iam::TestIamPermissionsRequest, iam::TestIamPermissionsResponse>(
-                grpcIAMPolicyClient.TestIamPermissionsAsync, grpcIAMPolicyClient.TestIamPermissions, effectiveSettings.TestIamPermissionsSettings);
+                grpcIAMPolicyClient.TestIamPermissionsAsync, grpcIAMPolicyClient.TestIamPermissions, effectiveSettings.TestIamPermissionsSettings)
+                .WithGoogleRequestParam("resource", request => request.Resource);
             Modify_ApiCall(ref _callCreateTopic);
             Modify_CreateTopicApiCall(ref _callCreateTopic);
             Modify_ApiCall(ref _callUpdateTopic);
@@ -2018,7 +2535,8 @@ namespace Google.Cloud.PubSub.V1
 
         /// <summary>
         /// Creates the given topic with the given name. See the
-        /// &lt;a href="/pubsub/docs/admin#resource_names"&gt; resource name rules&lt;/a&gt;.
+        /// &lt;a href="https://cloud.google.com/pubsub/docs/admin#resource_names"&gt;
+        /// resource name rules&lt;/a&gt;.
         /// </summary>
         /// <param name="request">
         /// The request object containing all of the parameters for the API call.
@@ -2039,7 +2557,8 @@ namespace Google.Cloud.PubSub.V1
 
         /// <summary>
         /// Creates the given topic with the given name. See the
-        /// &lt;a href="/pubsub/docs/admin#resource_names"&gt; resource name rules&lt;/a&gt;.
+        /// &lt;a href="https://cloud.google.com/pubsub/docs/admin#resource_names"&gt;
+        /// resource name rules&lt;/a&gt;.
         /// </summary>
         /// <param name="request">
         /// The request object containing all of the parameters for the API call.
@@ -2397,6 +2916,10 @@ namespace Google.Cloud.PubSub.V1
         /// Returns permissions that a caller has on the specified resource.
         /// If the resource does not exist, this will return an empty set of
         /// permissions, not a NOT_FOUND error.
+        ///
+        /// Note: This operation is designed to be used for building permission-aware
+        /// UIs and command-line tools, not for authorization checking. This operation
+        /// may "fail open" without warning.
         /// </summary>
         /// <param name="request">
         /// The request object containing all of the parameters for the API call.
@@ -2419,6 +2942,10 @@ namespace Google.Cloud.PubSub.V1
         /// Returns permissions that a caller has on the specified resource.
         /// If the resource does not exist, this will return an empty set of
         /// permissions, not a NOT_FOUND error.
+        ///
+        /// Note: This operation is designed to be used for building permission-aware
+        /// UIs and command-line tools, not for authorization checking. This operation
+        /// may "fail open" without warning.
         /// </summary>
         /// <param name="request">
         /// The request object containing all of the parameters for the API call.

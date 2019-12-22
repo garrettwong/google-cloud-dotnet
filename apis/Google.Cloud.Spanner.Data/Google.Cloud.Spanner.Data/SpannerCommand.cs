@@ -13,7 +13,6 @@
 // limitations under the License.
 
 using Google.Api.Gax;
-using Google.Cloud.Spanner.V1.Internal.Logging;
 using System;
 using System.Collections.Generic;
 using System.Data;
@@ -37,32 +36,37 @@ namespace Google.Cloud.Spanner.Data
     /// The command may also be a DDL statement such as CREATE TABLE. Use <see cref="ExecuteNonQueryAsync"/>
     /// to execute a DDL statement.
     /// </summary>
-    public sealed partial class SpannerCommand : DbCommand
-#if !NETSTANDARD1_5
-        , ICloneable
-#endif
+    public sealed partial class SpannerCommand : DbCommand, ICloneable
     {
         private readonly CancellationTokenSource _synchronousCancellationTokenSource = new CancellationTokenSource();
         private int _commandTimeout;
         private SpannerTransaction _transaction;
-        private Logger _logger;
 
         /// <summary>
-        /// Initializes a new instance of <see cref="SpannerCommand"/>.
+        /// Initializes a new instance of <see cref="SpannerCommand"/>, using a default command timeout.
         /// </summary>
         public SpannerCommand()
         {
             DesignTimeVisible = true;
-            _commandTimeout = SpannerOptions.Instance.Timeout;
+            _commandTimeout = SpannerConnectionStringBuilder.DefaultTimeout;
+        }
+
+        internal SpannerCommand(SpannerConnection connection)
+        {
+            SpannerConnection = connection;
+            // If we have a connection, use its configuration for the default timeout.
+            if (connection != null)
+            {
+                _commandTimeout = connection.Builder.Timeout;
+            }
         }
 
         private SpannerCommand(
             SpannerConnection connection,
             SpannerTransaction transaction,
             SpannerParameterCollection parameters,
-            CommandPartition commandPartition) : this()
+            CommandPartition commandPartition) : this(connection)
         {
-            SpannerConnection = connection;
             _transaction = transaction;
             Partition = commandPartition;
             if (parameters != null)
@@ -74,6 +78,9 @@ namespace Google.Cloud.Spanner.Data
         /// <summary>
         /// Initializes a new instance of <see cref="SpannerCommand"/>.
         /// </summary>
+        /// <remarks>
+        /// The initial command timeout is taken from the options associated with <paramref name="connection"/>.
+        /// </remarks>
         /// <param name="commandTextBuilder">The <see cref="SpannerCommandTextBuilder"/>
         /// that configures the text of this command. Must not be null.</param>
         /// <param name="connection">The <see cref="SpannerConnection"/> that is
@@ -139,6 +146,15 @@ namespace Google.Cloud.Spanner.Data
             SpannerParameterCollection parameters = null)
             : this(SpannerCommandTextBuilder.FromCommandText(commandText), connection, transaction, parameters) { }
 
+        internal SpannerCommand(string commandText, SpannerParameterCollection parameters = null)
+        {
+            SpannerCommandTextBuilder = SpannerCommandTextBuilder.FromCommandText(commandText);
+            if(parameters != null)
+            {
+                Parameters = parameters;
+            }
+        }
+
         /// <inheritdoc />
         public override string CommandText
         {
@@ -148,17 +164,8 @@ namespace Google.Cloud.Spanner.Data
         }
 
         /// <summary>
-        /// This property is for internal use only.
-        /// </summary>
-        public Logger Logger
-        {
-            get => _logger ?? SpannerConnection?.Logger;
-            set => _logger = value;
-        }
-
-        /// <summary>
         /// Gets or sets the wait time before terminating the attempt to execute a command and generating an error.
-        /// Defaults to <see cref="SpannerOptions.Timeout"/> which is 60 seconds.
+        /// Defaults to the timeout from the connection string.
         /// </summary>
         /// <remarks>
         /// A value of '0' normally indicates that no timeout should be used (it waits an infinite amount of time).
@@ -168,7 +175,7 @@ namespace Google.Cloud.Spanner.Data
         public override int CommandTimeout
         {
             get => _commandTimeout;
-            set => _commandTimeout = value;
+            set => _commandTimeout = GaxPreconditions.CheckArgumentRange(value, nameof(value), 0, int.MaxValue);
         }
 
         /// <inheritdoc />
@@ -257,7 +264,7 @@ namespace Google.Cloud.Spanner.Data
 
         /// <inheritdoc />
         public override int ExecuteNonQuery() =>
-            ExecuteNonQueryAsync(_synchronousCancellationTokenSource.Token).ResultWithUnwrappedExceptions();
+            Task.Run(() => ExecuteNonQueryAsync(_synchronousCancellationTokenSource.Token)).ResultWithUnwrappedExceptions();
 
         /// <summary>
         /// Executes the command against the <see cref="SpannerConnection"/>.
@@ -280,7 +287,7 @@ namespace Google.Cloud.Spanner.Data
 
         /// <inheritdoc />
         public override object ExecuteScalar() =>
-            ExecuteScalarAsync(_synchronousCancellationTokenSource.Token).ResultWithUnwrappedExceptions();
+            Task.Run(() => ExecuteScalarAsync(_synchronousCancellationTokenSource.Token)).ResultWithUnwrappedExceptions();
 
         /// <summary>
         /// Executes the query and returns the first column of the first row in the result set returned by the query.
@@ -346,7 +353,7 @@ namespace Google.Cloud.Spanner.Data
         /// </summary>
         /// <returns>An asynchronous <see cref="Task"/> that produces a <see cref="SpannerDataReader"/>.</returns>
         public new Task<SpannerDataReader> ExecuteReaderAsync() =>
-            ExecuteReaderAsync(CommandBehavior.Default, CancellationToken.None); // TODO: Use _synchronousCancellationTokenSource?
+            ExecuteReaderAsync(CommandBehavior.Default, CancellationToken.None);
 
         /// <summary>
         /// Sends the command to Cloud Spanner and builds a <see cref="SpannerDataReader"/>.
@@ -362,7 +369,7 @@ namespace Google.Cloud.Spanner.Data
         /// <param name="behavior">Options for statement execution and data retrieval.</param>
         /// <returns>An asynchronous <see cref="Task"/> that produces a <see cref="SpannerDataReader"/>.</returns>
         public new Task<SpannerDataReader> ExecuteReaderAsync(CommandBehavior behavior) =>
-            ExecuteReaderAsync(behavior, CancellationToken.None); // TODO: Use _synchronousCancellationTokenSource?
+            ExecuteReaderAsync(behavior, CancellationToken.None);
 
         /// <summary>
         /// Sends the command to Cloud Spanner and builds a <see cref="SpannerDataReader"/>.
@@ -375,7 +382,7 @@ namespace Google.Cloud.Spanner.Data
 
         /// <inheritdoc />
         protected override DbDataReader ExecuteDbDataReader(CommandBehavior behavior) =>
-            CreateExecutableCommand().ExecuteDbDataReaderAsync(behavior, null, _synchronousCancellationTokenSource.Token).ResultWithUnwrappedExceptions();
+            Task.Run(() => CreateExecutableCommand().ExecuteDbDataReaderAsync(behavior, null, _synchronousCancellationTokenSource.Token)).ResultWithUnwrappedExceptions();
 
         /// <inheritdoc />
         protected override Task<DbDataReader> ExecuteDbDataReaderAsync(CommandBehavior behavior, CancellationToken cancellationToken) =>
@@ -394,7 +401,7 @@ namespace Google.Cloud.Spanner.Data
         /// </remarks>
         /// <returns>A lower bound for the number of rows affected.</returns>
         public long ExecutePartitionedUpdate() =>
-            ExecutePartitionedUpdateAsync(_synchronousCancellationTokenSource.Token).ResultWithUnwrappedExceptions();
+            Task.Run(() => ExecutePartitionedUpdateAsync(_synchronousCancellationTokenSource.Token)).ResultWithUnwrappedExceptions();
 
         /// <summary>
         /// Executes this command as a partitioned update. The command must be a generalized DML command;

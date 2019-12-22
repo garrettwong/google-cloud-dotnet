@@ -88,6 +88,7 @@ namespace Google.Cloud.Spanner.Data.IntegrationTests
             return writeCommand.ExecuteNonQueryAsync();
         }
 
+        // [START spanner_test_query_chunked_data]
         [Fact]
         public async Task TestChunking()
         {
@@ -98,7 +99,7 @@ namespace Google.Cloud.Spanner.Data.IntegrationTests
             using (var connection = _fixture.GetConnection())
             {
                 await connection.OpenAsync();
-                await RetryHelpers.RetryOnceAsync(async () =>
+                await RetryHelpers.ExecuteWithRetryAsync(async () =>
                 {
                     using (var tx = await connection.BeginTransactionAsync())
                     {
@@ -150,5 +151,6 @@ namespace Google.Cloud.Spanner.Data.IntegrationTests
 
             Assert.Equal(rowsToWrite, rowsRead);
         }
+        // [END spanner_test_query_chunked_data]
     }
 }

@@ -62,7 +62,7 @@ namespace Google.Cloud.Diagnostics.AspNetCore
         /// Uses middleware that will report all uncaught exceptions to the Stackdriver
         /// Error Reporting API.
         /// </summary>
-        /// <param name="app">The application builder. Must not be null.</param>   
+        /// <param name="app">The application builder. Must not be null.</param>
         public static IApplicationBuilder UseGoogleExceptionLogging(this IApplicationBuilder app)
         {
             GaxPreconditions.CheckNotNull(app, nameof(app));
@@ -95,13 +95,9 @@ namespace Google.Cloud.Diagnostics.AspNetCore
 
             var serviceOptions = new ErrorReportingServiceOptions();
             setupAction(serviceOptions);
-            var serviceName = GaxPreconditions.CheckNotNull(serviceOptions.ServiceName, nameof(serviceOptions.ServiceName));
-            var version = GaxPreconditions.CheckNotNull(serviceOptions.Version, nameof(serviceOptions.Version));
-
-            // Only add the HttpContextAccessor if it's not already added.
-            services.TryAddSingleton<IHttpContextAccessor, HttpContextAccessor>();
+            services.AddHttpContextAccessor();
             services.AddSingleton(ContextExceptionLogger.Create(
-                serviceOptions.ProjectId, serviceName, version, serviceOptions.Options));
+                serviceOptions.ProjectId, serviceOptions.ServiceName, serviceOptions.Version, serviceOptions.Options));
             return services.AddSingleton(CreateExceptionLogger);
         }
 

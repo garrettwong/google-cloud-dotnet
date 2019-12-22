@@ -1,4 +1,4 @@
-// Copyright 2018 Google LLC
+// Copyright 2019 Google LLC
 //
 // Licensed under the Apache License, Version 2.0 (the "License");
 // you may not use this file except in compliance with the License.
@@ -177,6 +177,42 @@ namespace Google.Cloud.Dialogflow.V2
     }
 
     /// <summary>
+    /// Builder class for <see cref="SessionsClient"/> to provide simple configuration of credentials, endpoint etc.
+    /// </summary>
+    public sealed partial class SessionsClientBuilder : gaxgrpc::ClientBuilderBase<SessionsClient>
+    {
+        /// <summary>
+        /// The settings to use for RPCs, or null for the default settings.
+        /// </summary>
+        public SessionsSettings Settings { get; set; }
+
+        /// <inheritdoc/>
+        public override SessionsClient Build()
+        {
+            Validate();
+            grpccore::CallInvoker callInvoker = CreateCallInvoker();
+            return SessionsClient.Create(callInvoker, Settings);
+        }
+
+        /// <inheritdoc />
+        public override async stt::Task<SessionsClient> BuildAsync(st::CancellationToken cancellationToken = default)
+        {
+            Validate();
+            grpccore::CallInvoker callInvoker = await CreateCallInvokerAsync(cancellationToken).ConfigureAwait(false);
+            return SessionsClient.Create(callInvoker, Settings);
+        }
+
+        /// <inheritdoc />
+        protected override gaxgrpc::ServiceEndpoint GetDefaultEndpoint() => SessionsClient.DefaultEndpoint;
+
+        /// <inheritdoc />
+        protected override scg::IReadOnlyList<string> GetDefaultScopes() => SessionsClient.DefaultScopes;
+
+        /// <inheritdoc />
+        protected override gaxgrpc::ChannelPool GetChannelPool() => SessionsClient.ChannelPool;
+    }
+
+    /// <summary>
     /// Sessions client wrapper, for convenient use.
     /// </summary>
     public abstract partial class SessionsClient
@@ -193,13 +229,17 @@ namespace Google.Cloud.Dialogflow.V2
         /// The default Sessions scopes are:
         /// <list type="bullet">
         /// <item><description>"https://www.googleapis.com/auth/cloud-platform"</description></item>
+        /// <item><description>"https://www.googleapis.com/auth/dialogflow"</description></item>
         /// </list>
         /// </remarks>
         public static scg::IReadOnlyList<string> DefaultScopes { get; } = new sco::ReadOnlyCollection<string>(new string[] {
             "https://www.googleapis.com/auth/cloud-platform",
+            "https://www.googleapis.com/auth/dialogflow",
         });
 
         private static readonly gaxgrpc::ChannelPool s_channelPool = new gaxgrpc::ChannelPool(DefaultScopes);
+
+        internal static gaxgrpc::ChannelPool ChannelPool => s_channelPool;
 
         /// <summary>
         /// Asynchronously creates a <see cref="SessionsClient"/>, applying defaults for all unspecified settings,
@@ -453,6 +493,123 @@ namespace Google.Cloud.Dialogflow.V2
         /// and session entity types to be updated, which in turn might affect
         /// results of future queries.
         /// </summary>
+        /// <param name="session">
+        /// Required. The name of the session this query is sent to. Format:
+        /// `projects/&lt;Project ID&gt;/agent/sessions/&lt;Session ID&gt;`. It's up to the API
+        /// caller to choose an appropriate session ID. It can be a random number or
+        /// some type of user identifier (preferably hashed). The length of the session
+        /// ID must not exceed 36 bytes.
+        /// </param>
+        /// <param name="queryInput">
+        /// Required. The input specification. It can be set to:
+        ///
+        /// 1.  an audio config
+        ///     which instructs the speech recognizer how to process the speech audio,
+        ///
+        /// 2.  a conversational query in the form of text, or
+        ///
+        /// 3.  an event that specifies which intent to trigger.
+        /// </param>
+        /// <param name="callSettings">
+        /// If not null, applies overrides to this RPC call.
+        /// </param>
+        /// <returns>
+        /// A Task containing the RPC response.
+        /// </returns>
+        public virtual stt::Task<DetectIntentResponse> DetectIntentAsync(
+            string session,
+            QueryInput queryInput,
+            gaxgrpc::CallSettings callSettings = null) => DetectIntentAsync(
+                new DetectIntentRequest
+                {
+                    Session = gax::GaxPreconditions.CheckNotNullOrEmpty(session, nameof(session)),
+                    QueryInput = gax::GaxPreconditions.CheckNotNull(queryInput, nameof(queryInput)),
+                },
+                callSettings);
+
+        /// <summary>
+        /// Processes a natural language query and returns structured, actionable data
+        /// as a result. This method is not idempotent, because it may cause contexts
+        /// and session entity types to be updated, which in turn might affect
+        /// results of future queries.
+        /// </summary>
+        /// <param name="session">
+        /// Required. The name of the session this query is sent to. Format:
+        /// `projects/&lt;Project ID&gt;/agent/sessions/&lt;Session ID&gt;`. It's up to the API
+        /// caller to choose an appropriate session ID. It can be a random number or
+        /// some type of user identifier (preferably hashed). The length of the session
+        /// ID must not exceed 36 bytes.
+        /// </param>
+        /// <param name="queryInput">
+        /// Required. The input specification. It can be set to:
+        ///
+        /// 1.  an audio config
+        ///     which instructs the speech recognizer how to process the speech audio,
+        ///
+        /// 2.  a conversational query in the form of text, or
+        ///
+        /// 3.  an event that specifies which intent to trigger.
+        /// </param>
+        /// <param name="cancellationToken">
+        /// A <see cref="st::CancellationToken"/> to use for this RPC.
+        /// </param>
+        /// <returns>
+        /// A Task containing the RPC response.
+        /// </returns>
+        public virtual stt::Task<DetectIntentResponse> DetectIntentAsync(
+            string session,
+            QueryInput queryInput,
+            st::CancellationToken cancellationToken) => DetectIntentAsync(
+                session,
+                queryInput,
+                gaxgrpc::CallSettings.FromCancellationToken(cancellationToken));
+
+        /// <summary>
+        /// Processes a natural language query and returns structured, actionable data
+        /// as a result. This method is not idempotent, because it may cause contexts
+        /// and session entity types to be updated, which in turn might affect
+        /// results of future queries.
+        /// </summary>
+        /// <param name="session">
+        /// Required. The name of the session this query is sent to. Format:
+        /// `projects/&lt;Project ID&gt;/agent/sessions/&lt;Session ID&gt;`. It's up to the API
+        /// caller to choose an appropriate session ID. It can be a random number or
+        /// some type of user identifier (preferably hashed). The length of the session
+        /// ID must not exceed 36 bytes.
+        /// </param>
+        /// <param name="queryInput">
+        /// Required. The input specification. It can be set to:
+        ///
+        /// 1.  an audio config
+        ///     which instructs the speech recognizer how to process the speech audio,
+        ///
+        /// 2.  a conversational query in the form of text, or
+        ///
+        /// 3.  an event that specifies which intent to trigger.
+        /// </param>
+        /// <param name="callSettings">
+        /// If not null, applies overrides to this RPC call.
+        /// </param>
+        /// <returns>
+        /// The RPC response.
+        /// </returns>
+        public virtual DetectIntentResponse DetectIntent(
+            string session,
+            QueryInput queryInput,
+            gaxgrpc::CallSettings callSettings = null) => DetectIntent(
+                new DetectIntentRequest
+                {
+                    Session = gax::GaxPreconditions.CheckNotNullOrEmpty(session, nameof(session)),
+                    QueryInput = gax::GaxPreconditions.CheckNotNull(queryInput, nameof(queryInput)),
+                },
+                callSettings);
+
+        /// <summary>
+        /// Processes a natural language query and returns structured, actionable data
+        /// as a result. This method is not idempotent, because it may cause contexts
+        /// and session entity types to be updated, which in turn might affect
+        /// results of future queries.
+        /// </summary>
         /// <param name="request">
         /// The request object containing all of the parameters for the API call.
         /// </param>
@@ -561,7 +718,8 @@ namespace Google.Cloud.Dialogflow.V2
             SessionsSettings effectiveSettings = settings ?? SessionsSettings.GetDefault();
             gaxgrpc::ClientHelper clientHelper = new gaxgrpc::ClientHelper(effectiveSettings);
             _callDetectIntent = clientHelper.BuildApiCall<DetectIntentRequest, DetectIntentResponse>(
-                GrpcClient.DetectIntentAsync, GrpcClient.DetectIntent, effectiveSettings.DetectIntentSettings);
+                GrpcClient.DetectIntentAsync, GrpcClient.DetectIntent, effectiveSettings.DetectIntentSettings)
+                .WithGoogleRequestParam("session", request => request.Session);
             _callStreamingDetectIntent = clientHelper.BuildApiCall<StreamingDetectIntentRequest, StreamingDetectIntentResponse>(
                 GrpcClient.StreamingDetectIntent, effectiveSettings.StreamingDetectIntentSettings, effectiveSettings.StreamingDetectIntentStreamingSettings);
             Modify_ApiCall(ref _callDetectIntent);

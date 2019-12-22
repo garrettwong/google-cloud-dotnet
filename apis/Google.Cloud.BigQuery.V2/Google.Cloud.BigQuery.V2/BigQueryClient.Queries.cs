@@ -198,6 +198,12 @@ namespace Google.Cloud.BigQuery.V2
         /// Lists the rows within a table specified by project ID, dataset ID and table ID, similar to a <c>SELECT * FROM ...</c> query.
         /// This method just creates a <see cref="TableReference"/> and delegates to <see cref="ListRows(TableReference, TableSchema, ListRowsOptions)"/>.
         /// </summary>
+        /// <remarks>
+        /// No network requests are made until the returned sequence is enumerated.
+        /// This means that any exception due to an invalid request will be deferred until that time. Callers should be prepared
+        /// for exceptions to be thrown while enumerating the results. In addition to failures due to invalid requests, network
+        /// or service failures can cause exceptions even after the first results have been returned.
+        /// </remarks>
         /// <param name="projectId">The project ID. Must not be null.</param>
         /// <param name="datasetId">The dataset ID. Must not be null.</param>
         /// <param name="tableId">The table ID. Must not be null.</param>
@@ -212,6 +218,12 @@ namespace Google.Cloud.BigQuery.V2
         /// Lists the rows within a table within this client's project specified by dataset ID and table ID, similar to a <c>SELECT * FROM ...</c> query.
         /// This method just creates a <see cref="TableReference"/> and delegates to <see cref="ListRows(TableReference, TableSchema, ListRowsOptions)"/>.
         /// </summary>
+        /// <remarks>
+        /// No network requests are made until the returned sequence is enumerated.
+        /// This means that any exception due to an invalid request will be deferred until that time. Callers should be prepared
+        /// for exceptions to be thrown while enumerating the results. In addition to failures due to invalid requests, network
+        /// or service failures can cause exceptions even after the first results have been returned.
+        /// </remarks>
         /// <param name="datasetId">The dataset ID. Must not be null.</param>
         /// <param name="tableId">The table ID. Must not be null.</param>
         /// <param name="schema">The schema to use when interpreting results. This may be null, in which case it will be fetched from
@@ -224,6 +236,12 @@ namespace Google.Cloud.BigQuery.V2
         /// <summary>
         /// Lists the rows within a table, similar to a <c>SELECT * FROM ...</c> query.
         /// </summary>
+        /// <remarks>
+        /// No network requests are made until the returned sequence is enumerated.
+        /// This means that any exception due to an invalid request will be deferred until that time. Callers should be prepared
+        /// for exceptions to be thrown while enumerating the results. In addition to failures due to invalid requests, network
+        /// or service failures can cause exceptions even after the first results have been returned.
+        /// </remarks>
         /// <param name="tableReference">A fully-qualified identifier for the table. Must not be null.</param>
         /// <param name="schema">The schema to use when interpreting results. This may be null, in which case it will be fetched from
         /// the table first.</param>
@@ -238,6 +256,12 @@ namespace Google.Cloud.BigQuery.V2
         /// Lists the rows within a table specified by project ID, dataset ID and table ID, similar to a <c>SELECT * FROM ...</c> query.
         /// This method just creates a <see cref="TableReference"/> and delegates to <see cref="ListRowsAsync(TableReference, TableSchema, ListRowsOptions)"/>.
         /// </summary>
+        /// <remarks>
+        /// No network requests are made until the returned sequence is enumerated.
+        /// This means that any exception due to an invalid request will be deferred until that time. Callers should be prepared
+        /// for exceptions to be thrown while enumerating the results. In addition to failures due to invalid requests, network
+        /// or service failures can cause exceptions even after the first results have been returned.
+        /// </remarks>
         /// <param name="projectId">The project ID. Must not be null.</param>
         /// <param name="datasetId">The dataset ID. Must not be null.</param>
         /// <param name="tableId">The table ID. Must not be null.</param>
@@ -252,6 +276,12 @@ namespace Google.Cloud.BigQuery.V2
         /// Lists the rows within a table within this client's project specified by dataset ID and table ID, similar to a <c>SELECT * FROM ...</c> query.
         /// This method just creates a <see cref="TableReference"/> and delegates to <see cref="ListRowsAsync(TableReference, TableSchema, ListRowsOptions)"/>.
         /// </summary>
+        /// <remarks>
+        /// No network requests are made until the returned sequence is enumerated.
+        /// This means that any exception due to an invalid request will be deferred until that time. Callers should be prepared
+        /// for exceptions to be thrown while enumerating the results. In addition to failures due to invalid requests, network
+        /// or service failures can cause exceptions even after the first results have been returned.
+        /// </remarks>
         /// <param name="datasetId">The dataset ID. Must not be null.</param>
         /// <param name="tableId">The table ID. Must not be null.</param>
         /// <param name="schema">The schema to use when interpreting results. This may be null, in which case it will be fetched from
@@ -264,6 +294,12 @@ namespace Google.Cloud.BigQuery.V2
         /// <summary>
         /// Lists the rows within a table, similar to a <c>SELECT * FROM ...</c> query.
         /// </summary>
+        /// <remarks>
+        /// No network requests are made until the returned sequence is enumerated.
+        /// This means that any exception due to an invalid request will be deferred until that time. Callers should be prepared
+        /// for exceptions to be thrown while enumerating the results. In addition to failures due to invalid requests, network
+        /// or service failures can cause exceptions even after the first results have been returned.
+        /// </remarks>
         /// <param name="tableReference">A fully-qualified identifier for the table. Must not be null.</param>
         /// <param name="schema">The schema to use when interpreting results. This may be null, in which case it will be fetched from
         /// the table first.</param>
@@ -274,6 +310,27 @@ namespace Google.Cloud.BigQuery.V2
             throw new NotImplementedException();
         }
         #endregion
+
+        /// <summary>
+        /// "Raw" version of GetQueryResults, with no translation to BigQueryResults.
+        /// </summary>
+        /// <param name="jobReference">A fully-qualified identifier for the job. Must not be null.</param>
+        /// <param name="options">The options for the operation. May be null, in which case defaults will be supplied.</param>
+        /// <param name="timeoutBase">A base value to use when applying a timeout, or null to use the current date/time.</param>
+        /// <returns>The results of the query.</returns>
+        internal virtual GetQueryResultsResponse GetRawQueryResults(JobReference jobReference, GetQueryResultsOptions options, DateTime? timeoutBase) =>
+            throw new NotImplementedException();
+
+        /// <summary>
+        /// "Raw" version of GetQueryResultsAsync, with no translation to BigQueryResults.
+        /// </summary>
+        /// <param name="jobReference">A fully-qualified identifier for the job. Must not be null.</param>
+        /// <param name="options">The options for the operation. May be null, in which case defaults will be supplied.</param>
+        /// <param name="timeoutBase">A base value to use when applying a timeout, or null to use the current date/time.</param>
+        /// <param name="cancellationToken">The token to monitor for cancellation requests.</param>
+        /// <returns>The results of the query.</returns>
+        internal virtual Task<GetQueryResultsResponse> GetRawQueryResultsAsync(JobReference jobReference, GetQueryResultsOptions options, DateTime? timeoutBase, CancellationToken cancellationToken) =>
+            throw new NotImplementedException();
 
         // Note - these methods are not part of the regular "pattern", so are not in the GetQueryResults region above.
         // We want to remove them, if the underlying GetQueryResultsResponse starts including the table reference.

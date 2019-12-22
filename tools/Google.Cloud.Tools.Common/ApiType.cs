@@ -12,14 +12,11 @@
 // See the License for the specific language governing permissions and
 // limitations under the License.
 
-using System;
-using System.Collections.Generic;
-using System.Text;
-
 namespace Google.Cloud.Tools.Common
 {
     public enum ApiType
     {
+        None,
         Grpc,
         Rest,
         Analyzers,

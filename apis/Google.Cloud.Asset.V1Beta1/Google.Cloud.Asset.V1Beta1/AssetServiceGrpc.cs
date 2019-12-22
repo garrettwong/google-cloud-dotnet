@@ -18,7 +18,7 @@
 // limitations under the License.
 //
 //
-#pragma warning disable 1591
+#pragma warning disable 0414, 1591
 #region Designer generated code
 
 using grpc = global::Grpc.Core;
@@ -31,24 +31,24 @@ namespace Google.Cloud.Asset.V1Beta1 {
   {
     static readonly string __ServiceName = "google.cloud.asset.v1beta1.AssetService";
 
-    static readonly grpc::Marshaller<global::Google.Cloud.Asset.V1Beta1.ExportAssetsRequest> __Marshaller_ExportAssetsRequest = grpc::Marshallers.Create((arg) => global::Google.Protobuf.MessageExtensions.ToByteArray(arg), global::Google.Cloud.Asset.V1Beta1.ExportAssetsRequest.Parser.ParseFrom);
-    static readonly grpc::Marshaller<global::Google.LongRunning.Operation> __Marshaller_Operation = grpc::Marshallers.Create((arg) => global::Google.Protobuf.MessageExtensions.ToByteArray(arg), global::Google.LongRunning.Operation.Parser.ParseFrom);
-    static readonly grpc::Marshaller<global::Google.Cloud.Asset.V1Beta1.BatchGetAssetsHistoryRequest> __Marshaller_BatchGetAssetsHistoryRequest = grpc::Marshallers.Create((arg) => global::Google.Protobuf.MessageExtensions.ToByteArray(arg), global::Google.Cloud.Asset.V1Beta1.BatchGetAssetsHistoryRequest.Parser.ParseFrom);
-    static readonly grpc::Marshaller<global::Google.Cloud.Asset.V1Beta1.BatchGetAssetsHistoryResponse> __Marshaller_BatchGetAssetsHistoryResponse = grpc::Marshallers.Create((arg) => global::Google.Protobuf.MessageExtensions.ToByteArray(arg), global::Google.Cloud.Asset.V1Beta1.BatchGetAssetsHistoryResponse.Parser.ParseFrom);
+    static readonly grpc::Marshaller<global::Google.Cloud.Asset.V1Beta1.ExportAssetsRequest> __Marshaller_google_cloud_asset_v1beta1_ExportAssetsRequest = grpc::Marshallers.Create((arg) => global::Google.Protobuf.MessageExtensions.ToByteArray(arg), global::Google.Cloud.Asset.V1Beta1.ExportAssetsRequest.Parser.ParseFrom);
+    static readonly grpc::Marshaller<global::Google.LongRunning.Operation> __Marshaller_google_longrunning_Operation = grpc::Marshallers.Create((arg) => global::Google.Protobuf.MessageExtensions.ToByteArray(arg), global::Google.LongRunning.Operation.Parser.ParseFrom);
+    static readonly grpc::Marshaller<global::Google.Cloud.Asset.V1Beta1.BatchGetAssetsHistoryRequest> __Marshaller_google_cloud_asset_v1beta1_BatchGetAssetsHistoryRequest = grpc::Marshallers.Create((arg) => global::Google.Protobuf.MessageExtensions.ToByteArray(arg), global::Google.Cloud.Asset.V1Beta1.BatchGetAssetsHistoryRequest.Parser.ParseFrom);
+    static readonly grpc::Marshaller<global::Google.Cloud.Asset.V1Beta1.BatchGetAssetsHistoryResponse> __Marshaller_google_cloud_asset_v1beta1_BatchGetAssetsHistoryResponse = grpc::Marshallers.Create((arg) => global::Google.Protobuf.MessageExtensions.ToByteArray(arg), global::Google.Cloud.Asset.V1Beta1.BatchGetAssetsHistoryResponse.Parser.ParseFrom);
 
     static readonly grpc::Method<global::Google.Cloud.Asset.V1Beta1.ExportAssetsRequest, global::Google.LongRunning.Operation> __Method_ExportAssets = new grpc::Method<global::Google.Cloud.Asset.V1Beta1.ExportAssetsRequest, global::Google.LongRunning.Operation>(
         grpc::MethodType.Unary,
         __ServiceName,
         "ExportAssets",
-        __Marshaller_ExportAssetsRequest,
-        __Marshaller_Operation);
+        __Marshaller_google_cloud_asset_v1beta1_ExportAssetsRequest,
+        __Marshaller_google_longrunning_Operation);
 
     static readonly grpc::Method<global::Google.Cloud.Asset.V1Beta1.BatchGetAssetsHistoryRequest, global::Google.Cloud.Asset.V1Beta1.BatchGetAssetsHistoryResponse> __Method_BatchGetAssetsHistory = new grpc::Method<global::Google.Cloud.Asset.V1Beta1.BatchGetAssetsHistoryRequest, global::Google.Cloud.Asset.V1Beta1.BatchGetAssetsHistoryResponse>(
         grpc::MethodType.Unary,
         __ServiceName,
         "BatchGetAssetsHistory",
-        __Marshaller_BatchGetAssetsHistoryRequest,
-        __Marshaller_BatchGetAssetsHistoryResponse);
+        __Marshaller_google_cloud_asset_v1beta1_BatchGetAssetsHistoryRequest,
+        __Marshaller_google_cloud_asset_v1beta1_BatchGetAssetsHistoryResponse);
 
     /// <summary>Service descriptor</summary>
     public static global::Google.Protobuf.Reflection.ServiceDescriptor Descriptor
@@ -57,13 +57,15 @@ namespace Google.Cloud.Asset.V1Beta1 {
     }
 
     /// <summary>Base class for server-side implementations of AssetService</summary>
+    [grpc::BindServiceMethod(typeof(AssetService), "BindService")]
     public abstract partial class AssetServiceBase
     {
       /// <summary>
       /// Exports assets with time and resource types to a given Cloud Storage
       /// location. The output format is newline-delimited JSON.
-      /// This API implements the [google.longrunning.Operation][google.longrunning.Operation] API allowing you
-      /// to keep track of the export.
+      /// This API implements the
+      /// [google.longrunning.Operation][google.longrunning.Operation] API allowing
+      /// you to keep track of the export.
       /// </summary>
       /// <param name="request">The request received from the client.</param>
       /// <param name="context">The context of the server-side call handler being invoked.</param>
@@ -116,8 +118,9 @@ namespace Google.Cloud.Asset.V1Beta1 {
       /// <summary>
       /// Exports assets with time and resource types to a given Cloud Storage
       /// location. The output format is newline-delimited JSON.
-      /// This API implements the [google.longrunning.Operation][google.longrunning.Operation] API allowing you
-      /// to keep track of the export.
+      /// This API implements the
+      /// [google.longrunning.Operation][google.longrunning.Operation] API allowing
+      /// you to keep track of the export.
       /// </summary>
       /// <param name="request">The request to send to the server.</param>
       /// <param name="headers">The initial metadata to send with the call. This parameter is optional.</param>
@@ -131,8 +134,9 @@ namespace Google.Cloud.Asset.V1Beta1 {
       /// <summary>
       /// Exports assets with time and resource types to a given Cloud Storage
       /// location. The output format is newline-delimited JSON.
-      /// This API implements the [google.longrunning.Operation][google.longrunning.Operation] API allowing you
-      /// to keep track of the export.
+      /// This API implements the
+      /// [google.longrunning.Operation][google.longrunning.Operation] API allowing
+      /// you to keep track of the export.
       /// </summary>
       /// <param name="request">The request to send to the server.</param>
       /// <param name="options">The options for the call.</param>
@@ -144,8 +148,9 @@ namespace Google.Cloud.Asset.V1Beta1 {
       /// <summary>
       /// Exports assets with time and resource types to a given Cloud Storage
       /// location. The output format is newline-delimited JSON.
-      /// This API implements the [google.longrunning.Operation][google.longrunning.Operation] API allowing you
-      /// to keep track of the export.
+      /// This API implements the
+      /// [google.longrunning.Operation][google.longrunning.Operation] API allowing
+      /// you to keep track of the export.
       /// </summary>
       /// <param name="request">The request to send to the server.</param>
       /// <param name="headers">The initial metadata to send with the call. This parameter is optional.</param>
@@ -159,8 +164,9 @@ namespace Google.Cloud.Asset.V1Beta1 {
       /// <summary>
       /// Exports assets with time and resource types to a given Cloud Storage
       /// location. The output format is newline-delimited JSON.
-      /// This API implements the [google.longrunning.Operation][google.longrunning.Operation] API allowing you
-      /// to keep track of the export.
+      /// This API implements the
+      /// [google.longrunning.Operation][google.longrunning.Operation] API allowing
+      /// you to keep track of the export.
       /// </summary>
       /// <param name="request">The request to send to the server.</param>
       /// <param name="options">The options for the call.</param>
@@ -243,6 +249,16 @@ namespace Google.Cloud.Asset.V1Beta1 {
       return grpc::ServerServiceDefinition.CreateBuilder()
           .AddMethod(__Method_ExportAssets, serviceImpl.ExportAssets)
           .AddMethod(__Method_BatchGetAssetsHistory, serviceImpl.BatchGetAssetsHistory).Build();
+    }
+
+    /// <summary>Register service method with a service binder with or without implementation. Useful when customizing the  service binding logic.
+    /// Note: this method is part of an experimental API that can change or be removed without any prior notice.</summary>
+    /// <param name="serviceBinder">Service methods will be bound by calling <c>AddMethod</c> on this object.</param>
+    /// <param name="serviceImpl">An object implementing the server-side handling logic.</param>
+    public static void BindService(grpc::ServiceBinderBase serviceBinder, AssetServiceBase serviceImpl)
+    {
+      serviceBinder.AddMethod(__Method_ExportAssets, serviceImpl == null ? null : new grpc::UnaryServerMethod<global::Google.Cloud.Asset.V1Beta1.ExportAssetsRequest, global::Google.LongRunning.Operation>(serviceImpl.ExportAssets));
+      serviceBinder.AddMethod(__Method_BatchGetAssetsHistory, serviceImpl == null ? null : new grpc::UnaryServerMethod<global::Google.Cloud.Asset.V1Beta1.BatchGetAssetsHistoryRequest, global::Google.Cloud.Asset.V1Beta1.BatchGetAssetsHistoryResponse>(serviceImpl.BatchGetAssetsHistory));
     }
 
   }

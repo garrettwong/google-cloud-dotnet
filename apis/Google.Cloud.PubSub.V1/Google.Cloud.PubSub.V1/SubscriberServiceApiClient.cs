@@ -1,4 +1,4 @@
-// Copyright 2018 Google LLC
+// Copyright 2019 Google LLC
 //
 // Licensed under the Apache License, Version 2.0 (the "License");
 // you may not use this file except in compliance with the License.
@@ -82,38 +82,43 @@ namespace Google.Cloud.PubSub.V1
         /// <remarks>
         /// The eligible RPC <see cref="grpccore::StatusCode"/>s for retry for "Idempotent" RPC methods are:
         /// <list type="bullet">
-        /// <item><description><see cref="grpccore::StatusCode.DeadlineExceeded"/></description></item>
+        /// <item><description><see cref="grpccore::StatusCode.Aborted"/></description></item>
         /// <item><description><see cref="grpccore::StatusCode.Unavailable"/></description></item>
+        /// <item><description><see cref="grpccore::StatusCode.Unknown"/></description></item>
         /// </list>
         /// </remarks>
         public static sys::Predicate<grpccore::RpcException> IdempotentRetryFilter { get; } =
-            gaxgrpc::RetrySettings.FilterForStatusCodes(grpccore::StatusCode.DeadlineExceeded, grpccore::StatusCode.Unavailable);
-
-        /// <summary>
-        /// The filter specifying which RPC <see cref="grpccore::StatusCode"/>s are eligible for retry
-        /// for "Pull" <see cref="SubscriberServiceApiClient"/> RPC methods.
-        /// </summary>
-        /// <remarks>
-        /// The eligible RPC <see cref="grpccore::StatusCode"/>s for retry for "Pull" RPC methods are:
-        /// <list type="bullet">
-        /// <item><description><see cref="grpccore::StatusCode.DeadlineExceeded"/></description></item>
-        /// <item><description><see cref="grpccore::StatusCode.Internal"/></description></item>
-        /// <item><description><see cref="grpccore::StatusCode.ResourceExhausted"/></description></item>
-        /// <item><description><see cref="grpccore::StatusCode.Unavailable"/></description></item>
-        /// </list>
-        /// </remarks>
-        public static sys::Predicate<grpccore::RpcException> PullRetryFilter { get; } =
-            gaxgrpc::RetrySettings.FilterForStatusCodes(grpccore::StatusCode.DeadlineExceeded, grpccore::StatusCode.Internal, grpccore::StatusCode.ResourceExhausted, grpccore::StatusCode.Unavailable);
+            gaxgrpc::RetrySettings.FilterForStatusCodes(grpccore::StatusCode.Aborted, grpccore::StatusCode.Unavailable, grpccore::StatusCode.Unknown);
 
         /// <summary>
         /// The filter specifying which RPC <see cref="grpccore::StatusCode"/>s are eligible for retry
         /// for "NonIdempotent" <see cref="SubscriberServiceApiClient"/> RPC methods.
         /// </summary>
         /// <remarks>
-        /// There are no RPC <see cref="grpccore::StatusCode"/>s eligible for retry for "NonIdempotent" RPC methods.
+        /// The eligible RPC <see cref="grpccore::StatusCode"/>s for retry for "NonIdempotent" RPC methods are:
+        /// <list type="bullet">
+        /// <item><description><see cref="grpccore::StatusCode.Unavailable"/></description></item>
+        /// </list>
         /// </remarks>
         public static sys::Predicate<grpccore::RpcException> NonIdempotentRetryFilter { get; } =
-            gaxgrpc::RetrySettings.FilterForStatusCodes();
+            gaxgrpc::RetrySettings.FilterForStatusCodes(grpccore::StatusCode.Unavailable);
+
+        /// <summary>
+        /// The filter specifying which RPC <see cref="grpccore::StatusCode"/>s are eligible for retry
+        /// for "StreamingPull" <see cref="SubscriberServiceApiClient"/> RPC methods.
+        /// </summary>
+        /// <remarks>
+        /// The eligible RPC <see cref="grpccore::StatusCode"/>s for retry for "StreamingPull" RPC methods are:
+        /// <list type="bullet">
+        /// <item><description><see cref="grpccore::StatusCode.Aborted"/></description></item>
+        /// <item><description><see cref="grpccore::StatusCode.DeadlineExceeded"/></description></item>
+        /// <item><description><see cref="grpccore::StatusCode.Internal"/></description></item>
+        /// <item><description><see cref="grpccore::StatusCode.ResourceExhausted"/></description></item>
+        /// <item><description><see cref="grpccore::StatusCode.Unavailable"/></description></item>
+        /// </list>
+        /// </remarks>
+        public static sys::Predicate<grpccore::RpcException> StreamingPullRetryFilter { get; } =
+            gaxgrpc::RetrySettings.FilterForStatusCodes(grpccore::StatusCode.Aborted, grpccore::StatusCode.DeadlineExceeded, grpccore::StatusCode.Internal, grpccore::StatusCode.ResourceExhausted, grpccore::StatusCode.Unavailable);
 
         /// <summary>
         /// "Default" retry backoff for <see cref="SubscriberServiceApiClient"/> RPC methods.
@@ -184,15 +189,15 @@ namespace Google.Cloud.PubSub.V1
         /// <remarks>
         /// The "Messaging" timeout backoff for <see cref="SubscriberServiceApiClient"/> RPC methods is defined as:
         /// <list type="bullet">
-        /// <item><description>Initial timeout: 12000 milliseconds</description></item>
-        /// <item><description>Timeout multiplier: 1.0</description></item>
-        /// <item><description>Maximum timeout: 12000 milliseconds</description></item>
+        /// <item><description>Initial timeout: 5000 milliseconds</description></item>
+        /// <item><description>Timeout multiplier: 1.3</description></item>
+        /// <item><description>Maximum timeout: 600000 milliseconds</description></item>
         /// </list>
         /// </remarks>
         public static gaxgrpc::BackoffSettings GetMessagingTimeoutBackoff() => new gaxgrpc::BackoffSettings(
-            delay: sys::TimeSpan.FromMilliseconds(12000),
-            maxDelay: sys::TimeSpan.FromMilliseconds(12000),
-            delayMultiplier: 1.0
+            delay: sys::TimeSpan.FromMilliseconds(5000),
+            maxDelay: sys::TimeSpan.FromMilliseconds(600000),
+            delayMultiplier: 1.3
         );
 
         /// <summary>
@@ -252,8 +257,9 @@ namespace Google.Cloud.PubSub.V1
         /// </list>
         /// Retry will be attempted on the following response status codes:
         /// <list>
-        /// <item><description><see cref="grpccore::StatusCode.DeadlineExceeded"/></description></item>
+        /// <item><description><see cref="grpccore::StatusCode.Aborted"/></description></item>
         /// <item><description><see cref="grpccore::StatusCode.Unavailable"/></description></item>
+        /// <item><description><see cref="grpccore::StatusCode.Unknown"/></description></item>
         /// </list>
         /// Default RPC expiration is 600000 milliseconds.
         /// </remarks>
@@ -282,8 +288,9 @@ namespace Google.Cloud.PubSub.V1
         /// </list>
         /// Retry will be attempted on the following response status codes:
         /// <list>
-        /// <item><description><see cref="grpccore::StatusCode.DeadlineExceeded"/></description></item>
+        /// <item><description><see cref="grpccore::StatusCode.Aborted"/></description></item>
         /// <item><description><see cref="grpccore::StatusCode.Unavailable"/></description></item>
+        /// <item><description><see cref="grpccore::StatusCode.Unknown"/></description></item>
         /// </list>
         /// Default RPC expiration is 600000 milliseconds.
         /// </remarks>
@@ -312,7 +319,6 @@ namespace Google.Cloud.PubSub.V1
         /// </list>
         /// Retry will be attempted on the following response status codes:
         /// <list>
-        /// <item><description><see cref="grpccore::StatusCode.DeadlineExceeded"/></description></item>
         /// <item><description><see cref="grpccore::StatusCode.Unavailable"/></description></item>
         /// </list>
         /// Default RPC expiration is 600000 milliseconds.
@@ -322,7 +328,7 @@ namespace Google.Cloud.PubSub.V1
                 retryBackoff: GetDefaultRetryBackoff(),
                 timeoutBackoff: GetDefaultTimeoutBackoff(),
                 totalExpiration: gax::Expiration.FromTimeout(sys::TimeSpan.FromMilliseconds(600000)),
-                retryFilter: IdempotentRetryFilter
+                retryFilter: NonIdempotentRetryFilter
             )));
 
         /// <summary>
@@ -342,8 +348,9 @@ namespace Google.Cloud.PubSub.V1
         /// </list>
         /// Retry will be attempted on the following response status codes:
         /// <list>
-        /// <item><description><see cref="grpccore::StatusCode.DeadlineExceeded"/></description></item>
+        /// <item><description><see cref="grpccore::StatusCode.Aborted"/></description></item>
         /// <item><description><see cref="grpccore::StatusCode.Unavailable"/></description></item>
+        /// <item><description><see cref="grpccore::StatusCode.Unknown"/></description></item>
         /// </list>
         /// Default RPC expiration is 600000 milliseconds.
         /// </remarks>
@@ -372,7 +379,6 @@ namespace Google.Cloud.PubSub.V1
         /// </list>
         /// Retry will be attempted on the following response status codes:
         /// <list>
-        /// <item><description><see cref="grpccore::StatusCode.DeadlineExceeded"/></description></item>
         /// <item><description><see cref="grpccore::StatusCode.Unavailable"/></description></item>
         /// </list>
         /// Default RPC expiration is 600000 milliseconds.
@@ -382,7 +388,7 @@ namespace Google.Cloud.PubSub.V1
                 retryBackoff: GetDefaultRetryBackoff(),
                 timeoutBackoff: GetDefaultTimeoutBackoff(),
                 totalExpiration: gax::Expiration.FromTimeout(sys::TimeSpan.FromMilliseconds(600000)),
-                retryFilter: IdempotentRetryFilter
+                retryFilter: NonIdempotentRetryFilter
             )));
 
         /// <summary>
@@ -402,7 +408,7 @@ namespace Google.Cloud.PubSub.V1
         /// </list>
         /// Retry will be attempted on the following response status codes:
         /// <list>
-        /// <item><description>No status codes</description></item>
+        /// <item><description><see cref="grpccore::StatusCode.Unavailable"/></description></item>
         /// </list>
         /// Default RPC expiration is 600000 milliseconds.
         /// </remarks>
@@ -425,13 +431,12 @@ namespace Google.Cloud.PubSub.V1
         /// <item><description>Initial retry delay: 100 milliseconds</description></item>
         /// <item><description>Retry delay multiplier: 1.3</description></item>
         /// <item><description>Retry maximum delay: 60000 milliseconds</description></item>
-        /// <item><description>Initial timeout: 12000 milliseconds</description></item>
-        /// <item><description>Timeout multiplier: 1.0</description></item>
-        /// <item><description>Timeout maximum delay: 12000 milliseconds</description></item>
+        /// <item><description>Initial timeout: 5000 milliseconds</description></item>
+        /// <item><description>Timeout multiplier: 1.3</description></item>
+        /// <item><description>Timeout maximum delay: 600000 milliseconds</description></item>
         /// </list>
         /// Retry will be attempted on the following response status codes:
         /// <list>
-        /// <item><description><see cref="grpccore::StatusCode.DeadlineExceeded"/></description></item>
         /// <item><description><see cref="grpccore::StatusCode.Unavailable"/></description></item>
         /// </list>
         /// Default RPC expiration is 600000 milliseconds.
@@ -441,7 +446,7 @@ namespace Google.Cloud.PubSub.V1
                 retryBackoff: GetMessagingRetryBackoff(),
                 timeoutBackoff: GetMessagingTimeoutBackoff(),
                 totalExpiration: gax::Expiration.FromTimeout(sys::TimeSpan.FromMilliseconds(600000)),
-                retryFilter: IdempotentRetryFilter
+                retryFilter: NonIdempotentRetryFilter
             )));
 
         /// <summary>
@@ -455,16 +460,15 @@ namespace Google.Cloud.PubSub.V1
         /// <item><description>Initial retry delay: 100 milliseconds</description></item>
         /// <item><description>Retry delay multiplier: 1.3</description></item>
         /// <item><description>Retry maximum delay: 60000 milliseconds</description></item>
-        /// <item><description>Initial timeout: 12000 milliseconds</description></item>
-        /// <item><description>Timeout multiplier: 1.0</description></item>
-        /// <item><description>Timeout maximum delay: 12000 milliseconds</description></item>
+        /// <item><description>Initial timeout: 5000 milliseconds</description></item>
+        /// <item><description>Timeout multiplier: 1.3</description></item>
+        /// <item><description>Timeout maximum delay: 600000 milliseconds</description></item>
         /// </list>
         /// Retry will be attempted on the following response status codes:
         /// <list>
-        /// <item><description><see cref="grpccore::StatusCode.DeadlineExceeded"/></description></item>
-        /// <item><description><see cref="grpccore::StatusCode.Internal"/></description></item>
-        /// <item><description><see cref="grpccore::StatusCode.ResourceExhausted"/></description></item>
+        /// <item><description><see cref="grpccore::StatusCode.Aborted"/></description></item>
         /// <item><description><see cref="grpccore::StatusCode.Unavailable"/></description></item>
+        /// <item><description><see cref="grpccore::StatusCode.Unknown"/></description></item>
         /// </list>
         /// Default RPC expiration is 600000 milliseconds.
         /// </remarks>
@@ -473,7 +477,7 @@ namespace Google.Cloud.PubSub.V1
                 retryBackoff: GetMessagingRetryBackoff(),
                 timeoutBackoff: GetMessagingTimeoutBackoff(),
                 totalExpiration: gax::Expiration.FromTimeout(sys::TimeSpan.FromMilliseconds(600000)),
-                retryFilter: PullRetryFilter
+                retryFilter: IdempotentRetryFilter
             )));
 
         /// <summary>
@@ -512,7 +516,7 @@ namespace Google.Cloud.PubSub.V1
         /// </list>
         /// Retry will be attempted on the following response status codes:
         /// <list>
-        /// <item><description>No status codes</description></item>
+        /// <item><description><see cref="grpccore::StatusCode.Unavailable"/></description></item>
         /// </list>
         /// Default RPC expiration is 600000 milliseconds.
         /// </remarks>
@@ -541,8 +545,9 @@ namespace Google.Cloud.PubSub.V1
         /// </list>
         /// Retry will be attempted on the following response status codes:
         /// <list>
-        /// <item><description><see cref="grpccore::StatusCode.DeadlineExceeded"/></description></item>
+        /// <item><description><see cref="grpccore::StatusCode.Aborted"/></description></item>
         /// <item><description><see cref="grpccore::StatusCode.Unavailable"/></description></item>
+        /// <item><description><see cref="grpccore::StatusCode.Unknown"/></description></item>
         /// </list>
         /// Default RPC expiration is 600000 milliseconds.
         /// </remarks>
@@ -571,7 +576,6 @@ namespace Google.Cloud.PubSub.V1
         /// </list>
         /// Retry will be attempted on the following response status codes:
         /// <list>
-        /// <item><description><see cref="grpccore::StatusCode.DeadlineExceeded"/></description></item>
         /// <item><description><see cref="grpccore::StatusCode.Unavailable"/></description></item>
         /// </list>
         /// Default RPC expiration is 600000 milliseconds.
@@ -581,7 +585,7 @@ namespace Google.Cloud.PubSub.V1
                 retryBackoff: GetDefaultRetryBackoff(),
                 timeoutBackoff: GetDefaultTimeoutBackoff(),
                 totalExpiration: gax::Expiration.FromTimeout(sys::TimeSpan.FromMilliseconds(600000)),
-                retryFilter: IdempotentRetryFilter
+                retryFilter: NonIdempotentRetryFilter
             )));
 
         /// <summary>
@@ -601,7 +605,6 @@ namespace Google.Cloud.PubSub.V1
         /// </list>
         /// Retry will be attempted on the following response status codes:
         /// <list>
-        /// <item><description><see cref="grpccore::StatusCode.DeadlineExceeded"/></description></item>
         /// <item><description><see cref="grpccore::StatusCode.Unavailable"/></description></item>
         /// </list>
         /// Default RPC expiration is 600000 milliseconds.
@@ -611,7 +614,7 @@ namespace Google.Cloud.PubSub.V1
                 retryBackoff: GetDefaultRetryBackoff(),
                 timeoutBackoff: GetDefaultTimeoutBackoff(),
                 totalExpiration: gax::Expiration.FromTimeout(sys::TimeSpan.FromMilliseconds(600000)),
-                retryFilter: IdempotentRetryFilter
+                retryFilter: NonIdempotentRetryFilter
             )));
 
         /// <summary>
@@ -631,7 +634,6 @@ namespace Google.Cloud.PubSub.V1
         /// </list>
         /// Retry will be attempted on the following response status codes:
         /// <list>
-        /// <item><description><see cref="grpccore::StatusCode.DeadlineExceeded"/></description></item>
         /// <item><description><see cref="grpccore::StatusCode.Unavailable"/></description></item>
         /// </list>
         /// Default RPC expiration is 600000 milliseconds.
@@ -641,7 +643,7 @@ namespace Google.Cloud.PubSub.V1
                 retryBackoff: GetDefaultRetryBackoff(),
                 timeoutBackoff: GetDefaultTimeoutBackoff(),
                 totalExpiration: gax::Expiration.FromTimeout(sys::TimeSpan.FromMilliseconds(600000)),
-                retryFilter: IdempotentRetryFilter
+                retryFilter: NonIdempotentRetryFilter
             )));
 
         /// <summary>
@@ -661,7 +663,9 @@ namespace Google.Cloud.PubSub.V1
         /// </list>
         /// Retry will be attempted on the following response status codes:
         /// <list>
-        /// <item><description>No status codes</description></item>
+        /// <item><description><see cref="grpccore::StatusCode.Aborted"/></description></item>
+        /// <item><description><see cref="grpccore::StatusCode.Unavailable"/></description></item>
+        /// <item><description><see cref="grpccore::StatusCode.Unknown"/></description></item>
         /// </list>
         /// Default RPC expiration is 600000 milliseconds.
         /// </remarks>
@@ -670,7 +674,7 @@ namespace Google.Cloud.PubSub.V1
                 retryBackoff: GetDefaultRetryBackoff(),
                 timeoutBackoff: GetDefaultTimeoutBackoff(),
                 totalExpiration: gax::Expiration.FromTimeout(sys::TimeSpan.FromMilliseconds(600000)),
-                retryFilter: NonIdempotentRetryFilter
+                retryFilter: IdempotentRetryFilter
             )));
 
         /// <summary>
@@ -690,7 +694,7 @@ namespace Google.Cloud.PubSub.V1
         /// </list>
         /// Retry will be attempted on the following response status codes:
         /// <list>
-        /// <item><description>No status codes</description></item>
+        /// <item><description><see cref="grpccore::StatusCode.Unavailable"/></description></item>
         /// </list>
         /// Default RPC expiration is 600000 milliseconds.
         /// </remarks>
@@ -719,8 +723,9 @@ namespace Google.Cloud.PubSub.V1
         /// </list>
         /// Retry will be attempted on the following response status codes:
         /// <list>
-        /// <item><description><see cref="grpccore::StatusCode.DeadlineExceeded"/></description></item>
+        /// <item><description><see cref="grpccore::StatusCode.Aborted"/></description></item>
         /// <item><description><see cref="grpccore::StatusCode.Unavailable"/></description></item>
+        /// <item><description><see cref="grpccore::StatusCode.Unknown"/></description></item>
         /// </list>
         /// Default RPC expiration is 600000 milliseconds.
         /// </remarks>
@@ -749,7 +754,7 @@ namespace Google.Cloud.PubSub.V1
         /// </list>
         /// Retry will be attempted on the following response status codes:
         /// <list>
-        /// <item><description>No status codes</description></item>
+        /// <item><description><see cref="grpccore::StatusCode.Unavailable"/></description></item>
         /// </list>
         /// Default RPC expiration is 600000 milliseconds.
         /// </remarks>
@@ -766,6 +771,42 @@ namespace Google.Cloud.PubSub.V1
         /// </summary>
         /// <returns>A deep clone of this <see cref="SubscriberServiceApiSettings"/> object.</returns>
         public SubscriberServiceApiSettings Clone() => new SubscriberServiceApiSettings(this);
+    }
+
+    /// <summary>
+    /// Builder class for <see cref="SubscriberServiceApiClient"/> to provide simple configuration of credentials, endpoint etc.
+    /// </summary>
+    public sealed partial class SubscriberServiceApiClientBuilder : gaxgrpc::ClientBuilderBase<SubscriberServiceApiClient>
+    {
+        /// <summary>
+        /// The settings to use for RPCs, or null for the default settings.
+        /// </summary>
+        public SubscriberServiceApiSettings Settings { get; set; }
+
+        /// <inheritdoc/>
+        public override SubscriberServiceApiClient Build()
+        {
+            Validate();
+            grpccore::CallInvoker callInvoker = CreateCallInvoker();
+            return SubscriberServiceApiClient.Create(callInvoker, Settings);
+        }
+
+        /// <inheritdoc />
+        public override async stt::Task<SubscriberServiceApiClient> BuildAsync(st::CancellationToken cancellationToken = default)
+        {
+            Validate();
+            grpccore::CallInvoker callInvoker = await CreateCallInvokerAsync(cancellationToken).ConfigureAwait(false);
+            return SubscriberServiceApiClient.Create(callInvoker, Settings);
+        }
+
+        /// <inheritdoc />
+        protected override gaxgrpc::ServiceEndpoint GetDefaultEndpoint() => SubscriberServiceApiClient.DefaultEndpoint;
+
+        /// <inheritdoc />
+        protected override scg::IReadOnlyList<string> GetDefaultScopes() => SubscriberServiceApiClient.DefaultScopes;
+
+        /// <inheritdoc />
+        protected override gaxgrpc::ChannelPool GetChannelPool() => SubscriberServiceApiClient.ChannelPool;
     }
 
     /// <summary>
@@ -794,6 +835,8 @@ namespace Google.Cloud.PubSub.V1
         });
 
         private static readonly gaxgrpc::ChannelPool s_channelPool = new gaxgrpc::ChannelPool(DefaultScopes);
+
+        internal static gaxgrpc::ChannelPool ChannelPool => s_channelPool;
 
         /// <summary>
         /// Asynchronously creates a <see cref="SubscriberServiceApiClient"/>, applying defaults for all unspecified settings,
@@ -926,16 +969,18 @@ namespace Google.Cloud.PubSub.V1
 
         /// <summary>
         /// Creates a subscription to a given topic. See the
-        /// &lt;a href="/pubsub/docs/admin#resource_names"&gt; resource name rules&lt;/a&gt;.
+        /// &lt;a href="https://cloud.google.com/pubsub/docs/admin#resource_names"&gt;
+        /// resource name rules&lt;/a&gt;.
         /// If the subscription already exists, returns `ALREADY_EXISTS`.
         /// If the corresponding topic doesn't exist, returns `NOT_FOUND`.
         ///
         /// If the name is not provided in the request, the server will assign a random
         /// name for this subscription on the same project as the topic, conforming
         /// to the
-        /// [resource name format](https://cloud.google.com/pubsub/docs/overview#names).
-        /// The generated name is populated in the returned Subscription object.
-        /// Note that for REST API requests, you must specify a name in the request.
+        /// [resource name
+        /// format](https://cloud.google.com/pubsub/docs/admin#resource_names). The
+        /// generated name is populated in the returned Subscription object. Note that
+        /// for REST API requests, you must specify a name in the request.
         /// </summary>
         /// <param name="name">
         /// The name of the subscription. It must have the format
@@ -957,11 +1002,11 @@ namespace Google.Cloud.PubSub.V1
         /// will pull and ack messages using API methods.
         /// </param>
         /// <param name="ackDeadlineSeconds">
-        /// This value is the maximum time after a subscriber receives a message
-        /// before the subscriber should acknowledge the message. After message
-        /// delivery but before the ack deadline expires and before the message is
-        /// acknowledged, it is an outstanding message and will not be delivered
-        /// again during that time (on a best-effort basis).
+        /// The approximate amount of time (on a best-effort basis) Pub/Sub waits for
+        /// the subscriber to acknowledge receipt before resending the message. In the
+        /// interval after the message is delivered and before it is acknowledged, it
+        /// is considered to be &lt;i&gt;outstanding&lt;/i&gt;. During that time period, the
+        /// message will not be redelivered (on a best-effort basis).
         ///
         /// For pull subscriptions, this value is used as the initial value for the ack
         /// deadline. To override this value for a given message, call
@@ -1001,16 +1046,18 @@ namespace Google.Cloud.PubSub.V1
 
         /// <summary>
         /// Creates a subscription to a given topic. See the
-        /// &lt;a href="/pubsub/docs/admin#resource_names"&gt; resource name rules&lt;/a&gt;.
+        /// &lt;a href="https://cloud.google.com/pubsub/docs/admin#resource_names"&gt;
+        /// resource name rules&lt;/a&gt;.
         /// If the subscription already exists, returns `ALREADY_EXISTS`.
         /// If the corresponding topic doesn't exist, returns `NOT_FOUND`.
         ///
         /// If the name is not provided in the request, the server will assign a random
         /// name for this subscription on the same project as the topic, conforming
         /// to the
-        /// [resource name format](https://cloud.google.com/pubsub/docs/overview#names).
-        /// The generated name is populated in the returned Subscription object.
-        /// Note that for REST API requests, you must specify a name in the request.
+        /// [resource name
+        /// format](https://cloud.google.com/pubsub/docs/admin#resource_names). The
+        /// generated name is populated in the returned Subscription object. Note that
+        /// for REST API requests, you must specify a name in the request.
         /// </summary>
         /// <param name="name">
         /// The name of the subscription. It must have the format
@@ -1032,11 +1079,11 @@ namespace Google.Cloud.PubSub.V1
         /// will pull and ack messages using API methods.
         /// </param>
         /// <param name="ackDeadlineSeconds">
-        /// This value is the maximum time after a subscriber receives a message
-        /// before the subscriber should acknowledge the message. After message
-        /// delivery but before the ack deadline expires and before the message is
-        /// acknowledged, it is an outstanding message and will not be delivered
-        /// again during that time (on a best-effort basis).
+        /// The approximate amount of time (on a best-effort basis) Pub/Sub waits for
+        /// the subscriber to acknowledge receipt before resending the message. In the
+        /// interval after the message is delivered and before it is acknowledged, it
+        /// is considered to be &lt;i&gt;outstanding&lt;/i&gt;. During that time period, the
+        /// message will not be redelivered (on a best-effort basis).
         ///
         /// For pull subscriptions, this value is used as the initial value for the ack
         /// deadline. To override this value for a given message, call
@@ -1073,16 +1120,18 @@ namespace Google.Cloud.PubSub.V1
 
         /// <summary>
         /// Creates a subscription to a given topic. See the
-        /// &lt;a href="/pubsub/docs/admin#resource_names"&gt; resource name rules&lt;/a&gt;.
+        /// &lt;a href="https://cloud.google.com/pubsub/docs/admin#resource_names"&gt;
+        /// resource name rules&lt;/a&gt;.
         /// If the subscription already exists, returns `ALREADY_EXISTS`.
         /// If the corresponding topic doesn't exist, returns `NOT_FOUND`.
         ///
         /// If the name is not provided in the request, the server will assign a random
         /// name for this subscription on the same project as the topic, conforming
         /// to the
-        /// [resource name format](https://cloud.google.com/pubsub/docs/overview#names).
-        /// The generated name is populated in the returned Subscription object.
-        /// Note that for REST API requests, you must specify a name in the request.
+        /// [resource name
+        /// format](https://cloud.google.com/pubsub/docs/admin#resource_names). The
+        /// generated name is populated in the returned Subscription object. Note that
+        /// for REST API requests, you must specify a name in the request.
         /// </summary>
         /// <param name="name">
         /// The name of the subscription. It must have the format
@@ -1104,11 +1153,11 @@ namespace Google.Cloud.PubSub.V1
         /// will pull and ack messages using API methods.
         /// </param>
         /// <param name="ackDeadlineSeconds">
-        /// This value is the maximum time after a subscriber receives a message
-        /// before the subscriber should acknowledge the message. After message
-        /// delivery but before the ack deadline expires and before the message is
-        /// acknowledged, it is an outstanding message and will not be delivered
-        /// again during that time (on a best-effort basis).
+        /// The approximate amount of time (on a best-effort basis) Pub/Sub waits for
+        /// the subscriber to acknowledge receipt before resending the message. In the
+        /// interval after the message is delivered and before it is acknowledged, it
+        /// is considered to be &lt;i&gt;outstanding&lt;/i&gt;. During that time period, the
+        /// message will not be redelivered (on a best-effort basis).
         ///
         /// For pull subscriptions, this value is used as the initial value for the ack
         /// deadline. To override this value for a given message, call
@@ -1148,16 +1197,246 @@ namespace Google.Cloud.PubSub.V1
 
         /// <summary>
         /// Creates a subscription to a given topic. See the
-        /// &lt;a href="/pubsub/docs/admin#resource_names"&gt; resource name rules&lt;/a&gt;.
+        /// &lt;a href="https://cloud.google.com/pubsub/docs/admin#resource_names"&gt;
+        /// resource name rules&lt;/a&gt;.
         /// If the subscription already exists, returns `ALREADY_EXISTS`.
         /// If the corresponding topic doesn't exist, returns `NOT_FOUND`.
         ///
         /// If the name is not provided in the request, the server will assign a random
         /// name for this subscription on the same project as the topic, conforming
         /// to the
-        /// [resource name format](https://cloud.google.com/pubsub/docs/overview#names).
-        /// The generated name is populated in the returned Subscription object.
-        /// Note that for REST API requests, you must specify a name in the request.
+        /// [resource name
+        /// format](https://cloud.google.com/pubsub/docs/admin#resource_names). The
+        /// generated name is populated in the returned Subscription object. Note that
+        /// for REST API requests, you must specify a name in the request.
+        /// </summary>
+        /// <param name="name">
+        /// The name of the subscription. It must have the format
+        /// `"projects/{project}/subscriptions/{subscription}"`. `{subscription}` must
+        /// start with a letter, and contain only letters (`[A-Za-z]`), numbers
+        /// (`[0-9]`), dashes (`-`), underscores (`_`), periods (`.`), tildes (`~`),
+        /// plus (`+`) or percent signs (`%`). It must be between 3 and 255 characters
+        /// in length, and it must not start with `"goog"`
+        /// </param>
+        /// <param name="topic">
+        /// The name of the topic from which this subscription is receiving messages.
+        /// Format is `projects/{project}/topics/{topic}`.
+        /// The value of this field will be `_deleted-topic_` if the topic has been
+        /// deleted.
+        /// </param>
+        /// <param name="pushConfig">
+        /// If push delivery is used with this subscription, this field is
+        /// used to configure it. An empty `pushConfig` signifies that the subscriber
+        /// will pull and ack messages using API methods.
+        /// </param>
+        /// <param name="ackDeadlineSeconds">
+        /// The approximate amount of time (on a best-effort basis) Pub/Sub waits for
+        /// the subscriber to acknowledge receipt before resending the message. In the
+        /// interval after the message is delivered and before it is acknowledged, it
+        /// is considered to be &lt;i&gt;outstanding&lt;/i&gt;. During that time period, the
+        /// message will not be redelivered (on a best-effort basis).
+        ///
+        /// For pull subscriptions, this value is used as the initial value for the ack
+        /// deadline. To override this value for a given message, call
+        /// `ModifyAckDeadline` with the corresponding `ack_id` if using
+        /// non-streaming pull or send the `ack_id` in a
+        /// `StreamingModifyAckDeadlineRequest` if using streaming pull.
+        /// The minimum custom deadline you can specify is 10 seconds.
+        /// The maximum custom deadline you can specify is 600 seconds (10 minutes).
+        /// If this parameter is 0, a default value of 10 seconds is used.
+        ///
+        /// For push delivery, this value is also used to set the request timeout for
+        /// the call to the push endpoint.
+        ///
+        /// If the subscriber never acknowledges the message, the Pub/Sub
+        /// system will eventually redeliver the message.
+        /// </param>
+        /// <param name="callSettings">
+        /// If not null, applies overrides to this RPC call.
+        /// </param>
+        /// <returns>
+        /// A Task containing the RPC response.
+        /// </returns>
+        public virtual stt::Task<Subscription> CreateSubscriptionAsync(
+            string name,
+            string topic,
+            PushConfig pushConfig,
+            int? ackDeadlineSeconds,
+            gaxgrpc::CallSettings callSettings = null) => CreateSubscriptionAsync(
+                new Subscription
+                {
+                    Name = gax::GaxPreconditions.CheckNotNullOrEmpty(name, nameof(name)),
+                    Topic = gax::GaxPreconditions.CheckNotNullOrEmpty(topic, nameof(topic)),
+                    PushConfig = pushConfig, // Optional
+                    AckDeadlineSeconds = ackDeadlineSeconds ?? 0, // Optional
+                },
+                callSettings);
+
+        /// <summary>
+        /// Creates a subscription to a given topic. See the
+        /// &lt;a href="https://cloud.google.com/pubsub/docs/admin#resource_names"&gt;
+        /// resource name rules&lt;/a&gt;.
+        /// If the subscription already exists, returns `ALREADY_EXISTS`.
+        /// If the corresponding topic doesn't exist, returns `NOT_FOUND`.
+        ///
+        /// If the name is not provided in the request, the server will assign a random
+        /// name for this subscription on the same project as the topic, conforming
+        /// to the
+        /// [resource name
+        /// format](https://cloud.google.com/pubsub/docs/admin#resource_names). The
+        /// generated name is populated in the returned Subscription object. Note that
+        /// for REST API requests, you must specify a name in the request.
+        /// </summary>
+        /// <param name="name">
+        /// The name of the subscription. It must have the format
+        /// `"projects/{project}/subscriptions/{subscription}"`. `{subscription}` must
+        /// start with a letter, and contain only letters (`[A-Za-z]`), numbers
+        /// (`[0-9]`), dashes (`-`), underscores (`_`), periods (`.`), tildes (`~`),
+        /// plus (`+`) or percent signs (`%`). It must be between 3 and 255 characters
+        /// in length, and it must not start with `"goog"`
+        /// </param>
+        /// <param name="topic">
+        /// The name of the topic from which this subscription is receiving messages.
+        /// Format is `projects/{project}/topics/{topic}`.
+        /// The value of this field will be `_deleted-topic_` if the topic has been
+        /// deleted.
+        /// </param>
+        /// <param name="pushConfig">
+        /// If push delivery is used with this subscription, this field is
+        /// used to configure it. An empty `pushConfig` signifies that the subscriber
+        /// will pull and ack messages using API methods.
+        /// </param>
+        /// <param name="ackDeadlineSeconds">
+        /// The approximate amount of time (on a best-effort basis) Pub/Sub waits for
+        /// the subscriber to acknowledge receipt before resending the message. In the
+        /// interval after the message is delivered and before it is acknowledged, it
+        /// is considered to be &lt;i&gt;outstanding&lt;/i&gt;. During that time period, the
+        /// message will not be redelivered (on a best-effort basis).
+        ///
+        /// For pull subscriptions, this value is used as the initial value for the ack
+        /// deadline. To override this value for a given message, call
+        /// `ModifyAckDeadline` with the corresponding `ack_id` if using
+        /// non-streaming pull or send the `ack_id` in a
+        /// `StreamingModifyAckDeadlineRequest` if using streaming pull.
+        /// The minimum custom deadline you can specify is 10 seconds.
+        /// The maximum custom deadline you can specify is 600 seconds (10 minutes).
+        /// If this parameter is 0, a default value of 10 seconds is used.
+        ///
+        /// For push delivery, this value is also used to set the request timeout for
+        /// the call to the push endpoint.
+        ///
+        /// If the subscriber never acknowledges the message, the Pub/Sub
+        /// system will eventually redeliver the message.
+        /// </param>
+        /// <param name="cancellationToken">
+        /// A <see cref="st::CancellationToken"/> to use for this RPC.
+        /// </param>
+        /// <returns>
+        /// A Task containing the RPC response.
+        /// </returns>
+        public virtual stt::Task<Subscription> CreateSubscriptionAsync(
+            string name,
+            string topic,
+            PushConfig pushConfig,
+            int? ackDeadlineSeconds,
+            st::CancellationToken cancellationToken) => CreateSubscriptionAsync(
+                name,
+                topic,
+                pushConfig,
+                ackDeadlineSeconds,
+                gaxgrpc::CallSettings.FromCancellationToken(cancellationToken));
+
+        /// <summary>
+        /// Creates a subscription to a given topic. See the
+        /// &lt;a href="https://cloud.google.com/pubsub/docs/admin#resource_names"&gt;
+        /// resource name rules&lt;/a&gt;.
+        /// If the subscription already exists, returns `ALREADY_EXISTS`.
+        /// If the corresponding topic doesn't exist, returns `NOT_FOUND`.
+        ///
+        /// If the name is not provided in the request, the server will assign a random
+        /// name for this subscription on the same project as the topic, conforming
+        /// to the
+        /// [resource name
+        /// format](https://cloud.google.com/pubsub/docs/admin#resource_names). The
+        /// generated name is populated in the returned Subscription object. Note that
+        /// for REST API requests, you must specify a name in the request.
+        /// </summary>
+        /// <param name="name">
+        /// The name of the subscription. It must have the format
+        /// `"projects/{project}/subscriptions/{subscription}"`. `{subscription}` must
+        /// start with a letter, and contain only letters (`[A-Za-z]`), numbers
+        /// (`[0-9]`), dashes (`-`), underscores (`_`), periods (`.`), tildes (`~`),
+        /// plus (`+`) or percent signs (`%`). It must be between 3 and 255 characters
+        /// in length, and it must not start with `"goog"`
+        /// </param>
+        /// <param name="topic">
+        /// The name of the topic from which this subscription is receiving messages.
+        /// Format is `projects/{project}/topics/{topic}`.
+        /// The value of this field will be `_deleted-topic_` if the topic has been
+        /// deleted.
+        /// </param>
+        /// <param name="pushConfig">
+        /// If push delivery is used with this subscription, this field is
+        /// used to configure it. An empty `pushConfig` signifies that the subscriber
+        /// will pull and ack messages using API methods.
+        /// </param>
+        /// <param name="ackDeadlineSeconds">
+        /// The approximate amount of time (on a best-effort basis) Pub/Sub waits for
+        /// the subscriber to acknowledge receipt before resending the message. In the
+        /// interval after the message is delivered and before it is acknowledged, it
+        /// is considered to be &lt;i&gt;outstanding&lt;/i&gt;. During that time period, the
+        /// message will not be redelivered (on a best-effort basis).
+        ///
+        /// For pull subscriptions, this value is used as the initial value for the ack
+        /// deadline. To override this value for a given message, call
+        /// `ModifyAckDeadline` with the corresponding `ack_id` if using
+        /// non-streaming pull or send the `ack_id` in a
+        /// `StreamingModifyAckDeadlineRequest` if using streaming pull.
+        /// The minimum custom deadline you can specify is 10 seconds.
+        /// The maximum custom deadline you can specify is 600 seconds (10 minutes).
+        /// If this parameter is 0, a default value of 10 seconds is used.
+        ///
+        /// For push delivery, this value is also used to set the request timeout for
+        /// the call to the push endpoint.
+        ///
+        /// If the subscriber never acknowledges the message, the Pub/Sub
+        /// system will eventually redeliver the message.
+        /// </param>
+        /// <param name="callSettings">
+        /// If not null, applies overrides to this RPC call.
+        /// </param>
+        /// <returns>
+        /// The RPC response.
+        /// </returns>
+        public virtual Subscription CreateSubscription(
+            string name,
+            string topic,
+            PushConfig pushConfig,
+            int? ackDeadlineSeconds,
+            gaxgrpc::CallSettings callSettings = null) => CreateSubscription(
+                new Subscription
+                {
+                    Name = gax::GaxPreconditions.CheckNotNullOrEmpty(name, nameof(name)),
+                    Topic = gax::GaxPreconditions.CheckNotNullOrEmpty(topic, nameof(topic)),
+                    PushConfig = pushConfig, // Optional
+                    AckDeadlineSeconds = ackDeadlineSeconds ?? 0, // Optional
+                },
+                callSettings);
+
+        /// <summary>
+        /// Creates a subscription to a given topic. See the
+        /// &lt;a href="https://cloud.google.com/pubsub/docs/admin#resource_names"&gt;
+        /// resource name rules&lt;/a&gt;.
+        /// If the subscription already exists, returns `ALREADY_EXISTS`.
+        /// If the corresponding topic doesn't exist, returns `NOT_FOUND`.
+        ///
+        /// If the name is not provided in the request, the server will assign a random
+        /// name for this subscription on the same project as the topic, conforming
+        /// to the
+        /// [resource name
+        /// format](https://cloud.google.com/pubsub/docs/admin#resource_names). The
+        /// generated name is populated in the returned Subscription object. Note that
+        /// for REST API requests, you must specify a name in the request.
         /// </summary>
         /// <param name="request">
         /// The request object containing all of the parameters for the API call.
@@ -1177,16 +1456,18 @@ namespace Google.Cloud.PubSub.V1
 
         /// <summary>
         /// Creates a subscription to a given topic. See the
-        /// &lt;a href="/pubsub/docs/admin#resource_names"&gt; resource name rules&lt;/a&gt;.
+        /// &lt;a href="https://cloud.google.com/pubsub/docs/admin#resource_names"&gt;
+        /// resource name rules&lt;/a&gt;.
         /// If the subscription already exists, returns `ALREADY_EXISTS`.
         /// If the corresponding topic doesn't exist, returns `NOT_FOUND`.
         ///
         /// If the name is not provided in the request, the server will assign a random
         /// name for this subscription on the same project as the topic, conforming
         /// to the
-        /// [resource name format](https://cloud.google.com/pubsub/docs/overview#names).
-        /// The generated name is populated in the returned Subscription object.
-        /// Note that for REST API requests, you must specify a name in the request.
+        /// [resource name
+        /// format](https://cloud.google.com/pubsub/docs/admin#resource_names). The
+        /// generated name is populated in the returned Subscription object. Note that
+        /// for REST API requests, you must specify a name in the request.
         /// </summary>
         /// <param name="request">
         /// The request object containing all of the parameters for the API call.
@@ -1205,16 +1486,18 @@ namespace Google.Cloud.PubSub.V1
 
         /// <summary>
         /// Creates a subscription to a given topic. See the
-        /// &lt;a href="/pubsub/docs/admin#resource_names"&gt; resource name rules&lt;/a&gt;.
+        /// &lt;a href="https://cloud.google.com/pubsub/docs/admin#resource_names"&gt;
+        /// resource name rules&lt;/a&gt;.
         /// If the subscription already exists, returns `ALREADY_EXISTS`.
         /// If the corresponding topic doesn't exist, returns `NOT_FOUND`.
         ///
         /// If the name is not provided in the request, the server will assign a random
         /// name for this subscription on the same project as the topic, conforming
         /// to the
-        /// [resource name format](https://cloud.google.com/pubsub/docs/overview#names).
-        /// The generated name is populated in the returned Subscription object.
-        /// Note that for REST API requests, you must specify a name in the request.
+        /// [resource name
+        /// format](https://cloud.google.com/pubsub/docs/admin#resource_names). The
+        /// generated name is populated in the returned Subscription object. Note that
+        /// for REST API requests, you must specify a name in the request.
         /// </summary>
         /// <param name="request">
         /// The request object containing all of the parameters for the API call.
@@ -1292,6 +1575,69 @@ namespace Google.Cloud.PubSub.V1
                 new GetSubscriptionRequest
                 {
                     SubscriptionAsSubscriptionName = gax::GaxPreconditions.CheckNotNull(subscription, nameof(subscription)),
+                },
+                callSettings);
+
+        /// <summary>
+        /// Gets the configuration details of a subscription.
+        /// </summary>
+        /// <param name="subscription">
+        /// The name of the subscription to get.
+        /// Format is `projects/{project}/subscriptions/{sub}`.
+        /// </param>
+        /// <param name="callSettings">
+        /// If not null, applies overrides to this RPC call.
+        /// </param>
+        /// <returns>
+        /// A Task containing the RPC response.
+        /// </returns>
+        public virtual stt::Task<Subscription> GetSubscriptionAsync(
+            string subscription,
+            gaxgrpc::CallSettings callSettings = null) => GetSubscriptionAsync(
+                new GetSubscriptionRequest
+                {
+                    Subscription = gax::GaxPreconditions.CheckNotNullOrEmpty(subscription, nameof(subscription)),
+                },
+                callSettings);
+
+        /// <summary>
+        /// Gets the configuration details of a subscription.
+        /// </summary>
+        /// <param name="subscription">
+        /// The name of the subscription to get.
+        /// Format is `projects/{project}/subscriptions/{sub}`.
+        /// </param>
+        /// <param name="cancellationToken">
+        /// A <see cref="st::CancellationToken"/> to use for this RPC.
+        /// </param>
+        /// <returns>
+        /// A Task containing the RPC response.
+        /// </returns>
+        public virtual stt::Task<Subscription> GetSubscriptionAsync(
+            string subscription,
+            st::CancellationToken cancellationToken) => GetSubscriptionAsync(
+                subscription,
+                gaxgrpc::CallSettings.FromCancellationToken(cancellationToken));
+
+        /// <summary>
+        /// Gets the configuration details of a subscription.
+        /// </summary>
+        /// <param name="subscription">
+        /// The name of the subscription to get.
+        /// Format is `projects/{project}/subscriptions/{sub}`.
+        /// </param>
+        /// <param name="callSettings">
+        /// If not null, applies overrides to this RPC call.
+        /// </param>
+        /// <returns>
+        /// The RPC response.
+        /// </returns>
+        public virtual Subscription GetSubscription(
+            string subscription,
+            gaxgrpc::CallSettings callSettings = null) => GetSubscription(
+                new GetSubscriptionRequest
+                {
+                    Subscription = gax::GaxPreconditions.CheckNotNullOrEmpty(subscription, nameof(subscription)),
                 },
                 callSettings);
 
@@ -1481,6 +1827,74 @@ namespace Google.Cloud.PubSub.V1
         /// <summary>
         /// Lists matching subscriptions.
         /// </summary>
+        /// <param name="project">
+        /// The name of the project in which to list subscriptions.
+        /// Format is `projects/{project-id}`.
+        /// </param>
+        /// <param name="pageToken">
+        /// The token returned from the previous request.
+        /// A value of <c>null</c> or an empty string retrieves the first page.
+        /// </param>
+        /// <param name="pageSize">
+        /// The size of page to request. The response will not be larger than this, but may be smaller.
+        /// A value of <c>null</c> or 0 uses a server-defined page size.
+        /// </param>
+        /// <param name="callSettings">
+        /// If not null, applies overrides to this RPC call.
+        /// </param>
+        /// <returns>
+        /// A pageable asynchronous sequence of <see cref="Subscription"/> resources.
+        /// </returns>
+        public virtual gax::PagedAsyncEnumerable<ListSubscriptionsResponse, Subscription> ListSubscriptionsAsync(
+            string project,
+            string pageToken = null,
+            int? pageSize = null,
+            gaxgrpc::CallSettings callSettings = null) => ListSubscriptionsAsync(
+                new ListSubscriptionsRequest
+                {
+                    Project = gax::GaxPreconditions.CheckNotNullOrEmpty(project, nameof(project)),
+                    PageToken = pageToken ?? "",
+                    PageSize = pageSize ?? 0,
+                },
+                callSettings);
+
+        /// <summary>
+        /// Lists matching subscriptions.
+        /// </summary>
+        /// <param name="project">
+        /// The name of the project in which to list subscriptions.
+        /// Format is `projects/{project-id}`.
+        /// </param>
+        /// <param name="pageToken">
+        /// The token returned from the previous request.
+        /// A value of <c>null</c> or an empty string retrieves the first page.
+        /// </param>
+        /// <param name="pageSize">
+        /// The size of page to request. The response will not be larger than this, but may be smaller.
+        /// A value of <c>null</c> or 0 uses a server-defined page size.
+        /// </param>
+        /// <param name="callSettings">
+        /// If not null, applies overrides to this RPC call.
+        /// </param>
+        /// <returns>
+        /// A pageable sequence of <see cref="Subscription"/> resources.
+        /// </returns>
+        public virtual gax::PagedEnumerable<ListSubscriptionsResponse, Subscription> ListSubscriptions(
+            string project,
+            string pageToken = null,
+            int? pageSize = null,
+            gaxgrpc::CallSettings callSettings = null) => ListSubscriptions(
+                new ListSubscriptionsRequest
+                {
+                    Project = gax::GaxPreconditions.CheckNotNullOrEmpty(project, nameof(project)),
+                    PageToken = pageToken ?? "",
+                    PageSize = pageSize ?? 0,
+                },
+                callSettings);
+
+        /// <summary>
+        /// Lists matching subscriptions.
+        /// </summary>
         /// <param name="request">
         /// The request object containing all of the parameters for the API call.
         /// </param>
@@ -1595,6 +2009,78 @@ namespace Google.Cloud.PubSub.V1
         /// the same name, but the new one has no association with the old
         /// subscription or its topic unless the same topic is specified.
         /// </summary>
+        /// <param name="subscription">
+        /// The subscription to delete.
+        /// Format is `projects/{project}/subscriptions/{sub}`.
+        /// </param>
+        /// <param name="callSettings">
+        /// If not null, applies overrides to this RPC call.
+        /// </param>
+        /// <returns>
+        /// A Task that completes when the RPC has completed.
+        /// </returns>
+        public virtual stt::Task DeleteSubscriptionAsync(
+            string subscription,
+            gaxgrpc::CallSettings callSettings = null) => DeleteSubscriptionAsync(
+                new DeleteSubscriptionRequest
+                {
+                    Subscription = gax::GaxPreconditions.CheckNotNullOrEmpty(subscription, nameof(subscription)),
+                },
+                callSettings);
+
+        /// <summary>
+        /// Deletes an existing subscription. All messages retained in the subscription
+        /// are immediately dropped. Calls to `Pull` after deletion will return
+        /// `NOT_FOUND`. After a subscription is deleted, a new one may be created with
+        /// the same name, but the new one has no association with the old
+        /// subscription or its topic unless the same topic is specified.
+        /// </summary>
+        /// <param name="subscription">
+        /// The subscription to delete.
+        /// Format is `projects/{project}/subscriptions/{sub}`.
+        /// </param>
+        /// <param name="cancellationToken">
+        /// A <see cref="st::CancellationToken"/> to use for this RPC.
+        /// </param>
+        /// <returns>
+        /// A Task that completes when the RPC has completed.
+        /// </returns>
+        public virtual stt::Task DeleteSubscriptionAsync(
+            string subscription,
+            st::CancellationToken cancellationToken) => DeleteSubscriptionAsync(
+                subscription,
+                gaxgrpc::CallSettings.FromCancellationToken(cancellationToken));
+
+        /// <summary>
+        /// Deletes an existing subscription. All messages retained in the subscription
+        /// are immediately dropped. Calls to `Pull` after deletion will return
+        /// `NOT_FOUND`. After a subscription is deleted, a new one may be created with
+        /// the same name, but the new one has no association with the old
+        /// subscription or its topic unless the same topic is specified.
+        /// </summary>
+        /// <param name="subscription">
+        /// The subscription to delete.
+        /// Format is `projects/{project}/subscriptions/{sub}`.
+        /// </param>
+        /// <param name="callSettings">
+        /// If not null, applies overrides to this RPC call.
+        /// </param>
+        public virtual void DeleteSubscription(
+            string subscription,
+            gaxgrpc::CallSettings callSettings = null) => DeleteSubscription(
+                new DeleteSubscriptionRequest
+                {
+                    Subscription = gax::GaxPreconditions.CheckNotNullOrEmpty(subscription, nameof(subscription)),
+                },
+                callSettings);
+
+        /// <summary>
+        /// Deletes an existing subscription. All messages retained in the subscription
+        /// are immediately dropped. Calls to `Pull` after deletion will return
+        /// `NOT_FOUND`. After a subscription is deleted, a new one may be created with
+        /// the same name, but the new one has no association with the old
+        /// subscription or its topic unless the same topic is specified.
+        /// </summary>
         /// <param name="request">
         /// The request object containing all of the parameters for the API call.
         /// </param>
@@ -1671,8 +2157,9 @@ namespace Google.Cloud.PubSub.V1
         /// The new ack deadline with respect to the time this request was sent to
         /// the Pub/Sub system. For example, if the value is 10, the new
         /// ack deadline will expire 10 seconds after the `ModifyAckDeadline` call
-        /// was made. Specifying zero may immediately make the message available for
-        /// another pull request.
+        /// was made. Specifying zero might immediately make the message available for
+        /// delivery to another subscriber client. This typically results in an
+        /// increase in the rate of message redeliveries (that is, duplicates).
         /// The minimum deadline you can specify is 0 seconds.
         /// The maximum deadline you can specify is 600 seconds (10 minutes).
         /// </param>
@@ -1713,8 +2200,9 @@ namespace Google.Cloud.PubSub.V1
         /// The new ack deadline with respect to the time this request was sent to
         /// the Pub/Sub system. For example, if the value is 10, the new
         /// ack deadline will expire 10 seconds after the `ModifyAckDeadline` call
-        /// was made. Specifying zero may immediately make the message available for
-        /// another pull request.
+        /// was made. Specifying zero might immediately make the message available for
+        /// delivery to another subscriber client. This typically results in an
+        /// increase in the rate of message redeliveries (that is, duplicates).
         /// The minimum deadline you can specify is 0 seconds.
         /// The maximum deadline you can specify is 600 seconds (10 minutes).
         /// </param>
@@ -1752,8 +2240,9 @@ namespace Google.Cloud.PubSub.V1
         /// The new ack deadline with respect to the time this request was sent to
         /// the Pub/Sub system. For example, if the value is 10, the new
         /// ack deadline will expire 10 seconds after the `ModifyAckDeadline` call
-        /// was made. Specifying zero may immediately make the message available for
-        /// another pull request.
+        /// was made. Specifying zero might immediately make the message available for
+        /// delivery to another subscriber client. This typically results in an
+        /// increase in the rate of message redeliveries (that is, duplicates).
         /// The minimum deadline you can specify is 0 seconds.
         /// The maximum deadline you can specify is 600 seconds (10 minutes).
         /// </param>
@@ -1768,6 +2257,129 @@ namespace Google.Cloud.PubSub.V1
                 new ModifyAckDeadlineRequest
                 {
                     SubscriptionAsSubscriptionName = gax::GaxPreconditions.CheckNotNull(subscription, nameof(subscription)),
+                    AckIds = { gax::GaxPreconditions.CheckNotNull(ackIds, nameof(ackIds)) },
+                    AckDeadlineSeconds = ackDeadlineSeconds,
+                },
+                callSettings);
+
+        /// <summary>
+        /// Modifies the ack deadline for a specific message. This method is useful
+        /// to indicate that more time is needed to process a message by the
+        /// subscriber, or to make the message available for redelivery if the
+        /// processing was interrupted. Note that this does not modify the
+        /// subscription-level `ackDeadlineSeconds` used for subsequent messages.
+        /// </summary>
+        /// <param name="subscription">
+        /// The name of the subscription.
+        /// Format is `projects/{project}/subscriptions/{sub}`.
+        /// </param>
+        /// <param name="ackIds">
+        /// List of acknowledgment IDs.
+        /// </param>
+        /// <param name="ackDeadlineSeconds">
+        /// The new ack deadline with respect to the time this request was sent to
+        /// the Pub/Sub system. For example, if the value is 10, the new
+        /// ack deadline will expire 10 seconds after the `ModifyAckDeadline` call
+        /// was made. Specifying zero might immediately make the message available for
+        /// delivery to another subscriber client. This typically results in an
+        /// increase in the rate of message redeliveries (that is, duplicates).
+        /// The minimum deadline you can specify is 0 seconds.
+        /// The maximum deadline you can specify is 600 seconds (10 minutes).
+        /// </param>
+        /// <param name="callSettings">
+        /// If not null, applies overrides to this RPC call.
+        /// </param>
+        /// <returns>
+        /// A Task that completes when the RPC has completed.
+        /// </returns>
+        public virtual stt::Task ModifyAckDeadlineAsync(
+            string subscription,
+            scg::IEnumerable<string> ackIds,
+            int ackDeadlineSeconds,
+            gaxgrpc::CallSettings callSettings = null) => ModifyAckDeadlineAsync(
+                new ModifyAckDeadlineRequest
+                {
+                    Subscription = gax::GaxPreconditions.CheckNotNullOrEmpty(subscription, nameof(subscription)),
+                    AckIds = { gax::GaxPreconditions.CheckNotNull(ackIds, nameof(ackIds)) },
+                    AckDeadlineSeconds = ackDeadlineSeconds,
+                },
+                callSettings);
+
+        /// <summary>
+        /// Modifies the ack deadline for a specific message. This method is useful
+        /// to indicate that more time is needed to process a message by the
+        /// subscriber, or to make the message available for redelivery if the
+        /// processing was interrupted. Note that this does not modify the
+        /// subscription-level `ackDeadlineSeconds` used for subsequent messages.
+        /// </summary>
+        /// <param name="subscription">
+        /// The name of the subscription.
+        /// Format is `projects/{project}/subscriptions/{sub}`.
+        /// </param>
+        /// <param name="ackIds">
+        /// List of acknowledgment IDs.
+        /// </param>
+        /// <param name="ackDeadlineSeconds">
+        /// The new ack deadline with respect to the time this request was sent to
+        /// the Pub/Sub system. For example, if the value is 10, the new
+        /// ack deadline will expire 10 seconds after the `ModifyAckDeadline` call
+        /// was made. Specifying zero might immediately make the message available for
+        /// delivery to another subscriber client. This typically results in an
+        /// increase in the rate of message redeliveries (that is, duplicates).
+        /// The minimum deadline you can specify is 0 seconds.
+        /// The maximum deadline you can specify is 600 seconds (10 minutes).
+        /// </param>
+        /// <param name="cancellationToken">
+        /// A <see cref="st::CancellationToken"/> to use for this RPC.
+        /// </param>
+        /// <returns>
+        /// A Task that completes when the RPC has completed.
+        /// </returns>
+        public virtual stt::Task ModifyAckDeadlineAsync(
+            string subscription,
+            scg::IEnumerable<string> ackIds,
+            int ackDeadlineSeconds,
+            st::CancellationToken cancellationToken) => ModifyAckDeadlineAsync(
+                subscription,
+                ackIds,
+                ackDeadlineSeconds,
+                gaxgrpc::CallSettings.FromCancellationToken(cancellationToken));
+
+        /// <summary>
+        /// Modifies the ack deadline for a specific message. This method is useful
+        /// to indicate that more time is needed to process a message by the
+        /// subscriber, or to make the message available for redelivery if the
+        /// processing was interrupted. Note that this does not modify the
+        /// subscription-level `ackDeadlineSeconds` used for subsequent messages.
+        /// </summary>
+        /// <param name="subscription">
+        /// The name of the subscription.
+        /// Format is `projects/{project}/subscriptions/{sub}`.
+        /// </param>
+        /// <param name="ackIds">
+        /// List of acknowledgment IDs.
+        /// </param>
+        /// <param name="ackDeadlineSeconds">
+        /// The new ack deadline with respect to the time this request was sent to
+        /// the Pub/Sub system. For example, if the value is 10, the new
+        /// ack deadline will expire 10 seconds after the `ModifyAckDeadline` call
+        /// was made. Specifying zero might immediately make the message available for
+        /// delivery to another subscriber client. This typically results in an
+        /// increase in the rate of message redeliveries (that is, duplicates).
+        /// The minimum deadline you can specify is 0 seconds.
+        /// The maximum deadline you can specify is 600 seconds (10 minutes).
+        /// </param>
+        /// <param name="callSettings">
+        /// If not null, applies overrides to this RPC call.
+        /// </param>
+        public virtual void ModifyAckDeadline(
+            string subscription,
+            scg::IEnumerable<string> ackIds,
+            int ackDeadlineSeconds,
+            gaxgrpc::CallSettings callSettings = null) => ModifyAckDeadline(
+                new ModifyAckDeadlineRequest
+                {
+                    Subscription = gax::GaxPreconditions.CheckNotNullOrEmpty(subscription, nameof(subscription)),
                     AckIds = { gax::GaxPreconditions.CheckNotNull(ackIds, nameof(ackIds)) },
                     AckDeadlineSeconds = ackDeadlineSeconds,
                 },
@@ -1943,6 +2555,102 @@ namespace Google.Cloud.PubSub.V1
         /// but such a message may be redelivered later. Acknowledging a message more
         /// than once will not result in an error.
         /// </summary>
+        /// <param name="subscription">
+        /// The subscription whose message is being acknowledged.
+        /// Format is `projects/{project}/subscriptions/{sub}`.
+        /// </param>
+        /// <param name="ackIds">
+        /// The acknowledgment ID for the messages being acknowledged that was returned
+        /// by the Pub/Sub system in the `Pull` response. Must not be empty.
+        /// </param>
+        /// <param name="callSettings">
+        /// If not null, applies overrides to this RPC call.
+        /// </param>
+        /// <returns>
+        /// A Task that completes when the RPC has completed.
+        /// </returns>
+        public virtual stt::Task AcknowledgeAsync(
+            string subscription,
+            scg::IEnumerable<string> ackIds,
+            gaxgrpc::CallSettings callSettings = null) => AcknowledgeAsync(
+                new AcknowledgeRequest
+                {
+                    Subscription = gax::GaxPreconditions.CheckNotNullOrEmpty(subscription, nameof(subscription)),
+                    AckIds = { gax::GaxPreconditions.CheckNotNull(ackIds, nameof(ackIds)) },
+                },
+                callSettings);
+
+        /// <summary>
+        /// Acknowledges the messages associated with the `ack_ids` in the
+        /// `AcknowledgeRequest`. The Pub/Sub system can remove the relevant messages
+        /// from the subscription.
+        ///
+        /// Acknowledging a message whose ack deadline has expired may succeed,
+        /// but such a message may be redelivered later. Acknowledging a message more
+        /// than once will not result in an error.
+        /// </summary>
+        /// <param name="subscription">
+        /// The subscription whose message is being acknowledged.
+        /// Format is `projects/{project}/subscriptions/{sub}`.
+        /// </param>
+        /// <param name="ackIds">
+        /// The acknowledgment ID for the messages being acknowledged that was returned
+        /// by the Pub/Sub system in the `Pull` response. Must not be empty.
+        /// </param>
+        /// <param name="cancellationToken">
+        /// A <see cref="st::CancellationToken"/> to use for this RPC.
+        /// </param>
+        /// <returns>
+        /// A Task that completes when the RPC has completed.
+        /// </returns>
+        public virtual stt::Task AcknowledgeAsync(
+            string subscription,
+            scg::IEnumerable<string> ackIds,
+            st::CancellationToken cancellationToken) => AcknowledgeAsync(
+                subscription,
+                ackIds,
+                gaxgrpc::CallSettings.FromCancellationToken(cancellationToken));
+
+        /// <summary>
+        /// Acknowledges the messages associated with the `ack_ids` in the
+        /// `AcknowledgeRequest`. The Pub/Sub system can remove the relevant messages
+        /// from the subscription.
+        ///
+        /// Acknowledging a message whose ack deadline has expired may succeed,
+        /// but such a message may be redelivered later. Acknowledging a message more
+        /// than once will not result in an error.
+        /// </summary>
+        /// <param name="subscription">
+        /// The subscription whose message is being acknowledged.
+        /// Format is `projects/{project}/subscriptions/{sub}`.
+        /// </param>
+        /// <param name="ackIds">
+        /// The acknowledgment ID for the messages being acknowledged that was returned
+        /// by the Pub/Sub system in the `Pull` response. Must not be empty.
+        /// </param>
+        /// <param name="callSettings">
+        /// If not null, applies overrides to this RPC call.
+        /// </param>
+        public virtual void Acknowledge(
+            string subscription,
+            scg::IEnumerable<string> ackIds,
+            gaxgrpc::CallSettings callSettings = null) => Acknowledge(
+                new AcknowledgeRequest
+                {
+                    Subscription = gax::GaxPreconditions.CheckNotNullOrEmpty(subscription, nameof(subscription)),
+                    AckIds = { gax::GaxPreconditions.CheckNotNull(ackIds, nameof(ackIds)) },
+                },
+                callSettings);
+
+        /// <summary>
+        /// Acknowledges the messages associated with the `ack_ids` in the
+        /// `AcknowledgeRequest`. The Pub/Sub system can remove the relevant messages
+        /// from the subscription.
+        ///
+        /// Acknowledging a message whose ack deadline has expired may succeed,
+        /// but such a message may be redelivered later. Acknowledging a message more
+        /// than once will not result in an error.
+        /// </summary>
         /// <param name="request">
         /// The request object containing all of the parameters for the API call.
         /// </param>
@@ -2021,8 +2729,9 @@ namespace Google.Cloud.PubSub.V1
         /// least one message is available, rather than returning no messages.
         /// </param>
         /// <param name="maxMessages">
-        /// The maximum number of messages returned for this request. The Pub/Sub
-        /// system may return fewer than the number specified.
+        /// The maximum number of messages to return for this request. Must be a
+        /// positive integer. The Pub/Sub system may return fewer than the number
+        /// specified.
         /// </param>
         /// <param name="callSettings">
         /// If not null, applies overrides to this RPC call.
@@ -2059,8 +2768,9 @@ namespace Google.Cloud.PubSub.V1
         /// least one message is available, rather than returning no messages.
         /// </param>
         /// <param name="maxMessages">
-        /// The maximum number of messages returned for this request. The Pub/Sub
-        /// system may return fewer than the number specified.
+        /// The maximum number of messages to return for this request. Must be a
+        /// positive integer. The Pub/Sub system may return fewer than the number
+        /// specified.
         /// </param>
         /// <param name="cancellationToken">
         /// A <see cref="st::CancellationToken"/> to use for this RPC.
@@ -2094,8 +2804,9 @@ namespace Google.Cloud.PubSub.V1
         /// least one message is available, rather than returning no messages.
         /// </param>
         /// <param name="maxMessages">
-        /// The maximum number of messages returned for this request. The Pub/Sub
-        /// system may return fewer than the number specified.
+        /// The maximum number of messages to return for this request. Must be a
+        /// positive integer. The Pub/Sub system may return fewer than the number
+        /// specified.
         /// </param>
         /// <param name="callSettings">
         /// If not null, applies overrides to this RPC call.
@@ -2111,6 +2822,120 @@ namespace Google.Cloud.PubSub.V1
                 new PullRequest
                 {
                     SubscriptionAsSubscriptionName = gax::GaxPreconditions.CheckNotNull(subscription, nameof(subscription)),
+                    ReturnImmediately = returnImmediately ?? false, // Optional
+                    MaxMessages = maxMessages,
+                },
+                callSettings);
+
+        /// <summary>
+        /// Pulls messages from the server. The server may return `UNAVAILABLE` if
+        /// there are too many concurrent pull requests pending for the given
+        /// subscription.
+        /// </summary>
+        /// <param name="subscription">
+        /// The subscription from which messages should be pulled.
+        /// Format is `projects/{project}/subscriptions/{sub}`.
+        /// </param>
+        /// <param name="returnImmediately">
+        /// If this field set to true, the system will respond immediately even if
+        /// it there are no messages available to return in the `Pull` response.
+        /// Otherwise, the system may wait (for a bounded amount of time) until at
+        /// least one message is available, rather than returning no messages.
+        /// </param>
+        /// <param name="maxMessages">
+        /// The maximum number of messages to return for this request. Must be a
+        /// positive integer. The Pub/Sub system may return fewer than the number
+        /// specified.
+        /// </param>
+        /// <param name="callSettings">
+        /// If not null, applies overrides to this RPC call.
+        /// </param>
+        /// <returns>
+        /// A Task containing the RPC response.
+        /// </returns>
+        public virtual stt::Task<PullResponse> PullAsync(
+            string subscription,
+            bool? returnImmediately,
+            int maxMessages,
+            gaxgrpc::CallSettings callSettings = null) => PullAsync(
+                new PullRequest
+                {
+                    Subscription = gax::GaxPreconditions.CheckNotNullOrEmpty(subscription, nameof(subscription)),
+                    ReturnImmediately = returnImmediately ?? false, // Optional
+                    MaxMessages = maxMessages,
+                },
+                callSettings);
+
+        /// <summary>
+        /// Pulls messages from the server. The server may return `UNAVAILABLE` if
+        /// there are too many concurrent pull requests pending for the given
+        /// subscription.
+        /// </summary>
+        /// <param name="subscription">
+        /// The subscription from which messages should be pulled.
+        /// Format is `projects/{project}/subscriptions/{sub}`.
+        /// </param>
+        /// <param name="returnImmediately">
+        /// If this field set to true, the system will respond immediately even if
+        /// it there are no messages available to return in the `Pull` response.
+        /// Otherwise, the system may wait (for a bounded amount of time) until at
+        /// least one message is available, rather than returning no messages.
+        /// </param>
+        /// <param name="maxMessages">
+        /// The maximum number of messages to return for this request. Must be a
+        /// positive integer. The Pub/Sub system may return fewer than the number
+        /// specified.
+        /// </param>
+        /// <param name="cancellationToken">
+        /// A <see cref="st::CancellationToken"/> to use for this RPC.
+        /// </param>
+        /// <returns>
+        /// A Task containing the RPC response.
+        /// </returns>
+        public virtual stt::Task<PullResponse> PullAsync(
+            string subscription,
+            bool? returnImmediately,
+            int maxMessages,
+            st::CancellationToken cancellationToken) => PullAsync(
+                subscription,
+                returnImmediately,
+                maxMessages,
+                gaxgrpc::CallSettings.FromCancellationToken(cancellationToken));
+
+        /// <summary>
+        /// Pulls messages from the server. The server may return `UNAVAILABLE` if
+        /// there are too many concurrent pull requests pending for the given
+        /// subscription.
+        /// </summary>
+        /// <param name="subscription">
+        /// The subscription from which messages should be pulled.
+        /// Format is `projects/{project}/subscriptions/{sub}`.
+        /// </param>
+        /// <param name="returnImmediately">
+        /// If this field set to true, the system will respond immediately even if
+        /// it there are no messages available to return in the `Pull` response.
+        /// Otherwise, the system may wait (for a bounded amount of time) until at
+        /// least one message is available, rather than returning no messages.
+        /// </param>
+        /// <param name="maxMessages">
+        /// The maximum number of messages to return for this request. Must be a
+        /// positive integer. The Pub/Sub system may return fewer than the number
+        /// specified.
+        /// </param>
+        /// <param name="callSettings">
+        /// If not null, applies overrides to this RPC call.
+        /// </param>
+        /// <returns>
+        /// The RPC response.
+        /// </returns>
+        public virtual PullResponse Pull(
+            string subscription,
+            bool? returnImmediately,
+            int maxMessages,
+            gaxgrpc::CallSettings callSettings = null) => Pull(
+                new PullRequest
+                {
+                    Subscription = gax::GaxPreconditions.CheckNotNullOrEmpty(subscription, nameof(subscription)),
                     ReturnImmediately = returnImmediately ?? false, // Optional
                     MaxMessages = maxMessages,
                 },
@@ -2323,6 +3148,111 @@ namespace Google.Cloud.PubSub.V1
         /// attributes of a push subscription. Messages will accumulate for delivery
         /// continuously through the call regardless of changes to the `PushConfig`.
         /// </summary>
+        /// <param name="subscription">
+        /// The name of the subscription.
+        /// Format is `projects/{project}/subscriptions/{sub}`.
+        /// </param>
+        /// <param name="pushConfig">
+        /// The push configuration for future deliveries.
+        ///
+        /// An empty `pushConfig` indicates that the Pub/Sub system should
+        /// stop pushing messages from the given subscription and allow
+        /// messages to be pulled and acknowledged - effectively pausing
+        /// the subscription if `Pull` or `StreamingPull` is not called.
+        /// </param>
+        /// <param name="callSettings">
+        /// If not null, applies overrides to this RPC call.
+        /// </param>
+        /// <returns>
+        /// A Task that completes when the RPC has completed.
+        /// </returns>
+        public virtual stt::Task ModifyPushConfigAsync(
+            string subscription,
+            PushConfig pushConfig,
+            gaxgrpc::CallSettings callSettings = null) => ModifyPushConfigAsync(
+                new ModifyPushConfigRequest
+                {
+                    Subscription = gax::GaxPreconditions.CheckNotNullOrEmpty(subscription, nameof(subscription)),
+                    PushConfig = gax::GaxPreconditions.CheckNotNull(pushConfig, nameof(pushConfig)),
+                },
+                callSettings);
+
+        /// <summary>
+        /// Modifies the `PushConfig` for a specified subscription.
+        ///
+        /// This may be used to change a push subscription to a pull one (signified by
+        /// an empty `PushConfig`) or vice versa, or change the endpoint URL and other
+        /// attributes of a push subscription. Messages will accumulate for delivery
+        /// continuously through the call regardless of changes to the `PushConfig`.
+        /// </summary>
+        /// <param name="subscription">
+        /// The name of the subscription.
+        /// Format is `projects/{project}/subscriptions/{sub}`.
+        /// </param>
+        /// <param name="pushConfig">
+        /// The push configuration for future deliveries.
+        ///
+        /// An empty `pushConfig` indicates that the Pub/Sub system should
+        /// stop pushing messages from the given subscription and allow
+        /// messages to be pulled and acknowledged - effectively pausing
+        /// the subscription if `Pull` or `StreamingPull` is not called.
+        /// </param>
+        /// <param name="cancellationToken">
+        /// A <see cref="st::CancellationToken"/> to use for this RPC.
+        /// </param>
+        /// <returns>
+        /// A Task that completes when the RPC has completed.
+        /// </returns>
+        public virtual stt::Task ModifyPushConfigAsync(
+            string subscription,
+            PushConfig pushConfig,
+            st::CancellationToken cancellationToken) => ModifyPushConfigAsync(
+                subscription,
+                pushConfig,
+                gaxgrpc::CallSettings.FromCancellationToken(cancellationToken));
+
+        /// <summary>
+        /// Modifies the `PushConfig` for a specified subscription.
+        ///
+        /// This may be used to change a push subscription to a pull one (signified by
+        /// an empty `PushConfig`) or vice versa, or change the endpoint URL and other
+        /// attributes of a push subscription. Messages will accumulate for delivery
+        /// continuously through the call regardless of changes to the `PushConfig`.
+        /// </summary>
+        /// <param name="subscription">
+        /// The name of the subscription.
+        /// Format is `projects/{project}/subscriptions/{sub}`.
+        /// </param>
+        /// <param name="pushConfig">
+        /// The push configuration for future deliveries.
+        ///
+        /// An empty `pushConfig` indicates that the Pub/Sub system should
+        /// stop pushing messages from the given subscription and allow
+        /// messages to be pulled and acknowledged - effectively pausing
+        /// the subscription if `Pull` or `StreamingPull` is not called.
+        /// </param>
+        /// <param name="callSettings">
+        /// If not null, applies overrides to this RPC call.
+        /// </param>
+        public virtual void ModifyPushConfig(
+            string subscription,
+            PushConfig pushConfig,
+            gaxgrpc::CallSettings callSettings = null) => ModifyPushConfig(
+                new ModifyPushConfigRequest
+                {
+                    Subscription = gax::GaxPreconditions.CheckNotNullOrEmpty(subscription, nameof(subscription)),
+                    PushConfig = gax::GaxPreconditions.CheckNotNull(pushConfig, nameof(pushConfig)),
+                },
+                callSettings);
+
+        /// <summary>
+        /// Modifies the `PushConfig` for a specified subscription.
+        ///
+        /// This may be used to change a push subscription to a pull one (signified by
+        /// an empty `PushConfig`) or vice versa, or change the endpoint URL and other
+        /// attributes of a push subscription. Messages will accumulate for delivery
+        /// continuously through the call regardless of changes to the `PushConfig`.
+        /// </summary>
         /// <param name="request">
         /// The request object containing all of the parameters for the API call.
         /// </param>
@@ -2384,10 +3314,12 @@ namespace Google.Cloud.PubSub.V1
         }
 
         /// <summary>
-        /// Lists the existing snapshots.&lt;br&gt;&lt;br&gt;
-        /// &lt;b&gt;ALPHA:&lt;/b&gt; This feature is part of an alpha release. This API might be
-        /// changed in backward-incompatible ways and is not recommended for production
-        /// use. It is not subject to any SLA or deprecation policy.
+        /// Lists the existing snapshots. Snapshots are used in
+        /// &lt;a href="https://cloud.google.com/pubsub/docs/replay-overview"&gt;Seek&lt;/a&gt;
+        /// operations, which allow
+        /// you to manage message acknowledgments in bulk. That is, you can set the
+        /// acknowledgment state of messages in an existing subscription to the state
+        /// captured by a snapshot.
         /// </summary>
         /// <param name="project">
         /// The name of the project in which to list snapshots.
@@ -2421,10 +3353,12 @@ namespace Google.Cloud.PubSub.V1
                 callSettings);
 
         /// <summary>
-        /// Lists the existing snapshots.&lt;br&gt;&lt;br&gt;
-        /// &lt;b&gt;ALPHA:&lt;/b&gt; This feature is part of an alpha release. This API might be
-        /// changed in backward-incompatible ways and is not recommended for production
-        /// use. It is not subject to any SLA or deprecation policy.
+        /// Lists the existing snapshots. Snapshots are used in
+        /// &lt;a href="https://cloud.google.com/pubsub/docs/replay-overview"&gt;Seek&lt;/a&gt;
+        /// operations, which allow
+        /// you to manage message acknowledgments in bulk. That is, you can set the
+        /// acknowledgment state of messages in an existing subscription to the state
+        /// captured by a snapshot.
         /// </summary>
         /// <param name="project">
         /// The name of the project in which to list snapshots.
@@ -2458,10 +3392,90 @@ namespace Google.Cloud.PubSub.V1
                 callSettings);
 
         /// <summary>
-        /// Lists the existing snapshots.&lt;br&gt;&lt;br&gt;
-        /// &lt;b&gt;ALPHA:&lt;/b&gt; This feature is part of an alpha release. This API might be
-        /// changed in backward-incompatible ways and is not recommended for production
-        /// use. It is not subject to any SLA or deprecation policy.
+        /// Lists the existing snapshots. Snapshots are used in
+        /// &lt;a href="https://cloud.google.com/pubsub/docs/replay-overview"&gt;Seek&lt;/a&gt;
+        /// operations, which allow
+        /// you to manage message acknowledgments in bulk. That is, you can set the
+        /// acknowledgment state of messages in an existing subscription to the state
+        /// captured by a snapshot.
+        /// </summary>
+        /// <param name="project">
+        /// The name of the project in which to list snapshots.
+        /// Format is `projects/{project-id}`.
+        /// </param>
+        /// <param name="pageToken">
+        /// The token returned from the previous request.
+        /// A value of <c>null</c> or an empty string retrieves the first page.
+        /// </param>
+        /// <param name="pageSize">
+        /// The size of page to request. The response will not be larger than this, but may be smaller.
+        /// A value of <c>null</c> or 0 uses a server-defined page size.
+        /// </param>
+        /// <param name="callSettings">
+        /// If not null, applies overrides to this RPC call.
+        /// </param>
+        /// <returns>
+        /// A pageable asynchronous sequence of <see cref="Snapshot"/> resources.
+        /// </returns>
+        public virtual gax::PagedAsyncEnumerable<ListSnapshotsResponse, Snapshot> ListSnapshotsAsync(
+            string project,
+            string pageToken = null,
+            int? pageSize = null,
+            gaxgrpc::CallSettings callSettings = null) => ListSnapshotsAsync(
+                new ListSnapshotsRequest
+                {
+                    Project = gax::GaxPreconditions.CheckNotNullOrEmpty(project, nameof(project)),
+                    PageToken = pageToken ?? "",
+                    PageSize = pageSize ?? 0,
+                },
+                callSettings);
+
+        /// <summary>
+        /// Lists the existing snapshots. Snapshots are used in
+        /// &lt;a href="https://cloud.google.com/pubsub/docs/replay-overview"&gt;Seek&lt;/a&gt;
+        /// operations, which allow
+        /// you to manage message acknowledgments in bulk. That is, you can set the
+        /// acknowledgment state of messages in an existing subscription to the state
+        /// captured by a snapshot.
+        /// </summary>
+        /// <param name="project">
+        /// The name of the project in which to list snapshots.
+        /// Format is `projects/{project-id}`.
+        /// </param>
+        /// <param name="pageToken">
+        /// The token returned from the previous request.
+        /// A value of <c>null</c> or an empty string retrieves the first page.
+        /// </param>
+        /// <param name="pageSize">
+        /// The size of page to request. The response will not be larger than this, but may be smaller.
+        /// A value of <c>null</c> or 0 uses a server-defined page size.
+        /// </param>
+        /// <param name="callSettings">
+        /// If not null, applies overrides to this RPC call.
+        /// </param>
+        /// <returns>
+        /// A pageable sequence of <see cref="Snapshot"/> resources.
+        /// </returns>
+        public virtual gax::PagedEnumerable<ListSnapshotsResponse, Snapshot> ListSnapshots(
+            string project,
+            string pageToken = null,
+            int? pageSize = null,
+            gaxgrpc::CallSettings callSettings = null) => ListSnapshots(
+                new ListSnapshotsRequest
+                {
+                    Project = gax::GaxPreconditions.CheckNotNullOrEmpty(project, nameof(project)),
+                    PageToken = pageToken ?? "",
+                    PageSize = pageSize ?? 0,
+                },
+                callSettings);
+
+        /// <summary>
+        /// Lists the existing snapshots. Snapshots are used in
+        /// &lt;a href="https://cloud.google.com/pubsub/docs/replay-overview"&gt;Seek&lt;/a&gt;
+        /// operations, which allow
+        /// you to manage message acknowledgments in bulk. That is, you can set the
+        /// acknowledgment state of messages in an existing subscription to the state
+        /// captured by a snapshot.
         /// </summary>
         /// <param name="request">
         /// The request object containing all of the parameters for the API call.
@@ -2480,10 +3494,12 @@ namespace Google.Cloud.PubSub.V1
         }
 
         /// <summary>
-        /// Lists the existing snapshots.&lt;br&gt;&lt;br&gt;
-        /// &lt;b&gt;ALPHA:&lt;/b&gt; This feature is part of an alpha release. This API might be
-        /// changed in backward-incompatible ways and is not recommended for production
-        /// use. It is not subject to any SLA or deprecation policy.
+        /// Lists the existing snapshots. Snapshots are used in
+        /// &lt;a href="https://cloud.google.com/pubsub/docs/replay-overview"&gt;Seek&lt;/a&gt;
+        /// operations, which allow
+        /// you to manage message acknowledgments in bulk. That is, you can set the
+        /// acknowledgment state of messages in an existing subscription to the state
+        /// captured by a snapshot.
         /// </summary>
         /// <param name="request">
         /// The request object containing all of the parameters for the API call.
@@ -2502,28 +3518,32 @@ namespace Google.Cloud.PubSub.V1
         }
 
         /// <summary>
-        /// Creates a snapshot from the requested subscription.&lt;br&gt;&lt;br&gt;
-        /// &lt;b&gt;ALPHA:&lt;/b&gt; This feature is part of an alpha release. This API might be
-        /// changed in backward-incompatible ways and is not recommended for production
-        /// use. It is not subject to any SLA or deprecation policy.&lt;br&gt;&lt;br&gt;
-        /// If the snapshot already exists, returns `ALREADY_EXISTS`.
+        /// Creates a snapshot from the requested subscription. Snapshots are used in
+        /// &lt;a href="https://cloud.google.com/pubsub/docs/replay-overview"&gt;Seek&lt;/a&gt;
+        /// operations, which allow
+        /// you to manage message acknowledgments in bulk. That is, you can set the
+        /// acknowledgment state of messages in an existing subscription to the state
+        /// captured by a snapshot.
+        /// &lt;br&gt;&lt;br&gt;If the snapshot already exists, returns `ALREADY_EXISTS`.
         /// If the requested subscription doesn't exist, returns `NOT_FOUND`.
         /// If the backlog in the subscription is too old -- and the resulting snapshot
         /// would expire in less than 1 hour -- then `FAILED_PRECONDITION` is returned.
         /// See also the `Snapshot.expire_time` field. If the name is not provided in
         /// the request, the server will assign a random
         /// name for this snapshot on the same project as the subscription, conforming
-        /// to the [resource name format](https://cloud.google.com/pubsub/docs/overview#names).
-        /// The generated
-        /// name is populated in the returned Snapshot object. Note that for REST API
-        /// requests, you must specify a name in the request.
+        /// to the
+        /// [resource name
+        /// format](https://cloud.google.com/pubsub/docs/admin#resource_names). The
+        /// generated name is populated in the returned Snapshot object. Note that for
+        /// REST API requests, you must specify a name in the request.
         /// </summary>
         /// <param name="name">
         /// Optional user-provided name for this snapshot.
         /// If the name is not provided in the request, the server will assign a random
         /// name for this snapshot on the same project as the subscription.
         /// Note that for REST API requests, you must specify a name.  See the
-        /// &lt;a href="/pubsub/docs/admin#resource_names"&gt;resource name rules&lt;/a&gt;.
+        /// &lt;a href="https://cloud.google.com/pubsub/docs/admin#resource_names"&gt;
+        /// resource name rules&lt;/a&gt;.
         /// Format is `projects/{project}/snapshots/{snap}`.
         /// </param>
         /// <param name="subscription">
@@ -2555,28 +3575,32 @@ namespace Google.Cloud.PubSub.V1
                 callSettings);
 
         /// <summary>
-        /// Creates a snapshot from the requested subscription.&lt;br&gt;&lt;br&gt;
-        /// &lt;b&gt;ALPHA:&lt;/b&gt; This feature is part of an alpha release. This API might be
-        /// changed in backward-incompatible ways and is not recommended for production
-        /// use. It is not subject to any SLA or deprecation policy.&lt;br&gt;&lt;br&gt;
-        /// If the snapshot already exists, returns `ALREADY_EXISTS`.
+        /// Creates a snapshot from the requested subscription. Snapshots are used in
+        /// &lt;a href="https://cloud.google.com/pubsub/docs/replay-overview"&gt;Seek&lt;/a&gt;
+        /// operations, which allow
+        /// you to manage message acknowledgments in bulk. That is, you can set the
+        /// acknowledgment state of messages in an existing subscription to the state
+        /// captured by a snapshot.
+        /// &lt;br&gt;&lt;br&gt;If the snapshot already exists, returns `ALREADY_EXISTS`.
         /// If the requested subscription doesn't exist, returns `NOT_FOUND`.
         /// If the backlog in the subscription is too old -- and the resulting snapshot
         /// would expire in less than 1 hour -- then `FAILED_PRECONDITION` is returned.
         /// See also the `Snapshot.expire_time` field. If the name is not provided in
         /// the request, the server will assign a random
         /// name for this snapshot on the same project as the subscription, conforming
-        /// to the [resource name format](https://cloud.google.com/pubsub/docs/overview#names).
-        /// The generated
-        /// name is populated in the returned Snapshot object. Note that for REST API
-        /// requests, you must specify a name in the request.
+        /// to the
+        /// [resource name
+        /// format](https://cloud.google.com/pubsub/docs/admin#resource_names). The
+        /// generated name is populated in the returned Snapshot object. Note that for
+        /// REST API requests, you must specify a name in the request.
         /// </summary>
         /// <param name="name">
         /// Optional user-provided name for this snapshot.
         /// If the name is not provided in the request, the server will assign a random
         /// name for this snapshot on the same project as the subscription.
         /// Note that for REST API requests, you must specify a name.  See the
-        /// &lt;a href="/pubsub/docs/admin#resource_names"&gt;resource name rules&lt;/a&gt;.
+        /// &lt;a href="https://cloud.google.com/pubsub/docs/admin#resource_names"&gt;
+        /// resource name rules&lt;/a&gt;.
         /// Format is `projects/{project}/snapshots/{snap}`.
         /// </param>
         /// <param name="subscription">
@@ -2605,28 +3629,32 @@ namespace Google.Cloud.PubSub.V1
                 gaxgrpc::CallSettings.FromCancellationToken(cancellationToken));
 
         /// <summary>
-        /// Creates a snapshot from the requested subscription.&lt;br&gt;&lt;br&gt;
-        /// &lt;b&gt;ALPHA:&lt;/b&gt; This feature is part of an alpha release. This API might be
-        /// changed in backward-incompatible ways and is not recommended for production
-        /// use. It is not subject to any SLA or deprecation policy.&lt;br&gt;&lt;br&gt;
-        /// If the snapshot already exists, returns `ALREADY_EXISTS`.
+        /// Creates a snapshot from the requested subscription. Snapshots are used in
+        /// &lt;a href="https://cloud.google.com/pubsub/docs/replay-overview"&gt;Seek&lt;/a&gt;
+        /// operations, which allow
+        /// you to manage message acknowledgments in bulk. That is, you can set the
+        /// acknowledgment state of messages in an existing subscription to the state
+        /// captured by a snapshot.
+        /// &lt;br&gt;&lt;br&gt;If the snapshot already exists, returns `ALREADY_EXISTS`.
         /// If the requested subscription doesn't exist, returns `NOT_FOUND`.
         /// If the backlog in the subscription is too old -- and the resulting snapshot
         /// would expire in less than 1 hour -- then `FAILED_PRECONDITION` is returned.
         /// See also the `Snapshot.expire_time` field. If the name is not provided in
         /// the request, the server will assign a random
         /// name for this snapshot on the same project as the subscription, conforming
-        /// to the [resource name format](https://cloud.google.com/pubsub/docs/overview#names).
-        /// The generated
-        /// name is populated in the returned Snapshot object. Note that for REST API
-        /// requests, you must specify a name in the request.
+        /// to the
+        /// [resource name
+        /// format](https://cloud.google.com/pubsub/docs/admin#resource_names). The
+        /// generated name is populated in the returned Snapshot object. Note that for
+        /// REST API requests, you must specify a name in the request.
         /// </summary>
         /// <param name="name">
         /// Optional user-provided name for this snapshot.
         /// If the name is not provided in the request, the server will assign a random
         /// name for this snapshot on the same project as the subscription.
         /// Note that for REST API requests, you must specify a name.  See the
-        /// &lt;a href="/pubsub/docs/admin#resource_names"&gt;resource name rules&lt;/a&gt;.
+        /// &lt;a href="https://cloud.google.com/pubsub/docs/admin#resource_names"&gt;
+        /// resource name rules&lt;/a&gt;.
         /// Format is `projects/{project}/snapshots/{snap}`.
         /// </param>
         /// <param name="subscription">
@@ -2658,21 +3686,192 @@ namespace Google.Cloud.PubSub.V1
                 callSettings);
 
         /// <summary>
-        /// Creates a snapshot from the requested subscription.&lt;br&gt;&lt;br&gt;
-        /// &lt;b&gt;ALPHA:&lt;/b&gt; This feature is part of an alpha release. This API might be
-        /// changed in backward-incompatible ways and is not recommended for production
-        /// use. It is not subject to any SLA or deprecation policy.&lt;br&gt;&lt;br&gt;
-        /// If the snapshot already exists, returns `ALREADY_EXISTS`.
+        /// Creates a snapshot from the requested subscription. Snapshots are used in
+        /// &lt;a href="https://cloud.google.com/pubsub/docs/replay-overview"&gt;Seek&lt;/a&gt;
+        /// operations, which allow
+        /// you to manage message acknowledgments in bulk. That is, you can set the
+        /// acknowledgment state of messages in an existing subscription to the state
+        /// captured by a snapshot.
+        /// &lt;br&gt;&lt;br&gt;If the snapshot already exists, returns `ALREADY_EXISTS`.
         /// If the requested subscription doesn't exist, returns `NOT_FOUND`.
         /// If the backlog in the subscription is too old -- and the resulting snapshot
         /// would expire in less than 1 hour -- then `FAILED_PRECONDITION` is returned.
         /// See also the `Snapshot.expire_time` field. If the name is not provided in
         /// the request, the server will assign a random
         /// name for this snapshot on the same project as the subscription, conforming
-        /// to the [resource name format](https://cloud.google.com/pubsub/docs/overview#names).
-        /// The generated
-        /// name is populated in the returned Snapshot object. Note that for REST API
-        /// requests, you must specify a name in the request.
+        /// to the
+        /// [resource name
+        /// format](https://cloud.google.com/pubsub/docs/admin#resource_names). The
+        /// generated name is populated in the returned Snapshot object. Note that for
+        /// REST API requests, you must specify a name in the request.
+        /// </summary>
+        /// <param name="name">
+        /// Optional user-provided name for this snapshot.
+        /// If the name is not provided in the request, the server will assign a random
+        /// name for this snapshot on the same project as the subscription.
+        /// Note that for REST API requests, you must specify a name.  See the
+        /// &lt;a href="https://cloud.google.com/pubsub/docs/admin#resource_names"&gt;
+        /// resource name rules&lt;/a&gt;.
+        /// Format is `projects/{project}/snapshots/{snap}`.
+        /// </param>
+        /// <param name="subscription">
+        /// The subscription whose backlog the snapshot retains.
+        /// Specifically, the created snapshot is guaranteed to retain:
+        ///  (a) The existing backlog on the subscription. More precisely, this is
+        ///      defined as the messages in the subscription's backlog that are
+        ///      unacknowledged upon the successful completion of the
+        ///      `CreateSnapshot` request; as well as:
+        ///  (b) Any messages published to the subscription's topic following the
+        ///      successful completion of the CreateSnapshot request.
+        /// Format is `projects/{project}/subscriptions/{sub}`.
+        /// </param>
+        /// <param name="callSettings">
+        /// If not null, applies overrides to this RPC call.
+        /// </param>
+        /// <returns>
+        /// A Task containing the RPC response.
+        /// </returns>
+        public virtual stt::Task<Snapshot> CreateSnapshotAsync(
+            string name,
+            string subscription,
+            gaxgrpc::CallSettings callSettings = null) => CreateSnapshotAsync(
+                new CreateSnapshotRequest
+                {
+                    Name = gax::GaxPreconditions.CheckNotNullOrEmpty(name, nameof(name)),
+                    Subscription = gax::GaxPreconditions.CheckNotNullOrEmpty(subscription, nameof(subscription)),
+                },
+                callSettings);
+
+        /// <summary>
+        /// Creates a snapshot from the requested subscription. Snapshots are used in
+        /// &lt;a href="https://cloud.google.com/pubsub/docs/replay-overview"&gt;Seek&lt;/a&gt;
+        /// operations, which allow
+        /// you to manage message acknowledgments in bulk. That is, you can set the
+        /// acknowledgment state of messages in an existing subscription to the state
+        /// captured by a snapshot.
+        /// &lt;br&gt;&lt;br&gt;If the snapshot already exists, returns `ALREADY_EXISTS`.
+        /// If the requested subscription doesn't exist, returns `NOT_FOUND`.
+        /// If the backlog in the subscription is too old -- and the resulting snapshot
+        /// would expire in less than 1 hour -- then `FAILED_PRECONDITION` is returned.
+        /// See also the `Snapshot.expire_time` field. If the name is not provided in
+        /// the request, the server will assign a random
+        /// name for this snapshot on the same project as the subscription, conforming
+        /// to the
+        /// [resource name
+        /// format](https://cloud.google.com/pubsub/docs/admin#resource_names). The
+        /// generated name is populated in the returned Snapshot object. Note that for
+        /// REST API requests, you must specify a name in the request.
+        /// </summary>
+        /// <param name="name">
+        /// Optional user-provided name for this snapshot.
+        /// If the name is not provided in the request, the server will assign a random
+        /// name for this snapshot on the same project as the subscription.
+        /// Note that for REST API requests, you must specify a name.  See the
+        /// &lt;a href="https://cloud.google.com/pubsub/docs/admin#resource_names"&gt;
+        /// resource name rules&lt;/a&gt;.
+        /// Format is `projects/{project}/snapshots/{snap}`.
+        /// </param>
+        /// <param name="subscription">
+        /// The subscription whose backlog the snapshot retains.
+        /// Specifically, the created snapshot is guaranteed to retain:
+        ///  (a) The existing backlog on the subscription. More precisely, this is
+        ///      defined as the messages in the subscription's backlog that are
+        ///      unacknowledged upon the successful completion of the
+        ///      `CreateSnapshot` request; as well as:
+        ///  (b) Any messages published to the subscription's topic following the
+        ///      successful completion of the CreateSnapshot request.
+        /// Format is `projects/{project}/subscriptions/{sub}`.
+        /// </param>
+        /// <param name="cancellationToken">
+        /// A <see cref="st::CancellationToken"/> to use for this RPC.
+        /// </param>
+        /// <returns>
+        /// A Task containing the RPC response.
+        /// </returns>
+        public virtual stt::Task<Snapshot> CreateSnapshotAsync(
+            string name,
+            string subscription,
+            st::CancellationToken cancellationToken) => CreateSnapshotAsync(
+                name,
+                subscription,
+                gaxgrpc::CallSettings.FromCancellationToken(cancellationToken));
+
+        /// <summary>
+        /// Creates a snapshot from the requested subscription. Snapshots are used in
+        /// &lt;a href="https://cloud.google.com/pubsub/docs/replay-overview"&gt;Seek&lt;/a&gt;
+        /// operations, which allow
+        /// you to manage message acknowledgments in bulk. That is, you can set the
+        /// acknowledgment state of messages in an existing subscription to the state
+        /// captured by a snapshot.
+        /// &lt;br&gt;&lt;br&gt;If the snapshot already exists, returns `ALREADY_EXISTS`.
+        /// If the requested subscription doesn't exist, returns `NOT_FOUND`.
+        /// If the backlog in the subscription is too old -- and the resulting snapshot
+        /// would expire in less than 1 hour -- then `FAILED_PRECONDITION` is returned.
+        /// See also the `Snapshot.expire_time` field. If the name is not provided in
+        /// the request, the server will assign a random
+        /// name for this snapshot on the same project as the subscription, conforming
+        /// to the
+        /// [resource name
+        /// format](https://cloud.google.com/pubsub/docs/admin#resource_names). The
+        /// generated name is populated in the returned Snapshot object. Note that for
+        /// REST API requests, you must specify a name in the request.
+        /// </summary>
+        /// <param name="name">
+        /// Optional user-provided name for this snapshot.
+        /// If the name is not provided in the request, the server will assign a random
+        /// name for this snapshot on the same project as the subscription.
+        /// Note that for REST API requests, you must specify a name.  See the
+        /// &lt;a href="https://cloud.google.com/pubsub/docs/admin#resource_names"&gt;
+        /// resource name rules&lt;/a&gt;.
+        /// Format is `projects/{project}/snapshots/{snap}`.
+        /// </param>
+        /// <param name="subscription">
+        /// The subscription whose backlog the snapshot retains.
+        /// Specifically, the created snapshot is guaranteed to retain:
+        ///  (a) The existing backlog on the subscription. More precisely, this is
+        ///      defined as the messages in the subscription's backlog that are
+        ///      unacknowledged upon the successful completion of the
+        ///      `CreateSnapshot` request; as well as:
+        ///  (b) Any messages published to the subscription's topic following the
+        ///      successful completion of the CreateSnapshot request.
+        /// Format is `projects/{project}/subscriptions/{sub}`.
+        /// </param>
+        /// <param name="callSettings">
+        /// If not null, applies overrides to this RPC call.
+        /// </param>
+        /// <returns>
+        /// The RPC response.
+        /// </returns>
+        public virtual Snapshot CreateSnapshot(
+            string name,
+            string subscription,
+            gaxgrpc::CallSettings callSettings = null) => CreateSnapshot(
+                new CreateSnapshotRequest
+                {
+                    Name = gax::GaxPreconditions.CheckNotNullOrEmpty(name, nameof(name)),
+                    Subscription = gax::GaxPreconditions.CheckNotNullOrEmpty(subscription, nameof(subscription)),
+                },
+                callSettings);
+
+        /// <summary>
+        /// Creates a snapshot from the requested subscription. Snapshots are used in
+        /// &lt;a href="https://cloud.google.com/pubsub/docs/replay-overview"&gt;Seek&lt;/a&gt;
+        /// operations, which allow
+        /// you to manage message acknowledgments in bulk. That is, you can set the
+        /// acknowledgment state of messages in an existing subscription to the state
+        /// captured by a snapshot.
+        /// &lt;br&gt;&lt;br&gt;If the snapshot already exists, returns `ALREADY_EXISTS`.
+        /// If the requested subscription doesn't exist, returns `NOT_FOUND`.
+        /// If the backlog in the subscription is too old -- and the resulting snapshot
+        /// would expire in less than 1 hour -- then `FAILED_PRECONDITION` is returned.
+        /// See also the `Snapshot.expire_time` field. If the name is not provided in
+        /// the request, the server will assign a random
+        /// name for this snapshot on the same project as the subscription, conforming
+        /// to the
+        /// [resource name
+        /// format](https://cloud.google.com/pubsub/docs/admin#resource_names). The
+        /// generated name is populated in the returned Snapshot object. Note that for
+        /// REST API requests, you must specify a name in the request.
         /// </summary>
         /// <param name="request">
         /// The request object containing all of the parameters for the API call.
@@ -2691,21 +3890,24 @@ namespace Google.Cloud.PubSub.V1
         }
 
         /// <summary>
-        /// Creates a snapshot from the requested subscription.&lt;br&gt;&lt;br&gt;
-        /// &lt;b&gt;ALPHA:&lt;/b&gt; This feature is part of an alpha release. This API might be
-        /// changed in backward-incompatible ways and is not recommended for production
-        /// use. It is not subject to any SLA or deprecation policy.&lt;br&gt;&lt;br&gt;
-        /// If the snapshot already exists, returns `ALREADY_EXISTS`.
+        /// Creates a snapshot from the requested subscription. Snapshots are used in
+        /// &lt;a href="https://cloud.google.com/pubsub/docs/replay-overview"&gt;Seek&lt;/a&gt;
+        /// operations, which allow
+        /// you to manage message acknowledgments in bulk. That is, you can set the
+        /// acknowledgment state of messages in an existing subscription to the state
+        /// captured by a snapshot.
+        /// &lt;br&gt;&lt;br&gt;If the snapshot already exists, returns `ALREADY_EXISTS`.
         /// If the requested subscription doesn't exist, returns `NOT_FOUND`.
         /// If the backlog in the subscription is too old -- and the resulting snapshot
         /// would expire in less than 1 hour -- then `FAILED_PRECONDITION` is returned.
         /// See also the `Snapshot.expire_time` field. If the name is not provided in
         /// the request, the server will assign a random
         /// name for this snapshot on the same project as the subscription, conforming
-        /// to the [resource name format](https://cloud.google.com/pubsub/docs/overview#names).
-        /// The generated
-        /// name is populated in the returned Snapshot object. Note that for REST API
-        /// requests, you must specify a name in the request.
+        /// to the
+        /// [resource name
+        /// format](https://cloud.google.com/pubsub/docs/admin#resource_names). The
+        /// generated name is populated in the returned Snapshot object. Note that for
+        /// REST API requests, you must specify a name in the request.
         /// </summary>
         /// <param name="request">
         /// The request object containing all of the parameters for the API call.
@@ -2723,21 +3925,24 @@ namespace Google.Cloud.PubSub.V1
                 gaxgrpc::CallSettings.FromCancellationToken(cancellationToken));
 
         /// <summary>
-        /// Creates a snapshot from the requested subscription.&lt;br&gt;&lt;br&gt;
-        /// &lt;b&gt;ALPHA:&lt;/b&gt; This feature is part of an alpha release. This API might be
-        /// changed in backward-incompatible ways and is not recommended for production
-        /// use. It is not subject to any SLA or deprecation policy.&lt;br&gt;&lt;br&gt;
-        /// If the snapshot already exists, returns `ALREADY_EXISTS`.
+        /// Creates a snapshot from the requested subscription. Snapshots are used in
+        /// &lt;a href="https://cloud.google.com/pubsub/docs/replay-overview"&gt;Seek&lt;/a&gt;
+        /// operations, which allow
+        /// you to manage message acknowledgments in bulk. That is, you can set the
+        /// acknowledgment state of messages in an existing subscription to the state
+        /// captured by a snapshot.
+        /// &lt;br&gt;&lt;br&gt;If the snapshot already exists, returns `ALREADY_EXISTS`.
         /// If the requested subscription doesn't exist, returns `NOT_FOUND`.
         /// If the backlog in the subscription is too old -- and the resulting snapshot
         /// would expire in less than 1 hour -- then `FAILED_PRECONDITION` is returned.
         /// See also the `Snapshot.expire_time` field. If the name is not provided in
         /// the request, the server will assign a random
         /// name for this snapshot on the same project as the subscription, conforming
-        /// to the [resource name format](https://cloud.google.com/pubsub/docs/overview#names).
-        /// The generated
-        /// name is populated in the returned Snapshot object. Note that for REST API
-        /// requests, you must specify a name in the request.
+        /// to the
+        /// [resource name
+        /// format](https://cloud.google.com/pubsub/docs/admin#resource_names). The
+        /// generated name is populated in the returned Snapshot object. Note that for
+        /// REST API requests, you must specify a name in the request.
         /// </summary>
         /// <param name="request">
         /// The request object containing all of the parameters for the API call.
@@ -2756,11 +3961,12 @@ namespace Google.Cloud.PubSub.V1
         }
 
         /// <summary>
-        /// Updates an existing snapshot.&lt;br&gt;&lt;br&gt;
-        /// &lt;b&gt;ALPHA:&lt;/b&gt; This feature is part of an alpha release. This API might be
-        /// changed in backward-incompatible ways and is not recommended for production
-        /// use. It is not subject to any SLA or deprecation policy.
-        /// Note that certain properties of a snapshot are not modifiable.
+        /// Updates an existing snapshot. Snapshots are used in
+        /// &lt;a href="https://cloud.google.com/pubsub/docs/replay-overview"&gt;Seek&lt;/a&gt;
+        /// operations, which allow
+        /// you to manage message acknowledgments in bulk. That is, you can set the
+        /// acknowledgment state of messages in an existing subscription to the state
+        /// captured by a snapshot.
         /// </summary>
         /// <param name="request">
         /// The request object containing all of the parameters for the API call.
@@ -2779,11 +3985,12 @@ namespace Google.Cloud.PubSub.V1
         }
 
         /// <summary>
-        /// Updates an existing snapshot.&lt;br&gt;&lt;br&gt;
-        /// &lt;b&gt;ALPHA:&lt;/b&gt; This feature is part of an alpha release. This API might be
-        /// changed in backward-incompatible ways and is not recommended for production
-        /// use. It is not subject to any SLA or deprecation policy.
-        /// Note that certain properties of a snapshot are not modifiable.
+        /// Updates an existing snapshot. Snapshots are used in
+        /// &lt;a href="https://cloud.google.com/pubsub/docs/replay-overview"&gt;Seek&lt;/a&gt;
+        /// operations, which allow
+        /// you to manage message acknowledgments in bulk. That is, you can set the
+        /// acknowledgment state of messages in an existing subscription to the state
+        /// captured by a snapshot.
         /// </summary>
         /// <param name="request">
         /// The request object containing all of the parameters for the API call.
@@ -2801,11 +4008,12 @@ namespace Google.Cloud.PubSub.V1
                 gaxgrpc::CallSettings.FromCancellationToken(cancellationToken));
 
         /// <summary>
-        /// Updates an existing snapshot.&lt;br&gt;&lt;br&gt;
-        /// &lt;b&gt;ALPHA:&lt;/b&gt; This feature is part of an alpha release. This API might be
-        /// changed in backward-incompatible ways and is not recommended for production
-        /// use. It is not subject to any SLA or deprecation policy.
-        /// Note that certain properties of a snapshot are not modifiable.
+        /// Updates an existing snapshot. Snapshots are used in
+        /// &lt;a href="https://cloud.google.com/pubsub/docs/replay-overview"&gt;Seek&lt;/a&gt;
+        /// operations, which allow
+        /// you to manage message acknowledgments in bulk. That is, you can set the
+        /// acknowledgment state of messages in an existing subscription to the state
+        /// captured by a snapshot.
         /// </summary>
         /// <param name="request">
         /// The request object containing all of the parameters for the API call.
@@ -2824,10 +4032,12 @@ namespace Google.Cloud.PubSub.V1
         }
 
         /// <summary>
-        /// Removes an existing snapshot. &lt;br&gt;&lt;br&gt;
-        /// &lt;b&gt;ALPHA:&lt;/b&gt; This feature is part of an alpha release. This API might be
-        /// changed in backward-incompatible ways and is not recommended for production
-        /// use. It is not subject to any SLA or deprecation policy.
+        /// Removes an existing snapshot. Snapshots are used in
+        /// &lt;a href="https://cloud.google.com/pubsub/docs/replay-overview"&gt;Seek&lt;/a&gt;
+        /// operations, which allow
+        /// you to manage message acknowledgments in bulk. That is, you can set the
+        /// acknowledgment state of messages in an existing subscription to the state
+        /// captured by a snapshot.&lt;br&gt;&lt;br&gt;
         /// When the snapshot is deleted, all messages retained in the snapshot
         /// are immediately dropped. After a snapshot is deleted, a new one may be
         /// created with the same name, but the new one has no association with the old
@@ -2853,10 +4063,12 @@ namespace Google.Cloud.PubSub.V1
                 callSettings);
 
         /// <summary>
-        /// Removes an existing snapshot. &lt;br&gt;&lt;br&gt;
-        /// &lt;b&gt;ALPHA:&lt;/b&gt; This feature is part of an alpha release. This API might be
-        /// changed in backward-incompatible ways and is not recommended for production
-        /// use. It is not subject to any SLA or deprecation policy.
+        /// Removes an existing snapshot. Snapshots are used in
+        /// &lt;a href="https://cloud.google.com/pubsub/docs/replay-overview"&gt;Seek&lt;/a&gt;
+        /// operations, which allow
+        /// you to manage message acknowledgments in bulk. That is, you can set the
+        /// acknowledgment state of messages in an existing subscription to the state
+        /// captured by a snapshot.&lt;br&gt;&lt;br&gt;
         /// When the snapshot is deleted, all messages retained in the snapshot
         /// are immediately dropped. After a snapshot is deleted, a new one may be
         /// created with the same name, but the new one has no association with the old
@@ -2879,10 +4091,12 @@ namespace Google.Cloud.PubSub.V1
                 gaxgrpc::CallSettings.FromCancellationToken(cancellationToken));
 
         /// <summary>
-        /// Removes an existing snapshot. &lt;br&gt;&lt;br&gt;
-        /// &lt;b&gt;ALPHA:&lt;/b&gt; This feature is part of an alpha release. This API might be
-        /// changed in backward-incompatible ways and is not recommended for production
-        /// use. It is not subject to any SLA or deprecation policy.
+        /// Removes an existing snapshot. Snapshots are used in
+        /// &lt;a href="https://cloud.google.com/pubsub/docs/replay-overview"&gt;Seek&lt;/a&gt;
+        /// operations, which allow
+        /// you to manage message acknowledgments in bulk. That is, you can set the
+        /// acknowledgment state of messages in an existing subscription to the state
+        /// captured by a snapshot.&lt;br&gt;&lt;br&gt;
         /// When the snapshot is deleted, all messages retained in the snapshot
         /// are immediately dropped. After a snapshot is deleted, a new one may be
         /// created with the same name, but the new one has no association with the old
@@ -2905,10 +4119,99 @@ namespace Google.Cloud.PubSub.V1
                 callSettings);
 
         /// <summary>
-        /// Removes an existing snapshot. &lt;br&gt;&lt;br&gt;
-        /// &lt;b&gt;ALPHA:&lt;/b&gt; This feature is part of an alpha release. This API might be
-        /// changed in backward-incompatible ways and is not recommended for production
-        /// use. It is not subject to any SLA or deprecation policy.
+        /// Removes an existing snapshot. Snapshots are used in
+        /// &lt;a href="https://cloud.google.com/pubsub/docs/replay-overview"&gt;Seek&lt;/a&gt;
+        /// operations, which allow
+        /// you to manage message acknowledgments in bulk. That is, you can set the
+        /// acknowledgment state of messages in an existing subscription to the state
+        /// captured by a snapshot.&lt;br&gt;&lt;br&gt;
+        /// When the snapshot is deleted, all messages retained in the snapshot
+        /// are immediately dropped. After a snapshot is deleted, a new one may be
+        /// created with the same name, but the new one has no association with the old
+        /// snapshot or its subscription, unless the same subscription is specified.
+        /// </summary>
+        /// <param name="snapshot">
+        /// The name of the snapshot to delete.
+        /// Format is `projects/{project}/snapshots/{snap}`.
+        /// </param>
+        /// <param name="callSettings">
+        /// If not null, applies overrides to this RPC call.
+        /// </param>
+        /// <returns>
+        /// A Task that completes when the RPC has completed.
+        /// </returns>
+        public virtual stt::Task DeleteSnapshotAsync(
+            string snapshot,
+            gaxgrpc::CallSettings callSettings = null) => DeleteSnapshotAsync(
+                new DeleteSnapshotRequest
+                {
+                    Snapshot = gax::GaxPreconditions.CheckNotNullOrEmpty(snapshot, nameof(snapshot)),
+                },
+                callSettings);
+
+        /// <summary>
+        /// Removes an existing snapshot. Snapshots are used in
+        /// &lt;a href="https://cloud.google.com/pubsub/docs/replay-overview"&gt;Seek&lt;/a&gt;
+        /// operations, which allow
+        /// you to manage message acknowledgments in bulk. That is, you can set the
+        /// acknowledgment state of messages in an existing subscription to the state
+        /// captured by a snapshot.&lt;br&gt;&lt;br&gt;
+        /// When the snapshot is deleted, all messages retained in the snapshot
+        /// are immediately dropped. After a snapshot is deleted, a new one may be
+        /// created with the same name, but the new one has no association with the old
+        /// snapshot or its subscription, unless the same subscription is specified.
+        /// </summary>
+        /// <param name="snapshot">
+        /// The name of the snapshot to delete.
+        /// Format is `projects/{project}/snapshots/{snap}`.
+        /// </param>
+        /// <param name="cancellationToken">
+        /// A <see cref="st::CancellationToken"/> to use for this RPC.
+        /// </param>
+        /// <returns>
+        /// A Task that completes when the RPC has completed.
+        /// </returns>
+        public virtual stt::Task DeleteSnapshotAsync(
+            string snapshot,
+            st::CancellationToken cancellationToken) => DeleteSnapshotAsync(
+                snapshot,
+                gaxgrpc::CallSettings.FromCancellationToken(cancellationToken));
+
+        /// <summary>
+        /// Removes an existing snapshot. Snapshots are used in
+        /// &lt;a href="https://cloud.google.com/pubsub/docs/replay-overview"&gt;Seek&lt;/a&gt;
+        /// operations, which allow
+        /// you to manage message acknowledgments in bulk. That is, you can set the
+        /// acknowledgment state of messages in an existing subscription to the state
+        /// captured by a snapshot.&lt;br&gt;&lt;br&gt;
+        /// When the snapshot is deleted, all messages retained in the snapshot
+        /// are immediately dropped. After a snapshot is deleted, a new one may be
+        /// created with the same name, but the new one has no association with the old
+        /// snapshot or its subscription, unless the same subscription is specified.
+        /// </summary>
+        /// <param name="snapshot">
+        /// The name of the snapshot to delete.
+        /// Format is `projects/{project}/snapshots/{snap}`.
+        /// </param>
+        /// <param name="callSettings">
+        /// If not null, applies overrides to this RPC call.
+        /// </param>
+        public virtual void DeleteSnapshot(
+            string snapshot,
+            gaxgrpc::CallSettings callSettings = null) => DeleteSnapshot(
+                new DeleteSnapshotRequest
+                {
+                    Snapshot = gax::GaxPreconditions.CheckNotNullOrEmpty(snapshot, nameof(snapshot)),
+                },
+                callSettings);
+
+        /// <summary>
+        /// Removes an existing snapshot. Snapshots are used in
+        /// &lt;a href="https://cloud.google.com/pubsub/docs/replay-overview"&gt;Seek&lt;/a&gt;
+        /// operations, which allow
+        /// you to manage message acknowledgments in bulk. That is, you can set the
+        /// acknowledgment state of messages in an existing subscription to the state
+        /// captured by a snapshot.&lt;br&gt;&lt;br&gt;
         /// When the snapshot is deleted, all messages retained in the snapshot
         /// are immediately dropped. After a snapshot is deleted, a new one may be
         /// created with the same name, but the new one has no association with the old
@@ -2931,10 +4234,12 @@ namespace Google.Cloud.PubSub.V1
         }
 
         /// <summary>
-        /// Removes an existing snapshot. &lt;br&gt;&lt;br&gt;
-        /// &lt;b&gt;ALPHA:&lt;/b&gt; This feature is part of an alpha release. This API might be
-        /// changed in backward-incompatible ways and is not recommended for production
-        /// use. It is not subject to any SLA or deprecation policy.
+        /// Removes an existing snapshot. Snapshots are used in
+        /// &lt;a href="https://cloud.google.com/pubsub/docs/replay-overview"&gt;Seek&lt;/a&gt;
+        /// operations, which allow
+        /// you to manage message acknowledgments in bulk. That is, you can set the
+        /// acknowledgment state of messages in an existing subscription to the state
+        /// captured by a snapshot.&lt;br&gt;&lt;br&gt;
         /// When the snapshot is deleted, all messages retained in the snapshot
         /// are immediately dropped. After a snapshot is deleted, a new one may be
         /// created with the same name, but the new one has no association with the old
@@ -2956,10 +4261,12 @@ namespace Google.Cloud.PubSub.V1
                 gaxgrpc::CallSettings.FromCancellationToken(cancellationToken));
 
         /// <summary>
-        /// Removes an existing snapshot. &lt;br&gt;&lt;br&gt;
-        /// &lt;b&gt;ALPHA:&lt;/b&gt; This feature is part of an alpha release. This API might be
-        /// changed in backward-incompatible ways and is not recommended for production
-        /// use. It is not subject to any SLA or deprecation policy.
+        /// Removes an existing snapshot. Snapshots are used in
+        /// &lt;a href="https://cloud.google.com/pubsub/docs/replay-overview"&gt;Seek&lt;/a&gt;
+        /// operations, which allow
+        /// you to manage message acknowledgments in bulk. That is, you can set the
+        /// acknowledgment state of messages in an existing subscription to the state
+        /// captured by a snapshot.&lt;br&gt;&lt;br&gt;
         /// When the snapshot is deleted, all messages retained in the snapshot
         /// are immediately dropped. After a snapshot is deleted, a new one may be
         /// created with the same name, but the new one has no association with the old
@@ -2980,10 +4287,13 @@ namespace Google.Cloud.PubSub.V1
 
         /// <summary>
         /// Seeks an existing subscription to a point in time or to a given snapshot,
-        /// whichever is provided in the request.&lt;br&gt;&lt;br&gt;
-        /// &lt;b&gt;ALPHA:&lt;/b&gt; This feature is part of an alpha release. This API might be
-        /// changed in backward-incompatible ways and is not recommended for production
-        /// use. It is not subject to any SLA or deprecation policy.
+        /// whichever is provided in the request. Snapshots are used in
+        /// &lt;a href="https://cloud.google.com/pubsub/docs/replay-overview"&gt;Seek&lt;/a&gt;
+        /// operations, which allow
+        /// you to manage message acknowledgments in bulk. That is, you can set the
+        /// acknowledgment state of messages in an existing subscription to the state
+        /// captured by a snapshot. Note that both the subscription and the snapshot
+        /// must be on the same topic.
         /// </summary>
         /// <param name="request">
         /// The request object containing all of the parameters for the API call.
@@ -3003,10 +4313,13 @@ namespace Google.Cloud.PubSub.V1
 
         /// <summary>
         /// Seeks an existing subscription to a point in time or to a given snapshot,
-        /// whichever is provided in the request.&lt;br&gt;&lt;br&gt;
-        /// &lt;b&gt;ALPHA:&lt;/b&gt; This feature is part of an alpha release. This API might be
-        /// changed in backward-incompatible ways and is not recommended for production
-        /// use. It is not subject to any SLA or deprecation policy.
+        /// whichever is provided in the request. Snapshots are used in
+        /// &lt;a href="https://cloud.google.com/pubsub/docs/replay-overview"&gt;Seek&lt;/a&gt;
+        /// operations, which allow
+        /// you to manage message acknowledgments in bulk. That is, you can set the
+        /// acknowledgment state of messages in an existing subscription to the state
+        /// captured by a snapshot. Note that both the subscription and the snapshot
+        /// must be on the same topic.
         /// </summary>
         /// <param name="request">
         /// The request object containing all of the parameters for the API call.
@@ -3025,10 +4338,13 @@ namespace Google.Cloud.PubSub.V1
 
         /// <summary>
         /// Seeks an existing subscription to a point in time or to a given snapshot,
-        /// whichever is provided in the request.&lt;br&gt;&lt;br&gt;
-        /// &lt;b&gt;ALPHA:&lt;/b&gt; This feature is part of an alpha release. This API might be
-        /// changed in backward-incompatible ways and is not recommended for production
-        /// use. It is not subject to any SLA or deprecation policy.
+        /// whichever is provided in the request. Snapshots are used in
+        /// &lt;a href="https://cloud.google.com/pubsub/docs/replay-overview"&gt;Seek&lt;/a&gt;
+        /// operations, which allow
+        /// you to manage message acknowledgments in bulk. That is, you can set the
+        /// acknowledgment state of messages in an existing subscription to the state
+        /// captured by a snapshot. Note that both the subscription and the snapshot
+        /// must be on the same topic.
         /// </summary>
         /// <param name="request">
         /// The request object containing all of the parameters for the API call.
@@ -3052,8 +4368,7 @@ namespace Google.Cloud.PubSub.V1
         /// </summary>
         /// <param name="resource">
         /// REQUIRED: The resource for which the policy is being specified.
-        /// `resource` is usually specified as a path. For example, a Project
-        /// resource is specified as `projects/{project}`.
+        /// See the operation documentation for the appropriate value for this field.
         /// </param>
         /// <param name="policy">
         /// REQUIRED: The complete policy to be applied to the `resource`. The size of
@@ -3084,8 +4399,7 @@ namespace Google.Cloud.PubSub.V1
         /// </summary>
         /// <param name="resource">
         /// REQUIRED: The resource for which the policy is being specified.
-        /// `resource` is usually specified as a path. For example, a Project
-        /// resource is specified as `projects/{project}`.
+        /// See the operation documentation for the appropriate value for this field.
         /// </param>
         /// <param name="policy">
         /// REQUIRED: The complete policy to be applied to the `resource`. The size of
@@ -3113,8 +4427,7 @@ namespace Google.Cloud.PubSub.V1
         /// </summary>
         /// <param name="resource">
         /// REQUIRED: The resource for which the policy is being specified.
-        /// `resource` is usually specified as a path. For example, a Project
-        /// resource is specified as `projects/{project}`.
+        /// See the operation documentation for the appropriate value for this field.
         /// </param>
         /// <param name="policy">
         /// REQUIRED: The complete policy to be applied to the `resource`. The size of
@@ -3205,8 +4518,7 @@ namespace Google.Cloud.PubSub.V1
         /// </summary>
         /// <param name="resource">
         /// REQUIRED: The resource for which the policy is being requested.
-        /// `resource` is usually specified as a path. For example, a Project
-        /// resource is specified as `projects/{project}`.
+        /// See the operation documentation for the appropriate value for this field.
         /// </param>
         /// <param name="callSettings">
         /// If not null, applies overrides to this RPC call.
@@ -3230,8 +4542,7 @@ namespace Google.Cloud.PubSub.V1
         /// </summary>
         /// <param name="resource">
         /// REQUIRED: The resource for which the policy is being requested.
-        /// `resource` is usually specified as a path. For example, a Project
-        /// resource is specified as `projects/{project}`.
+        /// See the operation documentation for the appropriate value for this field.
         /// </param>
         /// <param name="cancellationToken">
         /// A <see cref="st::CancellationToken"/> to use for this RPC.
@@ -3252,8 +4563,7 @@ namespace Google.Cloud.PubSub.V1
         /// </summary>
         /// <param name="resource">
         /// REQUIRED: The resource for which the policy is being requested.
-        /// `resource` is usually specified as a path. For example, a Project
-        /// resource is specified as `projects/{project}`.
+        /// See the operation documentation for the appropriate value for this field.
         /// </param>
         /// <param name="callSettings">
         /// If not null, applies overrides to this RPC call.
@@ -3336,11 +4646,14 @@ namespace Google.Cloud.PubSub.V1
         /// Returns permissions that a caller has on the specified resource.
         /// If the resource does not exist, this will return an empty set of
         /// permissions, not a NOT_FOUND error.
+        ///
+        /// Note: This operation is designed to be used for building permission-aware
+        /// UIs and command-line tools, not for authorization checking. This operation
+        /// may "fail open" without warning.
         /// </summary>
         /// <param name="resource">
         /// REQUIRED: The resource for which the policy detail is being requested.
-        /// `resource` is usually specified as a path. For example, a Project
-        /// resource is specified as `projects/{project}`.
+        /// See the operation documentation for the appropriate value for this field.
         /// </param>
         /// <param name="permissions">
         /// The set of permissions to check for the `resource`. Permissions with
@@ -3369,11 +4682,14 @@ namespace Google.Cloud.PubSub.V1
         /// Returns permissions that a caller has on the specified resource.
         /// If the resource does not exist, this will return an empty set of
         /// permissions, not a NOT_FOUND error.
+        ///
+        /// Note: This operation is designed to be used for building permission-aware
+        /// UIs and command-line tools, not for authorization checking. This operation
+        /// may "fail open" without warning.
         /// </summary>
         /// <param name="resource">
         /// REQUIRED: The resource for which the policy detail is being requested.
-        /// `resource` is usually specified as a path. For example, a Project
-        /// resource is specified as `projects/{project}`.
+        /// See the operation documentation for the appropriate value for this field.
         /// </param>
         /// <param name="permissions">
         /// The set of permissions to check for the `resource`. Permissions with
@@ -3399,11 +4715,14 @@ namespace Google.Cloud.PubSub.V1
         /// Returns permissions that a caller has on the specified resource.
         /// If the resource does not exist, this will return an empty set of
         /// permissions, not a NOT_FOUND error.
+        ///
+        /// Note: This operation is designed to be used for building permission-aware
+        /// UIs and command-line tools, not for authorization checking. This operation
+        /// may "fail open" without warning.
         /// </summary>
         /// <param name="resource">
         /// REQUIRED: The resource for which the policy detail is being requested.
-        /// `resource` is usually specified as a path. For example, a Project
-        /// resource is specified as `projects/{project}`.
+        /// See the operation documentation for the appropriate value for this field.
         /// </param>
         /// <param name="permissions">
         /// The set of permissions to check for the `resource`. Permissions with
@@ -3432,6 +4751,10 @@ namespace Google.Cloud.PubSub.V1
         /// Returns permissions that a caller has on the specified resource.
         /// If the resource does not exist, this will return an empty set of
         /// permissions, not a NOT_FOUND error.
+        ///
+        /// Note: This operation is designed to be used for building permission-aware
+        /// UIs and command-line tools, not for authorization checking. This operation
+        /// may "fail open" without warning.
         /// </summary>
         /// <param name="request">
         /// The request object containing all of the parameters for the API call.
@@ -3453,6 +4776,10 @@ namespace Google.Cloud.PubSub.V1
         /// Returns permissions that a caller has on the specified resource.
         /// If the resource does not exist, this will return an empty set of
         /// permissions, not a NOT_FOUND error.
+        ///
+        /// Note: This operation is designed to be used for building permission-aware
+        /// UIs and command-line tools, not for authorization checking. This operation
+        /// may "fail open" without warning.
         /// </summary>
         /// <param name="request">
         /// The request object containing all of the parameters for the API call.
@@ -3473,6 +4800,10 @@ namespace Google.Cloud.PubSub.V1
         /// Returns permissions that a caller has on the specified resource.
         /// If the resource does not exist, this will return an empty set of
         /// permissions, not a NOT_FOUND error.
+        ///
+        /// Note: This operation is designed to be used for building permission-aware
+        /// UIs and command-line tools, not for authorization checking. This operation
+        /// may "fail open" without warning.
         /// </summary>
         /// <param name="request">
         /// The request object containing all of the parameters for the API call.
@@ -3528,41 +4859,58 @@ namespace Google.Cloud.PubSub.V1
             gaxgrpc::ClientHelper clientHelper = new gaxgrpc::ClientHelper(effectiveSettings);
             iam::IAMPolicy.IAMPolicyClient grpcIAMPolicyClient = grpcClient.CreateIAMPolicyClient();
             _callCreateSubscription = clientHelper.BuildApiCall<Subscription, Subscription>(
-                GrpcClient.CreateSubscriptionAsync, GrpcClient.CreateSubscription, effectiveSettings.CreateSubscriptionSettings);
+                GrpcClient.CreateSubscriptionAsync, GrpcClient.CreateSubscription, effectiveSettings.CreateSubscriptionSettings)
+                .WithGoogleRequestParam("name", request => request.Name);
             _callGetSubscription = clientHelper.BuildApiCall<GetSubscriptionRequest, Subscription>(
-                GrpcClient.GetSubscriptionAsync, GrpcClient.GetSubscription, effectiveSettings.GetSubscriptionSettings);
+                GrpcClient.GetSubscriptionAsync, GrpcClient.GetSubscription, effectiveSettings.GetSubscriptionSettings)
+                .WithGoogleRequestParam("subscription", request => request.Subscription);
             _callUpdateSubscription = clientHelper.BuildApiCall<UpdateSubscriptionRequest, Subscription>(
-                GrpcClient.UpdateSubscriptionAsync, GrpcClient.UpdateSubscription, effectiveSettings.UpdateSubscriptionSettings);
+                GrpcClient.UpdateSubscriptionAsync, GrpcClient.UpdateSubscription, effectiveSettings.UpdateSubscriptionSettings)
+                .WithGoogleRequestParam("subscription.name", request => request.Subscription?.Name);
             _callListSubscriptions = clientHelper.BuildApiCall<ListSubscriptionsRequest, ListSubscriptionsResponse>(
-                GrpcClient.ListSubscriptionsAsync, GrpcClient.ListSubscriptions, effectiveSettings.ListSubscriptionsSettings);
+                GrpcClient.ListSubscriptionsAsync, GrpcClient.ListSubscriptions, effectiveSettings.ListSubscriptionsSettings)
+                .WithGoogleRequestParam("project", request => request.Project);
             _callDeleteSubscription = clientHelper.BuildApiCall<DeleteSubscriptionRequest, pbwkt::Empty>(
-                GrpcClient.DeleteSubscriptionAsync, GrpcClient.DeleteSubscription, effectiveSettings.DeleteSubscriptionSettings);
+                GrpcClient.DeleteSubscriptionAsync, GrpcClient.DeleteSubscription, effectiveSettings.DeleteSubscriptionSettings)
+                .WithGoogleRequestParam("subscription", request => request.Subscription);
             _callModifyAckDeadline = clientHelper.BuildApiCall<ModifyAckDeadlineRequest, pbwkt::Empty>(
-                GrpcClient.ModifyAckDeadlineAsync, GrpcClient.ModifyAckDeadline, effectiveSettings.ModifyAckDeadlineSettings);
+                GrpcClient.ModifyAckDeadlineAsync, GrpcClient.ModifyAckDeadline, effectiveSettings.ModifyAckDeadlineSettings)
+                .WithGoogleRequestParam("subscription", request => request.Subscription);
             _callAcknowledge = clientHelper.BuildApiCall<AcknowledgeRequest, pbwkt::Empty>(
-                GrpcClient.AcknowledgeAsync, GrpcClient.Acknowledge, effectiveSettings.AcknowledgeSettings);
+                GrpcClient.AcknowledgeAsync, GrpcClient.Acknowledge, effectiveSettings.AcknowledgeSettings)
+                .WithGoogleRequestParam("subscription", request => request.Subscription);
             _callPull = clientHelper.BuildApiCall<PullRequest, PullResponse>(
-                GrpcClient.PullAsync, GrpcClient.Pull, effectiveSettings.PullSettings);
+                GrpcClient.PullAsync, GrpcClient.Pull, effectiveSettings.PullSettings)
+                .WithGoogleRequestParam("subscription", request => request.Subscription);
             _callStreamingPull = clientHelper.BuildApiCall<StreamingPullRequest, StreamingPullResponse>(
                 GrpcClient.StreamingPull, effectiveSettings.StreamingPullSettings, effectiveSettings.StreamingPullStreamingSettings);
             _callModifyPushConfig = clientHelper.BuildApiCall<ModifyPushConfigRequest, pbwkt::Empty>(
-                GrpcClient.ModifyPushConfigAsync, GrpcClient.ModifyPushConfig, effectiveSettings.ModifyPushConfigSettings);
+                GrpcClient.ModifyPushConfigAsync, GrpcClient.ModifyPushConfig, effectiveSettings.ModifyPushConfigSettings)
+                .WithGoogleRequestParam("subscription", request => request.Subscription);
             _callListSnapshots = clientHelper.BuildApiCall<ListSnapshotsRequest, ListSnapshotsResponse>(
-                GrpcClient.ListSnapshotsAsync, GrpcClient.ListSnapshots, effectiveSettings.ListSnapshotsSettings);
+                GrpcClient.ListSnapshotsAsync, GrpcClient.ListSnapshots, effectiveSettings.ListSnapshotsSettings)
+                .WithGoogleRequestParam("project", request => request.Project);
             _callCreateSnapshot = clientHelper.BuildApiCall<CreateSnapshotRequest, Snapshot>(
-                GrpcClient.CreateSnapshotAsync, GrpcClient.CreateSnapshot, effectiveSettings.CreateSnapshotSettings);
+                GrpcClient.CreateSnapshotAsync, GrpcClient.CreateSnapshot, effectiveSettings.CreateSnapshotSettings)
+                .WithGoogleRequestParam("name", request => request.Name);
             _callUpdateSnapshot = clientHelper.BuildApiCall<UpdateSnapshotRequest, Snapshot>(
-                GrpcClient.UpdateSnapshotAsync, GrpcClient.UpdateSnapshot, effectiveSettings.UpdateSnapshotSettings);
+                GrpcClient.UpdateSnapshotAsync, GrpcClient.UpdateSnapshot, effectiveSettings.UpdateSnapshotSettings)
+                .WithGoogleRequestParam("snapshot.name", request => request.Snapshot?.Name);
             _callDeleteSnapshot = clientHelper.BuildApiCall<DeleteSnapshotRequest, pbwkt::Empty>(
-                GrpcClient.DeleteSnapshotAsync, GrpcClient.DeleteSnapshot, effectiveSettings.DeleteSnapshotSettings);
+                GrpcClient.DeleteSnapshotAsync, GrpcClient.DeleteSnapshot, effectiveSettings.DeleteSnapshotSettings)
+                .WithGoogleRequestParam("snapshot", request => request.Snapshot);
             _callSeek = clientHelper.BuildApiCall<SeekRequest, SeekResponse>(
-                GrpcClient.SeekAsync, GrpcClient.Seek, effectiveSettings.SeekSettings);
+                GrpcClient.SeekAsync, GrpcClient.Seek, effectiveSettings.SeekSettings)
+                .WithGoogleRequestParam("subscription", request => request.Subscription);
             _callSetIamPolicy = clientHelper.BuildApiCall<iam::SetIamPolicyRequest, iam::Policy>(
-                grpcIAMPolicyClient.SetIamPolicyAsync, grpcIAMPolicyClient.SetIamPolicy, effectiveSettings.SetIamPolicySettings);
+                grpcIAMPolicyClient.SetIamPolicyAsync, grpcIAMPolicyClient.SetIamPolicy, effectiveSettings.SetIamPolicySettings)
+                .WithGoogleRequestParam("resource", request => request.Resource);
             _callGetIamPolicy = clientHelper.BuildApiCall<iam::GetIamPolicyRequest, iam::Policy>(
-                grpcIAMPolicyClient.GetIamPolicyAsync, grpcIAMPolicyClient.GetIamPolicy, effectiveSettings.GetIamPolicySettings);
+                grpcIAMPolicyClient.GetIamPolicyAsync, grpcIAMPolicyClient.GetIamPolicy, effectiveSettings.GetIamPolicySettings)
+                .WithGoogleRequestParam("resource", request => request.Resource);
             _callTestIamPermissions = clientHelper.BuildApiCall<iam::TestIamPermissionsRequest, iam::TestIamPermissionsResponse>(
-                grpcIAMPolicyClient.TestIamPermissionsAsync, grpcIAMPolicyClient.TestIamPermissions, effectiveSettings.TestIamPermissionsSettings);
+                grpcIAMPolicyClient.TestIamPermissionsAsync, grpcIAMPolicyClient.TestIamPermissions, effectiveSettings.TestIamPermissionsSettings)
+                .WithGoogleRequestParam("resource", request => request.Resource);
             Modify_ApiCall(ref _callCreateSubscription);
             Modify_CreateSubscriptionApiCall(ref _callCreateSubscription);
             Modify_ApiCall(ref _callGetSubscription);
@@ -3665,16 +5013,18 @@ namespace Google.Cloud.PubSub.V1
 
         /// <summary>
         /// Creates a subscription to a given topic. See the
-        /// &lt;a href="/pubsub/docs/admin#resource_names"&gt; resource name rules&lt;/a&gt;.
+        /// &lt;a href="https://cloud.google.com/pubsub/docs/admin#resource_names"&gt;
+        /// resource name rules&lt;/a&gt;.
         /// If the subscription already exists, returns `ALREADY_EXISTS`.
         /// If the corresponding topic doesn't exist, returns `NOT_FOUND`.
         ///
         /// If the name is not provided in the request, the server will assign a random
         /// name for this subscription on the same project as the topic, conforming
         /// to the
-        /// [resource name format](https://cloud.google.com/pubsub/docs/overview#names).
-        /// The generated name is populated in the returned Subscription object.
-        /// Note that for REST API requests, you must specify a name in the request.
+        /// [resource name
+        /// format](https://cloud.google.com/pubsub/docs/admin#resource_names). The
+        /// generated name is populated in the returned Subscription object. Note that
+        /// for REST API requests, you must specify a name in the request.
         /// </summary>
         /// <param name="request">
         /// The request object containing all of the parameters for the API call.
@@ -3695,16 +5045,18 @@ namespace Google.Cloud.PubSub.V1
 
         /// <summary>
         /// Creates a subscription to a given topic. See the
-        /// &lt;a href="/pubsub/docs/admin#resource_names"&gt; resource name rules&lt;/a&gt;.
+        /// &lt;a href="https://cloud.google.com/pubsub/docs/admin#resource_names"&gt;
+        /// resource name rules&lt;/a&gt;.
         /// If the subscription already exists, returns `ALREADY_EXISTS`.
         /// If the corresponding topic doesn't exist, returns `NOT_FOUND`.
         ///
         /// If the name is not provided in the request, the server will assign a random
         /// name for this subscription on the same project as the topic, conforming
         /// to the
-        /// [resource name format](https://cloud.google.com/pubsub/docs/overview#names).
-        /// The generated name is populated in the returned Subscription object.
-        /// Note that for REST API requests, you must specify a name in the request.
+        /// [resource name
+        /// format](https://cloud.google.com/pubsub/docs/admin#resource_names). The
+        /// generated name is populated in the returned Subscription object. Note that
+        /// for REST API requests, you must specify a name in the request.
         /// </summary>
         /// <param name="request">
         /// The request object containing all of the parameters for the API call.
@@ -4169,10 +5521,12 @@ namespace Google.Cloud.PubSub.V1
         }
 
         /// <summary>
-        /// Lists the existing snapshots.&lt;br&gt;&lt;br&gt;
-        /// &lt;b&gt;ALPHA:&lt;/b&gt; This feature is part of an alpha release. This API might be
-        /// changed in backward-incompatible ways and is not recommended for production
-        /// use. It is not subject to any SLA or deprecation policy.
+        /// Lists the existing snapshots. Snapshots are used in
+        /// &lt;a href="https://cloud.google.com/pubsub/docs/replay-overview"&gt;Seek&lt;/a&gt;
+        /// operations, which allow
+        /// you to manage message acknowledgments in bulk. That is, you can set the
+        /// acknowledgment state of messages in an existing subscription to the state
+        /// captured by a snapshot.
         /// </summary>
         /// <param name="request">
         /// The request object containing all of the parameters for the API call.
@@ -4192,10 +5546,12 @@ namespace Google.Cloud.PubSub.V1
         }
 
         /// <summary>
-        /// Lists the existing snapshots.&lt;br&gt;&lt;br&gt;
-        /// &lt;b&gt;ALPHA:&lt;/b&gt; This feature is part of an alpha release. This API might be
-        /// changed in backward-incompatible ways and is not recommended for production
-        /// use. It is not subject to any SLA or deprecation policy.
+        /// Lists the existing snapshots. Snapshots are used in
+        /// &lt;a href="https://cloud.google.com/pubsub/docs/replay-overview"&gt;Seek&lt;/a&gt;
+        /// operations, which allow
+        /// you to manage message acknowledgments in bulk. That is, you can set the
+        /// acknowledgment state of messages in an existing subscription to the state
+        /// captured by a snapshot.
         /// </summary>
         /// <param name="request">
         /// The request object containing all of the parameters for the API call.
@@ -4215,21 +5571,24 @@ namespace Google.Cloud.PubSub.V1
         }
 
         /// <summary>
-        /// Creates a snapshot from the requested subscription.&lt;br&gt;&lt;br&gt;
-        /// &lt;b&gt;ALPHA:&lt;/b&gt; This feature is part of an alpha release. This API might be
-        /// changed in backward-incompatible ways and is not recommended for production
-        /// use. It is not subject to any SLA or deprecation policy.&lt;br&gt;&lt;br&gt;
-        /// If the snapshot already exists, returns `ALREADY_EXISTS`.
+        /// Creates a snapshot from the requested subscription. Snapshots are used in
+        /// &lt;a href="https://cloud.google.com/pubsub/docs/replay-overview"&gt;Seek&lt;/a&gt;
+        /// operations, which allow
+        /// you to manage message acknowledgments in bulk. That is, you can set the
+        /// acknowledgment state of messages in an existing subscription to the state
+        /// captured by a snapshot.
+        /// &lt;br&gt;&lt;br&gt;If the snapshot already exists, returns `ALREADY_EXISTS`.
         /// If the requested subscription doesn't exist, returns `NOT_FOUND`.
         /// If the backlog in the subscription is too old -- and the resulting snapshot
         /// would expire in less than 1 hour -- then `FAILED_PRECONDITION` is returned.
         /// See also the `Snapshot.expire_time` field. If the name is not provided in
         /// the request, the server will assign a random
         /// name for this snapshot on the same project as the subscription, conforming
-        /// to the [resource name format](https://cloud.google.com/pubsub/docs/overview#names).
-        /// The generated
-        /// name is populated in the returned Snapshot object. Note that for REST API
-        /// requests, you must specify a name in the request.
+        /// to the
+        /// [resource name
+        /// format](https://cloud.google.com/pubsub/docs/admin#resource_names). The
+        /// generated name is populated in the returned Snapshot object. Note that for
+        /// REST API requests, you must specify a name in the request.
         /// </summary>
         /// <param name="request">
         /// The request object containing all of the parameters for the API call.
@@ -4249,21 +5608,24 @@ namespace Google.Cloud.PubSub.V1
         }
 
         /// <summary>
-        /// Creates a snapshot from the requested subscription.&lt;br&gt;&lt;br&gt;
-        /// &lt;b&gt;ALPHA:&lt;/b&gt; This feature is part of an alpha release. This API might be
-        /// changed in backward-incompatible ways and is not recommended for production
-        /// use. It is not subject to any SLA or deprecation policy.&lt;br&gt;&lt;br&gt;
-        /// If the snapshot already exists, returns `ALREADY_EXISTS`.
+        /// Creates a snapshot from the requested subscription. Snapshots are used in
+        /// &lt;a href="https://cloud.google.com/pubsub/docs/replay-overview"&gt;Seek&lt;/a&gt;
+        /// operations, which allow
+        /// you to manage message acknowledgments in bulk. That is, you can set the
+        /// acknowledgment state of messages in an existing subscription to the state
+        /// captured by a snapshot.
+        /// &lt;br&gt;&lt;br&gt;If the snapshot already exists, returns `ALREADY_EXISTS`.
         /// If the requested subscription doesn't exist, returns `NOT_FOUND`.
         /// If the backlog in the subscription is too old -- and the resulting snapshot
         /// would expire in less than 1 hour -- then `FAILED_PRECONDITION` is returned.
         /// See also the `Snapshot.expire_time` field. If the name is not provided in
         /// the request, the server will assign a random
         /// name for this snapshot on the same project as the subscription, conforming
-        /// to the [resource name format](https://cloud.google.com/pubsub/docs/overview#names).
-        /// The generated
-        /// name is populated in the returned Snapshot object. Note that for REST API
-        /// requests, you must specify a name in the request.
+        /// to the
+        /// [resource name
+        /// format](https://cloud.google.com/pubsub/docs/admin#resource_names). The
+        /// generated name is populated in the returned Snapshot object. Note that for
+        /// REST API requests, you must specify a name in the request.
         /// </summary>
         /// <param name="request">
         /// The request object containing all of the parameters for the API call.
@@ -4283,11 +5645,12 @@ namespace Google.Cloud.PubSub.V1
         }
 
         /// <summary>
-        /// Updates an existing snapshot.&lt;br&gt;&lt;br&gt;
-        /// &lt;b&gt;ALPHA:&lt;/b&gt; This feature is part of an alpha release. This API might be
-        /// changed in backward-incompatible ways and is not recommended for production
-        /// use. It is not subject to any SLA or deprecation policy.
-        /// Note that certain properties of a snapshot are not modifiable.
+        /// Updates an existing snapshot. Snapshots are used in
+        /// &lt;a href="https://cloud.google.com/pubsub/docs/replay-overview"&gt;Seek&lt;/a&gt;
+        /// operations, which allow
+        /// you to manage message acknowledgments in bulk. That is, you can set the
+        /// acknowledgment state of messages in an existing subscription to the state
+        /// captured by a snapshot.
         /// </summary>
         /// <param name="request">
         /// The request object containing all of the parameters for the API call.
@@ -4307,11 +5670,12 @@ namespace Google.Cloud.PubSub.V1
         }
 
         /// <summary>
-        /// Updates an existing snapshot.&lt;br&gt;&lt;br&gt;
-        /// &lt;b&gt;ALPHA:&lt;/b&gt; This feature is part of an alpha release. This API might be
-        /// changed in backward-incompatible ways and is not recommended for production
-        /// use. It is not subject to any SLA or deprecation policy.
-        /// Note that certain properties of a snapshot are not modifiable.
+        /// Updates an existing snapshot. Snapshots are used in
+        /// &lt;a href="https://cloud.google.com/pubsub/docs/replay-overview"&gt;Seek&lt;/a&gt;
+        /// operations, which allow
+        /// you to manage message acknowledgments in bulk. That is, you can set the
+        /// acknowledgment state of messages in an existing subscription to the state
+        /// captured by a snapshot.
         /// </summary>
         /// <param name="request">
         /// The request object containing all of the parameters for the API call.
@@ -4331,10 +5695,12 @@ namespace Google.Cloud.PubSub.V1
         }
 
         /// <summary>
-        /// Removes an existing snapshot. &lt;br&gt;&lt;br&gt;
-        /// &lt;b&gt;ALPHA:&lt;/b&gt; This feature is part of an alpha release. This API might be
-        /// changed in backward-incompatible ways and is not recommended for production
-        /// use. It is not subject to any SLA or deprecation policy.
+        /// Removes an existing snapshot. Snapshots are used in
+        /// &lt;a href="https://cloud.google.com/pubsub/docs/replay-overview"&gt;Seek&lt;/a&gt;
+        /// operations, which allow
+        /// you to manage message acknowledgments in bulk. That is, you can set the
+        /// acknowledgment state of messages in an existing subscription to the state
+        /// captured by a snapshot.&lt;br&gt;&lt;br&gt;
         /// When the snapshot is deleted, all messages retained in the snapshot
         /// are immediately dropped. After a snapshot is deleted, a new one may be
         /// created with the same name, but the new one has no association with the old
@@ -4358,10 +5724,12 @@ namespace Google.Cloud.PubSub.V1
         }
 
         /// <summary>
-        /// Removes an existing snapshot. &lt;br&gt;&lt;br&gt;
-        /// &lt;b&gt;ALPHA:&lt;/b&gt; This feature is part of an alpha release. This API might be
-        /// changed in backward-incompatible ways and is not recommended for production
-        /// use. It is not subject to any SLA or deprecation policy.
+        /// Removes an existing snapshot. Snapshots are used in
+        /// &lt;a href="https://cloud.google.com/pubsub/docs/replay-overview"&gt;Seek&lt;/a&gt;
+        /// operations, which allow
+        /// you to manage message acknowledgments in bulk. That is, you can set the
+        /// acknowledgment state of messages in an existing subscription to the state
+        /// captured by a snapshot.&lt;br&gt;&lt;br&gt;
         /// When the snapshot is deleted, all messages retained in the snapshot
         /// are immediately dropped. After a snapshot is deleted, a new one may be
         /// created with the same name, but the new one has no association with the old
@@ -4383,10 +5751,13 @@ namespace Google.Cloud.PubSub.V1
 
         /// <summary>
         /// Seeks an existing subscription to a point in time or to a given snapshot,
-        /// whichever is provided in the request.&lt;br&gt;&lt;br&gt;
-        /// &lt;b&gt;ALPHA:&lt;/b&gt; This feature is part of an alpha release. This API might be
-        /// changed in backward-incompatible ways and is not recommended for production
-        /// use. It is not subject to any SLA or deprecation policy.
+        /// whichever is provided in the request. Snapshots are used in
+        /// &lt;a href="https://cloud.google.com/pubsub/docs/replay-overview"&gt;Seek&lt;/a&gt;
+        /// operations, which allow
+        /// you to manage message acknowledgments in bulk. That is, you can set the
+        /// acknowledgment state of messages in an existing subscription to the state
+        /// captured by a snapshot. Note that both the subscription and the snapshot
+        /// must be on the same topic.
         /// </summary>
         /// <param name="request">
         /// The request object containing all of the parameters for the API call.
@@ -4407,10 +5778,13 @@ namespace Google.Cloud.PubSub.V1
 
         /// <summary>
         /// Seeks an existing subscription to a point in time or to a given snapshot,
-        /// whichever is provided in the request.&lt;br&gt;&lt;br&gt;
-        /// &lt;b&gt;ALPHA:&lt;/b&gt; This feature is part of an alpha release. This API might be
-        /// changed in backward-incompatible ways and is not recommended for production
-        /// use. It is not subject to any SLA or deprecation policy.
+        /// whichever is provided in the request. Snapshots are used in
+        /// &lt;a href="https://cloud.google.com/pubsub/docs/replay-overview"&gt;Seek&lt;/a&gt;
+        /// operations, which allow
+        /// you to manage message acknowledgments in bulk. That is, you can set the
+        /// acknowledgment state of messages in an existing subscription to the state
+        /// captured by a snapshot. Note that both the subscription and the snapshot
+        /// must be on the same topic.
         /// </summary>
         /// <param name="request">
         /// The request object containing all of the parameters for the API call.
@@ -4519,6 +5893,10 @@ namespace Google.Cloud.PubSub.V1
         /// Returns permissions that a caller has on the specified resource.
         /// If the resource does not exist, this will return an empty set of
         /// permissions, not a NOT_FOUND error.
+        ///
+        /// Note: This operation is designed to be used for building permission-aware
+        /// UIs and command-line tools, not for authorization checking. This operation
+        /// may "fail open" without warning.
         /// </summary>
         /// <param name="request">
         /// The request object containing all of the parameters for the API call.
@@ -4541,6 +5919,10 @@ namespace Google.Cloud.PubSub.V1
         /// Returns permissions that a caller has on the specified resource.
         /// If the resource does not exist, this will return an empty set of
         /// permissions, not a NOT_FOUND error.
+        ///
+        /// Note: This operation is designed to be used for building permission-aware
+        /// UIs and command-line tools, not for authorization checking. This operation
+        /// may "fail open" without warning.
         /// </summary>
         /// <param name="request">
         /// The request object containing all of the parameters for the API call.

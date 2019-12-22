@@ -19,7 +19,7 @@ namespace Google.Cloud.Firestore
     /// <summary>
     /// Attribute indicating that a type is intended to be used with Firestore.
     /// </summary>
-    [AttributeUsage(AttributeTargets.Class)]
+    [AttributeUsage(AttributeTargets.Class | AttributeTargets.Struct | AttributeTargets.Enum | AttributeTargets.Delegate | AttributeTargets.Interface)]
     public sealed class FirestoreDataAttribute : Attribute
     {
         /// <summary>
@@ -27,6 +27,11 @@ namespace Google.Cloud.Firestore
         /// <see cref="UnknownPropertyHandling.Warn"/>.
         /// </summary>
         public UnknownPropertyHandling UnknownPropertyHandling { get; set; }
+
+        /// <summary>
+        /// A custom converter type to use for serializing and deserializing the attributed type.
+        /// </summary>
+        public System.Type ConverterType { get; set; }
 
         /// <summary>
         /// Constructs a new instance with default values for options.

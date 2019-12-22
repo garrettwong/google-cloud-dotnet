@@ -3,7 +3,7 @@
 //     source: google/cloud/dialogflow/v2/agent.proto
 // </auto-generated>
 // Original file comments:
-// Copyright 2018 Google Inc.
+// Copyright 2019 Google LLC.
 //
 // Licensed under the Apache License, Version 2.0 (the "License");
 // you may not use this file except in compliance with the License.
@@ -17,7 +17,8 @@
 // See the License for the specific language governing permissions and
 // limitations under the License.
 //
-#pragma warning disable 1591
+//
+#pragma warning disable 0414, 1591
 #region Designer generated code
 
 using grpc = global::Grpc.Core;
@@ -36,75 +37,95 @@ namespace Google.Cloud.Dialogflow.V2 {
   ///
   /// You can create an agent using both Dialogflow Standard Edition and
   /// Dialogflow Enterprise Edition. For details, see
-  /// [Dialogflow Editions](/dialogflow-enterprise/docs/editions).
+  /// [Dialogflow
+  /// Editions](https://cloud.google.com/dialogflow/docs/editions).
   ///
   /// You can save your agent for backup or versioning by exporting the agent by
   /// using the [ExportAgent][google.cloud.dialogflow.v2.Agents.ExportAgent] method. You can import a saved
   /// agent by using the [ImportAgent][google.cloud.dialogflow.v2.Agents.ImportAgent] method.
   ///
   /// Dialogflow provides several
-  /// [prebuilt agents](https://dialogflow.com/docs/prebuilt-agents) for common
-  /// conversation scenarios such as determining a date and time, converting
-  /// currency, and so on.
+  /// [prebuilt
+  /// agents](https://cloud.google.com/dialogflow/docs/agents-prebuilt)
+  /// for common conversation scenarios such as determining a date and time,
+  /// converting currency, and so on.
   ///
   /// For more information about agents, see the
-  /// [Dialogflow documentation](https://dialogflow.com/docs/agents).
+  /// [Dialogflow
+  /// documentation](https://cloud.google.com/dialogflow/docs/agents-overview).
   /// </summary>
   public static partial class Agents
   {
     static readonly string __ServiceName = "google.cloud.dialogflow.v2.Agents";
 
-    static readonly grpc::Marshaller<global::Google.Cloud.Dialogflow.V2.GetAgentRequest> __Marshaller_GetAgentRequest = grpc::Marshallers.Create((arg) => global::Google.Protobuf.MessageExtensions.ToByteArray(arg), global::Google.Cloud.Dialogflow.V2.GetAgentRequest.Parser.ParseFrom);
-    static readonly grpc::Marshaller<global::Google.Cloud.Dialogflow.V2.Agent> __Marshaller_Agent = grpc::Marshallers.Create((arg) => global::Google.Protobuf.MessageExtensions.ToByteArray(arg), global::Google.Cloud.Dialogflow.V2.Agent.Parser.ParseFrom);
-    static readonly grpc::Marshaller<global::Google.Cloud.Dialogflow.V2.SearchAgentsRequest> __Marshaller_SearchAgentsRequest = grpc::Marshallers.Create((arg) => global::Google.Protobuf.MessageExtensions.ToByteArray(arg), global::Google.Cloud.Dialogflow.V2.SearchAgentsRequest.Parser.ParseFrom);
-    static readonly grpc::Marshaller<global::Google.Cloud.Dialogflow.V2.SearchAgentsResponse> __Marshaller_SearchAgentsResponse = grpc::Marshallers.Create((arg) => global::Google.Protobuf.MessageExtensions.ToByteArray(arg), global::Google.Cloud.Dialogflow.V2.SearchAgentsResponse.Parser.ParseFrom);
-    static readonly grpc::Marshaller<global::Google.Cloud.Dialogflow.V2.TrainAgentRequest> __Marshaller_TrainAgentRequest = grpc::Marshallers.Create((arg) => global::Google.Protobuf.MessageExtensions.ToByteArray(arg), global::Google.Cloud.Dialogflow.V2.TrainAgentRequest.Parser.ParseFrom);
-    static readonly grpc::Marshaller<global::Google.LongRunning.Operation> __Marshaller_Operation = grpc::Marshallers.Create((arg) => global::Google.Protobuf.MessageExtensions.ToByteArray(arg), global::Google.LongRunning.Operation.Parser.ParseFrom);
-    static readonly grpc::Marshaller<global::Google.Cloud.Dialogflow.V2.ExportAgentRequest> __Marshaller_ExportAgentRequest = grpc::Marshallers.Create((arg) => global::Google.Protobuf.MessageExtensions.ToByteArray(arg), global::Google.Cloud.Dialogflow.V2.ExportAgentRequest.Parser.ParseFrom);
-    static readonly grpc::Marshaller<global::Google.Cloud.Dialogflow.V2.ImportAgentRequest> __Marshaller_ImportAgentRequest = grpc::Marshallers.Create((arg) => global::Google.Protobuf.MessageExtensions.ToByteArray(arg), global::Google.Cloud.Dialogflow.V2.ImportAgentRequest.Parser.ParseFrom);
-    static readonly grpc::Marshaller<global::Google.Cloud.Dialogflow.V2.RestoreAgentRequest> __Marshaller_RestoreAgentRequest = grpc::Marshallers.Create((arg) => global::Google.Protobuf.MessageExtensions.ToByteArray(arg), global::Google.Cloud.Dialogflow.V2.RestoreAgentRequest.Parser.ParseFrom);
+    static readonly grpc::Marshaller<global::Google.Cloud.Dialogflow.V2.GetAgentRequest> __Marshaller_google_cloud_dialogflow_v2_GetAgentRequest = grpc::Marshallers.Create((arg) => global::Google.Protobuf.MessageExtensions.ToByteArray(arg), global::Google.Cloud.Dialogflow.V2.GetAgentRequest.Parser.ParseFrom);
+    static readonly grpc::Marshaller<global::Google.Cloud.Dialogflow.V2.Agent> __Marshaller_google_cloud_dialogflow_v2_Agent = grpc::Marshallers.Create((arg) => global::Google.Protobuf.MessageExtensions.ToByteArray(arg), global::Google.Cloud.Dialogflow.V2.Agent.Parser.ParseFrom);
+    static readonly grpc::Marshaller<global::Google.Cloud.Dialogflow.V2.SetAgentRequest> __Marshaller_google_cloud_dialogflow_v2_SetAgentRequest = grpc::Marshallers.Create((arg) => global::Google.Protobuf.MessageExtensions.ToByteArray(arg), global::Google.Cloud.Dialogflow.V2.SetAgentRequest.Parser.ParseFrom);
+    static readonly grpc::Marshaller<global::Google.Cloud.Dialogflow.V2.DeleteAgentRequest> __Marshaller_google_cloud_dialogflow_v2_DeleteAgentRequest = grpc::Marshallers.Create((arg) => global::Google.Protobuf.MessageExtensions.ToByteArray(arg), global::Google.Cloud.Dialogflow.V2.DeleteAgentRequest.Parser.ParseFrom);
+    static readonly grpc::Marshaller<global::Google.Protobuf.WellKnownTypes.Empty> __Marshaller_google_protobuf_Empty = grpc::Marshallers.Create((arg) => global::Google.Protobuf.MessageExtensions.ToByteArray(arg), global::Google.Protobuf.WellKnownTypes.Empty.Parser.ParseFrom);
+    static readonly grpc::Marshaller<global::Google.Cloud.Dialogflow.V2.SearchAgentsRequest> __Marshaller_google_cloud_dialogflow_v2_SearchAgentsRequest = grpc::Marshallers.Create((arg) => global::Google.Protobuf.MessageExtensions.ToByteArray(arg), global::Google.Cloud.Dialogflow.V2.SearchAgentsRequest.Parser.ParseFrom);
+    static readonly grpc::Marshaller<global::Google.Cloud.Dialogflow.V2.SearchAgentsResponse> __Marshaller_google_cloud_dialogflow_v2_SearchAgentsResponse = grpc::Marshallers.Create((arg) => global::Google.Protobuf.MessageExtensions.ToByteArray(arg), global::Google.Cloud.Dialogflow.V2.SearchAgentsResponse.Parser.ParseFrom);
+    static readonly grpc::Marshaller<global::Google.Cloud.Dialogflow.V2.TrainAgentRequest> __Marshaller_google_cloud_dialogflow_v2_TrainAgentRequest = grpc::Marshallers.Create((arg) => global::Google.Protobuf.MessageExtensions.ToByteArray(arg), global::Google.Cloud.Dialogflow.V2.TrainAgentRequest.Parser.ParseFrom);
+    static readonly grpc::Marshaller<global::Google.LongRunning.Operation> __Marshaller_google_longrunning_Operation = grpc::Marshallers.Create((arg) => global::Google.Protobuf.MessageExtensions.ToByteArray(arg), global::Google.LongRunning.Operation.Parser.ParseFrom);
+    static readonly grpc::Marshaller<global::Google.Cloud.Dialogflow.V2.ExportAgentRequest> __Marshaller_google_cloud_dialogflow_v2_ExportAgentRequest = grpc::Marshallers.Create((arg) => global::Google.Protobuf.MessageExtensions.ToByteArray(arg), global::Google.Cloud.Dialogflow.V2.ExportAgentRequest.Parser.ParseFrom);
+    static readonly grpc::Marshaller<global::Google.Cloud.Dialogflow.V2.ImportAgentRequest> __Marshaller_google_cloud_dialogflow_v2_ImportAgentRequest = grpc::Marshallers.Create((arg) => global::Google.Protobuf.MessageExtensions.ToByteArray(arg), global::Google.Cloud.Dialogflow.V2.ImportAgentRequest.Parser.ParseFrom);
+    static readonly grpc::Marshaller<global::Google.Cloud.Dialogflow.V2.RestoreAgentRequest> __Marshaller_google_cloud_dialogflow_v2_RestoreAgentRequest = grpc::Marshallers.Create((arg) => global::Google.Protobuf.MessageExtensions.ToByteArray(arg), global::Google.Cloud.Dialogflow.V2.RestoreAgentRequest.Parser.ParseFrom);
 
     static readonly grpc::Method<global::Google.Cloud.Dialogflow.V2.GetAgentRequest, global::Google.Cloud.Dialogflow.V2.Agent> __Method_GetAgent = new grpc::Method<global::Google.Cloud.Dialogflow.V2.GetAgentRequest, global::Google.Cloud.Dialogflow.V2.Agent>(
         grpc::MethodType.Unary,
         __ServiceName,
         "GetAgent",
-        __Marshaller_GetAgentRequest,
-        __Marshaller_Agent);
+        __Marshaller_google_cloud_dialogflow_v2_GetAgentRequest,
+        __Marshaller_google_cloud_dialogflow_v2_Agent);
+
+    static readonly grpc::Method<global::Google.Cloud.Dialogflow.V2.SetAgentRequest, global::Google.Cloud.Dialogflow.V2.Agent> __Method_SetAgent = new grpc::Method<global::Google.Cloud.Dialogflow.V2.SetAgentRequest, global::Google.Cloud.Dialogflow.V2.Agent>(
+        grpc::MethodType.Unary,
+        __ServiceName,
+        "SetAgent",
+        __Marshaller_google_cloud_dialogflow_v2_SetAgentRequest,
+        __Marshaller_google_cloud_dialogflow_v2_Agent);
+
+    static readonly grpc::Method<global::Google.Cloud.Dialogflow.V2.DeleteAgentRequest, global::Google.Protobuf.WellKnownTypes.Empty> __Method_DeleteAgent = new grpc::Method<global::Google.Cloud.Dialogflow.V2.DeleteAgentRequest, global::Google.Protobuf.WellKnownTypes.Empty>(
+        grpc::MethodType.Unary,
+        __ServiceName,
+        "DeleteAgent",
+        __Marshaller_google_cloud_dialogflow_v2_DeleteAgentRequest,
+        __Marshaller_google_protobuf_Empty);
 
     static readonly grpc::Method<global::Google.Cloud.Dialogflow.V2.SearchAgentsRequest, global::Google.Cloud.Dialogflow.V2.SearchAgentsResponse> __Method_SearchAgents = new grpc::Method<global::Google.Cloud.Dialogflow.V2.SearchAgentsRequest, global::Google.Cloud.Dialogflow.V2.SearchAgentsResponse>(
         grpc::MethodType.Unary,
         __ServiceName,
         "SearchAgents",
-        __Marshaller_SearchAgentsRequest,
-        __Marshaller_SearchAgentsResponse);
+        __Marshaller_google_cloud_dialogflow_v2_SearchAgentsRequest,
+        __Marshaller_google_cloud_dialogflow_v2_SearchAgentsResponse);
 
     static readonly grpc::Method<global::Google.Cloud.Dialogflow.V2.TrainAgentRequest, global::Google.LongRunning.Operation> __Method_TrainAgent = new grpc::Method<global::Google.Cloud.Dialogflow.V2.TrainAgentRequest, global::Google.LongRunning.Operation>(
         grpc::MethodType.Unary,
         __ServiceName,
         "TrainAgent",
-        __Marshaller_TrainAgentRequest,
-        __Marshaller_Operation);
+        __Marshaller_google_cloud_dialogflow_v2_TrainAgentRequest,
+        __Marshaller_google_longrunning_Operation);
 
     static readonly grpc::Method<global::Google.Cloud.Dialogflow.V2.ExportAgentRequest, global::Google.LongRunning.Operation> __Method_ExportAgent = new grpc::Method<global::Google.Cloud.Dialogflow.V2.ExportAgentRequest, global::Google.LongRunning.Operation>(
         grpc::MethodType.Unary,
         __ServiceName,
         "ExportAgent",
-        __Marshaller_ExportAgentRequest,
-        __Marshaller_Operation);
+        __Marshaller_google_cloud_dialogflow_v2_ExportAgentRequest,
+        __Marshaller_google_longrunning_Operation);
 
     static readonly grpc::Method<global::Google.Cloud.Dialogflow.V2.ImportAgentRequest, global::Google.LongRunning.Operation> __Method_ImportAgent = new grpc::Method<global::Google.Cloud.Dialogflow.V2.ImportAgentRequest, global::Google.LongRunning.Operation>(
         grpc::MethodType.Unary,
         __ServiceName,
         "ImportAgent",
-        __Marshaller_ImportAgentRequest,
-        __Marshaller_Operation);
+        __Marshaller_google_cloud_dialogflow_v2_ImportAgentRequest,
+        __Marshaller_google_longrunning_Operation);
 
     static readonly grpc::Method<global::Google.Cloud.Dialogflow.V2.RestoreAgentRequest, global::Google.LongRunning.Operation> __Method_RestoreAgent = new grpc::Method<global::Google.Cloud.Dialogflow.V2.RestoreAgentRequest, global::Google.LongRunning.Operation>(
         grpc::MethodType.Unary,
         __ServiceName,
         "RestoreAgent",
-        __Marshaller_RestoreAgentRequest,
-        __Marshaller_Operation);
+        __Marshaller_google_cloud_dialogflow_v2_RestoreAgentRequest,
+        __Marshaller_google_longrunning_Operation);
 
     /// <summary>Service descriptor</summary>
     public static global::Google.Protobuf.Reflection.ServiceDescriptor Descriptor
@@ -113,6 +134,7 @@ namespace Google.Cloud.Dialogflow.V2 {
     }
 
     /// <summary>Base class for server-side implementations of Agents</summary>
+    [grpc::BindServiceMethod(typeof(Agents), "BindService")]
     public abstract partial class AgentsBase
     {
       /// <summary>
@@ -122,6 +144,28 @@ namespace Google.Cloud.Dialogflow.V2 {
       /// <param name="context">The context of the server-side call handler being invoked.</param>
       /// <returns>The response to send back to the client (wrapped by a task).</returns>
       public virtual global::System.Threading.Tasks.Task<global::Google.Cloud.Dialogflow.V2.Agent> GetAgent(global::Google.Cloud.Dialogflow.V2.GetAgentRequest request, grpc::ServerCallContext context)
+      {
+        throw new grpc::RpcException(new grpc::Status(grpc::StatusCode.Unimplemented, ""));
+      }
+
+      /// <summary>
+      /// Creates/updates the specified agent.
+      /// </summary>
+      /// <param name="request">The request received from the client.</param>
+      /// <param name="context">The context of the server-side call handler being invoked.</param>
+      /// <returns>The response to send back to the client (wrapped by a task).</returns>
+      public virtual global::System.Threading.Tasks.Task<global::Google.Cloud.Dialogflow.V2.Agent> SetAgent(global::Google.Cloud.Dialogflow.V2.SetAgentRequest request, grpc::ServerCallContext context)
+      {
+        throw new grpc::RpcException(new grpc::Status(grpc::StatusCode.Unimplemented, ""));
+      }
+
+      /// <summary>
+      /// Deletes the specified agent.
+      /// </summary>
+      /// <param name="request">The request received from the client.</param>
+      /// <param name="context">The context of the server-side call handler being invoked.</param>
+      /// <returns>The response to send back to the client (wrapped by a task).</returns>
+      public virtual global::System.Threading.Tasks.Task<global::Google.Protobuf.WellKnownTypes.Empty> DeleteAgent(global::Google.Cloud.Dialogflow.V2.DeleteAgentRequest request, grpc::ServerCallContext context)
       {
         throw new grpc::RpcException(new grpc::Status(grpc::StatusCode.Unimplemented, ""));
       }
@@ -146,8 +190,7 @@ namespace Google.Cloud.Dialogflow.V2 {
       /// <summary>
       /// Trains the specified agent.
       ///
-      /// Operation &lt;response: [google.protobuf.Empty][google.protobuf.Empty],
-      ///            metadata: [google.protobuf.Struct][google.protobuf.Struct]>
+      /// Operation &lt;response: [google.protobuf.Empty][google.protobuf.Empty]>
       /// </summary>
       /// <param name="request">The request received from the client.</param>
       /// <param name="context">The context of the server-side call handler being invoked.</param>
@@ -160,8 +203,7 @@ namespace Google.Cloud.Dialogflow.V2 {
       /// <summary>
       /// Exports the specified agent to a ZIP file.
       ///
-      /// Operation &lt;response: [ExportAgentResponse][google.cloud.dialogflow.v2.ExportAgentResponse],
-      ///            metadata: [google.protobuf.Struct][google.protobuf.Struct]>
+      /// Operation &lt;response: [ExportAgentResponse][google.cloud.dialogflow.v2.ExportAgentResponse]>
       /// </summary>
       /// <param name="request">The request received from the client.</param>
       /// <param name="context">The context of the server-side call handler being invoked.</param>
@@ -178,8 +220,7 @@ namespace Google.Cloud.Dialogflow.V2 {
       /// Intents and entity types with the same name are replaced with the new
       /// versions from ImportAgentRequest.
       ///
-      /// Operation &lt;response: [google.protobuf.Empty][google.protobuf.Empty],
-      ///            metadata: [google.protobuf.Struct][google.protobuf.Struct]>
+      /// Operation &lt;response: [google.protobuf.Empty][google.protobuf.Empty]>
       /// </summary>
       /// <param name="request">The request received from the client.</param>
       /// <param name="context">The context of the server-side call handler being invoked.</param>
@@ -195,8 +236,7 @@ namespace Google.Cloud.Dialogflow.V2 {
       /// Replaces the current agent version with a new one. All the intents and
       /// entity types in the older version are deleted.
       ///
-      /// Operation &lt;response: [google.protobuf.Empty][google.protobuf.Empty],
-      ///            metadata: [google.protobuf.Struct][google.protobuf.Struct]>
+      /// Operation &lt;response: [google.protobuf.Empty][google.protobuf.Empty]>
       /// </summary>
       /// <param name="request">The request received from the client.</param>
       /// <param name="context">The context of the server-side call handler being invoked.</param>
@@ -276,6 +316,94 @@ namespace Google.Cloud.Dialogflow.V2 {
         return CallInvoker.AsyncUnaryCall(__Method_GetAgent, null, options, request);
       }
       /// <summary>
+      /// Creates/updates the specified agent.
+      /// </summary>
+      /// <param name="request">The request to send to the server.</param>
+      /// <param name="headers">The initial metadata to send with the call. This parameter is optional.</param>
+      /// <param name="deadline">An optional deadline for the call. The call will be cancelled if deadline is hit.</param>
+      /// <param name="cancellationToken">An optional token for canceling the call.</param>
+      /// <returns>The response received from the server.</returns>
+      public virtual global::Google.Cloud.Dialogflow.V2.Agent SetAgent(global::Google.Cloud.Dialogflow.V2.SetAgentRequest request, grpc::Metadata headers = null, global::System.DateTime? deadline = null, global::System.Threading.CancellationToken cancellationToken = default(global::System.Threading.CancellationToken))
+      {
+        return SetAgent(request, new grpc::CallOptions(headers, deadline, cancellationToken));
+      }
+      /// <summary>
+      /// Creates/updates the specified agent.
+      /// </summary>
+      /// <param name="request">The request to send to the server.</param>
+      /// <param name="options">The options for the call.</param>
+      /// <returns>The response received from the server.</returns>
+      public virtual global::Google.Cloud.Dialogflow.V2.Agent SetAgent(global::Google.Cloud.Dialogflow.V2.SetAgentRequest request, grpc::CallOptions options)
+      {
+        return CallInvoker.BlockingUnaryCall(__Method_SetAgent, null, options, request);
+      }
+      /// <summary>
+      /// Creates/updates the specified agent.
+      /// </summary>
+      /// <param name="request">The request to send to the server.</param>
+      /// <param name="headers">The initial metadata to send with the call. This parameter is optional.</param>
+      /// <param name="deadline">An optional deadline for the call. The call will be cancelled if deadline is hit.</param>
+      /// <param name="cancellationToken">An optional token for canceling the call.</param>
+      /// <returns>The call object.</returns>
+      public virtual grpc::AsyncUnaryCall<global::Google.Cloud.Dialogflow.V2.Agent> SetAgentAsync(global::Google.Cloud.Dialogflow.V2.SetAgentRequest request, grpc::Metadata headers = null, global::System.DateTime? deadline = null, global::System.Threading.CancellationToken cancellationToken = default(global::System.Threading.CancellationToken))
+      {
+        return SetAgentAsync(request, new grpc::CallOptions(headers, deadline, cancellationToken));
+      }
+      /// <summary>
+      /// Creates/updates the specified agent.
+      /// </summary>
+      /// <param name="request">The request to send to the server.</param>
+      /// <param name="options">The options for the call.</param>
+      /// <returns>The call object.</returns>
+      public virtual grpc::AsyncUnaryCall<global::Google.Cloud.Dialogflow.V2.Agent> SetAgentAsync(global::Google.Cloud.Dialogflow.V2.SetAgentRequest request, grpc::CallOptions options)
+      {
+        return CallInvoker.AsyncUnaryCall(__Method_SetAgent, null, options, request);
+      }
+      /// <summary>
+      /// Deletes the specified agent.
+      /// </summary>
+      /// <param name="request">The request to send to the server.</param>
+      /// <param name="headers">The initial metadata to send with the call. This parameter is optional.</param>
+      /// <param name="deadline">An optional deadline for the call. The call will be cancelled if deadline is hit.</param>
+      /// <param name="cancellationToken">An optional token for canceling the call.</param>
+      /// <returns>The response received from the server.</returns>
+      public virtual global::Google.Protobuf.WellKnownTypes.Empty DeleteAgent(global::Google.Cloud.Dialogflow.V2.DeleteAgentRequest request, grpc::Metadata headers = null, global::System.DateTime? deadline = null, global::System.Threading.CancellationToken cancellationToken = default(global::System.Threading.CancellationToken))
+      {
+        return DeleteAgent(request, new grpc::CallOptions(headers, deadline, cancellationToken));
+      }
+      /// <summary>
+      /// Deletes the specified agent.
+      /// </summary>
+      /// <param name="request">The request to send to the server.</param>
+      /// <param name="options">The options for the call.</param>
+      /// <returns>The response received from the server.</returns>
+      public virtual global::Google.Protobuf.WellKnownTypes.Empty DeleteAgent(global::Google.Cloud.Dialogflow.V2.DeleteAgentRequest request, grpc::CallOptions options)
+      {
+        return CallInvoker.BlockingUnaryCall(__Method_DeleteAgent, null, options, request);
+      }
+      /// <summary>
+      /// Deletes the specified agent.
+      /// </summary>
+      /// <param name="request">The request to send to the server.</param>
+      /// <param name="headers">The initial metadata to send with the call. This parameter is optional.</param>
+      /// <param name="deadline">An optional deadline for the call. The call will be cancelled if deadline is hit.</param>
+      /// <param name="cancellationToken">An optional token for canceling the call.</param>
+      /// <returns>The call object.</returns>
+      public virtual grpc::AsyncUnaryCall<global::Google.Protobuf.WellKnownTypes.Empty> DeleteAgentAsync(global::Google.Cloud.Dialogflow.V2.DeleteAgentRequest request, grpc::Metadata headers = null, global::System.DateTime? deadline = null, global::System.Threading.CancellationToken cancellationToken = default(global::System.Threading.CancellationToken))
+      {
+        return DeleteAgentAsync(request, new grpc::CallOptions(headers, deadline, cancellationToken));
+      }
+      /// <summary>
+      /// Deletes the specified agent.
+      /// </summary>
+      /// <param name="request">The request to send to the server.</param>
+      /// <param name="options">The options for the call.</param>
+      /// <returns>The call object.</returns>
+      public virtual grpc::AsyncUnaryCall<global::Google.Protobuf.WellKnownTypes.Empty> DeleteAgentAsync(global::Google.Cloud.Dialogflow.V2.DeleteAgentRequest request, grpc::CallOptions options)
+      {
+        return CallInvoker.AsyncUnaryCall(__Method_DeleteAgent, null, options, request);
+      }
+      /// <summary>
       /// Returns the list of agents.
       ///
       /// Since there is at most one conversational agent per project, this method is
@@ -346,8 +474,7 @@ namespace Google.Cloud.Dialogflow.V2 {
       /// <summary>
       /// Trains the specified agent.
       ///
-      /// Operation &lt;response: [google.protobuf.Empty][google.protobuf.Empty],
-      ///            metadata: [google.protobuf.Struct][google.protobuf.Struct]>
+      /// Operation &lt;response: [google.protobuf.Empty][google.protobuf.Empty]>
       /// </summary>
       /// <param name="request">The request to send to the server.</param>
       /// <param name="headers">The initial metadata to send with the call. This parameter is optional.</param>
@@ -361,8 +488,7 @@ namespace Google.Cloud.Dialogflow.V2 {
       /// <summary>
       /// Trains the specified agent.
       ///
-      /// Operation &lt;response: [google.protobuf.Empty][google.protobuf.Empty],
-      ///            metadata: [google.protobuf.Struct][google.protobuf.Struct]>
+      /// Operation &lt;response: [google.protobuf.Empty][google.protobuf.Empty]>
       /// </summary>
       /// <param name="request">The request to send to the server.</param>
       /// <param name="options">The options for the call.</param>
@@ -374,8 +500,7 @@ namespace Google.Cloud.Dialogflow.V2 {
       /// <summary>
       /// Trains the specified agent.
       ///
-      /// Operation &lt;response: [google.protobuf.Empty][google.protobuf.Empty],
-      ///            metadata: [google.protobuf.Struct][google.protobuf.Struct]>
+      /// Operation &lt;response: [google.protobuf.Empty][google.protobuf.Empty]>
       /// </summary>
       /// <param name="request">The request to send to the server.</param>
       /// <param name="headers">The initial metadata to send with the call. This parameter is optional.</param>
@@ -389,8 +514,7 @@ namespace Google.Cloud.Dialogflow.V2 {
       /// <summary>
       /// Trains the specified agent.
       ///
-      /// Operation &lt;response: [google.protobuf.Empty][google.protobuf.Empty],
-      ///            metadata: [google.protobuf.Struct][google.protobuf.Struct]>
+      /// Operation &lt;response: [google.protobuf.Empty][google.protobuf.Empty]>
       /// </summary>
       /// <param name="request">The request to send to the server.</param>
       /// <param name="options">The options for the call.</param>
@@ -402,8 +526,7 @@ namespace Google.Cloud.Dialogflow.V2 {
       /// <summary>
       /// Exports the specified agent to a ZIP file.
       ///
-      /// Operation &lt;response: [ExportAgentResponse][google.cloud.dialogflow.v2.ExportAgentResponse],
-      ///            metadata: [google.protobuf.Struct][google.protobuf.Struct]>
+      /// Operation &lt;response: [ExportAgentResponse][google.cloud.dialogflow.v2.ExportAgentResponse]>
       /// </summary>
       /// <param name="request">The request to send to the server.</param>
       /// <param name="headers">The initial metadata to send with the call. This parameter is optional.</param>
@@ -417,8 +540,7 @@ namespace Google.Cloud.Dialogflow.V2 {
       /// <summary>
       /// Exports the specified agent to a ZIP file.
       ///
-      /// Operation &lt;response: [ExportAgentResponse][google.cloud.dialogflow.v2.ExportAgentResponse],
-      ///            metadata: [google.protobuf.Struct][google.protobuf.Struct]>
+      /// Operation &lt;response: [ExportAgentResponse][google.cloud.dialogflow.v2.ExportAgentResponse]>
       /// </summary>
       /// <param name="request">The request to send to the server.</param>
       /// <param name="options">The options for the call.</param>
@@ -430,8 +552,7 @@ namespace Google.Cloud.Dialogflow.V2 {
       /// <summary>
       /// Exports the specified agent to a ZIP file.
       ///
-      /// Operation &lt;response: [ExportAgentResponse][google.cloud.dialogflow.v2.ExportAgentResponse],
-      ///            metadata: [google.protobuf.Struct][google.protobuf.Struct]>
+      /// Operation &lt;response: [ExportAgentResponse][google.cloud.dialogflow.v2.ExportAgentResponse]>
       /// </summary>
       /// <param name="request">The request to send to the server.</param>
       /// <param name="headers">The initial metadata to send with the call. This parameter is optional.</param>
@@ -445,8 +566,7 @@ namespace Google.Cloud.Dialogflow.V2 {
       /// <summary>
       /// Exports the specified agent to a ZIP file.
       ///
-      /// Operation &lt;response: [ExportAgentResponse][google.cloud.dialogflow.v2.ExportAgentResponse],
-      ///            metadata: [google.protobuf.Struct][google.protobuf.Struct]>
+      /// Operation &lt;response: [ExportAgentResponse][google.cloud.dialogflow.v2.ExportAgentResponse]>
       /// </summary>
       /// <param name="request">The request to send to the server.</param>
       /// <param name="options">The options for the call.</param>
@@ -462,8 +582,7 @@ namespace Google.Cloud.Dialogflow.V2 {
       /// Intents and entity types with the same name are replaced with the new
       /// versions from ImportAgentRequest.
       ///
-      /// Operation &lt;response: [google.protobuf.Empty][google.protobuf.Empty],
-      ///            metadata: [google.protobuf.Struct][google.protobuf.Struct]>
+      /// Operation &lt;response: [google.protobuf.Empty][google.protobuf.Empty]>
       /// </summary>
       /// <param name="request">The request to send to the server.</param>
       /// <param name="headers">The initial metadata to send with the call. This parameter is optional.</param>
@@ -481,8 +600,7 @@ namespace Google.Cloud.Dialogflow.V2 {
       /// Intents and entity types with the same name are replaced with the new
       /// versions from ImportAgentRequest.
       ///
-      /// Operation &lt;response: [google.protobuf.Empty][google.protobuf.Empty],
-      ///            metadata: [google.protobuf.Struct][google.protobuf.Struct]>
+      /// Operation &lt;response: [google.protobuf.Empty][google.protobuf.Empty]>
       /// </summary>
       /// <param name="request">The request to send to the server.</param>
       /// <param name="options">The options for the call.</param>
@@ -498,8 +616,7 @@ namespace Google.Cloud.Dialogflow.V2 {
       /// Intents and entity types with the same name are replaced with the new
       /// versions from ImportAgentRequest.
       ///
-      /// Operation &lt;response: [google.protobuf.Empty][google.protobuf.Empty],
-      ///            metadata: [google.protobuf.Struct][google.protobuf.Struct]>
+      /// Operation &lt;response: [google.protobuf.Empty][google.protobuf.Empty]>
       /// </summary>
       /// <param name="request">The request to send to the server.</param>
       /// <param name="headers">The initial metadata to send with the call. This parameter is optional.</param>
@@ -517,8 +634,7 @@ namespace Google.Cloud.Dialogflow.V2 {
       /// Intents and entity types with the same name are replaced with the new
       /// versions from ImportAgentRequest.
       ///
-      /// Operation &lt;response: [google.protobuf.Empty][google.protobuf.Empty],
-      ///            metadata: [google.protobuf.Struct][google.protobuf.Struct]>
+      /// Operation &lt;response: [google.protobuf.Empty][google.protobuf.Empty]>
       /// </summary>
       /// <param name="request">The request to send to the server.</param>
       /// <param name="options">The options for the call.</param>
@@ -533,8 +649,7 @@ namespace Google.Cloud.Dialogflow.V2 {
       /// Replaces the current agent version with a new one. All the intents and
       /// entity types in the older version are deleted.
       ///
-      /// Operation &lt;response: [google.protobuf.Empty][google.protobuf.Empty],
-      ///            metadata: [google.protobuf.Struct][google.protobuf.Struct]>
+      /// Operation &lt;response: [google.protobuf.Empty][google.protobuf.Empty]>
       /// </summary>
       /// <param name="request">The request to send to the server.</param>
       /// <param name="headers">The initial metadata to send with the call. This parameter is optional.</param>
@@ -551,8 +666,7 @@ namespace Google.Cloud.Dialogflow.V2 {
       /// Replaces the current agent version with a new one. All the intents and
       /// entity types in the older version are deleted.
       ///
-      /// Operation &lt;response: [google.protobuf.Empty][google.protobuf.Empty],
-      ///            metadata: [google.protobuf.Struct][google.protobuf.Struct]>
+      /// Operation &lt;response: [google.protobuf.Empty][google.protobuf.Empty]>
       /// </summary>
       /// <param name="request">The request to send to the server.</param>
       /// <param name="options">The options for the call.</param>
@@ -567,8 +681,7 @@ namespace Google.Cloud.Dialogflow.V2 {
       /// Replaces the current agent version with a new one. All the intents and
       /// entity types in the older version are deleted.
       ///
-      /// Operation &lt;response: [google.protobuf.Empty][google.protobuf.Empty],
-      ///            metadata: [google.protobuf.Struct][google.protobuf.Struct]>
+      /// Operation &lt;response: [google.protobuf.Empty][google.protobuf.Empty]>
       /// </summary>
       /// <param name="request">The request to send to the server.</param>
       /// <param name="headers">The initial metadata to send with the call. This parameter is optional.</param>
@@ -585,8 +698,7 @@ namespace Google.Cloud.Dialogflow.V2 {
       /// Replaces the current agent version with a new one. All the intents and
       /// entity types in the older version are deleted.
       ///
-      /// Operation &lt;response: [google.protobuf.Empty][google.protobuf.Empty],
-      ///            metadata: [google.protobuf.Struct][google.protobuf.Struct]>
+      /// Operation &lt;response: [google.protobuf.Empty][google.protobuf.Empty]>
       /// </summary>
       /// <param name="request">The request to send to the server.</param>
       /// <param name="options">The options for the call.</param>
@@ -608,11 +720,29 @@ namespace Google.Cloud.Dialogflow.V2 {
     {
       return grpc::ServerServiceDefinition.CreateBuilder()
           .AddMethod(__Method_GetAgent, serviceImpl.GetAgent)
+          .AddMethod(__Method_SetAgent, serviceImpl.SetAgent)
+          .AddMethod(__Method_DeleteAgent, serviceImpl.DeleteAgent)
           .AddMethod(__Method_SearchAgents, serviceImpl.SearchAgents)
           .AddMethod(__Method_TrainAgent, serviceImpl.TrainAgent)
           .AddMethod(__Method_ExportAgent, serviceImpl.ExportAgent)
           .AddMethod(__Method_ImportAgent, serviceImpl.ImportAgent)
           .AddMethod(__Method_RestoreAgent, serviceImpl.RestoreAgent).Build();
+    }
+
+    /// <summary>Register service method with a service binder with or without implementation. Useful when customizing the  service binding logic.
+    /// Note: this method is part of an experimental API that can change or be removed without any prior notice.</summary>
+    /// <param name="serviceBinder">Service methods will be bound by calling <c>AddMethod</c> on this object.</param>
+    /// <param name="serviceImpl">An object implementing the server-side handling logic.</param>
+    public static void BindService(grpc::ServiceBinderBase serviceBinder, AgentsBase serviceImpl)
+    {
+      serviceBinder.AddMethod(__Method_GetAgent, serviceImpl == null ? null : new grpc::UnaryServerMethod<global::Google.Cloud.Dialogflow.V2.GetAgentRequest, global::Google.Cloud.Dialogflow.V2.Agent>(serviceImpl.GetAgent));
+      serviceBinder.AddMethod(__Method_SetAgent, serviceImpl == null ? null : new grpc::UnaryServerMethod<global::Google.Cloud.Dialogflow.V2.SetAgentRequest, global::Google.Cloud.Dialogflow.V2.Agent>(serviceImpl.SetAgent));
+      serviceBinder.AddMethod(__Method_DeleteAgent, serviceImpl == null ? null : new grpc::UnaryServerMethod<global::Google.Cloud.Dialogflow.V2.DeleteAgentRequest, global::Google.Protobuf.WellKnownTypes.Empty>(serviceImpl.DeleteAgent));
+      serviceBinder.AddMethod(__Method_SearchAgents, serviceImpl == null ? null : new grpc::UnaryServerMethod<global::Google.Cloud.Dialogflow.V2.SearchAgentsRequest, global::Google.Cloud.Dialogflow.V2.SearchAgentsResponse>(serviceImpl.SearchAgents));
+      serviceBinder.AddMethod(__Method_TrainAgent, serviceImpl == null ? null : new grpc::UnaryServerMethod<global::Google.Cloud.Dialogflow.V2.TrainAgentRequest, global::Google.LongRunning.Operation>(serviceImpl.TrainAgent));
+      serviceBinder.AddMethod(__Method_ExportAgent, serviceImpl == null ? null : new grpc::UnaryServerMethod<global::Google.Cloud.Dialogflow.V2.ExportAgentRequest, global::Google.LongRunning.Operation>(serviceImpl.ExportAgent));
+      serviceBinder.AddMethod(__Method_ImportAgent, serviceImpl == null ? null : new grpc::UnaryServerMethod<global::Google.Cloud.Dialogflow.V2.ImportAgentRequest, global::Google.LongRunning.Operation>(serviceImpl.ImportAgent));
+      serviceBinder.AddMethod(__Method_RestoreAgent, serviceImpl == null ? null : new grpc::UnaryServerMethod<global::Google.Cloud.Dialogflow.V2.RestoreAgentRequest, global::Google.LongRunning.Operation>(serviceImpl.RestoreAgent));
     }
 
   }

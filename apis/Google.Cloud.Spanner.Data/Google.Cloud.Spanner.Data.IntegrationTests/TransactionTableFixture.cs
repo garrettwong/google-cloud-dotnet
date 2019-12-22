@@ -73,14 +73,14 @@ namespace Google.Cloud.Spanner.Data.IntegrationTests
 
                 // Create a lowest-bound timestamp which is definitely valid, but not
                 // associated with TestKey
-                RetryHelpers.RetryOnce(() =>
+                RetryHelpers.ExecuteWithRetry(() =>
                 {
                     using (var tx = connection.BeginTransaction())
                     {
                         command.Transaction = tx;
                         command.ExecuteNonQuery();
                         tx.Commit(out var timestamp);
-                        TimestampBeforeEntries = timestamp.Value;
+                        TimestampBeforeEntries = timestamp;
                     }
                 });
 

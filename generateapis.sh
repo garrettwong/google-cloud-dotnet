@@ -20,6 +20,12 @@ declare -r CORE_PROTOS_ROOT=$PROTOBUF_TOOLS_ROOT/tools
 # - Java 9
 
 OUTDIR=tmp
+if [[ "$SYNTHTOOL_GOOGLEAPIS" != "" ]]
+then
+  declare -r GOOGLEAPIS="$SYNTHTOOL_GOOGLEAPIS"
+else
+  declare -r GOOGLEAPIS=googleapis
+fi
 
 fetch_github_repos() {
   if [ -d "gapic-generator" ]
@@ -32,29 +38,111 @@ fetch_github_repos() {
       --config core.eol=lf
   fi
           
-  if [ -d "googleapis" ]
+  if [[ "$SYNTHTOOL_GOOGLEAPIS" == "" ]]
   then
-    git -C googleapis pull -q
-  else
-    # Auto-detect whether we're cloning the public or private googleapis repo.
-    git remote -v | grep -q google-cloud-dotnet-private && repo=googleapis-private || repo=googleapis
-    git clone --recursive https://github.com/googleapis/${repo} googleapis
+    if [ -d "googleapis" ]
+    then
+      git -C googleapis pull -q
+    else
+      # Auto-detect whether we're cloning the public or private googleapis repo.
+      git remote -v | grep -q google-cloud-dotnet-private && repo=googleapis-private || repo=googleapis
+      git clone --recursive https://github.com/googleapis/${repo} googleapis
+    fi
   fi
 }
 
-generate_api() {
+generate_microgenerator() {
+  API_TMP_DIR=$OUTDIR/$1
+  PRODUCTION_PACKAGE_DIR=$API_TMP_DIR/$1
+  API_OUT_DIR=apis
+  API_SRC_DIR=$GOOGLEAPIS/$($PYTHON3 tools/getapifield.py apis/apis.json $1 protoPath)
+
+  # If there's exactly one service config file, pass it in. Otherwise, omit it.
+  GRPC_SERVICE_CONFIG=$(echo $API_SRC_DIR/*.json)
+  SERVICE_CONFIG_OPTION=
+  if [[ -f "$GRPC_SERVICE_CONFIG" ]]
+  then
+    SERVICE_CONFIG_OPTION=--gapic_opt=grpc-service-config=$GRPC_SERVICE_CONFIG
+  fi
+
+  # Defalt to "all resources are common" but allow a per-API config file too.
+  COMMON_RESOURCES_CONFIG=CommonResourcesConfig.json
+  if [[ -f "$API_OUT_DIR/$1/CommonResourcesConfig.json" ]]
+  then
+    COMMON_RESOURCES_CONFIG=$API_OUT_DIR/$1/CommonResourcesConfig.json
+  fi
+  COMMON_RESOURCES_OPTION=--gapic_opt=common-resources-config=$COMMON_RESOURCES_CONFIG
+  
+  mkdir -p $PRODUCTION_PACKAGE_DIR
+  
+  # Message and service generation. This doesn't need the common resources,
+  # and we don't want to pass in the common resources proto because we don't
+  # want to generate it.
+  $PROTOC \
+    --csharp_out=$PRODUCTION_PACKAGE_DIR \
+    --grpc_out=$PRODUCTION_PACKAGE_DIR \
+    --plugin=protoc-gen-grpc=$GRPC_PLUGIN \
+    -I $GOOGLEAPIS \
+    -I $CORE_PROTOS_ROOT \
+    $API_SRC_DIR/*.proto \
+    2>&1 | grep -v "but not used" || true # Ignore import warnings (and grep exit code)
+
+  # Allow protos to be changed after proto/gRPC generation but before the
+  # GAPIC microgenerator. This is pretty extreme, but is used for service renaming.
+  if [[ -f $API_OUT_DIR/$1/midmicrogeneration.sh ]]
+  then
+    echo "Running mid-micro-generation script for $1"
+    (cd $API_OUT_DIR/$1; ./midmicrogeneration.sh)
+  fi
+
+  # Client generation. This needs the common resources proto as a reference,
+  # but it won't generate anything for it.
+  $PROTOC \
+    --gapic_out=$API_TMP_DIR \
+    $SERVICE_CONFIG_OPTION \
+    $COMMON_RESOURCES_OPTION \
+    --plugin=protoc-gen-gapic=$GAPIC_PLUGIN \
+    -I $GOOGLEAPIS \
+    -I $CORE_PROTOS_ROOT \
+    $API_SRC_DIR/*.proto \
+    $GOOGLEAPIS/google/cloud/common_resources.proto \
+    2>&1 | grep -v "but not used" || true # Ignore import warnings (and grep exit code)
+
+  # The microgenerator currently creates Google.Cloud directories due to being given
+  # the common resources proto. Clean up for now; this is being fixed in the generator.
+  rm -rf $API_TMP_DIR/Google.Cloud{,.Snippets,.Tests}
+
+  # We generate our own project files
+  rm $(find tmp -name '*.csproj')
+  
+  # Copy the rest into the right place
+  cp -r $API_TMP_DIR $API_OUT_DIR
+}
+
+generate_gapicgenerator() {
   API_TMP_DIR=$OUTDIR/$1
   API_OUT_DIR=apis
-  API_SRC_DIR=googleapis/$2
-  API_YAML=$API_SRC_DIR/../$3
+  PROTO_PATH=$($PYTHON3 tools/getapifield.py apis/apis.json $1 protoPath)
+  API_SRC_DIR=$GOOGLEAPIS/$PROTO_PATH
+  SERVICE_YAML=$($PYTHON3 tools/getapifield.py apis/apis.json $1 serviceYaml)
+  # This is a hacky way of allowing a proto package to be explicitly specified,
+  # or inferred from the proto path. We might want to add an option to getapifield.py for default values.
+  PROTO_PACKAGE=$(python tools/getapifield.py apis/apis.json $1 protoPackage 2> /dev/null || echo $PROTO_PATH | sed 's/\//./g')
 
-  if [[ ! -f $API_YAML ]]
+  # Look the versioned directory and its parent for the service YAML.
+  # (Currently the location is in flux; we should be able to use just the
+  # versioned directory eventually.)
+  if [[ -f $API_SRC_DIR/$SERVICE_YAML ]]
   then
-    echo "$API_YAML doesn't exist. Please check inputs."
+    API_YAML=$API_SRC_DIR/$SERVICE_YAML
+  elif [[ -f $API_SRC_DIR/../$SERVICE_YAML ]]
+  then
+    API_YAML=$API_SRC_DIR/../$SERVICE_YAML
+  else
+    echo "$SERVICE_YAML doesn't exist. Please check inputs."
     exit 1
   fi
 
-  echo Generating $1
   mkdir $API_TMP_DIR
   
   # There should be only one gapic yaml file...
@@ -63,23 +151,40 @@ generate_api() {
     cp $i $API_TMP_DIR/gapic.yaml
   done
   
+  # Include extra protos, when they're present, even if they're not needed.
+  extra_protos=()
+  if [[ -d $GOOGLEAPIS/google/iam/v1 ]]; then extra_protos+=($GOOGLEAPIS/google/iam/v1/*.proto); fi
+  if [[ -d $GOOGLEAPIS/grafeas/v1 ]]; then extra_protos+=($GOOGLEAPIS/grafeas/v1/*.proto); fi
+  if [[ -f $GOOGLEAPIS/google/cloud/common_resources.proto ]]; then extra_protos+=($GOOGLEAPIS/google/cloud/common_resources.proto); fi
+  
+  # Generate the descriptor set for this API.
+  $PROTOC \
+    -I $GOOGLEAPIS \
+    -I $CORE_PROTOS_ROOT \
+    --include_source_info \
+    --include_imports \
+    -o $API_TMP_DIR/protos.desc \
+    $API_SRC_DIR/*.proto \
+    ${extra_protos[*]} \
+    2>&1 | grep -v "but not used" || true # Ignore import warnings (and grep exit code)
+
+
   jvm_args=()
-  jvm_args+=(--add-opens=java.base/java.nio=ALL-UNNAMED)
-  jvm_args+=(--add-opens=java.base/java.lang=ALL-UNNAMED)
   jvm_args+=(-cp gapic-generator/build/libs/gapic-generator-${GAPIC_GENERATOR_VERSION}-all.jar)
   
   args=()
-  args+=(--descriptor_set=$OUTDIR/protos.desc)
+  args+=(--descriptor_set=$API_TMP_DIR/protos.desc)
   args+=(--service_yaml=$API_YAML)
   args+=(--gapic_yaml=$API_TMP_DIR/gapic.yaml)
   args+=(--output=$API_TMP_DIR)
   args+=(--language=csharp)
-  
+  args+=(--package=$PROTO_PACKAGE)
+
   # Suppress protobuf warnings in Java 9/10. By the time they
   # become a problem, we won't be using Java...
-  java ${jvm_args[*]} com.google.api.codegen.GeneratorMain GAPIC_CODE ${args[*]} \
+  java $JAVA9OPTS ${jvm_args[*]} com.google.api.codegen.GeneratorMain GAPIC_CODE ${args[*]} \
   2>&1 | grep -v "does not have control environment" || true # Ignore control environment warnings (and grep exit code)
-  
+
   cp -r $API_TMP_DIR/$1 $API_OUT_DIR
 
   # Generate the C# protos/gRPC directly into the right directory
@@ -87,23 +192,116 @@ generate_api() {
   $PROTOC \
     --csharp_out=$API_OUT_DIR/$1/$1 \
     --grpc_out=$API_OUT_DIR/$1/$1 \
-    -I googleapis \
+    -I $GOOGLEAPIS \
     -I $CORE_PROTOS_ROOT \
     --plugin=protoc-gen-grpc=$GRPC_PLUGIN \
     $API_SRC_DIR/*.proto \
     2>&1 | grep -v "but not used" || true # Ignore import warnings (and grep exit code)
-    
-  if [[ -f $API_OUT_DIR/$1/postgeneration.sh ]]
+}
+
+generate_proto() {
+  API_SRC_DIR=$GOOGLEAPIS/$($PYTHON3 tools/getapifield.py apis/apis.json $1 protoPath)
+  $PROTOC \
+    --csharp_out=apis/$1/$1 \
+    -I $GOOGLEAPIS \
+    -I $CORE_PROTOS_ROOT \
+    $API_SRC_DIR/*.proto
+}
+
+generate_protogrpc() {
+  API_SRC_DIR=$GOOGLEAPIS/$($PYTHON3 tools/getapifield.py apis/apis.json $1 protoPath)
+  $PROTOC \
+    --csharp_out=apis/$1/$1 \
+    --grpc_out=apis/$1/$1 \
+    -I $GOOGLEAPIS \
+    -I $CORE_PROTOS_ROOT \
+    --plugin=protoc-gen-grpc=$GRPC_PLUGIN \
+    $API_SRC_DIR/*.proto
+}
+
+generate_api() {
+  PACKAGE=$1
+  PACKAGE_DIR=apis/$1
+  if [[ $CHECK_COMPATIBILITY == "true" && -d $PACKAGE_DIR ]]
   then
-    echo "Running post-generation script for $1"
-    (cd $API_OUT_DIR/$1; ./postgeneration.sh)
+    echo "Building existing version of $PACKAGE for compatibility checking"
+    dotnet build -c Release -f netstandard2.0 -v quiet -nologo -clp:NoSummary -p:SourceLinkCreate=false $PACKAGE_DIR/$PACKAGE
+    cp $PACKAGE_DIR/$PACKAGE/bin/Release/netstandard2.0/$PACKAGE.dll $OUTDIR
+  fi
+  echo "Generating $PACKAGE"
+  GENERATOR=$($PYTHON3 tools/getapifield.py apis/apis.json $PACKAGE generator)
+  if [[ -f $PACKAGE_DIR/pregeneration.sh ]]
+  then
+    echo "Running pre-generation script for $PACKAGE"
+    (cd $PACKAGE_DIR; ./pregeneration.sh)
+  fi
+
+  case "$GENERATOR" in
+    micro)
+      generate_microgenerator $1
+      ;;
+    gapic)
+      generate_gapicgenerator $1
+      ;;
+    proto)
+      generate_proto $1
+      ;;
+    protogrpc)
+      generate_protogrpc $1
+      ;;
+    *)
+      echo "Unknown generator: $GENERATOR"
+      exit 1
+  esac
+  if [[ -f $PACKAGE_DIR/postgeneration.patch ]]
+  then
+    echo "Applying post-generation patch for $PACKAGE"
+    (cd $PACKAGE_DIR; git apply postgeneration.patch)
+  fi
+
+  if [[ -f $PACKAGE_DIR/postgeneration.sh ]]
+  then
+    echo "Running post-generation script for $PACKAGE"
+    (cd $PACKAGE_DIR; ./postgeneration.sh)
+  fi
+  
+  if [[ $(grep -E "^namespace" apis/$1/$1/*.cs | grep -Ev "namespace ${1}[[:space:]{]*\$") ]]
+  then
+    echo "API $1 has broken namespace declarations"
+    # Monitoring currently has an exemption as we know it's broken.
+    # We plan to remove that exemption (and the breakage) when we do a major version bump.
+    # For anything else, fail the build.
+    if [[ $1 != "Google.Cloud.Monitoring.V3" ]]
+    then
+      exit 1
+    fi
+  fi
+  
+  if [[ $CHECK_COMPATIBILITY == "true" ]]
+  then
+    if [[ -f $OUTDIR/$PACKAGE.dll ]]
+    then
+      echo "Building new version of $PACKAGE for compatibility checking"
+      dotnet build -c Release -f netstandard2.0 -v quiet -nologo -clp:NoSummary -p:SourceLinkCreate=false $PACKAGE_DIR/$PACKAGE
+      echo ""
+      echo "Changes in $PACKAGE:"
+      dotnet run --no-build -p tools/Google.Cloud.Tools.CompareVersions -- \
+        --file1=$OUTDIR/$PACKAGE.dll \
+        --file2=$PACKAGE_DIR/$PACKAGE/bin/Release/netstandard2.0/$PACKAGE.dll
+    else
+      echo ""
+      echo "$PACKAGE is a new API."
+    fi
   fi
 }
+
+
 
 # Entry point
 
 install_protoc
-install_grpc  
+install_microgenerator
+install_grpc
 fetch_github_repos
 GAPIC_GENERATOR_VERSION=$(cat gapic-generator/version.txt)
 
@@ -115,81 +313,22 @@ GAPIC_GENERATOR_VERSION=$(cat gapic-generator/version.txt)
 OUTDIR=tmp
 rm -rf $OUTDIR
 mkdir $OUTDIR
+CHECK_COMPATIBILITY=false
+if [[ $1 == "--check_compatibility" ]]
+then
+  CHECK_COMPATIBILITY=true
+  # Build the tool once so it doesn't interfere with output later
+  dotnet build tools/Google.Cloud.Tools.CompareVersions -v quiet -nologo -clp:NoSummary
+  shift
+fi
 
-# Generate a single descriptor file for all protos we may care about.
-# We can then reuse that for all APIs.
-$PROTOC \
-  -I googleapis \
-  -I $CORE_PROTOS_ROOT \
-  --include_source_info \
-  -o $OUTDIR/protos.desc \
-  $CORE_PROTOS_ROOT/google/protobuf/*.proto \
-  `find googleapis/google -name '*.proto'` \
-  2>&1 | grep -v "but not used" || true # Ignore import warnings (and grep exit code)
+packages=$@
+if [[ -z "$packages" ]]
+then
+  packages=$($PYTHON3 tools/listapis.py apis/apis.json --test generator)
+fi
 
-# Generate LongRunning, after changing the license text (because we use
-# Apache for LRO where other languages use BSD)
-sed -i s/license-header-bsd-3-clause.txt/license-header-apache-2.0.txt/g googleapis/google/longrunning/longrunning_gapic.yaml
-generate_api Google.LongRunning google/longrunning longrunning/longrunning.yaml
-git -C googleapis checkout google/longrunning/longrunning_gapic.yaml
-
-# IAM (just proto and grpc)
-$PROTOC \
-  --csharp_out=apis/Google.Cloud.Iam.V1/Google.Cloud.Iam.V1 \
-  --grpc_out=apis/Google.Cloud.Iam.V1/Google.Cloud.Iam.V1 \
-  -I googleapis \
-  -I $CORE_PROTOS_ROOT \
-  --plugin=protoc-gen-grpc=$GRPC_PLUGIN \
-  googleapis/google/iam/v1/*.proto
-
-# Logging version-agnostic types
-$PROTOC \
-  --csharp_out=apis/Google.Cloud.Logging.Type/Google.Cloud.Logging.Type \
-  -I googleapis \
-  -I $CORE_PROTOS_ROOT \
-  googleapis/google/logging/type/*.proto
-
-# OS Login version-agnostic types
-$PROTOC \
-  --csharp_out=apis/Google.Cloud.OsLogin.Common/Google.Cloud.OsLogin.Common \
-  -I googleapis \
-  -I $CORE_PROTOS_ROOT \
-  googleapis/google/cloud/oslogin/common/*.proto
-
-# Now the per-API codegen
-generate_api Google.Cloud.Asset.V1Beta1 google/cloud/asset/v1beta1 asset_v1beta1.yaml
-generate_api Google.Cloud.BigQuery.DataTransfer.V1 google/cloud/bigquery/datatransfer/v1 datatransfer.yaml
-generate_api Google.Cloud.Bigtable.Admin.V2 google/bigtable/admin/v2 bigtableadmin.yaml
-generate_api Google.Cloud.Bigtable.V2 google/bigtable/v2 bigtable.yaml
-generate_api Google.Cloud.Container.V1 google/container/v1 container.yaml
-generate_api Google.Cloud.Dataproc.V1 google/cloud/dataproc/v1 v1/dataproc.yaml
-generate_api Google.Cloud.Datastore.V1 google/datastore/v1 datastore.yaml
-generate_api Google.Cloud.Debugger.V2 google/devtools/clouddebugger/v2 clouddebugger.yaml
-generate_api Google.Cloud.Dialogflow.V2 google/cloud/dialogflow/v2 dialogflow_v2.yaml
-generate_api Google.Cloud.Dlp.V2 google/privacy/dlp/v2 dlp_v2.yaml
-generate_api Google.Cloud.ErrorReporting.V1Beta1 google/devtools/clouderrorreporting/v1beta1 errorreporting.yaml
-generate_api Google.Cloud.Firestore.V1Beta1 google/firestore/v1beta1 firestore.yaml
-generate_api Google.Cloud.Kms.V1 google/cloud/kms/v1 cloudkms.yaml
-generate_api Google.Cloud.Language.V1 google/cloud/language/v1 language_v1.yaml
-generate_api Google.Cloud.Logging.V2 google/logging/v2 logging.yaml
-generate_api Google.Cloud.Monitoring.V3 google/monitoring/v3 monitoring.yaml
-generate_api Google.Cloud.OsLogin.V1 google/cloud/oslogin/v1 oslogin_v1.yaml
-generate_api Google.Cloud.OsLogin.V1Beta google/cloud/oslogin/v1beta oslogin_v1beta.yaml
-generate_api Google.Cloud.PubSub.V1 google/pubsub/v1 pubsub.yaml
-generate_api Google.Cloud.Redis.V1 google/cloud/redis/v1 redis_v1.yaml
-generate_api Google.Cloud.Redis.V1Beta1 google/cloud/redis/v1beta1 redis_v1beta1.yaml
-generate_api Google.Cloud.Spanner.Admin.Database.V1 google/spanner/admin/database/v1 spanner_admin_database.yaml
-generate_api Google.Cloud.Spanner.Admin.Instance.V1 google/spanner/admin/instance/v1 spanner_admin_instance.yaml
-generate_api Google.Cloud.Spanner.V1 google/spanner/v1 spanner.yaml
-generate_api Google.Cloud.Speech.V1 google/cloud/speech/v1 speech_v1.yaml
-generate_api Google.Cloud.Speech.V1P1Beta1 google/cloud/speech/v1p1beta1 speech_v1p1beta1.yaml
-generate_api Google.Cloud.Tasks.V2Beta2 google/cloud/tasks/v2beta2 cloudtasks_v2beta2.yaml
-generate_api Google.Cloud.Tasks.V2Beta3 google/cloud/tasks/v2beta3 cloudtasks_v2beta3.yaml
-generate_api Google.Cloud.TextToSpeech.V1 google/cloud/texttospeech/v1 tts_v1.yaml
-generate_api Google.Cloud.Trace.V1 google/devtools/cloudtrace/v1 cloudtrace_v1.yaml
-generate_api Google.Cloud.Trace.V2 google/devtools/cloudtrace/v2 cloudtrace_v2.yaml
-generate_api Google.Cloud.VideoIntelligence.V1 google/cloud/videointelligence/v1 videointelligence_v1.yaml
-generate_api Google.Cloud.Vision.V1 google/cloud/vision/v1 vision_v1.yaml
-generate_api Google.Cloud.Vision.V1P1Beta1 google/cloud/vision/v1p1beta1 vision_v1p1beta1.yaml
-generate_api Google.Cloud.Vision.V1P2Beta1 google/cloud/vision/v1p2beta1 vision_v1p2beta1.yaml
-
+for package in $packages
+do
+  generate_api $package
+done

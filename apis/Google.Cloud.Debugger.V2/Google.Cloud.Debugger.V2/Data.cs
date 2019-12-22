@@ -25,10 +25,10 @@ namespace Google.Cloud.Debugger.V2 {
       byte[] descriptorData = global::System.Convert.FromBase64String(
           string.Concat(
             "Citnb29nbGUvZGV2dG9vbHMvY2xvdWRkZWJ1Z2dlci92Mi9kYXRhLnByb3Rv",
-            "EiBnb29nbGUuZGV2dG9vbHMuY2xvdWRkZWJ1Z2dlci52MhocZ29vZ2xlL2Fw",
-            "aS9hbm5vdGF0aW9ucy5wcm90bxouZ29vZ2xlL2RldnRvb2xzL3NvdXJjZS92",
-            "MS9zb3VyY2VfY29udGV4dC5wcm90bxofZ29vZ2xlL3Byb3RvYnVmL3RpbWVz",
-            "dGFtcC5wcm90bxoeZ29vZ2xlL3Byb3RvYnVmL3dyYXBwZXJzLnByb3RvIjMK",
+            "EiBnb29nbGUuZGV2dG9vbHMuY2xvdWRkZWJ1Z2dlci52MhouZ29vZ2xlL2Rl",
+            "dnRvb2xzL3NvdXJjZS92MS9zb3VyY2VfY29udGV4dC5wcm90bxofZ29vZ2xl",
+            "L3Byb3RvYnVmL3RpbWVzdGFtcC5wcm90bxoeZ29vZ2xlL3Byb3RvYnVmL3dy",
+            "YXBwZXJzLnByb3RvGhxnb29nbGUvYXBpL2Fubm90YXRpb25zLnByb3RvIjMK",
             "DUZvcm1hdE1lc3NhZ2USDgoGZm9ybWF0GAEgASgJEhIKCnBhcmFtZXRlcnMY",
             "AiADKAki5AIKDVN0YXR1c01lc3NhZ2USEAoIaXNfZXJyb3IYASABKAgSTAoJ",
             "cmVmZXJzX3RvGAIgASgOMjkuZ29vZ2xlLmRldnRvb2xzLmNsb3VkZGVidWdn",
@@ -38,59 +38,60 @@ namespace Google.Cloud.Debugger.V2 {
             "UkVBS1BPSU5UX1NPVVJDRV9MT0NBVElPThADEhgKFEJSRUFLUE9JTlRfQ09O",
             "RElUSU9OEAQSGQoVQlJFQUtQT0lOVF9FWFBSRVNTSU9OEAcSEgoOQlJFQUtQ",
             "T0lOVF9BR0UQCBIRCg1WQVJJQUJMRV9OQU1FEAUSEgoOVkFSSUFCTEVfVkFM",
-            "VUUQBiIsCg5Tb3VyY2VMb2NhdGlvbhIMCgRwYXRoGAEgASgJEgwKBGxpbmUY",
-            "AiABKAUi6QEKCFZhcmlhYmxlEgwKBG5hbWUYASABKAkSDQoFdmFsdWUYAiAB",
-            "KAkSDAoEdHlwZRgGIAEoCRI7CgdtZW1iZXJzGAMgAygLMiouZ29vZ2xlLmRl",
-            "dnRvb2xzLmNsb3VkZGVidWdnZXIudjIuVmFyaWFibGUSNAoPdmFyX3RhYmxl",
-            "X2luZGV4GAQgASgLMhsuZ29vZ2xlLnByb3RvYnVmLkludDMyVmFsdWUSPwoG",
-            "c3RhdHVzGAUgASgLMi8uZ29vZ2xlLmRldnRvb2xzLmNsb3VkZGVidWdnZXIu",
-            "djIuU3RhdHVzTWVzc2FnZSLdAQoKU3RhY2tGcmFtZRIQCghmdW5jdGlvbhgB",
-            "IAEoCRJCCghsb2NhdGlvbhgCIAEoCzIwLmdvb2dsZS5kZXZ0b29scy5jbG91",
-            "ZGRlYnVnZ2VyLnYyLlNvdXJjZUxvY2F0aW9uEj0KCWFyZ3VtZW50cxgDIAMo",
-            "CzIqLmdvb2dsZS5kZXZ0b29scy5jbG91ZGRlYnVnZ2VyLnYyLlZhcmlhYmxl",
-            "EjoKBmxvY2FscxgEIAMoCzIqLmdvb2dsZS5kZXZ0b29scy5jbG91ZGRlYnVn",
-            "Z2VyLnYyLlZhcmlhYmxlIpcHCgpCcmVha3BvaW50EgoKAmlkGAEgASgJEkMK",
-            "BmFjdGlvbhgNIAEoDjIzLmdvb2dsZS5kZXZ0b29scy5jbG91ZGRlYnVnZ2Vy",
-            "LnYyLkJyZWFrcG9pbnQuQWN0aW9uEkIKCGxvY2F0aW9uGAIgASgLMjAuZ29v",
-            "Z2xlLmRldnRvb2xzLmNsb3VkZGVidWdnZXIudjIuU291cmNlTG9jYXRpb24S",
-            "EQoJY29uZGl0aW9uGAMgASgJEhMKC2V4cHJlc3Npb25zGAQgAygJEhoKEmxv",
-            "Z19tZXNzYWdlX2Zvcm1hdBgOIAEoCRJICglsb2dfbGV2ZWwYDyABKA4yNS5n",
-            "b29nbGUuZGV2dG9vbHMuY2xvdWRkZWJ1Z2dlci52Mi5CcmVha3BvaW50Lkxv",
-            "Z0xldmVsEhYKDmlzX2ZpbmFsX3N0YXRlGAUgASgIEi8KC2NyZWF0ZV90aW1l",
-            "GAsgASgLMhouZ29vZ2xlLnByb3RvYnVmLlRpbWVzdGFtcBIuCgpmaW5hbF90",
-            "aW1lGAwgASgLMhouZ29vZ2xlLnByb3RvYnVmLlRpbWVzdGFtcBISCgp1c2Vy",
-            "X2VtYWlsGBAgASgJEj8KBnN0YXR1cxgKIAEoCzIvLmdvb2dsZS5kZXZ0b29s",
-            "cy5jbG91ZGRlYnVnZ2VyLnYyLlN0YXR1c01lc3NhZ2USQgoMc3RhY2tfZnJh",
-            "bWVzGAcgAygLMiwuZ29vZ2xlLmRldnRvb2xzLmNsb3VkZGVidWdnZXIudjIu",
-            "U3RhY2tGcmFtZRJJChVldmFsdWF0ZWRfZXhwcmVzc2lvbnMYCCADKAsyKi5n",
-            "b29nbGUuZGV2dG9vbHMuY2xvdWRkZWJ1Z2dlci52Mi5WYXJpYWJsZRJCCg52",
-            "YXJpYWJsZV90YWJsZRgJIAMoCzIqLmdvb2dsZS5kZXZ0b29scy5jbG91ZGRl",
-            "YnVnZ2VyLnYyLlZhcmlhYmxlEkgKBmxhYmVscxgRIAMoCzI4Lmdvb2dsZS5k",
-            "ZXZ0b29scy5jbG91ZGRlYnVnZ2VyLnYyLkJyZWFrcG9pbnQuTGFiZWxzRW50",
-            "cnkaLQoLTGFiZWxzRW50cnkSCwoDa2V5GAEgASgJEg0KBXZhbHVlGAIgASgJ",
-            "OgI4ASIeCgZBY3Rpb24SCwoHQ0FQVFVSRRAAEgcKA0xPRxABIiwKCExvZ0xl",
-            "dmVsEggKBElORk8QABILCgdXQVJOSU5HEAESCQoFRVJST1IQAiLbAwoIRGVi",
-            "dWdnZWUSCgoCaWQYASABKAkSDwoHcHJvamVjdBgCIAEoCRISCgp1bmlxdWlm",
-            "aWVyGAMgASgJEhMKC2Rlc2NyaXB0aW9uGAQgASgJEhMKC2lzX2luYWN0aXZl",
-            "GAUgASgIEhUKDWFnZW50X3ZlcnNpb24YBiABKAkSEwoLaXNfZGlzYWJsZWQY",
-            "ByABKAgSPwoGc3RhdHVzGAggASgLMi8uZ29vZ2xlLmRldnRvb2xzLmNsb3Vk",
-            "ZGVidWdnZXIudjIuU3RhdHVzTWVzc2FnZRJBCg9zb3VyY2VfY29udGV4dHMY",
-            "CSADKAsyKC5nb29nbGUuZGV2dG9vbHMuc291cmNlLnYxLlNvdXJjZUNvbnRl",
-            "eHQSTQoTZXh0X3NvdXJjZV9jb250ZXh0cxgNIAMoCzIwLmdvb2dsZS5kZXZ0",
-            "b29scy5zb3VyY2UudjEuRXh0ZW5kZWRTb3VyY2VDb250ZXh0EkYKBmxhYmVs",
-            "cxgLIAMoCzI2Lmdvb2dsZS5kZXZ0b29scy5jbG91ZGRlYnVnZ2VyLnYyLkRl",
-            "YnVnZ2VlLkxhYmVsc0VudHJ5Gi0KC0xhYmVsc0VudHJ5EgsKA2tleRgBIAEo",
-            "CRINCgV2YWx1ZRgCIAEoCToCOAFCuAEKJGNvbS5nb29nbGUuZGV2dG9vbHMu",
-            "Y2xvdWRkZWJ1Z2dlci52MkIJRGF0YVByb3RvUAFaTWdvb2dsZS5nb2xhbmcu",
-            "b3JnL2dlbnByb3RvL2dvb2dsZWFwaXMvZGV2dG9vbHMvY2xvdWRkZWJ1Z2dl",
-            "ci92MjtjbG91ZGRlYnVnZ2VyqgIYR29vZ2xlLkNsb3VkLkRlYnVnZ2VyLlYy",
-            "ygIYR29vZ2xlXENsb3VkXERlYnVnZ2VyXFYyYgZwcm90bzM="));
+            "VUUQBiI8Cg5Tb3VyY2VMb2NhdGlvbhIMCgRwYXRoGAEgASgJEgwKBGxpbmUY",
+            "AiABKAUSDgoGY29sdW1uGAMgASgFIukBCghWYXJpYWJsZRIMCgRuYW1lGAEg",
+            "ASgJEg0KBXZhbHVlGAIgASgJEgwKBHR5cGUYBiABKAkSOwoHbWVtYmVycxgD",
+            "IAMoCzIqLmdvb2dsZS5kZXZ0b29scy5jbG91ZGRlYnVnZ2VyLnYyLlZhcmlh",
+            "YmxlEjQKD3Zhcl90YWJsZV9pbmRleBgEIAEoCzIbLmdvb2dsZS5wcm90b2J1",
+            "Zi5JbnQzMlZhbHVlEj8KBnN0YXR1cxgFIAEoCzIvLmdvb2dsZS5kZXZ0b29s",
+            "cy5jbG91ZGRlYnVnZ2VyLnYyLlN0YXR1c01lc3NhZ2Ui3QEKClN0YWNrRnJh",
+            "bWUSEAoIZnVuY3Rpb24YASABKAkSQgoIbG9jYXRpb24YAiABKAsyMC5nb29n",
+            "bGUuZGV2dG9vbHMuY2xvdWRkZWJ1Z2dlci52Mi5Tb3VyY2VMb2NhdGlvbhI9",
+            "Cglhcmd1bWVudHMYAyADKAsyKi5nb29nbGUuZGV2dG9vbHMuY2xvdWRkZWJ1",
+            "Z2dlci52Mi5WYXJpYWJsZRI6CgZsb2NhbHMYBCADKAsyKi5nb29nbGUuZGV2",
+            "dG9vbHMuY2xvdWRkZWJ1Z2dlci52Mi5WYXJpYWJsZSKXBwoKQnJlYWtwb2lu",
+            "dBIKCgJpZBgBIAEoCRJDCgZhY3Rpb24YDSABKA4yMy5nb29nbGUuZGV2dG9v",
+            "bHMuY2xvdWRkZWJ1Z2dlci52Mi5CcmVha3BvaW50LkFjdGlvbhJCCghsb2Nh",
+            "dGlvbhgCIAEoCzIwLmdvb2dsZS5kZXZ0b29scy5jbG91ZGRlYnVnZ2VyLnYy",
+            "LlNvdXJjZUxvY2F0aW9uEhEKCWNvbmRpdGlvbhgDIAEoCRITCgtleHByZXNz",
+            "aW9ucxgEIAMoCRIaChJsb2dfbWVzc2FnZV9mb3JtYXQYDiABKAkSSAoJbG9n",
+            "X2xldmVsGA8gASgOMjUuZ29vZ2xlLmRldnRvb2xzLmNsb3VkZGVidWdnZXIu",
+            "djIuQnJlYWtwb2ludC5Mb2dMZXZlbBIWCg5pc19maW5hbF9zdGF0ZRgFIAEo",
+            "CBIvCgtjcmVhdGVfdGltZRgLIAEoCzIaLmdvb2dsZS5wcm90b2J1Zi5UaW1l",
+            "c3RhbXASLgoKZmluYWxfdGltZRgMIAEoCzIaLmdvb2dsZS5wcm90b2J1Zi5U",
+            "aW1lc3RhbXASEgoKdXNlcl9lbWFpbBgQIAEoCRI/CgZzdGF0dXMYCiABKAsy",
+            "Ly5nb29nbGUuZGV2dG9vbHMuY2xvdWRkZWJ1Z2dlci52Mi5TdGF0dXNNZXNz",
+            "YWdlEkIKDHN0YWNrX2ZyYW1lcxgHIAMoCzIsLmdvb2dsZS5kZXZ0b29scy5j",
+            "bG91ZGRlYnVnZ2VyLnYyLlN0YWNrRnJhbWUSSQoVZXZhbHVhdGVkX2V4cHJl",
+            "c3Npb25zGAggAygLMiouZ29vZ2xlLmRldnRvb2xzLmNsb3VkZGVidWdnZXIu",
+            "djIuVmFyaWFibGUSQgoOdmFyaWFibGVfdGFibGUYCSADKAsyKi5nb29nbGUu",
+            "ZGV2dG9vbHMuY2xvdWRkZWJ1Z2dlci52Mi5WYXJpYWJsZRJICgZsYWJlbHMY",
+            "ESADKAsyOC5nb29nbGUuZGV2dG9vbHMuY2xvdWRkZWJ1Z2dlci52Mi5CcmVh",
+            "a3BvaW50LkxhYmVsc0VudHJ5Gi0KC0xhYmVsc0VudHJ5EgsKA2tleRgBIAEo",
+            "CRINCgV2YWx1ZRgCIAEoCToCOAEiHgoGQWN0aW9uEgsKB0NBUFRVUkUQABIH",
+            "CgNMT0cQASIsCghMb2dMZXZlbBIICgRJTkZPEAASCwoHV0FSTklORxABEgkK",
+            "BUVSUk9SEAIi3wMKCERlYnVnZ2VlEgoKAmlkGAEgASgJEg8KB3Byb2plY3QY",
+            "AiABKAkSEgoKdW5pcXVpZmllchgDIAEoCRITCgtkZXNjcmlwdGlvbhgEIAEo",
+            "CRITCgtpc19pbmFjdGl2ZRgFIAEoCBIVCg1hZ2VudF92ZXJzaW9uGAYgASgJ",
+            "EhMKC2lzX2Rpc2FibGVkGAcgASgIEj8KBnN0YXR1cxgIIAEoCzIvLmdvb2ds",
+            "ZS5kZXZ0b29scy5jbG91ZGRlYnVnZ2VyLnYyLlN0YXR1c01lc3NhZ2USQQoP",
+            "c291cmNlX2NvbnRleHRzGAkgAygLMiguZ29vZ2xlLmRldnRvb2xzLnNvdXJj",
+            "ZS52MS5Tb3VyY2VDb250ZXh0ElEKE2V4dF9zb3VyY2VfY29udGV4dHMYDSAD",
+            "KAsyMC5nb29nbGUuZGV2dG9vbHMuc291cmNlLnYxLkV4dGVuZGVkU291cmNl",
+            "Q29udGV4dEICGAESRgoGbGFiZWxzGAsgAygLMjYuZ29vZ2xlLmRldnRvb2xz",
+            "LmNsb3VkZGVidWdnZXIudjIuRGVidWdnZWUuTGFiZWxzRW50cnkaLQoLTGFi",
+            "ZWxzRW50cnkSCwoDa2V5GAEgASgJEg0KBXZhbHVlGAIgASgJOgI4AUK7AQok",
+            "Y29tLmdvb2dsZS5kZXZ0b29scy5jbG91ZGRlYnVnZ2VyLnYyQglEYXRhUHJv",
+            "dG9QAVpNZ29vZ2xlLmdvbGFuZy5vcmcvZ2VucHJvdG8vZ29vZ2xlYXBpcy9k",
+            "ZXZ0b29scy9jbG91ZGRlYnVnZ2VyL3YyO2Nsb3VkZGVidWdnZXL4AQGqAhhH",
+            "b29nbGUuQ2xvdWQuRGVidWdnZXIuVjLKAhhHb29nbGVcQ2xvdWRcRGVidWdn",
+            "ZXJcVjJiBnByb3RvMw=="));
       descriptor = pbr::FileDescriptor.FromGeneratedCode(descriptorData,
-          new pbr::FileDescriptor[] { global::Google.Api.AnnotationsReflection.Descriptor, global::Google.Cloud.DevTools.Source.V1.SourceContextReflection.Descriptor, global::Google.Protobuf.WellKnownTypes.TimestampReflection.Descriptor, global::Google.Protobuf.WellKnownTypes.WrappersReflection.Descriptor, },
+          new pbr::FileDescriptor[] { global::Google.Cloud.DevTools.Source.V1.SourceContextReflection.Descriptor, global::Google.Protobuf.WellKnownTypes.TimestampReflection.Descriptor, global::Google.Protobuf.WellKnownTypes.WrappersReflection.Descriptor, global::Google.Api.AnnotationsReflection.Descriptor, },
           new pbr::GeneratedClrTypeInfo(null, new pbr::GeneratedClrTypeInfo[] {
             new pbr::GeneratedClrTypeInfo(typeof(global::Google.Cloud.Debugger.V2.FormatMessage), global::Google.Cloud.Debugger.V2.FormatMessage.Parser, new[]{ "Format", "Parameters" }, null, null, null),
             new pbr::GeneratedClrTypeInfo(typeof(global::Google.Cloud.Debugger.V2.StatusMessage), global::Google.Cloud.Debugger.V2.StatusMessage.Parser, new[]{ "IsError", "RefersTo", "Description" }, null, new[]{ typeof(global::Google.Cloud.Debugger.V2.StatusMessage.Types.Reference) }, null),
-            new pbr::GeneratedClrTypeInfo(typeof(global::Google.Cloud.Debugger.V2.SourceLocation), global::Google.Cloud.Debugger.V2.SourceLocation.Parser, new[]{ "Path", "Line" }, null, null, null),
+            new pbr::GeneratedClrTypeInfo(typeof(global::Google.Cloud.Debugger.V2.SourceLocation), global::Google.Cloud.Debugger.V2.SourceLocation.Parser, new[]{ "Path", "Line", "Column" }, null, null, null),
             new pbr::GeneratedClrTypeInfo(typeof(global::Google.Cloud.Debugger.V2.Variable), global::Google.Cloud.Debugger.V2.Variable.Parser, new[]{ "Name", "Value", "Type", "Members", "VarTableIndex", "Status" }, null, null, null),
             new pbr::GeneratedClrTypeInfo(typeof(global::Google.Cloud.Debugger.V2.StackFrame), global::Google.Cloud.Debugger.V2.StackFrame.Parser, new[]{ "Function", "Location", "Arguments", "Locals" }, null, null, null),
             new pbr::GeneratedClrTypeInfo(typeof(global::Google.Cloud.Debugger.V2.Breakpoint), global::Google.Cloud.Debugger.V2.Breakpoint.Parser, new[]{ "Id", "Action", "Location", "Condition", "Expressions", "LogMessageFormat", "LogLevel", "IsFinalState", "CreateTime", "FinalTime", "UserEmail", "Status", "StackFrames", "EvaluatedExpressions", "VariableTable", "Labels" }, null, new[]{ typeof(global::Google.Cloud.Debugger.V2.Breakpoint.Types.Action), typeof(global::Google.Cloud.Debugger.V2.Breakpoint.Types.LogLevel) }, new pbr::GeneratedClrTypeInfo[] { null, }),
@@ -438,7 +439,7 @@ namespace Google.Cloud.Debugger.V2 {
       }
       if (other.description_ != null) {
         if (description_ == null) {
-          description_ = new global::Google.Cloud.Debugger.V2.FormatMessage();
+          Description = new global::Google.Cloud.Debugger.V2.FormatMessage();
         }
         Description.MergeFrom(other.Description);
       }
@@ -458,14 +459,14 @@ namespace Google.Cloud.Debugger.V2 {
             break;
           }
           case 16: {
-            refersTo_ = (global::Google.Cloud.Debugger.V2.StatusMessage.Types.Reference) input.ReadEnum();
+            RefersTo = (global::Google.Cloud.Debugger.V2.StatusMessage.Types.Reference) input.ReadEnum();
             break;
           }
           case 26: {
             if (description_ == null) {
-              description_ = new global::Google.Cloud.Debugger.V2.FormatMessage();
+              Description = new global::Google.Cloud.Debugger.V2.FormatMessage();
             }
-            input.ReadMessage(description_);
+            input.ReadMessage(Description);
             break;
           }
         }
@@ -545,6 +546,7 @@ namespace Google.Cloud.Debugger.V2 {
     public SourceLocation(SourceLocation other) : this() {
       path_ = other.path_;
       line_ = other.line_;
+      column_ = other.column_;
       _unknownFields = pb::UnknownFieldSet.Clone(other._unknownFields);
     }
 
@@ -581,6 +583,22 @@ namespace Google.Cloud.Debugger.V2 {
       }
     }
 
+    /// <summary>Field number for the "column" field.</summary>
+    public const int ColumnFieldNumber = 3;
+    private int column_;
+    /// <summary>
+    /// Column within a line. The first column in a line as the value `1`.
+    /// Agents that do not support setting breakpoints on specific columns ignore
+    /// this field.
+    /// </summary>
+    [global::System.Diagnostics.DebuggerNonUserCodeAttribute]
+    public int Column {
+      get { return column_; }
+      set {
+        column_ = value;
+      }
+    }
+
     [global::System.Diagnostics.DebuggerNonUserCodeAttribute]
     public override bool Equals(object other) {
       return Equals(other as SourceLocation);
@@ -596,6 +614,7 @@ namespace Google.Cloud.Debugger.V2 {
       }
       if (Path != other.Path) return false;
       if (Line != other.Line) return false;
+      if (Column != other.Column) return false;
       return Equals(_unknownFields, other._unknownFields);
     }
 
@@ -604,6 +623,7 @@ namespace Google.Cloud.Debugger.V2 {
       int hash = 1;
       if (Path.Length != 0) hash ^= Path.GetHashCode();
       if (Line != 0) hash ^= Line.GetHashCode();
+      if (Column != 0) hash ^= Column.GetHashCode();
       if (_unknownFields != null) {
         hash ^= _unknownFields.GetHashCode();
       }
@@ -625,6 +645,10 @@ namespace Google.Cloud.Debugger.V2 {
         output.WriteRawTag(16);
         output.WriteInt32(Line);
       }
+      if (Column != 0) {
+        output.WriteRawTag(24);
+        output.WriteInt32(Column);
+      }
       if (_unknownFields != null) {
         _unknownFields.WriteTo(output);
       }
@@ -638,6 +662,9 @@ namespace Google.Cloud.Debugger.V2 {
       }
       if (Line != 0) {
         size += 1 + pb::CodedOutputStream.ComputeInt32Size(Line);
+      }
+      if (Column != 0) {
+        size += 1 + pb::CodedOutputStream.ComputeInt32Size(Column);
       }
       if (_unknownFields != null) {
         size += _unknownFields.CalculateSize();
@@ -656,6 +683,9 @@ namespace Google.Cloud.Debugger.V2 {
       if (other.Line != 0) {
         Line = other.Line;
       }
+      if (other.Column != 0) {
+        Column = other.Column;
+      }
       _unknownFields = pb::UnknownFieldSet.MergeFrom(_unknownFields, other._unknownFields);
     }
 
@@ -673,6 +703,10 @@ namespace Google.Cloud.Debugger.V2 {
           }
           case 16: {
             Line = input.ReadInt32();
+            break;
+          }
+          case 24: {
+            Column = input.ReadInt32();
             break;
           }
         }
@@ -906,6 +940,7 @@ namespace Google.Cloud.Debugger.V2 {
       }
     }
 
+
     /// <summary>Field number for the "status" field.</summary>
     public const int StatusFieldNumber = 5;
     private global::Google.Cloud.Debugger.V2.StatusMessage status_;
@@ -1054,7 +1089,7 @@ namespace Google.Cloud.Debugger.V2 {
       }
       if (other.status_ != null) {
         if (status_ == null) {
-          status_ = new global::Google.Cloud.Debugger.V2.StatusMessage();
+          Status = new global::Google.Cloud.Debugger.V2.StatusMessage();
         }
         Status.MergeFrom(other.Status);
       }
@@ -1090,9 +1125,9 @@ namespace Google.Cloud.Debugger.V2 {
           }
           case 42: {
             if (status_ == null) {
-              status_ = new global::Google.Cloud.Debugger.V2.StatusMessage();
+              Status = new global::Google.Cloud.Debugger.V2.StatusMessage();
             }
-            input.ReadMessage(status_);
+            input.ReadMessage(Status);
             break;
           }
           case 50: {
@@ -1283,7 +1318,7 @@ namespace Google.Cloud.Debugger.V2 {
       }
       if (other.location_ != null) {
         if (location_ == null) {
-          location_ = new global::Google.Cloud.Debugger.V2.SourceLocation();
+          Location = new global::Google.Cloud.Debugger.V2.SourceLocation();
         }
         Location.MergeFrom(other.Location);
       }
@@ -1306,9 +1341,9 @@ namespace Google.Cloud.Debugger.V2 {
           }
           case 18: {
             if (location_ == null) {
-              location_ = new global::Google.Cloud.Debugger.V2.SourceLocation();
+              Location = new global::Google.Cloud.Debugger.V2.SourceLocation();
             }
-            input.ReadMessage(location_);
+            input.ReadMessage(Location);
             break;
           }
           case 26: {
@@ -1579,7 +1614,8 @@ namespace Google.Cloud.Debugger.V2 {
         = pb::FieldCodec.ForMessage(58, global::Google.Cloud.Debugger.V2.StackFrame.Parser);
     private readonly pbc::RepeatedField<global::Google.Cloud.Debugger.V2.StackFrame> stackFrames_ = new pbc::RepeatedField<global::Google.Cloud.Debugger.V2.StackFrame>();
     /// <summary>
-    /// The stack at breakpoint time.
+    /// The stack at breakpoint time, where stack_frames[0] represents the most
+    /// recently entered function.
     /// </summary>
     [global::System.Diagnostics.DebuggerNonUserCodeAttribute]
     public pbc::RepeatedField<global::Google.Cloud.Debugger.V2.StackFrame> StackFrames {
@@ -1821,7 +1857,7 @@ namespace Google.Cloud.Debugger.V2 {
       }
       if (other.location_ != null) {
         if (location_ == null) {
-          location_ = new global::Google.Cloud.Debugger.V2.SourceLocation();
+          Location = new global::Google.Cloud.Debugger.V2.SourceLocation();
         }
         Location.MergeFrom(other.Location);
       }
@@ -1840,13 +1876,13 @@ namespace Google.Cloud.Debugger.V2 {
       }
       if (other.createTime_ != null) {
         if (createTime_ == null) {
-          createTime_ = new global::Google.Protobuf.WellKnownTypes.Timestamp();
+          CreateTime = new global::Google.Protobuf.WellKnownTypes.Timestamp();
         }
         CreateTime.MergeFrom(other.CreateTime);
       }
       if (other.finalTime_ != null) {
         if (finalTime_ == null) {
-          finalTime_ = new global::Google.Protobuf.WellKnownTypes.Timestamp();
+          FinalTime = new global::Google.Protobuf.WellKnownTypes.Timestamp();
         }
         FinalTime.MergeFrom(other.FinalTime);
       }
@@ -1855,7 +1891,7 @@ namespace Google.Cloud.Debugger.V2 {
       }
       if (other.status_ != null) {
         if (status_ == null) {
-          status_ = new global::Google.Cloud.Debugger.V2.StatusMessage();
+          Status = new global::Google.Cloud.Debugger.V2.StatusMessage();
         }
         Status.MergeFrom(other.Status);
       }
@@ -1880,9 +1916,9 @@ namespace Google.Cloud.Debugger.V2 {
           }
           case 18: {
             if (location_ == null) {
-              location_ = new global::Google.Cloud.Debugger.V2.SourceLocation();
+              Location = new global::Google.Cloud.Debugger.V2.SourceLocation();
             }
-            input.ReadMessage(location_);
+            input.ReadMessage(Location);
             break;
           }
           case 26: {
@@ -1911,27 +1947,27 @@ namespace Google.Cloud.Debugger.V2 {
           }
           case 82: {
             if (status_ == null) {
-              status_ = new global::Google.Cloud.Debugger.V2.StatusMessage();
+              Status = new global::Google.Cloud.Debugger.V2.StatusMessage();
             }
-            input.ReadMessage(status_);
+            input.ReadMessage(Status);
             break;
           }
           case 90: {
             if (createTime_ == null) {
-              createTime_ = new global::Google.Protobuf.WellKnownTypes.Timestamp();
+              CreateTime = new global::Google.Protobuf.WellKnownTypes.Timestamp();
             }
-            input.ReadMessage(createTime_);
+            input.ReadMessage(CreateTime);
             break;
           }
           case 98: {
             if (finalTime_ == null) {
-              finalTime_ = new global::Google.Protobuf.WellKnownTypes.Timestamp();
+              FinalTime = new global::Google.Protobuf.WellKnownTypes.Timestamp();
             }
-            input.ReadMessage(finalTime_);
+            input.ReadMessage(FinalTime);
             break;
           }
           case 104: {
-            action_ = (global::Google.Cloud.Debugger.V2.Breakpoint.Types.Action) input.ReadEnum();
+            Action = (global::Google.Cloud.Debugger.V2.Breakpoint.Types.Action) input.ReadEnum();
             break;
           }
           case 114: {
@@ -1939,7 +1975,7 @@ namespace Google.Cloud.Debugger.V2 {
             break;
           }
           case 120: {
-            logLevel_ = (global::Google.Cloud.Debugger.V2.Breakpoint.Types.LogLevel) input.ReadEnum();
+            LogLevel = (global::Google.Cloud.Debugger.V2.Breakpoint.Types.LogLevel) input.ReadEnum();
             break;
           }
           case 130: {
@@ -2083,10 +2119,10 @@ namespace Google.Cloud.Debugger.V2 {
     public const int UniquifierFieldNumber = 3;
     private string uniquifier_ = "";
     /// <summary>
-    /// Uniquifier to further distiguish the application.
+    /// Uniquifier to further distinguish the application.
     /// It is possible that different applications might have identical values in
     /// the debuggee message, thus, incorrectly identified as a single application
-    /// by the Controller service. This field adds salt to further distiguish the
+    /// by the Controller service. This field adds salt to further distinguish the
     /// application. Agents should consider seeding this field with value that
     /// identifies the code, binary, configuration and environment.
     /// </summary>
@@ -2198,9 +2234,8 @@ namespace Google.Cloud.Debugger.V2 {
     /// <summary>
     /// References to the locations and revisions of the source code used in the
     /// deployed application.
-    ///
-    /// NOTE: this field is experimental and can be ignored.
     /// </summary>
+    [global::System.ObsoleteAttribute]
     [global::System.Diagnostics.DebuggerNonUserCodeAttribute]
     public pbc::RepeatedField<global::Google.Cloud.DevTools.Source.V1.ExtendedSourceContext> ExtSourceContexts {
       get { return extSourceContexts_; }
@@ -2378,7 +2413,7 @@ namespace Google.Cloud.Debugger.V2 {
       }
       if (other.status_ != null) {
         if (status_ == null) {
-          status_ = new global::Google.Cloud.Debugger.V2.StatusMessage();
+          Status = new global::Google.Cloud.Debugger.V2.StatusMessage();
         }
         Status.MergeFrom(other.Status);
       }
@@ -2426,9 +2461,9 @@ namespace Google.Cloud.Debugger.V2 {
           }
           case 66: {
             if (status_ == null) {
-              status_ = new global::Google.Cloud.Debugger.V2.StatusMessage();
+              Status = new global::Google.Cloud.Debugger.V2.StatusMessage();
             }
-            input.ReadMessage(status_);
+            input.ReadMessage(Status);
             break;
           }
           case 74: {

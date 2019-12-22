@@ -13,7 +13,7 @@
 // limitations under the License.
 
 using Google.Api.Gax;
-using Google.Cloud.Firestore.V1Beta1;
+using Google.Cloud.Firestore.V1;
 using Google.Protobuf;
 using System;
 using System.IO;
@@ -40,8 +40,6 @@ namespace Google.Cloud.Firestore
         // - The values are only ever in memory temporarily; they're not exposed to users or included in an RPC.
         private const wkt::NullValue ServerTimestampSentinelNullValue = (wkt::NullValue) SentinelKind.ServerTimestamp;
         private const wkt::NullValue DeleteSentinelNullValue = (wkt::NullValue) SentinelKind.Delete;
-        private const wkt::NullValue ArrayRemoveSentinelNullValue = (wkt::NullValue) SentinelKind.ArrayRemove;
-        private const wkt::NullValue ArrayUnionSentinelNullValue = (wkt::NullValue) SentinelKind.ArrayUnion;
 
         private readonly Func<Value> _protoFactory;
 
@@ -95,15 +93,22 @@ namespace Google.Cloud.Firestore
             return null;
         }
 
-        internal static SentinelValue ForArrayValue(SentinelKind sentinelKind, object[] values)
+        internal static SentinelValue ForArrayValue(SerializationContext context, SentinelKind sentinelKind, object[] values)
         {
             GaxPreconditions.CheckNotNull(values, nameof(values));
-            ArrayValue array = ValueSerializer.Serialize(values).ArrayValue;
+            ArrayValue array = ValueSerializer.Serialize(context, values).ArrayValue;
             // This is just checking that the simple approach we've taken in the previous line
             // really did what we expect.
             GaxPreconditions.CheckState(array != null, "Input wasn't serialized as an array");
             GaxPreconditions.CheckState(!array.Values.Any(FindNestedSentinels), "Sentinel values cannot be nested in array union/remove values.");
             AugmentedValue augmented = new AugmentedValue { Kind = sentinelKind, Array = array };
+            return new SentinelValue(augmented);
+        }
+
+        internal static SentinelValue ForIncrement(Value value)
+        {
+            GaxPreconditions.CheckNotNull(value, nameof(value));
+            AugmentedValue augmented = new AugmentedValue { Kind = SentinelKind.NumericIncrement, Increment = value };
             return new SentinelValue(augmented);
         }
 
@@ -131,6 +136,14 @@ namespace Google.Cloud.Firestore
             return ReserializeToAugmentedValue(value).Array;
         }
 
+        internal static Value GetIncrement(Value value)
+        {
+            var kind = GetKind(value);
+            GaxPreconditions.CheckArgument(kind == SentinelKind.NumericIncrement, nameof(value),
+                "Value does not represent a numeric increment");
+            return ReserializeToAugmentedValue(value).Increment;
+        }
+
         // TODO: it would be nice to be able to avoid this, but it's unlikely to be a bottleneck
         // in real code.
         private static AugmentedValue ReserializeToAugmentedValue(Value value)
@@ -146,6 +159,6 @@ namespace Google.Cloud.Firestore
         }
 
         // Sentinel kinds, which are represented using a corresponding wkt::NullValue
-        private const SentinelKind s_maxSentinelKind = SentinelKind.ArrayRemove;
+        private const SentinelKind s_maxSentinelKind = SentinelKind.NumericIncrement;
     }
 }

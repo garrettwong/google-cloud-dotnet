@@ -14,7 +14,6 @@
 
 using Google.Api.Gax;
 using System;
-using System.Threading;
 
 namespace Google.Cloud.Diagnostics.Common
 {
@@ -37,6 +36,8 @@ namespace Google.Cloud.Diagnostics.Common
 
         /// <summary>The last time tracing was allowed.</summary>
         private long _lastCallMillis;
+
+        private readonly object _lastCallMutex = new object();
 
         /// <summary>
         /// Gets the instance of the <see cref="RateLimiter"/>.  The first request will set the
@@ -73,10 +74,22 @@ namespace Google.Cloud.Diagnostics.Common
         /// <returns>True if tracing is allowed.</returns>
         public bool CanTrace()
         {
-            var nowMillis = _timer.GetElapsedMilliseconds();
-            var lastCallMillis = _lastCallMillis;
-            return (nowMillis - lastCallMillis >= _fixedDelayMillis) &&
-                Interlocked.CompareExchange(ref _lastCallMillis, nowMillis, lastCallMillis) == lastCallMillis;
+            if(_fixedDelayMillis == 0)
+            {
+                return true;
+            }
+
+            lock (_lastCallMutex)
+            {
+                var nowMillis = _timer.GetElapsedMilliseconds();
+                if (nowMillis - _lastCallMillis >= _fixedDelayMillis)
+                {
+                    _lastCallMillis = nowMillis;
+                    return true;
+                }
+
+                return false;
+            }
         }
 
         /// <summary>

@@ -50,12 +50,22 @@ namespace Google.Cloud.Diagnostics.AspNetCore
             _logTarget = GaxPreconditions.CheckNotNull(logTarget, nameof(logTarget));
             _loggerOptions = GaxPreconditions.CheckNotNull(loggerOptions, nameof(loggerOptions));
             _serviceProvider = serviceProvider;
+
+            var writer = loggerOptions.LoggerDiagnosticsOutput;
+            if (writer != null)
+            {
+                // The log name is the ASP.NET Core log name, not the "/projects/xyz/logs/abc" log name in the resource.
+                // We don't currently use this in the diagnostics, but if we ever start to do so, SampleLogName seems
+                // like a reasonably clear example.
+                ((GoogleLogger) CreateLogger("SampleLogName")).WriteDiagnostics(writer);
+            }
         }
 
         /// <summary>
         /// Create an <see cref="ILoggerProvider"/> for Google Stackdriver Logging.
         /// </summary>
-        /// <param name="serviceProvider">The service provider to resolve additional services from.</param>
+        /// <param name="serviceProvider">The service provider to resolve additional services from.
+        /// May be null, in which case additional services (such as custom labels) will not be used.</param>
         /// <param name="projectId">Optional if running on Google App Engine or Google Compute Engine.
         ///     The Google Cloud Platform project ID. If unspecified and running on GAE or GCE the project ID will be
         ///     detected from the platform.</param>
@@ -73,7 +83,8 @@ namespace Google.Cloud.Diagnostics.AspNetCore
         /// Create an <see cref="ILoggerProvider"/> for Google Stackdriver Logging.
         /// </summary>
         /// <param name="logTarget">Where to log to. Must not be null.</param>
-        /// <param name="serviceProvider">The service provider to resolve additional services from.</param>
+        /// <param name="serviceProvider">Optional, the service provider to resolve additional services from. May be null,
+        /// in which case additional services (such as custom labels) will not be used.</param>
         /// <param name="options">Optional, options for the logger.</param>
         /// <param name="client">Optional, logging client.</param>
         public static GoogleLoggerProvider Create(LogTarget logTarget, IServiceProvider serviceProvider,

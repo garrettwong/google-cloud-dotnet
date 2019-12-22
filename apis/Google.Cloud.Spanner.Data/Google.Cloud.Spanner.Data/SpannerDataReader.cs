@@ -12,23 +12,18 @@
 // See the License for the specific language governing permissions and
 // limitations under the License.
 
-using System;
-using System.Collections;
-using System.Collections.Concurrent;
-using System.Collections.Generic;
-using System.Data.Common;
-using System.Threading;
-using System.Threading.Tasks;
 using Google.Api.Gax;
 using Google.Cloud.Spanner.V1;
 using Google.Cloud.Spanner.V1.Internal.Logging;
 using Google.Protobuf.WellKnownTypes;
-using static System.String;
-
-#if !NETSTANDARD1_5
+using System;
+using System.Collections;
+using System.Collections.Concurrent;
+using System.Collections.Generic;
 using System.Data;
-
-#endif
+using System.Data.Common;
+using System.Threading;
+using System.Threading.Tasks;
 
 namespace Google.Cloud.Spanner.Data
 {
@@ -38,6 +33,14 @@ namespace Google.Cloud.Spanner.Data
     public sealed class SpannerDataReader : DbDataReader
     {
         private static long s_readerCount;
+
+        private bool _rowValid = false;
+
+        // Tristate:
+        // - True if we've either checked already, or read a value
+        // - False if we've either checked already, or failed or read a first value, or NextResult has been called
+        // - Null if a call to HasRows should ask the reader.
+        private bool? _hasRows = null;
         private readonly List<Value> _innerList = new List<Value>();
         private readonly ReliableStreamReader _resultSet;
         private readonly ConcurrentDictionary<string, int> _fieldIndex = new ConcurrentDictionary<string, int>();
@@ -45,6 +48,7 @@ namespace Google.Cloud.Spanner.Data
         private readonly IDisposable _resourceToClose;
         private readonly SpannerConversionOptions _conversionOptions;
         private readonly bool _provideSchemaTable;
+        private readonly int _readTimeoutSeconds;
 
         // Lock for _closed; could possibly be removed and just used Interlocked, but this is simple.
         private readonly object _lock = new object();
@@ -55,7 +59,8 @@ namespace Google.Cloud.Spanner.Data
             ReliableStreamReader resultSet,
             IDisposable resourceToClose,
             SpannerConversionOptions conversionOptions,
-            bool provideSchemaTable)
+            bool provideSchemaTable,
+            int readTimeoutSeconds)
         {
             GaxPreconditions.CheckNotNull(resultSet, nameof(resultSet));
             Logger = logger;
@@ -66,6 +71,7 @@ namespace Google.Cloud.Spanner.Data
             _resourceToClose = resourceToClose;
             _conversionOptions = conversionOptions;
             _provideSchemaTable = provideSchemaTable;
+            _readTimeoutSeconds = readTimeoutSeconds;
         }
 
         private Logger Logger { get; }
@@ -75,77 +81,32 @@ namespace Google.Cloud.Spanner.Data
         public override int Depth => 0;
 
         /// <inheritdoc />
-        public override int FieldCount => PopulateMetadataAsync(CancellationToken.None).ResultWithUnwrappedExceptions()
-            .RowType.Fields.Count;
+        public override int FieldCount => PopulateMetadata().RowType.Fields.Count;
 
-        /// <inheritdoc />
-        public override bool HasRows => _resultSet.HasDataAsync(CancellationToken.None).ResultWithUnwrappedExceptions();
+        /// <summary>
+        /// Gets a value that indicates whether the SpannerDataReader contains one or more rows.
+        /// If any rows have been read, this will continue to return true even when there are no more rows.
+        /// </summary>
+        public override bool HasRows =>
+            // We only need to ask the result set if we haven't actually read any rows or checked before.
+            _hasRows ?? (_hasRows = Task.Run(() => _resultSet.HasDataAsync(CancellationToken.None)).ResultWithUnwrappedExceptions()).Value;
 
         /// <inheritdoc />
         public override bool IsClosed => _resultSet.IsClosed;
 
         /// <inheritdoc />
-        public override object this[int i] => GetSpannerFieldType(i).ConvertToClrType(_innerList[i], _conversionOptions);
-
-        /// <inheritdoc />
-        public override object this[string name] => this[
-            GetFieldIndexAsync(name, CancellationToken.None).ResultWithUnwrappedExceptions()];
-
-        /// <inheritdoc />
         public override int RecordsAffected => -1;
-
-        /// <inheritdoc />
-        public override bool GetBoolean(int i) => GetSpannerFieldType(i).ConvertToClrType<bool>(_innerList[i], _conversionOptions);
-
-        /// <inheritdoc />
-        public override byte GetByte(int i) => GetSpannerFieldType(i).ConvertToClrType<byte>(_innerList[i], _conversionOptions);
-
-        /// <inheritdoc />
-        public override long GetBytes(int i, long fieldOffset, byte[] buffer, int bufferoffset, int length) => throw
-            new NotSupportedException("Spanner does not support conversion to byte arrays.");
-
-        /// <inheritdoc />
-        public override char GetChar(int i) => GetSpannerFieldType(i).ConvertToClrType<char>(_innerList[i], _conversionOptions);
-
-        /// <inheritdoc />
-        public override long GetChars(int i, long fieldoffset, char[] buffer, int bufferoffset, int length) => throw
-            new NotSupportedException("Spanner does not support conversion to char arrays.");
-
-        /// <inheritdoc />
-        public override string GetDataTypeName(int i) => GetSpannerFieldType(i).ToString();
-
-        /// <inheritdoc />
-        public override DateTime GetDateTime(int i) => GetSpannerFieldType(i).ConvertToClrType<DateTime>(_innerList[i], _conversionOptions);
-
-        /// <inheritdoc />
-        public override decimal GetDecimal(int i) => GetSpannerFieldType(i).ConvertToClrType<decimal>(_innerList[i], _conversionOptions);
-
-        /// <inheritdoc />
-        public override double GetDouble(int i) => GetSpannerFieldType(i).ConvertToClrType<double>(_innerList[i], _conversionOptions);
-
-        /// <inheritdoc />
-        public override IEnumerator GetEnumerator()
-        {
-#if !NETSTANDARD1_5
-            return new DbEnumerator(this);
-#else
-            throw new NotSupportedException("GetEnumerator not yet supported in .NET Core");
-#endif
-        }
 
         /// <inheritdoc />
         public override System.Type GetFieldType(int i)
         {
-            var fieldMetadata = PopulateMetadataAsync(CancellationToken.None).ResultWithUnwrappedExceptions().RowType
-                .Fields[i];
+            var fieldMetadata = PopulateMetadata().RowType.Fields[i];
             return SpannerDbType.FromProtobufType(fieldMetadata.Type).DefaultClrType;
         }
 
-        // TODO: Remove duplication by making all of the methods below call this one.
-        // TODO: Validate that we're positioned on a row.
         /// <inheritdoc />
         public override T GetFieldValue<T>(int ordinal) =>
-            GetSpannerFieldType(ordinal).ConvertToClrType<T>(_innerList[ordinal], _conversionOptions);
+            GetSpannerFieldType(ordinal).ConvertToClrType<T>(GetJsonValue(ordinal), _conversionOptions);
 
         /// <summary>
         /// Gets the value of the specified column as type T.
@@ -165,53 +126,105 @@ namespace Google.Cloud.Spanner.Data
             {
                 throw new ArgumentException($"{columnName} is not a valid column", nameof(columnName));
             }
-            return GetSpannerFieldType(ordinal).ConvertToClrType<T>(_innerList[ordinal], _conversionOptions);
+            return GetFieldValue<T>(ordinal);
         }
 
-        /// <inheritdoc />
-        public override float GetFloat(int i) => GetSpannerFieldType(i).ConvertToClrType<float>(_innerList[i], _conversionOptions);
+        // Field access helpers, all implemented via GetFieldValue.
 
         /// <inheritdoc />
-        public override Guid GetGuid(int i) => GetSpannerFieldType(i).ConvertToClrType<Guid>(_innerList[i], _conversionOptions);
+        public override object this[int i] => GetFieldValue<object>(i);
 
         /// <inheritdoc />
-        public override short GetInt16(int i) => GetSpannerFieldType(i).ConvertToClrType<short>(_innerList[i], _conversionOptions);
+        public override object this[string name] => this[GetOrdinal(name)];
 
         /// <inheritdoc />
-        public override int GetInt32(int i) => GetSpannerFieldType(i).ConvertToClrType<int>(_innerList[i], _conversionOptions);
+        public override bool GetBoolean(int i) => GetFieldValue<bool>(i);
 
         /// <inheritdoc />
-        public override long GetInt64(int i) => GetSpannerFieldType(i).ConvertToClrType<long>(_innerList[i], _conversionOptions);
-
-        /// <summary>
-        /// Gets the value of the specified column as a pure Protobuf type.
-        /// </summary>
-        /// <param name="i">The index of the column whose value will be returned.</param>
-        /// <returns>The raw protobuf as a <see cref="Value"/>.</returns>
-        public Value GetJsonValue(int i) => _innerList[i];
+        public override byte GetByte(int i) => GetFieldValue<byte>(i);
 
         /// <inheritdoc />
-        public override string GetName(int i) => _resultSet.GetMetadataAsync(CancellationToken.None)
-            .ResultWithUnwrappedExceptions().RowType.Fields[i]
-            .Name;
+        public override long GetBytes(int i, long fieldOffset, byte[] buffer, int bufferoffset, int length) => throw
+            new NotSupportedException("Spanner does not support conversion to byte arrays.");
 
         /// <inheritdoc />
-        public override int GetOrdinal(string name) 
-            => GetFieldIndexAsync(name, CancellationToken.None).ResultWithUnwrappedExceptions();
+        public override char GetChar(int i) => GetFieldValue<char>(i);
 
         /// <inheritdoc />
-        public override string GetString(int i) => GetSpannerFieldType(i).ConvertToClrType<string>(_innerList[i], _conversionOptions);
+        public override long GetChars(int i, long fieldoffset, char[] buffer, int bufferoffset, int length) => throw
+            new NotSupportedException("Spanner does not support conversion to char arrays.");
+
+        /// <inheritdoc />
+        public override string GetDataTypeName(int i) => GetSpannerFieldType(i).ToString();
+
+        /// <inheritdoc />
+        public override DateTime GetDateTime(int i) => GetFieldValue<DateTime>(i);
+
+        /// <inheritdoc />
+        public override decimal GetDecimal(int i) => GetFieldValue<decimal>(i);
+
+        /// <inheritdoc />
+        public override double GetDouble(int i) => GetFieldValue<double>(i);
+
+        /// <inheritdoc />
+        public override float GetFloat(int i) => GetFieldValue<float>(i);
+
+        /// <inheritdoc />
+        public override Guid GetGuid(int i) => GetFieldValue<Guid>(i);
+
+        /// <inheritdoc />
+        public override short GetInt16(int i) => GetFieldValue<short>(i);
+
+        /// <inheritdoc />
+        public override int GetInt32(int i) => GetFieldValue<int>(i);
+
+        /// <inheritdoc />
+        public override long GetInt64(int i) => GetFieldValue<long>(i);
+
+        /// <inheritdoc />
+        public override string GetString(int i) => GetFieldValue<string>(i);
 
         /// <summary>
         /// Gets the value of the specified column as type <see cref="Timestamp"/>.
         /// </summary>
         /// <param name="i">The index of the column to retrieve.</param>
         /// <returns>The value converted to a <see cref="Timestamp"/>.</returns>
-        public Timestamp GetTimestamp(int i) => GetSpannerFieldType(i).ConvertToClrType<Timestamp>(_innerList[i], _conversionOptions);
+        public Timestamp GetTimestamp(int i) => GetFieldValue<Timestamp>(i);
 
         /// <inheritdoc />
         public override object GetValue(int i) => this[i];
 
+        /// <inheritdoc />
+        public override IEnumerator GetEnumerator() => new DbEnumerator(this);
+
+        /// <summary>
+        /// Gets the value of the specified column as a pure Protobuf type.
+        /// </summary>
+        /// <param name="i">The index of the column whose value will be returned.</param>
+        /// <returns>The raw protobuf as a <see cref="Value"/>.</returns>
+        /// <exception cref="InvalidOperationException">The reader is not currently positioned on a valid row.</exception>
+        public Value GetJsonValue(int i)
+        {
+            GaxPreconditions.CheckState(_rowValid, "The reader is not currently positioned on a valid row.");
+            return _innerList[i];
+        }
+
+        /// <inheritdoc />
+        public override string GetName(int i) => PopulateMetadata().RowType.Fields[i].Name;
+
+        /// <inheritdoc />
+        public override int GetOrdinal(string name)
+        {
+            // If we've already populated the field index, complete synchronously.
+            GaxPreconditions.CheckNotNullOrEmpty(name, nameof(name));
+            if (_fieldIndex.Count != 0)
+            {
+                return _fieldIndex[name];
+            }
+            // Otherwise, fetch metadata in a new task and wait for it.
+            return Task.Run(() => GetFieldIndexAsync(name, CancellationToken.None)).ResultWithUnwrappedExceptions();
+        }
+        
         /// <inheritdoc />
         public override int GetValues(object[] values)
         {
@@ -230,12 +243,15 @@ namespace Google.Cloud.Spanner.Data
         /// <inheritdoc />
         public override bool NextResult()
         {
-            Logger.Warn(() => "Spanner does not support multiple SQL queries in a single command");
+            _rowValid = false;
+            _hasRows = false;
+            _innerList.Clear();
+            Logger.Warn("Spanner does not support multiple SQL queries in a single command");
             return false;
         }
 
         /// <inheritdoc />
-        public override bool Read() => ReadAsync(CancellationToken.None).ResultWithUnwrappedExceptions();
+        public override bool Read() => Task.Run(() => ReadAsync(CancellationToken.None)).ResultWithUnwrappedExceptions();
 
         /// <summary>
         /// Reads the next row of values from Cloud Spanner.
@@ -244,34 +260,61 @@ namespace Google.Cloud.Spanner.Data
         /// <param name="cancellationToken">A cancellation token to cancel the read. Cloud Spanner currently
         /// supports limited cancellation while advancing the read to the next row.</param>
         /// <returns>True if another row was read.</returns>
-        public override Task<bool> ReadAsync(CancellationToken cancellationToken)
-        {
-            return ExecuteHelper.WithErrorTranslationAndProfiling(
-                async () =>
+        public override Task<bool> ReadAsync(CancellationToken cancellationToken) =>
+            ExecuteHelper.WithErrorTranslationAndProfiling(async () =>
                 {
-                    if (_metadata == null)
+                    using (var timeoutCts = new CancellationTokenSource(TimeSpan.FromSeconds(_readTimeoutSeconds)))
                     {
-                        await PopulateMetadataAsync(cancellationToken).ConfigureAwait(false);
-                    }
-                    _innerList.Clear();
-                    //read # values == # fields.
-                    var first = await _resultSet.NextAsync(cancellationToken).ConfigureAwait(false);
-                    if (first == null)
-                    {
-                        return false;
-                    }
+                        var timeoutToken = timeoutCts.Token;
+                        using (var linkedCts = CancellationTokenSource.CreateLinkedTokenSource(cancellationToken, timeoutToken))
+                        {
+                            try
+                            {
+                                var effectiveToken = linkedCts.Token;
+                                if (_metadata == null)
+                                {
+                                    await PopulateMetadataAsync(effectiveToken).ConfigureAwait(false);
+                                }
+                                _rowValid = false;
+                                _innerList.Clear();
 
-                    _innerList.Add(first);
-                    //we expect to get full rows...
-                    for (var i = 1; i < _metadata.RowType.Fields.Count; i++)
-                    {
-                        _innerList.Add(await _resultSet.NextAsync(cancellationToken).ConfigureAwait(false));
-                    }
+                                var first = await _resultSet.NextAsync(effectiveToken).ConfigureAwait(false);
+                                if (first == null)
+                                {
+                                    // If this is the first thing we've tried to read, then we know there are no rows.
+                                    if (_hasRows == null)
+                                    {
+                                        _hasRows = false;
+                                    }
+                                    return false;
+                                }
 
-                    return true;
+                                _innerList.Add(first);
+                                // We expect to get full rows...
+                                for (var i = 1; i < _metadata.RowType.Fields.Count; i++)
+                                {
+                                    var value = await _resultSet.NextAsync(effectiveToken).ConfigureAwait(false);
+                                    GaxPreconditions.CheckState(value != null, "Incomplete row returned by Spanner server");
+                                    _innerList.Add(value);
+                                }
+                                _rowValid = true;
+                                _hasRows = true;
+
+                                return true;
+                            }
+                            // Translate timeouts from our own cancellation token into a Spanner exception.
+                            // This mimics the behavior of SqlDataReader, which throws a SqlException on timeout.
+                            // It's *possible* that the operation was cancelled due to the user-provided cancellation token,
+                            // and that it just happens that the timeout has been fired as well... but there's a race
+                            // condition anyway in that case, so it's probably reasonable to take the simple path.
+                            catch (OperationCanceledException) when (timeoutToken.IsCancellationRequested)
+                            {
+                                throw new SpannerException(ErrorCode.DeadlineExceeded, "Read operation timed out");
+                            }
+                        }
+                    }
                 },
                 "SpannerDataReader.Read", Logger);
-        }
 
         /// <inheritdoc />
         protected override void Dispose(bool disposing)
@@ -299,6 +342,17 @@ namespace Google.Cloud.Spanner.Data
             return _fieldIndex[fieldName];
         }
 
+        internal ResultSetMetadata PopulateMetadata()
+        {
+            // If we've already got the metadata, complete synchronously
+            if (_metadata != null)
+            {
+                return _metadata;
+            }
+            // Otherwise, run the async population code in a new task.
+            return Task.Run(() => PopulateMetadataAsync(CancellationToken.None)).ResultWithUnwrappedExceptions();
+        }
+
         internal Task<ResultSetMetadata> PopulateMetadataAsync(CancellationToken cancellationToken)
         {
             if (_metadata != null)
@@ -313,8 +367,7 @@ namespace Google.Cloud.Spanner.Data
 
         private SpannerDbType GetSpannerFieldType(int i)
         {
-            var fieldMetadata = PopulateMetadataAsync(CancellationToken.None).ResultWithUnwrappedExceptions().RowType
-                .Fields[i];
+            var fieldMetadata = PopulateMetadata().RowType.Fields[i];
             return SpannerDbType.FromProtobufType(fieldMetadata.Type);
         }
 
@@ -340,8 +393,6 @@ namespace Google.Cloud.Spanner.Data
                 _resourceToClose?.Dispose();
             }
         }
-
-#if !NETSTANDARD1_5
 
         /// <inheritdoc />
         public override void Close()
@@ -390,7 +441,7 @@ namespace Google.Cloud.Spanner.Data
             {
                 return null;
             }
-            var resultSet = PopulateMetadataAsync(CancellationToken.None).ResultWithUnwrappedExceptions();
+            var resultSet = PopulateMetadata();
 
             // If the metadata couldn't be loaded, or there were no fields, just return null to indicate
             // that the schema isn't available.
@@ -432,6 +483,5 @@ namespace Google.Cloud.Spanner.Data
 
             return table;
         }
-#endif
     }
 }

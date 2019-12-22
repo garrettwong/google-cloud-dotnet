@@ -12,11 +12,11 @@
 // See the License for the specific language governing permissions and
 // limitations under the License.
 
+using Google.Api.Gax;
 using System;
 using System.Collections.Generic;
 using System.Linq;
 using System.Text;
-using Google.Api.Gax;
 
 namespace Google.Cloud.Spanner.Data
 {
@@ -58,7 +58,7 @@ namespace Google.Cloud.Spanner.Data
         public string CommandText { get; }
 
         /// <summary>
-        /// Gets the type of Spanner command (Select, Update, Delete, InsertOrUpdate, Insert, Ddl).
+        /// Gets the type of Spanner command (Select, Update, Delete, InsertOrUpdate, Insert, Ddl, Dml).
         /// </summary>
         public SpannerCommandType SpannerCommandType { get; }
 

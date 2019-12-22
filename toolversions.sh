@@ -9,66 +9,127 @@ declare -r TOOL_PACKAGES=$REPO_ROOT/packages
 declare -r DOCFX_VERSION=2.39.1
 declare -r DOTCOVER_VERSION=2018.2.3
 declare -r REPORTGENERATOR_VERSION=2.4.5.0
-declare -r PROTOC_VERSION=3.6.0
-declare -r GRPC_VERSION=1.12.0
+declare -r PROTOC_VERSION=3.8.0
+declare -r GRPC_VERSION=1.22.0
 
-# Variables to use to invoke the tools themselves
-
+# Tools that only run under Windows (at the moment)
 declare -r DOCFX=$TOOL_PACKAGES/docfx.$DOCFX_VERSION/docfx.exe
-declare -r FIND=/usr/bin/find
 declare -r DOTCOVER=$TOOL_PACKAGES/JetBrains.dotCover.CommandLineTools.$DOTCOVER_VERSION/tools/dotCover.exe
 declare -r REPORTGENERATOR=$TOOL_PACKAGES/ReportGenerator.$REPORTGENERATOR_VERSION/tools/ReportGenerator.exe
 
 declare -r PROTOBUF_TOOLS_ROOT=$TOOL_PACKAGES/Google.Protobuf.Tools.$PROTOC_VERSION
-declare -r PROTOC=$PROTOBUF_TOOLS_ROOT/tools/windows_x64/protoc.exe
-declare -r GRPC_PLUGIN=packages/Grpc.Tools.$GRPC_VERSION/tools/windows_x64/grpc_csharp_plugin.exe
 
-# Use an appropriate version of nuget... preferring
-# first an existing NUGET variable, then NuGet, then
-# just falling back to the path.
-if [ -z "$NUGET" ]
-then
-  if [ -n "$NuGet" ]
-  then
-    declare -r NUGET="$NuGet"
-  else
-    declare -r NUGET="nuget"
-  fi
+# Try to detect Python 3. It's quite different between Windows and Linux.
+if which python > /dev/null && python --version 2>&1 | grep -q "Python 3"; then declare -r PYTHON3=python
+elif which py > /dev/null && py -3 --version 2>&1 | grep -q "Python 3"; then declare -r PYTHON3="py -3"
+elif which python3 > /dev/null && python3 --version 2>&1 | grep -q "Python 3"; then declare -r PYTHON3=python3
+else
+  echo "Unable to detect Python 3 installation."
+  exit 1
 fi
+
+# When running in Java 9+, we want to disable some warnings... but
+# the options aren't available in Java 8. Even detecting Java 9+ is ugly :(
+if java -? 2>&1 | grep -q add-modules
+then
+  declare -r JAVA9OPTS="--add-opens=java.base/java.nio=ALL-UNNAMED --add-opens=java.base/java.lang=ALL-UNNAMED"
+fi
+
+# Cross-platform tools
+case "$OSTYPE" in
+  linux*)
+    declare -r PROTOC=$PROTOBUF_TOOLS_ROOT/tools/linux_x64/protoc
+    declare -r GRPC_PLUGIN=packages/Grpc.Tools.$GRPC_VERSION/tools/linux_x64/grpc_csharp_plugin
+    ;;
+  darwin*)
+    declare -r PROTOC=$PROTOBUF_TOOLS_ROOT/tools/macosx_x64/protoc
+    declare -r GRPC_PLUGIN=packages/Grpc.Tools.$GRPC_VERSION/tools/macosx_x64/grpc_csharp_plugin
+    ;;
+  win* | msys* | cygwin*)
+    declare -r PROTOC=$PROTOBUF_TOOLS_ROOT/tools/windows_x64/protoc.exe
+    declare -r GRPC_PLUGIN=packages/Grpc.Tools.$GRPC_VERSION/tools/windows_x64/grpc_csharp_plugin.exe
+    ;;
+  *)
+    echo "Unknown OSTYPE: $OSTYPE"
+    exit 1
+esac
+
+# The nuget command line tool is annoying to get installed on Linux/Mac.
+# We only need to be able to install tool packages, so let's just fake that by fetching with curl and unzipping.
+# Arguments:
+# - Package name
+# - Version
+install_nuget_package() {
+  local output=$TOOL_PACKAGES/$1.$2
+  # Assume that if the directory exists, it's already installed correctly.  
+  if [[ -d $output ]]; then return 0; fi
+  
+  (mkdir -p $output;
+   cd $output;
+   curl -sSL https://www.nuget.org/api/v2/package/$1/$2 --output tmp.zip;
+   unzip -q tmp.zip;
+   rm tmp.zip)
+}
 
 # Installation functions, all of which should be unconditionally called
 # when required. (They handle the case where the tool is already installed.)
 
 install_dotcover() {
-  $NUGET install -Verbosity quiet -OutputDirectory $TOOL_PACKAGES -Version $DOTCOVER_VERSION JetBrains.dotCover.CommandLineTools
+  install_nuget_package JetBrains.dotCover.CommandLineTools $DOTCOVER_VERSION
 }
 
 install_reportgenerator() {
-  $NUGET install -Verbosity quiet -OutputDirectory $TOOL_PACKAGES -Version $REPORTGENERATOR_VERSION ReportGenerator
+  install_nuget_package ReportGenerator $REPORTGENERATOR_VERSION
 }
 
 install_protoc() {
-  $NUGET install -Verbosity quiet -OutputDirectory $TOOL_PACKAGES -Version $PROTOC_VERSION Google.Protobuf.Tools
+  install_nuget_package Google.Protobuf.Tools $PROTOC_VERSION
   
   # Temporary fix for a broken proto in the protobuf tools package
   sed -i 's/--)/-- )/g' $PROTOBUF_TOOLS_ROOT/tools/google/protobuf/timestamp.proto
+  chmod +x $PROTOC
+}
+
+install_microgenerator() {
+  # TODO: Use a specific tag, or even a NuGet package eventually
+  if [ -d "gapic-generator-csharp" ]
+  then
+    git -C gapic-generator-csharp pull -q
+    git -C gapic-generator-csharp submodule update
+  else
+    git clone --recursive https://github.com/googleapis/gapic-generator-csharp
+  fi
+
+  case "$OSTYPE" in
+    linux*)
+      declare -r RUNTIME=linux-x64
+      declare -r EXTENSION=
+      ;;
+    darwin*)
+      echo "Microgenerator not currently supported on MacOSX. Ask jonskeet@ for help."
+      exit 1
+      ;;
+    win* | msys* | cygwin*)
+      declare -r RUNTIME=win-x64
+      declare -r EXTENSION=.exe
+      ;;
+    *)
+      echo "Unknown OSTYPE: $OSTYPE"
+      exit 1
+  esac
+  (cd gapic-generator-csharp; dotnet publish -v quiet -nologo -clp:NoSummary -c Release --self-contained --runtime=$RUNTIME Google.Api.Generator)
+  
+  export GAPIC_PLUGIN=$REPO_ROOT/gapic-generator-csharp/Google.Api.Generator/bin/Release/netcoreapp2.2/$RUNTIME/publish/Google.Api.Generator$EXTENSION
 }
 
 install_grpc() {
-  $NUGET install -Verbosity quiet -OutputDirectory $TOOL_PACKAGES -Version $GRPC_VERSION Grpc.Tools
+  install_nuget_package Grpc.Tools $GRPC_VERSION
+  chmod +x $GRPC_PLUGIN
 }
 
 install_docfx() {
   if [[ ! -f $DOCFX ]]
   then
-    # Not ideal, but only part of the temporary fix later...
-    if [[ "$VSINSTALLDIR" == "" ]]
-    then
-      echo "Unable to detect VS installation directory when installing docfx."
-      echo "Rerun from git bash launched from a VS 2017 command prompt, just once!"
-      exit 1
-    fi
-
     (echo "Fetching docfx v${DOCFX_VERSION}";
      mkdir -p $TOOL_PACKAGES;
      cd $TOOL_PACKAGES;
@@ -77,8 +138,6 @@ install_docfx() {
      curl -sSL https://github.com/dotnet/docfx/releases/download/v${DOCFX_VERSION}/docfx.zip -o tmp.zip;
      unzip -q tmp.zip;
      rm tmp.zip;
-     # Temporary fix for https://github.com/googleapis/google-cloud-dotnet/issues/1969
-     cp -f "$VSINSTALLDIR"/MSBuild/15.0/Bin/Microsoft.Build*.dll .
      )
   fi  
 }

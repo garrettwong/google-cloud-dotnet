@@ -14,7 +14,7 @@
 
 using Google.Api.Gax;
 using Google.Api.Gax.Grpc;
-using Google.Cloud.Firestore.V1Beta1;
+using Google.Cloud.Firestore.V1;
 using Google.Protobuf;
 using Grpc.Core;
 using System;
@@ -28,6 +28,7 @@ namespace Google.Cloud.Firestore
     {
         private static readonly HashSet<StatusCode> s_transientErrorStatusCodes = new HashSet<StatusCode>
         {
+            StatusCode.Aborted,
             StatusCode.Cancelled,
             StatusCode.Unknown,
             StatusCode.DeadlineExceeded,
@@ -180,11 +181,19 @@ namespace Google.Cloud.Firestore
             {
                 if (underlyingStream != null)
                 {
-                    var completeTask = underlyingStream.TryWriteCompleteAsync();
-                    // TODO: Handle exceptions from this?
-                    if (completeTask != null)
+                    try
                     {
-                        await completeTask.ConfigureAwait(false);
+                        var completeTask = underlyingStream.TryWriteCompleteAsync();
+                        if (completeTask != null)
+                        {
+                            await completeTask.ConfigureAwait(false);
+                        }
+                    }
+                    catch (RpcException)
+                    {
+                        // Swallow gRPC errors when trying to "complete" the stream. This may be in response to the network connection
+                        // being dropped, at which point completing the stream will fail; we don't want the listener to stop at that
+                        // point. Instead, it will reconnect.
                     }
                     underlyingStream.GrpcCall.Dispose();
                 }

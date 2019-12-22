@@ -78,6 +78,7 @@ namespace Google.Cloud.PubSub.V1
                 AckDeadline = other.AckDeadline;
                 AckExtensionWindow = other.AckExtensionWindow;
                 Scheduler = other.Scheduler;
+                MaxTotalAckExtension = other.MaxTotalAckExtension;
             }
 
             /// <summary>
@@ -101,6 +102,12 @@ namespace Google.Cloud.PubSub.V1
             public TimeSpan? AckExtensionWindow { get; set; }
 
             /// <summary>
+            /// Maximum duration for which a message ACK deadline will be extended.
+            /// If <c>null</c>, uses the default of <see cref="DefaultMaxTotalAckExtension"/>.
+            /// </summary>
+            public TimeSpan? MaxTotalAckExtension { get; set; }
+
+            /// <summary>
             /// The <see cref="IScheduler"/> used to schedule delays.
             /// If <c>null</c>, the default <see cref="SystemScheduler"/> is used.
             /// This is usually only used for testing.
@@ -112,6 +119,10 @@ namespace Google.Cloud.PubSub.V1
                 GaxPreconditions.CheckArgumentRange(AckDeadline, nameof(AckDeadline), MinimumAckDeadline, MaximumAckDeadline);
                 var maxAckExtension = TimeSpan.FromTicks((AckDeadline ?? DefaultAckDeadline).Ticks / 2);
                 GaxPreconditions.CheckArgumentRange(AckExtensionWindow, nameof(AckExtensionWindow), MinimumAckExtensionWindow, maxAckExtension);
+                if (MaxTotalAckExtension is TimeSpan maxTotalAckExtension)
+                {
+                    GaxPreconditions.CheckNonNegativeDelay(maxTotalAckExtension, nameof(MaxTotalAckExtension));
+                }
             }
 
             /// <summary>
@@ -181,10 +192,10 @@ namespace Google.Cloud.PubSub.V1
 
         /// <summary>
         /// Default <see cref="FlowControlSettings"/> for <see cref="SubscriberClient"/>.
-        /// Allows 10,000 outstanding messages; and 20Mb outstanding bytes.
+        /// Allows 1,000 outstanding messages; and 100Mb outstanding bytes.
         /// </summary>
         /// <returns>Default <see cref="FlowControlSettings"/> for <see cref="SubscriberClient"/>.</returns>
-        public static FlowControlSettings DefaultFlowControlSettings { get; } = new FlowControlSettings(10_000, 20_000_000);
+        public static FlowControlSettings DefaultFlowControlSettings { get; } = new FlowControlSettings(1_000, 100_000_000);
 
         /// <summary>
         /// The service-defined minimum message ACKnowledgement deadline of 10 seconds.
@@ -207,9 +218,14 @@ namespace Google.Cloud.PubSub.V1
         public static TimeSpan MinimumAckExtensionWindow { get; } = TimeSpan.FromMilliseconds(50);
 
         /// <summary>
-        /// The default message ACKnowlegdment extension window of 15 seconds.
+        /// The default message ACKnowledgement extension window of 15 seconds.
         /// </summary>
         public static TimeSpan DefaultAckExtensionWindow { get; } = TimeSpan.FromSeconds(15);
+
+        /// <summary>
+        /// The default maximum total ACKnowledgement extension of 60 minutes.
+        /// </summary>
+        public static TimeSpan DefaultMaxTotalAckExtension { get; } = TimeSpan.FromMinutes(60);
 
         /// <summary>
         /// Create a <see cref="SubscriberClient"/> instance associated with the specified <see cref="SubscriptionName"/>.
@@ -244,17 +260,16 @@ namespace Google.Cloud.PubSub.V1
             var endpoint = clientCreationSettings?.ServiceEndpoint ?? SubscriberServiceApiClient.DefaultEndpoint;
             var clients = new SubscriberServiceApiClient[clientCount];
             var shutdowns = new Func<Task>[clientCount];
-            // Set channel send/recv message size to unlimited. It defaults to ~4Mb which causes failures.
-            var channelOptions = new[]
-            {
-                new ChannelOption(ChannelOptions.MaxSendMessageLength, -1),
-                new ChannelOption(ChannelOptions.MaxReceiveMessageLength, -1),
-
-                // Use a random arg to prevent sub-channel re-use in gRPC, so each channel uses its own connection.
-                new ChannelOption("sub-channel-separator", Guid.NewGuid().ToString())
-            };
             for (int i = 0; i < clientCount; i++)
             {
+                var channelOptions = new[]
+                {
+                    // Set channel send/recv message size to unlimited. It defaults to ~4Mb which causes failures.
+                    new ChannelOption(ChannelOptions.MaxSendMessageLength, -1),
+                    new ChannelOption(ChannelOptions.MaxReceiveMessageLength, -1),
+                    // Use a random arg to prevent sub-channel re-use in gRPC, so each channel uses its own connection.
+                    new ChannelOption("sub-channel-separator", Guid.NewGuid().ToString())
+                };
                 var channel = new Channel(endpoint.Host, endpoint.Port, channelCredentials, channelOptions);
                 clients[i] = SubscriberServiceApiClient.Create(channel, clientCreationSettings?.SubscriberServiceApiSettings);
                 shutdowns[i] = channel.ShutdownAsync;
@@ -353,6 +368,7 @@ namespace Google.Cloud.PubSub.V1
             // These values are validated in Settings.Validate() above, so no need to re-validate here.
             _modifyDeadlineSeconds = (int)((settings.AckDeadline ?? DefaultAckDeadline).TotalSeconds);
             _autoExtendInterval = TimeSpan.FromSeconds(_modifyDeadlineSeconds) - (settings.AckExtensionWindow ?? DefaultAckExtensionWindow);
+            _maxExtensionDuration = settings.MaxTotalAckExtension ?? DefaultMaxTotalAckExtension;
             _shutdown = shutdown;
             _scheduler = settings.Scheduler ?? SystemScheduler.Instance;
             _taskHelper = GaxPreconditions.CheckNotNull(taskHelper, nameof(taskHelper));
@@ -364,6 +380,7 @@ namespace Google.Cloud.PubSub.V1
         private readonly SubscriberServiceApiClient[] _clients;
         private readonly Func<Task> _shutdown;
         private readonly TimeSpan _autoExtendInterval; // Interval between message lease auto-extends
+        private readonly TimeSpan _maxExtensionDuration; // Maximum duration for which a message lease will be extended.
         private readonly int _modifyDeadlineSeconds; // Value to use as new deadline when lease auto-extends
         private readonly int _maxAckExtendQueue; // Maximum count of acks/extends to push to server in a single messages
         private readonly IScheduler _scheduler;
@@ -465,7 +482,18 @@ namespace Google.Cloud.PubSub.V1
         /// </summary>
         private class Flow
         {
-            public Flow(long maxByteCount, long maxElementCount, Action<Task> registerTaskFn, TaskHelper taskHelper)
+            private struct FnInfo
+            {
+                internal FnInfo(Func<Task> fn, long byteCount)
+                {
+                    Fn = fn;
+                    ByteCount = byteCount;
+                }
+                internal Func<Task> Fn { get; }
+                internal long ByteCount { get; }
+            }
+
+            internal Flow(long maxByteCount, long maxElementCount, Action<Task> registerTaskFn, TaskHelper taskHelper)
             {
                 _maxByteCount = maxByteCount;
                 _maxElementCount = maxElementCount;
@@ -480,6 +508,8 @@ namespace Google.Cloud.PubSub.V1
             private readonly Action<Task> _registerTaskFn;
             private readonly TaskHelper _taskHelper;
             private readonly AsyncAutoResetEvent _event;
+            // Tracking of messages with ordering-keys.
+            private readonly Dictionary<string, Queue<FnInfo>> _keyedTaskQs = new Dictionary<string, Queue<FnInfo>>();
 
             private long _byteCount;
             private long _elementCount;
@@ -499,9 +529,10 @@ namespace Google.Cloud.PubSub.V1
             /// has completed.
             /// </summary>
             /// <param name="byteCount">The number of bytes in the element associated with <paramref name="fn"/>.</param>
+            /// <param name="orderingKey">The ordering key for this message. Empty string if no ordering key.</param>
             /// <param name="fn">The function to execute.</param>
             /// <returns>A Task that completes once <paramref name="fn"/> has been scheduled for execution.</returns>
-            public async Task Process(long byteCount, Func<Task> fn)
+            internal async Task Process(long byteCount, string orderingKey, Func<Task> fn)
             {
                 while (true)
                 {
@@ -509,9 +540,34 @@ namespace Google.Cloud.PubSub.V1
                     {
                         if (IsFlowOk())
                         {
-                            // Flow is OK, so add for this element, and execute.
+                            // Flow is OK, so stop waiting.
+                            // Add to stats for this element.
                             _byteCount += byteCount;
                             _elementCount += 1;
+                            // If there's no ordering-key then the user callback function can always immediately be executed
+                            // because there's no ordering constraint to meet.
+                            // If there is an ordering-key then the user callback function must be executed sequentially per
+                            // ordering-key.
+                            if (orderingKey.Length > 0)
+                            {
+                                // Ordering-key is set on this message.
+                                if (_keyedTaskQs.TryGetValue(orderingKey, out var taskQ))
+                                {
+                                    // This ordering-key is already inflight; add to queue.
+                                    if (taskQ == null)
+                                    {
+                                        taskQ = new Queue<FnInfo>();
+                                        _keyedTaskQs[orderingKey] = taskQ;
+                                    }
+                                    taskQ.Enqueue(new FnInfo(fn, byteCount));
+                                    // Return immediately, the enqueued task will be executed by previous task with same key.
+                                    return;
+                                }
+                                // Mark this ordering-key inflight, and allow user code for this first message to be executed.
+                                // Set the queue to null to save allocation.
+                                // It'll be created on-demand if more than one message with the same key are queued.
+                                _keyedTaskQs.Add(orderingKey, null);
+                            }
                             break;
                         }
                     }
@@ -519,18 +575,45 @@ namespace Google.Cloud.PubSub.V1
                     // CancellationToken not required, as the fn() will always drain on cancellation.
                     await _taskHelper.ConfigureAwait(_event.WaitAsync(CancellationToken.None));
                 }
+                // Execute the user code for this message.
+                ExecuteFunction(orderingKey, byteCount, fn);
+            }
+
+            private void ExecuteFunction(string orderingKey, long byteCount, Func<Task> fn)
+            {
                 // Execute fn, and schedule the following code to execute once it has completed.
                 // Register the function, so we can be sure it's completed during shutdown.
                 Task task = _taskHelper.Run(async () => await _taskHelper.ConfigureAwaitWithFinally(fn, () =>
                 {
                     bool setEvent;
+                    FnInfo nextFn = default;
                     lock (_lock)
                     {
+                        if (orderingKey.Length > 0)
+                        {
+                            var taskQ = _keyedTaskQs[orderingKey];
+                            if (taskQ != null && taskQ.Count > 0)
+                            {
+                                // More fn(s) to execute with this same ordering-key; execute the next fn.
+                                nextFn = taskQ.Dequeue();
+                            }
+                            else
+                            {
+                                // All fns executed for this ordering-key; remove the key.
+                                _keyedTaskQs.Remove(orderingKey);
+                            }
+                        }
                         bool preIsFlowOk = IsFlowOk();
                         _byteCount -= byteCount;
                         _elementCount -= 1;
                         // If moving from flow-bad to flow-OK, then trigger the next execution.
                         setEvent = !preIsFlowOk && IsFlowOk();
+                    }
+                    if (nextFn.Fn != null)
+                    {
+                        // Execute user code for the next message of this ordering-key;
+                        // this is not a recursive call, as this code is within a `Task.Run` :)
+                        ExecuteFunction(orderingKey, nextFn.ByteCount, nextFn.Fn);
                     }
                     if (setEvent)
                     {
@@ -552,9 +635,9 @@ namespace Google.Cloud.PubSub.V1
             private readonly LinkedList<Queue<T>> _qs = new LinkedList<Queue<T>>();
             private int _requeueCount = 0;
 
-            public void Enqueue(T item) => _q.Enqueue(item);
+            internal void Enqueue(T item) => _q.Enqueue(item);
 
-            public void Enqueue(IEnumerable<T> items)
+            internal void Enqueue(IEnumerable<T> items)
             {
                 foreach (var item in items)
                 {
@@ -562,23 +645,23 @@ namespace Google.Cloud.PubSub.V1
                 }
             }
 
-            public void Requeue(IEnumerable<T> items)
+            internal void Requeue(IEnumerable<T> items)
             {
                 var q = new Queue<T>(items);
                 _qs.AddLast(q);
                 _requeueCount += q.Count;
             }
 
-            public int Count => _q.Count + _requeueCount;
+            internal int Count => _q.Count + _requeueCount;
 
             /// <summary>
             /// Dequeue up to maxCount items.
             /// Any items that are not included in the return value due to <c>includeFn</c> are discarded.
             /// </summary>
             /// <param name="maxCount">Maximum count of items to dequeue.</param>
-            /// <param name="includeFn">If not null, most return <c>true</c> for the item to be included.</param>
+            /// <param name="includeFn">If not null, must return <c>true</c> for the item to be included.</param>
             /// <returns></returns>
-            public List<T> Dequeue(int maxCount, Predicate<T> includeFn)
+            internal List<T> Dequeue(int maxCount, Predicate<T> includeFn)
             {
                 List<T> result = new List<T>();
                 Queue<T> q = _qs.First?.Value;
@@ -617,7 +700,7 @@ namespace Google.Cloud.PubSub.V1
                 return result;
             }
 
-            public bool TryPeek(out T value)
+            internal bool TryPeek(out T value)
             {
                 var qsNode = _qs.First;
                 while (qsNode != null)
@@ -641,7 +724,7 @@ namespace Google.Cloud.PubSub.V1
 
         internal class AsyncSingleRecvQueue<T>
         {
-            public AsyncSingleRecvQueue(TaskHelper taskHelper) => _taskHelper = taskHelper;
+            internal AsyncSingleRecvQueue(TaskHelper taskHelper) => _taskHelper = taskHelper;
 
             private readonly TaskHelper _taskHelper;
             private readonly object _lock = new object();
@@ -649,7 +732,7 @@ namespace Google.Cloud.PubSub.V1
             private TaskCompletionSource<int> _tcs = null;
 
             // Thread-safe.
-            public void Enqueue(T item)
+            internal void Enqueue(T item)
             {
                 TaskCompletionSource<int> tcs;
                 lock (_lock)
@@ -659,14 +742,15 @@ namespace Google.Cloud.PubSub.V1
                 }
                 if (tcs != null)
                 {
-                    // Don't run in lock, as it may execute continuations synchonously.
-                    tcs.SetResult(0);
+                    // Don't run in lock, as it may execute continuations synchronously.
+                    // Use TrySetResult as this can be called multiple times on the same tcs instance
+                    tcs.TrySetResult(0);
                 }
             }
 
             // Thread-safe to use concurrently with Enqueue(),
             // but this DequeueAsync() method must *not* be called concurrently.
-            public async Task<T> DequeueAsync()
+            internal async Task<T> DequeueAsync()
             {
                 lock (_lock)
                 {
@@ -695,38 +779,38 @@ namespace Google.Cloud.PubSub.V1
         {
             private struct NextAction
             {
-                public NextAction(bool isPull, Action action)
+                internal NextAction(bool isPull, Action action)
                 {
                     IsPull = isPull;
                     Action = action;
                 }
-                public bool IsPull { get; }
-                public Action Action { get; }
+                internal bool IsPull { get; }
+                internal Action Action { get; }
             }
 
             private struct TaskNextAction
             {
-                public TaskNextAction(Task task, NextAction nextAction)
+                internal TaskNextAction(Task task, NextAction nextAction)
                 {
                     Task = task;
                     NextAction = nextAction;
                 }
-                public Task Task { get; }
-                public NextAction NextAction { get; }
+                internal Task Task { get; }
+                internal NextAction NextAction { get; }
             }
 
             private struct TimedId // "Time" is abstract, a monotonic incrementing counter is used.
             {
-                public TimedId(long time, string id)
+                internal TimedId(long time, string id)
                 {
                     Time = time;
                     Id = id;
                 }
-                public long Time { get; }
-                public string Id { get; }
+                internal long Time { get; }
+                internal string Id { get; }
             }
 
-            public SingleChannel(SubscriberClientImpl subscriber,
+            internal SingleChannel(SubscriberClientImpl subscriber,
                 SubscriberServiceApiClient client, Func<PubsubMessage, CancellationToken, Task<Reply>> handlerAsync,
                 Flow flow,
                 Action<Task> registerTaskFn)
@@ -743,6 +827,7 @@ namespace Google.Cloud.PubSub.V1
                 _modifyDeadlineSeconds = subscriber._modifyDeadlineSeconds;
                 _maxAckExtendQueueSize = subscriber._maxAckExtendQueue;
                 _autoExtendInterval = subscriber._autoExtendInterval;
+                _maxExtensionDuration = subscriber._maxExtensionDuration;
                 _extendQueueThrottleInterval = TimeSpan.FromTicks((long)((TimeSpan.FromSeconds(_modifyDeadlineSeconds) - _autoExtendInterval).Ticks * 0.5));
                 _maxAckExtendSendCount = Math.Max(10, subscriber._maxAckExtendQueue / 4);
                 _maxConcurrentPush = 3; // Fairly arbitrary.
@@ -763,6 +848,7 @@ namespace Google.Cloud.PubSub.V1
             private readonly SubscriptionName _subscriptionName;
             private readonly int _modifyDeadlineSeconds; // Seconds to add to deadling on lease extension.
             private readonly TimeSpan _autoExtendInterval; // Delay between auto-extends.
+            private readonly TimeSpan _maxExtensionDuration; // Maximum duration for which a message lease will be extended.
             private readonly TimeSpan _extendQueueThrottleInterval; // Throttle pull if items in the extend queue are older than this.
             private readonly int _maxAckExtendQueueSize; // Soft limit on push queue sizes. Used to throttle pulls.
             private readonly int _maxAckExtendSendCount; // Maximum number of ids to include in an ack/nack/extend push RPC.
@@ -789,7 +875,7 @@ namespace Google.Cloud.PubSub.V1
             // Stream shutdown occurs after 1 minute, so ensure we're always before that.
             private readonly static TimeSpan s_streamPingPeriod = TimeSpan.FromSeconds(25);
 
-            public async Task StartAsync()
+            internal async Task StartAsync()
             {
                 // Start pull.
                 StartStreamingPull();
@@ -980,7 +1066,7 @@ namespace Google.Cloud.PubSub.V1
                     // Get all ack-ids, used to extend leases as required.
                     var msgIds = new HashSet<string>(msgs.Select(x => x.AckId));
                     // Send an initial "lease-extension"; which starts the server timer.
-                    HandleExtendLease(msgIds);
+                    HandleExtendLease(msgIds, null);
                     // Asynchonously start message processing. Handles flow, and calls the user-supplied message handler.
                     // Uses Task.Run(), so not to clog up this "master" thread with per-message processing.
                     Task messagesTask = _taskHelper.Run(() => ProcessPullMessagesAsync(msgs, msgIds));
@@ -1005,7 +1091,7 @@ namespace Google.Cloud.PubSub.V1
                     var msg = msgs[msgIndex];
                     msgs[msgIndex] = null;
                     // Prepare to call user message handler, _flow.Process(...) enforces the user-handler concurrency constraints.
-                    await _taskHelper.ConfigureAwait(_flow.Process(msg.CalculateSize(), async () =>
+                    await _taskHelper.ConfigureAwait(_flow.Process(msg.CalculateSize(), msg.Message.OrderingKey ?? "", async () =>
                     {
                         // Running async. Common data needs locking
                         lock (_lock)
@@ -1033,34 +1119,115 @@ namespace Google.Cloud.PubSub.V1
                 }
             }
 
-            private void HandleExtendLease(HashSet<string> msgIds)
+            private class LeaseCancellation
+            {
+                public LeaseCancellation(CancellationTokenSource softStopCts) =>
+                    _cts = CancellationTokenSource.CreateLinkedTokenSource(softStopCts.Token);
+
+                private readonly object _lock = new object();
+                private CancellationTokenSource _cts;
+
+                public CancellationToken Token
+                {
+                    get
+                    {
+                        lock (_lock)
+                        {
+                            return _cts?.Token ?? CancellationToken.None;
+                        }
+                    }
+                }
+
+                public void Dispose()
+                {
+                    lock (_lock)
+                    {
+                        _cts.Dispose();
+                        _cts = null;
+                    }
+                }
+
+                public bool IsDisposed
+                {
+                    get
+                    {
+                        lock (_lock)
+                        {
+                            return _cts == null;
+                        }
+                    }
+                }
+
+                public void Cancel()
+                {
+                    CancellationTokenSource cts2;
+                    lock (_lock)
+                    {
+                        cts2 = _cts;
+                    }
+                    // Cancel outside of lock, as continuations may be executed synchronously.
+                    cts2?.Cancel();
+                    // No need to dispose of `_cts` here, as `Dispose()` will always be called.
+                }
+            }
+
+            private void HandleExtendLease(HashSet<string> msgIds, LeaseCancellation cancellation)
             {
                 if (_softStopCts.IsCancellationRequested)
                 {
                     // No further lease extensions once stop is requested.
                     return;
                 }
-                bool anyMsgIds;
-                lock (msgIds)
+                // The first call to this method happens as soon as messages in this chunk start to be processed.
+                // This triggers the server to start its lease timer.
+                if (cancellation == null)
                 {
-                    anyMsgIds = msgIds.Count > 0;
-                    if (anyMsgIds)
+                    // Create a task to cancel lease-extension once `_maxExtensionDuration` has been reached.
+                    // This set up once for each chunk of received messages, and passed through to each future call to this method.
+                    cancellation = new LeaseCancellation(_softStopCts);
+                    Add(_scheduler.Delay(_maxExtensionDuration, cancellation.Token), Next(false, () =>
                     {
-                        lock (_lock)
+                        // This is executed when `_maxExtensionDuration` has expired, or when `cancellation` is cancelled,
+                        // Which ensures `cancellation` is aways disposed of.
+                        cancellation.Dispose();
+                        lock (msgIds)
                         {
-                            _extendQueue.Enqueue(msgIds.Select(x => new TimedId(_extendThrottleHigh + 1, x)));
+                            msgIds.Clear();
+                        }
+                    }));
+                }
+                if (!cancellation.IsDisposed)
+                {
+                    // If `_maxExtensionDuration` has not expired, then schedule a further lease extension.
+                    bool anyMsgIds;
+                    lock (msgIds)
+                    {
+                        anyMsgIds = msgIds.Count > 0;
+                        if (anyMsgIds)
+                        {
+                            lock (_lock)
+                            {
+                                _extendQueue.Enqueue(msgIds.Select(x => new TimedId(_extendThrottleHigh + 1, x)));
+                            }
                         }
                     }
-                }
-                if (anyMsgIds)
-                {
-                    // Ids have been added to _extendQueue, so trigger a push.
-                    _eventPush.Set();
-                    // Some ids still exist, schedule another extension.
-                    Add(_scheduler.Delay(_autoExtendInterval, _softStopCts.Token), Next(false, () => HandleExtendLease(msgIds)));
-                    // Increment _extendThrottles.
-                    _extendThrottleHigh += 1;
-                    Add(_scheduler.Delay(_extendQueueThrottleInterval, _softStopCts.Token), Next(false, () => _extendThrottleLow += 1));
+                    if (anyMsgIds)
+                    {
+                        // Ids have been added to _extendQueue, so trigger a push.
+                        _eventPush.Set();
+                        // Some ids still exist, schedule another extension.
+                        // The overall `_maxExtensionDuration` is maintained by passing through the existing `cancellation`.
+                        Add(_scheduler.Delay(_autoExtendInterval, _softStopCts.Token), Next(false, () => HandleExtendLease(msgIds, cancellation)));
+                        // Increment _extendThrottles.
+                        _extendThrottleHigh += 1;
+                        Add(_scheduler.Delay(_extendQueueThrottleInterval, _softStopCts.Token), Next(false, () => _extendThrottleLow += 1));
+                    }
+                    else
+                    {
+                        // All messages have been handled in this chunk, so cancel the max-lease-time monitoring.
+                        // This will also cause `cancellation` to be disposed in the anonymous function above.
+                        cancellation.Cancel();
+                    }
                 }
             }
 

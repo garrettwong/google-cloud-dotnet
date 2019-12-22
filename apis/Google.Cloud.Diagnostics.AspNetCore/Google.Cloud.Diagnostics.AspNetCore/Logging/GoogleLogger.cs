@@ -19,10 +19,11 @@ using Google.Protobuf.WellKnownTypes;
 using Microsoft.AspNetCore.Http;
 using Microsoft.Extensions.DependencyInjection;
 using Microsoft.Extensions.Logging;
-using Microsoft.Extensions.Logging.Internal;
 using System;
 using System.Collections.Generic;
+using System.IO;
 using System.Linq;
+using static System.FormattableString;
 
 namespace Google.Cloud.Diagnostics.AspNetCore
 {
@@ -48,6 +49,8 @@ namespace Google.Cloud.Diagnostics.AspNetCore
     /// <seealso cref="GoogleLoggerFactoryExtensions"/>
     public sealed class GoogleLogger : ILogger
     {
+        private const string GcpConsoleLogsBaseUrl = "https://console.cloud.google.com/logs/viewer";
+
         /// <summary>The log name given when creating the logger.</summary>
         private readonly string _logName;
 
@@ -56,6 +59,11 @@ namespace Google.Cloud.Diagnostics.AspNetCore
 
         /// <summary>The trace target or null if non exists.</summary>
         private readonly TraceTarget _traceTarget;
+
+        /// <summary>
+        /// The log target, indicating mainly if the target is a project or an organization.
+        /// </summary>
+        private readonly LogTarget _logTarget;
 
         /// <summary>The logger options.</summary>
         private readonly LoggerOptions _loggerOptions;
@@ -72,7 +80,7 @@ namespace Google.Cloud.Diagnostics.AspNetCore
         internal GoogleLogger(IConsumer<LogEntry> consumer, LogTarget logTarget, LoggerOptions loggerOptions,
             string logName, IClock clock = null, IServiceProvider serviceProvider = null)
         {
-            GaxPreconditions.CheckNotNull(logTarget, nameof(logTarget));
+            _logTarget = GaxPreconditions.CheckNotNull(logTarget, nameof(logTarget));
             _traceTarget = logTarget.Kind == LogTargetKind.Project ?
                 TraceTarget.ForProject(logTarget.ProjectId) : null;
             _consumer = GaxPreconditions.CheckNotNull(consumer, nameof(consumer));
@@ -92,22 +100,70 @@ namespace Google.Cloud.Diagnostics.AspNetCore
         /// <inheritdoc />
         public void Log<TState>(LogLevel logLevel, EventId eventId, TState state, Exception exception, Func<TState, Exception, string> formatter)
         {
-            GaxPreconditions.CheckNotNull(formatter, nameof(formatter));
-
-            if (!IsEnabled(logLevel))
+            try
             {
-                return;
-            }
+                GaxPreconditions.CheckNotNull(formatter, nameof(formatter));
 
-            string message = formatter(state, exception);
-            if (string.IsNullOrEmpty(message))
+                if (!IsEnabled(logLevel))
+                {
+                    return;
+                }
+
+                string message = formatter(state, exception);
+                if (string.IsNullOrEmpty(message))
+                {
+                    return;
+                }
+
+                LogEntry entry = new LogEntry
+                {
+                    Resource = _loggerOptions.MonitoredResource,
+                    LogName = _fullLogName,
+                    Severity = logLevel.ToLogSeverity(),
+                    Timestamp = Timestamp.FromDateTime(_clock.GetCurrentDateTimeUtc()),
+                    JsonPayload = CreateJsonPayload(eventId, state, exception, message),
+                    Labels = { CreateLabels() },
+                    Trace = GetTraceName() ?? "",
+                };
+
+                _consumer.Receive(new[] { entry });
+            }
+            catch (Exception) when (_loggerOptions.RetryOptions.ExceptionHandling == ExceptionHandling.Ignore) { }
+        }
+
+        private Dictionary<string, string> CreateLabels()
+        {
+            var labelProviders = _serviceProvider?.GetService<IEnumerable<ILogEntryLabelProvider>>();
+            if (labelProviders is null)
             {
-                return;
+                return _loggerOptions.Labels;
             }
+            using (var iterator = labelProviders.GetEnumerator())
+            {
+                if (!iterator.MoveNext())
+                {
+                    return _loggerOptions.Labels;
+                }
+                // By now, we know we have at least one label provider. Clone the labels from the options,
+                // and invoke each provider on the clone in turn.
+                var labels = _loggerOptions.Labels.ToDictionary(kvp => kvp.Key, kvp => kvp.Value);
+                do
+                {
+                    iterator.Current.Invoke(labels);
+                } while (iterator.MoveNext());
+                return labels;
+            }
+        }
 
+        private Struct CreateJsonPayload<TState>(EventId eventId, TState state, Exception exception, string message)
+        {
             var jsonStruct = new Struct();
             jsonStruct.Fields.Add("message", Value.ForString(message));
             jsonStruct.Fields.Add("log_name", Value.ForString(_logName));
+            if (exception != null)
+            {
+                jsonStruct.Fields.Add("exception", Value.ForString(exception.ToString()));
+            }
 
             if (eventId.Id != 0 || eventId.Name != null)
             {
@@ -125,19 +181,9 @@ namespace Google.Cloud.Diagnostics.AspNetCore
 
             // If we have format params and its more than just the original message add them.
             if (state is IEnumerable<KeyValuePair<string, object>> formatParams &&
-                !(formatParams.Count() == 1 && formatParams.Single().Key.Equals("{OriginalFormat}")))
+                ContainsFormatParameters(formatParams))
             {
-                var paramStruct = new Struct();
-                foreach (var pair in formatParams)
-                {
-                    // Consider adding formatting support for values that are IFormattable.
-                    paramStruct.Fields[pair.Key] = Value.ForString(pair.Value?.ToString() ?? "");
-                }
-
-                if (paramStruct.Fields.Count > 0)
-                {
-                    jsonStruct.Fields.Add("format_parameters", Value.ForStruct(paramStruct));
-                }
+                jsonStruct.Fields.Add("format_parameters", CreateStructValue(formatParams));
             }
 
             var currentLogScope = GoogleLoggerScope.Current;
@@ -152,15 +198,9 @@ namespace Google.Cloud.Diagnostics.AspNetCore
             while (currentLogScope != null)
             {
                 // Determine if the state of the scope are format params
-                if (currentLogScope.State is FormattedLogValues scopeFormatParams)
+                if (currentLogScope.State is IEnumerable<KeyValuePair<string, object>> scopeFormatParams)
                 {
-                    var scopeParams = new Struct();
-                    foreach (var pair in scopeFormatParams)
-                    {
-                        scopeParams.Fields[pair.Key] = Value.ForString(pair.Value?.ToString() ?? "");
-                    }
-
-                    scopeParamsList.Add(Value.ForStruct(scopeParams));
+                    scopeParamsList.Add(CreateStructValue(scopeFormatParams));
                 }
 
                 currentLogScope = currentLogScope.Parent;
@@ -171,34 +211,50 @@ namespace Google.Cloud.Diagnostics.AspNetCore
                 jsonStruct.Fields.Add("parent_scopes", Value.ForList(scopeParamsList.ToArray()));
             }
 
-            Dictionary<string, string> labels;
-            var labelProviders = GetLabelProviders()?.ToArray();
-            if (labelProviders?.Length > 0)
+            return jsonStruct;
+
+            // Checks that fields is:
+            // - Non-empty
+            // - Not just a single entry with a key of "{OriginalFormat}"
+            // so we can decide whether or not to populate a struct with it.
+            bool ContainsFormatParameters(IEnumerable<KeyValuePair<string, object>> fields)
             {
-                // Create a copy of the labels from the options and invoke each provider
-                labels = _loggerOptions.Labels.ToDictionary(kvp => kvp.Key, kvp => kvp.Value);
-                foreach (var provider in labelProviders)
+                using (var iterator = fields.GetEnumerator())
                 {
-                    provider.Invoke(labels);
+                    // No fields? Nothing to format.
+                    if (!iterator.MoveNext())
+                    {
+                        return false;
+                    }
+                    // If the first entry isn't the original format, we definitely want to create a struct
+                    if (iterator.Current.Key != "{OriginalFormat}")
+                    {
+                        return true;
+                    }
+                    // If the first entry *is* the original format, we want to create a struct
+                    // if and only if there's at least one more entry.
+                    return iterator.MoveNext();
                 }
             }
-            else
+
+            Value CreateStructValue(IEnumerable<KeyValuePair<string, object>> fields)
             {
-                labels = _loggerOptions.Labels;
+                Struct fieldsStruct = new Struct();
+                foreach (var pair in fields)
+                {
+                    string key = pair.Key;
+                    if (string.IsNullOrEmpty(key))
+                    {
+                        continue;
+                    }
+                    if (char.IsDigit(key[0]))
+                    {
+                        key = "_" + key;
+                    }
+                    fieldsStruct.Fields[key] = Value.ForString(pair.Value?.ToString() ?? "");
+                }
+                return Value.ForStruct(fieldsStruct);
             }
-
-            LogEntry entry = new LogEntry
-            {
-                Resource = _loggerOptions.MonitoredResource,
-                LogName = _fullLogName,
-                Severity = logLevel.ToLogSeverity(),
-                Timestamp = Timestamp.FromDateTime(_clock.GetCurrentDateTimeUtc()),
-                JsonPayload = jsonStruct,
-                Labels = { labels },
-                Trace = GetTraceName() ?? "",
-            };
-
-            _consumer.Receive(new[] { entry });
         }
 
         /// <summary>
@@ -221,10 +277,45 @@ namespace Google.Cloud.Diagnostics.AspNetCore
         }
 
         /// <summary>
-        /// Gets the collection of <see cref="ILogEntryLabelProvider"/>'s
-        /// registered in the application <see cref="IServiceProvider"/>.
+        /// For diagnostic purposes. Builds and returns the URL where the entries logged by
+        /// this <see cref="GoogleLogger"/> can be seen on the GCP Stackdriver Logging Console.
         /// </summary>
-        internal IEnumerable<ILogEntryLabelProvider> GetLabelProviders() =>
-            _serviceProvider?.GetService<IEnumerable<ILogEntryLabelProvider>>();
+        public Uri GetGcpConsoleLogsUrl()
+        {
+            string target =
+                _logTarget.Kind == LogTargetKind.Project ? $"project={_logTarget.ProjectId}" :
+                _logTarget.Kind == LogTargetKind.Organization ? $"organizationId={_logTarget.OrganizationId}" :
+                throw new InvalidOperationException($"Unrecognized LogTargetKind: {_logTarget.Kind}");
+
+            string resourceType = _loggerOptions.MonitoredResource.Type;
+            // Log ingestion converts "gke_container" into "container", but we really do need to search for "container",
+            // as the UI doesn't support "gke_container". (Whereas the Monitoring API *only* supports "gke_container".)
+            if (resourceType == "gke_container")
+            {
+                resourceType = "container";
+            }
+            IList<string> parameters = new List<string>
+            {
+                $"resource={resourceType}",
+                $"minLogLevel={(int)_loggerOptions.LogLevel.ToLogSeverity()}",
+                $"logName={_fullLogName}",
+                target
+            };
+
+            return new UriBuilder(GcpConsoleLogsBaseUrl)
+            {
+                Query = string.Join("&", parameters)
+            }.Uri;
+        }
+
+        internal void WriteDiagnostics(TextWriter writer)
+        {
+            // Explicitly not catching exceptions.
+            // This should only be activated for diagnostics purposes so in that case
+            // we shouldn't try to handle exceptions.
+
+            writer.WriteLine(Invariant($"{DateTime.UtcNow:yyyy-MM-dd'T'HH:mm:ss} - GoogleLogger will write logs to: {GetGcpConsoleLogsUrl()}"));
+            writer.Flush();
+        }
     }
 }

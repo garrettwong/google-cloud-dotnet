@@ -94,6 +94,13 @@ namespace Google.Cloud.Bigtable.V2
                 return originalRows;
             }
 
+            // If the original request didn't specify a row set at all, create an open range from the last key
+            // to specify "all rows after this key".
+            if (originalRows == null)
+            {
+                return RowSet.FromRowRanges(RowRange.Open(LastFoundKey, null));
+            }
+
             RowSet newRowSet = new RowSet
             {
                 RowKeys = { originalRows.RowKeys.Where(key => !StartKeyIsAlreadyRead(key)) }

@@ -1,4 +1,4 @@
-// Copyright 2018 Google LLC
+// Copyright 2019 Google LLC
 //
 // Licensed under the Apache License, Version 2.0 (the "License");
 // you may not use this file except in compliance with the License.
@@ -25,7 +25,6 @@ namespace Google.Cloud.VideoIntelligence.V1.SmokeTests
     using System.Collections;
     using System.Collections.Generic;
     using System.Collections.ObjectModel;
-    using System.Linq;
     using System.Threading;
     using System.Threading.Tasks;
 
@@ -37,7 +36,7 @@ namespace Google.Cloud.VideoIntelligence.V1.SmokeTests
             VideoIntelligenceServiceClient client = VideoIntelligenceServiceClient.Create();
 
             // Initialize request argument(s)
-            string inputUri = "gs://demomaker/cat.mp4";
+            string inputUri = "gs://cloud-samples-data/video/cat.mp4";
             IEnumerable<Feature> features = new[]
             {
                 Feature.LabelDetection,

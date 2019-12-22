@@ -25,8 +25,8 @@ namespace Google.Cloud.Logging.Type {
       byte[] descriptorData = global::System.Convert.FromBase64String(
           string.Concat(
             "CiZnb29nbGUvbG9nZ2luZy90eXBlL2h0dHBfcmVxdWVzdC5wcm90bxITZ29v",
-            "Z2xlLmxvZ2dpbmcudHlwZRocZ29vZ2xlL2FwaS9hbm5vdGF0aW9ucy5wcm90",
-            "bxoeZ29vZ2xlL3Byb3RvYnVmL2R1cmF0aW9uLnByb3RvIu8CCgtIdHRwUmVx",
+            "Z2xlLmxvZ2dpbmcudHlwZRoeZ29vZ2xlL3Byb3RvYnVmL2R1cmF0aW9uLnBy",
+            "b3RvGhxnb29nbGUvYXBpL2Fubm90YXRpb25zLnByb3RvIu8CCgtIdHRwUmVx",
             "dWVzdBIWCg5yZXF1ZXN0X21ldGhvZBgBIAEoCRITCgtyZXF1ZXN0X3VybBgC",
             "IAEoCRIUCgxyZXF1ZXN0X3NpemUYAyABKAMSDgoGc3RhdHVzGAQgASgFEhUK",
             "DXJlc3BvbnNlX3NpemUYBSABKAMSEgoKdXNlcl9hZ2VudBgGIAEoCRIRCgly",
@@ -40,7 +40,7 @@ namespace Google.Cloud.Logging.Type {
             "aW5nL3R5cGU7bHR5cGWqAhlHb29nbGUuQ2xvdWQuTG9nZ2luZy5UeXBlygIZ",
             "R29vZ2xlXENsb3VkXExvZ2dpbmdcVHlwZWIGcHJvdG8z"));
       descriptor = pbr::FileDescriptor.FromGeneratedCode(descriptorData,
-          new pbr::FileDescriptor[] { global::Google.Api.AnnotationsReflection.Descriptor, global::Google.Protobuf.WellKnownTypes.DurationReflection.Descriptor, },
+          new pbr::FileDescriptor[] { global::Google.Protobuf.WellKnownTypes.DurationReflection.Descriptor, global::Google.Api.AnnotationsReflection.Descriptor, },
           new pbr::GeneratedClrTypeInfo(null, new pbr::GeneratedClrTypeInfo[] {
             new pbr::GeneratedClrTypeInfo(typeof(global::Google.Cloud.Logging.Type.HttpRequest), global::Google.Cloud.Logging.Type.HttpRequest.Parser, new[]{ "RequestMethod", "RequestUrl", "RequestSize", "Status", "ResponseSize", "UserAgent", "RemoteIp", "ServerIp", "Referer", "Latency", "CacheLookup", "CacheHit", "CacheValidatedWithOriginServer", "CacheFillBytes", "Protocol" }, null, null, null)
           }));
@@ -182,7 +182,8 @@ namespace Google.Cloud.Logging.Type {
     private string userAgent_ = "";
     /// <summary>
     /// The user agent sent by the client. Example:
-    /// `"Mozilla/4.0 (compatible; MSIE 6.0; Windows 98; Q312461; .NET CLR 1.0.3705)"`.
+    /// `"Mozilla/4.0 (compatible; MSIE 6.0; Windows 98; Q312461; .NET
+    /// CLR 1.0.3705)"`.
     /// </summary>
     [global::System.Diagnostics.DebuggerNonUserCodeAttribute]
     public string UserAgent {
@@ -227,7 +228,8 @@ namespace Google.Cloud.Logging.Type {
     private string referer_ = "";
     /// <summary>
     /// The referer URL of the request, as defined in
-    /// [HTTP/1.1 Header Field Definitions](http://www.w3.org/Protocols/rfc2616/rfc2616-sec14.html).
+    /// [HTTP/1.1 Header Field
+    /// Definitions](http://www.w3.org/Protocols/rfc2616/rfc2616-sec14.html).
     /// </summary>
     [global::System.Diagnostics.DebuggerNonUserCodeAttribute]
     public string Referer {
@@ -541,7 +543,7 @@ namespace Google.Cloud.Logging.Type {
       }
       if (other.latency_ != null) {
         if (latency_ == null) {
-          latency_ = new global::Google.Protobuf.WellKnownTypes.Duration();
+          Latency = new global::Google.Protobuf.WellKnownTypes.Duration();
         }
         Latency.MergeFrom(other.Latency);
       }
@@ -625,9 +627,9 @@ namespace Google.Cloud.Logging.Type {
           }
           case 114: {
             if (latency_ == null) {
-              latency_ = new global::Google.Protobuf.WellKnownTypes.Duration();
+              Latency = new global::Google.Protobuf.WellKnownTypes.Duration();
             }
-            input.ReadMessage(latency_);
+            input.ReadMessage(Latency);
             break;
           }
           case 122: {

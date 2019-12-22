@@ -1,4 +1,4 @@
-// Copyright 2018 Google LLC
+// Copyright 2019 Google LLC
 //
 // Licensed under the Apache License, Version 2.0 (the "License");
 // you may not use this file except in compliance with the License.
@@ -542,6 +542,42 @@ namespace Google.Cloud.Dialogflow.V2
     }
 
     /// <summary>
+    /// Builder class for <see cref="EntityTypesClient"/> to provide simple configuration of credentials, endpoint etc.
+    /// </summary>
+    public sealed partial class EntityTypesClientBuilder : gaxgrpc::ClientBuilderBase<EntityTypesClient>
+    {
+        /// <summary>
+        /// The settings to use for RPCs, or null for the default settings.
+        /// </summary>
+        public EntityTypesSettings Settings { get; set; }
+
+        /// <inheritdoc/>
+        public override EntityTypesClient Build()
+        {
+            Validate();
+            grpccore::CallInvoker callInvoker = CreateCallInvoker();
+            return EntityTypesClient.Create(callInvoker, Settings);
+        }
+
+        /// <inheritdoc />
+        public override async stt::Task<EntityTypesClient> BuildAsync(st::CancellationToken cancellationToken = default)
+        {
+            Validate();
+            grpccore::CallInvoker callInvoker = await CreateCallInvokerAsync(cancellationToken).ConfigureAwait(false);
+            return EntityTypesClient.Create(callInvoker, Settings);
+        }
+
+        /// <inheritdoc />
+        protected override gaxgrpc::ServiceEndpoint GetDefaultEndpoint() => EntityTypesClient.DefaultEndpoint;
+
+        /// <inheritdoc />
+        protected override scg::IReadOnlyList<string> GetDefaultScopes() => EntityTypesClient.DefaultScopes;
+
+        /// <inheritdoc />
+        protected override gaxgrpc::ChannelPool GetChannelPool() => EntityTypesClient.ChannelPool;
+    }
+
+    /// <summary>
     /// EntityTypes client wrapper, for convenient use.
     /// </summary>
     public abstract partial class EntityTypesClient
@@ -558,13 +594,17 @@ namespace Google.Cloud.Dialogflow.V2
         /// The default EntityTypes scopes are:
         /// <list type="bullet">
         /// <item><description>"https://www.googleapis.com/auth/cloud-platform"</description></item>
+        /// <item><description>"https://www.googleapis.com/auth/dialogflow"</description></item>
         /// </list>
         /// </remarks>
         public static scg::IReadOnlyList<string> DefaultScopes { get; } = new sco::ReadOnlyCollection<string>(new string[] {
             "https://www.googleapis.com/auth/cloud-platform",
+            "https://www.googleapis.com/auth/dialogflow",
         });
 
         private static readonly gaxgrpc::ChannelPool s_channelPool = new gaxgrpc::ChannelPool(DefaultScopes);
+
+        internal static gaxgrpc::ChannelPool ChannelPool => s_channelPool;
 
         /// <summary>
         /// Asynchronously creates a <see cref="EntityTypesClient"/>, applying defaults for all unspecified settings,
@@ -770,12 +810,81 @@ namespace Google.Cloud.Dialogflow.V2
         /// Required. The agent to list all entity types from.
         /// Format: `projects/&lt;Project ID&gt;/agent`.
         /// </param>
+        /// <param name="pageToken">
+        /// The token returned from the previous request.
+        /// A value of <c>null</c> or an empty string retrieves the first page.
+        /// </param>
+        /// <param name="pageSize">
+        /// The size of page to request. The response will not be larger than this, but may be smaller.
+        /// A value of <c>null</c> or 0 uses a server-defined page size.
+        /// </param>
+        /// <param name="callSettings">
+        /// If not null, applies overrides to this RPC call.
+        /// </param>
+        /// <returns>
+        /// A pageable asynchronous sequence of <see cref="EntityType"/> resources.
+        /// </returns>
+        public virtual gax::PagedAsyncEnumerable<ListEntityTypesResponse, EntityType> ListEntityTypesAsync(
+            string parent,
+            string pageToken = null,
+            int? pageSize = null,
+            gaxgrpc::CallSettings callSettings = null) => ListEntityTypesAsync(
+                new ListEntityTypesRequest
+                {
+                    Parent = gax::GaxPreconditions.CheckNotNullOrEmpty(parent, nameof(parent)),
+                    PageToken = pageToken ?? "",
+                    PageSize = pageSize ?? 0,
+                },
+                callSettings);
+
+        /// <summary>
+        /// Returns the list of all entity types in the specified agent.
+        /// </summary>
+        /// <param name="parent">
+        /// Required. The agent to list all entity types from.
+        /// Format: `projects/&lt;Project ID&gt;/agent`.
+        /// </param>
+        /// <param name="pageToken">
+        /// The token returned from the previous request.
+        /// A value of <c>null</c> or an empty string retrieves the first page.
+        /// </param>
+        /// <param name="pageSize">
+        /// The size of page to request. The response will not be larger than this, but may be smaller.
+        /// A value of <c>null</c> or 0 uses a server-defined page size.
+        /// </param>
+        /// <param name="callSettings">
+        /// If not null, applies overrides to this RPC call.
+        /// </param>
+        /// <returns>
+        /// A pageable sequence of <see cref="EntityType"/> resources.
+        /// </returns>
+        public virtual gax::PagedEnumerable<ListEntityTypesResponse, EntityType> ListEntityTypes(
+            string parent,
+            string pageToken = null,
+            int? pageSize = null,
+            gaxgrpc::CallSettings callSettings = null) => ListEntityTypes(
+                new ListEntityTypesRequest
+                {
+                    Parent = gax::GaxPreconditions.CheckNotNullOrEmpty(parent, nameof(parent)),
+                    PageToken = pageToken ?? "",
+                    PageSize = pageSize ?? 0,
+                },
+                callSettings);
+
+        /// <summary>
+        /// Returns the list of all entity types in the specified agent.
+        /// </summary>
+        /// <param name="parent">
+        /// Required. The agent to list all entity types from.
+        /// Format: `projects/&lt;Project ID&gt;/agent`.
+        /// </param>
         /// <param name="languageCode">
         /// Optional. The language to list entity synonyms for. If not specified,
         /// the agent's default language is used.
-        /// [More than a dozen
-        /// languages](https://dialogflow.com/docs/reference/language) are supported.
-        /// Note: languages must be enabled in the agent, before they can be used.
+        /// [Many
+        /// languages](https://cloud.google.com/dialogflow/docs/reference/language)
+        /// are supported. Note: languages must be enabled in the agent before they can
+        /// be used.
         /// </param>
         /// <param name="pageToken">
         /// The token returned from the previous request.
@@ -816,9 +925,10 @@ namespace Google.Cloud.Dialogflow.V2
         /// <param name="languageCode">
         /// Optional. The language to list entity synonyms for. If not specified,
         /// the agent's default language is used.
-        /// [More than a dozen
-        /// languages](https://dialogflow.com/docs/reference/language) are supported.
-        /// Note: languages must be enabled in the agent, before they can be used.
+        /// [Many
+        /// languages](https://cloud.google.com/dialogflow/docs/reference/language)
+        /// are supported. Note: languages must be enabled in the agent before they can
+        /// be used.
         /// </param>
         /// <param name="pageToken">
         /// The token returned from the previous request.
@@ -843,6 +953,94 @@ namespace Google.Cloud.Dialogflow.V2
                 new ListEntityTypesRequest
                 {
                     ParentAsProjectAgentName = gax::GaxPreconditions.CheckNotNull(parent, nameof(parent)),
+                    LanguageCode = languageCode ?? "", // Optional
+                    PageToken = pageToken ?? "",
+                    PageSize = pageSize ?? 0,
+                },
+                callSettings);
+
+        /// <summary>
+        /// Returns the list of all entity types in the specified agent.
+        /// </summary>
+        /// <param name="parent">
+        /// Required. The agent to list all entity types from.
+        /// Format: `projects/&lt;Project ID&gt;/agent`.
+        /// </param>
+        /// <param name="languageCode">
+        /// Optional. The language to list entity synonyms for. If not specified,
+        /// the agent's default language is used.
+        /// [Many
+        /// languages](https://cloud.google.com/dialogflow/docs/reference/language)
+        /// are supported. Note: languages must be enabled in the agent before they can
+        /// be used.
+        /// </param>
+        /// <param name="pageToken">
+        /// The token returned from the previous request.
+        /// A value of <c>null</c> or an empty string retrieves the first page.
+        /// </param>
+        /// <param name="pageSize">
+        /// The size of page to request. The response will not be larger than this, but may be smaller.
+        /// A value of <c>null</c> or 0 uses a server-defined page size.
+        /// </param>
+        /// <param name="callSettings">
+        /// If not null, applies overrides to this RPC call.
+        /// </param>
+        /// <returns>
+        /// A pageable asynchronous sequence of <see cref="EntityType"/> resources.
+        /// </returns>
+        public virtual gax::PagedAsyncEnumerable<ListEntityTypesResponse, EntityType> ListEntityTypesAsync(
+            string parent,
+            string languageCode,
+            string pageToken = null,
+            int? pageSize = null,
+            gaxgrpc::CallSettings callSettings = null) => ListEntityTypesAsync(
+                new ListEntityTypesRequest
+                {
+                    Parent = gax::GaxPreconditions.CheckNotNullOrEmpty(parent, nameof(parent)),
+                    LanguageCode = languageCode ?? "", // Optional
+                    PageToken = pageToken ?? "",
+                    PageSize = pageSize ?? 0,
+                },
+                callSettings);
+
+        /// <summary>
+        /// Returns the list of all entity types in the specified agent.
+        /// </summary>
+        /// <param name="parent">
+        /// Required. The agent to list all entity types from.
+        /// Format: `projects/&lt;Project ID&gt;/agent`.
+        /// </param>
+        /// <param name="languageCode">
+        /// Optional. The language to list entity synonyms for. If not specified,
+        /// the agent's default language is used.
+        /// [Many
+        /// languages](https://cloud.google.com/dialogflow/docs/reference/language)
+        /// are supported. Note: languages must be enabled in the agent before they can
+        /// be used.
+        /// </param>
+        /// <param name="pageToken">
+        /// The token returned from the previous request.
+        /// A value of <c>null</c> or an empty string retrieves the first page.
+        /// </param>
+        /// <param name="pageSize">
+        /// The size of page to request. The response will not be larger than this, but may be smaller.
+        /// A value of <c>null</c> or 0 uses a server-defined page size.
+        /// </param>
+        /// <param name="callSettings">
+        /// If not null, applies overrides to this RPC call.
+        /// </param>
+        /// <returns>
+        /// A pageable sequence of <see cref="EntityType"/> resources.
+        /// </returns>
+        public virtual gax::PagedEnumerable<ListEntityTypesResponse, EntityType> ListEntityTypes(
+            string parent,
+            string languageCode,
+            string pageToken = null,
+            int? pageSize = null,
+            gaxgrpc::CallSettings callSettings = null) => ListEntityTypes(
+                new ListEntityTypesRequest
+                {
+                    Parent = gax::GaxPreconditions.CheckNotNullOrEmpty(parent, nameof(parent)),
                     LanguageCode = languageCode ?? "", // Optional
                     PageToken = pageToken ?? "",
                     PageSize = pageSize ?? 0,
@@ -957,12 +1155,76 @@ namespace Google.Cloud.Dialogflow.V2
         /// Required. The name of the entity type.
         /// Format: `projects/&lt;Project ID&gt;/agent/entityTypes/&lt;EntityType ID&gt;`.
         /// </param>
+        /// <param name="callSettings">
+        /// If not null, applies overrides to this RPC call.
+        /// </param>
+        /// <returns>
+        /// A Task containing the RPC response.
+        /// </returns>
+        public virtual stt::Task<EntityType> GetEntityTypeAsync(
+            string name,
+            gaxgrpc::CallSettings callSettings = null) => GetEntityTypeAsync(
+                new GetEntityTypeRequest
+                {
+                    Name = gax::GaxPreconditions.CheckNotNullOrEmpty(name, nameof(name)),
+                },
+                callSettings);
+
+        /// <summary>
+        /// Retrieves the specified entity type.
+        /// </summary>
+        /// <param name="name">
+        /// Required. The name of the entity type.
+        /// Format: `projects/&lt;Project ID&gt;/agent/entityTypes/&lt;EntityType ID&gt;`.
+        /// </param>
+        /// <param name="cancellationToken">
+        /// A <see cref="st::CancellationToken"/> to use for this RPC.
+        /// </param>
+        /// <returns>
+        /// A Task containing the RPC response.
+        /// </returns>
+        public virtual stt::Task<EntityType> GetEntityTypeAsync(
+            string name,
+            st::CancellationToken cancellationToken) => GetEntityTypeAsync(
+                name,
+                gaxgrpc::CallSettings.FromCancellationToken(cancellationToken));
+
+        /// <summary>
+        /// Retrieves the specified entity type.
+        /// </summary>
+        /// <param name="name">
+        /// Required. The name of the entity type.
+        /// Format: `projects/&lt;Project ID&gt;/agent/entityTypes/&lt;EntityType ID&gt;`.
+        /// </param>
+        /// <param name="callSettings">
+        /// If not null, applies overrides to this RPC call.
+        /// </param>
+        /// <returns>
+        /// The RPC response.
+        /// </returns>
+        public virtual EntityType GetEntityType(
+            string name,
+            gaxgrpc::CallSettings callSettings = null) => GetEntityType(
+                new GetEntityTypeRequest
+                {
+                    Name = gax::GaxPreconditions.CheckNotNullOrEmpty(name, nameof(name)),
+                },
+                callSettings);
+
+        /// <summary>
+        /// Retrieves the specified entity type.
+        /// </summary>
+        /// <param name="name">
+        /// Required. The name of the entity type.
+        /// Format: `projects/&lt;Project ID&gt;/agent/entityTypes/&lt;EntityType ID&gt;`.
+        /// </param>
         /// <param name="languageCode">
         /// Optional. The language to retrieve entity synonyms for. If not specified,
         /// the agent's default language is used.
-        /// [More than a dozen
-        /// languages](https://dialogflow.com/docs/reference/language) are supported.
-        /// Note: languages must be enabled in the agent, before they can be used.
+        /// [Many
+        /// languages](https://cloud.google.com/dialogflow/docs/reference/language)
+        /// are supported. Note: languages must be enabled in the agent before they can
+        /// be used.
         /// </param>
         /// <param name="callSettings">
         /// If not null, applies overrides to this RPC call.
@@ -991,9 +1253,10 @@ namespace Google.Cloud.Dialogflow.V2
         /// <param name="languageCode">
         /// Optional. The language to retrieve entity synonyms for. If not specified,
         /// the agent's default language is used.
-        /// [More than a dozen
-        /// languages](https://dialogflow.com/docs/reference/language) are supported.
-        /// Note: languages must be enabled in the agent, before they can be used.
+        /// [Many
+        /// languages](https://cloud.google.com/dialogflow/docs/reference/language)
+        /// are supported. Note: languages must be enabled in the agent before they can
+        /// be used.
         /// </param>
         /// <param name="cancellationToken">
         /// A <see cref="st::CancellationToken"/> to use for this RPC.
@@ -1019,9 +1282,10 @@ namespace Google.Cloud.Dialogflow.V2
         /// <param name="languageCode">
         /// Optional. The language to retrieve entity synonyms for. If not specified,
         /// the agent's default language is used.
-        /// [More than a dozen
-        /// languages](https://dialogflow.com/docs/reference/language) are supported.
-        /// Note: languages must be enabled in the agent, before they can be used.
+        /// [Many
+        /// languages](https://cloud.google.com/dialogflow/docs/reference/language)
+        /// are supported. Note: languages must be enabled in the agent before they can
+        /// be used.
         /// </param>
         /// <param name="callSettings">
         /// If not null, applies overrides to this RPC call.
@@ -1036,6 +1300,99 @@ namespace Google.Cloud.Dialogflow.V2
                 new GetEntityTypeRequest
                 {
                     EntityTypeName = gax::GaxPreconditions.CheckNotNull(name, nameof(name)),
+                    LanguageCode = languageCode ?? "", // Optional
+                },
+                callSettings);
+
+        /// <summary>
+        /// Retrieves the specified entity type.
+        /// </summary>
+        /// <param name="name">
+        /// Required. The name of the entity type.
+        /// Format: `projects/&lt;Project ID&gt;/agent/entityTypes/&lt;EntityType ID&gt;`.
+        /// </param>
+        /// <param name="languageCode">
+        /// Optional. The language to retrieve entity synonyms for. If not specified,
+        /// the agent's default language is used.
+        /// [Many
+        /// languages](https://cloud.google.com/dialogflow/docs/reference/language)
+        /// are supported. Note: languages must be enabled in the agent before they can
+        /// be used.
+        /// </param>
+        /// <param name="callSettings">
+        /// If not null, applies overrides to this RPC call.
+        /// </param>
+        /// <returns>
+        /// A Task containing the RPC response.
+        /// </returns>
+        public virtual stt::Task<EntityType> GetEntityTypeAsync(
+            string name,
+            string languageCode,
+            gaxgrpc::CallSettings callSettings = null) => GetEntityTypeAsync(
+                new GetEntityTypeRequest
+                {
+                    Name = gax::GaxPreconditions.CheckNotNullOrEmpty(name, nameof(name)),
+                    LanguageCode = languageCode ?? "", // Optional
+                },
+                callSettings);
+
+        /// <summary>
+        /// Retrieves the specified entity type.
+        /// </summary>
+        /// <param name="name">
+        /// Required. The name of the entity type.
+        /// Format: `projects/&lt;Project ID&gt;/agent/entityTypes/&lt;EntityType ID&gt;`.
+        /// </param>
+        /// <param name="languageCode">
+        /// Optional. The language to retrieve entity synonyms for. If not specified,
+        /// the agent's default language is used.
+        /// [Many
+        /// languages](https://cloud.google.com/dialogflow/docs/reference/language)
+        /// are supported. Note: languages must be enabled in the agent before they can
+        /// be used.
+        /// </param>
+        /// <param name="cancellationToken">
+        /// A <see cref="st::CancellationToken"/> to use for this RPC.
+        /// </param>
+        /// <returns>
+        /// A Task containing the RPC response.
+        /// </returns>
+        public virtual stt::Task<EntityType> GetEntityTypeAsync(
+            string name,
+            string languageCode,
+            st::CancellationToken cancellationToken) => GetEntityTypeAsync(
+                name,
+                languageCode,
+                gaxgrpc::CallSettings.FromCancellationToken(cancellationToken));
+
+        /// <summary>
+        /// Retrieves the specified entity type.
+        /// </summary>
+        /// <param name="name">
+        /// Required. The name of the entity type.
+        /// Format: `projects/&lt;Project ID&gt;/agent/entityTypes/&lt;EntityType ID&gt;`.
+        /// </param>
+        /// <param name="languageCode">
+        /// Optional. The language to retrieve entity synonyms for. If not specified,
+        /// the agent's default language is used.
+        /// [Many
+        /// languages](https://cloud.google.com/dialogflow/docs/reference/language)
+        /// are supported. Note: languages must be enabled in the agent before they can
+        /// be used.
+        /// </param>
+        /// <param name="callSettings">
+        /// If not null, applies overrides to this RPC call.
+        /// </param>
+        /// <returns>
+        /// The RPC response.
+        /// </returns>
+        public virtual EntityType GetEntityType(
+            string name,
+            string languageCode,
+            gaxgrpc::CallSettings callSettings = null) => GetEntityType(
+                new GetEntityTypeRequest
+                {
+                    Name = gax::GaxPreconditions.CheckNotNullOrEmpty(name, nameof(name)),
                     LanguageCode = languageCode ?? "", // Optional
                 },
                 callSettings);
@@ -1184,12 +1541,91 @@ namespace Google.Cloud.Dialogflow.V2
         /// <param name="entityType">
         /// Required. The entity type to create.
         /// </param>
+        /// <param name="callSettings">
+        /// If not null, applies overrides to this RPC call.
+        /// </param>
+        /// <returns>
+        /// A Task containing the RPC response.
+        /// </returns>
+        public virtual stt::Task<EntityType> CreateEntityTypeAsync(
+            string parent,
+            EntityType entityType,
+            gaxgrpc::CallSettings callSettings = null) => CreateEntityTypeAsync(
+                new CreateEntityTypeRequest
+                {
+                    Parent = gax::GaxPreconditions.CheckNotNullOrEmpty(parent, nameof(parent)),
+                    EntityType = gax::GaxPreconditions.CheckNotNull(entityType, nameof(entityType)),
+                },
+                callSettings);
+
+        /// <summary>
+        /// Creates an entity type in the specified agent.
+        /// </summary>
+        /// <param name="parent">
+        /// Required. The agent to create a entity type for.
+        /// Format: `projects/&lt;Project ID&gt;/agent`.
+        /// </param>
+        /// <param name="entityType">
+        /// Required. The entity type to create.
+        /// </param>
+        /// <param name="cancellationToken">
+        /// A <see cref="st::CancellationToken"/> to use for this RPC.
+        /// </param>
+        /// <returns>
+        /// A Task containing the RPC response.
+        /// </returns>
+        public virtual stt::Task<EntityType> CreateEntityTypeAsync(
+            string parent,
+            EntityType entityType,
+            st::CancellationToken cancellationToken) => CreateEntityTypeAsync(
+                parent,
+                entityType,
+                gaxgrpc::CallSettings.FromCancellationToken(cancellationToken));
+
+        /// <summary>
+        /// Creates an entity type in the specified agent.
+        /// </summary>
+        /// <param name="parent">
+        /// Required. The agent to create a entity type for.
+        /// Format: `projects/&lt;Project ID&gt;/agent`.
+        /// </param>
+        /// <param name="entityType">
+        /// Required. The entity type to create.
+        /// </param>
+        /// <param name="callSettings">
+        /// If not null, applies overrides to this RPC call.
+        /// </param>
+        /// <returns>
+        /// The RPC response.
+        /// </returns>
+        public virtual EntityType CreateEntityType(
+            string parent,
+            EntityType entityType,
+            gaxgrpc::CallSettings callSettings = null) => CreateEntityType(
+                new CreateEntityTypeRequest
+                {
+                    Parent = gax::GaxPreconditions.CheckNotNullOrEmpty(parent, nameof(parent)),
+                    EntityType = gax::GaxPreconditions.CheckNotNull(entityType, nameof(entityType)),
+                },
+                callSettings);
+
+        /// <summary>
+        /// Creates an entity type in the specified agent.
+        /// </summary>
+        /// <param name="parent">
+        /// Required. The agent to create a entity type for.
+        /// Format: `projects/&lt;Project ID&gt;/agent`.
+        /// </param>
+        /// <param name="entityType">
+        /// Required. The entity type to create.
+        /// </param>
         /// <param name="languageCode">
         /// Optional. The language of entity synonyms defined in `entity_type`. If not
         /// specified, the agent's default language is used.
-        /// [More than a dozen
-        /// languages](https://dialogflow.com/docs/reference/language) are supported.
-        /// Note: languages must be enabled in the agent, before they can be used.
+        /// [Many
+        /// languages](https://cloud.google.com/dialogflow/docs/reference/language)
+        /// are supported. Note: languages must be enabled in the agent before they can
+        /// be used.
         /// </param>
         /// <param name="callSettings">
         /// If not null, applies overrides to this RPC call.
@@ -1223,9 +1659,10 @@ namespace Google.Cloud.Dialogflow.V2
         /// <param name="languageCode">
         /// Optional. The language of entity synonyms defined in `entity_type`. If not
         /// specified, the agent's default language is used.
-        /// [More than a dozen
-        /// languages](https://dialogflow.com/docs/reference/language) are supported.
-        /// Note: languages must be enabled in the agent, before they can be used.
+        /// [Many
+        /// languages](https://cloud.google.com/dialogflow/docs/reference/language)
+        /// are supported. Note: languages must be enabled in the agent before they can
+        /// be used.
         /// </param>
         /// <param name="cancellationToken">
         /// A <see cref="st::CancellationToken"/> to use for this RPC.
@@ -1256,9 +1693,10 @@ namespace Google.Cloud.Dialogflow.V2
         /// <param name="languageCode">
         /// Optional. The language of entity synonyms defined in `entity_type`. If not
         /// specified, the agent's default language is used.
-        /// [More than a dozen
-        /// languages](https://dialogflow.com/docs/reference/language) are supported.
-        /// Note: languages must be enabled in the agent, before they can be used.
+        /// [Many
+        /// languages](https://cloud.google.com/dialogflow/docs/reference/language)
+        /// are supported. Note: languages must be enabled in the agent before they can
+        /// be used.
         /// </param>
         /// <param name="callSettings">
         /// If not null, applies overrides to this RPC call.
@@ -1274,6 +1712,114 @@ namespace Google.Cloud.Dialogflow.V2
                 new CreateEntityTypeRequest
                 {
                     ParentAsProjectAgentName = gax::GaxPreconditions.CheckNotNull(parent, nameof(parent)),
+                    EntityType = gax::GaxPreconditions.CheckNotNull(entityType, nameof(entityType)),
+                    LanguageCode = languageCode ?? "", // Optional
+                },
+                callSettings);
+
+        /// <summary>
+        /// Creates an entity type in the specified agent.
+        /// </summary>
+        /// <param name="parent">
+        /// Required. The agent to create a entity type for.
+        /// Format: `projects/&lt;Project ID&gt;/agent`.
+        /// </param>
+        /// <param name="entityType">
+        /// Required. The entity type to create.
+        /// </param>
+        /// <param name="languageCode">
+        /// Optional. The language of entity synonyms defined in `entity_type`. If not
+        /// specified, the agent's default language is used.
+        /// [Many
+        /// languages](https://cloud.google.com/dialogflow/docs/reference/language)
+        /// are supported. Note: languages must be enabled in the agent before they can
+        /// be used.
+        /// </param>
+        /// <param name="callSettings">
+        /// If not null, applies overrides to this RPC call.
+        /// </param>
+        /// <returns>
+        /// A Task containing the RPC response.
+        /// </returns>
+        public virtual stt::Task<EntityType> CreateEntityTypeAsync(
+            string parent,
+            EntityType entityType,
+            string languageCode,
+            gaxgrpc::CallSettings callSettings = null) => CreateEntityTypeAsync(
+                new CreateEntityTypeRequest
+                {
+                    Parent = gax::GaxPreconditions.CheckNotNullOrEmpty(parent, nameof(parent)),
+                    EntityType = gax::GaxPreconditions.CheckNotNull(entityType, nameof(entityType)),
+                    LanguageCode = languageCode ?? "", // Optional
+                },
+                callSettings);
+
+        /// <summary>
+        /// Creates an entity type in the specified agent.
+        /// </summary>
+        /// <param name="parent">
+        /// Required. The agent to create a entity type for.
+        /// Format: `projects/&lt;Project ID&gt;/agent`.
+        /// </param>
+        /// <param name="entityType">
+        /// Required. The entity type to create.
+        /// </param>
+        /// <param name="languageCode">
+        /// Optional. The language of entity synonyms defined in `entity_type`. If not
+        /// specified, the agent's default language is used.
+        /// [Many
+        /// languages](https://cloud.google.com/dialogflow/docs/reference/language)
+        /// are supported. Note: languages must be enabled in the agent before they can
+        /// be used.
+        /// </param>
+        /// <param name="cancellationToken">
+        /// A <see cref="st::CancellationToken"/> to use for this RPC.
+        /// </param>
+        /// <returns>
+        /// A Task containing the RPC response.
+        /// </returns>
+        public virtual stt::Task<EntityType> CreateEntityTypeAsync(
+            string parent,
+            EntityType entityType,
+            string languageCode,
+            st::CancellationToken cancellationToken) => CreateEntityTypeAsync(
+                parent,
+                entityType,
+                languageCode,
+                gaxgrpc::CallSettings.FromCancellationToken(cancellationToken));
+
+        /// <summary>
+        /// Creates an entity type in the specified agent.
+        /// </summary>
+        /// <param name="parent">
+        /// Required. The agent to create a entity type for.
+        /// Format: `projects/&lt;Project ID&gt;/agent`.
+        /// </param>
+        /// <param name="entityType">
+        /// Required. The entity type to create.
+        /// </param>
+        /// <param name="languageCode">
+        /// Optional. The language of entity synonyms defined in `entity_type`. If not
+        /// specified, the agent's default language is used.
+        /// [Many
+        /// languages](https://cloud.google.com/dialogflow/docs/reference/language)
+        /// are supported. Note: languages must be enabled in the agent before they can
+        /// be used.
+        /// </param>
+        /// <param name="callSettings">
+        /// If not null, applies overrides to this RPC call.
+        /// </param>
+        /// <returns>
+        /// The RPC response.
+        /// </returns>
+        public virtual EntityType CreateEntityType(
+            string parent,
+            EntityType entityType,
+            string languageCode,
+            gaxgrpc::CallSettings callSettings = null) => CreateEntityType(
+                new CreateEntityTypeRequest
+                {
+                    Parent = gax::GaxPreconditions.CheckNotNullOrEmpty(parent, nameof(parent)),
                     EntityType = gax::GaxPreconditions.CheckNotNull(entityType, nameof(entityType)),
                     LanguageCode = languageCode ?? "", // Optional
                 },
@@ -1340,7 +1886,6 @@ namespace Google.Cloud.Dialogflow.V2
         /// </summary>
         /// <param name="entityType">
         /// Required. The entity type to update.
-        /// Format: `projects/&lt;Project ID&gt;/agent/entityTypes/&lt;EntityType ID&gt;`.
         /// </param>
         /// <param name="callSettings">
         /// If not null, applies overrides to this RPC call.
@@ -1362,7 +1907,6 @@ namespace Google.Cloud.Dialogflow.V2
         /// </summary>
         /// <param name="entityType">
         /// Required. The entity type to update.
-        /// Format: `projects/&lt;Project ID&gt;/agent/entityTypes/&lt;EntityType ID&gt;`.
         /// </param>
         /// <param name="cancellationToken">
         /// A <see cref="st::CancellationToken"/> to use for this RPC.
@@ -1381,7 +1925,6 @@ namespace Google.Cloud.Dialogflow.V2
         /// </summary>
         /// <param name="entityType">
         /// Required. The entity type to update.
-        /// Format: `projects/&lt;Project ID&gt;/agent/entityTypes/&lt;EntityType ID&gt;`.
         /// </param>
         /// <param name="callSettings">
         /// If not null, applies overrides to this RPC call.
@@ -1403,14 +1946,14 @@ namespace Google.Cloud.Dialogflow.V2
         /// </summary>
         /// <param name="entityType">
         /// Required. The entity type to update.
-        /// Format: `projects/&lt;Project ID&gt;/agent/entityTypes/&lt;EntityType ID&gt;`.
         /// </param>
         /// <param name="languageCode">
         /// Optional. The language of entity synonyms defined in `entity_type`. If not
         /// specified, the agent's default language is used.
-        /// [More than a dozen
-        /// languages](https://dialogflow.com/docs/reference/language) are supported.
-        /// Note: languages must be enabled in the agent, before they can be used.
+        /// [Many
+        /// languages](https://cloud.google.com/dialogflow/docs/reference/language)
+        /// are supported. Note: languages must be enabled in the agent before they can
+        /// be used.
         /// </param>
         /// <param name="callSettings">
         /// If not null, applies overrides to this RPC call.
@@ -1434,14 +1977,14 @@ namespace Google.Cloud.Dialogflow.V2
         /// </summary>
         /// <param name="entityType">
         /// Required. The entity type to update.
-        /// Format: `projects/&lt;Project ID&gt;/agent/entityTypes/&lt;EntityType ID&gt;`.
         /// </param>
         /// <param name="languageCode">
         /// Optional. The language of entity synonyms defined in `entity_type`. If not
         /// specified, the agent's default language is used.
-        /// [More than a dozen
-        /// languages](https://dialogflow.com/docs/reference/language) are supported.
-        /// Note: languages must be enabled in the agent, before they can be used.
+        /// [Many
+        /// languages](https://cloud.google.com/dialogflow/docs/reference/language)
+        /// are supported. Note: languages must be enabled in the agent before they can
+        /// be used.
         /// </param>
         /// <param name="cancellationToken">
         /// A <see cref="st::CancellationToken"/> to use for this RPC.
@@ -1462,14 +2005,14 @@ namespace Google.Cloud.Dialogflow.V2
         /// </summary>
         /// <param name="entityType">
         /// Required. The entity type to update.
-        /// Format: `projects/&lt;Project ID&gt;/agent/entityTypes/&lt;EntityType ID&gt;`.
         /// </param>
         /// <param name="languageCode">
         /// Optional. The language of entity synonyms defined in `entity_type`. If not
         /// specified, the agent's default language is used.
-        /// [More than a dozen
-        /// languages](https://dialogflow.com/docs/reference/language) are supported.
-        /// Note: languages must be enabled in the agent, before they can be used.
+        /// [Many
+        /// languages](https://cloud.google.com/dialogflow/docs/reference/language)
+        /// are supported. Note: languages must be enabled in the agent before they can
+        /// be used.
         /// </param>
         /// <param name="callSettings">
         /// If not null, applies overrides to this RPC call.
@@ -1607,6 +2150,66 @@ namespace Google.Cloud.Dialogflow.V2
         /// <summary>
         /// Deletes the specified entity type.
         /// </summary>
+        /// <param name="name">
+        /// Required. The name of the entity type to delete.
+        /// Format: `projects/&lt;Project ID&gt;/agent/entityTypes/&lt;EntityType ID&gt;`.
+        /// </param>
+        /// <param name="callSettings">
+        /// If not null, applies overrides to this RPC call.
+        /// </param>
+        /// <returns>
+        /// A Task that completes when the RPC has completed.
+        /// </returns>
+        public virtual stt::Task DeleteEntityTypeAsync(
+            string name,
+            gaxgrpc::CallSettings callSettings = null) => DeleteEntityTypeAsync(
+                new DeleteEntityTypeRequest
+                {
+                    Name = gax::GaxPreconditions.CheckNotNullOrEmpty(name, nameof(name)),
+                },
+                callSettings);
+
+        /// <summary>
+        /// Deletes the specified entity type.
+        /// </summary>
+        /// <param name="name">
+        /// Required. The name of the entity type to delete.
+        /// Format: `projects/&lt;Project ID&gt;/agent/entityTypes/&lt;EntityType ID&gt;`.
+        /// </param>
+        /// <param name="cancellationToken">
+        /// A <see cref="st::CancellationToken"/> to use for this RPC.
+        /// </param>
+        /// <returns>
+        /// A Task that completes when the RPC has completed.
+        /// </returns>
+        public virtual stt::Task DeleteEntityTypeAsync(
+            string name,
+            st::CancellationToken cancellationToken) => DeleteEntityTypeAsync(
+                name,
+                gaxgrpc::CallSettings.FromCancellationToken(cancellationToken));
+
+        /// <summary>
+        /// Deletes the specified entity type.
+        /// </summary>
+        /// <param name="name">
+        /// Required. The name of the entity type to delete.
+        /// Format: `projects/&lt;Project ID&gt;/agent/entityTypes/&lt;EntityType ID&gt;`.
+        /// </param>
+        /// <param name="callSettings">
+        /// If not null, applies overrides to this RPC call.
+        /// </param>
+        public virtual void DeleteEntityType(
+            string name,
+            gaxgrpc::CallSettings callSettings = null) => DeleteEntityType(
+                new DeleteEntityTypeRequest
+                {
+                    Name = gax::GaxPreconditions.CheckNotNullOrEmpty(name, nameof(name)),
+                },
+                callSettings);
+
+        /// <summary>
+        /// Deletes the specified entity type.
+        /// </summary>
         /// <param name="request">
         /// The request object containing all of the parameters for the API call.
         /// </param>
@@ -1660,8 +2263,7 @@ namespace Google.Cloud.Dialogflow.V2
         /// <summary>
         /// Updates/Creates multiple entity types in the specified agent.
         ///
-        /// Operation &lt;response: [BatchUpdateEntityTypesResponse][google.cloud.dialogflow.v2.BatchUpdateEntityTypesResponse],
-        ///            metadata: [google.protobuf.Struct][google.protobuf.Struct]&gt;
+        /// Operation &lt;response: [BatchUpdateEntityTypesResponse][google.cloud.dialogflow.v2.BatchUpdateEntityTypesResponse]&gt;
         /// </summary>
         /// <param name="request">
         /// The request object containing all of the parameters for the API call.
@@ -1695,8 +2297,7 @@ namespace Google.Cloud.Dialogflow.V2
         /// <summary>
         /// Updates/Creates multiple entity types in the specified agent.
         ///
-        /// Operation &lt;response: [BatchUpdateEntityTypesResponse][google.cloud.dialogflow.v2.BatchUpdateEntityTypesResponse],
-        ///            metadata: [google.protobuf.Struct][google.protobuf.Struct]&gt;
+        /// Operation &lt;response: [BatchUpdateEntityTypesResponse][google.cloud.dialogflow.v2.BatchUpdateEntityTypesResponse]&gt;
         /// </summary>
         /// <param name="request">
         /// The request object containing all of the parameters for the API call.
@@ -1738,8 +2339,7 @@ namespace Google.Cloud.Dialogflow.V2
         /// <summary>
         /// Deletes entity types in the specified agent.
         ///
-        /// Operation &lt;response: [google.protobuf.Empty][google.protobuf.Empty],
-        ///            metadata: [google.protobuf.Struct][google.protobuf.Struct]&gt;
+        /// Operation &lt;response: [google.protobuf.Empty][google.protobuf.Empty]&gt;
         /// </summary>
         /// <param name="parent">
         /// Required. The name of the agent to delete all entities types for. Format:
@@ -1769,8 +2369,7 @@ namespace Google.Cloud.Dialogflow.V2
         /// <summary>
         /// Deletes entity types in the specified agent.
         ///
-        /// Operation &lt;response: [google.protobuf.Empty][google.protobuf.Empty],
-        ///            metadata: [google.protobuf.Struct][google.protobuf.Struct]&gt;
+        /// Operation &lt;response: [google.protobuf.Empty][google.protobuf.Empty]&gt;
         /// </summary>
         /// <param name="parent">
         /// Required. The name of the agent to delete all entities types for. Format:
@@ -1797,8 +2396,7 @@ namespace Google.Cloud.Dialogflow.V2
         /// <summary>
         /// Deletes entity types in the specified agent.
         ///
-        /// Operation &lt;response: [google.protobuf.Empty][google.protobuf.Empty],
-        ///            metadata: [google.protobuf.Struct][google.protobuf.Struct]&gt;
+        /// Operation &lt;response: [google.protobuf.Empty][google.protobuf.Empty]&gt;
         /// </summary>
         /// <param name="parent">
         /// Required. The name of the agent to delete all entities types for. Format:
@@ -1828,8 +2426,94 @@ namespace Google.Cloud.Dialogflow.V2
         /// <summary>
         /// Deletes entity types in the specified agent.
         ///
-        /// Operation &lt;response: [google.protobuf.Empty][google.protobuf.Empty],
-        ///            metadata: [google.protobuf.Struct][google.protobuf.Struct]&gt;
+        /// Operation &lt;response: [google.protobuf.Empty][google.protobuf.Empty]&gt;
+        /// </summary>
+        /// <param name="parent">
+        /// Required. The name of the agent to delete all entities types for. Format:
+        /// `projects/&lt;Project ID&gt;/agent`.
+        /// </param>
+        /// <param name="entityTypeNames">
+        /// Required. The names entity types to delete. All names must point to the
+        /// same agent as `parent`.
+        /// </param>
+        /// <param name="callSettings">
+        /// If not null, applies overrides to this RPC call.
+        /// </param>
+        /// <returns>
+        /// A Task containing the RPC response.
+        /// </returns>
+        public virtual stt::Task<lro::Operation<pbwkt::Empty, pbwkt::Struct>> BatchDeleteEntityTypesAsync(
+            string parent,
+            scg::IEnumerable<string> entityTypeNames,
+            gaxgrpc::CallSettings callSettings = null) => BatchDeleteEntityTypesAsync(
+                new BatchDeleteEntityTypesRequest
+                {
+                    Parent = gax::GaxPreconditions.CheckNotNullOrEmpty(parent, nameof(parent)),
+                    EntityTypeNames = { gax::GaxPreconditions.CheckNotNull(entityTypeNames, nameof(entityTypeNames)) },
+                },
+                callSettings);
+
+        /// <summary>
+        /// Deletes entity types in the specified agent.
+        ///
+        /// Operation &lt;response: [google.protobuf.Empty][google.protobuf.Empty]&gt;
+        /// </summary>
+        /// <param name="parent">
+        /// Required. The name of the agent to delete all entities types for. Format:
+        /// `projects/&lt;Project ID&gt;/agent`.
+        /// </param>
+        /// <param name="entityTypeNames">
+        /// Required. The names entity types to delete. All names must point to the
+        /// same agent as `parent`.
+        /// </param>
+        /// <param name="cancellationToken">
+        /// A <see cref="st::CancellationToken"/> to use for this RPC.
+        /// </param>
+        /// <returns>
+        /// A Task containing the RPC response.
+        /// </returns>
+        public virtual stt::Task<lro::Operation<pbwkt::Empty, pbwkt::Struct>> BatchDeleteEntityTypesAsync(
+            string parent,
+            scg::IEnumerable<string> entityTypeNames,
+            st::CancellationToken cancellationToken) => BatchDeleteEntityTypesAsync(
+                parent,
+                entityTypeNames,
+                gaxgrpc::CallSettings.FromCancellationToken(cancellationToken));
+
+        /// <summary>
+        /// Deletes entity types in the specified agent.
+        ///
+        /// Operation &lt;response: [google.protobuf.Empty][google.protobuf.Empty]&gt;
+        /// </summary>
+        /// <param name="parent">
+        /// Required. The name of the agent to delete all entities types for. Format:
+        /// `projects/&lt;Project ID&gt;/agent`.
+        /// </param>
+        /// <param name="entityTypeNames">
+        /// Required. The names entity types to delete. All names must point to the
+        /// same agent as `parent`.
+        /// </param>
+        /// <param name="callSettings">
+        /// If not null, applies overrides to this RPC call.
+        /// </param>
+        /// <returns>
+        /// The RPC response.
+        /// </returns>
+        public virtual lro::Operation<pbwkt::Empty, pbwkt::Struct> BatchDeleteEntityTypes(
+            string parent,
+            scg::IEnumerable<string> entityTypeNames,
+            gaxgrpc::CallSettings callSettings = null) => BatchDeleteEntityTypes(
+                new BatchDeleteEntityTypesRequest
+                {
+                    Parent = gax::GaxPreconditions.CheckNotNullOrEmpty(parent, nameof(parent)),
+                    EntityTypeNames = { gax::GaxPreconditions.CheckNotNull(entityTypeNames, nameof(entityTypeNames)) },
+                },
+                callSettings);
+
+        /// <summary>
+        /// Deletes entity types in the specified agent.
+        ///
+        /// Operation &lt;response: [google.protobuf.Empty][google.protobuf.Empty]&gt;
         /// </summary>
         /// <param name="request">
         /// The request object containing all of the parameters for the API call.
@@ -1863,8 +2547,7 @@ namespace Google.Cloud.Dialogflow.V2
         /// <summary>
         /// Deletes entity types in the specified agent.
         ///
-        /// Operation &lt;response: [google.protobuf.Empty][google.protobuf.Empty],
-        ///            metadata: [google.protobuf.Struct][google.protobuf.Struct]&gt;
+        /// Operation &lt;response: [google.protobuf.Empty][google.protobuf.Empty]&gt;
         /// </summary>
         /// <param name="request">
         /// The request object containing all of the parameters for the API call.
@@ -1904,8 +2587,7 @@ namespace Google.Cloud.Dialogflow.V2
                 callSettings);
 
         /// <summary>
-        /// Creates multiple new entities in the specified entity type (extends the
-        /// existing collection of entries).
+        /// Creates multiple new entities in the specified entity type.
         ///
         /// Operation &lt;response: [google.protobuf.Empty][google.protobuf.Empty]&gt;
         /// </summary>
@@ -1914,7 +2596,7 @@ namespace Google.Cloud.Dialogflow.V2
         /// `projects/&lt;Project ID&gt;/agent/entityTypes/&lt;Entity Type ID&gt;`.
         /// </param>
         /// <param name="entities">
-        /// Required. The collection of entities to create.
+        /// Required. The entities to create.
         /// </param>
         /// <param name="callSettings">
         /// If not null, applies overrides to this RPC call.
@@ -1934,8 +2616,7 @@ namespace Google.Cloud.Dialogflow.V2
                 callSettings);
 
         /// <summary>
-        /// Creates multiple new entities in the specified entity type (extends the
-        /// existing collection of entries).
+        /// Creates multiple new entities in the specified entity type.
         ///
         /// Operation &lt;response: [google.protobuf.Empty][google.protobuf.Empty]&gt;
         /// </summary>
@@ -1944,7 +2625,7 @@ namespace Google.Cloud.Dialogflow.V2
         /// `projects/&lt;Project ID&gt;/agent/entityTypes/&lt;Entity Type ID&gt;`.
         /// </param>
         /// <param name="entities">
-        /// Required. The collection of entities to create.
+        /// Required. The entities to create.
         /// </param>
         /// <param name="cancellationToken">
         /// A <see cref="st::CancellationToken"/> to use for this RPC.
@@ -1961,8 +2642,7 @@ namespace Google.Cloud.Dialogflow.V2
                 gaxgrpc::CallSettings.FromCancellationToken(cancellationToken));
 
         /// <summary>
-        /// Creates multiple new entities in the specified entity type (extends the
-        /// existing collection of entries).
+        /// Creates multiple new entities in the specified entity type.
         ///
         /// Operation &lt;response: [google.protobuf.Empty][google.protobuf.Empty]&gt;
         /// </summary>
@@ -1971,7 +2651,7 @@ namespace Google.Cloud.Dialogflow.V2
         /// `projects/&lt;Project ID&gt;/agent/entityTypes/&lt;Entity Type ID&gt;`.
         /// </param>
         /// <param name="entities">
-        /// Required. The collection of entities to create.
+        /// Required. The entities to create.
         /// </param>
         /// <param name="callSettings">
         /// If not null, applies overrides to this RPC call.
@@ -1991,8 +2671,7 @@ namespace Google.Cloud.Dialogflow.V2
                 callSettings);
 
         /// <summary>
-        /// Creates multiple new entities in the specified entity type (extends the
-        /// existing collection of entries).
+        /// Creates multiple new entities in the specified entity type.
         ///
         /// Operation &lt;response: [google.protobuf.Empty][google.protobuf.Empty]&gt;
         /// </summary>
@@ -2001,14 +2680,99 @@ namespace Google.Cloud.Dialogflow.V2
         /// `projects/&lt;Project ID&gt;/agent/entityTypes/&lt;Entity Type ID&gt;`.
         /// </param>
         /// <param name="entities">
-        /// Required. The collection of entities to create.
+        /// Required. The entities to create.
+        /// </param>
+        /// <param name="callSettings">
+        /// If not null, applies overrides to this RPC call.
+        /// </param>
+        /// <returns>
+        /// A Task containing the RPC response.
+        /// </returns>
+        public virtual stt::Task<lro::Operation<pbwkt::Empty, pbwkt::Struct>> BatchCreateEntitiesAsync(
+            string parent,
+            scg::IEnumerable<EntityType.Types.Entity> entities,
+            gaxgrpc::CallSettings callSettings = null) => BatchCreateEntitiesAsync(
+                new BatchCreateEntitiesRequest
+                {
+                    Parent = gax::GaxPreconditions.CheckNotNullOrEmpty(parent, nameof(parent)),
+                    Entities = { gax::GaxPreconditions.CheckNotNull(entities, nameof(entities)) },
+                },
+                callSettings);
+
+        /// <summary>
+        /// Creates multiple new entities in the specified entity type.
+        ///
+        /// Operation &lt;response: [google.protobuf.Empty][google.protobuf.Empty]&gt;
+        /// </summary>
+        /// <param name="parent">
+        /// Required. The name of the entity type to create entities in. Format:
+        /// `projects/&lt;Project ID&gt;/agent/entityTypes/&lt;Entity Type ID&gt;`.
+        /// </param>
+        /// <param name="entities">
+        /// Required. The entities to create.
+        /// </param>
+        /// <param name="cancellationToken">
+        /// A <see cref="st::CancellationToken"/> to use for this RPC.
+        /// </param>
+        /// <returns>
+        /// A Task containing the RPC response.
+        /// </returns>
+        public virtual stt::Task<lro::Operation<pbwkt::Empty, pbwkt::Struct>> BatchCreateEntitiesAsync(
+            string parent,
+            scg::IEnumerable<EntityType.Types.Entity> entities,
+            st::CancellationToken cancellationToken) => BatchCreateEntitiesAsync(
+                parent,
+                entities,
+                gaxgrpc::CallSettings.FromCancellationToken(cancellationToken));
+
+        /// <summary>
+        /// Creates multiple new entities in the specified entity type.
+        ///
+        /// Operation &lt;response: [google.protobuf.Empty][google.protobuf.Empty]&gt;
+        /// </summary>
+        /// <param name="parent">
+        /// Required. The name of the entity type to create entities in. Format:
+        /// `projects/&lt;Project ID&gt;/agent/entityTypes/&lt;Entity Type ID&gt;`.
+        /// </param>
+        /// <param name="entities">
+        /// Required. The entities to create.
+        /// </param>
+        /// <param name="callSettings">
+        /// If not null, applies overrides to this RPC call.
+        /// </param>
+        /// <returns>
+        /// The RPC response.
+        /// </returns>
+        public virtual lro::Operation<pbwkt::Empty, pbwkt::Struct> BatchCreateEntities(
+            string parent,
+            scg::IEnumerable<EntityType.Types.Entity> entities,
+            gaxgrpc::CallSettings callSettings = null) => BatchCreateEntities(
+                new BatchCreateEntitiesRequest
+                {
+                    Parent = gax::GaxPreconditions.CheckNotNullOrEmpty(parent, nameof(parent)),
+                    Entities = { gax::GaxPreconditions.CheckNotNull(entities, nameof(entities)) },
+                },
+                callSettings);
+
+        /// <summary>
+        /// Creates multiple new entities in the specified entity type.
+        ///
+        /// Operation &lt;response: [google.protobuf.Empty][google.protobuf.Empty]&gt;
+        /// </summary>
+        /// <param name="parent">
+        /// Required. The name of the entity type to create entities in. Format:
+        /// `projects/&lt;Project ID&gt;/agent/entityTypes/&lt;Entity Type ID&gt;`.
+        /// </param>
+        /// <param name="entities">
+        /// Required. The entities to create.
         /// </param>
         /// <param name="languageCode">
         /// Optional. The language of entity synonyms defined in `entities`. If not
         /// specified, the agent's default language is used.
-        /// [More than a dozen
-        /// languages](https://dialogflow.com/docs/reference/language) are supported.
-        /// Note: languages must be enabled in the agent, before they can be used.
+        /// [Many
+        /// languages](https://cloud.google.com/dialogflow/docs/reference/language)
+        /// are supported. Note: languages must be enabled in the agent before they can
+        /// be used.
         /// </param>
         /// <param name="callSettings">
         /// If not null, applies overrides to this RPC call.
@@ -2030,8 +2794,7 @@ namespace Google.Cloud.Dialogflow.V2
                 callSettings);
 
         /// <summary>
-        /// Creates multiple new entities in the specified entity type (extends the
-        /// existing collection of entries).
+        /// Creates multiple new entities in the specified entity type.
         ///
         /// Operation &lt;response: [google.protobuf.Empty][google.protobuf.Empty]&gt;
         /// </summary>
@@ -2040,14 +2803,15 @@ namespace Google.Cloud.Dialogflow.V2
         /// `projects/&lt;Project ID&gt;/agent/entityTypes/&lt;Entity Type ID&gt;`.
         /// </param>
         /// <param name="entities">
-        /// Required. The collection of entities to create.
+        /// Required. The entities to create.
         /// </param>
         /// <param name="languageCode">
         /// Optional. The language of entity synonyms defined in `entities`. If not
         /// specified, the agent's default language is used.
-        /// [More than a dozen
-        /// languages](https://dialogflow.com/docs/reference/language) are supported.
-        /// Note: languages must be enabled in the agent, before they can be used.
+        /// [Many
+        /// languages](https://cloud.google.com/dialogflow/docs/reference/language)
+        /// are supported. Note: languages must be enabled in the agent before they can
+        /// be used.
         /// </param>
         /// <param name="cancellationToken">
         /// A <see cref="st::CancellationToken"/> to use for this RPC.
@@ -2066,8 +2830,7 @@ namespace Google.Cloud.Dialogflow.V2
                 gaxgrpc::CallSettings.FromCancellationToken(cancellationToken));
 
         /// <summary>
-        /// Creates multiple new entities in the specified entity type (extends the
-        /// existing collection of entries).
+        /// Creates multiple new entities in the specified entity type.
         ///
         /// Operation &lt;response: [google.protobuf.Empty][google.protobuf.Empty]&gt;
         /// </summary>
@@ -2076,14 +2839,15 @@ namespace Google.Cloud.Dialogflow.V2
         /// `projects/&lt;Project ID&gt;/agent/entityTypes/&lt;Entity Type ID&gt;`.
         /// </param>
         /// <param name="entities">
-        /// Required. The collection of entities to create.
+        /// Required. The entities to create.
         /// </param>
         /// <param name="languageCode">
         /// Optional. The language of entity synonyms defined in `entities`. If not
         /// specified, the agent's default language is used.
-        /// [More than a dozen
-        /// languages](https://dialogflow.com/docs/reference/language) are supported.
-        /// Note: languages must be enabled in the agent, before they can be used.
+        /// [Many
+        /// languages](https://cloud.google.com/dialogflow/docs/reference/language)
+        /// are supported. Note: languages must be enabled in the agent before they can
+        /// be used.
         /// </param>
         /// <param name="callSettings">
         /// If not null, applies overrides to this RPC call.
@@ -2105,8 +2869,121 @@ namespace Google.Cloud.Dialogflow.V2
                 callSettings);
 
         /// <summary>
-        /// Creates multiple new entities in the specified entity type (extends the
-        /// existing collection of entries).
+        /// Creates multiple new entities in the specified entity type.
+        ///
+        /// Operation &lt;response: [google.protobuf.Empty][google.protobuf.Empty]&gt;
+        /// </summary>
+        /// <param name="parent">
+        /// Required. The name of the entity type to create entities in. Format:
+        /// `projects/&lt;Project ID&gt;/agent/entityTypes/&lt;Entity Type ID&gt;`.
+        /// </param>
+        /// <param name="entities">
+        /// Required. The entities to create.
+        /// </param>
+        /// <param name="languageCode">
+        /// Optional. The language of entity synonyms defined in `entities`. If not
+        /// specified, the agent's default language is used.
+        /// [Many
+        /// languages](https://cloud.google.com/dialogflow/docs/reference/language)
+        /// are supported. Note: languages must be enabled in the agent before they can
+        /// be used.
+        /// </param>
+        /// <param name="callSettings">
+        /// If not null, applies overrides to this RPC call.
+        /// </param>
+        /// <returns>
+        /// A Task containing the RPC response.
+        /// </returns>
+        public virtual stt::Task<lro::Operation<pbwkt::Empty, pbwkt::Struct>> BatchCreateEntitiesAsync(
+            string parent,
+            scg::IEnumerable<EntityType.Types.Entity> entities,
+            string languageCode,
+            gaxgrpc::CallSettings callSettings = null) => BatchCreateEntitiesAsync(
+                new BatchCreateEntitiesRequest
+                {
+                    Parent = gax::GaxPreconditions.CheckNotNullOrEmpty(parent, nameof(parent)),
+                    Entities = { gax::GaxPreconditions.CheckNotNull(entities, nameof(entities)) },
+                    LanguageCode = languageCode ?? "", // Optional
+                },
+                callSettings);
+
+        /// <summary>
+        /// Creates multiple new entities in the specified entity type.
+        ///
+        /// Operation &lt;response: [google.protobuf.Empty][google.protobuf.Empty]&gt;
+        /// </summary>
+        /// <param name="parent">
+        /// Required. The name of the entity type to create entities in. Format:
+        /// `projects/&lt;Project ID&gt;/agent/entityTypes/&lt;Entity Type ID&gt;`.
+        /// </param>
+        /// <param name="entities">
+        /// Required. The entities to create.
+        /// </param>
+        /// <param name="languageCode">
+        /// Optional. The language of entity synonyms defined in `entities`. If not
+        /// specified, the agent's default language is used.
+        /// [Many
+        /// languages](https://cloud.google.com/dialogflow/docs/reference/language)
+        /// are supported. Note: languages must be enabled in the agent before they can
+        /// be used.
+        /// </param>
+        /// <param name="cancellationToken">
+        /// A <see cref="st::CancellationToken"/> to use for this RPC.
+        /// </param>
+        /// <returns>
+        /// A Task containing the RPC response.
+        /// </returns>
+        public virtual stt::Task<lro::Operation<pbwkt::Empty, pbwkt::Struct>> BatchCreateEntitiesAsync(
+            string parent,
+            scg::IEnumerable<EntityType.Types.Entity> entities,
+            string languageCode,
+            st::CancellationToken cancellationToken) => BatchCreateEntitiesAsync(
+                parent,
+                entities,
+                languageCode,
+                gaxgrpc::CallSettings.FromCancellationToken(cancellationToken));
+
+        /// <summary>
+        /// Creates multiple new entities in the specified entity type.
+        ///
+        /// Operation &lt;response: [google.protobuf.Empty][google.protobuf.Empty]&gt;
+        /// </summary>
+        /// <param name="parent">
+        /// Required. The name of the entity type to create entities in. Format:
+        /// `projects/&lt;Project ID&gt;/agent/entityTypes/&lt;Entity Type ID&gt;`.
+        /// </param>
+        /// <param name="entities">
+        /// Required. The entities to create.
+        /// </param>
+        /// <param name="languageCode">
+        /// Optional. The language of entity synonyms defined in `entities`. If not
+        /// specified, the agent's default language is used.
+        /// [Many
+        /// languages](https://cloud.google.com/dialogflow/docs/reference/language)
+        /// are supported. Note: languages must be enabled in the agent before they can
+        /// be used.
+        /// </param>
+        /// <param name="callSettings">
+        /// If not null, applies overrides to this RPC call.
+        /// </param>
+        /// <returns>
+        /// The RPC response.
+        /// </returns>
+        public virtual lro::Operation<pbwkt::Empty, pbwkt::Struct> BatchCreateEntities(
+            string parent,
+            scg::IEnumerable<EntityType.Types.Entity> entities,
+            string languageCode,
+            gaxgrpc::CallSettings callSettings = null) => BatchCreateEntities(
+                new BatchCreateEntitiesRequest
+                {
+                    Parent = gax::GaxPreconditions.CheckNotNullOrEmpty(parent, nameof(parent)),
+                    Entities = { gax::GaxPreconditions.CheckNotNull(entities, nameof(entities)) },
+                    LanguageCode = languageCode ?? "", // Optional
+                },
+                callSettings);
+
+        /// <summary>
+        /// Creates multiple new entities in the specified entity type.
         ///
         /// Operation &lt;response: [google.protobuf.Empty][google.protobuf.Empty]&gt;
         /// </summary>
@@ -2140,8 +3017,7 @@ namespace Google.Cloud.Dialogflow.V2
                 callSettings);
 
         /// <summary>
-        /// Creates multiple new entities in the specified entity type (extends the
-        /// existing collection of entries).
+        /// Creates multiple new entities in the specified entity type.
         ///
         /// Operation &lt;response: [google.protobuf.Empty][google.protobuf.Empty]&gt;
         /// </summary>
@@ -2183,18 +3059,19 @@ namespace Google.Cloud.Dialogflow.V2
                 callSettings);
 
         /// <summary>
-        /// Updates entities in the specified entity type (replaces the existing
-        /// collection of entries).
+        /// Updates or creates multiple entities in the specified entity type. This
+        /// method does not affect entities in the entity type that aren't explicitly
+        /// specified in the request.
         ///
-        /// Operation &lt;response: [google.protobuf.Empty][google.protobuf.Empty],
-        ///            metadata: [google.protobuf.Struct][google.protobuf.Struct]&gt;
+        ///
+        /// Operation &lt;response: [google.protobuf.Empty][google.protobuf.Empty]&gt;
         /// </summary>
         /// <param name="parent">
-        /// Required. The name of the entity type to update the entities in. Format:
-        /// `projects/&lt;Project ID&gt;/agent/entityTypes/&lt;Entity Type ID&gt;`.
+        /// Required. The name of the entity type to update or create entities in.
+        /// Format: `projects/&lt;Project ID&gt;/agent/entityTypes/&lt;Entity Type ID&gt;`.
         /// </param>
         /// <param name="entities">
-        /// Required. The collection of new entities to replace the existing entities.
+        /// Required. The entities to update or create.
         /// </param>
         /// <param name="callSettings">
         /// If not null, applies overrides to this RPC call.
@@ -2214,18 +3091,19 @@ namespace Google.Cloud.Dialogflow.V2
                 callSettings);
 
         /// <summary>
-        /// Updates entities in the specified entity type (replaces the existing
-        /// collection of entries).
+        /// Updates or creates multiple entities in the specified entity type. This
+        /// method does not affect entities in the entity type that aren't explicitly
+        /// specified in the request.
         ///
-        /// Operation &lt;response: [google.protobuf.Empty][google.protobuf.Empty],
-        ///            metadata: [google.protobuf.Struct][google.protobuf.Struct]&gt;
+        ///
+        /// Operation &lt;response: [google.protobuf.Empty][google.protobuf.Empty]&gt;
         /// </summary>
         /// <param name="parent">
-        /// Required. The name of the entity type to update the entities in. Format:
-        /// `projects/&lt;Project ID&gt;/agent/entityTypes/&lt;Entity Type ID&gt;`.
+        /// Required. The name of the entity type to update or create entities in.
+        /// Format: `projects/&lt;Project ID&gt;/agent/entityTypes/&lt;Entity Type ID&gt;`.
         /// </param>
         /// <param name="entities">
-        /// Required. The collection of new entities to replace the existing entities.
+        /// Required. The entities to update or create.
         /// </param>
         /// <param name="cancellationToken">
         /// A <see cref="st::CancellationToken"/> to use for this RPC.
@@ -2242,18 +3120,19 @@ namespace Google.Cloud.Dialogflow.V2
                 gaxgrpc::CallSettings.FromCancellationToken(cancellationToken));
 
         /// <summary>
-        /// Updates entities in the specified entity type (replaces the existing
-        /// collection of entries).
+        /// Updates or creates multiple entities in the specified entity type. This
+        /// method does not affect entities in the entity type that aren't explicitly
+        /// specified in the request.
         ///
-        /// Operation &lt;response: [google.protobuf.Empty][google.protobuf.Empty],
-        ///            metadata: [google.protobuf.Struct][google.protobuf.Struct]&gt;
+        ///
+        /// Operation &lt;response: [google.protobuf.Empty][google.protobuf.Empty]&gt;
         /// </summary>
         /// <param name="parent">
-        /// Required. The name of the entity type to update the entities in. Format:
-        /// `projects/&lt;Project ID&gt;/agent/entityTypes/&lt;Entity Type ID&gt;`.
+        /// Required. The name of the entity type to update or create entities in.
+        /// Format: `projects/&lt;Project ID&gt;/agent/entityTypes/&lt;Entity Type ID&gt;`.
         /// </param>
         /// <param name="entities">
-        /// Required. The collection of new entities to replace the existing entities.
+        /// Required. The entities to update or create.
         /// </param>
         /// <param name="callSettings">
         /// If not null, applies overrides to this RPC call.
@@ -2273,25 +3152,120 @@ namespace Google.Cloud.Dialogflow.V2
                 callSettings);
 
         /// <summary>
-        /// Updates entities in the specified entity type (replaces the existing
-        /// collection of entries).
+        /// Updates or creates multiple entities in the specified entity type. This
+        /// method does not affect entities in the entity type that aren't explicitly
+        /// specified in the request.
         ///
-        /// Operation &lt;response: [google.protobuf.Empty][google.protobuf.Empty],
-        ///            metadata: [google.protobuf.Struct][google.protobuf.Struct]&gt;
+        ///
+        /// Operation &lt;response: [google.protobuf.Empty][google.protobuf.Empty]&gt;
         /// </summary>
         /// <param name="parent">
-        /// Required. The name of the entity type to update the entities in. Format:
-        /// `projects/&lt;Project ID&gt;/agent/entityTypes/&lt;Entity Type ID&gt;`.
+        /// Required. The name of the entity type to update or create entities in.
+        /// Format: `projects/&lt;Project ID&gt;/agent/entityTypes/&lt;Entity Type ID&gt;`.
         /// </param>
         /// <param name="entities">
-        /// Required. The collection of new entities to replace the existing entities.
+        /// Required. The entities to update or create.
+        /// </param>
+        /// <param name="callSettings">
+        /// If not null, applies overrides to this RPC call.
+        /// </param>
+        /// <returns>
+        /// A Task containing the RPC response.
+        /// </returns>
+        public virtual stt::Task<lro::Operation<pbwkt::Empty, pbwkt::Struct>> BatchUpdateEntitiesAsync(
+            string parent,
+            scg::IEnumerable<EntityType.Types.Entity> entities,
+            gaxgrpc::CallSettings callSettings = null) => BatchUpdateEntitiesAsync(
+                new BatchUpdateEntitiesRequest
+                {
+                    Parent = gax::GaxPreconditions.CheckNotNullOrEmpty(parent, nameof(parent)),
+                    Entities = { gax::GaxPreconditions.CheckNotNull(entities, nameof(entities)) },
+                },
+                callSettings);
+
+        /// <summary>
+        /// Updates or creates multiple entities in the specified entity type. This
+        /// method does not affect entities in the entity type that aren't explicitly
+        /// specified in the request.
+        ///
+        ///
+        /// Operation &lt;response: [google.protobuf.Empty][google.protobuf.Empty]&gt;
+        /// </summary>
+        /// <param name="parent">
+        /// Required. The name of the entity type to update or create entities in.
+        /// Format: `projects/&lt;Project ID&gt;/agent/entityTypes/&lt;Entity Type ID&gt;`.
+        /// </param>
+        /// <param name="entities">
+        /// Required. The entities to update or create.
+        /// </param>
+        /// <param name="cancellationToken">
+        /// A <see cref="st::CancellationToken"/> to use for this RPC.
+        /// </param>
+        /// <returns>
+        /// A Task containing the RPC response.
+        /// </returns>
+        public virtual stt::Task<lro::Operation<pbwkt::Empty, pbwkt::Struct>> BatchUpdateEntitiesAsync(
+            string parent,
+            scg::IEnumerable<EntityType.Types.Entity> entities,
+            st::CancellationToken cancellationToken) => BatchUpdateEntitiesAsync(
+                parent,
+                entities,
+                gaxgrpc::CallSettings.FromCancellationToken(cancellationToken));
+
+        /// <summary>
+        /// Updates or creates multiple entities in the specified entity type. This
+        /// method does not affect entities in the entity type that aren't explicitly
+        /// specified in the request.
+        ///
+        ///
+        /// Operation &lt;response: [google.protobuf.Empty][google.protobuf.Empty]&gt;
+        /// </summary>
+        /// <param name="parent">
+        /// Required. The name of the entity type to update or create entities in.
+        /// Format: `projects/&lt;Project ID&gt;/agent/entityTypes/&lt;Entity Type ID&gt;`.
+        /// </param>
+        /// <param name="entities">
+        /// Required. The entities to update or create.
+        /// </param>
+        /// <param name="callSettings">
+        /// If not null, applies overrides to this RPC call.
+        /// </param>
+        /// <returns>
+        /// The RPC response.
+        /// </returns>
+        public virtual lro::Operation<pbwkt::Empty, pbwkt::Struct> BatchUpdateEntities(
+            string parent,
+            scg::IEnumerable<EntityType.Types.Entity> entities,
+            gaxgrpc::CallSettings callSettings = null) => BatchUpdateEntities(
+                new BatchUpdateEntitiesRequest
+                {
+                    Parent = gax::GaxPreconditions.CheckNotNullOrEmpty(parent, nameof(parent)),
+                    Entities = { gax::GaxPreconditions.CheckNotNull(entities, nameof(entities)) },
+                },
+                callSettings);
+
+        /// <summary>
+        /// Updates or creates multiple entities in the specified entity type. This
+        /// method does not affect entities in the entity type that aren't explicitly
+        /// specified in the request.
+        ///
+        ///
+        /// Operation &lt;response: [google.protobuf.Empty][google.protobuf.Empty]&gt;
+        /// </summary>
+        /// <param name="parent">
+        /// Required. The name of the entity type to update or create entities in.
+        /// Format: `projects/&lt;Project ID&gt;/agent/entityTypes/&lt;Entity Type ID&gt;`.
+        /// </param>
+        /// <param name="entities">
+        /// Required. The entities to update or create.
         /// </param>
         /// <param name="languageCode">
         /// Optional. The language of entity synonyms defined in `entities`. If not
         /// specified, the agent's default language is used.
-        /// [More than a dozen
-        /// languages](https://dialogflow.com/docs/reference/language) are supported.
-        /// Note: languages must be enabled in the agent, before they can be used.
+        /// [Many
+        /// languages](https://cloud.google.com/dialogflow/docs/reference/language)
+        /// are supported. Note: languages must be enabled in the agent before they can
+        /// be used.
         /// </param>
         /// <param name="callSettings">
         /// If not null, applies overrides to this RPC call.
@@ -2313,25 +3287,27 @@ namespace Google.Cloud.Dialogflow.V2
                 callSettings);
 
         /// <summary>
-        /// Updates entities in the specified entity type (replaces the existing
-        /// collection of entries).
+        /// Updates or creates multiple entities in the specified entity type. This
+        /// method does not affect entities in the entity type that aren't explicitly
+        /// specified in the request.
         ///
-        /// Operation &lt;response: [google.protobuf.Empty][google.protobuf.Empty],
-        ///            metadata: [google.protobuf.Struct][google.protobuf.Struct]&gt;
+        ///
+        /// Operation &lt;response: [google.protobuf.Empty][google.protobuf.Empty]&gt;
         /// </summary>
         /// <param name="parent">
-        /// Required. The name of the entity type to update the entities in. Format:
-        /// `projects/&lt;Project ID&gt;/agent/entityTypes/&lt;Entity Type ID&gt;`.
+        /// Required. The name of the entity type to update or create entities in.
+        /// Format: `projects/&lt;Project ID&gt;/agent/entityTypes/&lt;Entity Type ID&gt;`.
         /// </param>
         /// <param name="entities">
-        /// Required. The collection of new entities to replace the existing entities.
+        /// Required. The entities to update or create.
         /// </param>
         /// <param name="languageCode">
         /// Optional. The language of entity synonyms defined in `entities`. If not
         /// specified, the agent's default language is used.
-        /// [More than a dozen
-        /// languages](https://dialogflow.com/docs/reference/language) are supported.
-        /// Note: languages must be enabled in the agent, before they can be used.
+        /// [Many
+        /// languages](https://cloud.google.com/dialogflow/docs/reference/language)
+        /// are supported. Note: languages must be enabled in the agent before they can
+        /// be used.
         /// </param>
         /// <param name="cancellationToken">
         /// A <see cref="st::CancellationToken"/> to use for this RPC.
@@ -2350,25 +3326,27 @@ namespace Google.Cloud.Dialogflow.V2
                 gaxgrpc::CallSettings.FromCancellationToken(cancellationToken));
 
         /// <summary>
-        /// Updates entities in the specified entity type (replaces the existing
-        /// collection of entries).
+        /// Updates or creates multiple entities in the specified entity type. This
+        /// method does not affect entities in the entity type that aren't explicitly
+        /// specified in the request.
         ///
-        /// Operation &lt;response: [google.protobuf.Empty][google.protobuf.Empty],
-        ///            metadata: [google.protobuf.Struct][google.protobuf.Struct]&gt;
+        ///
+        /// Operation &lt;response: [google.protobuf.Empty][google.protobuf.Empty]&gt;
         /// </summary>
         /// <param name="parent">
-        /// Required. The name of the entity type to update the entities in. Format:
-        /// `projects/&lt;Project ID&gt;/agent/entityTypes/&lt;Entity Type ID&gt;`.
+        /// Required. The name of the entity type to update or create entities in.
+        /// Format: `projects/&lt;Project ID&gt;/agent/entityTypes/&lt;Entity Type ID&gt;`.
         /// </param>
         /// <param name="entities">
-        /// Required. The collection of new entities to replace the existing entities.
+        /// Required. The entities to update or create.
         /// </param>
         /// <param name="languageCode">
         /// Optional. The language of entity synonyms defined in `entities`. If not
         /// specified, the agent's default language is used.
-        /// [More than a dozen
-        /// languages](https://dialogflow.com/docs/reference/language) are supported.
-        /// Note: languages must be enabled in the agent, before they can be used.
+        /// [Many
+        /// languages](https://cloud.google.com/dialogflow/docs/reference/language)
+        /// are supported. Note: languages must be enabled in the agent before they can
+        /// be used.
         /// </param>
         /// <param name="callSettings">
         /// If not null, applies overrides to this RPC call.
@@ -2390,11 +3368,135 @@ namespace Google.Cloud.Dialogflow.V2
                 callSettings);
 
         /// <summary>
-        /// Updates entities in the specified entity type (replaces the existing
-        /// collection of entries).
+        /// Updates or creates multiple entities in the specified entity type. This
+        /// method does not affect entities in the entity type that aren't explicitly
+        /// specified in the request.
         ///
-        /// Operation &lt;response: [google.protobuf.Empty][google.protobuf.Empty],
-        ///            metadata: [google.protobuf.Struct][google.protobuf.Struct]&gt;
+        ///
+        /// Operation &lt;response: [google.protobuf.Empty][google.protobuf.Empty]&gt;
+        /// </summary>
+        /// <param name="parent">
+        /// Required. The name of the entity type to update or create entities in.
+        /// Format: `projects/&lt;Project ID&gt;/agent/entityTypes/&lt;Entity Type ID&gt;`.
+        /// </param>
+        /// <param name="entities">
+        /// Required. The entities to update or create.
+        /// </param>
+        /// <param name="languageCode">
+        /// Optional. The language of entity synonyms defined in `entities`. If not
+        /// specified, the agent's default language is used.
+        /// [Many
+        /// languages](https://cloud.google.com/dialogflow/docs/reference/language)
+        /// are supported. Note: languages must be enabled in the agent before they can
+        /// be used.
+        /// </param>
+        /// <param name="callSettings">
+        /// If not null, applies overrides to this RPC call.
+        /// </param>
+        /// <returns>
+        /// A Task containing the RPC response.
+        /// </returns>
+        public virtual stt::Task<lro::Operation<pbwkt::Empty, pbwkt::Struct>> BatchUpdateEntitiesAsync(
+            string parent,
+            scg::IEnumerable<EntityType.Types.Entity> entities,
+            string languageCode,
+            gaxgrpc::CallSettings callSettings = null) => BatchUpdateEntitiesAsync(
+                new BatchUpdateEntitiesRequest
+                {
+                    Parent = gax::GaxPreconditions.CheckNotNullOrEmpty(parent, nameof(parent)),
+                    Entities = { gax::GaxPreconditions.CheckNotNull(entities, nameof(entities)) },
+                    LanguageCode = languageCode ?? "", // Optional
+                },
+                callSettings);
+
+        /// <summary>
+        /// Updates or creates multiple entities in the specified entity type. This
+        /// method does not affect entities in the entity type that aren't explicitly
+        /// specified in the request.
+        ///
+        ///
+        /// Operation &lt;response: [google.protobuf.Empty][google.protobuf.Empty]&gt;
+        /// </summary>
+        /// <param name="parent">
+        /// Required. The name of the entity type to update or create entities in.
+        /// Format: `projects/&lt;Project ID&gt;/agent/entityTypes/&lt;Entity Type ID&gt;`.
+        /// </param>
+        /// <param name="entities">
+        /// Required. The entities to update or create.
+        /// </param>
+        /// <param name="languageCode">
+        /// Optional. The language of entity synonyms defined in `entities`. If not
+        /// specified, the agent's default language is used.
+        /// [Many
+        /// languages](https://cloud.google.com/dialogflow/docs/reference/language)
+        /// are supported. Note: languages must be enabled in the agent before they can
+        /// be used.
+        /// </param>
+        /// <param name="cancellationToken">
+        /// A <see cref="st::CancellationToken"/> to use for this RPC.
+        /// </param>
+        /// <returns>
+        /// A Task containing the RPC response.
+        /// </returns>
+        public virtual stt::Task<lro::Operation<pbwkt::Empty, pbwkt::Struct>> BatchUpdateEntitiesAsync(
+            string parent,
+            scg::IEnumerable<EntityType.Types.Entity> entities,
+            string languageCode,
+            st::CancellationToken cancellationToken) => BatchUpdateEntitiesAsync(
+                parent,
+                entities,
+                languageCode,
+                gaxgrpc::CallSettings.FromCancellationToken(cancellationToken));
+
+        /// <summary>
+        /// Updates or creates multiple entities in the specified entity type. This
+        /// method does not affect entities in the entity type that aren't explicitly
+        /// specified in the request.
+        ///
+        ///
+        /// Operation &lt;response: [google.protobuf.Empty][google.protobuf.Empty]&gt;
+        /// </summary>
+        /// <param name="parent">
+        /// Required. The name of the entity type to update or create entities in.
+        /// Format: `projects/&lt;Project ID&gt;/agent/entityTypes/&lt;Entity Type ID&gt;`.
+        /// </param>
+        /// <param name="entities">
+        /// Required. The entities to update or create.
+        /// </param>
+        /// <param name="languageCode">
+        /// Optional. The language of entity synonyms defined in `entities`. If not
+        /// specified, the agent's default language is used.
+        /// [Many
+        /// languages](https://cloud.google.com/dialogflow/docs/reference/language)
+        /// are supported. Note: languages must be enabled in the agent before they can
+        /// be used.
+        /// </param>
+        /// <param name="callSettings">
+        /// If not null, applies overrides to this RPC call.
+        /// </param>
+        /// <returns>
+        /// The RPC response.
+        /// </returns>
+        public virtual lro::Operation<pbwkt::Empty, pbwkt::Struct> BatchUpdateEntities(
+            string parent,
+            scg::IEnumerable<EntityType.Types.Entity> entities,
+            string languageCode,
+            gaxgrpc::CallSettings callSettings = null) => BatchUpdateEntities(
+                new BatchUpdateEntitiesRequest
+                {
+                    Parent = gax::GaxPreconditions.CheckNotNullOrEmpty(parent, nameof(parent)),
+                    Entities = { gax::GaxPreconditions.CheckNotNull(entities, nameof(entities)) },
+                    LanguageCode = languageCode ?? "", // Optional
+                },
+                callSettings);
+
+        /// <summary>
+        /// Updates or creates multiple entities in the specified entity type. This
+        /// method does not affect entities in the entity type that aren't explicitly
+        /// specified in the request.
+        ///
+        ///
+        /// Operation &lt;response: [google.protobuf.Empty][google.protobuf.Empty]&gt;
         /// </summary>
         /// <param name="request">
         /// The request object containing all of the parameters for the API call.
@@ -2426,11 +3528,12 @@ namespace Google.Cloud.Dialogflow.V2
                 callSettings);
 
         /// <summary>
-        /// Updates entities in the specified entity type (replaces the existing
-        /// collection of entries).
+        /// Updates or creates multiple entities in the specified entity type. This
+        /// method does not affect entities in the entity type that aren't explicitly
+        /// specified in the request.
         ///
-        /// Operation &lt;response: [google.protobuf.Empty][google.protobuf.Empty],
-        ///            metadata: [google.protobuf.Struct][google.protobuf.Struct]&gt;
+        ///
+        /// Operation &lt;response: [google.protobuf.Empty][google.protobuf.Empty]&gt;
         /// </summary>
         /// <param name="request">
         /// The request object containing all of the parameters for the API call.
@@ -2472,8 +3575,8 @@ namespace Google.Cloud.Dialogflow.V2
         /// <summary>
         /// Deletes entities in the specified entity type.
         ///
-        /// Operation &lt;response: [google.protobuf.Empty][google.protobuf.Empty],
-        ///            metadata: [google.protobuf.Struct][google.protobuf.Struct]&gt;
+        ///
+        /// Operation &lt;response: [google.protobuf.Empty][google.protobuf.Empty]&gt;
         /// </summary>
         /// <param name="parent">
         /// Required. The name of the entity type to delete entries for. Format:
@@ -2504,8 +3607,8 @@ namespace Google.Cloud.Dialogflow.V2
         /// <summary>
         /// Deletes entities in the specified entity type.
         ///
-        /// Operation &lt;response: [google.protobuf.Empty][google.protobuf.Empty],
-        ///            metadata: [google.protobuf.Struct][google.protobuf.Struct]&gt;
+        ///
+        /// Operation &lt;response: [google.protobuf.Empty][google.protobuf.Empty]&gt;
         /// </summary>
         /// <param name="parent">
         /// Required. The name of the entity type to delete entries for. Format:
@@ -2533,8 +3636,8 @@ namespace Google.Cloud.Dialogflow.V2
         /// <summary>
         /// Deletes entities in the specified entity type.
         ///
-        /// Operation &lt;response: [google.protobuf.Empty][google.protobuf.Empty],
-        ///            metadata: [google.protobuf.Struct][google.protobuf.Struct]&gt;
+        ///
+        /// Operation &lt;response: [google.protobuf.Empty][google.protobuf.Empty]&gt;
         /// </summary>
         /// <param name="parent">
         /// Required. The name of the entity type to delete entries for. Format:
@@ -2565,8 +3668,101 @@ namespace Google.Cloud.Dialogflow.V2
         /// <summary>
         /// Deletes entities in the specified entity type.
         ///
-        /// Operation &lt;response: [google.protobuf.Empty][google.protobuf.Empty],
-        ///            metadata: [google.protobuf.Struct][google.protobuf.Struct]&gt;
+        ///
+        /// Operation &lt;response: [google.protobuf.Empty][google.protobuf.Empty]&gt;
+        /// </summary>
+        /// <param name="parent">
+        /// Required. The name of the entity type to delete entries for. Format:
+        /// `projects/&lt;Project ID&gt;/agent/entityTypes/&lt;Entity Type ID&gt;`.
+        /// </param>
+        /// <param name="entityValues">
+        /// Required. The canonical `values` of the entities to delete. Note that
+        /// these are not fully-qualified names, i.e. they don't start with
+        /// `projects/&lt;Project ID&gt;`.
+        /// </param>
+        /// <param name="callSettings">
+        /// If not null, applies overrides to this RPC call.
+        /// </param>
+        /// <returns>
+        /// A Task containing the RPC response.
+        /// </returns>
+        public virtual stt::Task<lro::Operation<pbwkt::Empty, pbwkt::Struct>> BatchDeleteEntitiesAsync(
+            string parent,
+            scg::IEnumerable<string> entityValues,
+            gaxgrpc::CallSettings callSettings = null) => BatchDeleteEntitiesAsync(
+                new BatchDeleteEntitiesRequest
+                {
+                    Parent = gax::GaxPreconditions.CheckNotNullOrEmpty(parent, nameof(parent)),
+                    EntityValues = { gax::GaxPreconditions.CheckNotNull(entityValues, nameof(entityValues)) },
+                },
+                callSettings);
+
+        /// <summary>
+        /// Deletes entities in the specified entity type.
+        ///
+        ///
+        /// Operation &lt;response: [google.protobuf.Empty][google.protobuf.Empty]&gt;
+        /// </summary>
+        /// <param name="parent">
+        /// Required. The name of the entity type to delete entries for. Format:
+        /// `projects/&lt;Project ID&gt;/agent/entityTypes/&lt;Entity Type ID&gt;`.
+        /// </param>
+        /// <param name="entityValues">
+        /// Required. The canonical `values` of the entities to delete. Note that
+        /// these are not fully-qualified names, i.e. they don't start with
+        /// `projects/&lt;Project ID&gt;`.
+        /// </param>
+        /// <param name="cancellationToken">
+        /// A <see cref="st::CancellationToken"/> to use for this RPC.
+        /// </param>
+        /// <returns>
+        /// A Task containing the RPC response.
+        /// </returns>
+        public virtual stt::Task<lro::Operation<pbwkt::Empty, pbwkt::Struct>> BatchDeleteEntitiesAsync(
+            string parent,
+            scg::IEnumerable<string> entityValues,
+            st::CancellationToken cancellationToken) => BatchDeleteEntitiesAsync(
+                parent,
+                entityValues,
+                gaxgrpc::CallSettings.FromCancellationToken(cancellationToken));
+
+        /// <summary>
+        /// Deletes entities in the specified entity type.
+        ///
+        ///
+        /// Operation &lt;response: [google.protobuf.Empty][google.protobuf.Empty]&gt;
+        /// </summary>
+        /// <param name="parent">
+        /// Required. The name of the entity type to delete entries for. Format:
+        /// `projects/&lt;Project ID&gt;/agent/entityTypes/&lt;Entity Type ID&gt;`.
+        /// </param>
+        /// <param name="entityValues">
+        /// Required. The canonical `values` of the entities to delete. Note that
+        /// these are not fully-qualified names, i.e. they don't start with
+        /// `projects/&lt;Project ID&gt;`.
+        /// </param>
+        /// <param name="callSettings">
+        /// If not null, applies overrides to this RPC call.
+        /// </param>
+        /// <returns>
+        /// The RPC response.
+        /// </returns>
+        public virtual lro::Operation<pbwkt::Empty, pbwkt::Struct> BatchDeleteEntities(
+            string parent,
+            scg::IEnumerable<string> entityValues,
+            gaxgrpc::CallSettings callSettings = null) => BatchDeleteEntities(
+                new BatchDeleteEntitiesRequest
+                {
+                    Parent = gax::GaxPreconditions.CheckNotNullOrEmpty(parent, nameof(parent)),
+                    EntityValues = { gax::GaxPreconditions.CheckNotNull(entityValues, nameof(entityValues)) },
+                },
+                callSettings);
+
+        /// <summary>
+        /// Deletes entities in the specified entity type.
+        ///
+        ///
+        /// Operation &lt;response: [google.protobuf.Empty][google.protobuf.Empty]&gt;
         /// </summary>
         /// <param name="parent">
         /// Required. The name of the entity type to delete entries for. Format:
@@ -2580,9 +3776,10 @@ namespace Google.Cloud.Dialogflow.V2
         /// <param name="languageCode">
         /// Optional. The language of entity synonyms defined in `entities`. If not
         /// specified, the agent's default language is used.
-        /// [More than a dozen
-        /// languages](https://dialogflow.com/docs/reference/language) are supported.
-        /// Note: languages must be enabled in the agent, before they can be used.
+        /// [Many
+        /// languages](https://cloud.google.com/dialogflow/docs/reference/language)
+        /// are supported. Note: languages must be enabled in the agent before they can
+        /// be used.
         /// </param>
         /// <param name="callSettings">
         /// If not null, applies overrides to this RPC call.
@@ -2606,8 +3803,8 @@ namespace Google.Cloud.Dialogflow.V2
         /// <summary>
         /// Deletes entities in the specified entity type.
         ///
-        /// Operation &lt;response: [google.protobuf.Empty][google.protobuf.Empty],
-        ///            metadata: [google.protobuf.Struct][google.protobuf.Struct]&gt;
+        ///
+        /// Operation &lt;response: [google.protobuf.Empty][google.protobuf.Empty]&gt;
         /// </summary>
         /// <param name="parent">
         /// Required. The name of the entity type to delete entries for. Format:
@@ -2621,9 +3818,10 @@ namespace Google.Cloud.Dialogflow.V2
         /// <param name="languageCode">
         /// Optional. The language of entity synonyms defined in `entities`. If not
         /// specified, the agent's default language is used.
-        /// [More than a dozen
-        /// languages](https://dialogflow.com/docs/reference/language) are supported.
-        /// Note: languages must be enabled in the agent, before they can be used.
+        /// [Many
+        /// languages](https://cloud.google.com/dialogflow/docs/reference/language)
+        /// are supported. Note: languages must be enabled in the agent before they can
+        /// be used.
         /// </param>
         /// <param name="cancellationToken">
         /// A <see cref="st::CancellationToken"/> to use for this RPC.
@@ -2644,8 +3842,8 @@ namespace Google.Cloud.Dialogflow.V2
         /// <summary>
         /// Deletes entities in the specified entity type.
         ///
-        /// Operation &lt;response: [google.protobuf.Empty][google.protobuf.Empty],
-        ///            metadata: [google.protobuf.Struct][google.protobuf.Struct]&gt;
+        ///
+        /// Operation &lt;response: [google.protobuf.Empty][google.protobuf.Empty]&gt;
         /// </summary>
         /// <param name="parent">
         /// Required. The name of the entity type to delete entries for. Format:
@@ -2659,9 +3857,10 @@ namespace Google.Cloud.Dialogflow.V2
         /// <param name="languageCode">
         /// Optional. The language of entity synonyms defined in `entities`. If not
         /// specified, the agent's default language is used.
-        /// [More than a dozen
-        /// languages](https://dialogflow.com/docs/reference/language) are supported.
-        /// Note: languages must be enabled in the agent, before they can be used.
+        /// [Many
+        /// languages](https://cloud.google.com/dialogflow/docs/reference/language)
+        /// are supported. Note: languages must be enabled in the agent before they can
+        /// be used.
         /// </param>
         /// <param name="callSettings">
         /// If not null, applies overrides to this RPC call.
@@ -2685,8 +3884,131 @@ namespace Google.Cloud.Dialogflow.V2
         /// <summary>
         /// Deletes entities in the specified entity type.
         ///
-        /// Operation &lt;response: [google.protobuf.Empty][google.protobuf.Empty],
-        ///            metadata: [google.protobuf.Struct][google.protobuf.Struct]&gt;
+        ///
+        /// Operation &lt;response: [google.protobuf.Empty][google.protobuf.Empty]&gt;
+        /// </summary>
+        /// <param name="parent">
+        /// Required. The name of the entity type to delete entries for. Format:
+        /// `projects/&lt;Project ID&gt;/agent/entityTypes/&lt;Entity Type ID&gt;`.
+        /// </param>
+        /// <param name="entityValues">
+        /// Required. The canonical `values` of the entities to delete. Note that
+        /// these are not fully-qualified names, i.e. they don't start with
+        /// `projects/&lt;Project ID&gt;`.
+        /// </param>
+        /// <param name="languageCode">
+        /// Optional. The language of entity synonyms defined in `entities`. If not
+        /// specified, the agent's default language is used.
+        /// [Many
+        /// languages](https://cloud.google.com/dialogflow/docs/reference/language)
+        /// are supported. Note: languages must be enabled in the agent before they can
+        /// be used.
+        /// </param>
+        /// <param name="callSettings">
+        /// If not null, applies overrides to this RPC call.
+        /// </param>
+        /// <returns>
+        /// A Task containing the RPC response.
+        /// </returns>
+        public virtual stt::Task<lro::Operation<pbwkt::Empty, pbwkt::Struct>> BatchDeleteEntitiesAsync(
+            string parent,
+            scg::IEnumerable<string> entityValues,
+            string languageCode,
+            gaxgrpc::CallSettings callSettings = null) => BatchDeleteEntitiesAsync(
+                new BatchDeleteEntitiesRequest
+                {
+                    Parent = gax::GaxPreconditions.CheckNotNullOrEmpty(parent, nameof(parent)),
+                    EntityValues = { gax::GaxPreconditions.CheckNotNull(entityValues, nameof(entityValues)) },
+                    LanguageCode = languageCode ?? "", // Optional
+                },
+                callSettings);
+
+        /// <summary>
+        /// Deletes entities in the specified entity type.
+        ///
+        ///
+        /// Operation &lt;response: [google.protobuf.Empty][google.protobuf.Empty]&gt;
+        /// </summary>
+        /// <param name="parent">
+        /// Required. The name of the entity type to delete entries for. Format:
+        /// `projects/&lt;Project ID&gt;/agent/entityTypes/&lt;Entity Type ID&gt;`.
+        /// </param>
+        /// <param name="entityValues">
+        /// Required. The canonical `values` of the entities to delete. Note that
+        /// these are not fully-qualified names, i.e. they don't start with
+        /// `projects/&lt;Project ID&gt;`.
+        /// </param>
+        /// <param name="languageCode">
+        /// Optional. The language of entity synonyms defined in `entities`. If not
+        /// specified, the agent's default language is used.
+        /// [Many
+        /// languages](https://cloud.google.com/dialogflow/docs/reference/language)
+        /// are supported. Note: languages must be enabled in the agent before they can
+        /// be used.
+        /// </param>
+        /// <param name="cancellationToken">
+        /// A <see cref="st::CancellationToken"/> to use for this RPC.
+        /// </param>
+        /// <returns>
+        /// A Task containing the RPC response.
+        /// </returns>
+        public virtual stt::Task<lro::Operation<pbwkt::Empty, pbwkt::Struct>> BatchDeleteEntitiesAsync(
+            string parent,
+            scg::IEnumerable<string> entityValues,
+            string languageCode,
+            st::CancellationToken cancellationToken) => BatchDeleteEntitiesAsync(
+                parent,
+                entityValues,
+                languageCode,
+                gaxgrpc::CallSettings.FromCancellationToken(cancellationToken));
+
+        /// <summary>
+        /// Deletes entities in the specified entity type.
+        ///
+        ///
+        /// Operation &lt;response: [google.protobuf.Empty][google.protobuf.Empty]&gt;
+        /// </summary>
+        /// <param name="parent">
+        /// Required. The name of the entity type to delete entries for. Format:
+        /// `projects/&lt;Project ID&gt;/agent/entityTypes/&lt;Entity Type ID&gt;`.
+        /// </param>
+        /// <param name="entityValues">
+        /// Required. The canonical `values` of the entities to delete. Note that
+        /// these are not fully-qualified names, i.e. they don't start with
+        /// `projects/&lt;Project ID&gt;`.
+        /// </param>
+        /// <param name="languageCode">
+        /// Optional. The language of entity synonyms defined in `entities`. If not
+        /// specified, the agent's default language is used.
+        /// [Many
+        /// languages](https://cloud.google.com/dialogflow/docs/reference/language)
+        /// are supported. Note: languages must be enabled in the agent before they can
+        /// be used.
+        /// </param>
+        /// <param name="callSettings">
+        /// If not null, applies overrides to this RPC call.
+        /// </param>
+        /// <returns>
+        /// The RPC response.
+        /// </returns>
+        public virtual lro::Operation<pbwkt::Empty, pbwkt::Struct> BatchDeleteEntities(
+            string parent,
+            scg::IEnumerable<string> entityValues,
+            string languageCode,
+            gaxgrpc::CallSettings callSettings = null) => BatchDeleteEntities(
+                new BatchDeleteEntitiesRequest
+                {
+                    Parent = gax::GaxPreconditions.CheckNotNullOrEmpty(parent, nameof(parent)),
+                    EntityValues = { gax::GaxPreconditions.CheckNotNull(entityValues, nameof(entityValues)) },
+                    LanguageCode = languageCode ?? "", // Optional
+                },
+                callSettings);
+
+        /// <summary>
+        /// Deletes entities in the specified entity type.
+        ///
+        ///
+        /// Operation &lt;response: [google.protobuf.Empty][google.protobuf.Empty]&gt;
         /// </summary>
         /// <param name="request">
         /// The request object containing all of the parameters for the API call.
@@ -2720,8 +4042,8 @@ namespace Google.Cloud.Dialogflow.V2
         /// <summary>
         /// Deletes entities in the specified entity type.
         ///
-        /// Operation &lt;response: [google.protobuf.Empty][google.protobuf.Empty],
-        ///            metadata: [google.protobuf.Struct][google.protobuf.Struct]&gt;
+        ///
+        /// Operation &lt;response: [google.protobuf.Empty][google.protobuf.Empty]&gt;
         /// </summary>
         /// <param name="request">
         /// The request object containing all of the parameters for the API call.
@@ -2799,25 +4121,35 @@ namespace Google.Cloud.Dialogflow.V2
             BatchDeleteEntitiesOperationsClient = new lro::OperationsClientImpl(
                 grpcClient.CreateOperationsClient(), effectiveSettings.BatchDeleteEntitiesOperationsSettings);
             _callListEntityTypes = clientHelper.BuildApiCall<ListEntityTypesRequest, ListEntityTypesResponse>(
-                GrpcClient.ListEntityTypesAsync, GrpcClient.ListEntityTypes, effectiveSettings.ListEntityTypesSettings);
+                GrpcClient.ListEntityTypesAsync, GrpcClient.ListEntityTypes, effectiveSettings.ListEntityTypesSettings)
+                .WithGoogleRequestParam("parent", request => request.Parent);
             _callGetEntityType = clientHelper.BuildApiCall<GetEntityTypeRequest, EntityType>(
-                GrpcClient.GetEntityTypeAsync, GrpcClient.GetEntityType, effectiveSettings.GetEntityTypeSettings);
+                GrpcClient.GetEntityTypeAsync, GrpcClient.GetEntityType, effectiveSettings.GetEntityTypeSettings)
+                .WithGoogleRequestParam("name", request => request.Name);
             _callCreateEntityType = clientHelper.BuildApiCall<CreateEntityTypeRequest, EntityType>(
-                GrpcClient.CreateEntityTypeAsync, GrpcClient.CreateEntityType, effectiveSettings.CreateEntityTypeSettings);
+                GrpcClient.CreateEntityTypeAsync, GrpcClient.CreateEntityType, effectiveSettings.CreateEntityTypeSettings)
+                .WithGoogleRequestParam("parent", request => request.Parent);
             _callUpdateEntityType = clientHelper.BuildApiCall<UpdateEntityTypeRequest, EntityType>(
-                GrpcClient.UpdateEntityTypeAsync, GrpcClient.UpdateEntityType, effectiveSettings.UpdateEntityTypeSettings);
+                GrpcClient.UpdateEntityTypeAsync, GrpcClient.UpdateEntityType, effectiveSettings.UpdateEntityTypeSettings)
+                .WithGoogleRequestParam("entity_type.name", request => request.EntityType?.Name);
             _callDeleteEntityType = clientHelper.BuildApiCall<DeleteEntityTypeRequest, pbwkt::Empty>(
-                GrpcClient.DeleteEntityTypeAsync, GrpcClient.DeleteEntityType, effectiveSettings.DeleteEntityTypeSettings);
+                GrpcClient.DeleteEntityTypeAsync, GrpcClient.DeleteEntityType, effectiveSettings.DeleteEntityTypeSettings)
+                .WithGoogleRequestParam("name", request => request.Name);
             _callBatchUpdateEntityTypes = clientHelper.BuildApiCall<BatchUpdateEntityTypesRequest, lro::Operation>(
-                GrpcClient.BatchUpdateEntityTypesAsync, GrpcClient.BatchUpdateEntityTypes, effectiveSettings.BatchUpdateEntityTypesSettings);
+                GrpcClient.BatchUpdateEntityTypesAsync, GrpcClient.BatchUpdateEntityTypes, effectiveSettings.BatchUpdateEntityTypesSettings)
+                .WithGoogleRequestParam("parent", request => request.Parent);
             _callBatchDeleteEntityTypes = clientHelper.BuildApiCall<BatchDeleteEntityTypesRequest, lro::Operation>(
-                GrpcClient.BatchDeleteEntityTypesAsync, GrpcClient.BatchDeleteEntityTypes, effectiveSettings.BatchDeleteEntityTypesSettings);
+                GrpcClient.BatchDeleteEntityTypesAsync, GrpcClient.BatchDeleteEntityTypes, effectiveSettings.BatchDeleteEntityTypesSettings)
+                .WithGoogleRequestParam("parent", request => request.Parent);
             _callBatchCreateEntities = clientHelper.BuildApiCall<BatchCreateEntitiesRequest, lro::Operation>(
-                GrpcClient.BatchCreateEntitiesAsync, GrpcClient.BatchCreateEntities, effectiveSettings.BatchCreateEntitiesSettings);
+                GrpcClient.BatchCreateEntitiesAsync, GrpcClient.BatchCreateEntities, effectiveSettings.BatchCreateEntitiesSettings)
+                .WithGoogleRequestParam("parent", request => request.Parent);
             _callBatchUpdateEntities = clientHelper.BuildApiCall<BatchUpdateEntitiesRequest, lro::Operation>(
-                GrpcClient.BatchUpdateEntitiesAsync, GrpcClient.BatchUpdateEntities, effectiveSettings.BatchUpdateEntitiesSettings);
+                GrpcClient.BatchUpdateEntitiesAsync, GrpcClient.BatchUpdateEntities, effectiveSettings.BatchUpdateEntitiesSettings)
+                .WithGoogleRequestParam("parent", request => request.Parent);
             _callBatchDeleteEntities = clientHelper.BuildApiCall<BatchDeleteEntitiesRequest, lro::Operation>(
-                GrpcClient.BatchDeleteEntitiesAsync, GrpcClient.BatchDeleteEntities, effectiveSettings.BatchDeleteEntitiesSettings);
+                GrpcClient.BatchDeleteEntitiesAsync, GrpcClient.BatchDeleteEntities, effectiveSettings.BatchDeleteEntitiesSettings)
+                .WithGoogleRequestParam("parent", request => request.Parent);
             Modify_ApiCall(ref _callListEntityTypes);
             Modify_ListEntityTypesApiCall(ref _callListEntityTypes);
             Modify_ApiCall(ref _callGetEntityType);
@@ -3082,8 +4414,7 @@ namespace Google.Cloud.Dialogflow.V2
         /// <summary>
         /// Updates/Creates multiple entity types in the specified agent.
         ///
-        /// Operation &lt;response: [BatchUpdateEntityTypesResponse][google.cloud.dialogflow.v2.BatchUpdateEntityTypesResponse],
-        ///            metadata: [google.protobuf.Struct][google.protobuf.Struct]&gt;
+        /// Operation &lt;response: [BatchUpdateEntityTypesResponse][google.cloud.dialogflow.v2.BatchUpdateEntityTypesResponse]&gt;
         /// </summary>
         /// <param name="request">
         /// The request object containing all of the parameters for the API call.
@@ -3106,8 +4437,7 @@ namespace Google.Cloud.Dialogflow.V2
         /// <summary>
         /// Updates/Creates multiple entity types in the specified agent.
         ///
-        /// Operation &lt;response: [BatchUpdateEntityTypesResponse][google.cloud.dialogflow.v2.BatchUpdateEntityTypesResponse],
-        ///            metadata: [google.protobuf.Struct][google.protobuf.Struct]&gt;
+        /// Operation &lt;response: [BatchUpdateEntityTypesResponse][google.cloud.dialogflow.v2.BatchUpdateEntityTypesResponse]&gt;
         /// </summary>
         /// <param name="request">
         /// The request object containing all of the parameters for the API call.
@@ -3135,8 +4465,7 @@ namespace Google.Cloud.Dialogflow.V2
         /// <summary>
         /// Deletes entity types in the specified agent.
         ///
-        /// Operation &lt;response: [google.protobuf.Empty][google.protobuf.Empty],
-        ///            metadata: [google.protobuf.Struct][google.protobuf.Struct]&gt;
+        /// Operation &lt;response: [google.protobuf.Empty][google.protobuf.Empty]&gt;
         /// </summary>
         /// <param name="request">
         /// The request object containing all of the parameters for the API call.
@@ -3159,8 +4488,7 @@ namespace Google.Cloud.Dialogflow.V2
         /// <summary>
         /// Deletes entity types in the specified agent.
         ///
-        /// Operation &lt;response: [google.protobuf.Empty][google.protobuf.Empty],
-        ///            metadata: [google.protobuf.Struct][google.protobuf.Struct]&gt;
+        /// Operation &lt;response: [google.protobuf.Empty][google.protobuf.Empty]&gt;
         /// </summary>
         /// <param name="request">
         /// The request object containing all of the parameters for the API call.
@@ -3186,8 +4514,7 @@ namespace Google.Cloud.Dialogflow.V2
         public override lro::OperationsClient BatchDeleteEntityTypesOperationsClient { get; }
 
         /// <summary>
-        /// Creates multiple new entities in the specified entity type (extends the
-        /// existing collection of entries).
+        /// Creates multiple new entities in the specified entity type.
         ///
         /// Operation &lt;response: [google.protobuf.Empty][google.protobuf.Empty]&gt;
         /// </summary>
@@ -3210,8 +4537,7 @@ namespace Google.Cloud.Dialogflow.V2
         }
 
         /// <summary>
-        /// Creates multiple new entities in the specified entity type (extends the
-        /// existing collection of entries).
+        /// Creates multiple new entities in the specified entity type.
         ///
         /// Operation &lt;response: [google.protobuf.Empty][google.protobuf.Empty]&gt;
         /// </summary>
@@ -3239,11 +4565,12 @@ namespace Google.Cloud.Dialogflow.V2
         public override lro::OperationsClient BatchCreateEntitiesOperationsClient { get; }
 
         /// <summary>
-        /// Updates entities in the specified entity type (replaces the existing
-        /// collection of entries).
+        /// Updates or creates multiple entities in the specified entity type. This
+        /// method does not affect entities in the entity type that aren't explicitly
+        /// specified in the request.
         ///
-        /// Operation &lt;response: [google.protobuf.Empty][google.protobuf.Empty],
-        ///            metadata: [google.protobuf.Struct][google.protobuf.Struct]&gt;
+        ///
+        /// Operation &lt;response: [google.protobuf.Empty][google.protobuf.Empty]&gt;
         /// </summary>
         /// <param name="request">
         /// The request object containing all of the parameters for the API call.
@@ -3264,11 +4591,12 @@ namespace Google.Cloud.Dialogflow.V2
         }
 
         /// <summary>
-        /// Updates entities in the specified entity type (replaces the existing
-        /// collection of entries).
+        /// Updates or creates multiple entities in the specified entity type. This
+        /// method does not affect entities in the entity type that aren't explicitly
+        /// specified in the request.
         ///
-        /// Operation &lt;response: [google.protobuf.Empty][google.protobuf.Empty],
-        ///            metadata: [google.protobuf.Struct][google.protobuf.Struct]&gt;
+        ///
+        /// Operation &lt;response: [google.protobuf.Empty][google.protobuf.Empty]&gt;
         /// </summary>
         /// <param name="request">
         /// The request object containing all of the parameters for the API call.
@@ -3296,8 +4624,8 @@ namespace Google.Cloud.Dialogflow.V2
         /// <summary>
         /// Deletes entities in the specified entity type.
         ///
-        /// Operation &lt;response: [google.protobuf.Empty][google.protobuf.Empty],
-        ///            metadata: [google.protobuf.Struct][google.protobuf.Struct]&gt;
+        ///
+        /// Operation &lt;response: [google.protobuf.Empty][google.protobuf.Empty]&gt;
         /// </summary>
         /// <param name="request">
         /// The request object containing all of the parameters for the API call.
@@ -3320,8 +4648,8 @@ namespace Google.Cloud.Dialogflow.V2
         /// <summary>
         /// Deletes entities in the specified entity type.
         ///
-        /// Operation &lt;response: [google.protobuf.Empty][google.protobuf.Empty],
-        ///            metadata: [google.protobuf.Struct][google.protobuf.Struct]&gt;
+        ///
+        /// Operation &lt;response: [google.protobuf.Empty][google.protobuf.Empty]&gt;
         /// </summary>
         /// <param name="request">
         /// The request object containing all of the parameters for the API call.

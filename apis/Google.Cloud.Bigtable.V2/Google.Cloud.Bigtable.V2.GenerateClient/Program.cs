@@ -13,6 +13,9 @@
 // limitations under the License.
 
 using Google.Api.Gax.Grpc;
+using Google.Cloud.Tools.Common;
+using Google.Cloud.Tools.SourceManipulation;
+using Microsoft.Build.Locator;
 using Microsoft.CodeAnalysis;
 using Microsoft.CodeAnalysis.CSharp;
 using Microsoft.CodeAnalysis.CSharp.Syntax;
@@ -98,6 +101,8 @@ namespace Google.Cloud.Bigtable.V2.GenerateClient
 
         private static async Task<int> Main(string[] args)
         {
+            FixClientBuilder();
+
             // TODO: Figure out why `dotnet run` from generateapis.sh is sending 6 args instead of 3 as in: arg1 arg2 arg3 arg1 arg2 arg3
             if (args.Length < 3)
             {
@@ -109,6 +114,7 @@ namespace Google.Cloud.Bigtable.V2.GenerateClient
             var apiClientName = args[1];
             var userClientName = args[2];
 
+            MSBuildLocator.RegisterDefaults();
             var workspace = MSBuildWorkspace.Create(new Dictionary<string, string> { ["TargetFramework"] = "net45" });
 
             Project project;
@@ -269,6 +275,17 @@ namespace Google.Cloud.Bigtable.V2.GenerateClient
                 return 4;
             }
             return 0;
+        }
+
+        /// <summary>
+        /// Remove the parts of the generated BigtableServiceApiClientBuilder that are provided manual by partial classes.
+        /// </summary>
+        private static void FixClientBuilder()
+        {
+            var layout = DirectoryLayout.ForApi("Google.Cloud.Bigtable.V2");
+            SourceFile.Load(Path.Combine(layout.SourceDirectory, "Google.Cloud.Bigtable.V2", "BigtableServiceApiClient.g.cs"))
+                .RemoveMethod("BigtableServiceApiClientBuilder", "GetChannelPool")
+                .Save();
         }
 
         /// <summary>
@@ -441,13 +458,10 @@ namespace Google.Cloud.Bigtable.V2.GenerateClient
                     content = content
                         .Replace(
                             endingText,
-                            endingText.AddTextTokens(XmlTextLiteral("If the ")))
+                            endingText.AddTextTokens(XmlTextLiteral(" If the ")))
                         .Add(
                             SeeTag(_requestParameterSyntax.Type.CrefMember(AppProfileIdPropertyName)))
-                        .Add(XmlText(
-                            XmlTextLiteral(" has not been specified, it will be initialized from the value stored in the client."),
-                            XmlTextNewLine("\n", continueXmlDocumentationComment: false),
-                            endingText.TextTokens.Last()));
+                        .Add(XmlText(XmlTextLiteral(" has not been specified, it will be initialized from the value stored in the client.")));
                 }
 
                 return node.WithContent(content);

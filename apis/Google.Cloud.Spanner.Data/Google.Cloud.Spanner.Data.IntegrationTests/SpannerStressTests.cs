@@ -17,13 +17,10 @@ using Google.Cloud.Spanner.Data.CommonTesting;
 using Google.Cloud.Spanner.V1;
 using Google.Cloud.Spanner.V1.Internal.Logging;
 using System;
-using System.Collections.Generic;
-using System.Diagnostics;
 using System.Linq;
 using System.Threading;
 using System.Threading.Tasks;
 using Xunit;
-using Xunit.Abstractions;
 
 namespace Google.Cloud.Spanner.Data.IntegrationTests
 {
@@ -40,26 +37,27 @@ namespace Google.Cloud.Spanner.Data.IntegrationTests
         public SpannerStressTests(SpannerStressTestTableFixture fixture) =>
             _fixture = fixture;
 
-        private async Task<TimeSpan> TestWriteOneRow(Stopwatch sw)
-        {
-            using (var connection = _fixture.GetConnection())
+        [Fact]
+        public Task RunWriteStress() =>
+            RunStress(async connectionStringBuilder =>
             {
-                var localCounter = Interlocked.Increment(ref s_rowCounter);
-                var insertCommand = connection.CreateInsertCommand(_fixture.TableName);
-                insertCommand.Parameters.Add("ID", SpannerDbType.String, $"{s_guid}{localCounter}");
-                insertCommand.Parameters.Add("Title", SpannerDbType.String, "Title");
+                using (var connection = new SpannerConnection(connectionStringBuilder))
+                {
+                    var localCounter = Interlocked.Increment(ref s_rowCounter);
+                    var insertCommand = connection.CreateInsertCommand(_fixture.TableName);
+                    insertCommand.Parameters.Add("ID", SpannerDbType.String, $"{s_guid}{localCounter}");
+                    insertCommand.Parameters.Add("Title", SpannerDbType.String, "Title");
 
-                // This uses an ephemeral transaction, so it's legal to retry it.
-                await ExecuteWithRetry(insertCommand.ExecuteNonQueryAsync);
-            }
-            return sw.Elapsed;
-        }
+                    // This uses an ephemeral transaction, so it's legal to retry it.
+                    await insertCommand.ExecuteNonQueryAsyncWithRetry();
+                }
+            });
 
-        private async Task<TimeSpan> TestWriteTx(Stopwatch sw)
-        {
-            await ExecuteWithRetry(async () =>
+        [Fact]
+        public Task RunParallelTransactionStress() =>
+            RunStress(connectionStringBuilder => RetryHelpers.ExecuteWithRetryAsync(async () =>
             {
-                using (var connection = _fixture.GetConnection())
+                using (var connection = new SpannerConnection(connectionStringBuilder))
                 {
                     await connection.OpenAsync();
                     using (var tx = await connection.BeginTransactionAsync())
@@ -87,104 +85,94 @@ namespace Google.Cloud.Spanner.Data.IntegrationTests
                         await tx.CommitAsync();
                     }
                 }
-            });
-            return sw.Elapsed;
-        }
+            }));
 
-        private static async Task ExecuteWithRetry(Func<Task> actionToRetry)
+        [Fact]
+        public async Task RunReadStress()
         {
-            var retry = true;
-            long delay = 0;
-            while (retry)
+            // Insert a single row first, but remember the ID so we can read it.
+            int localCounter = Interlocked.Increment(ref s_rowCounter);
+            string id = $"{s_guid}{localCounter}";
+            string title = "Title {id}";
+            using (var connection = new SpannerConnection(_fixture.ConnectionString))
             {
-                retry = false;
-                try
+                var insertCommand = connection.CreateInsertCommand(_fixture.TableName);
+                insertCommand.Parameters.Add("ID", SpannerDbType.String).Value = $"{s_guid}{localCounter}";
+                insertCommand.Parameters.Add("Title", SpannerDbType.String).Value = title;
+                await insertCommand.ExecuteNonQueryAsyncWithRetry();
+            }
+
+            await RunStress(TestReadOneRow);
+
+            async Task TestReadOneRow(SpannerConnectionStringBuilder connectionStringBuilder)
+            {
+                using (var connection = new SpannerConnection(connectionStringBuilder))
                 {
-                    await actionToRetry();
-                }
-                catch (Exception e) when (e.IsTransientSpannerFault())
-                {
-                    //TODO(benwu): replace with topaz.
-                    retry = true;
-                    Console.WriteLine("retrying due to " + e.Message);
-                    delay = delay * 2;
-                    delay += s_rnd.Value.Next(100);
-                    delay = Math.Min(delay, 5000);
-                    await Task.Delay(TimeSpan.FromMilliseconds(delay));
+                    var command = connection.CreateSelectCommand($"SELECT Title FROM {_fixture.TableName} WHERE ID=@id");
+                    command.Parameters.Add("@ID", SpannerDbType.String).Value = id;
+
+                    using (var reader = await command.ExecuteReaderAsync())
+                    {
+                        Assert.True(await reader.ReadAsync());
+                        Assert.Equal(title, reader.GetString(0));
+                        Assert.False(await reader.ReadAsync());
+                    }
                 }
             }
         }
 
-        [Fact]
-        public Task RunWriteStress() => RunStress(TestWriteOneRow);
-
-        [Fact]
-        public Task RunParallelTransactionStress() => RunStress(TestWriteTx);
-
-        private async Task RunStress(Func<Stopwatch, Task<TimeSpan>> writeFunc)
+        private async Task RunStress(Func<SpannerConnectionStringBuilder, Task> func)
         {
-            // Clear current session pool to eliminate the chance of a previous
-            // test altering the pool state (which is validated at end)
-            if (!Task.Run(SessionPool.Default.ReleaseAllAsync).Wait(SessionPool.Default.ShutDownTimeout))
-            {
-                throw new TimeoutException("Deadline exceeded while releasing all sessions");
-            }
+            // Create a new session pool manager to eliminate the chance of a previous test altering the pool state.
 
-            //prewarm
-            // The maximum roundtrip time for spanner (and mysql) is about 200ms per
-            // write.  so if we initialize with the target sustained # sessions,
+            // Prewarm:
+            // The maximum roundtrip time for Spanner (and MySQL) is about 200ms per
+            // write. If we initialize with the target sustained # sessions,
             // we shouldn't see any more sessions created.
             int countToPreWarm = Math.Min(TargetQps / 4, 800);
-            SpannerOptions.Instance.MaximumActiveSessions = Math.Max(countToPreWarm + 50, 400);
-            SpannerOptions.Instance.MaximumPooledSessions = Math.Max(countToPreWarm + 50, 400);
-            SpannerOptions.Instance.MaximumGrpcChannels = Math.Max(4, 8 * TargetQps / 2000);
-
-            Logger.DefaultLogger.Info(() =>
-                $"SpannerOptions.Instance.MaximumActiveSessions:{SpannerOptions.Instance.MaximumActiveSessions}");
-            Logger.DefaultLogger.Info(() =>
-                $"SpannerOptions.Instance.MaximumGrpcChannels:{SpannerOptions.Instance.MaximumGrpcChannels}");
-
-            //prewarm step.
-            using (_fixture.GetConnection())
+            var options = new SessionPoolOptions
             {
-                var all = new List<SpannerConnection>();
-                const int increment = 25;
-                while (countToPreWarm > 0)
-                {
-                    var prewarm = new List<SpannerConnection>();
-                    var localCount = Math.Min(increment, countToPreWarm);
-                    Logger.DefaultLogger.Info(() => $"prewarming {localCount} spanner sessions");
-                    for (var i = 0; i < localCount; i++)
-                    {
-                        prewarm.Add(new SpannerConnection(_fixture.ConnectionString));
-                    }
-                    await Task.WhenAll(prewarm.Select(x => x.OpenAsync()));
-                    await Task.Delay(TimeSpan.FromMilliseconds(250));
-                    all.AddRange(prewarm);
-                    countToPreWarm -= increment;
-                }
+                MaximumActiveSessions = Math.Max(countToPreWarm + 50, 400),
+                MinimumPooledSessions = countToPreWarm,
+                MaximumConcurrentSessionCreates = Math.Min(countToPreWarm, 50)
+            };
 
-                foreach (var preWarmCon in all)
-                {
-                    preWarmCon.Dispose();
-                }
-            }
+            var sessionPoolManager = SessionPoolManager.Create(options);
+            var connectionStringBuilder = new SpannerConnectionStringBuilder(_fixture.ConnectionString)
+            {
+                SessionPoolManager = sessionPoolManager,
+                MaximumGrpcChannels = Math.Max(4, 8 * TargetQps / 2000)
+            };
+            var pool = await connectionStringBuilder.AcquireSessionPoolAsync();
+            var logger = Logger.DefaultLogger;
+            logger.ResetPerformanceData();
 
-            // Run the test with only info logging enabled.
-            var previousLogLevel = Logger.DefaultLogger.LogLevel;
-            Logger.DefaultLogger.LogLevel = V1.Internal.Logging.LogLevel.Info;
+            logger.Info("Prewarming session pool for stress test");
+            // Prewarm step: allow up to 30 seconds for the session pool to be populated.
+            var cancellationToken = new CancellationTokenSource(30000).Token;
+            await pool.WhenPoolReady(_fixture.DatabaseName, cancellationToken);
+
+            logger.Info($"Prewarm complete. Pool stats: {pool.GetStatisticsSnapshot(_fixture.DatabaseName)}");
+
+            // Now run the test, with performance logging enabled, but without debug logging.
+            // (Debug logging can write a lot to our log file, breaking the test.)
+            var previousLogLevel = logger.LogLevel;
+            logger.LogLevel = V1.Internal.Logging.LogLevel.Info;
+            logger.LogPerformanceTraces = true;
             double latencyMs;
             try
             {
-                latencyMs = await TestWriteLatencyWithQps(TargetQps, TestDuration, writeFunc);
+                latencyMs = await TestLatencyWithQps(TargetQps, TestDuration, () => func(connectionStringBuilder));
+                logger.LogPerformanceData();
             }
             finally
             {
-                Logger.DefaultLogger.LogLevel = previousLogLevel;
+                logger.LogLevel = previousLogLevel;
+                logger.LogPerformanceTraces = false;
             }
-            Logger.DefaultLogger.Info(() => $"Spanner latency = {latencyMs}ms");
+            logger.Info($"Spanner latency = {latencyMs}ms");
 
-            ValidatePoolInfo();
+            await SessionPoolHelpers.ShutdownPoolAsync(connectionStringBuilder);
 
             // Spanner latency with 100 qps simulated is usually around 75ms.
             Assert.InRange(latencyMs, 0, 150);

@@ -15,14 +15,12 @@
 using Google.Apis.Auth.OAuth2;
 using Google.Cloud.Spanner.Data.CommonTesting;
 using Google.Cloud.Spanner.V1;
-using Grpc.Auth;
 using System;
 using System.Collections;
 using System.Collections.Generic;
 using System.Threading;
 using System.Threading.Tasks;
 using Xunit;
-using Xunit.Abstractions;
 
 namespace Google.Cloud.Spanner.Data.IntegrationTests
 {
@@ -35,22 +33,6 @@ namespace Google.Cloud.Spanner.Data.IntegrationTests
         public ReadTests(ReadTableFixture fixture) =>
             _fixture = fixture;
 
-        /// <summary>
-        /// This class ensures that the credential in TestDeadlineExceeded is seen as a new instance.
-        /// </summary>
-        private class CredentialWrapper : ITokenAccess
-        {
-            private readonly ITokenAccess _original;
-
-            public CredentialWrapper(ITokenAccess original) => _original = original;
-
-            /// <inheritdoc />
-            public Task<string> GetAccessTokenForRequestAsync(
-                string authUri = null,
-                CancellationToken cancellationToken = new CancellationToken()) => _original
-                .GetAccessTokenForRequestAsync(authUri, cancellationToken);
-        }
-
         private async Task<T> ExecuteAsync<T>(string sql)
         {
             using (var connection = _fixture.GetConnection())
@@ -61,6 +43,7 @@ namespace Google.Cloud.Spanner.Data.IntegrationTests
             }
         }
 
+        // [START spanner_test_read_invalid_column_name]
         [Fact]
         public async Task BadColumnName()
         {
@@ -75,7 +58,9 @@ namespace Google.Cloud.Spanner.Data.IntegrationTests
                 }
             }
         }
+        // [END spanner_test_read_invalid_column_name]
 
+        // [START spanner_test_read_invalid_db_name]
         [Fact]
         public async Task BadDbName()
         {
@@ -90,8 +75,14 @@ namespace Google.Cloud.Spanner.Data.IntegrationTests
                 Assert.Equal(ErrorCode.NotFound, e.ErrorCode);
                 Assert.False(e.IsTransientSpannerFault());
             }
-        }
 
+            // Shut the pool associated with the bad database down, to avoid seeing spurious connection failures
+            // later in the log.
+            await SessionPoolHelpers.ShutdownPoolAsync(connectionString);
+        }
+        // [END spanner_test_read_invalid_db_name]
+
+        // [START spanner_test_read_invalid_table_name]
         [Fact]
         public async Task BadTableName()
         {
@@ -106,7 +97,9 @@ namespace Google.Cloud.Spanner.Data.IntegrationTests
                 }
             }
         }
+        // [END spanner_test_read_invalid_table_name]
 
+        // [START spanner_test_cancel_read_fails]
         [Fact]
         public async Task CancelRead()
         {
@@ -119,12 +112,14 @@ namespace Google.Cloud.Spanner.Data.IntegrationTests
                     var cancellationTokenSource = new CancellationTokenSource();
                     var task = reader.ReadAsync(cancellationTokenSource.Token);
                     cancellationTokenSource.Cancel();
-                    var e = await Assert.ThrowsAsync<OperationCanceledException>(() => task);
+                    var e = await Assert.ThrowsAnyAsync<OperationCanceledException>(() => task);
                     Assert.False(e.IsTransientSpannerFault());
                 }
             }
         }
+        // [END spanner_test_cancel_read_fails]
 
+        // [START spanner_test_query_empty_array_struct]
         [Fact]
         public async Task EmptyStructArray()
         {
@@ -132,14 +127,18 @@ namespace Google.Cloud.Spanner.Data.IntegrationTests
             var result = await ExecuteAsync<IList>(sqlQuery);
             Assert.Equal(0, result.Count);
         }
+        // [END spanner_test_query_empty_array_struct]
 
+        // [START spanner_test_query_nan]
         [Fact]
         public async Task NaN()
         {
             double result = await ExecuteAsync<double>("SELECT IEEE_DIVIDE(0, 0)");
             Assert.True(double.IsNaN(result));
         }
+        // [END spanner_test_query_nan]
 
+        // [START spanner_test_query_array_posinf_neginf_nan]
         [Fact]
         public async Task NaNArray()
         {
@@ -151,88 +150,78 @@ namespace Google.Cloud.Spanner.Data.IntegrationTests
             Assert.True(double.IsNegativeInfinity(result[1]));
             Assert.True(double.IsNaN(result[2]));
         }
+        // [END spanner_test_query_array_posinf_neginf_nan]
 
+        // [START spanner_test_query_neg_infinity]
         [Fact]
         public async Task NegativeInf()
         {
             double result = await ExecuteAsync<double>("SELECT IEEE_DIVIDE(-1, 0)");
             Assert.True(double.IsNegativeInfinity(result));
         }
+        // [END spanner_test_query_neg_infinity]
 
+        // [START spanner_test_single_key_read]
         [Fact]
         public async Task PointRead()
         {
-            int rowsRead = -1;
-
             using (var connection = _fixture.GetConnection())
             {
-                var cmd = connection.CreateSelectCommand(
-                    $"SELECT * FROM {_fixture.TableName} WHERE Key = 'k1'");
+                var cmd = connection.CreateSelectCommand($"SELECT * FROM {_fixture.TableName} WHERE Key = 'k1'");
                 using (var reader = await cmd.ExecuteReaderAsync())
                 {
-                    rowsRead = 0;
-                    while (await reader.ReadAsync())
-                    {
-                        Assert.Equal("k1", reader.GetString(0));
-                        Assert.Equal("v1", reader.GetString(1));
-                        rowsRead++;
-                    }
+                    Assert.True(await reader.ReadAsync());
+                    Assert.Equal("k1", reader.GetString(0));
+                    Assert.Equal("v1", reader.GetString(1));
+
+                    Assert.False(await reader.ReadAsync());
                 }
             }
-            Assert.Equal(1, rowsRead);
         }
+        // [END spanner_test_single_key_read]
 
         [Fact]
         public async Task ReadAllowsNewApis()
         {
-            int rowsRead = -1;
-
             using (var connection = _fixture.GetConnection())
             {
-                var cmd = connection.CreateSelectCommand(
-                    $"SELECT * FROM {_fixture.TableName} WHERE Key = 'k1'");
+                var cmd = connection.CreateSelectCommand($"SELECT * FROM {_fixture.TableName} WHERE Key = 'k1'");
                 using (var reader = await cmd.ExecuteReaderAsync())
                 {
-                    rowsRead = 0;
-                    while (await reader.ReadAsync())
-                    {
-                        Assert.Equal("k1", reader.GetFieldValue<string>("Key"));
-                        Assert.Equal("v1", reader.GetFieldValue<string>("StringValue"));
-                        rowsRead++;
-                    }
+                    Assert.True(await reader.ReadAsync());
+                    Assert.Equal("k1", reader.GetFieldValue<string>("Key"));
+                    Assert.Equal("v1", reader.GetFieldValue<string>("StringValue"));
+
+                    Assert.False(await reader.ReadAsync());
                 }
             }
-            Assert.Equal(1, rowsRead);
         }
 
+        // [START spanner_test_single_key_dne_read]
         [Fact]
         public async Task PointReadEmpty()
         {
-            int rowsRead = -1;
-
             using (var connection = _fixture.GetConnection())
             {
-                var cmd = connection.CreateSelectCommand(
-                    $"SELECT * FROM {_fixture.TableName} WHERE Key = 'k99'");
+                var cmd = connection.CreateSelectCommand($"SELECT * FROM {_fixture.TableName} WHERE Key = 'k99'");
                 using (var reader = await cmd.ExecuteReaderAsync())
                 {
-                    rowsRead = 0;
-                    while (await reader.ReadAsync())
-                    {
-                        rowsRead++;
-                    }
+                    Assert.False(await reader.ReadAsync());
                 }
             }
-            Assert.Equal(0, rowsRead);
         }
+        // [END spanner_test_single_key_dne_read]
 
+        // [START spanner_test_query_pos_infinity]
         [Fact]
         public async Task PositiveInf()
         {
             double result = await ExecuteAsync<double>("SELECT IEEE_DIVIDE(1, 0)");
             Assert.True(double.IsPositiveInfinity(result));
         }
+        // [END spanner_test_query_pos_infinity]
 
+        // [START spanner_test_query_invalid]
         [Fact]
         public async Task QueryTypo()
         {
@@ -247,34 +236,81 @@ namespace Google.Cloud.Spanner.Data.IntegrationTests
                 }
             }
         }
+        // [END spanner_test_query_invalid]
 
+        // [START spanner_test_empty_read]
         [Fact]
         public async Task ReadEmpty()
         {
-            int rowsRead = -1;
-
             using (var connection = _fixture.GetConnection())
             {
                 // All our keys start with "k" so there shouldn't be anything starting with "l"
                 var cmd = connection.CreateSelectCommand($"SELECT * FROM {_fixture.TableName} WHERE Key >= 'l'");
                 using (var reader = await cmd.ExecuteReaderAsync())
                 {
-                    rowsRead = 0;
-                    while (await reader.ReadAsync())
-                    {
-                        rowsRead++;
-                    }
+                    Assert.False(await reader.ReadAsync());
                 }
             }
-            Assert.Equal(0, rowsRead);
+        }
+        // [END spanner_test_empty_read]
+
+        [Fact]
+        public async Task GetFieldValue_NoReadCall()
+        {
+            using (var connection = _fixture.GetConnection())
+            {
+                var cmd = connection.CreateSelectCommand($"SELECT * FROM {_fixture.TableName}");
+                using (var reader = await cmd.ExecuteReaderAsync())
+                {
+                    Assert.Throws<InvalidOperationException>(() => reader.GetFieldValue<string>("Key"));
+                    // Validate GetJsonValue at the same time...
+                    Assert.Throws<InvalidOperationException>(() => reader.GetJsonValue(0));
+                }
+            }
         }
 
+        [Fact]
+        public async Task GetFieldValue_AfterFinalRead()
+        {
+            using (var connection = _fixture.GetConnection())
+            {
+                var cmd = connection.CreateSelectCommand($"SELECT * FROM {_fixture.TableName} WHERE Key = 'k1'");
+                using (var reader = await cmd.ExecuteReaderAsync())
+                {
+                    Assert.True(await reader.ReadAsync());
+                    Assert.False(await reader.ReadAsync());
+                    Assert.Throws<InvalidOperationException>(() => reader.GetFieldValue<string>("Key"));
+                    // Validate GetJsonValue at the same time...
+                    Assert.Throws<InvalidOperationException>(() => reader.GetJsonValue(0));
+                }
+            }
+        }
+
+        [Fact]
+        public async Task GetFieldValue_AfterMoveNext()
+        {
+            using (var connection = _fixture.GetConnection())
+            {
+                var cmd = connection.CreateSelectCommand($"SELECT * FROM {_fixture.TableName} WHERE Key = 'k1'");
+                using (var reader = await cmd.ExecuteReaderAsync())
+                {
+                    Assert.True(await reader.ReadAsync());
+                    Assert.False(await reader.NextResultAsync());
+                    Assert.Throws<InvalidOperationException>(() => reader.GetFieldValue<string>("Key"));
+                    // Validate GetJsonValue at the same time...
+                    Assert.Throws<InvalidOperationException>(() => reader.GetJsonValue(0));
+                }
+            }
+        }
+
+        // [START spanner_test_query_select_one]
         [Fact]
         public async Task SelectOne()
         {
             long result = await ExecuteAsync<long>("SELECT 1");
             Assert.Equal(1, result);
         }
+        // [END spanner_test_query_select_one]
 
         [Fact]
         public async Task StructArray_AsDictionaryArray()
@@ -286,12 +322,13 @@ namespace Google.Cloud.Spanner.Data.IntegrationTests
             Assert.Equal(2, result.Count);
 
             Assert.Equal("a", result[0]["C1"]);
-            Assert.Equal(1L , result[0]["C2"]);
+            Assert.Equal(1L, result[0]["C2"]);
 
             Assert.Equal("b", result[1]["C1"]);
             Assert.Equal(2L, result[1]["C2"]);
         }
 
+        // [START spanner_test_query_array_struct]
         [Fact]
         public async Task StructArray_AsSpannerStructArray()
         {
@@ -309,6 +346,7 @@ namespace Google.Cloud.Spanner.Data.IntegrationTests
             AssertStructField("C1", SpannerDbType.String, "b", struct2[0]);
             AssertStructField("C2", SpannerDbType.Int64, 2L, struct2[1]);
         }
+        // [END spanner_test_query_array_struct]
 
         [Fact]
         public async Task StructArray_DuplicateAndEmptyFieldNames()
@@ -378,7 +416,7 @@ namespace Google.Cloud.Spanner.Data.IntegrationTests
         public async Task CommandTimeout()
         {
             using (var connection =
-                new SpannerConnection($"{_fixture.ConnectionString};{nameof(SpannerSettings.AllowImmediateTimeouts)}=true"))
+                new SpannerConnection($"{_fixture.ConnectionString};{nameof(SpannerConnectionStringBuilder.AllowImmediateTimeouts)}=true"))
             {
                 var cmd = connection.CreateSelectCommand("SELECT 1");
                 cmd.CommandTimeout = 0;
@@ -387,44 +425,139 @@ namespace Google.Cloud.Spanner.Data.IntegrationTests
             }
         }
 
+        // [START spanner_test_deadline_exceeded_fails]
         [Fact]
         public async Task TimeoutFromOptions()
         {
-            var oldTimeout = SpannerOptions.Instance.Timeout;
-            SpannerOptions.Instance.Timeout = 0;
-
-            try
+            var connectionStringBuilder = new SpannerConnectionStringBuilder(_fixture.ConnectionString)
             {
-                // We use a new instance of a credential to force create a new SpannerClient,
-                // which will cause the new options to be respected (Timeout in this case).
-                // Normally setting the timeout in SpannerOptions.Instance is only supported before creation of any client and cannot
-                // be changed due to the fact we pool clients.
-                var appDefaultCredentials = await GoogleCredential.GetApplicationDefaultAsync().ConfigureAwait(false);
-                if (appDefaultCredentials.IsCreateScopedRequired)
-                {
-                    appDefaultCredentials = appDefaultCredentials.CreateScoped(SpannerClient.DefaultScopes);
-                }
+                Timeout = 0,
+                AllowImmediateTimeouts = true,
+            };
 
-                long result = 0;
-                var e = await Assert.ThrowsAsync<SpannerException>(
-                    async () =>
-                    {
-                        string connectionString = $"{_fixture.ConnectionString};{nameof(SpannerSettings.AllowImmediateTimeouts)}=true";
-                        var channelCredentials = new CredentialWrapper(appDefaultCredentials).ToChannelCredentials();
-                        using (var connection = new SpannerConnection(connectionString, channelCredentials))
-                        {
-                            var cmd = connection.CreateSelectCommand("SELECT 1");
-                            Assert.Equal(0, cmd.CommandTimeout);
-                            result = await cmd.ExecuteScalarAsync<long>();
-                        }
-                    }).ConfigureAwait(false);
-
+            using (var connection = new SpannerConnection(connectionStringBuilder))
+            {
+                var cmd = connection.CreateSelectCommand("SELECT 1");
+                Assert.Equal(0, cmd.CommandTimeout);
+                var e = await Assert.ThrowsAsync<SpannerException>(() => cmd.ExecuteScalarAsync<long>());
                 SpannerAssert.IsTimeout(e);
-                Assert.Equal(0, result);
             }
-            finally
+        }
+        // [END spanner_test_deadline_exceeded_fails]
+
+        // [START spanner_test_query_bind_very_large_text_fails]
+        [Fact]
+        public async Task LargeRegexFailure()
+        {
+            using (var connection = _fixture.GetConnection())
             {
-                SpannerOptions.Instance.Timeout = oldTimeout;
+                using (var cmd = connection.CreateSelectCommand("SELECT REGEXP_CONTAINS(@value, @regexp)"))
+                {
+                    cmd.Parameters.Add("regexp", SpannerDbType.String, "(" + new string('x', 8000));
+                    cmd.Parameters.Add("value", SpannerDbType.String, "");
+                    using (var reader = await cmd.ExecuteReaderAsync())
+                    {
+                        var exception = await Assert.ThrowsAsync<SpannerException>(async () => await reader.ReadAsync());
+                        Assert.Equal(ErrorCode.OutOfRange, exception.ErrorCode);
+                        Assert.Contains("Cannot parse regular expression", exception.InnerException.Message);
+                    }
+                }
+            }
+        }
+        // [END spanner_test_query_bind_very_large_text_fails]
+
+        // [START spanner_test_query_select_unbound_param_fails]
+        [Fact]
+        public async Task UnboundParameter()
+        {
+            using (var connection = _fixture.GetConnection())
+            {
+                using (var cmd = connection.CreateSelectCommand("SELECT @p"))
+                {
+                    cmd.Parameters.Add("other", SpannerDbType.String, "hello");
+                    using (var reader = await cmd.ExecuteReaderAsync())
+                    {
+                        var exception = await Assert.ThrowsAsync<SpannerException>(async () => await reader.ReadAsync());
+                        Assert.Equal(ErrorCode.InvalidArgument, exception.ErrorCode);
+
+                    }
+                }
+            }
+        }
+        // [END spanner_test_query_select_unbound_param_fails]
+
+        [Fact]
+        public void HasRows_NoRows_HasRowsFirst()
+        {
+            using (var connection = _fixture.GetConnection())
+            {
+                var cmd = connection.CreateSelectCommand($"SELECT * FROM {_fixture.TableName} WHERE Key = @Key");
+                cmd.Parameters.Add("Key", SpannerDbType.String).Value = "not found";
+                using (var reader = cmd.ExecuteReader())
+                {
+                    Assert.False(reader.HasRows);
+                    Assert.False(reader.Read());
+                }
+            }
+        }
+
+        [Fact]
+        public void HasRows_NoRows_ReadFirst()
+        {
+            using (var connection = _fixture.GetConnection())
+            {
+                var cmd = connection.CreateSelectCommand($"SELECT * FROM {_fixture.TableName} WHERE Key = @Key");
+                cmd.Parameters.Add("Key", SpannerDbType.String).Value = "not found";
+                using (var reader = cmd.ExecuteReader())
+                {
+                    Assert.False(reader.Read());
+                    Assert.False(reader.HasRows);
+                }
+            }
+        }
+
+        [Fact]
+        public void HasRows_WithRows_HasRowsFirst()
+        {
+            using (var connection = _fixture.GetConnection())
+            {
+                var cmd = connection.CreateSelectCommand($"SELECT * FROM {_fixture.TableName} WHERE Key = @Key");
+                cmd.Parameters.Add("Key", SpannerDbType.String).Value = "k0";
+                using (var reader = cmd.ExecuteReader())
+                {
+                    Assert.True(reader.Read());
+                    Assert.True(reader.HasRows);
+                    Assert.False(reader.Read());
+                    // Even after we've exhausted the reader, we "know" it has rows
+                    Assert.True(reader.HasRows);
+
+                    // But after a call to NextResult, there are no more rows.
+                    Assert.False(reader.NextResult());
+                    Assert.False(reader.HasRows);
+                }
+            }
+
+        }
+
+        [Fact]
+        public void HasRows_WithRows_ReadFirst()
+        {
+            using (var connection = _fixture.GetConnection())
+            {
+                var cmd = connection.CreateSelectCommand($"SELECT * FROM {_fixture.TableName} WHERE Key = @Key");
+                cmd.Parameters.Add("Key", SpannerDbType.String).Value = "k0";
+                using (var reader = cmd.ExecuteReader())
+                {
+                    Assert.True(reader.HasRows);
+                    Assert.True(reader.Read());
+                    Assert.False(reader.Read());
+                    // Even after we've exhausted the reader, we "know" it has rows
+                    Assert.True(reader.HasRows);
+
+                    // But after a call to NextResult, there are no more rows.
+                    Assert.False(reader.NextResult());
+                    Assert.False(reader.HasRows);
+                }
             }
         }
     }

@@ -1,4 +1,4 @@
-// Copyright 2018 Google LLC
+// Copyright 2019 Google LLC
 //
 // Licensed under the Apache License, Version 2.0 (the "License");
 // you may not use this file except in compliance with the License.
@@ -18,7 +18,6 @@ namespace Google.Cloud.BigQuery.DataTransfer.V1.SmokeTests
 {
     using Google.Api.Gax;
     using Google.Api.Gax.Grpc;
-    using Google.Api.Gax.ResourceNames;
     using Google.Protobuf.WellKnownTypes;
     using Grpc.Core;
     using System;
@@ -45,7 +44,7 @@ namespace Google.Cloud.BigQuery.DataTransfer.V1.SmokeTests
             DataTransferServiceClient client = DataTransferServiceClient.Create();
 
             // Initialize request argument(s)
-            ParentNameOneof parent = ParentNameOneof.From(new ProjectName(projectId));
+            ParentNameOneof parent = ParentNameOneof.From(new LocationName(projectId, "us-central1"));
 
             // Call API method
             PagedEnumerable<ListDataSourcesResponse, DataSource> pagedResponse = client.ListDataSources(parent);

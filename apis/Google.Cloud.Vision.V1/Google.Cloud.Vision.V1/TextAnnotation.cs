@@ -25,8 +25,8 @@ namespace Google.Cloud.Vision.V1 {
       byte[] descriptorData = global::System.Convert.FromBase64String(
           string.Concat(
             "Cixnb29nbGUvY2xvdWQvdmlzaW9uL3YxL3RleHRfYW5ub3RhdGlvbi5wcm90",
-            "bxIWZ29vZ2xlLmNsb3VkLnZpc2lvbi52MRocZ29vZ2xlL2FwaS9hbm5vdGF0",
-            "aW9ucy5wcm90bxolZ29vZ2xlL2Nsb3VkL3Zpc2lvbi92MS9nZW9tZXRyeS5w",
+            "bxIWZ29vZ2xlLmNsb3VkLnZpc2lvbi52MRolZ29vZ2xlL2Nsb3VkL3Zpc2lv",
+            "bi92MS9nZW9tZXRyeS5wcm90bxocZ29vZ2xlL2FwaS9hbm5vdGF0aW9ucy5w",
             "cm90byKWBAoOVGV4dEFubm90YXRpb24SKwoFcGFnZXMYASADKAsyHC5nb29n",
             "bGUuY2xvdWQudmlzaW9uLnYxLlBhZ2USDAoEdGV4dBgCIAEoCRo9ChBEZXRl",
             "Y3RlZExhbmd1YWdlEhUKDWxhbmd1YWdlX2NvZGUYASABKAkSEgoKY29uZmlk",
@@ -69,7 +69,7 @@ namespace Google.Cloud.Vision.V1 {
             "by9nb29nbGVhcGlzL2Nsb3VkL3Zpc2lvbi92MTt2aXNpb274AQGiAgRHQ1ZO",
             "YgZwcm90bzM="));
       descriptor = pbr::FileDescriptor.FromGeneratedCode(descriptorData,
-          new pbr::FileDescriptor[] { global::Google.Api.AnnotationsReflection.Descriptor, global::Google.Cloud.Vision.V1.GeometryReflection.Descriptor, },
+          new pbr::FileDescriptor[] { global::Google.Cloud.Vision.V1.GeometryReflection.Descriptor, global::Google.Api.AnnotationsReflection.Descriptor, },
           new pbr::GeneratedClrTypeInfo(null, new pbr::GeneratedClrTypeInfo[] {
             new pbr::GeneratedClrTypeInfo(typeof(global::Google.Cloud.Vision.V1.TextAnnotation), global::Google.Cloud.Vision.V1.TextAnnotation.Parser, new[]{ "Pages", "Text" }, null, null, new pbr::GeneratedClrTypeInfo[] { new pbr::GeneratedClrTypeInfo(typeof(global::Google.Cloud.Vision.V1.TextAnnotation.Types.DetectedLanguage), global::Google.Cloud.Vision.V1.TextAnnotation.Types.DetectedLanguage.Parser, new[]{ "LanguageCode", "Confidence" }, null, null, null),
             new pbr::GeneratedClrTypeInfo(typeof(global::Google.Cloud.Vision.V1.TextAnnotation.Types.DetectedBreak), global::Google.Cloud.Vision.V1.TextAnnotation.Types.DetectedBreak.Parser, new[]{ "Type", "IsPrefix" }, null, new[]{ typeof(global::Google.Cloud.Vision.V1.TextAnnotation.Types.DetectedBreak.Types.BreakType) }, null),
@@ -572,7 +572,7 @@ namespace Google.Cloud.Vision.V1 {
                 _unknownFields = pb::UnknownFieldSet.MergeFieldFrom(_unknownFields, input);
                 break;
               case 8: {
-                type_ = (global::Google.Cloud.Vision.V1.TextAnnotation.Types.DetectedBreak.Types.BreakType) input.ReadEnum();
+                Type = (global::Google.Cloud.Vision.V1.TextAnnotation.Types.DetectedBreak.Types.BreakType) input.ReadEnum();
                 break;
               }
               case 16: {
@@ -755,7 +755,7 @@ namespace Google.Cloud.Vision.V1 {
           detectedLanguages_.Add(other.detectedLanguages_);
           if (other.detectedBreak_ != null) {
             if (detectedBreak_ == null) {
-              detectedBreak_ = new global::Google.Cloud.Vision.V1.TextAnnotation.Types.DetectedBreak();
+              DetectedBreak = new global::Google.Cloud.Vision.V1.TextAnnotation.Types.DetectedBreak();
             }
             DetectedBreak.MergeFrom(other.DetectedBreak);
           }
@@ -776,9 +776,9 @@ namespace Google.Cloud.Vision.V1 {
               }
               case 18: {
                 if (detectedBreak_ == null) {
-                  detectedBreak_ = new global::Google.Cloud.Vision.V1.TextAnnotation.Types.DetectedBreak();
+                  DetectedBreak = new global::Google.Cloud.Vision.V1.TextAnnotation.Types.DetectedBreak();
                 }
-                input.ReadMessage(detectedBreak_);
+                input.ReadMessage(DetectedBreak);
                 break;
               }
             }
@@ -997,7 +997,7 @@ namespace Google.Cloud.Vision.V1 {
       }
       if (other.property_ != null) {
         if (property_ == null) {
-          property_ = new global::Google.Cloud.Vision.V1.TextAnnotation.Types.TextProperty();
+          Property = new global::Google.Cloud.Vision.V1.TextAnnotation.Types.TextProperty();
         }
         Property.MergeFrom(other.Property);
       }
@@ -1024,9 +1024,9 @@ namespace Google.Cloud.Vision.V1 {
             break;
           case 10: {
             if (property_ == null) {
-              property_ = new global::Google.Cloud.Vision.V1.TextAnnotation.Types.TextProperty();
+              Property = new global::Google.Cloud.Vision.V1.TextAnnotation.Types.TextProperty();
             }
-            input.ReadMessage(property_);
+            input.ReadMessage(Property);
             break;
           }
           case 16: {
@@ -1129,7 +1129,7 @@ namespace Google.Cloud.Vision.V1 {
     ///         |    |
     ///         1----0
     ///
-    ///   and the vertice order will still be (0, 1, 2, 3).
+    ///   and the vertex order will still be (0, 1, 2, 3).
     /// </summary>
     [global::System.Diagnostics.DebuggerNonUserCodeAttribute]
     public global::Google.Cloud.Vision.V1.BoundingPoly BoundingBox {
@@ -1273,13 +1273,13 @@ namespace Google.Cloud.Vision.V1 {
       }
       if (other.property_ != null) {
         if (property_ == null) {
-          property_ = new global::Google.Cloud.Vision.V1.TextAnnotation.Types.TextProperty();
+          Property = new global::Google.Cloud.Vision.V1.TextAnnotation.Types.TextProperty();
         }
         Property.MergeFrom(other.Property);
       }
       if (other.boundingBox_ != null) {
         if (boundingBox_ == null) {
-          boundingBox_ = new global::Google.Cloud.Vision.V1.BoundingPoly();
+          BoundingBox = new global::Google.Cloud.Vision.V1.BoundingPoly();
         }
         BoundingBox.MergeFrom(other.BoundingBox);
       }
@@ -1303,16 +1303,16 @@ namespace Google.Cloud.Vision.V1 {
             break;
           case 10: {
             if (property_ == null) {
-              property_ = new global::Google.Cloud.Vision.V1.TextAnnotation.Types.TextProperty();
+              Property = new global::Google.Cloud.Vision.V1.TextAnnotation.Types.TextProperty();
             }
-            input.ReadMessage(property_);
+            input.ReadMessage(Property);
             break;
           }
           case 18: {
             if (boundingBox_ == null) {
-              boundingBox_ = new global::Google.Cloud.Vision.V1.BoundingPoly();
+              BoundingBox = new global::Google.Cloud.Vision.V1.BoundingPoly();
             }
-            input.ReadMessage(boundingBox_);
+            input.ReadMessage(BoundingBox);
             break;
           }
           case 26: {
@@ -1320,7 +1320,7 @@ namespace Google.Cloud.Vision.V1 {
             break;
           }
           case 32: {
-            blockType_ = (global::Google.Cloud.Vision.V1.Block.Types.BlockType) input.ReadEnum();
+            BlockType = (global::Google.Cloud.Vision.V1.Block.Types.BlockType) input.ReadEnum();
             break;
           }
           case 45: {
@@ -1442,7 +1442,7 @@ namespace Google.Cloud.Vision.V1 {
     ///      2----3
     ///      |    |
     ///      1----0
-    ///   and the vertice order will still be (0, 1, 2, 3).
+    ///   and the vertex order will still be (0, 1, 2, 3).
     /// </summary>
     [global::System.Diagnostics.DebuggerNonUserCodeAttribute]
     public global::Google.Cloud.Vision.V1.BoundingPoly BoundingBox {
@@ -1458,7 +1458,7 @@ namespace Google.Cloud.Vision.V1 {
         = pb::FieldCodec.ForMessage(26, global::Google.Cloud.Vision.V1.Word.Parser);
     private readonly pbc::RepeatedField<global::Google.Cloud.Vision.V1.Word> words_ = new pbc::RepeatedField<global::Google.Cloud.Vision.V1.Word>();
     /// <summary>
-    /// List of words in this paragraph.
+    /// List of all words in this paragraph.
     /// </summary>
     [global::System.Diagnostics.DebuggerNonUserCodeAttribute]
     public pbc::RepeatedField<global::Google.Cloud.Vision.V1.Word> Words {
@@ -1563,13 +1563,13 @@ namespace Google.Cloud.Vision.V1 {
       }
       if (other.property_ != null) {
         if (property_ == null) {
-          property_ = new global::Google.Cloud.Vision.V1.TextAnnotation.Types.TextProperty();
+          Property = new global::Google.Cloud.Vision.V1.TextAnnotation.Types.TextProperty();
         }
         Property.MergeFrom(other.Property);
       }
       if (other.boundingBox_ != null) {
         if (boundingBox_ == null) {
-          boundingBox_ = new global::Google.Cloud.Vision.V1.BoundingPoly();
+          BoundingBox = new global::Google.Cloud.Vision.V1.BoundingPoly();
         }
         BoundingBox.MergeFrom(other.BoundingBox);
       }
@@ -1590,16 +1590,16 @@ namespace Google.Cloud.Vision.V1 {
             break;
           case 10: {
             if (property_ == null) {
-              property_ = new global::Google.Cloud.Vision.V1.TextAnnotation.Types.TextProperty();
+              Property = new global::Google.Cloud.Vision.V1.TextAnnotation.Types.TextProperty();
             }
-            input.ReadMessage(property_);
+            input.ReadMessage(Property);
             break;
           }
           case 18: {
             if (boundingBox_ == null) {
-              boundingBox_ = new global::Google.Cloud.Vision.V1.BoundingPoly();
+              BoundingBox = new global::Google.Cloud.Vision.V1.BoundingPoly();
             }
-            input.ReadMessage(boundingBox_);
+            input.ReadMessage(BoundingBox);
             break;
           }
           case 26: {
@@ -1688,7 +1688,7 @@ namespace Google.Cloud.Vision.V1 {
     ///      2----3
     ///      |    |
     ///      1----0
-    ///   and the vertice order will still be (0, 1, 2, 3).
+    ///   and the vertex order will still be (0, 1, 2, 3).
     /// </summary>
     [global::System.Diagnostics.DebuggerNonUserCodeAttribute]
     public global::Google.Cloud.Vision.V1.BoundingPoly BoundingBox {
@@ -1810,13 +1810,13 @@ namespace Google.Cloud.Vision.V1 {
       }
       if (other.property_ != null) {
         if (property_ == null) {
-          property_ = new global::Google.Cloud.Vision.V1.TextAnnotation.Types.TextProperty();
+          Property = new global::Google.Cloud.Vision.V1.TextAnnotation.Types.TextProperty();
         }
         Property.MergeFrom(other.Property);
       }
       if (other.boundingBox_ != null) {
         if (boundingBox_ == null) {
-          boundingBox_ = new global::Google.Cloud.Vision.V1.BoundingPoly();
+          BoundingBox = new global::Google.Cloud.Vision.V1.BoundingPoly();
         }
         BoundingBox.MergeFrom(other.BoundingBox);
       }
@@ -1837,16 +1837,16 @@ namespace Google.Cloud.Vision.V1 {
             break;
           case 10: {
             if (property_ == null) {
-              property_ = new global::Google.Cloud.Vision.V1.TextAnnotation.Types.TextProperty();
+              Property = new global::Google.Cloud.Vision.V1.TextAnnotation.Types.TextProperty();
             }
-            input.ReadMessage(property_);
+            input.ReadMessage(Property);
             break;
           }
           case 18: {
             if (boundingBox_ == null) {
-              boundingBox_ = new global::Google.Cloud.Vision.V1.BoundingPoly();
+              BoundingBox = new global::Google.Cloud.Vision.V1.BoundingPoly();
             }
-            input.ReadMessage(boundingBox_);
+            input.ReadMessage(BoundingBox);
             break;
           }
           case 26: {
@@ -1935,7 +1935,7 @@ namespace Google.Cloud.Vision.V1 {
     ///      2----3
     ///      |    |
     ///      1----0
-    ///   and the vertice order will still be (0, 1, 2, 3).
+    ///   and the vertex order will still be (0, 1, 2, 3).
     /// </summary>
     [global::System.Diagnostics.DebuggerNonUserCodeAttribute]
     public global::Google.Cloud.Vision.V1.BoundingPoly BoundingBox {
@@ -2062,13 +2062,13 @@ namespace Google.Cloud.Vision.V1 {
       }
       if (other.property_ != null) {
         if (property_ == null) {
-          property_ = new global::Google.Cloud.Vision.V1.TextAnnotation.Types.TextProperty();
+          Property = new global::Google.Cloud.Vision.V1.TextAnnotation.Types.TextProperty();
         }
         Property.MergeFrom(other.Property);
       }
       if (other.boundingBox_ != null) {
         if (boundingBox_ == null) {
-          boundingBox_ = new global::Google.Cloud.Vision.V1.BoundingPoly();
+          BoundingBox = new global::Google.Cloud.Vision.V1.BoundingPoly();
         }
         BoundingBox.MergeFrom(other.BoundingBox);
       }
@@ -2091,16 +2091,16 @@ namespace Google.Cloud.Vision.V1 {
             break;
           case 10: {
             if (property_ == null) {
-              property_ = new global::Google.Cloud.Vision.V1.TextAnnotation.Types.TextProperty();
+              Property = new global::Google.Cloud.Vision.V1.TextAnnotation.Types.TextProperty();
             }
-            input.ReadMessage(property_);
+            input.ReadMessage(Property);
             break;
           }
           case 18: {
             if (boundingBox_ == null) {
-              boundingBox_ = new global::Google.Cloud.Vision.V1.BoundingPoly();
+              BoundingBox = new global::Google.Cloud.Vision.V1.BoundingPoly();
             }
-            input.ReadMessage(boundingBox_);
+            input.ReadMessage(BoundingBox);
             break;
           }
           case 26: {

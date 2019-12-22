@@ -14,7 +14,10 @@
 
 
 using Google.Api.Gax;
+using Google.Cloud.Firestore.V1;
 using System;
+using System.Collections.Generic;
+using System.Linq;
 using System.Threading;
 using System.Threading.Tasks;
 
@@ -42,15 +45,10 @@ namespace Google.Cloud.Firestore
         /// </summary>
         public DocumentReference Parent { get; }
 
-        /// <inheritdoc />
-        public override FirestoreDb Database { get; }
-
-        internal CollectionReference(FirestoreDb database, DocumentReference parent, string id)
+        internal CollectionReference(FirestoreDb database, DocumentReference parent, string id) : base(database, parent, id)
         {
-            Database = GaxPreconditions.CheckNotNull(database, nameof(database));
-            GaxPreconditions.CheckNotNull(id, nameof(id));
             Parent = parent; // May be null
-            Id = id;
+            Id = GaxPreconditions.CheckNotNull(id, nameof(id));
             Path = $"{ParentPath}/{Id}";
         }
         
@@ -95,6 +93,23 @@ namespace Google.Cloud.Firestore
             var docRef = Document();
             var result = await docRef.CreateAsync(documentData, cancellationToken).ConfigureAwait(false);
             return docRef;
+        }
+
+        /// <summary>
+        /// Lists the documents in this collection. The results include documents which don't exist in their own right, but which have
+        /// nested documents which do exist.
+        /// </summary>
+        /// <returns>A lazily-iterated sequence of document references within this collection.</returns>
+        public IAsyncEnumerable<DocumentReference> ListDocumentsAsync()
+        {
+            var request = new ListDocumentsRequest
+            {
+                CollectionId = Id,
+                Parent = ParentPath,
+                ShowMissing = true,
+                Mask = new DocumentMask()
+            };
+            return Database.Client.ListDocumentsAsync(request).Select(doc => Database.GetDocumentReferenceFromResourceName(doc.Name));
         }
 
         /// <inheritdoc />

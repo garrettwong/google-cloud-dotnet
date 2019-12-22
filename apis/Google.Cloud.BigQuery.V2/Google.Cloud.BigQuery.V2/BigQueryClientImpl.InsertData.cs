@@ -127,7 +127,6 @@ namespace Google.Cloud.BigQuery.V2
         {
             var job = CreateJob(new JobConfiguration { Load = loadConfiguration }, options);
             var mediaUpload = new CustomMediaUpload(Service, job, job.JobReference.ProjectId, input, contentType);
-            mediaUpload.Options.ModifySessionInitiationRequest += _versionHeaderAction;
             var finalProgress = mediaUpload.Upload();
             if (finalProgress.Exception != null)
             {
@@ -145,13 +144,14 @@ namespace Google.Cloud.BigQuery.V2
                 return;
             }
             var response = request.Execute();
-            HandleInsertAllResponse(response);
+            HandleInsertAllResponse(response, options);
         }
 
-        private void HandleInsertAllResponse(TableDataInsertAllResponse response)
+        private void HandleInsertAllResponse(TableDataInsertAllResponse response, InsertOptions options)
         {
             var errors = response.InsertErrors;
-            if (errors?.Count > 0)
+            bool shouldThrow = options == null || !options.SuppressInsertErrors;
+            if (errors?.Count > 0 && shouldThrow)
             {
                 var exception = new GoogleApiException(Service.Name, "Error inserting data")
                 {
@@ -272,7 +272,6 @@ namespace Google.Cloud.BigQuery.V2
         {
             var job = CreateJob(new JobConfiguration { Load = loadConfiguration }, options);
             var mediaUpload = new CustomMediaUpload(Service, job, job.JobReference.ProjectId, input, contentType);
-            mediaUpload.Options.ModifySessionInitiationRequest += _versionHeaderAction;
             var finalProgress = await mediaUpload.UploadAsync(cancellationToken).ConfigureAwait(false);
             if (finalProgress.Exception != null)
             {
@@ -291,7 +290,7 @@ namespace Google.Cloud.BigQuery.V2
                 return;
             }
             var response = await request.ExecuteAsync(cancellationToken).ConfigureAwait(false);
-            HandleInsertAllResponse(response);
+            HandleInsertAllResponse(response, options);
         }
 
         /// <summary>
@@ -325,7 +324,7 @@ namespace Google.Cloud.BigQuery.V2
             var insertRows = rows.Select(row =>
             {
                 GaxPreconditions.CheckArgument(row != null, nameof(rows), "Entries must not be null");
-                return row.ToRowsData();
+                return row.ToRowsData(options?.AllowEmptyInsertIds ?? false);
             }).ToList();
             var body = new TableDataInsertAllRequest
             {
@@ -335,8 +334,10 @@ namespace Google.Cloud.BigQuery.V2
             hasRows = body.Rows.Any();
             options?.ModifyRequest(body);
             var request = Service.Tabledata.InsertAll(body, tableReference.ProjectId, tableReference.DatasetId, tableReference.TableId);
-            request.ModifyRequest += _versionHeaderAction;
-            // We ensure that every row has an insert ID, so we can always retry.
+            // Even though empty InsertIds might be allowed, this can be retried as per guidance from
+            // the API team. Previous de-duplicating was on a best effort basis anyways and client code
+            // needs to explicitly allow for empty InsertId and should be aware that doing so will be at
+            // the expense of de-duplication efforts.
             RetryHandler.MarkAsRetriable(request);
             return request;
         }

@@ -14,8 +14,7 @@
 
 using Google.Api.Gax;
 using Google.Api.Gax.Grpc;
-using Google.Apis.Auth.OAuth2;
-using Grpc.Auth;
+using Google.Api.Gax.Grpc.Gcp;
 using Grpc.Core;
 using Grpc.Gcp;
 using System;
@@ -37,8 +36,8 @@ namespace Google.Cloud.Bigtable.V2
         /// The default <c>BigtableClient.MutateRows</c> and <c>BigtableClient.MutateRowsAsync</c>
         /// <see cref="RetrySettings"/> are:
         /// <list type="bullet">
-        /// <item><description>Initial retry delay: 100 milliseconds</description></item>
-        /// <item><description>Retry delay multiplier: 1.3</description></item>
+        /// <item><description>Initial retry delay: 10 milliseconds</description></item>
+        /// <item><description>Retry delay multiplier: 2.0</description></item>
         /// <item><description>Retry maximum delay: 60000 milliseconds</description></item>
         /// <item><description>Initial timeout: 20000 milliseconds</description></item>
         /// <item><description>Timeout multiplier: 1.0</description></item>
@@ -54,12 +53,12 @@ namespace Google.Cloud.Bigtable.V2
         /// <seealso cref="MutateRowsSettings"/>
         public RetrySettings MutateRowsRetrySettings { get; set; } =
             new RetrySettings(
-                retryBackoff: GetDefaultRetryBackoff(),
-                timeoutBackoff: GetDefaultTimeoutBackoff(),
+                retryBackoff: new BackoffSettings(delay: TimeSpan.FromMilliseconds(10), maxDelay: TimeSpan.FromMilliseconds(60000), delayMultiplier: 2.0),
+                timeoutBackoff: new BackoffSettings(delay: TimeSpan.FromMilliseconds(20000), maxDelay: TimeSpan.FromMilliseconds(20000), delayMultiplier: 1.0),
                 totalExpiration: Expiration.FromTimeout(TimeSpan.FromMilliseconds(600000)),
-                retryFilter: IdempotentRetryFilter
+                retryFilter: RetrySettings.FilterForStatusCodes(StatusCode.DeadlineExceeded, StatusCode.Unavailable)
             );
-
+        
         /// <summary>
         /// <see cref="RetrySettings"/> for calls to <c>BigtableClient.ReadRows</c> when the stream
         /// of results ends prematurely.
@@ -67,8 +66,8 @@ namespace Google.Cloud.Bigtable.V2
         /// <remarks>
         /// The default <c>BigtableClient.ReadRows</c> <see cref="RetrySettings"/> are:
         /// <list type="bullet">
-        /// <item><description>Initial retry delay: 100 milliseconds</description></item>
-        /// <item><description>Retry delay multiplier: 1.3</description></item>
+        /// <item><description>Initial retry delay: 10 milliseconds</description></item>
+        /// <item><description>Retry delay multiplier: 2.0</description></item>
         /// <item><description>Retry maximum delay: 60000 milliseconds</description></item>
         /// <item><description>Initial timeout: 20000 milliseconds</description></item>
         /// <item><description>Timeout multiplier: 1.0</description></item>
@@ -84,10 +83,10 @@ namespace Google.Cloud.Bigtable.V2
         /// <seealso cref="ReadRowsSettings"/>
         public RetrySettings ReadRowsRetrySettings { get; set; } =
             new RetrySettings(
-                retryBackoff: GetDefaultRetryBackoff(),
-                timeoutBackoff: GetDefaultTimeoutBackoff(),
+                retryBackoff: new BackoffSettings(delay: TimeSpan.FromMilliseconds(10), maxDelay: TimeSpan.FromMilliseconds(60000), delayMultiplier: 2.0),
+                timeoutBackoff: new BackoffSettings(delay: TimeSpan.FromMilliseconds(20000), maxDelay: TimeSpan.FromMilliseconds(20000), delayMultiplier: 1.0),
                 totalExpiration: Expiration.FromTimeout(TimeSpan.FromMilliseconds(600000)),
-                retryFilter: IdempotentRetryFilter
+                retryFilter: RetrySettings.FilterForStatusCodes(StatusCode.DeadlineExceeded, StatusCode.Unavailable)
             );
 
         /// <summary>
@@ -194,6 +193,74 @@ namespace Google.Cloud.Bigtable.V2
                 new ChannelOption(GcpCallInvoker.ApiConfigChannelArg, apiConfig.ToString())
             };
         }
+    }
+
+    public sealed partial class BigtableServiceApiClientBuilder : ClientBuilderBase<BigtableServiceApiClient>
+    {
+        /// <summary>
+        /// Creates a new instance with no settings.
+        /// </summary>
+        public BigtableServiceApiClientBuilder()
+        {
+        }
+
+        internal BigtableServiceApiClientBuilder(BigtableClientBuilder builder)
+        {
+            Settings = builder.Settings;
+            CopyCommonSettings(builder);
+        }
+
+        /// <inheritdoc />
+        protected override CallInvoker CreateCallInvoker()
+        {
+            if (CallInvoker != null)
+            {
+                return CallInvoker;
+            }
+            var endpoint = Endpoint ?? GetDefaultEndpoint();
+            var channelOptions = Settings.CreateChannelOptions().Concat(GetChannelOptions()).ToList();
+            // Although *we* never allow the use of the channel pool, we can use the call invoker pool if and
+            // only if the base class thinks it can use the channel pool - i.e. it's only using default credentials.
+            if (base.CanUseChannelPool)
+            {
+                return CallInvokerPool.GetCallInvoker(endpoint, channelOptions);
+            }
+            else
+            {
+                var credentials = GetChannelCredentials();
+                return new GcpCallInvoker(endpoint.ToString(), credentials, channelOptions);
+            }
+        }
+
+        /// <inheritdoc />
+        protected override async Task<CallInvoker> CreateCallInvokerAsync(CancellationToken cancellationToken)
+        {
+            if (CallInvoker != null)
+            {
+                return CallInvoker;
+            }
+            var endpoint = Endpoint ?? GetDefaultEndpoint();
+            var channelOptions = Settings.CreateChannelOptions().Concat(GetChannelOptions()).ToList();
+            // Although *we* never allow the use of the channel pool, we can use the call invoker pool if and
+            // only if the base class thinks it can use the channel pool - i.e. it's only using default credentials.
+            if (base.CanUseChannelPool)
+            {
+                return await CallInvokerPool.GetCallInvokerAsync(endpoint, channelOptions).ConfigureAwait(false);
+            }
+            else
+            {
+                var credentials = GetChannelCredentials();
+                return new GcpCallInvoker(endpoint.ToString(), credentials, channelOptions);
+            }
+        }
+
+        /// <inheritdoc />
+        protected override bool CanUseChannelPool => false;
+
+        /// <inheritdoc />
+        protected override ChannelPool GetChannelPool() => throw new NotImplementedException();
+
+        private GcpCallInvokerPool CallInvokerPool => BigtableServiceApiClient.CallInvokerPool;
     }
 
     public partial class BigtableServiceApiClient

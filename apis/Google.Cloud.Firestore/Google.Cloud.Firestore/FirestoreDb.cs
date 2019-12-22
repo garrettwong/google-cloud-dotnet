@@ -14,7 +14,7 @@
 
 using Google.Api.Gax;
 using Google.Api.Gax.Grpc;
-using Google.Cloud.Firestore.V1Beta1;
+using Google.Cloud.Firestore.V1;
 using Google.Protobuf;
 using Grpc.Core;
 using System;
@@ -25,10 +25,9 @@ using System.Threading.Tasks;
 
 namespace Google.Cloud.Firestore
 {
-    // TODO: Make this abstract with all the trimmings when we have actual RPCs to issue.
-
     /// <summary>
-    /// A Firestore database
+    /// A Firestore database. Create instances using the static <see cref="Create(string, FirestoreClient)"/> and <see cref="CreateAsync(string, FirestoreClient)"/>
+    /// methods, or using a <see cref="FirestoreDbBuilder"/>.
     /// </summary>
     public sealed class FirestoreDb
     {
@@ -44,10 +43,11 @@ namespace Google.Cloud.Firestore
         /// </summary>
         public string ProjectId { get; }
 
+        // Note: currently internal as only the default database ID is supported.
         /// <summary>
         /// The database ID associated with this database.
         /// </summary>
-        public string DatabaseId { get; }
+        internal string DatabaseId { get; }
 
         /// <summary>
         /// The resource name of the database, in the form "projects/{project_id}/databases/{database_id}".
@@ -60,8 +60,12 @@ namespace Google.Cloud.Firestore
         internal string DocumentsPath { get; }
 
         private Action<string> WarningLogger { get; }
+        
+        internal SerializationContext SerializationContext { get; }
 
-        private FirestoreDb(string projectId, string databaseId, FirestoreClient client, Action<string> warningLogger)
+        private readonly CallSettings _batchGetCallSettings;
+
+        private FirestoreDb(string projectId, string databaseId, FirestoreClient client, Action<string> warningLogger, SerializationContext serializationContext)
         {
             ProjectId = GaxPreconditions.CheckNotNull(projectId, nameof(projectId));
             DatabaseId = GaxPreconditions.CheckNotNull(databaseId, nameof(databaseId));
@@ -70,53 +74,81 @@ namespace Google.Cloud.Firestore
             RootPath = $"projects/{ProjectId}/databases/{DatabaseId}";
             DocumentsPath = $"{RootPath}/documents";
             WarningLogger = warningLogger;
+
+            // TODO: Validate these settings, and potentially make them configurable
+            _batchGetCallSettings = CallSettings.FromCallTiming(CallTiming.FromRetry(new RetrySettings(
+                retryBackoff: new BackoffSettings(TimeSpan.FromMilliseconds(500), TimeSpan.FromSeconds(5), 2.0),
+                timeoutBackoff: new BackoffSettings(TimeSpan.FromMinutes(1), TimeSpan.FromMinutes(3), 2.0),
+                Expiration.FromTimeout(TimeSpan.FromMinutes(10)),
+                RetrySettings.FilterForStatusCodes(StatusCode.Unavailable))));
+            SerializationContext = GaxPreconditions.CheckNotNull(serializationContext, nameof(serializationContext));
         }
 
-        /// <summary>
-        /// Creates an instance for the specified project and database, using the specified <see cref="FirestoreClient"/>
-        /// for RPC operations.
-        /// </summary>
-        /// <param name="projectId">The ID of the Google Cloud Platform project that contains the database. May be null, in which case
-        /// the project will be automatically detected if possible.</param>
-        /// <param name="databaseId">The ID of the database within the project. May be null, in which case the default database will be used.</param>
-        /// <param name="client">The client to use for RPC operations. May be null, in which case a client will be created with default credentials.</param>
-        /// <returns>A new instance.</returns>
-        public static FirestoreDb Create(string projectId = null, string databaseId = null, FirestoreClient client = null) =>
-            new FirestoreDb(
-                projectId ?? Platform.Instance().ProjectId,
-                databaseId ?? DefaultDatabaseId,
-                client ?? FirestoreClient.Create(),
-                null);
+        // Internally, we support non-default databases. The public Create and CreateAsync methods only support the default database,
+        // as that's all the server supports at the moment. When that changes, we'll want to support non-default databases publicly,
+        // but will probably need a different method name in order to do so, to avoid it being a breaking change.
+        // We don't have a CreateAsync method accepting a database ID, as we don't use that anywhere for testing.
 
         /// <summary>
-        /// Asynchronously creates an instance for the specified project and database, using the specified <see cref="FirestoreClient"/>
-        /// for RPC operations.
+        /// Creates an instance for the specified project, using the specified <see cref="FirestoreClient"/> for RPC operations.
         /// </summary>
         /// <param name="projectId">The ID of the Google Cloud Platform project that contains the database. May be null, in which case
         /// the project will be automatically detected if possible.</param>
-        /// <param name="databaseId">The ID of the database within the project. May be null, in which case the default database will be used.</param>
+        /// <param name="client">The client to use for RPC operations. May be null, in which case a client will be created with default credentials.</param>
+        /// <returns>A new instance.</returns>
+        public static FirestoreDb Create(string projectId = null, FirestoreClient client = null) =>
+            Create(projectId ?? Platform.Instance().ProjectId, null, client ?? FirestoreClient.Create(), null);
+
+        /// <summary>
+        /// Asynchronously creates an instance for the specified project, using the specified <see cref="FirestoreClient"/> for RPC operations.
+        /// </summary>
+        /// <param name="projectId">The ID of the Google Cloud Platform project that contains the database. May be null, in which case
+        /// the project will be automatically detected if possible.</param>
         /// <param name="client">The client to use for RPC operations. May be null, in which case a client will be created with default credentials.</param>
         /// <returns>A task representing the asynchronous operation. When complete, the result of the task is the new instance.</returns>
-        public static async Task<FirestoreDb> CreateAsync(string projectId = null, string databaseId = null, FirestoreClient client = null) =>
-            new FirestoreDb(
+        public static async Task<FirestoreDb> CreateAsync(string projectId = null, FirestoreClient client = null) =>
+            Create(
                 projectId ?? (await Platform.InstanceAsync().ConfigureAwait(false)).ProjectId,
-                databaseId ?? DefaultDatabaseId,
+                DefaultDatabaseId,
                 client ?? await FirestoreClient.CreateAsync().ConfigureAwait(false),
                 null
             );
 
         /// <summary>
+        /// Creates an instance for the specified project and database, using the specified <see cref="FirestoreClient"/>
+        /// for RPC operations.
+        /// Note: this method should never be made public, as it is expected to grow as additional state is required in the client.
+        /// Additional parameters should be made optional, for source (but not binary) compatibility with tests.
+        /// This method does not perform any blocking operations, so may be used from async methods.
+        /// </summary>
+        /// <param name="projectId">The ID of the Google Cloud Platform project that contains the database. Must not be null.</param>
+        /// <param name="databaseId">The ID of the database within the project. May be null, in which case the default database will be used.</param>
+        /// <param name="client">The client to use for RPC operations. Must not be null.</param>
+        /// <param name="warningLogger">The warning logger to use, if any. May be null.</param>
+        /// <param name="converterRegistry">A registry of custom converters. May be null.</param>
+        /// <returns>A new instance.</returns>
+        internal static FirestoreDb Create(
+            // Required parameters
+            string projectId, string databaseId, FirestoreClient client,
+            // Optional parameters
+            Action<string> warningLogger = null,
+            ConverterRegistry converterRegistry = null) =>
+            // Validation is performed in the constructor.
+            new FirestoreDb(
+                projectId,
+                databaseId ?? DefaultDatabaseId,
+                client,
+                warningLogger,
+                new SerializationContext(converterRegistry));
+
+        /// <summary>
         /// Returns a new <see cref="FirestoreDb"/> with the same project, database and client as this one,
         /// but the given writer for warning logs.
         /// </summary>
-        /// <remarks>
-        /// This method is experimental, in lieu of a more sophisticated logging. It is likely to be removed before
-        /// this library becomes GA.
-        /// </remarks>
         /// <param name="warningLogger">The logger for warnings. May be null.</param>
         /// <returns>A new <see cref="FirestoreDb"/> based on this one, with the given warning logger.</returns>
         public FirestoreDb WithWarningLogger(Action<string> warningLogger) =>
-            new FirestoreDb(ProjectId, DatabaseId, Client, warningLogger);
+            new FirestoreDb(ProjectId, DatabaseId, Client, warningLogger, SerializationContext);
 
         internal void LogWarning(string message) => WarningLogger?.Invoke(message);
 
@@ -159,6 +191,21 @@ namespace Google.Cloud.Firestore
         }
 
         /// <summary>
+        /// Creates and returns a new <see cref="Query"/> that includes all documents in the
+        /// database that are contained in a collection or subcollection with the
+        /// given collection ID.
+        /// </summary>
+        /// <param name="collectionId">Identifies the collections to query over.
+        /// Every collection or subcollection with this ID as the last segment
+        /// of its path will be included. Must not contain a slash.</param>
+        /// <returns>The created <see cref="Query"/>.</returns>
+        public Query CollectionGroup(string collectionId)
+        {
+            PathUtilities.ValidateId(collectionId, nameof(collectionId));
+            return Query.ForCollectionGroup(this, collectionId);
+        }
+
+        /// <summary>
         /// Creates a write batch, which can be used to commit multiple mutations atomically.
         /// </summary>
         /// <returns>A write batch for this database.</returns>
@@ -186,14 +233,29 @@ namespace Google.Cloud.Firestore
         /// <param name="cancellationToken">A cancellation token for the operation.</param>
         /// <returns>The document snapshots, in the same order as <paramref name="documents"/>.</returns>
         public Task<IList<DocumentSnapshot>> GetAllSnapshotsAsync(IEnumerable<DocumentReference> documents, CancellationToken cancellationToken = default) =>
-            GetAllSnapshotsAsync(documents, null, cancellationToken);
+            GetAllSnapshotsAsync(documents, null, null, cancellationToken);
 
-        internal async Task<IList<DocumentSnapshot>> GetAllSnapshotsAsync(IEnumerable<DocumentReference> documents, ByteString transactionId, CancellationToken cancellationToken)
+        /// <summary>
+        /// Fetches document snapshots from the server, potentially limiting the fields returned.
+        /// </summary>
+        /// <remarks>
+        /// Any documents which are missing are represented in the returned list by a <see cref="DocumentSnapshot"/>
+        /// with <see cref="DocumentSnapshot.Exists"/> value of <c>false</c>.
+        /// </remarks>
+        /// <param name="documents">The document references to fetch. Must not be null, or contain null references.</param>
+        /// <param name="fieldMask">The field mask to use to restrict which fields are retrieved. May be null, in which
+        /// case no field mask is applied, and the complete documents are retrieved.</param>
+        /// <param name="cancellationToken">A cancellation token for the operation.</param>
+        /// <returns>The document snapshots, in the same order as <paramref name="documents"/>.</returns>
+        public Task<IList<DocumentSnapshot>> GetAllSnapshotsAsync(IEnumerable<DocumentReference> documents, FieldMask fieldMask, CancellationToken cancellationToken = default) =>
+            GetAllSnapshotsAsync(documents, null, fieldMask, cancellationToken);
+
+        internal async Task<IList<DocumentSnapshot>> GetAllSnapshotsAsync(IEnumerable<DocumentReference> documents, ByteString transactionId, FieldMask fieldMask, CancellationToken cancellationToken)
         {
             // Check for null here, but let the underlying method check for null elements.
             // We're just trying to make sure we don't evaluate it differently later.
             var list = GaxPreconditions.CheckNotNull(documents, nameof(documents)).ToList();
-            var unordered = await GetDocumentSnapshotsAsync(list, transactionId, cancellationToken).ConfigureAwait(false);
+            var unordered = await GetDocumentSnapshotsAsync(list, transactionId, fieldMask, cancellationToken).ConfigureAwait(false);
             var map = unordered.ToDictionary(snapshot => snapshot.Reference);
             return list.Select(docRef =>
             {
@@ -210,41 +272,63 @@ namespace Google.Cloud.Firestore
         /// </summary>
         /// <param name="documents">The document references to fetch. Must not be null, or contain null references.</param>
         /// <param name="transactionId">A transaction ID, or null to not include any transaction ID.</param>
+        /// <param name="fieldMask">The field mask to use to restrict which fields are retrieved. May be null, in which
+        /// case no field mask is applied, and the complete documents are retrieved.</param>
         /// <param name="cancellationToken">A cancellation token for the operation.</param>
         /// <returns>The document snapshots, in the order they are provided in the response. (This may not be the order of <paramref name="documents"/>.)</returns>
-        internal async Task<IList<DocumentSnapshot>> GetDocumentSnapshotsAsync(IEnumerable<DocumentReference> documents, ByteString transactionId, CancellationToken cancellationToken)
+        internal async Task<IList<DocumentSnapshot>> GetDocumentSnapshotsAsync(IEnumerable<DocumentReference> documents, ByteString transactionId, FieldMask fieldMask, CancellationToken cancellationToken)
         {
             GaxPreconditions.CheckNotNull(documents, nameof(documents));
-            var request = new BatchGetDocumentsRequest { Database = RootPath, Documents = { documents.Select(ExtractPath) } };
+            var request = new BatchGetDocumentsRequest
+            {
+                Database = RootPath,
+                Documents = { documents.Select(ExtractPath) },
+                Mask = fieldMask?.ToProto()
+            };
             if (transactionId != null)
             {
                 request.Transaction = transactionId;
             }
-            var stream = Client.BatchGetDocuments(request, CallSettings.FromCancellationToken(cancellationToken));
-            using (var responseStream = stream.ResponseStream)
-            {
-                List<DocumentSnapshot> snapshots = new List<DocumentSnapshot>();
 
-                // Note: no need to worry about passing the cancellation token in here, as we've passed it into the overall call.
-                // If the token is cancelled, the call will be aborted.
-                while (await responseStream.MoveNext().ConfigureAwait(false))
+            var clock = Client.Settings.Clock ?? SystemClock.Instance;
+            var scheduler = Client.Settings.Scheduler ?? SystemScheduler.Instance;
+            var callSettings = _batchGetCallSettings.WithCancellationToken(cancellationToken);
+
+            // This is the function that we'll retry. We can't use the built-in retry functionality, because it's not a unary gRPC call.
+            // (We could potentially simulate a unary call, but it would be a little odd to do so.)
+            // Note that we perform a "whole request" retry. In theory we could collect some documents, then see an error, and only
+            // request the remaining documents. Given how rarely we retry anyway in practice, that's probably not worth doing.
+            Func<BatchGetDocumentsRequest, CallSettings, Task<List<DocumentSnapshot>>> function = async (req, settings) =>
+            {
+                var stream = Client.BatchGetDocuments(req, settings);
+                using (var responseStream = stream.ResponseStream)
                 {
-                    var response = responseStream.Current;
-                    var readTime = Timestamp.FromProto(response.ReadTime);
-                    switch (response.ResultCase)
+                    List<DocumentSnapshot> snapshots = new List<DocumentSnapshot>();
+
+                    // Note: no need to worry about passing the cancellation token in here, as we've passed it into the overall call.
+                    // If the token is cancelled, the call will be aborted.
+                    while (await responseStream.MoveNext().ConfigureAwait(false))
                     {
-                        case BatchGetDocumentsResponse.ResultOneofCase.Found:
-                            snapshots.Add(DocumentSnapshot.ForDocument(this, response.Found, readTime));
-                            break;
-                        case BatchGetDocumentsResponse.ResultOneofCase.Missing:
-                            snapshots.Add(DocumentSnapshot.ForMissingDocument(this, response.Missing, readTime));
-                            break;
-                        default:
-                            throw new InvalidOperationException($"Unknown response type: {response.ResultCase}");
+                        var response = responseStream.Current;
+                        var readTime = Timestamp.FromProto(response.ReadTime);
+                        switch (response.ResultCase)
+                        {
+                            case BatchGetDocumentsResponse.ResultOneofCase.Found:
+                                snapshots.Add(DocumentSnapshot.ForDocument(this, response.Found, readTime));
+                                break;
+                            case BatchGetDocumentsResponse.ResultOneofCase.Missing:
+                                snapshots.Add(DocumentSnapshot.ForMissingDocument(this, response.Missing, readTime));
+                                break;
+                            default:
+                                throw new InvalidOperationException($"Unknown response type: {response.ResultCase}");
+                        }
                     }
+                    return snapshots;
                 }
-                return snapshots;
-            }
+            };
+
+            var retryingTask = RetryHelper.Retry(function, request, callSettings, clock, scheduler);
+            return await retryingTask.ConfigureAwait(false);            
 
             string ExtractPath(DocumentReference documentReference)
             {
@@ -264,7 +348,7 @@ namespace Google.Cloud.Firestore
         public IAsyncEnumerable<CollectionReference> ListRootCollectionsAsync() => ListCollectionsAsync(null);
 
         internal IAsyncEnumerable<CollectionReference> ListCollectionsAsync(DocumentReference parent) =>
-            Client.ListCollectionIdsAsync(parent?.Path ?? RootPath)
+            Client.ListCollectionIdsAsync(parent?.Path ?? DocumentsPath)
                 .Select(id => new CollectionReference(this, parent, id));
 
         // TODO: Is it appropriate to use ConfigureAwait(false) here? Should the caller be able to specify the context for executing their callback?

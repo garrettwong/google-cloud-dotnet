@@ -12,14 +12,14 @@
 // See the License for the specific language governing permissions and
 // limitations under the License.
 
+using Google.Api.Gax;
+using Google.Protobuf.Collections;
+using Google.Protobuf.WellKnownTypes;
 using System;
 using System.Collections;
 using System.Collections.Generic;
 using System.Data.Common;
 using System.Linq;
-using Google.Api.Gax;
-using Google.Protobuf.Collections;
-using Google.Protobuf.WellKnownTypes;
 
 namespace Google.Cloud.Spanner.Data
 {
@@ -220,6 +220,19 @@ namespace Google.Cloud.Spanner.Data
             }
         }
 
+        internal void FillSpannerCommandParams(out Struct parameters, MapField<string, V1.Type> paramTypes, SpannerConversionOptions options)
+        {
+            if (Count == 0)
+            {
+                parameters = null;
+            }
+            else
+            {
+                parameters = new Struct();
+                FillSpannerInternalValues(parameters.Fields, paramTypes, options);
+            }
+        }
+
         internal void FillSpannerInternalValues(
             MapField<string, Value> valueDictionary,
             MapField<string, V1.Type> requestParamTypes,
@@ -254,7 +267,6 @@ namespace Google.Cloud.Spanner.Data
             }
         }
 
-#if !NETSTANDARD1_5
         /// <inheritdoc />
         public override bool IsFixedSize => false;
 
@@ -263,14 +275,11 @@ namespace Google.Cloud.Spanner.Data
 
         /// <inheritdoc />
         public override bool IsReadOnly => false;
-#endif
+
         /// <summary>
         /// Clones the collection.
         /// </summary>
         /// <returns>A cloned copy of this instance.</returns>
-        public SpannerParameterCollection Clone()
-        {
-            return new SpannerParameterCollection(_innerList);
-        }
+        public SpannerParameterCollection Clone() => new SpannerParameterCollection(_innerList);
     }
 }

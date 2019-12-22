@@ -14,16 +14,17 @@
 
 using Google.Api.Gax;
 using Google.Api.Gax.Grpc;
-using Google.Cloud.Firestore.V1Beta1;
+using Google.Cloud.Firestore.V1;
 using Google.Protobuf;
 using System;
+using System.Collections;
 using System.Collections.Generic;
 using System.Linq;
 using System.Threading;
 using System.Threading.Tasks;
-using static Google.Cloud.Firestore.V1Beta1.StructuredQuery.Types;
-using FieldOp = Google.Cloud.Firestore.V1Beta1.StructuredQuery.Types.FieldFilter.Types.Operator;
-using UnaryOp = Google.Cloud.Firestore.V1Beta1.StructuredQuery.Types.UnaryFilter.Types.Operator;
+using static Google.Cloud.Firestore.V1.StructuredQuery.Types;
+using FieldOp = Google.Cloud.Firestore.V1.StructuredQuery.Types.FieldFilter.Types.Operator;
+using UnaryOp = Google.Cloud.Firestore.V1.StructuredQuery.Types.UnaryFilter.Types.Operator;
 
 namespace Google.Cloud.Firestore
 {
@@ -39,7 +40,6 @@ namespace Google.Cloud.Firestore
         // These are all read-only, but may be mutable. They should never be mutated;
         // multiple Query objects may share the same internal references.
         // Any additional fields should be included in equality/hash code checks.
-        internal CollectionReference Collection { get; }
         private readonly int _offset;
         private readonly int? _limit;
         private readonly IReadOnlyList<InternalOrdering> _orderings; // Never null
@@ -47,32 +47,37 @@ namespace Google.Cloud.Firestore
         private readonly IReadOnlyList<FieldPath> _projections; // May be null
         private readonly Cursor _startAt;
         private readonly Cursor _endAt;
+        private readonly QueryRoot _root;
 
         /// <summary>
         /// The database this query will search over.
         /// </summary>
-        public virtual FirestoreDb Database => Collection.Database;
+        public virtual FirestoreDb Database => _root.Database;
 
         // Parent path of this query
-        internal string ParentPath => Collection.Parent?.Path ?? Database.DocumentsPath;
+        internal string ParentPath => _root.ParentPath;
+
+        private Query(QueryRoot root)
+        {
+            _root = root;
+            _orderings = new List<InternalOrdering>();
+        }
 
         // private protected = only visible to subclasses within the same assembly.
-        // In reality, *only* CollectionReference will ever derive from Query.
-        private protected Query()
+        private protected Query(FirestoreDb database, DocumentReference parent, string collectionId)
+            : this(QueryRoot.ForCollection(database, parent, collectionId))
         {
-            Collection = this as CollectionReference;
-            GaxPreconditions.CheckState(Collection != null, "Internal Query constructor should only be used from CollectionReference");
-            _orderings = new List<InternalOrdering>();
         }
 
         // Constructor used for all the fluent interface methods. This contains all the fields, which are copied verbatim with
         // no further cloning: it is the responsibility of each method to ensure it creates a clone for any new data.
         private Query(
-            CollectionReference collection, int offset, int? limit,
+            QueryRoot root,
+            int offset, int? limit,
             IReadOnlyList<InternalOrdering> orderings, IReadOnlyList<InternalFilter> filters, IReadOnlyList<FieldPath> projections,
             Cursor startAt, Cursor endAt)
         {
-            Collection = collection;
+            _root = root;
             _offset = offset;
             _limit = limit;
             _orderings = orderings;
@@ -82,10 +87,13 @@ namespace Google.Cloud.Firestore
             _endAt = endAt;
         }
 
+        internal static Query ForCollectionGroup(FirestoreDb database, string collectionId) =>
+            new Query(QueryRoot.ForCollectionGroup(database, collectionId));
+
         internal StructuredQuery ToStructuredQuery() =>
             new StructuredQuery
             {
-                From = { new CollectionSelector { CollectionId = Collection.Id } },
+                From = { new CollectionSelector { AllDescendants = _root.AllDescendants, CollectionId = _root.CollectionId } },
                 Limit = _limit,
                 Offset = _offset,
                 OrderBy = { _orderings.Select(o => o.ToProto()) },
@@ -132,7 +140,7 @@ namespace Google.Cloud.Firestore
             {
                 fieldPaths = new[] { FieldPath.DocumentId };
             }
-            return new Query(Collection, _offset, _limit, _orderings, _filters, new List<FieldPath>(fieldPaths), _startAt, _endAt);
+            return new Query(_root, _offset, _limit, _orderings, _filters, new List<FieldPath>(fieldPaths), _startAt, _endAt);
         }
 
         /// <summary>
@@ -291,6 +299,59 @@ namespace Google.Cloud.Firestore
         public Query WhereArrayContains(FieldPath fieldPath, object value) =>
             Where(fieldPath, FieldOp.ArrayContains, value);
 
+
+        /// <summary>
+        /// Returns a query with a filter specifying that <paramref name="fieldPath"/> must be
+        /// a field present in the document, with a value which is an array containing at least one value in <paramref name="values"/>.
+        /// </summary>
+        /// <remarks>
+        /// This call adds additional filters to any previously-specified ones.
+        /// </remarks>
+        /// <param name="fieldPath">The dot-separated field path to filter on. Must not be null or empty.</param>
+        /// <param name="values">The values to compare in the filter. Must not be null.</param>
+        /// <returns>A new query based on the current one, but with the additional specified filter applied.</returns>
+        public Query WhereArrayContainsAny(string fieldPath, IEnumerable values) =>
+            Where(fieldPath, FieldOp.ArrayContainsAny, values);
+
+        /// <summary>
+        /// Returns a query with a filter specifying that <paramref name="fieldPath"/> must be
+        /// a field present in the document, with a value which is an array containing at least one value in <paramref name="values"/>.
+        /// </summary>
+        /// <remarks>
+        /// This call adds additional filters to any previously-specified ones.
+        /// </remarks>
+        /// <param name="fieldPath">The field path to filter on. Must not be null.</param>
+        /// <param name="values">The values to compare in the filter. Must not be null.</param>
+        /// <returns>A new query based on the current one, but with the additional specified filter applied.</returns>
+        public Query WhereArrayContainsAny(FieldPath fieldPath, IEnumerable values) =>
+            Where(fieldPath, FieldOp.ArrayContainsAny, values);
+
+        /// <summary>
+        /// Returns a query with a filter specifying that <paramref name="fieldPath"/> must be
+        /// a field present in the document, with a value which is one of the values <paramref name="values"/>.
+        /// </summary>
+        /// <remarks>
+        /// This call adds additional filters to any previously-specified ones.
+        /// </remarks>
+        /// <param name="fieldPath">The dot-separated field path to filter on. Must not be null or empty.</param>
+        /// <param name="values">The values to compare in the filter. Must not be null.</param>
+        /// <returns>A new query based on the current one, but with the additional specified filter applied.</returns>
+        public Query WhereIn(string fieldPath, IEnumerable values) =>
+            Where(fieldPath, FieldOp.In, values);
+
+        /// <summary>
+        /// Returns a query with a filter specifying that <paramref name="fieldPath"/> must be
+        /// a field present in the document, with a value which is one of the values <paramref name="values"/>.
+        /// </summary>
+        /// <remarks>
+        /// This call adds additional filters to any previously-specified ones.
+        /// </remarks>
+        /// <param name="fieldPath">The field path to filter on. Must not be null.</param>
+        /// <param name="values">The values to compare in the filter. Must not be null.</param>
+        /// <returns>A new query based on the current one, but with the additional specified filter applied.</returns>
+        public Query WhereIn(FieldPath fieldPath, IEnumerable values) =>
+            Where(fieldPath, FieldOp.In, values);
+
         // Note: the two general Where methods were originally public, accepting a public QueryOperator enum.
         // If we ever want to make them public again, we should reinstate the QueryOperator enum to avoid an API
         // dependency on the proto enum.
@@ -323,10 +384,10 @@ namespace Google.Cloud.Firestore
         /// <returns>A new query based on the current one, but with the additional specified filter applied.</returns>
         private Query Where(FieldPath fieldPath, FieldOp op, object value)
         {
-            InternalFilter filter = InternalFilter.Create(fieldPath, op, value);
+            InternalFilter filter = InternalFilter.Create(Database.SerializationContext, fieldPath, op, value);
             var newFilters = _filters == null ? new List<InternalFilter>() : new List<InternalFilter>(_filters);
             newFilters.Add(filter);
-            return new Query(Collection, _offset, _limit, _orderings, newFilters, _projections, _startAt, _endAt);
+            return new Query(_root, _offset, _limit, _orderings, newFilters, _projections, _startAt, _endAt);
         }
 
         /// <summary>
@@ -412,7 +473,7 @@ namespace Google.Cloud.Firestore
             GaxPreconditions.CheckState(_startAt == null && _endAt == null,
                 "All orderings must be specified before StartAt, StartAfter, EndBefore or EndAt are called.");
             var newOrderings = new List<InternalOrdering>(_orderings) { new InternalOrdering(fieldPath, direction) };
-            return new Query(Collection, _offset, _limit, newOrderings, _filters, _projections, _startAt, _endAt);
+            return new Query(_root, _offset, _limit, newOrderings, _filters, _projections, _startAt, _endAt);
         }
 
         /// <summary>
@@ -426,7 +487,7 @@ namespace Google.Cloud.Firestore
         public Query Limit(int limit)
         {
             GaxPreconditions.CheckArgumentRange(limit, nameof(limit), 0, int.MaxValue);
-            return new Query(Collection, _offset, limit, _orderings, _filters, _projections, _startAt, _endAt);
+            return new Query(_root, _offset, limit, _orderings, _filters, _projections, _startAt, _endAt);
         }
         
         /// <summary>
@@ -440,7 +501,7 @@ namespace Google.Cloud.Firestore
         public Query Offset(int offset)
         {
             GaxPreconditions.CheckArgumentRange(offset, nameof(offset), 0, int.MaxValue);
-            return new Query(Collection, offset, _limit, _orderings, _filters, _projections, _startAt, _endAt);
+            return new Query(_root, offset, _limit, _orderings, _filters, _projections, _startAt, _endAt);
         }
 
         /// <summary>
@@ -595,14 +656,15 @@ namespace Google.Cloud.Firestore
         // Helper methods for cursor-related functionality
 
         internal Query StartAt(object[] fieldValues, bool before) =>
-            new Query(Collection, _offset, _limit, _orderings, _filters, _projections, CreateCursor(fieldValues, before), _endAt);
+            new Query(_root, _offset, _limit, _orderings, _filters, _projections, CreateCursor(fieldValues, before), _endAt);
 
         internal Query EndAt(object[] fieldValues, bool before) =>
-            new Query(Collection, _offset, _limit, _orderings, _filters, _projections, _startAt, CreateCursor(fieldValues, before));
+            new Query(_root, _offset, _limit, _orderings, _filters, _projections, _startAt, CreateCursor(fieldValues, before));
 
         private Cursor CreateCursor(object[] fieldValues, bool before)
         {
             GaxPreconditions.CheckNotNull(fieldValues, nameof(fieldValues));
+            GaxPreconditions.CheckArgument(fieldValues.Length != 0, nameof(fieldValues), "Cannot specify an empty set of values for a start/end query cursor.");
             GaxPreconditions.CheckArgument(
                 fieldValues.Length <= _orderings.Count,
                 nameof(fieldValues),
@@ -617,24 +679,9 @@ namespace Google.Cloud.Firestore
                 // a DocumentReference (absolute path that must be a descendant of this collection).
                 if (Equals(_orderings[i].Field, FieldPath.DocumentId))
                 {
-                    switch (fieldValues[i])
-                    {
-                        case string relativePath:
-                            // Note: this assumes querying over a single collection at the moment.
-                            // Convert to a DocumentReference for the cursor
-                            PathUtilities.ValidateId(relativePath, nameof(fieldValues));
-                            value = Collection.Document(relativePath);
-                            break;
-                        case DocumentReference absoluteRef:
-                            // Just validate that the given document is a direct child of the parent collection.
-                            GaxPreconditions.CheckArgument(absoluteRef.Parent.Equals(Collection), nameof(fieldValues),
-                                "A DocumentReference cursor value for a document ID must be a descendant of the collection of the query");
-                            break;
-                        default:
-                            throw new ArgumentException($"A cursor value for a document ID must be a string (relative path) or a DocumentReference", nameof(fieldValues));
-                    }
+                    value = ConvertReference(fieldValues[i], nameof(fieldValues));
                 }
-                var convertedValue = ValueSerializer.Serialize(value);
+                var convertedValue = ValueSerializer.Serialize(Database.SerializationContext, value);
                 ValidateNoSentinelsRecursively(convertedValue, "Snapshot ordering contained a sentinel value");
                 cursor.Values.Add(convertedValue);
             }
@@ -642,22 +689,59 @@ namespace Google.Cloud.Firestore
             return cursor;
         }
 
-        internal Query StartAtSnapshot(DocumentSnapshot snapshot, bool before)
+        private DocumentReference ConvertReference(object fieldValue, string parameterName)
         {
-            var cursor = CreateCursorFromSnapshot(snapshot, before, out var newOrderings);
-            return new Query(Collection, _offset, _limit, newOrderings, _filters, _projections, cursor, _endAt);
+            string basePath = _root.AllDescendants ? ParentPath : $"{ParentPath}/{_root.CollectionId}";
+            DocumentReference reference;
+            switch (fieldValue)
+            {
+                case string relativePath:
+                    reference = Database.GetDocumentReferenceFromResourceName($"{basePath}/{relativePath}");
+                    break;
+                case DocumentReference absoluteRef:
+                    reference = absoluteRef;
+                    break;
+                default:
+                    throw new ArgumentException($"A cursor value for a document ID must be a string (relative path) or a DocumentReference", parameterName);
+            }
+            GaxPreconditions.CheckArgument(
+                reference.Path.StartsWith(basePath + "/"),
+                parameterName,
+                "'{0}' is not part of the query result set and cannot be used as a query boundary",
+                reference.Path);
+
+            GaxPreconditions.CheckArgument(
+                _root.AllDescendants || reference.Parent.Path == basePath,
+                parameterName,
+                "Only a direct child can be used as a query boundary. Found: '{0}'",
+                reference.Path);
+            return reference;
         }
 
-        internal Query EndAtSnapshot(DocumentSnapshot snapshot, bool before)
+        private Query StartAtSnapshot(DocumentSnapshot snapshot, bool before)
         {
             var cursor = CreateCursorFromSnapshot(snapshot, before, out var newOrderings);
-            return new Query(Collection, _offset, _limit, newOrderings, _filters, _projections, _startAt, cursor);
+            return new Query(_root, _offset, _limit, newOrderings, _filters, _projections, cursor, _endAt);
+        }
+
+        private Query EndAtSnapshot(DocumentSnapshot snapshot, bool before)
+        {
+            var cursor = CreateCursorFromSnapshot(snapshot, before, out var newOrderings);
+            return new Query(_root, _offset, _limit, newOrderings, _filters, _projections, _startAt, cursor);
         }
 
         private Cursor CreateCursorFromSnapshot(DocumentSnapshot snapshot, bool before, out IReadOnlyList<InternalOrdering> newOrderings)
         {
-            GaxPreconditions.CheckArgument(Equals(snapshot.Reference.Parent, Collection),
-                nameof(snapshot), "Snapshot was from incorrect collection");
+            // For non-collection-group queries, the snapshot must be in the exact right collection.
+            if (!_root.AllDescendants)
+            {
+                CollectionReference snapshotCollection = snapshot.Reference.Parent;
+                GaxPreconditions.CheckArgument(snapshotCollection.Id == _root.CollectionId,
+                    nameof(snapshot), "Snapshot was from incorrect collection");
+                var snapshotGrandparentPath = snapshotCollection.Parent?.Path ?? _root.Database.DocumentsPath;
+                GaxPreconditions.CheckArgument(snapshotGrandparentPath == ParentPath,
+                    nameof(snapshot), "Snapshot was from incorrect collection");
+            }
 
             GaxPreconditions.CheckNotNull(snapshot, nameof(snapshot));
             var cursor = new Cursor { Before = before };
@@ -702,12 +786,12 @@ namespace Google.Cloud.Firestore
             foreach (var ordering in newOrderings)
             {
                 var field = ordering.Field;
-                var value = Equals(field, FieldPath.DocumentId) ? ValueSerializer.Serialize(snapshot.Reference) : snapshot.ExtractValue(field);
+                var value = Equals(field, FieldPath.DocumentId) ? ValueSerializer.Serialize(Database.SerializationContext, snapshot.Reference) : snapshot.ExtractValue(field);
                 if (value == null)
                 {
                     throw new ArgumentException($"Snapshot does not contain field {field}", nameof(snapshot));
                 }
-                cursor.Values.Add(ValueSerializer.Serialize(value));
+                cursor.Values.Add(ValueSerializer.Serialize(Database.SerializationContext, value));
             }
             return cursor;
         }
@@ -740,7 +824,7 @@ namespace Google.Cloud.Firestore
             {
                 return false;
             }
-            return Collection.Equals(other.Collection) &&
+            return _root.Equals(other._root) &&
                 _offset == other._offset &&
                 _limit == other._limit &&
                 EqualityHelpers.ListsEqual(_orderings, other._orderings) &&
@@ -752,7 +836,7 @@ namespace Google.Cloud.Firestore
 
         /// <inheritdoc />
         public override int GetHashCode() => EqualityHelpers.CombineHashCodes(
-            Collection.GetHashCode(),
+            _root.GetHashCode(),
             _offset,
             _limit ?? -1,
             EqualityHelpers.GetListHashCode(_orderings),
@@ -861,7 +945,7 @@ namespace Google.Cloud.Firestore
             /// </summary>
             internal bool IsEqualityFilter() => _value == null || _op == (int) FieldOp.Equal || _op == (int) FieldOp.ArrayContains;
 
-            internal static InternalFilter Create(FieldPath fieldPath, FieldOp op, object value)
+            internal static InternalFilter Create(SerializationContext context, FieldPath fieldPath, FieldOp op, object value)
             {
                 GaxPreconditions.CheckNotNull(fieldPath, nameof(fieldPath));
                 var unaryOperator = GetUnaryOperator(value);
@@ -878,8 +962,7 @@ namespace Google.Cloud.Firestore
                 }
                 else
                 {
-                    // TODO: For arrays and maps, we should check this recursively.
-                    var convertedValue = ValueSerializer.Serialize(value);
+                    var convertedValue = ValueSerializer.Serialize(context, value);
                     ValidateNoSentinelsRecursively(convertedValue, "Sentinel values cannot be specified in filters");
                     return new InternalFilter(fieldPath, (int) op, convertedValue);
                 }
@@ -957,5 +1040,38 @@ namespace Google.Cloud.Firestore
             }
         }
 
+        private sealed class QueryRoot : IEquatable<QueryRoot>
+        {
+            internal FirestoreDb Database { get; }
+            internal string ParentPath { get; }
+            internal string CollectionId { get; }
+            internal bool AllDescendants { get; }
+
+            private QueryRoot(FirestoreDb database, string parentPath, string collectionId, bool allDescendants)
+            {
+                Database = GaxPreconditions.CheckNotNull(database, nameof(database));
+                ParentPath = parentPath;
+                CollectionId = GaxPreconditions.CheckNotNull(collectionId, nameof(collectionId));
+                AllDescendants = allDescendants;
+            }
+
+            internal static QueryRoot ForCollection(FirestoreDb database, DocumentReference parent, string collectionId) =>
+                new QueryRoot(database, parent?.Path ?? database?.DocumentsPath, collectionId, false);
+
+            internal static QueryRoot ForCollectionGroup(FirestoreDb database, string collectionId) =>
+                new QueryRoot(database, database?.DocumentsPath, collectionId, true);
+
+            public override bool Equals(object obj) => Equals(obj as QueryRoot);
+
+            public bool Equals(QueryRoot other) =>
+                other != null &&
+                Database.Equals(other.Database) &&
+                ParentPath == other.ParentPath &&
+                CollectionId == other.CollectionId &&
+                AllDescendants == other.AllDescendants;
+
+            public override int GetHashCode() =>
+                EqualityHelpers.CombineHashCodes(Database.GetHashCode(), ParentPath.GetHashCode(), CollectionId?.GetHashCode() ?? 0, AllDescendants ? 1 : 0);
+        }
     }
 }

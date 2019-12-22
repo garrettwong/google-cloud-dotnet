@@ -12,7 +12,6 @@
 // See the License for the specific language governing permissions and
 // limitations under the License.
 
-#if !NETCOREAPP1_0
 using Google.Cloud.ClientTesting;
 using Google.Cloud.Spanner.Data.CommonTesting;
 using System;
@@ -53,7 +52,7 @@ namespace Google.Cloud.Spanner.Data.IntegrationTests
         [Fact]
         public void AdapterDeleteInsert()
         {
-            RetryHelpers.RetryOnce(() =>
+            RetryHelpers.ExecuteWithRetry(() =>
             {
                 using (var connection = _fixture.GetConnection())
                 {
@@ -90,7 +89,7 @@ namespace Google.Cloud.Spanner.Data.IntegrationTests
         [Fact]
         public void AdapterUpdate()
         {
-            RetryHelpers.RetryOnce(() =>
+            RetryHelpers.ExecuteWithRetry(() =>
             {
                 using (var connection = _fixture.GetConnection())
                 {
@@ -126,7 +125,7 @@ namespace Google.Cloud.Spanner.Data.IntegrationTests
         [Fact]
         public void AdapterOverrideSelect()
         {
-            RetryHelpers.RetryOnce(() =>
+            RetryHelpers.ExecuteWithRetry(() =>
             {
 
                 using (var connection = _fixture.GetConnection())
@@ -155,4 +154,3 @@ namespace Google.Cloud.Spanner.Data.IntegrationTests
         }
     }
 }
-#endif

@@ -1,4 +1,4 @@
-// Copyright 2018 Google LLC
+// Copyright 2019 Google LLC
 //
 // Licensed under the Apache License, Version 2.0 (the "License");
 // you may not use this file except in compliance with the License.
@@ -385,6 +385,42 @@ namespace Google.Cloud.Dialogflow.V2
     }
 
     /// <summary>
+    /// Builder class for <see cref="IntentsClient"/> to provide simple configuration of credentials, endpoint etc.
+    /// </summary>
+    public sealed partial class IntentsClientBuilder : gaxgrpc::ClientBuilderBase<IntentsClient>
+    {
+        /// <summary>
+        /// The settings to use for RPCs, or null for the default settings.
+        /// </summary>
+        public IntentsSettings Settings { get; set; }
+
+        /// <inheritdoc/>
+        public override IntentsClient Build()
+        {
+            Validate();
+            grpccore::CallInvoker callInvoker = CreateCallInvoker();
+            return IntentsClient.Create(callInvoker, Settings);
+        }
+
+        /// <inheritdoc />
+        public override async stt::Task<IntentsClient> BuildAsync(st::CancellationToken cancellationToken = default)
+        {
+            Validate();
+            grpccore::CallInvoker callInvoker = await CreateCallInvokerAsync(cancellationToken).ConfigureAwait(false);
+            return IntentsClient.Create(callInvoker, Settings);
+        }
+
+        /// <inheritdoc />
+        protected override gaxgrpc::ServiceEndpoint GetDefaultEndpoint() => IntentsClient.DefaultEndpoint;
+
+        /// <inheritdoc />
+        protected override scg::IReadOnlyList<string> GetDefaultScopes() => IntentsClient.DefaultScopes;
+
+        /// <inheritdoc />
+        protected override gaxgrpc::ChannelPool GetChannelPool() => IntentsClient.ChannelPool;
+    }
+
+    /// <summary>
     /// Intents client wrapper, for convenient use.
     /// </summary>
     public abstract partial class IntentsClient
@@ -401,13 +437,17 @@ namespace Google.Cloud.Dialogflow.V2
         /// The default Intents scopes are:
         /// <list type="bullet">
         /// <item><description>"https://www.googleapis.com/auth/cloud-platform"</description></item>
+        /// <item><description>"https://www.googleapis.com/auth/dialogflow"</description></item>
         /// </list>
         /// </remarks>
         public static scg::IReadOnlyList<string> DefaultScopes { get; } = new sco::ReadOnlyCollection<string>(new string[] {
             "https://www.googleapis.com/auth/cloud-platform",
+            "https://www.googleapis.com/auth/dialogflow",
         });
 
         private static readonly gaxgrpc::ChannelPool s_channelPool = new gaxgrpc::ChannelPool(DefaultScopes);
+
+        internal static gaxgrpc::ChannelPool ChannelPool => s_channelPool;
 
         /// <summary>
         /// Asynchronously creates a <see cref="IntentsClient"/>, applying defaults for all unspecified settings,
@@ -613,12 +653,81 @@ namespace Google.Cloud.Dialogflow.V2
         /// Required. The agent to list all intents from.
         /// Format: `projects/&lt;Project ID&gt;/agent`.
         /// </param>
+        /// <param name="pageToken">
+        /// The token returned from the previous request.
+        /// A value of <c>null</c> or an empty string retrieves the first page.
+        /// </param>
+        /// <param name="pageSize">
+        /// The size of page to request. The response will not be larger than this, but may be smaller.
+        /// A value of <c>null</c> or 0 uses a server-defined page size.
+        /// </param>
+        /// <param name="callSettings">
+        /// If not null, applies overrides to this RPC call.
+        /// </param>
+        /// <returns>
+        /// A pageable asynchronous sequence of <see cref="Intent"/> resources.
+        /// </returns>
+        public virtual gax::PagedAsyncEnumerable<ListIntentsResponse, Intent> ListIntentsAsync(
+            string parent,
+            string pageToken = null,
+            int? pageSize = null,
+            gaxgrpc::CallSettings callSettings = null) => ListIntentsAsync(
+                new ListIntentsRequest
+                {
+                    Parent = gax::GaxPreconditions.CheckNotNullOrEmpty(parent, nameof(parent)),
+                    PageToken = pageToken ?? "",
+                    PageSize = pageSize ?? 0,
+                },
+                callSettings);
+
+        /// <summary>
+        /// Returns the list of all intents in the specified agent.
+        /// </summary>
+        /// <param name="parent">
+        /// Required. The agent to list all intents from.
+        /// Format: `projects/&lt;Project ID&gt;/agent`.
+        /// </param>
+        /// <param name="pageToken">
+        /// The token returned from the previous request.
+        /// A value of <c>null</c> or an empty string retrieves the first page.
+        /// </param>
+        /// <param name="pageSize">
+        /// The size of page to request. The response will not be larger than this, but may be smaller.
+        /// A value of <c>null</c> or 0 uses a server-defined page size.
+        /// </param>
+        /// <param name="callSettings">
+        /// If not null, applies overrides to this RPC call.
+        /// </param>
+        /// <returns>
+        /// A pageable sequence of <see cref="Intent"/> resources.
+        /// </returns>
+        public virtual gax::PagedEnumerable<ListIntentsResponse, Intent> ListIntents(
+            string parent,
+            string pageToken = null,
+            int? pageSize = null,
+            gaxgrpc::CallSettings callSettings = null) => ListIntents(
+                new ListIntentsRequest
+                {
+                    Parent = gax::GaxPreconditions.CheckNotNullOrEmpty(parent, nameof(parent)),
+                    PageToken = pageToken ?? "",
+                    PageSize = pageSize ?? 0,
+                },
+                callSettings);
+
+        /// <summary>
+        /// Returns the list of all intents in the specified agent.
+        /// </summary>
+        /// <param name="parent">
+        /// Required. The agent to list all intents from.
+        /// Format: `projects/&lt;Project ID&gt;/agent`.
+        /// </param>
         /// <param name="languageCode">
         /// Optional. The language to list training phrases, parameters and rich
         /// messages for. If not specified, the agent's default language is used.
-        /// [More than a dozen
-        /// languages](https://dialogflow.com/docs/reference/language) are supported.
-        /// Note: languages must be enabled in the agent before they can be used.
+        /// [Many
+        /// languages](https://cloud.google.com/dialogflow/docs/reference/language)
+        /// are supported. Note: languages must be enabled in the agent before they can
+        /// be used.
         /// </param>
         /// <param name="pageToken">
         /// The token returned from the previous request.
@@ -659,9 +768,10 @@ namespace Google.Cloud.Dialogflow.V2
         /// <param name="languageCode">
         /// Optional. The language to list training phrases, parameters and rich
         /// messages for. If not specified, the agent's default language is used.
-        /// [More than a dozen
-        /// languages](https://dialogflow.com/docs/reference/language) are supported.
-        /// Note: languages must be enabled in the agent before they can be used.
+        /// [Many
+        /// languages](https://cloud.google.com/dialogflow/docs/reference/language)
+        /// are supported. Note: languages must be enabled in the agent before they can
+        /// be used.
         /// </param>
         /// <param name="pageToken">
         /// The token returned from the previous request.
@@ -686,6 +796,94 @@ namespace Google.Cloud.Dialogflow.V2
                 new ListIntentsRequest
                 {
                     ParentAsProjectAgentName = gax::GaxPreconditions.CheckNotNull(parent, nameof(parent)),
+                    LanguageCode = languageCode ?? "", // Optional
+                    PageToken = pageToken ?? "",
+                    PageSize = pageSize ?? 0,
+                },
+                callSettings);
+
+        /// <summary>
+        /// Returns the list of all intents in the specified agent.
+        /// </summary>
+        /// <param name="parent">
+        /// Required. The agent to list all intents from.
+        /// Format: `projects/&lt;Project ID&gt;/agent`.
+        /// </param>
+        /// <param name="languageCode">
+        /// Optional. The language to list training phrases, parameters and rich
+        /// messages for. If not specified, the agent's default language is used.
+        /// [Many
+        /// languages](https://cloud.google.com/dialogflow/docs/reference/language)
+        /// are supported. Note: languages must be enabled in the agent before they can
+        /// be used.
+        /// </param>
+        /// <param name="pageToken">
+        /// The token returned from the previous request.
+        /// A value of <c>null</c> or an empty string retrieves the first page.
+        /// </param>
+        /// <param name="pageSize">
+        /// The size of page to request. The response will not be larger than this, but may be smaller.
+        /// A value of <c>null</c> or 0 uses a server-defined page size.
+        /// </param>
+        /// <param name="callSettings">
+        /// If not null, applies overrides to this RPC call.
+        /// </param>
+        /// <returns>
+        /// A pageable asynchronous sequence of <see cref="Intent"/> resources.
+        /// </returns>
+        public virtual gax::PagedAsyncEnumerable<ListIntentsResponse, Intent> ListIntentsAsync(
+            string parent,
+            string languageCode,
+            string pageToken = null,
+            int? pageSize = null,
+            gaxgrpc::CallSettings callSettings = null) => ListIntentsAsync(
+                new ListIntentsRequest
+                {
+                    Parent = gax::GaxPreconditions.CheckNotNullOrEmpty(parent, nameof(parent)),
+                    LanguageCode = languageCode ?? "", // Optional
+                    PageToken = pageToken ?? "",
+                    PageSize = pageSize ?? 0,
+                },
+                callSettings);
+
+        /// <summary>
+        /// Returns the list of all intents in the specified agent.
+        /// </summary>
+        /// <param name="parent">
+        /// Required. The agent to list all intents from.
+        /// Format: `projects/&lt;Project ID&gt;/agent`.
+        /// </param>
+        /// <param name="languageCode">
+        /// Optional. The language to list training phrases, parameters and rich
+        /// messages for. If not specified, the agent's default language is used.
+        /// [Many
+        /// languages](https://cloud.google.com/dialogflow/docs/reference/language)
+        /// are supported. Note: languages must be enabled in the agent before they can
+        /// be used.
+        /// </param>
+        /// <param name="pageToken">
+        /// The token returned from the previous request.
+        /// A value of <c>null</c> or an empty string retrieves the first page.
+        /// </param>
+        /// <param name="pageSize">
+        /// The size of page to request. The response will not be larger than this, but may be smaller.
+        /// A value of <c>null</c> or 0 uses a server-defined page size.
+        /// </param>
+        /// <param name="callSettings">
+        /// If not null, applies overrides to this RPC call.
+        /// </param>
+        /// <returns>
+        /// A pageable sequence of <see cref="Intent"/> resources.
+        /// </returns>
+        public virtual gax::PagedEnumerable<ListIntentsResponse, Intent> ListIntents(
+            string parent,
+            string languageCode,
+            string pageToken = null,
+            int? pageSize = null,
+            gaxgrpc::CallSettings callSettings = null) => ListIntents(
+                new ListIntentsRequest
+                {
+                    Parent = gax::GaxPreconditions.CheckNotNullOrEmpty(parent, nameof(parent)),
                     LanguageCode = languageCode ?? "", // Optional
                     PageToken = pageToken ?? "",
                     PageSize = pageSize ?? 0,
@@ -800,12 +998,76 @@ namespace Google.Cloud.Dialogflow.V2
         /// Required. The name of the intent.
         /// Format: `projects/&lt;Project ID&gt;/agent/intents/&lt;Intent ID&gt;`.
         /// </param>
+        /// <param name="callSettings">
+        /// If not null, applies overrides to this RPC call.
+        /// </param>
+        /// <returns>
+        /// A Task containing the RPC response.
+        /// </returns>
+        public virtual stt::Task<Intent> GetIntentAsync(
+            string name,
+            gaxgrpc::CallSettings callSettings = null) => GetIntentAsync(
+                new GetIntentRequest
+                {
+                    Name = gax::GaxPreconditions.CheckNotNullOrEmpty(name, nameof(name)),
+                },
+                callSettings);
+
+        /// <summary>
+        /// Retrieves the specified intent.
+        /// </summary>
+        /// <param name="name">
+        /// Required. The name of the intent.
+        /// Format: `projects/&lt;Project ID&gt;/agent/intents/&lt;Intent ID&gt;`.
+        /// </param>
+        /// <param name="cancellationToken">
+        /// A <see cref="st::CancellationToken"/> to use for this RPC.
+        /// </param>
+        /// <returns>
+        /// A Task containing the RPC response.
+        /// </returns>
+        public virtual stt::Task<Intent> GetIntentAsync(
+            string name,
+            st::CancellationToken cancellationToken) => GetIntentAsync(
+                name,
+                gaxgrpc::CallSettings.FromCancellationToken(cancellationToken));
+
+        /// <summary>
+        /// Retrieves the specified intent.
+        /// </summary>
+        /// <param name="name">
+        /// Required. The name of the intent.
+        /// Format: `projects/&lt;Project ID&gt;/agent/intents/&lt;Intent ID&gt;`.
+        /// </param>
+        /// <param name="callSettings">
+        /// If not null, applies overrides to this RPC call.
+        /// </param>
+        /// <returns>
+        /// The RPC response.
+        /// </returns>
+        public virtual Intent GetIntent(
+            string name,
+            gaxgrpc::CallSettings callSettings = null) => GetIntent(
+                new GetIntentRequest
+                {
+                    Name = gax::GaxPreconditions.CheckNotNullOrEmpty(name, nameof(name)),
+                },
+                callSettings);
+
+        /// <summary>
+        /// Retrieves the specified intent.
+        /// </summary>
+        /// <param name="name">
+        /// Required. The name of the intent.
+        /// Format: `projects/&lt;Project ID&gt;/agent/intents/&lt;Intent ID&gt;`.
+        /// </param>
         /// <param name="languageCode">
         /// Optional. The language to retrieve training phrases, parameters and rich
         /// messages for. If not specified, the agent's default language is used.
-        /// [More than a dozen
-        /// languages](https://dialogflow.com/docs/reference/language) are supported.
-        /// Note: languages must be enabled in the agent, before they can be used.
+        /// [Many
+        /// languages](https://cloud.google.com/dialogflow/docs/reference/language)
+        /// are supported. Note: languages must be enabled in the agent before they can
+        /// be used.
         /// </param>
         /// <param name="callSettings">
         /// If not null, applies overrides to this RPC call.
@@ -834,9 +1096,10 @@ namespace Google.Cloud.Dialogflow.V2
         /// <param name="languageCode">
         /// Optional. The language to retrieve training phrases, parameters and rich
         /// messages for. If not specified, the agent's default language is used.
-        /// [More than a dozen
-        /// languages](https://dialogflow.com/docs/reference/language) are supported.
-        /// Note: languages must be enabled in the agent, before they can be used.
+        /// [Many
+        /// languages](https://cloud.google.com/dialogflow/docs/reference/language)
+        /// are supported. Note: languages must be enabled in the agent before they can
+        /// be used.
         /// </param>
         /// <param name="cancellationToken">
         /// A <see cref="st::CancellationToken"/> to use for this RPC.
@@ -862,9 +1125,10 @@ namespace Google.Cloud.Dialogflow.V2
         /// <param name="languageCode">
         /// Optional. The language to retrieve training phrases, parameters and rich
         /// messages for. If not specified, the agent's default language is used.
-        /// [More than a dozen
-        /// languages](https://dialogflow.com/docs/reference/language) are supported.
-        /// Note: languages must be enabled in the agent, before they can be used.
+        /// [Many
+        /// languages](https://cloud.google.com/dialogflow/docs/reference/language)
+        /// are supported. Note: languages must be enabled in the agent before they can
+        /// be used.
         /// </param>
         /// <param name="callSettings">
         /// If not null, applies overrides to this RPC call.
@@ -879,6 +1143,99 @@ namespace Google.Cloud.Dialogflow.V2
                 new GetIntentRequest
                 {
                     IntentName = gax::GaxPreconditions.CheckNotNull(name, nameof(name)),
+                    LanguageCode = languageCode ?? "", // Optional
+                },
+                callSettings);
+
+        /// <summary>
+        /// Retrieves the specified intent.
+        /// </summary>
+        /// <param name="name">
+        /// Required. The name of the intent.
+        /// Format: `projects/&lt;Project ID&gt;/agent/intents/&lt;Intent ID&gt;`.
+        /// </param>
+        /// <param name="languageCode">
+        /// Optional. The language to retrieve training phrases, parameters and rich
+        /// messages for. If not specified, the agent's default language is used.
+        /// [Many
+        /// languages](https://cloud.google.com/dialogflow/docs/reference/language)
+        /// are supported. Note: languages must be enabled in the agent before they can
+        /// be used.
+        /// </param>
+        /// <param name="callSettings">
+        /// If not null, applies overrides to this RPC call.
+        /// </param>
+        /// <returns>
+        /// A Task containing the RPC response.
+        /// </returns>
+        public virtual stt::Task<Intent> GetIntentAsync(
+            string name,
+            string languageCode,
+            gaxgrpc::CallSettings callSettings = null) => GetIntentAsync(
+                new GetIntentRequest
+                {
+                    Name = gax::GaxPreconditions.CheckNotNullOrEmpty(name, nameof(name)),
+                    LanguageCode = languageCode ?? "", // Optional
+                },
+                callSettings);
+
+        /// <summary>
+        /// Retrieves the specified intent.
+        /// </summary>
+        /// <param name="name">
+        /// Required. The name of the intent.
+        /// Format: `projects/&lt;Project ID&gt;/agent/intents/&lt;Intent ID&gt;`.
+        /// </param>
+        /// <param name="languageCode">
+        /// Optional. The language to retrieve training phrases, parameters and rich
+        /// messages for. If not specified, the agent's default language is used.
+        /// [Many
+        /// languages](https://cloud.google.com/dialogflow/docs/reference/language)
+        /// are supported. Note: languages must be enabled in the agent before they can
+        /// be used.
+        /// </param>
+        /// <param name="cancellationToken">
+        /// A <see cref="st::CancellationToken"/> to use for this RPC.
+        /// </param>
+        /// <returns>
+        /// A Task containing the RPC response.
+        /// </returns>
+        public virtual stt::Task<Intent> GetIntentAsync(
+            string name,
+            string languageCode,
+            st::CancellationToken cancellationToken) => GetIntentAsync(
+                name,
+                languageCode,
+                gaxgrpc::CallSettings.FromCancellationToken(cancellationToken));
+
+        /// <summary>
+        /// Retrieves the specified intent.
+        /// </summary>
+        /// <param name="name">
+        /// Required. The name of the intent.
+        /// Format: `projects/&lt;Project ID&gt;/agent/intents/&lt;Intent ID&gt;`.
+        /// </param>
+        /// <param name="languageCode">
+        /// Optional. The language to retrieve training phrases, parameters and rich
+        /// messages for. If not specified, the agent's default language is used.
+        /// [Many
+        /// languages](https://cloud.google.com/dialogflow/docs/reference/language)
+        /// are supported. Note: languages must be enabled in the agent before they can
+        /// be used.
+        /// </param>
+        /// <param name="callSettings">
+        /// If not null, applies overrides to this RPC call.
+        /// </param>
+        /// <returns>
+        /// The RPC response.
+        /// </returns>
+        public virtual Intent GetIntent(
+            string name,
+            string languageCode,
+            gaxgrpc::CallSettings callSettings = null) => GetIntent(
+                new GetIntentRequest
+                {
+                    Name = gax::GaxPreconditions.CheckNotNullOrEmpty(name, nameof(name)),
                     LanguageCode = languageCode ?? "", // Optional
                 },
                 callSettings);
@@ -1027,12 +1384,91 @@ namespace Google.Cloud.Dialogflow.V2
         /// <param name="intent">
         /// Required. The intent to create.
         /// </param>
+        /// <param name="callSettings">
+        /// If not null, applies overrides to this RPC call.
+        /// </param>
+        /// <returns>
+        /// A Task containing the RPC response.
+        /// </returns>
+        public virtual stt::Task<Intent> CreateIntentAsync(
+            string parent,
+            Intent intent,
+            gaxgrpc::CallSettings callSettings = null) => CreateIntentAsync(
+                new CreateIntentRequest
+                {
+                    Parent = gax::GaxPreconditions.CheckNotNullOrEmpty(parent, nameof(parent)),
+                    Intent = gax::GaxPreconditions.CheckNotNull(intent, nameof(intent)),
+                },
+                callSettings);
+
+        /// <summary>
+        /// Creates an intent in the specified agent.
+        /// </summary>
+        /// <param name="parent">
+        /// Required. The agent to create a intent for.
+        /// Format: `projects/&lt;Project ID&gt;/agent`.
+        /// </param>
+        /// <param name="intent">
+        /// Required. The intent to create.
+        /// </param>
+        /// <param name="cancellationToken">
+        /// A <see cref="st::CancellationToken"/> to use for this RPC.
+        /// </param>
+        /// <returns>
+        /// A Task containing the RPC response.
+        /// </returns>
+        public virtual stt::Task<Intent> CreateIntentAsync(
+            string parent,
+            Intent intent,
+            st::CancellationToken cancellationToken) => CreateIntentAsync(
+                parent,
+                intent,
+                gaxgrpc::CallSettings.FromCancellationToken(cancellationToken));
+
+        /// <summary>
+        /// Creates an intent in the specified agent.
+        /// </summary>
+        /// <param name="parent">
+        /// Required. The agent to create a intent for.
+        /// Format: `projects/&lt;Project ID&gt;/agent`.
+        /// </param>
+        /// <param name="intent">
+        /// Required. The intent to create.
+        /// </param>
+        /// <param name="callSettings">
+        /// If not null, applies overrides to this RPC call.
+        /// </param>
+        /// <returns>
+        /// The RPC response.
+        /// </returns>
+        public virtual Intent CreateIntent(
+            string parent,
+            Intent intent,
+            gaxgrpc::CallSettings callSettings = null) => CreateIntent(
+                new CreateIntentRequest
+                {
+                    Parent = gax::GaxPreconditions.CheckNotNullOrEmpty(parent, nameof(parent)),
+                    Intent = gax::GaxPreconditions.CheckNotNull(intent, nameof(intent)),
+                },
+                callSettings);
+
+        /// <summary>
+        /// Creates an intent in the specified agent.
+        /// </summary>
+        /// <param name="parent">
+        /// Required. The agent to create a intent for.
+        /// Format: `projects/&lt;Project ID&gt;/agent`.
+        /// </param>
+        /// <param name="intent">
+        /// Required. The intent to create.
+        /// </param>
         /// <param name="languageCode">
         /// Optional. The language of training phrases, parameters and rich messages
         /// defined in `intent`. If not specified, the agent's default language is
-        /// used. [More than a dozen
-        /// languages](https://dialogflow.com/docs/reference/language) are supported.
-        /// Note: languages must be enabled in the agent, before they can be used.
+        /// used. [Many
+        /// languages](https://cloud.google.com/dialogflow/docs/reference/language)
+        /// are supported. Note: languages must be enabled in the agent before they can
+        /// be used.
         /// </param>
         /// <param name="callSettings">
         /// If not null, applies overrides to this RPC call.
@@ -1066,9 +1502,10 @@ namespace Google.Cloud.Dialogflow.V2
         /// <param name="languageCode">
         /// Optional. The language of training phrases, parameters and rich messages
         /// defined in `intent`. If not specified, the agent's default language is
-        /// used. [More than a dozen
-        /// languages](https://dialogflow.com/docs/reference/language) are supported.
-        /// Note: languages must be enabled in the agent, before they can be used.
+        /// used. [Many
+        /// languages](https://cloud.google.com/dialogflow/docs/reference/language)
+        /// are supported. Note: languages must be enabled in the agent before they can
+        /// be used.
         /// </param>
         /// <param name="cancellationToken">
         /// A <see cref="st::CancellationToken"/> to use for this RPC.
@@ -1099,9 +1536,10 @@ namespace Google.Cloud.Dialogflow.V2
         /// <param name="languageCode">
         /// Optional. The language of training phrases, parameters and rich messages
         /// defined in `intent`. If not specified, the agent's default language is
-        /// used. [More than a dozen
-        /// languages](https://dialogflow.com/docs/reference/language) are supported.
-        /// Note: languages must be enabled in the agent, before they can be used.
+        /// used. [Many
+        /// languages](https://cloud.google.com/dialogflow/docs/reference/language)
+        /// are supported. Note: languages must be enabled in the agent before they can
+        /// be used.
         /// </param>
         /// <param name="callSettings">
         /// If not null, applies overrides to this RPC call.
@@ -1117,6 +1555,114 @@ namespace Google.Cloud.Dialogflow.V2
                 new CreateIntentRequest
                 {
                     ParentAsProjectAgentName = gax::GaxPreconditions.CheckNotNull(parent, nameof(parent)),
+                    Intent = gax::GaxPreconditions.CheckNotNull(intent, nameof(intent)),
+                    LanguageCode = languageCode ?? "", // Optional
+                },
+                callSettings);
+
+        /// <summary>
+        /// Creates an intent in the specified agent.
+        /// </summary>
+        /// <param name="parent">
+        /// Required. The agent to create a intent for.
+        /// Format: `projects/&lt;Project ID&gt;/agent`.
+        /// </param>
+        /// <param name="intent">
+        /// Required. The intent to create.
+        /// </param>
+        /// <param name="languageCode">
+        /// Optional. The language of training phrases, parameters and rich messages
+        /// defined in `intent`. If not specified, the agent's default language is
+        /// used. [Many
+        /// languages](https://cloud.google.com/dialogflow/docs/reference/language)
+        /// are supported. Note: languages must be enabled in the agent before they can
+        /// be used.
+        /// </param>
+        /// <param name="callSettings">
+        /// If not null, applies overrides to this RPC call.
+        /// </param>
+        /// <returns>
+        /// A Task containing the RPC response.
+        /// </returns>
+        public virtual stt::Task<Intent> CreateIntentAsync(
+            string parent,
+            Intent intent,
+            string languageCode,
+            gaxgrpc::CallSettings callSettings = null) => CreateIntentAsync(
+                new CreateIntentRequest
+                {
+                    Parent = gax::GaxPreconditions.CheckNotNullOrEmpty(parent, nameof(parent)),
+                    Intent = gax::GaxPreconditions.CheckNotNull(intent, nameof(intent)),
+                    LanguageCode = languageCode ?? "", // Optional
+                },
+                callSettings);
+
+        /// <summary>
+        /// Creates an intent in the specified agent.
+        /// </summary>
+        /// <param name="parent">
+        /// Required. The agent to create a intent for.
+        /// Format: `projects/&lt;Project ID&gt;/agent`.
+        /// </param>
+        /// <param name="intent">
+        /// Required. The intent to create.
+        /// </param>
+        /// <param name="languageCode">
+        /// Optional. The language of training phrases, parameters and rich messages
+        /// defined in `intent`. If not specified, the agent's default language is
+        /// used. [Many
+        /// languages](https://cloud.google.com/dialogflow/docs/reference/language)
+        /// are supported. Note: languages must be enabled in the agent before they can
+        /// be used.
+        /// </param>
+        /// <param name="cancellationToken">
+        /// A <see cref="st::CancellationToken"/> to use for this RPC.
+        /// </param>
+        /// <returns>
+        /// A Task containing the RPC response.
+        /// </returns>
+        public virtual stt::Task<Intent> CreateIntentAsync(
+            string parent,
+            Intent intent,
+            string languageCode,
+            st::CancellationToken cancellationToken) => CreateIntentAsync(
+                parent,
+                intent,
+                languageCode,
+                gaxgrpc::CallSettings.FromCancellationToken(cancellationToken));
+
+        /// <summary>
+        /// Creates an intent in the specified agent.
+        /// </summary>
+        /// <param name="parent">
+        /// Required. The agent to create a intent for.
+        /// Format: `projects/&lt;Project ID&gt;/agent`.
+        /// </param>
+        /// <param name="intent">
+        /// Required. The intent to create.
+        /// </param>
+        /// <param name="languageCode">
+        /// Optional. The language of training phrases, parameters and rich messages
+        /// defined in `intent`. If not specified, the agent's default language is
+        /// used. [Many
+        /// languages](https://cloud.google.com/dialogflow/docs/reference/language)
+        /// are supported. Note: languages must be enabled in the agent before they can
+        /// be used.
+        /// </param>
+        /// <param name="callSettings">
+        /// If not null, applies overrides to this RPC call.
+        /// </param>
+        /// <returns>
+        /// The RPC response.
+        /// </returns>
+        public virtual Intent CreateIntent(
+            string parent,
+            Intent intent,
+            string languageCode,
+            gaxgrpc::CallSettings callSettings = null) => CreateIntent(
+                new CreateIntentRequest
+                {
+                    Parent = gax::GaxPreconditions.CheckNotNullOrEmpty(parent, nameof(parent)),
                     Intent = gax::GaxPreconditions.CheckNotNull(intent, nameof(intent)),
                     LanguageCode = languageCode ?? "", // Optional
                 },
@@ -1183,14 +1729,14 @@ namespace Google.Cloud.Dialogflow.V2
         /// </summary>
         /// <param name="intent">
         /// Required. The intent to update.
-        /// Format: `projects/&lt;Project ID&gt;/agent/intents/&lt;Intent ID&gt;`.
         /// </param>
         /// <param name="languageCode">
         /// Optional. The language of training phrases, parameters and rich messages
         /// defined in `intent`. If not specified, the agent's default language is
-        /// used. [More than a dozen
-        /// languages](https://dialogflow.com/docs/reference/language) are supported.
-        /// Note: languages must be enabled in the agent, before they can be used.
+        /// used. [Many
+        /// languages](https://cloud.google.com/dialogflow/docs/reference/language)
+        /// are supported. Note: languages must be enabled in the agent before they can
+        /// be used.
         /// </param>
         /// <param name="callSettings">
         /// If not null, applies overrides to this RPC call.
@@ -1214,14 +1760,14 @@ namespace Google.Cloud.Dialogflow.V2
         /// </summary>
         /// <param name="intent">
         /// Required. The intent to update.
-        /// Format: `projects/&lt;Project ID&gt;/agent/intents/&lt;Intent ID&gt;`.
         /// </param>
         /// <param name="languageCode">
         /// Optional. The language of training phrases, parameters and rich messages
         /// defined in `intent`. If not specified, the agent's default language is
-        /// used. [More than a dozen
-        /// languages](https://dialogflow.com/docs/reference/language) are supported.
-        /// Note: languages must be enabled in the agent, before they can be used.
+        /// used. [Many
+        /// languages](https://cloud.google.com/dialogflow/docs/reference/language)
+        /// are supported. Note: languages must be enabled in the agent before they can
+        /// be used.
         /// </param>
         /// <param name="cancellationToken">
         /// A <see cref="st::CancellationToken"/> to use for this RPC.
@@ -1242,14 +1788,14 @@ namespace Google.Cloud.Dialogflow.V2
         /// </summary>
         /// <param name="intent">
         /// Required. The intent to update.
-        /// Format: `projects/&lt;Project ID&gt;/agent/intents/&lt;Intent ID&gt;`.
         /// </param>
         /// <param name="languageCode">
         /// Optional. The language of training phrases, parameters and rich messages
         /// defined in `intent`. If not specified, the agent's default language is
-        /// used. [More than a dozen
-        /// languages](https://dialogflow.com/docs/reference/language) are supported.
-        /// Note: languages must be enabled in the agent, before they can be used.
+        /// used. [Many
+        /// languages](https://cloud.google.com/dialogflow/docs/reference/language)
+        /// are supported. Note: languages must be enabled in the agent before they can
+        /// be used.
         /// </param>
         /// <param name="callSettings">
         /// If not null, applies overrides to this RPC call.
@@ -1273,14 +1819,14 @@ namespace Google.Cloud.Dialogflow.V2
         /// </summary>
         /// <param name="intent">
         /// Required. The intent to update.
-        /// Format: `projects/&lt;Project ID&gt;/agent/intents/&lt;Intent ID&gt;`.
         /// </param>
         /// <param name="languageCode">
         /// Optional. The language of training phrases, parameters and rich messages
         /// defined in `intent`. If not specified, the agent's default language is
-        /// used. [More than a dozen
-        /// languages](https://dialogflow.com/docs/reference/language) are supported.
-        /// Note: languages must be enabled in the agent, before they can be used.
+        /// used. [Many
+        /// languages](https://cloud.google.com/dialogflow/docs/reference/language)
+        /// are supported. Note: languages must be enabled in the agent before they can
+        /// be used.
         /// </param>
         /// <param name="updateMask">
         /// Optional. The mask to control which fields get updated.
@@ -1309,14 +1855,14 @@ namespace Google.Cloud.Dialogflow.V2
         /// </summary>
         /// <param name="intent">
         /// Required. The intent to update.
-        /// Format: `projects/&lt;Project ID&gt;/agent/intents/&lt;Intent ID&gt;`.
         /// </param>
         /// <param name="languageCode">
         /// Optional. The language of training phrases, parameters and rich messages
         /// defined in `intent`. If not specified, the agent's default language is
-        /// used. [More than a dozen
-        /// languages](https://dialogflow.com/docs/reference/language) are supported.
-        /// Note: languages must be enabled in the agent, before they can be used.
+        /// used. [Many
+        /// languages](https://cloud.google.com/dialogflow/docs/reference/language)
+        /// are supported. Note: languages must be enabled in the agent before they can
+        /// be used.
         /// </param>
         /// <param name="updateMask">
         /// Optional. The mask to control which fields get updated.
@@ -1342,14 +1888,14 @@ namespace Google.Cloud.Dialogflow.V2
         /// </summary>
         /// <param name="intent">
         /// Required. The intent to update.
-        /// Format: `projects/&lt;Project ID&gt;/agent/intents/&lt;Intent ID&gt;`.
         /// </param>
         /// <param name="languageCode">
         /// Optional. The language of training phrases, parameters and rich messages
         /// defined in `intent`. If not specified, the agent's default language is
-        /// used. [More than a dozen
-        /// languages](https://dialogflow.com/docs/reference/language) are supported.
-        /// Note: languages must be enabled in the agent, before they can be used.
+        /// used. [Many
+        /// languages](https://cloud.google.com/dialogflow/docs/reference/language)
+        /// are supported. Note: languages must be enabled in the agent before they can
+        /// be used.
         /// </param>
         /// <param name="updateMask">
         /// Optional. The mask to control which fields get updated.
@@ -1430,10 +1976,11 @@ namespace Google.Cloud.Dialogflow.V2
         }
 
         /// <summary>
-        /// Deletes the specified intent.
+        /// Deletes the specified intent and its direct or indirect followup intents.
         /// </summary>
         /// <param name="name">
-        /// Required. The name of the intent to delete.
+        /// Required. The name of the intent to delete. If this intent has direct or
+        /// indirect followup intents, we also delete them.
         /// Format: `projects/&lt;Project ID&gt;/agent/intents/&lt;Intent ID&gt;`.
         /// </param>
         /// <param name="callSettings">
@@ -1452,10 +1999,11 @@ namespace Google.Cloud.Dialogflow.V2
                 callSettings);
 
         /// <summary>
-        /// Deletes the specified intent.
+        /// Deletes the specified intent and its direct or indirect followup intents.
         /// </summary>
         /// <param name="name">
-        /// Required. The name of the intent to delete.
+        /// Required. The name of the intent to delete. If this intent has direct or
+        /// indirect followup intents, we also delete them.
         /// Format: `projects/&lt;Project ID&gt;/agent/intents/&lt;Intent ID&gt;`.
         /// </param>
         /// <param name="cancellationToken">
@@ -1471,10 +2019,11 @@ namespace Google.Cloud.Dialogflow.V2
                 gaxgrpc::CallSettings.FromCancellationToken(cancellationToken));
 
         /// <summary>
-        /// Deletes the specified intent.
+        /// Deletes the specified intent and its direct or indirect followup intents.
         /// </summary>
         /// <param name="name">
-        /// Required. The name of the intent to delete.
+        /// Required. The name of the intent to delete. If this intent has direct or
+        /// indirect followup intents, we also delete them.
         /// Format: `projects/&lt;Project ID&gt;/agent/intents/&lt;Intent ID&gt;`.
         /// </param>
         /// <param name="callSettings">
@@ -1490,7 +2039,70 @@ namespace Google.Cloud.Dialogflow.V2
                 callSettings);
 
         /// <summary>
-        /// Deletes the specified intent.
+        /// Deletes the specified intent and its direct or indirect followup intents.
+        /// </summary>
+        /// <param name="name">
+        /// Required. The name of the intent to delete. If this intent has direct or
+        /// indirect followup intents, we also delete them.
+        /// Format: `projects/&lt;Project ID&gt;/agent/intents/&lt;Intent ID&gt;`.
+        /// </param>
+        /// <param name="callSettings">
+        /// If not null, applies overrides to this RPC call.
+        /// </param>
+        /// <returns>
+        /// A Task that completes when the RPC has completed.
+        /// </returns>
+        public virtual stt::Task DeleteIntentAsync(
+            string name,
+            gaxgrpc::CallSettings callSettings = null) => DeleteIntentAsync(
+                new DeleteIntentRequest
+                {
+                    Name = gax::GaxPreconditions.CheckNotNullOrEmpty(name, nameof(name)),
+                },
+                callSettings);
+
+        /// <summary>
+        /// Deletes the specified intent and its direct or indirect followup intents.
+        /// </summary>
+        /// <param name="name">
+        /// Required. The name of the intent to delete. If this intent has direct or
+        /// indirect followup intents, we also delete them.
+        /// Format: `projects/&lt;Project ID&gt;/agent/intents/&lt;Intent ID&gt;`.
+        /// </param>
+        /// <param name="cancellationToken">
+        /// A <see cref="st::CancellationToken"/> to use for this RPC.
+        /// </param>
+        /// <returns>
+        /// A Task that completes when the RPC has completed.
+        /// </returns>
+        public virtual stt::Task DeleteIntentAsync(
+            string name,
+            st::CancellationToken cancellationToken) => DeleteIntentAsync(
+                name,
+                gaxgrpc::CallSettings.FromCancellationToken(cancellationToken));
+
+        /// <summary>
+        /// Deletes the specified intent and its direct or indirect followup intents.
+        /// </summary>
+        /// <param name="name">
+        /// Required. The name of the intent to delete. If this intent has direct or
+        /// indirect followup intents, we also delete them.
+        /// Format: `projects/&lt;Project ID&gt;/agent/intents/&lt;Intent ID&gt;`.
+        /// </param>
+        /// <param name="callSettings">
+        /// If not null, applies overrides to this RPC call.
+        /// </param>
+        public virtual void DeleteIntent(
+            string name,
+            gaxgrpc::CallSettings callSettings = null) => DeleteIntent(
+                new DeleteIntentRequest
+                {
+                    Name = gax::GaxPreconditions.CheckNotNullOrEmpty(name, nameof(name)),
+                },
+                callSettings);
+
+        /// <summary>
+        /// Deletes the specified intent and its direct or indirect followup intents.
         /// </summary>
         /// <param name="request">
         /// The request object containing all of the parameters for the API call.
@@ -1509,7 +2121,7 @@ namespace Google.Cloud.Dialogflow.V2
         }
 
         /// <summary>
-        /// Deletes the specified intent.
+        /// Deletes the specified intent and its direct or indirect followup intents.
         /// </summary>
         /// <param name="request">
         /// The request object containing all of the parameters for the API call.
@@ -1527,7 +2139,7 @@ namespace Google.Cloud.Dialogflow.V2
                 gaxgrpc::CallSettings.FromCancellationToken(cancellationToken));
 
         /// <summary>
-        /// Deletes the specified intent.
+        /// Deletes the specified intent and its direct or indirect followup intents.
         /// </summary>
         /// <param name="request">
         /// The request object containing all of the parameters for the API call.
@@ -1710,6 +2322,93 @@ namespace Google.Cloud.Dialogflow.V2
         ///
         /// Operation &lt;response: [google.protobuf.Empty][google.protobuf.Empty]&gt;
         /// </summary>
+        /// <param name="parent">
+        /// Required. The name of the agent to delete all entities types for. Format:
+        /// `projects/&lt;Project ID&gt;/agent`.
+        /// </param>
+        /// <param name="intents">
+        /// Required. The collection of intents to delete. Only intent `name` must be
+        /// filled in.
+        /// </param>
+        /// <param name="callSettings">
+        /// If not null, applies overrides to this RPC call.
+        /// </param>
+        /// <returns>
+        /// A Task containing the RPC response.
+        /// </returns>
+        public virtual stt::Task<lro::Operation<pbwkt::Empty, pbwkt::Struct>> BatchDeleteIntentsAsync(
+            string parent,
+            scg::IEnumerable<Intent> intents,
+            gaxgrpc::CallSettings callSettings = null) => BatchDeleteIntentsAsync(
+                new BatchDeleteIntentsRequest
+                {
+                    Parent = gax::GaxPreconditions.CheckNotNullOrEmpty(parent, nameof(parent)),
+                    Intents = { gax::GaxPreconditions.CheckNotNull(intents, nameof(intents)) },
+                },
+                callSettings);
+
+        /// <summary>
+        /// Deletes intents in the specified agent.
+        ///
+        /// Operation &lt;response: [google.protobuf.Empty][google.protobuf.Empty]&gt;
+        /// </summary>
+        /// <param name="parent">
+        /// Required. The name of the agent to delete all entities types for. Format:
+        /// `projects/&lt;Project ID&gt;/agent`.
+        /// </param>
+        /// <param name="intents">
+        /// Required. The collection of intents to delete. Only intent `name` must be
+        /// filled in.
+        /// </param>
+        /// <param name="cancellationToken">
+        /// A <see cref="st::CancellationToken"/> to use for this RPC.
+        /// </param>
+        /// <returns>
+        /// A Task containing the RPC response.
+        /// </returns>
+        public virtual stt::Task<lro::Operation<pbwkt::Empty, pbwkt::Struct>> BatchDeleteIntentsAsync(
+            string parent,
+            scg::IEnumerable<Intent> intents,
+            st::CancellationToken cancellationToken) => BatchDeleteIntentsAsync(
+                parent,
+                intents,
+                gaxgrpc::CallSettings.FromCancellationToken(cancellationToken));
+
+        /// <summary>
+        /// Deletes intents in the specified agent.
+        ///
+        /// Operation &lt;response: [google.protobuf.Empty][google.protobuf.Empty]&gt;
+        /// </summary>
+        /// <param name="parent">
+        /// Required. The name of the agent to delete all entities types for. Format:
+        /// `projects/&lt;Project ID&gt;/agent`.
+        /// </param>
+        /// <param name="intents">
+        /// Required. The collection of intents to delete. Only intent `name` must be
+        /// filled in.
+        /// </param>
+        /// <param name="callSettings">
+        /// If not null, applies overrides to this RPC call.
+        /// </param>
+        /// <returns>
+        /// The RPC response.
+        /// </returns>
+        public virtual lro::Operation<pbwkt::Empty, pbwkt::Struct> BatchDeleteIntents(
+            string parent,
+            scg::IEnumerable<Intent> intents,
+            gaxgrpc::CallSettings callSettings = null) => BatchDeleteIntents(
+                new BatchDeleteIntentsRequest
+                {
+                    Parent = gax::GaxPreconditions.CheckNotNullOrEmpty(parent, nameof(parent)),
+                    Intents = { gax::GaxPreconditions.CheckNotNull(intents, nameof(intents)) },
+                },
+                callSettings);
+
+        /// <summary>
+        /// Deletes intents in the specified agent.
+        ///
+        /// Operation &lt;response: [google.protobuf.Empty][google.protobuf.Empty]&gt;
+        /// </summary>
         /// <param name="request">
         /// The request object containing all of the parameters for the API call.
         /// </param>
@@ -1811,19 +2510,26 @@ namespace Google.Cloud.Dialogflow.V2
             BatchDeleteIntentsOperationsClient = new lro::OperationsClientImpl(
                 grpcClient.CreateOperationsClient(), effectiveSettings.BatchDeleteIntentsOperationsSettings);
             _callListIntents = clientHelper.BuildApiCall<ListIntentsRequest, ListIntentsResponse>(
-                GrpcClient.ListIntentsAsync, GrpcClient.ListIntents, effectiveSettings.ListIntentsSettings);
+                GrpcClient.ListIntentsAsync, GrpcClient.ListIntents, effectiveSettings.ListIntentsSettings)
+                .WithGoogleRequestParam("parent", request => request.Parent);
             _callGetIntent = clientHelper.BuildApiCall<GetIntentRequest, Intent>(
-                GrpcClient.GetIntentAsync, GrpcClient.GetIntent, effectiveSettings.GetIntentSettings);
+                GrpcClient.GetIntentAsync, GrpcClient.GetIntent, effectiveSettings.GetIntentSettings)
+                .WithGoogleRequestParam("name", request => request.Name);
             _callCreateIntent = clientHelper.BuildApiCall<CreateIntentRequest, Intent>(
-                GrpcClient.CreateIntentAsync, GrpcClient.CreateIntent, effectiveSettings.CreateIntentSettings);
+                GrpcClient.CreateIntentAsync, GrpcClient.CreateIntent, effectiveSettings.CreateIntentSettings)
+                .WithGoogleRequestParam("parent", request => request.Parent);
             _callUpdateIntent = clientHelper.BuildApiCall<UpdateIntentRequest, Intent>(
-                GrpcClient.UpdateIntentAsync, GrpcClient.UpdateIntent, effectiveSettings.UpdateIntentSettings);
+                GrpcClient.UpdateIntentAsync, GrpcClient.UpdateIntent, effectiveSettings.UpdateIntentSettings)
+                .WithGoogleRequestParam("intent.name", request => request.Intent?.Name);
             _callDeleteIntent = clientHelper.BuildApiCall<DeleteIntentRequest, pbwkt::Empty>(
-                GrpcClient.DeleteIntentAsync, GrpcClient.DeleteIntent, effectiveSettings.DeleteIntentSettings);
+                GrpcClient.DeleteIntentAsync, GrpcClient.DeleteIntent, effectiveSettings.DeleteIntentSettings)
+                .WithGoogleRequestParam("name", request => request.Name);
             _callBatchUpdateIntents = clientHelper.BuildApiCall<BatchUpdateIntentsRequest, lro::Operation>(
-                GrpcClient.BatchUpdateIntentsAsync, GrpcClient.BatchUpdateIntents, effectiveSettings.BatchUpdateIntentsSettings);
+                GrpcClient.BatchUpdateIntentsAsync, GrpcClient.BatchUpdateIntents, effectiveSettings.BatchUpdateIntentsSettings)
+                .WithGoogleRequestParam("parent", request => request.Parent);
             _callBatchDeleteIntents = clientHelper.BuildApiCall<BatchDeleteIntentsRequest, lro::Operation>(
-                GrpcClient.BatchDeleteIntentsAsync, GrpcClient.BatchDeleteIntents, effectiveSettings.BatchDeleteIntentsSettings);
+                GrpcClient.BatchDeleteIntentsAsync, GrpcClient.BatchDeleteIntents, effectiveSettings.BatchDeleteIntentsSettings)
+                .WithGoogleRequestParam("parent", request => request.Parent);
             Modify_ApiCall(ref _callListIntents);
             Modify_ListIntentsApiCall(ref _callListIntents);
             Modify_ApiCall(ref _callGetIntent);
@@ -2037,7 +2743,7 @@ namespace Google.Cloud.Dialogflow.V2
         }
 
         /// <summary>
-        /// Deletes the specified intent.
+        /// Deletes the specified intent and its direct or indirect followup intents.
         /// </summary>
         /// <param name="request">
         /// The request object containing all of the parameters for the API call.
@@ -2057,7 +2763,7 @@ namespace Google.Cloud.Dialogflow.V2
         }
 
         /// <summary>
-        /// Deletes the specified intent.
+        /// Deletes the specified intent and its direct or indirect followup intents.
         /// </summary>
         /// <param name="request">
         /// The request object containing all of the parameters for the API call.

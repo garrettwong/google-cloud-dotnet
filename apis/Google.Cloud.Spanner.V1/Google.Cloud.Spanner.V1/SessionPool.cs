@@ -1,405 +1,248 @@
-﻿// Copyright 2017 Google Inc. All Rights Reserved.
-// 
+﻿// Copyright 2018 Google LLC
+//
 // Licensed under the Apache License, Version 2.0 (the "License");
 // you may not use this file except in compliance with the License.
 // You may obtain a copy of the License at
-// 
-//     http://www.apache.org/licenses/LICENSE-2.0
-// 
+//
+//     https://www.apache.org/licenses/LICENSE-2.0
+//
 // Unless required by applicable law or agreed to in writing, software
 // distributed under the License is distributed on an "AS IS" BASIS,
 // WITHOUT WARRANTIES OR CONDITIONS OF ANY KIND, either express or implied.
 // See the License for the specific language governing permissions and
 // limitations under the License.
 
+using Google.Api.Gax;
+using Google.Cloud.Spanner.Common.V1;
+using Google.Cloud.Spanner.V1.Internal.Logging;
+using Google.Protobuf;
+using Grpc.Core;
 using System;
 using System.Collections.Concurrent;
 using System.Linq;
-using System.Text;
 using System.Threading;
 using System.Threading.Tasks;
-using Google.Api.Gax;
-using Google.Cloud.Spanner.V1.Internal;
-using Google.Cloud.Spanner.V1.Internal.Logging;
-using Grpc.Core;
+using static Google.Cloud.Spanner.V1.TransactionOptions;
 
 namespace Google.Cloud.Spanner.V1
 {
     /// <summary>
-    /// The SessionPool is the preferred method of managing Spanner Sessions.
-    /// It performs pooling of sessions with an evict timer along with configurable settings to control the maximum
-    /// number of pooled and active sessions.
-    /// To create a session using the sessionpool, use the extension method on SpannerClient.
-    /// 
-    ///     var session = await SpannerClient.CreateSessionFromPoolAsync(project, spannerInstance, database, cancellationtoken);
-    ///     
-    /// To release a session back to the sessionpool:
-    /// 
-    ///     session.ReleaseToPool();
-    ///   
-    /// If you use the SessionPool, you must make sure sessions are properly released back into the pool and are not simply GC'd.
-    /// Allowing a session to GC will incur penalties on the current process as the session will count towards the maximum allowed
-    /// and it will incur a penalty on other Spanner processes because it will be an hour before the server frees the session if 
-    /// it's not properly deleted.
+    /// A pool of sessions associated with a SpannerClient.
+    /// Sessions can be acquired by specifying the desired transaction options, if any.
+    /// A session/transaction pair is then returned, which should be returned to the pool when
+    /// it is no longer required. Sessions are kept alive automatically, and retired if they
+    /// are expired by the server.
     /// </summary>
-    public sealed class SessionPool : IDisposable
+    public sealed partial class SessionPool
     {
+        private readonly ISessionPool _detachedSessionPool;
+        private readonly Logger _logger;
+        private readonly IClock _clock;
+        private readonly IScheduler _scheduler;
+
+        private readonly SemaphoreSlim _batchSessionCreateSemaphore;
+
         /// <summary>
-        /// The default session pool, used in almost all cases other than testing.
+        /// The options governing this session pool.
         /// </summary>
-        public static SessionPool Default { get; } = new SessionPool();
+        public SessionPoolOptions Options { get; }
 
-        private Logger Logger { get; } = Logger.DefaultLogger;
+        /// <summary>
+        /// The client used for all operations in this pool.
+        /// </summary>
+        internal SpannerClient Client { get; }
 
-        internal TimeSpan ShutDownTimeout { get; } = TimeSpan.FromSeconds(60);
+        private readonly ConcurrentDictionary<DatabaseName, TargetedSessionPool> _targetedPools =
+            new ConcurrentDictionary<DatabaseName, TargetedSessionPool>();
 
-        // This member holds information we'll use when the session later gets released.
-        private readonly ConcurrentDictionary<Session, SessionPoolKey> _sessionsInUse =
-            new ConcurrentDictionary<Session, SessionPoolKey>();
-
-        private int _sessionsCreating;
-        private readonly ConcurrentQueue<TaskCompletionSource<int>> _waitQueue =
-            new ConcurrentQueue<TaskCompletionSource<int>>();
-        private readonly object _waitSync = new object();
-
-        private readonly ConcurrentDictionary<SessionPoolKey, SessionPoolImpl>
-            _poolByClientAndDatabase = new ConcurrentDictionary<SessionPoolKey, SessionPoolImpl>();
-        private readonly PriorityList<SessionPoolImpl> _priorityList = new PriorityList<SessionPoolImpl>();
-
-        private static readonly ConcurrentDictionary<string, bool> s_blackListedSessions = new ConcurrentDictionary<string, bool>();
-
-        static SessionPool()
+        /// <summary>
+        /// Creates a session pool for the given client.
+        /// </summary>
+        /// <param name="client">The client to use for this session pool. Must not be null.</param>
+        /// <param name="options">The options for this session pool. Must not be null.</param>
+        public SessionPool(SpannerClient client, SessionPoolOptions options)
         {
-            GrpcEnvironment.ShuttingDown += (o, e) => Default.Dispose();
-        }
-
-        // Returns the maximum difference in size between the smallest and largest pool.
-        // For test purposes only.
-        // poolContents will be filled with the contents of the pool and may not be null.
-        internal int GetPoolInfo(StringBuilder poolContents)
-        {
-            GaxPreconditions.CheckNotNull(poolContents, nameof(poolContents));
-            var maxSize = 0;
-            var minSize = int.MaxValue;
-            poolContents.AppendLine("SessionPool.Contents (by priority):");
-            var i = 0;
-            foreach (var priorityListEntry in _priorityList.GetSnapshot())
+            Client = GaxPreconditions.CheckNotNull(client, nameof(client));
+            _clock = client.Settings.Clock ?? SystemClock.Instance;
+            _scheduler = client.Settings.Scheduler ?? SystemScheduler.Instance;
+            Options = GaxPreconditions.CheckNotNull(options, nameof(options));
+            _logger = client.Settings.Logger; // Just to avoid fetching it all the time
+            _detachedSessionPool = new DetachedSessionPool(this);
+            _batchSessionCreateSemaphore = new SemaphoreSlim( (int) Math.Ceiling(
+                Options.MaximumConcurrentSessionCreates / (double) Options.CreateSessionMaximumBatchSize));
+            if (Options.MaintenanceLoopDelay != TimeSpan.Zero)
             {
-                poolContents.AppendLine($"SessionPool({i}) Key:${priorityListEntry.Key}"
-                    + $" HashCode_of_Pool:{priorityListEntry.GetHashCode()}");
-                i++;
+                Task.Run(() => PoolMaintenanceLoop(this));
             }
-            poolContents.AppendLine("SessionPool.Contents (by client):");
-            var byClientIndex = 0;
-            foreach (var byClientEntry in _poolByClientAndDatabase)
-            {
-                poolContents.AppendLine($"SessionPool({byClientIndex}) Key:${byClientEntry.Key}"
-                    + $" HashCode_of_Pool:{byClientEntry.Value.GetHashCode()}");
-                var size = byClientEntry.Value.DumpSessionPoolContents(poolContents);
-                if (size > 0)
-                {
-                    minSize = Math.Min(size, minSize);
-                    maxSize = Math.Max(size, maxSize);
-                }
-                byClientIndex++;
-            }
-
-            return maxSize - minSize;
         }
 
         /// <summary>
-        /// Returns a diagnostic summary of the state of the pool.
+        /// A long-running loop performing pool maintenance. Each iteration runs <see cref="MaintainPool"/>.
+        /// This is a static method to allow the target pool to be garbage collected, at which point the
+        /// method will complete. (This method only retains a week reference to the specified pool.)
         /// </summary>
-        internal string ToDiagnosticSummary()
+        /// <param name="pool">The pool to maintain.</param>
+        /// <returns>A task which completes when the maintenance loop has finished, due to the session pool being
+        /// garbage collected</returns>
+        private static async Task PoolMaintenanceLoop(SessionPool pool)
         {
-            var pools = _poolByClientAndDatabase.Values.ToList();
-            var poolSizes = string.Join(", ", pools.Select(p => p.GetPoolSize()));
-            return $"Active sessions: {CurrentActiveSessions}; Pools: {pools.Count}; Pool sizes: {poolSizes}";
-        }
-
-        private Task WhenCanceled(CancellationToken cancellationToken)
-        {
-            var tcs = new TaskCompletionSource<bool>();
-            cancellationToken.Register(s => ((TaskCompletionSource<bool>)s).SetResult(true), tcs);
-            return tcs.Task;
-        }
-
-        private async Task StartSessionCreatingAsync(CancellationToken cancellationToken)
-        {
-            TaskCompletionSource<int> signal = new TaskCompletionSource<int>();
-            var cancellationTask = WhenCanceled(cancellationToken);
-
-            lock (_waitSync)
+            // Keep a weak reference so that the pool can be garbage collected and we can stop the
+            // maintenance task.
+            var weakRef = new WeakReference<SessionPool>(pool);
+            // Make sure that even if the pool variable is captured due to compiler implementation details,
+            // it won't prevent garbage collection.
+            pool = null;
+            while (true)
             {
-                //we check waitQ.IsEmpty to allow us to free a session slot and signal the Q
-                //in two separate steps (outside of a sync lock) to remove the possibliity
-                //that a race condition could cause fairness to suffer (like someone snuck in and
-                //allocated a session jumping in front of folks waiting in the Q).
-                if (CurrentActiveSessions < Options.MaximumActiveSessions
-                    && _waitQueue.IsEmpty)
+                if (!weakRef.TryGetTarget(out var localPool))
                 {
-                    _sessionsCreating++;
                     return;
                 }
-                if (!Options.WaitOnResourcesExhausted)
-                {
-                    throw new RpcException(new Status(StatusCode.ResourceExhausted,
-                        "Number of available Sessions exhausted."));
-                }
-                //we force the current request to get in line so that allocation is fair.
-                _waitQueue.Enqueue(signal);
-            }
-            //we need to block or throw because we are out of allocations.
-            await Task.WhenAny(signal.Task, cancellationTask).ConfigureAwait(false);
-            if (cancellationTask.IsCanceled)
-            {
-                if (signal.Task.IsCompleted)
-                {
-                    lock (_waitSync)
-                    {
-                        //if somehow we got canceled AND the task was signled, lets fix the counter.
-                        _sessionsCreating--;
-                        SignalAnyWaitingRequests();
-                    }
-                }
-                cancellationToken.ThrowIfCancellationRequested();
-            }
-        }
-
-        private void EndSessionCreating(Session sessionResult, SessionPoolKey sessionPoolKey)
-        {
-            lock (_waitSync)
-            {
-                if (sessionResult != null)
-                {
-                    _sessionsInUse.AddOrUpdate(sessionResult,
-                        x => sessionPoolKey,
-                        (x, y) => sessionPoolKey);
-                }
-
-                _sessionsCreating--;
-                LogSessionsInUse();
-
-                //signal more queue entries (in fair order) if we still have room.
-                SignalAnyWaitingRequests();
-            }
-        }
-
-        /// <summary>
-        /// Marks a session as expired so that it will never be pooled in the sessionpool
-        /// </summary>
-        /// <param name="session">The session to mark as expired. May be null, in which case this method is a no-op.</param>
-        public static void MarkSessionExpired(Session session)
-        {
-            if (session != null)
-            {
-                s_blackListedSessions.TryAdd(session.Name, true);
-            }
-        }
-
-        /// <summary>
-        /// Returns true if the given session has been marked as expired.
-        /// </summary>
-        /// <param name="session">The session to check for expiry. May be null, in which case the return value is always false.</param>
-        /// <returns>True if <paramref name="session"/> has been marked as expired; false otherwise.</returns>
-        public bool IsSessionExpired(Session session) => session != null && s_blackListedSessions.TryGetValue(session.Name, out _);
-
-        /// <summary>
-        /// Allocates a session from the pool if possible, or creates a new Spanner Session.
-        /// </summary>
-        /// <param name="spannerClient">The client to associate with the session. Must not be null.</param>
-        /// <param name="project">The project of the session. Must not be null.</param>
-        /// <param name="spannerInstance">The instance of the session. Must not be null.</param>
-        /// <param name="spannerDatabase">The database of the session. Must not be null.</param>
-        /// <param name="options">The transaction options for the session. Must not be null.</param>
-        /// <param name="cancellationToken">A cancellation token for the asynchronous operation.</param>
-        /// <returns>A task which, when completed, will return the session.</returns>
-        public async Task<Session> CreateSessionFromPoolAsync(
-            SpannerClient spannerClient,
-            string project,
-            string spannerInstance,
-            string spannerDatabase,
-            TransactionOptions options,
-            CancellationToken cancellationToken)
-        {
-            GaxPreconditions.CheckNotNull(spannerClient, nameof(spannerClient));
-            GaxPreconditions.CheckNotNull(project, nameof(project));
-            GaxPreconditions.CheckNotNull(spannerInstance, nameof(spannerInstance));
-            GaxPreconditions.CheckNotNull(spannerDatabase, nameof(spannerDatabase));
-            GaxPreconditions.CheckNotNull(options, nameof(options));
-
-            await StartSessionCreatingAsync(cancellationToken).ConfigureAwait(false);
-            Session sessionResult = null;
-            SessionPoolKey sessionPoolKey = default;
-            try
-            {
-                sessionPoolKey = new SessionPoolKey(spannerClient, project, spannerInstance, spannerDatabase);
-                SessionPoolImpl targetPool = _poolByClientAndDatabase.GetOrAdd(sessionPoolKey, key => new SessionPoolImpl(key, Options));
-
-                sessionResult = await targetPool.AcquireSessionAsync(options, cancellationToken).ConfigureAwait(false);
-                // Refresh the MRU list which tells us what sessions need to be trimmed from the pool when we want
-                // to add another poolEntry.
-                return sessionResult;
-            }
-            finally
-            {
-                EndSessionCreating(sessionResult, sessionPoolKey);
-            }
-        }
-
-        // Only present for testing.
-        internal int GetPoolSize(SpannerClient spannerClient, string project, string spannerInstance, string spannerDatabase)
-        {
-            GaxPreconditions.CheckNotNull(spannerClient, nameof(spannerClient));
-            GaxPreconditions.CheckNotNull(project, nameof(project));
-            GaxPreconditions.CheckNotNull(spannerInstance, nameof(spannerInstance));
-            GaxPreconditions.CheckNotNull(spannerDatabase, nameof(spannerDatabase));
-            var sessionPoolKey = new SessionPoolKey(spannerClient, project, spannerInstance, spannerDatabase);
-            SessionPoolImpl targetPool = _poolByClientAndDatabase.GetOrAdd(sessionPoolKey, key => new SessionPoolImpl(key, Options));
-
-            return targetPool.GetPoolSize();
-        }
-
-        private void SignalAnyWaitingRequests()
-        {
-            lock (_waitSync)
-            {
-                TaskCompletionSource<int> waitingSessionRequest;
-                //if anyone is waiting, let them query for their session.
-                if (CurrentActiveSessions < Options.MaximumActiveSessions
-                    && _waitQueue.TryDequeue(out waitingSessionRequest))
-                {
-                    _sessionsCreating++;
-                    waitingSessionRequest.SetResult(0);
-                }
-            }
-        }
-
-        private void LogSessionsInUse()
-        {
-            Logger.LogPerformanceCounter("Session.ActiveCount", () => _sessionsInUse.Count);
-        }
-
-        /// <summary>
-        /// Releases a session back into the pool, possibly causing another entry to be evicted if the maximum pool size has been
-        /// reached.
-        /// </summary>
-        /// <param name="client">The client using the session. Must not be null.</param>
-        /// <param name="session">The session to release. Must not be null.</param>
-        public void ReleaseToPool(SpannerClient client, Session session)
-        {
-            GaxPreconditions.CheckNotNull(client, nameof(client));
-            GaxPreconditions.CheckNotNull(session, nameof(session));
-
-            SessionPoolKey poolKey;
-            if (_sessionsInUse.TryRemove(session, out poolKey))
-            {
-                LogSessionsInUse();
                 try
                 {
-                    if (IsSessionExpired(session))
-                    {
-                        bool unused;
-                        s_blackListedSessions.TryRemove(session.Name, out unused);
-                        return;
-                    }
-                    var targetPool = _poolByClientAndDatabase.GetOrAdd(
-                        poolKey,
-                        key => new SessionPoolImpl(key, Options));
-
-                    //Figure out if we want to pool this released session.
-                    targetPool.ReleaseSessionToPool(client, session);
-                    _priorityList.Add(targetPool);
-                    if (CurrentPooledSessions > Options.MaximumPooledSessions)
-                    {
-                        var evictionPool = _priorityList.GetTop();
-                        var evictionClient = evictionPool?.Key.Client;
-                        var evictionSession = evictionPool?.AcquireEvictionCandidate();
-                        if (evictionSession != null)
-                        {
-                            Task.Run(() => EvictSessionAsync(evictionClient, evictionSession));
-                        }
-                    }
+                    localPool.MaintainPool();
                 }
-                finally
+                catch (Exception e)
                 {
-                    //signal to any blocked requestor that they *may* be able to allocate a session.
-                    SignalAnyWaitingRequests();
+                    localPool._logger.Error($"Error running {nameof(SessionPool)} maintenance task", e);
                 }
+                var scheduler = localPool._scheduler;
+                var delay = localPool.Options.MaintenanceLoopDelay;
+                // Allow the pool to be collected while we're waiting.
+                localPool = null;
+                await scheduler.Delay(delay, CancellationToken.None).ConfigureAwait(false);
             }
-            else
+        }
+
+        private void MaintainPool()
+        {
+            var snapshot = _targetedPools.ToArray();
+            foreach (var pool in snapshot.Select(pair => pair.Value))
             {
-                Logger.Error(() =>
-                    "An attempt was made to release a session to the pool, but the session was not originally allocated from the pool.");
+                pool.MaintainPool();
             }
         }
 
-        private async Task EvictSessionAsync(SpannerClient evictionClient,
-            Session evictionSession)
+        /// <summary>
+        /// Provides a snapshot of statistics for this pool.
+        /// </summary>
+        /// <returns>A snapshot of statistics for this pool.</returns>
+        public Statistics GetStatisticsSnapshot() =>
+            new Statistics(_targetedPools.ToArray().Select(p => p.Value.GetStatisticsSnapshot()).ToList().AsReadOnly());
+
+        /// <summary>
+        /// Provides a snapshot of statistics for a database-specific pool.
+        /// </summary>
+        /// <returns>A snapshot of statistics for this pool.</returns>
+        public DatabaseStatistics GetStatisticsSnapshot(DatabaseName databaseName)
         {
-            await TransactionPool.RemoveSessionAsync(evictionSession).ConfigureAwait(false);
-            await evictionClient.DeleteSessionAsync(evictionSession.SessionName).ConfigureAwait(false);
+            GaxPreconditions.CheckNotNull(databaseName, nameof(databaseName));
+            return _targetedPools.TryGetValue(databaseName, out var pool) ? pool.GetStatisticsSnapshot() : null;
         }
 
         /// <summary>
-        /// Called to close a session and release it without putting it back into the pool.
+        /// Asynchronously acquires a session, potentially associated with a transaction.
         /// </summary>
-        /// <param name="session">The session to close. Must not be null.</param>
-        /// <returns>A task representing the asynchronous operation.</returns>
-        public async Task CloseAsync(Session session)
+        /// <param name="databaseName">The name of the database to acquire the session for.</param>
+        /// <param name="transactionOptions">The transaction options required for the session. After the operation completes,
+        /// this value is no longer used, so modifications to the object will not affect the transaction. May be null.</param>
+        /// <param name="cancellationToken">An optional token for canceling the call.</param>
+        /// <returns>The <see cref="PooledSession"/> representing the client, session and transaction.</returns>
+        public Task<PooledSession> AcquireSessionAsync(DatabaseName databaseName, TransactionOptions transactionOptions, CancellationToken cancellationToken)
         {
-            GaxPreconditions.CheckNotNull(session, nameof(session));
+            GaxPreconditions.CheckNotNull(databaseName, nameof(databaseName));
+            var targetedPool = _targetedPools.GetOrAdd(databaseName, key => new TargetedSessionPool(this, key, acquireSessionsImmediately: true));
+            return targetedPool.AcquireSessionAsync(transactionOptions, cancellationToken);
+        }
 
-            SessionPoolKey result;
-            if (_sessionsInUse.TryRemove(session, out result))
+        /// <summary>
+        /// Creates a <see cref="PooledSession"/> with a known name and transaction ID/mode, with the client associated
+        /// with this pool, but is otherwise not part of this pool. This method does not query the server for the session state.
+        /// When the returned <see cref="PooledSession"/> is released, it will not become part of this pool.
+        /// </summary>
+        /// <remarks>
+        /// This is typically used for partitioned queries, where the same session is used across multiple machines, so should
+        /// not be reused by the pool.
+        /// </remarks>
+        /// <param name="sessionName">The name of the transaction. Must not be null.</param>
+        /// <param name="transactionId">The ID of the transaction. Must not be null.</param>
+        /// <param name="transactionMode">The mode of the transaction.</param>
+        /// <returns>A <see cref="PooledSession"/> for the given session and transaction.</returns>
+        public PooledSession CreateDetachedSession(SessionName sessionName, ByteString transactionId, ModeOneofCase transactionMode)
+        {
+            GaxPreconditions.CheckNotNull(sessionName, nameof(sessionName));
+            GaxPreconditions.CheckNotNull(transactionId, nameof(transactionId));
+            return PooledSession.FromSessionName(_detachedSessionPool, sessionName).WithTransaction(transactionId, transactionMode);
+        }
+
+        /// <summary>
+        /// Returns a task indicating when the session pool associated with the given database name is populated up to its minimum size.
+        /// </summary>
+        /// <remarks>
+        /// If the pool is unhealthy or becomes unhealthy before it reaches its minimum size,
+        /// the returned task will be faulted with an <see cref="RpcException"/>.
+        /// </remarks>
+        /// <param name="databaseName">The database whose session pool should be populated. Must not be null.</param>
+        /// <param name="cancellationToken">An optional token for canceling the call.</param>
+        /// <returns>A task which will complete when the session pool has reached its minimum size.</returns>
+        public Task WhenPoolReady(DatabaseName databaseName, CancellationToken cancellationToken = default)
+        {
+            GaxPreconditions.CheckNotNull(databaseName, nameof(databaseName));
+            var targetedPool = _targetedPools.GetOrAdd(databaseName, key => new TargetedSessionPool(this, key, acquireSessionsImmediately: true));
+            return targetedPool.WhenPoolReady(cancellationToken);
+        }
+
+        /// <summary>
+        /// Shuts down the session pool associated with the given database name.
+        /// Further attempts to acquire sessions will fail immediately.
+        /// </summary>
+        /// <remarks>
+        /// This call will delete all pooled sessions, and wait for all active sessions to be released back to the pool
+        /// and also deleted.
+        /// </remarks>
+        /// <param name="databaseName">The database whose session pool should be shut down. Must not be null.</param>
+        /// <param name="cancellationToken">An optional token for canceling the returned task. This does not cancel the shutdown itself.</param>
+        /// <returns>A task which will complete when the session pool has finished shutting down.</returns>
+        public Task ShutdownPoolAsync(DatabaseName databaseName, CancellationToken cancellationToken)
+        {
+            GaxPreconditions.CheckNotNull(databaseName, nameof(databaseName));
+            // Note that we do potentially create a pool, so that we consistently end the call with a shut-down session pool
+            // associated with the given name.
+            var targetedPool = _targetedPools.GetOrAdd(databaseName, key => new TargetedSessionPool(this, key, acquireSessionsImmediately: false));
+            return targetedPool.ShutdownPoolAsync(cancellationToken);
+        }
+
+        /// <summary>
+        /// Awooga! Async void method! This is almost always a bad idea, but in this case we have "fire and forget" background
+        /// tasks (all created within this method). We want to log errors, but that's all.
+        /// </summary>
+        private async void ConsumeBackgroundTask(Task task, string purpose)
+        {
+            try
             {
-                LogSessionsInUse();
-                SignalAnyWaitingRequests();
-                await result.Client.DeleteSessionAsync(session.SessionName).ConfigureAwait(false);
-                return;
+                await task.ConfigureAwait(false);
             }
-            throw new InvalidOperationException("Close Session was not able to locate the provided session.");
-        }
-
-        /// <summary>
-        /// Releases all pooled sessions and frees resources on the server.
-        /// </summary>
-        /// <returns>A task representing the asynchronous operation.</returns>
-        public Task ReleaseAllAsync()
-        {
-            var entries = _poolByClientAndDatabase.Values;
-            // ReleaseAll can be called while other operations are starting.
-            return Task.WhenAll(entries.Select(sessionpool => sessionpool.ReleaseAllImpl()));
-        }
-
-        /// <summary>
-        /// The current number of active sessions in use by the application.
-        /// </summary>
-        public int CurrentActiveSessions
-        {
-            get
+            catch (Exception e)
             {
-                lock (_waitSync)
-                {
-                    return _sessionsInUse.Count + _sessionsCreating;
-                }
+                _logger.Error($"Error in background session pool task for {purpose}", e);
             }
         }
 
-        /// <summary>
-        /// The current number of sessions in the Session Pool.
-        /// </summary>
-        public int CurrentPooledSessions => SessionPoolImpl.ActiveSessionsPooled;
-
-        /// <summary>
-        /// The options for this session pool.
-        /// </summary>
-        public SessionPoolOptions Options { get; } = new SessionPoolOptions();
-
-        /// <inheritdoc />
-        public void Dispose()
+        private void DeleteSessionFireAndForget(PooledSession session)
         {
-            Task.Run(ReleaseAllAsync).Wait(ShutDownTimeout);
+            ConsumeBackgroundTask(DeleteSessionAsync(session), "session deletion");
+        }
+
+        private async Task DeleteSessionAsync(PooledSession session)
+        {
+            try
+            {
+                await Client.DeleteSessionAsync(new DeleteSessionRequest { SessionName = session.SessionName }).ConfigureAwait(false);
+            }
+            catch (RpcException e)
+            {
+                _logger.Warn("Failed to delete session. Session will be abandoned to garbage collection.", e);
+            }
         }
     }
 }

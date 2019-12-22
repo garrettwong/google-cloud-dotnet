@@ -15,13 +15,13 @@
 
 using Google.Api.Gax;
 using Google.Api.Gax.Grpc;
-using Google.Cloud.Firestore.V1Beta1;
+using Google.Cloud.Firestore.V1;
 using Google.Protobuf;
 using System.Collections.Generic;
 using System.Linq;
 using System.Threading;
 using System.Threading.Tasks;
-using static Google.Cloud.Firestore.V1Beta1.TransactionOptions.Types;
+using static Google.Cloud.Firestore.V1.TransactionOptions.Types;
 
 namespace Google.Cloud.Firestore
 {
@@ -59,7 +59,7 @@ namespace Google.Cloud.Firestore
             var request = new BeginTransactionRequest
             {
                 Database = db.RootPath,
-                Options = previousTransactionId == null ? null : new V1Beta1.TransactionOptions { ReadWrite = new ReadWrite { RetryTransaction = previousTransactionId } }
+                Options = previousTransactionId == null ? null : new V1.TransactionOptions { ReadWrite = new ReadWrite { RetryTransaction = previousTransactionId } }
             };
             var response = await db.Client.BeginTransactionAsync(request, CallSettings.FromCancellationToken(cancellationToken)).ConfigureAwait(false);
             return new Transaction(db, response.Transaction, cancellationToken);
@@ -76,8 +76,10 @@ namespace Google.Cloud.Firestore
         {
             GaxPreconditions.CheckNotNull(documentReference, nameof(documentReference));
             GaxPreconditions.CheckState(_writes.IsEmpty, "Firestore transactions require all reads to be executed before all writes.");
-            CancellationToken effectiveToken = GetEffectiveCancellationToken(cancellationToken);
-            return documentReference.GetSnapshotAsync(TransactionId, effectiveToken);
+            using (var cts = CancellationTokenSource.CreateLinkedTokenSource(CancellationToken, cancellationToken))
+            {
+                return documentReference.GetSnapshotAsync(TransactionId, cts.Token);
+            }
         }
 
         /// <summary>
@@ -91,11 +93,30 @@ namespace Google.Cloud.Firestore
         /// <param name="documentReferences">The document references to fetch. Must not be null, or contain null references.</param>
         /// <param name="cancellationToken">A cancellation token to monitor for the asynchronous operation.</param>
         /// <returns>The document snapshots, in the same order as <paramref name="documentReferences"/>.</returns>
-        public Task<IList<DocumentSnapshot>> GetAllSnapshotsAsync(IEnumerable<DocumentReference> documentReferences, CancellationToken cancellationToken = default)
+        public Task<IList<DocumentSnapshot>> GetAllSnapshotsAsync(IEnumerable<DocumentReference> documentReferences, CancellationToken cancellationToken = default) =>
+            GetAllSnapshotsAsync(documentReferences, fieldMask: null, cancellationToken);
+
+        /// <summary>
+        /// Fetch snapshots of all the documents specified by <paramref name="documentReferences"/>, with respect to this transaction,
+        /// potentially limiting the fields returned.
+        /// This method cannot be called after any write operations have been created.
+        /// </summary>
+        /// <remarks>
+        /// Any documents which are missing are represented in the returned list by a <see cref="DocumentSnapshot"/>
+        /// with <see cref="DocumentSnapshot.Exists"/> value of <c>false</c>.
+        /// </remarks>
+        /// <param name="documentReferences">The document references to fetch. Must not be null, or contain null references.</param>
+        /// <param name="fieldMask">The field mask to use to restrict which fields are retrieved. May be null, in which
+        /// case no field mask is applied, and the complete documents are retrieved.</param>
+        /// <param name="cancellationToken">A cancellation token to monitor for the asynchronous operation.</param>
+        /// <returns>The document snapshots, in the same order as <paramref name="documentReferences"/>.</returns>
+        public Task<IList<DocumentSnapshot>> GetAllSnapshotsAsync(IEnumerable<DocumentReference> documentReferences, FieldMask fieldMask, CancellationToken cancellationToken = default)
         {
             GaxPreconditions.CheckState(_writes.IsEmpty, "Firestore transactions require all reads to be executed before all writes.");
-            CancellationToken effectiveToken = GetEffectiveCancellationToken(cancellationToken);
-            return Database.GetAllSnapshotsAsync(documentReferences, TransactionId, effectiveToken);
+            using (var cts = CancellationTokenSource.CreateLinkedTokenSource(CancellationToken, cancellationToken))
+            {
+                return Database.GetAllSnapshotsAsync(documentReferences, TransactionId, fieldMask, cts.Token);
+            }
         }
 
         /// <summary>
@@ -108,9 +129,11 @@ namespace Google.Cloud.Firestore
         public Task<QuerySnapshot> GetSnapshotAsync(Query query, CancellationToken cancellationToken = default)
         {
             GaxPreconditions.CheckNotNull(query, nameof(query));
-            CancellationToken effectiveToken = GetEffectiveCancellationToken(cancellationToken);
             GaxPreconditions.CheckState(_writes.IsEmpty, "Firestore transactions require all reads to be executed before all writes.");
-            return query.GetSnapshotAsync(TransactionId, cancellationToken);
+            using (var cts = CancellationTokenSource.CreateLinkedTokenSource(CancellationToken, cancellationToken))
+            {
+                return query.GetSnapshotAsync(TransactionId, cts.Token);
+            }
         }
 
         /// <summary>
@@ -200,10 +223,5 @@ namespace Google.Cloud.Firestore
         /// <returns>A task representing the asynchronous operation.</returns>
         internal Task RollbackAsync() =>
             Database.Client.RollbackAsync(Database.RootPath, TransactionId, CancellationToken);
-
-        private CancellationToken GetEffectiveCancellationToken(CancellationToken other) =>
-            !CancellationToken.CanBeCanceled ? other
-            : !other.CanBeCanceled ? CancellationToken
-            : CancellationTokenSource.CreateLinkedTokenSource(CancellationToken, other).Token;
     }
 }

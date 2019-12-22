@@ -1,4 +1,4 @@
-// Copyright 2018 Google LLC
+// Copyright 2019 Google LLC
 //
 // Licensed under the Apache License, Version 2.0 (the "License");
 // you may not use this file except in compliance with the License.
@@ -174,15 +174,15 @@ namespace Google.Cloud.PubSub.V1.Snippets
             UpdateSubscriptionRequest request = new UpdateSubscriptionRequest
             {
                 Subscription = new Subscription
-                               {
-                                   AckDeadlineSeconds = 42,
-                               },
+                {
+                    AckDeadlineSeconds = 42,
+                },
                 UpdateMask = new FieldMask
-                             {
-                                 Paths = {
-                                             "ack_deadline_seconds",
-                                         },
-                             },
+                {
+                    Paths = {
+                                "ack_deadline_seconds",
+                            },
+                },
             };
             // Make the request
             Subscription response = await subscriberServiceApiClient.UpdateSubscriptionAsync(request);
@@ -199,15 +199,15 @@ namespace Google.Cloud.PubSub.V1.Snippets
             UpdateSubscriptionRequest request = new UpdateSubscriptionRequest
             {
                 Subscription = new Subscription
-                               {
-                                   AckDeadlineSeconds = 42,
-                               },
+                {
+                    AckDeadlineSeconds = 42,
+                },
                 UpdateMask = new FieldMask
-                             {
-                                 Paths = {
-                                             "ack_deadline_seconds",
-                                         },
-                             },
+                {
+                    Paths = {
+                                "ack_deadline_seconds",
+                            },
+                },
             };
             // Make the request
             Subscription response = subscriberServiceApiClient.UpdateSubscription(request);
@@ -1022,18 +1022,18 @@ namespace Google.Cloud.PubSub.V1.Snippets
             UpdateSnapshotRequest request = new UpdateSnapshotRequest
             {
                 Snapshot = new Snapshot
-                           {
-                               ExpireTime = new Timestamp
-                                            {
-                                                Seconds = 123456L,
-                                            },
-                           },
+                {
+                    ExpireTime = new Timestamp
+                                 {
+                                     Seconds = 123456L,
+                                 },
+                },
                 UpdateMask = new FieldMask
-                             {
-                                 Paths = {
-                                             "expire_time",
-                                         },
-                             },
+                {
+                    Paths = {
+                                "expire_time",
+                            },
+                },
             };
             // Make the request
             Snapshot response = await subscriberServiceApiClient.UpdateSnapshotAsync(request);
@@ -1050,18 +1050,18 @@ namespace Google.Cloud.PubSub.V1.Snippets
             UpdateSnapshotRequest request = new UpdateSnapshotRequest
             {
                 Snapshot = new Snapshot
-                           {
-                               ExpireTime = new Timestamp
-                                            {
-                                                Seconds = 123456L,
-                                            },
-                           },
+                {
+                    ExpireTime = new Timestamp
+                                 {
+                                     Seconds = 123456L,
+                                 },
+                },
                 UpdateMask = new FieldMask
-                             {
-                                 Paths = {
-                                             "expire_time",
-                                         },
-                             },
+                {
+                    Paths = {
+                                "expire_time",
+                            },
+                },
             };
             // Make the request
             Snapshot response = subscriberServiceApiClient.UpdateSnapshot(request);

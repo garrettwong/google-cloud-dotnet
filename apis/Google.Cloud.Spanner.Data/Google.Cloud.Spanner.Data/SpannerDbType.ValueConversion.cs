@@ -12,23 +12,20 @@
 // See the License for the specific language governing permissions and
 // limitations under the License.
 
+using Google.Protobuf.WellKnownTypes;
 using System;
 using System.Collections;
 using System.Collections.Generic;
-using static System.Globalization.CultureInfo;
 using System.Linq;
 using System.Reflection;
 using System.Xml;
-using Google.Protobuf.WellKnownTypes;
+using static System.Globalization.CultureInfo;
 using TypeCode = Google.Cloud.Spanner.V1.TypeCode;
 
 namespace Google.Cloud.Spanner.Data
 {
     public sealed partial class SpannerDbType
     {
-        internal object ConvertToClrType(Value protobufValue, SpannerConversionOptions options) =>
-            ConvertToClrType(protobufValue, typeof(object), options, topLevel: true);
-
         internal T ConvertToClrType<T>(Value protobufValue, SpannerConversionOptions options) =>
             (T) ConvertToClrType(protobufValue, typeof(T), options, topLevel: true);
 
@@ -442,7 +439,7 @@ namespace Google.Cloud.Spanner.Data
                 return ret;
             }
             
-            // TODO: Do we still want to support this?
+            // It's questionable as to whether we want to support this, but it does no harm to do so.
             if (typeof(IDictionary).IsAssignableFrom(targetClrType))
             {
                 if (targetClrType == typeof(IDictionary))

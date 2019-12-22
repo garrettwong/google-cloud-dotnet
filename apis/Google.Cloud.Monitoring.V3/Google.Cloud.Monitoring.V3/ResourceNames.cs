@@ -1,4 +1,4 @@
-// Copyright 2018 Google LLC
+// Copyright 2019 Google LLC
 //
 // Licensed under the Apache License, Version 2.0 (the "License");
 // you may not use this file except in compliance with the License.
@@ -67,6 +67,13 @@ namespace Google.Cloud.Monitoring.V3
                 return false;
             }
         }
+
+        /// <summary>Formats the IDs into the string representation of the <see cref="AlertPolicyName"/>.</summary>
+        /// <param name="projectId">The <c>project</c> ID. Must not be <c>null</c>.</param>
+        /// <param name="alertPolicyId">The <c>alertPolicy</c> ID. Must not be <c>null</c>.</param>
+        /// <returns>The string representation of the <see cref="AlertPolicyName"/>.</returns>
+        public static string Format(string projectId, string alertPolicyId) =>
+            s_template.Expand(gax::GaxPreconditions.CheckNotNull(projectId, nameof(projectId)), gax::GaxPreconditions.CheckNotNull(alertPolicyId, nameof(alertPolicyId)));
 
         /// <summary>
         /// Constructs a new instance of the <see cref="AlertPolicyName"/> resource name class
@@ -159,6 +166,14 @@ namespace Google.Cloud.Monitoring.V3
                 return false;
             }
         }
+
+        /// <summary>Formats the IDs into the string representation of the <see cref="AlertPolicyConditionName"/>.</summary>
+        /// <param name="projectId">The <c>project</c> ID. Must not be <c>null</c>.</param>
+        /// <param name="alertPolicyId">The <c>alertPolicy</c> ID. Must not be <c>null</c>.</param>
+        /// <param name="conditionId">The <c>condition</c> ID. Must not be <c>null</c>.</param>
+        /// <returns>The string representation of the <see cref="AlertPolicyConditionName"/>.</returns>
+        public static string Format(string projectId, string alertPolicyId, string conditionId) =>
+            s_template.Expand(gax::GaxPreconditions.CheckNotNull(projectId, nameof(projectId)), gax::GaxPreconditions.CheckNotNull(alertPolicyId, nameof(alertPolicyId)), gax::GaxPreconditions.CheckNotNull(conditionId, nameof(conditionId)));
 
         /// <summary>
         /// Constructs a new instance of the <see cref="AlertPolicyConditionName"/> resource name class
@@ -259,6 +274,13 @@ namespace Google.Cloud.Monitoring.V3
             }
         }
 
+        /// <summary>Formats the IDs into the string representation of the <see cref="GroupName"/>.</summary>
+        /// <param name="projectId">The <c>project</c> ID. Must not be <c>null</c>.</param>
+        /// <param name="groupId">The <c>group</c> ID. Must not be <c>null</c>.</param>
+        /// <returns>The string representation of the <see cref="GroupName"/>.</returns>
+        public static string Format(string projectId, string groupId) =>
+            s_template.Expand(gax::GaxPreconditions.CheckNotNull(projectId, nameof(projectId)), gax::GaxPreconditions.CheckNotNull(groupId, nameof(groupId)));
+
         /// <summary>
         /// Constructs a new instance of the <see cref="GroupName"/> resource name class
         /// from its component parts.
@@ -350,6 +372,13 @@ namespace Google.Cloud.Monitoring.V3
                 return false;
             }
         }
+
+        /// <summary>Formats the IDs into the string representation of the <see cref="MetricDescriptorName"/>.</summary>
+        /// <param name="projectId">The <c>project</c> ID. Must not be <c>null</c>.</param>
+        /// <param name="metricDescriptorId">The <c>metricDescriptor</c> ID. Must not be <c>null</c>.</param>
+        /// <returns>The string representation of the <see cref="MetricDescriptorName"/>.</returns>
+        public static string Format(string projectId, string metricDescriptorId) =>
+            s_template.Expand(gax::GaxPreconditions.CheckNotNull(projectId, nameof(projectId)), gax::GaxPreconditions.CheckNotNull(metricDescriptorId, nameof(metricDescriptorId)));
 
         /// <summary>
         /// Constructs a new instance of the <see cref="MetricDescriptorName"/> resource name class
@@ -443,6 +472,13 @@ namespace Google.Cloud.Monitoring.V3
             }
         }
 
+        /// <summary>Formats the IDs into the string representation of the <see cref="MonitoredResourceDescriptorName"/>.</summary>
+        /// <param name="projectId">The <c>project</c> ID. Must not be <c>null</c>.</param>
+        /// <param name="monitoredResourceDescriptorId">The <c>monitoredResourceDescriptor</c> ID. Must not be <c>null</c>.</param>
+        /// <returns>The string representation of the <see cref="MonitoredResourceDescriptorName"/>.</returns>
+        public static string Format(string projectId, string monitoredResourceDescriptorId) =>
+            s_template.Expand(gax::GaxPreconditions.CheckNotNull(projectId, nameof(projectId)), gax::GaxPreconditions.CheckNotNull(monitoredResourceDescriptorId, nameof(monitoredResourceDescriptorId)));
+
         /// <summary>
         /// Constructs a new instance of the <see cref="MonitoredResourceDescriptorName"/> resource name class
         /// from its component parts.
@@ -534,6 +570,13 @@ namespace Google.Cloud.Monitoring.V3
                 return false;
             }
         }
+
+        /// <summary>Formats the IDs into the string representation of the <see cref="NotificationChannelName"/>.</summary>
+        /// <param name="projectId">The <c>project</c> ID. Must not be <c>null</c>.</param>
+        /// <param name="notificationChannelId">The <c>notificationChannel</c> ID. Must not be <c>null</c>.</param>
+        /// <returns>The string representation of the <see cref="NotificationChannelName"/>.</returns>
+        public static string Format(string projectId, string notificationChannelId) =>
+            s_template.Expand(gax::GaxPreconditions.CheckNotNull(projectId, nameof(projectId)), gax::GaxPreconditions.CheckNotNull(notificationChannelId, nameof(notificationChannelId)));
 
         /// <summary>
         /// Constructs a new instance of the <see cref="NotificationChannelName"/> resource name class
@@ -627,6 +670,13 @@ namespace Google.Cloud.Monitoring.V3
             }
         }
 
+        /// <summary>Formats the IDs into the string representation of the <see cref="NotificationChannelDescriptorName"/>.</summary>
+        /// <param name="projectId">The <c>project</c> ID. Must not be <c>null</c>.</param>
+        /// <param name="channelDescriptorId">The <c>channelDescriptor</c> ID. Must not be <c>null</c>.</param>
+        /// <returns>The string representation of the <see cref="NotificationChannelDescriptorName"/>.</returns>
+        public static string Format(string projectId, string channelDescriptorId) =>
+            s_template.Expand(gax::GaxPreconditions.CheckNotNull(projectId, nameof(projectId)), gax::GaxPreconditions.CheckNotNull(channelDescriptorId, nameof(channelDescriptorId)));
+
         /// <summary>
         /// Constructs a new instance of the <see cref="NotificationChannelDescriptorName"/> resource name class
         /// from its component parts.
@@ -719,6 +769,12 @@ namespace Google.Cloud.Monitoring.V3
             }
         }
 
+        /// <summary>Formats the IDs into the string representation of the <see cref="ProjectName"/>.</summary>
+        /// <param name="projectId">The <c>project</c> ID. Must not be <c>null</c>.</param>
+        /// <returns>The string representation of the <see cref="ProjectName"/>.</returns>
+        public static string Format(string projectId) =>
+            s_template.Expand(gax::GaxPreconditions.CheckNotNull(projectId, nameof(projectId)));
+
         /// <summary>
         /// Constructs a new instance of the <see cref="ProjectName"/> resource name class
         /// from its component parts.
@@ -754,6 +810,212 @@ namespace Google.Cloud.Monitoring.V3
 
         /// <inheritdoc />
         public static bool operator !=(ProjectName a, ProjectName b) => !(a == b);
+    }
+
+    /// <summary>
+    /// Resource name for the 'service' resource.
+    /// </summary>
+    public sealed partial class ServiceName : gax::IResourceName, sys::IEquatable<ServiceName>
+    {
+        private static readonly gax::PathTemplate s_template = new gax::PathTemplate("projects/{project}/services/{service}");
+
+        /// <summary>
+        /// Parses the given service resource name in string form into a new
+        /// <see cref="ServiceName"/> instance.
+        /// </summary>
+        /// <param name="serviceName">The service resource name in string form. Must not be <c>null</c>.</param>
+        /// <returns>The parsed <see cref="ServiceName"/> if successful.</returns>
+        public static ServiceName Parse(string serviceName)
+        {
+            gax::GaxPreconditions.CheckNotNull(serviceName, nameof(serviceName));
+            gax::TemplatedResourceName resourceName = s_template.ParseName(serviceName);
+            return new ServiceName(resourceName[0], resourceName[1]);
+        }
+
+        /// <summary>
+        /// Tries to parse the given service resource name in string form into a new
+        /// <see cref="ServiceName"/> instance.
+        /// </summary>
+        /// <remarks>
+        /// This method still throws <see cref="sys::ArgumentNullException"/> if <paramref name="serviceName"/> is null,
+        /// as this would usually indicate a programming error rather than a data error.
+        /// </remarks>
+        /// <param name="serviceName">The service resource name in string form. Must not be <c>null</c>.</param>
+        /// <param name="result">When this method returns, the parsed <see cref="ServiceName"/>,
+        /// or <c>null</c> if parsing fails.</param>
+        /// <returns><c>true</c> if the name was parsed successfully; <c>false</c> otherwise.</returns>
+        public static bool TryParse(string serviceName, out ServiceName result)
+        {
+            gax::GaxPreconditions.CheckNotNull(serviceName, nameof(serviceName));
+            gax::TemplatedResourceName resourceName;
+            if (s_template.TryParseName(serviceName, out resourceName))
+            {
+                result = new ServiceName(resourceName[0], resourceName[1]);
+                return true;
+            }
+            else
+            {
+                result = null;
+                return false;
+            }
+        }
+
+        /// <summary>Formats the IDs into the string representation of the <see cref="ServiceName"/>.</summary>
+        /// <param name="projectId">The <c>project</c> ID. Must not be <c>null</c>.</param>
+        /// <param name="serviceId">The <c>service</c> ID. Must not be <c>null</c>.</param>
+        /// <returns>The string representation of the <see cref="ServiceName"/>.</returns>
+        public static string Format(string projectId, string serviceId) =>
+            s_template.Expand(gax::GaxPreconditions.CheckNotNull(projectId, nameof(projectId)), gax::GaxPreconditions.CheckNotNull(serviceId, nameof(serviceId)));
+
+        /// <summary>
+        /// Constructs a new instance of the <see cref="ServiceName"/> resource name class
+        /// from its component parts.
+        /// </summary>
+        /// <param name="projectId">The project ID. Must not be <c>null</c>.</param>
+        /// <param name="serviceId">The service ID. Must not be <c>null</c>.</param>
+        public ServiceName(string projectId, string serviceId)
+        {
+            ProjectId = gax::GaxPreconditions.CheckNotNull(projectId, nameof(projectId));
+            ServiceId = gax::GaxPreconditions.CheckNotNull(serviceId, nameof(serviceId));
+        }
+
+        /// <summary>
+        /// The project ID. Never <c>null</c>.
+        /// </summary>
+        public string ProjectId { get; }
+
+        /// <summary>
+        /// The service ID. Never <c>null</c>.
+        /// </summary>
+        public string ServiceId { get; }
+
+        /// <inheritdoc />
+        public gax::ResourceNameKind Kind => gax::ResourceNameKind.Simple;
+
+        /// <inheritdoc />
+        public override string ToString() => s_template.Expand(ProjectId, ServiceId);
+
+        /// <inheritdoc />
+        public override int GetHashCode() => ToString().GetHashCode();
+
+        /// <inheritdoc />
+        public override bool Equals(object obj) => Equals(obj as ServiceName);
+
+        /// <inheritdoc />
+        public bool Equals(ServiceName other) => ToString() == other?.ToString();
+
+        /// <inheritdoc />
+        public static bool operator ==(ServiceName a, ServiceName b) => ReferenceEquals(a, b) || (a?.Equals(b) ?? false);
+
+        /// <inheritdoc />
+        public static bool operator !=(ServiceName a, ServiceName b) => !(a == b);
+    }
+
+    /// <summary>
+    /// Resource name for the 'service_level_objective' resource.
+    /// </summary>
+    public sealed partial class ServiceLevelObjectiveName : gax::IResourceName, sys::IEquatable<ServiceLevelObjectiveName>
+    {
+        private static readonly gax::PathTemplate s_template = new gax::PathTemplate("projects/{project}/services/{service}/serviceLevelObjectives/{service_level_objective}");
+
+        /// <summary>
+        /// Parses the given service_level_objective resource name in string form into a new
+        /// <see cref="ServiceLevelObjectiveName"/> instance.
+        /// </summary>
+        /// <param name="serviceLevelObjectiveName">The service_level_objective resource name in string form. Must not be <c>null</c>.</param>
+        /// <returns>The parsed <see cref="ServiceLevelObjectiveName"/> if successful.</returns>
+        public static ServiceLevelObjectiveName Parse(string serviceLevelObjectiveName)
+        {
+            gax::GaxPreconditions.CheckNotNull(serviceLevelObjectiveName, nameof(serviceLevelObjectiveName));
+            gax::TemplatedResourceName resourceName = s_template.ParseName(serviceLevelObjectiveName);
+            return new ServiceLevelObjectiveName(resourceName[0], resourceName[1], resourceName[2]);
+        }
+
+        /// <summary>
+        /// Tries to parse the given service_level_objective resource name in string form into a new
+        /// <see cref="ServiceLevelObjectiveName"/> instance.
+        /// </summary>
+        /// <remarks>
+        /// This method still throws <see cref="sys::ArgumentNullException"/> if <paramref name="serviceLevelObjectiveName"/> is null,
+        /// as this would usually indicate a programming error rather than a data error.
+        /// </remarks>
+        /// <param name="serviceLevelObjectiveName">The service_level_objective resource name in string form. Must not be <c>null</c>.</param>
+        /// <param name="result">When this method returns, the parsed <see cref="ServiceLevelObjectiveName"/>,
+        /// or <c>null</c> if parsing fails.</param>
+        /// <returns><c>true</c> if the name was parsed successfully; <c>false</c> otherwise.</returns>
+        public static bool TryParse(string serviceLevelObjectiveName, out ServiceLevelObjectiveName result)
+        {
+            gax::GaxPreconditions.CheckNotNull(serviceLevelObjectiveName, nameof(serviceLevelObjectiveName));
+            gax::TemplatedResourceName resourceName;
+            if (s_template.TryParseName(serviceLevelObjectiveName, out resourceName))
+            {
+                result = new ServiceLevelObjectiveName(resourceName[0], resourceName[1], resourceName[2]);
+                return true;
+            }
+            else
+            {
+                result = null;
+                return false;
+            }
+        }
+
+        /// <summary>Formats the IDs into the string representation of the <see cref="ServiceLevelObjectiveName"/>.</summary>
+        /// <param name="projectId">The <c>project</c> ID. Must not be <c>null</c>.</param>
+        /// <param name="serviceId">The <c>service</c> ID. Must not be <c>null</c>.</param>
+        /// <param name="serviceLevelObjectiveId">The <c>serviceLevelObjective</c> ID. Must not be <c>null</c>.</param>
+        /// <returns>The string representation of the <see cref="ServiceLevelObjectiveName"/>.</returns>
+        public static string Format(string projectId, string serviceId, string serviceLevelObjectiveId) =>
+            s_template.Expand(gax::GaxPreconditions.CheckNotNull(projectId, nameof(projectId)), gax::GaxPreconditions.CheckNotNull(serviceId, nameof(serviceId)), gax::GaxPreconditions.CheckNotNull(serviceLevelObjectiveId, nameof(serviceLevelObjectiveId)));
+
+        /// <summary>
+        /// Constructs a new instance of the <see cref="ServiceLevelObjectiveName"/> resource name class
+        /// from its component parts.
+        /// </summary>
+        /// <param name="projectId">The project ID. Must not be <c>null</c>.</param>
+        /// <param name="serviceId">The service ID. Must not be <c>null</c>.</param>
+        /// <param name="serviceLevelObjectiveId">The serviceLevelObjective ID. Must not be <c>null</c>.</param>
+        public ServiceLevelObjectiveName(string projectId, string serviceId, string serviceLevelObjectiveId)
+        {
+            ProjectId = gax::GaxPreconditions.CheckNotNull(projectId, nameof(projectId));
+            ServiceId = gax::GaxPreconditions.CheckNotNull(serviceId, nameof(serviceId));
+            ServiceLevelObjectiveId = gax::GaxPreconditions.CheckNotNull(serviceLevelObjectiveId, nameof(serviceLevelObjectiveId));
+        }
+
+        /// <summary>
+        /// The project ID. Never <c>null</c>.
+        /// </summary>
+        public string ProjectId { get; }
+
+        /// <summary>
+        /// The service ID. Never <c>null</c>.
+        /// </summary>
+        public string ServiceId { get; }
+
+        /// <summary>
+        /// The serviceLevelObjective ID. Never <c>null</c>.
+        /// </summary>
+        public string ServiceLevelObjectiveId { get; }
+
+        /// <inheritdoc />
+        public gax::ResourceNameKind Kind => gax::ResourceNameKind.Simple;
+
+        /// <inheritdoc />
+        public override string ToString() => s_template.Expand(ProjectId, ServiceId, ServiceLevelObjectiveId);
+
+        /// <inheritdoc />
+        public override int GetHashCode() => ToString().GetHashCode();
+
+        /// <inheritdoc />
+        public override bool Equals(object obj) => Equals(obj as ServiceLevelObjectiveName);
+
+        /// <inheritdoc />
+        public bool Equals(ServiceLevelObjectiveName other) => ToString() == other?.ToString();
+
+        /// <inheritdoc />
+        public static bool operator ==(ServiceLevelObjectiveName a, ServiceLevelObjectiveName b) => ReferenceEquals(a, b) || (a?.Equals(b) ?? false);
+
+        /// <inheritdoc />
+        public static bool operator !=(ServiceLevelObjectiveName a, ServiceLevelObjectiveName b) => !(a == b);
     }
 
     /// <summary>
@@ -803,6 +1065,13 @@ namespace Google.Cloud.Monitoring.V3
                 return false;
             }
         }
+
+        /// <summary>Formats the IDs into the string representation of the <see cref="UptimeCheckConfigName"/>.</summary>
+        /// <param name="projectId">The <c>project</c> ID. Must not be <c>null</c>.</param>
+        /// <param name="uptimeCheckConfigId">The <c>uptimeCheckConfig</c> ID. Must not be <c>null</c>.</param>
+        /// <returns>The string representation of the <see cref="UptimeCheckConfigName"/>.</returns>
+        public static string Format(string projectId, string uptimeCheckConfigId) =>
+            s_template.Expand(gax::GaxPreconditions.CheckNotNull(projectId, nameof(projectId)), gax::GaxPreconditions.CheckNotNull(uptimeCheckConfigId, nameof(uptimeCheckConfigId)));
 
         /// <summary>
         /// Constructs a new instance of the <see cref="UptimeCheckConfigName"/> resource name class
@@ -901,6 +1170,32 @@ namespace Google.Cloud.Monitoring.V3
 
     }
 
+    public partial class CreateServiceLevelObjectiveRequest
+    {
+        /// <summary>
+        /// <see cref="Google.Cloud.Monitoring.V3.ServiceName"/>-typed view over the <see cref="Parent"/> resource name property.
+        /// </summary>
+        public Google.Cloud.Monitoring.V3.ServiceName ParentAsServiceName
+        {
+            get { return string.IsNullOrEmpty(Parent) ? null : Google.Cloud.Monitoring.V3.ServiceName.Parse(Parent); }
+            set { Parent = value != null ? value.ToString() : ""; }
+        }
+
+    }
+
+    public partial class CreateServiceRequest
+    {
+        /// <summary>
+        /// <see cref="Google.Cloud.Monitoring.V3.ProjectName"/>-typed view over the <see cref="Parent"/> resource name property.
+        /// </summary>
+        public Google.Cloud.Monitoring.V3.ProjectName ParentAsProjectName
+        {
+            get { return string.IsNullOrEmpty(Parent) ? null : Google.Cloud.Monitoring.V3.ProjectName.Parse(Parent); }
+            set { Parent = value != null ? value.ToString() : ""; }
+        }
+
+    }
+
     public partial class CreateTimeSeriesRequest
     {
         /// <summary>
@@ -961,6 +1256,45 @@ namespace Google.Cloud.Monitoring.V3
         public Google.Cloud.Monitoring.V3.NotificationChannelName NotificationChannelName
         {
             get { return string.IsNullOrEmpty(Name) ? null : Google.Cloud.Monitoring.V3.NotificationChannelName.Parse(Name); }
+            set { Name = value != null ? value.ToString() : ""; }
+        }
+
+    }
+
+    public partial class DeleteServiceLevelObjectiveRequest
+    {
+        /// <summary>
+        /// <see cref="Google.Cloud.Monitoring.V3.ServiceLevelObjectiveName"/>-typed view over the <see cref="Name"/> resource name property.
+        /// </summary>
+        public Google.Cloud.Monitoring.V3.ServiceLevelObjectiveName ServiceLevelObjectiveName
+        {
+            get { return string.IsNullOrEmpty(Name) ? null : Google.Cloud.Monitoring.V3.ServiceLevelObjectiveName.Parse(Name); }
+            set { Name = value != null ? value.ToString() : ""; }
+        }
+
+    }
+
+    public partial class DeleteServiceRequest
+    {
+        /// <summary>
+        /// <see cref="Google.Cloud.Monitoring.V3.ServiceName"/>-typed view over the <see cref="Name"/> resource name property.
+        /// </summary>
+        public Google.Cloud.Monitoring.V3.ServiceName ServiceName
+        {
+            get { return string.IsNullOrEmpty(Name) ? null : Google.Cloud.Monitoring.V3.ServiceName.Parse(Name); }
+            set { Name = value != null ? value.ToString() : ""; }
+        }
+
+    }
+
+    public partial class DeleteUptimeCheckConfigRequest
+    {
+        /// <summary>
+        /// <see cref="Google.Cloud.Monitoring.V3.UptimeCheckConfigName"/>-typed view over the <see cref="Name"/> resource name property.
+        /// </summary>
+        public Google.Cloud.Monitoring.V3.UptimeCheckConfigName UptimeCheckConfigName
+        {
+            get { return string.IsNullOrEmpty(Name) ? null : Google.Cloud.Monitoring.V3.UptimeCheckConfigName.Parse(Name); }
             set { Name = value != null ? value.ToString() : ""; }
         }
 
@@ -1052,6 +1386,45 @@ namespace Google.Cloud.Monitoring.V3
         public Google.Cloud.Monitoring.V3.NotificationChannelName NotificationChannelName
         {
             get { return string.IsNullOrEmpty(Name) ? null : Google.Cloud.Monitoring.V3.NotificationChannelName.Parse(Name); }
+            set { Name = value != null ? value.ToString() : ""; }
+        }
+
+    }
+
+    public partial class GetServiceLevelObjectiveRequest
+    {
+        /// <summary>
+        /// <see cref="Google.Cloud.Monitoring.V3.ServiceLevelObjectiveName"/>-typed view over the <see cref="Name"/> resource name property.
+        /// </summary>
+        public Google.Cloud.Monitoring.V3.ServiceLevelObjectiveName ServiceLevelObjectiveName
+        {
+            get { return string.IsNullOrEmpty(Name) ? null : Google.Cloud.Monitoring.V3.ServiceLevelObjectiveName.Parse(Name); }
+            set { Name = value != null ? value.ToString() : ""; }
+        }
+
+    }
+
+    public partial class GetServiceRequest
+    {
+        /// <summary>
+        /// <see cref="Google.Cloud.Monitoring.V3.ServiceName"/>-typed view over the <see cref="Name"/> resource name property.
+        /// </summary>
+        public Google.Cloud.Monitoring.V3.ServiceName ServiceName
+        {
+            get { return string.IsNullOrEmpty(Name) ? null : Google.Cloud.Monitoring.V3.ServiceName.Parse(Name); }
+            set { Name = value != null ? value.ToString() : ""; }
+        }
+
+    }
+
+    public partial class GetUptimeCheckConfigRequest
+    {
+        /// <summary>
+        /// <see cref="Google.Cloud.Monitoring.V3.UptimeCheckConfigName"/>-typed view over the <see cref="Name"/> resource name property.
+        /// </summary>
+        public Google.Cloud.Monitoring.V3.UptimeCheckConfigName UptimeCheckConfigName
+        {
+            get { return string.IsNullOrEmpty(Name) ? null : Google.Cloud.Monitoring.V3.UptimeCheckConfigName.Parse(Name); }
             set { Name = value != null ? value.ToString() : ""; }
         }
 
@@ -1197,6 +1570,32 @@ namespace Google.Cloud.Monitoring.V3
 
     }
 
+    public partial class ListServiceLevelObjectivesRequest
+    {
+        /// <summary>
+        /// <see cref="Google.Cloud.Monitoring.V3.ServiceName"/>-typed view over the <see cref="Parent"/> resource name property.
+        /// </summary>
+        public Google.Cloud.Monitoring.V3.ServiceName ParentAsServiceName
+        {
+            get { return string.IsNullOrEmpty(Parent) ? null : Google.Cloud.Monitoring.V3.ServiceName.Parse(Parent); }
+            set { Parent = value != null ? value.ToString() : ""; }
+        }
+
+    }
+
+    public partial class ListServicesRequest
+    {
+        /// <summary>
+        /// <see cref="Google.Cloud.Monitoring.V3.ProjectName"/>-typed view over the <see cref="Parent"/> resource name property.
+        /// </summary>
+        public Google.Cloud.Monitoring.V3.ProjectName ParentAsProjectName
+        {
+            get { return string.IsNullOrEmpty(Parent) ? null : Google.Cloud.Monitoring.V3.ProjectName.Parse(Parent); }
+            set { Parent = value != null ? value.ToString() : ""; }
+        }
+
+    }
+
     public partial class ListTimeSeriesRequest
     {
         /// <summary>
@@ -1218,6 +1617,32 @@ namespace Google.Cloud.Monitoring.V3
         public Google.Cloud.Monitoring.V3.NotificationChannelName NotificationChannelName
         {
             get { return string.IsNullOrEmpty(Name) ? null : Google.Cloud.Monitoring.V3.NotificationChannelName.Parse(Name); }
+            set { Name = value != null ? value.ToString() : ""; }
+        }
+
+    }
+
+    public partial class Service
+    {
+        /// <summary>
+        /// <see cref="Google.Cloud.Monitoring.V3.ServiceName"/>-typed view over the <see cref="Name"/> resource name property.
+        /// </summary>
+        public Google.Cloud.Monitoring.V3.ServiceName ServiceName
+        {
+            get { return string.IsNullOrEmpty(Name) ? null : Google.Cloud.Monitoring.V3.ServiceName.Parse(Name); }
+            set { Name = value != null ? value.ToString() : ""; }
+        }
+
+    }
+
+    public partial class ServiceLevelObjective
+    {
+        /// <summary>
+        /// <see cref="Google.Cloud.Monitoring.V3.ServiceLevelObjectiveName"/>-typed view over the <see cref="Name"/> resource name property.
+        /// </summary>
+        public Google.Cloud.Monitoring.V3.ServiceLevelObjectiveName ServiceLevelObjectiveName
+        {
+            get { return string.IsNullOrEmpty(Name) ? null : Google.Cloud.Monitoring.V3.ServiceLevelObjectiveName.Parse(Name); }
             set { Name = value != null ? value.ToString() : ""; }
         }
 

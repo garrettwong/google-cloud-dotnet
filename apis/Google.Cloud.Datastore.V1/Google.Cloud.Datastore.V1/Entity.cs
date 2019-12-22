@@ -87,7 +87,8 @@ namespace Google.Cloud.Datastore.V1 {
   ///
   /// Foreign partition IDs (in which the project ID does
   /// not match the context project ID ) are discouraged.
-  /// Reads and writes of foreign partition IDs may fail if the project is not in an active state.
+  /// Reads and writes of foreign partition IDs may fail if the project is not in
+  /// an active state.
   /// </summary>
   public sealed partial class PartitionId : pb::IMessage<PartitionId> {
     private static readonly pb::MessageParser<PartitionId> _parser = new pb::MessageParser<PartitionId>(() => new PartitionId());
@@ -403,7 +404,7 @@ namespace Google.Cloud.Datastore.V1 {
       }
       if (other.partitionId_ != null) {
         if (partitionId_ == null) {
-          partitionId_ = new global::Google.Cloud.Datastore.V1.PartitionId();
+          PartitionId = new global::Google.Cloud.Datastore.V1.PartitionId();
         }
         PartitionId.MergeFrom(other.PartitionId);
       }
@@ -421,9 +422,9 @@ namespace Google.Cloud.Datastore.V1 {
             break;
           case 10: {
             if (partitionId_ == null) {
-              partitionId_ = new global::Google.Cloud.Datastore.V1.PartitionId();
+              PartitionId = new global::Google.Cloud.Datastore.V1.PartitionId();
             }
-            input.ReadMessage(partitionId_);
+            input.ReadMessage(PartitionId);
             break;
           }
           case 18: {
@@ -726,8 +727,8 @@ namespace Google.Cloud.Datastore.V1 {
     private readonly pbc::RepeatedField<global::Google.Cloud.Datastore.V1.Value> values_ = new pbc::RepeatedField<global::Google.Cloud.Datastore.V1.Value>();
     /// <summary>
     /// Values in the array.
-    /// The order of this array may not be preserved if it contains a mix of
-    /// indexed and unindexed values.
+    /// The order of values in an array is preserved as long as all values have
+    /// identical settings for 'exclude_from_indexes'.
     /// </summary>
     [global::System.Diagnostics.DebuggerNonUserCodeAttribute]
     public pbc::RepeatedField<global::Google.Cloud.Datastore.V1.Value> Values {
@@ -1578,7 +1579,7 @@ namespace Google.Cloud.Datastore.V1 {
       }
       if (other.key_ != null) {
         if (key_ == null) {
-          key_ = new global::Google.Cloud.Datastore.V1.Key();
+          Key = new global::Google.Cloud.Datastore.V1.Key();
         }
         Key.MergeFrom(other.Key);
       }
@@ -1596,9 +1597,9 @@ namespace Google.Cloud.Datastore.V1 {
             break;
           case 10: {
             if (key_ == null) {
-              key_ = new global::Google.Cloud.Datastore.V1.Key();
+              Key = new global::Google.Cloud.Datastore.V1.Key();
             }
-            input.ReadMessage(key_);
+            input.ReadMessage(Key);
             break;
           }
           case 26: {

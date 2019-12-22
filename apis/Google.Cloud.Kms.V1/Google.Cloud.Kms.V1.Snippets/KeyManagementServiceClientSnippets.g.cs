@@ -1,4 +1,4 @@
-// Copyright 2018 Google LLC
+// Copyright 2019 Google LLC
 //
 // Licensed under the Apache License, Version 2.0 (the "License");
 // you may not use this file except in compliance with the License.
@@ -208,6 +208,188 @@ namespace Google.Cloud.Kms.V1.Snippets
             // Do something with the page of items
             Console.WriteLine($"A page of {pageSize} results (unless it's the final page):");
             foreach (KeyRing item in singlePage)
+            {
+                Console.WriteLine(item);
+            }
+            // Store the pageToken, for when the next page is required.
+            string nextPageToken = singlePage.NextPageToken;
+            // End snippet
+        }
+
+        /// <summary>Snippet for ListImportJobsAsync</summary>
+        public async Task ListImportJobsAsync()
+        {
+            // Snippet: ListImportJobsAsync(KeyRingName,string,int?,CallSettings)
+            // Create client
+            KeyManagementServiceClient keyManagementServiceClient = await KeyManagementServiceClient.CreateAsync();
+            // Initialize request argument(s)
+            KeyRingName parent = new KeyRingName("[PROJECT]", "[LOCATION]", "[KEY_RING]");
+            // Make the request
+            PagedAsyncEnumerable<ListImportJobsResponse, ImportJob> response =
+                keyManagementServiceClient.ListImportJobsAsync(parent);
+
+            // Iterate over all response items, lazily performing RPCs as required
+            await response.ForEachAsync((ImportJob item) =>
+            {
+                // Do something with each item
+                Console.WriteLine(item);
+            });
+
+            // Or iterate over pages (of server-defined size), performing one RPC per page
+            await response.AsRawResponses().ForEachAsync((ListImportJobsResponse page) =>
+            {
+                // Do something with each page of items
+                Console.WriteLine("A page of results:");
+                foreach (ImportJob item in page)
+                {
+                    Console.WriteLine(item);
+                }
+            });
+
+            // Or retrieve a single page of known size (unless it's the final page), performing as many RPCs as required
+            int pageSize = 10;
+            Page<ImportJob> singlePage = await response.ReadPageAsync(pageSize);
+            // Do something with the page of items
+            Console.WriteLine($"A page of {pageSize} results (unless it's the final page):");
+            foreach (ImportJob item in singlePage)
+            {
+                Console.WriteLine(item);
+            }
+            // Store the pageToken, for when the next page is required.
+            string nextPageToken = singlePage.NextPageToken;
+            // End snippet
+        }
+
+        /// <summary>Snippet for ListImportJobs</summary>
+        public void ListImportJobs()
+        {
+            // Snippet: ListImportJobs(KeyRingName,string,int?,CallSettings)
+            // Create client
+            KeyManagementServiceClient keyManagementServiceClient = KeyManagementServiceClient.Create();
+            // Initialize request argument(s)
+            KeyRingName parent = new KeyRingName("[PROJECT]", "[LOCATION]", "[KEY_RING]");
+            // Make the request
+            PagedEnumerable<ListImportJobsResponse, ImportJob> response =
+                keyManagementServiceClient.ListImportJobs(parent);
+
+            // Iterate over all response items, lazily performing RPCs as required
+            foreach (ImportJob item in response)
+            {
+                // Do something with each item
+                Console.WriteLine(item);
+            }
+
+            // Or iterate over pages (of server-defined size), performing one RPC per page
+            foreach (ListImportJobsResponse page in response.AsRawResponses())
+            {
+                // Do something with each page of items
+                Console.WriteLine("A page of results:");
+                foreach (ImportJob item in page)
+                {
+                    Console.WriteLine(item);
+                }
+            }
+
+            // Or retrieve a single page of known size (unless it's the final page), performing as many RPCs as required
+            int pageSize = 10;
+            Page<ImportJob> singlePage = response.ReadPage(pageSize);
+            // Do something with the page of items
+            Console.WriteLine($"A page of {pageSize} results (unless it's the final page):");
+            foreach (ImportJob item in singlePage)
+            {
+                Console.WriteLine(item);
+            }
+            // Store the pageToken, for when the next page is required.
+            string nextPageToken = singlePage.NextPageToken;
+            // End snippet
+        }
+
+        /// <summary>Snippet for ListImportJobsAsync</summary>
+        public async Task ListImportJobsAsync_RequestObject()
+        {
+            // Snippet: ListImportJobsAsync(ListImportJobsRequest,CallSettings)
+            // Create client
+            KeyManagementServiceClient keyManagementServiceClient = await KeyManagementServiceClient.CreateAsync();
+            // Initialize request argument(s)
+            ListImportJobsRequest request = new ListImportJobsRequest
+            {
+                ParentAsKeyRingName = new KeyRingName("[PROJECT]", "[LOCATION]", "[KEY_RING]"),
+            };
+            // Make the request
+            PagedAsyncEnumerable<ListImportJobsResponse, ImportJob> response =
+                keyManagementServiceClient.ListImportJobsAsync(request);
+
+            // Iterate over all response items, lazily performing RPCs as required
+            await response.ForEachAsync((ImportJob item) =>
+            {
+                // Do something with each item
+                Console.WriteLine(item);
+            });
+
+            // Or iterate over pages (of server-defined size), performing one RPC per page
+            await response.AsRawResponses().ForEachAsync((ListImportJobsResponse page) =>
+            {
+                // Do something with each page of items
+                Console.WriteLine("A page of results:");
+                foreach (ImportJob item in page)
+                {
+                    Console.WriteLine(item);
+                }
+            });
+
+            // Or retrieve a single page of known size (unless it's the final page), performing as many RPCs as required
+            int pageSize = 10;
+            Page<ImportJob> singlePage = await response.ReadPageAsync(pageSize);
+            // Do something with the page of items
+            Console.WriteLine($"A page of {pageSize} results (unless it's the final page):");
+            foreach (ImportJob item in singlePage)
+            {
+                Console.WriteLine(item);
+            }
+            // Store the pageToken, for when the next page is required.
+            string nextPageToken = singlePage.NextPageToken;
+            // End snippet
+        }
+
+        /// <summary>Snippet for ListImportJobs</summary>
+        public void ListImportJobs_RequestObject()
+        {
+            // Snippet: ListImportJobs(ListImportJobsRequest,CallSettings)
+            // Create client
+            KeyManagementServiceClient keyManagementServiceClient = KeyManagementServiceClient.Create();
+            // Initialize request argument(s)
+            ListImportJobsRequest request = new ListImportJobsRequest
+            {
+                ParentAsKeyRingName = new KeyRingName("[PROJECT]", "[LOCATION]", "[KEY_RING]"),
+            };
+            // Make the request
+            PagedEnumerable<ListImportJobsResponse, ImportJob> response =
+                keyManagementServiceClient.ListImportJobs(request);
+
+            // Iterate over all response items, lazily performing RPCs as required
+            foreach (ImportJob item in response)
+            {
+                // Do something with each item
+                Console.WriteLine(item);
+            }
+
+            // Or iterate over pages (of server-defined size), performing one RPC per page
+            foreach (ListImportJobsResponse page in response.AsRawResponses())
+            {
+                // Do something with each page of items
+                Console.WriteLine("A page of results:");
+                foreach (ImportJob item in page)
+                {
+                    Console.WriteLine(item);
+                }
+            }
+
+            // Or retrieve a single page of known size (unless it's the final page), performing as many RPCs as required
+            int pageSize = 10;
+            Page<ImportJob> singlePage = response.ReadPage(pageSize);
+            // Do something with the page of items
+            Console.WriteLine($"A page of {pageSize} results (unless it's the final page):");
+            foreach (ImportJob item in singlePage)
             {
                 Console.WriteLine(item);
             }
@@ -640,6 +822,66 @@ namespace Google.Cloud.Kms.V1.Snippets
             // End snippet
         }
 
+        /// <summary>Snippet for GetImportJobAsync</summary>
+        public async Task GetImportJobAsync()
+        {
+            // Snippet: GetImportJobAsync(ImportJobName,CallSettings)
+            // Additional: GetImportJobAsync(ImportJobName,CancellationToken)
+            // Create client
+            KeyManagementServiceClient keyManagementServiceClient = await KeyManagementServiceClient.CreateAsync();
+            // Initialize request argument(s)
+            ImportJobName name = new ImportJobName("[PROJECT]", "[LOCATION]", "[KEY_RING]", "[IMPORT_JOB]");
+            // Make the request
+            ImportJob response = await keyManagementServiceClient.GetImportJobAsync(name);
+            // End snippet
+        }
+
+        /// <summary>Snippet for GetImportJob</summary>
+        public void GetImportJob()
+        {
+            // Snippet: GetImportJob(ImportJobName,CallSettings)
+            // Create client
+            KeyManagementServiceClient keyManagementServiceClient = KeyManagementServiceClient.Create();
+            // Initialize request argument(s)
+            ImportJobName name = new ImportJobName("[PROJECT]", "[LOCATION]", "[KEY_RING]", "[IMPORT_JOB]");
+            // Make the request
+            ImportJob response = keyManagementServiceClient.GetImportJob(name);
+            // End snippet
+        }
+
+        /// <summary>Snippet for GetImportJobAsync</summary>
+        public async Task GetImportJobAsync_RequestObject()
+        {
+            // Snippet: GetImportJobAsync(GetImportJobRequest,CallSettings)
+            // Additional: GetImportJobAsync(GetImportJobRequest,CancellationToken)
+            // Create client
+            KeyManagementServiceClient keyManagementServiceClient = await KeyManagementServiceClient.CreateAsync();
+            // Initialize request argument(s)
+            GetImportJobRequest request = new GetImportJobRequest
+            {
+                ImportJobName = new ImportJobName("[PROJECT]", "[LOCATION]", "[KEY_RING]", "[IMPORT_JOB]"),
+            };
+            // Make the request
+            ImportJob response = await keyManagementServiceClient.GetImportJobAsync(request);
+            // End snippet
+        }
+
+        /// <summary>Snippet for GetImportJob</summary>
+        public void GetImportJob_RequestObject()
+        {
+            // Snippet: GetImportJob(GetImportJobRequest,CallSettings)
+            // Create client
+            KeyManagementServiceClient keyManagementServiceClient = KeyManagementServiceClient.Create();
+            // Initialize request argument(s)
+            GetImportJobRequest request = new GetImportJobRequest
+            {
+                ImportJobName = new ImportJobName("[PROJECT]", "[LOCATION]", "[KEY_RING]", "[IMPORT_JOB]"),
+            };
+            // Make the request
+            ImportJob response = keyManagementServiceClient.GetImportJob(request);
+            // End snippet
+        }
+
         /// <summary>Snippet for GetCryptoKeyAsync</summary>
         public async Task GetCryptoKeyAsync()
         {
@@ -828,6 +1070,90 @@ namespace Google.Cloud.Kms.V1.Snippets
             // End snippet
         }
 
+        /// <summary>Snippet for CreateImportJobAsync</summary>
+        public async Task CreateImportJobAsync()
+        {
+            // Snippet: CreateImportJobAsync(KeyRingName,string,ImportJob,CallSettings)
+            // Additional: CreateImportJobAsync(KeyRingName,string,ImportJob,CancellationToken)
+            // Create client
+            KeyManagementServiceClient keyManagementServiceClient = await KeyManagementServiceClient.CreateAsync();
+            // Initialize request argument(s)
+            KeyRingName parent = new KeyRingName("[PROJECT]", "[LOCATION]", "[KEY_RING]");
+            string importJobId = "my-import-job";
+            ImportJob importJob = new ImportJob
+            {
+                ImportMethod = ImportJob.Types.ImportMethod.RsaOaep3072Sha1Aes256,
+                ProtectionLevel = ProtectionLevel.Hsm,
+            };
+            // Make the request
+            ImportJob response = await keyManagementServiceClient.CreateImportJobAsync(parent, importJobId, importJob);
+            // End snippet
+        }
+
+        /// <summary>Snippet for CreateImportJob</summary>
+        public void CreateImportJob()
+        {
+            // Snippet: CreateImportJob(KeyRingName,string,ImportJob,CallSettings)
+            // Create client
+            KeyManagementServiceClient keyManagementServiceClient = KeyManagementServiceClient.Create();
+            // Initialize request argument(s)
+            KeyRingName parent = new KeyRingName("[PROJECT]", "[LOCATION]", "[KEY_RING]");
+            string importJobId = "my-import-job";
+            ImportJob importJob = new ImportJob
+            {
+                ImportMethod = ImportJob.Types.ImportMethod.RsaOaep3072Sha1Aes256,
+                ProtectionLevel = ProtectionLevel.Hsm,
+            };
+            // Make the request
+            ImportJob response = keyManagementServiceClient.CreateImportJob(parent, importJobId, importJob);
+            // End snippet
+        }
+
+        /// <summary>Snippet for CreateImportJobAsync</summary>
+        public async Task CreateImportJobAsync_RequestObject()
+        {
+            // Snippet: CreateImportJobAsync(CreateImportJobRequest,CallSettings)
+            // Additional: CreateImportJobAsync(CreateImportJobRequest,CancellationToken)
+            // Create client
+            KeyManagementServiceClient keyManagementServiceClient = await KeyManagementServiceClient.CreateAsync();
+            // Initialize request argument(s)
+            CreateImportJobRequest request = new CreateImportJobRequest
+            {
+                ParentAsKeyRingName = new KeyRingName("[PROJECT]", "[LOCATION]", "[KEY_RING]"),
+                ImportJobId = "my-import-job",
+                ImportJob = new ImportJob
+                {
+                    ImportMethod = ImportJob.Types.ImportMethod.RsaOaep3072Sha1Aes256,
+                    ProtectionLevel = ProtectionLevel.Hsm,
+                },
+            };
+            // Make the request
+            ImportJob response = await keyManagementServiceClient.CreateImportJobAsync(request);
+            // End snippet
+        }
+
+        /// <summary>Snippet for CreateImportJob</summary>
+        public void CreateImportJob_RequestObject()
+        {
+            // Snippet: CreateImportJob(CreateImportJobRequest,CallSettings)
+            // Create client
+            KeyManagementServiceClient keyManagementServiceClient = KeyManagementServiceClient.Create();
+            // Initialize request argument(s)
+            CreateImportJobRequest request = new CreateImportJobRequest
+            {
+                ParentAsKeyRingName = new KeyRingName("[PROJECT]", "[LOCATION]", "[KEY_RING]"),
+                ImportJobId = "my-import-job",
+                ImportJob = new ImportJob
+                {
+                    ImportMethod = ImportJob.Types.ImportMethod.RsaOaep3072Sha1Aes256,
+                    ProtectionLevel = ProtectionLevel.Hsm,
+                },
+            };
+            // Make the request
+            ImportJob response = keyManagementServiceClient.CreateImportJob(request);
+            // End snippet
+        }
+
         /// <summary>Snippet for CreateCryptoKeyAsync</summary>
         public async Task CreateCryptoKeyAsync()
         {
@@ -842,13 +1168,13 @@ namespace Google.Cloud.Kms.V1.Snippets
             {
                 Purpose = CryptoKey.Types.CryptoKeyPurpose.EncryptDecrypt,
                 NextRotationTime = new Timestamp
-                                   {
-                                       Seconds = 2147483647L,
-                                   },
+                {
+                    Seconds = 2147483647L,
+                },
                 RotationPeriod = new Duration
-                                 {
-                                     Seconds = 604800L,
-                                 },
+                {
+                    Seconds = 604800L,
+                },
             };
             // Make the request
             CryptoKey response = await keyManagementServiceClient.CreateCryptoKeyAsync(parent, cryptoKeyId, cryptoKey);
@@ -868,13 +1194,13 @@ namespace Google.Cloud.Kms.V1.Snippets
             {
                 Purpose = CryptoKey.Types.CryptoKeyPurpose.EncryptDecrypt,
                 NextRotationTime = new Timestamp
-                                   {
-                                       Seconds = 2147483647L,
-                                   },
+                {
+                    Seconds = 2147483647L,
+                },
                 RotationPeriod = new Duration
-                                 {
-                                     Seconds = 604800L,
-                                 },
+                {
+                    Seconds = 604800L,
+                },
             };
             // Make the request
             CryptoKey response = keyManagementServiceClient.CreateCryptoKey(parent, cryptoKeyId, cryptoKey);
@@ -894,17 +1220,17 @@ namespace Google.Cloud.Kms.V1.Snippets
                 ParentAsKeyRingName = new KeyRingName("[PROJECT]", "[LOCATION]", "[KEY_RING]"),
                 CryptoKeyId = "my-app-key",
                 CryptoKey = new CryptoKey
-                            {
-                                Purpose = CryptoKey.Types.CryptoKeyPurpose.EncryptDecrypt,
-                                NextRotationTime = new Timestamp
-                                                   {
-                                                       Seconds = 2147483647L,
-                                                   },
-                                RotationPeriod = new Duration
-                                                 {
-                                                     Seconds = 604800L,
-                                                 },
-                            },
+                {
+                    Purpose = CryptoKey.Types.CryptoKeyPurpose.EncryptDecrypt,
+                    NextRotationTime = new Timestamp
+                                       {
+                                           Seconds = 2147483647L,
+                                       },
+                    RotationPeriod = new Duration
+                                     {
+                                         Seconds = 604800L,
+                                     },
+                },
             };
             // Make the request
             CryptoKey response = await keyManagementServiceClient.CreateCryptoKeyAsync(request);
@@ -923,17 +1249,17 @@ namespace Google.Cloud.Kms.V1.Snippets
                 ParentAsKeyRingName = new KeyRingName("[PROJECT]", "[LOCATION]", "[KEY_RING]"),
                 CryptoKeyId = "my-app-key",
                 CryptoKey = new CryptoKey
-                            {
-                                Purpose = CryptoKey.Types.CryptoKeyPurpose.EncryptDecrypt,
-                                NextRotationTime = new Timestamp
-                                                   {
-                                                       Seconds = 2147483647L,
-                                                   },
-                                RotationPeriod = new Duration
-                                                 {
-                                                     Seconds = 604800L,
-                                                 },
-                            },
+                {
+                    Purpose = CryptoKey.Types.CryptoKeyPurpose.EncryptDecrypt,
+                    NextRotationTime = new Timestamp
+                                       {
+                                           Seconds = 2147483647L,
+                                       },
+                    RotationPeriod = new Duration
+                                     {
+                                         Seconds = 604800L,
+                                     },
+                },
             };
             // Make the request
             CryptoKey response = keyManagementServiceClient.CreateCryptoKey(request);
@@ -1001,6 +1327,43 @@ namespace Google.Cloud.Kms.V1.Snippets
             };
             // Make the request
             CryptoKeyVersion response = keyManagementServiceClient.CreateCryptoKeyVersion(request);
+            // End snippet
+        }
+
+        /// <summary>Snippet for ImportCryptoKeyVersionAsync</summary>
+        public async Task ImportCryptoKeyVersionAsync_RequestObject()
+        {
+            // Snippet: ImportCryptoKeyVersionAsync(ImportCryptoKeyVersionRequest,CallSettings)
+            // Additional: ImportCryptoKeyVersionAsync(ImportCryptoKeyVersionRequest,CancellationToken)
+            // Create client
+            KeyManagementServiceClient keyManagementServiceClient = await KeyManagementServiceClient.CreateAsync();
+            // Initialize request argument(s)
+            ImportCryptoKeyVersionRequest request = new ImportCryptoKeyVersionRequest
+            {
+                ParentAsCryptoKeyName = new CryptoKeyName("[PROJECT]", "[LOCATION]", "[KEY_RING]", "[CRYPTO_KEY]"),
+                Algorithm = CryptoKeyVersion.Types.CryptoKeyVersionAlgorithm.Unspecified,
+                ImportJob = "",
+            };
+            // Make the request
+            CryptoKeyVersion response = await keyManagementServiceClient.ImportCryptoKeyVersionAsync(request);
+            // End snippet
+        }
+
+        /// <summary>Snippet for ImportCryptoKeyVersion</summary>
+        public void ImportCryptoKeyVersion_RequestObject()
+        {
+            // Snippet: ImportCryptoKeyVersion(ImportCryptoKeyVersionRequest,CallSettings)
+            // Create client
+            KeyManagementServiceClient keyManagementServiceClient = KeyManagementServiceClient.Create();
+            // Initialize request argument(s)
+            ImportCryptoKeyVersionRequest request = new ImportCryptoKeyVersionRequest
+            {
+                ParentAsCryptoKeyName = new CryptoKeyName("[PROJECT]", "[LOCATION]", "[KEY_RING]", "[CRYPTO_KEY]"),
+                Algorithm = CryptoKeyVersion.Types.CryptoKeyVersionAlgorithm.Unspecified,
+                ImportJob = "",
+            };
+            // Make the request
+            CryptoKeyVersion response = keyManagementServiceClient.ImportCryptoKeyVersion(request);
             // End snippet
         }
 

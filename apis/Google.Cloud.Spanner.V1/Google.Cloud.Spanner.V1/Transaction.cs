@@ -25,9 +25,9 @@ namespace Google.Cloud.Spanner.V1 {
       byte[] descriptorData = global::System.Convert.FromBase64String(
           string.Concat(
             "CiNnb29nbGUvc3Bhbm5lci92MS90cmFuc2FjdGlvbi5wcm90bxIRZ29vZ2xl",
-            "LnNwYW5uZXIudjEaHGdvb2dsZS9hcGkvYW5ub3RhdGlvbnMucHJvdG8aHmdv",
-            "b2dsZS9wcm90b2J1Zi9kdXJhdGlvbi5wcm90bxofZ29vZ2xlL3Byb3RvYnVm",
-            "L3RpbWVzdGFtcC5wcm90byLDBAoSVHJhbnNhY3Rpb25PcHRpb25zEkUKCnJl",
+            "LnNwYW5uZXIudjEaHmdvb2dsZS9wcm90b2J1Zi9kdXJhdGlvbi5wcm90bxof",
+            "Z29vZ2xlL3Byb3RvYnVmL3RpbWVzdGFtcC5wcm90bxocZ29vZ2xlL2FwaS9h",
+            "bm5vdGF0aW9ucy5wcm90byLDBAoSVHJhbnNhY3Rpb25PcHRpb25zEkUKCnJl",
             "YWRfd3JpdGUYASABKAsyLy5nb29nbGUuc3Bhbm5lci52MS5UcmFuc2FjdGlv",
             "bk9wdGlvbnMuUmVhZFdyaXRlSAASTwoPcGFydGl0aW9uZWRfZG1sGAMgASgL",
             "MjQuZ29vZ2xlLnNwYW5uZXIudjEuVHJhbnNhY3Rpb25PcHRpb25zLlBhcnRp",
@@ -51,7 +51,7 @@ namespace Google.Cloud.Spanner.V1 {
             "bmVyqgIXR29vZ2xlLkNsb3VkLlNwYW5uZXIuVjHKAhdHb29nbGVcQ2xvdWRc",
             "U3Bhbm5lclxWMWIGcHJvdG8z"));
       descriptor = pbr::FileDescriptor.FromGeneratedCode(descriptorData,
-          new pbr::FileDescriptor[] { global::Google.Api.AnnotationsReflection.Descriptor, global::Google.Protobuf.WellKnownTypes.DurationReflection.Descriptor, global::Google.Protobuf.WellKnownTypes.TimestampReflection.Descriptor, },
+          new pbr::FileDescriptor[] { global::Google.Protobuf.WellKnownTypes.DurationReflection.Descriptor, global::Google.Protobuf.WellKnownTypes.TimestampReflection.Descriptor, global::Google.Api.AnnotationsReflection.Descriptor, },
           new pbr::GeneratedClrTypeInfo(null, new pbr::GeneratedClrTypeInfo[] {
             new pbr::GeneratedClrTypeInfo(typeof(global::Google.Cloud.Spanner.V1.TransactionOptions), global::Google.Cloud.Spanner.V1.TransactionOptions.Parser, new[]{ "ReadWrite", "PartitionedDml", "ReadOnly" }, new[]{ "Mode" }, null, new pbr::GeneratedClrTypeInfo[] { new pbr::GeneratedClrTypeInfo(typeof(global::Google.Cloud.Spanner.V1.TransactionOptions.Types.ReadWrite), global::Google.Cloud.Spanner.V1.TransactionOptions.Types.ReadWrite.Parser, null, null, null, null),
             new pbr::GeneratedClrTypeInfo(typeof(global::Google.Cloud.Spanner.V1.TransactionOptions.Types.PartitionedDml), global::Google.Cloud.Spanner.V1.TransactionOptions.Types.PartitionedDml.Parser, null, null, null, null),
@@ -1380,7 +1380,7 @@ namespace Google.Cloud.Spanner.V1 {
       }
       if (other.readTimestamp_ != null) {
         if (readTimestamp_ == null) {
-          readTimestamp_ = new global::Google.Protobuf.WellKnownTypes.Timestamp();
+          ReadTimestamp = new global::Google.Protobuf.WellKnownTypes.Timestamp();
         }
         ReadTimestamp.MergeFrom(other.ReadTimestamp);
       }
@@ -1401,9 +1401,9 @@ namespace Google.Cloud.Spanner.V1 {
           }
           case 18: {
             if (readTimestamp_ == null) {
-              readTimestamp_ = new global::Google.Protobuf.WellKnownTypes.Timestamp();
+              ReadTimestamp = new global::Google.Protobuf.WellKnownTypes.Timestamp();
             }
-            input.ReadMessage(readTimestamp_);
+            input.ReadMessage(ReadTimestamp);
             break;
           }
         }

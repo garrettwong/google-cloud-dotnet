@@ -13,16 +13,13 @@
 // limitations under the License.
 
 using Google.Api.Gax.Grpc;
-using Google.Cloud.Firestore.V1Beta1;
+using Google.Cloud.ClientTesting;
+using Google.Cloud.Firestore.V1;
 using Google.Protobuf;
 using Google.Protobuf.Collections;
-using Google.Protobuf.WellKnownTypes;
-using Grpc.Core;
 using System;
 using System.Collections.Generic;
-using System.IO;
 using System.Linq;
-using System.Reflection;
 using System.Threading.Tasks;
 using Xunit;
 using Xunit.Abstractions;
@@ -37,17 +34,7 @@ namespace Google.Cloud.Firestore.Tests.Proto
         private const string ProjectId = "projectID";
         private const string DatabaseId = "(default)";
 
-        private static IEnumerable<Test> LoadTests()
-        {
-            Assembly asm = typeof(ProtoTest).GetTypeInfo().Assembly;
-            using (Stream stream = asm.GetManifestResourceStream(typeof(ProtoTest).GetTypeInfo().Namespace + ".test-suite.binproto"))
-            {
-                var suite = TestSuite.Parser.ParseFrom(stream);
-                return suite.Tests.ToList();
-            }
-        }
-
-        private static readonly List<Test> s_allTests = LoadTests().ToList();
+        private static readonly List<Test> s_allTests = ConformanceTestData.Load<TestFile>("firestore", "v1").MergedTests.Tests.ToList();
         private static IEnumerable<object[]> FindTests(TestOneofCase testCase) => s_allTests
             .Where(t => t.TestCase == testCase)
             .Select(t => new object[] { new SerializableTest(t) });
@@ -195,7 +182,7 @@ namespace Google.Cloud.Firestore.Tests.Proto
                     new Document
                     {
                         Name = docRef.Path,
-                        Fields = { ValueSerializer.SerializeMap(DeserializeJson(cursor.DocSnapshot.JsonData)) },
+                        Fields = { ValueSerializer.SerializeMap(SerializationContext.Default, DeserializeJson(cursor.DocSnapshot.JsonData)) },
                         CreateTime = wkt::Timestamp.FromDateTimeOffset(DateTimeOffset.MinValue),
                         UpdateTime = wkt::Timestamp.FromDateTimeOffset(DateTimeOffset.MinValue),
                     },
@@ -445,7 +432,7 @@ namespace Google.Cloud.Firestore.Tests.Proto
                 var response = new CommitResponse
                 {
                     CommitTime = new wkt::Timestamp(),
-                    WriteResults = { request.Writes.Select(_ => new V1Beta1.WriteResult()) }
+                    WriteResults = { request.Writes.Select(_ => new V1.WriteResult()) }
                 };
                 return Task.FromResult(response);
             }

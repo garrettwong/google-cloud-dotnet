@@ -3,7 +3,7 @@
 //     source: google/spanner/admin/database/v1/spanner_database_admin.proto
 // </auto-generated>
 // Original file comments:
-// Copyright 2018 Google LLC
+// Copyright 2019 Google LLC.
 //
 // Licensed under the Apache License, Version 2.0 (the "License");
 // you may not use this file except in compliance with the License.
@@ -17,7 +17,8 @@
 // See the License for the specific language governing permissions and
 // limitations under the License.
 //
-#pragma warning disable 1591
+//
+#pragma warning disable 0414, 1591
 #region Designer generated code
 
 using grpc = global::Grpc.Core;
@@ -34,85 +35,85 @@ namespace Google.Cloud.Spanner.Admin.Database.V1 {
   {
     static readonly string __ServiceName = "google.spanner.admin.database.v1.DatabaseAdmin";
 
-    static readonly grpc::Marshaller<global::Google.Cloud.Spanner.Admin.Database.V1.ListDatabasesRequest> __Marshaller_ListDatabasesRequest = grpc::Marshallers.Create((arg) => global::Google.Protobuf.MessageExtensions.ToByteArray(arg), global::Google.Cloud.Spanner.Admin.Database.V1.ListDatabasesRequest.Parser.ParseFrom);
-    static readonly grpc::Marshaller<global::Google.Cloud.Spanner.Admin.Database.V1.ListDatabasesResponse> __Marshaller_ListDatabasesResponse = grpc::Marshallers.Create((arg) => global::Google.Protobuf.MessageExtensions.ToByteArray(arg), global::Google.Cloud.Spanner.Admin.Database.V1.ListDatabasesResponse.Parser.ParseFrom);
-    static readonly grpc::Marshaller<global::Google.Cloud.Spanner.Admin.Database.V1.CreateDatabaseRequest> __Marshaller_CreateDatabaseRequest = grpc::Marshallers.Create((arg) => global::Google.Protobuf.MessageExtensions.ToByteArray(arg), global::Google.Cloud.Spanner.Admin.Database.V1.CreateDatabaseRequest.Parser.ParseFrom);
-    static readonly grpc::Marshaller<global::Google.LongRunning.Operation> __Marshaller_Operation = grpc::Marshallers.Create((arg) => global::Google.Protobuf.MessageExtensions.ToByteArray(arg), global::Google.LongRunning.Operation.Parser.ParseFrom);
-    static readonly grpc::Marshaller<global::Google.Cloud.Spanner.Admin.Database.V1.GetDatabaseRequest> __Marshaller_GetDatabaseRequest = grpc::Marshallers.Create((arg) => global::Google.Protobuf.MessageExtensions.ToByteArray(arg), global::Google.Cloud.Spanner.Admin.Database.V1.GetDatabaseRequest.Parser.ParseFrom);
-    static readonly grpc::Marshaller<global::Google.Cloud.Spanner.Admin.Database.V1.Database> __Marshaller_Database = grpc::Marshallers.Create((arg) => global::Google.Protobuf.MessageExtensions.ToByteArray(arg), global::Google.Cloud.Spanner.Admin.Database.V1.Database.Parser.ParseFrom);
-    static readonly grpc::Marshaller<global::Google.Cloud.Spanner.Admin.Database.V1.UpdateDatabaseDdlRequest> __Marshaller_UpdateDatabaseDdlRequest = grpc::Marshallers.Create((arg) => global::Google.Protobuf.MessageExtensions.ToByteArray(arg), global::Google.Cloud.Spanner.Admin.Database.V1.UpdateDatabaseDdlRequest.Parser.ParseFrom);
-    static readonly grpc::Marshaller<global::Google.Cloud.Spanner.Admin.Database.V1.DropDatabaseRequest> __Marshaller_DropDatabaseRequest = grpc::Marshallers.Create((arg) => global::Google.Protobuf.MessageExtensions.ToByteArray(arg), global::Google.Cloud.Spanner.Admin.Database.V1.DropDatabaseRequest.Parser.ParseFrom);
-    static readonly grpc::Marshaller<global::Google.Protobuf.WellKnownTypes.Empty> __Marshaller_Empty = grpc::Marshallers.Create((arg) => global::Google.Protobuf.MessageExtensions.ToByteArray(arg), global::Google.Protobuf.WellKnownTypes.Empty.Parser.ParseFrom);
-    static readonly grpc::Marshaller<global::Google.Cloud.Spanner.Admin.Database.V1.GetDatabaseDdlRequest> __Marshaller_GetDatabaseDdlRequest = grpc::Marshallers.Create((arg) => global::Google.Protobuf.MessageExtensions.ToByteArray(arg), global::Google.Cloud.Spanner.Admin.Database.V1.GetDatabaseDdlRequest.Parser.ParseFrom);
-    static readonly grpc::Marshaller<global::Google.Cloud.Spanner.Admin.Database.V1.GetDatabaseDdlResponse> __Marshaller_GetDatabaseDdlResponse = grpc::Marshallers.Create((arg) => global::Google.Protobuf.MessageExtensions.ToByteArray(arg), global::Google.Cloud.Spanner.Admin.Database.V1.GetDatabaseDdlResponse.Parser.ParseFrom);
-    static readonly grpc::Marshaller<global::Google.Cloud.Iam.V1.SetIamPolicyRequest> __Marshaller_SetIamPolicyRequest = grpc::Marshallers.Create((arg) => global::Google.Protobuf.MessageExtensions.ToByteArray(arg), global::Google.Cloud.Iam.V1.SetIamPolicyRequest.Parser.ParseFrom);
-    static readonly grpc::Marshaller<global::Google.Cloud.Iam.V1.Policy> __Marshaller_Policy = grpc::Marshallers.Create((arg) => global::Google.Protobuf.MessageExtensions.ToByteArray(arg), global::Google.Cloud.Iam.V1.Policy.Parser.ParseFrom);
-    static readonly grpc::Marshaller<global::Google.Cloud.Iam.V1.GetIamPolicyRequest> __Marshaller_GetIamPolicyRequest = grpc::Marshallers.Create((arg) => global::Google.Protobuf.MessageExtensions.ToByteArray(arg), global::Google.Cloud.Iam.V1.GetIamPolicyRequest.Parser.ParseFrom);
-    static readonly grpc::Marshaller<global::Google.Cloud.Iam.V1.TestIamPermissionsRequest> __Marshaller_TestIamPermissionsRequest = grpc::Marshallers.Create((arg) => global::Google.Protobuf.MessageExtensions.ToByteArray(arg), global::Google.Cloud.Iam.V1.TestIamPermissionsRequest.Parser.ParseFrom);
-    static readonly grpc::Marshaller<global::Google.Cloud.Iam.V1.TestIamPermissionsResponse> __Marshaller_TestIamPermissionsResponse = grpc::Marshallers.Create((arg) => global::Google.Protobuf.MessageExtensions.ToByteArray(arg), global::Google.Cloud.Iam.V1.TestIamPermissionsResponse.Parser.ParseFrom);
+    static readonly grpc::Marshaller<global::Google.Cloud.Spanner.Admin.Database.V1.ListDatabasesRequest> __Marshaller_google_spanner_admin_database_v1_ListDatabasesRequest = grpc::Marshallers.Create((arg) => global::Google.Protobuf.MessageExtensions.ToByteArray(arg), global::Google.Cloud.Spanner.Admin.Database.V1.ListDatabasesRequest.Parser.ParseFrom);
+    static readonly grpc::Marshaller<global::Google.Cloud.Spanner.Admin.Database.V1.ListDatabasesResponse> __Marshaller_google_spanner_admin_database_v1_ListDatabasesResponse = grpc::Marshallers.Create((arg) => global::Google.Protobuf.MessageExtensions.ToByteArray(arg), global::Google.Cloud.Spanner.Admin.Database.V1.ListDatabasesResponse.Parser.ParseFrom);
+    static readonly grpc::Marshaller<global::Google.Cloud.Spanner.Admin.Database.V1.CreateDatabaseRequest> __Marshaller_google_spanner_admin_database_v1_CreateDatabaseRequest = grpc::Marshallers.Create((arg) => global::Google.Protobuf.MessageExtensions.ToByteArray(arg), global::Google.Cloud.Spanner.Admin.Database.V1.CreateDatabaseRequest.Parser.ParseFrom);
+    static readonly grpc::Marshaller<global::Google.LongRunning.Operation> __Marshaller_google_longrunning_Operation = grpc::Marshallers.Create((arg) => global::Google.Protobuf.MessageExtensions.ToByteArray(arg), global::Google.LongRunning.Operation.Parser.ParseFrom);
+    static readonly grpc::Marshaller<global::Google.Cloud.Spanner.Admin.Database.V1.GetDatabaseRequest> __Marshaller_google_spanner_admin_database_v1_GetDatabaseRequest = grpc::Marshallers.Create((arg) => global::Google.Protobuf.MessageExtensions.ToByteArray(arg), global::Google.Cloud.Spanner.Admin.Database.V1.GetDatabaseRequest.Parser.ParseFrom);
+    static readonly grpc::Marshaller<global::Google.Cloud.Spanner.Admin.Database.V1.Database> __Marshaller_google_spanner_admin_database_v1_Database = grpc::Marshallers.Create((arg) => global::Google.Protobuf.MessageExtensions.ToByteArray(arg), global::Google.Cloud.Spanner.Admin.Database.V1.Database.Parser.ParseFrom);
+    static readonly grpc::Marshaller<global::Google.Cloud.Spanner.Admin.Database.V1.UpdateDatabaseDdlRequest> __Marshaller_google_spanner_admin_database_v1_UpdateDatabaseDdlRequest = grpc::Marshallers.Create((arg) => global::Google.Protobuf.MessageExtensions.ToByteArray(arg), global::Google.Cloud.Spanner.Admin.Database.V1.UpdateDatabaseDdlRequest.Parser.ParseFrom);
+    static readonly grpc::Marshaller<global::Google.Cloud.Spanner.Admin.Database.V1.DropDatabaseRequest> __Marshaller_google_spanner_admin_database_v1_DropDatabaseRequest = grpc::Marshallers.Create((arg) => global::Google.Protobuf.MessageExtensions.ToByteArray(arg), global::Google.Cloud.Spanner.Admin.Database.V1.DropDatabaseRequest.Parser.ParseFrom);
+    static readonly grpc::Marshaller<global::Google.Protobuf.WellKnownTypes.Empty> __Marshaller_google_protobuf_Empty = grpc::Marshallers.Create((arg) => global::Google.Protobuf.MessageExtensions.ToByteArray(arg), global::Google.Protobuf.WellKnownTypes.Empty.Parser.ParseFrom);
+    static readonly grpc::Marshaller<global::Google.Cloud.Spanner.Admin.Database.V1.GetDatabaseDdlRequest> __Marshaller_google_spanner_admin_database_v1_GetDatabaseDdlRequest = grpc::Marshallers.Create((arg) => global::Google.Protobuf.MessageExtensions.ToByteArray(arg), global::Google.Cloud.Spanner.Admin.Database.V1.GetDatabaseDdlRequest.Parser.ParseFrom);
+    static readonly grpc::Marshaller<global::Google.Cloud.Spanner.Admin.Database.V1.GetDatabaseDdlResponse> __Marshaller_google_spanner_admin_database_v1_GetDatabaseDdlResponse = grpc::Marshallers.Create((arg) => global::Google.Protobuf.MessageExtensions.ToByteArray(arg), global::Google.Cloud.Spanner.Admin.Database.V1.GetDatabaseDdlResponse.Parser.ParseFrom);
+    static readonly grpc::Marshaller<global::Google.Cloud.Iam.V1.SetIamPolicyRequest> __Marshaller_google_iam_v1_SetIamPolicyRequest = grpc::Marshallers.Create((arg) => global::Google.Protobuf.MessageExtensions.ToByteArray(arg), global::Google.Cloud.Iam.V1.SetIamPolicyRequest.Parser.ParseFrom);
+    static readonly grpc::Marshaller<global::Google.Cloud.Iam.V1.Policy> __Marshaller_google_iam_v1_Policy = grpc::Marshallers.Create((arg) => global::Google.Protobuf.MessageExtensions.ToByteArray(arg), global::Google.Cloud.Iam.V1.Policy.Parser.ParseFrom);
+    static readonly grpc::Marshaller<global::Google.Cloud.Iam.V1.GetIamPolicyRequest> __Marshaller_google_iam_v1_GetIamPolicyRequest = grpc::Marshallers.Create((arg) => global::Google.Protobuf.MessageExtensions.ToByteArray(arg), global::Google.Cloud.Iam.V1.GetIamPolicyRequest.Parser.ParseFrom);
+    static readonly grpc::Marshaller<global::Google.Cloud.Iam.V1.TestIamPermissionsRequest> __Marshaller_google_iam_v1_TestIamPermissionsRequest = grpc::Marshallers.Create((arg) => global::Google.Protobuf.MessageExtensions.ToByteArray(arg), global::Google.Cloud.Iam.V1.TestIamPermissionsRequest.Parser.ParseFrom);
+    static readonly grpc::Marshaller<global::Google.Cloud.Iam.V1.TestIamPermissionsResponse> __Marshaller_google_iam_v1_TestIamPermissionsResponse = grpc::Marshallers.Create((arg) => global::Google.Protobuf.MessageExtensions.ToByteArray(arg), global::Google.Cloud.Iam.V1.TestIamPermissionsResponse.Parser.ParseFrom);
 
     static readonly grpc::Method<global::Google.Cloud.Spanner.Admin.Database.V1.ListDatabasesRequest, global::Google.Cloud.Spanner.Admin.Database.V1.ListDatabasesResponse> __Method_ListDatabases = new grpc::Method<global::Google.Cloud.Spanner.Admin.Database.V1.ListDatabasesRequest, global::Google.Cloud.Spanner.Admin.Database.V1.ListDatabasesResponse>(
         grpc::MethodType.Unary,
         __ServiceName,
         "ListDatabases",
-        __Marshaller_ListDatabasesRequest,
-        __Marshaller_ListDatabasesResponse);
+        __Marshaller_google_spanner_admin_database_v1_ListDatabasesRequest,
+        __Marshaller_google_spanner_admin_database_v1_ListDatabasesResponse);
 
     static readonly grpc::Method<global::Google.Cloud.Spanner.Admin.Database.V1.CreateDatabaseRequest, global::Google.LongRunning.Operation> __Method_CreateDatabase = new grpc::Method<global::Google.Cloud.Spanner.Admin.Database.V1.CreateDatabaseRequest, global::Google.LongRunning.Operation>(
         grpc::MethodType.Unary,
         __ServiceName,
         "CreateDatabase",
-        __Marshaller_CreateDatabaseRequest,
-        __Marshaller_Operation);
+        __Marshaller_google_spanner_admin_database_v1_CreateDatabaseRequest,
+        __Marshaller_google_longrunning_Operation);
 
     static readonly grpc::Method<global::Google.Cloud.Spanner.Admin.Database.V1.GetDatabaseRequest, global::Google.Cloud.Spanner.Admin.Database.V1.Database> __Method_GetDatabase = new grpc::Method<global::Google.Cloud.Spanner.Admin.Database.V1.GetDatabaseRequest, global::Google.Cloud.Spanner.Admin.Database.V1.Database>(
         grpc::MethodType.Unary,
         __ServiceName,
         "GetDatabase",
-        __Marshaller_GetDatabaseRequest,
-        __Marshaller_Database);
+        __Marshaller_google_spanner_admin_database_v1_GetDatabaseRequest,
+        __Marshaller_google_spanner_admin_database_v1_Database);
 
     static readonly grpc::Method<global::Google.Cloud.Spanner.Admin.Database.V1.UpdateDatabaseDdlRequest, global::Google.LongRunning.Operation> __Method_UpdateDatabaseDdl = new grpc::Method<global::Google.Cloud.Spanner.Admin.Database.V1.UpdateDatabaseDdlRequest, global::Google.LongRunning.Operation>(
         grpc::MethodType.Unary,
         __ServiceName,
         "UpdateDatabaseDdl",
-        __Marshaller_UpdateDatabaseDdlRequest,
-        __Marshaller_Operation);
+        __Marshaller_google_spanner_admin_database_v1_UpdateDatabaseDdlRequest,
+        __Marshaller_google_longrunning_Operation);
 
     static readonly grpc::Method<global::Google.Cloud.Spanner.Admin.Database.V1.DropDatabaseRequest, global::Google.Protobuf.WellKnownTypes.Empty> __Method_DropDatabase = new grpc::Method<global::Google.Cloud.Spanner.Admin.Database.V1.DropDatabaseRequest, global::Google.Protobuf.WellKnownTypes.Empty>(
         grpc::MethodType.Unary,
         __ServiceName,
         "DropDatabase",
-        __Marshaller_DropDatabaseRequest,
-        __Marshaller_Empty);
+        __Marshaller_google_spanner_admin_database_v1_DropDatabaseRequest,
+        __Marshaller_google_protobuf_Empty);
 
     static readonly grpc::Method<global::Google.Cloud.Spanner.Admin.Database.V1.GetDatabaseDdlRequest, global::Google.Cloud.Spanner.Admin.Database.V1.GetDatabaseDdlResponse> __Method_GetDatabaseDdl = new grpc::Method<global::Google.Cloud.Spanner.Admin.Database.V1.GetDatabaseDdlRequest, global::Google.Cloud.Spanner.Admin.Database.V1.GetDatabaseDdlResponse>(
         grpc::MethodType.Unary,
         __ServiceName,
         "GetDatabaseDdl",
-        __Marshaller_GetDatabaseDdlRequest,
-        __Marshaller_GetDatabaseDdlResponse);
+        __Marshaller_google_spanner_admin_database_v1_GetDatabaseDdlRequest,
+        __Marshaller_google_spanner_admin_database_v1_GetDatabaseDdlResponse);
 
     static readonly grpc::Method<global::Google.Cloud.Iam.V1.SetIamPolicyRequest, global::Google.Cloud.Iam.V1.Policy> __Method_SetIamPolicy = new grpc::Method<global::Google.Cloud.Iam.V1.SetIamPolicyRequest, global::Google.Cloud.Iam.V1.Policy>(
         grpc::MethodType.Unary,
         __ServiceName,
         "SetIamPolicy",
-        __Marshaller_SetIamPolicyRequest,
-        __Marshaller_Policy);
+        __Marshaller_google_iam_v1_SetIamPolicyRequest,
+        __Marshaller_google_iam_v1_Policy);
 
     static readonly grpc::Method<global::Google.Cloud.Iam.V1.GetIamPolicyRequest, global::Google.Cloud.Iam.V1.Policy> __Method_GetIamPolicy = new grpc::Method<global::Google.Cloud.Iam.V1.GetIamPolicyRequest, global::Google.Cloud.Iam.V1.Policy>(
         grpc::MethodType.Unary,
         __ServiceName,
         "GetIamPolicy",
-        __Marshaller_GetIamPolicyRequest,
-        __Marshaller_Policy);
+        __Marshaller_google_iam_v1_GetIamPolicyRequest,
+        __Marshaller_google_iam_v1_Policy);
 
     static readonly grpc::Method<global::Google.Cloud.Iam.V1.TestIamPermissionsRequest, global::Google.Cloud.Iam.V1.TestIamPermissionsResponse> __Method_TestIamPermissions = new grpc::Method<global::Google.Cloud.Iam.V1.TestIamPermissionsRequest, global::Google.Cloud.Iam.V1.TestIamPermissionsResponse>(
         grpc::MethodType.Unary,
         __ServiceName,
         "TestIamPermissions",
-        __Marshaller_TestIamPermissionsRequest,
-        __Marshaller_TestIamPermissionsResponse);
+        __Marshaller_google_iam_v1_TestIamPermissionsRequest,
+        __Marshaller_google_iam_v1_TestIamPermissionsResponse);
 
     /// <summary>Service descriptor</summary>
     public static global::Google.Protobuf.Reflection.ServiceDescriptor Descriptor
@@ -121,6 +122,7 @@ namespace Google.Cloud.Spanner.Admin.Database.V1 {
     }
 
     /// <summary>Base class for server-side implementations of DatabaseAdmin</summary>
+    [grpc::BindServiceMethod(typeof(DatabaseAdmin), "BindService")]
     public abstract partial class DatabaseAdminBase
     {
       /// <summary>
@@ -140,8 +142,8 @@ namespace Google.Cloud.Spanner.Admin.Database.V1 {
       /// have a name of the format `&lt;database_name>/operations/&lt;operation_id>` and
       /// can be used to track preparation of the database. The
       /// [metadata][google.longrunning.Operation.metadata] field type is
-      /// [CreateDatabaseMetadata][google.spanner.admin.database.v1.CreateDatabaseMetadata]. The
-      /// [response][google.longrunning.Operation.response] field type is
+      /// [CreateDatabaseMetadata][google.spanner.admin.database.v1.CreateDatabaseMetadata].
+      /// The [response][google.longrunning.Operation.response] field type is
       /// [Database][google.spanner.admin.database.v1.Database], if successful.
       /// </summary>
       /// <param name="request">The request received from the client.</param>
@@ -170,7 +172,8 @@ namespace Google.Cloud.Spanner.Admin.Database.V1 {
       /// the format `&lt;database_name>/operations/&lt;operation_id>` and can be used to
       /// track execution of the schema change(s). The
       /// [metadata][google.longrunning.Operation.metadata] field type is
-      /// [UpdateDatabaseDdlMetadata][google.spanner.admin.database.v1.UpdateDatabaseDdlMetadata].  The operation has no response.
+      /// [UpdateDatabaseDdlMetadata][google.spanner.admin.database.v1.UpdateDatabaseDdlMetadata].
+      /// The operation has no response.
       /// </summary>
       /// <param name="request">The request received from the client.</param>
       /// <param name="context">The context of the server-side call handler being invoked.</param>
@@ -205,11 +208,11 @@ namespace Google.Cloud.Spanner.Admin.Database.V1 {
       }
 
       /// <summary>
-      /// Sets the access control policy on a database resource. Replaces any
-      /// existing policy.
+      /// Sets the access control policy on a database resource.
+      /// Replaces any existing policy.
       ///
-      /// Authorization requires `spanner.databases.setIamPolicy` permission on
-      /// [resource][google.iam.v1.SetIamPolicyRequest.resource].
+      /// Authorization requires `spanner.databases.setIamPolicy`
+      /// permission on [resource][google.iam.v1.SetIamPolicyRequest.resource].
       /// </summary>
       /// <param name="request">The request received from the client.</param>
       /// <param name="context">The context of the server-side call handler being invoked.</param>
@@ -220,8 +223,9 @@ namespace Google.Cloud.Spanner.Admin.Database.V1 {
       }
 
       /// <summary>
-      /// Gets the access control policy for a database resource. Returns an empty
-      /// policy if a database exists but does not have a policy set.
+      /// Gets the access control policy for a database resource.
+      /// Returns an empty policy if a database exists but does
+      /// not have a policy set.
       ///
       /// Authorization requires `spanner.databases.getIamPolicy` permission on
       /// [resource][google.iam.v1.GetIamPolicyRequest.resource].
@@ -237,10 +241,10 @@ namespace Google.Cloud.Spanner.Admin.Database.V1 {
       /// <summary>
       /// Returns permissions that the caller has on the specified database resource.
       ///
-      /// Attempting this RPC on a non-existent Cloud Spanner database will result in
-      /// a NOT_FOUND error if the user has `spanner.databases.list` permission on
-      /// the containing Cloud Spanner instance. Otherwise returns an empty set of
-      /// permissions.
+      /// Attempting this RPC on a non-existent Cloud Spanner database will
+      /// result in a NOT_FOUND error if the user has
+      /// `spanner.databases.list` permission on the containing Cloud
+      /// Spanner instance. Otherwise returns an empty set of permissions.
       /// </summary>
       /// <param name="request">The request received from the client.</param>
       /// <param name="context">The context of the server-side call handler being invoked.</param>
@@ -325,8 +329,8 @@ namespace Google.Cloud.Spanner.Admin.Database.V1 {
       /// have a name of the format `&lt;database_name>/operations/&lt;operation_id>` and
       /// can be used to track preparation of the database. The
       /// [metadata][google.longrunning.Operation.metadata] field type is
-      /// [CreateDatabaseMetadata][google.spanner.admin.database.v1.CreateDatabaseMetadata]. The
-      /// [response][google.longrunning.Operation.response] field type is
+      /// [CreateDatabaseMetadata][google.spanner.admin.database.v1.CreateDatabaseMetadata].
+      /// The [response][google.longrunning.Operation.response] field type is
       /// [Database][google.spanner.admin.database.v1.Database], if successful.
       /// </summary>
       /// <param name="request">The request to send to the server.</param>
@@ -344,8 +348,8 @@ namespace Google.Cloud.Spanner.Admin.Database.V1 {
       /// have a name of the format `&lt;database_name>/operations/&lt;operation_id>` and
       /// can be used to track preparation of the database. The
       /// [metadata][google.longrunning.Operation.metadata] field type is
-      /// [CreateDatabaseMetadata][google.spanner.admin.database.v1.CreateDatabaseMetadata]. The
-      /// [response][google.longrunning.Operation.response] field type is
+      /// [CreateDatabaseMetadata][google.spanner.admin.database.v1.CreateDatabaseMetadata].
+      /// The [response][google.longrunning.Operation.response] field type is
       /// [Database][google.spanner.admin.database.v1.Database], if successful.
       /// </summary>
       /// <param name="request">The request to send to the server.</param>
@@ -361,8 +365,8 @@ namespace Google.Cloud.Spanner.Admin.Database.V1 {
       /// have a name of the format `&lt;database_name>/operations/&lt;operation_id>` and
       /// can be used to track preparation of the database. The
       /// [metadata][google.longrunning.Operation.metadata] field type is
-      /// [CreateDatabaseMetadata][google.spanner.admin.database.v1.CreateDatabaseMetadata]. The
-      /// [response][google.longrunning.Operation.response] field type is
+      /// [CreateDatabaseMetadata][google.spanner.admin.database.v1.CreateDatabaseMetadata].
+      /// The [response][google.longrunning.Operation.response] field type is
       /// [Database][google.spanner.admin.database.v1.Database], if successful.
       /// </summary>
       /// <param name="request">The request to send to the server.</param>
@@ -380,8 +384,8 @@ namespace Google.Cloud.Spanner.Admin.Database.V1 {
       /// have a name of the format `&lt;database_name>/operations/&lt;operation_id>` and
       /// can be used to track preparation of the database. The
       /// [metadata][google.longrunning.Operation.metadata] field type is
-      /// [CreateDatabaseMetadata][google.spanner.admin.database.v1.CreateDatabaseMetadata]. The
-      /// [response][google.longrunning.Operation.response] field type is
+      /// [CreateDatabaseMetadata][google.spanner.admin.database.v1.CreateDatabaseMetadata].
+      /// The [response][google.longrunning.Operation.response] field type is
       /// [Database][google.spanner.admin.database.v1.Database], if successful.
       /// </summary>
       /// <param name="request">The request to send to the server.</param>
@@ -442,7 +446,8 @@ namespace Google.Cloud.Spanner.Admin.Database.V1 {
       /// the format `&lt;database_name>/operations/&lt;operation_id>` and can be used to
       /// track execution of the schema change(s). The
       /// [metadata][google.longrunning.Operation.metadata] field type is
-      /// [UpdateDatabaseDdlMetadata][google.spanner.admin.database.v1.UpdateDatabaseDdlMetadata].  The operation has no response.
+      /// [UpdateDatabaseDdlMetadata][google.spanner.admin.database.v1.UpdateDatabaseDdlMetadata].
+      /// The operation has no response.
       /// </summary>
       /// <param name="request">The request to send to the server.</param>
       /// <param name="headers">The initial metadata to send with the call. This parameter is optional.</param>
@@ -460,7 +465,8 @@ namespace Google.Cloud.Spanner.Admin.Database.V1 {
       /// the format `&lt;database_name>/operations/&lt;operation_id>` and can be used to
       /// track execution of the schema change(s). The
       /// [metadata][google.longrunning.Operation.metadata] field type is
-      /// [UpdateDatabaseDdlMetadata][google.spanner.admin.database.v1.UpdateDatabaseDdlMetadata].  The operation has no response.
+      /// [UpdateDatabaseDdlMetadata][google.spanner.admin.database.v1.UpdateDatabaseDdlMetadata].
+      /// The operation has no response.
       /// </summary>
       /// <param name="request">The request to send to the server.</param>
       /// <param name="options">The options for the call.</param>
@@ -476,7 +482,8 @@ namespace Google.Cloud.Spanner.Admin.Database.V1 {
       /// the format `&lt;database_name>/operations/&lt;operation_id>` and can be used to
       /// track execution of the schema change(s). The
       /// [metadata][google.longrunning.Operation.metadata] field type is
-      /// [UpdateDatabaseDdlMetadata][google.spanner.admin.database.v1.UpdateDatabaseDdlMetadata].  The operation has no response.
+      /// [UpdateDatabaseDdlMetadata][google.spanner.admin.database.v1.UpdateDatabaseDdlMetadata].
+      /// The operation has no response.
       /// </summary>
       /// <param name="request">The request to send to the server.</param>
       /// <param name="headers">The initial metadata to send with the call. This parameter is optional.</param>
@@ -494,7 +501,8 @@ namespace Google.Cloud.Spanner.Admin.Database.V1 {
       /// the format `&lt;database_name>/operations/&lt;operation_id>` and can be used to
       /// track execution of the schema change(s). The
       /// [metadata][google.longrunning.Operation.metadata] field type is
-      /// [UpdateDatabaseDdlMetadata][google.spanner.admin.database.v1.UpdateDatabaseDdlMetadata].  The operation has no response.
+      /// [UpdateDatabaseDdlMetadata][google.spanner.admin.database.v1.UpdateDatabaseDdlMetadata].
+      /// The operation has no response.
       /// </summary>
       /// <param name="request">The request to send to the server.</param>
       /// <param name="options">The options for the call.</param>
@@ -600,11 +608,11 @@ namespace Google.Cloud.Spanner.Admin.Database.V1 {
         return CallInvoker.AsyncUnaryCall(__Method_GetDatabaseDdl, null, options, request);
       }
       /// <summary>
-      /// Sets the access control policy on a database resource. Replaces any
-      /// existing policy.
+      /// Sets the access control policy on a database resource.
+      /// Replaces any existing policy.
       ///
-      /// Authorization requires `spanner.databases.setIamPolicy` permission on
-      /// [resource][google.iam.v1.SetIamPolicyRequest.resource].
+      /// Authorization requires `spanner.databases.setIamPolicy`
+      /// permission on [resource][google.iam.v1.SetIamPolicyRequest.resource].
       /// </summary>
       /// <param name="request">The request to send to the server.</param>
       /// <param name="headers">The initial metadata to send with the call. This parameter is optional.</param>
@@ -616,11 +624,11 @@ namespace Google.Cloud.Spanner.Admin.Database.V1 {
         return SetIamPolicy(request, new grpc::CallOptions(headers, deadline, cancellationToken));
       }
       /// <summary>
-      /// Sets the access control policy on a database resource. Replaces any
-      /// existing policy.
+      /// Sets the access control policy on a database resource.
+      /// Replaces any existing policy.
       ///
-      /// Authorization requires `spanner.databases.setIamPolicy` permission on
-      /// [resource][google.iam.v1.SetIamPolicyRequest.resource].
+      /// Authorization requires `spanner.databases.setIamPolicy`
+      /// permission on [resource][google.iam.v1.SetIamPolicyRequest.resource].
       /// </summary>
       /// <param name="request">The request to send to the server.</param>
       /// <param name="options">The options for the call.</param>
@@ -630,11 +638,11 @@ namespace Google.Cloud.Spanner.Admin.Database.V1 {
         return CallInvoker.BlockingUnaryCall(__Method_SetIamPolicy, null, options, request);
       }
       /// <summary>
-      /// Sets the access control policy on a database resource. Replaces any
-      /// existing policy.
+      /// Sets the access control policy on a database resource.
+      /// Replaces any existing policy.
       ///
-      /// Authorization requires `spanner.databases.setIamPolicy` permission on
-      /// [resource][google.iam.v1.SetIamPolicyRequest.resource].
+      /// Authorization requires `spanner.databases.setIamPolicy`
+      /// permission on [resource][google.iam.v1.SetIamPolicyRequest.resource].
       /// </summary>
       /// <param name="request">The request to send to the server.</param>
       /// <param name="headers">The initial metadata to send with the call. This parameter is optional.</param>
@@ -646,11 +654,11 @@ namespace Google.Cloud.Spanner.Admin.Database.V1 {
         return SetIamPolicyAsync(request, new grpc::CallOptions(headers, deadline, cancellationToken));
       }
       /// <summary>
-      /// Sets the access control policy on a database resource. Replaces any
-      /// existing policy.
+      /// Sets the access control policy on a database resource.
+      /// Replaces any existing policy.
       ///
-      /// Authorization requires `spanner.databases.setIamPolicy` permission on
-      /// [resource][google.iam.v1.SetIamPolicyRequest.resource].
+      /// Authorization requires `spanner.databases.setIamPolicy`
+      /// permission on [resource][google.iam.v1.SetIamPolicyRequest.resource].
       /// </summary>
       /// <param name="request">The request to send to the server.</param>
       /// <param name="options">The options for the call.</param>
@@ -660,8 +668,9 @@ namespace Google.Cloud.Spanner.Admin.Database.V1 {
         return CallInvoker.AsyncUnaryCall(__Method_SetIamPolicy, null, options, request);
       }
       /// <summary>
-      /// Gets the access control policy for a database resource. Returns an empty
-      /// policy if a database exists but does not have a policy set.
+      /// Gets the access control policy for a database resource.
+      /// Returns an empty policy if a database exists but does
+      /// not have a policy set.
       ///
       /// Authorization requires `spanner.databases.getIamPolicy` permission on
       /// [resource][google.iam.v1.GetIamPolicyRequest.resource].
@@ -676,8 +685,9 @@ namespace Google.Cloud.Spanner.Admin.Database.V1 {
         return GetIamPolicy(request, new grpc::CallOptions(headers, deadline, cancellationToken));
       }
       /// <summary>
-      /// Gets the access control policy for a database resource. Returns an empty
-      /// policy if a database exists but does not have a policy set.
+      /// Gets the access control policy for a database resource.
+      /// Returns an empty policy if a database exists but does
+      /// not have a policy set.
       ///
       /// Authorization requires `spanner.databases.getIamPolicy` permission on
       /// [resource][google.iam.v1.GetIamPolicyRequest.resource].
@@ -690,8 +700,9 @@ namespace Google.Cloud.Spanner.Admin.Database.V1 {
         return CallInvoker.BlockingUnaryCall(__Method_GetIamPolicy, null, options, request);
       }
       /// <summary>
-      /// Gets the access control policy for a database resource. Returns an empty
-      /// policy if a database exists but does not have a policy set.
+      /// Gets the access control policy for a database resource.
+      /// Returns an empty policy if a database exists but does
+      /// not have a policy set.
       ///
       /// Authorization requires `spanner.databases.getIamPolicy` permission on
       /// [resource][google.iam.v1.GetIamPolicyRequest.resource].
@@ -706,8 +717,9 @@ namespace Google.Cloud.Spanner.Admin.Database.V1 {
         return GetIamPolicyAsync(request, new grpc::CallOptions(headers, deadline, cancellationToken));
       }
       /// <summary>
-      /// Gets the access control policy for a database resource. Returns an empty
-      /// policy if a database exists but does not have a policy set.
+      /// Gets the access control policy for a database resource.
+      /// Returns an empty policy if a database exists but does
+      /// not have a policy set.
       ///
       /// Authorization requires `spanner.databases.getIamPolicy` permission on
       /// [resource][google.iam.v1.GetIamPolicyRequest.resource].
@@ -722,10 +734,10 @@ namespace Google.Cloud.Spanner.Admin.Database.V1 {
       /// <summary>
       /// Returns permissions that the caller has on the specified database resource.
       ///
-      /// Attempting this RPC on a non-existent Cloud Spanner database will result in
-      /// a NOT_FOUND error if the user has `spanner.databases.list` permission on
-      /// the containing Cloud Spanner instance. Otherwise returns an empty set of
-      /// permissions.
+      /// Attempting this RPC on a non-existent Cloud Spanner database will
+      /// result in a NOT_FOUND error if the user has
+      /// `spanner.databases.list` permission on the containing Cloud
+      /// Spanner instance. Otherwise returns an empty set of permissions.
       /// </summary>
       /// <param name="request">The request to send to the server.</param>
       /// <param name="headers">The initial metadata to send with the call. This parameter is optional.</param>
@@ -739,10 +751,10 @@ namespace Google.Cloud.Spanner.Admin.Database.V1 {
       /// <summary>
       /// Returns permissions that the caller has on the specified database resource.
       ///
-      /// Attempting this RPC on a non-existent Cloud Spanner database will result in
-      /// a NOT_FOUND error if the user has `spanner.databases.list` permission on
-      /// the containing Cloud Spanner instance. Otherwise returns an empty set of
-      /// permissions.
+      /// Attempting this RPC on a non-existent Cloud Spanner database will
+      /// result in a NOT_FOUND error if the user has
+      /// `spanner.databases.list` permission on the containing Cloud
+      /// Spanner instance. Otherwise returns an empty set of permissions.
       /// </summary>
       /// <param name="request">The request to send to the server.</param>
       /// <param name="options">The options for the call.</param>
@@ -754,10 +766,10 @@ namespace Google.Cloud.Spanner.Admin.Database.V1 {
       /// <summary>
       /// Returns permissions that the caller has on the specified database resource.
       ///
-      /// Attempting this RPC on a non-existent Cloud Spanner database will result in
-      /// a NOT_FOUND error if the user has `spanner.databases.list` permission on
-      /// the containing Cloud Spanner instance. Otherwise returns an empty set of
-      /// permissions.
+      /// Attempting this RPC on a non-existent Cloud Spanner database will
+      /// result in a NOT_FOUND error if the user has
+      /// `spanner.databases.list` permission on the containing Cloud
+      /// Spanner instance. Otherwise returns an empty set of permissions.
       /// </summary>
       /// <param name="request">The request to send to the server.</param>
       /// <param name="headers">The initial metadata to send with the call. This parameter is optional.</param>
@@ -771,10 +783,10 @@ namespace Google.Cloud.Spanner.Admin.Database.V1 {
       /// <summary>
       /// Returns permissions that the caller has on the specified database resource.
       ///
-      /// Attempting this RPC on a non-existent Cloud Spanner database will result in
-      /// a NOT_FOUND error if the user has `spanner.databases.list` permission on
-      /// the containing Cloud Spanner instance. Otherwise returns an empty set of
-      /// permissions.
+      /// Attempting this RPC on a non-existent Cloud Spanner database will
+      /// result in a NOT_FOUND error if the user has
+      /// `spanner.databases.list` permission on the containing Cloud
+      /// Spanner instance. Otherwise returns an empty set of permissions.
       /// </summary>
       /// <param name="request">The request to send to the server.</param>
       /// <param name="options">The options for the call.</param>
@@ -804,6 +816,23 @@ namespace Google.Cloud.Spanner.Admin.Database.V1 {
           .AddMethod(__Method_SetIamPolicy, serviceImpl.SetIamPolicy)
           .AddMethod(__Method_GetIamPolicy, serviceImpl.GetIamPolicy)
           .AddMethod(__Method_TestIamPermissions, serviceImpl.TestIamPermissions).Build();
+    }
+
+    /// <summary>Register service method with a service binder with or without implementation. Useful when customizing the  service binding logic.
+    /// Note: this method is part of an experimental API that can change or be removed without any prior notice.</summary>
+    /// <param name="serviceBinder">Service methods will be bound by calling <c>AddMethod</c> on this object.</param>
+    /// <param name="serviceImpl">An object implementing the server-side handling logic.</param>
+    public static void BindService(grpc::ServiceBinderBase serviceBinder, DatabaseAdminBase serviceImpl)
+    {
+      serviceBinder.AddMethod(__Method_ListDatabases, serviceImpl == null ? null : new grpc::UnaryServerMethod<global::Google.Cloud.Spanner.Admin.Database.V1.ListDatabasesRequest, global::Google.Cloud.Spanner.Admin.Database.V1.ListDatabasesResponse>(serviceImpl.ListDatabases));
+      serviceBinder.AddMethod(__Method_CreateDatabase, serviceImpl == null ? null : new grpc::UnaryServerMethod<global::Google.Cloud.Spanner.Admin.Database.V1.CreateDatabaseRequest, global::Google.LongRunning.Operation>(serviceImpl.CreateDatabase));
+      serviceBinder.AddMethod(__Method_GetDatabase, serviceImpl == null ? null : new grpc::UnaryServerMethod<global::Google.Cloud.Spanner.Admin.Database.V1.GetDatabaseRequest, global::Google.Cloud.Spanner.Admin.Database.V1.Database>(serviceImpl.GetDatabase));
+      serviceBinder.AddMethod(__Method_UpdateDatabaseDdl, serviceImpl == null ? null : new grpc::UnaryServerMethod<global::Google.Cloud.Spanner.Admin.Database.V1.UpdateDatabaseDdlRequest, global::Google.LongRunning.Operation>(serviceImpl.UpdateDatabaseDdl));
+      serviceBinder.AddMethod(__Method_DropDatabase, serviceImpl == null ? null : new grpc::UnaryServerMethod<global::Google.Cloud.Spanner.Admin.Database.V1.DropDatabaseRequest, global::Google.Protobuf.WellKnownTypes.Empty>(serviceImpl.DropDatabase));
+      serviceBinder.AddMethod(__Method_GetDatabaseDdl, serviceImpl == null ? null : new grpc::UnaryServerMethod<global::Google.Cloud.Spanner.Admin.Database.V1.GetDatabaseDdlRequest, global::Google.Cloud.Spanner.Admin.Database.V1.GetDatabaseDdlResponse>(serviceImpl.GetDatabaseDdl));
+      serviceBinder.AddMethod(__Method_SetIamPolicy, serviceImpl == null ? null : new grpc::UnaryServerMethod<global::Google.Cloud.Iam.V1.SetIamPolicyRequest, global::Google.Cloud.Iam.V1.Policy>(serviceImpl.SetIamPolicy));
+      serviceBinder.AddMethod(__Method_GetIamPolicy, serviceImpl == null ? null : new grpc::UnaryServerMethod<global::Google.Cloud.Iam.V1.GetIamPolicyRequest, global::Google.Cloud.Iam.V1.Policy>(serviceImpl.GetIamPolicy));
+      serviceBinder.AddMethod(__Method_TestIamPermissions, serviceImpl == null ? null : new grpc::UnaryServerMethod<global::Google.Cloud.Iam.V1.TestIamPermissionsRequest, global::Google.Cloud.Iam.V1.TestIamPermissionsResponse>(serviceImpl.TestIamPermissions));
     }
 
   }

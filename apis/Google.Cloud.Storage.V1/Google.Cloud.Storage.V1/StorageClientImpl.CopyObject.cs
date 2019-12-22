@@ -33,7 +33,7 @@ namespace Google.Cloud.Storage.V1
         {
             var request = CreateCopyObjectRequest(sourceBucket, sourceObjectName, destinationBucket, destinationObjectName, options);
             var response = request.Execute();
-            while (response.RewriteToken != null)
+            while (response.Done != true)
             {
                 request.RewriteToken = response.RewriteToken;
                 response = request.Execute();
@@ -52,7 +52,7 @@ namespace Google.Cloud.Storage.V1
         {
             var request = CreateCopyObjectRequest(sourceBucket, sourceObjectName, destinationBucket, destinationObjectName, options);
             var response = await request.ExecuteAsync(cancellationToken).ConfigureAwait(false);
-            while (response.RewriteToken != null)
+            while (response.Done != true)
             {
                 request.RewriteToken = response.RewriteToken;
                 response = await request.ExecuteAsync(cancellationToken).ConfigureAwait(false);
@@ -76,7 +76,6 @@ namespace Google.Cloud.Storage.V1
             options?.ModifyRequest(request);
             ApplyEncryptionKey(options?.EncryptionKey, options?.KmsKeyName, request);
             request.ModifyRequest += (options?.SourceEncryptionKey ?? EncryptionKey).ModifyRequestForRewriteSource;
-            request.ModifyRequest += _versionHeaderAction;
             return request;
         }
     }

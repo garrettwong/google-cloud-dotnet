@@ -14,15 +14,15 @@
 
 using Google.Api.Gax;
 using Google.Api.Gax.Grpc;
-using Google.Cloud.Firestore.V1Beta1;
+using Google.Cloud.Firestore.V1;
 using Google.Protobuf;
 using System;
 using System.Collections.Generic;
 using System.Linq;
 using System.Threading;
 using System.Threading.Tasks;
-using static Google.Cloud.Firestore.V1Beta1.DocumentTransform.Types;
-using static Google.Cloud.Firestore.V1Beta1.DocumentTransform.Types.FieldTransform.Types;
+using static Google.Cloud.Firestore.V1.DocumentTransform.Types;
+using static Google.Cloud.Firestore.V1.DocumentTransform.Types.FieldTransform.Types;
 
 namespace Google.Cloud.Firestore
 {
@@ -56,7 +56,7 @@ namespace Google.Cloud.Firestore
         {
             GaxPreconditions.CheckNotNull(documentReference, nameof(documentReference));
             GaxPreconditions.CheckNotNull(documentData, nameof(documentData));
-            var fields = ValueSerializer.SerializeMap(documentData);
+            var fields = ValueSerializer.SerializeMap(documentReference.Database.SerializationContext, documentData);
             var sentinels = FindSentinels(fields);
             GaxPreconditions.CheckArgument(!sentinels.Any(sf => sf.IsDelete), nameof(documentData), "Delete sentinels cannot appear in Create calls");
             RemoveSentinels(fields, sentinels);
@@ -125,7 +125,7 @@ namespace Google.Cloud.Firestore
             GaxPreconditions.CheckArgument(updates.Count != 0, nameof(updates), "Empty set of updates specified");
             GaxPreconditions.CheckArgument(precondition?.Exists != true, nameof(precondition), "Cannot specify a must-exist precondition for update");
 
-            var serializedUpdates = updates.ToDictionary(pair => pair.Key, pair => ValueSerializer.Serialize(pair.Value));
+            var serializedUpdates = updates.ToDictionary(pair => pair.Key, pair => ValueSerializer.Serialize(documentReference.Database.SerializationContext, pair.Value));
             var expanded = ExpandObject(serializedUpdates);
 
 
@@ -153,7 +153,7 @@ namespace Google.Cloud.Firestore
             GaxPreconditions.CheckNotNull(documentReference, nameof(documentReference));
             GaxPreconditions.CheckNotNull(documentData, nameof(documentData));
 
-            var fields = ValueSerializer.SerializeMap(documentData);
+            var fields = ValueSerializer.SerializeMap(documentReference.Database.SerializationContext, documentData);
             options = options ?? SetOptions.Overwrite;
             var sentinels = FindSentinels(fields);
             var deletes = sentinels.Where(sf => sf.IsDelete).ToList();
@@ -260,9 +260,10 @@ namespace Google.Cloud.Firestore
                     UpdateMask = includeEmptyUpdatePath || updatePaths.Count > 0 ? new DocumentMask { FieldPaths = { updatePaths.Select(fp => fp.EncodedPath) } } : null
                 }, true));
                 includeTransformInWriteResults = false;
+                // Don't include the precondition in the Transform write, if there is one.
                 precondition = null;
             }
-            if (sentinelFields.Count > 0 || precondition != null)
+            if (sentinelFields.Count > 0)
             {
                 Elements.Add(new BatchElement(new Write
                 {
@@ -534,6 +535,9 @@ namespace Google.Cloud.Firestore
                         break;
                     case SentinelKind.ArrayUnion:
                         transform.AppendMissingElements = SentinelValue.GetArrayValue(Value);
+                        break;
+                    case SentinelKind.NumericIncrement:
+                        transform.Increment = SentinelValue.GetIncrement(Value);
                         break;
                     default:
                         throw new InvalidOperationException($"Cannot convert sentinel value of kind {Kind} to field transform");

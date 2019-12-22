@@ -12,11 +12,10 @@
 // See the License for the specific language governing permissions and
 // limitations under the License.
 
+using Google.Cloud.Spanner.V1.Internal.Logging;
 using System;
 using System.Diagnostics;
-using System.Threading;
 using System.Threading.Tasks;
-using Google.Cloud.Spanner.V1.Internal.Logging;
 
 namespace Google.Cloud.Spanner.Data
 {
@@ -36,7 +35,7 @@ namespace Google.Cloud.Spanner.Data
                 t();
                 if (sw != null)
                 {
-                    logger.LogPerformanceCounterFn($"{name}.Duration", x => sw.ElapsedMilliseconds);
+                    logger.LogPerformanceCounter($"{name}.Duration", sw.ElapsedMilliseconds);
                 }
             }
             catch (Exception e) when ((translatedException = SpannerException.TryTranslateRpcException(e)) != null)
@@ -70,7 +69,7 @@ namespace Google.Cloud.Spanner.Data
                 var result = await t().ConfigureAwait(false);
                 if (sw != null)
                 {
-                    logger.LogPerformanceCounterFn($"{name}.Duration", x => sw.ElapsedMilliseconds);
+                    logger.LogPerformanceCounter($"{name}.Duration", sw.ElapsedMilliseconds);
                 }
 
                 return result;

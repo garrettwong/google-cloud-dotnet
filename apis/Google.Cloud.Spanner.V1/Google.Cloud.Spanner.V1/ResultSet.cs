@@ -25,10 +25,10 @@ namespace Google.Cloud.Spanner.V1 {
       byte[] descriptorData = global::System.Convert.FromBase64String(
           string.Concat(
             "CiJnb29nbGUvc3Bhbm5lci92MS9yZXN1bHRfc2V0LnByb3RvEhFnb29nbGUu",
-            "c3Bhbm5lci52MRocZ29vZ2xlL2FwaS9hbm5vdGF0aW9ucy5wcm90bxocZ29v",
-            "Z2xlL3Byb3RvYnVmL3N0cnVjdC5wcm90bxoiZ29vZ2xlL3NwYW5uZXIvdjEv",
-            "cXVlcnlfcGxhbi5wcm90bxojZ29vZ2xlL3NwYW5uZXIvdjEvdHJhbnNhY3Rp",
-            "b24ucHJvdG8aHGdvb2dsZS9zcGFubmVyL3YxL3R5cGUucHJvdG8inwEKCVJl",
+            "c3Bhbm5lci52MRocZ29vZ2xlL3Byb3RvYnVmL3N0cnVjdC5wcm90bxoiZ29v",
+            "Z2xlL3NwYW5uZXIvdjEvcXVlcnlfcGxhbi5wcm90bxojZ29vZ2xlL3NwYW5u",
+            "ZXIvdjEvdHJhbnNhY3Rpb24ucHJvdG8aHGdvb2dsZS9zcGFubmVyL3YxL3R5",
+            "cGUucHJvdG8aHGdvb2dsZS9hcGkvYW5ub3RhdGlvbnMucHJvdG8inwEKCVJl",
             "c3VsdFNldBI2CghtZXRhZGF0YRgBIAEoCzIkLmdvb2dsZS5zcGFubmVyLnYx",
             "LlJlc3VsdFNldE1ldGFkYXRhEigKBHJvd3MYAiADKAsyGi5nb29nbGUucHJv",
             "dG9idWYuTGlzdFZhbHVlEjAKBXN0YXRzGAMgASgLMiEuZ29vZ2xlLnNwYW5u",
@@ -49,7 +49,7 @@ namespace Google.Cloud.Spanner.V1 {
             "bm5lci92MTtzcGFubmVy+AEBqgIXR29vZ2xlLkNsb3VkLlNwYW5uZXIuVjHK",
             "AhdHb29nbGVcQ2xvdWRcU3Bhbm5lclxWMWIGcHJvdG8z"));
       descriptor = pbr::FileDescriptor.FromGeneratedCode(descriptorData,
-          new pbr::FileDescriptor[] { global::Google.Api.AnnotationsReflection.Descriptor, global::Google.Protobuf.WellKnownTypes.StructReflection.Descriptor, global::Google.Cloud.Spanner.V1.QueryPlanReflection.Descriptor, global::Google.Cloud.Spanner.V1.TransactionReflection.Descriptor, global::Google.Cloud.Spanner.V1.TypeReflection.Descriptor, },
+          new pbr::FileDescriptor[] { global::Google.Protobuf.WellKnownTypes.StructReflection.Descriptor, global::Google.Cloud.Spanner.V1.QueryPlanReflection.Descriptor, global::Google.Cloud.Spanner.V1.TransactionReflection.Descriptor, global::Google.Cloud.Spanner.V1.TypeReflection.Descriptor, global::Google.Api.AnnotationsReflection.Descriptor, },
           new pbr::GeneratedClrTypeInfo(null, new pbr::GeneratedClrTypeInfo[] {
             new pbr::GeneratedClrTypeInfo(typeof(global::Google.Cloud.Spanner.V1.ResultSet), global::Google.Cloud.Spanner.V1.ResultSet.Parser, new[]{ "Metadata", "Rows", "Stats" }, null, null, null),
             new pbr::GeneratedClrTypeInfo(typeof(global::Google.Cloud.Spanner.V1.PartialResultSet), global::Google.Cloud.Spanner.V1.PartialResultSet.Parser, new[]{ "Metadata", "Values", "ChunkedValue", "ResumeToken", "Stats" }, null, null, null),
@@ -229,14 +229,14 @@ namespace Google.Cloud.Spanner.V1 {
       }
       if (other.metadata_ != null) {
         if (metadata_ == null) {
-          metadata_ = new global::Google.Cloud.Spanner.V1.ResultSetMetadata();
+          Metadata = new global::Google.Cloud.Spanner.V1.ResultSetMetadata();
         }
         Metadata.MergeFrom(other.Metadata);
       }
       rows_.Add(other.rows_);
       if (other.stats_ != null) {
         if (stats_ == null) {
-          stats_ = new global::Google.Cloud.Spanner.V1.ResultSetStats();
+          Stats = new global::Google.Cloud.Spanner.V1.ResultSetStats();
         }
         Stats.MergeFrom(other.Stats);
       }
@@ -253,9 +253,9 @@ namespace Google.Cloud.Spanner.V1 {
             break;
           case 10: {
             if (metadata_ == null) {
-              metadata_ = new global::Google.Cloud.Spanner.V1.ResultSetMetadata();
+              Metadata = new global::Google.Cloud.Spanner.V1.ResultSetMetadata();
             }
-            input.ReadMessage(metadata_);
+            input.ReadMessage(Metadata);
             break;
           }
           case 18: {
@@ -264,9 +264,9 @@ namespace Google.Cloud.Spanner.V1 {
           }
           case 26: {
             if (stats_ == null) {
-              stats_ = new global::Google.Cloud.Spanner.V1.ResultSetStats();
+              Stats = new global::Google.Cloud.Spanner.V1.ResultSetStats();
             }
-            input.ReadMessage(stats_);
+            input.ReadMessage(Stats);
             break;
           }
         }
@@ -564,7 +564,7 @@ namespace Google.Cloud.Spanner.V1 {
       }
       if (other.metadata_ != null) {
         if (metadata_ == null) {
-          metadata_ = new global::Google.Cloud.Spanner.V1.ResultSetMetadata();
+          Metadata = new global::Google.Cloud.Spanner.V1.ResultSetMetadata();
         }
         Metadata.MergeFrom(other.Metadata);
       }
@@ -577,7 +577,7 @@ namespace Google.Cloud.Spanner.V1 {
       }
       if (other.stats_ != null) {
         if (stats_ == null) {
-          stats_ = new global::Google.Cloud.Spanner.V1.ResultSetStats();
+          Stats = new global::Google.Cloud.Spanner.V1.ResultSetStats();
         }
         Stats.MergeFrom(other.Stats);
       }
@@ -594,9 +594,9 @@ namespace Google.Cloud.Spanner.V1 {
             break;
           case 10: {
             if (metadata_ == null) {
-              metadata_ = new global::Google.Cloud.Spanner.V1.ResultSetMetadata();
+              Metadata = new global::Google.Cloud.Spanner.V1.ResultSetMetadata();
             }
-            input.ReadMessage(metadata_);
+            input.ReadMessage(Metadata);
             break;
           }
           case 18: {
@@ -613,9 +613,9 @@ namespace Google.Cloud.Spanner.V1 {
           }
           case 42: {
             if (stats_ == null) {
-              stats_ = new global::Google.Cloud.Spanner.V1.ResultSetStats();
+              Stats = new global::Google.Cloud.Spanner.V1.ResultSetStats();
             }
-            input.ReadMessage(stats_);
+            input.ReadMessage(Stats);
             break;
           }
         }
@@ -769,13 +769,13 @@ namespace Google.Cloud.Spanner.V1 {
       }
       if (other.rowType_ != null) {
         if (rowType_ == null) {
-          rowType_ = new global::Google.Cloud.Spanner.V1.StructType();
+          RowType = new global::Google.Cloud.Spanner.V1.StructType();
         }
         RowType.MergeFrom(other.RowType);
       }
       if (other.transaction_ != null) {
         if (transaction_ == null) {
-          transaction_ = new global::Google.Cloud.Spanner.V1.Transaction();
+          Transaction = new global::Google.Cloud.Spanner.V1.Transaction();
         }
         Transaction.MergeFrom(other.Transaction);
       }
@@ -792,16 +792,16 @@ namespace Google.Cloud.Spanner.V1 {
             break;
           case 10: {
             if (rowType_ == null) {
-              rowType_ = new global::Google.Cloud.Spanner.V1.StructType();
+              RowType = new global::Google.Cloud.Spanner.V1.StructType();
             }
-            input.ReadMessage(rowType_);
+            input.ReadMessage(RowType);
             break;
           }
           case 18: {
             if (transaction_ == null) {
-              transaction_ = new global::Google.Cloud.Spanner.V1.Transaction();
+              Transaction = new global::Google.Cloud.Spanner.V1.Transaction();
             }
-            input.ReadMessage(transaction_);
+            input.ReadMessage(Transaction);
             break;
           }
         }
@@ -1032,13 +1032,13 @@ namespace Google.Cloud.Spanner.V1 {
       }
       if (other.queryPlan_ != null) {
         if (queryPlan_ == null) {
-          queryPlan_ = new global::Google.Cloud.Spanner.V1.QueryPlan();
+          QueryPlan = new global::Google.Cloud.Spanner.V1.QueryPlan();
         }
         QueryPlan.MergeFrom(other.QueryPlan);
       }
       if (other.queryStats_ != null) {
         if (queryStats_ == null) {
-          queryStats_ = new global::Google.Protobuf.WellKnownTypes.Struct();
+          QueryStats = new global::Google.Protobuf.WellKnownTypes.Struct();
         }
         QueryStats.MergeFrom(other.QueryStats);
       }
@@ -1064,16 +1064,16 @@ namespace Google.Cloud.Spanner.V1 {
             break;
           case 10: {
             if (queryPlan_ == null) {
-              queryPlan_ = new global::Google.Cloud.Spanner.V1.QueryPlan();
+              QueryPlan = new global::Google.Cloud.Spanner.V1.QueryPlan();
             }
-            input.ReadMessage(queryPlan_);
+            input.ReadMessage(QueryPlan);
             break;
           }
           case 18: {
             if (queryStats_ == null) {
-              queryStats_ = new global::Google.Protobuf.WellKnownTypes.Struct();
+              QueryStats = new global::Google.Protobuf.WellKnownTypes.Struct();
             }
-            input.ReadMessage(queryStats_);
+            input.ReadMessage(QueryStats);
             break;
           }
           case 24: {

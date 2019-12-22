@@ -12,12 +12,13 @@
 // See the License for the specific language governing permissions and
 // limitations under the License.
 
-using Google.Cloud.Firestore.V1Beta1;
+using Google.Cloud.Firestore.V1;
 using Google.Protobuf;
 using System;
 using System.Collections.Generic;
 using System.Dynamic;
 using Xunit;
+using wkt = Google.Protobuf.WellKnownTypes;
 
 namespace Google.Cloud.Firestore.Tests
 {
@@ -64,6 +65,30 @@ namespace Google.Cloud.Firestore.Tests
             // There's no attribute for deleted fields, so the score is just propagated.
             { new SentinelModel { Name = "Jon", LastUpdate = new Timestamp(99, 99), Score = 10 },
                 new Dictionary<string, Value> { { "name", new Value { StringValue = "Jon" } }, { "lastUpdate", SentinelValue.ServerTimestamp.ToProtoValue() }, { "score", new Value { IntegerValue = 10L } } } },
+            
+            // Custom conversion
+            { new SerializationTestData.CustomUser { Name = "test", Email = new SerializationTestData.Email("test@example.com"), HighScore = 10 },
+                new Dictionary<string, Value> { { "Name", new Value { StringValue = "test" } }, { "Email", new Value { StringValue = "test@example.com" } }, { "HighScore", new Value { IntegerValue = 10L } } } },
+            // Non-null values for both non-nullable and nullable
+            {
+                new SerializationTestData.GuidPair { Name = "test1", Guid = Guid.Parse("a7dc91a0-ef9b-4fc7-9f03-1763d9688dfa"), GuidOrNull = Guid.Parse("5e124acc-c53e-4d47-bec8-a6618cf0b2d9") },
+                new Dictionary<string, Value>
+                {
+                    { "Name", new Value { StringValue = "test1" } },
+                    { "Guid", new Value { StringValue = "a7dc91a0ef9b4fc79f031763d9688dfa" } },
+                    { "GuidOrNull", new Value { StringValue = "5e124accc53e4d47bec8a6618cf0b2d9" } }
+                }
+            },
+            // Null value for the nullable property
+            {
+                new SerializationTestData.GuidPair { Name = "test2", Guid = Guid.Parse("a7dc91a0-ef9b-4fc7-9f03-1763d9688dfa"), GuidOrNull = null },
+                new Dictionary<string, Value>
+                {
+                    { "Name", new Value { StringValue = "test2" } },
+                    { "Guid", new Value { StringValue = "a7dc91a0ef9b4fc79f031763d9688dfa" } },
+                    { "GuidOrNull", new Value { NullValue = wkt::NullValue.NullValue } }
+                }
+            }
         };
 
         [Theory]
@@ -71,7 +96,7 @@ namespace Google.Cloud.Firestore.Tests
         [MemberData(nameof(SerializeOnlyData))]
         public void Serialize(object input, Value expectedOutput)
         {
-            var actual = ValueSerializer.Serialize(input);
+            var actual = ValueSerializer.Serialize(SerializationContext.Default, input);
             Assert.Equal(expectedOutput, actual);
         }
 
@@ -80,7 +105,7 @@ namespace Google.Cloud.Firestore.Tests
         public void ValueIsCloned(IMessage proto, Func<Value, IMessage> selector)
         {
             // Protos should be accepted, but cloned (as they're mutable, and we mutate things too)
-            var value = ValueSerializer.Serialize(proto);
+            var value = ValueSerializer.Serialize(SerializationContext.Default, proto);
             var actual = selector(value);
             Assert.NotSame(proto, actual);
             Assert.Equal(proto, actual);
@@ -90,22 +115,31 @@ namespace Google.Cloud.Firestore.Tests
         public void Serialize_Invalid()
         {
             // It's unlikely that we'll ever support serializing System.Type...
-            Assert.Throws<ArgumentException>(() => ValueSerializer.Serialize(typeof(ValueSerializer)));
+            Assert.Throws<ArgumentException>(() => ValueSerializer.Serialize(SerializationContext.Default, typeof(ValueSerializer)));
         }
 
         [Theory]
         [MemberData(nameof(SerializeMapTestData))]
         public void SerializeMap(object input, Dictionary<string, Value> expectedOutput)
         {
-            var actual = ValueSerializer.SerializeMap(input);
+            var actual = ValueSerializer.SerializeMap(SerializationContext.Default, input);
             Assert.Equal(expectedOutput, actual);
+        }
+
+        [Theory]
+        [MemberData(nameof(SerializeMapTestData))]
+        public void SerializeValue_SameAsMap(object input, Dictionary<string, Value> expectedMap)
+        {
+            var actual = ValueSerializer.Serialize(SerializationContext.Default, input);
+            var expectedValue = new Value { MapValue = new MapValue { Fields = { expectedMap } } };
+            Assert.Equal(expectedValue, actual);
         }
 
         [Fact]
         public void SerializeMap_Invalid()
         {
             // It's unlikely that we'll ever support serializing System.Type...
-            Assert.Throws<ArgumentException>(() => ValueSerializer.SerializeMap(typeof(ValueSerializer)));
+            Assert.Throws<ArgumentException>(() => ValueSerializer.SerializeMap(SerializationContext.Default, typeof(ValueSerializer)));
         }
 
         [Fact]
@@ -113,7 +147,7 @@ namespace Google.Cloud.Firestore.Tests
         {
             ulong value = long.MaxValue;
             value++;
-            Assert.Throws<OverflowException>(() => ValueSerializer.Serialize(value));
+            Assert.Throws<OverflowException>(() => ValueSerializer.Serialize(SerializationContext.Default, value));
         }
 
         [Theory]
@@ -122,16 +156,33 @@ namespace Google.Cloud.Firestore.Tests
         public void BadDateTimeKind(DateTimeKind kind)
         {
             var date = new DateTime(2017, 10, 6, 1, 2, 3, kind);
-            Assert.Throws<ArgumentException>(() => ValueSerializer.Serialize(date));
+            Assert.Throws<ArgumentException>(() => ValueSerializer.Serialize(SerializationContext.Default, date));
         }
 
         [Fact]
         public void ArrayInArray()
         {
             var badArray = new[] { new int[10] };
-            Assert.Throws<ArgumentException>(() => ValueSerializer.Serialize(badArray));
+            Assert.Throws<ArgumentException>(() => ValueSerializer.Serialize(SerializationContext.Default, badArray));
         }
-        
+
+        [Fact]
+        public void CustomConverterViaRegistry()
+        {
+            var input = new SerializationTestData.GuidPair2 { Name = "test1", Guid = Guid.Parse("a7dc91a0-ef9b-4fc7-9f03-1763d9688dfa"), GuidOrNull = Guid.Parse("5e124acc-c53e-4d47-bec8-a6618cf0b2d9") };
+            var expectedMap = new Dictionary<string, Value>
+            {
+                { "Name", new Value { StringValue = "test1" } },
+                { "Guid", new Value { StringValue = "a7dc91a0ef9b4fc79f031763d9688dfa" } },
+                { "GuidOrNull", new Value { StringValue = "5e124accc53e4d47bec8a6618cf0b2d9" } }
+            };
+            var expectedValue = new Value { MapValue = new MapValue { Fields = { expectedMap } } };
+
+            var registry = new ConverterRegistry { new SerializationTestData.GuidConverter() };
+            var context = new SerializationContext(registry);
+            var actualValue = ValueSerializer.Serialize(context, input);
+            Assert.Equal(expectedValue, actualValue);
+        }
 
         [FirestoreData]
         private class SentinelModel

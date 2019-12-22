@@ -12,17 +12,15 @@
 // See the License for the specific language governing permissions and
 // limitations under the License.
 
-using System;
-using System.Data.Common;
-using System.IO;
 using Google.Api.Gax;
 using Google.Api.Gax.Grpc;
-using Google.Apis.Auth.OAuth2;
-using Google.Cloud.Spanner.Admin.Database.V1;
 using Google.Cloud.Spanner.Common.V1;
 using Google.Cloud.Spanner.V1;
-using Grpc.Auth;
 using Grpc.Core;
+using System;
+using System.Data.Common;
+using System.Globalization;
+using System.Threading.Tasks;
 
 namespace Google.Cloud.Spanner.Data
 {
@@ -33,51 +31,28 @@ namespace Google.Cloud.Spanner.Data
     /// </summary>
     public sealed class SpannerConnectionStringBuilder : DbConnectionStringBuilder
     {
+        /// <summary>
+        /// The default value for <see cref="Timeout"/>.
+        /// </summary>
+        internal const int DefaultTimeout = 60;
+
+        /// <summary>
+        /// The default value for <see cref="MaximumGrpcChannels"/>.
+        /// </summary>
+        internal const int DefaultMaximumGrpcChannels = 4;
+
+        /// <summary>
+        /// The default value for <see cref="MaxConcurrentStreamsLowWatermark"/>.
+        /// </summary>
+        internal const int DefaultMaxConcurrentStreamsLowWatermark = 20;
+
         private const string CredentialFileKeyword = "CredentialFile";
         private const string DataSourceKeyword = "Data Source";
         private const string UseClrDefaultForNullKeyword = "UseClrDefaultForNull";
         private const string EnableGetSchemaTableKeyword = "EnableGetSchemaTable";
+
         private InstanceName _instanceName;
         private DatabaseName _databaseName;
-
-        /// <summary>
-        /// The <see cref="ChannelCredentials"/> credential used to communicate with Spanner, if explicitly
-        /// set. Otherwise, this method returns null, usually indicating that default application credentials should be used.
-        /// Credentials can be retrieved from a file or obtained interactively.
-        /// See Google Cloud documentation for more information.
-        /// </summary>
-        public ChannelCredentials GetCredentials()
-        {
-            // Check the ctor override.
-            if (CredentialOverride != null)
-            {
-                return CredentialOverride;
-            }
-
-            //Calculate it from the CredentialFile argument in the connection string.
-            GoogleCredential credentials = null;
-            string jsonFile = CredentialFile;
-            if (!string.IsNullOrEmpty(jsonFile))
-            {
-                if (!string.Equals(Path.GetExtension(jsonFile), ".json", StringComparison.OrdinalIgnoreCase))
-                {
-                    throw new InvalidOperationException($"{nameof(CredentialFile)} should only be set to a JSON file.");
-                }
-
-                if (!File.Exists(jsonFile))
-                {
-                    //try some relative locations.
-                    jsonFile = $"{GetApplicationFolder()}{Path.DirectorySeparatorChar}{jsonFile}";
-                }
-                if (!File.Exists(jsonFile))
-                {
-                    //throw a meaningful error that tells the developer where we looked.
-                    throw new FileNotFoundException($"Could not find {nameof(CredentialFile)}. Also looked in {jsonFile}.");
-                }
-                credentials = GoogleCredential.FromFile(jsonFile).CreateScoped(SpannerClient.DefaultScopes);
-            }
-            return credentials?.ToChannelCredentials();
-        }
 
         /// <summary>
         /// Optional path to a JSON Credential file. If a Credential is not supplied, Cloud Spanner
@@ -187,21 +162,8 @@ namespace Google.Cloud.Spanner.Data
         /// </summary>
         public int Port
         {
-            get
-            {
-                int result = SpannerClient.DefaultEndpoint.Port;
-                string value = GetValueOrDefault(nameof(Port));
-                if (!string.IsNullOrEmpty(value))
-                {
-                    if (!int.TryParse(value, out result))
-                    {
-                        result = SpannerClient.DefaultEndpoint.Port;
-                    }
-                }
-
-                return result;
-            }
-            set => this[nameof(Port)] = value.ToString();
+            get => GetInt32OrDefault(nameof(Port), 1, 65535, SpannerClient.DefaultEndpoint.Port);
+            set => SetInt32WithValidation(nameof(Port), 1, 65535, value);
         }
 
         /// <summary>
@@ -270,7 +232,77 @@ namespace Google.Cloud.Spanner.Data
             }
         }
 
+        /// <summary>
+        /// Option to allow a timeout of 0 to mean "fail immediately" rather than "continue indefinitely".
+        /// This is primarily used for testing.
+        /// </summary>
+        public bool AllowImmediateTimeouts
+        {
+            // Allow both a bool value and a text value of "true", case-insensitively.
+            get => TryGetValue(nameof(AllowImmediateTimeouts), out var value) &&
+                (value is true || (value is string textValue && textValue.Equals("true", StringComparison.OrdinalIgnoreCase)));
+            set => this[nameof(AllowImmediateTimeouts)] = value;
+        }
+
+        /// <summary>
+        /// The maximum number of gRPC channels used for connections with the same settings.
+        /// Defaults to 4.
+        /// </summary>
+        public int MaximumGrpcChannels
+        {
+            get => GetInt32OrDefault(nameof(MaximumGrpcChannels), 1, int.MaxValue, DefaultMaximumGrpcChannels);
+            set => SetInt32WithValidation(nameof(MaximumGrpcChannels), 1, int.MaxValue, value);
+        }
+
+        /// <summary>
+        /// The low watermark of max number of concurrent streams in a channel.
+        /// A new channel will be created once this is reached, until the maximum size
+        /// of the channel pool is reached. This rarely needs to be modified.
+        /// </summary>
+        public int MaxConcurrentStreamsLowWatermark
+        {
+            get => GetInt32OrDefault(nameof(MaxConcurrentStreamsLowWatermark), 1, int.MaxValue, DefaultMaxConcurrentStreamsLowWatermark);
+            set => SetInt32WithValidation(nameof(MaxConcurrentStreamsLowWatermark), 1, int.MaxValue, value);
+        }
+
+        /// <summary>
+        /// Defines the default values for <see cref="SpannerCommand.CommandTimeout"/> and
+        /// <see cref="SpannerTransaction.CommitTimeout"/> along with all network operations to a Cloud
+        /// Spanner database. Defaults to 60 seconds.
+        /// </summary>
+        /// <remarks>
+        /// Operations sent to the server that take greater than this duration will fail
+        /// with a <see cref="SpannerException"/> and error code <see cref="ErrorCode.DeadlineExceeded"/>.
+        /// A value of '0' normally indicates that no timeout should be used (it waits an infinite amount of time).
+        /// However, if you specify AllowImmediateTimeouts=true in the connection string, '0' will cause a timeout
+        /// that expires immediately. This is normally used only for testing purposes.
+        /// </remarks>
+        public int Timeout
+        {
+            get => GetInt32OrDefault(nameof(Timeout), 0, int.MaxValue, DefaultTimeout);
+            set => SetInt32WithValidation(nameof(Timeout), 0, int.MaxValue, value);
+        }
+
         internal ChannelCredentials CredentialOverride { get; }
+
+        private SessionPoolManager _sessionPoolManager = SessionPoolManager.Default;
+
+        /// <summary>
+        /// The <see cref="SessionPoolManager"/> to use for server interactions.
+        /// </summary>
+        /// <remarks>
+        /// This property defaults to <see cref="SessionPoolManager.Default"/>, and
+        /// most code will not need to change this. It can be convenient for isolation purposes,
+        /// particularly in testing.
+        /// </remarks>
+        public SessionPoolManager SessionPoolManager
+        {
+            get => _sessionPoolManager;
+            set => _sessionPoolManager = GaxPreconditions.CheckNotNull(value, nameof(value));
+        }
+
+        internal Task<SessionPool> AcquireSessionPoolAsync() =>
+            SessionPoolManager.AcquireSessionPoolAsync(new SpannerClientCreationOptions(this));
 
         /// <summary>
         /// Creates a new <see cref="SpannerConnectionStringBuilder"/> with the given
@@ -286,10 +318,24 @@ namespace Google.Cloud.Spanner.Data
         /// See Google Cloud documentation for more information. May be null.
         /// </param>
         public SpannerConnectionStringBuilder(string connectionString, ChannelCredentials credentials = null)
+            : this(connectionString, credentials, SessionPoolManager.Default)
         {
-            GaxPreconditions.CheckNotNull(connectionString, nameof(connectionString));
+        }
+
+        /// <summary>
+        /// Creates a new <see cref="SpannerConnectionStringBuilder"/> with the given
+        /// connection string, optional credential, and session pool manager.
+        /// </summary>
+        /// <param name="connectionString">>A connection string of the form
+        /// Data Source=projects/{project}/instances/{instance}/databases/{database};[Host={hostname};][Port={portnumber}].
+        /// Must not be null.</param>
+        /// <param name="credentials">The credential to use for the connection. May be null.</param>
+        /// <param name="sessionPoolManager">The session pool manager to use. Must not be null.</param>
+        public SpannerConnectionStringBuilder(string connectionString, ChannelCredentials credentials, SessionPoolManager sessionPoolManager)
+        {
+            ConnectionString = GaxPreconditions.CheckNotNull(connectionString, nameof(connectionString));
             CredentialOverride = credentials;
-            ConnectionString = connectionString;
+            SessionPoolManager = GaxPreconditions.CheckNotNull(sessionPoolManager, nameof(sessionPoolManager));
         }
 
         /// <summary>
@@ -298,13 +344,10 @@ namespace Google.Cloud.Spanner.Data
         public SpannerConnectionStringBuilder() { }
 
 
-        internal SpannerConnectionStringBuilder Clone() => new SpannerConnectionStringBuilder(ConnectionString, CredentialOverride);
+        internal SpannerConnectionStringBuilder Clone() => new SpannerConnectionStringBuilder(ConnectionString, CredentialOverride, SessionPoolManager);
 
-        internal SpannerConnectionStringBuilder CloneWithNewDataSource(string dataSource)
-            => new SpannerConnectionStringBuilder(ConnectionString, CredentialOverride)
-            {
-                DataSource = dataSource
-            };
+        internal SpannerConnectionStringBuilder CloneWithNewDataSource(string dataSource) =>
+            new SpannerConnectionStringBuilder(ConnectionString, CredentialOverride, SessionPoolManager) { DataSource = dataSource };
 
         /// <summary>
         /// Returns a new instance of a <see cref="SpannerConnectionStringBuilder"/> with the database
@@ -317,6 +360,22 @@ namespace Google.Cloud.Spanner.Data
                 ? CloneWithNewDataSource($"projects/{Project}/instances/{SpannerInstance}")
                 : CloneWithNewDataSource($"projects/{Project}/instances/{SpannerInstance}/databases/{database}");
 
+        private int GetInt32OrDefault(string key, int minValue, int maxValue, int defaultValue)
+        {
+            if (TryGetValue(key, out object value) &&
+                (value is int parsed || (value is string text && int.TryParse(text, NumberStyles.None, CultureInfo.InvariantCulture, out parsed))))
+            {
+                return parsed >= minValue && parsed <= maxValue ? parsed : defaultValue;
+            }
+            return defaultValue;            
+        }
+
+        private void SetInt32WithValidation(string key, int minValue, int maxValue, int value)
+        {
+            GaxPreconditions.CheckArgumentRange(value, "value", minValue, maxValue);
+            this[key] = value.ToString(CultureInfo.InvariantCulture);
+        }
+
         private string GetValueOrDefault(string key, string defaultValue = "")
         {
             key = key.ToLowerInvariant();
@@ -326,15 +385,6 @@ namespace Google.Cloud.Spanner.Data
             }
 
             return defaultValue;
-        }
-
-        private string GetApplicationFolder()
-        {
-#if NETSTANDARD1_5
-            return AppContext.BaseDirectory;
-#else
-            return AppDomain.CurrentDomain.BaseDirectory;
-#endif
         }
 
         /// <inheritdoc />

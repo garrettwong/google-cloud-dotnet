@@ -93,7 +93,7 @@ namespace Google.Cloud.Spanner.Data.IntegrationTests
                 // to get disposed (which releases the session).
                 await IncrementByOneAsync(connection, true);
 
-                await RetryHelpers.RetryOnceAsync(async () =>
+                await RetryHelpers.ExecuteWithRetryAsync(async () =>
                 {
                     using (var tx = await connection.BeginTransactionAsync())
                     {
@@ -112,7 +112,8 @@ namespace Google.Cloud.Spanner.Data.IntegrationTests
             }
         }
 
-        [Fact(Skip = "Fails in current implementation due to multiple disposal. Will be fixed in new session pooling implementation.")]
+        // [START spanner_test_transaction_retry_on_aborted]
+        [Fact]
         public async Task AbortedThrownCorrectly()
         {
             // connection 1 starts a transaction and reads
@@ -182,7 +183,9 @@ namespace Google.Cloud.Spanner.Data.IntegrationTests
                 }
             }
         }
+        // [END spanner_test_transaction_retry_on_aborted]
 
+        // [START spanner_test_transaction_query_increment]
         [Fact]
         public async Task MultiWrite()
         {
@@ -216,13 +219,14 @@ namespace Google.Cloud.Spanner.Data.IntegrationTests
                 connections[i].Dispose();
             }
         }
+        // [END spanner_test_transaction_query_increment]
 
         [Fact]
         public void MultiTableWrite()
         {
             // For simplicity, use a new key so that this test is entirely self-contained.
             string key = IdGenerator.FromGuid();
-            RetryHelpers.RetryOnce(() =>
+            RetryHelpers.ExecuteWithRetry(() =>
             {
                 using (var connection = _fixture.GetConnection())
                 {
@@ -278,6 +282,7 @@ namespace Google.Cloud.Spanner.Data.IntegrationTests
             }
         }
 
+        // [START spanner_test_read_exact]
         [Fact]
         public async Task ReadExact()
         {
@@ -303,7 +308,9 @@ namespace Google.Cloud.Spanner.Data.IntegrationTests
                 }
             }
         }
+        // [END spanner_test_read_exact]
 
+        // [START spanner_test_exact_read_concurrent_updates]
         [Fact]
         public async Task ReadExactSingle()
         {
@@ -320,7 +327,11 @@ namespace Google.Cloud.Spanner.Data.IntegrationTests
                 }
             }
         }
+        // [END spanner_test_exact_read_concurrent_updates]
 
+        // [START spanner_test_read_min_single_use]
+        // [END spanner_test_read_min_single_use]
+        // [START spanner_test_read_min]
         [Fact]
         public async Task ReadMin()
         {
@@ -342,7 +353,9 @@ namespace Google.Cloud.Spanner.Data.IntegrationTests
                 }
             }
         }
+        // [END spanner_test_read_min]
 
+        // [START spanner_test_read_exact_staleness]
         [Fact]
         public async Task ReadStaleExact()
         {
@@ -364,7 +377,9 @@ namespace Google.Cloud.Spanner.Data.IntegrationTests
                 }
             }
         }
+        // [END spanner_test_read_exact_staleness]
 
+        // [START spanner_test_read_exact_staleness_concurrent_updates]
         [Fact]
         public async Task ReadStaleExactSingle()
         {
@@ -379,7 +394,11 @@ namespace Google.Cloud.Spanner.Data.IntegrationTests
                 }
             }
         }
+        // [END spanner_test_read_exact_staleness_concurrent_updates]
 
+        // [START spanner_test_read_max_staleness_single_use]
+        // [END spanner_test_read_max_staleness_single_use]
+        // [START spanner_test_read_max_staleness]
         [Fact]
         public async Task ReadStaleMax()
         {
@@ -402,7 +421,9 @@ namespace Google.Cloud.Spanner.Data.IntegrationTests
                 }
             }
         }
+        // [END spanner_test_read_max_staleness]
 
+        // [START spanner_test_strong_read]
         [Fact]
         public async Task ReadStrong()
         {
@@ -425,7 +446,9 @@ namespace Google.Cloud.Spanner.Data.IntegrationTests
                 }
             }
         }
+        // [END spanner_test_strong_read]
 
+        // [START spanner_test_strong_read_concurrent_updates]
         [Fact]
         public async Task ReadStrongSingle()
         {
@@ -442,5 +465,6 @@ namespace Google.Cloud.Spanner.Data.IntegrationTests
                 }
             }
         }
+        // [END spanner_test_strong_read_concurrent_updates]
     }
 }

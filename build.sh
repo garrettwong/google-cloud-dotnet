@@ -31,11 +31,10 @@ nobuild=false
 while (( "$#" )); do
   if [[ "$1" == "--notests" ]]
   then 
-    echo "Not running tests..."
     runtests=false
   elif [[ "$1" == "--diff" ]]
   then
-    apis+=($(git diff master --name-only | grep apis/Google | cut -d/ -f 2 | uniq))
+    apis+=($(git diff master --name-only | grep -e 'apis/.*/' | cut -d/ -f 2 | uniq))
   elif [[ "$1" == "--regex" ]]
   then
     shift
@@ -60,20 +59,35 @@ done
 # If no APIs were specified explicitly, build all of them (and tools on Windows)
 if [[ ${#apis[@]} -eq 0 ]]
 then
-  apis=(${tools} $(echo apis/Google.* | sed 's/apis\///g'))
+  apis=(${tools} $(find apis -mindepth 1 -maxdepth 1 -type d | sed 's/apis\///g'))
 fi
 
 # If we were given an API filter regex, apply it now.
 if [[ "$apiregex" != "" ]]
 then
   filteredapis=()
-  for api in ${apis[*]}
-  do
-    if [[ "$api" =~ $apiregex ]]
-    then
-      filteredapis+=($api)
-    fi
-  done
+  # This is a hack to allow ! to negate the regex.
+  # Bash regular expressions don't allow for lookahead, so this is the
+  # simplest way of doing it.
+  if [[ $apiregex == !* ]]
+  then
+    apiregex=$(echo $apiregex | sed s/^!//g)
+    for api in ${apis[*]}
+    do
+      if [[ ! "$api" =~ $apiregex ]]
+      then
+        filteredapis+=($api)
+      fi
+    done
+  else
+    for api in ${apis[*]}
+    do
+      if [[ "$api" =~ $apiregex ]]
+      then
+        filteredapis+=($api)
+      fi
+    done
+  fi
   unset apis
   apis=("${filteredapis[@]}")
   if [[ ${#apis[@]} -eq 0 ]]
@@ -97,7 +111,7 @@ fi
 log_build_action "(Start) build.sh"
 log_build_action "Building analyzers"
 
-dotnet publish -c Release -f netstandard1.3 tools/Google.Cloud.Tools.Analyzers
+dotnet publish -nologo -clp:NoSummary -v quiet -c Release -f netstandard1.3 tools/Google.Cloud.Tools.Analyzers
 
 # Then build the requested APIs, working out the test projects as we go.
 > AllTests.txt
@@ -112,7 +126,7 @@ do
   fi
 
   log_build_action "Building $apidir"
-  dotnet build -c Release $apidir
+  dotnet build -nologo -clp:NoSummary -v quiet -c Release $apidir
 
   # On Linux, we don't have desktop .NET, so any projects which only
   # support desktop .NET are going to be broken. Just don't add them.
@@ -125,9 +139,9 @@ do
   done
 done
 
-log_build_action "(Start) Unit tests"
 if [[ "$runtests" = true ]]
 then
+  log_build_action "(Start) Unit tests"
   # Could use xargs, but this is more flexible
   while read testproject
   do  
@@ -138,10 +152,10 @@ then
       echo "(Running with coverage)"
       (cd "$testdir"; $DOTCOVER cover "coverage.xml" -ReturnTargetExitCode)
     else
-      dotnet test -c Release --no-build $testproject
+      dotnet test -nologo -c Release --no-build $testproject
     fi
   done < AllTests.txt
+  log_build_action "(End) Unit tests"
 fi
 
-log_build_action "(End) Unit tests"
 log_build_action "(End) build.sh"

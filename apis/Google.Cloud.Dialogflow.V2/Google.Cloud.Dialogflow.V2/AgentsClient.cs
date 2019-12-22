@@ -1,4 +1,4 @@
-// Copyright 2018 Google LLC
+// Copyright 2019 Google LLC
 //
 // Licensed under the Apache License, Version 2.0 (the "License");
 // you may not use this file except in compliance with the License.
@@ -51,6 +51,8 @@ namespace Google.Cloud.Dialogflow.V2
         private AgentsSettings(AgentsSettings existing) : base(existing)
         {
             gax::GaxPreconditions.CheckNotNull(existing, nameof(existing));
+            SetAgentSettings = existing.SetAgentSettings;
+            DeleteAgentSettings = existing.DeleteAgentSettings;
             GetAgentSettings = existing.GetAgentSettings;
             SearchAgentsSettings = existing.SearchAgentsSettings;
             TrainAgentSettings = existing.TrainAgentSettings;
@@ -129,6 +131,66 @@ namespace Google.Cloud.Dialogflow.V2
             maxDelay: sys::TimeSpan.FromMilliseconds(20000),
             delayMultiplier: 1.0
         );
+
+        /// <summary>
+        /// <see cref="gaxgrpc::CallSettings"/> for synchronous and asynchronous calls to
+        /// <c>AgentsClient.SetAgent</c> and <c>AgentsClient.SetAgentAsync</c>.
+        /// </summary>
+        /// <remarks>
+        /// The default <c>AgentsClient.SetAgent</c> and
+        /// <c>AgentsClient.SetAgentAsync</c> <see cref="gaxgrpc::RetrySettings"/> are:
+        /// <list type="bullet">
+        /// <item><description>Initial retry delay: 100 milliseconds</description></item>
+        /// <item><description>Retry delay multiplier: 1.3</description></item>
+        /// <item><description>Retry maximum delay: 60000 milliseconds</description></item>
+        /// <item><description>Initial timeout: 20000 milliseconds</description></item>
+        /// <item><description>Timeout multiplier: 1.0</description></item>
+        /// <item><description>Timeout maximum delay: 20000 milliseconds</description></item>
+        /// </list>
+        /// Retry will be attempted on the following response status codes:
+        /// <list>
+        /// <item><description><see cref="grpccore::StatusCode.DeadlineExceeded"/></description></item>
+        /// <item><description><see cref="grpccore::StatusCode.Unavailable"/></description></item>
+        /// </list>
+        /// Default RPC expiration is 600000 milliseconds.
+        /// </remarks>
+        public gaxgrpc::CallSettings SetAgentSettings { get; set; } = gaxgrpc::CallSettings.FromCallTiming(
+            gaxgrpc::CallTiming.FromRetry(new gaxgrpc::RetrySettings(
+                retryBackoff: GetDefaultRetryBackoff(),
+                timeoutBackoff: GetDefaultTimeoutBackoff(),
+                totalExpiration: gax::Expiration.FromTimeout(sys::TimeSpan.FromMilliseconds(600000)),
+                retryFilter: IdempotentRetryFilter
+            )));
+
+        /// <summary>
+        /// <see cref="gaxgrpc::CallSettings"/> for synchronous and asynchronous calls to
+        /// <c>AgentsClient.DeleteAgent</c> and <c>AgentsClient.DeleteAgentAsync</c>.
+        /// </summary>
+        /// <remarks>
+        /// The default <c>AgentsClient.DeleteAgent</c> and
+        /// <c>AgentsClient.DeleteAgentAsync</c> <see cref="gaxgrpc::RetrySettings"/> are:
+        /// <list type="bullet">
+        /// <item><description>Initial retry delay: 100 milliseconds</description></item>
+        /// <item><description>Retry delay multiplier: 1.3</description></item>
+        /// <item><description>Retry maximum delay: 60000 milliseconds</description></item>
+        /// <item><description>Initial timeout: 20000 milliseconds</description></item>
+        /// <item><description>Timeout multiplier: 1.0</description></item>
+        /// <item><description>Timeout maximum delay: 20000 milliseconds</description></item>
+        /// </list>
+        /// Retry will be attempted on the following response status codes:
+        /// <list>
+        /// <item><description><see cref="grpccore::StatusCode.DeadlineExceeded"/></description></item>
+        /// <item><description><see cref="grpccore::StatusCode.Unavailable"/></description></item>
+        /// </list>
+        /// Default RPC expiration is 600000 milliseconds.
+        /// </remarks>
+        public gaxgrpc::CallSettings DeleteAgentSettings { get; set; } = gaxgrpc::CallSettings.FromCallTiming(
+            gaxgrpc::CallTiming.FromRetry(new gaxgrpc::RetrySettings(
+                retryBackoff: GetDefaultRetryBackoff(),
+                timeoutBackoff: GetDefaultTimeoutBackoff(),
+                totalExpiration: gax::Expiration.FromTimeout(sys::TimeSpan.FromMilliseconds(600000)),
+                retryFilter: IdempotentRetryFilter
+            )));
 
         /// <summary>
         /// <see cref="gaxgrpc::CallSettings"/> for synchronous and asynchronous calls to
@@ -401,6 +463,42 @@ namespace Google.Cloud.Dialogflow.V2
     }
 
     /// <summary>
+    /// Builder class for <see cref="AgentsClient"/> to provide simple configuration of credentials, endpoint etc.
+    /// </summary>
+    public sealed partial class AgentsClientBuilder : gaxgrpc::ClientBuilderBase<AgentsClient>
+    {
+        /// <summary>
+        /// The settings to use for RPCs, or null for the default settings.
+        /// </summary>
+        public AgentsSettings Settings { get; set; }
+
+        /// <inheritdoc/>
+        public override AgentsClient Build()
+        {
+            Validate();
+            grpccore::CallInvoker callInvoker = CreateCallInvoker();
+            return AgentsClient.Create(callInvoker, Settings);
+        }
+
+        /// <inheritdoc />
+        public override async stt::Task<AgentsClient> BuildAsync(st::CancellationToken cancellationToken = default)
+        {
+            Validate();
+            grpccore::CallInvoker callInvoker = await CreateCallInvokerAsync(cancellationToken).ConfigureAwait(false);
+            return AgentsClient.Create(callInvoker, Settings);
+        }
+
+        /// <inheritdoc />
+        protected override gaxgrpc::ServiceEndpoint GetDefaultEndpoint() => AgentsClient.DefaultEndpoint;
+
+        /// <inheritdoc />
+        protected override scg::IReadOnlyList<string> GetDefaultScopes() => AgentsClient.DefaultScopes;
+
+        /// <inheritdoc />
+        protected override gaxgrpc::ChannelPool GetChannelPool() => AgentsClient.ChannelPool;
+    }
+
+    /// <summary>
     /// Agents client wrapper, for convenient use.
     /// </summary>
     public abstract partial class AgentsClient
@@ -417,13 +515,17 @@ namespace Google.Cloud.Dialogflow.V2
         /// The default Agents scopes are:
         /// <list type="bullet">
         /// <item><description>"https://www.googleapis.com/auth/cloud-platform"</description></item>
+        /// <item><description>"https://www.googleapis.com/auth/dialogflow"</description></item>
         /// </list>
         /// </remarks>
         public static scg::IReadOnlyList<string> DefaultScopes { get; } = new sco::ReadOnlyCollection<string>(new string[] {
             "https://www.googleapis.com/auth/cloud-platform",
+            "https://www.googleapis.com/auth/dialogflow",
         });
 
         private static readonly gaxgrpc::ChannelPool s_channelPool = new gaxgrpc::ChannelPool(DefaultScopes);
+
+        internal static gaxgrpc::ChannelPool ChannelPool => s_channelPool;
 
         /// <summary>
         /// Asynchronously creates a <see cref="AgentsClient"/>, applying defaults for all unspecified settings,
@@ -555,6 +657,295 @@ namespace Google.Cloud.Dialogflow.V2
         }
 
         /// <summary>
+        /// Creates/updates the specified agent.
+        /// </summary>
+        /// <param name="agent">
+        /// Required. The agent to update.
+        /// </param>
+        /// <param name="callSettings">
+        /// If not null, applies overrides to this RPC call.
+        /// </param>
+        /// <returns>
+        /// A Task containing the RPC response.
+        /// </returns>
+        public virtual stt::Task<Agent> SetAgentAsync(
+            Agent agent,
+            gaxgrpc::CallSettings callSettings = null) => SetAgentAsync(
+                new SetAgentRequest
+                {
+                    Agent = gax::GaxPreconditions.CheckNotNull(agent, nameof(agent)),
+                },
+                callSettings);
+
+        /// <summary>
+        /// Creates/updates the specified agent.
+        /// </summary>
+        /// <param name="agent">
+        /// Required. The agent to update.
+        /// </param>
+        /// <param name="cancellationToken">
+        /// A <see cref="st::CancellationToken"/> to use for this RPC.
+        /// </param>
+        /// <returns>
+        /// A Task containing the RPC response.
+        /// </returns>
+        public virtual stt::Task<Agent> SetAgentAsync(
+            Agent agent,
+            st::CancellationToken cancellationToken) => SetAgentAsync(
+                agent,
+                gaxgrpc::CallSettings.FromCancellationToken(cancellationToken));
+
+        /// <summary>
+        /// Creates/updates the specified agent.
+        /// </summary>
+        /// <param name="agent">
+        /// Required. The agent to update.
+        /// </param>
+        /// <param name="callSettings">
+        /// If not null, applies overrides to this RPC call.
+        /// </param>
+        /// <returns>
+        /// The RPC response.
+        /// </returns>
+        public virtual Agent SetAgent(
+            Agent agent,
+            gaxgrpc::CallSettings callSettings = null) => SetAgent(
+                new SetAgentRequest
+                {
+                    Agent = gax::GaxPreconditions.CheckNotNull(agent, nameof(agent)),
+                },
+                callSettings);
+
+        /// <summary>
+        /// Creates/updates the specified agent.
+        /// </summary>
+        /// <param name="request">
+        /// The request object containing all of the parameters for the API call.
+        /// </param>
+        /// <param name="callSettings">
+        /// If not null, applies overrides to this RPC call.
+        /// </param>
+        /// <returns>
+        /// A Task containing the RPC response.
+        /// </returns>
+        public virtual stt::Task<Agent> SetAgentAsync(
+            SetAgentRequest request,
+            gaxgrpc::CallSettings callSettings = null)
+        {
+            throw new sys::NotImplementedException();
+        }
+
+        /// <summary>
+        /// Creates/updates the specified agent.
+        /// </summary>
+        /// <param name="request">
+        /// The request object containing all of the parameters for the API call.
+        /// </param>
+        /// <param name="cancellationToken">
+        /// A <see cref="st::CancellationToken"/> to use for this RPC.
+        /// </param>
+        /// <returns>
+        /// A Task containing the RPC response.
+        /// </returns>
+        public virtual stt::Task<Agent> SetAgentAsync(
+            SetAgentRequest request,
+            st::CancellationToken cancellationToken) => SetAgentAsync(
+                request,
+                gaxgrpc::CallSettings.FromCancellationToken(cancellationToken));
+
+        /// <summary>
+        /// Creates/updates the specified agent.
+        /// </summary>
+        /// <param name="request">
+        /// The request object containing all of the parameters for the API call.
+        /// </param>
+        /// <param name="callSettings">
+        /// If not null, applies overrides to this RPC call.
+        /// </param>
+        /// <returns>
+        /// The RPC response.
+        /// </returns>
+        public virtual Agent SetAgent(
+            SetAgentRequest request,
+            gaxgrpc::CallSettings callSettings = null)
+        {
+            throw new sys::NotImplementedException();
+        }
+
+        /// <summary>
+        /// Deletes the specified agent.
+        /// </summary>
+        /// <param name="parent">
+        /// Required. The project that the agent to delete is associated with.
+        /// Format: `projects/&lt;Project ID&gt;`.
+        /// </param>
+        /// <param name="callSettings">
+        /// If not null, applies overrides to this RPC call.
+        /// </param>
+        /// <returns>
+        /// A Task that completes when the RPC has completed.
+        /// </returns>
+        public virtual stt::Task DeleteAgentAsync(
+            gaxres::ProjectName parent,
+            gaxgrpc::CallSettings callSettings = null) => DeleteAgentAsync(
+                new DeleteAgentRequest
+                {
+                    ParentAsProjectName = gax::GaxPreconditions.CheckNotNull(parent, nameof(parent)),
+                },
+                callSettings);
+
+        /// <summary>
+        /// Deletes the specified agent.
+        /// </summary>
+        /// <param name="parent">
+        /// Required. The project that the agent to delete is associated with.
+        /// Format: `projects/&lt;Project ID&gt;`.
+        /// </param>
+        /// <param name="cancellationToken">
+        /// A <see cref="st::CancellationToken"/> to use for this RPC.
+        /// </param>
+        /// <returns>
+        /// A Task that completes when the RPC has completed.
+        /// </returns>
+        public virtual stt::Task DeleteAgentAsync(
+            gaxres::ProjectName parent,
+            st::CancellationToken cancellationToken) => DeleteAgentAsync(
+                parent,
+                gaxgrpc::CallSettings.FromCancellationToken(cancellationToken));
+
+        /// <summary>
+        /// Deletes the specified agent.
+        /// </summary>
+        /// <param name="parent">
+        /// Required. The project that the agent to delete is associated with.
+        /// Format: `projects/&lt;Project ID&gt;`.
+        /// </param>
+        /// <param name="callSettings">
+        /// If not null, applies overrides to this RPC call.
+        /// </param>
+        public virtual void DeleteAgent(
+            gaxres::ProjectName parent,
+            gaxgrpc::CallSettings callSettings = null) => DeleteAgent(
+                new DeleteAgentRequest
+                {
+                    ParentAsProjectName = gax::GaxPreconditions.CheckNotNull(parent, nameof(parent)),
+                },
+                callSettings);
+
+        /// <summary>
+        /// Deletes the specified agent.
+        /// </summary>
+        /// <param name="parent">
+        /// Required. The project that the agent to delete is associated with.
+        /// Format: `projects/&lt;Project ID&gt;`.
+        /// </param>
+        /// <param name="callSettings">
+        /// If not null, applies overrides to this RPC call.
+        /// </param>
+        /// <returns>
+        /// A Task that completes when the RPC has completed.
+        /// </returns>
+        public virtual stt::Task DeleteAgentAsync(
+            string parent,
+            gaxgrpc::CallSettings callSettings = null) => DeleteAgentAsync(
+                new DeleteAgentRequest
+                {
+                    Parent = gax::GaxPreconditions.CheckNotNullOrEmpty(parent, nameof(parent)),
+                },
+                callSettings);
+
+        /// <summary>
+        /// Deletes the specified agent.
+        /// </summary>
+        /// <param name="parent">
+        /// Required. The project that the agent to delete is associated with.
+        /// Format: `projects/&lt;Project ID&gt;`.
+        /// </param>
+        /// <param name="cancellationToken">
+        /// A <see cref="st::CancellationToken"/> to use for this RPC.
+        /// </param>
+        /// <returns>
+        /// A Task that completes when the RPC has completed.
+        /// </returns>
+        public virtual stt::Task DeleteAgentAsync(
+            string parent,
+            st::CancellationToken cancellationToken) => DeleteAgentAsync(
+                parent,
+                gaxgrpc::CallSettings.FromCancellationToken(cancellationToken));
+
+        /// <summary>
+        /// Deletes the specified agent.
+        /// </summary>
+        /// <param name="parent">
+        /// Required. The project that the agent to delete is associated with.
+        /// Format: `projects/&lt;Project ID&gt;`.
+        /// </param>
+        /// <param name="callSettings">
+        /// If not null, applies overrides to this RPC call.
+        /// </param>
+        public virtual void DeleteAgent(
+            string parent,
+            gaxgrpc::CallSettings callSettings = null) => DeleteAgent(
+                new DeleteAgentRequest
+                {
+                    Parent = gax::GaxPreconditions.CheckNotNullOrEmpty(parent, nameof(parent)),
+                },
+                callSettings);
+
+        /// <summary>
+        /// Deletes the specified agent.
+        /// </summary>
+        /// <param name="request">
+        /// The request object containing all of the parameters for the API call.
+        /// </param>
+        /// <param name="callSettings">
+        /// If not null, applies overrides to this RPC call.
+        /// </param>
+        /// <returns>
+        /// A Task that completes when the RPC has completed.
+        /// </returns>
+        public virtual stt::Task DeleteAgentAsync(
+            DeleteAgentRequest request,
+            gaxgrpc::CallSettings callSettings = null)
+        {
+            throw new sys::NotImplementedException();
+        }
+
+        /// <summary>
+        /// Deletes the specified agent.
+        /// </summary>
+        /// <param name="request">
+        /// The request object containing all of the parameters for the API call.
+        /// </param>
+        /// <param name="cancellationToken">
+        /// A <see cref="st::CancellationToken"/> to use for this RPC.
+        /// </param>
+        /// <returns>
+        /// A Task that completes when the RPC has completed.
+        /// </returns>
+        public virtual stt::Task DeleteAgentAsync(
+            DeleteAgentRequest request,
+            st::CancellationToken cancellationToken) => DeleteAgentAsync(
+                request,
+                gaxgrpc::CallSettings.FromCancellationToken(cancellationToken));
+
+        /// <summary>
+        /// Deletes the specified agent.
+        /// </summary>
+        /// <param name="request">
+        /// The request object containing all of the parameters for the API call.
+        /// </param>
+        /// <param name="callSettings">
+        /// If not null, applies overrides to this RPC call.
+        /// </param>
+        public virtual void DeleteAgent(
+            DeleteAgentRequest request,
+            gaxgrpc::CallSettings callSettings = null)
+        {
+            throw new sys::NotImplementedException();
+        }
+
+        /// <summary>
         /// Retrieves the specified agent.
         /// </summary>
         /// <param name="parent">
@@ -614,6 +1005,69 @@ namespace Google.Cloud.Dialogflow.V2
                 new GetAgentRequest
                 {
                     ParentAsProjectName = gax::GaxPreconditions.CheckNotNull(parent, nameof(parent)),
+                },
+                callSettings);
+
+        /// <summary>
+        /// Retrieves the specified agent.
+        /// </summary>
+        /// <param name="parent">
+        /// Required. The project that the agent to fetch is associated with.
+        /// Format: `projects/&lt;Project ID&gt;`.
+        /// </param>
+        /// <param name="callSettings">
+        /// If not null, applies overrides to this RPC call.
+        /// </param>
+        /// <returns>
+        /// A Task containing the RPC response.
+        /// </returns>
+        public virtual stt::Task<Agent> GetAgentAsync(
+            string parent,
+            gaxgrpc::CallSettings callSettings = null) => GetAgentAsync(
+                new GetAgentRequest
+                {
+                    Parent = gax::GaxPreconditions.CheckNotNullOrEmpty(parent, nameof(parent)),
+                },
+                callSettings);
+
+        /// <summary>
+        /// Retrieves the specified agent.
+        /// </summary>
+        /// <param name="parent">
+        /// Required. The project that the agent to fetch is associated with.
+        /// Format: `projects/&lt;Project ID&gt;`.
+        /// </param>
+        /// <param name="cancellationToken">
+        /// A <see cref="st::CancellationToken"/> to use for this RPC.
+        /// </param>
+        /// <returns>
+        /// A Task containing the RPC response.
+        /// </returns>
+        public virtual stt::Task<Agent> GetAgentAsync(
+            string parent,
+            st::CancellationToken cancellationToken) => GetAgentAsync(
+                parent,
+                gaxgrpc::CallSettings.FromCancellationToken(cancellationToken));
+
+        /// <summary>
+        /// Retrieves the specified agent.
+        /// </summary>
+        /// <param name="parent">
+        /// Required. The project that the agent to fetch is associated with.
+        /// Format: `projects/&lt;Project ID&gt;`.
+        /// </param>
+        /// <param name="callSettings">
+        /// If not null, applies overrides to this RPC call.
+        /// </param>
+        /// <returns>
+        /// The RPC response.
+        /// </returns>
+        public virtual Agent GetAgent(
+            string parent,
+            gaxgrpc::CallSettings callSettings = null) => GetAgent(
+                new GetAgentRequest
+                {
+                    Parent = gax::GaxPreconditions.CheckNotNullOrEmpty(parent, nameof(parent)),
                 },
                 callSettings);
 
@@ -762,6 +1216,86 @@ namespace Google.Cloud.Dialogflow.V2
         /// Refer to [List
         /// Sub-Collections](https://cloud.google.com/apis/design/design_patterns#list_sub-collections).
         /// </summary>
+        /// <param name="parent">
+        /// Required. The project to list agents from.
+        /// Format: `projects/&lt;Project ID or '-'&gt;`.
+        /// </param>
+        /// <param name="pageToken">
+        /// The token returned from the previous request.
+        /// A value of <c>null</c> or an empty string retrieves the first page.
+        /// </param>
+        /// <param name="pageSize">
+        /// The size of page to request. The response will not be larger than this, but may be smaller.
+        /// A value of <c>null</c> or 0 uses a server-defined page size.
+        /// </param>
+        /// <param name="callSettings">
+        /// If not null, applies overrides to this RPC call.
+        /// </param>
+        /// <returns>
+        /// A pageable asynchronous sequence of <see cref="Agent"/> resources.
+        /// </returns>
+        public virtual gax::PagedAsyncEnumerable<SearchAgentsResponse, Agent> SearchAgentsAsync(
+            string parent,
+            string pageToken = null,
+            int? pageSize = null,
+            gaxgrpc::CallSettings callSettings = null) => SearchAgentsAsync(
+                new SearchAgentsRequest
+                {
+                    Parent = gax::GaxPreconditions.CheckNotNullOrEmpty(parent, nameof(parent)),
+                    PageToken = pageToken ?? "",
+                    PageSize = pageSize ?? 0,
+                },
+                callSettings);
+
+        /// <summary>
+        /// Returns the list of agents.
+        ///
+        /// Since there is at most one conversational agent per project, this method is
+        /// useful primarily for listing all agents across projects the caller has
+        /// access to. One can achieve that with a wildcard project collection id "-".
+        /// Refer to [List
+        /// Sub-Collections](https://cloud.google.com/apis/design/design_patterns#list_sub-collections).
+        /// </summary>
+        /// <param name="parent">
+        /// Required. The project to list agents from.
+        /// Format: `projects/&lt;Project ID or '-'&gt;`.
+        /// </param>
+        /// <param name="pageToken">
+        /// The token returned from the previous request.
+        /// A value of <c>null</c> or an empty string retrieves the first page.
+        /// </param>
+        /// <param name="pageSize">
+        /// The size of page to request. The response will not be larger than this, but may be smaller.
+        /// A value of <c>null</c> or 0 uses a server-defined page size.
+        /// </param>
+        /// <param name="callSettings">
+        /// If not null, applies overrides to this RPC call.
+        /// </param>
+        /// <returns>
+        /// A pageable sequence of <see cref="Agent"/> resources.
+        /// </returns>
+        public virtual gax::PagedEnumerable<SearchAgentsResponse, Agent> SearchAgents(
+            string parent,
+            string pageToken = null,
+            int? pageSize = null,
+            gaxgrpc::CallSettings callSettings = null) => SearchAgents(
+                new SearchAgentsRequest
+                {
+                    Parent = gax::GaxPreconditions.CheckNotNullOrEmpty(parent, nameof(parent)),
+                    PageToken = pageToken ?? "",
+                    PageSize = pageSize ?? 0,
+                },
+                callSettings);
+
+        /// <summary>
+        /// Returns the list of agents.
+        ///
+        /// Since there is at most one conversational agent per project, this method is
+        /// useful primarily for listing all agents across projects the caller has
+        /// access to. One can achieve that with a wildcard project collection id "-".
+        /// Refer to [List
+        /// Sub-Collections](https://cloud.google.com/apis/design/design_patterns#list_sub-collections).
+        /// </summary>
         /// <param name="request">
         /// The request object containing all of the parameters for the API call.
         /// </param>
@@ -806,8 +1340,7 @@ namespace Google.Cloud.Dialogflow.V2
         /// <summary>
         /// Trains the specified agent.
         ///
-        /// Operation &lt;response: [google.protobuf.Empty][google.protobuf.Empty],
-        ///            metadata: [google.protobuf.Struct][google.protobuf.Struct]&gt;
+        /// Operation &lt;response: [google.protobuf.Empty][google.protobuf.Empty]&gt;
         /// </summary>
         /// <param name="parent">
         /// Required. The project that the agent to train is associated with.
@@ -831,8 +1364,7 @@ namespace Google.Cloud.Dialogflow.V2
         /// <summary>
         /// Trains the specified agent.
         ///
-        /// Operation &lt;response: [google.protobuf.Empty][google.protobuf.Empty],
-        ///            metadata: [google.protobuf.Struct][google.protobuf.Struct]&gt;
+        /// Operation &lt;response: [google.protobuf.Empty][google.protobuf.Empty]&gt;
         /// </summary>
         /// <param name="parent">
         /// Required. The project that the agent to train is associated with.
@@ -853,8 +1385,7 @@ namespace Google.Cloud.Dialogflow.V2
         /// <summary>
         /// Trains the specified agent.
         ///
-        /// Operation &lt;response: [google.protobuf.Empty][google.protobuf.Empty],
-        ///            metadata: [google.protobuf.Struct][google.protobuf.Struct]&gt;
+        /// Operation &lt;response: [google.protobuf.Empty][google.protobuf.Empty]&gt;
         /// </summary>
         /// <param name="parent">
         /// Required. The project that the agent to train is associated with.
@@ -878,8 +1409,76 @@ namespace Google.Cloud.Dialogflow.V2
         /// <summary>
         /// Trains the specified agent.
         ///
-        /// Operation &lt;response: [google.protobuf.Empty][google.protobuf.Empty],
-        ///            metadata: [google.protobuf.Struct][google.protobuf.Struct]&gt;
+        /// Operation &lt;response: [google.protobuf.Empty][google.protobuf.Empty]&gt;
+        /// </summary>
+        /// <param name="parent">
+        /// Required. The project that the agent to train is associated with.
+        /// Format: `projects/&lt;Project ID&gt;`.
+        /// </param>
+        /// <param name="callSettings">
+        /// If not null, applies overrides to this RPC call.
+        /// </param>
+        /// <returns>
+        /// A Task containing the RPC response.
+        /// </returns>
+        public virtual stt::Task<lro::Operation<pbwkt::Empty, pbwkt::Struct>> TrainAgentAsync(
+            string parent,
+            gaxgrpc::CallSettings callSettings = null) => TrainAgentAsync(
+                new TrainAgentRequest
+                {
+                    Parent = gax::GaxPreconditions.CheckNotNullOrEmpty(parent, nameof(parent)),
+                },
+                callSettings);
+
+        /// <summary>
+        /// Trains the specified agent.
+        ///
+        /// Operation &lt;response: [google.protobuf.Empty][google.protobuf.Empty]&gt;
+        /// </summary>
+        /// <param name="parent">
+        /// Required. The project that the agent to train is associated with.
+        /// Format: `projects/&lt;Project ID&gt;`.
+        /// </param>
+        /// <param name="cancellationToken">
+        /// A <see cref="st::CancellationToken"/> to use for this RPC.
+        /// </param>
+        /// <returns>
+        /// A Task containing the RPC response.
+        /// </returns>
+        public virtual stt::Task<lro::Operation<pbwkt::Empty, pbwkt::Struct>> TrainAgentAsync(
+            string parent,
+            st::CancellationToken cancellationToken) => TrainAgentAsync(
+                parent,
+                gaxgrpc::CallSettings.FromCancellationToken(cancellationToken));
+
+        /// <summary>
+        /// Trains the specified agent.
+        ///
+        /// Operation &lt;response: [google.protobuf.Empty][google.protobuf.Empty]&gt;
+        /// </summary>
+        /// <param name="parent">
+        /// Required. The project that the agent to train is associated with.
+        /// Format: `projects/&lt;Project ID&gt;`.
+        /// </param>
+        /// <param name="callSettings">
+        /// If not null, applies overrides to this RPC call.
+        /// </param>
+        /// <returns>
+        /// The RPC response.
+        /// </returns>
+        public virtual lro::Operation<pbwkt::Empty, pbwkt::Struct> TrainAgent(
+            string parent,
+            gaxgrpc::CallSettings callSettings = null) => TrainAgent(
+                new TrainAgentRequest
+                {
+                    Parent = gax::GaxPreconditions.CheckNotNullOrEmpty(parent, nameof(parent)),
+                },
+                callSettings);
+
+        /// <summary>
+        /// Trains the specified agent.
+        ///
+        /// Operation &lt;response: [google.protobuf.Empty][google.protobuf.Empty]&gt;
         /// </summary>
         /// <param name="request">
         /// The request object containing all of the parameters for the API call.
@@ -913,8 +1512,7 @@ namespace Google.Cloud.Dialogflow.V2
         /// <summary>
         /// Trains the specified agent.
         ///
-        /// Operation &lt;response: [google.protobuf.Empty][google.protobuf.Empty],
-        ///            metadata: [google.protobuf.Struct][google.protobuf.Struct]&gt;
+        /// Operation &lt;response: [google.protobuf.Empty][google.protobuf.Empty]&gt;
         /// </summary>
         /// <param name="request">
         /// The request object containing all of the parameters for the API call.
@@ -956,8 +1554,7 @@ namespace Google.Cloud.Dialogflow.V2
         /// <summary>
         /// Exports the specified agent to a ZIP file.
         ///
-        /// Operation &lt;response: [ExportAgentResponse][google.cloud.dialogflow.v2.ExportAgentResponse],
-        ///            metadata: [google.protobuf.Struct][google.protobuf.Struct]&gt;
+        /// Operation &lt;response: [ExportAgentResponse][google.cloud.dialogflow.v2.ExportAgentResponse]&gt;
         /// </summary>
         /// <param name="parent">
         /// Required. The project that the agent to export is associated with.
@@ -981,8 +1578,7 @@ namespace Google.Cloud.Dialogflow.V2
         /// <summary>
         /// Exports the specified agent to a ZIP file.
         ///
-        /// Operation &lt;response: [ExportAgentResponse][google.cloud.dialogflow.v2.ExportAgentResponse],
-        ///            metadata: [google.protobuf.Struct][google.protobuf.Struct]&gt;
+        /// Operation &lt;response: [ExportAgentResponse][google.cloud.dialogflow.v2.ExportAgentResponse]&gt;
         /// </summary>
         /// <param name="parent">
         /// Required. The project that the agent to export is associated with.
@@ -1003,8 +1599,7 @@ namespace Google.Cloud.Dialogflow.V2
         /// <summary>
         /// Exports the specified agent to a ZIP file.
         ///
-        /// Operation &lt;response: [ExportAgentResponse][google.cloud.dialogflow.v2.ExportAgentResponse],
-        ///            metadata: [google.protobuf.Struct][google.protobuf.Struct]&gt;
+        /// Operation &lt;response: [ExportAgentResponse][google.cloud.dialogflow.v2.ExportAgentResponse]&gt;
         /// </summary>
         /// <param name="parent">
         /// Required. The project that the agent to export is associated with.
@@ -1028,8 +1623,76 @@ namespace Google.Cloud.Dialogflow.V2
         /// <summary>
         /// Exports the specified agent to a ZIP file.
         ///
-        /// Operation &lt;response: [ExportAgentResponse][google.cloud.dialogflow.v2.ExportAgentResponse],
-        ///            metadata: [google.protobuf.Struct][google.protobuf.Struct]&gt;
+        /// Operation &lt;response: [ExportAgentResponse][google.cloud.dialogflow.v2.ExportAgentResponse]&gt;
+        /// </summary>
+        /// <param name="parent">
+        /// Required. The project that the agent to export is associated with.
+        /// Format: `projects/&lt;Project ID&gt;`.
+        /// </param>
+        /// <param name="callSettings">
+        /// If not null, applies overrides to this RPC call.
+        /// </param>
+        /// <returns>
+        /// A Task containing the RPC response.
+        /// </returns>
+        public virtual stt::Task<lro::Operation<ExportAgentResponse, pbwkt::Struct>> ExportAgentAsync(
+            string parent,
+            gaxgrpc::CallSettings callSettings = null) => ExportAgentAsync(
+                new ExportAgentRequest
+                {
+                    Parent = gax::GaxPreconditions.CheckNotNullOrEmpty(parent, nameof(parent)),
+                },
+                callSettings);
+
+        /// <summary>
+        /// Exports the specified agent to a ZIP file.
+        ///
+        /// Operation &lt;response: [ExportAgentResponse][google.cloud.dialogflow.v2.ExportAgentResponse]&gt;
+        /// </summary>
+        /// <param name="parent">
+        /// Required. The project that the agent to export is associated with.
+        /// Format: `projects/&lt;Project ID&gt;`.
+        /// </param>
+        /// <param name="cancellationToken">
+        /// A <see cref="st::CancellationToken"/> to use for this RPC.
+        /// </param>
+        /// <returns>
+        /// A Task containing the RPC response.
+        /// </returns>
+        public virtual stt::Task<lro::Operation<ExportAgentResponse, pbwkt::Struct>> ExportAgentAsync(
+            string parent,
+            st::CancellationToken cancellationToken) => ExportAgentAsync(
+                parent,
+                gaxgrpc::CallSettings.FromCancellationToken(cancellationToken));
+
+        /// <summary>
+        /// Exports the specified agent to a ZIP file.
+        ///
+        /// Operation &lt;response: [ExportAgentResponse][google.cloud.dialogflow.v2.ExportAgentResponse]&gt;
+        /// </summary>
+        /// <param name="parent">
+        /// Required. The project that the agent to export is associated with.
+        /// Format: `projects/&lt;Project ID&gt;`.
+        /// </param>
+        /// <param name="callSettings">
+        /// If not null, applies overrides to this RPC call.
+        /// </param>
+        /// <returns>
+        /// The RPC response.
+        /// </returns>
+        public virtual lro::Operation<ExportAgentResponse, pbwkt::Struct> ExportAgent(
+            string parent,
+            gaxgrpc::CallSettings callSettings = null) => ExportAgent(
+                new ExportAgentRequest
+                {
+                    Parent = gax::GaxPreconditions.CheckNotNullOrEmpty(parent, nameof(parent)),
+                },
+                callSettings);
+
+        /// <summary>
+        /// Exports the specified agent to a ZIP file.
+        ///
+        /// Operation &lt;response: [ExportAgentResponse][google.cloud.dialogflow.v2.ExportAgentResponse]&gt;
         /// </summary>
         /// <param name="request">
         /// The request object containing all of the parameters for the API call.
@@ -1063,8 +1726,7 @@ namespace Google.Cloud.Dialogflow.V2
         /// <summary>
         /// Exports the specified agent to a ZIP file.
         ///
-        /// Operation &lt;response: [ExportAgentResponse][google.cloud.dialogflow.v2.ExportAgentResponse],
-        ///            metadata: [google.protobuf.Struct][google.protobuf.Struct]&gt;
+        /// Operation &lt;response: [ExportAgentResponse][google.cloud.dialogflow.v2.ExportAgentResponse]&gt;
         /// </summary>
         /// <param name="request">
         /// The request object containing all of the parameters for the API call.
@@ -1110,8 +1772,7 @@ namespace Google.Cloud.Dialogflow.V2
         /// Intents and entity types with the same name are replaced with the new
         /// versions from ImportAgentRequest.
         ///
-        /// Operation &lt;response: [google.protobuf.Empty][google.protobuf.Empty],
-        ///            metadata: [google.protobuf.Struct][google.protobuf.Struct]&gt;
+        /// Operation &lt;response: [google.protobuf.Empty][google.protobuf.Empty]&gt;
         /// </summary>
         /// <param name="request">
         /// The request object containing all of the parameters for the API call.
@@ -1149,8 +1810,7 @@ namespace Google.Cloud.Dialogflow.V2
         /// Intents and entity types with the same name are replaced with the new
         /// versions from ImportAgentRequest.
         ///
-        /// Operation &lt;response: [google.protobuf.Empty][google.protobuf.Empty],
-        ///            metadata: [google.protobuf.Struct][google.protobuf.Struct]&gt;
+        /// Operation &lt;response: [google.protobuf.Empty][google.protobuf.Empty]&gt;
         /// </summary>
         /// <param name="request">
         /// The request object containing all of the parameters for the API call.
@@ -1195,8 +1855,7 @@ namespace Google.Cloud.Dialogflow.V2
         /// Replaces the current agent version with a new one. All the intents and
         /// entity types in the older version are deleted.
         ///
-        /// Operation &lt;response: [google.protobuf.Empty][google.protobuf.Empty],
-        ///            metadata: [google.protobuf.Struct][google.protobuf.Struct]&gt;
+        /// Operation &lt;response: [google.protobuf.Empty][google.protobuf.Empty]&gt;
         /// </summary>
         /// <param name="request">
         /// The request object containing all of the parameters for the API call.
@@ -1233,8 +1892,7 @@ namespace Google.Cloud.Dialogflow.V2
         /// Replaces the current agent version with a new one. All the intents and
         /// entity types in the older version are deleted.
         ///
-        /// Operation &lt;response: [google.protobuf.Empty][google.protobuf.Empty],
-        ///            metadata: [google.protobuf.Struct][google.protobuf.Struct]&gt;
+        /// Operation &lt;response: [google.protobuf.Empty][google.protobuf.Empty]&gt;
         /// </summary>
         /// <param name="request">
         /// The request object containing all of the parameters for the API call.
@@ -1280,6 +1938,8 @@ namespace Google.Cloud.Dialogflow.V2
     /// </summary>
     public sealed partial class AgentsClientImpl : AgentsClient
     {
+        private readonly gaxgrpc::ApiCall<SetAgentRequest, Agent> _callSetAgent;
+        private readonly gaxgrpc::ApiCall<DeleteAgentRequest, pbwkt::Empty> _callDeleteAgent;
         private readonly gaxgrpc::ApiCall<GetAgentRequest, Agent> _callGetAgent;
         private readonly gaxgrpc::ApiCall<SearchAgentsRequest, SearchAgentsResponse> _callSearchAgents;
         private readonly gaxgrpc::ApiCall<TrainAgentRequest, lro::Operation> _callTrainAgent;
@@ -1305,18 +1965,34 @@ namespace Google.Cloud.Dialogflow.V2
                 grpcClient.CreateOperationsClient(), effectiveSettings.ImportAgentOperationsSettings);
             RestoreAgentOperationsClient = new lro::OperationsClientImpl(
                 grpcClient.CreateOperationsClient(), effectiveSettings.RestoreAgentOperationsSettings);
+            _callSetAgent = clientHelper.BuildApiCall<SetAgentRequest, Agent>(
+                GrpcClient.SetAgentAsync, GrpcClient.SetAgent, effectiveSettings.SetAgentSettings)
+                .WithGoogleRequestParam("agent.parent", request => request.Agent?.Parent);
+            _callDeleteAgent = clientHelper.BuildApiCall<DeleteAgentRequest, pbwkt::Empty>(
+                GrpcClient.DeleteAgentAsync, GrpcClient.DeleteAgent, effectiveSettings.DeleteAgentSettings)
+                .WithGoogleRequestParam("parent", request => request.Parent);
             _callGetAgent = clientHelper.BuildApiCall<GetAgentRequest, Agent>(
-                GrpcClient.GetAgentAsync, GrpcClient.GetAgent, effectiveSettings.GetAgentSettings);
+                GrpcClient.GetAgentAsync, GrpcClient.GetAgent, effectiveSettings.GetAgentSettings)
+                .WithGoogleRequestParam("parent", request => request.Parent);
             _callSearchAgents = clientHelper.BuildApiCall<SearchAgentsRequest, SearchAgentsResponse>(
-                GrpcClient.SearchAgentsAsync, GrpcClient.SearchAgents, effectiveSettings.SearchAgentsSettings);
+                GrpcClient.SearchAgentsAsync, GrpcClient.SearchAgents, effectiveSettings.SearchAgentsSettings)
+                .WithGoogleRequestParam("parent", request => request.Parent);
             _callTrainAgent = clientHelper.BuildApiCall<TrainAgentRequest, lro::Operation>(
-                GrpcClient.TrainAgentAsync, GrpcClient.TrainAgent, effectiveSettings.TrainAgentSettings);
+                GrpcClient.TrainAgentAsync, GrpcClient.TrainAgent, effectiveSettings.TrainAgentSettings)
+                .WithGoogleRequestParam("parent", request => request.Parent);
             _callExportAgent = clientHelper.BuildApiCall<ExportAgentRequest, lro::Operation>(
-                GrpcClient.ExportAgentAsync, GrpcClient.ExportAgent, effectiveSettings.ExportAgentSettings);
+                GrpcClient.ExportAgentAsync, GrpcClient.ExportAgent, effectiveSettings.ExportAgentSettings)
+                .WithGoogleRequestParam("parent", request => request.Parent);
             _callImportAgent = clientHelper.BuildApiCall<ImportAgentRequest, lro::Operation>(
-                GrpcClient.ImportAgentAsync, GrpcClient.ImportAgent, effectiveSettings.ImportAgentSettings);
+                GrpcClient.ImportAgentAsync, GrpcClient.ImportAgent, effectiveSettings.ImportAgentSettings)
+                .WithGoogleRequestParam("parent", request => request.Parent);
             _callRestoreAgent = clientHelper.BuildApiCall<RestoreAgentRequest, lro::Operation>(
-                GrpcClient.RestoreAgentAsync, GrpcClient.RestoreAgent, effectiveSettings.RestoreAgentSettings);
+                GrpcClient.RestoreAgentAsync, GrpcClient.RestoreAgent, effectiveSettings.RestoreAgentSettings)
+                .WithGoogleRequestParam("parent", request => request.Parent);
+            Modify_ApiCall(ref _callSetAgent);
+            Modify_SetAgentApiCall(ref _callSetAgent);
+            Modify_ApiCall(ref _callDeleteAgent);
+            Modify_DeleteAgentApiCall(ref _callDeleteAgent);
             Modify_ApiCall(ref _callGetAgent);
             Modify_GetAgentApiCall(ref _callGetAgent);
             Modify_ApiCall(ref _callSearchAgents);
@@ -1342,6 +2018,8 @@ namespace Google.Cloud.Dialogflow.V2
 
         // Partial methods called for each ApiCall on construction.
         // Allows per-RPC-method modification of the underlying ApiCall object.
+        partial void Modify_SetAgentApiCall(ref gaxgrpc::ApiCall<SetAgentRequest, Agent> call);
+        partial void Modify_DeleteAgentApiCall(ref gaxgrpc::ApiCall<DeleteAgentRequest, pbwkt::Empty> call);
         partial void Modify_GetAgentApiCall(ref gaxgrpc::ApiCall<GetAgentRequest, Agent> call);
         partial void Modify_SearchAgentsApiCall(ref gaxgrpc::ApiCall<SearchAgentsRequest, SearchAgentsResponse> call);
         partial void Modify_TrainAgentApiCall(ref gaxgrpc::ApiCall<TrainAgentRequest, lro::Operation> call);
@@ -1358,12 +2036,91 @@ namespace Google.Cloud.Dialogflow.V2
         // Partial methods called on each request.
         // Allows per-RPC-call modification to the request and CallSettings objects,
         // before the underlying RPC is performed.
+        partial void Modify_SetAgentRequest(ref SetAgentRequest request, ref gaxgrpc::CallSettings settings);
+        partial void Modify_DeleteAgentRequest(ref DeleteAgentRequest request, ref gaxgrpc::CallSettings settings);
         partial void Modify_GetAgentRequest(ref GetAgentRequest request, ref gaxgrpc::CallSettings settings);
         partial void Modify_SearchAgentsRequest(ref SearchAgentsRequest request, ref gaxgrpc::CallSettings settings);
         partial void Modify_TrainAgentRequest(ref TrainAgentRequest request, ref gaxgrpc::CallSettings settings);
         partial void Modify_ExportAgentRequest(ref ExportAgentRequest request, ref gaxgrpc::CallSettings settings);
         partial void Modify_ImportAgentRequest(ref ImportAgentRequest request, ref gaxgrpc::CallSettings settings);
         partial void Modify_RestoreAgentRequest(ref RestoreAgentRequest request, ref gaxgrpc::CallSettings settings);
+
+        /// <summary>
+        /// Creates/updates the specified agent.
+        /// </summary>
+        /// <param name="request">
+        /// The request object containing all of the parameters for the API call.
+        /// </param>
+        /// <param name="callSettings">
+        /// If not null, applies overrides to this RPC call.
+        /// </param>
+        /// <returns>
+        /// A Task containing the RPC response.
+        /// </returns>
+        public override stt::Task<Agent> SetAgentAsync(
+            SetAgentRequest request,
+            gaxgrpc::CallSettings callSettings = null)
+        {
+            Modify_SetAgentRequest(ref request, ref callSettings);
+            return _callSetAgent.Async(request, callSettings);
+        }
+
+        /// <summary>
+        /// Creates/updates the specified agent.
+        /// </summary>
+        /// <param name="request">
+        /// The request object containing all of the parameters for the API call.
+        /// </param>
+        /// <param name="callSettings">
+        /// If not null, applies overrides to this RPC call.
+        /// </param>
+        /// <returns>
+        /// The RPC response.
+        /// </returns>
+        public override Agent SetAgent(
+            SetAgentRequest request,
+            gaxgrpc::CallSettings callSettings = null)
+        {
+            Modify_SetAgentRequest(ref request, ref callSettings);
+            return _callSetAgent.Sync(request, callSettings);
+        }
+
+        /// <summary>
+        /// Deletes the specified agent.
+        /// </summary>
+        /// <param name="request">
+        /// The request object containing all of the parameters for the API call.
+        /// </param>
+        /// <param name="callSettings">
+        /// If not null, applies overrides to this RPC call.
+        /// </param>
+        /// <returns>
+        /// A Task that completes when the RPC has completed.
+        /// </returns>
+        public override stt::Task DeleteAgentAsync(
+            DeleteAgentRequest request,
+            gaxgrpc::CallSettings callSettings = null)
+        {
+            Modify_DeleteAgentRequest(ref request, ref callSettings);
+            return _callDeleteAgent.Async(request, callSettings);
+        }
+
+        /// <summary>
+        /// Deletes the specified agent.
+        /// </summary>
+        /// <param name="request">
+        /// The request object containing all of the parameters for the API call.
+        /// </param>
+        /// <param name="callSettings">
+        /// If not null, applies overrides to this RPC call.
+        /// </param>
+        public override void DeleteAgent(
+            DeleteAgentRequest request,
+            gaxgrpc::CallSettings callSettings = null)
+        {
+            Modify_DeleteAgentRequest(ref request, ref callSettings);
+            _callDeleteAgent.Sync(request, callSettings);
+        }
 
         /// <summary>
         /// Retrieves the specified agent.
@@ -1460,8 +2217,7 @@ namespace Google.Cloud.Dialogflow.V2
         /// <summary>
         /// Trains the specified agent.
         ///
-        /// Operation &lt;response: [google.protobuf.Empty][google.protobuf.Empty],
-        ///            metadata: [google.protobuf.Struct][google.protobuf.Struct]&gt;
+        /// Operation &lt;response: [google.protobuf.Empty][google.protobuf.Empty]&gt;
         /// </summary>
         /// <param name="request">
         /// The request object containing all of the parameters for the API call.
@@ -1484,8 +2240,7 @@ namespace Google.Cloud.Dialogflow.V2
         /// <summary>
         /// Trains the specified agent.
         ///
-        /// Operation &lt;response: [google.protobuf.Empty][google.protobuf.Empty],
-        ///            metadata: [google.protobuf.Struct][google.protobuf.Struct]&gt;
+        /// Operation &lt;response: [google.protobuf.Empty][google.protobuf.Empty]&gt;
         /// </summary>
         /// <param name="request">
         /// The request object containing all of the parameters for the API call.
@@ -1513,8 +2268,7 @@ namespace Google.Cloud.Dialogflow.V2
         /// <summary>
         /// Exports the specified agent to a ZIP file.
         ///
-        /// Operation &lt;response: [ExportAgentResponse][google.cloud.dialogflow.v2.ExportAgentResponse],
-        ///            metadata: [google.protobuf.Struct][google.protobuf.Struct]&gt;
+        /// Operation &lt;response: [ExportAgentResponse][google.cloud.dialogflow.v2.ExportAgentResponse]&gt;
         /// </summary>
         /// <param name="request">
         /// The request object containing all of the parameters for the API call.
@@ -1537,8 +2291,7 @@ namespace Google.Cloud.Dialogflow.V2
         /// <summary>
         /// Exports the specified agent to a ZIP file.
         ///
-        /// Operation &lt;response: [ExportAgentResponse][google.cloud.dialogflow.v2.ExportAgentResponse],
-        ///            metadata: [google.protobuf.Struct][google.protobuf.Struct]&gt;
+        /// Operation &lt;response: [ExportAgentResponse][google.cloud.dialogflow.v2.ExportAgentResponse]&gt;
         /// </summary>
         /// <param name="request">
         /// The request object containing all of the parameters for the API call.
@@ -1570,8 +2323,7 @@ namespace Google.Cloud.Dialogflow.V2
         /// Intents and entity types with the same name are replaced with the new
         /// versions from ImportAgentRequest.
         ///
-        /// Operation &lt;response: [google.protobuf.Empty][google.protobuf.Empty],
-        ///            metadata: [google.protobuf.Struct][google.protobuf.Struct]&gt;
+        /// Operation &lt;response: [google.protobuf.Empty][google.protobuf.Empty]&gt;
         /// </summary>
         /// <param name="request">
         /// The request object containing all of the parameters for the API call.
@@ -1598,8 +2350,7 @@ namespace Google.Cloud.Dialogflow.V2
         /// Intents and entity types with the same name are replaced with the new
         /// versions from ImportAgentRequest.
         ///
-        /// Operation &lt;response: [google.protobuf.Empty][google.protobuf.Empty],
-        ///            metadata: [google.protobuf.Struct][google.protobuf.Struct]&gt;
+        /// Operation &lt;response: [google.protobuf.Empty][google.protobuf.Empty]&gt;
         /// </summary>
         /// <param name="request">
         /// The request object containing all of the parameters for the API call.
@@ -1630,8 +2381,7 @@ namespace Google.Cloud.Dialogflow.V2
         /// Replaces the current agent version with a new one. All the intents and
         /// entity types in the older version are deleted.
         ///
-        /// Operation &lt;response: [google.protobuf.Empty][google.protobuf.Empty],
-        ///            metadata: [google.protobuf.Struct][google.protobuf.Struct]&gt;
+        /// Operation &lt;response: [google.protobuf.Empty][google.protobuf.Empty]&gt;
         /// </summary>
         /// <param name="request">
         /// The request object containing all of the parameters for the API call.
@@ -1657,8 +2407,7 @@ namespace Google.Cloud.Dialogflow.V2
         /// Replaces the current agent version with a new one. All the intents and
         /// entity types in the older version are deleted.
         ///
-        /// Operation &lt;response: [google.protobuf.Empty][google.protobuf.Empty],
-        ///            metadata: [google.protobuf.Struct][google.protobuf.Struct]&gt;
+        /// Operation &lt;response: [google.protobuf.Empty][google.protobuf.Empty]&gt;
         /// </summary>
         /// <param name="request">
         /// The request object containing all of the parameters for the API call.

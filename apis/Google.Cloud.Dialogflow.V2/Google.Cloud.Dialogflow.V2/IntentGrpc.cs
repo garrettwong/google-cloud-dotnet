@@ -3,7 +3,7 @@
 //     source: google/cloud/dialogflow/v2/intent.proto
 // </auto-generated>
 // Original file comments:
-// Copyright 2018 Google Inc.
+// Copyright 2019 Google LLC.
 //
 // Licensed under the Apache License, Version 2.0 (the "License");
 // you may not use this file except in compliance with the License.
@@ -17,7 +17,8 @@
 // See the License for the specific language governing permissions and
 // limitations under the License.
 //
-#pragma warning disable 1591
+//
+#pragma warning disable 0414, 1591
 #region Designer generated code
 
 using grpc = global::Grpc.Core;
@@ -38,7 +39,7 @@ namespace Google.Cloud.Dialogflow.V2 {
   /// *   **Contexts** - provide additional context for intent analysis. For
   ///     example, if an intent is related to an object in your application that
   ///     plays music, you can provide a context to determine when to match the
-  ///     intent if the user input is “turn it off”.  You can include a context
+  ///     intent if the user input is "turn it off". You can include a context
   ///     that matches the intent when there is previous user input of
   ///     "play music", and not when there is previous user input of
   ///     "turn on the light".
@@ -54,72 +55,73 @@ namespace Google.Cloud.Dialogflow.V2 {
   ///     Dialogflow API agent to better match intents.
   ///
   /// For more information about intents, see the
-  /// [Dialogflow documentation](https://dialogflow.com/docs/intents).
+  /// [Dialogflow
+  /// documentation](https://cloud.google.com/dialogflow/docs/intents-overview).
   /// </summary>
   public static partial class Intents
   {
     static readonly string __ServiceName = "google.cloud.dialogflow.v2.Intents";
 
-    static readonly grpc::Marshaller<global::Google.Cloud.Dialogflow.V2.ListIntentsRequest> __Marshaller_ListIntentsRequest = grpc::Marshallers.Create((arg) => global::Google.Protobuf.MessageExtensions.ToByteArray(arg), global::Google.Cloud.Dialogflow.V2.ListIntentsRequest.Parser.ParseFrom);
-    static readonly grpc::Marshaller<global::Google.Cloud.Dialogflow.V2.ListIntentsResponse> __Marshaller_ListIntentsResponse = grpc::Marshallers.Create((arg) => global::Google.Protobuf.MessageExtensions.ToByteArray(arg), global::Google.Cloud.Dialogflow.V2.ListIntentsResponse.Parser.ParseFrom);
-    static readonly grpc::Marshaller<global::Google.Cloud.Dialogflow.V2.GetIntentRequest> __Marshaller_GetIntentRequest = grpc::Marshallers.Create((arg) => global::Google.Protobuf.MessageExtensions.ToByteArray(arg), global::Google.Cloud.Dialogflow.V2.GetIntentRequest.Parser.ParseFrom);
-    static readonly grpc::Marshaller<global::Google.Cloud.Dialogflow.V2.Intent> __Marshaller_Intent = grpc::Marshallers.Create((arg) => global::Google.Protobuf.MessageExtensions.ToByteArray(arg), global::Google.Cloud.Dialogflow.V2.Intent.Parser.ParseFrom);
-    static readonly grpc::Marshaller<global::Google.Cloud.Dialogflow.V2.CreateIntentRequest> __Marshaller_CreateIntentRequest = grpc::Marshallers.Create((arg) => global::Google.Protobuf.MessageExtensions.ToByteArray(arg), global::Google.Cloud.Dialogflow.V2.CreateIntentRequest.Parser.ParseFrom);
-    static readonly grpc::Marshaller<global::Google.Cloud.Dialogflow.V2.UpdateIntentRequest> __Marshaller_UpdateIntentRequest = grpc::Marshallers.Create((arg) => global::Google.Protobuf.MessageExtensions.ToByteArray(arg), global::Google.Cloud.Dialogflow.V2.UpdateIntentRequest.Parser.ParseFrom);
-    static readonly grpc::Marshaller<global::Google.Cloud.Dialogflow.V2.DeleteIntentRequest> __Marshaller_DeleteIntentRequest = grpc::Marshallers.Create((arg) => global::Google.Protobuf.MessageExtensions.ToByteArray(arg), global::Google.Cloud.Dialogflow.V2.DeleteIntentRequest.Parser.ParseFrom);
-    static readonly grpc::Marshaller<global::Google.Protobuf.WellKnownTypes.Empty> __Marshaller_Empty = grpc::Marshallers.Create((arg) => global::Google.Protobuf.MessageExtensions.ToByteArray(arg), global::Google.Protobuf.WellKnownTypes.Empty.Parser.ParseFrom);
-    static readonly grpc::Marshaller<global::Google.Cloud.Dialogflow.V2.BatchUpdateIntentsRequest> __Marshaller_BatchUpdateIntentsRequest = grpc::Marshallers.Create((arg) => global::Google.Protobuf.MessageExtensions.ToByteArray(arg), global::Google.Cloud.Dialogflow.V2.BatchUpdateIntentsRequest.Parser.ParseFrom);
-    static readonly grpc::Marshaller<global::Google.LongRunning.Operation> __Marshaller_Operation = grpc::Marshallers.Create((arg) => global::Google.Protobuf.MessageExtensions.ToByteArray(arg), global::Google.LongRunning.Operation.Parser.ParseFrom);
-    static readonly grpc::Marshaller<global::Google.Cloud.Dialogflow.V2.BatchDeleteIntentsRequest> __Marshaller_BatchDeleteIntentsRequest = grpc::Marshallers.Create((arg) => global::Google.Protobuf.MessageExtensions.ToByteArray(arg), global::Google.Cloud.Dialogflow.V2.BatchDeleteIntentsRequest.Parser.ParseFrom);
+    static readonly grpc::Marshaller<global::Google.Cloud.Dialogflow.V2.ListIntentsRequest> __Marshaller_google_cloud_dialogflow_v2_ListIntentsRequest = grpc::Marshallers.Create((arg) => global::Google.Protobuf.MessageExtensions.ToByteArray(arg), global::Google.Cloud.Dialogflow.V2.ListIntentsRequest.Parser.ParseFrom);
+    static readonly grpc::Marshaller<global::Google.Cloud.Dialogflow.V2.ListIntentsResponse> __Marshaller_google_cloud_dialogflow_v2_ListIntentsResponse = grpc::Marshallers.Create((arg) => global::Google.Protobuf.MessageExtensions.ToByteArray(arg), global::Google.Cloud.Dialogflow.V2.ListIntentsResponse.Parser.ParseFrom);
+    static readonly grpc::Marshaller<global::Google.Cloud.Dialogflow.V2.GetIntentRequest> __Marshaller_google_cloud_dialogflow_v2_GetIntentRequest = grpc::Marshallers.Create((arg) => global::Google.Protobuf.MessageExtensions.ToByteArray(arg), global::Google.Cloud.Dialogflow.V2.GetIntentRequest.Parser.ParseFrom);
+    static readonly grpc::Marshaller<global::Google.Cloud.Dialogflow.V2.Intent> __Marshaller_google_cloud_dialogflow_v2_Intent = grpc::Marshallers.Create((arg) => global::Google.Protobuf.MessageExtensions.ToByteArray(arg), global::Google.Cloud.Dialogflow.V2.Intent.Parser.ParseFrom);
+    static readonly grpc::Marshaller<global::Google.Cloud.Dialogflow.V2.CreateIntentRequest> __Marshaller_google_cloud_dialogflow_v2_CreateIntentRequest = grpc::Marshallers.Create((arg) => global::Google.Protobuf.MessageExtensions.ToByteArray(arg), global::Google.Cloud.Dialogflow.V2.CreateIntentRequest.Parser.ParseFrom);
+    static readonly grpc::Marshaller<global::Google.Cloud.Dialogflow.V2.UpdateIntentRequest> __Marshaller_google_cloud_dialogflow_v2_UpdateIntentRequest = grpc::Marshallers.Create((arg) => global::Google.Protobuf.MessageExtensions.ToByteArray(arg), global::Google.Cloud.Dialogflow.V2.UpdateIntentRequest.Parser.ParseFrom);
+    static readonly grpc::Marshaller<global::Google.Cloud.Dialogflow.V2.DeleteIntentRequest> __Marshaller_google_cloud_dialogflow_v2_DeleteIntentRequest = grpc::Marshallers.Create((arg) => global::Google.Protobuf.MessageExtensions.ToByteArray(arg), global::Google.Cloud.Dialogflow.V2.DeleteIntentRequest.Parser.ParseFrom);
+    static readonly grpc::Marshaller<global::Google.Protobuf.WellKnownTypes.Empty> __Marshaller_google_protobuf_Empty = grpc::Marshallers.Create((arg) => global::Google.Protobuf.MessageExtensions.ToByteArray(arg), global::Google.Protobuf.WellKnownTypes.Empty.Parser.ParseFrom);
+    static readonly grpc::Marshaller<global::Google.Cloud.Dialogflow.V2.BatchUpdateIntentsRequest> __Marshaller_google_cloud_dialogflow_v2_BatchUpdateIntentsRequest = grpc::Marshallers.Create((arg) => global::Google.Protobuf.MessageExtensions.ToByteArray(arg), global::Google.Cloud.Dialogflow.V2.BatchUpdateIntentsRequest.Parser.ParseFrom);
+    static readonly grpc::Marshaller<global::Google.LongRunning.Operation> __Marshaller_google_longrunning_Operation = grpc::Marshallers.Create((arg) => global::Google.Protobuf.MessageExtensions.ToByteArray(arg), global::Google.LongRunning.Operation.Parser.ParseFrom);
+    static readonly grpc::Marshaller<global::Google.Cloud.Dialogflow.V2.BatchDeleteIntentsRequest> __Marshaller_google_cloud_dialogflow_v2_BatchDeleteIntentsRequest = grpc::Marshallers.Create((arg) => global::Google.Protobuf.MessageExtensions.ToByteArray(arg), global::Google.Cloud.Dialogflow.V2.BatchDeleteIntentsRequest.Parser.ParseFrom);
 
     static readonly grpc::Method<global::Google.Cloud.Dialogflow.V2.ListIntentsRequest, global::Google.Cloud.Dialogflow.V2.ListIntentsResponse> __Method_ListIntents = new grpc::Method<global::Google.Cloud.Dialogflow.V2.ListIntentsRequest, global::Google.Cloud.Dialogflow.V2.ListIntentsResponse>(
         grpc::MethodType.Unary,
         __ServiceName,
         "ListIntents",
-        __Marshaller_ListIntentsRequest,
-        __Marshaller_ListIntentsResponse);
+        __Marshaller_google_cloud_dialogflow_v2_ListIntentsRequest,
+        __Marshaller_google_cloud_dialogflow_v2_ListIntentsResponse);
 
     static readonly grpc::Method<global::Google.Cloud.Dialogflow.V2.GetIntentRequest, global::Google.Cloud.Dialogflow.V2.Intent> __Method_GetIntent = new grpc::Method<global::Google.Cloud.Dialogflow.V2.GetIntentRequest, global::Google.Cloud.Dialogflow.V2.Intent>(
         grpc::MethodType.Unary,
         __ServiceName,
         "GetIntent",
-        __Marshaller_GetIntentRequest,
-        __Marshaller_Intent);
+        __Marshaller_google_cloud_dialogflow_v2_GetIntentRequest,
+        __Marshaller_google_cloud_dialogflow_v2_Intent);
 
     static readonly grpc::Method<global::Google.Cloud.Dialogflow.V2.CreateIntentRequest, global::Google.Cloud.Dialogflow.V2.Intent> __Method_CreateIntent = new grpc::Method<global::Google.Cloud.Dialogflow.V2.CreateIntentRequest, global::Google.Cloud.Dialogflow.V2.Intent>(
         grpc::MethodType.Unary,
         __ServiceName,
         "CreateIntent",
-        __Marshaller_CreateIntentRequest,
-        __Marshaller_Intent);
+        __Marshaller_google_cloud_dialogflow_v2_CreateIntentRequest,
+        __Marshaller_google_cloud_dialogflow_v2_Intent);
 
     static readonly grpc::Method<global::Google.Cloud.Dialogflow.V2.UpdateIntentRequest, global::Google.Cloud.Dialogflow.V2.Intent> __Method_UpdateIntent = new grpc::Method<global::Google.Cloud.Dialogflow.V2.UpdateIntentRequest, global::Google.Cloud.Dialogflow.V2.Intent>(
         grpc::MethodType.Unary,
         __ServiceName,
         "UpdateIntent",
-        __Marshaller_UpdateIntentRequest,
-        __Marshaller_Intent);
+        __Marshaller_google_cloud_dialogflow_v2_UpdateIntentRequest,
+        __Marshaller_google_cloud_dialogflow_v2_Intent);
 
     static readonly grpc::Method<global::Google.Cloud.Dialogflow.V2.DeleteIntentRequest, global::Google.Protobuf.WellKnownTypes.Empty> __Method_DeleteIntent = new grpc::Method<global::Google.Cloud.Dialogflow.V2.DeleteIntentRequest, global::Google.Protobuf.WellKnownTypes.Empty>(
         grpc::MethodType.Unary,
         __ServiceName,
         "DeleteIntent",
-        __Marshaller_DeleteIntentRequest,
-        __Marshaller_Empty);
+        __Marshaller_google_cloud_dialogflow_v2_DeleteIntentRequest,
+        __Marshaller_google_protobuf_Empty);
 
     static readonly grpc::Method<global::Google.Cloud.Dialogflow.V2.BatchUpdateIntentsRequest, global::Google.LongRunning.Operation> __Method_BatchUpdateIntents = new grpc::Method<global::Google.Cloud.Dialogflow.V2.BatchUpdateIntentsRequest, global::Google.LongRunning.Operation>(
         grpc::MethodType.Unary,
         __ServiceName,
         "BatchUpdateIntents",
-        __Marshaller_BatchUpdateIntentsRequest,
-        __Marshaller_Operation);
+        __Marshaller_google_cloud_dialogflow_v2_BatchUpdateIntentsRequest,
+        __Marshaller_google_longrunning_Operation);
 
     static readonly grpc::Method<global::Google.Cloud.Dialogflow.V2.BatchDeleteIntentsRequest, global::Google.LongRunning.Operation> __Method_BatchDeleteIntents = new grpc::Method<global::Google.Cloud.Dialogflow.V2.BatchDeleteIntentsRequest, global::Google.LongRunning.Operation>(
         grpc::MethodType.Unary,
         __ServiceName,
         "BatchDeleteIntents",
-        __Marshaller_BatchDeleteIntentsRequest,
-        __Marshaller_Operation);
+        __Marshaller_google_cloud_dialogflow_v2_BatchDeleteIntentsRequest,
+        __Marshaller_google_longrunning_Operation);
 
     /// <summary>Service descriptor</summary>
     public static global::Google.Protobuf.Reflection.ServiceDescriptor Descriptor
@@ -128,6 +130,7 @@ namespace Google.Cloud.Dialogflow.V2 {
     }
 
     /// <summary>Base class for server-side implementations of Intents</summary>
+    [grpc::BindServiceMethod(typeof(Intents), "BindService")]
     public abstract partial class IntentsBase
     {
       /// <summary>
@@ -175,7 +178,7 @@ namespace Google.Cloud.Dialogflow.V2 {
       }
 
       /// <summary>
-      /// Deletes the specified intent.
+      /// Deletes the specified intent and its direct or indirect followup intents.
       /// </summary>
       /// <param name="request">The request received from the client.</param>
       /// <param name="context">The context of the server-side call handler being invoked.</param>
@@ -413,7 +416,7 @@ namespace Google.Cloud.Dialogflow.V2 {
         return CallInvoker.AsyncUnaryCall(__Method_UpdateIntent, null, options, request);
       }
       /// <summary>
-      /// Deletes the specified intent.
+      /// Deletes the specified intent and its direct or indirect followup intents.
       /// </summary>
       /// <param name="request">The request to send to the server.</param>
       /// <param name="headers">The initial metadata to send with the call. This parameter is optional.</param>
@@ -425,7 +428,7 @@ namespace Google.Cloud.Dialogflow.V2 {
         return DeleteIntent(request, new grpc::CallOptions(headers, deadline, cancellationToken));
       }
       /// <summary>
-      /// Deletes the specified intent.
+      /// Deletes the specified intent and its direct or indirect followup intents.
       /// </summary>
       /// <param name="request">The request to send to the server.</param>
       /// <param name="options">The options for the call.</param>
@@ -435,7 +438,7 @@ namespace Google.Cloud.Dialogflow.V2 {
         return CallInvoker.BlockingUnaryCall(__Method_DeleteIntent, null, options, request);
       }
       /// <summary>
-      /// Deletes the specified intent.
+      /// Deletes the specified intent and its direct or indirect followup intents.
       /// </summary>
       /// <param name="request">The request to send to the server.</param>
       /// <param name="headers">The initial metadata to send with the call. This parameter is optional.</param>
@@ -447,7 +450,7 @@ namespace Google.Cloud.Dialogflow.V2 {
         return DeleteIntentAsync(request, new grpc::CallOptions(headers, deadline, cancellationToken));
       }
       /// <summary>
-      /// Deletes the specified intent.
+      /// Deletes the specified intent and its direct or indirect followup intents.
       /// </summary>
       /// <param name="request">The request to send to the server.</param>
       /// <param name="options">The options for the call.</param>
@@ -579,6 +582,21 @@ namespace Google.Cloud.Dialogflow.V2 {
           .AddMethod(__Method_DeleteIntent, serviceImpl.DeleteIntent)
           .AddMethod(__Method_BatchUpdateIntents, serviceImpl.BatchUpdateIntents)
           .AddMethod(__Method_BatchDeleteIntents, serviceImpl.BatchDeleteIntents).Build();
+    }
+
+    /// <summary>Register service method with a service binder with or without implementation. Useful when customizing the  service binding logic.
+    /// Note: this method is part of an experimental API that can change or be removed without any prior notice.</summary>
+    /// <param name="serviceBinder">Service methods will be bound by calling <c>AddMethod</c> on this object.</param>
+    /// <param name="serviceImpl">An object implementing the server-side handling logic.</param>
+    public static void BindService(grpc::ServiceBinderBase serviceBinder, IntentsBase serviceImpl)
+    {
+      serviceBinder.AddMethod(__Method_ListIntents, serviceImpl == null ? null : new grpc::UnaryServerMethod<global::Google.Cloud.Dialogflow.V2.ListIntentsRequest, global::Google.Cloud.Dialogflow.V2.ListIntentsResponse>(serviceImpl.ListIntents));
+      serviceBinder.AddMethod(__Method_GetIntent, serviceImpl == null ? null : new grpc::UnaryServerMethod<global::Google.Cloud.Dialogflow.V2.GetIntentRequest, global::Google.Cloud.Dialogflow.V2.Intent>(serviceImpl.GetIntent));
+      serviceBinder.AddMethod(__Method_CreateIntent, serviceImpl == null ? null : new grpc::UnaryServerMethod<global::Google.Cloud.Dialogflow.V2.CreateIntentRequest, global::Google.Cloud.Dialogflow.V2.Intent>(serviceImpl.CreateIntent));
+      serviceBinder.AddMethod(__Method_UpdateIntent, serviceImpl == null ? null : new grpc::UnaryServerMethod<global::Google.Cloud.Dialogflow.V2.UpdateIntentRequest, global::Google.Cloud.Dialogflow.V2.Intent>(serviceImpl.UpdateIntent));
+      serviceBinder.AddMethod(__Method_DeleteIntent, serviceImpl == null ? null : new grpc::UnaryServerMethod<global::Google.Cloud.Dialogflow.V2.DeleteIntentRequest, global::Google.Protobuf.WellKnownTypes.Empty>(serviceImpl.DeleteIntent));
+      serviceBinder.AddMethod(__Method_BatchUpdateIntents, serviceImpl == null ? null : new grpc::UnaryServerMethod<global::Google.Cloud.Dialogflow.V2.BatchUpdateIntentsRequest, global::Google.LongRunning.Operation>(serviceImpl.BatchUpdateIntents));
+      serviceBinder.AddMethod(__Method_BatchDeleteIntents, serviceImpl == null ? null : new grpc::UnaryServerMethod<global::Google.Cloud.Dialogflow.V2.BatchDeleteIntentsRequest, global::Google.LongRunning.Operation>(serviceImpl.BatchDeleteIntents));
     }
 
   }

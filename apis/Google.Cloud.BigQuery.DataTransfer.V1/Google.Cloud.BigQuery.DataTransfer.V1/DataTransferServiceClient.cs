@@ -1,4 +1,4 @@
-// Copyright 2018 Google LLC
+// Copyright 2019 Google LLC
 //
 // Licensed under the Apache License, Version 2.0 (the "License");
 // you may not use this file except in compliance with the License.
@@ -62,6 +62,7 @@ namespace Google.Cloud.BigQuery.DataTransfer.V1
             ListTransferRunsSettings = existing.ListTransferRunsSettings;
             ListTransferLogsSettings = existing.ListTransferLogsSettings;
             CheckValidCredsSettings = existing.CheckValidCredsSettings;
+            StartManualTransferRunsSettings = existing.StartManualTransferRunsSettings;
             OnCopy(existing);
         }
 
@@ -519,10 +520,75 @@ namespace Google.Cloud.BigQuery.DataTransfer.V1
             )));
 
         /// <summary>
+        /// <see cref="gaxgrpc::CallSettings"/> for synchronous and asynchronous calls to
+        /// <c>DataTransferServiceClient.StartManualTransferRuns</c> and <c>DataTransferServiceClient.StartManualTransferRunsAsync</c>.
+        /// </summary>
+        /// <remarks>
+        /// The default <c>DataTransferServiceClient.StartManualTransferRuns</c> and
+        /// <c>DataTransferServiceClient.StartManualTransferRunsAsync</c> <see cref="gaxgrpc::RetrySettings"/> are:
+        /// <list type="bullet">
+        /// <item><description>Initial retry delay: 100 milliseconds</description></item>
+        /// <item><description>Retry delay multiplier: 1.3</description></item>
+        /// <item><description>Retry maximum delay: 60000 milliseconds</description></item>
+        /// <item><description>Initial timeout: 20000 milliseconds</description></item>
+        /// <item><description>Timeout multiplier: 1.0</description></item>
+        /// <item><description>Timeout maximum delay: 20000 milliseconds</description></item>
+        /// </list>
+        /// Retry will be attempted on the following response status codes:
+        /// <list>
+        /// <item><description>No status codes</description></item>
+        /// </list>
+        /// Default RPC expiration is 600000 milliseconds.
+        /// </remarks>
+        public gaxgrpc::CallSettings StartManualTransferRunsSettings { get; set; } = gaxgrpc::CallSettings.FromCallTiming(
+            gaxgrpc::CallTiming.FromRetry(new gaxgrpc::RetrySettings(
+                retryBackoff: GetDefaultRetryBackoff(),
+                timeoutBackoff: GetDefaultTimeoutBackoff(),
+                totalExpiration: gax::Expiration.FromTimeout(sys::TimeSpan.FromMilliseconds(600000)),
+                retryFilter: NonIdempotentRetryFilter
+            )));
+
+        /// <summary>
         /// Creates a deep clone of this object, with all the same property values.
         /// </summary>
         /// <returns>A deep clone of this <see cref="DataTransferServiceSettings"/> object.</returns>
         public DataTransferServiceSettings Clone() => new DataTransferServiceSettings(this);
+    }
+
+    /// <summary>
+    /// Builder class for <see cref="DataTransferServiceClient"/> to provide simple configuration of credentials, endpoint etc.
+    /// </summary>
+    public sealed partial class DataTransferServiceClientBuilder : gaxgrpc::ClientBuilderBase<DataTransferServiceClient>
+    {
+        /// <summary>
+        /// The settings to use for RPCs, or null for the default settings.
+        /// </summary>
+        public DataTransferServiceSettings Settings { get; set; }
+
+        /// <inheritdoc/>
+        public override DataTransferServiceClient Build()
+        {
+            Validate();
+            grpccore::CallInvoker callInvoker = CreateCallInvoker();
+            return DataTransferServiceClient.Create(callInvoker, Settings);
+        }
+
+        /// <inheritdoc />
+        public override async stt::Task<DataTransferServiceClient> BuildAsync(st::CancellationToken cancellationToken = default)
+        {
+            Validate();
+            grpccore::CallInvoker callInvoker = await CreateCallInvokerAsync(cancellationToken).ConfigureAwait(false);
+            return DataTransferServiceClient.Create(callInvoker, Settings);
+        }
+
+        /// <inheritdoc />
+        protected override gaxgrpc::ServiceEndpoint GetDefaultEndpoint() => DataTransferServiceClient.DefaultEndpoint;
+
+        /// <inheritdoc />
+        protected override scg::IReadOnlyList<string> GetDefaultScopes() => DataTransferServiceClient.DefaultScopes;
+
+        /// <inheritdoc />
+        protected override gaxgrpc::ChannelPool GetChannelPool() => DataTransferServiceClient.ChannelPool;
     }
 
     /// <summary>
@@ -549,6 +615,8 @@ namespace Google.Cloud.BigQuery.DataTransfer.V1
         });
 
         private static readonly gaxgrpc::ChannelPool s_channelPool = new gaxgrpc::ChannelPool(DefaultScopes);
+
+        internal static gaxgrpc::ChannelPool ChannelPool => s_channelPool;
 
         /// <summary>
         /// Asynchronously creates a <see cref="DataTransferServiceClient"/>, applying defaults for all unspecified settings,
@@ -684,8 +752,9 @@ namespace Google.Cloud.BigQuery.DataTransfer.V1
         /// which can be used for UI rendering.
         /// </summary>
         /// <param name="name">
-        /// The field will contain name of the resource requested, for example:
-        /// `projects/{project_id}/dataSources/{data_source_id}`
+        /// Required. The field will contain name of the resource requested, for example:
+        /// `projects/{project_id}/dataSources/{data_source_id}` or
+        /// `projects/{project_id}/locations/{location_id}/dataSources/{data_source_id}`
         /// </param>
         /// <param name="callSettings">
         /// If not null, applies overrides to this RPC call.
@@ -707,8 +776,9 @@ namespace Google.Cloud.BigQuery.DataTransfer.V1
         /// which can be used for UI rendering.
         /// </summary>
         /// <param name="name">
-        /// The field will contain name of the resource requested, for example:
-        /// `projects/{project_id}/dataSources/{data_source_id}`
+        /// Required. The field will contain name of the resource requested, for example:
+        /// `projects/{project_id}/dataSources/{data_source_id}` or
+        /// `projects/{project_id}/locations/{location_id}/dataSources/{data_source_id}`
         /// </param>
         /// <param name="cancellationToken">
         /// A <see cref="st::CancellationToken"/> to use for this RPC.
@@ -727,8 +797,9 @@ namespace Google.Cloud.BigQuery.DataTransfer.V1
         /// which can be used for UI rendering.
         /// </summary>
         /// <param name="name">
-        /// The field will contain name of the resource requested, for example:
-        /// `projects/{project_id}/dataSources/{data_source_id}`
+        /// Required. The field will contain name of the resource requested, for example:
+        /// `projects/{project_id}/dataSources/{data_source_id}` or
+        /// `projects/{project_id}/locations/{location_id}/dataSources/{data_source_id}`
         /// </param>
         /// <param name="callSettings">
         /// If not null, applies overrides to this RPC call.
@@ -742,6 +813,75 @@ namespace Google.Cloud.BigQuery.DataTransfer.V1
                 new GetDataSourceRequest
                 {
                     DataSourceNameOneof = gax::GaxPreconditions.CheckNotNull(name, nameof(name)),
+                },
+                callSettings);
+
+        /// <summary>
+        /// Retrieves a supported data source and returns its settings,
+        /// which can be used for UI rendering.
+        /// </summary>
+        /// <param name="name">
+        /// Required. The field will contain name of the resource requested, for example:
+        /// `projects/{project_id}/dataSources/{data_source_id}` or
+        /// `projects/{project_id}/locations/{location_id}/dataSources/{data_source_id}`
+        /// </param>
+        /// <param name="callSettings">
+        /// If not null, applies overrides to this RPC call.
+        /// </param>
+        /// <returns>
+        /// A Task containing the RPC response.
+        /// </returns>
+        public virtual stt::Task<DataSource> GetDataSourceAsync(
+            string name,
+            gaxgrpc::CallSettings callSettings = null) => GetDataSourceAsync(
+                new GetDataSourceRequest
+                {
+                    Name = gax::GaxPreconditions.CheckNotNullOrEmpty(name, nameof(name)),
+                },
+                callSettings);
+
+        /// <summary>
+        /// Retrieves a supported data source and returns its settings,
+        /// which can be used for UI rendering.
+        /// </summary>
+        /// <param name="name">
+        /// Required. The field will contain name of the resource requested, for example:
+        /// `projects/{project_id}/dataSources/{data_source_id}` or
+        /// `projects/{project_id}/locations/{location_id}/dataSources/{data_source_id}`
+        /// </param>
+        /// <param name="cancellationToken">
+        /// A <see cref="st::CancellationToken"/> to use for this RPC.
+        /// </param>
+        /// <returns>
+        /// A Task containing the RPC response.
+        /// </returns>
+        public virtual stt::Task<DataSource> GetDataSourceAsync(
+            string name,
+            st::CancellationToken cancellationToken) => GetDataSourceAsync(
+                name,
+                gaxgrpc::CallSettings.FromCancellationToken(cancellationToken));
+
+        /// <summary>
+        /// Retrieves a supported data source and returns its settings,
+        /// which can be used for UI rendering.
+        /// </summary>
+        /// <param name="name">
+        /// Required. The field will contain name of the resource requested, for example:
+        /// `projects/{project_id}/dataSources/{data_source_id}` or
+        /// `projects/{project_id}/locations/{location_id}/dataSources/{data_source_id}`
+        /// </param>
+        /// <param name="callSettings">
+        /// If not null, applies overrides to this RPC call.
+        /// </param>
+        /// <returns>
+        /// The RPC response.
+        /// </returns>
+        public virtual DataSource GetDataSource(
+            string name,
+            gaxgrpc::CallSettings callSettings = null) => GetDataSource(
+                new GetDataSourceRequest
+                {
+                    Name = gax::GaxPreconditions.CheckNotNullOrEmpty(name, nameof(name)),
                 },
                 callSettings);
 
@@ -809,8 +949,9 @@ namespace Google.Cloud.BigQuery.DataTransfer.V1
         /// which can be used for UI rendering.
         /// </summary>
         /// <param name="parent">
-        /// The BigQuery project id for which data sources should be returned.
-        /// Must be in the form: `projects/{project_id}`
+        /// Required. The BigQuery project id for which data sources should be returned.
+        /// Must be in the form: `projects/{project_id}` or
+        /// `projects/{project_id}/locations/{location_id}
         /// </param>
         /// <param name="pageToken">
         /// The token returned from the previous request.
@@ -844,8 +985,9 @@ namespace Google.Cloud.BigQuery.DataTransfer.V1
         /// which can be used for UI rendering.
         /// </summary>
         /// <param name="parent">
-        /// The BigQuery project id for which data sources should be returned.
-        /// Must be in the form: `projects/{project_id}`
+        /// Required. The BigQuery project id for which data sources should be returned.
+        /// Must be in the form: `projects/{project_id}` or
+        /// `projects/{project_id}/locations/{location_id}
         /// </param>
         /// <param name="pageToken">
         /// The token returned from the previous request.
@@ -869,6 +1011,78 @@ namespace Google.Cloud.BigQuery.DataTransfer.V1
                 new ListDataSourcesRequest
                 {
                     ParentAsParentNameOneof = gax::GaxPreconditions.CheckNotNull(parent, nameof(parent)),
+                    PageToken = pageToken ?? "",
+                    PageSize = pageSize ?? 0,
+                },
+                callSettings);
+
+        /// <summary>
+        /// Lists supported data sources and returns their settings,
+        /// which can be used for UI rendering.
+        /// </summary>
+        /// <param name="parent">
+        /// Required. The BigQuery project id for which data sources should be returned.
+        /// Must be in the form: `projects/{project_id}` or
+        /// `projects/{project_id}/locations/{location_id}
+        /// </param>
+        /// <param name="pageToken">
+        /// The token returned from the previous request.
+        /// A value of <c>null</c> or an empty string retrieves the first page.
+        /// </param>
+        /// <param name="pageSize">
+        /// The size of page to request. The response will not be larger than this, but may be smaller.
+        /// A value of <c>null</c> or 0 uses a server-defined page size.
+        /// </param>
+        /// <param name="callSettings">
+        /// If not null, applies overrides to this RPC call.
+        /// </param>
+        /// <returns>
+        /// A pageable asynchronous sequence of <see cref="DataSource"/> resources.
+        /// </returns>
+        public virtual gax::PagedAsyncEnumerable<ListDataSourcesResponse, DataSource> ListDataSourcesAsync(
+            string parent,
+            string pageToken = null,
+            int? pageSize = null,
+            gaxgrpc::CallSettings callSettings = null) => ListDataSourcesAsync(
+                new ListDataSourcesRequest
+                {
+                    Parent = gax::GaxPreconditions.CheckNotNullOrEmpty(parent, nameof(parent)),
+                    PageToken = pageToken ?? "",
+                    PageSize = pageSize ?? 0,
+                },
+                callSettings);
+
+        /// <summary>
+        /// Lists supported data sources and returns their settings,
+        /// which can be used for UI rendering.
+        /// </summary>
+        /// <param name="parent">
+        /// Required. The BigQuery project id for which data sources should be returned.
+        /// Must be in the form: `projects/{project_id}` or
+        /// `projects/{project_id}/locations/{location_id}
+        /// </param>
+        /// <param name="pageToken">
+        /// The token returned from the previous request.
+        /// A value of <c>null</c> or an empty string retrieves the first page.
+        /// </param>
+        /// <param name="pageSize">
+        /// The size of page to request. The response will not be larger than this, but may be smaller.
+        /// A value of <c>null</c> or 0 uses a server-defined page size.
+        /// </param>
+        /// <param name="callSettings">
+        /// If not null, applies overrides to this RPC call.
+        /// </param>
+        /// <returns>
+        /// A pageable sequence of <see cref="DataSource"/> resources.
+        /// </returns>
+        public virtual gax::PagedEnumerable<ListDataSourcesResponse, DataSource> ListDataSources(
+            string parent,
+            string pageToken = null,
+            int? pageSize = null,
+            gaxgrpc::CallSettings callSettings = null) => ListDataSources(
+                new ListDataSourcesRequest
+                {
+                    Parent = gax::GaxPreconditions.CheckNotNullOrEmpty(parent, nameof(parent)),
                     PageToken = pageToken ?? "",
                     PageSize = pageSize ?? 0,
                 },
@@ -918,13 +1132,13 @@ namespace Google.Cloud.BigQuery.DataTransfer.V1
         /// Creates a new data transfer configuration.
         /// </summary>
         /// <param name="parent">
-        /// The BigQuery project id where the transfer configuration should be created.
-        /// Must be in the format /projects/{project_id}/locations/{location_id}
-        /// If specified location and location of the destination bigquery dataset
-        /// do not match - the request will fail.
+        /// Required. The BigQuery project id where the transfer configuration should be created.
+        /// Must be in the format projects/{project_id}/locations/{location_id} or
+        /// projects/{project_id}. If specified location and location of the
+        /// destination bigquery dataset do not match - the request will fail.
         /// </param>
         /// <param name="transferConfig">
-        /// Data transfer configuration to create.
+        /// Required. Data transfer configuration to create.
         /// </param>
         /// <param name="callSettings">
         /// If not null, applies overrides to this RPC call.
@@ -947,13 +1161,13 @@ namespace Google.Cloud.BigQuery.DataTransfer.V1
         /// Creates a new data transfer configuration.
         /// </summary>
         /// <param name="parent">
-        /// The BigQuery project id where the transfer configuration should be created.
-        /// Must be in the format /projects/{project_id}/locations/{location_id}
-        /// If specified location and location of the destination bigquery dataset
-        /// do not match - the request will fail.
+        /// Required. The BigQuery project id where the transfer configuration should be created.
+        /// Must be in the format projects/{project_id}/locations/{location_id} or
+        /// projects/{project_id}. If specified location and location of the
+        /// destination bigquery dataset do not match - the request will fail.
         /// </param>
         /// <param name="transferConfig">
-        /// Data transfer configuration to create.
+        /// Required. Data transfer configuration to create.
         /// </param>
         /// <param name="cancellationToken">
         /// A <see cref="st::CancellationToken"/> to use for this RPC.
@@ -973,13 +1187,13 @@ namespace Google.Cloud.BigQuery.DataTransfer.V1
         /// Creates a new data transfer configuration.
         /// </summary>
         /// <param name="parent">
-        /// The BigQuery project id where the transfer configuration should be created.
-        /// Must be in the format /projects/{project_id}/locations/{location_id}
-        /// If specified location and location of the destination bigquery dataset
-        /// do not match - the request will fail.
+        /// Required. The BigQuery project id where the transfer configuration should be created.
+        /// Must be in the format projects/{project_id}/locations/{location_id} or
+        /// projects/{project_id}. If specified location and location of the
+        /// destination bigquery dataset do not match - the request will fail.
         /// </param>
         /// <param name="transferConfig">
-        /// Data transfer configuration to create.
+        /// Required. Data transfer configuration to create.
         /// </param>
         /// <param name="callSettings">
         /// If not null, applies overrides to this RPC call.
@@ -994,6 +1208,90 @@ namespace Google.Cloud.BigQuery.DataTransfer.V1
                 new CreateTransferConfigRequest
                 {
                     ParentAsParentNameOneof = gax::GaxPreconditions.CheckNotNull(parent, nameof(parent)),
+                    TransferConfig = gax::GaxPreconditions.CheckNotNull(transferConfig, nameof(transferConfig)),
+                },
+                callSettings);
+
+        /// <summary>
+        /// Creates a new data transfer configuration.
+        /// </summary>
+        /// <param name="parent">
+        /// Required. The BigQuery project id where the transfer configuration should be created.
+        /// Must be in the format projects/{project_id}/locations/{location_id} or
+        /// projects/{project_id}. If specified location and location of the
+        /// destination bigquery dataset do not match - the request will fail.
+        /// </param>
+        /// <param name="transferConfig">
+        /// Required. Data transfer configuration to create.
+        /// </param>
+        /// <param name="callSettings">
+        /// If not null, applies overrides to this RPC call.
+        /// </param>
+        /// <returns>
+        /// A Task containing the RPC response.
+        /// </returns>
+        public virtual stt::Task<TransferConfig> CreateTransferConfigAsync(
+            string parent,
+            TransferConfig transferConfig,
+            gaxgrpc::CallSettings callSettings = null) => CreateTransferConfigAsync(
+                new CreateTransferConfigRequest
+                {
+                    Parent = gax::GaxPreconditions.CheckNotNullOrEmpty(parent, nameof(parent)),
+                    TransferConfig = gax::GaxPreconditions.CheckNotNull(transferConfig, nameof(transferConfig)),
+                },
+                callSettings);
+
+        /// <summary>
+        /// Creates a new data transfer configuration.
+        /// </summary>
+        /// <param name="parent">
+        /// Required. The BigQuery project id where the transfer configuration should be created.
+        /// Must be in the format projects/{project_id}/locations/{location_id} or
+        /// projects/{project_id}. If specified location and location of the
+        /// destination bigquery dataset do not match - the request will fail.
+        /// </param>
+        /// <param name="transferConfig">
+        /// Required. Data transfer configuration to create.
+        /// </param>
+        /// <param name="cancellationToken">
+        /// A <see cref="st::CancellationToken"/> to use for this RPC.
+        /// </param>
+        /// <returns>
+        /// A Task containing the RPC response.
+        /// </returns>
+        public virtual stt::Task<TransferConfig> CreateTransferConfigAsync(
+            string parent,
+            TransferConfig transferConfig,
+            st::CancellationToken cancellationToken) => CreateTransferConfigAsync(
+                parent,
+                transferConfig,
+                gaxgrpc::CallSettings.FromCancellationToken(cancellationToken));
+
+        /// <summary>
+        /// Creates a new data transfer configuration.
+        /// </summary>
+        /// <param name="parent">
+        /// Required. The BigQuery project id where the transfer configuration should be created.
+        /// Must be in the format projects/{project_id}/locations/{location_id} or
+        /// projects/{project_id}. If specified location and location of the
+        /// destination bigquery dataset do not match - the request will fail.
+        /// </param>
+        /// <param name="transferConfig">
+        /// Required. Data transfer configuration to create.
+        /// </param>
+        /// <param name="callSettings">
+        /// If not null, applies overrides to this RPC call.
+        /// </param>
+        /// <returns>
+        /// The RPC response.
+        /// </returns>
+        public virtual TransferConfig CreateTransferConfig(
+            string parent,
+            TransferConfig transferConfig,
+            gaxgrpc::CallSettings callSettings = null) => CreateTransferConfig(
+                new CreateTransferConfigRequest
+                {
+                    Parent = gax::GaxPreconditions.CheckNotNullOrEmpty(parent, nameof(parent)),
                     TransferConfig = gax::GaxPreconditions.CheckNotNull(transferConfig, nameof(transferConfig)),
                 },
                 callSettings);
@@ -1059,10 +1357,10 @@ namespace Google.Cloud.BigQuery.DataTransfer.V1
         /// All fields must be set, even if they are not updated.
         /// </summary>
         /// <param name="transferConfig">
-        /// Data transfer configuration to create.
+        /// Required. Data transfer configuration to create.
         /// </param>
         /// <param name="updateMask">
-        /// Required list of fields to be updated in this request.
+        /// Required. Required list of fields to be updated in this request.
         /// </param>
         /// <param name="callSettings">
         /// If not null, applies overrides to this RPC call.
@@ -1086,10 +1384,10 @@ namespace Google.Cloud.BigQuery.DataTransfer.V1
         /// All fields must be set, even if they are not updated.
         /// </summary>
         /// <param name="transferConfig">
-        /// Data transfer configuration to create.
+        /// Required. Data transfer configuration to create.
         /// </param>
         /// <param name="updateMask">
-        /// Required list of fields to be updated in this request.
+        /// Required. Required list of fields to be updated in this request.
         /// </param>
         /// <param name="cancellationToken">
         /// A <see cref="st::CancellationToken"/> to use for this RPC.
@@ -1110,10 +1408,10 @@ namespace Google.Cloud.BigQuery.DataTransfer.V1
         /// All fields must be set, even if they are not updated.
         /// </summary>
         /// <param name="transferConfig">
-        /// Data transfer configuration to create.
+        /// Required. Data transfer configuration to create.
         /// </param>
         /// <param name="updateMask">
-        /// Required list of fields to be updated in this request.
+        /// Required. Required list of fields to be updated in this request.
         /// </param>
         /// <param name="callSettings">
         /// If not null, applies overrides to this RPC call.
@@ -1196,8 +1494,9 @@ namespace Google.Cloud.BigQuery.DataTransfer.V1
         /// including any associated transfer runs and logs.
         /// </summary>
         /// <param name="name">
-        /// The field will contain name of the resource requested, for example:
-        /// `projects/{project_id}/transferConfigs/{config_id}`
+        /// Required. The field will contain name of the resource requested, for example:
+        /// `projects/{project_id}/transferConfigs/{config_id}` or
+        /// `projects/{project_id}/locations/{location_id}/transferConfigs/{config_id}`
         /// </param>
         /// <param name="callSettings">
         /// If not null, applies overrides to this RPC call.
@@ -1219,8 +1518,9 @@ namespace Google.Cloud.BigQuery.DataTransfer.V1
         /// including any associated transfer runs and logs.
         /// </summary>
         /// <param name="name">
-        /// The field will contain name of the resource requested, for example:
-        /// `projects/{project_id}/transferConfigs/{config_id}`
+        /// Required. The field will contain name of the resource requested, for example:
+        /// `projects/{project_id}/transferConfigs/{config_id}` or
+        /// `projects/{project_id}/locations/{location_id}/transferConfigs/{config_id}`
         /// </param>
         /// <param name="cancellationToken">
         /// A <see cref="st::CancellationToken"/> to use for this RPC.
@@ -1239,8 +1539,9 @@ namespace Google.Cloud.BigQuery.DataTransfer.V1
         /// including any associated transfer runs and logs.
         /// </summary>
         /// <param name="name">
-        /// The field will contain name of the resource requested, for example:
-        /// `projects/{project_id}/transferConfigs/{config_id}`
+        /// Required. The field will contain name of the resource requested, for example:
+        /// `projects/{project_id}/transferConfigs/{config_id}` or
+        /// `projects/{project_id}/locations/{location_id}/transferConfigs/{config_id}`
         /// </param>
         /// <param name="callSettings">
         /// If not null, applies overrides to this RPC call.
@@ -1251,6 +1552,72 @@ namespace Google.Cloud.BigQuery.DataTransfer.V1
                 new DeleteTransferConfigRequest
                 {
                     TransferConfigNameOneof = gax::GaxPreconditions.CheckNotNull(name, nameof(name)),
+                },
+                callSettings);
+
+        /// <summary>
+        /// Deletes a data transfer configuration,
+        /// including any associated transfer runs and logs.
+        /// </summary>
+        /// <param name="name">
+        /// Required. The field will contain name of the resource requested, for example:
+        /// `projects/{project_id}/transferConfigs/{config_id}` or
+        /// `projects/{project_id}/locations/{location_id}/transferConfigs/{config_id}`
+        /// </param>
+        /// <param name="callSettings">
+        /// If not null, applies overrides to this RPC call.
+        /// </param>
+        /// <returns>
+        /// A Task that completes when the RPC has completed.
+        /// </returns>
+        public virtual stt::Task DeleteTransferConfigAsync(
+            string name,
+            gaxgrpc::CallSettings callSettings = null) => DeleteTransferConfigAsync(
+                new DeleteTransferConfigRequest
+                {
+                    Name = gax::GaxPreconditions.CheckNotNullOrEmpty(name, nameof(name)),
+                },
+                callSettings);
+
+        /// <summary>
+        /// Deletes a data transfer configuration,
+        /// including any associated transfer runs and logs.
+        /// </summary>
+        /// <param name="name">
+        /// Required. The field will contain name of the resource requested, for example:
+        /// `projects/{project_id}/transferConfigs/{config_id}` or
+        /// `projects/{project_id}/locations/{location_id}/transferConfigs/{config_id}`
+        /// </param>
+        /// <param name="cancellationToken">
+        /// A <see cref="st::CancellationToken"/> to use for this RPC.
+        /// </param>
+        /// <returns>
+        /// A Task that completes when the RPC has completed.
+        /// </returns>
+        public virtual stt::Task DeleteTransferConfigAsync(
+            string name,
+            st::CancellationToken cancellationToken) => DeleteTransferConfigAsync(
+                name,
+                gaxgrpc::CallSettings.FromCancellationToken(cancellationToken));
+
+        /// <summary>
+        /// Deletes a data transfer configuration,
+        /// including any associated transfer runs and logs.
+        /// </summary>
+        /// <param name="name">
+        /// Required. The field will contain name of the resource requested, for example:
+        /// `projects/{project_id}/transferConfigs/{config_id}` or
+        /// `projects/{project_id}/locations/{location_id}/transferConfigs/{config_id}`
+        /// </param>
+        /// <param name="callSettings">
+        /// If not null, applies overrides to this RPC call.
+        /// </param>
+        public virtual void DeleteTransferConfig(
+            string name,
+            gaxgrpc::CallSettings callSettings = null) => DeleteTransferConfig(
+                new DeleteTransferConfigRequest
+                {
+                    Name = gax::GaxPreconditions.CheckNotNullOrEmpty(name, nameof(name)),
                 },
                 callSettings);
 
@@ -1314,8 +1681,9 @@ namespace Google.Cloud.BigQuery.DataTransfer.V1
         /// Returns information about a data transfer config.
         /// </summary>
         /// <param name="name">
-        /// The field will contain name of the resource requested, for example:
-        /// `projects/{project_id}/transferConfigs/{config_id}`
+        /// Required. The field will contain name of the resource requested, for example:
+        /// `projects/{project_id}/transferConfigs/{config_id}` or
+        /// `projects/{project_id}/locations/{location_id}/transferConfigs/{config_id}`
         /// </param>
         /// <param name="callSettings">
         /// If not null, applies overrides to this RPC call.
@@ -1336,8 +1704,9 @@ namespace Google.Cloud.BigQuery.DataTransfer.V1
         /// Returns information about a data transfer config.
         /// </summary>
         /// <param name="name">
-        /// The field will contain name of the resource requested, for example:
-        /// `projects/{project_id}/transferConfigs/{config_id}`
+        /// Required. The field will contain name of the resource requested, for example:
+        /// `projects/{project_id}/transferConfigs/{config_id}` or
+        /// `projects/{project_id}/locations/{location_id}/transferConfigs/{config_id}`
         /// </param>
         /// <param name="cancellationToken">
         /// A <see cref="st::CancellationToken"/> to use for this RPC.
@@ -1355,8 +1724,9 @@ namespace Google.Cloud.BigQuery.DataTransfer.V1
         /// Returns information about a data transfer config.
         /// </summary>
         /// <param name="name">
-        /// The field will contain name of the resource requested, for example:
-        /// `projects/{project_id}/transferConfigs/{config_id}`
+        /// Required. The field will contain name of the resource requested, for example:
+        /// `projects/{project_id}/transferConfigs/{config_id}` or
+        /// `projects/{project_id}/locations/{location_id}/transferConfigs/{config_id}`
         /// </param>
         /// <param name="callSettings">
         /// If not null, applies overrides to this RPC call.
@@ -1370,6 +1740,72 @@ namespace Google.Cloud.BigQuery.DataTransfer.V1
                 new GetTransferConfigRequest
                 {
                     TransferConfigNameOneof = gax::GaxPreconditions.CheckNotNull(name, nameof(name)),
+                },
+                callSettings);
+
+        /// <summary>
+        /// Returns information about a data transfer config.
+        /// </summary>
+        /// <param name="name">
+        /// Required. The field will contain name of the resource requested, for example:
+        /// `projects/{project_id}/transferConfigs/{config_id}` or
+        /// `projects/{project_id}/locations/{location_id}/transferConfigs/{config_id}`
+        /// </param>
+        /// <param name="callSettings">
+        /// If not null, applies overrides to this RPC call.
+        /// </param>
+        /// <returns>
+        /// A Task containing the RPC response.
+        /// </returns>
+        public virtual stt::Task<TransferConfig> GetTransferConfigAsync(
+            string name,
+            gaxgrpc::CallSettings callSettings = null) => GetTransferConfigAsync(
+                new GetTransferConfigRequest
+                {
+                    Name = gax::GaxPreconditions.CheckNotNullOrEmpty(name, nameof(name)),
+                },
+                callSettings);
+
+        /// <summary>
+        /// Returns information about a data transfer config.
+        /// </summary>
+        /// <param name="name">
+        /// Required. The field will contain name of the resource requested, for example:
+        /// `projects/{project_id}/transferConfigs/{config_id}` or
+        /// `projects/{project_id}/locations/{location_id}/transferConfigs/{config_id}`
+        /// </param>
+        /// <param name="cancellationToken">
+        /// A <see cref="st::CancellationToken"/> to use for this RPC.
+        /// </param>
+        /// <returns>
+        /// A Task containing the RPC response.
+        /// </returns>
+        public virtual stt::Task<TransferConfig> GetTransferConfigAsync(
+            string name,
+            st::CancellationToken cancellationToken) => GetTransferConfigAsync(
+                name,
+                gaxgrpc::CallSettings.FromCancellationToken(cancellationToken));
+
+        /// <summary>
+        /// Returns information about a data transfer config.
+        /// </summary>
+        /// <param name="name">
+        /// Required. The field will contain name of the resource requested, for example:
+        /// `projects/{project_id}/transferConfigs/{config_id}` or
+        /// `projects/{project_id}/locations/{location_id}/transferConfigs/{config_id}`
+        /// </param>
+        /// <param name="callSettings">
+        /// If not null, applies overrides to this RPC call.
+        /// </param>
+        /// <returns>
+        /// The RPC response.
+        /// </returns>
+        public virtual TransferConfig GetTransferConfig(
+            string name,
+            gaxgrpc::CallSettings callSettings = null) => GetTransferConfig(
+                new GetTransferConfigRequest
+                {
+                    Name = gax::GaxPreconditions.CheckNotNullOrEmpty(name, nameof(name)),
                 },
                 callSettings);
 
@@ -1433,8 +1869,9 @@ namespace Google.Cloud.BigQuery.DataTransfer.V1
         /// Returns information about all data transfers in the project.
         /// </summary>
         /// <param name="parent">
-        /// The BigQuery project id for which data sources
-        /// should be returned: `projects/{project_id}`.
+        /// Required. The BigQuery project id for which data sources
+        /// should be returned: `projects/{project_id}` or
+        /// `projects/{project_id}/locations/{location_id}`
         /// </param>
         /// <param name="pageToken">
         /// The token returned from the previous request.
@@ -1467,8 +1904,9 @@ namespace Google.Cloud.BigQuery.DataTransfer.V1
         /// Returns information about all data transfers in the project.
         /// </summary>
         /// <param name="parent">
-        /// The BigQuery project id for which data sources
-        /// should be returned: `projects/{project_id}`.
+        /// Required. The BigQuery project id for which data sources
+        /// should be returned: `projects/{project_id}` or
+        /// `projects/{project_id}/locations/{location_id}`
         /// </param>
         /// <param name="pageToken">
         /// The token returned from the previous request.
@@ -1492,6 +1930,76 @@ namespace Google.Cloud.BigQuery.DataTransfer.V1
                 new ListTransferConfigsRequest
                 {
                     ParentAsParentNameOneof = gax::GaxPreconditions.CheckNotNull(parent, nameof(parent)),
+                    PageToken = pageToken ?? "",
+                    PageSize = pageSize ?? 0,
+                },
+                callSettings);
+
+        /// <summary>
+        /// Returns information about all data transfers in the project.
+        /// </summary>
+        /// <param name="parent">
+        /// Required. The BigQuery project id for which data sources
+        /// should be returned: `projects/{project_id}` or
+        /// `projects/{project_id}/locations/{location_id}`
+        /// </param>
+        /// <param name="pageToken">
+        /// The token returned from the previous request.
+        /// A value of <c>null</c> or an empty string retrieves the first page.
+        /// </param>
+        /// <param name="pageSize">
+        /// The size of page to request. The response will not be larger than this, but may be smaller.
+        /// A value of <c>null</c> or 0 uses a server-defined page size.
+        /// </param>
+        /// <param name="callSettings">
+        /// If not null, applies overrides to this RPC call.
+        /// </param>
+        /// <returns>
+        /// A pageable asynchronous sequence of <see cref="TransferConfig"/> resources.
+        /// </returns>
+        public virtual gax::PagedAsyncEnumerable<ListTransferConfigsResponse, TransferConfig> ListTransferConfigsAsync(
+            string parent,
+            string pageToken = null,
+            int? pageSize = null,
+            gaxgrpc::CallSettings callSettings = null) => ListTransferConfigsAsync(
+                new ListTransferConfigsRequest
+                {
+                    Parent = gax::GaxPreconditions.CheckNotNullOrEmpty(parent, nameof(parent)),
+                    PageToken = pageToken ?? "",
+                    PageSize = pageSize ?? 0,
+                },
+                callSettings);
+
+        /// <summary>
+        /// Returns information about all data transfers in the project.
+        /// </summary>
+        /// <param name="parent">
+        /// Required. The BigQuery project id for which data sources
+        /// should be returned: `projects/{project_id}` or
+        /// `projects/{project_id}/locations/{location_id}`
+        /// </param>
+        /// <param name="pageToken">
+        /// The token returned from the previous request.
+        /// A value of <c>null</c> or an empty string retrieves the first page.
+        /// </param>
+        /// <param name="pageSize">
+        /// The size of page to request. The response will not be larger than this, but may be smaller.
+        /// A value of <c>null</c> or 0 uses a server-defined page size.
+        /// </param>
+        /// <param name="callSettings">
+        /// If not null, applies overrides to this RPC call.
+        /// </param>
+        /// <returns>
+        /// A pageable sequence of <see cref="TransferConfig"/> resources.
+        /// </returns>
+        public virtual gax::PagedEnumerable<ListTransferConfigsResponse, TransferConfig> ListTransferConfigs(
+            string parent,
+            string pageToken = null,
+            int? pageSize = null,
+            gaxgrpc::CallSettings callSettings = null) => ListTransferConfigs(
+                new ListTransferConfigsRequest
+                {
+                    Parent = gax::GaxPreconditions.CheckNotNullOrEmpty(parent, nameof(parent)),
                     PageToken = pageToken ?? "",
                     PageSize = pageSize ?? 0,
                 },
@@ -1540,17 +2048,19 @@ namespace Google.Cloud.BigQuery.DataTransfer.V1
         /// For each date - or whatever granularity the data source supports - in the
         /// range, one transfer run is created.
         /// Note that runs are created per UTC time in the time range.
+        /// DEPRECATED: use StartManualTransferRuns instead.
         /// </summary>
         /// <param name="parent">
-        /// Transfer configuration name in the form:
-        /// `projects/{project_id}/transferConfigs/{config_id}`.
+        /// Required. Transfer configuration name in the form:
+        /// `projects/{project_id}/transferConfigs/{config_id}` or
+        /// `projects/{project_id}/locations/{location_id}/transferConfigs/{config_id}`.
         /// </param>
         /// <param name="startTime">
-        /// Start time of the range of transfer runs. For example,
+        /// Required. Start time of the range of transfer runs. For example,
         /// `"2017-05-25T00:00:00+00:00"`.
         /// </param>
         /// <param name="endTime">
-        /// End time of the range of transfer runs. For example,
+        /// Required. End time of the range of transfer runs. For example,
         /// `"2017-05-30T00:00:00+00:00"`.
         /// </param>
         /// <param name="callSettings">
@@ -1577,17 +2087,19 @@ namespace Google.Cloud.BigQuery.DataTransfer.V1
         /// For each date - or whatever granularity the data source supports - in the
         /// range, one transfer run is created.
         /// Note that runs are created per UTC time in the time range.
+        /// DEPRECATED: use StartManualTransferRuns instead.
         /// </summary>
         /// <param name="parent">
-        /// Transfer configuration name in the form:
-        /// `projects/{project_id}/transferConfigs/{config_id}`.
+        /// Required. Transfer configuration name in the form:
+        /// `projects/{project_id}/transferConfigs/{config_id}` or
+        /// `projects/{project_id}/locations/{location_id}/transferConfigs/{config_id}`.
         /// </param>
         /// <param name="startTime">
-        /// Start time of the range of transfer runs. For example,
+        /// Required. Start time of the range of transfer runs. For example,
         /// `"2017-05-25T00:00:00+00:00"`.
         /// </param>
         /// <param name="endTime">
-        /// End time of the range of transfer runs. For example,
+        /// Required. End time of the range of transfer runs. For example,
         /// `"2017-05-30T00:00:00+00:00"`.
         /// </param>
         /// <param name="cancellationToken">
@@ -1611,17 +2123,19 @@ namespace Google.Cloud.BigQuery.DataTransfer.V1
         /// For each date - or whatever granularity the data source supports - in the
         /// range, one transfer run is created.
         /// Note that runs are created per UTC time in the time range.
+        /// DEPRECATED: use StartManualTransferRuns instead.
         /// </summary>
         /// <param name="parent">
-        /// Transfer configuration name in the form:
-        /// `projects/{project_id}/transferConfigs/{config_id}`.
+        /// Required. Transfer configuration name in the form:
+        /// `projects/{project_id}/transferConfigs/{config_id}` or
+        /// `projects/{project_id}/locations/{location_id}/transferConfigs/{config_id}`.
         /// </param>
         /// <param name="startTime">
-        /// Start time of the range of transfer runs. For example,
+        /// Required. Start time of the range of transfer runs. For example,
         /// `"2017-05-25T00:00:00+00:00"`.
         /// </param>
         /// <param name="endTime">
-        /// End time of the range of transfer runs. For example,
+        /// Required. End time of the range of transfer runs. For example,
         /// `"2017-05-30T00:00:00+00:00"`.
         /// </param>
         /// <param name="callSettings">
@@ -1648,6 +2162,121 @@ namespace Google.Cloud.BigQuery.DataTransfer.V1
         /// For each date - or whatever granularity the data source supports - in the
         /// range, one transfer run is created.
         /// Note that runs are created per UTC time in the time range.
+        /// DEPRECATED: use StartManualTransferRuns instead.
+        /// </summary>
+        /// <param name="parent">
+        /// Required. Transfer configuration name in the form:
+        /// `projects/{project_id}/transferConfigs/{config_id}` or
+        /// `projects/{project_id}/locations/{location_id}/transferConfigs/{config_id}`.
+        /// </param>
+        /// <param name="startTime">
+        /// Required. Start time of the range of transfer runs. For example,
+        /// `"2017-05-25T00:00:00+00:00"`.
+        /// </param>
+        /// <param name="endTime">
+        /// Required. End time of the range of transfer runs. For example,
+        /// `"2017-05-30T00:00:00+00:00"`.
+        /// </param>
+        /// <param name="callSettings">
+        /// If not null, applies overrides to this RPC call.
+        /// </param>
+        /// <returns>
+        /// A Task containing the RPC response.
+        /// </returns>
+        public virtual stt::Task<ScheduleTransferRunsResponse> ScheduleTransferRunsAsync(
+            string parent,
+            pbwkt::Timestamp startTime,
+            pbwkt::Timestamp endTime,
+            gaxgrpc::CallSettings callSettings = null) => ScheduleTransferRunsAsync(
+                new ScheduleTransferRunsRequest
+                {
+                    Parent = gax::GaxPreconditions.CheckNotNullOrEmpty(parent, nameof(parent)),
+                    StartTime = gax::GaxPreconditions.CheckNotNull(startTime, nameof(startTime)),
+                    EndTime = gax::GaxPreconditions.CheckNotNull(endTime, nameof(endTime)),
+                },
+                callSettings);
+
+        /// <summary>
+        /// Creates transfer runs for a time range [start_time, end_time].
+        /// For each date - or whatever granularity the data source supports - in the
+        /// range, one transfer run is created.
+        /// Note that runs are created per UTC time in the time range.
+        /// DEPRECATED: use StartManualTransferRuns instead.
+        /// </summary>
+        /// <param name="parent">
+        /// Required. Transfer configuration name in the form:
+        /// `projects/{project_id}/transferConfigs/{config_id}` or
+        /// `projects/{project_id}/locations/{location_id}/transferConfigs/{config_id}`.
+        /// </param>
+        /// <param name="startTime">
+        /// Required. Start time of the range of transfer runs. For example,
+        /// `"2017-05-25T00:00:00+00:00"`.
+        /// </param>
+        /// <param name="endTime">
+        /// Required. End time of the range of transfer runs. For example,
+        /// `"2017-05-30T00:00:00+00:00"`.
+        /// </param>
+        /// <param name="cancellationToken">
+        /// A <see cref="st::CancellationToken"/> to use for this RPC.
+        /// </param>
+        /// <returns>
+        /// A Task containing the RPC response.
+        /// </returns>
+        public virtual stt::Task<ScheduleTransferRunsResponse> ScheduleTransferRunsAsync(
+            string parent,
+            pbwkt::Timestamp startTime,
+            pbwkt::Timestamp endTime,
+            st::CancellationToken cancellationToken) => ScheduleTransferRunsAsync(
+                parent,
+                startTime,
+                endTime,
+                gaxgrpc::CallSettings.FromCancellationToken(cancellationToken));
+
+        /// <summary>
+        /// Creates transfer runs for a time range [start_time, end_time].
+        /// For each date - or whatever granularity the data source supports - in the
+        /// range, one transfer run is created.
+        /// Note that runs are created per UTC time in the time range.
+        /// DEPRECATED: use StartManualTransferRuns instead.
+        /// </summary>
+        /// <param name="parent">
+        /// Required. Transfer configuration name in the form:
+        /// `projects/{project_id}/transferConfigs/{config_id}` or
+        /// `projects/{project_id}/locations/{location_id}/transferConfigs/{config_id}`.
+        /// </param>
+        /// <param name="startTime">
+        /// Required. Start time of the range of transfer runs. For example,
+        /// `"2017-05-25T00:00:00+00:00"`.
+        /// </param>
+        /// <param name="endTime">
+        /// Required. End time of the range of transfer runs. For example,
+        /// `"2017-05-30T00:00:00+00:00"`.
+        /// </param>
+        /// <param name="callSettings">
+        /// If not null, applies overrides to this RPC call.
+        /// </param>
+        /// <returns>
+        /// The RPC response.
+        /// </returns>
+        public virtual ScheduleTransferRunsResponse ScheduleTransferRuns(
+            string parent,
+            pbwkt::Timestamp startTime,
+            pbwkt::Timestamp endTime,
+            gaxgrpc::CallSettings callSettings = null) => ScheduleTransferRuns(
+                new ScheduleTransferRunsRequest
+                {
+                    Parent = gax::GaxPreconditions.CheckNotNullOrEmpty(parent, nameof(parent)),
+                    StartTime = gax::GaxPreconditions.CheckNotNull(startTime, nameof(startTime)),
+                    EndTime = gax::GaxPreconditions.CheckNotNull(endTime, nameof(endTime)),
+                },
+                callSettings);
+
+        /// <summary>
+        /// Creates transfer runs for a time range [start_time, end_time].
+        /// For each date - or whatever granularity the data source supports - in the
+        /// range, one transfer run is created.
+        /// Note that runs are created per UTC time in the time range.
+        /// DEPRECATED: use StartManualTransferRuns instead.
         /// </summary>
         /// <param name="request">
         /// The request object containing all of the parameters for the API call.
@@ -1670,6 +2299,7 @@ namespace Google.Cloud.BigQuery.DataTransfer.V1
         /// For each date - or whatever granularity the data source supports - in the
         /// range, one transfer run is created.
         /// Note that runs are created per UTC time in the time range.
+        /// DEPRECATED: use StartManualTransferRuns instead.
         /// </summary>
         /// <param name="request">
         /// The request object containing all of the parameters for the API call.
@@ -1691,6 +2321,7 @@ namespace Google.Cloud.BigQuery.DataTransfer.V1
         /// For each date - or whatever granularity the data source supports - in the
         /// range, one transfer run is created.
         /// Note that runs are created per UTC time in the time range.
+        /// DEPRECATED: use StartManualTransferRuns instead.
         /// </summary>
         /// <param name="request">
         /// The request object containing all of the parameters for the API call.
@@ -1712,8 +2343,9 @@ namespace Google.Cloud.BigQuery.DataTransfer.V1
         /// Returns information about the particular transfer run.
         /// </summary>
         /// <param name="name">
-        /// The field will contain name of the resource requested, for example:
-        /// `projects/{project_id}/transferConfigs/{config_id}/runs/{run_id}`
+        /// Required. The field will contain name of the resource requested, for example:
+        /// `projects/{project_id}/transferConfigs/{config_id}/runs/{run_id}` or
+        /// `projects/{project_id}/locations/{location_id}/transferConfigs/{config_id}/runs/{run_id}`
         /// </param>
         /// <param name="callSettings">
         /// If not null, applies overrides to this RPC call.
@@ -1734,8 +2366,9 @@ namespace Google.Cloud.BigQuery.DataTransfer.V1
         /// Returns information about the particular transfer run.
         /// </summary>
         /// <param name="name">
-        /// The field will contain name of the resource requested, for example:
-        /// `projects/{project_id}/transferConfigs/{config_id}/runs/{run_id}`
+        /// Required. The field will contain name of the resource requested, for example:
+        /// `projects/{project_id}/transferConfigs/{config_id}/runs/{run_id}` or
+        /// `projects/{project_id}/locations/{location_id}/transferConfigs/{config_id}/runs/{run_id}`
         /// </param>
         /// <param name="cancellationToken">
         /// A <see cref="st::CancellationToken"/> to use for this RPC.
@@ -1753,8 +2386,9 @@ namespace Google.Cloud.BigQuery.DataTransfer.V1
         /// Returns information about the particular transfer run.
         /// </summary>
         /// <param name="name">
-        /// The field will contain name of the resource requested, for example:
-        /// `projects/{project_id}/transferConfigs/{config_id}/runs/{run_id}`
+        /// Required. The field will contain name of the resource requested, for example:
+        /// `projects/{project_id}/transferConfigs/{config_id}/runs/{run_id}` or
+        /// `projects/{project_id}/locations/{location_id}/transferConfigs/{config_id}/runs/{run_id}`
         /// </param>
         /// <param name="callSettings">
         /// If not null, applies overrides to this RPC call.
@@ -1768,6 +2402,72 @@ namespace Google.Cloud.BigQuery.DataTransfer.V1
                 new GetTransferRunRequest
                 {
                     RunNameOneof = gax::GaxPreconditions.CheckNotNull(name, nameof(name)),
+                },
+                callSettings);
+
+        /// <summary>
+        /// Returns information about the particular transfer run.
+        /// </summary>
+        /// <param name="name">
+        /// Required. The field will contain name of the resource requested, for example:
+        /// `projects/{project_id}/transferConfigs/{config_id}/runs/{run_id}` or
+        /// `projects/{project_id}/locations/{location_id}/transferConfigs/{config_id}/runs/{run_id}`
+        /// </param>
+        /// <param name="callSettings">
+        /// If not null, applies overrides to this RPC call.
+        /// </param>
+        /// <returns>
+        /// A Task containing the RPC response.
+        /// </returns>
+        public virtual stt::Task<TransferRun> GetTransferRunAsync(
+            string name,
+            gaxgrpc::CallSettings callSettings = null) => GetTransferRunAsync(
+                new GetTransferRunRequest
+                {
+                    Name = gax::GaxPreconditions.CheckNotNullOrEmpty(name, nameof(name)),
+                },
+                callSettings);
+
+        /// <summary>
+        /// Returns information about the particular transfer run.
+        /// </summary>
+        /// <param name="name">
+        /// Required. The field will contain name of the resource requested, for example:
+        /// `projects/{project_id}/transferConfigs/{config_id}/runs/{run_id}` or
+        /// `projects/{project_id}/locations/{location_id}/transferConfigs/{config_id}/runs/{run_id}`
+        /// </param>
+        /// <param name="cancellationToken">
+        /// A <see cref="st::CancellationToken"/> to use for this RPC.
+        /// </param>
+        /// <returns>
+        /// A Task containing the RPC response.
+        /// </returns>
+        public virtual stt::Task<TransferRun> GetTransferRunAsync(
+            string name,
+            st::CancellationToken cancellationToken) => GetTransferRunAsync(
+                name,
+                gaxgrpc::CallSettings.FromCancellationToken(cancellationToken));
+
+        /// <summary>
+        /// Returns information about the particular transfer run.
+        /// </summary>
+        /// <param name="name">
+        /// Required. The field will contain name of the resource requested, for example:
+        /// `projects/{project_id}/transferConfigs/{config_id}/runs/{run_id}` or
+        /// `projects/{project_id}/locations/{location_id}/transferConfigs/{config_id}/runs/{run_id}`
+        /// </param>
+        /// <param name="callSettings">
+        /// If not null, applies overrides to this RPC call.
+        /// </param>
+        /// <returns>
+        /// The RPC response.
+        /// </returns>
+        public virtual TransferRun GetTransferRun(
+            string name,
+            gaxgrpc::CallSettings callSettings = null) => GetTransferRun(
+                new GetTransferRunRequest
+                {
+                    Name = gax::GaxPreconditions.CheckNotNullOrEmpty(name, nameof(name)),
                 },
                 callSettings);
 
@@ -1831,8 +2531,9 @@ namespace Google.Cloud.BigQuery.DataTransfer.V1
         /// Deletes the specified transfer run.
         /// </summary>
         /// <param name="name">
-        /// The field will contain name of the resource requested, for example:
-        /// `projects/{project_id}/transferConfigs/{config_id}/runs/{run_id}`
+        /// Required. The field will contain name of the resource requested, for example:
+        /// `projects/{project_id}/transferConfigs/{config_id}/runs/{run_id}` or
+        /// `projects/{project_id}/locations/{location_id}/transferConfigs/{config_id}/runs/{run_id}`
         /// </param>
         /// <param name="callSettings">
         /// If not null, applies overrides to this RPC call.
@@ -1853,8 +2554,9 @@ namespace Google.Cloud.BigQuery.DataTransfer.V1
         /// Deletes the specified transfer run.
         /// </summary>
         /// <param name="name">
-        /// The field will contain name of the resource requested, for example:
-        /// `projects/{project_id}/transferConfigs/{config_id}/runs/{run_id}`
+        /// Required. The field will contain name of the resource requested, for example:
+        /// `projects/{project_id}/transferConfigs/{config_id}/runs/{run_id}` or
+        /// `projects/{project_id}/locations/{location_id}/transferConfigs/{config_id}/runs/{run_id}`
         /// </param>
         /// <param name="cancellationToken">
         /// A <see cref="st::CancellationToken"/> to use for this RPC.
@@ -1872,8 +2574,9 @@ namespace Google.Cloud.BigQuery.DataTransfer.V1
         /// Deletes the specified transfer run.
         /// </summary>
         /// <param name="name">
-        /// The field will contain name of the resource requested, for example:
-        /// `projects/{project_id}/transferConfigs/{config_id}/runs/{run_id}`
+        /// Required. The field will contain name of the resource requested, for example:
+        /// `projects/{project_id}/transferConfigs/{config_id}/runs/{run_id}` or
+        /// `projects/{project_id}/locations/{location_id}/transferConfigs/{config_id}/runs/{run_id}`
         /// </param>
         /// <param name="callSettings">
         /// If not null, applies overrides to this RPC call.
@@ -1884,6 +2587,69 @@ namespace Google.Cloud.BigQuery.DataTransfer.V1
                 new DeleteTransferRunRequest
                 {
                     RunNameOneof = gax::GaxPreconditions.CheckNotNull(name, nameof(name)),
+                },
+                callSettings);
+
+        /// <summary>
+        /// Deletes the specified transfer run.
+        /// </summary>
+        /// <param name="name">
+        /// Required. The field will contain name of the resource requested, for example:
+        /// `projects/{project_id}/transferConfigs/{config_id}/runs/{run_id}` or
+        /// `projects/{project_id}/locations/{location_id}/transferConfigs/{config_id}/runs/{run_id}`
+        /// </param>
+        /// <param name="callSettings">
+        /// If not null, applies overrides to this RPC call.
+        /// </param>
+        /// <returns>
+        /// A Task that completes when the RPC has completed.
+        /// </returns>
+        public virtual stt::Task DeleteTransferRunAsync(
+            string name,
+            gaxgrpc::CallSettings callSettings = null) => DeleteTransferRunAsync(
+                new DeleteTransferRunRequest
+                {
+                    Name = gax::GaxPreconditions.CheckNotNullOrEmpty(name, nameof(name)),
+                },
+                callSettings);
+
+        /// <summary>
+        /// Deletes the specified transfer run.
+        /// </summary>
+        /// <param name="name">
+        /// Required. The field will contain name of the resource requested, for example:
+        /// `projects/{project_id}/transferConfigs/{config_id}/runs/{run_id}` or
+        /// `projects/{project_id}/locations/{location_id}/transferConfigs/{config_id}/runs/{run_id}`
+        /// </param>
+        /// <param name="cancellationToken">
+        /// A <see cref="st::CancellationToken"/> to use for this RPC.
+        /// </param>
+        /// <returns>
+        /// A Task that completes when the RPC has completed.
+        /// </returns>
+        public virtual stt::Task DeleteTransferRunAsync(
+            string name,
+            st::CancellationToken cancellationToken) => DeleteTransferRunAsync(
+                name,
+                gaxgrpc::CallSettings.FromCancellationToken(cancellationToken));
+
+        /// <summary>
+        /// Deletes the specified transfer run.
+        /// </summary>
+        /// <param name="name">
+        /// Required. The field will contain name of the resource requested, for example:
+        /// `projects/{project_id}/transferConfigs/{config_id}/runs/{run_id}` or
+        /// `projects/{project_id}/locations/{location_id}/transferConfigs/{config_id}/runs/{run_id}`
+        /// </param>
+        /// <param name="callSettings">
+        /// If not null, applies overrides to this RPC call.
+        /// </param>
+        public virtual void DeleteTransferRun(
+            string name,
+            gaxgrpc::CallSettings callSettings = null) => DeleteTransferRun(
+                new DeleteTransferRunRequest
+                {
+                    Name = gax::GaxPreconditions.CheckNotNullOrEmpty(name, nameof(name)),
                 },
                 callSettings);
 
@@ -1944,9 +2710,10 @@ namespace Google.Cloud.BigQuery.DataTransfer.V1
         /// Returns information about running and completed jobs.
         /// </summary>
         /// <param name="parent">
-        /// Name of transfer configuration for which transfer runs should be retrieved.
+        /// Required. Name of transfer configuration for which transfer runs should be retrieved.
         /// Format of transfer configuration resource name is:
-        /// `projects/{project_id}/transferConfigs/{config_id}`.
+        /// `projects/{project_id}/transferConfigs/{config_id}` or
+        /// `projects/{project_id}/locations/{location_id}/transferConfigs/{config_id}`.
         /// </param>
         /// <param name="pageToken">
         /// The token returned from the previous request.
@@ -1979,9 +2746,10 @@ namespace Google.Cloud.BigQuery.DataTransfer.V1
         /// Returns information about running and completed jobs.
         /// </summary>
         /// <param name="parent">
-        /// Name of transfer configuration for which transfer runs should be retrieved.
+        /// Required. Name of transfer configuration for which transfer runs should be retrieved.
         /// Format of transfer configuration resource name is:
-        /// `projects/{project_id}/transferConfigs/{config_id}`.
+        /// `projects/{project_id}/transferConfigs/{config_id}` or
+        /// `projects/{project_id}/locations/{location_id}/transferConfigs/{config_id}`.
         /// </param>
         /// <param name="pageToken">
         /// The token returned from the previous request.
@@ -2005,6 +2773,78 @@ namespace Google.Cloud.BigQuery.DataTransfer.V1
                 new ListTransferRunsRequest
                 {
                     ParentAsTransferConfigNameOneof = gax::GaxPreconditions.CheckNotNull(parent, nameof(parent)),
+                    PageToken = pageToken ?? "",
+                    PageSize = pageSize ?? 0,
+                },
+                callSettings);
+
+        /// <summary>
+        /// Returns information about running and completed jobs.
+        /// </summary>
+        /// <param name="parent">
+        /// Required. Name of transfer configuration for which transfer runs should be retrieved.
+        /// Format of transfer configuration resource name is:
+        /// `projects/{project_id}/transferConfigs/{config_id}` or
+        /// `projects/{project_id}/locations/{location_id}/transferConfigs/{config_id}`.
+        /// </param>
+        /// <param name="pageToken">
+        /// The token returned from the previous request.
+        /// A value of <c>null</c> or an empty string retrieves the first page.
+        /// </param>
+        /// <param name="pageSize">
+        /// The size of page to request. The response will not be larger than this, but may be smaller.
+        /// A value of <c>null</c> or 0 uses a server-defined page size.
+        /// </param>
+        /// <param name="callSettings">
+        /// If not null, applies overrides to this RPC call.
+        /// </param>
+        /// <returns>
+        /// A pageable asynchronous sequence of <see cref="TransferRun"/> resources.
+        /// </returns>
+        public virtual gax::PagedAsyncEnumerable<ListTransferRunsResponse, TransferRun> ListTransferRunsAsync(
+            string parent,
+            string pageToken = null,
+            int? pageSize = null,
+            gaxgrpc::CallSettings callSettings = null) => ListTransferRunsAsync(
+                new ListTransferRunsRequest
+                {
+                    Parent = gax::GaxPreconditions.CheckNotNullOrEmpty(parent, nameof(parent)),
+                    PageToken = pageToken ?? "",
+                    PageSize = pageSize ?? 0,
+                },
+                callSettings);
+
+        /// <summary>
+        /// Returns information about running and completed jobs.
+        /// </summary>
+        /// <param name="parent">
+        /// Required. Name of transfer configuration for which transfer runs should be retrieved.
+        /// Format of transfer configuration resource name is:
+        /// `projects/{project_id}/transferConfigs/{config_id}` or
+        /// `projects/{project_id}/locations/{location_id}/transferConfigs/{config_id}`.
+        /// </param>
+        /// <param name="pageToken">
+        /// The token returned from the previous request.
+        /// A value of <c>null</c> or an empty string retrieves the first page.
+        /// </param>
+        /// <param name="pageSize">
+        /// The size of page to request. The response will not be larger than this, but may be smaller.
+        /// A value of <c>null</c> or 0 uses a server-defined page size.
+        /// </param>
+        /// <param name="callSettings">
+        /// If not null, applies overrides to this RPC call.
+        /// </param>
+        /// <returns>
+        /// A pageable sequence of <see cref="TransferRun"/> resources.
+        /// </returns>
+        public virtual gax::PagedEnumerable<ListTransferRunsResponse, TransferRun> ListTransferRuns(
+            string parent,
+            string pageToken = null,
+            int? pageSize = null,
+            gaxgrpc::CallSettings callSettings = null) => ListTransferRuns(
+                new ListTransferRunsRequest
+                {
+                    Parent = gax::GaxPreconditions.CheckNotNullOrEmpty(parent, nameof(parent)),
                     PageToken = pageToken ?? "",
                     PageSize = pageSize ?? 0,
                 },
@@ -2052,8 +2892,9 @@ namespace Google.Cloud.BigQuery.DataTransfer.V1
         /// Returns user facing log messages for the data transfer run.
         /// </summary>
         /// <param name="parent">
-        /// Transfer run name in the form:
-        /// `projects/{project_id}/transferConfigs/{config_Id}/runs/{run_id}`.
+        /// Required. Transfer run name in the form:
+        /// `projects/{project_id}/transferConfigs/{config_id}/runs/{run_id}` or
+        /// `projects/{project_id}/locations/{location_id}/transferConfigs/{config_id}/runs/{run_id}`
         /// </param>
         /// <param name="pageToken">
         /// The token returned from the previous request.
@@ -2086,8 +2927,9 @@ namespace Google.Cloud.BigQuery.DataTransfer.V1
         /// Returns user facing log messages for the data transfer run.
         /// </summary>
         /// <param name="parent">
-        /// Transfer run name in the form:
-        /// `projects/{project_id}/transferConfigs/{config_Id}/runs/{run_id}`.
+        /// Required. Transfer run name in the form:
+        /// `projects/{project_id}/transferConfigs/{config_id}/runs/{run_id}` or
+        /// `projects/{project_id}/locations/{location_id}/transferConfigs/{config_id}/runs/{run_id}`
         /// </param>
         /// <param name="pageToken">
         /// The token returned from the previous request.
@@ -2111,6 +2953,76 @@ namespace Google.Cloud.BigQuery.DataTransfer.V1
                 new ListTransferLogsRequest
                 {
                     ParentAsRunNameOneof = gax::GaxPreconditions.CheckNotNull(parent, nameof(parent)),
+                    PageToken = pageToken ?? "",
+                    PageSize = pageSize ?? 0,
+                },
+                callSettings);
+
+        /// <summary>
+        /// Returns user facing log messages for the data transfer run.
+        /// </summary>
+        /// <param name="parent">
+        /// Required. Transfer run name in the form:
+        /// `projects/{project_id}/transferConfigs/{config_id}/runs/{run_id}` or
+        /// `projects/{project_id}/locations/{location_id}/transferConfigs/{config_id}/runs/{run_id}`
+        /// </param>
+        /// <param name="pageToken">
+        /// The token returned from the previous request.
+        /// A value of <c>null</c> or an empty string retrieves the first page.
+        /// </param>
+        /// <param name="pageSize">
+        /// The size of page to request. The response will not be larger than this, but may be smaller.
+        /// A value of <c>null</c> or 0 uses a server-defined page size.
+        /// </param>
+        /// <param name="callSettings">
+        /// If not null, applies overrides to this RPC call.
+        /// </param>
+        /// <returns>
+        /// A pageable asynchronous sequence of <see cref="TransferMessage"/> resources.
+        /// </returns>
+        public virtual gax::PagedAsyncEnumerable<ListTransferLogsResponse, TransferMessage> ListTransferLogsAsync(
+            string parent,
+            string pageToken = null,
+            int? pageSize = null,
+            gaxgrpc::CallSettings callSettings = null) => ListTransferLogsAsync(
+                new ListTransferLogsRequest
+                {
+                    Parent = gax::GaxPreconditions.CheckNotNullOrEmpty(parent, nameof(parent)),
+                    PageToken = pageToken ?? "",
+                    PageSize = pageSize ?? 0,
+                },
+                callSettings);
+
+        /// <summary>
+        /// Returns user facing log messages for the data transfer run.
+        /// </summary>
+        /// <param name="parent">
+        /// Required. Transfer run name in the form:
+        /// `projects/{project_id}/transferConfigs/{config_id}/runs/{run_id}` or
+        /// `projects/{project_id}/locations/{location_id}/transferConfigs/{config_id}/runs/{run_id}`
+        /// </param>
+        /// <param name="pageToken">
+        /// The token returned from the previous request.
+        /// A value of <c>null</c> or an empty string retrieves the first page.
+        /// </param>
+        /// <param name="pageSize">
+        /// The size of page to request. The response will not be larger than this, but may be smaller.
+        /// A value of <c>null</c> or 0 uses a server-defined page size.
+        /// </param>
+        /// <param name="callSettings">
+        /// If not null, applies overrides to this RPC call.
+        /// </param>
+        /// <returns>
+        /// A pageable sequence of <see cref="TransferMessage"/> resources.
+        /// </returns>
+        public virtual gax::PagedEnumerable<ListTransferLogsResponse, TransferMessage> ListTransferLogs(
+            string parent,
+            string pageToken = null,
+            int? pageSize = null,
+            gaxgrpc::CallSettings callSettings = null) => ListTransferLogs(
+                new ListTransferLogsRequest
+                {
+                    Parent = gax::GaxPreconditions.CheckNotNullOrEmpty(parent, nameof(parent)),
                     PageToken = pageToken ?? "",
                     PageSize = pageSize ?? 0,
                 },
@@ -2163,8 +3075,9 @@ namespace Google.Cloud.BigQuery.DataTransfer.V1
         /// create a transfer config.
         /// </summary>
         /// <param name="name">
-        /// The data source in the form:
-        /// `projects/{project_id}/dataSources/{data_source_id}`
+        /// Required. The data source in the form:
+        /// `projects/{project_id}/dataSources/{data_source_id}` or
+        /// `projects/{project_id}/locations/{location_id}/dataSources/{data_source_id}`.
         /// </param>
         /// <param name="callSettings">
         /// If not null, applies overrides to this RPC call.
@@ -2190,8 +3103,9 @@ namespace Google.Cloud.BigQuery.DataTransfer.V1
         /// create a transfer config.
         /// </summary>
         /// <param name="name">
-        /// The data source in the form:
-        /// `projects/{project_id}/dataSources/{data_source_id}`
+        /// Required. The data source in the form:
+        /// `projects/{project_id}/dataSources/{data_source_id}` or
+        /// `projects/{project_id}/locations/{location_id}/dataSources/{data_source_id}`.
         /// </param>
         /// <param name="cancellationToken">
         /// A <see cref="st::CancellationToken"/> to use for this RPC.
@@ -2214,8 +3128,9 @@ namespace Google.Cloud.BigQuery.DataTransfer.V1
         /// create a transfer config.
         /// </summary>
         /// <param name="name">
-        /// The data source in the form:
-        /// `projects/{project_id}/dataSources/{data_source_id}`
+        /// Required. The data source in the form:
+        /// `projects/{project_id}/dataSources/{data_source_id}` or
+        /// `projects/{project_id}/locations/{location_id}/dataSources/{data_source_id}`.
         /// </param>
         /// <param name="callSettings">
         /// If not null, applies overrides to this RPC call.
@@ -2229,6 +3144,87 @@ namespace Google.Cloud.BigQuery.DataTransfer.V1
                 new CheckValidCredsRequest
                 {
                     DataSourceNameOneof = gax::GaxPreconditions.CheckNotNull(name, nameof(name)),
+                },
+                callSettings);
+
+        /// <summary>
+        /// Returns true if valid credentials exist for the given data source and
+        /// requesting user.
+        /// Some data sources doesn't support service account, so we need to talk to
+        /// them on behalf of the end user. This API just checks whether we have OAuth
+        /// token for the particular user, which is a pre-requisite before user can
+        /// create a transfer config.
+        /// </summary>
+        /// <param name="name">
+        /// Required. The data source in the form:
+        /// `projects/{project_id}/dataSources/{data_source_id}` or
+        /// `projects/{project_id}/locations/{location_id}/dataSources/{data_source_id}`.
+        /// </param>
+        /// <param name="callSettings">
+        /// If not null, applies overrides to this RPC call.
+        /// </param>
+        /// <returns>
+        /// A Task containing the RPC response.
+        /// </returns>
+        public virtual stt::Task<CheckValidCredsResponse> CheckValidCredsAsync(
+            string name,
+            gaxgrpc::CallSettings callSettings = null) => CheckValidCredsAsync(
+                new CheckValidCredsRequest
+                {
+                    Name = gax::GaxPreconditions.CheckNotNullOrEmpty(name, nameof(name)),
+                },
+                callSettings);
+
+        /// <summary>
+        /// Returns true if valid credentials exist for the given data source and
+        /// requesting user.
+        /// Some data sources doesn't support service account, so we need to talk to
+        /// them on behalf of the end user. This API just checks whether we have OAuth
+        /// token for the particular user, which is a pre-requisite before user can
+        /// create a transfer config.
+        /// </summary>
+        /// <param name="name">
+        /// Required. The data source in the form:
+        /// `projects/{project_id}/dataSources/{data_source_id}` or
+        /// `projects/{project_id}/locations/{location_id}/dataSources/{data_source_id}`.
+        /// </param>
+        /// <param name="cancellationToken">
+        /// A <see cref="st::CancellationToken"/> to use for this RPC.
+        /// </param>
+        /// <returns>
+        /// A Task containing the RPC response.
+        /// </returns>
+        public virtual stt::Task<CheckValidCredsResponse> CheckValidCredsAsync(
+            string name,
+            st::CancellationToken cancellationToken) => CheckValidCredsAsync(
+                name,
+                gaxgrpc::CallSettings.FromCancellationToken(cancellationToken));
+
+        /// <summary>
+        /// Returns true if valid credentials exist for the given data source and
+        /// requesting user.
+        /// Some data sources doesn't support service account, so we need to talk to
+        /// them on behalf of the end user. This API just checks whether we have OAuth
+        /// token for the particular user, which is a pre-requisite before user can
+        /// create a transfer config.
+        /// </summary>
+        /// <param name="name">
+        /// Required. The data source in the form:
+        /// `projects/{project_id}/dataSources/{data_source_id}` or
+        /// `projects/{project_id}/locations/{location_id}/dataSources/{data_source_id}`.
+        /// </param>
+        /// <param name="callSettings">
+        /// If not null, applies overrides to this RPC call.
+        /// </param>
+        /// <returns>
+        /// The RPC response.
+        /// </returns>
+        public virtual CheckValidCredsResponse CheckValidCreds(
+            string name,
+            gaxgrpc::CallSettings callSettings = null) => CheckValidCreds(
+                new CheckValidCredsRequest
+                {
+                    Name = gax::GaxPreconditions.CheckNotNullOrEmpty(name, nameof(name)),
                 },
                 callSettings);
 
@@ -2303,6 +3299,71 @@ namespace Google.Cloud.BigQuery.DataTransfer.V1
             throw new sys::NotImplementedException();
         }
 
+        /// <summary>
+        /// Start manual transfer runs to be executed now with schedule_time equal to
+        /// current time. The transfer runs can be created for a time range where the
+        /// run_time is between start_time (inclusive) and end_time (exclusive), or for
+        /// a specific run_time.
+        /// </summary>
+        /// <param name="request">
+        /// The request object containing all of the parameters for the API call.
+        /// </param>
+        /// <param name="callSettings">
+        /// If not null, applies overrides to this RPC call.
+        /// </param>
+        /// <returns>
+        /// A Task containing the RPC response.
+        /// </returns>
+        public virtual stt::Task<StartManualTransferRunsResponse> StartManualTransferRunsAsync(
+            StartManualTransferRunsRequest request,
+            gaxgrpc::CallSettings callSettings = null)
+        {
+            throw new sys::NotImplementedException();
+        }
+
+        /// <summary>
+        /// Start manual transfer runs to be executed now with schedule_time equal to
+        /// current time. The transfer runs can be created for a time range where the
+        /// run_time is between start_time (inclusive) and end_time (exclusive), or for
+        /// a specific run_time.
+        /// </summary>
+        /// <param name="request">
+        /// The request object containing all of the parameters for the API call.
+        /// </param>
+        /// <param name="cancellationToken">
+        /// A <see cref="st::CancellationToken"/> to use for this RPC.
+        /// </param>
+        /// <returns>
+        /// A Task containing the RPC response.
+        /// </returns>
+        public virtual stt::Task<StartManualTransferRunsResponse> StartManualTransferRunsAsync(
+            StartManualTransferRunsRequest request,
+            st::CancellationToken cancellationToken) => StartManualTransferRunsAsync(
+                request,
+                gaxgrpc::CallSettings.FromCancellationToken(cancellationToken));
+
+        /// <summary>
+        /// Start manual transfer runs to be executed now with schedule_time equal to
+        /// current time. The transfer runs can be created for a time range where the
+        /// run_time is between start_time (inclusive) and end_time (exclusive), or for
+        /// a specific run_time.
+        /// </summary>
+        /// <param name="request">
+        /// The request object containing all of the parameters for the API call.
+        /// </param>
+        /// <param name="callSettings">
+        /// If not null, applies overrides to this RPC call.
+        /// </param>
+        /// <returns>
+        /// The RPC response.
+        /// </returns>
+        public virtual StartManualTransferRunsResponse StartManualTransferRuns(
+            StartManualTransferRunsRequest request,
+            gaxgrpc::CallSettings callSettings = null)
+        {
+            throw new sys::NotImplementedException();
+        }
+
     }
 
     /// <summary>
@@ -2323,6 +3384,7 @@ namespace Google.Cloud.BigQuery.DataTransfer.V1
         private readonly gaxgrpc::ApiCall<ListTransferRunsRequest, ListTransferRunsResponse> _callListTransferRuns;
         private readonly gaxgrpc::ApiCall<ListTransferLogsRequest, ListTransferLogsResponse> _callListTransferLogs;
         private readonly gaxgrpc::ApiCall<CheckValidCredsRequest, CheckValidCredsResponse> _callCheckValidCreds;
+        private readonly gaxgrpc::ApiCall<StartManualTransferRunsRequest, StartManualTransferRunsResponse> _callStartManualTransferRuns;
 
         /// <summary>
         /// Constructs a client wrapper for the DataTransferService service, with the specified gRPC client and settings.
@@ -2336,43 +3398,46 @@ namespace Google.Cloud.BigQuery.DataTransfer.V1
             gaxgrpc::ClientHelper clientHelper = new gaxgrpc::ClientHelper(effectiveSettings);
             _callGetDataSource = clientHelper.BuildApiCall<GetDataSourceRequest, DataSource>(
                 GrpcClient.GetDataSourceAsync, GrpcClient.GetDataSource, effectiveSettings.GetDataSourceSettings)
-                .WithCallSettingsOverlay(request => gaxgrpc::CallSettings.FromHeader("x-goog-request-params", $"name={request.Name}"));
+                .WithGoogleRequestParam("name", request => request.Name);
             _callListDataSources = clientHelper.BuildApiCall<ListDataSourcesRequest, ListDataSourcesResponse>(
                 GrpcClient.ListDataSourcesAsync, GrpcClient.ListDataSources, effectiveSettings.ListDataSourcesSettings)
-                .WithCallSettingsOverlay(request => gaxgrpc::CallSettings.FromHeader("x-goog-request-params", $"parent={request.Parent}"));
+                .WithGoogleRequestParam("parent", request => request.Parent);
             _callCreateTransferConfig = clientHelper.BuildApiCall<CreateTransferConfigRequest, TransferConfig>(
                 GrpcClient.CreateTransferConfigAsync, GrpcClient.CreateTransferConfig, effectiveSettings.CreateTransferConfigSettings)
-                .WithCallSettingsOverlay(request => gaxgrpc::CallSettings.FromHeader("x-goog-request-params", $"parent={request.Parent}"));
+                .WithGoogleRequestParam("parent", request => request.Parent);
             _callUpdateTransferConfig = clientHelper.BuildApiCall<UpdateTransferConfigRequest, TransferConfig>(
                 GrpcClient.UpdateTransferConfigAsync, GrpcClient.UpdateTransferConfig, effectiveSettings.UpdateTransferConfigSettings)
-                .WithCallSettingsOverlay(request => gaxgrpc::CallSettings.FromHeader("x-goog-request-params", $"transfer_config.name={request.TransferConfig.Name}"));
+                .WithGoogleRequestParam("transfer_config.name", request => request.TransferConfig?.Name);
             _callDeleteTransferConfig = clientHelper.BuildApiCall<DeleteTransferConfigRequest, pbwkt::Empty>(
                 GrpcClient.DeleteTransferConfigAsync, GrpcClient.DeleteTransferConfig, effectiveSettings.DeleteTransferConfigSettings)
-                .WithCallSettingsOverlay(request => gaxgrpc::CallSettings.FromHeader("x-goog-request-params", $"name={request.Name}"));
+                .WithGoogleRequestParam("name", request => request.Name);
             _callGetTransferConfig = clientHelper.BuildApiCall<GetTransferConfigRequest, TransferConfig>(
                 GrpcClient.GetTransferConfigAsync, GrpcClient.GetTransferConfig, effectiveSettings.GetTransferConfigSettings)
-                .WithCallSettingsOverlay(request => gaxgrpc::CallSettings.FromHeader("x-goog-request-params", $"name={request.Name}"));
+                .WithGoogleRequestParam("name", request => request.Name);
             _callListTransferConfigs = clientHelper.BuildApiCall<ListTransferConfigsRequest, ListTransferConfigsResponse>(
                 GrpcClient.ListTransferConfigsAsync, GrpcClient.ListTransferConfigs, effectiveSettings.ListTransferConfigsSettings)
-                .WithCallSettingsOverlay(request => gaxgrpc::CallSettings.FromHeader("x-goog-request-params", $"parent={request.Parent}"));
+                .WithGoogleRequestParam("parent", request => request.Parent);
             _callScheduleTransferRuns = clientHelper.BuildApiCall<ScheduleTransferRunsRequest, ScheduleTransferRunsResponse>(
                 GrpcClient.ScheduleTransferRunsAsync, GrpcClient.ScheduleTransferRuns, effectiveSettings.ScheduleTransferRunsSettings)
-                .WithCallSettingsOverlay(request => gaxgrpc::CallSettings.FromHeader("x-goog-request-params", $"parent={request.Parent}"));
+                .WithGoogleRequestParam("parent", request => request.Parent);
             _callGetTransferRun = clientHelper.BuildApiCall<GetTransferRunRequest, TransferRun>(
                 GrpcClient.GetTransferRunAsync, GrpcClient.GetTransferRun, effectiveSettings.GetTransferRunSettings)
-                .WithCallSettingsOverlay(request => gaxgrpc::CallSettings.FromHeader("x-goog-request-params", $"name={request.Name}"));
+                .WithGoogleRequestParam("name", request => request.Name);
             _callDeleteTransferRun = clientHelper.BuildApiCall<DeleteTransferRunRequest, pbwkt::Empty>(
                 GrpcClient.DeleteTransferRunAsync, GrpcClient.DeleteTransferRun, effectiveSettings.DeleteTransferRunSettings)
-                .WithCallSettingsOverlay(request => gaxgrpc::CallSettings.FromHeader("x-goog-request-params", $"name={request.Name}"));
+                .WithGoogleRequestParam("name", request => request.Name);
             _callListTransferRuns = clientHelper.BuildApiCall<ListTransferRunsRequest, ListTransferRunsResponse>(
                 GrpcClient.ListTransferRunsAsync, GrpcClient.ListTransferRuns, effectiveSettings.ListTransferRunsSettings)
-                .WithCallSettingsOverlay(request => gaxgrpc::CallSettings.FromHeader("x-goog-request-params", $"parent={request.Parent}"));
+                .WithGoogleRequestParam("parent", request => request.Parent);
             _callListTransferLogs = clientHelper.BuildApiCall<ListTransferLogsRequest, ListTransferLogsResponse>(
                 GrpcClient.ListTransferLogsAsync, GrpcClient.ListTransferLogs, effectiveSettings.ListTransferLogsSettings)
-                .WithCallSettingsOverlay(request => gaxgrpc::CallSettings.FromHeader("x-goog-request-params", $"parent={request.Parent}"));
+                .WithGoogleRequestParam("parent", request => request.Parent);
             _callCheckValidCreds = clientHelper.BuildApiCall<CheckValidCredsRequest, CheckValidCredsResponse>(
                 GrpcClient.CheckValidCredsAsync, GrpcClient.CheckValidCreds, effectiveSettings.CheckValidCredsSettings)
-                .WithCallSettingsOverlay(request => gaxgrpc::CallSettings.FromHeader("x-goog-request-params", $"name={request.Name}"));
+                .WithGoogleRequestParam("name", request => request.Name);
+            _callStartManualTransferRuns = clientHelper.BuildApiCall<StartManualTransferRunsRequest, StartManualTransferRunsResponse>(
+                GrpcClient.StartManualTransferRunsAsync, GrpcClient.StartManualTransferRuns, effectiveSettings.StartManualTransferRunsSettings)
+                .WithGoogleRequestParam("parent", request => request.Parent);
             Modify_ApiCall(ref _callGetDataSource);
             Modify_GetDataSourceApiCall(ref _callGetDataSource);
             Modify_ApiCall(ref _callListDataSources);
@@ -2399,6 +3464,8 @@ namespace Google.Cloud.BigQuery.DataTransfer.V1
             Modify_ListTransferLogsApiCall(ref _callListTransferLogs);
             Modify_ApiCall(ref _callCheckValidCreds);
             Modify_CheckValidCredsApiCall(ref _callCheckValidCreds);
+            Modify_ApiCall(ref _callStartManualTransferRuns);
+            Modify_StartManualTransferRunsApiCall(ref _callStartManualTransferRuns);
             OnConstruction(grpcClient, effectiveSettings, clientHelper);
         }
 
@@ -2425,6 +3492,7 @@ namespace Google.Cloud.BigQuery.DataTransfer.V1
         partial void Modify_ListTransferRunsApiCall(ref gaxgrpc::ApiCall<ListTransferRunsRequest, ListTransferRunsResponse> call);
         partial void Modify_ListTransferLogsApiCall(ref gaxgrpc::ApiCall<ListTransferLogsRequest, ListTransferLogsResponse> call);
         partial void Modify_CheckValidCredsApiCall(ref gaxgrpc::ApiCall<CheckValidCredsRequest, CheckValidCredsResponse> call);
+        partial void Modify_StartManualTransferRunsApiCall(ref gaxgrpc::ApiCall<StartManualTransferRunsRequest, StartManualTransferRunsResponse> call);
         partial void OnConstruction(DataTransferService.DataTransferServiceClient grpcClient, DataTransferServiceSettings effectiveSettings, gaxgrpc::ClientHelper clientHelper);
 
         /// <summary>
@@ -2448,6 +3516,7 @@ namespace Google.Cloud.BigQuery.DataTransfer.V1
         partial void Modify_ListTransferRunsRequest(ref ListTransferRunsRequest request, ref gaxgrpc::CallSettings settings);
         partial void Modify_ListTransferLogsRequest(ref ListTransferLogsRequest request, ref gaxgrpc::CallSettings settings);
         partial void Modify_CheckValidCredsRequest(ref CheckValidCredsRequest request, ref gaxgrpc::CallSettings settings);
+        partial void Modify_StartManualTransferRunsRequest(ref StartManualTransferRunsRequest request, ref gaxgrpc::CallSettings settings);
 
         /// <summary>
         /// Retrieves a supported data source and returns its settings,
@@ -2739,6 +3808,7 @@ namespace Google.Cloud.BigQuery.DataTransfer.V1
         /// For each date - or whatever granularity the data source supports - in the
         /// range, one transfer run is created.
         /// Note that runs are created per UTC time in the time range.
+        /// DEPRECATED: use StartManualTransferRuns instead.
         /// </summary>
         /// <param name="request">
         /// The request object containing all of the parameters for the API call.
@@ -2762,6 +3832,7 @@ namespace Google.Cloud.BigQuery.DataTransfer.V1
         /// For each date - or whatever granularity the data source supports - in the
         /// range, one transfer run is created.
         /// Note that runs are created per UTC time in the time range.
+        /// DEPRECATED: use StartManualTransferRuns instead.
         /// </summary>
         /// <param name="request">
         /// The request object containing all of the parameters for the API call.
@@ -2985,6 +4056,52 @@ namespace Google.Cloud.BigQuery.DataTransfer.V1
         {
             Modify_CheckValidCredsRequest(ref request, ref callSettings);
             return _callCheckValidCreds.Sync(request, callSettings);
+        }
+
+        /// <summary>
+        /// Start manual transfer runs to be executed now with schedule_time equal to
+        /// current time. The transfer runs can be created for a time range where the
+        /// run_time is between start_time (inclusive) and end_time (exclusive), or for
+        /// a specific run_time.
+        /// </summary>
+        /// <param name="request">
+        /// The request object containing all of the parameters for the API call.
+        /// </param>
+        /// <param name="callSettings">
+        /// If not null, applies overrides to this RPC call.
+        /// </param>
+        /// <returns>
+        /// A Task containing the RPC response.
+        /// </returns>
+        public override stt::Task<StartManualTransferRunsResponse> StartManualTransferRunsAsync(
+            StartManualTransferRunsRequest request,
+            gaxgrpc::CallSettings callSettings = null)
+        {
+            Modify_StartManualTransferRunsRequest(ref request, ref callSettings);
+            return _callStartManualTransferRuns.Async(request, callSettings);
+        }
+
+        /// <summary>
+        /// Start manual transfer runs to be executed now with schedule_time equal to
+        /// current time. The transfer runs can be created for a time range where the
+        /// run_time is between start_time (inclusive) and end_time (exclusive), or for
+        /// a specific run_time.
+        /// </summary>
+        /// <param name="request">
+        /// The request object containing all of the parameters for the API call.
+        /// </param>
+        /// <param name="callSettings">
+        /// If not null, applies overrides to this RPC call.
+        /// </param>
+        /// <returns>
+        /// The RPC response.
+        /// </returns>
+        public override StartManualTransferRunsResponse StartManualTransferRuns(
+            StartManualTransferRunsRequest request,
+            gaxgrpc::CallSettings callSettings = null)
+        {
+            Modify_StartManualTransferRunsRequest(ref request, ref callSettings);
+            return _callStartManualTransferRuns.Sync(request, callSettings);
         }
 
     }

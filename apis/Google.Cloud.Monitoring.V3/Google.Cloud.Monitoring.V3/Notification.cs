@@ -25,33 +25,33 @@ namespace Google.Cloud.Monitoring.V3 {
       byte[] descriptorData = global::System.Convert.FromBase64String(
           string.Concat(
             "Cidnb29nbGUvbW9uaXRvcmluZy92My9ub3RpZmljYXRpb24ucHJvdG8SFGdv",
-            "b2dsZS5tb25pdG9yaW5nLnYzGhxnb29nbGUvYXBpL2Fubm90YXRpb25zLnBy",
-            "b3RvGhZnb29nbGUvYXBpL2xhYmVsLnByb3RvGiFnb29nbGUvbW9uaXRvcmlu",
-            "Zy92My9jb21tb24ucHJvdG8aHmdvb2dsZS9wcm90b2J1Zi93cmFwcGVycy5w",
-            "cm90byLTAQodTm90aWZpY2F0aW9uQ2hhbm5lbERlc2NyaXB0b3ISDAoEbmFt",
-            "ZRgGIAEoCRIMCgR0eXBlGAEgASgJEhQKDGRpc3BsYXlfbmFtZRgCIAEoCRIT",
-            "CgtkZXNjcmlwdGlvbhgDIAEoCRIrCgZsYWJlbHMYBCADKAsyGy5nb29nbGUu",
-            "YXBpLkxhYmVsRGVzY3JpcHRvchI+Cg9zdXBwb3J0ZWRfdGllcnMYBSADKA4y",
-            "IS5nb29nbGUubW9uaXRvcmluZy52My5TZXJ2aWNlVGllckICGAEitgQKE05v",
-            "dGlmaWNhdGlvbkNoYW5uZWwSDAoEdHlwZRgBIAEoCRIMCgRuYW1lGAYgASgJ",
-            "EhQKDGRpc3BsYXlfbmFtZRgDIAEoCRITCgtkZXNjcmlwdGlvbhgEIAEoCRJF",
-            "CgZsYWJlbHMYBSADKAsyNS5nb29nbGUubW9uaXRvcmluZy52My5Ob3RpZmlj",
-            "YXRpb25DaGFubmVsLkxhYmVsc0VudHJ5Ek4KC3VzZXJfbGFiZWxzGAggAygL",
-            "MjkuZ29vZ2xlLm1vbml0b3JpbmcudjMuTm90aWZpY2F0aW9uQ2hhbm5lbC5V",
-            "c2VyTGFiZWxzRW50cnkSWQoTdmVyaWZpY2F0aW9uX3N0YXR1cxgJIAEoDjI8",
-            "Lmdvb2dsZS5tb25pdG9yaW5nLnYzLk5vdGlmaWNhdGlvbkNoYW5uZWwuVmVy",
-            "aWZpY2F0aW9uU3RhdHVzEisKB2VuYWJsZWQYCyABKAsyGi5nb29nbGUucHJv",
-            "dG9idWYuQm9vbFZhbHVlGi0KC0xhYmVsc0VudHJ5EgsKA2tleRgBIAEoCRIN",
-            "CgV2YWx1ZRgCIAEoCToCOAEaMQoPVXNlckxhYmVsc0VudHJ5EgsKA2tleRgB",
-            "IAEoCRINCgV2YWx1ZRgCIAEoCToCOAEiVwoSVmVyaWZpY2F0aW9uU3RhdHVz",
-            "EiMKH1ZFUklGSUNBVElPTl9TVEFUVVNfVU5TUEVDSUZJRUQQABIOCgpVTlZF",
-            "UklGSUVEEAESDAoIVkVSSUZJRUQQAkKpAQoYY29tLmdvb2dsZS5tb25pdG9y",
-            "aW5nLnYzQhFOb3RpZmljYXRpb25Qcm90b1ABWj5nb29nbGUuZ29sYW5nLm9y",
-            "Zy9nZW5wcm90by9nb29nbGVhcGlzL21vbml0b3JpbmcvdjM7bW9uaXRvcmlu",
-            "Z6oCGkdvb2dsZS5DbG91ZC5Nb25pdG9yaW5nLlYzygIaR29vZ2xlXENsb3Vk",
-            "XE1vbml0b3JpbmdcVjNiBnByb3RvMw=="));
+            "b2dsZS5tb25pdG9yaW5nLnYzGhZnb29nbGUvYXBpL2xhYmVsLnByb3RvGh1n",
+            "b29nbGUvYXBpL2xhdW5jaF9zdGFnZS5wcm90bxohZ29vZ2xlL21vbml0b3Jp",
+            "bmcvdjMvY29tbW9uLnByb3RvGh5nb29nbGUvcHJvdG9idWYvd3JhcHBlcnMu",
+            "cHJvdG8i0wEKHU5vdGlmaWNhdGlvbkNoYW5uZWxEZXNjcmlwdG9yEgwKBG5h",
+            "bWUYBiABKAkSDAoEdHlwZRgBIAEoCRIUCgxkaXNwbGF5X25hbWUYAiABKAkS",
+            "EwoLZGVzY3JpcHRpb24YAyABKAkSKwoGbGFiZWxzGAQgAygLMhsuZ29vZ2xl",
+            "LmFwaS5MYWJlbERlc2NyaXB0b3ISPgoPc3VwcG9ydGVkX3RpZXJzGAUgAygO",
+            "MiEuZ29vZ2xlLm1vbml0b3JpbmcudjMuU2VydmljZVRpZXJCAhgBIrYEChNO",
+            "b3RpZmljYXRpb25DaGFubmVsEgwKBHR5cGUYASABKAkSDAoEbmFtZRgGIAEo",
+            "CRIUCgxkaXNwbGF5X25hbWUYAyABKAkSEwoLZGVzY3JpcHRpb24YBCABKAkS",
+            "RQoGbGFiZWxzGAUgAygLMjUuZ29vZ2xlLm1vbml0b3JpbmcudjMuTm90aWZp",
+            "Y2F0aW9uQ2hhbm5lbC5MYWJlbHNFbnRyeRJOCgt1c2VyX2xhYmVscxgIIAMo",
+            "CzI5Lmdvb2dsZS5tb25pdG9yaW5nLnYzLk5vdGlmaWNhdGlvbkNoYW5uZWwu",
+            "VXNlckxhYmVsc0VudHJ5ElkKE3ZlcmlmaWNhdGlvbl9zdGF0dXMYCSABKA4y",
+            "PC5nb29nbGUubW9uaXRvcmluZy52My5Ob3RpZmljYXRpb25DaGFubmVsLlZl",
+            "cmlmaWNhdGlvblN0YXR1cxIrCgdlbmFibGVkGAsgASgLMhouZ29vZ2xlLnBy",
+            "b3RvYnVmLkJvb2xWYWx1ZRotCgtMYWJlbHNFbnRyeRILCgNrZXkYASABKAkS",
+            "DQoFdmFsdWUYAiABKAk6AjgBGjEKD1VzZXJMYWJlbHNFbnRyeRILCgNrZXkY",
+            "ASABKAkSDQoFdmFsdWUYAiABKAk6AjgBIlcKElZlcmlmaWNhdGlvblN0YXR1",
+            "cxIjCh9WRVJJRklDQVRJT05fU1RBVFVTX1VOU1BFQ0lGSUVEEAASDgoKVU5W",
+            "RVJJRklFRBABEgwKCFZFUklGSUVEEAJCqQEKGGNvbS5nb29nbGUubW9uaXRv",
+            "cmluZy52M0IRTm90aWZpY2F0aW9uUHJvdG9QAVo+Z29vZ2xlLmdvbGFuZy5v",
+            "cmcvZ2VucHJvdG8vZ29vZ2xlYXBpcy9tb25pdG9yaW5nL3YzO21vbml0b3Jp",
+            "bmeqAhpHb29nbGUuQ2xvdWQuTW9uaXRvcmluZy5WM8oCGkdvb2dsZVxDbG91",
+            "ZFxNb25pdG9yaW5nXFYzYgZwcm90bzM="));
       descriptor = pbr::FileDescriptor.FromGeneratedCode(descriptorData,
-          new pbr::FileDescriptor[] { global::Google.Api.AnnotationsReflection.Descriptor, global::Google.Api.LabelReflection.Descriptor, global::Google.Cloud.Monitoring.V3.CommonReflection.Descriptor, global::Google.Protobuf.WellKnownTypes.WrappersReflection.Descriptor, },
+          new pbr::FileDescriptor[] { global::Google.Api.LabelReflection.Descriptor, global::Google.Api.LaunchStageReflection.Descriptor, global::Google.Cloud.Monitoring.V3.CommonReflection.Descriptor, global::Google.Protobuf.WellKnownTypes.WrappersReflection.Descriptor, },
           new pbr::GeneratedClrTypeInfo(null, new pbr::GeneratedClrTypeInfo[] {
             new pbr::GeneratedClrTypeInfo(typeof(global::Google.Cloud.Monitoring.V3.NotificationChannelDescriptor), global::Google.Cloud.Monitoring.V3.NotificationChannelDescriptor.Parser, new[]{ "Name", "Type", "DisplayName", "Description", "Labels", "SupportedTiers" }, null, null, null),
             new pbr::GeneratedClrTypeInfo(typeof(global::Google.Cloud.Monitoring.V3.NotificationChannel), global::Google.Cloud.Monitoring.V3.NotificationChannel.Parser, new[]{ "Type", "Name", "DisplayName", "Description", "Labels", "UserLabels", "VerificationStatus", "Enabled" }, null, new[]{ typeof(global::Google.Cloud.Monitoring.V3.NotificationChannel.Types.VerificationStatus) }, new pbr::GeneratedClrTypeInfo[] { null, null, })
@@ -454,7 +454,7 @@ namespace Google.Cloud.Monitoring.V3 {
     /// <summary>
     /// An optional human-readable description of this notification channel. This
     /// description may provide additional details, beyond the display
-    /// name, for the channel. This may not exceeed 1024 Unicode characters.
+    /// name, for the channel. This may not exceed 1024 Unicode characters.
     /// </summary>
     [global::System.Diagnostics.DebuggerNonUserCodeAttribute]
     public string Description {
@@ -552,6 +552,7 @@ namespace Google.Cloud.Monitoring.V3 {
         enabled_ = value;
       }
     }
+
 
     [global::System.Diagnostics.DebuggerNonUserCodeAttribute]
     public override bool Equals(object other) {
@@ -723,7 +724,7 @@ namespace Google.Cloud.Monitoring.V3 {
             break;
           }
           case 72: {
-            verificationStatus_ = (global::Google.Cloud.Monitoring.V3.NotificationChannel.Types.VerificationStatus) input.ReadEnum();
+            VerificationStatus = (global::Google.Cloud.Monitoring.V3.NotificationChannel.Types.VerificationStatus) input.ReadEnum();
             break;
           }
           case 90: {

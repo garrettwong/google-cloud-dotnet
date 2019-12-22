@@ -1,4 +1,4 @@
-// Copyright 2018 Google LLC
+// Copyright 2019 Google LLC
 //
 // Licensed under the Apache License, Version 2.0 (the "License");
 // you may not use this file except in compliance with the License.
@@ -279,6 +279,42 @@ namespace Google.Cloud.Dialogflow.V2
     }
 
     /// <summary>
+    /// Builder class for <see cref="SessionEntityTypesClient"/> to provide simple configuration of credentials, endpoint etc.
+    /// </summary>
+    public sealed partial class SessionEntityTypesClientBuilder : gaxgrpc::ClientBuilderBase<SessionEntityTypesClient>
+    {
+        /// <summary>
+        /// The settings to use for RPCs, or null for the default settings.
+        /// </summary>
+        public SessionEntityTypesSettings Settings { get; set; }
+
+        /// <inheritdoc/>
+        public override SessionEntityTypesClient Build()
+        {
+            Validate();
+            grpccore::CallInvoker callInvoker = CreateCallInvoker();
+            return SessionEntityTypesClient.Create(callInvoker, Settings);
+        }
+
+        /// <inheritdoc />
+        public override async stt::Task<SessionEntityTypesClient> BuildAsync(st::CancellationToken cancellationToken = default)
+        {
+            Validate();
+            grpccore::CallInvoker callInvoker = await CreateCallInvokerAsync(cancellationToken).ConfigureAwait(false);
+            return SessionEntityTypesClient.Create(callInvoker, Settings);
+        }
+
+        /// <inheritdoc />
+        protected override gaxgrpc::ServiceEndpoint GetDefaultEndpoint() => SessionEntityTypesClient.DefaultEndpoint;
+
+        /// <inheritdoc />
+        protected override scg::IReadOnlyList<string> GetDefaultScopes() => SessionEntityTypesClient.DefaultScopes;
+
+        /// <inheritdoc />
+        protected override gaxgrpc::ChannelPool GetChannelPool() => SessionEntityTypesClient.ChannelPool;
+    }
+
+    /// <summary>
     /// SessionEntityTypes client wrapper, for convenient use.
     /// </summary>
     public abstract partial class SessionEntityTypesClient
@@ -295,13 +331,17 @@ namespace Google.Cloud.Dialogflow.V2
         /// The default SessionEntityTypes scopes are:
         /// <list type="bullet">
         /// <item><description>"https://www.googleapis.com/auth/cloud-platform"</description></item>
+        /// <item><description>"https://www.googleapis.com/auth/dialogflow"</description></item>
         /// </list>
         /// </remarks>
         public static scg::IReadOnlyList<string> DefaultScopes { get; } = new sco::ReadOnlyCollection<string>(new string[] {
             "https://www.googleapis.com/auth/cloud-platform",
+            "https://www.googleapis.com/auth/dialogflow",
         });
 
         private static readonly gaxgrpc::ChannelPool s_channelPool = new gaxgrpc::ChannelPool(DefaultScopes);
+
+        internal static gaxgrpc::ChannelPool ChannelPool => s_channelPool;
 
         /// <summary>
         /// Asynchronously creates a <see cref="SessionEntityTypesClient"/>, applying defaults for all unspecified settings,
@@ -434,6 +474,10 @@ namespace Google.Cloud.Dialogflow.V2
 
         /// <summary>
         /// Returns the list of all session entity types in the specified session.
+        ///
+        /// This method doesn't work with Google Assistant integration.
+        /// Contact Dialogflow support if you need to use session entities
+        /// with Google Assistant integration.
         /// </summary>
         /// <param name="parent">
         /// Required. The session to list all session entity types from.
@@ -468,6 +512,10 @@ namespace Google.Cloud.Dialogflow.V2
 
         /// <summary>
         /// Returns the list of all session entity types in the specified session.
+        ///
+        /// This method doesn't work with Google Assistant integration.
+        /// Contact Dialogflow support if you need to use session entities
+        /// with Google Assistant integration.
         /// </summary>
         /// <param name="parent">
         /// Required. The session to list all session entity types from.
@@ -502,6 +550,86 @@ namespace Google.Cloud.Dialogflow.V2
 
         /// <summary>
         /// Returns the list of all session entity types in the specified session.
+        ///
+        /// This method doesn't work with Google Assistant integration.
+        /// Contact Dialogflow support if you need to use session entities
+        /// with Google Assistant integration.
+        /// </summary>
+        /// <param name="parent">
+        /// Required. The session to list all session entity types from.
+        /// Format: `projects/&lt;Project ID&gt;/agent/sessions/&lt;Session ID&gt;`.
+        /// </param>
+        /// <param name="pageToken">
+        /// The token returned from the previous request.
+        /// A value of <c>null</c> or an empty string retrieves the first page.
+        /// </param>
+        /// <param name="pageSize">
+        /// The size of page to request. The response will not be larger than this, but may be smaller.
+        /// A value of <c>null</c> or 0 uses a server-defined page size.
+        /// </param>
+        /// <param name="callSettings">
+        /// If not null, applies overrides to this RPC call.
+        /// </param>
+        /// <returns>
+        /// A pageable asynchronous sequence of <see cref="SessionEntityType"/> resources.
+        /// </returns>
+        public virtual gax::PagedAsyncEnumerable<ListSessionEntityTypesResponse, SessionEntityType> ListSessionEntityTypesAsync(
+            string parent,
+            string pageToken = null,
+            int? pageSize = null,
+            gaxgrpc::CallSettings callSettings = null) => ListSessionEntityTypesAsync(
+                new ListSessionEntityTypesRequest
+                {
+                    Parent = gax::GaxPreconditions.CheckNotNullOrEmpty(parent, nameof(parent)),
+                    PageToken = pageToken ?? "",
+                    PageSize = pageSize ?? 0,
+                },
+                callSettings);
+
+        /// <summary>
+        /// Returns the list of all session entity types in the specified session.
+        ///
+        /// This method doesn't work with Google Assistant integration.
+        /// Contact Dialogflow support if you need to use session entities
+        /// with Google Assistant integration.
+        /// </summary>
+        /// <param name="parent">
+        /// Required. The session to list all session entity types from.
+        /// Format: `projects/&lt;Project ID&gt;/agent/sessions/&lt;Session ID&gt;`.
+        /// </param>
+        /// <param name="pageToken">
+        /// The token returned from the previous request.
+        /// A value of <c>null</c> or an empty string retrieves the first page.
+        /// </param>
+        /// <param name="pageSize">
+        /// The size of page to request. The response will not be larger than this, but may be smaller.
+        /// A value of <c>null</c> or 0 uses a server-defined page size.
+        /// </param>
+        /// <param name="callSettings">
+        /// If not null, applies overrides to this RPC call.
+        /// </param>
+        /// <returns>
+        /// A pageable sequence of <see cref="SessionEntityType"/> resources.
+        /// </returns>
+        public virtual gax::PagedEnumerable<ListSessionEntityTypesResponse, SessionEntityType> ListSessionEntityTypes(
+            string parent,
+            string pageToken = null,
+            int? pageSize = null,
+            gaxgrpc::CallSettings callSettings = null) => ListSessionEntityTypes(
+                new ListSessionEntityTypesRequest
+                {
+                    Parent = gax::GaxPreconditions.CheckNotNullOrEmpty(parent, nameof(parent)),
+                    PageToken = pageToken ?? "",
+                    PageSize = pageSize ?? 0,
+                },
+                callSettings);
+
+        /// <summary>
+        /// Returns the list of all session entity types in the specified session.
+        ///
+        /// This method doesn't work with Google Assistant integration.
+        /// Contact Dialogflow support if you need to use session entities
+        /// with Google Assistant integration.
         /// </summary>
         /// <param name="request">
         /// The request object containing all of the parameters for the API call.
@@ -521,6 +649,10 @@ namespace Google.Cloud.Dialogflow.V2
 
         /// <summary>
         /// Returns the list of all session entity types in the specified session.
+        ///
+        /// This method doesn't work with Google Assistant integration.
+        /// Contact Dialogflow support if you need to use session entities
+        /// with Google Assistant integration.
         /// </summary>
         /// <param name="request">
         /// The request object containing all of the parameters for the API call.
@@ -540,6 +672,10 @@ namespace Google.Cloud.Dialogflow.V2
 
         /// <summary>
         /// Retrieves the specified session entity type.
+        ///
+        /// This method doesn't work with Google Assistant integration.
+        /// Contact Dialogflow support if you need to use session entities
+        /// with Google Assistant integration.
         /// </summary>
         /// <param name="name">
         /// Required. The name of the session entity type. Format:
@@ -563,6 +699,10 @@ namespace Google.Cloud.Dialogflow.V2
 
         /// <summary>
         /// Retrieves the specified session entity type.
+        ///
+        /// This method doesn't work with Google Assistant integration.
+        /// Contact Dialogflow support if you need to use session entities
+        /// with Google Assistant integration.
         /// </summary>
         /// <param name="name">
         /// Required. The name of the session entity type. Format:
@@ -583,6 +723,10 @@ namespace Google.Cloud.Dialogflow.V2
 
         /// <summary>
         /// Retrieves the specified session entity type.
+        ///
+        /// This method doesn't work with Google Assistant integration.
+        /// Contact Dialogflow support if you need to use session entities
+        /// with Google Assistant integration.
         /// </summary>
         /// <param name="name">
         /// Required. The name of the session entity type. Format:
@@ -606,6 +750,88 @@ namespace Google.Cloud.Dialogflow.V2
 
         /// <summary>
         /// Retrieves the specified session entity type.
+        ///
+        /// This method doesn't work with Google Assistant integration.
+        /// Contact Dialogflow support if you need to use session entities
+        /// with Google Assistant integration.
+        /// </summary>
+        /// <param name="name">
+        /// Required. The name of the session entity type. Format:
+        /// `projects/&lt;Project ID&gt;/agent/sessions/&lt;Session ID&gt;/entityTypes/&lt;Entity Type
+        /// Display Name&gt;`.
+        /// </param>
+        /// <param name="callSettings">
+        /// If not null, applies overrides to this RPC call.
+        /// </param>
+        /// <returns>
+        /// A Task containing the RPC response.
+        /// </returns>
+        public virtual stt::Task<SessionEntityType> GetSessionEntityTypeAsync(
+            string name,
+            gaxgrpc::CallSettings callSettings = null) => GetSessionEntityTypeAsync(
+                new GetSessionEntityTypeRequest
+                {
+                    Name = gax::GaxPreconditions.CheckNotNullOrEmpty(name, nameof(name)),
+                },
+                callSettings);
+
+        /// <summary>
+        /// Retrieves the specified session entity type.
+        ///
+        /// This method doesn't work with Google Assistant integration.
+        /// Contact Dialogflow support if you need to use session entities
+        /// with Google Assistant integration.
+        /// </summary>
+        /// <param name="name">
+        /// Required. The name of the session entity type. Format:
+        /// `projects/&lt;Project ID&gt;/agent/sessions/&lt;Session ID&gt;/entityTypes/&lt;Entity Type
+        /// Display Name&gt;`.
+        /// </param>
+        /// <param name="cancellationToken">
+        /// A <see cref="st::CancellationToken"/> to use for this RPC.
+        /// </param>
+        /// <returns>
+        /// A Task containing the RPC response.
+        /// </returns>
+        public virtual stt::Task<SessionEntityType> GetSessionEntityTypeAsync(
+            string name,
+            st::CancellationToken cancellationToken) => GetSessionEntityTypeAsync(
+                name,
+                gaxgrpc::CallSettings.FromCancellationToken(cancellationToken));
+
+        /// <summary>
+        /// Retrieves the specified session entity type.
+        ///
+        /// This method doesn't work with Google Assistant integration.
+        /// Contact Dialogflow support if you need to use session entities
+        /// with Google Assistant integration.
+        /// </summary>
+        /// <param name="name">
+        /// Required. The name of the session entity type. Format:
+        /// `projects/&lt;Project ID&gt;/agent/sessions/&lt;Session ID&gt;/entityTypes/&lt;Entity Type
+        /// Display Name&gt;`.
+        /// </param>
+        /// <param name="callSettings">
+        /// If not null, applies overrides to this RPC call.
+        /// </param>
+        /// <returns>
+        /// The RPC response.
+        /// </returns>
+        public virtual SessionEntityType GetSessionEntityType(
+            string name,
+            gaxgrpc::CallSettings callSettings = null) => GetSessionEntityType(
+                new GetSessionEntityTypeRequest
+                {
+                    Name = gax::GaxPreconditions.CheckNotNullOrEmpty(name, nameof(name)),
+                },
+                callSettings);
+
+        /// <summary>
+        /// Retrieves the specified session entity type.
+        ///
+        /// This method doesn't work with Google Assistant integration.
+        /// Contact Dialogflow support if you need to use session entities
+        /// with Google Assistant integration.
         /// </summary>
         /// <param name="request">
         /// The request object containing all of the parameters for the API call.
@@ -625,6 +851,10 @@ namespace Google.Cloud.Dialogflow.V2
 
         /// <summary>
         /// Retrieves the specified session entity type.
+        ///
+        /// This method doesn't work with Google Assistant integration.
+        /// Contact Dialogflow support if you need to use session entities
+        /// with Google Assistant integration.
         /// </summary>
         /// <param name="request">
         /// The request object containing all of the parameters for the API call.
@@ -643,6 +873,10 @@ namespace Google.Cloud.Dialogflow.V2
 
         /// <summary>
         /// Retrieves the specified session entity type.
+        ///
+        /// This method doesn't work with Google Assistant integration.
+        /// Contact Dialogflow support if you need to use session entities
+        /// with Google Assistant integration.
         /// </summary>
         /// <param name="request">
         /// The request object containing all of the parameters for the API call.
@@ -662,6 +896,13 @@ namespace Google.Cloud.Dialogflow.V2
 
         /// <summary>
         /// Creates a session entity type.
+        ///
+        /// If the specified session entity type already exists, overrides the session
+        /// entity type.
+        ///
+        /// This method doesn't work with Google Assistant integration.
+        /// Contact Dialogflow support if you need to use session entities
+        /// with Google Assistant integration.
         /// </summary>
         /// <param name="parent">
         /// Required. The session to create a session entity type for.
@@ -689,6 +930,13 @@ namespace Google.Cloud.Dialogflow.V2
 
         /// <summary>
         /// Creates a session entity type.
+        ///
+        /// If the specified session entity type already exists, overrides the session
+        /// entity type.
+        ///
+        /// This method doesn't work with Google Assistant integration.
+        /// Contact Dialogflow support if you need to use session entities
+        /// with Google Assistant integration.
         /// </summary>
         /// <param name="parent">
         /// Required. The session to create a session entity type for.
@@ -713,6 +961,13 @@ namespace Google.Cloud.Dialogflow.V2
 
         /// <summary>
         /// Creates a session entity type.
+        ///
+        /// If the specified session entity type already exists, overrides the session
+        /// entity type.
+        ///
+        /// This method doesn't work with Google Assistant integration.
+        /// Contact Dialogflow support if you need to use session entities
+        /// with Google Assistant integration.
         /// </summary>
         /// <param name="parent">
         /// Required. The session to create a session entity type for.
@@ -740,6 +995,112 @@ namespace Google.Cloud.Dialogflow.V2
 
         /// <summary>
         /// Creates a session entity type.
+        ///
+        /// If the specified session entity type already exists, overrides the session
+        /// entity type.
+        ///
+        /// This method doesn't work with Google Assistant integration.
+        /// Contact Dialogflow support if you need to use session entities
+        /// with Google Assistant integration.
+        /// </summary>
+        /// <param name="parent">
+        /// Required. The session to create a session entity type for.
+        /// Format: `projects/&lt;Project ID&gt;/agent/sessions/&lt;Session ID&gt;`.
+        /// </param>
+        /// <param name="sessionEntityType">
+        /// Required. The session entity type to create.
+        /// </param>
+        /// <param name="callSettings">
+        /// If not null, applies overrides to this RPC call.
+        /// </param>
+        /// <returns>
+        /// A Task containing the RPC response.
+        /// </returns>
+        public virtual stt::Task<SessionEntityType> CreateSessionEntityTypeAsync(
+            string parent,
+            SessionEntityType sessionEntityType,
+            gaxgrpc::CallSettings callSettings = null) => CreateSessionEntityTypeAsync(
+                new CreateSessionEntityTypeRequest
+                {
+                    Parent = gax::GaxPreconditions.CheckNotNullOrEmpty(parent, nameof(parent)),
+                    SessionEntityType = gax::GaxPreconditions.CheckNotNull(sessionEntityType, nameof(sessionEntityType)),
+                },
+                callSettings);
+
+        /// <summary>
+        /// Creates a session entity type.
+        ///
+        /// If the specified session entity type already exists, overrides the session
+        /// entity type.
+        ///
+        /// This method doesn't work with Google Assistant integration.
+        /// Contact Dialogflow support if you need to use session entities
+        /// with Google Assistant integration.
+        /// </summary>
+        /// <param name="parent">
+        /// Required. The session to create a session entity type for.
+        /// Format: `projects/&lt;Project ID&gt;/agent/sessions/&lt;Session ID&gt;`.
+        /// </param>
+        /// <param name="sessionEntityType">
+        /// Required. The session entity type to create.
+        /// </param>
+        /// <param name="cancellationToken">
+        /// A <see cref="st::CancellationToken"/> to use for this RPC.
+        /// </param>
+        /// <returns>
+        /// A Task containing the RPC response.
+        /// </returns>
+        public virtual stt::Task<SessionEntityType> CreateSessionEntityTypeAsync(
+            string parent,
+            SessionEntityType sessionEntityType,
+            st::CancellationToken cancellationToken) => CreateSessionEntityTypeAsync(
+                parent,
+                sessionEntityType,
+                gaxgrpc::CallSettings.FromCancellationToken(cancellationToken));
+
+        /// <summary>
+        /// Creates a session entity type.
+        ///
+        /// If the specified session entity type already exists, overrides the session
+        /// entity type.
+        ///
+        /// This method doesn't work with Google Assistant integration.
+        /// Contact Dialogflow support if you need to use session entities
+        /// with Google Assistant integration.
+        /// </summary>
+        /// <param name="parent">
+        /// Required. The session to create a session entity type for.
+        /// Format: `projects/&lt;Project ID&gt;/agent/sessions/&lt;Session ID&gt;`.
+        /// </param>
+        /// <param name="sessionEntityType">
+        /// Required. The session entity type to create.
+        /// </param>
+        /// <param name="callSettings">
+        /// If not null, applies overrides to this RPC call.
+        /// </param>
+        /// <returns>
+        /// The RPC response.
+        /// </returns>
+        public virtual SessionEntityType CreateSessionEntityType(
+            string parent,
+            SessionEntityType sessionEntityType,
+            gaxgrpc::CallSettings callSettings = null) => CreateSessionEntityType(
+                new CreateSessionEntityTypeRequest
+                {
+                    Parent = gax::GaxPreconditions.CheckNotNullOrEmpty(parent, nameof(parent)),
+                    SessionEntityType = gax::GaxPreconditions.CheckNotNull(sessionEntityType, nameof(sessionEntityType)),
+                },
+                callSettings);
+
+        /// <summary>
+        /// Creates a session entity type.
+        ///
+        /// If the specified session entity type already exists, overrides the session
+        /// entity type.
+        ///
+        /// This method doesn't work with Google Assistant integration.
+        /// Contact Dialogflow support if you need to use session entities
+        /// with Google Assistant integration.
         /// </summary>
         /// <param name="request">
         /// The request object containing all of the parameters for the API call.
@@ -759,6 +1120,13 @@ namespace Google.Cloud.Dialogflow.V2
 
         /// <summary>
         /// Creates a session entity type.
+        ///
+        /// If the specified session entity type already exists, overrides the session
+        /// entity type.
+        ///
+        /// This method doesn't work with Google Assistant integration.
+        /// Contact Dialogflow support if you need to use session entities
+        /// with Google Assistant integration.
         /// </summary>
         /// <param name="request">
         /// The request object containing all of the parameters for the API call.
@@ -777,6 +1145,13 @@ namespace Google.Cloud.Dialogflow.V2
 
         /// <summary>
         /// Creates a session entity type.
+        ///
+        /// If the specified session entity type already exists, overrides the session
+        /// entity type.
+        ///
+        /// This method doesn't work with Google Assistant integration.
+        /// Contact Dialogflow support if you need to use session entities
+        /// with Google Assistant integration.
         /// </summary>
         /// <param name="request">
         /// The request object containing all of the parameters for the API call.
@@ -796,6 +1171,10 @@ namespace Google.Cloud.Dialogflow.V2
 
         /// <summary>
         /// Updates the specified session entity type.
+        ///
+        /// This method doesn't work with Google Assistant integration.
+        /// Contact Dialogflow support if you need to use session entities
+        /// with Google Assistant integration.
         /// </summary>
         /// <param name="sessionEntityType">
         /// Required. The entity type to update. Format:
@@ -819,6 +1198,10 @@ namespace Google.Cloud.Dialogflow.V2
 
         /// <summary>
         /// Updates the specified session entity type.
+        ///
+        /// This method doesn't work with Google Assistant integration.
+        /// Contact Dialogflow support if you need to use session entities
+        /// with Google Assistant integration.
         /// </summary>
         /// <param name="sessionEntityType">
         /// Required. The entity type to update. Format:
@@ -839,6 +1222,10 @@ namespace Google.Cloud.Dialogflow.V2
 
         /// <summary>
         /// Updates the specified session entity type.
+        ///
+        /// This method doesn't work with Google Assistant integration.
+        /// Contact Dialogflow support if you need to use session entities
+        /// with Google Assistant integration.
         /// </summary>
         /// <param name="sessionEntityType">
         /// Required. The entity type to update. Format:
@@ -862,6 +1249,10 @@ namespace Google.Cloud.Dialogflow.V2
 
         /// <summary>
         /// Updates the specified session entity type.
+        ///
+        /// This method doesn't work with Google Assistant integration.
+        /// Contact Dialogflow support if you need to use session entities
+        /// with Google Assistant integration.
         /// </summary>
         /// <param name="request">
         /// The request object containing all of the parameters for the API call.
@@ -881,6 +1272,10 @@ namespace Google.Cloud.Dialogflow.V2
 
         /// <summary>
         /// Updates the specified session entity type.
+        ///
+        /// This method doesn't work with Google Assistant integration.
+        /// Contact Dialogflow support if you need to use session entities
+        /// with Google Assistant integration.
         /// </summary>
         /// <param name="request">
         /// The request object containing all of the parameters for the API call.
@@ -899,6 +1294,10 @@ namespace Google.Cloud.Dialogflow.V2
 
         /// <summary>
         /// Updates the specified session entity type.
+        ///
+        /// This method doesn't work with Google Assistant integration.
+        /// Contact Dialogflow support if you need to use session entities
+        /// with Google Assistant integration.
         /// </summary>
         /// <param name="request">
         /// The request object containing all of the parameters for the API call.
@@ -918,6 +1317,10 @@ namespace Google.Cloud.Dialogflow.V2
 
         /// <summary>
         /// Deletes the specified session entity type.
+        ///
+        /// This method doesn't work with Google Assistant integration.
+        /// Contact Dialogflow support if you need to use session entities
+        /// with Google Assistant integration.
         /// </summary>
         /// <param name="name">
         /// Required. The name of the entity type to delete. Format:
@@ -941,6 +1344,10 @@ namespace Google.Cloud.Dialogflow.V2
 
         /// <summary>
         /// Deletes the specified session entity type.
+        ///
+        /// This method doesn't work with Google Assistant integration.
+        /// Contact Dialogflow support if you need to use session entities
+        /// with Google Assistant integration.
         /// </summary>
         /// <param name="name">
         /// Required. The name of the entity type to delete. Format:
@@ -961,6 +1368,10 @@ namespace Google.Cloud.Dialogflow.V2
 
         /// <summary>
         /// Deletes the specified session entity type.
+        ///
+        /// This method doesn't work with Google Assistant integration.
+        /// Contact Dialogflow support if you need to use session entities
+        /// with Google Assistant integration.
         /// </summary>
         /// <param name="name">
         /// Required. The name of the entity type to delete. Format:
@@ -981,6 +1392,85 @@ namespace Google.Cloud.Dialogflow.V2
 
         /// <summary>
         /// Deletes the specified session entity type.
+        ///
+        /// This method doesn't work with Google Assistant integration.
+        /// Contact Dialogflow support if you need to use session entities
+        /// with Google Assistant integration.
+        /// </summary>
+        /// <param name="name">
+        /// Required. The name of the entity type to delete. Format:
+        /// `projects/&lt;Project ID&gt;/agent/sessions/&lt;Session ID&gt;/entityTypes/&lt;Entity Type
+        /// Display Name&gt;`.
+        /// </param>
+        /// <param name="callSettings">
+        /// If not null, applies overrides to this RPC call.
+        /// </param>
+        /// <returns>
+        /// A Task that completes when the RPC has completed.
+        /// </returns>
+        public virtual stt::Task DeleteSessionEntityTypeAsync(
+            string name,
+            gaxgrpc::CallSettings callSettings = null) => DeleteSessionEntityTypeAsync(
+                new DeleteSessionEntityTypeRequest
+                {
+                    Name = gax::GaxPreconditions.CheckNotNullOrEmpty(name, nameof(name)),
+                },
+                callSettings);
+
+        /// <summary>
+        /// Deletes the specified session entity type.
+        ///
+        /// This method doesn't work with Google Assistant integration.
+        /// Contact Dialogflow support if you need to use session entities
+        /// with Google Assistant integration.
+        /// </summary>
+        /// <param name="name">
+        /// Required. The name of the entity type to delete. Format:
+        /// `projects/&lt;Project ID&gt;/agent/sessions/&lt;Session ID&gt;/entityTypes/&lt;Entity Type
+        /// Display Name&gt;`.
+        /// </param>
+        /// <param name="cancellationToken">
+        /// A <see cref="st::CancellationToken"/> to use for this RPC.
+        /// </param>
+        /// <returns>
+        /// A Task that completes when the RPC has completed.
+        /// </returns>
+        public virtual stt::Task DeleteSessionEntityTypeAsync(
+            string name,
+            st::CancellationToken cancellationToken) => DeleteSessionEntityTypeAsync(
+                name,
+                gaxgrpc::CallSettings.FromCancellationToken(cancellationToken));
+
+        /// <summary>
+        /// Deletes the specified session entity type.
+        ///
+        /// This method doesn't work with Google Assistant integration.
+        /// Contact Dialogflow support if you need to use session entities
+        /// with Google Assistant integration.
+        /// </summary>
+        /// <param name="name">
+        /// Required. The name of the entity type to delete. Format:
+        /// `projects/&lt;Project ID&gt;/agent/sessions/&lt;Session ID&gt;/entityTypes/&lt;Entity Type
+        /// Display Name&gt;`.
+        /// </param>
+        /// <param name="callSettings">
+        /// If not null, applies overrides to this RPC call.
+        /// </param>
+        public virtual void DeleteSessionEntityType(
+            string name,
+            gaxgrpc::CallSettings callSettings = null) => DeleteSessionEntityType(
+                new DeleteSessionEntityTypeRequest
+                {
+                    Name = gax::GaxPreconditions.CheckNotNullOrEmpty(name, nameof(name)),
+                },
+                callSettings);
+
+        /// <summary>
+        /// Deletes the specified session entity type.
+        ///
+        /// This method doesn't work with Google Assistant integration.
+        /// Contact Dialogflow support if you need to use session entities
+        /// with Google Assistant integration.
         /// </summary>
         /// <param name="request">
         /// The request object containing all of the parameters for the API call.
@@ -1000,6 +1490,10 @@ namespace Google.Cloud.Dialogflow.V2
 
         /// <summary>
         /// Deletes the specified session entity type.
+        ///
+        /// This method doesn't work with Google Assistant integration.
+        /// Contact Dialogflow support if you need to use session entities
+        /// with Google Assistant integration.
         /// </summary>
         /// <param name="request">
         /// The request object containing all of the parameters for the API call.
@@ -1018,6 +1512,10 @@ namespace Google.Cloud.Dialogflow.V2
 
         /// <summary>
         /// Deletes the specified session entity type.
+        ///
+        /// This method doesn't work with Google Assistant integration.
+        /// Contact Dialogflow support if you need to use session entities
+        /// with Google Assistant integration.
         /// </summary>
         /// <param name="request">
         /// The request object containing all of the parameters for the API call.
@@ -1056,15 +1554,20 @@ namespace Google.Cloud.Dialogflow.V2
             SessionEntityTypesSettings effectiveSettings = settings ?? SessionEntityTypesSettings.GetDefault();
             gaxgrpc::ClientHelper clientHelper = new gaxgrpc::ClientHelper(effectiveSettings);
             _callListSessionEntityTypes = clientHelper.BuildApiCall<ListSessionEntityTypesRequest, ListSessionEntityTypesResponse>(
-                GrpcClient.ListSessionEntityTypesAsync, GrpcClient.ListSessionEntityTypes, effectiveSettings.ListSessionEntityTypesSettings);
+                GrpcClient.ListSessionEntityTypesAsync, GrpcClient.ListSessionEntityTypes, effectiveSettings.ListSessionEntityTypesSettings)
+                .WithGoogleRequestParam("parent", request => request.Parent);
             _callGetSessionEntityType = clientHelper.BuildApiCall<GetSessionEntityTypeRequest, SessionEntityType>(
-                GrpcClient.GetSessionEntityTypeAsync, GrpcClient.GetSessionEntityType, effectiveSettings.GetSessionEntityTypeSettings);
+                GrpcClient.GetSessionEntityTypeAsync, GrpcClient.GetSessionEntityType, effectiveSettings.GetSessionEntityTypeSettings)
+                .WithGoogleRequestParam("name", request => request.Name);
             _callCreateSessionEntityType = clientHelper.BuildApiCall<CreateSessionEntityTypeRequest, SessionEntityType>(
-                GrpcClient.CreateSessionEntityTypeAsync, GrpcClient.CreateSessionEntityType, effectiveSettings.CreateSessionEntityTypeSettings);
+                GrpcClient.CreateSessionEntityTypeAsync, GrpcClient.CreateSessionEntityType, effectiveSettings.CreateSessionEntityTypeSettings)
+                .WithGoogleRequestParam("parent", request => request.Parent);
             _callUpdateSessionEntityType = clientHelper.BuildApiCall<UpdateSessionEntityTypeRequest, SessionEntityType>(
-                GrpcClient.UpdateSessionEntityTypeAsync, GrpcClient.UpdateSessionEntityType, effectiveSettings.UpdateSessionEntityTypeSettings);
+                GrpcClient.UpdateSessionEntityTypeAsync, GrpcClient.UpdateSessionEntityType, effectiveSettings.UpdateSessionEntityTypeSettings)
+                .WithGoogleRequestParam("session_entity_type.name", request => request.SessionEntityType?.Name);
             _callDeleteSessionEntityType = clientHelper.BuildApiCall<DeleteSessionEntityTypeRequest, pbwkt::Empty>(
-                GrpcClient.DeleteSessionEntityTypeAsync, GrpcClient.DeleteSessionEntityType, effectiveSettings.DeleteSessionEntityTypeSettings);
+                GrpcClient.DeleteSessionEntityTypeAsync, GrpcClient.DeleteSessionEntityType, effectiveSettings.DeleteSessionEntityTypeSettings)
+                .WithGoogleRequestParam("name", request => request.Name);
             Modify_ApiCall(ref _callListSessionEntityTypes);
             Modify_ListSessionEntityTypesApiCall(ref _callListSessionEntityTypes);
             Modify_ApiCall(ref _callGetSessionEntityType);
@@ -1111,6 +1614,10 @@ namespace Google.Cloud.Dialogflow.V2
 
         /// <summary>
         /// Returns the list of all session entity types in the specified session.
+        ///
+        /// This method doesn't work with Google Assistant integration.
+        /// Contact Dialogflow support if you need to use session entities
+        /// with Google Assistant integration.
         /// </summary>
         /// <param name="request">
         /// The request object containing all of the parameters for the API call.
@@ -1131,6 +1638,10 @@ namespace Google.Cloud.Dialogflow.V2
 
         /// <summary>
         /// Returns the list of all session entity types in the specified session.
+        ///
+        /// This method doesn't work with Google Assistant integration.
+        /// Contact Dialogflow support if you need to use session entities
+        /// with Google Assistant integration.
         /// </summary>
         /// <param name="request">
         /// The request object containing all of the parameters for the API call.
@@ -1151,6 +1662,10 @@ namespace Google.Cloud.Dialogflow.V2
 
         /// <summary>
         /// Retrieves the specified session entity type.
+        ///
+        /// This method doesn't work with Google Assistant integration.
+        /// Contact Dialogflow support if you need to use session entities
+        /// with Google Assistant integration.
         /// </summary>
         /// <param name="request">
         /// The request object containing all of the parameters for the API call.
@@ -1171,6 +1686,10 @@ namespace Google.Cloud.Dialogflow.V2
 
         /// <summary>
         /// Retrieves the specified session entity type.
+        ///
+        /// This method doesn't work with Google Assistant integration.
+        /// Contact Dialogflow support if you need to use session entities
+        /// with Google Assistant integration.
         /// </summary>
         /// <param name="request">
         /// The request object containing all of the parameters for the API call.
@@ -1191,6 +1710,13 @@ namespace Google.Cloud.Dialogflow.V2
 
         /// <summary>
         /// Creates a session entity type.
+        ///
+        /// If the specified session entity type already exists, overrides the session
+        /// entity type.
+        ///
+        /// This method doesn't work with Google Assistant integration.
+        /// Contact Dialogflow support if you need to use session entities
+        /// with Google Assistant integration.
         /// </summary>
         /// <param name="request">
         /// The request object containing all of the parameters for the API call.
@@ -1211,6 +1737,13 @@ namespace Google.Cloud.Dialogflow.V2
 
         /// <summary>
         /// Creates a session entity type.
+        ///
+        /// If the specified session entity type already exists, overrides the session
+        /// entity type.
+        ///
+        /// This method doesn't work with Google Assistant integration.
+        /// Contact Dialogflow support if you need to use session entities
+        /// with Google Assistant integration.
         /// </summary>
         /// <param name="request">
         /// The request object containing all of the parameters for the API call.
@@ -1231,6 +1764,10 @@ namespace Google.Cloud.Dialogflow.V2
 
         /// <summary>
         /// Updates the specified session entity type.
+        ///
+        /// This method doesn't work with Google Assistant integration.
+        /// Contact Dialogflow support if you need to use session entities
+        /// with Google Assistant integration.
         /// </summary>
         /// <param name="request">
         /// The request object containing all of the parameters for the API call.
@@ -1251,6 +1788,10 @@ namespace Google.Cloud.Dialogflow.V2
 
         /// <summary>
         /// Updates the specified session entity type.
+        ///
+        /// This method doesn't work with Google Assistant integration.
+        /// Contact Dialogflow support if you need to use session entities
+        /// with Google Assistant integration.
         /// </summary>
         /// <param name="request">
         /// The request object containing all of the parameters for the API call.
@@ -1271,6 +1812,10 @@ namespace Google.Cloud.Dialogflow.V2
 
         /// <summary>
         /// Deletes the specified session entity type.
+        ///
+        /// This method doesn't work with Google Assistant integration.
+        /// Contact Dialogflow support if you need to use session entities
+        /// with Google Assistant integration.
         /// </summary>
         /// <param name="request">
         /// The request object containing all of the parameters for the API call.
@@ -1291,6 +1836,10 @@ namespace Google.Cloud.Dialogflow.V2
 
         /// <summary>
         /// Deletes the specified session entity type.
+        ///
+        /// This method doesn't work with Google Assistant integration.
+        /// Contact Dialogflow support if you need to use session entities
+        /// with Google Assistant integration.
         /// </summary>
         /// <param name="request">
         /// The request object containing all of the parameters for the API call.

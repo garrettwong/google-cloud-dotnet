@@ -3,7 +3,7 @@
 //     source: google/cloud/dataproc/v1/clusters.proto
 // </auto-generated>
 // Original file comments:
-// Copyright 2017 Google Inc.
+// Copyright 2019 Google LLC.
 //
 // Licensed under the Apache License, Version 2.0 (the "License");
 // you may not use this file except in compliance with the License.
@@ -17,7 +17,8 @@
 // See the License for the specific language governing permissions and
 // limitations under the License.
 //
-#pragma warning disable 1591
+//
+#pragma warning disable 0414, 1591
 #region Designer generated code
 
 using grpc = global::Grpc.Core;
@@ -25,63 +26,63 @@ using grpc = global::Grpc.Core;
 namespace Google.Cloud.Dataproc.V1 {
   /// <summary>
   /// The ClusterControllerService provides methods to manage clusters
-  /// of Google Compute Engine instances.
+  /// of Compute Engine instances.
   /// </summary>
   public static partial class ClusterController
   {
     static readonly string __ServiceName = "google.cloud.dataproc.v1.ClusterController";
 
-    static readonly grpc::Marshaller<global::Google.Cloud.Dataproc.V1.CreateClusterRequest> __Marshaller_CreateClusterRequest = grpc::Marshallers.Create((arg) => global::Google.Protobuf.MessageExtensions.ToByteArray(arg), global::Google.Cloud.Dataproc.V1.CreateClusterRequest.Parser.ParseFrom);
-    static readonly grpc::Marshaller<global::Google.LongRunning.Operation> __Marshaller_Operation = grpc::Marshallers.Create((arg) => global::Google.Protobuf.MessageExtensions.ToByteArray(arg), global::Google.LongRunning.Operation.Parser.ParseFrom);
-    static readonly grpc::Marshaller<global::Google.Cloud.Dataproc.V1.UpdateClusterRequest> __Marshaller_UpdateClusterRequest = grpc::Marshallers.Create((arg) => global::Google.Protobuf.MessageExtensions.ToByteArray(arg), global::Google.Cloud.Dataproc.V1.UpdateClusterRequest.Parser.ParseFrom);
-    static readonly grpc::Marshaller<global::Google.Cloud.Dataproc.V1.DeleteClusterRequest> __Marshaller_DeleteClusterRequest = grpc::Marshallers.Create((arg) => global::Google.Protobuf.MessageExtensions.ToByteArray(arg), global::Google.Cloud.Dataproc.V1.DeleteClusterRequest.Parser.ParseFrom);
-    static readonly grpc::Marshaller<global::Google.Cloud.Dataproc.V1.GetClusterRequest> __Marshaller_GetClusterRequest = grpc::Marshallers.Create((arg) => global::Google.Protobuf.MessageExtensions.ToByteArray(arg), global::Google.Cloud.Dataproc.V1.GetClusterRequest.Parser.ParseFrom);
-    static readonly grpc::Marshaller<global::Google.Cloud.Dataproc.V1.Cluster> __Marshaller_Cluster = grpc::Marshallers.Create((arg) => global::Google.Protobuf.MessageExtensions.ToByteArray(arg), global::Google.Cloud.Dataproc.V1.Cluster.Parser.ParseFrom);
-    static readonly grpc::Marshaller<global::Google.Cloud.Dataproc.V1.ListClustersRequest> __Marshaller_ListClustersRequest = grpc::Marshallers.Create((arg) => global::Google.Protobuf.MessageExtensions.ToByteArray(arg), global::Google.Cloud.Dataproc.V1.ListClustersRequest.Parser.ParseFrom);
-    static readonly grpc::Marshaller<global::Google.Cloud.Dataproc.V1.ListClustersResponse> __Marshaller_ListClustersResponse = grpc::Marshallers.Create((arg) => global::Google.Protobuf.MessageExtensions.ToByteArray(arg), global::Google.Cloud.Dataproc.V1.ListClustersResponse.Parser.ParseFrom);
-    static readonly grpc::Marshaller<global::Google.Cloud.Dataproc.V1.DiagnoseClusterRequest> __Marshaller_DiagnoseClusterRequest = grpc::Marshallers.Create((arg) => global::Google.Protobuf.MessageExtensions.ToByteArray(arg), global::Google.Cloud.Dataproc.V1.DiagnoseClusterRequest.Parser.ParseFrom);
+    static readonly grpc::Marshaller<global::Google.Cloud.Dataproc.V1.CreateClusterRequest> __Marshaller_google_cloud_dataproc_v1_CreateClusterRequest = grpc::Marshallers.Create((arg) => global::Google.Protobuf.MessageExtensions.ToByteArray(arg), global::Google.Cloud.Dataproc.V1.CreateClusterRequest.Parser.ParseFrom);
+    static readonly grpc::Marshaller<global::Google.LongRunning.Operation> __Marshaller_google_longrunning_Operation = grpc::Marshallers.Create((arg) => global::Google.Protobuf.MessageExtensions.ToByteArray(arg), global::Google.LongRunning.Operation.Parser.ParseFrom);
+    static readonly grpc::Marshaller<global::Google.Cloud.Dataproc.V1.UpdateClusterRequest> __Marshaller_google_cloud_dataproc_v1_UpdateClusterRequest = grpc::Marshallers.Create((arg) => global::Google.Protobuf.MessageExtensions.ToByteArray(arg), global::Google.Cloud.Dataproc.V1.UpdateClusterRequest.Parser.ParseFrom);
+    static readonly grpc::Marshaller<global::Google.Cloud.Dataproc.V1.DeleteClusterRequest> __Marshaller_google_cloud_dataproc_v1_DeleteClusterRequest = grpc::Marshallers.Create((arg) => global::Google.Protobuf.MessageExtensions.ToByteArray(arg), global::Google.Cloud.Dataproc.V1.DeleteClusterRequest.Parser.ParseFrom);
+    static readonly grpc::Marshaller<global::Google.Cloud.Dataproc.V1.GetClusterRequest> __Marshaller_google_cloud_dataproc_v1_GetClusterRequest = grpc::Marshallers.Create((arg) => global::Google.Protobuf.MessageExtensions.ToByteArray(arg), global::Google.Cloud.Dataproc.V1.GetClusterRequest.Parser.ParseFrom);
+    static readonly grpc::Marshaller<global::Google.Cloud.Dataproc.V1.Cluster> __Marshaller_google_cloud_dataproc_v1_Cluster = grpc::Marshallers.Create((arg) => global::Google.Protobuf.MessageExtensions.ToByteArray(arg), global::Google.Cloud.Dataproc.V1.Cluster.Parser.ParseFrom);
+    static readonly grpc::Marshaller<global::Google.Cloud.Dataproc.V1.ListClustersRequest> __Marshaller_google_cloud_dataproc_v1_ListClustersRequest = grpc::Marshallers.Create((arg) => global::Google.Protobuf.MessageExtensions.ToByteArray(arg), global::Google.Cloud.Dataproc.V1.ListClustersRequest.Parser.ParseFrom);
+    static readonly grpc::Marshaller<global::Google.Cloud.Dataproc.V1.ListClustersResponse> __Marshaller_google_cloud_dataproc_v1_ListClustersResponse = grpc::Marshallers.Create((arg) => global::Google.Protobuf.MessageExtensions.ToByteArray(arg), global::Google.Cloud.Dataproc.V1.ListClustersResponse.Parser.ParseFrom);
+    static readonly grpc::Marshaller<global::Google.Cloud.Dataproc.V1.DiagnoseClusterRequest> __Marshaller_google_cloud_dataproc_v1_DiagnoseClusterRequest = grpc::Marshallers.Create((arg) => global::Google.Protobuf.MessageExtensions.ToByteArray(arg), global::Google.Cloud.Dataproc.V1.DiagnoseClusterRequest.Parser.ParseFrom);
 
     static readonly grpc::Method<global::Google.Cloud.Dataproc.V1.CreateClusterRequest, global::Google.LongRunning.Operation> __Method_CreateCluster = new grpc::Method<global::Google.Cloud.Dataproc.V1.CreateClusterRequest, global::Google.LongRunning.Operation>(
         grpc::MethodType.Unary,
         __ServiceName,
         "CreateCluster",
-        __Marshaller_CreateClusterRequest,
-        __Marshaller_Operation);
+        __Marshaller_google_cloud_dataproc_v1_CreateClusterRequest,
+        __Marshaller_google_longrunning_Operation);
 
     static readonly grpc::Method<global::Google.Cloud.Dataproc.V1.UpdateClusterRequest, global::Google.LongRunning.Operation> __Method_UpdateCluster = new grpc::Method<global::Google.Cloud.Dataproc.V1.UpdateClusterRequest, global::Google.LongRunning.Operation>(
         grpc::MethodType.Unary,
         __ServiceName,
         "UpdateCluster",
-        __Marshaller_UpdateClusterRequest,
-        __Marshaller_Operation);
+        __Marshaller_google_cloud_dataproc_v1_UpdateClusterRequest,
+        __Marshaller_google_longrunning_Operation);
 
     static readonly grpc::Method<global::Google.Cloud.Dataproc.V1.DeleteClusterRequest, global::Google.LongRunning.Operation> __Method_DeleteCluster = new grpc::Method<global::Google.Cloud.Dataproc.V1.DeleteClusterRequest, global::Google.LongRunning.Operation>(
         grpc::MethodType.Unary,
         __ServiceName,
         "DeleteCluster",
-        __Marshaller_DeleteClusterRequest,
-        __Marshaller_Operation);
+        __Marshaller_google_cloud_dataproc_v1_DeleteClusterRequest,
+        __Marshaller_google_longrunning_Operation);
 
     static readonly grpc::Method<global::Google.Cloud.Dataproc.V1.GetClusterRequest, global::Google.Cloud.Dataproc.V1.Cluster> __Method_GetCluster = new grpc::Method<global::Google.Cloud.Dataproc.V1.GetClusterRequest, global::Google.Cloud.Dataproc.V1.Cluster>(
         grpc::MethodType.Unary,
         __ServiceName,
         "GetCluster",
-        __Marshaller_GetClusterRequest,
-        __Marshaller_Cluster);
+        __Marshaller_google_cloud_dataproc_v1_GetClusterRequest,
+        __Marshaller_google_cloud_dataproc_v1_Cluster);
 
     static readonly grpc::Method<global::Google.Cloud.Dataproc.V1.ListClustersRequest, global::Google.Cloud.Dataproc.V1.ListClustersResponse> __Method_ListClusters = new grpc::Method<global::Google.Cloud.Dataproc.V1.ListClustersRequest, global::Google.Cloud.Dataproc.V1.ListClustersResponse>(
         grpc::MethodType.Unary,
         __ServiceName,
         "ListClusters",
-        __Marshaller_ListClustersRequest,
-        __Marshaller_ListClustersResponse);
+        __Marshaller_google_cloud_dataproc_v1_ListClustersRequest,
+        __Marshaller_google_cloud_dataproc_v1_ListClustersResponse);
 
     static readonly grpc::Method<global::Google.Cloud.Dataproc.V1.DiagnoseClusterRequest, global::Google.LongRunning.Operation> __Method_DiagnoseCluster = new grpc::Method<global::Google.Cloud.Dataproc.V1.DiagnoseClusterRequest, global::Google.LongRunning.Operation>(
         grpc::MethodType.Unary,
         __ServiceName,
         "DiagnoseCluster",
-        __Marshaller_DiagnoseClusterRequest,
-        __Marshaller_Operation);
+        __Marshaller_google_cloud_dataproc_v1_DiagnoseClusterRequest,
+        __Marshaller_google_longrunning_Operation);
 
     /// <summary>Service descriptor</summary>
     public static global::Google.Protobuf.Reflection.ServiceDescriptor Descriptor
@@ -90,10 +91,13 @@ namespace Google.Cloud.Dataproc.V1 {
     }
 
     /// <summary>Base class for server-side implementations of ClusterController</summary>
+    [grpc::BindServiceMethod(typeof(ClusterController), "BindService")]
     public abstract partial class ClusterControllerBase
     {
       /// <summary>
-      /// Creates a cluster in a project.
+      /// Creates a cluster in a project. The returned
+      /// [Operation.metadata][google.longrunning.Operation.metadata] will be
+      /// [ClusterOperationMetadata](/dataproc/docs/reference/rpc/google.cloud.dataproc.v1#clusteroperationmetadata).
       /// </summary>
       /// <param name="request">The request received from the client.</param>
       /// <param name="context">The context of the server-side call handler being invoked.</param>
@@ -104,7 +108,9 @@ namespace Google.Cloud.Dataproc.V1 {
       }
 
       /// <summary>
-      /// Updates a cluster in a project.
+      /// Updates a cluster in a project. The returned
+      /// [Operation.metadata][google.longrunning.Operation.metadata] will be
+      /// [ClusterOperationMetadata](/dataproc/docs/reference/rpc/google.cloud.dataproc.v1#clusteroperationmetadata).
       /// </summary>
       /// <param name="request">The request received from the client.</param>
       /// <param name="context">The context of the server-side call handler being invoked.</param>
@@ -115,7 +121,9 @@ namespace Google.Cloud.Dataproc.V1 {
       }
 
       /// <summary>
-      /// Deletes a cluster in a project.
+      /// Deletes a cluster in a project. The returned
+      /// [Operation.metadata][google.longrunning.Operation.metadata] will be
+      /// [ClusterOperationMetadata](/dataproc/docs/reference/rpc/google.cloud.dataproc.v1#clusteroperationmetadata).
       /// </summary>
       /// <param name="request">The request received from the client.</param>
       /// <param name="context">The context of the server-side call handler being invoked.</param>
@@ -148,9 +156,13 @@ namespace Google.Cloud.Dataproc.V1 {
       }
 
       /// <summary>
-      /// Gets cluster diagnostic information.
-      /// After the operation completes, the Operation.response field
-      /// contains `DiagnoseClusterOutputLocation`.
+      /// Gets cluster diagnostic information. The returned
+      /// [Operation.metadata][google.longrunning.Operation.metadata] will be
+      /// [ClusterOperationMetadata](/dataproc/docs/reference/rpc/google.cloud.dataproc.v1#clusteroperationmetadata).
+      /// After the operation completes,
+      /// [Operation.response][google.longrunning.Operation.response]
+      /// contains
+      /// [DiagnoseClusterResults](/dataproc/docs/reference/rpc/google.cloud.dataproc.v1#diagnoseclusterresults).
       /// </summary>
       /// <param name="request">The request received from the client.</param>
       /// <param name="context">The context of the server-side call handler being invoked.</param>
@@ -186,7 +198,9 @@ namespace Google.Cloud.Dataproc.V1 {
       }
 
       /// <summary>
-      /// Creates a cluster in a project.
+      /// Creates a cluster in a project. The returned
+      /// [Operation.metadata][google.longrunning.Operation.metadata] will be
+      /// [ClusterOperationMetadata](/dataproc/docs/reference/rpc/google.cloud.dataproc.v1#clusteroperationmetadata).
       /// </summary>
       /// <param name="request">The request to send to the server.</param>
       /// <param name="headers">The initial metadata to send with the call. This parameter is optional.</param>
@@ -198,7 +212,9 @@ namespace Google.Cloud.Dataproc.V1 {
         return CreateCluster(request, new grpc::CallOptions(headers, deadline, cancellationToken));
       }
       /// <summary>
-      /// Creates a cluster in a project.
+      /// Creates a cluster in a project. The returned
+      /// [Operation.metadata][google.longrunning.Operation.metadata] will be
+      /// [ClusterOperationMetadata](/dataproc/docs/reference/rpc/google.cloud.dataproc.v1#clusteroperationmetadata).
       /// </summary>
       /// <param name="request">The request to send to the server.</param>
       /// <param name="options">The options for the call.</param>
@@ -208,7 +224,9 @@ namespace Google.Cloud.Dataproc.V1 {
         return CallInvoker.BlockingUnaryCall(__Method_CreateCluster, null, options, request);
       }
       /// <summary>
-      /// Creates a cluster in a project.
+      /// Creates a cluster in a project. The returned
+      /// [Operation.metadata][google.longrunning.Operation.metadata] will be
+      /// [ClusterOperationMetadata](/dataproc/docs/reference/rpc/google.cloud.dataproc.v1#clusteroperationmetadata).
       /// </summary>
       /// <param name="request">The request to send to the server.</param>
       /// <param name="headers">The initial metadata to send with the call. This parameter is optional.</param>
@@ -220,7 +238,9 @@ namespace Google.Cloud.Dataproc.V1 {
         return CreateClusterAsync(request, new grpc::CallOptions(headers, deadline, cancellationToken));
       }
       /// <summary>
-      /// Creates a cluster in a project.
+      /// Creates a cluster in a project. The returned
+      /// [Operation.metadata][google.longrunning.Operation.metadata] will be
+      /// [ClusterOperationMetadata](/dataproc/docs/reference/rpc/google.cloud.dataproc.v1#clusteroperationmetadata).
       /// </summary>
       /// <param name="request">The request to send to the server.</param>
       /// <param name="options">The options for the call.</param>
@@ -230,7 +250,9 @@ namespace Google.Cloud.Dataproc.V1 {
         return CallInvoker.AsyncUnaryCall(__Method_CreateCluster, null, options, request);
       }
       /// <summary>
-      /// Updates a cluster in a project.
+      /// Updates a cluster in a project. The returned
+      /// [Operation.metadata][google.longrunning.Operation.metadata] will be
+      /// [ClusterOperationMetadata](/dataproc/docs/reference/rpc/google.cloud.dataproc.v1#clusteroperationmetadata).
       /// </summary>
       /// <param name="request">The request to send to the server.</param>
       /// <param name="headers">The initial metadata to send with the call. This parameter is optional.</param>
@@ -242,7 +264,9 @@ namespace Google.Cloud.Dataproc.V1 {
         return UpdateCluster(request, new grpc::CallOptions(headers, deadline, cancellationToken));
       }
       /// <summary>
-      /// Updates a cluster in a project.
+      /// Updates a cluster in a project. The returned
+      /// [Operation.metadata][google.longrunning.Operation.metadata] will be
+      /// [ClusterOperationMetadata](/dataproc/docs/reference/rpc/google.cloud.dataproc.v1#clusteroperationmetadata).
       /// </summary>
       /// <param name="request">The request to send to the server.</param>
       /// <param name="options">The options for the call.</param>
@@ -252,7 +276,9 @@ namespace Google.Cloud.Dataproc.V1 {
         return CallInvoker.BlockingUnaryCall(__Method_UpdateCluster, null, options, request);
       }
       /// <summary>
-      /// Updates a cluster in a project.
+      /// Updates a cluster in a project. The returned
+      /// [Operation.metadata][google.longrunning.Operation.metadata] will be
+      /// [ClusterOperationMetadata](/dataproc/docs/reference/rpc/google.cloud.dataproc.v1#clusteroperationmetadata).
       /// </summary>
       /// <param name="request">The request to send to the server.</param>
       /// <param name="headers">The initial metadata to send with the call. This parameter is optional.</param>
@@ -264,7 +290,9 @@ namespace Google.Cloud.Dataproc.V1 {
         return UpdateClusterAsync(request, new grpc::CallOptions(headers, deadline, cancellationToken));
       }
       /// <summary>
-      /// Updates a cluster in a project.
+      /// Updates a cluster in a project. The returned
+      /// [Operation.metadata][google.longrunning.Operation.metadata] will be
+      /// [ClusterOperationMetadata](/dataproc/docs/reference/rpc/google.cloud.dataproc.v1#clusteroperationmetadata).
       /// </summary>
       /// <param name="request">The request to send to the server.</param>
       /// <param name="options">The options for the call.</param>
@@ -274,7 +302,9 @@ namespace Google.Cloud.Dataproc.V1 {
         return CallInvoker.AsyncUnaryCall(__Method_UpdateCluster, null, options, request);
       }
       /// <summary>
-      /// Deletes a cluster in a project.
+      /// Deletes a cluster in a project. The returned
+      /// [Operation.metadata][google.longrunning.Operation.metadata] will be
+      /// [ClusterOperationMetadata](/dataproc/docs/reference/rpc/google.cloud.dataproc.v1#clusteroperationmetadata).
       /// </summary>
       /// <param name="request">The request to send to the server.</param>
       /// <param name="headers">The initial metadata to send with the call. This parameter is optional.</param>
@@ -286,7 +316,9 @@ namespace Google.Cloud.Dataproc.V1 {
         return DeleteCluster(request, new grpc::CallOptions(headers, deadline, cancellationToken));
       }
       /// <summary>
-      /// Deletes a cluster in a project.
+      /// Deletes a cluster in a project. The returned
+      /// [Operation.metadata][google.longrunning.Operation.metadata] will be
+      /// [ClusterOperationMetadata](/dataproc/docs/reference/rpc/google.cloud.dataproc.v1#clusteroperationmetadata).
       /// </summary>
       /// <param name="request">The request to send to the server.</param>
       /// <param name="options">The options for the call.</param>
@@ -296,7 +328,9 @@ namespace Google.Cloud.Dataproc.V1 {
         return CallInvoker.BlockingUnaryCall(__Method_DeleteCluster, null, options, request);
       }
       /// <summary>
-      /// Deletes a cluster in a project.
+      /// Deletes a cluster in a project. The returned
+      /// [Operation.metadata][google.longrunning.Operation.metadata] will be
+      /// [ClusterOperationMetadata](/dataproc/docs/reference/rpc/google.cloud.dataproc.v1#clusteroperationmetadata).
       /// </summary>
       /// <param name="request">The request to send to the server.</param>
       /// <param name="headers">The initial metadata to send with the call. This parameter is optional.</param>
@@ -308,7 +342,9 @@ namespace Google.Cloud.Dataproc.V1 {
         return DeleteClusterAsync(request, new grpc::CallOptions(headers, deadline, cancellationToken));
       }
       /// <summary>
-      /// Deletes a cluster in a project.
+      /// Deletes a cluster in a project. The returned
+      /// [Operation.metadata][google.longrunning.Operation.metadata] will be
+      /// [ClusterOperationMetadata](/dataproc/docs/reference/rpc/google.cloud.dataproc.v1#clusteroperationmetadata).
       /// </summary>
       /// <param name="request">The request to send to the server.</param>
       /// <param name="options">The options for the call.</param>
@@ -406,9 +442,13 @@ namespace Google.Cloud.Dataproc.V1 {
         return CallInvoker.AsyncUnaryCall(__Method_ListClusters, null, options, request);
       }
       /// <summary>
-      /// Gets cluster diagnostic information.
-      /// After the operation completes, the Operation.response field
-      /// contains `DiagnoseClusterOutputLocation`.
+      /// Gets cluster diagnostic information. The returned
+      /// [Operation.metadata][google.longrunning.Operation.metadata] will be
+      /// [ClusterOperationMetadata](/dataproc/docs/reference/rpc/google.cloud.dataproc.v1#clusteroperationmetadata).
+      /// After the operation completes,
+      /// [Operation.response][google.longrunning.Operation.response]
+      /// contains
+      /// [DiagnoseClusterResults](/dataproc/docs/reference/rpc/google.cloud.dataproc.v1#diagnoseclusterresults).
       /// </summary>
       /// <param name="request">The request to send to the server.</param>
       /// <param name="headers">The initial metadata to send with the call. This parameter is optional.</param>
@@ -420,9 +460,13 @@ namespace Google.Cloud.Dataproc.V1 {
         return DiagnoseCluster(request, new grpc::CallOptions(headers, deadline, cancellationToken));
       }
       /// <summary>
-      /// Gets cluster diagnostic information.
-      /// After the operation completes, the Operation.response field
-      /// contains `DiagnoseClusterOutputLocation`.
+      /// Gets cluster diagnostic information. The returned
+      /// [Operation.metadata][google.longrunning.Operation.metadata] will be
+      /// [ClusterOperationMetadata](/dataproc/docs/reference/rpc/google.cloud.dataproc.v1#clusteroperationmetadata).
+      /// After the operation completes,
+      /// [Operation.response][google.longrunning.Operation.response]
+      /// contains
+      /// [DiagnoseClusterResults](/dataproc/docs/reference/rpc/google.cloud.dataproc.v1#diagnoseclusterresults).
       /// </summary>
       /// <param name="request">The request to send to the server.</param>
       /// <param name="options">The options for the call.</param>
@@ -432,9 +476,13 @@ namespace Google.Cloud.Dataproc.V1 {
         return CallInvoker.BlockingUnaryCall(__Method_DiagnoseCluster, null, options, request);
       }
       /// <summary>
-      /// Gets cluster diagnostic information.
-      /// After the operation completes, the Operation.response field
-      /// contains `DiagnoseClusterOutputLocation`.
+      /// Gets cluster diagnostic information. The returned
+      /// [Operation.metadata][google.longrunning.Operation.metadata] will be
+      /// [ClusterOperationMetadata](/dataproc/docs/reference/rpc/google.cloud.dataproc.v1#clusteroperationmetadata).
+      /// After the operation completes,
+      /// [Operation.response][google.longrunning.Operation.response]
+      /// contains
+      /// [DiagnoseClusterResults](/dataproc/docs/reference/rpc/google.cloud.dataproc.v1#diagnoseclusterresults).
       /// </summary>
       /// <param name="request">The request to send to the server.</param>
       /// <param name="headers">The initial metadata to send with the call. This parameter is optional.</param>
@@ -446,9 +494,13 @@ namespace Google.Cloud.Dataproc.V1 {
         return DiagnoseClusterAsync(request, new grpc::CallOptions(headers, deadline, cancellationToken));
       }
       /// <summary>
-      /// Gets cluster diagnostic information.
-      /// After the operation completes, the Operation.response field
-      /// contains `DiagnoseClusterOutputLocation`.
+      /// Gets cluster diagnostic information. The returned
+      /// [Operation.metadata][google.longrunning.Operation.metadata] will be
+      /// [ClusterOperationMetadata](/dataproc/docs/reference/rpc/google.cloud.dataproc.v1#clusteroperationmetadata).
+      /// After the operation completes,
+      /// [Operation.response][google.longrunning.Operation.response]
+      /// contains
+      /// [DiagnoseClusterResults](/dataproc/docs/reference/rpc/google.cloud.dataproc.v1#diagnoseclusterresults).
       /// </summary>
       /// <param name="request">The request to send to the server.</param>
       /// <param name="options">The options for the call.</param>
@@ -475,6 +527,20 @@ namespace Google.Cloud.Dataproc.V1 {
           .AddMethod(__Method_GetCluster, serviceImpl.GetCluster)
           .AddMethod(__Method_ListClusters, serviceImpl.ListClusters)
           .AddMethod(__Method_DiagnoseCluster, serviceImpl.DiagnoseCluster).Build();
+    }
+
+    /// <summary>Register service method with a service binder with or without implementation. Useful when customizing the  service binding logic.
+    /// Note: this method is part of an experimental API that can change or be removed without any prior notice.</summary>
+    /// <param name="serviceBinder">Service methods will be bound by calling <c>AddMethod</c> on this object.</param>
+    /// <param name="serviceImpl">An object implementing the server-side handling logic.</param>
+    public static void BindService(grpc::ServiceBinderBase serviceBinder, ClusterControllerBase serviceImpl)
+    {
+      serviceBinder.AddMethod(__Method_CreateCluster, serviceImpl == null ? null : new grpc::UnaryServerMethod<global::Google.Cloud.Dataproc.V1.CreateClusterRequest, global::Google.LongRunning.Operation>(serviceImpl.CreateCluster));
+      serviceBinder.AddMethod(__Method_UpdateCluster, serviceImpl == null ? null : new grpc::UnaryServerMethod<global::Google.Cloud.Dataproc.V1.UpdateClusterRequest, global::Google.LongRunning.Operation>(serviceImpl.UpdateCluster));
+      serviceBinder.AddMethod(__Method_DeleteCluster, serviceImpl == null ? null : new grpc::UnaryServerMethod<global::Google.Cloud.Dataproc.V1.DeleteClusterRequest, global::Google.LongRunning.Operation>(serviceImpl.DeleteCluster));
+      serviceBinder.AddMethod(__Method_GetCluster, serviceImpl == null ? null : new grpc::UnaryServerMethod<global::Google.Cloud.Dataproc.V1.GetClusterRequest, global::Google.Cloud.Dataproc.V1.Cluster>(serviceImpl.GetCluster));
+      serviceBinder.AddMethod(__Method_ListClusters, serviceImpl == null ? null : new grpc::UnaryServerMethod<global::Google.Cloud.Dataproc.V1.ListClustersRequest, global::Google.Cloud.Dataproc.V1.ListClustersResponse>(serviceImpl.ListClusters));
+      serviceBinder.AddMethod(__Method_DiagnoseCluster, serviceImpl == null ? null : new grpc::UnaryServerMethod<global::Google.Cloud.Dataproc.V1.DiagnoseClusterRequest, global::Google.LongRunning.Operation>(serviceImpl.DiagnoseCluster));
     }
 
   }

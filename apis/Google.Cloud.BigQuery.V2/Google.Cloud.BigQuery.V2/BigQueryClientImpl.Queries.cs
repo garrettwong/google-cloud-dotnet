@@ -28,13 +28,11 @@ namespace Google.Cloud.BigQuery.V2
     {
         private sealed class TableRowPageManager : IPageManager<TabledataResource.ListRequest, TableDataList, BigQueryRow>
         {
-            private readonly BigQueryClient _client;
             private readonly TableSchema _schema;
             private readonly Dictionary<string, int> _fieldNameToIndexMap;
 
-            internal TableRowPageManager(BigQueryClient client, TableSchema schema)
+            internal TableRowPageManager(TableSchema schema)
             {
-                _client = client;
                 _schema = schema;
                 _fieldNameToIndexMap = schema.IndexFieldNames();                
             }
@@ -74,24 +72,32 @@ namespace Google.Cloud.BigQuery.V2
             return job.GetQueryResults(options);
         }
 
+        internal override GetQueryResultsResponse GetRawQueryResults(JobReference jobReference, GetQueryResultsOptions options, DateTime? timeoutBase)
+        {
+            var request = CreateGetQueryResultsRequest(jobReference, options, timeoutBase ?? Clock.GetCurrentDateTimeUtc());
+            return request.Execute();
+        }
+
         internal override BigQueryResults GetQueryResults(JobReference jobReference, TableReference tableReference, GetQueryResultsOptions options)
         {
             GaxPreconditions.CheckNotNull(jobReference, nameof(jobReference));
-            GaxPreconditions.CheckNotNull(tableReference, nameof(tableReference));
-            // This validates the options before we make any RPCs
-            var listRowsOptions = options?.ToListRowsOptions();
 
             DateTime start = Clock.GetCurrentDateTimeUtc();
             while (true)
             {
                 // This will throw if the query has timed out.
-                var request = CreateGetQueryResultsRequest(jobReference, options, start);
-                var response = request.Execute();
+                var response = GetRawQueryResults(jobReference, options, start);
                 if (response.JobComplete == true)
                 {
-                    return new BigQueryResults(this, response, tableReference, listRowsOptions);
+                    return new BigQueryResults(this, response, tableReference, options);
                 }
             }
+        }
+
+        internal override Task<GetQueryResultsResponse> GetRawQueryResultsAsync(JobReference jobReference, GetQueryResultsOptions options, DateTime? timeoutBase, CancellationToken cancellationToken)
+        {
+            var request = CreateGetQueryResultsRequest(jobReference, options, timeoutBase ?? Clock.GetCurrentDateTimeUtc());
+            return request.ExecuteAsync(cancellationToken);
         }
 
         /// <inheritdoc />
@@ -105,19 +111,15 @@ namespace Google.Cloud.BigQuery.V2
         internal override async Task<BigQueryResults> GetQueryResultsAsync(JobReference jobReference, TableReference tableReference, GetQueryResultsOptions options, CancellationToken cancellationToken)
         {
             GaxPreconditions.CheckNotNull(jobReference, nameof(jobReference));
-            GaxPreconditions.CheckNotNull(tableReference, nameof(tableReference));
-            // This validates the options before we make any RPCs
-            var listRowsOptions = options?.ToListRowsOptions();
 
             DateTime start = Clock.GetCurrentDateTimeUtc();
             while (true)
             {
                 // This will throw if the query has timed out.
-                var request = CreateGetQueryResultsRequest(jobReference, options, start);
-                var response = await request.ExecuteAsync(cancellationToken).ConfigureAwait(false);
+                var response = await GetRawQueryResultsAsync(jobReference, options, start, cancellationToken).ConfigureAwait(false);
                 if (response.JobComplete == true)
                 {
-                    return new BigQueryResults(this, response, tableReference, listRowsOptions);
+                    return new BigQueryResults(this, response, tableReference, options);
                 }
             }
         }
@@ -128,7 +130,7 @@ namespace Google.Cloud.BigQuery.V2
             GaxPreconditions.CheckNotNull(tableReference, nameof(tableReference));
             schema = schema ?? GetSchema(tableReference);
 
-            var pageManager = new TableRowPageManager(this, schema);
+            var pageManager = new TableRowPageManager(schema);
             return new RestPagedEnumerable<TabledataResource.ListRequest, TableDataList, BigQueryRow>(
                 () => CreateListRequest(tableReference, options), pageManager);
         }
@@ -141,18 +143,12 @@ namespace Google.Cloud.BigQuery.V2
             // a non-task value. We could defer until the first MoveNext call, but that's tricky.
             schema = schema ?? GetSchema(tableReference);
 
-            var pageManager = new TableRowPageManager(this, schema);
+            var pageManager = new TableRowPageManager(schema);
             return new RestPagedAsyncEnumerable<TabledataResource.ListRequest, TableDataList, BigQueryRow>(
                 () => CreateListRequest(tableReference, options), pageManager);
         }
 
         // Request creation
-        private JobsResource.InsertRequest CreateInsertQueryJobRequest(JobConfigurationQuery query, QueryOptions options)
-        {
-            options?.ModifyRequest(query);
-            return CreateInsertJobRequest(new JobConfiguration { Query = query, DryRun = options?.DryRun }, options);
-        }
-
         private JobsResource.InsertRequest CreateInsertQueryJobRequest(string sql, IEnumerable<BigQueryParameter> parameters, QueryOptions options)
         {
             GaxPreconditions.CheckNotNull(sql, nameof(sql));
@@ -187,7 +183,6 @@ namespace Google.Cloud.BigQuery.V2
         private TabledataResource.ListRequest CreateListRequest(TableReference tableReference, ListRowsOptions options)
         {
             var request = Service.Tabledata.List(tableReference.ProjectId, tableReference.DatasetId, tableReference.TableId);
-            request.ModifyRequest += _versionHeaderAction;
             options?.ModifyRequest(request);
             RetryHandler.MarkAsRetriable(request);
             return request;
@@ -207,10 +202,6 @@ namespace Google.Cloud.BigQuery.V2
             var requestTimeoutMs = Math.Min(timeRemainingMs, s_maxGetQueryResultsRequestTimeout);
             var request = Service.Jobs.GetQueryResults(jobReference.ProjectId, jobReference.JobId);
             request.Location = jobReference.Location;
-            // We never use the results within the first response; instead, we're just checking that the job has
-            // completed and using the statistics and schema from it.
-            request.MaxResults = 0;
-            request.ModifyRequest += _versionHeaderAction;
             request.TimeoutMs = requestTimeoutMs;
             options?.ModifyRequest(request);
             RetryHandler.MarkAsRetriable(request);

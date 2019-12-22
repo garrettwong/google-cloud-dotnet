@@ -1,4 +1,4 @@
-// Copyright 2018 Google LLC
+// Copyright 2019 Google LLC
 //
 // Licensed under the Apache License, Version 2.0 (the "License");
 // you may not use this file except in compliance with the License.
@@ -1315,6 +1315,33 @@ namespace Google.Cloud.BigQuery.DataTransfer.V1.Snippets
             };
             // Make the request
             CheckValidCredsResponse response = dataTransferServiceClient.CheckValidCreds(request);
+            // End snippet
+        }
+
+        /// <summary>Snippet for StartManualTransferRunsAsync</summary>
+        public async Task StartManualTransferRunsAsync_RequestObject()
+        {
+            // Snippet: StartManualTransferRunsAsync(StartManualTransferRunsRequest,CallSettings)
+            // Additional: StartManualTransferRunsAsync(StartManualTransferRunsRequest,CancellationToken)
+            // Create client
+            DataTransferServiceClient dataTransferServiceClient = await DataTransferServiceClient.CreateAsync();
+            // Initialize request argument(s)
+            StartManualTransferRunsRequest request = new StartManualTransferRunsRequest();
+            // Make the request
+            StartManualTransferRunsResponse response = await dataTransferServiceClient.StartManualTransferRunsAsync(request);
+            // End snippet
+        }
+
+        /// <summary>Snippet for StartManualTransferRuns</summary>
+        public void StartManualTransferRuns_RequestObject()
+        {
+            // Snippet: StartManualTransferRuns(StartManualTransferRunsRequest,CallSettings)
+            // Create client
+            DataTransferServiceClient dataTransferServiceClient = DataTransferServiceClient.Create();
+            // Initialize request argument(s)
+            StartManualTransferRunsRequest request = new StartManualTransferRunsRequest();
+            // Make the request
+            StartManualTransferRunsResponse response = dataTransferServiceClient.StartManualTransferRuns(request);
             // End snippet
         }
 

@@ -13,68 +13,19 @@
 // limitations under the License.
 
 using Grpc.Core;
-using System;
 using System.Threading.Tasks;
 
 namespace Google.Cloud.Spanner.V1.Internal
 {
-    // TODO: Make this internal after the pool rewrite?
-
     /// <summary>
     /// Helper class to wrap operations.
     /// </summary>
     public static class ExecuteHelper
     {
-        // Legacy methods.
-        // TODO: Remove when other SessionPool work is complete.
-
         /// <summary>
         /// Waits for <paramref name="task"/> to complete, handling session expiry by marking the session appropriately.
         /// </summary>
-        public static async Task<T> WithSessionChecking<T>(this Task<T> task, Func<Session> sessionFunc)
-        {
-            try
-            {
-                return await task.ConfigureAwait(false);
-            }
-            catch (RpcException ex) when (ex.CheckForSessionExpiredError(sessionFunc))
-            {
-                throw;
-            }
-        }
-
-        /// <summary>
-        /// Waits for <paramref name="task"/> to complete, handling session expiry by marking the session appropriately.
-        /// </summary>
-        public static async Task WithSessionChecking(this Task task, Func<Session> sessionFunc)
-        {
-            try
-            {
-                await task.ConfigureAwait(false);
-            }
-            catch (RpcException ex) when (ex.CheckForSessionExpiredError(sessionFunc))
-            {
-                throw;
-            }
-        }
-
-        private static bool CheckForSessionExpiredError(this RpcException rpcException, Func<Session> sessionFunc)
-        {
-            if (rpcException.IsSessionExpiredError())
-            {
-                SessionPool.MarkSessionExpired(sessionFunc());
-            }
-            return false;
-        }
-
-        // End legacy methods
-
-        // TODO: Consider renaming these to WithSessionExpiryChecking or similar.
-
-        /// <summary>
-        /// Waits for <paramref name="task"/> to complete, handling session expiry by marking the session appropriately.
-        /// </summary>
-        internal static async Task<T> WithSessionChecking<T>(this Task<T> task, Session session)
+        internal static async Task<T> WithSessionExpiryChecking<T>(this Task<T> task, Session session)
         {
             try
             {
@@ -89,7 +40,7 @@ namespace Google.Cloud.Spanner.V1.Internal
         /// <summary>
         /// Waits for <paramref name="task"/> to complete, handling session expiry by marking the session appropriately.
         /// </summary>
-        internal static async Task WithSessionChecking(this Task task, Session session)
+        internal static async Task WithSessionExpiryChecking(this Task task, Session session)
         {
             try
             {

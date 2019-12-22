@@ -135,6 +135,12 @@ namespace Google.Cloud.Logging.NLog
                 ReferenceLoopHandling = Newtonsoft.Json.ReferenceLoopHandling.Ignore
             };
             jsonSettings.Converters.Add(new Newtonsoft.Json.Converters.StringEnumConverter());
+            jsonSettings.Error = (sender, args) =>
+            {
+                // Serialization of properties that throws exceptions should not break everything
+                InternalLogger.Warn(args.ErrorContext.Error, "GoogleStackdriver(Name={0}): Error serializing exception property: {1}", Name, args.ErrorContext.Member);
+                args.ErrorContext.Handled = true;
+            };
             var jsonSerializer = Newtonsoft.Json.JsonSerializer.CreateDefault(jsonSettings);
             return o => {
                 try
@@ -144,7 +150,7 @@ namespace Google.Cloud.Logging.NLog
                         case TypeCode.Empty: 
                             return Value.ForNull();
                         case TypeCode.Boolean:
-                            return Value.ForBool((bool)o);
+                            return Value.ForBool(Convert.ToBoolean(o));
                         case TypeCode.Decimal:
                         case TypeCode.Double:
                         case TypeCode.Single:
@@ -158,10 +164,11 @@ namespace Google.Cloud.Logging.NLog
                         case TypeCode.Int64:
                         case TypeCode.UInt64:
                             if (o is System.Enum)
+                            {
                                 break;  // Let StringEnumConverter handle formatting
+                            }
                             return Value.ForNumber(Convert.ToDouble(o));
                         case TypeCode.String:
-                            return Value.ForString((string)o);
                         case TypeCode.Char:
                             return Value.ForString(o.ToString());
                     }
@@ -472,6 +479,23 @@ namespace Google.Cloud.Logging.NLog
             {
                 var jsonStruct = new Struct();
                 jsonStruct.Fields.Add("message", Value.ForString(RenderLogEvent(Layout, loggingEvent)));
+                if (ServiceContextName != null)
+                {
+                    var serviceName = RenderLogEvent(ServiceContextName, loggingEvent);
+                    if (!string.IsNullOrEmpty(serviceName))
+                    {
+                        // Include ServiceContext to allow errors to be automatically forwarded
+                        var serviceVersion = RenderLogEvent(ServiceContextVersion, loggingEvent);
+                        if (string.IsNullOrEmpty(serviceVersion))
+                            serviceVersion = "0.0.0.0";
+
+                        var serviceContext = new Struct();
+                        jsonStruct.Fields.Add("serviceContext", Value.ForStruct(serviceContext));
+                        serviceContext.Fields.Add("service", Value.ForString(serviceName));
+                        serviceContext.Fields.Add("version", Value.ForString(serviceVersion));
+                    }
+                }
+
                 var propertiesStruct = new Struct();
                 jsonStruct.Fields.Add("properties", Value.ForStruct(propertiesStruct));
 

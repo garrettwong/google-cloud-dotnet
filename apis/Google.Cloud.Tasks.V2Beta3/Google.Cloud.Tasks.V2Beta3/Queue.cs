@@ -25,35 +25,42 @@ namespace Google.Cloud.Tasks.V2Beta3 {
       byte[] descriptorData = global::System.Convert.FromBase64String(
           string.Concat(
             "CiZnb29nbGUvY2xvdWQvdGFza3MvdjJiZXRhMy9xdWV1ZS5wcm90bxIaZ29v",
-            "Z2xlLmNsb3VkLnRhc2tzLnYyYmV0YTMaHGdvb2dsZS9hcGkvYW5ub3RhdGlv",
-            "bnMucHJvdG8aJ2dvb2dsZS9jbG91ZC90YXNrcy92MmJldGEzL3RhcmdldC5w",
-            "cm90bxoeZ29vZ2xlL3Byb3RvYnVmL2R1cmF0aW9uLnByb3RvGh9nb29nbGUv",
-            "cHJvdG9idWYvdGltZXN0YW1wLnByb3RvIp8DCgVRdWV1ZRIMCgRuYW1lGAEg",
-            "ASgJEk8KFWFwcF9lbmdpbmVfaHR0cF9xdWV1ZRgDIAEoCzIuLmdvb2dsZS5j",
-            "bG91ZC50YXNrcy52MmJldGEzLkFwcEVuZ2luZUh0dHBRdWV1ZUgAEjsKC3Jh",
-            "dGVfbGltaXRzGAQgASgLMiYuZ29vZ2xlLmNsb3VkLnRhc2tzLnYyYmV0YTMu",
-            "UmF0ZUxpbWl0cxI9CgxyZXRyeV9jb25maWcYBSABKAsyJy5nb29nbGUuY2xv",
-            "dWQudGFza3MudjJiZXRhMy5SZXRyeUNvbmZpZxI2CgVzdGF0ZRgGIAEoDjIn",
-            "Lmdvb2dsZS5jbG91ZC50YXNrcy52MmJldGEzLlF1ZXVlLlN0YXRlEi4KCnB1",
-            "cmdlX3RpbWUYByABKAsyGi5nb29nbGUucHJvdG9idWYuVGltZXN0YW1wIkUK",
-            "BVN0YXRlEhUKEVNUQVRFX1VOU1BFQ0lGSUVEEAASCwoHUlVOTklORxABEgoK",
-            "BlBBVVNFRBACEgwKCERJU0FCTEVEEANCDAoKcXVldWVfdHlwZSJqCgpSYXRl",
-            "TGltaXRzEiEKGW1heF9kaXNwYXRjaGVzX3Blcl9zZWNvbmQYASABKAESFgoO",
-            "bWF4X2J1cnN0X3NpemUYAiABKAUSIQoZbWF4X2NvbmN1cnJlbnRfZGlzcGF0",
-            "Y2hlcxgDIAEoBSLRAQoLUmV0cnlDb25maWcSFAoMbWF4X2F0dGVtcHRzGAEg",
-            "ASgFEjUKEm1heF9yZXRyeV9kdXJhdGlvbhgCIAEoCzIZLmdvb2dsZS5wcm90",
-            "b2J1Zi5EdXJhdGlvbhIuCgttaW5fYmFja29mZhgDIAEoCzIZLmdvb2dsZS5w",
-            "cm90b2J1Zi5EdXJhdGlvbhIuCgttYXhfYmFja29mZhgEIAEoCzIZLmdvb2ds",
-            "ZS5wcm90b2J1Zi5EdXJhdGlvbhIVCg1tYXhfZG91YmxpbmdzGAUgASgFQm8K",
-            "HmNvbS5nb29nbGUuY2xvdWQudGFza3MudjJiZXRhM0IKUXVldWVQcm90b1AB",
-            "Wj9nb29nbGUuZ29sYW5nLm9yZy9nZW5wcm90by9nb29nbGVhcGlzL2Nsb3Vk",
-            "L3Rhc2tzL3YyYmV0YTM7dGFza3NiBnByb3RvMw=="));
+            "Z2xlLmNsb3VkLnRhc2tzLnYyYmV0YTMaGWdvb2dsZS9hcGkvcmVzb3VyY2Uu",
+            "cHJvdG8aJ2dvb2dsZS9jbG91ZC90YXNrcy92MmJldGEzL3RhcmdldC5wcm90",
+            "bxoeZ29vZ2xlL3Byb3RvYnVmL2R1cmF0aW9uLnByb3RvGh9nb29nbGUvcHJv",
+            "dG9idWYvdGltZXN0YW1wLnByb3RvGhxnb29nbGUvYXBpL2Fubm90YXRpb25z",
+            "LnByb3RvItcECgVRdWV1ZRIMCgRuYW1lGAEgASgJEk8KFWFwcF9lbmdpbmVf",
+            "aHR0cF9xdWV1ZRgDIAEoCzIuLmdvb2dsZS5jbG91ZC50YXNrcy52MmJldGEz",
+            "LkFwcEVuZ2luZUh0dHBRdWV1ZUgAEjsKC3JhdGVfbGltaXRzGAQgASgLMiYu",
+            "Z29vZ2xlLmNsb3VkLnRhc2tzLnYyYmV0YTMuUmF0ZUxpbWl0cxI9CgxyZXRy",
+            "eV9jb25maWcYBSABKAsyJy5nb29nbGUuY2xvdWQudGFza3MudjJiZXRhMy5S",
+            "ZXRyeUNvbmZpZxI2CgVzdGF0ZRgGIAEoDjInLmdvb2dsZS5jbG91ZC50YXNr",
+            "cy52MmJldGEzLlF1ZXVlLlN0YXRlEi4KCnB1cmdlX3RpbWUYByABKAsyGi5n",
+            "b29nbGUucHJvdG9idWYuVGltZXN0YW1wElgKGnN0YWNrZHJpdmVyX2xvZ2dp",
+            "bmdfY29uZmlnGAogASgLMjQuZ29vZ2xlLmNsb3VkLnRhc2tzLnYyYmV0YTMu",
+            "U3RhY2tkcml2ZXJMb2dnaW5nQ29uZmlnIkUKBVN0YXRlEhUKEVNUQVRFX1VO",
+            "U1BFQ0lGSUVEEAASCwoHUlVOTklORxABEgoKBlBBVVNFRBACEgwKCERJU0FC",
+            "TEVEEAM6XOpBWQofY2xvdWR0YXNrcy5nb29nbGVhcGlzLmNvbS9RdWV1ZRI2",
+            "cHJvamVjdHMve3Byb2plY3R9L2xvY2F0aW9ucy97bG9jYXRpb259L3F1ZXVl",
+            "cy97cXVldWV9QgwKCnF1ZXVlX3R5cGUiagoKUmF0ZUxpbWl0cxIhChltYXhf",
+            "ZGlzcGF0Y2hlc19wZXJfc2Vjb25kGAEgASgBEhYKDm1heF9idXJzdF9zaXpl",
+            "GAIgASgFEiEKGW1heF9jb25jdXJyZW50X2Rpc3BhdGNoZXMYAyABKAUi0QEK",
+            "C1JldHJ5Q29uZmlnEhQKDG1heF9hdHRlbXB0cxgBIAEoBRI1ChJtYXhfcmV0",
+            "cnlfZHVyYXRpb24YAiABKAsyGS5nb29nbGUucHJvdG9idWYuRHVyYXRpb24S",
+            "LgoLbWluX2JhY2tvZmYYAyABKAsyGS5nb29nbGUucHJvdG9idWYuRHVyYXRp",
+            "b24SLgoLbWF4X2JhY2tvZmYYBCABKAsyGS5nb29nbGUucHJvdG9idWYuRHVy",
+            "YXRpb24SFQoNbWF4X2RvdWJsaW5ncxgFIAEoBSIyChhTdGFja2RyaXZlckxv",
+            "Z2dpbmdDb25maWcSFgoOc2FtcGxpbmdfcmF0aW8YASABKAFCbwoeY29tLmdv",
+            "b2dsZS5jbG91ZC50YXNrcy52MmJldGEzQgpRdWV1ZVByb3RvUAFaP2dvb2ds",
+            "ZS5nb2xhbmcub3JnL2dlbnByb3RvL2dvb2dsZWFwaXMvY2xvdWQvdGFza3Mv",
+            "djJiZXRhMzt0YXNrc2IGcHJvdG8z"));
       descriptor = pbr::FileDescriptor.FromGeneratedCode(descriptorData,
-          new pbr::FileDescriptor[] { global::Google.Api.AnnotationsReflection.Descriptor, global::Google.Cloud.Tasks.V2Beta3.TargetReflection.Descriptor, global::Google.Protobuf.WellKnownTypes.DurationReflection.Descriptor, global::Google.Protobuf.WellKnownTypes.TimestampReflection.Descriptor, },
+          new pbr::FileDescriptor[] { global::Google.Api.ResourceReflection.Descriptor, global::Google.Cloud.Tasks.V2Beta3.TargetReflection.Descriptor, global::Google.Protobuf.WellKnownTypes.DurationReflection.Descriptor, global::Google.Protobuf.WellKnownTypes.TimestampReflection.Descriptor, global::Google.Api.AnnotationsReflection.Descriptor, },
           new pbr::GeneratedClrTypeInfo(null, new pbr::GeneratedClrTypeInfo[] {
-            new pbr::GeneratedClrTypeInfo(typeof(global::Google.Cloud.Tasks.V2Beta3.Queue), global::Google.Cloud.Tasks.V2Beta3.Queue.Parser, new[]{ "Name", "AppEngineHttpQueue", "RateLimits", "RetryConfig", "State", "PurgeTime" }, new[]{ "QueueType" }, new[]{ typeof(global::Google.Cloud.Tasks.V2Beta3.Queue.Types.State) }, null),
+            new pbr::GeneratedClrTypeInfo(typeof(global::Google.Cloud.Tasks.V2Beta3.Queue), global::Google.Cloud.Tasks.V2Beta3.Queue.Parser, new[]{ "Name", "AppEngineHttpQueue", "RateLimits", "RetryConfig", "State", "PurgeTime", "StackdriverLoggingConfig" }, new[]{ "QueueType" }, new[]{ typeof(global::Google.Cloud.Tasks.V2Beta3.Queue.Types.State) }, null),
             new pbr::GeneratedClrTypeInfo(typeof(global::Google.Cloud.Tasks.V2Beta3.RateLimits), global::Google.Cloud.Tasks.V2Beta3.RateLimits.Parser, new[]{ "MaxDispatchesPerSecond", "MaxBurstSize", "MaxConcurrentDispatches" }, null, null, null),
-            new pbr::GeneratedClrTypeInfo(typeof(global::Google.Cloud.Tasks.V2Beta3.RetryConfig), global::Google.Cloud.Tasks.V2Beta3.RetryConfig.Parser, new[]{ "MaxAttempts", "MaxRetryDuration", "MinBackoff", "MaxBackoff", "MaxDoublings" }, null, null, null)
+            new pbr::GeneratedClrTypeInfo(typeof(global::Google.Cloud.Tasks.V2Beta3.RetryConfig), global::Google.Cloud.Tasks.V2Beta3.RetryConfig.Parser, new[]{ "MaxAttempts", "MaxRetryDuration", "MinBackoff", "MaxBackoff", "MaxDoublings" }, null, null, null),
+            new pbr::GeneratedClrTypeInfo(typeof(global::Google.Cloud.Tasks.V2Beta3.StackdriverLoggingConfig), global::Google.Cloud.Tasks.V2Beta3.StackdriverLoggingConfig.Parser, new[]{ "SamplingRatio" }, null, null, null)
           }));
     }
     #endregion
@@ -95,6 +102,7 @@ namespace Google.Cloud.Tasks.V2Beta3 {
       retryConfig_ = other.retryConfig_ != null ? other.retryConfig_.Clone() : null;
       state_ = other.state_;
       purgeTime_ = other.purgeTime_ != null ? other.purgeTime_.Clone() : null;
+      stackdriverLoggingConfig_ = other.stackdriverLoggingConfig_ != null ? other.stackdriverLoggingConfig_.Clone() : null;
       switch (other.QueueTypeCase) {
         case QueueTypeOneofCase.AppEngineHttpQueue:
           AppEngineHttpQueue = other.AppEngineHttpQueue.Clone();
@@ -124,7 +132,8 @@ namespace Google.Cloud.Tasks.V2Beta3 {
     /// * `PROJECT_ID` can contain letters ([A-Za-z]), numbers ([0-9]),
     ///    hyphens (-), colons (:), or periods (.).
     ///    For more information, see
-    ///    [Identifying projects](https://cloud.google.com/resource-manager/docs/creating-managing-projects#identifying_projects)
+    ///    [Identifying
+    ///    projects](https://cloud.google.com/resource-manager/docs/creating-managing-projects#identifying_projects)
     /// * `LOCATION_ID` is the canonical ID for the queue's location.
     ///    The list of available locations can be obtained by calling
     ///    [ListLocations][google.cloud.location.Locations.ListLocations].
@@ -143,9 +152,9 @@ namespace Google.Cloud.Tasks.V2Beta3 {
     /// <summary>Field number for the "app_engine_http_queue" field.</summary>
     public const int AppEngineHttpQueueFieldNumber = 3;
     /// <summary>
-    /// App Engine HTTP queue.
-    ///
-    /// An App Engine queue is a queue that has an [AppEngineHttpQueue][google.cloud.tasks.v2beta3.AppEngineHttpQueue] type.
+    /// [AppEngineHttpQueue][google.cloud.tasks.v2beta3.AppEngineHttpQueue] settings apply only to
+    /// [App Engine tasks][google.cloud.tasks.v2beta3.AppEngineHttpRequest] in this queue.
+    /// [Http tasks][google.cloud.tasks.v2beta3.HttpRequest] are not affected by this proto.
     /// </summary>
     [global::System.Diagnostics.DebuggerNonUserCodeAttribute]
     public global::Google.Cloud.Tasks.V2Beta3.AppEngineHttpQueue AppEngineHttpQueue {
@@ -162,10 +171,9 @@ namespace Google.Cloud.Tasks.V2Beta3 {
     /// <summary>
     /// Rate limits for task dispatches.
     ///
-    /// [rate_limits][google.cloud.tasks.v2beta3.Queue.rate_limits] and
-    /// [retry_config][google.cloud.tasks.v2beta3.Queue.retry_config] are related because they both
-    /// control task attempts however they control how tasks are
-    /// attempted in different ways:
+    /// [rate_limits][google.cloud.tasks.v2beta3.Queue.rate_limits] and [retry_config][google.cloud.tasks.v2beta3.Queue.retry_config] are
+    /// related because they both control task attempts. However they control task
+    /// attempts in different ways:
     ///
     /// * [rate_limits][google.cloud.tasks.v2beta3.Queue.rate_limits] controls the total rate of
     ///   dispatches from a queue (i.e. all traffic dispatched from the
@@ -175,6 +183,16 @@ namespace Google.Cloud.Tasks.V2Beta3 {
     ///   particular a task after its first attempt fails. That is,
     ///   [retry_config][google.cloud.tasks.v2beta3.Queue.retry_config] controls task retries (the
     ///   second attempt, third attempt, etc).
+    ///
+    /// The queue's actual dispatch rate is the result of:
+    ///
+    /// * Number of tasks in the queue
+    /// * User-specified throttling: [rate_limits][google.cloud.tasks.v2beta3.Queue.rate_limits],
+    ///   [retry_config][google.cloud.tasks.v2beta3.Queue.retry_config], and the
+    ///   [queue's state][google.cloud.tasks.v2beta3.Queue.state].
+    /// * System throttling due to `429` (Too Many Requests) or `503` (Service
+    ///   Unavailable) responses from the worker, high error rates, or to smooth
+    ///   sudden large traffic spikes.
     /// </summary>
     [global::System.Diagnostics.DebuggerNonUserCodeAttribute]
     public global::Google.Cloud.Tasks.V2Beta3.RateLimits RateLimits {
@@ -196,7 +214,8 @@ namespace Google.Cloud.Tasks.V2Beta3 {
     /// * For tasks created using the App Engine SDK: the queue-level retry
     ///   settings apply to all tasks in the queue which do not have retry settings
     ///   explicitly set on the task and were created by the App Engine SDK. See
-    ///   [App Engine documentation](https://cloud.google.com/appengine/docs/standard/python/taskqueue/push/retrying-tasks).
+    ///   [App Engine
+    ///   documentation](https://cloud.google.com/appengine/docs/standard/python/taskqueue/push/retrying-tasks).
     /// </summary>
     [global::System.Diagnostics.DebuggerNonUserCodeAttribute]
     public global::Google.Cloud.Tasks.V2Beta3.RetryConfig RetryConfig {
@@ -236,7 +255,8 @@ namespace Google.Cloud.Tasks.V2Beta3 {
     /// were purged.
     ///
     /// A queue can be purged using [PurgeQueue][google.cloud.tasks.v2beta3.CloudTasks.PurgeQueue], the
-    /// [App Engine Task Queue SDK, or the Cloud Console](https://cloud.google.com/appengine/docs/standard/python/taskqueue/push/deleting-tasks-and-queues#purging_all_tasks_from_a_queue).
+    /// [App Engine Task Queue SDK, or the Cloud
+    /// Console](https://cloud.google.com/appengine/docs/standard/python/taskqueue/push/deleting-tasks-and-queues#purging_all_tasks_from_a_queue).
     ///
     /// Purge time will be truncated to the nearest microsecond. Purge
     /// time will be unset if the queue has never been purged.
@@ -246,6 +266,22 @@ namespace Google.Cloud.Tasks.V2Beta3 {
       get { return purgeTime_; }
       set {
         purgeTime_ = value;
+      }
+    }
+
+    /// <summary>Field number for the "stackdriver_logging_config" field.</summary>
+    public const int StackdriverLoggingConfigFieldNumber = 10;
+    private global::Google.Cloud.Tasks.V2Beta3.StackdriverLoggingConfig stackdriverLoggingConfig_;
+    /// <summary>
+    /// Configuration options for writing logs to
+    /// [Stackdriver Logging](https://cloud.google.com/logging/docs/). If this
+    /// field is unset, then no logs are written.
+    /// </summary>
+    [global::System.Diagnostics.DebuggerNonUserCodeAttribute]
+    public global::Google.Cloud.Tasks.V2Beta3.StackdriverLoggingConfig StackdriverLoggingConfig {
+      get { return stackdriverLoggingConfig_; }
+      set {
+        stackdriverLoggingConfig_ = value;
       }
     }
 
@@ -286,6 +322,7 @@ namespace Google.Cloud.Tasks.V2Beta3 {
       if (!object.Equals(RetryConfig, other.RetryConfig)) return false;
       if (State != other.State) return false;
       if (!object.Equals(PurgeTime, other.PurgeTime)) return false;
+      if (!object.Equals(StackdriverLoggingConfig, other.StackdriverLoggingConfig)) return false;
       if (QueueTypeCase != other.QueueTypeCase) return false;
       return Equals(_unknownFields, other._unknownFields);
     }
@@ -299,6 +336,7 @@ namespace Google.Cloud.Tasks.V2Beta3 {
       if (retryConfig_ != null) hash ^= RetryConfig.GetHashCode();
       if (State != 0) hash ^= State.GetHashCode();
       if (purgeTime_ != null) hash ^= PurgeTime.GetHashCode();
+      if (stackdriverLoggingConfig_ != null) hash ^= StackdriverLoggingConfig.GetHashCode();
       hash ^= (int) queueTypeCase_;
       if (_unknownFields != null) {
         hash ^= _unknownFields.GetHashCode();
@@ -337,6 +375,10 @@ namespace Google.Cloud.Tasks.V2Beta3 {
         output.WriteRawTag(58);
         output.WriteMessage(PurgeTime);
       }
+      if (stackdriverLoggingConfig_ != null) {
+        output.WriteRawTag(82);
+        output.WriteMessage(StackdriverLoggingConfig);
+      }
       if (_unknownFields != null) {
         _unknownFields.WriteTo(output);
       }
@@ -363,6 +405,9 @@ namespace Google.Cloud.Tasks.V2Beta3 {
       if (purgeTime_ != null) {
         size += 1 + pb::CodedOutputStream.ComputeMessageSize(PurgeTime);
       }
+      if (stackdriverLoggingConfig_ != null) {
+        size += 1 + pb::CodedOutputStream.ComputeMessageSize(StackdriverLoggingConfig);
+      }
       if (_unknownFields != null) {
         size += _unknownFields.CalculateSize();
       }
@@ -379,13 +424,13 @@ namespace Google.Cloud.Tasks.V2Beta3 {
       }
       if (other.rateLimits_ != null) {
         if (rateLimits_ == null) {
-          rateLimits_ = new global::Google.Cloud.Tasks.V2Beta3.RateLimits();
+          RateLimits = new global::Google.Cloud.Tasks.V2Beta3.RateLimits();
         }
         RateLimits.MergeFrom(other.RateLimits);
       }
       if (other.retryConfig_ != null) {
         if (retryConfig_ == null) {
-          retryConfig_ = new global::Google.Cloud.Tasks.V2Beta3.RetryConfig();
+          RetryConfig = new global::Google.Cloud.Tasks.V2Beta3.RetryConfig();
         }
         RetryConfig.MergeFrom(other.RetryConfig);
       }
@@ -394,9 +439,15 @@ namespace Google.Cloud.Tasks.V2Beta3 {
       }
       if (other.purgeTime_ != null) {
         if (purgeTime_ == null) {
-          purgeTime_ = new global::Google.Protobuf.WellKnownTypes.Timestamp();
+          PurgeTime = new global::Google.Protobuf.WellKnownTypes.Timestamp();
         }
         PurgeTime.MergeFrom(other.PurgeTime);
+      }
+      if (other.stackdriverLoggingConfig_ != null) {
+        if (stackdriverLoggingConfig_ == null) {
+          StackdriverLoggingConfig = new global::Google.Cloud.Tasks.V2Beta3.StackdriverLoggingConfig();
+        }
+        StackdriverLoggingConfig.MergeFrom(other.StackdriverLoggingConfig);
       }
       switch (other.QueueTypeCase) {
         case QueueTypeOneofCase.AppEngineHttpQueue:
@@ -433,27 +484,34 @@ namespace Google.Cloud.Tasks.V2Beta3 {
           }
           case 34: {
             if (rateLimits_ == null) {
-              rateLimits_ = new global::Google.Cloud.Tasks.V2Beta3.RateLimits();
+              RateLimits = new global::Google.Cloud.Tasks.V2Beta3.RateLimits();
             }
-            input.ReadMessage(rateLimits_);
+            input.ReadMessage(RateLimits);
             break;
           }
           case 42: {
             if (retryConfig_ == null) {
-              retryConfig_ = new global::Google.Cloud.Tasks.V2Beta3.RetryConfig();
+              RetryConfig = new global::Google.Cloud.Tasks.V2Beta3.RetryConfig();
             }
-            input.ReadMessage(retryConfig_);
+            input.ReadMessage(RetryConfig);
             break;
           }
           case 48: {
-            state_ = (global::Google.Cloud.Tasks.V2Beta3.Queue.Types.State) input.ReadEnum();
+            State = (global::Google.Cloud.Tasks.V2Beta3.Queue.Types.State) input.ReadEnum();
             break;
           }
           case 58: {
             if (purgeTime_ == null) {
-              purgeTime_ = new global::Google.Protobuf.WellKnownTypes.Timestamp();
+              PurgeTime = new global::Google.Protobuf.WellKnownTypes.Timestamp();
             }
-            input.ReadMessage(purgeTime_);
+            input.ReadMessage(PurgeTime);
+            break;
+          }
+          case 82: {
+            if (stackdriverLoggingConfig_ == null) {
+              StackdriverLoggingConfig = new global::Google.Cloud.Tasks.V2Beta3.StackdriverLoggingConfig();
+            }
+            input.ReadMessage(StackdriverLoggingConfig);
             break;
           }
         }
@@ -493,9 +551,11 @@ namespace Google.Cloud.Tasks.V2Beta3 {
         /// The queue is disabled.
         ///
         /// A queue becomes `DISABLED` when
-        /// [queue.yaml](https://cloud.google.com/appengine/docs/python/config/queueref) or
-        /// [queue.xml](https://cloud.google.com/appengine/docs/standard/java/config/queueref) is uploaded
-        /// which does not contain the queue. You cannot directly disable a queue.
+        /// [queue.yaml](https://cloud.google.com/appengine/docs/python/config/queueref)
+        /// or
+        /// [queue.xml](https://cloud.google.com/appengine/docs/standard/java/config/queueref)
+        /// is uploaded which does not contain the queue. You cannot directly disable
+        /// a queue.
         ///
         /// When a queue is disabled, tasks can still be added to a queue
         /// but the tasks are not dispatched.
@@ -569,7 +629,8 @@ namespace Google.Cloud.Tasks.V2Beta3 {
     ///   is 500.
     ///
     /// This field has the same meaning as
-    /// [rate in queue.yaml/xml](https://cloud.google.com/appengine/docs/standard/python/config/queueref#rate).
+    /// [rate in
+    /// queue.yaml/xml](https://cloud.google.com/appengine/docs/standard/python/config/queueref#rate).
     /// </summary>
     [global::System.Diagnostics.DebuggerNonUserCodeAttribute]
     public double MaxDispatchesPerSecond {
@@ -639,7 +700,8 @@ namespace Google.Cloud.Tasks.V2Beta3 {
     /// The maximum allowed value is 5,000.
     ///
     /// This field has the same meaning as
-    /// [max_concurrent_requests in queue.yaml/xml](https://cloud.google.com/appengine/docs/standard/python/config/queueref#max_concurrent_requests).
+    /// [max_concurrent_requests in
+    /// queue.yaml/xml](https://cloud.google.com/appengine/docs/standard/python/config/queueref#max_concurrent_requests).
     /// </summary>
     [global::System.Diagnostics.DebuggerNonUserCodeAttribute]
     public int MaxConcurrentDispatches {
@@ -824,7 +886,8 @@ namespace Google.Cloud.Tasks.V2Beta3 {
     /// -1 indicates unlimited attempts.
     ///
     /// This field has the same meaning as
-    /// [task_retry_limit in queue.yaml/xml](https://cloud.google.com/appengine/docs/standard/python/config/queueref#retry_parameters).
+    /// [task_retry_limit in
+    /// queue.yaml/xml](https://cloud.google.com/appengine/docs/standard/python/config/queueref#retry_parameters).
     /// </summary>
     [global::System.Diagnostics.DebuggerNonUserCodeAttribute]
     public int MaxAttempts {
@@ -853,7 +916,8 @@ namespace Google.Cloud.Tasks.V2Beta3 {
     /// `max_retry_duration` will be truncated to the nearest second.
     ///
     /// This field has the same meaning as
-    /// [task_age_limit in queue.yaml/xml](https://cloud.google.com/appengine/docs/standard/python/config/queueref#retry_parameters).
+    /// [task_age_limit in
+    /// queue.yaml/xml](https://cloud.google.com/appengine/docs/standard/python/config/queueref#retry_parameters).
     /// </summary>
     [global::System.Diagnostics.DebuggerNonUserCodeAttribute]
     public global::Google.Protobuf.WellKnownTypes.Duration MaxRetryDuration {
@@ -879,7 +943,8 @@ namespace Google.Cloud.Tasks.V2Beta3 {
     /// `min_backoff` will be truncated to the nearest second.
     ///
     /// This field has the same meaning as
-    /// [min_backoff_seconds in queue.yaml/xml](https://cloud.google.com/appengine/docs/standard/python/config/queueref#retry_parameters).
+    /// [min_backoff_seconds in
+    /// queue.yaml/xml](https://cloud.google.com/appengine/docs/standard/python/config/queueref#retry_parameters).
     /// </summary>
     [global::System.Diagnostics.DebuggerNonUserCodeAttribute]
     public global::Google.Protobuf.WellKnownTypes.Duration MinBackoff {
@@ -905,7 +970,8 @@ namespace Google.Cloud.Tasks.V2Beta3 {
     /// `max_backoff` will be truncated to the nearest second.
     ///
     /// This field has the same meaning as
-    /// [max_backoff_seconds in queue.yaml/xml](https://cloud.google.com/appengine/docs/standard/python/config/queueref#retry_parameters).
+    /// [max_backoff_seconds in
+    /// queue.yaml/xml](https://cloud.google.com/appengine/docs/standard/python/config/queueref#retry_parameters).
     /// </summary>
     [global::System.Diagnostics.DebuggerNonUserCodeAttribute]
     public global::Google.Protobuf.WellKnownTypes.Duration MaxBackoff {
@@ -942,7 +1008,8 @@ namespace Google.Cloud.Tasks.V2Beta3 {
     /// default.
     ///
     /// This field has the same meaning as
-    /// [max_doublings in queue.yaml/xml](https://cloud.google.com/appengine/docs/standard/python/config/queueref#retry_parameters).
+    /// [max_doublings in
+    /// queue.yaml/xml](https://cloud.google.com/appengine/docs/standard/python/config/queueref#retry_parameters).
     /// </summary>
     [global::System.Diagnostics.DebuggerNonUserCodeAttribute]
     public int MaxDoublings {
@@ -1053,19 +1120,19 @@ namespace Google.Cloud.Tasks.V2Beta3 {
       }
       if (other.maxRetryDuration_ != null) {
         if (maxRetryDuration_ == null) {
-          maxRetryDuration_ = new global::Google.Protobuf.WellKnownTypes.Duration();
+          MaxRetryDuration = new global::Google.Protobuf.WellKnownTypes.Duration();
         }
         MaxRetryDuration.MergeFrom(other.MaxRetryDuration);
       }
       if (other.minBackoff_ != null) {
         if (minBackoff_ == null) {
-          minBackoff_ = new global::Google.Protobuf.WellKnownTypes.Duration();
+          MinBackoff = new global::Google.Protobuf.WellKnownTypes.Duration();
         }
         MinBackoff.MergeFrom(other.MinBackoff);
       }
       if (other.maxBackoff_ != null) {
         if (maxBackoff_ == null) {
-          maxBackoff_ = new global::Google.Protobuf.WellKnownTypes.Duration();
+          MaxBackoff = new global::Google.Protobuf.WellKnownTypes.Duration();
         }
         MaxBackoff.MergeFrom(other.MaxBackoff);
       }
@@ -1089,27 +1156,166 @@ namespace Google.Cloud.Tasks.V2Beta3 {
           }
           case 18: {
             if (maxRetryDuration_ == null) {
-              maxRetryDuration_ = new global::Google.Protobuf.WellKnownTypes.Duration();
+              MaxRetryDuration = new global::Google.Protobuf.WellKnownTypes.Duration();
             }
-            input.ReadMessage(maxRetryDuration_);
+            input.ReadMessage(MaxRetryDuration);
             break;
           }
           case 26: {
             if (minBackoff_ == null) {
-              minBackoff_ = new global::Google.Protobuf.WellKnownTypes.Duration();
+              MinBackoff = new global::Google.Protobuf.WellKnownTypes.Duration();
             }
-            input.ReadMessage(minBackoff_);
+            input.ReadMessage(MinBackoff);
             break;
           }
           case 34: {
             if (maxBackoff_ == null) {
-              maxBackoff_ = new global::Google.Protobuf.WellKnownTypes.Duration();
+              MaxBackoff = new global::Google.Protobuf.WellKnownTypes.Duration();
             }
-            input.ReadMessage(maxBackoff_);
+            input.ReadMessage(MaxBackoff);
             break;
           }
           case 40: {
             MaxDoublings = input.ReadInt32();
+            break;
+          }
+        }
+      }
+    }
+
+  }
+
+  /// <summary>
+  /// Configuration options for writing logs to
+  /// [Stackdriver Logging](https://cloud.google.com/logging/docs/).
+  /// </summary>
+  public sealed partial class StackdriverLoggingConfig : pb::IMessage<StackdriverLoggingConfig> {
+    private static readonly pb::MessageParser<StackdriverLoggingConfig> _parser = new pb::MessageParser<StackdriverLoggingConfig>(() => new StackdriverLoggingConfig());
+    private pb::UnknownFieldSet _unknownFields;
+    [global::System.Diagnostics.DebuggerNonUserCodeAttribute]
+    public static pb::MessageParser<StackdriverLoggingConfig> Parser { get { return _parser; } }
+
+    [global::System.Diagnostics.DebuggerNonUserCodeAttribute]
+    public static pbr::MessageDescriptor Descriptor {
+      get { return global::Google.Cloud.Tasks.V2Beta3.QueueReflection.Descriptor.MessageTypes[3]; }
+    }
+
+    [global::System.Diagnostics.DebuggerNonUserCodeAttribute]
+    pbr::MessageDescriptor pb::IMessage.Descriptor {
+      get { return Descriptor; }
+    }
+
+    [global::System.Diagnostics.DebuggerNonUserCodeAttribute]
+    public StackdriverLoggingConfig() {
+      OnConstruction();
+    }
+
+    partial void OnConstruction();
+
+    [global::System.Diagnostics.DebuggerNonUserCodeAttribute]
+    public StackdriverLoggingConfig(StackdriverLoggingConfig other) : this() {
+      samplingRatio_ = other.samplingRatio_;
+      _unknownFields = pb::UnknownFieldSet.Clone(other._unknownFields);
+    }
+
+    [global::System.Diagnostics.DebuggerNonUserCodeAttribute]
+    public StackdriverLoggingConfig Clone() {
+      return new StackdriverLoggingConfig(this);
+    }
+
+    /// <summary>Field number for the "sampling_ratio" field.</summary>
+    public const int SamplingRatioFieldNumber = 1;
+    private double samplingRatio_;
+    /// <summary>
+    /// Specifies the fraction of operations to write to
+    /// [Stackdriver Logging](https://cloud.google.com/logging/docs/).
+    /// This field may contain any value between 0.0 and 1.0, inclusive.
+    /// 0.0 is the default and means that no operations are logged.
+    /// </summary>
+    [global::System.Diagnostics.DebuggerNonUserCodeAttribute]
+    public double SamplingRatio {
+      get { return samplingRatio_; }
+      set {
+        samplingRatio_ = value;
+      }
+    }
+
+    [global::System.Diagnostics.DebuggerNonUserCodeAttribute]
+    public override bool Equals(object other) {
+      return Equals(other as StackdriverLoggingConfig);
+    }
+
+    [global::System.Diagnostics.DebuggerNonUserCodeAttribute]
+    public bool Equals(StackdriverLoggingConfig other) {
+      if (ReferenceEquals(other, null)) {
+        return false;
+      }
+      if (ReferenceEquals(other, this)) {
+        return true;
+      }
+      if (!pbc::ProtobufEqualityComparers.BitwiseDoubleEqualityComparer.Equals(SamplingRatio, other.SamplingRatio)) return false;
+      return Equals(_unknownFields, other._unknownFields);
+    }
+
+    [global::System.Diagnostics.DebuggerNonUserCodeAttribute]
+    public override int GetHashCode() {
+      int hash = 1;
+      if (SamplingRatio != 0D) hash ^= pbc::ProtobufEqualityComparers.BitwiseDoubleEqualityComparer.GetHashCode(SamplingRatio);
+      if (_unknownFields != null) {
+        hash ^= _unknownFields.GetHashCode();
+      }
+      return hash;
+    }
+
+    [global::System.Diagnostics.DebuggerNonUserCodeAttribute]
+    public override string ToString() {
+      return pb::JsonFormatter.ToDiagnosticString(this);
+    }
+
+    [global::System.Diagnostics.DebuggerNonUserCodeAttribute]
+    public void WriteTo(pb::CodedOutputStream output) {
+      if (SamplingRatio != 0D) {
+        output.WriteRawTag(9);
+        output.WriteDouble(SamplingRatio);
+      }
+      if (_unknownFields != null) {
+        _unknownFields.WriteTo(output);
+      }
+    }
+
+    [global::System.Diagnostics.DebuggerNonUserCodeAttribute]
+    public int CalculateSize() {
+      int size = 0;
+      if (SamplingRatio != 0D) {
+        size += 1 + 8;
+      }
+      if (_unknownFields != null) {
+        size += _unknownFields.CalculateSize();
+      }
+      return size;
+    }
+
+    [global::System.Diagnostics.DebuggerNonUserCodeAttribute]
+    public void MergeFrom(StackdriverLoggingConfig other) {
+      if (other == null) {
+        return;
+      }
+      if (other.SamplingRatio != 0D) {
+        SamplingRatio = other.SamplingRatio;
+      }
+      _unknownFields = pb::UnknownFieldSet.MergeFrom(_unknownFields, other._unknownFields);
+    }
+
+    [global::System.Diagnostics.DebuggerNonUserCodeAttribute]
+    public void MergeFrom(pb::CodedInputStream input) {
+      uint tag;
+      while ((tag = input.ReadTag()) != 0) {
+        switch(tag) {
+          default:
+            _unknownFields = pb::UnknownFieldSet.MergeFieldFrom(_unknownFields, input);
+            break;
+          case 9: {
+            SamplingRatio = input.ReadDouble();
             break;
           }
         }

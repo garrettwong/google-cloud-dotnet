@@ -1,4 +1,4 @@
-// Copyright 2018 Google LLC
+// Copyright 2019 Google LLC
 //
 // Licensed under the Apache License, Version 2.0 (the "License");
 // you may not use this file except in compliance with the License.
@@ -250,6 +250,42 @@ namespace Google.LongRunning
     }
 
     /// <summary>
+    /// Builder class for <see cref="OperationsClient"/> to provide simple configuration of credentials, endpoint etc.
+    /// </summary>
+    public sealed partial class OperationsClientBuilder : gaxgrpc::ClientBuilderBase<OperationsClient>
+    {
+        /// <summary>
+        /// The settings to use for RPCs, or null for the default settings.
+        /// </summary>
+        public OperationsSettings Settings { get; set; }
+
+        /// <inheritdoc/>
+        public override OperationsClient Build()
+        {
+            Validate();
+            grpccore::CallInvoker callInvoker = CreateCallInvoker();
+            return OperationsClient.Create(callInvoker, Settings);
+        }
+
+        /// <inheritdoc />
+        public override async stt::Task<OperationsClient> BuildAsync(st::CancellationToken cancellationToken = default)
+        {
+            Validate();
+            grpccore::CallInvoker callInvoker = await CreateCallInvokerAsync(cancellationToken).ConfigureAwait(false);
+            return OperationsClient.Create(callInvoker, Settings);
+        }
+
+        /// <inheritdoc />
+        protected override gaxgrpc::ServiceEndpoint GetDefaultEndpoint() => OperationsClient.DefaultEndpoint;
+
+        /// <inheritdoc />
+        protected override scg::IReadOnlyList<string> GetDefaultScopes() => OperationsClient.DefaultScopes;
+
+        /// <inheritdoc />
+        protected override gaxgrpc::ChannelPool GetChannelPool() => OperationsClient.ChannelPool;
+    }
+
+    /// <summary>
     /// Operations client wrapper, for convenient use.
     /// </summary>
     public abstract partial class OperationsClient
@@ -271,6 +307,8 @@ namespace Google.LongRunning
         });
 
         private static readonly gaxgrpc::ChannelPool s_channelPool = new gaxgrpc::ChannelPool(DefaultScopes);
+
+        internal static gaxgrpc::ChannelPool ChannelPool => s_channelPool;
 
         /// <summary>
         /// Asynchronously creates a <see cref="OperationsClient"/>, applying defaults for all unspecified settings,
@@ -533,11 +571,16 @@ namespace Google.LongRunning
         /// Lists operations that match the specified filter in the request. If the
         /// server doesn't support this method, it returns `UNIMPLEMENTED`.
         ///
-        /// NOTE: the `name` binding below allows API services to override the binding
-        /// to use different resource name schemes, such as `users/*/operations`.
+        /// NOTE: the `name` binding allows API services to override the binding
+        /// to use different resource name schemes, such as `users/*/operations`. To
+        /// override the binding, API services can add a binding such as
+        /// `"/v1/{name=users/*}/operations"` to their service configuration.
+        /// For backwards compatibility, the default name includes the operations
+        /// collection id, however overriding users must ensure the name binding
+        /// is the parent resource, without the operations collection id.
         /// </summary>
         /// <param name="name">
-        /// The name of the operation collection.
+        /// The name of the operation's parent resource.
         /// </param>
         /// <param name="filter">
         /// The standard list filter.
@@ -575,11 +618,16 @@ namespace Google.LongRunning
         /// Lists operations that match the specified filter in the request. If the
         /// server doesn't support this method, it returns `UNIMPLEMENTED`.
         ///
-        /// NOTE: the `name` binding below allows API services to override the binding
-        /// to use different resource name schemes, such as `users/*/operations`.
+        /// NOTE: the `name` binding allows API services to override the binding
+        /// to use different resource name schemes, such as `users/*/operations`. To
+        /// override the binding, API services can add a binding such as
+        /// `"/v1/{name=users/*}/operations"` to their service configuration.
+        /// For backwards compatibility, the default name includes the operations
+        /// collection id, however overriding users must ensure the name binding
+        /// is the parent resource, without the operations collection id.
         /// </summary>
         /// <param name="name">
-        /// The name of the operation collection.
+        /// The name of the operation's parent resource.
         /// </param>
         /// <param name="filter">
         /// The standard list filter.
@@ -617,8 +665,13 @@ namespace Google.LongRunning
         /// Lists operations that match the specified filter in the request. If the
         /// server doesn't support this method, it returns `UNIMPLEMENTED`.
         ///
-        /// NOTE: the `name` binding below allows API services to override the binding
-        /// to use different resource name schemes, such as `users/*/operations`.
+        /// NOTE: the `name` binding allows API services to override the binding
+        /// to use different resource name schemes, such as `users/*/operations`. To
+        /// override the binding, API services can add a binding such as
+        /// `"/v1/{name=users/*}/operations"` to their service configuration.
+        /// For backwards compatibility, the default name includes the operations
+        /// collection id, however overriding users must ensure the name binding
+        /// is the parent resource, without the operations collection id.
         /// </summary>
         /// <param name="request">
         /// The request object containing all of the parameters for the API call.
@@ -640,8 +693,13 @@ namespace Google.LongRunning
         /// Lists operations that match the specified filter in the request. If the
         /// server doesn't support this method, it returns `UNIMPLEMENTED`.
         ///
-        /// NOTE: the `name` binding below allows API services to override the binding
-        /// to use different resource name schemes, such as `users/*/operations`.
+        /// NOTE: the `name` binding allows API services to override the binding
+        /// to use different resource name schemes, such as `users/*/operations`. To
+        /// override the binding, API services can add a binding such as
+        /// `"/v1/{name=users/*}/operations"` to their service configuration.
+        /// For backwards compatibility, the default name includes the operations
+        /// collection id, however overriding users must ensure the name binding
+        /// is the parent resource, without the operations collection id.
         /// </summary>
         /// <param name="request">
         /// The request object containing all of the parameters for the API call.
@@ -974,13 +1032,17 @@ namespace Google.LongRunning
             OperationsSettings effectiveSettings = settings ?? OperationsSettings.GetDefault();
             gaxgrpc::ClientHelper clientHelper = new gaxgrpc::ClientHelper(effectiveSettings);
             _callGetOperation = clientHelper.BuildApiCall<GetOperationRequest, Operation>(
-                GrpcClient.GetOperationAsync, GrpcClient.GetOperation, effectiveSettings.GetOperationSettings);
+                GrpcClient.GetOperationAsync, GrpcClient.GetOperation, effectiveSettings.GetOperationSettings)
+                .WithGoogleRequestParam("name", request => request.Name);
             _callListOperations = clientHelper.BuildApiCall<ListOperationsRequest, ListOperationsResponse>(
-                GrpcClient.ListOperationsAsync, GrpcClient.ListOperations, effectiveSettings.ListOperationsSettings);
+                GrpcClient.ListOperationsAsync, GrpcClient.ListOperations, effectiveSettings.ListOperationsSettings)
+                .WithGoogleRequestParam("name", request => request.Name);
             _callCancelOperation = clientHelper.BuildApiCall<CancelOperationRequest, pbwkt::Empty>(
-                GrpcClient.CancelOperationAsync, GrpcClient.CancelOperation, effectiveSettings.CancelOperationSettings);
+                GrpcClient.CancelOperationAsync, GrpcClient.CancelOperation, effectiveSettings.CancelOperationSettings)
+                .WithGoogleRequestParam("name", request => request.Name);
             _callDeleteOperation = clientHelper.BuildApiCall<DeleteOperationRequest, pbwkt::Empty>(
-                GrpcClient.DeleteOperationAsync, GrpcClient.DeleteOperation, effectiveSettings.DeleteOperationSettings);
+                GrpcClient.DeleteOperationAsync, GrpcClient.DeleteOperation, effectiveSettings.DeleteOperationSettings)
+                .WithGoogleRequestParam("name", request => request.Name);
             Modify_ApiCall(ref _callGetOperation);
             Modify_GetOperationApiCall(ref _callGetOperation);
             Modify_ApiCall(ref _callListOperations);
@@ -1069,8 +1131,13 @@ namespace Google.LongRunning
         /// Lists operations that match the specified filter in the request. If the
         /// server doesn't support this method, it returns `UNIMPLEMENTED`.
         ///
-        /// NOTE: the `name` binding below allows API services to override the binding
-        /// to use different resource name schemes, such as `users/*/operations`.
+        /// NOTE: the `name` binding allows API services to override the binding
+        /// to use different resource name schemes, such as `users/*/operations`. To
+        /// override the binding, API services can add a binding such as
+        /// `"/v1/{name=users/*}/operations"` to their service configuration.
+        /// For backwards compatibility, the default name includes the operations
+        /// collection id, however overriding users must ensure the name binding
+        /// is the parent resource, without the operations collection id.
         /// </summary>
         /// <param name="request">
         /// The request object containing all of the parameters for the API call.
@@ -1093,8 +1160,13 @@ namespace Google.LongRunning
         /// Lists operations that match the specified filter in the request. If the
         /// server doesn't support this method, it returns `UNIMPLEMENTED`.
         ///
-        /// NOTE: the `name` binding below allows API services to override the binding
-        /// to use different resource name schemes, such as `users/*/operations`.
+        /// NOTE: the `name` binding allows API services to override the binding
+        /// to use different resource name schemes, such as `users/*/operations`. To
+        /// override the binding, API services can add a binding such as
+        /// `"/v1/{name=users/*}/operations"` to their service configuration.
+        /// For backwards compatibility, the default name includes the operations
+        /// collection id, however overriding users must ensure the name binding
+        /// is the parent resource, without the operations collection id.
         /// </summary>
         /// <param name="request">
         /// The request object containing all of the parameters for the API call.

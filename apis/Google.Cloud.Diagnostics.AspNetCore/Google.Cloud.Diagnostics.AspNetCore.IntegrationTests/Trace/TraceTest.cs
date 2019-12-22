@@ -16,11 +16,14 @@ using Google.Cloud.ClientTesting;
 using Google.Cloud.Diagnostics.Common;
 using Google.Cloud.Diagnostics.Common.IntegrationTests;
 using Google.Protobuf.WellKnownTypes;
+using Grpc.Core;
 using Microsoft.AspNetCore.Builder;
 using Microsoft.AspNetCore.Hosting;
+using Microsoft.AspNetCore.Http;
 using Microsoft.AspNetCore.Mvc;
 using Microsoft.AspNetCore.TestHost;
 using Microsoft.Extensions.DependencyInjection;
+using Microsoft.Extensions.DependencyInjection.Extensions;
 using System;
 using System.Collections.Generic;
 using System.Linq;
@@ -71,6 +74,29 @@ namespace Google.Cloud.Diagnostics.AspNetCore.IntegrationTests
 
                 Assert.False(response.Headers.Contains(TraceHeaderContext.TraceHeader));
             }
+        }  
+        
+        [Fact]
+        public async Task Trace_DummyNameProvider()
+        {
+            var uri = $"/Trace/{nameof(TraceController.Trace)}/{_testId}";
+            // our dummy provider prefixes with /Dummy
+            var expectedTraceName = $"/Dummy{uri}";
+            var childSpanName = EntryData.GetMessage(nameof(TraceController.Trace), _testId);
+
+            using (var server = new TestServer(new WebHostBuilder().UseStartup<TraceTestCustomNameProviderNoBufferHighQpsApplication>()))
+            using (var client = server.CreateClient())
+            {
+                var response = await client.GetAsync(uri);
+
+                var trace = _polling.GetTrace(expectedTraceName, _startTime);
+                
+                TraceEntryVerifiers.AssertParentChildSpan(trace, expectedTraceName, childSpanName);
+                TraceEntryVerifiers.AssertSpanLabelsContains(
+                    trace.Spans.First(s => s.Name == expectedTraceName), TraceEntryData.HttpGetSuccessLabels);
+
+                Assert.False(response.Headers.Contains(TraceHeaderContext.TraceHeader));
+            }
         }
 
         [Fact]
@@ -92,6 +118,26 @@ namespace Google.Cloud.Diagnostics.AspNetCore.IntegrationTests
                     {
                         {TraceEntryData.TraceLabel, TraceEntryData.TraceLabelValue }
                     });
+            }
+        }
+
+        [Theory]
+        [InlineData(nameof(TraceController.TraceOutgoing))]
+        [InlineData(nameof(TraceController.TraceOutgoingClientFactory))]
+        public async Task Trace_OutGoing(string methodName)
+        {
+            var uri = $"/Trace/{methodName}/{_testId}";
+            var childSpanName = EntryData.GetMessage(methodName, _testId);
+            var outgoingSpanName = "https://google.com/";
+
+            using (var server = new TestServer(new WebHostBuilder().UseStartup<TraceTestNoBufferHighQpsApplication>()))
+            using (var client = server.CreateClient())
+            {
+                await client.GetAsync(uri);
+
+                var trace = _polling.GetTrace(uri, _startTime);
+
+                TraceEntryVerifiers.AssertParentChildSpan(trace, uri, childSpanName, outgoingSpanName);
             }
         }
 
@@ -232,8 +278,14 @@ namespace Google.Cloud.Diagnostics.AspNetCore.IntegrationTests
                 var traceLabelsTask = client.GetAsync(traceLabelUri);
                 Task.WaitAll(traceTask, traceLabelsTask);
 
-                var trace = _polling.GetTrace(traceUri, _startTime);
-                var traceLabel = _polling.GetTrace(traceLabelUri, _startTime);
+                // We expect exactly one of the two following traces to have been sent to the backend,
+                // but we don't know which. By polling but not expecting a trace in both cases we force
+                // the poller to wait for the max configured wait time, poll and return one trace if it
+                // found one or null if it didn't.
+                // In test pollers, minEntries and expectTrace should be understood as a minimum requirement
+                // and not as an exact requirement.
+                var trace = _polling.GetTrace(traceUri, _startTime, expectTrace: false);
+                var traceLabel = _polling.GetTrace(traceLabelUri, _startTime, expectTrace: false);
 
                 Assert.True((trace == null && traceLabel != null) || (trace != null && traceLabel == null));
             }
@@ -245,7 +297,7 @@ namespace Google.Cloud.Diagnostics.AspNetCore.IntegrationTests
             var traceUri = $"/Trace/{nameof(TraceController.Trace)}/{_testId}";
             var traceStackTraceUri = $"/Trace/{nameof(TraceController.TraceStackTrace)}/{_testId}";
 
-            using (var server = new TestServer(new WebHostBuilder().UseStartup<TraceTestBufferHighQpsApplication>()))
+            using (var server = new TestServer(new WebHostBuilder().UseStartup<TraceTestTinyBufferHighQpsApplication>()))
             using (var client = server.CreateClient())
             {
                 // Make a trace with a small span that will not cause the buffer to flush.
@@ -293,16 +345,82 @@ namespace Google.Cloud.Diagnostics.AspNetCore.IntegrationTests
                 Assert.Null(trace);
             }
         }
+
+        [Fact]
+        public async Task Trace_TimedBuffer_Stress()
+        {
+            var uri = $"/Trace/{_testId}";
+            // Not the best ever stress test but we are limited by read quotas anyway.
+            var requests = 300;
+            // Entry availability SLO is 90% in 10 seconds and 99% in 5 minutes. We are waiting for 10
+            // seconds max so let's only expect 90% of entries to be visible.
+            var minExpectedRequests = 9 * requests / 10;
+            IList<Task<HttpResponseMessage>> responseTasks = new List<Task<HttpResponseMessage>>(300);
+            using (var server = new TestServer(new WebHostBuilder().UseStartup<TraceTestTimedBufferHighQpsApplication>()))
+            using (var client = server.CreateClient())
+            {
+                for (int i = 0; i < requests; i++)
+                {
+                    responseTasks.Add(client.GetAsync(uri));
+                }
+
+                await Task.WhenAll(responseTasks);
+            }
+
+            var traces = _polling.GetTraces(uri, _startTime, minEntries: minExpectedRequests);
+            Assert.InRange(traces.Count(), minExpectedRequests, requests);
+        }
+
+        [Fact]
+        public async Task Trace_SizedBufferMedium_Stress()
+        {
+            var uri = $"/Trace/{_testId}";
+            // Not the best ever stress test but we are limited by read quotas anyway.
+            var requests = 300;
+            IList<Task<HttpResponseMessage>> responseTasks = new List<Task<HttpResponseMessage>>(300);
+            using (var server = new TestServer(new WebHostBuilder().UseStartup<TraceTestMediumBufferHighQpsApplication>()))
+            using (var client = server.CreateClient())
+            {
+                for (int i = 0; i < requests; i++)
+                {
+                    responseTasks.Add(client.GetAsync(uri));
+                }
+
+                await Task.WhenAll(responseTasks);
+            }
+
+            // We expect only around 85% of traces to have been sent to the backend because of the
+            // size of the buffer, i.e. the last buffer won't flush because it won't reach the
+            // maximum buffer size during this test. That's entirely expected.
+            var minTraces = (int)((8.5 / 10) * requests);
+            var traces = _polling.GetTraces(uri, _startTime, minEntries: minTraces);
+            Assert.InRange(traces.Count(), minTraces, requests);
+        }
     }
 
     /// <summary>
     /// A web application to test <see cref="CloudTraceMiddleware"/> and associated classes.
-    /// This app uses a size buffer (500 bytes) and will sample 1000000 QPS.
+    /// This app uses a size buffer (500 bytes) and will sample 1,000,000 QPS.
     /// </summary>
-    public class TraceTestBufferHighQpsApplication : AbstractTraceTestApplication
+    public class TraceTestTinyBufferHighQpsApplication : AbstractTraceTestApplication
     {
-        public override double GetSampleRate() => 1000000;
+        public override double GetSampleRate() => 1_000_000;
         public override BufferOptions GetBufferOptions() => BufferOptions.SizedBuffer(500);
+    }
+
+    public class TraceTestTinyBufferHighQpsPropagateApplication : TraceTestTinyBufferHighQpsApplication
+    {
+        public override RetryOptions GetRetryOptions() => RetryOptions.NoRetry(ExceptionHandling.Propagate);
+    }
+
+    /// <summary>
+    /// A web application to test <see cref="CloudTraceMiddleware"/> and associated classes.
+    /// This app uses a size buffer (default size / 4) and will sample 1,000,000 QPS.
+    /// </summary>
+    public class TraceTestMediumBufferHighQpsApplication : AbstractTraceTestApplication
+    {
+        public override double GetSampleRate() => 1_000_000;
+        public override BufferOptions GetBufferOptions() => BufferOptions.SizedBuffer(BufferOptions.DefaultBufferSize / 4);
     }
 
     /// <summary>
@@ -322,8 +440,44 @@ namespace Google.Cloud.Diagnostics.AspNetCore.IntegrationTests
     /// </summary>
     public class TraceTestNoBufferHighQpsApplication : AbstractTraceTestApplication
     {
-        public override double GetSampleRate() => 1000000;
+        public override double GetSampleRate() => 1_000_000;
         public override BufferOptions GetBufferOptions() => BufferOptions.NoBuffer();
+    }
+    
+    /// <summary>
+    /// A web application to test <see cref="CloudTraceMiddleware"/> and associated classes.
+    /// This app does not use a buffer and will sample 1,000,000 QPS.
+    /// This will allow all calls to be traced and push them to the Trace API immediately.
+    /// And it overrides the default trace name provider with a useless dummy
+    /// </summary>
+    public class TraceTestCustomNameProviderNoBufferHighQpsApplication : AbstractTraceTestApplication
+    {
+        public override double GetSampleRate() => 1_000_000;
+        public override BufferOptions GetBufferOptions() => BufferOptions.NoBuffer();
+
+        public override void ConfigureServices(IServiceCollection services)
+        {
+            base.ConfigureServices(services);
+
+            services.Replace(
+                new ServiceDescriptor(
+                    typeof(ICloudTraceNameProvider),
+                    typeof(DummyCloudTraceNameProvider),
+                    ServiceLifetime.Transient)
+            );
+        }
+    }
+
+    /// <summary>
+    /// Useless dummy cloud trace name provider that simply prefixes the
+    /// route with /Dummy
+    /// </summary>
+    public class DummyCloudTraceNameProvider : ICloudTraceNameProvider
+    {
+        public Task<string> GetTraceNameAsync(HttpContext httpContext)
+        {
+            return Task.FromResult($"/Dummy{httpContext.Request.Path}");
+        }
     }
 
     /// <summary>
@@ -339,6 +493,18 @@ namespace Google.Cloud.Diagnostics.AspNetCore.IntegrationTests
     }
 
     /// <summary>
+    /// A web application to test <see cref="CloudTraceMiddleware"/> and associated classes.
+    /// This app uses a timed buffer and will sample 1,000,000 QPS.
+    /// This will allow all calls to be traced.
+    /// </summary>
+    public class TraceTestTimedBufferHighQpsApplication : AbstractTraceTestApplication
+    {
+        public override BufferOptions GetBufferOptions() => BufferOptions.TimedBuffer(TimeSpan.FromMilliseconds(500));
+
+        public override double GetSampleRate() => 1_000_000;
+    }
+
+    /// <summary>
     /// A base web application to test <see cref="CloudTraceMiddleware"/> and associated classes.
     /// </summary>
     public abstract class AbstractTraceTestApplication
@@ -347,14 +513,23 @@ namespace Google.Cloud.Diagnostics.AspNetCore.IntegrationTests
 
         public abstract BufferOptions GetBufferOptions();
 
-        public void ConfigureServices(IServiceCollection services)
+        public virtual RetryOptions GetRetryOptions() => null;
+
+        public virtual void ConfigureServices(IServiceCollection services)
         {
-            var traceOptions = Common.TraceOptions.Create(GetSampleRate(), GetBufferOptions());
+            var traceOptions = Common.TraceOptions.Create(GetSampleRate(), GetBufferOptions(), GetRetryOptions());
             services.AddGoogleTrace(options =>
             {
                 options.ProjectId = TestEnvironment.GetTestProjectId();
                 options.Options = traceOptions;
             });
+
+            services.AddHttpClient("google", c =>
+                {
+                    c.BaseAddress = new Uri("https://google.com/");
+                })
+                .AddOutgoingGoogleTraceHandler();
+
             services.AddMvc();
         }
 
@@ -434,6 +609,28 @@ namespace Google.Cloud.Diagnostics.AspNetCore.IntegrationTests
             {
                 Thread.Sleep(10);
                 tracer.SetStackTrace(TraceEntryData.CreateStackTrace());
+            }
+            return message;
+        }
+
+        public async Task<string> TraceOutgoingClientFactory(string id, [FromServices] IManagedTracer tracer, [FromServices] IHttpClientFactory httpClientFactory)
+        {
+            string message = EntryData.GetMessage(nameof(TraceOutgoingClientFactory), id);
+            using (tracer.StartSpan(message))
+            {
+                var httpClient = httpClientFactory.CreateClient("google");
+                await httpClient.GetAsync("");
+            }
+            return message;
+        }
+
+        public async Task<string> TraceOutgoing(string id, [FromServices] IManagedTracer tracer, [FromServices] TraceHeaderPropagatingHandler propagatingHandler)
+        {
+            string message = EntryData.GetMessage(nameof(TraceOutgoing), id);
+            using (tracer.StartSpan(message))
+            using (var httpClient = new HttpClient(propagatingHandler))
+            {
+                await httpClient.GetAsync("https://google.com/");
             }
             return message;
         }

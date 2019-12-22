@@ -1,3 +1,4 @@
+from __future__ import print_function
 # Copyright 2016 Google Inc. All Rights Reserved.
 #
 # Licensed under the Apache License, Version 2.0 (the "License");
@@ -18,6 +19,11 @@ from oauth2client import service_account
 from werkzeug.wrappers import Request
 import common, errno, getopt, hashlib, json, logging, os, socket, string, sys, threading, time, urllib
 
+try:
+  unicode
+except NameError:
+  unicode = str
+
 class ServerState:
   _credential_scopes = ["https://www.googleapis.com/auth/cloud-platform",
                         "https://www.googleapis.com/auth/userinfo.email"]
@@ -26,7 +32,7 @@ class ServerState:
     self._lock = threading.RLock()
     self.project_id = project_id
     self.numeric_project_id = numeric_project_id
-    
+
     self._credentials = {}
     if use_default_credentials:
       self._useDefaultCredentials()
@@ -483,7 +489,7 @@ class MetadataValue(object):
   def verifyShape(self, data, lock):
     """Verifies the shapes of the new data, possibly coercing the type if necessary, and returns it.
     Returns None if the data is invalid.
-    
+
     Arg:
       data: the new data to verify.
       lock: the lock to use to create new metadata values if necessary.
@@ -525,7 +531,7 @@ class MetadataValue(object):
 
     if alt and self.isDirectory() and self.canRequestChildren():
       return (None, bad_request_error)
-  
+
     return self.prepareNonRecursiveResult(is_json)
 
   def prepareNonRecursiveResult(self, is_json):
@@ -559,7 +565,7 @@ class MetadataValue(object):
 
   def waitForChange(self, timeout_sec):
     """Wait for the data or any of its descendants to change for the specified amount of time.
-    
+
     Arg:
       timeout_sec: The maximum number of seconds to wait.
     """
@@ -582,7 +588,7 @@ class MetadataDirectory(MetadataValue):
 
   def __getitem__(self, key):
     return self._value.__getitem__(key)
-  
+
   def __setitem__(self, key, value):
     self._value.__setitem__(key, value)
 
@@ -640,7 +646,7 @@ class MetadataDict(MetadataDirectory):
   def childIter(self):
     """Gets an iterator for all child data."""
     for key in self:
-      yield self[key] 
+      yield self[key]
 
   def deleteChild(self, child_name):
     """Attempts to delete the child with the specified name and returns whether the operation was successful.
@@ -749,7 +755,7 @@ class MetadataDict(MetadataDirectory):
     """Sets the value indicating whether the dictionary has a fixed set of keys or not. If has_fixed_keys is
     False, the dictionary can have an arbitrary set of keys, but the values associated with those keys must
     conform to a certain data shape.
-    
+
     Args:
       has_fixed_keys: Indicates whether the dictionary is expected to have a fixed set of keys or not.
     """
@@ -789,7 +795,7 @@ class MetadataIndexedList(MetadataDirectory):
         return self[index]
     except ValueError:
       pass
-    
+
     return None
 
   def getValueToJSONEncode(self):
@@ -850,7 +856,7 @@ class MetadataList(MetadataDirectory):
   def __init__(self, items, lock):
     assert isinstance(items, list)
     MetadataDirectory.__init__(self, items, lock)
-    
+
   def canRequestChildren(self):
     return False
 
@@ -876,7 +882,7 @@ class MetadataList(MetadataDirectory):
   def prepareNonRecursiveResult(self, is_json):
     if is_json:
       return (json.dumps(self.getValueToJSONEncode(), separators=(u',', u':')), None)
-    
+
     result = u''
     for item in self:
       (item_result, error) = item.prepareNonRecursiveResult(is_json)
@@ -1047,11 +1053,11 @@ FLAGS
   try:
     opts, args = getopt.getopt(argv, 'htdc:i:n:p:', ['help', 'test', "default_credentials", 'credentials=', 'id=', 'num_id=', 'port='])
   except getopt.GetoptError:
-    print usage
+    print(usage)
     sys.exit(2)
   for opt, arg in opts:
     if opt in ('-h', '--help'):
-      print usage
+      print(usage)
       sys.exit()
     elif opt in ('-d', '--default_credentials'):
       use_default_credentials = True
@@ -1085,24 +1091,24 @@ FLAGS
 
   emulator_host = 'localhost:' + unicode(port)
 
-  print "---------------------------------"
-  print "Running Metadata Server Emulator with"
-  print "  Project ID: %s" %  state.project_id
-  print "  Numeric Project ID: %s" %  state.numeric_project_id
-  print "---------------------------------"
-  print "Use this environment variable to connect to the emulator"
-  print "  %s %s=%s" % ("set" if os.name == 'nt' else "export", common.host_environment_variable, emulator_host)
-  print "---------------------------------"
-  print "To update or delete data in the emulator, send a POST or DELETE request, respectively, to"
-  print "  http://%s/emulator/v1/update/<path>" % emulator_host
-  print "For POSTs, the content should be the URL-encoded new value (specified in JSON for directory paths)"
-  print ""
-  print "For example, the following command will change the CPU platform"
-  print '  curl -d "Intel+Ivy+Bridge" -H "Metadata-Flavor: Google" http://%s/emulator/v1/update/instance/cpu-platform"' % emulator_host
-  print ""
-  print "And this command will remove the 2nd license"
-  print '  curl -X DELETE -H "Metadata-Flavor: Google" http://%s/emulator/v1/update/instance/licenses/1"' % emulator_host
-  print "---------------------------------"
+  print("---------------------------------")
+  print("Running Metadata Server Emulator with")
+  print("  Project ID: %s" %  state.project_id)
+  print("  Numeric Project ID: %s" %  state.numeric_project_id)
+  print("---------------------------------")
+  print("Use this environment variable to connect to the emulator")
+  print("  %s %s=%s" % ("set" if os.name == 'nt' else "export", common.host_environment_variable, emulator_host))
+  print("---------------------------------")
+  print("To update or delete data in the emulator, send a POST or DELETE request, respectively, to")
+  print("  http://%s/emulator/v1/update/<path>" % emulator_host)
+  print("For POSTs, the content should be the URL-encoded new value (specified in JSON for directory paths)")
+  print("")
+  print("For example, the following command will change the CPU platform")
+  print('  curl -d "Intel+Ivy+Bridge" -H "Metadata-Flavor: Google" http://%s/emulator/v1/update/instance/cpu-platform"' % emulator_host)
+  print("")
+  print("And this command will remove the 2nd license")
+  print('  curl -X DELETE -H "Metadata-Flavor: Google" http://%s/emulator/v1/update/instance/licenses/1"' % emulator_host)
+  print("---------------------------------")
 
   # If the process is killed while standard output is getting redirected, the output above
   # may not make it to the consumer, so flush the output before running the server.

@@ -17,11 +17,7 @@ using System;
 using System.Collections.Generic;
 using System.Diagnostics;
 using System.Linq;
-using System.Text;
 using System.Threading.Tasks;
-using Google.Cloud.Spanner.V1;
-using Google.Cloud.Spanner.V1.Internal.Logging;
-using Xunit;
 
 namespace Google.Cloud.Spanner.Data.IntegrationTests
 {
@@ -29,12 +25,6 @@ namespace Google.Cloud.Spanner.Data.IntegrationTests
     {
         protected const int TargetQps = 100;
         protected static readonly TimeSpan TestDuration = TimeSpan.FromSeconds(60);
-
-        private async Task<TimeSpan> TestWrite(Stopwatch sw, Func<Stopwatch, Task<TimeSpan>> writeFunc)
-        {
-            await Task.Yield(); //We immediately yield to allow the spawning thread to continue.
-            return await writeFunc(sw);
-        }
 
         /// <summary>
         /// These perf statistics are gathered when LogPerformanceTraces = true.
@@ -49,8 +39,7 @@ namespace Google.Cloud.Spanner.Data.IntegrationTests
         ///  Transaction.CacheHit: How many hits we got on prewarmed transactions.
         ///  Right now the return value is the average latency. TODO(benwu):switch to 90th percentile latency.
         /// </summary>
-        protected async Task<double> TestWriteLatencyWithQps(double queriesPerSecond, TimeSpan testTime,
-            Func<Stopwatch, Task<TimeSpan>> writeFunc)
+        protected async Task<double> TestLatencyWithQps(double queriesPerSecond, TimeSpan testTime, Func<Task> func)
         {
             var sw = Stopwatch.StartNew();
             var all = new List<Task<TimeSpan>>();
@@ -59,7 +48,7 @@ namespace Google.Cloud.Spanner.Data.IntegrationTests
             {
                 if (sw.Elapsed.TotalSeconds * queriesPerSecond > all.Count)
                 {
-                    all.Add(TestWrite(Stopwatch.StartNew(), writeFunc));
+                    all.Add(TimeIteration(func));
                 }
             }
 
@@ -75,24 +64,14 @@ namespace Google.Cloud.Spanner.Data.IntegrationTests
                 return -1;
             }
             return result;
-        }
 
-        /// <summary>
-        /// The purpose of this method is to review the state of both the client (grpc channel) pool and session pool.
-        /// The session pool should have sessions perfectly evenly distributed among each channel.
-        /// The channel pool at test end should all have refcounts = 0.
-        /// </summary>
-        protected static void ValidatePoolInfo()
-        {
-            StringBuilder s = new StringBuilder();
-            int sessions = SessionPool.Default.GetPoolInfo(s);
-            Assert.True(sessions < 2, s.ToString());
-            Logger.DefaultLogger.Info(() => s.ToString());
-
-            s.Clear();
-            int clients = ClientPool.Default.GetPoolInfo(s);
-            Assert.True(clients == 0, s.ToString());
-            Logger.DefaultLogger.Info(() => s.ToString());
+            async Task<TimeSpan> TimeIteration(Func<Task> localFunc)
+            {
+                await Task.Yield(); // We immediately yield to allow the spawning thread to continue.
+                Stopwatch iterationStopwatch = Stopwatch.StartNew();
+                await localFunc().ConfigureAwait(false);
+                return iterationStopwatch.Elapsed;
+            }
         }
     }
 }

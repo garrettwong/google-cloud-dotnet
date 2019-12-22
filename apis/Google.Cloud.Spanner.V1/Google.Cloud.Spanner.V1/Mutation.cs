@@ -25,9 +25,9 @@ namespace Google.Cloud.Spanner.V1 {
       byte[] descriptorData = global::System.Convert.FromBase64String(
           string.Concat(
             "CiBnb29nbGUvc3Bhbm5lci92MS9tdXRhdGlvbi5wcm90bxIRZ29vZ2xlLnNw",
-            "YW5uZXIudjEaHGdvb2dsZS9hcGkvYW5ub3RhdGlvbnMucHJvdG8aHGdvb2ds",
-            "ZS9wcm90b2J1Zi9zdHJ1Y3QucHJvdG8aHGdvb2dsZS9zcGFubmVyL3YxL2tl",
-            "eXMucHJvdG8ixgMKCE11dGF0aW9uEjMKBmluc2VydBgBIAEoCzIhLmdvb2ds",
+            "YW5uZXIudjEaHGdvb2dsZS9wcm90b2J1Zi9zdHJ1Y3QucHJvdG8aHGdvb2ds",
+            "ZS9zcGFubmVyL3YxL2tleXMucHJvdG8aHGdvb2dsZS9hcGkvYW5ub3RhdGlv",
+            "bnMucHJvdG8ixgMKCE11dGF0aW9uEjMKBmluc2VydBgBIAEoCzIhLmdvb2ds",
             "ZS5zcGFubmVyLnYxLk11dGF0aW9uLldyaXRlSAASMwoGdXBkYXRlGAIgASgL",
             "MiEuZ29vZ2xlLnNwYW5uZXIudjEuTXV0YXRpb24uV3JpdGVIABI9ChBpbnNl",
             "cnRfb3JfdXBkYXRlGAMgASgLMiEuZ29vZ2xlLnNwYW5uZXIudjEuTXV0YXRp",
@@ -42,7 +42,7 @@ namespace Google.Cloud.Spanner.V1 {
             "Z2xlYXBpcy9zcGFubmVyL3YxO3NwYW5uZXKqAhdHb29nbGUuQ2xvdWQuU3Bh",
             "bm5lci5WMcoCF0dvb2dsZVxDbG91ZFxTcGFubmVyXFYxYgZwcm90bzM="));
       descriptor = pbr::FileDescriptor.FromGeneratedCode(descriptorData,
-          new pbr::FileDescriptor[] { global::Google.Api.AnnotationsReflection.Descriptor, global::Google.Protobuf.WellKnownTypes.StructReflection.Descriptor, global::Google.Cloud.Spanner.V1.KeysReflection.Descriptor, },
+          new pbr::FileDescriptor[] { global::Google.Protobuf.WellKnownTypes.StructReflection.Descriptor, global::Google.Cloud.Spanner.V1.KeysReflection.Descriptor, global::Google.Api.AnnotationsReflection.Descriptor, },
           new pbr::GeneratedClrTypeInfo(null, new pbr::GeneratedClrTypeInfo[] {
             new pbr::GeneratedClrTypeInfo(typeof(global::Google.Cloud.Spanner.V1.Mutation), global::Google.Cloud.Spanner.V1.Mutation.Parser, new[]{ "Insert", "Update", "InsertOrUpdate", "Replace", "Delete" }, new[]{ "Operation" }, null, new pbr::GeneratedClrTypeInfo[] { new pbr::GeneratedClrTypeInfo(typeof(global::Google.Cloud.Spanner.V1.Mutation.Types.Write), global::Google.Cloud.Spanner.V1.Mutation.Types.Write.Parser, new[]{ "Table", "Columns", "Values" }, null, null, null),
             new pbr::GeneratedClrTypeInfo(typeof(global::Google.Cloud.Spanner.V1.Mutation.Types.Delete), global::Google.Cloud.Spanner.V1.Mutation.Types.Delete.Parser, new[]{ "Table", "KeySet" }, null, null, null)})
@@ -161,6 +161,11 @@ namespace Google.Cloud.Spanner.V1 {
     /// deleted, and the column values provided are inserted
     /// instead. Unlike [insert_or_update][google.spanner.v1.Mutation.insert_or_update], this means any values not
     /// explicitly written become `NULL`.
+    ///
+    /// In an interleaved table, if you create the child table with the
+    /// `ON DELETE CASCADE` annotation, then replacing a parent row
+    /// also deletes the child rows. Otherwise, you must delete the
+    /// child rows before you replace the parent row.
     /// </summary>
     [global::System.Diagnostics.DebuggerNonUserCodeAttribute]
     public global::Google.Cloud.Spanner.V1.Mutation.Types.Write Replace {
@@ -738,7 +743,7 @@ namespace Google.Cloud.Spanner.V1 {
           }
           if (other.keySet_ != null) {
             if (keySet_ == null) {
-              keySet_ = new global::Google.Cloud.Spanner.V1.KeySet();
+              KeySet = new global::Google.Cloud.Spanner.V1.KeySet();
             }
             KeySet.MergeFrom(other.KeySet);
           }
@@ -759,9 +764,9 @@ namespace Google.Cloud.Spanner.V1 {
               }
               case 18: {
                 if (keySet_ == null) {
-                  keySet_ = new global::Google.Cloud.Spanner.V1.KeySet();
+                  KeySet = new global::Google.Cloud.Spanner.V1.KeySet();
                 }
-                input.ReadMessage(keySet_);
+                input.ReadMessage(KeySet);
                 break;
               }
             }

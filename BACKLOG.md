@@ -61,3 +61,28 @@ the request and want to put work into it.
 
 - Issue: [#1784](https://github.com/googleapis/google-cloud-dotnet/issues/1784)
 - Status: Both proposed options need server changes in some form or other.
+
+## Log exceptions thrown in TimedBuffer
+
+- Issue: [#2182](https://github.com/googleapis/google-cloud-dotnet/issues/2182)
+- Status: We don't have a good solution for where to log these. Won't affect clients directly.
+
+## Create an unmanaged tracer in Google.Cloud.Diagnostic.Common
+
+- Issue: [#2166](https://github.com/googleapis/google-cloud-dotnet/issues/2166)
+- Status: We haven't received intereset for this feature.
+
+## Expose Tracing, Error Reporting and Logging common parts in a consumable way.
+
+- Issue: [#2164](https://github.com/googleapis/google-cloud-dotnet/issues/2164)
+- Status: This might not be a good idea, especially with OpenCensus integration coming up.
+
+## Including information stored in System.Exception.Data in the Stackdriver Error Reporting entry.
+
+- Issue: [#2738](https://github.com/googleapis/google-cloud-dotnet/issues/2738)
+- Status: The original requester never confirmed whether our approach solved their use case or not.
+
+# Firestore: Expose sufficient state to manually restart a Listen operation
+
+- Issue: [#2513](https://github.com/googleapis/google-cloud-dotnet/issues/2513)
+- Status: Waiting for more user to request this, so we can gather suitable requirements.

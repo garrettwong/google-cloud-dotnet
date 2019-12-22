@@ -56,19 +56,21 @@ namespace Google.Cloud.Diagnostics.Common.IntegrationTests
         protected IEnumerable<T> GetEntries(int minEntries, Func<IEnumerable<T>> getEntries)
         {
             TimeSpan totalSleepTime = TimeSpan.Zero;
+            List<T> lastFoundEntries = new List<T>();
             while (totalSleepTime < _timeout)
             {
                 TimeSpan sleepTime = minEntries > 0 ? _sleepInterval : _timeout;
                 totalSleepTime += sleepTime;
                 Thread.Sleep(sleepTime);
 
-                IEnumerable<T> entries = getEntries();
-                if (minEntries == 0 || entries.Count() >= minEntries)
+                lastFoundEntries = getEntries().ToList();
+                if (lastFoundEntries.Count >= minEntries)
                 {
-                    return entries;
+                    return lastFoundEntries;
                 }
             }
-            return new List<T>();
+
+            throw new Exception($"Expected to find at least {minEntries} entries. Found {lastFoundEntries.Count} entries.");
         }
     }
 }

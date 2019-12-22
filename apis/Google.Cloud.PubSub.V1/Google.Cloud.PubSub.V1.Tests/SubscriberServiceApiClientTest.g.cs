@@ -1,4 +1,4 @@
-// Copyright 2018 Google LLC
+// Copyright 2019 Google LLC
 //
 // Licensed under the Apache License, Version 2.0 (the "License");
 // you may not use this file except in compliance with the License.
@@ -53,6 +53,7 @@ namespace Google.Cloud.PubSub.V1.Tests
                 TopicAsTopicNameOneof = TopicNameOneof.From(new TopicName("[PROJECT]", "[TOPIC]")),
                 AckDeadlineSeconds = 921632575,
                 RetainAckedMessages = false,
+                EnableMessageOrdering = true,
             };
             mockGrpcClient.Setup(x => x.CreateSubscription(expectedRequest, It.IsAny<CallOptions>()))
                 .Returns(expectedResponse);
@@ -85,6 +86,7 @@ namespace Google.Cloud.PubSub.V1.Tests
                 TopicAsTopicNameOneof = TopicNameOneof.From(new TopicName("[PROJECT]", "[TOPIC]")),
                 AckDeadlineSeconds = 921632575,
                 RetainAckedMessages = false,
+                EnableMessageOrdering = true,
             };
             mockGrpcClient.Setup(x => x.CreateSubscriptionAsync(expectedRequest, It.IsAny<CallOptions>()))
                 .Returns(new Grpc.Core.AsyncUnaryCall<Subscription>(Task.FromResult(expectedResponse), null, null, null, null));
@@ -115,6 +117,7 @@ namespace Google.Cloud.PubSub.V1.Tests
                 TopicAsTopicNameOneof = TopicNameOneof.From(new TopicName("[PROJECT]", "[TOPIC]")),
                 AckDeadlineSeconds = 2135351438,
                 RetainAckedMessages = false,
+                EnableMessageOrdering = true,
             };
             mockGrpcClient.Setup(x => x.CreateSubscription(request, It.IsAny<CallOptions>()))
                 .Returns(expectedResponse);
@@ -141,6 +144,7 @@ namespace Google.Cloud.PubSub.V1.Tests
                 TopicAsTopicNameOneof = TopicNameOneof.From(new TopicName("[PROJECT]", "[TOPIC]")),
                 AckDeadlineSeconds = 2135351438,
                 RetainAckedMessages = false,
+                EnableMessageOrdering = true,
             };
             mockGrpcClient.Setup(x => x.CreateSubscriptionAsync(request, It.IsAny<CallOptions>()))
                 .Returns(new Grpc.Core.AsyncUnaryCall<Subscription>(Task.FromResult(expectedResponse), null, null, null, null));
@@ -166,6 +170,7 @@ namespace Google.Cloud.PubSub.V1.Tests
                 TopicAsTopicNameOneof = TopicNameOneof.From(new TopicName("[PROJECT]", "[TOPIC]")),
                 AckDeadlineSeconds = 2135351438,
                 RetainAckedMessages = false,
+                EnableMessageOrdering = true,
             };
             mockGrpcClient.Setup(x => x.GetSubscription(expectedRequest, It.IsAny<CallOptions>()))
                 .Returns(expectedResponse);
@@ -192,6 +197,7 @@ namespace Google.Cloud.PubSub.V1.Tests
                 TopicAsTopicNameOneof = TopicNameOneof.From(new TopicName("[PROJECT]", "[TOPIC]")),
                 AckDeadlineSeconds = 2135351438,
                 RetainAckedMessages = false,
+                EnableMessageOrdering = true,
             };
             mockGrpcClient.Setup(x => x.GetSubscriptionAsync(expectedRequest, It.IsAny<CallOptions>()))
                 .Returns(new Grpc.Core.AsyncUnaryCall<Subscription>(Task.FromResult(expectedResponse), null, null, null, null));
@@ -218,6 +224,7 @@ namespace Google.Cloud.PubSub.V1.Tests
                 TopicAsTopicNameOneof = TopicNameOneof.From(new TopicName("[PROJECT]", "[TOPIC]")),
                 AckDeadlineSeconds = 2135351438,
                 RetainAckedMessages = false,
+                EnableMessageOrdering = true,
             };
             mockGrpcClient.Setup(x => x.GetSubscription(request, It.IsAny<CallOptions>()))
                 .Returns(expectedResponse);
@@ -243,6 +250,7 @@ namespace Google.Cloud.PubSub.V1.Tests
                 TopicAsTopicNameOneof = TopicNameOneof.From(new TopicName("[PROJECT]", "[TOPIC]")),
                 AckDeadlineSeconds = 2135351438,
                 RetainAckedMessages = false,
+                EnableMessageOrdering = true,
             };
             mockGrpcClient.Setup(x => x.GetSubscriptionAsync(request, It.IsAny<CallOptions>()))
                 .Returns(new Grpc.Core.AsyncUnaryCall<Subscription>(Task.FromResult(expectedResponse), null, null, null, null));
@@ -261,15 +269,15 @@ namespace Google.Cloud.PubSub.V1.Tests
             UpdateSubscriptionRequest request = new UpdateSubscriptionRequest
             {
                 Subscription = new Subscription
-                               {
-                                   AckDeadlineSeconds = 42,
-                               },
+                {
+                    AckDeadlineSeconds = 42,
+                },
                 UpdateMask = new FieldMask
-                             {
-                                 Paths = {
-                                             "ack_deadline_seconds",
-                                         },
-                             },
+                {
+                    Paths = {
+                                "ack_deadline_seconds",
+                            },
+                },
             };
             Subscription expectedResponse = new Subscription
             {
@@ -277,6 +285,7 @@ namespace Google.Cloud.PubSub.V1.Tests
                 TopicAsTopicNameOneof = TopicNameOneof.From(new TopicName("[PROJECT]", "[TOPIC]")),
                 AckDeadlineSeconds = 921632575,
                 RetainAckedMessages = false,
+                EnableMessageOrdering = true,
             };
             mockGrpcClient.Setup(x => x.UpdateSubscription(request, It.IsAny<CallOptions>()))
                 .Returns(expectedResponse);
@@ -295,15 +304,15 @@ namespace Google.Cloud.PubSub.V1.Tests
             UpdateSubscriptionRequest request = new UpdateSubscriptionRequest
             {
                 Subscription = new Subscription
-                               {
-                                   AckDeadlineSeconds = 42,
-                               },
+                {
+                    AckDeadlineSeconds = 42,
+                },
                 UpdateMask = new FieldMask
-                             {
-                                 Paths = {
-                                             "ack_deadline_seconds",
-                                         },
-                             },
+                {
+                    Paths = {
+                                "ack_deadline_seconds",
+                            },
+                },
             };
             Subscription expectedResponse = new Subscription
             {
@@ -311,6 +320,7 @@ namespace Google.Cloud.PubSub.V1.Tests
                 TopicAsTopicNameOneof = TopicNameOneof.From(new TopicName("[PROJECT]", "[TOPIC]")),
                 AckDeadlineSeconds = 921632575,
                 RetainAckedMessages = false,
+                EnableMessageOrdering = true,
             };
             mockGrpcClient.Setup(x => x.UpdateSubscriptionAsync(request, It.IsAny<CallOptions>()))
                 .Returns(new Grpc.Core.AsyncUnaryCall<Subscription>(Task.FromResult(expectedResponse), null, null, null, null));
@@ -837,18 +847,18 @@ namespace Google.Cloud.PubSub.V1.Tests
             UpdateSnapshotRequest request = new UpdateSnapshotRequest
             {
                 Snapshot = new Snapshot
-                           {
-                               ExpireTime = new Timestamp
-                                            {
-                                                Seconds = 123456L,
-                                            },
-                           },
+                {
+                    ExpireTime = new Timestamp
+                                 {
+                                     Seconds = 123456L,
+                                 },
+                },
                 UpdateMask = new FieldMask
-                             {
-                                 Paths = {
-                                             "expire_time",
-                                         },
-                             },
+                {
+                    Paths = {
+                                "expire_time",
+                            },
+                },
             };
             Snapshot expectedResponse = new Snapshot
             {
@@ -872,18 +882,18 @@ namespace Google.Cloud.PubSub.V1.Tests
             UpdateSnapshotRequest request = new UpdateSnapshotRequest
             {
                 Snapshot = new Snapshot
-                           {
-                               ExpireTime = new Timestamp
-                                            {
-                                                Seconds = 123456L,
-                                            },
-                           },
+                {
+                    ExpireTime = new Timestamp
+                                 {
+                                     Seconds = 123456L,
+                                 },
+                },
                 UpdateMask = new FieldMask
-                             {
-                                 Paths = {
-                                             "expire_time",
-                                         },
-                             },
+                {
+                    Paths = {
+                                "expire_time",
+                            },
+                },
             };
             Snapshot expectedResponse = new Snapshot
             {

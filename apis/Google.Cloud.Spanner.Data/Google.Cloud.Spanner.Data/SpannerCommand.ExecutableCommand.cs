@@ -16,7 +16,6 @@ using Google.Api.Gax;
 using Google.Cloud.Spanner.Admin.Database.V1;
 using Google.Cloud.Spanner.Common.V1;
 using Google.Cloud.Spanner.V1;
-using Google.Cloud.Spanner.V1.Internal.Logging;
 using Google.Protobuf.WellKnownTypes;
 using Grpc.Core;
 using System;
@@ -26,6 +25,7 @@ using System.Data.Common;
 using System.Linq;
 using System.Threading;
 using System.Threading.Tasks;
+using static Google.Cloud.Spanner.V1.TransactionOptions.Types;
 
 namespace Google.Cloud.Spanner.Data
 {
@@ -41,9 +41,11 @@ namespace Google.Cloud.Spanner.Data
         /// </summary>
         private class ExecutableCommand
         {
+            private static readonly TransactionOptions s_partitionedDmlTransactionOptions = new TransactionOptions { PartitionedDml = new PartitionedDml() };
+            private static readonly TransactionOptions s_readWriteOptions = new TransactionOptions { ReadWrite = new ReadWrite() };
+
             internal SpannerConnection Connection { get; }
             internal SpannerCommandTextBuilder CommandTextBuilder { get; }
-            internal Logger Logger { get; }
             internal int CommandTimeout { get; }
             internal SpannerTransaction Transaction { get; }
             internal CommandPartition Partition { get; }
@@ -53,7 +55,6 @@ namespace Google.Cloud.Spanner.Data
             {
                 Connection = command.SpannerConnection;
                 CommandTextBuilder = command.SpannerCommandTextBuilder;
-                Logger = command.Logger;
                 CommandTimeout = command.CommandTimeout;
                 Partition = command.Partition;
                 Parameters = command.Parameters;
@@ -72,13 +73,9 @@ namespace Google.Cloud.Spanner.Data
 
                 using (var reader = await ExecuteReaderAsync(CommandBehavior.SingleRow, null, cancellationToken).ConfigureAwait(false))
                 {
-                    if (await reader.ReadAsync(cancellationToken).ConfigureAwait(false) && reader.HasRows &&
-                        reader.FieldCount > 0)
-                    {
-                        return reader.GetFieldValue<T>(0);
-                    }
+                    bool readValue = await reader.ReadAsync(cancellationToken).ConfigureAwait(false) && reader.FieldCount > 0;
+                    return readValue ? reader.GetFieldValue<T>(0) : default;
                 }
-                return default;
             }
 
             // Convenience method for upcasting the from SpannerDataReader to DbDataReader.
@@ -95,43 +92,38 @@ namespace Google.Cloud.Spanner.Data
                     throw new InvalidOperationException("ExecuteReader functionality is only available for queries.");
                 }
 
-                await EnsureConnectionIsOpenAsync(cancellationToken).ConfigureAwait(false);
+                await Connection.EnsureIsOpenAsync(cancellationToken).ConfigureAwait(false);
 
                 // Three transaction options:
-                // - One created freshly via singleUseReadSettings
+                // - A single-use transaction. This doesn't go through a BeginTransaction request; instead, the transaction options are in the request.
                 // - One specified in the command
-                // - The default based on the connection
+                // - The default based on the connection (may be ephemeral, may be implicit via TransactionScope)
 
-                IDisposable disposableTransaction = null;
-                ISpannerTransaction effectiveTransaction = Transaction;
-                if (singleUseReadSettings != null)
+                ISpannerTransaction effectiveTransaction = Transaction ?? Connection.AmbientTransaction;
+                if (singleUseReadSettings != null && Transaction != null)
                 {
-                    if (Transaction != null)
-                    {
-                        throw new InvalidOperationException("singleUseReadSettings cannot be used within another transaction.");
-                    }
-                    SingleUseTransaction transaction = await Connection.BeginSingleUseTransactionAsync(singleUseReadSettings, cancellationToken).ConfigureAwait(false);
-                    effectiveTransaction = transaction;
-                    disposableTransaction = transaction;
+                    throw new InvalidOperationException("singleUseReadSettings cannot be used within another transaction.");
                 }
-                if (effectiveTransaction == null)
-                {
-                    effectiveTransaction = Connection.GetDefaultTransaction();
-                }
+                effectiveTransaction = effectiveTransaction ?? new EphemeralTransaction(Connection, null);
 
                 ExecuteSqlRequest request = GetExecuteSqlRequest();
-                Logger?.SensitiveInfo(() => $"SpannerCommand.ExecuteReader.Query={request.Sql}");
 
-                // Execute the command.
+                if (singleUseReadSettings != null)
+                {
+                    request.Transaction = new TransactionSelector { SingleUse = singleUseReadSettings.ToTransactionOptions() };
+                }
+
+                Connection.Logger.SensitiveInfo(() => $"SpannerCommand.ExecuteReader.Query={request.Sql}");
+
+                // Execute the command. Note that the command timeout here is only used for ambient transactions where we need to set a commit timeout.
                 var resultSet = await effectiveTransaction.ExecuteQueryAsync(request, cancellationToken, CommandTimeout)
                     .ConfigureAwait(false);
                 var conversionOptions = SpannerConversionOptions.ForConnection(Connection);
-                var enableGetSchemaTable = Connection.SpannerConnectionStringBuilder?.EnableGetSchemaTable ?? false;
-                // When the data reader is closed, we need to dispose of either the transaction (if it's single-use) or the connection,
-                // based on the command behavior.
-                var resourceToClose = (behavior & CommandBehavior.CloseConnection) == CommandBehavior.CloseConnection ? Connection : disposableTransaction;
+                var enableGetSchemaTable = Connection.Builder.EnableGetSchemaTable;
+                // When the data reader is closed, we may need to dispose of the connection.
+                IDisposable resourceToClose = (behavior & CommandBehavior.CloseConnection) == CommandBehavior.CloseConnection ? Connection : null;
 
-                return new SpannerDataReader(Logger, resultSet, resourceToClose, conversionOptions, enableGetSchemaTable);
+                return new SpannerDataReader(Connection.Logger, resultSet, resourceToClose, conversionOptions, enableGetSchemaTable, CommandTimeout);
             }
 
             internal async Task<IReadOnlyList<CommandPartition>> GetReaderPartitionsAsync(long? partitionSizeBytes, long? maxPartitions, CancellationToken cancellationToken)
@@ -141,7 +133,7 @@ namespace Google.Cloud.Spanner.Data
                 GaxPreconditions.CheckState(Transaction?.Mode == TransactionMode.ReadOnly,
                     "GetReaderPartitions can only be executed within an explicitly created read-only transaction.");
 
-                await EnsureConnectionIsOpenAsync(cancellationToken).ConfigureAwait(false);
+                await Connection.EnsureIsOpenAsync(cancellationToken).ConfigureAwait(false);
 
                 ExecuteSqlRequest executeSqlRequest = GetExecuteSqlRequest();
                 var tokens = await Transaction.GetPartitionTokensAsync(executeSqlRequest, partitionSizeBytes, maxPartitions, cancellationToken, CommandTimeout).ConfigureAwait(false);
@@ -176,16 +168,14 @@ namespace Google.Cloud.Spanner.Data
             internal async Task<long> ExecutePartitionedUpdateAsync(CancellationToken cancellationToken)
             {
                 ValidateConnectionAndCommandTextBuilder();
-                GaxPreconditions.CheckState(Transaction is null, "Partitioned updates cannot be executed within another transaction");
+                GaxPreconditions.CheckState(Transaction is null && Connection.AmbientTransaction is null, "Partitioned updates cannot be executed within another transaction");
                 GaxPreconditions.CheckState(CommandTextBuilder.SpannerCommandType == SpannerCommandType.Dml, "Only general DML commands can be executed in as partitioned updates");
-                await EnsureConnectionIsOpenAsync(cancellationToken).ConfigureAwait(false);
+                await Connection.EnsureIsOpenAsync(cancellationToken).ConfigureAwait(false);
                 ExecuteSqlRequest request = GetExecuteSqlRequest();
 
-                using (var transaction = await Connection.BeginPartitionedUpdateTransactionAsync(cancellationToken).ConfigureAwait(false))
-                {
-                    // Note: no commit here. PDML transactions are implicitly committed as they go along.
-                    return await transaction.ExecuteDmlAsync(request, cancellationToken, CommandTimeout).ConfigureAwait(false);
-                }
+                var transaction = new EphemeralTransaction(Connection, s_partitionedDmlTransactionOptions);
+                // Note: no commit here. PDML transactions are implicitly committed as they go along.
+                return await transaction.ExecuteDmlAsync(request, cancellationToken, CommandTimeout).ConfigureAwait(false);
             }
 
             private void ValidateConnectionAndCommandTextBuilder()
@@ -194,51 +184,36 @@ namespace Google.Cloud.Spanner.Data
                 GaxPreconditions.CheckState(CommandTextBuilder != null, "SpannerCommand can only be executed when command text is assigned.");
             }
 
-            private async Task EnsureConnectionIsOpenAsync(CancellationToken cancellationToken)
-            {
-                if (!Connection.IsOpen)
-                {
-                    await Connection.OpenAsync(cancellationToken).ConfigureAwait(false);
-                }
-
-                if (!Connection.IsOpen)
-                {
-                    throw new InvalidOperationException("Unable to open the Spanner connection to the database.");
-                }
-            }
-
             private async Task<int> ExecuteDmlAsync(CancellationToken cancellationToken)
             {
-                var transaction = Transaction ?? Connection.GetDefaultTransaction();
-                await EnsureConnectionIsOpenAsync(cancellationToken).ConfigureAwait(false);
+                await Connection.EnsureIsOpenAsync(cancellationToken).ConfigureAwait(false);
+                var transaction = Transaction ?? Connection.AmbientTransaction ?? new EphemeralTransaction(Connection, s_readWriteOptions);
                 ExecuteSqlRequest request = GetExecuteSqlRequest();
                 long count = await transaction.ExecuteDmlAsync(request, cancellationToken, CommandTimeout).ConfigureAwait(false);
-                // TODO: We could return int.MaxValue instead, but that's not ideal either.
-                // (Asking about this with the Spanner team.)
+                // This cannot currently exceed int.MaxValue due to Spanner commit limitations anyway.
                 return checked((int)count);
             }
 
             private async Task<int> ExecuteDdlAsync(CancellationToken cancellationToken)
             {
                 string commandText = CommandTextBuilder.CommandText;
-                var builder = Connection.SpannerConnectionStringBuilder;
-                var channel = await SpannerClientFactory.CreateChannelAsync(
-                    builder?.Host ?? DatabaseAdminClient.DefaultEndpoint.Host,
-                    builder?.Port ?? DatabaseAdminClient.DefaultEndpoint.Port,
-                    builder?.GetCredentials()).ConfigureAwait(false);
+                var builder = Connection.Builder;
+                var channelOptions = new SpannerClientCreationOptions(builder);
+                var credentials = await channelOptions.GetCredentialsAsync().ConfigureAwait(false);
+                var channel = new Channel(channelOptions.Endpoint.Host, channelOptions.Endpoint.Port, credentials);
                 try
                 {
                     var databaseAdminClient = DatabaseAdminClient.Create(channel);
                     if (CommandTextBuilder.IsCreateDatabaseCommand)
                     {
                         var parent = new InstanceName(Connection.Project, Connection.SpannerInstance);
-                        var response = await databaseAdminClient.CreateDatabaseAsync(
-                            new CreateDatabaseRequest
-                            {
-                                ParentAsInstanceName = parent,
-                                CreateStatement = CommandTextBuilder.CommandText,
-                                ExtraStatements = { CommandTextBuilder.ExtraStatements ?? new string[0] }
-                            }).ConfigureAwait(false);
+                        var request = new CreateDatabaseRequest
+                        {
+                            ParentAsInstanceName = parent,
+                            CreateStatement = CommandTextBuilder.CommandText,
+                            ExtraStatements = { CommandTextBuilder.ExtraStatements ?? new string[0] }
+                        };
+                        var response = await databaseAdminClient.CreateDatabaseAsync(request).ConfigureAwait(false);
                         response = await response.PollUntilCompletedAsync().ConfigureAwait(false);
                         if (response.IsFaulted)
                         {
@@ -252,29 +227,24 @@ namespace Google.Cloud.Spanner.Data
                             throw new InvalidOperationException(
                                 "Drop database commands do not support additional ddl statements");
                         }
-                        var dbName = new DatabaseName(
-                            Connection.Project,
-                            Connection.SpannerInstance,
-                            CommandTextBuilder.DatabaseToDrop);
+                        var dbName = new DatabaseName(Connection.Project, Connection.SpannerInstance, CommandTextBuilder.DatabaseToDrop);
                         await databaseAdminClient.DropDatabaseAsync(dbName, cancellationToken).ConfigureAwait(false);
                     }
                     else
                     {
-                        var ddlStatements = new List<string> { commandText };
-                        if (CommandTextBuilder.ExtraStatements != null)
+                        if (builder.DatabaseName == null)
                         {
-                            ddlStatements.AddRange(CommandTextBuilder.ExtraStatements);
+                            throw new InvalidOperationException(
+                                "DDL commands other than CREATE/DROP DATABASE require a database in the data source");
                         }
 
-                        var response =
-                            await databaseAdminClient.UpdateDatabaseDdlAsync(
-                                new UpdateDatabaseDdlRequest
-                                {
-                                    DatabaseAsDatabaseName = new DatabaseName(
-                                        Connection.Project, Connection.SpannerInstance,
-                                        Connection.Database),
-                                    Statements = { ddlStatements }
-                                }).ConfigureAwait(false);
+                        var request = new UpdateDatabaseDdlRequest
+                        {
+                            DatabaseAsDatabaseName = builder.DatabaseName,
+                            Statements = { commandText, CommandTextBuilder.ExtraStatements ?? Enumerable.Empty<string>() }
+                        };
+
+                        var response = await databaseAdminClient.UpdateDatabaseDdlAsync(request).ConfigureAwait(false);
                         response = await response.PollUntilCompletedAsync().ConfigureAwait(false);
                         if (response.IsFaulted)
                         {
@@ -297,9 +267,9 @@ namespace Google.Cloud.Spanner.Data
 
             private async Task<int> ExecuteMutationsAsync(CancellationToken cancellationToken)
             {
-                await EnsureConnectionIsOpenAsync(cancellationToken).ConfigureAwait(false);
+                await Connection.EnsureIsOpenAsync(cancellationToken).ConfigureAwait(false);
                 var mutations = GetMutations();
-                var transaction = Transaction ?? Connection.GetDefaultTransaction();
+                var transaction = Transaction ?? Connection.AmbientTransaction ?? new EphemeralTransaction(Connection, s_readWriteOptions);
                 // Make the request. This will commit immediately or not depending on whether a transaction was explicitly created.
                 await transaction.ExecuteMutationsAsync(mutations, cancellationToken, CommandTimeout).ConfigureAwait(false);
                 // Return the number of records affected.
@@ -321,7 +291,6 @@ namespace Google.Cloud.Spanner.Data
                     Values = { Parameters.Select(x => x.SpannerDbType.ToProtobufValue(x.GetValidatedValue(), conversionOptions)) }
                 };
 
-                var mutations = new List<Mutation>();
                 if (CommandTextBuilder.SpannerCommandType != SpannerCommandType.Delete)
                 {
                     var w = new Mutation.Types.Write
@@ -365,13 +334,10 @@ namespace Google.Cloud.Spanner.Data
                     Sql = CommandTextBuilder.ToString()
                 };
 
-                if (Parameters?.Count > 0)
-                {
-                    request.Params = new Struct();
-                    // See comment at the start of GetMutations.
-                    SpannerConversionOptions options = null;
-                    Parameters.FillSpannerInternalValues(request.Params.Fields, request.ParamTypes, options);
-                }
+                // See comment at the start of GetMutations.
+                SpannerConversionOptions options = null;
+                Parameters.FillSpannerCommandParams(out var parameters, request.ParamTypes, options);
+                request.Params = parameters;
 
                 return request;
             }

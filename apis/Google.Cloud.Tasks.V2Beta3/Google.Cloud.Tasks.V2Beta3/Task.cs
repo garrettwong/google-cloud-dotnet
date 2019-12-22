@@ -25,32 +25,38 @@ namespace Google.Cloud.Tasks.V2Beta3 {
       byte[] descriptorData = global::System.Convert.FromBase64String(
           string.Concat(
             "CiVnb29nbGUvY2xvdWQvdGFza3MvdjJiZXRhMy90YXNrLnByb3RvEhpnb29n",
-            "bGUuY2xvdWQudGFza3MudjJiZXRhMxocZ29vZ2xlL2FwaS9hbm5vdGF0aW9u",
-            "cy5wcm90bxonZ29vZ2xlL2Nsb3VkL3Rhc2tzL3YyYmV0YTMvdGFyZ2V0LnBy",
-            "b3RvGh9nb29nbGUvcHJvdG9idWYvdGltZXN0YW1wLnByb3RvGhdnb29nbGUv",
-            "cnBjL3N0YXR1cy5wcm90byLsAwoEVGFzaxIMCgRuYW1lGAEgASgJElMKF2Fw",
-            "cF9lbmdpbmVfaHR0cF9yZXF1ZXN0GAMgASgLMjAuZ29vZ2xlLmNsb3VkLnRh",
-            "c2tzLnYyYmV0YTMuQXBwRW5naW5lSHR0cFJlcXVlc3RIABIxCg1zY2hlZHVs",
-            "ZV90aW1lGAQgASgLMhouZ29vZ2xlLnByb3RvYnVmLlRpbWVzdGFtcBIvCgtj",
-            "cmVhdGVfdGltZRgFIAEoCzIaLmdvb2dsZS5wcm90b2J1Zi5UaW1lc3RhbXAS",
-            "FgoOZGlzcGF0Y2hfY291bnQYBiABKAUSFgoOcmVzcG9uc2VfY291bnQYByAB",
-            "KAUSOgoNZmlyc3RfYXR0ZW1wdBgIIAEoCzIjLmdvb2dsZS5jbG91ZC50YXNr",
-            "cy52MmJldGEzLkF0dGVtcHQSOQoMbGFzdF9hdHRlbXB0GAkgASgLMiMuZ29v",
-            "Z2xlLmNsb3VkLnRhc2tzLnYyYmV0YTMuQXR0ZW1wdBIzCgR2aWV3GAogASgO",
-            "MiUuZ29vZ2xlLmNsb3VkLnRhc2tzLnYyYmV0YTMuVGFzay5WaWV3IjEKBFZp",
-            "ZXcSFAoQVklFV19VTlNQRUNJRklFRBAAEgkKBUJBU0lDEAESCAoERlVMTBAC",
-            "Qg4KDHBheWxvYWRfdHlwZSLPAQoHQXR0ZW1wdBIxCg1zY2hlZHVsZV90aW1l",
-            "GAEgASgLMhouZ29vZ2xlLnByb3RvYnVmLlRpbWVzdGFtcBIxCg1kaXNwYXRj",
-            "aF90aW1lGAIgASgLMhouZ29vZ2xlLnByb3RvYnVmLlRpbWVzdGFtcBIxCg1y",
-            "ZXNwb25zZV90aW1lGAMgASgLMhouZ29vZ2xlLnByb3RvYnVmLlRpbWVzdGFt",
-            "cBIrCg9yZXNwb25zZV9zdGF0dXMYBCABKAsyEi5nb29nbGUucnBjLlN0YXR1",
-            "c0JuCh5jb20uZ29vZ2xlLmNsb3VkLnRhc2tzLnYyYmV0YTNCCVRhc2tQcm90",
-            "b1ABWj9nb29nbGUuZ29sYW5nLm9yZy9nZW5wcm90by9nb29nbGVhcGlzL2Ns",
-            "b3VkL3Rhc2tzL3YyYmV0YTM7dGFza3NiBnByb3RvMw=="));
+            "bGUuY2xvdWQudGFza3MudjJiZXRhMxoZZ29vZ2xlL2FwaS9yZXNvdXJjZS5w",
+            "cm90bxonZ29vZ2xlL2Nsb3VkL3Rhc2tzL3YyYmV0YTMvdGFyZ2V0LnByb3Rv",
+            "Gh5nb29nbGUvcHJvdG9idWYvZHVyYXRpb24ucHJvdG8aH2dvb2dsZS9wcm90",
+            "b2J1Zi90aW1lc3RhbXAucHJvdG8aF2dvb2dsZS9ycGMvc3RhdHVzLnByb3Rv",
+            "Ghxnb29nbGUvYXBpL2Fubm90YXRpb25zLnByb3RvIs0FCgRUYXNrEgwKBG5h",
+            "bWUYASABKAkSUwoXYXBwX2VuZ2luZV9odHRwX3JlcXVlc3QYAyABKAsyMC5n",
+            "b29nbGUuY2xvdWQudGFza3MudjJiZXRhMy5BcHBFbmdpbmVIdHRwUmVxdWVz",
+            "dEgAEj8KDGh0dHBfcmVxdWVzdBgLIAEoCzInLmdvb2dsZS5jbG91ZC50YXNr",
+            "cy52MmJldGEzLkh0dHBSZXF1ZXN0SAASMQoNc2NoZWR1bGVfdGltZRgEIAEo",
+            "CzIaLmdvb2dsZS5wcm90b2J1Zi5UaW1lc3RhbXASLwoLY3JlYXRlX3RpbWUY",
+            "BSABKAsyGi5nb29nbGUucHJvdG9idWYuVGltZXN0YW1wEjQKEWRpc3BhdGNo",
+            "X2RlYWRsaW5lGAwgASgLMhkuZ29vZ2xlLnByb3RvYnVmLkR1cmF0aW9uEhYK",
+            "DmRpc3BhdGNoX2NvdW50GAYgASgFEhYKDnJlc3BvbnNlX2NvdW50GAcgASgF",
+            "EjoKDWZpcnN0X2F0dGVtcHQYCCABKAsyIy5nb29nbGUuY2xvdWQudGFza3Mu",
+            "djJiZXRhMy5BdHRlbXB0EjkKDGxhc3RfYXR0ZW1wdBgJIAEoCzIjLmdvb2ds",
+            "ZS5jbG91ZC50YXNrcy52MmJldGEzLkF0dGVtcHQSMwoEdmlldxgKIAEoDjIl",
+            "Lmdvb2dsZS5jbG91ZC50YXNrcy52MmJldGEzLlRhc2suVmlldyIxCgRWaWV3",
+            "EhQKEFZJRVdfVU5TUEVDSUZJRUQQABIJCgVCQVNJQxABEggKBEZVTEwQAjpo",
+            "6kFlCh5jbG91ZHRhc2tzLmdvb2dsZWFwaXMuY29tL1Rhc2sSQ3Byb2plY3Rz",
+            "L3twcm9qZWN0fS9sb2NhdGlvbnMve2xvY2F0aW9ufS9xdWV1ZXMve3F1ZXVl",
+            "fS90YXNrcy97dGFza31CDgoMcGF5bG9hZF90eXBlIs8BCgdBdHRlbXB0EjEK",
+            "DXNjaGVkdWxlX3RpbWUYASABKAsyGi5nb29nbGUucHJvdG9idWYuVGltZXN0",
+            "YW1wEjEKDWRpc3BhdGNoX3RpbWUYAiABKAsyGi5nb29nbGUucHJvdG9idWYu",
+            "VGltZXN0YW1wEjEKDXJlc3BvbnNlX3RpbWUYAyABKAsyGi5nb29nbGUucHJv",
+            "dG9idWYuVGltZXN0YW1wEisKD3Jlc3BvbnNlX3N0YXR1cxgEIAEoCzISLmdv",
+            "b2dsZS5ycGMuU3RhdHVzQm4KHmNvbS5nb29nbGUuY2xvdWQudGFza3MudjJi",
+            "ZXRhM0IJVGFza1Byb3RvUAFaP2dvb2dsZS5nb2xhbmcub3JnL2dlbnByb3Rv",
+            "L2dvb2dsZWFwaXMvY2xvdWQvdGFza3MvdjJiZXRhMzt0YXNrc2IGcHJvdG8z"));
       descriptor = pbr::FileDescriptor.FromGeneratedCode(descriptorData,
-          new pbr::FileDescriptor[] { global::Google.Api.AnnotationsReflection.Descriptor, global::Google.Cloud.Tasks.V2Beta3.TargetReflection.Descriptor, global::Google.Protobuf.WellKnownTypes.TimestampReflection.Descriptor, global::Google.Rpc.StatusReflection.Descriptor, },
+          new pbr::FileDescriptor[] { global::Google.Api.ResourceReflection.Descriptor, global::Google.Cloud.Tasks.V2Beta3.TargetReflection.Descriptor, global::Google.Protobuf.WellKnownTypes.DurationReflection.Descriptor, global::Google.Protobuf.WellKnownTypes.TimestampReflection.Descriptor, global::Google.Rpc.StatusReflection.Descriptor, global::Google.Api.AnnotationsReflection.Descriptor, },
           new pbr::GeneratedClrTypeInfo(null, new pbr::GeneratedClrTypeInfo[] {
-            new pbr::GeneratedClrTypeInfo(typeof(global::Google.Cloud.Tasks.V2Beta3.Task), global::Google.Cloud.Tasks.V2Beta3.Task.Parser, new[]{ "Name", "AppEngineHttpRequest", "ScheduleTime", "CreateTime", "DispatchCount", "ResponseCount", "FirstAttempt", "LastAttempt", "View" }, new[]{ "PayloadType" }, new[]{ typeof(global::Google.Cloud.Tasks.V2Beta3.Task.Types.View) }, null),
+            new pbr::GeneratedClrTypeInfo(typeof(global::Google.Cloud.Tasks.V2Beta3.Task), global::Google.Cloud.Tasks.V2Beta3.Task.Parser, new[]{ "Name", "AppEngineHttpRequest", "HttpRequest", "ScheduleTime", "CreateTime", "DispatchDeadline", "DispatchCount", "ResponseCount", "FirstAttempt", "LastAttempt", "View" }, new[]{ "PayloadType" }, new[]{ typeof(global::Google.Cloud.Tasks.V2Beta3.Task.Types.View) }, null),
             new pbr::GeneratedClrTypeInfo(typeof(global::Google.Cloud.Tasks.V2Beta3.Attempt), global::Google.Cloud.Tasks.V2Beta3.Attempt.Parser, new[]{ "ScheduleTime", "DispatchTime", "ResponseTime", "ResponseStatus" }, null, null, null)
           }));
     }
@@ -89,6 +95,7 @@ namespace Google.Cloud.Tasks.V2Beta3 {
       name_ = other.name_;
       scheduleTime_ = other.scheduleTime_ != null ? other.scheduleTime_.Clone() : null;
       createTime_ = other.createTime_ != null ? other.createTime_.Clone() : null;
+      dispatchDeadline_ = other.dispatchDeadline_ != null ? other.dispatchDeadline_.Clone() : null;
       dispatchCount_ = other.dispatchCount_;
       responseCount_ = other.responseCount_;
       firstAttempt_ = other.firstAttempt_ != null ? other.firstAttempt_.Clone() : null;
@@ -97,6 +104,9 @@ namespace Google.Cloud.Tasks.V2Beta3 {
       switch (other.PayloadTypeCase) {
         case PayloadTypeOneofCase.AppEngineHttpRequest:
           AppEngineHttpRequest = other.AppEngineHttpRequest.Clone();
+          break;
+        case PayloadTypeOneofCase.HttpRequest:
+          HttpRequest = other.HttpRequest.Clone();
           break;
       }
 
@@ -122,7 +132,8 @@ namespace Google.Cloud.Tasks.V2Beta3 {
     /// * `PROJECT_ID` can contain letters ([A-Za-z]), numbers ([0-9]),
     ///    hyphens (-), colons (:), or periods (.).
     ///    For more information, see
-    ///    [Identifying projects](https://cloud.google.com/resource-manager/docs/creating-managing-projects#identifying_projects)
+    ///    [Identifying
+    ///    projects](https://cloud.google.com/resource-manager/docs/creating-managing-projects#identifying_projects)
     /// * `LOCATION_ID` is the canonical ID for the task's location.
     ///    The list of available locations can be obtained by calling
     ///    [ListLocations][google.cloud.location.Locations.ListLocations].
@@ -143,10 +154,7 @@ namespace Google.Cloud.Tasks.V2Beta3 {
     /// <summary>Field number for the "app_engine_http_request" field.</summary>
     public const int AppEngineHttpRequestFieldNumber = 3;
     /// <summary>
-    /// App Engine HTTP request that is sent to the task's target. Can
-    /// be set only if
-    /// [app_engine_http_queue][google.cloud.tasks.v2beta3.Queue.app_engine_http_queue] is set
-    /// on the queue.
+    /// HTTP request that is sent to the App Engine app handler.
     ///
     /// An App Engine task is a task that has [AppEngineHttpRequest][google.cloud.tasks.v2beta3.AppEngineHttpRequest] set.
     /// </summary>
@@ -156,6 +164,22 @@ namespace Google.Cloud.Tasks.V2Beta3 {
       set {
         payloadType_ = value;
         payloadTypeCase_ = value == null ? PayloadTypeOneofCase.None : PayloadTypeOneofCase.AppEngineHttpRequest;
+      }
+    }
+
+    /// <summary>Field number for the "http_request" field.</summary>
+    public const int HttpRequestFieldNumber = 11;
+    /// <summary>
+    /// HTTP request that is sent to the task's target.
+    ///
+    /// An HTTP task is a task that has [HttpRequest][google.cloud.tasks.v2beta3.HttpRequest] set.
+    /// </summary>
+    [global::System.Diagnostics.DebuggerNonUserCodeAttribute]
+    public global::Google.Cloud.Tasks.V2Beta3.HttpRequest HttpRequest {
+      get { return payloadTypeCase_ == PayloadTypeOneofCase.HttpRequest ? (global::Google.Cloud.Tasks.V2Beta3.HttpRequest) payloadType_ : null; }
+      set {
+        payloadType_ = value;
+        payloadTypeCase_ = value == null ? PayloadTypeOneofCase.None : PayloadTypeOneofCase.HttpRequest;
       }
     }
 
@@ -193,13 +217,57 @@ namespace Google.Cloud.Tasks.V2Beta3 {
       }
     }
 
+    /// <summary>Field number for the "dispatch_deadline" field.</summary>
+    public const int DispatchDeadlineFieldNumber = 12;
+    private global::Google.Protobuf.WellKnownTypes.Duration dispatchDeadline_;
+    /// <summary>
+    /// The deadline for requests sent to the worker. If the worker does not
+    /// respond by this deadline then the request is cancelled and the attempt
+    /// is marked as a `DEADLINE_EXCEEDED` failure. Cloud Tasks will retry the
+    /// task according to the [RetryConfig][google.cloud.tasks.v2beta3.RetryConfig].
+    ///
+    /// Note that when the request is cancelled, Cloud Tasks will stop listing for
+    /// the response, but whether the worker stops processing depends on the
+    /// worker. For example, if the worker is stuck, it may not react to cancelled
+    /// requests.
+    ///
+    /// The default and maximum values depend on the type of request:
+    ///
+    /// * For [HTTP tasks][google.cloud.tasks.v2beta3.HttpRequest], the default is 10 minutes. The deadline
+    ///   must be in the interval [15 seconds, 30 minutes].
+    ///
+    /// * For [App Engine tasks][google.cloud.tasks.v2beta3.AppEngineHttpRequest], 0 indicates that the
+    ///   request has the default deadline. The default deadline depends on the
+    ///   [scaling
+    ///   type](https://cloud.google.com/appengine/docs/standard/go/how-instances-are-managed#instance_scaling)
+    ///   of the service: 10 minutes for standard apps with automatic scaling, 24
+    ///   hours for standard apps with manual and basic scaling, and 60 minutes for
+    ///   flex apps. If the request deadline is set, it must be in the interval [15
+    ///   seconds, 24 hours 15 seconds]. Regardless of the task's
+    ///   `dispatch_deadline`, the app handler will not run for longer than than
+    ///   the service's timeout. We recommend setting the `dispatch_deadline` to
+    ///   at most a few seconds more than the app handler's timeout. For more
+    ///   information see
+    ///   [Timeouts](https://cloud.google.com/tasks/docs/creating-appengine-handlers#timeouts).
+    ///
+    /// `dispatch_deadline` will be truncated to the nearest millisecond. The
+    /// deadline is an approximate deadline.
+    /// </summary>
+    [global::System.Diagnostics.DebuggerNonUserCodeAttribute]
+    public global::Google.Protobuf.WellKnownTypes.Duration DispatchDeadline {
+      get { return dispatchDeadline_; }
+      set {
+        dispatchDeadline_ = value;
+      }
+    }
+
     /// <summary>Field number for the "dispatch_count" field.</summary>
     public const int DispatchCountFieldNumber = 6;
     private int dispatchCount_;
     /// <summary>
     /// Output only. The number of attempts dispatched.
     ///
-    /// This count includes tasks which have been dispatched but haven't
+    /// This count includes attempts which have been dispatched but haven't
     /// received a response.
     /// </summary>
     [global::System.Diagnostics.DebuggerNonUserCodeAttribute]
@@ -275,6 +343,7 @@ namespace Google.Cloud.Tasks.V2Beta3 {
     public enum PayloadTypeOneofCase {
       None = 0,
       AppEngineHttpRequest = 3,
+      HttpRequest = 11,
     }
     private PayloadTypeOneofCase payloadTypeCase_ = PayloadTypeOneofCase.None;
     [global::System.Diagnostics.DebuggerNonUserCodeAttribute]
@@ -303,8 +372,10 @@ namespace Google.Cloud.Tasks.V2Beta3 {
       }
       if (Name != other.Name) return false;
       if (!object.Equals(AppEngineHttpRequest, other.AppEngineHttpRequest)) return false;
+      if (!object.Equals(HttpRequest, other.HttpRequest)) return false;
       if (!object.Equals(ScheduleTime, other.ScheduleTime)) return false;
       if (!object.Equals(CreateTime, other.CreateTime)) return false;
+      if (!object.Equals(DispatchDeadline, other.DispatchDeadline)) return false;
       if (DispatchCount != other.DispatchCount) return false;
       if (ResponseCount != other.ResponseCount) return false;
       if (!object.Equals(FirstAttempt, other.FirstAttempt)) return false;
@@ -319,8 +390,10 @@ namespace Google.Cloud.Tasks.V2Beta3 {
       int hash = 1;
       if (Name.Length != 0) hash ^= Name.GetHashCode();
       if (payloadTypeCase_ == PayloadTypeOneofCase.AppEngineHttpRequest) hash ^= AppEngineHttpRequest.GetHashCode();
+      if (payloadTypeCase_ == PayloadTypeOneofCase.HttpRequest) hash ^= HttpRequest.GetHashCode();
       if (scheduleTime_ != null) hash ^= ScheduleTime.GetHashCode();
       if (createTime_ != null) hash ^= CreateTime.GetHashCode();
+      if (dispatchDeadline_ != null) hash ^= DispatchDeadline.GetHashCode();
       if (DispatchCount != 0) hash ^= DispatchCount.GetHashCode();
       if (ResponseCount != 0) hash ^= ResponseCount.GetHashCode();
       if (firstAttempt_ != null) hash ^= FirstAttempt.GetHashCode();
@@ -376,6 +449,14 @@ namespace Google.Cloud.Tasks.V2Beta3 {
         output.WriteRawTag(80);
         output.WriteEnum((int) View);
       }
+      if (payloadTypeCase_ == PayloadTypeOneofCase.HttpRequest) {
+        output.WriteRawTag(90);
+        output.WriteMessage(HttpRequest);
+      }
+      if (dispatchDeadline_ != null) {
+        output.WriteRawTag(98);
+        output.WriteMessage(DispatchDeadline);
+      }
       if (_unknownFields != null) {
         _unknownFields.WriteTo(output);
       }
@@ -390,11 +471,17 @@ namespace Google.Cloud.Tasks.V2Beta3 {
       if (payloadTypeCase_ == PayloadTypeOneofCase.AppEngineHttpRequest) {
         size += 1 + pb::CodedOutputStream.ComputeMessageSize(AppEngineHttpRequest);
       }
+      if (payloadTypeCase_ == PayloadTypeOneofCase.HttpRequest) {
+        size += 1 + pb::CodedOutputStream.ComputeMessageSize(HttpRequest);
+      }
       if (scheduleTime_ != null) {
         size += 1 + pb::CodedOutputStream.ComputeMessageSize(ScheduleTime);
       }
       if (createTime_ != null) {
         size += 1 + pb::CodedOutputStream.ComputeMessageSize(CreateTime);
+      }
+      if (dispatchDeadline_ != null) {
+        size += 1 + pb::CodedOutputStream.ComputeMessageSize(DispatchDeadline);
       }
       if (DispatchCount != 0) {
         size += 1 + pb::CodedOutputStream.ComputeInt32Size(DispatchCount);
@@ -427,15 +514,21 @@ namespace Google.Cloud.Tasks.V2Beta3 {
       }
       if (other.scheduleTime_ != null) {
         if (scheduleTime_ == null) {
-          scheduleTime_ = new global::Google.Protobuf.WellKnownTypes.Timestamp();
+          ScheduleTime = new global::Google.Protobuf.WellKnownTypes.Timestamp();
         }
         ScheduleTime.MergeFrom(other.ScheduleTime);
       }
       if (other.createTime_ != null) {
         if (createTime_ == null) {
-          createTime_ = new global::Google.Protobuf.WellKnownTypes.Timestamp();
+          CreateTime = new global::Google.Protobuf.WellKnownTypes.Timestamp();
         }
         CreateTime.MergeFrom(other.CreateTime);
+      }
+      if (other.dispatchDeadline_ != null) {
+        if (dispatchDeadline_ == null) {
+          DispatchDeadline = new global::Google.Protobuf.WellKnownTypes.Duration();
+        }
+        DispatchDeadline.MergeFrom(other.DispatchDeadline);
       }
       if (other.DispatchCount != 0) {
         DispatchCount = other.DispatchCount;
@@ -445,13 +538,13 @@ namespace Google.Cloud.Tasks.V2Beta3 {
       }
       if (other.firstAttempt_ != null) {
         if (firstAttempt_ == null) {
-          firstAttempt_ = new global::Google.Cloud.Tasks.V2Beta3.Attempt();
+          FirstAttempt = new global::Google.Cloud.Tasks.V2Beta3.Attempt();
         }
         FirstAttempt.MergeFrom(other.FirstAttempt);
       }
       if (other.lastAttempt_ != null) {
         if (lastAttempt_ == null) {
-          lastAttempt_ = new global::Google.Cloud.Tasks.V2Beta3.Attempt();
+          LastAttempt = new global::Google.Cloud.Tasks.V2Beta3.Attempt();
         }
         LastAttempt.MergeFrom(other.LastAttempt);
       }
@@ -464,6 +557,12 @@ namespace Google.Cloud.Tasks.V2Beta3 {
             AppEngineHttpRequest = new global::Google.Cloud.Tasks.V2Beta3.AppEngineHttpRequest();
           }
           AppEngineHttpRequest.MergeFrom(other.AppEngineHttpRequest);
+          break;
+        case PayloadTypeOneofCase.HttpRequest:
+          if (HttpRequest == null) {
+            HttpRequest = new global::Google.Cloud.Tasks.V2Beta3.HttpRequest();
+          }
+          HttpRequest.MergeFrom(other.HttpRequest);
           break;
       }
 
@@ -493,16 +592,16 @@ namespace Google.Cloud.Tasks.V2Beta3 {
           }
           case 34: {
             if (scheduleTime_ == null) {
-              scheduleTime_ = new global::Google.Protobuf.WellKnownTypes.Timestamp();
+              ScheduleTime = new global::Google.Protobuf.WellKnownTypes.Timestamp();
             }
-            input.ReadMessage(scheduleTime_);
+            input.ReadMessage(ScheduleTime);
             break;
           }
           case 42: {
             if (createTime_ == null) {
-              createTime_ = new global::Google.Protobuf.WellKnownTypes.Timestamp();
+              CreateTime = new global::Google.Protobuf.WellKnownTypes.Timestamp();
             }
-            input.ReadMessage(createTime_);
+            input.ReadMessage(CreateTime);
             break;
           }
           case 48: {
@@ -515,20 +614,36 @@ namespace Google.Cloud.Tasks.V2Beta3 {
           }
           case 66: {
             if (firstAttempt_ == null) {
-              firstAttempt_ = new global::Google.Cloud.Tasks.V2Beta3.Attempt();
+              FirstAttempt = new global::Google.Cloud.Tasks.V2Beta3.Attempt();
             }
-            input.ReadMessage(firstAttempt_);
+            input.ReadMessage(FirstAttempt);
             break;
           }
           case 74: {
             if (lastAttempt_ == null) {
-              lastAttempt_ = new global::Google.Cloud.Tasks.V2Beta3.Attempt();
+              LastAttempt = new global::Google.Cloud.Tasks.V2Beta3.Attempt();
             }
-            input.ReadMessage(lastAttempt_);
+            input.ReadMessage(LastAttempt);
             break;
           }
           case 80: {
-            view_ = (global::Google.Cloud.Tasks.V2Beta3.Task.Types.View) input.ReadEnum();
+            View = (global::Google.Cloud.Tasks.V2Beta3.Task.Types.View) input.ReadEnum();
+            break;
+          }
+          case 90: {
+            global::Google.Cloud.Tasks.V2Beta3.HttpRequest subBuilder = new global::Google.Cloud.Tasks.V2Beta3.HttpRequest();
+            if (payloadTypeCase_ == PayloadTypeOneofCase.HttpRequest) {
+              subBuilder.MergeFrom(HttpRequest);
+            }
+            input.ReadMessage(subBuilder);
+            HttpRequest = subBuilder;
+            break;
+          }
+          case 98: {
+            if (dispatchDeadline_ == null) {
+              DispatchDeadline = new global::Google.Protobuf.WellKnownTypes.Duration();
+            }
+            input.ReadMessage(DispatchDeadline);
             break;
           }
         }
@@ -671,7 +786,7 @@ namespace Google.Cloud.Tasks.V2Beta3 {
     public const int ResponseStatusFieldNumber = 4;
     private global::Google.Rpc.Status responseStatus_;
     /// <summary>
-    /// Output only. The response from the target for this attempt.
+    /// Output only. The response from the worker for this attempt.
     ///
     /// If `response_time` is unset, then the task has not been attempted or is
     /// currently running and the `response_status` field is meaningless.
@@ -773,25 +888,25 @@ namespace Google.Cloud.Tasks.V2Beta3 {
       }
       if (other.scheduleTime_ != null) {
         if (scheduleTime_ == null) {
-          scheduleTime_ = new global::Google.Protobuf.WellKnownTypes.Timestamp();
+          ScheduleTime = new global::Google.Protobuf.WellKnownTypes.Timestamp();
         }
         ScheduleTime.MergeFrom(other.ScheduleTime);
       }
       if (other.dispatchTime_ != null) {
         if (dispatchTime_ == null) {
-          dispatchTime_ = new global::Google.Protobuf.WellKnownTypes.Timestamp();
+          DispatchTime = new global::Google.Protobuf.WellKnownTypes.Timestamp();
         }
         DispatchTime.MergeFrom(other.DispatchTime);
       }
       if (other.responseTime_ != null) {
         if (responseTime_ == null) {
-          responseTime_ = new global::Google.Protobuf.WellKnownTypes.Timestamp();
+          ResponseTime = new global::Google.Protobuf.WellKnownTypes.Timestamp();
         }
         ResponseTime.MergeFrom(other.ResponseTime);
       }
       if (other.responseStatus_ != null) {
         if (responseStatus_ == null) {
-          responseStatus_ = new global::Google.Rpc.Status();
+          ResponseStatus = new global::Google.Rpc.Status();
         }
         ResponseStatus.MergeFrom(other.ResponseStatus);
       }
@@ -808,30 +923,30 @@ namespace Google.Cloud.Tasks.V2Beta3 {
             break;
           case 10: {
             if (scheduleTime_ == null) {
-              scheduleTime_ = new global::Google.Protobuf.WellKnownTypes.Timestamp();
+              ScheduleTime = new global::Google.Protobuf.WellKnownTypes.Timestamp();
             }
-            input.ReadMessage(scheduleTime_);
+            input.ReadMessage(ScheduleTime);
             break;
           }
           case 18: {
             if (dispatchTime_ == null) {
-              dispatchTime_ = new global::Google.Protobuf.WellKnownTypes.Timestamp();
+              DispatchTime = new global::Google.Protobuf.WellKnownTypes.Timestamp();
             }
-            input.ReadMessage(dispatchTime_);
+            input.ReadMessage(DispatchTime);
             break;
           }
           case 26: {
             if (responseTime_ == null) {
-              responseTime_ = new global::Google.Protobuf.WellKnownTypes.Timestamp();
+              ResponseTime = new global::Google.Protobuf.WellKnownTypes.Timestamp();
             }
-            input.ReadMessage(responseTime_);
+            input.ReadMessage(ResponseTime);
             break;
           }
           case 34: {
             if (responseStatus_ == null) {
-              responseStatus_ = new global::Google.Rpc.Status();
+              ResponseStatus = new global::Google.Rpc.Status();
             }
-            input.ReadMessage(responseStatus_);
+            input.ReadMessage(ResponseStatus);
             break;
           }
         }

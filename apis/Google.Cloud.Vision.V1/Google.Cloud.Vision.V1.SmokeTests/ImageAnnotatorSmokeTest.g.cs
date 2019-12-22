@@ -1,4 +1,4 @@
-// Copyright 2018 Google LLC
+// Copyright 2019 Google LLC
 //
 // Licensed under the Apache License, Version 2.0 (the "License");
 // you may not use this file except in compliance with the License.
@@ -42,9 +42,9 @@ namespace Google.Cloud.Vision.V1.SmokeTests
                     Image = new Image
                             {
                                 Source = new ImageSource
-                                         {
-                                             GcsImageUri = "gs://gapic-toolkit/President_Barack_Obama.jpg",
-                                         },
+                                {
+                                    GcsImageUri = "gs://cloud-samples-data/vision/face_detection/celebrity_recognition/sergey.jpg",
+                                },
                             },
                     Features = {
                                    new Feature

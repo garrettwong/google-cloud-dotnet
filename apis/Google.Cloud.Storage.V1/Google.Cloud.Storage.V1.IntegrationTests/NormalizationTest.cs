@@ -12,6 +12,7 @@
 // See the License for the specific language governing permissions and
 // limitations under the License.
 
+using Google.Cloud.ClientTesting;
 using System.IO;
 using System.Text;
 using Xunit;
@@ -23,9 +24,10 @@ namespace Google.Cloud.Storage.V1.IntegrationTests
     /// The bucket <see cref="StorageFixture.CrossLanguageTestBucket"/> contains two files named "Café"
     /// but using different normalization. The client should be able to retrieve both.
     /// </summary>
+    [FileLoggerBeforeAfterTest]
     public class NormalizationTest
     {
-        [Theory]
+        [SkippableTheory]
         // Normalization Form C: a single character for e-acute.
         // URL should end with Caf%C3%A9
         [InlineData("Caf\u00e9", "Normalization Form C")]
@@ -34,6 +36,7 @@ namespace Google.Cloud.Storage.V1.IntegrationTests
         [InlineData("Cafe\u0301", "Normalization Form D")]
         public void FetchObjectAndCheckContent(string name, string expectedContent)
         {
+            TestEnvironment.SkipIfVpcSc();
             var client = StorageClient.Create();
             var obj = client.GetObject(StorageFixture.CrossLanguageTestBucket, name);
             Assert.Equal(name, obj.Name);

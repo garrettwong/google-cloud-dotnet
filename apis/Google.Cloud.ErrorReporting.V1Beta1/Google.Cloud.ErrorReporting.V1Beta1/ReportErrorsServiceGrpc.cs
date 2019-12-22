@@ -3,7 +3,7 @@
 //     source: google/devtools/clouderrorreporting/v1beta1/report_errors_service.proto
 // </auto-generated>
 // Original file comments:
-// Copyright 2016 Google Inc.
+// Copyright 2019 Google LLC.
 //
 // Licensed under the Apache License, Version 2.0 (the "License");
 // you may not use this file except in compliance with the License.
@@ -17,7 +17,8 @@
 // See the License for the specific language governing permissions and
 // limitations under the License.
 //
-#pragma warning disable 1591
+//
+#pragma warning disable 0414, 1591
 #region Designer generated code
 
 using grpc = global::Grpc.Core;
@@ -30,15 +31,15 @@ namespace Google.Cloud.ErrorReporting.V1Beta1 {
   {
     static readonly string __ServiceName = "google.devtools.clouderrorreporting.v1beta1.ReportErrorsService";
 
-    static readonly grpc::Marshaller<global::Google.Cloud.ErrorReporting.V1Beta1.ReportErrorEventRequest> __Marshaller_ReportErrorEventRequest = grpc::Marshallers.Create((arg) => global::Google.Protobuf.MessageExtensions.ToByteArray(arg), global::Google.Cloud.ErrorReporting.V1Beta1.ReportErrorEventRequest.Parser.ParseFrom);
-    static readonly grpc::Marshaller<global::Google.Cloud.ErrorReporting.V1Beta1.ReportErrorEventResponse> __Marshaller_ReportErrorEventResponse = grpc::Marshallers.Create((arg) => global::Google.Protobuf.MessageExtensions.ToByteArray(arg), global::Google.Cloud.ErrorReporting.V1Beta1.ReportErrorEventResponse.Parser.ParseFrom);
+    static readonly grpc::Marshaller<global::Google.Cloud.ErrorReporting.V1Beta1.ReportErrorEventRequest> __Marshaller_google_devtools_clouderrorreporting_v1beta1_ReportErrorEventRequest = grpc::Marshallers.Create((arg) => global::Google.Protobuf.MessageExtensions.ToByteArray(arg), global::Google.Cloud.ErrorReporting.V1Beta1.ReportErrorEventRequest.Parser.ParseFrom);
+    static readonly grpc::Marshaller<global::Google.Cloud.ErrorReporting.V1Beta1.ReportErrorEventResponse> __Marshaller_google_devtools_clouderrorreporting_v1beta1_ReportErrorEventResponse = grpc::Marshallers.Create((arg) => global::Google.Protobuf.MessageExtensions.ToByteArray(arg), global::Google.Cloud.ErrorReporting.V1Beta1.ReportErrorEventResponse.Parser.ParseFrom);
 
     static readonly grpc::Method<global::Google.Cloud.ErrorReporting.V1Beta1.ReportErrorEventRequest, global::Google.Cloud.ErrorReporting.V1Beta1.ReportErrorEventResponse> __Method_ReportErrorEvent = new grpc::Method<global::Google.Cloud.ErrorReporting.V1Beta1.ReportErrorEventRequest, global::Google.Cloud.ErrorReporting.V1Beta1.ReportErrorEventResponse>(
         grpc::MethodType.Unary,
         __ServiceName,
         "ReportErrorEvent",
-        __Marshaller_ReportErrorEventRequest,
-        __Marshaller_ReportErrorEventResponse);
+        __Marshaller_google_devtools_clouderrorreporting_v1beta1_ReportErrorEventRequest,
+        __Marshaller_google_devtools_clouderrorreporting_v1beta1_ReportErrorEventResponse);
 
     /// <summary>Service descriptor</summary>
     public static global::Google.Protobuf.Reflection.ServiceDescriptor Descriptor
@@ -47,17 +48,19 @@ namespace Google.Cloud.ErrorReporting.V1Beta1 {
     }
 
     /// <summary>Base class for server-side implementations of ReportErrorsService</summary>
+    [grpc::BindServiceMethod(typeof(ReportErrorsService), "BindService")]
     public abstract partial class ReportErrorsServiceBase
     {
       /// <summary>
       /// Report an individual error event.
       ///
-      /// This endpoint accepts &lt;strong>either&lt;/strong> an OAuth token,
-      /// &lt;strong>or&lt;/strong> an
-      /// &lt;a href="https://support.google.com/cloud/answer/6158862">API key&lt;/a>
+      /// This endpoint accepts **either** an OAuth token,
+      /// **or** an [API key](https://support.google.com/cloud/answer/6158862)
       /// for authentication. To use an API key, append it to the URL as the value of
       /// a `key` parameter. For example:
-      /// &lt;pre>POST https://clouderrorreporting.googleapis.com/v1beta1/projects/example-project/events:report?key=123ABC456&lt;/pre>
+      ///
+      /// `POST
+      /// https://clouderrorreporting.googleapis.com/v1beta1/projects/example-project/events:report?key=123ABC456`
       /// </summary>
       /// <param name="request">The request received from the client.</param>
       /// <param name="context">The context of the server-side call handler being invoked.</param>
@@ -95,12 +98,13 @@ namespace Google.Cloud.ErrorReporting.V1Beta1 {
       /// <summary>
       /// Report an individual error event.
       ///
-      /// This endpoint accepts &lt;strong>either&lt;/strong> an OAuth token,
-      /// &lt;strong>or&lt;/strong> an
-      /// &lt;a href="https://support.google.com/cloud/answer/6158862">API key&lt;/a>
+      /// This endpoint accepts **either** an OAuth token,
+      /// **or** an [API key](https://support.google.com/cloud/answer/6158862)
       /// for authentication. To use an API key, append it to the URL as the value of
       /// a `key` parameter. For example:
-      /// &lt;pre>POST https://clouderrorreporting.googleapis.com/v1beta1/projects/example-project/events:report?key=123ABC456&lt;/pre>
+      ///
+      /// `POST
+      /// https://clouderrorreporting.googleapis.com/v1beta1/projects/example-project/events:report?key=123ABC456`
       /// </summary>
       /// <param name="request">The request to send to the server.</param>
       /// <param name="headers">The initial metadata to send with the call. This parameter is optional.</param>
@@ -114,12 +118,13 @@ namespace Google.Cloud.ErrorReporting.V1Beta1 {
       /// <summary>
       /// Report an individual error event.
       ///
-      /// This endpoint accepts &lt;strong>either&lt;/strong> an OAuth token,
-      /// &lt;strong>or&lt;/strong> an
-      /// &lt;a href="https://support.google.com/cloud/answer/6158862">API key&lt;/a>
+      /// This endpoint accepts **either** an OAuth token,
+      /// **or** an [API key](https://support.google.com/cloud/answer/6158862)
       /// for authentication. To use an API key, append it to the URL as the value of
       /// a `key` parameter. For example:
-      /// &lt;pre>POST https://clouderrorreporting.googleapis.com/v1beta1/projects/example-project/events:report?key=123ABC456&lt;/pre>
+      ///
+      /// `POST
+      /// https://clouderrorreporting.googleapis.com/v1beta1/projects/example-project/events:report?key=123ABC456`
       /// </summary>
       /// <param name="request">The request to send to the server.</param>
       /// <param name="options">The options for the call.</param>
@@ -131,12 +136,13 @@ namespace Google.Cloud.ErrorReporting.V1Beta1 {
       /// <summary>
       /// Report an individual error event.
       ///
-      /// This endpoint accepts &lt;strong>either&lt;/strong> an OAuth token,
-      /// &lt;strong>or&lt;/strong> an
-      /// &lt;a href="https://support.google.com/cloud/answer/6158862">API key&lt;/a>
+      /// This endpoint accepts **either** an OAuth token,
+      /// **or** an [API key](https://support.google.com/cloud/answer/6158862)
       /// for authentication. To use an API key, append it to the URL as the value of
       /// a `key` parameter. For example:
-      /// &lt;pre>POST https://clouderrorreporting.googleapis.com/v1beta1/projects/example-project/events:report?key=123ABC456&lt;/pre>
+      ///
+      /// `POST
+      /// https://clouderrorreporting.googleapis.com/v1beta1/projects/example-project/events:report?key=123ABC456`
       /// </summary>
       /// <param name="request">The request to send to the server.</param>
       /// <param name="headers">The initial metadata to send with the call. This parameter is optional.</param>
@@ -150,12 +156,13 @@ namespace Google.Cloud.ErrorReporting.V1Beta1 {
       /// <summary>
       /// Report an individual error event.
       ///
-      /// This endpoint accepts &lt;strong>either&lt;/strong> an OAuth token,
-      /// &lt;strong>or&lt;/strong> an
-      /// &lt;a href="https://support.google.com/cloud/answer/6158862">API key&lt;/a>
+      /// This endpoint accepts **either** an OAuth token,
+      /// **or** an [API key](https://support.google.com/cloud/answer/6158862)
       /// for authentication. To use an API key, append it to the URL as the value of
       /// a `key` parameter. For example:
-      /// &lt;pre>POST https://clouderrorreporting.googleapis.com/v1beta1/projects/example-project/events:report?key=123ABC456&lt;/pre>
+      ///
+      /// `POST
+      /// https://clouderrorreporting.googleapis.com/v1beta1/projects/example-project/events:report?key=123ABC456`
       /// </summary>
       /// <param name="request">The request to send to the server.</param>
       /// <param name="options">The options for the call.</param>
@@ -177,6 +184,15 @@ namespace Google.Cloud.ErrorReporting.V1Beta1 {
     {
       return grpc::ServerServiceDefinition.CreateBuilder()
           .AddMethod(__Method_ReportErrorEvent, serviceImpl.ReportErrorEvent).Build();
+    }
+
+    /// <summary>Register service method with a service binder with or without implementation. Useful when customizing the  service binding logic.
+    /// Note: this method is part of an experimental API that can change or be removed without any prior notice.</summary>
+    /// <param name="serviceBinder">Service methods will be bound by calling <c>AddMethod</c> on this object.</param>
+    /// <param name="serviceImpl">An object implementing the server-side handling logic.</param>
+    public static void BindService(grpc::ServiceBinderBase serviceBinder, ReportErrorsServiceBase serviceImpl)
+    {
+      serviceBinder.AddMethod(__Method_ReportErrorEvent, serviceImpl == null ? null : new grpc::UnaryServerMethod<global::Google.Cloud.ErrorReporting.V1Beta1.ReportErrorEventRequest, global::Google.Cloud.ErrorReporting.V1Beta1.ReportErrorEventResponse>(serviceImpl.ReportErrorEvent));
     }
 
   }

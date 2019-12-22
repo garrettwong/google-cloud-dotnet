@@ -59,8 +59,13 @@ namespace Google.Cloud.Tools.GenerateReleaseNotes
 
         static Func<string, bool> CreatePathFilter(string api, bool includeProjectChanges, bool includeNonProductionChanges)
         {
-            var prefix = includeNonProductionChanges ? $"apis\\{api}\\" : $"apis\\{api}\\{api}\\";
-            return path => path.StartsWith(prefix) && (includeProjectChanges || !ProjectFileSuffixes.Any(path.EndsWith));
+            var prefix = includeNonProductionChanges ? $"apis/{api}/" : $"apis/{api}/{api}/";
+            return path =>
+            {
+                // Some versions return forward slashes, some return backslashes :(
+                path = path.Replace('\\', '/');
+                return path.StartsWith(prefix) && (includeProjectChanges || !ProjectFileSuffixes.Any(path.EndsWith));
+            };
         }
 
         static void GenerateNotes(string api, Func<string, bool> pathFilter)
@@ -89,13 +94,8 @@ namespace Google.Cloud.Tools.GenerateReleaseNotes
                     }
                     if (CommitContainsApi(diff, commit, pathFilter))
                     {
-                        var message = commit.MessageShort;
-                        if (message.Length > 75)
-                        {
-                            message = message.Substring(0, 72) + "...";
-                        }
-                        Console.WriteLine(message);
                         Console.WriteLine($"https://github.com/googleapis/google-cloud-dotnet/commit/{commit.Sha.Substring(0, 7)}");
+                        Console.WriteLine(commit.Message);
                         Console.WriteLine();
                     }
                 }

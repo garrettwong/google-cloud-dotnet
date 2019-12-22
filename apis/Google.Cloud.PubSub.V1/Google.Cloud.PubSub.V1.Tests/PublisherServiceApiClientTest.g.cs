@@ -1,4 +1,4 @@
-// Copyright 2018 Google LLC
+// Copyright 2019 Google LLC
 //
 // Licensed under the Apache License, Version 2.0 (the "License");
 // you may not use this file except in compliance with the License.
@@ -48,6 +48,7 @@ namespace Google.Cloud.PubSub.V1.Tests
             Topic expectedResponse = new Topic
             {
                 TopicName = new TopicName("[PROJECT]", "[TOPIC]"),
+                KmsKeyName = "kmsKeyName2094986649",
             };
             mockGrpcClient.Setup(x => x.CreateTopic(expectedRequest, It.IsAny<CallOptions>()))
                 .Returns(expectedResponse);
@@ -71,6 +72,7 @@ namespace Google.Cloud.PubSub.V1.Tests
             Topic expectedResponse = new Topic
             {
                 TopicName = new TopicName("[PROJECT]", "[TOPIC]"),
+                KmsKeyName = "kmsKeyName2094986649",
             };
             mockGrpcClient.Setup(x => x.CreateTopicAsync(expectedRequest, It.IsAny<CallOptions>()))
                 .Returns(new Grpc.Core.AsyncUnaryCall<Topic>(Task.FromResult(expectedResponse), null, null, null, null));
@@ -94,6 +96,7 @@ namespace Google.Cloud.PubSub.V1.Tests
             Topic expectedResponse = new Topic
             {
                 TopicName = new TopicName("[PROJECT]", "[TOPIC]"),
+                KmsKeyName = "kmsKeyName2094986649",
             };
             mockGrpcClient.Setup(x => x.CreateTopic(request, It.IsAny<CallOptions>()))
                 .Returns(expectedResponse);
@@ -116,6 +119,7 @@ namespace Google.Cloud.PubSub.V1.Tests
             Topic expectedResponse = new Topic
             {
                 TopicName = new TopicName("[PROJECT]", "[TOPIC]"),
+                KmsKeyName = "kmsKeyName2094986649",
             };
             mockGrpcClient.Setup(x => x.CreateTopicAsync(request, It.IsAny<CallOptions>()))
                 .Returns(new Grpc.Core.AsyncUnaryCall<Topic>(Task.FromResult(expectedResponse), null, null, null, null));
@@ -139,6 +143,7 @@ namespace Google.Cloud.PubSub.V1.Tests
             Topic expectedResponse = new Topic
             {
                 TopicName = new TopicName("[PROJECT]", "[TOPIC]"),
+                KmsKeyName = "kmsKeyName2094986649",
             };
             mockGrpcClient.Setup(x => x.UpdateTopic(request, It.IsAny<CallOptions>()))
                 .Returns(expectedResponse);
@@ -162,6 +167,7 @@ namespace Google.Cloud.PubSub.V1.Tests
             Topic expectedResponse = new Topic
             {
                 TopicName = new TopicName("[PROJECT]", "[TOPIC]"),
+                KmsKeyName = "kmsKeyName2094986649",
             };
             mockGrpcClient.Setup(x => x.UpdateTopicAsync(request, It.IsAny<CallOptions>()))
                 .Returns(new Grpc.Core.AsyncUnaryCall<Topic>(Task.FromResult(expectedResponse), null, null, null, null));
@@ -180,18 +186,20 @@ namespace Google.Cloud.PubSub.V1.Tests
             PublishRequest expectedRequest = new PublishRequest
             {
                 TopicAsTopicName = new TopicName("[PROJECT]", "[TOPIC]"),
-                Messages = {
-                               new PubsubMessage
-                               {
-                                   Data = ByteString.CopyFromUtf8("-86"),
-                               },
-                           },
+                Messages =
+                {
+                    new PubsubMessage
+                    {
+                        Data = ByteString.CopyFromUtf8("-86"),
+                    },
+                },
             };
             PublishResponse expectedResponse = new PublishResponse
             {
-                MessageIds = {
-                                 "messageIdsElement-744837059",
-                             },
+                MessageIds =
+                {
+                    "messageIdsElement-744837059",
+                },
             };
             mockGrpcClient.Setup(x => x.Publish(expectedRequest, It.IsAny<CallOptions>()))
                 .Returns(expectedResponse);
@@ -218,18 +226,20 @@ namespace Google.Cloud.PubSub.V1.Tests
             PublishRequest expectedRequest = new PublishRequest
             {
                 TopicAsTopicName = new TopicName("[PROJECT]", "[TOPIC]"),
-                Messages = {
-                               new PubsubMessage
-                               {
-                                   Data = ByteString.CopyFromUtf8("-86"),
-                               },
-                           },
+                Messages =
+                {
+                    new PubsubMessage
+                    {
+                        Data = ByteString.CopyFromUtf8("-86"),
+                    },
+                },
             };
             PublishResponse expectedResponse = new PublishResponse
             {
-                MessageIds = {
-                                 "messageIdsElement-744837059",
-                             },
+                MessageIds =
+                {
+                    "messageIdsElement-744837059",
+                },
             };
             mockGrpcClient.Setup(x => x.PublishAsync(expectedRequest, It.IsAny<CallOptions>()))
                 .Returns(new Grpc.Core.AsyncUnaryCall<PublishResponse>(Task.FromResult(expectedResponse), null, null, null, null));
@@ -256,18 +266,20 @@ namespace Google.Cloud.PubSub.V1.Tests
             PublishRequest request = new PublishRequest
             {
                 TopicAsTopicName = new TopicName("[PROJECT]", "[TOPIC]"),
-                Messages = {
-                               new PubsubMessage
-                               {
-                                   Data = ByteString.CopyFromUtf8("-86"),
-                               },
-                           },
+                Messages =
+                {
+                    new PubsubMessage
+                    {
+                        Data = ByteString.CopyFromUtf8("-86"),
+                    },
+                },
             };
             PublishResponse expectedResponse = new PublishResponse
             {
-                MessageIds = {
-                                 "messageIdsElement-744837059",
-                             },
+                MessageIds =
+                {
+                    "messageIdsElement-744837059",
+                },
             };
             mockGrpcClient.Setup(x => x.Publish(request, It.IsAny<CallOptions>()))
                 .Returns(expectedResponse);
@@ -286,18 +298,20 @@ namespace Google.Cloud.PubSub.V1.Tests
             PublishRequest request = new PublishRequest
             {
                 TopicAsTopicName = new TopicName("[PROJECT]", "[TOPIC]"),
-                Messages = {
-                               new PubsubMessage
-                               {
-                                   Data = ByteString.CopyFromUtf8("-86"),
-                               },
-                           },
+                Messages =
+                {
+                    new PubsubMessage
+                    {
+                        Data = ByteString.CopyFromUtf8("-86"),
+                    },
+                },
             };
             PublishResponse expectedResponse = new PublishResponse
             {
-                MessageIds = {
-                                 "messageIdsElement-744837059",
-                             },
+                MessageIds =
+                {
+                    "messageIdsElement-744837059",
+                },
             };
             mockGrpcClient.Setup(x => x.PublishAsync(request, It.IsAny<CallOptions>()))
                 .Returns(new Grpc.Core.AsyncUnaryCall<PublishResponse>(Task.FromResult(expectedResponse), null, null, null, null));
@@ -320,6 +334,7 @@ namespace Google.Cloud.PubSub.V1.Tests
             Topic expectedResponse = new Topic
             {
                 TopicName = new TopicName("[PROJECT]", "[TOPIC]"),
+                KmsKeyName = "kmsKeyName2094986649",
             };
             mockGrpcClient.Setup(x => x.GetTopic(expectedRequest, It.IsAny<CallOptions>()))
                 .Returns(expectedResponse);
@@ -343,6 +358,7 @@ namespace Google.Cloud.PubSub.V1.Tests
             Topic expectedResponse = new Topic
             {
                 TopicName = new TopicName("[PROJECT]", "[TOPIC]"),
+                KmsKeyName = "kmsKeyName2094986649",
             };
             mockGrpcClient.Setup(x => x.GetTopicAsync(expectedRequest, It.IsAny<CallOptions>()))
                 .Returns(new Grpc.Core.AsyncUnaryCall<Topic>(Task.FromResult(expectedResponse), null, null, null, null));
@@ -366,6 +382,7 @@ namespace Google.Cloud.PubSub.V1.Tests
             Topic expectedResponse = new Topic
             {
                 TopicName = new TopicName("[PROJECT]", "[TOPIC]"),
+                KmsKeyName = "kmsKeyName2094986649",
             };
             mockGrpcClient.Setup(x => x.GetTopic(request, It.IsAny<CallOptions>()))
                 .Returns(expectedResponse);
@@ -388,6 +405,7 @@ namespace Google.Cloud.PubSub.V1.Tests
             Topic expectedResponse = new Topic
             {
                 TopicName = new TopicName("[PROJECT]", "[TOPIC]"),
+                KmsKeyName = "kmsKeyName2094986649",
             };
             mockGrpcClient.Setup(x => x.GetTopicAsync(request, It.IsAny<CallOptions>()))
                 .Returns(new Grpc.Core.AsyncUnaryCall<Topic>(Task.FromResult(expectedResponse), null, null, null, null));

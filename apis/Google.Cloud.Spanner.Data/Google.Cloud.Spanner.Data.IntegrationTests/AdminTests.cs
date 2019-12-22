@@ -16,7 +16,6 @@ using Google.Cloud.Spanner.Data.CommonTesting;
 using System;
 using System.Threading.Tasks;
 using Xunit;
-using Xunit.Abstractions;
 
 namespace Google.Cloud.Spanner.Data.IntegrationTests
 {
@@ -50,6 +49,8 @@ namespace Google.Cloud.Spanner.Data.IntegrationTests
                 var dropCommand = connection.CreateDdlCommand($"DROP DATABASE {dbName}");
                 await dropCommand.ExecuteNonQueryAsync().ConfigureAwait(false);
             }
+
+            // No sessions created, so no session pool.
         }
 
         [Fact]
@@ -94,6 +95,8 @@ namespace Google.Cloud.Spanner.Data.IntegrationTests
                 var dropCommand = connection.CreateDdlCommand($"DROP DATABASE {dbName}");
                 await dropCommand.ExecuteNonQueryAsync().ConfigureAwait(false);
             }
+
+            await SessionPoolHelpers.ShutdownPoolAsync(builder.WithDatabase(dbName));
         }
 
         [Fact]
@@ -143,6 +146,8 @@ namespace Google.Cloud.Spanner.Data.IntegrationTests
                 var dropCommand = connection.CreateDdlCommand($"DROP DATABASE {dbName}");
                 await dropCommand.ExecuteNonQueryAsync().ConfigureAwait(false);
             }
+
+            await SessionPoolHelpers.ShutdownPoolAsync(builder.WithDatabase(dbName));
         }
 
         [Fact]
@@ -167,6 +172,17 @@ namespace Google.Cloud.Spanner.Data.IntegrationTests
                 await Assert.ThrowsAsync<InvalidOperationException>(() => dropCommand.ExecuteNonQueryAsync());
                 dropCommand = connection.CreateDdlCommand($"DROP DATABASE {dbName}");
                 await dropCommand.ExecuteNonQueryAsync();
+            }
+        }
+
+        // This is just one example of DDL that isn't create/drop database.
+        [Fact]
+        public async Task CreateTableRequiresDatabase()
+        {
+            using (var connection = new SpannerConnection(_fixture.Database.NoDbConnectionString))
+            {
+                var cmd = connection.CreateDdlCommand("CREATE TABLE FOO(K STRING(MAX) NOT NULL) PRIMARY KEY (K)");
+                await Assert.ThrowsAsync<InvalidOperationException>(() => cmd.ExecuteNonQueryAsync());
             }
         }
 

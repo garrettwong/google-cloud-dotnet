@@ -51,13 +51,15 @@ namespace Google.Cloud.BigQuery.V2
     /// </remarks>
     public abstract partial class BigQueryClient : IDisposable
     {
-        private static readonly ScopedCredentialProvider _credentialProvider = new ScopedCredentialProvider(
-            new[] {
+        private static readonly string[] s_scopes = new[] {
                 BigqueryService.Scope.Bigquery,
                 BigqueryService.Scope.BigqueryInsertdata,
                 BigqueryService.Scope.DevstorageFullControl,
                 BigqueryService.Scope.CloudPlatform
-            });
+            };
+
+        internal static ScopedCredentialProvider ScopedCredentialProvider { get; } =
+            new ScopedCredentialProvider(s_scopes);
 
         /// <summary>
         /// The underlying BigQuery service object used by this client.
@@ -92,12 +94,12 @@ namespace Google.Cloud.BigQuery.V2
         /// <param name="projectId">The ID of the project containing the BigQuery data. Must not be null.</param>
         /// <param name="credential">Optional <see cref="GoogleCredential"/>.</param>
         /// <returns>The task representing the created <see cref="BigQueryClient"/>.</returns>
-        public static async Task<BigQueryClient> CreateAsync(string projectId, GoogleCredential credential = null)
-        {
-            GaxPreconditions.CheckNotNull(projectId, nameof(projectId));
-            var scopedCredentials = await _credentialProvider.GetCredentialsAsync(credential).ConfigureAwait(false);
-            return CreateImpl(projectId, scopedCredentials);
-        }
+        public static Task<BigQueryClient> CreateAsync(string projectId, GoogleCredential credential = null) =>
+            new BigQueryClientBuilder
+            {
+                ProjectId = GaxPreconditions.CheckNotNull(projectId, nameof(projectId)),
+                Credential = credential?.CreateScoped(s_scopes)
+            }.BuildAsync();
 
         /// <summary>
         /// Synchronously creates a <see cref="BigQueryClient"/>, using application default credentials if
@@ -109,24 +111,12 @@ namespace Google.Cloud.BigQuery.V2
         /// <param name="projectId">The ID of the project containing the BigQuery data. Must not be null.</param>
         /// <param name="credential">Optional <see cref="GoogleCredential"/>.</param>
         /// <returns>The created <see cref="BigQueryClient"/>.</returns>
-        public static BigQueryClient Create(string projectId, GoogleCredential credential = null)
-        {
-            GaxPreconditions.CheckNotNull(projectId, nameof(projectId));
-            var scopedCredentials = _credentialProvider.GetCredentials(credential);
-            return CreateImpl(projectId, scopedCredentials);
-        }
-
-        private static BigQueryClient CreateImpl(string projectId, GoogleCredential scopedCredentials)
-        {
-            var service = new BigqueryService(new BaseClientService.Initializer
+        public static BigQueryClient Create(string projectId, GoogleCredential credential = null) =>
+            new BigQueryClientBuilder
             {
-                HttpClientInitializer = scopedCredentials,
-                ApplicationName = BigQueryClientImpl.ApplicationName,
-                Serializer = new NewtonsoftJsonSerializer(CreateJsonSerializersSettings())
-            });
-
-            return new BigQueryClientImpl(projectId, service);
-        }
+                ProjectId = GaxPreconditions.CheckNotNull(projectId, nameof(projectId)),
+                Credential = credential?.CreateScoped(s_scopes)
+            }.Build();
 
         /// <summary>
         /// Creates a new client which uses the specified location by default for all operations where locations

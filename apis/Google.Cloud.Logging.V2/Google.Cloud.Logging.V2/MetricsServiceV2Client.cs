@@ -1,4 +1,4 @@
-// Copyright 2018 Google LLC
+// Copyright 2019 Google LLC
 //
 // Licensed under the Apache License, Version 2.0 (the "License");
 // you may not use this file except in compliance with the License.
@@ -285,6 +285,42 @@ namespace Google.Cloud.Logging.V2
     }
 
     /// <summary>
+    /// Builder class for <see cref="MetricsServiceV2Client"/> to provide simple configuration of credentials, endpoint etc.
+    /// </summary>
+    public sealed partial class MetricsServiceV2ClientBuilder : gaxgrpc::ClientBuilderBase<MetricsServiceV2Client>
+    {
+        /// <summary>
+        /// The settings to use for RPCs, or null for the default settings.
+        /// </summary>
+        public MetricsServiceV2Settings Settings { get; set; }
+
+        /// <inheritdoc/>
+        public override MetricsServiceV2Client Build()
+        {
+            Validate();
+            grpccore::CallInvoker callInvoker = CreateCallInvoker();
+            return MetricsServiceV2Client.Create(callInvoker, Settings);
+        }
+
+        /// <inheritdoc />
+        public override async stt::Task<MetricsServiceV2Client> BuildAsync(st::CancellationToken cancellationToken = default)
+        {
+            Validate();
+            grpccore::CallInvoker callInvoker = await CreateCallInvokerAsync(cancellationToken).ConfigureAwait(false);
+            return MetricsServiceV2Client.Create(callInvoker, Settings);
+        }
+
+        /// <inheritdoc />
+        protected override gaxgrpc::ServiceEndpoint GetDefaultEndpoint() => MetricsServiceV2Client.DefaultEndpoint;
+
+        /// <inheritdoc />
+        protected override scg::IReadOnlyList<string> GetDefaultScopes() => MetricsServiceV2Client.DefaultScopes;
+
+        /// <inheritdoc />
+        protected override gaxgrpc::ChannelPool GetChannelPool() => MetricsServiceV2Client.ChannelPool;
+    }
+
+    /// <summary>
     /// MetricsServiceV2 client wrapper, for convenient use.
     /// </summary>
     public abstract partial class MetricsServiceV2Client
@@ -316,6 +352,8 @@ namespace Google.Cloud.Logging.V2
         });
 
         private static readonly gaxgrpc::ChannelPool s_channelPool = new gaxgrpc::ChannelPool(DefaultScopes);
+
+        internal static gaxgrpc::ChannelPool ChannelPool => s_channelPool;
 
         /// <summary>
         /// Asynchronously creates a <see cref="MetricsServiceV2Client"/>, applying defaults for all unspecified settings,
@@ -519,6 +557,76 @@ namespace Google.Cloud.Logging.V2
         /// <summary>
         /// Lists logs-based metrics.
         /// </summary>
+        /// <param name="parent">
+        /// Required. The name of the project containing the metrics:
+        ///
+        ///     "projects/[PROJECT_ID]"
+        /// </param>
+        /// <param name="pageToken">
+        /// The token returned from the previous request.
+        /// A value of <c>null</c> or an empty string retrieves the first page.
+        /// </param>
+        /// <param name="pageSize">
+        /// The size of page to request. The response will not be larger than this, but may be smaller.
+        /// A value of <c>null</c> or 0 uses a server-defined page size.
+        /// </param>
+        /// <param name="callSettings">
+        /// If not null, applies overrides to this RPC call.
+        /// </param>
+        /// <returns>
+        /// A pageable asynchronous sequence of <see cref="LogMetric"/> resources.
+        /// </returns>
+        public virtual gax::PagedAsyncEnumerable<ListLogMetricsResponse, LogMetric> ListLogMetricsAsync(
+            string parent,
+            string pageToken = null,
+            int? pageSize = null,
+            gaxgrpc::CallSettings callSettings = null) => ListLogMetricsAsync(
+                new ListLogMetricsRequest
+                {
+                    Parent = gax::GaxPreconditions.CheckNotNullOrEmpty(parent, nameof(parent)),
+                    PageToken = pageToken ?? "",
+                    PageSize = pageSize ?? 0,
+                },
+                callSettings);
+
+        /// <summary>
+        /// Lists logs-based metrics.
+        /// </summary>
+        /// <param name="parent">
+        /// Required. The name of the project containing the metrics:
+        ///
+        ///     "projects/[PROJECT_ID]"
+        /// </param>
+        /// <param name="pageToken">
+        /// The token returned from the previous request.
+        /// A value of <c>null</c> or an empty string retrieves the first page.
+        /// </param>
+        /// <param name="pageSize">
+        /// The size of page to request. The response will not be larger than this, but may be smaller.
+        /// A value of <c>null</c> or 0 uses a server-defined page size.
+        /// </param>
+        /// <param name="callSettings">
+        /// If not null, applies overrides to this RPC call.
+        /// </param>
+        /// <returns>
+        /// A pageable sequence of <see cref="LogMetric"/> resources.
+        /// </returns>
+        public virtual gax::PagedEnumerable<ListLogMetricsResponse, LogMetric> ListLogMetrics(
+            string parent,
+            string pageToken = null,
+            int? pageSize = null,
+            gaxgrpc::CallSettings callSettings = null) => ListLogMetrics(
+                new ListLogMetricsRequest
+                {
+                    Parent = gax::GaxPreconditions.CheckNotNullOrEmpty(parent, nameof(parent)),
+                    PageToken = pageToken ?? "",
+                    PageSize = pageSize ?? 0,
+                },
+                callSettings);
+
+        /// <summary>
+        /// Lists logs-based metrics.
+        /// </summary>
         /// <param name="request">
         /// The request object containing all of the parameters for the API call.
         /// </param>
@@ -617,6 +725,72 @@ namespace Google.Cloud.Logging.V2
                 new GetLogMetricRequest
                 {
                     MetricNameAsMetricNameOneof = gax::GaxPreconditions.CheckNotNull(metricName, nameof(metricName)),
+                },
+                callSettings);
+
+        /// <summary>
+        /// Gets a logs-based metric.
+        /// </summary>
+        /// <param name="metricName">
+        /// The resource name of the desired metric:
+        ///
+        ///     "projects/[PROJECT_ID]/metrics/[METRIC_ID]"
+        /// </param>
+        /// <param name="callSettings">
+        /// If not null, applies overrides to this RPC call.
+        /// </param>
+        /// <returns>
+        /// A Task containing the RPC response.
+        /// </returns>
+        public virtual stt::Task<LogMetric> GetLogMetricAsync(
+            string metricName,
+            gaxgrpc::CallSettings callSettings = null) => GetLogMetricAsync(
+                new GetLogMetricRequest
+                {
+                    MetricName = gax::GaxPreconditions.CheckNotNullOrEmpty(metricName, nameof(metricName)),
+                },
+                callSettings);
+
+        /// <summary>
+        /// Gets a logs-based metric.
+        /// </summary>
+        /// <param name="metricName">
+        /// The resource name of the desired metric:
+        ///
+        ///     "projects/[PROJECT_ID]/metrics/[METRIC_ID]"
+        /// </param>
+        /// <param name="cancellationToken">
+        /// A <see cref="st::CancellationToken"/> to use for this RPC.
+        /// </param>
+        /// <returns>
+        /// A Task containing the RPC response.
+        /// </returns>
+        public virtual stt::Task<LogMetric> GetLogMetricAsync(
+            string metricName,
+            st::CancellationToken cancellationToken) => GetLogMetricAsync(
+                metricName,
+                gaxgrpc::CallSettings.FromCancellationToken(cancellationToken));
+
+        /// <summary>
+        /// Gets a logs-based metric.
+        /// </summary>
+        /// <param name="metricName">
+        /// The resource name of the desired metric:
+        ///
+        ///     "projects/[PROJECT_ID]/metrics/[METRIC_ID]"
+        /// </param>
+        /// <param name="callSettings">
+        /// If not null, applies overrides to this RPC call.
+        /// </param>
+        /// <returns>
+        /// The RPC response.
+        /// </returns>
+        public virtual LogMetric GetLogMetric(
+            string metricName,
+            gaxgrpc::CallSettings callSettings = null) => GetLogMetric(
+                new GetLogMetricRequest
+                {
+                    MetricName = gax::GaxPreconditions.CheckNotNullOrEmpty(metricName, nameof(metricName)),
                 },
                 callSettings);
 
@@ -762,6 +936,96 @@ namespace Google.Cloud.Logging.V2
                 new CreateLogMetricRequest
                 {
                     ParentAsParentNameOneof = gax::GaxPreconditions.CheckNotNull(parent, nameof(parent)),
+                    Metric = gax::GaxPreconditions.CheckNotNull(metric, nameof(metric)),
+                },
+                callSettings);
+
+        /// <summary>
+        /// Creates a logs-based metric.
+        /// </summary>
+        /// <param name="parent">
+        /// The resource name of the project in which to create the metric:
+        ///
+        ///     "projects/[PROJECT_ID]"
+        ///
+        /// The new metric must be provided in the request.
+        /// </param>
+        /// <param name="metric">
+        /// The new logs-based metric, which must not have an identifier that
+        /// already exists.
+        /// </param>
+        /// <param name="callSettings">
+        /// If not null, applies overrides to this RPC call.
+        /// </param>
+        /// <returns>
+        /// A Task containing the RPC response.
+        /// </returns>
+        public virtual stt::Task<LogMetric> CreateLogMetricAsync(
+            string parent,
+            LogMetric metric,
+            gaxgrpc::CallSettings callSettings = null) => CreateLogMetricAsync(
+                new CreateLogMetricRequest
+                {
+                    Parent = gax::GaxPreconditions.CheckNotNullOrEmpty(parent, nameof(parent)),
+                    Metric = gax::GaxPreconditions.CheckNotNull(metric, nameof(metric)),
+                },
+                callSettings);
+
+        /// <summary>
+        /// Creates a logs-based metric.
+        /// </summary>
+        /// <param name="parent">
+        /// The resource name of the project in which to create the metric:
+        ///
+        ///     "projects/[PROJECT_ID]"
+        ///
+        /// The new metric must be provided in the request.
+        /// </param>
+        /// <param name="metric">
+        /// The new logs-based metric, which must not have an identifier that
+        /// already exists.
+        /// </param>
+        /// <param name="cancellationToken">
+        /// A <see cref="st::CancellationToken"/> to use for this RPC.
+        /// </param>
+        /// <returns>
+        /// A Task containing the RPC response.
+        /// </returns>
+        public virtual stt::Task<LogMetric> CreateLogMetricAsync(
+            string parent,
+            LogMetric metric,
+            st::CancellationToken cancellationToken) => CreateLogMetricAsync(
+                parent,
+                metric,
+                gaxgrpc::CallSettings.FromCancellationToken(cancellationToken));
+
+        /// <summary>
+        /// Creates a logs-based metric.
+        /// </summary>
+        /// <param name="parent">
+        /// The resource name of the project in which to create the metric:
+        ///
+        ///     "projects/[PROJECT_ID]"
+        ///
+        /// The new metric must be provided in the request.
+        /// </param>
+        /// <param name="metric">
+        /// The new logs-based metric, which must not have an identifier that
+        /// already exists.
+        /// </param>
+        /// <param name="callSettings">
+        /// If not null, applies overrides to this RPC call.
+        /// </param>
+        /// <returns>
+        /// The RPC response.
+        /// </returns>
+        public virtual LogMetric CreateLogMetric(
+            string parent,
+            LogMetric metric,
+            gaxgrpc::CallSettings callSettings = null) => CreateLogMetric(
+                new CreateLogMetricRequest
+                {
+                    Parent = gax::GaxPreconditions.CheckNotNullOrEmpty(parent, nameof(parent)),
                     Metric = gax::GaxPreconditions.CheckNotNull(metric, nameof(metric)),
                 },
                 callSettings);
@@ -918,6 +1182,99 @@ namespace Google.Cloud.Logging.V2
         /// <summary>
         /// Creates or updates a logs-based metric.
         /// </summary>
+        /// <param name="metricName">
+        /// The resource name of the metric to update:
+        ///
+        ///     "projects/[PROJECT_ID]/metrics/[METRIC_ID]"
+        ///
+        /// The updated metric must be provided in the request and it's
+        /// `name` field must be the same as `[METRIC_ID]` If the metric
+        /// does not exist in `[PROJECT_ID]`, then a new metric is created.
+        /// </param>
+        /// <param name="metric">
+        /// The updated metric.
+        /// </param>
+        /// <param name="callSettings">
+        /// If not null, applies overrides to this RPC call.
+        /// </param>
+        /// <returns>
+        /// A Task containing the RPC response.
+        /// </returns>
+        public virtual stt::Task<LogMetric> UpdateLogMetricAsync(
+            string metricName,
+            LogMetric metric,
+            gaxgrpc::CallSettings callSettings = null) => UpdateLogMetricAsync(
+                new UpdateLogMetricRequest
+                {
+                    MetricName = gax::GaxPreconditions.CheckNotNullOrEmpty(metricName, nameof(metricName)),
+                    Metric = gax::GaxPreconditions.CheckNotNull(metric, nameof(metric)),
+                },
+                callSettings);
+
+        /// <summary>
+        /// Creates or updates a logs-based metric.
+        /// </summary>
+        /// <param name="metricName">
+        /// The resource name of the metric to update:
+        ///
+        ///     "projects/[PROJECT_ID]/metrics/[METRIC_ID]"
+        ///
+        /// The updated metric must be provided in the request and it's
+        /// `name` field must be the same as `[METRIC_ID]` If the metric
+        /// does not exist in `[PROJECT_ID]`, then a new metric is created.
+        /// </param>
+        /// <param name="metric">
+        /// The updated metric.
+        /// </param>
+        /// <param name="cancellationToken">
+        /// A <see cref="st::CancellationToken"/> to use for this RPC.
+        /// </param>
+        /// <returns>
+        /// A Task containing the RPC response.
+        /// </returns>
+        public virtual stt::Task<LogMetric> UpdateLogMetricAsync(
+            string metricName,
+            LogMetric metric,
+            st::CancellationToken cancellationToken) => UpdateLogMetricAsync(
+                metricName,
+                metric,
+                gaxgrpc::CallSettings.FromCancellationToken(cancellationToken));
+
+        /// <summary>
+        /// Creates or updates a logs-based metric.
+        /// </summary>
+        /// <param name="metricName">
+        /// The resource name of the metric to update:
+        ///
+        ///     "projects/[PROJECT_ID]/metrics/[METRIC_ID]"
+        ///
+        /// The updated metric must be provided in the request and it's
+        /// `name` field must be the same as `[METRIC_ID]` If the metric
+        /// does not exist in `[PROJECT_ID]`, then a new metric is created.
+        /// </param>
+        /// <param name="metric">
+        /// The updated metric.
+        /// </param>
+        /// <param name="callSettings">
+        /// If not null, applies overrides to this RPC call.
+        /// </param>
+        /// <returns>
+        /// The RPC response.
+        /// </returns>
+        public virtual LogMetric UpdateLogMetric(
+            string metricName,
+            LogMetric metric,
+            gaxgrpc::CallSettings callSettings = null) => UpdateLogMetric(
+                new UpdateLogMetricRequest
+                {
+                    MetricName = gax::GaxPreconditions.CheckNotNullOrEmpty(metricName, nameof(metricName)),
+                    Metric = gax::GaxPreconditions.CheckNotNull(metric, nameof(metric)),
+                },
+                callSettings);
+
+        /// <summary>
+        /// Creates or updates a logs-based metric.
+        /// </summary>
         /// <param name="request">
         /// The request object containing all of the parameters for the API call.
         /// </param>
@@ -1037,6 +1394,69 @@ namespace Google.Cloud.Logging.V2
         /// <summary>
         /// Deletes a logs-based metric.
         /// </summary>
+        /// <param name="metricName">
+        /// The resource name of the metric to delete:
+        ///
+        ///     "projects/[PROJECT_ID]/metrics/[METRIC_ID]"
+        /// </param>
+        /// <param name="callSettings">
+        /// If not null, applies overrides to this RPC call.
+        /// </param>
+        /// <returns>
+        /// A Task that completes when the RPC has completed.
+        /// </returns>
+        public virtual stt::Task DeleteLogMetricAsync(
+            string metricName,
+            gaxgrpc::CallSettings callSettings = null) => DeleteLogMetricAsync(
+                new DeleteLogMetricRequest
+                {
+                    MetricName = gax::GaxPreconditions.CheckNotNullOrEmpty(metricName, nameof(metricName)),
+                },
+                callSettings);
+
+        /// <summary>
+        /// Deletes a logs-based metric.
+        /// </summary>
+        /// <param name="metricName">
+        /// The resource name of the metric to delete:
+        ///
+        ///     "projects/[PROJECT_ID]/metrics/[METRIC_ID]"
+        /// </param>
+        /// <param name="cancellationToken">
+        /// A <see cref="st::CancellationToken"/> to use for this RPC.
+        /// </param>
+        /// <returns>
+        /// A Task that completes when the RPC has completed.
+        /// </returns>
+        public virtual stt::Task DeleteLogMetricAsync(
+            string metricName,
+            st::CancellationToken cancellationToken) => DeleteLogMetricAsync(
+                metricName,
+                gaxgrpc::CallSettings.FromCancellationToken(cancellationToken));
+
+        /// <summary>
+        /// Deletes a logs-based metric.
+        /// </summary>
+        /// <param name="metricName">
+        /// The resource name of the metric to delete:
+        ///
+        ///     "projects/[PROJECT_ID]/metrics/[METRIC_ID]"
+        /// </param>
+        /// <param name="callSettings">
+        /// If not null, applies overrides to this RPC call.
+        /// </param>
+        public virtual void DeleteLogMetric(
+            string metricName,
+            gaxgrpc::CallSettings callSettings = null) => DeleteLogMetric(
+                new DeleteLogMetricRequest
+                {
+                    MetricName = gax::GaxPreconditions.CheckNotNullOrEmpty(metricName, nameof(metricName)),
+                },
+                callSettings);
+
+        /// <summary>
+        /// Deletes a logs-based metric.
+        /// </summary>
         /// <param name="request">
         /// The request object containing all of the parameters for the API call.
         /// </param>
@@ -1111,15 +1531,20 @@ namespace Google.Cloud.Logging.V2
             MetricsServiceV2Settings effectiveSettings = settings ?? MetricsServiceV2Settings.GetDefault();
             gaxgrpc::ClientHelper clientHelper = new gaxgrpc::ClientHelper(effectiveSettings);
             _callListLogMetrics = clientHelper.BuildApiCall<ListLogMetricsRequest, ListLogMetricsResponse>(
-                GrpcClient.ListLogMetricsAsync, GrpcClient.ListLogMetrics, effectiveSettings.ListLogMetricsSettings);
+                GrpcClient.ListLogMetricsAsync, GrpcClient.ListLogMetrics, effectiveSettings.ListLogMetricsSettings)
+                .WithGoogleRequestParam("parent", request => request.Parent);
             _callGetLogMetric = clientHelper.BuildApiCall<GetLogMetricRequest, LogMetric>(
-                GrpcClient.GetLogMetricAsync, GrpcClient.GetLogMetric, effectiveSettings.GetLogMetricSettings);
+                GrpcClient.GetLogMetricAsync, GrpcClient.GetLogMetric, effectiveSettings.GetLogMetricSettings)
+                .WithGoogleRequestParam("metric_name", request => request.MetricName);
             _callCreateLogMetric = clientHelper.BuildApiCall<CreateLogMetricRequest, LogMetric>(
-                GrpcClient.CreateLogMetricAsync, GrpcClient.CreateLogMetric, effectiveSettings.CreateLogMetricSettings);
+                GrpcClient.CreateLogMetricAsync, GrpcClient.CreateLogMetric, effectiveSettings.CreateLogMetricSettings)
+                .WithGoogleRequestParam("parent", request => request.Parent);
             _callUpdateLogMetric = clientHelper.BuildApiCall<UpdateLogMetricRequest, LogMetric>(
-                GrpcClient.UpdateLogMetricAsync, GrpcClient.UpdateLogMetric, effectiveSettings.UpdateLogMetricSettings);
+                GrpcClient.UpdateLogMetricAsync, GrpcClient.UpdateLogMetric, effectiveSettings.UpdateLogMetricSettings)
+                .WithGoogleRequestParam("metric_name", request => request.MetricName);
             _callDeleteLogMetric = clientHelper.BuildApiCall<DeleteLogMetricRequest, pbwkt::Empty>(
-                GrpcClient.DeleteLogMetricAsync, GrpcClient.DeleteLogMetric, effectiveSettings.DeleteLogMetricSettings);
+                GrpcClient.DeleteLogMetricAsync, GrpcClient.DeleteLogMetric, effectiveSettings.DeleteLogMetricSettings)
+                .WithGoogleRequestParam("metric_name", request => request.MetricName);
             Modify_ApiCall(ref _callListLogMetrics);
             Modify_ListLogMetricsApiCall(ref _callListLogMetrics);
             Modify_ApiCall(ref _callGetLogMetric);

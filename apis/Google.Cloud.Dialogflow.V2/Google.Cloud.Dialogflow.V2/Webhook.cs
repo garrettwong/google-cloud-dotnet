@@ -25,35 +25,38 @@ namespace Google.Cloud.Dialogflow.V2 {
       byte[] descriptorData = global::System.Convert.FromBase64String(
           string.Concat(
             "Cihnb29nbGUvY2xvdWQvZGlhbG9nZmxvdy92Mi93ZWJob29rLnByb3RvEhpn",
-            "b29nbGUuY2xvdWQuZGlhbG9nZmxvdy52MhocZ29vZ2xlL2FwaS9hbm5vdGF0",
-            "aW9ucy5wcm90bxooZ29vZ2xlL2Nsb3VkL2RpYWxvZ2Zsb3cvdjIvY29udGV4",
-            "dC5wcm90bxonZ29vZ2xlL2Nsb3VkL2RpYWxvZ2Zsb3cvdjIvaW50ZW50LnBy",
-            "b3RvGihnb29nbGUvY2xvdWQvZGlhbG9nZmxvdy92Mi9zZXNzaW9uLnByb3Rv",
-            "Ghxnb29nbGUvcHJvdG9idWYvc3RydWN0LnByb3RvItYBCg5XZWJob29rUmVx",
-            "dWVzdBIPCgdzZXNzaW9uGAQgASgJEhMKC3Jlc3BvbnNlX2lkGAEgASgJEj0K",
-            "DHF1ZXJ5X3Jlc3VsdBgCIAEoCzInLmdvb2dsZS5jbG91ZC5kaWFsb2dmbG93",
-            "LnYyLlF1ZXJ5UmVzdWx0El8KHm9yaWdpbmFsX2RldGVjdF9pbnRlbnRfcmVx",
-            "dWVzdBgDIAEoCzI3Lmdvb2dsZS5jbG91ZC5kaWFsb2dmbG93LnYyLk9yaWdp",
-            "bmFsRGV0ZWN0SW50ZW50UmVxdWVzdCKzAgoPV2ViaG9va1Jlc3BvbnNlEhgK",
-            "EGZ1bGZpbGxtZW50X3RleHQYASABKAkSSAoUZnVsZmlsbG1lbnRfbWVzc2Fn",
-            "ZXMYAiADKAsyKi5nb29nbGUuY2xvdWQuZGlhbG9nZmxvdy52Mi5JbnRlbnQu",
-            "TWVzc2FnZRIOCgZzb3VyY2UYAyABKAkSKAoHcGF5bG9hZBgEIAEoCzIXLmdv",
-            "b2dsZS5wcm90b2J1Zi5TdHJ1Y3QSPAoPb3V0cHV0X2NvbnRleHRzGAUgAygL",
-            "MiMuZ29vZ2xlLmNsb3VkLmRpYWxvZ2Zsb3cudjIuQ29udGV4dBJEChRmb2xs",
-            "b3d1cF9ldmVudF9pbnB1dBgGIAEoCzImLmdvb2dsZS5jbG91ZC5kaWFsb2dm",
-            "bG93LnYyLkV2ZW50SW5wdXQiVwobT3JpZ2luYWxEZXRlY3RJbnRlbnRSZXF1",
-            "ZXN0Eg4KBnNvdXJjZRgBIAEoCRIoCgdwYXlsb2FkGAMgASgLMhcuZ29vZ2xl",
-            "LnByb3RvYnVmLlN0cnVjdEKbAQoeY29tLmdvb2dsZS5jbG91ZC5kaWFsb2dm",
-            "bG93LnYyQgxXZWJob29rUHJvdG9QAVpEZ29vZ2xlLmdvbGFuZy5vcmcvZ2Vu",
-            "cHJvdG8vZ29vZ2xlYXBpcy9jbG91ZC9kaWFsb2dmbG93L3YyO2RpYWxvZ2Zs",
-            "b3f4AQGiAgJERqoCGkdvb2dsZS5DbG91ZC5EaWFsb2dmbG93LlYyYgZwcm90",
-            "bzM="));
+            "b29nbGUuY2xvdWQuZGlhbG9nZmxvdy52MhooZ29vZ2xlL2Nsb3VkL2RpYWxv",
+            "Z2Zsb3cvdjIvY29udGV4dC5wcm90bxonZ29vZ2xlL2Nsb3VkL2RpYWxvZ2Zs",
+            "b3cvdjIvaW50ZW50LnByb3RvGihnb29nbGUvY2xvdWQvZGlhbG9nZmxvdy92",
+            "Mi9zZXNzaW9uLnByb3RvGjRnb29nbGUvY2xvdWQvZGlhbG9nZmxvdy92Mi9z",
+            "ZXNzaW9uX2VudGl0eV90eXBlLnByb3RvGhxnb29nbGUvcHJvdG9idWYvc3Ry",
+            "dWN0LnByb3RvGhxnb29nbGUvYXBpL2Fubm90YXRpb25zLnByb3RvItYBCg5X",
+            "ZWJob29rUmVxdWVzdBIPCgdzZXNzaW9uGAQgASgJEhMKC3Jlc3BvbnNlX2lk",
+            "GAEgASgJEj0KDHF1ZXJ5X3Jlc3VsdBgCIAEoCzInLmdvb2dsZS5jbG91ZC5k",
+            "aWFsb2dmbG93LnYyLlF1ZXJ5UmVzdWx0El8KHm9yaWdpbmFsX2RldGVjdF9p",
+            "bnRlbnRfcmVxdWVzdBgDIAEoCzI3Lmdvb2dsZS5jbG91ZC5kaWFsb2dmbG93",
+            "LnYyLk9yaWdpbmFsRGV0ZWN0SW50ZW50UmVxdWVzdCKAAwoPV2ViaG9va1Jl",
+            "c3BvbnNlEhgKEGZ1bGZpbGxtZW50X3RleHQYASABKAkSSAoUZnVsZmlsbG1l",
+            "bnRfbWVzc2FnZXMYAiADKAsyKi5nb29nbGUuY2xvdWQuZGlhbG9nZmxvdy52",
+            "Mi5JbnRlbnQuTWVzc2FnZRIOCgZzb3VyY2UYAyABKAkSKAoHcGF5bG9hZBgE",
+            "IAEoCzIXLmdvb2dsZS5wcm90b2J1Zi5TdHJ1Y3QSPAoPb3V0cHV0X2NvbnRl",
+            "eHRzGAUgAygLMiMuZ29vZ2xlLmNsb3VkLmRpYWxvZ2Zsb3cudjIuQ29udGV4",
+            "dBJEChRmb2xsb3d1cF9ldmVudF9pbnB1dBgGIAEoCzImLmdvb2dsZS5jbG91",
+            "ZC5kaWFsb2dmbG93LnYyLkV2ZW50SW5wdXQSSwoUc2Vzc2lvbl9lbnRpdHlf",
+            "dHlwZXMYCiADKAsyLS5nb29nbGUuY2xvdWQuZGlhbG9nZmxvdy52Mi5TZXNz",
+            "aW9uRW50aXR5VHlwZSJoChtPcmlnaW5hbERldGVjdEludGVudFJlcXVlc3QS",
+            "DgoGc291cmNlGAEgASgJEg8KB3ZlcnNpb24YAiABKAkSKAoHcGF5bG9hZBgD",
+            "IAEoCzIXLmdvb2dsZS5wcm90b2J1Zi5TdHJ1Y3RCmwEKHmNvbS5nb29nbGUu",
+            "Y2xvdWQuZGlhbG9nZmxvdy52MkIMV2ViaG9va1Byb3RvUAFaRGdvb2dsZS5n",
+            "b2xhbmcub3JnL2dlbnByb3RvL2dvb2dsZWFwaXMvY2xvdWQvZGlhbG9nZmxv",
+            "dy92MjtkaWFsb2dmbG93+AEBogICREaqAhpHb29nbGUuQ2xvdWQuRGlhbG9n",
+            "Zmxvdy5WMmIGcHJvdG8z"));
       descriptor = pbr::FileDescriptor.FromGeneratedCode(descriptorData,
-          new pbr::FileDescriptor[] { global::Google.Api.AnnotationsReflection.Descriptor, global::Google.Cloud.Dialogflow.V2.ContextReflection.Descriptor, global::Google.Cloud.Dialogflow.V2.IntentReflection.Descriptor, global::Google.Cloud.Dialogflow.V2.SessionReflection.Descriptor, global::Google.Protobuf.WellKnownTypes.StructReflection.Descriptor, },
+          new pbr::FileDescriptor[] { global::Google.Cloud.Dialogflow.V2.ContextReflection.Descriptor, global::Google.Cloud.Dialogflow.V2.IntentReflection.Descriptor, global::Google.Cloud.Dialogflow.V2.SessionReflection.Descriptor, global::Google.Cloud.Dialogflow.V2.SessionEntityTypeReflection.Descriptor, global::Google.Protobuf.WellKnownTypes.StructReflection.Descriptor, global::Google.Api.AnnotationsReflection.Descriptor, },
           new pbr::GeneratedClrTypeInfo(null, new pbr::GeneratedClrTypeInfo[] {
             new pbr::GeneratedClrTypeInfo(typeof(global::Google.Cloud.Dialogflow.V2.WebhookRequest), global::Google.Cloud.Dialogflow.V2.WebhookRequest.Parser, new[]{ "Session", "ResponseId", "QueryResult", "OriginalDetectIntentRequest" }, null, null, null),
-            new pbr::GeneratedClrTypeInfo(typeof(global::Google.Cloud.Dialogflow.V2.WebhookResponse), global::Google.Cloud.Dialogflow.V2.WebhookResponse.Parser, new[]{ "FulfillmentText", "FulfillmentMessages", "Source", "Payload", "OutputContexts", "FollowupEventInput" }, null, null, null),
-            new pbr::GeneratedClrTypeInfo(typeof(global::Google.Cloud.Dialogflow.V2.OriginalDetectIntentRequest), global::Google.Cloud.Dialogflow.V2.OriginalDetectIntentRequest.Parser, new[]{ "Source", "Payload" }, null, null, null)
+            new pbr::GeneratedClrTypeInfo(typeof(global::Google.Cloud.Dialogflow.V2.WebhookResponse), global::Google.Cloud.Dialogflow.V2.WebhookResponse.Parser, new[]{ "FulfillmentText", "FulfillmentMessages", "Source", "Payload", "OutputContexts", "FollowupEventInput", "SessionEntityTypes" }, null, null, null),
+            new pbr::GeneratedClrTypeInfo(typeof(global::Google.Cloud.Dialogflow.V2.OriginalDetectIntentRequest), global::Google.Cloud.Dialogflow.V2.OriginalDetectIntentRequest.Parser, new[]{ "Source", "Version", "Payload" }, null, null, null)
           }));
     }
     #endregion
@@ -106,7 +109,9 @@ namespace Google.Cloud.Dialogflow.V2 {
     /// <summary>
     /// The unique identifier of detectIntent request session.
     /// Can be used to identify end-user inside webhook implementation.
-    /// Format: `projects/&lt;Project ID>/agent/sessions/&lt;Session ID>`.
+    /// Format: `projects/&lt;Project ID>/agent/sessions/&lt;Session ID>`, or
+    /// `projects/&lt;Project ID>/agent/environments/&lt;Environment ID>/users/&lt;User
+    /// ID>/sessions/&lt;Session ID>`.
     /// </summary>
     [global::System.Diagnostics.DebuggerNonUserCodeAttribute]
     public string Session {
@@ -256,13 +261,13 @@ namespace Google.Cloud.Dialogflow.V2 {
       }
       if (other.queryResult_ != null) {
         if (queryResult_ == null) {
-          queryResult_ = new global::Google.Cloud.Dialogflow.V2.QueryResult();
+          QueryResult = new global::Google.Cloud.Dialogflow.V2.QueryResult();
         }
         QueryResult.MergeFrom(other.QueryResult);
       }
       if (other.originalDetectIntentRequest_ != null) {
         if (originalDetectIntentRequest_ == null) {
-          originalDetectIntentRequest_ = new global::Google.Cloud.Dialogflow.V2.OriginalDetectIntentRequest();
+          OriginalDetectIntentRequest = new global::Google.Cloud.Dialogflow.V2.OriginalDetectIntentRequest();
         }
         OriginalDetectIntentRequest.MergeFrom(other.OriginalDetectIntentRequest);
       }
@@ -283,16 +288,16 @@ namespace Google.Cloud.Dialogflow.V2 {
           }
           case 18: {
             if (queryResult_ == null) {
-              queryResult_ = new global::Google.Cloud.Dialogflow.V2.QueryResult();
+              QueryResult = new global::Google.Cloud.Dialogflow.V2.QueryResult();
             }
-            input.ReadMessage(queryResult_);
+            input.ReadMessage(QueryResult);
             break;
           }
           case 26: {
             if (originalDetectIntentRequest_ == null) {
-              originalDetectIntentRequest_ = new global::Google.Cloud.Dialogflow.V2.OriginalDetectIntentRequest();
+              OriginalDetectIntentRequest = new global::Google.Cloud.Dialogflow.V2.OriginalDetectIntentRequest();
             }
-            input.ReadMessage(originalDetectIntentRequest_);
+            input.ReadMessage(OriginalDetectIntentRequest);
             break;
           }
           case 34: {
@@ -307,6 +312,19 @@ namespace Google.Cloud.Dialogflow.V2 {
 
   /// <summary>
   /// The response message for a webhook call.
+  ///
+  /// This response is validated by the Dialogflow server. If validation fails,
+  /// an error will be returned in the [QueryResult.diagnostic_info][google.cloud.dialogflow.v2.QueryResult.diagnostic_info] field.
+  /// Setting JSON fields to an empty value with the wrong type is a common error.
+  /// To avoid this error:
+  ///
+  /// - Use `""` for empty strings
+  /// - Use `{}` or `null` for empty objects
+  /// - Use `[]` or `null` for empty arrays
+  ///
+  /// For more information, see the
+  /// [Protocol Buffers Language
+  /// Guide](https://developers.google.com/protocol-buffers/docs/proto3#json).
   /// </summary>
   public sealed partial class WebhookResponse : pb::IMessage<WebhookResponse> {
     private static readonly pb::MessageParser<WebhookResponse> _parser = new pb::MessageParser<WebhookResponse>(() => new WebhookResponse());
@@ -339,6 +357,7 @@ namespace Google.Cloud.Dialogflow.V2 {
       payload_ = other.payload_ != null ? other.payload_.Clone() : null;
       outputContexts_ = other.outputContexts_.Clone();
       followupEventInput_ = other.followupEventInput_ != null ? other.followupEventInput_.Clone() : null;
+      sessionEntityTypes_ = other.sessionEntityTypes_.Clone();
       _unknownFields = pb::UnknownFieldSet.Clone(other._unknownFields);
     }
 
@@ -446,6 +465,8 @@ namespace Google.Cloud.Dialogflow.V2 {
     /// <summary>
     /// Optional. Makes the platform immediately invoke another `DetectIntent` call
     /// internally with the specified event as input.
+    /// When this field is set, Dialogflow ignores the `fulfillment_text`,
+    /// `fulfillment_messages`, and `payload` fields.
     /// </summary>
     [global::System.Diagnostics.DebuggerNonUserCodeAttribute]
     public global::Google.Cloud.Dialogflow.V2.EventInput FollowupEventInput {
@@ -453,6 +474,23 @@ namespace Google.Cloud.Dialogflow.V2 {
       set {
         followupEventInput_ = value;
       }
+    }
+
+    /// <summary>Field number for the "session_entity_types" field.</summary>
+    public const int SessionEntityTypesFieldNumber = 10;
+    private static readonly pb::FieldCodec<global::Google.Cloud.Dialogflow.V2.SessionEntityType> _repeated_sessionEntityTypes_codec
+        = pb::FieldCodec.ForMessage(82, global::Google.Cloud.Dialogflow.V2.SessionEntityType.Parser);
+    private readonly pbc::RepeatedField<global::Google.Cloud.Dialogflow.V2.SessionEntityType> sessionEntityTypes_ = new pbc::RepeatedField<global::Google.Cloud.Dialogflow.V2.SessionEntityType>();
+    /// <summary>
+    /// Optional. Additional session entity types to replace or extend developer
+    /// entity types with. The entity synonyms apply to all languages and persist
+    /// for the session of this query. Setting the session entity types inside
+    /// webhook overwrites the session entity types that have been set through
+    /// `DetectIntentRequest.query_params.session_entity_types`.
+    /// </summary>
+    [global::System.Diagnostics.DebuggerNonUserCodeAttribute]
+    public pbc::RepeatedField<global::Google.Cloud.Dialogflow.V2.SessionEntityType> SessionEntityTypes {
+      get { return sessionEntityTypes_; }
     }
 
     [global::System.Diagnostics.DebuggerNonUserCodeAttribute]
@@ -474,6 +512,7 @@ namespace Google.Cloud.Dialogflow.V2 {
       if (!object.Equals(Payload, other.Payload)) return false;
       if(!outputContexts_.Equals(other.outputContexts_)) return false;
       if (!object.Equals(FollowupEventInput, other.FollowupEventInput)) return false;
+      if(!sessionEntityTypes_.Equals(other.sessionEntityTypes_)) return false;
       return Equals(_unknownFields, other._unknownFields);
     }
 
@@ -486,6 +525,7 @@ namespace Google.Cloud.Dialogflow.V2 {
       if (payload_ != null) hash ^= Payload.GetHashCode();
       hash ^= outputContexts_.GetHashCode();
       if (followupEventInput_ != null) hash ^= FollowupEventInput.GetHashCode();
+      hash ^= sessionEntityTypes_.GetHashCode();
       if (_unknownFields != null) {
         hash ^= _unknownFields.GetHashCode();
       }
@@ -517,6 +557,7 @@ namespace Google.Cloud.Dialogflow.V2 {
         output.WriteRawTag(50);
         output.WriteMessage(FollowupEventInput);
       }
+      sessionEntityTypes_.WriteTo(output, _repeated_sessionEntityTypes_codec);
       if (_unknownFields != null) {
         _unknownFields.WriteTo(output);
       }
@@ -539,6 +580,7 @@ namespace Google.Cloud.Dialogflow.V2 {
       if (followupEventInput_ != null) {
         size += 1 + pb::CodedOutputStream.ComputeMessageSize(FollowupEventInput);
       }
+      size += sessionEntityTypes_.CalculateSize(_repeated_sessionEntityTypes_codec);
       if (_unknownFields != null) {
         size += _unknownFields.CalculateSize();
       }
@@ -559,17 +601,18 @@ namespace Google.Cloud.Dialogflow.V2 {
       }
       if (other.payload_ != null) {
         if (payload_ == null) {
-          payload_ = new global::Google.Protobuf.WellKnownTypes.Struct();
+          Payload = new global::Google.Protobuf.WellKnownTypes.Struct();
         }
         Payload.MergeFrom(other.Payload);
       }
       outputContexts_.Add(other.outputContexts_);
       if (other.followupEventInput_ != null) {
         if (followupEventInput_ == null) {
-          followupEventInput_ = new global::Google.Cloud.Dialogflow.V2.EventInput();
+          FollowupEventInput = new global::Google.Cloud.Dialogflow.V2.EventInput();
         }
         FollowupEventInput.MergeFrom(other.FollowupEventInput);
       }
+      sessionEntityTypes_.Add(other.sessionEntityTypes_);
       _unknownFields = pb::UnknownFieldSet.MergeFrom(_unknownFields, other._unknownFields);
     }
 
@@ -595,9 +638,9 @@ namespace Google.Cloud.Dialogflow.V2 {
           }
           case 34: {
             if (payload_ == null) {
-              payload_ = new global::Google.Protobuf.WellKnownTypes.Struct();
+              Payload = new global::Google.Protobuf.WellKnownTypes.Struct();
             }
-            input.ReadMessage(payload_);
+            input.ReadMessage(Payload);
             break;
           }
           case 42: {
@@ -606,9 +649,13 @@ namespace Google.Cloud.Dialogflow.V2 {
           }
           case 50: {
             if (followupEventInput_ == null) {
-              followupEventInput_ = new global::Google.Cloud.Dialogflow.V2.EventInput();
+              FollowupEventInput = new global::Google.Cloud.Dialogflow.V2.EventInput();
             }
-            input.ReadMessage(followupEventInput_);
+            input.ReadMessage(FollowupEventInput);
+            break;
+          }
+          case 82: {
+            sessionEntityTypes_.AddEntriesFrom(input, _repeated_sessionEntityTypes_codec);
             break;
           }
         }
@@ -647,6 +694,7 @@ namespace Google.Cloud.Dialogflow.V2 {
     [global::System.Diagnostics.DebuggerNonUserCodeAttribute]
     public OriginalDetectIntentRequest(OriginalDetectIntentRequest other) : this() {
       source_ = other.source_;
+      version_ = other.version_;
       payload_ = other.payload_ != null ? other.payload_.Clone() : null;
       _unknownFields = pb::UnknownFieldSet.Clone(other._unknownFields);
     }
@@ -671,12 +719,38 @@ namespace Google.Cloud.Dialogflow.V2 {
       }
     }
 
+    /// <summary>Field number for the "version" field.</summary>
+    public const int VersionFieldNumber = 2;
+    private string version_ = "";
+    /// <summary>
+    /// Optional. The version of the protocol used for this request.
+    /// This field is AoG-specific.
+    /// </summary>
+    [global::System.Diagnostics.DebuggerNonUserCodeAttribute]
+    public string Version {
+      get { return version_; }
+      set {
+        version_ = pb::ProtoPreconditions.CheckNotNull(value, "value");
+      }
+    }
+
     /// <summary>Field number for the "payload" field.</summary>
     public const int PayloadFieldNumber = 3;
     private global::Google.Protobuf.WellKnownTypes.Struct payload_;
     /// <summary>
-    /// Optional. This field is set to the value of `QueryParameters.payload` field
-    /// passed in the request.
+    /// Optional. This field is set to the value of the `QueryParameters.payload`
+    /// field passed in the request. Some integrations that query a Dialogflow
+    /// agent may provide additional information in the payload.
+    ///
+    /// In particular for the Telephony Gateway this field has the form:
+    /// &lt;pre>{
+    ///  "telephony": {
+    ///    "caller_id": "+18558363987"
+    ///  }
+    /// }&lt;/pre>
+    /// Note: The caller ID field (`caller_id`) will be redacted for Standard
+    /// Edition agents and populated with the caller ID in [E.164
+    /// format](https://en.wikipedia.org/wiki/E.164) for Enterprise Edition agents.
     /// </summary>
     [global::System.Diagnostics.DebuggerNonUserCodeAttribute]
     public global::Google.Protobuf.WellKnownTypes.Struct Payload {
@@ -700,6 +774,7 @@ namespace Google.Cloud.Dialogflow.V2 {
         return true;
       }
       if (Source != other.Source) return false;
+      if (Version != other.Version) return false;
       if (!object.Equals(Payload, other.Payload)) return false;
       return Equals(_unknownFields, other._unknownFields);
     }
@@ -708,6 +783,7 @@ namespace Google.Cloud.Dialogflow.V2 {
     public override int GetHashCode() {
       int hash = 1;
       if (Source.Length != 0) hash ^= Source.GetHashCode();
+      if (Version.Length != 0) hash ^= Version.GetHashCode();
       if (payload_ != null) hash ^= Payload.GetHashCode();
       if (_unknownFields != null) {
         hash ^= _unknownFields.GetHashCode();
@@ -726,6 +802,10 @@ namespace Google.Cloud.Dialogflow.V2 {
         output.WriteRawTag(10);
         output.WriteString(Source);
       }
+      if (Version.Length != 0) {
+        output.WriteRawTag(18);
+        output.WriteString(Version);
+      }
       if (payload_ != null) {
         output.WriteRawTag(26);
         output.WriteMessage(Payload);
@@ -740,6 +820,9 @@ namespace Google.Cloud.Dialogflow.V2 {
       int size = 0;
       if (Source.Length != 0) {
         size += 1 + pb::CodedOutputStream.ComputeStringSize(Source);
+      }
+      if (Version.Length != 0) {
+        size += 1 + pb::CodedOutputStream.ComputeStringSize(Version);
       }
       if (payload_ != null) {
         size += 1 + pb::CodedOutputStream.ComputeMessageSize(Payload);
@@ -758,9 +841,12 @@ namespace Google.Cloud.Dialogflow.V2 {
       if (other.Source.Length != 0) {
         Source = other.Source;
       }
+      if (other.Version.Length != 0) {
+        Version = other.Version;
+      }
       if (other.payload_ != null) {
         if (payload_ == null) {
-          payload_ = new global::Google.Protobuf.WellKnownTypes.Struct();
+          Payload = new global::Google.Protobuf.WellKnownTypes.Struct();
         }
         Payload.MergeFrom(other.Payload);
       }
@@ -779,11 +865,15 @@ namespace Google.Cloud.Dialogflow.V2 {
             Source = input.ReadString();
             break;
           }
+          case 18: {
+            Version = input.ReadString();
+            break;
+          }
           case 26: {
             if (payload_ == null) {
-              payload_ = new global::Google.Protobuf.WellKnownTypes.Struct();
+              Payload = new global::Google.Protobuf.WellKnownTypes.Struct();
             }
-            input.ReadMessage(payload_);
+            input.ReadMessage(Payload);
             break;
           }
         }

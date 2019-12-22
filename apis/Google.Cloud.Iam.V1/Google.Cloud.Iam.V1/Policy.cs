@@ -24,26 +24,35 @@ namespace Google.Cloud.Iam.V1 {
     static PolicyReflection() {
       byte[] descriptorData = global::System.Convert.FromBase64String(
           string.Concat(
-            "Chpnb29nbGUvaWFtL3YxL3BvbGljeS5wcm90bxINZ29vZ2xlLmlhbS52MRoc",
-            "Z29vZ2xlL2FwaS9hbm5vdGF0aW9ucy5wcm90byJRCgZQb2xpY3kSDwoHdmVy",
-            "c2lvbhgBIAEoBRIoCghiaW5kaW5ncxgEIAMoCzIWLmdvb2dsZS5pYW0udjEu",
-            "QmluZGluZxIMCgRldGFnGAMgASgMIigKB0JpbmRpbmcSDAoEcm9sZRgBIAEo",
-            "CRIPCgdtZW1iZXJzGAIgAygJIkIKC1BvbGljeURlbHRhEjMKDmJpbmRpbmdf",
-            "ZGVsdGFzGAEgAygLMhsuZ29vZ2xlLmlhbS52MS5CaW5kaW5nRGVsdGEilwEK",
-            "DEJpbmRpbmdEZWx0YRIyCgZhY3Rpb24YASABKA4yIi5nb29nbGUuaWFtLnYx",
-            "LkJpbmRpbmdEZWx0YS5BY3Rpb24SDAoEcm9sZRgCIAEoCRIOCgZtZW1iZXIY",
-            "AyABKAkiNQoGQWN0aW9uEhYKEkFDVElPTl9VTlNQRUNJRklFRBAAEgcKA0FE",
-            "RBABEgoKBlJFTU9WRRACQoMBChFjb20uZ29vZ2xlLmlhbS52MUILUG9saWN5",
-            "UHJvdG9QAVowZ29vZ2xlLmdvbGFuZy5vcmcvZ2VucHJvdG8vZ29vZ2xlYXBp",
-            "cy9pYW0vdjE7aWFt+AEBqgITR29vZ2xlLkNsb3VkLklhbS5WMcoCE0dvb2ds",
-            "ZVxDbG91ZFxJYW1cVjFiBnByb3RvMw=="));
+            "Chpnb29nbGUvaWFtL3YxL3BvbGljeS5wcm90bxINZ29vZ2xlLmlhbS52MRoW",
+            "Z29vZ2xlL3R5cGUvZXhwci5wcm90bxocZ29vZ2xlL2FwaS9hbm5vdGF0aW9u",
+            "cy5wcm90byJRCgZQb2xpY3kSDwoHdmVyc2lvbhgBIAEoBRIoCghiaW5kaW5n",
+            "cxgEIAMoCzIWLmdvb2dsZS5pYW0udjEuQmluZGluZxIMCgRldGFnGAMgASgM",
+            "Ik4KB0JpbmRpbmcSDAoEcm9sZRgBIAEoCRIPCgdtZW1iZXJzGAIgAygJEiQK",
+            "CWNvbmRpdGlvbhgDIAEoCzIRLmdvb2dsZS50eXBlLkV4cHIigAEKC1BvbGlj",
+            "eURlbHRhEjMKDmJpbmRpbmdfZGVsdGFzGAEgAygLMhsuZ29vZ2xlLmlhbS52",
+            "MS5CaW5kaW5nRGVsdGESPAoTYXVkaXRfY29uZmlnX2RlbHRhcxgCIAMoCzIf",
+            "Lmdvb2dsZS5pYW0udjEuQXVkaXRDb25maWdEZWx0YSK9AQoMQmluZGluZ0Rl",
+            "bHRhEjIKBmFjdGlvbhgBIAEoDjIiLmdvb2dsZS5pYW0udjEuQmluZGluZ0Rl",
+            "bHRhLkFjdGlvbhIMCgRyb2xlGAIgASgJEg4KBm1lbWJlchgDIAEoCRIkCglj",
+            "b25kaXRpb24YBCABKAsyES5nb29nbGUudHlwZS5FeHByIjUKBkFjdGlvbhIW",
+            "ChJBQ1RJT05fVU5TUEVDSUZJRUQQABIHCgNBREQQARIKCgZSRU1PVkUQAiK9",
+            "AQoQQXVkaXRDb25maWdEZWx0YRI2CgZhY3Rpb24YASABKA4yJi5nb29nbGUu",
+            "aWFtLnYxLkF1ZGl0Q29uZmlnRGVsdGEuQWN0aW9uEg8KB3NlcnZpY2UYAiAB",
+            "KAkSFwoPZXhlbXB0ZWRfbWVtYmVyGAMgASgJEhAKCGxvZ190eXBlGAQgASgJ",
+            "IjUKBkFjdGlvbhIWChJBQ1RJT05fVU5TUEVDSUZJRUQQABIHCgNBREQQARIK",
+            "CgZSRU1PVkUQAkKDAQoRY29tLmdvb2dsZS5pYW0udjFCC1BvbGljeVByb3Rv",
+            "UAFaMGdvb2dsZS5nb2xhbmcub3JnL2dlbnByb3RvL2dvb2dsZWFwaXMvaWFt",
+            "L3YxO2lhbfgBAaoCE0dvb2dsZS5DbG91ZC5JYW0uVjHKAhNHb29nbGVcQ2xv",
+            "dWRcSWFtXFYxYgZwcm90bzM="));
       descriptor = pbr::FileDescriptor.FromGeneratedCode(descriptorData,
-          new pbr::FileDescriptor[] { global::Google.Api.AnnotationsReflection.Descriptor, },
+          new pbr::FileDescriptor[] { global::Google.Type.ExprReflection.Descriptor, global::Google.Api.AnnotationsReflection.Descriptor, },
           new pbr::GeneratedClrTypeInfo(null, new pbr::GeneratedClrTypeInfo[] {
             new pbr::GeneratedClrTypeInfo(typeof(global::Google.Cloud.Iam.V1.Policy), global::Google.Cloud.Iam.V1.Policy.Parser, new[]{ "Version", "Bindings", "Etag" }, null, null, null),
-            new pbr::GeneratedClrTypeInfo(typeof(global::Google.Cloud.Iam.V1.Binding), global::Google.Cloud.Iam.V1.Binding.Parser, new[]{ "Role", "Members" }, null, null, null),
-            new pbr::GeneratedClrTypeInfo(typeof(global::Google.Cloud.Iam.V1.PolicyDelta), global::Google.Cloud.Iam.V1.PolicyDelta.Parser, new[]{ "BindingDeltas" }, null, null, null),
-            new pbr::GeneratedClrTypeInfo(typeof(global::Google.Cloud.Iam.V1.BindingDelta), global::Google.Cloud.Iam.V1.BindingDelta.Parser, new[]{ "Action", "Role", "Member" }, null, new[]{ typeof(global::Google.Cloud.Iam.V1.BindingDelta.Types.Action) }, null)
+            new pbr::GeneratedClrTypeInfo(typeof(global::Google.Cloud.Iam.V1.Binding), global::Google.Cloud.Iam.V1.Binding.Parser, new[]{ "Role", "Members", "Condition" }, null, null, null),
+            new pbr::GeneratedClrTypeInfo(typeof(global::Google.Cloud.Iam.V1.PolicyDelta), global::Google.Cloud.Iam.V1.PolicyDelta.Parser, new[]{ "BindingDeltas", "AuditConfigDeltas" }, null, null, null),
+            new pbr::GeneratedClrTypeInfo(typeof(global::Google.Cloud.Iam.V1.BindingDelta), global::Google.Cloud.Iam.V1.BindingDelta.Parser, new[]{ "Action", "Role", "Member", "Condition" }, null, new[]{ typeof(global::Google.Cloud.Iam.V1.BindingDelta.Types.Action) }, null),
+            new pbr::GeneratedClrTypeInfo(typeof(global::Google.Cloud.Iam.V1.AuditConfigDelta), global::Google.Cloud.Iam.V1.AuditConfigDelta.Parser, new[]{ "Action", "Service", "ExemptedMember", "LogType" }, null, new[]{ typeof(global::Google.Cloud.Iam.V1.AuditConfigDelta.Types.Action) }, null)
           }));
     }
     #endregion
@@ -54,33 +63,59 @@ namespace Google.Cloud.Iam.V1 {
   /// Defines an Identity and Access Management (IAM) policy. It is used to
   /// specify access control policies for Cloud Platform resources.
   ///
-  /// A `Policy` consists of a list of `bindings`. A `Binding` binds a list of
-  /// `members` to a `role`, where the members can be user accounts, Google groups,
-  /// Google domains, and service accounts. A `role` is a named list of permissions
-  /// defined by IAM.
+  /// A `Policy` is a collection of `bindings`. A `binding` binds one or more
+  /// `members` to a single `role`. Members can be user accounts, service accounts,
+  /// Google groups, and domains (such as G Suite). A `role` is a named list of
+  /// permissions (defined by IAM or configured by users). A `binding` can
+  /// optionally specify a `condition`, which is a logic expression that further
+  /// constrains the role binding based on attributes about the request and/or
+  /// target resource.
   ///
-  /// **Example**
+  /// **JSON Example**
   ///
   ///     {
   ///       "bindings": [
   ///         {
-  ///           "role": "roles/owner",
+  ///           "role": "roles/resourcemanager.organizationAdmin",
   ///           "members": [
   ///             "user:mike@example.com",
   ///             "group:admins@example.com",
   ///             "domain:google.com",
-  ///             "serviceAccount:my-other-app@appspot.gserviceaccount.com",
+  ///             "serviceAccount:my-project-id@appspot.gserviceaccount.com"
   ///           ]
   ///         },
   ///         {
-  ///           "role": "roles/viewer",
-  ///           "members": ["user:sean@example.com"]
+  ///           "role": "roles/resourcemanager.organizationViewer",
+  ///           "members": ["user:eve@example.com"],
+  ///           "condition": {
+  ///             "title": "expirable access",
+  ///             "description": "Does not grant access after Sep 2020",
+  ///             "expression": "request.time &lt;
+  ///             timestamp('2020-10-01T00:00:00.000Z')",
+  ///           }
   ///         }
   ///       ]
   ///     }
   ///
+  /// **YAML Example**
+  ///
+  ///     bindings:
+  ///     - members:
+  ///       - user:mike@example.com
+  ///       - group:admins@example.com
+  ///       - domain:google.com
+  ///       - serviceAccount:my-project-id@appspot.gserviceaccount.com
+  ///       role: roles/resourcemanager.organizationAdmin
+  ///     - members:
+  ///       - user:eve@example.com
+  ///       role: roles/resourcemanager.organizationViewer
+  ///       condition:
+  ///         title: expirable access
+  ///         description: Does not grant access after Sep 2020
+  ///         expression: request.time &lt; timestamp('2020-10-01T00:00:00.000Z')
+  ///
   /// For a description of IAM and its features, see the
-  /// [IAM developer's guide](https://cloud.google.com/iam).
+  /// [IAM developer's guide](https://cloud.google.com/iam/docs).
   /// </summary>
   public sealed partial class Policy : pb::IMessage<Policy> {
     private static readonly pb::MessageParser<Policy> _parser = new pb::MessageParser<Policy>(() => new Policy());
@@ -122,7 +157,20 @@ namespace Google.Cloud.Iam.V1 {
     public const int VersionFieldNumber = 1;
     private int version_;
     /// <summary>
-    /// Version of the `Policy`. The default version is 0.
+    /// Specifies the format of the policy.
+    ///
+    /// Valid values are 0, 1, and 3. Requests specifying an invalid value will be
+    /// rejected.
+    ///
+    /// Operations affecting conditional bindings must specify version 3. This can
+    /// be either setting a conditional policy, modifying a conditional binding,
+    /// or removing a binding (conditional or unconditional) from the stored
+    /// conditional policy.
+    /// Operations on non-conditional policies may specify any valid value or
+    /// leave the field unset.
+    ///
+    /// If no etag is provided in the call to `setIamPolicy`, version compliance
+    /// checks against the stored policy is skipped.
     /// </summary>
     [global::System.Diagnostics.DebuggerNonUserCodeAttribute]
     public int Version {
@@ -138,8 +186,8 @@ namespace Google.Cloud.Iam.V1 {
         = pb::FieldCodec.ForMessage(34, global::Google.Cloud.Iam.V1.Binding.Parser);
     private readonly pbc::RepeatedField<global::Google.Cloud.Iam.V1.Binding> bindings_ = new pbc::RepeatedField<global::Google.Cloud.Iam.V1.Binding>();
     /// <summary>
-    /// Associates a list of `members` to a `role`.
-    /// Multiple `bindings` must not be specified for the same `role`.
+    /// Associates a list of `members` to a `role`. Optionally may specify a
+    /// `condition` that determines when binding is in effect.
     /// `bindings` with no members will result in an error.
     /// </summary>
     [global::System.Diagnostics.DebuggerNonUserCodeAttribute]
@@ -160,7 +208,9 @@ namespace Google.Cloud.Iam.V1 {
     /// ensure that their change will be applied to the same version of the policy.
     ///
     /// If no `etag` is provided in the call to `setIamPolicy`, then the existing
-    /// policy is overwritten blindly.
+    /// policy is overwritten. Due to blind-set semantics of an etag-less policy,
+    /// 'setIamPolicy' will not fail even if the incoming policy version does not
+    /// meet the requirements for modifying the stored policy.
     /// </summary>
     [global::System.Diagnostics.DebuggerNonUserCodeAttribute]
     public pb::ByteString Etag {
@@ -309,6 +359,7 @@ namespace Google.Cloud.Iam.V1 {
     public Binding(Binding other) : this() {
       role_ = other.role_;
       members_ = other.members_.Clone();
+      condition_ = other.condition_ != null ? other.condition_.Clone() : null;
       _unknownFields = pb::UnknownFieldSet.Clone(other._unknownFields);
     }
 
@@ -323,7 +374,6 @@ namespace Google.Cloud.Iam.V1 {
     /// <summary>
     /// Role that is assigned to `members`.
     /// For example, `roles/viewer`, `roles/editor`, or `roles/owner`.
-    /// Required
     /// </summary>
     [global::System.Diagnostics.DebuggerNonUserCodeAttribute]
     public string Role {
@@ -349,7 +399,7 @@ namespace Google.Cloud.Iam.V1 {
     ///    who is authenticated with a Google account or a service account.
     ///
     /// * `user:{emailid}`: An email address that represents a specific Google
-    ///    account. For example, `alice@gmail.com` or `joe@example.com`.
+    ///    account. For example, `alice@example.com` .
     ///
     /// * `serviceAccount:{emailid}`: An email address that represents a service
     ///    account. For example, `my-other-app@appspot.gserviceaccount.com`.
@@ -357,12 +407,29 @@ namespace Google.Cloud.Iam.V1 {
     /// * `group:{emailid}`: An email address that represents a Google group.
     ///    For example, `admins@example.com`.
     ///
-    /// * `domain:{domain}`: A Google Apps domain name that represents all the
+    /// * `domain:{domain}`: The G Suite domain (primary) that represents all the
     ///    users of that domain. For example, `google.com` or `example.com`.
     /// </summary>
     [global::System.Diagnostics.DebuggerNonUserCodeAttribute]
     public pbc::RepeatedField<string> Members {
       get { return members_; }
+    }
+
+    /// <summary>Field number for the "condition" field.</summary>
+    public const int ConditionFieldNumber = 3;
+    private global::Google.Type.Expr condition_;
+    /// <summary>
+    /// The condition that is associated with this binding.
+    /// NOTE: An unsatisfied condition will not allow user access via current
+    /// binding. Different bindings, including their conditions, are examined
+    /// independently.
+    /// </summary>
+    [global::System.Diagnostics.DebuggerNonUserCodeAttribute]
+    public global::Google.Type.Expr Condition {
+      get { return condition_; }
+      set {
+        condition_ = value;
+      }
     }
 
     [global::System.Diagnostics.DebuggerNonUserCodeAttribute]
@@ -380,6 +447,7 @@ namespace Google.Cloud.Iam.V1 {
       }
       if (Role != other.Role) return false;
       if(!members_.Equals(other.members_)) return false;
+      if (!object.Equals(Condition, other.Condition)) return false;
       return Equals(_unknownFields, other._unknownFields);
     }
 
@@ -388,6 +456,7 @@ namespace Google.Cloud.Iam.V1 {
       int hash = 1;
       if (Role.Length != 0) hash ^= Role.GetHashCode();
       hash ^= members_.GetHashCode();
+      if (condition_ != null) hash ^= Condition.GetHashCode();
       if (_unknownFields != null) {
         hash ^= _unknownFields.GetHashCode();
       }
@@ -406,6 +475,10 @@ namespace Google.Cloud.Iam.V1 {
         output.WriteString(Role);
       }
       members_.WriteTo(output, _repeated_members_codec);
+      if (condition_ != null) {
+        output.WriteRawTag(26);
+        output.WriteMessage(Condition);
+      }
       if (_unknownFields != null) {
         _unknownFields.WriteTo(output);
       }
@@ -418,6 +491,9 @@ namespace Google.Cloud.Iam.V1 {
         size += 1 + pb::CodedOutputStream.ComputeStringSize(Role);
       }
       size += members_.CalculateSize(_repeated_members_codec);
+      if (condition_ != null) {
+        size += 1 + pb::CodedOutputStream.ComputeMessageSize(Condition);
+      }
       if (_unknownFields != null) {
         size += _unknownFields.CalculateSize();
       }
@@ -433,6 +509,12 @@ namespace Google.Cloud.Iam.V1 {
         Role = other.Role;
       }
       members_.Add(other.members_);
+      if (other.condition_ != null) {
+        if (condition_ == null) {
+          Condition = new global::Google.Type.Expr();
+        }
+        Condition.MergeFrom(other.Condition);
+      }
       _unknownFields = pb::UnknownFieldSet.MergeFrom(_unknownFields, other._unknownFields);
     }
 
@@ -450,6 +532,13 @@ namespace Google.Cloud.Iam.V1 {
           }
           case 18: {
             members_.AddEntriesFrom(input, _repeated_members_codec);
+            break;
+          }
+          case 26: {
+            if (condition_ == null) {
+              Condition = new global::Google.Type.Expr();
+            }
+            input.ReadMessage(Condition);
             break;
           }
         }
@@ -487,6 +576,7 @@ namespace Google.Cloud.Iam.V1 {
     [global::System.Diagnostics.DebuggerNonUserCodeAttribute]
     public PolicyDelta(PolicyDelta other) : this() {
       bindingDeltas_ = other.bindingDeltas_.Clone();
+      auditConfigDeltas_ = other.auditConfigDeltas_.Clone();
       _unknownFields = pb::UnknownFieldSet.Clone(other._unknownFields);
     }
 
@@ -508,6 +598,19 @@ namespace Google.Cloud.Iam.V1 {
       get { return bindingDeltas_; }
     }
 
+    /// <summary>Field number for the "audit_config_deltas" field.</summary>
+    public const int AuditConfigDeltasFieldNumber = 2;
+    private static readonly pb::FieldCodec<global::Google.Cloud.Iam.V1.AuditConfigDelta> _repeated_auditConfigDeltas_codec
+        = pb::FieldCodec.ForMessage(18, global::Google.Cloud.Iam.V1.AuditConfigDelta.Parser);
+    private readonly pbc::RepeatedField<global::Google.Cloud.Iam.V1.AuditConfigDelta> auditConfigDeltas_ = new pbc::RepeatedField<global::Google.Cloud.Iam.V1.AuditConfigDelta>();
+    /// <summary>
+    /// The delta for AuditConfigs between two policies.
+    /// </summary>
+    [global::System.Diagnostics.DebuggerNonUserCodeAttribute]
+    public pbc::RepeatedField<global::Google.Cloud.Iam.V1.AuditConfigDelta> AuditConfigDeltas {
+      get { return auditConfigDeltas_; }
+    }
+
     [global::System.Diagnostics.DebuggerNonUserCodeAttribute]
     public override bool Equals(object other) {
       return Equals(other as PolicyDelta);
@@ -522,6 +625,7 @@ namespace Google.Cloud.Iam.V1 {
         return true;
       }
       if(!bindingDeltas_.Equals(other.bindingDeltas_)) return false;
+      if(!auditConfigDeltas_.Equals(other.auditConfigDeltas_)) return false;
       return Equals(_unknownFields, other._unknownFields);
     }
 
@@ -529,6 +633,7 @@ namespace Google.Cloud.Iam.V1 {
     public override int GetHashCode() {
       int hash = 1;
       hash ^= bindingDeltas_.GetHashCode();
+      hash ^= auditConfigDeltas_.GetHashCode();
       if (_unknownFields != null) {
         hash ^= _unknownFields.GetHashCode();
       }
@@ -543,6 +648,7 @@ namespace Google.Cloud.Iam.V1 {
     [global::System.Diagnostics.DebuggerNonUserCodeAttribute]
     public void WriteTo(pb::CodedOutputStream output) {
       bindingDeltas_.WriteTo(output, _repeated_bindingDeltas_codec);
+      auditConfigDeltas_.WriteTo(output, _repeated_auditConfigDeltas_codec);
       if (_unknownFields != null) {
         _unknownFields.WriteTo(output);
       }
@@ -552,6 +658,7 @@ namespace Google.Cloud.Iam.V1 {
     public int CalculateSize() {
       int size = 0;
       size += bindingDeltas_.CalculateSize(_repeated_bindingDeltas_codec);
+      size += auditConfigDeltas_.CalculateSize(_repeated_auditConfigDeltas_codec);
       if (_unknownFields != null) {
         size += _unknownFields.CalculateSize();
       }
@@ -564,6 +671,7 @@ namespace Google.Cloud.Iam.V1 {
         return;
       }
       bindingDeltas_.Add(other.bindingDeltas_);
+      auditConfigDeltas_.Add(other.auditConfigDeltas_);
       _unknownFields = pb::UnknownFieldSet.MergeFrom(_unknownFields, other._unknownFields);
     }
 
@@ -577,6 +685,10 @@ namespace Google.Cloud.Iam.V1 {
             break;
           case 10: {
             bindingDeltas_.AddEntriesFrom(input, _repeated_bindingDeltas_codec);
+            break;
+          }
+          case 18: {
+            auditConfigDeltas_.AddEntriesFrom(input, _repeated_auditConfigDeltas_codec);
             break;
           }
         }
@@ -617,6 +729,7 @@ namespace Google.Cloud.Iam.V1 {
       action_ = other.action_;
       role_ = other.role_;
       member_ = other.member_;
+      condition_ = other.condition_ != null ? other.condition_.Clone() : null;
       _unknownFields = pb::UnknownFieldSet.Clone(other._unknownFields);
     }
 
@@ -672,6 +785,20 @@ namespace Google.Cloud.Iam.V1 {
       }
     }
 
+    /// <summary>Field number for the "condition" field.</summary>
+    public const int ConditionFieldNumber = 4;
+    private global::Google.Type.Expr condition_;
+    /// <summary>
+    /// The condition that is associated with this binding.
+    /// </summary>
+    [global::System.Diagnostics.DebuggerNonUserCodeAttribute]
+    public global::Google.Type.Expr Condition {
+      get { return condition_; }
+      set {
+        condition_ = value;
+      }
+    }
+
     [global::System.Diagnostics.DebuggerNonUserCodeAttribute]
     public override bool Equals(object other) {
       return Equals(other as BindingDelta);
@@ -688,6 +815,7 @@ namespace Google.Cloud.Iam.V1 {
       if (Action != other.Action) return false;
       if (Role != other.Role) return false;
       if (Member != other.Member) return false;
+      if (!object.Equals(Condition, other.Condition)) return false;
       return Equals(_unknownFields, other._unknownFields);
     }
 
@@ -697,6 +825,7 @@ namespace Google.Cloud.Iam.V1 {
       if (Action != 0) hash ^= Action.GetHashCode();
       if (Role.Length != 0) hash ^= Role.GetHashCode();
       if (Member.Length != 0) hash ^= Member.GetHashCode();
+      if (condition_ != null) hash ^= Condition.GetHashCode();
       if (_unknownFields != null) {
         hash ^= _unknownFields.GetHashCode();
       }
@@ -722,6 +851,10 @@ namespace Google.Cloud.Iam.V1 {
         output.WriteRawTag(26);
         output.WriteString(Member);
       }
+      if (condition_ != null) {
+        output.WriteRawTag(34);
+        output.WriteMessage(Condition);
+      }
       if (_unknownFields != null) {
         _unknownFields.WriteTo(output);
       }
@@ -738,6 +871,9 @@ namespace Google.Cloud.Iam.V1 {
       }
       if (Member.Length != 0) {
         size += 1 + pb::CodedOutputStream.ComputeStringSize(Member);
+      }
+      if (condition_ != null) {
+        size += 1 + pb::CodedOutputStream.ComputeMessageSize(Condition);
       }
       if (_unknownFields != null) {
         size += _unknownFields.CalculateSize();
@@ -759,6 +895,12 @@ namespace Google.Cloud.Iam.V1 {
       if (other.Member.Length != 0) {
         Member = other.Member;
       }
+      if (other.condition_ != null) {
+        if (condition_ == null) {
+          Condition = new global::Google.Type.Expr();
+        }
+        Condition.MergeFrom(other.Condition);
+      }
       _unknownFields = pb::UnknownFieldSet.MergeFrom(_unknownFields, other._unknownFields);
     }
 
@@ -771,7 +913,7 @@ namespace Google.Cloud.Iam.V1 {
             _unknownFields = pb::UnknownFieldSet.MergeFieldFrom(_unknownFields, input);
             break;
           case 8: {
-            action_ = (global::Google.Cloud.Iam.V1.BindingDelta.Types.Action) input.ReadEnum();
+            Action = (global::Google.Cloud.Iam.V1.BindingDelta.Types.Action) input.ReadEnum();
             break;
           }
           case 18: {
@@ -780,6 +922,13 @@ namespace Google.Cloud.Iam.V1 {
           }
           case 26: {
             Member = input.ReadString();
+            break;
+          }
+          case 34: {
+            if (condition_ == null) {
+              Condition = new global::Google.Type.Expr();
+            }
+            input.ReadMessage(Condition);
             break;
           }
         }
@@ -804,6 +953,268 @@ namespace Google.Cloud.Iam.V1 {
         [pbr::OriginalName("ADD")] Add = 1,
         /// <summary>
         /// Removal of a Binding.
+        /// </summary>
+        [pbr::OriginalName("REMOVE")] Remove = 2,
+      }
+
+    }
+    #endregion
+
+  }
+
+  /// <summary>
+  /// One delta entry for AuditConfig. Each individual change (only one
+  /// exempted_member in each entry) to a AuditConfig will be a separate entry.
+  /// </summary>
+  public sealed partial class AuditConfigDelta : pb::IMessage<AuditConfigDelta> {
+    private static readonly pb::MessageParser<AuditConfigDelta> _parser = new pb::MessageParser<AuditConfigDelta>(() => new AuditConfigDelta());
+    private pb::UnknownFieldSet _unknownFields;
+    [global::System.Diagnostics.DebuggerNonUserCodeAttribute]
+    public static pb::MessageParser<AuditConfigDelta> Parser { get { return _parser; } }
+
+    [global::System.Diagnostics.DebuggerNonUserCodeAttribute]
+    public static pbr::MessageDescriptor Descriptor {
+      get { return global::Google.Cloud.Iam.V1.PolicyReflection.Descriptor.MessageTypes[4]; }
+    }
+
+    [global::System.Diagnostics.DebuggerNonUserCodeAttribute]
+    pbr::MessageDescriptor pb::IMessage.Descriptor {
+      get { return Descriptor; }
+    }
+
+    [global::System.Diagnostics.DebuggerNonUserCodeAttribute]
+    public AuditConfigDelta() {
+      OnConstruction();
+    }
+
+    partial void OnConstruction();
+
+    [global::System.Diagnostics.DebuggerNonUserCodeAttribute]
+    public AuditConfigDelta(AuditConfigDelta other) : this() {
+      action_ = other.action_;
+      service_ = other.service_;
+      exemptedMember_ = other.exemptedMember_;
+      logType_ = other.logType_;
+      _unknownFields = pb::UnknownFieldSet.Clone(other._unknownFields);
+    }
+
+    [global::System.Diagnostics.DebuggerNonUserCodeAttribute]
+    public AuditConfigDelta Clone() {
+      return new AuditConfigDelta(this);
+    }
+
+    /// <summary>Field number for the "action" field.</summary>
+    public const int ActionFieldNumber = 1;
+    private global::Google.Cloud.Iam.V1.AuditConfigDelta.Types.Action action_ = 0;
+    /// <summary>
+    /// The action that was performed on an audit configuration in a policy.
+    /// Required
+    /// </summary>
+    [global::System.Diagnostics.DebuggerNonUserCodeAttribute]
+    public global::Google.Cloud.Iam.V1.AuditConfigDelta.Types.Action Action {
+      get { return action_; }
+      set {
+        action_ = value;
+      }
+    }
+
+    /// <summary>Field number for the "service" field.</summary>
+    public const int ServiceFieldNumber = 2;
+    private string service_ = "";
+    /// <summary>
+    /// Specifies a service that was configured for Cloud Audit Logging.
+    /// For example, `storage.googleapis.com`, `cloudsql.googleapis.com`.
+    /// `allServices` is a special value that covers all services.
+    /// Required
+    /// </summary>
+    [global::System.Diagnostics.DebuggerNonUserCodeAttribute]
+    public string Service {
+      get { return service_; }
+      set {
+        service_ = pb::ProtoPreconditions.CheckNotNull(value, "value");
+      }
+    }
+
+    /// <summary>Field number for the "exempted_member" field.</summary>
+    public const int ExemptedMemberFieldNumber = 3;
+    private string exemptedMember_ = "";
+    /// <summary>
+    /// A single identity that is exempted from "data access" audit
+    /// logging for the `service` specified above.
+    /// Follows the same format of Binding.members.
+    /// </summary>
+    [global::System.Diagnostics.DebuggerNonUserCodeAttribute]
+    public string ExemptedMember {
+      get { return exemptedMember_; }
+      set {
+        exemptedMember_ = pb::ProtoPreconditions.CheckNotNull(value, "value");
+      }
+    }
+
+    /// <summary>Field number for the "log_type" field.</summary>
+    public const int LogTypeFieldNumber = 4;
+    private string logType_ = "";
+    /// <summary>
+    /// Specifies the log_type that was be enabled. ADMIN_ACTIVITY is always
+    /// enabled, and cannot be configured.
+    /// Required
+    /// </summary>
+    [global::System.Diagnostics.DebuggerNonUserCodeAttribute]
+    public string LogType {
+      get { return logType_; }
+      set {
+        logType_ = pb::ProtoPreconditions.CheckNotNull(value, "value");
+      }
+    }
+
+    [global::System.Diagnostics.DebuggerNonUserCodeAttribute]
+    public override bool Equals(object other) {
+      return Equals(other as AuditConfigDelta);
+    }
+
+    [global::System.Diagnostics.DebuggerNonUserCodeAttribute]
+    public bool Equals(AuditConfigDelta other) {
+      if (ReferenceEquals(other, null)) {
+        return false;
+      }
+      if (ReferenceEquals(other, this)) {
+        return true;
+      }
+      if (Action != other.Action) return false;
+      if (Service != other.Service) return false;
+      if (ExemptedMember != other.ExemptedMember) return false;
+      if (LogType != other.LogType) return false;
+      return Equals(_unknownFields, other._unknownFields);
+    }
+
+    [global::System.Diagnostics.DebuggerNonUserCodeAttribute]
+    public override int GetHashCode() {
+      int hash = 1;
+      if (Action != 0) hash ^= Action.GetHashCode();
+      if (Service.Length != 0) hash ^= Service.GetHashCode();
+      if (ExemptedMember.Length != 0) hash ^= ExemptedMember.GetHashCode();
+      if (LogType.Length != 0) hash ^= LogType.GetHashCode();
+      if (_unknownFields != null) {
+        hash ^= _unknownFields.GetHashCode();
+      }
+      return hash;
+    }
+
+    [global::System.Diagnostics.DebuggerNonUserCodeAttribute]
+    public override string ToString() {
+      return pb::JsonFormatter.ToDiagnosticString(this);
+    }
+
+    [global::System.Diagnostics.DebuggerNonUserCodeAttribute]
+    public void WriteTo(pb::CodedOutputStream output) {
+      if (Action != 0) {
+        output.WriteRawTag(8);
+        output.WriteEnum((int) Action);
+      }
+      if (Service.Length != 0) {
+        output.WriteRawTag(18);
+        output.WriteString(Service);
+      }
+      if (ExemptedMember.Length != 0) {
+        output.WriteRawTag(26);
+        output.WriteString(ExemptedMember);
+      }
+      if (LogType.Length != 0) {
+        output.WriteRawTag(34);
+        output.WriteString(LogType);
+      }
+      if (_unknownFields != null) {
+        _unknownFields.WriteTo(output);
+      }
+    }
+
+    [global::System.Diagnostics.DebuggerNonUserCodeAttribute]
+    public int CalculateSize() {
+      int size = 0;
+      if (Action != 0) {
+        size += 1 + pb::CodedOutputStream.ComputeEnumSize((int) Action);
+      }
+      if (Service.Length != 0) {
+        size += 1 + pb::CodedOutputStream.ComputeStringSize(Service);
+      }
+      if (ExemptedMember.Length != 0) {
+        size += 1 + pb::CodedOutputStream.ComputeStringSize(ExemptedMember);
+      }
+      if (LogType.Length != 0) {
+        size += 1 + pb::CodedOutputStream.ComputeStringSize(LogType);
+      }
+      if (_unknownFields != null) {
+        size += _unknownFields.CalculateSize();
+      }
+      return size;
+    }
+
+    [global::System.Diagnostics.DebuggerNonUserCodeAttribute]
+    public void MergeFrom(AuditConfigDelta other) {
+      if (other == null) {
+        return;
+      }
+      if (other.Action != 0) {
+        Action = other.Action;
+      }
+      if (other.Service.Length != 0) {
+        Service = other.Service;
+      }
+      if (other.ExemptedMember.Length != 0) {
+        ExemptedMember = other.ExemptedMember;
+      }
+      if (other.LogType.Length != 0) {
+        LogType = other.LogType;
+      }
+      _unknownFields = pb::UnknownFieldSet.MergeFrom(_unknownFields, other._unknownFields);
+    }
+
+    [global::System.Diagnostics.DebuggerNonUserCodeAttribute]
+    public void MergeFrom(pb::CodedInputStream input) {
+      uint tag;
+      while ((tag = input.ReadTag()) != 0) {
+        switch(tag) {
+          default:
+            _unknownFields = pb::UnknownFieldSet.MergeFieldFrom(_unknownFields, input);
+            break;
+          case 8: {
+            Action = (global::Google.Cloud.Iam.V1.AuditConfigDelta.Types.Action) input.ReadEnum();
+            break;
+          }
+          case 18: {
+            Service = input.ReadString();
+            break;
+          }
+          case 26: {
+            ExemptedMember = input.ReadString();
+            break;
+          }
+          case 34: {
+            LogType = input.ReadString();
+            break;
+          }
+        }
+      }
+    }
+
+    #region Nested types
+    /// <summary>Container for nested types declared in the AuditConfigDelta message type.</summary>
+    [global::System.Diagnostics.DebuggerNonUserCodeAttribute]
+    public static partial class Types {
+      /// <summary>
+      /// The type of action performed on an audit configuration in a policy.
+      /// </summary>
+      public enum Action {
+        /// <summary>
+        /// Unspecified.
+        /// </summary>
+        [pbr::OriginalName("ACTION_UNSPECIFIED")] Unspecified = 0,
+        /// <summary>
+        /// Addition of an audit configuration.
+        /// </summary>
+        [pbr::OriginalName("ADD")] Add = 1,
+        /// <summary>
+        /// Removal of an audit configuration.
         /// </summary>
         [pbr::OriginalName("REMOVE")] Remove = 2,
       }

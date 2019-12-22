@@ -24,8 +24,14 @@ using Xunit;
 namespace Google.Cloud.Vision.V1.Snippets
 {
     [SnippetOutputCollector]
+    [Collection(nameof(VisionFixture))]
     public class ImageAnnotatorClientSnippets
     {
+        private readonly VisionFixture _fixture;
+
+        public ImageAnnotatorClientSnippets(VisionFixture fixture) =>
+            _fixture = fixture;
+
         [Fact]
         public void Annotate()
         {
@@ -156,9 +162,10 @@ namespace Google.Cloud.Vision.V1.Snippets
             }
             // End snippet
 
-            Assert.Equal(2, result.Count);
-            var descriptions = result.Select(r => r.Description).OrderBy(d => d).ToList();
-            Assert.Equal(new[] { "Sydney Harbour Bridge", "Sydney Opera House" }, descriptions);
+            Assert.InRange(result.Count, 2, 10);
+            var descriptions = result.Select(r => r.Description).ToList();
+            Assert.Contains("Royal Botanic Gardens", descriptions);
+            Assert.Contains("Sydney Opera House", descriptions);
         }
 
         // See-also: DetectLandmarks(*, *, *, *)
@@ -201,9 +208,9 @@ namespace Google.Cloud.Vision.V1.Snippets
 
             // Not exhaustive, but let's check certain basic labels.
             var descriptions = labels.Select(l => l.Description).ToList();
-            Assert.Contains("flower", descriptions);
-            Assert.Contains("plant", descriptions);
-            Assert.Contains("vase", descriptions);
+            Assert.Contains("flower", descriptions, StringComparer.OrdinalIgnoreCase);
+            Assert.Contains("plant", descriptions, StringComparer.OrdinalIgnoreCase);
+            Assert.Contains("vase", descriptions, StringComparer.OrdinalIgnoreCase);
         }
 
         // See-also: DetectLabels(*, *, *, *)
@@ -270,7 +277,7 @@ namespace Google.Cloud.Vision.V1.Snippets
             }
             // End snippet
             Assert.Equal(1, logos.Count);
-            Assert.Equal("Google Chrome", logos[0].Description);
+            Assert.Contains("chrome", logos[0].Description, StringComparison.OrdinalIgnoreCase);
         }
 
         // See-also: DetectLogos(*, *, *, *)
@@ -372,7 +379,7 @@ namespace Google.Cloud.Vision.V1.Snippets
         // See [DetectWebInformation](ref) for a synchronous example.
         // End see-also
 
-        [Fact]
+        [Fact(Skip = "Flaky; see https://github.com/googleapis/google-cloud-dotnet/issues/3174")]
         public void DetectLocalizedObjects()
         {
             Image image = Image.FromUri("https://cloud.google.com/vision/docs/images/bicycle_example.png");
@@ -413,6 +420,61 @@ namespace Google.Cloud.Vision.V1.Snippets
             {
                 AnnotateImageResponse response = e.Response;
                 Console.WriteLine(response.Error);
+            }
+            // End sample
+        }
+
+        [Fact]
+        public void DetectSimilarProducts()
+        {
+            Image image = LoadResourceImage("shoes_1.jpg");
+            string projectId = _fixture.ProjectId;
+            string locationId = "us-west1";
+            string productSetId = $"{projectId}_product_search_test";
+
+            // Sample: ProductSearch
+            // Additional: DetectSimilarProducts(*, *, *)
+            ProductSetName productSetName = new ProductSetName(projectId, locationId, productSetId);
+            ImageAnnotatorClient client = ImageAnnotatorClient.Create();
+            ProductSearchParams searchParams = new ProductSearchParams
+            {
+                ProductCategories = { "apparel" },
+                ProductSetAsProductSetName = productSetName,
+            };
+            ProductSearchResults results = client.DetectSimilarProducts(image, searchParams);
+            foreach (var result in results.Results)
+            {
+                Console.WriteLine($"{result.Product.DisplayName}: {result.Score}");
+            }
+            // End sample
+        }
+
+        // See-also: DetectSimilarProducts(*, *, *)
+        // Member: DetectSimilarProductsAsync(*, *, *)
+        // See [DetectSimilarProducts](ref) for a synchronous example.
+        // End see-also
+
+        [Fact]
+        public void DetectSimilarProducts_WithFilter()
+        {
+            Image image = LoadResourceImage("shoes_1.jpg");
+            string projectId = _fixture.ProjectId;
+            string locationId = "us-west1";
+            string productSetId = $"{projectId}_product_search_test";
+
+            // Sample: ProductSearchWithFilter
+            ProductSetName productSetName = new ProductSetName(projectId, locationId, productSetId);
+            ImageAnnotatorClient client = ImageAnnotatorClient.Create();
+            ProductSearchParams searchParams = new ProductSearchParams
+            {
+                ProductCategories = { "apparel" },
+                ProductSetAsProductSetName = productSetName,
+                Filter = "style=womens"
+            };
+            ProductSearchResults results = client.DetectSimilarProducts(image, searchParams);
+            foreach (var result in results.Results)
+            {
+                Console.WriteLine($"{result.Product.DisplayName}: {result.Score}");
             }
             // End sample
         }

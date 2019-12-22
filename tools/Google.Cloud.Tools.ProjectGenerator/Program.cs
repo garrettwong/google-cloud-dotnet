@@ -13,6 +13,7 @@
 // limitations under the License.
 
 using Google.Cloud.Tools.Common;
+using Newtonsoft.Json;
 using System;
 using System.Collections.Generic;
 using System.Diagnostics;
@@ -36,12 +37,13 @@ namespace Google.Cloud.Tools.ProjectGenerator
             { "Google.Cloud.AnalyzersTesting", @"..\..\..\tools\Google.Cloud.AnalyzersTesting\Google.Cloud.AnalyzersTesting.csproj" },
             { "Google.Cloud.ClientTesting", @"..\..\..\tools\Google.Cloud.ClientTesting\Google.Cloud.ClientTesting.csproj" },
             { "Google.Cloud.Diagnostics.Common.Tests", @"..\..\Google.Cloud.Diagnostics.Common\Google.Cloud.Diagnostics.Common.Tests\Google.Cloud.Diagnostics.Common.Tests.csproj" },
-            { "Google.Cloud.Diagnostics.Common.IntegrationTests", @"..\..\Google.Cloud.Diagnostics.Common\Google.Cloud.Diagnostics.Common.IntegrationTests\Google.Cloud.Diagnostics.Common.IntegrationTests.csproj" }
+            { "Google.Cloud.Diagnostics.Common.IntegrationTests", @"..\..\Google.Cloud.Diagnostics.Common\Google.Cloud.Diagnostics.Common.IntegrationTests\Google.Cloud.Diagnostics.Common.IntegrationTests.csproj" },
+            { "Google.Cloud.SampleUtil", @"..\..\..\tools\Google.Cloud.SampleUtil\Google.Cloud.SampleUtil.csproj"}
         };
 
-        private const string DefaultRestTargetFrameworks = "netstandard1.3;net45";
-        private const string DefaultGrpcTargetFrameworks = "netstandard1.5;net45";
-        private const string DefaultTestTargetFrameworks = "netcoreapp1.0;net452";
+        private const string DefaultRestTargetFrameworks = "netstandard1.3;netstandard2.0;net45";
+        private const string DefaultGrpcTargetFrameworks = "netstandard1.5;netstandard2.0;net45";
+        private const string DefaultTestTargetFrameworks = "netcoreapp2.1;net452";
 
         private const string AnalyzersTargetFramework = "netstandard1.3";
         private const string AnalyzersTestTargetFramework = "netcoreapp2.0";
@@ -49,13 +51,14 @@ namespace Google.Cloud.Tools.ProjectGenerator
         private const string ProjectVersionValue = "project";
         private const string DefaultVersionValue = "default";
         private const string GrpcPackage = "Grpc.Core";
-        private const string DefaultGaxVersion = "2.5.0";
-        private const string GrpcVersion = "1.13.1";
+        private const string DefaultGaxVersion = "2.10.0";
+        private const string GrpcVersion = "1.22.1";
         private static readonly Dictionary<string, string> DefaultPackageVersions = new Dictionary<string, string>
         {
             { "Google.Api.Gax", DefaultGaxVersion },
             { "Google.Api.Gax.Rest", DefaultGaxVersion },
             { "Google.Api.Gax.Grpc", DefaultGaxVersion },
+            { "Google.Api.Gax.Grpc.Gcp", DefaultGaxVersion },
             { "Google.Api.Gax.Testing", DefaultGaxVersion },
             { "Google.Api.Gax.Grpc.Testing", DefaultGaxVersion },
             { GrpcPackage, GrpcVersion },
@@ -73,11 +76,11 @@ namespace Google.Cloud.Tools.ProjectGenerator
         private static readonly Dictionary<string, string> CommonTestDependencies = new Dictionary<string, string>
         {
             { "Google.Cloud.ClientTesting", ProjectVersionValue }, // Needed for all snippets and some other tests - easiest to just default
-            { "Microsoft.NET.Test.Sdk", "15.8.0" },
-            { "xunit", "2.4.0" },
-            { "xunit.runner.visualstudio", "2.4.0" },
-            { "Xunit.SkippableFact", "1.3.6" },
-            { "Moq", "4.9.0" }
+            { "Microsoft.NET.Test.Sdk", "16.2.0" },
+            { "xunit", "2.4.1" },
+            { "xunit.runner.visualstudio", "2.4.1" },
+            { "Xunit.SkippableFact", "1.3.12" },
+            { "Moq", "4.12.0" }
         };
 
         // Hard-coded versions for dependencies for production packages that can be updated arbitrarily, as their assets are all private.
@@ -87,6 +90,12 @@ namespace Google.Cloud.Tools.ProjectGenerator
             { CompatibilityAnalyzer, "0.2.12-alpha" },
             { ConfigureAwaitAnalyzer, "1.0.1" },
             { SourceLinkPackage, "2.8.3" }
+        };
+
+        private static readonly Dictionary<string, string> CommonSampleDependencies = new Dictionary<string, string>
+        {
+            { "CommandLineParser", "2.6.0" },
+            { "Google.Cloud.SampleUtil", "project"}
         };
 
         private const string CompatibilityAnalyzer = "Microsoft.DotNet.Analyzers.Compatibility";
@@ -120,15 +129,12 @@ namespace Google.Cloud.Tools.ProjectGenerator
 
                 foreach (var api in apis)
                 {
-                    GenerateProjects(Path.Combine(root, "apis", api.Id), api, apiNames);
-                }
-                foreach (var api in apis)
-                {
-                    GenerateSolutionFiles(Path.Combine(root, "apis", api.Id), api);
-                }
-                foreach (var api in apis)
-                {
-                    GenerateDocumentationStub(Path.Combine(root, "apis", api.Id), api);
+                    var path = Path.Combine(root, "apis", api.Id);
+                    GenerateProjects(path, api, apiNames);
+                    GenerateSolutionFiles(path, api);
+                    GenerateDocumentationStub(path, api);
+                    GenerateSynthConfiguration(path, api);
+                    GenerateMetadataFile(path, api);
                 }
                 return 0;
             }
@@ -164,6 +170,7 @@ namespace Google.Cloud.Tools.ProjectGenerator
             // - .Snippets: snippets (manual and generated)
             // - .Tests: unit tests
             // - .IntegrationTests: integration tests
+            // - .Samples: generated standalone samples
 
             // Anything else will be ignored for now...
             var projectDirectories = Directory.GetDirectories(apiRoot)
@@ -185,6 +192,9 @@ namespace Google.Cloud.Tools.ProjectGenerator
                     case ".Tests":
                         GenerateTestProject(api, dir, apiNames, isForAnalyzers: api.Type == ApiType.Analyzers);
                         GenerateCoverageFile(api, dir);
+                        break;
+                    case ".Samples":
+                        GenerateSampleProject(api, dir, apiNames);
                         break;
                 }
             }
@@ -208,11 +218,11 @@ namespace Google.Cloud.Tools.ProjectGenerator
                 string projectFile = Path.Combine(dir, $"{projectName}.csproj");
                 if (File.Exists(projectFile))
                 {
-                    projects.Add($"{projectName}\\{projectName}.csproj");
+                    projects.Add($"{projectName}/{projectName}.csproj");
                     XDocument doc = XDocument.Load(projectFile);
                     var projectReferences = doc.Descendants("ProjectReference")
-                        .Select(x => x.Attribute("Include").Value.Replace("/", "\\"))
-                        .Select(x => x.StartsWith("..\\") ? x.Substring(3) : x);
+                        .Select(x => x.Attribute("Include").Value.Replace("\\", "/"))
+                        .Select(x => x.StartsWith("../") ? x.Substring(3) : x);
                     foreach (var reference in projectReferences)
                     {
                         projects.Add(reference);
@@ -225,10 +235,10 @@ namespace Google.Cloud.Tools.ProjectGenerator
             string beforeHash = GetFileHash(fullFile);
             if (!File.Exists(fullFile))
             {
-                RunDotnet(apiRoot, "new", "sln", "-n", api.Id);
+                Processes.RunDotnet(apiRoot, "new", "sln", "-n", api.Id);
             }
             // It's much faster to run a single process than to run it once per project.
-            RunDotnet(apiRoot, new[] { "sln", solutionFileName, "add" }.Concat(projects).ToArray());
+            Processes.RunDotnet(apiRoot, new[] { "sln", solutionFileName, "add" }.Concat(projects).ToArray());
 
             string afterHash = GetFileHash(fullFile);
             if (beforeHash != afterHash)
@@ -240,10 +250,12 @@ namespace Google.Cloud.Tools.ProjectGenerator
         static void GenerateDocumentationStub(string apiRoot, ApiMetadata api)
         {
             string file = Path.Combine(apiRoot, "docs", "index.md");
-            if (!File.Exists(file) && api.ProductName != null && api.ProductUrl != null)
+            if (File.Exists(file))
             {
-                Directory.CreateDirectory(Path.GetDirectoryName(file));
-                File.WriteAllText(file,
+                return;
+            }
+            Directory.CreateDirectory(Path.GetDirectoryName(file));
+            string stub = api.ProductName != null && api.ProductUrl != null ?
 @"{{title}}
 
 {{description}}
@@ -259,32 +271,71 @@ namespace Google.Cloud.Tools.ProjectGenerator
 {{client-classes}}
 
 {{client-construction}}
-");
-                Console.WriteLine($"Generated documentation stub for {api.Id}");
-            }
+"
+: "{{non-product-stub}}";
+            File.WriteAllText(file, stub);
+            Console.WriteLine($"Generated documentation stub for {api.Id}");
         }
 
-        private static void RunDotnet(string root, params string[] args)
+        private static void GenerateSynthConfiguration(string apiRoot, ApiMetadata api)
         {
-            string joinedArguments = string.Join(" ", args);
-            var psi = new ProcessStartInfo
+            if (api.Generator == GeneratorType.None)
             {
-                FileName = "dotnet",
-                Arguments = joinedArguments,
-                WorkingDirectory = root,
-                RedirectStandardOutput = true,
-                RedirectStandardError = true
-            };
-            var process = Process.Start(psi);
-            // We assume there isn't so much output that this will block. Otherwise we'd have to read it in a different thread etc.
-            // 10s limit stops us from hanging forever...
-            process.WaitForExit(10000);
-            if (process.ExitCode != 0)
-            {
-                var output = process.StandardOutput.ReadToEnd();
-                var error = process.StandardError.ReadToEnd();
-                throw new Exception($"dotnet exit code {process.ExitCode}. Directory: {root}. Args: {joinedArguments}. Output: {output}. Error: {error}");
+                return;
             }
+            var synthFile = Path.Combine(apiRoot, "synth.py");
+
+            // Currently all APIs use the exact same synth file, so we can just replace it every time.
+            // We may need something more sophisticated in the future.
+            string content =
+@" # GENERATED BY Google.Cloud.Tools.ProjectGenerator - DO NOT EDIT!
+
+import sys
+from synthtool import shell
+from pathlib import Path
+
+# Parent of the script is the API-specific directory
+# Parent of the API-specific directory is the apis directory
+# Parent of the apis directory is the repo root
+root = Path(__file__).parent.parent.parent
+package = Path(__file__).parent.name
+
+bash = '/bin/bash'
+if sys.platform == 'win32':
+  bash = 'C:\\Program Files\\Git\\bin\\bash.exe'
+
+shell.run(
+  (bash, 'generateapis.sh', '--check_compatibility', package),
+  cwd = root,
+  hide_output = False)
+";
+            File.WriteAllText(synthFile, content);
+        }
+
+        /// <summary>
+        /// Generates a metadata file (currently .repo-metadata.json; may change name later) with
+        /// all the information that language-agnostic tools require.
+        /// </summary>
+        private static void GenerateMetadataFile(string apiRoot, ApiMetadata api)
+        {
+            var version = api.StructuredVersion;
+            // Version "1.0.0-beta00" hasn't been released at all, so we don't have a package to talk about.
+            // TODO: Check that this is actually appropriate.
+            if ((version.Prerelease ?? "").EndsWith("00") && version.Major == 1 && version.Minor == 0)
+            {
+                return;
+            }
+            string releaseLevel =
+                // If it's not a prerelease now, or it's ever got to 1.0, it's generally "ga"
+                version.Major > 1 || version.Minor > 0 || version.Prerelease == null ? "ga"
+                : version.Prerelease.StartsWith("beta") ? "beta" : "alpha";
+            var metadata = new
+            {
+                distribution_name = api.Id,
+                release_level = releaseLevel
+            };
+            string json = JsonConvert.SerializeObject(metadata, Formatting.Indented);
+            File.WriteAllText(Path.Combine(apiRoot, ".repo-metadata.json"), json);
         }
 
         private static void GenerateMainProject(ApiMetadata api, string directory, HashSet<string> apiNames)
@@ -352,7 +403,7 @@ namespace Google.Cloud.Tools.ProjectGenerator
                 new XElement("Copyright", $"Copyright {DateTime.UtcNow.Year} Google LLC"),
                 new XElement("Authors", "Google Inc."),
                 new XElement("PackageIconUrl", "https://cloud.google.com/images/gcp-icon-64x64.png"),
-                new XElement("PackageLicenseUrl", "https://www.apache.org/licenses/LICENSE-2.0"),
+                new XElement("PackageLicenseFile", "LICENSE"),
                 new XElement("PackageProjectUrl", "https://github.com/googleapis/google-cloud-dotnet"),
                 new XElement("RepositoryType", "git"),
                 new XElement("RepositoryUrl", "https://github.com/googleapis/google-cloud-dotnet")
@@ -362,6 +413,12 @@ namespace Google.Cloud.Tools.ProjectGenerator
                 propertyGroup.Add(new XElement("CodeAnalysisRuleSet", "..\\..\\..\\grpc.ruleset"));
             }
             var dependenciesElement = CreateDependenciesElement(api.Id, dependencies, api.IsReleaseVersion, testProject: false, apiNames: apiNames);
+            // Pack the license file; this element isn't a dependency, but it still belongs in an ItemGroup...
+            dependenciesElement.Add(new XElement("None",
+                new XAttribute("Include", "../../../LICENSE"),
+                new XAttribute("Pack", true),
+                new XAttribute("PackagePath", ""))); // Note: not $(PackageLicenseFile) as suggested in docs, due to us using a file with no extension
+
             if (api.Type == ApiType.Analyzers)
             {
                 propertyGroup.Add(new XElement("IncludeBuildOutput", false));
@@ -409,13 +466,35 @@ namespace Google.Cloud.Tools.ProjectGenerator
             }
             var propertyGroup =
                 new XElement("PropertyGroup",
-                    new XElement("TargetFramework", "netcoreapp1.0"),
+                    new XElement("TargetFramework", "netcoreapp2.1"),
                     new XElement("OutputType", "Exe"),
                     new XElement("LangVersion", "latest"),
                     new XElement("IsPackable", false));
             var dependenciesElement =
                 new XElement("ItemGroup",
                     CreateDependencyElement(Path.GetFileName(directory), api.Id, ProjectVersionValue, stableRelease: false, testProject: true, apiNames));
+            WriteProjectFile(api, directory, propertyGroup, dependenciesElement);
+        }
+
+        private static void GenerateSampleProject(ApiMetadata api, string directory, HashSet<string> apiNames)
+        {
+            // Don't generate a project file if we've got a placeholder directory
+            if (Directory.GetFiles(directory, "*.cs", SearchOption.AllDirectories).Length == 0)
+            {
+                return;
+            }
+            var dependencies = new SortedList<string, string>(CommonSampleDependencies);
+            dependencies.Add(api.Id, "project");
+            var propertyGroup =
+                new XElement("PropertyGroup",
+                    new XElement("TargetFramework", "netcoreapp2.1"),
+                    new XElement("OutputType", "Exe"),
+                    new XElement("LangVersion", "latest"),
+                    new XElement("IsPackable", false),
+                    new XElement("StartupObject", api.Id + ".Samples.Program"));
+
+            string project = Path.GetFileName(directory);
+            var dependenciesElement = CreateDependenciesElement(project, dependencies, api.IsReleaseVersion, testProject: true, apiNames: apiNames);
             WriteProjectFile(api, directory, propertyGroup, dependenciesElement);
         }
 

@@ -1,4 +1,4 @@
-// Copyright 2018 Google LLC
+// Copyright 2019 Google LLC
 //
 // Licensed under the Apache License, Version 2.0 (the "License");
 // you may not use this file except in compliance with the License.
@@ -310,6 +310,42 @@ namespace Google.Cloud.Dialogflow.V2
     }
 
     /// <summary>
+    /// Builder class for <see cref="ContextsClient"/> to provide simple configuration of credentials, endpoint etc.
+    /// </summary>
+    public sealed partial class ContextsClientBuilder : gaxgrpc::ClientBuilderBase<ContextsClient>
+    {
+        /// <summary>
+        /// The settings to use for RPCs, or null for the default settings.
+        /// </summary>
+        public ContextsSettings Settings { get; set; }
+
+        /// <inheritdoc/>
+        public override ContextsClient Build()
+        {
+            Validate();
+            grpccore::CallInvoker callInvoker = CreateCallInvoker();
+            return ContextsClient.Create(callInvoker, Settings);
+        }
+
+        /// <inheritdoc />
+        public override async stt::Task<ContextsClient> BuildAsync(st::CancellationToken cancellationToken = default)
+        {
+            Validate();
+            grpccore::CallInvoker callInvoker = await CreateCallInvokerAsync(cancellationToken).ConfigureAwait(false);
+            return ContextsClient.Create(callInvoker, Settings);
+        }
+
+        /// <inheritdoc />
+        protected override gaxgrpc::ServiceEndpoint GetDefaultEndpoint() => ContextsClient.DefaultEndpoint;
+
+        /// <inheritdoc />
+        protected override scg::IReadOnlyList<string> GetDefaultScopes() => ContextsClient.DefaultScopes;
+
+        /// <inheritdoc />
+        protected override gaxgrpc::ChannelPool GetChannelPool() => ContextsClient.ChannelPool;
+    }
+
+    /// <summary>
     /// Contexts client wrapper, for convenient use.
     /// </summary>
     public abstract partial class ContextsClient
@@ -326,13 +362,17 @@ namespace Google.Cloud.Dialogflow.V2
         /// The default Contexts scopes are:
         /// <list type="bullet">
         /// <item><description>"https://www.googleapis.com/auth/cloud-platform"</description></item>
+        /// <item><description>"https://www.googleapis.com/auth/dialogflow"</description></item>
         /// </list>
         /// </remarks>
         public static scg::IReadOnlyList<string> DefaultScopes { get; } = new sco::ReadOnlyCollection<string>(new string[] {
             "https://www.googleapis.com/auth/cloud-platform",
+            "https://www.googleapis.com/auth/dialogflow",
         });
 
         private static readonly gaxgrpc::ChannelPool s_channelPool = new gaxgrpc::ChannelPool(DefaultScopes);
+
+        internal static gaxgrpc::ChannelPool ChannelPool => s_channelPool;
 
         /// <summary>
         /// Asynchronously creates a <see cref="ContextsClient"/>, applying defaults for all unspecified settings,
@@ -534,6 +574,74 @@ namespace Google.Cloud.Dialogflow.V2
         /// <summary>
         /// Returns the list of all contexts in the specified session.
         /// </summary>
+        /// <param name="parent">
+        /// Required. The session to list all contexts from.
+        /// Format: `projects/&lt;Project ID&gt;/agent/sessions/&lt;Session ID&gt;`.
+        /// </param>
+        /// <param name="pageToken">
+        /// The token returned from the previous request.
+        /// A value of <c>null</c> or an empty string retrieves the first page.
+        /// </param>
+        /// <param name="pageSize">
+        /// The size of page to request. The response will not be larger than this, but may be smaller.
+        /// A value of <c>null</c> or 0 uses a server-defined page size.
+        /// </param>
+        /// <param name="callSettings">
+        /// If not null, applies overrides to this RPC call.
+        /// </param>
+        /// <returns>
+        /// A pageable asynchronous sequence of <see cref="Context"/> resources.
+        /// </returns>
+        public virtual gax::PagedAsyncEnumerable<ListContextsResponse, Context> ListContextsAsync(
+            string parent,
+            string pageToken = null,
+            int? pageSize = null,
+            gaxgrpc::CallSettings callSettings = null) => ListContextsAsync(
+                new ListContextsRequest
+                {
+                    Parent = gax::GaxPreconditions.CheckNotNullOrEmpty(parent, nameof(parent)),
+                    PageToken = pageToken ?? "",
+                    PageSize = pageSize ?? 0,
+                },
+                callSettings);
+
+        /// <summary>
+        /// Returns the list of all contexts in the specified session.
+        /// </summary>
+        /// <param name="parent">
+        /// Required. The session to list all contexts from.
+        /// Format: `projects/&lt;Project ID&gt;/agent/sessions/&lt;Session ID&gt;`.
+        /// </param>
+        /// <param name="pageToken">
+        /// The token returned from the previous request.
+        /// A value of <c>null</c> or an empty string retrieves the first page.
+        /// </param>
+        /// <param name="pageSize">
+        /// The size of page to request. The response will not be larger than this, but may be smaller.
+        /// A value of <c>null</c> or 0 uses a server-defined page size.
+        /// </param>
+        /// <param name="callSettings">
+        /// If not null, applies overrides to this RPC call.
+        /// </param>
+        /// <returns>
+        /// A pageable sequence of <see cref="Context"/> resources.
+        /// </returns>
+        public virtual gax::PagedEnumerable<ListContextsResponse, Context> ListContexts(
+            string parent,
+            string pageToken = null,
+            int? pageSize = null,
+            gaxgrpc::CallSettings callSettings = null) => ListContexts(
+                new ListContextsRequest
+                {
+                    Parent = gax::GaxPreconditions.CheckNotNullOrEmpty(parent, nameof(parent)),
+                    PageToken = pageToken ?? "",
+                    PageSize = pageSize ?? 0,
+                },
+                callSettings);
+
+        /// <summary>
+        /// Returns the list of all contexts in the specified session.
+        /// </summary>
         /// <param name="request">
         /// The request object containing all of the parameters for the API call.
         /// </param>
@@ -635,6 +743,69 @@ namespace Google.Cloud.Dialogflow.V2
         /// <summary>
         /// Retrieves the specified context.
         /// </summary>
+        /// <param name="name">
+        /// Required. The name of the context. Format:
+        /// `projects/&lt;Project ID&gt;/agent/sessions/&lt;Session ID&gt;/contexts/&lt;Context ID&gt;`.
+        /// </param>
+        /// <param name="callSettings">
+        /// If not null, applies overrides to this RPC call.
+        /// </param>
+        /// <returns>
+        /// A Task containing the RPC response.
+        /// </returns>
+        public virtual stt::Task<Context> GetContextAsync(
+            string name,
+            gaxgrpc::CallSettings callSettings = null) => GetContextAsync(
+                new GetContextRequest
+                {
+                    Name = gax::GaxPreconditions.CheckNotNullOrEmpty(name, nameof(name)),
+                },
+                callSettings);
+
+        /// <summary>
+        /// Retrieves the specified context.
+        /// </summary>
+        /// <param name="name">
+        /// Required. The name of the context. Format:
+        /// `projects/&lt;Project ID&gt;/agent/sessions/&lt;Session ID&gt;/contexts/&lt;Context ID&gt;`.
+        /// </param>
+        /// <param name="cancellationToken">
+        /// A <see cref="st::CancellationToken"/> to use for this RPC.
+        /// </param>
+        /// <returns>
+        /// A Task containing the RPC response.
+        /// </returns>
+        public virtual stt::Task<Context> GetContextAsync(
+            string name,
+            st::CancellationToken cancellationToken) => GetContextAsync(
+                name,
+                gaxgrpc::CallSettings.FromCancellationToken(cancellationToken));
+
+        /// <summary>
+        /// Retrieves the specified context.
+        /// </summary>
+        /// <param name="name">
+        /// Required. The name of the context. Format:
+        /// `projects/&lt;Project ID&gt;/agent/sessions/&lt;Session ID&gt;/contexts/&lt;Context ID&gt;`.
+        /// </param>
+        /// <param name="callSettings">
+        /// If not null, applies overrides to this RPC call.
+        /// </param>
+        /// <returns>
+        /// The RPC response.
+        /// </returns>
+        public virtual Context GetContext(
+            string name,
+            gaxgrpc::CallSettings callSettings = null) => GetContext(
+                new GetContextRequest
+                {
+                    Name = gax::GaxPreconditions.CheckNotNullOrEmpty(name, nameof(name)),
+                },
+                callSettings);
+
+        /// <summary>
+        /// Retrieves the specified context.
+        /// </summary>
         /// <param name="request">
         /// The request object containing all of the parameters for the API call.
         /// </param>
@@ -690,6 +861,8 @@ namespace Google.Cloud.Dialogflow.V2
 
         /// <summary>
         /// Creates a context.
+        ///
+        /// If the specified context already exists, overrides the context.
         /// </summary>
         /// <param name="parent">
         /// Required. The session to create a context for.
@@ -717,6 +890,8 @@ namespace Google.Cloud.Dialogflow.V2
 
         /// <summary>
         /// Creates a context.
+        ///
+        /// If the specified context already exists, overrides the context.
         /// </summary>
         /// <param name="parent">
         /// Required. The session to create a context for.
@@ -741,6 +916,8 @@ namespace Google.Cloud.Dialogflow.V2
 
         /// <summary>
         /// Creates a context.
+        ///
+        /// If the specified context already exists, overrides the context.
         /// </summary>
         /// <param name="parent">
         /// Required. The session to create a context for.
@@ -768,6 +945,92 @@ namespace Google.Cloud.Dialogflow.V2
 
         /// <summary>
         /// Creates a context.
+        ///
+        /// If the specified context already exists, overrides the context.
+        /// </summary>
+        /// <param name="parent">
+        /// Required. The session to create a context for.
+        /// Format: `projects/&lt;Project ID&gt;/agent/sessions/&lt;Session ID&gt;`.
+        /// </param>
+        /// <param name="context">
+        /// Required. The context to create.
+        /// </param>
+        /// <param name="callSettings">
+        /// If not null, applies overrides to this RPC call.
+        /// </param>
+        /// <returns>
+        /// A Task containing the RPC response.
+        /// </returns>
+        public virtual stt::Task<Context> CreateContextAsync(
+            string parent,
+            Context context,
+            gaxgrpc::CallSettings callSettings = null) => CreateContextAsync(
+                new CreateContextRequest
+                {
+                    Parent = gax::GaxPreconditions.CheckNotNullOrEmpty(parent, nameof(parent)),
+                    Context = gax::GaxPreconditions.CheckNotNull(context, nameof(context)),
+                },
+                callSettings);
+
+        /// <summary>
+        /// Creates a context.
+        ///
+        /// If the specified context already exists, overrides the context.
+        /// </summary>
+        /// <param name="parent">
+        /// Required. The session to create a context for.
+        /// Format: `projects/&lt;Project ID&gt;/agent/sessions/&lt;Session ID&gt;`.
+        /// </param>
+        /// <param name="context">
+        /// Required. The context to create.
+        /// </param>
+        /// <param name="cancellationToken">
+        /// A <see cref="st::CancellationToken"/> to use for this RPC.
+        /// </param>
+        /// <returns>
+        /// A Task containing the RPC response.
+        /// </returns>
+        public virtual stt::Task<Context> CreateContextAsync(
+            string parent,
+            Context context,
+            st::CancellationToken cancellationToken) => CreateContextAsync(
+                parent,
+                context,
+                gaxgrpc::CallSettings.FromCancellationToken(cancellationToken));
+
+        /// <summary>
+        /// Creates a context.
+        ///
+        /// If the specified context already exists, overrides the context.
+        /// </summary>
+        /// <param name="parent">
+        /// Required. The session to create a context for.
+        /// Format: `projects/&lt;Project ID&gt;/agent/sessions/&lt;Session ID&gt;`.
+        /// </param>
+        /// <param name="context">
+        /// Required. The context to create.
+        /// </param>
+        /// <param name="callSettings">
+        /// If not null, applies overrides to this RPC call.
+        /// </param>
+        /// <returns>
+        /// The RPC response.
+        /// </returns>
+        public virtual Context CreateContext(
+            string parent,
+            Context context,
+            gaxgrpc::CallSettings callSettings = null) => CreateContext(
+                new CreateContextRequest
+                {
+                    Parent = gax::GaxPreconditions.CheckNotNullOrEmpty(parent, nameof(parent)),
+                    Context = gax::GaxPreconditions.CheckNotNull(context, nameof(context)),
+                },
+                callSettings);
+
+        /// <summary>
+        /// Creates a context.
+        ///
+        /// If the specified context already exists, overrides the context.
         /// </summary>
         /// <param name="request">
         /// The request object containing all of the parameters for the API call.
@@ -787,6 +1050,8 @@ namespace Google.Cloud.Dialogflow.V2
 
         /// <summary>
         /// Creates a context.
+        ///
+        /// If the specified context already exists, overrides the context.
         /// </summary>
         /// <param name="request">
         /// The request object containing all of the parameters for the API call.
@@ -805,6 +1070,8 @@ namespace Google.Cloud.Dialogflow.V2
 
         /// <summary>
         /// Creates a context.
+        ///
+        /// If the specified context already exists, overrides the context.
         /// </summary>
         /// <param name="request">
         /// The request object containing all of the parameters for the API call.
@@ -1001,6 +1268,66 @@ namespace Google.Cloud.Dialogflow.V2
         /// <summary>
         /// Deletes the specified context.
         /// </summary>
+        /// <param name="name">
+        /// Required. The name of the context to delete. Format:
+        /// `projects/&lt;Project ID&gt;/agent/sessions/&lt;Session ID&gt;/contexts/&lt;Context ID&gt;`.
+        /// </param>
+        /// <param name="callSettings">
+        /// If not null, applies overrides to this RPC call.
+        /// </param>
+        /// <returns>
+        /// A Task that completes when the RPC has completed.
+        /// </returns>
+        public virtual stt::Task DeleteContextAsync(
+            string name,
+            gaxgrpc::CallSettings callSettings = null) => DeleteContextAsync(
+                new DeleteContextRequest
+                {
+                    Name = gax::GaxPreconditions.CheckNotNullOrEmpty(name, nameof(name)),
+                },
+                callSettings);
+
+        /// <summary>
+        /// Deletes the specified context.
+        /// </summary>
+        /// <param name="name">
+        /// Required. The name of the context to delete. Format:
+        /// `projects/&lt;Project ID&gt;/agent/sessions/&lt;Session ID&gt;/contexts/&lt;Context ID&gt;`.
+        /// </param>
+        /// <param name="cancellationToken">
+        /// A <see cref="st::CancellationToken"/> to use for this RPC.
+        /// </param>
+        /// <returns>
+        /// A Task that completes when the RPC has completed.
+        /// </returns>
+        public virtual stt::Task DeleteContextAsync(
+            string name,
+            st::CancellationToken cancellationToken) => DeleteContextAsync(
+                name,
+                gaxgrpc::CallSettings.FromCancellationToken(cancellationToken));
+
+        /// <summary>
+        /// Deletes the specified context.
+        /// </summary>
+        /// <param name="name">
+        /// Required. The name of the context to delete. Format:
+        /// `projects/&lt;Project ID&gt;/agent/sessions/&lt;Session ID&gt;/contexts/&lt;Context ID&gt;`.
+        /// </param>
+        /// <param name="callSettings">
+        /// If not null, applies overrides to this RPC call.
+        /// </param>
+        public virtual void DeleteContext(
+            string name,
+            gaxgrpc::CallSettings callSettings = null) => DeleteContext(
+                new DeleteContextRequest
+                {
+                    Name = gax::GaxPreconditions.CheckNotNullOrEmpty(name, nameof(name)),
+                },
+                callSettings);
+
+        /// <summary>
+        /// Deletes the specified context.
+        /// </summary>
         /// <param name="request">
         /// The request object containing all of the parameters for the API call.
         /// </param>
@@ -1114,6 +1441,66 @@ namespace Google.Cloud.Dialogflow.V2
         /// <summary>
         /// Deletes all active contexts in the specified session.
         /// </summary>
+        /// <param name="parent">
+        /// Required. The name of the session to delete all contexts from. Format:
+        /// `projects/&lt;Project ID&gt;/agent/sessions/&lt;Session ID&gt;`.
+        /// </param>
+        /// <param name="callSettings">
+        /// If not null, applies overrides to this RPC call.
+        /// </param>
+        /// <returns>
+        /// A Task that completes when the RPC has completed.
+        /// </returns>
+        public virtual stt::Task DeleteAllContextsAsync(
+            string parent,
+            gaxgrpc::CallSettings callSettings = null) => DeleteAllContextsAsync(
+                new DeleteAllContextsRequest
+                {
+                    Parent = gax::GaxPreconditions.CheckNotNullOrEmpty(parent, nameof(parent)),
+                },
+                callSettings);
+
+        /// <summary>
+        /// Deletes all active contexts in the specified session.
+        /// </summary>
+        /// <param name="parent">
+        /// Required. The name of the session to delete all contexts from. Format:
+        /// `projects/&lt;Project ID&gt;/agent/sessions/&lt;Session ID&gt;`.
+        /// </param>
+        /// <param name="cancellationToken">
+        /// A <see cref="st::CancellationToken"/> to use for this RPC.
+        /// </param>
+        /// <returns>
+        /// A Task that completes when the RPC has completed.
+        /// </returns>
+        public virtual stt::Task DeleteAllContextsAsync(
+            string parent,
+            st::CancellationToken cancellationToken) => DeleteAllContextsAsync(
+                parent,
+                gaxgrpc::CallSettings.FromCancellationToken(cancellationToken));
+
+        /// <summary>
+        /// Deletes all active contexts in the specified session.
+        /// </summary>
+        /// <param name="parent">
+        /// Required. The name of the session to delete all contexts from. Format:
+        /// `projects/&lt;Project ID&gt;/agent/sessions/&lt;Session ID&gt;`.
+        /// </param>
+        /// <param name="callSettings">
+        /// If not null, applies overrides to this RPC call.
+        /// </param>
+        public virtual void DeleteAllContexts(
+            string parent,
+            gaxgrpc::CallSettings callSettings = null) => DeleteAllContexts(
+                new DeleteAllContextsRequest
+                {
+                    Parent = gax::GaxPreconditions.CheckNotNullOrEmpty(parent, nameof(parent)),
+                },
+                callSettings);
+
+        /// <summary>
+        /// Deletes all active contexts in the specified session.
+        /// </summary>
         /// <param name="request">
         /// The request object containing all of the parameters for the API call.
         /// </param>
@@ -1189,17 +1576,23 @@ namespace Google.Cloud.Dialogflow.V2
             ContextsSettings effectiveSettings = settings ?? ContextsSettings.GetDefault();
             gaxgrpc::ClientHelper clientHelper = new gaxgrpc::ClientHelper(effectiveSettings);
             _callListContexts = clientHelper.BuildApiCall<ListContextsRequest, ListContextsResponse>(
-                GrpcClient.ListContextsAsync, GrpcClient.ListContexts, effectiveSettings.ListContextsSettings);
+                GrpcClient.ListContextsAsync, GrpcClient.ListContexts, effectiveSettings.ListContextsSettings)
+                .WithGoogleRequestParam("parent", request => request.Parent);
             _callGetContext = clientHelper.BuildApiCall<GetContextRequest, Context>(
-                GrpcClient.GetContextAsync, GrpcClient.GetContext, effectiveSettings.GetContextSettings);
+                GrpcClient.GetContextAsync, GrpcClient.GetContext, effectiveSettings.GetContextSettings)
+                .WithGoogleRequestParam("name", request => request.Name);
             _callCreateContext = clientHelper.BuildApiCall<CreateContextRequest, Context>(
-                GrpcClient.CreateContextAsync, GrpcClient.CreateContext, effectiveSettings.CreateContextSettings);
+                GrpcClient.CreateContextAsync, GrpcClient.CreateContext, effectiveSettings.CreateContextSettings)
+                .WithGoogleRequestParam("parent", request => request.Parent);
             _callUpdateContext = clientHelper.BuildApiCall<UpdateContextRequest, Context>(
-                GrpcClient.UpdateContextAsync, GrpcClient.UpdateContext, effectiveSettings.UpdateContextSettings);
+                GrpcClient.UpdateContextAsync, GrpcClient.UpdateContext, effectiveSettings.UpdateContextSettings)
+                .WithGoogleRequestParam("context.name", request => request.Context?.Name);
             _callDeleteContext = clientHelper.BuildApiCall<DeleteContextRequest, pbwkt::Empty>(
-                GrpcClient.DeleteContextAsync, GrpcClient.DeleteContext, effectiveSettings.DeleteContextSettings);
+                GrpcClient.DeleteContextAsync, GrpcClient.DeleteContext, effectiveSettings.DeleteContextSettings)
+                .WithGoogleRequestParam("name", request => request.Name);
             _callDeleteAllContexts = clientHelper.BuildApiCall<DeleteAllContextsRequest, pbwkt::Empty>(
-                GrpcClient.DeleteAllContextsAsync, GrpcClient.DeleteAllContexts, effectiveSettings.DeleteAllContextsSettings);
+                GrpcClient.DeleteAllContextsAsync, GrpcClient.DeleteAllContexts, effectiveSettings.DeleteAllContextsSettings)
+                .WithGoogleRequestParam("parent", request => request.Parent);
             Modify_ApiCall(ref _callListContexts);
             Modify_ListContextsApiCall(ref _callListContexts);
             Modify_ApiCall(ref _callGetContext);
@@ -1330,6 +1723,8 @@ namespace Google.Cloud.Dialogflow.V2
 
         /// <summary>
         /// Creates a context.
+        ///
+        /// If the specified context already exists, overrides the context.
         /// </summary>
         /// <param name="request">
         /// The request object containing all of the parameters for the API call.
@@ -1350,6 +1745,8 @@ namespace Google.Cloud.Dialogflow.V2
 
         /// <summary>
         /// Creates a context.
+        ///
+        /// If the specified context already exists, overrides the context.
         /// </summary>
         /// <param name="request">
         /// The request object containing all of the parameters for the API call.

@@ -103,7 +103,8 @@ namespace Google.Cloud.Spanner.V1 {
     [pbr::OriginalName("BYTES")] Bytes = 7,
     /// <summary>
     /// Encoded as `list`, where the list elements are represented
-    /// according to [array_element_type][google.spanner.v1.Type.array_element_type].
+    /// according to
+    /// [array_element_type][google.spanner.v1.Type.array_element_type].
     /// </summary>
     [pbr::OriginalName("ARRAY")] Array = 8,
     /// <summary>
@@ -283,13 +284,13 @@ namespace Google.Cloud.Spanner.V1 {
       }
       if (other.arrayElementType_ != null) {
         if (arrayElementType_ == null) {
-          arrayElementType_ = new global::Google.Cloud.Spanner.V1.Type();
+          ArrayElementType = new global::Google.Cloud.Spanner.V1.Type();
         }
         ArrayElementType.MergeFrom(other.ArrayElementType);
       }
       if (other.structType_ != null) {
         if (structType_ == null) {
-          structType_ = new global::Google.Cloud.Spanner.V1.StructType();
+          StructType = new global::Google.Cloud.Spanner.V1.StructType();
         }
         StructType.MergeFrom(other.StructType);
       }
@@ -305,21 +306,21 @@ namespace Google.Cloud.Spanner.V1 {
             _unknownFields = pb::UnknownFieldSet.MergeFieldFrom(_unknownFields, input);
             break;
           case 8: {
-            code_ = (global::Google.Cloud.Spanner.V1.TypeCode) input.ReadEnum();
+            Code = (global::Google.Cloud.Spanner.V1.TypeCode) input.ReadEnum();
             break;
           }
           case 18: {
             if (arrayElementType_ == null) {
-              arrayElementType_ = new global::Google.Cloud.Spanner.V1.Type();
+              ArrayElementType = new global::Google.Cloud.Spanner.V1.Type();
             }
-            input.ReadMessage(arrayElementType_);
+            input.ReadMessage(ArrayElementType);
             break;
           }
           case 26: {
             if (structType_ == null) {
-              structType_ = new global::Google.Cloud.Spanner.V1.StructType();
+              StructType = new global::Google.Cloud.Spanner.V1.StructType();
             }
-            input.ReadMessage(structType_);
+            input.ReadMessage(StructType);
             break;
           }
         }
@@ -608,7 +609,7 @@ namespace Google.Cloud.Spanner.V1 {
           }
           if (other.type_ != null) {
             if (type_ == null) {
-              type_ = new global::Google.Cloud.Spanner.V1.Type();
+              Type = new global::Google.Cloud.Spanner.V1.Type();
             }
             Type.MergeFrom(other.Type);
           }
@@ -629,9 +630,9 @@ namespace Google.Cloud.Spanner.V1 {
               }
               case 18: {
                 if (type_ == null) {
-                  type_ = new global::Google.Cloud.Spanner.V1.Type();
+                  Type = new global::Google.Cloud.Spanner.V1.Type();
                 }
-                input.ReadMessage(type_);
+                input.ReadMessage(Type);
                 break;
               }
             }

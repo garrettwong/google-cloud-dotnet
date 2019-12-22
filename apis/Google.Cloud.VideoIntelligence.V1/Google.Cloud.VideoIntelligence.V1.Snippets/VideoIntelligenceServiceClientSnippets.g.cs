@@ -1,4 +1,4 @@
-// Copyright 2018 Google LLC
+// Copyright 2019 Google LLC
 //
 // Licensed under the Apache License, Version 2.0 (the "License");
 // you may not use this file except in compliance with the License.
@@ -16,88 +16,45 @@
 
 namespace Google.Cloud.VideoIntelligence.V1.Snippets
 {
-    using Google.Api.Gax;
-    using Google.Api.Gax.Grpc;
-    using apis = Google.Cloud.VideoIntelligence.V1;
     using Google.LongRunning;
     using Google.Protobuf;
-    using Google.Protobuf.WellKnownTypes;
-    using Grpc.Core;
-    using System;
-    using System.Collections;
     using System.Collections.Generic;
-    using System.Collections.ObjectModel;
-    using System.Linq;
-    using System.Threading;
     using System.Threading.Tasks;
 
-    /// <summary>Generated snippets</summary>
-    public class GeneratedVideoIntelligenceServiceClientSnippets
+    /// <summary>Generated snippets.</summary>
+    public sealed class GeneratedVideoIntelligenceServiceClientSnippets
     {
-        /// <summary>Snippet for AnnotateVideoAsync</summary>
-        public async Task AnnotateVideoAsync()
-        {
-            // Snippet: AnnotateVideoAsync(string,IEnumerable<Feature>,CallSettings)
-            // Additional: AnnotateVideoAsync(string,IEnumerable<Feature>,CancellationToken)
-            // Create client
-            VideoIntelligenceServiceClient videoIntelligenceServiceClient = await VideoIntelligenceServiceClient.CreateAsync();
-            // Initialize request argument(s)
-            string inputUri = "gs://demomaker/cat.mp4";
-            IEnumerable<Feature> features = new[]
-            {
-                Feature.LabelDetection,
-            };
-            // Make the request
-            Operation<AnnotateVideoResponse, AnnotateVideoProgress> response =
-                await videoIntelligenceServiceClient.AnnotateVideoAsync(inputUri, features);
-
-            // Poll until the returned long-running operation is complete
-            Operation<AnnotateVideoResponse, AnnotateVideoProgress> completedResponse =
-                await response.PollUntilCompletedAsync();
-            // Retrieve the operation result
-            AnnotateVideoResponse result = completedResponse.Result;
-
-            // Or get the name of the operation
-            string operationName = response.Name;
-            // This name can be stored, then the long-running operation retrieved later by name
-            Operation<AnnotateVideoResponse, AnnotateVideoProgress> retrievedResponse =
-                await videoIntelligenceServiceClient.PollOnceAnnotateVideoAsync(operationName);
-            // Check if the retrieved long-running operation has completed
-            if (retrievedResponse.IsCompleted)
-            {
-                // If it has completed, then access the result
-                AnnotateVideoResponse retrievedResult = retrievedResponse.Result;
-            }
-            // End snippet
-        }
-
         /// <summary>Snippet for AnnotateVideo</summary>
-        public void AnnotateVideo()
+        public void AnnotateVideo_RequestObject()
         {
-            // Snippet: AnnotateVideo(string,IEnumerable<Feature>,CallSettings)
+            // Snippet: AnnotateVideo(AnnotateVideoRequest, CallSettings)
             // Create client
             VideoIntelligenceServiceClient videoIntelligenceServiceClient = VideoIntelligenceServiceClient.Create();
             // Initialize request argument(s)
-            string inputUri = "gs://demomaker/cat.mp4";
-            IEnumerable<Feature> features = new[]
+            AnnotateVideoRequest request = new AnnotateVideoRequest
             {
-                Feature.LabelDetection,
+                InputUri = "",
+                Features =
+                {
+                    Feature.Unspecified,
+                },
+                VideoContext = new VideoContext(),
+                OutputUri = "",
+                LocationId = "",
+                InputContent = ByteString.Empty,
             };
             // Make the request
-            Operation<AnnotateVideoResponse, AnnotateVideoProgress> response =
-                videoIntelligenceServiceClient.AnnotateVideo(inputUri, features);
+            Operation<AnnotateVideoResponse, AnnotateVideoProgress> response = videoIntelligenceServiceClient.AnnotateVideo(request);
 
             // Poll until the returned long-running operation is complete
-            Operation<AnnotateVideoResponse, AnnotateVideoProgress> completedResponse =
-                response.PollUntilCompleted();
+            Operation<AnnotateVideoResponse, AnnotateVideoProgress> completedResponse = response.PollUntilCompleted();
             // Retrieve the operation result
             AnnotateVideoResponse result = completedResponse.Result;
 
             // Or get the name of the operation
             string operationName = response.Name;
             // This name can be stored, then the long-running operation retrieved later by name
-            Operation<AnnotateVideoResponse, AnnotateVideoProgress> retrievedResponse =
-                videoIntelligenceServiceClient.PollOnceAnnotateVideo(operationName);
+            Operation<AnnotateVideoResponse, AnnotateVideoProgress> retrievedResponse = videoIntelligenceServiceClient.PollOnceAnnotateVideo(operationName);
             // Check if the retrieved long-running operation has completed
             if (retrievedResponse.IsCompleted)
             {
@@ -110,32 +67,35 @@ namespace Google.Cloud.VideoIntelligence.V1.Snippets
         /// <summary>Snippet for AnnotateVideoAsync</summary>
         public async Task AnnotateVideoAsync_RequestObject()
         {
-            // Snippet: AnnotateVideoAsync(AnnotateVideoRequest,CallSettings)
+            // Snippet: AnnotateVideoAsync(AnnotateVideoRequest, CallSettings)
+            // Additional: AnnotateVideoAsync(AnnotateVideoRequest, CancellationToken)
             // Create client
             VideoIntelligenceServiceClient videoIntelligenceServiceClient = await VideoIntelligenceServiceClient.CreateAsync();
             // Initialize request argument(s)
             AnnotateVideoRequest request = new AnnotateVideoRequest
             {
-                InputUri = "gs://demomaker/cat.mp4",
-                Features = {
-                               Feature.LabelDetection,
-                           },
+                InputUri = "",
+                Features =
+                {
+                    Feature.Unspecified,
+                },
+                VideoContext = new VideoContext(),
+                OutputUri = "",
+                LocationId = "",
+                InputContent = ByteString.Empty,
             };
             // Make the request
-            Operation<AnnotateVideoResponse, AnnotateVideoProgress> response =
-                await videoIntelligenceServiceClient.AnnotateVideoAsync(request);
+            Operation<AnnotateVideoResponse, AnnotateVideoProgress> response = await videoIntelligenceServiceClient.AnnotateVideoAsync(request);
 
             // Poll until the returned long-running operation is complete
-            Operation<AnnotateVideoResponse, AnnotateVideoProgress> completedResponse =
-                await response.PollUntilCompletedAsync();
+            Operation<AnnotateVideoResponse, AnnotateVideoProgress> completedResponse = await response.PollUntilCompletedAsync();
             // Retrieve the operation result
             AnnotateVideoResponse result = completedResponse.Result;
 
             // Or get the name of the operation
             string operationName = response.Name;
             // This name can be stored, then the long-running operation retrieved later by name
-            Operation<AnnotateVideoResponse, AnnotateVideoProgress> retrievedResponse =
-                await videoIntelligenceServiceClient.PollOnceAnnotateVideoAsync(operationName);
+            Operation<AnnotateVideoResponse, AnnotateVideoProgress> retrievedResponse = await videoIntelligenceServiceClient.PollOnceAnnotateVideoAsync(operationName);
             // Check if the retrieved long-running operation has completed
             if (retrievedResponse.IsCompleted)
             {
@@ -146,34 +106,29 @@ namespace Google.Cloud.VideoIntelligence.V1.Snippets
         }
 
         /// <summary>Snippet for AnnotateVideo</summary>
-        public void AnnotateVideo_RequestObject()
+        public void AnnotateVideo()
         {
-            // Snippet: AnnotateVideo(AnnotateVideoRequest,CallSettings)
+            // Snippet: AnnotateVideo(string, IEnumerable<Feature>, CallSettings)
             // Create client
             VideoIntelligenceServiceClient videoIntelligenceServiceClient = VideoIntelligenceServiceClient.Create();
             // Initialize request argument(s)
-            AnnotateVideoRequest request = new AnnotateVideoRequest
+            string inputUri = "";
+            IEnumerable<Feature> features = new Feature[]
             {
-                InputUri = "gs://demomaker/cat.mp4",
-                Features = {
-                               Feature.LabelDetection,
-                           },
+                Feature.Unspecified,
             };
             // Make the request
-            Operation<AnnotateVideoResponse, AnnotateVideoProgress> response =
-                videoIntelligenceServiceClient.AnnotateVideo(request);
+            Operation<AnnotateVideoResponse, AnnotateVideoProgress> response = videoIntelligenceServiceClient.AnnotateVideo(inputUri, features);
 
             // Poll until the returned long-running operation is complete
-            Operation<AnnotateVideoResponse, AnnotateVideoProgress> completedResponse =
-                response.PollUntilCompleted();
+            Operation<AnnotateVideoResponse, AnnotateVideoProgress> completedResponse = response.PollUntilCompleted();
             // Retrieve the operation result
             AnnotateVideoResponse result = completedResponse.Result;
 
             // Or get the name of the operation
             string operationName = response.Name;
             // This name can be stored, then the long-running operation retrieved later by name
-            Operation<AnnotateVideoResponse, AnnotateVideoProgress> retrievedResponse =
-                videoIntelligenceServiceClient.PollOnceAnnotateVideo(operationName);
+            Operation<AnnotateVideoResponse, AnnotateVideoProgress> retrievedResponse = videoIntelligenceServiceClient.PollOnceAnnotateVideo(operationName);
             // Check if the retrieved long-running operation has completed
             if (retrievedResponse.IsCompleted)
             {
@@ -183,5 +138,38 @@ namespace Google.Cloud.VideoIntelligence.V1.Snippets
             // End snippet
         }
 
+        /// <summary>Snippet for AnnotateVideoAsync</summary>
+        public async Task AnnotateVideoAsync()
+        {
+            // Snippet: AnnotateVideoAsync(string, IEnumerable<Feature>, CallSettings)
+            // Additional: AnnotateVideoAsync(string, IEnumerable<Feature>, CancellationToken)
+            // Create client
+            VideoIntelligenceServiceClient videoIntelligenceServiceClient = await VideoIntelligenceServiceClient.CreateAsync();
+            // Initialize request argument(s)
+            string inputUri = "";
+            IEnumerable<Feature> features = new Feature[]
+            {
+                Feature.Unspecified,
+            };
+            // Make the request
+            Operation<AnnotateVideoResponse, AnnotateVideoProgress> response = await videoIntelligenceServiceClient.AnnotateVideoAsync(inputUri, features);
+
+            // Poll until the returned long-running operation is complete
+            Operation<AnnotateVideoResponse, AnnotateVideoProgress> completedResponse = await response.PollUntilCompletedAsync();
+            // Retrieve the operation result
+            AnnotateVideoResponse result = completedResponse.Result;
+
+            // Or get the name of the operation
+            string operationName = response.Name;
+            // This name can be stored, then the long-running operation retrieved later by name
+            Operation<AnnotateVideoResponse, AnnotateVideoProgress> retrievedResponse = await videoIntelligenceServiceClient.PollOnceAnnotateVideoAsync(operationName);
+            // Check if the retrieved long-running operation has completed
+            if (retrievedResponse.IsCompleted)
+            {
+                // If it has completed, then access the result
+                AnnotateVideoResponse retrievedResult = retrievedResponse.Result;
+            }
+            // End snippet
+        }
     }
 }

@@ -12,15 +12,16 @@
 // See the License for the specific language governing permissions and
 // limitations under the License.
 
-using Google.Cloud.Firestore.V1Beta1;
+using Google.Cloud.Firestore.V1;
 using Google.Protobuf;
 using System;
 using System.Collections.Generic;
 using System.Dynamic;
 using System.Linq;
-using wkt = Google.Protobuf.WellKnownTypes;
-using static Google.Cloud.Firestore.Tests.ProtoHelpers;
 using Xunit;
+using static Google.Cloud.Firestore.Tests.DocumentSnapshotHelpers;
+using static Google.Cloud.Firestore.Tests.ProtoHelpers;
+using wkt = Google.Protobuf.WellKnownTypes;
 
 namespace Google.Cloud.Firestore.Tests
 {
@@ -30,6 +31,7 @@ namespace Google.Cloud.Firestore.Tests
     internal static class SerializationTestData
     {
         internal static FirestoreDb Database { get; } = FirestoreDb.Create("proj", "db", new FakeFirestoreClient());
+        internal static DeserializationContext Context => new DeserializationContext(GetSampleSnapshot(Database, "doc1"));
 
         public static IEnumerable<object[]> BclAndValues { get; } = new List<object[]>
         {
@@ -73,6 +75,27 @@ namespace Google.Cloud.Firestore.Tests
             // We don't cover the whole range of ulong
             { (ulong) 0, new Value { IntegerValue = 0 } },
             { (ulong) long.MaxValue, new Value { IntegerValue = long.MaxValue } },
+
+            // Enum types
+            { ByteEnum.MinValue, new Value { IntegerValue = byte.MinValue } },
+            { ByteEnum.MaxValue, new Value { IntegerValue = byte.MaxValue } },
+            { SByteEnum.MinValue, new Value { IntegerValue = sbyte.MinValue } },
+            { SByteEnum.MaxValue, new Value { IntegerValue = sbyte.MaxValue } },
+            { Int16Enum.MinValue, new Value { IntegerValue = short.MinValue } },
+            { Int16Enum.MaxValue, new Value { IntegerValue = short.MaxValue } },
+            { UInt16Enum.MinValue, new Value { IntegerValue = ushort.MinValue } },
+            { UInt16Enum.MaxValue, new Value { IntegerValue = ushort.MaxValue } },
+            { Int32Enum.MinValue, new Value { IntegerValue = int.MinValue } },
+            { Int32Enum.MaxValue, new Value { IntegerValue = int.MaxValue } },
+            { UInt32Enum.MinValue, new Value { IntegerValue = uint.MinValue } },
+            { UInt32Enum.MaxValue, new Value { IntegerValue = uint.MaxValue } },
+            { Int64Enum.MinValue, new Value { IntegerValue = long.MinValue } },
+            { Int64Enum.MaxValue, new Value { IntegerValue = long.MaxValue } },
+            // We don't cover the whole range of ulong
+            { UInt64Enum.MinValue, new Value { IntegerValue = 0 } },
+            { UInt64Enum.MaxRepresentableValue, new Value { IntegerValue = long.MaxValue } },
+            { CustomConversionEnum.Foo, new Value { StringValue = "Foo" } },
+            { CustomConversionEnum.Bar, new Value { StringValue = "Bar" } },
             
             // Timestamps
             { new Timestamp(1, 500),
@@ -109,28 +132,65 @@ namespace Google.Cloud.Firestore.Tests
             { new List<ByteString> { ByteString.CopyFromUtf8("abc"), ByteString.CopyFromUtf8("def") },
                 new Value { ArrayValue = new ArrayValue { Values = { new Value { BytesValue = ByteString.CopyFromUtf8("abc") }, new Value { BytesValue = ByteString.CopyFromUtf8("def") } } } } },
 
-            // Map values (that can be deserialized again): dictionaries, attributed types, expandos (which are just dictionaries)
+            // Map values (that can be deserialized again): dictionaries, attributed types, expandos (which are just dictionaries), custom serialized map-like values
+
+            // Dictionaries
             { new Dictionary<string, object> { { "name", "Jon" }, { "score", 10L } },
                 new Value { MapValue = new MapValue { Fields = { { "name", new Value { StringValue = "Jon" } }, { "score", new Value { IntegerValue = 10L } } } } } },
             { new Dictionary<string, int> { { "A", 10 }, { "B", 20 } },
                 new Value { MapValue = new MapValue { Fields = { { "A", new Value { IntegerValue = 10L } }, { "B", new Value { IntegerValue = 20L } } } } } },
+            // Attributed type (each property has an attribute)
             { new GameResult { Name = "Jon", Score = 10 },
                 new Value { MapValue = new MapValue { Fields = { { "name", new Value { StringValue = "Jon" } }, { "Score", new Value { IntegerValue = 10L } } } } } },
+            // ExpandoObject (a dictionary)
             { () => { dynamic d = new ExpandoObject(); d.name = "Jon"; d.score = 10L; return d; },
                 new Value { MapValue = new MapValue { Fields = { { "name", new Value { StringValue = "Jon" } }, { "score", new Value { IntegerValue = 10L } } } } } },
+            // Attributed type containing a dictionary
             { new DictionaryInterfaceContainer { Integers = new Dictionary<string, int> { { "A", 10 }, { "B", 20 } } },
                 new Value { MapValue = new MapValue { Fields =
                     { { "Integers", new Value { MapValue = new MapValue { Fields = { { "A", new Value { IntegerValue = 10L } }, { "B", new Value { IntegerValue = 20L } } } } } } }
                 } } },
+            // Attributed type serialized and deserialized by CustomPlayerConverter
+            { new CustomPlayer { Name = "Amanda", Score = 15 },
+                new Value { MapValue = new MapValue { Fields = { { "PlayerName", new Value { StringValue = "Amanda" } }, { "PlayerScore", new Value { IntegerValue = 15L } } } } } },
+
+            // Attributed value type serialized and deserialized by CustomValueTypeConverter
+            { new CustomValueType("xyz", 10),
+                new Value { MapValue = new MapValue { Fields = { { "Name", new Value { StringValue = "xyz" } }, { "Value", new Value { IntegerValue = 10L } } } } } },
+
+            // Attributed type with enums (name and number)
+            { new ModelWithEnums { EnumDefaultByName = CustomConversionEnum.Foo, EnumAttributedByName = Int32Enum.MinValue, EnumByNumber = Int32Enum.MaxValue },
+                new Value { MapValue = new MapValue {
+                    Fields = {
+                        { "EnumDefaultByName", new Value { StringValue = "Foo" } },
+                        { "EnumAttributedByName", new Value { StringValue = "MinValue" } },
+                        { "EnumByNumber", new Value { IntegerValue = int.MaxValue } }
+                    } } } },
+
+            // Attributed struct
+            { new StructModel { Name = "xyz", Value = 10 },
+                new Value { MapValue = new MapValue { Fields = { { "Name", new Value { StringValue = "xyz" } }, { "Value", new Value { IntegerValue = 10L } } } } } },
+
             // Nullable type handling
             { new NullableContainer { NullableValue = null },
                 new Value { MapValue = new MapValue { Fields = { { "NullableValue", new Value { NullValue = wkt::NullValue.NullValue } } } } } },
             { new NullableContainer { NullableValue = 10 },
                 new Value { MapValue = new MapValue { Fields = { { "NullableValue", new Value { IntegerValue = 10L } } } } } },
+            { new NullableEnumContainer { NullableValue = null },
+                new Value { MapValue = new MapValue { Fields = { { "NullableValue", new Value { NullValue = wkt::NullValue.NullValue } } } } } },
+            { new NullableEnumContainer { NullableValue = (Int32Enum) 10 },
+                new Value { MapValue = new MapValue { Fields = { { "NullableValue", new Value { IntegerValue = 10L } } } } } },
 
             // Document references
             { Database.Document("a/b"),
                 new Value { ReferenceValue = "projects/proj/databases/db/documents/a/b" } },
+
+            // Tuple support
+            { new TupleModel { PlayerName = ("F", "M", "L"), HighScore = (500, 10) },
+                new Value { MapValue = new MapValue { Fields = {
+                        { "PlayerName", new Value { MapValue = new MapValue { Fields = { { "first", new Value { StringValue = "F" } }, { "middle", new Value { StringValue = "M" } }, { "last", new Value { StringValue = "L" } } } } } },
+                        { "HighScore", new Value { MapValue = new MapValue { Fields = { { "score", new Value { IntegerValue = 500 } }, { "level", new Value { IntegerValue = 10 } } } } } }
+            } } } }
         };
 
         public static TheoryData<IMessage, Func<Value, IMessage>> ProtoValues { get; } = new TheoryData<IMessage, Func<Value, IMessage>>
@@ -162,11 +222,24 @@ namespace Google.Cloud.Firestore.Tests
             [FirestoreProperty]
             public int? NullableValue { get; set; }
 
-            public override int GetHashCode() => NullableValue ?? 0;
+            public override int GetHashCode() => NullableValue.GetValueOrDefault();
 
             public override bool Equals(object obj) => Equals(obj as NullableContainer);
 
             public bool Equals(NullableContainer other) => other != null && other.NullableValue == NullableValue;
+        }
+
+        [FirestoreData]
+        internal class NullableEnumContainer : IEquatable<NullableEnumContainer>
+        {
+            [FirestoreProperty]
+            public Int32Enum? NullableValue { get; set; }
+
+            public override int GetHashCode() => (int) NullableValue.GetValueOrDefault();
+
+            public override bool Equals(object obj) => Equals(obj as NullableEnumContainer);
+
+            public bool Equals(NullableEnumContainer other) => other != null && other.NullableValue == NullableValue;
         }
 
         [FirestoreData]
@@ -200,5 +273,257 @@ namespace Google.Cloud.Firestore.Tests
                 return Integers.All(pair => other.Integers.TryGetValue(pair.Key, out var otherValue) && pair.Value == otherValue);
             }
         }
+
+        internal enum SByteEnum : sbyte
+        {
+            MinValue = sbyte.MinValue,
+            MaxValue = sbyte.MaxValue
+        }
+
+        internal enum Int16Enum : short
+        {
+            MinValue = short.MinValue,
+            MaxValue = short.MaxValue
+        }
+
+        internal enum Int32Enum : int
+        {
+            MinValue = int.MinValue,
+            MaxValue = int.MaxValue
+        }
+
+        internal enum Int64Enum : long
+        {
+            MinValue = long.MinValue,
+            MaxValue = long.MaxValue
+        }
+
+        internal enum ByteEnum : byte
+        {
+            MinValue = byte.MinValue,
+            MaxValue = byte.MaxValue
+        }
+
+        internal enum UInt16Enum : ushort
+        {
+            MinValue = ushort.MinValue,
+            MaxValue = ushort.MaxValue
+        }
+
+        internal enum UInt32Enum : uint
+        {
+            MinValue = uint.MinValue,
+            MaxValue = uint.MaxValue
+        }
+
+        internal enum UInt64Enum : ulong
+        {
+            MinValue = ulong.MinValue,
+            MaxRepresentableValue = long.MaxValue
+        }
+
+        [FirestoreData(ConverterType = typeof(FirestoreEnumNameConverter<CustomConversionEnum>))]
+        internal enum CustomConversionEnum
+        {
+            Foo = 1,
+            Bar = 2
+        }
+
+        [FirestoreData]
+        public sealed class ModelWithEnums
+        {
+            [FirestoreProperty]
+            public CustomConversionEnum EnumDefaultByName { get; set; }
+
+            [FirestoreProperty(ConverterType = typeof(FirestoreEnumNameConverter<Int32Enum>))]
+            public Int32Enum EnumAttributedByName { get; set; }
+
+            [FirestoreProperty]
+            public Int32Enum EnumByNumber { get; set; }
+
+            public override bool Equals(object obj) => obj is ModelWithEnums other &&
+                EnumDefaultByName == other.EnumDefaultByName &&
+                EnumAttributedByName == other.EnumAttributedByName &&
+                EnumByNumber == other.EnumByNumber;
+
+            public override int GetHashCode() => 0;
+        }
+
+        [FirestoreData]
+        public sealed class CustomUser
+        {
+            [FirestoreProperty]
+            public int HighScore { get; set; }
+            [FirestoreProperty]
+            public string Name { get; set; }
+            [FirestoreProperty]
+            public Email Email { get; set; }
+        }
+
+        [FirestoreData(ConverterType = typeof(EmailConverter))]
+        public sealed class Email
+        {
+            public string Address { get; }
+            public Email(string address) => Address = address;
+        }
+
+        public class EmailConverter : IFirestoreConverter<Email>
+        {
+            public Email FromFirestore(object value)
+            {
+                switch (value)
+                {
+                    case null: throw new ArgumentNullException(nameof(value)); // Shouldn't happen
+                    case string address: return new Email(address);
+                    default: throw new ArgumentException($"Unexpected data: {value.GetType()}");
+                }
+            }
+            public object ToFirestore(Email value) => value?.Address;
+        }
+
+        [FirestoreData]
+        public class GuidPair
+        {
+            [FirestoreProperty]
+            public string Name { get; set; }
+
+            [FirestoreProperty(ConverterType = typeof(GuidConverter))]
+            public Guid Guid { get; set; }
+
+            [FirestoreProperty(ConverterType = typeof(GuidConverter))]
+            public Guid? GuidOrNull { get; set; }
+        }
+
+        // Like GuidPair, but without the converter specified - it has to come
+        // from a converter registry instead.
+        [FirestoreData]
+        public class GuidPair2
+        {
+            [FirestoreProperty]
+            public string Name { get; set; }
+
+            [FirestoreProperty]
+            public Guid Guid { get; set; }
+
+            [FirestoreProperty]
+            public Guid? GuidOrNull { get; set; }
+        }
+
+        public class GuidConverter : IFirestoreConverter<Guid>
+        {
+            public Guid FromFirestore(object value)
+            {
+                switch (value)
+                {
+                    case null: throw new ArgumentNullException(nameof(value)); // Shouldn't happen
+                    case string guid: return Guid.ParseExact(guid, "N");
+                    default: throw new ArgumentException($"Unexpected data: {value.GetType()}");
+                }
+            }
+            public object ToFirestore(Guid value) => value.ToString("N");
+        }
+
+        // Only equatable for the sake of testing; that's not a requirement of the serialization code.
+        [FirestoreData(ConverterType = typeof(CustomPlayerConverter))]
+        public class CustomPlayer : IEquatable<CustomPlayer>
+        {
+            public string Name { get; set; }
+            public int Score { get; set; }
+
+            public override int GetHashCode() => Name.GetHashCode() ^ Score;
+            public override bool Equals(object obj) => Equals(obj as CustomPlayer);        
+            public bool Equals(CustomPlayer other) => other != null && other.Name == Name && other.Score == Score;
+        }
+
+        public class CustomPlayerConverter : IFirestoreConverter<CustomPlayer>
+        {
+            public CustomPlayer FromFirestore(object value)
+            {
+                var map = (IDictionary<string, object>) value;
+                return new CustomPlayer
+                {
+                    Name = (string) map["PlayerName"],
+                    // Unbox to long, then convert to int.
+                    Score = (int) (long) map["PlayerScore"]
+                };
+            }
+
+            public object ToFirestore(CustomPlayer value) =>
+                new Dictionary<string, object>
+                {
+                    ["PlayerName"] = value.Name,
+                    ["PlayerScore"] = value.Score
+                };
+        }
+
+        [FirestoreData(ConverterType = typeof(CustomValueTypeConverter))]
+        internal struct CustomValueType : IEquatable<CustomValueType>
+        {
+            public string Name { get; }
+            public int Value { get; }
+
+            public CustomValueType(string name, int value)
+            {
+                Name = name;
+                Value = value;
+            }
+
+            public override int GetHashCode() => Name.GetHashCode() + Value;
+            public override bool Equals(object obj) => obj is CustomValueType other && Equals(other);
+            public bool Equals(CustomValueType other) => Name == other.Name && Value == other.Value;
+            public override string ToString() => $"{nameof(CustomValueType)}: { new { Name, Value } }";
+        }
+
+        internal class CustomValueTypeConverter : IFirestoreConverter<CustomValueType>
+        {
+            public CustomValueType FromFirestore(object value)
+            {
+                var dictionary = (IDictionary<string, object>)value;
+                return new CustomValueType(
+                    (string)dictionary["Name"],
+                    (int)(long)dictionary["Value"]
+                );
+            }
+
+            public object ToFirestore(CustomValueType value) =>
+                new Dictionary<string, object>
+                {
+                    ["Name"] = value.Name,
+                    ["Value"] = value.Value
+                };
+        }
+
+        [FirestoreData]
+        internal struct StructModel : IEquatable<StructModel>
+        {
+            [FirestoreProperty]
+            public string Name { get; set; }
+            [FirestoreProperty]
+            public int Value { get; set; }
+
+            public override int GetHashCode() => Name.GetHashCode() + Value;
+            public override bool Equals(object obj) => obj is StructModel other && Equals(other);
+            public bool Equals(StructModel other) => Name == other.Name && Value == other.Value;
+
+            public override string ToString() => $"{nameof(StructModel)}: { new { Name, Value } }";
+        }
+
+        [FirestoreData]
+        private class TupleModel : IEquatable<TupleModel>
+        {
+            [FirestoreProperty]
+            public (int score, int level) HighScore { get; set; }
+
+            [FirestoreProperty]
+            public (string first, string middle, string last) PlayerName { get; set; }
+
+            public override bool Equals(object obj) => Equals(obj as TupleModel);
+
+            public override int GetHashCode() => HighScore.GetHashCode() ^ PlayerName.GetHashCode();
+
+            public bool Equals(TupleModel other) =>
+                HighScore == other.HighScore && PlayerName == other.PlayerName;
+        }
+
     }
 }

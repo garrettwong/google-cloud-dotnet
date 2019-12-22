@@ -15,10 +15,7 @@
 using Google.Cloud.ClientTesting;
 using Google.Cloud.Spanner.Data.CommonTesting;
 using System;
-using System.Collections.Generic;
-using System.Text;
 using System.Threading;
-using Xunit.Abstractions;
 
 namespace Google.Cloud.Spanner.Data.IntegrationTests
 {
@@ -60,7 +57,7 @@ namespace Google.Cloud.Spanner.Data.IntegrationTests
                 var valueParameter = command.Parameters.Add("StringValue", SpannerDbType.String);
 
                 // 1st update with TestKey
-                RetryHelpers.RetryOnce(() =>
+                RetryHelpers.ExecuteWithRetry(() =>
                 {
                     using (var tx = connection.BeginTransaction())
                     {
@@ -68,14 +65,14 @@ namespace Google.Cloud.Spanner.Data.IntegrationTests
                         valueParameter.Value = IdGenerator.FromGuid();
                         command.ExecuteNonQuery();
                         tx.Commit(out var timestamp);
-                        oldest = new HistoryEntry((string)valueParameter.Value, timestamp.Value);
+                        oldest = new HistoryEntry((string)valueParameter.Value, timestamp);
                     }
                 });
 
                 Thread.Sleep(250);
 
                 // 2nd update
-                RetryHelpers.RetryOnce(() =>
+                RetryHelpers.ExecuteWithRetry(() =>
                 {
                     using (var tx = connection.BeginTransaction())
                     {
@@ -90,7 +87,7 @@ namespace Google.Cloud.Spanner.Data.IntegrationTests
                 Thread.Sleep(250);
 
                 // 3rd update
-                RetryHelpers.RetryOnce(() =>
+                RetryHelpers.ExecuteWithRetry(() =>
                 {
                     using (var tx = connection.BeginTransaction())
                     {
@@ -98,7 +95,7 @@ namespace Google.Cloud.Spanner.Data.IntegrationTests
                         valueParameter.Value = IdGenerator.FromGuid();
                         command.ExecuteNonQuery();
                         tx.Commit(out var timestamp);
-                        newest = new HistoryEntry((string)valueParameter.Value, timestamp.Value);
+                        newest = new HistoryEntry((string)valueParameter.Value, timestamp);
                     }
                 });
 

@@ -19,6 +19,7 @@ using System.Collections.Generic;
 using System.IO;
 using System.Linq;
 using System.Text;
+using System.Threading.Tasks;
 using Xunit;
 
 namespace Google.Cloud.BigQuery.V2.IntegrationTests
@@ -491,6 +492,34 @@ namespace Google.Cloud.BigQuery.V2.IntegrationTests
             Assert.Null(page3.NextPageToken);
         }
 
+        [Fact]
+        public async Task MultiplePagesAsyncWithStartIndex()
+        {
+            // We create the client using our user, but then access a dataset in a public data
+            // project. We can't run a query "as" the public data project.
+            var projectId = _fixture.ProjectId;
+            var client = BigQueryClient.Create(projectId);
+            var table = client.GetTable(PublicDatasetsProject, PublicDatasetsDataset, ShakespeareTable);
+
+            var sql = $"SELECT corpus as title, COUNT(word) as unique_words FROM {table} GROUP BY title ORDER BY unique_words DESC LIMIT 20";
+            var results = await client.ExecuteQueryAsync(sql, parameters: null, resultsOptions: new GetQueryResultsOptions { PageSize = 5, StartIndex = 7 });
+            // Iterate over multiple pages automatically to get all results. The query has 20 results, but
+            // we're asking to start at index 7, so we actually see 13.
+            var rows = await results.GetRowsAsync().ToList();
+            Assert.Equal(13, rows.Count);
+
+            // Now try getting one page at a time, in the same way we would if we were in a web application.
+            var page1 = await results.ReadPageAsync(5);
+            var page2 = await client.GetQueryResults(results.JobReference, new GetQueryResultsOptions { PageToken = page1.NextPageToken }).ReadPageAsync(5);
+            var page3 = await client.GetQueryResults(results.JobReference, new GetQueryResultsOptions { PageToken = page2.NextPageToken }).ReadPageAsync(5);
+
+            var titleComparer = new TitleComparer();
+            Assert.Equal(rows.Take(5), page1.Rows, titleComparer);
+            Assert.Equal(rows.Skip(5).Take(5), page2.Rows, titleComparer);
+            Assert.Equal(rows.Skip(10).Take(5), page3.Rows, titleComparer);
+            Assert.Null(page3.NextPageToken);
+        }
+
         /// <summary>
         /// Creates a table associated with a CSV file on Google Cloud Storage, which has some invalid data.
         /// A query on that table can provide the valid data but still have errors.
@@ -620,6 +649,72 @@ namespace Google.Cloud.BigQuery.V2.IntegrationTests
 
             // Viewing the job as a query, there aren't any results.
             Assert.Empty(job.GetQueryResults());
+        }
+
+        [Fact]
+        public void DmlQuery()
+        {
+            var client = BigQueryClient.Create(_fixture.ProjectId);
+            var dataset = client.GetDataset(_fixture.DatasetId);
+            var table = dataset.GetTable(_fixture.HighScoreTableId);
+
+            var parameters = new[]
+            {
+                new BigQueryParameter("player", BigQueryDbType.String, "karen"),
+                new BigQueryParameter("gameStarted", BigQueryDbType.Timestamp, new DateTime(2005, 1, 1, 0, 0, 0, DateTimeKind.Utc)),
+                new BigQueryParameter("score", BigQueryDbType.Int64, 300)
+            };
+            var results = client.ExecuteQuery(
+                $"INSERT INTO {table} (player, gameStarted, score) VALUES (@player, @gameStarted, @score)",
+                parameters)
+                .ThrowOnAnyError();
+            Assert.Null(results.SafeTotalRows);
+            Assert.Equal(1, results.NumDmlAffectedRows);
+
+            // This used to query the whole table; now it returns empty results (as we're using GetQueryResults rather than ListRows).
+            Assert.Empty(results);
+        }
+
+        [Fact]
+        public void ScriptQuery()
+        {
+            var client = BigQueryClient.Create(_fixture.ProjectId);
+
+            string sql = "DECLARE accumulator INT64 DEFAULT 5; SELECT accumulator;";
+            var results = client.ExecuteQuery(sql, null).ThrowOnAnyError();
+
+            Assert.True(results.SafeTotalRows.HasValue);
+            Assert.Equal<ulong>(1, results.SafeTotalRows.Value);
+
+            var row = results.Single();
+            Assert.Equal((long)5, row[0]);
+        }
+
+        [Fact]
+        public void GisQuery()
+        {
+            var client = BigQueryClient.Create(_fixture.ProjectId);
+
+            string sql = @"SELECT ST_GeogPoint(longitude, latitude) AS WKT, num_bikes_available
+                           FROM `bigquery-public-data.new_york.citibike_stations`
+                           WHERE num_bikes_available > 30
+                           LIMIT 10";
+            var results = client.ExecuteQuery(sql, parameters: null);
+            foreach (var row in results)
+            {
+                var geography = (BigQueryGeography) row["WKT"];
+                Assert.StartsWith("POINT", geography.Text);
+            }
+        }
+
+        [Fact]
+        public void EarlyDate()
+        {
+            var client = BigQueryClient.Create(_fixture.ProjectId);
+            var results = client.ExecuteQuery("SELECT DATE '0001-01-01' AS x", null);
+            var rows = results.ToList();
+            var row = Assert.Single(rows);
+            Assert.Equal(DateTime.MinValue, (DateTime) row["x"]);
         }
 
         private class TitleComparer : IEqualityComparer<BigQueryRow>

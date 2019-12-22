@@ -25,63 +25,73 @@ namespace Google.Cloud.Debugger.V2 {
       byte[] descriptorData = global::System.Convert.FromBase64String(
           string.Concat(
             "Ci9nb29nbGUvZGV2dG9vbHMvY2xvdWRkZWJ1Z2dlci92Mi9kZWJ1Z2dlci5w",
-            "cm90bxIgZ29vZ2xlLmRldnRvb2xzLmNsb3VkZGVidWdnZXIudjIaHGdvb2ds",
-            "ZS9hcGkvYW5ub3RhdGlvbnMucHJvdG8aK2dvb2dsZS9kZXZ0b29scy9jbG91",
-            "ZGRlYnVnZ2VyL3YyL2RhdGEucHJvdG8aG2dvb2dsZS9wcm90b2J1Zi9lbXB0",
-            "eS5wcm90byKFAQoUU2V0QnJlYWtwb2ludFJlcXVlc3QSEwoLZGVidWdnZWVf",
-            "aWQYASABKAkSQAoKYnJlYWtwb2ludBgCIAEoCzIsLmdvb2dsZS5kZXZ0b29s",
-            "cy5jbG91ZGRlYnVnZ2VyLnYyLkJyZWFrcG9pbnQSFgoOY2xpZW50X3ZlcnNp",
-            "b24YBCABKAkiWQoVU2V0QnJlYWtwb2ludFJlc3BvbnNlEkAKCmJyZWFrcG9p",
-            "bnQYASABKAsyLC5nb29nbGUuZGV2dG9vbHMuY2xvdWRkZWJ1Z2dlci52Mi5C",
-            "cmVha3BvaW50IloKFEdldEJyZWFrcG9pbnRSZXF1ZXN0EhMKC2RlYnVnZ2Vl",
-            "X2lkGAEgASgJEhUKDWJyZWFrcG9pbnRfaWQYAiABKAkSFgoOY2xpZW50X3Zl",
-            "cnNpb24YBCABKAkiWQoVR2V0QnJlYWtwb2ludFJlc3BvbnNlEkAKCmJyZWFr",
-            "cG9pbnQYASABKAsyLC5nb29nbGUuZGV2dG9vbHMuY2xvdWRkZWJ1Z2dlci52",
-            "Mi5CcmVha3BvaW50Il0KF0RlbGV0ZUJyZWFrcG9pbnRSZXF1ZXN0EhMKC2Rl",
-            "YnVnZ2VlX2lkGAEgASgJEhUKDWJyZWFrcG9pbnRfaWQYAiABKAkSFgoOY2xp",
-            "ZW50X3ZlcnNpb24YAyABKAki4gIKFkxpc3RCcmVha3BvaW50c1JlcXVlc3QS",
-            "EwoLZGVidWdnZWVfaWQYASABKAkSGQoRaW5jbHVkZV9hbGxfdXNlcnMYAiAB",
-            "KAgSGAoQaW5jbHVkZV9pbmFjdGl2ZRgDIAEoCBJeCgZhY3Rpb24YBCABKAsy",
-            "Ti5nb29nbGUuZGV2dG9vbHMuY2xvdWRkZWJ1Z2dlci52Mi5MaXN0QnJlYWtw",
-            "b2ludHNSZXF1ZXN0LkJyZWFrcG9pbnRBY3Rpb25WYWx1ZRIVCg1zdHJpcF9y",
-            "ZXN1bHRzGAUgASgIEhIKCndhaXRfdG9rZW4YBiABKAkSFgoOY2xpZW50X3Zl",
-            "cnNpb24YCCABKAkaWwoVQnJlYWtwb2ludEFjdGlvblZhbHVlEkIKBXZhbHVl",
-            "GAEgASgOMjMuZ29vZ2xlLmRldnRvb2xzLmNsb3VkZGVidWdnZXIudjIuQnJl",
-            "YWtwb2ludC5BY3Rpb24idQoXTGlzdEJyZWFrcG9pbnRzUmVzcG9uc2USQQoL",
-            "YnJlYWtwb2ludHMYASADKAsyLC5nb29nbGUuZGV2dG9vbHMuY2xvdWRkZWJ1",
-            "Z2dlci52Mi5CcmVha3BvaW50EhcKD25leHRfd2FpdF90b2tlbhgCIAEoCSJZ",
-            "ChRMaXN0RGVidWdnZWVzUmVxdWVzdBIPCgdwcm9qZWN0GAIgASgJEhgKEGlu",
-            "Y2x1ZGVfaW5hY3RpdmUYAyABKAgSFgoOY2xpZW50X3ZlcnNpb24YBCABKAki",
-            "VgoVTGlzdERlYnVnZ2Vlc1Jlc3BvbnNlEj0KCWRlYnVnZ2VlcxgBIAMoCzIq",
-            "Lmdvb2dsZS5kZXZ0b29scy5jbG91ZGRlYnVnZ2VyLnYyLkRlYnVnZ2VlMr0H",
-            "CglEZWJ1Z2dlcjISygEKDVNldEJyZWFrcG9pbnQSNi5nb29nbGUuZGV2dG9v",
-            "bHMuY2xvdWRkZWJ1Z2dlci52Mi5TZXRCcmVha3BvaW50UmVxdWVzdBo3Lmdv",
-            "b2dsZS5kZXZ0b29scy5jbG91ZGRlYnVnZ2VyLnYyLlNldEJyZWFrcG9pbnRS",
-            "ZXNwb25zZSJIgtPkkwJCIjQvdjIvZGVidWdnZXIvZGVidWdnZWVzL3tkZWJ1",
-            "Z2dlZV9pZH0vYnJlYWtwb2ludHMvc2V0OgpicmVha3BvaW50EsoBCg1HZXRC",
-            "cmVha3BvaW50EjYuZ29vZ2xlLmRldnRvb2xzLmNsb3VkZGVidWdnZXIudjIu",
-            "R2V0QnJlYWtwb2ludFJlcXVlc3QaNy5nb29nbGUuZGV2dG9vbHMuY2xvdWRk",
-            "ZWJ1Z2dlci52Mi5HZXRCcmVha3BvaW50UmVzcG9uc2UiSILT5JMCQhJAL3Yy",
-            "L2RlYnVnZ2VyL2RlYnVnZ2Vlcy97ZGVidWdnZWVfaWR9L2JyZWFrcG9pbnRz",
-            "L3ticmVha3BvaW50X2lkfRKvAQoQRGVsZXRlQnJlYWtwb2ludBI5Lmdvb2ds",
-            "ZS5kZXZ0b29scy5jbG91ZGRlYnVnZ2VyLnYyLkRlbGV0ZUJyZWFrcG9pbnRS",
-            "ZXF1ZXN0GhYuZ29vZ2xlLnByb3RvYnVmLkVtcHR5IkiC0+STAkIqQC92Mi9k",
-            "ZWJ1Z2dlci9kZWJ1Z2dlZXMve2RlYnVnZ2VlX2lkfS9icmVha3BvaW50cy97",
-            "YnJlYWtwb2ludF9pZH0SwAEKD0xpc3RCcmVha3BvaW50cxI4Lmdvb2dsZS5k",
-            "ZXZ0b29scy5jbG91ZGRlYnVnZ2VyLnYyLkxpc3RCcmVha3BvaW50c1JlcXVl",
-            "c3QaOS5nb29nbGUuZGV2dG9vbHMuY2xvdWRkZWJ1Z2dlci52Mi5MaXN0QnJl",
-            "YWtwb2ludHNSZXNwb25zZSI4gtPkkwIyEjAvdjIvZGVidWdnZXIvZGVidWdn",
-            "ZWVzL3tkZWJ1Z2dlZV9pZH0vYnJlYWtwb2ludHMSoAEKDUxpc3REZWJ1Z2dl",
-            "ZXMSNi5nb29nbGUuZGV2dG9vbHMuY2xvdWRkZWJ1Z2dlci52Mi5MaXN0RGVi",
-            "dWdnZWVzUmVxdWVzdBo3Lmdvb2dsZS5kZXZ0b29scy5jbG91ZGRlYnVnZ2Vy",
-            "LnYyLkxpc3REZWJ1Z2dlZXNSZXNwb25zZSIegtPkkwIYEhYvdjIvZGVidWdn",
-            "ZXIvZGVidWdnZWVzQrwBCiRjb20uZ29vZ2xlLmRldnRvb2xzLmNsb3VkZGVi",
-            "dWdnZXIudjJCDURlYnVnZ2VyUHJvdG9QAVpNZ29vZ2xlLmdvbGFuZy5vcmcv",
-            "Z2VucHJvdG8vZ29vZ2xlYXBpcy9kZXZ0b29scy9jbG91ZGRlYnVnZ2VyL3Yy",
-            "O2Nsb3VkZGVidWdnZXKqAhhHb29nbGUuQ2xvdWQuRGVidWdnZXIuVjLKAhhH",
-            "b29nbGVcQ2xvdWRcRGVidWdnZXJcVjJiBnByb3RvMw=="));
+            "cm90bxIgZ29vZ2xlLmRldnRvb2xzLmNsb3VkZGVidWdnZXIudjIaF2dvb2ds",
+            "ZS9hcGkvY2xpZW50LnByb3RvGh9nb29nbGUvYXBpL2ZpZWxkX2JlaGF2aW9y",
+            "LnByb3RvGitnb29nbGUvZGV2dG9vbHMvY2xvdWRkZWJ1Z2dlci92Mi9kYXRh",
+            "LnByb3RvGhtnb29nbGUvcHJvdG9idWYvZW1wdHkucHJvdG8aHGdvb2dsZS9h",
+            "cGkvYW5ub3RhdGlvbnMucHJvdG8ilAEKFFNldEJyZWFrcG9pbnRSZXF1ZXN0",
+            "EhgKC2RlYnVnZ2VlX2lkGAEgASgJQgPgQQISRQoKYnJlYWtwb2ludBgCIAEo",
+            "CzIsLmdvb2dsZS5kZXZ0b29scy5jbG91ZGRlYnVnZ2VyLnYyLkJyZWFrcG9p",
+            "bnRCA+BBAhIbCg5jbGllbnRfdmVyc2lvbhgEIAEoCUID4EECIlkKFVNldEJy",
+            "ZWFrcG9pbnRSZXNwb25zZRJACgpicmVha3BvaW50GAEgASgLMiwuZ29vZ2xl",
+            "LmRldnRvb2xzLmNsb3VkZGVidWdnZXIudjIuQnJlYWtwb2ludCJpChRHZXRC",
+            "cmVha3BvaW50UmVxdWVzdBIYCgtkZWJ1Z2dlZV9pZBgBIAEoCUID4EECEhoK",
+            "DWJyZWFrcG9pbnRfaWQYAiABKAlCA+BBAhIbCg5jbGllbnRfdmVyc2lvbhgE",
+            "IAEoCUID4EECIlkKFUdldEJyZWFrcG9pbnRSZXNwb25zZRJACgpicmVha3Bv",
+            "aW50GAEgASgLMiwuZ29vZ2xlLmRldnRvb2xzLmNsb3VkZGVidWdnZXIudjIu",
+            "QnJlYWtwb2ludCJsChdEZWxldGVCcmVha3BvaW50UmVxdWVzdBIYCgtkZWJ1",
+            "Z2dlZV9pZBgBIAEoCUID4EECEhoKDWJyZWFrcG9pbnRfaWQYAiABKAlCA+BB",
+            "AhIbCg5jbGllbnRfdmVyc2lvbhgDIAEoCUID4EECIvACChZMaXN0QnJlYWtw",
+            "b2ludHNSZXF1ZXN0EhgKC2RlYnVnZ2VlX2lkGAEgASgJQgPgQQISGQoRaW5j",
+            "bHVkZV9hbGxfdXNlcnMYAiABKAgSGAoQaW5jbHVkZV9pbmFjdGl2ZRgDIAEo",
+            "CBJeCgZhY3Rpb24YBCABKAsyTi5nb29nbGUuZGV2dG9vbHMuY2xvdWRkZWJ1",
+            "Z2dlci52Mi5MaXN0QnJlYWtwb2ludHNSZXF1ZXN0LkJyZWFrcG9pbnRBY3Rp",
+            "b25WYWx1ZRIZCg1zdHJpcF9yZXN1bHRzGAUgASgIQgIYARISCgp3YWl0X3Rv",
+            "a2VuGAYgASgJEhsKDmNsaWVudF92ZXJzaW9uGAggASgJQgPgQQIaWwoVQnJl",
+            "YWtwb2ludEFjdGlvblZhbHVlEkIKBXZhbHVlGAEgASgOMjMuZ29vZ2xlLmRl",
+            "dnRvb2xzLmNsb3VkZGVidWdnZXIudjIuQnJlYWtwb2ludC5BY3Rpb24idQoX",
+            "TGlzdEJyZWFrcG9pbnRzUmVzcG9uc2USQQoLYnJlYWtwb2ludHMYASADKAsy",
+            "LC5nb29nbGUuZGV2dG9vbHMuY2xvdWRkZWJ1Z2dlci52Mi5CcmVha3BvaW50",
+            "EhcKD25leHRfd2FpdF90b2tlbhgCIAEoCSJjChRMaXN0RGVidWdnZWVzUmVx",
+            "dWVzdBIUCgdwcm9qZWN0GAIgASgJQgPgQQISGAoQaW5jbHVkZV9pbmFjdGl2",
+            "ZRgDIAEoCBIbCg5jbGllbnRfdmVyc2lvbhgEIAEoCUID4EECIlYKFUxpc3RE",
+            "ZWJ1Z2dlZXNSZXNwb25zZRI9CglkZWJ1Z2dlZXMYASADKAsyKi5nb29nbGUu",
+            "ZGV2dG9vbHMuY2xvdWRkZWJ1Z2dlci52Mi5EZWJ1Z2dlZTLyCQoJRGVidWdn",
+            "ZXIyEvIBCg1TZXRCcmVha3BvaW50EjYuZ29vZ2xlLmRldnRvb2xzLmNsb3Vk",
+            "ZGVidWdnZXIudjIuU2V0QnJlYWtwb2ludFJlcXVlc3QaNy5nb29nbGUuZGV2",
+            "dG9vbHMuY2xvdWRkZWJ1Z2dlci52Mi5TZXRCcmVha3BvaW50UmVzcG9uc2Ui",
+            "cILT5JMCQiI0L3YyL2RlYnVnZ2VyL2RlYnVnZ2Vlcy97ZGVidWdnZWVfaWR9",
+            "L2JyZWFrcG9pbnRzL3NldDoKYnJlYWtwb2ludNpBJWRlYnVnZ2VlX2lkLGJy",
+            "ZWFrcG9pbnQsY2xpZW50X3ZlcnNpb24S9QEKDUdldEJyZWFrcG9pbnQSNi5n",
+            "b29nbGUuZGV2dG9vbHMuY2xvdWRkZWJ1Z2dlci52Mi5HZXRCcmVha3BvaW50",
+            "UmVxdWVzdBo3Lmdvb2dsZS5kZXZ0b29scy5jbG91ZGRlYnVnZ2VyLnYyLkdl",
+            "dEJyZWFrcG9pbnRSZXNwb25zZSJzgtPkkwJCEkAvdjIvZGVidWdnZXIvZGVi",
+            "dWdnZWVzL3tkZWJ1Z2dlZV9pZH0vYnJlYWtwb2ludHMve2JyZWFrcG9pbnRf",
+            "aWR92kEoZGVidWdnZWVfaWQsYnJlYWtwb2ludF9pZCxjbGllbnRfdmVyc2lv",
+            "bhLaAQoQRGVsZXRlQnJlYWtwb2ludBI5Lmdvb2dsZS5kZXZ0b29scy5jbG91",
+            "ZGRlYnVnZ2VyLnYyLkRlbGV0ZUJyZWFrcG9pbnRSZXF1ZXN0GhYuZ29vZ2xl",
+            "LnByb3RvYnVmLkVtcHR5InOC0+STAkIqQC92Mi9kZWJ1Z2dlci9kZWJ1Z2dl",
+            "ZXMve2RlYnVnZ2VlX2lkfS9icmVha3BvaW50cy97YnJlYWtwb2ludF9pZH3a",
+            "QShkZWJ1Z2dlZV9pZCxicmVha3BvaW50X2lkLGNsaWVudF92ZXJzaW9uEt0B",
+            "Cg9MaXN0QnJlYWtwb2ludHMSOC5nb29nbGUuZGV2dG9vbHMuY2xvdWRkZWJ1",
+            "Z2dlci52Mi5MaXN0QnJlYWtwb2ludHNSZXF1ZXN0GjkuZ29vZ2xlLmRldnRv",
+            "b2xzLmNsb3VkZGVidWdnZXIudjIuTGlzdEJyZWFrcG9pbnRzUmVzcG9uc2Ui",
+            "VYLT5JMCMhIwL3YyL2RlYnVnZ2VyL2RlYnVnZ2Vlcy97ZGVidWdnZWVfaWR9",
+            "L2JyZWFrcG9pbnRz2kEaZGVidWdnZWVfaWQsY2xpZW50X3ZlcnNpb24SuQEK",
+            "DUxpc3REZWJ1Z2dlZXMSNi5nb29nbGUuZGV2dG9vbHMuY2xvdWRkZWJ1Z2dl",
+            "ci52Mi5MaXN0RGVidWdnZWVzUmVxdWVzdBo3Lmdvb2dsZS5kZXZ0b29scy5j",
+            "bG91ZGRlYnVnZ2VyLnYyLkxpc3REZWJ1Z2dlZXNSZXNwb25zZSI3gtPkkwIY",
+            "EhYvdjIvZGVidWdnZXIvZGVidWdnZWVz2kEWcHJvamVjdCxjbGllbnRfdmVy",
+            "c2lvbhp/ykEcY2xvdWRkZWJ1Z2dlci5nb29nbGVhcGlzLmNvbdJBXWh0dHBz",
+            "Oi8vd3d3Lmdvb2dsZWFwaXMuY29tL2F1dGgvY2xvdWQtcGxhdGZvcm0saHR0",
+            "cHM6Ly93d3cuZ29vZ2xlYXBpcy5jb20vYXV0aC9jbG91ZF9kZWJ1Z2dlckK8",
+            "AQokY29tLmdvb2dsZS5kZXZ0b29scy5jbG91ZGRlYnVnZ2VyLnYyQg1EZWJ1",
+            "Z2dlclByb3RvUAFaTWdvb2dsZS5nb2xhbmcub3JnL2dlbnByb3RvL2dvb2ds",
+            "ZWFwaXMvZGV2dG9vbHMvY2xvdWRkZWJ1Z2dlci92MjtjbG91ZGRlYnVnZ2Vy",
+            "qgIYR29vZ2xlLkNsb3VkLkRlYnVnZ2VyLlYyygIYR29vZ2xlXENsb3VkXERl",
+            "YnVnZ2VyXFYyYgZwcm90bzM="));
       descriptor = pbr::FileDescriptor.FromGeneratedCode(descriptorData,
-          new pbr::FileDescriptor[] { global::Google.Api.AnnotationsReflection.Descriptor, global::Google.Cloud.Debugger.V2.DataReflection.Descriptor, global::Google.Protobuf.WellKnownTypes.EmptyReflection.Descriptor, },
+          new pbr::FileDescriptor[] { global::Google.Api.ClientReflection.Descriptor, global::Google.Api.FieldBehaviorReflection.Descriptor, global::Google.Cloud.Debugger.V2.DataReflection.Descriptor, global::Google.Protobuf.WellKnownTypes.EmptyReflection.Descriptor, global::Google.Api.AnnotationsReflection.Descriptor, },
           new pbr::GeneratedClrTypeInfo(null, new pbr::GeneratedClrTypeInfo[] {
             new pbr::GeneratedClrTypeInfo(typeof(global::Google.Cloud.Debugger.V2.SetBreakpointRequest), global::Google.Cloud.Debugger.V2.SetBreakpointRequest.Parser, new[]{ "DebuggeeId", "Breakpoint", "ClientVersion" }, null, null, null),
             new pbr::GeneratedClrTypeInfo(typeof(global::Google.Cloud.Debugger.V2.SetBreakpointResponse), global::Google.Cloud.Debugger.V2.SetBreakpointResponse.Parser, new[]{ "Breakpoint" }, null, null, null),
@@ -141,7 +151,7 @@ namespace Google.Cloud.Debugger.V2 {
     public const int DebuggeeIdFieldNumber = 1;
     private string debuggeeId_ = "";
     /// <summary>
-    /// ID of the debuggee where the breakpoint is to be set.
+    /// Required. ID of the debuggee where the breakpoint is to be set.
     /// </summary>
     [global::System.Diagnostics.DebuggerNonUserCodeAttribute]
     public string DebuggeeId {
@@ -155,7 +165,7 @@ namespace Google.Cloud.Debugger.V2 {
     public const int BreakpointFieldNumber = 2;
     private global::Google.Cloud.Debugger.V2.Breakpoint breakpoint_;
     /// <summary>
-    /// Breakpoint specification to set.
+    /// Required. Breakpoint specification to set.
     /// The field `location` of the breakpoint must be set.
     /// </summary>
     [global::System.Diagnostics.DebuggerNonUserCodeAttribute]
@@ -170,7 +180,7 @@ namespace Google.Cloud.Debugger.V2 {
     public const int ClientVersionFieldNumber = 4;
     private string clientVersion_ = "";
     /// <summary>
-    /// The client version making the call.
+    /// Required. The client version making the call.
     /// Schema: `domain/type/version` (e.g., `google.com/intellij/v1`).
     /// </summary>
     [global::System.Diagnostics.DebuggerNonUserCodeAttribute]
@@ -264,7 +274,7 @@ namespace Google.Cloud.Debugger.V2 {
       }
       if (other.breakpoint_ != null) {
         if (breakpoint_ == null) {
-          breakpoint_ = new global::Google.Cloud.Debugger.V2.Breakpoint();
+          Breakpoint = new global::Google.Cloud.Debugger.V2.Breakpoint();
         }
         Breakpoint.MergeFrom(other.Breakpoint);
       }
@@ -288,9 +298,9 @@ namespace Google.Cloud.Debugger.V2 {
           }
           case 18: {
             if (breakpoint_ == null) {
-              breakpoint_ = new global::Google.Cloud.Debugger.V2.Breakpoint();
+              Breakpoint = new global::Google.Cloud.Debugger.V2.Breakpoint();
             }
-            input.ReadMessage(breakpoint_);
+            input.ReadMessage(Breakpoint);
             break;
           }
           case 34: {
@@ -417,7 +427,7 @@ namespace Google.Cloud.Debugger.V2 {
       }
       if (other.breakpoint_ != null) {
         if (breakpoint_ == null) {
-          breakpoint_ = new global::Google.Cloud.Debugger.V2.Breakpoint();
+          Breakpoint = new global::Google.Cloud.Debugger.V2.Breakpoint();
         }
         Breakpoint.MergeFrom(other.Breakpoint);
       }
@@ -434,9 +444,9 @@ namespace Google.Cloud.Debugger.V2 {
             break;
           case 10: {
             if (breakpoint_ == null) {
-              breakpoint_ = new global::Google.Cloud.Debugger.V2.Breakpoint();
+              Breakpoint = new global::Google.Cloud.Debugger.V2.Breakpoint();
             }
-            input.ReadMessage(breakpoint_);
+            input.ReadMessage(Breakpoint);
             break;
           }
         }
@@ -488,7 +498,7 @@ namespace Google.Cloud.Debugger.V2 {
     public const int DebuggeeIdFieldNumber = 1;
     private string debuggeeId_ = "";
     /// <summary>
-    /// ID of the debuggee whose breakpoint to get.
+    /// Required. ID of the debuggee whose breakpoint to get.
     /// </summary>
     [global::System.Diagnostics.DebuggerNonUserCodeAttribute]
     public string DebuggeeId {
@@ -502,7 +512,7 @@ namespace Google.Cloud.Debugger.V2 {
     public const int BreakpointIdFieldNumber = 2;
     private string breakpointId_ = "";
     /// <summary>
-    /// ID of the breakpoint to get.
+    /// Required. ID of the breakpoint to get.
     /// </summary>
     [global::System.Diagnostics.DebuggerNonUserCodeAttribute]
     public string BreakpointId {
@@ -516,7 +526,7 @@ namespace Google.Cloud.Debugger.V2 {
     public const int ClientVersionFieldNumber = 4;
     private string clientVersion_ = "";
     /// <summary>
-    /// The client version making the call.
+    /// Required. The client version making the call.
     /// Schema: `domain/type/version` (e.g., `google.com/intellij/v1`).
     /// </summary>
     [global::System.Diagnostics.DebuggerNonUserCodeAttribute]
@@ -757,7 +767,7 @@ namespace Google.Cloud.Debugger.V2 {
       }
       if (other.breakpoint_ != null) {
         if (breakpoint_ == null) {
-          breakpoint_ = new global::Google.Cloud.Debugger.V2.Breakpoint();
+          Breakpoint = new global::Google.Cloud.Debugger.V2.Breakpoint();
         }
         Breakpoint.MergeFrom(other.Breakpoint);
       }
@@ -774,9 +784,9 @@ namespace Google.Cloud.Debugger.V2 {
             break;
           case 10: {
             if (breakpoint_ == null) {
-              breakpoint_ = new global::Google.Cloud.Debugger.V2.Breakpoint();
+              Breakpoint = new global::Google.Cloud.Debugger.V2.Breakpoint();
             }
-            input.ReadMessage(breakpoint_);
+            input.ReadMessage(Breakpoint);
             break;
           }
         }
@@ -828,7 +838,7 @@ namespace Google.Cloud.Debugger.V2 {
     public const int DebuggeeIdFieldNumber = 1;
     private string debuggeeId_ = "";
     /// <summary>
-    /// ID of the debuggee whose breakpoint to delete.
+    /// Required. ID of the debuggee whose breakpoint to delete.
     /// </summary>
     [global::System.Diagnostics.DebuggerNonUserCodeAttribute]
     public string DebuggeeId {
@@ -842,7 +852,7 @@ namespace Google.Cloud.Debugger.V2 {
     public const int BreakpointIdFieldNumber = 2;
     private string breakpointId_ = "";
     /// <summary>
-    /// ID of the breakpoint to delete.
+    /// Required. ID of the breakpoint to delete.
     /// </summary>
     [global::System.Diagnostics.DebuggerNonUserCodeAttribute]
     public string BreakpointId {
@@ -856,7 +866,7 @@ namespace Google.Cloud.Debugger.V2 {
     public const int ClientVersionFieldNumber = 3;
     private string clientVersion_ = "";
     /// <summary>
-    /// The client version making the call.
+    /// Required. The client version making the call.
     /// Schema: `domain/type/version` (e.g., `google.com/intellij/v1`).
     /// </summary>
     [global::System.Diagnostics.DebuggerNonUserCodeAttribute]
@@ -1030,7 +1040,7 @@ namespace Google.Cloud.Debugger.V2 {
     public const int DebuggeeIdFieldNumber = 1;
     private string debuggeeId_ = "";
     /// <summary>
-    /// ID of the debuggee whose breakpoints to list.
+    /// Required. ID of the debuggee whose breakpoints to list.
     /// </summary>
     [global::System.Diagnostics.DebuggerNonUserCodeAttribute]
     public string DebuggeeId {
@@ -1091,6 +1101,7 @@ namespace Google.Cloud.Debugger.V2 {
     /// This field is deprecated. The following fields are always stripped out of
     /// the result: `stack_frames`, `evaluated_expressions` and `variable_table`.
     /// </summary>
+    [global::System.ObsoleteAttribute]
     [global::System.Diagnostics.DebuggerNonUserCodeAttribute]
     public bool StripResults {
       get { return stripResults_; }
@@ -1121,7 +1132,7 @@ namespace Google.Cloud.Debugger.V2 {
     public const int ClientVersionFieldNumber = 8;
     private string clientVersion_ = "";
     /// <summary>
-    /// The client version making the call.
+    /// Required. The client version making the call.
     /// Schema: `domain/type/version` (e.g., `google.com/intellij/v1`).
     /// </summary>
     [global::System.Diagnostics.DebuggerNonUserCodeAttribute]
@@ -1257,7 +1268,7 @@ namespace Google.Cloud.Debugger.V2 {
       }
       if (other.action_ != null) {
         if (action_ == null) {
-          action_ = new global::Google.Cloud.Debugger.V2.ListBreakpointsRequest.Types.BreakpointActionValue();
+          Action = new global::Google.Cloud.Debugger.V2.ListBreakpointsRequest.Types.BreakpointActionValue();
         }
         Action.MergeFrom(other.Action);
       }
@@ -1295,9 +1306,9 @@ namespace Google.Cloud.Debugger.V2 {
           }
           case 34: {
             if (action_ == null) {
-              action_ = new global::Google.Cloud.Debugger.V2.ListBreakpointsRequest.Types.BreakpointActionValue();
+              Action = new global::Google.Cloud.Debugger.V2.ListBreakpointsRequest.Types.BreakpointActionValue();
             }
-            input.ReadMessage(action_);
+            input.ReadMessage(Action);
             break;
           }
           case 40: {
@@ -1447,7 +1458,7 @@ namespace Google.Cloud.Debugger.V2 {
                 _unknownFields = pb::UnknownFieldSet.MergeFieldFrom(_unknownFields, input);
                 break;
               case 8: {
-                value_ = (global::Google.Cloud.Debugger.V2.Breakpoint.Types.Action) input.ReadEnum();
+                Value = (global::Google.Cloud.Debugger.V2.Breakpoint.Types.Action) input.ReadEnum();
                 break;
               }
             }
@@ -1666,7 +1677,7 @@ namespace Google.Cloud.Debugger.V2 {
     public const int ProjectFieldNumber = 2;
     private string project_ = "";
     /// <summary>
-    /// Project number of a Google Cloud project whose debuggees to list.
+    /// Required. Project number of a Google Cloud project whose debuggees to list.
     /// </summary>
     [global::System.Diagnostics.DebuggerNonUserCodeAttribute]
     public string Project {
@@ -1695,7 +1706,7 @@ namespace Google.Cloud.Debugger.V2 {
     public const int ClientVersionFieldNumber = 4;
     private string clientVersion_ = "";
     /// <summary>
-    /// The client version making the call.
+    /// Required. The client version making the call.
     /// Schema: `domain/type/version` (e.g., `google.com/intellij/v1`).
     /// </summary>
     [global::System.Diagnostics.DebuggerNonUserCodeAttribute]

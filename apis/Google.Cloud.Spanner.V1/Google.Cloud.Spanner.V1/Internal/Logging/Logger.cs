@@ -14,33 +14,35 @@
 
 using Google.Api.Gax;
 using System;
+using System.Collections.Concurrent;
 using System.Collections.Generic;
-using System.Text;
+using System.Linq;
 using System.Threading;
-using System.Threading.Tasks;
 
 namespace Google.Cloud.Spanner.V1.Internal.Logging
 {
-    // TODO: Clearer separation between default implementation and interface.
-    // (Use the EF provider and default logger to drive the design.)
-
     /// <summary>
-    /// This is an internal class and is not intended to be used by external code.
+    /// Base class for Spanner diagnostic loggers.
     /// </summary>
+    /// <remarks>
+    /// This is an internal class intended for diagnostic purposes,
+    /// and should not be used by general application code. Please read the user guide
+    /// page on logging for more details.
+    /// </remarks>
     public abstract class Logger
     {
         private static Logger s_defaultLogger = new DefaultLogger();
-        private int _perfLoggingTaskEnabled;
-        private readonly Dictionary<string, PerformanceTimeEntry> _perfCounterDictionary
-            = new Dictionary<string, PerformanceTimeEntry>();
+        private readonly ConcurrentDictionary<string, PerformanceTimeEntry> _perfCounterDictionary
+            = new ConcurrentDictionary<string, PerformanceTimeEntry>();
 
         /// <summary>
-        /// This is an internal property and is not intended to be used by external code.
+        /// Retrieves the default logger.
         /// </summary>
         public static Logger DefaultLogger => Interlocked.CompareExchange(ref s_defaultLogger, null, null);
 
         /// <summary>
-        /// This is an internal method and is not intended to be used by external code.
+        /// Sets the default logger to be returned by future calls to <see cref="DefaultLogger"/>.
+        /// (Any loggers retrieved by that property before are not affected by this method.)
         /// </summary>
         /// <param name="instance">The new default logger. Must not be null.</param>
         public static void SetDefaultLogger(Logger instance)
@@ -50,126 +52,99 @@ namespace Google.Cloud.Spanner.V1.Internal.Logging
         }
 
         /// <summary>
-        /// This is an internal property and is not intended to be used by external code.
+        /// The level of logging this logger should perform. For example, if this is set to
+        /// <see cref="LogLevel.Info"/> then messages for <see cref="LogLevel.Debug"/> will
+        /// be ignored, but messages for <see cref="LogLevel.Info"/>, <see cref="LogLevel.Warn"/>
+        /// and <see cref="LogLevel.Error"/> will be logged. This property defaults to
+        /// <see cref="LogLevel.None"/>, so no messages are logged.
         /// </summary>
         public LogLevel LogLevel { get; set; } = LogLevel.None;
 
         /// <summary>
-        /// This is an internal property and is not intended to be used by external code.
+        /// Whether or not performance logging is enabled. This affects the
+        /// <see cref="LogPerformanceCounter(string, double)"/> methods, as well as
+        /// <see cref="LogPerformanceData"/>. This defaults to false, and should only be set
+        /// to true for the purposes of benchmarks and diagnosing performance issues.
         /// </summary>
         public bool LogPerformanceTraces { get; set; }
 
         /// <summary>
-        /// This is an internal property and is not intended to be used by external code.
+        /// Whether or not potentially sensitive information (such as SQL queries) is recorded. This
+        /// affects the behavior of the <see cref="SensitiveInfo(Func{string})"/> method.
         /// </summary>
         public virtual bool EnableSensitiveDataLogging { get; set; }
 
         /// <summary>
-        /// This is an internal property and is not intended to be used by external code.
-        /// </summary>
-        public TimeSpan PerformanceTraceLogInterval { get; set; } = TimeSpan.Zero;
-
-        /// <summary>
-        /// This is an internal method and is not intended to be used by external code.
+        /// Logs any recorded performance data, if <see cref="LogPerformanceTraces"/> is enabled.
         /// </summary>
         public void LogPerformanceData()
         {
             if (LogPerformanceTraces)
             {
-                LogPerformanceDataImpl();
-            }
-        }
-
-        /// <summary>
-        /// Performs the real performance logging.
-        /// </summary>
-        private void LogPerformanceDataImpl()
-        {
-            lock (_perfCounterDictionary)
-            {
-                if (_perfCounterDictionary.Count == 0)
+                var snapshot = _perfCounterDictionary.ToArray();
+                if (snapshot.Length == 0)
                 {
                     return;
                 }
-                var message = new StringBuilder();
-                var metricList = new SortedList<string, string>();
-                message.AppendLine("Spanner performance metrics:");
 
-                foreach (var kvp in _perfCounterDictionary)
-                {
-                    //to make the tavg correct, we re-record the last value at the current timestamp.
-                    UpdateTimeWeightedAvg(kvp.Value, DateTime.UtcNow);
-
-                    //log it.
-                    metricList.Add(
-                        kvp.Key,
-                        $" {kvp.Key}({kvp.Value.Instances}) tavg={kvp.Value.TimeWeightedAverage} " +
-                        $"avg={kvp.Value.Average} max={kvp.Value.Maximum} min={kvp.Value.Minimum}" +
-                        $" last={kvp.Value.Last}");
-
-                    //now reset to last.
-                    if (ResetPerformanceTracesEachInterval)
-                    {
-                        lock (kvp.Value)
-                        {
-                            kvp.Value.Last = 0;
-                            kvp.Value.Instances = 0;
-                            kvp.Value.TotalTime = default(TimeSpan);
-                            kvp.Value.LastMeasureTime = DateTime.UtcNow;
-                            kvp.Value.Maximum = 0;
-                            kvp.Value.Minimum = 0;
-                            kvp.Value.Average = 0;
-                            kvp.Value.TimeWeightedAverage = 0;
-                        }
-                    }
-                }
-
-                foreach (string s in metricList.Values)
-                {
-                    message.AppendLine(s);
-                }
-
-                LogPerformanceMessage(message.ToString());
+                LogPerformanceEntries(snapshot.OrderBy(kvp => kvp.Key).Select(kvp => kvp.Value.ToString()));
             }
         }
 
         /// <summary>
-        /// This is an internal property and is not intended to be used by external code.
+        /// Resets all performance data previously recorded by the <see cref="LogPerformanceCounter(string, double)"/> methods.
         /// </summary>
-        public bool ResetPerformanceTracesEachInterval { get; set; } = true;
+        public void ResetPerformanceData()
+        {
+            _perfCounterDictionary.Clear();
+        }
 
         /// <summary>
-        /// This is an internal method and is not intended to be used by external code.
+        /// This method is called by <see cref="LogPerformanceData"/> when <see cref="LogPerformanceTraces"/>
+        /// is enabled, and should be implemented in derived classes to record performance data.
         /// </summary>
-        public abstract void LogPerformanceMessage(string message);
+        /// <param name="entries">The entries to log. This is never null, and never empty.</param>
+        protected abstract void LogPerformanceEntries(IEnumerable<string> entries);
 
         /// <summary>
-        /// This is an internal method and is not intended to be used by external code.
+        /// Logs a message at a level of <see cref="LogLevel.Debug"/>.
         /// </summary>
-        public virtual void Debug(string message) =>
+        /// <param name="message">The message to log. May be null, in which case this method is a no-op.</param>
+        public void Debug(string message) =>
             Log(LogLevel.Debug, message, null);
 
         /// <summary>
-        /// This is an internal method and is not intended to be used by external code.
+        /// Logs a message at a level of <see cref="LogLevel.Debug"/>.
         /// </summary>
-        public virtual void Debug(Func<string> messageFunc) =>
+        /// <param name="messageFunc">A function that provides the message to log. This function is only called
+        /// after checking <see cref="LogLevel"/>, in order to avoid unnecessary formatting. This may be null
+        /// and may return null, but in either of these cases, the call is a no-op.</param>
+        public void Debug(Func<string> messageFunc) =>
             Log(LogLevel.Debug, messageFunc, null);
 
         /// <summary>
-        /// This is an internal method and is not intended to be used by external code.
+        /// Logs a message at a level of <see cref="LogLevel.Info"/>.
         /// </summary>
-        public virtual void Info(string message) =>
+        /// <param name="message">The message to log. May be null, in which case this method is a no-op.</param>
+        public void Info(string message) =>
             Log(LogLevel.Info, message, null);
 
         /// <summary>
-        /// This is an internal method and is not intended to be used by external code.
+        /// Logs a message at a level of <see cref="LogLevel.Info"/>.
         /// </summary>
-        public virtual void Info(Func<string> messageFunc) =>
+        /// <param name="messageFunc">A function that provides the message to log. This function is only called
+        /// after checking <see cref="LogLevel"/>, in order to avoid unnecessary formatting. This may be null
+        /// and may return null, but in either of these cases, the call is a no-op.</param>
+        public void Info(Func<string> messageFunc) =>
             Log(LogLevel.Info, messageFunc, null);
 
         /// <summary>
-        /// This is an internal method and is not intended to be used by external code.
+        /// Logs a message at a level of <see cref="LogLevel.Info"/>, but only if <see cref="EnableSensitiveDataLogging"/>
+        /// is enabled.
         /// </summary>
+        /// <param name="messageFunc">A function that provides the message to log. This function is only called
+        /// after checking <see cref="LogLevel"/>, in order to avoid unnecessary formatting. This may be null
+        /// and may return null, but in either of these cases, the call is a no-op.</param>
         public void SensitiveInfo(Func<string> messageFunc)
         {
             if (EnableSensitiveDataLogging)
@@ -179,102 +154,135 @@ namespace Google.Cloud.Spanner.V1.Internal.Logging
         }
 
         /// <summary>
-        /// This is an internal method and is not intended to be used by external code.
+        /// Logs a message at a level of <see cref="LogLevel.Warn"/>.
         /// </summary>
-        public virtual void Warn(string message, Exception exception = null) =>
+        /// <param name="message">The message to log. May be null, in which case this method is a no-op.</param>
+        /// <param name="exception">The exception to log, if the logged event was caused by an exception. This may be null.</param>
+        public void Warn(string message, Exception exception = null) =>
             Log(LogLevel.Warn, message, exception);
 
         /// <summary>
-        /// This is an internal method and is not intended to be used by external code.
+        /// Logs a message at a level of <see cref="LogLevel.Warn"/>.
         /// </summary>
-        public virtual void Warn(Func<string> messageFunc, Exception exception = null) =>
+        /// <param name="messageFunc">A function that provides the message to log. This function is only called
+        /// after checking <see cref="LogLevel"/>, in order to avoid unnecessary formatting. This may be null
+        /// and may return null, but in either of these cases, the call is a no-op.</param>
+        /// <param name="exception">The exception to log, if the logged event was caused by an exception. This may be null.</param>
+        public void Warn(Func<string> messageFunc, Exception exception = null) =>
             Log(LogLevel.Warn, messageFunc, exception);
 
         /// <summary>
-        /// This is an internal method and is not intended to be used by external code.
+        /// Logs a message at a level of <see cref="LogLevel.Error"/>.
         /// </summary>
-        public virtual void Error(string message, Exception exception = null) =>
+        /// <param name="message">The message to log. May be null, in which case this method is a no-op.</param>
+        /// <param name="exception">The exception to log, if the logged event was caused by an exception. This may be null.</param>
+        public void Error(string message, Exception exception = null) =>
             Log(LogLevel.Error, message, exception);
 
         /// <summary>
-        /// This is an internal method and is not intended to be used by external code.
+        /// Logs a message at a level of <see cref="LogLevel.Error"/>.
         /// </summary>
-        public virtual void Error(Func<string> messageFunc, Exception exception = null) =>
+        /// <param name="messageFunc">A function that provides the message to log. This function is only called
+        /// after checking <see cref="LogLevel"/>, in order to avoid unnecessary formatting. This may be null
+        /// and may return null, but in either of these cases, the call is a no-op.</param>
+        /// <param name="exception">The exception to log, if the logged event was caused by an exception. This may be null.</param>
+        public void Error(Func<string> messageFunc, Exception exception = null) =>
             Log(LogLevel.Error, messageFunc, exception);
 
-        private void Log(LogLevel level, string message, Exception exception)
+        /// <summary>
+        /// Logs the given message if the specified level equals or exceeds <see cref="LogLevel"/>.
+        /// </summary>
+        /// <param name="level">The log level of the message to log.</param>
+        /// <param name="message">The message to log. This may be null, in which case this call is a no-op.</param>
+        /// <param name="exception">The exception to log, if the logged event was caused by an exception. This may be null.</param>
+        public void Log(LogLevel level, string message, Exception exception)
         {
-            if (LogLevel >= level)
+            if (LogLevel >= level && message != null)
             {
-                WriteLine(level, exception == null ? message : $"{message}, Exception = {exception}");
+                LogImpl(level, message, exception);
             }
         }
 
-        private void Log(LogLevel level, Func<string> messageFunc, Exception exception)
+        /// <summary>
+        /// Logs the result of calling the given message provider function if the specified level equals or exceeds <see cref="LogLevel"/>.
+        /// </summary>
+        /// <param name="level">The log level of the message to log.</param>
+        /// <param name="messageFunc">A function that provides the message to log. This function is only called
+        /// if <paramref name="level"/> equals or exceeds <see cref="LogLevel"/>, in order to avoid unnecessary formatting. This may be null
+        /// and may return null, but in either of these cases, the call is a no-op.</param>
+        /// <param name="exception">The exception to log, if the logged event was caused by an exception. This may be null.</param>
+        public void Log(LogLevel level, Func<string> messageFunc, Exception exception)
         {
-            if (LogLevel >= level)
+            if (LogLevel >= level && messageFunc != null)
             {
                 string message = messageFunc();
-                WriteLine(level, exception == null ? message : $"{message}, Exception = {exception}");
+                if (message == null)
+                {
+                    return;
+                }
+                LogImpl(level, message, exception);
             }
         }
 
         /// <summary>
-        /// This is an internal method and is not intended to be used by external code.
+        /// Core method to implement logging in derived classes. This method is only called
+        /// if the given log level exceeds <see cref="LogLevel"/>, so implementations do not
+        /// need to perform that check again.
         /// </summary>
+        /// <param name="level">The log level of the message to log.</param>
+        /// <param name="message">The message to log. This is never null.</param>
+        /// <param name="exception">The exception to log, if the logged event was caused by an exception. This may be null.</param>
+        protected abstract void LogImpl(LogLevel level, string message, Exception exception);
+
+        /// <summary>
+        /// Logs a performance counter value.
+        /// </summary>
+        /// <param name="name">The name of the performance counter to log. May be null, in which case this call is a no-op.</param>
+        /// <param name="value">The latest value of the performance counter.</param>
+        public void LogPerformanceCounter(string name, double value)
+        {
+            if (LogPerformanceTraces && name != null)
+            {
+                LogPerformanceCounterImpl(name, x => value);
+            }
+        }
+
+        /// <summary>
+        /// Logs a computed performance counter value.
+        /// </summary>
+        /// <param name="name">The name of the performance counter to log. May be null, in which case this call is a no-op.</param>
+        /// <param name="valueFunc">A function to compute the latest value of the performance counter. May be null, in which case this call is a no-op.</param>
         public void LogPerformanceCounter(string name, Func<double> valueFunc)
         {
-            if (LogPerformanceTraces)
+            if (LogPerformanceTraces && name != null && valueFunc != null)
             {
-                LogPerformanceCounter(name, x => valueFunc());
+                LogPerformanceCounterImpl(name, x => valueFunc());
             }
         }
 
         /// <summary>
-        /// This is an internal method and is not intended to be used by external code.
+        /// Logs a computed performance counter value.
         /// </summary>
-        public void LogPerformanceCounterFn(string name, Func<double, double> valueFunc)
+        /// <param name="name">The name of the performance counter to log. May be null, in which case this call is a no-op.</param>
+        /// <param name="valueFunc">A function to compute the latest value of the performance counter based on the current value. May be null, in which case this call is a no-op.</param>
+        public void LogPerformanceCounter(string name, Func<double, double> valueFunc)
         {
-            if (LogPerformanceTraces)
+            if (LogPerformanceTraces && name != null && valueFunc != null)
             {
-                LogPerformanceCounter(name, valueFunc);
+                LogPerformanceCounterImpl(name, valueFunc);
             }
         }
 
-        /// <summary>
-        /// This is an internal method and is not intended to be used by external code.
-        /// </summary>
-        protected abstract void WriteLine(LogLevel level, string message);
-
-        private async Task PerformanceLogAsync()
+        private void LogPerformanceCounterImpl(string name, Func<double, double> valueFunc)
         {
-            while (true)
-            {
-                // While this method is only started once performance logging is turned on,
-                // we also allow performance logging to be turned off.
-                // If that happens, we'll just poll every second to see if it was turned back on.
-                // TODO: if/when we expose profile stats publicly, we should end and restart
-                // the task properly.
-                var delay = PerformanceTraceLogInterval != TimeSpan.Zero ? PerformanceTraceLogInterval : TimeSpan.FromSeconds(1);
-                await Task.Delay(delay).ConfigureAwait(false);
-
-                // FIXME: Should be LogPerformanceTraces, but we never disable that...
-                if (PerformanceTraceLogInterval != TimeSpan.Zero)
-                {
-                    LogPerformanceDataImpl();
-                }
-            }
-        }
-
-        private void RecordEntryValue(PerformanceTimeEntry entry, Func<double, double> valueFunc)
-        {
+            var entry = _perfCounterDictionary.GetOrAdd(name, key => new PerformanceTimeEntry(key));
+            var value = valueFunc(entry.Last);
             lock (entry)
             {
-                var value = valueFunc(entry.Last);
                 var total = entry.Instances * entry.Average;
                 entry.Instances++;
                 entry.Average = (total + value) / entry.Instances;
-                entry.Maximum = entry.LastMeasureTime == default(DateTime) ? value : Math.Max(entry.Minimum, value);
+                entry.Maximum = entry.LastMeasureTime == default(DateTime) ? value : Math.Max(entry.Maximum, value);
                 entry.Minimum = entry.LastMeasureTime == default(DateTime) ? value : Math.Min(entry.Minimum, value);
                 var now = DateTime.UtcNow;
                 UpdateTimeWeightedAvg(entry, now);
@@ -287,39 +295,27 @@ namespace Google.Cloud.Spanner.V1.Internal.Logging
         {
             lock (entry)
             {
+                // For periodically sampled values, we take an average by weighting it with the time since the last
+                // measurement, effectively assuming that the value has been "the new value" for all of the preceding
+                // time. For example, consider a "number of active sessions" statistic:
+                // t=0 value=0
+                // t=1 value=10 (tavg=10)
+                // t=2 value=15 (tavg=12.5 - we think of it as having been 10 for 1 second and 15 for 1 second)
+                // t=6 value=20 (tavg=17.5 - we think of it as having been 12.5 for 2 seconds and 20 for 4 seconds)
                 if (entry.LastMeasureTime != default(DateTime))
                 {
-                    double milliSoFar = 0;
-                    var deltaTime = (now - entry.LastMeasureTime).TotalMilliseconds;
-                    milliSoFar += entry.TotalTime.TotalMilliseconds;
-                    entry.TotalTime = entry.TotalTime.Add(TimeSpan.FromMilliseconds(deltaTime));
-                    entry.TimeWeightedAverage = (milliSoFar * entry.TimeWeightedAverage + entry.Last * deltaTime) /
+                    var deltaTime = now - entry.LastMeasureTime;
+                    var milliSoFar = entry.TotalTime.TotalMilliseconds;
+                    entry.TotalTime += deltaTime;
+                    entry.TimeWeightedAverage = (milliSoFar * entry.TimeWeightedAverage + entry.Last * deltaTime.TotalMilliseconds) /
                                                 entry.TotalTime.TotalMilliseconds;
                 }
             }
         }
 
-        private void LogPerformanceCounter(string name, Func<double, double> valueFunc)
-        {
-            if (Interlocked.CompareExchange(ref _perfLoggingTaskEnabled, 1, 0) == 0)
-            {
-                //kick off perf logging.
-                Task.Run(PerformanceLogAsync);
-            }
-
-            lock (_perfCounterDictionary)
-            {
-                if (!_perfCounterDictionary.TryGetValue(name, out PerformanceTimeEntry entry))
-                {
-                    entry = new PerformanceTimeEntry();
-                    _perfCounterDictionary[name] = entry;
-                }
-                RecordEntryValue(entry, valueFunc);
-            }
-        }
-
         private class PerformanceTimeEntry
         {
+            public string Name { get; set; }
             public int Instances { get; set; }
             public double Average { get; set; }
             public double TimeWeightedAverage { get; set; }
@@ -329,10 +325,16 @@ namespace Google.Cloud.Spanner.V1.Internal.Logging
             public double Last { get; set; }
             public DateTime LastMeasureTime { get; set; }
 
+            public PerformanceTimeEntry(string name) => Name = name;
+
             /// <inheritdoc />
             public override string ToString()
             {
-                return $"Recordings({Instances}) Average({Average}) TAvg({TimeWeightedAverage})";
+                // Prevent updates while we're reading
+                lock (this)
+                {
+                    return $"{Name}: ({Instances}) tavg={TimeWeightedAverage} avg={Average} max={Maximum} min={Minimum} last={Last}";
+                }
             }
         }
     }

@@ -1,4 +1,4 @@
-// Copyright 2018 Google LLC
+// Copyright 2019 Google LLC
 //
 // Licensed under the Apache License, Version 2.0 (the "License");
 // you may not use this file except in compliance with the License.
@@ -20,7 +20,8 @@ namespace Google.Cloud.Bigtable.Admin.V2.Tests
     using Google.Api.Gax.Grpc;
     using apis = Google.Cloud.Bigtable.Admin.V2;
     using Google.Cloud.Bigtable.Common.V2;
-    using Google.LongRunning;
+    using Google.Cloud.Iam.V1;
+    using Google.Protobuf;
     using Google.Protobuf.WellKnownTypes;
     using Grpc.Core;
     using Moq;
@@ -39,8 +40,6 @@ namespace Google.Cloud.Bigtable.Admin.V2.Tests
         public void CreateTable()
         {
             Mock<BigtableTableAdmin.BigtableTableAdminClient> mockGrpcClient = new Mock<BigtableTableAdmin.BigtableTableAdminClient>(MockBehavior.Strict);
-            mockGrpcClient.Setup(x => x.CreateOperationsClient())
-                .Returns(new Mock<Operations.OperationsClient>().Object);
             CreateTableRequest expectedRequest = new CreateTableRequest
             {
                 ParentAsInstanceName = new InstanceName("[PROJECT]", "[INSTANCE]"),
@@ -66,8 +65,6 @@ namespace Google.Cloud.Bigtable.Admin.V2.Tests
         public async Task CreateTableAsync()
         {
             Mock<BigtableTableAdmin.BigtableTableAdminClient> mockGrpcClient = new Mock<BigtableTableAdmin.BigtableTableAdminClient>(MockBehavior.Strict);
-            mockGrpcClient.Setup(x => x.CreateOperationsClient())
-                .Returns(new Mock<Operations.OperationsClient>().Object);
             CreateTableRequest expectedRequest = new CreateTableRequest
             {
                 ParentAsInstanceName = new InstanceName("[PROJECT]", "[INSTANCE]"),
@@ -93,8 +90,6 @@ namespace Google.Cloud.Bigtable.Admin.V2.Tests
         public void CreateTable2()
         {
             Mock<BigtableTableAdmin.BigtableTableAdminClient> mockGrpcClient = new Mock<BigtableTableAdmin.BigtableTableAdminClient>(MockBehavior.Strict);
-            mockGrpcClient.Setup(x => x.CreateOperationsClient())
-                .Returns(new Mock<Operations.OperationsClient>().Object);
             CreateTableRequest request = new CreateTableRequest
             {
                 ParentAsInstanceName = new InstanceName("[PROJECT]", "[INSTANCE]"),
@@ -117,8 +112,6 @@ namespace Google.Cloud.Bigtable.Admin.V2.Tests
         public async Task CreateTableAsync2()
         {
             Mock<BigtableTableAdmin.BigtableTableAdminClient> mockGrpcClient = new Mock<BigtableTableAdmin.BigtableTableAdminClient>(MockBehavior.Strict);
-            mockGrpcClient.Setup(x => x.CreateOperationsClient())
-                .Returns(new Mock<Operations.OperationsClient>().Object);
             CreateTableRequest request = new CreateTableRequest
             {
                 ParentAsInstanceName = new InstanceName("[PROJECT]", "[INSTANCE]"),
@@ -141,8 +134,6 @@ namespace Google.Cloud.Bigtable.Admin.V2.Tests
         public void GetTable()
         {
             Mock<BigtableTableAdmin.BigtableTableAdminClient> mockGrpcClient = new Mock<BigtableTableAdmin.BigtableTableAdminClient>(MockBehavior.Strict);
-            mockGrpcClient.Setup(x => x.CreateOperationsClient())
-                .Returns(new Mock<Operations.OperationsClient>().Object);
             GetTableRequest expectedRequest = new GetTableRequest
             {
                 TableName = new TableName("[PROJECT]", "[INSTANCE]", "[TABLE]"),
@@ -164,8 +155,6 @@ namespace Google.Cloud.Bigtable.Admin.V2.Tests
         public async Task GetTableAsync()
         {
             Mock<BigtableTableAdmin.BigtableTableAdminClient> mockGrpcClient = new Mock<BigtableTableAdmin.BigtableTableAdminClient>(MockBehavior.Strict);
-            mockGrpcClient.Setup(x => x.CreateOperationsClient())
-                .Returns(new Mock<Operations.OperationsClient>().Object);
             GetTableRequest expectedRequest = new GetTableRequest
             {
                 TableName = new TableName("[PROJECT]", "[INSTANCE]", "[TABLE]"),
@@ -187,8 +176,6 @@ namespace Google.Cloud.Bigtable.Admin.V2.Tests
         public void GetTable2()
         {
             Mock<BigtableTableAdmin.BigtableTableAdminClient> mockGrpcClient = new Mock<BigtableTableAdmin.BigtableTableAdminClient>(MockBehavior.Strict);
-            mockGrpcClient.Setup(x => x.CreateOperationsClient())
-                .Returns(new Mock<Operations.OperationsClient>().Object);
             GetTableRequest request = new GetTableRequest
             {
                 TableName = new TableName("[PROJECT]", "[INSTANCE]", "[TABLE]"),
@@ -209,8 +196,6 @@ namespace Google.Cloud.Bigtable.Admin.V2.Tests
         public async Task GetTableAsync2()
         {
             Mock<BigtableTableAdmin.BigtableTableAdminClient> mockGrpcClient = new Mock<BigtableTableAdmin.BigtableTableAdminClient>(MockBehavior.Strict);
-            mockGrpcClient.Setup(x => x.CreateOperationsClient())
-                .Returns(new Mock<Operations.OperationsClient>().Object);
             GetTableRequest request = new GetTableRequest
             {
                 TableName = new TableName("[PROJECT]", "[INSTANCE]", "[TABLE]"),
@@ -231,8 +216,6 @@ namespace Google.Cloud.Bigtable.Admin.V2.Tests
         public void DeleteTable()
         {
             Mock<BigtableTableAdmin.BigtableTableAdminClient> mockGrpcClient = new Mock<BigtableTableAdmin.BigtableTableAdminClient>(MockBehavior.Strict);
-            mockGrpcClient.Setup(x => x.CreateOperationsClient())
-                .Returns(new Mock<Operations.OperationsClient>().Object);
             DeleteTableRequest expectedRequest = new DeleteTableRequest
             {
                 TableName = new TableName("[PROJECT]", "[INSTANCE]", "[TABLE]"),
@@ -250,8 +233,6 @@ namespace Google.Cloud.Bigtable.Admin.V2.Tests
         public async Task DeleteTableAsync()
         {
             Mock<BigtableTableAdmin.BigtableTableAdminClient> mockGrpcClient = new Mock<BigtableTableAdmin.BigtableTableAdminClient>(MockBehavior.Strict);
-            mockGrpcClient.Setup(x => x.CreateOperationsClient())
-                .Returns(new Mock<Operations.OperationsClient>().Object);
             DeleteTableRequest expectedRequest = new DeleteTableRequest
             {
                 TableName = new TableName("[PROJECT]", "[INSTANCE]", "[TABLE]"),
@@ -269,8 +250,6 @@ namespace Google.Cloud.Bigtable.Admin.V2.Tests
         public void DeleteTable2()
         {
             Mock<BigtableTableAdmin.BigtableTableAdminClient> mockGrpcClient = new Mock<BigtableTableAdmin.BigtableTableAdminClient>(MockBehavior.Strict);
-            mockGrpcClient.Setup(x => x.CreateOperationsClient())
-                .Returns(new Mock<Operations.OperationsClient>().Object);
             DeleteTableRequest request = new DeleteTableRequest
             {
                 TableName = new TableName("[PROJECT]", "[INSTANCE]", "[TABLE]"),
@@ -287,8 +266,6 @@ namespace Google.Cloud.Bigtable.Admin.V2.Tests
         public async Task DeleteTableAsync2()
         {
             Mock<BigtableTableAdmin.BigtableTableAdminClient> mockGrpcClient = new Mock<BigtableTableAdmin.BigtableTableAdminClient>(MockBehavior.Strict);
-            mockGrpcClient.Setup(x => x.CreateOperationsClient())
-                .Returns(new Mock<Operations.OperationsClient>().Object);
             DeleteTableRequest request = new DeleteTableRequest
             {
                 TableName = new TableName("[PROJECT]", "[INSTANCE]", "[TABLE]"),
@@ -305,8 +282,6 @@ namespace Google.Cloud.Bigtable.Admin.V2.Tests
         public void ModifyColumnFamilies()
         {
             Mock<BigtableTableAdmin.BigtableTableAdminClient> mockGrpcClient = new Mock<BigtableTableAdmin.BigtableTableAdminClient>(MockBehavior.Strict);
-            mockGrpcClient.Setup(x => x.CreateOperationsClient())
-                .Returns(new Mock<Operations.OperationsClient>().Object);
             ModifyColumnFamiliesRequest expectedRequest = new ModifyColumnFamiliesRequest
             {
                 TableName = new TableName("[PROJECT]", "[INSTANCE]", "[TABLE]"),
@@ -330,8 +305,6 @@ namespace Google.Cloud.Bigtable.Admin.V2.Tests
         public async Task ModifyColumnFamiliesAsync()
         {
             Mock<BigtableTableAdmin.BigtableTableAdminClient> mockGrpcClient = new Mock<BigtableTableAdmin.BigtableTableAdminClient>(MockBehavior.Strict);
-            mockGrpcClient.Setup(x => x.CreateOperationsClient())
-                .Returns(new Mock<Operations.OperationsClient>().Object);
             ModifyColumnFamiliesRequest expectedRequest = new ModifyColumnFamiliesRequest
             {
                 TableName = new TableName("[PROJECT]", "[INSTANCE]", "[TABLE]"),
@@ -355,8 +328,6 @@ namespace Google.Cloud.Bigtable.Admin.V2.Tests
         public void ModifyColumnFamilies2()
         {
             Mock<BigtableTableAdmin.BigtableTableAdminClient> mockGrpcClient = new Mock<BigtableTableAdmin.BigtableTableAdminClient>(MockBehavior.Strict);
-            mockGrpcClient.Setup(x => x.CreateOperationsClient())
-                .Returns(new Mock<Operations.OperationsClient>().Object);
             ModifyColumnFamiliesRequest request = new ModifyColumnFamiliesRequest
             {
                 TableName = new TableName("[PROJECT]", "[INSTANCE]", "[TABLE]"),
@@ -378,8 +349,6 @@ namespace Google.Cloud.Bigtable.Admin.V2.Tests
         public async Task ModifyColumnFamiliesAsync2()
         {
             Mock<BigtableTableAdmin.BigtableTableAdminClient> mockGrpcClient = new Mock<BigtableTableAdmin.BigtableTableAdminClient>(MockBehavior.Strict);
-            mockGrpcClient.Setup(x => x.CreateOperationsClient())
-                .Returns(new Mock<Operations.OperationsClient>().Object);
             ModifyColumnFamiliesRequest request = new ModifyColumnFamiliesRequest
             {
                 TableName = new TableName("[PROJECT]", "[INSTANCE]", "[TABLE]"),
@@ -401,8 +370,6 @@ namespace Google.Cloud.Bigtable.Admin.V2.Tests
         public void DropRowRange()
         {
             Mock<BigtableTableAdmin.BigtableTableAdminClient> mockGrpcClient = new Mock<BigtableTableAdmin.BigtableTableAdminClient>(MockBehavior.Strict);
-            mockGrpcClient.Setup(x => x.CreateOperationsClient())
-                .Returns(new Mock<Operations.OperationsClient>().Object);
             DropRowRangeRequest request = new DropRowRangeRequest
             {
                 TableName = new TableName("[PROJECT]", "[INSTANCE]", "[TABLE]"),
@@ -419,8 +386,6 @@ namespace Google.Cloud.Bigtable.Admin.V2.Tests
         public async Task DropRowRangeAsync()
         {
             Mock<BigtableTableAdmin.BigtableTableAdminClient> mockGrpcClient = new Mock<BigtableTableAdmin.BigtableTableAdminClient>(MockBehavior.Strict);
-            mockGrpcClient.Setup(x => x.CreateOperationsClient())
-                .Returns(new Mock<Operations.OperationsClient>().Object);
             DropRowRangeRequest request = new DropRowRangeRequest
             {
                 TableName = new TableName("[PROJECT]", "[INSTANCE]", "[TABLE]"),
@@ -437,8 +402,6 @@ namespace Google.Cloud.Bigtable.Admin.V2.Tests
         public void GenerateConsistencyToken()
         {
             Mock<BigtableTableAdmin.BigtableTableAdminClient> mockGrpcClient = new Mock<BigtableTableAdmin.BigtableTableAdminClient>(MockBehavior.Strict);
-            mockGrpcClient.Setup(x => x.CreateOperationsClient())
-                .Returns(new Mock<Operations.OperationsClient>().Object);
             GenerateConsistencyTokenRequest expectedRequest = new GenerateConsistencyTokenRequest
             {
                 TableName = new TableName("[PROJECT]", "[INSTANCE]", "[TABLE]"),
@@ -460,8 +423,6 @@ namespace Google.Cloud.Bigtable.Admin.V2.Tests
         public async Task GenerateConsistencyTokenAsync()
         {
             Mock<BigtableTableAdmin.BigtableTableAdminClient> mockGrpcClient = new Mock<BigtableTableAdmin.BigtableTableAdminClient>(MockBehavior.Strict);
-            mockGrpcClient.Setup(x => x.CreateOperationsClient())
-                .Returns(new Mock<Operations.OperationsClient>().Object);
             GenerateConsistencyTokenRequest expectedRequest = new GenerateConsistencyTokenRequest
             {
                 TableName = new TableName("[PROJECT]", "[INSTANCE]", "[TABLE]"),
@@ -483,8 +444,6 @@ namespace Google.Cloud.Bigtable.Admin.V2.Tests
         public void GenerateConsistencyToken2()
         {
             Mock<BigtableTableAdmin.BigtableTableAdminClient> mockGrpcClient = new Mock<BigtableTableAdmin.BigtableTableAdminClient>(MockBehavior.Strict);
-            mockGrpcClient.Setup(x => x.CreateOperationsClient())
-                .Returns(new Mock<Operations.OperationsClient>().Object);
             GenerateConsistencyTokenRequest request = new GenerateConsistencyTokenRequest
             {
                 TableName = new TableName("[PROJECT]", "[INSTANCE]", "[TABLE]"),
@@ -505,8 +464,6 @@ namespace Google.Cloud.Bigtable.Admin.V2.Tests
         public async Task GenerateConsistencyTokenAsync2()
         {
             Mock<BigtableTableAdmin.BigtableTableAdminClient> mockGrpcClient = new Mock<BigtableTableAdmin.BigtableTableAdminClient>(MockBehavior.Strict);
-            mockGrpcClient.Setup(x => x.CreateOperationsClient())
-                .Returns(new Mock<Operations.OperationsClient>().Object);
             GenerateConsistencyTokenRequest request = new GenerateConsistencyTokenRequest
             {
                 TableName = new TableName("[PROJECT]", "[INSTANCE]", "[TABLE]"),
@@ -527,8 +484,6 @@ namespace Google.Cloud.Bigtable.Admin.V2.Tests
         public void CheckConsistency()
         {
             Mock<BigtableTableAdmin.BigtableTableAdminClient> mockGrpcClient = new Mock<BigtableTableAdmin.BigtableTableAdminClient>(MockBehavior.Strict);
-            mockGrpcClient.Setup(x => x.CreateOperationsClient())
-                .Returns(new Mock<Operations.OperationsClient>().Object);
             CheckConsistencyRequest expectedRequest = new CheckConsistencyRequest
             {
                 TableName = new TableName("[PROJECT]", "[INSTANCE]", "[TABLE]"),
@@ -552,8 +507,6 @@ namespace Google.Cloud.Bigtable.Admin.V2.Tests
         public async Task CheckConsistencyAsync()
         {
             Mock<BigtableTableAdmin.BigtableTableAdminClient> mockGrpcClient = new Mock<BigtableTableAdmin.BigtableTableAdminClient>(MockBehavior.Strict);
-            mockGrpcClient.Setup(x => x.CreateOperationsClient())
-                .Returns(new Mock<Operations.OperationsClient>().Object);
             CheckConsistencyRequest expectedRequest = new CheckConsistencyRequest
             {
                 TableName = new TableName("[PROJECT]", "[INSTANCE]", "[TABLE]"),
@@ -577,8 +530,6 @@ namespace Google.Cloud.Bigtable.Admin.V2.Tests
         public void CheckConsistency2()
         {
             Mock<BigtableTableAdmin.BigtableTableAdminClient> mockGrpcClient = new Mock<BigtableTableAdmin.BigtableTableAdminClient>(MockBehavior.Strict);
-            mockGrpcClient.Setup(x => x.CreateOperationsClient())
-                .Returns(new Mock<Operations.OperationsClient>().Object);
             CheckConsistencyRequest request = new CheckConsistencyRequest
             {
                 TableName = new TableName("[PROJECT]", "[INSTANCE]", "[TABLE]"),
@@ -600,8 +551,6 @@ namespace Google.Cloud.Bigtable.Admin.V2.Tests
         public async Task CheckConsistencyAsync2()
         {
             Mock<BigtableTableAdmin.BigtableTableAdminClient> mockGrpcClient = new Mock<BigtableTableAdmin.BigtableTableAdminClient>(MockBehavior.Strict);
-            mockGrpcClient.Setup(x => x.CreateOperationsClient())
-                .Returns(new Mock<Operations.OperationsClient>().Object);
             CheckConsistencyRequest request = new CheckConsistencyRequest
             {
                 TableName = new TableName("[PROJECT]", "[INSTANCE]", "[TABLE]"),
@@ -620,174 +569,256 @@ namespace Google.Cloud.Bigtable.Admin.V2.Tests
         }
 
         [Fact]
-        public void GetSnapshot()
+        public void GetIamPolicy()
         {
             Mock<BigtableTableAdmin.BigtableTableAdminClient> mockGrpcClient = new Mock<BigtableTableAdmin.BigtableTableAdminClient>(MockBehavior.Strict);
-            mockGrpcClient.Setup(x => x.CreateOperationsClient())
-                .Returns(new Mock<Operations.OperationsClient>().Object);
-            GetSnapshotRequest expectedRequest = new GetSnapshotRequest
+            GetIamPolicyRequest expectedRequest = new GetIamPolicyRequest
             {
-                SnapshotName = new SnapshotName("[PROJECT]", "[INSTANCE]", "[CLUSTER]", "[SNAPSHOT]"),
+                Resource = new Google.Cloud.Bigtable.Common.V2.TableName("[PROJECT]", "[INSTANCE]", "[TABLE]").ToString(),
             };
-            Snapshot expectedResponse = new Snapshot
+            Policy expectedResponse = new Policy
             {
-                SnapshotName = new SnapshotName("[PROJECT]", "[INSTANCE]", "[CLUSTER]", "[SNAPSHOT]"),
-                DataSizeBytes = 2110122398L,
-                Description = "description-1724546052",
+                Version = 351608024,
+                Etag = ByteString.CopyFromUtf8("etag3123477"),
             };
-            mockGrpcClient.Setup(x => x.GetSnapshot(expectedRequest, It.IsAny<CallOptions>()))
+            mockGrpcClient.Setup(x => x.GetIamPolicy(expectedRequest, It.IsAny<CallOptions>()))
                 .Returns(expectedResponse);
             BigtableTableAdminClient client = new BigtableTableAdminClientImpl(mockGrpcClient.Object, null);
-            SnapshotName name = new SnapshotName("[PROJECT]", "[INSTANCE]", "[CLUSTER]", "[SNAPSHOT]");
-            Snapshot response = client.GetSnapshot(name);
+            string formattedResource = new Google.Cloud.Bigtable.Common.V2.TableName("[PROJECT]", "[INSTANCE]", "[TABLE]").ToString();
+            Policy response = client.GetIamPolicy(formattedResource);
             Assert.Same(expectedResponse, response);
             mockGrpcClient.VerifyAll();
         }
 
         [Fact]
-        public async Task GetSnapshotAsync()
+        public async Task GetIamPolicyAsync()
         {
             Mock<BigtableTableAdmin.BigtableTableAdminClient> mockGrpcClient = new Mock<BigtableTableAdmin.BigtableTableAdminClient>(MockBehavior.Strict);
-            mockGrpcClient.Setup(x => x.CreateOperationsClient())
-                .Returns(new Mock<Operations.OperationsClient>().Object);
-            GetSnapshotRequest expectedRequest = new GetSnapshotRequest
+            GetIamPolicyRequest expectedRequest = new GetIamPolicyRequest
             {
-                SnapshotName = new SnapshotName("[PROJECT]", "[INSTANCE]", "[CLUSTER]", "[SNAPSHOT]"),
+                Resource = new Google.Cloud.Bigtable.Common.V2.TableName("[PROJECT]", "[INSTANCE]", "[TABLE]").ToString(),
             };
-            Snapshot expectedResponse = new Snapshot
+            Policy expectedResponse = new Policy
             {
-                SnapshotName = new SnapshotName("[PROJECT]", "[INSTANCE]", "[CLUSTER]", "[SNAPSHOT]"),
-                DataSizeBytes = 2110122398L,
-                Description = "description-1724546052",
+                Version = 351608024,
+                Etag = ByteString.CopyFromUtf8("etag3123477"),
             };
-            mockGrpcClient.Setup(x => x.GetSnapshotAsync(expectedRequest, It.IsAny<CallOptions>()))
-                .Returns(new Grpc.Core.AsyncUnaryCall<Snapshot>(Task.FromResult(expectedResponse), null, null, null, null));
+            mockGrpcClient.Setup(x => x.GetIamPolicyAsync(expectedRequest, It.IsAny<CallOptions>()))
+                .Returns(new Grpc.Core.AsyncUnaryCall<Policy>(Task.FromResult(expectedResponse), null, null, null, null));
             BigtableTableAdminClient client = new BigtableTableAdminClientImpl(mockGrpcClient.Object, null);
-            SnapshotName name = new SnapshotName("[PROJECT]", "[INSTANCE]", "[CLUSTER]", "[SNAPSHOT]");
-            Snapshot response = await client.GetSnapshotAsync(name);
+            string formattedResource = new Google.Cloud.Bigtable.Common.V2.TableName("[PROJECT]", "[INSTANCE]", "[TABLE]").ToString();
+            Policy response = await client.GetIamPolicyAsync(formattedResource);
             Assert.Same(expectedResponse, response);
             mockGrpcClient.VerifyAll();
         }
 
         [Fact]
-        public void GetSnapshot2()
+        public void GetIamPolicy2()
         {
             Mock<BigtableTableAdmin.BigtableTableAdminClient> mockGrpcClient = new Mock<BigtableTableAdmin.BigtableTableAdminClient>(MockBehavior.Strict);
-            mockGrpcClient.Setup(x => x.CreateOperationsClient())
-                .Returns(new Mock<Operations.OperationsClient>().Object);
-            GetSnapshotRequest request = new GetSnapshotRequest
+            GetIamPolicyRequest request = new GetIamPolicyRequest
             {
-                SnapshotName = new SnapshotName("[PROJECT]", "[INSTANCE]", "[CLUSTER]", "[SNAPSHOT]"),
+                Resource = new Google.Cloud.Bigtable.Common.V2.TableName("[PROJECT]", "[INSTANCE]", "[TABLE]").ToString(),
             };
-            Snapshot expectedResponse = new Snapshot
+            Policy expectedResponse = new Policy
             {
-                SnapshotName = new SnapshotName("[PROJECT]", "[INSTANCE]", "[CLUSTER]", "[SNAPSHOT]"),
-                DataSizeBytes = 2110122398L,
-                Description = "description-1724546052",
+                Version = 351608024,
+                Etag = ByteString.CopyFromUtf8("etag3123477"),
             };
-            mockGrpcClient.Setup(x => x.GetSnapshot(request, It.IsAny<CallOptions>()))
+            mockGrpcClient.Setup(x => x.GetIamPolicy(request, It.IsAny<CallOptions>()))
                 .Returns(expectedResponse);
             BigtableTableAdminClient client = new BigtableTableAdminClientImpl(mockGrpcClient.Object, null);
-            Snapshot response = client.GetSnapshot(request);
+            Policy response = client.GetIamPolicy(request);
             Assert.Same(expectedResponse, response);
             mockGrpcClient.VerifyAll();
         }
 
         [Fact]
-        public async Task GetSnapshotAsync2()
+        public async Task GetIamPolicyAsync2()
         {
             Mock<BigtableTableAdmin.BigtableTableAdminClient> mockGrpcClient = new Mock<BigtableTableAdmin.BigtableTableAdminClient>(MockBehavior.Strict);
-            mockGrpcClient.Setup(x => x.CreateOperationsClient())
-                .Returns(new Mock<Operations.OperationsClient>().Object);
-            GetSnapshotRequest request = new GetSnapshotRequest
+            GetIamPolicyRequest request = new GetIamPolicyRequest
             {
-                SnapshotName = new SnapshotName("[PROJECT]", "[INSTANCE]", "[CLUSTER]", "[SNAPSHOT]"),
+                Resource = new Google.Cloud.Bigtable.Common.V2.TableName("[PROJECT]", "[INSTANCE]", "[TABLE]").ToString(),
             };
-            Snapshot expectedResponse = new Snapshot
+            Policy expectedResponse = new Policy
             {
-                SnapshotName = new SnapshotName("[PROJECT]", "[INSTANCE]", "[CLUSTER]", "[SNAPSHOT]"),
-                DataSizeBytes = 2110122398L,
-                Description = "description-1724546052",
+                Version = 351608024,
+                Etag = ByteString.CopyFromUtf8("etag3123477"),
             };
-            mockGrpcClient.Setup(x => x.GetSnapshotAsync(request, It.IsAny<CallOptions>()))
-                .Returns(new Grpc.Core.AsyncUnaryCall<Snapshot>(Task.FromResult(expectedResponse), null, null, null, null));
+            mockGrpcClient.Setup(x => x.GetIamPolicyAsync(request, It.IsAny<CallOptions>()))
+                .Returns(new Grpc.Core.AsyncUnaryCall<Policy>(Task.FromResult(expectedResponse), null, null, null, null));
             BigtableTableAdminClient client = new BigtableTableAdminClientImpl(mockGrpcClient.Object, null);
-            Snapshot response = await client.GetSnapshotAsync(request);
+            Policy response = await client.GetIamPolicyAsync(request);
             Assert.Same(expectedResponse, response);
             mockGrpcClient.VerifyAll();
         }
 
         [Fact]
-        public void DeleteSnapshot()
+        public void SetIamPolicy()
         {
             Mock<BigtableTableAdmin.BigtableTableAdminClient> mockGrpcClient = new Mock<BigtableTableAdmin.BigtableTableAdminClient>(MockBehavior.Strict);
-            mockGrpcClient.Setup(x => x.CreateOperationsClient())
-                .Returns(new Mock<Operations.OperationsClient>().Object);
-            DeleteSnapshotRequest expectedRequest = new DeleteSnapshotRequest
+            SetIamPolicyRequest expectedRequest = new SetIamPolicyRequest
             {
-                SnapshotName = new SnapshotName("[PROJECT]", "[INSTANCE]", "[CLUSTER]", "[SNAPSHOT]"),
+                Resource = new Google.Cloud.Bigtable.Common.V2.TableName("[PROJECT]", "[INSTANCE]", "[TABLE]").ToString(),
+                Policy = new Policy(),
             };
-            Empty expectedResponse = new Empty();
-            mockGrpcClient.Setup(x => x.DeleteSnapshot(expectedRequest, It.IsAny<CallOptions>()))
+            Policy expectedResponse = new Policy
+            {
+                Version = 351608024,
+                Etag = ByteString.CopyFromUtf8("etag3123477"),
+            };
+            mockGrpcClient.Setup(x => x.SetIamPolicy(expectedRequest, It.IsAny<CallOptions>()))
                 .Returns(expectedResponse);
             BigtableTableAdminClient client = new BigtableTableAdminClientImpl(mockGrpcClient.Object, null);
-            SnapshotName name = new SnapshotName("[PROJECT]", "[INSTANCE]", "[CLUSTER]", "[SNAPSHOT]");
-            client.DeleteSnapshot(name);
+            string formattedResource = new Google.Cloud.Bigtable.Common.V2.TableName("[PROJECT]", "[INSTANCE]", "[TABLE]").ToString();
+            Policy policy = new Policy();
+            Policy response = client.SetIamPolicy(formattedResource, policy);
+            Assert.Same(expectedResponse, response);
             mockGrpcClient.VerifyAll();
         }
 
         [Fact]
-        public async Task DeleteSnapshotAsync()
+        public async Task SetIamPolicyAsync()
         {
             Mock<BigtableTableAdmin.BigtableTableAdminClient> mockGrpcClient = new Mock<BigtableTableAdmin.BigtableTableAdminClient>(MockBehavior.Strict);
-            mockGrpcClient.Setup(x => x.CreateOperationsClient())
-                .Returns(new Mock<Operations.OperationsClient>().Object);
-            DeleteSnapshotRequest expectedRequest = new DeleteSnapshotRequest
+            SetIamPolicyRequest expectedRequest = new SetIamPolicyRequest
             {
-                SnapshotName = new SnapshotName("[PROJECT]", "[INSTANCE]", "[CLUSTER]", "[SNAPSHOT]"),
+                Resource = new Google.Cloud.Bigtable.Common.V2.TableName("[PROJECT]", "[INSTANCE]", "[TABLE]").ToString(),
+                Policy = new Policy(),
             };
-            Empty expectedResponse = new Empty();
-            mockGrpcClient.Setup(x => x.DeleteSnapshotAsync(expectedRequest, It.IsAny<CallOptions>()))
-                .Returns(new Grpc.Core.AsyncUnaryCall<Empty>(Task.FromResult(expectedResponse), null, null, null, null));
+            Policy expectedResponse = new Policy
+            {
+                Version = 351608024,
+                Etag = ByteString.CopyFromUtf8("etag3123477"),
+            };
+            mockGrpcClient.Setup(x => x.SetIamPolicyAsync(expectedRequest, It.IsAny<CallOptions>()))
+                .Returns(new Grpc.Core.AsyncUnaryCall<Policy>(Task.FromResult(expectedResponse), null, null, null, null));
             BigtableTableAdminClient client = new BigtableTableAdminClientImpl(mockGrpcClient.Object, null);
-            SnapshotName name = new SnapshotName("[PROJECT]", "[INSTANCE]", "[CLUSTER]", "[SNAPSHOT]");
-            await client.DeleteSnapshotAsync(name);
+            string formattedResource = new Google.Cloud.Bigtable.Common.V2.TableName("[PROJECT]", "[INSTANCE]", "[TABLE]").ToString();
+            Policy policy = new Policy();
+            Policy response = await client.SetIamPolicyAsync(formattedResource, policy);
+            Assert.Same(expectedResponse, response);
             mockGrpcClient.VerifyAll();
         }
 
         [Fact]
-        public void DeleteSnapshot2()
+        public void SetIamPolicy2()
         {
             Mock<BigtableTableAdmin.BigtableTableAdminClient> mockGrpcClient = new Mock<BigtableTableAdmin.BigtableTableAdminClient>(MockBehavior.Strict);
-            mockGrpcClient.Setup(x => x.CreateOperationsClient())
-                .Returns(new Mock<Operations.OperationsClient>().Object);
-            DeleteSnapshotRequest request = new DeleteSnapshotRequest
+            SetIamPolicyRequest request = new SetIamPolicyRequest
             {
-                SnapshotName = new SnapshotName("[PROJECT]", "[INSTANCE]", "[CLUSTER]", "[SNAPSHOT]"),
+                Resource = new Google.Cloud.Bigtable.Common.V2.TableName("[PROJECT]", "[INSTANCE]", "[TABLE]").ToString(),
+                Policy = new Policy(),
             };
-            Empty expectedResponse = new Empty();
-            mockGrpcClient.Setup(x => x.DeleteSnapshot(request, It.IsAny<CallOptions>()))
+            Policy expectedResponse = new Policy
+            {
+                Version = 351608024,
+                Etag = ByteString.CopyFromUtf8("etag3123477"),
+            };
+            mockGrpcClient.Setup(x => x.SetIamPolicy(request, It.IsAny<CallOptions>()))
                 .Returns(expectedResponse);
             BigtableTableAdminClient client = new BigtableTableAdminClientImpl(mockGrpcClient.Object, null);
-            client.DeleteSnapshot(request);
+            Policy response = client.SetIamPolicy(request);
+            Assert.Same(expectedResponse, response);
             mockGrpcClient.VerifyAll();
         }
 
         [Fact]
-        public async Task DeleteSnapshotAsync2()
+        public async Task SetIamPolicyAsync2()
         {
             Mock<BigtableTableAdmin.BigtableTableAdminClient> mockGrpcClient = new Mock<BigtableTableAdmin.BigtableTableAdminClient>(MockBehavior.Strict);
-            mockGrpcClient.Setup(x => x.CreateOperationsClient())
-                .Returns(new Mock<Operations.OperationsClient>().Object);
-            DeleteSnapshotRequest request = new DeleteSnapshotRequest
+            SetIamPolicyRequest request = new SetIamPolicyRequest
             {
-                SnapshotName = new SnapshotName("[PROJECT]", "[INSTANCE]", "[CLUSTER]", "[SNAPSHOT]"),
+                Resource = new Google.Cloud.Bigtable.Common.V2.TableName("[PROJECT]", "[INSTANCE]", "[TABLE]").ToString(),
+                Policy = new Policy(),
             };
-            Empty expectedResponse = new Empty();
-            mockGrpcClient.Setup(x => x.DeleteSnapshotAsync(request, It.IsAny<CallOptions>()))
-                .Returns(new Grpc.Core.AsyncUnaryCall<Empty>(Task.FromResult(expectedResponse), null, null, null, null));
+            Policy expectedResponse = new Policy
+            {
+                Version = 351608024,
+                Etag = ByteString.CopyFromUtf8("etag3123477"),
+            };
+            mockGrpcClient.Setup(x => x.SetIamPolicyAsync(request, It.IsAny<CallOptions>()))
+                .Returns(new Grpc.Core.AsyncUnaryCall<Policy>(Task.FromResult(expectedResponse), null, null, null, null));
             BigtableTableAdminClient client = new BigtableTableAdminClientImpl(mockGrpcClient.Object, null);
-            await client.DeleteSnapshotAsync(request);
+            Policy response = await client.SetIamPolicyAsync(request);
+            Assert.Same(expectedResponse, response);
+            mockGrpcClient.VerifyAll();
+        }
+
+        [Fact]
+        public void TestIamPermissions()
+        {
+            Mock<BigtableTableAdmin.BigtableTableAdminClient> mockGrpcClient = new Mock<BigtableTableAdmin.BigtableTableAdminClient>(MockBehavior.Strict);
+            TestIamPermissionsRequest expectedRequest = new TestIamPermissionsRequest
+            {
+                Resource = new Google.Cloud.Bigtable.Common.V2.TableName("[PROJECT]", "[INSTANCE]", "[TABLE]").ToString(),
+                Permissions = { },
+            };
+            TestIamPermissionsResponse expectedResponse = new TestIamPermissionsResponse();
+            mockGrpcClient.Setup(x => x.TestIamPermissions(expectedRequest, It.IsAny<CallOptions>()))
+                .Returns(expectedResponse);
+            BigtableTableAdminClient client = new BigtableTableAdminClientImpl(mockGrpcClient.Object, null);
+            string formattedResource = new Google.Cloud.Bigtable.Common.V2.TableName("[PROJECT]", "[INSTANCE]", "[TABLE]").ToString();
+            IEnumerable<string> permissions = new List<string>();
+            TestIamPermissionsResponse response = client.TestIamPermissions(formattedResource, permissions);
+            Assert.Same(expectedResponse, response);
+            mockGrpcClient.VerifyAll();
+        }
+
+        [Fact]
+        public async Task TestIamPermissionsAsync()
+        {
+            Mock<BigtableTableAdmin.BigtableTableAdminClient> mockGrpcClient = new Mock<BigtableTableAdmin.BigtableTableAdminClient>(MockBehavior.Strict);
+            TestIamPermissionsRequest expectedRequest = new TestIamPermissionsRequest
+            {
+                Resource = new Google.Cloud.Bigtable.Common.V2.TableName("[PROJECT]", "[INSTANCE]", "[TABLE]").ToString(),
+                Permissions = { },
+            };
+            TestIamPermissionsResponse expectedResponse = new TestIamPermissionsResponse();
+            mockGrpcClient.Setup(x => x.TestIamPermissionsAsync(expectedRequest, It.IsAny<CallOptions>()))
+                .Returns(new Grpc.Core.AsyncUnaryCall<TestIamPermissionsResponse>(Task.FromResult(expectedResponse), null, null, null, null));
+            BigtableTableAdminClient client = new BigtableTableAdminClientImpl(mockGrpcClient.Object, null);
+            string formattedResource = new Google.Cloud.Bigtable.Common.V2.TableName("[PROJECT]", "[INSTANCE]", "[TABLE]").ToString();
+            IEnumerable<string> permissions = new List<string>();
+            TestIamPermissionsResponse response = await client.TestIamPermissionsAsync(formattedResource, permissions);
+            Assert.Same(expectedResponse, response);
+            mockGrpcClient.VerifyAll();
+        }
+
+        [Fact]
+        public void TestIamPermissions2()
+        {
+            Mock<BigtableTableAdmin.BigtableTableAdminClient> mockGrpcClient = new Mock<BigtableTableAdmin.BigtableTableAdminClient>(MockBehavior.Strict);
+            TestIamPermissionsRequest request = new TestIamPermissionsRequest
+            {
+                Resource = new Google.Cloud.Bigtable.Common.V2.TableName("[PROJECT]", "[INSTANCE]", "[TABLE]").ToString(),
+                Permissions = { },
+            };
+            TestIamPermissionsResponse expectedResponse = new TestIamPermissionsResponse();
+            mockGrpcClient.Setup(x => x.TestIamPermissions(request, It.IsAny<CallOptions>()))
+                .Returns(expectedResponse);
+            BigtableTableAdminClient client = new BigtableTableAdminClientImpl(mockGrpcClient.Object, null);
+            TestIamPermissionsResponse response = client.TestIamPermissions(request);
+            Assert.Same(expectedResponse, response);
+            mockGrpcClient.VerifyAll();
+        }
+
+        [Fact]
+        public async Task TestIamPermissionsAsync2()
+        {
+            Mock<BigtableTableAdmin.BigtableTableAdminClient> mockGrpcClient = new Mock<BigtableTableAdmin.BigtableTableAdminClient>(MockBehavior.Strict);
+            TestIamPermissionsRequest request = new TestIamPermissionsRequest
+            {
+                Resource = new Google.Cloud.Bigtable.Common.V2.TableName("[PROJECT]", "[INSTANCE]", "[TABLE]").ToString(),
+                Permissions = { },
+            };
+            TestIamPermissionsResponse expectedResponse = new TestIamPermissionsResponse();
+            mockGrpcClient.Setup(x => x.TestIamPermissionsAsync(request, It.IsAny<CallOptions>()))
+                .Returns(new Grpc.Core.AsyncUnaryCall<TestIamPermissionsResponse>(Task.FromResult(expectedResponse), null, null, null, null));
+            BigtableTableAdminClient client = new BigtableTableAdminClientImpl(mockGrpcClient.Object, null);
+            TestIamPermissionsResponse response = await client.TestIamPermissionsAsync(request);
+            Assert.Same(expectedResponse, response);
             mockGrpcClient.VerifyAll();
         }
 

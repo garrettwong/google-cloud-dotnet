@@ -1,4 +1,4 @@
-// Copyright 2018 Google LLC
+// Copyright 2019 Google LLC
 //
 // Licensed under the Apache License, Version 2.0 (the "License");
 // you may not use this file except in compliance with the License.
@@ -279,6 +279,42 @@ namespace Google.Cloud.Monitoring.V3
     }
 
     /// <summary>
+    /// Builder class for <see cref="AlertPolicyServiceClient"/> to provide simple configuration of credentials, endpoint etc.
+    /// </summary>
+    public sealed partial class AlertPolicyServiceClientBuilder : gaxgrpc::ClientBuilderBase<AlertPolicyServiceClient>
+    {
+        /// <summary>
+        /// The settings to use for RPCs, or null for the default settings.
+        /// </summary>
+        public AlertPolicyServiceSettings Settings { get; set; }
+
+        /// <inheritdoc/>
+        public override AlertPolicyServiceClient Build()
+        {
+            Validate();
+            grpccore::CallInvoker callInvoker = CreateCallInvoker();
+            return AlertPolicyServiceClient.Create(callInvoker, Settings);
+        }
+
+        /// <inheritdoc />
+        public override async stt::Task<AlertPolicyServiceClient> BuildAsync(st::CancellationToken cancellationToken = default)
+        {
+            Validate();
+            grpccore::CallInvoker callInvoker = await CreateCallInvokerAsync(cancellationToken).ConfigureAwait(false);
+            return AlertPolicyServiceClient.Create(callInvoker, Settings);
+        }
+
+        /// <inheritdoc />
+        protected override gaxgrpc::ServiceEndpoint GetDefaultEndpoint() => AlertPolicyServiceClient.DefaultEndpoint;
+
+        /// <inheritdoc />
+        protected override scg::IReadOnlyList<string> GetDefaultScopes() => AlertPolicyServiceClient.DefaultScopes;
+
+        /// <inheritdoc />
+        protected override gaxgrpc::ChannelPool GetChannelPool() => AlertPolicyServiceClient.ChannelPool;
+    }
+
+    /// <summary>
     /// AlertPolicyService client wrapper, for convenient use.
     /// </summary>
     public abstract partial class AlertPolicyServiceClient
@@ -308,6 +344,8 @@ namespace Google.Cloud.Monitoring.V3
         });
 
         private static readonly gaxgrpc::ChannelPool s_channelPool = new gaxgrpc::ChannelPool(DefaultScopes);
+
+        internal static gaxgrpc::ChannelPool ChannelPool => s_channelPool;
 
         /// <summary>
         /// Asynchronously creates a <see cref="AlertPolicyServiceClient"/>, applying defaults for all unspecified settings,
@@ -523,6 +561,88 @@ namespace Google.Cloud.Monitoring.V3
         /// <summary>
         /// Lists the existing alerting policies for the project.
         /// </summary>
+        /// <param name="name">
+        /// The project whose alert policies are to be listed. The format is
+        ///
+        ///     projects/[PROJECT_ID]
+        ///
+        /// Note that this field names the parent container in which the alerting
+        /// policies to be listed are stored. To retrieve a single alerting policy
+        /// by name, use the
+        /// [GetAlertPolicy][google.monitoring.v3.AlertPolicyService.GetAlertPolicy]
+        /// operation, instead.
+        /// </param>
+        /// <param name="pageToken">
+        /// The token returned from the previous request.
+        /// A value of <c>null</c> or an empty string retrieves the first page.
+        /// </param>
+        /// <param name="pageSize">
+        /// The size of page to request. The response will not be larger than this, but may be smaller.
+        /// A value of <c>null</c> or 0 uses a server-defined page size.
+        /// </param>
+        /// <param name="callSettings">
+        /// If not null, applies overrides to this RPC call.
+        /// </param>
+        /// <returns>
+        /// A pageable asynchronous sequence of <see cref="AlertPolicy"/> resources.
+        /// </returns>
+        public virtual gax::PagedAsyncEnumerable<ListAlertPoliciesResponse, AlertPolicy> ListAlertPoliciesAsync(
+            string name,
+            string pageToken = null,
+            int? pageSize = null,
+            gaxgrpc::CallSettings callSettings = null) => ListAlertPoliciesAsync(
+                new ListAlertPoliciesRequest
+                {
+                    Name = gax::GaxPreconditions.CheckNotNullOrEmpty(name, nameof(name)),
+                    PageToken = pageToken ?? "",
+                    PageSize = pageSize ?? 0,
+                },
+                callSettings);
+
+        /// <summary>
+        /// Lists the existing alerting policies for the project.
+        /// </summary>
+        /// <param name="name">
+        /// The project whose alert policies are to be listed. The format is
+        ///
+        ///     projects/[PROJECT_ID]
+        ///
+        /// Note that this field names the parent container in which the alerting
+        /// policies to be listed are stored. To retrieve a single alerting policy
+        /// by name, use the
+        /// [GetAlertPolicy][google.monitoring.v3.AlertPolicyService.GetAlertPolicy]
+        /// operation, instead.
+        /// </param>
+        /// <param name="pageToken">
+        /// The token returned from the previous request.
+        /// A value of <c>null</c> or an empty string retrieves the first page.
+        /// </param>
+        /// <param name="pageSize">
+        /// The size of page to request. The response will not be larger than this, but may be smaller.
+        /// A value of <c>null</c> or 0 uses a server-defined page size.
+        /// </param>
+        /// <param name="callSettings">
+        /// If not null, applies overrides to this RPC call.
+        /// </param>
+        /// <returns>
+        /// A pageable sequence of <see cref="AlertPolicy"/> resources.
+        /// </returns>
+        public virtual gax::PagedEnumerable<ListAlertPoliciesResponse, AlertPolicy> ListAlertPolicies(
+            string name,
+            string pageToken = null,
+            int? pageSize = null,
+            gaxgrpc::CallSettings callSettings = null) => ListAlertPolicies(
+                new ListAlertPoliciesRequest
+                {
+                    Name = gax::GaxPreconditions.CheckNotNullOrEmpty(name, nameof(name)),
+                    PageToken = pageToken ?? "",
+                    PageSize = pageSize ?? 0,
+                },
+                callSettings);
+
+        /// <summary>
+        /// Lists the existing alerting policies for the project.
+        /// </summary>
         /// <param name="request">
         /// The request object containing all of the parameters for the API call.
         /// </param>
@@ -621,6 +741,72 @@ namespace Google.Cloud.Monitoring.V3
                 new GetAlertPolicyRequest
                 {
                     AlertPolicyName = gax::GaxPreconditions.CheckNotNull(name, nameof(name)),
+                },
+                callSettings);
+
+        /// <summary>
+        /// Gets a single alerting policy.
+        /// </summary>
+        /// <param name="name">
+        /// The alerting policy to retrieve. The format is
+        ///
+        ///     projects/[PROJECT_ID]/alertPolicies/[ALERT_POLICY_ID]
+        /// </param>
+        /// <param name="callSettings">
+        /// If not null, applies overrides to this RPC call.
+        /// </param>
+        /// <returns>
+        /// A Task containing the RPC response.
+        /// </returns>
+        public virtual stt::Task<AlertPolicy> GetAlertPolicyAsync(
+            string name,
+            gaxgrpc::CallSettings callSettings = null) => GetAlertPolicyAsync(
+                new GetAlertPolicyRequest
+                {
+                    Name = gax::GaxPreconditions.CheckNotNullOrEmpty(name, nameof(name)),
+                },
+                callSettings);
+
+        /// <summary>
+        /// Gets a single alerting policy.
+        /// </summary>
+        /// <param name="name">
+        /// The alerting policy to retrieve. The format is
+        ///
+        ///     projects/[PROJECT_ID]/alertPolicies/[ALERT_POLICY_ID]
+        /// </param>
+        /// <param name="cancellationToken">
+        /// A <see cref="st::CancellationToken"/> to use for this RPC.
+        /// </param>
+        /// <returns>
+        /// A Task containing the RPC response.
+        /// </returns>
+        public virtual stt::Task<AlertPolicy> GetAlertPolicyAsync(
+            string name,
+            st::CancellationToken cancellationToken) => GetAlertPolicyAsync(
+                name,
+                gaxgrpc::CallSettings.FromCancellationToken(cancellationToken));
+
+        /// <summary>
+        /// Gets a single alerting policy.
+        /// </summary>
+        /// <param name="name">
+        /// The alerting policy to retrieve. The format is
+        ///
+        ///     projects/[PROJECT_ID]/alertPolicies/[ALERT_POLICY_ID]
+        /// </param>
+        /// <param name="callSettings">
+        /// If not null, applies overrides to this RPC call.
+        /// </param>
+        /// <returns>
+        /// The RPC response.
+        /// </returns>
+        public virtual AlertPolicy GetAlertPolicy(
+            string name,
+            gaxgrpc::CallSettings callSettings = null) => GetAlertPolicy(
+                new GetAlertPolicyRequest
+                {
+                    Name = gax::GaxPreconditions.CheckNotNullOrEmpty(name, nameof(name)),
                 },
                 callSettings);
 
@@ -785,6 +971,108 @@ namespace Google.Cloud.Monitoring.V3
         /// <summary>
         /// Creates a new alerting policy.
         /// </summary>
+        /// <param name="name">
+        /// The project in which to create the alerting policy. The format is
+        /// `projects/[PROJECT_ID]`.
+        ///
+        /// Note that this field names the parent container in which the alerting
+        /// policy will be written, not the name of the created policy. The alerting
+        /// policy that is returned will have a name that contains a normalized
+        /// representation of this name as a prefix but adds a suffix of the form
+        /// `/alertPolicies/[POLICY_ID]`, identifying the policy in the container.
+        /// </param>
+        /// <param name="alertPolicy">
+        /// The requested alerting policy. You should omit the `name` field in this
+        /// policy. The name will be returned in the new policy, including
+        /// a new [ALERT_POLICY_ID] value.
+        /// </param>
+        /// <param name="callSettings">
+        /// If not null, applies overrides to this RPC call.
+        /// </param>
+        /// <returns>
+        /// A Task containing the RPC response.
+        /// </returns>
+        public virtual stt::Task<AlertPolicy> CreateAlertPolicyAsync(
+            string name,
+            AlertPolicy alertPolicy,
+            gaxgrpc::CallSettings callSettings = null) => CreateAlertPolicyAsync(
+                new CreateAlertPolicyRequest
+                {
+                    Name = gax::GaxPreconditions.CheckNotNullOrEmpty(name, nameof(name)),
+                    AlertPolicy = gax::GaxPreconditions.CheckNotNull(alertPolicy, nameof(alertPolicy)),
+                },
+                callSettings);
+
+        /// <summary>
+        /// Creates a new alerting policy.
+        /// </summary>
+        /// <param name="name">
+        /// The project in which to create the alerting policy. The format is
+        /// `projects/[PROJECT_ID]`.
+        ///
+        /// Note that this field names the parent container in which the alerting
+        /// policy will be written, not the name of the created policy. The alerting
+        /// policy that is returned will have a name that contains a normalized
+        /// representation of this name as a prefix but adds a suffix of the form
+        /// `/alertPolicies/[POLICY_ID]`, identifying the policy in the container.
+        /// </param>
+        /// <param name="alertPolicy">
+        /// The requested alerting policy. You should omit the `name` field in this
+        /// policy. The name will be returned in the new policy, including
+        /// a new [ALERT_POLICY_ID] value.
+        /// </param>
+        /// <param name="cancellationToken">
+        /// A <see cref="st::CancellationToken"/> to use for this RPC.
+        /// </param>
+        /// <returns>
+        /// A Task containing the RPC response.
+        /// </returns>
+        public virtual stt::Task<AlertPolicy> CreateAlertPolicyAsync(
+            string name,
+            AlertPolicy alertPolicy,
+            st::CancellationToken cancellationToken) => CreateAlertPolicyAsync(
+                name,
+                alertPolicy,
+                gaxgrpc::CallSettings.FromCancellationToken(cancellationToken));
+
+        /// <summary>
+        /// Creates a new alerting policy.
+        /// </summary>
+        /// <param name="name">
+        /// The project in which to create the alerting policy. The format is
+        /// `projects/[PROJECT_ID]`.
+        ///
+        /// Note that this field names the parent container in which the alerting
+        /// policy will be written, not the name of the created policy. The alerting
+        /// policy that is returned will have a name that contains a normalized
+        /// representation of this name as a prefix but adds a suffix of the form
+        /// `/alertPolicies/[POLICY_ID]`, identifying the policy in the container.
+        /// </param>
+        /// <param name="alertPolicy">
+        /// The requested alerting policy. You should omit the `name` field in this
+        /// policy. The name will be returned in the new policy, including
+        /// a new [ALERT_POLICY_ID] value.
+        /// </param>
+        /// <param name="callSettings">
+        /// If not null, applies overrides to this RPC call.
+        /// </param>
+        /// <returns>
+        /// The RPC response.
+        /// </returns>
+        public virtual AlertPolicy CreateAlertPolicy(
+            string name,
+            AlertPolicy alertPolicy,
+            gaxgrpc::CallSettings callSettings = null) => CreateAlertPolicy(
+                new CreateAlertPolicyRequest
+                {
+                    Name = gax::GaxPreconditions.CheckNotNullOrEmpty(name, nameof(name)),
+                    AlertPolicy = gax::GaxPreconditions.CheckNotNull(alertPolicy, nameof(alertPolicy)),
+                },
+                callSettings);
+
+        /// <summary>
+        /// Creates a new alerting policy.
+        /// </summary>
         /// <param name="request">
         /// The request object containing all of the parameters for the API call.
         /// </param>
@@ -904,6 +1192,75 @@ namespace Google.Cloud.Monitoring.V3
                 new DeleteAlertPolicyRequest
                 {
                     AlertPolicyName = gax::GaxPreconditions.CheckNotNull(name, nameof(name)),
+                },
+                callSettings);
+
+        /// <summary>
+        /// Deletes an alerting policy.
+        /// </summary>
+        /// <param name="name">
+        /// The alerting policy to delete. The format is:
+        ///
+        ///     projects/[PROJECT_ID]/alertPolicies/[ALERT_POLICY_ID]
+        ///
+        /// For more information, see [AlertPolicy][google.monitoring.v3.AlertPolicy].
+        /// </param>
+        /// <param name="callSettings">
+        /// If not null, applies overrides to this RPC call.
+        /// </param>
+        /// <returns>
+        /// A Task that completes when the RPC has completed.
+        /// </returns>
+        public virtual stt::Task DeleteAlertPolicyAsync(
+            string name,
+            gaxgrpc::CallSettings callSettings = null) => DeleteAlertPolicyAsync(
+                new DeleteAlertPolicyRequest
+                {
+                    Name = gax::GaxPreconditions.CheckNotNullOrEmpty(name, nameof(name)),
+                },
+                callSettings);
+
+        /// <summary>
+        /// Deletes an alerting policy.
+        /// </summary>
+        /// <param name="name">
+        /// The alerting policy to delete. The format is:
+        ///
+        ///     projects/[PROJECT_ID]/alertPolicies/[ALERT_POLICY_ID]
+        ///
+        /// For more information, see [AlertPolicy][google.monitoring.v3.AlertPolicy].
+        /// </param>
+        /// <param name="cancellationToken">
+        /// A <see cref="st::CancellationToken"/> to use for this RPC.
+        /// </param>
+        /// <returns>
+        /// A Task that completes when the RPC has completed.
+        /// </returns>
+        public virtual stt::Task DeleteAlertPolicyAsync(
+            string name,
+            st::CancellationToken cancellationToken) => DeleteAlertPolicyAsync(
+                name,
+                gaxgrpc::CallSettings.FromCancellationToken(cancellationToken));
+
+        /// <summary>
+        /// Deletes an alerting policy.
+        /// </summary>
+        /// <param name="name">
+        /// The alerting policy to delete. The format is:
+        ///
+        ///     projects/[PROJECT_ID]/alertPolicies/[ALERT_POLICY_ID]
+        ///
+        /// For more information, see [AlertPolicy][google.monitoring.v3.AlertPolicy].
+        /// </param>
+        /// <param name="callSettings">
+        /// If not null, applies overrides to this RPC call.
+        /// </param>
+        public virtual void DeleteAlertPolicy(
+            string name,
+            gaxgrpc::CallSettings callSettings = null) => DeleteAlertPolicy(
+                new DeleteAlertPolicyRequest
+                {
+                    Name = gax::GaxPreconditions.CheckNotNullOrEmpty(name, nameof(name)),
                 },
                 callSettings);
 
@@ -1202,15 +1559,20 @@ namespace Google.Cloud.Monitoring.V3
             AlertPolicyServiceSettings effectiveSettings = settings ?? AlertPolicyServiceSettings.GetDefault();
             gaxgrpc::ClientHelper clientHelper = new gaxgrpc::ClientHelper(effectiveSettings);
             _callListAlertPolicies = clientHelper.BuildApiCall<ListAlertPoliciesRequest, ListAlertPoliciesResponse>(
-                GrpcClient.ListAlertPoliciesAsync, GrpcClient.ListAlertPolicies, effectiveSettings.ListAlertPoliciesSettings);
+                GrpcClient.ListAlertPoliciesAsync, GrpcClient.ListAlertPolicies, effectiveSettings.ListAlertPoliciesSettings)
+                .WithGoogleRequestParam("name", request => request.Name);
             _callGetAlertPolicy = clientHelper.BuildApiCall<GetAlertPolicyRequest, AlertPolicy>(
-                GrpcClient.GetAlertPolicyAsync, GrpcClient.GetAlertPolicy, effectiveSettings.GetAlertPolicySettings);
+                GrpcClient.GetAlertPolicyAsync, GrpcClient.GetAlertPolicy, effectiveSettings.GetAlertPolicySettings)
+                .WithGoogleRequestParam("name", request => request.Name);
             _callCreateAlertPolicy = clientHelper.BuildApiCall<CreateAlertPolicyRequest, AlertPolicy>(
-                GrpcClient.CreateAlertPolicyAsync, GrpcClient.CreateAlertPolicy, effectiveSettings.CreateAlertPolicySettings);
+                GrpcClient.CreateAlertPolicyAsync, GrpcClient.CreateAlertPolicy, effectiveSettings.CreateAlertPolicySettings)
+                .WithGoogleRequestParam("name", request => request.Name);
             _callDeleteAlertPolicy = clientHelper.BuildApiCall<DeleteAlertPolicyRequest, pbwkt::Empty>(
-                GrpcClient.DeleteAlertPolicyAsync, GrpcClient.DeleteAlertPolicy, effectiveSettings.DeleteAlertPolicySettings);
+                GrpcClient.DeleteAlertPolicyAsync, GrpcClient.DeleteAlertPolicy, effectiveSettings.DeleteAlertPolicySettings)
+                .WithGoogleRequestParam("name", request => request.Name);
             _callUpdateAlertPolicy = clientHelper.BuildApiCall<UpdateAlertPolicyRequest, AlertPolicy>(
-                GrpcClient.UpdateAlertPolicyAsync, GrpcClient.UpdateAlertPolicy, effectiveSettings.UpdateAlertPolicySettings);
+                GrpcClient.UpdateAlertPolicyAsync, GrpcClient.UpdateAlertPolicy, effectiveSettings.UpdateAlertPolicySettings)
+                .WithGoogleRequestParam("alert_policy.name", request => request.AlertPolicy?.Name);
             Modify_ApiCall(ref _callListAlertPolicies);
             Modify_ListAlertPoliciesApiCall(ref _callListAlertPolicies);
             Modify_ApiCall(ref _callGetAlertPolicy);

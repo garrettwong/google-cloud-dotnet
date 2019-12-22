@@ -20,7 +20,7 @@ using Microsoft.AspNetCore.Http;
 namespace Google.Cloud.Diagnostics.AspNetCore
 {
     /// <summary>
-    /// A <see cref="ILogEntryLabelProvider"/> which adds the information of the authenitacted user to the log entry labels.
+    /// A <see cref="ILogEntryLabelProvider"/> which adds the information of the authenticated user to the log entry labels.
     /// </summary>
     public class UserLogEntryLabelProvider : HttpLogEntryLabelProvider
     {
@@ -38,9 +38,10 @@ namespace Google.Cloud.Diagnostics.AspNetCore
             if (httpContext.User?.Identity != null)
             {
                 labels["user_authenticated"] = httpContext.User.Identity.IsAuthenticated.ToString();
-                if (httpContext.User.Identity.IsAuthenticated)
+                var userName = GetUserName(httpContext.User.Identity);
+                if (httpContext.User.Identity.IsAuthenticated && !string.IsNullOrEmpty(userName))
                 {
-                    labels["user_name"] = GetUserName(httpContext.User.Identity);
+                    labels["user_name"] = userName;
                 }
             }
         }

@@ -13,14 +13,13 @@
 // limitations under the License.
 
 using Google.Cloud.ClientTesting;
-using Google.Cloud.Firestore.V1Beta1;
+using Google.Cloud.Firestore.V1;
 using System;
 using System.Collections.Generic;
 using Xunit;
 using static Google.Cloud.Firestore.Tests.ProtoHelpers;
 
 using wkt = Google.Protobuf.WellKnownTypes;
-using BclType = System.Type;
 
 namespace Google.Cloud.Firestore.Tests
 {
@@ -57,7 +56,7 @@ namespace Google.Cloud.Firestore.Tests
             {
                 CreateTime = CreateProtoTimestamp(1, 10),
                 UpdateTime = CreateProtoTimestamp(2, 20),
-                Name = "projects/proj/databases/db/documents/col1/doc1/col2/doc2"                
+                Name = "projects/proj/databases/db/documents/col1/doc1/col2/doc2"
             };
             var document = DocumentSnapshot.ForDocument(db, proto, readTime);
             Assert.Equal(db.Document("col1/doc1/col2/doc2"), document.Reference);
@@ -97,12 +96,12 @@ namespace Google.Cloud.Firestore.Tests
         }
 
         [Fact]
-        public void GetField_ProtoValue()
+        public void GetValue_ProtoValue()
         {
             var doc = GetSampleSnapshot();
-            var sample = doc.ConvertTo<SampleData>();
-            Assert.Equal("Test", sample.Name);
-            Assert.Equal(20, sample.Nested.Score);
+            var expected = new Value { StringValue = "Test" };
+            var actual = doc.GetValue<Value>("Name");
+            Assert.Equal(expected, actual);
         }
 
         [Fact]
@@ -252,6 +251,102 @@ namespace Google.Cloud.Firestore.Tests
             EqualityTester.AssertEqual(control, new[] { equal }, new[] { unequal1, unequal2 });
         }
 
+        [Fact]
+        public void ConvertTo_ValueType()
+        {
+            var db = FirestoreDb.Create("proj", "db", new FakeFirestoreClient());
+            var readTime = new Timestamp(10, 2);
+            var proto = new Document
+            {
+                CreateTime = CreateProtoTimestamp(1, 10),
+                UpdateTime = CreateProtoTimestamp(2, 20),
+                Name = "projects/proj/databases/db/documents/col1/doc1/col2/doc2",
+                Fields =
+                {
+                    ["Name"] = CreateValue("text"),
+                    ["Value"] = CreateValue(100)
+                }
+            };
+            var document = DocumentSnapshot.ForDocument(db, proto, readTime);
+            var value = document.ConvertTo<SerializationTestData.CustomValueType>();
+            Assert.Equal("text", value.Name);
+            Assert.Equal(100, value.Value);
+        }
+
+        [Fact]
+        public void ConvertTo_Missing()
+        {
+            var sample = GetSampleSnapshot();
+            var document = DocumentSnapshot.ForMissingDocument(sample.Database, sample.Document.Name, new Timestamp(1, 2));
+
+            // Deserializing ends up with the default value of the value type. That's slightly annoying, but
+            // users can always use the Exists property instead.
+            Assert.Equal(0, document.ConvertTo<int>());
+
+            var custom = document.ConvertTo<SerializationTestData.CustomValueType>();
+            Assert.Null(custom.Name);
+            Assert.Equal(0, custom.Value);
+        }
+
+        [Fact]
+        public void ConvertTo_WithId()
+        {
+            var db = FirestoreDb.Create("proj", "db", new FakeFirestoreClient());
+            var readTime = new Timestamp(10, 2);
+            var proto = new Document
+            {
+                CreateTime = CreateProtoTimestamp(1, 10),
+                UpdateTime = CreateProtoTimestamp(2, 20),
+                Name = "projects/proj/databases/db/documents/col1/doc1/col2/doc2",
+                Fields =
+                {
+                    ["Name"] = ProtoHelpers.CreateValue("text"),
+                    ["Value"] = ProtoHelpers.CreateValue(100)
+                }
+            };
+            var document = DocumentSnapshot.ForDocument(db, proto, readTime);
+
+            var converted = document.ConvertTo<SampleDataWithDocumentId>();
+            Assert.Equal("text", converted.Name);
+            Assert.Equal(100, converted.Value);
+            Assert.Equal("doc2", converted.DocumentId);
+        }
+
+        [Fact]
+        public void ConvertTo_WithNestedId()
+        {
+            var db = FirestoreDb.Create("proj", "db", new FakeFirestoreClient());
+            var readTime = new Timestamp(10, 2);
+            var proto = new Document
+            {
+                CreateTime = CreateProtoTimestamp(1, 10),
+                UpdateTime = CreateProtoTimestamp(2, 20),
+                Name = "projects/proj/databases/db/documents/col1/doc1/col2/doc2",
+                Fields =
+                {
+                    ["Nested"] = CreateMap(("Name", CreateValue("text")), ("Value", CreateValue(100))),
+                    ["OuterName"] = CreateValue("Outer name")
+                }
+            };
+            var document = DocumentSnapshot.ForDocument(db, proto, readTime);
+
+            var converted = document.ConvertTo<SampleDataWithNestedDocumentId>();
+            Assert.Equal("Outer name", converted.OuterName);
+            Assert.Equal("text", converted.Nested.Name);
+            Assert.Equal(100, converted.Nested.Value);
+            Assert.Equal("doc2", converted.Nested.DocumentId);
+        }
+
+        [Fact]
+        public void ConvertTo_WithTimestamps()
+        {
+            var snapshot = GetSampleSnapshot();
+            var sample = snapshot.ConvertTo<SampleDataWithTimestamps>();
+            Assert.Equal(snapshot.CreateTime, sample.CreateTimestamp);
+            Assert.Equal(snapshot.UpdateTime, sample.UpdateTimestamp);
+            Assert.Equal(snapshot.ReadTime, sample.ReadTimestamp);
+        }
+
         private static DocumentSnapshot GetSampleSnapshot()
         {
             var poco = new SampleData
@@ -266,7 +361,7 @@ namespace Google.Cloud.Firestore.Tests
                 CreateTime = CreateProtoTimestamp(1, 10),
                 UpdateTime = CreateProtoTimestamp(2, 20),
                 Name = "projects/proj/databases/db/documents/col1/doc1/col2/doc2",
-                Fields = { ValueSerializer.SerializeMap(poco) }
+                Fields = { ValueSerializer.SerializeMap(SerializationContext.Default, poco) }
             };
             return DocumentSnapshot.ForDocument(db, proto, readTime);
         }
@@ -289,6 +384,48 @@ namespace Google.Cloud.Firestore.Tests
         {
             [FirestoreProperty]
             public int Score { get; set; }
+        }
+
+        [FirestoreData]
+        private class SampleDataWithDocumentId
+        {
+            [FirestoreDocumentId]
+            public string DocumentId { get; set; }
+
+            [FirestoreProperty]
+            public string Name { get; set; }
+            
+            [FirestoreProperty]
+            public int Value { get; set; }
+        }
+
+        [FirestoreData]
+        private class SampleDataWithNestedDocumentId
+        {
+            [FirestoreProperty]
+            public SampleDataWithDocumentId Nested { get; set; }
+
+            [FirestoreProperty]
+            public string OuterName { get; set; }
+        }
+
+        [FirestoreData]
+        private class SampleDataWithTimestamps
+        {
+            [FirestoreProperty]
+            public string Name { get; set; }
+
+            [FirestoreProperty]
+            public NestedData Nested { get; set; }
+            
+            [FirestoreDocumentCreateTimestamp]
+            public Timestamp CreateTimestamp { get; set; }
+
+            [FirestoreDocumentUpdateTimestamp]
+            public Timestamp UpdateTimestamp { get; set; }
+
+            [FirestoreDocumentReadTimestamp]
+            public Timestamp ReadTimestamp { get; set; }
         }
     }
 }

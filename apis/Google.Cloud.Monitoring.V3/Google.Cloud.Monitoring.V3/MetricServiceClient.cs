@@ -1,4 +1,4 @@
-// Copyright 2018 Google LLC
+// Copyright 2019 Google LLC
 //
 // Licensed under the Apache License, Version 2.0 (the "License");
 // you may not use this file except in compliance with the License.
@@ -373,6 +373,42 @@ namespace Google.Cloud.Monitoring.V3
     }
 
     /// <summary>
+    /// Builder class for <see cref="MetricServiceClient"/> to provide simple configuration of credentials, endpoint etc.
+    /// </summary>
+    public sealed partial class MetricServiceClientBuilder : gaxgrpc::ClientBuilderBase<MetricServiceClient>
+    {
+        /// <summary>
+        /// The settings to use for RPCs, or null for the default settings.
+        /// </summary>
+        public MetricServiceSettings Settings { get; set; }
+
+        /// <inheritdoc/>
+        public override MetricServiceClient Build()
+        {
+            Validate();
+            grpccore::CallInvoker callInvoker = CreateCallInvoker();
+            return MetricServiceClient.Create(callInvoker, Settings);
+        }
+
+        /// <inheritdoc />
+        public override async stt::Task<MetricServiceClient> BuildAsync(st::CancellationToken cancellationToken = default)
+        {
+            Validate();
+            grpccore::CallInvoker callInvoker = await CreateCallInvokerAsync(cancellationToken).ConfigureAwait(false);
+            return MetricServiceClient.Create(callInvoker, Settings);
+        }
+
+        /// <inheritdoc />
+        protected override gaxgrpc::ServiceEndpoint GetDefaultEndpoint() => MetricServiceClient.DefaultEndpoint;
+
+        /// <inheritdoc />
+        protected override scg::IReadOnlyList<string> GetDefaultScopes() => MetricServiceClient.DefaultScopes;
+
+        /// <inheritdoc />
+        protected override gaxgrpc::ChannelPool GetChannelPool() => MetricServiceClient.ChannelPool;
+    }
+
+    /// <summary>
     /// MetricService client wrapper, for convenient use.
     /// </summary>
     public abstract partial class MetricServiceClient
@@ -402,6 +438,8 @@ namespace Google.Cloud.Monitoring.V3
         });
 
         private static readonly gaxgrpc::ChannelPool s_channelPool = new gaxgrpc::ChannelPool(DefaultScopes);
+
+        internal static gaxgrpc::ChannelPool ChannelPool => s_channelPool;
 
         /// <summary>
         /// Asynchronously creates a <see cref="MetricServiceClient"/>, applying defaults for all unspecified settings,
@@ -603,6 +641,74 @@ namespace Google.Cloud.Monitoring.V3
         /// <summary>
         /// Lists monitored resource descriptors that match a filter. This method does not require a Stackdriver account.
         /// </summary>
+        /// <param name="name">
+        /// The project on which to execute the request. The format is
+        /// `"projects/{project_id_or_number}"`.
+        /// </param>
+        /// <param name="pageToken">
+        /// The token returned from the previous request.
+        /// A value of <c>null</c> or an empty string retrieves the first page.
+        /// </param>
+        /// <param name="pageSize">
+        /// The size of page to request. The response will not be larger than this, but may be smaller.
+        /// A value of <c>null</c> or 0 uses a server-defined page size.
+        /// </param>
+        /// <param name="callSettings">
+        /// If not null, applies overrides to this RPC call.
+        /// </param>
+        /// <returns>
+        /// A pageable asynchronous sequence of <see cref="ga::MonitoredResourceDescriptor"/> resources.
+        /// </returns>
+        public virtual gax::PagedAsyncEnumerable<ListMonitoredResourceDescriptorsResponse, ga::MonitoredResourceDescriptor> ListMonitoredResourceDescriptorsAsync(
+            string name,
+            string pageToken = null,
+            int? pageSize = null,
+            gaxgrpc::CallSettings callSettings = null) => ListMonitoredResourceDescriptorsAsync(
+                new ListMonitoredResourceDescriptorsRequest
+                {
+                    Name = gax::GaxPreconditions.CheckNotNullOrEmpty(name, nameof(name)),
+                    PageToken = pageToken ?? "",
+                    PageSize = pageSize ?? 0,
+                },
+                callSettings);
+
+        /// <summary>
+        /// Lists monitored resource descriptors that match a filter. This method does not require a Stackdriver account.
+        /// </summary>
+        /// <param name="name">
+        /// The project on which to execute the request. The format is
+        /// `"projects/{project_id_or_number}"`.
+        /// </param>
+        /// <param name="pageToken">
+        /// The token returned from the previous request.
+        /// A value of <c>null</c> or an empty string retrieves the first page.
+        /// </param>
+        /// <param name="pageSize">
+        /// The size of page to request. The response will not be larger than this, but may be smaller.
+        /// A value of <c>null</c> or 0 uses a server-defined page size.
+        /// </param>
+        /// <param name="callSettings">
+        /// If not null, applies overrides to this RPC call.
+        /// </param>
+        /// <returns>
+        /// A pageable sequence of <see cref="ga::MonitoredResourceDescriptor"/> resources.
+        /// </returns>
+        public virtual gax::PagedEnumerable<ListMonitoredResourceDescriptorsResponse, ga::MonitoredResourceDescriptor> ListMonitoredResourceDescriptors(
+            string name,
+            string pageToken = null,
+            int? pageSize = null,
+            gaxgrpc::CallSettings callSettings = null) => ListMonitoredResourceDescriptors(
+                new ListMonitoredResourceDescriptorsRequest
+                {
+                    Name = gax::GaxPreconditions.CheckNotNullOrEmpty(name, nameof(name)),
+                    PageToken = pageToken ?? "",
+                    PageSize = pageSize ?? 0,
+                },
+                callSettings);
+
+        /// <summary>
+        /// Lists monitored resource descriptors that match a filter. This method does not require a Stackdriver account.
+        /// </summary>
         /// <param name="request">
         /// The request object containing all of the parameters for the API call.
         /// </param>
@@ -704,6 +810,75 @@ namespace Google.Cloud.Monitoring.V3
                 new GetMonitoredResourceDescriptorRequest
                 {
                     MonitoredResourceDescriptorName = gax::GaxPreconditions.CheckNotNull(name, nameof(name)),
+                },
+                callSettings);
+
+        /// <summary>
+        /// Gets a single monitored resource descriptor. This method does not require a Stackdriver account.
+        /// </summary>
+        /// <param name="name">
+        /// The monitored resource descriptor to get.  The format is
+        /// `"projects/{project_id_or_number}/monitoredResourceDescriptors/{resource_type}"`.
+        /// The `{resource_type}` is a predefined type, such as
+        /// `cloudsql_database`.
+        /// </param>
+        /// <param name="callSettings">
+        /// If not null, applies overrides to this RPC call.
+        /// </param>
+        /// <returns>
+        /// A Task containing the RPC response.
+        /// </returns>
+        public virtual stt::Task<ga::MonitoredResourceDescriptor> GetMonitoredResourceDescriptorAsync(
+            string name,
+            gaxgrpc::CallSettings callSettings = null) => GetMonitoredResourceDescriptorAsync(
+                new GetMonitoredResourceDescriptorRequest
+                {
+                    Name = gax::GaxPreconditions.CheckNotNullOrEmpty(name, nameof(name)),
+                },
+                callSettings);
+
+        /// <summary>
+        /// Gets a single monitored resource descriptor. This method does not require a Stackdriver account.
+        /// </summary>
+        /// <param name="name">
+        /// The monitored resource descriptor to get.  The format is
+        /// `"projects/{project_id_or_number}/monitoredResourceDescriptors/{resource_type}"`.
+        /// The `{resource_type}` is a predefined type, such as
+        /// `cloudsql_database`.
+        /// </param>
+        /// <param name="cancellationToken">
+        /// A <see cref="st::CancellationToken"/> to use for this RPC.
+        /// </param>
+        /// <returns>
+        /// A Task containing the RPC response.
+        /// </returns>
+        public virtual stt::Task<ga::MonitoredResourceDescriptor> GetMonitoredResourceDescriptorAsync(
+            string name,
+            st::CancellationToken cancellationToken) => GetMonitoredResourceDescriptorAsync(
+                name,
+                gaxgrpc::CallSettings.FromCancellationToken(cancellationToken));
+
+        /// <summary>
+        /// Gets a single monitored resource descriptor. This method does not require a Stackdriver account.
+        /// </summary>
+        /// <param name="name">
+        /// The monitored resource descriptor to get.  The format is
+        /// `"projects/{project_id_or_number}/monitoredResourceDescriptors/{resource_type}"`.
+        /// The `{resource_type}` is a predefined type, such as
+        /// `cloudsql_database`.
+        /// </param>
+        /// <param name="callSettings">
+        /// If not null, applies overrides to this RPC call.
+        /// </param>
+        /// <returns>
+        /// The RPC response.
+        /// </returns>
+        public virtual ga::MonitoredResourceDescriptor GetMonitoredResourceDescriptor(
+            string name,
+            gaxgrpc::CallSettings callSettings = null) => GetMonitoredResourceDescriptor(
+                new GetMonitoredResourceDescriptorRequest
+                {
+                    Name = gax::GaxPreconditions.CheckNotNullOrEmpty(name, nameof(name)),
                 },
                 callSettings);
 
@@ -834,6 +1009,74 @@ namespace Google.Cloud.Monitoring.V3
         /// <summary>
         /// Lists metric descriptors that match a filter. This method does not require a Stackdriver account.
         /// </summary>
+        /// <param name="name">
+        /// The project on which to execute the request. The format is
+        /// `"projects/{project_id_or_number}"`.
+        /// </param>
+        /// <param name="pageToken">
+        /// The token returned from the previous request.
+        /// A value of <c>null</c> or an empty string retrieves the first page.
+        /// </param>
+        /// <param name="pageSize">
+        /// The size of page to request. The response will not be larger than this, but may be smaller.
+        /// A value of <c>null</c> or 0 uses a server-defined page size.
+        /// </param>
+        /// <param name="callSettings">
+        /// If not null, applies overrides to this RPC call.
+        /// </param>
+        /// <returns>
+        /// A pageable asynchronous sequence of <see cref="ga::MetricDescriptor"/> resources.
+        /// </returns>
+        public virtual gax::PagedAsyncEnumerable<ListMetricDescriptorsResponse, ga::MetricDescriptor> ListMetricDescriptorsAsync(
+            string name,
+            string pageToken = null,
+            int? pageSize = null,
+            gaxgrpc::CallSettings callSettings = null) => ListMetricDescriptorsAsync(
+                new ListMetricDescriptorsRequest
+                {
+                    Name = gax::GaxPreconditions.CheckNotNullOrEmpty(name, nameof(name)),
+                    PageToken = pageToken ?? "",
+                    PageSize = pageSize ?? 0,
+                },
+                callSettings);
+
+        /// <summary>
+        /// Lists metric descriptors that match a filter. This method does not require a Stackdriver account.
+        /// </summary>
+        /// <param name="name">
+        /// The project on which to execute the request. The format is
+        /// `"projects/{project_id_or_number}"`.
+        /// </param>
+        /// <param name="pageToken">
+        /// The token returned from the previous request.
+        /// A value of <c>null</c> or an empty string retrieves the first page.
+        /// </param>
+        /// <param name="pageSize">
+        /// The size of page to request. The response will not be larger than this, but may be smaller.
+        /// A value of <c>null</c> or 0 uses a server-defined page size.
+        /// </param>
+        /// <param name="callSettings">
+        /// If not null, applies overrides to this RPC call.
+        /// </param>
+        /// <returns>
+        /// A pageable sequence of <see cref="ga::MetricDescriptor"/> resources.
+        /// </returns>
+        public virtual gax::PagedEnumerable<ListMetricDescriptorsResponse, ga::MetricDescriptor> ListMetricDescriptors(
+            string name,
+            string pageToken = null,
+            int? pageSize = null,
+            gaxgrpc::CallSettings callSettings = null) => ListMetricDescriptors(
+                new ListMetricDescriptorsRequest
+                {
+                    Name = gax::GaxPreconditions.CheckNotNullOrEmpty(name, nameof(name)),
+                    PageToken = pageToken ?? "",
+                    PageSize = pageSize ?? 0,
+                },
+                callSettings);
+
+        /// <summary>
+        /// Lists metric descriptors that match a filter. This method does not require a Stackdriver account.
+        /// </summary>
         /// <param name="request">
         /// The request object containing all of the parameters for the API call.
         /// </param>
@@ -935,6 +1178,75 @@ namespace Google.Cloud.Monitoring.V3
                 new GetMetricDescriptorRequest
                 {
                     MetricDescriptorName = gax::GaxPreconditions.CheckNotNull(name, nameof(name)),
+                },
+                callSettings);
+
+        /// <summary>
+        /// Gets a single metric descriptor. This method does not require a Stackdriver account.
+        /// </summary>
+        /// <param name="name">
+        /// The metric descriptor on which to execute the request. The format is
+        /// `"projects/{project_id_or_number}/metricDescriptors/{metric_id}"`.
+        /// An example value of `{metric_id}` is
+        /// `"compute.googleapis.com/instance/disk/read_bytes_count"`.
+        /// </param>
+        /// <param name="callSettings">
+        /// If not null, applies overrides to this RPC call.
+        /// </param>
+        /// <returns>
+        /// A Task containing the RPC response.
+        /// </returns>
+        public virtual stt::Task<ga::MetricDescriptor> GetMetricDescriptorAsync(
+            string name,
+            gaxgrpc::CallSettings callSettings = null) => GetMetricDescriptorAsync(
+                new GetMetricDescriptorRequest
+                {
+                    Name = gax::GaxPreconditions.CheckNotNullOrEmpty(name, nameof(name)),
+                },
+                callSettings);
+
+        /// <summary>
+        /// Gets a single metric descriptor. This method does not require a Stackdriver account.
+        /// </summary>
+        /// <param name="name">
+        /// The metric descriptor on which to execute the request. The format is
+        /// `"projects/{project_id_or_number}/metricDescriptors/{metric_id}"`.
+        /// An example value of `{metric_id}` is
+        /// `"compute.googleapis.com/instance/disk/read_bytes_count"`.
+        /// </param>
+        /// <param name="cancellationToken">
+        /// A <see cref="st::CancellationToken"/> to use for this RPC.
+        /// </param>
+        /// <returns>
+        /// A Task containing the RPC response.
+        /// </returns>
+        public virtual stt::Task<ga::MetricDescriptor> GetMetricDescriptorAsync(
+            string name,
+            st::CancellationToken cancellationToken) => GetMetricDescriptorAsync(
+                name,
+                gaxgrpc::CallSettings.FromCancellationToken(cancellationToken));
+
+        /// <summary>
+        /// Gets a single metric descriptor. This method does not require a Stackdriver account.
+        /// </summary>
+        /// <param name="name">
+        /// The metric descriptor on which to execute the request. The format is
+        /// `"projects/{project_id_or_number}/metricDescriptors/{metric_id}"`.
+        /// An example value of `{metric_id}` is
+        /// `"compute.googleapis.com/instance/disk/read_bytes_count"`.
+        /// </param>
+        /// <param name="callSettings">
+        /// If not null, applies overrides to this RPC call.
+        /// </param>
+        /// <returns>
+        /// The RPC response.
+        /// </returns>
+        public virtual ga::MetricDescriptor GetMetricDescriptor(
+            string name,
+            gaxgrpc::CallSettings callSettings = null) => GetMetricDescriptor(
+                new GetMetricDescriptorRequest
+                {
+                    Name = gax::GaxPreconditions.CheckNotNullOrEmpty(name, nameof(name)),
                 },
                 callSettings);
 
@@ -1086,6 +1398,93 @@ namespace Google.Cloud.Monitoring.V3
         /// User-created metric descriptors define
         /// [custom metrics](/monitoring/custom-metrics).
         /// </summary>
+        /// <param name="name">
+        /// The project on which to execute the request. The format is
+        /// `"projects/{project_id_or_number}"`.
+        /// </param>
+        /// <param name="metricDescriptor">
+        /// The new [custom metric](/monitoring/custom-metrics)
+        /// descriptor.
+        /// </param>
+        /// <param name="callSettings">
+        /// If not null, applies overrides to this RPC call.
+        /// </param>
+        /// <returns>
+        /// A Task containing the RPC response.
+        /// </returns>
+        public virtual stt::Task<ga::MetricDescriptor> CreateMetricDescriptorAsync(
+            string name,
+            ga::MetricDescriptor metricDescriptor,
+            gaxgrpc::CallSettings callSettings = null) => CreateMetricDescriptorAsync(
+                new CreateMetricDescriptorRequest
+                {
+                    Name = gax::GaxPreconditions.CheckNotNullOrEmpty(name, nameof(name)),
+                    MetricDescriptor = gax::GaxPreconditions.CheckNotNull(metricDescriptor, nameof(metricDescriptor)),
+                },
+                callSettings);
+
+        /// <summary>
+        /// Creates a new metric descriptor.
+        /// User-created metric descriptors define
+        /// [custom metrics](/monitoring/custom-metrics).
+        /// </summary>
+        /// <param name="name">
+        /// The project on which to execute the request. The format is
+        /// `"projects/{project_id_or_number}"`.
+        /// </param>
+        /// <param name="metricDescriptor">
+        /// The new [custom metric](/monitoring/custom-metrics)
+        /// descriptor.
+        /// </param>
+        /// <param name="cancellationToken">
+        /// A <see cref="st::CancellationToken"/> to use for this RPC.
+        /// </param>
+        /// <returns>
+        /// A Task containing the RPC response.
+        /// </returns>
+        public virtual stt::Task<ga::MetricDescriptor> CreateMetricDescriptorAsync(
+            string name,
+            ga::MetricDescriptor metricDescriptor,
+            st::CancellationToken cancellationToken) => CreateMetricDescriptorAsync(
+                name,
+                metricDescriptor,
+                gaxgrpc::CallSettings.FromCancellationToken(cancellationToken));
+
+        /// <summary>
+        /// Creates a new metric descriptor.
+        /// User-created metric descriptors define
+        /// [custom metrics](/monitoring/custom-metrics).
+        /// </summary>
+        /// <param name="name">
+        /// The project on which to execute the request. The format is
+        /// `"projects/{project_id_or_number}"`.
+        /// </param>
+        /// <param name="metricDescriptor">
+        /// The new [custom metric](/monitoring/custom-metrics)
+        /// descriptor.
+        /// </param>
+        /// <param name="callSettings">
+        /// If not null, applies overrides to this RPC call.
+        /// </param>
+        /// <returns>
+        /// The RPC response.
+        /// </returns>
+        public virtual ga::MetricDescriptor CreateMetricDescriptor(
+            string name,
+            ga::MetricDescriptor metricDescriptor,
+            gaxgrpc::CallSettings callSettings = null) => CreateMetricDescriptor(
+                new CreateMetricDescriptorRequest
+                {
+                    Name = gax::GaxPreconditions.CheckNotNullOrEmpty(name, nameof(name)),
+                    MetricDescriptor = gax::GaxPreconditions.CheckNotNull(metricDescriptor, nameof(metricDescriptor)),
+                },
+                callSettings);
+
+        /// <summary>
+        /// Creates a new metric descriptor.
+        /// User-created metric descriptors define
+        /// [custom metrics](/monitoring/custom-metrics).
+        /// </summary>
         /// <param name="request">
         /// The request object containing all of the parameters for the API call.
         /// </param>
@@ -1216,6 +1615,75 @@ namespace Google.Cloud.Monitoring.V3
         /// Deletes a metric descriptor. Only user-created
         /// [custom metrics](/monitoring/custom-metrics) can be deleted.
         /// </summary>
+        /// <param name="name">
+        /// The metric descriptor on which to execute the request. The format is
+        /// `"projects/{project_id_or_number}/metricDescriptors/{metric_id}"`.
+        /// An example of `{metric_id}` is:
+        /// `"custom.googleapis.com/my_test_metric"`.
+        /// </param>
+        /// <param name="callSettings">
+        /// If not null, applies overrides to this RPC call.
+        /// </param>
+        /// <returns>
+        /// A Task that completes when the RPC has completed.
+        /// </returns>
+        public virtual stt::Task DeleteMetricDescriptorAsync(
+            string name,
+            gaxgrpc::CallSettings callSettings = null) => DeleteMetricDescriptorAsync(
+                new DeleteMetricDescriptorRequest
+                {
+                    Name = gax::GaxPreconditions.CheckNotNullOrEmpty(name, nameof(name)),
+                },
+                callSettings);
+
+        /// <summary>
+        /// Deletes a metric descriptor. Only user-created
+        /// [custom metrics](/monitoring/custom-metrics) can be deleted.
+        /// </summary>
+        /// <param name="name">
+        /// The metric descriptor on which to execute the request. The format is
+        /// `"projects/{project_id_or_number}/metricDescriptors/{metric_id}"`.
+        /// An example of `{metric_id}` is:
+        /// `"custom.googleapis.com/my_test_metric"`.
+        /// </param>
+        /// <param name="cancellationToken">
+        /// A <see cref="st::CancellationToken"/> to use for this RPC.
+        /// </param>
+        /// <returns>
+        /// A Task that completes when the RPC has completed.
+        /// </returns>
+        public virtual stt::Task DeleteMetricDescriptorAsync(
+            string name,
+            st::CancellationToken cancellationToken) => DeleteMetricDescriptorAsync(
+                name,
+                gaxgrpc::CallSettings.FromCancellationToken(cancellationToken));
+
+        /// <summary>
+        /// Deletes a metric descriptor. Only user-created
+        /// [custom metrics](/monitoring/custom-metrics) can be deleted.
+        /// </summary>
+        /// <param name="name">
+        /// The metric descriptor on which to execute the request. The format is
+        /// `"projects/{project_id_or_number}/metricDescriptors/{metric_id}"`.
+        /// An example of `{metric_id}` is:
+        /// `"custom.googleapis.com/my_test_metric"`.
+        /// </param>
+        /// <param name="callSettings">
+        /// If not null, applies overrides to this RPC call.
+        /// </param>
+        public virtual void DeleteMetricDescriptor(
+            string name,
+            gaxgrpc::CallSettings callSettings = null) => DeleteMetricDescriptor(
+                new DeleteMetricDescriptorRequest
+                {
+                    Name = gax::GaxPreconditions.CheckNotNullOrEmpty(name, nameof(name)),
+                },
+                callSettings);
+
+        /// <summary>
+        /// Deletes a metric descriptor. Only user-created
+        /// [custom metrics](/monitoring/custom-metrics) can be deleted.
+        /// </summary>
         /// <param name="request">
         /// The request object containing all of the parameters for the API call.
         /// </param>
@@ -1282,7 +1750,7 @@ namespace Google.Cloud.Monitoring.V3
         /// example:
         ///
         ///     metric.type = "compute.googleapis.com/instance/cpu/usage_time" AND
-        ///         metric.label.instance_name = "my-instance-name"
+        ///         metric.labels.instance_name = "my-instance-name"
         /// </param>
         /// <param name="interval">
         /// The time interval for which results should be returned. Only time series
@@ -1339,7 +1807,7 @@ namespace Google.Cloud.Monitoring.V3
         /// example:
         ///
         ///     metric.type = "compute.googleapis.com/instance/cpu/usage_time" AND
-        ///         metric.label.instance_name = "my-instance-name"
+        ///         metric.labels.instance_name = "my-instance-name"
         /// </param>
         /// <param name="interval">
         /// The time interval for which results should be returned. Only time series
@@ -1374,6 +1842,120 @@ namespace Google.Cloud.Monitoring.V3
                 new ListTimeSeriesRequest
                 {
                     ProjectName = gax::GaxPreconditions.CheckNotNull(name, nameof(name)),
+                    Filter = gax::GaxPreconditions.CheckNotNullOrEmpty(filter, nameof(filter)),
+                    Interval = gax::GaxPreconditions.CheckNotNull(interval, nameof(interval)),
+                    View = view,
+                    PageToken = pageToken ?? "",
+                    PageSize = pageSize ?? 0,
+                },
+                callSettings);
+
+        /// <summary>
+        /// Lists time series that match a filter. This method does not require a Stackdriver account.
+        /// </summary>
+        /// <param name="name">
+        /// The project on which to execute the request. The format is
+        /// "projects/{project_id_or_number}".
+        /// </param>
+        /// <param name="filter">
+        /// A [monitoring filter](/monitoring/api/v3/filters) that specifies which time
+        /// series should be returned.  The filter must specify a single metric type,
+        /// and can additionally specify metric labels and other information. For
+        /// example:
+        ///
+        ///     metric.type = "compute.googleapis.com/instance/cpu/usage_time" AND
+        ///         metric.labels.instance_name = "my-instance-name"
+        /// </param>
+        /// <param name="interval">
+        /// The time interval for which results should be returned. Only time series
+        /// that contain data points in the specified interval are included
+        /// in the response.
+        /// </param>
+        /// <param name="view">
+        /// Specifies which information is returned about the time series.
+        /// </param>
+        /// <param name="pageToken">
+        /// The token returned from the previous request.
+        /// A value of <c>null</c> or an empty string retrieves the first page.
+        /// </param>
+        /// <param name="pageSize">
+        /// The size of page to request. The response will not be larger than this, but may be smaller.
+        /// A value of <c>null</c> or 0 uses a server-defined page size.
+        /// </param>
+        /// <param name="callSettings">
+        /// If not null, applies overrides to this RPC call.
+        /// </param>
+        /// <returns>
+        /// A pageable asynchronous sequence of <see cref="TimeSeries"/> resources.
+        /// </returns>
+        public virtual gax::PagedAsyncEnumerable<ListTimeSeriesResponse, TimeSeries> ListTimeSeriesAsync(
+            string name,
+            string filter,
+            TimeInterval interval,
+            ListTimeSeriesRequest.Types.TimeSeriesView view,
+            string pageToken = null,
+            int? pageSize = null,
+            gaxgrpc::CallSettings callSettings = null) => ListTimeSeriesAsync(
+                new ListTimeSeriesRequest
+                {
+                    Name = gax::GaxPreconditions.CheckNotNullOrEmpty(name, nameof(name)),
+                    Filter = gax::GaxPreconditions.CheckNotNullOrEmpty(filter, nameof(filter)),
+                    Interval = gax::GaxPreconditions.CheckNotNull(interval, nameof(interval)),
+                    View = view,
+                    PageToken = pageToken ?? "",
+                    PageSize = pageSize ?? 0,
+                },
+                callSettings);
+
+        /// <summary>
+        /// Lists time series that match a filter. This method does not require a Stackdriver account.
+        /// </summary>
+        /// <param name="name">
+        /// The project on which to execute the request. The format is
+        /// "projects/{project_id_or_number}".
+        /// </param>
+        /// <param name="filter">
+        /// A [monitoring filter](/monitoring/api/v3/filters) that specifies which time
+        /// series should be returned.  The filter must specify a single metric type,
+        /// and can additionally specify metric labels and other information. For
+        /// example:
+        ///
+        ///     metric.type = "compute.googleapis.com/instance/cpu/usage_time" AND
+        ///         metric.labels.instance_name = "my-instance-name"
+        /// </param>
+        /// <param name="interval">
+        /// The time interval for which results should be returned. Only time series
+        /// that contain data points in the specified interval are included
+        /// in the response.
+        /// </param>
+        /// <param name="view">
+        /// Specifies which information is returned about the time series.
+        /// </param>
+        /// <param name="pageToken">
+        /// The token returned from the previous request.
+        /// A value of <c>null</c> or an empty string retrieves the first page.
+        /// </param>
+        /// <param name="pageSize">
+        /// The size of page to request. The response will not be larger than this, but may be smaller.
+        /// A value of <c>null</c> or 0 uses a server-defined page size.
+        /// </param>
+        /// <param name="callSettings">
+        /// If not null, applies overrides to this RPC call.
+        /// </param>
+        /// <returns>
+        /// A pageable sequence of <see cref="TimeSeries"/> resources.
+        /// </returns>
+        public virtual gax::PagedEnumerable<ListTimeSeriesResponse, TimeSeries> ListTimeSeries(
+            string name,
+            string filter,
+            TimeInterval interval,
+            ListTimeSeriesRequest.Types.TimeSeriesView view,
+            string pageToken = null,
+            int? pageSize = null,
+            gaxgrpc::CallSettings callSettings = null) => ListTimeSeries(
+                new ListTimeSeriesRequest
+                {
+                    Name = gax::GaxPreconditions.CheckNotNullOrEmpty(name, nameof(name)),
                     Filter = gax::GaxPreconditions.CheckNotNullOrEmpty(filter, nameof(filter)),
                     Interval = gax::GaxPreconditions.CheckNotNull(interval, nameof(interval)),
                     View = view,
@@ -1436,6 +2018,8 @@ namespace Google.Cloud.Monitoring.V3
         /// point must be more recent than any other point in its time series.  Each
         /// `TimeSeries` value must fully specify a unique time series by supplying
         /// all label values for the metric and the monitored resource.
+        ///
+        /// The maximum number of `TimeSeries` objects per `Create` request is 200.
         /// </param>
         /// <param name="callSettings">
         /// If not null, applies overrides to this RPC call.
@@ -1470,6 +2054,8 @@ namespace Google.Cloud.Monitoring.V3
         /// point must be more recent than any other point in its time series.  Each
         /// `TimeSeries` value must fully specify a unique time series by supplying
         /// all label values for the metric and the monitored resource.
+        ///
+        /// The maximum number of `TimeSeries` objects per `Create` request is 200.
         /// </param>
         /// <param name="cancellationToken">
         /// A <see cref="st::CancellationToken"/> to use for this RPC.
@@ -1501,6 +2087,8 @@ namespace Google.Cloud.Monitoring.V3
         /// point must be more recent than any other point in its time series.  Each
         /// `TimeSeries` value must fully specify a unique time series by supplying
         /// all label values for the metric and the monitored resource.
+        ///
+        /// The maximum number of `TimeSeries` objects per `Create` request is 200.
         /// </param>
         /// <param name="callSettings">
         /// If not null, applies overrides to this RPC call.
@@ -1512,6 +2100,108 @@ namespace Google.Cloud.Monitoring.V3
                 new CreateTimeSeriesRequest
                 {
                     ProjectName = gax::GaxPreconditions.CheckNotNull(name, nameof(name)),
+                    TimeSeries = { gax::GaxPreconditions.CheckNotNull(timeSeries, nameof(timeSeries)) },
+                },
+                callSettings);
+
+        /// <summary>
+        /// Creates or adds data to one or more time series.
+        /// The response is empty if all time series in the request were written.
+        /// If any time series could not be written, a corresponding failure message is
+        /// included in the error response.
+        /// </summary>
+        /// <param name="name">
+        /// The project on which to execute the request. The format is
+        /// `"projects/{project_id_or_number}"`.
+        /// </param>
+        /// <param name="timeSeries">
+        /// The new data to be added to a list of time series.
+        /// Adds at most one data point to each of several time series.  The new data
+        /// point must be more recent than any other point in its time series.  Each
+        /// `TimeSeries` value must fully specify a unique time series by supplying
+        /// all label values for the metric and the monitored resource.
+        ///
+        /// The maximum number of `TimeSeries` objects per `Create` request is 200.
+        /// </param>
+        /// <param name="callSettings">
+        /// If not null, applies overrides to this RPC call.
+        /// </param>
+        /// <returns>
+        /// A Task that completes when the RPC has completed.
+        /// </returns>
+        public virtual stt::Task CreateTimeSeriesAsync(
+            string name,
+            scg::IEnumerable<TimeSeries> timeSeries,
+            gaxgrpc::CallSettings callSettings = null) => CreateTimeSeriesAsync(
+                new CreateTimeSeriesRequest
+                {
+                    Name = gax::GaxPreconditions.CheckNotNullOrEmpty(name, nameof(name)),
+                    TimeSeries = { gax::GaxPreconditions.CheckNotNull(timeSeries, nameof(timeSeries)) },
+                },
+                callSettings);
+
+        /// <summary>
+        /// Creates or adds data to one or more time series.
+        /// The response is empty if all time series in the request were written.
+        /// If any time series could not be written, a corresponding failure message is
+        /// included in the error response.
+        /// </summary>
+        /// <param name="name">
+        /// The project on which to execute the request. The format is
+        /// `"projects/{project_id_or_number}"`.
+        /// </param>
+        /// <param name="timeSeries">
+        /// The new data to be added to a list of time series.
+        /// Adds at most one data point to each of several time series.  The new data
+        /// point must be more recent than any other point in its time series.  Each
+        /// `TimeSeries` value must fully specify a unique time series by supplying
+        /// all label values for the metric and the monitored resource.
+        ///
+        /// The maximum number of `TimeSeries` objects per `Create` request is 200.
+        /// </param>
+        /// <param name="cancellationToken">
+        /// A <see cref="st::CancellationToken"/> to use for this RPC.
+        /// </param>
+        /// <returns>
+        /// A Task that completes when the RPC has completed.
+        /// </returns>
+        public virtual stt::Task CreateTimeSeriesAsync(
+            string name,
+            scg::IEnumerable<TimeSeries> timeSeries,
+            st::CancellationToken cancellationToken) => CreateTimeSeriesAsync(
+                name,
+                timeSeries,
+                gaxgrpc::CallSettings.FromCancellationToken(cancellationToken));
+
+        /// <summary>
+        /// Creates or adds data to one or more time series.
+        /// The response is empty if all time series in the request were written.
+        /// If any time series could not be written, a corresponding failure message is
+        /// included in the error response.
+        /// </summary>
+        /// <param name="name">
+        /// The project on which to execute the request. The format is
+        /// `"projects/{project_id_or_number}"`.
+        /// </param>
+        /// <param name="timeSeries">
+        /// The new data to be added to a list of time series.
+        /// Adds at most one data point to each of several time series.  The new data
+        /// point must be more recent than any other point in its time series.  Each
+        /// `TimeSeries` value must fully specify a unique time series by supplying
+        /// all label values for the metric and the monitored resource.
+        ///
+        /// The maximum number of `TimeSeries` objects per `Create` request is 200.
+        /// </param>
+        /// <param name="callSettings">
+        /// If not null, applies overrides to this RPC call.
+        /// </param>
+        public virtual void CreateTimeSeries(
+            string name,
+            scg::IEnumerable<TimeSeries> timeSeries,
+            gaxgrpc::CallSettings callSettings = null) => CreateTimeSeries(
+                new CreateTimeSeriesRequest
+                {
+                    Name = gax::GaxPreconditions.CheckNotNullOrEmpty(name, nameof(name)),
                     TimeSeries = { gax::GaxPreconditions.CheckNotNull(timeSeries, nameof(timeSeries)) },
                 },
                 callSettings);
@@ -1605,21 +2295,29 @@ namespace Google.Cloud.Monitoring.V3
             MetricServiceSettings effectiveSettings = settings ?? MetricServiceSettings.GetDefault();
             gaxgrpc::ClientHelper clientHelper = new gaxgrpc::ClientHelper(effectiveSettings);
             _callListMonitoredResourceDescriptors = clientHelper.BuildApiCall<ListMonitoredResourceDescriptorsRequest, ListMonitoredResourceDescriptorsResponse>(
-                GrpcClient.ListMonitoredResourceDescriptorsAsync, GrpcClient.ListMonitoredResourceDescriptors, effectiveSettings.ListMonitoredResourceDescriptorsSettings);
+                GrpcClient.ListMonitoredResourceDescriptorsAsync, GrpcClient.ListMonitoredResourceDescriptors, effectiveSettings.ListMonitoredResourceDescriptorsSettings)
+                .WithGoogleRequestParam("name", request => request.Name);
             _callGetMonitoredResourceDescriptor = clientHelper.BuildApiCall<GetMonitoredResourceDescriptorRequest, ga::MonitoredResourceDescriptor>(
-                GrpcClient.GetMonitoredResourceDescriptorAsync, GrpcClient.GetMonitoredResourceDescriptor, effectiveSettings.GetMonitoredResourceDescriptorSettings);
+                GrpcClient.GetMonitoredResourceDescriptorAsync, GrpcClient.GetMonitoredResourceDescriptor, effectiveSettings.GetMonitoredResourceDescriptorSettings)
+                .WithGoogleRequestParam("name", request => request.Name);
             _callListMetricDescriptors = clientHelper.BuildApiCall<ListMetricDescriptorsRequest, ListMetricDescriptorsResponse>(
-                GrpcClient.ListMetricDescriptorsAsync, GrpcClient.ListMetricDescriptors, effectiveSettings.ListMetricDescriptorsSettings);
+                GrpcClient.ListMetricDescriptorsAsync, GrpcClient.ListMetricDescriptors, effectiveSettings.ListMetricDescriptorsSettings)
+                .WithGoogleRequestParam("name", request => request.Name);
             _callGetMetricDescriptor = clientHelper.BuildApiCall<GetMetricDescriptorRequest, ga::MetricDescriptor>(
-                GrpcClient.GetMetricDescriptorAsync, GrpcClient.GetMetricDescriptor, effectiveSettings.GetMetricDescriptorSettings);
+                GrpcClient.GetMetricDescriptorAsync, GrpcClient.GetMetricDescriptor, effectiveSettings.GetMetricDescriptorSettings)
+                .WithGoogleRequestParam("name", request => request.Name);
             _callCreateMetricDescriptor = clientHelper.BuildApiCall<CreateMetricDescriptorRequest, ga::MetricDescriptor>(
-                GrpcClient.CreateMetricDescriptorAsync, GrpcClient.CreateMetricDescriptor, effectiveSettings.CreateMetricDescriptorSettings);
+                GrpcClient.CreateMetricDescriptorAsync, GrpcClient.CreateMetricDescriptor, effectiveSettings.CreateMetricDescriptorSettings)
+                .WithGoogleRequestParam("name", request => request.Name);
             _callDeleteMetricDescriptor = clientHelper.BuildApiCall<DeleteMetricDescriptorRequest, pbwkt::Empty>(
-                GrpcClient.DeleteMetricDescriptorAsync, GrpcClient.DeleteMetricDescriptor, effectiveSettings.DeleteMetricDescriptorSettings);
+                GrpcClient.DeleteMetricDescriptorAsync, GrpcClient.DeleteMetricDescriptor, effectiveSettings.DeleteMetricDescriptorSettings)
+                .WithGoogleRequestParam("name", request => request.Name);
             _callListTimeSeries = clientHelper.BuildApiCall<ListTimeSeriesRequest, ListTimeSeriesResponse>(
-                GrpcClient.ListTimeSeriesAsync, GrpcClient.ListTimeSeries, effectiveSettings.ListTimeSeriesSettings);
+                GrpcClient.ListTimeSeriesAsync, GrpcClient.ListTimeSeries, effectiveSettings.ListTimeSeriesSettings)
+                .WithGoogleRequestParam("name", request => request.Name);
             _callCreateTimeSeries = clientHelper.BuildApiCall<CreateTimeSeriesRequest, pbwkt::Empty>(
-                GrpcClient.CreateTimeSeriesAsync, GrpcClient.CreateTimeSeries, effectiveSettings.CreateTimeSeriesSettings);
+                GrpcClient.CreateTimeSeriesAsync, GrpcClient.CreateTimeSeries, effectiveSettings.CreateTimeSeriesSettings)
+                .WithGoogleRequestParam("name", request => request.Name);
             Modify_ApiCall(ref _callListMonitoredResourceDescriptors);
             Modify_ListMonitoredResourceDescriptorsApiCall(ref _callListMonitoredResourceDescriptors);
             Modify_ApiCall(ref _callGetMonitoredResourceDescriptor);

@@ -12,7 +12,8 @@
 // See the License for the specific language governing permissions and
 // limitations under the License.
 using Google.Api.Gax;
-using Google.Cloud.Firestore.V1Beta1;
+using Google.Cloud.Firestore.Converters;
+using Google.Cloud.Firestore.V1;
 using System;
 using System.Collections.Generic;
 
@@ -92,13 +93,15 @@ namespace Google.Cloud.Firestore
         /// </summary>
         /// <typeparam name="T">The type to deserialize the document data as.</typeparam>
         /// <returns>The deserialized data, or null if this object represents a missing document.</returns>
-        public T ConvertTo<T>() where T : class
+        public T ConvertTo<T>()
         {
             if (!Exists)
             {
-                return null;
+                return default;
             }
-            return (T) ValueDeserializer.Default.DeserializeMap(Database, Document.Fields, typeof(T));
+            var context = new DeserializationContext(this);
+            object deserialized = ValueDeserializer.DeserializeMap(context, Document.Fields, typeof(T));
+            return (T) deserialized;
         }
 
         /// <summary>
@@ -134,7 +137,8 @@ namespace Google.Cloud.Firestore
         {
             var raw = ExtractValue(path);
             GaxPreconditions.CheckState(raw != null, $"Field {path} not found in document");
-            return (T) ValueDeserializer.Default.Deserialize(Database, raw, typeof(T));
+            var context = new DeserializationContext(this);
+            return (T) ValueDeserializer.Deserialize(context, raw, typeof(T));
         }
 
         /// <summary>
@@ -158,7 +162,8 @@ namespace Google.Cloud.Firestore
                 value = default(T);
                 return false;
             }
-            value = (T) ValueDeserializer.Default.Deserialize(Database, raw, typeof(T));
+            var context = new DeserializationContext(this);
+            value = (T) ValueDeserializer.Deserialize(context, raw, typeof(T));
             return true;
         }
 

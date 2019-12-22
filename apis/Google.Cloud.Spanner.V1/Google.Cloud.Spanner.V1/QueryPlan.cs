@@ -25,8 +25,8 @@ namespace Google.Cloud.Spanner.V1 {
       byte[] descriptorData = global::System.Convert.FromBase64String(
           string.Concat(
             "CiJnb29nbGUvc3Bhbm5lci92MS9xdWVyeV9wbGFuLnByb3RvEhFnb29nbGUu",
-            "c3Bhbm5lci52MRocZ29vZ2xlL2FwaS9hbm5vdGF0aW9ucy5wcm90bxocZ29v",
-            "Z2xlL3Byb3RvYnVmL3N0cnVjdC5wcm90byL4BAoIUGxhbk5vZGUSDQoFaW5k",
+            "c3Bhbm5lci52MRocZ29vZ2xlL3Byb3RvYnVmL3N0cnVjdC5wcm90bxocZ29v",
+            "Z2xlL2FwaS9hbm5vdGF0aW9ucy5wcm90byL4BAoIUGxhbk5vZGUSDQoFaW5k",
             "ZXgYASABKAUSLgoEa2luZBgCIAEoDjIgLmdvb2dsZS5zcGFubmVyLnYxLlBs",
             "YW5Ob2RlLktpbmQSFAoMZGlzcGxheV9uYW1lGAMgASgJEjoKC2NoaWxkX2xp",
             "bmtzGAQgAygLMiUuZ29vZ2xlLnNwYW5uZXIudjEuUGxhbk5vZGUuQ2hpbGRM",
@@ -47,7 +47,7 @@ namespace Google.Cloud.Spanner.V1 {
             "bmVyL3YxO3NwYW5uZXKqAhdHb29nbGUuQ2xvdWQuU3Bhbm5lci5WMcoCF0dv",
             "b2dsZVxDbG91ZFxTcGFubmVyXFYxYgZwcm90bzM="));
       descriptor = pbr::FileDescriptor.FromGeneratedCode(descriptorData,
-          new pbr::FileDescriptor[] { global::Google.Api.AnnotationsReflection.Descriptor, global::Google.Protobuf.WellKnownTypes.StructReflection.Descriptor, },
+          new pbr::FileDescriptor[] { global::Google.Protobuf.WellKnownTypes.StructReflection.Descriptor, global::Google.Api.AnnotationsReflection.Descriptor, },
           new pbr::GeneratedClrTypeInfo(null, new pbr::GeneratedClrTypeInfo[] {
             new pbr::GeneratedClrTypeInfo(typeof(global::Google.Cloud.Spanner.V1.PlanNode), global::Google.Cloud.Spanner.V1.PlanNode.Parser, new[]{ "Index", "Kind", "DisplayName", "ChildLinks", "ShortRepresentation", "Metadata", "ExecutionStats" }, null, new[]{ typeof(global::Google.Cloud.Spanner.V1.PlanNode.Types.Kind) }, new pbr::GeneratedClrTypeInfo[] { new pbr::GeneratedClrTypeInfo(typeof(global::Google.Cloud.Spanner.V1.PlanNode.Types.ChildLink), global::Google.Cloud.Spanner.V1.PlanNode.Types.ChildLink.Parser, new[]{ "ChildIndex", "Type", "Variable" }, null, null, null),
             new pbr::GeneratedClrTypeInfo(typeof(global::Google.Cloud.Spanner.V1.PlanNode.Types.ShortRepresentation), global::Google.Cloud.Spanner.V1.PlanNode.Types.ShortRepresentation.Parser, new[]{ "Description", "Subqueries" }, null, null, new pbr::GeneratedClrTypeInfo[] { null, })}),
@@ -333,19 +333,19 @@ namespace Google.Cloud.Spanner.V1 {
       childLinks_.Add(other.childLinks_);
       if (other.shortRepresentation_ != null) {
         if (shortRepresentation_ == null) {
-          shortRepresentation_ = new global::Google.Cloud.Spanner.V1.PlanNode.Types.ShortRepresentation();
+          ShortRepresentation = new global::Google.Cloud.Spanner.V1.PlanNode.Types.ShortRepresentation();
         }
         ShortRepresentation.MergeFrom(other.ShortRepresentation);
       }
       if (other.metadata_ != null) {
         if (metadata_ == null) {
-          metadata_ = new global::Google.Protobuf.WellKnownTypes.Struct();
+          Metadata = new global::Google.Protobuf.WellKnownTypes.Struct();
         }
         Metadata.MergeFrom(other.Metadata);
       }
       if (other.executionStats_ != null) {
         if (executionStats_ == null) {
-          executionStats_ = new global::Google.Protobuf.WellKnownTypes.Struct();
+          ExecutionStats = new global::Google.Protobuf.WellKnownTypes.Struct();
         }
         ExecutionStats.MergeFrom(other.ExecutionStats);
       }
@@ -365,7 +365,7 @@ namespace Google.Cloud.Spanner.V1 {
             break;
           }
           case 16: {
-            kind_ = (global::Google.Cloud.Spanner.V1.PlanNode.Types.Kind) input.ReadEnum();
+            Kind = (global::Google.Cloud.Spanner.V1.PlanNode.Types.Kind) input.ReadEnum();
             break;
           }
           case 26: {
@@ -378,23 +378,23 @@ namespace Google.Cloud.Spanner.V1 {
           }
           case 42: {
             if (shortRepresentation_ == null) {
-              shortRepresentation_ = new global::Google.Cloud.Spanner.V1.PlanNode.Types.ShortRepresentation();
+              ShortRepresentation = new global::Google.Cloud.Spanner.V1.PlanNode.Types.ShortRepresentation();
             }
-            input.ReadMessage(shortRepresentation_);
+            input.ReadMessage(ShortRepresentation);
             break;
           }
           case 50: {
             if (metadata_ == null) {
-              metadata_ = new global::Google.Protobuf.WellKnownTypes.Struct();
+              Metadata = new global::Google.Protobuf.WellKnownTypes.Struct();
             }
-            input.ReadMessage(metadata_);
+            input.ReadMessage(Metadata);
             break;
           }
           case 58: {
             if (executionStats_ == null) {
-              executionStats_ = new global::Google.Protobuf.WellKnownTypes.Struct();
+              ExecutionStats = new global::Google.Protobuf.WellKnownTypes.Struct();
             }
-            input.ReadMessage(executionStats_);
+            input.ReadMessage(ExecutionStats);
             break;
           }
         }

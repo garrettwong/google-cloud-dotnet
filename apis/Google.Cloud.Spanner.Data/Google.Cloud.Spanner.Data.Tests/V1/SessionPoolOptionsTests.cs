@@ -17,16 +17,17 @@ using System;
 using System.Reflection;
 using Xunit;
 
-namespace Google.Cloud.Spanner.V1.PoolRewrite.Tests
+namespace Google.Cloud.Spanner.V1.Tests
 {
     public class SessionPoolOptionsTests
     {
         public static TheoryData<string, object> ValidPropertyValues = new TheoryData<string, object>
         {
             { nameof(SessionPoolOptions.IdleSessionRefreshDelay), TimeSpan.FromSeconds(1) },
-            { nameof(SessionPoolOptions.MaintenanceLoopDelay), TimeSpan.FromSeconds(1) },
+            { nameof(SessionPoolOptions.MaintenanceLoopDelay), TimeSpan.FromSeconds(0) },
             { nameof(SessionPoolOptions.MaximumActiveSessions), 1 },
             { nameof(SessionPoolOptions.MaximumConcurrentSessionCreates), 5 },
+            { nameof(SessionPoolOptions.CreateSessionMaximumBatchSize), 10 },
             { nameof(SessionPoolOptions.MinimumPooledSessions), 0 },
             { nameof(SessionPoolOptions.PoolEvictionDelay), TimeSpan.FromSeconds(1) },
             { nameof(SessionPoolOptions.SessionEvictionJitter), RetrySettings.NoJitter },
@@ -38,9 +39,10 @@ namespace Google.Cloud.Spanner.V1.PoolRewrite.Tests
         public static TheoryData<string, object> InvalidPropertyValues = new TheoryData<string, object>
         {
             { nameof(SessionPoolOptions.IdleSessionRefreshDelay), TimeSpan.FromSeconds(0) },
-            { nameof(SessionPoolOptions.MaintenanceLoopDelay), TimeSpan.FromSeconds(0) },
+            { nameof(SessionPoolOptions.MaintenanceLoopDelay), TimeSpan.FromSeconds(-1) },
             { nameof(SessionPoolOptions.MaximumActiveSessions), 0 },
             { nameof(SessionPoolOptions.MaximumConcurrentSessionCreates), 0 },
+            { nameof(SessionPoolOptions.CreateSessionMaximumBatchSize), 0 },
             { nameof(SessionPoolOptions.MinimumPooledSessions), -1 },
             { nameof(SessionPoolOptions.PoolEvictionDelay), TimeSpan.FromSeconds(0) },
             { nameof(SessionPoolOptions.SessionEvictionJitter), null },

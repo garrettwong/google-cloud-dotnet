@@ -1,4 +1,4 @@
-// Copyright 2018 Google LLC
+// Copyright 2019 Google LLC
 //
 // Licensed under the Apache License, Version 2.0 (the "License");
 // you may not use this file except in compliance with the License.
@@ -310,6 +310,42 @@ namespace Google.Cloud.Monitoring.V3
     }
 
     /// <summary>
+    /// Builder class for <see cref="UptimeCheckServiceClient"/> to provide simple configuration of credentials, endpoint etc.
+    /// </summary>
+    public sealed partial class UptimeCheckServiceClientBuilder : gaxgrpc::ClientBuilderBase<UptimeCheckServiceClient>
+    {
+        /// <summary>
+        /// The settings to use for RPCs, or null for the default settings.
+        /// </summary>
+        public UptimeCheckServiceSettings Settings { get; set; }
+
+        /// <inheritdoc/>
+        public override UptimeCheckServiceClient Build()
+        {
+            Validate();
+            grpccore::CallInvoker callInvoker = CreateCallInvoker();
+            return UptimeCheckServiceClient.Create(callInvoker, Settings);
+        }
+
+        /// <inheritdoc />
+        public override async stt::Task<UptimeCheckServiceClient> BuildAsync(st::CancellationToken cancellationToken = default)
+        {
+            Validate();
+            grpccore::CallInvoker callInvoker = await CreateCallInvokerAsync(cancellationToken).ConfigureAwait(false);
+            return UptimeCheckServiceClient.Create(callInvoker, Settings);
+        }
+
+        /// <inheritdoc />
+        protected override gaxgrpc::ServiceEndpoint GetDefaultEndpoint() => UptimeCheckServiceClient.DefaultEndpoint;
+
+        /// <inheritdoc />
+        protected override scg::IReadOnlyList<string> GetDefaultScopes() => UptimeCheckServiceClient.DefaultScopes;
+
+        /// <inheritdoc />
+        protected override gaxgrpc::ChannelPool GetChannelPool() => UptimeCheckServiceClient.ChannelPool;
+    }
+
+    /// <summary>
     /// UptimeCheckService client wrapper, for convenient use.
     /// </summary>
     public abstract partial class UptimeCheckServiceClient
@@ -339,6 +375,8 @@ namespace Google.Cloud.Monitoring.V3
         });
 
         private static readonly gaxgrpc::ChannelPool s_channelPool = new gaxgrpc::ChannelPool(DefaultScopes);
+
+        internal static gaxgrpc::ChannelPool ChannelPool => s_channelPool;
 
         /// <summary>
         /// Asynchronously creates a <see cref="UptimeCheckServiceClient"/>, applying defaults for all unspecified settings,
@@ -470,11 +508,11 @@ namespace Google.Cloud.Monitoring.V3
         }
 
         /// <summary>
-        /// Lists the existing valid uptime check configurations for the project,
-        /// leaving out any invalid configurations.
+        /// Lists the existing valid Uptime check configurations for the project
+        /// (leaving out any invalid configurations).
         /// </summary>
         /// <param name="parent">
-        /// The project whose uptime check configurations are listed. The format
+        /// The project whose Uptime check configurations are listed. The format
         ///   is `projects/[PROJECT_ID]`.
         /// </param>
         /// <param name="pageToken">
@@ -505,11 +543,11 @@ namespace Google.Cloud.Monitoring.V3
                 callSettings);
 
         /// <summary>
-        /// Lists the existing valid uptime check configurations for the project,
-        /// leaving out any invalid configurations.
+        /// Lists the existing valid Uptime check configurations for the project
+        /// (leaving out any invalid configurations).
         /// </summary>
         /// <param name="parent">
-        /// The project whose uptime check configurations are listed. The format
+        /// The project whose Uptime check configurations are listed. The format
         ///   is `projects/[PROJECT_ID]`.
         /// </param>
         /// <param name="pageToken">
@@ -540,8 +578,8 @@ namespace Google.Cloud.Monitoring.V3
                 callSettings);
 
         /// <summary>
-        /// Lists the existing valid uptime check configurations for the project,
-        /// leaving out any invalid configurations.
+        /// Lists the existing valid Uptime check configurations for the project
+        /// (leaving out any invalid configurations).
         /// </summary>
         /// <param name="request">
         /// The request object containing all of the parameters for the API call.
@@ -560,8 +598,8 @@ namespace Google.Cloud.Monitoring.V3
         }
 
         /// <summary>
-        /// Lists the existing valid uptime check configurations for the project,
-        /// leaving out any invalid configurations.
+        /// Lists the existing valid Uptime check configurations for the project
+        /// (leaving out any invalid configurations).
         /// </summary>
         /// <param name="request">
         /// The request object containing all of the parameters for the API call.
@@ -580,10 +618,73 @@ namespace Google.Cloud.Monitoring.V3
         }
 
         /// <summary>
-        /// Gets a single uptime check configuration.
+        /// Gets a single Uptime check configuration.
         /// </summary>
         /// <param name="name">
-        /// The uptime check configuration to retrieve. The format
+        /// The Uptime check configuration to retrieve. The format
+        ///   is `projects/[PROJECT_ID]/uptimeCheckConfigs/[UPTIME_CHECK_ID]`.
+        /// </param>
+        /// <param name="callSettings">
+        /// If not null, applies overrides to this RPC call.
+        /// </param>
+        /// <returns>
+        /// A Task containing the RPC response.
+        /// </returns>
+        public virtual stt::Task<UptimeCheckConfig> GetUptimeCheckConfigAsync(
+            UptimeCheckConfigName name,
+            gaxgrpc::CallSettings callSettings = null) => GetUptimeCheckConfigAsync(
+                new GetUptimeCheckConfigRequest
+                {
+                    UptimeCheckConfigName = gax::GaxPreconditions.CheckNotNull(name, nameof(name)),
+                },
+                callSettings);
+
+        /// <summary>
+        /// Gets a single Uptime check configuration.
+        /// </summary>
+        /// <param name="name">
+        /// The Uptime check configuration to retrieve. The format
+        ///   is `projects/[PROJECT_ID]/uptimeCheckConfigs/[UPTIME_CHECK_ID]`.
+        /// </param>
+        /// <param name="cancellationToken">
+        /// A <see cref="st::CancellationToken"/> to use for this RPC.
+        /// </param>
+        /// <returns>
+        /// A Task containing the RPC response.
+        /// </returns>
+        public virtual stt::Task<UptimeCheckConfig> GetUptimeCheckConfigAsync(
+            UptimeCheckConfigName name,
+            st::CancellationToken cancellationToken) => GetUptimeCheckConfigAsync(
+                name,
+                gaxgrpc::CallSettings.FromCancellationToken(cancellationToken));
+
+        /// <summary>
+        /// Gets a single Uptime check configuration.
+        /// </summary>
+        /// <param name="name">
+        /// The Uptime check configuration to retrieve. The format
+        ///   is `projects/[PROJECT_ID]/uptimeCheckConfigs/[UPTIME_CHECK_ID]`.
+        /// </param>
+        /// <param name="callSettings">
+        /// If not null, applies overrides to this RPC call.
+        /// </param>
+        /// <returns>
+        /// The RPC response.
+        /// </returns>
+        public virtual UptimeCheckConfig GetUptimeCheckConfig(
+            UptimeCheckConfigName name,
+            gaxgrpc::CallSettings callSettings = null) => GetUptimeCheckConfig(
+                new GetUptimeCheckConfigRequest
+                {
+                    UptimeCheckConfigName = gax::GaxPreconditions.CheckNotNull(name, nameof(name)),
+                },
+                callSettings);
+
+        /// <summary>
+        /// Gets a single Uptime check configuration.
+        /// </summary>
+        /// <param name="name">
+        /// The Uptime check configuration to retrieve. The format
         ///   is `projects/[PROJECT_ID]/uptimeCheckConfigs/[UPTIME_CHECK_ID]`.
         /// </param>
         /// <param name="callSettings">
@@ -602,10 +703,10 @@ namespace Google.Cloud.Monitoring.V3
                 callSettings);
 
         /// <summary>
-        /// Gets a single uptime check configuration.
+        /// Gets a single Uptime check configuration.
         /// </summary>
         /// <param name="name">
-        /// The uptime check configuration to retrieve. The format
+        /// The Uptime check configuration to retrieve. The format
         ///   is `projects/[PROJECT_ID]/uptimeCheckConfigs/[UPTIME_CHECK_ID]`.
         /// </param>
         /// <param name="cancellationToken">
@@ -621,10 +722,10 @@ namespace Google.Cloud.Monitoring.V3
                 gaxgrpc::CallSettings.FromCancellationToken(cancellationToken));
 
         /// <summary>
-        /// Gets a single uptime check configuration.
+        /// Gets a single Uptime check configuration.
         /// </summary>
         /// <param name="name">
-        /// The uptime check configuration to retrieve. The format
+        /// The Uptime check configuration to retrieve. The format
         ///   is `projects/[PROJECT_ID]/uptimeCheckConfigs/[UPTIME_CHECK_ID]`.
         /// </param>
         /// <param name="callSettings">
@@ -643,7 +744,7 @@ namespace Google.Cloud.Monitoring.V3
                 callSettings);
 
         /// <summary>
-        /// Gets a single uptime check configuration.
+        /// Gets a single Uptime check configuration.
         /// </summary>
         /// <param name="request">
         /// The request object containing all of the parameters for the API call.
@@ -662,7 +763,7 @@ namespace Google.Cloud.Monitoring.V3
         }
 
         /// <summary>
-        /// Gets a single uptime check configuration.
+        /// Gets a single Uptime check configuration.
         /// </summary>
         /// <param name="request">
         /// The request object containing all of the parameters for the API call.
@@ -680,7 +781,7 @@ namespace Google.Cloud.Monitoring.V3
                 gaxgrpc::CallSettings.FromCancellationToken(cancellationToken));
 
         /// <summary>
-        /// Gets a single uptime check configuration.
+        /// Gets a single Uptime check configuration.
         /// </summary>
         /// <param name="request">
         /// The request object containing all of the parameters for the API call.
@@ -699,14 +800,14 @@ namespace Google.Cloud.Monitoring.V3
         }
 
         /// <summary>
-        /// Creates a new uptime check configuration.
+        /// Creates a new Uptime check configuration.
         /// </summary>
         /// <param name="parent">
-        /// The project in which to create the uptime check. The format
+        /// The project in which to create the Uptime check. The format
         ///   is `projects/[PROJECT_ID]`.
         /// </param>
         /// <param name="uptimeCheckConfig">
-        /// The new uptime check configuration.
+        /// The new Uptime check configuration.
         /// </param>
         /// <param name="callSettings">
         /// If not null, applies overrides to this RPC call.
@@ -726,14 +827,14 @@ namespace Google.Cloud.Monitoring.V3
                 callSettings);
 
         /// <summary>
-        /// Creates a new uptime check configuration.
+        /// Creates a new Uptime check configuration.
         /// </summary>
         /// <param name="parent">
-        /// The project in which to create the uptime check. The format
+        /// The project in which to create the Uptime check. The format
         ///   is `projects/[PROJECT_ID]`.
         /// </param>
         /// <param name="uptimeCheckConfig">
-        /// The new uptime check configuration.
+        /// The new Uptime check configuration.
         /// </param>
         /// <param name="cancellationToken">
         /// A <see cref="st::CancellationToken"/> to use for this RPC.
@@ -750,14 +851,14 @@ namespace Google.Cloud.Monitoring.V3
                 gaxgrpc::CallSettings.FromCancellationToken(cancellationToken));
 
         /// <summary>
-        /// Creates a new uptime check configuration.
+        /// Creates a new Uptime check configuration.
         /// </summary>
         /// <param name="parent">
-        /// The project in which to create the uptime check. The format
+        /// The project in which to create the Uptime check. The format
         ///   is `projects/[PROJECT_ID]`.
         /// </param>
         /// <param name="uptimeCheckConfig">
-        /// The new uptime check configuration.
+        /// The new Uptime check configuration.
         /// </param>
         /// <param name="callSettings">
         /// If not null, applies overrides to this RPC call.
@@ -777,7 +878,7 @@ namespace Google.Cloud.Monitoring.V3
                 callSettings);
 
         /// <summary>
-        /// Creates a new uptime check configuration.
+        /// Creates a new Uptime check configuration.
         /// </summary>
         /// <param name="request">
         /// The request object containing all of the parameters for the API call.
@@ -796,7 +897,7 @@ namespace Google.Cloud.Monitoring.V3
         }
 
         /// <summary>
-        /// Creates a new uptime check configuration.
+        /// Creates a new Uptime check configuration.
         /// </summary>
         /// <param name="request">
         /// The request object containing all of the parameters for the API call.
@@ -814,7 +915,7 @@ namespace Google.Cloud.Monitoring.V3
                 gaxgrpc::CallSettings.FromCancellationToken(cancellationToken));
 
         /// <summary>
-        /// Creates a new uptime check configuration.
+        /// Creates a new Uptime check configuration.
         /// </summary>
         /// <param name="request">
         /// The request object containing all of the parameters for the API call.
@@ -833,17 +934,17 @@ namespace Google.Cloud.Monitoring.V3
         }
 
         /// <summary>
-        /// Updates an uptime check configuration. You can either replace the entire
+        /// Updates an Uptime check configuration. You can either replace the entire
         /// configuration with a new one or replace only certain fields in the current
-        /// configuration by specifying the fields to be updated via `"updateMask"`.
+        /// configuration by specifying the fields to be updated via `updateMask`.
         /// Returns the updated configuration.
         /// </summary>
         /// <param name="uptimeCheckConfig">
-        /// Required. If an `"updateMask"` has been specified, this field gives
-        /// the values for the set of fields mentioned in the `"updateMask"`. If an
-        /// `"updateMask"` has not been given, this uptime check configuration replaces
-        /// the current configuration. If a field is mentioned in `"updateMask"` but
-        /// the corresonding field is omitted in this partial uptime check
+        /// Required. If an `updateMask` has been specified, this field gives
+        /// the values for the set of fields mentioned in the `updateMask`. If an
+        /// `updateMask` has not been given, this Uptime check configuration replaces
+        /// the current configuration. If a field is mentioned in `updateMask` but
+        /// the corresonding field is omitted in this partial Uptime check
         /// configuration, it has the effect of deleting/clearing the field from the
         /// configuration on the server.
         ///
@@ -867,17 +968,17 @@ namespace Google.Cloud.Monitoring.V3
                 callSettings);
 
         /// <summary>
-        /// Updates an uptime check configuration. You can either replace the entire
+        /// Updates an Uptime check configuration. You can either replace the entire
         /// configuration with a new one or replace only certain fields in the current
-        /// configuration by specifying the fields to be updated via `"updateMask"`.
+        /// configuration by specifying the fields to be updated via `updateMask`.
         /// Returns the updated configuration.
         /// </summary>
         /// <param name="uptimeCheckConfig">
-        /// Required. If an `"updateMask"` has been specified, this field gives
-        /// the values for the set of fields mentioned in the `"updateMask"`. If an
-        /// `"updateMask"` has not been given, this uptime check configuration replaces
-        /// the current configuration. If a field is mentioned in `"updateMask"` but
-        /// the corresonding field is omitted in this partial uptime check
+        /// Required. If an `updateMask` has been specified, this field gives
+        /// the values for the set of fields mentioned in the `updateMask`. If an
+        /// `updateMask` has not been given, this Uptime check configuration replaces
+        /// the current configuration. If a field is mentioned in `updateMask` but
+        /// the corresonding field is omitted in this partial Uptime check
         /// configuration, it has the effect of deleting/clearing the field from the
         /// configuration on the server.
         ///
@@ -898,17 +999,17 @@ namespace Google.Cloud.Monitoring.V3
                 gaxgrpc::CallSettings.FromCancellationToken(cancellationToken));
 
         /// <summary>
-        /// Updates an uptime check configuration. You can either replace the entire
+        /// Updates an Uptime check configuration. You can either replace the entire
         /// configuration with a new one or replace only certain fields in the current
-        /// configuration by specifying the fields to be updated via `"updateMask"`.
+        /// configuration by specifying the fields to be updated via `updateMask`.
         /// Returns the updated configuration.
         /// </summary>
         /// <param name="uptimeCheckConfig">
-        /// Required. If an `"updateMask"` has been specified, this field gives
-        /// the values for the set of fields mentioned in the `"updateMask"`. If an
-        /// `"updateMask"` has not been given, this uptime check configuration replaces
-        /// the current configuration. If a field is mentioned in `"updateMask"` but
-        /// the corresonding field is omitted in this partial uptime check
+        /// Required. If an `updateMask` has been specified, this field gives
+        /// the values for the set of fields mentioned in the `updateMask`. If an
+        /// `updateMask` has not been given, this Uptime check configuration replaces
+        /// the current configuration. If a field is mentioned in `updateMask` but
+        /// the corresonding field is omitted in this partial Uptime check
         /// configuration, it has the effect of deleting/clearing the field from the
         /// configuration on the server.
         ///
@@ -932,9 +1033,9 @@ namespace Google.Cloud.Monitoring.V3
                 callSettings);
 
         /// <summary>
-        /// Updates an uptime check configuration. You can either replace the entire
+        /// Updates an Uptime check configuration. You can either replace the entire
         /// configuration with a new one or replace only certain fields in the current
-        /// configuration by specifying the fields to be updated via `"updateMask"`.
+        /// configuration by specifying the fields to be updated via `updateMask`.
         /// Returns the updated configuration.
         /// </summary>
         /// <param name="request">
@@ -954,9 +1055,9 @@ namespace Google.Cloud.Monitoring.V3
         }
 
         /// <summary>
-        /// Updates an uptime check configuration. You can either replace the entire
+        /// Updates an Uptime check configuration. You can either replace the entire
         /// configuration with a new one or replace only certain fields in the current
-        /// configuration by specifying the fields to be updated via `"updateMask"`.
+        /// configuration by specifying the fields to be updated via `updateMask`.
         /// Returns the updated configuration.
         /// </summary>
         /// <param name="request">
@@ -975,9 +1076,9 @@ namespace Google.Cloud.Monitoring.V3
                 gaxgrpc::CallSettings.FromCancellationToken(cancellationToken));
 
         /// <summary>
-        /// Updates an uptime check configuration. You can either replace the entire
+        /// Updates an Uptime check configuration. You can either replace the entire
         /// configuration with a new one or replace only certain fields in the current
-        /// configuration by specifying the fields to be updated via `"updateMask"`.
+        /// configuration by specifying the fields to be updated via `updateMask`.
         /// Returns the updated configuration.
         /// </summary>
         /// <param name="request">
@@ -997,12 +1098,78 @@ namespace Google.Cloud.Monitoring.V3
         }
 
         /// <summary>
-        /// Deletes an uptime check configuration. Note that this method will fail
-        /// if the uptime check configuration is referenced by an alert policy or
+        /// Deletes an Uptime check configuration. Note that this method will fail
+        /// if the Uptime check configuration is referenced by an alert policy or
         /// other dependent configs that would be rendered invalid by the deletion.
         /// </summary>
         /// <param name="name">
-        /// The uptime check configuration to delete. The format
+        /// The Uptime check configuration to delete. The format
+        ///   is `projects/[PROJECT_ID]/uptimeCheckConfigs/[UPTIME_CHECK_ID]`.
+        /// </param>
+        /// <param name="callSettings">
+        /// If not null, applies overrides to this RPC call.
+        /// </param>
+        /// <returns>
+        /// A Task that completes when the RPC has completed.
+        /// </returns>
+        public virtual stt::Task DeleteUptimeCheckConfigAsync(
+            UptimeCheckConfigName name,
+            gaxgrpc::CallSettings callSettings = null) => DeleteUptimeCheckConfigAsync(
+                new DeleteUptimeCheckConfigRequest
+                {
+                    UptimeCheckConfigName = gax::GaxPreconditions.CheckNotNull(name, nameof(name)),
+                },
+                callSettings);
+
+        /// <summary>
+        /// Deletes an Uptime check configuration. Note that this method will fail
+        /// if the Uptime check configuration is referenced by an alert policy or
+        /// other dependent configs that would be rendered invalid by the deletion.
+        /// </summary>
+        /// <param name="name">
+        /// The Uptime check configuration to delete. The format
+        ///   is `projects/[PROJECT_ID]/uptimeCheckConfigs/[UPTIME_CHECK_ID]`.
+        /// </param>
+        /// <param name="cancellationToken">
+        /// A <see cref="st::CancellationToken"/> to use for this RPC.
+        /// </param>
+        /// <returns>
+        /// A Task that completes when the RPC has completed.
+        /// </returns>
+        public virtual stt::Task DeleteUptimeCheckConfigAsync(
+            UptimeCheckConfigName name,
+            st::CancellationToken cancellationToken) => DeleteUptimeCheckConfigAsync(
+                name,
+                gaxgrpc::CallSettings.FromCancellationToken(cancellationToken));
+
+        /// <summary>
+        /// Deletes an Uptime check configuration. Note that this method will fail
+        /// if the Uptime check configuration is referenced by an alert policy or
+        /// other dependent configs that would be rendered invalid by the deletion.
+        /// </summary>
+        /// <param name="name">
+        /// The Uptime check configuration to delete. The format
+        ///   is `projects/[PROJECT_ID]/uptimeCheckConfigs/[UPTIME_CHECK_ID]`.
+        /// </param>
+        /// <param name="callSettings">
+        /// If not null, applies overrides to this RPC call.
+        /// </param>
+        public virtual void DeleteUptimeCheckConfig(
+            UptimeCheckConfigName name,
+            gaxgrpc::CallSettings callSettings = null) => DeleteUptimeCheckConfig(
+                new DeleteUptimeCheckConfigRequest
+                {
+                    UptimeCheckConfigName = gax::GaxPreconditions.CheckNotNull(name, nameof(name)),
+                },
+                callSettings);
+
+        /// <summary>
+        /// Deletes an Uptime check configuration. Note that this method will fail
+        /// if the Uptime check configuration is referenced by an alert policy or
+        /// other dependent configs that would be rendered invalid by the deletion.
+        /// </summary>
+        /// <param name="name">
+        /// The Uptime check configuration to delete. The format
         ///   is `projects/[PROJECT_ID]/uptimeCheckConfigs/[UPTIME_CHECK_ID]`.
         /// </param>
         /// <param name="callSettings">
@@ -1021,12 +1188,12 @@ namespace Google.Cloud.Monitoring.V3
                 callSettings);
 
         /// <summary>
-        /// Deletes an uptime check configuration. Note that this method will fail
-        /// if the uptime check configuration is referenced by an alert policy or
+        /// Deletes an Uptime check configuration. Note that this method will fail
+        /// if the Uptime check configuration is referenced by an alert policy or
         /// other dependent configs that would be rendered invalid by the deletion.
         /// </summary>
         /// <param name="name">
-        /// The uptime check configuration to delete. The format
+        /// The Uptime check configuration to delete. The format
         ///   is `projects/[PROJECT_ID]/uptimeCheckConfigs/[UPTIME_CHECK_ID]`.
         /// </param>
         /// <param name="cancellationToken">
@@ -1042,12 +1209,12 @@ namespace Google.Cloud.Monitoring.V3
                 gaxgrpc::CallSettings.FromCancellationToken(cancellationToken));
 
         /// <summary>
-        /// Deletes an uptime check configuration. Note that this method will fail
-        /// if the uptime check configuration is referenced by an alert policy or
+        /// Deletes an Uptime check configuration. Note that this method will fail
+        /// if the Uptime check configuration is referenced by an alert policy or
         /// other dependent configs that would be rendered invalid by the deletion.
         /// </summary>
         /// <param name="name">
-        /// The uptime check configuration to delete. The format
+        /// The Uptime check configuration to delete. The format
         ///   is `projects/[PROJECT_ID]/uptimeCheckConfigs/[UPTIME_CHECK_ID]`.
         /// </param>
         /// <param name="callSettings">
@@ -1063,8 +1230,8 @@ namespace Google.Cloud.Monitoring.V3
                 callSettings);
 
         /// <summary>
-        /// Deletes an uptime check configuration. Note that this method will fail
-        /// if the uptime check configuration is referenced by an alert policy or
+        /// Deletes an Uptime check configuration. Note that this method will fail
+        /// if the Uptime check configuration is referenced by an alert policy or
         /// other dependent configs that would be rendered invalid by the deletion.
         /// </summary>
         /// <param name="request">
@@ -1084,8 +1251,8 @@ namespace Google.Cloud.Monitoring.V3
         }
 
         /// <summary>
-        /// Deletes an uptime check configuration. Note that this method will fail
-        /// if the uptime check configuration is referenced by an alert policy or
+        /// Deletes an Uptime check configuration. Note that this method will fail
+        /// if the Uptime check configuration is referenced by an alert policy or
         /// other dependent configs that would be rendered invalid by the deletion.
         /// </summary>
         /// <param name="request">
@@ -1104,8 +1271,8 @@ namespace Google.Cloud.Monitoring.V3
                 gaxgrpc::CallSettings.FromCancellationToken(cancellationToken));
 
         /// <summary>
-        /// Deletes an uptime check configuration. Note that this method will fail
-        /// if the uptime check configuration is referenced by an alert policy or
+        /// Deletes an Uptime check configuration. Note that this method will fail
+        /// if the Uptime check configuration is referenced by an alert policy or
         /// other dependent configs that would be rendered invalid by the deletion.
         /// </summary>
         /// <param name="request">
@@ -1122,7 +1289,7 @@ namespace Google.Cloud.Monitoring.V3
         }
 
         /// <summary>
-        /// Returns the list of IPs that checkers run from
+        /// Returns the list of IP addresses that checkers run from
         /// </summary>
         /// <param name="request">
         /// The request object containing all of the parameters for the API call.
@@ -1141,7 +1308,7 @@ namespace Google.Cloud.Monitoring.V3
         }
 
         /// <summary>
-        /// Returns the list of IPs that checkers run from
+        /// Returns the list of IP addresses that checkers run from
         /// </summary>
         /// <param name="request">
         /// The request object containing all of the parameters for the API call.
@@ -1184,15 +1351,20 @@ namespace Google.Cloud.Monitoring.V3
             UptimeCheckServiceSettings effectiveSettings = settings ?? UptimeCheckServiceSettings.GetDefault();
             gaxgrpc::ClientHelper clientHelper = new gaxgrpc::ClientHelper(effectiveSettings);
             _callListUptimeCheckConfigs = clientHelper.BuildApiCall<ListUptimeCheckConfigsRequest, ListUptimeCheckConfigsResponse>(
-                GrpcClient.ListUptimeCheckConfigsAsync, GrpcClient.ListUptimeCheckConfigs, effectiveSettings.ListUptimeCheckConfigsSettings);
+                GrpcClient.ListUptimeCheckConfigsAsync, GrpcClient.ListUptimeCheckConfigs, effectiveSettings.ListUptimeCheckConfigsSettings)
+                .WithGoogleRequestParam("parent", request => request.Parent);
             _callGetUptimeCheckConfig = clientHelper.BuildApiCall<GetUptimeCheckConfigRequest, UptimeCheckConfig>(
-                GrpcClient.GetUptimeCheckConfigAsync, GrpcClient.GetUptimeCheckConfig, effectiveSettings.GetUptimeCheckConfigSettings);
+                GrpcClient.GetUptimeCheckConfigAsync, GrpcClient.GetUptimeCheckConfig, effectiveSettings.GetUptimeCheckConfigSettings)
+                .WithGoogleRequestParam("name", request => request.Name);
             _callCreateUptimeCheckConfig = clientHelper.BuildApiCall<CreateUptimeCheckConfigRequest, UptimeCheckConfig>(
-                GrpcClient.CreateUptimeCheckConfigAsync, GrpcClient.CreateUptimeCheckConfig, effectiveSettings.CreateUptimeCheckConfigSettings);
+                GrpcClient.CreateUptimeCheckConfigAsync, GrpcClient.CreateUptimeCheckConfig, effectiveSettings.CreateUptimeCheckConfigSettings)
+                .WithGoogleRequestParam("parent", request => request.Parent);
             _callUpdateUptimeCheckConfig = clientHelper.BuildApiCall<UpdateUptimeCheckConfigRequest, UptimeCheckConfig>(
-                GrpcClient.UpdateUptimeCheckConfigAsync, GrpcClient.UpdateUptimeCheckConfig, effectiveSettings.UpdateUptimeCheckConfigSettings);
+                GrpcClient.UpdateUptimeCheckConfigAsync, GrpcClient.UpdateUptimeCheckConfig, effectiveSettings.UpdateUptimeCheckConfigSettings)
+                .WithGoogleRequestParam("uptime_check_config.name", request => request.UptimeCheckConfig?.Name);
             _callDeleteUptimeCheckConfig = clientHelper.BuildApiCall<DeleteUptimeCheckConfigRequest, pbwkt::Empty>(
-                GrpcClient.DeleteUptimeCheckConfigAsync, GrpcClient.DeleteUptimeCheckConfig, effectiveSettings.DeleteUptimeCheckConfigSettings);
+                GrpcClient.DeleteUptimeCheckConfigAsync, GrpcClient.DeleteUptimeCheckConfig, effectiveSettings.DeleteUptimeCheckConfigSettings)
+                .WithGoogleRequestParam("name", request => request.Name);
             _callListUptimeCheckIps = clientHelper.BuildApiCall<ListUptimeCheckIpsRequest, ListUptimeCheckIpsResponse>(
                 GrpcClient.ListUptimeCheckIpsAsync, GrpcClient.ListUptimeCheckIps, effectiveSettings.ListUptimeCheckIpsSettings);
             Modify_ApiCall(ref _callListUptimeCheckConfigs);
@@ -1244,8 +1416,8 @@ namespace Google.Cloud.Monitoring.V3
         partial void Modify_ListUptimeCheckIpsRequest(ref ListUptimeCheckIpsRequest request, ref gaxgrpc::CallSettings settings);
 
         /// <summary>
-        /// Lists the existing valid uptime check configurations for the project,
-        /// leaving out any invalid configurations.
+        /// Lists the existing valid Uptime check configurations for the project
+        /// (leaving out any invalid configurations).
         /// </summary>
         /// <param name="request">
         /// The request object containing all of the parameters for the API call.
@@ -1265,8 +1437,8 @@ namespace Google.Cloud.Monitoring.V3
         }
 
         /// <summary>
-        /// Lists the existing valid uptime check configurations for the project,
-        /// leaving out any invalid configurations.
+        /// Lists the existing valid Uptime check configurations for the project
+        /// (leaving out any invalid configurations).
         /// </summary>
         /// <param name="request">
         /// The request object containing all of the parameters for the API call.
@@ -1286,7 +1458,7 @@ namespace Google.Cloud.Monitoring.V3
         }
 
         /// <summary>
-        /// Gets a single uptime check configuration.
+        /// Gets a single Uptime check configuration.
         /// </summary>
         /// <param name="request">
         /// The request object containing all of the parameters for the API call.
@@ -1306,7 +1478,7 @@ namespace Google.Cloud.Monitoring.V3
         }
 
         /// <summary>
-        /// Gets a single uptime check configuration.
+        /// Gets a single Uptime check configuration.
         /// </summary>
         /// <param name="request">
         /// The request object containing all of the parameters for the API call.
@@ -1326,7 +1498,7 @@ namespace Google.Cloud.Monitoring.V3
         }
 
         /// <summary>
-        /// Creates a new uptime check configuration.
+        /// Creates a new Uptime check configuration.
         /// </summary>
         /// <param name="request">
         /// The request object containing all of the parameters for the API call.
@@ -1346,7 +1518,7 @@ namespace Google.Cloud.Monitoring.V3
         }
 
         /// <summary>
-        /// Creates a new uptime check configuration.
+        /// Creates a new Uptime check configuration.
         /// </summary>
         /// <param name="request">
         /// The request object containing all of the parameters for the API call.
@@ -1366,9 +1538,9 @@ namespace Google.Cloud.Monitoring.V3
         }
 
         /// <summary>
-        /// Updates an uptime check configuration. You can either replace the entire
+        /// Updates an Uptime check configuration. You can either replace the entire
         /// configuration with a new one or replace only certain fields in the current
-        /// configuration by specifying the fields to be updated via `"updateMask"`.
+        /// configuration by specifying the fields to be updated via `updateMask`.
         /// Returns the updated configuration.
         /// </summary>
         /// <param name="request">
@@ -1389,9 +1561,9 @@ namespace Google.Cloud.Monitoring.V3
         }
 
         /// <summary>
-        /// Updates an uptime check configuration. You can either replace the entire
+        /// Updates an Uptime check configuration. You can either replace the entire
         /// configuration with a new one or replace only certain fields in the current
-        /// configuration by specifying the fields to be updated via `"updateMask"`.
+        /// configuration by specifying the fields to be updated via `updateMask`.
         /// Returns the updated configuration.
         /// </summary>
         /// <param name="request">
@@ -1412,8 +1584,8 @@ namespace Google.Cloud.Monitoring.V3
         }
 
         /// <summary>
-        /// Deletes an uptime check configuration. Note that this method will fail
-        /// if the uptime check configuration is referenced by an alert policy or
+        /// Deletes an Uptime check configuration. Note that this method will fail
+        /// if the Uptime check configuration is referenced by an alert policy or
         /// other dependent configs that would be rendered invalid by the deletion.
         /// </summary>
         /// <param name="request">
@@ -1434,8 +1606,8 @@ namespace Google.Cloud.Monitoring.V3
         }
 
         /// <summary>
-        /// Deletes an uptime check configuration. Note that this method will fail
-        /// if the uptime check configuration is referenced by an alert policy or
+        /// Deletes an Uptime check configuration. Note that this method will fail
+        /// if the Uptime check configuration is referenced by an alert policy or
         /// other dependent configs that would be rendered invalid by the deletion.
         /// </summary>
         /// <param name="request">
@@ -1453,7 +1625,7 @@ namespace Google.Cloud.Monitoring.V3
         }
 
         /// <summary>
-        /// Returns the list of IPs that checkers run from
+        /// Returns the list of IP addresses that checkers run from
         /// </summary>
         /// <param name="request">
         /// The request object containing all of the parameters for the API call.
@@ -1473,7 +1645,7 @@ namespace Google.Cloud.Monitoring.V3
         }
 
         /// <summary>
-        /// Returns the list of IPs that checkers run from
+        /// Returns the list of IP addresses that checkers run from
         /// </summary>
         /// <param name="request">
         /// The request object containing all of the parameters for the API call.

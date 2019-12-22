@@ -14,7 +14,7 @@
 
 using Google.Api.Gax.Grpc;
 using Google.Api.Gax.Testing;
-using Google.Cloud.Firestore.V1Beta1;
+using Google.Cloud.Firestore.V1;
 using Google.Protobuf;
 using Grpc.Core;
 using Grpc.Core.Testing;
@@ -24,9 +24,9 @@ using System.Linq;
 using System.Threading;
 using System.Threading.Tasks;
 using Xunit;
-using static Google.Cloud.Firestore.V1Beta1.FirestoreClient;
-using static Google.Cloud.Firestore.V1Beta1.StructuredQuery.Types;
-using static Google.Cloud.Firestore.V1Beta1.Target.Types;
+using static Google.Cloud.Firestore.V1.FirestoreClient;
+using static Google.Cloud.Firestore.V1.StructuredQuery.Types;
+using static Google.Cloud.Firestore.V1.Target.Types;
 
 namespace Google.Cloud.Firestore.Tests
 {
@@ -108,7 +108,7 @@ namespace Google.Cloud.Firestore.Tests
             sequence.ProvideResponse(WatchResponseResult.StreamHealthy, token1);
             sequence.ProvideResponse(WatchResponseResult.StreamHealthy, token2);
             sequence.RpcException(new RpcException(new Status(StatusCode.DeadlineExceeded, "This exception is transient")));
-            // The server throw a retriable exception. Reinitialize.
+            // The server threw a retriable exception. Reinitialize.
             sequence.ExpectConnect(token2, StreamInitializationCause.RpcError);
             sequence.ProvideResponse(WatchResponseResult.Continue);
             sequence.WaitForCancellation();
@@ -549,7 +549,7 @@ namespace Google.Cloud.Firestore.Tests
                 _responses = responses;
                 // We only use the gRPC call for disposal. This is a bit unpleasant (rather than providing a reader/writer etc) but
                 // it's simple and enough for what we need.
-                _grpcCall = TestCalls.AsyncDuplexStreamingCall<ListenResponse, ListenRequest>(null, null, null, null, null, () => Disposed = true);
+                _grpcCall = TestCalls.AsyncDuplexStreamingCall<ListenRequest, ListenResponse>(null, null, null, null, null, () => Disposed = true);
             }
 
             public override AsyncDuplexStreamingCall<ListenRequest, ListenResponse> GrpcCall => _grpcCall;

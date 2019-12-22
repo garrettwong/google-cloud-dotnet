@@ -125,17 +125,20 @@ namespace Google.Cloud.BigQuery.V2
         }
 
         /// <summary>
-        /// Polls this job for completion.
+        /// Polls this job for completion, returning a new <see cref="BigQueryJob"/> object with the updated information.
         /// This method just creates a <see cref="JobReference"/> and delegates to <see cref="BigQueryClient.PollJobUntilCompleted(JobReference, GetJobOptions, PollSettings)"/>.
         /// </summary>
+        /// <remarks>
+        /// Note that this method does not modify the state of the object it is called on. Instead, a new object is returned.
+        /// If you need to check that the job completed without errors, or access any other information, you need to use the
+        /// return value of the method.
+        /// </remarks>
         /// <param name="options">The options for the operation. May be null, in which case defaults will be supplied.</param>
         /// <param name="pollSettings">The settings to control how often and long the job is fetched before timing out if it is still incomplete.
         /// May be null, in which case defaults will be supplied.</param>
         /// <returns>The completed job.</returns>
         public BigQueryJob PollUntilCompleted(GetJobOptions options = null, PollSettings pollSettings = null) =>
             _client.PollJobUntilCompleted(Reference, options, pollSettings);
-
-        // FIXME: The documentation isn't really correct here...
 
         /// <summary>
         /// Retrieves the result of this job, which must be a query job.
@@ -148,7 +151,7 @@ namespace Google.Cloud.BigQuery.V2
         /// </remarks>
         /// <param name="options">The options for the operation. May be null, in which case defaults will be supplied.</param>
         /// <returns>The result of the query.</returns>
-        public BigQueryResults GetQueryResults(GetQueryResultsOptions options = null) => _client.GetQueryResults(Reference, GetQueryTableReference(), options);
+        public BigQueryResults GetQueryResults(GetQueryResultsOptions options = null) => _client.GetQueryResults(Reference, GetQueryDestinationTable(), options);
 
         /// <summary>
         /// Cancels this job.
@@ -185,7 +188,7 @@ namespace Google.Cloud.BigQuery.V2
         /// <returns>A task representing the asynchronous operation. When complete, the result is
         /// a <see cref="BigQueryResults"/> representation of the query.</returns>
         public Task<BigQueryResults> GetQueryResultsAsync(GetQueryResultsOptions options = null, CancellationToken cancellationToken = default) =>
-            _client.GetQueryResultsAsync(Reference, GetQueryTableReference(), options, cancellationToken);
+            _client.GetQueryResultsAsync(Reference, GetQueryDestinationTable(), options, cancellationToken);
 
         /// <summary>
         /// Asynchronously cancels this job.
@@ -198,7 +201,12 @@ namespace Google.Cloud.BigQuery.V2
         public Task<BigQueryJob> CancelAsync(CancelJobOptions options = null, CancellationToken cancellationToken = default) =>
             _client.CancelJobAsync(Reference, options, cancellationToken);
 
-        private TableReference GetQueryTableReference()
+        /// <summary>
+        /// The query destination table can be null if it's been fetched with and odd field mask
+        /// or for script queries. We use the destination table only to pass around in
+        /// results so it's OK to return null here.
+        /// </summary>
+        private TableReference GetQueryDestinationTable()
         {
             var query = Resource?.Configuration?.Query;
             if (query == null)
@@ -210,13 +218,7 @@ namespace Google.Cloud.BigQuery.V2
                 throw new InvalidOperationException("Job has no ID. (This can happen for dry run queries.)");
             }
             ThrowOnAnyError();
-            var tableReference = query.DestinationTable;
-            if (tableReference == null)
-            {
-                // This can happen if it's been fetched with an odd field mask.
-                throw new InvalidOperationException("Query doesn't have a destination table");
-            }
-            return tableReference;
+            return query.DestinationTable;
         }
 
         // TODO: Refresh? Could easily call GetJob, but can't easily modify *this* job...

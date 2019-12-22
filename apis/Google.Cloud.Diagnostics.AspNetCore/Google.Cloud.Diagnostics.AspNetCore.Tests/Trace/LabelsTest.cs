@@ -35,16 +35,17 @@ namespace Google.Cloud.Diagnostics.AspNetCore.Tests
         [Fact]
         public void FromDefaultHttpRequest()
         {
-            var request = new DefaultHttpRequest(new DefaultHttpContext());
+            var request = new DefaultHttpRequest(new DefaultHttpContext { TraceIdentifier = "trace-id" });
             request.ContentLength = 123;
             request.Host = new HostString("google.com");
             request.Method = "PUT";
 
-            var labels = Labels.FromDefaultHttpRequest(request);
-            Assert.Equal(3, labels.Count);
+            var labels = Labels.FromHttpRequest(request);
+            Assert.Equal(4, labels.Count);
             Assert.Equal("123", labels[LabelsCommon.HttpRequestSize]);
             Assert.Equal("google.com", labels[LabelsCommon.HttpHost]);
             Assert.Equal("PUT", labels[LabelsCommon.HttpMethod]);
+            Assert.Equal("trace-id", labels[Labels.CoreTraceId]);
         }
 
         [Fact]
@@ -53,7 +54,7 @@ namespace Google.Cloud.Diagnostics.AspNetCore.Tests
             var response = new DefaultHttpResponse(new DefaultHttpContext());
             response.StatusCode = 404;
 
-            var labels = Labels.FromDefaultHttpResponse(response);
+            var labels = Labels.FromHttpResponse(response);
             Assert.Equal(1, labels.Count);
             Assert.Equal("404", labels[LabelsCommon.HttpStatusCode]);
         }

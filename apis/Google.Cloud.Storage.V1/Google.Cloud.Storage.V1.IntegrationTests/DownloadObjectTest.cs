@@ -15,6 +15,7 @@
 using Google.Apis.Download;
 using Google.Apis.Services;
 using Google.Apis.Storage.v1;
+using Google.Cloud.ClientTesting;
 using System;
 using System.IO;
 using System.Linq;
@@ -89,27 +90,6 @@ namespace Google.Cloud.Storage.V1.IntegrationTests
                     progress);
                 Assert.Equal(_fixture.LargeContent, stream.ToArray());
                 Assert.True(chunks >= 5);
-            }
-        }
-
-        [Fact]
-        public async Task Cancellation()
-        {
-            var cts = new CancellationTokenSource();
-            var progress = new Progress<IDownloadProgress>(p =>
-            {
-                if (p.BytesDownloaded > 5000)
-                {
-                    cts.Cancel();
-                }
-            });
-            using (var stream = new MemoryStream())
-            {
-                await Assert.ThrowsAnyAsync<OperationCanceledException>(() => _fixture.Client.DownloadObjectAsync(
-                    _fixture.ReadBucket, _fixture.LargeObject, stream,
-                    new DownloadObjectOptions { ChunkSize = 2 * 1024 },
-                    cts.Token,
-                    progress));
             }
         }
 
@@ -279,6 +259,8 @@ namespace Google.Cloud.Storage.V1.IntegrationTests
         [Fact]
         public void DownloadGzippedFile()
         {
+            TestEnvironment.SkipIfVpcSc();
+
             // The file has a Content-Encoding of gzip, and it's stored compressed.
             // We should still be able to download it, and the result should be the original plain text.
             var stream = new MemoryStream();
@@ -290,9 +272,11 @@ namespace Google.Cloud.Storage.V1.IntegrationTests
 
         // See https://github.com/googleapis/google-cloud-dotnet/issues/1784 for the background to
         // the following two tests.
-        [Fact(Skip = "https://github.com/googleapis/google-cloud-dotnet/issues/1784")]
+        [SkippableFact(Skip = "https://github.com/googleapis/google-cloud-dotnet/issues/1784")]
         public void DownloadGzippedFile_NoClientDecompression()
         {
+            TestEnvironment.SkipIfVpcSc();
+
             var service = new StorageService(new BaseClientService.Initializer
             {
                 HttpClientInitializer = _fixture.Client.Service.HttpClientInitializer,
@@ -306,9 +290,11 @@ namespace Google.Cloud.Storage.V1.IntegrationTests
             Assert.Equal(expected, actual);
         }
         
-        [Fact]
+        [SkippableFact]
         public void DownloadGzippedFile_NoClientDecompression_IgnoreHash()
         {
+            TestEnvironment.SkipIfVpcSc();
+
             var service = new StorageService(new BaseClientService.Initializer
             {
                 HttpClientInitializer = _fixture.Client.Service.HttpClientInitializer,

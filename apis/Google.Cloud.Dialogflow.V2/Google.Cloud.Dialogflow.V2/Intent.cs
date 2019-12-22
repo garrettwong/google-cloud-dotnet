@@ -26,170 +26,255 @@ namespace Google.Cloud.Dialogflow.V2 {
           string.Concat(
             "Cidnb29nbGUvY2xvdWQvZGlhbG9nZmxvdy92Mi9pbnRlbnQucHJvdG8SGmdv",
             "b2dsZS5jbG91ZC5kaWFsb2dmbG93LnYyGhxnb29nbGUvYXBpL2Fubm90YXRp",
-            "b25zLnByb3RvGihnb29nbGUvY2xvdWQvZGlhbG9nZmxvdy92Mi9jb250ZXh0",
-            "LnByb3RvGiNnb29nbGUvbG9uZ3J1bm5pbmcvb3BlcmF0aW9ucy5wcm90bxob",
-            "Z29vZ2xlL3Byb3RvYnVmL2VtcHR5LnByb3RvGiBnb29nbGUvcHJvdG9idWYv",
-            "ZmllbGRfbWFzay5wcm90bxocZ29vZ2xlL3Byb3RvYnVmL3N0cnVjdC5wcm90",
-            "byLzIAoGSW50ZW50EgwKBG5hbWUYASABKAkSFAoMZGlzcGxheV9uYW1lGAIg",
-            "ASgJEkYKDXdlYmhvb2tfc3RhdGUYBiABKA4yLy5nb29nbGUuY2xvdWQuZGlh",
-            "bG9nZmxvdy52Mi5JbnRlbnQuV2ViaG9va1N0YXRlEhAKCHByaW9yaXR5GAMg",
-            "ASgFEhMKC2lzX2ZhbGxiYWNrGAQgASgIEhMKC21sX2Rpc2FibGVkGBMgASgI",
-            "EhsKE2lucHV0X2NvbnRleHRfbmFtZXMYByADKAkSDgoGZXZlbnRzGAggAygJ",
-            "EksKEHRyYWluaW5nX3BocmFzZXMYCSADKAsyMS5nb29nbGUuY2xvdWQuZGlh",
-            "bG9nZmxvdy52Mi5JbnRlbnQuVHJhaW5pbmdQaHJhc2USDgoGYWN0aW9uGAog",
-            "ASgJEjwKD291dHB1dF9jb250ZXh0cxgLIAMoCzIjLmdvb2dsZS5jbG91ZC5k",
-            "aWFsb2dmbG93LnYyLkNvbnRleHQSFgoOcmVzZXRfY29udGV4dHMYDCABKAgS",
-            "QAoKcGFyYW1ldGVycxgNIAMoCzIsLmdvb2dsZS5jbG91ZC5kaWFsb2dmbG93",
-            "LnYyLkludGVudC5QYXJhbWV0ZXISPAoIbWVzc2FnZXMYDiADKAsyKi5nb29n",
-            "bGUuY2xvdWQuZGlhbG9nZmxvdy52Mi5JbnRlbnQuTWVzc2FnZRJXChpkZWZh",
-            "dWx0X3Jlc3BvbnNlX3BsYXRmb3JtcxgPIAMoDjIzLmdvb2dsZS5jbG91ZC5k",
-            "aWFsb2dmbG93LnYyLkludGVudC5NZXNzYWdlLlBsYXRmb3JtEiEKGXJvb3Rf",
-            "Zm9sbG93dXBfaW50ZW50X25hbWUYECABKAkSIwobcGFyZW50X2ZvbGxvd3Vw",
-            "X2ludGVudF9uYW1lGBEgASgJElMKFGZvbGxvd3VwX2ludGVudF9pbmZvGBIg",
-            "AygLMjUuZ29vZ2xlLmNsb3VkLmRpYWxvZ2Zsb3cudjIuSW50ZW50LkZvbGxv",
-            "d3VwSW50ZW50SW5mbxrPAgoOVHJhaW5pbmdQaHJhc2USDAoEbmFtZRgBIAEo",
-            "CRJECgR0eXBlGAIgASgOMjYuZ29vZ2xlLmNsb3VkLmRpYWxvZ2Zsb3cudjIu",
-            "SW50ZW50LlRyYWluaW5nUGhyYXNlLlR5cGUSRQoFcGFydHMYAyADKAsyNi5n",
-            "b29nbGUuY2xvdWQuZGlhbG9nZmxvdy52Mi5JbnRlbnQuVHJhaW5pbmdQaHJh",
-            "c2UuUGFydBIZChF0aW1lc19hZGRlZF9jb3VudBgEIAEoBRpOCgRQYXJ0EgwK",
-            "BHRleHQYASABKAkSEwoLZW50aXR5X3R5cGUYAiABKAkSDQoFYWxpYXMYAyAB",
-            "KAkSFAoMdXNlcl9kZWZpbmVkGAQgASgIIjcKBFR5cGUSFAoQVFlQRV9VTlNQ",
-            "RUNJRklFRBAAEgsKB0VYQU1QTEUQARIMCghURU1QTEFURRACGqwBCglQYXJh",
-            "bWV0ZXISDAoEbmFtZRgBIAEoCRIUCgxkaXNwbGF5X25hbWUYAiABKAkSDQoF",
-            "dmFsdWUYAyABKAkSFQoNZGVmYXVsdF92YWx1ZRgEIAEoCRIgChhlbnRpdHlf",
-            "dHlwZV9kaXNwbGF5X25hbWUYBSABKAkSEQoJbWFuZGF0b3J5GAYgASgIEg8K",
-            "B3Byb21wdHMYByADKAkSDwoHaXNfbGlzdBgIIAEoCBqaFQoHTWVzc2FnZRI/",
-            "CgR0ZXh0GAEgASgLMi8uZ29vZ2xlLmNsb3VkLmRpYWxvZ2Zsb3cudjIuSW50",
-            "ZW50Lk1lc3NhZ2UuVGV4dEgAEkEKBWltYWdlGAIgASgLMjAuZ29vZ2xlLmNs",
-            "b3VkLmRpYWxvZ2Zsb3cudjIuSW50ZW50Lk1lc3NhZ2UuSW1hZ2VIABJQCg1x",
-            "dWlja19yZXBsaWVzGAMgASgLMjcuZ29vZ2xlLmNsb3VkLmRpYWxvZ2Zsb3cu",
-            "djIuSW50ZW50Lk1lc3NhZ2UuUXVpY2tSZXBsaWVzSAASPwoEY2FyZBgEIAEo",
-            "CzIvLmdvb2dsZS5jbG91ZC5kaWFsb2dmbG93LnYyLkludGVudC5NZXNzYWdl",
-            "LkNhcmRIABIqCgdwYXlsb2FkGAUgASgLMhcuZ29vZ2xlLnByb3RvYnVmLlN0",
-            "cnVjdEgAElYKEHNpbXBsZV9yZXNwb25zZXMYByABKAsyOi5nb29nbGUuY2xv",
-            "dWQuZGlhbG9nZmxvdy52Mi5JbnRlbnQuTWVzc2FnZS5TaW1wbGVSZXNwb25z",
-            "ZXNIABJKCgpiYXNpY19jYXJkGAggASgLMjQuZ29vZ2xlLmNsb3VkLmRpYWxv",
-            "Z2Zsb3cudjIuSW50ZW50Lk1lc3NhZ2UuQmFzaWNDYXJkSAASTQoLc3VnZ2Vz",
-            "dGlvbnMYCSABKAsyNi5nb29nbGUuY2xvdWQuZGlhbG9nZmxvdy52Mi5JbnRl",
-            "bnQuTWVzc2FnZS5TdWdnZXN0aW9uc0gAElsKE2xpbmtfb3V0X3N1Z2dlc3Rp",
-            "b24YCiABKAsyPC5nb29nbGUuY2xvdWQuZGlhbG9nZmxvdy52Mi5JbnRlbnQu",
-            "TWVzc2FnZS5MaW5rT3V0U3VnZ2VzdGlvbkgAEkwKC2xpc3Rfc2VsZWN0GAsg",
-            "ASgLMjUuZ29vZ2xlLmNsb3VkLmRpYWxvZ2Zsb3cudjIuSW50ZW50Lk1lc3Nh",
-            "Z2UuTGlzdFNlbGVjdEgAElQKD2Nhcm91c2VsX3NlbGVjdBgMIAEoCzI5Lmdv",
-            "b2dsZS5jbG91ZC5kaWFsb2dmbG93LnYyLkludGVudC5NZXNzYWdlLkNhcm91",
-            "c2VsU2VsZWN0SAASRQoIcGxhdGZvcm0YBiABKA4yMy5nb29nbGUuY2xvdWQu",
-            "ZGlhbG9nZmxvdy52Mi5JbnRlbnQuTWVzc2FnZS5QbGF0Zm9ybRoUCgRUZXh0",
-            "EgwKBHRleHQYASADKAkaNgoFSW1hZ2USEQoJaW1hZ2VfdXJpGAEgASgJEhoK",
-            "EmFjY2Vzc2liaWxpdHlfdGV4dBgCIAEoCRo0CgxRdWlja1JlcGxpZXMSDQoF",
-            "dGl0bGUYASABKAkSFQoNcXVpY2tfcmVwbGllcxgCIAMoCRqtAQoEQ2FyZBIN",
-            "CgV0aXRsZRgBIAEoCRIQCghzdWJ0aXRsZRgCIAEoCRIRCglpbWFnZV91cmkY",
-            "AyABKAkSRwoHYnV0dG9ucxgEIAMoCzI2Lmdvb2dsZS5jbG91ZC5kaWFsb2dm",
-            "bG93LnYyLkludGVudC5NZXNzYWdlLkNhcmQuQnV0dG9uGigKBkJ1dHRvbhIM",
-            "CgR0ZXh0GAEgASgJEhAKCHBvc3RiYWNrGAIgASgJGkwKDlNpbXBsZVJlc3Bv",
-            "bnNlEhYKDnRleHRfdG9fc3BlZWNoGAEgASgJEgwKBHNzbWwYAiABKAkSFAoM",
-            "ZGlzcGxheV90ZXh0GAMgASgJGmYKD1NpbXBsZVJlc3BvbnNlcxJTChBzaW1w",
-            "bGVfcmVzcG9uc2VzGAEgAygLMjkuZ29vZ2xlLmNsb3VkLmRpYWxvZ2Zsb3cu",
-            "djIuSW50ZW50Lk1lc3NhZ2UuU2ltcGxlUmVzcG9uc2Ua7wIKCUJhc2ljQ2Fy",
-            "ZBINCgV0aXRsZRgBIAEoCRIQCghzdWJ0aXRsZRgCIAEoCRIWCg5mb3JtYXR0",
-            "ZWRfdGV4dBgDIAEoCRI/CgVpbWFnZRgEIAEoCzIwLmdvb2dsZS5jbG91ZC5k",
-            "aWFsb2dmbG93LnYyLkludGVudC5NZXNzYWdlLkltYWdlEkwKB2J1dHRvbnMY",
-            "BSADKAsyOy5nb29nbGUuY2xvdWQuZGlhbG9nZmxvdy52Mi5JbnRlbnQuTWVz",
-            "c2FnZS5CYXNpY0NhcmQuQnV0dG9uGpkBCgZCdXR0b24SDQoFdGl0bGUYASAB",
-            "KAkSYgoPb3Blbl91cmlfYWN0aW9uGAIgASgLMkkuZ29vZ2xlLmNsb3VkLmRp",
-            "YWxvZ2Zsb3cudjIuSW50ZW50Lk1lc3NhZ2UuQmFzaWNDYXJkLkJ1dHRvbi5P",
-            "cGVuVXJpQWN0aW9uGhwKDU9wZW5VcmlBY3Rpb24SCwoDdXJpGAEgASgJGhsK",
-            "ClN1Z2dlc3Rpb24SDQoFdGl0bGUYASABKAkaWQoLU3VnZ2VzdGlvbnMSSgoL",
-            "c3VnZ2VzdGlvbnMYASADKAsyNS5nb29nbGUuY2xvdWQuZGlhbG9nZmxvdy52",
-            "Mi5JbnRlbnQuTWVzc2FnZS5TdWdnZXN0aW9uGjoKEUxpbmtPdXRTdWdnZXN0",
-            "aW9uEhgKEGRlc3RpbmF0aW9uX25hbWUYASABKAkSCwoDdXJpGAIgASgJGp0C",
-            "CgpMaXN0U2VsZWN0Eg0KBXRpdGxlGAEgASgJEkkKBWl0ZW1zGAIgAygLMjou",
-            "Z29vZ2xlLmNsb3VkLmRpYWxvZ2Zsb3cudjIuSW50ZW50Lk1lc3NhZ2UuTGlz",
-            "dFNlbGVjdC5JdGVtGrQBCgRJdGVtEkcKBGluZm8YASABKAsyOS5nb29nbGUu",
-            "Y2xvdWQuZGlhbG9nZmxvdy52Mi5JbnRlbnQuTWVzc2FnZS5TZWxlY3RJdGVt",
-            "SW5mbxINCgV0aXRsZRgCIAEoCRITCgtkZXNjcmlwdGlvbhgDIAEoCRI/CgVp",
-            "bWFnZRgEIAEoCzIwLmdvb2dsZS5jbG91ZC5kaWFsb2dmbG93LnYyLkludGVu",
-            "dC5NZXNzYWdlLkltYWdlGpYCCg5DYXJvdXNlbFNlbGVjdBJNCgVpdGVtcxgB",
-            "IAMoCzI+Lmdvb2dsZS5jbG91ZC5kaWFsb2dmbG93LnYyLkludGVudC5NZXNz",
-            "YWdlLkNhcm91c2VsU2VsZWN0Lkl0ZW0atAEKBEl0ZW0SRwoEaW5mbxgBIAEo",
-            "CzI5Lmdvb2dsZS5jbG91ZC5kaWFsb2dmbG93LnYyLkludGVudC5NZXNzYWdl",
-            "LlNlbGVjdEl0ZW1JbmZvEg0KBXRpdGxlGAIgASgJEhMKC2Rlc2NyaXB0aW9u",
-            "GAMgASgJEj8KBWltYWdlGAQgASgLMjAuZ29vZ2xlLmNsb3VkLmRpYWxvZ2Zs",
-            "b3cudjIuSW50ZW50Lk1lc3NhZ2UuSW1hZ2UaLwoOU2VsZWN0SXRlbUluZm8S",
-            "CwoDa2V5GAEgASgJEhAKCHN5bm9ueW1zGAIgAygJIosBCghQbGF0Zm9ybRIY",
-            "ChRQTEFURk9STV9VTlNQRUNJRklFRBAAEgwKCEZBQ0VCT09LEAESCQoFU0xB",
-            "Q0sQAhIMCghURUxFR1JBTRADEgcKA0tJSxAEEgkKBVNLWVBFEAUSCAoETElO",
-            "RRAGEgkKBVZJQkVSEAcSFQoRQUNUSU9OU19PTl9HT09HTEUQCEIJCgdtZXNz",
-            "YWdlGlcKEkZvbGxvd3VwSW50ZW50SW5mbxIcChRmb2xsb3d1cF9pbnRlbnRf",
-            "bmFtZRgBIAEoCRIjChtwYXJlbnRfZm9sbG93dXBfaW50ZW50X25hbWUYAiAB",
-            "KAkidAoMV2ViaG9va1N0YXRlEh0KGVdFQkhPT0tfU1RBVEVfVU5TUEVDSUZJ",
-            "RUQQABIZChVXRUJIT09LX1NUQVRFX0VOQUJMRUQQARIqCiZXRUJIT09LX1NU",
-            "QVRFX0VOQUJMRURfRk9SX1NMT1RfRklMTElORxACIp8BChJMaXN0SW50ZW50",
-            "c1JlcXVlc3QSDgoGcGFyZW50GAEgASgJEhUKDWxhbmd1YWdlX2NvZGUYAiAB",
-            "KAkSOwoLaW50ZW50X3ZpZXcYAyABKA4yJi5nb29nbGUuY2xvdWQuZGlhbG9n",
-            "Zmxvdy52Mi5JbnRlbnRWaWV3EhEKCXBhZ2Vfc2l6ZRgEIAEoBRISCgpwYWdl",
-            "X3Rva2VuGAUgASgJImMKE0xpc3RJbnRlbnRzUmVzcG9uc2USMwoHaW50ZW50",
-            "cxgBIAMoCzIiLmdvb2dsZS5jbG91ZC5kaWFsb2dmbG93LnYyLkludGVudBIX",
-            "Cg9uZXh0X3BhZ2VfdG9rZW4YAiABKAkidAoQR2V0SW50ZW50UmVxdWVzdBIM",
-            "CgRuYW1lGAEgASgJEhUKDWxhbmd1YWdlX2NvZGUYAiABKAkSOwoLaW50ZW50",
-            "X3ZpZXcYAyABKA4yJi5nb29nbGUuY2xvdWQuZGlhbG9nZmxvdy52Mi5JbnRl",
-            "bnRWaWV3Iq0BChNDcmVhdGVJbnRlbnRSZXF1ZXN0Eg4KBnBhcmVudBgBIAEo",
-            "CRIyCgZpbnRlbnQYAiABKAsyIi5nb29nbGUuY2xvdWQuZGlhbG9nZmxvdy52",
-            "Mi5JbnRlbnQSFQoNbGFuZ3VhZ2VfY29kZRgDIAEoCRI7CgtpbnRlbnRfdmll",
-            "dxgEIAEoDjImLmdvb2dsZS5jbG91ZC5kaWFsb2dmbG93LnYyLkludGVudFZp",
-            "ZXcizgEKE1VwZGF0ZUludGVudFJlcXVlc3QSMgoGaW50ZW50GAEgASgLMiIu",
-            "Z29vZ2xlLmNsb3VkLmRpYWxvZ2Zsb3cudjIuSW50ZW50EhUKDWxhbmd1YWdl",
-            "X2NvZGUYAiABKAkSLwoLdXBkYXRlX21hc2sYAyABKAsyGi5nb29nbGUucHJv",
-            "dG9idWYuRmllbGRNYXNrEjsKC2ludGVudF92aWV3GAQgASgOMiYuZ29vZ2xl",
-            "LmNsb3VkLmRpYWxvZ2Zsb3cudjIuSW50ZW50VmlldyIjChNEZWxldGVJbnRl",
-            "bnRSZXF1ZXN0EgwKBG5hbWUYASABKAkipAIKGUJhdGNoVXBkYXRlSW50ZW50",
-            "c1JlcXVlc3QSDgoGcGFyZW50GAEgASgJEhoKEGludGVudF9iYXRjaF91cmkY",
-            "AiABKAlIABJGChNpbnRlbnRfYmF0Y2hfaW5saW5lGAMgASgLMicuZ29vZ2xl",
-            "LmNsb3VkLmRpYWxvZ2Zsb3cudjIuSW50ZW50QmF0Y2hIABIVCg1sYW5ndWFn",
-            "ZV9jb2RlGAQgASgJEi8KC3VwZGF0ZV9tYXNrGAUgASgLMhouZ29vZ2xlLnBy",
-            "b3RvYnVmLkZpZWxkTWFzaxI7CgtpbnRlbnRfdmlldxgGIAEoDjImLmdvb2ds",
-            "ZS5jbG91ZC5kaWFsb2dmbG93LnYyLkludGVudFZpZXdCDgoMaW50ZW50X2Jh",
-            "dGNoIlEKGkJhdGNoVXBkYXRlSW50ZW50c1Jlc3BvbnNlEjMKB2ludGVudHMY",
-            "ASADKAsyIi5nb29nbGUuY2xvdWQuZGlhbG9nZmxvdy52Mi5JbnRlbnQiYAoZ",
-            "QmF0Y2hEZWxldGVJbnRlbnRzUmVxdWVzdBIOCgZwYXJlbnQYASABKAkSMwoH",
-            "aW50ZW50cxgCIAMoCzIiLmdvb2dsZS5jbG91ZC5kaWFsb2dmbG93LnYyLklu",
-            "dGVudCJCCgtJbnRlbnRCYXRjaBIzCgdpbnRlbnRzGAEgAygLMiIuZ29vZ2xl",
-            "LmNsb3VkLmRpYWxvZ2Zsb3cudjIuSW50ZW50Kj8KCkludGVudFZpZXcSGwoX",
-            "SU5URU5UX1ZJRVdfVU5TUEVDSUZJRUQQABIUChBJTlRFTlRfVklFV19GVUxM",
-            "EAEy2AgKB0ludGVudHMSnQEKC0xpc3RJbnRlbnRzEi4uZ29vZ2xlLmNsb3Vk",
-            "LmRpYWxvZ2Zsb3cudjIuTGlzdEludGVudHNSZXF1ZXN0Gi8uZ29vZ2xlLmNs",
-            "b3VkLmRpYWxvZ2Zsb3cudjIuTGlzdEludGVudHNSZXNwb25zZSItgtPkkwIn",
-            "EiUvdjIve3BhcmVudD1wcm9qZWN0cy8qL2FnZW50fS9pbnRlbnRzEowBCglH",
-            "ZXRJbnRlbnQSLC5nb29nbGUuY2xvdWQuZGlhbG9nZmxvdy52Mi5HZXRJbnRl",
-            "bnRSZXF1ZXN0GiIuZ29vZ2xlLmNsb3VkLmRpYWxvZ2Zsb3cudjIuSW50ZW50",
-            "Ii2C0+STAicSJS92Mi97bmFtZT1wcm9qZWN0cy8qL2FnZW50L2ludGVudHMv",
-            "Kn0SmgEKDENyZWF0ZUludGVudBIvLmdvb2dsZS5jbG91ZC5kaWFsb2dmbG93",
-            "LnYyLkNyZWF0ZUludGVudFJlcXVlc3QaIi5nb29nbGUuY2xvdWQuZGlhbG9n",
-            "Zmxvdy52Mi5JbnRlbnQiNYLT5JMCLyIlL3YyL3twYXJlbnQ9cHJvamVjdHMv",
-            "Ki9hZ2VudH0vaW50ZW50czoGaW50ZW50EqEBCgxVcGRhdGVJbnRlbnQSLy5n",
-            "b29nbGUuY2xvdWQuZGlhbG9nZmxvdy52Mi5VcGRhdGVJbnRlbnRSZXF1ZXN0",
-            "GiIuZ29vZ2xlLmNsb3VkLmRpYWxvZ2Zsb3cudjIuSW50ZW50IjyC0+STAjYy",
-            "LC92Mi97aW50ZW50Lm5hbWU9cHJvamVjdHMvKi9hZ2VudC9pbnRlbnRzLyp9",
-            "OgZpbnRlbnQShgEKDERlbGV0ZUludGVudBIvLmdvb2dsZS5jbG91ZC5kaWFs",
-            "b2dmbG93LnYyLkRlbGV0ZUludGVudFJlcXVlc3QaFi5nb29nbGUucHJvdG9i",
-            "dWYuRW1wdHkiLYLT5JMCJyolL3YyL3tuYW1lPXByb2plY3RzLyovYWdlbnQv",
-            "aW50ZW50cy8qfRKoAQoSQmF0Y2hVcGRhdGVJbnRlbnRzEjUuZ29vZ2xlLmNs",
-            "b3VkLmRpYWxvZ2Zsb3cudjIuQmF0Y2hVcGRhdGVJbnRlbnRzUmVxdWVzdBod",
-            "Lmdvb2dsZS5sb25ncnVubmluZy5PcGVyYXRpb24iPILT5JMCNiIxL3YyL3tw",
-            "YXJlbnQ9cHJvamVjdHMvKi9hZ2VudH0vaW50ZW50czpiYXRjaFVwZGF0ZToB",
-            "KhKoAQoSQmF0Y2hEZWxldGVJbnRlbnRzEjUuZ29vZ2xlLmNsb3VkLmRpYWxv",
-            "Z2Zsb3cudjIuQmF0Y2hEZWxldGVJbnRlbnRzUmVxdWVzdBodLmdvb2dsZS5s",
-            "b25ncnVubmluZy5PcGVyYXRpb24iPILT5JMCNiIxL3YyL3twYXJlbnQ9cHJv",
-            "amVjdHMvKi9hZ2VudH0vaW50ZW50czpiYXRjaERlbGV0ZToBKkKaAQoeY29t",
-            "Lmdvb2dsZS5jbG91ZC5kaWFsb2dmbG93LnYyQgtJbnRlbnRQcm90b1ABWkRn",
-            "b29nbGUuZ29sYW5nLm9yZy9nZW5wcm90by9nb29nbGVhcGlzL2Nsb3VkL2Rp",
-            "YWxvZ2Zsb3cvdjI7ZGlhbG9nZmxvd/gBAaICAkRGqgIaR29vZ2xlLkNsb3Vk",
-            "LkRpYWxvZ2Zsb3cuVjJiBnByb3RvMw=="));
+            "b25zLnByb3RvGhdnb29nbGUvYXBpL2NsaWVudC5wcm90bxofZ29vZ2xlL2Fw",
+            "aS9maWVsZF9iZWhhdmlvci5wcm90bxoZZ29vZ2xlL2FwaS9yZXNvdXJjZS5w",
+            "cm90bxotZ29vZ2xlL2Nsb3VkL2RpYWxvZ2Zsb3cvdjIvYXVkaW9fY29uZmln",
+            "LnByb3RvGihnb29nbGUvY2xvdWQvZGlhbG9nZmxvdy92Mi9jb250ZXh0LnBy",
+            "b3RvGiNnb29nbGUvbG9uZ3J1bm5pbmcvb3BlcmF0aW9ucy5wcm90bxoeZ29v",
+            "Z2xlL3Byb3RvYnVmL2R1cmF0aW9uLnByb3RvGhtnb29nbGUvcHJvdG9idWYv",
+            "ZW1wdHkucHJvdG8aIGdvb2dsZS9wcm90b2J1Zi9maWVsZF9tYXNrLnByb3Rv",
+            "Ghxnb29nbGUvcHJvdG9idWYvc3RydWN0LnByb3RvIsM3CgZJbnRlbnQSDAoE",
+            "bmFtZRgBIAEoCRIZCgxkaXNwbGF5X25hbWUYAiABKAlCA+BBAhJLCg13ZWJo",
+            "b29rX3N0YXRlGAYgASgOMi8uZ29vZ2xlLmNsb3VkLmRpYWxvZ2Zsb3cudjIu",
+            "SW50ZW50LldlYmhvb2tTdGF0ZUID4EEBEhUKCHByaW9yaXR5GAMgASgFQgPg",
+            "QQESGAoLaXNfZmFsbGJhY2sYBCABKAhCA+BBARIYCgttbF9kaXNhYmxlZBgT",
+            "IAEoCEID4EEBEiAKE2lucHV0X2NvbnRleHRfbmFtZXMYByADKAlCA+BBARIT",
+            "CgZldmVudHMYCCADKAlCA+BBARJQChB0cmFpbmluZ19waHJhc2VzGAkgAygL",
+            "MjEuZ29vZ2xlLmNsb3VkLmRpYWxvZ2Zsb3cudjIuSW50ZW50LlRyYWluaW5n",
+            "UGhyYXNlQgPgQQESEwoGYWN0aW9uGAogASgJQgPgQQESQQoPb3V0cHV0X2Nv",
+            "bnRleHRzGAsgAygLMiMuZ29vZ2xlLmNsb3VkLmRpYWxvZ2Zsb3cudjIuQ29u",
+            "dGV4dEID4EEBEhsKDnJlc2V0X2NvbnRleHRzGAwgASgIQgPgQQESRQoKcGFy",
+            "YW1ldGVycxgNIAMoCzIsLmdvb2dsZS5jbG91ZC5kaWFsb2dmbG93LnYyLklu",
+            "dGVudC5QYXJhbWV0ZXJCA+BBARJBCghtZXNzYWdlcxgOIAMoCzIqLmdvb2ds",
+            "ZS5jbG91ZC5kaWFsb2dmbG93LnYyLkludGVudC5NZXNzYWdlQgPgQQESXAoa",
+            "ZGVmYXVsdF9yZXNwb25zZV9wbGF0Zm9ybXMYDyADKA4yMy5nb29nbGUuY2xv",
+            "dWQuZGlhbG9nZmxvdy52Mi5JbnRlbnQuTWVzc2FnZS5QbGF0Zm9ybUID4EEB",
+            "EiEKGXJvb3RfZm9sbG93dXBfaW50ZW50X25hbWUYECABKAkSIwobcGFyZW50",
+            "X2ZvbGxvd3VwX2ludGVudF9uYW1lGBEgASgJElMKFGZvbGxvd3VwX2ludGVu",
+            "dF9pbmZvGBIgAygLMjUuZ29vZ2xlLmNsb3VkLmRpYWxvZ2Zsb3cudjIuSW50",
+            "ZW50LkZvbGxvd3VwSW50ZW50SW5mbxrxAgoOVHJhaW5pbmdQaHJhc2USDAoE",
+            "bmFtZRgBIAEoCRJJCgR0eXBlGAIgASgOMjYuZ29vZ2xlLmNsb3VkLmRpYWxv",
+            "Z2Zsb3cudjIuSW50ZW50LlRyYWluaW5nUGhyYXNlLlR5cGVCA+BBAhJKCgVw",
+            "YXJ0cxgDIAMoCzI2Lmdvb2dsZS5jbG91ZC5kaWFsb2dmbG93LnYyLkludGVu",
+            "dC5UcmFpbmluZ1BocmFzZS5QYXJ0QgPgQQISHgoRdGltZXNfYWRkZWRfY291",
+            "bnQYBCABKAVCA+BBARpdCgRQYXJ0EgwKBHRleHQYASABKAkSGAoLZW50aXR5",
+            "X3R5cGUYAiABKAlCA+BBARISCgVhbGlhcxgDIAEoCUID4EEBEhkKDHVzZXJf",
+            "ZGVmaW5lZBgEIAEoCEID4EEBIjsKBFR5cGUSFAoQVFlQRV9VTlNQRUNJRklF",
+            "RBAAEgsKB0VYQU1QTEUQARIQCghURU1QTEFURRACGgIIARrKAQoJUGFyYW1l",
+            "dGVyEgwKBG5hbWUYASABKAkSFAoMZGlzcGxheV9uYW1lGAIgASgJEhIKBXZh",
+            "bHVlGAMgASgJQgPgQQESGgoNZGVmYXVsdF92YWx1ZRgEIAEoCUID4EEBEiUK",
+            "GGVudGl0eV90eXBlX2Rpc3BsYXlfbmFtZRgFIAEoCUID4EEBEhYKCW1hbmRh",
+            "dG9yeRgGIAEoCEID4EEBEhQKB3Byb21wdHMYByADKAlCA+BBARIUCgdpc19s",
+            "aXN0GAggASgIQgPgQQEalioKB01lc3NhZ2USPwoEdGV4dBgBIAEoCzIvLmdv",
+            "b2dsZS5jbG91ZC5kaWFsb2dmbG93LnYyLkludGVudC5NZXNzYWdlLlRleHRI",
+            "ABJBCgVpbWFnZRgCIAEoCzIwLmdvb2dsZS5jbG91ZC5kaWFsb2dmbG93LnYy",
+            "LkludGVudC5NZXNzYWdlLkltYWdlSAASUAoNcXVpY2tfcmVwbGllcxgDIAEo",
+            "CzI3Lmdvb2dsZS5jbG91ZC5kaWFsb2dmbG93LnYyLkludGVudC5NZXNzYWdl",
+            "LlF1aWNrUmVwbGllc0gAEj8KBGNhcmQYBCABKAsyLy5nb29nbGUuY2xvdWQu",
+            "ZGlhbG9nZmxvdy52Mi5JbnRlbnQuTWVzc2FnZS5DYXJkSAASKgoHcGF5bG9h",
+            "ZBgFIAEoCzIXLmdvb2dsZS5wcm90b2J1Zi5TdHJ1Y3RIABJWChBzaW1wbGVf",
+            "cmVzcG9uc2VzGAcgASgLMjouZ29vZ2xlLmNsb3VkLmRpYWxvZ2Zsb3cudjIu",
+            "SW50ZW50Lk1lc3NhZ2UuU2ltcGxlUmVzcG9uc2VzSAASSgoKYmFzaWNfY2Fy",
+            "ZBgIIAEoCzI0Lmdvb2dsZS5jbG91ZC5kaWFsb2dmbG93LnYyLkludGVudC5N",
+            "ZXNzYWdlLkJhc2ljQ2FyZEgAEk0KC3N1Z2dlc3Rpb25zGAkgASgLMjYuZ29v",
+            "Z2xlLmNsb3VkLmRpYWxvZ2Zsb3cudjIuSW50ZW50Lk1lc3NhZ2UuU3VnZ2Vz",
+            "dGlvbnNIABJbChNsaW5rX291dF9zdWdnZXN0aW9uGAogASgLMjwuZ29vZ2xl",
+            "LmNsb3VkLmRpYWxvZ2Zsb3cudjIuSW50ZW50Lk1lc3NhZ2UuTGlua091dFN1",
+            "Z2dlc3Rpb25IABJMCgtsaXN0X3NlbGVjdBgLIAEoCzI1Lmdvb2dsZS5jbG91",
+            "ZC5kaWFsb2dmbG93LnYyLkludGVudC5NZXNzYWdlLkxpc3RTZWxlY3RIABJU",
+            "Cg9jYXJvdXNlbF9zZWxlY3QYDCABKAsyOS5nb29nbGUuY2xvdWQuZGlhbG9n",
+            "Zmxvdy52Mi5JbnRlbnQuTWVzc2FnZS5DYXJvdXNlbFNlbGVjdEgAEl0KFGJy",
+            "b3dzZV9jYXJvdXNlbF9jYXJkGBYgASgLMj0uZ29vZ2xlLmNsb3VkLmRpYWxv",
+            "Z2Zsb3cudjIuSW50ZW50Lk1lc3NhZ2UuQnJvd3NlQ2Fyb3VzZWxDYXJkSAAS",
+            "SgoKdGFibGVfY2FyZBgXIAEoCzI0Lmdvb2dsZS5jbG91ZC5kaWFsb2dmbG93",
+            "LnYyLkludGVudC5NZXNzYWdlLlRhYmxlQ2FyZEgAElAKDW1lZGlhX2NvbnRl",
+            "bnQYGCABKAsyNy5nb29nbGUuY2xvdWQuZGlhbG9nZmxvdy52Mi5JbnRlbnQu",
+            "TWVzc2FnZS5NZWRpYUNvbnRlbnRIABJKCghwbGF0Zm9ybRgGIAEoDjIzLmdv",
+            "b2dsZS5jbG91ZC5kaWFsb2dmbG93LnYyLkludGVudC5NZXNzYWdlLlBsYXRm",
+            "b3JtQgPgQQEaGQoEVGV4dBIRCgR0ZXh0GAEgAygJQgPgQQEaQAoFSW1hZ2US",
+            "FgoJaW1hZ2VfdXJpGAEgASgJQgPgQQESHwoSYWNjZXNzaWJpbGl0eV90ZXh0",
+            "GAIgASgJQgPgQQEaPgoMUXVpY2tSZXBsaWVzEhIKBXRpdGxlGAEgASgJQgPg",
+            "QQESGgoNcXVpY2tfcmVwbGllcxgCIAMoCUID4EEBGssBCgRDYXJkEhIKBXRp",
+            "dGxlGAEgASgJQgPgQQESFQoIc3VidGl0bGUYAiABKAlCA+BBARIWCglpbWFn",
+            "ZV91cmkYAyABKAlCA+BBARJMCgdidXR0b25zGAQgAygLMjYuZ29vZ2xlLmNs",
+            "b3VkLmRpYWxvZ2Zsb3cudjIuSW50ZW50Lk1lc3NhZ2UuQ2FyZC5CdXR0b25C",
+            "A+BBARoyCgZCdXR0b24SEQoEdGV4dBgBIAEoCUID4EEBEhUKCHBvc3RiYWNr",
+            "GAIgASgJQgPgQQEaUQoOU2ltcGxlUmVzcG9uc2USFgoOdGV4dF90b19zcGVl",
+            "Y2gYASABKAkSDAoEc3NtbBgCIAEoCRIZCgxkaXNwbGF5X3RleHQYAyABKAlC",
+            "A+BBARprCg9TaW1wbGVSZXNwb25zZXMSWAoQc2ltcGxlX3Jlc3BvbnNlcxgB",
+            "IAMoCzI5Lmdvb2dsZS5jbG91ZC5kaWFsb2dmbG93LnYyLkludGVudC5NZXNz",
+            "YWdlLlNpbXBsZVJlc3BvbnNlQgPgQQIaiAMKCUJhc2ljQ2FyZBISCgV0aXRs",
+            "ZRgBIAEoCUID4EEBEhUKCHN1YnRpdGxlGAIgASgJQgPgQQESFgoOZm9ybWF0",
+            "dGVkX3RleHQYAyABKAkSRAoFaW1hZ2UYBCABKAsyMC5nb29nbGUuY2xvdWQu",
+            "ZGlhbG9nZmxvdy52Mi5JbnRlbnQuTWVzc2FnZS5JbWFnZUID4EEBElEKB2J1",
+            "dHRvbnMYBSADKAsyOy5nb29nbGUuY2xvdWQuZGlhbG9nZmxvdy52Mi5JbnRl",
+            "bnQuTWVzc2FnZS5CYXNpY0NhcmQuQnV0dG9uQgPgQQEangEKBkJ1dHRvbhIN",
+            "CgV0aXRsZRgBIAEoCRJnCg9vcGVuX3VyaV9hY3Rpb24YAiABKAsySS5nb29n",
+            "bGUuY2xvdWQuZGlhbG9nZmxvdy52Mi5JbnRlbnQuTWVzc2FnZS5CYXNpY0Nh",
+            "cmQuQnV0dG9uLk9wZW5VcmlBY3Rpb25CA+BBAhocCg1PcGVuVXJpQWN0aW9u",
+            "EgsKA3VyaRgBIAEoCRogCgpTdWdnZXN0aW9uEhIKBXRpdGxlGAEgASgJQgPg",
+            "QQIaXgoLU3VnZ2VzdGlvbnMSTwoLc3VnZ2VzdGlvbnMYASADKAsyNS5nb29n",
+            "bGUuY2xvdWQuZGlhbG9nZmxvdy52Mi5JbnRlbnQuTWVzc2FnZS5TdWdnZXN0",
+            "aW9uQgPgQQIaRAoRTGlua091dFN1Z2dlc3Rpb24SHQoQZGVzdGluYXRpb25f",
+            "bmFtZRgBIAEoCUID4EECEhAKA3VyaRgCIAEoCUID4EECGtICCgpMaXN0U2Vs",
+            "ZWN0EhIKBXRpdGxlGAEgASgJQgPgQQESTgoFaXRlbXMYAiADKAsyOi5nb29n",
+            "bGUuY2xvdWQuZGlhbG9nZmxvdy52Mi5JbnRlbnQuTWVzc2FnZS5MaXN0U2Vs",
+            "ZWN0Lkl0ZW1CA+BBAhIVCghzdWJ0aXRsZRgDIAEoCUID4EEBGsgBCgRJdGVt",
+            "EkwKBGluZm8YASABKAsyOS5nb29nbGUuY2xvdWQuZGlhbG9nZmxvdy52Mi5J",
+            "bnRlbnQuTWVzc2FnZS5TZWxlY3RJdGVtSW5mb0ID4EECEhIKBXRpdGxlGAIg",
+            "ASgJQgPgQQISGAoLZGVzY3JpcHRpb24YAyABKAlCA+BBARJECgVpbWFnZRgE",
+            "IAEoCzIwLmdvb2dsZS5jbG91ZC5kaWFsb2dmbG93LnYyLkludGVudC5NZXNz",
+            "YWdlLkltYWdlQgPgQQEarwIKDkNhcm91c2VsU2VsZWN0ElIKBWl0ZW1zGAEg",
+            "AygLMj4uZ29vZ2xlLmNsb3VkLmRpYWxvZ2Zsb3cudjIuSW50ZW50Lk1lc3Nh",
+            "Z2UuQ2Fyb3VzZWxTZWxlY3QuSXRlbUID4EECGsgBCgRJdGVtEkwKBGluZm8Y",
+            "ASABKAsyOS5nb29nbGUuY2xvdWQuZGlhbG9nZmxvdy52Mi5JbnRlbnQuTWVz",
+            "c2FnZS5TZWxlY3RJdGVtSW5mb0ID4EECEhIKBXRpdGxlGAIgASgJQgPgQQIS",
+            "GAoLZGVzY3JpcHRpb24YAyABKAlCA+BBARJECgVpbWFnZRgEIAEoCzIwLmdv",
+            "b2dsZS5jbG91ZC5kaWFsb2dmbG93LnYyLkludGVudC5NZXNzYWdlLkltYWdl",
+            "QgPgQQEaOQoOU2VsZWN0SXRlbUluZm8SEAoDa2V5GAEgASgJQgPgQQISFQoI",
+            "c3lub255bXMYAiADKAlCA+BBARqOBAoMTWVkaWFDb250ZW50EmIKCm1lZGlh",
+            "X3R5cGUYASABKA4ySS5nb29nbGUuY2xvdWQuZGlhbG9nZmxvdy52Mi5JbnRl",
+            "bnQuTWVzc2FnZS5NZWRpYUNvbnRlbnQuUmVzcG9uc2VNZWRpYVR5cGVCA+BB",
+            "ARJiCg1tZWRpYV9vYmplY3RzGAIgAygLMksuZ29vZ2xlLmNsb3VkLmRpYWxv",
+            "Z2Zsb3cudjIuSW50ZW50Lk1lc3NhZ2UuTWVkaWFDb250ZW50LlJlc3BvbnNl",
+            "TWVkaWFPYmplY3Qa8AEKE1Jlc3BvbnNlTWVkaWFPYmplY3QSDAoEbmFtZRgB",
+            "IAEoCRIYCgtkZXNjcmlwdGlvbhgCIAEoCUID4EEBEkwKC2xhcmdlX2ltYWdl",
+            "GAMgASgLMjAuZ29vZ2xlLmNsb3VkLmRpYWxvZ2Zsb3cudjIuSW50ZW50Lk1l",
+            "c3NhZ2UuSW1hZ2VCA+BBAUgAEkUKBGljb24YBCABKAsyMC5nb29nbGUuY2xv",
+            "dWQuZGlhbG9nZmxvdy52Mi5JbnRlbnQuTWVzc2FnZS5JbWFnZUID4EEBSAAS",
+            "EwoLY29udGVudF91cmwYBSABKAlCBwoFaW1hZ2UiQwoRUmVzcG9uc2VNZWRp",
+            "YVR5cGUSIwofUkVTUE9OU0VfTUVESUFfVFlQRV9VTlNQRUNJRklFRBAAEgkK",
+            "BUFVRElPEAEa/wYKEkJyb3dzZUNhcm91c2VsQ2FyZBJjCgVpdGVtcxgBIAMo",
+            "CzJULmdvb2dsZS5jbG91ZC5kaWFsb2dmbG93LnYyLkludGVudC5NZXNzYWdl",
+            "LkJyb3dzZUNhcm91c2VsQ2FyZC5Ccm93c2VDYXJvdXNlbENhcmRJdGVtEnUK",
+            "FWltYWdlX2Rpc3BsYXlfb3B0aW9ucxgCIAEoDjJRLmdvb2dsZS5jbG91ZC5k",
+            "aWFsb2dmbG93LnYyLkludGVudC5NZXNzYWdlLkJyb3dzZUNhcm91c2VsQ2Fy",
+            "ZC5JbWFnZURpc3BsYXlPcHRpb25zQgPgQQEalAQKFkJyb3dzZUNhcm91c2Vs",
+            "Q2FyZEl0ZW0SewoPb3Blbl91cmlfYWN0aW9uGAEgASgLMmIuZ29vZ2xlLmNs",
+            "b3VkLmRpYWxvZ2Zsb3cudjIuSW50ZW50Lk1lc3NhZ2UuQnJvd3NlQ2Fyb3Vz",
+            "ZWxDYXJkLkJyb3dzZUNhcm91c2VsQ2FyZEl0ZW0uT3BlblVybEFjdGlvbhIN",
+            "CgV0aXRsZRgCIAEoCRIYCgtkZXNjcmlwdGlvbhgDIAEoCUID4EEBEkQKBWlt",
+            "YWdlGAQgASgLMjAuZ29vZ2xlLmNsb3VkLmRpYWxvZ2Zsb3cudjIuSW50ZW50",
+            "Lk1lc3NhZ2UuSW1hZ2VCA+BBARITCgZmb290ZXIYBSABKAlCA+BBARr4AQoN",
+            "T3BlblVybEFjdGlvbhILCgN1cmwYASABKAkSigEKDXVybF90eXBlX2hpbnQY",
+            "AyABKA4ybi5nb29nbGUuY2xvdWQuZGlhbG9nZmxvdy52Mi5JbnRlbnQuTWVz",
+            "c2FnZS5Ccm93c2VDYXJvdXNlbENhcmQuQnJvd3NlQ2Fyb3VzZWxDYXJkSXRl",
+            "bS5PcGVuVXJsQWN0aW9uLlVybFR5cGVIaW50QgPgQQEiTQoLVXJsVHlwZUhp",
+            "bnQSHQoZVVJMX1RZUEVfSElOVF9VTlNQRUNJRklFRBAAEg4KCkFNUF9BQ1RJ",
+            "T04QARIPCgtBTVBfQ09OVEVOVBACInYKE0ltYWdlRGlzcGxheU9wdGlvbnMS",
+            "JQohSU1BR0VfRElTUExBWV9PUFRJT05TX1VOU1BFQ0lGSUVEEAASCAoER1JB",
+            "WRABEgkKBVdISVRFEAISCwoHQ1JPUFBFRBADEhYKEkJMVVJSRURfQkFDS0dS",
+            "T1VORBAEGvMCCglUYWJsZUNhcmQSDQoFdGl0bGUYASABKAkSFQoIc3VidGl0",
+            "bGUYAiABKAlCA+BBARJECgVpbWFnZRgDIAEoCzIwLmdvb2dsZS5jbG91ZC5k",
+            "aWFsb2dmbG93LnYyLkludGVudC5NZXNzYWdlLkltYWdlQgPgQQESWwoRY29s",
+            "dW1uX3Byb3BlcnRpZXMYBCADKAsyOy5nb29nbGUuY2xvdWQuZGlhbG9nZmxv",
+            "dy52Mi5JbnRlbnQuTWVzc2FnZS5Db2x1bW5Qcm9wZXJ0aWVzQgPgQQESSgoE",
+            "cm93cxgFIAMoCzI3Lmdvb2dsZS5jbG91ZC5kaWFsb2dmbG93LnYyLkludGVu",
+            "dC5NZXNzYWdlLlRhYmxlQ2FyZFJvd0ID4EEBElEKB2J1dHRvbnMYBiADKAsy",
+            "Oy5nb29nbGUuY2xvdWQuZGlhbG9nZmxvdy52Mi5JbnRlbnQuTWVzc2FnZS5C",
+            "YXNpY0NhcmQuQnV0dG9uQgPgQQEa+gEKEENvbHVtblByb3BlcnRpZXMSDgoG",
+            "aGVhZGVyGAEgASgJEnIKFGhvcml6b250YWxfYWxpZ25tZW50GAIgASgOMk8u",
+            "Z29vZ2xlLmNsb3VkLmRpYWxvZ2Zsb3cudjIuSW50ZW50Lk1lc3NhZ2UuQ29s",
+            "dW1uUHJvcGVydGllcy5Ib3Jpem9udGFsQWxpZ25tZW50QgPgQQEiYgoTSG9y",
+            "aXpvbnRhbEFsaWdubWVudBIkCiBIT1JJWk9OVEFMX0FMSUdOTUVOVF9VTlNQ",
+            "RUNJRklFRBAAEgsKB0xFQURJTkcQARIKCgZDRU5URVIQAhIMCghUUkFJTElO",
+            "RxADGngKDFRhYmxlQ2FyZFJvdxJMCgVjZWxscxgBIAMoCzI4Lmdvb2dsZS5j",
+            "bG91ZC5kaWFsb2dmbG93LnYyLkludGVudC5NZXNzYWdlLlRhYmxlQ2FyZENl",
+            "bGxCA+BBARIaCg1kaXZpZGVyX2FmdGVyGAIgASgIQgPgQQEaHQoNVGFibGVD",
+            "YXJkQ2VsbBIMCgR0ZXh0GAEgASgJIqABCghQbGF0Zm9ybRIYChRQTEFURk9S",
+            "TV9VTlNQRUNJRklFRBAAEgwKCEZBQ0VCT09LEAESCQoFU0xBQ0sQAhIMCghU",
+            "RUxFR1JBTRADEgcKA0tJSxAEEgkKBVNLWVBFEAUSCAoETElORRAGEgkKBVZJ",
+            "QkVSEAcSFQoRQUNUSU9OU19PTl9HT09HTEUQCBITCg9HT09HTEVfSEFOR09V",
+            "VFMQC0IJCgdtZXNzYWdlGlcKEkZvbGxvd3VwSW50ZW50SW5mbxIcChRmb2xs",
+            "b3d1cF9pbnRlbnRfbmFtZRgBIAEoCRIjChtwYXJlbnRfZm9sbG93dXBfaW50",
+            "ZW50X25hbWUYAiABKAkidAoMV2ViaG9va1N0YXRlEh0KGVdFQkhPT0tfU1RB",
+            "VEVfVU5TUEVDSUZJRUQQABIZChVXRUJIT09LX1NUQVRFX0VOQUJMRUQQARIq",
+            "CiZXRUJIT09LX1NUQVRFX0VOQUJMRURfRk9SX1NMT1RfRklMTElORxACOkzq",
+            "QUkKHHB1YnN1Yi5nb29nbGVhcGlzLmNvbS9JbnRlbnQSKXByb2plY3RzL3tw",
+            "cm9qZWN0fS9hZ2VudC9pbnRlbnRzL3tpbnRlbnR9ItwBChJMaXN0SW50ZW50",
+            "c1JlcXVlc3QSNwoGcGFyZW50GAEgASgJQifgQQL6QSEKH2RpYWxvZ2Zsb3cu",
+            "Z29vZ2xlYXBpcy5jb20vQWdlbnQSGgoNbGFuZ3VhZ2VfY29kZRgCIAEoCUID",
+            "4EEBEkAKC2ludGVudF92aWV3GAMgASgOMiYuZ29vZ2xlLmNsb3VkLmRpYWxv",
+            "Z2Zsb3cudjIuSW50ZW50Vmlld0ID4EEBEhYKCXBhZ2Vfc2l6ZRgEIAEoBUID",
+            "4EEBEhcKCnBhZ2VfdG9rZW4YBSABKAlCA+BBASJjChNMaXN0SW50ZW50c1Jl",
+            "c3BvbnNlEjMKB2ludGVudHMYASADKAsyIi5nb29nbGUuY2xvdWQuZGlhbG9n",
+            "Zmxvdy52Mi5JbnRlbnQSFwoPbmV4dF9wYWdlX3Rva2VuGAIgASgJIqgBChBH",
+            "ZXRJbnRlbnRSZXF1ZXN0EjYKBG5hbWUYASABKAlCKOBBAvpBIgogZGlhbG9n",
+            "Zmxvdy5nb29nbGVhcGlzLmNvbS9JbnRlbnQSGgoNbGFuZ3VhZ2VfY29kZRgC",
+            "IAEoCUID4EEBEkAKC2ludGVudF92aWV3GAMgASgOMiYuZ29vZ2xlLmNsb3Vk",
+            "LmRpYWxvZ2Zsb3cudjIuSW50ZW50Vmlld0ID4EEBIuUBChNDcmVhdGVJbnRl",
+            "bnRSZXF1ZXN0EjcKBnBhcmVudBgBIAEoCUIn4EEC+kEhCh9kaWFsb2dmbG93",
+            "Lmdvb2dsZWFwaXMuY29tL0FnZW50EjcKBmludGVudBgCIAEoCzIiLmdvb2ds",
+            "ZS5jbG91ZC5kaWFsb2dmbG93LnYyLkludGVudEID4EECEhoKDWxhbmd1YWdl",
+            "X2NvZGUYAyABKAlCA+BBARJACgtpbnRlbnRfdmlldxgEIAEoDjImLmdvb2ds",
+            "ZS5jbG91ZC5kaWFsb2dmbG93LnYyLkludGVudFZpZXdCA+BBASLiAQoTVXBk",
+            "YXRlSW50ZW50UmVxdWVzdBI3CgZpbnRlbnQYASABKAsyIi5nb29nbGUuY2xv",
+            "dWQuZGlhbG9nZmxvdy52Mi5JbnRlbnRCA+BBAhIaCg1sYW5ndWFnZV9jb2Rl",
+            "GAIgASgJQgPgQQESNAoLdXBkYXRlX21hc2sYAyABKAsyGi5nb29nbGUucHJv",
+            "dG9idWYuRmllbGRNYXNrQgPgQQESQAoLaW50ZW50X3ZpZXcYBCABKA4yJi5n",
+            "b29nbGUuY2xvdWQuZGlhbG9nZmxvdy52Mi5JbnRlbnRWaWV3QgPgQQEiTQoT",
+            "RGVsZXRlSW50ZW50UmVxdWVzdBI2CgRuYW1lGAEgASgJQijgQQL6QSIKIGRp",
+            "YWxvZ2Zsb3cuZ29vZ2xlYXBpcy5jb20vSW50ZW50ItwCChlCYXRjaFVwZGF0",
+            "ZUludGVudHNSZXF1ZXN0EjcKBnBhcmVudBgBIAEoCUIn4EEC+kEhCh9kaWFs",
+            "b2dmbG93Lmdvb2dsZWFwaXMuY29tL0FnZW50EhoKEGludGVudF9iYXRjaF91",
+            "cmkYAiABKAlIABJGChNpbnRlbnRfYmF0Y2hfaW5saW5lGAMgASgLMicuZ29v",
+            "Z2xlLmNsb3VkLmRpYWxvZ2Zsb3cudjIuSW50ZW50QmF0Y2hIABIaCg1sYW5n",
+            "dWFnZV9jb2RlGAQgASgJQgPgQQESNAoLdXBkYXRlX21hc2sYBSABKAsyGi5n",
+            "b29nbGUucHJvdG9idWYuRmllbGRNYXNrQgPgQQESQAoLaW50ZW50X3ZpZXcY",
+            "BiABKA4yJi5nb29nbGUuY2xvdWQuZGlhbG9nZmxvdy52Mi5JbnRlbnRWaWV3",
+            "QgPgQQFCDgoMaW50ZW50X2JhdGNoIlEKGkJhdGNoVXBkYXRlSW50ZW50c1Jl",
+            "c3BvbnNlEjMKB2ludGVudHMYASADKAsyIi5nb29nbGUuY2xvdWQuZGlhbG9n",
+            "Zmxvdy52Mi5JbnRlbnQijgEKGUJhdGNoRGVsZXRlSW50ZW50c1JlcXVlc3QS",
+            "NwoGcGFyZW50GAEgASgJQifgQQL6QSEKH2RpYWxvZ2Zsb3cuZ29vZ2xlYXBp",
+            "cy5jb20vQWdlbnQSOAoHaW50ZW50cxgCIAMoCzIiLmdvb2dsZS5jbG91ZC5k",
+            "aWFsb2dmbG93LnYyLkludGVudEID4EECIkIKC0ludGVudEJhdGNoEjMKB2lu",
+            "dGVudHMYASADKAsyIi5nb29nbGUuY2xvdWQuZGlhbG9nZmxvdy52Mi5JbnRl",
+            "bnQqPwoKSW50ZW50VmlldxIbChdJTlRFTlRfVklFV19VTlNQRUNJRklFRBAA",
+            "EhQKEElOVEVOVF9WSUVXX0ZVTEwQATKTDAoHSW50ZW50cxK9AQoLTGlzdElu",
+            "dGVudHMSLi5nb29nbGUuY2xvdWQuZGlhbG9nZmxvdy52Mi5MaXN0SW50ZW50",
+            "c1JlcXVlc3QaLy5nb29nbGUuY2xvdWQuZGlhbG9nZmxvdy52Mi5MaXN0SW50",
+            "ZW50c1Jlc3BvbnNlIk2C0+STAicSJS92Mi97cGFyZW50PXByb2plY3RzLyov",
+            "YWdlbnR9L2ludGVudHPaQQZwYXJlbnTaQRRwYXJlbnQsbGFuZ3VhZ2VfY29k",
+            "ZRKoAQoJR2V0SW50ZW50EiwuZ29vZ2xlLmNsb3VkLmRpYWxvZ2Zsb3cudjIu",
+            "R2V0SW50ZW50UmVxdWVzdBoiLmdvb2dsZS5jbG91ZC5kaWFsb2dmbG93LnYy",
+            "LkludGVudCJJgtPkkwInEiUvdjIve25hbWU9cHJvamVjdHMvKi9hZ2VudC9p",
+            "bnRlbnRzLyp92kEEbmFtZdpBEm5hbWUsbGFuZ3VhZ2VfY29kZRLIAQoMQ3Jl",
+            "YXRlSW50ZW50Ei8uZ29vZ2xlLmNsb3VkLmRpYWxvZ2Zsb3cudjIuQ3JlYXRl",
+            "SW50ZW50UmVxdWVzdBoiLmdvb2dsZS5jbG91ZC5kaWFsb2dmbG93LnYyLklu",
+            "dGVudCJjgtPkkwIvIiUvdjIve3BhcmVudD1wcm9qZWN0cy8qL2FnZW50fS9p",
+            "bnRlbnRzOgZpbnRlbnTaQQ1wYXJlbnQsaW50ZW502kEbcGFyZW50LGludGVu",
+            "dCxsYW5ndWFnZV9jb2RlEtsBCgxVcGRhdGVJbnRlbnQSLy5nb29nbGUuY2xv",
+            "dWQuZGlhbG9nZmxvdy52Mi5VcGRhdGVJbnRlbnRSZXF1ZXN0GiIuZ29vZ2xl",
+            "LmNsb3VkLmRpYWxvZ2Zsb3cudjIuSW50ZW50InaC0+STAjYyLC92Mi97aW50",
+            "ZW50Lm5hbWU9cHJvamVjdHMvKi9hZ2VudC9pbnRlbnRzLyp9OgZpbnRlbnTa",
+            "QRRpbnRlbnQsbGFuZ3VhZ2VfY29kZdpBIGludGVudCxsYW5ndWFnZV9jb2Rl",
+            "LHVwZGF0ZV9tYXNrEo0BCgxEZWxldGVJbnRlbnQSLy5nb29nbGUuY2xvdWQu",
+            "ZGlhbG9nZmxvdy52Mi5EZWxldGVJbnRlbnRSZXF1ZXN0GhYuZ29vZ2xlLnBy",
+            "b3RvYnVmLkVtcHR5IjSC0+STAicqJS92Mi97bmFtZT1wcm9qZWN0cy8qL2Fn",
+            "ZW50L2ludGVudHMvKn3aQQRuYW1lEvsBChJCYXRjaFVwZGF0ZUludGVudHMS",
+            "NS5nb29nbGUuY2xvdWQuZGlhbG9nZmxvdy52Mi5CYXRjaFVwZGF0ZUludGVu",
+            "dHNSZXF1ZXN0Gh0uZ29vZ2xlLmxvbmdydW5uaW5nLk9wZXJhdGlvbiKOAYLT",
+            "5JMCNiIxL3YyL3twYXJlbnQ9cHJvamVjdHMvKi9hZ2VudH0vaW50ZW50czpi",
+            "YXRjaFVwZGF0ZToBKspBTwo1Z29vZ2xlLmNsb3VkLmRpYWxvZ2Zsb3cudjIu",
+            "QmF0Y2hVcGRhdGVJbnRlbnRzUmVzcG9uc2USFmdvb2dsZS5wcm90b2J1Zi5T",
+            "dHJ1Y3QS6wEKEkJhdGNoRGVsZXRlSW50ZW50cxI1Lmdvb2dsZS5jbG91ZC5k",
+            "aWFsb2dmbG93LnYyLkJhdGNoRGVsZXRlSW50ZW50c1JlcXVlc3QaHS5nb29n",
+            "bGUubG9uZ3J1bm5pbmcuT3BlcmF0aW9uIn+C0+STAjYiMS92Mi97cGFyZW50",
+            "PXByb2plY3RzLyovYWdlbnR9L2ludGVudHM6YmF0Y2hEZWxldGU6ASraQQ5w",
+            "YXJlbnQsaW50ZW50c8pBLwoVZ29vZ2xlLnByb3RvYnVmLkVtcHR5EhZnb29n",
+            "bGUucHJvdG9idWYuU3RydWN0GnjKQRlkaWFsb2dmbG93Lmdvb2dsZWFwaXMu",
+            "Y29t0kFZaHR0cHM6Ly93d3cuZ29vZ2xlYXBpcy5jb20vYXV0aC9jbG91ZC1w",
+            "bGF0Zm9ybSxodHRwczovL3d3dy5nb29nbGVhcGlzLmNvbS9hdXRoL2RpYWxv",
+            "Z2Zsb3dCmgEKHmNvbS5nb29nbGUuY2xvdWQuZGlhbG9nZmxvdy52MkILSW50",
+            "ZW50UHJvdG9QAVpEZ29vZ2xlLmdvbGFuZy5vcmcvZ2VucHJvdG8vZ29vZ2xl",
+            "YXBpcy9jbG91ZC9kaWFsb2dmbG93L3YyO2RpYWxvZ2Zsb3f4AQGiAgJERqoC",
+            "Gkdvb2dsZS5DbG91ZC5EaWFsb2dmbG93LlYyYgZwcm90bzM="));
       descriptor = pbr::FileDescriptor.FromGeneratedCode(descriptorData,
-          new pbr::FileDescriptor[] { global::Google.Api.AnnotationsReflection.Descriptor, global::Google.Cloud.Dialogflow.V2.ContextReflection.Descriptor, global::Google.LongRunning.OperationsReflection.Descriptor, global::Google.Protobuf.WellKnownTypes.EmptyReflection.Descriptor, global::Google.Protobuf.WellKnownTypes.FieldMaskReflection.Descriptor, global::Google.Protobuf.WellKnownTypes.StructReflection.Descriptor, },
+          new pbr::FileDescriptor[] { global::Google.Api.AnnotationsReflection.Descriptor, global::Google.Api.ClientReflection.Descriptor, global::Google.Api.FieldBehaviorReflection.Descriptor, global::Google.Api.ResourceReflection.Descriptor, global::Google.Cloud.Dialogflow.V2.AudioConfigReflection.Descriptor, global::Google.Cloud.Dialogflow.V2.ContextReflection.Descriptor, global::Google.LongRunning.OperationsReflection.Descriptor, global::Google.Protobuf.WellKnownTypes.DurationReflection.Descriptor, global::Google.Protobuf.WellKnownTypes.EmptyReflection.Descriptor, global::Google.Protobuf.WellKnownTypes.FieldMaskReflection.Descriptor, global::Google.Protobuf.WellKnownTypes.StructReflection.Descriptor, },
           new pbr::GeneratedClrTypeInfo(new[] {typeof(global::Google.Cloud.Dialogflow.V2.IntentView), }, new pbr::GeneratedClrTypeInfo[] {
             new pbr::GeneratedClrTypeInfo(typeof(global::Google.Cloud.Dialogflow.V2.Intent), global::Google.Cloud.Dialogflow.V2.Intent.Parser, new[]{ "Name", "DisplayName", "WebhookState", "Priority", "IsFallback", "MlDisabled", "InputContextNames", "Events", "TrainingPhrases", "Action", "OutputContexts", "ResetContexts", "Parameters", "Messages", "DefaultResponsePlatforms", "RootFollowupIntentName", "ParentFollowupIntentName", "FollowupIntentInfo" }, null, new[]{ typeof(global::Google.Cloud.Dialogflow.V2.Intent.Types.WebhookState) }, new pbr::GeneratedClrTypeInfo[] { new pbr::GeneratedClrTypeInfo(typeof(global::Google.Cloud.Dialogflow.V2.Intent.Types.TrainingPhrase), global::Google.Cloud.Dialogflow.V2.Intent.Types.TrainingPhrase.Parser, new[]{ "Name", "Type", "Parts", "TimesAddedCount" }, null, new[]{ typeof(global::Google.Cloud.Dialogflow.V2.Intent.Types.TrainingPhrase.Types.Type) }, new pbr::GeneratedClrTypeInfo[] { new pbr::GeneratedClrTypeInfo(typeof(global::Google.Cloud.Dialogflow.V2.Intent.Types.TrainingPhrase.Types.Part), global::Google.Cloud.Dialogflow.V2.Intent.Types.TrainingPhrase.Types.Part.Parser, new[]{ "Text", "EntityType", "Alias", "UserDefined" }, null, null, null)}),
             new pbr::GeneratedClrTypeInfo(typeof(global::Google.Cloud.Dialogflow.V2.Intent.Types.Parameter), global::Google.Cloud.Dialogflow.V2.Intent.Types.Parameter.Parser, new[]{ "Name", "DisplayName", "Value", "DefaultValue", "EntityTypeDisplayName", "Mandatory", "Prompts", "IsList" }, null, null, null),
-            new pbr::GeneratedClrTypeInfo(typeof(global::Google.Cloud.Dialogflow.V2.Intent.Types.Message), global::Google.Cloud.Dialogflow.V2.Intent.Types.Message.Parser, new[]{ "Text", "Image", "QuickReplies", "Card", "Payload", "SimpleResponses", "BasicCard", "Suggestions", "LinkOutSuggestion", "ListSelect", "CarouselSelect", "Platform" }, new[]{ "Message" }, new[]{ typeof(global::Google.Cloud.Dialogflow.V2.Intent.Types.Message.Types.Platform) }, new pbr::GeneratedClrTypeInfo[] { new pbr::GeneratedClrTypeInfo(typeof(global::Google.Cloud.Dialogflow.V2.Intent.Types.Message.Types.Text), global::Google.Cloud.Dialogflow.V2.Intent.Types.Message.Types.Text.Parser, new[]{ "Text_" }, null, null, null),
+            new pbr::GeneratedClrTypeInfo(typeof(global::Google.Cloud.Dialogflow.V2.Intent.Types.Message), global::Google.Cloud.Dialogflow.V2.Intent.Types.Message.Parser, new[]{ "Text", "Image", "QuickReplies", "Card", "Payload", "SimpleResponses", "BasicCard", "Suggestions", "LinkOutSuggestion", "ListSelect", "CarouselSelect", "BrowseCarouselCard", "TableCard", "MediaContent", "Platform" }, new[]{ "Message" }, new[]{ typeof(global::Google.Cloud.Dialogflow.V2.Intent.Types.Message.Types.Platform) }, new pbr::GeneratedClrTypeInfo[] { new pbr::GeneratedClrTypeInfo(typeof(global::Google.Cloud.Dialogflow.V2.Intent.Types.Message.Types.Text), global::Google.Cloud.Dialogflow.V2.Intent.Types.Message.Types.Text.Parser, new[]{ "Text_" }, null, null, null),
             new pbr::GeneratedClrTypeInfo(typeof(global::Google.Cloud.Dialogflow.V2.Intent.Types.Message.Types.Image), global::Google.Cloud.Dialogflow.V2.Intent.Types.Message.Types.Image.Parser, new[]{ "ImageUri", "AccessibilityText" }, null, null, null),
             new pbr::GeneratedClrTypeInfo(typeof(global::Google.Cloud.Dialogflow.V2.Intent.Types.Message.Types.QuickReplies), global::Google.Cloud.Dialogflow.V2.Intent.Types.Message.Types.QuickReplies.Parser, new[]{ "Title", "QuickReplies_" }, null, null, null),
             new pbr::GeneratedClrTypeInfo(typeof(global::Google.Cloud.Dialogflow.V2.Intent.Types.Message.Types.Card), global::Google.Cloud.Dialogflow.V2.Intent.Types.Message.Types.Card.Parser, new[]{ "Title", "Subtitle", "ImageUri", "Buttons" }, null, null, new pbr::GeneratedClrTypeInfo[] { new pbr::GeneratedClrTypeInfo(typeof(global::Google.Cloud.Dialogflow.V2.Intent.Types.Message.Types.Card.Types.Button), global::Google.Cloud.Dialogflow.V2.Intent.Types.Message.Types.Card.Types.Button.Parser, new[]{ "Text", "Postback" }, null, null, null)}),
@@ -199,9 +284,15 @@ namespace Google.Cloud.Dialogflow.V2 {
             new pbr::GeneratedClrTypeInfo(typeof(global::Google.Cloud.Dialogflow.V2.Intent.Types.Message.Types.Suggestion), global::Google.Cloud.Dialogflow.V2.Intent.Types.Message.Types.Suggestion.Parser, new[]{ "Title" }, null, null, null),
             new pbr::GeneratedClrTypeInfo(typeof(global::Google.Cloud.Dialogflow.V2.Intent.Types.Message.Types.Suggestions), global::Google.Cloud.Dialogflow.V2.Intent.Types.Message.Types.Suggestions.Parser, new[]{ "Suggestions_" }, null, null, null),
             new pbr::GeneratedClrTypeInfo(typeof(global::Google.Cloud.Dialogflow.V2.Intent.Types.Message.Types.LinkOutSuggestion), global::Google.Cloud.Dialogflow.V2.Intent.Types.Message.Types.LinkOutSuggestion.Parser, new[]{ "DestinationName", "Uri" }, null, null, null),
-            new pbr::GeneratedClrTypeInfo(typeof(global::Google.Cloud.Dialogflow.V2.Intent.Types.Message.Types.ListSelect), global::Google.Cloud.Dialogflow.V2.Intent.Types.Message.Types.ListSelect.Parser, new[]{ "Title", "Items" }, null, null, new pbr::GeneratedClrTypeInfo[] { new pbr::GeneratedClrTypeInfo(typeof(global::Google.Cloud.Dialogflow.V2.Intent.Types.Message.Types.ListSelect.Types.Item), global::Google.Cloud.Dialogflow.V2.Intent.Types.Message.Types.ListSelect.Types.Item.Parser, new[]{ "Info", "Title", "Description", "Image" }, null, null, null)}),
+            new pbr::GeneratedClrTypeInfo(typeof(global::Google.Cloud.Dialogflow.V2.Intent.Types.Message.Types.ListSelect), global::Google.Cloud.Dialogflow.V2.Intent.Types.Message.Types.ListSelect.Parser, new[]{ "Title", "Items", "Subtitle" }, null, null, new pbr::GeneratedClrTypeInfo[] { new pbr::GeneratedClrTypeInfo(typeof(global::Google.Cloud.Dialogflow.V2.Intent.Types.Message.Types.ListSelect.Types.Item), global::Google.Cloud.Dialogflow.V2.Intent.Types.Message.Types.ListSelect.Types.Item.Parser, new[]{ "Info", "Title", "Description", "Image" }, null, null, null)}),
             new pbr::GeneratedClrTypeInfo(typeof(global::Google.Cloud.Dialogflow.V2.Intent.Types.Message.Types.CarouselSelect), global::Google.Cloud.Dialogflow.V2.Intent.Types.Message.Types.CarouselSelect.Parser, new[]{ "Items" }, null, null, new pbr::GeneratedClrTypeInfo[] { new pbr::GeneratedClrTypeInfo(typeof(global::Google.Cloud.Dialogflow.V2.Intent.Types.Message.Types.CarouselSelect.Types.Item), global::Google.Cloud.Dialogflow.V2.Intent.Types.Message.Types.CarouselSelect.Types.Item.Parser, new[]{ "Info", "Title", "Description", "Image" }, null, null, null)}),
-            new pbr::GeneratedClrTypeInfo(typeof(global::Google.Cloud.Dialogflow.V2.Intent.Types.Message.Types.SelectItemInfo), global::Google.Cloud.Dialogflow.V2.Intent.Types.Message.Types.SelectItemInfo.Parser, new[]{ "Key", "Synonyms" }, null, null, null)}),
+            new pbr::GeneratedClrTypeInfo(typeof(global::Google.Cloud.Dialogflow.V2.Intent.Types.Message.Types.SelectItemInfo), global::Google.Cloud.Dialogflow.V2.Intent.Types.Message.Types.SelectItemInfo.Parser, new[]{ "Key", "Synonyms" }, null, null, null),
+            new pbr::GeneratedClrTypeInfo(typeof(global::Google.Cloud.Dialogflow.V2.Intent.Types.Message.Types.MediaContent), global::Google.Cloud.Dialogflow.V2.Intent.Types.Message.Types.MediaContent.Parser, new[]{ "MediaType", "MediaObjects" }, null, new[]{ typeof(global::Google.Cloud.Dialogflow.V2.Intent.Types.Message.Types.MediaContent.Types.ResponseMediaType) }, new pbr::GeneratedClrTypeInfo[] { new pbr::GeneratedClrTypeInfo(typeof(global::Google.Cloud.Dialogflow.V2.Intent.Types.Message.Types.MediaContent.Types.ResponseMediaObject), global::Google.Cloud.Dialogflow.V2.Intent.Types.Message.Types.MediaContent.Types.ResponseMediaObject.Parser, new[]{ "Name", "Description", "LargeImage", "Icon", "ContentUrl" }, new[]{ "Image" }, null, null)}),
+            new pbr::GeneratedClrTypeInfo(typeof(global::Google.Cloud.Dialogflow.V2.Intent.Types.Message.Types.BrowseCarouselCard), global::Google.Cloud.Dialogflow.V2.Intent.Types.Message.Types.BrowseCarouselCard.Parser, new[]{ "Items", "ImageDisplayOptions" }, null, new[]{ typeof(global::Google.Cloud.Dialogflow.V2.Intent.Types.Message.Types.BrowseCarouselCard.Types.ImageDisplayOptions) }, new pbr::GeneratedClrTypeInfo[] { new pbr::GeneratedClrTypeInfo(typeof(global::Google.Cloud.Dialogflow.V2.Intent.Types.Message.Types.BrowseCarouselCard.Types.BrowseCarouselCardItem), global::Google.Cloud.Dialogflow.V2.Intent.Types.Message.Types.BrowseCarouselCard.Types.BrowseCarouselCardItem.Parser, new[]{ "OpenUriAction", "Title", "Description", "Image", "Footer" }, null, null, new pbr::GeneratedClrTypeInfo[] { new pbr::GeneratedClrTypeInfo(typeof(global::Google.Cloud.Dialogflow.V2.Intent.Types.Message.Types.BrowseCarouselCard.Types.BrowseCarouselCardItem.Types.OpenUrlAction), global::Google.Cloud.Dialogflow.V2.Intent.Types.Message.Types.BrowseCarouselCard.Types.BrowseCarouselCardItem.Types.OpenUrlAction.Parser, new[]{ "Url", "UrlTypeHint" }, null, new[]{ typeof(global::Google.Cloud.Dialogflow.V2.Intent.Types.Message.Types.BrowseCarouselCard.Types.BrowseCarouselCardItem.Types.OpenUrlAction.Types.UrlTypeHint) }, null)})}),
+            new pbr::GeneratedClrTypeInfo(typeof(global::Google.Cloud.Dialogflow.V2.Intent.Types.Message.Types.TableCard), global::Google.Cloud.Dialogflow.V2.Intent.Types.Message.Types.TableCard.Parser, new[]{ "Title", "Subtitle", "Image", "ColumnProperties", "Rows", "Buttons" }, null, null, null),
+            new pbr::GeneratedClrTypeInfo(typeof(global::Google.Cloud.Dialogflow.V2.Intent.Types.Message.Types.ColumnProperties), global::Google.Cloud.Dialogflow.V2.Intent.Types.Message.Types.ColumnProperties.Parser, new[]{ "Header", "HorizontalAlignment" }, null, new[]{ typeof(global::Google.Cloud.Dialogflow.V2.Intent.Types.Message.Types.ColumnProperties.Types.HorizontalAlignment) }, null),
+            new pbr::GeneratedClrTypeInfo(typeof(global::Google.Cloud.Dialogflow.V2.Intent.Types.Message.Types.TableCardRow), global::Google.Cloud.Dialogflow.V2.Intent.Types.Message.Types.TableCardRow.Parser, new[]{ "Cells", "DividerAfter" }, null, null, null),
+            new pbr::GeneratedClrTypeInfo(typeof(global::Google.Cloud.Dialogflow.V2.Intent.Types.Message.Types.TableCardCell), global::Google.Cloud.Dialogflow.V2.Intent.Types.Message.Types.TableCardCell.Parser, new[]{ "Text" }, null, null, null)}),
             new pbr::GeneratedClrTypeInfo(typeof(global::Google.Cloud.Dialogflow.V2.Intent.Types.FollowupIntentInfo), global::Google.Cloud.Dialogflow.V2.Intent.Types.FollowupIntentInfo.Parser, new[]{ "FollowupIntentName", "ParentFollowupIntentName" }, null, null, null)}),
             new pbr::GeneratedClrTypeInfo(typeof(global::Google.Cloud.Dialogflow.V2.ListIntentsRequest), global::Google.Cloud.Dialogflow.V2.ListIntentsRequest.Parser, new[]{ "Parent", "LanguageCode", "IntentView", "PageSize", "PageToken" }, null, null, null),
             new pbr::GeneratedClrTypeInfo(typeof(global::Google.Cloud.Dialogflow.V2.ListIntentsResponse), global::Google.Cloud.Dialogflow.V2.ListIntentsResponse.Parser, new[]{ "Intents", "NextPageToken" }, null, null, null),
@@ -298,9 +389,9 @@ namespace Google.Cloud.Dialogflow.V2 {
     public const int NameFieldNumber = 1;
     private string name_ = "";
     /// <summary>
-    /// Required for all methods except `create` (`create` populates the name
-    /// automatically.
     /// The unique identifier of this intent.
+    /// Required for [Intents.UpdateIntent][google.cloud.dialogflow.v2.Intents.UpdateIntent] and [Intents.BatchUpdateIntents][google.cloud.dialogflow.v2.Intents.BatchUpdateIntents]
+    /// methods.
     /// Format: `projects/&lt;Project ID>/agent/intents/&lt;Intent ID>`.
     /// </summary>
     [global::System.Diagnostics.DebuggerNonUserCodeAttribute]
@@ -329,7 +420,7 @@ namespace Google.Cloud.Dialogflow.V2 {
     public const int WebhookStateFieldNumber = 6;
     private global::Google.Cloud.Dialogflow.V2.Intent.Types.WebhookState webhookState_ = 0;
     /// <summary>
-    /// Required. Indicates whether webhooks are enabled for the intent.
+    /// Optional. Indicates whether webhooks are enabled for the intent.
     /// </summary>
     [global::System.Diagnostics.DebuggerNonUserCodeAttribute]
     public global::Google.Cloud.Dialogflow.V2.Intent.Types.WebhookState WebhookState {
@@ -344,7 +435,13 @@ namespace Google.Cloud.Dialogflow.V2 {
     private int priority_;
     /// <summary>
     /// Optional. The priority of this intent. Higher numbers represent higher
-    /// priorities. Zero or negative numbers mean that the intent is disabled.
+    /// priorities.
+    ///
+    /// - If the supplied value is unspecified or 0, the service
+    ///   translates the value to 500,000, which corresponds to the
+    ///   `Normal` priority in the console.
+    /// - If the supplied value is negative, the intent is ignored
+    ///   in runtime detect intent requests.
     /// </summary>
     [global::System.Diagnostics.DebuggerNonUserCodeAttribute]
     public int Priority {
@@ -373,7 +470,7 @@ namespace Google.Cloud.Dialogflow.V2 {
     private bool mlDisabled_;
     /// <summary>
     /// Optional. Indicates whether Machine Learning is disabled for the intent.
-    /// Note: If `ml_diabled` setting is set to true, then this intent is not
+    /// Note: If `ml_disabled` setting is set to true, then this intent is not
     /// taken into account during inference in `ML ONLY` match mode. Also,
     /// auto-markup in the UI is turned off.
     /// </summary>
@@ -421,7 +518,7 @@ namespace Google.Cloud.Dialogflow.V2 {
         = pb::FieldCodec.ForMessage(74, global::Google.Cloud.Dialogflow.V2.Intent.Types.TrainingPhrase.Parser);
     private readonly pbc::RepeatedField<global::Google.Cloud.Dialogflow.V2.Intent.Types.TrainingPhrase> trainingPhrases_ = new pbc::RepeatedField<global::Google.Cloud.Dialogflow.V2.Intent.Types.TrainingPhrase>();
     /// <summary>
-    /// Optional. The collection of examples/templates that the agent is
+    /// Optional. The collection of examples that the agent is
     /// trained on.
     /// </summary>
     [global::System.Diagnostics.DebuggerNonUserCodeAttribute]
@@ -434,6 +531,7 @@ namespace Google.Cloud.Dialogflow.V2 {
     private string action_ = "";
     /// <summary>
     /// Optional. The name of the action associated with the intent.
+    /// Note: The action name must not contain whitespaces.
     /// </summary>
     [global::System.Diagnostics.DebuggerNonUserCodeAttribute]
     public string Action {
@@ -508,8 +606,8 @@ namespace Google.Cloud.Dialogflow.V2 {
         = pb::FieldCodec.ForEnum(122, x => (int) x, x => (global::Google.Cloud.Dialogflow.V2.Intent.Types.Message.Types.Platform) x);
     private readonly pbc::RepeatedField<global::Google.Cloud.Dialogflow.V2.Intent.Types.Message.Types.Platform> defaultResponsePlatforms_ = new pbc::RepeatedField<global::Google.Cloud.Dialogflow.V2.Intent.Types.Message.Types.Platform>();
     /// <summary>
-    /// Optional. The list of platforms for which the first response will be
-    /// taken from among the messages assigned to the DEFAULT_PLATFORM.
+    /// Optional. The list of platforms for which the first responses will be
+    /// copied from the messages in PLATFORM_UNSPECIFIED (i.e. default platform).
     /// </summary>
     [global::System.Diagnostics.DebuggerNonUserCodeAttribute]
     public pbc::RepeatedField<global::Google.Cloud.Dialogflow.V2.Intent.Types.Message.Types.Platform> DefaultResponsePlatforms {
@@ -520,8 +618,10 @@ namespace Google.Cloud.Dialogflow.V2 {
     public const int RootFollowupIntentNameFieldNumber = 16;
     private string rootFollowupIntentName_ = "";
     /// <summary>
-    /// The unique identifier of the root intent in the chain of followup intents.
-    /// It identifies the correct followup intents chain for this intent.
+    /// Read-only. The unique identifier of the root intent in the chain of
+    /// followup intents. It identifies the correct followup intents chain for
+    /// this intent. We populate this field only in the output.
+    ///
     /// Format: `projects/&lt;Project ID>/agent/intents/&lt;Intent ID>`.
     /// </summary>
     [global::System.Diagnostics.DebuggerNonUserCodeAttribute]
@@ -536,8 +636,12 @@ namespace Google.Cloud.Dialogflow.V2 {
     public const int ParentFollowupIntentNameFieldNumber = 17;
     private string parentFollowupIntentName_ = "";
     /// <summary>
-    /// The unique identifier of the parent intent in the chain of followup
-    /// intents.
+    /// Read-only after creation. The unique identifier of the parent intent in the
+    /// chain of followup intents. You can set this field when creating an intent,
+    /// for example with [CreateIntent][google.cloud.dialogflow.v2.Intents.CreateIntent] or
+    /// [BatchUpdateIntents][google.cloud.dialogflow.v2.Intents.BatchUpdateIntents], in order to make this
+    /// intent a followup intent.
+    ///
     /// It identifies the parent followup intent.
     /// Format: `projects/&lt;Project ID>/agent/intents/&lt;Intent ID>`.
     /// </summary>
@@ -555,8 +659,8 @@ namespace Google.Cloud.Dialogflow.V2 {
         = pb::FieldCodec.ForMessage(146, global::Google.Cloud.Dialogflow.V2.Intent.Types.FollowupIntentInfo.Parser);
     private readonly pbc::RepeatedField<global::Google.Cloud.Dialogflow.V2.Intent.Types.FollowupIntentInfo> followupIntentInfo_ = new pbc::RepeatedField<global::Google.Cloud.Dialogflow.V2.Intent.Types.FollowupIntentInfo>();
     /// <summary>
-    /// Optional. Collection of information about all followup intents that have
-    /// name of this intent as a root_name.
+    /// Read-only. Information about all followup intents that have this intent as
+    /// a direct or indirect parent. We populate this field only in the output.
     /// </summary>
     [global::System.Diagnostics.DebuggerNonUserCodeAttribute]
     public pbc::RepeatedField<global::Google.Cloud.Dialogflow.V2.Intent.Types.FollowupIntentInfo> FollowupIntentInfo {
@@ -802,7 +906,7 @@ namespace Google.Cloud.Dialogflow.V2 {
             break;
           }
           case 48: {
-            webhookState_ = (global::Google.Cloud.Dialogflow.V2.Intent.Types.WebhookState) input.ReadEnum();
+            WebhookState = (global::Google.Cloud.Dialogflow.V2.Intent.Types.WebhookState) input.ReadEnum();
             break;
           }
           case 58: {
@@ -886,7 +990,7 @@ namespace Google.Cloud.Dialogflow.V2 {
       }
 
       /// <summary>
-      /// Represents an example or template that the agent is trained on.
+      /// Represents an example that the agent is trained on.
       /// </summary>
       public sealed partial class TrainingPhrase : pb::IMessage<TrainingPhrase> {
         private static readonly pb::MessageParser<TrainingPhrase> _parser = new pb::MessageParser<TrainingPhrase>(() => new TrainingPhrase());
@@ -929,7 +1033,7 @@ namespace Google.Cloud.Dialogflow.V2 {
         public const int NameFieldNumber = 1;
         private string name_ = "";
         /// <summary>
-        /// Required. The unique identifier of this training phrase.
+        /// Output only. The unique identifier of this training phrase.
         /// </summary>
         [global::System.Diagnostics.DebuggerNonUserCodeAttribute]
         public string Name {
@@ -959,9 +1063,25 @@ namespace Google.Cloud.Dialogflow.V2 {
             = pb::FieldCodec.ForMessage(26, global::Google.Cloud.Dialogflow.V2.Intent.Types.TrainingPhrase.Types.Part.Parser);
         private readonly pbc::RepeatedField<global::Google.Cloud.Dialogflow.V2.Intent.Types.TrainingPhrase.Types.Part> parts_ = new pbc::RepeatedField<global::Google.Cloud.Dialogflow.V2.Intent.Types.TrainingPhrase.Types.Part>();
         /// <summary>
-        /// Required. The collection of training phrase parts (can be annotated).
-        /// Fields: `entity_type`, `alias` and `user_defined` should be populated
-        /// only for the annotated parts of the training phrase.
+        /// Required. The ordered list of training phrase parts.
+        /// The parts are concatenated in order to form the training phrase.
+        ///
+        /// Note: The API does not automatically annotate training phrases like the
+        /// Dialogflow Console does.
+        ///
+        /// Note: Do not forget to include whitespace at part boundaries,
+        /// so the training phrase is well formatted when the parts are concatenated.
+        ///
+        /// If the training phrase does not need to be annotated with parameters,
+        /// you just need a single part with only the [Part.text][google.cloud.dialogflow.v2.Intent.TrainingPhrase.Part.text] field set.
+        ///
+        /// If you want to annotate the training phrase, you must create multiple
+        /// parts, where the fields of each part are populated in one of two ways:
+        ///
+        /// -   `Part.text` is set to a part of the phrase that has no parameters.
+        /// -   `Part.text` is set to a part of the phrase that you want to annotate,
+        ///     and the `entity_type`, `alias`, and `user_defined` fields are all
+        ///     set.
         /// </summary>
         [global::System.Diagnostics.DebuggerNonUserCodeAttribute]
         public pbc::RepeatedField<global::Google.Cloud.Dialogflow.V2.Intent.Types.TrainingPhrase.Types.Part> Parts {
@@ -972,7 +1092,7 @@ namespace Google.Cloud.Dialogflow.V2 {
         public const int TimesAddedCountFieldNumber = 4;
         private int timesAddedCount_;
         /// <summary>
-        /// Optional. Indicates how many times this example or template was added to
+        /// Optional. Indicates how many times this example was added to
         /// the intent. Each time a developer adds an existing sample by editing an
         /// intent or training, this counter is increased.
         /// </summary>
@@ -1092,7 +1212,7 @@ namespace Google.Cloud.Dialogflow.V2 {
                 break;
               }
               case 16: {
-                type_ = (global::Google.Cloud.Dialogflow.V2.Intent.Types.TrainingPhrase.Types.Type) input.ReadEnum();
+                Type = (global::Google.Cloud.Dialogflow.V2.Intent.Types.TrainingPhrase.Types.Type) input.ReadEnum();
                 break;
               }
               case 26: {
@@ -1127,6 +1247,10 @@ namespace Google.Cloud.Dialogflow.V2 {
             /// <summary>
             /// Templates are not annotated with entity types, but they can contain
             /// @-prefixed entity type names as substrings.
+            /// Template mode has been deprecated. Example mode is the only supported
+            /// way to create new training phrases. If you have existing training
+            /// phrases that you've created in template mode, those will continue to
+            /// work.
             /// </summary>
             [pbr::OriginalName("TEMPLATE")] Template = 2,
           }
@@ -1175,9 +1299,7 @@ namespace Google.Cloud.Dialogflow.V2 {
             public const int TextFieldNumber = 1;
             private string text_ = "";
             /// <summary>
-            /// Required. The text corresponding to the example or template,
-            /// if there are no annotations. For
-            /// annotated examples, it is the text for one of the example's parts.
+            /// Required. The text for this part.
             /// </summary>
             [global::System.Diagnostics.DebuggerNonUserCodeAttribute]
             public string Text {
@@ -1191,9 +1313,8 @@ namespace Google.Cloud.Dialogflow.V2 {
             public const int EntityTypeFieldNumber = 2;
             private string entityType_ = "";
             /// <summary>
-            /// Optional. The entity type name prefixed with `@`. This field is
-            /// required for the annotated part of the text and applies only to
-            /// examples.
+            /// Optional. The entity type name prefixed with `@`.
+            /// This field is required for annotated parts of the training phrase.
             /// </summary>
             [global::System.Diagnostics.DebuggerNonUserCodeAttribute]
             public string EntityType {
@@ -1209,6 +1330,7 @@ namespace Google.Cloud.Dialogflow.V2 {
             /// <summary>
             /// Optional. The parameter name for the value extracted from the
             /// annotated part of the example.
+            /// This field is required for annotated parts of the training phrase.
             /// </summary>
             [global::System.Diagnostics.DebuggerNonUserCodeAttribute]
             public string Alias {
@@ -1222,8 +1344,10 @@ namespace Google.Cloud.Dialogflow.V2 {
             public const int UserDefinedFieldNumber = 4;
             private bool userDefined_;
             /// <summary>
-            /// Optional. Indicates whether the text was manually annotated by the
-            /// developer.
+            /// Optional. Indicates whether the text was manually annotated.
+            /// This field is set to true when the Dialogflow Console is used to
+            /// manually annotate the part. When creating an annotated part with the
+            /// API, you must set this to true.
             /// </summary>
             [global::System.Diagnostics.DebuggerNonUserCodeAttribute]
             public bool UserDefined {
@@ -1517,7 +1641,7 @@ namespace Google.Cloud.Dialogflow.V2 {
         private readonly pbc::RepeatedField<string> prompts_ = new pbc::RepeatedField<string>();
         /// <summary>
         /// Optional. The collection of prompts that the agent can present to the
-        /// user in order to collect value for the parameter.
+        /// user in order to collect a value for the parameter.
         /// </summary>
         [global::System.Diagnostics.DebuggerNonUserCodeAttribute]
         public pbc::RepeatedField<string> Prompts {
@@ -1790,6 +1914,15 @@ namespace Google.Cloud.Dialogflow.V2 {
             case MessageOneofCase.CarouselSelect:
               CarouselSelect = other.CarouselSelect.Clone();
               break;
+            case MessageOneofCase.BrowseCarouselCard:
+              BrowseCarouselCard = other.BrowseCarouselCard.Clone();
+              break;
+            case MessageOneofCase.TableCard:
+              TableCard = other.TableCard.Clone();
+              break;
+            case MessageOneofCase.MediaContent:
+              MediaContent = other.MediaContent.Clone();
+              break;
           }
 
           _unknownFields = pb::UnknownFieldSet.Clone(other._unknownFields);
@@ -1956,6 +2089,48 @@ namespace Google.Cloud.Dialogflow.V2 {
           }
         }
 
+        /// <summary>Field number for the "browse_carousel_card" field.</summary>
+        public const int BrowseCarouselCardFieldNumber = 22;
+        /// <summary>
+        /// Browse carousel card for Actions on Google.
+        /// </summary>
+        [global::System.Diagnostics.DebuggerNonUserCodeAttribute]
+        public global::Google.Cloud.Dialogflow.V2.Intent.Types.Message.Types.BrowseCarouselCard BrowseCarouselCard {
+          get { return messageCase_ == MessageOneofCase.BrowseCarouselCard ? (global::Google.Cloud.Dialogflow.V2.Intent.Types.Message.Types.BrowseCarouselCard) message_ : null; }
+          set {
+            message_ = value;
+            messageCase_ = value == null ? MessageOneofCase.None : MessageOneofCase.BrowseCarouselCard;
+          }
+        }
+
+        /// <summary>Field number for the "table_card" field.</summary>
+        public const int TableCardFieldNumber = 23;
+        /// <summary>
+        /// Table card for Actions on Google.
+        /// </summary>
+        [global::System.Diagnostics.DebuggerNonUserCodeAttribute]
+        public global::Google.Cloud.Dialogflow.V2.Intent.Types.Message.Types.TableCard TableCard {
+          get { return messageCase_ == MessageOneofCase.TableCard ? (global::Google.Cloud.Dialogflow.V2.Intent.Types.Message.Types.TableCard) message_ : null; }
+          set {
+            message_ = value;
+            messageCase_ = value == null ? MessageOneofCase.None : MessageOneofCase.TableCard;
+          }
+        }
+
+        /// <summary>Field number for the "media_content" field.</summary>
+        public const int MediaContentFieldNumber = 24;
+        /// <summary>
+        /// The media content card for Actions on Google.
+        /// </summary>
+        [global::System.Diagnostics.DebuggerNonUserCodeAttribute]
+        public global::Google.Cloud.Dialogflow.V2.Intent.Types.Message.Types.MediaContent MediaContent {
+          get { return messageCase_ == MessageOneofCase.MediaContent ? (global::Google.Cloud.Dialogflow.V2.Intent.Types.Message.Types.MediaContent) message_ : null; }
+          set {
+            message_ = value;
+            messageCase_ = value == null ? MessageOneofCase.None : MessageOneofCase.MediaContent;
+          }
+        }
+
         /// <summary>Field number for the "platform" field.</summary>
         public const int PlatformFieldNumber = 6;
         private global::Google.Cloud.Dialogflow.V2.Intent.Types.Message.Types.Platform platform_ = 0;
@@ -1985,6 +2160,9 @@ namespace Google.Cloud.Dialogflow.V2 {
           LinkOutSuggestion = 10,
           ListSelect = 11,
           CarouselSelect = 12,
+          BrowseCarouselCard = 22,
+          TableCard = 23,
+          MediaContent = 24,
         }
         private MessageOneofCase messageCase_ = MessageOneofCase.None;
         [global::System.Diagnostics.DebuggerNonUserCodeAttribute]
@@ -2022,6 +2200,9 @@ namespace Google.Cloud.Dialogflow.V2 {
           if (!object.Equals(LinkOutSuggestion, other.LinkOutSuggestion)) return false;
           if (!object.Equals(ListSelect, other.ListSelect)) return false;
           if (!object.Equals(CarouselSelect, other.CarouselSelect)) return false;
+          if (!object.Equals(BrowseCarouselCard, other.BrowseCarouselCard)) return false;
+          if (!object.Equals(TableCard, other.TableCard)) return false;
+          if (!object.Equals(MediaContent, other.MediaContent)) return false;
           if (Platform != other.Platform) return false;
           if (MessageCase != other.MessageCase) return false;
           return Equals(_unknownFields, other._unknownFields);
@@ -2041,6 +2222,9 @@ namespace Google.Cloud.Dialogflow.V2 {
           if (messageCase_ == MessageOneofCase.LinkOutSuggestion) hash ^= LinkOutSuggestion.GetHashCode();
           if (messageCase_ == MessageOneofCase.ListSelect) hash ^= ListSelect.GetHashCode();
           if (messageCase_ == MessageOneofCase.CarouselSelect) hash ^= CarouselSelect.GetHashCode();
+          if (messageCase_ == MessageOneofCase.BrowseCarouselCard) hash ^= BrowseCarouselCard.GetHashCode();
+          if (messageCase_ == MessageOneofCase.TableCard) hash ^= TableCard.GetHashCode();
+          if (messageCase_ == MessageOneofCase.MediaContent) hash ^= MediaContent.GetHashCode();
           if (Platform != 0) hash ^= Platform.GetHashCode();
           hash ^= (int) messageCase_;
           if (_unknownFields != null) {
@@ -2104,6 +2288,18 @@ namespace Google.Cloud.Dialogflow.V2 {
             output.WriteRawTag(98);
             output.WriteMessage(CarouselSelect);
           }
+          if (messageCase_ == MessageOneofCase.BrowseCarouselCard) {
+            output.WriteRawTag(178, 1);
+            output.WriteMessage(BrowseCarouselCard);
+          }
+          if (messageCase_ == MessageOneofCase.TableCard) {
+            output.WriteRawTag(186, 1);
+            output.WriteMessage(TableCard);
+          }
+          if (messageCase_ == MessageOneofCase.MediaContent) {
+            output.WriteRawTag(194, 1);
+            output.WriteMessage(MediaContent);
+          }
           if (_unknownFields != null) {
             _unknownFields.WriteTo(output);
           }
@@ -2144,6 +2340,15 @@ namespace Google.Cloud.Dialogflow.V2 {
           }
           if (messageCase_ == MessageOneofCase.CarouselSelect) {
             size += 1 + pb::CodedOutputStream.ComputeMessageSize(CarouselSelect);
+          }
+          if (messageCase_ == MessageOneofCase.BrowseCarouselCard) {
+            size += 2 + pb::CodedOutputStream.ComputeMessageSize(BrowseCarouselCard);
+          }
+          if (messageCase_ == MessageOneofCase.TableCard) {
+            size += 2 + pb::CodedOutputStream.ComputeMessageSize(TableCard);
+          }
+          if (messageCase_ == MessageOneofCase.MediaContent) {
+            size += 2 + pb::CodedOutputStream.ComputeMessageSize(MediaContent);
           }
           if (Platform != 0) {
             size += 1 + pb::CodedOutputStream.ComputeEnumSize((int) Platform);
@@ -2229,6 +2434,24 @@ namespace Google.Cloud.Dialogflow.V2 {
               }
               CarouselSelect.MergeFrom(other.CarouselSelect);
               break;
+            case MessageOneofCase.BrowseCarouselCard:
+              if (BrowseCarouselCard == null) {
+                BrowseCarouselCard = new global::Google.Cloud.Dialogflow.V2.Intent.Types.Message.Types.BrowseCarouselCard();
+              }
+              BrowseCarouselCard.MergeFrom(other.BrowseCarouselCard);
+              break;
+            case MessageOneofCase.TableCard:
+              if (TableCard == null) {
+                TableCard = new global::Google.Cloud.Dialogflow.V2.Intent.Types.Message.Types.TableCard();
+              }
+              TableCard.MergeFrom(other.TableCard);
+              break;
+            case MessageOneofCase.MediaContent:
+              if (MediaContent == null) {
+                MediaContent = new global::Google.Cloud.Dialogflow.V2.Intent.Types.Message.Types.MediaContent();
+              }
+              MediaContent.MergeFrom(other.MediaContent);
+              break;
           }
 
           _unknownFields = pb::UnknownFieldSet.MergeFrom(_unknownFields, other._unknownFields);
@@ -2288,7 +2511,7 @@ namespace Google.Cloud.Dialogflow.V2 {
                 break;
               }
               case 48: {
-                platform_ = (global::Google.Cloud.Dialogflow.V2.Intent.Types.Message.Types.Platform) input.ReadEnum();
+                Platform = (global::Google.Cloud.Dialogflow.V2.Intent.Types.Message.Types.Platform) input.ReadEnum();
                 break;
               }
               case 58: {
@@ -2343,6 +2566,33 @@ namespace Google.Cloud.Dialogflow.V2 {
                 }
                 input.ReadMessage(subBuilder);
                 CarouselSelect = subBuilder;
+                break;
+              }
+              case 178: {
+                global::Google.Cloud.Dialogflow.V2.Intent.Types.Message.Types.BrowseCarouselCard subBuilder = new global::Google.Cloud.Dialogflow.V2.Intent.Types.Message.Types.BrowseCarouselCard();
+                if (messageCase_ == MessageOneofCase.BrowseCarouselCard) {
+                  subBuilder.MergeFrom(BrowseCarouselCard);
+                }
+                input.ReadMessage(subBuilder);
+                BrowseCarouselCard = subBuilder;
+                break;
+              }
+              case 186: {
+                global::Google.Cloud.Dialogflow.V2.Intent.Types.Message.Types.TableCard subBuilder = new global::Google.Cloud.Dialogflow.V2.Intent.Types.Message.Types.TableCard();
+                if (messageCase_ == MessageOneofCase.TableCard) {
+                  subBuilder.MergeFrom(TableCard);
+                }
+                input.ReadMessage(subBuilder);
+                TableCard = subBuilder;
+                break;
+              }
+              case 194: {
+                global::Google.Cloud.Dialogflow.V2.Intent.Types.Message.Types.MediaContent subBuilder = new global::Google.Cloud.Dialogflow.V2.Intent.Types.Message.Types.MediaContent();
+                if (messageCase_ == MessageOneofCase.MediaContent) {
+                  subBuilder.MergeFrom(MediaContent);
+                }
+                input.ReadMessage(subBuilder);
+                MediaContent = subBuilder;
                 break;
               }
             }
@@ -2453,6 +2703,10 @@ namespace Google.Cloud.Dialogflow.V2 {
             /// }&lt;/pre>
             /// </summary>
             [pbr::OriginalName("ACTIONS_ON_GOOGLE")] ActionsOnGoogle = 8,
+            /// <summary>
+            /// Google Hangouts.
+            /// </summary>
+            [pbr::OriginalName("GOOGLE_HANGOUTS")] GoogleHangouts = 11,
           }
 
           /// <summary>
@@ -3130,7 +3384,7 @@ namespace Google.Cloud.Dialogflow.V2 {
             [global::System.Diagnostics.DebuggerNonUserCodeAttribute]
             public static partial class Types {
               /// <summary>
-              /// Optional. Contains information about a button.
+              /// Contains information about a button.
               /// </summary>
               public sealed partial class Button : pb::IMessage<Button> {
                 private static readonly pb::MessageParser<Button> _parser = new pb::MessageParser<Button>(() => new Button());
@@ -3843,7 +4097,7 @@ namespace Google.Cloud.Dialogflow.V2 {
               }
               if (other.image_ != null) {
                 if (image_ == null) {
-                  image_ = new global::Google.Cloud.Dialogflow.V2.Intent.Types.Message.Types.Image();
+                  Image = new global::Google.Cloud.Dialogflow.V2.Intent.Types.Message.Types.Image();
                 }
                 Image.MergeFrom(other.Image);
               }
@@ -3873,9 +4127,9 @@ namespace Google.Cloud.Dialogflow.V2 {
                   }
                   case 34: {
                     if (image_ == null) {
-                      image_ = new global::Google.Cloud.Dialogflow.V2.Intent.Types.Message.Types.Image();
+                      Image = new global::Google.Cloud.Dialogflow.V2.Intent.Types.Message.Types.Image();
                     }
-                    input.ReadMessage(image_);
+                    input.ReadMessage(Image);
                     break;
                   }
                   case 42: {
@@ -4030,7 +4284,7 @@ namespace Google.Cloud.Dialogflow.V2 {
                   }
                   if (other.openUriAction_ != null) {
                     if (openUriAction_ == null) {
-                      openUriAction_ = new global::Google.Cloud.Dialogflow.V2.Intent.Types.Message.Types.BasicCard.Types.Button.Types.OpenUriAction();
+                      OpenUriAction = new global::Google.Cloud.Dialogflow.V2.Intent.Types.Message.Types.BasicCard.Types.Button.Types.OpenUriAction();
                     }
                     OpenUriAction.MergeFrom(other.OpenUriAction);
                   }
@@ -4051,9 +4305,9 @@ namespace Google.Cloud.Dialogflow.V2 {
                       }
                       case 18: {
                         if (openUriAction_ == null) {
-                          openUriAction_ = new global::Google.Cloud.Dialogflow.V2.Intent.Types.Message.Types.BasicCard.Types.Button.Types.OpenUriAction();
+                          OpenUriAction = new global::Google.Cloud.Dialogflow.V2.Intent.Types.Message.Types.BasicCard.Types.Button.Types.OpenUriAction();
                         }
-                        input.ReadMessage(openUriAction_);
+                        input.ReadMessage(OpenUriAction);
                         break;
                       }
                     }
@@ -4670,6 +4924,7 @@ namespace Google.Cloud.Dialogflow.V2 {
             public ListSelect(ListSelect other) : this() {
               title_ = other.title_;
               items_ = other.items_.Clone();
+              subtitle_ = other.subtitle_;
               _unknownFields = pb::UnknownFieldSet.Clone(other._unknownFields);
             }
 
@@ -4705,6 +4960,20 @@ namespace Google.Cloud.Dialogflow.V2 {
               get { return items_; }
             }
 
+            /// <summary>Field number for the "subtitle" field.</summary>
+            public const int SubtitleFieldNumber = 3;
+            private string subtitle_ = "";
+            /// <summary>
+            /// Optional. Subtitle of the list.
+            /// </summary>
+            [global::System.Diagnostics.DebuggerNonUserCodeAttribute]
+            public string Subtitle {
+              get { return subtitle_; }
+              set {
+                subtitle_ = pb::ProtoPreconditions.CheckNotNull(value, "value");
+              }
+            }
+
             [global::System.Diagnostics.DebuggerNonUserCodeAttribute]
             public override bool Equals(object other) {
               return Equals(other as ListSelect);
@@ -4720,6 +4989,7 @@ namespace Google.Cloud.Dialogflow.V2 {
               }
               if (Title != other.Title) return false;
               if(!items_.Equals(other.items_)) return false;
+              if (Subtitle != other.Subtitle) return false;
               return Equals(_unknownFields, other._unknownFields);
             }
 
@@ -4728,6 +4998,7 @@ namespace Google.Cloud.Dialogflow.V2 {
               int hash = 1;
               if (Title.Length != 0) hash ^= Title.GetHashCode();
               hash ^= items_.GetHashCode();
+              if (Subtitle.Length != 0) hash ^= Subtitle.GetHashCode();
               if (_unknownFields != null) {
                 hash ^= _unknownFields.GetHashCode();
               }
@@ -4746,6 +5017,10 @@ namespace Google.Cloud.Dialogflow.V2 {
                 output.WriteString(Title);
               }
               items_.WriteTo(output, _repeated_items_codec);
+              if (Subtitle.Length != 0) {
+                output.WriteRawTag(26);
+                output.WriteString(Subtitle);
+              }
               if (_unknownFields != null) {
                 _unknownFields.WriteTo(output);
               }
@@ -4758,6 +5033,9 @@ namespace Google.Cloud.Dialogflow.V2 {
                 size += 1 + pb::CodedOutputStream.ComputeStringSize(Title);
               }
               size += items_.CalculateSize(_repeated_items_codec);
+              if (Subtitle.Length != 0) {
+                size += 1 + pb::CodedOutputStream.ComputeStringSize(Subtitle);
+              }
               if (_unknownFields != null) {
                 size += _unknownFields.CalculateSize();
               }
@@ -4773,6 +5051,9 @@ namespace Google.Cloud.Dialogflow.V2 {
                 Title = other.Title;
               }
               items_.Add(other.items_);
+              if (other.Subtitle.Length != 0) {
+                Subtitle = other.Subtitle;
+              }
               _unknownFields = pb::UnknownFieldSet.MergeFrom(_unknownFields, other._unknownFields);
             }
 
@@ -4790,6 +5071,10 @@ namespace Google.Cloud.Dialogflow.V2 {
                   }
                   case 18: {
                     items_.AddEntriesFrom(input, _repeated_items_codec);
+                    break;
+                  }
+                  case 26: {
+                    Subtitle = input.ReadString();
                     break;
                   }
                 }
@@ -4985,7 +5270,7 @@ namespace Google.Cloud.Dialogflow.V2 {
                   }
                   if (other.info_ != null) {
                     if (info_ == null) {
-                      info_ = new global::Google.Cloud.Dialogflow.V2.Intent.Types.Message.Types.SelectItemInfo();
+                      Info = new global::Google.Cloud.Dialogflow.V2.Intent.Types.Message.Types.SelectItemInfo();
                     }
                     Info.MergeFrom(other.Info);
                   }
@@ -4997,7 +5282,7 @@ namespace Google.Cloud.Dialogflow.V2 {
                   }
                   if (other.image_ != null) {
                     if (image_ == null) {
-                      image_ = new global::Google.Cloud.Dialogflow.V2.Intent.Types.Message.Types.Image();
+                      Image = new global::Google.Cloud.Dialogflow.V2.Intent.Types.Message.Types.Image();
                     }
                     Image.MergeFrom(other.Image);
                   }
@@ -5014,9 +5299,9 @@ namespace Google.Cloud.Dialogflow.V2 {
                         break;
                       case 10: {
                         if (info_ == null) {
-                          info_ = new global::Google.Cloud.Dialogflow.V2.Intent.Types.Message.Types.SelectItemInfo();
+                          Info = new global::Google.Cloud.Dialogflow.V2.Intent.Types.Message.Types.SelectItemInfo();
                         }
-                        input.ReadMessage(info_);
+                        input.ReadMessage(Info);
                         break;
                       }
                       case 18: {
@@ -5029,9 +5314,9 @@ namespace Google.Cloud.Dialogflow.V2 {
                       }
                       case 34: {
                         if (image_ == null) {
-                          image_ = new global::Google.Cloud.Dialogflow.V2.Intent.Types.Message.Types.Image();
+                          Image = new global::Google.Cloud.Dialogflow.V2.Intent.Types.Message.Types.Image();
                         }
-                        input.ReadMessage(image_);
+                        input.ReadMessage(Image);
                         break;
                       }
                     }
@@ -5359,7 +5644,7 @@ namespace Google.Cloud.Dialogflow.V2 {
                   }
                   if (other.info_ != null) {
                     if (info_ == null) {
-                      info_ = new global::Google.Cloud.Dialogflow.V2.Intent.Types.Message.Types.SelectItemInfo();
+                      Info = new global::Google.Cloud.Dialogflow.V2.Intent.Types.Message.Types.SelectItemInfo();
                     }
                     Info.MergeFrom(other.Info);
                   }
@@ -5371,7 +5656,7 @@ namespace Google.Cloud.Dialogflow.V2 {
                   }
                   if (other.image_ != null) {
                     if (image_ == null) {
-                      image_ = new global::Google.Cloud.Dialogflow.V2.Intent.Types.Message.Types.Image();
+                      Image = new global::Google.Cloud.Dialogflow.V2.Intent.Types.Message.Types.Image();
                     }
                     Image.MergeFrom(other.Image);
                   }
@@ -5388,9 +5673,9 @@ namespace Google.Cloud.Dialogflow.V2 {
                         break;
                       case 10: {
                         if (info_ == null) {
-                          info_ = new global::Google.Cloud.Dialogflow.V2.Intent.Types.Message.Types.SelectItemInfo();
+                          Info = new global::Google.Cloud.Dialogflow.V2.Intent.Types.Message.Types.SelectItemInfo();
                         }
-                        input.ReadMessage(info_);
+                        input.ReadMessage(Info);
                         break;
                       }
                       case 18: {
@@ -5403,9 +5688,9 @@ namespace Google.Cloud.Dialogflow.V2 {
                       }
                       case 34: {
                         if (image_ == null) {
-                          image_ = new global::Google.Cloud.Dialogflow.V2.Intent.Types.Message.Types.Image();
+                          Image = new global::Google.Cloud.Dialogflow.V2.Intent.Types.Message.Types.Image();
                         }
-                        input.ReadMessage(image_);
+                        input.ReadMessage(Image);
                         break;
                       }
                     }
@@ -5580,6 +5865,1929 @@ namespace Google.Cloud.Dialogflow.V2 {
 
           }
 
+          /// <summary>
+          /// The media content card for Actions on Google.
+          /// </summary>
+          public sealed partial class MediaContent : pb::IMessage<MediaContent> {
+            private static readonly pb::MessageParser<MediaContent> _parser = new pb::MessageParser<MediaContent>(() => new MediaContent());
+            private pb::UnknownFieldSet _unknownFields;
+            [global::System.Diagnostics.DebuggerNonUserCodeAttribute]
+            public static pb::MessageParser<MediaContent> Parser { get { return _parser; } }
+
+            [global::System.Diagnostics.DebuggerNonUserCodeAttribute]
+            public static pbr::MessageDescriptor Descriptor {
+              get { return global::Google.Cloud.Dialogflow.V2.Intent.Types.Message.Descriptor.NestedTypes[13]; }
+            }
+
+            [global::System.Diagnostics.DebuggerNonUserCodeAttribute]
+            pbr::MessageDescriptor pb::IMessage.Descriptor {
+              get { return Descriptor; }
+            }
+
+            [global::System.Diagnostics.DebuggerNonUserCodeAttribute]
+            public MediaContent() {
+              OnConstruction();
+            }
+
+            partial void OnConstruction();
+
+            [global::System.Diagnostics.DebuggerNonUserCodeAttribute]
+            public MediaContent(MediaContent other) : this() {
+              mediaType_ = other.mediaType_;
+              mediaObjects_ = other.mediaObjects_.Clone();
+              _unknownFields = pb::UnknownFieldSet.Clone(other._unknownFields);
+            }
+
+            [global::System.Diagnostics.DebuggerNonUserCodeAttribute]
+            public MediaContent Clone() {
+              return new MediaContent(this);
+            }
+
+            /// <summary>Field number for the "media_type" field.</summary>
+            public const int MediaTypeFieldNumber = 1;
+            private global::Google.Cloud.Dialogflow.V2.Intent.Types.Message.Types.MediaContent.Types.ResponseMediaType mediaType_ = 0;
+            /// <summary>
+            /// Optional. What type of media is the content (ie "audio").
+            /// </summary>
+            [global::System.Diagnostics.DebuggerNonUserCodeAttribute]
+            public global::Google.Cloud.Dialogflow.V2.Intent.Types.Message.Types.MediaContent.Types.ResponseMediaType MediaType {
+              get { return mediaType_; }
+              set {
+                mediaType_ = value;
+              }
+            }
+
+            /// <summary>Field number for the "media_objects" field.</summary>
+            public const int MediaObjectsFieldNumber = 2;
+            private static readonly pb::FieldCodec<global::Google.Cloud.Dialogflow.V2.Intent.Types.Message.Types.MediaContent.Types.ResponseMediaObject> _repeated_mediaObjects_codec
+                = pb::FieldCodec.ForMessage(18, global::Google.Cloud.Dialogflow.V2.Intent.Types.Message.Types.MediaContent.Types.ResponseMediaObject.Parser);
+            private readonly pbc::RepeatedField<global::Google.Cloud.Dialogflow.V2.Intent.Types.Message.Types.MediaContent.Types.ResponseMediaObject> mediaObjects_ = new pbc::RepeatedField<global::Google.Cloud.Dialogflow.V2.Intent.Types.Message.Types.MediaContent.Types.ResponseMediaObject>();
+            /// <summary>
+            /// Required. List of media objects.
+            /// </summary>
+            [global::System.Diagnostics.DebuggerNonUserCodeAttribute]
+            public pbc::RepeatedField<global::Google.Cloud.Dialogflow.V2.Intent.Types.Message.Types.MediaContent.Types.ResponseMediaObject> MediaObjects {
+              get { return mediaObjects_; }
+            }
+
+            [global::System.Diagnostics.DebuggerNonUserCodeAttribute]
+            public override bool Equals(object other) {
+              return Equals(other as MediaContent);
+            }
+
+            [global::System.Diagnostics.DebuggerNonUserCodeAttribute]
+            public bool Equals(MediaContent other) {
+              if (ReferenceEquals(other, null)) {
+                return false;
+              }
+              if (ReferenceEquals(other, this)) {
+                return true;
+              }
+              if (MediaType != other.MediaType) return false;
+              if(!mediaObjects_.Equals(other.mediaObjects_)) return false;
+              return Equals(_unknownFields, other._unknownFields);
+            }
+
+            [global::System.Diagnostics.DebuggerNonUserCodeAttribute]
+            public override int GetHashCode() {
+              int hash = 1;
+              if (MediaType != 0) hash ^= MediaType.GetHashCode();
+              hash ^= mediaObjects_.GetHashCode();
+              if (_unknownFields != null) {
+                hash ^= _unknownFields.GetHashCode();
+              }
+              return hash;
+            }
+
+            [global::System.Diagnostics.DebuggerNonUserCodeAttribute]
+            public override string ToString() {
+              return pb::JsonFormatter.ToDiagnosticString(this);
+            }
+
+            [global::System.Diagnostics.DebuggerNonUserCodeAttribute]
+            public void WriteTo(pb::CodedOutputStream output) {
+              if (MediaType != 0) {
+                output.WriteRawTag(8);
+                output.WriteEnum((int) MediaType);
+              }
+              mediaObjects_.WriteTo(output, _repeated_mediaObjects_codec);
+              if (_unknownFields != null) {
+                _unknownFields.WriteTo(output);
+              }
+            }
+
+            [global::System.Diagnostics.DebuggerNonUserCodeAttribute]
+            public int CalculateSize() {
+              int size = 0;
+              if (MediaType != 0) {
+                size += 1 + pb::CodedOutputStream.ComputeEnumSize((int) MediaType);
+              }
+              size += mediaObjects_.CalculateSize(_repeated_mediaObjects_codec);
+              if (_unknownFields != null) {
+                size += _unknownFields.CalculateSize();
+              }
+              return size;
+            }
+
+            [global::System.Diagnostics.DebuggerNonUserCodeAttribute]
+            public void MergeFrom(MediaContent other) {
+              if (other == null) {
+                return;
+              }
+              if (other.MediaType != 0) {
+                MediaType = other.MediaType;
+              }
+              mediaObjects_.Add(other.mediaObjects_);
+              _unknownFields = pb::UnknownFieldSet.MergeFrom(_unknownFields, other._unknownFields);
+            }
+
+            [global::System.Diagnostics.DebuggerNonUserCodeAttribute]
+            public void MergeFrom(pb::CodedInputStream input) {
+              uint tag;
+              while ((tag = input.ReadTag()) != 0) {
+                switch(tag) {
+                  default:
+                    _unknownFields = pb::UnknownFieldSet.MergeFieldFrom(_unknownFields, input);
+                    break;
+                  case 8: {
+                    MediaType = (global::Google.Cloud.Dialogflow.V2.Intent.Types.Message.Types.MediaContent.Types.ResponseMediaType) input.ReadEnum();
+                    break;
+                  }
+                  case 18: {
+                    mediaObjects_.AddEntriesFrom(input, _repeated_mediaObjects_codec);
+                    break;
+                  }
+                }
+              }
+            }
+
+            #region Nested types
+            /// <summary>Container for nested types declared in the MediaContent message type.</summary>
+            [global::System.Diagnostics.DebuggerNonUserCodeAttribute]
+            public static partial class Types {
+              /// <summary>
+              /// Format of response media type.
+              /// </summary>
+              public enum ResponseMediaType {
+                /// <summary>
+                /// Unspecified.
+                /// </summary>
+                [pbr::OriginalName("RESPONSE_MEDIA_TYPE_UNSPECIFIED")] Unspecified = 0,
+                /// <summary>
+                /// Response media type is audio.
+                /// </summary>
+                [pbr::OriginalName("AUDIO")] Audio = 1,
+              }
+
+              /// <summary>
+              /// Response media object for media content card.
+              /// </summary>
+              public sealed partial class ResponseMediaObject : pb::IMessage<ResponseMediaObject> {
+                private static readonly pb::MessageParser<ResponseMediaObject> _parser = new pb::MessageParser<ResponseMediaObject>(() => new ResponseMediaObject());
+                private pb::UnknownFieldSet _unknownFields;
+                [global::System.Diagnostics.DebuggerNonUserCodeAttribute]
+                public static pb::MessageParser<ResponseMediaObject> Parser { get { return _parser; } }
+
+                [global::System.Diagnostics.DebuggerNonUserCodeAttribute]
+                public static pbr::MessageDescriptor Descriptor {
+                  get { return global::Google.Cloud.Dialogflow.V2.Intent.Types.Message.Types.MediaContent.Descriptor.NestedTypes[0]; }
+                }
+
+                [global::System.Diagnostics.DebuggerNonUserCodeAttribute]
+                pbr::MessageDescriptor pb::IMessage.Descriptor {
+                  get { return Descriptor; }
+                }
+
+                [global::System.Diagnostics.DebuggerNonUserCodeAttribute]
+                public ResponseMediaObject() {
+                  OnConstruction();
+                }
+
+                partial void OnConstruction();
+
+                [global::System.Diagnostics.DebuggerNonUserCodeAttribute]
+                public ResponseMediaObject(ResponseMediaObject other) : this() {
+                  name_ = other.name_;
+                  description_ = other.description_;
+                  contentUrl_ = other.contentUrl_;
+                  switch (other.ImageCase) {
+                    case ImageOneofCase.LargeImage:
+                      LargeImage = other.LargeImage.Clone();
+                      break;
+                    case ImageOneofCase.Icon:
+                      Icon = other.Icon.Clone();
+                      break;
+                  }
+
+                  _unknownFields = pb::UnknownFieldSet.Clone(other._unknownFields);
+                }
+
+                [global::System.Diagnostics.DebuggerNonUserCodeAttribute]
+                public ResponseMediaObject Clone() {
+                  return new ResponseMediaObject(this);
+                }
+
+                /// <summary>Field number for the "name" field.</summary>
+                public const int NameFieldNumber = 1;
+                private string name_ = "";
+                /// <summary>
+                /// Required. Name of media card.
+                /// </summary>
+                [global::System.Diagnostics.DebuggerNonUserCodeAttribute]
+                public string Name {
+                  get { return name_; }
+                  set {
+                    name_ = pb::ProtoPreconditions.CheckNotNull(value, "value");
+                  }
+                }
+
+                /// <summary>Field number for the "description" field.</summary>
+                public const int DescriptionFieldNumber = 2;
+                private string description_ = "";
+                /// <summary>
+                /// Optional. Description of media card.
+                /// </summary>
+                [global::System.Diagnostics.DebuggerNonUserCodeAttribute]
+                public string Description {
+                  get { return description_; }
+                  set {
+                    description_ = pb::ProtoPreconditions.CheckNotNull(value, "value");
+                  }
+                }
+
+                /// <summary>Field number for the "large_image" field.</summary>
+                public const int LargeImageFieldNumber = 3;
+                /// <summary>
+                /// Optional. Image to display above media content.
+                /// </summary>
+                [global::System.Diagnostics.DebuggerNonUserCodeAttribute]
+                public global::Google.Cloud.Dialogflow.V2.Intent.Types.Message.Types.Image LargeImage {
+                  get { return imageCase_ == ImageOneofCase.LargeImage ? (global::Google.Cloud.Dialogflow.V2.Intent.Types.Message.Types.Image) image_ : null; }
+                  set {
+                    image_ = value;
+                    imageCase_ = value == null ? ImageOneofCase.None : ImageOneofCase.LargeImage;
+                  }
+                }
+
+                /// <summary>Field number for the "icon" field.</summary>
+                public const int IconFieldNumber = 4;
+                /// <summary>
+                /// Optional. Icon to display above media content.
+                /// </summary>
+                [global::System.Diagnostics.DebuggerNonUserCodeAttribute]
+                public global::Google.Cloud.Dialogflow.V2.Intent.Types.Message.Types.Image Icon {
+                  get { return imageCase_ == ImageOneofCase.Icon ? (global::Google.Cloud.Dialogflow.V2.Intent.Types.Message.Types.Image) image_ : null; }
+                  set {
+                    image_ = value;
+                    imageCase_ = value == null ? ImageOneofCase.None : ImageOneofCase.Icon;
+                  }
+                }
+
+                /// <summary>Field number for the "content_url" field.</summary>
+                public const int ContentUrlFieldNumber = 5;
+                private string contentUrl_ = "";
+                /// <summary>
+                /// Required. Url where the media is stored.
+                /// </summary>
+                [global::System.Diagnostics.DebuggerNonUserCodeAttribute]
+                public string ContentUrl {
+                  get { return contentUrl_; }
+                  set {
+                    contentUrl_ = pb::ProtoPreconditions.CheckNotNull(value, "value");
+                  }
+                }
+
+                private object image_;
+                /// <summary>Enum of possible cases for the "image" oneof.</summary>
+                public enum ImageOneofCase {
+                  None = 0,
+                  LargeImage = 3,
+                  Icon = 4,
+                }
+                private ImageOneofCase imageCase_ = ImageOneofCase.None;
+                [global::System.Diagnostics.DebuggerNonUserCodeAttribute]
+                public ImageOneofCase ImageCase {
+                  get { return imageCase_; }
+                }
+
+                [global::System.Diagnostics.DebuggerNonUserCodeAttribute]
+                public void ClearImage() {
+                  imageCase_ = ImageOneofCase.None;
+                  image_ = null;
+                }
+
+                [global::System.Diagnostics.DebuggerNonUserCodeAttribute]
+                public override bool Equals(object other) {
+                  return Equals(other as ResponseMediaObject);
+                }
+
+                [global::System.Diagnostics.DebuggerNonUserCodeAttribute]
+                public bool Equals(ResponseMediaObject other) {
+                  if (ReferenceEquals(other, null)) {
+                    return false;
+                  }
+                  if (ReferenceEquals(other, this)) {
+                    return true;
+                  }
+                  if (Name != other.Name) return false;
+                  if (Description != other.Description) return false;
+                  if (!object.Equals(LargeImage, other.LargeImage)) return false;
+                  if (!object.Equals(Icon, other.Icon)) return false;
+                  if (ContentUrl != other.ContentUrl) return false;
+                  if (ImageCase != other.ImageCase) return false;
+                  return Equals(_unknownFields, other._unknownFields);
+                }
+
+                [global::System.Diagnostics.DebuggerNonUserCodeAttribute]
+                public override int GetHashCode() {
+                  int hash = 1;
+                  if (Name.Length != 0) hash ^= Name.GetHashCode();
+                  if (Description.Length != 0) hash ^= Description.GetHashCode();
+                  if (imageCase_ == ImageOneofCase.LargeImage) hash ^= LargeImage.GetHashCode();
+                  if (imageCase_ == ImageOneofCase.Icon) hash ^= Icon.GetHashCode();
+                  if (ContentUrl.Length != 0) hash ^= ContentUrl.GetHashCode();
+                  hash ^= (int) imageCase_;
+                  if (_unknownFields != null) {
+                    hash ^= _unknownFields.GetHashCode();
+                  }
+                  return hash;
+                }
+
+                [global::System.Diagnostics.DebuggerNonUserCodeAttribute]
+                public override string ToString() {
+                  return pb::JsonFormatter.ToDiagnosticString(this);
+                }
+
+                [global::System.Diagnostics.DebuggerNonUserCodeAttribute]
+                public void WriteTo(pb::CodedOutputStream output) {
+                  if (Name.Length != 0) {
+                    output.WriteRawTag(10);
+                    output.WriteString(Name);
+                  }
+                  if (Description.Length != 0) {
+                    output.WriteRawTag(18);
+                    output.WriteString(Description);
+                  }
+                  if (imageCase_ == ImageOneofCase.LargeImage) {
+                    output.WriteRawTag(26);
+                    output.WriteMessage(LargeImage);
+                  }
+                  if (imageCase_ == ImageOneofCase.Icon) {
+                    output.WriteRawTag(34);
+                    output.WriteMessage(Icon);
+                  }
+                  if (ContentUrl.Length != 0) {
+                    output.WriteRawTag(42);
+                    output.WriteString(ContentUrl);
+                  }
+                  if (_unknownFields != null) {
+                    _unknownFields.WriteTo(output);
+                  }
+                }
+
+                [global::System.Diagnostics.DebuggerNonUserCodeAttribute]
+                public int CalculateSize() {
+                  int size = 0;
+                  if (Name.Length != 0) {
+                    size += 1 + pb::CodedOutputStream.ComputeStringSize(Name);
+                  }
+                  if (Description.Length != 0) {
+                    size += 1 + pb::CodedOutputStream.ComputeStringSize(Description);
+                  }
+                  if (imageCase_ == ImageOneofCase.LargeImage) {
+                    size += 1 + pb::CodedOutputStream.ComputeMessageSize(LargeImage);
+                  }
+                  if (imageCase_ == ImageOneofCase.Icon) {
+                    size += 1 + pb::CodedOutputStream.ComputeMessageSize(Icon);
+                  }
+                  if (ContentUrl.Length != 0) {
+                    size += 1 + pb::CodedOutputStream.ComputeStringSize(ContentUrl);
+                  }
+                  if (_unknownFields != null) {
+                    size += _unknownFields.CalculateSize();
+                  }
+                  return size;
+                }
+
+                [global::System.Diagnostics.DebuggerNonUserCodeAttribute]
+                public void MergeFrom(ResponseMediaObject other) {
+                  if (other == null) {
+                    return;
+                  }
+                  if (other.Name.Length != 0) {
+                    Name = other.Name;
+                  }
+                  if (other.Description.Length != 0) {
+                    Description = other.Description;
+                  }
+                  if (other.ContentUrl.Length != 0) {
+                    ContentUrl = other.ContentUrl;
+                  }
+                  switch (other.ImageCase) {
+                    case ImageOneofCase.LargeImage:
+                      if (LargeImage == null) {
+                        LargeImage = new global::Google.Cloud.Dialogflow.V2.Intent.Types.Message.Types.Image();
+                      }
+                      LargeImage.MergeFrom(other.LargeImage);
+                      break;
+                    case ImageOneofCase.Icon:
+                      if (Icon == null) {
+                        Icon = new global::Google.Cloud.Dialogflow.V2.Intent.Types.Message.Types.Image();
+                      }
+                      Icon.MergeFrom(other.Icon);
+                      break;
+                  }
+
+                  _unknownFields = pb::UnknownFieldSet.MergeFrom(_unknownFields, other._unknownFields);
+                }
+
+                [global::System.Diagnostics.DebuggerNonUserCodeAttribute]
+                public void MergeFrom(pb::CodedInputStream input) {
+                  uint tag;
+                  while ((tag = input.ReadTag()) != 0) {
+                    switch(tag) {
+                      default:
+                        _unknownFields = pb::UnknownFieldSet.MergeFieldFrom(_unknownFields, input);
+                        break;
+                      case 10: {
+                        Name = input.ReadString();
+                        break;
+                      }
+                      case 18: {
+                        Description = input.ReadString();
+                        break;
+                      }
+                      case 26: {
+                        global::Google.Cloud.Dialogflow.V2.Intent.Types.Message.Types.Image subBuilder = new global::Google.Cloud.Dialogflow.V2.Intent.Types.Message.Types.Image();
+                        if (imageCase_ == ImageOneofCase.LargeImage) {
+                          subBuilder.MergeFrom(LargeImage);
+                        }
+                        input.ReadMessage(subBuilder);
+                        LargeImage = subBuilder;
+                        break;
+                      }
+                      case 34: {
+                        global::Google.Cloud.Dialogflow.V2.Intent.Types.Message.Types.Image subBuilder = new global::Google.Cloud.Dialogflow.V2.Intent.Types.Message.Types.Image();
+                        if (imageCase_ == ImageOneofCase.Icon) {
+                          subBuilder.MergeFrom(Icon);
+                        }
+                        input.ReadMessage(subBuilder);
+                        Icon = subBuilder;
+                        break;
+                      }
+                      case 42: {
+                        ContentUrl = input.ReadString();
+                        break;
+                      }
+                    }
+                  }
+                }
+
+              }
+
+            }
+            #endregion
+
+          }
+
+          /// <summary>
+          /// Browse Carousel Card for Actions on Google.
+          /// https://developers.google.com/actions/assistant/responses#browsing_carousel
+          /// </summary>
+          public sealed partial class BrowseCarouselCard : pb::IMessage<BrowseCarouselCard> {
+            private static readonly pb::MessageParser<BrowseCarouselCard> _parser = new pb::MessageParser<BrowseCarouselCard>(() => new BrowseCarouselCard());
+            private pb::UnknownFieldSet _unknownFields;
+            [global::System.Diagnostics.DebuggerNonUserCodeAttribute]
+            public static pb::MessageParser<BrowseCarouselCard> Parser { get { return _parser; } }
+
+            [global::System.Diagnostics.DebuggerNonUserCodeAttribute]
+            public static pbr::MessageDescriptor Descriptor {
+              get { return global::Google.Cloud.Dialogflow.V2.Intent.Types.Message.Descriptor.NestedTypes[14]; }
+            }
+
+            [global::System.Diagnostics.DebuggerNonUserCodeAttribute]
+            pbr::MessageDescriptor pb::IMessage.Descriptor {
+              get { return Descriptor; }
+            }
+
+            [global::System.Diagnostics.DebuggerNonUserCodeAttribute]
+            public BrowseCarouselCard() {
+              OnConstruction();
+            }
+
+            partial void OnConstruction();
+
+            [global::System.Diagnostics.DebuggerNonUserCodeAttribute]
+            public BrowseCarouselCard(BrowseCarouselCard other) : this() {
+              items_ = other.items_.Clone();
+              imageDisplayOptions_ = other.imageDisplayOptions_;
+              _unknownFields = pb::UnknownFieldSet.Clone(other._unknownFields);
+            }
+
+            [global::System.Diagnostics.DebuggerNonUserCodeAttribute]
+            public BrowseCarouselCard Clone() {
+              return new BrowseCarouselCard(this);
+            }
+
+            /// <summary>Field number for the "items" field.</summary>
+            public const int ItemsFieldNumber = 1;
+            private static readonly pb::FieldCodec<global::Google.Cloud.Dialogflow.V2.Intent.Types.Message.Types.BrowseCarouselCard.Types.BrowseCarouselCardItem> _repeated_items_codec
+                = pb::FieldCodec.ForMessage(10, global::Google.Cloud.Dialogflow.V2.Intent.Types.Message.Types.BrowseCarouselCard.Types.BrowseCarouselCardItem.Parser);
+            private readonly pbc::RepeatedField<global::Google.Cloud.Dialogflow.V2.Intent.Types.Message.Types.BrowseCarouselCard.Types.BrowseCarouselCardItem> items_ = new pbc::RepeatedField<global::Google.Cloud.Dialogflow.V2.Intent.Types.Message.Types.BrowseCarouselCard.Types.BrowseCarouselCardItem>();
+            /// <summary>
+            /// Required. List of items in the Browse Carousel Card. Minimum of two
+            /// items, maximum of ten.
+            /// </summary>
+            [global::System.Diagnostics.DebuggerNonUserCodeAttribute]
+            public pbc::RepeatedField<global::Google.Cloud.Dialogflow.V2.Intent.Types.Message.Types.BrowseCarouselCard.Types.BrowseCarouselCardItem> Items {
+              get { return items_; }
+            }
+
+            /// <summary>Field number for the "image_display_options" field.</summary>
+            public const int ImageDisplayOptionsFieldNumber = 2;
+            private global::Google.Cloud.Dialogflow.V2.Intent.Types.Message.Types.BrowseCarouselCard.Types.ImageDisplayOptions imageDisplayOptions_ = 0;
+            /// <summary>
+            /// Optional. Settings for displaying the image. Applies to every image in
+            /// [items][google.cloud.dialogflow.v2.Intent.Message.BrowseCarouselCard.items].
+            /// </summary>
+            [global::System.Diagnostics.DebuggerNonUserCodeAttribute]
+            public global::Google.Cloud.Dialogflow.V2.Intent.Types.Message.Types.BrowseCarouselCard.Types.ImageDisplayOptions ImageDisplayOptions {
+              get { return imageDisplayOptions_; }
+              set {
+                imageDisplayOptions_ = value;
+              }
+            }
+
+            [global::System.Diagnostics.DebuggerNonUserCodeAttribute]
+            public override bool Equals(object other) {
+              return Equals(other as BrowseCarouselCard);
+            }
+
+            [global::System.Diagnostics.DebuggerNonUserCodeAttribute]
+            public bool Equals(BrowseCarouselCard other) {
+              if (ReferenceEquals(other, null)) {
+                return false;
+              }
+              if (ReferenceEquals(other, this)) {
+                return true;
+              }
+              if(!items_.Equals(other.items_)) return false;
+              if (ImageDisplayOptions != other.ImageDisplayOptions) return false;
+              return Equals(_unknownFields, other._unknownFields);
+            }
+
+            [global::System.Diagnostics.DebuggerNonUserCodeAttribute]
+            public override int GetHashCode() {
+              int hash = 1;
+              hash ^= items_.GetHashCode();
+              if (ImageDisplayOptions != 0) hash ^= ImageDisplayOptions.GetHashCode();
+              if (_unknownFields != null) {
+                hash ^= _unknownFields.GetHashCode();
+              }
+              return hash;
+            }
+
+            [global::System.Diagnostics.DebuggerNonUserCodeAttribute]
+            public override string ToString() {
+              return pb::JsonFormatter.ToDiagnosticString(this);
+            }
+
+            [global::System.Diagnostics.DebuggerNonUserCodeAttribute]
+            public void WriteTo(pb::CodedOutputStream output) {
+              items_.WriteTo(output, _repeated_items_codec);
+              if (ImageDisplayOptions != 0) {
+                output.WriteRawTag(16);
+                output.WriteEnum((int) ImageDisplayOptions);
+              }
+              if (_unknownFields != null) {
+                _unknownFields.WriteTo(output);
+              }
+            }
+
+            [global::System.Diagnostics.DebuggerNonUserCodeAttribute]
+            public int CalculateSize() {
+              int size = 0;
+              size += items_.CalculateSize(_repeated_items_codec);
+              if (ImageDisplayOptions != 0) {
+                size += 1 + pb::CodedOutputStream.ComputeEnumSize((int) ImageDisplayOptions);
+              }
+              if (_unknownFields != null) {
+                size += _unknownFields.CalculateSize();
+              }
+              return size;
+            }
+
+            [global::System.Diagnostics.DebuggerNonUserCodeAttribute]
+            public void MergeFrom(BrowseCarouselCard other) {
+              if (other == null) {
+                return;
+              }
+              items_.Add(other.items_);
+              if (other.ImageDisplayOptions != 0) {
+                ImageDisplayOptions = other.ImageDisplayOptions;
+              }
+              _unknownFields = pb::UnknownFieldSet.MergeFrom(_unknownFields, other._unknownFields);
+            }
+
+            [global::System.Diagnostics.DebuggerNonUserCodeAttribute]
+            public void MergeFrom(pb::CodedInputStream input) {
+              uint tag;
+              while ((tag = input.ReadTag()) != 0) {
+                switch(tag) {
+                  default:
+                    _unknownFields = pb::UnknownFieldSet.MergeFieldFrom(_unknownFields, input);
+                    break;
+                  case 10: {
+                    items_.AddEntriesFrom(input, _repeated_items_codec);
+                    break;
+                  }
+                  case 16: {
+                    ImageDisplayOptions = (global::Google.Cloud.Dialogflow.V2.Intent.Types.Message.Types.BrowseCarouselCard.Types.ImageDisplayOptions) input.ReadEnum();
+                    break;
+                  }
+                }
+              }
+            }
+
+            #region Nested types
+            /// <summary>Container for nested types declared in the BrowseCarouselCard message type.</summary>
+            [global::System.Diagnostics.DebuggerNonUserCodeAttribute]
+            public static partial class Types {
+              /// <summary>
+              /// Image display options for Actions on Google. This should be used for
+              /// when the image's aspect ratio does not match the image container's
+              /// aspect ratio.
+              /// </summary>
+              public enum ImageDisplayOptions {
+                /// <summary>
+                /// Fill the gaps between the image and the image container with gray
+                /// bars.
+                /// </summary>
+                [pbr::OriginalName("IMAGE_DISPLAY_OPTIONS_UNSPECIFIED")] Unspecified = 0,
+                /// <summary>
+                /// Fill the gaps between the image and the image container with gray
+                /// bars.
+                /// </summary>
+                [pbr::OriginalName("GRAY")] Gray = 1,
+                /// <summary>
+                /// Fill the gaps between the image and the image container with white
+                /// bars.
+                /// </summary>
+                [pbr::OriginalName("WHITE")] White = 2,
+                /// <summary>
+                /// Image is scaled such that the image width and height match or exceed
+                /// the container dimensions. This may crop the top and bottom of the
+                /// image if the scaled image height is greater than the container
+                /// height, or crop the left and right of the image if the scaled image
+                /// width is greater than the container width. This is similar to "Zoom
+                /// Mode" on a widescreen TV when playing a 4:3 video.
+                /// </summary>
+                [pbr::OriginalName("CROPPED")] Cropped = 3,
+                /// <summary>
+                /// Pad the gaps between image and image frame with a blurred copy of the
+                /// same image.
+                /// </summary>
+                [pbr::OriginalName("BLURRED_BACKGROUND")] BlurredBackground = 4,
+              }
+
+              /// <summary>
+              /// Browsing carousel tile
+              /// </summary>
+              public sealed partial class BrowseCarouselCardItem : pb::IMessage<BrowseCarouselCardItem> {
+                private static readonly pb::MessageParser<BrowseCarouselCardItem> _parser = new pb::MessageParser<BrowseCarouselCardItem>(() => new BrowseCarouselCardItem());
+                private pb::UnknownFieldSet _unknownFields;
+                [global::System.Diagnostics.DebuggerNonUserCodeAttribute]
+                public static pb::MessageParser<BrowseCarouselCardItem> Parser { get { return _parser; } }
+
+                [global::System.Diagnostics.DebuggerNonUserCodeAttribute]
+                public static pbr::MessageDescriptor Descriptor {
+                  get { return global::Google.Cloud.Dialogflow.V2.Intent.Types.Message.Types.BrowseCarouselCard.Descriptor.NestedTypes[0]; }
+                }
+
+                [global::System.Diagnostics.DebuggerNonUserCodeAttribute]
+                pbr::MessageDescriptor pb::IMessage.Descriptor {
+                  get { return Descriptor; }
+                }
+
+                [global::System.Diagnostics.DebuggerNonUserCodeAttribute]
+                public BrowseCarouselCardItem() {
+                  OnConstruction();
+                }
+
+                partial void OnConstruction();
+
+                [global::System.Diagnostics.DebuggerNonUserCodeAttribute]
+                public BrowseCarouselCardItem(BrowseCarouselCardItem other) : this() {
+                  openUriAction_ = other.openUriAction_ != null ? other.openUriAction_.Clone() : null;
+                  title_ = other.title_;
+                  description_ = other.description_;
+                  image_ = other.image_ != null ? other.image_.Clone() : null;
+                  footer_ = other.footer_;
+                  _unknownFields = pb::UnknownFieldSet.Clone(other._unknownFields);
+                }
+
+                [global::System.Diagnostics.DebuggerNonUserCodeAttribute]
+                public BrowseCarouselCardItem Clone() {
+                  return new BrowseCarouselCardItem(this);
+                }
+
+                /// <summary>Field number for the "open_uri_action" field.</summary>
+                public const int OpenUriActionFieldNumber = 1;
+                private global::Google.Cloud.Dialogflow.V2.Intent.Types.Message.Types.BrowseCarouselCard.Types.BrowseCarouselCardItem.Types.OpenUrlAction openUriAction_;
+                /// <summary>
+                /// Required. Action to present to the user.
+                /// </summary>
+                [global::System.Diagnostics.DebuggerNonUserCodeAttribute]
+                public global::Google.Cloud.Dialogflow.V2.Intent.Types.Message.Types.BrowseCarouselCard.Types.BrowseCarouselCardItem.Types.OpenUrlAction OpenUriAction {
+                  get { return openUriAction_; }
+                  set {
+                    openUriAction_ = value;
+                  }
+                }
+
+                /// <summary>Field number for the "title" field.</summary>
+                public const int TitleFieldNumber = 2;
+                private string title_ = "";
+                /// <summary>
+                /// Required. Title of the carousel item. Maximum of two lines of text.
+                /// </summary>
+                [global::System.Diagnostics.DebuggerNonUserCodeAttribute]
+                public string Title {
+                  get { return title_; }
+                  set {
+                    title_ = pb::ProtoPreconditions.CheckNotNull(value, "value");
+                  }
+                }
+
+                /// <summary>Field number for the "description" field.</summary>
+                public const int DescriptionFieldNumber = 3;
+                private string description_ = "";
+                /// <summary>
+                /// Optional. Description of the carousel item. Maximum of four lines of
+                /// text.
+                /// </summary>
+                [global::System.Diagnostics.DebuggerNonUserCodeAttribute]
+                public string Description {
+                  get { return description_; }
+                  set {
+                    description_ = pb::ProtoPreconditions.CheckNotNull(value, "value");
+                  }
+                }
+
+                /// <summary>Field number for the "image" field.</summary>
+                public const int ImageFieldNumber = 4;
+                private global::Google.Cloud.Dialogflow.V2.Intent.Types.Message.Types.Image image_;
+                /// <summary>
+                /// Optional. Hero image for the carousel item.
+                /// </summary>
+                [global::System.Diagnostics.DebuggerNonUserCodeAttribute]
+                public global::Google.Cloud.Dialogflow.V2.Intent.Types.Message.Types.Image Image {
+                  get { return image_; }
+                  set {
+                    image_ = value;
+                  }
+                }
+
+                /// <summary>Field number for the "footer" field.</summary>
+                public const int FooterFieldNumber = 5;
+                private string footer_ = "";
+                /// <summary>
+                /// Optional. Text that appears at the bottom of the Browse Carousel
+                /// Card. Maximum of one line of text.
+                /// </summary>
+                [global::System.Diagnostics.DebuggerNonUserCodeAttribute]
+                public string Footer {
+                  get { return footer_; }
+                  set {
+                    footer_ = pb::ProtoPreconditions.CheckNotNull(value, "value");
+                  }
+                }
+
+                [global::System.Diagnostics.DebuggerNonUserCodeAttribute]
+                public override bool Equals(object other) {
+                  return Equals(other as BrowseCarouselCardItem);
+                }
+
+                [global::System.Diagnostics.DebuggerNonUserCodeAttribute]
+                public bool Equals(BrowseCarouselCardItem other) {
+                  if (ReferenceEquals(other, null)) {
+                    return false;
+                  }
+                  if (ReferenceEquals(other, this)) {
+                    return true;
+                  }
+                  if (!object.Equals(OpenUriAction, other.OpenUriAction)) return false;
+                  if (Title != other.Title) return false;
+                  if (Description != other.Description) return false;
+                  if (!object.Equals(Image, other.Image)) return false;
+                  if (Footer != other.Footer) return false;
+                  return Equals(_unknownFields, other._unknownFields);
+                }
+
+                [global::System.Diagnostics.DebuggerNonUserCodeAttribute]
+                public override int GetHashCode() {
+                  int hash = 1;
+                  if (openUriAction_ != null) hash ^= OpenUriAction.GetHashCode();
+                  if (Title.Length != 0) hash ^= Title.GetHashCode();
+                  if (Description.Length != 0) hash ^= Description.GetHashCode();
+                  if (image_ != null) hash ^= Image.GetHashCode();
+                  if (Footer.Length != 0) hash ^= Footer.GetHashCode();
+                  if (_unknownFields != null) {
+                    hash ^= _unknownFields.GetHashCode();
+                  }
+                  return hash;
+                }
+
+                [global::System.Diagnostics.DebuggerNonUserCodeAttribute]
+                public override string ToString() {
+                  return pb::JsonFormatter.ToDiagnosticString(this);
+                }
+
+                [global::System.Diagnostics.DebuggerNonUserCodeAttribute]
+                public void WriteTo(pb::CodedOutputStream output) {
+                  if (openUriAction_ != null) {
+                    output.WriteRawTag(10);
+                    output.WriteMessage(OpenUriAction);
+                  }
+                  if (Title.Length != 0) {
+                    output.WriteRawTag(18);
+                    output.WriteString(Title);
+                  }
+                  if (Description.Length != 0) {
+                    output.WriteRawTag(26);
+                    output.WriteString(Description);
+                  }
+                  if (image_ != null) {
+                    output.WriteRawTag(34);
+                    output.WriteMessage(Image);
+                  }
+                  if (Footer.Length != 0) {
+                    output.WriteRawTag(42);
+                    output.WriteString(Footer);
+                  }
+                  if (_unknownFields != null) {
+                    _unknownFields.WriteTo(output);
+                  }
+                }
+
+                [global::System.Diagnostics.DebuggerNonUserCodeAttribute]
+                public int CalculateSize() {
+                  int size = 0;
+                  if (openUriAction_ != null) {
+                    size += 1 + pb::CodedOutputStream.ComputeMessageSize(OpenUriAction);
+                  }
+                  if (Title.Length != 0) {
+                    size += 1 + pb::CodedOutputStream.ComputeStringSize(Title);
+                  }
+                  if (Description.Length != 0) {
+                    size += 1 + pb::CodedOutputStream.ComputeStringSize(Description);
+                  }
+                  if (image_ != null) {
+                    size += 1 + pb::CodedOutputStream.ComputeMessageSize(Image);
+                  }
+                  if (Footer.Length != 0) {
+                    size += 1 + pb::CodedOutputStream.ComputeStringSize(Footer);
+                  }
+                  if (_unknownFields != null) {
+                    size += _unknownFields.CalculateSize();
+                  }
+                  return size;
+                }
+
+                [global::System.Diagnostics.DebuggerNonUserCodeAttribute]
+                public void MergeFrom(BrowseCarouselCardItem other) {
+                  if (other == null) {
+                    return;
+                  }
+                  if (other.openUriAction_ != null) {
+                    if (openUriAction_ == null) {
+                      OpenUriAction = new global::Google.Cloud.Dialogflow.V2.Intent.Types.Message.Types.BrowseCarouselCard.Types.BrowseCarouselCardItem.Types.OpenUrlAction();
+                    }
+                    OpenUriAction.MergeFrom(other.OpenUriAction);
+                  }
+                  if (other.Title.Length != 0) {
+                    Title = other.Title;
+                  }
+                  if (other.Description.Length != 0) {
+                    Description = other.Description;
+                  }
+                  if (other.image_ != null) {
+                    if (image_ == null) {
+                      Image = new global::Google.Cloud.Dialogflow.V2.Intent.Types.Message.Types.Image();
+                    }
+                    Image.MergeFrom(other.Image);
+                  }
+                  if (other.Footer.Length != 0) {
+                    Footer = other.Footer;
+                  }
+                  _unknownFields = pb::UnknownFieldSet.MergeFrom(_unknownFields, other._unknownFields);
+                }
+
+                [global::System.Diagnostics.DebuggerNonUserCodeAttribute]
+                public void MergeFrom(pb::CodedInputStream input) {
+                  uint tag;
+                  while ((tag = input.ReadTag()) != 0) {
+                    switch(tag) {
+                      default:
+                        _unknownFields = pb::UnknownFieldSet.MergeFieldFrom(_unknownFields, input);
+                        break;
+                      case 10: {
+                        if (openUriAction_ == null) {
+                          OpenUriAction = new global::Google.Cloud.Dialogflow.V2.Intent.Types.Message.Types.BrowseCarouselCard.Types.BrowseCarouselCardItem.Types.OpenUrlAction();
+                        }
+                        input.ReadMessage(OpenUriAction);
+                        break;
+                      }
+                      case 18: {
+                        Title = input.ReadString();
+                        break;
+                      }
+                      case 26: {
+                        Description = input.ReadString();
+                        break;
+                      }
+                      case 34: {
+                        if (image_ == null) {
+                          Image = new global::Google.Cloud.Dialogflow.V2.Intent.Types.Message.Types.Image();
+                        }
+                        input.ReadMessage(Image);
+                        break;
+                      }
+                      case 42: {
+                        Footer = input.ReadString();
+                        break;
+                      }
+                    }
+                  }
+                }
+
+                #region Nested types
+                /// <summary>Container for nested types declared in the BrowseCarouselCardItem message type.</summary>
+                [global::System.Diagnostics.DebuggerNonUserCodeAttribute]
+                public static partial class Types {
+                  /// <summary>
+                  /// Actions on Google action to open a given url.
+                  /// </summary>
+                  public sealed partial class OpenUrlAction : pb::IMessage<OpenUrlAction> {
+                    private static readonly pb::MessageParser<OpenUrlAction> _parser = new pb::MessageParser<OpenUrlAction>(() => new OpenUrlAction());
+                    private pb::UnknownFieldSet _unknownFields;
+                    [global::System.Diagnostics.DebuggerNonUserCodeAttribute]
+                    public static pb::MessageParser<OpenUrlAction> Parser { get { return _parser; } }
+
+                    [global::System.Diagnostics.DebuggerNonUserCodeAttribute]
+                    public static pbr::MessageDescriptor Descriptor {
+                      get { return global::Google.Cloud.Dialogflow.V2.Intent.Types.Message.Types.BrowseCarouselCard.Types.BrowseCarouselCardItem.Descriptor.NestedTypes[0]; }
+                    }
+
+                    [global::System.Diagnostics.DebuggerNonUserCodeAttribute]
+                    pbr::MessageDescriptor pb::IMessage.Descriptor {
+                      get { return Descriptor; }
+                    }
+
+                    [global::System.Diagnostics.DebuggerNonUserCodeAttribute]
+                    public OpenUrlAction() {
+                      OnConstruction();
+                    }
+
+                    partial void OnConstruction();
+
+                    [global::System.Diagnostics.DebuggerNonUserCodeAttribute]
+                    public OpenUrlAction(OpenUrlAction other) : this() {
+                      url_ = other.url_;
+                      urlTypeHint_ = other.urlTypeHint_;
+                      _unknownFields = pb::UnknownFieldSet.Clone(other._unknownFields);
+                    }
+
+                    [global::System.Diagnostics.DebuggerNonUserCodeAttribute]
+                    public OpenUrlAction Clone() {
+                      return new OpenUrlAction(this);
+                    }
+
+                    /// <summary>Field number for the "url" field.</summary>
+                    public const int UrlFieldNumber = 1;
+                    private string url_ = "";
+                    /// <summary>
+                    /// Required. URL
+                    /// </summary>
+                    [global::System.Diagnostics.DebuggerNonUserCodeAttribute]
+                    public string Url {
+                      get { return url_; }
+                      set {
+                        url_ = pb::ProtoPreconditions.CheckNotNull(value, "value");
+                      }
+                    }
+
+                    /// <summary>Field number for the "url_type_hint" field.</summary>
+                    public const int UrlTypeHintFieldNumber = 3;
+                    private global::Google.Cloud.Dialogflow.V2.Intent.Types.Message.Types.BrowseCarouselCard.Types.BrowseCarouselCardItem.Types.OpenUrlAction.Types.UrlTypeHint urlTypeHint_ = 0;
+                    /// <summary>
+                    /// Optional. Specifies the type of viewer that is used when opening
+                    /// the URL. Defaults to opening via web browser.
+                    /// </summary>
+                    [global::System.Diagnostics.DebuggerNonUserCodeAttribute]
+                    public global::Google.Cloud.Dialogflow.V2.Intent.Types.Message.Types.BrowseCarouselCard.Types.BrowseCarouselCardItem.Types.OpenUrlAction.Types.UrlTypeHint UrlTypeHint {
+                      get { return urlTypeHint_; }
+                      set {
+                        urlTypeHint_ = value;
+                      }
+                    }
+
+                    [global::System.Diagnostics.DebuggerNonUserCodeAttribute]
+                    public override bool Equals(object other) {
+                      return Equals(other as OpenUrlAction);
+                    }
+
+                    [global::System.Diagnostics.DebuggerNonUserCodeAttribute]
+                    public bool Equals(OpenUrlAction other) {
+                      if (ReferenceEquals(other, null)) {
+                        return false;
+                      }
+                      if (ReferenceEquals(other, this)) {
+                        return true;
+                      }
+                      if (Url != other.Url) return false;
+                      if (UrlTypeHint != other.UrlTypeHint) return false;
+                      return Equals(_unknownFields, other._unknownFields);
+                    }
+
+                    [global::System.Diagnostics.DebuggerNonUserCodeAttribute]
+                    public override int GetHashCode() {
+                      int hash = 1;
+                      if (Url.Length != 0) hash ^= Url.GetHashCode();
+                      if (UrlTypeHint != 0) hash ^= UrlTypeHint.GetHashCode();
+                      if (_unknownFields != null) {
+                        hash ^= _unknownFields.GetHashCode();
+                      }
+                      return hash;
+                    }
+
+                    [global::System.Diagnostics.DebuggerNonUserCodeAttribute]
+                    public override string ToString() {
+                      return pb::JsonFormatter.ToDiagnosticString(this);
+                    }
+
+                    [global::System.Diagnostics.DebuggerNonUserCodeAttribute]
+                    public void WriteTo(pb::CodedOutputStream output) {
+                      if (Url.Length != 0) {
+                        output.WriteRawTag(10);
+                        output.WriteString(Url);
+                      }
+                      if (UrlTypeHint != 0) {
+                        output.WriteRawTag(24);
+                        output.WriteEnum((int) UrlTypeHint);
+                      }
+                      if (_unknownFields != null) {
+                        _unknownFields.WriteTo(output);
+                      }
+                    }
+
+                    [global::System.Diagnostics.DebuggerNonUserCodeAttribute]
+                    public int CalculateSize() {
+                      int size = 0;
+                      if (Url.Length != 0) {
+                        size += 1 + pb::CodedOutputStream.ComputeStringSize(Url);
+                      }
+                      if (UrlTypeHint != 0) {
+                        size += 1 + pb::CodedOutputStream.ComputeEnumSize((int) UrlTypeHint);
+                      }
+                      if (_unknownFields != null) {
+                        size += _unknownFields.CalculateSize();
+                      }
+                      return size;
+                    }
+
+                    [global::System.Diagnostics.DebuggerNonUserCodeAttribute]
+                    public void MergeFrom(OpenUrlAction other) {
+                      if (other == null) {
+                        return;
+                      }
+                      if (other.Url.Length != 0) {
+                        Url = other.Url;
+                      }
+                      if (other.UrlTypeHint != 0) {
+                        UrlTypeHint = other.UrlTypeHint;
+                      }
+                      _unknownFields = pb::UnknownFieldSet.MergeFrom(_unknownFields, other._unknownFields);
+                    }
+
+                    [global::System.Diagnostics.DebuggerNonUserCodeAttribute]
+                    public void MergeFrom(pb::CodedInputStream input) {
+                      uint tag;
+                      while ((tag = input.ReadTag()) != 0) {
+                        switch(tag) {
+                          default:
+                            _unknownFields = pb::UnknownFieldSet.MergeFieldFrom(_unknownFields, input);
+                            break;
+                          case 10: {
+                            Url = input.ReadString();
+                            break;
+                          }
+                          case 24: {
+                            UrlTypeHint = (global::Google.Cloud.Dialogflow.V2.Intent.Types.Message.Types.BrowseCarouselCard.Types.BrowseCarouselCardItem.Types.OpenUrlAction.Types.UrlTypeHint) input.ReadEnum();
+                            break;
+                          }
+                        }
+                      }
+                    }
+
+                    #region Nested types
+                    /// <summary>Container for nested types declared in the OpenUrlAction message type.</summary>
+                    [global::System.Diagnostics.DebuggerNonUserCodeAttribute]
+                    public static partial class Types {
+                      /// <summary>
+                      /// Type of the URI.
+                      /// </summary>
+                      public enum UrlTypeHint {
+                        /// <summary>
+                        /// Unspecified
+                        /// </summary>
+                        [pbr::OriginalName("URL_TYPE_HINT_UNSPECIFIED")] Unspecified = 0,
+                        /// <summary>
+                        /// Url would be an amp action
+                        /// </summary>
+                        [pbr::OriginalName("AMP_ACTION")] AmpAction = 1,
+                        /// <summary>
+                        /// URL that points directly to AMP content, or to a canonical URL
+                        /// which refers to AMP content via &lt;link rel="amphtml">.
+                        /// </summary>
+                        [pbr::OriginalName("AMP_CONTENT")] AmpContent = 2,
+                      }
+
+                    }
+                    #endregion
+
+                  }
+
+                }
+                #endregion
+
+              }
+
+            }
+            #endregion
+
+          }
+
+          /// <summary>
+          /// Table card for Actions on Google.
+          /// </summary>
+          public sealed partial class TableCard : pb::IMessage<TableCard> {
+            private static readonly pb::MessageParser<TableCard> _parser = new pb::MessageParser<TableCard>(() => new TableCard());
+            private pb::UnknownFieldSet _unknownFields;
+            [global::System.Diagnostics.DebuggerNonUserCodeAttribute]
+            public static pb::MessageParser<TableCard> Parser { get { return _parser; } }
+
+            [global::System.Diagnostics.DebuggerNonUserCodeAttribute]
+            public static pbr::MessageDescriptor Descriptor {
+              get { return global::Google.Cloud.Dialogflow.V2.Intent.Types.Message.Descriptor.NestedTypes[15]; }
+            }
+
+            [global::System.Diagnostics.DebuggerNonUserCodeAttribute]
+            pbr::MessageDescriptor pb::IMessage.Descriptor {
+              get { return Descriptor; }
+            }
+
+            [global::System.Diagnostics.DebuggerNonUserCodeAttribute]
+            public TableCard() {
+              OnConstruction();
+            }
+
+            partial void OnConstruction();
+
+            [global::System.Diagnostics.DebuggerNonUserCodeAttribute]
+            public TableCard(TableCard other) : this() {
+              title_ = other.title_;
+              subtitle_ = other.subtitle_;
+              image_ = other.image_ != null ? other.image_.Clone() : null;
+              columnProperties_ = other.columnProperties_.Clone();
+              rows_ = other.rows_.Clone();
+              buttons_ = other.buttons_.Clone();
+              _unknownFields = pb::UnknownFieldSet.Clone(other._unknownFields);
+            }
+
+            [global::System.Diagnostics.DebuggerNonUserCodeAttribute]
+            public TableCard Clone() {
+              return new TableCard(this);
+            }
+
+            /// <summary>Field number for the "title" field.</summary>
+            public const int TitleFieldNumber = 1;
+            private string title_ = "";
+            /// <summary>
+            /// Required. Title of the card.
+            /// </summary>
+            [global::System.Diagnostics.DebuggerNonUserCodeAttribute]
+            public string Title {
+              get { return title_; }
+              set {
+                title_ = pb::ProtoPreconditions.CheckNotNull(value, "value");
+              }
+            }
+
+            /// <summary>Field number for the "subtitle" field.</summary>
+            public const int SubtitleFieldNumber = 2;
+            private string subtitle_ = "";
+            /// <summary>
+            /// Optional. Subtitle to the title.
+            /// </summary>
+            [global::System.Diagnostics.DebuggerNonUserCodeAttribute]
+            public string Subtitle {
+              get { return subtitle_; }
+              set {
+                subtitle_ = pb::ProtoPreconditions.CheckNotNull(value, "value");
+              }
+            }
+
+            /// <summary>Field number for the "image" field.</summary>
+            public const int ImageFieldNumber = 3;
+            private global::Google.Cloud.Dialogflow.V2.Intent.Types.Message.Types.Image image_;
+            /// <summary>
+            /// Optional. Image which should be displayed on the card.
+            /// </summary>
+            [global::System.Diagnostics.DebuggerNonUserCodeAttribute]
+            public global::Google.Cloud.Dialogflow.V2.Intent.Types.Message.Types.Image Image {
+              get { return image_; }
+              set {
+                image_ = value;
+              }
+            }
+
+            /// <summary>Field number for the "column_properties" field.</summary>
+            public const int ColumnPropertiesFieldNumber = 4;
+            private static readonly pb::FieldCodec<global::Google.Cloud.Dialogflow.V2.Intent.Types.Message.Types.ColumnProperties> _repeated_columnProperties_codec
+                = pb::FieldCodec.ForMessage(34, global::Google.Cloud.Dialogflow.V2.Intent.Types.Message.Types.ColumnProperties.Parser);
+            private readonly pbc::RepeatedField<global::Google.Cloud.Dialogflow.V2.Intent.Types.Message.Types.ColumnProperties> columnProperties_ = new pbc::RepeatedField<global::Google.Cloud.Dialogflow.V2.Intent.Types.Message.Types.ColumnProperties>();
+            /// <summary>
+            /// Optional. Display properties for the columns in this table.
+            /// </summary>
+            [global::System.Diagnostics.DebuggerNonUserCodeAttribute]
+            public pbc::RepeatedField<global::Google.Cloud.Dialogflow.V2.Intent.Types.Message.Types.ColumnProperties> ColumnProperties {
+              get { return columnProperties_; }
+            }
+
+            /// <summary>Field number for the "rows" field.</summary>
+            public const int RowsFieldNumber = 5;
+            private static readonly pb::FieldCodec<global::Google.Cloud.Dialogflow.V2.Intent.Types.Message.Types.TableCardRow> _repeated_rows_codec
+                = pb::FieldCodec.ForMessage(42, global::Google.Cloud.Dialogflow.V2.Intent.Types.Message.Types.TableCardRow.Parser);
+            private readonly pbc::RepeatedField<global::Google.Cloud.Dialogflow.V2.Intent.Types.Message.Types.TableCardRow> rows_ = new pbc::RepeatedField<global::Google.Cloud.Dialogflow.V2.Intent.Types.Message.Types.TableCardRow>();
+            /// <summary>
+            /// Optional. Rows in this table of data.
+            /// </summary>
+            [global::System.Diagnostics.DebuggerNonUserCodeAttribute]
+            public pbc::RepeatedField<global::Google.Cloud.Dialogflow.V2.Intent.Types.Message.Types.TableCardRow> Rows {
+              get { return rows_; }
+            }
+
+            /// <summary>Field number for the "buttons" field.</summary>
+            public const int ButtonsFieldNumber = 6;
+            private static readonly pb::FieldCodec<global::Google.Cloud.Dialogflow.V2.Intent.Types.Message.Types.BasicCard.Types.Button> _repeated_buttons_codec
+                = pb::FieldCodec.ForMessage(50, global::Google.Cloud.Dialogflow.V2.Intent.Types.Message.Types.BasicCard.Types.Button.Parser);
+            private readonly pbc::RepeatedField<global::Google.Cloud.Dialogflow.V2.Intent.Types.Message.Types.BasicCard.Types.Button> buttons_ = new pbc::RepeatedField<global::Google.Cloud.Dialogflow.V2.Intent.Types.Message.Types.BasicCard.Types.Button>();
+            /// <summary>
+            /// Optional. List of buttons for the card.
+            /// </summary>
+            [global::System.Diagnostics.DebuggerNonUserCodeAttribute]
+            public pbc::RepeatedField<global::Google.Cloud.Dialogflow.V2.Intent.Types.Message.Types.BasicCard.Types.Button> Buttons {
+              get { return buttons_; }
+            }
+
+            [global::System.Diagnostics.DebuggerNonUserCodeAttribute]
+            public override bool Equals(object other) {
+              return Equals(other as TableCard);
+            }
+
+            [global::System.Diagnostics.DebuggerNonUserCodeAttribute]
+            public bool Equals(TableCard other) {
+              if (ReferenceEquals(other, null)) {
+                return false;
+              }
+              if (ReferenceEquals(other, this)) {
+                return true;
+              }
+              if (Title != other.Title) return false;
+              if (Subtitle != other.Subtitle) return false;
+              if (!object.Equals(Image, other.Image)) return false;
+              if(!columnProperties_.Equals(other.columnProperties_)) return false;
+              if(!rows_.Equals(other.rows_)) return false;
+              if(!buttons_.Equals(other.buttons_)) return false;
+              return Equals(_unknownFields, other._unknownFields);
+            }
+
+            [global::System.Diagnostics.DebuggerNonUserCodeAttribute]
+            public override int GetHashCode() {
+              int hash = 1;
+              if (Title.Length != 0) hash ^= Title.GetHashCode();
+              if (Subtitle.Length != 0) hash ^= Subtitle.GetHashCode();
+              if (image_ != null) hash ^= Image.GetHashCode();
+              hash ^= columnProperties_.GetHashCode();
+              hash ^= rows_.GetHashCode();
+              hash ^= buttons_.GetHashCode();
+              if (_unknownFields != null) {
+                hash ^= _unknownFields.GetHashCode();
+              }
+              return hash;
+            }
+
+            [global::System.Diagnostics.DebuggerNonUserCodeAttribute]
+            public override string ToString() {
+              return pb::JsonFormatter.ToDiagnosticString(this);
+            }
+
+            [global::System.Diagnostics.DebuggerNonUserCodeAttribute]
+            public void WriteTo(pb::CodedOutputStream output) {
+              if (Title.Length != 0) {
+                output.WriteRawTag(10);
+                output.WriteString(Title);
+              }
+              if (Subtitle.Length != 0) {
+                output.WriteRawTag(18);
+                output.WriteString(Subtitle);
+              }
+              if (image_ != null) {
+                output.WriteRawTag(26);
+                output.WriteMessage(Image);
+              }
+              columnProperties_.WriteTo(output, _repeated_columnProperties_codec);
+              rows_.WriteTo(output, _repeated_rows_codec);
+              buttons_.WriteTo(output, _repeated_buttons_codec);
+              if (_unknownFields != null) {
+                _unknownFields.WriteTo(output);
+              }
+            }
+
+            [global::System.Diagnostics.DebuggerNonUserCodeAttribute]
+            public int CalculateSize() {
+              int size = 0;
+              if (Title.Length != 0) {
+                size += 1 + pb::CodedOutputStream.ComputeStringSize(Title);
+              }
+              if (Subtitle.Length != 0) {
+                size += 1 + pb::CodedOutputStream.ComputeStringSize(Subtitle);
+              }
+              if (image_ != null) {
+                size += 1 + pb::CodedOutputStream.ComputeMessageSize(Image);
+              }
+              size += columnProperties_.CalculateSize(_repeated_columnProperties_codec);
+              size += rows_.CalculateSize(_repeated_rows_codec);
+              size += buttons_.CalculateSize(_repeated_buttons_codec);
+              if (_unknownFields != null) {
+                size += _unknownFields.CalculateSize();
+              }
+              return size;
+            }
+
+            [global::System.Diagnostics.DebuggerNonUserCodeAttribute]
+            public void MergeFrom(TableCard other) {
+              if (other == null) {
+                return;
+              }
+              if (other.Title.Length != 0) {
+                Title = other.Title;
+              }
+              if (other.Subtitle.Length != 0) {
+                Subtitle = other.Subtitle;
+              }
+              if (other.image_ != null) {
+                if (image_ == null) {
+                  Image = new global::Google.Cloud.Dialogflow.V2.Intent.Types.Message.Types.Image();
+                }
+                Image.MergeFrom(other.Image);
+              }
+              columnProperties_.Add(other.columnProperties_);
+              rows_.Add(other.rows_);
+              buttons_.Add(other.buttons_);
+              _unknownFields = pb::UnknownFieldSet.MergeFrom(_unknownFields, other._unknownFields);
+            }
+
+            [global::System.Diagnostics.DebuggerNonUserCodeAttribute]
+            public void MergeFrom(pb::CodedInputStream input) {
+              uint tag;
+              while ((tag = input.ReadTag()) != 0) {
+                switch(tag) {
+                  default:
+                    _unknownFields = pb::UnknownFieldSet.MergeFieldFrom(_unknownFields, input);
+                    break;
+                  case 10: {
+                    Title = input.ReadString();
+                    break;
+                  }
+                  case 18: {
+                    Subtitle = input.ReadString();
+                    break;
+                  }
+                  case 26: {
+                    if (image_ == null) {
+                      Image = new global::Google.Cloud.Dialogflow.V2.Intent.Types.Message.Types.Image();
+                    }
+                    input.ReadMessage(Image);
+                    break;
+                  }
+                  case 34: {
+                    columnProperties_.AddEntriesFrom(input, _repeated_columnProperties_codec);
+                    break;
+                  }
+                  case 42: {
+                    rows_.AddEntriesFrom(input, _repeated_rows_codec);
+                    break;
+                  }
+                  case 50: {
+                    buttons_.AddEntriesFrom(input, _repeated_buttons_codec);
+                    break;
+                  }
+                }
+              }
+            }
+
+          }
+
+          /// <summary>
+          /// Column properties for [TableCard][google.cloud.dialogflow.v2.Intent.Message.TableCard].
+          /// </summary>
+          public sealed partial class ColumnProperties : pb::IMessage<ColumnProperties> {
+            private static readonly pb::MessageParser<ColumnProperties> _parser = new pb::MessageParser<ColumnProperties>(() => new ColumnProperties());
+            private pb::UnknownFieldSet _unknownFields;
+            [global::System.Diagnostics.DebuggerNonUserCodeAttribute]
+            public static pb::MessageParser<ColumnProperties> Parser { get { return _parser; } }
+
+            [global::System.Diagnostics.DebuggerNonUserCodeAttribute]
+            public static pbr::MessageDescriptor Descriptor {
+              get { return global::Google.Cloud.Dialogflow.V2.Intent.Types.Message.Descriptor.NestedTypes[16]; }
+            }
+
+            [global::System.Diagnostics.DebuggerNonUserCodeAttribute]
+            pbr::MessageDescriptor pb::IMessage.Descriptor {
+              get { return Descriptor; }
+            }
+
+            [global::System.Diagnostics.DebuggerNonUserCodeAttribute]
+            public ColumnProperties() {
+              OnConstruction();
+            }
+
+            partial void OnConstruction();
+
+            [global::System.Diagnostics.DebuggerNonUserCodeAttribute]
+            public ColumnProperties(ColumnProperties other) : this() {
+              header_ = other.header_;
+              horizontalAlignment_ = other.horizontalAlignment_;
+              _unknownFields = pb::UnknownFieldSet.Clone(other._unknownFields);
+            }
+
+            [global::System.Diagnostics.DebuggerNonUserCodeAttribute]
+            public ColumnProperties Clone() {
+              return new ColumnProperties(this);
+            }
+
+            /// <summary>Field number for the "header" field.</summary>
+            public const int HeaderFieldNumber = 1;
+            private string header_ = "";
+            /// <summary>
+            /// Required. Column heading.
+            /// </summary>
+            [global::System.Diagnostics.DebuggerNonUserCodeAttribute]
+            public string Header {
+              get { return header_; }
+              set {
+                header_ = pb::ProtoPreconditions.CheckNotNull(value, "value");
+              }
+            }
+
+            /// <summary>Field number for the "horizontal_alignment" field.</summary>
+            public const int HorizontalAlignmentFieldNumber = 2;
+            private global::Google.Cloud.Dialogflow.V2.Intent.Types.Message.Types.ColumnProperties.Types.HorizontalAlignment horizontalAlignment_ = 0;
+            /// <summary>
+            /// Optional. Defines text alignment for all cells in this column.
+            /// </summary>
+            [global::System.Diagnostics.DebuggerNonUserCodeAttribute]
+            public global::Google.Cloud.Dialogflow.V2.Intent.Types.Message.Types.ColumnProperties.Types.HorizontalAlignment HorizontalAlignment {
+              get { return horizontalAlignment_; }
+              set {
+                horizontalAlignment_ = value;
+              }
+            }
+
+            [global::System.Diagnostics.DebuggerNonUserCodeAttribute]
+            public override bool Equals(object other) {
+              return Equals(other as ColumnProperties);
+            }
+
+            [global::System.Diagnostics.DebuggerNonUserCodeAttribute]
+            public bool Equals(ColumnProperties other) {
+              if (ReferenceEquals(other, null)) {
+                return false;
+              }
+              if (ReferenceEquals(other, this)) {
+                return true;
+              }
+              if (Header != other.Header) return false;
+              if (HorizontalAlignment != other.HorizontalAlignment) return false;
+              return Equals(_unknownFields, other._unknownFields);
+            }
+
+            [global::System.Diagnostics.DebuggerNonUserCodeAttribute]
+            public override int GetHashCode() {
+              int hash = 1;
+              if (Header.Length != 0) hash ^= Header.GetHashCode();
+              if (HorizontalAlignment != 0) hash ^= HorizontalAlignment.GetHashCode();
+              if (_unknownFields != null) {
+                hash ^= _unknownFields.GetHashCode();
+              }
+              return hash;
+            }
+
+            [global::System.Diagnostics.DebuggerNonUserCodeAttribute]
+            public override string ToString() {
+              return pb::JsonFormatter.ToDiagnosticString(this);
+            }
+
+            [global::System.Diagnostics.DebuggerNonUserCodeAttribute]
+            public void WriteTo(pb::CodedOutputStream output) {
+              if (Header.Length != 0) {
+                output.WriteRawTag(10);
+                output.WriteString(Header);
+              }
+              if (HorizontalAlignment != 0) {
+                output.WriteRawTag(16);
+                output.WriteEnum((int) HorizontalAlignment);
+              }
+              if (_unknownFields != null) {
+                _unknownFields.WriteTo(output);
+              }
+            }
+
+            [global::System.Diagnostics.DebuggerNonUserCodeAttribute]
+            public int CalculateSize() {
+              int size = 0;
+              if (Header.Length != 0) {
+                size += 1 + pb::CodedOutputStream.ComputeStringSize(Header);
+              }
+              if (HorizontalAlignment != 0) {
+                size += 1 + pb::CodedOutputStream.ComputeEnumSize((int) HorizontalAlignment);
+              }
+              if (_unknownFields != null) {
+                size += _unknownFields.CalculateSize();
+              }
+              return size;
+            }
+
+            [global::System.Diagnostics.DebuggerNonUserCodeAttribute]
+            public void MergeFrom(ColumnProperties other) {
+              if (other == null) {
+                return;
+              }
+              if (other.Header.Length != 0) {
+                Header = other.Header;
+              }
+              if (other.HorizontalAlignment != 0) {
+                HorizontalAlignment = other.HorizontalAlignment;
+              }
+              _unknownFields = pb::UnknownFieldSet.MergeFrom(_unknownFields, other._unknownFields);
+            }
+
+            [global::System.Diagnostics.DebuggerNonUserCodeAttribute]
+            public void MergeFrom(pb::CodedInputStream input) {
+              uint tag;
+              while ((tag = input.ReadTag()) != 0) {
+                switch(tag) {
+                  default:
+                    _unknownFields = pb::UnknownFieldSet.MergeFieldFrom(_unknownFields, input);
+                    break;
+                  case 10: {
+                    Header = input.ReadString();
+                    break;
+                  }
+                  case 16: {
+                    HorizontalAlignment = (global::Google.Cloud.Dialogflow.V2.Intent.Types.Message.Types.ColumnProperties.Types.HorizontalAlignment) input.ReadEnum();
+                    break;
+                  }
+                }
+              }
+            }
+
+            #region Nested types
+            /// <summary>Container for nested types declared in the ColumnProperties message type.</summary>
+            [global::System.Diagnostics.DebuggerNonUserCodeAttribute]
+            public static partial class Types {
+              /// <summary>
+              /// Text alignments within a cell.
+              /// </summary>
+              public enum HorizontalAlignment {
+                /// <summary>
+                /// Text is aligned to the leading edge of the column.
+                /// </summary>
+                [pbr::OriginalName("HORIZONTAL_ALIGNMENT_UNSPECIFIED")] Unspecified = 0,
+                /// <summary>
+                /// Text is aligned to the leading edge of the column.
+                /// </summary>
+                [pbr::OriginalName("LEADING")] Leading = 1,
+                /// <summary>
+                /// Text is centered in the column.
+                /// </summary>
+                [pbr::OriginalName("CENTER")] Center = 2,
+                /// <summary>
+                /// Text is aligned to the trailing edge of the column.
+                /// </summary>
+                [pbr::OriginalName("TRAILING")] Trailing = 3,
+              }
+
+            }
+            #endregion
+
+          }
+
+          /// <summary>
+          /// Row of [TableCard][google.cloud.dialogflow.v2.Intent.Message.TableCard].
+          /// </summary>
+          public sealed partial class TableCardRow : pb::IMessage<TableCardRow> {
+            private static readonly pb::MessageParser<TableCardRow> _parser = new pb::MessageParser<TableCardRow>(() => new TableCardRow());
+            private pb::UnknownFieldSet _unknownFields;
+            [global::System.Diagnostics.DebuggerNonUserCodeAttribute]
+            public static pb::MessageParser<TableCardRow> Parser { get { return _parser; } }
+
+            [global::System.Diagnostics.DebuggerNonUserCodeAttribute]
+            public static pbr::MessageDescriptor Descriptor {
+              get { return global::Google.Cloud.Dialogflow.V2.Intent.Types.Message.Descriptor.NestedTypes[17]; }
+            }
+
+            [global::System.Diagnostics.DebuggerNonUserCodeAttribute]
+            pbr::MessageDescriptor pb::IMessage.Descriptor {
+              get { return Descriptor; }
+            }
+
+            [global::System.Diagnostics.DebuggerNonUserCodeAttribute]
+            public TableCardRow() {
+              OnConstruction();
+            }
+
+            partial void OnConstruction();
+
+            [global::System.Diagnostics.DebuggerNonUserCodeAttribute]
+            public TableCardRow(TableCardRow other) : this() {
+              cells_ = other.cells_.Clone();
+              dividerAfter_ = other.dividerAfter_;
+              _unknownFields = pb::UnknownFieldSet.Clone(other._unknownFields);
+            }
+
+            [global::System.Diagnostics.DebuggerNonUserCodeAttribute]
+            public TableCardRow Clone() {
+              return new TableCardRow(this);
+            }
+
+            /// <summary>Field number for the "cells" field.</summary>
+            public const int CellsFieldNumber = 1;
+            private static readonly pb::FieldCodec<global::Google.Cloud.Dialogflow.V2.Intent.Types.Message.Types.TableCardCell> _repeated_cells_codec
+                = pb::FieldCodec.ForMessage(10, global::Google.Cloud.Dialogflow.V2.Intent.Types.Message.Types.TableCardCell.Parser);
+            private readonly pbc::RepeatedField<global::Google.Cloud.Dialogflow.V2.Intent.Types.Message.Types.TableCardCell> cells_ = new pbc::RepeatedField<global::Google.Cloud.Dialogflow.V2.Intent.Types.Message.Types.TableCardCell>();
+            /// <summary>
+            /// Optional. List of cells that make up this row.
+            /// </summary>
+            [global::System.Diagnostics.DebuggerNonUserCodeAttribute]
+            public pbc::RepeatedField<global::Google.Cloud.Dialogflow.V2.Intent.Types.Message.Types.TableCardCell> Cells {
+              get { return cells_; }
+            }
+
+            /// <summary>Field number for the "divider_after" field.</summary>
+            public const int DividerAfterFieldNumber = 2;
+            private bool dividerAfter_;
+            /// <summary>
+            /// Optional. Whether to add a visual divider after this row.
+            /// </summary>
+            [global::System.Diagnostics.DebuggerNonUserCodeAttribute]
+            public bool DividerAfter {
+              get { return dividerAfter_; }
+              set {
+                dividerAfter_ = value;
+              }
+            }
+
+            [global::System.Diagnostics.DebuggerNonUserCodeAttribute]
+            public override bool Equals(object other) {
+              return Equals(other as TableCardRow);
+            }
+
+            [global::System.Diagnostics.DebuggerNonUserCodeAttribute]
+            public bool Equals(TableCardRow other) {
+              if (ReferenceEquals(other, null)) {
+                return false;
+              }
+              if (ReferenceEquals(other, this)) {
+                return true;
+              }
+              if(!cells_.Equals(other.cells_)) return false;
+              if (DividerAfter != other.DividerAfter) return false;
+              return Equals(_unknownFields, other._unknownFields);
+            }
+
+            [global::System.Diagnostics.DebuggerNonUserCodeAttribute]
+            public override int GetHashCode() {
+              int hash = 1;
+              hash ^= cells_.GetHashCode();
+              if (DividerAfter != false) hash ^= DividerAfter.GetHashCode();
+              if (_unknownFields != null) {
+                hash ^= _unknownFields.GetHashCode();
+              }
+              return hash;
+            }
+
+            [global::System.Diagnostics.DebuggerNonUserCodeAttribute]
+            public override string ToString() {
+              return pb::JsonFormatter.ToDiagnosticString(this);
+            }
+
+            [global::System.Diagnostics.DebuggerNonUserCodeAttribute]
+            public void WriteTo(pb::CodedOutputStream output) {
+              cells_.WriteTo(output, _repeated_cells_codec);
+              if (DividerAfter != false) {
+                output.WriteRawTag(16);
+                output.WriteBool(DividerAfter);
+              }
+              if (_unknownFields != null) {
+                _unknownFields.WriteTo(output);
+              }
+            }
+
+            [global::System.Diagnostics.DebuggerNonUserCodeAttribute]
+            public int CalculateSize() {
+              int size = 0;
+              size += cells_.CalculateSize(_repeated_cells_codec);
+              if (DividerAfter != false) {
+                size += 1 + 1;
+              }
+              if (_unknownFields != null) {
+                size += _unknownFields.CalculateSize();
+              }
+              return size;
+            }
+
+            [global::System.Diagnostics.DebuggerNonUserCodeAttribute]
+            public void MergeFrom(TableCardRow other) {
+              if (other == null) {
+                return;
+              }
+              cells_.Add(other.cells_);
+              if (other.DividerAfter != false) {
+                DividerAfter = other.DividerAfter;
+              }
+              _unknownFields = pb::UnknownFieldSet.MergeFrom(_unknownFields, other._unknownFields);
+            }
+
+            [global::System.Diagnostics.DebuggerNonUserCodeAttribute]
+            public void MergeFrom(pb::CodedInputStream input) {
+              uint tag;
+              while ((tag = input.ReadTag()) != 0) {
+                switch(tag) {
+                  default:
+                    _unknownFields = pb::UnknownFieldSet.MergeFieldFrom(_unknownFields, input);
+                    break;
+                  case 10: {
+                    cells_.AddEntriesFrom(input, _repeated_cells_codec);
+                    break;
+                  }
+                  case 16: {
+                    DividerAfter = input.ReadBool();
+                    break;
+                  }
+                }
+              }
+            }
+
+          }
+
+          /// <summary>
+          /// Cell of [TableCardRow][google.cloud.dialogflow.v2.Intent.Message.TableCardRow].
+          /// </summary>
+          public sealed partial class TableCardCell : pb::IMessage<TableCardCell> {
+            private static readonly pb::MessageParser<TableCardCell> _parser = new pb::MessageParser<TableCardCell>(() => new TableCardCell());
+            private pb::UnknownFieldSet _unknownFields;
+            [global::System.Diagnostics.DebuggerNonUserCodeAttribute]
+            public static pb::MessageParser<TableCardCell> Parser { get { return _parser; } }
+
+            [global::System.Diagnostics.DebuggerNonUserCodeAttribute]
+            public static pbr::MessageDescriptor Descriptor {
+              get { return global::Google.Cloud.Dialogflow.V2.Intent.Types.Message.Descriptor.NestedTypes[18]; }
+            }
+
+            [global::System.Diagnostics.DebuggerNonUserCodeAttribute]
+            pbr::MessageDescriptor pb::IMessage.Descriptor {
+              get { return Descriptor; }
+            }
+
+            [global::System.Diagnostics.DebuggerNonUserCodeAttribute]
+            public TableCardCell() {
+              OnConstruction();
+            }
+
+            partial void OnConstruction();
+
+            [global::System.Diagnostics.DebuggerNonUserCodeAttribute]
+            public TableCardCell(TableCardCell other) : this() {
+              text_ = other.text_;
+              _unknownFields = pb::UnknownFieldSet.Clone(other._unknownFields);
+            }
+
+            [global::System.Diagnostics.DebuggerNonUserCodeAttribute]
+            public TableCardCell Clone() {
+              return new TableCardCell(this);
+            }
+
+            /// <summary>Field number for the "text" field.</summary>
+            public const int TextFieldNumber = 1;
+            private string text_ = "";
+            /// <summary>
+            /// Required. Text in this cell.
+            /// </summary>
+            [global::System.Diagnostics.DebuggerNonUserCodeAttribute]
+            public string Text {
+              get { return text_; }
+              set {
+                text_ = pb::ProtoPreconditions.CheckNotNull(value, "value");
+              }
+            }
+
+            [global::System.Diagnostics.DebuggerNonUserCodeAttribute]
+            public override bool Equals(object other) {
+              return Equals(other as TableCardCell);
+            }
+
+            [global::System.Diagnostics.DebuggerNonUserCodeAttribute]
+            public bool Equals(TableCardCell other) {
+              if (ReferenceEquals(other, null)) {
+                return false;
+              }
+              if (ReferenceEquals(other, this)) {
+                return true;
+              }
+              if (Text != other.Text) return false;
+              return Equals(_unknownFields, other._unknownFields);
+            }
+
+            [global::System.Diagnostics.DebuggerNonUserCodeAttribute]
+            public override int GetHashCode() {
+              int hash = 1;
+              if (Text.Length != 0) hash ^= Text.GetHashCode();
+              if (_unknownFields != null) {
+                hash ^= _unknownFields.GetHashCode();
+              }
+              return hash;
+            }
+
+            [global::System.Diagnostics.DebuggerNonUserCodeAttribute]
+            public override string ToString() {
+              return pb::JsonFormatter.ToDiagnosticString(this);
+            }
+
+            [global::System.Diagnostics.DebuggerNonUserCodeAttribute]
+            public void WriteTo(pb::CodedOutputStream output) {
+              if (Text.Length != 0) {
+                output.WriteRawTag(10);
+                output.WriteString(Text);
+              }
+              if (_unknownFields != null) {
+                _unknownFields.WriteTo(output);
+              }
+            }
+
+            [global::System.Diagnostics.DebuggerNonUserCodeAttribute]
+            public int CalculateSize() {
+              int size = 0;
+              if (Text.Length != 0) {
+                size += 1 + pb::CodedOutputStream.ComputeStringSize(Text);
+              }
+              if (_unknownFields != null) {
+                size += _unknownFields.CalculateSize();
+              }
+              return size;
+            }
+
+            [global::System.Diagnostics.DebuggerNonUserCodeAttribute]
+            public void MergeFrom(TableCardCell other) {
+              if (other == null) {
+                return;
+              }
+              if (other.Text.Length != 0) {
+                Text = other.Text;
+              }
+              _unknownFields = pb::UnknownFieldSet.MergeFrom(_unknownFields, other._unknownFields);
+            }
+
+            [global::System.Diagnostics.DebuggerNonUserCodeAttribute]
+            public void MergeFrom(pb::CodedInputStream input) {
+              uint tag;
+              while ((tag = input.ReadTag()) != 0) {
+                switch(tag) {
+                  default:
+                    _unknownFields = pb::UnknownFieldSet.MergeFieldFrom(_unknownFields, input);
+                    break;
+                  case 10: {
+                    Text = input.ReadString();
+                    break;
+                  }
+                }
+              }
+            }
+
+          }
+
         }
         #endregion
 
@@ -5642,7 +7850,7 @@ namespace Google.Cloud.Dialogflow.V2 {
         public const int ParentFollowupIntentNameFieldNumber = 2;
         private string parentFollowupIntentName_ = "";
         /// <summary>
-        /// The unique identifier of the followup intent parent.
+        /// The unique identifier of the followup intent's parent.
         /// Format: `projects/&lt;Project ID>/agent/intents/&lt;Intent ID>`.
         /// </summary>
         [global::System.Diagnostics.DebuggerNonUserCodeAttribute]
@@ -5820,9 +8028,10 @@ namespace Google.Cloud.Dialogflow.V2 {
     /// <summary>
     /// Optional. The language to list training phrases, parameters and rich
     /// messages for. If not specified, the agent's default language is used.
-    /// [More than a dozen
-    /// languages](https://dialogflow.com/docs/reference/language) are supported.
-    /// Note: languages must be enabled in the agent before they can be used.
+    /// [Many
+    /// languages](https://cloud.google.com/dialogflow/docs/reference/language)
+    /// are supported. Note: languages must be enabled in the agent before they can
+    /// be used.
     /// </summary>
     [global::System.Diagnostics.DebuggerNonUserCodeAttribute]
     public string LanguageCode {
@@ -6006,7 +8215,7 @@ namespace Google.Cloud.Dialogflow.V2 {
             break;
           }
           case 24: {
-            intentView_ = (global::Google.Cloud.Dialogflow.V2.IntentView) input.ReadEnum();
+            IntentView = (global::Google.Cloud.Dialogflow.V2.IntentView) input.ReadEnum();
             break;
           }
           case 32: {
@@ -6243,9 +8452,10 @@ namespace Google.Cloud.Dialogflow.V2 {
     /// <summary>
     /// Optional. The language to retrieve training phrases, parameters and rich
     /// messages for. If not specified, the agent's default language is used.
-    /// [More than a dozen
-    /// languages](https://dialogflow.com/docs/reference/language) are supported.
-    /// Note: languages must be enabled in the agent, before they can be used.
+    /// [Many
+    /// languages](https://cloud.google.com/dialogflow/docs/reference/language)
+    /// are supported. Note: languages must be enabled in the agent before they can
+    /// be used.
     /// </summary>
     [global::System.Diagnostics.DebuggerNonUserCodeAttribute]
     public string LanguageCode {
@@ -6376,7 +8586,7 @@ namespace Google.Cloud.Dialogflow.V2 {
             break;
           }
           case 24: {
-            intentView_ = (global::Google.Cloud.Dialogflow.V2.IntentView) input.ReadEnum();
+            IntentView = (global::Google.Cloud.Dialogflow.V2.IntentView) input.ReadEnum();
             break;
           }
         }
@@ -6460,9 +8670,10 @@ namespace Google.Cloud.Dialogflow.V2 {
     /// <summary>
     /// Optional. The language of training phrases, parameters and rich messages
     /// defined in `intent`. If not specified, the agent's default language is
-    /// used. [More than a dozen
-    /// languages](https://dialogflow.com/docs/reference/language) are supported.
-    /// Note: languages must be enabled in the agent, before they can be used.
+    /// used. [Many
+    /// languages](https://cloud.google.com/dialogflow/docs/reference/language)
+    /// are supported. Note: languages must be enabled in the agent before they can
+    /// be used.
     /// </summary>
     [global::System.Diagnostics.DebuggerNonUserCodeAttribute]
     public string LanguageCode {
@@ -6578,7 +8789,7 @@ namespace Google.Cloud.Dialogflow.V2 {
       }
       if (other.intent_ != null) {
         if (intent_ == null) {
-          intent_ = new global::Google.Cloud.Dialogflow.V2.Intent();
+          Intent = new global::Google.Cloud.Dialogflow.V2.Intent();
         }
         Intent.MergeFrom(other.Intent);
       }
@@ -6605,9 +8816,9 @@ namespace Google.Cloud.Dialogflow.V2 {
           }
           case 18: {
             if (intent_ == null) {
-              intent_ = new global::Google.Cloud.Dialogflow.V2.Intent();
+              Intent = new global::Google.Cloud.Dialogflow.V2.Intent();
             }
-            input.ReadMessage(intent_);
+            input.ReadMessage(Intent);
             break;
           }
           case 26: {
@@ -6615,7 +8826,7 @@ namespace Google.Cloud.Dialogflow.V2 {
             break;
           }
           case 32: {
-            intentView_ = (global::Google.Cloud.Dialogflow.V2.IntentView) input.ReadEnum();
+            IntentView = (global::Google.Cloud.Dialogflow.V2.IntentView) input.ReadEnum();
             break;
           }
         }
@@ -6669,7 +8880,6 @@ namespace Google.Cloud.Dialogflow.V2 {
     private global::Google.Cloud.Dialogflow.V2.Intent intent_;
     /// <summary>
     /// Required. The intent to update.
-    /// Format: `projects/&lt;Project ID>/agent/intents/&lt;Intent ID>`.
     /// </summary>
     [global::System.Diagnostics.DebuggerNonUserCodeAttribute]
     public global::Google.Cloud.Dialogflow.V2.Intent Intent {
@@ -6685,9 +8895,10 @@ namespace Google.Cloud.Dialogflow.V2 {
     /// <summary>
     /// Optional. The language of training phrases, parameters and rich messages
     /// defined in `intent`. If not specified, the agent's default language is
-    /// used. [More than a dozen
-    /// languages](https://dialogflow.com/docs/reference/language) are supported.
-    /// Note: languages must be enabled in the agent, before they can be used.
+    /// used. [Many
+    /// languages](https://cloud.google.com/dialogflow/docs/reference/language)
+    /// are supported. Note: languages must be enabled in the agent before they can
+    /// be used.
     /// </summary>
     [global::System.Diagnostics.DebuggerNonUserCodeAttribute]
     public string LanguageCode {
@@ -6814,7 +9025,7 @@ namespace Google.Cloud.Dialogflow.V2 {
       }
       if (other.intent_ != null) {
         if (intent_ == null) {
-          intent_ = new global::Google.Cloud.Dialogflow.V2.Intent();
+          Intent = new global::Google.Cloud.Dialogflow.V2.Intent();
         }
         Intent.MergeFrom(other.Intent);
       }
@@ -6823,7 +9034,7 @@ namespace Google.Cloud.Dialogflow.V2 {
       }
       if (other.updateMask_ != null) {
         if (updateMask_ == null) {
-          updateMask_ = new global::Google.Protobuf.WellKnownTypes.FieldMask();
+          UpdateMask = new global::Google.Protobuf.WellKnownTypes.FieldMask();
         }
         UpdateMask.MergeFrom(other.UpdateMask);
       }
@@ -6843,9 +9054,9 @@ namespace Google.Cloud.Dialogflow.V2 {
             break;
           case 10: {
             if (intent_ == null) {
-              intent_ = new global::Google.Cloud.Dialogflow.V2.Intent();
+              Intent = new global::Google.Cloud.Dialogflow.V2.Intent();
             }
-            input.ReadMessage(intent_);
+            input.ReadMessage(Intent);
             break;
           }
           case 18: {
@@ -6854,13 +9065,13 @@ namespace Google.Cloud.Dialogflow.V2 {
           }
           case 26: {
             if (updateMask_ == null) {
-              updateMask_ = new global::Google.Protobuf.WellKnownTypes.FieldMask();
+              UpdateMask = new global::Google.Protobuf.WellKnownTypes.FieldMask();
             }
-            input.ReadMessage(updateMask_);
+            input.ReadMessage(UpdateMask);
             break;
           }
           case 32: {
-            intentView_ = (global::Google.Cloud.Dialogflow.V2.IntentView) input.ReadEnum();
+            IntentView = (global::Google.Cloud.Dialogflow.V2.IntentView) input.ReadEnum();
             break;
           }
         }
@@ -6910,7 +9121,8 @@ namespace Google.Cloud.Dialogflow.V2 {
     public const int NameFieldNumber = 1;
     private string name_ = "";
     /// <summary>
-    /// Required. The name of the intent to delete.
+    /// Required. The name of the intent to delete. If this intent has direct or
+    /// indirect followup intents, we also delete them.
     /// Format: `projects/&lt;Project ID>/agent/intents/&lt;Intent ID>`.
     /// </summary>
     [global::System.Diagnostics.DebuggerNonUserCodeAttribute]
@@ -7105,9 +9317,10 @@ namespace Google.Cloud.Dialogflow.V2 {
     /// <summary>
     /// Optional. The language of training phrases, parameters and rich messages
     /// defined in `intents`. If not specified, the agent's default language is
-    /// used. [More than a dozen
-    /// languages](https://dialogflow.com/docs/reference/language) are supported.
-    /// Note: languages must be enabled in the agent, before they can be used.
+    /// used. [Many
+    /// languages](https://cloud.google.com/dialogflow/docs/reference/language)
+    /// are supported. Note: languages must be enabled in the agent before they can
+    /// be used.
     /// </summary>
     [global::System.Diagnostics.DebuggerNonUserCodeAttribute]
     public string LanguageCode {
@@ -7279,7 +9492,7 @@ namespace Google.Cloud.Dialogflow.V2 {
       }
       if (other.updateMask_ != null) {
         if (updateMask_ == null) {
-          updateMask_ = new global::Google.Protobuf.WellKnownTypes.FieldMask();
+          UpdateMask = new global::Google.Protobuf.WellKnownTypes.FieldMask();
         }
         UpdateMask.MergeFrom(other.UpdateMask);
       }
@@ -7332,13 +9545,13 @@ namespace Google.Cloud.Dialogflow.V2 {
           }
           case 42: {
             if (updateMask_ == null) {
-              updateMask_ = new global::Google.Protobuf.WellKnownTypes.FieldMask();
+              UpdateMask = new global::Google.Protobuf.WellKnownTypes.FieldMask();
             }
-            input.ReadMessage(updateMask_);
+            input.ReadMessage(UpdateMask);
             break;
           }
           case 48: {
-            intentView_ = (global::Google.Cloud.Dialogflow.V2.IntentView) input.ReadEnum();
+            IntentView = (global::Google.Cloud.Dialogflow.V2.IntentView) input.ReadEnum();
             break;
           }
         }

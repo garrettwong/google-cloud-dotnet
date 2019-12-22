@@ -1,4 +1,4 @@
-// Copyright 2018 Google LLC
+// Copyright 2019 Google LLC
 //
 // Licensed under the Apache License, Version 2.0 (the "License");
 // you may not use this file except in compliance with the License.
@@ -312,6 +312,42 @@ namespace Google.Cloud.Monitoring.V3
     }
 
     /// <summary>
+    /// Builder class for <see cref="GroupServiceClient"/> to provide simple configuration of credentials, endpoint etc.
+    /// </summary>
+    public sealed partial class GroupServiceClientBuilder : gaxgrpc::ClientBuilderBase<GroupServiceClient>
+    {
+        /// <summary>
+        /// The settings to use for RPCs, or null for the default settings.
+        /// </summary>
+        public GroupServiceSettings Settings { get; set; }
+
+        /// <inheritdoc/>
+        public override GroupServiceClient Build()
+        {
+            Validate();
+            grpccore::CallInvoker callInvoker = CreateCallInvoker();
+            return GroupServiceClient.Create(callInvoker, Settings);
+        }
+
+        /// <inheritdoc />
+        public override async stt::Task<GroupServiceClient> BuildAsync(st::CancellationToken cancellationToken = default)
+        {
+            Validate();
+            grpccore::CallInvoker callInvoker = await CreateCallInvokerAsync(cancellationToken).ConfigureAwait(false);
+            return GroupServiceClient.Create(callInvoker, Settings);
+        }
+
+        /// <inheritdoc />
+        protected override gaxgrpc::ServiceEndpoint GetDefaultEndpoint() => GroupServiceClient.DefaultEndpoint;
+
+        /// <inheritdoc />
+        protected override scg::IReadOnlyList<string> GetDefaultScopes() => GroupServiceClient.DefaultScopes;
+
+        /// <inheritdoc />
+        protected override gaxgrpc::ChannelPool GetChannelPool() => GroupServiceClient.ChannelPool;
+    }
+
+    /// <summary>
     /// GroupService client wrapper, for convenient use.
     /// </summary>
     public abstract partial class GroupServiceClient
@@ -341,6 +377,8 @@ namespace Google.Cloud.Monitoring.V3
         });
 
         private static readonly gaxgrpc::ChannelPool s_channelPool = new gaxgrpc::ChannelPool(DefaultScopes);
+
+        internal static gaxgrpc::ChannelPool ChannelPool => s_channelPool;
 
         /// <summary>
         /// Asynchronously creates a <see cref="GroupServiceClient"/>, applying defaults for all unspecified settings,
@@ -474,6 +512,142 @@ namespace Google.Cloud.Monitoring.V3
         /// <summary>
         /// Lists the existing groups.
         /// </summary>
+        /// <param name="name">
+        /// The project whose groups are to be listed. The format is
+        /// `"projects/{project_id_or_number}"`.
+        /// </param>
+        /// <param name="pageToken">
+        /// The token returned from the previous request.
+        /// A value of <c>null</c> or an empty string retrieves the first page.
+        /// </param>
+        /// <param name="pageSize">
+        /// The size of page to request. The response will not be larger than this, but may be smaller.
+        /// A value of <c>null</c> or 0 uses a server-defined page size.
+        /// </param>
+        /// <param name="callSettings">
+        /// If not null, applies overrides to this RPC call.
+        /// </param>
+        /// <returns>
+        /// A pageable asynchronous sequence of <see cref="Group"/> resources.
+        /// </returns>
+        public virtual gax::PagedAsyncEnumerable<ListGroupsResponse, Group> ListGroupsAsync(
+            ProjectName name,
+            string pageToken = null,
+            int? pageSize = null,
+            gaxgrpc::CallSettings callSettings = null) => ListGroupsAsync(
+                new ListGroupsRequest
+                {
+                    ProjectName = gax::GaxPreconditions.CheckNotNull(name, nameof(name)),
+                    PageToken = pageToken ?? "",
+                    PageSize = pageSize ?? 0,
+                },
+                callSettings);
+
+        /// <summary>
+        /// Lists the existing groups.
+        /// </summary>
+        /// <param name="name">
+        /// The project whose groups are to be listed. The format is
+        /// `"projects/{project_id_or_number}"`.
+        /// </param>
+        /// <param name="pageToken">
+        /// The token returned from the previous request.
+        /// A value of <c>null</c> or an empty string retrieves the first page.
+        /// </param>
+        /// <param name="pageSize">
+        /// The size of page to request. The response will not be larger than this, but may be smaller.
+        /// A value of <c>null</c> or 0 uses a server-defined page size.
+        /// </param>
+        /// <param name="callSettings">
+        /// If not null, applies overrides to this RPC call.
+        /// </param>
+        /// <returns>
+        /// A pageable sequence of <see cref="Group"/> resources.
+        /// </returns>
+        public virtual gax::PagedEnumerable<ListGroupsResponse, Group> ListGroups(
+            ProjectName name,
+            string pageToken = null,
+            int? pageSize = null,
+            gaxgrpc::CallSettings callSettings = null) => ListGroups(
+                new ListGroupsRequest
+                {
+                    ProjectName = gax::GaxPreconditions.CheckNotNull(name, nameof(name)),
+                    PageToken = pageToken ?? "",
+                    PageSize = pageSize ?? 0,
+                },
+                callSettings);
+
+        /// <summary>
+        /// Lists the existing groups.
+        /// </summary>
+        /// <param name="name">
+        /// The project whose groups are to be listed. The format is
+        /// `"projects/{project_id_or_number}"`.
+        /// </param>
+        /// <param name="pageToken">
+        /// The token returned from the previous request.
+        /// A value of <c>null</c> or an empty string retrieves the first page.
+        /// </param>
+        /// <param name="pageSize">
+        /// The size of page to request. The response will not be larger than this, but may be smaller.
+        /// A value of <c>null</c> or 0 uses a server-defined page size.
+        /// </param>
+        /// <param name="callSettings">
+        /// If not null, applies overrides to this RPC call.
+        /// </param>
+        /// <returns>
+        /// A pageable asynchronous sequence of <see cref="Group"/> resources.
+        /// </returns>
+        public virtual gax::PagedAsyncEnumerable<ListGroupsResponse, Group> ListGroupsAsync(
+            string name,
+            string pageToken = null,
+            int? pageSize = null,
+            gaxgrpc::CallSettings callSettings = null) => ListGroupsAsync(
+                new ListGroupsRequest
+                {
+                    Name = gax::GaxPreconditions.CheckNotNullOrEmpty(name, nameof(name)),
+                    PageToken = pageToken ?? "",
+                    PageSize = pageSize ?? 0,
+                },
+                callSettings);
+
+        /// <summary>
+        /// Lists the existing groups.
+        /// </summary>
+        /// <param name="name">
+        /// The project whose groups are to be listed. The format is
+        /// `"projects/{project_id_or_number}"`.
+        /// </param>
+        /// <param name="pageToken">
+        /// The token returned from the previous request.
+        /// A value of <c>null</c> or an empty string retrieves the first page.
+        /// </param>
+        /// <param name="pageSize">
+        /// The size of page to request. The response will not be larger than this, but may be smaller.
+        /// A value of <c>null</c> or 0 uses a server-defined page size.
+        /// </param>
+        /// <param name="callSettings">
+        /// If not null, applies overrides to this RPC call.
+        /// </param>
+        /// <returns>
+        /// A pageable sequence of <see cref="Group"/> resources.
+        /// </returns>
+        public virtual gax::PagedEnumerable<ListGroupsResponse, Group> ListGroups(
+            string name,
+            string pageToken = null,
+            int? pageSize = null,
+            gaxgrpc::CallSettings callSettings = null) => ListGroups(
+                new ListGroupsRequest
+                {
+                    Name = gax::GaxPreconditions.CheckNotNullOrEmpty(name, nameof(name)),
+                    PageToken = pageToken ?? "",
+                    PageSize = pageSize ?? 0,
+                },
+                callSettings);
+
+        /// <summary>
+        /// Lists the existing groups.
+        /// </summary>
         /// <param name="request">
         /// The request object containing all of the parameters for the API call.
         /// </param>
@@ -569,6 +743,69 @@ namespace Google.Cloud.Monitoring.V3
                 new GetGroupRequest
                 {
                     GroupName = gax::GaxPreconditions.CheckNotNull(name, nameof(name)),
+                },
+                callSettings);
+
+        /// <summary>
+        /// Gets a single group.
+        /// </summary>
+        /// <param name="name">
+        /// The group to retrieve. The format is
+        /// `"projects/{project_id_or_number}/groups/{group_id}"`.
+        /// </param>
+        /// <param name="callSettings">
+        /// If not null, applies overrides to this RPC call.
+        /// </param>
+        /// <returns>
+        /// A Task containing the RPC response.
+        /// </returns>
+        public virtual stt::Task<Group> GetGroupAsync(
+            string name,
+            gaxgrpc::CallSettings callSettings = null) => GetGroupAsync(
+                new GetGroupRequest
+                {
+                    Name = gax::GaxPreconditions.CheckNotNullOrEmpty(name, nameof(name)),
+                },
+                callSettings);
+
+        /// <summary>
+        /// Gets a single group.
+        /// </summary>
+        /// <param name="name">
+        /// The group to retrieve. The format is
+        /// `"projects/{project_id_or_number}/groups/{group_id}"`.
+        /// </param>
+        /// <param name="cancellationToken">
+        /// A <see cref="st::CancellationToken"/> to use for this RPC.
+        /// </param>
+        /// <returns>
+        /// A Task containing the RPC response.
+        /// </returns>
+        public virtual stt::Task<Group> GetGroupAsync(
+            string name,
+            st::CancellationToken cancellationToken) => GetGroupAsync(
+                name,
+                gaxgrpc::CallSettings.FromCancellationToken(cancellationToken));
+
+        /// <summary>
+        /// Gets a single group.
+        /// </summary>
+        /// <param name="name">
+        /// The group to retrieve. The format is
+        /// `"projects/{project_id_or_number}/groups/{group_id}"`.
+        /// </param>
+        /// <param name="callSettings">
+        /// If not null, applies overrides to this RPC call.
+        /// </param>
+        /// <returns>
+        /// The RPC response.
+        /// </returns>
+        public virtual Group GetGroup(
+            string name,
+            gaxgrpc::CallSettings callSettings = null) => GetGroup(
+                new GetGroupRequest
+                {
+                    Name = gax::GaxPreconditions.CheckNotNullOrEmpty(name, nameof(name)),
                 },
                 callSettings);
 
@@ -705,6 +942,87 @@ namespace Google.Cloud.Monitoring.V3
                 new CreateGroupRequest
                 {
                     ProjectName = gax::GaxPreconditions.CheckNotNull(name, nameof(name)),
+                    Group = gax::GaxPreconditions.CheckNotNull(group, nameof(group)),
+                },
+                callSettings);
+
+        /// <summary>
+        /// Creates a new group.
+        /// </summary>
+        /// <param name="name">
+        /// The project in which to create the group. The format is
+        /// `"projects/{project_id_or_number}"`.
+        /// </param>
+        /// <param name="group">
+        /// A group definition. It is an error to define the `name` field because
+        /// the system assigns the name.
+        /// </param>
+        /// <param name="callSettings">
+        /// If not null, applies overrides to this RPC call.
+        /// </param>
+        /// <returns>
+        /// A Task containing the RPC response.
+        /// </returns>
+        public virtual stt::Task<Group> CreateGroupAsync(
+            string name,
+            Group group,
+            gaxgrpc::CallSettings callSettings = null) => CreateGroupAsync(
+                new CreateGroupRequest
+                {
+                    Name = gax::GaxPreconditions.CheckNotNullOrEmpty(name, nameof(name)),
+                    Group = gax::GaxPreconditions.CheckNotNull(group, nameof(group)),
+                },
+                callSettings);
+
+        /// <summary>
+        /// Creates a new group.
+        /// </summary>
+        /// <param name="name">
+        /// The project in which to create the group. The format is
+        /// `"projects/{project_id_or_number}"`.
+        /// </param>
+        /// <param name="group">
+        /// A group definition. It is an error to define the `name` field because
+        /// the system assigns the name.
+        /// </param>
+        /// <param name="cancellationToken">
+        /// A <see cref="st::CancellationToken"/> to use for this RPC.
+        /// </param>
+        /// <returns>
+        /// A Task containing the RPC response.
+        /// </returns>
+        public virtual stt::Task<Group> CreateGroupAsync(
+            string name,
+            Group group,
+            st::CancellationToken cancellationToken) => CreateGroupAsync(
+                name,
+                group,
+                gaxgrpc::CallSettings.FromCancellationToken(cancellationToken));
+
+        /// <summary>
+        /// Creates a new group.
+        /// </summary>
+        /// <param name="name">
+        /// The project in which to create the group. The format is
+        /// `"projects/{project_id_or_number}"`.
+        /// </param>
+        /// <param name="group">
+        /// A group definition. It is an error to define the `name` field because
+        /// the system assigns the name.
+        /// </param>
+        /// <param name="callSettings">
+        /// If not null, applies overrides to this RPC call.
+        /// </param>
+        /// <returns>
+        /// The RPC response.
+        /// </returns>
+        public virtual Group CreateGroup(
+            string name,
+            Group group,
+            gaxgrpc::CallSettings callSettings = null) => CreateGroup(
+                new CreateGroupRequest
+                {
+                    Name = gax::GaxPreconditions.CheckNotNullOrEmpty(name, nameof(name)),
                     Group = gax::GaxPreconditions.CheckNotNull(group, nameof(group)),
                 },
                 callSettings);
@@ -953,6 +1271,66 @@ namespace Google.Cloud.Monitoring.V3
         /// <summary>
         /// Deletes an existing group.
         /// </summary>
+        /// <param name="name">
+        /// The group to delete. The format is
+        /// `"projects/{project_id_or_number}/groups/{group_id}"`.
+        /// </param>
+        /// <param name="callSettings">
+        /// If not null, applies overrides to this RPC call.
+        /// </param>
+        /// <returns>
+        /// A Task that completes when the RPC has completed.
+        /// </returns>
+        public virtual stt::Task DeleteGroupAsync(
+            string name,
+            gaxgrpc::CallSettings callSettings = null) => DeleteGroupAsync(
+                new DeleteGroupRequest
+                {
+                    Name = gax::GaxPreconditions.CheckNotNullOrEmpty(name, nameof(name)),
+                },
+                callSettings);
+
+        /// <summary>
+        /// Deletes an existing group.
+        /// </summary>
+        /// <param name="name">
+        /// The group to delete. The format is
+        /// `"projects/{project_id_or_number}/groups/{group_id}"`.
+        /// </param>
+        /// <param name="cancellationToken">
+        /// A <see cref="st::CancellationToken"/> to use for this RPC.
+        /// </param>
+        /// <returns>
+        /// A Task that completes when the RPC has completed.
+        /// </returns>
+        public virtual stt::Task DeleteGroupAsync(
+            string name,
+            st::CancellationToken cancellationToken) => DeleteGroupAsync(
+                name,
+                gaxgrpc::CallSettings.FromCancellationToken(cancellationToken));
+
+        /// <summary>
+        /// Deletes an existing group.
+        /// </summary>
+        /// <param name="name">
+        /// The group to delete. The format is
+        /// `"projects/{project_id_or_number}/groups/{group_id}"`.
+        /// </param>
+        /// <param name="callSettings">
+        /// If not null, applies overrides to this RPC call.
+        /// </param>
+        public virtual void DeleteGroup(
+            string name,
+            gaxgrpc::CallSettings callSettings = null) => DeleteGroup(
+                new DeleteGroupRequest
+                {
+                    Name = gax::GaxPreconditions.CheckNotNullOrEmpty(name, nameof(name)),
+                },
+                callSettings);
+
+        /// <summary>
+        /// Deletes an existing group.
+        /// </summary>
         /// <param name="request">
         /// The request object containing all of the parameters for the API call.
         /// </param>
@@ -1074,6 +1452,74 @@ namespace Google.Cloud.Monitoring.V3
         /// <summary>
         /// Lists the monitored resources that are members of a group.
         /// </summary>
+        /// <param name="name">
+        /// The group whose members are listed. The format is
+        /// `"projects/{project_id_or_number}/groups/{group_id}"`.
+        /// </param>
+        /// <param name="pageToken">
+        /// The token returned from the previous request.
+        /// A value of <c>null</c> or an empty string retrieves the first page.
+        /// </param>
+        /// <param name="pageSize">
+        /// The size of page to request. The response will not be larger than this, but may be smaller.
+        /// A value of <c>null</c> or 0 uses a server-defined page size.
+        /// </param>
+        /// <param name="callSettings">
+        /// If not null, applies overrides to this RPC call.
+        /// </param>
+        /// <returns>
+        /// A pageable asynchronous sequence of <see cref="ga::MonitoredResource"/> resources.
+        /// </returns>
+        public virtual gax::PagedAsyncEnumerable<ListGroupMembersResponse, ga::MonitoredResource> ListGroupMembersAsync(
+            string name,
+            string pageToken = null,
+            int? pageSize = null,
+            gaxgrpc::CallSettings callSettings = null) => ListGroupMembersAsync(
+                new ListGroupMembersRequest
+                {
+                    Name = gax::GaxPreconditions.CheckNotNullOrEmpty(name, nameof(name)),
+                    PageToken = pageToken ?? "",
+                    PageSize = pageSize ?? 0,
+                },
+                callSettings);
+
+        /// <summary>
+        /// Lists the monitored resources that are members of a group.
+        /// </summary>
+        /// <param name="name">
+        /// The group whose members are listed. The format is
+        /// `"projects/{project_id_or_number}/groups/{group_id}"`.
+        /// </param>
+        /// <param name="pageToken">
+        /// The token returned from the previous request.
+        /// A value of <c>null</c> or an empty string retrieves the first page.
+        /// </param>
+        /// <param name="pageSize">
+        /// The size of page to request. The response will not be larger than this, but may be smaller.
+        /// A value of <c>null</c> or 0 uses a server-defined page size.
+        /// </param>
+        /// <param name="callSettings">
+        /// If not null, applies overrides to this RPC call.
+        /// </param>
+        /// <returns>
+        /// A pageable sequence of <see cref="ga::MonitoredResource"/> resources.
+        /// </returns>
+        public virtual gax::PagedEnumerable<ListGroupMembersResponse, ga::MonitoredResource> ListGroupMembers(
+            string name,
+            string pageToken = null,
+            int? pageSize = null,
+            gaxgrpc::CallSettings callSettings = null) => ListGroupMembers(
+                new ListGroupMembersRequest
+                {
+                    Name = gax::GaxPreconditions.CheckNotNullOrEmpty(name, nameof(name)),
+                    PageToken = pageToken ?? "",
+                    PageSize = pageSize ?? 0,
+                },
+                callSettings);
+
+        /// <summary>
+        /// Lists the monitored resources that are members of a group.
+        /// </summary>
         /// <param name="request">
         /// The request object containing all of the parameters for the API call.
         /// </param>
@@ -1134,17 +1580,23 @@ namespace Google.Cloud.Monitoring.V3
             GroupServiceSettings effectiveSettings = settings ?? GroupServiceSettings.GetDefault();
             gaxgrpc::ClientHelper clientHelper = new gaxgrpc::ClientHelper(effectiveSettings);
             _callListGroups = clientHelper.BuildApiCall<ListGroupsRequest, ListGroupsResponse>(
-                GrpcClient.ListGroupsAsync, GrpcClient.ListGroups, effectiveSettings.ListGroupsSettings);
+                GrpcClient.ListGroupsAsync, GrpcClient.ListGroups, effectiveSettings.ListGroupsSettings)
+                .WithGoogleRequestParam("name", request => request.Name);
             _callGetGroup = clientHelper.BuildApiCall<GetGroupRequest, Group>(
-                GrpcClient.GetGroupAsync, GrpcClient.GetGroup, effectiveSettings.GetGroupSettings);
+                GrpcClient.GetGroupAsync, GrpcClient.GetGroup, effectiveSettings.GetGroupSettings)
+                .WithGoogleRequestParam("name", request => request.Name);
             _callCreateGroup = clientHelper.BuildApiCall<CreateGroupRequest, Group>(
-                GrpcClient.CreateGroupAsync, GrpcClient.CreateGroup, effectiveSettings.CreateGroupSettings);
+                GrpcClient.CreateGroupAsync, GrpcClient.CreateGroup, effectiveSettings.CreateGroupSettings)
+                .WithGoogleRequestParam("name", request => request.Name);
             _callUpdateGroup = clientHelper.BuildApiCall<UpdateGroupRequest, Group>(
-                GrpcClient.UpdateGroupAsync, GrpcClient.UpdateGroup, effectiveSettings.UpdateGroupSettings);
+                GrpcClient.UpdateGroupAsync, GrpcClient.UpdateGroup, effectiveSettings.UpdateGroupSettings)
+                .WithGoogleRequestParam("group.name", request => request.Group?.Name);
             _callDeleteGroup = clientHelper.BuildApiCall<DeleteGroupRequest, pbwkt::Empty>(
-                GrpcClient.DeleteGroupAsync, GrpcClient.DeleteGroup, effectiveSettings.DeleteGroupSettings);
+                GrpcClient.DeleteGroupAsync, GrpcClient.DeleteGroup, effectiveSettings.DeleteGroupSettings)
+                .WithGoogleRequestParam("name", request => request.Name);
             _callListGroupMembers = clientHelper.BuildApiCall<ListGroupMembersRequest, ListGroupMembersResponse>(
-                GrpcClient.ListGroupMembersAsync, GrpcClient.ListGroupMembers, effectiveSettings.ListGroupMembersSettings);
+                GrpcClient.ListGroupMembersAsync, GrpcClient.ListGroupMembers, effectiveSettings.ListGroupMembersSettings)
+                .WithGoogleRequestParam("name", request => request.Name);
             Modify_ApiCall(ref _callListGroups);
             Modify_ListGroupsApiCall(ref _callListGroups);
             Modify_ApiCall(ref _callGetGroup);

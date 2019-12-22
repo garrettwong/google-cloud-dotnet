@@ -15,7 +15,6 @@
 using Google.Cloud.Spanner.Data.CommonTesting;
 using System;
 using System.Collections.Generic;
-using System.Runtime.CompilerServices;
 using System.Threading.Tasks;
 using Xunit;
 
@@ -32,48 +31,13 @@ namespace Google.Cloud.Spanner.Data.IntegrationTests
 
         public DmlTests(DmlTableFixture fixture) => _fixture = fixture;
 
-        /// <summary>
-        /// Each test is able to use a different set of rows, varied by key value K.
-        /// This method creates the rows with a random K and returns K.
-        /// </summary>
-        private string CreateTestRows([CallerMemberName] string testName = null)
-        {
-            string key = $"{testName} - {Guid.NewGuid()}";
-            Insert(0, false, false, false);
-            Insert(1, true, false, false);
-            Insert(2, false, true, false);
-            Insert(3, false, false, true);
-            Insert(4, true, true, true);
-
-            void Insert(int value, bool update, bool delete, bool copy)
-            {
-                RetryHelpers.RetryOnce(() =>
-                {
-                    using (var connection = _fixture.GetConnection())
-                    {
-                        using (var command = connection.CreateInsertCommand(_fixture.TableName))
-                        {
-                            command.Parameters.Add("Key", SpannerDbType.String, key);
-                            command.Parameters.Add("OriginalValue", SpannerDbType.Int64, value);
-                            command.Parameters.Add("Value", SpannerDbType.Int64, value);
-                            command.Parameters.Add("UpdateMe", SpannerDbType.Bool, update);
-                            command.Parameters.Add("DeleteMe", SpannerDbType.Bool, delete);
-                            command.Parameters.Add("CopyMe", SpannerDbType.Bool, copy);
-                            RetryHelpers.RetryOnce(() => command.ExecuteNonQuery());
-                        }
-                    }
-                });
-            }
-            return key;
-        }
-
         [Fact]
         public void Update()
         {
-            string key = CreateTestRows();
+            string key = _fixture.CreateTestRows();
             using (var connection = _fixture.GetConnection())
             {
-                RetryHelpers.RetryOnce(() =>
+                RetryHelpers.ExecuteWithRetry(() =>
                 {
                     string dml = $"UPDATE {_fixture.TableName} SET Value = OriginalValue + 1 WHERE UpdateMe AND Key=@key";
                     using (var command = connection.CreateDmlCommand(dml))
@@ -83,7 +47,7 @@ namespace Google.Cloud.Spanner.Data.IntegrationTests
                     }
                 });
             }
-            var actual = FetchValues(key);
+            var actual = _fixture.FetchValues(key);
             var expected = new Dictionary<int, int>
             {
                 { 0, 0 }, // Not updated
@@ -99,10 +63,10 @@ namespace Google.Cloud.Spanner.Data.IntegrationTests
         [Fact]
         public async Task Update_Async()
         {
-            string key = CreateTestRows();
+            string key = _fixture.CreateTestRows();
             using (var connection = _fixture.GetConnection())
             {
-                await RetryHelpers.RetryOnceAsync(async () =>
+                await RetryHelpers.ExecuteWithRetryAsync(async () =>
                 {
                     string dml = $"UPDATE {_fixture.TableName} SET Value = OriginalValue + 1 WHERE UpdateMe AND Key=@key";
                     using (var command = connection.CreateDmlCommand(dml))
@@ -112,7 +76,7 @@ namespace Google.Cloud.Spanner.Data.IntegrationTests
                     }
                 });
             }
-            var actual = FetchValues(key);
+            var actual = _fixture.FetchValues(key);
             var expected = new Dictionary<int, int>
             {
                 { 0, 0 }, // Not updated
@@ -127,10 +91,10 @@ namespace Google.Cloud.Spanner.Data.IntegrationTests
         [Fact]
         public void Delete()
         {
-            string key = CreateTestRows();
+            string key = _fixture.CreateTestRows();
             using (var connection = _fixture.GetConnection())
             {
-                RetryHelpers.RetryOnce(() =>
+                RetryHelpers.ExecuteWithRetry(() =>
                 {
                     string dml = $"DELETE FROM {_fixture.TableName} WHERE DeleteMe AND Key=@key";
                     using (var command = connection.CreateDmlCommand(dml))
@@ -140,7 +104,7 @@ namespace Google.Cloud.Spanner.Data.IntegrationTests
                     }
                 });
             }
-            var actual = FetchValues(key);
+            var actual = _fixture.FetchValues(key);
             var expected = new Dictionary<int, int>
             {
                 { 0, 0 },
@@ -154,10 +118,10 @@ namespace Google.Cloud.Spanner.Data.IntegrationTests
         [Fact]
         public void InsertWithValues()
         {
-            string key = CreateTestRows();
+            string key = _fixture.CreateTestRows();
             using (var connection = _fixture.GetConnection())
             {
-                RetryHelpers.RetryOnce(() =>
+                RetryHelpers.ExecuteWithRetry(() =>
                 {
                     string dml = $"INSERT INTO {_fixture.TableName} (Key, OriginalValue, Value) VALUES (@key, @ov1, @v1), (@key, @ov2, @v2)";
                     using (var command = connection.CreateDmlCommand(dml))
@@ -171,7 +135,7 @@ namespace Google.Cloud.Spanner.Data.IntegrationTests
                     }
                 });
             }
-            var actual = FetchValues(key);
+            var actual = _fixture.FetchValues(key);
             var expected = new Dictionary<int, int>
             {
                 { 0, 0 },
@@ -188,10 +152,10 @@ namespace Google.Cloud.Spanner.Data.IntegrationTests
         [Fact]
         public void InsertWithQuery()
         {
-            string key = CreateTestRows();
+            string key = _fixture.CreateTestRows();
             using (var connection = _fixture.GetConnection())
             {
-                RetryHelpers.RetryOnce(() =>
+                RetryHelpers.ExecuteWithRetry(() =>
                 {
                     // Slightly odd choice here: "OriginalValue" has to be unique, so we end up with the inserted Value being the real original value.
                     string dml = $"INSERT INTO {_fixture.TableName} (Key, OriginalValue, Value) SELECT Key, OriginalValue + 10, Value FROM {_fixture.TableName} WHERE CopyMe AND KEY=@Key";
@@ -202,7 +166,7 @@ namespace Google.Cloud.Spanner.Data.IntegrationTests
                     }
                 });
             }
-            var actual = FetchValues(key);
+            var actual = _fixture.FetchValues(key);
             var expected = new Dictionary<int, int>
             {
                 { 0, 0 },
@@ -219,7 +183,7 @@ namespace Google.Cloud.Spanner.Data.IntegrationTests
         [Fact]
         public void InvalidQuery()
         {
-            string key = CreateTestRows();
+            string key = _fixture.CreateTestRows();
             using (var connection = _fixture.GetConnection())
             {
                 string dml = $"UPDATE {_fixture.TableName} SET FOO = BAR";
@@ -235,7 +199,7 @@ namespace Google.Cloud.Spanner.Data.IntegrationTests
         [Fact]
         public void InvalidMethodCalls()
         {
-            string key = CreateTestRows();
+            string key = _fixture.CreateTestRows();
             using (var connection = _fixture.GetConnection())
             {
                 string dml = $"DELETE FROM {_fixture.TableName} WHERE DeleteMe AND Key=@key";
@@ -251,7 +215,7 @@ namespace Google.Cloud.Spanner.Data.IntegrationTests
         [Fact]
         public void ReadOnlyTransaction_Invalid()
         {
-            string key = CreateTestRows();
+            string key = _fixture.CreateTestRows();
             using (var connection = _fixture.GetConnection())
             {
                 connection.Open();
@@ -271,11 +235,11 @@ namespace Google.Cloud.Spanner.Data.IntegrationTests
         [Fact]
         public void MultipleDmlStatements()
         {
-            string key = CreateTestRows();
+            string key = _fixture.CreateTestRows();
             using (var connection = _fixture.GetConnection())
             {
                 connection.Open();
-                RetryHelpers.RetryOnce(() =>
+                RetryHelpers.ExecuteWithRetry(() =>
                 {
                     using (var transaction = connection.BeginTransaction())
                     {
@@ -293,7 +257,7 @@ namespace Google.Cloud.Spanner.Data.IntegrationTests
                     }
                 });
             }
-            var actual = FetchValues(key);
+            var actual = _fixture.FetchValues(key);
             var expected = new Dictionary<int, int>
             {
                 { 0, 0 }, // Not updated
@@ -305,15 +269,54 @@ namespace Google.Cloud.Spanner.Data.IntegrationTests
             Assert.Equal(expected, actual);
         }
 
+        // [START spanner_test_dml_duplicate_update]
+        [Fact]
+        public void InsertAndUpdateWithQuery()
+        {
+            string key = _fixture.CreateTestRows();
+            using (var connection = _fixture.GetConnection())
+            {
+                RetryHelpers.ExecuteWithRetry(() =>
+                {
+                    string dml1 = $"INSERT INTO {_fixture.TableName} (Key, OriginalValue, Value) SELECT Key, OriginalValue + 10, Value FROM {_fixture.TableName} WHERE CopyMe AND KEY=@Key";
+                    using (var command = connection.CreateDmlCommand(dml1))
+                    {
+                        command.Parameters.Add("key", SpannerDbType.String, key);
+                        Assert.Equal(2, command.ExecuteNonQuery());
+                    }
+                    
+                    string dml2 = $"UPDATE {_fixture.TableName} SET Value = Value * 2 WHERE KEY=@Key AND OriginalValue > 10";
+                    using (var command = connection.CreateDmlCommand(dml2))
+                    {
+                        command.Parameters.Add("key", SpannerDbType.String, key);
+                        Assert.Equal(2, command.ExecuteNonQuery());
+                    }
+                });
+            }
+            var actual = _fixture.FetchValues(key);
+            var expected = new Dictionary<int, int>
+            {
+                { 0, 0 },
+                { 1, 1 },
+                { 2, 2 },
+                { 3, 3 },
+                { 4, 4 },
+                { 13, 6 }, // Inserted then updated
+                { 14, 8 } // Inserted then updated
+            };
+            Assert.Equal(expected, actual);
+        }
+        // [END spanner_test_dml_duplicate_update]
+
         [Fact]
         public void DmlResultsVisibleWithinTransaction()
         {
-            string key = CreateTestRows();
+            string key = _fixture.CreateTestRows();
             Dictionary<int, int> fetchedWithinTransaction = null;
             using (var connection = _fixture.GetConnection())
             {
                 connection.Open();
-                RetryHelpers.RetryOnce(() =>
+                RetryHelpers.ExecuteWithRetry(() =>
                 {
                     using (var transaction = connection.BeginTransaction())
                     {
@@ -323,13 +326,13 @@ namespace Google.Cloud.Spanner.Data.IntegrationTests
                             command.Transaction = transaction;
                             command.Parameters.Add("key", SpannerDbType.String, key);
                             Assert.Equal(2, command.ExecuteNonQuery());
-                            fetchedWithinTransaction = FetchValues(key, transaction);
+                            fetchedWithinTransaction = _fixture.FetchValues(key, transaction);
                             transaction.Commit();
                         }
                     }
                 });
             }
-            var fetchedAfterTransaction = FetchValues(key);
+            var fetchedAfterTransaction = _fixture.FetchValues(key);
             var expected = new Dictionary<int, int>
             {
                 { 0, 0 }, // Not updated
@@ -345,11 +348,11 @@ namespace Google.Cloud.Spanner.Data.IntegrationTests
         [Fact]
         public void Rollback()
         {
-            string key = CreateTestRows();
+            string key = _fixture.CreateTestRows();
             using (var connection = _fixture.GetConnection())
             {
                 connection.Open();
-                RetryHelpers.RetryOnce(() =>
+                RetryHelpers.ExecuteWithRetry(() =>
                 {
                     using (var transaction = connection.BeginTransaction())
                     {
@@ -364,7 +367,7 @@ namespace Google.Cloud.Spanner.Data.IntegrationTests
                     }
                 });
             }
-            var actual = FetchValues(key);
+            var actual = _fixture.FetchValues(key);
             // All the original values.
             var expected = new Dictionary<int, int>
             {
@@ -380,12 +383,12 @@ namespace Google.Cloud.Spanner.Data.IntegrationTests
         [Fact]
         public void DmlThenRawMutations()
         {
-            string key = CreateTestRows();
+            string key = _fixture.CreateTestRows();
             using (var connection = _fixture.GetConnection())
             {
                 connection.Open();
                 string dml = $"INSERT INTO {_fixture.TableName} (Key, OriginalValue, Value) VALUES (@key, @ov1, @v1)";
-                RetryHelpers.RetryOnce(() =>
+                RetryHelpers.ExecuteWithRetry(() =>
                 {
                     using (var transaction = connection.BeginTransaction())
                     {
@@ -409,7 +412,7 @@ namespace Google.Cloud.Spanner.Data.IntegrationTests
                     }
                 });
             }
-            var actual = FetchValues(key);
+            var actual = _fixture.FetchValues(key);
             var expected = new Dictionary<int, int>
             {
                 { 0, 0 },
@@ -426,11 +429,11 @@ namespace Google.Cloud.Spanner.Data.IntegrationTests
         [Fact]
         public void PartitionedUpdate_Small()
         {
-            string key = CreateTestRows();
+            string key = _fixture.CreateTestRows();
             string table = _fixture.TableName;
             using (var connection = _fixture.GetConnection())
             {
-                RetryHelpers.RetryOnce(() =>
+                RetryHelpers.ExecuteWithRetry(() =>
                 {
                     string dml = $"UPDATE {table} SET {table}.Value = {table}.OriginalValue + 1 WHERE {table}.UpdateMe AND {table}.Key=@key";
                     using (var command = connection.CreateDmlCommand(dml))
@@ -440,7 +443,7 @@ namespace Google.Cloud.Spanner.Data.IntegrationTests
                     }
                 });
             }
-            var actual = FetchValues(key);
+            var actual = _fixture.FetchValues(key);
             var expected = new Dictionary<int, int>
             {
                 { 0, 0 }, // Not updated
@@ -473,7 +476,7 @@ namespace Google.Cloud.Spanner.Data.IntegrationTests
             int row = 1;
             for (int i = 0; i < insertBatches; i++)
             {
-                RetryHelpers.RetryOnce(() =>
+                RetryHelpers.ExecuteWithRetry(() =>
                 {
                     using (var connection = _fixture.GetConnection())
                     {
@@ -507,7 +510,7 @@ namespace Google.Cloud.Spanner.Data.IntegrationTests
             using (var connection = _fixture.GetConnection())
             {
                 // Perform the update
-                RetryHelpers.RetryOnce(() =>
+                RetryHelpers.ExecuteWithRetry(() =>
                 {
                     string dml = $"UPDATE {table} SET {table}.Value = {table}.OriginalValue + @amountToAdd WHERE {table}.UpdateMe AND {table}.Key=@key";
                     using (var command = connection.CreateDmlCommand(dml))
@@ -531,30 +534,6 @@ namespace Google.Cloud.Spanner.Data.IntegrationTests
                     command.Parameters.Add("key", SpannerDbType.String, key);
                     command.Parameters.Add("cutoff", SpannerDbType.Int64, amountToAdd);
                     Assert.Equal(0, (long)command.ExecuteScalar());
-                }
-            }
-        }
-
-        private Dictionary<int, int> FetchValues(string key, SpannerTransaction transaction = null)
-        {
-            using (var connection = _fixture.GetConnection())
-            {
-                using (var command = connection.CreateSelectCommand($"SELECT OriginalValue, Value FROM {_fixture.TableName} WHERE Key=@key"))
-                {
-                    if (transaction != null)
-                    {
-                        command.Transaction = transaction;
-                    }
-                    command.Parameters.Add("key", SpannerDbType.String, key);
-                    using (var reader = command.ExecuteReader())
-                    {
-                        var dictionary = new Dictionary<int, int>();
-                        while (reader.Read())
-                        {
-                            dictionary.Add(reader.GetInt32(0), reader.GetInt32(1));
-                        }
-                        return dictionary;
-                    }
                 }
             }
         }

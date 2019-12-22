@@ -117,7 +117,7 @@ namespace Google.Cloud.PubSub.V1.Snippets
             // The TimeSpan specifies for how long to attempt to publish locally queued messages.
             await publisher.ShutdownAsync(TimeSpan.FromSeconds(15));
 
-            // Pull messages from the subscription using SimpleSubscriber.
+            // Pull messages from the subscription using SubscriberClient.
             SubscriberClient subscriber = await SubscriberClient.CreateAsync(subscriptionName);
             List<PubsubMessage> receivedMessages = new List<PubsubMessage>();
             // Start the subscriber listening for messages.
@@ -147,7 +147,7 @@ namespace Google.Cloud.PubSub.V1.Snippets
         {
             string projectId = _fixture.ProjectId;
 
-            // Snippet: ListSubscriptions(*,*,*,*)
+            // Snippet: ListSubscriptions(ProjectName,*,*,*)
             SubscriberServiceApiClient client = SubscriberServiceApiClient.Create();
 
             ProjectName projectName = new ProjectName(projectId);
@@ -163,7 +163,7 @@ namespace Google.Cloud.PubSub.V1.Snippets
         {
             string projectId = _fixture.ProjectId;
 
-            // Snippet: ListSubscriptionsAsync(*,*,*,*)
+            // Snippet: ListSubscriptionsAsync(ProjectName,*,*,*)
             SubscriberServiceApiClient client = SubscriberServiceApiClient.Create();
 
             ProjectName projectName = new ProjectName(projectId);
@@ -184,7 +184,7 @@ namespace Google.Cloud.PubSub.V1.Snippets
 
             PublisherServiceApiClient.Create().CreateTopic(new TopicName(projectId, topicId));
 
-            // Snippet: CreateSubscription(*,*,*,*,*)
+            // Snippet: CreateSubscription(SubscriptionName,*,*,*,*)
             SubscriberServiceApiClient client = SubscriberServiceApiClient.Create();
 
             SubscriptionName subscriptionName = new SubscriptionName(projectId, subscriptionId);
@@ -230,7 +230,7 @@ namespace Google.Cloud.PubSub.V1.Snippets
             SubscriberServiceApiClient.Create().CreateSubscription(new SubscriptionName(projectId, subscriptionId), topicName, null, 60);
             publisher.Publish(topicName, new[] { newMessage });
 
-            // Snippet: Pull(*,*,*,*)
+            // Snippet: Pull(SubscriptionName,*,*,*)
             SubscriberServiceApiClient client = SubscriberServiceApiClient.Create();
 
             SubscriptionName subscriptionName = new SubscriptionName(projectId, subscriptionId);

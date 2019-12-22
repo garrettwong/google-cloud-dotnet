@@ -3,7 +3,7 @@
 //     source: google/longrunning/operations.proto
 // </auto-generated>
 // Original file comments:
-// Copyright 2016 Google Inc.
+// Copyright 2019 Google LLC.
 //
 // Licensed under the Apache License, Version 2.0 (the "License");
 // you may not use this file except in compliance with the License.
@@ -17,7 +17,8 @@
 // See the License for the specific language governing permissions and
 // limitations under the License.
 //
-#pragma warning disable 1591
+//
+#pragma warning disable 0414, 1591
 #region Designer generated code
 
 using grpc = global::Grpc.Core;
@@ -38,41 +39,49 @@ namespace Google.LongRunning {
   {
     static readonly string __ServiceName = "google.longrunning.Operations";
 
-    static readonly grpc::Marshaller<global::Google.LongRunning.ListOperationsRequest> __Marshaller_ListOperationsRequest = grpc::Marshallers.Create((arg) => global::Google.Protobuf.MessageExtensions.ToByteArray(arg), global::Google.LongRunning.ListOperationsRequest.Parser.ParseFrom);
-    static readonly grpc::Marshaller<global::Google.LongRunning.ListOperationsResponse> __Marshaller_ListOperationsResponse = grpc::Marshallers.Create((arg) => global::Google.Protobuf.MessageExtensions.ToByteArray(arg), global::Google.LongRunning.ListOperationsResponse.Parser.ParseFrom);
-    static readonly grpc::Marshaller<global::Google.LongRunning.GetOperationRequest> __Marshaller_GetOperationRequest = grpc::Marshallers.Create((arg) => global::Google.Protobuf.MessageExtensions.ToByteArray(arg), global::Google.LongRunning.GetOperationRequest.Parser.ParseFrom);
-    static readonly grpc::Marshaller<global::Google.LongRunning.Operation> __Marshaller_Operation = grpc::Marshallers.Create((arg) => global::Google.Protobuf.MessageExtensions.ToByteArray(arg), global::Google.LongRunning.Operation.Parser.ParseFrom);
-    static readonly grpc::Marshaller<global::Google.LongRunning.DeleteOperationRequest> __Marshaller_DeleteOperationRequest = grpc::Marshallers.Create((arg) => global::Google.Protobuf.MessageExtensions.ToByteArray(arg), global::Google.LongRunning.DeleteOperationRequest.Parser.ParseFrom);
-    static readonly grpc::Marshaller<global::Google.Protobuf.WellKnownTypes.Empty> __Marshaller_Empty = grpc::Marshallers.Create((arg) => global::Google.Protobuf.MessageExtensions.ToByteArray(arg), global::Google.Protobuf.WellKnownTypes.Empty.Parser.ParseFrom);
-    static readonly grpc::Marshaller<global::Google.LongRunning.CancelOperationRequest> __Marshaller_CancelOperationRequest = grpc::Marshallers.Create((arg) => global::Google.Protobuf.MessageExtensions.ToByteArray(arg), global::Google.LongRunning.CancelOperationRequest.Parser.ParseFrom);
+    static readonly grpc::Marshaller<global::Google.LongRunning.ListOperationsRequest> __Marshaller_google_longrunning_ListOperationsRequest = grpc::Marshallers.Create((arg) => global::Google.Protobuf.MessageExtensions.ToByteArray(arg), global::Google.LongRunning.ListOperationsRequest.Parser.ParseFrom);
+    static readonly grpc::Marshaller<global::Google.LongRunning.ListOperationsResponse> __Marshaller_google_longrunning_ListOperationsResponse = grpc::Marshallers.Create((arg) => global::Google.Protobuf.MessageExtensions.ToByteArray(arg), global::Google.LongRunning.ListOperationsResponse.Parser.ParseFrom);
+    static readonly grpc::Marshaller<global::Google.LongRunning.GetOperationRequest> __Marshaller_google_longrunning_GetOperationRequest = grpc::Marshallers.Create((arg) => global::Google.Protobuf.MessageExtensions.ToByteArray(arg), global::Google.LongRunning.GetOperationRequest.Parser.ParseFrom);
+    static readonly grpc::Marshaller<global::Google.LongRunning.Operation> __Marshaller_google_longrunning_Operation = grpc::Marshallers.Create((arg) => global::Google.Protobuf.MessageExtensions.ToByteArray(arg), global::Google.LongRunning.Operation.Parser.ParseFrom);
+    static readonly grpc::Marshaller<global::Google.LongRunning.DeleteOperationRequest> __Marshaller_google_longrunning_DeleteOperationRequest = grpc::Marshallers.Create((arg) => global::Google.Protobuf.MessageExtensions.ToByteArray(arg), global::Google.LongRunning.DeleteOperationRequest.Parser.ParseFrom);
+    static readonly grpc::Marshaller<global::Google.Protobuf.WellKnownTypes.Empty> __Marshaller_google_protobuf_Empty = grpc::Marshallers.Create((arg) => global::Google.Protobuf.MessageExtensions.ToByteArray(arg), global::Google.Protobuf.WellKnownTypes.Empty.Parser.ParseFrom);
+    static readonly grpc::Marshaller<global::Google.LongRunning.CancelOperationRequest> __Marshaller_google_longrunning_CancelOperationRequest = grpc::Marshallers.Create((arg) => global::Google.Protobuf.MessageExtensions.ToByteArray(arg), global::Google.LongRunning.CancelOperationRequest.Parser.ParseFrom);
+    static readonly grpc::Marshaller<global::Google.LongRunning.WaitOperationRequest> __Marshaller_google_longrunning_WaitOperationRequest = grpc::Marshallers.Create((arg) => global::Google.Protobuf.MessageExtensions.ToByteArray(arg), global::Google.LongRunning.WaitOperationRequest.Parser.ParseFrom);
 
     static readonly grpc::Method<global::Google.LongRunning.ListOperationsRequest, global::Google.LongRunning.ListOperationsResponse> __Method_ListOperations = new grpc::Method<global::Google.LongRunning.ListOperationsRequest, global::Google.LongRunning.ListOperationsResponse>(
         grpc::MethodType.Unary,
         __ServiceName,
         "ListOperations",
-        __Marshaller_ListOperationsRequest,
-        __Marshaller_ListOperationsResponse);
+        __Marshaller_google_longrunning_ListOperationsRequest,
+        __Marshaller_google_longrunning_ListOperationsResponse);
 
     static readonly grpc::Method<global::Google.LongRunning.GetOperationRequest, global::Google.LongRunning.Operation> __Method_GetOperation = new grpc::Method<global::Google.LongRunning.GetOperationRequest, global::Google.LongRunning.Operation>(
         grpc::MethodType.Unary,
         __ServiceName,
         "GetOperation",
-        __Marshaller_GetOperationRequest,
-        __Marshaller_Operation);
+        __Marshaller_google_longrunning_GetOperationRequest,
+        __Marshaller_google_longrunning_Operation);
 
     static readonly grpc::Method<global::Google.LongRunning.DeleteOperationRequest, global::Google.Protobuf.WellKnownTypes.Empty> __Method_DeleteOperation = new grpc::Method<global::Google.LongRunning.DeleteOperationRequest, global::Google.Protobuf.WellKnownTypes.Empty>(
         grpc::MethodType.Unary,
         __ServiceName,
         "DeleteOperation",
-        __Marshaller_DeleteOperationRequest,
-        __Marshaller_Empty);
+        __Marshaller_google_longrunning_DeleteOperationRequest,
+        __Marshaller_google_protobuf_Empty);
 
     static readonly grpc::Method<global::Google.LongRunning.CancelOperationRequest, global::Google.Protobuf.WellKnownTypes.Empty> __Method_CancelOperation = new grpc::Method<global::Google.LongRunning.CancelOperationRequest, global::Google.Protobuf.WellKnownTypes.Empty>(
         grpc::MethodType.Unary,
         __ServiceName,
         "CancelOperation",
-        __Marshaller_CancelOperationRequest,
-        __Marshaller_Empty);
+        __Marshaller_google_longrunning_CancelOperationRequest,
+        __Marshaller_google_protobuf_Empty);
+
+    static readonly grpc::Method<global::Google.LongRunning.WaitOperationRequest, global::Google.LongRunning.Operation> __Method_WaitOperation = new grpc::Method<global::Google.LongRunning.WaitOperationRequest, global::Google.LongRunning.Operation>(
+        grpc::MethodType.Unary,
+        __ServiceName,
+        "WaitOperation",
+        __Marshaller_google_longrunning_WaitOperationRequest,
+        __Marshaller_google_longrunning_Operation);
 
     /// <summary>Service descriptor</summary>
     public static global::Google.Protobuf.Reflection.ServiceDescriptor Descriptor
@@ -81,14 +90,20 @@ namespace Google.LongRunning {
     }
 
     /// <summary>Base class for server-side implementations of Operations</summary>
+    [grpc::BindServiceMethod(typeof(Operations), "BindService")]
     public abstract partial class OperationsBase
     {
       /// <summary>
       /// Lists operations that match the specified filter in the request. If the
       /// server doesn't support this method, it returns `UNIMPLEMENTED`.
       ///
-      /// NOTE: the `name` binding below allows API services to override the binding
-      /// to use different resource name schemes, such as `users/*/operations`.
+      /// NOTE: the `name` binding allows API services to override the binding
+      /// to use different resource name schemes, such as `users/*/operations`. To
+      /// override the binding, API services can add a binding such as
+      /// `"/v1/{name=users/*}/operations"` to their service configuration.
+      /// For backwards compatibility, the default name includes the operations
+      /// collection id, however overriding users must ensure the name binding
+      /// is the parent resource, without the operations collection id.
       /// </summary>
       /// <param name="request">The request received from the client.</param>
       /// <param name="context">The context of the server-side call handler being invoked.</param>
@@ -145,6 +160,25 @@ namespace Google.LongRunning {
         throw new grpc::RpcException(new grpc::Status(grpc::StatusCode.Unimplemented, ""));
       }
 
+      /// <summary>
+      /// Waits for the specified long-running operation until it is done or reaches
+      /// at most a specified timeout, returning the latest state.  If the operation
+      /// is already done, the latest state is immediately returned.  If the timeout
+      /// specified is greater than the default HTTP/RPC timeout, the HTTP/RPC
+      /// timeout is used.  If the server does not support this method, it returns
+      /// `google.rpc.Code.UNIMPLEMENTED`.
+      /// Note that this method is on a best-effort basis.  It may return the latest
+      /// state before the specified timeout (including immediately), meaning even an
+      /// immediate response is no guarantee that the operation is done.
+      /// </summary>
+      /// <param name="request">The request received from the client.</param>
+      /// <param name="context">The context of the server-side call handler being invoked.</param>
+      /// <returns>The response to send back to the client (wrapped by a task).</returns>
+      public virtual global::System.Threading.Tasks.Task<global::Google.LongRunning.Operation> WaitOperation(global::Google.LongRunning.WaitOperationRequest request, grpc::ServerCallContext context)
+      {
+        throw new grpc::RpcException(new grpc::Status(grpc::StatusCode.Unimplemented, ""));
+      }
+
     }
 
     /// <summary>Client for Operations</summary>
@@ -174,8 +208,13 @@ namespace Google.LongRunning {
       /// Lists operations that match the specified filter in the request. If the
       /// server doesn't support this method, it returns `UNIMPLEMENTED`.
       ///
-      /// NOTE: the `name` binding below allows API services to override the binding
-      /// to use different resource name schemes, such as `users/*/operations`.
+      /// NOTE: the `name` binding allows API services to override the binding
+      /// to use different resource name schemes, such as `users/*/operations`. To
+      /// override the binding, API services can add a binding such as
+      /// `"/v1/{name=users/*}/operations"` to their service configuration.
+      /// For backwards compatibility, the default name includes the operations
+      /// collection id, however overriding users must ensure the name binding
+      /// is the parent resource, without the operations collection id.
       /// </summary>
       /// <param name="request">The request to send to the server.</param>
       /// <param name="headers">The initial metadata to send with the call. This parameter is optional.</param>
@@ -190,8 +229,13 @@ namespace Google.LongRunning {
       /// Lists operations that match the specified filter in the request. If the
       /// server doesn't support this method, it returns `UNIMPLEMENTED`.
       ///
-      /// NOTE: the `name` binding below allows API services to override the binding
-      /// to use different resource name schemes, such as `users/*/operations`.
+      /// NOTE: the `name` binding allows API services to override the binding
+      /// to use different resource name schemes, such as `users/*/operations`. To
+      /// override the binding, API services can add a binding such as
+      /// `"/v1/{name=users/*}/operations"` to their service configuration.
+      /// For backwards compatibility, the default name includes the operations
+      /// collection id, however overriding users must ensure the name binding
+      /// is the parent resource, without the operations collection id.
       /// </summary>
       /// <param name="request">The request to send to the server.</param>
       /// <param name="options">The options for the call.</param>
@@ -204,8 +248,13 @@ namespace Google.LongRunning {
       /// Lists operations that match the specified filter in the request. If the
       /// server doesn't support this method, it returns `UNIMPLEMENTED`.
       ///
-      /// NOTE: the `name` binding below allows API services to override the binding
-      /// to use different resource name schemes, such as `users/*/operations`.
+      /// NOTE: the `name` binding allows API services to override the binding
+      /// to use different resource name schemes, such as `users/*/operations`. To
+      /// override the binding, API services can add a binding such as
+      /// `"/v1/{name=users/*}/operations"` to their service configuration.
+      /// For backwards compatibility, the default name includes the operations
+      /// collection id, however overriding users must ensure the name binding
+      /// is the parent resource, without the operations collection id.
       /// </summary>
       /// <param name="request">The request to send to the server.</param>
       /// <param name="headers">The initial metadata to send with the call. This parameter is optional.</param>
@@ -220,8 +269,13 @@ namespace Google.LongRunning {
       /// Lists operations that match the specified filter in the request. If the
       /// server doesn't support this method, it returns `UNIMPLEMENTED`.
       ///
-      /// NOTE: the `name` binding below allows API services to override the binding
-      /// to use different resource name schemes, such as `users/*/operations`.
+      /// NOTE: the `name` binding allows API services to override the binding
+      /// to use different resource name schemes, such as `users/*/operations`. To
+      /// override the binding, API services can add a binding such as
+      /// `"/v1/{name=users/*}/operations"` to their service configuration.
+      /// For backwards compatibility, the default name includes the operations
+      /// collection id, however overriding users must ensure the name binding
+      /// is the parent resource, without the operations collection id.
       /// </summary>
       /// <param name="request">The request to send to the server.</param>
       /// <param name="options">The options for the call.</param>
@@ -418,6 +472,82 @@ namespace Google.LongRunning {
       {
         return CallInvoker.AsyncUnaryCall(__Method_CancelOperation, null, options, request);
       }
+      /// <summary>
+      /// Waits for the specified long-running operation until it is done or reaches
+      /// at most a specified timeout, returning the latest state.  If the operation
+      /// is already done, the latest state is immediately returned.  If the timeout
+      /// specified is greater than the default HTTP/RPC timeout, the HTTP/RPC
+      /// timeout is used.  If the server does not support this method, it returns
+      /// `google.rpc.Code.UNIMPLEMENTED`.
+      /// Note that this method is on a best-effort basis.  It may return the latest
+      /// state before the specified timeout (including immediately), meaning even an
+      /// immediate response is no guarantee that the operation is done.
+      /// </summary>
+      /// <param name="request">The request to send to the server.</param>
+      /// <param name="headers">The initial metadata to send with the call. This parameter is optional.</param>
+      /// <param name="deadline">An optional deadline for the call. The call will be cancelled if deadline is hit.</param>
+      /// <param name="cancellationToken">An optional token for canceling the call.</param>
+      /// <returns>The response received from the server.</returns>
+      public virtual global::Google.LongRunning.Operation WaitOperation(global::Google.LongRunning.WaitOperationRequest request, grpc::Metadata headers = null, global::System.DateTime? deadline = null, global::System.Threading.CancellationToken cancellationToken = default(global::System.Threading.CancellationToken))
+      {
+        return WaitOperation(request, new grpc::CallOptions(headers, deadline, cancellationToken));
+      }
+      /// <summary>
+      /// Waits for the specified long-running operation until it is done or reaches
+      /// at most a specified timeout, returning the latest state.  If the operation
+      /// is already done, the latest state is immediately returned.  If the timeout
+      /// specified is greater than the default HTTP/RPC timeout, the HTTP/RPC
+      /// timeout is used.  If the server does not support this method, it returns
+      /// `google.rpc.Code.UNIMPLEMENTED`.
+      /// Note that this method is on a best-effort basis.  It may return the latest
+      /// state before the specified timeout (including immediately), meaning even an
+      /// immediate response is no guarantee that the operation is done.
+      /// </summary>
+      /// <param name="request">The request to send to the server.</param>
+      /// <param name="options">The options for the call.</param>
+      /// <returns>The response received from the server.</returns>
+      public virtual global::Google.LongRunning.Operation WaitOperation(global::Google.LongRunning.WaitOperationRequest request, grpc::CallOptions options)
+      {
+        return CallInvoker.BlockingUnaryCall(__Method_WaitOperation, null, options, request);
+      }
+      /// <summary>
+      /// Waits for the specified long-running operation until it is done or reaches
+      /// at most a specified timeout, returning the latest state.  If the operation
+      /// is already done, the latest state is immediately returned.  If the timeout
+      /// specified is greater than the default HTTP/RPC timeout, the HTTP/RPC
+      /// timeout is used.  If the server does not support this method, it returns
+      /// `google.rpc.Code.UNIMPLEMENTED`.
+      /// Note that this method is on a best-effort basis.  It may return the latest
+      /// state before the specified timeout (including immediately), meaning even an
+      /// immediate response is no guarantee that the operation is done.
+      /// </summary>
+      /// <param name="request">The request to send to the server.</param>
+      /// <param name="headers">The initial metadata to send with the call. This parameter is optional.</param>
+      /// <param name="deadline">An optional deadline for the call. The call will be cancelled if deadline is hit.</param>
+      /// <param name="cancellationToken">An optional token for canceling the call.</param>
+      /// <returns>The call object.</returns>
+      public virtual grpc::AsyncUnaryCall<global::Google.LongRunning.Operation> WaitOperationAsync(global::Google.LongRunning.WaitOperationRequest request, grpc::Metadata headers = null, global::System.DateTime? deadline = null, global::System.Threading.CancellationToken cancellationToken = default(global::System.Threading.CancellationToken))
+      {
+        return WaitOperationAsync(request, new grpc::CallOptions(headers, deadline, cancellationToken));
+      }
+      /// <summary>
+      /// Waits for the specified long-running operation until it is done or reaches
+      /// at most a specified timeout, returning the latest state.  If the operation
+      /// is already done, the latest state is immediately returned.  If the timeout
+      /// specified is greater than the default HTTP/RPC timeout, the HTTP/RPC
+      /// timeout is used.  If the server does not support this method, it returns
+      /// `google.rpc.Code.UNIMPLEMENTED`.
+      /// Note that this method is on a best-effort basis.  It may return the latest
+      /// state before the specified timeout (including immediately), meaning even an
+      /// immediate response is no guarantee that the operation is done.
+      /// </summary>
+      /// <param name="request">The request to send to the server.</param>
+      /// <param name="options">The options for the call.</param>
+      /// <returns>The call object.</returns>
+      public virtual grpc::AsyncUnaryCall<global::Google.LongRunning.Operation> WaitOperationAsync(global::Google.LongRunning.WaitOperationRequest request, grpc::CallOptions options)
+      {
+        return CallInvoker.AsyncUnaryCall(__Method_WaitOperation, null, options, request);
+      }
       /// <summary>Creates a new instance of client from given <c>ClientBaseConfiguration</c>.</summary>
       protected override OperationsClient NewInstance(ClientBaseConfiguration configuration)
       {
@@ -433,7 +563,21 @@ namespace Google.LongRunning {
           .AddMethod(__Method_ListOperations, serviceImpl.ListOperations)
           .AddMethod(__Method_GetOperation, serviceImpl.GetOperation)
           .AddMethod(__Method_DeleteOperation, serviceImpl.DeleteOperation)
-          .AddMethod(__Method_CancelOperation, serviceImpl.CancelOperation).Build();
+          .AddMethod(__Method_CancelOperation, serviceImpl.CancelOperation)
+          .AddMethod(__Method_WaitOperation, serviceImpl.WaitOperation).Build();
+    }
+
+    /// <summary>Register service method with a service binder with or without implementation. Useful when customizing the  service binding logic.
+    /// Note: this method is part of an experimental API that can change or be removed without any prior notice.</summary>
+    /// <param name="serviceBinder">Service methods will be bound by calling <c>AddMethod</c> on this object.</param>
+    /// <param name="serviceImpl">An object implementing the server-side handling logic.</param>
+    public static void BindService(grpc::ServiceBinderBase serviceBinder, OperationsBase serviceImpl)
+    {
+      serviceBinder.AddMethod(__Method_ListOperations, serviceImpl == null ? null : new grpc::UnaryServerMethod<global::Google.LongRunning.ListOperationsRequest, global::Google.LongRunning.ListOperationsResponse>(serviceImpl.ListOperations));
+      serviceBinder.AddMethod(__Method_GetOperation, serviceImpl == null ? null : new grpc::UnaryServerMethod<global::Google.LongRunning.GetOperationRequest, global::Google.LongRunning.Operation>(serviceImpl.GetOperation));
+      serviceBinder.AddMethod(__Method_DeleteOperation, serviceImpl == null ? null : new grpc::UnaryServerMethod<global::Google.LongRunning.DeleteOperationRequest, global::Google.Protobuf.WellKnownTypes.Empty>(serviceImpl.DeleteOperation));
+      serviceBinder.AddMethod(__Method_CancelOperation, serviceImpl == null ? null : new grpc::UnaryServerMethod<global::Google.LongRunning.CancelOperationRequest, global::Google.Protobuf.WellKnownTypes.Empty>(serviceImpl.CancelOperation));
+      serviceBinder.AddMethod(__Method_WaitOperation, serviceImpl == null ? null : new grpc::UnaryServerMethod<global::Google.LongRunning.WaitOperationRequest, global::Google.LongRunning.Operation>(serviceImpl.WaitOperation));
     }
 
   }

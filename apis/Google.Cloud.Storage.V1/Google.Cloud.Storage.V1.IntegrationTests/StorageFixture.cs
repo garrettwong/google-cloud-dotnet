@@ -21,7 +21,6 @@ using System.Collections.Generic;
 using System.Diagnostics;
 using System.IO;
 using System.Linq;
-using System.Net;
 using System.Net.Http;
 using System.Reflection;
 using System.Runtime.CompilerServices;
@@ -39,6 +38,7 @@ namespace Google.Cloud.Storage.V1.IntegrationTests
     /// The Google Cloud Project name is fetched from the TEST_PROJECT environment variable.
     /// </summary>
     [CollectionDefinition(nameof(StorageFixture))]
+    [FileLoggerBeforeAfterTest]
     public sealed class StorageFixture : CloudProjectFixtureBase, ICollectionFixture<StorageFixture>
     {
         internal const string CrossLanguageTestBucket = "storage-library-test-bucket";
@@ -172,6 +172,9 @@ namespace Google.Cloud.Storage.V1.IntegrationTests
 
                 RequesterPaysBucket = CreateRequesterPaysBucket();
             }
+
+            // Clean up any HMAC keys left over previous runs.
+            PurgeHmacKeys();
         }
 
         private static StorageClient CreateRequesterPaysClient()
@@ -181,23 +184,62 @@ namespace Google.Cloud.Storage.V1.IntegrationTests
             {
                 return null;
             }
-            using (var stream = File.OpenRead(file))
-            {
-                var credential = GoogleCredential.FromStream(stream);
-                return StorageClient.Create(credential);
-            }
+            var credential = GoogleCredential.FromFile(file);
+            return StorageClient.Create(credential);
         }
 
         private string CreateRequesterPaysBucket()
         {
             string name = IdGenerator.FromDateTime(prefix: "dotnet-requesterpays-");
-            RequesterPaysClient.CreateBucket(RequesterPaysProjectId, new Bucket { Name = name, Billing = new Bucket.BillingData { RequesterPays = true } },
-                new CreateBucketOptions { PredefinedAcl = PredefinedBucketAcl.PublicReadWrite, PredefinedDefaultObjectAcl = PredefinedObjectAcl.PublicRead });
-            SleepAfterBucketCreateDelete();
-            // TODO: We shouldn't need the project ID here.
-            RequesterPaysClient.UploadObject(name, SmallObject, "text/plain", new MemoryStream(SmallContent),
-                new UploadObjectOptions { UserProject = RequesterPaysProjectId });
+            CreateBucket();
+            AddServiceAccountBinding();
+            CreateObject();
             return name;
+
+            // Adds the service account associated with the application default credentials as a writer for the bucket.
+            // Note: this assumes the default credentials *are* a service account. If we've got a compute credential,
+            // this will cause a problem - but in reality, our tests always run with a service account.
+            void AddServiceAccountBinding()
+            {
+                var credential = (ServiceAccountCredential) GoogleCredential.GetApplicationDefault().UnderlyingCredential;
+                string serviceAccountEmail = credential.Id;
+
+                var policy = RequesterPaysClient.GetBucketIamPolicy(name,
+                    new GetBucketIamPolicyOptions { UserProject = RequesterPaysProjectId });
+                // Note: we assume there are no conditions in the policy, as we've only just created the bucket.
+                var writerRole = "roles/storage.objectAdmin";
+                Policy.BindingsData writerBinding = null;
+                foreach (var binding in policy.Bindings)
+                {
+                    if (binding.Role == writerRole)
+                    {
+                        writerBinding = binding;
+                        break;
+                    }
+                }
+                if (writerBinding == null)
+                {
+                    writerBinding = new Policy.BindingsData { Role = writerRole, Members = new List<string>() };
+                    policy.Bindings.Add(writerBinding);
+                }
+                writerBinding.Members.Add($"serviceAccount:{serviceAccountEmail}");
+                RequesterPaysClient.SetBucketIamPolicy(name, policy,
+                    new SetBucketIamPolicyOptions { UserProject = RequesterPaysProjectId });
+            }
+
+            void CreateBucket()
+            {
+                RequesterPaysClient.CreateBucket(RequesterPaysProjectId,
+                    new Bucket { Name = name, Billing = new Bucket.BillingData { RequesterPays = true } });
+                SleepAfterBucketCreateDelete();
+            }
+
+            void CreateObject()
+            {
+                RequesterPaysClient.UploadObject(name, SmallObject, "text/plain", new MemoryStream(SmallContent),
+                    new UploadObjectOptions { UserProject = RequesterPaysProjectId });
+            }
+            
         }
 
         internal Bucket CreateBucket(string name, bool multiVersion)
@@ -315,6 +357,7 @@ namespace Google.Cloud.Storage.V1.IntegrationTests
             {
                 DeleteBucket(RequesterPaysClient, RequesterPaysBucket, RequesterPaysProjectId);
             }
+            PurgeHmacKeys();
         }
 
         private void DeleteBucket(StorageClient client, string bucket, string userProject)
@@ -335,7 +378,7 @@ namespace Google.Cloud.Storage.V1.IntegrationTests
         /// Sets the labels on <see cref="LabelsTestBucket"/> without using any of the client *Labels methods.
         /// Any old labels are wiped.
         /// </summary>
-        public void SetUpLabels(Dictionary<string, string> labels)
+        public void SetUpLabels(Dictionary<string, string> labels, [CallerMemberName] string callerName = null)
         {
             // Just avoid mutating the parameter...
             labels = new Dictionary<string, string>(labels);
@@ -344,7 +387,45 @@ namespace Google.Cloud.Storage.V1.IntegrationTests
             {
                 labels[key] = null;
             }
+
+            FileLogger.Log($"Starting patching {LabelsTestBucket} by {callerName}.");
             Client.PatchBucket(new Bucket { Name = LabelsTestBucket, Labels = labels });
+            FileLogger.Log($"Finished patching {LabelsTestBucket} by {callerName}.");
+
+            SleepAfterBucketCreateDelete();
+        }
+
+        /// <summary>
+        /// Clears the labels on <see cref="LabelsTestBucket"/> without using any of the client *Labels methods.
+        /// </summary>
+        public void ClearLabels([CallerMemberName] string callerName = null)
+        {
+            var oldLabels = Client.GetBucket(LabelsTestBucket).Labels ?? new Dictionary<string, string>();
+            var cleanLabels = new Dictionary<string, string>();
+            foreach (var key in oldLabels.Keys)
+            {
+                cleanLabels.Add(key, null);
+            }
+
+            FileLogger.Log($"Starting clearing labels for {LabelsTestBucket} by {callerName}.");
+            Client.PatchBucket(new Bucket { Name = LabelsTestBucket, Labels = cleanLabels });
+            FileLogger.Log($"Finished clearing labels for {LabelsTestBucket} by {callerName}.");
+
+            SleepAfterBucketCreateDelete();
+        }
+
+        private void PurgeHmacKeys()
+        {
+            var keys = Client.ListHmacKeys(ProjectId).ToList();
+            foreach (var key in keys)
+            {
+                if (key.State != HmacKeyStates.Inactive)
+                {
+                    key.State = HmacKeyStates.Inactive;
+                    Client.UpdateHmacKey(key);
+                }
+                Client.DeleteHmacKey(ProjectId, key.AccessId);
+            }
         }
 
         private class DelayTestInfo

@@ -3,7 +3,7 @@
 //     source: google/cloud/dialogflow/v2/context.proto
 // </auto-generated>
 // Original file comments:
-// Copyright 2018 Google Inc.
+// Copyright 2019 Google LLC.
 //
 // Licensed under the Apache License, Version 2.0 (the "License");
 // you may not use this file except in compliance with the License.
@@ -17,7 +17,8 @@
 // See the License for the specific language governing permissions and
 // limitations under the License.
 //
-#pragma warning disable 1591
+//
+#pragma warning disable 0414, 1591
 #region Designer generated code
 
 using grpc = global::Grpc.Core;
@@ -36,67 +37,68 @@ namespace Google.Cloud.Dialogflow.V2 {
   /// [StreamingDetectIntent][google.cloud.dialogflow.v2.Sessions.StreamingDetectIntent]) request,
   /// or as output contexts included in the returned intent.
   /// Contexts expire when an intent is matched, after the number of `DetectIntent`
-  /// requests specified by the `lifespan_count` parameter, or after 10 minutes
+  /// requests specified by the `lifespan_count` parameter, or after 20 minutes
   /// if no intents are matched for a `DetectIntent` request.
   ///
   /// For more information about contexts, see the
-  /// [Dialogflow documentation](https://dialogflow.com/docs/contexts).
+  /// [Dialogflow
+  /// documentation](https://cloud.google.com/dialogflow/docs/contexts-overview).
   /// </summary>
   public static partial class Contexts
   {
     static readonly string __ServiceName = "google.cloud.dialogflow.v2.Contexts";
 
-    static readonly grpc::Marshaller<global::Google.Cloud.Dialogflow.V2.ListContextsRequest> __Marshaller_ListContextsRequest = grpc::Marshallers.Create((arg) => global::Google.Protobuf.MessageExtensions.ToByteArray(arg), global::Google.Cloud.Dialogflow.V2.ListContextsRequest.Parser.ParseFrom);
-    static readonly grpc::Marshaller<global::Google.Cloud.Dialogflow.V2.ListContextsResponse> __Marshaller_ListContextsResponse = grpc::Marshallers.Create((arg) => global::Google.Protobuf.MessageExtensions.ToByteArray(arg), global::Google.Cloud.Dialogflow.V2.ListContextsResponse.Parser.ParseFrom);
-    static readonly grpc::Marshaller<global::Google.Cloud.Dialogflow.V2.GetContextRequest> __Marshaller_GetContextRequest = grpc::Marshallers.Create((arg) => global::Google.Protobuf.MessageExtensions.ToByteArray(arg), global::Google.Cloud.Dialogflow.V2.GetContextRequest.Parser.ParseFrom);
-    static readonly grpc::Marshaller<global::Google.Cloud.Dialogflow.V2.Context> __Marshaller_Context = grpc::Marshallers.Create((arg) => global::Google.Protobuf.MessageExtensions.ToByteArray(arg), global::Google.Cloud.Dialogflow.V2.Context.Parser.ParseFrom);
-    static readonly grpc::Marshaller<global::Google.Cloud.Dialogflow.V2.CreateContextRequest> __Marshaller_CreateContextRequest = grpc::Marshallers.Create((arg) => global::Google.Protobuf.MessageExtensions.ToByteArray(arg), global::Google.Cloud.Dialogflow.V2.CreateContextRequest.Parser.ParseFrom);
-    static readonly grpc::Marshaller<global::Google.Cloud.Dialogflow.V2.UpdateContextRequest> __Marshaller_UpdateContextRequest = grpc::Marshallers.Create((arg) => global::Google.Protobuf.MessageExtensions.ToByteArray(arg), global::Google.Cloud.Dialogflow.V2.UpdateContextRequest.Parser.ParseFrom);
-    static readonly grpc::Marshaller<global::Google.Cloud.Dialogflow.V2.DeleteContextRequest> __Marshaller_DeleteContextRequest = grpc::Marshallers.Create((arg) => global::Google.Protobuf.MessageExtensions.ToByteArray(arg), global::Google.Cloud.Dialogflow.V2.DeleteContextRequest.Parser.ParseFrom);
-    static readonly grpc::Marshaller<global::Google.Protobuf.WellKnownTypes.Empty> __Marshaller_Empty = grpc::Marshallers.Create((arg) => global::Google.Protobuf.MessageExtensions.ToByteArray(arg), global::Google.Protobuf.WellKnownTypes.Empty.Parser.ParseFrom);
-    static readonly grpc::Marshaller<global::Google.Cloud.Dialogflow.V2.DeleteAllContextsRequest> __Marshaller_DeleteAllContextsRequest = grpc::Marshallers.Create((arg) => global::Google.Protobuf.MessageExtensions.ToByteArray(arg), global::Google.Cloud.Dialogflow.V2.DeleteAllContextsRequest.Parser.ParseFrom);
+    static readonly grpc::Marshaller<global::Google.Cloud.Dialogflow.V2.ListContextsRequest> __Marshaller_google_cloud_dialogflow_v2_ListContextsRequest = grpc::Marshallers.Create((arg) => global::Google.Protobuf.MessageExtensions.ToByteArray(arg), global::Google.Cloud.Dialogflow.V2.ListContextsRequest.Parser.ParseFrom);
+    static readonly grpc::Marshaller<global::Google.Cloud.Dialogflow.V2.ListContextsResponse> __Marshaller_google_cloud_dialogflow_v2_ListContextsResponse = grpc::Marshallers.Create((arg) => global::Google.Protobuf.MessageExtensions.ToByteArray(arg), global::Google.Cloud.Dialogflow.V2.ListContextsResponse.Parser.ParseFrom);
+    static readonly grpc::Marshaller<global::Google.Cloud.Dialogflow.V2.GetContextRequest> __Marshaller_google_cloud_dialogflow_v2_GetContextRequest = grpc::Marshallers.Create((arg) => global::Google.Protobuf.MessageExtensions.ToByteArray(arg), global::Google.Cloud.Dialogflow.V2.GetContextRequest.Parser.ParseFrom);
+    static readonly grpc::Marshaller<global::Google.Cloud.Dialogflow.V2.Context> __Marshaller_google_cloud_dialogflow_v2_Context = grpc::Marshallers.Create((arg) => global::Google.Protobuf.MessageExtensions.ToByteArray(arg), global::Google.Cloud.Dialogflow.V2.Context.Parser.ParseFrom);
+    static readonly grpc::Marshaller<global::Google.Cloud.Dialogflow.V2.CreateContextRequest> __Marshaller_google_cloud_dialogflow_v2_CreateContextRequest = grpc::Marshallers.Create((arg) => global::Google.Protobuf.MessageExtensions.ToByteArray(arg), global::Google.Cloud.Dialogflow.V2.CreateContextRequest.Parser.ParseFrom);
+    static readonly grpc::Marshaller<global::Google.Cloud.Dialogflow.V2.UpdateContextRequest> __Marshaller_google_cloud_dialogflow_v2_UpdateContextRequest = grpc::Marshallers.Create((arg) => global::Google.Protobuf.MessageExtensions.ToByteArray(arg), global::Google.Cloud.Dialogflow.V2.UpdateContextRequest.Parser.ParseFrom);
+    static readonly grpc::Marshaller<global::Google.Cloud.Dialogflow.V2.DeleteContextRequest> __Marshaller_google_cloud_dialogflow_v2_DeleteContextRequest = grpc::Marshallers.Create((arg) => global::Google.Protobuf.MessageExtensions.ToByteArray(arg), global::Google.Cloud.Dialogflow.V2.DeleteContextRequest.Parser.ParseFrom);
+    static readonly grpc::Marshaller<global::Google.Protobuf.WellKnownTypes.Empty> __Marshaller_google_protobuf_Empty = grpc::Marshallers.Create((arg) => global::Google.Protobuf.MessageExtensions.ToByteArray(arg), global::Google.Protobuf.WellKnownTypes.Empty.Parser.ParseFrom);
+    static readonly grpc::Marshaller<global::Google.Cloud.Dialogflow.V2.DeleteAllContextsRequest> __Marshaller_google_cloud_dialogflow_v2_DeleteAllContextsRequest = grpc::Marshallers.Create((arg) => global::Google.Protobuf.MessageExtensions.ToByteArray(arg), global::Google.Cloud.Dialogflow.V2.DeleteAllContextsRequest.Parser.ParseFrom);
 
     static readonly grpc::Method<global::Google.Cloud.Dialogflow.V2.ListContextsRequest, global::Google.Cloud.Dialogflow.V2.ListContextsResponse> __Method_ListContexts = new grpc::Method<global::Google.Cloud.Dialogflow.V2.ListContextsRequest, global::Google.Cloud.Dialogflow.V2.ListContextsResponse>(
         grpc::MethodType.Unary,
         __ServiceName,
         "ListContexts",
-        __Marshaller_ListContextsRequest,
-        __Marshaller_ListContextsResponse);
+        __Marshaller_google_cloud_dialogflow_v2_ListContextsRequest,
+        __Marshaller_google_cloud_dialogflow_v2_ListContextsResponse);
 
     static readonly grpc::Method<global::Google.Cloud.Dialogflow.V2.GetContextRequest, global::Google.Cloud.Dialogflow.V2.Context> __Method_GetContext = new grpc::Method<global::Google.Cloud.Dialogflow.V2.GetContextRequest, global::Google.Cloud.Dialogflow.V2.Context>(
         grpc::MethodType.Unary,
         __ServiceName,
         "GetContext",
-        __Marshaller_GetContextRequest,
-        __Marshaller_Context);
+        __Marshaller_google_cloud_dialogflow_v2_GetContextRequest,
+        __Marshaller_google_cloud_dialogflow_v2_Context);
 
     static readonly grpc::Method<global::Google.Cloud.Dialogflow.V2.CreateContextRequest, global::Google.Cloud.Dialogflow.V2.Context> __Method_CreateContext = new grpc::Method<global::Google.Cloud.Dialogflow.V2.CreateContextRequest, global::Google.Cloud.Dialogflow.V2.Context>(
         grpc::MethodType.Unary,
         __ServiceName,
         "CreateContext",
-        __Marshaller_CreateContextRequest,
-        __Marshaller_Context);
+        __Marshaller_google_cloud_dialogflow_v2_CreateContextRequest,
+        __Marshaller_google_cloud_dialogflow_v2_Context);
 
     static readonly grpc::Method<global::Google.Cloud.Dialogflow.V2.UpdateContextRequest, global::Google.Cloud.Dialogflow.V2.Context> __Method_UpdateContext = new grpc::Method<global::Google.Cloud.Dialogflow.V2.UpdateContextRequest, global::Google.Cloud.Dialogflow.V2.Context>(
         grpc::MethodType.Unary,
         __ServiceName,
         "UpdateContext",
-        __Marshaller_UpdateContextRequest,
-        __Marshaller_Context);
+        __Marshaller_google_cloud_dialogflow_v2_UpdateContextRequest,
+        __Marshaller_google_cloud_dialogflow_v2_Context);
 
     static readonly grpc::Method<global::Google.Cloud.Dialogflow.V2.DeleteContextRequest, global::Google.Protobuf.WellKnownTypes.Empty> __Method_DeleteContext = new grpc::Method<global::Google.Cloud.Dialogflow.V2.DeleteContextRequest, global::Google.Protobuf.WellKnownTypes.Empty>(
         grpc::MethodType.Unary,
         __ServiceName,
         "DeleteContext",
-        __Marshaller_DeleteContextRequest,
-        __Marshaller_Empty);
+        __Marshaller_google_cloud_dialogflow_v2_DeleteContextRequest,
+        __Marshaller_google_protobuf_Empty);
 
     static readonly grpc::Method<global::Google.Cloud.Dialogflow.V2.DeleteAllContextsRequest, global::Google.Protobuf.WellKnownTypes.Empty> __Method_DeleteAllContexts = new grpc::Method<global::Google.Cloud.Dialogflow.V2.DeleteAllContextsRequest, global::Google.Protobuf.WellKnownTypes.Empty>(
         grpc::MethodType.Unary,
         __ServiceName,
         "DeleteAllContexts",
-        __Marshaller_DeleteAllContextsRequest,
-        __Marshaller_Empty);
+        __Marshaller_google_cloud_dialogflow_v2_DeleteAllContextsRequest,
+        __Marshaller_google_protobuf_Empty);
 
     /// <summary>Service descriptor</summary>
     public static global::Google.Protobuf.Reflection.ServiceDescriptor Descriptor
@@ -105,6 +107,7 @@ namespace Google.Cloud.Dialogflow.V2 {
     }
 
     /// <summary>Base class for server-side implementations of Contexts</summary>
+    [grpc::BindServiceMethod(typeof(Contexts), "BindService")]
     public abstract partial class ContextsBase
     {
       /// <summary>
@@ -131,6 +134,8 @@ namespace Google.Cloud.Dialogflow.V2 {
 
       /// <summary>
       /// Creates a context.
+      ///
+      /// If the specified context already exists, overrides the context.
       /// </summary>
       /// <param name="request">The request received from the client.</param>
       /// <param name="context">The context of the server-side call handler being invoked.</param>
@@ -288,6 +293,8 @@ namespace Google.Cloud.Dialogflow.V2 {
       }
       /// <summary>
       /// Creates a context.
+      ///
+      /// If the specified context already exists, overrides the context.
       /// </summary>
       /// <param name="request">The request to send to the server.</param>
       /// <param name="headers">The initial metadata to send with the call. This parameter is optional.</param>
@@ -300,6 +307,8 @@ namespace Google.Cloud.Dialogflow.V2 {
       }
       /// <summary>
       /// Creates a context.
+      ///
+      /// If the specified context already exists, overrides the context.
       /// </summary>
       /// <param name="request">The request to send to the server.</param>
       /// <param name="options">The options for the call.</param>
@@ -310,6 +319,8 @@ namespace Google.Cloud.Dialogflow.V2 {
       }
       /// <summary>
       /// Creates a context.
+      ///
+      /// If the specified context already exists, overrides the context.
       /// </summary>
       /// <param name="request">The request to send to the server.</param>
       /// <param name="headers">The initial metadata to send with the call. This parameter is optional.</param>
@@ -322,6 +333,8 @@ namespace Google.Cloud.Dialogflow.V2 {
       }
       /// <summary>
       /// Creates a context.
+      ///
+      /// If the specified context already exists, overrides the context.
       /// </summary>
       /// <param name="request">The request to send to the server.</param>
       /// <param name="options">The options for the call.</param>
@@ -480,6 +493,20 @@ namespace Google.Cloud.Dialogflow.V2 {
           .AddMethod(__Method_UpdateContext, serviceImpl.UpdateContext)
           .AddMethod(__Method_DeleteContext, serviceImpl.DeleteContext)
           .AddMethod(__Method_DeleteAllContexts, serviceImpl.DeleteAllContexts).Build();
+    }
+
+    /// <summary>Register service method with a service binder with or without implementation. Useful when customizing the  service binding logic.
+    /// Note: this method is part of an experimental API that can change or be removed without any prior notice.</summary>
+    /// <param name="serviceBinder">Service methods will be bound by calling <c>AddMethod</c> on this object.</param>
+    /// <param name="serviceImpl">An object implementing the server-side handling logic.</param>
+    public static void BindService(grpc::ServiceBinderBase serviceBinder, ContextsBase serviceImpl)
+    {
+      serviceBinder.AddMethod(__Method_ListContexts, serviceImpl == null ? null : new grpc::UnaryServerMethod<global::Google.Cloud.Dialogflow.V2.ListContextsRequest, global::Google.Cloud.Dialogflow.V2.ListContextsResponse>(serviceImpl.ListContexts));
+      serviceBinder.AddMethod(__Method_GetContext, serviceImpl == null ? null : new grpc::UnaryServerMethod<global::Google.Cloud.Dialogflow.V2.GetContextRequest, global::Google.Cloud.Dialogflow.V2.Context>(serviceImpl.GetContext));
+      serviceBinder.AddMethod(__Method_CreateContext, serviceImpl == null ? null : new grpc::UnaryServerMethod<global::Google.Cloud.Dialogflow.V2.CreateContextRequest, global::Google.Cloud.Dialogflow.V2.Context>(serviceImpl.CreateContext));
+      serviceBinder.AddMethod(__Method_UpdateContext, serviceImpl == null ? null : new grpc::UnaryServerMethod<global::Google.Cloud.Dialogflow.V2.UpdateContextRequest, global::Google.Cloud.Dialogflow.V2.Context>(serviceImpl.UpdateContext));
+      serviceBinder.AddMethod(__Method_DeleteContext, serviceImpl == null ? null : new grpc::UnaryServerMethod<global::Google.Cloud.Dialogflow.V2.DeleteContextRequest, global::Google.Protobuf.WellKnownTypes.Empty>(serviceImpl.DeleteContext));
+      serviceBinder.AddMethod(__Method_DeleteAllContexts, serviceImpl == null ? null : new grpc::UnaryServerMethod<global::Google.Cloud.Dialogflow.V2.DeleteAllContextsRequest, global::Google.Protobuf.WellKnownTypes.Empty>(serviceImpl.DeleteAllContexts));
     }
 
   }
