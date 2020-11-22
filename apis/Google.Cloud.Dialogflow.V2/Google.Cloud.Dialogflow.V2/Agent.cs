@@ -28,104 +28,112 @@ namespace Google.Cloud.Dialogflow.V2 {
             "Z2xlLmNsb3VkLmRpYWxvZ2Zsb3cudjIaHGdvb2dsZS9hcGkvYW5ub3RhdGlv",
             "bnMucHJvdG8aF2dvb2dsZS9hcGkvY2xpZW50LnByb3RvGh9nb29nbGUvYXBp",
             "L2ZpZWxkX2JlaGF2aW9yLnByb3RvGhlnb29nbGUvYXBpL3Jlc291cmNlLnBy",
-            "b3RvGiNnb29nbGUvbG9uZ3J1bm5pbmcvb3BlcmF0aW9ucy5wcm90bxobZ29v",
-            "Z2xlL3Byb3RvYnVmL2VtcHR5LnByb3RvGiBnb29nbGUvcHJvdG9idWYvZmll",
-            "bGRfbWFzay5wcm90byKwBgoFQWdlbnQSQwoGcGFyZW50GAEgASgJQjPgQQL6",
-            "QS0KK2Nsb3VkcmVzb3VyY2VtYW5hZ2VyLmdvb2dsZWFwaXMuY29tL1Byb2pl",
-            "Y3QSGQoMZGlzcGxheV9uYW1lGAIgASgJQgPgQQISIgoVZGVmYXVsdF9sYW5n",
-            "dWFnZV9jb2RlGAMgASgJQgPgQQISJQoYc3VwcG9ydGVkX2xhbmd1YWdlX2Nv",
-            "ZGVzGAQgAygJQgPgQQESFgoJdGltZV96b25lGAUgASgJQgPgQQISGAoLZGVz",
-            "Y3JpcHRpb24YBiABKAlCA+BBARIXCgphdmF0YXJfdXJpGAcgASgJQgPgQQES",
-            "GwoOZW5hYmxlX2xvZ2dpbmcYCCABKAhCA+BBARJECgptYXRjaF9tb2RlGAkg",
-            "ASgOMisuZ29vZ2xlLmNsb3VkLmRpYWxvZ2Zsb3cudjIuQWdlbnQuTWF0Y2hN",
-            "b2RlQgPgQQESJQoYY2xhc3NpZmljYXRpb25fdGhyZXNob2xkGAogASgCQgPg",
-            "QQESRgoLYXBpX3ZlcnNpb24YDiABKA4yLC5nb29nbGUuY2xvdWQuZGlhbG9n",
-            "Zmxvdy52Mi5BZ2VudC5BcGlWZXJzaW9uQgPgQQESOQoEdGllchgPIAEoDjIm",
-            "Lmdvb2dsZS5jbG91ZC5kaWFsb2dmbG93LnYyLkFnZW50LlRpZXJCA+BBASJW",
-            "CglNYXRjaE1vZGUSGgoWTUFUQ0hfTU9ERV9VTlNQRUNJRklFRBAAEhUKEU1B",
-            "VENIX01PREVfSFlCUklEEAESFgoSTUFUQ0hfTU9ERV9NTF9PTkxZEAIibAoK",
-            "QXBpVmVyc2lvbhIbChdBUElfVkVSU0lPTl9VTlNQRUNJRklFRBAAEhIKDkFQ",
-            "SV9WRVJTSU9OX1YxEAESEgoOQVBJX1ZFUlNJT05fVjIQAhIZChVBUElfVkVS",
-            "U0lPTl9WMl9CRVRBXzEQAyJeCgRUaWVyEhQKEFRJRVJfVU5TUEVDSUZJRUQQ",
-            "ABIRCg1USUVSX1NUQU5EQVJEEAESEwoPVElFUl9FTlRFUlBSSVNFEAISGAoU",
-            "VElFUl9FTlRFUlBSSVNFX1BMVVMQAyJWCg9HZXRBZ2VudFJlcXVlc3QSQwoG",
-            "cGFyZW50GAEgASgJQjPgQQL6QS0KK2Nsb3VkcmVzb3VyY2VtYW5hZ2VyLmdv",
-            "b2dsZWFwaXMuY29tL1Byb2plY3QifgoPU2V0QWdlbnRSZXF1ZXN0EjUKBWFn",
-            "ZW50GAEgASgLMiEuZ29vZ2xlLmNsb3VkLmRpYWxvZ2Zsb3cudjIuQWdlbnRC",
-            "A+BBAhI0Cgt1cGRhdGVfbWFzaxgCIAEoCzIaLmdvb2dsZS5wcm90b2J1Zi5G",
-            "aWVsZE1hc2tCA+BBASJZChJEZWxldGVBZ2VudFJlcXVlc3QSQwoGcGFyZW50",
-            "GAEgASgJQjPgQQL6QS0KK2Nsb3VkcmVzb3VyY2VtYW5hZ2VyLmdvb2dsZWFw",
-            "aXMuY29tL1Byb2plY3QihgEKE1NlYXJjaEFnZW50c1JlcXVlc3QSQwoGcGFy",
-            "ZW50GAEgASgJQjPgQQL6QS0KK2Nsb3VkcmVzb3VyY2VtYW5hZ2VyLmdvb2ds",
-            "ZWFwaXMuY29tL1Byb2plY3QSFgoJcGFnZV9zaXplGAIgASgFQgPgQQESEgoK",
-            "cGFnZV90b2tlbhgDIAEoCSJiChRTZWFyY2hBZ2VudHNSZXNwb25zZRIxCgZh",
-            "Z2VudHMYASADKAsyIS5nb29nbGUuY2xvdWQuZGlhbG9nZmxvdy52Mi5BZ2Vu",
-            "dBIXCg9uZXh0X3BhZ2VfdG9rZW4YAiABKAkiWAoRVHJhaW5BZ2VudFJlcXVl",
-            "c3QSQwoGcGFyZW50GAEgASgJQjPgQQL6QS0KK2Nsb3VkcmVzb3VyY2VtYW5h",
-            "Z2VyLmdvb2dsZWFwaXMuY29tL1Byb2plY3QicQoSRXhwb3J0QWdlbnRSZXF1",
-            "ZXN0EkMKBnBhcmVudBgBIAEoCUIz4EEC+kEtCitjbG91ZHJlc291cmNlbWFu",
-            "YWdlci5nb29nbGVhcGlzLmNvbS9Qcm9qZWN0EhYKCWFnZW50X3VyaRgCIAEo",
-            "CUID4EECIkwKE0V4cG9ydEFnZW50UmVzcG9uc2USEwoJYWdlbnRfdXJpGAEg",
-            "ASgJSAASFwoNYWdlbnRfY29udGVudBgCIAEoDEgAQgcKBWFnZW50IpABChJJ",
-            "bXBvcnRBZ2VudFJlcXVlc3QSQwoGcGFyZW50GAEgASgJQjPgQQL6QS0KK2Ns",
-            "b3VkcmVzb3VyY2VtYW5hZ2VyLmdvb2dsZWFwaXMuY29tL1Byb2plY3QSEwoJ",
-            "YWdlbnRfdXJpGAIgASgJSAASFwoNYWdlbnRfY29udGVudBgDIAEoDEgAQgcK",
-            "BWFnZW50IpEBChNSZXN0b3JlQWdlbnRSZXF1ZXN0EkMKBnBhcmVudBgBIAEo",
+            "b3RvGjJnb29nbGUvY2xvdWQvZGlhbG9nZmxvdy92Mi92YWxpZGF0aW9uX3Jl",
+            "c3VsdC5wcm90bxojZ29vZ2xlL2xvbmdydW5uaW5nL29wZXJhdGlvbnMucHJv",
+            "dG8aG2dvb2dsZS9wcm90b2J1Zi9lbXB0eS5wcm90bxogZ29vZ2xlL3Byb3Rv",
+            "YnVmL2ZpZWxkX21hc2sucHJvdG8i8AYKBUFnZW50EkMKBnBhcmVudBgBIAEo",
             "CUIz4EEC+kEtCitjbG91ZHJlc291cmNlbWFuYWdlci5nb29nbGVhcGlzLmNv",
-            "bS9Qcm9qZWN0EhMKCWFnZW50X3VyaRgCIAEoCUgAEhcKDWFnZW50X2NvbnRl",
-            "bnQYAyABKAxIAEIHCgVhZ2VudDKPDAoGQWdlbnRzEooBCghHZXRBZ2VudBIr",
-            "Lmdvb2dsZS5jbG91ZC5kaWFsb2dmbG93LnYyLkdldEFnZW50UmVxdWVzdBoh",
-            "Lmdvb2dsZS5jbG91ZC5kaWFsb2dmbG93LnYyLkFnZW50Ii6C0+STAh8SHS92",
-            "Mi97cGFyZW50PXByb2plY3RzLyp9L2FnZW502kEGcGFyZW50EpYBCghTZXRB",
-            "Z2VudBIrLmdvb2dsZS5jbG91ZC5kaWFsb2dmbG93LnYyLlNldEFnZW50UmVx",
-            "dWVzdBohLmdvb2dsZS5jbG91ZC5kaWFsb2dmbG93LnYyLkFnZW50IjqC0+ST",
-            "AiwiIy92Mi97YWdlbnQucGFyZW50PXByb2plY3RzLyp9L2FnZW50OgVhZ2Vu",
-            "dNpBBWFnZW50EoUBCgtEZWxldGVBZ2VudBIuLmdvb2dsZS5jbG91ZC5kaWFs",
-            "b2dmbG93LnYyLkRlbGV0ZUFnZW50UmVxdWVzdBoWLmdvb2dsZS5wcm90b2J1",
-            "Zi5FbXB0eSIugtPkkwIfKh0vdjIve3BhcmVudD1wcm9qZWN0cy8qfS9hZ2Vu",
-            "dNpBBnBhcmVudBKoAQoMU2VhcmNoQWdlbnRzEi8uZ29vZ2xlLmNsb3VkLmRp",
-            "YWxvZ2Zsb3cudjIuU2VhcmNoQWdlbnRzUmVxdWVzdBowLmdvb2dsZS5jbG91",
-            "ZC5kaWFsb2dmbG93LnYyLlNlYXJjaEFnZW50c1Jlc3BvbnNlIjWC0+STAiYS",
-            "JC92Mi97cGFyZW50PXByb2plY3RzLyp9L2FnZW50OnNlYXJjaNpBBnBhcmVu",
-            "dBLFAQoKVHJhaW5BZ2VudBItLmdvb2dsZS5jbG91ZC5kaWFsb2dmbG93LnYy",
-            "LlRyYWluQWdlbnRSZXF1ZXN0Gh0uZ29vZ2xlLmxvbmdydW5uaW5nLk9wZXJh",
-            "dGlvbiJpgtPkkwIoIiMvdjIve3BhcmVudD1wcm9qZWN0cy8qfS9hZ2VudDp0",
-            "cmFpbjoBKtpBBnBhcmVudMpBLwoVZ29vZ2xlLnByb3RvYnVmLkVtcHR5EhZn",
-            "b29nbGUucHJvdG9idWYuU3RydWN0EuIBCgtFeHBvcnRBZ2VudBIuLmdvb2ds",
-            "ZS5jbG91ZC5kaWFsb2dmbG93LnYyLkV4cG9ydEFnZW50UmVxdWVzdBodLmdv",
-            "b2dsZS5sb25ncnVubmluZy5PcGVyYXRpb24igwGC0+STAikiJC92Mi97cGFy",
-            "ZW50PXByb2plY3RzLyp9L2FnZW50OmV4cG9ydDoBKtpBBnBhcmVudMpBSAou",
-            "Z29vZ2xlLmNsb3VkLmRpYWxvZ2Zsb3cudjIuRXhwb3J0QWdlbnRSZXNwb25z",
-            "ZRIWZ29vZ2xlLnByb3RvYnVmLlN0cnVjdBK/AQoLSW1wb3J0QWdlbnQSLi5n",
-            "b29nbGUuY2xvdWQuZGlhbG9nZmxvdy52Mi5JbXBvcnRBZ2VudFJlcXVlc3Qa",
-            "HS5nb29nbGUubG9uZ3J1bm5pbmcuT3BlcmF0aW9uImGC0+STAikiJC92Mi97",
-            "cGFyZW50PXByb2plY3RzLyp9L2FnZW50OmltcG9ydDoBKspBLwoVZ29vZ2xl",
-            "LnByb3RvYnVmLkVtcHR5EhZnb29nbGUucHJvdG9idWYuU3RydWN0EsIBCgxS",
-            "ZXN0b3JlQWdlbnQSLy5nb29nbGUuY2xvdWQuZGlhbG9nZmxvdy52Mi5SZXN0",
-            "b3JlQWdlbnRSZXF1ZXN0Gh0uZ29vZ2xlLmxvbmdydW5uaW5nLk9wZXJhdGlv",
-            "biJigtPkkwIqIiUvdjIve3BhcmVudD1wcm9qZWN0cy8qfS9hZ2VudDpyZXN0",
-            "b3JlOgEqykEvChVnb29nbGUucHJvdG9idWYuRW1wdHkSFmdvb2dsZS5wcm90",
-            "b2J1Zi5TdHJ1Y3QaeMpBGWRpYWxvZ2Zsb3cuZ29vZ2xlYXBpcy5jb23SQVlo",
-            "dHRwczovL3d3dy5nb29nbGVhcGlzLmNvbS9hdXRoL2Nsb3VkLXBsYXRmb3Jt",
-            "LGh0dHBzOi8vd3d3Lmdvb2dsZWFwaXMuY29tL2F1dGgvZGlhbG9nZmxvd0KZ",
-            "AQoeY29tLmdvb2dsZS5jbG91ZC5kaWFsb2dmbG93LnYyQgpBZ2VudFByb3Rv",
-            "UAFaRGdvb2dsZS5nb2xhbmcub3JnL2dlbnByb3RvL2dvb2dsZWFwaXMvY2xv",
-            "dWQvZGlhbG9nZmxvdy92MjtkaWFsb2dmbG93+AEBogICREaqAhpHb29nbGUu",
-            "Q2xvdWQuRGlhbG9nZmxvdy5WMmIGcHJvdG8z"));
+            "bS9Qcm9qZWN0EhkKDGRpc3BsYXlfbmFtZRgCIAEoCUID4EECEiIKFWRlZmF1",
+            "bHRfbGFuZ3VhZ2VfY29kZRgDIAEoCUID4EECEiUKGHN1cHBvcnRlZF9sYW5n",
+            "dWFnZV9jb2RlcxgEIAMoCUID4EEBEhYKCXRpbWVfem9uZRgFIAEoCUID4EEC",
+            "EhgKC2Rlc2NyaXB0aW9uGAYgASgJQgPgQQESFwoKYXZhdGFyX3VyaRgHIAEo",
+            "CUID4EEBEhsKDmVuYWJsZV9sb2dnaW5nGAggASgIQgPgQQESRAoKbWF0Y2hf",
+            "bW9kZRgJIAEoDjIrLmdvb2dsZS5jbG91ZC5kaWFsb2dmbG93LnYyLkFnZW50",
+            "Lk1hdGNoTW9kZUID4EEBEiUKGGNsYXNzaWZpY2F0aW9uX3RocmVzaG9sZBgK",
+            "IAEoAkID4EEBEkYKC2FwaV92ZXJzaW9uGA4gASgOMiwuZ29vZ2xlLmNsb3Vk",
+            "LmRpYWxvZ2Zsb3cudjIuQWdlbnQuQXBpVmVyc2lvbkID4EEBEjkKBHRpZXIY",
+            "DyABKA4yJi5nb29nbGUuY2xvdWQuZGlhbG9nZmxvdy52Mi5BZ2VudC5UaWVy",
+            "QgPgQQEiVgoJTWF0Y2hNb2RlEhoKFk1BVENIX01PREVfVU5TUEVDSUZJRUQQ",
+            "ABIVChFNQVRDSF9NT0RFX0hZQlJJRBABEhYKEk1BVENIX01PREVfTUxfT05M",
+            "WRACImwKCkFwaVZlcnNpb24SGwoXQVBJX1ZFUlNJT05fVU5TUEVDSUZJRUQQ",
+            "ABISCg5BUElfVkVSU0lPTl9WMRABEhIKDkFQSV9WRVJTSU9OX1YyEAISGQoV",
+            "QVBJX1ZFUlNJT05fVjJfQkVUQV8xEAMiXgoEVGllchIUChBUSUVSX1VOU1BF",
+            "Q0lGSUVEEAASEQoNVElFUl9TVEFOREFSRBABEhMKD1RJRVJfRU5URVJQUklT",
+            "RRACEhgKFFRJRVJfRU5URVJQUklTRV9QTFVTEAM6PupBOwofZGlhbG9nZmxv",
+            "dy5nb29nbGVhcGlzLmNvbS9BZ2VudBIYcHJvamVjdHMve3Byb2plY3R9L2Fn",
+            "ZW50IkoKD0dldEFnZW50UmVxdWVzdBI3CgZwYXJlbnQYASABKAlCJ+BBAvpB",
+            "IRIfZGlhbG9nZmxvdy5nb29nbGVhcGlzLmNvbS9BZ2VudCJ+Cg9TZXRBZ2Vu",
+            "dFJlcXVlc3QSNQoFYWdlbnQYASABKAsyIS5nb29nbGUuY2xvdWQuZGlhbG9n",
+            "Zmxvdy52Mi5BZ2VudEID4EECEjQKC3VwZGF0ZV9tYXNrGAIgASgLMhouZ29v",
+            "Z2xlLnByb3RvYnVmLkZpZWxkTWFza0ID4EEBIk0KEkRlbGV0ZUFnZW50UmVx",
+            "dWVzdBI3CgZwYXJlbnQYASABKAlCJ+BBAvpBIRIfZGlhbG9nZmxvdy5nb29n",
+            "bGVhcGlzLmNvbS9BZ2VudCJ6ChNTZWFyY2hBZ2VudHNSZXF1ZXN0EjcKBnBh",
+            "cmVudBgBIAEoCUIn4EEC+kEhEh9kaWFsb2dmbG93Lmdvb2dsZWFwaXMuY29t",
+            "L0FnZW50EhYKCXBhZ2Vfc2l6ZRgCIAEoBUID4EEBEhIKCnBhZ2VfdG9rZW4Y",
+            "AyABKAkiYgoUU2VhcmNoQWdlbnRzUmVzcG9uc2USMQoGYWdlbnRzGAEgAygL",
+            "MiEuZ29vZ2xlLmNsb3VkLmRpYWxvZ2Zsb3cudjIuQWdlbnQSFwoPbmV4dF9w",
+            "YWdlX3Rva2VuGAIgASgJIkwKEVRyYWluQWdlbnRSZXF1ZXN0EjcKBnBhcmVu",
+            "dBgBIAEoCUIn4EEC+kEhEh9kaWFsb2dmbG93Lmdvb2dsZWFwaXMuY29tL0Fn",
+            "ZW50ImUKEkV4cG9ydEFnZW50UmVxdWVzdBI3CgZwYXJlbnQYASABKAlCJ+BB",
+            "AvpBIRIfZGlhbG9nZmxvdy5nb29nbGVhcGlzLmNvbS9BZ2VudBIWCglhZ2Vu",
+            "dF91cmkYAiABKAlCA+BBAiJMChNFeHBvcnRBZ2VudFJlc3BvbnNlEhMKCWFn",
+            "ZW50X3VyaRgBIAEoCUgAEhcKDWFnZW50X2NvbnRlbnQYAiABKAxIAEIHCgVh",
+            "Z2VudCKEAQoSSW1wb3J0QWdlbnRSZXF1ZXN0EjcKBnBhcmVudBgBIAEoCUIn",
+            "4EEC+kEhEh9kaWFsb2dmbG93Lmdvb2dsZWFwaXMuY29tL0FnZW50EhMKCWFn",
+            "ZW50X3VyaRgCIAEoCUgAEhcKDWFnZW50X2NvbnRlbnQYAyABKAxIAEIHCgVh",
+            "Z2VudCKFAQoTUmVzdG9yZUFnZW50UmVxdWVzdBI3CgZwYXJlbnQYASABKAlC",
+            "J+BBAvpBIRIfZGlhbG9nZmxvdy5nb29nbGVhcGlzLmNvbS9BZ2VudBITCglh",
+            "Z2VudF91cmkYAiABKAlIABIXCg1hZ2VudF9jb250ZW50GAMgASgMSABCBwoF",
+            "YWdlbnQicQoaR2V0VmFsaWRhdGlvblJlc3VsdFJlcXVlc3QSNwoGcGFyZW50",
+            "GAEgASgJQifgQQL6QSESH2RpYWxvZ2Zsb3cuZ29vZ2xlYXBpcy5jb20vQWdl",
+            "bnQSGgoNbGFuZ3VhZ2VfY29kZRgDIAEoCUID4EEBMsUNCgZBZ2VudHMSigEK",
+            "CEdldEFnZW50EisuZ29vZ2xlLmNsb3VkLmRpYWxvZ2Zsb3cudjIuR2V0QWdl",
+            "bnRSZXF1ZXN0GiEuZ29vZ2xlLmNsb3VkLmRpYWxvZ2Zsb3cudjIuQWdlbnQi",
+            "LoLT5JMCHxIdL3YyL3twYXJlbnQ9cHJvamVjdHMvKn0vYWdlbnTaQQZwYXJl",
+            "bnQSlgEKCFNldEFnZW50EisuZ29vZ2xlLmNsb3VkLmRpYWxvZ2Zsb3cudjIu",
+            "U2V0QWdlbnRSZXF1ZXN0GiEuZ29vZ2xlLmNsb3VkLmRpYWxvZ2Zsb3cudjIu",
+            "QWdlbnQiOoLT5JMCLCIjL3YyL3thZ2VudC5wYXJlbnQ9cHJvamVjdHMvKn0v",
+            "YWdlbnQ6BWFnZW502kEFYWdlbnQShQEKC0RlbGV0ZUFnZW50Ei4uZ29vZ2xl",
+            "LmNsb3VkLmRpYWxvZ2Zsb3cudjIuRGVsZXRlQWdlbnRSZXF1ZXN0GhYuZ29v",
+            "Z2xlLnByb3RvYnVmLkVtcHR5Ii6C0+STAh8qHS92Mi97cGFyZW50PXByb2pl",
+            "Y3RzLyp9L2FnZW502kEGcGFyZW50EqgBCgxTZWFyY2hBZ2VudHMSLy5nb29n",
+            "bGUuY2xvdWQuZGlhbG9nZmxvdy52Mi5TZWFyY2hBZ2VudHNSZXF1ZXN0GjAu",
+            "Z29vZ2xlLmNsb3VkLmRpYWxvZ2Zsb3cudjIuU2VhcmNoQWdlbnRzUmVzcG9u",
+            "c2UiNYLT5JMCJhIkL3YyL3twYXJlbnQ9cHJvamVjdHMvKn0vYWdlbnQ6c2Vh",
+            "cmNo2kEGcGFyZW50EsUBCgpUcmFpbkFnZW50Ei0uZ29vZ2xlLmNsb3VkLmRp",
+            "YWxvZ2Zsb3cudjIuVHJhaW5BZ2VudFJlcXVlc3QaHS5nb29nbGUubG9uZ3J1",
+            "bm5pbmcuT3BlcmF0aW9uImmC0+STAigiIy92Mi97cGFyZW50PXByb2plY3Rz",
+            "Lyp9L2FnZW50OnRyYWluOgEq2kEGcGFyZW50ykEvChVnb29nbGUucHJvdG9i",
+            "dWYuRW1wdHkSFmdvb2dsZS5wcm90b2J1Zi5TdHJ1Y3QS4gEKC0V4cG9ydEFn",
+            "ZW50Ei4uZ29vZ2xlLmNsb3VkLmRpYWxvZ2Zsb3cudjIuRXhwb3J0QWdlbnRS",
+            "ZXF1ZXN0Gh0uZ29vZ2xlLmxvbmdydW5uaW5nLk9wZXJhdGlvbiKDAYLT5JMC",
+            "KSIkL3YyL3twYXJlbnQ9cHJvamVjdHMvKn0vYWdlbnQ6ZXhwb3J0OgEq2kEG",
+            "cGFyZW50ykFICi5nb29nbGUuY2xvdWQuZGlhbG9nZmxvdy52Mi5FeHBvcnRB",
+            "Z2VudFJlc3BvbnNlEhZnb29nbGUucHJvdG9idWYuU3RydWN0Er8BCgtJbXBv",
+            "cnRBZ2VudBIuLmdvb2dsZS5jbG91ZC5kaWFsb2dmbG93LnYyLkltcG9ydEFn",
+            "ZW50UmVxdWVzdBodLmdvb2dsZS5sb25ncnVubmluZy5PcGVyYXRpb24iYYLT",
+            "5JMCKSIkL3YyL3twYXJlbnQ9cHJvamVjdHMvKn0vYWdlbnQ6aW1wb3J0OgEq",
+            "ykEvChVnb29nbGUucHJvdG9idWYuRW1wdHkSFmdvb2dsZS5wcm90b2J1Zi5T",
+            "dHJ1Y3QSwgEKDFJlc3RvcmVBZ2VudBIvLmdvb2dsZS5jbG91ZC5kaWFsb2dm",
+            "bG93LnYyLlJlc3RvcmVBZ2VudFJlcXVlc3QaHS5nb29nbGUubG9uZ3J1bm5p",
+            "bmcuT3BlcmF0aW9uImKC0+STAioiJS92Mi97cGFyZW50PXByb2plY3RzLyp9",
+            "L2FnZW50OnJlc3RvcmU6ASrKQS8KFWdvb2dsZS5wcm90b2J1Zi5FbXB0eRIW",
+            "Z29vZ2xlLnByb3RvYnVmLlN0cnVjdBKzAQoTR2V0VmFsaWRhdGlvblJlc3Vs",
+            "dBI2Lmdvb2dsZS5jbG91ZC5kaWFsb2dmbG93LnYyLkdldFZhbGlkYXRpb25S",
+            "ZXN1bHRSZXF1ZXN0GiwuZ29vZ2xlLmNsb3VkLmRpYWxvZ2Zsb3cudjIuVmFs",
+            "aWRhdGlvblJlc3VsdCI2gtPkkwIwEi4vdjIve3BhcmVudD1wcm9qZWN0cy8q",
+            "fS9hZ2VudC92YWxpZGF0aW9uUmVzdWx0GnjKQRlkaWFsb2dmbG93Lmdvb2ds",
+            "ZWFwaXMuY29t0kFZaHR0cHM6Ly93d3cuZ29vZ2xlYXBpcy5jb20vYXV0aC9j",
+            "bG91ZC1wbGF0Zm9ybSxodHRwczovL3d3dy5nb29nbGVhcGlzLmNvbS9hdXRo",
+            "L2RpYWxvZ2Zsb3dCmQEKHmNvbS5nb29nbGUuY2xvdWQuZGlhbG9nZmxvdy52",
+            "MkIKQWdlbnRQcm90b1ABWkRnb29nbGUuZ29sYW5nLm9yZy9nZW5wcm90by9n",
+            "b29nbGVhcGlzL2Nsb3VkL2RpYWxvZ2Zsb3cvdjI7ZGlhbG9nZmxvd/gBAaIC",
+            "AkRGqgIaR29vZ2xlLkNsb3VkLkRpYWxvZ2Zsb3cuVjJiBnByb3RvMw=="));
       descriptor = pbr::FileDescriptor.FromGeneratedCode(descriptorData,
-          new pbr::FileDescriptor[] { global::Google.Api.AnnotationsReflection.Descriptor, global::Google.Api.ClientReflection.Descriptor, global::Google.Api.FieldBehaviorReflection.Descriptor, global::Google.Api.ResourceReflection.Descriptor, global::Google.LongRunning.OperationsReflection.Descriptor, global::Google.Protobuf.WellKnownTypes.EmptyReflection.Descriptor, global::Google.Protobuf.WellKnownTypes.FieldMaskReflection.Descriptor, },
-          new pbr::GeneratedClrTypeInfo(null, new pbr::GeneratedClrTypeInfo[] {
-            new pbr::GeneratedClrTypeInfo(typeof(global::Google.Cloud.Dialogflow.V2.Agent), global::Google.Cloud.Dialogflow.V2.Agent.Parser, new[]{ "Parent", "DisplayName", "DefaultLanguageCode", "SupportedLanguageCodes", "TimeZone", "Description", "AvatarUri", "EnableLogging", "MatchMode", "ClassificationThreshold", "ApiVersion", "Tier" }, null, new[]{ typeof(global::Google.Cloud.Dialogflow.V2.Agent.Types.MatchMode), typeof(global::Google.Cloud.Dialogflow.V2.Agent.Types.ApiVersion), typeof(global::Google.Cloud.Dialogflow.V2.Agent.Types.Tier) }, null),
-            new pbr::GeneratedClrTypeInfo(typeof(global::Google.Cloud.Dialogflow.V2.GetAgentRequest), global::Google.Cloud.Dialogflow.V2.GetAgentRequest.Parser, new[]{ "Parent" }, null, null, null),
-            new pbr::GeneratedClrTypeInfo(typeof(global::Google.Cloud.Dialogflow.V2.SetAgentRequest), global::Google.Cloud.Dialogflow.V2.SetAgentRequest.Parser, new[]{ "Agent", "UpdateMask" }, null, null, null),
-            new pbr::GeneratedClrTypeInfo(typeof(global::Google.Cloud.Dialogflow.V2.DeleteAgentRequest), global::Google.Cloud.Dialogflow.V2.DeleteAgentRequest.Parser, new[]{ "Parent" }, null, null, null),
-            new pbr::GeneratedClrTypeInfo(typeof(global::Google.Cloud.Dialogflow.V2.SearchAgentsRequest), global::Google.Cloud.Dialogflow.V2.SearchAgentsRequest.Parser, new[]{ "Parent", "PageSize", "PageToken" }, null, null, null),
-            new pbr::GeneratedClrTypeInfo(typeof(global::Google.Cloud.Dialogflow.V2.SearchAgentsResponse), global::Google.Cloud.Dialogflow.V2.SearchAgentsResponse.Parser, new[]{ "Agents", "NextPageToken" }, null, null, null),
-            new pbr::GeneratedClrTypeInfo(typeof(global::Google.Cloud.Dialogflow.V2.TrainAgentRequest), global::Google.Cloud.Dialogflow.V2.TrainAgentRequest.Parser, new[]{ "Parent" }, null, null, null),
-            new pbr::GeneratedClrTypeInfo(typeof(global::Google.Cloud.Dialogflow.V2.ExportAgentRequest), global::Google.Cloud.Dialogflow.V2.ExportAgentRequest.Parser, new[]{ "Parent", "AgentUri" }, null, null, null),
-            new pbr::GeneratedClrTypeInfo(typeof(global::Google.Cloud.Dialogflow.V2.ExportAgentResponse), global::Google.Cloud.Dialogflow.V2.ExportAgentResponse.Parser, new[]{ "AgentUri", "AgentContent" }, new[]{ "Agent" }, null, null),
-            new pbr::GeneratedClrTypeInfo(typeof(global::Google.Cloud.Dialogflow.V2.ImportAgentRequest), global::Google.Cloud.Dialogflow.V2.ImportAgentRequest.Parser, new[]{ "Parent", "AgentUri", "AgentContent" }, new[]{ "Agent" }, null, null),
-            new pbr::GeneratedClrTypeInfo(typeof(global::Google.Cloud.Dialogflow.V2.RestoreAgentRequest), global::Google.Cloud.Dialogflow.V2.RestoreAgentRequest.Parser, new[]{ "Parent", "AgentUri", "AgentContent" }, new[]{ "Agent" }, null, null)
+          new pbr::FileDescriptor[] { global::Google.Api.AnnotationsReflection.Descriptor, global::Google.Api.ClientReflection.Descriptor, global::Google.Api.FieldBehaviorReflection.Descriptor, global::Google.Api.ResourceReflection.Descriptor, global::Google.Cloud.Dialogflow.V2.ValidationResultReflection.Descriptor, global::Google.LongRunning.OperationsReflection.Descriptor, global::Google.Protobuf.WellKnownTypes.EmptyReflection.Descriptor, global::Google.Protobuf.WellKnownTypes.FieldMaskReflection.Descriptor, },
+          new pbr::GeneratedClrTypeInfo(null, null, new pbr::GeneratedClrTypeInfo[] {
+            new pbr::GeneratedClrTypeInfo(typeof(global::Google.Cloud.Dialogflow.V2.Agent), global::Google.Cloud.Dialogflow.V2.Agent.Parser, new[]{ "Parent", "DisplayName", "DefaultLanguageCode", "SupportedLanguageCodes", "TimeZone", "Description", "AvatarUri", "EnableLogging", "MatchMode", "ClassificationThreshold", "ApiVersion", "Tier" }, null, new[]{ typeof(global::Google.Cloud.Dialogflow.V2.Agent.Types.MatchMode), typeof(global::Google.Cloud.Dialogflow.V2.Agent.Types.ApiVersion), typeof(global::Google.Cloud.Dialogflow.V2.Agent.Types.Tier) }, null, null),
+            new pbr::GeneratedClrTypeInfo(typeof(global::Google.Cloud.Dialogflow.V2.GetAgentRequest), global::Google.Cloud.Dialogflow.V2.GetAgentRequest.Parser, new[]{ "Parent" }, null, null, null, null),
+            new pbr::GeneratedClrTypeInfo(typeof(global::Google.Cloud.Dialogflow.V2.SetAgentRequest), global::Google.Cloud.Dialogflow.V2.SetAgentRequest.Parser, new[]{ "Agent", "UpdateMask" }, null, null, null, null),
+            new pbr::GeneratedClrTypeInfo(typeof(global::Google.Cloud.Dialogflow.V2.DeleteAgentRequest), global::Google.Cloud.Dialogflow.V2.DeleteAgentRequest.Parser, new[]{ "Parent" }, null, null, null, null),
+            new pbr::GeneratedClrTypeInfo(typeof(global::Google.Cloud.Dialogflow.V2.SearchAgentsRequest), global::Google.Cloud.Dialogflow.V2.SearchAgentsRequest.Parser, new[]{ "Parent", "PageSize", "PageToken" }, null, null, null, null),
+            new pbr::GeneratedClrTypeInfo(typeof(global::Google.Cloud.Dialogflow.V2.SearchAgentsResponse), global::Google.Cloud.Dialogflow.V2.SearchAgentsResponse.Parser, new[]{ "Agents", "NextPageToken" }, null, null, null, null),
+            new pbr::GeneratedClrTypeInfo(typeof(global::Google.Cloud.Dialogflow.V2.TrainAgentRequest), global::Google.Cloud.Dialogflow.V2.TrainAgentRequest.Parser, new[]{ "Parent" }, null, null, null, null),
+            new pbr::GeneratedClrTypeInfo(typeof(global::Google.Cloud.Dialogflow.V2.ExportAgentRequest), global::Google.Cloud.Dialogflow.V2.ExportAgentRequest.Parser, new[]{ "Parent", "AgentUri" }, null, null, null, null),
+            new pbr::GeneratedClrTypeInfo(typeof(global::Google.Cloud.Dialogflow.V2.ExportAgentResponse), global::Google.Cloud.Dialogflow.V2.ExportAgentResponse.Parser, new[]{ "AgentUri", "AgentContent" }, new[]{ "Agent" }, null, null, null),
+            new pbr::GeneratedClrTypeInfo(typeof(global::Google.Cloud.Dialogflow.V2.ImportAgentRequest), global::Google.Cloud.Dialogflow.V2.ImportAgentRequest.Parser, new[]{ "Parent", "AgentUri", "AgentContent" }, new[]{ "Agent" }, null, null, null),
+            new pbr::GeneratedClrTypeInfo(typeof(global::Google.Cloud.Dialogflow.V2.RestoreAgentRequest), global::Google.Cloud.Dialogflow.V2.RestoreAgentRequest.Parser, new[]{ "Parent", "AgentUri", "AgentContent" }, new[]{ "Agent" }, null, null, null),
+            new pbr::GeneratedClrTypeInfo(typeof(global::Google.Cloud.Dialogflow.V2.GetValidationResultRequest), global::Google.Cloud.Dialogflow.V2.GetValidationResultRequest.Parser, new[]{ "Parent", "LanguageCode" }, null, null, null, null)
           }));
     }
     #endregion
@@ -133,9 +141,21 @@ namespace Google.Cloud.Dialogflow.V2 {
   }
   #region Messages
   /// <summary>
-  /// Represents a conversational agent.
+  /// A Dialogflow agent is a virtual agent that handles conversations with your
+  /// end-users. It is a natural language understanding module that understands the
+  /// nuances of human language. Dialogflow translates end-user text or audio
+  /// during a conversation to structured data that your apps and services can
+  /// understand. You design and build a Dialogflow agent to handle the types of
+  /// conversations required for your system.
+  ///
+  /// For more information about agents, see the
+  /// [Agent guide](https://cloud.google.com/dialogflow/docs/agents-overview).
   /// </summary>
-  public sealed partial class Agent : pb::IMessage<Agent> {
+  public sealed partial class Agent : pb::IMessage<Agent>
+  #if !GOOGLE_PROTOBUF_REFSTRUCT_COMPATIBILITY_MODE
+      , pb::IBufferMessage
+  #endif
+  {
     private static readonly pb::MessageParser<Agent> _parser = new pb::MessageParser<Agent>(() => new Agent());
     private pb::UnknownFieldSet _unknownFields;
     [global::System.Diagnostics.DebuggerNonUserCodeAttribute]
@@ -185,7 +205,7 @@ namespace Google.Cloud.Dialogflow.V2 {
     private string parent_ = "";
     /// <summary>
     /// Required. The project of this agent.
-    /// Format: `projects/&lt;Project ID>`.
+    /// Format: `projects/{Project ID}`.
     /// </summary>
     [global::System.Diagnostics.DebuggerNonUserCodeAttribute]
     public string Parent {
@@ -306,7 +326,7 @@ namespace Google.Cloud.Dialogflow.V2 {
 
     /// <summary>Field number for the "match_mode" field.</summary>
     public const int MatchModeFieldNumber = 9;
-    private global::Google.Cloud.Dialogflow.V2.Agent.Types.MatchMode matchMode_ = 0;
+    private global::Google.Cloud.Dialogflow.V2.Agent.Types.MatchMode matchMode_ = global::Google.Cloud.Dialogflow.V2.Agent.Types.MatchMode.Unspecified;
     /// <summary>
     /// Optional. Determines how intents are detected from user queries.
     /// </summary>
@@ -340,7 +360,7 @@ namespace Google.Cloud.Dialogflow.V2 {
 
     /// <summary>Field number for the "api_version" field.</summary>
     public const int ApiVersionFieldNumber = 14;
-    private global::Google.Cloud.Dialogflow.V2.Agent.Types.ApiVersion apiVersion_ = 0;
+    private global::Google.Cloud.Dialogflow.V2.Agent.Types.ApiVersion apiVersion_ = global::Google.Cloud.Dialogflow.V2.Agent.Types.ApiVersion.Unspecified;
     /// <summary>
     /// Optional. API version displayed in Dialogflow console. If not specified,
     /// V2 API is assumed. Clients are free to query different service endpoints
@@ -357,7 +377,7 @@ namespace Google.Cloud.Dialogflow.V2 {
 
     /// <summary>Field number for the "tier" field.</summary>
     public const int TierFieldNumber = 15;
-    private global::Google.Cloud.Dialogflow.V2.Agent.Types.Tier tier_ = 0;
+    private global::Google.Cloud.Dialogflow.V2.Agent.Types.Tier tier_ = global::Google.Cloud.Dialogflow.V2.Agent.Types.Tier.Unspecified;
     /// <summary>
     /// Optional. The agent tier. If not specified, TIER_STANDARD is assumed.
     /// </summary>
@@ -408,10 +428,10 @@ namespace Google.Cloud.Dialogflow.V2 {
       if (Description.Length != 0) hash ^= Description.GetHashCode();
       if (AvatarUri.Length != 0) hash ^= AvatarUri.GetHashCode();
       if (EnableLogging != false) hash ^= EnableLogging.GetHashCode();
-      if (MatchMode != 0) hash ^= MatchMode.GetHashCode();
+      if (MatchMode != global::Google.Cloud.Dialogflow.V2.Agent.Types.MatchMode.Unspecified) hash ^= MatchMode.GetHashCode();
       if (ClassificationThreshold != 0F) hash ^= pbc::ProtobufEqualityComparers.BitwiseSingleEqualityComparer.GetHashCode(ClassificationThreshold);
-      if (ApiVersion != 0) hash ^= ApiVersion.GetHashCode();
-      if (Tier != 0) hash ^= Tier.GetHashCode();
+      if (ApiVersion != global::Google.Cloud.Dialogflow.V2.Agent.Types.ApiVersion.Unspecified) hash ^= ApiVersion.GetHashCode();
+      if (Tier != global::Google.Cloud.Dialogflow.V2.Agent.Types.Tier.Unspecified) hash ^= Tier.GetHashCode();
       if (_unknownFields != null) {
         hash ^= _unknownFields.GetHashCode();
       }
@@ -425,6 +445,9 @@ namespace Google.Cloud.Dialogflow.V2 {
 
     [global::System.Diagnostics.DebuggerNonUserCodeAttribute]
     public void WriteTo(pb::CodedOutputStream output) {
+    #if !GOOGLE_PROTOBUF_REFSTRUCT_COMPATIBILITY_MODE
+      output.WriteRawMessage(this);
+    #else
       if (Parent.Length != 0) {
         output.WriteRawTag(10);
         output.WriteString(Parent);
@@ -454,7 +477,7 @@ namespace Google.Cloud.Dialogflow.V2 {
         output.WriteRawTag(64);
         output.WriteBool(EnableLogging);
       }
-      if (MatchMode != 0) {
+      if (MatchMode != global::Google.Cloud.Dialogflow.V2.Agent.Types.MatchMode.Unspecified) {
         output.WriteRawTag(72);
         output.WriteEnum((int) MatchMode);
       }
@@ -462,18 +485,73 @@ namespace Google.Cloud.Dialogflow.V2 {
         output.WriteRawTag(85);
         output.WriteFloat(ClassificationThreshold);
       }
-      if (ApiVersion != 0) {
+      if (ApiVersion != global::Google.Cloud.Dialogflow.V2.Agent.Types.ApiVersion.Unspecified) {
         output.WriteRawTag(112);
         output.WriteEnum((int) ApiVersion);
       }
-      if (Tier != 0) {
+      if (Tier != global::Google.Cloud.Dialogflow.V2.Agent.Types.Tier.Unspecified) {
         output.WriteRawTag(120);
         output.WriteEnum((int) Tier);
       }
       if (_unknownFields != null) {
         _unknownFields.WriteTo(output);
       }
+    #endif
     }
+
+    #if !GOOGLE_PROTOBUF_REFSTRUCT_COMPATIBILITY_MODE
+    [global::System.Diagnostics.DebuggerNonUserCodeAttribute]
+    void pb::IBufferMessage.InternalWriteTo(ref pb::WriteContext output) {
+      if (Parent.Length != 0) {
+        output.WriteRawTag(10);
+        output.WriteString(Parent);
+      }
+      if (DisplayName.Length != 0) {
+        output.WriteRawTag(18);
+        output.WriteString(DisplayName);
+      }
+      if (DefaultLanguageCode.Length != 0) {
+        output.WriteRawTag(26);
+        output.WriteString(DefaultLanguageCode);
+      }
+      supportedLanguageCodes_.WriteTo(ref output, _repeated_supportedLanguageCodes_codec);
+      if (TimeZone.Length != 0) {
+        output.WriteRawTag(42);
+        output.WriteString(TimeZone);
+      }
+      if (Description.Length != 0) {
+        output.WriteRawTag(50);
+        output.WriteString(Description);
+      }
+      if (AvatarUri.Length != 0) {
+        output.WriteRawTag(58);
+        output.WriteString(AvatarUri);
+      }
+      if (EnableLogging != false) {
+        output.WriteRawTag(64);
+        output.WriteBool(EnableLogging);
+      }
+      if (MatchMode != global::Google.Cloud.Dialogflow.V2.Agent.Types.MatchMode.Unspecified) {
+        output.WriteRawTag(72);
+        output.WriteEnum((int) MatchMode);
+      }
+      if (ClassificationThreshold != 0F) {
+        output.WriteRawTag(85);
+        output.WriteFloat(ClassificationThreshold);
+      }
+      if (ApiVersion != global::Google.Cloud.Dialogflow.V2.Agent.Types.ApiVersion.Unspecified) {
+        output.WriteRawTag(112);
+        output.WriteEnum((int) ApiVersion);
+      }
+      if (Tier != global::Google.Cloud.Dialogflow.V2.Agent.Types.Tier.Unspecified) {
+        output.WriteRawTag(120);
+        output.WriteEnum((int) Tier);
+      }
+      if (_unknownFields != null) {
+        _unknownFields.WriteTo(ref output);
+      }
+    }
+    #endif
 
     [global::System.Diagnostics.DebuggerNonUserCodeAttribute]
     public int CalculateSize() {
@@ -500,16 +578,16 @@ namespace Google.Cloud.Dialogflow.V2 {
       if (EnableLogging != false) {
         size += 1 + 1;
       }
-      if (MatchMode != 0) {
+      if (MatchMode != global::Google.Cloud.Dialogflow.V2.Agent.Types.MatchMode.Unspecified) {
         size += 1 + pb::CodedOutputStream.ComputeEnumSize((int) MatchMode);
       }
       if (ClassificationThreshold != 0F) {
         size += 1 + 4;
       }
-      if (ApiVersion != 0) {
+      if (ApiVersion != global::Google.Cloud.Dialogflow.V2.Agent.Types.ApiVersion.Unspecified) {
         size += 1 + pb::CodedOutputStream.ComputeEnumSize((int) ApiVersion);
       }
-      if (Tier != 0) {
+      if (Tier != global::Google.Cloud.Dialogflow.V2.Agent.Types.Tier.Unspecified) {
         size += 1 + pb::CodedOutputStream.ComputeEnumSize((int) Tier);
       }
       if (_unknownFields != null) {
@@ -545,16 +623,16 @@ namespace Google.Cloud.Dialogflow.V2 {
       if (other.EnableLogging != false) {
         EnableLogging = other.EnableLogging;
       }
-      if (other.MatchMode != 0) {
+      if (other.MatchMode != global::Google.Cloud.Dialogflow.V2.Agent.Types.MatchMode.Unspecified) {
         MatchMode = other.MatchMode;
       }
       if (other.ClassificationThreshold != 0F) {
         ClassificationThreshold = other.ClassificationThreshold;
       }
-      if (other.ApiVersion != 0) {
+      if (other.ApiVersion != global::Google.Cloud.Dialogflow.V2.Agent.Types.ApiVersion.Unspecified) {
         ApiVersion = other.ApiVersion;
       }
-      if (other.Tier != 0) {
+      if (other.Tier != global::Google.Cloud.Dialogflow.V2.Agent.Types.Tier.Unspecified) {
         Tier = other.Tier;
       }
       _unknownFields = pb::UnknownFieldSet.MergeFrom(_unknownFields, other._unknownFields);
@@ -562,6 +640,9 @@ namespace Google.Cloud.Dialogflow.V2 {
 
     [global::System.Diagnostics.DebuggerNonUserCodeAttribute]
     public void MergeFrom(pb::CodedInputStream input) {
+    #if !GOOGLE_PROTOBUF_REFSTRUCT_COMPATIBILITY_MODE
+      input.ReadRawMessage(this);
+    #else
       uint tag;
       while ((tag = input.ReadTag()) != 0) {
         switch(tag) {
@@ -618,7 +699,70 @@ namespace Google.Cloud.Dialogflow.V2 {
           }
         }
       }
+    #endif
     }
+
+    #if !GOOGLE_PROTOBUF_REFSTRUCT_COMPATIBILITY_MODE
+    [global::System.Diagnostics.DebuggerNonUserCodeAttribute]
+    void pb::IBufferMessage.InternalMergeFrom(ref pb::ParseContext input) {
+      uint tag;
+      while ((tag = input.ReadTag()) != 0) {
+        switch(tag) {
+          default:
+            _unknownFields = pb::UnknownFieldSet.MergeFieldFrom(_unknownFields, ref input);
+            break;
+          case 10: {
+            Parent = input.ReadString();
+            break;
+          }
+          case 18: {
+            DisplayName = input.ReadString();
+            break;
+          }
+          case 26: {
+            DefaultLanguageCode = input.ReadString();
+            break;
+          }
+          case 34: {
+            supportedLanguageCodes_.AddEntriesFrom(ref input, _repeated_supportedLanguageCodes_codec);
+            break;
+          }
+          case 42: {
+            TimeZone = input.ReadString();
+            break;
+          }
+          case 50: {
+            Description = input.ReadString();
+            break;
+          }
+          case 58: {
+            AvatarUri = input.ReadString();
+            break;
+          }
+          case 64: {
+            EnableLogging = input.ReadBool();
+            break;
+          }
+          case 72: {
+            MatchMode = (global::Google.Cloud.Dialogflow.V2.Agent.Types.MatchMode) input.ReadEnum();
+            break;
+          }
+          case 85: {
+            ClassificationThreshold = input.ReadFloat();
+            break;
+          }
+          case 112: {
+            ApiVersion = (global::Google.Cloud.Dialogflow.V2.Agent.Types.ApiVersion) input.ReadEnum();
+            break;
+          }
+          case 120: {
+            Tier = (global::Google.Cloud.Dialogflow.V2.Agent.Types.Tier) input.ReadEnum();
+            break;
+          }
+        }
+      }
+    }
+    #endif
 
     #region Nested types
     /// <summary>Container for nested types declared in the Agent message type.</summary>
@@ -639,7 +783,7 @@ namespace Google.Cloud.Dialogflow.V2 {
         [pbr::OriginalName("MATCH_MODE_HYBRID")] Hybrid = 1,
         /// <summary>
         /// Can be used for agents with a large number of examples in intents,
-        /// especially the ones using @sys.any or very large developer entities.
+        /// especially the ones using @sys.any or very large custom entities.
         /// </summary>
         [pbr::OriginalName("MATCH_MODE_ML_ONLY")] MlOnly = 2,
       }
@@ -696,7 +840,11 @@ namespace Google.Cloud.Dialogflow.V2 {
   /// <summary>
   /// The request message for [Agents.GetAgent][google.cloud.dialogflow.v2.Agents.GetAgent].
   /// </summary>
-  public sealed partial class GetAgentRequest : pb::IMessage<GetAgentRequest> {
+  public sealed partial class GetAgentRequest : pb::IMessage<GetAgentRequest>
+  #if !GOOGLE_PROTOBUF_REFSTRUCT_COMPATIBILITY_MODE
+      , pb::IBufferMessage
+  #endif
+  {
     private static readonly pb::MessageParser<GetAgentRequest> _parser = new pb::MessageParser<GetAgentRequest>(() => new GetAgentRequest());
     private pb::UnknownFieldSet _unknownFields;
     [global::System.Diagnostics.DebuggerNonUserCodeAttribute]
@@ -735,7 +883,7 @@ namespace Google.Cloud.Dialogflow.V2 {
     private string parent_ = "";
     /// <summary>
     /// Required. The project that the agent to fetch is associated with.
-    /// Format: `projects/&lt;Project ID>`.
+    /// Format: `projects/{Project ID}`.
     /// </summary>
     [global::System.Diagnostics.DebuggerNonUserCodeAttribute]
     public string Parent {
@@ -779,6 +927,9 @@ namespace Google.Cloud.Dialogflow.V2 {
 
     [global::System.Diagnostics.DebuggerNonUserCodeAttribute]
     public void WriteTo(pb::CodedOutputStream output) {
+    #if !GOOGLE_PROTOBUF_REFSTRUCT_COMPATIBILITY_MODE
+      output.WriteRawMessage(this);
+    #else
       if (Parent.Length != 0) {
         output.WriteRawTag(10);
         output.WriteString(Parent);
@@ -786,7 +937,21 @@ namespace Google.Cloud.Dialogflow.V2 {
       if (_unknownFields != null) {
         _unknownFields.WriteTo(output);
       }
+    #endif
     }
+
+    #if !GOOGLE_PROTOBUF_REFSTRUCT_COMPATIBILITY_MODE
+    [global::System.Diagnostics.DebuggerNonUserCodeAttribute]
+    void pb::IBufferMessage.InternalWriteTo(ref pb::WriteContext output) {
+      if (Parent.Length != 0) {
+        output.WriteRawTag(10);
+        output.WriteString(Parent);
+      }
+      if (_unknownFields != null) {
+        _unknownFields.WriteTo(ref output);
+      }
+    }
+    #endif
 
     [global::System.Diagnostics.DebuggerNonUserCodeAttribute]
     public int CalculateSize() {
@@ -813,6 +978,9 @@ namespace Google.Cloud.Dialogflow.V2 {
 
     [global::System.Diagnostics.DebuggerNonUserCodeAttribute]
     public void MergeFrom(pb::CodedInputStream input) {
+    #if !GOOGLE_PROTOBUF_REFSTRUCT_COMPATIBILITY_MODE
+      input.ReadRawMessage(this);
+    #else
       uint tag;
       while ((tag = input.ReadTag()) != 0) {
         switch(tag) {
@@ -825,14 +993,37 @@ namespace Google.Cloud.Dialogflow.V2 {
           }
         }
       }
+    #endif
     }
+
+    #if !GOOGLE_PROTOBUF_REFSTRUCT_COMPATIBILITY_MODE
+    [global::System.Diagnostics.DebuggerNonUserCodeAttribute]
+    void pb::IBufferMessage.InternalMergeFrom(ref pb::ParseContext input) {
+      uint tag;
+      while ((tag = input.ReadTag()) != 0) {
+        switch(tag) {
+          default:
+            _unknownFields = pb::UnknownFieldSet.MergeFieldFrom(_unknownFields, ref input);
+            break;
+          case 10: {
+            Parent = input.ReadString();
+            break;
+          }
+        }
+      }
+    }
+    #endif
 
   }
 
   /// <summary>
   /// The request message for [Agents.SetAgent][google.cloud.dialogflow.v2.Agents.SetAgent].
   /// </summary>
-  public sealed partial class SetAgentRequest : pb::IMessage<SetAgentRequest> {
+  public sealed partial class SetAgentRequest : pb::IMessage<SetAgentRequest>
+  #if !GOOGLE_PROTOBUF_REFSTRUCT_COMPATIBILITY_MODE
+      , pb::IBufferMessage
+  #endif
+  {
     private static readonly pb::MessageParser<SetAgentRequest> _parser = new pb::MessageParser<SetAgentRequest>(() => new SetAgentRequest());
     private pb::UnknownFieldSet _unknownFields;
     [global::System.Diagnostics.DebuggerNonUserCodeAttribute]
@@ -931,6 +1122,9 @@ namespace Google.Cloud.Dialogflow.V2 {
 
     [global::System.Diagnostics.DebuggerNonUserCodeAttribute]
     public void WriteTo(pb::CodedOutputStream output) {
+    #if !GOOGLE_PROTOBUF_REFSTRUCT_COMPATIBILITY_MODE
+      output.WriteRawMessage(this);
+    #else
       if (agent_ != null) {
         output.WriteRawTag(10);
         output.WriteMessage(Agent);
@@ -942,7 +1136,25 @@ namespace Google.Cloud.Dialogflow.V2 {
       if (_unknownFields != null) {
         _unknownFields.WriteTo(output);
       }
+    #endif
     }
+
+    #if !GOOGLE_PROTOBUF_REFSTRUCT_COMPATIBILITY_MODE
+    [global::System.Diagnostics.DebuggerNonUserCodeAttribute]
+    void pb::IBufferMessage.InternalWriteTo(ref pb::WriteContext output) {
+      if (agent_ != null) {
+        output.WriteRawTag(10);
+        output.WriteMessage(Agent);
+      }
+      if (updateMask_ != null) {
+        output.WriteRawTag(18);
+        output.WriteMessage(UpdateMask);
+      }
+      if (_unknownFields != null) {
+        _unknownFields.WriteTo(ref output);
+      }
+    }
+    #endif
 
     [global::System.Diagnostics.DebuggerNonUserCodeAttribute]
     public int CalculateSize() {
@@ -981,6 +1193,9 @@ namespace Google.Cloud.Dialogflow.V2 {
 
     [global::System.Diagnostics.DebuggerNonUserCodeAttribute]
     public void MergeFrom(pb::CodedInputStream input) {
+    #if !GOOGLE_PROTOBUF_REFSTRUCT_COMPATIBILITY_MODE
+      input.ReadRawMessage(this);
+    #else
       uint tag;
       while ((tag = input.ReadTag()) != 0) {
         switch(tag) {
@@ -1003,14 +1218,47 @@ namespace Google.Cloud.Dialogflow.V2 {
           }
         }
       }
+    #endif
     }
+
+    #if !GOOGLE_PROTOBUF_REFSTRUCT_COMPATIBILITY_MODE
+    [global::System.Diagnostics.DebuggerNonUserCodeAttribute]
+    void pb::IBufferMessage.InternalMergeFrom(ref pb::ParseContext input) {
+      uint tag;
+      while ((tag = input.ReadTag()) != 0) {
+        switch(tag) {
+          default:
+            _unknownFields = pb::UnknownFieldSet.MergeFieldFrom(_unknownFields, ref input);
+            break;
+          case 10: {
+            if (agent_ == null) {
+              Agent = new global::Google.Cloud.Dialogflow.V2.Agent();
+            }
+            input.ReadMessage(Agent);
+            break;
+          }
+          case 18: {
+            if (updateMask_ == null) {
+              UpdateMask = new global::Google.Protobuf.WellKnownTypes.FieldMask();
+            }
+            input.ReadMessage(UpdateMask);
+            break;
+          }
+        }
+      }
+    }
+    #endif
 
   }
 
   /// <summary>
   /// The request message for [Agents.DeleteAgent][google.cloud.dialogflow.v2.Agents.DeleteAgent].
   /// </summary>
-  public sealed partial class DeleteAgentRequest : pb::IMessage<DeleteAgentRequest> {
+  public sealed partial class DeleteAgentRequest : pb::IMessage<DeleteAgentRequest>
+  #if !GOOGLE_PROTOBUF_REFSTRUCT_COMPATIBILITY_MODE
+      , pb::IBufferMessage
+  #endif
+  {
     private static readonly pb::MessageParser<DeleteAgentRequest> _parser = new pb::MessageParser<DeleteAgentRequest>(() => new DeleteAgentRequest());
     private pb::UnknownFieldSet _unknownFields;
     [global::System.Diagnostics.DebuggerNonUserCodeAttribute]
@@ -1049,7 +1297,7 @@ namespace Google.Cloud.Dialogflow.V2 {
     private string parent_ = "";
     /// <summary>
     /// Required. The project that the agent to delete is associated with.
-    /// Format: `projects/&lt;Project ID>`.
+    /// Format: `projects/{Project ID}`.
     /// </summary>
     [global::System.Diagnostics.DebuggerNonUserCodeAttribute]
     public string Parent {
@@ -1093,6 +1341,9 @@ namespace Google.Cloud.Dialogflow.V2 {
 
     [global::System.Diagnostics.DebuggerNonUserCodeAttribute]
     public void WriteTo(pb::CodedOutputStream output) {
+    #if !GOOGLE_PROTOBUF_REFSTRUCT_COMPATIBILITY_MODE
+      output.WriteRawMessage(this);
+    #else
       if (Parent.Length != 0) {
         output.WriteRawTag(10);
         output.WriteString(Parent);
@@ -1100,7 +1351,21 @@ namespace Google.Cloud.Dialogflow.V2 {
       if (_unknownFields != null) {
         _unknownFields.WriteTo(output);
       }
+    #endif
     }
+
+    #if !GOOGLE_PROTOBUF_REFSTRUCT_COMPATIBILITY_MODE
+    [global::System.Diagnostics.DebuggerNonUserCodeAttribute]
+    void pb::IBufferMessage.InternalWriteTo(ref pb::WriteContext output) {
+      if (Parent.Length != 0) {
+        output.WriteRawTag(10);
+        output.WriteString(Parent);
+      }
+      if (_unknownFields != null) {
+        _unknownFields.WriteTo(ref output);
+      }
+    }
+    #endif
 
     [global::System.Diagnostics.DebuggerNonUserCodeAttribute]
     public int CalculateSize() {
@@ -1127,6 +1392,9 @@ namespace Google.Cloud.Dialogflow.V2 {
 
     [global::System.Diagnostics.DebuggerNonUserCodeAttribute]
     public void MergeFrom(pb::CodedInputStream input) {
+    #if !GOOGLE_PROTOBUF_REFSTRUCT_COMPATIBILITY_MODE
+      input.ReadRawMessage(this);
+    #else
       uint tag;
       while ((tag = input.ReadTag()) != 0) {
         switch(tag) {
@@ -1139,14 +1407,37 @@ namespace Google.Cloud.Dialogflow.V2 {
           }
         }
       }
+    #endif
     }
+
+    #if !GOOGLE_PROTOBUF_REFSTRUCT_COMPATIBILITY_MODE
+    [global::System.Diagnostics.DebuggerNonUserCodeAttribute]
+    void pb::IBufferMessage.InternalMergeFrom(ref pb::ParseContext input) {
+      uint tag;
+      while ((tag = input.ReadTag()) != 0) {
+        switch(tag) {
+          default:
+            _unknownFields = pb::UnknownFieldSet.MergeFieldFrom(_unknownFields, ref input);
+            break;
+          case 10: {
+            Parent = input.ReadString();
+            break;
+          }
+        }
+      }
+    }
+    #endif
 
   }
 
   /// <summary>
   /// The request message for [Agents.SearchAgents][google.cloud.dialogflow.v2.Agents.SearchAgents].
   /// </summary>
-  public sealed partial class SearchAgentsRequest : pb::IMessage<SearchAgentsRequest> {
+  public sealed partial class SearchAgentsRequest : pb::IMessage<SearchAgentsRequest>
+  #if !GOOGLE_PROTOBUF_REFSTRUCT_COMPATIBILITY_MODE
+      , pb::IBufferMessage
+  #endif
+  {
     private static readonly pb::MessageParser<SearchAgentsRequest> _parser = new pb::MessageParser<SearchAgentsRequest>(() => new SearchAgentsRequest());
     private pb::UnknownFieldSet _unknownFields;
     [global::System.Diagnostics.DebuggerNonUserCodeAttribute]
@@ -1187,7 +1478,7 @@ namespace Google.Cloud.Dialogflow.V2 {
     private string parent_ = "";
     /// <summary>
     /// Required. The project to list agents from.
-    /// Format: `projects/&lt;Project ID or '-'>`.
+    /// Format: `projects/{Project ID or '-'}`.
     /// </summary>
     [global::System.Diagnostics.DebuggerNonUserCodeAttribute]
     public string Parent {
@@ -1264,6 +1555,9 @@ namespace Google.Cloud.Dialogflow.V2 {
 
     [global::System.Diagnostics.DebuggerNonUserCodeAttribute]
     public void WriteTo(pb::CodedOutputStream output) {
+    #if !GOOGLE_PROTOBUF_REFSTRUCT_COMPATIBILITY_MODE
+      output.WriteRawMessage(this);
+    #else
       if (Parent.Length != 0) {
         output.WriteRawTag(10);
         output.WriteString(Parent);
@@ -1279,7 +1573,29 @@ namespace Google.Cloud.Dialogflow.V2 {
       if (_unknownFields != null) {
         _unknownFields.WriteTo(output);
       }
+    #endif
     }
+
+    #if !GOOGLE_PROTOBUF_REFSTRUCT_COMPATIBILITY_MODE
+    [global::System.Diagnostics.DebuggerNonUserCodeAttribute]
+    void pb::IBufferMessage.InternalWriteTo(ref pb::WriteContext output) {
+      if (Parent.Length != 0) {
+        output.WriteRawTag(10);
+        output.WriteString(Parent);
+      }
+      if (PageSize != 0) {
+        output.WriteRawTag(16);
+        output.WriteInt32(PageSize);
+      }
+      if (PageToken.Length != 0) {
+        output.WriteRawTag(26);
+        output.WriteString(PageToken);
+      }
+      if (_unknownFields != null) {
+        _unknownFields.WriteTo(ref output);
+      }
+    }
+    #endif
 
     [global::System.Diagnostics.DebuggerNonUserCodeAttribute]
     public int CalculateSize() {
@@ -1318,6 +1634,9 @@ namespace Google.Cloud.Dialogflow.V2 {
 
     [global::System.Diagnostics.DebuggerNonUserCodeAttribute]
     public void MergeFrom(pb::CodedInputStream input) {
+    #if !GOOGLE_PROTOBUF_REFSTRUCT_COMPATIBILITY_MODE
+      input.ReadRawMessage(this);
+    #else
       uint tag;
       while ((tag = input.ReadTag()) != 0) {
         switch(tag) {
@@ -1338,14 +1657,45 @@ namespace Google.Cloud.Dialogflow.V2 {
           }
         }
       }
+    #endif
     }
+
+    #if !GOOGLE_PROTOBUF_REFSTRUCT_COMPATIBILITY_MODE
+    [global::System.Diagnostics.DebuggerNonUserCodeAttribute]
+    void pb::IBufferMessage.InternalMergeFrom(ref pb::ParseContext input) {
+      uint tag;
+      while ((tag = input.ReadTag()) != 0) {
+        switch(tag) {
+          default:
+            _unknownFields = pb::UnknownFieldSet.MergeFieldFrom(_unknownFields, ref input);
+            break;
+          case 10: {
+            Parent = input.ReadString();
+            break;
+          }
+          case 16: {
+            PageSize = input.ReadInt32();
+            break;
+          }
+          case 26: {
+            PageToken = input.ReadString();
+            break;
+          }
+        }
+      }
+    }
+    #endif
 
   }
 
   /// <summary>
   /// The response message for [Agents.SearchAgents][google.cloud.dialogflow.v2.Agents.SearchAgents].
   /// </summary>
-  public sealed partial class SearchAgentsResponse : pb::IMessage<SearchAgentsResponse> {
+  public sealed partial class SearchAgentsResponse : pb::IMessage<SearchAgentsResponse>
+  #if !GOOGLE_PROTOBUF_REFSTRUCT_COMPATIBILITY_MODE
+      , pb::IBufferMessage
+  #endif
+  {
     private static readonly pb::MessageParser<SearchAgentsResponse> _parser = new pb::MessageParser<SearchAgentsResponse>(() => new SearchAgentsResponse());
     private pb::UnknownFieldSet _unknownFields;
     [global::System.Diagnostics.DebuggerNonUserCodeAttribute]
@@ -1445,6 +1795,9 @@ namespace Google.Cloud.Dialogflow.V2 {
 
     [global::System.Diagnostics.DebuggerNonUserCodeAttribute]
     public void WriteTo(pb::CodedOutputStream output) {
+    #if !GOOGLE_PROTOBUF_REFSTRUCT_COMPATIBILITY_MODE
+      output.WriteRawMessage(this);
+    #else
       agents_.WriteTo(output, _repeated_agents_codec);
       if (NextPageToken.Length != 0) {
         output.WriteRawTag(18);
@@ -1453,7 +1806,22 @@ namespace Google.Cloud.Dialogflow.V2 {
       if (_unknownFields != null) {
         _unknownFields.WriteTo(output);
       }
+    #endif
     }
+
+    #if !GOOGLE_PROTOBUF_REFSTRUCT_COMPATIBILITY_MODE
+    [global::System.Diagnostics.DebuggerNonUserCodeAttribute]
+    void pb::IBufferMessage.InternalWriteTo(ref pb::WriteContext output) {
+      agents_.WriteTo(ref output, _repeated_agents_codec);
+      if (NextPageToken.Length != 0) {
+        output.WriteRawTag(18);
+        output.WriteString(NextPageToken);
+      }
+      if (_unknownFields != null) {
+        _unknownFields.WriteTo(ref output);
+      }
+    }
+    #endif
 
     [global::System.Diagnostics.DebuggerNonUserCodeAttribute]
     public int CalculateSize() {
@@ -1482,6 +1850,9 @@ namespace Google.Cloud.Dialogflow.V2 {
 
     [global::System.Diagnostics.DebuggerNonUserCodeAttribute]
     public void MergeFrom(pb::CodedInputStream input) {
+    #if !GOOGLE_PROTOBUF_REFSTRUCT_COMPATIBILITY_MODE
+      input.ReadRawMessage(this);
+    #else
       uint tag;
       while ((tag = input.ReadTag()) != 0) {
         switch(tag) {
@@ -1498,14 +1869,41 @@ namespace Google.Cloud.Dialogflow.V2 {
           }
         }
       }
+    #endif
     }
+
+    #if !GOOGLE_PROTOBUF_REFSTRUCT_COMPATIBILITY_MODE
+    [global::System.Diagnostics.DebuggerNonUserCodeAttribute]
+    void pb::IBufferMessage.InternalMergeFrom(ref pb::ParseContext input) {
+      uint tag;
+      while ((tag = input.ReadTag()) != 0) {
+        switch(tag) {
+          default:
+            _unknownFields = pb::UnknownFieldSet.MergeFieldFrom(_unknownFields, ref input);
+            break;
+          case 10: {
+            agents_.AddEntriesFrom(ref input, _repeated_agents_codec);
+            break;
+          }
+          case 18: {
+            NextPageToken = input.ReadString();
+            break;
+          }
+        }
+      }
+    }
+    #endif
 
   }
 
   /// <summary>
   /// The request message for [Agents.TrainAgent][google.cloud.dialogflow.v2.Agents.TrainAgent].
   /// </summary>
-  public sealed partial class TrainAgentRequest : pb::IMessage<TrainAgentRequest> {
+  public sealed partial class TrainAgentRequest : pb::IMessage<TrainAgentRequest>
+  #if !GOOGLE_PROTOBUF_REFSTRUCT_COMPATIBILITY_MODE
+      , pb::IBufferMessage
+  #endif
+  {
     private static readonly pb::MessageParser<TrainAgentRequest> _parser = new pb::MessageParser<TrainAgentRequest>(() => new TrainAgentRequest());
     private pb::UnknownFieldSet _unknownFields;
     [global::System.Diagnostics.DebuggerNonUserCodeAttribute]
@@ -1544,7 +1942,7 @@ namespace Google.Cloud.Dialogflow.V2 {
     private string parent_ = "";
     /// <summary>
     /// Required. The project that the agent to train is associated with.
-    /// Format: `projects/&lt;Project ID>`.
+    /// Format: `projects/{Project ID}`.
     /// </summary>
     [global::System.Diagnostics.DebuggerNonUserCodeAttribute]
     public string Parent {
@@ -1588,6 +1986,9 @@ namespace Google.Cloud.Dialogflow.V2 {
 
     [global::System.Diagnostics.DebuggerNonUserCodeAttribute]
     public void WriteTo(pb::CodedOutputStream output) {
+    #if !GOOGLE_PROTOBUF_REFSTRUCT_COMPATIBILITY_MODE
+      output.WriteRawMessage(this);
+    #else
       if (Parent.Length != 0) {
         output.WriteRawTag(10);
         output.WriteString(Parent);
@@ -1595,7 +1996,21 @@ namespace Google.Cloud.Dialogflow.V2 {
       if (_unknownFields != null) {
         _unknownFields.WriteTo(output);
       }
+    #endif
     }
+
+    #if !GOOGLE_PROTOBUF_REFSTRUCT_COMPATIBILITY_MODE
+    [global::System.Diagnostics.DebuggerNonUserCodeAttribute]
+    void pb::IBufferMessage.InternalWriteTo(ref pb::WriteContext output) {
+      if (Parent.Length != 0) {
+        output.WriteRawTag(10);
+        output.WriteString(Parent);
+      }
+      if (_unknownFields != null) {
+        _unknownFields.WriteTo(ref output);
+      }
+    }
+    #endif
 
     [global::System.Diagnostics.DebuggerNonUserCodeAttribute]
     public int CalculateSize() {
@@ -1622,6 +2037,9 @@ namespace Google.Cloud.Dialogflow.V2 {
 
     [global::System.Diagnostics.DebuggerNonUserCodeAttribute]
     public void MergeFrom(pb::CodedInputStream input) {
+    #if !GOOGLE_PROTOBUF_REFSTRUCT_COMPATIBILITY_MODE
+      input.ReadRawMessage(this);
+    #else
       uint tag;
       while ((tag = input.ReadTag()) != 0) {
         switch(tag) {
@@ -1634,14 +2052,37 @@ namespace Google.Cloud.Dialogflow.V2 {
           }
         }
       }
+    #endif
     }
+
+    #if !GOOGLE_PROTOBUF_REFSTRUCT_COMPATIBILITY_MODE
+    [global::System.Diagnostics.DebuggerNonUserCodeAttribute]
+    void pb::IBufferMessage.InternalMergeFrom(ref pb::ParseContext input) {
+      uint tag;
+      while ((tag = input.ReadTag()) != 0) {
+        switch(tag) {
+          default:
+            _unknownFields = pb::UnknownFieldSet.MergeFieldFrom(_unknownFields, ref input);
+            break;
+          case 10: {
+            Parent = input.ReadString();
+            break;
+          }
+        }
+      }
+    }
+    #endif
 
   }
 
   /// <summary>
   /// The request message for [Agents.ExportAgent][google.cloud.dialogflow.v2.Agents.ExportAgent].
   /// </summary>
-  public sealed partial class ExportAgentRequest : pb::IMessage<ExportAgentRequest> {
+  public sealed partial class ExportAgentRequest : pb::IMessage<ExportAgentRequest>
+  #if !GOOGLE_PROTOBUF_REFSTRUCT_COMPATIBILITY_MODE
+      , pb::IBufferMessage
+  #endif
+  {
     private static readonly pb::MessageParser<ExportAgentRequest> _parser = new pb::MessageParser<ExportAgentRequest>(() => new ExportAgentRequest());
     private pb::UnknownFieldSet _unknownFields;
     [global::System.Diagnostics.DebuggerNonUserCodeAttribute]
@@ -1681,7 +2122,7 @@ namespace Google.Cloud.Dialogflow.V2 {
     private string parent_ = "";
     /// <summary>
     /// Required. The project that the agent to export is associated with.
-    /// Format: `projects/&lt;Project ID>`.
+    /// Format: `projects/{Project ID}`.
     /// </summary>
     [global::System.Diagnostics.DebuggerNonUserCodeAttribute]
     public string Parent {
@@ -1697,7 +2138,7 @@ namespace Google.Cloud.Dialogflow.V2 {
     /// <summary>
     /// Required. The [Google Cloud Storage](https://cloud.google.com/storage/docs/)
     /// URI to export the agent to.
-    /// The format of this URI must be `gs://&lt;bucket-name>/&lt;object-name>`.
+    /// The format of this URI must be `gs://{bucket-name}/{object-name}`.
     /// If left unspecified, the serialized agent is returned inline.
     /// </summary>
     [global::System.Diagnostics.DebuggerNonUserCodeAttribute]
@@ -1744,6 +2185,9 @@ namespace Google.Cloud.Dialogflow.V2 {
 
     [global::System.Diagnostics.DebuggerNonUserCodeAttribute]
     public void WriteTo(pb::CodedOutputStream output) {
+    #if !GOOGLE_PROTOBUF_REFSTRUCT_COMPATIBILITY_MODE
+      output.WriteRawMessage(this);
+    #else
       if (Parent.Length != 0) {
         output.WriteRawTag(10);
         output.WriteString(Parent);
@@ -1755,7 +2199,25 @@ namespace Google.Cloud.Dialogflow.V2 {
       if (_unknownFields != null) {
         _unknownFields.WriteTo(output);
       }
+    #endif
     }
+
+    #if !GOOGLE_PROTOBUF_REFSTRUCT_COMPATIBILITY_MODE
+    [global::System.Diagnostics.DebuggerNonUserCodeAttribute]
+    void pb::IBufferMessage.InternalWriteTo(ref pb::WriteContext output) {
+      if (Parent.Length != 0) {
+        output.WriteRawTag(10);
+        output.WriteString(Parent);
+      }
+      if (AgentUri.Length != 0) {
+        output.WriteRawTag(18);
+        output.WriteString(AgentUri);
+      }
+      if (_unknownFields != null) {
+        _unknownFields.WriteTo(ref output);
+      }
+    }
+    #endif
 
     [global::System.Diagnostics.DebuggerNonUserCodeAttribute]
     public int CalculateSize() {
@@ -1788,6 +2250,9 @@ namespace Google.Cloud.Dialogflow.V2 {
 
     [global::System.Diagnostics.DebuggerNonUserCodeAttribute]
     public void MergeFrom(pb::CodedInputStream input) {
+    #if !GOOGLE_PROTOBUF_REFSTRUCT_COMPATIBILITY_MODE
+      input.ReadRawMessage(this);
+    #else
       uint tag;
       while ((tag = input.ReadTag()) != 0) {
         switch(tag) {
@@ -1804,14 +2269,41 @@ namespace Google.Cloud.Dialogflow.V2 {
           }
         }
       }
+    #endif
     }
+
+    #if !GOOGLE_PROTOBUF_REFSTRUCT_COMPATIBILITY_MODE
+    [global::System.Diagnostics.DebuggerNonUserCodeAttribute]
+    void pb::IBufferMessage.InternalMergeFrom(ref pb::ParseContext input) {
+      uint tag;
+      while ((tag = input.ReadTag()) != 0) {
+        switch(tag) {
+          default:
+            _unknownFields = pb::UnknownFieldSet.MergeFieldFrom(_unknownFields, ref input);
+            break;
+          case 10: {
+            Parent = input.ReadString();
+            break;
+          }
+          case 18: {
+            AgentUri = input.ReadString();
+            break;
+          }
+        }
+      }
+    }
+    #endif
 
   }
 
   /// <summary>
   /// The response message for [Agents.ExportAgent][google.cloud.dialogflow.v2.Agents.ExportAgent].
   /// </summary>
-  public sealed partial class ExportAgentResponse : pb::IMessage<ExportAgentResponse> {
+  public sealed partial class ExportAgentResponse : pb::IMessage<ExportAgentResponse>
+  #if !GOOGLE_PROTOBUF_REFSTRUCT_COMPATIBILITY_MODE
+      , pb::IBufferMessage
+  #endif
+  {
     private static readonly pb::MessageParser<ExportAgentResponse> _parser = new pb::MessageParser<ExportAgentResponse>(() => new ExportAgentResponse());
     private pb::UnknownFieldSet _unknownFields;
     [global::System.Diagnostics.DebuggerNonUserCodeAttribute]
@@ -1939,6 +2431,9 @@ namespace Google.Cloud.Dialogflow.V2 {
 
     [global::System.Diagnostics.DebuggerNonUserCodeAttribute]
     public void WriteTo(pb::CodedOutputStream output) {
+    #if !GOOGLE_PROTOBUF_REFSTRUCT_COMPATIBILITY_MODE
+      output.WriteRawMessage(this);
+    #else
       if (agentCase_ == AgentOneofCase.AgentUri) {
         output.WriteRawTag(10);
         output.WriteString(AgentUri);
@@ -1950,7 +2445,25 @@ namespace Google.Cloud.Dialogflow.V2 {
       if (_unknownFields != null) {
         _unknownFields.WriteTo(output);
       }
+    #endif
     }
+
+    #if !GOOGLE_PROTOBUF_REFSTRUCT_COMPATIBILITY_MODE
+    [global::System.Diagnostics.DebuggerNonUserCodeAttribute]
+    void pb::IBufferMessage.InternalWriteTo(ref pb::WriteContext output) {
+      if (agentCase_ == AgentOneofCase.AgentUri) {
+        output.WriteRawTag(10);
+        output.WriteString(AgentUri);
+      }
+      if (agentCase_ == AgentOneofCase.AgentContent) {
+        output.WriteRawTag(18);
+        output.WriteBytes(AgentContent);
+      }
+      if (_unknownFields != null) {
+        _unknownFields.WriteTo(ref output);
+      }
+    }
+    #endif
 
     [global::System.Diagnostics.DebuggerNonUserCodeAttribute]
     public int CalculateSize() {
@@ -1986,6 +2499,9 @@ namespace Google.Cloud.Dialogflow.V2 {
 
     [global::System.Diagnostics.DebuggerNonUserCodeAttribute]
     public void MergeFrom(pb::CodedInputStream input) {
+    #if !GOOGLE_PROTOBUF_REFSTRUCT_COMPATIBILITY_MODE
+      input.ReadRawMessage(this);
+    #else
       uint tag;
       while ((tag = input.ReadTag()) != 0) {
         switch(tag) {
@@ -2002,14 +2518,41 @@ namespace Google.Cloud.Dialogflow.V2 {
           }
         }
       }
+    #endif
     }
+
+    #if !GOOGLE_PROTOBUF_REFSTRUCT_COMPATIBILITY_MODE
+    [global::System.Diagnostics.DebuggerNonUserCodeAttribute]
+    void pb::IBufferMessage.InternalMergeFrom(ref pb::ParseContext input) {
+      uint tag;
+      while ((tag = input.ReadTag()) != 0) {
+        switch(tag) {
+          default:
+            _unknownFields = pb::UnknownFieldSet.MergeFieldFrom(_unknownFields, ref input);
+            break;
+          case 10: {
+            AgentUri = input.ReadString();
+            break;
+          }
+          case 18: {
+            AgentContent = input.ReadBytes();
+            break;
+          }
+        }
+      }
+    }
+    #endif
 
   }
 
   /// <summary>
   /// The request message for [Agents.ImportAgent][google.cloud.dialogflow.v2.Agents.ImportAgent].
   /// </summary>
-  public sealed partial class ImportAgentRequest : pb::IMessage<ImportAgentRequest> {
+  public sealed partial class ImportAgentRequest : pb::IMessage<ImportAgentRequest>
+  #if !GOOGLE_PROTOBUF_REFSTRUCT_COMPATIBILITY_MODE
+      , pb::IBufferMessage
+  #endif
+  {
     private static readonly pb::MessageParser<ImportAgentRequest> _parser = new pb::MessageParser<ImportAgentRequest>(() => new ImportAgentRequest());
     private pb::UnknownFieldSet _unknownFields;
     [global::System.Diagnostics.DebuggerNonUserCodeAttribute]
@@ -2057,7 +2600,7 @@ namespace Google.Cloud.Dialogflow.V2 {
     private string parent_ = "";
     /// <summary>
     /// Required. The project that the agent to import is associated with.
-    /// Format: `projects/&lt;Project ID>`.
+    /// Format: `projects/{Project ID}`.
     /// </summary>
     [global::System.Diagnostics.DebuggerNonUserCodeAttribute]
     public string Parent {
@@ -2155,6 +2698,9 @@ namespace Google.Cloud.Dialogflow.V2 {
 
     [global::System.Diagnostics.DebuggerNonUserCodeAttribute]
     public void WriteTo(pb::CodedOutputStream output) {
+    #if !GOOGLE_PROTOBUF_REFSTRUCT_COMPATIBILITY_MODE
+      output.WriteRawMessage(this);
+    #else
       if (Parent.Length != 0) {
         output.WriteRawTag(10);
         output.WriteString(Parent);
@@ -2170,7 +2716,29 @@ namespace Google.Cloud.Dialogflow.V2 {
       if (_unknownFields != null) {
         _unknownFields.WriteTo(output);
       }
+    #endif
     }
+
+    #if !GOOGLE_PROTOBUF_REFSTRUCT_COMPATIBILITY_MODE
+    [global::System.Diagnostics.DebuggerNonUserCodeAttribute]
+    void pb::IBufferMessage.InternalWriteTo(ref pb::WriteContext output) {
+      if (Parent.Length != 0) {
+        output.WriteRawTag(10);
+        output.WriteString(Parent);
+      }
+      if (agentCase_ == AgentOneofCase.AgentUri) {
+        output.WriteRawTag(18);
+        output.WriteString(AgentUri);
+      }
+      if (agentCase_ == AgentOneofCase.AgentContent) {
+        output.WriteRawTag(26);
+        output.WriteBytes(AgentContent);
+      }
+      if (_unknownFields != null) {
+        _unknownFields.WriteTo(ref output);
+      }
+    }
+    #endif
 
     [global::System.Diagnostics.DebuggerNonUserCodeAttribute]
     public int CalculateSize() {
@@ -2212,6 +2780,9 @@ namespace Google.Cloud.Dialogflow.V2 {
 
     [global::System.Diagnostics.DebuggerNonUserCodeAttribute]
     public void MergeFrom(pb::CodedInputStream input) {
+    #if !GOOGLE_PROTOBUF_REFSTRUCT_COMPATIBILITY_MODE
+      input.ReadRawMessage(this);
+    #else
       uint tag;
       while ((tag = input.ReadTag()) != 0) {
         switch(tag) {
@@ -2232,14 +2803,45 @@ namespace Google.Cloud.Dialogflow.V2 {
           }
         }
       }
+    #endif
     }
+
+    #if !GOOGLE_PROTOBUF_REFSTRUCT_COMPATIBILITY_MODE
+    [global::System.Diagnostics.DebuggerNonUserCodeAttribute]
+    void pb::IBufferMessage.InternalMergeFrom(ref pb::ParseContext input) {
+      uint tag;
+      while ((tag = input.ReadTag()) != 0) {
+        switch(tag) {
+          default:
+            _unknownFields = pb::UnknownFieldSet.MergeFieldFrom(_unknownFields, ref input);
+            break;
+          case 10: {
+            Parent = input.ReadString();
+            break;
+          }
+          case 18: {
+            AgentUri = input.ReadString();
+            break;
+          }
+          case 26: {
+            AgentContent = input.ReadBytes();
+            break;
+          }
+        }
+      }
+    }
+    #endif
 
   }
 
   /// <summary>
   /// The request message for [Agents.RestoreAgent][google.cloud.dialogflow.v2.Agents.RestoreAgent].
   /// </summary>
-  public sealed partial class RestoreAgentRequest : pb::IMessage<RestoreAgentRequest> {
+  public sealed partial class RestoreAgentRequest : pb::IMessage<RestoreAgentRequest>
+  #if !GOOGLE_PROTOBUF_REFSTRUCT_COMPATIBILITY_MODE
+      , pb::IBufferMessage
+  #endif
+  {
     private static readonly pb::MessageParser<RestoreAgentRequest> _parser = new pb::MessageParser<RestoreAgentRequest>(() => new RestoreAgentRequest());
     private pb::UnknownFieldSet _unknownFields;
     [global::System.Diagnostics.DebuggerNonUserCodeAttribute]
@@ -2287,7 +2889,7 @@ namespace Google.Cloud.Dialogflow.V2 {
     private string parent_ = "";
     /// <summary>
     /// Required. The project that the agent to restore is associated with.
-    /// Format: `projects/&lt;Project ID>`.
+    /// Format: `projects/{Project ID}`.
     /// </summary>
     [global::System.Diagnostics.DebuggerNonUserCodeAttribute]
     public string Parent {
@@ -2385,6 +2987,9 @@ namespace Google.Cloud.Dialogflow.V2 {
 
     [global::System.Diagnostics.DebuggerNonUserCodeAttribute]
     public void WriteTo(pb::CodedOutputStream output) {
+    #if !GOOGLE_PROTOBUF_REFSTRUCT_COMPATIBILITY_MODE
+      output.WriteRawMessage(this);
+    #else
       if (Parent.Length != 0) {
         output.WriteRawTag(10);
         output.WriteString(Parent);
@@ -2400,7 +3005,29 @@ namespace Google.Cloud.Dialogflow.V2 {
       if (_unknownFields != null) {
         _unknownFields.WriteTo(output);
       }
+    #endif
     }
+
+    #if !GOOGLE_PROTOBUF_REFSTRUCT_COMPATIBILITY_MODE
+    [global::System.Diagnostics.DebuggerNonUserCodeAttribute]
+    void pb::IBufferMessage.InternalWriteTo(ref pb::WriteContext output) {
+      if (Parent.Length != 0) {
+        output.WriteRawTag(10);
+        output.WriteString(Parent);
+      }
+      if (agentCase_ == AgentOneofCase.AgentUri) {
+        output.WriteRawTag(18);
+        output.WriteString(AgentUri);
+      }
+      if (agentCase_ == AgentOneofCase.AgentContent) {
+        output.WriteRawTag(26);
+        output.WriteBytes(AgentContent);
+      }
+      if (_unknownFields != null) {
+        _unknownFields.WriteTo(ref output);
+      }
+    }
+    #endif
 
     [global::System.Diagnostics.DebuggerNonUserCodeAttribute]
     public int CalculateSize() {
@@ -2442,6 +3069,9 @@ namespace Google.Cloud.Dialogflow.V2 {
 
     [global::System.Diagnostics.DebuggerNonUserCodeAttribute]
     public void MergeFrom(pb::CodedInputStream input) {
+    #if !GOOGLE_PROTOBUF_REFSTRUCT_COMPATIBILITY_MODE
+      input.ReadRawMessage(this);
+    #else
       uint tag;
       while ((tag = input.ReadTag()) != 0) {
         switch(tag) {
@@ -2462,7 +3092,256 @@ namespace Google.Cloud.Dialogflow.V2 {
           }
         }
       }
+    #endif
     }
+
+    #if !GOOGLE_PROTOBUF_REFSTRUCT_COMPATIBILITY_MODE
+    [global::System.Diagnostics.DebuggerNonUserCodeAttribute]
+    void pb::IBufferMessage.InternalMergeFrom(ref pb::ParseContext input) {
+      uint tag;
+      while ((tag = input.ReadTag()) != 0) {
+        switch(tag) {
+          default:
+            _unknownFields = pb::UnknownFieldSet.MergeFieldFrom(_unknownFields, ref input);
+            break;
+          case 10: {
+            Parent = input.ReadString();
+            break;
+          }
+          case 18: {
+            AgentUri = input.ReadString();
+            break;
+          }
+          case 26: {
+            AgentContent = input.ReadBytes();
+            break;
+          }
+        }
+      }
+    }
+    #endif
+
+  }
+
+  /// <summary>
+  /// The request message for [Agents.GetValidationResult][google.cloud.dialogflow.v2.Agents.GetValidationResult].
+  /// </summary>
+  public sealed partial class GetValidationResultRequest : pb::IMessage<GetValidationResultRequest>
+  #if !GOOGLE_PROTOBUF_REFSTRUCT_COMPATIBILITY_MODE
+      , pb::IBufferMessage
+  #endif
+  {
+    private static readonly pb::MessageParser<GetValidationResultRequest> _parser = new pb::MessageParser<GetValidationResultRequest>(() => new GetValidationResultRequest());
+    private pb::UnknownFieldSet _unknownFields;
+    [global::System.Diagnostics.DebuggerNonUserCodeAttribute]
+    public static pb::MessageParser<GetValidationResultRequest> Parser { get { return _parser; } }
+
+    [global::System.Diagnostics.DebuggerNonUserCodeAttribute]
+    public static pbr::MessageDescriptor Descriptor {
+      get { return global::Google.Cloud.Dialogflow.V2.AgentReflection.Descriptor.MessageTypes[11]; }
+    }
+
+    [global::System.Diagnostics.DebuggerNonUserCodeAttribute]
+    pbr::MessageDescriptor pb::IMessage.Descriptor {
+      get { return Descriptor; }
+    }
+
+    [global::System.Diagnostics.DebuggerNonUserCodeAttribute]
+    public GetValidationResultRequest() {
+      OnConstruction();
+    }
+
+    partial void OnConstruction();
+
+    [global::System.Diagnostics.DebuggerNonUserCodeAttribute]
+    public GetValidationResultRequest(GetValidationResultRequest other) : this() {
+      parent_ = other.parent_;
+      languageCode_ = other.languageCode_;
+      _unknownFields = pb::UnknownFieldSet.Clone(other._unknownFields);
+    }
+
+    [global::System.Diagnostics.DebuggerNonUserCodeAttribute]
+    public GetValidationResultRequest Clone() {
+      return new GetValidationResultRequest(this);
+    }
+
+    /// <summary>Field number for the "parent" field.</summary>
+    public const int ParentFieldNumber = 1;
+    private string parent_ = "";
+    /// <summary>
+    /// Required. The project that the agent is associated with.
+    /// Format: `projects/{Project ID}`.
+    /// </summary>
+    [global::System.Diagnostics.DebuggerNonUserCodeAttribute]
+    public string Parent {
+      get { return parent_; }
+      set {
+        parent_ = pb::ProtoPreconditions.CheckNotNull(value, "value");
+      }
+    }
+
+    /// <summary>Field number for the "language_code" field.</summary>
+    public const int LanguageCodeFieldNumber = 3;
+    private string languageCode_ = "";
+    /// <summary>
+    /// Optional. The language for which you want a validation result. If not
+    /// specified, the agent's default language is used. [Many
+    /// languages](https://cloud.google.com/dialogflow/docs/reference/language)
+    /// are supported. Note: languages must be enabled in the agent before they can
+    /// be used.
+    /// </summary>
+    [global::System.Diagnostics.DebuggerNonUserCodeAttribute]
+    public string LanguageCode {
+      get { return languageCode_; }
+      set {
+        languageCode_ = pb::ProtoPreconditions.CheckNotNull(value, "value");
+      }
+    }
+
+    [global::System.Diagnostics.DebuggerNonUserCodeAttribute]
+    public override bool Equals(object other) {
+      return Equals(other as GetValidationResultRequest);
+    }
+
+    [global::System.Diagnostics.DebuggerNonUserCodeAttribute]
+    public bool Equals(GetValidationResultRequest other) {
+      if (ReferenceEquals(other, null)) {
+        return false;
+      }
+      if (ReferenceEquals(other, this)) {
+        return true;
+      }
+      if (Parent != other.Parent) return false;
+      if (LanguageCode != other.LanguageCode) return false;
+      return Equals(_unknownFields, other._unknownFields);
+    }
+
+    [global::System.Diagnostics.DebuggerNonUserCodeAttribute]
+    public override int GetHashCode() {
+      int hash = 1;
+      if (Parent.Length != 0) hash ^= Parent.GetHashCode();
+      if (LanguageCode.Length != 0) hash ^= LanguageCode.GetHashCode();
+      if (_unknownFields != null) {
+        hash ^= _unknownFields.GetHashCode();
+      }
+      return hash;
+    }
+
+    [global::System.Diagnostics.DebuggerNonUserCodeAttribute]
+    public override string ToString() {
+      return pb::JsonFormatter.ToDiagnosticString(this);
+    }
+
+    [global::System.Diagnostics.DebuggerNonUserCodeAttribute]
+    public void WriteTo(pb::CodedOutputStream output) {
+    #if !GOOGLE_PROTOBUF_REFSTRUCT_COMPATIBILITY_MODE
+      output.WriteRawMessage(this);
+    #else
+      if (Parent.Length != 0) {
+        output.WriteRawTag(10);
+        output.WriteString(Parent);
+      }
+      if (LanguageCode.Length != 0) {
+        output.WriteRawTag(26);
+        output.WriteString(LanguageCode);
+      }
+      if (_unknownFields != null) {
+        _unknownFields.WriteTo(output);
+      }
+    #endif
+    }
+
+    #if !GOOGLE_PROTOBUF_REFSTRUCT_COMPATIBILITY_MODE
+    [global::System.Diagnostics.DebuggerNonUserCodeAttribute]
+    void pb::IBufferMessage.InternalWriteTo(ref pb::WriteContext output) {
+      if (Parent.Length != 0) {
+        output.WriteRawTag(10);
+        output.WriteString(Parent);
+      }
+      if (LanguageCode.Length != 0) {
+        output.WriteRawTag(26);
+        output.WriteString(LanguageCode);
+      }
+      if (_unknownFields != null) {
+        _unknownFields.WriteTo(ref output);
+      }
+    }
+    #endif
+
+    [global::System.Diagnostics.DebuggerNonUserCodeAttribute]
+    public int CalculateSize() {
+      int size = 0;
+      if (Parent.Length != 0) {
+        size += 1 + pb::CodedOutputStream.ComputeStringSize(Parent);
+      }
+      if (LanguageCode.Length != 0) {
+        size += 1 + pb::CodedOutputStream.ComputeStringSize(LanguageCode);
+      }
+      if (_unknownFields != null) {
+        size += _unknownFields.CalculateSize();
+      }
+      return size;
+    }
+
+    [global::System.Diagnostics.DebuggerNonUserCodeAttribute]
+    public void MergeFrom(GetValidationResultRequest other) {
+      if (other == null) {
+        return;
+      }
+      if (other.Parent.Length != 0) {
+        Parent = other.Parent;
+      }
+      if (other.LanguageCode.Length != 0) {
+        LanguageCode = other.LanguageCode;
+      }
+      _unknownFields = pb::UnknownFieldSet.MergeFrom(_unknownFields, other._unknownFields);
+    }
+
+    [global::System.Diagnostics.DebuggerNonUserCodeAttribute]
+    public void MergeFrom(pb::CodedInputStream input) {
+    #if !GOOGLE_PROTOBUF_REFSTRUCT_COMPATIBILITY_MODE
+      input.ReadRawMessage(this);
+    #else
+      uint tag;
+      while ((tag = input.ReadTag()) != 0) {
+        switch(tag) {
+          default:
+            _unknownFields = pb::UnknownFieldSet.MergeFieldFrom(_unknownFields, input);
+            break;
+          case 10: {
+            Parent = input.ReadString();
+            break;
+          }
+          case 26: {
+            LanguageCode = input.ReadString();
+            break;
+          }
+        }
+      }
+    #endif
+    }
+
+    #if !GOOGLE_PROTOBUF_REFSTRUCT_COMPATIBILITY_MODE
+    [global::System.Diagnostics.DebuggerNonUserCodeAttribute]
+    void pb::IBufferMessage.InternalMergeFrom(ref pb::ParseContext input) {
+      uint tag;
+      while ((tag = input.ReadTag()) != 0) {
+        switch(tag) {
+          default:
+            _unknownFields = pb::UnknownFieldSet.MergeFieldFrom(_unknownFields, ref input);
+            break;
+          case 10: {
+            Parent = input.ReadString();
+            break;
+          }
+          case 26: {
+            LanguageCode = input.ReadString();
+            break;
+          }
+        }
+      }
+    }
+    #endif
 
   }
 

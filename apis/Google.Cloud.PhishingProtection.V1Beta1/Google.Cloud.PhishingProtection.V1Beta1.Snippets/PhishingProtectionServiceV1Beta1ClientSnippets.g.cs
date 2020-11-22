@@ -1,4 +1,4 @@
-// Copyright 2019 Google LLC
+// Copyright 2020 Google LLC
 //
 // Licensed under the Apache License, Version 2.0 (the "License");
 // you may not use this file except in compliance with the License.
@@ -23,7 +23,7 @@ namespace Google.Cloud.PhishingProtection.V1Beta1.Snippets
     public sealed class GeneratedPhishingProtectionServiceV1Beta1ClientSnippets
     {
         /// <summary>Snippet for ReportPhishing</summary>
-        public void ReportPhishing_RequestObject()
+        public void ReportPhishingRequestObject()
         {
             // Snippet: ReportPhishing(ReportPhishingRequest, CallSettings)
             // Create client
@@ -31,7 +31,7 @@ namespace Google.Cloud.PhishingProtection.V1Beta1.Snippets
             // Initialize request argument(s)
             ReportPhishingRequest request = new ReportPhishingRequest
             {
-                ParentAsProjectName = new ProjectName("[PROJECT]"),
+                ParentAsProjectName = ProjectName.FromProject("[PROJECT]"),
                 Uri = "",
             };
             // Make the request
@@ -40,7 +40,7 @@ namespace Google.Cloud.PhishingProtection.V1Beta1.Snippets
         }
 
         /// <summary>Snippet for ReportPhishingAsync</summary>
-        public async Task ReportPhishingAsync_RequestObject()
+        public async Task ReportPhishingRequestObjectAsync()
         {
             // Snippet: ReportPhishingAsync(ReportPhishingRequest, CallSettings)
             // Additional: ReportPhishingAsync(ReportPhishingRequest, CancellationToken)
@@ -49,7 +49,7 @@ namespace Google.Cloud.PhishingProtection.V1Beta1.Snippets
             // Initialize request argument(s)
             ReportPhishingRequest request = new ReportPhishingRequest
             {
-                ParentAsProjectName = new ProjectName("[PROJECT]"),
+                ParentAsProjectName = ProjectName.FromProject("[PROJECT]"),
                 Uri = "",
             };
             // Make the request
@@ -87,13 +87,13 @@ namespace Google.Cloud.PhishingProtection.V1Beta1.Snippets
         }
 
         /// <summary>Snippet for ReportPhishing</summary>
-        public void ReportPhishing_ResourceNames()
+        public void ReportPhishingResourceNames()
         {
             // Snippet: ReportPhishing(ProjectName, string, CallSettings)
             // Create client
             PhishingProtectionServiceV1Beta1Client phishingProtectionServiceV1Beta1Client = PhishingProtectionServiceV1Beta1Client.Create();
             // Initialize request argument(s)
-            ProjectName parent = new ProjectName("[PROJECT]");
+            ProjectName parent = ProjectName.FromProject("[PROJECT]");
             string uri = "";
             // Make the request
             ReportPhishingResponse response = phishingProtectionServiceV1Beta1Client.ReportPhishing(parent, uri);
@@ -101,14 +101,14 @@ namespace Google.Cloud.PhishingProtection.V1Beta1.Snippets
         }
 
         /// <summary>Snippet for ReportPhishingAsync</summary>
-        public async Task ReportPhishingAsync_ResourceNames()
+        public async Task ReportPhishingResourceNamesAsync()
         {
             // Snippet: ReportPhishingAsync(ProjectName, string, CallSettings)
             // Additional: ReportPhishingAsync(ProjectName, string, CancellationToken)
             // Create client
             PhishingProtectionServiceV1Beta1Client phishingProtectionServiceV1Beta1Client = await PhishingProtectionServiceV1Beta1Client.CreateAsync();
             // Initialize request argument(s)
-            ProjectName parent = new ProjectName("[PROJECT]");
+            ProjectName parent = ProjectName.FromProject("[PROJECT]");
             string uri = "";
             // Make the request
             ReportPhishingResponse response = await phishingProtectionServiceV1Beta1Client.ReportPhishingAsync(parent, uri);

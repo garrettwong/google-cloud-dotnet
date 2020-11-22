@@ -17,6 +17,7 @@ using Google.Protobuf;
 using System;
 using System.Collections.Generic;
 using System.Dynamic;
+using System.Linq;
 using Xunit;
 using wkt = Google.Protobuf.WellKnownTypes;
 
@@ -162,8 +163,40 @@ namespace Google.Cloud.Firestore.Tests
         [Fact]
         public void ArrayInArray()
         {
-            var badArray = new[] { new int[10] };
-            Assert.Throws<ArgumentException>(() => ValueSerializer.Serialize(SerializationContext.Default, badArray));
+            // We allow this to be created, even though the server will reject *documents* created like this.
+            // It can be useful in filters, e.g. in a WhereIn query.
+            var nestedArray = new[] { new int[] { 10, 20 } };
+            var expected = new Value
+            {
+                ArrayValue = new ArrayValue
+                {
+                    Values = { new Value { ArrayValue = new ArrayValue { Values = { new Value { IntegerValue = 10 }, new Value { IntegerValue = 20 } } } } }
+                }
+            };
+            var actual = ValueSerializer.Serialize(SerializationContext.Default, nestedArray);
+            Assert.Equal(expected, actual);
+        }
+
+        [Fact]
+        public void LinqResult()
+        {
+            // We should be able to serialize the result of a LINQ query as if it were a list.
+            // This is *relatively* rarely useful, but generally still a good thing to support.
+            var sequence = Enumerable.Range(1, 3);
+            var expected = new Value
+            {
+                ArrayValue = new ArrayValue
+                {
+                    Values =
+                    {
+                        new Value { IntegerValue = 1 },
+                        new Value { IntegerValue = 2 },
+                        new Value { IntegerValue = 3 },
+                    }
+                }
+            };
+            var actual = ValueSerializer.Serialize(SerializationContext.Default, sequence);
+            Assert.Equal(expected, actual);
         }
 
         [Fact]

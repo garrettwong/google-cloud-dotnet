@@ -71,21 +71,22 @@ namespace Google.Cloud.Firestore.Admin.V1 {
             "d29yaxgCIAEoAyqeAQoOT3BlcmF0aW9uU3RhdGUSHwobT1BFUkFUSU9OX1NU",
             "QVRFX1VOU1BFQ0lGSUVEEAASEAoMSU5JVElBTElaSU5HEAESDgoKUFJPQ0VT",
             "U0lORxACEg4KCkNBTkNFTExJTkcQAxIOCgpGSU5BTElaSU5HEAQSDgoKU1VD",
-            "Q0VTU0ZVTBAFEgoKBkZBSUxFRBAGEg0KCUNBTkNFTExFRBAHQrwBCh1jb20u",
+            "Q0VTU0ZVTBAFEgoKBkZBSUxFRBAGEg0KCUNBTkNFTExFRBAHQuIBCh1jb20u",
             "Z29vZ2xlLmZpcmVzdG9yZS5hZG1pbi52MUIOT3BlcmF0aW9uUHJvdG9QAVo+",
             "Z29vZ2xlLmdvbGFuZy5vcmcvZ2VucHJvdG8vZ29vZ2xlYXBpcy9maXJlc3Rv",
             "cmUvYWRtaW4vdjE7YWRtaW6iAgRHQ0ZTqgIfR29vZ2xlLkNsb3VkLkZpcmVz",
             "dG9yZS5BZG1pbi5WMcoCH0dvb2dsZVxDbG91ZFxGaXJlc3RvcmVcQWRtaW5c",
-            "VjFiBnByb3RvMw=="));
+            "VjHqAiNHb29nbGU6OkNsb3VkOjpGaXJlc3RvcmU6OkFkbWluOjpWMWIGcHJv",
+            "dG8z"));
       descriptor = pbr::FileDescriptor.FromGeneratedCode(descriptorData,
           new pbr::FileDescriptor[] { global::Google.Cloud.Firestore.Admin.V1.IndexReflection.Descriptor, global::Google.Protobuf.WellKnownTypes.TimestampReflection.Descriptor, global::Google.Api.AnnotationsReflection.Descriptor, },
-          new pbr::GeneratedClrTypeInfo(new[] {typeof(global::Google.Cloud.Firestore.Admin.V1.OperationState), }, new pbr::GeneratedClrTypeInfo[] {
-            new pbr::GeneratedClrTypeInfo(typeof(global::Google.Cloud.Firestore.Admin.V1.IndexOperationMetadata), global::Google.Cloud.Firestore.Admin.V1.IndexOperationMetadata.Parser, new[]{ "StartTime", "EndTime", "Index", "State", "ProgressDocuments", "ProgressBytes" }, null, null, null),
-            new pbr::GeneratedClrTypeInfo(typeof(global::Google.Cloud.Firestore.Admin.V1.FieldOperationMetadata), global::Google.Cloud.Firestore.Admin.V1.FieldOperationMetadata.Parser, new[]{ "StartTime", "EndTime", "Field", "IndexConfigDeltas", "State", "ProgressDocuments", "ProgressBytes" }, null, null, new pbr::GeneratedClrTypeInfo[] { new pbr::GeneratedClrTypeInfo(typeof(global::Google.Cloud.Firestore.Admin.V1.FieldOperationMetadata.Types.IndexConfigDelta), global::Google.Cloud.Firestore.Admin.V1.FieldOperationMetadata.Types.IndexConfigDelta.Parser, new[]{ "ChangeType", "Index" }, null, new[]{ typeof(global::Google.Cloud.Firestore.Admin.V1.FieldOperationMetadata.Types.IndexConfigDelta.Types.ChangeType) }, null)}),
-            new pbr::GeneratedClrTypeInfo(typeof(global::Google.Cloud.Firestore.Admin.V1.ExportDocumentsMetadata), global::Google.Cloud.Firestore.Admin.V1.ExportDocumentsMetadata.Parser, new[]{ "StartTime", "EndTime", "OperationState", "ProgressDocuments", "ProgressBytes", "CollectionIds", "OutputUriPrefix" }, null, null, null),
-            new pbr::GeneratedClrTypeInfo(typeof(global::Google.Cloud.Firestore.Admin.V1.ImportDocumentsMetadata), global::Google.Cloud.Firestore.Admin.V1.ImportDocumentsMetadata.Parser, new[]{ "StartTime", "EndTime", "OperationState", "ProgressDocuments", "ProgressBytes", "CollectionIds", "InputUriPrefix" }, null, null, null),
-            new pbr::GeneratedClrTypeInfo(typeof(global::Google.Cloud.Firestore.Admin.V1.ExportDocumentsResponse), global::Google.Cloud.Firestore.Admin.V1.ExportDocumentsResponse.Parser, new[]{ "OutputUriPrefix" }, null, null, null),
-            new pbr::GeneratedClrTypeInfo(typeof(global::Google.Cloud.Firestore.Admin.V1.Progress), global::Google.Cloud.Firestore.Admin.V1.Progress.Parser, new[]{ "EstimatedWork", "CompletedWork" }, null, null, null)
+          new pbr::GeneratedClrTypeInfo(new[] {typeof(global::Google.Cloud.Firestore.Admin.V1.OperationState), }, null, new pbr::GeneratedClrTypeInfo[] {
+            new pbr::GeneratedClrTypeInfo(typeof(global::Google.Cloud.Firestore.Admin.V1.IndexOperationMetadata), global::Google.Cloud.Firestore.Admin.V1.IndexOperationMetadata.Parser, new[]{ "StartTime", "EndTime", "Index", "State", "ProgressDocuments", "ProgressBytes" }, null, null, null, null),
+            new pbr::GeneratedClrTypeInfo(typeof(global::Google.Cloud.Firestore.Admin.V1.FieldOperationMetadata), global::Google.Cloud.Firestore.Admin.V1.FieldOperationMetadata.Parser, new[]{ "StartTime", "EndTime", "Field", "IndexConfigDeltas", "State", "ProgressDocuments", "ProgressBytes" }, null, null, null, new pbr::GeneratedClrTypeInfo[] { new pbr::GeneratedClrTypeInfo(typeof(global::Google.Cloud.Firestore.Admin.V1.FieldOperationMetadata.Types.IndexConfigDelta), global::Google.Cloud.Firestore.Admin.V1.FieldOperationMetadata.Types.IndexConfigDelta.Parser, new[]{ "ChangeType", "Index" }, null, new[]{ typeof(global::Google.Cloud.Firestore.Admin.V1.FieldOperationMetadata.Types.IndexConfigDelta.Types.ChangeType) }, null, null)}),
+            new pbr::GeneratedClrTypeInfo(typeof(global::Google.Cloud.Firestore.Admin.V1.ExportDocumentsMetadata), global::Google.Cloud.Firestore.Admin.V1.ExportDocumentsMetadata.Parser, new[]{ "StartTime", "EndTime", "OperationState", "ProgressDocuments", "ProgressBytes", "CollectionIds", "OutputUriPrefix" }, null, null, null, null),
+            new pbr::GeneratedClrTypeInfo(typeof(global::Google.Cloud.Firestore.Admin.V1.ImportDocumentsMetadata), global::Google.Cloud.Firestore.Admin.V1.ImportDocumentsMetadata.Parser, new[]{ "StartTime", "EndTime", "OperationState", "ProgressDocuments", "ProgressBytes", "CollectionIds", "InputUriPrefix" }, null, null, null, null),
+            new pbr::GeneratedClrTypeInfo(typeof(global::Google.Cloud.Firestore.Admin.V1.ExportDocumentsResponse), global::Google.Cloud.Firestore.Admin.V1.ExportDocumentsResponse.Parser, new[]{ "OutputUriPrefix" }, null, null, null, null),
+            new pbr::GeneratedClrTypeInfo(typeof(global::Google.Cloud.Firestore.Admin.V1.Progress), global::Google.Cloud.Firestore.Admin.V1.Progress.Parser, new[]{ "EstimatedWork", "CompletedWork" }, null, null, null, null)
           }));
     }
     #endregion
@@ -139,7 +140,11 @@ namespace Google.Cloud.Firestore.Admin.V1 {
   /// Metadata for [google.longrunning.Operation][google.longrunning.Operation] results from
   /// [FirestoreAdmin.CreateIndex][google.firestore.admin.v1.FirestoreAdmin.CreateIndex].
   /// </summary>
-  public sealed partial class IndexOperationMetadata : pb::IMessage<IndexOperationMetadata> {
+  public sealed partial class IndexOperationMetadata : pb::IMessage<IndexOperationMetadata>
+  #if !GOOGLE_PROTOBUF_REFSTRUCT_COMPATIBILITY_MODE
+      , pb::IBufferMessage
+  #endif
+  {
     private static readonly pb::MessageParser<IndexOperationMetadata> _parser = new pb::MessageParser<IndexOperationMetadata>(() => new IndexOperationMetadata());
     private pb::UnknownFieldSet _unknownFields;
     [global::System.Diagnostics.DebuggerNonUserCodeAttribute]
@@ -224,7 +229,7 @@ namespace Google.Cloud.Firestore.Admin.V1 {
 
     /// <summary>Field number for the "state" field.</summary>
     public const int StateFieldNumber = 4;
-    private global::Google.Cloud.Firestore.Admin.V1.OperationState state_ = 0;
+    private global::Google.Cloud.Firestore.Admin.V1.OperationState state_ = global::Google.Cloud.Firestore.Admin.V1.OperationState.Unspecified;
     /// <summary>
     /// The state of the operation.
     /// </summary>
@@ -292,7 +297,7 @@ namespace Google.Cloud.Firestore.Admin.V1 {
       if (startTime_ != null) hash ^= StartTime.GetHashCode();
       if (endTime_ != null) hash ^= EndTime.GetHashCode();
       if (Index.Length != 0) hash ^= Index.GetHashCode();
-      if (State != 0) hash ^= State.GetHashCode();
+      if (State != global::Google.Cloud.Firestore.Admin.V1.OperationState.Unspecified) hash ^= State.GetHashCode();
       if (progressDocuments_ != null) hash ^= ProgressDocuments.GetHashCode();
       if (progressBytes_ != null) hash ^= ProgressBytes.GetHashCode();
       if (_unknownFields != null) {
@@ -308,6 +313,9 @@ namespace Google.Cloud.Firestore.Admin.V1 {
 
     [global::System.Diagnostics.DebuggerNonUserCodeAttribute]
     public void WriteTo(pb::CodedOutputStream output) {
+    #if !GOOGLE_PROTOBUF_REFSTRUCT_COMPATIBILITY_MODE
+      output.WriteRawMessage(this);
+    #else
       if (startTime_ != null) {
         output.WriteRawTag(10);
         output.WriteMessage(StartTime);
@@ -320,7 +328,7 @@ namespace Google.Cloud.Firestore.Admin.V1 {
         output.WriteRawTag(26);
         output.WriteString(Index);
       }
-      if (State != 0) {
+      if (State != global::Google.Cloud.Firestore.Admin.V1.OperationState.Unspecified) {
         output.WriteRawTag(32);
         output.WriteEnum((int) State);
       }
@@ -335,7 +343,41 @@ namespace Google.Cloud.Firestore.Admin.V1 {
       if (_unknownFields != null) {
         _unknownFields.WriteTo(output);
       }
+    #endif
     }
+
+    #if !GOOGLE_PROTOBUF_REFSTRUCT_COMPATIBILITY_MODE
+    [global::System.Diagnostics.DebuggerNonUserCodeAttribute]
+    void pb::IBufferMessage.InternalWriteTo(ref pb::WriteContext output) {
+      if (startTime_ != null) {
+        output.WriteRawTag(10);
+        output.WriteMessage(StartTime);
+      }
+      if (endTime_ != null) {
+        output.WriteRawTag(18);
+        output.WriteMessage(EndTime);
+      }
+      if (Index.Length != 0) {
+        output.WriteRawTag(26);
+        output.WriteString(Index);
+      }
+      if (State != global::Google.Cloud.Firestore.Admin.V1.OperationState.Unspecified) {
+        output.WriteRawTag(32);
+        output.WriteEnum((int) State);
+      }
+      if (progressDocuments_ != null) {
+        output.WriteRawTag(42);
+        output.WriteMessage(ProgressDocuments);
+      }
+      if (progressBytes_ != null) {
+        output.WriteRawTag(50);
+        output.WriteMessage(ProgressBytes);
+      }
+      if (_unknownFields != null) {
+        _unknownFields.WriteTo(ref output);
+      }
+    }
+    #endif
 
     [global::System.Diagnostics.DebuggerNonUserCodeAttribute]
     public int CalculateSize() {
@@ -349,7 +391,7 @@ namespace Google.Cloud.Firestore.Admin.V1 {
       if (Index.Length != 0) {
         size += 1 + pb::CodedOutputStream.ComputeStringSize(Index);
       }
-      if (State != 0) {
+      if (State != global::Google.Cloud.Firestore.Admin.V1.OperationState.Unspecified) {
         size += 1 + pb::CodedOutputStream.ComputeEnumSize((int) State);
       }
       if (progressDocuments_ != null) {
@@ -384,7 +426,7 @@ namespace Google.Cloud.Firestore.Admin.V1 {
       if (other.Index.Length != 0) {
         Index = other.Index;
       }
-      if (other.State != 0) {
+      if (other.State != global::Google.Cloud.Firestore.Admin.V1.OperationState.Unspecified) {
         State = other.State;
       }
       if (other.progressDocuments_ != null) {
@@ -404,6 +446,9 @@ namespace Google.Cloud.Firestore.Admin.V1 {
 
     [global::System.Diagnostics.DebuggerNonUserCodeAttribute]
     public void MergeFrom(pb::CodedInputStream input) {
+    #if !GOOGLE_PROTOBUF_REFSTRUCT_COMPATIBILITY_MODE
+      input.ReadRawMessage(this);
+    #else
       uint tag;
       while ((tag = input.ReadTag()) != 0) {
         switch(tag) {
@@ -448,7 +493,58 @@ namespace Google.Cloud.Firestore.Admin.V1 {
           }
         }
       }
+    #endif
     }
+
+    #if !GOOGLE_PROTOBUF_REFSTRUCT_COMPATIBILITY_MODE
+    [global::System.Diagnostics.DebuggerNonUserCodeAttribute]
+    void pb::IBufferMessage.InternalMergeFrom(ref pb::ParseContext input) {
+      uint tag;
+      while ((tag = input.ReadTag()) != 0) {
+        switch(tag) {
+          default:
+            _unknownFields = pb::UnknownFieldSet.MergeFieldFrom(_unknownFields, ref input);
+            break;
+          case 10: {
+            if (startTime_ == null) {
+              StartTime = new global::Google.Protobuf.WellKnownTypes.Timestamp();
+            }
+            input.ReadMessage(StartTime);
+            break;
+          }
+          case 18: {
+            if (endTime_ == null) {
+              EndTime = new global::Google.Protobuf.WellKnownTypes.Timestamp();
+            }
+            input.ReadMessage(EndTime);
+            break;
+          }
+          case 26: {
+            Index = input.ReadString();
+            break;
+          }
+          case 32: {
+            State = (global::Google.Cloud.Firestore.Admin.V1.OperationState) input.ReadEnum();
+            break;
+          }
+          case 42: {
+            if (progressDocuments_ == null) {
+              ProgressDocuments = new global::Google.Cloud.Firestore.Admin.V1.Progress();
+            }
+            input.ReadMessage(ProgressDocuments);
+            break;
+          }
+          case 50: {
+            if (progressBytes_ == null) {
+              ProgressBytes = new global::Google.Cloud.Firestore.Admin.V1.Progress();
+            }
+            input.ReadMessage(ProgressBytes);
+            break;
+          }
+        }
+      }
+    }
+    #endif
 
   }
 
@@ -456,7 +552,11 @@ namespace Google.Cloud.Firestore.Admin.V1 {
   /// Metadata for [google.longrunning.Operation][google.longrunning.Operation] results from
   /// [FirestoreAdmin.UpdateField][google.firestore.admin.v1.FirestoreAdmin.UpdateField].
   /// </summary>
-  public sealed partial class FieldOperationMetadata : pb::IMessage<FieldOperationMetadata> {
+  public sealed partial class FieldOperationMetadata : pb::IMessage<FieldOperationMetadata>
+  #if !GOOGLE_PROTOBUF_REFSTRUCT_COMPATIBILITY_MODE
+      , pb::IBufferMessage
+  #endif
+  {
     private static readonly pb::MessageParser<FieldOperationMetadata> _parser = new pb::MessageParser<FieldOperationMetadata>(() => new FieldOperationMetadata());
     private pb::UnknownFieldSet _unknownFields;
     [global::System.Diagnostics.DebuggerNonUserCodeAttribute]
@@ -556,7 +656,7 @@ namespace Google.Cloud.Firestore.Admin.V1 {
 
     /// <summary>Field number for the "state" field.</summary>
     public const int StateFieldNumber = 5;
-    private global::Google.Cloud.Firestore.Admin.V1.OperationState state_ = 0;
+    private global::Google.Cloud.Firestore.Admin.V1.OperationState state_ = global::Google.Cloud.Firestore.Admin.V1.OperationState.Unspecified;
     /// <summary>
     /// The state of the operation.
     /// </summary>
@@ -626,7 +726,7 @@ namespace Google.Cloud.Firestore.Admin.V1 {
       if (endTime_ != null) hash ^= EndTime.GetHashCode();
       if (Field.Length != 0) hash ^= Field.GetHashCode();
       hash ^= indexConfigDeltas_.GetHashCode();
-      if (State != 0) hash ^= State.GetHashCode();
+      if (State != global::Google.Cloud.Firestore.Admin.V1.OperationState.Unspecified) hash ^= State.GetHashCode();
       if (progressDocuments_ != null) hash ^= ProgressDocuments.GetHashCode();
       if (progressBytes_ != null) hash ^= ProgressBytes.GetHashCode();
       if (_unknownFields != null) {
@@ -642,6 +742,9 @@ namespace Google.Cloud.Firestore.Admin.V1 {
 
     [global::System.Diagnostics.DebuggerNonUserCodeAttribute]
     public void WriteTo(pb::CodedOutputStream output) {
+    #if !GOOGLE_PROTOBUF_REFSTRUCT_COMPATIBILITY_MODE
+      output.WriteRawMessage(this);
+    #else
       if (startTime_ != null) {
         output.WriteRawTag(10);
         output.WriteMessage(StartTime);
@@ -655,7 +758,7 @@ namespace Google.Cloud.Firestore.Admin.V1 {
         output.WriteString(Field);
       }
       indexConfigDeltas_.WriteTo(output, _repeated_indexConfigDeltas_codec);
-      if (State != 0) {
+      if (State != global::Google.Cloud.Firestore.Admin.V1.OperationState.Unspecified) {
         output.WriteRawTag(40);
         output.WriteEnum((int) State);
       }
@@ -670,7 +773,42 @@ namespace Google.Cloud.Firestore.Admin.V1 {
       if (_unknownFields != null) {
         _unknownFields.WriteTo(output);
       }
+    #endif
     }
+
+    #if !GOOGLE_PROTOBUF_REFSTRUCT_COMPATIBILITY_MODE
+    [global::System.Diagnostics.DebuggerNonUserCodeAttribute]
+    void pb::IBufferMessage.InternalWriteTo(ref pb::WriteContext output) {
+      if (startTime_ != null) {
+        output.WriteRawTag(10);
+        output.WriteMessage(StartTime);
+      }
+      if (endTime_ != null) {
+        output.WriteRawTag(18);
+        output.WriteMessage(EndTime);
+      }
+      if (Field.Length != 0) {
+        output.WriteRawTag(26);
+        output.WriteString(Field);
+      }
+      indexConfigDeltas_.WriteTo(ref output, _repeated_indexConfigDeltas_codec);
+      if (State != global::Google.Cloud.Firestore.Admin.V1.OperationState.Unspecified) {
+        output.WriteRawTag(40);
+        output.WriteEnum((int) State);
+      }
+      if (progressDocuments_ != null) {
+        output.WriteRawTag(50);
+        output.WriteMessage(ProgressDocuments);
+      }
+      if (progressBytes_ != null) {
+        output.WriteRawTag(58);
+        output.WriteMessage(ProgressBytes);
+      }
+      if (_unknownFields != null) {
+        _unknownFields.WriteTo(ref output);
+      }
+    }
+    #endif
 
     [global::System.Diagnostics.DebuggerNonUserCodeAttribute]
     public int CalculateSize() {
@@ -685,7 +823,7 @@ namespace Google.Cloud.Firestore.Admin.V1 {
         size += 1 + pb::CodedOutputStream.ComputeStringSize(Field);
       }
       size += indexConfigDeltas_.CalculateSize(_repeated_indexConfigDeltas_codec);
-      if (State != 0) {
+      if (State != global::Google.Cloud.Firestore.Admin.V1.OperationState.Unspecified) {
         size += 1 + pb::CodedOutputStream.ComputeEnumSize((int) State);
       }
       if (progressDocuments_ != null) {
@@ -721,7 +859,7 @@ namespace Google.Cloud.Firestore.Admin.V1 {
         Field = other.Field;
       }
       indexConfigDeltas_.Add(other.indexConfigDeltas_);
-      if (other.State != 0) {
+      if (other.State != global::Google.Cloud.Firestore.Admin.V1.OperationState.Unspecified) {
         State = other.State;
       }
       if (other.progressDocuments_ != null) {
@@ -741,6 +879,9 @@ namespace Google.Cloud.Firestore.Admin.V1 {
 
     [global::System.Diagnostics.DebuggerNonUserCodeAttribute]
     public void MergeFrom(pb::CodedInputStream input) {
+    #if !GOOGLE_PROTOBUF_REFSTRUCT_COMPATIBILITY_MODE
+      input.ReadRawMessage(this);
+    #else
       uint tag;
       while ((tag = input.ReadTag()) != 0) {
         switch(tag) {
@@ -789,7 +930,62 @@ namespace Google.Cloud.Firestore.Admin.V1 {
           }
         }
       }
+    #endif
     }
+
+    #if !GOOGLE_PROTOBUF_REFSTRUCT_COMPATIBILITY_MODE
+    [global::System.Diagnostics.DebuggerNonUserCodeAttribute]
+    void pb::IBufferMessage.InternalMergeFrom(ref pb::ParseContext input) {
+      uint tag;
+      while ((tag = input.ReadTag()) != 0) {
+        switch(tag) {
+          default:
+            _unknownFields = pb::UnknownFieldSet.MergeFieldFrom(_unknownFields, ref input);
+            break;
+          case 10: {
+            if (startTime_ == null) {
+              StartTime = new global::Google.Protobuf.WellKnownTypes.Timestamp();
+            }
+            input.ReadMessage(StartTime);
+            break;
+          }
+          case 18: {
+            if (endTime_ == null) {
+              EndTime = new global::Google.Protobuf.WellKnownTypes.Timestamp();
+            }
+            input.ReadMessage(EndTime);
+            break;
+          }
+          case 26: {
+            Field = input.ReadString();
+            break;
+          }
+          case 34: {
+            indexConfigDeltas_.AddEntriesFrom(ref input, _repeated_indexConfigDeltas_codec);
+            break;
+          }
+          case 40: {
+            State = (global::Google.Cloud.Firestore.Admin.V1.OperationState) input.ReadEnum();
+            break;
+          }
+          case 50: {
+            if (progressDocuments_ == null) {
+              ProgressDocuments = new global::Google.Cloud.Firestore.Admin.V1.Progress();
+            }
+            input.ReadMessage(ProgressDocuments);
+            break;
+          }
+          case 58: {
+            if (progressBytes_ == null) {
+              ProgressBytes = new global::Google.Cloud.Firestore.Admin.V1.Progress();
+            }
+            input.ReadMessage(ProgressBytes);
+            break;
+          }
+        }
+      }
+    }
+    #endif
 
     #region Nested types
     /// <summary>Container for nested types declared in the FieldOperationMetadata message type.</summary>
@@ -798,7 +994,11 @@ namespace Google.Cloud.Firestore.Admin.V1 {
       /// <summary>
       /// Information about an index configuration change.
       /// </summary>
-      public sealed partial class IndexConfigDelta : pb::IMessage<IndexConfigDelta> {
+      public sealed partial class IndexConfigDelta : pb::IMessage<IndexConfigDelta>
+      #if !GOOGLE_PROTOBUF_REFSTRUCT_COMPATIBILITY_MODE
+          , pb::IBufferMessage
+      #endif
+      {
         private static readonly pb::MessageParser<IndexConfigDelta> _parser = new pb::MessageParser<IndexConfigDelta>(() => new IndexConfigDelta());
         private pb::UnknownFieldSet _unknownFields;
         [global::System.Diagnostics.DebuggerNonUserCodeAttribute]
@@ -835,7 +1035,7 @@ namespace Google.Cloud.Firestore.Admin.V1 {
 
         /// <summary>Field number for the "change_type" field.</summary>
         public const int ChangeTypeFieldNumber = 1;
-        private global::Google.Cloud.Firestore.Admin.V1.FieldOperationMetadata.Types.IndexConfigDelta.Types.ChangeType changeType_ = 0;
+        private global::Google.Cloud.Firestore.Admin.V1.FieldOperationMetadata.Types.IndexConfigDelta.Types.ChangeType changeType_ = global::Google.Cloud.Firestore.Admin.V1.FieldOperationMetadata.Types.IndexConfigDelta.Types.ChangeType.Unspecified;
         /// <summary>
         /// Specifies how the index is changing.
         /// </summary>
@@ -882,7 +1082,7 @@ namespace Google.Cloud.Firestore.Admin.V1 {
         [global::System.Diagnostics.DebuggerNonUserCodeAttribute]
         public override int GetHashCode() {
           int hash = 1;
-          if (ChangeType != 0) hash ^= ChangeType.GetHashCode();
+          if (ChangeType != global::Google.Cloud.Firestore.Admin.V1.FieldOperationMetadata.Types.IndexConfigDelta.Types.ChangeType.Unspecified) hash ^= ChangeType.GetHashCode();
           if (index_ != null) hash ^= Index.GetHashCode();
           if (_unknownFields != null) {
             hash ^= _unknownFields.GetHashCode();
@@ -897,7 +1097,10 @@ namespace Google.Cloud.Firestore.Admin.V1 {
 
         [global::System.Diagnostics.DebuggerNonUserCodeAttribute]
         public void WriteTo(pb::CodedOutputStream output) {
-          if (ChangeType != 0) {
+        #if !GOOGLE_PROTOBUF_REFSTRUCT_COMPATIBILITY_MODE
+          output.WriteRawMessage(this);
+        #else
+          if (ChangeType != global::Google.Cloud.Firestore.Admin.V1.FieldOperationMetadata.Types.IndexConfigDelta.Types.ChangeType.Unspecified) {
             output.WriteRawTag(8);
             output.WriteEnum((int) ChangeType);
           }
@@ -908,12 +1111,30 @@ namespace Google.Cloud.Firestore.Admin.V1 {
           if (_unknownFields != null) {
             _unknownFields.WriteTo(output);
           }
+        #endif
         }
+
+        #if !GOOGLE_PROTOBUF_REFSTRUCT_COMPATIBILITY_MODE
+        [global::System.Diagnostics.DebuggerNonUserCodeAttribute]
+        void pb::IBufferMessage.InternalWriteTo(ref pb::WriteContext output) {
+          if (ChangeType != global::Google.Cloud.Firestore.Admin.V1.FieldOperationMetadata.Types.IndexConfigDelta.Types.ChangeType.Unspecified) {
+            output.WriteRawTag(8);
+            output.WriteEnum((int) ChangeType);
+          }
+          if (index_ != null) {
+            output.WriteRawTag(18);
+            output.WriteMessage(Index);
+          }
+          if (_unknownFields != null) {
+            _unknownFields.WriteTo(ref output);
+          }
+        }
+        #endif
 
         [global::System.Diagnostics.DebuggerNonUserCodeAttribute]
         public int CalculateSize() {
           int size = 0;
-          if (ChangeType != 0) {
+          if (ChangeType != global::Google.Cloud.Firestore.Admin.V1.FieldOperationMetadata.Types.IndexConfigDelta.Types.ChangeType.Unspecified) {
             size += 1 + pb::CodedOutputStream.ComputeEnumSize((int) ChangeType);
           }
           if (index_ != null) {
@@ -930,7 +1151,7 @@ namespace Google.Cloud.Firestore.Admin.V1 {
           if (other == null) {
             return;
           }
-          if (other.ChangeType != 0) {
+          if (other.ChangeType != global::Google.Cloud.Firestore.Admin.V1.FieldOperationMetadata.Types.IndexConfigDelta.Types.ChangeType.Unspecified) {
             ChangeType = other.ChangeType;
           }
           if (other.index_ != null) {
@@ -944,6 +1165,9 @@ namespace Google.Cloud.Firestore.Admin.V1 {
 
         [global::System.Diagnostics.DebuggerNonUserCodeAttribute]
         public void MergeFrom(pb::CodedInputStream input) {
+        #if !GOOGLE_PROTOBUF_REFSTRUCT_COMPATIBILITY_MODE
+          input.ReadRawMessage(this);
+        #else
           uint tag;
           while ((tag = input.ReadTag()) != 0) {
             switch(tag) {
@@ -963,7 +1187,33 @@ namespace Google.Cloud.Firestore.Admin.V1 {
               }
             }
           }
+        #endif
         }
+
+        #if !GOOGLE_PROTOBUF_REFSTRUCT_COMPATIBILITY_MODE
+        [global::System.Diagnostics.DebuggerNonUserCodeAttribute]
+        void pb::IBufferMessage.InternalMergeFrom(ref pb::ParseContext input) {
+          uint tag;
+          while ((tag = input.ReadTag()) != 0) {
+            switch(tag) {
+              default:
+                _unknownFields = pb::UnknownFieldSet.MergeFieldFrom(_unknownFields, ref input);
+                break;
+              case 8: {
+                ChangeType = (global::Google.Cloud.Firestore.Admin.V1.FieldOperationMetadata.Types.IndexConfigDelta.Types.ChangeType) input.ReadEnum();
+                break;
+              }
+              case 18: {
+                if (index_ == null) {
+                  Index = new global::Google.Cloud.Firestore.Admin.V1.Index();
+                }
+                input.ReadMessage(Index);
+                break;
+              }
+            }
+          }
+        }
+        #endif
 
         #region Nested types
         /// <summary>Container for nested types declared in the IndexConfigDelta message type.</summary>
@@ -1001,7 +1251,11 @@ namespace Google.Cloud.Firestore.Admin.V1 {
   /// Metadata for [google.longrunning.Operation][google.longrunning.Operation] results from
   /// [FirestoreAdmin.ExportDocuments][google.firestore.admin.v1.FirestoreAdmin.ExportDocuments].
   /// </summary>
-  public sealed partial class ExportDocumentsMetadata : pb::IMessage<ExportDocumentsMetadata> {
+  public sealed partial class ExportDocumentsMetadata : pb::IMessage<ExportDocumentsMetadata>
+  #if !GOOGLE_PROTOBUF_REFSTRUCT_COMPATIBILITY_MODE
+      , pb::IBufferMessage
+  #endif
+  {
     private static readonly pb::MessageParser<ExportDocumentsMetadata> _parser = new pb::MessageParser<ExportDocumentsMetadata>(() => new ExportDocumentsMetadata());
     private pb::UnknownFieldSet _unknownFields;
     [global::System.Diagnostics.DebuggerNonUserCodeAttribute]
@@ -1072,7 +1326,7 @@ namespace Google.Cloud.Firestore.Admin.V1 {
 
     /// <summary>Field number for the "operation_state" field.</summary>
     public const int OperationStateFieldNumber = 3;
-    private global::Google.Cloud.Firestore.Admin.V1.OperationState operationState_ = 0;
+    private global::Google.Cloud.Firestore.Admin.V1.OperationState operationState_ = global::Google.Cloud.Firestore.Admin.V1.OperationState.Unspecified;
     /// <summary>
     /// The state of the export operation.
     /// </summary>
@@ -1167,7 +1421,7 @@ namespace Google.Cloud.Firestore.Admin.V1 {
       int hash = 1;
       if (startTime_ != null) hash ^= StartTime.GetHashCode();
       if (endTime_ != null) hash ^= EndTime.GetHashCode();
-      if (OperationState != 0) hash ^= OperationState.GetHashCode();
+      if (OperationState != global::Google.Cloud.Firestore.Admin.V1.OperationState.Unspecified) hash ^= OperationState.GetHashCode();
       if (progressDocuments_ != null) hash ^= ProgressDocuments.GetHashCode();
       if (progressBytes_ != null) hash ^= ProgressBytes.GetHashCode();
       hash ^= collectionIds_.GetHashCode();
@@ -1185,6 +1439,9 @@ namespace Google.Cloud.Firestore.Admin.V1 {
 
     [global::System.Diagnostics.DebuggerNonUserCodeAttribute]
     public void WriteTo(pb::CodedOutputStream output) {
+    #if !GOOGLE_PROTOBUF_REFSTRUCT_COMPATIBILITY_MODE
+      output.WriteRawMessage(this);
+    #else
       if (startTime_ != null) {
         output.WriteRawTag(10);
         output.WriteMessage(StartTime);
@@ -1193,7 +1450,7 @@ namespace Google.Cloud.Firestore.Admin.V1 {
         output.WriteRawTag(18);
         output.WriteMessage(EndTime);
       }
-      if (OperationState != 0) {
+      if (OperationState != global::Google.Cloud.Firestore.Admin.V1.OperationState.Unspecified) {
         output.WriteRawTag(24);
         output.WriteEnum((int) OperationState);
       }
@@ -1213,7 +1470,42 @@ namespace Google.Cloud.Firestore.Admin.V1 {
       if (_unknownFields != null) {
         _unknownFields.WriteTo(output);
       }
+    #endif
     }
+
+    #if !GOOGLE_PROTOBUF_REFSTRUCT_COMPATIBILITY_MODE
+    [global::System.Diagnostics.DebuggerNonUserCodeAttribute]
+    void pb::IBufferMessage.InternalWriteTo(ref pb::WriteContext output) {
+      if (startTime_ != null) {
+        output.WriteRawTag(10);
+        output.WriteMessage(StartTime);
+      }
+      if (endTime_ != null) {
+        output.WriteRawTag(18);
+        output.WriteMessage(EndTime);
+      }
+      if (OperationState != global::Google.Cloud.Firestore.Admin.V1.OperationState.Unspecified) {
+        output.WriteRawTag(24);
+        output.WriteEnum((int) OperationState);
+      }
+      if (progressDocuments_ != null) {
+        output.WriteRawTag(34);
+        output.WriteMessage(ProgressDocuments);
+      }
+      if (progressBytes_ != null) {
+        output.WriteRawTag(42);
+        output.WriteMessage(ProgressBytes);
+      }
+      collectionIds_.WriteTo(ref output, _repeated_collectionIds_codec);
+      if (OutputUriPrefix.Length != 0) {
+        output.WriteRawTag(58);
+        output.WriteString(OutputUriPrefix);
+      }
+      if (_unknownFields != null) {
+        _unknownFields.WriteTo(ref output);
+      }
+    }
+    #endif
 
     [global::System.Diagnostics.DebuggerNonUserCodeAttribute]
     public int CalculateSize() {
@@ -1224,7 +1516,7 @@ namespace Google.Cloud.Firestore.Admin.V1 {
       if (endTime_ != null) {
         size += 1 + pb::CodedOutputStream.ComputeMessageSize(EndTime);
       }
-      if (OperationState != 0) {
+      if (OperationState != global::Google.Cloud.Firestore.Admin.V1.OperationState.Unspecified) {
         size += 1 + pb::CodedOutputStream.ComputeEnumSize((int) OperationState);
       }
       if (progressDocuments_ != null) {
@@ -1260,7 +1552,7 @@ namespace Google.Cloud.Firestore.Admin.V1 {
         }
         EndTime.MergeFrom(other.EndTime);
       }
-      if (other.OperationState != 0) {
+      if (other.OperationState != global::Google.Cloud.Firestore.Admin.V1.OperationState.Unspecified) {
         OperationState = other.OperationState;
       }
       if (other.progressDocuments_ != null) {
@@ -1284,6 +1576,9 @@ namespace Google.Cloud.Firestore.Admin.V1 {
 
     [global::System.Diagnostics.DebuggerNonUserCodeAttribute]
     public void MergeFrom(pb::CodedInputStream input) {
+    #if !GOOGLE_PROTOBUF_REFSTRUCT_COMPATIBILITY_MODE
+      input.ReadRawMessage(this);
+    #else
       uint tag;
       while ((tag = input.ReadTag()) != 0) {
         switch(tag) {
@@ -1332,7 +1627,62 @@ namespace Google.Cloud.Firestore.Admin.V1 {
           }
         }
       }
+    #endif
     }
+
+    #if !GOOGLE_PROTOBUF_REFSTRUCT_COMPATIBILITY_MODE
+    [global::System.Diagnostics.DebuggerNonUserCodeAttribute]
+    void pb::IBufferMessage.InternalMergeFrom(ref pb::ParseContext input) {
+      uint tag;
+      while ((tag = input.ReadTag()) != 0) {
+        switch(tag) {
+          default:
+            _unknownFields = pb::UnknownFieldSet.MergeFieldFrom(_unknownFields, ref input);
+            break;
+          case 10: {
+            if (startTime_ == null) {
+              StartTime = new global::Google.Protobuf.WellKnownTypes.Timestamp();
+            }
+            input.ReadMessage(StartTime);
+            break;
+          }
+          case 18: {
+            if (endTime_ == null) {
+              EndTime = new global::Google.Protobuf.WellKnownTypes.Timestamp();
+            }
+            input.ReadMessage(EndTime);
+            break;
+          }
+          case 24: {
+            OperationState = (global::Google.Cloud.Firestore.Admin.V1.OperationState) input.ReadEnum();
+            break;
+          }
+          case 34: {
+            if (progressDocuments_ == null) {
+              ProgressDocuments = new global::Google.Cloud.Firestore.Admin.V1.Progress();
+            }
+            input.ReadMessage(ProgressDocuments);
+            break;
+          }
+          case 42: {
+            if (progressBytes_ == null) {
+              ProgressBytes = new global::Google.Cloud.Firestore.Admin.V1.Progress();
+            }
+            input.ReadMessage(ProgressBytes);
+            break;
+          }
+          case 50: {
+            collectionIds_.AddEntriesFrom(ref input, _repeated_collectionIds_codec);
+            break;
+          }
+          case 58: {
+            OutputUriPrefix = input.ReadString();
+            break;
+          }
+        }
+      }
+    }
+    #endif
 
   }
 
@@ -1340,7 +1690,11 @@ namespace Google.Cloud.Firestore.Admin.V1 {
   /// Metadata for [google.longrunning.Operation][google.longrunning.Operation] results from
   /// [FirestoreAdmin.ImportDocuments][google.firestore.admin.v1.FirestoreAdmin.ImportDocuments].
   /// </summary>
-  public sealed partial class ImportDocumentsMetadata : pb::IMessage<ImportDocumentsMetadata> {
+  public sealed partial class ImportDocumentsMetadata : pb::IMessage<ImportDocumentsMetadata>
+  #if !GOOGLE_PROTOBUF_REFSTRUCT_COMPATIBILITY_MODE
+      , pb::IBufferMessage
+  #endif
+  {
     private static readonly pb::MessageParser<ImportDocumentsMetadata> _parser = new pb::MessageParser<ImportDocumentsMetadata>(() => new ImportDocumentsMetadata());
     private pb::UnknownFieldSet _unknownFields;
     [global::System.Diagnostics.DebuggerNonUserCodeAttribute]
@@ -1411,7 +1765,7 @@ namespace Google.Cloud.Firestore.Admin.V1 {
 
     /// <summary>Field number for the "operation_state" field.</summary>
     public const int OperationStateFieldNumber = 3;
-    private global::Google.Cloud.Firestore.Admin.V1.OperationState operationState_ = 0;
+    private global::Google.Cloud.Firestore.Admin.V1.OperationState operationState_ = global::Google.Cloud.Firestore.Admin.V1.OperationState.Unspecified;
     /// <summary>
     /// The state of the import operation.
     /// </summary>
@@ -1506,7 +1860,7 @@ namespace Google.Cloud.Firestore.Admin.V1 {
       int hash = 1;
       if (startTime_ != null) hash ^= StartTime.GetHashCode();
       if (endTime_ != null) hash ^= EndTime.GetHashCode();
-      if (OperationState != 0) hash ^= OperationState.GetHashCode();
+      if (OperationState != global::Google.Cloud.Firestore.Admin.V1.OperationState.Unspecified) hash ^= OperationState.GetHashCode();
       if (progressDocuments_ != null) hash ^= ProgressDocuments.GetHashCode();
       if (progressBytes_ != null) hash ^= ProgressBytes.GetHashCode();
       hash ^= collectionIds_.GetHashCode();
@@ -1524,6 +1878,9 @@ namespace Google.Cloud.Firestore.Admin.V1 {
 
     [global::System.Diagnostics.DebuggerNonUserCodeAttribute]
     public void WriteTo(pb::CodedOutputStream output) {
+    #if !GOOGLE_PROTOBUF_REFSTRUCT_COMPATIBILITY_MODE
+      output.WriteRawMessage(this);
+    #else
       if (startTime_ != null) {
         output.WriteRawTag(10);
         output.WriteMessage(StartTime);
@@ -1532,7 +1889,7 @@ namespace Google.Cloud.Firestore.Admin.V1 {
         output.WriteRawTag(18);
         output.WriteMessage(EndTime);
       }
-      if (OperationState != 0) {
+      if (OperationState != global::Google.Cloud.Firestore.Admin.V1.OperationState.Unspecified) {
         output.WriteRawTag(24);
         output.WriteEnum((int) OperationState);
       }
@@ -1552,7 +1909,42 @@ namespace Google.Cloud.Firestore.Admin.V1 {
       if (_unknownFields != null) {
         _unknownFields.WriteTo(output);
       }
+    #endif
     }
+
+    #if !GOOGLE_PROTOBUF_REFSTRUCT_COMPATIBILITY_MODE
+    [global::System.Diagnostics.DebuggerNonUserCodeAttribute]
+    void pb::IBufferMessage.InternalWriteTo(ref pb::WriteContext output) {
+      if (startTime_ != null) {
+        output.WriteRawTag(10);
+        output.WriteMessage(StartTime);
+      }
+      if (endTime_ != null) {
+        output.WriteRawTag(18);
+        output.WriteMessage(EndTime);
+      }
+      if (OperationState != global::Google.Cloud.Firestore.Admin.V1.OperationState.Unspecified) {
+        output.WriteRawTag(24);
+        output.WriteEnum((int) OperationState);
+      }
+      if (progressDocuments_ != null) {
+        output.WriteRawTag(34);
+        output.WriteMessage(ProgressDocuments);
+      }
+      if (progressBytes_ != null) {
+        output.WriteRawTag(42);
+        output.WriteMessage(ProgressBytes);
+      }
+      collectionIds_.WriteTo(ref output, _repeated_collectionIds_codec);
+      if (InputUriPrefix.Length != 0) {
+        output.WriteRawTag(58);
+        output.WriteString(InputUriPrefix);
+      }
+      if (_unknownFields != null) {
+        _unknownFields.WriteTo(ref output);
+      }
+    }
+    #endif
 
     [global::System.Diagnostics.DebuggerNonUserCodeAttribute]
     public int CalculateSize() {
@@ -1563,7 +1955,7 @@ namespace Google.Cloud.Firestore.Admin.V1 {
       if (endTime_ != null) {
         size += 1 + pb::CodedOutputStream.ComputeMessageSize(EndTime);
       }
-      if (OperationState != 0) {
+      if (OperationState != global::Google.Cloud.Firestore.Admin.V1.OperationState.Unspecified) {
         size += 1 + pb::CodedOutputStream.ComputeEnumSize((int) OperationState);
       }
       if (progressDocuments_ != null) {
@@ -1599,7 +1991,7 @@ namespace Google.Cloud.Firestore.Admin.V1 {
         }
         EndTime.MergeFrom(other.EndTime);
       }
-      if (other.OperationState != 0) {
+      if (other.OperationState != global::Google.Cloud.Firestore.Admin.V1.OperationState.Unspecified) {
         OperationState = other.OperationState;
       }
       if (other.progressDocuments_ != null) {
@@ -1623,6 +2015,9 @@ namespace Google.Cloud.Firestore.Admin.V1 {
 
     [global::System.Diagnostics.DebuggerNonUserCodeAttribute]
     public void MergeFrom(pb::CodedInputStream input) {
+    #if !GOOGLE_PROTOBUF_REFSTRUCT_COMPATIBILITY_MODE
+      input.ReadRawMessage(this);
+    #else
       uint tag;
       while ((tag = input.ReadTag()) != 0) {
         switch(tag) {
@@ -1671,14 +2066,73 @@ namespace Google.Cloud.Firestore.Admin.V1 {
           }
         }
       }
+    #endif
     }
+
+    #if !GOOGLE_PROTOBUF_REFSTRUCT_COMPATIBILITY_MODE
+    [global::System.Diagnostics.DebuggerNonUserCodeAttribute]
+    void pb::IBufferMessage.InternalMergeFrom(ref pb::ParseContext input) {
+      uint tag;
+      while ((tag = input.ReadTag()) != 0) {
+        switch(tag) {
+          default:
+            _unknownFields = pb::UnknownFieldSet.MergeFieldFrom(_unknownFields, ref input);
+            break;
+          case 10: {
+            if (startTime_ == null) {
+              StartTime = new global::Google.Protobuf.WellKnownTypes.Timestamp();
+            }
+            input.ReadMessage(StartTime);
+            break;
+          }
+          case 18: {
+            if (endTime_ == null) {
+              EndTime = new global::Google.Protobuf.WellKnownTypes.Timestamp();
+            }
+            input.ReadMessage(EndTime);
+            break;
+          }
+          case 24: {
+            OperationState = (global::Google.Cloud.Firestore.Admin.V1.OperationState) input.ReadEnum();
+            break;
+          }
+          case 34: {
+            if (progressDocuments_ == null) {
+              ProgressDocuments = new global::Google.Cloud.Firestore.Admin.V1.Progress();
+            }
+            input.ReadMessage(ProgressDocuments);
+            break;
+          }
+          case 42: {
+            if (progressBytes_ == null) {
+              ProgressBytes = new global::Google.Cloud.Firestore.Admin.V1.Progress();
+            }
+            input.ReadMessage(ProgressBytes);
+            break;
+          }
+          case 50: {
+            collectionIds_.AddEntriesFrom(ref input, _repeated_collectionIds_codec);
+            break;
+          }
+          case 58: {
+            InputUriPrefix = input.ReadString();
+            break;
+          }
+        }
+      }
+    }
+    #endif
 
   }
 
   /// <summary>
   /// Returned in the [google.longrunning.Operation][google.longrunning.Operation] response field.
   /// </summary>
-  public sealed partial class ExportDocumentsResponse : pb::IMessage<ExportDocumentsResponse> {
+  public sealed partial class ExportDocumentsResponse : pb::IMessage<ExportDocumentsResponse>
+  #if !GOOGLE_PROTOBUF_REFSTRUCT_COMPATIBILITY_MODE
+      , pb::IBufferMessage
+  #endif
+  {
     private static readonly pb::MessageParser<ExportDocumentsResponse> _parser = new pb::MessageParser<ExportDocumentsResponse>(() => new ExportDocumentsResponse());
     private pb::UnknownFieldSet _unknownFields;
     [global::System.Diagnostics.DebuggerNonUserCodeAttribute]
@@ -1762,6 +2216,9 @@ namespace Google.Cloud.Firestore.Admin.V1 {
 
     [global::System.Diagnostics.DebuggerNonUserCodeAttribute]
     public void WriteTo(pb::CodedOutputStream output) {
+    #if !GOOGLE_PROTOBUF_REFSTRUCT_COMPATIBILITY_MODE
+      output.WriteRawMessage(this);
+    #else
       if (OutputUriPrefix.Length != 0) {
         output.WriteRawTag(10);
         output.WriteString(OutputUriPrefix);
@@ -1769,7 +2226,21 @@ namespace Google.Cloud.Firestore.Admin.V1 {
       if (_unknownFields != null) {
         _unknownFields.WriteTo(output);
       }
+    #endif
     }
+
+    #if !GOOGLE_PROTOBUF_REFSTRUCT_COMPATIBILITY_MODE
+    [global::System.Diagnostics.DebuggerNonUserCodeAttribute]
+    void pb::IBufferMessage.InternalWriteTo(ref pb::WriteContext output) {
+      if (OutputUriPrefix.Length != 0) {
+        output.WriteRawTag(10);
+        output.WriteString(OutputUriPrefix);
+      }
+      if (_unknownFields != null) {
+        _unknownFields.WriteTo(ref output);
+      }
+    }
+    #endif
 
     [global::System.Diagnostics.DebuggerNonUserCodeAttribute]
     public int CalculateSize() {
@@ -1796,6 +2267,9 @@ namespace Google.Cloud.Firestore.Admin.V1 {
 
     [global::System.Diagnostics.DebuggerNonUserCodeAttribute]
     public void MergeFrom(pb::CodedInputStream input) {
+    #if !GOOGLE_PROTOBUF_REFSTRUCT_COMPATIBILITY_MODE
+      input.ReadRawMessage(this);
+    #else
       uint tag;
       while ((tag = input.ReadTag()) != 0) {
         switch(tag) {
@@ -1808,7 +2282,26 @@ namespace Google.Cloud.Firestore.Admin.V1 {
           }
         }
       }
+    #endif
     }
+
+    #if !GOOGLE_PROTOBUF_REFSTRUCT_COMPATIBILITY_MODE
+    [global::System.Diagnostics.DebuggerNonUserCodeAttribute]
+    void pb::IBufferMessage.InternalMergeFrom(ref pb::ParseContext input) {
+      uint tag;
+      while ((tag = input.ReadTag()) != 0) {
+        switch(tag) {
+          default:
+            _unknownFields = pb::UnknownFieldSet.MergeFieldFrom(_unknownFields, ref input);
+            break;
+          case 10: {
+            OutputUriPrefix = input.ReadString();
+            break;
+          }
+        }
+      }
+    }
+    #endif
 
   }
 
@@ -1817,7 +2310,11 @@ namespace Google.Cloud.Firestore.Admin.V1 {
   /// Unit of work is generic and must be interpreted based on where [Progress][google.firestore.admin.v1.Progress]
   /// is used.
   /// </summary>
-  public sealed partial class Progress : pb::IMessage<Progress> {
+  public sealed partial class Progress : pb::IMessage<Progress>
+  #if !GOOGLE_PROTOBUF_REFSTRUCT_COMPATIBILITY_MODE
+      , pb::IBufferMessage
+  #endif
+  {
     private static readonly pb::MessageParser<Progress> _parser = new pb::MessageParser<Progress>(() => new Progress());
     private pb::UnknownFieldSet _unknownFields;
     [global::System.Diagnostics.DebuggerNonUserCodeAttribute]
@@ -1916,6 +2413,9 @@ namespace Google.Cloud.Firestore.Admin.V1 {
 
     [global::System.Diagnostics.DebuggerNonUserCodeAttribute]
     public void WriteTo(pb::CodedOutputStream output) {
+    #if !GOOGLE_PROTOBUF_REFSTRUCT_COMPATIBILITY_MODE
+      output.WriteRawMessage(this);
+    #else
       if (EstimatedWork != 0L) {
         output.WriteRawTag(8);
         output.WriteInt64(EstimatedWork);
@@ -1927,7 +2427,25 @@ namespace Google.Cloud.Firestore.Admin.V1 {
       if (_unknownFields != null) {
         _unknownFields.WriteTo(output);
       }
+    #endif
     }
+
+    #if !GOOGLE_PROTOBUF_REFSTRUCT_COMPATIBILITY_MODE
+    [global::System.Diagnostics.DebuggerNonUserCodeAttribute]
+    void pb::IBufferMessage.InternalWriteTo(ref pb::WriteContext output) {
+      if (EstimatedWork != 0L) {
+        output.WriteRawTag(8);
+        output.WriteInt64(EstimatedWork);
+      }
+      if (CompletedWork != 0L) {
+        output.WriteRawTag(16);
+        output.WriteInt64(CompletedWork);
+      }
+      if (_unknownFields != null) {
+        _unknownFields.WriteTo(ref output);
+      }
+    }
+    #endif
 
     [global::System.Diagnostics.DebuggerNonUserCodeAttribute]
     public int CalculateSize() {
@@ -1960,6 +2478,9 @@ namespace Google.Cloud.Firestore.Admin.V1 {
 
     [global::System.Diagnostics.DebuggerNonUserCodeAttribute]
     public void MergeFrom(pb::CodedInputStream input) {
+    #if !GOOGLE_PROTOBUF_REFSTRUCT_COMPATIBILITY_MODE
+      input.ReadRawMessage(this);
+    #else
       uint tag;
       while ((tag = input.ReadTag()) != 0) {
         switch(tag) {
@@ -1976,7 +2497,30 @@ namespace Google.Cloud.Firestore.Admin.V1 {
           }
         }
       }
+    #endif
     }
+
+    #if !GOOGLE_PROTOBUF_REFSTRUCT_COMPATIBILITY_MODE
+    [global::System.Diagnostics.DebuggerNonUserCodeAttribute]
+    void pb::IBufferMessage.InternalMergeFrom(ref pb::ParseContext input) {
+      uint tag;
+      while ((tag = input.ReadTag()) != 0) {
+        switch(tag) {
+          default:
+            _unknownFields = pb::UnknownFieldSet.MergeFieldFrom(_unknownFields, ref input);
+            break;
+          case 8: {
+            EstimatedWork = input.ReadInt64();
+            break;
+          }
+          case 16: {
+            CompletedWork = input.ReadInt64();
+            break;
+          }
+        }
+      }
+    }
+    #endif
 
   }
 

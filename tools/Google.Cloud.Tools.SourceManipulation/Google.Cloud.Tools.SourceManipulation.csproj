@@ -1,8 +1,12 @@
 ﻿<Project Sdk="Microsoft.NET.Sdk">
 
   <PropertyGroup>
-    <TargetFramework>netstandard2.0</TargetFramework>
+    <TargetFramework>netstandard2.1</TargetFramework>
     <LangVersion>latest</LangVersion>
+
+    <RepoRoot>$([System.IO.Path]::GetDirectoryName($([MSBuild]::GetPathOfFileAbove('.gitignore', '$(MSBuildThisFileDirectory)'))))</RepoRoot>
+    <AssemblyOriginatorKeyFile>$(RepoRoot)/apis/GoogleApis.snk</AssemblyOriginatorKeyFile>
+    <SignAssembly>True</SignAssembly>
   </PropertyGroup>
 
   <ItemGroup>

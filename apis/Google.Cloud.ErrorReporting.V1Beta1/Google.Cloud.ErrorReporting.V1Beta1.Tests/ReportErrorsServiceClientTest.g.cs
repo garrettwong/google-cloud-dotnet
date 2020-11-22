@@ -1,4 +1,4 @@
-// Copyright 2019 Google LLC
+// Copyright 2020 Google LLC
 //
 // Licensed under the Apache License, Version 2.0 (the "License");
 // you may not use this file except in compliance with the License.
@@ -33,7 +33,7 @@ namespace Google.Cloud.ErrorReporting.V1Beta1.Tests
             moq::Mock<ReportErrorsService.ReportErrorsServiceClient> mockGrpcClient = new moq::Mock<ReportErrorsService.ReportErrorsServiceClient>(moq::MockBehavior.Strict);
             ReportErrorEventRequest request = new ReportErrorEventRequest
             {
-                ProjectNameAsProjectName = new gagr::ProjectName("[PROJECT]"),
+                ProjectNameAsProjectName = gagr::ProjectName.FromProject("[PROJECT]"),
                 Event = new ReportedErrorEvent(),
             };
             ReportErrorEventResponse expectedResponse = new ReportErrorEventResponse { };
@@ -50,7 +50,7 @@ namespace Google.Cloud.ErrorReporting.V1Beta1.Tests
             moq::Mock<ReportErrorsService.ReportErrorsServiceClient> mockGrpcClient = new moq::Mock<ReportErrorsService.ReportErrorsServiceClient>(moq::MockBehavior.Strict);
             ReportErrorEventRequest request = new ReportErrorEventRequest
             {
-                ProjectNameAsProjectName = new gagr::ProjectName("[PROJECT]"),
+                ProjectNameAsProjectName = gagr::ProjectName.FromProject("[PROJECT]"),
                 Event = new ReportedErrorEvent(),
             };
             ReportErrorEventResponse expectedResponse = new ReportErrorEventResponse { };
@@ -69,7 +69,7 @@ namespace Google.Cloud.ErrorReporting.V1Beta1.Tests
             moq::Mock<ReportErrorsService.ReportErrorsServiceClient> mockGrpcClient = new moq::Mock<ReportErrorsService.ReportErrorsServiceClient>(moq::MockBehavior.Strict);
             ReportErrorEventRequest request = new ReportErrorEventRequest
             {
-                ProjectNameAsProjectName = new gagr::ProjectName("[PROJECT]"),
+                ProjectNameAsProjectName = gagr::ProjectName.FromProject("[PROJECT]"),
                 Event = new ReportedErrorEvent(),
             };
             ReportErrorEventResponse expectedResponse = new ReportErrorEventResponse { };
@@ -86,7 +86,7 @@ namespace Google.Cloud.ErrorReporting.V1Beta1.Tests
             moq::Mock<ReportErrorsService.ReportErrorsServiceClient> mockGrpcClient = new moq::Mock<ReportErrorsService.ReportErrorsServiceClient>(moq::MockBehavior.Strict);
             ReportErrorEventRequest request = new ReportErrorEventRequest
             {
-                ProjectNameAsProjectName = new gagr::ProjectName("[PROJECT]"),
+                ProjectNameAsProjectName = gagr::ProjectName.FromProject("[PROJECT]"),
                 Event = new ReportedErrorEvent(),
             };
             ReportErrorEventResponse expectedResponse = new ReportErrorEventResponse { };
@@ -100,12 +100,12 @@ namespace Google.Cloud.ErrorReporting.V1Beta1.Tests
         }
 
         [xunit::FactAttribute]
-        public void ReportErrorEvent_ResourceNames()
+        public void ReportErrorEventResourceNames()
         {
             moq::Mock<ReportErrorsService.ReportErrorsServiceClient> mockGrpcClient = new moq::Mock<ReportErrorsService.ReportErrorsServiceClient>(moq::MockBehavior.Strict);
             ReportErrorEventRequest request = new ReportErrorEventRequest
             {
-                ProjectNameAsProjectName = new gagr::ProjectName("[PROJECT]"),
+                ProjectNameAsProjectName = gagr::ProjectName.FromProject("[PROJECT]"),
                 Event = new ReportedErrorEvent(),
             };
             ReportErrorEventResponse expectedResponse = new ReportErrorEventResponse { };
@@ -117,12 +117,12 @@ namespace Google.Cloud.ErrorReporting.V1Beta1.Tests
         }
 
         [xunit::FactAttribute]
-        public async stt::Task ReportErrorEventAsync_ResourceNames()
+        public async stt::Task ReportErrorEventResourceNamesAsync()
         {
             moq::Mock<ReportErrorsService.ReportErrorsServiceClient> mockGrpcClient = new moq::Mock<ReportErrorsService.ReportErrorsServiceClient>(moq::MockBehavior.Strict);
             ReportErrorEventRequest request = new ReportErrorEventRequest
             {
-                ProjectNameAsProjectName = new gagr::ProjectName("[PROJECT]"),
+                ProjectNameAsProjectName = gagr::ProjectName.FromProject("[PROJECT]"),
                 Event = new ReportedErrorEvent(),
             };
             ReportErrorEventResponse expectedResponse = new ReportErrorEventResponse { };

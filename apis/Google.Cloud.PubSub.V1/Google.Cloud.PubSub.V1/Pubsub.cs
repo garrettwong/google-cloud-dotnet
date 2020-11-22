@@ -26,242 +26,304 @@ namespace Google.Cloud.PubSub.V1 {
           string.Concat(
             "Ch1nb29nbGUvcHVic3ViL3YxL3B1YnN1Yi5wcm90bxIQZ29vZ2xlLnB1YnN1",
             "Yi52MRocZ29vZ2xlL2FwaS9hbm5vdGF0aW9ucy5wcm90bxoXZ29vZ2xlL2Fw",
-            "aS9jbGllbnQucHJvdG8aHmdvb2dsZS9wcm90b2J1Zi9kdXJhdGlvbi5wcm90",
-            "bxobZ29vZ2xlL3Byb3RvYnVmL2VtcHR5LnByb3RvGiBnb29nbGUvcHJvdG9i",
-            "dWYvZmllbGRfbWFzay5wcm90bxofZ29vZ2xlL3Byb3RvYnVmL3RpbWVzdGFt",
-            "cC5wcm90byI7ChRNZXNzYWdlU3RvcmFnZVBvbGljeRIjChthbGxvd2VkX3Bl",
-            "cnNpc3RlbmNlX3JlZ2lvbnMYASADKAki1wEKBVRvcGljEgwKBG5hbWUYASAB",
-            "KAkSMwoGbGFiZWxzGAIgAygLMiMuZ29vZ2xlLnB1YnN1Yi52MS5Ub3BpYy5M",
-            "YWJlbHNFbnRyeRJGChZtZXNzYWdlX3N0b3JhZ2VfcG9saWN5GAMgASgLMiYu",
-            "Z29vZ2xlLnB1YnN1Yi52MS5NZXNzYWdlU3RvcmFnZVBvbGljeRIUCgxrbXNf",
-            "a2V5X25hbWUYBSABKAkaLQoLTGFiZWxzRW50cnkSCwoDa2V5GAEgASgJEg0K",
-            "BXZhbHVlGAIgASgJOgI4ASLxAQoNUHVic3ViTWVzc2FnZRIMCgRkYXRhGAEg",
-            "ASgMEkMKCmF0dHJpYnV0ZXMYAiADKAsyLy5nb29nbGUucHVic3ViLnYxLlB1",
-            "YnN1Yk1lc3NhZ2UuQXR0cmlidXRlc0VudHJ5EhIKCm1lc3NhZ2VfaWQYAyAB",
-            "KAkSMAoMcHVibGlzaF90aW1lGAQgASgLMhouZ29vZ2xlLnByb3RvYnVmLlRp",
-            "bWVzdGFtcBIUCgxvcmRlcmluZ19rZXkYBSABKAkaMQoPQXR0cmlidXRlc0Vu",
-            "dHJ5EgsKA2tleRgBIAEoCRINCgV2YWx1ZRgCIAEoCToCOAEiIAoPR2V0VG9w",
-            "aWNSZXF1ZXN0Eg0KBXRvcGljGAEgASgJIm0KElVwZGF0ZVRvcGljUmVxdWVz",
-            "dBImCgV0b3BpYxgBIAEoCzIXLmdvb2dsZS5wdWJzdWIudjEuVG9waWMSLwoL",
-            "dXBkYXRlX21hc2sYAiABKAsyGi5nb29nbGUucHJvdG9idWYuRmllbGRNYXNr",
-            "IlIKDlB1Ymxpc2hSZXF1ZXN0Eg0KBXRvcGljGAEgASgJEjEKCG1lc3NhZ2Vz",
-            "GAIgAygLMh8uZ29vZ2xlLnB1YnN1Yi52MS5QdWJzdWJNZXNzYWdlIiYKD1B1",
-            "Ymxpc2hSZXNwb25zZRITCgttZXNzYWdlX2lkcxgBIAMoCSJLChFMaXN0VG9w",
-            "aWNzUmVxdWVzdBIPCgdwcm9qZWN0GAEgASgJEhEKCXBhZ2Vfc2l6ZRgCIAEo",
-            "BRISCgpwYWdlX3Rva2VuGAMgASgJIlYKEkxpc3RUb3BpY3NSZXNwb25zZRIn",
-            "CgZ0b3BpY3MYASADKAsyFy5nb29nbGUucHVic3ViLnYxLlRvcGljEhcKD25l",
-            "eHRfcGFnZV90b2tlbhgCIAEoCSJVCh1MaXN0VG9waWNTdWJzY3JpcHRpb25z",
-            "UmVxdWVzdBINCgV0b3BpYxgBIAEoCRIRCglwYWdlX3NpemUYAiABKAUSEgoK",
-            "cGFnZV90b2tlbhgDIAEoCSJQCh5MaXN0VG9waWNTdWJzY3JpcHRpb25zUmVz",
-            "cG9uc2USFQoNc3Vic2NyaXB0aW9ucxgBIAMoCRIXCg9uZXh0X3BhZ2VfdG9r",
-            "ZW4YAiABKAkiUQoZTGlzdFRvcGljU25hcHNob3RzUmVxdWVzdBINCgV0b3Bp",
-            "YxgBIAEoCRIRCglwYWdlX3NpemUYAiABKAUSEgoKcGFnZV90b2tlbhgDIAEo",
-            "CSJIChpMaXN0VG9waWNTbmFwc2hvdHNSZXNwb25zZRIRCglzbmFwc2hvdHMY",
-            "ASADKAkSFwoPbmV4dF9wYWdlX3Rva2VuGAIgASgJIiMKEkRlbGV0ZVRvcGlj",
-            "UmVxdWVzdBINCgV0b3BpYxgBIAEoCSLlAwoMU3Vic2NyaXB0aW9uEgwKBG5h",
-            "bWUYASABKAkSDQoFdG9waWMYAiABKAkSMQoLcHVzaF9jb25maWcYBCABKAsy",
-            "HC5nb29nbGUucHVic3ViLnYxLlB1c2hDb25maWcSHAoUYWNrX2RlYWRsaW5l",
-            "X3NlY29uZHMYBSABKAUSHQoVcmV0YWluX2Fja2VkX21lc3NhZ2VzGAcgASgI",
-            "Ej0KGm1lc3NhZ2VfcmV0ZW50aW9uX2R1cmF0aW9uGAggASgLMhkuZ29vZ2xl",
-            "LnByb3RvYnVmLkR1cmF0aW9uEjoKBmxhYmVscxgJIAMoCzIqLmdvb2dsZS5w",
-            "dWJzdWIudjEuU3Vic2NyaXB0aW9uLkxhYmVsc0VudHJ5Eh8KF2VuYWJsZV9t",
-            "ZXNzYWdlX29yZGVyaW5nGAogASgIEj0KEWV4cGlyYXRpb25fcG9saWN5GAsg",
-            "ASgLMiIuZ29vZ2xlLnB1YnN1Yi52MS5FeHBpcmF0aW9uUG9saWN5Ej4KEmRl",
-            "YWRfbGV0dGVyX3BvbGljeRgNIAEoCzIiLmdvb2dsZS5wdWJzdWIudjEuRGVh",
-            "ZExldHRlclBvbGljeRotCgtMYWJlbHNFbnRyeRILCgNrZXkYASABKAkSDQoF",
-            "dmFsdWUYAiABKAk6AjgBIkwKEERlYWRMZXR0ZXJQb2xpY3kSGQoRZGVhZF9s",
-            "ZXR0ZXJfdG9waWMYASABKAkSHQoVbWF4X2RlbGl2ZXJ5X2F0dGVtcHRzGAIg",
-            "ASgFIjoKEEV4cGlyYXRpb25Qb2xpY3kSJgoDdHRsGAEgASgLMhkuZ29vZ2xl",
-            "LnByb3RvYnVmLkR1cmF0aW9uIq0CCgpQdXNoQ29uZmlnEhUKDXB1c2hfZW5k",
-            "cG9pbnQYASABKAkSQAoKYXR0cmlidXRlcxgCIAMoCzIsLmdvb2dsZS5wdWJz",
-            "dWIudjEuUHVzaENvbmZpZy5BdHRyaWJ1dGVzRW50cnkSPAoKb2lkY190b2tl",
-            "bhgDIAEoCzImLmdvb2dsZS5wdWJzdWIudjEuUHVzaENvbmZpZy5PaWRjVG9r",
-            "ZW5IABo8CglPaWRjVG9rZW4SHQoVc2VydmljZV9hY2NvdW50X2VtYWlsGAEg",
-            "ASgJEhAKCGF1ZGllbmNlGAIgASgJGjEKD0F0dHJpYnV0ZXNFbnRyeRILCgNr",
-            "ZXkYASABKAkSDQoFdmFsdWUYAiABKAk6AjgBQhcKFWF1dGhlbnRpY2F0aW9u",
-            "X21ldGhvZCJtCg9SZWNlaXZlZE1lc3NhZ2USDgoGYWNrX2lkGAEgASgJEjAK",
-            "B21lc3NhZ2UYAiABKAsyHy5nb29nbGUucHVic3ViLnYxLlB1YnN1Yk1lc3Nh",
-            "Z2USGAoQZGVsaXZlcnlfYXR0ZW1wdBgDIAEoBSIuChZHZXRTdWJzY3JpcHRp",
-            "b25SZXF1ZXN0EhQKDHN1YnNjcmlwdGlvbhgBIAEoCSKCAQoZVXBkYXRlU3Vi",
-            "c2NyaXB0aW9uUmVxdWVzdBI0CgxzdWJzY3JpcHRpb24YASABKAsyHi5nb29n",
-            "bGUucHVic3ViLnYxLlN1YnNjcmlwdGlvbhIvCgt1cGRhdGVfbWFzaxgCIAEo",
-            "CzIaLmdvb2dsZS5wcm90b2J1Zi5GaWVsZE1hc2siUgoYTGlzdFN1YnNjcmlw",
-            "dGlvbnNSZXF1ZXN0Eg8KB3Byb2plY3QYASABKAkSEQoJcGFnZV9zaXplGAIg",
-            "ASgFEhIKCnBhZ2VfdG9rZW4YAyABKAkiawoZTGlzdFN1YnNjcmlwdGlvbnNS",
-            "ZXNwb25zZRI1Cg1zdWJzY3JpcHRpb25zGAEgAygLMh4uZ29vZ2xlLnB1YnN1",
-            "Yi52MS5TdWJzY3JpcHRpb24SFwoPbmV4dF9wYWdlX3Rva2VuGAIgASgJIjEK",
-            "GURlbGV0ZVN1YnNjcmlwdGlvblJlcXVlc3QSFAoMc3Vic2NyaXB0aW9uGAEg",
-            "ASgJImIKF01vZGlmeVB1c2hDb25maWdSZXF1ZXN0EhQKDHN1YnNjcmlwdGlv",
-            "bhgBIAEoCRIxCgtwdXNoX2NvbmZpZxgCIAEoCzIcLmdvb2dsZS5wdWJzdWIu",
-            "djEuUHVzaENvbmZpZyJVCgtQdWxsUmVxdWVzdBIUCgxzdWJzY3JpcHRpb24Y",
-            "ASABKAkSGgoScmV0dXJuX2ltbWVkaWF0ZWx5GAIgASgIEhQKDG1heF9tZXNz",
-            "YWdlcxgDIAEoBSJMCgxQdWxsUmVzcG9uc2USPAoRcmVjZWl2ZWRfbWVzc2Fn",
-            "ZXMYASADKAsyIS5nb29nbGUucHVic3ViLnYxLlJlY2VpdmVkTWVzc2FnZSJf",
-            "ChhNb2RpZnlBY2tEZWFkbGluZVJlcXVlc3QSFAoMc3Vic2NyaXB0aW9uGAEg",
-            "ASgJEg8KB2Fja19pZHMYBCADKAkSHAoUYWNrX2RlYWRsaW5lX3NlY29uZHMY",
-            "AyABKAUiOwoSQWNrbm93bGVkZ2VSZXF1ZXN0EhQKDHN1YnNjcmlwdGlvbhgB",
-            "IAEoCRIPCgdhY2tfaWRzGAIgAygJIqQBChRTdHJlYW1pbmdQdWxsUmVxdWVz",
-            "dBIUCgxzdWJzY3JpcHRpb24YASABKAkSDwoHYWNrX2lkcxgCIAMoCRIfChdt",
-            "b2RpZnlfZGVhZGxpbmVfc2Vjb25kcxgDIAMoBRIfChdtb2RpZnlfZGVhZGxp",
-            "bmVfYWNrX2lkcxgEIAMoCRIjChtzdHJlYW1fYWNrX2RlYWRsaW5lX3NlY29u",
-            "ZHMYBSABKAUiVQoVU3RyZWFtaW5nUHVsbFJlc3BvbnNlEjwKEXJlY2VpdmVk",
-            "X21lc3NhZ2VzGAEgAygLMiEuZ29vZ2xlLnB1YnN1Yi52MS5SZWNlaXZlZE1l",
-            "c3NhZ2UirwEKFUNyZWF0ZVNuYXBzaG90UmVxdWVzdBIMCgRuYW1lGAEgASgJ",
-            "EhQKDHN1YnNjcmlwdGlvbhgCIAEoCRJDCgZsYWJlbHMYAyADKAsyMy5nb29n",
-            "bGUucHVic3ViLnYxLkNyZWF0ZVNuYXBzaG90UmVxdWVzdC5MYWJlbHNFbnRy",
-            "eRotCgtMYWJlbHNFbnRyeRILCgNrZXkYASABKAkSDQoFdmFsdWUYAiABKAk6",
-            "AjgBInYKFVVwZGF0ZVNuYXBzaG90UmVxdWVzdBIsCghzbmFwc2hvdBgBIAEo",
-            "CzIaLmdvb2dsZS5wdWJzdWIudjEuU25hcHNob3QSLwoLdXBkYXRlX21hc2sY",
-            "AiABKAsyGi5nb29nbGUucHJvdG9idWYuRmllbGRNYXNrIr8BCghTbmFwc2hv",
-            "dBIMCgRuYW1lGAEgASgJEg0KBXRvcGljGAIgASgJEi8KC2V4cGlyZV90aW1l",
-            "GAMgASgLMhouZ29vZ2xlLnByb3RvYnVmLlRpbWVzdGFtcBI2CgZsYWJlbHMY",
-            "BCADKAsyJi5nb29nbGUucHVic3ViLnYxLlNuYXBzaG90LkxhYmVsc0VudHJ5",
-            "Gi0KC0xhYmVsc0VudHJ5EgsKA2tleRgBIAEoCRINCgV2YWx1ZRgCIAEoCToC",
-            "OAEiJgoSR2V0U25hcHNob3RSZXF1ZXN0EhAKCHNuYXBzaG90GAEgASgJIk4K",
-            "FExpc3RTbmFwc2hvdHNSZXF1ZXN0Eg8KB3Byb2plY3QYASABKAkSEQoJcGFn",
-            "ZV9zaXplGAIgASgFEhIKCnBhZ2VfdG9rZW4YAyABKAkiXwoVTGlzdFNuYXBz",
-            "aG90c1Jlc3BvbnNlEi0KCXNuYXBzaG90cxgBIAMoCzIaLmdvb2dsZS5wdWJz",
-            "dWIudjEuU25hcHNob3QSFwoPbmV4dF9wYWdlX3Rva2VuGAIgASgJIikKFURl",
-            "bGV0ZVNuYXBzaG90UmVxdWVzdBIQCghzbmFwc2hvdBgBIAEoCSJtCgtTZWVr",
-            "UmVxdWVzdBIUCgxzdWJzY3JpcHRpb24YASABKAkSKgoEdGltZRgCIAEoCzIa",
-            "Lmdvb2dsZS5wcm90b2J1Zi5UaW1lc3RhbXBIABISCghzbmFwc2hvdBgDIAEo",
-            "CUgAQggKBnRhcmdldCIOCgxTZWVrUmVzcG9uc2UysQkKCVB1Ymxpc2hlchJq",
-            "CgtDcmVhdGVUb3BpYxIXLmdvb2dsZS5wdWJzdWIudjEuVG9waWMaFy5nb29n",
-            "bGUucHVic3ViLnYxLlRvcGljIimC0+STAiMaHi92MS97bmFtZT1wcm9qZWN0",
-            "cy8qL3RvcGljcy8qfToBKhJ9CgtVcGRhdGVUb3BpYxIkLmdvb2dsZS5wdWJz",
-            "dWIudjEuVXBkYXRlVG9waWNSZXF1ZXN0GhcuZ29vZ2xlLnB1YnN1Yi52MS5U",
-            "b3BpYyIvgtPkkwIpMiQvdjEve3RvcGljLm5hbWU9cHJvamVjdHMvKi90b3Bp",
-            "Y3MvKn06ASoSggEKB1B1Ymxpc2gSIC5nb29nbGUucHVic3ViLnYxLlB1Ymxp",
-            "c2hSZXF1ZXN0GiEuZ29vZ2xlLnB1YnN1Yi52MS5QdWJsaXNoUmVzcG9uc2Ui",
-            "MoLT5JMCLCInL3YxL3t0b3BpYz1wcm9qZWN0cy8qL3RvcGljcy8qfTpwdWJs",
-            "aXNoOgEqEm8KCEdldFRvcGljEiEuZ29vZ2xlLnB1YnN1Yi52MS5HZXRUb3Bp",
-            "Y1JlcXVlc3QaFy5nb29nbGUucHVic3ViLnYxLlRvcGljIieC0+STAiESHy92",
-            "MS97dG9waWM9cHJvamVjdHMvKi90b3BpY3MvKn0SgAEKCkxpc3RUb3BpY3MS",
-            "Iy5nb29nbGUucHVic3ViLnYxLkxpc3RUb3BpY3NSZXF1ZXN0GiQuZ29vZ2xl",
-            "LnB1YnN1Yi52MS5MaXN0VG9waWNzUmVzcG9uc2UiJ4LT5JMCIRIfL3YxL3tw",
-            "cm9qZWN0PXByb2plY3RzLyp9L3RvcGljcxKyAQoWTGlzdFRvcGljU3Vic2Ny",
-            "aXB0aW9ucxIvLmdvb2dsZS5wdWJzdWIudjEuTGlzdFRvcGljU3Vic2NyaXB0",
-            "aW9uc1JlcXVlc3QaMC5nb29nbGUucHVic3ViLnYxLkxpc3RUb3BpY1N1YnNj",
-            "cmlwdGlvbnNSZXNwb25zZSI1gtPkkwIvEi0vdjEve3RvcGljPXByb2plY3Rz",
-            "LyovdG9waWNzLyp9L3N1YnNjcmlwdGlvbnMSogEKEkxpc3RUb3BpY1NuYXBz",
-            "aG90cxIrLmdvb2dsZS5wdWJzdWIudjEuTGlzdFRvcGljU25hcHNob3RzUmVx",
-            "dWVzdBosLmdvb2dsZS5wdWJzdWIudjEuTGlzdFRvcGljU25hcHNob3RzUmVz",
-            "cG9uc2UiMYLT5JMCKxIpL3YxL3t0b3BpYz1wcm9qZWN0cy8qL3RvcGljcy8q",
-            "fS9zbmFwc2hvdHMSdAoLRGVsZXRlVG9waWMSJC5nb29nbGUucHVic3ViLnYx",
-            "LkRlbGV0ZVRvcGljUmVxdWVzdBoWLmdvb2dsZS5wcm90b2J1Zi5FbXB0eSIn",
-            "gtPkkwIhKh8vdjEve3RvcGljPXByb2plY3RzLyovdG9waWNzLyp9GnDKQRVw",
+            "aS9jbGllbnQucHJvdG8aH2dvb2dsZS9hcGkvZmllbGRfYmVoYXZpb3IucHJv",
+            "dG8aGWdvb2dsZS9hcGkvcmVzb3VyY2UucHJvdG8aHmdvb2dsZS9wcm90b2J1",
+            "Zi9kdXJhdGlvbi5wcm90bxobZ29vZ2xlL3Byb3RvYnVmL2VtcHR5LnByb3Rv",
+            "GiBnb29nbGUvcHJvdG9idWYvZmllbGRfbWFzay5wcm90bxofZ29vZ2xlL3By",
+            "b3RvYnVmL3RpbWVzdGFtcC5wcm90byI7ChRNZXNzYWdlU3RvcmFnZVBvbGlj",
+            "eRIjChthbGxvd2VkX3BlcnNpc3RlbmNlX3JlZ2lvbnMYASADKAkisgIKBVRv",
+            "cGljEhEKBG5hbWUYASABKAlCA+BBAhIzCgZsYWJlbHMYAiADKAsyIy5nb29n",
+            "bGUucHVic3ViLnYxLlRvcGljLkxhYmVsc0VudHJ5EkYKFm1lc3NhZ2Vfc3Rv",
+            "cmFnZV9wb2xpY3kYAyABKAsyJi5nb29nbGUucHVic3ViLnYxLk1lc3NhZ2VT",
+            "dG9yYWdlUG9saWN5EhQKDGttc19rZXlfbmFtZRgFIAEoCRotCgtMYWJlbHNF",
+            "bnRyeRILCgNrZXkYASABKAkSDQoFdmFsdWUYAiABKAk6AjgBOlTqQVEKG3B1",
+            "YnN1Yi5nb29nbGVhcGlzLmNvbS9Ub3BpYxIhcHJvamVjdHMve3Byb2plY3R9",
+            "L3RvcGljcy97dG9waWN9Eg9fZGVsZXRlZC10b3BpY18i8QEKDVB1YnN1Yk1l",
+            "c3NhZ2USDAoEZGF0YRgBIAEoDBJDCgphdHRyaWJ1dGVzGAIgAygLMi8uZ29v",
+            "Z2xlLnB1YnN1Yi52MS5QdWJzdWJNZXNzYWdlLkF0dHJpYnV0ZXNFbnRyeRIS",
+            "CgptZXNzYWdlX2lkGAMgASgJEjAKDHB1Ymxpc2hfdGltZRgEIAEoCzIaLmdv",
+            "b2dsZS5wcm90b2J1Zi5UaW1lc3RhbXASFAoMb3JkZXJpbmdfa2V5GAUgASgJ",
+            "GjEKD0F0dHJpYnV0ZXNFbnRyeRILCgNrZXkYASABKAkSDQoFdmFsdWUYAiAB",
+            "KAk6AjgBIkUKD0dldFRvcGljUmVxdWVzdBIyCgV0b3BpYxgBIAEoCUIj4EEC",
+            "+kEdChtwdWJzdWIuZ29vZ2xlYXBpcy5jb20vVG9waWMidwoSVXBkYXRlVG9w",
+            "aWNSZXF1ZXN0EisKBXRvcGljGAEgASgLMhcuZ29vZ2xlLnB1YnN1Yi52MS5U",
+            "b3BpY0ID4EECEjQKC3VwZGF0ZV9tYXNrGAIgASgLMhouZ29vZ2xlLnByb3Rv",
+            "YnVmLkZpZWxkTWFza0ID4EECInwKDlB1Ymxpc2hSZXF1ZXN0EjIKBXRvcGlj",
+            "GAEgASgJQiPgQQL6QR0KG3B1YnN1Yi5nb29nbGVhcGlzLmNvbS9Ub3BpYxI2",
+            "CghtZXNzYWdlcxgCIAMoCzIfLmdvb2dsZS5wdWJzdWIudjEuUHVic3ViTWVz",
+            "c2FnZUID4EECIiYKD1B1Ymxpc2hSZXNwb25zZRITCgttZXNzYWdlX2lkcxgB",
+            "IAMoCSKAAQoRTGlzdFRvcGljc1JlcXVlc3QSRAoHcHJvamVjdBgBIAEoCUIz",
+            "4EEC+kEtCitjbG91ZHJlc291cmNlbWFuYWdlci5nb29nbGVhcGlzLmNvbS9Q",
+            "cm9qZWN0EhEKCXBhZ2Vfc2l6ZRgCIAEoBRISCgpwYWdlX3Rva2VuGAMgASgJ",
+            "IlYKEkxpc3RUb3BpY3NSZXNwb25zZRInCgZ0b3BpY3MYASADKAsyFy5nb29n",
+            "bGUucHVic3ViLnYxLlRvcGljEhcKD25leHRfcGFnZV90b2tlbhgCIAEoCSJ6",
+            "Ch1MaXN0VG9waWNTdWJzY3JpcHRpb25zUmVxdWVzdBIyCgV0b3BpYxgBIAEo",
+            "CUIj4EEC+kEdChtwdWJzdWIuZ29vZ2xlYXBpcy5jb20vVG9waWMSEQoJcGFn",
+            "ZV9zaXplGAIgASgFEhIKCnBhZ2VfdG9rZW4YAyABKAkieQoeTGlzdFRvcGlj",
+            "U3Vic2NyaXB0aW9uc1Jlc3BvbnNlEj4KDXN1YnNjcmlwdGlvbnMYASADKAlC",
+            "J/pBJAoicHVic3ViLmdvb2dsZWFwaXMuY29tL1N1YnNjcmlwdGlvbhIXCg9u",
+            "ZXh0X3BhZ2VfdG9rZW4YAiABKAkidgoZTGlzdFRvcGljU25hcHNob3RzUmVx",
+            "dWVzdBIyCgV0b3BpYxgBIAEoCUIj4EEC+kEdChtwdWJzdWIuZ29vZ2xlYXBp",
+            "cy5jb20vVG9waWMSEQoJcGFnZV9zaXplGAIgASgFEhIKCnBhZ2VfdG9rZW4Y",
+            "AyABKAkiSAoaTGlzdFRvcGljU25hcHNob3RzUmVzcG9uc2USEQoJc25hcHNo",
+            "b3RzGAEgAygJEhcKD25leHRfcGFnZV90b2tlbhgCIAEoCSJIChJEZWxldGVU",
+            "b3BpY1JlcXVlc3QSMgoFdG9waWMYASABKAlCI+BBAvpBHQobcHVic3ViLmdv",
+            "b2dsZWFwaXMuY29tL1RvcGljIl0KGURldGFjaFN1YnNjcmlwdGlvblJlcXVl",
+            "c3QSQAoMc3Vic2NyaXB0aW9uGAEgASgJQirgQQL6QSQKInB1YnN1Yi5nb29n",
+            "bGVhcGlzLmNvbS9TdWJzY3JpcHRpb24iHAoaRGV0YWNoU3Vic2NyaXB0aW9u",
+            "UmVzcG9uc2UiwAUKDFN1YnNjcmlwdGlvbhIRCgRuYW1lGAEgASgJQgPgQQIS",
+            "MgoFdG9waWMYAiABKAlCI+BBAvpBHQobcHVic3ViLmdvb2dsZWFwaXMuY29t",
+            "L1RvcGljEjEKC3B1c2hfY29uZmlnGAQgASgLMhwuZ29vZ2xlLnB1YnN1Yi52",
+            "MS5QdXNoQ29uZmlnEhwKFGFja19kZWFkbGluZV9zZWNvbmRzGAUgASgFEh0K",
+            "FXJldGFpbl9hY2tlZF9tZXNzYWdlcxgHIAEoCBI9ChptZXNzYWdlX3JldGVu",
+            "dGlvbl9kdXJhdGlvbhgIIAEoCzIZLmdvb2dsZS5wcm90b2J1Zi5EdXJhdGlv",
+            "bhI6CgZsYWJlbHMYCSADKAsyKi5nb29nbGUucHVic3ViLnYxLlN1YnNjcmlw",
+            "dGlvbi5MYWJlbHNFbnRyeRIfChdlbmFibGVfbWVzc2FnZV9vcmRlcmluZxgK",
+            "IAEoCBI9ChFleHBpcmF0aW9uX3BvbGljeRgLIAEoCzIiLmdvb2dsZS5wdWJz",
+            "dWIudjEuRXhwaXJhdGlvblBvbGljeRIOCgZmaWx0ZXIYDCABKAkSPgoSZGVh",
+            "ZF9sZXR0ZXJfcG9saWN5GA0gASgLMiIuZ29vZ2xlLnB1YnN1Yi52MS5EZWFk",
+            "TGV0dGVyUG9saWN5EjMKDHJldHJ5X3BvbGljeRgOIAEoCzIdLmdvb2dsZS5w",
+            "dWJzdWIudjEuUmV0cnlQb2xpY3kSEAoIZGV0YWNoZWQYDyABKAgaLQoLTGFi",
+            "ZWxzRW50cnkSCwoDa2V5GAEgASgJEg0KBXZhbHVlGAIgASgJOgI4ATpY6kFV",
+            "CiJwdWJzdWIuZ29vZ2xlYXBpcy5jb20vU3Vic2NyaXB0aW9uEi9wcm9qZWN0",
+            "cy97cHJvamVjdH0vc3Vic2NyaXB0aW9ucy97c3Vic2NyaXB0aW9ufSJ1CgtS",
+            "ZXRyeVBvbGljeRIyCg9taW5pbXVtX2JhY2tvZmYYASABKAsyGS5nb29nbGUu",
+            "cHJvdG9idWYuRHVyYXRpb24SMgoPbWF4aW11bV9iYWNrb2ZmGAIgASgLMhku",
+            "Z29vZ2xlLnByb3RvYnVmLkR1cmF0aW9uIkwKEERlYWRMZXR0ZXJQb2xpY3kS",
+            "GQoRZGVhZF9sZXR0ZXJfdG9waWMYASABKAkSHQoVbWF4X2RlbGl2ZXJ5X2F0",
+            "dGVtcHRzGAIgASgFIjoKEEV4cGlyYXRpb25Qb2xpY3kSJgoDdHRsGAEgASgL",
+            "MhkuZ29vZ2xlLnByb3RvYnVmLkR1cmF0aW9uIq0CCgpQdXNoQ29uZmlnEhUK",
+            "DXB1c2hfZW5kcG9pbnQYASABKAkSQAoKYXR0cmlidXRlcxgCIAMoCzIsLmdv",
+            "b2dsZS5wdWJzdWIudjEuUHVzaENvbmZpZy5BdHRyaWJ1dGVzRW50cnkSPAoK",
+            "b2lkY190b2tlbhgDIAEoCzImLmdvb2dsZS5wdWJzdWIudjEuUHVzaENvbmZp",
+            "Zy5PaWRjVG9rZW5IABo8CglPaWRjVG9rZW4SHQoVc2VydmljZV9hY2NvdW50",
+            "X2VtYWlsGAEgASgJEhAKCGF1ZGllbmNlGAIgASgJGjEKD0F0dHJpYnV0ZXNF",
+            "bnRyeRILCgNrZXkYASABKAkSDQoFdmFsdWUYAiABKAk6AjgBQhcKFWF1dGhl",
+            "bnRpY2F0aW9uX21ldGhvZCJtCg9SZWNlaXZlZE1lc3NhZ2USDgoGYWNrX2lk",
+            "GAEgASgJEjAKB21lc3NhZ2UYAiABKAsyHy5nb29nbGUucHVic3ViLnYxLlB1",
+            "YnN1Yk1lc3NhZ2USGAoQZGVsaXZlcnlfYXR0ZW1wdBgDIAEoBSJaChZHZXRT",
+            "dWJzY3JpcHRpb25SZXF1ZXN0EkAKDHN1YnNjcmlwdGlvbhgBIAEoCUIq4EEC",
+            "+kEkCiJwdWJzdWIuZ29vZ2xlYXBpcy5jb20vU3Vic2NyaXB0aW9uIowBChlV",
+            "cGRhdGVTdWJzY3JpcHRpb25SZXF1ZXN0EjkKDHN1YnNjcmlwdGlvbhgBIAEo",
+            "CzIeLmdvb2dsZS5wdWJzdWIudjEuU3Vic2NyaXB0aW9uQgPgQQISNAoLdXBk",
+            "YXRlX21hc2sYAiABKAsyGi5nb29nbGUucHJvdG9idWYuRmllbGRNYXNrQgPg",
+            "QQIihwEKGExpc3RTdWJzY3JpcHRpb25zUmVxdWVzdBJECgdwcm9qZWN0GAEg",
+            "ASgJQjPgQQL6QS0KK2Nsb3VkcmVzb3VyY2VtYW5hZ2VyLmdvb2dsZWFwaXMu",
+            "Y29tL1Byb2plY3QSEQoJcGFnZV9zaXplGAIgASgFEhIKCnBhZ2VfdG9rZW4Y",
+            "AyABKAkiawoZTGlzdFN1YnNjcmlwdGlvbnNSZXNwb25zZRI1Cg1zdWJzY3Jp",
+            "cHRpb25zGAEgAygLMh4uZ29vZ2xlLnB1YnN1Yi52MS5TdWJzY3JpcHRpb24S",
+            "FwoPbmV4dF9wYWdlX3Rva2VuGAIgASgJIl0KGURlbGV0ZVN1YnNjcmlwdGlv",
+            "blJlcXVlc3QSQAoMc3Vic2NyaXB0aW9uGAEgASgJQirgQQL6QSQKInB1YnN1",
+            "Yi5nb29nbGVhcGlzLmNvbS9TdWJzY3JpcHRpb24ikwEKF01vZGlmeVB1c2hD",
+            "b25maWdSZXF1ZXN0EkAKDHN1YnNjcmlwdGlvbhgBIAEoCUIq4EEC+kEkCiJw",
+            "dWJzdWIuZ29vZ2xlYXBpcy5jb20vU3Vic2NyaXB0aW9uEjYKC3B1c2hfY29u",
+            "ZmlnGAIgASgLMhwuZ29vZ2xlLnB1YnN1Yi52MS5QdXNoQ29uZmlnQgPgQQIi",
+            "jQEKC1B1bGxSZXF1ZXN0EkAKDHN1YnNjcmlwdGlvbhgBIAEoCUIq4EEC+kEk",
+            "CiJwdWJzdWIuZ29vZ2xlYXBpcy5jb20vU3Vic2NyaXB0aW9uEiEKEnJldHVy",
+            "bl9pbW1lZGlhdGVseRgCIAEoCEIFGAHgQQESGQoMbWF4X21lc3NhZ2VzGAMg",
+            "ASgFQgPgQQIiTAoMUHVsbFJlc3BvbnNlEjwKEXJlY2VpdmVkX21lc3NhZ2Vz",
+            "GAEgAygLMiEuZ29vZ2xlLnB1YnN1Yi52MS5SZWNlaXZlZE1lc3NhZ2UilQEK",
+            "GE1vZGlmeUFja0RlYWRsaW5lUmVxdWVzdBJACgxzdWJzY3JpcHRpb24YASAB",
+            "KAlCKuBBAvpBJAoicHVic3ViLmdvb2dsZWFwaXMuY29tL1N1YnNjcmlwdGlv",
+            "bhIUCgdhY2tfaWRzGAQgAygJQgPgQQISIQoUYWNrX2RlYWRsaW5lX3NlY29u",
+            "ZHMYAyABKAVCA+BBAiJsChJBY2tub3dsZWRnZVJlcXVlc3QSQAoMc3Vic2Ny",
+            "aXB0aW9uGAEgASgJQirgQQL6QSQKInB1YnN1Yi5nb29nbGVhcGlzLmNvbS9T",
+            "dWJzY3JpcHRpb24SFAoHYWNrX2lkcxgCIAMoCUID4EECIqkCChRTdHJlYW1p",
+            "bmdQdWxsUmVxdWVzdBJACgxzdWJzY3JpcHRpb24YASABKAlCKuBBAvpBJAoi",
+            "cHVic3ViLmdvb2dsZWFwaXMuY29tL1N1YnNjcmlwdGlvbhIPCgdhY2tfaWRz",
+            "GAIgAygJEh8KF21vZGlmeV9kZWFkbGluZV9zZWNvbmRzGAMgAygFEh8KF21v",
+            "ZGlmeV9kZWFkbGluZV9hY2tfaWRzGAQgAygJEigKG3N0cmVhbV9hY2tfZGVh",
+            "ZGxpbmVfc2Vjb25kcxgFIAEoBUID4EECEhEKCWNsaWVudF9pZBgGIAEoCRIg",
+            "ChhtYXhfb3V0c3RhbmRpbmdfbWVzc2FnZXMYByABKAMSHQoVbWF4X291dHN0",
+            "YW5kaW5nX2J5dGVzGAggASgDIlUKFVN0cmVhbWluZ1B1bGxSZXNwb25zZRI8",
+            "ChFyZWNlaXZlZF9tZXNzYWdlcxgBIAMoCzIhLmdvb2dsZS5wdWJzdWIudjEu",
+            "UmVjZWl2ZWRNZXNzYWdlIoMCChVDcmVhdGVTbmFwc2hvdFJlcXVlc3QSNAoE",
+            "bmFtZRgBIAEoCUIm4EEC+kEgCh5wdWJzdWIuZ29vZ2xlYXBpcy5jb20vU25h",
+            "cHNob3QSQAoMc3Vic2NyaXB0aW9uGAIgASgJQirgQQL6QSQKInB1YnN1Yi5n",
+            "b29nbGVhcGlzLmNvbS9TdWJzY3JpcHRpb24SQwoGbGFiZWxzGAMgAygLMjMu",
+            "Z29vZ2xlLnB1YnN1Yi52MS5DcmVhdGVTbmFwc2hvdFJlcXVlc3QuTGFiZWxz",
+            "RW50cnkaLQoLTGFiZWxzRW50cnkSCwoDa2V5GAEgASgJEg0KBXZhbHVlGAIg",
+            "ASgJOgI4ASKAAQoVVXBkYXRlU25hcHNob3RSZXF1ZXN0EjEKCHNuYXBzaG90",
+            "GAEgASgLMhouZ29vZ2xlLnB1YnN1Yi52MS5TbmFwc2hvdEID4EECEjQKC3Vw",
+            "ZGF0ZV9tYXNrGAIgASgLMhouZ29vZ2xlLnByb3RvYnVmLkZpZWxkTWFza0ID",
+            "4EECIq8CCghTbmFwc2hvdBIMCgRuYW1lGAEgASgJEi8KBXRvcGljGAIgASgJ",
+            "QiD6QR0KG3B1YnN1Yi5nb29nbGVhcGlzLmNvbS9Ub3BpYxIvCgtleHBpcmVf",
+            "dGltZRgDIAEoCzIaLmdvb2dsZS5wcm90b2J1Zi5UaW1lc3RhbXASNgoGbGFi",
+            "ZWxzGAQgAygLMiYuZ29vZ2xlLnB1YnN1Yi52MS5TbmFwc2hvdC5MYWJlbHNF",
+            "bnRyeRotCgtMYWJlbHNFbnRyeRILCgNrZXkYASABKAkSDQoFdmFsdWUYAiAB",
+            "KAk6AjgBOkzqQUkKHnB1YnN1Yi5nb29nbGVhcGlzLmNvbS9TbmFwc2hvdBIn",
+            "cHJvamVjdHMve3Byb2plY3R9L3NuYXBzaG90cy97c25hcHNob3R9Ik4KEkdl",
+            "dFNuYXBzaG90UmVxdWVzdBI4CghzbmFwc2hvdBgBIAEoCUIm4EEC+kEgCh5w",
+            "dWJzdWIuZ29vZ2xlYXBpcy5jb20vU25hcHNob3QigwEKFExpc3RTbmFwc2hv",
+            "dHNSZXF1ZXN0EkQKB3Byb2plY3QYASABKAlCM+BBAvpBLQorY2xvdWRyZXNv",
+            "dXJjZW1hbmFnZXIuZ29vZ2xlYXBpcy5jb20vUHJvamVjdBIRCglwYWdlX3Np",
+            "emUYAiABKAUSEgoKcGFnZV90b2tlbhgDIAEoCSJfChVMaXN0U25hcHNob3Rz",
+            "UmVzcG9uc2USLQoJc25hcHNob3RzGAEgAygLMhouZ29vZ2xlLnB1YnN1Yi52",
+            "MS5TbmFwc2hvdBIXCg9uZXh0X3BhZ2VfdG9rZW4YAiABKAkiUQoVRGVsZXRl",
+            "U25hcHNob3RSZXF1ZXN0EjgKCHNuYXBzaG90GAEgASgJQibgQQL6QSAKHnB1",
+            "YnN1Yi5nb29nbGVhcGlzLmNvbS9TbmFwc2hvdCK+AQoLU2Vla1JlcXVlc3QS",
+            "QAoMc3Vic2NyaXB0aW9uGAEgASgJQirgQQL6QSQKInB1YnN1Yi5nb29nbGVh",
+            "cGlzLmNvbS9TdWJzY3JpcHRpb24SKgoEdGltZRgCIAEoCzIaLmdvb2dsZS5w",
+            "cm90b2J1Zi5UaW1lc3RhbXBIABI3CghzbmFwc2hvdBgDIAEoCUIj+kEgCh5w",
+            "dWJzdWIuZ29vZ2xlYXBpcy5jb20vU25hcHNob3RIAEIICgZ0YXJnZXQiDgoM",
+            "U2Vla1Jlc3BvbnNlMqMLCglQdWJsaXNoZXIScQoLQ3JlYXRlVG9waWMSFy5n",
+            "b29nbGUucHVic3ViLnYxLlRvcGljGhcuZ29vZ2xlLnB1YnN1Yi52MS5Ub3Bp",
+            "YyIwgtPkkwIjGh4vdjEve25hbWU9cHJvamVjdHMvKi90b3BpY3MvKn06ASra",
+            "QQRuYW1lEn0KC1VwZGF0ZVRvcGljEiQuZ29vZ2xlLnB1YnN1Yi52MS5VcGRh",
+            "dGVUb3BpY1JlcXVlc3QaFy5nb29nbGUucHVic3ViLnYxLlRvcGljIi+C0+ST",
+            "AikyJC92MS97dG9waWMubmFtZT1wcm9qZWN0cy8qL3RvcGljcy8qfToBKhKT",
+            "AQoHUHVibGlzaBIgLmdvb2dsZS5wdWJzdWIudjEuUHVibGlzaFJlcXVlc3Qa",
+            "IS5nb29nbGUucHVic3ViLnYxLlB1Ymxpc2hSZXNwb25zZSJDgtPkkwIsIicv",
+            "djEve3RvcGljPXByb2plY3RzLyovdG9waWNzLyp9OnB1Ymxpc2g6ASraQQ50",
+            "b3BpYyxtZXNzYWdlcxJ3CghHZXRUb3BpYxIhLmdvb2dsZS5wdWJzdWIudjEu",
+            "R2V0VG9waWNSZXF1ZXN0GhcuZ29vZ2xlLnB1YnN1Yi52MS5Ub3BpYyIvgtPk",
+            "kwIhEh8vdjEve3RvcGljPXByb2plY3RzLyovdG9waWNzLyp92kEFdG9waWMS",
+            "igEKCkxpc3RUb3BpY3MSIy5nb29nbGUucHVic3ViLnYxLkxpc3RUb3BpY3NS",
+            "ZXF1ZXN0GiQuZ29vZ2xlLnB1YnN1Yi52MS5MaXN0VG9waWNzUmVzcG9uc2Ui",
+            "MYLT5JMCIRIfL3YxL3twcm9qZWN0PXByb2plY3RzLyp9L3RvcGljc9pBB3By",
+            "b2plY3QSugEKFkxpc3RUb3BpY1N1YnNjcmlwdGlvbnMSLy5nb29nbGUucHVi",
+            "c3ViLnYxLkxpc3RUb3BpY1N1YnNjcmlwdGlvbnNSZXF1ZXN0GjAuZ29vZ2xl",
+            "LnB1YnN1Yi52MS5MaXN0VG9waWNTdWJzY3JpcHRpb25zUmVzcG9uc2UiPYLT",
+            "5JMCLxItL3YxL3t0b3BpYz1wcm9qZWN0cy8qL3RvcGljcy8qfS9zdWJzY3Jp",
+            "cHRpb25z2kEFdG9waWMSqgEKEkxpc3RUb3BpY1NuYXBzaG90cxIrLmdvb2ds",
+            "ZS5wdWJzdWIudjEuTGlzdFRvcGljU25hcHNob3RzUmVxdWVzdBosLmdvb2ds",
+            "ZS5wdWJzdWIudjEuTGlzdFRvcGljU25hcHNob3RzUmVzcG9uc2UiOYLT5JMC",
+            "KxIpL3YxL3t0b3BpYz1wcm9qZWN0cy8qL3RvcGljcy8qfS9zbmFwc2hvdHPa",
+            "QQV0b3BpYxJ8CgtEZWxldGVUb3BpYxIkLmdvb2dsZS5wdWJzdWIudjEuRGVs",
+            "ZXRlVG9waWNSZXF1ZXN0GhYuZ29vZ2xlLnByb3RvYnVmLkVtcHR5Ii+C0+ST",
+            "AiEqHy92MS97dG9waWM9cHJvamVjdHMvKi90b3BpY3MvKn3aQQV0b3BpYxKt",
+            "AQoSRGV0YWNoU3Vic2NyaXB0aW9uEisuZ29vZ2xlLnB1YnN1Yi52MS5EZXRh",
+            "Y2hTdWJzY3JpcHRpb25SZXF1ZXN0GiwuZ29vZ2xlLnB1YnN1Yi52MS5EZXRh",
+            "Y2hTdWJzY3JpcHRpb25SZXNwb25zZSI8gtPkkwI2IjQvdjEve3N1YnNjcmlw",
+            "dGlvbj1wcm9qZWN0cy8qL3N1YnNjcmlwdGlvbnMvKn06ZGV0YWNoGnDKQRVw",
             "dWJzdWIuZ29vZ2xlYXBpcy5jb23SQVVodHRwczovL3d3dy5nb29nbGVhcGlz",
             "LmNvbS9hdXRoL2Nsb3VkLXBsYXRmb3JtLGh0dHBzOi8vd3d3Lmdvb2dsZWFw",
-            "aXMuY29tL2F1dGgvcHVic3ViMusSCgpTdWJzY3JpYmVyEoYBChJDcmVhdGVT",
+            "aXMuY29tL2F1dGgvcHVic3ViMoMVCgpTdWJzY3JpYmVyErQBChJDcmVhdGVT",
             "dWJzY3JpcHRpb24SHi5nb29nbGUucHVic3ViLnYxLlN1YnNjcmlwdGlvbhoe",
-            "Lmdvb2dsZS5wdWJzdWIudjEuU3Vic2NyaXB0aW9uIjCC0+STAioaJS92MS97",
-            "bmFtZT1wcm9qZWN0cy8qL3N1YnNjcmlwdGlvbnMvKn06ASoSkgEKD0dldFN1",
-            "YnNjcmlwdGlvbhIoLmdvb2dsZS5wdWJzdWIudjEuR2V0U3Vic2NyaXB0aW9u",
-            "UmVxdWVzdBoeLmdvb2dsZS5wdWJzdWIudjEuU3Vic2NyaXB0aW9uIjWC0+ST",
-            "Ai8SLS92MS97c3Vic2NyaXB0aW9uPXByb2plY3RzLyovc3Vic2NyaXB0aW9u",
-            "cy8qfRKgAQoSVXBkYXRlU3Vic2NyaXB0aW9uEisuZ29vZ2xlLnB1YnN1Yi52",
-            "MS5VcGRhdGVTdWJzY3JpcHRpb25SZXF1ZXN0Gh4uZ29vZ2xlLnB1YnN1Yi52",
-            "MS5TdWJzY3JpcHRpb24iPYLT5JMCNzIyL3YxL3tzdWJzY3JpcHRpb24ubmFt",
-            "ZT1wcm9qZWN0cy8qL3N1YnNjcmlwdGlvbnMvKn06ASoSnAEKEUxpc3RTdWJz",
-            "Y3JpcHRpb25zEiouZ29vZ2xlLnB1YnN1Yi52MS5MaXN0U3Vic2NyaXB0aW9u",
-            "c1JlcXVlc3QaKy5nb29nbGUucHVic3ViLnYxLkxpc3RTdWJzY3JpcHRpb25z",
-            "UmVzcG9uc2UiLoLT5JMCKBImL3YxL3twcm9qZWN0PXByb2plY3RzLyp9L3N1",
-            "YnNjcmlwdGlvbnMSkAEKEkRlbGV0ZVN1YnNjcmlwdGlvbhIrLmdvb2dsZS5w",
-            "dWJzdWIudjEuRGVsZXRlU3Vic2NyaXB0aW9uUmVxdWVzdBoWLmdvb2dsZS5w",
-            "cm90b2J1Zi5FbXB0eSI1gtPkkwIvKi0vdjEve3N1YnNjcmlwdGlvbj1wcm9q",
-            "ZWN0cy8qL3N1YnNjcmlwdGlvbnMvKn0SowEKEU1vZGlmeUFja0RlYWRsaW5l",
-            "EiouZ29vZ2xlLnB1YnN1Yi52MS5Nb2RpZnlBY2tEZWFkbGluZVJlcXVlc3Qa",
-            "Fi5nb29nbGUucHJvdG9idWYuRW1wdHkiSoLT5JMCRCI/L3YxL3tzdWJzY3Jp",
-            "cHRpb249cHJvamVjdHMvKi9zdWJzY3JpcHRpb25zLyp9Om1vZGlmeUFja0Rl",
-            "YWRsaW5lOgEqEpEBCgtBY2tub3dsZWRnZRIkLmdvb2dsZS5wdWJzdWIudjEu",
-            "QWNrbm93bGVkZ2VSZXF1ZXN0GhYuZ29vZ2xlLnByb3RvYnVmLkVtcHR5IkSC",
-            "0+STAj4iOS92MS97c3Vic2NyaXB0aW9uPXByb2plY3RzLyovc3Vic2NyaXB0",
-            "aW9ucy8qfTphY2tub3dsZWRnZToBKhKEAQoEUHVsbBIdLmdvb2dsZS5wdWJz",
-            "dWIudjEuUHVsbFJlcXVlc3QaHi5nb29nbGUucHVic3ViLnYxLlB1bGxSZXNw",
-            "b25zZSI9gtPkkwI3IjIvdjEve3N1YnNjcmlwdGlvbj1wcm9qZWN0cy8qL3N1",
-            "YnNjcmlwdGlvbnMvKn06cHVsbDoBKhJmCg1TdHJlYW1pbmdQdWxsEiYuZ29v",
-            "Z2xlLnB1YnN1Yi52MS5TdHJlYW1pbmdQdWxsUmVxdWVzdBonLmdvb2dsZS5w",
-            "dWJzdWIudjEuU3RyZWFtaW5nUHVsbFJlc3BvbnNlIgAoATABEqABChBNb2Rp",
-            "ZnlQdXNoQ29uZmlnEikuZ29vZ2xlLnB1YnN1Yi52MS5Nb2RpZnlQdXNoQ29u",
-            "ZmlnUmVxdWVzdBoWLmdvb2dsZS5wcm90b2J1Zi5FbXB0eSJJgtPkkwJDIj4v",
-            "djEve3N1YnNjcmlwdGlvbj1wcm9qZWN0cy8qL3N1YnNjcmlwdGlvbnMvKn06",
-            "bW9kaWZ5UHVzaENvbmZpZzoBKhJ+CgtHZXRTbmFwc2hvdBIkLmdvb2dsZS5w",
-            "dWJzdWIudjEuR2V0U25hcHNob3RSZXF1ZXN0GhouZ29vZ2xlLnB1YnN1Yi52",
-            "MS5TbmFwc2hvdCItgtPkkwInEiUvdjEve3NuYXBzaG90PXByb2plY3RzLyov",
-            "c25hcHNob3RzLyp9EowBCg1MaXN0U25hcHNob3RzEiYuZ29vZ2xlLnB1YnN1",
-            "Yi52MS5MaXN0U25hcHNob3RzUmVxdWVzdBonLmdvb2dsZS5wdWJzdWIudjEu",
-            "TGlzdFNuYXBzaG90c1Jlc3BvbnNlIiqC0+STAiQSIi92MS97cHJvamVjdD1w",
-            "cm9qZWN0cy8qfS9zbmFwc2hvdHMSgwEKDkNyZWF0ZVNuYXBzaG90EicuZ29v",
-            "Z2xlLnB1YnN1Yi52MS5DcmVhdGVTbmFwc2hvdFJlcXVlc3QaGi5nb29nbGUu",
-            "cHVic3ViLnYxLlNuYXBzaG90IiyC0+STAiYaIS92MS97bmFtZT1wcm9qZWN0",
-            "cy8qL3NuYXBzaG90cy8qfToBKhKMAQoOVXBkYXRlU25hcHNob3QSJy5nb29n",
-            "bGUucHVic3ViLnYxLlVwZGF0ZVNuYXBzaG90UmVxdWVzdBoaLmdvb2dsZS5w",
-            "dWJzdWIudjEuU25hcHNob3QiNYLT5JMCLzIqL3YxL3tzbmFwc2hvdC5uYW1l",
-            "PXByb2plY3RzLyovc25hcHNob3RzLyp9OgEqEoABCg5EZWxldGVTbmFwc2hv",
-            "dBInLmdvb2dsZS5wdWJzdWIudjEuRGVsZXRlU25hcHNob3RSZXF1ZXN0GhYu",
-            "Z29vZ2xlLnByb3RvYnVmLkVtcHR5Ii2C0+STAicqJS92MS97c25hcHNob3Q9",
-            "cHJvamVjdHMvKi9zbmFwc2hvdHMvKn0ShAEKBFNlZWsSHS5nb29nbGUucHVi",
-            "c3ViLnYxLlNlZWtSZXF1ZXN0Gh4uZ29vZ2xlLnB1YnN1Yi52MS5TZWVrUmVz",
-            "cG9uc2UiPYLT5JMCNyIyL3YxL3tzdWJzY3JpcHRpb249cHJvamVjdHMvKi9z",
-            "dWJzY3JpcHRpb25zLyp9OnNlZWs6ASoacMpBFXB1YnN1Yi5nb29nbGVhcGlz",
-            "LmNvbdJBVWh0dHBzOi8vd3d3Lmdvb2dsZWFwaXMuY29tL2F1dGgvY2xvdWQt",
-            "cGxhdGZvcm0saHR0cHM6Ly93d3cuZ29vZ2xlYXBpcy5jb20vYXV0aC9wdWJz",
-            "dWJCrgEKFGNvbS5nb29nbGUucHVic3ViLnYxQgtQdWJzdWJQcm90b1ABWjZn",
-            "b29nbGUuZ29sYW5nLm9yZy9nZW5wcm90by9nb29nbGVhcGlzL3B1YnN1Yi92",
-            "MTtwdWJzdWL4AQGqAhZHb29nbGUuQ2xvdWQuUHViU3ViLlYxygIWR29vZ2xl",
-            "XENsb3VkXFB1YlN1YlxWMeoCGUdvb2dsZTo6Q2xvdWQ6OlB1YlN1Yjo6VjFi",
-            "BnByb3RvMw=="));
+            "Lmdvb2dsZS5wdWJzdWIudjEuU3Vic2NyaXB0aW9uIl6C0+STAioaJS92MS97",
+            "bmFtZT1wcm9qZWN0cy8qL3N1YnNjcmlwdGlvbnMvKn06ASraQStuYW1lLHRv",
+            "cGljLHB1c2hfY29uZmlnLGFja19kZWFkbGluZV9zZWNvbmRzEqEBCg9HZXRT",
+            "dWJzY3JpcHRpb24SKC5nb29nbGUucHVic3ViLnYxLkdldFN1YnNjcmlwdGlv",
+            "blJlcXVlc3QaHi5nb29nbGUucHVic3ViLnYxLlN1YnNjcmlwdGlvbiJEgtPk",
+            "kwIvEi0vdjEve3N1YnNjcmlwdGlvbj1wcm9qZWN0cy8qL3N1YnNjcmlwdGlv",
+            "bnMvKn3aQQxzdWJzY3JpcHRpb24SoAEKElVwZGF0ZVN1YnNjcmlwdGlvbhIr",
+            "Lmdvb2dsZS5wdWJzdWIudjEuVXBkYXRlU3Vic2NyaXB0aW9uUmVxdWVzdBoe",
+            "Lmdvb2dsZS5wdWJzdWIudjEuU3Vic2NyaXB0aW9uIj2C0+STAjcyMi92MS97",
+            "c3Vic2NyaXB0aW9uLm5hbWU9cHJvamVjdHMvKi9zdWJzY3JpcHRpb25zLyp9",
+            "OgEqEqYBChFMaXN0U3Vic2NyaXB0aW9ucxIqLmdvb2dsZS5wdWJzdWIudjEu",
+            "TGlzdFN1YnNjcmlwdGlvbnNSZXF1ZXN0GisuZ29vZ2xlLnB1YnN1Yi52MS5M",
+            "aXN0U3Vic2NyaXB0aW9uc1Jlc3BvbnNlIjiC0+STAigSJi92MS97cHJvamVj",
+            "dD1wcm9qZWN0cy8qfS9zdWJzY3JpcHRpb25z2kEHcHJvamVjdBKfAQoSRGVs",
+            "ZXRlU3Vic2NyaXB0aW9uEisuZ29vZ2xlLnB1YnN1Yi52MS5EZWxldGVTdWJz",
+            "Y3JpcHRpb25SZXF1ZXN0GhYuZ29vZ2xlLnByb3RvYnVmLkVtcHR5IkSC0+ST",
+            "Ai8qLS92MS97c3Vic2NyaXB0aW9uPXByb2plY3RzLyovc3Vic2NyaXB0aW9u",
+            "cy8qfdpBDHN1YnNjcmlwdGlvbhLPAQoRTW9kaWZ5QWNrRGVhZGxpbmUSKi5n",
+            "b29nbGUucHVic3ViLnYxLk1vZGlmeUFja0RlYWRsaW5lUmVxdWVzdBoWLmdv",
+            "b2dsZS5wcm90b2J1Zi5FbXB0eSJ2gtPkkwJEIj8vdjEve3N1YnNjcmlwdGlv",
+            "bj1wcm9qZWN0cy8qL3N1YnNjcmlwdGlvbnMvKn06bW9kaWZ5QWNrRGVhZGxp",
+            "bmU6ASraQSlzdWJzY3JpcHRpb24sYWNrX2lkcyxhY2tfZGVhZGxpbmVfc2Vj",
+            "b25kcxKoAQoLQWNrbm93bGVkZ2USJC5nb29nbGUucHVic3ViLnYxLkFja25v",
+            "d2xlZGdlUmVxdWVzdBoWLmdvb2dsZS5wcm90b2J1Zi5FbXB0eSJbgtPkkwI+",
+            "IjkvdjEve3N1YnNjcmlwdGlvbj1wcm9qZWN0cy8qL3N1YnNjcmlwdGlvbnMv",
+            "Kn06YWNrbm93bGVkZ2U6ASraQRRzdWJzY3JpcHRpb24sYWNrX2lkcxKzAQoE",
+            "UHVsbBIdLmdvb2dsZS5wdWJzdWIudjEuUHVsbFJlcXVlc3QaHi5nb29nbGUu",
+            "cHVic3ViLnYxLlB1bGxSZXNwb25zZSJsgtPkkwI3IjIvdjEve3N1YnNjcmlw",
+            "dGlvbj1wcm9qZWN0cy8qL3N1YnNjcmlwdGlvbnMvKn06cHVsbDoBKtpBLHN1",
+            "YnNjcmlwdGlvbixyZXR1cm5faW1tZWRpYXRlbHksbWF4X21lc3NhZ2VzEmYK",
+            "DVN0cmVhbWluZ1B1bGwSJi5nb29nbGUucHVic3ViLnYxLlN0cmVhbWluZ1B1",
+            "bGxSZXF1ZXN0GicuZ29vZ2xlLnB1YnN1Yi52MS5TdHJlYW1pbmdQdWxsUmVz",
+            "cG9uc2UiACgBMAESuwEKEE1vZGlmeVB1c2hDb25maWcSKS5nb29nbGUucHVi",
+            "c3ViLnYxLk1vZGlmeVB1c2hDb25maWdSZXF1ZXN0GhYuZ29vZ2xlLnByb3Rv",
+            "YnVmLkVtcHR5ImSC0+STAkMiPi92MS97c3Vic2NyaXB0aW9uPXByb2plY3Rz",
+            "Lyovc3Vic2NyaXB0aW9ucy8qfTptb2RpZnlQdXNoQ29uZmlnOgEq2kEYc3Vi",
+            "c2NyaXB0aW9uLHB1c2hfY29uZmlnEokBCgtHZXRTbmFwc2hvdBIkLmdvb2ds",
+            "ZS5wdWJzdWIudjEuR2V0U25hcHNob3RSZXF1ZXN0GhouZ29vZ2xlLnB1YnN1",
+            "Yi52MS5TbmFwc2hvdCI4gtPkkwInEiUvdjEve3NuYXBzaG90PXByb2plY3Rz",
+            "Lyovc25hcHNob3RzLyp92kEIc25hcHNob3QSlgEKDUxpc3RTbmFwc2hvdHMS",
+            "Ji5nb29nbGUucHVic3ViLnYxLkxpc3RTbmFwc2hvdHNSZXF1ZXN0GicuZ29v",
+            "Z2xlLnB1YnN1Yi52MS5MaXN0U25hcHNob3RzUmVzcG9uc2UiNILT5JMCJBIi",
+            "L3YxL3twcm9qZWN0PXByb2plY3RzLyp9L3NuYXBzaG90c9pBB3Byb2plY3QS",
+            "lwEKDkNyZWF0ZVNuYXBzaG90EicuZ29vZ2xlLnB1YnN1Yi52MS5DcmVhdGVT",
+            "bmFwc2hvdFJlcXVlc3QaGi5nb29nbGUucHVic3ViLnYxLlNuYXBzaG90IkCC",
+            "0+STAiYaIS92MS97bmFtZT1wcm9qZWN0cy8qL3NuYXBzaG90cy8qfToBKtpB",
+            "EW5hbWUsc3Vic2NyaXB0aW9uEowBCg5VcGRhdGVTbmFwc2hvdBInLmdvb2ds",
+            "ZS5wdWJzdWIudjEuVXBkYXRlU25hcHNob3RSZXF1ZXN0GhouZ29vZ2xlLnB1",
+            "YnN1Yi52MS5TbmFwc2hvdCI1gtPkkwIvMiovdjEve3NuYXBzaG90Lm5hbWU9",
+            "cHJvamVjdHMvKi9zbmFwc2hvdHMvKn06ASoSiwEKDkRlbGV0ZVNuYXBzaG90",
+            "EicuZ29vZ2xlLnB1YnN1Yi52MS5EZWxldGVTbmFwc2hvdFJlcXVlc3QaFi5n",
+            "b29nbGUucHJvdG9idWYuRW1wdHkiOILT5JMCJyolL3YxL3tzbmFwc2hvdD1w",
+            "cm9qZWN0cy8qL3NuYXBzaG90cy8qfdpBCHNuYXBzaG90EoQBCgRTZWVrEh0u",
+            "Z29vZ2xlLnB1YnN1Yi52MS5TZWVrUmVxdWVzdBoeLmdvb2dsZS5wdWJzdWIu",
+            "djEuU2Vla1Jlc3BvbnNlIj2C0+STAjciMi92MS97c3Vic2NyaXB0aW9uPXBy",
+            "b2plY3RzLyovc3Vic2NyaXB0aW9ucy8qfTpzZWVrOgEqGnDKQRVwdWJzdWIu",
+            "Z29vZ2xlYXBpcy5jb23SQVVodHRwczovL3d3dy5nb29nbGVhcGlzLmNvbS9h",
+            "dXRoL2Nsb3VkLXBsYXRmb3JtLGh0dHBzOi8vd3d3Lmdvb2dsZWFwaXMuY29t",
+            "L2F1dGgvcHVic3ViQq4BChRjb20uZ29vZ2xlLnB1YnN1Yi52MUILUHVic3Vi",
+            "UHJvdG9QAVo2Z29vZ2xlLmdvbGFuZy5vcmcvZ2VucHJvdG8vZ29vZ2xlYXBp",
+            "cy9wdWJzdWIvdjE7cHVic3Vi+AEBqgIWR29vZ2xlLkNsb3VkLlB1YlN1Yi5W",
+            "McoCFkdvb2dsZVxDbG91ZFxQdWJTdWJcVjHqAhlHb29nbGU6OkNsb3VkOjpQ",
+            "dWJTdWI6OlYxYgZwcm90bzM="));
       descriptor = pbr::FileDescriptor.FromGeneratedCode(descriptorData,
-          new pbr::FileDescriptor[] { global::Google.Api.AnnotationsReflection.Descriptor, global::Google.Api.ClientReflection.Descriptor, global::Google.Protobuf.WellKnownTypes.DurationReflection.Descriptor, global::Google.Protobuf.WellKnownTypes.EmptyReflection.Descriptor, global::Google.Protobuf.WellKnownTypes.FieldMaskReflection.Descriptor, global::Google.Protobuf.WellKnownTypes.TimestampReflection.Descriptor, },
-          new pbr::GeneratedClrTypeInfo(null, new pbr::GeneratedClrTypeInfo[] {
-            new pbr::GeneratedClrTypeInfo(typeof(global::Google.Cloud.PubSub.V1.MessageStoragePolicy), global::Google.Cloud.PubSub.V1.MessageStoragePolicy.Parser, new[]{ "AllowedPersistenceRegions" }, null, null, null),
-            new pbr::GeneratedClrTypeInfo(typeof(global::Google.Cloud.PubSub.V1.Topic), global::Google.Cloud.PubSub.V1.Topic.Parser, new[]{ "Name", "Labels", "MessageStoragePolicy", "KmsKeyName" }, null, null, new pbr::GeneratedClrTypeInfo[] { null, }),
-            new pbr::GeneratedClrTypeInfo(typeof(global::Google.Cloud.PubSub.V1.PubsubMessage), global::Google.Cloud.PubSub.V1.PubsubMessage.Parser, new[]{ "Data", "Attributes", "MessageId", "PublishTime", "OrderingKey" }, null, null, new pbr::GeneratedClrTypeInfo[] { null, }),
-            new pbr::GeneratedClrTypeInfo(typeof(global::Google.Cloud.PubSub.V1.GetTopicRequest), global::Google.Cloud.PubSub.V1.GetTopicRequest.Parser, new[]{ "Topic" }, null, null, null),
-            new pbr::GeneratedClrTypeInfo(typeof(global::Google.Cloud.PubSub.V1.UpdateTopicRequest), global::Google.Cloud.PubSub.V1.UpdateTopicRequest.Parser, new[]{ "Topic", "UpdateMask" }, null, null, null),
-            new pbr::GeneratedClrTypeInfo(typeof(global::Google.Cloud.PubSub.V1.PublishRequest), global::Google.Cloud.PubSub.V1.PublishRequest.Parser, new[]{ "Topic", "Messages" }, null, null, null),
-            new pbr::GeneratedClrTypeInfo(typeof(global::Google.Cloud.PubSub.V1.PublishResponse), global::Google.Cloud.PubSub.V1.PublishResponse.Parser, new[]{ "MessageIds" }, null, null, null),
-            new pbr::GeneratedClrTypeInfo(typeof(global::Google.Cloud.PubSub.V1.ListTopicsRequest), global::Google.Cloud.PubSub.V1.ListTopicsRequest.Parser, new[]{ "Project", "PageSize", "PageToken" }, null, null, null),
-            new pbr::GeneratedClrTypeInfo(typeof(global::Google.Cloud.PubSub.V1.ListTopicsResponse), global::Google.Cloud.PubSub.V1.ListTopicsResponse.Parser, new[]{ "Topics", "NextPageToken" }, null, null, null),
-            new pbr::GeneratedClrTypeInfo(typeof(global::Google.Cloud.PubSub.V1.ListTopicSubscriptionsRequest), global::Google.Cloud.PubSub.V1.ListTopicSubscriptionsRequest.Parser, new[]{ "Topic", "PageSize", "PageToken" }, null, null, null),
-            new pbr::GeneratedClrTypeInfo(typeof(global::Google.Cloud.PubSub.V1.ListTopicSubscriptionsResponse), global::Google.Cloud.PubSub.V1.ListTopicSubscriptionsResponse.Parser, new[]{ "Subscriptions", "NextPageToken" }, null, null, null),
-            new pbr::GeneratedClrTypeInfo(typeof(global::Google.Cloud.PubSub.V1.ListTopicSnapshotsRequest), global::Google.Cloud.PubSub.V1.ListTopicSnapshotsRequest.Parser, new[]{ "Topic", "PageSize", "PageToken" }, null, null, null),
-            new pbr::GeneratedClrTypeInfo(typeof(global::Google.Cloud.PubSub.V1.ListTopicSnapshotsResponse), global::Google.Cloud.PubSub.V1.ListTopicSnapshotsResponse.Parser, new[]{ "Snapshots", "NextPageToken" }, null, null, null),
-            new pbr::GeneratedClrTypeInfo(typeof(global::Google.Cloud.PubSub.V1.DeleteTopicRequest), global::Google.Cloud.PubSub.V1.DeleteTopicRequest.Parser, new[]{ "Topic" }, null, null, null),
-            new pbr::GeneratedClrTypeInfo(typeof(global::Google.Cloud.PubSub.V1.Subscription), global::Google.Cloud.PubSub.V1.Subscription.Parser, new[]{ "Name", "Topic", "PushConfig", "AckDeadlineSeconds", "RetainAckedMessages", "MessageRetentionDuration", "Labels", "EnableMessageOrdering", "ExpirationPolicy", "DeadLetterPolicy" }, null, null, new pbr::GeneratedClrTypeInfo[] { null, }),
-            new pbr::GeneratedClrTypeInfo(typeof(global::Google.Cloud.PubSub.V1.DeadLetterPolicy), global::Google.Cloud.PubSub.V1.DeadLetterPolicy.Parser, new[]{ "DeadLetterTopic", "MaxDeliveryAttempts" }, null, null, null),
-            new pbr::GeneratedClrTypeInfo(typeof(global::Google.Cloud.PubSub.V1.ExpirationPolicy), global::Google.Cloud.PubSub.V1.ExpirationPolicy.Parser, new[]{ "Ttl" }, null, null, null),
-            new pbr::GeneratedClrTypeInfo(typeof(global::Google.Cloud.PubSub.V1.PushConfig), global::Google.Cloud.PubSub.V1.PushConfig.Parser, new[]{ "PushEndpoint", "Attributes", "OidcToken" }, new[]{ "AuthenticationMethod" }, null, new pbr::GeneratedClrTypeInfo[] { new pbr::GeneratedClrTypeInfo(typeof(global::Google.Cloud.PubSub.V1.PushConfig.Types.OidcToken), global::Google.Cloud.PubSub.V1.PushConfig.Types.OidcToken.Parser, new[]{ "ServiceAccountEmail", "Audience" }, null, null, null),
+          new pbr::FileDescriptor[] { global::Google.Api.AnnotationsReflection.Descriptor, global::Google.Api.ClientReflection.Descriptor, global::Google.Api.FieldBehaviorReflection.Descriptor, global::Google.Api.ResourceReflection.Descriptor, global::Google.Protobuf.WellKnownTypes.DurationReflection.Descriptor, global::Google.Protobuf.WellKnownTypes.EmptyReflection.Descriptor, global::Google.Protobuf.WellKnownTypes.FieldMaskReflection.Descriptor, global::Google.Protobuf.WellKnownTypes.TimestampReflection.Descriptor, },
+          new pbr::GeneratedClrTypeInfo(null, null, new pbr::GeneratedClrTypeInfo[] {
+            new pbr::GeneratedClrTypeInfo(typeof(global::Google.Cloud.PubSub.V1.MessageStoragePolicy), global::Google.Cloud.PubSub.V1.MessageStoragePolicy.Parser, new[]{ "AllowedPersistenceRegions" }, null, null, null, null),
+            new pbr::GeneratedClrTypeInfo(typeof(global::Google.Cloud.PubSub.V1.Topic), global::Google.Cloud.PubSub.V1.Topic.Parser, new[]{ "Name", "Labels", "MessageStoragePolicy", "KmsKeyName" }, null, null, null, new pbr::GeneratedClrTypeInfo[] { null, }),
+            new pbr::GeneratedClrTypeInfo(typeof(global::Google.Cloud.PubSub.V1.PubsubMessage), global::Google.Cloud.PubSub.V1.PubsubMessage.Parser, new[]{ "Data", "Attributes", "MessageId", "PublishTime", "OrderingKey" }, null, null, null, new pbr::GeneratedClrTypeInfo[] { null, }),
+            new pbr::GeneratedClrTypeInfo(typeof(global::Google.Cloud.PubSub.V1.GetTopicRequest), global::Google.Cloud.PubSub.V1.GetTopicRequest.Parser, new[]{ "Topic" }, null, null, null, null),
+            new pbr::GeneratedClrTypeInfo(typeof(global::Google.Cloud.PubSub.V1.UpdateTopicRequest), global::Google.Cloud.PubSub.V1.UpdateTopicRequest.Parser, new[]{ "Topic", "UpdateMask" }, null, null, null, null),
+            new pbr::GeneratedClrTypeInfo(typeof(global::Google.Cloud.PubSub.V1.PublishRequest), global::Google.Cloud.PubSub.V1.PublishRequest.Parser, new[]{ "Topic", "Messages" }, null, null, null, null),
+            new pbr::GeneratedClrTypeInfo(typeof(global::Google.Cloud.PubSub.V1.PublishResponse), global::Google.Cloud.PubSub.V1.PublishResponse.Parser, new[]{ "MessageIds" }, null, null, null, null),
+            new pbr::GeneratedClrTypeInfo(typeof(global::Google.Cloud.PubSub.V1.ListTopicsRequest), global::Google.Cloud.PubSub.V1.ListTopicsRequest.Parser, new[]{ "Project", "PageSize", "PageToken" }, null, null, null, null),
+            new pbr::GeneratedClrTypeInfo(typeof(global::Google.Cloud.PubSub.V1.ListTopicsResponse), global::Google.Cloud.PubSub.V1.ListTopicsResponse.Parser, new[]{ "Topics", "NextPageToken" }, null, null, null, null),
+            new pbr::GeneratedClrTypeInfo(typeof(global::Google.Cloud.PubSub.V1.ListTopicSubscriptionsRequest), global::Google.Cloud.PubSub.V1.ListTopicSubscriptionsRequest.Parser, new[]{ "Topic", "PageSize", "PageToken" }, null, null, null, null),
+            new pbr::GeneratedClrTypeInfo(typeof(global::Google.Cloud.PubSub.V1.ListTopicSubscriptionsResponse), global::Google.Cloud.PubSub.V1.ListTopicSubscriptionsResponse.Parser, new[]{ "Subscriptions", "NextPageToken" }, null, null, null, null),
+            new pbr::GeneratedClrTypeInfo(typeof(global::Google.Cloud.PubSub.V1.ListTopicSnapshotsRequest), global::Google.Cloud.PubSub.V1.ListTopicSnapshotsRequest.Parser, new[]{ "Topic", "PageSize", "PageToken" }, null, null, null, null),
+            new pbr::GeneratedClrTypeInfo(typeof(global::Google.Cloud.PubSub.V1.ListTopicSnapshotsResponse), global::Google.Cloud.PubSub.V1.ListTopicSnapshotsResponse.Parser, new[]{ "Snapshots", "NextPageToken" }, null, null, null, null),
+            new pbr::GeneratedClrTypeInfo(typeof(global::Google.Cloud.PubSub.V1.DeleteTopicRequest), global::Google.Cloud.PubSub.V1.DeleteTopicRequest.Parser, new[]{ "Topic" }, null, null, null, null),
+            new pbr::GeneratedClrTypeInfo(typeof(global::Google.Cloud.PubSub.V1.DetachSubscriptionRequest), global::Google.Cloud.PubSub.V1.DetachSubscriptionRequest.Parser, new[]{ "Subscription" }, null, null, null, null),
+            new pbr::GeneratedClrTypeInfo(typeof(global::Google.Cloud.PubSub.V1.DetachSubscriptionResponse), global::Google.Cloud.PubSub.V1.DetachSubscriptionResponse.Parser, null, null, null, null, null),
+            new pbr::GeneratedClrTypeInfo(typeof(global::Google.Cloud.PubSub.V1.Subscription), global::Google.Cloud.PubSub.V1.Subscription.Parser, new[]{ "Name", "Topic", "PushConfig", "AckDeadlineSeconds", "RetainAckedMessages", "MessageRetentionDuration", "Labels", "EnableMessageOrdering", "ExpirationPolicy", "Filter", "DeadLetterPolicy", "RetryPolicy", "Detached" }, null, null, null, new pbr::GeneratedClrTypeInfo[] { null, }),
+            new pbr::GeneratedClrTypeInfo(typeof(global::Google.Cloud.PubSub.V1.RetryPolicy), global::Google.Cloud.PubSub.V1.RetryPolicy.Parser, new[]{ "MinimumBackoff", "MaximumBackoff" }, null, null, null, null),
+            new pbr::GeneratedClrTypeInfo(typeof(global::Google.Cloud.PubSub.V1.DeadLetterPolicy), global::Google.Cloud.PubSub.V1.DeadLetterPolicy.Parser, new[]{ "DeadLetterTopic", "MaxDeliveryAttempts" }, null, null, null, null),
+            new pbr::GeneratedClrTypeInfo(typeof(global::Google.Cloud.PubSub.V1.ExpirationPolicy), global::Google.Cloud.PubSub.V1.ExpirationPolicy.Parser, new[]{ "Ttl" }, null, null, null, null),
+            new pbr::GeneratedClrTypeInfo(typeof(global::Google.Cloud.PubSub.V1.PushConfig), global::Google.Cloud.PubSub.V1.PushConfig.Parser, new[]{ "PushEndpoint", "Attributes", "OidcToken" }, new[]{ "AuthenticationMethod" }, null, null, new pbr::GeneratedClrTypeInfo[] { new pbr::GeneratedClrTypeInfo(typeof(global::Google.Cloud.PubSub.V1.PushConfig.Types.OidcToken), global::Google.Cloud.PubSub.V1.PushConfig.Types.OidcToken.Parser, new[]{ "ServiceAccountEmail", "Audience" }, null, null, null, null),
             null, }),
-            new pbr::GeneratedClrTypeInfo(typeof(global::Google.Cloud.PubSub.V1.ReceivedMessage), global::Google.Cloud.PubSub.V1.ReceivedMessage.Parser, new[]{ "AckId", "Message", "DeliveryAttempt" }, null, null, null),
-            new pbr::GeneratedClrTypeInfo(typeof(global::Google.Cloud.PubSub.V1.GetSubscriptionRequest), global::Google.Cloud.PubSub.V1.GetSubscriptionRequest.Parser, new[]{ "Subscription" }, null, null, null),
-            new pbr::GeneratedClrTypeInfo(typeof(global::Google.Cloud.PubSub.V1.UpdateSubscriptionRequest), global::Google.Cloud.PubSub.V1.UpdateSubscriptionRequest.Parser, new[]{ "Subscription", "UpdateMask" }, null, null, null),
-            new pbr::GeneratedClrTypeInfo(typeof(global::Google.Cloud.PubSub.V1.ListSubscriptionsRequest), global::Google.Cloud.PubSub.V1.ListSubscriptionsRequest.Parser, new[]{ "Project", "PageSize", "PageToken" }, null, null, null),
-            new pbr::GeneratedClrTypeInfo(typeof(global::Google.Cloud.PubSub.V1.ListSubscriptionsResponse), global::Google.Cloud.PubSub.V1.ListSubscriptionsResponse.Parser, new[]{ "Subscriptions", "NextPageToken" }, null, null, null),
-            new pbr::GeneratedClrTypeInfo(typeof(global::Google.Cloud.PubSub.V1.DeleteSubscriptionRequest), global::Google.Cloud.PubSub.V1.DeleteSubscriptionRequest.Parser, new[]{ "Subscription" }, null, null, null),
-            new pbr::GeneratedClrTypeInfo(typeof(global::Google.Cloud.PubSub.V1.ModifyPushConfigRequest), global::Google.Cloud.PubSub.V1.ModifyPushConfigRequest.Parser, new[]{ "Subscription", "PushConfig" }, null, null, null),
-            new pbr::GeneratedClrTypeInfo(typeof(global::Google.Cloud.PubSub.V1.PullRequest), global::Google.Cloud.PubSub.V1.PullRequest.Parser, new[]{ "Subscription", "ReturnImmediately", "MaxMessages" }, null, null, null),
-            new pbr::GeneratedClrTypeInfo(typeof(global::Google.Cloud.PubSub.V1.PullResponse), global::Google.Cloud.PubSub.V1.PullResponse.Parser, new[]{ "ReceivedMessages" }, null, null, null),
-            new pbr::GeneratedClrTypeInfo(typeof(global::Google.Cloud.PubSub.V1.ModifyAckDeadlineRequest), global::Google.Cloud.PubSub.V1.ModifyAckDeadlineRequest.Parser, new[]{ "Subscription", "AckIds", "AckDeadlineSeconds" }, null, null, null),
-            new pbr::GeneratedClrTypeInfo(typeof(global::Google.Cloud.PubSub.V1.AcknowledgeRequest), global::Google.Cloud.PubSub.V1.AcknowledgeRequest.Parser, new[]{ "Subscription", "AckIds" }, null, null, null),
-            new pbr::GeneratedClrTypeInfo(typeof(global::Google.Cloud.PubSub.V1.StreamingPullRequest), global::Google.Cloud.PubSub.V1.StreamingPullRequest.Parser, new[]{ "Subscription", "AckIds", "ModifyDeadlineSeconds", "ModifyDeadlineAckIds", "StreamAckDeadlineSeconds" }, null, null, null),
-            new pbr::GeneratedClrTypeInfo(typeof(global::Google.Cloud.PubSub.V1.StreamingPullResponse), global::Google.Cloud.PubSub.V1.StreamingPullResponse.Parser, new[]{ "ReceivedMessages" }, null, null, null),
-            new pbr::GeneratedClrTypeInfo(typeof(global::Google.Cloud.PubSub.V1.CreateSnapshotRequest), global::Google.Cloud.PubSub.V1.CreateSnapshotRequest.Parser, new[]{ "Name", "Subscription", "Labels" }, null, null, new pbr::GeneratedClrTypeInfo[] { null, }),
-            new pbr::GeneratedClrTypeInfo(typeof(global::Google.Cloud.PubSub.V1.UpdateSnapshotRequest), global::Google.Cloud.PubSub.V1.UpdateSnapshotRequest.Parser, new[]{ "Snapshot", "UpdateMask" }, null, null, null),
-            new pbr::GeneratedClrTypeInfo(typeof(global::Google.Cloud.PubSub.V1.Snapshot), global::Google.Cloud.PubSub.V1.Snapshot.Parser, new[]{ "Name", "Topic", "ExpireTime", "Labels" }, null, null, new pbr::GeneratedClrTypeInfo[] { null, }),
-            new pbr::GeneratedClrTypeInfo(typeof(global::Google.Cloud.PubSub.V1.GetSnapshotRequest), global::Google.Cloud.PubSub.V1.GetSnapshotRequest.Parser, new[]{ "Snapshot" }, null, null, null),
-            new pbr::GeneratedClrTypeInfo(typeof(global::Google.Cloud.PubSub.V1.ListSnapshotsRequest), global::Google.Cloud.PubSub.V1.ListSnapshotsRequest.Parser, new[]{ "Project", "PageSize", "PageToken" }, null, null, null),
-            new pbr::GeneratedClrTypeInfo(typeof(global::Google.Cloud.PubSub.V1.ListSnapshotsResponse), global::Google.Cloud.PubSub.V1.ListSnapshotsResponse.Parser, new[]{ "Snapshots", "NextPageToken" }, null, null, null),
-            new pbr::GeneratedClrTypeInfo(typeof(global::Google.Cloud.PubSub.V1.DeleteSnapshotRequest), global::Google.Cloud.PubSub.V1.DeleteSnapshotRequest.Parser, new[]{ "Snapshot" }, null, null, null),
-            new pbr::GeneratedClrTypeInfo(typeof(global::Google.Cloud.PubSub.V1.SeekRequest), global::Google.Cloud.PubSub.V1.SeekRequest.Parser, new[]{ "Subscription", "Time", "Snapshot" }, new[]{ "Target" }, null, null),
-            new pbr::GeneratedClrTypeInfo(typeof(global::Google.Cloud.PubSub.V1.SeekResponse), global::Google.Cloud.PubSub.V1.SeekResponse.Parser, null, null, null, null)
+            new pbr::GeneratedClrTypeInfo(typeof(global::Google.Cloud.PubSub.V1.ReceivedMessage), global::Google.Cloud.PubSub.V1.ReceivedMessage.Parser, new[]{ "AckId", "Message", "DeliveryAttempt" }, null, null, null, null),
+            new pbr::GeneratedClrTypeInfo(typeof(global::Google.Cloud.PubSub.V1.GetSubscriptionRequest), global::Google.Cloud.PubSub.V1.GetSubscriptionRequest.Parser, new[]{ "Subscription" }, null, null, null, null),
+            new pbr::GeneratedClrTypeInfo(typeof(global::Google.Cloud.PubSub.V1.UpdateSubscriptionRequest), global::Google.Cloud.PubSub.V1.UpdateSubscriptionRequest.Parser, new[]{ "Subscription", "UpdateMask" }, null, null, null, null),
+            new pbr::GeneratedClrTypeInfo(typeof(global::Google.Cloud.PubSub.V1.ListSubscriptionsRequest), global::Google.Cloud.PubSub.V1.ListSubscriptionsRequest.Parser, new[]{ "Project", "PageSize", "PageToken" }, null, null, null, null),
+            new pbr::GeneratedClrTypeInfo(typeof(global::Google.Cloud.PubSub.V1.ListSubscriptionsResponse), global::Google.Cloud.PubSub.V1.ListSubscriptionsResponse.Parser, new[]{ "Subscriptions", "NextPageToken" }, null, null, null, null),
+            new pbr::GeneratedClrTypeInfo(typeof(global::Google.Cloud.PubSub.V1.DeleteSubscriptionRequest), global::Google.Cloud.PubSub.V1.DeleteSubscriptionRequest.Parser, new[]{ "Subscription" }, null, null, null, null),
+            new pbr::GeneratedClrTypeInfo(typeof(global::Google.Cloud.PubSub.V1.ModifyPushConfigRequest), global::Google.Cloud.PubSub.V1.ModifyPushConfigRequest.Parser, new[]{ "Subscription", "PushConfig" }, null, null, null, null),
+            new pbr::GeneratedClrTypeInfo(typeof(global::Google.Cloud.PubSub.V1.PullRequest), global::Google.Cloud.PubSub.V1.PullRequest.Parser, new[]{ "Subscription", "ReturnImmediately", "MaxMessages" }, null, null, null, null),
+            new pbr::GeneratedClrTypeInfo(typeof(global::Google.Cloud.PubSub.V1.PullResponse), global::Google.Cloud.PubSub.V1.PullResponse.Parser, new[]{ "ReceivedMessages" }, null, null, null, null),
+            new pbr::GeneratedClrTypeInfo(typeof(global::Google.Cloud.PubSub.V1.ModifyAckDeadlineRequest), global::Google.Cloud.PubSub.V1.ModifyAckDeadlineRequest.Parser, new[]{ "Subscription", "AckIds", "AckDeadlineSeconds" }, null, null, null, null),
+            new pbr::GeneratedClrTypeInfo(typeof(global::Google.Cloud.PubSub.V1.AcknowledgeRequest), global::Google.Cloud.PubSub.V1.AcknowledgeRequest.Parser, new[]{ "Subscription", "AckIds" }, null, null, null, null),
+            new pbr::GeneratedClrTypeInfo(typeof(global::Google.Cloud.PubSub.V1.StreamingPullRequest), global::Google.Cloud.PubSub.V1.StreamingPullRequest.Parser, new[]{ "Subscription", "AckIds", "ModifyDeadlineSeconds", "ModifyDeadlineAckIds", "StreamAckDeadlineSeconds", "ClientId", "MaxOutstandingMessages", "MaxOutstandingBytes" }, null, null, null, null),
+            new pbr::GeneratedClrTypeInfo(typeof(global::Google.Cloud.PubSub.V1.StreamingPullResponse), global::Google.Cloud.PubSub.V1.StreamingPullResponse.Parser, new[]{ "ReceivedMessages" }, null, null, null, null),
+            new pbr::GeneratedClrTypeInfo(typeof(global::Google.Cloud.PubSub.V1.CreateSnapshotRequest), global::Google.Cloud.PubSub.V1.CreateSnapshotRequest.Parser, new[]{ "Name", "Subscription", "Labels" }, null, null, null, new pbr::GeneratedClrTypeInfo[] { null, }),
+            new pbr::GeneratedClrTypeInfo(typeof(global::Google.Cloud.PubSub.V1.UpdateSnapshotRequest), global::Google.Cloud.PubSub.V1.UpdateSnapshotRequest.Parser, new[]{ "Snapshot", "UpdateMask" }, null, null, null, null),
+            new pbr::GeneratedClrTypeInfo(typeof(global::Google.Cloud.PubSub.V1.Snapshot), global::Google.Cloud.PubSub.V1.Snapshot.Parser, new[]{ "Name", "Topic", "ExpireTime", "Labels" }, null, null, null, new pbr::GeneratedClrTypeInfo[] { null, }),
+            new pbr::GeneratedClrTypeInfo(typeof(global::Google.Cloud.PubSub.V1.GetSnapshotRequest), global::Google.Cloud.PubSub.V1.GetSnapshotRequest.Parser, new[]{ "Snapshot" }, null, null, null, null),
+            new pbr::GeneratedClrTypeInfo(typeof(global::Google.Cloud.PubSub.V1.ListSnapshotsRequest), global::Google.Cloud.PubSub.V1.ListSnapshotsRequest.Parser, new[]{ "Project", "PageSize", "PageToken" }, null, null, null, null),
+            new pbr::GeneratedClrTypeInfo(typeof(global::Google.Cloud.PubSub.V1.ListSnapshotsResponse), global::Google.Cloud.PubSub.V1.ListSnapshotsResponse.Parser, new[]{ "Snapshots", "NextPageToken" }, null, null, null, null),
+            new pbr::GeneratedClrTypeInfo(typeof(global::Google.Cloud.PubSub.V1.DeleteSnapshotRequest), global::Google.Cloud.PubSub.V1.DeleteSnapshotRequest.Parser, new[]{ "Snapshot" }, null, null, null, null),
+            new pbr::GeneratedClrTypeInfo(typeof(global::Google.Cloud.PubSub.V1.SeekRequest), global::Google.Cloud.PubSub.V1.SeekRequest.Parser, new[]{ "Subscription", "Time", "Snapshot" }, new[]{ "Target" }, null, null, null),
+            new pbr::GeneratedClrTypeInfo(typeof(global::Google.Cloud.PubSub.V1.SeekResponse), global::Google.Cloud.PubSub.V1.SeekResponse.Parser, null, null, null, null, null)
           }));
     }
     #endregion
 
   }
   #region Messages
-  public sealed partial class MessageStoragePolicy : pb::IMessage<MessageStoragePolicy> {
+  /// <summary>
+  /// A policy constraining the storage of messages published to the topic.
+  /// </summary>
+  public sealed partial class MessageStoragePolicy : pb::IMessage<MessageStoragePolicy>
+  #if !GOOGLE_PROTOBUF_REFSTRUCT_COMPATIBILITY_MODE
+      , pb::IBufferMessage
+  #endif
+  {
     private static readonly pb::MessageParser<MessageStoragePolicy> _parser = new pb::MessageParser<MessageStoragePolicy>(() => new MessageStoragePolicy());
     private pb::UnknownFieldSet _unknownFields;
     [global::System.Diagnostics.DebuggerNonUserCodeAttribute]
@@ -346,11 +408,25 @@ namespace Google.Cloud.PubSub.V1 {
 
     [global::System.Diagnostics.DebuggerNonUserCodeAttribute]
     public void WriteTo(pb::CodedOutputStream output) {
+    #if !GOOGLE_PROTOBUF_REFSTRUCT_COMPATIBILITY_MODE
+      output.WriteRawMessage(this);
+    #else
       allowedPersistenceRegions_.WriteTo(output, _repeated_allowedPersistenceRegions_codec);
       if (_unknownFields != null) {
         _unknownFields.WriteTo(output);
       }
+    #endif
     }
+
+    #if !GOOGLE_PROTOBUF_REFSTRUCT_COMPATIBILITY_MODE
+    [global::System.Diagnostics.DebuggerNonUserCodeAttribute]
+    void pb::IBufferMessage.InternalWriteTo(ref pb::WriteContext output) {
+      allowedPersistenceRegions_.WriteTo(ref output, _repeated_allowedPersistenceRegions_codec);
+      if (_unknownFields != null) {
+        _unknownFields.WriteTo(ref output);
+      }
+    }
+    #endif
 
     [global::System.Diagnostics.DebuggerNonUserCodeAttribute]
     public int CalculateSize() {
@@ -373,6 +449,9 @@ namespace Google.Cloud.PubSub.V1 {
 
     [global::System.Diagnostics.DebuggerNonUserCodeAttribute]
     public void MergeFrom(pb::CodedInputStream input) {
+    #if !GOOGLE_PROTOBUF_REFSTRUCT_COMPATIBILITY_MODE
+      input.ReadRawMessage(this);
+    #else
       uint tag;
       while ((tag = input.ReadTag()) != 0) {
         switch(tag) {
@@ -385,14 +464,37 @@ namespace Google.Cloud.PubSub.V1 {
           }
         }
       }
+    #endif
     }
+
+    #if !GOOGLE_PROTOBUF_REFSTRUCT_COMPATIBILITY_MODE
+    [global::System.Diagnostics.DebuggerNonUserCodeAttribute]
+    void pb::IBufferMessage.InternalMergeFrom(ref pb::ParseContext input) {
+      uint tag;
+      while ((tag = input.ReadTag()) != 0) {
+        switch(tag) {
+          default:
+            _unknownFields = pb::UnknownFieldSet.MergeFieldFrom(_unknownFields, ref input);
+            break;
+          case 10: {
+            allowedPersistenceRegions_.AddEntriesFrom(ref input, _repeated_allowedPersistenceRegions_codec);
+            break;
+          }
+        }
+      }
+    }
+    #endif
 
   }
 
   /// <summary>
   /// A topic resource.
   /// </summary>
-  public sealed partial class Topic : pb::IMessage<Topic> {
+  public sealed partial class Topic : pb::IMessage<Topic>
+  #if !GOOGLE_PROTOBUF_REFSTRUCT_COMPATIBILITY_MODE
+      , pb::IBufferMessage
+  #endif
+  {
     private static readonly pb::MessageParser<Topic> _parser = new pb::MessageParser<Topic>(() => new Topic());
     private pb::UnknownFieldSet _unknownFields;
     [global::System.Diagnostics.DebuggerNonUserCodeAttribute]
@@ -433,7 +535,7 @@ namespace Google.Cloud.PubSub.V1 {
     public const int NameFieldNumber = 1;
     private string name_ = "";
     /// <summary>
-    /// The name of the topic. It must have the format
+    /// Required. The name of the topic. It must have the format
     /// `"projects/{project}/topics/{topic}"`. `{topic}` must start with a letter,
     /// and contain only letters (`[A-Za-z]`), numbers (`[0-9]`), dashes (`-`),
     /// underscores (`_`), periods (`.`), tildes (`~`), plus (`+`) or percent
@@ -451,11 +553,11 @@ namespace Google.Cloud.PubSub.V1 {
     /// <summary>Field number for the "labels" field.</summary>
     public const int LabelsFieldNumber = 2;
     private static readonly pbc::MapField<string, string>.Codec _map_labels_codec
-        = new pbc::MapField<string, string>.Codec(pb::FieldCodec.ForString(10), pb::FieldCodec.ForString(18), 18);
+        = new pbc::MapField<string, string>.Codec(pb::FieldCodec.ForString(10, ""), pb::FieldCodec.ForString(18, ""), 18);
     private readonly pbc::MapField<string, string> labels_ = new pbc::MapField<string, string>();
     /// <summary>
-    /// See &lt;a href="https://cloud.google.com/pubsub/docs/labels"> Creating and
-    /// managing labels&lt;/a>.
+    /// See [Creating and managing labels]
+    /// (https://cloud.google.com/pubsub/docs/labels).
     /// </summary>
     [global::System.Diagnostics.DebuggerNonUserCodeAttribute]
     public pbc::MapField<string, string> Labels {
@@ -535,6 +637,9 @@ namespace Google.Cloud.PubSub.V1 {
 
     [global::System.Diagnostics.DebuggerNonUserCodeAttribute]
     public void WriteTo(pb::CodedOutputStream output) {
+    #if !GOOGLE_PROTOBUF_REFSTRUCT_COMPATIBILITY_MODE
+      output.WriteRawMessage(this);
+    #else
       if (Name.Length != 0) {
         output.WriteRawTag(10);
         output.WriteString(Name);
@@ -551,7 +656,30 @@ namespace Google.Cloud.PubSub.V1 {
       if (_unknownFields != null) {
         _unknownFields.WriteTo(output);
       }
+    #endif
     }
+
+    #if !GOOGLE_PROTOBUF_REFSTRUCT_COMPATIBILITY_MODE
+    [global::System.Diagnostics.DebuggerNonUserCodeAttribute]
+    void pb::IBufferMessage.InternalWriteTo(ref pb::WriteContext output) {
+      if (Name.Length != 0) {
+        output.WriteRawTag(10);
+        output.WriteString(Name);
+      }
+      labels_.WriteTo(ref output, _map_labels_codec);
+      if (messageStoragePolicy_ != null) {
+        output.WriteRawTag(26);
+        output.WriteMessage(MessageStoragePolicy);
+      }
+      if (KmsKeyName.Length != 0) {
+        output.WriteRawTag(42);
+        output.WriteString(KmsKeyName);
+      }
+      if (_unknownFields != null) {
+        _unknownFields.WriteTo(ref output);
+      }
+    }
+    #endif
 
     [global::System.Diagnostics.DebuggerNonUserCodeAttribute]
     public int CalculateSize() {
@@ -595,6 +723,9 @@ namespace Google.Cloud.PubSub.V1 {
 
     [global::System.Diagnostics.DebuggerNonUserCodeAttribute]
     public void MergeFrom(pb::CodedInputStream input) {
+    #if !GOOGLE_PROTOBUF_REFSTRUCT_COMPATIBILITY_MODE
+      input.ReadRawMessage(this);
+    #else
       uint tag;
       while ((tag = input.ReadTag()) != 0) {
         switch(tag) {
@@ -622,7 +753,41 @@ namespace Google.Cloud.PubSub.V1 {
           }
         }
       }
+    #endif
     }
+
+    #if !GOOGLE_PROTOBUF_REFSTRUCT_COMPATIBILITY_MODE
+    [global::System.Diagnostics.DebuggerNonUserCodeAttribute]
+    void pb::IBufferMessage.InternalMergeFrom(ref pb::ParseContext input) {
+      uint tag;
+      while ((tag = input.ReadTag()) != 0) {
+        switch(tag) {
+          default:
+            _unknownFields = pb::UnknownFieldSet.MergeFieldFrom(_unknownFields, ref input);
+            break;
+          case 10: {
+            Name = input.ReadString();
+            break;
+          }
+          case 18: {
+            labels_.AddEntriesFrom(ref input, _map_labels_codec);
+            break;
+          }
+          case 26: {
+            if (messageStoragePolicy_ == null) {
+              MessageStoragePolicy = new global::Google.Cloud.PubSub.V1.MessageStoragePolicy();
+            }
+            input.ReadMessage(MessageStoragePolicy);
+            break;
+          }
+          case 42: {
+            KmsKeyName = input.ReadString();
+            break;
+          }
+        }
+      }
+    }
+    #endif
 
   }
 
@@ -630,13 +795,17 @@ namespace Google.Cloud.PubSub.V1 {
   /// A message that is published by publishers and consumed by subscribers. The
   /// message must contain either a non-empty data field or at least one attribute.
   /// Note that client libraries represent this object differently
-  /// depending on the language. See the corresponding
-  /// &lt;a href="https://cloud.google.com/pubsub/docs/reference/libraries">client
-  /// library documentation&lt;/a> for more information. See
-  /// &lt;a href="https://cloud.google.com/pubsub/quotas">Quotas and limits&lt;/a>
-  /// for more information about message limits.
+  /// depending on the language. See the corresponding [client library
+  /// documentation](https://cloud.google.com/pubsub/docs/reference/libraries) for
+  /// more information. See [quotas and limits]
+  /// (https://cloud.google.com/pubsub/quotas) for more information about message
+  /// limits.
   /// </summary>
-  public sealed partial class PubsubMessage : pb::IMessage<PubsubMessage> {
+  public sealed partial class PubsubMessage : pb::IMessage<PubsubMessage>
+  #if !GOOGLE_PROTOBUF_REFSTRUCT_COMPATIBILITY_MODE
+      , pb::IBufferMessage
+  #endif
+  {
     private static readonly pb::MessageParser<PubsubMessage> _parser = new pb::MessageParser<PubsubMessage>(() => new PubsubMessage());
     private pb::UnknownFieldSet _unknownFields;
     [global::System.Diagnostics.DebuggerNonUserCodeAttribute]
@@ -692,10 +861,12 @@ namespace Google.Cloud.PubSub.V1 {
     /// <summary>Field number for the "attributes" field.</summary>
     public const int AttributesFieldNumber = 2;
     private static readonly pbc::MapField<string, string>.Codec _map_attributes_codec
-        = new pbc::MapField<string, string>.Codec(pb::FieldCodec.ForString(10), pb::FieldCodec.ForString(18), 18);
+        = new pbc::MapField<string, string>.Codec(pb::FieldCodec.ForString(10, ""), pb::FieldCodec.ForString(18, ""), 18);
     private readonly pbc::MapField<string, string> attributes_ = new pbc::MapField<string, string>();
     /// <summary>
-    /// Optional attributes for this message.
+    /// Attributes for this message. If this field is empty, the message must
+    /// contain non-empty data. This can be used to filter messages on the
+    /// subscription.
     /// </summary>
     [global::System.Diagnostics.DebuggerNonUserCodeAttribute]
     public pbc::MapField<string, string> Attributes {
@@ -739,13 +910,12 @@ namespace Google.Cloud.PubSub.V1 {
     public const int OrderingKeyFieldNumber = 5;
     private string orderingKey_ = "";
     /// <summary>
-    /// Identifies related messages for which publish order should be respected.
-    /// If a `Subscription` has `enable_message_ordering` set to `true`, messages
-    /// published with the same `ordering_key` value will be delivered to
-    /// subscribers in the order in which they are received by the Pub/Sub system.
-    /// &lt;b>EXPERIMENTAL:&lt;/b> This feature is part of a closed alpha release. This
-    /// API might be changed in backward-incompatible ways and is not recommended
-    /// for production use. It is not subject to any SLA or deprecation policy.
+    /// If non-empty, identifies related messages for which publish order should be
+    /// respected. If a `Subscription` has `enable_message_ordering` set to `true`,
+    /// messages published with the same non-empty `ordering_key` value will be
+    /// delivered to subscribers in the order in which they are received by the
+    /// Pub/Sub system. All `PubsubMessage`s published in a given `PublishRequest`
+    /// must specify the same `ordering_key` value.
     /// </summary>
     [global::System.Diagnostics.DebuggerNonUserCodeAttribute]
     public string OrderingKey {
@@ -797,6 +967,9 @@ namespace Google.Cloud.PubSub.V1 {
 
     [global::System.Diagnostics.DebuggerNonUserCodeAttribute]
     public void WriteTo(pb::CodedOutputStream output) {
+    #if !GOOGLE_PROTOBUF_REFSTRUCT_COMPATIBILITY_MODE
+      output.WriteRawMessage(this);
+    #else
       if (Data.Length != 0) {
         output.WriteRawTag(10);
         output.WriteBytes(Data);
@@ -817,7 +990,34 @@ namespace Google.Cloud.PubSub.V1 {
       if (_unknownFields != null) {
         _unknownFields.WriteTo(output);
       }
+    #endif
     }
+
+    #if !GOOGLE_PROTOBUF_REFSTRUCT_COMPATIBILITY_MODE
+    [global::System.Diagnostics.DebuggerNonUserCodeAttribute]
+    void pb::IBufferMessage.InternalWriteTo(ref pb::WriteContext output) {
+      if (Data.Length != 0) {
+        output.WriteRawTag(10);
+        output.WriteBytes(Data);
+      }
+      attributes_.WriteTo(ref output, _map_attributes_codec);
+      if (MessageId.Length != 0) {
+        output.WriteRawTag(26);
+        output.WriteString(MessageId);
+      }
+      if (publishTime_ != null) {
+        output.WriteRawTag(34);
+        output.WriteMessage(PublishTime);
+      }
+      if (OrderingKey.Length != 0) {
+        output.WriteRawTag(42);
+        output.WriteString(OrderingKey);
+      }
+      if (_unknownFields != null) {
+        _unknownFields.WriteTo(ref output);
+      }
+    }
+    #endif
 
     [global::System.Diagnostics.DebuggerNonUserCodeAttribute]
     public int CalculateSize() {
@@ -867,6 +1067,9 @@ namespace Google.Cloud.PubSub.V1 {
 
     [global::System.Diagnostics.DebuggerNonUserCodeAttribute]
     public void MergeFrom(pb::CodedInputStream input) {
+    #if !GOOGLE_PROTOBUF_REFSTRUCT_COMPATIBILITY_MODE
+      input.ReadRawMessage(this);
+    #else
       uint tag;
       while ((tag = input.ReadTag()) != 0) {
         switch(tag) {
@@ -898,14 +1101,56 @@ namespace Google.Cloud.PubSub.V1 {
           }
         }
       }
+    #endif
     }
+
+    #if !GOOGLE_PROTOBUF_REFSTRUCT_COMPATIBILITY_MODE
+    [global::System.Diagnostics.DebuggerNonUserCodeAttribute]
+    void pb::IBufferMessage.InternalMergeFrom(ref pb::ParseContext input) {
+      uint tag;
+      while ((tag = input.ReadTag()) != 0) {
+        switch(tag) {
+          default:
+            _unknownFields = pb::UnknownFieldSet.MergeFieldFrom(_unknownFields, ref input);
+            break;
+          case 10: {
+            Data = input.ReadBytes();
+            break;
+          }
+          case 18: {
+            attributes_.AddEntriesFrom(ref input, _map_attributes_codec);
+            break;
+          }
+          case 26: {
+            MessageId = input.ReadString();
+            break;
+          }
+          case 34: {
+            if (publishTime_ == null) {
+              PublishTime = new global::Google.Protobuf.WellKnownTypes.Timestamp();
+            }
+            input.ReadMessage(PublishTime);
+            break;
+          }
+          case 42: {
+            OrderingKey = input.ReadString();
+            break;
+          }
+        }
+      }
+    }
+    #endif
 
   }
 
   /// <summary>
   /// Request for the GetTopic method.
   /// </summary>
-  public sealed partial class GetTopicRequest : pb::IMessage<GetTopicRequest> {
+  public sealed partial class GetTopicRequest : pb::IMessage<GetTopicRequest>
+  #if !GOOGLE_PROTOBUF_REFSTRUCT_COMPATIBILITY_MODE
+      , pb::IBufferMessage
+  #endif
+  {
     private static readonly pb::MessageParser<GetTopicRequest> _parser = new pb::MessageParser<GetTopicRequest>(() => new GetTopicRequest());
     private pb::UnknownFieldSet _unknownFields;
     [global::System.Diagnostics.DebuggerNonUserCodeAttribute]
@@ -943,7 +1188,7 @@ namespace Google.Cloud.PubSub.V1 {
     public const int TopicFieldNumber = 1;
     private string topic_ = "";
     /// <summary>
-    /// The name of the topic to get.
+    /// Required. The name of the topic to get.
     /// Format is `projects/{project}/topics/{topic}`.
     /// </summary>
     [global::System.Diagnostics.DebuggerNonUserCodeAttribute]
@@ -988,6 +1233,9 @@ namespace Google.Cloud.PubSub.V1 {
 
     [global::System.Diagnostics.DebuggerNonUserCodeAttribute]
     public void WriteTo(pb::CodedOutputStream output) {
+    #if !GOOGLE_PROTOBUF_REFSTRUCT_COMPATIBILITY_MODE
+      output.WriteRawMessage(this);
+    #else
       if (Topic.Length != 0) {
         output.WriteRawTag(10);
         output.WriteString(Topic);
@@ -995,7 +1243,21 @@ namespace Google.Cloud.PubSub.V1 {
       if (_unknownFields != null) {
         _unknownFields.WriteTo(output);
       }
+    #endif
     }
+
+    #if !GOOGLE_PROTOBUF_REFSTRUCT_COMPATIBILITY_MODE
+    [global::System.Diagnostics.DebuggerNonUserCodeAttribute]
+    void pb::IBufferMessage.InternalWriteTo(ref pb::WriteContext output) {
+      if (Topic.Length != 0) {
+        output.WriteRawTag(10);
+        output.WriteString(Topic);
+      }
+      if (_unknownFields != null) {
+        _unknownFields.WriteTo(ref output);
+      }
+    }
+    #endif
 
     [global::System.Diagnostics.DebuggerNonUserCodeAttribute]
     public int CalculateSize() {
@@ -1022,6 +1284,9 @@ namespace Google.Cloud.PubSub.V1 {
 
     [global::System.Diagnostics.DebuggerNonUserCodeAttribute]
     public void MergeFrom(pb::CodedInputStream input) {
+    #if !GOOGLE_PROTOBUF_REFSTRUCT_COMPATIBILITY_MODE
+      input.ReadRawMessage(this);
+    #else
       uint tag;
       while ((tag = input.ReadTag()) != 0) {
         switch(tag) {
@@ -1034,14 +1299,37 @@ namespace Google.Cloud.PubSub.V1 {
           }
         }
       }
+    #endif
     }
+
+    #if !GOOGLE_PROTOBUF_REFSTRUCT_COMPATIBILITY_MODE
+    [global::System.Diagnostics.DebuggerNonUserCodeAttribute]
+    void pb::IBufferMessage.InternalMergeFrom(ref pb::ParseContext input) {
+      uint tag;
+      while ((tag = input.ReadTag()) != 0) {
+        switch(tag) {
+          default:
+            _unknownFields = pb::UnknownFieldSet.MergeFieldFrom(_unknownFields, ref input);
+            break;
+          case 10: {
+            Topic = input.ReadString();
+            break;
+          }
+        }
+      }
+    }
+    #endif
 
   }
 
   /// <summary>
   /// Request for the UpdateTopic method.
   /// </summary>
-  public sealed partial class UpdateTopicRequest : pb::IMessage<UpdateTopicRequest> {
+  public sealed partial class UpdateTopicRequest : pb::IMessage<UpdateTopicRequest>
+  #if !GOOGLE_PROTOBUF_REFSTRUCT_COMPATIBILITY_MODE
+      , pb::IBufferMessage
+  #endif
+  {
     private static readonly pb::MessageParser<UpdateTopicRequest> _parser = new pb::MessageParser<UpdateTopicRequest>(() => new UpdateTopicRequest());
     private pb::UnknownFieldSet _unknownFields;
     [global::System.Diagnostics.DebuggerNonUserCodeAttribute]
@@ -1080,7 +1368,7 @@ namespace Google.Cloud.PubSub.V1 {
     public const int TopicFieldNumber = 1;
     private global::Google.Cloud.PubSub.V1.Topic topic_;
     /// <summary>
-    /// The updated topic object.
+    /// Required. The updated topic object.
     /// </summary>
     [global::System.Diagnostics.DebuggerNonUserCodeAttribute]
     public global::Google.Cloud.PubSub.V1.Topic Topic {
@@ -1094,11 +1382,11 @@ namespace Google.Cloud.PubSub.V1 {
     public const int UpdateMaskFieldNumber = 2;
     private global::Google.Protobuf.WellKnownTypes.FieldMask updateMask_;
     /// <summary>
-    /// Indicates which fields in the provided topic to update. Must be specified
-    /// and non-empty. Note that if `update_mask` contains
-    /// "message_storage_policy" then the new value will be determined based on the
-    /// policy configured at the project or organization level. The
-    /// `message_storage_policy` must not be set in the `topic` provided above.
+    /// Required. Indicates which fields in the provided topic to update. Must be
+    /// specified and non-empty. Note that if `update_mask` contains
+    /// "message_storage_policy" but the `message_storage_policy` is not set in
+    /// the `topic` provided above, then the updated value is determined by the
+    /// policy configured at the project or organization level.
     /// </summary>
     [global::System.Diagnostics.DebuggerNonUserCodeAttribute]
     public global::Google.Protobuf.WellKnownTypes.FieldMask UpdateMask {
@@ -1144,6 +1432,9 @@ namespace Google.Cloud.PubSub.V1 {
 
     [global::System.Diagnostics.DebuggerNonUserCodeAttribute]
     public void WriteTo(pb::CodedOutputStream output) {
+    #if !GOOGLE_PROTOBUF_REFSTRUCT_COMPATIBILITY_MODE
+      output.WriteRawMessage(this);
+    #else
       if (topic_ != null) {
         output.WriteRawTag(10);
         output.WriteMessage(Topic);
@@ -1155,7 +1446,25 @@ namespace Google.Cloud.PubSub.V1 {
       if (_unknownFields != null) {
         _unknownFields.WriteTo(output);
       }
+    #endif
     }
+
+    #if !GOOGLE_PROTOBUF_REFSTRUCT_COMPATIBILITY_MODE
+    [global::System.Diagnostics.DebuggerNonUserCodeAttribute]
+    void pb::IBufferMessage.InternalWriteTo(ref pb::WriteContext output) {
+      if (topic_ != null) {
+        output.WriteRawTag(10);
+        output.WriteMessage(Topic);
+      }
+      if (updateMask_ != null) {
+        output.WriteRawTag(18);
+        output.WriteMessage(UpdateMask);
+      }
+      if (_unknownFields != null) {
+        _unknownFields.WriteTo(ref output);
+      }
+    }
+    #endif
 
     [global::System.Diagnostics.DebuggerNonUserCodeAttribute]
     public int CalculateSize() {
@@ -1194,6 +1503,9 @@ namespace Google.Cloud.PubSub.V1 {
 
     [global::System.Diagnostics.DebuggerNonUserCodeAttribute]
     public void MergeFrom(pb::CodedInputStream input) {
+    #if !GOOGLE_PROTOBUF_REFSTRUCT_COMPATIBILITY_MODE
+      input.ReadRawMessage(this);
+    #else
       uint tag;
       while ((tag = input.ReadTag()) != 0) {
         switch(tag) {
@@ -1216,14 +1528,47 @@ namespace Google.Cloud.PubSub.V1 {
           }
         }
       }
+    #endif
     }
+
+    #if !GOOGLE_PROTOBUF_REFSTRUCT_COMPATIBILITY_MODE
+    [global::System.Diagnostics.DebuggerNonUserCodeAttribute]
+    void pb::IBufferMessage.InternalMergeFrom(ref pb::ParseContext input) {
+      uint tag;
+      while ((tag = input.ReadTag()) != 0) {
+        switch(tag) {
+          default:
+            _unknownFields = pb::UnknownFieldSet.MergeFieldFrom(_unknownFields, ref input);
+            break;
+          case 10: {
+            if (topic_ == null) {
+              Topic = new global::Google.Cloud.PubSub.V1.Topic();
+            }
+            input.ReadMessage(Topic);
+            break;
+          }
+          case 18: {
+            if (updateMask_ == null) {
+              UpdateMask = new global::Google.Protobuf.WellKnownTypes.FieldMask();
+            }
+            input.ReadMessage(UpdateMask);
+            break;
+          }
+        }
+      }
+    }
+    #endif
 
   }
 
   /// <summary>
   /// Request for the Publish method.
   /// </summary>
-  public sealed partial class PublishRequest : pb::IMessage<PublishRequest> {
+  public sealed partial class PublishRequest : pb::IMessage<PublishRequest>
+  #if !GOOGLE_PROTOBUF_REFSTRUCT_COMPATIBILITY_MODE
+      , pb::IBufferMessage
+  #endif
+  {
     private static readonly pb::MessageParser<PublishRequest> _parser = new pb::MessageParser<PublishRequest>(() => new PublishRequest());
     private pb::UnknownFieldSet _unknownFields;
     [global::System.Diagnostics.DebuggerNonUserCodeAttribute]
@@ -1262,7 +1607,7 @@ namespace Google.Cloud.PubSub.V1 {
     public const int TopicFieldNumber = 1;
     private string topic_ = "";
     /// <summary>
-    /// The messages in the request will be published on this topic.
+    /// Required. The messages in the request will be published on this topic.
     /// Format is `projects/{project}/topics/{topic}`.
     /// </summary>
     [global::System.Diagnostics.DebuggerNonUserCodeAttribute]
@@ -1279,7 +1624,7 @@ namespace Google.Cloud.PubSub.V1 {
         = pb::FieldCodec.ForMessage(18, global::Google.Cloud.PubSub.V1.PubsubMessage.Parser);
     private readonly pbc::RepeatedField<global::Google.Cloud.PubSub.V1.PubsubMessage> messages_ = new pbc::RepeatedField<global::Google.Cloud.PubSub.V1.PubsubMessage>();
     /// <summary>
-    /// The messages to publish.
+    /// Required. The messages to publish.
     /// </summary>
     [global::System.Diagnostics.DebuggerNonUserCodeAttribute]
     public pbc::RepeatedField<global::Google.Cloud.PubSub.V1.PubsubMessage> Messages {
@@ -1322,6 +1667,9 @@ namespace Google.Cloud.PubSub.V1 {
 
     [global::System.Diagnostics.DebuggerNonUserCodeAttribute]
     public void WriteTo(pb::CodedOutputStream output) {
+    #if !GOOGLE_PROTOBUF_REFSTRUCT_COMPATIBILITY_MODE
+      output.WriteRawMessage(this);
+    #else
       if (Topic.Length != 0) {
         output.WriteRawTag(10);
         output.WriteString(Topic);
@@ -1330,7 +1678,22 @@ namespace Google.Cloud.PubSub.V1 {
       if (_unknownFields != null) {
         _unknownFields.WriteTo(output);
       }
+    #endif
     }
+
+    #if !GOOGLE_PROTOBUF_REFSTRUCT_COMPATIBILITY_MODE
+    [global::System.Diagnostics.DebuggerNonUserCodeAttribute]
+    void pb::IBufferMessage.InternalWriteTo(ref pb::WriteContext output) {
+      if (Topic.Length != 0) {
+        output.WriteRawTag(10);
+        output.WriteString(Topic);
+      }
+      messages_.WriteTo(ref output, _repeated_messages_codec);
+      if (_unknownFields != null) {
+        _unknownFields.WriteTo(ref output);
+      }
+    }
+    #endif
 
     [global::System.Diagnostics.DebuggerNonUserCodeAttribute]
     public int CalculateSize() {
@@ -1359,6 +1722,9 @@ namespace Google.Cloud.PubSub.V1 {
 
     [global::System.Diagnostics.DebuggerNonUserCodeAttribute]
     public void MergeFrom(pb::CodedInputStream input) {
+    #if !GOOGLE_PROTOBUF_REFSTRUCT_COMPATIBILITY_MODE
+      input.ReadRawMessage(this);
+    #else
       uint tag;
       while ((tag = input.ReadTag()) != 0) {
         switch(tag) {
@@ -1375,14 +1741,41 @@ namespace Google.Cloud.PubSub.V1 {
           }
         }
       }
+    #endif
     }
+
+    #if !GOOGLE_PROTOBUF_REFSTRUCT_COMPATIBILITY_MODE
+    [global::System.Diagnostics.DebuggerNonUserCodeAttribute]
+    void pb::IBufferMessage.InternalMergeFrom(ref pb::ParseContext input) {
+      uint tag;
+      while ((tag = input.ReadTag()) != 0) {
+        switch(tag) {
+          default:
+            _unknownFields = pb::UnknownFieldSet.MergeFieldFrom(_unknownFields, ref input);
+            break;
+          case 10: {
+            Topic = input.ReadString();
+            break;
+          }
+          case 18: {
+            messages_.AddEntriesFrom(ref input, _repeated_messages_codec);
+            break;
+          }
+        }
+      }
+    }
+    #endif
 
   }
 
   /// <summary>
   /// Response for the `Publish` method.
   /// </summary>
-  public sealed partial class PublishResponse : pb::IMessage<PublishResponse> {
+  public sealed partial class PublishResponse : pb::IMessage<PublishResponse>
+  #if !GOOGLE_PROTOBUF_REFSTRUCT_COMPATIBILITY_MODE
+      , pb::IBufferMessage
+  #endif
+  {
     private static readonly pb::MessageParser<PublishResponse> _parser = new pb::MessageParser<PublishResponse>(() => new PublishResponse());
     private pb::UnknownFieldSet _unknownFields;
     [global::System.Diagnostics.DebuggerNonUserCodeAttribute]
@@ -1465,11 +1858,25 @@ namespace Google.Cloud.PubSub.V1 {
 
     [global::System.Diagnostics.DebuggerNonUserCodeAttribute]
     public void WriteTo(pb::CodedOutputStream output) {
+    #if !GOOGLE_PROTOBUF_REFSTRUCT_COMPATIBILITY_MODE
+      output.WriteRawMessage(this);
+    #else
       messageIds_.WriteTo(output, _repeated_messageIds_codec);
       if (_unknownFields != null) {
         _unknownFields.WriteTo(output);
       }
+    #endif
     }
+
+    #if !GOOGLE_PROTOBUF_REFSTRUCT_COMPATIBILITY_MODE
+    [global::System.Diagnostics.DebuggerNonUserCodeAttribute]
+    void pb::IBufferMessage.InternalWriteTo(ref pb::WriteContext output) {
+      messageIds_.WriteTo(ref output, _repeated_messageIds_codec);
+      if (_unknownFields != null) {
+        _unknownFields.WriteTo(ref output);
+      }
+    }
+    #endif
 
     [global::System.Diagnostics.DebuggerNonUserCodeAttribute]
     public int CalculateSize() {
@@ -1492,6 +1899,9 @@ namespace Google.Cloud.PubSub.V1 {
 
     [global::System.Diagnostics.DebuggerNonUserCodeAttribute]
     public void MergeFrom(pb::CodedInputStream input) {
+    #if !GOOGLE_PROTOBUF_REFSTRUCT_COMPATIBILITY_MODE
+      input.ReadRawMessage(this);
+    #else
       uint tag;
       while ((tag = input.ReadTag()) != 0) {
         switch(tag) {
@@ -1504,14 +1914,37 @@ namespace Google.Cloud.PubSub.V1 {
           }
         }
       }
+    #endif
     }
+
+    #if !GOOGLE_PROTOBUF_REFSTRUCT_COMPATIBILITY_MODE
+    [global::System.Diagnostics.DebuggerNonUserCodeAttribute]
+    void pb::IBufferMessage.InternalMergeFrom(ref pb::ParseContext input) {
+      uint tag;
+      while ((tag = input.ReadTag()) != 0) {
+        switch(tag) {
+          default:
+            _unknownFields = pb::UnknownFieldSet.MergeFieldFrom(_unknownFields, ref input);
+            break;
+          case 10: {
+            messageIds_.AddEntriesFrom(ref input, _repeated_messageIds_codec);
+            break;
+          }
+        }
+      }
+    }
+    #endif
 
   }
 
   /// <summary>
   /// Request for the `ListTopics` method.
   /// </summary>
-  public sealed partial class ListTopicsRequest : pb::IMessage<ListTopicsRequest> {
+  public sealed partial class ListTopicsRequest : pb::IMessage<ListTopicsRequest>
+  #if !GOOGLE_PROTOBUF_REFSTRUCT_COMPATIBILITY_MODE
+      , pb::IBufferMessage
+  #endif
+  {
     private static readonly pb::MessageParser<ListTopicsRequest> _parser = new pb::MessageParser<ListTopicsRequest>(() => new ListTopicsRequest());
     private pb::UnknownFieldSet _unknownFields;
     [global::System.Diagnostics.DebuggerNonUserCodeAttribute]
@@ -1551,7 +1984,7 @@ namespace Google.Cloud.PubSub.V1 {
     public const int ProjectFieldNumber = 1;
     private string project_ = "";
     /// <summary>
-    /// The name of the project in which to list topics.
+    /// Required. The name of the project in which to list topics.
     /// Format is `projects/{project-id}`.
     /// </summary>
     [global::System.Diagnostics.DebuggerNonUserCodeAttribute]
@@ -1630,6 +2063,9 @@ namespace Google.Cloud.PubSub.V1 {
 
     [global::System.Diagnostics.DebuggerNonUserCodeAttribute]
     public void WriteTo(pb::CodedOutputStream output) {
+    #if !GOOGLE_PROTOBUF_REFSTRUCT_COMPATIBILITY_MODE
+      output.WriteRawMessage(this);
+    #else
       if (Project.Length != 0) {
         output.WriteRawTag(10);
         output.WriteString(Project);
@@ -1645,7 +2081,29 @@ namespace Google.Cloud.PubSub.V1 {
       if (_unknownFields != null) {
         _unknownFields.WriteTo(output);
       }
+    #endif
     }
+
+    #if !GOOGLE_PROTOBUF_REFSTRUCT_COMPATIBILITY_MODE
+    [global::System.Diagnostics.DebuggerNonUserCodeAttribute]
+    void pb::IBufferMessage.InternalWriteTo(ref pb::WriteContext output) {
+      if (Project.Length != 0) {
+        output.WriteRawTag(10);
+        output.WriteString(Project);
+      }
+      if (PageSize != 0) {
+        output.WriteRawTag(16);
+        output.WriteInt32(PageSize);
+      }
+      if (PageToken.Length != 0) {
+        output.WriteRawTag(26);
+        output.WriteString(PageToken);
+      }
+      if (_unknownFields != null) {
+        _unknownFields.WriteTo(ref output);
+      }
+    }
+    #endif
 
     [global::System.Diagnostics.DebuggerNonUserCodeAttribute]
     public int CalculateSize() {
@@ -1684,6 +2142,9 @@ namespace Google.Cloud.PubSub.V1 {
 
     [global::System.Diagnostics.DebuggerNonUserCodeAttribute]
     public void MergeFrom(pb::CodedInputStream input) {
+    #if !GOOGLE_PROTOBUF_REFSTRUCT_COMPATIBILITY_MODE
+      input.ReadRawMessage(this);
+    #else
       uint tag;
       while ((tag = input.ReadTag()) != 0) {
         switch(tag) {
@@ -1704,14 +2165,45 @@ namespace Google.Cloud.PubSub.V1 {
           }
         }
       }
+    #endif
     }
+
+    #if !GOOGLE_PROTOBUF_REFSTRUCT_COMPATIBILITY_MODE
+    [global::System.Diagnostics.DebuggerNonUserCodeAttribute]
+    void pb::IBufferMessage.InternalMergeFrom(ref pb::ParseContext input) {
+      uint tag;
+      while ((tag = input.ReadTag()) != 0) {
+        switch(tag) {
+          default:
+            _unknownFields = pb::UnknownFieldSet.MergeFieldFrom(_unknownFields, ref input);
+            break;
+          case 10: {
+            Project = input.ReadString();
+            break;
+          }
+          case 16: {
+            PageSize = input.ReadInt32();
+            break;
+          }
+          case 26: {
+            PageToken = input.ReadString();
+            break;
+          }
+        }
+      }
+    }
+    #endif
 
   }
 
   /// <summary>
   /// Response for the `ListTopics` method.
   /// </summary>
-  public sealed partial class ListTopicsResponse : pb::IMessage<ListTopicsResponse> {
+  public sealed partial class ListTopicsResponse : pb::IMessage<ListTopicsResponse>
+  #if !GOOGLE_PROTOBUF_REFSTRUCT_COMPATIBILITY_MODE
+      , pb::IBufferMessage
+  #endif
+  {
     private static readonly pb::MessageParser<ListTopicsResponse> _parser = new pb::MessageParser<ListTopicsResponse>(() => new ListTopicsResponse());
     private pb::UnknownFieldSet _unknownFields;
     [global::System.Diagnostics.DebuggerNonUserCodeAttribute]
@@ -1810,6 +2302,9 @@ namespace Google.Cloud.PubSub.V1 {
 
     [global::System.Diagnostics.DebuggerNonUserCodeAttribute]
     public void WriteTo(pb::CodedOutputStream output) {
+    #if !GOOGLE_PROTOBUF_REFSTRUCT_COMPATIBILITY_MODE
+      output.WriteRawMessage(this);
+    #else
       topics_.WriteTo(output, _repeated_topics_codec);
       if (NextPageToken.Length != 0) {
         output.WriteRawTag(18);
@@ -1818,7 +2313,22 @@ namespace Google.Cloud.PubSub.V1 {
       if (_unknownFields != null) {
         _unknownFields.WriteTo(output);
       }
+    #endif
     }
+
+    #if !GOOGLE_PROTOBUF_REFSTRUCT_COMPATIBILITY_MODE
+    [global::System.Diagnostics.DebuggerNonUserCodeAttribute]
+    void pb::IBufferMessage.InternalWriteTo(ref pb::WriteContext output) {
+      topics_.WriteTo(ref output, _repeated_topics_codec);
+      if (NextPageToken.Length != 0) {
+        output.WriteRawTag(18);
+        output.WriteString(NextPageToken);
+      }
+      if (_unknownFields != null) {
+        _unknownFields.WriteTo(ref output);
+      }
+    }
+    #endif
 
     [global::System.Diagnostics.DebuggerNonUserCodeAttribute]
     public int CalculateSize() {
@@ -1847,6 +2357,9 @@ namespace Google.Cloud.PubSub.V1 {
 
     [global::System.Diagnostics.DebuggerNonUserCodeAttribute]
     public void MergeFrom(pb::CodedInputStream input) {
+    #if !GOOGLE_PROTOBUF_REFSTRUCT_COMPATIBILITY_MODE
+      input.ReadRawMessage(this);
+    #else
       uint tag;
       while ((tag = input.ReadTag()) != 0) {
         switch(tag) {
@@ -1863,14 +2376,41 @@ namespace Google.Cloud.PubSub.V1 {
           }
         }
       }
+    #endif
     }
+
+    #if !GOOGLE_PROTOBUF_REFSTRUCT_COMPATIBILITY_MODE
+    [global::System.Diagnostics.DebuggerNonUserCodeAttribute]
+    void pb::IBufferMessage.InternalMergeFrom(ref pb::ParseContext input) {
+      uint tag;
+      while ((tag = input.ReadTag()) != 0) {
+        switch(tag) {
+          default:
+            _unknownFields = pb::UnknownFieldSet.MergeFieldFrom(_unknownFields, ref input);
+            break;
+          case 10: {
+            topics_.AddEntriesFrom(ref input, _repeated_topics_codec);
+            break;
+          }
+          case 18: {
+            NextPageToken = input.ReadString();
+            break;
+          }
+        }
+      }
+    }
+    #endif
 
   }
 
   /// <summary>
   /// Request for the `ListTopicSubscriptions` method.
   /// </summary>
-  public sealed partial class ListTopicSubscriptionsRequest : pb::IMessage<ListTopicSubscriptionsRequest> {
+  public sealed partial class ListTopicSubscriptionsRequest : pb::IMessage<ListTopicSubscriptionsRequest>
+  #if !GOOGLE_PROTOBUF_REFSTRUCT_COMPATIBILITY_MODE
+      , pb::IBufferMessage
+  #endif
+  {
     private static readonly pb::MessageParser<ListTopicSubscriptionsRequest> _parser = new pb::MessageParser<ListTopicSubscriptionsRequest>(() => new ListTopicSubscriptionsRequest());
     private pb::UnknownFieldSet _unknownFields;
     [global::System.Diagnostics.DebuggerNonUserCodeAttribute]
@@ -1910,7 +2450,7 @@ namespace Google.Cloud.PubSub.V1 {
     public const int TopicFieldNumber = 1;
     private string topic_ = "";
     /// <summary>
-    /// The name of the topic that subscriptions are attached to.
+    /// Required. The name of the topic that subscriptions are attached to.
     /// Format is `projects/{project}/topics/{topic}`.
     /// </summary>
     [global::System.Diagnostics.DebuggerNonUserCodeAttribute]
@@ -1989,6 +2529,9 @@ namespace Google.Cloud.PubSub.V1 {
 
     [global::System.Diagnostics.DebuggerNonUserCodeAttribute]
     public void WriteTo(pb::CodedOutputStream output) {
+    #if !GOOGLE_PROTOBUF_REFSTRUCT_COMPATIBILITY_MODE
+      output.WriteRawMessage(this);
+    #else
       if (Topic.Length != 0) {
         output.WriteRawTag(10);
         output.WriteString(Topic);
@@ -2004,7 +2547,29 @@ namespace Google.Cloud.PubSub.V1 {
       if (_unknownFields != null) {
         _unknownFields.WriteTo(output);
       }
+    #endif
     }
+
+    #if !GOOGLE_PROTOBUF_REFSTRUCT_COMPATIBILITY_MODE
+    [global::System.Diagnostics.DebuggerNonUserCodeAttribute]
+    void pb::IBufferMessage.InternalWriteTo(ref pb::WriteContext output) {
+      if (Topic.Length != 0) {
+        output.WriteRawTag(10);
+        output.WriteString(Topic);
+      }
+      if (PageSize != 0) {
+        output.WriteRawTag(16);
+        output.WriteInt32(PageSize);
+      }
+      if (PageToken.Length != 0) {
+        output.WriteRawTag(26);
+        output.WriteString(PageToken);
+      }
+      if (_unknownFields != null) {
+        _unknownFields.WriteTo(ref output);
+      }
+    }
+    #endif
 
     [global::System.Diagnostics.DebuggerNonUserCodeAttribute]
     public int CalculateSize() {
@@ -2043,6 +2608,9 @@ namespace Google.Cloud.PubSub.V1 {
 
     [global::System.Diagnostics.DebuggerNonUserCodeAttribute]
     public void MergeFrom(pb::CodedInputStream input) {
+    #if !GOOGLE_PROTOBUF_REFSTRUCT_COMPATIBILITY_MODE
+      input.ReadRawMessage(this);
+    #else
       uint tag;
       while ((tag = input.ReadTag()) != 0) {
         switch(tag) {
@@ -2063,14 +2631,45 @@ namespace Google.Cloud.PubSub.V1 {
           }
         }
       }
+    #endif
     }
+
+    #if !GOOGLE_PROTOBUF_REFSTRUCT_COMPATIBILITY_MODE
+    [global::System.Diagnostics.DebuggerNonUserCodeAttribute]
+    void pb::IBufferMessage.InternalMergeFrom(ref pb::ParseContext input) {
+      uint tag;
+      while ((tag = input.ReadTag()) != 0) {
+        switch(tag) {
+          default:
+            _unknownFields = pb::UnknownFieldSet.MergeFieldFrom(_unknownFields, ref input);
+            break;
+          case 10: {
+            Topic = input.ReadString();
+            break;
+          }
+          case 16: {
+            PageSize = input.ReadInt32();
+            break;
+          }
+          case 26: {
+            PageToken = input.ReadString();
+            break;
+          }
+        }
+      }
+    }
+    #endif
 
   }
 
   /// <summary>
   /// Response for the `ListTopicSubscriptions` method.
   /// </summary>
-  public sealed partial class ListTopicSubscriptionsResponse : pb::IMessage<ListTopicSubscriptionsResponse> {
+  public sealed partial class ListTopicSubscriptionsResponse : pb::IMessage<ListTopicSubscriptionsResponse>
+  #if !GOOGLE_PROTOBUF_REFSTRUCT_COMPATIBILITY_MODE
+      , pb::IBufferMessage
+  #endif
+  {
     private static readonly pb::MessageParser<ListTopicSubscriptionsResponse> _parser = new pb::MessageParser<ListTopicSubscriptionsResponse>(() => new ListTopicSubscriptionsResponse());
     private pb::UnknownFieldSet _unknownFields;
     [global::System.Diagnostics.DebuggerNonUserCodeAttribute]
@@ -2111,7 +2710,7 @@ namespace Google.Cloud.PubSub.V1 {
         = pb::FieldCodec.ForString(10);
     private readonly pbc::RepeatedField<string> subscriptions_ = new pbc::RepeatedField<string>();
     /// <summary>
-    /// The names of the subscriptions that match the request.
+    /// The names of subscriptions attached to the topic specified in the request.
     /// </summary>
     [global::System.Diagnostics.DebuggerNonUserCodeAttribute]
     public pbc::RepeatedField<string> Subscriptions {
@@ -2170,6 +2769,9 @@ namespace Google.Cloud.PubSub.V1 {
 
     [global::System.Diagnostics.DebuggerNonUserCodeAttribute]
     public void WriteTo(pb::CodedOutputStream output) {
+    #if !GOOGLE_PROTOBUF_REFSTRUCT_COMPATIBILITY_MODE
+      output.WriteRawMessage(this);
+    #else
       subscriptions_.WriteTo(output, _repeated_subscriptions_codec);
       if (NextPageToken.Length != 0) {
         output.WriteRawTag(18);
@@ -2178,7 +2780,22 @@ namespace Google.Cloud.PubSub.V1 {
       if (_unknownFields != null) {
         _unknownFields.WriteTo(output);
       }
+    #endif
     }
+
+    #if !GOOGLE_PROTOBUF_REFSTRUCT_COMPATIBILITY_MODE
+    [global::System.Diagnostics.DebuggerNonUserCodeAttribute]
+    void pb::IBufferMessage.InternalWriteTo(ref pb::WriteContext output) {
+      subscriptions_.WriteTo(ref output, _repeated_subscriptions_codec);
+      if (NextPageToken.Length != 0) {
+        output.WriteRawTag(18);
+        output.WriteString(NextPageToken);
+      }
+      if (_unknownFields != null) {
+        _unknownFields.WriteTo(ref output);
+      }
+    }
+    #endif
 
     [global::System.Diagnostics.DebuggerNonUserCodeAttribute]
     public int CalculateSize() {
@@ -2207,6 +2824,9 @@ namespace Google.Cloud.PubSub.V1 {
 
     [global::System.Diagnostics.DebuggerNonUserCodeAttribute]
     public void MergeFrom(pb::CodedInputStream input) {
+    #if !GOOGLE_PROTOBUF_REFSTRUCT_COMPATIBILITY_MODE
+      input.ReadRawMessage(this);
+    #else
       uint tag;
       while ((tag = input.ReadTag()) != 0) {
         switch(tag) {
@@ -2223,14 +2843,41 @@ namespace Google.Cloud.PubSub.V1 {
           }
         }
       }
+    #endif
     }
+
+    #if !GOOGLE_PROTOBUF_REFSTRUCT_COMPATIBILITY_MODE
+    [global::System.Diagnostics.DebuggerNonUserCodeAttribute]
+    void pb::IBufferMessage.InternalMergeFrom(ref pb::ParseContext input) {
+      uint tag;
+      while ((tag = input.ReadTag()) != 0) {
+        switch(tag) {
+          default:
+            _unknownFields = pb::UnknownFieldSet.MergeFieldFrom(_unknownFields, ref input);
+            break;
+          case 10: {
+            subscriptions_.AddEntriesFrom(ref input, _repeated_subscriptions_codec);
+            break;
+          }
+          case 18: {
+            NextPageToken = input.ReadString();
+            break;
+          }
+        }
+      }
+    }
+    #endif
 
   }
 
   /// <summary>
   /// Request for the `ListTopicSnapshots` method.
   /// </summary>
-  public sealed partial class ListTopicSnapshotsRequest : pb::IMessage<ListTopicSnapshotsRequest> {
+  public sealed partial class ListTopicSnapshotsRequest : pb::IMessage<ListTopicSnapshotsRequest>
+  #if !GOOGLE_PROTOBUF_REFSTRUCT_COMPATIBILITY_MODE
+      , pb::IBufferMessage
+  #endif
+  {
     private static readonly pb::MessageParser<ListTopicSnapshotsRequest> _parser = new pb::MessageParser<ListTopicSnapshotsRequest>(() => new ListTopicSnapshotsRequest());
     private pb::UnknownFieldSet _unknownFields;
     [global::System.Diagnostics.DebuggerNonUserCodeAttribute]
@@ -2270,7 +2917,7 @@ namespace Google.Cloud.PubSub.V1 {
     public const int TopicFieldNumber = 1;
     private string topic_ = "";
     /// <summary>
-    /// The name of the topic that snapshots are attached to.
+    /// Required. The name of the topic that snapshots are attached to.
     /// Format is `projects/{project}/topics/{topic}`.
     /// </summary>
     [global::System.Diagnostics.DebuggerNonUserCodeAttribute]
@@ -2349,6 +2996,9 @@ namespace Google.Cloud.PubSub.V1 {
 
     [global::System.Diagnostics.DebuggerNonUserCodeAttribute]
     public void WriteTo(pb::CodedOutputStream output) {
+    #if !GOOGLE_PROTOBUF_REFSTRUCT_COMPATIBILITY_MODE
+      output.WriteRawMessage(this);
+    #else
       if (Topic.Length != 0) {
         output.WriteRawTag(10);
         output.WriteString(Topic);
@@ -2364,7 +3014,29 @@ namespace Google.Cloud.PubSub.V1 {
       if (_unknownFields != null) {
         _unknownFields.WriteTo(output);
       }
+    #endif
     }
+
+    #if !GOOGLE_PROTOBUF_REFSTRUCT_COMPATIBILITY_MODE
+    [global::System.Diagnostics.DebuggerNonUserCodeAttribute]
+    void pb::IBufferMessage.InternalWriteTo(ref pb::WriteContext output) {
+      if (Topic.Length != 0) {
+        output.WriteRawTag(10);
+        output.WriteString(Topic);
+      }
+      if (PageSize != 0) {
+        output.WriteRawTag(16);
+        output.WriteInt32(PageSize);
+      }
+      if (PageToken.Length != 0) {
+        output.WriteRawTag(26);
+        output.WriteString(PageToken);
+      }
+      if (_unknownFields != null) {
+        _unknownFields.WriteTo(ref output);
+      }
+    }
+    #endif
 
     [global::System.Diagnostics.DebuggerNonUserCodeAttribute]
     public int CalculateSize() {
@@ -2403,6 +3075,9 @@ namespace Google.Cloud.PubSub.V1 {
 
     [global::System.Diagnostics.DebuggerNonUserCodeAttribute]
     public void MergeFrom(pb::CodedInputStream input) {
+    #if !GOOGLE_PROTOBUF_REFSTRUCT_COMPATIBILITY_MODE
+      input.ReadRawMessage(this);
+    #else
       uint tag;
       while ((tag = input.ReadTag()) != 0) {
         switch(tag) {
@@ -2423,14 +3098,45 @@ namespace Google.Cloud.PubSub.V1 {
           }
         }
       }
+    #endif
     }
+
+    #if !GOOGLE_PROTOBUF_REFSTRUCT_COMPATIBILITY_MODE
+    [global::System.Diagnostics.DebuggerNonUserCodeAttribute]
+    void pb::IBufferMessage.InternalMergeFrom(ref pb::ParseContext input) {
+      uint tag;
+      while ((tag = input.ReadTag()) != 0) {
+        switch(tag) {
+          default:
+            _unknownFields = pb::UnknownFieldSet.MergeFieldFrom(_unknownFields, ref input);
+            break;
+          case 10: {
+            Topic = input.ReadString();
+            break;
+          }
+          case 16: {
+            PageSize = input.ReadInt32();
+            break;
+          }
+          case 26: {
+            PageToken = input.ReadString();
+            break;
+          }
+        }
+      }
+    }
+    #endif
 
   }
 
   /// <summary>
   /// Response for the `ListTopicSnapshots` method.
   /// </summary>
-  public sealed partial class ListTopicSnapshotsResponse : pb::IMessage<ListTopicSnapshotsResponse> {
+  public sealed partial class ListTopicSnapshotsResponse : pb::IMessage<ListTopicSnapshotsResponse>
+  #if !GOOGLE_PROTOBUF_REFSTRUCT_COMPATIBILITY_MODE
+      , pb::IBufferMessage
+  #endif
+  {
     private static readonly pb::MessageParser<ListTopicSnapshotsResponse> _parser = new pb::MessageParser<ListTopicSnapshotsResponse>(() => new ListTopicSnapshotsResponse());
     private pb::UnknownFieldSet _unknownFields;
     [global::System.Diagnostics.DebuggerNonUserCodeAttribute]
@@ -2530,6 +3236,9 @@ namespace Google.Cloud.PubSub.V1 {
 
     [global::System.Diagnostics.DebuggerNonUserCodeAttribute]
     public void WriteTo(pb::CodedOutputStream output) {
+    #if !GOOGLE_PROTOBUF_REFSTRUCT_COMPATIBILITY_MODE
+      output.WriteRawMessage(this);
+    #else
       snapshots_.WriteTo(output, _repeated_snapshots_codec);
       if (NextPageToken.Length != 0) {
         output.WriteRawTag(18);
@@ -2538,7 +3247,22 @@ namespace Google.Cloud.PubSub.V1 {
       if (_unknownFields != null) {
         _unknownFields.WriteTo(output);
       }
+    #endif
     }
+
+    #if !GOOGLE_PROTOBUF_REFSTRUCT_COMPATIBILITY_MODE
+    [global::System.Diagnostics.DebuggerNonUserCodeAttribute]
+    void pb::IBufferMessage.InternalWriteTo(ref pb::WriteContext output) {
+      snapshots_.WriteTo(ref output, _repeated_snapshots_codec);
+      if (NextPageToken.Length != 0) {
+        output.WriteRawTag(18);
+        output.WriteString(NextPageToken);
+      }
+      if (_unknownFields != null) {
+        _unknownFields.WriteTo(ref output);
+      }
+    }
+    #endif
 
     [global::System.Diagnostics.DebuggerNonUserCodeAttribute]
     public int CalculateSize() {
@@ -2567,6 +3291,9 @@ namespace Google.Cloud.PubSub.V1 {
 
     [global::System.Diagnostics.DebuggerNonUserCodeAttribute]
     public void MergeFrom(pb::CodedInputStream input) {
+    #if !GOOGLE_PROTOBUF_REFSTRUCT_COMPATIBILITY_MODE
+      input.ReadRawMessage(this);
+    #else
       uint tag;
       while ((tag = input.ReadTag()) != 0) {
         switch(tag) {
@@ -2583,14 +3310,41 @@ namespace Google.Cloud.PubSub.V1 {
           }
         }
       }
+    #endif
     }
+
+    #if !GOOGLE_PROTOBUF_REFSTRUCT_COMPATIBILITY_MODE
+    [global::System.Diagnostics.DebuggerNonUserCodeAttribute]
+    void pb::IBufferMessage.InternalMergeFrom(ref pb::ParseContext input) {
+      uint tag;
+      while ((tag = input.ReadTag()) != 0) {
+        switch(tag) {
+          default:
+            _unknownFields = pb::UnknownFieldSet.MergeFieldFrom(_unknownFields, ref input);
+            break;
+          case 10: {
+            snapshots_.AddEntriesFrom(ref input, _repeated_snapshots_codec);
+            break;
+          }
+          case 18: {
+            NextPageToken = input.ReadString();
+            break;
+          }
+        }
+      }
+    }
+    #endif
 
   }
 
   /// <summary>
   /// Request for the `DeleteTopic` method.
   /// </summary>
-  public sealed partial class DeleteTopicRequest : pb::IMessage<DeleteTopicRequest> {
+  public sealed partial class DeleteTopicRequest : pb::IMessage<DeleteTopicRequest>
+  #if !GOOGLE_PROTOBUF_REFSTRUCT_COMPATIBILITY_MODE
+      , pb::IBufferMessage
+  #endif
+  {
     private static readonly pb::MessageParser<DeleteTopicRequest> _parser = new pb::MessageParser<DeleteTopicRequest>(() => new DeleteTopicRequest());
     private pb::UnknownFieldSet _unknownFields;
     [global::System.Diagnostics.DebuggerNonUserCodeAttribute]
@@ -2628,7 +3382,7 @@ namespace Google.Cloud.PubSub.V1 {
     public const int TopicFieldNumber = 1;
     private string topic_ = "";
     /// <summary>
-    /// Name of the topic to delete.
+    /// Required. Name of the topic to delete.
     /// Format is `projects/{project}/topics/{topic}`.
     /// </summary>
     [global::System.Diagnostics.DebuggerNonUserCodeAttribute]
@@ -2673,6 +3427,9 @@ namespace Google.Cloud.PubSub.V1 {
 
     [global::System.Diagnostics.DebuggerNonUserCodeAttribute]
     public void WriteTo(pb::CodedOutputStream output) {
+    #if !GOOGLE_PROTOBUF_REFSTRUCT_COMPATIBILITY_MODE
+      output.WriteRawMessage(this);
+    #else
       if (Topic.Length != 0) {
         output.WriteRawTag(10);
         output.WriteString(Topic);
@@ -2680,7 +3437,21 @@ namespace Google.Cloud.PubSub.V1 {
       if (_unknownFields != null) {
         _unknownFields.WriteTo(output);
       }
+    #endif
     }
+
+    #if !GOOGLE_PROTOBUF_REFSTRUCT_COMPATIBILITY_MODE
+    [global::System.Diagnostics.DebuggerNonUserCodeAttribute]
+    void pb::IBufferMessage.InternalWriteTo(ref pb::WriteContext output) {
+      if (Topic.Length != 0) {
+        output.WriteRawTag(10);
+        output.WriteString(Topic);
+      }
+      if (_unknownFields != null) {
+        _unknownFields.WriteTo(ref output);
+      }
+    }
+    #endif
 
     [global::System.Diagnostics.DebuggerNonUserCodeAttribute]
     public int CalculateSize() {
@@ -2707,6 +3478,9 @@ namespace Google.Cloud.PubSub.V1 {
 
     [global::System.Diagnostics.DebuggerNonUserCodeAttribute]
     public void MergeFrom(pb::CodedInputStream input) {
+    #if !GOOGLE_PROTOBUF_REFSTRUCT_COMPATIBILITY_MODE
+      input.ReadRawMessage(this);
+    #else
       uint tag;
       while ((tag = input.ReadTag()) != 0) {
         switch(tag) {
@@ -2719,14 +3493,356 @@ namespace Google.Cloud.PubSub.V1 {
           }
         }
       }
+    #endif
     }
+
+    #if !GOOGLE_PROTOBUF_REFSTRUCT_COMPATIBILITY_MODE
+    [global::System.Diagnostics.DebuggerNonUserCodeAttribute]
+    void pb::IBufferMessage.InternalMergeFrom(ref pb::ParseContext input) {
+      uint tag;
+      while ((tag = input.ReadTag()) != 0) {
+        switch(tag) {
+          default:
+            _unknownFields = pb::UnknownFieldSet.MergeFieldFrom(_unknownFields, ref input);
+            break;
+          case 10: {
+            Topic = input.ReadString();
+            break;
+          }
+        }
+      }
+    }
+    #endif
+
+  }
+
+  /// <summary>
+  /// Request for the DetachSubscription method.
+  /// </summary>
+  public sealed partial class DetachSubscriptionRequest : pb::IMessage<DetachSubscriptionRequest>
+  #if !GOOGLE_PROTOBUF_REFSTRUCT_COMPATIBILITY_MODE
+      , pb::IBufferMessage
+  #endif
+  {
+    private static readonly pb::MessageParser<DetachSubscriptionRequest> _parser = new pb::MessageParser<DetachSubscriptionRequest>(() => new DetachSubscriptionRequest());
+    private pb::UnknownFieldSet _unknownFields;
+    [global::System.Diagnostics.DebuggerNonUserCodeAttribute]
+    public static pb::MessageParser<DetachSubscriptionRequest> Parser { get { return _parser; } }
+
+    [global::System.Diagnostics.DebuggerNonUserCodeAttribute]
+    public static pbr::MessageDescriptor Descriptor {
+      get { return global::Google.Cloud.PubSub.V1.PubsubReflection.Descriptor.MessageTypes[14]; }
+    }
+
+    [global::System.Diagnostics.DebuggerNonUserCodeAttribute]
+    pbr::MessageDescriptor pb::IMessage.Descriptor {
+      get { return Descriptor; }
+    }
+
+    [global::System.Diagnostics.DebuggerNonUserCodeAttribute]
+    public DetachSubscriptionRequest() {
+      OnConstruction();
+    }
+
+    partial void OnConstruction();
+
+    [global::System.Diagnostics.DebuggerNonUserCodeAttribute]
+    public DetachSubscriptionRequest(DetachSubscriptionRequest other) : this() {
+      subscription_ = other.subscription_;
+      _unknownFields = pb::UnknownFieldSet.Clone(other._unknownFields);
+    }
+
+    [global::System.Diagnostics.DebuggerNonUserCodeAttribute]
+    public DetachSubscriptionRequest Clone() {
+      return new DetachSubscriptionRequest(this);
+    }
+
+    /// <summary>Field number for the "subscription" field.</summary>
+    public const int SubscriptionFieldNumber = 1;
+    private string subscription_ = "";
+    /// <summary>
+    /// Required. The subscription to detach.
+    /// Format is `projects/{project}/subscriptions/{subscription}`.
+    /// </summary>
+    [global::System.Diagnostics.DebuggerNonUserCodeAttribute]
+    public string Subscription {
+      get { return subscription_; }
+      set {
+        subscription_ = pb::ProtoPreconditions.CheckNotNull(value, "value");
+      }
+    }
+
+    [global::System.Diagnostics.DebuggerNonUserCodeAttribute]
+    public override bool Equals(object other) {
+      return Equals(other as DetachSubscriptionRequest);
+    }
+
+    [global::System.Diagnostics.DebuggerNonUserCodeAttribute]
+    public bool Equals(DetachSubscriptionRequest other) {
+      if (ReferenceEquals(other, null)) {
+        return false;
+      }
+      if (ReferenceEquals(other, this)) {
+        return true;
+      }
+      if (Subscription != other.Subscription) return false;
+      return Equals(_unknownFields, other._unknownFields);
+    }
+
+    [global::System.Diagnostics.DebuggerNonUserCodeAttribute]
+    public override int GetHashCode() {
+      int hash = 1;
+      if (Subscription.Length != 0) hash ^= Subscription.GetHashCode();
+      if (_unknownFields != null) {
+        hash ^= _unknownFields.GetHashCode();
+      }
+      return hash;
+    }
+
+    [global::System.Diagnostics.DebuggerNonUserCodeAttribute]
+    public override string ToString() {
+      return pb::JsonFormatter.ToDiagnosticString(this);
+    }
+
+    [global::System.Diagnostics.DebuggerNonUserCodeAttribute]
+    public void WriteTo(pb::CodedOutputStream output) {
+    #if !GOOGLE_PROTOBUF_REFSTRUCT_COMPATIBILITY_MODE
+      output.WriteRawMessage(this);
+    #else
+      if (Subscription.Length != 0) {
+        output.WriteRawTag(10);
+        output.WriteString(Subscription);
+      }
+      if (_unknownFields != null) {
+        _unknownFields.WriteTo(output);
+      }
+    #endif
+    }
+
+    #if !GOOGLE_PROTOBUF_REFSTRUCT_COMPATIBILITY_MODE
+    [global::System.Diagnostics.DebuggerNonUserCodeAttribute]
+    void pb::IBufferMessage.InternalWriteTo(ref pb::WriteContext output) {
+      if (Subscription.Length != 0) {
+        output.WriteRawTag(10);
+        output.WriteString(Subscription);
+      }
+      if (_unknownFields != null) {
+        _unknownFields.WriteTo(ref output);
+      }
+    }
+    #endif
+
+    [global::System.Diagnostics.DebuggerNonUserCodeAttribute]
+    public int CalculateSize() {
+      int size = 0;
+      if (Subscription.Length != 0) {
+        size += 1 + pb::CodedOutputStream.ComputeStringSize(Subscription);
+      }
+      if (_unknownFields != null) {
+        size += _unknownFields.CalculateSize();
+      }
+      return size;
+    }
+
+    [global::System.Diagnostics.DebuggerNonUserCodeAttribute]
+    public void MergeFrom(DetachSubscriptionRequest other) {
+      if (other == null) {
+        return;
+      }
+      if (other.Subscription.Length != 0) {
+        Subscription = other.Subscription;
+      }
+      _unknownFields = pb::UnknownFieldSet.MergeFrom(_unknownFields, other._unknownFields);
+    }
+
+    [global::System.Diagnostics.DebuggerNonUserCodeAttribute]
+    public void MergeFrom(pb::CodedInputStream input) {
+    #if !GOOGLE_PROTOBUF_REFSTRUCT_COMPATIBILITY_MODE
+      input.ReadRawMessage(this);
+    #else
+      uint tag;
+      while ((tag = input.ReadTag()) != 0) {
+        switch(tag) {
+          default:
+            _unknownFields = pb::UnknownFieldSet.MergeFieldFrom(_unknownFields, input);
+            break;
+          case 10: {
+            Subscription = input.ReadString();
+            break;
+          }
+        }
+      }
+    #endif
+    }
+
+    #if !GOOGLE_PROTOBUF_REFSTRUCT_COMPATIBILITY_MODE
+    [global::System.Diagnostics.DebuggerNonUserCodeAttribute]
+    void pb::IBufferMessage.InternalMergeFrom(ref pb::ParseContext input) {
+      uint tag;
+      while ((tag = input.ReadTag()) != 0) {
+        switch(tag) {
+          default:
+            _unknownFields = pb::UnknownFieldSet.MergeFieldFrom(_unknownFields, ref input);
+            break;
+          case 10: {
+            Subscription = input.ReadString();
+            break;
+          }
+        }
+      }
+    }
+    #endif
+
+  }
+
+  /// <summary>
+  /// Response for the DetachSubscription method.
+  /// Reserved for future use.
+  /// </summary>
+  public sealed partial class DetachSubscriptionResponse : pb::IMessage<DetachSubscriptionResponse>
+  #if !GOOGLE_PROTOBUF_REFSTRUCT_COMPATIBILITY_MODE
+      , pb::IBufferMessage
+  #endif
+  {
+    private static readonly pb::MessageParser<DetachSubscriptionResponse> _parser = new pb::MessageParser<DetachSubscriptionResponse>(() => new DetachSubscriptionResponse());
+    private pb::UnknownFieldSet _unknownFields;
+    [global::System.Diagnostics.DebuggerNonUserCodeAttribute]
+    public static pb::MessageParser<DetachSubscriptionResponse> Parser { get { return _parser; } }
+
+    [global::System.Diagnostics.DebuggerNonUserCodeAttribute]
+    public static pbr::MessageDescriptor Descriptor {
+      get { return global::Google.Cloud.PubSub.V1.PubsubReflection.Descriptor.MessageTypes[15]; }
+    }
+
+    [global::System.Diagnostics.DebuggerNonUserCodeAttribute]
+    pbr::MessageDescriptor pb::IMessage.Descriptor {
+      get { return Descriptor; }
+    }
+
+    [global::System.Diagnostics.DebuggerNonUserCodeAttribute]
+    public DetachSubscriptionResponse() {
+      OnConstruction();
+    }
+
+    partial void OnConstruction();
+
+    [global::System.Diagnostics.DebuggerNonUserCodeAttribute]
+    public DetachSubscriptionResponse(DetachSubscriptionResponse other) : this() {
+      _unknownFields = pb::UnknownFieldSet.Clone(other._unknownFields);
+    }
+
+    [global::System.Diagnostics.DebuggerNonUserCodeAttribute]
+    public DetachSubscriptionResponse Clone() {
+      return new DetachSubscriptionResponse(this);
+    }
+
+    [global::System.Diagnostics.DebuggerNonUserCodeAttribute]
+    public override bool Equals(object other) {
+      return Equals(other as DetachSubscriptionResponse);
+    }
+
+    [global::System.Diagnostics.DebuggerNonUserCodeAttribute]
+    public bool Equals(DetachSubscriptionResponse other) {
+      if (ReferenceEquals(other, null)) {
+        return false;
+      }
+      if (ReferenceEquals(other, this)) {
+        return true;
+      }
+      return Equals(_unknownFields, other._unknownFields);
+    }
+
+    [global::System.Diagnostics.DebuggerNonUserCodeAttribute]
+    public override int GetHashCode() {
+      int hash = 1;
+      if (_unknownFields != null) {
+        hash ^= _unknownFields.GetHashCode();
+      }
+      return hash;
+    }
+
+    [global::System.Diagnostics.DebuggerNonUserCodeAttribute]
+    public override string ToString() {
+      return pb::JsonFormatter.ToDiagnosticString(this);
+    }
+
+    [global::System.Diagnostics.DebuggerNonUserCodeAttribute]
+    public void WriteTo(pb::CodedOutputStream output) {
+    #if !GOOGLE_PROTOBUF_REFSTRUCT_COMPATIBILITY_MODE
+      output.WriteRawMessage(this);
+    #else
+      if (_unknownFields != null) {
+        _unknownFields.WriteTo(output);
+      }
+    #endif
+    }
+
+    #if !GOOGLE_PROTOBUF_REFSTRUCT_COMPATIBILITY_MODE
+    [global::System.Diagnostics.DebuggerNonUserCodeAttribute]
+    void pb::IBufferMessage.InternalWriteTo(ref pb::WriteContext output) {
+      if (_unknownFields != null) {
+        _unknownFields.WriteTo(ref output);
+      }
+    }
+    #endif
+
+    [global::System.Diagnostics.DebuggerNonUserCodeAttribute]
+    public int CalculateSize() {
+      int size = 0;
+      if (_unknownFields != null) {
+        size += _unknownFields.CalculateSize();
+      }
+      return size;
+    }
+
+    [global::System.Diagnostics.DebuggerNonUserCodeAttribute]
+    public void MergeFrom(DetachSubscriptionResponse other) {
+      if (other == null) {
+        return;
+      }
+      _unknownFields = pb::UnknownFieldSet.MergeFrom(_unknownFields, other._unknownFields);
+    }
+
+    [global::System.Diagnostics.DebuggerNonUserCodeAttribute]
+    public void MergeFrom(pb::CodedInputStream input) {
+    #if !GOOGLE_PROTOBUF_REFSTRUCT_COMPATIBILITY_MODE
+      input.ReadRawMessage(this);
+    #else
+      uint tag;
+      while ((tag = input.ReadTag()) != 0) {
+        switch(tag) {
+          default:
+            _unknownFields = pb::UnknownFieldSet.MergeFieldFrom(_unknownFields, input);
+            break;
+        }
+      }
+    #endif
+    }
+
+    #if !GOOGLE_PROTOBUF_REFSTRUCT_COMPATIBILITY_MODE
+    [global::System.Diagnostics.DebuggerNonUserCodeAttribute]
+    void pb::IBufferMessage.InternalMergeFrom(ref pb::ParseContext input) {
+      uint tag;
+      while ((tag = input.ReadTag()) != 0) {
+        switch(tag) {
+          default:
+            _unknownFields = pb::UnknownFieldSet.MergeFieldFrom(_unknownFields, ref input);
+            break;
+        }
+      }
+    }
+    #endif
 
   }
 
   /// <summary>
   /// A subscription resource.
   /// </summary>
-  public sealed partial class Subscription : pb::IMessage<Subscription> {
+  public sealed partial class Subscription : pb::IMessage<Subscription>
+  #if !GOOGLE_PROTOBUF_REFSTRUCT_COMPATIBILITY_MODE
+      , pb::IBufferMessage
+  #endif
+  {
     private static readonly pb::MessageParser<Subscription> _parser = new pb::MessageParser<Subscription>(() => new Subscription());
     private pb::UnknownFieldSet _unknownFields;
     [global::System.Diagnostics.DebuggerNonUserCodeAttribute]
@@ -2734,7 +3850,7 @@ namespace Google.Cloud.PubSub.V1 {
 
     [global::System.Diagnostics.DebuggerNonUserCodeAttribute]
     public static pbr::MessageDescriptor Descriptor {
-      get { return global::Google.Cloud.PubSub.V1.PubsubReflection.Descriptor.MessageTypes[14]; }
+      get { return global::Google.Cloud.PubSub.V1.PubsubReflection.Descriptor.MessageTypes[16]; }
     }
 
     [global::System.Diagnostics.DebuggerNonUserCodeAttribute]
@@ -2760,7 +3876,10 @@ namespace Google.Cloud.PubSub.V1 {
       labels_ = other.labels_.Clone();
       enableMessageOrdering_ = other.enableMessageOrdering_;
       expirationPolicy_ = other.expirationPolicy_ != null ? other.expirationPolicy_.Clone() : null;
+      filter_ = other.filter_;
       deadLetterPolicy_ = other.deadLetterPolicy_ != null ? other.deadLetterPolicy_.Clone() : null;
+      retryPolicy_ = other.retryPolicy_ != null ? other.retryPolicy_.Clone() : null;
+      detached_ = other.detached_;
       _unknownFields = pb::UnknownFieldSet.Clone(other._unknownFields);
     }
 
@@ -2773,7 +3892,7 @@ namespace Google.Cloud.PubSub.V1 {
     public const int NameFieldNumber = 1;
     private string name_ = "";
     /// <summary>
-    /// The name of the subscription. It must have the format
+    /// Required. The name of the subscription. It must have the format
     /// `"projects/{project}/subscriptions/{subscription}"`. `{subscription}` must
     /// start with a letter, and contain only letters (`[A-Za-z]`), numbers
     /// (`[0-9]`), dashes (`-`), underscores (`_`), periods (`.`), tildes (`~`),
@@ -2792,10 +3911,9 @@ namespace Google.Cloud.PubSub.V1 {
     public const int TopicFieldNumber = 2;
     private string topic_ = "";
     /// <summary>
-    /// The name of the topic from which this subscription is receiving messages.
-    /// Format is `projects/{project}/topics/{topic}`.
-    /// The value of this field will be `_deleted-topic_` if the topic has been
-    /// deleted.
+    /// Required. The name of the topic from which this subscription is receiving
+    /// messages. Format is `projects/{project}/topics/{topic}`. The value of this
+    /// field will be `_deleted-topic_` if the topic has been deleted.
     /// </summary>
     [global::System.Diagnostics.DebuggerNonUserCodeAttribute]
     public string Topic {
@@ -2861,10 +3979,8 @@ namespace Google.Cloud.PubSub.V1 {
     /// Indicates whether to retain acknowledged messages. If true, then
     /// messages are not expunged from the subscription's backlog, even if they are
     /// acknowledged, until they fall out of the `message_retention_duration`
-    /// window. This must be true if you would like to
-    /// &lt;a
-    /// href="https://cloud.google.com/pubsub/docs/replay-overview#seek_to_a_time">
-    /// Seek to a timestamp&lt;/a>.
+    /// window. This must be true if you would like to [Seek to a timestamp]
+    /// (https://cloud.google.com/pubsub/docs/replay-overview#seek_to_a_time).
     /// </summary>
     [global::System.Diagnostics.DebuggerNonUserCodeAttribute]
     public bool RetainAckedMessages {
@@ -2896,7 +4012,7 @@ namespace Google.Cloud.PubSub.V1 {
     /// <summary>Field number for the "labels" field.</summary>
     public const int LabelsFieldNumber = 9;
     private static readonly pbc::MapField<string, string>.Codec _map_labels_codec
-        = new pbc::MapField<string, string>.Codec(pb::FieldCodec.ForString(10), pb::FieldCodec.ForString(18), 74);
+        = new pbc::MapField<string, string>.Codec(pb::FieldCodec.ForString(10, ""), pb::FieldCodec.ForString(18, ""), 74);
     private readonly pbc::MapField<string, string> labels_ = new pbc::MapField<string, string>();
     /// <summary>
     /// See &lt;a href="https://cloud.google.com/pubsub/docs/labels"> Creating and
@@ -2915,9 +4031,6 @@ namespace Google.Cloud.PubSub.V1 {
     /// will be delivered to the subscribers in the order in which they
     /// are received by the Pub/Sub system. Otherwise, they may be delivered in
     /// any order.
-    /// &lt;b>EXPERIMENTAL:&lt;/b> This feature is part of a closed alpha release. This
-    /// API might be changed in backward-incompatible ways and is not recommended
-    /// for production use. It is not subject to any SLA or deprecation policy.
     /// </summary>
     [global::System.Diagnostics.DebuggerNonUserCodeAttribute]
     public bool EnableMessageOrdering {
@@ -2946,6 +4059,24 @@ namespace Google.Cloud.PubSub.V1 {
       }
     }
 
+    /// <summary>Field number for the "filter" field.</summary>
+    public const int FilterFieldNumber = 12;
+    private string filter_ = "";
+    /// <summary>
+    /// An expression written in the Pub/Sub [filter
+    /// language](https://cloud.google.com/pubsub/docs/filtering). If non-empty,
+    /// then only `PubsubMessage`s whose `attributes` field matches the filter are
+    /// delivered on this subscription. If empty, then no messages are filtered
+    /// out.
+    /// </summary>
+    [global::System.Diagnostics.DebuggerNonUserCodeAttribute]
+    public string Filter {
+      get { return filter_; }
+      set {
+        filter_ = pb::ProtoPreconditions.CheckNotNull(value, "value");
+      }
+    }
+
     /// <summary>Field number for the "dead_letter_policy" field.</summary>
     public const int DeadLetterPolicyFieldNumber = 13;
     private global::Google.Cloud.PubSub.V1.DeadLetterPolicy deadLetterPolicy_;
@@ -2958,15 +4089,50 @@ namespace Google.Cloud.PubSub.V1 {
     /// parent project (i.e.,
     /// service-{project_number}@gcp-sa-pubsub.iam.gserviceaccount.com) must have
     /// permission to Acknowledge() messages on this subscription.
-    /// &lt;b>EXPERIMENTAL:&lt;/b> This feature is part of a closed alpha release. This
-    /// API might be changed in backward-incompatible ways and is not recommended
-    /// for production use. It is not subject to any SLA or deprecation policy.
     /// </summary>
     [global::System.Diagnostics.DebuggerNonUserCodeAttribute]
     public global::Google.Cloud.PubSub.V1.DeadLetterPolicy DeadLetterPolicy {
       get { return deadLetterPolicy_; }
       set {
         deadLetterPolicy_ = value;
+      }
+    }
+
+    /// <summary>Field number for the "retry_policy" field.</summary>
+    public const int RetryPolicyFieldNumber = 14;
+    private global::Google.Cloud.PubSub.V1.RetryPolicy retryPolicy_;
+    /// <summary>
+    /// A policy that specifies how Pub/Sub retries message delivery for this
+    /// subscription.
+    ///
+    /// If not set, the default retry policy is applied. This generally implies
+    /// that messages will be retried as soon as possible for healthy subscribers.
+    /// RetryPolicy will be triggered on NACKs or acknowledgement deadline
+    /// exceeded events for a given message.
+    /// </summary>
+    [global::System.Diagnostics.DebuggerNonUserCodeAttribute]
+    public global::Google.Cloud.PubSub.V1.RetryPolicy RetryPolicy {
+      get { return retryPolicy_; }
+      set {
+        retryPolicy_ = value;
+      }
+    }
+
+    /// <summary>Field number for the "detached" field.</summary>
+    public const int DetachedFieldNumber = 15;
+    private bool detached_;
+    /// <summary>
+    /// Indicates whether the subscription is detached from its topic. Detached
+    /// subscriptions don't receive messages from their topic and don't retain any
+    /// backlog. `Pull` and `StreamingPull` requests will return
+    /// FAILED_PRECONDITION. If the subscription is a push subscription, pushes to
+    /// the endpoint will not be made.
+    /// </summary>
+    [global::System.Diagnostics.DebuggerNonUserCodeAttribute]
+    public bool Detached {
+      get { return detached_; }
+      set {
+        detached_ = value;
       }
     }
 
@@ -2992,7 +4158,10 @@ namespace Google.Cloud.PubSub.V1 {
       if (!Labels.Equals(other.Labels)) return false;
       if (EnableMessageOrdering != other.EnableMessageOrdering) return false;
       if (!object.Equals(ExpirationPolicy, other.ExpirationPolicy)) return false;
+      if (Filter != other.Filter) return false;
       if (!object.Equals(DeadLetterPolicy, other.DeadLetterPolicy)) return false;
+      if (!object.Equals(RetryPolicy, other.RetryPolicy)) return false;
+      if (Detached != other.Detached) return false;
       return Equals(_unknownFields, other._unknownFields);
     }
 
@@ -3008,7 +4177,10 @@ namespace Google.Cloud.PubSub.V1 {
       hash ^= Labels.GetHashCode();
       if (EnableMessageOrdering != false) hash ^= EnableMessageOrdering.GetHashCode();
       if (expirationPolicy_ != null) hash ^= ExpirationPolicy.GetHashCode();
+      if (Filter.Length != 0) hash ^= Filter.GetHashCode();
       if (deadLetterPolicy_ != null) hash ^= DeadLetterPolicy.GetHashCode();
+      if (retryPolicy_ != null) hash ^= RetryPolicy.GetHashCode();
+      if (Detached != false) hash ^= Detached.GetHashCode();
       if (_unknownFields != null) {
         hash ^= _unknownFields.GetHashCode();
       }
@@ -3022,6 +4194,9 @@ namespace Google.Cloud.PubSub.V1 {
 
     [global::System.Diagnostics.DebuggerNonUserCodeAttribute]
     public void WriteTo(pb::CodedOutputStream output) {
+    #if !GOOGLE_PROTOBUF_REFSTRUCT_COMPATIBILITY_MODE
+      output.WriteRawMessage(this);
+    #else
       if (Name.Length != 0) {
         output.WriteRawTag(10);
         output.WriteString(Name);
@@ -3055,14 +4230,85 @@ namespace Google.Cloud.PubSub.V1 {
         output.WriteRawTag(90);
         output.WriteMessage(ExpirationPolicy);
       }
+      if (Filter.Length != 0) {
+        output.WriteRawTag(98);
+        output.WriteString(Filter);
+      }
       if (deadLetterPolicy_ != null) {
         output.WriteRawTag(106);
         output.WriteMessage(DeadLetterPolicy);
       }
+      if (retryPolicy_ != null) {
+        output.WriteRawTag(114);
+        output.WriteMessage(RetryPolicy);
+      }
+      if (Detached != false) {
+        output.WriteRawTag(120);
+        output.WriteBool(Detached);
+      }
       if (_unknownFields != null) {
         _unknownFields.WriteTo(output);
       }
+    #endif
     }
+
+    #if !GOOGLE_PROTOBUF_REFSTRUCT_COMPATIBILITY_MODE
+    [global::System.Diagnostics.DebuggerNonUserCodeAttribute]
+    void pb::IBufferMessage.InternalWriteTo(ref pb::WriteContext output) {
+      if (Name.Length != 0) {
+        output.WriteRawTag(10);
+        output.WriteString(Name);
+      }
+      if (Topic.Length != 0) {
+        output.WriteRawTag(18);
+        output.WriteString(Topic);
+      }
+      if (pushConfig_ != null) {
+        output.WriteRawTag(34);
+        output.WriteMessage(PushConfig);
+      }
+      if (AckDeadlineSeconds != 0) {
+        output.WriteRawTag(40);
+        output.WriteInt32(AckDeadlineSeconds);
+      }
+      if (RetainAckedMessages != false) {
+        output.WriteRawTag(56);
+        output.WriteBool(RetainAckedMessages);
+      }
+      if (messageRetentionDuration_ != null) {
+        output.WriteRawTag(66);
+        output.WriteMessage(MessageRetentionDuration);
+      }
+      labels_.WriteTo(ref output, _map_labels_codec);
+      if (EnableMessageOrdering != false) {
+        output.WriteRawTag(80);
+        output.WriteBool(EnableMessageOrdering);
+      }
+      if (expirationPolicy_ != null) {
+        output.WriteRawTag(90);
+        output.WriteMessage(ExpirationPolicy);
+      }
+      if (Filter.Length != 0) {
+        output.WriteRawTag(98);
+        output.WriteString(Filter);
+      }
+      if (deadLetterPolicy_ != null) {
+        output.WriteRawTag(106);
+        output.WriteMessage(DeadLetterPolicy);
+      }
+      if (retryPolicy_ != null) {
+        output.WriteRawTag(114);
+        output.WriteMessage(RetryPolicy);
+      }
+      if (Detached != false) {
+        output.WriteRawTag(120);
+        output.WriteBool(Detached);
+      }
+      if (_unknownFields != null) {
+        _unknownFields.WriteTo(ref output);
+      }
+    }
+    #endif
 
     [global::System.Diagnostics.DebuggerNonUserCodeAttribute]
     public int CalculateSize() {
@@ -3092,8 +4338,17 @@ namespace Google.Cloud.PubSub.V1 {
       if (expirationPolicy_ != null) {
         size += 1 + pb::CodedOutputStream.ComputeMessageSize(ExpirationPolicy);
       }
+      if (Filter.Length != 0) {
+        size += 1 + pb::CodedOutputStream.ComputeStringSize(Filter);
+      }
       if (deadLetterPolicy_ != null) {
         size += 1 + pb::CodedOutputStream.ComputeMessageSize(DeadLetterPolicy);
+      }
+      if (retryPolicy_ != null) {
+        size += 1 + pb::CodedOutputStream.ComputeMessageSize(RetryPolicy);
+      }
+      if (Detached != false) {
+        size += 1 + 1;
       }
       if (_unknownFields != null) {
         size += _unknownFields.CalculateSize();
@@ -3140,17 +4395,32 @@ namespace Google.Cloud.PubSub.V1 {
         }
         ExpirationPolicy.MergeFrom(other.ExpirationPolicy);
       }
+      if (other.Filter.Length != 0) {
+        Filter = other.Filter;
+      }
       if (other.deadLetterPolicy_ != null) {
         if (deadLetterPolicy_ == null) {
           DeadLetterPolicy = new global::Google.Cloud.PubSub.V1.DeadLetterPolicy();
         }
         DeadLetterPolicy.MergeFrom(other.DeadLetterPolicy);
       }
+      if (other.retryPolicy_ != null) {
+        if (retryPolicy_ == null) {
+          RetryPolicy = new global::Google.Cloud.PubSub.V1.RetryPolicy();
+        }
+        RetryPolicy.MergeFrom(other.RetryPolicy);
+      }
+      if (other.Detached != false) {
+        Detached = other.Detached;
+      }
       _unknownFields = pb::UnknownFieldSet.MergeFrom(_unknownFields, other._unknownFields);
     }
 
     [global::System.Diagnostics.DebuggerNonUserCodeAttribute]
     public void MergeFrom(pb::CodedInputStream input) {
+    #if !GOOGLE_PROTOBUF_REFSTRUCT_COMPATIBILITY_MODE
+      input.ReadRawMessage(this);
+    #else
       uint tag;
       while ((tag = input.ReadTag()) != 0) {
         switch(tag) {
@@ -3202,6 +4472,10 @@ namespace Google.Cloud.PubSub.V1 {
             input.ReadMessage(ExpirationPolicy);
             break;
           }
+          case 98: {
+            Filter = input.ReadString();
+            break;
+          }
           case 106: {
             if (deadLetterPolicy_ == null) {
               DeadLetterPolicy = new global::Google.Cloud.PubSub.V1.DeadLetterPolicy();
@@ -3209,9 +4483,349 @@ namespace Google.Cloud.PubSub.V1 {
             input.ReadMessage(DeadLetterPolicy);
             break;
           }
+          case 114: {
+            if (retryPolicy_ == null) {
+              RetryPolicy = new global::Google.Cloud.PubSub.V1.RetryPolicy();
+            }
+            input.ReadMessage(RetryPolicy);
+            break;
+          }
+          case 120: {
+            Detached = input.ReadBool();
+            break;
+          }
+        }
+      }
+    #endif
+    }
+
+    #if !GOOGLE_PROTOBUF_REFSTRUCT_COMPATIBILITY_MODE
+    [global::System.Diagnostics.DebuggerNonUserCodeAttribute]
+    void pb::IBufferMessage.InternalMergeFrom(ref pb::ParseContext input) {
+      uint tag;
+      while ((tag = input.ReadTag()) != 0) {
+        switch(tag) {
+          default:
+            _unknownFields = pb::UnknownFieldSet.MergeFieldFrom(_unknownFields, ref input);
+            break;
+          case 10: {
+            Name = input.ReadString();
+            break;
+          }
+          case 18: {
+            Topic = input.ReadString();
+            break;
+          }
+          case 34: {
+            if (pushConfig_ == null) {
+              PushConfig = new global::Google.Cloud.PubSub.V1.PushConfig();
+            }
+            input.ReadMessage(PushConfig);
+            break;
+          }
+          case 40: {
+            AckDeadlineSeconds = input.ReadInt32();
+            break;
+          }
+          case 56: {
+            RetainAckedMessages = input.ReadBool();
+            break;
+          }
+          case 66: {
+            if (messageRetentionDuration_ == null) {
+              MessageRetentionDuration = new global::Google.Protobuf.WellKnownTypes.Duration();
+            }
+            input.ReadMessage(MessageRetentionDuration);
+            break;
+          }
+          case 74: {
+            labels_.AddEntriesFrom(ref input, _map_labels_codec);
+            break;
+          }
+          case 80: {
+            EnableMessageOrdering = input.ReadBool();
+            break;
+          }
+          case 90: {
+            if (expirationPolicy_ == null) {
+              ExpirationPolicy = new global::Google.Cloud.PubSub.V1.ExpirationPolicy();
+            }
+            input.ReadMessage(ExpirationPolicy);
+            break;
+          }
+          case 98: {
+            Filter = input.ReadString();
+            break;
+          }
+          case 106: {
+            if (deadLetterPolicy_ == null) {
+              DeadLetterPolicy = new global::Google.Cloud.PubSub.V1.DeadLetterPolicy();
+            }
+            input.ReadMessage(DeadLetterPolicy);
+            break;
+          }
+          case 114: {
+            if (retryPolicy_ == null) {
+              RetryPolicy = new global::Google.Cloud.PubSub.V1.RetryPolicy();
+            }
+            input.ReadMessage(RetryPolicy);
+            break;
+          }
+          case 120: {
+            Detached = input.ReadBool();
+            break;
+          }
         }
       }
     }
+    #endif
+
+  }
+
+  /// <summary>
+  /// A policy that specifies how Cloud Pub/Sub retries message delivery.
+  ///
+  /// Retry delay will be exponential based on provided minimum and maximum
+  /// backoffs. https://en.wikipedia.org/wiki/Exponential_backoff.
+  ///
+  /// RetryPolicy will be triggered on NACKs or acknowledgement deadline exceeded
+  /// events for a given message.
+  ///
+  /// Retry Policy is implemented on a best effort basis. At times, the delay
+  /// between consecutive deliveries may not match the configuration. That is,
+  /// delay can be more or less than configured backoff.
+  /// </summary>
+  public sealed partial class RetryPolicy : pb::IMessage<RetryPolicy>
+  #if !GOOGLE_PROTOBUF_REFSTRUCT_COMPATIBILITY_MODE
+      , pb::IBufferMessage
+  #endif
+  {
+    private static readonly pb::MessageParser<RetryPolicy> _parser = new pb::MessageParser<RetryPolicy>(() => new RetryPolicy());
+    private pb::UnknownFieldSet _unknownFields;
+    [global::System.Diagnostics.DebuggerNonUserCodeAttribute]
+    public static pb::MessageParser<RetryPolicy> Parser { get { return _parser; } }
+
+    [global::System.Diagnostics.DebuggerNonUserCodeAttribute]
+    public static pbr::MessageDescriptor Descriptor {
+      get { return global::Google.Cloud.PubSub.V1.PubsubReflection.Descriptor.MessageTypes[17]; }
+    }
+
+    [global::System.Diagnostics.DebuggerNonUserCodeAttribute]
+    pbr::MessageDescriptor pb::IMessage.Descriptor {
+      get { return Descriptor; }
+    }
+
+    [global::System.Diagnostics.DebuggerNonUserCodeAttribute]
+    public RetryPolicy() {
+      OnConstruction();
+    }
+
+    partial void OnConstruction();
+
+    [global::System.Diagnostics.DebuggerNonUserCodeAttribute]
+    public RetryPolicy(RetryPolicy other) : this() {
+      minimumBackoff_ = other.minimumBackoff_ != null ? other.minimumBackoff_.Clone() : null;
+      maximumBackoff_ = other.maximumBackoff_ != null ? other.maximumBackoff_.Clone() : null;
+      _unknownFields = pb::UnknownFieldSet.Clone(other._unknownFields);
+    }
+
+    [global::System.Diagnostics.DebuggerNonUserCodeAttribute]
+    public RetryPolicy Clone() {
+      return new RetryPolicy(this);
+    }
+
+    /// <summary>Field number for the "minimum_backoff" field.</summary>
+    public const int MinimumBackoffFieldNumber = 1;
+    private global::Google.Protobuf.WellKnownTypes.Duration minimumBackoff_;
+    /// <summary>
+    /// The minimum delay between consecutive deliveries of a given message.
+    /// Value should be between 0 and 600 seconds. Defaults to 10 seconds.
+    /// </summary>
+    [global::System.Diagnostics.DebuggerNonUserCodeAttribute]
+    public global::Google.Protobuf.WellKnownTypes.Duration MinimumBackoff {
+      get { return minimumBackoff_; }
+      set {
+        minimumBackoff_ = value;
+      }
+    }
+
+    /// <summary>Field number for the "maximum_backoff" field.</summary>
+    public const int MaximumBackoffFieldNumber = 2;
+    private global::Google.Protobuf.WellKnownTypes.Duration maximumBackoff_;
+    /// <summary>
+    /// The maximum delay between consecutive deliveries of a given message.
+    /// Value should be between 0 and 600 seconds. Defaults to 600 seconds.
+    /// </summary>
+    [global::System.Diagnostics.DebuggerNonUserCodeAttribute]
+    public global::Google.Protobuf.WellKnownTypes.Duration MaximumBackoff {
+      get { return maximumBackoff_; }
+      set {
+        maximumBackoff_ = value;
+      }
+    }
+
+    [global::System.Diagnostics.DebuggerNonUserCodeAttribute]
+    public override bool Equals(object other) {
+      return Equals(other as RetryPolicy);
+    }
+
+    [global::System.Diagnostics.DebuggerNonUserCodeAttribute]
+    public bool Equals(RetryPolicy other) {
+      if (ReferenceEquals(other, null)) {
+        return false;
+      }
+      if (ReferenceEquals(other, this)) {
+        return true;
+      }
+      if (!object.Equals(MinimumBackoff, other.MinimumBackoff)) return false;
+      if (!object.Equals(MaximumBackoff, other.MaximumBackoff)) return false;
+      return Equals(_unknownFields, other._unknownFields);
+    }
+
+    [global::System.Diagnostics.DebuggerNonUserCodeAttribute]
+    public override int GetHashCode() {
+      int hash = 1;
+      if (minimumBackoff_ != null) hash ^= MinimumBackoff.GetHashCode();
+      if (maximumBackoff_ != null) hash ^= MaximumBackoff.GetHashCode();
+      if (_unknownFields != null) {
+        hash ^= _unknownFields.GetHashCode();
+      }
+      return hash;
+    }
+
+    [global::System.Diagnostics.DebuggerNonUserCodeAttribute]
+    public override string ToString() {
+      return pb::JsonFormatter.ToDiagnosticString(this);
+    }
+
+    [global::System.Diagnostics.DebuggerNonUserCodeAttribute]
+    public void WriteTo(pb::CodedOutputStream output) {
+    #if !GOOGLE_PROTOBUF_REFSTRUCT_COMPATIBILITY_MODE
+      output.WriteRawMessage(this);
+    #else
+      if (minimumBackoff_ != null) {
+        output.WriteRawTag(10);
+        output.WriteMessage(MinimumBackoff);
+      }
+      if (maximumBackoff_ != null) {
+        output.WriteRawTag(18);
+        output.WriteMessage(MaximumBackoff);
+      }
+      if (_unknownFields != null) {
+        _unknownFields.WriteTo(output);
+      }
+    #endif
+    }
+
+    #if !GOOGLE_PROTOBUF_REFSTRUCT_COMPATIBILITY_MODE
+    [global::System.Diagnostics.DebuggerNonUserCodeAttribute]
+    void pb::IBufferMessage.InternalWriteTo(ref pb::WriteContext output) {
+      if (minimumBackoff_ != null) {
+        output.WriteRawTag(10);
+        output.WriteMessage(MinimumBackoff);
+      }
+      if (maximumBackoff_ != null) {
+        output.WriteRawTag(18);
+        output.WriteMessage(MaximumBackoff);
+      }
+      if (_unknownFields != null) {
+        _unknownFields.WriteTo(ref output);
+      }
+    }
+    #endif
+
+    [global::System.Diagnostics.DebuggerNonUserCodeAttribute]
+    public int CalculateSize() {
+      int size = 0;
+      if (minimumBackoff_ != null) {
+        size += 1 + pb::CodedOutputStream.ComputeMessageSize(MinimumBackoff);
+      }
+      if (maximumBackoff_ != null) {
+        size += 1 + pb::CodedOutputStream.ComputeMessageSize(MaximumBackoff);
+      }
+      if (_unknownFields != null) {
+        size += _unknownFields.CalculateSize();
+      }
+      return size;
+    }
+
+    [global::System.Diagnostics.DebuggerNonUserCodeAttribute]
+    public void MergeFrom(RetryPolicy other) {
+      if (other == null) {
+        return;
+      }
+      if (other.minimumBackoff_ != null) {
+        if (minimumBackoff_ == null) {
+          MinimumBackoff = new global::Google.Protobuf.WellKnownTypes.Duration();
+        }
+        MinimumBackoff.MergeFrom(other.MinimumBackoff);
+      }
+      if (other.maximumBackoff_ != null) {
+        if (maximumBackoff_ == null) {
+          MaximumBackoff = new global::Google.Protobuf.WellKnownTypes.Duration();
+        }
+        MaximumBackoff.MergeFrom(other.MaximumBackoff);
+      }
+      _unknownFields = pb::UnknownFieldSet.MergeFrom(_unknownFields, other._unknownFields);
+    }
+
+    [global::System.Diagnostics.DebuggerNonUserCodeAttribute]
+    public void MergeFrom(pb::CodedInputStream input) {
+    #if !GOOGLE_PROTOBUF_REFSTRUCT_COMPATIBILITY_MODE
+      input.ReadRawMessage(this);
+    #else
+      uint tag;
+      while ((tag = input.ReadTag()) != 0) {
+        switch(tag) {
+          default:
+            _unknownFields = pb::UnknownFieldSet.MergeFieldFrom(_unknownFields, input);
+            break;
+          case 10: {
+            if (minimumBackoff_ == null) {
+              MinimumBackoff = new global::Google.Protobuf.WellKnownTypes.Duration();
+            }
+            input.ReadMessage(MinimumBackoff);
+            break;
+          }
+          case 18: {
+            if (maximumBackoff_ == null) {
+              MaximumBackoff = new global::Google.Protobuf.WellKnownTypes.Duration();
+            }
+            input.ReadMessage(MaximumBackoff);
+            break;
+          }
+        }
+      }
+    #endif
+    }
+
+    #if !GOOGLE_PROTOBUF_REFSTRUCT_COMPATIBILITY_MODE
+    [global::System.Diagnostics.DebuggerNonUserCodeAttribute]
+    void pb::IBufferMessage.InternalMergeFrom(ref pb::ParseContext input) {
+      uint tag;
+      while ((tag = input.ReadTag()) != 0) {
+        switch(tag) {
+          default:
+            _unknownFields = pb::UnknownFieldSet.MergeFieldFrom(_unknownFields, ref input);
+            break;
+          case 10: {
+            if (minimumBackoff_ == null) {
+              MinimumBackoff = new global::Google.Protobuf.WellKnownTypes.Duration();
+            }
+            input.ReadMessage(MinimumBackoff);
+            break;
+          }
+          case 18: {
+            if (maximumBackoff_ == null) {
+              MaximumBackoff = new global::Google.Protobuf.WellKnownTypes.Duration();
+            }
+            input.ReadMessage(MaximumBackoff);
+            break;
+          }
+        }
+      }
+    }
+    #endif
 
   }
 
@@ -3222,7 +4836,11 @@ namespace Google.Cloud.PubSub.V1 {
   /// If validation on any of the fields fails at subscription creation/updation,
   /// the create/update subscription request will fail.
   /// </summary>
-  public sealed partial class DeadLetterPolicy : pb::IMessage<DeadLetterPolicy> {
+  public sealed partial class DeadLetterPolicy : pb::IMessage<DeadLetterPolicy>
+  #if !GOOGLE_PROTOBUF_REFSTRUCT_COMPATIBILITY_MODE
+      , pb::IBufferMessage
+  #endif
+  {
     private static readonly pb::MessageParser<DeadLetterPolicy> _parser = new pb::MessageParser<DeadLetterPolicy>(() => new DeadLetterPolicy());
     private pb::UnknownFieldSet _unknownFields;
     [global::System.Diagnostics.DebuggerNonUserCodeAttribute]
@@ -3230,7 +4848,7 @@ namespace Google.Cloud.PubSub.V1 {
 
     [global::System.Diagnostics.DebuggerNonUserCodeAttribute]
     public static pbr::MessageDescriptor Descriptor {
-      get { return global::Google.Cloud.PubSub.V1.PubsubReflection.Descriptor.MessageTypes[15]; }
+      get { return global::Google.Cloud.PubSub.V1.PubsubReflection.Descriptor.MessageTypes[18]; }
     }
 
     [global::System.Diagnostics.DebuggerNonUserCodeAttribute]
@@ -3341,6 +4959,9 @@ namespace Google.Cloud.PubSub.V1 {
 
     [global::System.Diagnostics.DebuggerNonUserCodeAttribute]
     public void WriteTo(pb::CodedOutputStream output) {
+    #if !GOOGLE_PROTOBUF_REFSTRUCT_COMPATIBILITY_MODE
+      output.WriteRawMessage(this);
+    #else
       if (DeadLetterTopic.Length != 0) {
         output.WriteRawTag(10);
         output.WriteString(DeadLetterTopic);
@@ -3352,7 +4973,25 @@ namespace Google.Cloud.PubSub.V1 {
       if (_unknownFields != null) {
         _unknownFields.WriteTo(output);
       }
+    #endif
     }
+
+    #if !GOOGLE_PROTOBUF_REFSTRUCT_COMPATIBILITY_MODE
+    [global::System.Diagnostics.DebuggerNonUserCodeAttribute]
+    void pb::IBufferMessage.InternalWriteTo(ref pb::WriteContext output) {
+      if (DeadLetterTopic.Length != 0) {
+        output.WriteRawTag(10);
+        output.WriteString(DeadLetterTopic);
+      }
+      if (MaxDeliveryAttempts != 0) {
+        output.WriteRawTag(16);
+        output.WriteInt32(MaxDeliveryAttempts);
+      }
+      if (_unknownFields != null) {
+        _unknownFields.WriteTo(ref output);
+      }
+    }
+    #endif
 
     [global::System.Diagnostics.DebuggerNonUserCodeAttribute]
     public int CalculateSize() {
@@ -3385,6 +5024,9 @@ namespace Google.Cloud.PubSub.V1 {
 
     [global::System.Diagnostics.DebuggerNonUserCodeAttribute]
     public void MergeFrom(pb::CodedInputStream input) {
+    #if !GOOGLE_PROTOBUF_REFSTRUCT_COMPATIBILITY_MODE
+      input.ReadRawMessage(this);
+    #else
       uint tag;
       while ((tag = input.ReadTag()) != 0) {
         switch(tag) {
@@ -3401,7 +5043,30 @@ namespace Google.Cloud.PubSub.V1 {
           }
         }
       }
+    #endif
     }
+
+    #if !GOOGLE_PROTOBUF_REFSTRUCT_COMPATIBILITY_MODE
+    [global::System.Diagnostics.DebuggerNonUserCodeAttribute]
+    void pb::IBufferMessage.InternalMergeFrom(ref pb::ParseContext input) {
+      uint tag;
+      while ((tag = input.ReadTag()) != 0) {
+        switch(tag) {
+          default:
+            _unknownFields = pb::UnknownFieldSet.MergeFieldFrom(_unknownFields, ref input);
+            break;
+          case 10: {
+            DeadLetterTopic = input.ReadString();
+            break;
+          }
+          case 16: {
+            MaxDeliveryAttempts = input.ReadInt32();
+            break;
+          }
+        }
+      }
+    }
+    #endif
 
   }
 
@@ -3409,7 +5074,11 @@ namespace Google.Cloud.PubSub.V1 {
   /// A policy that specifies the conditions for resource expiration (i.e.,
   /// automatic resource deletion).
   /// </summary>
-  public sealed partial class ExpirationPolicy : pb::IMessage<ExpirationPolicy> {
+  public sealed partial class ExpirationPolicy : pb::IMessage<ExpirationPolicy>
+  #if !GOOGLE_PROTOBUF_REFSTRUCT_COMPATIBILITY_MODE
+      , pb::IBufferMessage
+  #endif
+  {
     private static readonly pb::MessageParser<ExpirationPolicy> _parser = new pb::MessageParser<ExpirationPolicy>(() => new ExpirationPolicy());
     private pb::UnknownFieldSet _unknownFields;
     [global::System.Diagnostics.DebuggerNonUserCodeAttribute]
@@ -3417,7 +5086,7 @@ namespace Google.Cloud.PubSub.V1 {
 
     [global::System.Diagnostics.DebuggerNonUserCodeAttribute]
     public static pbr::MessageDescriptor Descriptor {
-      get { return global::Google.Cloud.PubSub.V1.PubsubReflection.Descriptor.MessageTypes[16]; }
+      get { return global::Google.Cloud.PubSub.V1.PubsubReflection.Descriptor.MessageTypes[19]; }
     }
 
     [global::System.Diagnostics.DebuggerNonUserCodeAttribute]
@@ -3496,6 +5165,9 @@ namespace Google.Cloud.PubSub.V1 {
 
     [global::System.Diagnostics.DebuggerNonUserCodeAttribute]
     public void WriteTo(pb::CodedOutputStream output) {
+    #if !GOOGLE_PROTOBUF_REFSTRUCT_COMPATIBILITY_MODE
+      output.WriteRawMessage(this);
+    #else
       if (ttl_ != null) {
         output.WriteRawTag(10);
         output.WriteMessage(Ttl);
@@ -3503,7 +5175,21 @@ namespace Google.Cloud.PubSub.V1 {
       if (_unknownFields != null) {
         _unknownFields.WriteTo(output);
       }
+    #endif
     }
+
+    #if !GOOGLE_PROTOBUF_REFSTRUCT_COMPATIBILITY_MODE
+    [global::System.Diagnostics.DebuggerNonUserCodeAttribute]
+    void pb::IBufferMessage.InternalWriteTo(ref pb::WriteContext output) {
+      if (ttl_ != null) {
+        output.WriteRawTag(10);
+        output.WriteMessage(Ttl);
+      }
+      if (_unknownFields != null) {
+        _unknownFields.WriteTo(ref output);
+      }
+    }
+    #endif
 
     [global::System.Diagnostics.DebuggerNonUserCodeAttribute]
     public int CalculateSize() {
@@ -3533,6 +5219,9 @@ namespace Google.Cloud.PubSub.V1 {
 
     [global::System.Diagnostics.DebuggerNonUserCodeAttribute]
     public void MergeFrom(pb::CodedInputStream input) {
+    #if !GOOGLE_PROTOBUF_REFSTRUCT_COMPATIBILITY_MODE
+      input.ReadRawMessage(this);
+    #else
       uint tag;
       while ((tag = input.ReadTag()) != 0) {
         switch(tag) {
@@ -3548,14 +5237,40 @@ namespace Google.Cloud.PubSub.V1 {
           }
         }
       }
+    #endif
     }
+
+    #if !GOOGLE_PROTOBUF_REFSTRUCT_COMPATIBILITY_MODE
+    [global::System.Diagnostics.DebuggerNonUserCodeAttribute]
+    void pb::IBufferMessage.InternalMergeFrom(ref pb::ParseContext input) {
+      uint tag;
+      while ((tag = input.ReadTag()) != 0) {
+        switch(tag) {
+          default:
+            _unknownFields = pb::UnknownFieldSet.MergeFieldFrom(_unknownFields, ref input);
+            break;
+          case 10: {
+            if (ttl_ == null) {
+              Ttl = new global::Google.Protobuf.WellKnownTypes.Duration();
+            }
+            input.ReadMessage(Ttl);
+            break;
+          }
+        }
+      }
+    }
+    #endif
 
   }
 
   /// <summary>
   /// Configuration for a push delivery endpoint.
   /// </summary>
-  public sealed partial class PushConfig : pb::IMessage<PushConfig> {
+  public sealed partial class PushConfig : pb::IMessage<PushConfig>
+  #if !GOOGLE_PROTOBUF_REFSTRUCT_COMPATIBILITY_MODE
+      , pb::IBufferMessage
+  #endif
+  {
     private static readonly pb::MessageParser<PushConfig> _parser = new pb::MessageParser<PushConfig>(() => new PushConfig());
     private pb::UnknownFieldSet _unknownFields;
     [global::System.Diagnostics.DebuggerNonUserCodeAttribute]
@@ -3563,7 +5278,7 @@ namespace Google.Cloud.PubSub.V1 {
 
     [global::System.Diagnostics.DebuggerNonUserCodeAttribute]
     public static pbr::MessageDescriptor Descriptor {
-      get { return global::Google.Cloud.PubSub.V1.PubsubReflection.Descriptor.MessageTypes[17]; }
+      get { return global::Google.Cloud.PubSub.V1.PubsubReflection.Descriptor.MessageTypes[20]; }
     }
 
     [global::System.Diagnostics.DebuggerNonUserCodeAttribute]
@@ -3601,7 +5316,7 @@ namespace Google.Cloud.PubSub.V1 {
     private string pushEndpoint_ = "";
     /// <summary>
     /// A URL locating the endpoint to which messages should be pushed.
-    /// For example, a Webhook endpoint might use "https://example.com/push".
+    /// For example, a Webhook endpoint might use `https://example.com/push`.
     /// </summary>
     [global::System.Diagnostics.DebuggerNonUserCodeAttribute]
     public string PushEndpoint {
@@ -3614,7 +5329,7 @@ namespace Google.Cloud.PubSub.V1 {
     /// <summary>Field number for the "attributes" field.</summary>
     public const int AttributesFieldNumber = 2;
     private static readonly pbc::MapField<string, string>.Codec _map_attributes_codec
-        = new pbc::MapField<string, string>.Codec(pb::FieldCodec.ForString(10), pb::FieldCodec.ForString(18), 18);
+        = new pbc::MapField<string, string>.Codec(pb::FieldCodec.ForString(10, ""), pb::FieldCodec.ForString(18, ""), 18);
     private readonly pbc::MapField<string, string> attributes_ = new pbc::MapField<string, string>();
     /// <summary>
     /// Endpoint configuration attributes that can be used to control different
@@ -3717,6 +5432,9 @@ namespace Google.Cloud.PubSub.V1 {
 
     [global::System.Diagnostics.DebuggerNonUserCodeAttribute]
     public void WriteTo(pb::CodedOutputStream output) {
+    #if !GOOGLE_PROTOBUF_REFSTRUCT_COMPATIBILITY_MODE
+      output.WriteRawMessage(this);
+    #else
       if (PushEndpoint.Length != 0) {
         output.WriteRawTag(10);
         output.WriteString(PushEndpoint);
@@ -3729,7 +5447,26 @@ namespace Google.Cloud.PubSub.V1 {
       if (_unknownFields != null) {
         _unknownFields.WriteTo(output);
       }
+    #endif
     }
+
+    #if !GOOGLE_PROTOBUF_REFSTRUCT_COMPATIBILITY_MODE
+    [global::System.Diagnostics.DebuggerNonUserCodeAttribute]
+    void pb::IBufferMessage.InternalWriteTo(ref pb::WriteContext output) {
+      if (PushEndpoint.Length != 0) {
+        output.WriteRawTag(10);
+        output.WriteString(PushEndpoint);
+      }
+      attributes_.WriteTo(ref output, _map_attributes_codec);
+      if (authenticationMethodCase_ == AuthenticationMethodOneofCase.OidcToken) {
+        output.WriteRawTag(26);
+        output.WriteMessage(OidcToken);
+      }
+      if (_unknownFields != null) {
+        _unknownFields.WriteTo(ref output);
+      }
+    }
+    #endif
 
     [global::System.Diagnostics.DebuggerNonUserCodeAttribute]
     public int CalculateSize() {
@@ -3770,6 +5507,9 @@ namespace Google.Cloud.PubSub.V1 {
 
     [global::System.Diagnostics.DebuggerNonUserCodeAttribute]
     public void MergeFrom(pb::CodedInputStream input) {
+    #if !GOOGLE_PROTOBUF_REFSTRUCT_COMPATIBILITY_MODE
+      input.ReadRawMessage(this);
+    #else
       uint tag;
       while ((tag = input.ReadTag()) != 0) {
         switch(tag) {
@@ -3795,7 +5535,39 @@ namespace Google.Cloud.PubSub.V1 {
           }
         }
       }
+    #endif
     }
+
+    #if !GOOGLE_PROTOBUF_REFSTRUCT_COMPATIBILITY_MODE
+    [global::System.Diagnostics.DebuggerNonUserCodeAttribute]
+    void pb::IBufferMessage.InternalMergeFrom(ref pb::ParseContext input) {
+      uint tag;
+      while ((tag = input.ReadTag()) != 0) {
+        switch(tag) {
+          default:
+            _unknownFields = pb::UnknownFieldSet.MergeFieldFrom(_unknownFields, ref input);
+            break;
+          case 10: {
+            PushEndpoint = input.ReadString();
+            break;
+          }
+          case 18: {
+            attributes_.AddEntriesFrom(ref input, _map_attributes_codec);
+            break;
+          }
+          case 26: {
+            global::Google.Cloud.PubSub.V1.PushConfig.Types.OidcToken subBuilder = new global::Google.Cloud.PubSub.V1.PushConfig.Types.OidcToken();
+            if (authenticationMethodCase_ == AuthenticationMethodOneofCase.OidcToken) {
+              subBuilder.MergeFrom(OidcToken);
+            }
+            input.ReadMessage(subBuilder);
+            OidcToken = subBuilder;
+            break;
+          }
+        }
+      }
+    }
+    #endif
 
     #region Nested types
     /// <summary>Container for nested types declared in the PushConfig message type.</summary>
@@ -3806,7 +5578,11 @@ namespace Google.Cloud.PubSub.V1 {
       /// [OpenID Connect
       /// token](https://developers.google.com/identity/protocols/OpenIDConnect).
       /// </summary>
-      public sealed partial class OidcToken : pb::IMessage<OidcToken> {
+      public sealed partial class OidcToken : pb::IMessage<OidcToken>
+      #if !GOOGLE_PROTOBUF_REFSTRUCT_COMPATIBILITY_MODE
+          , pb::IBufferMessage
+      #endif
+      {
         private static readonly pb::MessageParser<OidcToken> _parser = new pb::MessageParser<OidcToken>(() => new OidcToken());
         private pb::UnknownFieldSet _unknownFields;
         [global::System.Diagnostics.DebuggerNonUserCodeAttribute]
@@ -3914,6 +5690,9 @@ namespace Google.Cloud.PubSub.V1 {
 
         [global::System.Diagnostics.DebuggerNonUserCodeAttribute]
         public void WriteTo(pb::CodedOutputStream output) {
+        #if !GOOGLE_PROTOBUF_REFSTRUCT_COMPATIBILITY_MODE
+          output.WriteRawMessage(this);
+        #else
           if (ServiceAccountEmail.Length != 0) {
             output.WriteRawTag(10);
             output.WriteString(ServiceAccountEmail);
@@ -3925,7 +5704,25 @@ namespace Google.Cloud.PubSub.V1 {
           if (_unknownFields != null) {
             _unknownFields.WriteTo(output);
           }
+        #endif
         }
+
+        #if !GOOGLE_PROTOBUF_REFSTRUCT_COMPATIBILITY_MODE
+        [global::System.Diagnostics.DebuggerNonUserCodeAttribute]
+        void pb::IBufferMessage.InternalWriteTo(ref pb::WriteContext output) {
+          if (ServiceAccountEmail.Length != 0) {
+            output.WriteRawTag(10);
+            output.WriteString(ServiceAccountEmail);
+          }
+          if (Audience.Length != 0) {
+            output.WriteRawTag(18);
+            output.WriteString(Audience);
+          }
+          if (_unknownFields != null) {
+            _unknownFields.WriteTo(ref output);
+          }
+        }
+        #endif
 
         [global::System.Diagnostics.DebuggerNonUserCodeAttribute]
         public int CalculateSize() {
@@ -3958,6 +5755,9 @@ namespace Google.Cloud.PubSub.V1 {
 
         [global::System.Diagnostics.DebuggerNonUserCodeAttribute]
         public void MergeFrom(pb::CodedInputStream input) {
+        #if !GOOGLE_PROTOBUF_REFSTRUCT_COMPATIBILITY_MODE
+          input.ReadRawMessage(this);
+        #else
           uint tag;
           while ((tag = input.ReadTag()) != 0) {
             switch(tag) {
@@ -3974,7 +5774,30 @@ namespace Google.Cloud.PubSub.V1 {
               }
             }
           }
+        #endif
         }
+
+        #if !GOOGLE_PROTOBUF_REFSTRUCT_COMPATIBILITY_MODE
+        [global::System.Diagnostics.DebuggerNonUserCodeAttribute]
+        void pb::IBufferMessage.InternalMergeFrom(ref pb::ParseContext input) {
+          uint tag;
+          while ((tag = input.ReadTag()) != 0) {
+            switch(tag) {
+              default:
+                _unknownFields = pb::UnknownFieldSet.MergeFieldFrom(_unknownFields, ref input);
+                break;
+              case 10: {
+                ServiceAccountEmail = input.ReadString();
+                break;
+              }
+              case 18: {
+                Audience = input.ReadString();
+                break;
+              }
+            }
+          }
+        }
+        #endif
 
       }
 
@@ -3986,7 +5809,11 @@ namespace Google.Cloud.PubSub.V1 {
   /// <summary>
   /// A message and its corresponding acknowledgment ID.
   /// </summary>
-  public sealed partial class ReceivedMessage : pb::IMessage<ReceivedMessage> {
+  public sealed partial class ReceivedMessage : pb::IMessage<ReceivedMessage>
+  #if !GOOGLE_PROTOBUF_REFSTRUCT_COMPATIBILITY_MODE
+      , pb::IBufferMessage
+  #endif
+  {
     private static readonly pb::MessageParser<ReceivedMessage> _parser = new pb::MessageParser<ReceivedMessage>(() => new ReceivedMessage());
     private pb::UnknownFieldSet _unknownFields;
     [global::System.Diagnostics.DebuggerNonUserCodeAttribute]
@@ -3994,7 +5821,7 @@ namespace Google.Cloud.PubSub.V1 {
 
     [global::System.Diagnostics.DebuggerNonUserCodeAttribute]
     public static pbr::MessageDescriptor Descriptor {
-      get { return global::Google.Cloud.PubSub.V1.PubsubReflection.Descriptor.MessageTypes[18]; }
+      get { return global::Google.Cloud.PubSub.V1.PubsubReflection.Descriptor.MessageTypes[21]; }
     }
 
     [global::System.Diagnostics.DebuggerNonUserCodeAttribute]
@@ -4054,8 +5881,11 @@ namespace Google.Cloud.PubSub.V1 {
     public const int DeliveryAttemptFieldNumber = 3;
     private int deliveryAttempt_;
     /// <summary>
-    /// Delivery attempt counter is 1 + (the sum of number of NACKs and number of
-    /// ack_deadline exceeds) for this message.
+    /// The approximate number of times that Cloud Pub/Sub has attempted to deliver
+    /// the associated message to a subscriber.
+    ///
+    /// More precisely, this is 1 + (number of NACKs) +
+    /// (number of ack_deadline exceeds) for this message.
     ///
     /// A NACK is any call to ModifyAckDeadline with a 0 deadline. An ack_deadline
     /// exceeds event is whenever a message is not acknowledged within
@@ -4063,13 +5893,10 @@ namespace Google.Cloud.PubSub.V1 {
     /// Subscription.ackDeadlineSeconds, but may get extended automatically by
     /// the client library.
     ///
-    /// The first delivery of a given message will have this value as 1. The value
-    /// is calculated at best effort and is approximate.
+    /// Upon the first delivery of a given message, `delivery_attempt` will have a
+    /// value of 1. The value is calculated at best effort and is approximate.
     ///
     /// If a DeadLetterPolicy is not set on the subscription, this will be 0.
-    /// &lt;b>EXPERIMENTAL:&lt;/b> This feature is part of a closed alpha release. This
-    /// API might be changed in backward-incompatible ways and is not recommended
-    /// for production use. It is not subject to any SLA or deprecation policy.
     /// </summary>
     [global::System.Diagnostics.DebuggerNonUserCodeAttribute]
     public int DeliveryAttempt {
@@ -4117,6 +5944,9 @@ namespace Google.Cloud.PubSub.V1 {
 
     [global::System.Diagnostics.DebuggerNonUserCodeAttribute]
     public void WriteTo(pb::CodedOutputStream output) {
+    #if !GOOGLE_PROTOBUF_REFSTRUCT_COMPATIBILITY_MODE
+      output.WriteRawMessage(this);
+    #else
       if (AckId.Length != 0) {
         output.WriteRawTag(10);
         output.WriteString(AckId);
@@ -4132,7 +5962,29 @@ namespace Google.Cloud.PubSub.V1 {
       if (_unknownFields != null) {
         _unknownFields.WriteTo(output);
       }
+    #endif
     }
+
+    #if !GOOGLE_PROTOBUF_REFSTRUCT_COMPATIBILITY_MODE
+    [global::System.Diagnostics.DebuggerNonUserCodeAttribute]
+    void pb::IBufferMessage.InternalWriteTo(ref pb::WriteContext output) {
+      if (AckId.Length != 0) {
+        output.WriteRawTag(10);
+        output.WriteString(AckId);
+      }
+      if (message_ != null) {
+        output.WriteRawTag(18);
+        output.WriteMessage(Message);
+      }
+      if (DeliveryAttempt != 0) {
+        output.WriteRawTag(24);
+        output.WriteInt32(DeliveryAttempt);
+      }
+      if (_unknownFields != null) {
+        _unknownFields.WriteTo(ref output);
+      }
+    }
+    #endif
 
     [global::System.Diagnostics.DebuggerNonUserCodeAttribute]
     public int CalculateSize() {
@@ -4174,6 +6026,9 @@ namespace Google.Cloud.PubSub.V1 {
 
     [global::System.Diagnostics.DebuggerNonUserCodeAttribute]
     public void MergeFrom(pb::CodedInputStream input) {
+    #if !GOOGLE_PROTOBUF_REFSTRUCT_COMPATIBILITY_MODE
+      input.ReadRawMessage(this);
+    #else
       uint tag;
       while ((tag = input.ReadTag()) != 0) {
         switch(tag) {
@@ -4197,14 +6052,48 @@ namespace Google.Cloud.PubSub.V1 {
           }
         }
       }
+    #endif
     }
+
+    #if !GOOGLE_PROTOBUF_REFSTRUCT_COMPATIBILITY_MODE
+    [global::System.Diagnostics.DebuggerNonUserCodeAttribute]
+    void pb::IBufferMessage.InternalMergeFrom(ref pb::ParseContext input) {
+      uint tag;
+      while ((tag = input.ReadTag()) != 0) {
+        switch(tag) {
+          default:
+            _unknownFields = pb::UnknownFieldSet.MergeFieldFrom(_unknownFields, ref input);
+            break;
+          case 10: {
+            AckId = input.ReadString();
+            break;
+          }
+          case 18: {
+            if (message_ == null) {
+              Message = new global::Google.Cloud.PubSub.V1.PubsubMessage();
+            }
+            input.ReadMessage(Message);
+            break;
+          }
+          case 24: {
+            DeliveryAttempt = input.ReadInt32();
+            break;
+          }
+        }
+      }
+    }
+    #endif
 
   }
 
   /// <summary>
   /// Request for the GetSubscription method.
   /// </summary>
-  public sealed partial class GetSubscriptionRequest : pb::IMessage<GetSubscriptionRequest> {
+  public sealed partial class GetSubscriptionRequest : pb::IMessage<GetSubscriptionRequest>
+  #if !GOOGLE_PROTOBUF_REFSTRUCT_COMPATIBILITY_MODE
+      , pb::IBufferMessage
+  #endif
+  {
     private static readonly pb::MessageParser<GetSubscriptionRequest> _parser = new pb::MessageParser<GetSubscriptionRequest>(() => new GetSubscriptionRequest());
     private pb::UnknownFieldSet _unknownFields;
     [global::System.Diagnostics.DebuggerNonUserCodeAttribute]
@@ -4212,7 +6101,7 @@ namespace Google.Cloud.PubSub.V1 {
 
     [global::System.Diagnostics.DebuggerNonUserCodeAttribute]
     public static pbr::MessageDescriptor Descriptor {
-      get { return global::Google.Cloud.PubSub.V1.PubsubReflection.Descriptor.MessageTypes[19]; }
+      get { return global::Google.Cloud.PubSub.V1.PubsubReflection.Descriptor.MessageTypes[22]; }
     }
 
     [global::System.Diagnostics.DebuggerNonUserCodeAttribute]
@@ -4242,7 +6131,7 @@ namespace Google.Cloud.PubSub.V1 {
     public const int SubscriptionFieldNumber = 1;
     private string subscription_ = "";
     /// <summary>
-    /// The name of the subscription to get.
+    /// Required. The name of the subscription to get.
     /// Format is `projects/{project}/subscriptions/{sub}`.
     /// </summary>
     [global::System.Diagnostics.DebuggerNonUserCodeAttribute]
@@ -4287,6 +6176,9 @@ namespace Google.Cloud.PubSub.V1 {
 
     [global::System.Diagnostics.DebuggerNonUserCodeAttribute]
     public void WriteTo(pb::CodedOutputStream output) {
+    #if !GOOGLE_PROTOBUF_REFSTRUCT_COMPATIBILITY_MODE
+      output.WriteRawMessage(this);
+    #else
       if (Subscription.Length != 0) {
         output.WriteRawTag(10);
         output.WriteString(Subscription);
@@ -4294,7 +6186,21 @@ namespace Google.Cloud.PubSub.V1 {
       if (_unknownFields != null) {
         _unknownFields.WriteTo(output);
       }
+    #endif
     }
+
+    #if !GOOGLE_PROTOBUF_REFSTRUCT_COMPATIBILITY_MODE
+    [global::System.Diagnostics.DebuggerNonUserCodeAttribute]
+    void pb::IBufferMessage.InternalWriteTo(ref pb::WriteContext output) {
+      if (Subscription.Length != 0) {
+        output.WriteRawTag(10);
+        output.WriteString(Subscription);
+      }
+      if (_unknownFields != null) {
+        _unknownFields.WriteTo(ref output);
+      }
+    }
+    #endif
 
     [global::System.Diagnostics.DebuggerNonUserCodeAttribute]
     public int CalculateSize() {
@@ -4321,6 +6227,9 @@ namespace Google.Cloud.PubSub.V1 {
 
     [global::System.Diagnostics.DebuggerNonUserCodeAttribute]
     public void MergeFrom(pb::CodedInputStream input) {
+    #if !GOOGLE_PROTOBUF_REFSTRUCT_COMPATIBILITY_MODE
+      input.ReadRawMessage(this);
+    #else
       uint tag;
       while ((tag = input.ReadTag()) != 0) {
         switch(tag) {
@@ -4333,14 +6242,37 @@ namespace Google.Cloud.PubSub.V1 {
           }
         }
       }
+    #endif
     }
+
+    #if !GOOGLE_PROTOBUF_REFSTRUCT_COMPATIBILITY_MODE
+    [global::System.Diagnostics.DebuggerNonUserCodeAttribute]
+    void pb::IBufferMessage.InternalMergeFrom(ref pb::ParseContext input) {
+      uint tag;
+      while ((tag = input.ReadTag()) != 0) {
+        switch(tag) {
+          default:
+            _unknownFields = pb::UnknownFieldSet.MergeFieldFrom(_unknownFields, ref input);
+            break;
+          case 10: {
+            Subscription = input.ReadString();
+            break;
+          }
+        }
+      }
+    }
+    #endif
 
   }
 
   /// <summary>
   /// Request for the UpdateSubscription method.
   /// </summary>
-  public sealed partial class UpdateSubscriptionRequest : pb::IMessage<UpdateSubscriptionRequest> {
+  public sealed partial class UpdateSubscriptionRequest : pb::IMessage<UpdateSubscriptionRequest>
+  #if !GOOGLE_PROTOBUF_REFSTRUCT_COMPATIBILITY_MODE
+      , pb::IBufferMessage
+  #endif
+  {
     private static readonly pb::MessageParser<UpdateSubscriptionRequest> _parser = new pb::MessageParser<UpdateSubscriptionRequest>(() => new UpdateSubscriptionRequest());
     private pb::UnknownFieldSet _unknownFields;
     [global::System.Diagnostics.DebuggerNonUserCodeAttribute]
@@ -4348,7 +6280,7 @@ namespace Google.Cloud.PubSub.V1 {
 
     [global::System.Diagnostics.DebuggerNonUserCodeAttribute]
     public static pbr::MessageDescriptor Descriptor {
-      get { return global::Google.Cloud.PubSub.V1.PubsubReflection.Descriptor.MessageTypes[20]; }
+      get { return global::Google.Cloud.PubSub.V1.PubsubReflection.Descriptor.MessageTypes[23]; }
     }
 
     [global::System.Diagnostics.DebuggerNonUserCodeAttribute]
@@ -4379,7 +6311,7 @@ namespace Google.Cloud.PubSub.V1 {
     public const int SubscriptionFieldNumber = 1;
     private global::Google.Cloud.PubSub.V1.Subscription subscription_;
     /// <summary>
-    /// The updated subscription object.
+    /// Required. The updated subscription object.
     /// </summary>
     [global::System.Diagnostics.DebuggerNonUserCodeAttribute]
     public global::Google.Cloud.PubSub.V1.Subscription Subscription {
@@ -4393,7 +6325,7 @@ namespace Google.Cloud.PubSub.V1 {
     public const int UpdateMaskFieldNumber = 2;
     private global::Google.Protobuf.WellKnownTypes.FieldMask updateMask_;
     /// <summary>
-    /// Indicates which fields in the provided subscription to update.
+    /// Required. Indicates which fields in the provided subscription to update.
     /// Must be specified and non-empty.
     /// </summary>
     [global::System.Diagnostics.DebuggerNonUserCodeAttribute]
@@ -4440,6 +6372,9 @@ namespace Google.Cloud.PubSub.V1 {
 
     [global::System.Diagnostics.DebuggerNonUserCodeAttribute]
     public void WriteTo(pb::CodedOutputStream output) {
+    #if !GOOGLE_PROTOBUF_REFSTRUCT_COMPATIBILITY_MODE
+      output.WriteRawMessage(this);
+    #else
       if (subscription_ != null) {
         output.WriteRawTag(10);
         output.WriteMessage(Subscription);
@@ -4451,7 +6386,25 @@ namespace Google.Cloud.PubSub.V1 {
       if (_unknownFields != null) {
         _unknownFields.WriteTo(output);
       }
+    #endif
     }
+
+    #if !GOOGLE_PROTOBUF_REFSTRUCT_COMPATIBILITY_MODE
+    [global::System.Diagnostics.DebuggerNonUserCodeAttribute]
+    void pb::IBufferMessage.InternalWriteTo(ref pb::WriteContext output) {
+      if (subscription_ != null) {
+        output.WriteRawTag(10);
+        output.WriteMessage(Subscription);
+      }
+      if (updateMask_ != null) {
+        output.WriteRawTag(18);
+        output.WriteMessage(UpdateMask);
+      }
+      if (_unknownFields != null) {
+        _unknownFields.WriteTo(ref output);
+      }
+    }
+    #endif
 
     [global::System.Diagnostics.DebuggerNonUserCodeAttribute]
     public int CalculateSize() {
@@ -4490,6 +6443,9 @@ namespace Google.Cloud.PubSub.V1 {
 
     [global::System.Diagnostics.DebuggerNonUserCodeAttribute]
     public void MergeFrom(pb::CodedInputStream input) {
+    #if !GOOGLE_PROTOBUF_REFSTRUCT_COMPATIBILITY_MODE
+      input.ReadRawMessage(this);
+    #else
       uint tag;
       while ((tag = input.ReadTag()) != 0) {
         switch(tag) {
@@ -4512,14 +6468,47 @@ namespace Google.Cloud.PubSub.V1 {
           }
         }
       }
+    #endif
     }
+
+    #if !GOOGLE_PROTOBUF_REFSTRUCT_COMPATIBILITY_MODE
+    [global::System.Diagnostics.DebuggerNonUserCodeAttribute]
+    void pb::IBufferMessage.InternalMergeFrom(ref pb::ParseContext input) {
+      uint tag;
+      while ((tag = input.ReadTag()) != 0) {
+        switch(tag) {
+          default:
+            _unknownFields = pb::UnknownFieldSet.MergeFieldFrom(_unknownFields, ref input);
+            break;
+          case 10: {
+            if (subscription_ == null) {
+              Subscription = new global::Google.Cloud.PubSub.V1.Subscription();
+            }
+            input.ReadMessage(Subscription);
+            break;
+          }
+          case 18: {
+            if (updateMask_ == null) {
+              UpdateMask = new global::Google.Protobuf.WellKnownTypes.FieldMask();
+            }
+            input.ReadMessage(UpdateMask);
+            break;
+          }
+        }
+      }
+    }
+    #endif
 
   }
 
   /// <summary>
   /// Request for the `ListSubscriptions` method.
   /// </summary>
-  public sealed partial class ListSubscriptionsRequest : pb::IMessage<ListSubscriptionsRequest> {
+  public sealed partial class ListSubscriptionsRequest : pb::IMessage<ListSubscriptionsRequest>
+  #if !GOOGLE_PROTOBUF_REFSTRUCT_COMPATIBILITY_MODE
+      , pb::IBufferMessage
+  #endif
+  {
     private static readonly pb::MessageParser<ListSubscriptionsRequest> _parser = new pb::MessageParser<ListSubscriptionsRequest>(() => new ListSubscriptionsRequest());
     private pb::UnknownFieldSet _unknownFields;
     [global::System.Diagnostics.DebuggerNonUserCodeAttribute]
@@ -4527,7 +6516,7 @@ namespace Google.Cloud.PubSub.V1 {
 
     [global::System.Diagnostics.DebuggerNonUserCodeAttribute]
     public static pbr::MessageDescriptor Descriptor {
-      get { return global::Google.Cloud.PubSub.V1.PubsubReflection.Descriptor.MessageTypes[21]; }
+      get { return global::Google.Cloud.PubSub.V1.PubsubReflection.Descriptor.MessageTypes[24]; }
     }
 
     [global::System.Diagnostics.DebuggerNonUserCodeAttribute]
@@ -4559,7 +6548,7 @@ namespace Google.Cloud.PubSub.V1 {
     public const int ProjectFieldNumber = 1;
     private string project_ = "";
     /// <summary>
-    /// The name of the project in which to list subscriptions.
+    /// Required. The name of the project in which to list subscriptions.
     /// Format is `projects/{project-id}`.
     /// </summary>
     [global::System.Diagnostics.DebuggerNonUserCodeAttribute]
@@ -4638,6 +6627,9 @@ namespace Google.Cloud.PubSub.V1 {
 
     [global::System.Diagnostics.DebuggerNonUserCodeAttribute]
     public void WriteTo(pb::CodedOutputStream output) {
+    #if !GOOGLE_PROTOBUF_REFSTRUCT_COMPATIBILITY_MODE
+      output.WriteRawMessage(this);
+    #else
       if (Project.Length != 0) {
         output.WriteRawTag(10);
         output.WriteString(Project);
@@ -4653,7 +6645,29 @@ namespace Google.Cloud.PubSub.V1 {
       if (_unknownFields != null) {
         _unknownFields.WriteTo(output);
       }
+    #endif
     }
+
+    #if !GOOGLE_PROTOBUF_REFSTRUCT_COMPATIBILITY_MODE
+    [global::System.Diagnostics.DebuggerNonUserCodeAttribute]
+    void pb::IBufferMessage.InternalWriteTo(ref pb::WriteContext output) {
+      if (Project.Length != 0) {
+        output.WriteRawTag(10);
+        output.WriteString(Project);
+      }
+      if (PageSize != 0) {
+        output.WriteRawTag(16);
+        output.WriteInt32(PageSize);
+      }
+      if (PageToken.Length != 0) {
+        output.WriteRawTag(26);
+        output.WriteString(PageToken);
+      }
+      if (_unknownFields != null) {
+        _unknownFields.WriteTo(ref output);
+      }
+    }
+    #endif
 
     [global::System.Diagnostics.DebuggerNonUserCodeAttribute]
     public int CalculateSize() {
@@ -4692,6 +6706,9 @@ namespace Google.Cloud.PubSub.V1 {
 
     [global::System.Diagnostics.DebuggerNonUserCodeAttribute]
     public void MergeFrom(pb::CodedInputStream input) {
+    #if !GOOGLE_PROTOBUF_REFSTRUCT_COMPATIBILITY_MODE
+      input.ReadRawMessage(this);
+    #else
       uint tag;
       while ((tag = input.ReadTag()) != 0) {
         switch(tag) {
@@ -4712,14 +6729,45 @@ namespace Google.Cloud.PubSub.V1 {
           }
         }
       }
+    #endif
     }
+
+    #if !GOOGLE_PROTOBUF_REFSTRUCT_COMPATIBILITY_MODE
+    [global::System.Diagnostics.DebuggerNonUserCodeAttribute]
+    void pb::IBufferMessage.InternalMergeFrom(ref pb::ParseContext input) {
+      uint tag;
+      while ((tag = input.ReadTag()) != 0) {
+        switch(tag) {
+          default:
+            _unknownFields = pb::UnknownFieldSet.MergeFieldFrom(_unknownFields, ref input);
+            break;
+          case 10: {
+            Project = input.ReadString();
+            break;
+          }
+          case 16: {
+            PageSize = input.ReadInt32();
+            break;
+          }
+          case 26: {
+            PageToken = input.ReadString();
+            break;
+          }
+        }
+      }
+    }
+    #endif
 
   }
 
   /// <summary>
   /// Response for the `ListSubscriptions` method.
   /// </summary>
-  public sealed partial class ListSubscriptionsResponse : pb::IMessage<ListSubscriptionsResponse> {
+  public sealed partial class ListSubscriptionsResponse : pb::IMessage<ListSubscriptionsResponse>
+  #if !GOOGLE_PROTOBUF_REFSTRUCT_COMPATIBILITY_MODE
+      , pb::IBufferMessage
+  #endif
+  {
     private static readonly pb::MessageParser<ListSubscriptionsResponse> _parser = new pb::MessageParser<ListSubscriptionsResponse>(() => new ListSubscriptionsResponse());
     private pb::UnknownFieldSet _unknownFields;
     [global::System.Diagnostics.DebuggerNonUserCodeAttribute]
@@ -4727,7 +6775,7 @@ namespace Google.Cloud.PubSub.V1 {
 
     [global::System.Diagnostics.DebuggerNonUserCodeAttribute]
     public static pbr::MessageDescriptor Descriptor {
-      get { return global::Google.Cloud.PubSub.V1.PubsubReflection.Descriptor.MessageTypes[22]; }
+      get { return global::Google.Cloud.PubSub.V1.PubsubReflection.Descriptor.MessageTypes[25]; }
     }
 
     [global::System.Diagnostics.DebuggerNonUserCodeAttribute]
@@ -4819,6 +6867,9 @@ namespace Google.Cloud.PubSub.V1 {
 
     [global::System.Diagnostics.DebuggerNonUserCodeAttribute]
     public void WriteTo(pb::CodedOutputStream output) {
+    #if !GOOGLE_PROTOBUF_REFSTRUCT_COMPATIBILITY_MODE
+      output.WriteRawMessage(this);
+    #else
       subscriptions_.WriteTo(output, _repeated_subscriptions_codec);
       if (NextPageToken.Length != 0) {
         output.WriteRawTag(18);
@@ -4827,7 +6878,22 @@ namespace Google.Cloud.PubSub.V1 {
       if (_unknownFields != null) {
         _unknownFields.WriteTo(output);
       }
+    #endif
     }
+
+    #if !GOOGLE_PROTOBUF_REFSTRUCT_COMPATIBILITY_MODE
+    [global::System.Diagnostics.DebuggerNonUserCodeAttribute]
+    void pb::IBufferMessage.InternalWriteTo(ref pb::WriteContext output) {
+      subscriptions_.WriteTo(ref output, _repeated_subscriptions_codec);
+      if (NextPageToken.Length != 0) {
+        output.WriteRawTag(18);
+        output.WriteString(NextPageToken);
+      }
+      if (_unknownFields != null) {
+        _unknownFields.WriteTo(ref output);
+      }
+    }
+    #endif
 
     [global::System.Diagnostics.DebuggerNonUserCodeAttribute]
     public int CalculateSize() {
@@ -4856,6 +6922,9 @@ namespace Google.Cloud.PubSub.V1 {
 
     [global::System.Diagnostics.DebuggerNonUserCodeAttribute]
     public void MergeFrom(pb::CodedInputStream input) {
+    #if !GOOGLE_PROTOBUF_REFSTRUCT_COMPATIBILITY_MODE
+      input.ReadRawMessage(this);
+    #else
       uint tag;
       while ((tag = input.ReadTag()) != 0) {
         switch(tag) {
@@ -4872,14 +6941,41 @@ namespace Google.Cloud.PubSub.V1 {
           }
         }
       }
+    #endif
     }
+
+    #if !GOOGLE_PROTOBUF_REFSTRUCT_COMPATIBILITY_MODE
+    [global::System.Diagnostics.DebuggerNonUserCodeAttribute]
+    void pb::IBufferMessage.InternalMergeFrom(ref pb::ParseContext input) {
+      uint tag;
+      while ((tag = input.ReadTag()) != 0) {
+        switch(tag) {
+          default:
+            _unknownFields = pb::UnknownFieldSet.MergeFieldFrom(_unknownFields, ref input);
+            break;
+          case 10: {
+            subscriptions_.AddEntriesFrom(ref input, _repeated_subscriptions_codec);
+            break;
+          }
+          case 18: {
+            NextPageToken = input.ReadString();
+            break;
+          }
+        }
+      }
+    }
+    #endif
 
   }
 
   /// <summary>
   /// Request for the DeleteSubscription method.
   /// </summary>
-  public sealed partial class DeleteSubscriptionRequest : pb::IMessage<DeleteSubscriptionRequest> {
+  public sealed partial class DeleteSubscriptionRequest : pb::IMessage<DeleteSubscriptionRequest>
+  #if !GOOGLE_PROTOBUF_REFSTRUCT_COMPATIBILITY_MODE
+      , pb::IBufferMessage
+  #endif
+  {
     private static readonly pb::MessageParser<DeleteSubscriptionRequest> _parser = new pb::MessageParser<DeleteSubscriptionRequest>(() => new DeleteSubscriptionRequest());
     private pb::UnknownFieldSet _unknownFields;
     [global::System.Diagnostics.DebuggerNonUserCodeAttribute]
@@ -4887,7 +6983,7 @@ namespace Google.Cloud.PubSub.V1 {
 
     [global::System.Diagnostics.DebuggerNonUserCodeAttribute]
     public static pbr::MessageDescriptor Descriptor {
-      get { return global::Google.Cloud.PubSub.V1.PubsubReflection.Descriptor.MessageTypes[23]; }
+      get { return global::Google.Cloud.PubSub.V1.PubsubReflection.Descriptor.MessageTypes[26]; }
     }
 
     [global::System.Diagnostics.DebuggerNonUserCodeAttribute]
@@ -4917,7 +7013,7 @@ namespace Google.Cloud.PubSub.V1 {
     public const int SubscriptionFieldNumber = 1;
     private string subscription_ = "";
     /// <summary>
-    /// The subscription to delete.
+    /// Required. The subscription to delete.
     /// Format is `projects/{project}/subscriptions/{sub}`.
     /// </summary>
     [global::System.Diagnostics.DebuggerNonUserCodeAttribute]
@@ -4962,6 +7058,9 @@ namespace Google.Cloud.PubSub.V1 {
 
     [global::System.Diagnostics.DebuggerNonUserCodeAttribute]
     public void WriteTo(pb::CodedOutputStream output) {
+    #if !GOOGLE_PROTOBUF_REFSTRUCT_COMPATIBILITY_MODE
+      output.WriteRawMessage(this);
+    #else
       if (Subscription.Length != 0) {
         output.WriteRawTag(10);
         output.WriteString(Subscription);
@@ -4969,7 +7068,21 @@ namespace Google.Cloud.PubSub.V1 {
       if (_unknownFields != null) {
         _unknownFields.WriteTo(output);
       }
+    #endif
     }
+
+    #if !GOOGLE_PROTOBUF_REFSTRUCT_COMPATIBILITY_MODE
+    [global::System.Diagnostics.DebuggerNonUserCodeAttribute]
+    void pb::IBufferMessage.InternalWriteTo(ref pb::WriteContext output) {
+      if (Subscription.Length != 0) {
+        output.WriteRawTag(10);
+        output.WriteString(Subscription);
+      }
+      if (_unknownFields != null) {
+        _unknownFields.WriteTo(ref output);
+      }
+    }
+    #endif
 
     [global::System.Diagnostics.DebuggerNonUserCodeAttribute]
     public int CalculateSize() {
@@ -4996,6 +7109,9 @@ namespace Google.Cloud.PubSub.V1 {
 
     [global::System.Diagnostics.DebuggerNonUserCodeAttribute]
     public void MergeFrom(pb::CodedInputStream input) {
+    #if !GOOGLE_PROTOBUF_REFSTRUCT_COMPATIBILITY_MODE
+      input.ReadRawMessage(this);
+    #else
       uint tag;
       while ((tag = input.ReadTag()) != 0) {
         switch(tag) {
@@ -5008,14 +7124,37 @@ namespace Google.Cloud.PubSub.V1 {
           }
         }
       }
+    #endif
     }
+
+    #if !GOOGLE_PROTOBUF_REFSTRUCT_COMPATIBILITY_MODE
+    [global::System.Diagnostics.DebuggerNonUserCodeAttribute]
+    void pb::IBufferMessage.InternalMergeFrom(ref pb::ParseContext input) {
+      uint tag;
+      while ((tag = input.ReadTag()) != 0) {
+        switch(tag) {
+          default:
+            _unknownFields = pb::UnknownFieldSet.MergeFieldFrom(_unknownFields, ref input);
+            break;
+          case 10: {
+            Subscription = input.ReadString();
+            break;
+          }
+        }
+      }
+    }
+    #endif
 
   }
 
   /// <summary>
   /// Request for the ModifyPushConfig method.
   /// </summary>
-  public sealed partial class ModifyPushConfigRequest : pb::IMessage<ModifyPushConfigRequest> {
+  public sealed partial class ModifyPushConfigRequest : pb::IMessage<ModifyPushConfigRequest>
+  #if !GOOGLE_PROTOBUF_REFSTRUCT_COMPATIBILITY_MODE
+      , pb::IBufferMessage
+  #endif
+  {
     private static readonly pb::MessageParser<ModifyPushConfigRequest> _parser = new pb::MessageParser<ModifyPushConfigRequest>(() => new ModifyPushConfigRequest());
     private pb::UnknownFieldSet _unknownFields;
     [global::System.Diagnostics.DebuggerNonUserCodeAttribute]
@@ -5023,7 +7162,7 @@ namespace Google.Cloud.PubSub.V1 {
 
     [global::System.Diagnostics.DebuggerNonUserCodeAttribute]
     public static pbr::MessageDescriptor Descriptor {
-      get { return global::Google.Cloud.PubSub.V1.PubsubReflection.Descriptor.MessageTypes[24]; }
+      get { return global::Google.Cloud.PubSub.V1.PubsubReflection.Descriptor.MessageTypes[27]; }
     }
 
     [global::System.Diagnostics.DebuggerNonUserCodeAttribute]
@@ -5054,7 +7193,7 @@ namespace Google.Cloud.PubSub.V1 {
     public const int SubscriptionFieldNumber = 1;
     private string subscription_ = "";
     /// <summary>
-    /// The name of the subscription.
+    /// Required. The name of the subscription.
     /// Format is `projects/{project}/subscriptions/{sub}`.
     /// </summary>
     [global::System.Diagnostics.DebuggerNonUserCodeAttribute]
@@ -5069,7 +7208,7 @@ namespace Google.Cloud.PubSub.V1 {
     public const int PushConfigFieldNumber = 2;
     private global::Google.Cloud.PubSub.V1.PushConfig pushConfig_;
     /// <summary>
-    /// The push configuration for future deliveries.
+    /// Required. The push configuration for future deliveries.
     ///
     /// An empty `pushConfig` indicates that the Pub/Sub system should
     /// stop pushing messages from the given subscription and allow
@@ -5120,6 +7259,9 @@ namespace Google.Cloud.PubSub.V1 {
 
     [global::System.Diagnostics.DebuggerNonUserCodeAttribute]
     public void WriteTo(pb::CodedOutputStream output) {
+    #if !GOOGLE_PROTOBUF_REFSTRUCT_COMPATIBILITY_MODE
+      output.WriteRawMessage(this);
+    #else
       if (Subscription.Length != 0) {
         output.WriteRawTag(10);
         output.WriteString(Subscription);
@@ -5131,7 +7273,25 @@ namespace Google.Cloud.PubSub.V1 {
       if (_unknownFields != null) {
         _unknownFields.WriteTo(output);
       }
+    #endif
     }
+
+    #if !GOOGLE_PROTOBUF_REFSTRUCT_COMPATIBILITY_MODE
+    [global::System.Diagnostics.DebuggerNonUserCodeAttribute]
+    void pb::IBufferMessage.InternalWriteTo(ref pb::WriteContext output) {
+      if (Subscription.Length != 0) {
+        output.WriteRawTag(10);
+        output.WriteString(Subscription);
+      }
+      if (pushConfig_ != null) {
+        output.WriteRawTag(18);
+        output.WriteMessage(PushConfig);
+      }
+      if (_unknownFields != null) {
+        _unknownFields.WriteTo(ref output);
+      }
+    }
+    #endif
 
     [global::System.Diagnostics.DebuggerNonUserCodeAttribute]
     public int CalculateSize() {
@@ -5167,6 +7327,9 @@ namespace Google.Cloud.PubSub.V1 {
 
     [global::System.Diagnostics.DebuggerNonUserCodeAttribute]
     public void MergeFrom(pb::CodedInputStream input) {
+    #if !GOOGLE_PROTOBUF_REFSTRUCT_COMPATIBILITY_MODE
+      input.ReadRawMessage(this);
+    #else
       uint tag;
       while ((tag = input.ReadTag()) != 0) {
         switch(tag) {
@@ -5186,14 +7349,44 @@ namespace Google.Cloud.PubSub.V1 {
           }
         }
       }
+    #endif
     }
+
+    #if !GOOGLE_PROTOBUF_REFSTRUCT_COMPATIBILITY_MODE
+    [global::System.Diagnostics.DebuggerNonUserCodeAttribute]
+    void pb::IBufferMessage.InternalMergeFrom(ref pb::ParseContext input) {
+      uint tag;
+      while ((tag = input.ReadTag()) != 0) {
+        switch(tag) {
+          default:
+            _unknownFields = pb::UnknownFieldSet.MergeFieldFrom(_unknownFields, ref input);
+            break;
+          case 10: {
+            Subscription = input.ReadString();
+            break;
+          }
+          case 18: {
+            if (pushConfig_ == null) {
+              PushConfig = new global::Google.Cloud.PubSub.V1.PushConfig();
+            }
+            input.ReadMessage(PushConfig);
+            break;
+          }
+        }
+      }
+    }
+    #endif
 
   }
 
   /// <summary>
   /// Request for the `Pull` method.
   /// </summary>
-  public sealed partial class PullRequest : pb::IMessage<PullRequest> {
+  public sealed partial class PullRequest : pb::IMessage<PullRequest>
+  #if !GOOGLE_PROTOBUF_REFSTRUCT_COMPATIBILITY_MODE
+      , pb::IBufferMessage
+  #endif
+  {
     private static readonly pb::MessageParser<PullRequest> _parser = new pb::MessageParser<PullRequest>(() => new PullRequest());
     private pb::UnknownFieldSet _unknownFields;
     [global::System.Diagnostics.DebuggerNonUserCodeAttribute]
@@ -5201,7 +7394,7 @@ namespace Google.Cloud.PubSub.V1 {
 
     [global::System.Diagnostics.DebuggerNonUserCodeAttribute]
     public static pbr::MessageDescriptor Descriptor {
-      get { return global::Google.Cloud.PubSub.V1.PubsubReflection.Descriptor.MessageTypes[25]; }
+      get { return global::Google.Cloud.PubSub.V1.PubsubReflection.Descriptor.MessageTypes[28]; }
     }
 
     [global::System.Diagnostics.DebuggerNonUserCodeAttribute]
@@ -5233,7 +7426,7 @@ namespace Google.Cloud.PubSub.V1 {
     public const int SubscriptionFieldNumber = 1;
     private string subscription_ = "";
     /// <summary>
-    /// The subscription from which messages should be pulled.
+    /// Required. The subscription from which messages should be pulled.
     /// Format is `projects/{project}/subscriptions/{sub}`.
     /// </summary>
     [global::System.Diagnostics.DebuggerNonUserCodeAttribute]
@@ -5248,11 +7441,15 @@ namespace Google.Cloud.PubSub.V1 {
     public const int ReturnImmediatelyFieldNumber = 2;
     private bool returnImmediately_;
     /// <summary>
-    /// If this field set to true, the system will respond immediately even if
-    /// it there are no messages available to return in the `Pull` response.
-    /// Otherwise, the system may wait (for a bounded amount of time) until at
-    /// least one message is available, rather than returning no messages.
+    /// Optional. If this field set to true, the system will respond immediately
+    /// even if it there are no messages available to return in the `Pull`
+    /// response. Otherwise, the system may wait (for a bounded amount of time)
+    /// until at least one message is available, rather than returning no messages.
+    /// Warning: setting this field to `true` is discouraged because it adversely
+    /// impacts the performance of `Pull` operations. We recommend that users do
+    /// not set this field.
     /// </summary>
+    [global::System.ObsoleteAttribute]
     [global::System.Diagnostics.DebuggerNonUserCodeAttribute]
     public bool ReturnImmediately {
       get { return returnImmediately_; }
@@ -5265,8 +7462,8 @@ namespace Google.Cloud.PubSub.V1 {
     public const int MaxMessagesFieldNumber = 3;
     private int maxMessages_;
     /// <summary>
-    /// The maximum number of messages to return for this request. Must be a
-    /// positive integer. The Pub/Sub system may return fewer than the number
+    /// Required. The maximum number of messages to return for this request. Must
+    /// be a positive integer. The Pub/Sub system may return fewer than the number
     /// specified.
     /// </summary>
     [global::System.Diagnostics.DebuggerNonUserCodeAttribute]
@@ -5315,6 +7512,9 @@ namespace Google.Cloud.PubSub.V1 {
 
     [global::System.Diagnostics.DebuggerNonUserCodeAttribute]
     public void WriteTo(pb::CodedOutputStream output) {
+    #if !GOOGLE_PROTOBUF_REFSTRUCT_COMPATIBILITY_MODE
+      output.WriteRawMessage(this);
+    #else
       if (Subscription.Length != 0) {
         output.WriteRawTag(10);
         output.WriteString(Subscription);
@@ -5330,7 +7530,29 @@ namespace Google.Cloud.PubSub.V1 {
       if (_unknownFields != null) {
         _unknownFields.WriteTo(output);
       }
+    #endif
     }
+
+    #if !GOOGLE_PROTOBUF_REFSTRUCT_COMPATIBILITY_MODE
+    [global::System.Diagnostics.DebuggerNonUserCodeAttribute]
+    void pb::IBufferMessage.InternalWriteTo(ref pb::WriteContext output) {
+      if (Subscription.Length != 0) {
+        output.WriteRawTag(10);
+        output.WriteString(Subscription);
+      }
+      if (ReturnImmediately != false) {
+        output.WriteRawTag(16);
+        output.WriteBool(ReturnImmediately);
+      }
+      if (MaxMessages != 0) {
+        output.WriteRawTag(24);
+        output.WriteInt32(MaxMessages);
+      }
+      if (_unknownFields != null) {
+        _unknownFields.WriteTo(ref output);
+      }
+    }
+    #endif
 
     [global::System.Diagnostics.DebuggerNonUserCodeAttribute]
     public int CalculateSize() {
@@ -5369,6 +7591,9 @@ namespace Google.Cloud.PubSub.V1 {
 
     [global::System.Diagnostics.DebuggerNonUserCodeAttribute]
     public void MergeFrom(pb::CodedInputStream input) {
+    #if !GOOGLE_PROTOBUF_REFSTRUCT_COMPATIBILITY_MODE
+      input.ReadRawMessage(this);
+    #else
       uint tag;
       while ((tag = input.ReadTag()) != 0) {
         switch(tag) {
@@ -5389,14 +7614,45 @@ namespace Google.Cloud.PubSub.V1 {
           }
         }
       }
+    #endif
     }
+
+    #if !GOOGLE_PROTOBUF_REFSTRUCT_COMPATIBILITY_MODE
+    [global::System.Diagnostics.DebuggerNonUserCodeAttribute]
+    void pb::IBufferMessage.InternalMergeFrom(ref pb::ParseContext input) {
+      uint tag;
+      while ((tag = input.ReadTag()) != 0) {
+        switch(tag) {
+          default:
+            _unknownFields = pb::UnknownFieldSet.MergeFieldFrom(_unknownFields, ref input);
+            break;
+          case 10: {
+            Subscription = input.ReadString();
+            break;
+          }
+          case 16: {
+            ReturnImmediately = input.ReadBool();
+            break;
+          }
+          case 24: {
+            MaxMessages = input.ReadInt32();
+            break;
+          }
+        }
+      }
+    }
+    #endif
 
   }
 
   /// <summary>
   /// Response for the `Pull` method.
   /// </summary>
-  public sealed partial class PullResponse : pb::IMessage<PullResponse> {
+  public sealed partial class PullResponse : pb::IMessage<PullResponse>
+  #if !GOOGLE_PROTOBUF_REFSTRUCT_COMPATIBILITY_MODE
+      , pb::IBufferMessage
+  #endif
+  {
     private static readonly pb::MessageParser<PullResponse> _parser = new pb::MessageParser<PullResponse>(() => new PullResponse());
     private pb::UnknownFieldSet _unknownFields;
     [global::System.Diagnostics.DebuggerNonUserCodeAttribute]
@@ -5404,7 +7660,7 @@ namespace Google.Cloud.PubSub.V1 {
 
     [global::System.Diagnostics.DebuggerNonUserCodeAttribute]
     public static pbr::MessageDescriptor Descriptor {
-      get { return global::Google.Cloud.PubSub.V1.PubsubReflection.Descriptor.MessageTypes[26]; }
+      get { return global::Google.Cloud.PubSub.V1.PubsubReflection.Descriptor.MessageTypes[29]; }
     }
 
     [global::System.Diagnostics.DebuggerNonUserCodeAttribute]
@@ -5480,11 +7736,25 @@ namespace Google.Cloud.PubSub.V1 {
 
     [global::System.Diagnostics.DebuggerNonUserCodeAttribute]
     public void WriteTo(pb::CodedOutputStream output) {
+    #if !GOOGLE_PROTOBUF_REFSTRUCT_COMPATIBILITY_MODE
+      output.WriteRawMessage(this);
+    #else
       receivedMessages_.WriteTo(output, _repeated_receivedMessages_codec);
       if (_unknownFields != null) {
         _unknownFields.WriteTo(output);
       }
+    #endif
     }
+
+    #if !GOOGLE_PROTOBUF_REFSTRUCT_COMPATIBILITY_MODE
+    [global::System.Diagnostics.DebuggerNonUserCodeAttribute]
+    void pb::IBufferMessage.InternalWriteTo(ref pb::WriteContext output) {
+      receivedMessages_.WriteTo(ref output, _repeated_receivedMessages_codec);
+      if (_unknownFields != null) {
+        _unknownFields.WriteTo(ref output);
+      }
+    }
+    #endif
 
     [global::System.Diagnostics.DebuggerNonUserCodeAttribute]
     public int CalculateSize() {
@@ -5507,6 +7777,9 @@ namespace Google.Cloud.PubSub.V1 {
 
     [global::System.Diagnostics.DebuggerNonUserCodeAttribute]
     public void MergeFrom(pb::CodedInputStream input) {
+    #if !GOOGLE_PROTOBUF_REFSTRUCT_COMPATIBILITY_MODE
+      input.ReadRawMessage(this);
+    #else
       uint tag;
       while ((tag = input.ReadTag()) != 0) {
         switch(tag) {
@@ -5519,14 +7792,37 @@ namespace Google.Cloud.PubSub.V1 {
           }
         }
       }
+    #endif
     }
+
+    #if !GOOGLE_PROTOBUF_REFSTRUCT_COMPATIBILITY_MODE
+    [global::System.Diagnostics.DebuggerNonUserCodeAttribute]
+    void pb::IBufferMessage.InternalMergeFrom(ref pb::ParseContext input) {
+      uint tag;
+      while ((tag = input.ReadTag()) != 0) {
+        switch(tag) {
+          default:
+            _unknownFields = pb::UnknownFieldSet.MergeFieldFrom(_unknownFields, ref input);
+            break;
+          case 10: {
+            receivedMessages_.AddEntriesFrom(ref input, _repeated_receivedMessages_codec);
+            break;
+          }
+        }
+      }
+    }
+    #endif
 
   }
 
   /// <summary>
   /// Request for the ModifyAckDeadline method.
   /// </summary>
-  public sealed partial class ModifyAckDeadlineRequest : pb::IMessage<ModifyAckDeadlineRequest> {
+  public sealed partial class ModifyAckDeadlineRequest : pb::IMessage<ModifyAckDeadlineRequest>
+  #if !GOOGLE_PROTOBUF_REFSTRUCT_COMPATIBILITY_MODE
+      , pb::IBufferMessage
+  #endif
+  {
     private static readonly pb::MessageParser<ModifyAckDeadlineRequest> _parser = new pb::MessageParser<ModifyAckDeadlineRequest>(() => new ModifyAckDeadlineRequest());
     private pb::UnknownFieldSet _unknownFields;
     [global::System.Diagnostics.DebuggerNonUserCodeAttribute]
@@ -5534,7 +7830,7 @@ namespace Google.Cloud.PubSub.V1 {
 
     [global::System.Diagnostics.DebuggerNonUserCodeAttribute]
     public static pbr::MessageDescriptor Descriptor {
-      get { return global::Google.Cloud.PubSub.V1.PubsubReflection.Descriptor.MessageTypes[27]; }
+      get { return global::Google.Cloud.PubSub.V1.PubsubReflection.Descriptor.MessageTypes[30]; }
     }
 
     [global::System.Diagnostics.DebuggerNonUserCodeAttribute]
@@ -5566,7 +7862,7 @@ namespace Google.Cloud.PubSub.V1 {
     public const int SubscriptionFieldNumber = 1;
     private string subscription_ = "";
     /// <summary>
-    /// The name of the subscription.
+    /// Required. The name of the subscription.
     /// Format is `projects/{project}/subscriptions/{sub}`.
     /// </summary>
     [global::System.Diagnostics.DebuggerNonUserCodeAttribute]
@@ -5583,7 +7879,7 @@ namespace Google.Cloud.PubSub.V1 {
         = pb::FieldCodec.ForString(34);
     private readonly pbc::RepeatedField<string> ackIds_ = new pbc::RepeatedField<string>();
     /// <summary>
-    /// List of acknowledgment IDs.
+    /// Required. List of acknowledgment IDs.
     /// </summary>
     [global::System.Diagnostics.DebuggerNonUserCodeAttribute]
     public pbc::RepeatedField<string> AckIds {
@@ -5594,10 +7890,10 @@ namespace Google.Cloud.PubSub.V1 {
     public const int AckDeadlineSecondsFieldNumber = 3;
     private int ackDeadlineSeconds_;
     /// <summary>
-    /// The new ack deadline with respect to the time this request was sent to
-    /// the Pub/Sub system. For example, if the value is 10, the new
-    /// ack deadline will expire 10 seconds after the `ModifyAckDeadline` call
-    /// was made. Specifying zero might immediately make the message available for
+    /// Required. The new ack deadline with respect to the time this request was
+    /// sent to the Pub/Sub system. For example, if the value is 10, the new ack
+    /// deadline will expire 10 seconds after the `ModifyAckDeadline` call was
+    /// made. Specifying zero might immediately make the message available for
     /// delivery to another subscriber client. This typically results in an
     /// increase in the rate of message redeliveries (that is, duplicates).
     /// The minimum deadline you can specify is 0 seconds.
@@ -5649,6 +7945,9 @@ namespace Google.Cloud.PubSub.V1 {
 
     [global::System.Diagnostics.DebuggerNonUserCodeAttribute]
     public void WriteTo(pb::CodedOutputStream output) {
+    #if !GOOGLE_PROTOBUF_REFSTRUCT_COMPATIBILITY_MODE
+      output.WriteRawMessage(this);
+    #else
       if (Subscription.Length != 0) {
         output.WriteRawTag(10);
         output.WriteString(Subscription);
@@ -5661,7 +7960,26 @@ namespace Google.Cloud.PubSub.V1 {
       if (_unknownFields != null) {
         _unknownFields.WriteTo(output);
       }
+    #endif
     }
+
+    #if !GOOGLE_PROTOBUF_REFSTRUCT_COMPATIBILITY_MODE
+    [global::System.Diagnostics.DebuggerNonUserCodeAttribute]
+    void pb::IBufferMessage.InternalWriteTo(ref pb::WriteContext output) {
+      if (Subscription.Length != 0) {
+        output.WriteRawTag(10);
+        output.WriteString(Subscription);
+      }
+      if (AckDeadlineSeconds != 0) {
+        output.WriteRawTag(24);
+        output.WriteInt32(AckDeadlineSeconds);
+      }
+      ackIds_.WriteTo(ref output, _repeated_ackIds_codec);
+      if (_unknownFields != null) {
+        _unknownFields.WriteTo(ref output);
+      }
+    }
+    #endif
 
     [global::System.Diagnostics.DebuggerNonUserCodeAttribute]
     public int CalculateSize() {
@@ -5696,6 +8014,9 @@ namespace Google.Cloud.PubSub.V1 {
 
     [global::System.Diagnostics.DebuggerNonUserCodeAttribute]
     public void MergeFrom(pb::CodedInputStream input) {
+    #if !GOOGLE_PROTOBUF_REFSTRUCT_COMPATIBILITY_MODE
+      input.ReadRawMessage(this);
+    #else
       uint tag;
       while ((tag = input.ReadTag()) != 0) {
         switch(tag) {
@@ -5716,14 +8037,45 @@ namespace Google.Cloud.PubSub.V1 {
           }
         }
       }
+    #endif
     }
+
+    #if !GOOGLE_PROTOBUF_REFSTRUCT_COMPATIBILITY_MODE
+    [global::System.Diagnostics.DebuggerNonUserCodeAttribute]
+    void pb::IBufferMessage.InternalMergeFrom(ref pb::ParseContext input) {
+      uint tag;
+      while ((tag = input.ReadTag()) != 0) {
+        switch(tag) {
+          default:
+            _unknownFields = pb::UnknownFieldSet.MergeFieldFrom(_unknownFields, ref input);
+            break;
+          case 10: {
+            Subscription = input.ReadString();
+            break;
+          }
+          case 24: {
+            AckDeadlineSeconds = input.ReadInt32();
+            break;
+          }
+          case 34: {
+            ackIds_.AddEntriesFrom(ref input, _repeated_ackIds_codec);
+            break;
+          }
+        }
+      }
+    }
+    #endif
 
   }
 
   /// <summary>
   /// Request for the Acknowledge method.
   /// </summary>
-  public sealed partial class AcknowledgeRequest : pb::IMessage<AcknowledgeRequest> {
+  public sealed partial class AcknowledgeRequest : pb::IMessage<AcknowledgeRequest>
+  #if !GOOGLE_PROTOBUF_REFSTRUCT_COMPATIBILITY_MODE
+      , pb::IBufferMessage
+  #endif
+  {
     private static readonly pb::MessageParser<AcknowledgeRequest> _parser = new pb::MessageParser<AcknowledgeRequest>(() => new AcknowledgeRequest());
     private pb::UnknownFieldSet _unknownFields;
     [global::System.Diagnostics.DebuggerNonUserCodeAttribute]
@@ -5731,7 +8083,7 @@ namespace Google.Cloud.PubSub.V1 {
 
     [global::System.Diagnostics.DebuggerNonUserCodeAttribute]
     public static pbr::MessageDescriptor Descriptor {
-      get { return global::Google.Cloud.PubSub.V1.PubsubReflection.Descriptor.MessageTypes[28]; }
+      get { return global::Google.Cloud.PubSub.V1.PubsubReflection.Descriptor.MessageTypes[31]; }
     }
 
     [global::System.Diagnostics.DebuggerNonUserCodeAttribute]
@@ -5762,7 +8114,7 @@ namespace Google.Cloud.PubSub.V1 {
     public const int SubscriptionFieldNumber = 1;
     private string subscription_ = "";
     /// <summary>
-    /// The subscription whose message is being acknowledged.
+    /// Required. The subscription whose message is being acknowledged.
     /// Format is `projects/{project}/subscriptions/{sub}`.
     /// </summary>
     [global::System.Diagnostics.DebuggerNonUserCodeAttribute]
@@ -5779,8 +8131,9 @@ namespace Google.Cloud.PubSub.V1 {
         = pb::FieldCodec.ForString(18);
     private readonly pbc::RepeatedField<string> ackIds_ = new pbc::RepeatedField<string>();
     /// <summary>
-    /// The acknowledgment ID for the messages being acknowledged that was returned
-    /// by the Pub/Sub system in the `Pull` response. Must not be empty.
+    /// Required. The acknowledgment ID for the messages being acknowledged that
+    /// was returned by the Pub/Sub system in the `Pull` response. Must not be
+    /// empty.
     /// </summary>
     [global::System.Diagnostics.DebuggerNonUserCodeAttribute]
     public pbc::RepeatedField<string> AckIds {
@@ -5823,6 +8176,9 @@ namespace Google.Cloud.PubSub.V1 {
 
     [global::System.Diagnostics.DebuggerNonUserCodeAttribute]
     public void WriteTo(pb::CodedOutputStream output) {
+    #if !GOOGLE_PROTOBUF_REFSTRUCT_COMPATIBILITY_MODE
+      output.WriteRawMessage(this);
+    #else
       if (Subscription.Length != 0) {
         output.WriteRawTag(10);
         output.WriteString(Subscription);
@@ -5831,7 +8187,22 @@ namespace Google.Cloud.PubSub.V1 {
       if (_unknownFields != null) {
         _unknownFields.WriteTo(output);
       }
+    #endif
     }
+
+    #if !GOOGLE_PROTOBUF_REFSTRUCT_COMPATIBILITY_MODE
+    [global::System.Diagnostics.DebuggerNonUserCodeAttribute]
+    void pb::IBufferMessage.InternalWriteTo(ref pb::WriteContext output) {
+      if (Subscription.Length != 0) {
+        output.WriteRawTag(10);
+        output.WriteString(Subscription);
+      }
+      ackIds_.WriteTo(ref output, _repeated_ackIds_codec);
+      if (_unknownFields != null) {
+        _unknownFields.WriteTo(ref output);
+      }
+    }
+    #endif
 
     [global::System.Diagnostics.DebuggerNonUserCodeAttribute]
     public int CalculateSize() {
@@ -5860,6 +8231,9 @@ namespace Google.Cloud.PubSub.V1 {
 
     [global::System.Diagnostics.DebuggerNonUserCodeAttribute]
     public void MergeFrom(pb::CodedInputStream input) {
+    #if !GOOGLE_PROTOBUF_REFSTRUCT_COMPATIBILITY_MODE
+      input.ReadRawMessage(this);
+    #else
       uint tag;
       while ((tag = input.ReadTag()) != 0) {
         switch(tag) {
@@ -5876,7 +8250,30 @@ namespace Google.Cloud.PubSub.V1 {
           }
         }
       }
+    #endif
     }
+
+    #if !GOOGLE_PROTOBUF_REFSTRUCT_COMPATIBILITY_MODE
+    [global::System.Diagnostics.DebuggerNonUserCodeAttribute]
+    void pb::IBufferMessage.InternalMergeFrom(ref pb::ParseContext input) {
+      uint tag;
+      while ((tag = input.ReadTag()) != 0) {
+        switch(tag) {
+          default:
+            _unknownFields = pb::UnknownFieldSet.MergeFieldFrom(_unknownFields, ref input);
+            break;
+          case 10: {
+            Subscription = input.ReadString();
+            break;
+          }
+          case 18: {
+            ackIds_.AddEntriesFrom(ref input, _repeated_ackIds_codec);
+            break;
+          }
+        }
+      }
+    }
+    #endif
 
   }
 
@@ -5885,7 +8282,11 @@ namespace Google.Cloud.PubSub.V1 {
   /// establish the initial stream as well as to stream acknowledgements and ack
   /// deadline modifications from the client to the server.
   /// </summary>
-  public sealed partial class StreamingPullRequest : pb::IMessage<StreamingPullRequest> {
+  public sealed partial class StreamingPullRequest : pb::IMessage<StreamingPullRequest>
+  #if !GOOGLE_PROTOBUF_REFSTRUCT_COMPATIBILITY_MODE
+      , pb::IBufferMessage
+  #endif
+  {
     private static readonly pb::MessageParser<StreamingPullRequest> _parser = new pb::MessageParser<StreamingPullRequest>(() => new StreamingPullRequest());
     private pb::UnknownFieldSet _unknownFields;
     [global::System.Diagnostics.DebuggerNonUserCodeAttribute]
@@ -5893,7 +8294,7 @@ namespace Google.Cloud.PubSub.V1 {
 
     [global::System.Diagnostics.DebuggerNonUserCodeAttribute]
     public static pbr::MessageDescriptor Descriptor {
-      get { return global::Google.Cloud.PubSub.V1.PubsubReflection.Descriptor.MessageTypes[29]; }
+      get { return global::Google.Cloud.PubSub.V1.PubsubReflection.Descriptor.MessageTypes[32]; }
     }
 
     [global::System.Diagnostics.DebuggerNonUserCodeAttribute]
@@ -5915,6 +8316,9 @@ namespace Google.Cloud.PubSub.V1 {
       modifyDeadlineSeconds_ = other.modifyDeadlineSeconds_.Clone();
       modifyDeadlineAckIds_ = other.modifyDeadlineAckIds_.Clone();
       streamAckDeadlineSeconds_ = other.streamAckDeadlineSeconds_;
+      clientId_ = other.clientId_;
+      maxOutstandingMessages_ = other.maxOutstandingMessages_;
+      maxOutstandingBytes_ = other.maxOutstandingBytes_;
       _unknownFields = pb::UnknownFieldSet.Clone(other._unknownFields);
     }
 
@@ -5927,8 +8331,8 @@ namespace Google.Cloud.PubSub.V1 {
     public const int SubscriptionFieldNumber = 1;
     private string subscription_ = "";
     /// <summary>
-    /// The subscription for which to initialize the new stream. This must be
-    /// provided in the first request on the stream, and must not be set in
+    /// Required. The subscription for which to initialize the new stream. This
+    /// must be provided in the first request on the stream, and must not be set in
     /// subsequent requests from client to server.
     /// Format is `projects/{project}/subscriptions/{sub}`.
     /// </summary>
@@ -6001,8 +8405,8 @@ namespace Google.Cloud.PubSub.V1 {
     public const int StreamAckDeadlineSecondsFieldNumber = 5;
     private int streamAckDeadlineSeconds_;
     /// <summary>
-    /// The ack deadline to use for the stream. This must be provided in the
-    /// first request on the stream, but it can also be updated on subsequent
+    /// Required. The ack deadline to use for the stream. This must be provided in
+    /// the first request on the stream, but it can also be updated on subsequent
     /// requests from client to server. The minimum deadline you can specify is 10
     /// seconds. The maximum deadline you can specify is 600 seconds (10 minutes).
     /// </summary>
@@ -6011,6 +8415,69 @@ namespace Google.Cloud.PubSub.V1 {
       get { return streamAckDeadlineSeconds_; }
       set {
         streamAckDeadlineSeconds_ = value;
+      }
+    }
+
+    /// <summary>Field number for the "client_id" field.</summary>
+    public const int ClientIdFieldNumber = 6;
+    private string clientId_ = "";
+    /// <summary>
+    /// A unique identifier that is used to distinguish client instances from each
+    /// other. Only needs to be provided on the initial request. When a stream
+    /// disconnects and reconnects for the same stream, the client_id should be set
+    /// to the same value so that state associated with the old stream can be
+    /// transferred to the new stream. The same client_id should not be used for
+    /// different client instances.
+    /// </summary>
+    [global::System.Diagnostics.DebuggerNonUserCodeAttribute]
+    public string ClientId {
+      get { return clientId_; }
+      set {
+        clientId_ = pb::ProtoPreconditions.CheckNotNull(value, "value");
+      }
+    }
+
+    /// <summary>Field number for the "max_outstanding_messages" field.</summary>
+    public const int MaxOutstandingMessagesFieldNumber = 7;
+    private long maxOutstandingMessages_;
+    /// <summary>
+    /// Flow control settings for the maximum number of outstanding messages. When
+    /// there are `max_outstanding_messages` or more currently sent to the
+    /// streaming pull client that have not yet been acked or nacked, the server
+    /// stops sending more messages. The sending of messages resumes once the
+    /// number of outstanding messages is less than this value. If the value is
+    /// &lt;= 0, there is no limit to the number of outstanding messages. This
+    /// property can only be set on the initial StreamingPullRequest. If it is set
+    /// on a subsequent request, the stream will be aborted with status
+    /// `INVALID_ARGUMENT`.
+    /// </summary>
+    [global::System.Diagnostics.DebuggerNonUserCodeAttribute]
+    public long MaxOutstandingMessages {
+      get { return maxOutstandingMessages_; }
+      set {
+        maxOutstandingMessages_ = value;
+      }
+    }
+
+    /// <summary>Field number for the "max_outstanding_bytes" field.</summary>
+    public const int MaxOutstandingBytesFieldNumber = 8;
+    private long maxOutstandingBytes_;
+    /// <summary>
+    /// Flow control settings for the maximum number of outstanding bytes. When
+    /// there are `max_outstanding_bytes` or more worth of messages currently sent
+    /// to the streaming pull client that have not yet been acked or nacked, the
+    /// server will stop sending more messages. The sending of messages resumes
+    /// once the number of outstanding bytes is less than this value. If the value
+    /// is &lt;= 0, there is no limit to the number of outstanding bytes. This
+    /// property can only be set on the initial StreamingPullRequest. If it is set
+    /// on a subsequent request, the stream will be aborted with status
+    /// `INVALID_ARGUMENT`.
+    /// </summary>
+    [global::System.Diagnostics.DebuggerNonUserCodeAttribute]
+    public long MaxOutstandingBytes {
+      get { return maxOutstandingBytes_; }
+      set {
+        maxOutstandingBytes_ = value;
       }
     }
 
@@ -6032,6 +8499,9 @@ namespace Google.Cloud.PubSub.V1 {
       if(!modifyDeadlineSeconds_.Equals(other.modifyDeadlineSeconds_)) return false;
       if(!modifyDeadlineAckIds_.Equals(other.modifyDeadlineAckIds_)) return false;
       if (StreamAckDeadlineSeconds != other.StreamAckDeadlineSeconds) return false;
+      if (ClientId != other.ClientId) return false;
+      if (MaxOutstandingMessages != other.MaxOutstandingMessages) return false;
+      if (MaxOutstandingBytes != other.MaxOutstandingBytes) return false;
       return Equals(_unknownFields, other._unknownFields);
     }
 
@@ -6043,6 +8513,9 @@ namespace Google.Cloud.PubSub.V1 {
       hash ^= modifyDeadlineSeconds_.GetHashCode();
       hash ^= modifyDeadlineAckIds_.GetHashCode();
       if (StreamAckDeadlineSeconds != 0) hash ^= StreamAckDeadlineSeconds.GetHashCode();
+      if (ClientId.Length != 0) hash ^= ClientId.GetHashCode();
+      if (MaxOutstandingMessages != 0L) hash ^= MaxOutstandingMessages.GetHashCode();
+      if (MaxOutstandingBytes != 0L) hash ^= MaxOutstandingBytes.GetHashCode();
       if (_unknownFields != null) {
         hash ^= _unknownFields.GetHashCode();
       }
@@ -6056,6 +8529,9 @@ namespace Google.Cloud.PubSub.V1 {
 
     [global::System.Diagnostics.DebuggerNonUserCodeAttribute]
     public void WriteTo(pb::CodedOutputStream output) {
+    #if !GOOGLE_PROTOBUF_REFSTRUCT_COMPATIBILITY_MODE
+      output.WriteRawMessage(this);
+    #else
       if (Subscription.Length != 0) {
         output.WriteRawTag(10);
         output.WriteString(Subscription);
@@ -6067,10 +8543,55 @@ namespace Google.Cloud.PubSub.V1 {
         output.WriteRawTag(40);
         output.WriteInt32(StreamAckDeadlineSeconds);
       }
+      if (ClientId.Length != 0) {
+        output.WriteRawTag(50);
+        output.WriteString(ClientId);
+      }
+      if (MaxOutstandingMessages != 0L) {
+        output.WriteRawTag(56);
+        output.WriteInt64(MaxOutstandingMessages);
+      }
+      if (MaxOutstandingBytes != 0L) {
+        output.WriteRawTag(64);
+        output.WriteInt64(MaxOutstandingBytes);
+      }
       if (_unknownFields != null) {
         _unknownFields.WriteTo(output);
       }
+    #endif
     }
+
+    #if !GOOGLE_PROTOBUF_REFSTRUCT_COMPATIBILITY_MODE
+    [global::System.Diagnostics.DebuggerNonUserCodeAttribute]
+    void pb::IBufferMessage.InternalWriteTo(ref pb::WriteContext output) {
+      if (Subscription.Length != 0) {
+        output.WriteRawTag(10);
+        output.WriteString(Subscription);
+      }
+      ackIds_.WriteTo(ref output, _repeated_ackIds_codec);
+      modifyDeadlineSeconds_.WriteTo(ref output, _repeated_modifyDeadlineSeconds_codec);
+      modifyDeadlineAckIds_.WriteTo(ref output, _repeated_modifyDeadlineAckIds_codec);
+      if (StreamAckDeadlineSeconds != 0) {
+        output.WriteRawTag(40);
+        output.WriteInt32(StreamAckDeadlineSeconds);
+      }
+      if (ClientId.Length != 0) {
+        output.WriteRawTag(50);
+        output.WriteString(ClientId);
+      }
+      if (MaxOutstandingMessages != 0L) {
+        output.WriteRawTag(56);
+        output.WriteInt64(MaxOutstandingMessages);
+      }
+      if (MaxOutstandingBytes != 0L) {
+        output.WriteRawTag(64);
+        output.WriteInt64(MaxOutstandingBytes);
+      }
+      if (_unknownFields != null) {
+        _unknownFields.WriteTo(ref output);
+      }
+    }
+    #endif
 
     [global::System.Diagnostics.DebuggerNonUserCodeAttribute]
     public int CalculateSize() {
@@ -6083,6 +8604,15 @@ namespace Google.Cloud.PubSub.V1 {
       size += modifyDeadlineAckIds_.CalculateSize(_repeated_modifyDeadlineAckIds_codec);
       if (StreamAckDeadlineSeconds != 0) {
         size += 1 + pb::CodedOutputStream.ComputeInt32Size(StreamAckDeadlineSeconds);
+      }
+      if (ClientId.Length != 0) {
+        size += 1 + pb::CodedOutputStream.ComputeStringSize(ClientId);
+      }
+      if (MaxOutstandingMessages != 0L) {
+        size += 1 + pb::CodedOutputStream.ComputeInt64Size(MaxOutstandingMessages);
+      }
+      if (MaxOutstandingBytes != 0L) {
+        size += 1 + pb::CodedOutputStream.ComputeInt64Size(MaxOutstandingBytes);
       }
       if (_unknownFields != null) {
         size += _unknownFields.CalculateSize();
@@ -6104,11 +8634,23 @@ namespace Google.Cloud.PubSub.V1 {
       if (other.StreamAckDeadlineSeconds != 0) {
         StreamAckDeadlineSeconds = other.StreamAckDeadlineSeconds;
       }
+      if (other.ClientId.Length != 0) {
+        ClientId = other.ClientId;
+      }
+      if (other.MaxOutstandingMessages != 0L) {
+        MaxOutstandingMessages = other.MaxOutstandingMessages;
+      }
+      if (other.MaxOutstandingBytes != 0L) {
+        MaxOutstandingBytes = other.MaxOutstandingBytes;
+      }
       _unknownFields = pb::UnknownFieldSet.MergeFrom(_unknownFields, other._unknownFields);
     }
 
     [global::System.Diagnostics.DebuggerNonUserCodeAttribute]
     public void MergeFrom(pb::CodedInputStream input) {
+    #if !GOOGLE_PROTOBUF_REFSTRUCT_COMPATIBILITY_MODE
+      input.ReadRawMessage(this);
+    #else
       uint tag;
       while ((tag = input.ReadTag()) != 0) {
         switch(tag) {
@@ -6136,9 +8678,69 @@ namespace Google.Cloud.PubSub.V1 {
             StreamAckDeadlineSeconds = input.ReadInt32();
             break;
           }
+          case 50: {
+            ClientId = input.ReadString();
+            break;
+          }
+          case 56: {
+            MaxOutstandingMessages = input.ReadInt64();
+            break;
+          }
+          case 64: {
+            MaxOutstandingBytes = input.ReadInt64();
+            break;
+          }
+        }
+      }
+    #endif
+    }
+
+    #if !GOOGLE_PROTOBUF_REFSTRUCT_COMPATIBILITY_MODE
+    [global::System.Diagnostics.DebuggerNonUserCodeAttribute]
+    void pb::IBufferMessage.InternalMergeFrom(ref pb::ParseContext input) {
+      uint tag;
+      while ((tag = input.ReadTag()) != 0) {
+        switch(tag) {
+          default:
+            _unknownFields = pb::UnknownFieldSet.MergeFieldFrom(_unknownFields, ref input);
+            break;
+          case 10: {
+            Subscription = input.ReadString();
+            break;
+          }
+          case 18: {
+            ackIds_.AddEntriesFrom(ref input, _repeated_ackIds_codec);
+            break;
+          }
+          case 26:
+          case 24: {
+            modifyDeadlineSeconds_.AddEntriesFrom(ref input, _repeated_modifyDeadlineSeconds_codec);
+            break;
+          }
+          case 34: {
+            modifyDeadlineAckIds_.AddEntriesFrom(ref input, _repeated_modifyDeadlineAckIds_codec);
+            break;
+          }
+          case 40: {
+            StreamAckDeadlineSeconds = input.ReadInt32();
+            break;
+          }
+          case 50: {
+            ClientId = input.ReadString();
+            break;
+          }
+          case 56: {
+            MaxOutstandingMessages = input.ReadInt64();
+            break;
+          }
+          case 64: {
+            MaxOutstandingBytes = input.ReadInt64();
+            break;
+          }
         }
       }
     }
+    #endif
 
   }
 
@@ -6146,7 +8748,11 @@ namespace Google.Cloud.PubSub.V1 {
   /// Response for the `StreamingPull` method. This response is used to stream
   /// messages from the server to the client.
   /// </summary>
-  public sealed partial class StreamingPullResponse : pb::IMessage<StreamingPullResponse> {
+  public sealed partial class StreamingPullResponse : pb::IMessage<StreamingPullResponse>
+  #if !GOOGLE_PROTOBUF_REFSTRUCT_COMPATIBILITY_MODE
+      , pb::IBufferMessage
+  #endif
+  {
     private static readonly pb::MessageParser<StreamingPullResponse> _parser = new pb::MessageParser<StreamingPullResponse>(() => new StreamingPullResponse());
     private pb::UnknownFieldSet _unknownFields;
     [global::System.Diagnostics.DebuggerNonUserCodeAttribute]
@@ -6154,7 +8760,7 @@ namespace Google.Cloud.PubSub.V1 {
 
     [global::System.Diagnostics.DebuggerNonUserCodeAttribute]
     public static pbr::MessageDescriptor Descriptor {
-      get { return global::Google.Cloud.PubSub.V1.PubsubReflection.Descriptor.MessageTypes[30]; }
+      get { return global::Google.Cloud.PubSub.V1.PubsubReflection.Descriptor.MessageTypes[33]; }
     }
 
     [global::System.Diagnostics.DebuggerNonUserCodeAttribute]
@@ -6227,11 +8833,25 @@ namespace Google.Cloud.PubSub.V1 {
 
     [global::System.Diagnostics.DebuggerNonUserCodeAttribute]
     public void WriteTo(pb::CodedOutputStream output) {
+    #if !GOOGLE_PROTOBUF_REFSTRUCT_COMPATIBILITY_MODE
+      output.WriteRawMessage(this);
+    #else
       receivedMessages_.WriteTo(output, _repeated_receivedMessages_codec);
       if (_unknownFields != null) {
         _unknownFields.WriteTo(output);
       }
+    #endif
     }
+
+    #if !GOOGLE_PROTOBUF_REFSTRUCT_COMPATIBILITY_MODE
+    [global::System.Diagnostics.DebuggerNonUserCodeAttribute]
+    void pb::IBufferMessage.InternalWriteTo(ref pb::WriteContext output) {
+      receivedMessages_.WriteTo(ref output, _repeated_receivedMessages_codec);
+      if (_unknownFields != null) {
+        _unknownFields.WriteTo(ref output);
+      }
+    }
+    #endif
 
     [global::System.Diagnostics.DebuggerNonUserCodeAttribute]
     public int CalculateSize() {
@@ -6254,6 +8874,9 @@ namespace Google.Cloud.PubSub.V1 {
 
     [global::System.Diagnostics.DebuggerNonUserCodeAttribute]
     public void MergeFrom(pb::CodedInputStream input) {
+    #if !GOOGLE_PROTOBUF_REFSTRUCT_COMPATIBILITY_MODE
+      input.ReadRawMessage(this);
+    #else
       uint tag;
       while ((tag = input.ReadTag()) != 0) {
         switch(tag) {
@@ -6266,14 +8889,37 @@ namespace Google.Cloud.PubSub.V1 {
           }
         }
       }
+    #endif
     }
+
+    #if !GOOGLE_PROTOBUF_REFSTRUCT_COMPATIBILITY_MODE
+    [global::System.Diagnostics.DebuggerNonUserCodeAttribute]
+    void pb::IBufferMessage.InternalMergeFrom(ref pb::ParseContext input) {
+      uint tag;
+      while ((tag = input.ReadTag()) != 0) {
+        switch(tag) {
+          default:
+            _unknownFields = pb::UnknownFieldSet.MergeFieldFrom(_unknownFields, ref input);
+            break;
+          case 10: {
+            receivedMessages_.AddEntriesFrom(ref input, _repeated_receivedMessages_codec);
+            break;
+          }
+        }
+      }
+    }
+    #endif
 
   }
 
   /// <summary>
   /// Request for the `CreateSnapshot` method.
   /// </summary>
-  public sealed partial class CreateSnapshotRequest : pb::IMessage<CreateSnapshotRequest> {
+  public sealed partial class CreateSnapshotRequest : pb::IMessage<CreateSnapshotRequest>
+  #if !GOOGLE_PROTOBUF_REFSTRUCT_COMPATIBILITY_MODE
+      , pb::IBufferMessage
+  #endif
+  {
     private static readonly pb::MessageParser<CreateSnapshotRequest> _parser = new pb::MessageParser<CreateSnapshotRequest>(() => new CreateSnapshotRequest());
     private pb::UnknownFieldSet _unknownFields;
     [global::System.Diagnostics.DebuggerNonUserCodeAttribute]
@@ -6281,7 +8927,7 @@ namespace Google.Cloud.PubSub.V1 {
 
     [global::System.Diagnostics.DebuggerNonUserCodeAttribute]
     public static pbr::MessageDescriptor Descriptor {
-      get { return global::Google.Cloud.PubSub.V1.PubsubReflection.Descriptor.MessageTypes[31]; }
+      get { return global::Google.Cloud.PubSub.V1.PubsubReflection.Descriptor.MessageTypes[34]; }
     }
 
     [global::System.Diagnostics.DebuggerNonUserCodeAttribute]
@@ -6313,13 +8959,12 @@ namespace Google.Cloud.PubSub.V1 {
     public const int NameFieldNumber = 1;
     private string name_ = "";
     /// <summary>
-    /// Optional user-provided name for this snapshot.
-    /// If the name is not provided in the request, the server will assign a random
-    /// name for this snapshot on the same project as the subscription.
-    /// Note that for REST API requests, you must specify a name.  See the
-    /// &lt;a href="https://cloud.google.com/pubsub/docs/admin#resource_names">
-    /// resource name rules&lt;/a>.
-    /// Format is `projects/{project}/snapshots/{snap}`.
+    /// Required. User-provided name for this snapshot. If the name is not provided
+    /// in the request, the server will assign a random name for this snapshot on
+    /// the same project as the subscription. Note that for REST API requests, you
+    /// must specify a name.  See the &lt;a
+    /// href="https://cloud.google.com/pubsub/docs/admin#resource_names"> resource
+    /// name rules&lt;/a>. Format is `projects/{project}/snapshots/{snap}`.
     /// </summary>
     [global::System.Diagnostics.DebuggerNonUserCodeAttribute]
     public string Name {
@@ -6333,7 +8978,7 @@ namespace Google.Cloud.PubSub.V1 {
     public const int SubscriptionFieldNumber = 2;
     private string subscription_ = "";
     /// <summary>
-    /// The subscription whose backlog the snapshot retains.
+    /// Required. The subscription whose backlog the snapshot retains.
     /// Specifically, the created snapshot is guaranteed to retain:
     ///  (a) The existing backlog on the subscription. More precisely, this is
     ///      defined as the messages in the subscription's backlog that are
@@ -6354,7 +8999,7 @@ namespace Google.Cloud.PubSub.V1 {
     /// <summary>Field number for the "labels" field.</summary>
     public const int LabelsFieldNumber = 3;
     private static readonly pbc::MapField<string, string>.Codec _map_labels_codec
-        = new pbc::MapField<string, string>.Codec(pb::FieldCodec.ForString(10), pb::FieldCodec.ForString(18), 26);
+        = new pbc::MapField<string, string>.Codec(pb::FieldCodec.ForString(10, ""), pb::FieldCodec.ForString(18, ""), 26);
     private readonly pbc::MapField<string, string> labels_ = new pbc::MapField<string, string>();
     /// <summary>
     /// See &lt;a href="https://cloud.google.com/pubsub/docs/labels"> Creating and
@@ -6403,6 +9048,9 @@ namespace Google.Cloud.PubSub.V1 {
 
     [global::System.Diagnostics.DebuggerNonUserCodeAttribute]
     public void WriteTo(pb::CodedOutputStream output) {
+    #if !GOOGLE_PROTOBUF_REFSTRUCT_COMPATIBILITY_MODE
+      output.WriteRawMessage(this);
+    #else
       if (Name.Length != 0) {
         output.WriteRawTag(10);
         output.WriteString(Name);
@@ -6415,7 +9063,26 @@ namespace Google.Cloud.PubSub.V1 {
       if (_unknownFields != null) {
         _unknownFields.WriteTo(output);
       }
+    #endif
     }
+
+    #if !GOOGLE_PROTOBUF_REFSTRUCT_COMPATIBILITY_MODE
+    [global::System.Diagnostics.DebuggerNonUserCodeAttribute]
+    void pb::IBufferMessage.InternalWriteTo(ref pb::WriteContext output) {
+      if (Name.Length != 0) {
+        output.WriteRawTag(10);
+        output.WriteString(Name);
+      }
+      if (Subscription.Length != 0) {
+        output.WriteRawTag(18);
+        output.WriteString(Subscription);
+      }
+      labels_.WriteTo(ref output, _map_labels_codec);
+      if (_unknownFields != null) {
+        _unknownFields.WriteTo(ref output);
+      }
+    }
+    #endif
 
     [global::System.Diagnostics.DebuggerNonUserCodeAttribute]
     public int CalculateSize() {
@@ -6450,6 +9117,9 @@ namespace Google.Cloud.PubSub.V1 {
 
     [global::System.Diagnostics.DebuggerNonUserCodeAttribute]
     public void MergeFrom(pb::CodedInputStream input) {
+    #if !GOOGLE_PROTOBUF_REFSTRUCT_COMPATIBILITY_MODE
+      input.ReadRawMessage(this);
+    #else
       uint tag;
       while ((tag = input.ReadTag()) != 0) {
         switch(tag) {
@@ -6470,14 +9140,45 @@ namespace Google.Cloud.PubSub.V1 {
           }
         }
       }
+    #endif
     }
+
+    #if !GOOGLE_PROTOBUF_REFSTRUCT_COMPATIBILITY_MODE
+    [global::System.Diagnostics.DebuggerNonUserCodeAttribute]
+    void pb::IBufferMessage.InternalMergeFrom(ref pb::ParseContext input) {
+      uint tag;
+      while ((tag = input.ReadTag()) != 0) {
+        switch(tag) {
+          default:
+            _unknownFields = pb::UnknownFieldSet.MergeFieldFrom(_unknownFields, ref input);
+            break;
+          case 10: {
+            Name = input.ReadString();
+            break;
+          }
+          case 18: {
+            Subscription = input.ReadString();
+            break;
+          }
+          case 26: {
+            labels_.AddEntriesFrom(ref input, _map_labels_codec);
+            break;
+          }
+        }
+      }
+    }
+    #endif
 
   }
 
   /// <summary>
   /// Request for the UpdateSnapshot method.
   /// </summary>
-  public sealed partial class UpdateSnapshotRequest : pb::IMessage<UpdateSnapshotRequest> {
+  public sealed partial class UpdateSnapshotRequest : pb::IMessage<UpdateSnapshotRequest>
+  #if !GOOGLE_PROTOBUF_REFSTRUCT_COMPATIBILITY_MODE
+      , pb::IBufferMessage
+  #endif
+  {
     private static readonly pb::MessageParser<UpdateSnapshotRequest> _parser = new pb::MessageParser<UpdateSnapshotRequest>(() => new UpdateSnapshotRequest());
     private pb::UnknownFieldSet _unknownFields;
     [global::System.Diagnostics.DebuggerNonUserCodeAttribute]
@@ -6485,7 +9186,7 @@ namespace Google.Cloud.PubSub.V1 {
 
     [global::System.Diagnostics.DebuggerNonUserCodeAttribute]
     public static pbr::MessageDescriptor Descriptor {
-      get { return global::Google.Cloud.PubSub.V1.PubsubReflection.Descriptor.MessageTypes[32]; }
+      get { return global::Google.Cloud.PubSub.V1.PubsubReflection.Descriptor.MessageTypes[35]; }
     }
 
     [global::System.Diagnostics.DebuggerNonUserCodeAttribute]
@@ -6516,7 +9217,7 @@ namespace Google.Cloud.PubSub.V1 {
     public const int SnapshotFieldNumber = 1;
     private global::Google.Cloud.PubSub.V1.Snapshot snapshot_;
     /// <summary>
-    /// The updated snapshot object.
+    /// Required. The updated snapshot object.
     /// </summary>
     [global::System.Diagnostics.DebuggerNonUserCodeAttribute]
     public global::Google.Cloud.PubSub.V1.Snapshot Snapshot {
@@ -6530,7 +9231,7 @@ namespace Google.Cloud.PubSub.V1 {
     public const int UpdateMaskFieldNumber = 2;
     private global::Google.Protobuf.WellKnownTypes.FieldMask updateMask_;
     /// <summary>
-    /// Indicates which fields in the provided snapshot to update.
+    /// Required. Indicates which fields in the provided snapshot to update.
     /// Must be specified and non-empty.
     /// </summary>
     [global::System.Diagnostics.DebuggerNonUserCodeAttribute]
@@ -6577,6 +9278,9 @@ namespace Google.Cloud.PubSub.V1 {
 
     [global::System.Diagnostics.DebuggerNonUserCodeAttribute]
     public void WriteTo(pb::CodedOutputStream output) {
+    #if !GOOGLE_PROTOBUF_REFSTRUCT_COMPATIBILITY_MODE
+      output.WriteRawMessage(this);
+    #else
       if (snapshot_ != null) {
         output.WriteRawTag(10);
         output.WriteMessage(Snapshot);
@@ -6588,7 +9292,25 @@ namespace Google.Cloud.PubSub.V1 {
       if (_unknownFields != null) {
         _unknownFields.WriteTo(output);
       }
+    #endif
     }
+
+    #if !GOOGLE_PROTOBUF_REFSTRUCT_COMPATIBILITY_MODE
+    [global::System.Diagnostics.DebuggerNonUserCodeAttribute]
+    void pb::IBufferMessage.InternalWriteTo(ref pb::WriteContext output) {
+      if (snapshot_ != null) {
+        output.WriteRawTag(10);
+        output.WriteMessage(Snapshot);
+      }
+      if (updateMask_ != null) {
+        output.WriteRawTag(18);
+        output.WriteMessage(UpdateMask);
+      }
+      if (_unknownFields != null) {
+        _unknownFields.WriteTo(ref output);
+      }
+    }
+    #endif
 
     [global::System.Diagnostics.DebuggerNonUserCodeAttribute]
     public int CalculateSize() {
@@ -6627,6 +9349,9 @@ namespace Google.Cloud.PubSub.V1 {
 
     [global::System.Diagnostics.DebuggerNonUserCodeAttribute]
     public void MergeFrom(pb::CodedInputStream input) {
+    #if !GOOGLE_PROTOBUF_REFSTRUCT_COMPATIBILITY_MODE
+      input.ReadRawMessage(this);
+    #else
       uint tag;
       while ((tag = input.ReadTag()) != 0) {
         switch(tag) {
@@ -6649,19 +9374,51 @@ namespace Google.Cloud.PubSub.V1 {
           }
         }
       }
+    #endif
     }
+
+    #if !GOOGLE_PROTOBUF_REFSTRUCT_COMPATIBILITY_MODE
+    [global::System.Diagnostics.DebuggerNonUserCodeAttribute]
+    void pb::IBufferMessage.InternalMergeFrom(ref pb::ParseContext input) {
+      uint tag;
+      while ((tag = input.ReadTag()) != 0) {
+        switch(tag) {
+          default:
+            _unknownFields = pb::UnknownFieldSet.MergeFieldFrom(_unknownFields, ref input);
+            break;
+          case 10: {
+            if (snapshot_ == null) {
+              Snapshot = new global::Google.Cloud.PubSub.V1.Snapshot();
+            }
+            input.ReadMessage(Snapshot);
+            break;
+          }
+          case 18: {
+            if (updateMask_ == null) {
+              UpdateMask = new global::Google.Protobuf.WellKnownTypes.FieldMask();
+            }
+            input.ReadMessage(UpdateMask);
+            break;
+          }
+        }
+      }
+    }
+    #endif
 
   }
 
   /// <summary>
   /// A snapshot resource. Snapshots are used in
-  /// &lt;a href="https://cloud.google.com/pubsub/docs/replay-overview">Seek&lt;/a>
-  /// operations, which allow
-  /// you to manage message acknowledgments in bulk. That is, you can set the
-  /// acknowledgment state of messages in an existing subscription to the state
-  /// captured by a snapshot.
+  /// [Seek](https://cloud.google.com/pubsub/docs/replay-overview)
+  /// operations, which allow you to manage message acknowledgments in bulk. That
+  /// is, you can set the acknowledgment state of messages in an existing
+  /// subscription to the state captured by a snapshot.
   /// </summary>
-  public sealed partial class Snapshot : pb::IMessage<Snapshot> {
+  public sealed partial class Snapshot : pb::IMessage<Snapshot>
+  #if !GOOGLE_PROTOBUF_REFSTRUCT_COMPATIBILITY_MODE
+      , pb::IBufferMessage
+  #endif
+  {
     private static readonly pb::MessageParser<Snapshot> _parser = new pb::MessageParser<Snapshot>(() => new Snapshot());
     private pb::UnknownFieldSet _unknownFields;
     [global::System.Diagnostics.DebuggerNonUserCodeAttribute]
@@ -6669,7 +9426,7 @@ namespace Google.Cloud.PubSub.V1 {
 
     [global::System.Diagnostics.DebuggerNonUserCodeAttribute]
     public static pbr::MessageDescriptor Descriptor {
-      get { return global::Google.Cloud.PubSub.V1.PubsubReflection.Descriptor.MessageTypes[33]; }
+      get { return global::Google.Cloud.PubSub.V1.PubsubReflection.Descriptor.MessageTypes[36]; }
     }
 
     [global::System.Diagnostics.DebuggerNonUserCodeAttribute]
@@ -6752,11 +9509,11 @@ namespace Google.Cloud.PubSub.V1 {
     /// <summary>Field number for the "labels" field.</summary>
     public const int LabelsFieldNumber = 4;
     private static readonly pbc::MapField<string, string>.Codec _map_labels_codec
-        = new pbc::MapField<string, string>.Codec(pb::FieldCodec.ForString(10), pb::FieldCodec.ForString(18), 34);
+        = new pbc::MapField<string, string>.Codec(pb::FieldCodec.ForString(10, ""), pb::FieldCodec.ForString(18, ""), 34);
     private readonly pbc::MapField<string, string> labels_ = new pbc::MapField<string, string>();
     /// <summary>
-    /// See &lt;a href="https://cloud.google.com/pubsub/docs/labels"> Creating and
-    /// managing labels&lt;/a>.
+    /// See [Creating and managing labels]
+    /// (https://cloud.google.com/pubsub/docs/labels).
     /// </summary>
     [global::System.Diagnostics.DebuggerNonUserCodeAttribute]
     public pbc::MapField<string, string> Labels {
@@ -6803,6 +9560,9 @@ namespace Google.Cloud.PubSub.V1 {
 
     [global::System.Diagnostics.DebuggerNonUserCodeAttribute]
     public void WriteTo(pb::CodedOutputStream output) {
+    #if !GOOGLE_PROTOBUF_REFSTRUCT_COMPATIBILITY_MODE
+      output.WriteRawMessage(this);
+    #else
       if (Name.Length != 0) {
         output.WriteRawTag(10);
         output.WriteString(Name);
@@ -6819,7 +9579,30 @@ namespace Google.Cloud.PubSub.V1 {
       if (_unknownFields != null) {
         _unknownFields.WriteTo(output);
       }
+    #endif
     }
+
+    #if !GOOGLE_PROTOBUF_REFSTRUCT_COMPATIBILITY_MODE
+    [global::System.Diagnostics.DebuggerNonUserCodeAttribute]
+    void pb::IBufferMessage.InternalWriteTo(ref pb::WriteContext output) {
+      if (Name.Length != 0) {
+        output.WriteRawTag(10);
+        output.WriteString(Name);
+      }
+      if (Topic.Length != 0) {
+        output.WriteRawTag(18);
+        output.WriteString(Topic);
+      }
+      if (expireTime_ != null) {
+        output.WriteRawTag(26);
+        output.WriteMessage(ExpireTime);
+      }
+      labels_.WriteTo(ref output, _map_labels_codec);
+      if (_unknownFields != null) {
+        _unknownFields.WriteTo(ref output);
+      }
+    }
+    #endif
 
     [global::System.Diagnostics.DebuggerNonUserCodeAttribute]
     public int CalculateSize() {
@@ -6863,6 +9646,9 @@ namespace Google.Cloud.PubSub.V1 {
 
     [global::System.Diagnostics.DebuggerNonUserCodeAttribute]
     public void MergeFrom(pb::CodedInputStream input) {
+    #if !GOOGLE_PROTOBUF_REFSTRUCT_COMPATIBILITY_MODE
+      input.ReadRawMessage(this);
+    #else
       uint tag;
       while ((tag = input.ReadTag()) != 0) {
         switch(tag) {
@@ -6890,14 +9676,52 @@ namespace Google.Cloud.PubSub.V1 {
           }
         }
       }
+    #endif
     }
+
+    #if !GOOGLE_PROTOBUF_REFSTRUCT_COMPATIBILITY_MODE
+    [global::System.Diagnostics.DebuggerNonUserCodeAttribute]
+    void pb::IBufferMessage.InternalMergeFrom(ref pb::ParseContext input) {
+      uint tag;
+      while ((tag = input.ReadTag()) != 0) {
+        switch(tag) {
+          default:
+            _unknownFields = pb::UnknownFieldSet.MergeFieldFrom(_unknownFields, ref input);
+            break;
+          case 10: {
+            Name = input.ReadString();
+            break;
+          }
+          case 18: {
+            Topic = input.ReadString();
+            break;
+          }
+          case 26: {
+            if (expireTime_ == null) {
+              ExpireTime = new global::Google.Protobuf.WellKnownTypes.Timestamp();
+            }
+            input.ReadMessage(ExpireTime);
+            break;
+          }
+          case 34: {
+            labels_.AddEntriesFrom(ref input, _map_labels_codec);
+            break;
+          }
+        }
+      }
+    }
+    #endif
 
   }
 
   /// <summary>
   /// Request for the GetSnapshot method.
   /// </summary>
-  public sealed partial class GetSnapshotRequest : pb::IMessage<GetSnapshotRequest> {
+  public sealed partial class GetSnapshotRequest : pb::IMessage<GetSnapshotRequest>
+  #if !GOOGLE_PROTOBUF_REFSTRUCT_COMPATIBILITY_MODE
+      , pb::IBufferMessage
+  #endif
+  {
     private static readonly pb::MessageParser<GetSnapshotRequest> _parser = new pb::MessageParser<GetSnapshotRequest>(() => new GetSnapshotRequest());
     private pb::UnknownFieldSet _unknownFields;
     [global::System.Diagnostics.DebuggerNonUserCodeAttribute]
@@ -6905,7 +9729,7 @@ namespace Google.Cloud.PubSub.V1 {
 
     [global::System.Diagnostics.DebuggerNonUserCodeAttribute]
     public static pbr::MessageDescriptor Descriptor {
-      get { return global::Google.Cloud.PubSub.V1.PubsubReflection.Descriptor.MessageTypes[34]; }
+      get { return global::Google.Cloud.PubSub.V1.PubsubReflection.Descriptor.MessageTypes[37]; }
     }
 
     [global::System.Diagnostics.DebuggerNonUserCodeAttribute]
@@ -6935,7 +9759,7 @@ namespace Google.Cloud.PubSub.V1 {
     public const int SnapshotFieldNumber = 1;
     private string snapshot_ = "";
     /// <summary>
-    /// The name of the snapshot to get.
+    /// Required. The name of the snapshot to get.
     /// Format is `projects/{project}/snapshots/{snap}`.
     /// </summary>
     [global::System.Diagnostics.DebuggerNonUserCodeAttribute]
@@ -6980,6 +9804,9 @@ namespace Google.Cloud.PubSub.V1 {
 
     [global::System.Diagnostics.DebuggerNonUserCodeAttribute]
     public void WriteTo(pb::CodedOutputStream output) {
+    #if !GOOGLE_PROTOBUF_REFSTRUCT_COMPATIBILITY_MODE
+      output.WriteRawMessage(this);
+    #else
       if (Snapshot.Length != 0) {
         output.WriteRawTag(10);
         output.WriteString(Snapshot);
@@ -6987,7 +9814,21 @@ namespace Google.Cloud.PubSub.V1 {
       if (_unknownFields != null) {
         _unknownFields.WriteTo(output);
       }
+    #endif
     }
+
+    #if !GOOGLE_PROTOBUF_REFSTRUCT_COMPATIBILITY_MODE
+    [global::System.Diagnostics.DebuggerNonUserCodeAttribute]
+    void pb::IBufferMessage.InternalWriteTo(ref pb::WriteContext output) {
+      if (Snapshot.Length != 0) {
+        output.WriteRawTag(10);
+        output.WriteString(Snapshot);
+      }
+      if (_unknownFields != null) {
+        _unknownFields.WriteTo(ref output);
+      }
+    }
+    #endif
 
     [global::System.Diagnostics.DebuggerNonUserCodeAttribute]
     public int CalculateSize() {
@@ -7014,6 +9855,9 @@ namespace Google.Cloud.PubSub.V1 {
 
     [global::System.Diagnostics.DebuggerNonUserCodeAttribute]
     public void MergeFrom(pb::CodedInputStream input) {
+    #if !GOOGLE_PROTOBUF_REFSTRUCT_COMPATIBILITY_MODE
+      input.ReadRawMessage(this);
+    #else
       uint tag;
       while ((tag = input.ReadTag()) != 0) {
         switch(tag) {
@@ -7026,14 +9870,37 @@ namespace Google.Cloud.PubSub.V1 {
           }
         }
       }
+    #endif
     }
+
+    #if !GOOGLE_PROTOBUF_REFSTRUCT_COMPATIBILITY_MODE
+    [global::System.Diagnostics.DebuggerNonUserCodeAttribute]
+    void pb::IBufferMessage.InternalMergeFrom(ref pb::ParseContext input) {
+      uint tag;
+      while ((tag = input.ReadTag()) != 0) {
+        switch(tag) {
+          default:
+            _unknownFields = pb::UnknownFieldSet.MergeFieldFrom(_unknownFields, ref input);
+            break;
+          case 10: {
+            Snapshot = input.ReadString();
+            break;
+          }
+        }
+      }
+    }
+    #endif
 
   }
 
   /// <summary>
   /// Request for the `ListSnapshots` method.
   /// </summary>
-  public sealed partial class ListSnapshotsRequest : pb::IMessage<ListSnapshotsRequest> {
+  public sealed partial class ListSnapshotsRequest : pb::IMessage<ListSnapshotsRequest>
+  #if !GOOGLE_PROTOBUF_REFSTRUCT_COMPATIBILITY_MODE
+      , pb::IBufferMessage
+  #endif
+  {
     private static readonly pb::MessageParser<ListSnapshotsRequest> _parser = new pb::MessageParser<ListSnapshotsRequest>(() => new ListSnapshotsRequest());
     private pb::UnknownFieldSet _unknownFields;
     [global::System.Diagnostics.DebuggerNonUserCodeAttribute]
@@ -7041,7 +9908,7 @@ namespace Google.Cloud.PubSub.V1 {
 
     [global::System.Diagnostics.DebuggerNonUserCodeAttribute]
     public static pbr::MessageDescriptor Descriptor {
-      get { return global::Google.Cloud.PubSub.V1.PubsubReflection.Descriptor.MessageTypes[35]; }
+      get { return global::Google.Cloud.PubSub.V1.PubsubReflection.Descriptor.MessageTypes[38]; }
     }
 
     [global::System.Diagnostics.DebuggerNonUserCodeAttribute]
@@ -7073,7 +9940,7 @@ namespace Google.Cloud.PubSub.V1 {
     public const int ProjectFieldNumber = 1;
     private string project_ = "";
     /// <summary>
-    /// The name of the project in which to list snapshots.
+    /// Required. The name of the project in which to list snapshots.
     /// Format is `projects/{project-id}`.
     /// </summary>
     [global::System.Diagnostics.DebuggerNonUserCodeAttribute]
@@ -7152,6 +10019,9 @@ namespace Google.Cloud.PubSub.V1 {
 
     [global::System.Diagnostics.DebuggerNonUserCodeAttribute]
     public void WriteTo(pb::CodedOutputStream output) {
+    #if !GOOGLE_PROTOBUF_REFSTRUCT_COMPATIBILITY_MODE
+      output.WriteRawMessage(this);
+    #else
       if (Project.Length != 0) {
         output.WriteRawTag(10);
         output.WriteString(Project);
@@ -7167,7 +10037,29 @@ namespace Google.Cloud.PubSub.V1 {
       if (_unknownFields != null) {
         _unknownFields.WriteTo(output);
       }
+    #endif
     }
+
+    #if !GOOGLE_PROTOBUF_REFSTRUCT_COMPATIBILITY_MODE
+    [global::System.Diagnostics.DebuggerNonUserCodeAttribute]
+    void pb::IBufferMessage.InternalWriteTo(ref pb::WriteContext output) {
+      if (Project.Length != 0) {
+        output.WriteRawTag(10);
+        output.WriteString(Project);
+      }
+      if (PageSize != 0) {
+        output.WriteRawTag(16);
+        output.WriteInt32(PageSize);
+      }
+      if (PageToken.Length != 0) {
+        output.WriteRawTag(26);
+        output.WriteString(PageToken);
+      }
+      if (_unknownFields != null) {
+        _unknownFields.WriteTo(ref output);
+      }
+    }
+    #endif
 
     [global::System.Diagnostics.DebuggerNonUserCodeAttribute]
     public int CalculateSize() {
@@ -7206,6 +10098,9 @@ namespace Google.Cloud.PubSub.V1 {
 
     [global::System.Diagnostics.DebuggerNonUserCodeAttribute]
     public void MergeFrom(pb::CodedInputStream input) {
+    #if !GOOGLE_PROTOBUF_REFSTRUCT_COMPATIBILITY_MODE
+      input.ReadRawMessage(this);
+    #else
       uint tag;
       while ((tag = input.ReadTag()) != 0) {
         switch(tag) {
@@ -7226,14 +10121,45 @@ namespace Google.Cloud.PubSub.V1 {
           }
         }
       }
+    #endif
     }
+
+    #if !GOOGLE_PROTOBUF_REFSTRUCT_COMPATIBILITY_MODE
+    [global::System.Diagnostics.DebuggerNonUserCodeAttribute]
+    void pb::IBufferMessage.InternalMergeFrom(ref pb::ParseContext input) {
+      uint tag;
+      while ((tag = input.ReadTag()) != 0) {
+        switch(tag) {
+          default:
+            _unknownFields = pb::UnknownFieldSet.MergeFieldFrom(_unknownFields, ref input);
+            break;
+          case 10: {
+            Project = input.ReadString();
+            break;
+          }
+          case 16: {
+            PageSize = input.ReadInt32();
+            break;
+          }
+          case 26: {
+            PageToken = input.ReadString();
+            break;
+          }
+        }
+      }
+    }
+    #endif
 
   }
 
   /// <summary>
   /// Response for the `ListSnapshots` method.
   /// </summary>
-  public sealed partial class ListSnapshotsResponse : pb::IMessage<ListSnapshotsResponse> {
+  public sealed partial class ListSnapshotsResponse : pb::IMessage<ListSnapshotsResponse>
+  #if !GOOGLE_PROTOBUF_REFSTRUCT_COMPATIBILITY_MODE
+      , pb::IBufferMessage
+  #endif
+  {
     private static readonly pb::MessageParser<ListSnapshotsResponse> _parser = new pb::MessageParser<ListSnapshotsResponse>(() => new ListSnapshotsResponse());
     private pb::UnknownFieldSet _unknownFields;
     [global::System.Diagnostics.DebuggerNonUserCodeAttribute]
@@ -7241,7 +10167,7 @@ namespace Google.Cloud.PubSub.V1 {
 
     [global::System.Diagnostics.DebuggerNonUserCodeAttribute]
     public static pbr::MessageDescriptor Descriptor {
-      get { return global::Google.Cloud.PubSub.V1.PubsubReflection.Descriptor.MessageTypes[36]; }
+      get { return global::Google.Cloud.PubSub.V1.PubsubReflection.Descriptor.MessageTypes[39]; }
     }
 
     [global::System.Diagnostics.DebuggerNonUserCodeAttribute]
@@ -7332,6 +10258,9 @@ namespace Google.Cloud.PubSub.V1 {
 
     [global::System.Diagnostics.DebuggerNonUserCodeAttribute]
     public void WriteTo(pb::CodedOutputStream output) {
+    #if !GOOGLE_PROTOBUF_REFSTRUCT_COMPATIBILITY_MODE
+      output.WriteRawMessage(this);
+    #else
       snapshots_.WriteTo(output, _repeated_snapshots_codec);
       if (NextPageToken.Length != 0) {
         output.WriteRawTag(18);
@@ -7340,7 +10269,22 @@ namespace Google.Cloud.PubSub.V1 {
       if (_unknownFields != null) {
         _unknownFields.WriteTo(output);
       }
+    #endif
     }
+
+    #if !GOOGLE_PROTOBUF_REFSTRUCT_COMPATIBILITY_MODE
+    [global::System.Diagnostics.DebuggerNonUserCodeAttribute]
+    void pb::IBufferMessage.InternalWriteTo(ref pb::WriteContext output) {
+      snapshots_.WriteTo(ref output, _repeated_snapshots_codec);
+      if (NextPageToken.Length != 0) {
+        output.WriteRawTag(18);
+        output.WriteString(NextPageToken);
+      }
+      if (_unknownFields != null) {
+        _unknownFields.WriteTo(ref output);
+      }
+    }
+    #endif
 
     [global::System.Diagnostics.DebuggerNonUserCodeAttribute]
     public int CalculateSize() {
@@ -7369,6 +10313,9 @@ namespace Google.Cloud.PubSub.V1 {
 
     [global::System.Diagnostics.DebuggerNonUserCodeAttribute]
     public void MergeFrom(pb::CodedInputStream input) {
+    #if !GOOGLE_PROTOBUF_REFSTRUCT_COMPATIBILITY_MODE
+      input.ReadRawMessage(this);
+    #else
       uint tag;
       while ((tag = input.ReadTag()) != 0) {
         switch(tag) {
@@ -7385,14 +10332,41 @@ namespace Google.Cloud.PubSub.V1 {
           }
         }
       }
+    #endif
     }
+
+    #if !GOOGLE_PROTOBUF_REFSTRUCT_COMPATIBILITY_MODE
+    [global::System.Diagnostics.DebuggerNonUserCodeAttribute]
+    void pb::IBufferMessage.InternalMergeFrom(ref pb::ParseContext input) {
+      uint tag;
+      while ((tag = input.ReadTag()) != 0) {
+        switch(tag) {
+          default:
+            _unknownFields = pb::UnknownFieldSet.MergeFieldFrom(_unknownFields, ref input);
+            break;
+          case 10: {
+            snapshots_.AddEntriesFrom(ref input, _repeated_snapshots_codec);
+            break;
+          }
+          case 18: {
+            NextPageToken = input.ReadString();
+            break;
+          }
+        }
+      }
+    }
+    #endif
 
   }
 
   /// <summary>
   /// Request for the `DeleteSnapshot` method.
   /// </summary>
-  public sealed partial class DeleteSnapshotRequest : pb::IMessage<DeleteSnapshotRequest> {
+  public sealed partial class DeleteSnapshotRequest : pb::IMessage<DeleteSnapshotRequest>
+  #if !GOOGLE_PROTOBUF_REFSTRUCT_COMPATIBILITY_MODE
+      , pb::IBufferMessage
+  #endif
+  {
     private static readonly pb::MessageParser<DeleteSnapshotRequest> _parser = new pb::MessageParser<DeleteSnapshotRequest>(() => new DeleteSnapshotRequest());
     private pb::UnknownFieldSet _unknownFields;
     [global::System.Diagnostics.DebuggerNonUserCodeAttribute]
@@ -7400,7 +10374,7 @@ namespace Google.Cloud.PubSub.V1 {
 
     [global::System.Diagnostics.DebuggerNonUserCodeAttribute]
     public static pbr::MessageDescriptor Descriptor {
-      get { return global::Google.Cloud.PubSub.V1.PubsubReflection.Descriptor.MessageTypes[37]; }
+      get { return global::Google.Cloud.PubSub.V1.PubsubReflection.Descriptor.MessageTypes[40]; }
     }
 
     [global::System.Diagnostics.DebuggerNonUserCodeAttribute]
@@ -7430,7 +10404,7 @@ namespace Google.Cloud.PubSub.V1 {
     public const int SnapshotFieldNumber = 1;
     private string snapshot_ = "";
     /// <summary>
-    /// The name of the snapshot to delete.
+    /// Required. The name of the snapshot to delete.
     /// Format is `projects/{project}/snapshots/{snap}`.
     /// </summary>
     [global::System.Diagnostics.DebuggerNonUserCodeAttribute]
@@ -7475,6 +10449,9 @@ namespace Google.Cloud.PubSub.V1 {
 
     [global::System.Diagnostics.DebuggerNonUserCodeAttribute]
     public void WriteTo(pb::CodedOutputStream output) {
+    #if !GOOGLE_PROTOBUF_REFSTRUCT_COMPATIBILITY_MODE
+      output.WriteRawMessage(this);
+    #else
       if (Snapshot.Length != 0) {
         output.WriteRawTag(10);
         output.WriteString(Snapshot);
@@ -7482,7 +10459,21 @@ namespace Google.Cloud.PubSub.V1 {
       if (_unknownFields != null) {
         _unknownFields.WriteTo(output);
       }
+    #endif
     }
+
+    #if !GOOGLE_PROTOBUF_REFSTRUCT_COMPATIBILITY_MODE
+    [global::System.Diagnostics.DebuggerNonUserCodeAttribute]
+    void pb::IBufferMessage.InternalWriteTo(ref pb::WriteContext output) {
+      if (Snapshot.Length != 0) {
+        output.WriteRawTag(10);
+        output.WriteString(Snapshot);
+      }
+      if (_unknownFields != null) {
+        _unknownFields.WriteTo(ref output);
+      }
+    }
+    #endif
 
     [global::System.Diagnostics.DebuggerNonUserCodeAttribute]
     public int CalculateSize() {
@@ -7509,6 +10500,9 @@ namespace Google.Cloud.PubSub.V1 {
 
     [global::System.Diagnostics.DebuggerNonUserCodeAttribute]
     public void MergeFrom(pb::CodedInputStream input) {
+    #if !GOOGLE_PROTOBUF_REFSTRUCT_COMPATIBILITY_MODE
+      input.ReadRawMessage(this);
+    #else
       uint tag;
       while ((tag = input.ReadTag()) != 0) {
         switch(tag) {
@@ -7521,14 +10515,37 @@ namespace Google.Cloud.PubSub.V1 {
           }
         }
       }
+    #endif
     }
+
+    #if !GOOGLE_PROTOBUF_REFSTRUCT_COMPATIBILITY_MODE
+    [global::System.Diagnostics.DebuggerNonUserCodeAttribute]
+    void pb::IBufferMessage.InternalMergeFrom(ref pb::ParseContext input) {
+      uint tag;
+      while ((tag = input.ReadTag()) != 0) {
+        switch(tag) {
+          default:
+            _unknownFields = pb::UnknownFieldSet.MergeFieldFrom(_unknownFields, ref input);
+            break;
+          case 10: {
+            Snapshot = input.ReadString();
+            break;
+          }
+        }
+      }
+    }
+    #endif
 
   }
 
   /// <summary>
   /// Request for the `Seek` method.
   /// </summary>
-  public sealed partial class SeekRequest : pb::IMessage<SeekRequest> {
+  public sealed partial class SeekRequest : pb::IMessage<SeekRequest>
+  #if !GOOGLE_PROTOBUF_REFSTRUCT_COMPATIBILITY_MODE
+      , pb::IBufferMessage
+  #endif
+  {
     private static readonly pb::MessageParser<SeekRequest> _parser = new pb::MessageParser<SeekRequest>(() => new SeekRequest());
     private pb::UnknownFieldSet _unknownFields;
     [global::System.Diagnostics.DebuggerNonUserCodeAttribute]
@@ -7536,7 +10553,7 @@ namespace Google.Cloud.PubSub.V1 {
 
     [global::System.Diagnostics.DebuggerNonUserCodeAttribute]
     public static pbr::MessageDescriptor Descriptor {
-      get { return global::Google.Cloud.PubSub.V1.PubsubReflection.Descriptor.MessageTypes[38]; }
+      get { return global::Google.Cloud.PubSub.V1.PubsubReflection.Descriptor.MessageTypes[41]; }
     }
 
     [global::System.Diagnostics.DebuggerNonUserCodeAttribute]
@@ -7575,7 +10592,7 @@ namespace Google.Cloud.PubSub.V1 {
     public const int SubscriptionFieldNumber = 1;
     private string subscription_ = "";
     /// <summary>
-    /// The subscription to affect.
+    /// Required. The subscription to affect.
     /// </summary>
     [global::System.Diagnostics.DebuggerNonUserCodeAttribute]
     public string Subscription {
@@ -7684,6 +10701,9 @@ namespace Google.Cloud.PubSub.V1 {
 
     [global::System.Diagnostics.DebuggerNonUserCodeAttribute]
     public void WriteTo(pb::CodedOutputStream output) {
+    #if !GOOGLE_PROTOBUF_REFSTRUCT_COMPATIBILITY_MODE
+      output.WriteRawMessage(this);
+    #else
       if (Subscription.Length != 0) {
         output.WriteRawTag(10);
         output.WriteString(Subscription);
@@ -7699,7 +10719,29 @@ namespace Google.Cloud.PubSub.V1 {
       if (_unknownFields != null) {
         _unknownFields.WriteTo(output);
       }
+    #endif
     }
+
+    #if !GOOGLE_PROTOBUF_REFSTRUCT_COMPATIBILITY_MODE
+    [global::System.Diagnostics.DebuggerNonUserCodeAttribute]
+    void pb::IBufferMessage.InternalWriteTo(ref pb::WriteContext output) {
+      if (Subscription.Length != 0) {
+        output.WriteRawTag(10);
+        output.WriteString(Subscription);
+      }
+      if (targetCase_ == TargetOneofCase.Time) {
+        output.WriteRawTag(18);
+        output.WriteMessage(Time);
+      }
+      if (targetCase_ == TargetOneofCase.Snapshot) {
+        output.WriteRawTag(26);
+        output.WriteString(Snapshot);
+      }
+      if (_unknownFields != null) {
+        _unknownFields.WriteTo(ref output);
+      }
+    }
+    #endif
 
     [global::System.Diagnostics.DebuggerNonUserCodeAttribute]
     public int CalculateSize() {
@@ -7744,6 +10786,9 @@ namespace Google.Cloud.PubSub.V1 {
 
     [global::System.Diagnostics.DebuggerNonUserCodeAttribute]
     public void MergeFrom(pb::CodedInputStream input) {
+    #if !GOOGLE_PROTOBUF_REFSTRUCT_COMPATIBILITY_MODE
+      input.ReadRawMessage(this);
+    #else
       uint tag;
       while ((tag = input.ReadTag()) != 0) {
         switch(tag) {
@@ -7769,14 +10814,50 @@ namespace Google.Cloud.PubSub.V1 {
           }
         }
       }
+    #endif
     }
+
+    #if !GOOGLE_PROTOBUF_REFSTRUCT_COMPATIBILITY_MODE
+    [global::System.Diagnostics.DebuggerNonUserCodeAttribute]
+    void pb::IBufferMessage.InternalMergeFrom(ref pb::ParseContext input) {
+      uint tag;
+      while ((tag = input.ReadTag()) != 0) {
+        switch(tag) {
+          default:
+            _unknownFields = pb::UnknownFieldSet.MergeFieldFrom(_unknownFields, ref input);
+            break;
+          case 10: {
+            Subscription = input.ReadString();
+            break;
+          }
+          case 18: {
+            global::Google.Protobuf.WellKnownTypes.Timestamp subBuilder = new global::Google.Protobuf.WellKnownTypes.Timestamp();
+            if (targetCase_ == TargetOneofCase.Time) {
+              subBuilder.MergeFrom(Time);
+            }
+            input.ReadMessage(subBuilder);
+            Time = subBuilder;
+            break;
+          }
+          case 26: {
+            Snapshot = input.ReadString();
+            break;
+          }
+        }
+      }
+    }
+    #endif
 
   }
 
   /// <summary>
   /// Response for the `Seek` method (this response is empty).
   /// </summary>
-  public sealed partial class SeekResponse : pb::IMessage<SeekResponse> {
+  public sealed partial class SeekResponse : pb::IMessage<SeekResponse>
+  #if !GOOGLE_PROTOBUF_REFSTRUCT_COMPATIBILITY_MODE
+      , pb::IBufferMessage
+  #endif
+  {
     private static readonly pb::MessageParser<SeekResponse> _parser = new pb::MessageParser<SeekResponse>(() => new SeekResponse());
     private pb::UnknownFieldSet _unknownFields;
     [global::System.Diagnostics.DebuggerNonUserCodeAttribute]
@@ -7784,7 +10865,7 @@ namespace Google.Cloud.PubSub.V1 {
 
     [global::System.Diagnostics.DebuggerNonUserCodeAttribute]
     public static pbr::MessageDescriptor Descriptor {
-      get { return global::Google.Cloud.PubSub.V1.PubsubReflection.Descriptor.MessageTypes[39]; }
+      get { return global::Google.Cloud.PubSub.V1.PubsubReflection.Descriptor.MessageTypes[42]; }
     }
 
     [global::System.Diagnostics.DebuggerNonUserCodeAttribute]
@@ -7841,10 +10922,23 @@ namespace Google.Cloud.PubSub.V1 {
 
     [global::System.Diagnostics.DebuggerNonUserCodeAttribute]
     public void WriteTo(pb::CodedOutputStream output) {
+    #if !GOOGLE_PROTOBUF_REFSTRUCT_COMPATIBILITY_MODE
+      output.WriteRawMessage(this);
+    #else
       if (_unknownFields != null) {
         _unknownFields.WriteTo(output);
       }
+    #endif
     }
+
+    #if !GOOGLE_PROTOBUF_REFSTRUCT_COMPATIBILITY_MODE
+    [global::System.Diagnostics.DebuggerNonUserCodeAttribute]
+    void pb::IBufferMessage.InternalWriteTo(ref pb::WriteContext output) {
+      if (_unknownFields != null) {
+        _unknownFields.WriteTo(ref output);
+      }
+    }
+    #endif
 
     [global::System.Diagnostics.DebuggerNonUserCodeAttribute]
     public int CalculateSize() {
@@ -7865,6 +10959,9 @@ namespace Google.Cloud.PubSub.V1 {
 
     [global::System.Diagnostics.DebuggerNonUserCodeAttribute]
     public void MergeFrom(pb::CodedInputStream input) {
+    #if !GOOGLE_PROTOBUF_REFSTRUCT_COMPATIBILITY_MODE
+      input.ReadRawMessage(this);
+    #else
       uint tag;
       while ((tag = input.ReadTag()) != 0) {
         switch(tag) {
@@ -7873,7 +10970,22 @@ namespace Google.Cloud.PubSub.V1 {
             break;
         }
       }
+    #endif
     }
+
+    #if !GOOGLE_PROTOBUF_REFSTRUCT_COMPATIBILITY_MODE
+    [global::System.Diagnostics.DebuggerNonUserCodeAttribute]
+    void pb::IBufferMessage.InternalMergeFrom(ref pb::ParseContext input) {
+      uint tag;
+      while ((tag = input.ReadTag()) != 0) {
+        switch(tag) {
+          default:
+            _unknownFields = pb::UnknownFieldSet.MergeFieldFrom(_unknownFields, ref input);
+            break;
+        }
+      }
+    }
+    #endif
 
   }
 

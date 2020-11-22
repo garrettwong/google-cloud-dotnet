@@ -124,6 +124,22 @@ namespace Google.Cloud.Firestore.IntegrationTests
         }
 
         [Fact]
+        public async Task LimitToLast_GetSnapshotAsync()
+        {
+            var query = _fixture.HighScoreCollection.OrderBy("Level").LimitToLast(3);
+            var snapshot = await query.GetSnapshotAsync();
+            var items = snapshot.Documents.Select(doc => doc.ConvertTo<HighScore>()).ToList();
+            Assert.Equal(HighScore.Data.OrderByDescending(x => x.Level).Take(3).Reverse(), items);
+        }
+
+        [Fact]
+        public void LimitToLast_StreamingThrows()
+        {
+            var query = _fixture.HighScoreCollection.OrderBy("Level").LimitToLast(3);
+            Assert.Throws<InvalidOperationException>(() => query.StreamAsync());
+        }
+
+        [Fact]
         public async Task Offset()
         {
             var query = _fixture.HighScoreCollection.OrderBy("Level").Offset(2);
@@ -174,7 +190,7 @@ namespace Google.Cloud.Firestore.IntegrationTests
             var allDocs = await _fixture.HighScoreCollection.StreamAsync()
                 .Select(doc => doc.Reference)
                 .OrderBy(x => x.Path, StringComparer.Ordinal)
-                .ToList();
+                .ToListAsync();
             var startInclusive = allDocs[1];
             var endExclusive = allDocs[4];
             var query = _fixture.HighScoreCollection.OrderBy(FieldPath.DocumentId)
@@ -183,7 +199,7 @@ namespace Google.Cloud.Firestore.IntegrationTests
             var results = await query.StreamAsync()
                 .Select(doc => doc.Reference)
                 .OrderBy(x => x.Path, StringComparer.Ordinal)
-                .ToList();
+                .ToListAsync();
             Assert.Equal(allDocs.Skip(1).Take(3), results);
         }
 
@@ -324,11 +340,75 @@ namespace Google.Cloud.Firestore.IntegrationTests
             batch.Set(collection.Document("d"), new { zip = new[] { 98101 } });
             batch.Set(collection.Document("e"), new { zip = new object[] { 98101, new { zip = 98101 } } });
             batch.Set(collection.Document("f"), new { zip = new { code = 500 } });
+            batch.Set(collection.Document("g"), new { notZip = new { code = 500 } });
             await batch.CommitAsync();
 
             var querySnapshot = await collection.WhereIn("zip", new[] { 98101, 98103 }).GetSnapshotAsync();
             var ids = querySnapshot.Select(d => d.Id).ToList();
             Assert.Equal(new[] { "a", "c" }, ids);
+        }
+
+        [Fact]
+        public async Task WhereIn_DocumentId()
+        {
+            var db = _fixture.FirestoreDb;
+            var collection = _fixture.CreateUniqueCollection();
+
+            var batch = db.StartBatch();
+            batch.Set(collection.Document("a"), new { X = 1 });
+            batch.Set(collection.Document("b"), new { X = 2 });
+            batch.Set(collection.Document("c"), new { X = 3 });
+            batch.Set(collection.Document("d"), new { X = 4 });
+            await batch.CommitAsync();
+
+            var query = collection.WhereIn(FieldPath.DocumentId, new[] { collection.Document("a"), collection.Document("c") });
+            var snapshot = await query.GetSnapshotAsync();
+            Assert.Equal(2, snapshot.Count);
+        }
+
+        [Fact]
+        public async Task WhereIn_ArrayValues()
+        {
+            var db = _fixture.FirestoreDb;
+            var collection = _fixture.CreateUniqueCollection();
+            var batch = db.StartBatch();
+            batch.Set(collection.Document("ab"), new { values = new[] { "a", "b" } });
+            batch.Set(collection.Document("bc"), new { values = new[] { "b", "c" } });
+            batch.Set(collection.Document("cd"), new { values = new[] { "c", "d" } });
+            batch.Set(collection.Document("de"), new { values = new[] { "d", "e" } });
+            batch.Set(collection.Document("ef"), new { values = new[] { "e", "f" } });
+            batch.Set(collection.Document("fg"), new { values = new[] { "f", "g" } });
+            await batch.CommitAsync();
+
+            var querySnapshot = await collection.WhereIn("values", new[] {
+                new[] { "a", "b" }, // Matches ab
+                new[] { "c", "d" }, // Matches cd
+                new[] { "e", "f", "g" }, // Doesn't match anything
+                new[] { "e" } // Doesn't match anything
+            }).GetSnapshotAsync();
+            var ids = querySnapshot.Select(d => d.Id).ToList();
+            Assert.Equal(new[] { "ab", "cd" }, ids);
+        }
+
+        [Fact]
+        public async Task WhereNotIn()
+        {
+            var db = _fixture.FirestoreDb;
+            var collection = _fixture.CreateUniqueCollection();
+            var batch = db.StartBatch();
+            batch.Set(collection.Document("a"), new { zip = 98101 });
+            batch.Set(collection.Document("b"), new { zip = 91102 });
+            batch.Set(collection.Document("c"), new { zip = 98103 });
+            batch.Set(collection.Document("d"), new { zip = new[] { 98101 } });
+            batch.Set(collection.Document("e"), new { zip = new object[] { 98101, new { zip = 98101 } } });
+            batch.Set(collection.Document("f"), new { zip = new { code = 500 } });
+            batch.Set(collection.Document("g"), new { notZip = new { code = 500 } });
+            await batch.CommitAsync();
+
+            var querySnapshot = await collection.WhereNotIn("zip", new[] { 98101, 98103 }).GetSnapshotAsync();
+            var ids = querySnapshot.Select(d => d.Id).ToList();
+            // Note: g is not in the list, because the "zip" field doesn't exist there at all.
+            Assert.Equal(new[] { "b", "d", "e", "f" }, ids);
         }
 
         [Fact]

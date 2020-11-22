@@ -15,6 +15,7 @@
 using Google.Api.Gax.Grpc;
 using Google.Cloud.ClientTesting;
 using Google.Cloud.Spanner.Common.V1;
+using Google.Protobuf;
 using Grpc.Core;
 using System;
 using System.Collections.Generic;
@@ -49,6 +50,10 @@ namespace Google.Cloud.Spanner.V1.Tests
         public sealed class TargetedSessionPoolTests
         {
             private static readonly DatabaseName s_databaseName = new DatabaseName("project", "instance", "database");
+
+            // The time to delay in tests that need to wait for all the sessions to be acquired (or fail).
+            // Reducing this time will make the tests faster, but at the cost of flakiness.
+            private static readonly TimeSpan s_sessionAcquistionDelay = TimeSpan.FromMilliseconds(500);
 
             private static TargetedSessionPool CreatePool(bool acquireSessionsImmediately)
             {
@@ -98,7 +103,7 @@ namespace Google.Cloud.Spanner.V1.Tests
                 // Wait a little in real time, session creation is
                 // launched as a (controlled) fire and forget task. Let's make sure it
                 // advances enough so that stats are updated.
-                await Task.Delay(TimeSpan.FromMilliseconds(250));
+                await Task.Delay(s_sessionAcquistionDelay);
                 var stats = pool.GetStatisticsSnapshot();
                 Assert.Equal(10, stats.InFlightCreationCount);
                 Assert.Equal(0, stats.ReadPoolCount);
@@ -203,6 +208,38 @@ namespace Google.Cloud.Spanner.V1.Tests
                     Assert.NotEqual(firstSession.SessionName, laterSession.SessionName);
                     Assert.Equal(101, client.SessionsCreated);
                     Assert.Equal(1, client.SessionsDeleted);
+                });
+
+                client.Logger.AssertNoWarningsOrErrors();
+            }
+
+            [Fact(Timeout = TestTimeoutMilliseconds)]
+            public async Task ReleaseSession_TransactionRolledback()
+            {
+                var pool = CreatePool(true);
+                var client = (SessionTestingSpannerClient) pool.Client;
+                await client.Scheduler.RunAsync(async () =>
+                {
+                    // Acquire all 100 possible active sessions, so we don't get any more behind the scenes.
+                    var sessions = await AcquireAllSessionsAsync(pool);
+
+                    var transactionId = ByteString.CopyFromUtf8("sample transaction");
+                    var firstSession = sessions[0].WithTransaction(transactionId, TransactionOptions.ModeOneofCase.ReadWrite);
+
+                    var timeBeforeRelease = client.Clock.GetCurrentDateTimeUtc();
+                    firstSession.ReleaseToPool(false);
+
+                    var reacquiredSession = await pool.AcquireSessionAsync(new TransactionOptions(), default);
+                    Assert.Equal(firstSession.SessionName, reacquiredSession.SessionName);
+
+                    // The only rollback request is the one we sent
+                    Assert.Equal(1, client.RollbackRequests.Count);
+                    Assert.True(client.RollbackRequests.TryDequeue(out var rollbackRequest));
+                    Assert.Equal(transactionId, rollbackRequest.TransactionId);
+                    Assert.Equal(firstSession.SessionName, rollbackRequest.SessionAsSessionName);
+
+                    // We should have waited for the rollback to complete before reacquiring
+                    Assert.Equal(timeBeforeRelease + client.RollbackDelay, client.Clock.GetCurrentDateTimeUtc());
                 });
 
                 client.Logger.AssertNoWarningsOrErrors();
@@ -346,7 +383,7 @@ namespace Google.Cloud.Spanner.V1.Tests
                 // Wait a little in real time to make sure that session creation tasks have started.
                 // Session creation is done in a (controlled) fire and forget way, that's why
                 // we need to wait a little in real time.
-                await Task.Delay(250);
+                await Task.Delay(s_sessionAcquistionDelay);
                 stats = pool.GetStatisticsSnapshot();
                 Assert.True(stats.Healthy);
                 Assert.Equal(13, stats.ActiveSessionCount);
@@ -424,7 +461,7 @@ namespace Google.Cloud.Spanner.V1.Tests
                 // Wait a little in real time to make sure that nursing has started.
                 // Nursing is done in a (controlled) fire and forget way, that's why
                 // we need to wait a little in real time.
-                await Task.Delay(250);
+                await Task.Delay(s_sessionAcquistionDelay);
                 stats = pool.GetStatisticsSnapshot();
                 Assert.False(stats.Healthy);
                 Assert.Equal(3, stats.ActiveSessionCount);
@@ -482,7 +519,7 @@ namespace Google.Cloud.Spanner.V1.Tests
                 // Wait a little in real time to make sure that nursing has started.
                 // Nursing is done in a (controlled) fire and forget way, that's why
                 // we need to wait a little in real time.
-                await Task.Delay(250);
+                await Task.Delay(s_sessionAcquistionDelay);
 
                 // Acquire some other sessions. These won't start a new nursing task, will just wait for
                 // the one already started to be done.
@@ -760,7 +797,17 @@ namespace Google.Cloud.Spanner.V1.Tests
 
                 // Wait a little in real time so that the start session creation tasks
                 // have had time to execute, they are started in a fire and forget manner.
-                await Task.Delay(TimeSpan.FromMilliseconds(250));
+                // This test has been flaky, so we wait up to three times, stopping the wait if
+                // we know that the pool is unhealthy.
+                for (int i = 0; i < 3; i++)
+                {
+                    var stats = pool.GetStatisticsSnapshot();
+                    if (!stats.Healthy)
+                    {
+                        break;
+                    }
+                    await Task.Delay(s_sessionAcquistionDelay);
+                }
 
                 await client.Scheduler.RunAsync(async () =>
                 {

@@ -27,156 +27,166 @@ namespace Google.Cloud.Talent.V4Beta1 {
             "Ci1nb29nbGUvY2xvdWQvdGFsZW50L3Y0YmV0YTEvam9iX3NlcnZpY2UucHJv",
             "dG8SG2dvb2dsZS5jbG91ZC50YWxlbnQudjRiZXRhMRocZ29vZ2xlL2FwaS9h",
             "bm5vdGF0aW9ucy5wcm90bxoXZ29vZ2xlL2FwaS9jbGllbnQucHJvdG8aH2dv",
-            "b2dsZS9hcGkvZmllbGRfYmVoYXZpb3IucHJvdG8aKGdvb2dsZS9jbG91ZC90",
-            "YWxlbnQvdjRiZXRhMS9jb21tb24ucHJvdG8aKWdvb2dsZS9jbG91ZC90YWxl",
-            "bnQvdjRiZXRhMS9maWx0ZXJzLnByb3RvGitnb29nbGUvY2xvdWQvdGFsZW50",
-            "L3Y0YmV0YTEvaGlzdG9ncmFtLnByb3RvGiVnb29nbGUvY2xvdWQvdGFsZW50",
-            "L3Y0YmV0YTEvam9iLnByb3RvGiNnb29nbGUvbG9uZ3J1bm5pbmcvb3BlcmF0",
-            "aW9ucy5wcm90bxoZZ29vZ2xlL3Byb3RvYnVmL2FueS5wcm90bxoeZ29vZ2xl",
-            "L3Byb3RvYnVmL2R1cmF0aW9uLnByb3RvGhtnb29nbGUvcHJvdG9idWYvZW1w",
-            "dHkucHJvdG8aIGdvb2dsZS9wcm90b2J1Zi9maWVsZF9tYXNrLnByb3RvGhdn",
-            "b29nbGUvcnBjL3N0YXR1cy5wcm90byJbChBDcmVhdGVKb2JSZXF1ZXN0EhMK",
-            "BnBhcmVudBgBIAEoCUID4EECEjIKA2pvYhgCIAEoCzIgLmdvb2dsZS5jbG91",
-            "ZC50YWxlbnQudjRiZXRhMS5Kb2JCA+BBAiIiCg1HZXRKb2JSZXF1ZXN0EhEK",
-            "BG5hbWUYASABKAlCA+BBAiJ3ChBVcGRhdGVKb2JSZXF1ZXN0EjIKA2pvYhgB",
-            "IAEoCzIgLmdvb2dsZS5jbG91ZC50YWxlbnQudjRiZXRhMS5Kb2JCA+BBAhIv",
-            "Cgt1cGRhdGVfbWFzaxgCIAEoCzIaLmdvb2dsZS5wcm90b2J1Zi5GaWVsZE1h",
-            "c2siJQoQRGVsZXRlSm9iUmVxdWVzdBIRCgRuYW1lGAEgASgJQgPgQQIiQgoW",
-            "QmF0Y2hEZWxldGVKb2JzUmVxdWVzdBITCgZwYXJlbnQYASABKAlCA+BBAhIT",
-            "CgZmaWx0ZXIYAiABKAlCA+BBAiKaAQoPTGlzdEpvYnNSZXF1ZXN0EhMKBnBh",
-            "cmVudBgBIAEoCUID4EECEhMKBmZpbHRlchgCIAEoCUID4EECEhIKCnBhZ2Vf",
-            "dG9rZW4YAyABKAkSEQoJcGFnZV9zaXplGAQgASgFEjYKCGpvYl92aWV3GAUg",
-            "ASgOMiQuZ29vZ2xlLmNsb3VkLnRhbGVudC52NGJldGExLkpvYlZpZXcinAEK",
-            "EExpc3RKb2JzUmVzcG9uc2USLgoEam9icxgBIAMoCzIgLmdvb2dsZS5jbG91",
-            "ZC50YWxlbnQudjRiZXRhMS5Kb2ISFwoPbmV4dF9wYWdlX3Rva2VuGAIgASgJ",
-            "Ej8KCG1ldGFkYXRhGAMgASgLMi0uZ29vZ2xlLmNsb3VkLnRhbGVudC52NGJl",
-            "dGExLlJlc3BvbnNlTWV0YWRhdGEitAkKEVNlYXJjaEpvYnNSZXF1ZXN0EhMK",
-            "BnBhcmVudBgBIAEoCUID4EECEk4KC3NlYXJjaF9tb2RlGAIgASgOMjkuZ29v",
-            "Z2xlLmNsb3VkLnRhbGVudC52NGJldGExLlNlYXJjaEpvYnNSZXF1ZXN0LlNl",
-            "YXJjaE1vZGUSSwoQcmVxdWVzdF9tZXRhZGF0YRgDIAEoCzIsLmdvb2dsZS5j",
-            "bG91ZC50YWxlbnQudjRiZXRhMS5SZXF1ZXN0TWV0YWRhdGFCA+BBAhI4Cglq",
-            "b2JfcXVlcnkYBCABKAsyJS5nb29nbGUuY2xvdWQudGFsZW50LnY0YmV0YTEu",
-            "Sm9iUXVlcnkSGQoRZW5hYmxlX2Jyb2FkZW5pbmcYBSABKAgSIwobcmVxdWly",
-            "ZV9wcmVjaXNlX3Jlc3VsdF9zaXplGAYgASgIEkYKEWhpc3RvZ3JhbV9xdWVy",
-            "aWVzGAcgAygLMisuZ29vZ2xlLmNsb3VkLnRhbGVudC52NGJldGExLkhpc3Rv",
-            "Z3JhbVF1ZXJ5EjYKCGpvYl92aWV3GAggASgOMiQuZ29vZ2xlLmNsb3VkLnRh",
-            "bGVudC52NGJldGExLkpvYlZpZXcSDgoGb2Zmc2V0GAkgASgFEhEKCXBhZ2Vf",
-            "c2l6ZRgKIAEoBRISCgpwYWdlX3Rva2VuGAsgASgJEhAKCG9yZGVyX2J5GAwg",
-            "ASgJEmIKFWRpdmVyc2lmaWNhdGlvbl9sZXZlbBgNIAEoDjJDLmdvb2dsZS5j",
-            "bG91ZC50YWxlbnQudjRiZXRhMS5TZWFyY2hKb2JzUmVxdWVzdC5EaXZlcnNp",
-            "ZmljYXRpb25MZXZlbBJdChNjdXN0b21fcmFua2luZ19pbmZvGA4gASgLMkAu",
-            "Z29vZ2xlLmNsb3VkLnRhbGVudC52NGJldGExLlNlYXJjaEpvYnNSZXF1ZXN0",
-            "LkN1c3RvbVJhbmtpbmdJbmZvEh0KFWRpc2FibGVfa2V5d29yZF9tYXRjaBgQ",
-            "IAEoCBqaAgoRQ3VzdG9tUmFua2luZ0luZm8SbwoQaW1wb3J0YW5jZV9sZXZl",
-            "bBgBIAEoDjJQLmdvb2dsZS5jbG91ZC50YWxlbnQudjRiZXRhMS5TZWFyY2hK",
-            "b2JzUmVxdWVzdC5DdXN0b21SYW5raW5nSW5mby5JbXBvcnRhbmNlTGV2ZWxC",
-            "A+BBAhIfChJyYW5raW5nX2V4cHJlc3Npb24YAiABKAlCA+BBAiJzCg9JbXBv",
-            "cnRhbmNlTGV2ZWwSIAocSU1QT1JUQU5DRV9MRVZFTF9VTlNQRUNJRklFRBAA",
-            "EggKBE5PTkUQARIHCgNMT1cQAhIICgRNSUxEEAMSCgoGTUVESVVNEAQSCAoE",
-            "SElHSBAFEgsKB0VYVFJFTUUQBiJSCgpTZWFyY2hNb2RlEhsKF1NFQVJDSF9N",
-            "T0RFX1VOU1BFQ0lGSUVEEAASDgoKSk9CX1NFQVJDSBABEhcKE0ZFQVRVUkVE",
-            "X0pPQl9TRUFSQ0gQAiJXChREaXZlcnNpZmljYXRpb25MZXZlbBIlCiFESVZF",
-            "UlNJRklDQVRJT05fTEVWRUxfVU5TUEVDSUZJRUQQABIMCghESVNBQkxFRBAB",
-            "EgoKBlNJTVBMRRACItcGChJTZWFyY2hKb2JzUmVzcG9uc2USUgoNbWF0Y2hp",
-            "bmdfam9icxgBIAMoCzI7Lmdvb2dsZS5jbG91ZC50YWxlbnQudjRiZXRhMS5T",
-            "ZWFyY2hKb2JzUmVzcG9uc2UuTWF0Y2hpbmdKb2ISUgoXaGlzdG9ncmFtX3F1",
-            "ZXJ5X3Jlc3VsdHMYAiADKAsyMS5nb29nbGUuY2xvdWQudGFsZW50LnY0YmV0",
-            "YTEuSGlzdG9ncmFtUXVlcnlSZXN1bHQSFwoPbmV4dF9wYWdlX3Rva2VuGAMg",
-            "ASgJEj8KEGxvY2F0aW9uX2ZpbHRlcnMYBCADKAsyJS5nb29nbGUuY2xvdWQu",
-            "dGFsZW50LnY0YmV0YTEuTG9jYXRpb24SHAoUZXN0aW1hdGVkX3RvdGFsX3Np",
-            "emUYBSABKAUSEgoKdG90YWxfc2l6ZRgGIAEoBRI/CghtZXRhZGF0YRgHIAEo",
-            "CzItLmdvb2dsZS5jbG91ZC50YWxlbnQudjRiZXRhMS5SZXNwb25zZU1ldGFk",
-            "YXRhEiIKGmJyb2FkZW5lZF9xdWVyeV9qb2JzX2NvdW50GAggASgFEkkKEHNw",
-            "ZWxsX2NvcnJlY3Rpb24YCSABKAsyLy5nb29nbGUuY2xvdWQudGFsZW50LnY0",
-            "YmV0YTEuU3BlbGxpbmdDb3JyZWN0aW9uGtwBCgtNYXRjaGluZ0pvYhItCgNq",
-            "b2IYASABKAsyIC5nb29nbGUuY2xvdWQudGFsZW50LnY0YmV0YTEuSm9iEhMK",
-            "C2pvYl9zdW1tYXJ5GAIgASgJEhkKEWpvYl90aXRsZV9zbmlwcGV0GAMgASgJ",
-            "EhsKE3NlYXJjaF90ZXh0X3NuaXBwZXQYBCABKAkSUQoMY29tbXV0ZV9pbmZv",
-            "GAUgASgLMjsuZ29vZ2xlLmNsb3VkLnRhbGVudC52NGJldGExLlNlYXJjaEpv",
-            "YnNSZXNwb25zZS5Db21tdXRlSW5mbxp+CgtDb21tdXRlSW5mbxI7Cgxqb2Jf",
-            "bG9jYXRpb24YASABKAsyJS5nb29nbGUuY2xvdWQudGFsZW50LnY0YmV0YTEu",
-            "TG9jYXRpb24SMgoPdHJhdmVsX2R1cmF0aW9uGAIgASgLMhkuZ29vZ2xlLnBy",
-            "b3RvYnVmLkR1cmF0aW9uImIKFkJhdGNoQ3JlYXRlSm9ic1JlcXVlc3QSEwoG",
-            "cGFyZW50GAEgASgJQgPgQQISMwoEam9icxgCIAMoCzIgLmdvb2dsZS5jbG91",
-            "ZC50YWxlbnQudjRiZXRhMS5Kb2JCA+BBAiKTAQoWQmF0Y2hVcGRhdGVKb2Jz",
-            "UmVxdWVzdBITCgZwYXJlbnQYASABKAlCA+BBAhIzCgRqb2JzGAIgAygLMiAu",
+            "b2dsZS9hcGkvZmllbGRfYmVoYXZpb3IucHJvdG8aGWdvb2dsZS9hcGkvcmVz",
+            "b3VyY2UucHJvdG8aKGdvb2dsZS9jbG91ZC90YWxlbnQvdjRiZXRhMS9jb21t",
+            "b24ucHJvdG8aKWdvb2dsZS9jbG91ZC90YWxlbnQvdjRiZXRhMS9maWx0ZXJz",
+            "LnByb3RvGitnb29nbGUvY2xvdWQvdGFsZW50L3Y0YmV0YTEvaGlzdG9ncmFt",
+            "LnByb3RvGiVnb29nbGUvY2xvdWQvdGFsZW50L3Y0YmV0YTEvam9iLnByb3Rv",
+            "GiNnb29nbGUvbG9uZ3J1bm5pbmcvb3BlcmF0aW9ucy5wcm90bxoZZ29vZ2xl",
+            "L3Byb3RvYnVmL2FueS5wcm90bxoeZ29vZ2xlL3Byb3RvYnVmL2R1cmF0aW9u",
+            "LnByb3RvGhtnb29nbGUvcHJvdG9idWYvZW1wdHkucHJvdG8aIGdvb2dsZS9w",
+            "cm90b2J1Zi9maWVsZF9tYXNrLnByb3RvGhdnb29nbGUvcnBjL3N0YXR1cy5w",
+            "cm90byJ3ChBDcmVhdGVKb2JSZXF1ZXN0Ei8KBnBhcmVudBgBIAEoCUIf4EEC",
+            "+kEZEhdqb2JzLmdvb2dsZWFwaXMuY29tL0pvYhIyCgNqb2IYAiABKAsyIC5n",
+            "b29nbGUuY2xvdWQudGFsZW50LnY0YmV0YTEuSm9iQgPgQQIiPgoNR2V0Sm9i",
+            "UmVxdWVzdBItCgRuYW1lGAEgASgJQh/gQQL6QRkKF2pvYnMuZ29vZ2xlYXBp",
+            "cy5jb20vSm9iIncKEFVwZGF0ZUpvYlJlcXVlc3QSMgoDam9iGAEgASgLMiAu",
             "Z29vZ2xlLmNsb3VkLnRhbGVudC52NGJldGExLkpvYkID4EECEi8KC3VwZGF0",
-            "ZV9tYXNrGAMgASgLMhouZ29vZ2xlLnByb3RvYnVmLkZpZWxkTWFzayLEAQoS",
-            "Sm9iT3BlcmF0aW9uUmVzdWx0Ek4KC2pvYl9yZXN1bHRzGAEgAygLMjkuZ29v",
-            "Z2xlLmNsb3VkLnRhbGVudC52NGJldGExLkpvYk9wZXJhdGlvblJlc3VsdC5K",
-            "b2JSZXN1bHQaXgoJSm9iUmVzdWx0Ei0KA2pvYhgBIAEoCzIgLmdvb2dsZS5j",
-            "bG91ZC50YWxlbnQudjRiZXRhMS5Kb2ISIgoGc3RhdHVzGAIgASgLMhIuZ29v",
-            "Z2xlLnJwYy5TdGF0dXMqdgoHSm9iVmlldxIYChRKT0JfVklFV19VTlNQRUNJ",
-            "RklFRBAAEhQKEEpPQl9WSUVXX0lEX09OTFkQARIUChBKT0JfVklFV19NSU5J",
-            "TUFMEAISEgoOSk9CX1ZJRVdfU01BTEwQAxIRCg1KT0JfVklFV19GVUxMEAQy",
-            "kBEKCkpvYlNlcnZpY2USvAEKCUNyZWF0ZUpvYhItLmdvb2dsZS5jbG91ZC50",
-            "YWxlbnQudjRiZXRhMS5DcmVhdGVKb2JSZXF1ZXN0GiAuZ29vZ2xlLmNsb3Vk",
-            "LnRhbGVudC52NGJldGExLkpvYiJegtPkkwJYIisvdjRiZXRhMS97cGFyZW50",
-            "PXByb2plY3RzLyovdGVuYW50cy8qfS9qb2JzOgEqWiYiIS92NGJldGExL3tw",
-            "YXJlbnQ9cHJvamVjdHMvKn0vam9iczoBKhLdAQoPQmF0Y2hDcmVhdGVKb2Jz",
-            "EjMuZ29vZ2xlLmNsb3VkLnRhbGVudC52NGJldGExLkJhdGNoQ3JlYXRlSm9i",
-            "c1JlcXVlc3QaHS5nb29nbGUubG9uZ3J1bm5pbmcuT3BlcmF0aW9uInaC0+ST",
-            "AnAiNy92NGJldGExL3twYXJlbnQ9cHJvamVjdHMvKi90ZW5hbnRzLyp9L2pv",
-            "YnM6YmF0Y2hDcmVhdGU6ASpaMiItL3Y0YmV0YTEve3BhcmVudD1wcm9qZWN0",
-            "cy8qfS9qb2JzOmJhdGNoQ3JlYXRlOgEqErABCgZHZXRKb2ISKi5nb29nbGUu",
-            "Y2xvdWQudGFsZW50LnY0YmV0YTEuR2V0Sm9iUmVxdWVzdBogLmdvb2dsZS5j",
-            "bG91ZC50YWxlbnQudjRiZXRhMS5Kb2IiWILT5JMCUhIrL3Y0YmV0YTEve25h",
-            "bWU9cHJvamVjdHMvKi90ZW5hbnRzLyovam9icy8qfVojEiEvdjRiZXRhMS97",
-            "bmFtZT1wcm9qZWN0cy8qL2pvYnMvKn0SxAEKCVVwZGF0ZUpvYhItLmdvb2ds",
-            "ZS5jbG91ZC50YWxlbnQudjRiZXRhMS5VcGRhdGVKb2JSZXF1ZXN0GiAuZ29v",
-            "Z2xlLmNsb3VkLnRhbGVudC52NGJldGExLkpvYiJmgtPkkwJgMi8vdjRiZXRh",
-            "MS97am9iLm5hbWU9cHJvamVjdHMvKi90ZW5hbnRzLyovam9icy8qfToBKloq",
-            "MiUvdjRiZXRhMS97am9iLm5hbWU9cHJvamVjdHMvKi9qb2JzLyp9OgEqEt0B",
-            "Cg9CYXRjaFVwZGF0ZUpvYnMSMy5nb29nbGUuY2xvdWQudGFsZW50LnY0YmV0",
-            "YTEuQmF0Y2hVcGRhdGVKb2JzUmVxdWVzdBodLmdvb2dsZS5sb25ncnVubmlu",
-            "Zy5PcGVyYXRpb24idoLT5JMCcCI3L3Y0YmV0YTEve3BhcmVudD1wcm9qZWN0",
-            "cy8qL3RlbmFudHMvKn0vam9iczpiYXRjaFVwZGF0ZToBKloyIi0vdjRiZXRh",
-            "MS97cGFyZW50PXByb2plY3RzLyp9L2pvYnM6YmF0Y2hVcGRhdGU6ASoSrAEK",
-            "CURlbGV0ZUpvYhItLmdvb2dsZS5jbG91ZC50YWxlbnQudjRiZXRhMS5EZWxl",
-            "dGVKb2JSZXF1ZXN0GhYuZ29vZ2xlLnByb3RvYnVmLkVtcHR5IliC0+STAlIq",
-            "Ky92NGJldGExL3tuYW1lPXByb2plY3RzLyovdGVuYW50cy8qL2pvYnMvKn1a",
-            "IyohL3Y0YmV0YTEve25hbWU9cHJvamVjdHMvKi9qb2JzLyp9EtMBCg9CYXRj",
-            "aERlbGV0ZUpvYnMSMy5nb29nbGUuY2xvdWQudGFsZW50LnY0YmV0YTEuQmF0",
-            "Y2hEZWxldGVKb2JzUmVxdWVzdBoWLmdvb2dsZS5wcm90b2J1Zi5FbXB0eSJz",
-            "gtPkkwJtIjcvdjRiZXRhMS97cGFyZW50PXByb2plY3RzLyovdGVuYW50cy8q",
-            "fS9qb2JzOmJhdGNoRGVsZXRlOgEqWi8iLS92NGJldGExL3twYXJlbnQ9cHJv",
-            "amVjdHMvKn0vam9iczpiYXRjaERlbGV0ZRLBAQoITGlzdEpvYnMSLC5nb29n",
-            "bGUuY2xvdWQudGFsZW50LnY0YmV0YTEuTGlzdEpvYnNSZXF1ZXN0Gi0uZ29v",
-            "Z2xlLmNsb3VkLnRhbGVudC52NGJldGExLkxpc3RKb2JzUmVzcG9uc2UiWILT",
-            "5JMCUhIrL3Y0YmV0YTEve3BhcmVudD1wcm9qZWN0cy8qL3RlbmFudHMvKn0v",
-            "am9ic1ojEiEvdjRiZXRhMS97cGFyZW50PXByb2plY3RzLyp9L2pvYnMS2wEK",
-            "ClNlYXJjaEpvYnMSLi5nb29nbGUuY2xvdWQudGFsZW50LnY0YmV0YTEuU2Vh",
-            "cmNoSm9ic1JlcXVlc3QaLy5nb29nbGUuY2xvdWQudGFsZW50LnY0YmV0YTEu",
-            "U2VhcmNoSm9ic1Jlc3BvbnNlImyC0+STAmYiMi92NGJldGExL3twYXJlbnQ9",
-            "cHJvamVjdHMvKi90ZW5hbnRzLyp9L2pvYnM6c2VhcmNoOgEqWi0iKC92NGJl",
-            "dGExL3twYXJlbnQ9cHJvamVjdHMvKn0vam9iczpzZWFyY2g6ASoS8wEKElNl",
-            "YXJjaEpvYnNGb3JBbGVydBIuLmdvb2dsZS5jbG91ZC50YWxlbnQudjRiZXRh",
-            "MS5TZWFyY2hKb2JzUmVxdWVzdBovLmdvb2dsZS5jbG91ZC50YWxlbnQudjRi",
-            "ZXRhMS5TZWFyY2hKb2JzUmVzcG9uc2UifILT5JMCdiI6L3Y0YmV0YTEve3Bh",
-            "cmVudD1wcm9qZWN0cy8qL3RlbmFudHMvKn0vam9iczpzZWFyY2hGb3JBbGVy",
-            "dDoBKlo1IjAvdjRiZXRhMS97cGFyZW50PXByb2plY3RzLyp9L2pvYnM6c2Vh",
-            "cmNoRm9yQWxlcnQ6ASoabMpBE2pvYnMuZ29vZ2xlYXBpcy5jb23SQVNodHRw",
-            "czovL3d3dy5nb29nbGVhcGlzLmNvbS9hdXRoL2Nsb3VkLXBsYXRmb3JtLGh0",
-            "dHBzOi8vd3d3Lmdvb2dsZWFwaXMuY29tL2F1dGgvam9ic0J9Ch9jb20uZ29v",
-            "Z2xlLmNsb3VkLnRhbGVudC52NGJldGExQg9Kb2JTZXJ2aWNlUHJvdG9QAVpB",
-            "Z29vZ2xlLmdvbGFuZy5vcmcvZ2VucHJvdG8vZ29vZ2xlYXBpcy9jbG91ZC90",
-            "YWxlbnQvdjRiZXRhMTt0YWxlbnSiAgNDVFNiBnByb3RvMw=="));
+            "ZV9tYXNrGAIgASgLMhouZ29vZ2xlLnByb3RvYnVmLkZpZWxkTWFzayJBChBE",
+            "ZWxldGVKb2JSZXF1ZXN0Ei0KBG5hbWUYASABKAlCH+BBAvpBGQoXam9icy5n",
+            "b29nbGVhcGlzLmNvbS9Kb2IiXgoWQmF0Y2hEZWxldGVKb2JzUmVxdWVzdBIv",
+            "CgZwYXJlbnQYASABKAlCH+BBAvpBGRIXam9icy5nb29nbGVhcGlzLmNvbS9K",
+            "b2ISEwoGZmlsdGVyGAIgASgJQgPgQQIitgEKD0xpc3RKb2JzUmVxdWVzdBIv",
+            "CgZwYXJlbnQYASABKAlCH+BBAvpBGRIXam9icy5nb29nbGVhcGlzLmNvbS9K",
+            "b2ISEwoGZmlsdGVyGAIgASgJQgPgQQISEgoKcGFnZV90b2tlbhgDIAEoCRIR",
+            "CglwYWdlX3NpemUYBCABKAUSNgoIam9iX3ZpZXcYBSABKA4yJC5nb29nbGUu",
+            "Y2xvdWQudGFsZW50LnY0YmV0YTEuSm9iVmlldyKcAQoQTGlzdEpvYnNSZXNw",
+            "b25zZRIuCgRqb2JzGAEgAygLMiAuZ29vZ2xlLmNsb3VkLnRhbGVudC52NGJl",
+            "dGExLkpvYhIXCg9uZXh0X3BhZ2VfdG9rZW4YAiABKAkSPwoIbWV0YWRhdGEY",
+            "AyABKAsyLS5nb29nbGUuY2xvdWQudGFsZW50LnY0YmV0YTEuUmVzcG9uc2VN",
+            "ZXRhZGF0YSLQCQoRU2VhcmNoSm9ic1JlcXVlc3QSLwoGcGFyZW50GAEgASgJ",
+            "Qh/gQQL6QRkSF2pvYnMuZ29vZ2xlYXBpcy5jb20vSm9iEk4KC3NlYXJjaF9t",
+            "b2RlGAIgASgOMjkuZ29vZ2xlLmNsb3VkLnRhbGVudC52NGJldGExLlNlYXJj",
+            "aEpvYnNSZXF1ZXN0LlNlYXJjaE1vZGUSSwoQcmVxdWVzdF9tZXRhZGF0YRgD",
+            "IAEoCzIsLmdvb2dsZS5jbG91ZC50YWxlbnQudjRiZXRhMS5SZXF1ZXN0TWV0",
+            "YWRhdGFCA+BBAhI4Cglqb2JfcXVlcnkYBCABKAsyJS5nb29nbGUuY2xvdWQu",
+            "dGFsZW50LnY0YmV0YTEuSm9iUXVlcnkSGQoRZW5hYmxlX2Jyb2FkZW5pbmcY",
+            "BSABKAgSIwobcmVxdWlyZV9wcmVjaXNlX3Jlc3VsdF9zaXplGAYgASgIEkYK",
+            "EWhpc3RvZ3JhbV9xdWVyaWVzGAcgAygLMisuZ29vZ2xlLmNsb3VkLnRhbGVu",
+            "dC52NGJldGExLkhpc3RvZ3JhbVF1ZXJ5EjYKCGpvYl92aWV3GAggASgOMiQu",
+            "Z29vZ2xlLmNsb3VkLnRhbGVudC52NGJldGExLkpvYlZpZXcSDgoGb2Zmc2V0",
+            "GAkgASgFEhEKCXBhZ2Vfc2l6ZRgKIAEoBRISCgpwYWdlX3Rva2VuGAsgASgJ",
+            "EhAKCG9yZGVyX2J5GAwgASgJEmIKFWRpdmVyc2lmaWNhdGlvbl9sZXZlbBgN",
+            "IAEoDjJDLmdvb2dsZS5jbG91ZC50YWxlbnQudjRiZXRhMS5TZWFyY2hKb2Jz",
+            "UmVxdWVzdC5EaXZlcnNpZmljYXRpb25MZXZlbBJdChNjdXN0b21fcmFua2lu",
+            "Z19pbmZvGA4gASgLMkAuZ29vZ2xlLmNsb3VkLnRhbGVudC52NGJldGExLlNl",
+            "YXJjaEpvYnNSZXF1ZXN0LkN1c3RvbVJhbmtpbmdJbmZvEh0KFWRpc2FibGVf",
+            "a2V5d29yZF9tYXRjaBgQIAEoCBqaAgoRQ3VzdG9tUmFua2luZ0luZm8SbwoQ",
+            "aW1wb3J0YW5jZV9sZXZlbBgBIAEoDjJQLmdvb2dsZS5jbG91ZC50YWxlbnQu",
+            "djRiZXRhMS5TZWFyY2hKb2JzUmVxdWVzdC5DdXN0b21SYW5raW5nSW5mby5J",
+            "bXBvcnRhbmNlTGV2ZWxCA+BBAhIfChJyYW5raW5nX2V4cHJlc3Npb24YAiAB",
+            "KAlCA+BBAiJzCg9JbXBvcnRhbmNlTGV2ZWwSIAocSU1QT1JUQU5DRV9MRVZF",
+            "TF9VTlNQRUNJRklFRBAAEggKBE5PTkUQARIHCgNMT1cQAhIICgRNSUxEEAMS",
+            "CgoGTUVESVVNEAQSCAoESElHSBAFEgsKB0VYVFJFTUUQBiJSCgpTZWFyY2hN",
+            "b2RlEhsKF1NFQVJDSF9NT0RFX1VOU1BFQ0lGSUVEEAASDgoKSk9CX1NFQVJD",
+            "SBABEhcKE0ZFQVRVUkVEX0pPQl9TRUFSQ0gQAiJXChREaXZlcnNpZmljYXRp",
+            "b25MZXZlbBIlCiFESVZFUlNJRklDQVRJT05fTEVWRUxfVU5TUEVDSUZJRUQQ",
+            "ABIMCghESVNBQkxFRBABEgoKBlNJTVBMRRACItcGChJTZWFyY2hKb2JzUmVz",
+            "cG9uc2USUgoNbWF0Y2hpbmdfam9icxgBIAMoCzI7Lmdvb2dsZS5jbG91ZC50",
+            "YWxlbnQudjRiZXRhMS5TZWFyY2hKb2JzUmVzcG9uc2UuTWF0Y2hpbmdKb2IS",
+            "UgoXaGlzdG9ncmFtX3F1ZXJ5X3Jlc3VsdHMYAiADKAsyMS5nb29nbGUuY2xv",
+            "dWQudGFsZW50LnY0YmV0YTEuSGlzdG9ncmFtUXVlcnlSZXN1bHQSFwoPbmV4",
+            "dF9wYWdlX3Rva2VuGAMgASgJEj8KEGxvY2F0aW9uX2ZpbHRlcnMYBCADKAsy",
+            "JS5nb29nbGUuY2xvdWQudGFsZW50LnY0YmV0YTEuTG9jYXRpb24SHAoUZXN0",
+            "aW1hdGVkX3RvdGFsX3NpemUYBSABKAUSEgoKdG90YWxfc2l6ZRgGIAEoBRI/",
+            "CghtZXRhZGF0YRgHIAEoCzItLmdvb2dsZS5jbG91ZC50YWxlbnQudjRiZXRh",
+            "MS5SZXNwb25zZU1ldGFkYXRhEiIKGmJyb2FkZW5lZF9xdWVyeV9qb2JzX2Nv",
+            "dW50GAggASgFEkkKEHNwZWxsX2NvcnJlY3Rpb24YCSABKAsyLy5nb29nbGUu",
+            "Y2xvdWQudGFsZW50LnY0YmV0YTEuU3BlbGxpbmdDb3JyZWN0aW9uGtwBCgtN",
+            "YXRjaGluZ0pvYhItCgNqb2IYASABKAsyIC5nb29nbGUuY2xvdWQudGFsZW50",
+            "LnY0YmV0YTEuSm9iEhMKC2pvYl9zdW1tYXJ5GAIgASgJEhkKEWpvYl90aXRs",
+            "ZV9zbmlwcGV0GAMgASgJEhsKE3NlYXJjaF90ZXh0X3NuaXBwZXQYBCABKAkS",
+            "UQoMY29tbXV0ZV9pbmZvGAUgASgLMjsuZ29vZ2xlLmNsb3VkLnRhbGVudC52",
+            "NGJldGExLlNlYXJjaEpvYnNSZXNwb25zZS5Db21tdXRlSW5mbxp+CgtDb21t",
+            "dXRlSW5mbxI7Cgxqb2JfbG9jYXRpb24YASABKAsyJS5nb29nbGUuY2xvdWQu",
+            "dGFsZW50LnY0YmV0YTEuTG9jYXRpb24SMgoPdHJhdmVsX2R1cmF0aW9uGAIg",
+            "ASgLMhkuZ29vZ2xlLnByb3RvYnVmLkR1cmF0aW9uIn4KFkJhdGNoQ3JlYXRl",
+            "Sm9ic1JlcXVlc3QSLwoGcGFyZW50GAEgASgJQh/gQQL6QRkSF2pvYnMuZ29v",
+            "Z2xlYXBpcy5jb20vSm9iEjMKBGpvYnMYAiADKAsyIC5nb29nbGUuY2xvdWQu",
+            "dGFsZW50LnY0YmV0YTEuSm9iQgPgQQIirwEKFkJhdGNoVXBkYXRlSm9ic1Jl",
+            "cXVlc3QSLwoGcGFyZW50GAEgASgJQh/gQQL6QRkSF2pvYnMuZ29vZ2xlYXBp",
+            "cy5jb20vSm9iEjMKBGpvYnMYAiADKAsyIC5nb29nbGUuY2xvdWQudGFsZW50",
+            "LnY0YmV0YTEuSm9iQgPgQQISLwoLdXBkYXRlX21hc2sYAyABKAsyGi5nb29n",
+            "bGUucHJvdG9idWYuRmllbGRNYXNrIsQBChJKb2JPcGVyYXRpb25SZXN1bHQS",
+            "TgoLam9iX3Jlc3VsdHMYASADKAsyOS5nb29nbGUuY2xvdWQudGFsZW50LnY0",
+            "YmV0YTEuSm9iT3BlcmF0aW9uUmVzdWx0LkpvYlJlc3VsdBpeCglKb2JSZXN1",
+            "bHQSLQoDam9iGAEgASgLMiAuZ29vZ2xlLmNsb3VkLnRhbGVudC52NGJldGEx",
+            "LkpvYhIiCgZzdGF0dXMYAiABKAsyEi5nb29nbGUucnBjLlN0YXR1cyp2CgdK",
+            "b2JWaWV3EhgKFEpPQl9WSUVXX1VOU1BFQ0lGSUVEEAASFAoQSk9CX1ZJRVdf",
+            "SURfT05MWRABEhQKEEpPQl9WSUVXX01JTklNQUwQAhISCg5KT0JfVklFV19T",
+            "TUFMTBADEhEKDUpPQl9WSUVXX0ZVTEwQBDLOEgoKSm9iU2VydmljZRLJAQoJ",
+            "Q3JlYXRlSm9iEi0uZ29vZ2xlLmNsb3VkLnRhbGVudC52NGJldGExLkNyZWF0",
+            "ZUpvYlJlcXVlc3QaIC5nb29nbGUuY2xvdWQudGFsZW50LnY0YmV0YTEuSm9i",
+            "ImuC0+STAlgiKy92NGJldGExL3twYXJlbnQ9cHJvamVjdHMvKi90ZW5hbnRz",
+            "Lyp9L2pvYnM6ASpaJiIhL3Y0YmV0YTEve3BhcmVudD1wcm9qZWN0cy8qfS9q",
+            "b2JzOgEq2kEKcGFyZW50LGpvYhKbAgoPQmF0Y2hDcmVhdGVKb2JzEjMuZ29v",
+            "Z2xlLmNsb3VkLnRhbGVudC52NGJldGExLkJhdGNoQ3JlYXRlSm9ic1JlcXVl",
+            "c3QaHS5nb29nbGUubG9uZ3J1bm5pbmcuT3BlcmF0aW9uIrMBgtPkkwJwIjcv",
+            "djRiZXRhMS97cGFyZW50PXByb2plY3RzLyovdGVuYW50cy8qfS9qb2JzOmJh",
+            "dGNoQ3JlYXRlOgEqWjIiLS92NGJldGExL3twYXJlbnQ9cHJvamVjdHMvKn0v",
+            "am9iczpiYXRjaENyZWF0ZToBKtpBC3BhcmVudCxqb2JzykEsChJKb2JPcGVy",
+            "YXRpb25SZXN1bHQSFkJhdGNoT3BlcmF0aW9uTWV0YWRhdGEStwEKBkdldEpv",
+            "YhIqLmdvb2dsZS5jbG91ZC50YWxlbnQudjRiZXRhMS5HZXRKb2JSZXF1ZXN0",
+            "GiAuZ29vZ2xlLmNsb3VkLnRhbGVudC52NGJldGExLkpvYiJfgtPkkwJSEisv",
+            "djRiZXRhMS97bmFtZT1wcm9qZWN0cy8qL3RlbmFudHMvKi9qb2JzLyp9WiMS",
+            "IS92NGJldGExL3tuYW1lPXByb2plY3RzLyovam9icy8qfdpBBG5hbWUSygEK",
+            "CVVwZGF0ZUpvYhItLmdvb2dsZS5jbG91ZC50YWxlbnQudjRiZXRhMS5VcGRh",
+            "dGVKb2JSZXF1ZXN0GiAuZ29vZ2xlLmNsb3VkLnRhbGVudC52NGJldGExLkpv",
+            "YiJsgtPkkwJgMi8vdjRiZXRhMS97am9iLm5hbWU9cHJvamVjdHMvKi90ZW5h",
+            "bnRzLyovam9icy8qfToBKloqMiUvdjRiZXRhMS97am9iLm5hbWU9cHJvamVj",
+            "dHMvKi9qb2JzLyp9OgEq2kEDam9iEpsCCg9CYXRjaFVwZGF0ZUpvYnMSMy5n",
+            "b29nbGUuY2xvdWQudGFsZW50LnY0YmV0YTEuQmF0Y2hVcGRhdGVKb2JzUmVx",
+            "dWVzdBodLmdvb2dsZS5sb25ncnVubmluZy5PcGVyYXRpb24iswGC0+STAnAi",
+            "Ny92NGJldGExL3twYXJlbnQ9cHJvamVjdHMvKi90ZW5hbnRzLyp9L2pvYnM6",
+            "YmF0Y2hVcGRhdGU6ASpaMiItL3Y0YmV0YTEve3BhcmVudD1wcm9qZWN0cy8q",
+            "fS9qb2JzOmJhdGNoVXBkYXRlOgEq2kELcGFyZW50LGpvYnPKQSwKEkpvYk9w",
+            "ZXJhdGlvblJlc3VsdBIWQmF0Y2hPcGVyYXRpb25NZXRhZGF0YRKzAQoJRGVs",
+            "ZXRlSm9iEi0uZ29vZ2xlLmNsb3VkLnRhbGVudC52NGJldGExLkRlbGV0ZUpv",
+            "YlJlcXVlc3QaFi5nb29nbGUucHJvdG9idWYuRW1wdHkiX4LT5JMCUiorL3Y0",
+            "YmV0YTEve25hbWU9cHJvamVjdHMvKi90ZW5hbnRzLyovam9icy8qfVojKiEv",
+            "djRiZXRhMS97bmFtZT1wcm9qZWN0cy8qL2pvYnMvKn3aQQRuYW1lEuQBCg9C",
+            "YXRjaERlbGV0ZUpvYnMSMy5nb29nbGUuY2xvdWQudGFsZW50LnY0YmV0YTEu",
+            "QmF0Y2hEZWxldGVKb2JzUmVxdWVzdBoWLmdvb2dsZS5wcm90b2J1Zi5FbXB0",
+            "eSKDAYLT5JMCbSI3L3Y0YmV0YTEve3BhcmVudD1wcm9qZWN0cy8qL3RlbmFu",
+            "dHMvKn0vam9iczpiYXRjaERlbGV0ZToBKlovIi0vdjRiZXRhMS97cGFyZW50",
+            "PXByb2plY3RzLyp9L2pvYnM6YmF0Y2hEZWxldGXaQQ1wYXJlbnQsZmlsdGVy",
+            "EtEBCghMaXN0Sm9icxIsLmdvb2dsZS5jbG91ZC50YWxlbnQudjRiZXRhMS5M",
+            "aXN0Sm9ic1JlcXVlc3QaLS5nb29nbGUuY2xvdWQudGFsZW50LnY0YmV0YTEu",
+            "TGlzdEpvYnNSZXNwb25zZSJogtPkkwJSEisvdjRiZXRhMS97cGFyZW50PXBy",
+            "b2plY3RzLyovdGVuYW50cy8qfS9qb2JzWiMSIS92NGJldGExL3twYXJlbnQ9",
+            "cHJvamVjdHMvKn0vam9ic9pBDXBhcmVudCxmaWx0ZXIS2wEKClNlYXJjaEpv",
+            "YnMSLi5nb29nbGUuY2xvdWQudGFsZW50LnY0YmV0YTEuU2VhcmNoSm9ic1Jl",
+            "cXVlc3QaLy5nb29nbGUuY2xvdWQudGFsZW50LnY0YmV0YTEuU2VhcmNoSm9i",
+            "c1Jlc3BvbnNlImyC0+STAmYiMi92NGJldGExL3twYXJlbnQ9cHJvamVjdHMv",
+            "Ki90ZW5hbnRzLyp9L2pvYnM6c2VhcmNoOgEqWi0iKC92NGJldGExL3twYXJl",
+            "bnQ9cHJvamVjdHMvKn0vam9iczpzZWFyY2g6ASoS8wEKElNlYXJjaEpvYnNG",
+            "b3JBbGVydBIuLmdvb2dsZS5jbG91ZC50YWxlbnQudjRiZXRhMS5TZWFyY2hK",
+            "b2JzUmVxdWVzdBovLmdvb2dsZS5jbG91ZC50YWxlbnQudjRiZXRhMS5TZWFy",
+            "Y2hKb2JzUmVzcG9uc2UifILT5JMCdiI6L3Y0YmV0YTEve3BhcmVudD1wcm9q",
+            "ZWN0cy8qL3RlbmFudHMvKn0vam9iczpzZWFyY2hGb3JBbGVydDoBKlo1IjAv",
+            "djRiZXRhMS97cGFyZW50PXByb2plY3RzLyp9L2pvYnM6c2VhcmNoRm9yQWxl",
+            "cnQ6ASoabMpBE2pvYnMuZ29vZ2xlYXBpcy5jb23SQVNodHRwczovL3d3dy5n",
+            "b29nbGVhcGlzLmNvbS9hdXRoL2Nsb3VkLXBsYXRmb3JtLGh0dHBzOi8vd3d3",
+            "Lmdvb2dsZWFwaXMuY29tL2F1dGgvam9ic0J9Ch9jb20uZ29vZ2xlLmNsb3Vk",
+            "LnRhbGVudC52NGJldGExQg9Kb2JTZXJ2aWNlUHJvdG9QAVpBZ29vZ2xlLmdv",
+            "bGFuZy5vcmcvZ2VucHJvdG8vZ29vZ2xlYXBpcy9jbG91ZC90YWxlbnQvdjRi",
+            "ZXRhMTt0YWxlbnSiAgNDVFNiBnByb3RvMw=="));
       descriptor = pbr::FileDescriptor.FromGeneratedCode(descriptorData,
-          new pbr::FileDescriptor[] { global::Google.Api.AnnotationsReflection.Descriptor, global::Google.Api.ClientReflection.Descriptor, global::Google.Api.FieldBehaviorReflection.Descriptor, global::Google.Cloud.Talent.V4Beta1.CommonReflection.Descriptor, global::Google.Cloud.Talent.V4Beta1.FiltersReflection.Descriptor, global::Google.Cloud.Talent.V4Beta1.HistogramReflection.Descriptor, global::Google.Cloud.Talent.V4Beta1.JobReflection.Descriptor, global::Google.LongRunning.OperationsReflection.Descriptor, global::Google.Protobuf.WellKnownTypes.AnyReflection.Descriptor, global::Google.Protobuf.WellKnownTypes.DurationReflection.Descriptor, global::Google.Protobuf.WellKnownTypes.EmptyReflection.Descriptor, global::Google.Protobuf.WellKnownTypes.FieldMaskReflection.Descriptor, global::Google.Rpc.StatusReflection.Descriptor, },
-          new pbr::GeneratedClrTypeInfo(new[] {typeof(global::Google.Cloud.Talent.V4Beta1.JobView), }, new pbr::GeneratedClrTypeInfo[] {
-            new pbr::GeneratedClrTypeInfo(typeof(global::Google.Cloud.Talent.V4Beta1.CreateJobRequest), global::Google.Cloud.Talent.V4Beta1.CreateJobRequest.Parser, new[]{ "Parent", "Job" }, null, null, null),
-            new pbr::GeneratedClrTypeInfo(typeof(global::Google.Cloud.Talent.V4Beta1.GetJobRequest), global::Google.Cloud.Talent.V4Beta1.GetJobRequest.Parser, new[]{ "Name" }, null, null, null),
-            new pbr::GeneratedClrTypeInfo(typeof(global::Google.Cloud.Talent.V4Beta1.UpdateJobRequest), global::Google.Cloud.Talent.V4Beta1.UpdateJobRequest.Parser, new[]{ "Job", "UpdateMask" }, null, null, null),
-            new pbr::GeneratedClrTypeInfo(typeof(global::Google.Cloud.Talent.V4Beta1.DeleteJobRequest), global::Google.Cloud.Talent.V4Beta1.DeleteJobRequest.Parser, new[]{ "Name" }, null, null, null),
-            new pbr::GeneratedClrTypeInfo(typeof(global::Google.Cloud.Talent.V4Beta1.BatchDeleteJobsRequest), global::Google.Cloud.Talent.V4Beta1.BatchDeleteJobsRequest.Parser, new[]{ "Parent", "Filter" }, null, null, null),
-            new pbr::GeneratedClrTypeInfo(typeof(global::Google.Cloud.Talent.V4Beta1.ListJobsRequest), global::Google.Cloud.Talent.V4Beta1.ListJobsRequest.Parser, new[]{ "Parent", "Filter", "PageToken", "PageSize", "JobView" }, null, null, null),
-            new pbr::GeneratedClrTypeInfo(typeof(global::Google.Cloud.Talent.V4Beta1.ListJobsResponse), global::Google.Cloud.Talent.V4Beta1.ListJobsResponse.Parser, new[]{ "Jobs", "NextPageToken", "Metadata" }, null, null, null),
-            new pbr::GeneratedClrTypeInfo(typeof(global::Google.Cloud.Talent.V4Beta1.SearchJobsRequest), global::Google.Cloud.Talent.V4Beta1.SearchJobsRequest.Parser, new[]{ "Parent", "SearchMode", "RequestMetadata", "JobQuery", "EnableBroadening", "RequirePreciseResultSize", "HistogramQueries", "JobView", "Offset", "PageSize", "PageToken", "OrderBy", "DiversificationLevel", "CustomRankingInfo", "DisableKeywordMatch" }, null, new[]{ typeof(global::Google.Cloud.Talent.V4Beta1.SearchJobsRequest.Types.SearchMode), typeof(global::Google.Cloud.Talent.V4Beta1.SearchJobsRequest.Types.DiversificationLevel) }, new pbr::GeneratedClrTypeInfo[] { new pbr::GeneratedClrTypeInfo(typeof(global::Google.Cloud.Talent.V4Beta1.SearchJobsRequest.Types.CustomRankingInfo), global::Google.Cloud.Talent.V4Beta1.SearchJobsRequest.Types.CustomRankingInfo.Parser, new[]{ "ImportanceLevel", "RankingExpression" }, null, new[]{ typeof(global::Google.Cloud.Talent.V4Beta1.SearchJobsRequest.Types.CustomRankingInfo.Types.ImportanceLevel) }, null)}),
-            new pbr::GeneratedClrTypeInfo(typeof(global::Google.Cloud.Talent.V4Beta1.SearchJobsResponse), global::Google.Cloud.Talent.V4Beta1.SearchJobsResponse.Parser, new[]{ "MatchingJobs", "HistogramQueryResults", "NextPageToken", "LocationFilters", "EstimatedTotalSize", "TotalSize", "Metadata", "BroadenedQueryJobsCount", "SpellCorrection" }, null, null, new pbr::GeneratedClrTypeInfo[] { new pbr::GeneratedClrTypeInfo(typeof(global::Google.Cloud.Talent.V4Beta1.SearchJobsResponse.Types.MatchingJob), global::Google.Cloud.Talent.V4Beta1.SearchJobsResponse.Types.MatchingJob.Parser, new[]{ "Job", "JobSummary", "JobTitleSnippet", "SearchTextSnippet", "CommuteInfo" }, null, null, null),
-            new pbr::GeneratedClrTypeInfo(typeof(global::Google.Cloud.Talent.V4Beta1.SearchJobsResponse.Types.CommuteInfo), global::Google.Cloud.Talent.V4Beta1.SearchJobsResponse.Types.CommuteInfo.Parser, new[]{ "JobLocation", "TravelDuration" }, null, null, null)}),
-            new pbr::GeneratedClrTypeInfo(typeof(global::Google.Cloud.Talent.V4Beta1.BatchCreateJobsRequest), global::Google.Cloud.Talent.V4Beta1.BatchCreateJobsRequest.Parser, new[]{ "Parent", "Jobs" }, null, null, null),
-            new pbr::GeneratedClrTypeInfo(typeof(global::Google.Cloud.Talent.V4Beta1.BatchUpdateJobsRequest), global::Google.Cloud.Talent.V4Beta1.BatchUpdateJobsRequest.Parser, new[]{ "Parent", "Jobs", "UpdateMask" }, null, null, null),
-            new pbr::GeneratedClrTypeInfo(typeof(global::Google.Cloud.Talent.V4Beta1.JobOperationResult), global::Google.Cloud.Talent.V4Beta1.JobOperationResult.Parser, new[]{ "JobResults" }, null, null, new pbr::GeneratedClrTypeInfo[] { new pbr::GeneratedClrTypeInfo(typeof(global::Google.Cloud.Talent.V4Beta1.JobOperationResult.Types.JobResult), global::Google.Cloud.Talent.V4Beta1.JobOperationResult.Types.JobResult.Parser, new[]{ "Job", "Status" }, null, null, null)})
+          new pbr::FileDescriptor[] { global::Google.Api.AnnotationsReflection.Descriptor, global::Google.Api.ClientReflection.Descriptor, global::Google.Api.FieldBehaviorReflection.Descriptor, global::Google.Api.ResourceReflection.Descriptor, global::Google.Cloud.Talent.V4Beta1.CommonReflection.Descriptor, global::Google.Cloud.Talent.V4Beta1.FiltersReflection.Descriptor, global::Google.Cloud.Talent.V4Beta1.HistogramReflection.Descriptor, global::Google.Cloud.Talent.V4Beta1.JobReflection.Descriptor, global::Google.LongRunning.OperationsReflection.Descriptor, global::Google.Protobuf.WellKnownTypes.AnyReflection.Descriptor, global::Google.Protobuf.WellKnownTypes.DurationReflection.Descriptor, global::Google.Protobuf.WellKnownTypes.EmptyReflection.Descriptor, global::Google.Protobuf.WellKnownTypes.FieldMaskReflection.Descriptor, global::Google.Rpc.StatusReflection.Descriptor, },
+          new pbr::GeneratedClrTypeInfo(new[] {typeof(global::Google.Cloud.Talent.V4Beta1.JobView), }, null, new pbr::GeneratedClrTypeInfo[] {
+            new pbr::GeneratedClrTypeInfo(typeof(global::Google.Cloud.Talent.V4Beta1.CreateJobRequest), global::Google.Cloud.Talent.V4Beta1.CreateJobRequest.Parser, new[]{ "Parent", "Job" }, null, null, null, null),
+            new pbr::GeneratedClrTypeInfo(typeof(global::Google.Cloud.Talent.V4Beta1.GetJobRequest), global::Google.Cloud.Talent.V4Beta1.GetJobRequest.Parser, new[]{ "Name" }, null, null, null, null),
+            new pbr::GeneratedClrTypeInfo(typeof(global::Google.Cloud.Talent.V4Beta1.UpdateJobRequest), global::Google.Cloud.Talent.V4Beta1.UpdateJobRequest.Parser, new[]{ "Job", "UpdateMask" }, null, null, null, null),
+            new pbr::GeneratedClrTypeInfo(typeof(global::Google.Cloud.Talent.V4Beta1.DeleteJobRequest), global::Google.Cloud.Talent.V4Beta1.DeleteJobRequest.Parser, new[]{ "Name" }, null, null, null, null),
+            new pbr::GeneratedClrTypeInfo(typeof(global::Google.Cloud.Talent.V4Beta1.BatchDeleteJobsRequest), global::Google.Cloud.Talent.V4Beta1.BatchDeleteJobsRequest.Parser, new[]{ "Parent", "Filter" }, null, null, null, null),
+            new pbr::GeneratedClrTypeInfo(typeof(global::Google.Cloud.Talent.V4Beta1.ListJobsRequest), global::Google.Cloud.Talent.V4Beta1.ListJobsRequest.Parser, new[]{ "Parent", "Filter", "PageToken", "PageSize", "JobView" }, null, null, null, null),
+            new pbr::GeneratedClrTypeInfo(typeof(global::Google.Cloud.Talent.V4Beta1.ListJobsResponse), global::Google.Cloud.Talent.V4Beta1.ListJobsResponse.Parser, new[]{ "Jobs", "NextPageToken", "Metadata" }, null, null, null, null),
+            new pbr::GeneratedClrTypeInfo(typeof(global::Google.Cloud.Talent.V4Beta1.SearchJobsRequest), global::Google.Cloud.Talent.V4Beta1.SearchJobsRequest.Parser, new[]{ "Parent", "SearchMode", "RequestMetadata", "JobQuery", "EnableBroadening", "RequirePreciseResultSize", "HistogramQueries", "JobView", "Offset", "PageSize", "PageToken", "OrderBy", "DiversificationLevel", "CustomRankingInfo", "DisableKeywordMatch" }, null, new[]{ typeof(global::Google.Cloud.Talent.V4Beta1.SearchJobsRequest.Types.SearchMode), typeof(global::Google.Cloud.Talent.V4Beta1.SearchJobsRequest.Types.DiversificationLevel) }, null, new pbr::GeneratedClrTypeInfo[] { new pbr::GeneratedClrTypeInfo(typeof(global::Google.Cloud.Talent.V4Beta1.SearchJobsRequest.Types.CustomRankingInfo), global::Google.Cloud.Talent.V4Beta1.SearchJobsRequest.Types.CustomRankingInfo.Parser, new[]{ "ImportanceLevel", "RankingExpression" }, null, new[]{ typeof(global::Google.Cloud.Talent.V4Beta1.SearchJobsRequest.Types.CustomRankingInfo.Types.ImportanceLevel) }, null, null)}),
+            new pbr::GeneratedClrTypeInfo(typeof(global::Google.Cloud.Talent.V4Beta1.SearchJobsResponse), global::Google.Cloud.Talent.V4Beta1.SearchJobsResponse.Parser, new[]{ "MatchingJobs", "HistogramQueryResults", "NextPageToken", "LocationFilters", "EstimatedTotalSize", "TotalSize", "Metadata", "BroadenedQueryJobsCount", "SpellCorrection" }, null, null, null, new pbr::GeneratedClrTypeInfo[] { new pbr::GeneratedClrTypeInfo(typeof(global::Google.Cloud.Talent.V4Beta1.SearchJobsResponse.Types.MatchingJob), global::Google.Cloud.Talent.V4Beta1.SearchJobsResponse.Types.MatchingJob.Parser, new[]{ "Job", "JobSummary", "JobTitleSnippet", "SearchTextSnippet", "CommuteInfo" }, null, null, null, null),
+            new pbr::GeneratedClrTypeInfo(typeof(global::Google.Cloud.Talent.V4Beta1.SearchJobsResponse.Types.CommuteInfo), global::Google.Cloud.Talent.V4Beta1.SearchJobsResponse.Types.CommuteInfo.Parser, new[]{ "JobLocation", "TravelDuration" }, null, null, null, null)}),
+            new pbr::GeneratedClrTypeInfo(typeof(global::Google.Cloud.Talent.V4Beta1.BatchCreateJobsRequest), global::Google.Cloud.Talent.V4Beta1.BatchCreateJobsRequest.Parser, new[]{ "Parent", "Jobs" }, null, null, null, null),
+            new pbr::GeneratedClrTypeInfo(typeof(global::Google.Cloud.Talent.V4Beta1.BatchUpdateJobsRequest), global::Google.Cloud.Talent.V4Beta1.BatchUpdateJobsRequest.Parser, new[]{ "Parent", "Jobs", "UpdateMask" }, null, null, null, null),
+            new pbr::GeneratedClrTypeInfo(typeof(global::Google.Cloud.Talent.V4Beta1.JobOperationResult), global::Google.Cloud.Talent.V4Beta1.JobOperationResult.Parser, new[]{ "JobResults" }, null, null, null, new pbr::GeneratedClrTypeInfo[] { new pbr::GeneratedClrTypeInfo(typeof(global::Google.Cloud.Talent.V4Beta1.JobOperationResult.Types.JobResult), global::Google.Cloud.Talent.V4Beta1.JobOperationResult.Types.JobResult.Parser, new[]{ "Job", "Status" }, null, null, null, null)})
           }));
     }
     #endregion
@@ -185,9 +195,8 @@ namespace Google.Cloud.Talent.V4Beta1 {
   #region Enums
   /// <summary>
   /// An enum that specifies the job attributes that are returned in the
-  /// [MatchingJob.job][google.cloud.talent.v4beta1.SearchJobsResponse.MatchingJob.job]
-  /// or [ListJobsResponse.jobs][google.cloud.talent.v4beta1.ListJobsResponse.jobs]
-  /// fields.
+  /// [MatchingJob.job][google.cloud.talent.v4beta1.SearchJobsResponse.MatchingJob.job] or
+  /// [ListJobsResponse.jobs][google.cloud.talent.v4beta1.ListJobsResponse.jobs] fields.
   /// </summary>
   public enum JobView {
     /// <summary>
@@ -196,31 +205,20 @@ namespace Google.Cloud.Talent.V4Beta1 {
     [pbr::OriginalName("JOB_VIEW_UNSPECIFIED")] Unspecified = 0,
     /// <summary>
     /// A ID only view of job, with following attributes:
-    /// [Job.name][google.cloud.talent.v4beta1.Job.name],
-    /// [Job.requisition_id][google.cloud.talent.v4beta1.Job.requisition_id],
-    /// [Job.language_code][google.cloud.talent.v4beta1.Job.language_code].
+    /// [Job.name][google.cloud.talent.v4beta1.Job.name], [Job.requisition_id][google.cloud.talent.v4beta1.Job.requisition_id], [Job.language_code][google.cloud.talent.v4beta1.Job.language_code].
     /// </summary>
     [pbr::OriginalName("JOB_VIEW_ID_ONLY")] IdOnly = 1,
     /// <summary>
     /// A minimal view of the job, with the following attributes:
-    /// [Job.name][google.cloud.talent.v4beta1.Job.name],
-    /// [Job.requisition_id][google.cloud.talent.v4beta1.Job.requisition_id],
-    /// [Job.title][google.cloud.talent.v4beta1.Job.title],
-    /// [Job.company][google.cloud.talent.v4beta1.Job.company],
-    /// [Job.DerivedInfo.locations][google.cloud.talent.v4beta1.Job.DerivedInfo.locations],
-    /// [Job.language_code][google.cloud.talent.v4beta1.Job.language_code].
+    /// [Job.name][google.cloud.talent.v4beta1.Job.name], [Job.requisition_id][google.cloud.talent.v4beta1.Job.requisition_id], [Job.title][google.cloud.talent.v4beta1.Job.title],
+    /// [Job.company][google.cloud.talent.v4beta1.Job.company], [Job.DerivedInfo.locations][google.cloud.talent.v4beta1.Job.DerivedInfo.locations], [Job.language_code][google.cloud.talent.v4beta1.Job.language_code].
     /// </summary>
     [pbr::OriginalName("JOB_VIEW_MINIMAL")] Minimal = 2,
     /// <summary>
     /// A small view of the job, with the following attributes in the search
-    /// results: [Job.name][google.cloud.talent.v4beta1.Job.name],
-    /// [Job.requisition_id][google.cloud.talent.v4beta1.Job.requisition_id],
-    /// [Job.title][google.cloud.talent.v4beta1.Job.title],
-    /// [Job.company][google.cloud.talent.v4beta1.Job.company],
-    /// [Job.DerivedInfo.locations][google.cloud.talent.v4beta1.Job.DerivedInfo.locations],
-    /// [Job.visibility][google.cloud.talent.v4beta1.Job.visibility],
-    /// [Job.language_code][google.cloud.talent.v4beta1.Job.language_code],
-    /// [Job.description][google.cloud.talent.v4beta1.Job.description].
+    /// results: [Job.name][google.cloud.talent.v4beta1.Job.name], [Job.requisition_id][google.cloud.talent.v4beta1.Job.requisition_id], [Job.title][google.cloud.talent.v4beta1.Job.title],
+    /// [Job.company][google.cloud.talent.v4beta1.Job.company], [Job.DerivedInfo.locations][google.cloud.talent.v4beta1.Job.DerivedInfo.locations], [Job.visibility][google.cloud.talent.v4beta1.Job.visibility],
+    /// [Job.language_code][google.cloud.talent.v4beta1.Job.language_code], [Job.description][google.cloud.talent.v4beta1.Job.description].
     /// </summary>
     [pbr::OriginalName("JOB_VIEW_SMALL")] Small = 3,
     /// <summary>
@@ -235,7 +233,11 @@ namespace Google.Cloud.Talent.V4Beta1 {
   /// <summary>
   /// Create job request.
   /// </summary>
-  public sealed partial class CreateJobRequest : pb::IMessage<CreateJobRequest> {
+  public sealed partial class CreateJobRequest : pb::IMessage<CreateJobRequest>
+  #if !GOOGLE_PROTOBUF_REFSTRUCT_COMPATIBILITY_MODE
+      , pb::IBufferMessage
+  #endif
+  {
     private static readonly pb::MessageParser<CreateJobRequest> _parser = new pb::MessageParser<CreateJobRequest>(() => new CreateJobRequest());
     private pb::UnknownFieldSet _unknownFields;
     [global::System.Diagnostics.DebuggerNonUserCodeAttribute]
@@ -338,6 +340,9 @@ namespace Google.Cloud.Talent.V4Beta1 {
 
     [global::System.Diagnostics.DebuggerNonUserCodeAttribute]
     public void WriteTo(pb::CodedOutputStream output) {
+    #if !GOOGLE_PROTOBUF_REFSTRUCT_COMPATIBILITY_MODE
+      output.WriteRawMessage(this);
+    #else
       if (Parent.Length != 0) {
         output.WriteRawTag(10);
         output.WriteString(Parent);
@@ -349,7 +354,25 @@ namespace Google.Cloud.Talent.V4Beta1 {
       if (_unknownFields != null) {
         _unknownFields.WriteTo(output);
       }
+    #endif
     }
+
+    #if !GOOGLE_PROTOBUF_REFSTRUCT_COMPATIBILITY_MODE
+    [global::System.Diagnostics.DebuggerNonUserCodeAttribute]
+    void pb::IBufferMessage.InternalWriteTo(ref pb::WriteContext output) {
+      if (Parent.Length != 0) {
+        output.WriteRawTag(10);
+        output.WriteString(Parent);
+      }
+      if (job_ != null) {
+        output.WriteRawTag(18);
+        output.WriteMessage(Job);
+      }
+      if (_unknownFields != null) {
+        _unknownFields.WriteTo(ref output);
+      }
+    }
+    #endif
 
     [global::System.Diagnostics.DebuggerNonUserCodeAttribute]
     public int CalculateSize() {
@@ -385,6 +408,9 @@ namespace Google.Cloud.Talent.V4Beta1 {
 
     [global::System.Diagnostics.DebuggerNonUserCodeAttribute]
     public void MergeFrom(pb::CodedInputStream input) {
+    #if !GOOGLE_PROTOBUF_REFSTRUCT_COMPATIBILITY_MODE
+      input.ReadRawMessage(this);
+    #else
       uint tag;
       while ((tag = input.ReadTag()) != 0) {
         switch(tag) {
@@ -404,14 +430,44 @@ namespace Google.Cloud.Talent.V4Beta1 {
           }
         }
       }
+    #endif
     }
+
+    #if !GOOGLE_PROTOBUF_REFSTRUCT_COMPATIBILITY_MODE
+    [global::System.Diagnostics.DebuggerNonUserCodeAttribute]
+    void pb::IBufferMessage.InternalMergeFrom(ref pb::ParseContext input) {
+      uint tag;
+      while ((tag = input.ReadTag()) != 0) {
+        switch(tag) {
+          default:
+            _unknownFields = pb::UnknownFieldSet.MergeFieldFrom(_unknownFields, ref input);
+            break;
+          case 10: {
+            Parent = input.ReadString();
+            break;
+          }
+          case 18: {
+            if (job_ == null) {
+              Job = new global::Google.Cloud.Talent.V4Beta1.Job();
+            }
+            input.ReadMessage(Job);
+            break;
+          }
+        }
+      }
+    }
+    #endif
 
   }
 
   /// <summary>
   /// Get job request.
   /// </summary>
-  public sealed partial class GetJobRequest : pb::IMessage<GetJobRequest> {
+  public sealed partial class GetJobRequest : pb::IMessage<GetJobRequest>
+  #if !GOOGLE_PROTOBUF_REFSTRUCT_COMPATIBILITY_MODE
+      , pb::IBufferMessage
+  #endif
+  {
     private static readonly pb::MessageParser<GetJobRequest> _parser = new pb::MessageParser<GetJobRequest>(() => new GetJobRequest());
     private pb::UnknownFieldSet _unknownFields;
     [global::System.Diagnostics.DebuggerNonUserCodeAttribute]
@@ -500,6 +556,9 @@ namespace Google.Cloud.Talent.V4Beta1 {
 
     [global::System.Diagnostics.DebuggerNonUserCodeAttribute]
     public void WriteTo(pb::CodedOutputStream output) {
+    #if !GOOGLE_PROTOBUF_REFSTRUCT_COMPATIBILITY_MODE
+      output.WriteRawMessage(this);
+    #else
       if (Name.Length != 0) {
         output.WriteRawTag(10);
         output.WriteString(Name);
@@ -507,7 +566,21 @@ namespace Google.Cloud.Talent.V4Beta1 {
       if (_unknownFields != null) {
         _unknownFields.WriteTo(output);
       }
+    #endif
     }
+
+    #if !GOOGLE_PROTOBUF_REFSTRUCT_COMPATIBILITY_MODE
+    [global::System.Diagnostics.DebuggerNonUserCodeAttribute]
+    void pb::IBufferMessage.InternalWriteTo(ref pb::WriteContext output) {
+      if (Name.Length != 0) {
+        output.WriteRawTag(10);
+        output.WriteString(Name);
+      }
+      if (_unknownFields != null) {
+        _unknownFields.WriteTo(ref output);
+      }
+    }
+    #endif
 
     [global::System.Diagnostics.DebuggerNonUserCodeAttribute]
     public int CalculateSize() {
@@ -534,6 +607,9 @@ namespace Google.Cloud.Talent.V4Beta1 {
 
     [global::System.Diagnostics.DebuggerNonUserCodeAttribute]
     public void MergeFrom(pb::CodedInputStream input) {
+    #if !GOOGLE_PROTOBUF_REFSTRUCT_COMPATIBILITY_MODE
+      input.ReadRawMessage(this);
+    #else
       uint tag;
       while ((tag = input.ReadTag()) != 0) {
         switch(tag) {
@@ -546,14 +622,37 @@ namespace Google.Cloud.Talent.V4Beta1 {
           }
         }
       }
+    #endif
     }
+
+    #if !GOOGLE_PROTOBUF_REFSTRUCT_COMPATIBILITY_MODE
+    [global::System.Diagnostics.DebuggerNonUserCodeAttribute]
+    void pb::IBufferMessage.InternalMergeFrom(ref pb::ParseContext input) {
+      uint tag;
+      while ((tag = input.ReadTag()) != 0) {
+        switch(tag) {
+          default:
+            _unknownFields = pb::UnknownFieldSet.MergeFieldFrom(_unknownFields, ref input);
+            break;
+          case 10: {
+            Name = input.ReadString();
+            break;
+          }
+        }
+      }
+    }
+    #endif
 
   }
 
   /// <summary>
   /// Update job request.
   /// </summary>
-  public sealed partial class UpdateJobRequest : pb::IMessage<UpdateJobRequest> {
+  public sealed partial class UpdateJobRequest : pb::IMessage<UpdateJobRequest>
+  #if !GOOGLE_PROTOBUF_REFSTRUCT_COMPATIBILITY_MODE
+      , pb::IBufferMessage
+  #endif
+  {
     private static readonly pb::MessageParser<UpdateJobRequest> _parser = new pb::MessageParser<UpdateJobRequest>(() => new UpdateJobRequest());
     private pb::UnknownFieldSet _unknownFields;
     [global::System.Diagnostics.DebuggerNonUserCodeAttribute]
@@ -608,10 +707,8 @@ namespace Google.Cloud.Talent.V4Beta1 {
     /// <summary>
     /// Strongly recommended for the best service experience.
     ///
-    /// If [update_mask][google.cloud.talent.v4beta1.UpdateJobRequest.update_mask]
-    /// is provided, only the specified fields in
-    /// [job][google.cloud.talent.v4beta1.UpdateJobRequest.job] are updated.
-    /// Otherwise all the fields are updated.
+    /// If [update_mask][google.cloud.talent.v4beta1.UpdateJobRequest.update_mask] is provided, only the specified fields in
+    /// [job][google.cloud.talent.v4beta1.UpdateJobRequest.job] are updated. Otherwise all the fields are updated.
     ///
     /// A field mask to restrict the fields that are updated. Only
     /// top level fields of [Job][google.cloud.talent.v4beta1.Job] are supported.
@@ -660,6 +757,9 @@ namespace Google.Cloud.Talent.V4Beta1 {
 
     [global::System.Diagnostics.DebuggerNonUserCodeAttribute]
     public void WriteTo(pb::CodedOutputStream output) {
+    #if !GOOGLE_PROTOBUF_REFSTRUCT_COMPATIBILITY_MODE
+      output.WriteRawMessage(this);
+    #else
       if (job_ != null) {
         output.WriteRawTag(10);
         output.WriteMessage(Job);
@@ -671,7 +771,25 @@ namespace Google.Cloud.Talent.V4Beta1 {
       if (_unknownFields != null) {
         _unknownFields.WriteTo(output);
       }
+    #endif
     }
+
+    #if !GOOGLE_PROTOBUF_REFSTRUCT_COMPATIBILITY_MODE
+    [global::System.Diagnostics.DebuggerNonUserCodeAttribute]
+    void pb::IBufferMessage.InternalWriteTo(ref pb::WriteContext output) {
+      if (job_ != null) {
+        output.WriteRawTag(10);
+        output.WriteMessage(Job);
+      }
+      if (updateMask_ != null) {
+        output.WriteRawTag(18);
+        output.WriteMessage(UpdateMask);
+      }
+      if (_unknownFields != null) {
+        _unknownFields.WriteTo(ref output);
+      }
+    }
+    #endif
 
     [global::System.Diagnostics.DebuggerNonUserCodeAttribute]
     public int CalculateSize() {
@@ -710,6 +828,9 @@ namespace Google.Cloud.Talent.V4Beta1 {
 
     [global::System.Diagnostics.DebuggerNonUserCodeAttribute]
     public void MergeFrom(pb::CodedInputStream input) {
+    #if !GOOGLE_PROTOBUF_REFSTRUCT_COMPATIBILITY_MODE
+      input.ReadRawMessage(this);
+    #else
       uint tag;
       while ((tag = input.ReadTag()) != 0) {
         switch(tag) {
@@ -732,14 +853,47 @@ namespace Google.Cloud.Talent.V4Beta1 {
           }
         }
       }
+    #endif
     }
+
+    #if !GOOGLE_PROTOBUF_REFSTRUCT_COMPATIBILITY_MODE
+    [global::System.Diagnostics.DebuggerNonUserCodeAttribute]
+    void pb::IBufferMessage.InternalMergeFrom(ref pb::ParseContext input) {
+      uint tag;
+      while ((tag = input.ReadTag()) != 0) {
+        switch(tag) {
+          default:
+            _unknownFields = pb::UnknownFieldSet.MergeFieldFrom(_unknownFields, ref input);
+            break;
+          case 10: {
+            if (job_ == null) {
+              Job = new global::Google.Cloud.Talent.V4Beta1.Job();
+            }
+            input.ReadMessage(Job);
+            break;
+          }
+          case 18: {
+            if (updateMask_ == null) {
+              UpdateMask = new global::Google.Protobuf.WellKnownTypes.FieldMask();
+            }
+            input.ReadMessage(UpdateMask);
+            break;
+          }
+        }
+      }
+    }
+    #endif
 
   }
 
   /// <summary>
   /// Delete job request.
   /// </summary>
-  public sealed partial class DeleteJobRequest : pb::IMessage<DeleteJobRequest> {
+  public sealed partial class DeleteJobRequest : pb::IMessage<DeleteJobRequest>
+  #if !GOOGLE_PROTOBUF_REFSTRUCT_COMPATIBILITY_MODE
+      , pb::IBufferMessage
+  #endif
+  {
     private static readonly pb::MessageParser<DeleteJobRequest> _parser = new pb::MessageParser<DeleteJobRequest>(() => new DeleteJobRequest());
     private pb::UnknownFieldSet _unknownFields;
     [global::System.Diagnostics.DebuggerNonUserCodeAttribute]
@@ -828,6 +982,9 @@ namespace Google.Cloud.Talent.V4Beta1 {
 
     [global::System.Diagnostics.DebuggerNonUserCodeAttribute]
     public void WriteTo(pb::CodedOutputStream output) {
+    #if !GOOGLE_PROTOBUF_REFSTRUCT_COMPATIBILITY_MODE
+      output.WriteRawMessage(this);
+    #else
       if (Name.Length != 0) {
         output.WriteRawTag(10);
         output.WriteString(Name);
@@ -835,7 +992,21 @@ namespace Google.Cloud.Talent.V4Beta1 {
       if (_unknownFields != null) {
         _unknownFields.WriteTo(output);
       }
+    #endif
     }
+
+    #if !GOOGLE_PROTOBUF_REFSTRUCT_COMPATIBILITY_MODE
+    [global::System.Diagnostics.DebuggerNonUserCodeAttribute]
+    void pb::IBufferMessage.InternalWriteTo(ref pb::WriteContext output) {
+      if (Name.Length != 0) {
+        output.WriteRawTag(10);
+        output.WriteString(Name);
+      }
+      if (_unknownFields != null) {
+        _unknownFields.WriteTo(ref output);
+      }
+    }
+    #endif
 
     [global::System.Diagnostics.DebuggerNonUserCodeAttribute]
     public int CalculateSize() {
@@ -862,6 +1033,9 @@ namespace Google.Cloud.Talent.V4Beta1 {
 
     [global::System.Diagnostics.DebuggerNonUserCodeAttribute]
     public void MergeFrom(pb::CodedInputStream input) {
+    #if !GOOGLE_PROTOBUF_REFSTRUCT_COMPATIBILITY_MODE
+      input.ReadRawMessage(this);
+    #else
       uint tag;
       while ((tag = input.ReadTag()) != 0) {
         switch(tag) {
@@ -874,14 +1048,37 @@ namespace Google.Cloud.Talent.V4Beta1 {
           }
         }
       }
+    #endif
     }
+
+    #if !GOOGLE_PROTOBUF_REFSTRUCT_COMPATIBILITY_MODE
+    [global::System.Diagnostics.DebuggerNonUserCodeAttribute]
+    void pb::IBufferMessage.InternalMergeFrom(ref pb::ParseContext input) {
+      uint tag;
+      while ((tag = input.ReadTag()) != 0) {
+        switch(tag) {
+          default:
+            _unknownFields = pb::UnknownFieldSet.MergeFieldFrom(_unknownFields, ref input);
+            break;
+          case 10: {
+            Name = input.ReadString();
+            break;
+          }
+        }
+      }
+    }
+    #endif
 
   }
 
   /// <summary>
   /// Batch delete jobs request.
   /// </summary>
-  public sealed partial class BatchDeleteJobsRequest : pb::IMessage<BatchDeleteJobsRequest> {
+  public sealed partial class BatchDeleteJobsRequest : pb::IMessage<BatchDeleteJobsRequest>
+  #if !GOOGLE_PROTOBUF_REFSTRUCT_COMPATIBILITY_MODE
+      , pb::IBufferMessage
+  #endif
+  {
     private static readonly pb::MessageParser<BatchDeleteJobsRequest> _parser = new pb::MessageParser<BatchDeleteJobsRequest>(() => new BatchDeleteJobsRequest());
     private pb::UnknownFieldSet _unknownFields;
     [global::System.Diagnostics.DebuggerNonUserCodeAttribute]
@@ -994,6 +1191,9 @@ namespace Google.Cloud.Talent.V4Beta1 {
 
     [global::System.Diagnostics.DebuggerNonUserCodeAttribute]
     public void WriteTo(pb::CodedOutputStream output) {
+    #if !GOOGLE_PROTOBUF_REFSTRUCT_COMPATIBILITY_MODE
+      output.WriteRawMessage(this);
+    #else
       if (Parent.Length != 0) {
         output.WriteRawTag(10);
         output.WriteString(Parent);
@@ -1005,7 +1205,25 @@ namespace Google.Cloud.Talent.V4Beta1 {
       if (_unknownFields != null) {
         _unknownFields.WriteTo(output);
       }
+    #endif
     }
+
+    #if !GOOGLE_PROTOBUF_REFSTRUCT_COMPATIBILITY_MODE
+    [global::System.Diagnostics.DebuggerNonUserCodeAttribute]
+    void pb::IBufferMessage.InternalWriteTo(ref pb::WriteContext output) {
+      if (Parent.Length != 0) {
+        output.WriteRawTag(10);
+        output.WriteString(Parent);
+      }
+      if (Filter.Length != 0) {
+        output.WriteRawTag(18);
+        output.WriteString(Filter);
+      }
+      if (_unknownFields != null) {
+        _unknownFields.WriteTo(ref output);
+      }
+    }
+    #endif
 
     [global::System.Diagnostics.DebuggerNonUserCodeAttribute]
     public int CalculateSize() {
@@ -1038,6 +1256,9 @@ namespace Google.Cloud.Talent.V4Beta1 {
 
     [global::System.Diagnostics.DebuggerNonUserCodeAttribute]
     public void MergeFrom(pb::CodedInputStream input) {
+    #if !GOOGLE_PROTOBUF_REFSTRUCT_COMPATIBILITY_MODE
+      input.ReadRawMessage(this);
+    #else
       uint tag;
       while ((tag = input.ReadTag()) != 0) {
         switch(tag) {
@@ -1054,14 +1275,41 @@ namespace Google.Cloud.Talent.V4Beta1 {
           }
         }
       }
+    #endif
     }
+
+    #if !GOOGLE_PROTOBUF_REFSTRUCT_COMPATIBILITY_MODE
+    [global::System.Diagnostics.DebuggerNonUserCodeAttribute]
+    void pb::IBufferMessage.InternalMergeFrom(ref pb::ParseContext input) {
+      uint tag;
+      while ((tag = input.ReadTag()) != 0) {
+        switch(tag) {
+          default:
+            _unknownFields = pb::UnknownFieldSet.MergeFieldFrom(_unknownFields, ref input);
+            break;
+          case 10: {
+            Parent = input.ReadString();
+            break;
+          }
+          case 18: {
+            Filter = input.ReadString();
+            break;
+          }
+        }
+      }
+    }
+    #endif
 
   }
 
   /// <summary>
   /// List jobs request.
   /// </summary>
-  public sealed partial class ListJobsRequest : pb::IMessage<ListJobsRequest> {
+  public sealed partial class ListJobsRequest : pb::IMessage<ListJobsRequest>
+  #if !GOOGLE_PROTOBUF_REFSTRUCT_COMPATIBILITY_MODE
+      , pb::IBufferMessage
+  #endif
+  {
     private static readonly pb::MessageParser<ListJobsRequest> _parser = new pb::MessageParser<ListJobsRequest>(() => new ListJobsRequest());
     private pb::UnknownFieldSet _unknownFields;
     [global::System.Diagnostics.DebuggerNonUserCodeAttribute]
@@ -1168,11 +1416,8 @@ namespace Google.Cloud.Talent.V4Beta1 {
     /// <summary>
     /// The maximum number of jobs to be returned per page of results.
     ///
-    /// If [job_view][google.cloud.talent.v4beta1.ListJobsRequest.job_view] is set
-    /// to
-    /// [JobView.JOB_VIEW_ID_ONLY][google.cloud.talent.v4beta1.JobView.JOB_VIEW_ID_ONLY],
-    /// the maximum allowed page size is 1000. Otherwise, the maximum allowed page
-    /// size is 100.
+    /// If [job_view][google.cloud.talent.v4beta1.ListJobsRequest.job_view] is set to [JobView.JOB_VIEW_ID_ONLY][google.cloud.talent.v4beta1.JobView.JOB_VIEW_ID_ONLY], the maximum allowed
+    /// page size is 1000. Otherwise, the maximum allowed page size is 100.
     ///
     /// Default is 100 if empty or a number &lt; 1 is specified.
     /// </summary>
@@ -1186,12 +1431,11 @@ namespace Google.Cloud.Talent.V4Beta1 {
 
     /// <summary>Field number for the "job_view" field.</summary>
     public const int JobViewFieldNumber = 5;
-    private global::Google.Cloud.Talent.V4Beta1.JobView jobView_ = 0;
+    private global::Google.Cloud.Talent.V4Beta1.JobView jobView_ = global::Google.Cloud.Talent.V4Beta1.JobView.Unspecified;
     /// <summary>
     /// The desired job attributes returned for jobs in the
-    /// search response. Defaults to
-    /// [JobView.JOB_VIEW_FULL][google.cloud.talent.v4beta1.JobView.JOB_VIEW_FULL]
-    /// if no value is specified.
+    /// search response. Defaults to [JobView.JOB_VIEW_FULL][google.cloud.talent.v4beta1.JobView.JOB_VIEW_FULL] if no value is
+    /// specified.
     /// </summary>
     [global::System.Diagnostics.DebuggerNonUserCodeAttribute]
     public global::Google.Cloud.Talent.V4Beta1.JobView JobView {
@@ -1229,7 +1473,7 @@ namespace Google.Cloud.Talent.V4Beta1 {
       if (Filter.Length != 0) hash ^= Filter.GetHashCode();
       if (PageToken.Length != 0) hash ^= PageToken.GetHashCode();
       if (PageSize != 0) hash ^= PageSize.GetHashCode();
-      if (JobView != 0) hash ^= JobView.GetHashCode();
+      if (JobView != global::Google.Cloud.Talent.V4Beta1.JobView.Unspecified) hash ^= JobView.GetHashCode();
       if (_unknownFields != null) {
         hash ^= _unknownFields.GetHashCode();
       }
@@ -1243,6 +1487,9 @@ namespace Google.Cloud.Talent.V4Beta1 {
 
     [global::System.Diagnostics.DebuggerNonUserCodeAttribute]
     public void WriteTo(pb::CodedOutputStream output) {
+    #if !GOOGLE_PROTOBUF_REFSTRUCT_COMPATIBILITY_MODE
+      output.WriteRawMessage(this);
+    #else
       if (Parent.Length != 0) {
         output.WriteRawTag(10);
         output.WriteString(Parent);
@@ -1259,14 +1506,44 @@ namespace Google.Cloud.Talent.V4Beta1 {
         output.WriteRawTag(32);
         output.WriteInt32(PageSize);
       }
-      if (JobView != 0) {
+      if (JobView != global::Google.Cloud.Talent.V4Beta1.JobView.Unspecified) {
         output.WriteRawTag(40);
         output.WriteEnum((int) JobView);
       }
       if (_unknownFields != null) {
         _unknownFields.WriteTo(output);
       }
+    #endif
     }
+
+    #if !GOOGLE_PROTOBUF_REFSTRUCT_COMPATIBILITY_MODE
+    [global::System.Diagnostics.DebuggerNonUserCodeAttribute]
+    void pb::IBufferMessage.InternalWriteTo(ref pb::WriteContext output) {
+      if (Parent.Length != 0) {
+        output.WriteRawTag(10);
+        output.WriteString(Parent);
+      }
+      if (Filter.Length != 0) {
+        output.WriteRawTag(18);
+        output.WriteString(Filter);
+      }
+      if (PageToken.Length != 0) {
+        output.WriteRawTag(26);
+        output.WriteString(PageToken);
+      }
+      if (PageSize != 0) {
+        output.WriteRawTag(32);
+        output.WriteInt32(PageSize);
+      }
+      if (JobView != global::Google.Cloud.Talent.V4Beta1.JobView.Unspecified) {
+        output.WriteRawTag(40);
+        output.WriteEnum((int) JobView);
+      }
+      if (_unknownFields != null) {
+        _unknownFields.WriteTo(ref output);
+      }
+    }
+    #endif
 
     [global::System.Diagnostics.DebuggerNonUserCodeAttribute]
     public int CalculateSize() {
@@ -1283,7 +1560,7 @@ namespace Google.Cloud.Talent.V4Beta1 {
       if (PageSize != 0) {
         size += 1 + pb::CodedOutputStream.ComputeInt32Size(PageSize);
       }
-      if (JobView != 0) {
+      if (JobView != global::Google.Cloud.Talent.V4Beta1.JobView.Unspecified) {
         size += 1 + pb::CodedOutputStream.ComputeEnumSize((int) JobView);
       }
       if (_unknownFields != null) {
@@ -1309,7 +1586,7 @@ namespace Google.Cloud.Talent.V4Beta1 {
       if (other.PageSize != 0) {
         PageSize = other.PageSize;
       }
-      if (other.JobView != 0) {
+      if (other.JobView != global::Google.Cloud.Talent.V4Beta1.JobView.Unspecified) {
         JobView = other.JobView;
       }
       _unknownFields = pb::UnknownFieldSet.MergeFrom(_unknownFields, other._unknownFields);
@@ -1317,6 +1594,9 @@ namespace Google.Cloud.Talent.V4Beta1 {
 
     [global::System.Diagnostics.DebuggerNonUserCodeAttribute]
     public void MergeFrom(pb::CodedInputStream input) {
+    #if !GOOGLE_PROTOBUF_REFSTRUCT_COMPATIBILITY_MODE
+      input.ReadRawMessage(this);
+    #else
       uint tag;
       while ((tag = input.ReadTag()) != 0) {
         switch(tag) {
@@ -1345,14 +1625,53 @@ namespace Google.Cloud.Talent.V4Beta1 {
           }
         }
       }
+    #endif
     }
+
+    #if !GOOGLE_PROTOBUF_REFSTRUCT_COMPATIBILITY_MODE
+    [global::System.Diagnostics.DebuggerNonUserCodeAttribute]
+    void pb::IBufferMessage.InternalMergeFrom(ref pb::ParseContext input) {
+      uint tag;
+      while ((tag = input.ReadTag()) != 0) {
+        switch(tag) {
+          default:
+            _unknownFields = pb::UnknownFieldSet.MergeFieldFrom(_unknownFields, ref input);
+            break;
+          case 10: {
+            Parent = input.ReadString();
+            break;
+          }
+          case 18: {
+            Filter = input.ReadString();
+            break;
+          }
+          case 26: {
+            PageToken = input.ReadString();
+            break;
+          }
+          case 32: {
+            PageSize = input.ReadInt32();
+            break;
+          }
+          case 40: {
+            JobView = (global::Google.Cloud.Talent.V4Beta1.JobView) input.ReadEnum();
+            break;
+          }
+        }
+      }
+    }
+    #endif
 
   }
 
   /// <summary>
   /// List jobs response.
   /// </summary>
-  public sealed partial class ListJobsResponse : pb::IMessage<ListJobsResponse> {
+  public sealed partial class ListJobsResponse : pb::IMessage<ListJobsResponse>
+  #if !GOOGLE_PROTOBUF_REFSTRUCT_COMPATIBILITY_MODE
+      , pb::IBufferMessage
+  #endif
+  {
     private static readonly pb::MessageParser<ListJobsResponse> _parser = new pb::MessageParser<ListJobsResponse>(() => new ListJobsResponse());
     private pb::UnknownFieldSet _unknownFields;
     [global::System.Diagnostics.DebuggerNonUserCodeAttribute]
@@ -1471,6 +1790,9 @@ namespace Google.Cloud.Talent.V4Beta1 {
 
     [global::System.Diagnostics.DebuggerNonUserCodeAttribute]
     public void WriteTo(pb::CodedOutputStream output) {
+    #if !GOOGLE_PROTOBUF_REFSTRUCT_COMPATIBILITY_MODE
+      output.WriteRawMessage(this);
+    #else
       jobs_.WriteTo(output, _repeated_jobs_codec);
       if (NextPageToken.Length != 0) {
         output.WriteRawTag(18);
@@ -1483,7 +1805,26 @@ namespace Google.Cloud.Talent.V4Beta1 {
       if (_unknownFields != null) {
         _unknownFields.WriteTo(output);
       }
+    #endif
     }
+
+    #if !GOOGLE_PROTOBUF_REFSTRUCT_COMPATIBILITY_MODE
+    [global::System.Diagnostics.DebuggerNonUserCodeAttribute]
+    void pb::IBufferMessage.InternalWriteTo(ref pb::WriteContext output) {
+      jobs_.WriteTo(ref output, _repeated_jobs_codec);
+      if (NextPageToken.Length != 0) {
+        output.WriteRawTag(18);
+        output.WriteString(NextPageToken);
+      }
+      if (metadata_ != null) {
+        output.WriteRawTag(26);
+        output.WriteMessage(Metadata);
+      }
+      if (_unknownFields != null) {
+        _unknownFields.WriteTo(ref output);
+      }
+    }
+    #endif
 
     [global::System.Diagnostics.DebuggerNonUserCodeAttribute]
     public int CalculateSize() {
@@ -1521,6 +1862,9 @@ namespace Google.Cloud.Talent.V4Beta1 {
 
     [global::System.Diagnostics.DebuggerNonUserCodeAttribute]
     public void MergeFrom(pb::CodedInputStream input) {
+    #if !GOOGLE_PROTOBUF_REFSTRUCT_COMPATIBILITY_MODE
+      input.ReadRawMessage(this);
+    #else
       uint tag;
       while ((tag = input.ReadTag()) != 0) {
         switch(tag) {
@@ -1544,14 +1888,48 @@ namespace Google.Cloud.Talent.V4Beta1 {
           }
         }
       }
+    #endif
     }
+
+    #if !GOOGLE_PROTOBUF_REFSTRUCT_COMPATIBILITY_MODE
+    [global::System.Diagnostics.DebuggerNonUserCodeAttribute]
+    void pb::IBufferMessage.InternalMergeFrom(ref pb::ParseContext input) {
+      uint tag;
+      while ((tag = input.ReadTag()) != 0) {
+        switch(tag) {
+          default:
+            _unknownFields = pb::UnknownFieldSet.MergeFieldFrom(_unknownFields, ref input);
+            break;
+          case 10: {
+            jobs_.AddEntriesFrom(ref input, _repeated_jobs_codec);
+            break;
+          }
+          case 18: {
+            NextPageToken = input.ReadString();
+            break;
+          }
+          case 26: {
+            if (metadata_ == null) {
+              Metadata = new global::Google.Cloud.Talent.V4Beta1.ResponseMetadata();
+            }
+            input.ReadMessage(Metadata);
+            break;
+          }
+        }
+      }
+    }
+    #endif
 
   }
 
   /// <summary>
   /// The Request body of the `SearchJobs` call.
   /// </summary>
-  public sealed partial class SearchJobsRequest : pb::IMessage<SearchJobsRequest> {
+  public sealed partial class SearchJobsRequest : pb::IMessage<SearchJobsRequest>
+  #if !GOOGLE_PROTOBUF_REFSTRUCT_COMPATIBILITY_MODE
+      , pb::IBufferMessage
+  #endif
+  {
     private static readonly pb::MessageParser<SearchJobsRequest> _parser = new pb::MessageParser<SearchJobsRequest>(() => new SearchJobsRequest());
     private pb::UnknownFieldSet _unknownFields;
     [global::System.Diagnostics.DebuggerNonUserCodeAttribute]
@@ -1619,12 +1997,11 @@ namespace Google.Cloud.Talent.V4Beta1 {
 
     /// <summary>Field number for the "search_mode" field.</summary>
     public const int SearchModeFieldNumber = 2;
-    private global::Google.Cloud.Talent.V4Beta1.SearchJobsRequest.Types.SearchMode searchMode_ = 0;
+    private global::Google.Cloud.Talent.V4Beta1.SearchJobsRequest.Types.SearchMode searchMode_ = global::Google.Cloud.Talent.V4Beta1.SearchJobsRequest.Types.SearchMode.Unspecified;
     /// <summary>
     /// Mode of a search.
     ///
-    /// Defaults to
-    /// [SearchMode.JOB_SEARCH][google.cloud.talent.v4beta1.SearchJobsRequest.SearchMode.JOB_SEARCH].
+    /// Defaults to [SearchMode.JOB_SEARCH][google.cloud.talent.v4beta1.SearchJobsRequest.SearchMode.JOB_SEARCH].
     /// </summary>
     [global::System.Diagnostics.DebuggerNonUserCodeAttribute]
     public global::Google.Cloud.Talent.V4Beta1.SearchJobsRequest.Types.SearchMode SearchMode {
@@ -1638,9 +2015,9 @@ namespace Google.Cloud.Talent.V4Beta1 {
     public const int RequestMetadataFieldNumber = 3;
     private global::Google.Cloud.Talent.V4Beta1.RequestMetadata requestMetadata_;
     /// <summary>
-    /// Required. The meta information collected about the job searcher, used to
-    /// improve the search quality of the service. The identifiers (such as
-    /// `user_id`) are provided by users, and must be unique and consistent.
+    /// Required. The meta information collected about the job searcher, used to improve the
+    /// search quality of the service. The identifiers (such as `user_id`) are
+    /// provided by users, and must be unique and consistent.
     /// </summary>
     [global::System.Diagnostics.DebuggerNonUserCodeAttribute]
     public global::Google.Cloud.Talent.V4Beta1.RequestMetadata RequestMetadata {
@@ -1742,30 +2119,20 @@ namespace Google.Cloud.Talent.V4Beta1 {
     ///
     /// Job histogram facets:
     ///
-    /// * company_display_name: histogram by
-    /// [Job.company_display_name][google.cloud.talent.v4beta1.Job.company_display_name].
-    /// * employment_type: histogram by
-    /// [Job.employment_types][google.cloud.talent.v4beta1.Job.employment_types],
-    /// for example,
+    /// * company_display_name: histogram by [Job.company_display_name][google.cloud.talent.v4beta1.Job.company_display_name].
+    /// * employment_type: histogram by [Job.employment_types][google.cloud.talent.v4beta1.Job.employment_types], for example,
     ///   "FULL_TIME", "PART_TIME".
-    /// * company_size: histogram by
-    /// [CompanySize][google.cloud.talent.v4beta1.CompanySize], for example,
-    /// "SMALL", "MEDIUM", "BIG".
-    /// * publish_time_in_month: histogram by the
-    /// [Job.posting_publish_time][google.cloud.talent.v4beta1.Job.posting_publish_time]
+    /// * company_size: histogram by [CompanySize][google.cloud.talent.v4beta1.CompanySize], for example, "SMALL",
+    /// "MEDIUM", "BIG".
+    /// * publish_time_in_month: histogram by the [Job.posting_publish_time][google.cloud.talent.v4beta1.Job.posting_publish_time]
     ///   in months.
     ///   Must specify list of numeric buckets in spec.
-    /// * publish_time_in_year: histogram by the
-    /// [Job.posting_publish_time][google.cloud.talent.v4beta1.Job.posting_publish_time]
+    /// * publish_time_in_year: histogram by the [Job.posting_publish_time][google.cloud.talent.v4beta1.Job.posting_publish_time]
     ///   in years.
     ///   Must specify list of numeric buckets in spec.
-    /// * degree_types: histogram by the
-    /// [Job.degree_types][google.cloud.talent.v4beta1.Job.degree_types], for
-    /// example,
+    /// * degree_types: histogram by the [Job.degree_types][google.cloud.talent.v4beta1.Job.degree_types], for example,
     ///   "Bachelors", "Masters".
-    /// * job_level: histogram by the
-    /// [Job.job_level][google.cloud.talent.v4beta1.Job.job_level], for example,
-    /// "Entry
+    /// * job_level: histogram by the [Job.job_level][google.cloud.talent.v4beta1.Job.job_level], for example, "Entry
     ///   Level".
     /// * country: histogram by the country code of jobs, for example, "US", "FR".
     /// * admin1: histogram by the admin1 code of jobs, which is a global
@@ -1780,31 +2147,25 @@ namespace Google.Cloud.Talent.V4Beta1 {
     ///   and longitude), for example, 37.4038522,-122.0987765. Since the
     ///   coordinates of a city center can change, customers may need to refresh
     ///   them periodically.
-    /// * locale: histogram by the
-    /// [Job.language_code][google.cloud.talent.v4beta1.Job.language_code], for
-    /// example, "en-US",
+    /// * locale: histogram by the [Job.language_code][google.cloud.talent.v4beta1.Job.language_code], for example, "en-US",
     ///   "fr-FR".
-    /// * language: histogram by the language subtag of the
-    /// [Job.language_code][google.cloud.talent.v4beta1.Job.language_code],
+    /// * language: histogram by the language subtag of the [Job.language_code][google.cloud.talent.v4beta1.Job.language_code],
     ///   for example, "en", "fr".
-    /// * category: histogram by the
-    /// [JobCategory][google.cloud.talent.v4beta1.JobCategory], for example,
+    /// * category: histogram by the [JobCategory][google.cloud.talent.v4beta1.JobCategory], for example,
     ///   "COMPUTER_AND_IT", "HEALTHCARE".
     /// * base_compensation_unit: histogram by the
-    ///   [CompensationInfo.CompensationUnit][google.cloud.talent.v4beta1.CompensationInfo.CompensationUnit]
-    ///   of base salary, for example, "WEEKLY", "MONTHLY".
+    ///   [CompensationInfo.CompensationUnit][google.cloud.talent.v4beta1.CompensationInfo.CompensationUnit] of base
+    ///   salary, for example, "WEEKLY", "MONTHLY".
     /// * base_compensation: histogram by the base salary. Must specify list of
     ///   numeric buckets to group results by.
     /// * annualized_base_compensation: histogram by the base annualized salary.
     ///   Must specify list of numeric buckets to group results by.
     /// * annualized_total_compensation: histogram by the total annualized salary.
     ///   Must specify list of numeric buckets to group results by.
-    /// * string_custom_attribute: histogram by string
-    /// [Job.custom_attributes][google.cloud.talent.v4beta1.Job.custom_attributes].
+    /// * string_custom_attribute: histogram by string [Job.custom_attributes][google.cloud.talent.v4beta1.Job.custom_attributes].
     ///   Values can be accessed via square bracket notations like
     ///   string_custom_attribute["key1"].
-    /// * numeric_custom_attribute: histogram by numeric
-    /// [Job.custom_attributes][google.cloud.talent.v4beta1.Job.custom_attributes].
+    /// * numeric_custom_attribute: histogram by numeric [Job.custom_attributes][google.cloud.talent.v4beta1.Job.custom_attributes].
     ///   Values can be accessed via square bracket notations like
     ///   numeric_custom_attribute["key1"]. Must specify list of numeric buckets to
     ///   group results by.
@@ -1825,12 +2186,10 @@ namespace Google.Cloud.Talent.V4Beta1 {
 
     /// <summary>Field number for the "job_view" field.</summary>
     public const int JobViewFieldNumber = 8;
-    private global::Google.Cloud.Talent.V4Beta1.JobView jobView_ = 0;
+    private global::Google.Cloud.Talent.V4Beta1.JobView jobView_ = global::Google.Cloud.Talent.V4Beta1.JobView.Unspecified;
     /// <summary>
     /// The desired job attributes returned for jobs in the search response.
-    /// Defaults to
-    /// [JobView.JOB_VIEW_SMALL][google.cloud.talent.v4beta1.JobView.JOB_VIEW_SMALL]
-    /// if no value is specified.
+    /// Defaults to [JobView.JOB_VIEW_SMALL][google.cloud.talent.v4beta1.JobView.JOB_VIEW_SMALL] if no value is specified.
     /// </summary>
     [global::System.Diagnostics.DebuggerNonUserCodeAttribute]
     public global::Google.Cloud.Talent.V4Beta1.JobView JobView {
@@ -1846,9 +2205,9 @@ namespace Google.Cloud.Talent.V4Beta1 {
     /// <summary>
     /// An integer that specifies the current offset (that is, starting result
     /// location, amongst the jobs deemed by the API as relevant) in search
-    /// results. This field is only considered if
-    /// [page_token][google.cloud.talent.v4beta1.SearchJobsRequest.page_token] is
-    /// unset.
+    /// results. This field is only considered if [page_token][google.cloud.talent.v4beta1.SearchJobsRequest.page_token] is unset.
+    ///
+    /// The maximum allowed value is 5000. Otherwise an error is thrown.
     ///
     /// For example, 0 means to  return results starting from the first matching
     /// job, and 10 means to return from the 11th job. This can be used for
@@ -1884,9 +2243,8 @@ namespace Google.Cloud.Talent.V4Beta1 {
     private string pageToken_ = "";
     /// <summary>
     /// The token specifying the current offset within
-    /// search results. See
-    /// [SearchJobsResponse.next_page_token][google.cloud.talent.v4beta1.SearchJobsResponse.next_page_token]
-    /// for an explanation of how to obtain the next set of query results.
+    /// search results. See [SearchJobsResponse.next_page_token][google.cloud.talent.v4beta1.SearchJobsResponse.next_page_token] for
+    /// an explanation of how to obtain the next set of query results.
     /// </summary>
     [global::System.Diagnostics.DebuggerNonUserCodeAttribute]
     public string PageToken {
@@ -1908,37 +2266,33 @@ namespace Google.Cloud.Talent.V4Beta1 {
     /// * `"relevance desc"`: By relevance descending, as determined by the API
     ///   algorithms. Relevance thresholding of query results is only available
     ///   with this ordering.
-    /// * `"posting_publish_time desc"`: By
-    /// [Job.posting_publish_time][google.cloud.talent.v4beta1.Job.posting_publish_time]
+    /// * `"posting_publish_time desc"`: By [Job.posting_publish_time][google.cloud.talent.v4beta1.Job.posting_publish_time]
     ///   descending.
-    /// * `"posting_update_time desc"`: By
-    /// [Job.posting_update_time][google.cloud.talent.v4beta1.Job.posting_update_time]
+    /// * `"posting_update_time desc"`: By [Job.posting_update_time][google.cloud.talent.v4beta1.Job.posting_update_time]
     ///   descending.
-    /// * `"title"`: By [Job.title][google.cloud.talent.v4beta1.Job.title]
-    /// ascending.
-    /// * `"title desc"`: By [Job.title][google.cloud.talent.v4beta1.Job.title]
-    /// descending.
+    /// * `"title"`: By [Job.title][google.cloud.talent.v4beta1.Job.title] ascending.
+    /// * `"title desc"`: By [Job.title][google.cloud.talent.v4beta1.Job.title] descending.
     /// * `"annualized_base_compensation"`: By job's
-    ///   [CompensationInfo.annualized_base_compensation_range][google.cloud.talent.v4beta1.CompensationInfo.annualized_base_compensation_range]
-    ///   ascending. Jobs whose annualized base compensation is unspecified are put
-    ///   at the end of search results.
+    ///   [CompensationInfo.annualized_base_compensation_range][google.cloud.talent.v4beta1.CompensationInfo.annualized_base_compensation_range] ascending. Jobs
+    ///   whose annualized base compensation is unspecified are put at the end of
+    ///   search results.
     /// * `"annualized_base_compensation desc"`: By job's
-    ///   [CompensationInfo.annualized_base_compensation_range][google.cloud.talent.v4beta1.CompensationInfo.annualized_base_compensation_range]
-    ///   descending. Jobs whose annualized base compensation is unspecified are
-    ///   put at the end of search results.
+    ///   [CompensationInfo.annualized_base_compensation_range][google.cloud.talent.v4beta1.CompensationInfo.annualized_base_compensation_range] descending. Jobs
+    ///   whose annualized base compensation is unspecified are put at the end of
+    ///   search results.
     /// * `"annualized_total_compensation"`: By job's
-    ///   [CompensationInfo.annualized_total_compensation_range][google.cloud.talent.v4beta1.CompensationInfo.annualized_total_compensation_range]
-    ///   ascending. Jobs whose annualized base compensation is unspecified are put
-    ///   at the end of search results.
+    ///   [CompensationInfo.annualized_total_compensation_range][google.cloud.talent.v4beta1.CompensationInfo.annualized_total_compensation_range] ascending. Jobs
+    ///   whose annualized base compensation is unspecified are put at the end of
+    ///   search results.
     /// * `"annualized_total_compensation desc"`: By job's
-    ///   [CompensationInfo.annualized_total_compensation_range][google.cloud.talent.v4beta1.CompensationInfo.annualized_total_compensation_range]
-    ///   descending. Jobs whose annualized base compensation is unspecified are
-    ///   put at the end of search results.
+    ///   [CompensationInfo.annualized_total_compensation_range][google.cloud.talent.v4beta1.CompensationInfo.annualized_total_compensation_range] descending. Jobs
+    ///   whose annualized base compensation is unspecified are put at the end of
+    ///   search results.
     /// * `"custom_ranking desc"`: By the relevance score adjusted to the
-    ///   [SearchJobsRequest.CustomRankingInfo.ranking_expression][google.cloud.talent.v4beta1.SearchJobsRequest.CustomRankingInfo.ranking_expression]
-    ///   with weight factor assigned by
-    ///   [SearchJobsRequest.CustomRankingInfo.importance_level][google.cloud.talent.v4beta1.SearchJobsRequest.CustomRankingInfo.importance_level]
-    ///   in descending order.
+    ///   [SearchJobsRequest.CustomRankingInfo.ranking_expression][google.cloud.talent.v4beta1.SearchJobsRequest.CustomRankingInfo.ranking_expression] with weight
+    ///   factor assigned by
+    ///   [SearchJobsRequest.CustomRankingInfo.importance_level][google.cloud.talent.v4beta1.SearchJobsRequest.CustomRankingInfo.importance_level] in descending
+    ///   order.
     /// * Location sorting: Use the special syntax to order jobs by distance:&lt;br>
     ///   `"distance_from('Hawaii')"`: Order by distance from Hawaii.&lt;br>
     ///   `"distance_from(19.89, 155.5)"`: Order by distance from a coordinate.&lt;br>
@@ -1965,7 +2319,7 @@ namespace Google.Cloud.Talent.V4Beta1 {
 
     /// <summary>Field number for the "diversification_level" field.</summary>
     public const int DiversificationLevelFieldNumber = 13;
-    private global::Google.Cloud.Talent.V4Beta1.SearchJobsRequest.Types.DiversificationLevel diversificationLevel_ = 0;
+    private global::Google.Cloud.Talent.V4Beta1.SearchJobsRequest.Types.DiversificationLevel diversificationLevel_ = global::Google.Cloud.Talent.V4Beta1.SearchJobsRequest.Types.DiversificationLevel.Unspecified;
     /// <summary>
     /// Controls whether highly similar jobs are returned next to each other in
     /// the search results. Jobs are identified as highly similar based on
@@ -1974,9 +2328,8 @@ namespace Google.Cloud.Talent.V4Beta1 {
     /// displayed to the job seeker higher up in the results, with the other jobs
     /// being displayed lower down in the results.
     ///
-    /// Defaults to
-    /// [DiversificationLevel.SIMPLE][google.cloud.talent.v4beta1.SearchJobsRequest.DiversificationLevel.SIMPLE]
-    /// if no value is specified.
+    /// Defaults to [DiversificationLevel.SIMPLE][google.cloud.talent.v4beta1.SearchJobsRequest.DiversificationLevel.SIMPLE] if no value
+    /// is specified.
     /// </summary>
     [global::System.Diagnostics.DebuggerNonUserCodeAttribute]
     public global::Google.Cloud.Talent.V4Beta1.SearchJobsRequest.Types.DiversificationLevel DiversificationLevel {
@@ -2005,27 +2358,22 @@ namespace Google.Cloud.Talent.V4Beta1 {
     public const int DisableKeywordMatchFieldNumber = 16;
     private bool disableKeywordMatch_;
     /// <summary>
-    /// Controls whether to disable exact keyword match on
-    /// [Job.title][google.cloud.talent.v4beta1.Job.title],
-    /// [Job.description][google.cloud.talent.v4beta1.Job.description],
-    /// [Job.company_display_name][google.cloud.talent.v4beta1.Job.company_display_name],
-    /// [Job.addresses][google.cloud.talent.v4beta1.Job.addresses],
-    /// [Job.qualifications][google.cloud.talent.v4beta1.Job.qualifications]. When
-    /// disable keyword match is turned off, a keyword match returns jobs that do
-    /// not match given category filters when there are matching keywords. For
-    /// example, for the query "program manager," a result is returned even if the
-    /// job posting has the title "software developer," which doesn't fall into
-    /// "program manager" ontology, but does have "program manager" appearing in
-    /// its description.
+    /// Controls whether to disable exact keyword match on [Job.title][google.cloud.talent.v4beta1.Job.title],
+    /// [Job.description][google.cloud.talent.v4beta1.Job.description], [Job.company_display_name][google.cloud.talent.v4beta1.Job.company_display_name], [Job.addresses][google.cloud.talent.v4beta1.Job.addresses],
+    /// [Job.qualifications][google.cloud.talent.v4beta1.Job.qualifications]. When disable keyword match is turned off, a
+    /// keyword match returns jobs that do not match given category filters when
+    /// there are matching keywords. For example, for the query "program manager,"
+    /// a result is returned even if the job posting has the title "software
+    /// developer," which doesn't fall into "program manager" ontology, but does
+    /// have "program manager" appearing in its description.
     ///
     /// For queries like "cloud" that don't contain title or
     /// location specific ontology, jobs with "cloud" keyword matches are returned
     /// regardless of this flag's value.
     ///
-    /// Use
-    /// [Company.keyword_searchable_job_custom_attributes][google.cloud.talent.v4beta1.Company.keyword_searchable_job_custom_attributes]
-    /// if company-specific globally matched custom field/attribute string values
-    /// are needed. Enabling keyword match improves recall of subsequent search
+    /// Use [Company.keyword_searchable_job_custom_attributes][google.cloud.talent.v4beta1.Company.keyword_searchable_job_custom_attributes] if
+    /// company-specific globally matched custom field/attribute string values are
+    /// needed. Enabling keyword match improves recall of subsequent search
     /// requests.
     ///
     /// Defaults to false.
@@ -2073,18 +2421,18 @@ namespace Google.Cloud.Talent.V4Beta1 {
     public override int GetHashCode() {
       int hash = 1;
       if (Parent.Length != 0) hash ^= Parent.GetHashCode();
-      if (SearchMode != 0) hash ^= SearchMode.GetHashCode();
+      if (SearchMode != global::Google.Cloud.Talent.V4Beta1.SearchJobsRequest.Types.SearchMode.Unspecified) hash ^= SearchMode.GetHashCode();
       if (requestMetadata_ != null) hash ^= RequestMetadata.GetHashCode();
       if (jobQuery_ != null) hash ^= JobQuery.GetHashCode();
       if (EnableBroadening != false) hash ^= EnableBroadening.GetHashCode();
       if (RequirePreciseResultSize != false) hash ^= RequirePreciseResultSize.GetHashCode();
       hash ^= histogramQueries_.GetHashCode();
-      if (JobView != 0) hash ^= JobView.GetHashCode();
+      if (JobView != global::Google.Cloud.Talent.V4Beta1.JobView.Unspecified) hash ^= JobView.GetHashCode();
       if (Offset != 0) hash ^= Offset.GetHashCode();
       if (PageSize != 0) hash ^= PageSize.GetHashCode();
       if (PageToken.Length != 0) hash ^= PageToken.GetHashCode();
       if (OrderBy.Length != 0) hash ^= OrderBy.GetHashCode();
-      if (DiversificationLevel != 0) hash ^= DiversificationLevel.GetHashCode();
+      if (DiversificationLevel != global::Google.Cloud.Talent.V4Beta1.SearchJobsRequest.Types.DiversificationLevel.Unspecified) hash ^= DiversificationLevel.GetHashCode();
       if (customRankingInfo_ != null) hash ^= CustomRankingInfo.GetHashCode();
       if (DisableKeywordMatch != false) hash ^= DisableKeywordMatch.GetHashCode();
       if (_unknownFields != null) {
@@ -2100,11 +2448,14 @@ namespace Google.Cloud.Talent.V4Beta1 {
 
     [global::System.Diagnostics.DebuggerNonUserCodeAttribute]
     public void WriteTo(pb::CodedOutputStream output) {
+    #if !GOOGLE_PROTOBUF_REFSTRUCT_COMPATIBILITY_MODE
+      output.WriteRawMessage(this);
+    #else
       if (Parent.Length != 0) {
         output.WriteRawTag(10);
         output.WriteString(Parent);
       }
-      if (SearchMode != 0) {
+      if (SearchMode != global::Google.Cloud.Talent.V4Beta1.SearchJobsRequest.Types.SearchMode.Unspecified) {
         output.WriteRawTag(16);
         output.WriteEnum((int) SearchMode);
       }
@@ -2125,7 +2476,7 @@ namespace Google.Cloud.Talent.V4Beta1 {
         output.WriteBool(RequirePreciseResultSize);
       }
       histogramQueries_.WriteTo(output, _repeated_histogramQueries_codec);
-      if (JobView != 0) {
+      if (JobView != global::Google.Cloud.Talent.V4Beta1.JobView.Unspecified) {
         output.WriteRawTag(64);
         output.WriteEnum((int) JobView);
       }
@@ -2145,7 +2496,7 @@ namespace Google.Cloud.Talent.V4Beta1 {
         output.WriteRawTag(98);
         output.WriteString(OrderBy);
       }
-      if (DiversificationLevel != 0) {
+      if (DiversificationLevel != global::Google.Cloud.Talent.V4Beta1.SearchJobsRequest.Types.DiversificationLevel.Unspecified) {
         output.WriteRawTag(104);
         output.WriteEnum((int) DiversificationLevel);
       }
@@ -2160,7 +2511,74 @@ namespace Google.Cloud.Talent.V4Beta1 {
       if (_unknownFields != null) {
         _unknownFields.WriteTo(output);
       }
+    #endif
     }
+
+    #if !GOOGLE_PROTOBUF_REFSTRUCT_COMPATIBILITY_MODE
+    [global::System.Diagnostics.DebuggerNonUserCodeAttribute]
+    void pb::IBufferMessage.InternalWriteTo(ref pb::WriteContext output) {
+      if (Parent.Length != 0) {
+        output.WriteRawTag(10);
+        output.WriteString(Parent);
+      }
+      if (SearchMode != global::Google.Cloud.Talent.V4Beta1.SearchJobsRequest.Types.SearchMode.Unspecified) {
+        output.WriteRawTag(16);
+        output.WriteEnum((int) SearchMode);
+      }
+      if (requestMetadata_ != null) {
+        output.WriteRawTag(26);
+        output.WriteMessage(RequestMetadata);
+      }
+      if (jobQuery_ != null) {
+        output.WriteRawTag(34);
+        output.WriteMessage(JobQuery);
+      }
+      if (EnableBroadening != false) {
+        output.WriteRawTag(40);
+        output.WriteBool(EnableBroadening);
+      }
+      if (RequirePreciseResultSize != false) {
+        output.WriteRawTag(48);
+        output.WriteBool(RequirePreciseResultSize);
+      }
+      histogramQueries_.WriteTo(ref output, _repeated_histogramQueries_codec);
+      if (JobView != global::Google.Cloud.Talent.V4Beta1.JobView.Unspecified) {
+        output.WriteRawTag(64);
+        output.WriteEnum((int) JobView);
+      }
+      if (Offset != 0) {
+        output.WriteRawTag(72);
+        output.WriteInt32(Offset);
+      }
+      if (PageSize != 0) {
+        output.WriteRawTag(80);
+        output.WriteInt32(PageSize);
+      }
+      if (PageToken.Length != 0) {
+        output.WriteRawTag(90);
+        output.WriteString(PageToken);
+      }
+      if (OrderBy.Length != 0) {
+        output.WriteRawTag(98);
+        output.WriteString(OrderBy);
+      }
+      if (DiversificationLevel != global::Google.Cloud.Talent.V4Beta1.SearchJobsRequest.Types.DiversificationLevel.Unspecified) {
+        output.WriteRawTag(104);
+        output.WriteEnum((int) DiversificationLevel);
+      }
+      if (customRankingInfo_ != null) {
+        output.WriteRawTag(114);
+        output.WriteMessage(CustomRankingInfo);
+      }
+      if (DisableKeywordMatch != false) {
+        output.WriteRawTag(128, 1);
+        output.WriteBool(DisableKeywordMatch);
+      }
+      if (_unknownFields != null) {
+        _unknownFields.WriteTo(ref output);
+      }
+    }
+    #endif
 
     [global::System.Diagnostics.DebuggerNonUserCodeAttribute]
     public int CalculateSize() {
@@ -2168,7 +2586,7 @@ namespace Google.Cloud.Talent.V4Beta1 {
       if (Parent.Length != 0) {
         size += 1 + pb::CodedOutputStream.ComputeStringSize(Parent);
       }
-      if (SearchMode != 0) {
+      if (SearchMode != global::Google.Cloud.Talent.V4Beta1.SearchJobsRequest.Types.SearchMode.Unspecified) {
         size += 1 + pb::CodedOutputStream.ComputeEnumSize((int) SearchMode);
       }
       if (requestMetadata_ != null) {
@@ -2184,7 +2602,7 @@ namespace Google.Cloud.Talent.V4Beta1 {
         size += 1 + 1;
       }
       size += histogramQueries_.CalculateSize(_repeated_histogramQueries_codec);
-      if (JobView != 0) {
+      if (JobView != global::Google.Cloud.Talent.V4Beta1.JobView.Unspecified) {
         size += 1 + pb::CodedOutputStream.ComputeEnumSize((int) JobView);
       }
       if (Offset != 0) {
@@ -2199,7 +2617,7 @@ namespace Google.Cloud.Talent.V4Beta1 {
       if (OrderBy.Length != 0) {
         size += 1 + pb::CodedOutputStream.ComputeStringSize(OrderBy);
       }
-      if (DiversificationLevel != 0) {
+      if (DiversificationLevel != global::Google.Cloud.Talent.V4Beta1.SearchJobsRequest.Types.DiversificationLevel.Unspecified) {
         size += 1 + pb::CodedOutputStream.ComputeEnumSize((int) DiversificationLevel);
       }
       if (customRankingInfo_ != null) {
@@ -2222,7 +2640,7 @@ namespace Google.Cloud.Talent.V4Beta1 {
       if (other.Parent.Length != 0) {
         Parent = other.Parent;
       }
-      if (other.SearchMode != 0) {
+      if (other.SearchMode != global::Google.Cloud.Talent.V4Beta1.SearchJobsRequest.Types.SearchMode.Unspecified) {
         SearchMode = other.SearchMode;
       }
       if (other.requestMetadata_ != null) {
@@ -2244,7 +2662,7 @@ namespace Google.Cloud.Talent.V4Beta1 {
         RequirePreciseResultSize = other.RequirePreciseResultSize;
       }
       histogramQueries_.Add(other.histogramQueries_);
-      if (other.JobView != 0) {
+      if (other.JobView != global::Google.Cloud.Talent.V4Beta1.JobView.Unspecified) {
         JobView = other.JobView;
       }
       if (other.Offset != 0) {
@@ -2259,7 +2677,7 @@ namespace Google.Cloud.Talent.V4Beta1 {
       if (other.OrderBy.Length != 0) {
         OrderBy = other.OrderBy;
       }
-      if (other.DiversificationLevel != 0) {
+      if (other.DiversificationLevel != global::Google.Cloud.Talent.V4Beta1.SearchJobsRequest.Types.DiversificationLevel.Unspecified) {
         DiversificationLevel = other.DiversificationLevel;
       }
       if (other.customRankingInfo_ != null) {
@@ -2276,6 +2694,9 @@ namespace Google.Cloud.Talent.V4Beta1 {
 
     [global::System.Diagnostics.DebuggerNonUserCodeAttribute]
     public void MergeFrom(pb::CodedInputStream input) {
+    #if !GOOGLE_PROTOBUF_REFSTRUCT_COMPATIBILITY_MODE
+      input.ReadRawMessage(this);
+    #else
       uint tag;
       while ((tag = input.ReadTag()) != 0) {
         switch(tag) {
@@ -2353,7 +2774,91 @@ namespace Google.Cloud.Talent.V4Beta1 {
           }
         }
       }
+    #endif
     }
+
+    #if !GOOGLE_PROTOBUF_REFSTRUCT_COMPATIBILITY_MODE
+    [global::System.Diagnostics.DebuggerNonUserCodeAttribute]
+    void pb::IBufferMessage.InternalMergeFrom(ref pb::ParseContext input) {
+      uint tag;
+      while ((tag = input.ReadTag()) != 0) {
+        switch(tag) {
+          default:
+            _unknownFields = pb::UnknownFieldSet.MergeFieldFrom(_unknownFields, ref input);
+            break;
+          case 10: {
+            Parent = input.ReadString();
+            break;
+          }
+          case 16: {
+            SearchMode = (global::Google.Cloud.Talent.V4Beta1.SearchJobsRequest.Types.SearchMode) input.ReadEnum();
+            break;
+          }
+          case 26: {
+            if (requestMetadata_ == null) {
+              RequestMetadata = new global::Google.Cloud.Talent.V4Beta1.RequestMetadata();
+            }
+            input.ReadMessage(RequestMetadata);
+            break;
+          }
+          case 34: {
+            if (jobQuery_ == null) {
+              JobQuery = new global::Google.Cloud.Talent.V4Beta1.JobQuery();
+            }
+            input.ReadMessage(JobQuery);
+            break;
+          }
+          case 40: {
+            EnableBroadening = input.ReadBool();
+            break;
+          }
+          case 48: {
+            RequirePreciseResultSize = input.ReadBool();
+            break;
+          }
+          case 58: {
+            histogramQueries_.AddEntriesFrom(ref input, _repeated_histogramQueries_codec);
+            break;
+          }
+          case 64: {
+            JobView = (global::Google.Cloud.Talent.V4Beta1.JobView) input.ReadEnum();
+            break;
+          }
+          case 72: {
+            Offset = input.ReadInt32();
+            break;
+          }
+          case 80: {
+            PageSize = input.ReadInt32();
+            break;
+          }
+          case 90: {
+            PageToken = input.ReadString();
+            break;
+          }
+          case 98: {
+            OrderBy = input.ReadString();
+            break;
+          }
+          case 104: {
+            DiversificationLevel = (global::Google.Cloud.Talent.V4Beta1.SearchJobsRequest.Types.DiversificationLevel) input.ReadEnum();
+            break;
+          }
+          case 114: {
+            if (customRankingInfo_ == null) {
+              CustomRankingInfo = new global::Google.Cloud.Talent.V4Beta1.SearchJobsRequest.Types.CustomRankingInfo();
+            }
+            input.ReadMessage(CustomRankingInfo);
+            break;
+          }
+          case 128: {
+            DisableKeywordMatch = input.ReadBool();
+            break;
+          }
+        }
+      }
+    }
+    #endif
 
     #region Nested types
     /// <summary>Container for nested types declared in the SearchJobsRequest message type.</summary>
@@ -2415,10 +2920,13 @@ namespace Google.Cloud.Talent.V4Beta1 {
       }
 
       /// <summary>
-      /// Custom ranking information for
-      /// [SearchJobsRequest][google.cloud.talent.v4beta1.SearchJobsRequest].
+      /// Custom ranking information for [SearchJobsRequest][google.cloud.talent.v4beta1.SearchJobsRequest].
       /// </summary>
-      public sealed partial class CustomRankingInfo : pb::IMessage<CustomRankingInfo> {
+      public sealed partial class CustomRankingInfo : pb::IMessage<CustomRankingInfo>
+      #if !GOOGLE_PROTOBUF_REFSTRUCT_COMPATIBILITY_MODE
+          , pb::IBufferMessage
+      #endif
+      {
         private static readonly pb::MessageParser<CustomRankingInfo> _parser = new pb::MessageParser<CustomRankingInfo>(() => new CustomRankingInfo());
         private pb::UnknownFieldSet _unknownFields;
         [global::System.Diagnostics.DebuggerNonUserCodeAttribute]
@@ -2455,11 +2963,11 @@ namespace Google.Cloud.Talent.V4Beta1 {
 
         /// <summary>Field number for the "importance_level" field.</summary>
         public const int ImportanceLevelFieldNumber = 1;
-        private global::Google.Cloud.Talent.V4Beta1.SearchJobsRequest.Types.CustomRankingInfo.Types.ImportanceLevel importanceLevel_ = 0;
+        private global::Google.Cloud.Talent.V4Beta1.SearchJobsRequest.Types.CustomRankingInfo.Types.ImportanceLevel importanceLevel_ = global::Google.Cloud.Talent.V4Beta1.SearchJobsRequest.Types.CustomRankingInfo.Types.ImportanceLevel.Unspecified;
         /// <summary>
         /// Required. Controls over how important the score of
-        /// [CustomRankingInfo.ranking_expression][google.cloud.talent.v4beta1.SearchJobsRequest.CustomRankingInfo.ranking_expression]
-        /// gets applied to job's final ranking position.
+        /// [CustomRankingInfo.ranking_expression][google.cloud.talent.v4beta1.SearchJobsRequest.CustomRankingInfo.ranking_expression] gets applied to job's final
+        /// ranking position.
         ///
         /// An error is thrown if not specified.
         /// </summary>
@@ -2475,21 +2983,24 @@ namespace Google.Cloud.Talent.V4Beta1 {
         public const int RankingExpressionFieldNumber = 2;
         private string rankingExpression_ = "";
         /// <summary>
-        /// Required. Controls over how job documents get ranked on top of existing
-        /// relevance score (determined by API algorithm). The product of ranking
+        /// Required. Controls over how job documents get ranked on top of existing relevance
+        /// score (determined by API algorithm). A combination of the ranking
         /// expression and relevance score is used to determine job's final ranking
         /// position.
         ///
         /// The syntax for this expression is a subset of Google SQL syntax.
         ///
         /// Supported operators are: +, -, *, /, where the left and right side of
-        /// the operator is either a numeric
-        /// [Job.custom_attributes][google.cloud.talent.v4beta1.Job.custom_attributes]
-        /// key, integer/double value or an expression that can be evaluated to a
-        /// number.
+        /// the operator is either a numeric [Job.custom_attributes][google.cloud.talent.v4beta1.Job.custom_attributes] key,
+        /// integer/double value or an expression that can be evaluated to a number.
         ///
         /// Parenthesis are supported to adjust calculation precedence. The
         /// expression must be &lt; 100 characters in length.
+        ///
+        /// The expression is considered invalid for a job if the expression
+        /// references custom attributes that are not populated on the job or if the
+        /// expression results in a divide by zero. If an expression is invalid for a
+        /// job, that job is demoted to the end of the results.
         ///
         /// Sample ranking expression
         /// (year + 25) * 0.25 - (freshness / 0.5)
@@ -2523,7 +3034,7 @@ namespace Google.Cloud.Talent.V4Beta1 {
         [global::System.Diagnostics.DebuggerNonUserCodeAttribute]
         public override int GetHashCode() {
           int hash = 1;
-          if (ImportanceLevel != 0) hash ^= ImportanceLevel.GetHashCode();
+          if (ImportanceLevel != global::Google.Cloud.Talent.V4Beta1.SearchJobsRequest.Types.CustomRankingInfo.Types.ImportanceLevel.Unspecified) hash ^= ImportanceLevel.GetHashCode();
           if (RankingExpression.Length != 0) hash ^= RankingExpression.GetHashCode();
           if (_unknownFields != null) {
             hash ^= _unknownFields.GetHashCode();
@@ -2538,7 +3049,10 @@ namespace Google.Cloud.Talent.V4Beta1 {
 
         [global::System.Diagnostics.DebuggerNonUserCodeAttribute]
         public void WriteTo(pb::CodedOutputStream output) {
-          if (ImportanceLevel != 0) {
+        #if !GOOGLE_PROTOBUF_REFSTRUCT_COMPATIBILITY_MODE
+          output.WriteRawMessage(this);
+        #else
+          if (ImportanceLevel != global::Google.Cloud.Talent.V4Beta1.SearchJobsRequest.Types.CustomRankingInfo.Types.ImportanceLevel.Unspecified) {
             output.WriteRawTag(8);
             output.WriteEnum((int) ImportanceLevel);
           }
@@ -2549,12 +3063,30 @@ namespace Google.Cloud.Talent.V4Beta1 {
           if (_unknownFields != null) {
             _unknownFields.WriteTo(output);
           }
+        #endif
         }
+
+        #if !GOOGLE_PROTOBUF_REFSTRUCT_COMPATIBILITY_MODE
+        [global::System.Diagnostics.DebuggerNonUserCodeAttribute]
+        void pb::IBufferMessage.InternalWriteTo(ref pb::WriteContext output) {
+          if (ImportanceLevel != global::Google.Cloud.Talent.V4Beta1.SearchJobsRequest.Types.CustomRankingInfo.Types.ImportanceLevel.Unspecified) {
+            output.WriteRawTag(8);
+            output.WriteEnum((int) ImportanceLevel);
+          }
+          if (RankingExpression.Length != 0) {
+            output.WriteRawTag(18);
+            output.WriteString(RankingExpression);
+          }
+          if (_unknownFields != null) {
+            _unknownFields.WriteTo(ref output);
+          }
+        }
+        #endif
 
         [global::System.Diagnostics.DebuggerNonUserCodeAttribute]
         public int CalculateSize() {
           int size = 0;
-          if (ImportanceLevel != 0) {
+          if (ImportanceLevel != global::Google.Cloud.Talent.V4Beta1.SearchJobsRequest.Types.CustomRankingInfo.Types.ImportanceLevel.Unspecified) {
             size += 1 + pb::CodedOutputStream.ComputeEnumSize((int) ImportanceLevel);
           }
           if (RankingExpression.Length != 0) {
@@ -2571,7 +3103,7 @@ namespace Google.Cloud.Talent.V4Beta1 {
           if (other == null) {
             return;
           }
-          if (other.ImportanceLevel != 0) {
+          if (other.ImportanceLevel != global::Google.Cloud.Talent.V4Beta1.SearchJobsRequest.Types.CustomRankingInfo.Types.ImportanceLevel.Unspecified) {
             ImportanceLevel = other.ImportanceLevel;
           }
           if (other.RankingExpression.Length != 0) {
@@ -2582,6 +3114,9 @@ namespace Google.Cloud.Talent.V4Beta1 {
 
         [global::System.Diagnostics.DebuggerNonUserCodeAttribute]
         public void MergeFrom(pb::CodedInputStream input) {
+        #if !GOOGLE_PROTOBUF_REFSTRUCT_COMPATIBILITY_MODE
+          input.ReadRawMessage(this);
+        #else
           uint tag;
           while ((tag = input.ReadTag()) != 0) {
             switch(tag) {
@@ -2598,15 +3133,37 @@ namespace Google.Cloud.Talent.V4Beta1 {
               }
             }
           }
+        #endif
         }
+
+        #if !GOOGLE_PROTOBUF_REFSTRUCT_COMPATIBILITY_MODE
+        [global::System.Diagnostics.DebuggerNonUserCodeAttribute]
+        void pb::IBufferMessage.InternalMergeFrom(ref pb::ParseContext input) {
+          uint tag;
+          while ((tag = input.ReadTag()) != 0) {
+            switch(tag) {
+              default:
+                _unknownFields = pb::UnknownFieldSet.MergeFieldFrom(_unknownFields, ref input);
+                break;
+              case 8: {
+                ImportanceLevel = (global::Google.Cloud.Talent.V4Beta1.SearchJobsRequest.Types.CustomRankingInfo.Types.ImportanceLevel) input.ReadEnum();
+                break;
+              }
+              case 18: {
+                RankingExpression = input.ReadString();
+                break;
+              }
+            }
+          }
+        }
+        #endif
 
         #region Nested types
         /// <summary>Container for nested types declared in the CustomRankingInfo message type.</summary>
         [global::System.Diagnostics.DebuggerNonUserCodeAttribute]
         public static partial class Types {
           /// <summary>
-          /// The importance level for
-          /// [CustomRankingInfo.ranking_expression][google.cloud.talent.v4beta1.SearchJobsRequest.CustomRankingInfo.ranking_expression].
+          /// The importance level for [CustomRankingInfo.ranking_expression][google.cloud.talent.v4beta1.SearchJobsRequest.CustomRankingInfo.ranking_expression].
           /// </summary>
           public enum ImportanceLevel {
             /// <summary>
@@ -2664,7 +3221,11 @@ namespace Google.Cloud.Talent.V4Beta1 {
   /// <summary>
   /// Response for SearchJob method.
   /// </summary>
-  public sealed partial class SearchJobsResponse : pb::IMessage<SearchJobsResponse> {
+  public sealed partial class SearchJobsResponse : pb::IMessage<SearchJobsResponse>
+  #if !GOOGLE_PROTOBUF_REFSTRUCT_COMPATIBILITY_MODE
+      , pb::IBufferMessage
+  #endif
+  {
     private static readonly pb::MessageParser<SearchJobsResponse> _parser = new pb::MessageParser<SearchJobsResponse>(() => new SearchJobsResponse());
     private pb::UnknownFieldSet _unknownFields;
     [global::System.Diagnostics.DebuggerNonUserCodeAttribute]
@@ -2712,8 +3273,7 @@ namespace Google.Cloud.Talent.V4Beta1 {
         = pb::FieldCodec.ForMessage(10, global::Google.Cloud.Talent.V4Beta1.SearchJobsResponse.Types.MatchingJob.Parser);
     private readonly pbc::RepeatedField<global::Google.Cloud.Talent.V4Beta1.SearchJobsResponse.Types.MatchingJob> matchingJobs_ = new pbc::RepeatedField<global::Google.Cloud.Talent.V4Beta1.SearchJobsResponse.Types.MatchingJob>();
     /// <summary>
-    /// The Job entities that match the specified
-    /// [SearchJobsRequest][google.cloud.talent.v4beta1.SearchJobsRequest].
+    /// The Job entities that match the specified [SearchJobsRequest][google.cloud.talent.v4beta1.SearchJobsRequest].
     /// </summary>
     [global::System.Diagnostics.DebuggerNonUserCodeAttribute]
     public pbc::RepeatedField<global::Google.Cloud.Talent.V4Beta1.SearchJobsResponse.Types.MatchingJob> MatchingJobs {
@@ -2756,9 +3316,7 @@ namespace Google.Cloud.Talent.V4Beta1 {
     private readonly pbc::RepeatedField<global::Google.Cloud.Talent.V4Beta1.Location> locationFilters_ = new pbc::RepeatedField<global::Google.Cloud.Talent.V4Beta1.Location>();
     /// <summary>
     /// The location filters that the service applied to the specified query. If
-    /// any filters are lat-lng based, the
-    /// [Location.location_type][google.cloud.talent.v4beta1.Location.location_type]
-    /// is
+    /// any filters are lat-lng based, the [Location.location_type][google.cloud.talent.v4beta1.Location.location_type] is
     /// [Location.LocationType.LOCATION_TYPE_UNSPECIFIED][google.cloud.talent.v4beta1.Location.LocationType.LOCATION_TYPE_UNSPECIFIED].
     /// </summary>
     [global::System.Diagnostics.DebuggerNonUserCodeAttribute]
@@ -2773,8 +3331,7 @@ namespace Google.Cloud.Talent.V4Beta1 {
     /// An estimation of the number of jobs that match the specified query.
     ///
     /// This number isn't guaranteed to be accurate. For accurate results,
-    /// see
-    /// [SearchJobsRequest.require_precise_result_size][google.cloud.talent.v4beta1.SearchJobsRequest.require_precise_result_size].
+    /// see [SearchJobsRequest.require_precise_result_size][google.cloud.talent.v4beta1.SearchJobsRequest.require_precise_result_size].
     /// </summary>
     [global::System.Diagnostics.DebuggerNonUserCodeAttribute]
     public int EstimatedTotalSize {
@@ -2789,9 +3346,8 @@ namespace Google.Cloud.Talent.V4Beta1 {
     private int totalSize_;
     /// <summary>
     /// The precise result count, which is available only if the client set
-    /// [SearchJobsRequest.require_precise_result_size][google.cloud.talent.v4beta1.SearchJobsRequest.require_precise_result_size]
-    /// to `true`, or if the response is the last page of results. Otherwise, the
-    /// value is `-1`.
+    /// [SearchJobsRequest.require_precise_result_size][google.cloud.talent.v4beta1.SearchJobsRequest.require_precise_result_size] to `true`, or if the
+    /// response is the last page of results. Otherwise, the value is `-1`.
     /// </summary>
     [global::System.Diagnostics.DebuggerNonUserCodeAttribute]
     public int TotalSize {
@@ -2900,6 +3456,9 @@ namespace Google.Cloud.Talent.V4Beta1 {
 
     [global::System.Diagnostics.DebuggerNonUserCodeAttribute]
     public void WriteTo(pb::CodedOutputStream output) {
+    #if !GOOGLE_PROTOBUF_REFSTRUCT_COMPATIBILITY_MODE
+      output.WriteRawMessage(this);
+    #else
       matchingJobs_.WriteTo(output, _repeated_matchingJobs_codec);
       histogramQueryResults_.WriteTo(output, _repeated_histogramQueryResults_codec);
       if (NextPageToken.Length != 0) {
@@ -2930,7 +3489,44 @@ namespace Google.Cloud.Talent.V4Beta1 {
       if (_unknownFields != null) {
         _unknownFields.WriteTo(output);
       }
+    #endif
     }
+
+    #if !GOOGLE_PROTOBUF_REFSTRUCT_COMPATIBILITY_MODE
+    [global::System.Diagnostics.DebuggerNonUserCodeAttribute]
+    void pb::IBufferMessage.InternalWriteTo(ref pb::WriteContext output) {
+      matchingJobs_.WriteTo(ref output, _repeated_matchingJobs_codec);
+      histogramQueryResults_.WriteTo(ref output, _repeated_histogramQueryResults_codec);
+      if (NextPageToken.Length != 0) {
+        output.WriteRawTag(26);
+        output.WriteString(NextPageToken);
+      }
+      locationFilters_.WriteTo(ref output, _repeated_locationFilters_codec);
+      if (EstimatedTotalSize != 0) {
+        output.WriteRawTag(40);
+        output.WriteInt32(EstimatedTotalSize);
+      }
+      if (TotalSize != 0) {
+        output.WriteRawTag(48);
+        output.WriteInt32(TotalSize);
+      }
+      if (metadata_ != null) {
+        output.WriteRawTag(58);
+        output.WriteMessage(Metadata);
+      }
+      if (BroadenedQueryJobsCount != 0) {
+        output.WriteRawTag(64);
+        output.WriteInt32(BroadenedQueryJobsCount);
+      }
+      if (spellCorrection_ != null) {
+        output.WriteRawTag(74);
+        output.WriteMessage(SpellCorrection);
+      }
+      if (_unknownFields != null) {
+        _unknownFields.WriteTo(ref output);
+      }
+    }
+    #endif
 
     [global::System.Diagnostics.DebuggerNonUserCodeAttribute]
     public int CalculateSize() {
@@ -2999,6 +3595,9 @@ namespace Google.Cloud.Talent.V4Beta1 {
 
     [global::System.Diagnostics.DebuggerNonUserCodeAttribute]
     public void MergeFrom(pb::CodedInputStream input) {
+    #if !GOOGLE_PROTOBUF_REFSTRUCT_COMPATIBILITY_MODE
+      input.ReadRawMessage(this);
+    #else
       uint tag;
       while ((tag = input.ReadTag()) != 0) {
         switch(tag) {
@@ -3049,17 +3648,77 @@ namespace Google.Cloud.Talent.V4Beta1 {
           }
         }
       }
+    #endif
     }
+
+    #if !GOOGLE_PROTOBUF_REFSTRUCT_COMPATIBILITY_MODE
+    [global::System.Diagnostics.DebuggerNonUserCodeAttribute]
+    void pb::IBufferMessage.InternalMergeFrom(ref pb::ParseContext input) {
+      uint tag;
+      while ((tag = input.ReadTag()) != 0) {
+        switch(tag) {
+          default:
+            _unknownFields = pb::UnknownFieldSet.MergeFieldFrom(_unknownFields, ref input);
+            break;
+          case 10: {
+            matchingJobs_.AddEntriesFrom(ref input, _repeated_matchingJobs_codec);
+            break;
+          }
+          case 18: {
+            histogramQueryResults_.AddEntriesFrom(ref input, _repeated_histogramQueryResults_codec);
+            break;
+          }
+          case 26: {
+            NextPageToken = input.ReadString();
+            break;
+          }
+          case 34: {
+            locationFilters_.AddEntriesFrom(ref input, _repeated_locationFilters_codec);
+            break;
+          }
+          case 40: {
+            EstimatedTotalSize = input.ReadInt32();
+            break;
+          }
+          case 48: {
+            TotalSize = input.ReadInt32();
+            break;
+          }
+          case 58: {
+            if (metadata_ == null) {
+              Metadata = new global::Google.Cloud.Talent.V4Beta1.ResponseMetadata();
+            }
+            input.ReadMessage(Metadata);
+            break;
+          }
+          case 64: {
+            BroadenedQueryJobsCount = input.ReadInt32();
+            break;
+          }
+          case 74: {
+            if (spellCorrection_ == null) {
+              SpellCorrection = new global::Google.Cloud.Talent.V4Beta1.SpellingCorrection();
+            }
+            input.ReadMessage(SpellCorrection);
+            break;
+          }
+        }
+      }
+    }
+    #endif
 
     #region Nested types
     /// <summary>Container for nested types declared in the SearchJobsResponse message type.</summary>
     [global::System.Diagnostics.DebuggerNonUserCodeAttribute]
     public static partial class Types {
       /// <summary>
-      /// Job entry with metadata inside
-      /// [SearchJobsResponse][google.cloud.talent.v4beta1.SearchJobsResponse].
+      /// Job entry with metadata inside [SearchJobsResponse][google.cloud.talent.v4beta1.SearchJobsResponse].
       /// </summary>
-      public sealed partial class MatchingJob : pb::IMessage<MatchingJob> {
+      public sealed partial class MatchingJob : pb::IMessage<MatchingJob>
+      #if !GOOGLE_PROTOBUF_REFSTRUCT_COMPATIBILITY_MODE
+          , pb::IBufferMessage
+      #endif
+      {
         private static readonly pb::MessageParser<MatchingJob> _parser = new pb::MessageParser<MatchingJob>(() => new MatchingJob());
         private pb::UnknownFieldSet _unknownFields;
         [global::System.Diagnostics.DebuggerNonUserCodeAttribute]
@@ -3101,8 +3760,7 @@ namespace Google.Cloud.Talent.V4Beta1 {
         public const int JobFieldNumber = 1;
         private global::Google.Cloud.Talent.V4Beta1.Job job_;
         /// <summary>
-        /// Job resource that matches the specified
-        /// [SearchJobsRequest][google.cloud.talent.v4beta1.SearchJobsRequest].
+        /// Job resource that matches the specified [SearchJobsRequest][google.cloud.talent.v4beta1.SearchJobsRequest].
         /// </summary>
         [global::System.Diagnostics.DebuggerNonUserCodeAttribute]
         public global::Google.Cloud.Talent.V4Beta1.Job Job {
@@ -3131,10 +3789,9 @@ namespace Google.Cloud.Talent.V4Beta1 {
         public const int JobTitleSnippetFieldNumber = 3;
         private string jobTitleSnippet_ = "";
         /// <summary>
-        /// Contains snippets of text from the
-        /// [Job.title][google.cloud.talent.v4beta1.Job.title] field most closely
-        /// matching a search query's keywords, if available. The matching query
-        /// keywords are enclosed in HTML bold tags.
+        /// Contains snippets of text from the [Job.title][google.cloud.talent.v4beta1.Job.title] field most
+        /// closely matching a search query's keywords, if available. The matching
+        /// query keywords are enclosed in HTML bold tags.
         /// </summary>
         [global::System.Diagnostics.DebuggerNonUserCodeAttribute]
         public string JobTitleSnippet {
@@ -3148,12 +3805,10 @@ namespace Google.Cloud.Talent.V4Beta1 {
         public const int SearchTextSnippetFieldNumber = 4;
         private string searchTextSnippet_ = "";
         /// <summary>
-        /// Contains snippets of text from the
-        /// [Job.description][google.cloud.talent.v4beta1.Job.description] and
-        /// similar fields that most closely match a search query's keywords, if
-        /// available. All HTML tags in the original fields are stripped when
-        /// returned in this field, and matching query keywords are enclosed in HTML
-        /// bold tags.
+        /// Contains snippets of text from the [Job.description][google.cloud.talent.v4beta1.Job.description] and similar
+        /// fields that most closely match a search query's keywords, if available.
+        /// All HTML tags in the original fields are stripped when returned in this
+        /// field, and matching query keywords are enclosed in HTML bold tags.
         /// </summary>
         [global::System.Diagnostics.DebuggerNonUserCodeAttribute]
         public string SearchTextSnippet {
@@ -3220,6 +3875,9 @@ namespace Google.Cloud.Talent.V4Beta1 {
 
         [global::System.Diagnostics.DebuggerNonUserCodeAttribute]
         public void WriteTo(pb::CodedOutputStream output) {
+        #if !GOOGLE_PROTOBUF_REFSTRUCT_COMPATIBILITY_MODE
+          output.WriteRawMessage(this);
+        #else
           if (job_ != null) {
             output.WriteRawTag(10);
             output.WriteMessage(Job);
@@ -3243,7 +3901,37 @@ namespace Google.Cloud.Talent.V4Beta1 {
           if (_unknownFields != null) {
             _unknownFields.WriteTo(output);
           }
+        #endif
         }
+
+        #if !GOOGLE_PROTOBUF_REFSTRUCT_COMPATIBILITY_MODE
+        [global::System.Diagnostics.DebuggerNonUserCodeAttribute]
+        void pb::IBufferMessage.InternalWriteTo(ref pb::WriteContext output) {
+          if (job_ != null) {
+            output.WriteRawTag(10);
+            output.WriteMessage(Job);
+          }
+          if (JobSummary.Length != 0) {
+            output.WriteRawTag(18);
+            output.WriteString(JobSummary);
+          }
+          if (JobTitleSnippet.Length != 0) {
+            output.WriteRawTag(26);
+            output.WriteString(JobTitleSnippet);
+          }
+          if (SearchTextSnippet.Length != 0) {
+            output.WriteRawTag(34);
+            output.WriteString(SearchTextSnippet);
+          }
+          if (commuteInfo_ != null) {
+            output.WriteRawTag(42);
+            output.WriteMessage(CommuteInfo);
+          }
+          if (_unknownFields != null) {
+            _unknownFields.WriteTo(ref output);
+          }
+        }
+        #endif
 
         [global::System.Diagnostics.DebuggerNonUserCodeAttribute]
         public int CalculateSize() {
@@ -3300,6 +3988,9 @@ namespace Google.Cloud.Talent.V4Beta1 {
 
         [global::System.Diagnostics.DebuggerNonUserCodeAttribute]
         public void MergeFrom(pb::CodedInputStream input) {
+        #if !GOOGLE_PROTOBUF_REFSTRUCT_COMPATIBILITY_MODE
+          input.ReadRawMessage(this);
+        #else
           uint tag;
           while ((tag = input.ReadTag()) != 0) {
             switch(tag) {
@@ -3334,14 +4025,59 @@ namespace Google.Cloud.Talent.V4Beta1 {
               }
             }
           }
+        #endif
         }
+
+        #if !GOOGLE_PROTOBUF_REFSTRUCT_COMPATIBILITY_MODE
+        [global::System.Diagnostics.DebuggerNonUserCodeAttribute]
+        void pb::IBufferMessage.InternalMergeFrom(ref pb::ParseContext input) {
+          uint tag;
+          while ((tag = input.ReadTag()) != 0) {
+            switch(tag) {
+              default:
+                _unknownFields = pb::UnknownFieldSet.MergeFieldFrom(_unknownFields, ref input);
+                break;
+              case 10: {
+                if (job_ == null) {
+                  Job = new global::Google.Cloud.Talent.V4Beta1.Job();
+                }
+                input.ReadMessage(Job);
+                break;
+              }
+              case 18: {
+                JobSummary = input.ReadString();
+                break;
+              }
+              case 26: {
+                JobTitleSnippet = input.ReadString();
+                break;
+              }
+              case 34: {
+                SearchTextSnippet = input.ReadString();
+                break;
+              }
+              case 42: {
+                if (commuteInfo_ == null) {
+                  CommuteInfo = new global::Google.Cloud.Talent.V4Beta1.SearchJobsResponse.Types.CommuteInfo();
+                }
+                input.ReadMessage(CommuteInfo);
+                break;
+              }
+            }
+          }
+        }
+        #endif
 
       }
 
       /// <summary>
       /// Commute details related to this job.
       /// </summary>
-      public sealed partial class CommuteInfo : pb::IMessage<CommuteInfo> {
+      public sealed partial class CommuteInfo : pb::IMessage<CommuteInfo>
+      #if !GOOGLE_PROTOBUF_REFSTRUCT_COMPATIBILITY_MODE
+          , pb::IBufferMessage
+      #endif
+      {
         private static readonly pb::MessageParser<CommuteInfo> _parser = new pb::MessageParser<CommuteInfo>(() => new CommuteInfo());
         private pb::UnknownFieldSet _unknownFields;
         [global::System.Diagnostics.DebuggerNonUserCodeAttribute]
@@ -3443,6 +4179,9 @@ namespace Google.Cloud.Talent.V4Beta1 {
 
         [global::System.Diagnostics.DebuggerNonUserCodeAttribute]
         public void WriteTo(pb::CodedOutputStream output) {
+        #if !GOOGLE_PROTOBUF_REFSTRUCT_COMPATIBILITY_MODE
+          output.WriteRawMessage(this);
+        #else
           if (jobLocation_ != null) {
             output.WriteRawTag(10);
             output.WriteMessage(JobLocation);
@@ -3454,7 +4193,25 @@ namespace Google.Cloud.Talent.V4Beta1 {
           if (_unknownFields != null) {
             _unknownFields.WriteTo(output);
           }
+        #endif
         }
+
+        #if !GOOGLE_PROTOBUF_REFSTRUCT_COMPATIBILITY_MODE
+        [global::System.Diagnostics.DebuggerNonUserCodeAttribute]
+        void pb::IBufferMessage.InternalWriteTo(ref pb::WriteContext output) {
+          if (jobLocation_ != null) {
+            output.WriteRawTag(10);
+            output.WriteMessage(JobLocation);
+          }
+          if (travelDuration_ != null) {
+            output.WriteRawTag(18);
+            output.WriteMessage(TravelDuration);
+          }
+          if (_unknownFields != null) {
+            _unknownFields.WriteTo(ref output);
+          }
+        }
+        #endif
 
         [global::System.Diagnostics.DebuggerNonUserCodeAttribute]
         public int CalculateSize() {
@@ -3493,6 +4250,9 @@ namespace Google.Cloud.Talent.V4Beta1 {
 
         [global::System.Diagnostics.DebuggerNonUserCodeAttribute]
         public void MergeFrom(pb::CodedInputStream input) {
+        #if !GOOGLE_PROTOBUF_REFSTRUCT_COMPATIBILITY_MODE
+          input.ReadRawMessage(this);
+        #else
           uint tag;
           while ((tag = input.ReadTag()) != 0) {
             switch(tag) {
@@ -3515,7 +4275,36 @@ namespace Google.Cloud.Talent.V4Beta1 {
               }
             }
           }
+        #endif
         }
+
+        #if !GOOGLE_PROTOBUF_REFSTRUCT_COMPATIBILITY_MODE
+        [global::System.Diagnostics.DebuggerNonUserCodeAttribute]
+        void pb::IBufferMessage.InternalMergeFrom(ref pb::ParseContext input) {
+          uint tag;
+          while ((tag = input.ReadTag()) != 0) {
+            switch(tag) {
+              default:
+                _unknownFields = pb::UnknownFieldSet.MergeFieldFrom(_unknownFields, ref input);
+                break;
+              case 10: {
+                if (jobLocation_ == null) {
+                  JobLocation = new global::Google.Cloud.Talent.V4Beta1.Location();
+                }
+                input.ReadMessage(JobLocation);
+                break;
+              }
+              case 18: {
+                if (travelDuration_ == null) {
+                  TravelDuration = new global::Google.Protobuf.WellKnownTypes.Duration();
+                }
+                input.ReadMessage(TravelDuration);
+                break;
+              }
+            }
+          }
+        }
+        #endif
 
       }
 
@@ -3527,7 +4316,11 @@ namespace Google.Cloud.Talent.V4Beta1 {
   /// <summary>
   /// Request to create a batch of jobs.
   /// </summary>
-  public sealed partial class BatchCreateJobsRequest : pb::IMessage<BatchCreateJobsRequest> {
+  public sealed partial class BatchCreateJobsRequest : pb::IMessage<BatchCreateJobsRequest>
+  #if !GOOGLE_PROTOBUF_REFSTRUCT_COMPATIBILITY_MODE
+      , pb::IBufferMessage
+  #endif
+  {
     private static readonly pb::MessageParser<BatchCreateJobsRequest> _parser = new pb::MessageParser<BatchCreateJobsRequest>(() => new BatchCreateJobsRequest());
     private pb::UnknownFieldSet _unknownFields;
     [global::System.Diagnostics.DebuggerNonUserCodeAttribute]
@@ -3629,6 +4422,9 @@ namespace Google.Cloud.Talent.V4Beta1 {
 
     [global::System.Diagnostics.DebuggerNonUserCodeAttribute]
     public void WriteTo(pb::CodedOutputStream output) {
+    #if !GOOGLE_PROTOBUF_REFSTRUCT_COMPATIBILITY_MODE
+      output.WriteRawMessage(this);
+    #else
       if (Parent.Length != 0) {
         output.WriteRawTag(10);
         output.WriteString(Parent);
@@ -3637,7 +4433,22 @@ namespace Google.Cloud.Talent.V4Beta1 {
       if (_unknownFields != null) {
         _unknownFields.WriteTo(output);
       }
+    #endif
     }
+
+    #if !GOOGLE_PROTOBUF_REFSTRUCT_COMPATIBILITY_MODE
+    [global::System.Diagnostics.DebuggerNonUserCodeAttribute]
+    void pb::IBufferMessage.InternalWriteTo(ref pb::WriteContext output) {
+      if (Parent.Length != 0) {
+        output.WriteRawTag(10);
+        output.WriteString(Parent);
+      }
+      jobs_.WriteTo(ref output, _repeated_jobs_codec);
+      if (_unknownFields != null) {
+        _unknownFields.WriteTo(ref output);
+      }
+    }
+    #endif
 
     [global::System.Diagnostics.DebuggerNonUserCodeAttribute]
     public int CalculateSize() {
@@ -3666,6 +4477,9 @@ namespace Google.Cloud.Talent.V4Beta1 {
 
     [global::System.Diagnostics.DebuggerNonUserCodeAttribute]
     public void MergeFrom(pb::CodedInputStream input) {
+    #if !GOOGLE_PROTOBUF_REFSTRUCT_COMPATIBILITY_MODE
+      input.ReadRawMessage(this);
+    #else
       uint tag;
       while ((tag = input.ReadTag()) != 0) {
         switch(tag) {
@@ -3682,14 +4496,41 @@ namespace Google.Cloud.Talent.V4Beta1 {
           }
         }
       }
+    #endif
     }
+
+    #if !GOOGLE_PROTOBUF_REFSTRUCT_COMPATIBILITY_MODE
+    [global::System.Diagnostics.DebuggerNonUserCodeAttribute]
+    void pb::IBufferMessage.InternalMergeFrom(ref pb::ParseContext input) {
+      uint tag;
+      while ((tag = input.ReadTag()) != 0) {
+        switch(tag) {
+          default:
+            _unknownFields = pb::UnknownFieldSet.MergeFieldFrom(_unknownFields, ref input);
+            break;
+          case 10: {
+            Parent = input.ReadString();
+            break;
+          }
+          case 18: {
+            jobs_.AddEntriesFrom(ref input, _repeated_jobs_codec);
+            break;
+          }
+        }
+      }
+    }
+    #endif
 
   }
 
   /// <summary>
   /// Request to update a batch of jobs.
   /// </summary>
-  public sealed partial class BatchUpdateJobsRequest : pb::IMessage<BatchUpdateJobsRequest> {
+  public sealed partial class BatchUpdateJobsRequest : pb::IMessage<BatchUpdateJobsRequest>
+  #if !GOOGLE_PROTOBUF_REFSTRUCT_COMPATIBILITY_MODE
+      , pb::IBufferMessage
+  #endif
+  {
     private static readonly pb::MessageParser<BatchUpdateJobsRequest> _parser = new pb::MessageParser<BatchUpdateJobsRequest>(() => new BatchUpdateJobsRequest());
     private pb::UnknownFieldSet _unknownFields;
     [global::System.Diagnostics.DebuggerNonUserCodeAttribute]
@@ -3763,22 +4604,17 @@ namespace Google.Cloud.Talent.V4Beta1 {
     /// Strongly recommended for the best service experience. Be aware that it will
     /// also increase latency when checking the status of a batch operation.
     ///
-    /// If
-    /// [update_mask][google.cloud.talent.v4beta1.BatchUpdateJobsRequest.update_mask]
-    /// is provided, only the specified fields in
-    /// [Job][google.cloud.talent.v4beta1.Job] are updated. Otherwise all the
-    /// fields are updated.
+    /// If [update_mask][google.cloud.talent.v4beta1.BatchUpdateJobsRequest.update_mask] is provided, only the specified fields in
+    /// [Job][google.cloud.talent.v4beta1.Job] are updated. Otherwise all the fields are updated.
     ///
     /// A field mask to restrict the fields that are updated. Only
     /// top level fields of [Job][google.cloud.talent.v4beta1.Job] are supported.
     ///
-    /// If
-    /// [update_mask][google.cloud.talent.v4beta1.BatchUpdateJobsRequest.update_mask]
-    /// is provided, The [Job][google.cloud.talent.v4beta1.Job] inside
+    /// If [update_mask][google.cloud.talent.v4beta1.BatchUpdateJobsRequest.update_mask] is provided, The [Job][google.cloud.talent.v4beta1.Job] inside
     /// [JobResult][google.cloud.talent.v4beta1.JobOperationResult.JobResult]
     /// will only contains fields that is updated, plus the Id of the Job.
-    /// Otherwise,  [Job][google.cloud.talent.v4beta1.Job] will include all fields,
-    /// which can yield a very large response.
+    /// Otherwise,  [Job][google.cloud.talent.v4beta1.Job] will include all fields, which can yield a very
+    /// large response.
     /// </summary>
     [global::System.Diagnostics.DebuggerNonUserCodeAttribute]
     public global::Google.Protobuf.WellKnownTypes.FieldMask UpdateMask {
@@ -3826,6 +4662,9 @@ namespace Google.Cloud.Talent.V4Beta1 {
 
     [global::System.Diagnostics.DebuggerNonUserCodeAttribute]
     public void WriteTo(pb::CodedOutputStream output) {
+    #if !GOOGLE_PROTOBUF_REFSTRUCT_COMPATIBILITY_MODE
+      output.WriteRawMessage(this);
+    #else
       if (Parent.Length != 0) {
         output.WriteRawTag(10);
         output.WriteString(Parent);
@@ -3838,7 +4677,26 @@ namespace Google.Cloud.Talent.V4Beta1 {
       if (_unknownFields != null) {
         _unknownFields.WriteTo(output);
       }
+    #endif
     }
+
+    #if !GOOGLE_PROTOBUF_REFSTRUCT_COMPATIBILITY_MODE
+    [global::System.Diagnostics.DebuggerNonUserCodeAttribute]
+    void pb::IBufferMessage.InternalWriteTo(ref pb::WriteContext output) {
+      if (Parent.Length != 0) {
+        output.WriteRawTag(10);
+        output.WriteString(Parent);
+      }
+      jobs_.WriteTo(ref output, _repeated_jobs_codec);
+      if (updateMask_ != null) {
+        output.WriteRawTag(26);
+        output.WriteMessage(UpdateMask);
+      }
+      if (_unknownFields != null) {
+        _unknownFields.WriteTo(ref output);
+      }
+    }
+    #endif
 
     [global::System.Diagnostics.DebuggerNonUserCodeAttribute]
     public int CalculateSize() {
@@ -3876,6 +4734,9 @@ namespace Google.Cloud.Talent.V4Beta1 {
 
     [global::System.Diagnostics.DebuggerNonUserCodeAttribute]
     public void MergeFrom(pb::CodedInputStream input) {
+    #if !GOOGLE_PROTOBUF_REFSTRUCT_COMPATIBILITY_MODE
+      input.ReadRawMessage(this);
+    #else
       uint tag;
       while ((tag = input.ReadTag()) != 0) {
         switch(tag) {
@@ -3899,20 +4760,50 @@ namespace Google.Cloud.Talent.V4Beta1 {
           }
         }
       }
+    #endif
     }
+
+    #if !GOOGLE_PROTOBUF_REFSTRUCT_COMPATIBILITY_MODE
+    [global::System.Diagnostics.DebuggerNonUserCodeAttribute]
+    void pb::IBufferMessage.InternalMergeFrom(ref pb::ParseContext input) {
+      uint tag;
+      while ((tag = input.ReadTag()) != 0) {
+        switch(tag) {
+          default:
+            _unknownFields = pb::UnknownFieldSet.MergeFieldFrom(_unknownFields, ref input);
+            break;
+          case 10: {
+            Parent = input.ReadString();
+            break;
+          }
+          case 18: {
+            jobs_.AddEntriesFrom(ref input, _repeated_jobs_codec);
+            break;
+          }
+          case 26: {
+            if (updateMask_ == null) {
+              UpdateMask = new global::Google.Protobuf.WellKnownTypes.FieldMask();
+            }
+            input.ReadMessage(UpdateMask);
+            break;
+          }
+        }
+      }
+    }
+    #endif
 
   }
 
   /// <summary>
-  /// The result of
-  /// [JobService.BatchCreateJobs][google.cloud.talent.v4beta1.JobService.BatchCreateJobs]
-  /// or
-  /// [JobService.BatchUpdateJobs][google.cloud.talent.v4beta1.JobService.BatchUpdateJobs]
-  /// APIs. It's used to replace
-  /// [google.longrunning.Operation.response][google.longrunning.Operation.response]
-  /// in case of success.
+  /// The result of [JobService.BatchCreateJobs][google.cloud.talent.v4beta1.JobService.BatchCreateJobs] or
+  /// [JobService.BatchUpdateJobs][google.cloud.talent.v4beta1.JobService.BatchUpdateJobs] APIs. It's used to
+  /// replace [google.longrunning.Operation.response][google.longrunning.Operation.response] in case of success.
   /// </summary>
-  public sealed partial class JobOperationResult : pb::IMessage<JobOperationResult> {
+  public sealed partial class JobOperationResult : pb::IMessage<JobOperationResult>
+  #if !GOOGLE_PROTOBUF_REFSTRUCT_COMPATIBILITY_MODE
+      , pb::IBufferMessage
+  #endif
+  {
     private static readonly pb::MessageParser<JobOperationResult> _parser = new pb::MessageParser<JobOperationResult>(() => new JobOperationResult());
     private pb::UnknownFieldSet _unknownFields;
     [global::System.Diagnostics.DebuggerNonUserCodeAttribute]
@@ -3994,11 +4885,25 @@ namespace Google.Cloud.Talent.V4Beta1 {
 
     [global::System.Diagnostics.DebuggerNonUserCodeAttribute]
     public void WriteTo(pb::CodedOutputStream output) {
+    #if !GOOGLE_PROTOBUF_REFSTRUCT_COMPATIBILITY_MODE
+      output.WriteRawMessage(this);
+    #else
       jobResults_.WriteTo(output, _repeated_jobResults_codec);
       if (_unknownFields != null) {
         _unknownFields.WriteTo(output);
       }
+    #endif
     }
+
+    #if !GOOGLE_PROTOBUF_REFSTRUCT_COMPATIBILITY_MODE
+    [global::System.Diagnostics.DebuggerNonUserCodeAttribute]
+    void pb::IBufferMessage.InternalWriteTo(ref pb::WriteContext output) {
+      jobResults_.WriteTo(ref output, _repeated_jobResults_codec);
+      if (_unknownFields != null) {
+        _unknownFields.WriteTo(ref output);
+      }
+    }
+    #endif
 
     [global::System.Diagnostics.DebuggerNonUserCodeAttribute]
     public int CalculateSize() {
@@ -4021,6 +4926,9 @@ namespace Google.Cloud.Talent.V4Beta1 {
 
     [global::System.Diagnostics.DebuggerNonUserCodeAttribute]
     public void MergeFrom(pb::CodedInputStream input) {
+    #if !GOOGLE_PROTOBUF_REFSTRUCT_COMPATIBILITY_MODE
+      input.ReadRawMessage(this);
+    #else
       uint tag;
       while ((tag = input.ReadTag()) != 0) {
         switch(tag) {
@@ -4033,7 +4941,26 @@ namespace Google.Cloud.Talent.V4Beta1 {
           }
         }
       }
+    #endif
     }
+
+    #if !GOOGLE_PROTOBUF_REFSTRUCT_COMPATIBILITY_MODE
+    [global::System.Diagnostics.DebuggerNonUserCodeAttribute]
+    void pb::IBufferMessage.InternalMergeFrom(ref pb::ParseContext input) {
+      uint tag;
+      while ((tag = input.ReadTag()) != 0) {
+        switch(tag) {
+          default:
+            _unknownFields = pb::UnknownFieldSet.MergeFieldFrom(_unknownFields, ref input);
+            break;
+          case 10: {
+            jobResults_.AddEntriesFrom(ref input, _repeated_jobResults_codec);
+            break;
+          }
+        }
+      }
+    }
+    #endif
 
     #region Nested types
     /// <summary>Container for nested types declared in the JobOperationResult message type.</summary>
@@ -4042,7 +4969,11 @@ namespace Google.Cloud.Talent.V4Beta1 {
       /// <summary>
       /// Mutation result of a job.
       /// </summary>
-      public sealed partial class JobResult : pb::IMessage<JobResult> {
+      public sealed partial class JobResult : pb::IMessage<JobResult>
+      #if !GOOGLE_PROTOBUF_REFSTRUCT_COMPATIBILITY_MODE
+          , pb::IBufferMessage
+      #endif
+      {
         private static readonly pb::MessageParser<JobResult> _parser = new pb::MessageParser<JobResult>(() => new JobResult());
         private pb::UnknownFieldSet _unknownFields;
         [global::System.Diagnostics.DebuggerNonUserCodeAttribute]
@@ -4081,13 +5012,10 @@ namespace Google.Cloud.Talent.V4Beta1 {
         public const int JobFieldNumber = 1;
         private global::Google.Cloud.Talent.V4Beta1.Job job_;
         /// <summary>
-        /// Here [Job][google.cloud.talent.v4beta1.Job] only contains basic
-        /// information including [name][google.cloud.talent.v4beta1.Job.name],
-        /// [company][google.cloud.talent.v4beta1.Job.company],
-        /// [language_code][google.cloud.talent.v4beta1.Job.language_code] and
-        /// [requisition_id][google.cloud.talent.v4beta1.Job.requisition_id], use
-        /// getJob method to retrieve detailed information of the created/updated
-        /// job.
+        /// Here [Job][google.cloud.talent.v4beta1.Job] only contains basic information including [name][google.cloud.talent.v4beta1.Job.name],
+        /// [company][google.cloud.talent.v4beta1.Job.company], [language_code][google.cloud.talent.v4beta1.Job.language_code]
+        /// and [requisition_id][google.cloud.talent.v4beta1.Job.requisition_id], use getJob method to retrieve
+        /// detailed information of the created/updated job.
         /// </summary>
         [global::System.Diagnostics.DebuggerNonUserCodeAttribute]
         public global::Google.Cloud.Talent.V4Beta1.Job Job {
@@ -4102,9 +5030,7 @@ namespace Google.Cloud.Talent.V4Beta1 {
         private global::Google.Rpc.Status status_;
         /// <summary>
         /// The status of the job processed. This field is populated if the
-        /// processing of the
-        /// [job][google.cloud.talent.v4beta1.JobOperationResult.JobResult.job]
-        /// fails.
+        /// processing of the [job][google.cloud.talent.v4beta1.JobOperationResult.JobResult.job] fails.
         /// </summary>
         [global::System.Diagnostics.DebuggerNonUserCodeAttribute]
         public global::Google.Rpc.Status Status {
@@ -4150,6 +5076,9 @@ namespace Google.Cloud.Talent.V4Beta1 {
 
         [global::System.Diagnostics.DebuggerNonUserCodeAttribute]
         public void WriteTo(pb::CodedOutputStream output) {
+        #if !GOOGLE_PROTOBUF_REFSTRUCT_COMPATIBILITY_MODE
+          output.WriteRawMessage(this);
+        #else
           if (job_ != null) {
             output.WriteRawTag(10);
             output.WriteMessage(Job);
@@ -4161,7 +5090,25 @@ namespace Google.Cloud.Talent.V4Beta1 {
           if (_unknownFields != null) {
             _unknownFields.WriteTo(output);
           }
+        #endif
         }
+
+        #if !GOOGLE_PROTOBUF_REFSTRUCT_COMPATIBILITY_MODE
+        [global::System.Diagnostics.DebuggerNonUserCodeAttribute]
+        void pb::IBufferMessage.InternalWriteTo(ref pb::WriteContext output) {
+          if (job_ != null) {
+            output.WriteRawTag(10);
+            output.WriteMessage(Job);
+          }
+          if (status_ != null) {
+            output.WriteRawTag(18);
+            output.WriteMessage(Status);
+          }
+          if (_unknownFields != null) {
+            _unknownFields.WriteTo(ref output);
+          }
+        }
+        #endif
 
         [global::System.Diagnostics.DebuggerNonUserCodeAttribute]
         public int CalculateSize() {
@@ -4200,6 +5147,9 @@ namespace Google.Cloud.Talent.V4Beta1 {
 
         [global::System.Diagnostics.DebuggerNonUserCodeAttribute]
         public void MergeFrom(pb::CodedInputStream input) {
+        #if !GOOGLE_PROTOBUF_REFSTRUCT_COMPATIBILITY_MODE
+          input.ReadRawMessage(this);
+        #else
           uint tag;
           while ((tag = input.ReadTag()) != 0) {
             switch(tag) {
@@ -4222,7 +5172,36 @@ namespace Google.Cloud.Talent.V4Beta1 {
               }
             }
           }
+        #endif
         }
+
+        #if !GOOGLE_PROTOBUF_REFSTRUCT_COMPATIBILITY_MODE
+        [global::System.Diagnostics.DebuggerNonUserCodeAttribute]
+        void pb::IBufferMessage.InternalMergeFrom(ref pb::ParseContext input) {
+          uint tag;
+          while ((tag = input.ReadTag()) != 0) {
+            switch(tag) {
+              default:
+                _unknownFields = pb::UnknownFieldSet.MergeFieldFrom(_unknownFields, ref input);
+                break;
+              case 10: {
+                if (job_ == null) {
+                  Job = new global::Google.Cloud.Talent.V4Beta1.Job();
+                }
+                input.ReadMessage(Job);
+                break;
+              }
+              case 18: {
+                if (status_ == null) {
+                  Status = new global::Google.Rpc.Status();
+                }
+                input.ReadMessage(Status);
+                break;
+              }
+            }
+          }
+        }
+        #endif
 
       }
 

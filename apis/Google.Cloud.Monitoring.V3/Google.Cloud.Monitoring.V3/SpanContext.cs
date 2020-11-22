@@ -26,15 +26,15 @@ namespace Google.Cloud.Monitoring.V3 {
           string.Concat(
             "Cidnb29nbGUvbW9uaXRvcmluZy92My9zcGFuX2NvbnRleHQucHJvdG8SFGdv",
             "b2dsZS5tb25pdG9yaW5nLnYzIiAKC1NwYW5Db250ZXh0EhEKCXNwYW5fbmFt",
-            "ZRgBIAEoCUKoAQoYY29tLmdvb2dsZS5tb25pdG9yaW5nLnYzQhBTcGFuQ29u",
+            "ZRgBIAEoCULIAQoYY29tLmdvb2dsZS5tb25pdG9yaW5nLnYzQhBTcGFuQ29u",
             "dGV4dFByb3RvUAFaPmdvb2dsZS5nb2xhbmcub3JnL2dlbnByb3RvL2dvb2ds",
             "ZWFwaXMvbW9uaXRvcmluZy92Mzttb25pdG9yaW5nqgIaR29vZ2xlLkNsb3Vk",
-            "Lk1vbml0b3JpbmcuVjPKAhpHb29nbGVcQ2xvdWRcTW9uaXRvcmluZ1xWM2IG",
-            "cHJvdG8z"));
+            "Lk1vbml0b3JpbmcuVjPKAhpHb29nbGVcQ2xvdWRcTW9uaXRvcmluZ1xWM+oC",
+            "HUdvb2dsZTo6Q2xvdWQ6Ok1vbml0b3Jpbmc6OlYzYgZwcm90bzM="));
       descriptor = pbr::FileDescriptor.FromGeneratedCode(descriptorData,
           new pbr::FileDescriptor[] { },
-          new pbr::GeneratedClrTypeInfo(null, new pbr::GeneratedClrTypeInfo[] {
-            new pbr::GeneratedClrTypeInfo(typeof(global::Google.Cloud.Monitoring.V3.SpanContext), global::Google.Cloud.Monitoring.V3.SpanContext.Parser, new[]{ "SpanName" }, null, null, null)
+          new pbr::GeneratedClrTypeInfo(null, null, new pbr::GeneratedClrTypeInfo[] {
+            new pbr::GeneratedClrTypeInfo(typeof(global::Google.Cloud.Monitoring.V3.SpanContext), global::Google.Cloud.Monitoring.V3.SpanContext.Parser, new[]{ "SpanName" }, null, null, null, null)
           }));
     }
     #endregion
@@ -42,13 +42,19 @@ namespace Google.Cloud.Monitoring.V3 {
   }
   #region Messages
   /// <summary>
-  /// The context of a span, attached to google.api.Distribution.Exemplars
-  /// in google.api.Distribution values during aggregation.
+  /// The context of a span, attached to
+  /// [Exemplars][google.api.Distribution.Exemplars]
+  /// in [Distribution][google.api.Distribution] values during aggregation.
   ///
   /// It contains the name of a span with format:
-  ///     projects/[PROJECT_ID]/traces/[TRACE_ID]/spans/[SPAN_ID]
+  ///
+  ///     projects/[PROJECT_ID_OR_NUMBER]/traces/[TRACE_ID]/spans/[SPAN_ID]
   /// </summary>
-  public sealed partial class SpanContext : pb::IMessage<SpanContext> {
+  public sealed partial class SpanContext : pb::IMessage<SpanContext>
+  #if !GOOGLE_PROTOBUF_REFSTRUCT_COMPATIBILITY_MODE
+      , pb::IBufferMessage
+  #endif
+  {
     private static readonly pb::MessageParser<SpanContext> _parser = new pb::MessageParser<SpanContext>(() => new SpanContext());
     private pb::UnknownFieldSet _unknownFields;
     [global::System.Diagnostics.DebuggerNonUserCodeAttribute]
@@ -86,14 +92,14 @@ namespace Google.Cloud.Monitoring.V3 {
     public const int SpanNameFieldNumber = 1;
     private string spanName_ = "";
     /// <summary>
-    /// The resource name of the span in the following format:
+    /// The resource name of the span. The format is:
     ///
-    ///     projects/[PROJECT_ID]/traces/[TRACE_ID]/spans/[SPAN_ID]
+    ///     projects/[PROJECT_ID_OR_NUMBER]/traces/[TRACE_ID]/spans/[SPAN_ID]
     ///
-    /// [TRACE_ID] is a unique identifier for a trace within a project;
+    /// `[TRACE_ID]` is a unique identifier for a trace within a project;
     /// it is a 32-character hexadecimal encoding of a 16-byte array.
     ///
-    /// [SPAN_ID] is a unique identifier for a span within a trace; it
+    /// `[SPAN_ID]` is a unique identifier for a span within a trace; it
     /// is a 16-character hexadecimal encoding of an 8-byte array.
     /// </summary>
     [global::System.Diagnostics.DebuggerNonUserCodeAttribute]
@@ -138,6 +144,9 @@ namespace Google.Cloud.Monitoring.V3 {
 
     [global::System.Diagnostics.DebuggerNonUserCodeAttribute]
     public void WriteTo(pb::CodedOutputStream output) {
+    #if !GOOGLE_PROTOBUF_REFSTRUCT_COMPATIBILITY_MODE
+      output.WriteRawMessage(this);
+    #else
       if (SpanName.Length != 0) {
         output.WriteRawTag(10);
         output.WriteString(SpanName);
@@ -145,7 +154,21 @@ namespace Google.Cloud.Monitoring.V3 {
       if (_unknownFields != null) {
         _unknownFields.WriteTo(output);
       }
+    #endif
     }
+
+    #if !GOOGLE_PROTOBUF_REFSTRUCT_COMPATIBILITY_MODE
+    [global::System.Diagnostics.DebuggerNonUserCodeAttribute]
+    void pb::IBufferMessage.InternalWriteTo(ref pb::WriteContext output) {
+      if (SpanName.Length != 0) {
+        output.WriteRawTag(10);
+        output.WriteString(SpanName);
+      }
+      if (_unknownFields != null) {
+        _unknownFields.WriteTo(ref output);
+      }
+    }
+    #endif
 
     [global::System.Diagnostics.DebuggerNonUserCodeAttribute]
     public int CalculateSize() {
@@ -172,6 +195,9 @@ namespace Google.Cloud.Monitoring.V3 {
 
     [global::System.Diagnostics.DebuggerNonUserCodeAttribute]
     public void MergeFrom(pb::CodedInputStream input) {
+    #if !GOOGLE_PROTOBUF_REFSTRUCT_COMPATIBILITY_MODE
+      input.ReadRawMessage(this);
+    #else
       uint tag;
       while ((tag = input.ReadTag()) != 0) {
         switch(tag) {
@@ -184,7 +210,26 @@ namespace Google.Cloud.Monitoring.V3 {
           }
         }
       }
+    #endif
     }
+
+    #if !GOOGLE_PROTOBUF_REFSTRUCT_COMPATIBILITY_MODE
+    [global::System.Diagnostics.DebuggerNonUserCodeAttribute]
+    void pb::IBufferMessage.InternalMergeFrom(ref pb::ParseContext input) {
+      uint tag;
+      while ((tag = input.ReadTag()) != 0) {
+        switch(tag) {
+          default:
+            _unknownFields = pb::UnknownFieldSet.MergeFieldFrom(_unknownFields, ref input);
+            break;
+          case 10: {
+            SpanName = input.ReadString();
+            break;
+          }
+        }
+      }
+    }
+    #endif
 
   }
 

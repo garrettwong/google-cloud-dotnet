@@ -26,66 +26,76 @@ namespace Google.Cloud.Monitoring.V3 {
           string.Concat(
             "Cihnb29nbGUvbW9uaXRvcmluZy92My9ncm91cF9zZXJ2aWNlLnByb3RvEhRn",
             "b29nbGUubW9uaXRvcmluZy52MxocZ29vZ2xlL2FwaS9hbm5vdGF0aW9ucy5w",
-            "cm90bxojZ29vZ2xlL2FwaS9tb25pdG9yZWRfcmVzb3VyY2UucHJvdG8aIWdv",
-            "b2dsZS9tb25pdG9yaW5nL3YzL2NvbW1vbi5wcm90bxogZ29vZ2xlL21vbml0",
-            "b3JpbmcvdjMvZ3JvdXAucHJvdG8aG2dvb2dsZS9wcm90b2J1Zi9lbXB0eS5w",
-            "cm90bxoXZ29vZ2xlL2FwaS9jbGllbnQucHJvdG8irQEKEUxpc3RHcm91cHNS",
-            "ZXF1ZXN0EgwKBG5hbWUYByABKAkSGwoRY2hpbGRyZW5fb2ZfZ3JvdXAYAiAB",
-            "KAlIABIcChJhbmNlc3RvcnNfb2ZfZ3JvdXAYAyABKAlIABIeChRkZXNjZW5k",
-            "YW50c19vZl9ncm91cBgEIAEoCUgAEhEKCXBhZ2Vfc2l6ZRgFIAEoBRISCgpw",
-            "YWdlX3Rva2VuGAYgASgJQggKBmZpbHRlciJZChJMaXN0R3JvdXBzUmVzcG9u",
-            "c2USKgoFZ3JvdXAYASADKAsyGy5nb29nbGUubW9uaXRvcmluZy52My5Hcm91",
-            "cBIXCg9uZXh0X3BhZ2VfdG9rZW4YAiABKAkiHwoPR2V0R3JvdXBSZXF1ZXN0",
-            "EgwKBG5hbWUYAyABKAkiZQoSQ3JlYXRlR3JvdXBSZXF1ZXN0EgwKBG5hbWUY",
-            "BCABKAkSKgoFZ3JvdXAYAiABKAsyGy5nb29nbGUubW9uaXRvcmluZy52My5H",
-            "cm91cBIVCg12YWxpZGF0ZV9vbmx5GAMgASgIIlcKElVwZGF0ZUdyb3VwUmVx",
-            "dWVzdBIqCgVncm91cBgCIAEoCzIbLmdvb2dsZS5tb25pdG9yaW5nLnYzLkdy",
-            "b3VwEhUKDXZhbGlkYXRlX29ubHkYAyABKAgiNQoSRGVsZXRlR3JvdXBSZXF1",
-            "ZXN0EgwKBG5hbWUYAyABKAkSEQoJcmVjdXJzaXZlGAQgASgIIpQBChdMaXN0",
-            "R3JvdXBNZW1iZXJzUmVxdWVzdBIMCgRuYW1lGAcgASgJEhEKCXBhZ2Vfc2l6",
-            "ZRgDIAEoBRISCgpwYWdlX3Rva2VuGAQgASgJEg4KBmZpbHRlchgFIAEoCRI0",
-            "CghpbnRlcnZhbBgGIAEoCzIiLmdvb2dsZS5tb25pdG9yaW5nLnYzLlRpbWVJ",
-            "bnRlcnZhbCJ3ChhMaXN0R3JvdXBNZW1iZXJzUmVzcG9uc2USLgoHbWVtYmVy",
-            "cxgBIAMoCzIdLmdvb2dsZS5hcGkuTW9uaXRvcmVkUmVzb3VyY2USFwoPbmV4",
-            "dF9wYWdlX3Rva2VuGAIgASgJEhIKCnRvdGFsX3NpemUYAyABKAUy5wcKDEdy",
-            "b3VwU2VydmljZRKFAQoKTGlzdEdyb3VwcxInLmdvb2dsZS5tb25pdG9yaW5n",
-            "LnYzLkxpc3RHcm91cHNSZXF1ZXN0GiguZ29vZ2xlLm1vbml0b3JpbmcudjMu",
-            "TGlzdEdyb3Vwc1Jlc3BvbnNlIiSC0+STAh4SHC92My97bmFtZT1wcm9qZWN0",
-            "cy8qfS9ncm91cHMSdgoIR2V0R3JvdXASJS5nb29nbGUubW9uaXRvcmluZy52",
-            "My5HZXRHcm91cFJlcXVlc3QaGy5nb29nbGUubW9uaXRvcmluZy52My5Hcm91",
-            "cCImgtPkkwIgEh4vdjMve25hbWU9cHJvamVjdHMvKi9ncm91cHMvKn0SgQEK",
-            "C0NyZWF0ZUdyb3VwEiguZ29vZ2xlLm1vbml0b3JpbmcudjMuQ3JlYXRlR3Jv",
-            "dXBSZXF1ZXN0GhsuZ29vZ2xlLm1vbml0b3JpbmcudjMuR3JvdXAiK4LT5JMC",
-            "JSIcL3YzL3tuYW1lPXByb2plY3RzLyp9L2dyb3VwczoFZ3JvdXASiQEKC1Vw",
-            "ZGF0ZUdyb3VwEiguZ29vZ2xlLm1vbml0b3JpbmcudjMuVXBkYXRlR3JvdXBS",
-            "ZXF1ZXN0GhsuZ29vZ2xlLm1vbml0b3JpbmcudjMuR3JvdXAiM4LT5JMCLRok",
-            "L3YzL3tncm91cC5uYW1lPXByb2plY3RzLyovZ3JvdXBzLyp9OgVncm91cBJ3",
-            "CgtEZWxldGVHcm91cBIoLmdvb2dsZS5tb25pdG9yaW5nLnYzLkRlbGV0ZUdy",
-            "b3VwUmVxdWVzdBoWLmdvb2dsZS5wcm90b2J1Zi5FbXB0eSImgtPkkwIgKh4v",
-            "djMve25hbWU9cHJvamVjdHMvKi9ncm91cHMvKn0SoQEKEExpc3RHcm91cE1l",
-            "bWJlcnMSLS5nb29nbGUubW9uaXRvcmluZy52My5MaXN0R3JvdXBNZW1iZXJz",
-            "UmVxdWVzdBouLmdvb2dsZS5tb25pdG9yaW5nLnYzLkxpc3RHcm91cE1lbWJl",
-            "cnNSZXNwb25zZSIugtPkkwIoEiYvdjMve25hbWU9cHJvamVjdHMvKi9ncm91",
-            "cHMvKn0vbWVtYmVycxqpAcpBGW1vbml0b3JpbmcuZ29vZ2xlYXBpcy5jb23S",
-            "QYkBaHR0cHM6Ly93d3cuZ29vZ2xlYXBpcy5jb20vYXV0aC9jbG91ZC1wbGF0",
-            "Zm9ybSxodHRwczovL3d3dy5nb29nbGVhcGlzLmNvbS9hdXRoL21vbml0b3Jp",
-            "bmcsaHR0cHM6Ly93d3cuZ29vZ2xlYXBpcy5jb20vYXV0aC9tb25pdG9yaW5n",
-            "LnJlYWRCqQEKGGNvbS5nb29nbGUubW9uaXRvcmluZy52M0IRR3JvdXBTZXJ2",
-            "aWNlUHJvdG9QAVo+Z29vZ2xlLmdvbGFuZy5vcmcvZ2VucHJvdG8vZ29vZ2xl",
-            "YXBpcy9tb25pdG9yaW5nL3YzO21vbml0b3JpbmeqAhpHb29nbGUuQ2xvdWQu",
-            "TW9uaXRvcmluZy5WM8oCGkdvb2dsZVxDbG91ZFxNb25pdG9yaW5nXFYzYgZw",
-            "cm90bzM="));
+            "cm90bxoXZ29vZ2xlL2FwaS9jbGllbnQucHJvdG8aH2dvb2dsZS9hcGkvZmll",
+            "bGRfYmVoYXZpb3IucHJvdG8aI2dvb2dsZS9hcGkvbW9uaXRvcmVkX3Jlc291",
+            "cmNlLnByb3RvGhlnb29nbGUvYXBpL3Jlc291cmNlLnByb3RvGiFnb29nbGUv",
+            "bW9uaXRvcmluZy92My9jb21tb24ucHJvdG8aIGdvb2dsZS9tb25pdG9yaW5n",
+            "L3YzL2dyb3VwLnByb3RvGhtnb29nbGUvcHJvdG9idWYvZW1wdHkucHJvdG8i",
+            "yAIKEUxpc3RHcm91cHNSZXF1ZXN0EjUKBG5hbWUYByABKAlCJ+BBAvpBIRIf",
+            "bW9uaXRvcmluZy5nb29nbGVhcGlzLmNvbS9Hcm91cBJBChFjaGlsZHJlbl9v",
+            "Zl9ncm91cBgCIAEoCUIk+kEhCh9tb25pdG9yaW5nLmdvb2dsZWFwaXMuY29t",
+            "L0dyb3VwSAASQgoSYW5jZXN0b3JzX29mX2dyb3VwGAMgASgJQiT6QSEKH21v",
+            "bml0b3JpbmcuZ29vZ2xlYXBpcy5jb20vR3JvdXBIABJEChRkZXNjZW5kYW50",
+            "c19vZl9ncm91cBgEIAEoCUIk+kEhCh9tb25pdG9yaW5nLmdvb2dsZWFwaXMu",
+            "Y29tL0dyb3VwSAASEQoJcGFnZV9zaXplGAUgASgFEhIKCnBhZ2VfdG9rZW4Y",
+            "BiABKAlCCAoGZmlsdGVyIlkKEkxpc3RHcm91cHNSZXNwb25zZRIqCgVncm91",
+            "cBgBIAMoCzIbLmdvb2dsZS5tb25pdG9yaW5nLnYzLkdyb3VwEhcKD25leHRf",
+            "cGFnZV90b2tlbhgCIAEoCSJICg9HZXRHcm91cFJlcXVlc3QSNQoEbmFtZRgD",
+            "IAEoCUIn4EEC+kEhCh9tb25pdG9yaW5nLmdvb2dsZWFwaXMuY29tL0dyb3Vw",
+            "IpMBChJDcmVhdGVHcm91cFJlcXVlc3QSNQoEbmFtZRgEIAEoCUIn4EEC+kEh",
+            "Eh9tb25pdG9yaW5nLmdvb2dsZWFwaXMuY29tL0dyb3VwEi8KBWdyb3VwGAIg",
+            "ASgLMhsuZ29vZ2xlLm1vbml0b3JpbmcudjMuR3JvdXBCA+BBAhIVCg12YWxp",
+            "ZGF0ZV9vbmx5GAMgASgIIlwKElVwZGF0ZUdyb3VwUmVxdWVzdBIvCgVncm91",
+            "cBgCIAEoCzIbLmdvb2dsZS5tb25pdG9yaW5nLnYzLkdyb3VwQgPgQQISFQoN",
+            "dmFsaWRhdGVfb25seRgDIAEoCCJeChJEZWxldGVHcm91cFJlcXVlc3QSNQoE",
+            "bmFtZRgDIAEoCUIn4EEC+kEhCh9tb25pdG9yaW5nLmdvb2dsZWFwaXMuY29t",
+            "L0dyb3VwEhEKCXJlY3Vyc2l2ZRgEIAEoCCK9AQoXTGlzdEdyb3VwTWVtYmVy",
+            "c1JlcXVlc3QSNQoEbmFtZRgHIAEoCUIn4EEC+kEhCh9tb25pdG9yaW5nLmdv",
+            "b2dsZWFwaXMuY29tL0dyb3VwEhEKCXBhZ2Vfc2l6ZRgDIAEoBRISCgpwYWdl",
+            "X3Rva2VuGAQgASgJEg4KBmZpbHRlchgFIAEoCRI0CghpbnRlcnZhbBgGIAEo",
+            "CzIiLmdvb2dsZS5tb25pdG9yaW5nLnYzLlRpbWVJbnRlcnZhbCJ3ChhMaXN0",
+            "R3JvdXBNZW1iZXJzUmVzcG9uc2USLgoHbWVtYmVycxgBIAMoCzIdLmdvb2ds",
+            "ZS5hcGkuTW9uaXRvcmVkUmVzb3VyY2USFwoPbmV4dF9wYWdlX3Rva2VuGAIg",
+            "ASgJEhIKCnRvdGFsX3NpemUYAyABKAUymAgKDEdyb3VwU2VydmljZRKMAQoK",
+            "TGlzdEdyb3VwcxInLmdvb2dsZS5tb25pdG9yaW5nLnYzLkxpc3RHcm91cHNS",
+            "ZXF1ZXN0GiguZ29vZ2xlLm1vbml0b3JpbmcudjMuTGlzdEdyb3Vwc1Jlc3Bv",
+            "bnNlIiuC0+STAh4SHC92My97bmFtZT1wcm9qZWN0cy8qfS9ncm91cHPaQQRu",
+            "YW1lEn0KCEdldEdyb3VwEiUuZ29vZ2xlLm1vbml0b3JpbmcudjMuR2V0R3Jv",
+            "dXBSZXF1ZXN0GhsuZ29vZ2xlLm1vbml0b3JpbmcudjMuR3JvdXAiLYLT5JMC",
+            "IBIeL3YzL3tuYW1lPXByb2plY3RzLyovZ3JvdXBzLyp92kEEbmFtZRKOAQoL",
+            "Q3JlYXRlR3JvdXASKC5nb29nbGUubW9uaXRvcmluZy52My5DcmVhdGVHcm91",
+            "cFJlcXVlc3QaGy5nb29nbGUubW9uaXRvcmluZy52My5Hcm91cCI4gtPkkwIl",
+            "IhwvdjMve25hbWU9cHJvamVjdHMvKn0vZ3JvdXBzOgVncm91cNpBCm5hbWUs",
+            "Z3JvdXASkQEKC1VwZGF0ZUdyb3VwEiguZ29vZ2xlLm1vbml0b3JpbmcudjMu",
+            "VXBkYXRlR3JvdXBSZXF1ZXN0GhsuZ29vZ2xlLm1vbml0b3JpbmcudjMuR3Jv",
+            "dXAiO4LT5JMCLRokL3YzL3tncm91cC5uYW1lPXByb2plY3RzLyovZ3JvdXBz",
+            "Lyp9OgVncm91cNpBBWdyb3VwEn4KC0RlbGV0ZUdyb3VwEiguZ29vZ2xlLm1v",
+            "bml0b3JpbmcudjMuRGVsZXRlR3JvdXBSZXF1ZXN0GhYuZ29vZ2xlLnByb3Rv",
+            "YnVmLkVtcHR5Ii2C0+STAiAqHi92My97bmFtZT1wcm9qZWN0cy8qL2dyb3Vw",
+            "cy8qfdpBBG5hbWUSqAEKEExpc3RHcm91cE1lbWJlcnMSLS5nb29nbGUubW9u",
+            "aXRvcmluZy52My5MaXN0R3JvdXBNZW1iZXJzUmVxdWVzdBouLmdvb2dsZS5t",
+            "b25pdG9yaW5nLnYzLkxpc3RHcm91cE1lbWJlcnNSZXNwb25zZSI1gtPkkwIo",
+            "EiYvdjMve25hbWU9cHJvamVjdHMvKi9ncm91cHMvKn0vbWVtYmVyc9pBBG5h",
+            "bWUaqQHKQRltb25pdG9yaW5nLmdvb2dsZWFwaXMuY29t0kGJAWh0dHBzOi8v",
+            "d3d3Lmdvb2dsZWFwaXMuY29tL2F1dGgvY2xvdWQtcGxhdGZvcm0saHR0cHM6",
+            "Ly93d3cuZ29vZ2xlYXBpcy5jb20vYXV0aC9tb25pdG9yaW5nLGh0dHBzOi8v",
+            "d3d3Lmdvb2dsZWFwaXMuY29tL2F1dGgvbW9uaXRvcmluZy5yZWFkQskBChhj",
+            "b20uZ29vZ2xlLm1vbml0b3JpbmcudjNCEUdyb3VwU2VydmljZVByb3RvUAFa",
+            "Pmdvb2dsZS5nb2xhbmcub3JnL2dlbnByb3RvL2dvb2dsZWFwaXMvbW9uaXRv",
+            "cmluZy92Mzttb25pdG9yaW5nqgIaR29vZ2xlLkNsb3VkLk1vbml0b3Jpbmcu",
+            "VjPKAhpHb29nbGVcQ2xvdWRcTW9uaXRvcmluZ1xWM+oCHUdvb2dsZTo6Q2xv",
+            "dWQ6Ok1vbml0b3Jpbmc6OlYzYgZwcm90bzM="));
       descriptor = pbr::FileDescriptor.FromGeneratedCode(descriptorData,
-          new pbr::FileDescriptor[] { global::Google.Api.AnnotationsReflection.Descriptor, global::Google.Api.MonitoredResourceReflection.Descriptor, global::Google.Cloud.Monitoring.V3.CommonReflection.Descriptor, global::Google.Cloud.Monitoring.V3.GroupReflection.Descriptor, global::Google.Protobuf.WellKnownTypes.EmptyReflection.Descriptor, global::Google.Api.ClientReflection.Descriptor, },
-          new pbr::GeneratedClrTypeInfo(null, new pbr::GeneratedClrTypeInfo[] {
-            new pbr::GeneratedClrTypeInfo(typeof(global::Google.Cloud.Monitoring.V3.ListGroupsRequest), global::Google.Cloud.Monitoring.V3.ListGroupsRequest.Parser, new[]{ "Name", "ChildrenOfGroup", "AncestorsOfGroup", "DescendantsOfGroup", "PageSize", "PageToken" }, new[]{ "Filter" }, null, null),
-            new pbr::GeneratedClrTypeInfo(typeof(global::Google.Cloud.Monitoring.V3.ListGroupsResponse), global::Google.Cloud.Monitoring.V3.ListGroupsResponse.Parser, new[]{ "Group", "NextPageToken" }, null, null, null),
-            new pbr::GeneratedClrTypeInfo(typeof(global::Google.Cloud.Monitoring.V3.GetGroupRequest), global::Google.Cloud.Monitoring.V3.GetGroupRequest.Parser, new[]{ "Name" }, null, null, null),
-            new pbr::GeneratedClrTypeInfo(typeof(global::Google.Cloud.Monitoring.V3.CreateGroupRequest), global::Google.Cloud.Monitoring.V3.CreateGroupRequest.Parser, new[]{ "Name", "Group", "ValidateOnly" }, null, null, null),
-            new pbr::GeneratedClrTypeInfo(typeof(global::Google.Cloud.Monitoring.V3.UpdateGroupRequest), global::Google.Cloud.Monitoring.V3.UpdateGroupRequest.Parser, new[]{ "Group", "ValidateOnly" }, null, null, null),
-            new pbr::GeneratedClrTypeInfo(typeof(global::Google.Cloud.Monitoring.V3.DeleteGroupRequest), global::Google.Cloud.Monitoring.V3.DeleteGroupRequest.Parser, new[]{ "Name", "Recursive" }, null, null, null),
-            new pbr::GeneratedClrTypeInfo(typeof(global::Google.Cloud.Monitoring.V3.ListGroupMembersRequest), global::Google.Cloud.Monitoring.V3.ListGroupMembersRequest.Parser, new[]{ "Name", "PageSize", "PageToken", "Filter", "Interval" }, null, null, null),
-            new pbr::GeneratedClrTypeInfo(typeof(global::Google.Cloud.Monitoring.V3.ListGroupMembersResponse), global::Google.Cloud.Monitoring.V3.ListGroupMembersResponse.Parser, new[]{ "Members", "NextPageToken", "TotalSize" }, null, null, null)
+          new pbr::FileDescriptor[] { global::Google.Api.AnnotationsReflection.Descriptor, global::Google.Api.ClientReflection.Descriptor, global::Google.Api.FieldBehaviorReflection.Descriptor, global::Google.Api.MonitoredResourceReflection.Descriptor, global::Google.Api.ResourceReflection.Descriptor, global::Google.Cloud.Monitoring.V3.CommonReflection.Descriptor, global::Google.Cloud.Monitoring.V3.GroupReflection.Descriptor, global::Google.Protobuf.WellKnownTypes.EmptyReflection.Descriptor, },
+          new pbr::GeneratedClrTypeInfo(null, null, new pbr::GeneratedClrTypeInfo[] {
+            new pbr::GeneratedClrTypeInfo(typeof(global::Google.Cloud.Monitoring.V3.ListGroupsRequest), global::Google.Cloud.Monitoring.V3.ListGroupsRequest.Parser, new[]{ "Name", "ChildrenOfGroup", "AncestorsOfGroup", "DescendantsOfGroup", "PageSize", "PageToken" }, new[]{ "Filter" }, null, null, null),
+            new pbr::GeneratedClrTypeInfo(typeof(global::Google.Cloud.Monitoring.V3.ListGroupsResponse), global::Google.Cloud.Monitoring.V3.ListGroupsResponse.Parser, new[]{ "Group", "NextPageToken" }, null, null, null, null),
+            new pbr::GeneratedClrTypeInfo(typeof(global::Google.Cloud.Monitoring.V3.GetGroupRequest), global::Google.Cloud.Monitoring.V3.GetGroupRequest.Parser, new[]{ "Name" }, null, null, null, null),
+            new pbr::GeneratedClrTypeInfo(typeof(global::Google.Cloud.Monitoring.V3.CreateGroupRequest), global::Google.Cloud.Monitoring.V3.CreateGroupRequest.Parser, new[]{ "Name", "Group", "ValidateOnly" }, null, null, null, null),
+            new pbr::GeneratedClrTypeInfo(typeof(global::Google.Cloud.Monitoring.V3.UpdateGroupRequest), global::Google.Cloud.Monitoring.V3.UpdateGroupRequest.Parser, new[]{ "Group", "ValidateOnly" }, null, null, null, null),
+            new pbr::GeneratedClrTypeInfo(typeof(global::Google.Cloud.Monitoring.V3.DeleteGroupRequest), global::Google.Cloud.Monitoring.V3.DeleteGroupRequest.Parser, new[]{ "Name", "Recursive" }, null, null, null, null),
+            new pbr::GeneratedClrTypeInfo(typeof(global::Google.Cloud.Monitoring.V3.ListGroupMembersRequest), global::Google.Cloud.Monitoring.V3.ListGroupMembersRequest.Parser, new[]{ "Name", "PageSize", "PageToken", "Filter", "Interval" }, null, null, null, null),
+            new pbr::GeneratedClrTypeInfo(typeof(global::Google.Cloud.Monitoring.V3.ListGroupMembersResponse), global::Google.Cloud.Monitoring.V3.ListGroupMembersResponse.Parser, new[]{ "Members", "NextPageToken", "TotalSize" }, null, null, null, null)
           }));
     }
     #endregion
@@ -95,7 +105,11 @@ namespace Google.Cloud.Monitoring.V3 {
   /// <summary>
   /// The `ListGroup` request.
   /// </summary>
-  public sealed partial class ListGroupsRequest : pb::IMessage<ListGroupsRequest> {
+  public sealed partial class ListGroupsRequest : pb::IMessage<ListGroupsRequest>
+  #if !GOOGLE_PROTOBUF_REFSTRUCT_COMPATIBILITY_MODE
+      , pb::IBufferMessage
+  #endif
+  {
     private static readonly pb::MessageParser<ListGroupsRequest> _parser = new pb::MessageParser<ListGroupsRequest>(() => new ListGroupsRequest());
     private pb::UnknownFieldSet _unknownFields;
     [global::System.Diagnostics.DebuggerNonUserCodeAttribute]
@@ -147,8 +161,9 @@ namespace Google.Cloud.Monitoring.V3 {
     public const int NameFieldNumber = 7;
     private string name_ = "";
     /// <summary>
-    /// The project whose groups are to be listed. The format is
-    /// `"projects/{project_id_or_number}"`.
+    /// Required. The project whose groups are to be listed. The format is:
+    ///
+    ///     projects/[PROJECT_ID_OR_NUMBER]
     /// </summary>
     [global::System.Diagnostics.DebuggerNonUserCodeAttribute]
     public string Name {
@@ -161,8 +176,11 @@ namespace Google.Cloud.Monitoring.V3 {
     /// <summary>Field number for the "children_of_group" field.</summary>
     public const int ChildrenOfGroupFieldNumber = 2;
     /// <summary>
-    /// A group name: `"projects/{project_id_or_number}/groups/{group_id}"`.
-    /// Returns groups whose `parentName` field contains the group
+    /// A group name. The format is:
+    ///
+    ///     projects/[PROJECT_ID_OR_NUMBER]/groups/[GROUP_ID]
+    ///
+    /// Returns groups whose `parent_name` field contains the group
     /// name.  If no groups have this parent, the results are empty.
     /// </summary>
     [global::System.Diagnostics.DebuggerNonUserCodeAttribute]
@@ -177,7 +195,10 @@ namespace Google.Cloud.Monitoring.V3 {
     /// <summary>Field number for the "ancestors_of_group" field.</summary>
     public const int AncestorsOfGroupFieldNumber = 3;
     /// <summary>
-    /// A group name: `"projects/{project_id_or_number}/groups/{group_id}"`.
+    /// A group name. The format is:
+    ///
+    ///     projects/[PROJECT_ID_OR_NUMBER]/groups/[GROUP_ID]
+    ///
     /// Returns groups that are ancestors of the specified group.
     /// The groups are returned in order, starting with the immediate parent and
     /// ending with the most distant ancestor.  If the specified group has no
@@ -195,9 +216,12 @@ namespace Google.Cloud.Monitoring.V3 {
     /// <summary>Field number for the "descendants_of_group" field.</summary>
     public const int DescendantsOfGroupFieldNumber = 4;
     /// <summary>
-    /// A group name: `"projects/{project_id_or_number}/groups/{group_id}"`.
+    /// A group name. The format is:
+    ///
+    ///     projects/[PROJECT_ID_OR_NUMBER]/groups/[GROUP_ID]
+    ///
     /// Returns the descendants of the specified group.  This is a superset of
-    /// the results returned by the `childrenOfGroup` filter, and includes
+    /// the results returned by the `children_of_group` filter, and includes
     /// children-of-children, and so forth.
     /// </summary>
     [global::System.Diagnostics.DebuggerNonUserCodeAttribute]
@@ -227,7 +251,7 @@ namespace Google.Cloud.Monitoring.V3 {
     public const int PageTokenFieldNumber = 6;
     private string pageToken_ = "";
     /// <summary>
-    /// If this field is not empty then it must contain the `nextPageToken` value
+    /// If this field is not empty then it must contain the `next_page_token` value
     /// returned by a previous call to this method.  Using this field causes the
     /// method to return additional results from the previous method call.
     /// </summary>
@@ -305,6 +329,9 @@ namespace Google.Cloud.Monitoring.V3 {
 
     [global::System.Diagnostics.DebuggerNonUserCodeAttribute]
     public void WriteTo(pb::CodedOutputStream output) {
+    #if !GOOGLE_PROTOBUF_REFSTRUCT_COMPATIBILITY_MODE
+      output.WriteRawMessage(this);
+    #else
       if (filterCase_ == FilterOneofCase.ChildrenOfGroup) {
         output.WriteRawTag(18);
         output.WriteString(ChildrenOfGroup);
@@ -332,7 +359,41 @@ namespace Google.Cloud.Monitoring.V3 {
       if (_unknownFields != null) {
         _unknownFields.WriteTo(output);
       }
+    #endif
     }
+
+    #if !GOOGLE_PROTOBUF_REFSTRUCT_COMPATIBILITY_MODE
+    [global::System.Diagnostics.DebuggerNonUserCodeAttribute]
+    void pb::IBufferMessage.InternalWriteTo(ref pb::WriteContext output) {
+      if (filterCase_ == FilterOneofCase.ChildrenOfGroup) {
+        output.WriteRawTag(18);
+        output.WriteString(ChildrenOfGroup);
+      }
+      if (filterCase_ == FilterOneofCase.AncestorsOfGroup) {
+        output.WriteRawTag(26);
+        output.WriteString(AncestorsOfGroup);
+      }
+      if (filterCase_ == FilterOneofCase.DescendantsOfGroup) {
+        output.WriteRawTag(34);
+        output.WriteString(DescendantsOfGroup);
+      }
+      if (PageSize != 0) {
+        output.WriteRawTag(40);
+        output.WriteInt32(PageSize);
+      }
+      if (PageToken.Length != 0) {
+        output.WriteRawTag(50);
+        output.WriteString(PageToken);
+      }
+      if (Name.Length != 0) {
+        output.WriteRawTag(58);
+        output.WriteString(Name);
+      }
+      if (_unknownFields != null) {
+        _unknownFields.WriteTo(ref output);
+      }
+    }
+    #endif
 
     [global::System.Diagnostics.DebuggerNonUserCodeAttribute]
     public int CalculateSize() {
@@ -392,6 +453,9 @@ namespace Google.Cloud.Monitoring.V3 {
 
     [global::System.Diagnostics.DebuggerNonUserCodeAttribute]
     public void MergeFrom(pb::CodedInputStream input) {
+    #if !GOOGLE_PROTOBUF_REFSTRUCT_COMPATIBILITY_MODE
+      input.ReadRawMessage(this);
+    #else
       uint tag;
       while ((tag = input.ReadTag()) != 0) {
         switch(tag) {
@@ -424,14 +488,57 @@ namespace Google.Cloud.Monitoring.V3 {
           }
         }
       }
+    #endif
     }
+
+    #if !GOOGLE_PROTOBUF_REFSTRUCT_COMPATIBILITY_MODE
+    [global::System.Diagnostics.DebuggerNonUserCodeAttribute]
+    void pb::IBufferMessage.InternalMergeFrom(ref pb::ParseContext input) {
+      uint tag;
+      while ((tag = input.ReadTag()) != 0) {
+        switch(tag) {
+          default:
+            _unknownFields = pb::UnknownFieldSet.MergeFieldFrom(_unknownFields, ref input);
+            break;
+          case 18: {
+            ChildrenOfGroup = input.ReadString();
+            break;
+          }
+          case 26: {
+            AncestorsOfGroup = input.ReadString();
+            break;
+          }
+          case 34: {
+            DescendantsOfGroup = input.ReadString();
+            break;
+          }
+          case 40: {
+            PageSize = input.ReadInt32();
+            break;
+          }
+          case 50: {
+            PageToken = input.ReadString();
+            break;
+          }
+          case 58: {
+            Name = input.ReadString();
+            break;
+          }
+        }
+      }
+    }
+    #endif
 
   }
 
   /// <summary>
   /// The `ListGroups` response.
   /// </summary>
-  public sealed partial class ListGroupsResponse : pb::IMessage<ListGroupsResponse> {
+  public sealed partial class ListGroupsResponse : pb::IMessage<ListGroupsResponse>
+  #if !GOOGLE_PROTOBUF_REFSTRUCT_COMPATIBILITY_MODE
+      , pb::IBufferMessage
+  #endif
+  {
     private static readonly pb::MessageParser<ListGroupsResponse> _parser = new pb::MessageParser<ListGroupsResponse>(() => new ListGroupsResponse());
     private pb::UnknownFieldSet _unknownFields;
     [global::System.Diagnostics.DebuggerNonUserCodeAttribute]
@@ -485,7 +592,7 @@ namespace Google.Cloud.Monitoring.V3 {
     /// <summary>
     /// If there are more results than have been returned, then this field is set
     /// to a non-empty value.  To see the additional results,
-    /// use that value as `pageToken` in the next call to this method.
+    /// use that value as `page_token` in the next call to this method.
     /// </summary>
     [global::System.Diagnostics.DebuggerNonUserCodeAttribute]
     public string NextPageToken {
@@ -531,6 +638,9 @@ namespace Google.Cloud.Monitoring.V3 {
 
     [global::System.Diagnostics.DebuggerNonUserCodeAttribute]
     public void WriteTo(pb::CodedOutputStream output) {
+    #if !GOOGLE_PROTOBUF_REFSTRUCT_COMPATIBILITY_MODE
+      output.WriteRawMessage(this);
+    #else
       group_.WriteTo(output, _repeated_group_codec);
       if (NextPageToken.Length != 0) {
         output.WriteRawTag(18);
@@ -539,7 +649,22 @@ namespace Google.Cloud.Monitoring.V3 {
       if (_unknownFields != null) {
         _unknownFields.WriteTo(output);
       }
+    #endif
     }
+
+    #if !GOOGLE_PROTOBUF_REFSTRUCT_COMPATIBILITY_MODE
+    [global::System.Diagnostics.DebuggerNonUserCodeAttribute]
+    void pb::IBufferMessage.InternalWriteTo(ref pb::WriteContext output) {
+      group_.WriteTo(ref output, _repeated_group_codec);
+      if (NextPageToken.Length != 0) {
+        output.WriteRawTag(18);
+        output.WriteString(NextPageToken);
+      }
+      if (_unknownFields != null) {
+        _unknownFields.WriteTo(ref output);
+      }
+    }
+    #endif
 
     [global::System.Diagnostics.DebuggerNonUserCodeAttribute]
     public int CalculateSize() {
@@ -568,6 +693,9 @@ namespace Google.Cloud.Monitoring.V3 {
 
     [global::System.Diagnostics.DebuggerNonUserCodeAttribute]
     public void MergeFrom(pb::CodedInputStream input) {
+    #if !GOOGLE_PROTOBUF_REFSTRUCT_COMPATIBILITY_MODE
+      input.ReadRawMessage(this);
+    #else
       uint tag;
       while ((tag = input.ReadTag()) != 0) {
         switch(tag) {
@@ -584,14 +712,41 @@ namespace Google.Cloud.Monitoring.V3 {
           }
         }
       }
+    #endif
     }
+
+    #if !GOOGLE_PROTOBUF_REFSTRUCT_COMPATIBILITY_MODE
+    [global::System.Diagnostics.DebuggerNonUserCodeAttribute]
+    void pb::IBufferMessage.InternalMergeFrom(ref pb::ParseContext input) {
+      uint tag;
+      while ((tag = input.ReadTag()) != 0) {
+        switch(tag) {
+          default:
+            _unknownFields = pb::UnknownFieldSet.MergeFieldFrom(_unknownFields, ref input);
+            break;
+          case 10: {
+            group_.AddEntriesFrom(ref input, _repeated_group_codec);
+            break;
+          }
+          case 18: {
+            NextPageToken = input.ReadString();
+            break;
+          }
+        }
+      }
+    }
+    #endif
 
   }
 
   /// <summary>
   /// The `GetGroup` request.
   /// </summary>
-  public sealed partial class GetGroupRequest : pb::IMessage<GetGroupRequest> {
+  public sealed partial class GetGroupRequest : pb::IMessage<GetGroupRequest>
+  #if !GOOGLE_PROTOBUF_REFSTRUCT_COMPATIBILITY_MODE
+      , pb::IBufferMessage
+  #endif
+  {
     private static readonly pb::MessageParser<GetGroupRequest> _parser = new pb::MessageParser<GetGroupRequest>(() => new GetGroupRequest());
     private pb::UnknownFieldSet _unknownFields;
     [global::System.Diagnostics.DebuggerNonUserCodeAttribute]
@@ -629,8 +784,9 @@ namespace Google.Cloud.Monitoring.V3 {
     public const int NameFieldNumber = 3;
     private string name_ = "";
     /// <summary>
-    /// The group to retrieve. The format is
-    /// `"projects/{project_id_or_number}/groups/{group_id}"`.
+    /// Required. The group to retrieve. The format is:
+    ///
+    ///     projects/[PROJECT_ID_OR_NUMBER]/groups/[GROUP_ID]
     /// </summary>
     [global::System.Diagnostics.DebuggerNonUserCodeAttribute]
     public string Name {
@@ -674,6 +830,9 @@ namespace Google.Cloud.Monitoring.V3 {
 
     [global::System.Diagnostics.DebuggerNonUserCodeAttribute]
     public void WriteTo(pb::CodedOutputStream output) {
+    #if !GOOGLE_PROTOBUF_REFSTRUCT_COMPATIBILITY_MODE
+      output.WriteRawMessage(this);
+    #else
       if (Name.Length != 0) {
         output.WriteRawTag(26);
         output.WriteString(Name);
@@ -681,7 +840,21 @@ namespace Google.Cloud.Monitoring.V3 {
       if (_unknownFields != null) {
         _unknownFields.WriteTo(output);
       }
+    #endif
     }
+
+    #if !GOOGLE_PROTOBUF_REFSTRUCT_COMPATIBILITY_MODE
+    [global::System.Diagnostics.DebuggerNonUserCodeAttribute]
+    void pb::IBufferMessage.InternalWriteTo(ref pb::WriteContext output) {
+      if (Name.Length != 0) {
+        output.WriteRawTag(26);
+        output.WriteString(Name);
+      }
+      if (_unknownFields != null) {
+        _unknownFields.WriteTo(ref output);
+      }
+    }
+    #endif
 
     [global::System.Diagnostics.DebuggerNonUserCodeAttribute]
     public int CalculateSize() {
@@ -708,6 +881,9 @@ namespace Google.Cloud.Monitoring.V3 {
 
     [global::System.Diagnostics.DebuggerNonUserCodeAttribute]
     public void MergeFrom(pb::CodedInputStream input) {
+    #if !GOOGLE_PROTOBUF_REFSTRUCT_COMPATIBILITY_MODE
+      input.ReadRawMessage(this);
+    #else
       uint tag;
       while ((tag = input.ReadTag()) != 0) {
         switch(tag) {
@@ -720,14 +896,37 @@ namespace Google.Cloud.Monitoring.V3 {
           }
         }
       }
+    #endif
     }
+
+    #if !GOOGLE_PROTOBUF_REFSTRUCT_COMPATIBILITY_MODE
+    [global::System.Diagnostics.DebuggerNonUserCodeAttribute]
+    void pb::IBufferMessage.InternalMergeFrom(ref pb::ParseContext input) {
+      uint tag;
+      while ((tag = input.ReadTag()) != 0) {
+        switch(tag) {
+          default:
+            _unknownFields = pb::UnknownFieldSet.MergeFieldFrom(_unknownFields, ref input);
+            break;
+          case 26: {
+            Name = input.ReadString();
+            break;
+          }
+        }
+      }
+    }
+    #endif
 
   }
 
   /// <summary>
   /// The `CreateGroup` request.
   /// </summary>
-  public sealed partial class CreateGroupRequest : pb::IMessage<CreateGroupRequest> {
+  public sealed partial class CreateGroupRequest : pb::IMessage<CreateGroupRequest>
+  #if !GOOGLE_PROTOBUF_REFSTRUCT_COMPATIBILITY_MODE
+      , pb::IBufferMessage
+  #endif
+  {
     private static readonly pb::MessageParser<CreateGroupRequest> _parser = new pb::MessageParser<CreateGroupRequest>(() => new CreateGroupRequest());
     private pb::UnknownFieldSet _unknownFields;
     [global::System.Diagnostics.DebuggerNonUserCodeAttribute]
@@ -767,8 +966,9 @@ namespace Google.Cloud.Monitoring.V3 {
     public const int NameFieldNumber = 4;
     private string name_ = "";
     /// <summary>
-    /// The project in which to create the group. The format is
-    /// `"projects/{project_id_or_number}"`.
+    /// Required. The project in which to create the group. The format is:
+    ///
+    ///     projects/[PROJECT_ID_OR_NUMBER]
     /// </summary>
     [global::System.Diagnostics.DebuggerNonUserCodeAttribute]
     public string Name {
@@ -782,7 +982,7 @@ namespace Google.Cloud.Monitoring.V3 {
     public const int GroupFieldNumber = 2;
     private global::Google.Cloud.Monitoring.V3.Group group_;
     /// <summary>
-    /// A group definition. It is an error to define the `name` field because
+    /// Required. A group definition. It is an error to define the `name` field because
     /// the system assigns the name.
     /// </summary>
     [global::System.Diagnostics.DebuggerNonUserCodeAttribute]
@@ -845,6 +1045,9 @@ namespace Google.Cloud.Monitoring.V3 {
 
     [global::System.Diagnostics.DebuggerNonUserCodeAttribute]
     public void WriteTo(pb::CodedOutputStream output) {
+    #if !GOOGLE_PROTOBUF_REFSTRUCT_COMPATIBILITY_MODE
+      output.WriteRawMessage(this);
+    #else
       if (group_ != null) {
         output.WriteRawTag(18);
         output.WriteMessage(Group);
@@ -860,7 +1063,29 @@ namespace Google.Cloud.Monitoring.V3 {
       if (_unknownFields != null) {
         _unknownFields.WriteTo(output);
       }
+    #endif
     }
+
+    #if !GOOGLE_PROTOBUF_REFSTRUCT_COMPATIBILITY_MODE
+    [global::System.Diagnostics.DebuggerNonUserCodeAttribute]
+    void pb::IBufferMessage.InternalWriteTo(ref pb::WriteContext output) {
+      if (group_ != null) {
+        output.WriteRawTag(18);
+        output.WriteMessage(Group);
+      }
+      if (ValidateOnly != false) {
+        output.WriteRawTag(24);
+        output.WriteBool(ValidateOnly);
+      }
+      if (Name.Length != 0) {
+        output.WriteRawTag(34);
+        output.WriteString(Name);
+      }
+      if (_unknownFields != null) {
+        _unknownFields.WriteTo(ref output);
+      }
+    }
+    #endif
 
     [global::System.Diagnostics.DebuggerNonUserCodeAttribute]
     public int CalculateSize() {
@@ -902,6 +1127,9 @@ namespace Google.Cloud.Monitoring.V3 {
 
     [global::System.Diagnostics.DebuggerNonUserCodeAttribute]
     public void MergeFrom(pb::CodedInputStream input) {
+    #if !GOOGLE_PROTOBUF_REFSTRUCT_COMPATIBILITY_MODE
+      input.ReadRawMessage(this);
+    #else
       uint tag;
       while ((tag = input.ReadTag()) != 0) {
         switch(tag) {
@@ -925,14 +1153,48 @@ namespace Google.Cloud.Monitoring.V3 {
           }
         }
       }
+    #endif
     }
+
+    #if !GOOGLE_PROTOBUF_REFSTRUCT_COMPATIBILITY_MODE
+    [global::System.Diagnostics.DebuggerNonUserCodeAttribute]
+    void pb::IBufferMessage.InternalMergeFrom(ref pb::ParseContext input) {
+      uint tag;
+      while ((tag = input.ReadTag()) != 0) {
+        switch(tag) {
+          default:
+            _unknownFields = pb::UnknownFieldSet.MergeFieldFrom(_unknownFields, ref input);
+            break;
+          case 18: {
+            if (group_ == null) {
+              Group = new global::Google.Cloud.Monitoring.V3.Group();
+            }
+            input.ReadMessage(Group);
+            break;
+          }
+          case 24: {
+            ValidateOnly = input.ReadBool();
+            break;
+          }
+          case 34: {
+            Name = input.ReadString();
+            break;
+          }
+        }
+      }
+    }
+    #endif
 
   }
 
   /// <summary>
   /// The `UpdateGroup` request.
   /// </summary>
-  public sealed partial class UpdateGroupRequest : pb::IMessage<UpdateGroupRequest> {
+  public sealed partial class UpdateGroupRequest : pb::IMessage<UpdateGroupRequest>
+  #if !GOOGLE_PROTOBUF_REFSTRUCT_COMPATIBILITY_MODE
+      , pb::IBufferMessage
+  #endif
+  {
     private static readonly pb::MessageParser<UpdateGroupRequest> _parser = new pb::MessageParser<UpdateGroupRequest>(() => new UpdateGroupRequest());
     private pb::UnknownFieldSet _unknownFields;
     [global::System.Diagnostics.DebuggerNonUserCodeAttribute]
@@ -971,7 +1233,7 @@ namespace Google.Cloud.Monitoring.V3 {
     public const int GroupFieldNumber = 2;
     private global::Google.Cloud.Monitoring.V3.Group group_;
     /// <summary>
-    /// The new definition of the group.  All fields of the existing group,
+    /// Required. The new definition of the group.  All fields of the existing group,
     /// excepting `name`, are replaced with the corresponding fields of this group.
     /// </summary>
     [global::System.Diagnostics.DebuggerNonUserCodeAttribute]
@@ -1032,6 +1294,9 @@ namespace Google.Cloud.Monitoring.V3 {
 
     [global::System.Diagnostics.DebuggerNonUserCodeAttribute]
     public void WriteTo(pb::CodedOutputStream output) {
+    #if !GOOGLE_PROTOBUF_REFSTRUCT_COMPATIBILITY_MODE
+      output.WriteRawMessage(this);
+    #else
       if (group_ != null) {
         output.WriteRawTag(18);
         output.WriteMessage(Group);
@@ -1043,7 +1308,25 @@ namespace Google.Cloud.Monitoring.V3 {
       if (_unknownFields != null) {
         _unknownFields.WriteTo(output);
       }
+    #endif
     }
+
+    #if !GOOGLE_PROTOBUF_REFSTRUCT_COMPATIBILITY_MODE
+    [global::System.Diagnostics.DebuggerNonUserCodeAttribute]
+    void pb::IBufferMessage.InternalWriteTo(ref pb::WriteContext output) {
+      if (group_ != null) {
+        output.WriteRawTag(18);
+        output.WriteMessage(Group);
+      }
+      if (ValidateOnly != false) {
+        output.WriteRawTag(24);
+        output.WriteBool(ValidateOnly);
+      }
+      if (_unknownFields != null) {
+        _unknownFields.WriteTo(ref output);
+      }
+    }
+    #endif
 
     [global::System.Diagnostics.DebuggerNonUserCodeAttribute]
     public int CalculateSize() {
@@ -1079,6 +1362,9 @@ namespace Google.Cloud.Monitoring.V3 {
 
     [global::System.Diagnostics.DebuggerNonUserCodeAttribute]
     public void MergeFrom(pb::CodedInputStream input) {
+    #if !GOOGLE_PROTOBUF_REFSTRUCT_COMPATIBILITY_MODE
+      input.ReadRawMessage(this);
+    #else
       uint tag;
       while ((tag = input.ReadTag()) != 0) {
         switch(tag) {
@@ -1098,7 +1384,33 @@ namespace Google.Cloud.Monitoring.V3 {
           }
         }
       }
+    #endif
     }
+
+    #if !GOOGLE_PROTOBUF_REFSTRUCT_COMPATIBILITY_MODE
+    [global::System.Diagnostics.DebuggerNonUserCodeAttribute]
+    void pb::IBufferMessage.InternalMergeFrom(ref pb::ParseContext input) {
+      uint tag;
+      while ((tag = input.ReadTag()) != 0) {
+        switch(tag) {
+          default:
+            _unknownFields = pb::UnknownFieldSet.MergeFieldFrom(_unknownFields, ref input);
+            break;
+          case 18: {
+            if (group_ == null) {
+              Group = new global::Google.Cloud.Monitoring.V3.Group();
+            }
+            input.ReadMessage(Group);
+            break;
+          }
+          case 24: {
+            ValidateOnly = input.ReadBool();
+            break;
+          }
+        }
+      }
+    }
+    #endif
 
   }
 
@@ -1106,7 +1418,11 @@ namespace Google.Cloud.Monitoring.V3 {
   /// The `DeleteGroup` request. The default behavior is to be able to delete a
   /// single group without any descendants.
   /// </summary>
-  public sealed partial class DeleteGroupRequest : pb::IMessage<DeleteGroupRequest> {
+  public sealed partial class DeleteGroupRequest : pb::IMessage<DeleteGroupRequest>
+  #if !GOOGLE_PROTOBUF_REFSTRUCT_COMPATIBILITY_MODE
+      , pb::IBufferMessage
+  #endif
+  {
     private static readonly pb::MessageParser<DeleteGroupRequest> _parser = new pb::MessageParser<DeleteGroupRequest>(() => new DeleteGroupRequest());
     private pb::UnknownFieldSet _unknownFields;
     [global::System.Diagnostics.DebuggerNonUserCodeAttribute]
@@ -1145,8 +1461,9 @@ namespace Google.Cloud.Monitoring.V3 {
     public const int NameFieldNumber = 3;
     private string name_ = "";
     /// <summary>
-    /// The group to delete. The format is
-    /// `"projects/{project_id_or_number}/groups/{group_id}"`.
+    /// Required. The group to delete. The format is:
+    ///
+    ///     projects/[PROJECT_ID_OR_NUMBER]/groups/[GROUP_ID]
     /// </summary>
     [global::System.Diagnostics.DebuggerNonUserCodeAttribute]
     public string Name {
@@ -1208,6 +1525,9 @@ namespace Google.Cloud.Monitoring.V3 {
 
     [global::System.Diagnostics.DebuggerNonUserCodeAttribute]
     public void WriteTo(pb::CodedOutputStream output) {
+    #if !GOOGLE_PROTOBUF_REFSTRUCT_COMPATIBILITY_MODE
+      output.WriteRawMessage(this);
+    #else
       if (Name.Length != 0) {
         output.WriteRawTag(26);
         output.WriteString(Name);
@@ -1219,7 +1539,25 @@ namespace Google.Cloud.Monitoring.V3 {
       if (_unknownFields != null) {
         _unknownFields.WriteTo(output);
       }
+    #endif
     }
+
+    #if !GOOGLE_PROTOBUF_REFSTRUCT_COMPATIBILITY_MODE
+    [global::System.Diagnostics.DebuggerNonUserCodeAttribute]
+    void pb::IBufferMessage.InternalWriteTo(ref pb::WriteContext output) {
+      if (Name.Length != 0) {
+        output.WriteRawTag(26);
+        output.WriteString(Name);
+      }
+      if (Recursive != false) {
+        output.WriteRawTag(32);
+        output.WriteBool(Recursive);
+      }
+      if (_unknownFields != null) {
+        _unknownFields.WriteTo(ref output);
+      }
+    }
+    #endif
 
     [global::System.Diagnostics.DebuggerNonUserCodeAttribute]
     public int CalculateSize() {
@@ -1252,6 +1590,9 @@ namespace Google.Cloud.Monitoring.V3 {
 
     [global::System.Diagnostics.DebuggerNonUserCodeAttribute]
     public void MergeFrom(pb::CodedInputStream input) {
+    #if !GOOGLE_PROTOBUF_REFSTRUCT_COMPATIBILITY_MODE
+      input.ReadRawMessage(this);
+    #else
       uint tag;
       while ((tag = input.ReadTag()) != 0) {
         switch(tag) {
@@ -1268,14 +1609,41 @@ namespace Google.Cloud.Monitoring.V3 {
           }
         }
       }
+    #endif
     }
+
+    #if !GOOGLE_PROTOBUF_REFSTRUCT_COMPATIBILITY_MODE
+    [global::System.Diagnostics.DebuggerNonUserCodeAttribute]
+    void pb::IBufferMessage.InternalMergeFrom(ref pb::ParseContext input) {
+      uint tag;
+      while ((tag = input.ReadTag()) != 0) {
+        switch(tag) {
+          default:
+            _unknownFields = pb::UnknownFieldSet.MergeFieldFrom(_unknownFields, ref input);
+            break;
+          case 26: {
+            Name = input.ReadString();
+            break;
+          }
+          case 32: {
+            Recursive = input.ReadBool();
+            break;
+          }
+        }
+      }
+    }
+    #endif
 
   }
 
   /// <summary>
   /// The `ListGroupMembers` request.
   /// </summary>
-  public sealed partial class ListGroupMembersRequest : pb::IMessage<ListGroupMembersRequest> {
+  public sealed partial class ListGroupMembersRequest : pb::IMessage<ListGroupMembersRequest>
+  #if !GOOGLE_PROTOBUF_REFSTRUCT_COMPATIBILITY_MODE
+      , pb::IBufferMessage
+  #endif
+  {
     private static readonly pb::MessageParser<ListGroupMembersRequest> _parser = new pb::MessageParser<ListGroupMembersRequest>(() => new ListGroupMembersRequest());
     private pb::UnknownFieldSet _unknownFields;
     [global::System.Diagnostics.DebuggerNonUserCodeAttribute]
@@ -1317,8 +1685,9 @@ namespace Google.Cloud.Monitoring.V3 {
     public const int NameFieldNumber = 7;
     private string name_ = "";
     /// <summary>
-    /// The group whose members are listed. The format is
-    /// `"projects/{project_id_or_number}/groups/{group_id}"`.
+    /// Required. The group whose members are listed. The format is:
+    ///
+    ///     projects/[PROJECT_ID_OR_NUMBER]/groups/[GROUP_ID]
     /// </summary>
     [global::System.Diagnostics.DebuggerNonUserCodeAttribute]
     public string Name {
@@ -1346,7 +1715,7 @@ namespace Google.Cloud.Monitoring.V3 {
     public const int PageTokenFieldNumber = 4;
     private string pageToken_ = "";
     /// <summary>
-    /// If this field is not empty then it must contain the `nextPageToken` value
+    /// If this field is not empty then it must contain the `next_page_token` value
     /// returned by a previous call to this method.  Using this field causes the
     /// method to return additional results from the previous method call.
     /// </summary>
@@ -1362,13 +1731,14 @@ namespace Google.Cloud.Monitoring.V3 {
     public const int FilterFieldNumber = 5;
     private string filter_ = "";
     /// <summary>
-    /// An optional [list filter](/monitoring/api/learn_more#filtering) describing
-    /// the members to be returned.  The filter may reference the type, labels, and
-    /// metadata of monitored resources that comprise the group.
-    /// For example, to return only resources representing Compute Engine VM
-    /// instances, use this filter:
+    /// An optional [list
+    /// filter](https://cloud.google.com/monitoring/api/learn_more#filtering)
+    /// describing the members to be returned.  The filter may reference the type,
+    /// labels, and metadata of monitored resources that comprise the group. For
+    /// example, to return only resources representing Compute Engine VM instances,
+    /// use this filter:
     ///
-    ///     resource.type = "gce_instance"
+    ///     `resource.type = "gce_instance"`
     /// </summary>
     [global::System.Diagnostics.DebuggerNonUserCodeAttribute]
     public string Filter {
@@ -1437,6 +1807,9 @@ namespace Google.Cloud.Monitoring.V3 {
 
     [global::System.Diagnostics.DebuggerNonUserCodeAttribute]
     public void WriteTo(pb::CodedOutputStream output) {
+    #if !GOOGLE_PROTOBUF_REFSTRUCT_COMPATIBILITY_MODE
+      output.WriteRawMessage(this);
+    #else
       if (PageSize != 0) {
         output.WriteRawTag(24);
         output.WriteInt32(PageSize);
@@ -1460,7 +1833,37 @@ namespace Google.Cloud.Monitoring.V3 {
       if (_unknownFields != null) {
         _unknownFields.WriteTo(output);
       }
+    #endif
     }
+
+    #if !GOOGLE_PROTOBUF_REFSTRUCT_COMPATIBILITY_MODE
+    [global::System.Diagnostics.DebuggerNonUserCodeAttribute]
+    void pb::IBufferMessage.InternalWriteTo(ref pb::WriteContext output) {
+      if (PageSize != 0) {
+        output.WriteRawTag(24);
+        output.WriteInt32(PageSize);
+      }
+      if (PageToken.Length != 0) {
+        output.WriteRawTag(34);
+        output.WriteString(PageToken);
+      }
+      if (Filter.Length != 0) {
+        output.WriteRawTag(42);
+        output.WriteString(Filter);
+      }
+      if (interval_ != null) {
+        output.WriteRawTag(50);
+        output.WriteMessage(Interval);
+      }
+      if (Name.Length != 0) {
+        output.WriteRawTag(58);
+        output.WriteString(Name);
+      }
+      if (_unknownFields != null) {
+        _unknownFields.WriteTo(ref output);
+      }
+    }
+    #endif
 
     [global::System.Diagnostics.DebuggerNonUserCodeAttribute]
     public int CalculateSize() {
@@ -1514,6 +1917,9 @@ namespace Google.Cloud.Monitoring.V3 {
 
     [global::System.Diagnostics.DebuggerNonUserCodeAttribute]
     public void MergeFrom(pb::CodedInputStream input) {
+    #if !GOOGLE_PROTOBUF_REFSTRUCT_COMPATIBILITY_MODE
+      input.ReadRawMessage(this);
+    #else
       uint tag;
       while ((tag = input.ReadTag()) != 0) {
         switch(tag) {
@@ -1545,14 +1951,56 @@ namespace Google.Cloud.Monitoring.V3 {
           }
         }
       }
+    #endif
     }
+
+    #if !GOOGLE_PROTOBUF_REFSTRUCT_COMPATIBILITY_MODE
+    [global::System.Diagnostics.DebuggerNonUserCodeAttribute]
+    void pb::IBufferMessage.InternalMergeFrom(ref pb::ParseContext input) {
+      uint tag;
+      while ((tag = input.ReadTag()) != 0) {
+        switch(tag) {
+          default:
+            _unknownFields = pb::UnknownFieldSet.MergeFieldFrom(_unknownFields, ref input);
+            break;
+          case 24: {
+            PageSize = input.ReadInt32();
+            break;
+          }
+          case 34: {
+            PageToken = input.ReadString();
+            break;
+          }
+          case 42: {
+            Filter = input.ReadString();
+            break;
+          }
+          case 50: {
+            if (interval_ == null) {
+              Interval = new global::Google.Cloud.Monitoring.V3.TimeInterval();
+            }
+            input.ReadMessage(Interval);
+            break;
+          }
+          case 58: {
+            Name = input.ReadString();
+            break;
+          }
+        }
+      }
+    }
+    #endif
 
   }
 
   /// <summary>
   /// The `ListGroupMembers` response.
   /// </summary>
-  public sealed partial class ListGroupMembersResponse : pb::IMessage<ListGroupMembersResponse> {
+  public sealed partial class ListGroupMembersResponse : pb::IMessage<ListGroupMembersResponse>
+  #if !GOOGLE_PROTOBUF_REFSTRUCT_COMPATIBILITY_MODE
+      , pb::IBufferMessage
+  #endif
+  {
     private static readonly pb::MessageParser<ListGroupMembersResponse> _parser = new pb::MessageParser<ListGroupMembersResponse>(() => new ListGroupMembersResponse());
     private pb::UnknownFieldSet _unknownFields;
     [global::System.Diagnostics.DebuggerNonUserCodeAttribute]
@@ -1607,7 +2055,7 @@ namespace Google.Cloud.Monitoring.V3 {
     /// <summary>
     /// If there are more results than have been returned, then this field is
     /// set to a non-empty value.  To see the additional results, use that value as
-    /// `pageToken` in the next call to this method.
+    /// `page_token` in the next call to this method.
     /// </summary>
     [global::System.Diagnostics.DebuggerNonUserCodeAttribute]
     public string NextPageToken {
@@ -1669,6 +2117,9 @@ namespace Google.Cloud.Monitoring.V3 {
 
     [global::System.Diagnostics.DebuggerNonUserCodeAttribute]
     public void WriteTo(pb::CodedOutputStream output) {
+    #if !GOOGLE_PROTOBUF_REFSTRUCT_COMPATIBILITY_MODE
+      output.WriteRawMessage(this);
+    #else
       members_.WriteTo(output, _repeated_members_codec);
       if (NextPageToken.Length != 0) {
         output.WriteRawTag(18);
@@ -1681,7 +2132,26 @@ namespace Google.Cloud.Monitoring.V3 {
       if (_unknownFields != null) {
         _unknownFields.WriteTo(output);
       }
+    #endif
     }
+
+    #if !GOOGLE_PROTOBUF_REFSTRUCT_COMPATIBILITY_MODE
+    [global::System.Diagnostics.DebuggerNonUserCodeAttribute]
+    void pb::IBufferMessage.InternalWriteTo(ref pb::WriteContext output) {
+      members_.WriteTo(ref output, _repeated_members_codec);
+      if (NextPageToken.Length != 0) {
+        output.WriteRawTag(18);
+        output.WriteString(NextPageToken);
+      }
+      if (TotalSize != 0) {
+        output.WriteRawTag(24);
+        output.WriteInt32(TotalSize);
+      }
+      if (_unknownFields != null) {
+        _unknownFields.WriteTo(ref output);
+      }
+    }
+    #endif
 
     [global::System.Diagnostics.DebuggerNonUserCodeAttribute]
     public int CalculateSize() {
@@ -1716,6 +2186,9 @@ namespace Google.Cloud.Monitoring.V3 {
 
     [global::System.Diagnostics.DebuggerNonUserCodeAttribute]
     public void MergeFrom(pb::CodedInputStream input) {
+    #if !GOOGLE_PROTOBUF_REFSTRUCT_COMPATIBILITY_MODE
+      input.ReadRawMessage(this);
+    #else
       uint tag;
       while ((tag = input.ReadTag()) != 0) {
         switch(tag) {
@@ -1736,7 +2209,34 @@ namespace Google.Cloud.Monitoring.V3 {
           }
         }
       }
+    #endif
     }
+
+    #if !GOOGLE_PROTOBUF_REFSTRUCT_COMPATIBILITY_MODE
+    [global::System.Diagnostics.DebuggerNonUserCodeAttribute]
+    void pb::IBufferMessage.InternalMergeFrom(ref pb::ParseContext input) {
+      uint tag;
+      while ((tag = input.ReadTag()) != 0) {
+        switch(tag) {
+          default:
+            _unknownFields = pb::UnknownFieldSet.MergeFieldFrom(_unknownFields, ref input);
+            break;
+          case 10: {
+            members_.AddEntriesFrom(ref input, _repeated_members_codec);
+            break;
+          }
+          case 18: {
+            NextPageToken = input.ReadString();
+            break;
+          }
+          case 24: {
+            TotalSize = input.ReadInt32();
+            break;
+          }
+        }
+      }
+    }
+    #endif
 
   }
 

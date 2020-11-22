@@ -21,6 +21,8 @@ using Xunit;
 using BclType = System.Type;
 using wkt = Google.Protobuf.WellKnownTypes;
 using static Google.Cloud.Firestore.Tests.DocumentSnapshotHelpers;
+using System.Collections;
+using System.Linq;
 
 namespace Google.Cloud.Firestore.Tests
 {
@@ -225,6 +227,26 @@ namespace Google.Cloud.Firestore.Tests
             Assert.Equal(new List<object> { 1L, 2L }, deserialized);
         }
 
+#pragma warning disable DE0006 // ArrayList deprecation
+        [Fact]
+        public void DeserializeArrayToArrayListUsesArrayList()
+        {
+            var value = ValueSerializer.Serialize(SerializationContext.Default, new[] { 1, 2 });
+            var deserialized = DeserializeDefault(value, typeof(ArrayList));
+            Assert.IsType<ArrayList>(deserialized);
+            Assert.Equal(new ArrayList { 1L, 2L }, deserialized);
+        }
+#pragma warning restore DE0006
+
+        [Fact]
+        public void DeserializeArrayToGenericIEnumerableUsesList()
+        {
+            var value = ValueSerializer.Serialize(SerializationContext.Default, new[] { 1, 2 });
+            var deserialized = DeserializeDefault(value, typeof(IEnumerable<int>));
+            Assert.IsType<List<int>>(deserialized);
+            Assert.Equal(new List<int> { 1, 2 }, deserialized);
+        }
+
         [Theory]
         [InlineData(typeof(int?))]
         [InlineData(typeof(string))]
@@ -253,6 +275,14 @@ namespace Google.Cloud.Firestore.Tests
             // We should get a clone back.
             Assert.NotSame(value, deserialized);
             Assert.Equal(value, deserialized);
+        }
+
+        [Fact]
+        public void DeserializeToLinqResult_Fails()
+        {
+            var sequence = Enumerable.Range(1, 3);
+            var value = ValueSerializer.Serialize(SerializationContext.Default, sequence);
+            Assert.Throws<NotSupportedException>(() => ValueDeserializer.Deserialize(SerializationTestData.Context, value, sequence.GetType()));
         }
 
         // These three classes exist for testing unknown property handling

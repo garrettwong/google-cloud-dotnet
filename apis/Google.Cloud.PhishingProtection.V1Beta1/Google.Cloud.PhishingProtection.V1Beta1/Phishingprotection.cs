@@ -39,18 +39,19 @@ namespace Google.Cloud.PhishingProtection.V1Beta1 {
             "cG9uc2UiRILT5JMCMSIsL3YxYmV0YTEve3BhcmVudD1wcm9qZWN0cy8qfS9w",
             "aGlzaGluZzpyZXBvcnQ6ASraQQpwYXJlbnQsdXJpGlXKQSFwaGlzaGluZ3By",
             "b3RlY3Rpb24uZ29vZ2xlYXBpcy5jb23SQS5odHRwczovL3d3dy5nb29nbGVh",
-            "cGlzLmNvbS9hdXRoL2Nsb3VkLXBsYXRmb3JtQvgBCiVjb20uZ29vZ2xlLnBo",
+            "cGlzLmNvbS9hdXRoL2Nsb3VkLXBsYXRmb3JtQqUCCiVjb20uZ29vZ2xlLnBo",
             "aXNoaW5ncHJvdGVjdGlvbi52MWJldGExQhdQaGlzaGluZ1Byb3RlY3Rpb25Q",
             "cm90b1ABWllnb29nbGUuZ29sYW5nLm9yZy9nZW5wcm90by9nb29nbGVhcGlz",
             "L2Nsb3VkL3BoaXNoaW5ncHJvdGVjdGlvbi92MWJldGExO3BoaXNoaW5ncHJv",
             "dGVjdGlvbqICBEdDUFCqAidHb29nbGUuQ2xvdWQuUGhpc2hpbmdQcm90ZWN0",
             "aW9uLlYxQmV0YTHKAidHb29nbGVcQ2xvdWRcUGhpc2hpbmdQcm90ZWN0aW9u",
-            "XFYxYmV0YTFiBnByb3RvMw=="));
+            "XFYxYmV0YTHqAipHb29nbGU6OkNsb3VkOjpQaGlzaGluZ1Byb3RlY3Rpb246",
+            "OlYxYmV0YTFiBnByb3RvMw=="));
       descriptor = pbr::FileDescriptor.FromGeneratedCode(descriptorData,
           new pbr::FileDescriptor[] { global::Google.Api.AnnotationsReflection.Descriptor, global::Google.Api.ClientReflection.Descriptor, global::Google.Api.FieldBehaviorReflection.Descriptor, global::Google.Api.ResourceReflection.Descriptor, },
-          new pbr::GeneratedClrTypeInfo(null, new pbr::GeneratedClrTypeInfo[] {
-            new pbr::GeneratedClrTypeInfo(typeof(global::Google.Cloud.PhishingProtection.V1Beta1.ReportPhishingRequest), global::Google.Cloud.PhishingProtection.V1Beta1.ReportPhishingRequest.Parser, new[]{ "Parent", "Uri" }, null, null, null),
-            new pbr::GeneratedClrTypeInfo(typeof(global::Google.Cloud.PhishingProtection.V1Beta1.ReportPhishingResponse), global::Google.Cloud.PhishingProtection.V1Beta1.ReportPhishingResponse.Parser, null, null, null, null)
+          new pbr::GeneratedClrTypeInfo(null, null, new pbr::GeneratedClrTypeInfo[] {
+            new pbr::GeneratedClrTypeInfo(typeof(global::Google.Cloud.PhishingProtection.V1Beta1.ReportPhishingRequest), global::Google.Cloud.PhishingProtection.V1Beta1.ReportPhishingRequest.Parser, new[]{ "Parent", "Uri" }, null, null, null, null),
+            new pbr::GeneratedClrTypeInfo(typeof(global::Google.Cloud.PhishingProtection.V1Beta1.ReportPhishingResponse), global::Google.Cloud.PhishingProtection.V1Beta1.ReportPhishingResponse.Parser, null, null, null, null, null)
           }));
     }
     #endregion
@@ -60,7 +61,11 @@ namespace Google.Cloud.PhishingProtection.V1Beta1 {
   /// <summary>
   /// The ReportPhishing request message.
   /// </summary>
-  public sealed partial class ReportPhishingRequest : pb::IMessage<ReportPhishingRequest> {
+  public sealed partial class ReportPhishingRequest : pb::IMessage<ReportPhishingRequest>
+  #if !GOOGLE_PROTOBUF_REFSTRUCT_COMPATIBILITY_MODE
+      , pb::IBufferMessage
+  #endif
+  {
     private static readonly pb::MessageParser<ReportPhishingRequest> _parser = new pb::MessageParser<ReportPhishingRequest>(() => new ReportPhishingRequest());
     private pb::UnknownFieldSet _unknownFields;
     [global::System.Diagnostics.DebuggerNonUserCodeAttribute]
@@ -160,6 +165,9 @@ namespace Google.Cloud.PhishingProtection.V1Beta1 {
 
     [global::System.Diagnostics.DebuggerNonUserCodeAttribute]
     public void WriteTo(pb::CodedOutputStream output) {
+    #if !GOOGLE_PROTOBUF_REFSTRUCT_COMPATIBILITY_MODE
+      output.WriteRawMessage(this);
+    #else
       if (Parent.Length != 0) {
         output.WriteRawTag(10);
         output.WriteString(Parent);
@@ -171,7 +179,25 @@ namespace Google.Cloud.PhishingProtection.V1Beta1 {
       if (_unknownFields != null) {
         _unknownFields.WriteTo(output);
       }
+    #endif
     }
+
+    #if !GOOGLE_PROTOBUF_REFSTRUCT_COMPATIBILITY_MODE
+    [global::System.Diagnostics.DebuggerNonUserCodeAttribute]
+    void pb::IBufferMessage.InternalWriteTo(ref pb::WriteContext output) {
+      if (Parent.Length != 0) {
+        output.WriteRawTag(10);
+        output.WriteString(Parent);
+      }
+      if (Uri.Length != 0) {
+        output.WriteRawTag(18);
+        output.WriteString(Uri);
+      }
+      if (_unknownFields != null) {
+        _unknownFields.WriteTo(ref output);
+      }
+    }
+    #endif
 
     [global::System.Diagnostics.DebuggerNonUserCodeAttribute]
     public int CalculateSize() {
@@ -204,6 +230,9 @@ namespace Google.Cloud.PhishingProtection.V1Beta1 {
 
     [global::System.Diagnostics.DebuggerNonUserCodeAttribute]
     public void MergeFrom(pb::CodedInputStream input) {
+    #if !GOOGLE_PROTOBUF_REFSTRUCT_COMPATIBILITY_MODE
+      input.ReadRawMessage(this);
+    #else
       uint tag;
       while ((tag = input.ReadTag()) != 0) {
         switch(tag) {
@@ -220,14 +249,41 @@ namespace Google.Cloud.PhishingProtection.V1Beta1 {
           }
         }
       }
+    #endif
     }
+
+    #if !GOOGLE_PROTOBUF_REFSTRUCT_COMPATIBILITY_MODE
+    [global::System.Diagnostics.DebuggerNonUserCodeAttribute]
+    void pb::IBufferMessage.InternalMergeFrom(ref pb::ParseContext input) {
+      uint tag;
+      while ((tag = input.ReadTag()) != 0) {
+        switch(tag) {
+          default:
+            _unknownFields = pb::UnknownFieldSet.MergeFieldFrom(_unknownFields, ref input);
+            break;
+          case 10: {
+            Parent = input.ReadString();
+            break;
+          }
+          case 18: {
+            Uri = input.ReadString();
+            break;
+          }
+        }
+      }
+    }
+    #endif
 
   }
 
   /// <summary>
   /// The ReportPhishing (empty) response message.
   /// </summary>
-  public sealed partial class ReportPhishingResponse : pb::IMessage<ReportPhishingResponse> {
+  public sealed partial class ReportPhishingResponse : pb::IMessage<ReportPhishingResponse>
+  #if !GOOGLE_PROTOBUF_REFSTRUCT_COMPATIBILITY_MODE
+      , pb::IBufferMessage
+  #endif
+  {
     private static readonly pb::MessageParser<ReportPhishingResponse> _parser = new pb::MessageParser<ReportPhishingResponse>(() => new ReportPhishingResponse());
     private pb::UnknownFieldSet _unknownFields;
     [global::System.Diagnostics.DebuggerNonUserCodeAttribute]
@@ -292,10 +348,23 @@ namespace Google.Cloud.PhishingProtection.V1Beta1 {
 
     [global::System.Diagnostics.DebuggerNonUserCodeAttribute]
     public void WriteTo(pb::CodedOutputStream output) {
+    #if !GOOGLE_PROTOBUF_REFSTRUCT_COMPATIBILITY_MODE
+      output.WriteRawMessage(this);
+    #else
       if (_unknownFields != null) {
         _unknownFields.WriteTo(output);
       }
+    #endif
     }
+
+    #if !GOOGLE_PROTOBUF_REFSTRUCT_COMPATIBILITY_MODE
+    [global::System.Diagnostics.DebuggerNonUserCodeAttribute]
+    void pb::IBufferMessage.InternalWriteTo(ref pb::WriteContext output) {
+      if (_unknownFields != null) {
+        _unknownFields.WriteTo(ref output);
+      }
+    }
+    #endif
 
     [global::System.Diagnostics.DebuggerNonUserCodeAttribute]
     public int CalculateSize() {
@@ -316,6 +385,9 @@ namespace Google.Cloud.PhishingProtection.V1Beta1 {
 
     [global::System.Diagnostics.DebuggerNonUserCodeAttribute]
     public void MergeFrom(pb::CodedInputStream input) {
+    #if !GOOGLE_PROTOBUF_REFSTRUCT_COMPATIBILITY_MODE
+      input.ReadRawMessage(this);
+    #else
       uint tag;
       while ((tag = input.ReadTag()) != 0) {
         switch(tag) {
@@ -324,7 +396,22 @@ namespace Google.Cloud.PhishingProtection.V1Beta1 {
             break;
         }
       }
+    #endif
     }
+
+    #if !GOOGLE_PROTOBUF_REFSTRUCT_COMPATIBILITY_MODE
+    [global::System.Diagnostics.DebuggerNonUserCodeAttribute]
+    void pb::IBufferMessage.InternalMergeFrom(ref pb::ParseContext input) {
+      uint tag;
+      while ((tag = input.ReadTag()) != 0) {
+        switch(tag) {
+          default:
+            _unknownFields = pb::UnknownFieldSet.MergeFieldFrom(_unknownFields, ref input);
+            break;
+        }
+      }
+    }
+    #endif
 
   }
 

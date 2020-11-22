@@ -27,6 +27,7 @@ using System.Text;
 using System.Threading.Tasks;
 using System.Xml.Linq;
 using Xunit;
+using static Google.Cloud.Storage.V1.UrlSigner;
 
 namespace Google.Cloud.Storage.V1.IntegrationTests
 {
@@ -40,17 +41,21 @@ namespace Google.Cloud.Storage.V1.IntegrationTests
     {
         private static readonly TimeSpan s_duration = TimeSpan.FromSeconds(5);
 
-        private static void DeleteTest_Common(StorageFixture fixture, UrlSigner signer, [CallerMemberName] string caller = null)
+        private static void DeleteTest_Common(StorageFixture fixture, SigningVersion signingVersion, [CallerMemberName] string caller = null)
         {
             var bucket = fixture.SingleVersionBucket;
             var name = IdGenerator.FromGuid();
+            var requestTemplate = RequestTemplate
+                .FromBucket(bucket)
+                .WithObjectName(name)
+                .WithHttpMethod(HttpMethod.Delete);
             string url = null;
 
             fixture.RegisterDelayTest(
                 s_duration,
                 beforeDelay: async duration =>
                 {
-                    url = signer.Sign(bucket, name, duration, HttpMethod.Delete);
+                    url = fixture.UrlSigner.Sign(requestTemplate, Options.FromDuration(duration).WithSigningVersion(signingVersion));
 
                     // Upload an object which can be deleted with the URL.
                     await fixture.Client.UploadObjectAsync(bucket, name, "", new MemoryStream(fixture.SmallContent));
@@ -58,7 +63,7 @@ namespace Google.Cloud.Storage.V1.IntegrationTests
                     // Verify that the URL works initially.
                     var response = await fixture.HttpClient.DeleteAsync(url);
                     await VerifyResponseAsync(response);
-                    var obj = await fixture.Client.ListObjectsAsync(bucket, name).FirstOrDefault(o => o.Name == name);
+                    var obj = await fixture.Client.ListObjectsAsync(bucket, name).FirstOrDefaultAsync(o => o.Name == name);
                     Assert.Null(obj);
 
                     // Restore the object. 
@@ -69,7 +74,7 @@ namespace Google.Cloud.Storage.V1.IntegrationTests
                     // Verify that the URL no longer works.
                     var response = await fixture.HttpClient.DeleteAsync(url);
                     Assert.Equal(HttpStatusCode.BadRequest, response.StatusCode);
-                    var obj = await fixture.Client.ListObjectsAsync(bucket, name).FirstOrDefault(o => o.Name == name);
+                    var obj = await fixture.Client.ListObjectsAsync(bucket, name).FirstOrDefaultAsync(o => o.Name == name);
                     Assert.NotNull(obj);
 
                     // Cleanup
@@ -78,7 +83,7 @@ namespace Google.Cloud.Storage.V1.IntegrationTests
                 caller);
         }
 
-        private static void GetTest_Common(StorageFixture fixture, UrlSigner signer, [CallerMemberName] string caller = null)
+        private static void GetTest_Common(StorageFixture fixture, SigningVersion signingVersion, [CallerMemberName] string caller = null)
         {
             string url = null;
 
@@ -86,7 +91,9 @@ namespace Google.Cloud.Storage.V1.IntegrationTests
                 s_duration,
                 beforeDelay: async duration =>
                 {
-                    url = signer.Sign(fixture.ReadBucket, fixture.SmallObject, duration);
+                    url = fixture.UrlSigner.Sign(
+                        RequestTemplate.FromBucket(fixture.ReadBucket).WithObjectName(fixture.SmallObject),
+                        Options.FromDuration(duration).WithSigningVersion(signingVersion));
 
                     // Verify that the URL works initially.
                     var response = await fixture.HttpClient.GetAsync(url);
@@ -102,16 +109,18 @@ namespace Google.Cloud.Storage.V1.IntegrationTests
                 caller);
         }
 
-        private static void GetBucketTest_Common(StorageFixture fixture, UrlSigner signer, [CallerMemberName] string caller = null)
+        private static void GetBucketTest_Common(StorageFixture fixture, SigningVersion signingVersion, [CallerMemberName] string caller = null)
         {
             var bucket = fixture.ReadBucket;
+            var requestTemplate = RequestTemplate
+                .FromBucket(bucket);
             string url = null;
 
             fixture.RegisterDelayTest(
                 s_duration,
                 beforeDelay: async duration =>
                 {
-                    url = signer.Sign(bucket, null, duration);
+                    url = fixture.UrlSigner.Sign(requestTemplate, Options.FromDuration(duration).WithSigningVersion(signingVersion));
 
                     // Verify that the URL works initially.
                     var response = await fixture.HttpClient.GetAsync(url);
@@ -120,7 +129,7 @@ namespace Google.Cloud.Storage.V1.IntegrationTests
                     var document = XDocument.Parse(result);
                     var ns = document.Root.GetDefaultNamespace();
                     var keys = document.Root.Elements(ns + "Contents").Select(contents => contents.Element(ns + "Key").Value).ToList();
-                    var objectNames = await fixture.Client.ListObjectsAsync(bucket, null).Select(o => o.Name).ToList();
+                    var objectNames = await fixture.Client.ListObjectsAsync(bucket, null).Select(o => o.Name).ToListAsync();
                     Assert.Equal(objectNames, keys);
                 },
                 afterDelay: async () =>
@@ -132,10 +141,13 @@ namespace Google.Cloud.Storage.V1.IntegrationTests
                 caller);
         }
 
-        private static void GetObjectWithSpacesTest_Common(StorageFixture fixture, UrlSigner signer, [CallerMemberName] string caller = null)
+        private static void GetObjectWithSpacesTest_Common(StorageFixture fixture, SigningVersion signingVersion, [CallerMemberName] string caller = null)
         {
             var bucket = fixture.SingleVersionBucket;
             var name = IdGenerator.FromGuid() + " with spaces";
+            var requestTemplate = RequestTemplate
+                .FromBucket(bucket)
+                .WithObjectName(name);
             var content = fixture.SmallContent;
             string url = null;
 
@@ -144,7 +156,7 @@ namespace Google.Cloud.Storage.V1.IntegrationTests
                 beforeDelay: async duration =>
                 {
                     fixture.Client.UploadObject(bucket, name, null, new MemoryStream(content));
-                    url = signer.Sign(bucket, name, duration);
+                    url = fixture.UrlSigner.Sign(requestTemplate, Options.FromDuration(duration).WithSigningVersion(signingVersion));
 
                     // Verify that the URL works initially.
                     var response = await fixture.HttpClient.GetAsync(url);
@@ -161,7 +173,7 @@ namespace Google.Cloud.Storage.V1.IntegrationTests
                 caller);
         }
 
-        private static void GetWithCustomerSuppliedEncryptionKeysTest_Common(StorageFixture fixture, UrlSigner signer, [CallerMemberName] string caller = null)
+        private static void GetWithCustomerSuppliedEncryptionKeysTest_Common(StorageFixture fixture, SigningVersion signingVersion, [CallerMemberName] string caller = null)
         {
             var bucket = fixture.SingleVersionBucket;
             var name = IdGenerator.FromGuid();
@@ -184,8 +196,15 @@ namespace Google.Cloud.Storage.V1.IntegrationTests
                     var encryptingClient = StorageClient.Create(encryptionKey: key);
                     encryptingClient.UploadObject(bucket, name, "application/octet-stream", new MemoryStream(content));
 
+                    // We don't need to specify the encryption key headers explicitly in the signer template.
+                    // The request message we are using in the template already has them set 
+                    // (by key.ModifyRequest(request)) and the signer will extract them from there.
                     var request = createGetRequest();
-                    url = signer.Sign(bucket, name, duration, request);
+                    var requestTemplate = RequestTemplate
+                        .FromBucket(bucket)
+                        .WithObjectName(name)
+                        .WithHttpRequestMessage(request);
+                    url = fixture.UrlSigner.Sign(requestTemplate, Options.FromDuration(duration).WithSigningVersion(signingVersion));
                     request.RequestUri = new Uri(url);
 
                     // Verify that the URL works initially.
@@ -207,7 +226,7 @@ namespace Google.Cloud.Storage.V1.IntegrationTests
                 caller);
         }
 
-        private static void GetWithCustomHeadersTest_Common(StorageFixture fixture, UrlSigner signer, [CallerMemberName] string caller = null)
+        private static void GetWithCustomHeadersTest_Common(StorageFixture fixture, SigningVersion signingVersion, [CallerMemberName] string caller = null)
         {
             string url = null;
 
@@ -227,11 +246,11 @@ namespace Google.Cloud.Storage.V1.IntegrationTests
                 beforeDelay: async duration =>
                 {
                     var request = createRequest();
-                    url = signer.Sign(
-                        fixture.ReadBucket,
-                        fixture.SmallObject,
-                        duration,
-                        request);
+                    var requestTemplate = RequestTemplate
+                        .FromBucket(fixture.ReadBucket)
+                        .WithObjectName(fixture.SmallObject)
+                        .WithHttpRequestMessage(request);
+                    url = fixture.UrlSigner.Sign(requestTemplate, Options.FromDuration(duration).WithSigningVersion(signingVersion));
                     request.RequestUri = new Uri(url);
 
                     // Verify that the URL works initially.
@@ -250,20 +269,72 @@ namespace Google.Cloud.Storage.V1.IntegrationTests
                 caller);
         }
 
-        private static void HeadTest_Common(StorageFixture fixture, UrlSigner signer, [CallerMemberName] string caller = null)
+        private static void GetWithVirtualHostedStyleTest_Common(StorageFixture fixture, SigningVersion signingVersion, [CallerMemberName] string caller = null)
         {
-            Func<HttpRequestMessage> createRequest = null;
             string url = null;
 
             fixture.RegisterDelayTest(
                 s_duration,
                 beforeDelay: async duration =>
                 {
-                    url = signer.Sign(
-                        fixture.ReadBucket,
-                        fixture.SmallObject,
-                        duration,
-                        HttpMethod.Head);
+                    url = fixture.UrlSigner.Sign(
+                        RequestTemplate.FromBucket(fixture.ReadBucket).WithObjectName(fixture.SmallObject),
+                        Options.FromDuration(duration).WithSigningVersion(signingVersion).WithUrlStyle(UrlStyle.VirtualHostedStyle));
+
+                    // Verify that the URL works initially.
+                    var response = await fixture.HttpClient.GetAsync(url);
+                    var result = await response.Content.ReadAsByteArrayAsync();
+                    AssertContentEqual(fixture.SmallContent, result);
+                },
+                afterDelay: async () =>
+                {
+                    // Verify that the URL no longer works.
+                    var response = await fixture.HttpClient.GetAsync(url);
+                    Assert.Equal(HttpStatusCode.BadRequest, response.StatusCode);
+                },
+                caller);
+        }
+
+        private static void GetWithHttpTest_Common(StorageFixture fixture, SigningVersion signingVersion, [CallerMemberName] string caller = null)
+        {
+            string url = null;
+
+            fixture.RegisterDelayTest(
+                s_duration,
+                beforeDelay: async duration =>
+                {
+                    url = fixture.UrlSigner.Sign(
+                        RequestTemplate.FromBucket(fixture.ReadBucket).WithObjectName(fixture.SmallObject),
+                        Options.FromDuration(duration).WithSigningVersion(signingVersion).WithScheme("http"));
+
+                    // Verify that the URL works initially.
+                    var response = await fixture.HttpClient.GetAsync(url);
+                    var result = await response.Content.ReadAsByteArrayAsync();
+                    AssertContentEqual(fixture.SmallContent, result);
+                },
+                afterDelay: async () =>
+                {
+                    // Verify that the URL no longer works.
+                    var response = await fixture.HttpClient.GetAsync(url);
+                    Assert.Equal(HttpStatusCode.BadRequest, response.StatusCode);
+                },
+                caller);
+        }
+
+        private static void HeadTest_Common(StorageFixture fixture, SigningVersion signingVersion, [CallerMemberName] string caller = null)
+        {
+            Func<HttpRequestMessage> createRequest = null;
+            var requestTemplate = RequestTemplate
+                .FromBucket(fixture.ReadBucket)
+                .WithObjectName(fixture.SmallObject)
+                .WithHttpMethod(HttpMethod.Head);
+            string url = null;
+
+            fixture.RegisterDelayTest(
+                s_duration,
+                beforeDelay: async duration =>
+                {
+                    url = fixture.UrlSigner.Sign(requestTemplate, Options.FromDuration(duration).WithSigningVersion(signingVersion));
                     createRequest = () => new HttpRequestMessage(HttpMethod.Head, url);
 
                     // Verify that the URL works initially.
@@ -279,20 +350,20 @@ namespace Google.Cloud.Storage.V1.IntegrationTests
                 caller);
         }
 
-        private static void HeadWithGetMethodSignedURLTest_Common(StorageFixture fixture, UrlSigner signer, [CallerMemberName] string caller = null)
+        private static void HeadWithGetMethodSignedURLTest_Common(StorageFixture fixture, SigningVersion signingVersion, [CallerMemberName] string caller = null)
         {
             Func<HttpRequestMessage> createRequest = null;
+            var requestTemplate = RequestTemplate
+                .FromBucket(fixture.ReadBucket)
+                .WithObjectName(fixture.SmallObject)
+                .WithHttpMethod(HttpMethod.Get);
             string url = null;
 
             fixture.RegisterDelayTest(
                 s_duration,
                 beforeDelay: async duration =>
                 {
-                    url = signer.Sign(
-                        fixture.ReadBucket,
-                        fixture.SmallObject,
-                        duration,
-                        HttpMethod.Get);
+                    url = fixture.UrlSigner.Sign(requestTemplate, Options.FromDuration(duration).WithSigningVersion(signingVersion));
                     createRequest = () => new HttpRequestMessage(HttpMethod.Head, url);
 
                     // Verify that the URL works initially.
@@ -308,7 +379,7 @@ namespace Google.Cloud.Storage.V1.IntegrationTests
                 caller);
         }
 
-        private static void PutTest_Common(StorageFixture fixture, UrlSigner signer, [CallerMemberName] string caller = null)
+        private static void PutTest_Common(StorageFixture fixture, SigningVersion signingVersion, [CallerMemberName] string caller = null)
         {
             Func<Task> expireAction1 = null;
             Func<Task> expireAction2 = null;
@@ -356,12 +427,12 @@ namespace Google.Cloud.Storage.V1.IntegrationTests
                     return putContent;
                 };
                 var content = createPutContent();
-                var url = signer.Sign(
-                    bucket,
-                    name,
-                    duration,
-                    HttpMethod.Put,
-                    contentHeaders: content.Headers.ToDictionary(h => h.Key, h => h.Value));
+                var requestTemplate = RequestTemplate
+                    .FromBucket(bucket)
+                    .WithObjectName(name)
+                    .WithHttpMethod(HttpMethod.Put)
+                    .WithContentHeaders(content.Headers.ToDictionary(h => h.Key, h => h.Value));
+                var url = fixture.UrlSigner.Sign(requestTemplate, Options.FromDuration(duration).WithSigningVersion(signingVersion));
 
                 // Verify that the URL works initially.
                 var response = await fixture.HttpClient.PutAsync(url, content);
@@ -379,13 +450,13 @@ namespace Google.Cloud.Storage.V1.IntegrationTests
                     content = createPutContent();
                     response = await fixture.HttpClient.PutAsync(url, content);
                     Assert.Equal(HttpStatusCode.BadRequest, response.StatusCode);
-                    var obj = await fixture.Client.ListObjectsAsync(bucket, name).FirstOrDefault(o => o.Name == name);
+                    var obj = await fixture.Client.ListObjectsAsync(bucket, name).FirstOrDefaultAsync(o => o.Name == name);
                     Assert.Null(obj);
                 };
             }
         }
 
-        private static void PutWithCustomerSuppliedEncryptionKeysTest_Common(StorageFixture fixture, UrlSigner signer, [CallerMemberName] string caller = null)
+        private static void PutWithCustomerSuppliedEncryptionKeysTest_Common(StorageFixture fixture, SigningVersion signingVersion, [CallerMemberName] string caller = null)
         {
             var bucket = fixture.SingleVersionBucket;
             var name = IdGenerator.FromGuid();
@@ -409,8 +480,15 @@ namespace Google.Cloud.Storage.V1.IntegrationTests
                 s_duration,
                 beforeDelay: async duration =>
                 {
+                    // We don't need to specify the encryption key headers explicitly in the signer template.
+                    // The request message we are using in the template already has them set 
+                    // (by key.ModifyRequest(request)) and the signer will extract them from there.
                     var request = createPutRequest();
-                    url = signer.Sign(bucket, name, duration, request);
+                    var requestTemplate = RequestTemplate
+                        .FromBucket(bucket)
+                        .WithObjectName(name)
+                        .WithHttpRequestMessage(request);
+                    url = fixture.UrlSigner.Sign(requestTemplate, Options.FromDuration(duration).WithSigningVersion(signingVersion));
 
                     // Verify that the URL works initially.
                     request.RequestUri = new Uri(url);
@@ -439,7 +517,7 @@ namespace Google.Cloud.Storage.V1.IntegrationTests
                 caller);
         }
 
-        private static void PutWithCustomHeadersTest_Common(StorageFixture fixture, UrlSigner signer, [CallerMemberName] string caller = null)
+        private static void PutWithCustomHeadersTest_Common(StorageFixture fixture, SigningVersion signingVersion, [CallerMemberName] string caller = null)
         {
             var bucket = fixture.SingleVersionBucket;
             var name = IdGenerator.FromGuid();
@@ -479,7 +557,11 @@ namespace Google.Cloud.Storage.V1.IntegrationTests
                 beforeDelay: async duration =>
                 {
                     var request = createRequest();
-                    url = signer.Sign(bucket, name, duration, request);
+                    var requestTemplate = RequestTemplate
+                        .FromBucket(bucket)
+                        .WithObjectName(name)
+                        .WithHttpRequestMessage(request);
+                    url = fixture.UrlSigner.Sign(requestTemplate, Options.FromDuration(duration).WithSigningVersion(signingVersion));
                     request.RequestUri = new Uri(url);
 
                     // Verify that the URL works initially.
@@ -499,16 +581,20 @@ namespace Google.Cloud.Storage.V1.IntegrationTests
                     request.RequestUri = new Uri(url);
                     var response = await fixture.HttpClient.SendAsync(request);
                     Assert.Equal(HttpStatusCode.BadRequest, response.StatusCode);
-                    var obj = await fixture.Client.ListObjectsAsync(bucket, name).FirstOrDefault(o => o.Name == name);
+                    var obj = await fixture.Client.ListObjectsAsync(bucket, name).FirstOrDefaultAsync(o => o.Name == name);
                     Assert.Null(obj);
                 },
                 caller);
         }
 
-        private static void ResumableUploadTest_Common(StorageFixture fixture, UrlSigner signer, [CallerMemberName] string caller = null)
+        private static void ResumableUploadTest_Common(StorageFixture fixture, SigningVersion signingVersion, [CallerMemberName] string caller = null)
         {
             var bucket = fixture.SingleVersionBucket;
             var name = IdGenerator.FromGuid();
+            var requestTemplate = RequestTemplate
+                .FromBucket(bucket)
+                .WithObjectName(name)
+                .WithHttpMethod(ResumableHttpMethod);
             var content = fixture.SmallContent;
             string url = null;
 
@@ -516,7 +602,7 @@ namespace Google.Cloud.Storage.V1.IntegrationTests
                 s_duration,
                 beforeDelay: async duration =>
                 {
-                    url = signer.Sign(bucket, name, duration, UrlSigner.ResumableHttpMethod);
+                    url = fixture.UrlSigner.Sign(requestTemplate, Options.FromDuration(duration).WithSigningVersion(signingVersion));
 
                     // Verify that the URL works initially.
                     var uploader = SignedUrlResumableUpload.Create(url, new MemoryStream(content));
@@ -539,16 +625,20 @@ namespace Google.Cloud.Storage.V1.IntegrationTests
                     Assert.Equal(UploadStatus.Failed, progress.Status);
                     Assert.IsType<GoogleApiException>(progress.Exception);
 
-                    var obj = await fixture.Client.ListObjectsAsync(bucket, name).FirstOrDefault(o => o.Name == name);
+                    var obj = await fixture.Client.ListObjectsAsync(bucket, name).FirstOrDefaultAsync(o => o.Name == name);
                     Assert.Null(obj);
                 },
                 caller);
         }
 
-        private static void ResumableUploadResumeTest_Common(StorageFixture fixture, UrlSigner signer, [CallerMemberName] string caller = null)
+        private static void ResumableUploadResumeTest_Common(StorageFixture fixture, SigningVersion signingVersion, [CallerMemberName] string caller = null)
         {
             var bucket = fixture.SingleVersionBucket;
             var name = IdGenerator.FromGuid();
+            var requestTemplate = RequestTemplate
+                .FromBucket(bucket)
+                .WithObjectName(name)
+                .WithHttpMethod(ResumableHttpMethod);
             var content = fixture.SmallContent;
             string url = null;
 
@@ -556,7 +646,7 @@ namespace Google.Cloud.Storage.V1.IntegrationTests
                 s_duration,
                 beforeDelay: async duration =>
                 {
-                    url = signer.Sign(bucket, name, duration, UrlSigner.ResumableHttpMethod);
+                    url = fixture.UrlSigner.Sign(requestTemplate, Options.FromDuration(duration).WithSigningVersion(signingVersion));
                     var sessionUri = await SignedUrlResumableUpload.InitiateSessionAsync(url);
 
                     // Verify that the URL works initially.
@@ -577,34 +667,38 @@ namespace Google.Cloud.Storage.V1.IntegrationTests
                     // Verify that the URL no longer works.
                     await Assert.ThrowsAsync<GoogleApiException>(() => SignedUrlResumableUpload.InitiateSessionAsync(url));
 
-                    var obj = await fixture.Client.ListObjectsAsync(bucket, name).FirstOrDefault(o => o.Name == name);
+                    var obj = await fixture.Client.ListObjectsAsync(bucket, name).FirstOrDefaultAsync(o => o.Name == name);
                     Assert.Null(obj);
                 },
                 caller);
         }
 
-        private static void ResumableUploadWithCustomerSuppliedEncryptionKeysTest_Common(StorageFixture fixture, UrlSigner signer, [CallerMemberName] string caller = null)
+        private static void ResumableUploadWithCustomerSuppliedEncryptionKeysTest_Common(StorageFixture fixture, SigningVersion signingVersion, [CallerMemberName] string caller = null)
         {
+            EncryptionKey key = EncryptionKey.Generate();
+
             var bucket = fixture.SingleVersionBucket;
             var name = IdGenerator.FromGuid();
-            var content = fixture.SmallContent;
-            string url = null;
+            var requestTemplate = RequestTemplate
+                .FromBucket(bucket)
+                .WithObjectName(name)
+                .WithHttpMethod(ResumableHttpMethod)
+                .WithRequestHeaders( new Dictionary<string, IEnumerable<string>> 
+                {
+                    { "x-goog-encryption-algorithm", new [] { "AES256" } },
+                    { "x-goog-encryption-key-sha256", new [] { key.Base64Hash } },
+                    { "x-goog-encryption-key", new [] { key.Base64Key } }
+                });
 
-            EncryptionKey key = EncryptionKey.Generate();
+            
+            var content = fixture.SmallContent;
+            string url = null;            
 
             fixture.RegisterDelayTest(
                 s_duration,
                 beforeDelay: async duration =>
                 {
-                    url = signer.Sign(
-                        bucket,
-                        name,
-                        duration,
-                        UrlSigner.ResumableHttpMethod,
-                        requestHeaders: new Dictionary<string, IEnumerable<string>> {
-                    { "x-goog-encryption-algorithm", new [] { "AES256" }
-}
-                        });
+                    url = fixture.UrlSigner.Sign(requestTemplate, Options.FromDuration(duration).WithSigningVersion(signingVersion));
 
                 // Verify that the URL works initially.
                 var uploader = SignedUrlResumableUpload.Create(

@@ -1,4 +1,4 @@
-// Copyright 2019 Google LLC
+// Copyright 2020 Google LLC
 //
 // Licensed under the Apache License, Version 2.0 (the "License");
 // you may not use this file except in compliance with the License.
@@ -33,7 +33,7 @@ namespace Google.Cloud.PhishingProtection.V1Beta1.Tests
             moq::Mock<PhishingProtectionServiceV1Beta1.PhishingProtectionServiceV1Beta1Client> mockGrpcClient = new moq::Mock<PhishingProtectionServiceV1Beta1.PhishingProtectionServiceV1Beta1Client>(moq::MockBehavior.Strict);
             ReportPhishingRequest request = new ReportPhishingRequest
             {
-                ParentAsProjectName = new gagr::ProjectName("[PROJECT]"),
+                ParentAsProjectName = gagr::ProjectName.FromProject("[PROJECT]"),
                 Uri = "uri3db70593",
             };
             ReportPhishingResponse expectedResponse = new ReportPhishingResponse { };
@@ -50,7 +50,7 @@ namespace Google.Cloud.PhishingProtection.V1Beta1.Tests
             moq::Mock<PhishingProtectionServiceV1Beta1.PhishingProtectionServiceV1Beta1Client> mockGrpcClient = new moq::Mock<PhishingProtectionServiceV1Beta1.PhishingProtectionServiceV1Beta1Client>(moq::MockBehavior.Strict);
             ReportPhishingRequest request = new ReportPhishingRequest
             {
-                ParentAsProjectName = new gagr::ProjectName("[PROJECT]"),
+                ParentAsProjectName = gagr::ProjectName.FromProject("[PROJECT]"),
                 Uri = "uri3db70593",
             };
             ReportPhishingResponse expectedResponse = new ReportPhishingResponse { };
@@ -69,7 +69,7 @@ namespace Google.Cloud.PhishingProtection.V1Beta1.Tests
             moq::Mock<PhishingProtectionServiceV1Beta1.PhishingProtectionServiceV1Beta1Client> mockGrpcClient = new moq::Mock<PhishingProtectionServiceV1Beta1.PhishingProtectionServiceV1Beta1Client>(moq::MockBehavior.Strict);
             ReportPhishingRequest request = new ReportPhishingRequest
             {
-                ParentAsProjectName = new gagr::ProjectName("[PROJECT]"),
+                ParentAsProjectName = gagr::ProjectName.FromProject("[PROJECT]"),
                 Uri = "uri3db70593",
             };
             ReportPhishingResponse expectedResponse = new ReportPhishingResponse { };
@@ -86,7 +86,7 @@ namespace Google.Cloud.PhishingProtection.V1Beta1.Tests
             moq::Mock<PhishingProtectionServiceV1Beta1.PhishingProtectionServiceV1Beta1Client> mockGrpcClient = new moq::Mock<PhishingProtectionServiceV1Beta1.PhishingProtectionServiceV1Beta1Client>(moq::MockBehavior.Strict);
             ReportPhishingRequest request = new ReportPhishingRequest
             {
-                ParentAsProjectName = new gagr::ProjectName("[PROJECT]"),
+                ParentAsProjectName = gagr::ProjectName.FromProject("[PROJECT]"),
                 Uri = "uri3db70593",
             };
             ReportPhishingResponse expectedResponse = new ReportPhishingResponse { };
@@ -100,12 +100,12 @@ namespace Google.Cloud.PhishingProtection.V1Beta1.Tests
         }
 
         [xunit::FactAttribute]
-        public void ReportPhishing_ResourceNames()
+        public void ReportPhishingResourceNames()
         {
             moq::Mock<PhishingProtectionServiceV1Beta1.PhishingProtectionServiceV1Beta1Client> mockGrpcClient = new moq::Mock<PhishingProtectionServiceV1Beta1.PhishingProtectionServiceV1Beta1Client>(moq::MockBehavior.Strict);
             ReportPhishingRequest request = new ReportPhishingRequest
             {
-                ParentAsProjectName = new gagr::ProjectName("[PROJECT]"),
+                ParentAsProjectName = gagr::ProjectName.FromProject("[PROJECT]"),
                 Uri = "uri3db70593",
             };
             ReportPhishingResponse expectedResponse = new ReportPhishingResponse { };
@@ -117,12 +117,12 @@ namespace Google.Cloud.PhishingProtection.V1Beta1.Tests
         }
 
         [xunit::FactAttribute]
-        public async stt::Task ReportPhishingAsync_ResourceNames()
+        public async stt::Task ReportPhishingResourceNamesAsync()
         {
             moq::Mock<PhishingProtectionServiceV1Beta1.PhishingProtectionServiceV1Beta1Client> mockGrpcClient = new moq::Mock<PhishingProtectionServiceV1Beta1.PhishingProtectionServiceV1Beta1Client>(moq::MockBehavior.Strict);
             ReportPhishingRequest request = new ReportPhishingRequest
             {
-                ParentAsProjectName = new gagr::ProjectName("[PROJECT]"),
+                ParentAsProjectName = gagr::ProjectName.FromProject("[PROJECT]"),
                 Uri = "uri3db70593",
             };
             ReportPhishingResponse expectedResponse = new ReportPhishingResponse { };

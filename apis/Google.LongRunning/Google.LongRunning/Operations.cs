@@ -25,66 +25,86 @@ namespace Google.LongRunning {
       byte[] descriptorData = global::System.Convert.FromBase64String(
           string.Concat(
             "CiNnb29nbGUvbG9uZ3J1bm5pbmcvb3BlcmF0aW9ucy5wcm90bxISZ29vZ2xl",
-            "LmxvbmdydW5uaW5nGhxnb29nbGUvYXBpL2Fubm90YXRpb25zLnByb3RvGhln",
-            "b29nbGUvcHJvdG9idWYvYW55LnByb3RvGh5nb29nbGUvcHJvdG9idWYvZHVy",
-            "YXRpb24ucHJvdG8aG2dvb2dsZS9wcm90b2J1Zi9lbXB0eS5wcm90bxoXZ29v",
-            "Z2xlL3JwYy9zdGF0dXMucHJvdG8aIGdvb2dsZS9wcm90b2J1Zi9kZXNjcmlw",
-            "dG9yLnByb3RvIqgBCglPcGVyYXRpb24SDAoEbmFtZRgBIAEoCRImCghtZXRh",
-            "ZGF0YRgCIAEoCzIULmdvb2dsZS5wcm90b2J1Zi5BbnkSDAoEZG9uZRgDIAEo",
-            "CBIjCgVlcnJvchgEIAEoCzISLmdvb2dsZS5ycGMuU3RhdHVzSAASKAoIcmVz",
-            "cG9uc2UYBSABKAsyFC5nb29nbGUucHJvdG9idWYuQW55SABCCAoGcmVzdWx0",
-            "IiMKE0dldE9wZXJhdGlvblJlcXVlc3QSDAoEbmFtZRgBIAEoCSJcChVMaXN0",
-            "T3BlcmF0aW9uc1JlcXVlc3QSDAoEbmFtZRgEIAEoCRIOCgZmaWx0ZXIYASAB",
-            "KAkSEQoJcGFnZV9zaXplGAIgASgFEhIKCnBhZ2VfdG9rZW4YAyABKAkiZAoW",
-            "TGlzdE9wZXJhdGlvbnNSZXNwb25zZRIxCgpvcGVyYXRpb25zGAEgAygLMh0u",
-            "Z29vZ2xlLmxvbmdydW5uaW5nLk9wZXJhdGlvbhIXCg9uZXh0X3BhZ2VfdG9r",
-            "ZW4YAiABKAkiJgoWQ2FuY2VsT3BlcmF0aW9uUmVxdWVzdBIMCgRuYW1lGAEg",
-            "ASgJIiYKFkRlbGV0ZU9wZXJhdGlvblJlcXVlc3QSDAoEbmFtZRgBIAEoCSJQ",
-            "ChRXYWl0T3BlcmF0aW9uUmVxdWVzdBIMCgRuYW1lGAEgASgJEioKB3RpbWVv",
-            "dXQYAiABKAsyGS5nb29nbGUucHJvdG9idWYuRHVyYXRpb24iPQoNT3BlcmF0",
-            "aW9uSW5mbxIVCg1yZXNwb25zZV90eXBlGAEgASgJEhUKDW1ldGFkYXRhX3R5",
-            "cGUYAiABKAky6AQKCk9wZXJhdGlvbnMShgEKDkxpc3RPcGVyYXRpb25zEiku",
-            "Z29vZ2xlLmxvbmdydW5uaW5nLkxpc3RPcGVyYXRpb25zUmVxdWVzdBoqLmdv",
-            "b2dsZS5sb25ncnVubmluZy5MaXN0T3BlcmF0aW9uc1Jlc3BvbnNlIh2C0+ST",
-            "AhcSFS92MS97bmFtZT1vcGVyYXRpb25zfRJ4CgxHZXRPcGVyYXRpb24SJy5n",
-            "b29nbGUubG9uZ3J1bm5pbmcuR2V0T3BlcmF0aW9uUmVxdWVzdBodLmdvb2ds",
-            "ZS5sb25ncnVubmluZy5PcGVyYXRpb24iIILT5JMCGhIYL3YxL3tuYW1lPW9w",
-            "ZXJhdGlvbnMvKip9EncKD0RlbGV0ZU9wZXJhdGlvbhIqLmdvb2dsZS5sb25n",
-            "cnVubmluZy5EZWxldGVPcGVyYXRpb25SZXF1ZXN0GhYuZ29vZ2xlLnByb3Rv",
-            "YnVmLkVtcHR5IiCC0+STAhoqGC92MS97bmFtZT1vcGVyYXRpb25zLyoqfRKB",
-            "AQoPQ2FuY2VsT3BlcmF0aW9uEiouZ29vZ2xlLmxvbmdydW5uaW5nLkNhbmNl",
-            "bE9wZXJhdGlvblJlcXVlc3QaFi5nb29nbGUucHJvdG9idWYuRW1wdHkiKoLT",
-            "5JMCJCIfL3YxL3tuYW1lPW9wZXJhdGlvbnMvKip9OmNhbmNlbDoBKhJaCg1X",
-            "YWl0T3BlcmF0aW9uEiguZ29vZ2xlLmxvbmdydW5uaW5nLldhaXRPcGVyYXRp",
-            "b25SZXF1ZXN0Gh0uZ29vZ2xlLmxvbmdydW5uaW5nLk9wZXJhdGlvbiIAOloK",
-            "Dm9wZXJhdGlvbl9pbmZvEh4uZ29vZ2xlLnByb3RvYnVmLk1ldGhvZE9wdGlv",
-            "bnMYmQggASgLMiEuZ29vZ2xlLmxvbmdydW5uaW5nLk9wZXJhdGlvbkluZm9C",
-            "lwEKFmNvbS5nb29nbGUubG9uZ3J1bm5pbmdCD09wZXJhdGlvbnNQcm90b1AB",
-            "Wj1nb29nbGUuZ29sYW5nLm9yZy9nZW5wcm90by9nb29nbGVhcGlzL2xvbmdy",
-            "dW5uaW5nO2xvbmdydW5uaW5n+AEBqgISR29vZ2xlLkxvbmdSdW5uaW5nygIS",
-            "R29vZ2xlXExvbmdSdW5uaW5nYgZwcm90bzM="));
+            "LmxvbmdydW5uaW5nGhxnb29nbGUvYXBpL2Fubm90YXRpb25zLnByb3RvGhdn",
+            "b29nbGUvYXBpL2NsaWVudC5wcm90bxoZZ29vZ2xlL3Byb3RvYnVmL2FueS5w",
+            "cm90bxoeZ29vZ2xlL3Byb3RvYnVmL2R1cmF0aW9uLnByb3RvGhtnb29nbGUv",
+            "cHJvdG9idWYvZW1wdHkucHJvdG8aF2dvb2dsZS9ycGMvc3RhdHVzLnByb3Rv",
+            "GiBnb29nbGUvcHJvdG9idWYvZGVzY3JpcHRvci5wcm90byKoAQoJT3BlcmF0",
+            "aW9uEgwKBG5hbWUYASABKAkSJgoIbWV0YWRhdGEYAiABKAsyFC5nb29nbGUu",
+            "cHJvdG9idWYuQW55EgwKBGRvbmUYAyABKAgSIwoFZXJyb3IYBCABKAsyEi5n",
+            "b29nbGUucnBjLlN0YXR1c0gAEigKCHJlc3BvbnNlGAUgASgLMhQuZ29vZ2xl",
+            "LnByb3RvYnVmLkFueUgAQggKBnJlc3VsdCIjChNHZXRPcGVyYXRpb25SZXF1",
+            "ZXN0EgwKBG5hbWUYASABKAkiXAoVTGlzdE9wZXJhdGlvbnNSZXF1ZXN0EgwK",
+            "BG5hbWUYBCABKAkSDgoGZmlsdGVyGAEgASgJEhEKCXBhZ2Vfc2l6ZRgCIAEo",
+            "BRISCgpwYWdlX3Rva2VuGAMgASgJImQKFkxpc3RPcGVyYXRpb25zUmVzcG9u",
+            "c2USMQoKb3BlcmF0aW9ucxgBIAMoCzIdLmdvb2dsZS5sb25ncnVubmluZy5P",
+            "cGVyYXRpb24SFwoPbmV4dF9wYWdlX3Rva2VuGAIgASgJIiYKFkNhbmNlbE9w",
+            "ZXJhdGlvblJlcXVlc3QSDAoEbmFtZRgBIAEoCSImChZEZWxldGVPcGVyYXRp",
+            "b25SZXF1ZXN0EgwKBG5hbWUYASABKAkiUAoUV2FpdE9wZXJhdGlvblJlcXVl",
+            "c3QSDAoEbmFtZRgBIAEoCRIqCgd0aW1lb3V0GAIgASgLMhkuZ29vZ2xlLnBy",
+            "b3RvYnVmLkR1cmF0aW9uIj0KDU9wZXJhdGlvbkluZm8SFQoNcmVzcG9uc2Vf",
+            "dHlwZRgBIAEoCRIVCg1tZXRhZGF0YV90eXBlGAIgASgJMqoFCgpPcGVyYXRp",
+            "b25zEpQBCg5MaXN0T3BlcmF0aW9ucxIpLmdvb2dsZS5sb25ncnVubmluZy5M",
+            "aXN0T3BlcmF0aW9uc1JlcXVlc3QaKi5nb29nbGUubG9uZ3J1bm5pbmcuTGlz",
+            "dE9wZXJhdGlvbnNSZXNwb25zZSIrgtPkkwIXEhUvdjEve25hbWU9b3BlcmF0",
+            "aW9uc33aQQtuYW1lLGZpbHRlchJ/CgxHZXRPcGVyYXRpb24SJy5nb29nbGUu",
+            "bG9uZ3J1bm5pbmcuR2V0T3BlcmF0aW9uUmVxdWVzdBodLmdvb2dsZS5sb25n",
+            "cnVubmluZy5PcGVyYXRpb24iJ4LT5JMCGhIYL3YxL3tuYW1lPW9wZXJhdGlv",
+            "bnMvKip92kEEbmFtZRJ+Cg9EZWxldGVPcGVyYXRpb24SKi5nb29nbGUubG9u",
+            "Z3J1bm5pbmcuRGVsZXRlT3BlcmF0aW9uUmVxdWVzdBoWLmdvb2dsZS5wcm90",
+            "b2J1Zi5FbXB0eSIngtPkkwIaKhgvdjEve25hbWU9b3BlcmF0aW9ucy8qKn3a",
+            "QQRuYW1lEogBCg9DYW5jZWxPcGVyYXRpb24SKi5nb29nbGUubG9uZ3J1bm5p",
+            "bmcuQ2FuY2VsT3BlcmF0aW9uUmVxdWVzdBoWLmdvb2dsZS5wcm90b2J1Zi5F",
+            "bXB0eSIxgtPkkwIkIh8vdjEve25hbWU9b3BlcmF0aW9ucy8qKn06Y2FuY2Vs",
+            "OgEq2kEEbmFtZRJaCg1XYWl0T3BlcmF0aW9uEiguZ29vZ2xlLmxvbmdydW5u",
+            "aW5nLldhaXRPcGVyYXRpb25SZXF1ZXN0Gh0uZ29vZ2xlLmxvbmdydW5uaW5n",
+            "Lk9wZXJhdGlvbiIAGh3KQRpsb25ncnVubmluZy5nb29nbGVhcGlzLmNvbTpa",
+            "Cg5vcGVyYXRpb25faW5mbxIeLmdvb2dsZS5wcm90b2J1Zi5NZXRob2RPcHRp",
+            "b25zGJkIIAEoCzIhLmdvb2dsZS5sb25ncnVubmluZy5PcGVyYXRpb25JbmZv",
+            "QpcBChZjb20uZ29vZ2xlLmxvbmdydW5uaW5nQg9PcGVyYXRpb25zUHJvdG9Q",
+            "AVo9Z29vZ2xlLmdvbGFuZy5vcmcvZ2VucHJvdG8vZ29vZ2xlYXBpcy9sb25n",
+            "cnVubmluZztsb25ncnVubmluZ/gBAaoCEkdvb2dsZS5Mb25nUnVubmluZ8oC",
+            "Ekdvb2dsZVxMb25nUnVubmluZ2IGcHJvdG8z"));
       descriptor = pbr::FileDescriptor.FromGeneratedCode(descriptorData,
-          new pbr::FileDescriptor[] { global::Google.Api.AnnotationsReflection.Descriptor, global::Google.Protobuf.WellKnownTypes.AnyReflection.Descriptor, global::Google.Protobuf.WellKnownTypes.DurationReflection.Descriptor, global::Google.Protobuf.WellKnownTypes.EmptyReflection.Descriptor, global::Google.Rpc.StatusReflection.Descriptor, pbr::FileDescriptor.DescriptorProtoFileDescriptor, },
-          new pbr::GeneratedClrTypeInfo(null, new pbr::GeneratedClrTypeInfo[] {
-            new pbr::GeneratedClrTypeInfo(typeof(global::Google.LongRunning.Operation), global::Google.LongRunning.Operation.Parser, new[]{ "Name", "Metadata", "Done", "Error", "Response" }, new[]{ "Result" }, null, null),
-            new pbr::GeneratedClrTypeInfo(typeof(global::Google.LongRunning.GetOperationRequest), global::Google.LongRunning.GetOperationRequest.Parser, new[]{ "Name" }, null, null, null),
-            new pbr::GeneratedClrTypeInfo(typeof(global::Google.LongRunning.ListOperationsRequest), global::Google.LongRunning.ListOperationsRequest.Parser, new[]{ "Name", "Filter", "PageSize", "PageToken" }, null, null, null),
-            new pbr::GeneratedClrTypeInfo(typeof(global::Google.LongRunning.ListOperationsResponse), global::Google.LongRunning.ListOperationsResponse.Parser, new[]{ "Operations", "NextPageToken" }, null, null, null),
-            new pbr::GeneratedClrTypeInfo(typeof(global::Google.LongRunning.CancelOperationRequest), global::Google.LongRunning.CancelOperationRequest.Parser, new[]{ "Name" }, null, null, null),
-            new pbr::GeneratedClrTypeInfo(typeof(global::Google.LongRunning.DeleteOperationRequest), global::Google.LongRunning.DeleteOperationRequest.Parser, new[]{ "Name" }, null, null, null),
-            new pbr::GeneratedClrTypeInfo(typeof(global::Google.LongRunning.WaitOperationRequest), global::Google.LongRunning.WaitOperationRequest.Parser, new[]{ "Name", "Timeout" }, null, null, null),
-            new pbr::GeneratedClrTypeInfo(typeof(global::Google.LongRunning.OperationInfo), global::Google.LongRunning.OperationInfo.Parser, new[]{ "ResponseType", "MetadataType" }, null, null, null)
+          new pbr::FileDescriptor[] { global::Google.Api.AnnotationsReflection.Descriptor, global::Google.Api.ClientReflection.Descriptor, global::Google.Protobuf.WellKnownTypes.AnyReflection.Descriptor, global::Google.Protobuf.WellKnownTypes.DurationReflection.Descriptor, global::Google.Protobuf.WellKnownTypes.EmptyReflection.Descriptor, global::Google.Rpc.StatusReflection.Descriptor, global::Google.Protobuf.Reflection.DescriptorReflection.Descriptor, },
+          new pbr::GeneratedClrTypeInfo(null, new pb::Extension[] { OperationsExtensions.OperationInfo }, new pbr::GeneratedClrTypeInfo[] {
+            new pbr::GeneratedClrTypeInfo(typeof(global::Google.LongRunning.Operation), global::Google.LongRunning.Operation.Parser, new[]{ "Name", "Metadata", "Done", "Error", "Response" }, new[]{ "Result" }, null, null, null),
+            new pbr::GeneratedClrTypeInfo(typeof(global::Google.LongRunning.GetOperationRequest), global::Google.LongRunning.GetOperationRequest.Parser, new[]{ "Name" }, null, null, null, null),
+            new pbr::GeneratedClrTypeInfo(typeof(global::Google.LongRunning.ListOperationsRequest), global::Google.LongRunning.ListOperationsRequest.Parser, new[]{ "Name", "Filter", "PageSize", "PageToken" }, null, null, null, null),
+            new pbr::GeneratedClrTypeInfo(typeof(global::Google.LongRunning.ListOperationsResponse), global::Google.LongRunning.ListOperationsResponse.Parser, new[]{ "Operations", "NextPageToken" }, null, null, null, null),
+            new pbr::GeneratedClrTypeInfo(typeof(global::Google.LongRunning.CancelOperationRequest), global::Google.LongRunning.CancelOperationRequest.Parser, new[]{ "Name" }, null, null, null, null),
+            new pbr::GeneratedClrTypeInfo(typeof(global::Google.LongRunning.DeleteOperationRequest), global::Google.LongRunning.DeleteOperationRequest.Parser, new[]{ "Name" }, null, null, null, null),
+            new pbr::GeneratedClrTypeInfo(typeof(global::Google.LongRunning.WaitOperationRequest), global::Google.LongRunning.WaitOperationRequest.Parser, new[]{ "Name", "Timeout" }, null, null, null, null),
+            new pbr::GeneratedClrTypeInfo(typeof(global::Google.LongRunning.OperationInfo), global::Google.LongRunning.OperationInfo.Parser, new[]{ "ResponseType", "MetadataType" }, null, null, null, null)
           }));
     }
     #endregion
 
   }
+  /// <summary>Holder for extension identifiers generated from the top level of google/longrunning/operations.proto</summary>
+  public static partial class OperationsExtensions {
+    /// <summary>
+    /// Additional information regarding long-running operations.
+    /// In particular, this specifies the types that are returned from
+    /// long-running operations.
+    ///
+    /// Required for methods that return `google.longrunning.Operation`; invalid
+    /// otherwise.
+    /// </summary>
+    public static readonly pb::Extension<global::Google.Protobuf.Reflection.MethodOptions, global::Google.LongRunning.OperationInfo> OperationInfo =
+      new pb::Extension<global::Google.Protobuf.Reflection.MethodOptions, global::Google.LongRunning.OperationInfo>(1049, pb::FieldCodec.ForMessage(8394, global::Google.LongRunning.OperationInfo.Parser));
+  }
+
   #region Messages
   /// <summary>
   /// This resource represents a long-running operation that is the result of a
   /// network API call.
   /// </summary>
-  public sealed partial class Operation : pb::IMessage<Operation> {
+  public sealed partial class Operation : pb::IMessage<Operation>
+  #if !GOOGLE_PROTOBUF_REFSTRUCT_COMPATIBILITY_MODE
+      , pb::IBufferMessage
+  #endif
+  {
     private static readonly pb::MessageParser<Operation> _parser = new pb::MessageParser<Operation>(() => new Operation());
     private pb::UnknownFieldSet _unknownFields;
     [global::System.Diagnostics.DebuggerNonUserCodeAttribute]
@@ -135,7 +155,7 @@ namespace Google.LongRunning {
     /// <summary>
     /// The server-assigned name, which is only unique within the same service that
     /// originally returns it. If you use the default HTTP mapping, the
-    /// `name` should have the format of `operations/some/unique/name`.
+    /// `name` should be a resource name ending with `operations/{unique_id}`.
     /// </summary>
     [global::System.Diagnostics.DebuggerNonUserCodeAttribute]
     public string Name {
@@ -276,6 +296,9 @@ namespace Google.LongRunning {
 
     [global::System.Diagnostics.DebuggerNonUserCodeAttribute]
     public void WriteTo(pb::CodedOutputStream output) {
+    #if !GOOGLE_PROTOBUF_REFSTRUCT_COMPATIBILITY_MODE
+      output.WriteRawMessage(this);
+    #else
       if (Name.Length != 0) {
         output.WriteRawTag(10);
         output.WriteString(Name);
@@ -299,7 +322,37 @@ namespace Google.LongRunning {
       if (_unknownFields != null) {
         _unknownFields.WriteTo(output);
       }
+    #endif
     }
+
+    #if !GOOGLE_PROTOBUF_REFSTRUCT_COMPATIBILITY_MODE
+    [global::System.Diagnostics.DebuggerNonUserCodeAttribute]
+    void pb::IBufferMessage.InternalWriteTo(ref pb::WriteContext output) {
+      if (Name.Length != 0) {
+        output.WriteRawTag(10);
+        output.WriteString(Name);
+      }
+      if (metadata_ != null) {
+        output.WriteRawTag(18);
+        output.WriteMessage(Metadata);
+      }
+      if (Done != false) {
+        output.WriteRawTag(24);
+        output.WriteBool(Done);
+      }
+      if (resultCase_ == ResultOneofCase.Error) {
+        output.WriteRawTag(34);
+        output.WriteMessage(Error);
+      }
+      if (resultCase_ == ResultOneofCase.Response) {
+        output.WriteRawTag(42);
+        output.WriteMessage(Response);
+      }
+      if (_unknownFields != null) {
+        _unknownFields.WriteTo(ref output);
+      }
+    }
+    #endif
 
     [global::System.Diagnostics.DebuggerNonUserCodeAttribute]
     public int CalculateSize() {
@@ -362,6 +415,9 @@ namespace Google.LongRunning {
 
     [global::System.Diagnostics.DebuggerNonUserCodeAttribute]
     public void MergeFrom(pb::CodedInputStream input) {
+    #if !GOOGLE_PROTOBUF_REFSTRUCT_COMPATIBILITY_MODE
+      input.ReadRawMessage(this);
+    #else
       uint tag;
       while ((tag = input.ReadTag()) != 0) {
         switch(tag) {
@@ -403,14 +459,66 @@ namespace Google.LongRunning {
           }
         }
       }
+    #endif
     }
+
+    #if !GOOGLE_PROTOBUF_REFSTRUCT_COMPATIBILITY_MODE
+    [global::System.Diagnostics.DebuggerNonUserCodeAttribute]
+    void pb::IBufferMessage.InternalMergeFrom(ref pb::ParseContext input) {
+      uint tag;
+      while ((tag = input.ReadTag()) != 0) {
+        switch(tag) {
+          default:
+            _unknownFields = pb::UnknownFieldSet.MergeFieldFrom(_unknownFields, ref input);
+            break;
+          case 10: {
+            Name = input.ReadString();
+            break;
+          }
+          case 18: {
+            if (metadata_ == null) {
+              Metadata = new global::Google.Protobuf.WellKnownTypes.Any();
+            }
+            input.ReadMessage(Metadata);
+            break;
+          }
+          case 24: {
+            Done = input.ReadBool();
+            break;
+          }
+          case 34: {
+            global::Google.Rpc.Status subBuilder = new global::Google.Rpc.Status();
+            if (resultCase_ == ResultOneofCase.Error) {
+              subBuilder.MergeFrom(Error);
+            }
+            input.ReadMessage(subBuilder);
+            Error = subBuilder;
+            break;
+          }
+          case 42: {
+            global::Google.Protobuf.WellKnownTypes.Any subBuilder = new global::Google.Protobuf.WellKnownTypes.Any();
+            if (resultCase_ == ResultOneofCase.Response) {
+              subBuilder.MergeFrom(Response);
+            }
+            input.ReadMessage(subBuilder);
+            Response = subBuilder;
+            break;
+          }
+        }
+      }
+    }
+    #endif
 
   }
 
   /// <summary>
   /// The request message for [Operations.GetOperation][google.longrunning.Operations.GetOperation].
   /// </summary>
-  public sealed partial class GetOperationRequest : pb::IMessage<GetOperationRequest> {
+  public sealed partial class GetOperationRequest : pb::IMessage<GetOperationRequest>
+  #if !GOOGLE_PROTOBUF_REFSTRUCT_COMPATIBILITY_MODE
+      , pb::IBufferMessage
+  #endif
+  {
     private static readonly pb::MessageParser<GetOperationRequest> _parser = new pb::MessageParser<GetOperationRequest>(() => new GetOperationRequest());
     private pb::UnknownFieldSet _unknownFields;
     [global::System.Diagnostics.DebuggerNonUserCodeAttribute]
@@ -492,6 +600,9 @@ namespace Google.LongRunning {
 
     [global::System.Diagnostics.DebuggerNonUserCodeAttribute]
     public void WriteTo(pb::CodedOutputStream output) {
+    #if !GOOGLE_PROTOBUF_REFSTRUCT_COMPATIBILITY_MODE
+      output.WriteRawMessage(this);
+    #else
       if (Name.Length != 0) {
         output.WriteRawTag(10);
         output.WriteString(Name);
@@ -499,7 +610,21 @@ namespace Google.LongRunning {
       if (_unknownFields != null) {
         _unknownFields.WriteTo(output);
       }
+    #endif
     }
+
+    #if !GOOGLE_PROTOBUF_REFSTRUCT_COMPATIBILITY_MODE
+    [global::System.Diagnostics.DebuggerNonUserCodeAttribute]
+    void pb::IBufferMessage.InternalWriteTo(ref pb::WriteContext output) {
+      if (Name.Length != 0) {
+        output.WriteRawTag(10);
+        output.WriteString(Name);
+      }
+      if (_unknownFields != null) {
+        _unknownFields.WriteTo(ref output);
+      }
+    }
+    #endif
 
     [global::System.Diagnostics.DebuggerNonUserCodeAttribute]
     public int CalculateSize() {
@@ -526,6 +651,9 @@ namespace Google.LongRunning {
 
     [global::System.Diagnostics.DebuggerNonUserCodeAttribute]
     public void MergeFrom(pb::CodedInputStream input) {
+    #if !GOOGLE_PROTOBUF_REFSTRUCT_COMPATIBILITY_MODE
+      input.ReadRawMessage(this);
+    #else
       uint tag;
       while ((tag = input.ReadTag()) != 0) {
         switch(tag) {
@@ -538,14 +666,37 @@ namespace Google.LongRunning {
           }
         }
       }
+    #endif
     }
+
+    #if !GOOGLE_PROTOBUF_REFSTRUCT_COMPATIBILITY_MODE
+    [global::System.Diagnostics.DebuggerNonUserCodeAttribute]
+    void pb::IBufferMessage.InternalMergeFrom(ref pb::ParseContext input) {
+      uint tag;
+      while ((tag = input.ReadTag()) != 0) {
+        switch(tag) {
+          default:
+            _unknownFields = pb::UnknownFieldSet.MergeFieldFrom(_unknownFields, ref input);
+            break;
+          case 10: {
+            Name = input.ReadString();
+            break;
+          }
+        }
+      }
+    }
+    #endif
 
   }
 
   /// <summary>
   /// The request message for [Operations.ListOperations][google.longrunning.Operations.ListOperations].
   /// </summary>
-  public sealed partial class ListOperationsRequest : pb::IMessage<ListOperationsRequest> {
+  public sealed partial class ListOperationsRequest : pb::IMessage<ListOperationsRequest>
+  #if !GOOGLE_PROTOBUF_REFSTRUCT_COMPATIBILITY_MODE
+      , pb::IBufferMessage
+  #endif
+  {
     private static readonly pb::MessageParser<ListOperationsRequest> _parser = new pb::MessageParser<ListOperationsRequest>(() => new ListOperationsRequest());
     private pb::UnknownFieldSet _unknownFields;
     [global::System.Diagnostics.DebuggerNonUserCodeAttribute]
@@ -678,6 +829,9 @@ namespace Google.LongRunning {
 
     [global::System.Diagnostics.DebuggerNonUserCodeAttribute]
     public void WriteTo(pb::CodedOutputStream output) {
+    #if !GOOGLE_PROTOBUF_REFSTRUCT_COMPATIBILITY_MODE
+      output.WriteRawMessage(this);
+    #else
       if (Filter.Length != 0) {
         output.WriteRawTag(10);
         output.WriteString(Filter);
@@ -697,7 +851,33 @@ namespace Google.LongRunning {
       if (_unknownFields != null) {
         _unknownFields.WriteTo(output);
       }
+    #endif
     }
+
+    #if !GOOGLE_PROTOBUF_REFSTRUCT_COMPATIBILITY_MODE
+    [global::System.Diagnostics.DebuggerNonUserCodeAttribute]
+    void pb::IBufferMessage.InternalWriteTo(ref pb::WriteContext output) {
+      if (Filter.Length != 0) {
+        output.WriteRawTag(10);
+        output.WriteString(Filter);
+      }
+      if (PageSize != 0) {
+        output.WriteRawTag(16);
+        output.WriteInt32(PageSize);
+      }
+      if (PageToken.Length != 0) {
+        output.WriteRawTag(26);
+        output.WriteString(PageToken);
+      }
+      if (Name.Length != 0) {
+        output.WriteRawTag(34);
+        output.WriteString(Name);
+      }
+      if (_unknownFields != null) {
+        _unknownFields.WriteTo(ref output);
+      }
+    }
+    #endif
 
     [global::System.Diagnostics.DebuggerNonUserCodeAttribute]
     public int CalculateSize() {
@@ -742,6 +922,9 @@ namespace Google.LongRunning {
 
     [global::System.Diagnostics.DebuggerNonUserCodeAttribute]
     public void MergeFrom(pb::CodedInputStream input) {
+    #if !GOOGLE_PROTOBUF_REFSTRUCT_COMPATIBILITY_MODE
+      input.ReadRawMessage(this);
+    #else
       uint tag;
       while ((tag = input.ReadTag()) != 0) {
         switch(tag) {
@@ -766,14 +949,49 @@ namespace Google.LongRunning {
           }
         }
       }
+    #endif
     }
+
+    #if !GOOGLE_PROTOBUF_REFSTRUCT_COMPATIBILITY_MODE
+    [global::System.Diagnostics.DebuggerNonUserCodeAttribute]
+    void pb::IBufferMessage.InternalMergeFrom(ref pb::ParseContext input) {
+      uint tag;
+      while ((tag = input.ReadTag()) != 0) {
+        switch(tag) {
+          default:
+            _unknownFields = pb::UnknownFieldSet.MergeFieldFrom(_unknownFields, ref input);
+            break;
+          case 10: {
+            Filter = input.ReadString();
+            break;
+          }
+          case 16: {
+            PageSize = input.ReadInt32();
+            break;
+          }
+          case 26: {
+            PageToken = input.ReadString();
+            break;
+          }
+          case 34: {
+            Name = input.ReadString();
+            break;
+          }
+        }
+      }
+    }
+    #endif
 
   }
 
   /// <summary>
   /// The response message for [Operations.ListOperations][google.longrunning.Operations.ListOperations].
   /// </summary>
-  public sealed partial class ListOperationsResponse : pb::IMessage<ListOperationsResponse> {
+  public sealed partial class ListOperationsResponse : pb::IMessage<ListOperationsResponse>
+  #if !GOOGLE_PROTOBUF_REFSTRUCT_COMPATIBILITY_MODE
+      , pb::IBufferMessage
+  #endif
+  {
     private static readonly pb::MessageParser<ListOperationsResponse> _parser = new pb::MessageParser<ListOperationsResponse>(() => new ListOperationsResponse());
     private pb::UnknownFieldSet _unknownFields;
     [global::System.Diagnostics.DebuggerNonUserCodeAttribute]
@@ -871,6 +1089,9 @@ namespace Google.LongRunning {
 
     [global::System.Diagnostics.DebuggerNonUserCodeAttribute]
     public void WriteTo(pb::CodedOutputStream output) {
+    #if !GOOGLE_PROTOBUF_REFSTRUCT_COMPATIBILITY_MODE
+      output.WriteRawMessage(this);
+    #else
       operations_.WriteTo(output, _repeated_operations_codec);
       if (NextPageToken.Length != 0) {
         output.WriteRawTag(18);
@@ -879,7 +1100,22 @@ namespace Google.LongRunning {
       if (_unknownFields != null) {
         _unknownFields.WriteTo(output);
       }
+    #endif
     }
+
+    #if !GOOGLE_PROTOBUF_REFSTRUCT_COMPATIBILITY_MODE
+    [global::System.Diagnostics.DebuggerNonUserCodeAttribute]
+    void pb::IBufferMessage.InternalWriteTo(ref pb::WriteContext output) {
+      operations_.WriteTo(ref output, _repeated_operations_codec);
+      if (NextPageToken.Length != 0) {
+        output.WriteRawTag(18);
+        output.WriteString(NextPageToken);
+      }
+      if (_unknownFields != null) {
+        _unknownFields.WriteTo(ref output);
+      }
+    }
+    #endif
 
     [global::System.Diagnostics.DebuggerNonUserCodeAttribute]
     public int CalculateSize() {
@@ -908,6 +1144,9 @@ namespace Google.LongRunning {
 
     [global::System.Diagnostics.DebuggerNonUserCodeAttribute]
     public void MergeFrom(pb::CodedInputStream input) {
+    #if !GOOGLE_PROTOBUF_REFSTRUCT_COMPATIBILITY_MODE
+      input.ReadRawMessage(this);
+    #else
       uint tag;
       while ((tag = input.ReadTag()) != 0) {
         switch(tag) {
@@ -924,14 +1163,41 @@ namespace Google.LongRunning {
           }
         }
       }
+    #endif
     }
+
+    #if !GOOGLE_PROTOBUF_REFSTRUCT_COMPATIBILITY_MODE
+    [global::System.Diagnostics.DebuggerNonUserCodeAttribute]
+    void pb::IBufferMessage.InternalMergeFrom(ref pb::ParseContext input) {
+      uint tag;
+      while ((tag = input.ReadTag()) != 0) {
+        switch(tag) {
+          default:
+            _unknownFields = pb::UnknownFieldSet.MergeFieldFrom(_unknownFields, ref input);
+            break;
+          case 10: {
+            operations_.AddEntriesFrom(ref input, _repeated_operations_codec);
+            break;
+          }
+          case 18: {
+            NextPageToken = input.ReadString();
+            break;
+          }
+        }
+      }
+    }
+    #endif
 
   }
 
   /// <summary>
   /// The request message for [Operations.CancelOperation][google.longrunning.Operations.CancelOperation].
   /// </summary>
-  public sealed partial class CancelOperationRequest : pb::IMessage<CancelOperationRequest> {
+  public sealed partial class CancelOperationRequest : pb::IMessage<CancelOperationRequest>
+  #if !GOOGLE_PROTOBUF_REFSTRUCT_COMPATIBILITY_MODE
+      , pb::IBufferMessage
+  #endif
+  {
     private static readonly pb::MessageParser<CancelOperationRequest> _parser = new pb::MessageParser<CancelOperationRequest>(() => new CancelOperationRequest());
     private pb::UnknownFieldSet _unknownFields;
     [global::System.Diagnostics.DebuggerNonUserCodeAttribute]
@@ -1013,6 +1279,9 @@ namespace Google.LongRunning {
 
     [global::System.Diagnostics.DebuggerNonUserCodeAttribute]
     public void WriteTo(pb::CodedOutputStream output) {
+    #if !GOOGLE_PROTOBUF_REFSTRUCT_COMPATIBILITY_MODE
+      output.WriteRawMessage(this);
+    #else
       if (Name.Length != 0) {
         output.WriteRawTag(10);
         output.WriteString(Name);
@@ -1020,7 +1289,21 @@ namespace Google.LongRunning {
       if (_unknownFields != null) {
         _unknownFields.WriteTo(output);
       }
+    #endif
     }
+
+    #if !GOOGLE_PROTOBUF_REFSTRUCT_COMPATIBILITY_MODE
+    [global::System.Diagnostics.DebuggerNonUserCodeAttribute]
+    void pb::IBufferMessage.InternalWriteTo(ref pb::WriteContext output) {
+      if (Name.Length != 0) {
+        output.WriteRawTag(10);
+        output.WriteString(Name);
+      }
+      if (_unknownFields != null) {
+        _unknownFields.WriteTo(ref output);
+      }
+    }
+    #endif
 
     [global::System.Diagnostics.DebuggerNonUserCodeAttribute]
     public int CalculateSize() {
@@ -1047,6 +1330,9 @@ namespace Google.LongRunning {
 
     [global::System.Diagnostics.DebuggerNonUserCodeAttribute]
     public void MergeFrom(pb::CodedInputStream input) {
+    #if !GOOGLE_PROTOBUF_REFSTRUCT_COMPATIBILITY_MODE
+      input.ReadRawMessage(this);
+    #else
       uint tag;
       while ((tag = input.ReadTag()) != 0) {
         switch(tag) {
@@ -1059,14 +1345,37 @@ namespace Google.LongRunning {
           }
         }
       }
+    #endif
     }
+
+    #if !GOOGLE_PROTOBUF_REFSTRUCT_COMPATIBILITY_MODE
+    [global::System.Diagnostics.DebuggerNonUserCodeAttribute]
+    void pb::IBufferMessage.InternalMergeFrom(ref pb::ParseContext input) {
+      uint tag;
+      while ((tag = input.ReadTag()) != 0) {
+        switch(tag) {
+          default:
+            _unknownFields = pb::UnknownFieldSet.MergeFieldFrom(_unknownFields, ref input);
+            break;
+          case 10: {
+            Name = input.ReadString();
+            break;
+          }
+        }
+      }
+    }
+    #endif
 
   }
 
   /// <summary>
   /// The request message for [Operations.DeleteOperation][google.longrunning.Operations.DeleteOperation].
   /// </summary>
-  public sealed partial class DeleteOperationRequest : pb::IMessage<DeleteOperationRequest> {
+  public sealed partial class DeleteOperationRequest : pb::IMessage<DeleteOperationRequest>
+  #if !GOOGLE_PROTOBUF_REFSTRUCT_COMPATIBILITY_MODE
+      , pb::IBufferMessage
+  #endif
+  {
     private static readonly pb::MessageParser<DeleteOperationRequest> _parser = new pb::MessageParser<DeleteOperationRequest>(() => new DeleteOperationRequest());
     private pb::UnknownFieldSet _unknownFields;
     [global::System.Diagnostics.DebuggerNonUserCodeAttribute]
@@ -1148,6 +1457,9 @@ namespace Google.LongRunning {
 
     [global::System.Diagnostics.DebuggerNonUserCodeAttribute]
     public void WriteTo(pb::CodedOutputStream output) {
+    #if !GOOGLE_PROTOBUF_REFSTRUCT_COMPATIBILITY_MODE
+      output.WriteRawMessage(this);
+    #else
       if (Name.Length != 0) {
         output.WriteRawTag(10);
         output.WriteString(Name);
@@ -1155,7 +1467,21 @@ namespace Google.LongRunning {
       if (_unknownFields != null) {
         _unknownFields.WriteTo(output);
       }
+    #endif
     }
+
+    #if !GOOGLE_PROTOBUF_REFSTRUCT_COMPATIBILITY_MODE
+    [global::System.Diagnostics.DebuggerNonUserCodeAttribute]
+    void pb::IBufferMessage.InternalWriteTo(ref pb::WriteContext output) {
+      if (Name.Length != 0) {
+        output.WriteRawTag(10);
+        output.WriteString(Name);
+      }
+      if (_unknownFields != null) {
+        _unknownFields.WriteTo(ref output);
+      }
+    }
+    #endif
 
     [global::System.Diagnostics.DebuggerNonUserCodeAttribute]
     public int CalculateSize() {
@@ -1182,6 +1508,9 @@ namespace Google.LongRunning {
 
     [global::System.Diagnostics.DebuggerNonUserCodeAttribute]
     public void MergeFrom(pb::CodedInputStream input) {
+    #if !GOOGLE_PROTOBUF_REFSTRUCT_COMPATIBILITY_MODE
+      input.ReadRawMessage(this);
+    #else
       uint tag;
       while ((tag = input.ReadTag()) != 0) {
         switch(tag) {
@@ -1194,14 +1523,37 @@ namespace Google.LongRunning {
           }
         }
       }
+    #endif
     }
+
+    #if !GOOGLE_PROTOBUF_REFSTRUCT_COMPATIBILITY_MODE
+    [global::System.Diagnostics.DebuggerNonUserCodeAttribute]
+    void pb::IBufferMessage.InternalMergeFrom(ref pb::ParseContext input) {
+      uint tag;
+      while ((tag = input.ReadTag()) != 0) {
+        switch(tag) {
+          default:
+            _unknownFields = pb::UnknownFieldSet.MergeFieldFrom(_unknownFields, ref input);
+            break;
+          case 10: {
+            Name = input.ReadString();
+            break;
+          }
+        }
+      }
+    }
+    #endif
 
   }
 
   /// <summary>
   /// The request message for [Operations.WaitOperation][google.longrunning.Operations.WaitOperation].
   /// </summary>
-  public sealed partial class WaitOperationRequest : pb::IMessage<WaitOperationRequest> {
+  public sealed partial class WaitOperationRequest : pb::IMessage<WaitOperationRequest>
+  #if !GOOGLE_PROTOBUF_REFSTRUCT_COMPATIBILITY_MODE
+      , pb::IBufferMessage
+  #endif
+  {
     private static readonly pb::MessageParser<WaitOperationRequest> _parser = new pb::MessageParser<WaitOperationRequest>(() => new WaitOperationRequest());
     private pb::UnknownFieldSet _unknownFields;
     [global::System.Diagnostics.DebuggerNonUserCodeAttribute]
@@ -1302,6 +1654,9 @@ namespace Google.LongRunning {
 
     [global::System.Diagnostics.DebuggerNonUserCodeAttribute]
     public void WriteTo(pb::CodedOutputStream output) {
+    #if !GOOGLE_PROTOBUF_REFSTRUCT_COMPATIBILITY_MODE
+      output.WriteRawMessage(this);
+    #else
       if (Name.Length != 0) {
         output.WriteRawTag(10);
         output.WriteString(Name);
@@ -1313,7 +1668,25 @@ namespace Google.LongRunning {
       if (_unknownFields != null) {
         _unknownFields.WriteTo(output);
       }
+    #endif
     }
+
+    #if !GOOGLE_PROTOBUF_REFSTRUCT_COMPATIBILITY_MODE
+    [global::System.Diagnostics.DebuggerNonUserCodeAttribute]
+    void pb::IBufferMessage.InternalWriteTo(ref pb::WriteContext output) {
+      if (Name.Length != 0) {
+        output.WriteRawTag(10);
+        output.WriteString(Name);
+      }
+      if (timeout_ != null) {
+        output.WriteRawTag(18);
+        output.WriteMessage(Timeout);
+      }
+      if (_unknownFields != null) {
+        _unknownFields.WriteTo(ref output);
+      }
+    }
+    #endif
 
     [global::System.Diagnostics.DebuggerNonUserCodeAttribute]
     public int CalculateSize() {
@@ -1349,6 +1722,9 @@ namespace Google.LongRunning {
 
     [global::System.Diagnostics.DebuggerNonUserCodeAttribute]
     public void MergeFrom(pb::CodedInputStream input) {
+    #if !GOOGLE_PROTOBUF_REFSTRUCT_COMPATIBILITY_MODE
+      input.ReadRawMessage(this);
+    #else
       uint tag;
       while ((tag = input.ReadTag()) != 0) {
         switch(tag) {
@@ -1368,7 +1744,33 @@ namespace Google.LongRunning {
           }
         }
       }
+    #endif
     }
+
+    #if !GOOGLE_PROTOBUF_REFSTRUCT_COMPATIBILITY_MODE
+    [global::System.Diagnostics.DebuggerNonUserCodeAttribute]
+    void pb::IBufferMessage.InternalMergeFrom(ref pb::ParseContext input) {
+      uint tag;
+      while ((tag = input.ReadTag()) != 0) {
+        switch(tag) {
+          default:
+            _unknownFields = pb::UnknownFieldSet.MergeFieldFrom(_unknownFields, ref input);
+            break;
+          case 10: {
+            Name = input.ReadString();
+            break;
+          }
+          case 18: {
+            if (timeout_ == null) {
+              Timeout = new global::Google.Protobuf.WellKnownTypes.Duration();
+            }
+            input.ReadMessage(Timeout);
+            break;
+          }
+        }
+      }
+    }
+    #endif
 
   }
 
@@ -1385,7 +1787,11 @@ namespace Google.LongRunning {
   ///     };
   ///   }
   /// </summary>
-  public sealed partial class OperationInfo : pb::IMessage<OperationInfo> {
+  public sealed partial class OperationInfo : pb::IMessage<OperationInfo>
+  #if !GOOGLE_PROTOBUF_REFSTRUCT_COMPATIBILITY_MODE
+      , pb::IBufferMessage
+  #endif
+  {
     private static readonly pb::MessageParser<OperationInfo> _parser = new pb::MessageParser<OperationInfo>(() => new OperationInfo());
     private pb::UnknownFieldSet _unknownFields;
     [global::System.Diagnostics.DebuggerNonUserCodeAttribute]
@@ -1497,6 +1903,9 @@ namespace Google.LongRunning {
 
     [global::System.Diagnostics.DebuggerNonUserCodeAttribute]
     public void WriteTo(pb::CodedOutputStream output) {
+    #if !GOOGLE_PROTOBUF_REFSTRUCT_COMPATIBILITY_MODE
+      output.WriteRawMessage(this);
+    #else
       if (ResponseType.Length != 0) {
         output.WriteRawTag(10);
         output.WriteString(ResponseType);
@@ -1508,7 +1917,25 @@ namespace Google.LongRunning {
       if (_unknownFields != null) {
         _unknownFields.WriteTo(output);
       }
+    #endif
     }
+
+    #if !GOOGLE_PROTOBUF_REFSTRUCT_COMPATIBILITY_MODE
+    [global::System.Diagnostics.DebuggerNonUserCodeAttribute]
+    void pb::IBufferMessage.InternalWriteTo(ref pb::WriteContext output) {
+      if (ResponseType.Length != 0) {
+        output.WriteRawTag(10);
+        output.WriteString(ResponseType);
+      }
+      if (MetadataType.Length != 0) {
+        output.WriteRawTag(18);
+        output.WriteString(MetadataType);
+      }
+      if (_unknownFields != null) {
+        _unknownFields.WriteTo(ref output);
+      }
+    }
+    #endif
 
     [global::System.Diagnostics.DebuggerNonUserCodeAttribute]
     public int CalculateSize() {
@@ -1541,6 +1968,9 @@ namespace Google.LongRunning {
 
     [global::System.Diagnostics.DebuggerNonUserCodeAttribute]
     public void MergeFrom(pb::CodedInputStream input) {
+    #if !GOOGLE_PROTOBUF_REFSTRUCT_COMPATIBILITY_MODE
+      input.ReadRawMessage(this);
+    #else
       uint tag;
       while ((tag = input.ReadTag()) != 0) {
         switch(tag) {
@@ -1557,7 +1987,30 @@ namespace Google.LongRunning {
           }
         }
       }
+    #endif
     }
+
+    #if !GOOGLE_PROTOBUF_REFSTRUCT_COMPATIBILITY_MODE
+    [global::System.Diagnostics.DebuggerNonUserCodeAttribute]
+    void pb::IBufferMessage.InternalMergeFrom(ref pb::ParseContext input) {
+      uint tag;
+      while ((tag = input.ReadTag()) != 0) {
+        switch(tag) {
+          default:
+            _unknownFields = pb::UnknownFieldSet.MergeFieldFrom(_unknownFields, ref input);
+            break;
+          case 10: {
+            ResponseType = input.ReadString();
+            break;
+          }
+          case 18: {
+            MetadataType = input.ReadString();
+            break;
+          }
+        }
+      }
+    }
+    #endif
 
   }
 

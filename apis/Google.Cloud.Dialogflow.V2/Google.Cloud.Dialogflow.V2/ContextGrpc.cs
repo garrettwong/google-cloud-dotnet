@@ -3,7 +3,7 @@
 //     source: google/cloud/dialogflow/v2/context.proto
 // </auto-generated>
 // Original file comments:
-// Copyright 2019 Google LLC.
+// Copyright 2020 Google LLC
 //
 // Licensed under the Apache License, Version 2.0 (the "License");
 // you may not use this file except in compliance with the License.
@@ -17,7 +17,6 @@
 // See the License for the specific language governing permissions and
 // limitations under the License.
 //
-//
 #pragma warning disable 0414, 1591
 #region Designer generated code
 
@@ -25,24 +24,7 @@ using grpc = global::Grpc.Core;
 
 namespace Google.Cloud.Dialogflow.V2 {
   /// <summary>
-  /// A context represents additional information included with user input or with
-  /// an intent returned by the Dialogflow API. Contexts are helpful for
-  /// differentiating user input which may be vague or have a different meaning
-  /// depending on additional details from your application such as user setting
-  /// and preferences, previous user input, where the user is in your application,
-  /// geographic location, and so on.
-  ///
-  /// You can include contexts as input parameters of a
-  /// [DetectIntent][google.cloud.dialogflow.v2.Sessions.DetectIntent] (or
-  /// [StreamingDetectIntent][google.cloud.dialogflow.v2.Sessions.StreamingDetectIntent]) request,
-  /// or as output contexts included in the returned intent.
-  /// Contexts expire when an intent is matched, after the number of `DetectIntent`
-  /// requests specified by the `lifespan_count` parameter, or after 20 minutes
-  /// if no intents are matched for a `DetectIntent` request.
-  ///
-  /// For more information about contexts, see the
-  /// [Dialogflow
-  /// documentation](https://cloud.google.com/dialogflow/docs/contexts-overview).
+  /// Service for managing [Contexts][google.cloud.dialogflow.v2.Context].
   /// </summary>
   public static partial class Contexts
   {
@@ -185,7 +167,7 @@ namespace Google.Cloud.Dialogflow.V2 {
     {
       /// <summary>Creates a new client for Contexts</summary>
       /// <param name="channel">The channel to use to make remote calls.</param>
-      public ContextsClient(grpc::Channel channel) : base(channel)
+      public ContextsClient(grpc::ChannelBase channel) : base(channel)
       {
       }
       /// <summary>Creates a new client for Contexts that uses a custom <c>CallInvoker</c>.</summary>

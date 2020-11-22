@@ -40,5 +40,57 @@ namespace Google.Cloud.BigQuery.V2
             }
             return ret;
         }
+
+        internal static string BuildSelectedFields(this TableSchema schema)
+        {
+            // Althouhg null and empty SelectedFields mean the same, that is to return
+            // whole rows, let's return null for a null schema and string.Empty for an
+            // empty schema, just in case these get diferentiated in the future. And also
+            // it's clearer.
+            if (schema == null)
+            {
+                return null;
+            }
+            if (!(schema.Fields?.Count > 0))
+            {
+                return string.Empty;
+            }
+
+            // This list will contain the paths to all terminal fields that we have found.
+            // In the end this list will contain all selected fields.
+            var built = new List<string>();
+            // This list will contain the path to the field we are currently traversing.
+            // If it is a terminal field (no nested fields) then we build the path to it
+            // and backtrack to the previous level.
+            // If it is not terminal, then we just traverse (in depth) its nested fields.
+            var currentPath = new List<string>();
+            BuildSelectedFields(schema.Fields, currentPath, built);
+            return string.Join(",", built);
+        }
+
+        private static void BuildSelectedFields(IList<TableFieldSchema> fieldSchemas, IList<string> currentPath, IList<string> built)
+        {
+            if (!(fieldSchemas?.Count > 0))
+            {
+                // Whatever we have in currentPath is terminal.
+                // Build that and we are done.
+                built.Add(string.Join(".", currentPath));
+            }
+            else
+            {
+                // For each field at this level, we'll add it to the current path
+                // and then go in depth into its possible nested fields.
+                // When we return from the recursive call, we can remove this field
+                // from the current path. It will always be at the last index, which
+                // will always be one more than what we have right now.
+                int removeAtIndex = currentPath.Count;
+                foreach (var field in fieldSchemas)
+                {
+                    currentPath.Add(field.Name);
+                    BuildSelectedFields(field.Fields, currentPath, built);
+                    currentPath.RemoveAt(removeAtIndex);
+                }
+            }
+        }
     }
 }

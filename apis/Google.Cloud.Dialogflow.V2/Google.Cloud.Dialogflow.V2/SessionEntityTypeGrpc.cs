@@ -3,7 +3,7 @@
 //     source: google/cloud/dialogflow/v2/session_entity_type.proto
 // </auto-generated>
 // Original file comments:
-// Copyright 2019 Google LLC.
+// Copyright 2020 Google LLC
 //
 // Licensed under the Apache License, Version 2.0 (the "License");
 // you may not use this file except in compliance with the License.
@@ -17,7 +17,6 @@
 // See the License for the specific language governing permissions and
 // limitations under the License.
 //
-//
 #pragma warning disable 0414, 1591
 #region Designer generated code
 
@@ -25,23 +24,7 @@ using grpc = global::Grpc.Core;
 
 namespace Google.Cloud.Dialogflow.V2 {
   /// <summary>
-  /// Entities are extracted from user input and represent parameters that are
-  /// meaningful to your application. For example, a date range, a proper name
-  /// such as a geographic location or landmark, and so on. Entities represent
-  /// actionable data for your application.
-  ///
-  /// Session entity types are referred to as **User** entity types and are
-  /// entities that are built for an individual user such as
-  /// favorites, preferences, playlists, and so on. You can redefine a session
-  /// entity type at the session level.
-  ///
-  /// Session entity methods do not work with Google Assistant integration.
-  /// Contact Dialogflow support if you need to use session entities
-  /// with Google Assistant integration.
-  ///
-  /// For more information about entity types, see the
-  /// [Dialogflow
-  /// documentation](https://cloud.google.com/dialogflow/docs/entities-overview).
+  /// Service for managing [SessionEntityTypes][google.cloud.dialogflow.v2.SessionEntityType].
   /// </summary>
   public static partial class SessionEntityTypes
   {
@@ -186,7 +169,7 @@ namespace Google.Cloud.Dialogflow.V2 {
     {
       /// <summary>Creates a new client for SessionEntityTypes</summary>
       /// <param name="channel">The channel to use to make remote calls.</param>
-      public SessionEntityTypesClient(grpc::Channel channel) : base(channel)
+      public SessionEntityTypesClient(grpc::ChannelBase channel) : base(channel)
       {
       }
       /// <summary>Creates a new client for SessionEntityTypes that uses a custom <c>CallInvoker</c>.</summary>

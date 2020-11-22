@@ -5,6 +5,16 @@ source ../toolversions.sh
 
 install_docfx
 
+# Some versions of docfx fail if VSINSTALLDIR is set.
+export VSINSTALLDIR=
+
+# We don't need deterministic source paths in the docfx metadata build,
+# and they don't seem to work out of the box with the rest of our build
+# setup, so let's just disable them (with both of the environment variables
+# that might have caused them to be turned on).
+export ContinuousIntegrationBuild=false
+export DeterministicSourcePaths=false
+
 build_api_docs() {
   log_build_action "Building docs for $1"
   local api=$1
@@ -39,7 +49,9 @@ build_api_docs() {
     cat dependencies/api/$dep/toc >> output/$api/obj/api/toc.yml
   done
   
-  $DOCFX build --logLevel Warning output/$api/docfx.json | tee errors.txt | grep -v "Invalid file link"
+  # Build for googleapis.dev and GitHub pages
+  # Note that the devsite build will happen elsewhere.
+  $DOCFX build --logLevel Warning --disableGitFeatures output/$api/docfx.json | tee errors.txt | grep -v "Invalid file link"
   (! grep --quiet 'Build failed.' errors.txt)
 
   # Special case root: that should end up in the root of the assembled

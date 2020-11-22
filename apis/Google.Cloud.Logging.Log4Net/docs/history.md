@@ -1,5 +1,26 @@
 # Version history
 
+# Version 3.2.0, released 2020-11-19
+
+No API surface changes, but this release updates dependencies.
+
+# Version 3.1.0, released 2020-04-16
+
+- [Commit 51d65fa](https://github.com/googleapis/google-cloud-dotnet/commit/51d65fa): Feature: Allow GoogleStackdriverAppender to be configured to create JSON payloads
+  - User code needs to implement a new IJsonLayout interface, and configure the appender appropriately.
+  - Fixes [issue 4845](https://github.com/googleapis/google-cloud-dotnet/issues/4845).
+
+# Version 3.0.0, released 2020-03-18
+
+No API surface changes compared with 3.0.0-beta01, just dependency
+and implementation changes.
+
+# Version 3.0.0-beta01, released 2020-02-18
+
+This is the first prerelease targeting GAX v3. Please see the [breaking changes guide](https://googleapis.github.io/google-cloud-dotnet/docs/guides/breaking-gax2.html) for details of changes to both GAX and code generation.
+
+This package has not taken any direct breaking changes, but has a major version number change due to its dependencies.
+
 # Version 2.5.0, released 2019-12-10
 
 No API surface change - just dependency updates.

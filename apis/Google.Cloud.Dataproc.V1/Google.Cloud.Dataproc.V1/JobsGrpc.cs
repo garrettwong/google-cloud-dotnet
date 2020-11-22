@@ -3,7 +3,7 @@
 //     source: google/cloud/dataproc/v1/jobs.proto
 // </auto-generated>
 // Original file comments:
-// Copyright 2019 Google LLC.
+// Copyright 2020 Google LLC
 //
 // Licensed under the Apache License, Version 2.0 (the "License");
 // you may not use this file except in compliance with the License.
@@ -32,6 +32,7 @@ namespace Google.Cloud.Dataproc.V1 {
 
     static readonly grpc::Marshaller<global::Google.Cloud.Dataproc.V1.SubmitJobRequest> __Marshaller_google_cloud_dataproc_v1_SubmitJobRequest = grpc::Marshallers.Create((arg) => global::Google.Protobuf.MessageExtensions.ToByteArray(arg), global::Google.Cloud.Dataproc.V1.SubmitJobRequest.Parser.ParseFrom);
     static readonly grpc::Marshaller<global::Google.Cloud.Dataproc.V1.Job> __Marshaller_google_cloud_dataproc_v1_Job = grpc::Marshallers.Create((arg) => global::Google.Protobuf.MessageExtensions.ToByteArray(arg), global::Google.Cloud.Dataproc.V1.Job.Parser.ParseFrom);
+    static readonly grpc::Marshaller<global::Google.LongRunning.Operation> __Marshaller_google_longrunning_Operation = grpc::Marshallers.Create((arg) => global::Google.Protobuf.MessageExtensions.ToByteArray(arg), global::Google.LongRunning.Operation.Parser.ParseFrom);
     static readonly grpc::Marshaller<global::Google.Cloud.Dataproc.V1.GetJobRequest> __Marshaller_google_cloud_dataproc_v1_GetJobRequest = grpc::Marshallers.Create((arg) => global::Google.Protobuf.MessageExtensions.ToByteArray(arg), global::Google.Cloud.Dataproc.V1.GetJobRequest.Parser.ParseFrom);
     static readonly grpc::Marshaller<global::Google.Cloud.Dataproc.V1.ListJobsRequest> __Marshaller_google_cloud_dataproc_v1_ListJobsRequest = grpc::Marshallers.Create((arg) => global::Google.Protobuf.MessageExtensions.ToByteArray(arg), global::Google.Cloud.Dataproc.V1.ListJobsRequest.Parser.ParseFrom);
     static readonly grpc::Marshaller<global::Google.Cloud.Dataproc.V1.ListJobsResponse> __Marshaller_google_cloud_dataproc_v1_ListJobsResponse = grpc::Marshallers.Create((arg) => global::Google.Protobuf.MessageExtensions.ToByteArray(arg), global::Google.Cloud.Dataproc.V1.ListJobsResponse.Parser.ParseFrom);
@@ -46,6 +47,13 @@ namespace Google.Cloud.Dataproc.V1 {
         "SubmitJob",
         __Marshaller_google_cloud_dataproc_v1_SubmitJobRequest,
         __Marshaller_google_cloud_dataproc_v1_Job);
+
+    static readonly grpc::Method<global::Google.Cloud.Dataproc.V1.SubmitJobRequest, global::Google.LongRunning.Operation> __Method_SubmitJobAsOperation = new grpc::Method<global::Google.Cloud.Dataproc.V1.SubmitJobRequest, global::Google.LongRunning.Operation>(
+        grpc::MethodType.Unary,
+        __ServiceName,
+        "SubmitJobAsOperation",
+        __Marshaller_google_cloud_dataproc_v1_SubmitJobRequest,
+        __Marshaller_google_longrunning_Operation);
 
     static readonly grpc::Method<global::Google.Cloud.Dataproc.V1.GetJobRequest, global::Google.Cloud.Dataproc.V1.Job> __Method_GetJob = new grpc::Method<global::Google.Cloud.Dataproc.V1.GetJobRequest, global::Google.Cloud.Dataproc.V1.Job>(
         grpc::MethodType.Unary,
@@ -104,6 +112,17 @@ namespace Google.Cloud.Dataproc.V1 {
       }
 
       /// <summary>
+      /// Submits job to a cluster.
+      /// </summary>
+      /// <param name="request">The request received from the client.</param>
+      /// <param name="context">The context of the server-side call handler being invoked.</param>
+      /// <returns>The response to send back to the client (wrapped by a task).</returns>
+      public virtual global::System.Threading.Tasks.Task<global::Google.LongRunning.Operation> SubmitJobAsOperation(global::Google.Cloud.Dataproc.V1.SubmitJobRequest request, grpc::ServerCallContext context)
+      {
+        throw new grpc::RpcException(new grpc::Status(grpc::StatusCode.Unimplemented, ""));
+      }
+
+      /// <summary>
       /// Gets the resource representation for a job in a project.
       /// </summary>
       /// <param name="request">The request received from the client.</param>
@@ -139,9 +158,9 @@ namespace Google.Cloud.Dataproc.V1 {
       /// <summary>
       /// Starts a job cancellation request. To access the job resource
       /// after cancellation, call
-      /// [regions/{region}/jobs.list](/dataproc/docs/reference/rest/v1/projects.regions.jobs/list)
+      /// [regions/{region}/jobs.list](https://cloud.google.com/dataproc/docs/reference/rest/v1/projects.regions.jobs/list)
       /// or
-      /// [regions/{region}/jobs.get](/dataproc/docs/reference/rest/v1/projects.regions.jobs/get).
+      /// [regions/{region}/jobs.get](https://cloud.google.com/dataproc/docs/reference/rest/v1/projects.regions.jobs/get).
       /// </summary>
       /// <param name="request">The request received from the client.</param>
       /// <param name="context">The context of the server-side call handler being invoked.</param>
@@ -170,7 +189,7 @@ namespace Google.Cloud.Dataproc.V1 {
     {
       /// <summary>Creates a new client for JobController</summary>
       /// <param name="channel">The channel to use to make remote calls.</param>
-      public JobControllerClient(grpc::Channel channel) : base(channel)
+      public JobControllerClient(grpc::ChannelBase channel) : base(channel)
       {
       }
       /// <summary>Creates a new client for JobController that uses a custom <c>CallInvoker</c>.</summary>
@@ -231,6 +250,50 @@ namespace Google.Cloud.Dataproc.V1 {
       public virtual grpc::AsyncUnaryCall<global::Google.Cloud.Dataproc.V1.Job> SubmitJobAsync(global::Google.Cloud.Dataproc.V1.SubmitJobRequest request, grpc::CallOptions options)
       {
         return CallInvoker.AsyncUnaryCall(__Method_SubmitJob, null, options, request);
+      }
+      /// <summary>
+      /// Submits job to a cluster.
+      /// </summary>
+      /// <param name="request">The request to send to the server.</param>
+      /// <param name="headers">The initial metadata to send with the call. This parameter is optional.</param>
+      /// <param name="deadline">An optional deadline for the call. The call will be cancelled if deadline is hit.</param>
+      /// <param name="cancellationToken">An optional token for canceling the call.</param>
+      /// <returns>The response received from the server.</returns>
+      public virtual global::Google.LongRunning.Operation SubmitJobAsOperation(global::Google.Cloud.Dataproc.V1.SubmitJobRequest request, grpc::Metadata headers = null, global::System.DateTime? deadline = null, global::System.Threading.CancellationToken cancellationToken = default(global::System.Threading.CancellationToken))
+      {
+        return SubmitJobAsOperation(request, new grpc::CallOptions(headers, deadline, cancellationToken));
+      }
+      /// <summary>
+      /// Submits job to a cluster.
+      /// </summary>
+      /// <param name="request">The request to send to the server.</param>
+      /// <param name="options">The options for the call.</param>
+      /// <returns>The response received from the server.</returns>
+      public virtual global::Google.LongRunning.Operation SubmitJobAsOperation(global::Google.Cloud.Dataproc.V1.SubmitJobRequest request, grpc::CallOptions options)
+      {
+        return CallInvoker.BlockingUnaryCall(__Method_SubmitJobAsOperation, null, options, request);
+      }
+      /// <summary>
+      /// Submits job to a cluster.
+      /// </summary>
+      /// <param name="request">The request to send to the server.</param>
+      /// <param name="headers">The initial metadata to send with the call. This parameter is optional.</param>
+      /// <param name="deadline">An optional deadline for the call. The call will be cancelled if deadline is hit.</param>
+      /// <param name="cancellationToken">An optional token for canceling the call.</param>
+      /// <returns>The call object.</returns>
+      public virtual grpc::AsyncUnaryCall<global::Google.LongRunning.Operation> SubmitJobAsOperationAsync(global::Google.Cloud.Dataproc.V1.SubmitJobRequest request, grpc::Metadata headers = null, global::System.DateTime? deadline = null, global::System.Threading.CancellationToken cancellationToken = default(global::System.Threading.CancellationToken))
+      {
+        return SubmitJobAsOperationAsync(request, new grpc::CallOptions(headers, deadline, cancellationToken));
+      }
+      /// <summary>
+      /// Submits job to a cluster.
+      /// </summary>
+      /// <param name="request">The request to send to the server.</param>
+      /// <param name="options">The options for the call.</param>
+      /// <returns>The call object.</returns>
+      public virtual grpc::AsyncUnaryCall<global::Google.LongRunning.Operation> SubmitJobAsOperationAsync(global::Google.Cloud.Dataproc.V1.SubmitJobRequest request, grpc::CallOptions options)
+      {
+        return CallInvoker.AsyncUnaryCall(__Method_SubmitJobAsOperation, null, options, request);
       }
       /// <summary>
       /// Gets the resource representation for a job in a project.
@@ -367,9 +430,9 @@ namespace Google.Cloud.Dataproc.V1 {
       /// <summary>
       /// Starts a job cancellation request. To access the job resource
       /// after cancellation, call
-      /// [regions/{region}/jobs.list](/dataproc/docs/reference/rest/v1/projects.regions.jobs/list)
+      /// [regions/{region}/jobs.list](https://cloud.google.com/dataproc/docs/reference/rest/v1/projects.regions.jobs/list)
       /// or
-      /// [regions/{region}/jobs.get](/dataproc/docs/reference/rest/v1/projects.regions.jobs/get).
+      /// [regions/{region}/jobs.get](https://cloud.google.com/dataproc/docs/reference/rest/v1/projects.regions.jobs/get).
       /// </summary>
       /// <param name="request">The request to send to the server.</param>
       /// <param name="headers">The initial metadata to send with the call. This parameter is optional.</param>
@@ -383,9 +446,9 @@ namespace Google.Cloud.Dataproc.V1 {
       /// <summary>
       /// Starts a job cancellation request. To access the job resource
       /// after cancellation, call
-      /// [regions/{region}/jobs.list](/dataproc/docs/reference/rest/v1/projects.regions.jobs/list)
+      /// [regions/{region}/jobs.list](https://cloud.google.com/dataproc/docs/reference/rest/v1/projects.regions.jobs/list)
       /// or
-      /// [regions/{region}/jobs.get](/dataproc/docs/reference/rest/v1/projects.regions.jobs/get).
+      /// [regions/{region}/jobs.get](https://cloud.google.com/dataproc/docs/reference/rest/v1/projects.regions.jobs/get).
       /// </summary>
       /// <param name="request">The request to send to the server.</param>
       /// <param name="options">The options for the call.</param>
@@ -397,9 +460,9 @@ namespace Google.Cloud.Dataproc.V1 {
       /// <summary>
       /// Starts a job cancellation request. To access the job resource
       /// after cancellation, call
-      /// [regions/{region}/jobs.list](/dataproc/docs/reference/rest/v1/projects.regions.jobs/list)
+      /// [regions/{region}/jobs.list](https://cloud.google.com/dataproc/docs/reference/rest/v1/projects.regions.jobs/list)
       /// or
-      /// [regions/{region}/jobs.get](/dataproc/docs/reference/rest/v1/projects.regions.jobs/get).
+      /// [regions/{region}/jobs.get](https://cloud.google.com/dataproc/docs/reference/rest/v1/projects.regions.jobs/get).
       /// </summary>
       /// <param name="request">The request to send to the server.</param>
       /// <param name="headers">The initial metadata to send with the call. This parameter is optional.</param>
@@ -413,9 +476,9 @@ namespace Google.Cloud.Dataproc.V1 {
       /// <summary>
       /// Starts a job cancellation request. To access the job resource
       /// after cancellation, call
-      /// [regions/{region}/jobs.list](/dataproc/docs/reference/rest/v1/projects.regions.jobs/list)
+      /// [regions/{region}/jobs.list](https://cloud.google.com/dataproc/docs/reference/rest/v1/projects.regions.jobs/list)
       /// or
-      /// [regions/{region}/jobs.get](/dataproc/docs/reference/rest/v1/projects.regions.jobs/get).
+      /// [regions/{region}/jobs.get](https://cloud.google.com/dataproc/docs/reference/rest/v1/projects.regions.jobs/get).
       /// </summary>
       /// <param name="request">The request to send to the server.</param>
       /// <param name="options">The options for the call.</param>
@@ -485,6 +548,7 @@ namespace Google.Cloud.Dataproc.V1 {
     {
       return grpc::ServerServiceDefinition.CreateBuilder()
           .AddMethod(__Method_SubmitJob, serviceImpl.SubmitJob)
+          .AddMethod(__Method_SubmitJobAsOperation, serviceImpl.SubmitJobAsOperation)
           .AddMethod(__Method_GetJob, serviceImpl.GetJob)
           .AddMethod(__Method_ListJobs, serviceImpl.ListJobs)
           .AddMethod(__Method_UpdateJob, serviceImpl.UpdateJob)
@@ -499,6 +563,7 @@ namespace Google.Cloud.Dataproc.V1 {
     public static void BindService(grpc::ServiceBinderBase serviceBinder, JobControllerBase serviceImpl)
     {
       serviceBinder.AddMethod(__Method_SubmitJob, serviceImpl == null ? null : new grpc::UnaryServerMethod<global::Google.Cloud.Dataproc.V1.SubmitJobRequest, global::Google.Cloud.Dataproc.V1.Job>(serviceImpl.SubmitJob));
+      serviceBinder.AddMethod(__Method_SubmitJobAsOperation, serviceImpl == null ? null : new grpc::UnaryServerMethod<global::Google.Cloud.Dataproc.V1.SubmitJobRequest, global::Google.LongRunning.Operation>(serviceImpl.SubmitJobAsOperation));
       serviceBinder.AddMethod(__Method_GetJob, serviceImpl == null ? null : new grpc::UnaryServerMethod<global::Google.Cloud.Dataproc.V1.GetJobRequest, global::Google.Cloud.Dataproc.V1.Job>(serviceImpl.GetJob));
       serviceBinder.AddMethod(__Method_ListJobs, serviceImpl == null ? null : new grpc::UnaryServerMethod<global::Google.Cloud.Dataproc.V1.ListJobsRequest, global::Google.Cloud.Dataproc.V1.ListJobsResponse>(serviceImpl.ListJobs));
       serviceBinder.AddMethod(__Method_UpdateJob, serviceImpl == null ? null : new grpc::UnaryServerMethod<global::Google.Cloud.Dataproc.V1.UpdateJobRequest, global::Google.Cloud.Dataproc.V1.Job>(serviceImpl.UpdateJob));

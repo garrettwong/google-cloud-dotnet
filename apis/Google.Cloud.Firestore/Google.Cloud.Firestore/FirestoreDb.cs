@@ -75,12 +75,16 @@ namespace Google.Cloud.Firestore
             DocumentsPath = $"{RootPath}/documents";
             WarningLogger = warningLogger;
 
-            // TODO: Validate these settings, and potentially make them configurable
-            _batchGetCallSettings = CallSettings.FromCallTiming(CallTiming.FromRetry(new RetrySettings(
-                retryBackoff: new BackoffSettings(TimeSpan.FromMilliseconds(500), TimeSpan.FromSeconds(5), 2.0),
-                timeoutBackoff: new BackoffSettings(TimeSpan.FromMinutes(1), TimeSpan.FromMinutes(3), 2.0),
-                Expiration.FromTimeout(TimeSpan.FromMinutes(10)),
-                RetrySettings.FilterForStatusCodes(StatusCode.Unavailable))));
+            // TODO: Potentially make these configurable.
+            // The retry settings are taken from firestore_grpc_service_config.json.
+            var batchGetRetry = RetrySettings.FromExponentialBackoff(
+                maxAttempts: 5,
+                initialBackoff: TimeSpan.FromMilliseconds(100),
+                maxBackoff: TimeSpan.FromSeconds(60),
+                backoffMultiplier: 1.3,
+                retryFilter: RetrySettings.FilterForStatusCodes(StatusCode.Unavailable, StatusCode.Internal, StatusCode.DeadlineExceeded));
+            _batchGetCallSettings = CallSettings.FromRetry(batchGetRetry).WithTimeout(TimeSpan.FromMinutes(10));
+
             SerializationContext = GaxPreconditions.CheckNotNull(serializationContext, nameof(serializationContext));
         }
 
@@ -97,7 +101,7 @@ namespace Google.Cloud.Firestore
         /// <param name="client">The client to use for RPC operations. May be null, in which case a client will be created with default credentials.</param>
         /// <returns>A new instance.</returns>
         public static FirestoreDb Create(string projectId = null, FirestoreClient client = null) =>
-            Create(projectId ?? Platform.Instance().ProjectId, null, client ?? FirestoreClient.Create(), null);
+            new FirestoreDbBuilder { ProjectId = projectId ?? Platform.Instance().ProjectId, Client = client }.Build();
 
         /// <summary>
         /// Asynchronously creates an instance for the specified project, using the specified <see cref="FirestoreClient"/> for RPC operations.
@@ -107,12 +111,12 @@ namespace Google.Cloud.Firestore
         /// <param name="client">The client to use for RPC operations. May be null, in which case a client will be created with default credentials.</param>
         /// <returns>A task representing the asynchronous operation. When complete, the result of the task is the new instance.</returns>
         public static async Task<FirestoreDb> CreateAsync(string projectId = null, FirestoreClient client = null) =>
-            Create(
-                projectId ?? (await Platform.InstanceAsync().ConfigureAwait(false)).ProjectId,
-                DefaultDatabaseId,
-                client ?? await FirestoreClient.CreateAsync().ConfigureAwait(false),
-                null
-            );
+            await new FirestoreDbBuilder
+            {
+                ProjectId = projectId ?? (await Platform.InstanceAsync().ConfigureAwait(false)).ProjectId,
+                Client = client
+            }
+            .BuildAsync().ConfigureAwait(false);
 
         /// <summary>
         /// Creates an instance for the specified project and database, using the specified <see cref="FirestoreClient"/>
@@ -301,30 +305,28 @@ namespace Google.Cloud.Firestore
             Func<BatchGetDocumentsRequest, CallSettings, Task<List<DocumentSnapshot>>> function = async (req, settings) =>
             {
                 var stream = Client.BatchGetDocuments(req, settings);
-                using (var responseStream = stream.ResponseStream)
-                {
-                    List<DocumentSnapshot> snapshots = new List<DocumentSnapshot>();
+                var responseStream = stream.GrpcCall.ResponseStream;
+                List<DocumentSnapshot> snapshots = new List<DocumentSnapshot>();
 
-                    // Note: no need to worry about passing the cancellation token in here, as we've passed it into the overall call.
-                    // If the token is cancelled, the call will be aborted.
-                    while (await responseStream.MoveNext().ConfigureAwait(false))
+                // Note: no need to worry about passing the cancellation token in here, as we've passed it into the overall call.
+                // If the token is cancelled, the call will be aborted.
+                while (await responseStream.MoveNext().ConfigureAwait(false))
+                {
+                    var response = responseStream.Current;
+                    var readTime = Timestamp.FromProto(response.ReadTime);
+                    switch (response.ResultCase)
                     {
-                        var response = responseStream.Current;
-                        var readTime = Timestamp.FromProto(response.ReadTime);
-                        switch (response.ResultCase)
-                        {
-                            case BatchGetDocumentsResponse.ResultOneofCase.Found:
-                                snapshots.Add(DocumentSnapshot.ForDocument(this, response.Found, readTime));
-                                break;
-                            case BatchGetDocumentsResponse.ResultOneofCase.Missing:
-                                snapshots.Add(DocumentSnapshot.ForMissingDocument(this, response.Missing, readTime));
-                                break;
-                            default:
-                                throw new InvalidOperationException($"Unknown response type: {response.ResultCase}");
-                        }
+                        case BatchGetDocumentsResponse.ResultOneofCase.Found:
+                            snapshots.Add(DocumentSnapshot.ForDocument(this, response.Found, readTime));
+                            break;
+                        case BatchGetDocumentsResponse.ResultOneofCase.Missing:
+                            snapshots.Add(DocumentSnapshot.ForMissingDocument(this, response.Missing, readTime));
+                            break;
+                        default:
+                            throw new InvalidOperationException($"Unknown response type: {response.ResultCase}");
                     }
-                    return snapshots;
                 }
+                return snapshots;
             };
 
             var retryingTask = RetryHelper.Retry(function, request, callSettings, clock, scheduler);

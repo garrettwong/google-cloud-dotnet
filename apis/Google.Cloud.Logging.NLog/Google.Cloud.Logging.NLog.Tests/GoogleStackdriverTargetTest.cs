@@ -28,6 +28,7 @@ using System;
 using System.Collections.Concurrent;
 using System.Collections.Generic;
 using System.Linq;
+using System.Reflection;
 using System.Runtime.CompilerServices;
 using System.Threading;
 using System.Threading.Tasks;
@@ -67,8 +68,8 @@ namespace Google.Cloud.Logging.NLog.Tests
             {
                 var fakeClient = new Mock<LoggingServiceV2Client>(MockBehavior.Strict);
                 fakeClient.Setup(x => x.WriteLogEntriesAsync(
-                    It.IsAny<LogNameOneof>(), It.IsAny<MonitoredResource>(), It.IsAny<IDictionary<string, string>>(), It.IsAny<IEnumerable<LogEntry>>(), It.IsAny<CancellationToken>()))
-                    .Returns<LogNameOneof, MonitoredResource, IDictionary<string, string>, IEnumerable<LogEntry>, CancellationToken>((a, b, c, entries, d) => handlerFn(entries));
+                    It.IsAny<LogName>(), It.IsAny<MonitoredResource>(), It.IsAny<IDictionary<string, string>>(), It.IsAny<IEnumerable<LogEntry>>(), It.IsAny<CancellationToken>()))
+                    .Returns<LogName, MonitoredResource, IDictionary<string, string>, IEnumerable<LogEntry>, CancellationToken>((a, b, c, entries, d) => handlerFn(entries));
                 var googleTarget = new GoogleStackdriverTarget(fakeClient.Object, platform)
                 {
                     ProjectId = s_projectId,
@@ -349,6 +350,54 @@ namespace Google.Cloud.Logging.NLog.Tests
             Assert.Equal("Ocean", properties.Fields["PlanetType"].StringValue);
         }
 
+        private async Task<Struct> LogSingleEntryWithProblemType<T>() where T : ProblemTypeBase, new()
+        {
+            var uploadedEntries = await RunTestWorkingServer(
+                googleTarget =>
+                {
+                    LogManager.GetLogger("testlogger").Info("Hello {ProblemType}", new T());
+                    return Task.FromResult(0);
+                }, includeEventProperties: true, configFn: googleTarget => googleTarget.SendJsonPayload = true);
+            Assert.Single(uploadedEntries);
+            var entry0 = uploadedEntries[0];
+            Assert.Equal("", entry0.TextPayload?.Trim() ?? "");
+            Assert.Equal($"Hello {typeof(T).Name}", entry0.JsonPayload.Fields["message"].StringValue);
+
+            var properties = entry0.JsonPayload.Fields["properties"].StructValue;
+            Assert.Equal(1, properties.Fields.Count);
+            Assert.Equal("ProblemType", properties.Fields.First().Key);
+            var serializedProperties = properties.Fields["ProblemType"].StructValue;
+            Assert.Equal(ProblemTypeBase.RegularPropertyValue, serializedProperties.Fields[nameof(ProblemTypeBase.RegularProperty)].StringValue);
+            return serializedProperties;
+        }
+
+        [Fact]
+        public async Task SingleLogEntryWithAssemblyProperty()
+        {
+            var properties = await LogSingleEntryWithProblemType<TypeContainingAssemblyProperty>();
+            Assert.Equal(2, properties.Fields.Count);
+            Assert.Equal(GetType().Assembly.ToString(), properties.Fields[nameof(TypeContainingAssemblyProperty.Assembly)].StringValue);
+        }
+
+        [Fact]
+        public async Task SingleLogEntryWithExceptionThrowingProperty()
+        {
+            var properties = await LogSingleEntryWithProblemType<TypeContainingPropertyThatThrows>();
+            // The throwing property is omitted, leaving just the "control" property.
+            Assert.Equal(1, properties.Fields.Count);
+        }
+
+        [Fact]
+        public async Task SingleLogEntryWithRecursiveProperty()
+        {
+            var properties = await LogSingleEntryWithProblemType<TypeContainingSelfInList>();
+            // The list property exists, but omits the recursive value.
+            Assert.Equal(2, properties.Fields.Count);
+            var expectedValue = Value.ForList(Value.ForString(TypeContainingSelfInList.ValidValueInList));
+            var actualValue = properties.Fields[nameof(TypeContainingSelfInList.BadList)];
+            Assert.Equal(expectedValue, actualValue);
+        }
+
         [Fact]
         public async Task SingleLogEntryWithJsonCollectionProperties()
         {
@@ -508,6 +557,7 @@ namespace Google.Cloud.Logging.NLog.Tests
             Assert.Equal("global", r.Type);
             Assert.Equal(1, r.Labels.Count);
             Assert.Equal(s_projectId, r.Labels["project_id"]);
+            Assert.Equal(s_projectId, uploadedEntries[0].LogNameAsLogName.ProjectId);
         }
 
         [Fact]
@@ -516,7 +566,7 @@ namespace Google.Cloud.Logging.NLog.Tests
             const string json = @"
 {
   'project': {
-    'projectId': '" + s_projectId + @"'
+    'projectId': 'gce_project_id'
   },
   'instance': {
     'id': 'FakeInstanceId',
@@ -535,15 +585,19 @@ namespace Google.Cloud.Logging.NLog.Tests
             var r = uploadedEntries[0].Resource;
             Assert.Equal("gce_instance", r.Type);
             Assert.Equal(3, r.Labels.Count);
-            Assert.Equal(s_projectId, r.Labels["project_id"]);
+            // This is the monitored resource project ID.
+            Assert.Equal("gce_project_id", r.Labels["project_id"]);
             Assert.Equal("FakeInstanceId", r.Labels["instance_id"]);
             Assert.Equal("FakeZone", r.Labels["zone"]);
+            // If the project ID is configured, it is used as the target for writing
+            // logs, even if the code is running on GCP.
+            Assert.Equal(s_projectId, uploadedEntries[0].LogNameAsLogName.ProjectId);
         }
 
         [Fact]
         public async Task GaePlatform()
         {
-            var platform = new Platform(new GaePlatformDetails(s_projectId, "FakeInstanceId", "FakeService", "FakeVersion"));
+            var platform = new Platform(new GaePlatformDetails("gae_project_id", "FakeInstanceId", "FakeService", "FakeVersion"));
             var uploadedEntries = await RunTestWorkingServer(
                 googleTarget =>
                 {
@@ -554,9 +608,75 @@ namespace Google.Cloud.Logging.NLog.Tests
             var r = uploadedEntries[0].Resource;
             Assert.Equal("gae_app", r.Type);
             Assert.Equal(3, r.Labels.Count);
-            Assert.Equal(s_projectId, r.Labels["project_id"]);
+            // This is the monitored resource project ID.
+            Assert.Equal("gae_project_id", r.Labels["project_id"]);
             Assert.Equal("FakeService", r.Labels["module_id"]);
             Assert.Equal("FakeVersion", r.Labels["version_id"]);
+            // If the project ID is configured, it is used as the target for writing
+            // logs, even if the code is running on GCP.
+            Assert.Equal(s_projectId, uploadedEntries[0].LogNameAsLogName.ProjectId);
+        }
+
+        [Fact]
+        public async Task GaePlatform_NoConfiguredProjectId()
+        {
+            var platform = new Platform(new GaePlatformDetails("gae_project_id", "FakeInstanceId", "FakeService", "FakeVersion"));
+            var uploadedEntries = await RunTestWorkingServer(
+                googleTarget =>
+                {
+                    LogInfo("Message0");
+                    return Task.FromResult(0);
+                }, platform: platform, enableResourceTypeDetection: true, configFn: target => target.ProjectId = null);
+            Assert.Equal(1, uploadedEntries.Count);
+            var r = uploadedEntries[0].Resource;
+            Assert.Equal("gae_app", r.Type);
+            Assert.Equal(3, r.Labels.Count);
+            // This is the monitored resource project ID.
+            Assert.Equal("gae_project_id", r.Labels["project_id"]);
+            Assert.Equal("FakeService", r.Labels["module_id"]);
+            Assert.Equal("FakeVersion", r.Labels["version_id"]);
+            // If the project ID is not configured, then the target will be the project where
+            // the monitored resource is at.
+            Assert.Equal("gae_project_id", uploadedEntries[0].LogNameAsLogName.ProjectId);
+        }
+
+        private class ProblemTypeBase
+        {
+            internal const string RegularPropertyValue = "Regular property value";
+            // Control property to make sure even if other properties fail, we don't get an empty log entry.
+            public string RegularProperty => RegularPropertyValue;
+            public override string ToString() => GetType().Name;
+        }
+
+        /// <summary>
+        /// Type serialized in <see cref="SingleLogEntryWithAssemblyJsonProperty"/>, to validate
+        /// that the JSON just contains the assembly name.
+        /// </summary>
+        private class TypeContainingAssemblyProperty : ProblemTypeBase
+        {
+            public Assembly Assembly => typeof(TypeContainingAssemblyProperty).Assembly;
+        }
+
+        /// <summary>
+        /// Type serialized in <see cref="SingleLogEntryWithExceptionThrowingProperty"/>, to validate
+        /// that we cope with a property that throws an exception.
+        /// </summary>
+        private class TypeContainingPropertyThatThrows : ProblemTypeBase
+        {
+            public object ExceptionalObject => throw new NotSupportedException();
+        }
+
+        /// <summary>
+        /// Type serialized in <see cref="SingleLogEntryWithRecursiveProperty"/>, to validate
+        /// that we cope with a property returning a list containing the original value. (Without
+        /// explicit handling, this would recurse forever.)
+        /// </summary>
+        private class TypeContainingSelfInList : ProblemTypeBase
+        {
+            internal const string ValidValueInList = "Valid";
+            public List<object> BadList { get; } = new List<object> { ValidValueInList };
+            public TypeContainingSelfInList() => BadList.Add(this);
+            public override string ToString() => GetType().Name;
         }
     }
 }

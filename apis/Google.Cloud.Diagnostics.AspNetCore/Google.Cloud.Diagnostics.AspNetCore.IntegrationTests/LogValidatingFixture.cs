@@ -23,7 +23,14 @@ using System.Runtime.CompilerServices;
 using System.Threading;
 using System.Xml;
 
+
+#if NETCOREAPP3_1
+namespace Google.Cloud.Diagnostics.AspNetCore3.IntegrationTests
+#elif NETCOREAPP2_1 || NET461
 namespace Google.Cloud.Diagnostics.AspNetCore.IntegrationTests
+#else
+#error unknown target framework
+#endif
 {
     /// <summary>
     /// A fixture that allows logging validation to be deferred until disposal.
@@ -123,7 +130,7 @@ namespace Google.Cloud.Diagnostics.AspNetCore.IntegrationTests
                 JsonPayload = new Struct { Fields = { ["message"] = Value.ForString(id) } }
             };
 
-            _client.WriteLogEntries(null, null, null, new[] { entry });
+            _client.WriteLogEntries((LogName) null, null, null, new[] { entry });
 
             var request = BuildRequest(startTime);
             request.Filter += $" AND jsonPayload.message:\"{id}\"";

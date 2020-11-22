@@ -71,9 +71,17 @@ namespace Google.Cloud.Spanner.Data
 
         /// <summary>
         /// The SpannerSettings used by this SessionPoolManager. These are expected to remain unaltered for the lifetime of the manager.
-        /// Currently the default settings are used in all cases.
+        /// Currently the default settings are used in all cases, but with the "gccl" version header added to specify the version of Google.Cloud.Spanner.Data
+        /// being used.
         /// </summary>
-        internal SpannerSettings SpannerSettings { get; } = SpannerSettings.GetDefault();
+        internal SpannerSettings SpannerSettings { get; } = CreateSpannerSettingsWithVersionHeader();
+
+        private static SpannerSettings CreateSpannerSettingsWithVersionHeader()
+        {
+            var settings = new SpannerSettings();
+            settings.VersionHeaderBuilder.AppendAssemblyVersion("gccl", typeof(SessionPoolManager));
+            return settings;
+        }
 
         /// <summary>
         /// Constructor for test purposes, allowing the SpannerClient creation to be customized (e.g. for
@@ -281,7 +289,6 @@ namespace Google.Cloud.Spanner.Data
         private static async Task<SpannerClient> CreateClientAsync(SpannerClientCreationOptions channelOptions, SpannerSettings spannerSettings, Logger logger)
         {
             var credentials = await channelOptions.GetCredentialsAsync().ConfigureAwait(false);
-            var channel = new Channel(channelOptions.Endpoint.Host, channelOptions.Endpoint.Port, credentials);
 
             var apiConfig = new ApiConfig
             {
@@ -300,10 +307,13 @@ namespace Google.Cloud.Spanner.Data
                 new ChannelOption(GcpCallInvoker.ApiConfigChannelArg, apiConfig.ToString())
             };
 
-            var endpoint = channelOptions.Endpoint;
-            var callInvoker = new GcpCallInvoker(endpoint.Host, endpoint.Port, credentials, grpcOptions);
+            var callInvoker = new GcpCallInvoker(channelOptions.Endpoint, credentials, grpcOptions);
 
-            return SpannerClient.Create(callInvoker, spannerSettings);
+            return new SpannerClientBuilder
+            {
+                CallInvoker = callInvoker,
+                Settings = spannerSettings
+            }.Build();
         }
     }
 }

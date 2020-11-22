@@ -1,4 +1,4 @@
-// Copyright 2019 Google LLC
+// Copyright 2020 Google LLC
 //
 // Licensed under the Apache License, Version 2.0 (the "License");
 // you may not use this file except in compliance with the License.
@@ -24,7 +24,7 @@ namespace Google.Cloud.WebRisk.V1Beta1.Snippets
     public sealed class GeneratedWebRiskServiceV1Beta1ClientSnippets
     {
         /// <summary>Snippet for ComputeThreatListDiff</summary>
-        public void ComputeThreatListDiff_RequestObject()
+        public void ComputeThreatListDiffRequestObject()
         {
             // Snippet: ComputeThreatListDiff(ComputeThreatListDiffRequest, CallSettings)
             // Create client
@@ -42,7 +42,7 @@ namespace Google.Cloud.WebRisk.V1Beta1.Snippets
         }
 
         /// <summary>Snippet for ComputeThreatListDiffAsync</summary>
-        public async Task ComputeThreatListDiffAsync_RequestObject()
+        public async Task ComputeThreatListDiffRequestObjectAsync()
         {
             // Snippet: ComputeThreatListDiffAsync(ComputeThreatListDiffRequest, CallSettings)
             // Additional: ComputeThreatListDiffAsync(ComputeThreatListDiffRequest, CancellationToken)
@@ -92,7 +92,7 @@ namespace Google.Cloud.WebRisk.V1Beta1.Snippets
         }
 
         /// <summary>Snippet for SearchUris</summary>
-        public void SearchUris_RequestObject()
+        public void SearchUrisRequestObject()
         {
             // Snippet: SearchUris(SearchUrisRequest, CallSettings)
             // Create client
@@ -112,7 +112,7 @@ namespace Google.Cloud.WebRisk.V1Beta1.Snippets
         }
 
         /// <summary>Snippet for SearchUrisAsync</summary>
-        public async Task SearchUrisAsync_RequestObject()
+        public async Task SearchUrisRequestObjectAsync()
         {
             // Snippet: SearchUrisAsync(SearchUrisRequest, CallSettings)
             // Additional: SearchUrisAsync(SearchUrisRequest, CancellationToken)
@@ -168,7 +168,7 @@ namespace Google.Cloud.WebRisk.V1Beta1.Snippets
         }
 
         /// <summary>Snippet for SearchHashes</summary>
-        public void SearchHashes_RequestObject()
+        public void SearchHashesRequestObject()
         {
             // Snippet: SearchHashes(SearchHashesRequest, CallSettings)
             // Create client
@@ -188,7 +188,7 @@ namespace Google.Cloud.WebRisk.V1Beta1.Snippets
         }
 
         /// <summary>Snippet for SearchHashesAsync</summary>
-        public async Task SearchHashesAsync_RequestObject()
+        public async Task SearchHashesRequestObjectAsync()
         {
             // Snippet: SearchHashesAsync(SearchHashesRequest, CallSettings)
             // Additional: SearchHashesAsync(SearchHashesRequest, CancellationToken)

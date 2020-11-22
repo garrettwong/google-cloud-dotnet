@@ -20,6 +20,7 @@ using Grpc.Auth;
 using Grpc.Core;
 using System;
 using System.Collections.Generic;
+using System.Globalization;
 using System.Linq;
 using System.Threading;
 using System.Threading.Tasks;
@@ -88,9 +89,15 @@ namespace Google.Cloud.PubSub.V1
             public FlowControlSettings FlowControlSettings { get; set; }
 
             /// <summary>
+            /// If set to true, disables enforcing flow control settings at the Cloud PubSub server
+            /// and uses the less accurate method of only enforcing flow control at the client side.
+            /// </summary>
+            public bool UseLegacyFlowControl { get; set; } = false;
+
+            /// <summary>
             /// The lease time before which a message must either be ACKed
             /// or have its lease extended. This is truncated to the nearest second.
-            /// If <c>null</c>, uses the default of <see cref="AckDeadline"/>.
+            /// If <c>null</c>, uses the default of <see cref="DefaultAckDeadline"/>.
             /// </summary>
             public TimeSpan? AckDeadline { get; set; }
 
@@ -150,7 +157,7 @@ namespace Google.Cloud.PubSub.V1
                 int? clientCount = null,
                 SubscriberServiceApiSettings subscriberServiceApiSettings = null,
                 ChannelCredentials credentials = null,
-                ServiceEndpoint serviceEndpoint = null)
+                string serviceEndpoint = null)
             {
                 ClientCount = clientCount;
                 SubscriberServiceApiSettings = subscriberServiceApiSettings;
@@ -178,10 +185,10 @@ namespace Google.Cloud.PubSub.V1
             public ChannelCredentials Credentials { get; }
 
             /// <summary>
-            /// The <see cref="ServiceEndpoint"/> to use when creating <see cref="SubscriberServiceApiClient"/> instances.
+            /// The endpoint to use when creating <see cref="SubscriberServiceApiClient"/> instances.
             /// If <c>null</c>, defaults to <see cref="SubscriberServiceApiClient.DefaultEndpoint"/>.
             /// </summary>
-            public ServiceEndpoint ServiceEndpoint { get; }
+            public string ServiceEndpoint { get; }
 
             internal void Validate()
             {
@@ -262,6 +269,7 @@ namespace Google.Cloud.PubSub.V1
             var shutdowns = new Func<Task>[clientCount];
             for (int i = 0; i < clientCount; i++)
             {
+                // TODO: Use GrpcChannelOptions, and expose a way of setting custom options in the client builder.
                 var channelOptions = new[]
                 {
                     // Set channel send/recv message size to unlimited. It defaults to ~4Mb which causes failures.
@@ -270,8 +278,12 @@ namespace Google.Cloud.PubSub.V1
                     // Use a random arg to prevent sub-channel re-use in gRPC, so each channel uses its own connection.
                     new ChannelOption("sub-channel-separator", Guid.NewGuid().ToString())
                 };
-                var channel = new Channel(endpoint.Host, endpoint.Port, channelCredentials, channelOptions);
-                clients[i] = SubscriberServiceApiClient.Create(channel, clientCreationSettings?.SubscriberServiceApiSettings);
+                var channel = new Channel(endpoint, channelCredentials, channelOptions);
+                clients[i] = new SubscriberServiceApiClientBuilder
+                {
+                    CallInvoker = channel.CreateCallInvoker(),
+                    Settings = clientCreationSettings?.SubscriberServiceApiSettings
+                }.Build();
                 shutdowns[i] = channel.ShutdownAsync;
             }
             Task Shutdown() => Task.WhenAll(shutdowns.Select(x => x()));
@@ -345,6 +357,8 @@ namespace Google.Cloud.PubSub.V1
     {
         // TODO: Logging
 
+        internal const string DeliveryAttemptAttrKey = "googclient_deliveryattempt";
+
         /// <summary>
         /// Instantiate a <see cref="SubscriberClientImpl"/> associated with the specified <see cref="SubscriptionName"/>.
         /// </summary>
@@ -373,6 +387,7 @@ namespace Google.Cloud.PubSub.V1
             _scheduler = settings.Scheduler ?? SystemScheduler.Instance;
             _taskHelper = GaxPreconditions.CheckNotNull(taskHelper, nameof(taskHelper));
             _flowControlSettings = settings.FlowControlSettings ?? DefaultFlowControlSettings;
+            _useLegacyFlowControl = settings.UseLegacyFlowControl;
             _maxAckExtendQueue = (int)Math.Min(_flowControlSettings.MaxOutstandingElementCount ?? long.MaxValue, 20_000);
         }
 
@@ -386,6 +401,7 @@ namespace Google.Cloud.PubSub.V1
         private readonly IScheduler _scheduler;
         private readonly TaskHelper _taskHelper;
         private readonly FlowControlSettings _flowControlSettings;
+        private readonly bool _useLegacyFlowControl;
 
         private TaskCompletionSource<int> _mainTcs;
         private CancellationTokenSource _globalSoftStopCts; // soft-stop is guarenteed to occur before hard-stop.
@@ -416,7 +432,7 @@ namespace Google.Cloud.PubSub.V1
             // Start all subscribers
             var subscriberTasks = _clients.Select(client =>
             {
-                var singleChannel = new SingleChannel(this, client, handlerAsync, flow, registerTask);
+                var singleChannel = new SingleChannel(this, client, handlerAsync, flow, _useLegacyFlowControl, registerTask);
                 return _taskHelper.Run(() => singleChannel.StartAsync());
             }).ToArray();
             // Set up finish task; code that executes when this subscriber is being shutdown (for whatever reason).
@@ -493,18 +509,16 @@ namespace Google.Cloud.PubSub.V1
                 internal long ByteCount { get; }
             }
 
-            internal Flow(long maxByteCount, long maxElementCount, Action<Task> registerTaskFn, TaskHelper taskHelper)
+            internal Flow(long maxOutstandingByteCount, long maxOutstandingElementCount, Action<Task> registerTaskFn, TaskHelper taskHelper)
             {
-                _maxByteCount = maxByteCount;
-                _maxElementCount = maxElementCount;
+                MaxOutstandingByteCount = maxOutstandingByteCount;
+                MaxOutstandingElementCount = maxOutstandingElementCount;
                 _registerTaskFn = registerTaskFn;
                 _taskHelper = taskHelper;
                 _event = new AsyncAutoResetEvent(taskHelper);
             }
 
             private readonly object _lock = new object();
-            private readonly long _maxByteCount;
-            private readonly long _maxElementCount;
             private readonly Action<Task> _registerTaskFn;
             private readonly TaskHelper _taskHelper;
             private readonly AsyncAutoResetEvent _event;
@@ -514,10 +528,13 @@ namespace Google.Cloud.PubSub.V1
             private long _byteCount;
             private long _elementCount;
 
+            internal long MaxOutstandingByteCount { get; }
+            internal long MaxOutstandingElementCount { get; }
+
             /// <summary>
             /// Is flow-control currently within limits. Pre-condition: must be locked.
             /// </summary>
-            private bool IsFlowOk() => _byteCount < _maxByteCount && _elementCount < _maxElementCount;
+            private bool IsFlowOk() => _byteCount < MaxOutstandingByteCount && _elementCount < MaxOutstandingElementCount;
 
             /// <summary>
             /// Call <paramref name="fn"/> when allowed to do so by the flow-control limits.
@@ -812,7 +829,7 @@ namespace Google.Cloud.PubSub.V1
 
             internal SingleChannel(SubscriberClientImpl subscriber,
                 SubscriberServiceApiClient client, Func<PubsubMessage, CancellationToken, Task<Reply>> handlerAsync,
-                Flow flow,
+                Flow flow, bool useLegacyFlowControl,
                 Action<Task> registerTaskFn)
             {
                 _registerTaskFn = registerTaskFn;
@@ -832,6 +849,7 @@ namespace Google.Cloud.PubSub.V1
                 _maxAckExtendSendCount = Math.Max(10, subscriber._maxAckExtendQueue / 4);
                 _maxConcurrentPush = 3; // Fairly arbitrary.
                 _flow = flow;
+                _useLegacyFlowControl = useLegacyFlowControl;
                 _eventPush = new AsyncAutoResetEvent(subscriber._taskHelper);
                 _continuationQueue = new AsyncSingleRecvQueue<TaskNextAction>(subscriber._taskHelper);
             }
@@ -855,6 +873,7 @@ namespace Google.Cloud.PubSub.V1
             private readonly int _maxConcurrentPush; // Mamimum number (slightly soft) of concurrent ack/nack/extend push RPCs.
 
             private readonly Flow _flow;
+            private readonly bool _useLegacyFlowControl;
             private readonly AsyncAutoResetEvent _eventPush;
             private readonly AsyncSingleRecvQueue<TaskNextAction> _continuationQueue;
             private readonly RequeueableQueue<TimedId> _extendQueue = new RequeueableQueue<TimedId>();
@@ -869,7 +888,13 @@ namespace Google.Cloud.PubSub.V1
             private long _extendThrottleHigh = 0; // Incremented on extension, and put on extend queue items.
             private long _extendThrottleLow = 0; // Incremented after _extendQueueThrottleInterval, checked when throttling.
 
-            private readonly static BackoffSettings s_pullBackoff = new BackoffSettings(TimeSpan.FromSeconds(0.5), TimeSpan.FromSeconds(30), 2.0);
+            private readonly static RetrySettings s_pullBackoff = RetrySettings.FromExponentialBackoff(
+                maxAttempts: int.MaxValue,
+                initialBackoff: TimeSpan.FromSeconds(0.5),
+                maxBackoff: TimeSpan.FromSeconds(30),
+                backoffMultiplier: 2.0,
+                retryFilter: _ => false // Ignored
+                );
             private TimeSpan? _pullBackoff = null;
 
             // Stream shutdown occurs after 1 minute, so ensure we're always before that.
@@ -976,7 +1001,9 @@ namespace Google.Cloud.PubSub.V1
                 Task initTask = _pull.WriteAsync(new StreamingPullRequest
                 {
                     SubscriptionAsSubscriptionName = _subscriptionName,
-                    StreamAckDeadlineSeconds = _modifyDeadlineSeconds
+                    StreamAckDeadlineSeconds = _modifyDeadlineSeconds,
+                    MaxOutstandingMessages = _useLegacyFlowControl ? 0 : _flow.MaxOutstandingElementCount,
+                    MaxOutstandingBytes = _useLegacyFlowControl ? 0 : _flow.MaxOutstandingByteCount
                 });
                 Add(initTask, Next(true, () => HandlePullMoveNext(initTask)));
             }
@@ -991,7 +1018,7 @@ namespace Google.Cloud.PubSub.V1
                         StopStreamingPull();
                         // Increase backoff internal and start stream again.
                         // If stream-pull fails repeatly, increase the delay, up to a maximum of 30 seconds.
-                        _pullBackoff = s_pullBackoff.NextDelay(_pullBackoff ?? TimeSpan.Zero);
+                        _pullBackoff = s_pullBackoff.NextBackoff(_pullBackoff ?? TimeSpan.Zero);
                         StartStreamingPull();
                         return true;
                     }
@@ -1032,7 +1059,7 @@ namespace Google.Cloud.PubSub.V1
                 {
                     // Call MoveNext to receive more messages.
                     // Cancellation is handled by the cancellation-token passed when the stream is created.
-                    var moveNextTask = _pull.ResponseStream.MoveNext(CancellationToken.None);
+                    var moveNextTask = _pull.GrpcCall.ResponseStream.MoveNext(CancellationToken.None);
                     Add(moveNextTask, Next(true, () => HandlePullMessageData(moveNextTask)));
                 }
             }
@@ -1053,7 +1080,7 @@ namespace Google.Cloud.PubSub.V1
                     StreamingPullResponse current;
                     try
                     {
-                        current = _pull.ResponseStream.Current;
+                        current = _pull.GrpcCall.ResponseStream.Current;
                     }
                     catch (Exception e) when (e.As<RpcException>()?.IsRecoverable() ?? false)
                     {
@@ -1098,6 +1125,10 @@ namespace Google.Cloud.PubSub.V1
                         {
                             _softStopCts.Token.ThrowIfCancellationRequested();
                             _userHandlerInFlight += 1;
+                        }
+                        if (msg.DeliveryAttempt > 0)
+                        {
+                            msg.Message.Attributes[DeliveryAttemptAttrKey] = msg.DeliveryAttempt.ToString(CultureInfo.InvariantCulture);
                         }
                         // Call user message handler
                         var reply = await _taskHelper.ConfigureAwaitHideErrors(() => _handlerAsync(msg.Message, _hardStopCts.Token), Reply.Nack);

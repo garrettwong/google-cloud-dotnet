@@ -61,13 +61,13 @@ namespace Google.Cloud.Scheduler.V1 {
             "YgZwcm90bzM="));
       descriptor = pbr::FileDescriptor.FromGeneratedCode(descriptorData,
           new pbr::FileDescriptor[] { global::Google.Api.ResourceReflection.Descriptor, global::Google.Api.AnnotationsReflection.Descriptor, },
-          new pbr::GeneratedClrTypeInfo(new[] {typeof(global::Google.Cloud.Scheduler.V1.HttpMethod), }, new pbr::GeneratedClrTypeInfo[] {
-            new pbr::GeneratedClrTypeInfo(typeof(global::Google.Cloud.Scheduler.V1.HttpTarget), global::Google.Cloud.Scheduler.V1.HttpTarget.Parser, new[]{ "Uri", "HttpMethod", "Headers", "Body", "OauthToken", "OidcToken" }, new[]{ "AuthorizationHeader" }, null, new pbr::GeneratedClrTypeInfo[] { null, }),
-            new pbr::GeneratedClrTypeInfo(typeof(global::Google.Cloud.Scheduler.V1.AppEngineHttpTarget), global::Google.Cloud.Scheduler.V1.AppEngineHttpTarget.Parser, new[]{ "HttpMethod", "AppEngineRouting", "RelativeUri", "Headers", "Body" }, null, null, new pbr::GeneratedClrTypeInfo[] { null, }),
-            new pbr::GeneratedClrTypeInfo(typeof(global::Google.Cloud.Scheduler.V1.PubsubTarget), global::Google.Cloud.Scheduler.V1.PubsubTarget.Parser, new[]{ "TopicName", "Data", "Attributes" }, null, null, new pbr::GeneratedClrTypeInfo[] { null, }),
-            new pbr::GeneratedClrTypeInfo(typeof(global::Google.Cloud.Scheduler.V1.AppEngineRouting), global::Google.Cloud.Scheduler.V1.AppEngineRouting.Parser, new[]{ "Service", "Version", "Instance", "Host" }, null, null, null),
-            new pbr::GeneratedClrTypeInfo(typeof(global::Google.Cloud.Scheduler.V1.OAuthToken), global::Google.Cloud.Scheduler.V1.OAuthToken.Parser, new[]{ "ServiceAccountEmail", "Scope" }, null, null, null),
-            new pbr::GeneratedClrTypeInfo(typeof(global::Google.Cloud.Scheduler.V1.OidcToken), global::Google.Cloud.Scheduler.V1.OidcToken.Parser, new[]{ "ServiceAccountEmail", "Audience" }, null, null, null)
+          new pbr::GeneratedClrTypeInfo(new[] {typeof(global::Google.Cloud.Scheduler.V1.HttpMethod), }, null, new pbr::GeneratedClrTypeInfo[] {
+            new pbr::GeneratedClrTypeInfo(typeof(global::Google.Cloud.Scheduler.V1.HttpTarget), global::Google.Cloud.Scheduler.V1.HttpTarget.Parser, new[]{ "Uri", "HttpMethod", "Headers", "Body", "OauthToken", "OidcToken" }, new[]{ "AuthorizationHeader" }, null, null, new pbr::GeneratedClrTypeInfo[] { null, }),
+            new pbr::GeneratedClrTypeInfo(typeof(global::Google.Cloud.Scheduler.V1.AppEngineHttpTarget), global::Google.Cloud.Scheduler.V1.AppEngineHttpTarget.Parser, new[]{ "HttpMethod", "AppEngineRouting", "RelativeUri", "Headers", "Body" }, null, null, null, new pbr::GeneratedClrTypeInfo[] { null, }),
+            new pbr::GeneratedClrTypeInfo(typeof(global::Google.Cloud.Scheduler.V1.PubsubTarget), global::Google.Cloud.Scheduler.V1.PubsubTarget.Parser, new[]{ "TopicName", "Data", "Attributes" }, null, null, null, new pbr::GeneratedClrTypeInfo[] { null, }),
+            new pbr::GeneratedClrTypeInfo(typeof(global::Google.Cloud.Scheduler.V1.AppEngineRouting), global::Google.Cloud.Scheduler.V1.AppEngineRouting.Parser, new[]{ "Service", "Version", "Instance", "Host" }, null, null, null, null),
+            new pbr::GeneratedClrTypeInfo(typeof(global::Google.Cloud.Scheduler.V1.OAuthToken), global::Google.Cloud.Scheduler.V1.OAuthToken.Parser, new[]{ "ServiceAccountEmail", "Scope" }, null, null, null, null),
+            new pbr::GeneratedClrTypeInfo(typeof(global::Google.Cloud.Scheduler.V1.OidcToken), global::Google.Cloud.Scheduler.V1.OidcToken.Parser, new[]{ "ServiceAccountEmail", "Audience" }, null, null, null, null)
           }));
     }
     #endregion
@@ -123,7 +123,11 @@ namespace Google.Cloud.Scheduler.V1 {
   /// constitutes a failed execution. For a redirected request, the response
   /// returned by the redirected request is considered.
   /// </summary>
-  public sealed partial class HttpTarget : pb::IMessage<HttpTarget> {
+  public sealed partial class HttpTarget : pb::IMessage<HttpTarget>
+  #if !GOOGLE_PROTOBUF_REFSTRUCT_COMPATIBILITY_MODE
+      , pb::IBufferMessage
+  #endif
+  {
     private static readonly pb::MessageParser<HttpTarget> _parser = new pb::MessageParser<HttpTarget>(() => new HttpTarget());
     private pb::UnknownFieldSet _unknownFields;
     [global::System.Diagnostics.DebuggerNonUserCodeAttribute]
@@ -190,7 +194,7 @@ namespace Google.Cloud.Scheduler.V1 {
 
     /// <summary>Field number for the "http_method" field.</summary>
     public const int HttpMethodFieldNumber = 2;
-    private global::Google.Cloud.Scheduler.V1.HttpMethod httpMethod_ = 0;
+    private global::Google.Cloud.Scheduler.V1.HttpMethod httpMethod_ = global::Google.Cloud.Scheduler.V1.HttpMethod.Unspecified;
     /// <summary>
     /// Which HTTP method to use for the request.
     /// </summary>
@@ -205,7 +209,7 @@ namespace Google.Cloud.Scheduler.V1 {
     /// <summary>Field number for the "headers" field.</summary>
     public const int HeadersFieldNumber = 3;
     private static readonly pbc::MapField<string, string>.Codec _map_headers_codec
-        = new pbc::MapField<string, string>.Codec(pb::FieldCodec.ForString(10), pb::FieldCodec.ForString(18), 26);
+        = new pbc::MapField<string, string>.Codec(pb::FieldCodec.ForString(10, ""), pb::FieldCodec.ForString(18, ""), 26);
     private readonly pbc::MapField<string, string> headers_ = new pbc::MapField<string, string>();
     /// <summary>
     /// The user can specify HTTP request headers to send with the job's
@@ -332,7 +336,7 @@ namespace Google.Cloud.Scheduler.V1 {
     public override int GetHashCode() {
       int hash = 1;
       if (Uri.Length != 0) hash ^= Uri.GetHashCode();
-      if (HttpMethod != 0) hash ^= HttpMethod.GetHashCode();
+      if (HttpMethod != global::Google.Cloud.Scheduler.V1.HttpMethod.Unspecified) hash ^= HttpMethod.GetHashCode();
       hash ^= Headers.GetHashCode();
       if (Body.Length != 0) hash ^= Body.GetHashCode();
       if (authorizationHeaderCase_ == AuthorizationHeaderOneofCase.OauthToken) hash ^= OauthToken.GetHashCode();
@@ -351,11 +355,14 @@ namespace Google.Cloud.Scheduler.V1 {
 
     [global::System.Diagnostics.DebuggerNonUserCodeAttribute]
     public void WriteTo(pb::CodedOutputStream output) {
+    #if !GOOGLE_PROTOBUF_REFSTRUCT_COMPATIBILITY_MODE
+      output.WriteRawMessage(this);
+    #else
       if (Uri.Length != 0) {
         output.WriteRawTag(10);
         output.WriteString(Uri);
       }
-      if (HttpMethod != 0) {
+      if (HttpMethod != global::Google.Cloud.Scheduler.V1.HttpMethod.Unspecified) {
         output.WriteRawTag(16);
         output.WriteEnum((int) HttpMethod);
       }
@@ -375,7 +382,38 @@ namespace Google.Cloud.Scheduler.V1 {
       if (_unknownFields != null) {
         _unknownFields.WriteTo(output);
       }
+    #endif
     }
+
+    #if !GOOGLE_PROTOBUF_REFSTRUCT_COMPATIBILITY_MODE
+    [global::System.Diagnostics.DebuggerNonUserCodeAttribute]
+    void pb::IBufferMessage.InternalWriteTo(ref pb::WriteContext output) {
+      if (Uri.Length != 0) {
+        output.WriteRawTag(10);
+        output.WriteString(Uri);
+      }
+      if (HttpMethod != global::Google.Cloud.Scheduler.V1.HttpMethod.Unspecified) {
+        output.WriteRawTag(16);
+        output.WriteEnum((int) HttpMethod);
+      }
+      headers_.WriteTo(ref output, _map_headers_codec);
+      if (Body.Length != 0) {
+        output.WriteRawTag(34);
+        output.WriteBytes(Body);
+      }
+      if (authorizationHeaderCase_ == AuthorizationHeaderOneofCase.OauthToken) {
+        output.WriteRawTag(42);
+        output.WriteMessage(OauthToken);
+      }
+      if (authorizationHeaderCase_ == AuthorizationHeaderOneofCase.OidcToken) {
+        output.WriteRawTag(50);
+        output.WriteMessage(OidcToken);
+      }
+      if (_unknownFields != null) {
+        _unknownFields.WriteTo(ref output);
+      }
+    }
+    #endif
 
     [global::System.Diagnostics.DebuggerNonUserCodeAttribute]
     public int CalculateSize() {
@@ -383,7 +421,7 @@ namespace Google.Cloud.Scheduler.V1 {
       if (Uri.Length != 0) {
         size += 1 + pb::CodedOutputStream.ComputeStringSize(Uri);
       }
-      if (HttpMethod != 0) {
+      if (HttpMethod != global::Google.Cloud.Scheduler.V1.HttpMethod.Unspecified) {
         size += 1 + pb::CodedOutputStream.ComputeEnumSize((int) HttpMethod);
       }
       size += headers_.CalculateSize(_map_headers_codec);
@@ -410,7 +448,7 @@ namespace Google.Cloud.Scheduler.V1 {
       if (other.Uri.Length != 0) {
         Uri = other.Uri;
       }
-      if (other.HttpMethod != 0) {
+      if (other.HttpMethod != global::Google.Cloud.Scheduler.V1.HttpMethod.Unspecified) {
         HttpMethod = other.HttpMethod;
       }
       headers_.Add(other.headers_);
@@ -437,6 +475,9 @@ namespace Google.Cloud.Scheduler.V1 {
 
     [global::System.Diagnostics.DebuggerNonUserCodeAttribute]
     public void MergeFrom(pb::CodedInputStream input) {
+    #if !GOOGLE_PROTOBUF_REFSTRUCT_COMPATIBILITY_MODE
+      input.ReadRawMessage(this);
+    #else
       uint tag;
       while ((tag = input.ReadTag()) != 0) {
         switch(tag) {
@@ -479,7 +520,56 @@ namespace Google.Cloud.Scheduler.V1 {
           }
         }
       }
+    #endif
     }
+
+    #if !GOOGLE_PROTOBUF_REFSTRUCT_COMPATIBILITY_MODE
+    [global::System.Diagnostics.DebuggerNonUserCodeAttribute]
+    void pb::IBufferMessage.InternalMergeFrom(ref pb::ParseContext input) {
+      uint tag;
+      while ((tag = input.ReadTag()) != 0) {
+        switch(tag) {
+          default:
+            _unknownFields = pb::UnknownFieldSet.MergeFieldFrom(_unknownFields, ref input);
+            break;
+          case 10: {
+            Uri = input.ReadString();
+            break;
+          }
+          case 16: {
+            HttpMethod = (global::Google.Cloud.Scheduler.V1.HttpMethod) input.ReadEnum();
+            break;
+          }
+          case 26: {
+            headers_.AddEntriesFrom(ref input, _map_headers_codec);
+            break;
+          }
+          case 34: {
+            Body = input.ReadBytes();
+            break;
+          }
+          case 42: {
+            global::Google.Cloud.Scheduler.V1.OAuthToken subBuilder = new global::Google.Cloud.Scheduler.V1.OAuthToken();
+            if (authorizationHeaderCase_ == AuthorizationHeaderOneofCase.OauthToken) {
+              subBuilder.MergeFrom(OauthToken);
+            }
+            input.ReadMessage(subBuilder);
+            OauthToken = subBuilder;
+            break;
+          }
+          case 50: {
+            global::Google.Cloud.Scheduler.V1.OidcToken subBuilder = new global::Google.Cloud.Scheduler.V1.OidcToken();
+            if (authorizationHeaderCase_ == AuthorizationHeaderOneofCase.OidcToken) {
+              subBuilder.MergeFrom(OidcToken);
+            }
+            input.ReadMessage(subBuilder);
+            OidcToken = subBuilder;
+            break;
+          }
+        }
+      }
+    }
+    #endif
 
   }
 
@@ -494,7 +584,11 @@ namespace Google.Cloud.Scheduler.V1 {
   /// response code, or a failure to receive a response before the
   /// deadline, constitutes a failed attempt.
   /// </summary>
-  public sealed partial class AppEngineHttpTarget : pb::IMessage<AppEngineHttpTarget> {
+  public sealed partial class AppEngineHttpTarget : pb::IMessage<AppEngineHttpTarget>
+  #if !GOOGLE_PROTOBUF_REFSTRUCT_COMPATIBILITY_MODE
+      , pb::IBufferMessage
+  #endif
+  {
     private static readonly pb::MessageParser<AppEngineHttpTarget> _parser = new pb::MessageParser<AppEngineHttpTarget>(() => new AppEngineHttpTarget());
     private pb::UnknownFieldSet _unknownFields;
     [global::System.Diagnostics.DebuggerNonUserCodeAttribute]
@@ -534,7 +628,7 @@ namespace Google.Cloud.Scheduler.V1 {
 
     /// <summary>Field number for the "http_method" field.</summary>
     public const int HttpMethodFieldNumber = 1;
-    private global::Google.Cloud.Scheduler.V1.HttpMethod httpMethod_ = 0;
+    private global::Google.Cloud.Scheduler.V1.HttpMethod httpMethod_ = global::Google.Cloud.Scheduler.V1.HttpMethod.Unspecified;
     /// <summary>
     /// The HTTP method to use for the request. PATCH and OPTIONS are not
     /// permitted.
@@ -583,7 +677,7 @@ namespace Google.Cloud.Scheduler.V1 {
     /// <summary>Field number for the "headers" field.</summary>
     public const int HeadersFieldNumber = 4;
     private static readonly pbc::MapField<string, string>.Codec _map_headers_codec
-        = new pbc::MapField<string, string>.Codec(pb::FieldCodec.ForString(10), pb::FieldCodec.ForString(18), 34);
+        = new pbc::MapField<string, string>.Codec(pb::FieldCodec.ForString(10, ""), pb::FieldCodec.ForString(18, ""), 34);
     private readonly pbc::MapField<string, string> headers_ = new pbc::MapField<string, string>();
     /// <summary>
     /// HTTP request headers.
@@ -666,7 +760,7 @@ namespace Google.Cloud.Scheduler.V1 {
     [global::System.Diagnostics.DebuggerNonUserCodeAttribute]
     public override int GetHashCode() {
       int hash = 1;
-      if (HttpMethod != 0) hash ^= HttpMethod.GetHashCode();
+      if (HttpMethod != global::Google.Cloud.Scheduler.V1.HttpMethod.Unspecified) hash ^= HttpMethod.GetHashCode();
       if (appEngineRouting_ != null) hash ^= AppEngineRouting.GetHashCode();
       if (RelativeUri.Length != 0) hash ^= RelativeUri.GetHashCode();
       hash ^= Headers.GetHashCode();
@@ -684,7 +778,10 @@ namespace Google.Cloud.Scheduler.V1 {
 
     [global::System.Diagnostics.DebuggerNonUserCodeAttribute]
     public void WriteTo(pb::CodedOutputStream output) {
-      if (HttpMethod != 0) {
+    #if !GOOGLE_PROTOBUF_REFSTRUCT_COMPATIBILITY_MODE
+      output.WriteRawMessage(this);
+    #else
+      if (HttpMethod != global::Google.Cloud.Scheduler.V1.HttpMethod.Unspecified) {
         output.WriteRawTag(8);
         output.WriteEnum((int) HttpMethod);
       }
@@ -704,12 +801,39 @@ namespace Google.Cloud.Scheduler.V1 {
       if (_unknownFields != null) {
         _unknownFields.WriteTo(output);
       }
+    #endif
     }
+
+    #if !GOOGLE_PROTOBUF_REFSTRUCT_COMPATIBILITY_MODE
+    [global::System.Diagnostics.DebuggerNonUserCodeAttribute]
+    void pb::IBufferMessage.InternalWriteTo(ref pb::WriteContext output) {
+      if (HttpMethod != global::Google.Cloud.Scheduler.V1.HttpMethod.Unspecified) {
+        output.WriteRawTag(8);
+        output.WriteEnum((int) HttpMethod);
+      }
+      if (appEngineRouting_ != null) {
+        output.WriteRawTag(18);
+        output.WriteMessage(AppEngineRouting);
+      }
+      if (RelativeUri.Length != 0) {
+        output.WriteRawTag(26);
+        output.WriteString(RelativeUri);
+      }
+      headers_.WriteTo(ref output, _map_headers_codec);
+      if (Body.Length != 0) {
+        output.WriteRawTag(42);
+        output.WriteBytes(Body);
+      }
+      if (_unknownFields != null) {
+        _unknownFields.WriteTo(ref output);
+      }
+    }
+    #endif
 
     [global::System.Diagnostics.DebuggerNonUserCodeAttribute]
     public int CalculateSize() {
       int size = 0;
-      if (HttpMethod != 0) {
+      if (HttpMethod != global::Google.Cloud.Scheduler.V1.HttpMethod.Unspecified) {
         size += 1 + pb::CodedOutputStream.ComputeEnumSize((int) HttpMethod);
       }
       if (appEngineRouting_ != null) {
@@ -733,7 +857,7 @@ namespace Google.Cloud.Scheduler.V1 {
       if (other == null) {
         return;
       }
-      if (other.HttpMethod != 0) {
+      if (other.HttpMethod != global::Google.Cloud.Scheduler.V1.HttpMethod.Unspecified) {
         HttpMethod = other.HttpMethod;
       }
       if (other.appEngineRouting_ != null) {
@@ -754,6 +878,9 @@ namespace Google.Cloud.Scheduler.V1 {
 
     [global::System.Diagnostics.DebuggerNonUserCodeAttribute]
     public void MergeFrom(pb::CodedInputStream input) {
+    #if !GOOGLE_PROTOBUF_REFSTRUCT_COMPATIBILITY_MODE
+      input.ReadRawMessage(this);
+    #else
       uint tag;
       while ((tag = input.ReadTag()) != 0) {
         switch(tag) {
@@ -785,7 +912,45 @@ namespace Google.Cloud.Scheduler.V1 {
           }
         }
       }
+    #endif
     }
+
+    #if !GOOGLE_PROTOBUF_REFSTRUCT_COMPATIBILITY_MODE
+    [global::System.Diagnostics.DebuggerNonUserCodeAttribute]
+    void pb::IBufferMessage.InternalMergeFrom(ref pb::ParseContext input) {
+      uint tag;
+      while ((tag = input.ReadTag()) != 0) {
+        switch(tag) {
+          default:
+            _unknownFields = pb::UnknownFieldSet.MergeFieldFrom(_unknownFields, ref input);
+            break;
+          case 8: {
+            HttpMethod = (global::Google.Cloud.Scheduler.V1.HttpMethod) input.ReadEnum();
+            break;
+          }
+          case 18: {
+            if (appEngineRouting_ == null) {
+              AppEngineRouting = new global::Google.Cloud.Scheduler.V1.AppEngineRouting();
+            }
+            input.ReadMessage(AppEngineRouting);
+            break;
+          }
+          case 26: {
+            RelativeUri = input.ReadString();
+            break;
+          }
+          case 34: {
+            headers_.AddEntriesFrom(ref input, _map_headers_codec);
+            break;
+          }
+          case 42: {
+            Body = input.ReadBytes();
+            break;
+          }
+        }
+      }
+    }
+    #endif
 
   }
 
@@ -793,7 +958,11 @@ namespace Google.Cloud.Scheduler.V1 {
   /// Pub/Sub target. The job will be delivered by publishing a message to
   /// the given Pub/Sub topic.
   /// </summary>
-  public sealed partial class PubsubTarget : pb::IMessage<PubsubTarget> {
+  public sealed partial class PubsubTarget : pb::IMessage<PubsubTarget>
+  #if !GOOGLE_PROTOBUF_REFSTRUCT_COMPATIBILITY_MODE
+      , pb::IBufferMessage
+  #endif
+  {
     private static readonly pb::MessageParser<PubsubTarget> _parser = new pb::MessageParser<PubsubTarget>(() => new PubsubTarget());
     private pb::UnknownFieldSet _unknownFields;
     [global::System.Diagnostics.DebuggerNonUserCodeAttribute]
@@ -869,7 +1038,7 @@ namespace Google.Cloud.Scheduler.V1 {
     /// <summary>Field number for the "attributes" field.</summary>
     public const int AttributesFieldNumber = 4;
     private static readonly pbc::MapField<string, string>.Codec _map_attributes_codec
-        = new pbc::MapField<string, string>.Codec(pb::FieldCodec.ForString(10), pb::FieldCodec.ForString(18), 34);
+        = new pbc::MapField<string, string>.Codec(pb::FieldCodec.ForString(10, ""), pb::FieldCodec.ForString(18, ""), 34);
     private readonly pbc::MapField<string, string> attributes_ = new pbc::MapField<string, string>();
     /// <summary>
     /// Attributes for PubsubMessage.
@@ -920,6 +1089,9 @@ namespace Google.Cloud.Scheduler.V1 {
 
     [global::System.Diagnostics.DebuggerNonUserCodeAttribute]
     public void WriteTo(pb::CodedOutputStream output) {
+    #if !GOOGLE_PROTOBUF_REFSTRUCT_COMPATIBILITY_MODE
+      output.WriteRawMessage(this);
+    #else
       if (TopicName.Length != 0) {
         output.WriteRawTag(10);
         output.WriteString(TopicName);
@@ -932,7 +1104,26 @@ namespace Google.Cloud.Scheduler.V1 {
       if (_unknownFields != null) {
         _unknownFields.WriteTo(output);
       }
+    #endif
     }
+
+    #if !GOOGLE_PROTOBUF_REFSTRUCT_COMPATIBILITY_MODE
+    [global::System.Diagnostics.DebuggerNonUserCodeAttribute]
+    void pb::IBufferMessage.InternalWriteTo(ref pb::WriteContext output) {
+      if (TopicName.Length != 0) {
+        output.WriteRawTag(10);
+        output.WriteString(TopicName);
+      }
+      if (Data.Length != 0) {
+        output.WriteRawTag(26);
+        output.WriteBytes(Data);
+      }
+      attributes_.WriteTo(ref output, _map_attributes_codec);
+      if (_unknownFields != null) {
+        _unknownFields.WriteTo(ref output);
+      }
+    }
+    #endif
 
     [global::System.Diagnostics.DebuggerNonUserCodeAttribute]
     public int CalculateSize() {
@@ -967,6 +1158,9 @@ namespace Google.Cloud.Scheduler.V1 {
 
     [global::System.Diagnostics.DebuggerNonUserCodeAttribute]
     public void MergeFrom(pb::CodedInputStream input) {
+    #if !GOOGLE_PROTOBUF_REFSTRUCT_COMPATIBILITY_MODE
+      input.ReadRawMessage(this);
+    #else
       uint tag;
       while ((tag = input.ReadTag()) != 0) {
         switch(tag) {
@@ -987,7 +1181,34 @@ namespace Google.Cloud.Scheduler.V1 {
           }
         }
       }
+    #endif
     }
+
+    #if !GOOGLE_PROTOBUF_REFSTRUCT_COMPATIBILITY_MODE
+    [global::System.Diagnostics.DebuggerNonUserCodeAttribute]
+    void pb::IBufferMessage.InternalMergeFrom(ref pb::ParseContext input) {
+      uint tag;
+      while ((tag = input.ReadTag()) != 0) {
+        switch(tag) {
+          default:
+            _unknownFields = pb::UnknownFieldSet.MergeFieldFrom(_unknownFields, ref input);
+            break;
+          case 10: {
+            TopicName = input.ReadString();
+            break;
+          }
+          case 26: {
+            Data = input.ReadBytes();
+            break;
+          }
+          case 34: {
+            attributes_.AddEntriesFrom(ref input, _map_attributes_codec);
+            break;
+          }
+        }
+      }
+    }
+    #endif
 
   }
 
@@ -1004,7 +1225,11 @@ namespace Google.Cloud.Scheduler.V1 {
   /// and [App Engine Flex request
   /// routing](https://cloud.google.com/appengine/docs/flexible/python/how-requests-are-routed).
   /// </summary>
-  public sealed partial class AppEngineRouting : pb::IMessage<AppEngineRouting> {
+  public sealed partial class AppEngineRouting : pb::IMessage<AppEngineRouting>
+  #if !GOOGLE_PROTOBUF_REFSTRUCT_COMPATIBILITY_MODE
+      , pb::IBufferMessage
+  #endif
+  {
     private static readonly pb::MessageParser<AppEngineRouting> _parser = new pb::MessageParser<AppEngineRouting>(() => new AppEngineRouting());
     private pb::UnknownFieldSet _unknownFields;
     [global::System.Diagnostics.DebuggerNonUserCodeAttribute]
@@ -1210,6 +1435,9 @@ namespace Google.Cloud.Scheduler.V1 {
 
     [global::System.Diagnostics.DebuggerNonUserCodeAttribute]
     public void WriteTo(pb::CodedOutputStream output) {
+    #if !GOOGLE_PROTOBUF_REFSTRUCT_COMPATIBILITY_MODE
+      output.WriteRawMessage(this);
+    #else
       if (Service.Length != 0) {
         output.WriteRawTag(10);
         output.WriteString(Service);
@@ -1229,7 +1457,33 @@ namespace Google.Cloud.Scheduler.V1 {
       if (_unknownFields != null) {
         _unknownFields.WriteTo(output);
       }
+    #endif
     }
+
+    #if !GOOGLE_PROTOBUF_REFSTRUCT_COMPATIBILITY_MODE
+    [global::System.Diagnostics.DebuggerNonUserCodeAttribute]
+    void pb::IBufferMessage.InternalWriteTo(ref pb::WriteContext output) {
+      if (Service.Length != 0) {
+        output.WriteRawTag(10);
+        output.WriteString(Service);
+      }
+      if (Version.Length != 0) {
+        output.WriteRawTag(18);
+        output.WriteString(Version);
+      }
+      if (Instance.Length != 0) {
+        output.WriteRawTag(26);
+        output.WriteString(Instance);
+      }
+      if (Host.Length != 0) {
+        output.WriteRawTag(34);
+        output.WriteString(Host);
+      }
+      if (_unknownFields != null) {
+        _unknownFields.WriteTo(ref output);
+      }
+    }
+    #endif
 
     [global::System.Diagnostics.DebuggerNonUserCodeAttribute]
     public int CalculateSize() {
@@ -1274,6 +1528,9 @@ namespace Google.Cloud.Scheduler.V1 {
 
     [global::System.Diagnostics.DebuggerNonUserCodeAttribute]
     public void MergeFrom(pb::CodedInputStream input) {
+    #if !GOOGLE_PROTOBUF_REFSTRUCT_COMPATIBILITY_MODE
+      input.ReadRawMessage(this);
+    #else
       uint tag;
       while ((tag = input.ReadTag()) != 0) {
         switch(tag) {
@@ -1298,7 +1555,38 @@ namespace Google.Cloud.Scheduler.V1 {
           }
         }
       }
+    #endif
     }
+
+    #if !GOOGLE_PROTOBUF_REFSTRUCT_COMPATIBILITY_MODE
+    [global::System.Diagnostics.DebuggerNonUserCodeAttribute]
+    void pb::IBufferMessage.InternalMergeFrom(ref pb::ParseContext input) {
+      uint tag;
+      while ((tag = input.ReadTag()) != 0) {
+        switch(tag) {
+          default:
+            _unknownFields = pb::UnknownFieldSet.MergeFieldFrom(_unknownFields, ref input);
+            break;
+          case 10: {
+            Service = input.ReadString();
+            break;
+          }
+          case 18: {
+            Version = input.ReadString();
+            break;
+          }
+          case 26: {
+            Instance = input.ReadString();
+            break;
+          }
+          case 34: {
+            Host = input.ReadString();
+            break;
+          }
+        }
+      }
+    }
+    #endif
 
   }
 
@@ -1308,7 +1596,11 @@ namespace Google.Cloud.Scheduler.V1 {
   /// This type of authorization should generally only be used when calling Google
   /// APIs hosted on *.googleapis.com.
   /// </summary>
-  public sealed partial class OAuthToken : pb::IMessage<OAuthToken> {
+  public sealed partial class OAuthToken : pb::IMessage<OAuthToken>
+  #if !GOOGLE_PROTOBUF_REFSTRUCT_COMPATIBILITY_MODE
+      , pb::IBufferMessage
+  #endif
+  {
     private static readonly pb::MessageParser<OAuthToken> _parser = new pb::MessageParser<OAuthToken>(() => new OAuthToken());
     private pb::UnknownFieldSet _unknownFields;
     [global::System.Diagnostics.DebuggerNonUserCodeAttribute]
@@ -1412,6 +1704,9 @@ namespace Google.Cloud.Scheduler.V1 {
 
     [global::System.Diagnostics.DebuggerNonUserCodeAttribute]
     public void WriteTo(pb::CodedOutputStream output) {
+    #if !GOOGLE_PROTOBUF_REFSTRUCT_COMPATIBILITY_MODE
+      output.WriteRawMessage(this);
+    #else
       if (ServiceAccountEmail.Length != 0) {
         output.WriteRawTag(10);
         output.WriteString(ServiceAccountEmail);
@@ -1423,7 +1718,25 @@ namespace Google.Cloud.Scheduler.V1 {
       if (_unknownFields != null) {
         _unknownFields.WriteTo(output);
       }
+    #endif
     }
+
+    #if !GOOGLE_PROTOBUF_REFSTRUCT_COMPATIBILITY_MODE
+    [global::System.Diagnostics.DebuggerNonUserCodeAttribute]
+    void pb::IBufferMessage.InternalWriteTo(ref pb::WriteContext output) {
+      if (ServiceAccountEmail.Length != 0) {
+        output.WriteRawTag(10);
+        output.WriteString(ServiceAccountEmail);
+      }
+      if (Scope.Length != 0) {
+        output.WriteRawTag(18);
+        output.WriteString(Scope);
+      }
+      if (_unknownFields != null) {
+        _unknownFields.WriteTo(ref output);
+      }
+    }
+    #endif
 
     [global::System.Diagnostics.DebuggerNonUserCodeAttribute]
     public int CalculateSize() {
@@ -1456,6 +1769,9 @@ namespace Google.Cloud.Scheduler.V1 {
 
     [global::System.Diagnostics.DebuggerNonUserCodeAttribute]
     public void MergeFrom(pb::CodedInputStream input) {
+    #if !GOOGLE_PROTOBUF_REFSTRUCT_COMPATIBILITY_MODE
+      input.ReadRawMessage(this);
+    #else
       uint tag;
       while ((tag = input.ReadTag()) != 0) {
         switch(tag) {
@@ -1472,7 +1788,30 @@ namespace Google.Cloud.Scheduler.V1 {
           }
         }
       }
+    #endif
     }
+
+    #if !GOOGLE_PROTOBUF_REFSTRUCT_COMPATIBILITY_MODE
+    [global::System.Diagnostics.DebuggerNonUserCodeAttribute]
+    void pb::IBufferMessage.InternalMergeFrom(ref pb::ParseContext input) {
+      uint tag;
+      while ((tag = input.ReadTag()) != 0) {
+        switch(tag) {
+          default:
+            _unknownFields = pb::UnknownFieldSet.MergeFieldFrom(_unknownFields, ref input);
+            break;
+          case 10: {
+            ServiceAccountEmail = input.ReadString();
+            break;
+          }
+          case 18: {
+            Scope = input.ReadString();
+            break;
+          }
+        }
+      }
+    }
+    #endif
 
   }
 
@@ -1484,7 +1823,11 @@ namespace Google.Cloud.Scheduler.V1 {
   /// calling Cloud Run, or endpoints where you intend to validate the token
   /// yourself.
   /// </summary>
-  public sealed partial class OidcToken : pb::IMessage<OidcToken> {
+  public sealed partial class OidcToken : pb::IMessage<OidcToken>
+  #if !GOOGLE_PROTOBUF_REFSTRUCT_COMPATIBILITY_MODE
+      , pb::IBufferMessage
+  #endif
+  {
     private static readonly pb::MessageParser<OidcToken> _parser = new pb::MessageParser<OidcToken>(() => new OidcToken());
     private pb::UnknownFieldSet _unknownFields;
     [global::System.Diagnostics.DebuggerNonUserCodeAttribute]
@@ -1587,6 +1930,9 @@ namespace Google.Cloud.Scheduler.V1 {
 
     [global::System.Diagnostics.DebuggerNonUserCodeAttribute]
     public void WriteTo(pb::CodedOutputStream output) {
+    #if !GOOGLE_PROTOBUF_REFSTRUCT_COMPATIBILITY_MODE
+      output.WriteRawMessage(this);
+    #else
       if (ServiceAccountEmail.Length != 0) {
         output.WriteRawTag(10);
         output.WriteString(ServiceAccountEmail);
@@ -1598,7 +1944,25 @@ namespace Google.Cloud.Scheduler.V1 {
       if (_unknownFields != null) {
         _unknownFields.WriteTo(output);
       }
+    #endif
     }
+
+    #if !GOOGLE_PROTOBUF_REFSTRUCT_COMPATIBILITY_MODE
+    [global::System.Diagnostics.DebuggerNonUserCodeAttribute]
+    void pb::IBufferMessage.InternalWriteTo(ref pb::WriteContext output) {
+      if (ServiceAccountEmail.Length != 0) {
+        output.WriteRawTag(10);
+        output.WriteString(ServiceAccountEmail);
+      }
+      if (Audience.Length != 0) {
+        output.WriteRawTag(18);
+        output.WriteString(Audience);
+      }
+      if (_unknownFields != null) {
+        _unknownFields.WriteTo(ref output);
+      }
+    }
+    #endif
 
     [global::System.Diagnostics.DebuggerNonUserCodeAttribute]
     public int CalculateSize() {
@@ -1631,6 +1995,9 @@ namespace Google.Cloud.Scheduler.V1 {
 
     [global::System.Diagnostics.DebuggerNonUserCodeAttribute]
     public void MergeFrom(pb::CodedInputStream input) {
+    #if !GOOGLE_PROTOBUF_REFSTRUCT_COMPATIBILITY_MODE
+      input.ReadRawMessage(this);
+    #else
       uint tag;
       while ((tag = input.ReadTag()) != 0) {
         switch(tag) {
@@ -1647,7 +2014,30 @@ namespace Google.Cloud.Scheduler.V1 {
           }
         }
       }
+    #endif
     }
+
+    #if !GOOGLE_PROTOBUF_REFSTRUCT_COMPATIBILITY_MODE
+    [global::System.Diagnostics.DebuggerNonUserCodeAttribute]
+    void pb::IBufferMessage.InternalMergeFrom(ref pb::ParseContext input) {
+      uint tag;
+      while ((tag = input.ReadTag()) != 0) {
+        switch(tag) {
+          default:
+            _unknownFields = pb::UnknownFieldSet.MergeFieldFrom(_unknownFields, ref input);
+            break;
+          case 10: {
+            ServiceAccountEmail = input.ReadString();
+            break;
+          }
+          case 18: {
+            Audience = input.ReadString();
+            break;
+          }
+        }
+      }
+    }
+    #endif
 
   }
 

@@ -26,8 +26,8 @@ namespace Google.Cloud.SecurityCenter.V1 {
           string.Concat(
             "Cjpnb29nbGUvY2xvdWQvc2VjdXJpdHljZW50ZXIvdjEvb3JnYW5pemF0aW9u",
             "X3NldHRpbmdzLnByb3RvEh5nb29nbGUuY2xvdWQuc2VjdXJpdHljZW50ZXIu",
-            "djEaGWdvb2dsZS9hcGkvcmVzb3VyY2UucHJvdG8aHGdvb2dsZS9hcGkvYW5u",
-            "b3RhdGlvbnMucHJvdG8iigQKFE9yZ2FuaXphdGlvblNldHRpbmdzEgwKBG5h",
+            "djEaHGdvb2dsZS9hcGkvYW5ub3RhdGlvbnMucHJvdG8aGWdvb2dsZS9hcGkv",
+            "cmVzb3VyY2UucHJvdG8iigQKFE9yZ2FuaXphdGlvblNldHRpbmdzEgwKBG5h",
             "bWUYASABKAkSHgoWZW5hYmxlX2Fzc2V0X2Rpc2NvdmVyeRgCIAEoCBJpChZh",
             "c3NldF9kaXNjb3ZlcnlfY29uZmlnGAMgASgLMkkuZ29vZ2xlLmNsb3VkLnNl",
             "Y3VyaXR5Y2VudGVyLnYxLk9yZ2FuaXphdGlvblNldHRpbmdzLkFzc2V0RGlz",
@@ -46,9 +46,9 @@ namespace Google.Cloud.SecurityCenter.V1 {
             "clxWMeoCIUdvb2dsZTo6Q2xvdWQ6OlNlY3VyaXR5Q2VudGVyOjpWMWIGcHJv",
             "dG8z"));
       descriptor = pbr::FileDescriptor.FromGeneratedCode(descriptorData,
-          new pbr::FileDescriptor[] { global::Google.Api.ResourceReflection.Descriptor, global::Google.Api.AnnotationsReflection.Descriptor, },
-          new pbr::GeneratedClrTypeInfo(null, new pbr::GeneratedClrTypeInfo[] {
-            new pbr::GeneratedClrTypeInfo(typeof(global::Google.Cloud.SecurityCenter.V1.OrganizationSettings), global::Google.Cloud.SecurityCenter.V1.OrganizationSettings.Parser, new[]{ "Name", "EnableAssetDiscovery", "AssetDiscoveryConfig" }, null, null, new pbr::GeneratedClrTypeInfo[] { new pbr::GeneratedClrTypeInfo(typeof(global::Google.Cloud.SecurityCenter.V1.OrganizationSettings.Types.AssetDiscoveryConfig), global::Google.Cloud.SecurityCenter.V1.OrganizationSettings.Types.AssetDiscoveryConfig.Parser, new[]{ "ProjectIds", "InclusionMode" }, null, new[]{ typeof(global::Google.Cloud.SecurityCenter.V1.OrganizationSettings.Types.AssetDiscoveryConfig.Types.InclusionMode) }, null)})
+          new pbr::FileDescriptor[] { global::Google.Api.AnnotationsReflection.Descriptor, global::Google.Api.ResourceReflection.Descriptor, },
+          new pbr::GeneratedClrTypeInfo(null, null, new pbr::GeneratedClrTypeInfo[] {
+            new pbr::GeneratedClrTypeInfo(typeof(global::Google.Cloud.SecurityCenter.V1.OrganizationSettings), global::Google.Cloud.SecurityCenter.V1.OrganizationSettings.Parser, new[]{ "Name", "EnableAssetDiscovery", "AssetDiscoveryConfig" }, null, null, null, new pbr::GeneratedClrTypeInfo[] { new pbr::GeneratedClrTypeInfo(typeof(global::Google.Cloud.SecurityCenter.V1.OrganizationSettings.Types.AssetDiscoveryConfig), global::Google.Cloud.SecurityCenter.V1.OrganizationSettings.Types.AssetDiscoveryConfig.Parser, new[]{ "ProjectIds", "InclusionMode" }, null, new[]{ typeof(global::Google.Cloud.SecurityCenter.V1.OrganizationSettings.Types.AssetDiscoveryConfig.Types.InclusionMode) }, null, null)})
           }));
     }
     #endregion
@@ -56,10 +56,14 @@ namespace Google.Cloud.SecurityCenter.V1 {
   }
   #region Messages
   /// <summary>
-  /// User specified settings that are attached to the Cloud Security Command
-  /// Center (Cloud SCC) organization.
+  /// User specified settings that are attached to the Security Command
+  /// Center organization.
   /// </summary>
-  public sealed partial class OrganizationSettings : pb::IMessage<OrganizationSettings> {
+  public sealed partial class OrganizationSettings : pb::IMessage<OrganizationSettings>
+  #if !GOOGLE_PROTOBUF_REFSTRUCT_COMPATIBILITY_MODE
+      , pb::IBufferMessage
+  #endif
+  {
     private static readonly pb::MessageParser<OrganizationSettings> _parser = new pb::MessageParser<OrganizationSettings>(() => new OrganizationSettings());
     private pb::UnknownFieldSet _unknownFields;
     [global::System.Diagnostics.DebuggerNonUserCodeAttribute]
@@ -181,6 +185,9 @@ namespace Google.Cloud.SecurityCenter.V1 {
 
     [global::System.Diagnostics.DebuggerNonUserCodeAttribute]
     public void WriteTo(pb::CodedOutputStream output) {
+    #if !GOOGLE_PROTOBUF_REFSTRUCT_COMPATIBILITY_MODE
+      output.WriteRawMessage(this);
+    #else
       if (Name.Length != 0) {
         output.WriteRawTag(10);
         output.WriteString(Name);
@@ -196,7 +203,29 @@ namespace Google.Cloud.SecurityCenter.V1 {
       if (_unknownFields != null) {
         _unknownFields.WriteTo(output);
       }
+    #endif
     }
+
+    #if !GOOGLE_PROTOBUF_REFSTRUCT_COMPATIBILITY_MODE
+    [global::System.Diagnostics.DebuggerNonUserCodeAttribute]
+    void pb::IBufferMessage.InternalWriteTo(ref pb::WriteContext output) {
+      if (Name.Length != 0) {
+        output.WriteRawTag(10);
+        output.WriteString(Name);
+      }
+      if (EnableAssetDiscovery != false) {
+        output.WriteRawTag(16);
+        output.WriteBool(EnableAssetDiscovery);
+      }
+      if (assetDiscoveryConfig_ != null) {
+        output.WriteRawTag(26);
+        output.WriteMessage(AssetDiscoveryConfig);
+      }
+      if (_unknownFields != null) {
+        _unknownFields.WriteTo(ref output);
+      }
+    }
+    #endif
 
     [global::System.Diagnostics.DebuggerNonUserCodeAttribute]
     public int CalculateSize() {
@@ -238,6 +267,9 @@ namespace Google.Cloud.SecurityCenter.V1 {
 
     [global::System.Diagnostics.DebuggerNonUserCodeAttribute]
     public void MergeFrom(pb::CodedInputStream input) {
+    #if !GOOGLE_PROTOBUF_REFSTRUCT_COMPATIBILITY_MODE
+      input.ReadRawMessage(this);
+    #else
       uint tag;
       while ((tag = input.ReadTag()) != 0) {
         switch(tag) {
@@ -261,7 +293,37 @@ namespace Google.Cloud.SecurityCenter.V1 {
           }
         }
       }
+    #endif
     }
+
+    #if !GOOGLE_PROTOBUF_REFSTRUCT_COMPATIBILITY_MODE
+    [global::System.Diagnostics.DebuggerNonUserCodeAttribute]
+    void pb::IBufferMessage.InternalMergeFrom(ref pb::ParseContext input) {
+      uint tag;
+      while ((tag = input.ReadTag()) != 0) {
+        switch(tag) {
+          default:
+            _unknownFields = pb::UnknownFieldSet.MergeFieldFrom(_unknownFields, ref input);
+            break;
+          case 10: {
+            Name = input.ReadString();
+            break;
+          }
+          case 16: {
+            EnableAssetDiscovery = input.ReadBool();
+            break;
+          }
+          case 26: {
+            if (assetDiscoveryConfig_ == null) {
+              AssetDiscoveryConfig = new global::Google.Cloud.SecurityCenter.V1.OrganizationSettings.Types.AssetDiscoveryConfig();
+            }
+            input.ReadMessage(AssetDiscoveryConfig);
+            break;
+          }
+        }
+      }
+    }
+    #endif
 
     #region Nested types
     /// <summary>Container for nested types declared in the OrganizationSettings message type.</summary>
@@ -270,7 +332,11 @@ namespace Google.Cloud.SecurityCenter.V1 {
       /// <summary>
       /// The configuration used for Asset Discovery runs.
       /// </summary>
-      public sealed partial class AssetDiscoveryConfig : pb::IMessage<AssetDiscoveryConfig> {
+      public sealed partial class AssetDiscoveryConfig : pb::IMessage<AssetDiscoveryConfig>
+      #if !GOOGLE_PROTOBUF_REFSTRUCT_COMPATIBILITY_MODE
+          , pb::IBufferMessage
+      #endif
+      {
         private static readonly pb::MessageParser<AssetDiscoveryConfig> _parser = new pb::MessageParser<AssetDiscoveryConfig>(() => new AssetDiscoveryConfig());
         private pb::UnknownFieldSet _unknownFields;
         [global::System.Diagnostics.DebuggerNonUserCodeAttribute]
@@ -320,7 +386,7 @@ namespace Google.Cloud.SecurityCenter.V1 {
 
         /// <summary>Field number for the "inclusion_mode" field.</summary>
         public const int InclusionModeFieldNumber = 2;
-        private global::Google.Cloud.SecurityCenter.V1.OrganizationSettings.Types.AssetDiscoveryConfig.Types.InclusionMode inclusionMode_ = 0;
+        private global::Google.Cloud.SecurityCenter.V1.OrganizationSettings.Types.AssetDiscoveryConfig.Types.InclusionMode inclusionMode_ = global::Google.Cloud.SecurityCenter.V1.OrganizationSettings.Types.AssetDiscoveryConfig.Types.InclusionMode.Unspecified;
         /// <summary>
         /// The mode to use for filtering asset discovery.
         /// </summary>
@@ -354,7 +420,7 @@ namespace Google.Cloud.SecurityCenter.V1 {
         public override int GetHashCode() {
           int hash = 1;
           hash ^= projectIds_.GetHashCode();
-          if (InclusionMode != 0) hash ^= InclusionMode.GetHashCode();
+          if (InclusionMode != global::Google.Cloud.SecurityCenter.V1.OrganizationSettings.Types.AssetDiscoveryConfig.Types.InclusionMode.Unspecified) hash ^= InclusionMode.GetHashCode();
           if (_unknownFields != null) {
             hash ^= _unknownFields.GetHashCode();
           }
@@ -368,21 +434,39 @@ namespace Google.Cloud.SecurityCenter.V1 {
 
         [global::System.Diagnostics.DebuggerNonUserCodeAttribute]
         public void WriteTo(pb::CodedOutputStream output) {
+        #if !GOOGLE_PROTOBUF_REFSTRUCT_COMPATIBILITY_MODE
+          output.WriteRawMessage(this);
+        #else
           projectIds_.WriteTo(output, _repeated_projectIds_codec);
-          if (InclusionMode != 0) {
+          if (InclusionMode != global::Google.Cloud.SecurityCenter.V1.OrganizationSettings.Types.AssetDiscoveryConfig.Types.InclusionMode.Unspecified) {
             output.WriteRawTag(16);
             output.WriteEnum((int) InclusionMode);
           }
           if (_unknownFields != null) {
             _unknownFields.WriteTo(output);
           }
+        #endif
         }
+
+        #if !GOOGLE_PROTOBUF_REFSTRUCT_COMPATIBILITY_MODE
+        [global::System.Diagnostics.DebuggerNonUserCodeAttribute]
+        void pb::IBufferMessage.InternalWriteTo(ref pb::WriteContext output) {
+          projectIds_.WriteTo(ref output, _repeated_projectIds_codec);
+          if (InclusionMode != global::Google.Cloud.SecurityCenter.V1.OrganizationSettings.Types.AssetDiscoveryConfig.Types.InclusionMode.Unspecified) {
+            output.WriteRawTag(16);
+            output.WriteEnum((int) InclusionMode);
+          }
+          if (_unknownFields != null) {
+            _unknownFields.WriteTo(ref output);
+          }
+        }
+        #endif
 
         [global::System.Diagnostics.DebuggerNonUserCodeAttribute]
         public int CalculateSize() {
           int size = 0;
           size += projectIds_.CalculateSize(_repeated_projectIds_codec);
-          if (InclusionMode != 0) {
+          if (InclusionMode != global::Google.Cloud.SecurityCenter.V1.OrganizationSettings.Types.AssetDiscoveryConfig.Types.InclusionMode.Unspecified) {
             size += 1 + pb::CodedOutputStream.ComputeEnumSize((int) InclusionMode);
           }
           if (_unknownFields != null) {
@@ -397,7 +481,7 @@ namespace Google.Cloud.SecurityCenter.V1 {
             return;
           }
           projectIds_.Add(other.projectIds_);
-          if (other.InclusionMode != 0) {
+          if (other.InclusionMode != global::Google.Cloud.SecurityCenter.V1.OrganizationSettings.Types.AssetDiscoveryConfig.Types.InclusionMode.Unspecified) {
             InclusionMode = other.InclusionMode;
           }
           _unknownFields = pb::UnknownFieldSet.MergeFrom(_unknownFields, other._unknownFields);
@@ -405,6 +489,9 @@ namespace Google.Cloud.SecurityCenter.V1 {
 
         [global::System.Diagnostics.DebuggerNonUserCodeAttribute]
         public void MergeFrom(pb::CodedInputStream input) {
+        #if !GOOGLE_PROTOBUF_REFSTRUCT_COMPATIBILITY_MODE
+          input.ReadRawMessage(this);
+        #else
           uint tag;
           while ((tag = input.ReadTag()) != 0) {
             switch(tag) {
@@ -421,7 +508,30 @@ namespace Google.Cloud.SecurityCenter.V1 {
               }
             }
           }
+        #endif
         }
+
+        #if !GOOGLE_PROTOBUF_REFSTRUCT_COMPATIBILITY_MODE
+        [global::System.Diagnostics.DebuggerNonUserCodeAttribute]
+        void pb::IBufferMessage.InternalMergeFrom(ref pb::ParseContext input) {
+          uint tag;
+          while ((tag = input.ReadTag()) != 0) {
+            switch(tag) {
+              default:
+                _unknownFields = pb::UnknownFieldSet.MergeFieldFrom(_unknownFields, ref input);
+                break;
+              case 10: {
+                projectIds_.AddEntriesFrom(ref input, _repeated_projectIds_codec);
+                break;
+              }
+              case 16: {
+                InclusionMode = (global::Google.Cloud.SecurityCenter.V1.OrganizationSettings.Types.AssetDiscoveryConfig.Types.InclusionMode) input.ReadEnum();
+                break;
+              }
+            }
+          }
+        }
+        #endif
 
         #region Nested types
         /// <summary>Container for nested types declared in the AssetDiscoveryConfig message type.</summary>

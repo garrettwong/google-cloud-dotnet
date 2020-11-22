@@ -1,4 +1,4 @@
-// Copyright 2019 Google LLC
+// Copyright 2020 Google LLC
 //
 // Licensed under the Apache License, Version 2.0 (the "License");
 // you may not use this file except in compliance with the License.
@@ -37,13 +37,13 @@ namespace Google.Cloud.SecretManager.V1Beta1.Tests
             moq::Mock<SecretManagerService.SecretManagerServiceClient> mockGrpcClient = new moq::Mock<SecretManagerService.SecretManagerServiceClient>(moq::MockBehavior.Strict);
             CreateSecretRequest request = new CreateSecretRequest
             {
-                ParentAsProjectName = new gagr::ProjectName("[PROJECT]"),
+                ParentAsProjectName = gagr::ProjectName.FromProject("[PROJECT]"),
                 SecretId = "secret_id0fe6a1e4",
                 Secret = new Secret(),
             };
             Secret expectedResponse = new Secret
             {
-                SecretName = new SecretName("[PROJECT]", "[SECRET]"),
+                SecretName = SecretName.FromProjectSecret("[PROJECT]", "[SECRET]"),
                 Replication = new Replication(),
                 CreateTime = new wkt::Timestamp(),
                 Labels =
@@ -67,13 +67,13 @@ namespace Google.Cloud.SecretManager.V1Beta1.Tests
             moq::Mock<SecretManagerService.SecretManagerServiceClient> mockGrpcClient = new moq::Mock<SecretManagerService.SecretManagerServiceClient>(moq::MockBehavior.Strict);
             CreateSecretRequest request = new CreateSecretRequest
             {
-                ParentAsProjectName = new gagr::ProjectName("[PROJECT]"),
+                ParentAsProjectName = gagr::ProjectName.FromProject("[PROJECT]"),
                 SecretId = "secret_id0fe6a1e4",
                 Secret = new Secret(),
             };
             Secret expectedResponse = new Secret
             {
-                SecretName = new SecretName("[PROJECT]", "[SECRET]"),
+                SecretName = SecretName.FromProjectSecret("[PROJECT]", "[SECRET]"),
                 Replication = new Replication(),
                 CreateTime = new wkt::Timestamp(),
                 Labels =
@@ -99,13 +99,13 @@ namespace Google.Cloud.SecretManager.V1Beta1.Tests
             moq::Mock<SecretManagerService.SecretManagerServiceClient> mockGrpcClient = new moq::Mock<SecretManagerService.SecretManagerServiceClient>(moq::MockBehavior.Strict);
             CreateSecretRequest request = new CreateSecretRequest
             {
-                ParentAsProjectName = new gagr::ProjectName("[PROJECT]"),
+                ParentAsProjectName = gagr::ProjectName.FromProject("[PROJECT]"),
                 SecretId = "secret_id0fe6a1e4",
                 Secret = new Secret(),
             };
             Secret expectedResponse = new Secret
             {
-                SecretName = new SecretName("[PROJECT]", "[SECRET]"),
+                SecretName = SecretName.FromProjectSecret("[PROJECT]", "[SECRET]"),
                 Replication = new Replication(),
                 CreateTime = new wkt::Timestamp(),
                 Labels =
@@ -129,13 +129,13 @@ namespace Google.Cloud.SecretManager.V1Beta1.Tests
             moq::Mock<SecretManagerService.SecretManagerServiceClient> mockGrpcClient = new moq::Mock<SecretManagerService.SecretManagerServiceClient>(moq::MockBehavior.Strict);
             CreateSecretRequest request = new CreateSecretRequest
             {
-                ParentAsProjectName = new gagr::ProjectName("[PROJECT]"),
+                ParentAsProjectName = gagr::ProjectName.FromProject("[PROJECT]"),
                 SecretId = "secret_id0fe6a1e4",
                 Secret = new Secret(),
             };
             Secret expectedResponse = new Secret
             {
-                SecretName = new SecretName("[PROJECT]", "[SECRET]"),
+                SecretName = SecretName.FromProjectSecret("[PROJECT]", "[SECRET]"),
                 Replication = new Replication(),
                 CreateTime = new wkt::Timestamp(),
                 Labels =
@@ -156,18 +156,18 @@ namespace Google.Cloud.SecretManager.V1Beta1.Tests
         }
 
         [xunit::FactAttribute]
-        public void CreateSecret_ResourceNames()
+        public void CreateSecretResourceNames()
         {
             moq::Mock<SecretManagerService.SecretManagerServiceClient> mockGrpcClient = new moq::Mock<SecretManagerService.SecretManagerServiceClient>(moq::MockBehavior.Strict);
             CreateSecretRequest request = new CreateSecretRequest
             {
-                ParentAsProjectName = new gagr::ProjectName("[PROJECT]"),
+                ParentAsProjectName = gagr::ProjectName.FromProject("[PROJECT]"),
                 SecretId = "secret_id0fe6a1e4",
                 Secret = new Secret(),
             };
             Secret expectedResponse = new Secret
             {
-                SecretName = new SecretName("[PROJECT]", "[SECRET]"),
+                SecretName = SecretName.FromProjectSecret("[PROJECT]", "[SECRET]"),
                 Replication = new Replication(),
                 CreateTime = new wkt::Timestamp(),
                 Labels =
@@ -186,18 +186,18 @@ namespace Google.Cloud.SecretManager.V1Beta1.Tests
         }
 
         [xunit::FactAttribute]
-        public async stt::Task CreateSecretAsync_ResourceNames()
+        public async stt::Task CreateSecretResourceNamesAsync()
         {
             moq::Mock<SecretManagerService.SecretManagerServiceClient> mockGrpcClient = new moq::Mock<SecretManagerService.SecretManagerServiceClient>(moq::MockBehavior.Strict);
             CreateSecretRequest request = new CreateSecretRequest
             {
-                ParentAsProjectName = new gagr::ProjectName("[PROJECT]"),
+                ParentAsProjectName = gagr::ProjectName.FromProject("[PROJECT]"),
                 SecretId = "secret_id0fe6a1e4",
                 Secret = new Secret(),
             };
             Secret expectedResponse = new Secret
             {
-                SecretName = new SecretName("[PROJECT]", "[SECRET]"),
+                SecretName = SecretName.FromProjectSecret("[PROJECT]", "[SECRET]"),
                 Replication = new Replication(),
                 CreateTime = new wkt::Timestamp(),
                 Labels =
@@ -223,12 +223,12 @@ namespace Google.Cloud.SecretManager.V1Beta1.Tests
             moq::Mock<SecretManagerService.SecretManagerServiceClient> mockGrpcClient = new moq::Mock<SecretManagerService.SecretManagerServiceClient>(moq::MockBehavior.Strict);
             AddSecretVersionRequest request = new AddSecretVersionRequest
             {
-                ParentAsSecretName = new SecretName("[PROJECT]", "[SECRET]"),
+                ParentAsSecretName = SecretName.FromProjectSecret("[PROJECT]", "[SECRET]"),
                 Payload = new SecretPayload(),
             };
             SecretVersion expectedResponse = new SecretVersion
             {
-                SecretVersionName = new SecretVersionName("[PROJECT]", "[SECRET]", "[SECRET_VERSION]"),
+                SecretVersionName = SecretVersionName.FromProjectSecretSecretVersion("[PROJECT]", "[SECRET]", "[SECRET_VERSION]"),
                 CreateTime = new wkt::Timestamp(),
                 DestroyTime = new wkt::Timestamp(),
                 State = SecretVersion.Types.State.Disabled,
@@ -246,12 +246,12 @@ namespace Google.Cloud.SecretManager.V1Beta1.Tests
             moq::Mock<SecretManagerService.SecretManagerServiceClient> mockGrpcClient = new moq::Mock<SecretManagerService.SecretManagerServiceClient>(moq::MockBehavior.Strict);
             AddSecretVersionRequest request = new AddSecretVersionRequest
             {
-                ParentAsSecretName = new SecretName("[PROJECT]", "[SECRET]"),
+                ParentAsSecretName = SecretName.FromProjectSecret("[PROJECT]", "[SECRET]"),
                 Payload = new SecretPayload(),
             };
             SecretVersion expectedResponse = new SecretVersion
             {
-                SecretVersionName = new SecretVersionName("[PROJECT]", "[SECRET]", "[SECRET_VERSION]"),
+                SecretVersionName = SecretVersionName.FromProjectSecretSecretVersion("[PROJECT]", "[SECRET]", "[SECRET_VERSION]"),
                 CreateTime = new wkt::Timestamp(),
                 DestroyTime = new wkt::Timestamp(),
                 State = SecretVersion.Types.State.Disabled,
@@ -271,12 +271,12 @@ namespace Google.Cloud.SecretManager.V1Beta1.Tests
             moq::Mock<SecretManagerService.SecretManagerServiceClient> mockGrpcClient = new moq::Mock<SecretManagerService.SecretManagerServiceClient>(moq::MockBehavior.Strict);
             AddSecretVersionRequest request = new AddSecretVersionRequest
             {
-                ParentAsSecretName = new SecretName("[PROJECT]", "[SECRET]"),
+                ParentAsSecretName = SecretName.FromProjectSecret("[PROJECT]", "[SECRET]"),
                 Payload = new SecretPayload(),
             };
             SecretVersion expectedResponse = new SecretVersion
             {
-                SecretVersionName = new SecretVersionName("[PROJECT]", "[SECRET]", "[SECRET_VERSION]"),
+                SecretVersionName = SecretVersionName.FromProjectSecretSecretVersion("[PROJECT]", "[SECRET]", "[SECRET_VERSION]"),
                 CreateTime = new wkt::Timestamp(),
                 DestroyTime = new wkt::Timestamp(),
                 State = SecretVersion.Types.State.Disabled,
@@ -294,12 +294,12 @@ namespace Google.Cloud.SecretManager.V1Beta1.Tests
             moq::Mock<SecretManagerService.SecretManagerServiceClient> mockGrpcClient = new moq::Mock<SecretManagerService.SecretManagerServiceClient>(moq::MockBehavior.Strict);
             AddSecretVersionRequest request = new AddSecretVersionRequest
             {
-                ParentAsSecretName = new SecretName("[PROJECT]", "[SECRET]"),
+                ParentAsSecretName = SecretName.FromProjectSecret("[PROJECT]", "[SECRET]"),
                 Payload = new SecretPayload(),
             };
             SecretVersion expectedResponse = new SecretVersion
             {
-                SecretVersionName = new SecretVersionName("[PROJECT]", "[SECRET]", "[SECRET_VERSION]"),
+                SecretVersionName = SecretVersionName.FromProjectSecretSecretVersion("[PROJECT]", "[SECRET]", "[SECRET_VERSION]"),
                 CreateTime = new wkt::Timestamp(),
                 DestroyTime = new wkt::Timestamp(),
                 State = SecretVersion.Types.State.Disabled,
@@ -314,17 +314,17 @@ namespace Google.Cloud.SecretManager.V1Beta1.Tests
         }
 
         [xunit::FactAttribute]
-        public void AddSecretVersion_ResourceNames()
+        public void AddSecretVersionResourceNames()
         {
             moq::Mock<SecretManagerService.SecretManagerServiceClient> mockGrpcClient = new moq::Mock<SecretManagerService.SecretManagerServiceClient>(moq::MockBehavior.Strict);
             AddSecretVersionRequest request = new AddSecretVersionRequest
             {
-                ParentAsSecretName = new SecretName("[PROJECT]", "[SECRET]"),
+                ParentAsSecretName = SecretName.FromProjectSecret("[PROJECT]", "[SECRET]"),
                 Payload = new SecretPayload(),
             };
             SecretVersion expectedResponse = new SecretVersion
             {
-                SecretVersionName = new SecretVersionName("[PROJECT]", "[SECRET]", "[SECRET_VERSION]"),
+                SecretVersionName = SecretVersionName.FromProjectSecretSecretVersion("[PROJECT]", "[SECRET]", "[SECRET_VERSION]"),
                 CreateTime = new wkt::Timestamp(),
                 DestroyTime = new wkt::Timestamp(),
                 State = SecretVersion.Types.State.Disabled,
@@ -337,17 +337,17 @@ namespace Google.Cloud.SecretManager.V1Beta1.Tests
         }
 
         [xunit::FactAttribute]
-        public async stt::Task AddSecretVersionAsync_ResourceNames()
+        public async stt::Task AddSecretVersionResourceNamesAsync()
         {
             moq::Mock<SecretManagerService.SecretManagerServiceClient> mockGrpcClient = new moq::Mock<SecretManagerService.SecretManagerServiceClient>(moq::MockBehavior.Strict);
             AddSecretVersionRequest request = new AddSecretVersionRequest
             {
-                ParentAsSecretName = new SecretName("[PROJECT]", "[SECRET]"),
+                ParentAsSecretName = SecretName.FromProjectSecret("[PROJECT]", "[SECRET]"),
                 Payload = new SecretPayload(),
             };
             SecretVersion expectedResponse = new SecretVersion
             {
-                SecretVersionName = new SecretVersionName("[PROJECT]", "[SECRET]", "[SECRET_VERSION]"),
+                SecretVersionName = SecretVersionName.FromProjectSecretSecretVersion("[PROJECT]", "[SECRET]", "[SECRET_VERSION]"),
                 CreateTime = new wkt::Timestamp(),
                 DestroyTime = new wkt::Timestamp(),
                 State = SecretVersion.Types.State.Disabled,
@@ -367,11 +367,11 @@ namespace Google.Cloud.SecretManager.V1Beta1.Tests
             moq::Mock<SecretManagerService.SecretManagerServiceClient> mockGrpcClient = new moq::Mock<SecretManagerService.SecretManagerServiceClient>(moq::MockBehavior.Strict);
             GetSecretRequest request = new GetSecretRequest
             {
-                SecretName = new SecretName("[PROJECT]", "[SECRET]"),
+                SecretName = SecretName.FromProjectSecret("[PROJECT]", "[SECRET]"),
             };
             Secret expectedResponse = new Secret
             {
-                SecretName = new SecretName("[PROJECT]", "[SECRET]"),
+                SecretName = SecretName.FromProjectSecret("[PROJECT]", "[SECRET]"),
                 Replication = new Replication(),
                 CreateTime = new wkt::Timestamp(),
                 Labels =
@@ -395,11 +395,11 @@ namespace Google.Cloud.SecretManager.V1Beta1.Tests
             moq::Mock<SecretManagerService.SecretManagerServiceClient> mockGrpcClient = new moq::Mock<SecretManagerService.SecretManagerServiceClient>(moq::MockBehavior.Strict);
             GetSecretRequest request = new GetSecretRequest
             {
-                SecretName = new SecretName("[PROJECT]", "[SECRET]"),
+                SecretName = SecretName.FromProjectSecret("[PROJECT]", "[SECRET]"),
             };
             Secret expectedResponse = new Secret
             {
-                SecretName = new SecretName("[PROJECT]", "[SECRET]"),
+                SecretName = SecretName.FromProjectSecret("[PROJECT]", "[SECRET]"),
                 Replication = new Replication(),
                 CreateTime = new wkt::Timestamp(),
                 Labels =
@@ -425,11 +425,11 @@ namespace Google.Cloud.SecretManager.V1Beta1.Tests
             moq::Mock<SecretManagerService.SecretManagerServiceClient> mockGrpcClient = new moq::Mock<SecretManagerService.SecretManagerServiceClient>(moq::MockBehavior.Strict);
             GetSecretRequest request = new GetSecretRequest
             {
-                SecretName = new SecretName("[PROJECT]", "[SECRET]"),
+                SecretName = SecretName.FromProjectSecret("[PROJECT]", "[SECRET]"),
             };
             Secret expectedResponse = new Secret
             {
-                SecretName = new SecretName("[PROJECT]", "[SECRET]"),
+                SecretName = SecretName.FromProjectSecret("[PROJECT]", "[SECRET]"),
                 Replication = new Replication(),
                 CreateTime = new wkt::Timestamp(),
                 Labels =
@@ -453,11 +453,11 @@ namespace Google.Cloud.SecretManager.V1Beta1.Tests
             moq::Mock<SecretManagerService.SecretManagerServiceClient> mockGrpcClient = new moq::Mock<SecretManagerService.SecretManagerServiceClient>(moq::MockBehavior.Strict);
             GetSecretRequest request = new GetSecretRequest
             {
-                SecretName = new SecretName("[PROJECT]", "[SECRET]"),
+                SecretName = SecretName.FromProjectSecret("[PROJECT]", "[SECRET]"),
             };
             Secret expectedResponse = new Secret
             {
-                SecretName = new SecretName("[PROJECT]", "[SECRET]"),
+                SecretName = SecretName.FromProjectSecret("[PROJECT]", "[SECRET]"),
                 Replication = new Replication(),
                 CreateTime = new wkt::Timestamp(),
                 Labels =
@@ -478,16 +478,16 @@ namespace Google.Cloud.SecretManager.V1Beta1.Tests
         }
 
         [xunit::FactAttribute]
-        public void GetSecret_ResourceNames()
+        public void GetSecretResourceNames()
         {
             moq::Mock<SecretManagerService.SecretManagerServiceClient> mockGrpcClient = new moq::Mock<SecretManagerService.SecretManagerServiceClient>(moq::MockBehavior.Strict);
             GetSecretRequest request = new GetSecretRequest
             {
-                SecretName = new SecretName("[PROJECT]", "[SECRET]"),
+                SecretName = SecretName.FromProjectSecret("[PROJECT]", "[SECRET]"),
             };
             Secret expectedResponse = new Secret
             {
-                SecretName = new SecretName("[PROJECT]", "[SECRET]"),
+                SecretName = SecretName.FromProjectSecret("[PROJECT]", "[SECRET]"),
                 Replication = new Replication(),
                 CreateTime = new wkt::Timestamp(),
                 Labels =
@@ -506,16 +506,16 @@ namespace Google.Cloud.SecretManager.V1Beta1.Tests
         }
 
         [xunit::FactAttribute]
-        public async stt::Task GetSecretAsync_ResourceNames()
+        public async stt::Task GetSecretResourceNamesAsync()
         {
             moq::Mock<SecretManagerService.SecretManagerServiceClient> mockGrpcClient = new moq::Mock<SecretManagerService.SecretManagerServiceClient>(moq::MockBehavior.Strict);
             GetSecretRequest request = new GetSecretRequest
             {
-                SecretName = new SecretName("[PROJECT]", "[SECRET]"),
+                SecretName = SecretName.FromProjectSecret("[PROJECT]", "[SECRET]"),
             };
             Secret expectedResponse = new Secret
             {
-                SecretName = new SecretName("[PROJECT]", "[SECRET]"),
+                SecretName = SecretName.FromProjectSecret("[PROJECT]", "[SECRET]"),
                 Replication = new Replication(),
                 CreateTime = new wkt::Timestamp(),
                 Labels =
@@ -546,7 +546,7 @@ namespace Google.Cloud.SecretManager.V1Beta1.Tests
             };
             Secret expectedResponse = new Secret
             {
-                SecretName = new SecretName("[PROJECT]", "[SECRET]"),
+                SecretName = SecretName.FromProjectSecret("[PROJECT]", "[SECRET]"),
                 Replication = new Replication(),
                 CreateTime = new wkt::Timestamp(),
                 Labels =
@@ -575,7 +575,7 @@ namespace Google.Cloud.SecretManager.V1Beta1.Tests
             };
             Secret expectedResponse = new Secret
             {
-                SecretName = new SecretName("[PROJECT]", "[SECRET]"),
+                SecretName = SecretName.FromProjectSecret("[PROJECT]", "[SECRET]"),
                 Replication = new Replication(),
                 CreateTime = new wkt::Timestamp(),
                 Labels =
@@ -606,7 +606,7 @@ namespace Google.Cloud.SecretManager.V1Beta1.Tests
             };
             Secret expectedResponse = new Secret
             {
-                SecretName = new SecretName("[PROJECT]", "[SECRET]"),
+                SecretName = SecretName.FromProjectSecret("[PROJECT]", "[SECRET]"),
                 Replication = new Replication(),
                 CreateTime = new wkt::Timestamp(),
                 Labels =
@@ -635,7 +635,7 @@ namespace Google.Cloud.SecretManager.V1Beta1.Tests
             };
             Secret expectedResponse = new Secret
             {
-                SecretName = new SecretName("[PROJECT]", "[SECRET]"),
+                SecretName = SecretName.FromProjectSecret("[PROJECT]", "[SECRET]"),
                 Replication = new Replication(),
                 CreateTime = new wkt::Timestamp(),
                 Labels =
@@ -661,7 +661,7 @@ namespace Google.Cloud.SecretManager.V1Beta1.Tests
             moq::Mock<SecretManagerService.SecretManagerServiceClient> mockGrpcClient = new moq::Mock<SecretManagerService.SecretManagerServiceClient>(moq::MockBehavior.Strict);
             DeleteSecretRequest request = new DeleteSecretRequest
             {
-                SecretName = new SecretName("[PROJECT]", "[SECRET]"),
+                SecretName = SecretName.FromProjectSecret("[PROJECT]", "[SECRET]"),
             };
             wkt::Empty expectedResponse = new wkt::Empty { };
             mockGrpcClient.Setup(x => x.DeleteSecret(request, moq::It.IsAny<grpccore::CallOptions>())).Returns(expectedResponse);
@@ -676,7 +676,7 @@ namespace Google.Cloud.SecretManager.V1Beta1.Tests
             moq::Mock<SecretManagerService.SecretManagerServiceClient> mockGrpcClient = new moq::Mock<SecretManagerService.SecretManagerServiceClient>(moq::MockBehavior.Strict);
             DeleteSecretRequest request = new DeleteSecretRequest
             {
-                SecretName = new SecretName("[PROJECT]", "[SECRET]"),
+                SecretName = SecretName.FromProjectSecret("[PROJECT]", "[SECRET]"),
             };
             wkt::Empty expectedResponse = new wkt::Empty { };
             mockGrpcClient.Setup(x => x.DeleteSecretAsync(request, moq::It.IsAny<grpccore::CallOptions>())).Returns(new grpccore::AsyncUnaryCall<wkt::Empty>(stt::Task.FromResult(expectedResponse), null, null, null, null));
@@ -692,7 +692,7 @@ namespace Google.Cloud.SecretManager.V1Beta1.Tests
             moq::Mock<SecretManagerService.SecretManagerServiceClient> mockGrpcClient = new moq::Mock<SecretManagerService.SecretManagerServiceClient>(moq::MockBehavior.Strict);
             DeleteSecretRequest request = new DeleteSecretRequest
             {
-                SecretName = new SecretName("[PROJECT]", "[SECRET]"),
+                SecretName = SecretName.FromProjectSecret("[PROJECT]", "[SECRET]"),
             };
             wkt::Empty expectedResponse = new wkt::Empty { };
             mockGrpcClient.Setup(x => x.DeleteSecret(request, moq::It.IsAny<grpccore::CallOptions>())).Returns(expectedResponse);
@@ -707,7 +707,7 @@ namespace Google.Cloud.SecretManager.V1Beta1.Tests
             moq::Mock<SecretManagerService.SecretManagerServiceClient> mockGrpcClient = new moq::Mock<SecretManagerService.SecretManagerServiceClient>(moq::MockBehavior.Strict);
             DeleteSecretRequest request = new DeleteSecretRequest
             {
-                SecretName = new SecretName("[PROJECT]", "[SECRET]"),
+                SecretName = SecretName.FromProjectSecret("[PROJECT]", "[SECRET]"),
             };
             wkt::Empty expectedResponse = new wkt::Empty { };
             mockGrpcClient.Setup(x => x.DeleteSecretAsync(request, moq::It.IsAny<grpccore::CallOptions>())).Returns(new grpccore::AsyncUnaryCall<wkt::Empty>(stt::Task.FromResult(expectedResponse), null, null, null, null));
@@ -718,12 +718,12 @@ namespace Google.Cloud.SecretManager.V1Beta1.Tests
         }
 
         [xunit::FactAttribute]
-        public void DeleteSecret_ResourceNames()
+        public void DeleteSecretResourceNames()
         {
             moq::Mock<SecretManagerService.SecretManagerServiceClient> mockGrpcClient = new moq::Mock<SecretManagerService.SecretManagerServiceClient>(moq::MockBehavior.Strict);
             DeleteSecretRequest request = new DeleteSecretRequest
             {
-                SecretName = new SecretName("[PROJECT]", "[SECRET]"),
+                SecretName = SecretName.FromProjectSecret("[PROJECT]", "[SECRET]"),
             };
             wkt::Empty expectedResponse = new wkt::Empty { };
             mockGrpcClient.Setup(x => x.DeleteSecret(request, moq::It.IsAny<grpccore::CallOptions>())).Returns(expectedResponse);
@@ -733,12 +733,12 @@ namespace Google.Cloud.SecretManager.V1Beta1.Tests
         }
 
         [xunit::FactAttribute]
-        public async stt::Task DeleteSecretAsync_ResourceNames()
+        public async stt::Task DeleteSecretResourceNamesAsync()
         {
             moq::Mock<SecretManagerService.SecretManagerServiceClient> mockGrpcClient = new moq::Mock<SecretManagerService.SecretManagerServiceClient>(moq::MockBehavior.Strict);
             DeleteSecretRequest request = new DeleteSecretRequest
             {
-                SecretName = new SecretName("[PROJECT]", "[SECRET]"),
+                SecretName = SecretName.FromProjectSecret("[PROJECT]", "[SECRET]"),
             };
             wkt::Empty expectedResponse = new wkt::Empty { };
             mockGrpcClient.Setup(x => x.DeleteSecretAsync(request, moq::It.IsAny<grpccore::CallOptions>())).Returns(new grpccore::AsyncUnaryCall<wkt::Empty>(stt::Task.FromResult(expectedResponse), null, null, null, null));
@@ -754,11 +754,11 @@ namespace Google.Cloud.SecretManager.V1Beta1.Tests
             moq::Mock<SecretManagerService.SecretManagerServiceClient> mockGrpcClient = new moq::Mock<SecretManagerService.SecretManagerServiceClient>(moq::MockBehavior.Strict);
             GetSecretVersionRequest request = new GetSecretVersionRequest
             {
-                SecretVersionName = new SecretVersionName("[PROJECT]", "[SECRET]", "[SECRET_VERSION]"),
+                SecretVersionName = SecretVersionName.FromProjectSecretSecretVersion("[PROJECT]", "[SECRET]", "[SECRET_VERSION]"),
             };
             SecretVersion expectedResponse = new SecretVersion
             {
-                SecretVersionName = new SecretVersionName("[PROJECT]", "[SECRET]", "[SECRET_VERSION]"),
+                SecretVersionName = SecretVersionName.FromProjectSecretSecretVersion("[PROJECT]", "[SECRET]", "[SECRET_VERSION]"),
                 CreateTime = new wkt::Timestamp(),
                 DestroyTime = new wkt::Timestamp(),
                 State = SecretVersion.Types.State.Disabled,
@@ -776,11 +776,11 @@ namespace Google.Cloud.SecretManager.V1Beta1.Tests
             moq::Mock<SecretManagerService.SecretManagerServiceClient> mockGrpcClient = new moq::Mock<SecretManagerService.SecretManagerServiceClient>(moq::MockBehavior.Strict);
             GetSecretVersionRequest request = new GetSecretVersionRequest
             {
-                SecretVersionName = new SecretVersionName("[PROJECT]", "[SECRET]", "[SECRET_VERSION]"),
+                SecretVersionName = SecretVersionName.FromProjectSecretSecretVersion("[PROJECT]", "[SECRET]", "[SECRET_VERSION]"),
             };
             SecretVersion expectedResponse = new SecretVersion
             {
-                SecretVersionName = new SecretVersionName("[PROJECT]", "[SECRET]", "[SECRET_VERSION]"),
+                SecretVersionName = SecretVersionName.FromProjectSecretSecretVersion("[PROJECT]", "[SECRET]", "[SECRET_VERSION]"),
                 CreateTime = new wkt::Timestamp(),
                 DestroyTime = new wkt::Timestamp(),
                 State = SecretVersion.Types.State.Disabled,
@@ -800,11 +800,11 @@ namespace Google.Cloud.SecretManager.V1Beta1.Tests
             moq::Mock<SecretManagerService.SecretManagerServiceClient> mockGrpcClient = new moq::Mock<SecretManagerService.SecretManagerServiceClient>(moq::MockBehavior.Strict);
             GetSecretVersionRequest request = new GetSecretVersionRequest
             {
-                SecretVersionName = new SecretVersionName("[PROJECT]", "[SECRET]", "[SECRET_VERSION]"),
+                SecretVersionName = SecretVersionName.FromProjectSecretSecretVersion("[PROJECT]", "[SECRET]", "[SECRET_VERSION]"),
             };
             SecretVersion expectedResponse = new SecretVersion
             {
-                SecretVersionName = new SecretVersionName("[PROJECT]", "[SECRET]", "[SECRET_VERSION]"),
+                SecretVersionName = SecretVersionName.FromProjectSecretSecretVersion("[PROJECT]", "[SECRET]", "[SECRET_VERSION]"),
                 CreateTime = new wkt::Timestamp(),
                 DestroyTime = new wkt::Timestamp(),
                 State = SecretVersion.Types.State.Disabled,
@@ -822,11 +822,11 @@ namespace Google.Cloud.SecretManager.V1Beta1.Tests
             moq::Mock<SecretManagerService.SecretManagerServiceClient> mockGrpcClient = new moq::Mock<SecretManagerService.SecretManagerServiceClient>(moq::MockBehavior.Strict);
             GetSecretVersionRequest request = new GetSecretVersionRequest
             {
-                SecretVersionName = new SecretVersionName("[PROJECT]", "[SECRET]", "[SECRET_VERSION]"),
+                SecretVersionName = SecretVersionName.FromProjectSecretSecretVersion("[PROJECT]", "[SECRET]", "[SECRET_VERSION]"),
             };
             SecretVersion expectedResponse = new SecretVersion
             {
-                SecretVersionName = new SecretVersionName("[PROJECT]", "[SECRET]", "[SECRET_VERSION]"),
+                SecretVersionName = SecretVersionName.FromProjectSecretSecretVersion("[PROJECT]", "[SECRET]", "[SECRET_VERSION]"),
                 CreateTime = new wkt::Timestamp(),
                 DestroyTime = new wkt::Timestamp(),
                 State = SecretVersion.Types.State.Disabled,
@@ -841,16 +841,16 @@ namespace Google.Cloud.SecretManager.V1Beta1.Tests
         }
 
         [xunit::FactAttribute]
-        public void GetSecretVersion_ResourceNames()
+        public void GetSecretVersionResourceNames()
         {
             moq::Mock<SecretManagerService.SecretManagerServiceClient> mockGrpcClient = new moq::Mock<SecretManagerService.SecretManagerServiceClient>(moq::MockBehavior.Strict);
             GetSecretVersionRequest request = new GetSecretVersionRequest
             {
-                SecretVersionName = new SecretVersionName("[PROJECT]", "[SECRET]", "[SECRET_VERSION]"),
+                SecretVersionName = SecretVersionName.FromProjectSecretSecretVersion("[PROJECT]", "[SECRET]", "[SECRET_VERSION]"),
             };
             SecretVersion expectedResponse = new SecretVersion
             {
-                SecretVersionName = new SecretVersionName("[PROJECT]", "[SECRET]", "[SECRET_VERSION]"),
+                SecretVersionName = SecretVersionName.FromProjectSecretSecretVersion("[PROJECT]", "[SECRET]", "[SECRET_VERSION]"),
                 CreateTime = new wkt::Timestamp(),
                 DestroyTime = new wkt::Timestamp(),
                 State = SecretVersion.Types.State.Disabled,
@@ -863,16 +863,16 @@ namespace Google.Cloud.SecretManager.V1Beta1.Tests
         }
 
         [xunit::FactAttribute]
-        public async stt::Task GetSecretVersionAsync_ResourceNames()
+        public async stt::Task GetSecretVersionResourceNamesAsync()
         {
             moq::Mock<SecretManagerService.SecretManagerServiceClient> mockGrpcClient = new moq::Mock<SecretManagerService.SecretManagerServiceClient>(moq::MockBehavior.Strict);
             GetSecretVersionRequest request = new GetSecretVersionRequest
             {
-                SecretVersionName = new SecretVersionName("[PROJECT]", "[SECRET]", "[SECRET_VERSION]"),
+                SecretVersionName = SecretVersionName.FromProjectSecretSecretVersion("[PROJECT]", "[SECRET]", "[SECRET_VERSION]"),
             };
             SecretVersion expectedResponse = new SecretVersion
             {
-                SecretVersionName = new SecretVersionName("[PROJECT]", "[SECRET]", "[SECRET_VERSION]"),
+                SecretVersionName = SecretVersionName.FromProjectSecretSecretVersion("[PROJECT]", "[SECRET]", "[SECRET_VERSION]"),
                 CreateTime = new wkt::Timestamp(),
                 DestroyTime = new wkt::Timestamp(),
                 State = SecretVersion.Types.State.Disabled,
@@ -892,11 +892,11 @@ namespace Google.Cloud.SecretManager.V1Beta1.Tests
             moq::Mock<SecretManagerService.SecretManagerServiceClient> mockGrpcClient = new moq::Mock<SecretManagerService.SecretManagerServiceClient>(moq::MockBehavior.Strict);
             AccessSecretVersionRequest request = new AccessSecretVersionRequest
             {
-                SecretVersionName = new SecretVersionName("[PROJECT]", "[SECRET]", "[SECRET_VERSION]"),
+                SecretVersionName = SecretVersionName.FromProjectSecretSecretVersion("[PROJECT]", "[SECRET]", "[SECRET_VERSION]"),
             };
             AccessSecretVersionResponse expectedResponse = new AccessSecretVersionResponse
             {
-                SecretVersionName = new SecretVersionName("[PROJECT]", "[SECRET]", "[SECRET_VERSION]"),
+                SecretVersionName = SecretVersionName.FromProjectSecretSecretVersion("[PROJECT]", "[SECRET]", "[SECRET_VERSION]"),
                 Payload = new SecretPayload(),
             };
             mockGrpcClient.Setup(x => x.AccessSecretVersion(request, moq::It.IsAny<grpccore::CallOptions>())).Returns(expectedResponse);
@@ -912,11 +912,11 @@ namespace Google.Cloud.SecretManager.V1Beta1.Tests
             moq::Mock<SecretManagerService.SecretManagerServiceClient> mockGrpcClient = new moq::Mock<SecretManagerService.SecretManagerServiceClient>(moq::MockBehavior.Strict);
             AccessSecretVersionRequest request = new AccessSecretVersionRequest
             {
-                SecretVersionName = new SecretVersionName("[PROJECT]", "[SECRET]", "[SECRET_VERSION]"),
+                SecretVersionName = SecretVersionName.FromProjectSecretSecretVersion("[PROJECT]", "[SECRET]", "[SECRET_VERSION]"),
             };
             AccessSecretVersionResponse expectedResponse = new AccessSecretVersionResponse
             {
-                SecretVersionName = new SecretVersionName("[PROJECT]", "[SECRET]", "[SECRET_VERSION]"),
+                SecretVersionName = SecretVersionName.FromProjectSecretSecretVersion("[PROJECT]", "[SECRET]", "[SECRET_VERSION]"),
                 Payload = new SecretPayload(),
             };
             mockGrpcClient.Setup(x => x.AccessSecretVersionAsync(request, moq::It.IsAny<grpccore::CallOptions>())).Returns(new grpccore::AsyncUnaryCall<AccessSecretVersionResponse>(stt::Task.FromResult(expectedResponse), null, null, null, null));
@@ -934,11 +934,11 @@ namespace Google.Cloud.SecretManager.V1Beta1.Tests
             moq::Mock<SecretManagerService.SecretManagerServiceClient> mockGrpcClient = new moq::Mock<SecretManagerService.SecretManagerServiceClient>(moq::MockBehavior.Strict);
             AccessSecretVersionRequest request = new AccessSecretVersionRequest
             {
-                SecretVersionName = new SecretVersionName("[PROJECT]", "[SECRET]", "[SECRET_VERSION]"),
+                SecretVersionName = SecretVersionName.FromProjectSecretSecretVersion("[PROJECT]", "[SECRET]", "[SECRET_VERSION]"),
             };
             AccessSecretVersionResponse expectedResponse = new AccessSecretVersionResponse
             {
-                SecretVersionName = new SecretVersionName("[PROJECT]", "[SECRET]", "[SECRET_VERSION]"),
+                SecretVersionName = SecretVersionName.FromProjectSecretSecretVersion("[PROJECT]", "[SECRET]", "[SECRET_VERSION]"),
                 Payload = new SecretPayload(),
             };
             mockGrpcClient.Setup(x => x.AccessSecretVersion(request, moq::It.IsAny<grpccore::CallOptions>())).Returns(expectedResponse);
@@ -954,11 +954,11 @@ namespace Google.Cloud.SecretManager.V1Beta1.Tests
             moq::Mock<SecretManagerService.SecretManagerServiceClient> mockGrpcClient = new moq::Mock<SecretManagerService.SecretManagerServiceClient>(moq::MockBehavior.Strict);
             AccessSecretVersionRequest request = new AccessSecretVersionRequest
             {
-                SecretVersionName = new SecretVersionName("[PROJECT]", "[SECRET]", "[SECRET_VERSION]"),
+                SecretVersionName = SecretVersionName.FromProjectSecretSecretVersion("[PROJECT]", "[SECRET]", "[SECRET_VERSION]"),
             };
             AccessSecretVersionResponse expectedResponse = new AccessSecretVersionResponse
             {
-                SecretVersionName = new SecretVersionName("[PROJECT]", "[SECRET]", "[SECRET_VERSION]"),
+                SecretVersionName = SecretVersionName.FromProjectSecretSecretVersion("[PROJECT]", "[SECRET]", "[SECRET_VERSION]"),
                 Payload = new SecretPayload(),
             };
             mockGrpcClient.Setup(x => x.AccessSecretVersionAsync(request, moq::It.IsAny<grpccore::CallOptions>())).Returns(new grpccore::AsyncUnaryCall<AccessSecretVersionResponse>(stt::Task.FromResult(expectedResponse), null, null, null, null));
@@ -971,16 +971,16 @@ namespace Google.Cloud.SecretManager.V1Beta1.Tests
         }
 
         [xunit::FactAttribute]
-        public void AccessSecretVersion_ResourceNames()
+        public void AccessSecretVersionResourceNames()
         {
             moq::Mock<SecretManagerService.SecretManagerServiceClient> mockGrpcClient = new moq::Mock<SecretManagerService.SecretManagerServiceClient>(moq::MockBehavior.Strict);
             AccessSecretVersionRequest request = new AccessSecretVersionRequest
             {
-                SecretVersionName = new SecretVersionName("[PROJECT]", "[SECRET]", "[SECRET_VERSION]"),
+                SecretVersionName = SecretVersionName.FromProjectSecretSecretVersion("[PROJECT]", "[SECRET]", "[SECRET_VERSION]"),
             };
             AccessSecretVersionResponse expectedResponse = new AccessSecretVersionResponse
             {
-                SecretVersionName = new SecretVersionName("[PROJECT]", "[SECRET]", "[SECRET_VERSION]"),
+                SecretVersionName = SecretVersionName.FromProjectSecretSecretVersion("[PROJECT]", "[SECRET]", "[SECRET_VERSION]"),
                 Payload = new SecretPayload(),
             };
             mockGrpcClient.Setup(x => x.AccessSecretVersion(request, moq::It.IsAny<grpccore::CallOptions>())).Returns(expectedResponse);
@@ -991,16 +991,16 @@ namespace Google.Cloud.SecretManager.V1Beta1.Tests
         }
 
         [xunit::FactAttribute]
-        public async stt::Task AccessSecretVersionAsync_ResourceNames()
+        public async stt::Task AccessSecretVersionResourceNamesAsync()
         {
             moq::Mock<SecretManagerService.SecretManagerServiceClient> mockGrpcClient = new moq::Mock<SecretManagerService.SecretManagerServiceClient>(moq::MockBehavior.Strict);
             AccessSecretVersionRequest request = new AccessSecretVersionRequest
             {
-                SecretVersionName = new SecretVersionName("[PROJECT]", "[SECRET]", "[SECRET_VERSION]"),
+                SecretVersionName = SecretVersionName.FromProjectSecretSecretVersion("[PROJECT]", "[SECRET]", "[SECRET_VERSION]"),
             };
             AccessSecretVersionResponse expectedResponse = new AccessSecretVersionResponse
             {
-                SecretVersionName = new SecretVersionName("[PROJECT]", "[SECRET]", "[SECRET_VERSION]"),
+                SecretVersionName = SecretVersionName.FromProjectSecretSecretVersion("[PROJECT]", "[SECRET]", "[SECRET_VERSION]"),
                 Payload = new SecretPayload(),
             };
             mockGrpcClient.Setup(x => x.AccessSecretVersionAsync(request, moq::It.IsAny<grpccore::CallOptions>())).Returns(new grpccore::AsyncUnaryCall<AccessSecretVersionResponse>(stt::Task.FromResult(expectedResponse), null, null, null, null));
@@ -1018,11 +1018,11 @@ namespace Google.Cloud.SecretManager.V1Beta1.Tests
             moq::Mock<SecretManagerService.SecretManagerServiceClient> mockGrpcClient = new moq::Mock<SecretManagerService.SecretManagerServiceClient>(moq::MockBehavior.Strict);
             DisableSecretVersionRequest request = new DisableSecretVersionRequest
             {
-                SecretVersionName = new SecretVersionName("[PROJECT]", "[SECRET]", "[SECRET_VERSION]"),
+                SecretVersionName = SecretVersionName.FromProjectSecretSecretVersion("[PROJECT]", "[SECRET]", "[SECRET_VERSION]"),
             };
             SecretVersion expectedResponse = new SecretVersion
             {
-                SecretVersionName = new SecretVersionName("[PROJECT]", "[SECRET]", "[SECRET_VERSION]"),
+                SecretVersionName = SecretVersionName.FromProjectSecretSecretVersion("[PROJECT]", "[SECRET]", "[SECRET_VERSION]"),
                 CreateTime = new wkt::Timestamp(),
                 DestroyTime = new wkt::Timestamp(),
                 State = SecretVersion.Types.State.Disabled,
@@ -1040,11 +1040,11 @@ namespace Google.Cloud.SecretManager.V1Beta1.Tests
             moq::Mock<SecretManagerService.SecretManagerServiceClient> mockGrpcClient = new moq::Mock<SecretManagerService.SecretManagerServiceClient>(moq::MockBehavior.Strict);
             DisableSecretVersionRequest request = new DisableSecretVersionRequest
             {
-                SecretVersionName = new SecretVersionName("[PROJECT]", "[SECRET]", "[SECRET_VERSION]"),
+                SecretVersionName = SecretVersionName.FromProjectSecretSecretVersion("[PROJECT]", "[SECRET]", "[SECRET_VERSION]"),
             };
             SecretVersion expectedResponse = new SecretVersion
             {
-                SecretVersionName = new SecretVersionName("[PROJECT]", "[SECRET]", "[SECRET_VERSION]"),
+                SecretVersionName = SecretVersionName.FromProjectSecretSecretVersion("[PROJECT]", "[SECRET]", "[SECRET_VERSION]"),
                 CreateTime = new wkt::Timestamp(),
                 DestroyTime = new wkt::Timestamp(),
                 State = SecretVersion.Types.State.Disabled,
@@ -1064,11 +1064,11 @@ namespace Google.Cloud.SecretManager.V1Beta1.Tests
             moq::Mock<SecretManagerService.SecretManagerServiceClient> mockGrpcClient = new moq::Mock<SecretManagerService.SecretManagerServiceClient>(moq::MockBehavior.Strict);
             DisableSecretVersionRequest request = new DisableSecretVersionRequest
             {
-                SecretVersionName = new SecretVersionName("[PROJECT]", "[SECRET]", "[SECRET_VERSION]"),
+                SecretVersionName = SecretVersionName.FromProjectSecretSecretVersion("[PROJECT]", "[SECRET]", "[SECRET_VERSION]"),
             };
             SecretVersion expectedResponse = new SecretVersion
             {
-                SecretVersionName = new SecretVersionName("[PROJECT]", "[SECRET]", "[SECRET_VERSION]"),
+                SecretVersionName = SecretVersionName.FromProjectSecretSecretVersion("[PROJECT]", "[SECRET]", "[SECRET_VERSION]"),
                 CreateTime = new wkt::Timestamp(),
                 DestroyTime = new wkt::Timestamp(),
                 State = SecretVersion.Types.State.Disabled,
@@ -1086,11 +1086,11 @@ namespace Google.Cloud.SecretManager.V1Beta1.Tests
             moq::Mock<SecretManagerService.SecretManagerServiceClient> mockGrpcClient = new moq::Mock<SecretManagerService.SecretManagerServiceClient>(moq::MockBehavior.Strict);
             DisableSecretVersionRequest request = new DisableSecretVersionRequest
             {
-                SecretVersionName = new SecretVersionName("[PROJECT]", "[SECRET]", "[SECRET_VERSION]"),
+                SecretVersionName = SecretVersionName.FromProjectSecretSecretVersion("[PROJECT]", "[SECRET]", "[SECRET_VERSION]"),
             };
             SecretVersion expectedResponse = new SecretVersion
             {
-                SecretVersionName = new SecretVersionName("[PROJECT]", "[SECRET]", "[SECRET_VERSION]"),
+                SecretVersionName = SecretVersionName.FromProjectSecretSecretVersion("[PROJECT]", "[SECRET]", "[SECRET_VERSION]"),
                 CreateTime = new wkt::Timestamp(),
                 DestroyTime = new wkt::Timestamp(),
                 State = SecretVersion.Types.State.Disabled,
@@ -1105,16 +1105,16 @@ namespace Google.Cloud.SecretManager.V1Beta1.Tests
         }
 
         [xunit::FactAttribute]
-        public void DisableSecretVersion_ResourceNames()
+        public void DisableSecretVersionResourceNames()
         {
             moq::Mock<SecretManagerService.SecretManagerServiceClient> mockGrpcClient = new moq::Mock<SecretManagerService.SecretManagerServiceClient>(moq::MockBehavior.Strict);
             DisableSecretVersionRequest request = new DisableSecretVersionRequest
             {
-                SecretVersionName = new SecretVersionName("[PROJECT]", "[SECRET]", "[SECRET_VERSION]"),
+                SecretVersionName = SecretVersionName.FromProjectSecretSecretVersion("[PROJECT]", "[SECRET]", "[SECRET_VERSION]"),
             };
             SecretVersion expectedResponse = new SecretVersion
             {
-                SecretVersionName = new SecretVersionName("[PROJECT]", "[SECRET]", "[SECRET_VERSION]"),
+                SecretVersionName = SecretVersionName.FromProjectSecretSecretVersion("[PROJECT]", "[SECRET]", "[SECRET_VERSION]"),
                 CreateTime = new wkt::Timestamp(),
                 DestroyTime = new wkt::Timestamp(),
                 State = SecretVersion.Types.State.Disabled,
@@ -1127,16 +1127,16 @@ namespace Google.Cloud.SecretManager.V1Beta1.Tests
         }
 
         [xunit::FactAttribute]
-        public async stt::Task DisableSecretVersionAsync_ResourceNames()
+        public async stt::Task DisableSecretVersionResourceNamesAsync()
         {
             moq::Mock<SecretManagerService.SecretManagerServiceClient> mockGrpcClient = new moq::Mock<SecretManagerService.SecretManagerServiceClient>(moq::MockBehavior.Strict);
             DisableSecretVersionRequest request = new DisableSecretVersionRequest
             {
-                SecretVersionName = new SecretVersionName("[PROJECT]", "[SECRET]", "[SECRET_VERSION]"),
+                SecretVersionName = SecretVersionName.FromProjectSecretSecretVersion("[PROJECT]", "[SECRET]", "[SECRET_VERSION]"),
             };
             SecretVersion expectedResponse = new SecretVersion
             {
-                SecretVersionName = new SecretVersionName("[PROJECT]", "[SECRET]", "[SECRET_VERSION]"),
+                SecretVersionName = SecretVersionName.FromProjectSecretSecretVersion("[PROJECT]", "[SECRET]", "[SECRET_VERSION]"),
                 CreateTime = new wkt::Timestamp(),
                 DestroyTime = new wkt::Timestamp(),
                 State = SecretVersion.Types.State.Disabled,
@@ -1156,11 +1156,11 @@ namespace Google.Cloud.SecretManager.V1Beta1.Tests
             moq::Mock<SecretManagerService.SecretManagerServiceClient> mockGrpcClient = new moq::Mock<SecretManagerService.SecretManagerServiceClient>(moq::MockBehavior.Strict);
             EnableSecretVersionRequest request = new EnableSecretVersionRequest
             {
-                SecretVersionName = new SecretVersionName("[PROJECT]", "[SECRET]", "[SECRET_VERSION]"),
+                SecretVersionName = SecretVersionName.FromProjectSecretSecretVersion("[PROJECT]", "[SECRET]", "[SECRET_VERSION]"),
             };
             SecretVersion expectedResponse = new SecretVersion
             {
-                SecretVersionName = new SecretVersionName("[PROJECT]", "[SECRET]", "[SECRET_VERSION]"),
+                SecretVersionName = SecretVersionName.FromProjectSecretSecretVersion("[PROJECT]", "[SECRET]", "[SECRET_VERSION]"),
                 CreateTime = new wkt::Timestamp(),
                 DestroyTime = new wkt::Timestamp(),
                 State = SecretVersion.Types.State.Disabled,
@@ -1178,11 +1178,11 @@ namespace Google.Cloud.SecretManager.V1Beta1.Tests
             moq::Mock<SecretManagerService.SecretManagerServiceClient> mockGrpcClient = new moq::Mock<SecretManagerService.SecretManagerServiceClient>(moq::MockBehavior.Strict);
             EnableSecretVersionRequest request = new EnableSecretVersionRequest
             {
-                SecretVersionName = new SecretVersionName("[PROJECT]", "[SECRET]", "[SECRET_VERSION]"),
+                SecretVersionName = SecretVersionName.FromProjectSecretSecretVersion("[PROJECT]", "[SECRET]", "[SECRET_VERSION]"),
             };
             SecretVersion expectedResponse = new SecretVersion
             {
-                SecretVersionName = new SecretVersionName("[PROJECT]", "[SECRET]", "[SECRET_VERSION]"),
+                SecretVersionName = SecretVersionName.FromProjectSecretSecretVersion("[PROJECT]", "[SECRET]", "[SECRET_VERSION]"),
                 CreateTime = new wkt::Timestamp(),
                 DestroyTime = new wkt::Timestamp(),
                 State = SecretVersion.Types.State.Disabled,
@@ -1202,11 +1202,11 @@ namespace Google.Cloud.SecretManager.V1Beta1.Tests
             moq::Mock<SecretManagerService.SecretManagerServiceClient> mockGrpcClient = new moq::Mock<SecretManagerService.SecretManagerServiceClient>(moq::MockBehavior.Strict);
             EnableSecretVersionRequest request = new EnableSecretVersionRequest
             {
-                SecretVersionName = new SecretVersionName("[PROJECT]", "[SECRET]", "[SECRET_VERSION]"),
+                SecretVersionName = SecretVersionName.FromProjectSecretSecretVersion("[PROJECT]", "[SECRET]", "[SECRET_VERSION]"),
             };
             SecretVersion expectedResponse = new SecretVersion
             {
-                SecretVersionName = new SecretVersionName("[PROJECT]", "[SECRET]", "[SECRET_VERSION]"),
+                SecretVersionName = SecretVersionName.FromProjectSecretSecretVersion("[PROJECT]", "[SECRET]", "[SECRET_VERSION]"),
                 CreateTime = new wkt::Timestamp(),
                 DestroyTime = new wkt::Timestamp(),
                 State = SecretVersion.Types.State.Disabled,
@@ -1224,11 +1224,11 @@ namespace Google.Cloud.SecretManager.V1Beta1.Tests
             moq::Mock<SecretManagerService.SecretManagerServiceClient> mockGrpcClient = new moq::Mock<SecretManagerService.SecretManagerServiceClient>(moq::MockBehavior.Strict);
             EnableSecretVersionRequest request = new EnableSecretVersionRequest
             {
-                SecretVersionName = new SecretVersionName("[PROJECT]", "[SECRET]", "[SECRET_VERSION]"),
+                SecretVersionName = SecretVersionName.FromProjectSecretSecretVersion("[PROJECT]", "[SECRET]", "[SECRET_VERSION]"),
             };
             SecretVersion expectedResponse = new SecretVersion
             {
-                SecretVersionName = new SecretVersionName("[PROJECT]", "[SECRET]", "[SECRET_VERSION]"),
+                SecretVersionName = SecretVersionName.FromProjectSecretSecretVersion("[PROJECT]", "[SECRET]", "[SECRET_VERSION]"),
                 CreateTime = new wkt::Timestamp(),
                 DestroyTime = new wkt::Timestamp(),
                 State = SecretVersion.Types.State.Disabled,
@@ -1243,16 +1243,16 @@ namespace Google.Cloud.SecretManager.V1Beta1.Tests
         }
 
         [xunit::FactAttribute]
-        public void EnableSecretVersion_ResourceNames()
+        public void EnableSecretVersionResourceNames()
         {
             moq::Mock<SecretManagerService.SecretManagerServiceClient> mockGrpcClient = new moq::Mock<SecretManagerService.SecretManagerServiceClient>(moq::MockBehavior.Strict);
             EnableSecretVersionRequest request = new EnableSecretVersionRequest
             {
-                SecretVersionName = new SecretVersionName("[PROJECT]", "[SECRET]", "[SECRET_VERSION]"),
+                SecretVersionName = SecretVersionName.FromProjectSecretSecretVersion("[PROJECT]", "[SECRET]", "[SECRET_VERSION]"),
             };
             SecretVersion expectedResponse = new SecretVersion
             {
-                SecretVersionName = new SecretVersionName("[PROJECT]", "[SECRET]", "[SECRET_VERSION]"),
+                SecretVersionName = SecretVersionName.FromProjectSecretSecretVersion("[PROJECT]", "[SECRET]", "[SECRET_VERSION]"),
                 CreateTime = new wkt::Timestamp(),
                 DestroyTime = new wkt::Timestamp(),
                 State = SecretVersion.Types.State.Disabled,
@@ -1265,16 +1265,16 @@ namespace Google.Cloud.SecretManager.V1Beta1.Tests
         }
 
         [xunit::FactAttribute]
-        public async stt::Task EnableSecretVersionAsync_ResourceNames()
+        public async stt::Task EnableSecretVersionResourceNamesAsync()
         {
             moq::Mock<SecretManagerService.SecretManagerServiceClient> mockGrpcClient = new moq::Mock<SecretManagerService.SecretManagerServiceClient>(moq::MockBehavior.Strict);
             EnableSecretVersionRequest request = new EnableSecretVersionRequest
             {
-                SecretVersionName = new SecretVersionName("[PROJECT]", "[SECRET]", "[SECRET_VERSION]"),
+                SecretVersionName = SecretVersionName.FromProjectSecretSecretVersion("[PROJECT]", "[SECRET]", "[SECRET_VERSION]"),
             };
             SecretVersion expectedResponse = new SecretVersion
             {
-                SecretVersionName = new SecretVersionName("[PROJECT]", "[SECRET]", "[SECRET_VERSION]"),
+                SecretVersionName = SecretVersionName.FromProjectSecretSecretVersion("[PROJECT]", "[SECRET]", "[SECRET_VERSION]"),
                 CreateTime = new wkt::Timestamp(),
                 DestroyTime = new wkt::Timestamp(),
                 State = SecretVersion.Types.State.Disabled,
@@ -1294,11 +1294,11 @@ namespace Google.Cloud.SecretManager.V1Beta1.Tests
             moq::Mock<SecretManagerService.SecretManagerServiceClient> mockGrpcClient = new moq::Mock<SecretManagerService.SecretManagerServiceClient>(moq::MockBehavior.Strict);
             DestroySecretVersionRequest request = new DestroySecretVersionRequest
             {
-                SecretVersionName = new SecretVersionName("[PROJECT]", "[SECRET]", "[SECRET_VERSION]"),
+                SecretVersionName = SecretVersionName.FromProjectSecretSecretVersion("[PROJECT]", "[SECRET]", "[SECRET_VERSION]"),
             };
             SecretVersion expectedResponse = new SecretVersion
             {
-                SecretVersionName = new SecretVersionName("[PROJECT]", "[SECRET]", "[SECRET_VERSION]"),
+                SecretVersionName = SecretVersionName.FromProjectSecretSecretVersion("[PROJECT]", "[SECRET]", "[SECRET_VERSION]"),
                 CreateTime = new wkt::Timestamp(),
                 DestroyTime = new wkt::Timestamp(),
                 State = SecretVersion.Types.State.Disabled,
@@ -1316,11 +1316,11 @@ namespace Google.Cloud.SecretManager.V1Beta1.Tests
             moq::Mock<SecretManagerService.SecretManagerServiceClient> mockGrpcClient = new moq::Mock<SecretManagerService.SecretManagerServiceClient>(moq::MockBehavior.Strict);
             DestroySecretVersionRequest request = new DestroySecretVersionRequest
             {
-                SecretVersionName = new SecretVersionName("[PROJECT]", "[SECRET]", "[SECRET_VERSION]"),
+                SecretVersionName = SecretVersionName.FromProjectSecretSecretVersion("[PROJECT]", "[SECRET]", "[SECRET_VERSION]"),
             };
             SecretVersion expectedResponse = new SecretVersion
             {
-                SecretVersionName = new SecretVersionName("[PROJECT]", "[SECRET]", "[SECRET_VERSION]"),
+                SecretVersionName = SecretVersionName.FromProjectSecretSecretVersion("[PROJECT]", "[SECRET]", "[SECRET_VERSION]"),
                 CreateTime = new wkt::Timestamp(),
                 DestroyTime = new wkt::Timestamp(),
                 State = SecretVersion.Types.State.Disabled,
@@ -1340,11 +1340,11 @@ namespace Google.Cloud.SecretManager.V1Beta1.Tests
             moq::Mock<SecretManagerService.SecretManagerServiceClient> mockGrpcClient = new moq::Mock<SecretManagerService.SecretManagerServiceClient>(moq::MockBehavior.Strict);
             DestroySecretVersionRequest request = new DestroySecretVersionRequest
             {
-                SecretVersionName = new SecretVersionName("[PROJECT]", "[SECRET]", "[SECRET_VERSION]"),
+                SecretVersionName = SecretVersionName.FromProjectSecretSecretVersion("[PROJECT]", "[SECRET]", "[SECRET_VERSION]"),
             };
             SecretVersion expectedResponse = new SecretVersion
             {
-                SecretVersionName = new SecretVersionName("[PROJECT]", "[SECRET]", "[SECRET_VERSION]"),
+                SecretVersionName = SecretVersionName.FromProjectSecretSecretVersion("[PROJECT]", "[SECRET]", "[SECRET_VERSION]"),
                 CreateTime = new wkt::Timestamp(),
                 DestroyTime = new wkt::Timestamp(),
                 State = SecretVersion.Types.State.Disabled,
@@ -1362,11 +1362,11 @@ namespace Google.Cloud.SecretManager.V1Beta1.Tests
             moq::Mock<SecretManagerService.SecretManagerServiceClient> mockGrpcClient = new moq::Mock<SecretManagerService.SecretManagerServiceClient>(moq::MockBehavior.Strict);
             DestroySecretVersionRequest request = new DestroySecretVersionRequest
             {
-                SecretVersionName = new SecretVersionName("[PROJECT]", "[SECRET]", "[SECRET_VERSION]"),
+                SecretVersionName = SecretVersionName.FromProjectSecretSecretVersion("[PROJECT]", "[SECRET]", "[SECRET_VERSION]"),
             };
             SecretVersion expectedResponse = new SecretVersion
             {
-                SecretVersionName = new SecretVersionName("[PROJECT]", "[SECRET]", "[SECRET_VERSION]"),
+                SecretVersionName = SecretVersionName.FromProjectSecretSecretVersion("[PROJECT]", "[SECRET]", "[SECRET_VERSION]"),
                 CreateTime = new wkt::Timestamp(),
                 DestroyTime = new wkt::Timestamp(),
                 State = SecretVersion.Types.State.Disabled,
@@ -1381,16 +1381,16 @@ namespace Google.Cloud.SecretManager.V1Beta1.Tests
         }
 
         [xunit::FactAttribute]
-        public void DestroySecretVersion_ResourceNames()
+        public void DestroySecretVersionResourceNames()
         {
             moq::Mock<SecretManagerService.SecretManagerServiceClient> mockGrpcClient = new moq::Mock<SecretManagerService.SecretManagerServiceClient>(moq::MockBehavior.Strict);
             DestroySecretVersionRequest request = new DestroySecretVersionRequest
             {
-                SecretVersionName = new SecretVersionName("[PROJECT]", "[SECRET]", "[SECRET_VERSION]"),
+                SecretVersionName = SecretVersionName.FromProjectSecretSecretVersion("[PROJECT]", "[SECRET]", "[SECRET_VERSION]"),
             };
             SecretVersion expectedResponse = new SecretVersion
             {
-                SecretVersionName = new SecretVersionName("[PROJECT]", "[SECRET]", "[SECRET_VERSION]"),
+                SecretVersionName = SecretVersionName.FromProjectSecretSecretVersion("[PROJECT]", "[SECRET]", "[SECRET_VERSION]"),
                 CreateTime = new wkt::Timestamp(),
                 DestroyTime = new wkt::Timestamp(),
                 State = SecretVersion.Types.State.Disabled,
@@ -1403,16 +1403,16 @@ namespace Google.Cloud.SecretManager.V1Beta1.Tests
         }
 
         [xunit::FactAttribute]
-        public async stt::Task DestroySecretVersionAsync_ResourceNames()
+        public async stt::Task DestroySecretVersionResourceNamesAsync()
         {
             moq::Mock<SecretManagerService.SecretManagerServiceClient> mockGrpcClient = new moq::Mock<SecretManagerService.SecretManagerServiceClient>(moq::MockBehavior.Strict);
             DestroySecretVersionRequest request = new DestroySecretVersionRequest
             {
-                SecretVersionName = new SecretVersionName("[PROJECT]", "[SECRET]", "[SECRET_VERSION]"),
+                SecretVersionName = SecretVersionName.FromProjectSecretSecretVersion("[PROJECT]", "[SECRET]", "[SECRET_VERSION]"),
             };
             SecretVersion expectedResponse = new SecretVersion
             {
-                SecretVersionName = new SecretVersionName("[PROJECT]", "[SECRET]", "[SECRET_VERSION]"),
+                SecretVersionName = SecretVersionName.FromProjectSecretSecretVersion("[PROJECT]", "[SECRET]", "[SECRET_VERSION]"),
                 CreateTime = new wkt::Timestamp(),
                 DestroyTime = new wkt::Timestamp(),
                 State = SecretVersion.Types.State.Disabled,
@@ -1432,7 +1432,7 @@ namespace Google.Cloud.SecretManager.V1Beta1.Tests
             moq::Mock<SecretManagerService.SecretManagerServiceClient> mockGrpcClient = new moq::Mock<SecretManagerService.SecretManagerServiceClient>(moq::MockBehavior.Strict);
             gciv::SetIamPolicyRequest request = new gciv::SetIamPolicyRequest
             {
-                ResourceAsResourceName = new gax::UnknownResourceName("a/wildcard/resource"),
+                ResourceAsResourceName = new gax::UnparsedResourceName("a/wildcard/resource"),
                 Policy = new gciv::Policy(),
             };
             gciv::Policy expectedResponse = new gciv::Policy
@@ -1457,7 +1457,7 @@ namespace Google.Cloud.SecretManager.V1Beta1.Tests
             moq::Mock<SecretManagerService.SecretManagerServiceClient> mockGrpcClient = new moq::Mock<SecretManagerService.SecretManagerServiceClient>(moq::MockBehavior.Strict);
             gciv::SetIamPolicyRequest request = new gciv::SetIamPolicyRequest
             {
-                ResourceAsResourceName = new gax::UnknownResourceName("a/wildcard/resource"),
+                ResourceAsResourceName = new gax::UnparsedResourceName("a/wildcard/resource"),
                 Policy = new gciv::Policy(),
             };
             gciv::Policy expectedResponse = new gciv::Policy
@@ -1484,7 +1484,7 @@ namespace Google.Cloud.SecretManager.V1Beta1.Tests
             moq::Mock<SecretManagerService.SecretManagerServiceClient> mockGrpcClient = new moq::Mock<SecretManagerService.SecretManagerServiceClient>(moq::MockBehavior.Strict);
             gciv::GetIamPolicyRequest request = new gciv::GetIamPolicyRequest
             {
-                ResourceAsResourceName = new gax::UnknownResourceName("a/wildcard/resource"),
+                ResourceAsResourceName = new gax::UnparsedResourceName("a/wildcard/resource"),
                 Options = new gciv::GetPolicyOptions(),
             };
             gciv::Policy expectedResponse = new gciv::Policy
@@ -1509,7 +1509,7 @@ namespace Google.Cloud.SecretManager.V1Beta1.Tests
             moq::Mock<SecretManagerService.SecretManagerServiceClient> mockGrpcClient = new moq::Mock<SecretManagerService.SecretManagerServiceClient>(moq::MockBehavior.Strict);
             gciv::GetIamPolicyRequest request = new gciv::GetIamPolicyRequest
             {
-                ResourceAsResourceName = new gax::UnknownResourceName("a/wildcard/resource"),
+                ResourceAsResourceName = new gax::UnparsedResourceName("a/wildcard/resource"),
                 Options = new gciv::GetPolicyOptions(),
             };
             gciv::Policy expectedResponse = new gciv::Policy
@@ -1536,7 +1536,7 @@ namespace Google.Cloud.SecretManager.V1Beta1.Tests
             moq::Mock<SecretManagerService.SecretManagerServiceClient> mockGrpcClient = new moq::Mock<SecretManagerService.SecretManagerServiceClient>(moq::MockBehavior.Strict);
             gciv::TestIamPermissionsRequest request = new gciv::TestIamPermissionsRequest
             {
-                ResourceAsResourceName = new gax::UnknownResourceName("a/wildcard/resource"),
+                ResourceAsResourceName = new gax::UnparsedResourceName("a/wildcard/resource"),
                 Permissions =
                 {
                     "permissions535a2741",
@@ -1562,7 +1562,7 @@ namespace Google.Cloud.SecretManager.V1Beta1.Tests
             moq::Mock<SecretManagerService.SecretManagerServiceClient> mockGrpcClient = new moq::Mock<SecretManagerService.SecretManagerServiceClient>(moq::MockBehavior.Strict);
             gciv::TestIamPermissionsRequest request = new gciv::TestIamPermissionsRequest
             {
-                ResourceAsResourceName = new gax::UnknownResourceName("a/wildcard/resource"),
+                ResourceAsResourceName = new gax::UnparsedResourceName("a/wildcard/resource"),
                 Permissions =
                 {
                     "permissions535a2741",

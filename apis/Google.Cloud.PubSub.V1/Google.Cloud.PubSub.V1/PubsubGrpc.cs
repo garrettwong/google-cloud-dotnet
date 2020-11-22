@@ -3,7 +3,7 @@
 //     source: google/pubsub/v1/pubsub.proto
 // </auto-generated>
 // Original file comments:
-// Copyright 2019 Google LLC.
+// Copyright 2020 Google LLC
 //
 // Licensed under the Apache License, Version 2.0 (the "License");
 // you may not use this file except in compliance with the License.
@@ -16,7 +16,6 @@
 // WITHOUT WARRANTIES OR CONDITIONS OF ANY KIND, either express or implied.
 // See the License for the specific language governing permissions and
 // limitations under the License.
-//
 //
 #pragma warning disable 0414, 1591
 #region Designer generated code
@@ -45,6 +44,8 @@ namespace Google.Cloud.PubSub.V1 {
     static readonly grpc::Marshaller<global::Google.Cloud.PubSub.V1.ListTopicSnapshotsResponse> __Marshaller_google_pubsub_v1_ListTopicSnapshotsResponse = grpc::Marshallers.Create((arg) => global::Google.Protobuf.MessageExtensions.ToByteArray(arg), global::Google.Cloud.PubSub.V1.ListTopicSnapshotsResponse.Parser.ParseFrom);
     static readonly grpc::Marshaller<global::Google.Cloud.PubSub.V1.DeleteTopicRequest> __Marshaller_google_pubsub_v1_DeleteTopicRequest = grpc::Marshallers.Create((arg) => global::Google.Protobuf.MessageExtensions.ToByteArray(arg), global::Google.Cloud.PubSub.V1.DeleteTopicRequest.Parser.ParseFrom);
     static readonly grpc::Marshaller<global::Google.Protobuf.WellKnownTypes.Empty> __Marshaller_google_protobuf_Empty = grpc::Marshallers.Create((arg) => global::Google.Protobuf.MessageExtensions.ToByteArray(arg), global::Google.Protobuf.WellKnownTypes.Empty.Parser.ParseFrom);
+    static readonly grpc::Marshaller<global::Google.Cloud.PubSub.V1.DetachSubscriptionRequest> __Marshaller_google_pubsub_v1_DetachSubscriptionRequest = grpc::Marshallers.Create((arg) => global::Google.Protobuf.MessageExtensions.ToByteArray(arg), global::Google.Cloud.PubSub.V1.DetachSubscriptionRequest.Parser.ParseFrom);
+    static readonly grpc::Marshaller<global::Google.Cloud.PubSub.V1.DetachSubscriptionResponse> __Marshaller_google_pubsub_v1_DetachSubscriptionResponse = grpc::Marshallers.Create((arg) => global::Google.Protobuf.MessageExtensions.ToByteArray(arg), global::Google.Cloud.PubSub.V1.DetachSubscriptionResponse.Parser.ParseFrom);
 
     static readonly grpc::Method<global::Google.Cloud.PubSub.V1.Topic, global::Google.Cloud.PubSub.V1.Topic> __Method_CreateTopic = new grpc::Method<global::Google.Cloud.PubSub.V1.Topic, global::Google.Cloud.PubSub.V1.Topic>(
         grpc::MethodType.Unary,
@@ -102,6 +103,13 @@ namespace Google.Cloud.PubSub.V1 {
         __Marshaller_google_pubsub_v1_DeleteTopicRequest,
         __Marshaller_google_protobuf_Empty);
 
+    static readonly grpc::Method<global::Google.Cloud.PubSub.V1.DetachSubscriptionRequest, global::Google.Cloud.PubSub.V1.DetachSubscriptionResponse> __Method_DetachSubscription = new grpc::Method<global::Google.Cloud.PubSub.V1.DetachSubscriptionRequest, global::Google.Cloud.PubSub.V1.DetachSubscriptionResponse>(
+        grpc::MethodType.Unary,
+        __ServiceName,
+        "DetachSubscription",
+        __Marshaller_google_pubsub_v1_DetachSubscriptionRequest,
+        __Marshaller_google_pubsub_v1_DetachSubscriptionResponse);
+
     /// <summary>Service descriptor</summary>
     public static global::Google.Protobuf.Reflection.ServiceDescriptor Descriptor
     {
@@ -113,9 +121,8 @@ namespace Google.Cloud.PubSub.V1 {
     public abstract partial class PublisherBase
     {
       /// <summary>
-      /// Creates the given topic with the given name. See the
-      /// &lt;a href="https://cloud.google.com/pubsub/docs/admin#resource_names">
-      /// resource name rules&lt;/a>.
+      /// Creates the given topic with the given name. See the [resource name rules](
+      /// https://cloud.google.com/pubsub/docs/admin#resource_names).
       /// </summary>
       /// <param name="request">The request received from the client.</param>
       /// <param name="context">The context of the server-side call handler being invoked.</param>
@@ -172,7 +179,7 @@ namespace Google.Cloud.PubSub.V1 {
       }
 
       /// <summary>
-      /// Lists the names of the subscriptions on this topic.
+      /// Lists the names of the attached subscriptions on this topic.
       /// </summary>
       /// <param name="request">The request received from the client.</param>
       /// <param name="context">The context of the server-side call handler being invoked.</param>
@@ -184,11 +191,10 @@ namespace Google.Cloud.PubSub.V1 {
 
       /// <summary>
       /// Lists the names of the snapshots on this topic. Snapshots are used in
-      /// &lt;a href="https://cloud.google.com/pubsub/docs/replay-overview">Seek&lt;/a>
-      /// operations, which allow
-      /// you to manage message acknowledgments in bulk. That is, you can set the
-      /// acknowledgment state of messages in an existing subscription to the state
-      /// captured by a snapshot.
+      /// [Seek](https://cloud.google.com/pubsub/docs/replay-overview) operations,
+      /// which allow you to manage message acknowledgments in bulk. That is, you can
+      /// set the acknowledgment state of messages in an existing subscription to the
+      /// state captured by a snapshot.
       /// </summary>
       /// <param name="request">The request received from the client.</param>
       /// <param name="context">The context of the server-side call handler being invoked.</param>
@@ -213,6 +219,20 @@ namespace Google.Cloud.PubSub.V1 {
         throw new grpc::RpcException(new grpc::Status(grpc::StatusCode.Unimplemented, ""));
       }
 
+      /// <summary>
+      /// Detaches a subscription from this topic. All messages retained in the
+      /// subscription are dropped. Subsequent `Pull` and `StreamingPull` requests
+      /// will return FAILED_PRECONDITION. If the subscription is a push
+      /// subscription, pushes to the endpoint will stop.
+      /// </summary>
+      /// <param name="request">The request received from the client.</param>
+      /// <param name="context">The context of the server-side call handler being invoked.</param>
+      /// <returns>The response to send back to the client (wrapped by a task).</returns>
+      public virtual global::System.Threading.Tasks.Task<global::Google.Cloud.PubSub.V1.DetachSubscriptionResponse> DetachSubscription(global::Google.Cloud.PubSub.V1.DetachSubscriptionRequest request, grpc::ServerCallContext context)
+      {
+        throw new grpc::RpcException(new grpc::Status(grpc::StatusCode.Unimplemented, ""));
+      }
+
     }
 
     /// <summary>Client for Publisher</summary>
@@ -220,7 +240,7 @@ namespace Google.Cloud.PubSub.V1 {
     {
       /// <summary>Creates a new client for Publisher</summary>
       /// <param name="channel">The channel to use to make remote calls.</param>
-      public PublisherClient(grpc::Channel channel) : base(channel)
+      public PublisherClient(grpc::ChannelBase channel) : base(channel)
       {
       }
       /// <summary>Creates a new client for Publisher that uses a custom <c>CallInvoker</c>.</summary>
@@ -239,9 +259,8 @@ namespace Google.Cloud.PubSub.V1 {
       }
 
       /// <summary>
-      /// Creates the given topic with the given name. See the
-      /// &lt;a href="https://cloud.google.com/pubsub/docs/admin#resource_names">
-      /// resource name rules&lt;/a>.
+      /// Creates the given topic with the given name. See the [resource name rules](
+      /// https://cloud.google.com/pubsub/docs/admin#resource_names).
       /// </summary>
       /// <param name="request">The request to send to the server.</param>
       /// <param name="headers">The initial metadata to send with the call. This parameter is optional.</param>
@@ -253,9 +272,8 @@ namespace Google.Cloud.PubSub.V1 {
         return CreateTopic(request, new grpc::CallOptions(headers, deadline, cancellationToken));
       }
       /// <summary>
-      /// Creates the given topic with the given name. See the
-      /// &lt;a href="https://cloud.google.com/pubsub/docs/admin#resource_names">
-      /// resource name rules&lt;/a>.
+      /// Creates the given topic with the given name. See the [resource name rules](
+      /// https://cloud.google.com/pubsub/docs/admin#resource_names).
       /// </summary>
       /// <param name="request">The request to send to the server.</param>
       /// <param name="options">The options for the call.</param>
@@ -265,9 +283,8 @@ namespace Google.Cloud.PubSub.V1 {
         return CallInvoker.BlockingUnaryCall(__Method_CreateTopic, null, options, request);
       }
       /// <summary>
-      /// Creates the given topic with the given name. See the
-      /// &lt;a href="https://cloud.google.com/pubsub/docs/admin#resource_names">
-      /// resource name rules&lt;/a>.
+      /// Creates the given topic with the given name. See the [resource name rules](
+      /// https://cloud.google.com/pubsub/docs/admin#resource_names).
       /// </summary>
       /// <param name="request">The request to send to the server.</param>
       /// <param name="headers">The initial metadata to send with the call. This parameter is optional.</param>
@@ -279,9 +296,8 @@ namespace Google.Cloud.PubSub.V1 {
         return CreateTopicAsync(request, new grpc::CallOptions(headers, deadline, cancellationToken));
       }
       /// <summary>
-      /// Creates the given topic with the given name. See the
-      /// &lt;a href="https://cloud.google.com/pubsub/docs/admin#resource_names">
-      /// resource name rules&lt;/a>.
+      /// Creates the given topic with the given name. See the [resource name rules](
+      /// https://cloud.google.com/pubsub/docs/admin#resource_names).
       /// </summary>
       /// <param name="request">The request to send to the server.</param>
       /// <param name="options">The options for the call.</param>
@@ -475,7 +491,7 @@ namespace Google.Cloud.PubSub.V1 {
         return CallInvoker.AsyncUnaryCall(__Method_ListTopics, null, options, request);
       }
       /// <summary>
-      /// Lists the names of the subscriptions on this topic.
+      /// Lists the names of the attached subscriptions on this topic.
       /// </summary>
       /// <param name="request">The request to send to the server.</param>
       /// <param name="headers">The initial metadata to send with the call. This parameter is optional.</param>
@@ -487,7 +503,7 @@ namespace Google.Cloud.PubSub.V1 {
         return ListTopicSubscriptions(request, new grpc::CallOptions(headers, deadline, cancellationToken));
       }
       /// <summary>
-      /// Lists the names of the subscriptions on this topic.
+      /// Lists the names of the attached subscriptions on this topic.
       /// </summary>
       /// <param name="request">The request to send to the server.</param>
       /// <param name="options">The options for the call.</param>
@@ -497,7 +513,7 @@ namespace Google.Cloud.PubSub.V1 {
         return CallInvoker.BlockingUnaryCall(__Method_ListTopicSubscriptions, null, options, request);
       }
       /// <summary>
-      /// Lists the names of the subscriptions on this topic.
+      /// Lists the names of the attached subscriptions on this topic.
       /// </summary>
       /// <param name="request">The request to send to the server.</param>
       /// <param name="headers">The initial metadata to send with the call. This parameter is optional.</param>
@@ -509,7 +525,7 @@ namespace Google.Cloud.PubSub.V1 {
         return ListTopicSubscriptionsAsync(request, new grpc::CallOptions(headers, deadline, cancellationToken));
       }
       /// <summary>
-      /// Lists the names of the subscriptions on this topic.
+      /// Lists the names of the attached subscriptions on this topic.
       /// </summary>
       /// <param name="request">The request to send to the server.</param>
       /// <param name="options">The options for the call.</param>
@@ -520,11 +536,10 @@ namespace Google.Cloud.PubSub.V1 {
       }
       /// <summary>
       /// Lists the names of the snapshots on this topic. Snapshots are used in
-      /// &lt;a href="https://cloud.google.com/pubsub/docs/replay-overview">Seek&lt;/a>
-      /// operations, which allow
-      /// you to manage message acknowledgments in bulk. That is, you can set the
-      /// acknowledgment state of messages in an existing subscription to the state
-      /// captured by a snapshot.
+      /// [Seek](https://cloud.google.com/pubsub/docs/replay-overview) operations,
+      /// which allow you to manage message acknowledgments in bulk. That is, you can
+      /// set the acknowledgment state of messages in an existing subscription to the
+      /// state captured by a snapshot.
       /// </summary>
       /// <param name="request">The request to send to the server.</param>
       /// <param name="headers">The initial metadata to send with the call. This parameter is optional.</param>
@@ -537,11 +552,10 @@ namespace Google.Cloud.PubSub.V1 {
       }
       /// <summary>
       /// Lists the names of the snapshots on this topic. Snapshots are used in
-      /// &lt;a href="https://cloud.google.com/pubsub/docs/replay-overview">Seek&lt;/a>
-      /// operations, which allow
-      /// you to manage message acknowledgments in bulk. That is, you can set the
-      /// acknowledgment state of messages in an existing subscription to the state
-      /// captured by a snapshot.
+      /// [Seek](https://cloud.google.com/pubsub/docs/replay-overview) operations,
+      /// which allow you to manage message acknowledgments in bulk. That is, you can
+      /// set the acknowledgment state of messages in an existing subscription to the
+      /// state captured by a snapshot.
       /// </summary>
       /// <param name="request">The request to send to the server.</param>
       /// <param name="options">The options for the call.</param>
@@ -552,11 +566,10 @@ namespace Google.Cloud.PubSub.V1 {
       }
       /// <summary>
       /// Lists the names of the snapshots on this topic. Snapshots are used in
-      /// &lt;a href="https://cloud.google.com/pubsub/docs/replay-overview">Seek&lt;/a>
-      /// operations, which allow
-      /// you to manage message acknowledgments in bulk. That is, you can set the
-      /// acknowledgment state of messages in an existing subscription to the state
-      /// captured by a snapshot.
+      /// [Seek](https://cloud.google.com/pubsub/docs/replay-overview) operations,
+      /// which allow you to manage message acknowledgments in bulk. That is, you can
+      /// set the acknowledgment state of messages in an existing subscription to the
+      /// state captured by a snapshot.
       /// </summary>
       /// <param name="request">The request to send to the server.</param>
       /// <param name="headers">The initial metadata to send with the call. This parameter is optional.</param>
@@ -569,11 +582,10 @@ namespace Google.Cloud.PubSub.V1 {
       }
       /// <summary>
       /// Lists the names of the snapshots on this topic. Snapshots are used in
-      /// &lt;a href="https://cloud.google.com/pubsub/docs/replay-overview">Seek&lt;/a>
-      /// operations, which allow
-      /// you to manage message acknowledgments in bulk. That is, you can set the
-      /// acknowledgment state of messages in an existing subscription to the state
-      /// captured by a snapshot.
+      /// [Seek](https://cloud.google.com/pubsub/docs/replay-overview) operations,
+      /// which allow you to manage message acknowledgments in bulk. That is, you can
+      /// set the acknowledgment state of messages in an existing subscription to the
+      /// state captured by a snapshot.
       /// </summary>
       /// <param name="request">The request to send to the server.</param>
       /// <param name="options">The options for the call.</param>
@@ -642,6 +654,62 @@ namespace Google.Cloud.PubSub.V1 {
       {
         return CallInvoker.AsyncUnaryCall(__Method_DeleteTopic, null, options, request);
       }
+      /// <summary>
+      /// Detaches a subscription from this topic. All messages retained in the
+      /// subscription are dropped. Subsequent `Pull` and `StreamingPull` requests
+      /// will return FAILED_PRECONDITION. If the subscription is a push
+      /// subscription, pushes to the endpoint will stop.
+      /// </summary>
+      /// <param name="request">The request to send to the server.</param>
+      /// <param name="headers">The initial metadata to send with the call. This parameter is optional.</param>
+      /// <param name="deadline">An optional deadline for the call. The call will be cancelled if deadline is hit.</param>
+      /// <param name="cancellationToken">An optional token for canceling the call.</param>
+      /// <returns>The response received from the server.</returns>
+      public virtual global::Google.Cloud.PubSub.V1.DetachSubscriptionResponse DetachSubscription(global::Google.Cloud.PubSub.V1.DetachSubscriptionRequest request, grpc::Metadata headers = null, global::System.DateTime? deadline = null, global::System.Threading.CancellationToken cancellationToken = default(global::System.Threading.CancellationToken))
+      {
+        return DetachSubscription(request, new grpc::CallOptions(headers, deadline, cancellationToken));
+      }
+      /// <summary>
+      /// Detaches a subscription from this topic. All messages retained in the
+      /// subscription are dropped. Subsequent `Pull` and `StreamingPull` requests
+      /// will return FAILED_PRECONDITION. If the subscription is a push
+      /// subscription, pushes to the endpoint will stop.
+      /// </summary>
+      /// <param name="request">The request to send to the server.</param>
+      /// <param name="options">The options for the call.</param>
+      /// <returns>The response received from the server.</returns>
+      public virtual global::Google.Cloud.PubSub.V1.DetachSubscriptionResponse DetachSubscription(global::Google.Cloud.PubSub.V1.DetachSubscriptionRequest request, grpc::CallOptions options)
+      {
+        return CallInvoker.BlockingUnaryCall(__Method_DetachSubscription, null, options, request);
+      }
+      /// <summary>
+      /// Detaches a subscription from this topic. All messages retained in the
+      /// subscription are dropped. Subsequent `Pull` and `StreamingPull` requests
+      /// will return FAILED_PRECONDITION. If the subscription is a push
+      /// subscription, pushes to the endpoint will stop.
+      /// </summary>
+      /// <param name="request">The request to send to the server.</param>
+      /// <param name="headers">The initial metadata to send with the call. This parameter is optional.</param>
+      /// <param name="deadline">An optional deadline for the call. The call will be cancelled if deadline is hit.</param>
+      /// <param name="cancellationToken">An optional token for canceling the call.</param>
+      /// <returns>The call object.</returns>
+      public virtual grpc::AsyncUnaryCall<global::Google.Cloud.PubSub.V1.DetachSubscriptionResponse> DetachSubscriptionAsync(global::Google.Cloud.PubSub.V1.DetachSubscriptionRequest request, grpc::Metadata headers = null, global::System.DateTime? deadline = null, global::System.Threading.CancellationToken cancellationToken = default(global::System.Threading.CancellationToken))
+      {
+        return DetachSubscriptionAsync(request, new grpc::CallOptions(headers, deadline, cancellationToken));
+      }
+      /// <summary>
+      /// Detaches a subscription from this topic. All messages retained in the
+      /// subscription are dropped. Subsequent `Pull` and `StreamingPull` requests
+      /// will return FAILED_PRECONDITION. If the subscription is a push
+      /// subscription, pushes to the endpoint will stop.
+      /// </summary>
+      /// <param name="request">The request to send to the server.</param>
+      /// <param name="options">The options for the call.</param>
+      /// <returns>The call object.</returns>
+      public virtual grpc::AsyncUnaryCall<global::Google.Cloud.PubSub.V1.DetachSubscriptionResponse> DetachSubscriptionAsync(global::Google.Cloud.PubSub.V1.DetachSubscriptionRequest request, grpc::CallOptions options)
+      {
+        return CallInvoker.AsyncUnaryCall(__Method_DetachSubscription, null, options, request);
+      }
       /// <summary>Creates a new instance of client from given <c>ClientBaseConfiguration</c>.</summary>
       protected override PublisherClient NewInstance(ClientBaseConfiguration configuration)
       {
@@ -661,7 +729,8 @@ namespace Google.Cloud.PubSub.V1 {
           .AddMethod(__Method_ListTopics, serviceImpl.ListTopics)
           .AddMethod(__Method_ListTopicSubscriptions, serviceImpl.ListTopicSubscriptions)
           .AddMethod(__Method_ListTopicSnapshots, serviceImpl.ListTopicSnapshots)
-          .AddMethod(__Method_DeleteTopic, serviceImpl.DeleteTopic).Build();
+          .AddMethod(__Method_DeleteTopic, serviceImpl.DeleteTopic)
+          .AddMethod(__Method_DetachSubscription, serviceImpl.DetachSubscription).Build();
     }
 
     /// <summary>Register service method with a service binder with or without implementation. Useful when customizing the  service binding logic.
@@ -678,6 +747,7 @@ namespace Google.Cloud.PubSub.V1 {
       serviceBinder.AddMethod(__Method_ListTopicSubscriptions, serviceImpl == null ? null : new grpc::UnaryServerMethod<global::Google.Cloud.PubSub.V1.ListTopicSubscriptionsRequest, global::Google.Cloud.PubSub.V1.ListTopicSubscriptionsResponse>(serviceImpl.ListTopicSubscriptions));
       serviceBinder.AddMethod(__Method_ListTopicSnapshots, serviceImpl == null ? null : new grpc::UnaryServerMethod<global::Google.Cloud.PubSub.V1.ListTopicSnapshotsRequest, global::Google.Cloud.PubSub.V1.ListTopicSnapshotsResponse>(serviceImpl.ListTopicSnapshots));
       serviceBinder.AddMethod(__Method_DeleteTopic, serviceImpl == null ? null : new grpc::UnaryServerMethod<global::Google.Cloud.PubSub.V1.DeleteTopicRequest, global::Google.Protobuf.WellKnownTypes.Empty>(serviceImpl.DeleteTopic));
+      serviceBinder.AddMethod(__Method_DetachSubscription, serviceImpl == null ? null : new grpc::UnaryServerMethod<global::Google.Cloud.PubSub.V1.DetachSubscriptionRequest, global::Google.Cloud.PubSub.V1.DetachSubscriptionResponse>(serviceImpl.DetachSubscription));
     }
 
   }
@@ -837,19 +907,17 @@ namespace Google.Cloud.PubSub.V1 {
     public abstract partial class SubscriberBase
     {
       /// <summary>
-      /// Creates a subscription to a given topic. See the
-      /// &lt;a href="https://cloud.google.com/pubsub/docs/admin#resource_names">
-      /// resource name rules&lt;/a>.
+      /// Creates a subscription to a given topic. See the [resource name rules]
+      /// (https://cloud.google.com/pubsub/docs/admin#resource_names).
       /// If the subscription already exists, returns `ALREADY_EXISTS`.
       /// If the corresponding topic doesn't exist, returns `NOT_FOUND`.
       ///
       /// If the name is not provided in the request, the server will assign a random
       /// name for this subscription on the same project as the topic, conforming
-      /// to the
-      /// [resource name
-      /// format](https://cloud.google.com/pubsub/docs/admin#resource_names). The
-      /// generated name is populated in the returned Subscription object. Note that
-      /// for REST API requests, you must specify a name in the request.
+      /// to the [resource name format]
+      /// (https://cloud.google.com/pubsub/docs/admin#resource_names). The generated
+      /// name is populated in the returned Subscription object. Note that for REST
+      /// API requests, you must specify a name in the request.
       /// </summary>
       /// <param name="request">The request received from the client.</param>
       /// <param name="context">The context of the server-side call handler being invoked.</param>
@@ -1003,12 +1071,11 @@ namespace Google.Cloud.PubSub.V1 {
       }
 
       /// <summary>
-      /// Lists the existing snapshots. Snapshots are used in
-      /// &lt;a href="https://cloud.google.com/pubsub/docs/replay-overview">Seek&lt;/a>
-      /// operations, which allow
-      /// you to manage message acknowledgments in bulk. That is, you can set the
-      /// acknowledgment state of messages in an existing subscription to the state
-      /// captured by a snapshot.
+      /// Lists the existing snapshots. Snapshots are used in [Seek](
+      /// https://cloud.google.com/pubsub/docs/replay-overview) operations, which
+      /// allow you to manage message acknowledgments in bulk. That is, you can set
+      /// the acknowledgment state of messages in an existing subscription to the
+      /// state captured by a snapshot.
       /// </summary>
       /// <param name="request">The request received from the client.</param>
       /// <param name="context">The context of the server-side call handler being invoked.</param>
@@ -1020,21 +1087,19 @@ namespace Google.Cloud.PubSub.V1 {
 
       /// <summary>
       /// Creates a snapshot from the requested subscription. Snapshots are used in
-      /// &lt;a href="https://cloud.google.com/pubsub/docs/replay-overview">Seek&lt;/a>
-      /// operations, which allow
-      /// you to manage message acknowledgments in bulk. That is, you can set the
-      /// acknowledgment state of messages in an existing subscription to the state
-      /// captured by a snapshot.
-      /// &lt;br>&lt;br>If the snapshot already exists, returns `ALREADY_EXISTS`.
+      /// [Seek](https://cloud.google.com/pubsub/docs/replay-overview) operations,
+      /// which allow you to manage message acknowledgments in bulk. That is, you can
+      /// set the acknowledgment state of messages in an existing subscription to the
+      /// state captured by a snapshot.
+      /// If the snapshot already exists, returns `ALREADY_EXISTS`.
       /// If the requested subscription doesn't exist, returns `NOT_FOUND`.
       /// If the backlog in the subscription is too old -- and the resulting snapshot
       /// would expire in less than 1 hour -- then `FAILED_PRECONDITION` is returned.
       /// See also the `Snapshot.expire_time` field. If the name is not provided in
       /// the request, the server will assign a random
       /// name for this snapshot on the same project as the subscription, conforming
-      /// to the
-      /// [resource name
-      /// format](https://cloud.google.com/pubsub/docs/admin#resource_names). The
+      /// to the [resource name format]
+      /// (https://cloud.google.com/pubsub/docs/admin#resource_names). The
       /// generated name is populated in the returned Snapshot object. Note that for
       /// REST API requests, you must specify a name in the request.
       /// </summary>
@@ -1063,12 +1128,11 @@ namespace Google.Cloud.PubSub.V1 {
       }
 
       /// <summary>
-      /// Removes an existing snapshot. Snapshots are used in
-      /// &lt;a href="https://cloud.google.com/pubsub/docs/replay-overview">Seek&lt;/a>
-      /// operations, which allow
-      /// you to manage message acknowledgments in bulk. That is, you can set the
-      /// acknowledgment state of messages in an existing subscription to the state
-      /// captured by a snapshot.&lt;br>&lt;br>
+      /// Removes an existing snapshot. Snapshots are used in [Seek]
+      /// (https://cloud.google.com/pubsub/docs/replay-overview) operations, which
+      /// allow you to manage message acknowledgments in bulk. That is, you can set
+      /// the acknowledgment state of messages in an existing subscription to the
+      /// state captured by a snapshot.
       /// When the snapshot is deleted, all messages retained in the snapshot
       /// are immediately dropped. After a snapshot is deleted, a new one may be
       /// created with the same name, but the new one has no association with the old
@@ -1084,13 +1148,12 @@ namespace Google.Cloud.PubSub.V1 {
 
       /// <summary>
       /// Seeks an existing subscription to a point in time or to a given snapshot,
-      /// whichever is provided in the request. Snapshots are used in
-      /// &lt;a href="https://cloud.google.com/pubsub/docs/replay-overview">Seek&lt;/a>
-      /// operations, which allow
-      /// you to manage message acknowledgments in bulk. That is, you can set the
-      /// acknowledgment state of messages in an existing subscription to the state
-      /// captured by a snapshot. Note that both the subscription and the snapshot
-      /// must be on the same topic.
+      /// whichever is provided in the request. Snapshots are used in [Seek](
+      /// https://cloud.google.com/pubsub/docs/replay-overview) operations, which
+      /// allow you to manage message acknowledgments in bulk. That is, you can set
+      /// the acknowledgment state of messages in an existing subscription to the
+      /// state captured by a snapshot. Note that both the subscription and the
+      /// snapshot must be on the same topic.
       /// </summary>
       /// <param name="request">The request received from the client.</param>
       /// <param name="context">The context of the server-side call handler being invoked.</param>
@@ -1107,7 +1170,7 @@ namespace Google.Cloud.PubSub.V1 {
     {
       /// <summary>Creates a new client for Subscriber</summary>
       /// <param name="channel">The channel to use to make remote calls.</param>
-      public SubscriberClient(grpc::Channel channel) : base(channel)
+      public SubscriberClient(grpc::ChannelBase channel) : base(channel)
       {
       }
       /// <summary>Creates a new client for Subscriber that uses a custom <c>CallInvoker</c>.</summary>
@@ -1126,19 +1189,17 @@ namespace Google.Cloud.PubSub.V1 {
       }
 
       /// <summary>
-      /// Creates a subscription to a given topic. See the
-      /// &lt;a href="https://cloud.google.com/pubsub/docs/admin#resource_names">
-      /// resource name rules&lt;/a>.
+      /// Creates a subscription to a given topic. See the [resource name rules]
+      /// (https://cloud.google.com/pubsub/docs/admin#resource_names).
       /// If the subscription already exists, returns `ALREADY_EXISTS`.
       /// If the corresponding topic doesn't exist, returns `NOT_FOUND`.
       ///
       /// If the name is not provided in the request, the server will assign a random
       /// name for this subscription on the same project as the topic, conforming
-      /// to the
-      /// [resource name
-      /// format](https://cloud.google.com/pubsub/docs/admin#resource_names). The
-      /// generated name is populated in the returned Subscription object. Note that
-      /// for REST API requests, you must specify a name in the request.
+      /// to the [resource name format]
+      /// (https://cloud.google.com/pubsub/docs/admin#resource_names). The generated
+      /// name is populated in the returned Subscription object. Note that for REST
+      /// API requests, you must specify a name in the request.
       /// </summary>
       /// <param name="request">The request to send to the server.</param>
       /// <param name="headers">The initial metadata to send with the call. This parameter is optional.</param>
@@ -1150,19 +1211,17 @@ namespace Google.Cloud.PubSub.V1 {
         return CreateSubscription(request, new grpc::CallOptions(headers, deadline, cancellationToken));
       }
       /// <summary>
-      /// Creates a subscription to a given topic. See the
-      /// &lt;a href="https://cloud.google.com/pubsub/docs/admin#resource_names">
-      /// resource name rules&lt;/a>.
+      /// Creates a subscription to a given topic. See the [resource name rules]
+      /// (https://cloud.google.com/pubsub/docs/admin#resource_names).
       /// If the subscription already exists, returns `ALREADY_EXISTS`.
       /// If the corresponding topic doesn't exist, returns `NOT_FOUND`.
       ///
       /// If the name is not provided in the request, the server will assign a random
       /// name for this subscription on the same project as the topic, conforming
-      /// to the
-      /// [resource name
-      /// format](https://cloud.google.com/pubsub/docs/admin#resource_names). The
-      /// generated name is populated in the returned Subscription object. Note that
-      /// for REST API requests, you must specify a name in the request.
+      /// to the [resource name format]
+      /// (https://cloud.google.com/pubsub/docs/admin#resource_names). The generated
+      /// name is populated in the returned Subscription object. Note that for REST
+      /// API requests, you must specify a name in the request.
       /// </summary>
       /// <param name="request">The request to send to the server.</param>
       /// <param name="options">The options for the call.</param>
@@ -1172,19 +1231,17 @@ namespace Google.Cloud.PubSub.V1 {
         return CallInvoker.BlockingUnaryCall(__Method_CreateSubscription, null, options, request);
       }
       /// <summary>
-      /// Creates a subscription to a given topic. See the
-      /// &lt;a href="https://cloud.google.com/pubsub/docs/admin#resource_names">
-      /// resource name rules&lt;/a>.
+      /// Creates a subscription to a given topic. See the [resource name rules]
+      /// (https://cloud.google.com/pubsub/docs/admin#resource_names).
       /// If the subscription already exists, returns `ALREADY_EXISTS`.
       /// If the corresponding topic doesn't exist, returns `NOT_FOUND`.
       ///
       /// If the name is not provided in the request, the server will assign a random
       /// name for this subscription on the same project as the topic, conforming
-      /// to the
-      /// [resource name
-      /// format](https://cloud.google.com/pubsub/docs/admin#resource_names). The
-      /// generated name is populated in the returned Subscription object. Note that
-      /// for REST API requests, you must specify a name in the request.
+      /// to the [resource name format]
+      /// (https://cloud.google.com/pubsub/docs/admin#resource_names). The generated
+      /// name is populated in the returned Subscription object. Note that for REST
+      /// API requests, you must specify a name in the request.
       /// </summary>
       /// <param name="request">The request to send to the server.</param>
       /// <param name="headers">The initial metadata to send with the call. This parameter is optional.</param>
@@ -1196,19 +1253,17 @@ namespace Google.Cloud.PubSub.V1 {
         return CreateSubscriptionAsync(request, new grpc::CallOptions(headers, deadline, cancellationToken));
       }
       /// <summary>
-      /// Creates a subscription to a given topic. See the
-      /// &lt;a href="https://cloud.google.com/pubsub/docs/admin#resource_names">
-      /// resource name rules&lt;/a>.
+      /// Creates a subscription to a given topic. See the [resource name rules]
+      /// (https://cloud.google.com/pubsub/docs/admin#resource_names).
       /// If the subscription already exists, returns `ALREADY_EXISTS`.
       /// If the corresponding topic doesn't exist, returns `NOT_FOUND`.
       ///
       /// If the name is not provided in the request, the server will assign a random
       /// name for this subscription on the same project as the topic, conforming
-      /// to the
-      /// [resource name
-      /// format](https://cloud.google.com/pubsub/docs/admin#resource_names). The
-      /// generated name is populated in the returned Subscription object. Note that
-      /// for REST API requests, you must specify a name in the request.
+      /// to the [resource name format]
+      /// (https://cloud.google.com/pubsub/docs/admin#resource_names). The generated
+      /// name is populated in the returned Subscription object. Note that for REST
+      /// API requests, you must specify a name in the request.
       /// </summary>
       /// <param name="request">The request to send to the server.</param>
       /// <param name="options">The options for the call.</param>
@@ -1750,12 +1805,11 @@ namespace Google.Cloud.PubSub.V1 {
         return CallInvoker.AsyncUnaryCall(__Method_GetSnapshot, null, options, request);
       }
       /// <summary>
-      /// Lists the existing snapshots. Snapshots are used in
-      /// &lt;a href="https://cloud.google.com/pubsub/docs/replay-overview">Seek&lt;/a>
-      /// operations, which allow
-      /// you to manage message acknowledgments in bulk. That is, you can set the
-      /// acknowledgment state of messages in an existing subscription to the state
-      /// captured by a snapshot.
+      /// Lists the existing snapshots. Snapshots are used in [Seek](
+      /// https://cloud.google.com/pubsub/docs/replay-overview) operations, which
+      /// allow you to manage message acknowledgments in bulk. That is, you can set
+      /// the acknowledgment state of messages in an existing subscription to the
+      /// state captured by a snapshot.
       /// </summary>
       /// <param name="request">The request to send to the server.</param>
       /// <param name="headers">The initial metadata to send with the call. This parameter is optional.</param>
@@ -1767,12 +1821,11 @@ namespace Google.Cloud.PubSub.V1 {
         return ListSnapshots(request, new grpc::CallOptions(headers, deadline, cancellationToken));
       }
       /// <summary>
-      /// Lists the existing snapshots. Snapshots are used in
-      /// &lt;a href="https://cloud.google.com/pubsub/docs/replay-overview">Seek&lt;/a>
-      /// operations, which allow
-      /// you to manage message acknowledgments in bulk. That is, you can set the
-      /// acknowledgment state of messages in an existing subscription to the state
-      /// captured by a snapshot.
+      /// Lists the existing snapshots. Snapshots are used in [Seek](
+      /// https://cloud.google.com/pubsub/docs/replay-overview) operations, which
+      /// allow you to manage message acknowledgments in bulk. That is, you can set
+      /// the acknowledgment state of messages in an existing subscription to the
+      /// state captured by a snapshot.
       /// </summary>
       /// <param name="request">The request to send to the server.</param>
       /// <param name="options">The options for the call.</param>
@@ -1782,12 +1835,11 @@ namespace Google.Cloud.PubSub.V1 {
         return CallInvoker.BlockingUnaryCall(__Method_ListSnapshots, null, options, request);
       }
       /// <summary>
-      /// Lists the existing snapshots. Snapshots are used in
-      /// &lt;a href="https://cloud.google.com/pubsub/docs/replay-overview">Seek&lt;/a>
-      /// operations, which allow
-      /// you to manage message acknowledgments in bulk. That is, you can set the
-      /// acknowledgment state of messages in an existing subscription to the state
-      /// captured by a snapshot.
+      /// Lists the existing snapshots. Snapshots are used in [Seek](
+      /// https://cloud.google.com/pubsub/docs/replay-overview) operations, which
+      /// allow you to manage message acknowledgments in bulk. That is, you can set
+      /// the acknowledgment state of messages in an existing subscription to the
+      /// state captured by a snapshot.
       /// </summary>
       /// <param name="request">The request to send to the server.</param>
       /// <param name="headers">The initial metadata to send with the call. This parameter is optional.</param>
@@ -1799,12 +1851,11 @@ namespace Google.Cloud.PubSub.V1 {
         return ListSnapshotsAsync(request, new grpc::CallOptions(headers, deadline, cancellationToken));
       }
       /// <summary>
-      /// Lists the existing snapshots. Snapshots are used in
-      /// &lt;a href="https://cloud.google.com/pubsub/docs/replay-overview">Seek&lt;/a>
-      /// operations, which allow
-      /// you to manage message acknowledgments in bulk. That is, you can set the
-      /// acknowledgment state of messages in an existing subscription to the state
-      /// captured by a snapshot.
+      /// Lists the existing snapshots. Snapshots are used in [Seek](
+      /// https://cloud.google.com/pubsub/docs/replay-overview) operations, which
+      /// allow you to manage message acknowledgments in bulk. That is, you can set
+      /// the acknowledgment state of messages in an existing subscription to the
+      /// state captured by a snapshot.
       /// </summary>
       /// <param name="request">The request to send to the server.</param>
       /// <param name="options">The options for the call.</param>
@@ -1815,21 +1866,19 @@ namespace Google.Cloud.PubSub.V1 {
       }
       /// <summary>
       /// Creates a snapshot from the requested subscription. Snapshots are used in
-      /// &lt;a href="https://cloud.google.com/pubsub/docs/replay-overview">Seek&lt;/a>
-      /// operations, which allow
-      /// you to manage message acknowledgments in bulk. That is, you can set the
-      /// acknowledgment state of messages in an existing subscription to the state
-      /// captured by a snapshot.
-      /// &lt;br>&lt;br>If the snapshot already exists, returns `ALREADY_EXISTS`.
+      /// [Seek](https://cloud.google.com/pubsub/docs/replay-overview) operations,
+      /// which allow you to manage message acknowledgments in bulk. That is, you can
+      /// set the acknowledgment state of messages in an existing subscription to the
+      /// state captured by a snapshot.
+      /// If the snapshot already exists, returns `ALREADY_EXISTS`.
       /// If the requested subscription doesn't exist, returns `NOT_FOUND`.
       /// If the backlog in the subscription is too old -- and the resulting snapshot
       /// would expire in less than 1 hour -- then `FAILED_PRECONDITION` is returned.
       /// See also the `Snapshot.expire_time` field. If the name is not provided in
       /// the request, the server will assign a random
       /// name for this snapshot on the same project as the subscription, conforming
-      /// to the
-      /// [resource name
-      /// format](https://cloud.google.com/pubsub/docs/admin#resource_names). The
+      /// to the [resource name format]
+      /// (https://cloud.google.com/pubsub/docs/admin#resource_names). The
       /// generated name is populated in the returned Snapshot object. Note that for
       /// REST API requests, you must specify a name in the request.
       /// </summary>
@@ -1844,21 +1893,19 @@ namespace Google.Cloud.PubSub.V1 {
       }
       /// <summary>
       /// Creates a snapshot from the requested subscription. Snapshots are used in
-      /// &lt;a href="https://cloud.google.com/pubsub/docs/replay-overview">Seek&lt;/a>
-      /// operations, which allow
-      /// you to manage message acknowledgments in bulk. That is, you can set the
-      /// acknowledgment state of messages in an existing subscription to the state
-      /// captured by a snapshot.
-      /// &lt;br>&lt;br>If the snapshot already exists, returns `ALREADY_EXISTS`.
+      /// [Seek](https://cloud.google.com/pubsub/docs/replay-overview) operations,
+      /// which allow you to manage message acknowledgments in bulk. That is, you can
+      /// set the acknowledgment state of messages in an existing subscription to the
+      /// state captured by a snapshot.
+      /// If the snapshot already exists, returns `ALREADY_EXISTS`.
       /// If the requested subscription doesn't exist, returns `NOT_FOUND`.
       /// If the backlog in the subscription is too old -- and the resulting snapshot
       /// would expire in less than 1 hour -- then `FAILED_PRECONDITION` is returned.
       /// See also the `Snapshot.expire_time` field. If the name is not provided in
       /// the request, the server will assign a random
       /// name for this snapshot on the same project as the subscription, conforming
-      /// to the
-      /// [resource name
-      /// format](https://cloud.google.com/pubsub/docs/admin#resource_names). The
+      /// to the [resource name format]
+      /// (https://cloud.google.com/pubsub/docs/admin#resource_names). The
       /// generated name is populated in the returned Snapshot object. Note that for
       /// REST API requests, you must specify a name in the request.
       /// </summary>
@@ -1871,21 +1918,19 @@ namespace Google.Cloud.PubSub.V1 {
       }
       /// <summary>
       /// Creates a snapshot from the requested subscription. Snapshots are used in
-      /// &lt;a href="https://cloud.google.com/pubsub/docs/replay-overview">Seek&lt;/a>
-      /// operations, which allow
-      /// you to manage message acknowledgments in bulk. That is, you can set the
-      /// acknowledgment state of messages in an existing subscription to the state
-      /// captured by a snapshot.
-      /// &lt;br>&lt;br>If the snapshot already exists, returns `ALREADY_EXISTS`.
+      /// [Seek](https://cloud.google.com/pubsub/docs/replay-overview) operations,
+      /// which allow you to manage message acknowledgments in bulk. That is, you can
+      /// set the acknowledgment state of messages in an existing subscription to the
+      /// state captured by a snapshot.
+      /// If the snapshot already exists, returns `ALREADY_EXISTS`.
       /// If the requested subscription doesn't exist, returns `NOT_FOUND`.
       /// If the backlog in the subscription is too old -- and the resulting snapshot
       /// would expire in less than 1 hour -- then `FAILED_PRECONDITION` is returned.
       /// See also the `Snapshot.expire_time` field. If the name is not provided in
       /// the request, the server will assign a random
       /// name for this snapshot on the same project as the subscription, conforming
-      /// to the
-      /// [resource name
-      /// format](https://cloud.google.com/pubsub/docs/admin#resource_names). The
+      /// to the [resource name format]
+      /// (https://cloud.google.com/pubsub/docs/admin#resource_names). The
       /// generated name is populated in the returned Snapshot object. Note that for
       /// REST API requests, you must specify a name in the request.
       /// </summary>
@@ -1900,21 +1945,19 @@ namespace Google.Cloud.PubSub.V1 {
       }
       /// <summary>
       /// Creates a snapshot from the requested subscription. Snapshots are used in
-      /// &lt;a href="https://cloud.google.com/pubsub/docs/replay-overview">Seek&lt;/a>
-      /// operations, which allow
-      /// you to manage message acknowledgments in bulk. That is, you can set the
-      /// acknowledgment state of messages in an existing subscription to the state
-      /// captured by a snapshot.
-      /// &lt;br>&lt;br>If the snapshot already exists, returns `ALREADY_EXISTS`.
+      /// [Seek](https://cloud.google.com/pubsub/docs/replay-overview) operations,
+      /// which allow you to manage message acknowledgments in bulk. That is, you can
+      /// set the acknowledgment state of messages in an existing subscription to the
+      /// state captured by a snapshot.
+      /// If the snapshot already exists, returns `ALREADY_EXISTS`.
       /// If the requested subscription doesn't exist, returns `NOT_FOUND`.
       /// If the backlog in the subscription is too old -- and the resulting snapshot
       /// would expire in less than 1 hour -- then `FAILED_PRECONDITION` is returned.
       /// See also the `Snapshot.expire_time` field. If the name is not provided in
       /// the request, the server will assign a random
       /// name for this snapshot on the same project as the subscription, conforming
-      /// to the
-      /// [resource name
-      /// format](https://cloud.google.com/pubsub/docs/admin#resource_names). The
+      /// to the [resource name format]
+      /// (https://cloud.google.com/pubsub/docs/admin#resource_names). The
       /// generated name is populated in the returned Snapshot object. Note that for
       /// REST API requests, you must specify a name in the request.
       /// </summary>
@@ -1990,12 +2033,11 @@ namespace Google.Cloud.PubSub.V1 {
         return CallInvoker.AsyncUnaryCall(__Method_UpdateSnapshot, null, options, request);
       }
       /// <summary>
-      /// Removes an existing snapshot. Snapshots are used in
-      /// &lt;a href="https://cloud.google.com/pubsub/docs/replay-overview">Seek&lt;/a>
-      /// operations, which allow
-      /// you to manage message acknowledgments in bulk. That is, you can set the
-      /// acknowledgment state of messages in an existing subscription to the state
-      /// captured by a snapshot.&lt;br>&lt;br>
+      /// Removes an existing snapshot. Snapshots are used in [Seek]
+      /// (https://cloud.google.com/pubsub/docs/replay-overview) operations, which
+      /// allow you to manage message acknowledgments in bulk. That is, you can set
+      /// the acknowledgment state of messages in an existing subscription to the
+      /// state captured by a snapshot.
       /// When the snapshot is deleted, all messages retained in the snapshot
       /// are immediately dropped. After a snapshot is deleted, a new one may be
       /// created with the same name, but the new one has no association with the old
@@ -2011,12 +2053,11 @@ namespace Google.Cloud.PubSub.V1 {
         return DeleteSnapshot(request, new grpc::CallOptions(headers, deadline, cancellationToken));
       }
       /// <summary>
-      /// Removes an existing snapshot. Snapshots are used in
-      /// &lt;a href="https://cloud.google.com/pubsub/docs/replay-overview">Seek&lt;/a>
-      /// operations, which allow
-      /// you to manage message acknowledgments in bulk. That is, you can set the
-      /// acknowledgment state of messages in an existing subscription to the state
-      /// captured by a snapshot.&lt;br>&lt;br>
+      /// Removes an existing snapshot. Snapshots are used in [Seek]
+      /// (https://cloud.google.com/pubsub/docs/replay-overview) operations, which
+      /// allow you to manage message acknowledgments in bulk. That is, you can set
+      /// the acknowledgment state of messages in an existing subscription to the
+      /// state captured by a snapshot.
       /// When the snapshot is deleted, all messages retained in the snapshot
       /// are immediately dropped. After a snapshot is deleted, a new one may be
       /// created with the same name, but the new one has no association with the old
@@ -2030,12 +2071,11 @@ namespace Google.Cloud.PubSub.V1 {
         return CallInvoker.BlockingUnaryCall(__Method_DeleteSnapshot, null, options, request);
       }
       /// <summary>
-      /// Removes an existing snapshot. Snapshots are used in
-      /// &lt;a href="https://cloud.google.com/pubsub/docs/replay-overview">Seek&lt;/a>
-      /// operations, which allow
-      /// you to manage message acknowledgments in bulk. That is, you can set the
-      /// acknowledgment state of messages in an existing subscription to the state
-      /// captured by a snapshot.&lt;br>&lt;br>
+      /// Removes an existing snapshot. Snapshots are used in [Seek]
+      /// (https://cloud.google.com/pubsub/docs/replay-overview) operations, which
+      /// allow you to manage message acknowledgments in bulk. That is, you can set
+      /// the acknowledgment state of messages in an existing subscription to the
+      /// state captured by a snapshot.
       /// When the snapshot is deleted, all messages retained in the snapshot
       /// are immediately dropped. After a snapshot is deleted, a new one may be
       /// created with the same name, but the new one has no association with the old
@@ -2051,12 +2091,11 @@ namespace Google.Cloud.PubSub.V1 {
         return DeleteSnapshotAsync(request, new grpc::CallOptions(headers, deadline, cancellationToken));
       }
       /// <summary>
-      /// Removes an existing snapshot. Snapshots are used in
-      /// &lt;a href="https://cloud.google.com/pubsub/docs/replay-overview">Seek&lt;/a>
-      /// operations, which allow
-      /// you to manage message acknowledgments in bulk. That is, you can set the
-      /// acknowledgment state of messages in an existing subscription to the state
-      /// captured by a snapshot.&lt;br>&lt;br>
+      /// Removes an existing snapshot. Snapshots are used in [Seek]
+      /// (https://cloud.google.com/pubsub/docs/replay-overview) operations, which
+      /// allow you to manage message acknowledgments in bulk. That is, you can set
+      /// the acknowledgment state of messages in an existing subscription to the
+      /// state captured by a snapshot.
       /// When the snapshot is deleted, all messages retained in the snapshot
       /// are immediately dropped. After a snapshot is deleted, a new one may be
       /// created with the same name, but the new one has no association with the old
@@ -2071,13 +2110,12 @@ namespace Google.Cloud.PubSub.V1 {
       }
       /// <summary>
       /// Seeks an existing subscription to a point in time or to a given snapshot,
-      /// whichever is provided in the request. Snapshots are used in
-      /// &lt;a href="https://cloud.google.com/pubsub/docs/replay-overview">Seek&lt;/a>
-      /// operations, which allow
-      /// you to manage message acknowledgments in bulk. That is, you can set the
-      /// acknowledgment state of messages in an existing subscription to the state
-      /// captured by a snapshot. Note that both the subscription and the snapshot
-      /// must be on the same topic.
+      /// whichever is provided in the request. Snapshots are used in [Seek](
+      /// https://cloud.google.com/pubsub/docs/replay-overview) operations, which
+      /// allow you to manage message acknowledgments in bulk. That is, you can set
+      /// the acknowledgment state of messages in an existing subscription to the
+      /// state captured by a snapshot. Note that both the subscription and the
+      /// snapshot must be on the same topic.
       /// </summary>
       /// <param name="request">The request to send to the server.</param>
       /// <param name="headers">The initial metadata to send with the call. This parameter is optional.</param>
@@ -2090,13 +2128,12 @@ namespace Google.Cloud.PubSub.V1 {
       }
       /// <summary>
       /// Seeks an existing subscription to a point in time or to a given snapshot,
-      /// whichever is provided in the request. Snapshots are used in
-      /// &lt;a href="https://cloud.google.com/pubsub/docs/replay-overview">Seek&lt;/a>
-      /// operations, which allow
-      /// you to manage message acknowledgments in bulk. That is, you can set the
-      /// acknowledgment state of messages in an existing subscription to the state
-      /// captured by a snapshot. Note that both the subscription and the snapshot
-      /// must be on the same topic.
+      /// whichever is provided in the request. Snapshots are used in [Seek](
+      /// https://cloud.google.com/pubsub/docs/replay-overview) operations, which
+      /// allow you to manage message acknowledgments in bulk. That is, you can set
+      /// the acknowledgment state of messages in an existing subscription to the
+      /// state captured by a snapshot. Note that both the subscription and the
+      /// snapshot must be on the same topic.
       /// </summary>
       /// <param name="request">The request to send to the server.</param>
       /// <param name="options">The options for the call.</param>
@@ -2107,13 +2144,12 @@ namespace Google.Cloud.PubSub.V1 {
       }
       /// <summary>
       /// Seeks an existing subscription to a point in time or to a given snapshot,
-      /// whichever is provided in the request. Snapshots are used in
-      /// &lt;a href="https://cloud.google.com/pubsub/docs/replay-overview">Seek&lt;/a>
-      /// operations, which allow
-      /// you to manage message acknowledgments in bulk. That is, you can set the
-      /// acknowledgment state of messages in an existing subscription to the state
-      /// captured by a snapshot. Note that both the subscription and the snapshot
-      /// must be on the same topic.
+      /// whichever is provided in the request. Snapshots are used in [Seek](
+      /// https://cloud.google.com/pubsub/docs/replay-overview) operations, which
+      /// allow you to manage message acknowledgments in bulk. That is, you can set
+      /// the acknowledgment state of messages in an existing subscription to the
+      /// state captured by a snapshot. Note that both the subscription and the
+      /// snapshot must be on the same topic.
       /// </summary>
       /// <param name="request">The request to send to the server.</param>
       /// <param name="headers">The initial metadata to send with the call. This parameter is optional.</param>
@@ -2126,13 +2162,12 @@ namespace Google.Cloud.PubSub.V1 {
       }
       /// <summary>
       /// Seeks an existing subscription to a point in time or to a given snapshot,
-      /// whichever is provided in the request. Snapshots are used in
-      /// &lt;a href="https://cloud.google.com/pubsub/docs/replay-overview">Seek&lt;/a>
-      /// operations, which allow
-      /// you to manage message acknowledgments in bulk. That is, you can set the
-      /// acknowledgment state of messages in an existing subscription to the state
-      /// captured by a snapshot. Note that both the subscription and the snapshot
-      /// must be on the same topic.
+      /// whichever is provided in the request. Snapshots are used in [Seek](
+      /// https://cloud.google.com/pubsub/docs/replay-overview) operations, which
+      /// allow you to manage message acknowledgments in bulk. That is, you can set
+      /// the acknowledgment state of messages in an existing subscription to the
+      /// state captured by a snapshot. Note that both the subscription and the
+      /// snapshot must be on the same topic.
       /// </summary>
       /// <param name="request">The request to send to the server.</param>
       /// <param name="options">The options for the call.</param>

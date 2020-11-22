@@ -37,7 +37,7 @@ namespace Google.Cloud.DevTools.ContainerAnalysis.V1.SmokeTests
             GrafeasClient grafeasClient = containerAnalysisClient.GrafeasClient;
 
             // Call API method
-            ProjectName projectName = new ProjectName(projectId);
+            ProjectName projectName = ProjectName.FromProject(projectId);
             PagedEnumerable<ListNotesResponse, Note> notes = grafeasClient.ListNotes(projectName, "");
 
             // Show the result

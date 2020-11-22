@@ -1,4 +1,4 @@
-// Copyright 2019 Google LLC
+// Copyright 2020 Google LLC
 //
 // Licensed under the Apache License, Version 2.0 (the "License");
 // you may not use this file except in compliance with the License.
@@ -16,6 +16,8 @@
 
 using gax = Google.Api.Gax;
 using gaxgrpc = Google.Api.Gax.Grpc;
+using gaxgrpccore = Google.Api.Gax.Grpc.GrpcCore;
+using gagr = Google.Api.Gax.ResourceNames;
 using gciv = Google.Cloud.Iam.V1;
 using proto = Google.Protobuf;
 using wkt = Google.Protobuf.WellKnownTypes;
@@ -25,7 +27,6 @@ using sys = System;
 using sc = System.Collections;
 using scg = System.Collections.Generic;
 using sco = System.Collections.ObjectModel;
-using sysnet = System.Net;
 using st = System.Threading;
 using stt = System.Threading.Tasks;
 
@@ -76,13 +77,11 @@ namespace Google.Cloud.Tasks.V2
         /// <item><description>Initial retry delay: 100 milliseconds.</description></item>
         /// <item><description>Retry delay multiplier: 1.3</description></item>
         /// <item><description>Retry maximum delay: 10000 milliseconds.</description></item>
-        /// <item><description>Initial timeout: 25000 milliseconds.</description></item>
-        /// <item><description>Timeout multiplier: 1</description></item>
-        /// <item><description>Timeout maximum delay: 25000 milliseconds.</description></item>
-        /// <item><description>Total timeout: 25 seconds.</description></item>
+        /// <item><description>Maximum attempts: Unlimited</description></item>
+        /// <item><description>Timeout: 10 seconds.</description></item>
         /// </list>
         /// </remarks>
-        public gaxgrpc::CallSettings ListQueuesSettings { get; set; } = gaxgrpc::CallSettings.FromCallTiming(gaxgrpc::CallTiming.FromRetry(new gaxgrpc::RetrySettings(retryBackoff: new gaxgrpc::BackoffSettings(delay: sys::TimeSpan.FromMilliseconds(100), maxDelay: sys::TimeSpan.FromMilliseconds(10000), delayMultiplier: 1.3), timeoutBackoff: new gaxgrpc::BackoffSettings(delay: sys::TimeSpan.FromMilliseconds(25000), maxDelay: sys::TimeSpan.FromMilliseconds(25000), delayMultiplier: 1), totalExpiration: gax::Expiration.FromTimeout(sys::TimeSpan.FromMilliseconds(25000)), retryFilter: gaxgrpc::RetrySettings.FilterForStatusCodes(grpccore::StatusCode.DeadlineExceeded, grpccore::StatusCode.Unavailable))));
+        public gaxgrpc::CallSettings ListQueuesSettings { get; set; } = gaxgrpc::CallSettingsExtensions.WithRetry(gaxgrpc::CallSettings.FromExpiration(gax::Expiration.FromTimeout(sys::TimeSpan.FromMilliseconds(10000))), gaxgrpc::RetrySettings.FromExponentialBackoff(maxAttempts: 2147483647, initialBackoff: sys::TimeSpan.FromMilliseconds(100), maxBackoff: sys::TimeSpan.FromMilliseconds(10000), backoffMultiplier: 1.3, retryFilter: gaxgrpc::RetrySettings.FilterForStatusCodes(grpccore::StatusCode.DeadlineExceeded, grpccore::StatusCode.Unavailable)));
 
         /// <summary>
         /// <see cref="gaxgrpc::CallSettings"/> for synchronous and asynchronous calls to <c>CloudTasksClient.GetQueue</c>
@@ -93,27 +92,35 @@ namespace Google.Cloud.Tasks.V2
         /// <item><description>Initial retry delay: 100 milliseconds.</description></item>
         /// <item><description>Retry delay multiplier: 1.3</description></item>
         /// <item><description>Retry maximum delay: 10000 milliseconds.</description></item>
-        /// <item><description>Initial timeout: 25000 milliseconds.</description></item>
-        /// <item><description>Timeout multiplier: 1</description></item>
-        /// <item><description>Timeout maximum delay: 25000 milliseconds.</description></item>
-        /// <item><description>Total timeout: 25 seconds.</description></item>
+        /// <item><description>Maximum attempts: Unlimited</description></item>
+        /// <item><description>Timeout: 10 seconds.</description></item>
         /// </list>
         /// </remarks>
-        public gaxgrpc::CallSettings GetQueueSettings { get; set; } = gaxgrpc::CallSettings.FromCallTiming(gaxgrpc::CallTiming.FromRetry(new gaxgrpc::RetrySettings(retryBackoff: new gaxgrpc::BackoffSettings(delay: sys::TimeSpan.FromMilliseconds(100), maxDelay: sys::TimeSpan.FromMilliseconds(10000), delayMultiplier: 1.3), timeoutBackoff: new gaxgrpc::BackoffSettings(delay: sys::TimeSpan.FromMilliseconds(25000), maxDelay: sys::TimeSpan.FromMilliseconds(25000), delayMultiplier: 1), totalExpiration: gax::Expiration.FromTimeout(sys::TimeSpan.FromMilliseconds(25000)), retryFilter: gaxgrpc::RetrySettings.FilterForStatusCodes(grpccore::StatusCode.DeadlineExceeded, grpccore::StatusCode.Unavailable))));
+        public gaxgrpc::CallSettings GetQueueSettings { get; set; } = gaxgrpc::CallSettingsExtensions.WithRetry(gaxgrpc::CallSettings.FromExpiration(gax::Expiration.FromTimeout(sys::TimeSpan.FromMilliseconds(10000))), gaxgrpc::RetrySettings.FromExponentialBackoff(maxAttempts: 2147483647, initialBackoff: sys::TimeSpan.FromMilliseconds(100), maxBackoff: sys::TimeSpan.FromMilliseconds(10000), backoffMultiplier: 1.3, retryFilter: gaxgrpc::RetrySettings.FilterForStatusCodes(grpccore::StatusCode.DeadlineExceeded, grpccore::StatusCode.Unavailable)));
 
         /// <summary>
         /// <see cref="gaxgrpc::CallSettings"/> for synchronous and asynchronous calls to
         /// <c>CloudTasksClient.CreateQueue</c> and <c>CloudTasksClient.CreateQueueAsync</c>.
         /// </summary>
-        /// <remarks>By default, retry will not be attempted.</remarks>
-        public gaxgrpc::CallSettings CreateQueueSettings { get; set; }
+        /// <remarks>
+        /// <list type="bullet">
+        /// <item><description>This call will not be retried.</description></item>
+        /// <item><description>Timeout: 10 seconds.</description></item>
+        /// </list>
+        /// </remarks>
+        public gaxgrpc::CallSettings CreateQueueSettings { get; set; } = gaxgrpc::CallSettings.FromExpiration(gax::Expiration.FromTimeout(sys::TimeSpan.FromMilliseconds(10000)));
 
         /// <summary>
         /// <see cref="gaxgrpc::CallSettings"/> for synchronous and asynchronous calls to
         /// <c>CloudTasksClient.UpdateQueue</c> and <c>CloudTasksClient.UpdateQueueAsync</c>.
         /// </summary>
-        /// <remarks>By default, retry will not be attempted.</remarks>
-        public gaxgrpc::CallSettings UpdateQueueSettings { get; set; }
+        /// <remarks>
+        /// <list type="bullet">
+        /// <item><description>This call will not be retried.</description></item>
+        /// <item><description>Timeout: 10 seconds.</description></item>
+        /// </list>
+        /// </remarks>
+        public gaxgrpc::CallSettings UpdateQueueSettings { get; set; } = gaxgrpc::CallSettings.FromExpiration(gax::Expiration.FromTimeout(sys::TimeSpan.FromMilliseconds(10000)));
 
         /// <summary>
         /// <see cref="gaxgrpc::CallSettings"/> for synchronous and asynchronous calls to
@@ -124,34 +131,47 @@ namespace Google.Cloud.Tasks.V2
         /// <item><description>Initial retry delay: 100 milliseconds.</description></item>
         /// <item><description>Retry delay multiplier: 1.3</description></item>
         /// <item><description>Retry maximum delay: 10000 milliseconds.</description></item>
-        /// <item><description>Initial timeout: 25000 milliseconds.</description></item>
-        /// <item><description>Timeout multiplier: 1</description></item>
-        /// <item><description>Timeout maximum delay: 25000 milliseconds.</description></item>
-        /// <item><description>Total timeout: 25 seconds.</description></item>
+        /// <item><description>Maximum attempts: Unlimited</description></item>
+        /// <item><description>Timeout: 10 seconds.</description></item>
         /// </list>
         /// </remarks>
-        public gaxgrpc::CallSettings DeleteQueueSettings { get; set; } = gaxgrpc::CallSettings.FromCallTiming(gaxgrpc::CallTiming.FromRetry(new gaxgrpc::RetrySettings(retryBackoff: new gaxgrpc::BackoffSettings(delay: sys::TimeSpan.FromMilliseconds(100), maxDelay: sys::TimeSpan.FromMilliseconds(10000), delayMultiplier: 1.3), timeoutBackoff: new gaxgrpc::BackoffSettings(delay: sys::TimeSpan.FromMilliseconds(25000), maxDelay: sys::TimeSpan.FromMilliseconds(25000), delayMultiplier: 1), totalExpiration: gax::Expiration.FromTimeout(sys::TimeSpan.FromMilliseconds(25000)), retryFilter: gaxgrpc::RetrySettings.FilterForStatusCodes(grpccore::StatusCode.DeadlineExceeded, grpccore::StatusCode.Unavailable))));
+        public gaxgrpc::CallSettings DeleteQueueSettings { get; set; } = gaxgrpc::CallSettingsExtensions.WithRetry(gaxgrpc::CallSettings.FromExpiration(gax::Expiration.FromTimeout(sys::TimeSpan.FromMilliseconds(10000))), gaxgrpc::RetrySettings.FromExponentialBackoff(maxAttempts: 2147483647, initialBackoff: sys::TimeSpan.FromMilliseconds(100), maxBackoff: sys::TimeSpan.FromMilliseconds(10000), backoffMultiplier: 1.3, retryFilter: gaxgrpc::RetrySettings.FilterForStatusCodes(grpccore::StatusCode.DeadlineExceeded, grpccore::StatusCode.Unavailable)));
 
         /// <summary>
         /// <see cref="gaxgrpc::CallSettings"/> for synchronous and asynchronous calls to <c>CloudTasksClient.PurgeQueue</c>
         ///  and <c>CloudTasksClient.PurgeQueueAsync</c>.
         /// </summary>
-        /// <remarks>By default, retry will not be attempted.</remarks>
-        public gaxgrpc::CallSettings PurgeQueueSettings { get; set; }
+        /// <remarks>
+        /// <list type="bullet">
+        /// <item><description>This call will not be retried.</description></item>
+        /// <item><description>Timeout: 10 seconds.</description></item>
+        /// </list>
+        /// </remarks>
+        public gaxgrpc::CallSettings PurgeQueueSettings { get; set; } = gaxgrpc::CallSettings.FromExpiration(gax::Expiration.FromTimeout(sys::TimeSpan.FromMilliseconds(10000)));
 
         /// <summary>
         /// <see cref="gaxgrpc::CallSettings"/> for synchronous and asynchronous calls to <c>CloudTasksClient.PauseQueue</c>
         ///  and <c>CloudTasksClient.PauseQueueAsync</c>.
         /// </summary>
-        /// <remarks>By default, retry will not be attempted.</remarks>
-        public gaxgrpc::CallSettings PauseQueueSettings { get; set; }
+        /// <remarks>
+        /// <list type="bullet">
+        /// <item><description>This call will not be retried.</description></item>
+        /// <item><description>Timeout: 10 seconds.</description></item>
+        /// </list>
+        /// </remarks>
+        public gaxgrpc::CallSettings PauseQueueSettings { get; set; } = gaxgrpc::CallSettings.FromExpiration(gax::Expiration.FromTimeout(sys::TimeSpan.FromMilliseconds(10000)));
 
         /// <summary>
         /// <see cref="gaxgrpc::CallSettings"/> for synchronous and asynchronous calls to
         /// <c>CloudTasksClient.ResumeQueue</c> and <c>CloudTasksClient.ResumeQueueAsync</c>.
         /// </summary>
-        /// <remarks>By default, retry will not be attempted.</remarks>
-        public gaxgrpc::CallSettings ResumeQueueSettings { get; set; }
+        /// <remarks>
+        /// <list type="bullet">
+        /// <item><description>This call will not be retried.</description></item>
+        /// <item><description>Timeout: 10 seconds.</description></item>
+        /// </list>
+        /// </remarks>
+        public gaxgrpc::CallSettings ResumeQueueSettings { get; set; } = gaxgrpc::CallSettings.FromExpiration(gax::Expiration.FromTimeout(sys::TimeSpan.FromMilliseconds(10000)));
 
         /// <summary>
         /// <see cref="gaxgrpc::CallSettings"/> for synchronous and asynchronous calls to
@@ -162,20 +182,23 @@ namespace Google.Cloud.Tasks.V2
         /// <item><description>Initial retry delay: 100 milliseconds.</description></item>
         /// <item><description>Retry delay multiplier: 1.3</description></item>
         /// <item><description>Retry maximum delay: 10000 milliseconds.</description></item>
-        /// <item><description>Initial timeout: 25000 milliseconds.</description></item>
-        /// <item><description>Timeout multiplier: 1</description></item>
-        /// <item><description>Timeout maximum delay: 25000 milliseconds.</description></item>
-        /// <item><description>Total timeout: 25 seconds.</description></item>
+        /// <item><description>Maximum attempts: Unlimited</description></item>
+        /// <item><description>Timeout: 10 seconds.</description></item>
         /// </list>
         /// </remarks>
-        public gaxgrpc::CallSettings GetIamPolicySettings { get; set; } = gaxgrpc::CallSettings.FromCallTiming(gaxgrpc::CallTiming.FromRetry(new gaxgrpc::RetrySettings(retryBackoff: new gaxgrpc::BackoffSettings(delay: sys::TimeSpan.FromMilliseconds(100), maxDelay: sys::TimeSpan.FromMilliseconds(10000), delayMultiplier: 1.3), timeoutBackoff: new gaxgrpc::BackoffSettings(delay: sys::TimeSpan.FromMilliseconds(25000), maxDelay: sys::TimeSpan.FromMilliseconds(25000), delayMultiplier: 1), totalExpiration: gax::Expiration.FromTimeout(sys::TimeSpan.FromMilliseconds(25000)), retryFilter: gaxgrpc::RetrySettings.FilterForStatusCodes(grpccore::StatusCode.DeadlineExceeded, grpccore::StatusCode.Unavailable))));
+        public gaxgrpc::CallSettings GetIamPolicySettings { get; set; } = gaxgrpc::CallSettingsExtensions.WithRetry(gaxgrpc::CallSettings.FromExpiration(gax::Expiration.FromTimeout(sys::TimeSpan.FromMilliseconds(10000))), gaxgrpc::RetrySettings.FromExponentialBackoff(maxAttempts: 2147483647, initialBackoff: sys::TimeSpan.FromMilliseconds(100), maxBackoff: sys::TimeSpan.FromMilliseconds(10000), backoffMultiplier: 1.3, retryFilter: gaxgrpc::RetrySettings.FilterForStatusCodes(grpccore::StatusCode.DeadlineExceeded, grpccore::StatusCode.Unavailable)));
 
         /// <summary>
         /// <see cref="gaxgrpc::CallSettings"/> for synchronous and asynchronous calls to
         /// <c>CloudTasksClient.SetIamPolicy</c> and <c>CloudTasksClient.SetIamPolicyAsync</c>.
         /// </summary>
-        /// <remarks>By default, retry will not be attempted.</remarks>
-        public gaxgrpc::CallSettings SetIamPolicySettings { get; set; }
+        /// <remarks>
+        /// <list type="bullet">
+        /// <item><description>This call will not be retried.</description></item>
+        /// <item><description>Timeout: 10 seconds.</description></item>
+        /// </list>
+        /// </remarks>
+        public gaxgrpc::CallSettings SetIamPolicySettings { get; set; } = gaxgrpc::CallSettings.FromExpiration(gax::Expiration.FromTimeout(sys::TimeSpan.FromMilliseconds(10000)));
 
         /// <summary>
         /// <see cref="gaxgrpc::CallSettings"/> for synchronous and asynchronous calls to
@@ -186,13 +209,11 @@ namespace Google.Cloud.Tasks.V2
         /// <item><description>Initial retry delay: 100 milliseconds.</description></item>
         /// <item><description>Retry delay multiplier: 1.3</description></item>
         /// <item><description>Retry maximum delay: 10000 milliseconds.</description></item>
-        /// <item><description>Initial timeout: 25000 milliseconds.</description></item>
-        /// <item><description>Timeout multiplier: 1</description></item>
-        /// <item><description>Timeout maximum delay: 25000 milliseconds.</description></item>
-        /// <item><description>Total timeout: 25 seconds.</description></item>
+        /// <item><description>Maximum attempts: Unlimited</description></item>
+        /// <item><description>Timeout: 10 seconds.</description></item>
         /// </list>
         /// </remarks>
-        public gaxgrpc::CallSettings TestIamPermissionsSettings { get; set; } = gaxgrpc::CallSettings.FromCallTiming(gaxgrpc::CallTiming.FromRetry(new gaxgrpc::RetrySettings(retryBackoff: new gaxgrpc::BackoffSettings(delay: sys::TimeSpan.FromMilliseconds(100), maxDelay: sys::TimeSpan.FromMilliseconds(10000), delayMultiplier: 1.3), timeoutBackoff: new gaxgrpc::BackoffSettings(delay: sys::TimeSpan.FromMilliseconds(25000), maxDelay: sys::TimeSpan.FromMilliseconds(25000), delayMultiplier: 1), totalExpiration: gax::Expiration.FromTimeout(sys::TimeSpan.FromMilliseconds(25000)), retryFilter: gaxgrpc::RetrySettings.FilterForStatusCodes(grpccore::StatusCode.DeadlineExceeded, grpccore::StatusCode.Unavailable))));
+        public gaxgrpc::CallSettings TestIamPermissionsSettings { get; set; } = gaxgrpc::CallSettingsExtensions.WithRetry(gaxgrpc::CallSettings.FromExpiration(gax::Expiration.FromTimeout(sys::TimeSpan.FromMilliseconds(10000))), gaxgrpc::RetrySettings.FromExponentialBackoff(maxAttempts: 2147483647, initialBackoff: sys::TimeSpan.FromMilliseconds(100), maxBackoff: sys::TimeSpan.FromMilliseconds(10000), backoffMultiplier: 1.3, retryFilter: gaxgrpc::RetrySettings.FilterForStatusCodes(grpccore::StatusCode.DeadlineExceeded, grpccore::StatusCode.Unavailable)));
 
         /// <summary>
         /// <see cref="gaxgrpc::CallSettings"/> for synchronous and asynchronous calls to <c>CloudTasksClient.ListTasks</c>
@@ -203,13 +224,11 @@ namespace Google.Cloud.Tasks.V2
         /// <item><description>Initial retry delay: 100 milliseconds.</description></item>
         /// <item><description>Retry delay multiplier: 1.3</description></item>
         /// <item><description>Retry maximum delay: 10000 milliseconds.</description></item>
-        /// <item><description>Initial timeout: 25000 milliseconds.</description></item>
-        /// <item><description>Timeout multiplier: 1</description></item>
-        /// <item><description>Timeout maximum delay: 25000 milliseconds.</description></item>
-        /// <item><description>Total timeout: 25 seconds.</description></item>
+        /// <item><description>Maximum attempts: Unlimited</description></item>
+        /// <item><description>Timeout: 10 seconds.</description></item>
         /// </list>
         /// </remarks>
-        public gaxgrpc::CallSettings ListTasksSettings { get; set; } = gaxgrpc::CallSettings.FromCallTiming(gaxgrpc::CallTiming.FromRetry(new gaxgrpc::RetrySettings(retryBackoff: new gaxgrpc::BackoffSettings(delay: sys::TimeSpan.FromMilliseconds(100), maxDelay: sys::TimeSpan.FromMilliseconds(10000), delayMultiplier: 1.3), timeoutBackoff: new gaxgrpc::BackoffSettings(delay: sys::TimeSpan.FromMilliseconds(25000), maxDelay: sys::TimeSpan.FromMilliseconds(25000), delayMultiplier: 1), totalExpiration: gax::Expiration.FromTimeout(sys::TimeSpan.FromMilliseconds(25000)), retryFilter: gaxgrpc::RetrySettings.FilterForStatusCodes(grpccore::StatusCode.DeadlineExceeded, grpccore::StatusCode.Unavailable))));
+        public gaxgrpc::CallSettings ListTasksSettings { get; set; } = gaxgrpc::CallSettingsExtensions.WithRetry(gaxgrpc::CallSettings.FromExpiration(gax::Expiration.FromTimeout(sys::TimeSpan.FromMilliseconds(10000))), gaxgrpc::RetrySettings.FromExponentialBackoff(maxAttempts: 2147483647, initialBackoff: sys::TimeSpan.FromMilliseconds(100), maxBackoff: sys::TimeSpan.FromMilliseconds(10000), backoffMultiplier: 1.3, retryFilter: gaxgrpc::RetrySettings.FilterForStatusCodes(grpccore::StatusCode.DeadlineExceeded, grpccore::StatusCode.Unavailable)));
 
         /// <summary>
         /// <see cref="gaxgrpc::CallSettings"/> for synchronous and asynchronous calls to <c>CloudTasksClient.GetTask</c>
@@ -220,20 +239,23 @@ namespace Google.Cloud.Tasks.V2
         /// <item><description>Initial retry delay: 100 milliseconds.</description></item>
         /// <item><description>Retry delay multiplier: 1.3</description></item>
         /// <item><description>Retry maximum delay: 10000 milliseconds.</description></item>
-        /// <item><description>Initial timeout: 25000 milliseconds.</description></item>
-        /// <item><description>Timeout multiplier: 1</description></item>
-        /// <item><description>Timeout maximum delay: 25000 milliseconds.</description></item>
-        /// <item><description>Total timeout: 25 seconds.</description></item>
+        /// <item><description>Maximum attempts: Unlimited</description></item>
+        /// <item><description>Timeout: 10 seconds.</description></item>
         /// </list>
         /// </remarks>
-        public gaxgrpc::CallSettings GetTaskSettings { get; set; } = gaxgrpc::CallSettings.FromCallTiming(gaxgrpc::CallTiming.FromRetry(new gaxgrpc::RetrySettings(retryBackoff: new gaxgrpc::BackoffSettings(delay: sys::TimeSpan.FromMilliseconds(100), maxDelay: sys::TimeSpan.FromMilliseconds(10000), delayMultiplier: 1.3), timeoutBackoff: new gaxgrpc::BackoffSettings(delay: sys::TimeSpan.FromMilliseconds(25000), maxDelay: sys::TimeSpan.FromMilliseconds(25000), delayMultiplier: 1), totalExpiration: gax::Expiration.FromTimeout(sys::TimeSpan.FromMilliseconds(25000)), retryFilter: gaxgrpc::RetrySettings.FilterForStatusCodes(grpccore::StatusCode.DeadlineExceeded, grpccore::StatusCode.Unavailable))));
+        public gaxgrpc::CallSettings GetTaskSettings { get; set; } = gaxgrpc::CallSettingsExtensions.WithRetry(gaxgrpc::CallSettings.FromExpiration(gax::Expiration.FromTimeout(sys::TimeSpan.FromMilliseconds(10000))), gaxgrpc::RetrySettings.FromExponentialBackoff(maxAttempts: 2147483647, initialBackoff: sys::TimeSpan.FromMilliseconds(100), maxBackoff: sys::TimeSpan.FromMilliseconds(10000), backoffMultiplier: 1.3, retryFilter: gaxgrpc::RetrySettings.FilterForStatusCodes(grpccore::StatusCode.DeadlineExceeded, grpccore::StatusCode.Unavailable)));
 
         /// <summary>
         /// <see cref="gaxgrpc::CallSettings"/> for synchronous and asynchronous calls to <c>CloudTasksClient.CreateTask</c>
         ///  and <c>CloudTasksClient.CreateTaskAsync</c>.
         /// </summary>
-        /// <remarks>By default, retry will not be attempted.</remarks>
-        public gaxgrpc::CallSettings CreateTaskSettings { get; set; }
+        /// <remarks>
+        /// <list type="bullet">
+        /// <item><description>This call will not be retried.</description></item>
+        /// <item><description>Timeout: 10 seconds.</description></item>
+        /// </list>
+        /// </remarks>
+        public gaxgrpc::CallSettings CreateTaskSettings { get; set; } = gaxgrpc::CallSettings.FromExpiration(gax::Expiration.FromTimeout(sys::TimeSpan.FromMilliseconds(10000)));
 
         /// <summary>
         /// <see cref="gaxgrpc::CallSettings"/> for synchronous and asynchronous calls to <c>CloudTasksClient.DeleteTask</c>
@@ -244,20 +266,23 @@ namespace Google.Cloud.Tasks.V2
         /// <item><description>Initial retry delay: 100 milliseconds.</description></item>
         /// <item><description>Retry delay multiplier: 1.3</description></item>
         /// <item><description>Retry maximum delay: 10000 milliseconds.</description></item>
-        /// <item><description>Initial timeout: 25000 milliseconds.</description></item>
-        /// <item><description>Timeout multiplier: 1</description></item>
-        /// <item><description>Timeout maximum delay: 25000 milliseconds.</description></item>
-        /// <item><description>Total timeout: 25 seconds.</description></item>
+        /// <item><description>Maximum attempts: Unlimited</description></item>
+        /// <item><description>Timeout: 10 seconds.</description></item>
         /// </list>
         /// </remarks>
-        public gaxgrpc::CallSettings DeleteTaskSettings { get; set; } = gaxgrpc::CallSettings.FromCallTiming(gaxgrpc::CallTiming.FromRetry(new gaxgrpc::RetrySettings(retryBackoff: new gaxgrpc::BackoffSettings(delay: sys::TimeSpan.FromMilliseconds(100), maxDelay: sys::TimeSpan.FromMilliseconds(10000), delayMultiplier: 1.3), timeoutBackoff: new gaxgrpc::BackoffSettings(delay: sys::TimeSpan.FromMilliseconds(25000), maxDelay: sys::TimeSpan.FromMilliseconds(25000), delayMultiplier: 1), totalExpiration: gax::Expiration.FromTimeout(sys::TimeSpan.FromMilliseconds(25000)), retryFilter: gaxgrpc::RetrySettings.FilterForStatusCodes(grpccore::StatusCode.DeadlineExceeded, grpccore::StatusCode.Unavailable))));
+        public gaxgrpc::CallSettings DeleteTaskSettings { get; set; } = gaxgrpc::CallSettingsExtensions.WithRetry(gaxgrpc::CallSettings.FromExpiration(gax::Expiration.FromTimeout(sys::TimeSpan.FromMilliseconds(10000))), gaxgrpc::RetrySettings.FromExponentialBackoff(maxAttempts: 2147483647, initialBackoff: sys::TimeSpan.FromMilliseconds(100), maxBackoff: sys::TimeSpan.FromMilliseconds(10000), backoffMultiplier: 1.3, retryFilter: gaxgrpc::RetrySettings.FilterForStatusCodes(grpccore::StatusCode.DeadlineExceeded, grpccore::StatusCode.Unavailable)));
 
         /// <summary>
         /// <see cref="gaxgrpc::CallSettings"/> for synchronous and asynchronous calls to <c>CloudTasksClient.RunTask</c>
         ///  and <c>CloudTasksClient.RunTaskAsync</c>.
         /// </summary>
-        /// <remarks>By default, retry will not be attempted.</remarks>
-        public gaxgrpc::CallSettings RunTaskSettings { get; set; }
+        /// <remarks>
+        /// <list type="bullet">
+        /// <item><description>This call will not be retried.</description></item>
+        /// <item><description>Timeout: 10 seconds.</description></item>
+        /// </list>
+        /// </remarks>
+        public gaxgrpc::CallSettings RunTaskSettings { get; set; } = gaxgrpc::CallSettings.FromExpiration(gax::Expiration.FromTimeout(sys::TimeSpan.FromMilliseconds(10000)));
 
         /// <summary>Creates a deep clone of this object, with all the same property values.</summary>
         /// <returns>A deep clone of this <see cref="CloudTasksSettings"/> object.</returns>
@@ -272,40 +297,67 @@ namespace Google.Cloud.Tasks.V2
         /// <summary>The settings to use for RPCs, or <c>null</c> for the default settings.</summary>
         public CloudTasksSettings Settings { get; set; }
 
-        /// <inheritdoc/>
+        partial void InterceptBuild(ref CloudTasksClient client);
+
+        partial void InterceptBuildAsync(st::CancellationToken cancellationToken, ref stt::Task<CloudTasksClient> task);
+
+        /// <summary>Builds the resulting client.</summary>
         public override CloudTasksClient Build()
+        {
+            CloudTasksClient client = null;
+            InterceptBuild(ref client);
+            return client ?? BuildImpl();
+        }
+
+        /// <summary>Builds the resulting client asynchronously.</summary>
+        public override stt::Task<CloudTasksClient> BuildAsync(st::CancellationToken cancellationToken = default)
+        {
+            stt::Task<CloudTasksClient> task = null;
+            InterceptBuildAsync(cancellationToken, ref task);
+            return task ?? BuildAsyncImpl(cancellationToken);
+        }
+
+        private CloudTasksClient BuildImpl()
         {
             Validate();
             grpccore::CallInvoker callInvoker = CreateCallInvoker();
             return CloudTasksClient.Create(callInvoker, Settings);
         }
 
-        /// <inheritdoc/>
-        public override async stt::Task<CloudTasksClient> BuildAsync(st::CancellationToken cancellationToken = default)
+        private async stt::Task<CloudTasksClient> BuildAsyncImpl(st::CancellationToken cancellationToken)
         {
             Validate();
             grpccore::CallInvoker callInvoker = await CreateCallInvokerAsync(cancellationToken).ConfigureAwait(false);
             return CloudTasksClient.Create(callInvoker, Settings);
         }
 
-        /// <inheritdoc/>
-        protected override gaxgrpc::ServiceEndpoint GetDefaultEndpoint() => CloudTasksClient.DefaultEndpoint;
+        /// <summary>Returns the endpoint for this builder type, used if no endpoint is otherwise specified.</summary>
+        protected override string GetDefaultEndpoint() => CloudTasksClient.DefaultEndpoint;
 
-        /// <inheritdoc/>
+        /// <summary>
+        /// Returns the default scopes for this builder type, used if no scopes are otherwise specified.
+        /// </summary>
         protected override scg::IReadOnlyList<string> GetDefaultScopes() => CloudTasksClient.DefaultScopes;
 
-        /// <inheritdoc/>
+        /// <summary>Returns the channel pool to use when no other options are specified.</summary>
         protected override gaxgrpc::ChannelPool GetChannelPool() => CloudTasksClient.ChannelPool;
+
+        /// <summary>Returns the default <see cref="gaxgrpc::GrpcAdapter"/>to use if not otherwise specified.</summary>
+        protected override gaxgrpc::GrpcAdapter DefaultGrpcAdapter => gaxgrpccore::GrpcCoreAdapter.Instance;
     }
 
     /// <summary>CloudTasks client wrapper, for convenient use.</summary>
+    /// <remarks>
+    /// Cloud Tasks allows developers to manage the execution of background
+    /// work in their applications.
+    /// </remarks>
     public abstract partial class CloudTasksClient
     {
         /// <summary>
         /// The default endpoint for the CloudTasks service, which is a host of "cloudtasks.googleapis.com" and a port
         /// of 443.
         /// </summary>
-        public static gaxgrpc::ServiceEndpoint DefaultEndpoint { get; } = new gaxgrpc::ServiceEndpoint("cloudtasks.googleapis.com", 443);
+        public static string DefaultEndpoint { get; } = "cloudtasks.googleapis.com:443";
 
         /// <summary>The default CloudTasks scopes.</summary>
         /// <remarks>
@@ -322,96 +374,22 @@ namespace Google.Cloud.Tasks.V2
         internal static gaxgrpc::ChannelPool ChannelPool { get; } = new gaxgrpc::ChannelPool(DefaultScopes);
 
         /// <summary>
-        /// Asynchronously creates a <see cref="CloudTasksClient"/>, applying defaults for all unspecified settings, and
-        /// creating a channel connecting to the given endpoint with application default credentials where necessary.
-        /// See the example for how to use custom credentials.
+        /// Asynchronously creates a <see cref="CloudTasksClient"/> using the default credentials, endpoint and
+        /// settings. To specify custom credentials or other settings, use <see cref="CloudTasksClientBuilder"/>.
         /// </summary>
-        /// <example>
-        /// This sample shows how to create a client using default credentials:
-        /// <code>
-        /// using Google.Cloud.Vision.V1;
-        /// ...
-        /// // When running on Google Cloud Platform this will use the project Compute Credential.
-        /// // Or set the GOOGLE_APPLICATION_CREDENTIALS environment variable to the path of a JSON
-        /// // credential file to use that credential.
-        /// ImageAnnotatorClient client = await ImageAnnotatorClient.CreateAsync();
-        /// </code>
-        /// This sample shows how to create a client using credentials loaded from a JSON file:
-        /// <code>
-        /// using Google.Cloud.Vision.V1;
-        /// using Google.Apis.Auth.OAuth2;
-        /// using Grpc.Auth;
-        /// using Grpc.Core;
-        /// ...
-        /// GoogleCredential cred = GoogleCredential.FromFile("/path/to/credentials.json");
-        /// Channel channel = new Channel(
-        ///     ImageAnnotatorClient.DefaultEndpoint.Host, ImageAnnotatorClient.DefaultEndpoint.Port, cred.ToChannelCredentials());
-        /// ImageAnnotatorClient client = ImageAnnotatorClient.Create(channel);
-        /// ...
-        /// // Shutdown the channel when it is no longer required.
-        /// await channel.ShutdownAsync();
-        /// </code>
-        /// </example>
-        /// <param name="endpoint">Optional <see cref="gaxgrpc::ServiceEndpoint"/>.</param>
-        /// <param name="settings">Optional <see cref="CloudTasksSettings"/>.</param>
+        /// <param name="cancellationToken">
+        /// The <see cref="st::CancellationToken"/> to use while creating the client.
+        /// </param>
         /// <returns>The task representing the created <see cref="CloudTasksClient"/>.</returns>
-        public static async stt::Task<CloudTasksClient> CreateAsync(gaxgrpc::ServiceEndpoint endpoint = null, CloudTasksSettings settings = null)
-        {
-            grpccore::Channel channel = await ChannelPool.GetChannelAsync(endpoint ?? DefaultEndpoint).ConfigureAwait(false);
-            return Create(channel, settings);
-        }
+        public static stt::Task<CloudTasksClient> CreateAsync(st::CancellationToken cancellationToken = default) =>
+            new CloudTasksClientBuilder().BuildAsync(cancellationToken);
 
         /// <summary>
-        /// Synchronously creates a <see cref="CloudTasksClient"/>, applying defaults for all unspecified settings, and
-        /// creating a channel connecting to the given endpoint with application default credentials where necessary.
-        /// See the example for how to use custom credentials.
+        /// Synchronously creates a <see cref="CloudTasksClient"/> using the default credentials, endpoint and settings.
+        /// To specify custom credentials or other settings, use <see cref="CloudTasksClientBuilder"/>.
         /// </summary>
-        /// <example>
-        /// This sample shows how to create a client using default credentials:
-        /// <code>
-        /// using Google.Cloud.Vision.V1;
-        /// ...
-        /// // When running on Google Cloud Platform this will use the project Compute Credential.
-        /// // Or set the GOOGLE_APPLICATION_CREDENTIALS environment variable to the path of a JSON
-        /// // credential file to use that credential.
-        /// ImageAnnotatorClient client = ImageAnnotatorClient.Create();
-        /// </code>
-        /// This sample shows how to create a client using credentials loaded from a JSON file:
-        /// <code>
-        /// using Google.Cloud.Vision.V1;
-        /// using Google.Apis.Auth.OAuth2;
-        /// using Grpc.Auth;
-        /// using Grpc.Core;
-        /// ...
-        /// GoogleCredential cred = GoogleCredential.FromFile("/path/to/credentials.json");
-        /// Channel channel = new Channel(
-        ///     ImageAnnotatorClient.DefaultEndpoint.Host, ImageAnnotatorClient.DefaultEndpoint.Port, cred.ToChannelCredentials());
-        /// ImageAnnotatorClient client = ImageAnnotatorClient.Create(channel);
-        /// ...
-        /// // Shutdown the channel when it is no longer required.
-        /// channel.ShutdownAsync().Wait();
-        /// </code>
-        /// </example>
-        /// <param name="endpoint">Optional <see cref="gaxgrpc::ServiceEndpoint"/>.</param>
-        /// <param name="settings">Optional <see cref="CloudTasksSettings"/>.</param>
         /// <returns>The created <see cref="CloudTasksClient"/>.</returns>
-        public static CloudTasksClient Create(gaxgrpc::ServiceEndpoint endpoint = null, CloudTasksSettings settings = null)
-        {
-            grpccore::Channel channel = ChannelPool.GetChannel(endpoint ?? DefaultEndpoint);
-            return Create(channel, settings);
-        }
-
-        /// <summary>
-        /// Creates a <see cref="CloudTasksClient"/> which uses the specified channel for remote operations.
-        /// </summary>
-        /// <param name="channel">The <see cref="grpccore::Channel"/> for remote operations. Must not be null.</param>
-        /// <param name="settings">Optional <see cref="CloudTasksSettings"/>.</param>
-        /// <returns>The created <see cref="CloudTasksClient"/>.</returns>
-        public static CloudTasksClient Create(grpccore::Channel channel, CloudTasksSettings settings = null)
-        {
-            gax::GaxPreconditions.CheckNotNull(channel, nameof(channel));
-            return Create(new grpccore::DefaultCallInvoker(channel), settings);
-        }
+        public static CloudTasksClient Create() => new CloudTasksClientBuilder().Build();
 
         /// <summary>
         /// Creates a <see cref="CloudTasksClient"/> which uses the specified call invoker for remote operations.
@@ -421,7 +399,7 @@ namespace Google.Cloud.Tasks.V2
         /// </param>
         /// <param name="settings">Optional <see cref="CloudTasksSettings"/>.</param>
         /// <returns>The created <see cref="CloudTasksClient"/>.</returns>
-        public static CloudTasksClient Create(grpccore::CallInvoker callInvoker, CloudTasksSettings settings = null)
+        internal static CloudTasksClient Create(grpccore::CallInvoker callInvoker, CloudTasksSettings settings = null)
         {
             gax::GaxPreconditions.CheckNotNull(callInvoker, nameof(callInvoker));
             grpcinter::Interceptor interceptor = settings?.Interceptor;
@@ -434,15 +412,14 @@ namespace Google.Cloud.Tasks.V2
         }
 
         /// <summary>
-        /// Shuts down any channels automatically created by
-        /// <see cref="Create(grpccore::CallInvoker,CloudTasksSettings)"/> and
-        /// <see cref="CreateAsync(gaxgrpc::ServiceEndpoint,CloudTasksSettings)"/>. Channels which weren't automatically
-        /// created are not affected.
+        /// Shuts down any channels automatically created by <see cref="Create()"/> and
+        /// <see cref="CreateAsync(st::CancellationToken)"/>. Channels which weren't automatically created are not
+        /// affected.
         /// </summary>
         /// <remarks>
-        /// After calling this method, further calls to <see cref="Create(grpccore::CallInvoker,CloudTasksSettings)"/>
-        /// and <see cref="CreateAsync(gaxgrpc::ServiceEndpoint,CloudTasksSettings)"/> will create new channels, which
-        /// could in turn be shut down by another call to this method.
+        /// After calling this method, further calls to <see cref="Create()"/> and
+        /// <see cref="CreateAsync(st::CancellationToken)"/> will create new channels, which could in turn be shut down
+        /// by another call to this method.
         /// </remarks>
         /// <returns>A task representing the asynchronous shutdown operation.</returns>
         public static stt::Task ShutdownDefaultChannelsAsync() => ChannelPool.ShutdownChannelsAsync();
@@ -545,7 +522,7 @@ namespace Google.Cloud.Tasks.V2
         /// </param>
         /// <param name="callSettings">If not null, applies overrides to this RPC call.</param>
         /// <returns>A pageable sequence of <see cref="Queue"/> resources.</returns>
-        public virtual gax::PagedEnumerable<ListQueuesResponse, Queue> ListQueues(LocationName parent, string pageToken = null, int? pageSize = null, gaxgrpc::CallSettings callSettings = null) =>
+        public virtual gax::PagedEnumerable<ListQueuesResponse, Queue> ListQueues(gagr::LocationName parent, string pageToken = null, int? pageSize = null, gaxgrpc::CallSettings callSettings = null) =>
             ListQueues(new ListQueuesRequest
             {
                 ParentAsLocationName = gax::GaxPreconditions.CheckNotNull(parent, nameof(parent)),
@@ -572,7 +549,7 @@ namespace Google.Cloud.Tasks.V2
         /// </param>
         /// <param name="callSettings">If not null, applies overrides to this RPC call.</param>
         /// <returns>A pageable asynchronous sequence of <see cref="Queue"/> resources.</returns>
-        public virtual gax::PagedAsyncEnumerable<ListQueuesResponse, Queue> ListQueuesAsync(LocationName parent, string pageToken = null, int? pageSize = null, gaxgrpc::CallSettings callSettings = null) =>
+        public virtual gax::PagedAsyncEnumerable<ListQueuesResponse, Queue> ListQueuesAsync(gagr::LocationName parent, string pageToken = null, int? pageSize = null, gaxgrpc::CallSettings callSettings = null) =>
             ListQueuesAsync(new ListQueuesRequest
             {
                 ParentAsLocationName = gax::GaxPreconditions.CheckNotNull(parent, nameof(parent)),
@@ -884,7 +861,7 @@ namespace Google.Cloud.Tasks.V2
         /// </param>
         /// <param name="callSettings">If not null, applies overrides to this RPC call.</param>
         /// <returns>The RPC response.</returns>
-        public virtual Queue CreateQueue(LocationName parent, Queue queue, gaxgrpc::CallSettings callSettings = null) =>
+        public virtual Queue CreateQueue(gagr::LocationName parent, Queue queue, gaxgrpc::CallSettings callSettings = null) =>
             CreateQueue(new CreateQueueRequest
             {
                 ParentAsLocationName = gax::GaxPreconditions.CheckNotNull(parent, nameof(parent)),
@@ -920,7 +897,7 @@ namespace Google.Cloud.Tasks.V2
         /// </param>
         /// <param name="callSettings">If not null, applies overrides to this RPC call.</param>
         /// <returns>A Task containing the RPC response.</returns>
-        public virtual stt::Task<Queue> CreateQueueAsync(LocationName parent, Queue queue, gaxgrpc::CallSettings callSettings = null) =>
+        public virtual stt::Task<Queue> CreateQueueAsync(gagr::LocationName parent, Queue queue, gaxgrpc::CallSettings callSettings = null) =>
             CreateQueueAsync(new CreateQueueRequest
             {
                 ParentAsLocationName = gax::GaxPreconditions.CheckNotNull(parent, nameof(parent)),
@@ -956,7 +933,7 @@ namespace Google.Cloud.Tasks.V2
         /// </param>
         /// <param name="cancellationToken">A <see cref="st::CancellationToken"/> to use for this RPC.</param>
         /// <returns>A Task containing the RPC response.</returns>
-        public virtual stt::Task<Queue> CreateQueueAsync(LocationName parent, Queue queue, st::CancellationToken cancellationToken) =>
+        public virtual stt::Task<Queue> CreateQueueAsync(gagr::LocationName parent, Queue queue, st::CancellationToken cancellationToken) =>
             CreateQueueAsync(parent, queue, gaxgrpc::CallSettings.FromCancellationToken(cancellationToken));
 
         /// <summary>
@@ -3661,6 +3638,10 @@ namespace Google.Cloud.Tasks.V2
     }
 
     /// <summary>CloudTasks client wrapper implementation, for convenient use.</summary>
+    /// <remarks>
+    /// Cloud Tasks allows developers to manage the execution of background
+    /// work in their applications.
+    /// </remarks>
     public sealed partial class CloudTasksClientImpl : CloudTasksClient
     {
         private readonly gaxgrpc::ApiCall<ListQueuesRequest, ListQueuesResponse> _callListQueues;
@@ -3705,52 +3686,52 @@ namespace Google.Cloud.Tasks.V2
             GrpcClient = grpcClient;
             CloudTasksSettings effectiveSettings = settings ?? CloudTasksSettings.GetDefault();
             gaxgrpc::ClientHelper clientHelper = new gaxgrpc::ClientHelper(effectiveSettings);
-            _callListQueues = clientHelper.BuildApiCall<ListQueuesRequest, ListQueuesResponse>(grpcClient.ListQueuesAsync, grpcClient.ListQueues, effectiveSettings.ListQueuesSettings).WithCallSettingsOverlay(request => gaxgrpc::CallSettings.FromHeader("x-goog-request-params", $"parent={(sysnet::WebUtility.UrlEncode(request.Parent))}"));
+            _callListQueues = clientHelper.BuildApiCall<ListQueuesRequest, ListQueuesResponse>(grpcClient.ListQueuesAsync, grpcClient.ListQueues, effectiveSettings.ListQueuesSettings).WithGoogleRequestParam("parent", request => request.Parent);
             Modify_ApiCall(ref _callListQueues);
             Modify_ListQueuesApiCall(ref _callListQueues);
-            _callGetQueue = clientHelper.BuildApiCall<GetQueueRequest, Queue>(grpcClient.GetQueueAsync, grpcClient.GetQueue, effectiveSettings.GetQueueSettings).WithCallSettingsOverlay(request => gaxgrpc::CallSettings.FromHeader("x-goog-request-params", $"name={(sysnet::WebUtility.UrlEncode(request.Name))}"));
+            _callGetQueue = clientHelper.BuildApiCall<GetQueueRequest, Queue>(grpcClient.GetQueueAsync, grpcClient.GetQueue, effectiveSettings.GetQueueSettings).WithGoogleRequestParam("name", request => request.Name);
             Modify_ApiCall(ref _callGetQueue);
             Modify_GetQueueApiCall(ref _callGetQueue);
-            _callCreateQueue = clientHelper.BuildApiCall<CreateQueueRequest, Queue>(grpcClient.CreateQueueAsync, grpcClient.CreateQueue, effectiveSettings.CreateQueueSettings).WithCallSettingsOverlay(request => gaxgrpc::CallSettings.FromHeader("x-goog-request-params", $"parent={(sysnet::WebUtility.UrlEncode(request.Parent))}"));
+            _callCreateQueue = clientHelper.BuildApiCall<CreateQueueRequest, Queue>(grpcClient.CreateQueueAsync, grpcClient.CreateQueue, effectiveSettings.CreateQueueSettings).WithGoogleRequestParam("parent", request => request.Parent);
             Modify_ApiCall(ref _callCreateQueue);
             Modify_CreateQueueApiCall(ref _callCreateQueue);
-            _callUpdateQueue = clientHelper.BuildApiCall<UpdateQueueRequest, Queue>(grpcClient.UpdateQueueAsync, grpcClient.UpdateQueue, effectiveSettings.UpdateQueueSettings).WithCallSettingsOverlay(request => gaxgrpc::CallSettings.FromHeader("x-goog-request-params", $"queue.name={(sysnet::WebUtility.UrlEncode(request.Queue.Name))}"));
+            _callUpdateQueue = clientHelper.BuildApiCall<UpdateQueueRequest, Queue>(grpcClient.UpdateQueueAsync, grpcClient.UpdateQueue, effectiveSettings.UpdateQueueSettings).WithGoogleRequestParam("queue.name", request => request.Queue?.Name);
             Modify_ApiCall(ref _callUpdateQueue);
             Modify_UpdateQueueApiCall(ref _callUpdateQueue);
-            _callDeleteQueue = clientHelper.BuildApiCall<DeleteQueueRequest, wkt::Empty>(grpcClient.DeleteQueueAsync, grpcClient.DeleteQueue, effectiveSettings.DeleteQueueSettings).WithCallSettingsOverlay(request => gaxgrpc::CallSettings.FromHeader("x-goog-request-params", $"name={(sysnet::WebUtility.UrlEncode(request.Name))}"));
+            _callDeleteQueue = clientHelper.BuildApiCall<DeleteQueueRequest, wkt::Empty>(grpcClient.DeleteQueueAsync, grpcClient.DeleteQueue, effectiveSettings.DeleteQueueSettings).WithGoogleRequestParam("name", request => request.Name);
             Modify_ApiCall(ref _callDeleteQueue);
             Modify_DeleteQueueApiCall(ref _callDeleteQueue);
-            _callPurgeQueue = clientHelper.BuildApiCall<PurgeQueueRequest, Queue>(grpcClient.PurgeQueueAsync, grpcClient.PurgeQueue, effectiveSettings.PurgeQueueSettings).WithCallSettingsOverlay(request => gaxgrpc::CallSettings.FromHeader("x-goog-request-params", $"name={(sysnet::WebUtility.UrlEncode(request.Name))}"));
+            _callPurgeQueue = clientHelper.BuildApiCall<PurgeQueueRequest, Queue>(grpcClient.PurgeQueueAsync, grpcClient.PurgeQueue, effectiveSettings.PurgeQueueSettings).WithGoogleRequestParam("name", request => request.Name);
             Modify_ApiCall(ref _callPurgeQueue);
             Modify_PurgeQueueApiCall(ref _callPurgeQueue);
-            _callPauseQueue = clientHelper.BuildApiCall<PauseQueueRequest, Queue>(grpcClient.PauseQueueAsync, grpcClient.PauseQueue, effectiveSettings.PauseQueueSettings).WithCallSettingsOverlay(request => gaxgrpc::CallSettings.FromHeader("x-goog-request-params", $"name={(sysnet::WebUtility.UrlEncode(request.Name))}"));
+            _callPauseQueue = clientHelper.BuildApiCall<PauseQueueRequest, Queue>(grpcClient.PauseQueueAsync, grpcClient.PauseQueue, effectiveSettings.PauseQueueSettings).WithGoogleRequestParam("name", request => request.Name);
             Modify_ApiCall(ref _callPauseQueue);
             Modify_PauseQueueApiCall(ref _callPauseQueue);
-            _callResumeQueue = clientHelper.BuildApiCall<ResumeQueueRequest, Queue>(grpcClient.ResumeQueueAsync, grpcClient.ResumeQueue, effectiveSettings.ResumeQueueSettings).WithCallSettingsOverlay(request => gaxgrpc::CallSettings.FromHeader("x-goog-request-params", $"name={(sysnet::WebUtility.UrlEncode(request.Name))}"));
+            _callResumeQueue = clientHelper.BuildApiCall<ResumeQueueRequest, Queue>(grpcClient.ResumeQueueAsync, grpcClient.ResumeQueue, effectiveSettings.ResumeQueueSettings).WithGoogleRequestParam("name", request => request.Name);
             Modify_ApiCall(ref _callResumeQueue);
             Modify_ResumeQueueApiCall(ref _callResumeQueue);
-            _callGetIamPolicy = clientHelper.BuildApiCall<gciv::GetIamPolicyRequest, gciv::Policy>(grpcClient.GetIamPolicyAsync, grpcClient.GetIamPolicy, effectiveSettings.GetIamPolicySettings).WithCallSettingsOverlay(request => gaxgrpc::CallSettings.FromHeader("x-goog-request-params", $"resource={(sysnet::WebUtility.UrlEncode(request.Resource))}"));
+            _callGetIamPolicy = clientHelper.BuildApiCall<gciv::GetIamPolicyRequest, gciv::Policy>(grpcClient.GetIamPolicyAsync, grpcClient.GetIamPolicy, effectiveSettings.GetIamPolicySettings).WithGoogleRequestParam("resource", request => request.Resource);
             Modify_ApiCall(ref _callGetIamPolicy);
             Modify_GetIamPolicyApiCall(ref _callGetIamPolicy);
-            _callSetIamPolicy = clientHelper.BuildApiCall<gciv::SetIamPolicyRequest, gciv::Policy>(grpcClient.SetIamPolicyAsync, grpcClient.SetIamPolicy, effectiveSettings.SetIamPolicySettings).WithCallSettingsOverlay(request => gaxgrpc::CallSettings.FromHeader("x-goog-request-params", $"resource={(sysnet::WebUtility.UrlEncode(request.Resource))}"));
+            _callSetIamPolicy = clientHelper.BuildApiCall<gciv::SetIamPolicyRequest, gciv::Policy>(grpcClient.SetIamPolicyAsync, grpcClient.SetIamPolicy, effectiveSettings.SetIamPolicySettings).WithGoogleRequestParam("resource", request => request.Resource);
             Modify_ApiCall(ref _callSetIamPolicy);
             Modify_SetIamPolicyApiCall(ref _callSetIamPolicy);
-            _callTestIamPermissions = clientHelper.BuildApiCall<gciv::TestIamPermissionsRequest, gciv::TestIamPermissionsResponse>(grpcClient.TestIamPermissionsAsync, grpcClient.TestIamPermissions, effectiveSettings.TestIamPermissionsSettings).WithCallSettingsOverlay(request => gaxgrpc::CallSettings.FromHeader("x-goog-request-params", $"resource={(sysnet::WebUtility.UrlEncode(request.Resource))}"));
+            _callTestIamPermissions = clientHelper.BuildApiCall<gciv::TestIamPermissionsRequest, gciv::TestIamPermissionsResponse>(grpcClient.TestIamPermissionsAsync, grpcClient.TestIamPermissions, effectiveSettings.TestIamPermissionsSettings).WithGoogleRequestParam("resource", request => request.Resource);
             Modify_ApiCall(ref _callTestIamPermissions);
             Modify_TestIamPermissionsApiCall(ref _callTestIamPermissions);
-            _callListTasks = clientHelper.BuildApiCall<ListTasksRequest, ListTasksResponse>(grpcClient.ListTasksAsync, grpcClient.ListTasks, effectiveSettings.ListTasksSettings).WithCallSettingsOverlay(request => gaxgrpc::CallSettings.FromHeader("x-goog-request-params", $"parent={(sysnet::WebUtility.UrlEncode(request.Parent))}"));
+            _callListTasks = clientHelper.BuildApiCall<ListTasksRequest, ListTasksResponse>(grpcClient.ListTasksAsync, grpcClient.ListTasks, effectiveSettings.ListTasksSettings).WithGoogleRequestParam("parent", request => request.Parent);
             Modify_ApiCall(ref _callListTasks);
             Modify_ListTasksApiCall(ref _callListTasks);
-            _callGetTask = clientHelper.BuildApiCall<GetTaskRequest, Task>(grpcClient.GetTaskAsync, grpcClient.GetTask, effectiveSettings.GetTaskSettings).WithCallSettingsOverlay(request => gaxgrpc::CallSettings.FromHeader("x-goog-request-params", $"name={(sysnet::WebUtility.UrlEncode(request.Name))}"));
+            _callGetTask = clientHelper.BuildApiCall<GetTaskRequest, Task>(grpcClient.GetTaskAsync, grpcClient.GetTask, effectiveSettings.GetTaskSettings).WithGoogleRequestParam("name", request => request.Name);
             Modify_ApiCall(ref _callGetTask);
             Modify_GetTaskApiCall(ref _callGetTask);
-            _callCreateTask = clientHelper.BuildApiCall<CreateTaskRequest, Task>(grpcClient.CreateTaskAsync, grpcClient.CreateTask, effectiveSettings.CreateTaskSettings).WithCallSettingsOverlay(request => gaxgrpc::CallSettings.FromHeader("x-goog-request-params", $"parent={(sysnet::WebUtility.UrlEncode(request.Parent))}"));
+            _callCreateTask = clientHelper.BuildApiCall<CreateTaskRequest, Task>(grpcClient.CreateTaskAsync, grpcClient.CreateTask, effectiveSettings.CreateTaskSettings).WithGoogleRequestParam("parent", request => request.Parent);
             Modify_ApiCall(ref _callCreateTask);
             Modify_CreateTaskApiCall(ref _callCreateTask);
-            _callDeleteTask = clientHelper.BuildApiCall<DeleteTaskRequest, wkt::Empty>(grpcClient.DeleteTaskAsync, grpcClient.DeleteTask, effectiveSettings.DeleteTaskSettings).WithCallSettingsOverlay(request => gaxgrpc::CallSettings.FromHeader("x-goog-request-params", $"name={(sysnet::WebUtility.UrlEncode(request.Name))}"));
+            _callDeleteTask = clientHelper.BuildApiCall<DeleteTaskRequest, wkt::Empty>(grpcClient.DeleteTaskAsync, grpcClient.DeleteTask, effectiveSettings.DeleteTaskSettings).WithGoogleRequestParam("name", request => request.Name);
             Modify_ApiCall(ref _callDeleteTask);
             Modify_DeleteTaskApiCall(ref _callDeleteTask);
-            _callRunTask = clientHelper.BuildApiCall<RunTaskRequest, Task>(grpcClient.RunTaskAsync, grpcClient.RunTask, effectiveSettings.RunTaskSettings).WithCallSettingsOverlay(request => gaxgrpc::CallSettings.FromHeader("x-goog-request-params", $"name={(sysnet::WebUtility.UrlEncode(request.Name))}"));
+            _callRunTask = clientHelper.BuildApiCall<RunTaskRequest, Task>(grpcClient.RunTaskAsync, grpcClient.RunTask, effectiveSettings.RunTaskSettings).WithGoogleRequestParam("name", request => request.Name);
             Modify_ApiCall(ref _callRunTask);
             Modify_RunTaskApiCall(ref _callRunTask);
             OnConstruction(grpcClient, effectiveSettings, clientHelper);

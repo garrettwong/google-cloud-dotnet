@@ -1,4 +1,4 @@
-// Copyright 2019 Google LLC
+// Copyright 2020 Google LLC
 //
 // Licensed under the Apache License, Version 2.0 (the "License");
 // you may not use this file except in compliance with the License.
@@ -16,6 +16,7 @@
 
 using gax = Google.Api.Gax;
 using gaxgrpc = Google.Api.Gax.Grpc;
+using gaxgrpccore = Google.Api.Gax.Grpc.GrpcCore;
 using gagr = Google.Api.Gax.ResourceNames;
 using lro = Google.LongRunning;
 using proto = Google.Protobuf;
@@ -25,7 +26,6 @@ using sys = System;
 using sc = System.Collections;
 using scg = System.Collections.Generic;
 using sco = System.Collections.ObjectModel;
-using sysnet = System.Net;
 using st = System.Threading;
 using stt = System.Threading.Tasks;
 
@@ -66,15 +66,25 @@ namespace Google.Cloud.Translate.V3
         /// <see cref="gaxgrpc::CallSettings"/> for synchronous and asynchronous calls to
         /// <c>TranslationServiceClient.TranslateText</c> and <c>TranslationServiceClient.TranslateTextAsync</c>.
         /// </summary>
-        /// <remarks>By default, retry will not be attempted.</remarks>
-        public gaxgrpc::CallSettings TranslateTextSettings { get; set; }
+        /// <remarks>
+        /// <list type="bullet">
+        /// <item><description>This call will not be retried.</description></item>
+        /// <item><description>Timeout: 600 seconds.</description></item>
+        /// </list>
+        /// </remarks>
+        public gaxgrpc::CallSettings TranslateTextSettings { get; set; } = gaxgrpc::CallSettings.FromExpiration(gax::Expiration.FromTimeout(sys::TimeSpan.FromMilliseconds(600000)));
 
         /// <summary>
         /// <see cref="gaxgrpc::CallSettings"/> for synchronous and asynchronous calls to
         /// <c>TranslationServiceClient.DetectLanguage</c> and <c>TranslationServiceClient.DetectLanguageAsync</c>.
         /// </summary>
-        /// <remarks>By default, retry will not be attempted.</remarks>
-        public gaxgrpc::CallSettings DetectLanguageSettings { get; set; }
+        /// <remarks>
+        /// <list type="bullet">
+        /// <item><description>This call will not be retried.</description></item>
+        /// <item><description>Timeout: 600 seconds.</description></item>
+        /// </list>
+        /// </remarks>
+        public gaxgrpc::CallSettings DetectLanguageSettings { get; set; } = gaxgrpc::CallSettings.FromExpiration(gax::Expiration.FromTimeout(sys::TimeSpan.FromMilliseconds(600000)));
 
         /// <summary>
         /// <see cref="gaxgrpc::CallSettings"/> for synchronous and asynchronous calls to
@@ -86,21 +96,24 @@ namespace Google.Cloud.Translate.V3
         /// <item><description>Initial retry delay: 100 milliseconds.</description></item>
         /// <item><description>Retry delay multiplier: 1.3</description></item>
         /// <item><description>Retry maximum delay: 60000 milliseconds.</description></item>
-        /// <item><description>Initial timeout: 600000 milliseconds.</description></item>
-        /// <item><description>Timeout multiplier: 1</description></item>
-        /// <item><description>Timeout maximum delay: 600000 milliseconds.</description></item>
-        /// <item><description>Total timeout: 600 seconds.</description></item>
+        /// <item><description>Maximum attempts: Unlimited</description></item>
+        /// <item><description>Timeout: 600 seconds.</description></item>
         /// </list>
         /// </remarks>
-        public gaxgrpc::CallSettings GetSupportedLanguagesSettings { get; set; } = gaxgrpc::CallSettings.FromCallTiming(gaxgrpc::CallTiming.FromRetry(new gaxgrpc::RetrySettings(retryBackoff: new gaxgrpc::BackoffSettings(delay: sys::TimeSpan.FromMilliseconds(100), maxDelay: sys::TimeSpan.FromMilliseconds(60000), delayMultiplier: 1.3), timeoutBackoff: new gaxgrpc::BackoffSettings(delay: sys::TimeSpan.FromMilliseconds(600000), maxDelay: sys::TimeSpan.FromMilliseconds(600000), delayMultiplier: 1), totalExpiration: gax::Expiration.FromTimeout(sys::TimeSpan.FromMilliseconds(600000)), retryFilter: gaxgrpc::RetrySettings.FilterForStatusCodes(grpccore::StatusCode.DeadlineExceeded, grpccore::StatusCode.Unavailable))));
+        public gaxgrpc::CallSettings GetSupportedLanguagesSettings { get; set; } = gaxgrpc::CallSettingsExtensions.WithRetry(gaxgrpc::CallSettings.FromExpiration(gax::Expiration.FromTimeout(sys::TimeSpan.FromMilliseconds(600000))), gaxgrpc::RetrySettings.FromExponentialBackoff(maxAttempts: 2147483647, initialBackoff: sys::TimeSpan.FromMilliseconds(100), maxBackoff: sys::TimeSpan.FromMilliseconds(60000), backoffMultiplier: 1.3, retryFilter: gaxgrpc::RetrySettings.FilterForStatusCodes(grpccore::StatusCode.DeadlineExceeded, grpccore::StatusCode.Unavailable)));
 
         /// <summary>
         /// <see cref="gaxgrpc::CallSettings"/> for synchronous and asynchronous calls to
         /// <c>TranslationServiceClient.BatchTranslateText</c> and <c>TranslationServiceClient.BatchTranslateTextAsync</c>
         /// .
         /// </summary>
-        /// <remarks>By default, retry will not be attempted.</remarks>
-        public gaxgrpc::CallSettings BatchTranslateTextSettings { get; set; }
+        /// <remarks>
+        /// <list type="bullet">
+        /// <item><description>This call will not be retried.</description></item>
+        /// <item><description>Timeout: 600 seconds.</description></item>
+        /// </list>
+        /// </remarks>
+        public gaxgrpc::CallSettings BatchTranslateTextSettings { get; set; } = gaxgrpc::CallSettings.FromExpiration(gax::Expiration.FromTimeout(sys::TimeSpan.FromMilliseconds(600000)));
 
         /// <summary>
         /// Long Running Operation settings for calls to <c>TranslationServiceClient.BatchTranslateText</c> and
@@ -124,8 +137,13 @@ namespace Google.Cloud.Translate.V3
         /// <see cref="gaxgrpc::CallSettings"/> for synchronous and asynchronous calls to
         /// <c>TranslationServiceClient.CreateGlossary</c> and <c>TranslationServiceClient.CreateGlossaryAsync</c>.
         /// </summary>
-        /// <remarks>By default, retry will not be attempted.</remarks>
-        public gaxgrpc::CallSettings CreateGlossarySettings { get; set; }
+        /// <remarks>
+        /// <list type="bullet">
+        /// <item><description>This call will not be retried.</description></item>
+        /// <item><description>Timeout: 600 seconds.</description></item>
+        /// </list>
+        /// </remarks>
+        public gaxgrpc::CallSettings CreateGlossarySettings { get; set; } = gaxgrpc::CallSettings.FromExpiration(gax::Expiration.FromTimeout(sys::TimeSpan.FromMilliseconds(600000)));
 
         /// <summary>
         /// Long Running Operation settings for calls to <c>TranslationServiceClient.CreateGlossary</c> and
@@ -154,13 +172,11 @@ namespace Google.Cloud.Translate.V3
         /// <item><description>Initial retry delay: 100 milliseconds.</description></item>
         /// <item><description>Retry delay multiplier: 1.3</description></item>
         /// <item><description>Retry maximum delay: 60000 milliseconds.</description></item>
-        /// <item><description>Initial timeout: 600000 milliseconds.</description></item>
-        /// <item><description>Timeout multiplier: 1</description></item>
-        /// <item><description>Timeout maximum delay: 600000 milliseconds.</description></item>
-        /// <item><description>Total timeout: 600 seconds.</description></item>
+        /// <item><description>Maximum attempts: Unlimited</description></item>
+        /// <item><description>Timeout: 600 seconds.</description></item>
         /// </list>
         /// </remarks>
-        public gaxgrpc::CallSettings ListGlossariesSettings { get; set; } = gaxgrpc::CallSettings.FromCallTiming(gaxgrpc::CallTiming.FromRetry(new gaxgrpc::RetrySettings(retryBackoff: new gaxgrpc::BackoffSettings(delay: sys::TimeSpan.FromMilliseconds(100), maxDelay: sys::TimeSpan.FromMilliseconds(60000), delayMultiplier: 1.3), timeoutBackoff: new gaxgrpc::BackoffSettings(delay: sys::TimeSpan.FromMilliseconds(600000), maxDelay: sys::TimeSpan.FromMilliseconds(600000), delayMultiplier: 1), totalExpiration: gax::Expiration.FromTimeout(sys::TimeSpan.FromMilliseconds(600000)), retryFilter: gaxgrpc::RetrySettings.FilterForStatusCodes(grpccore::StatusCode.DeadlineExceeded, grpccore::StatusCode.Unavailable))));
+        public gaxgrpc::CallSettings ListGlossariesSettings { get; set; } = gaxgrpc::CallSettingsExtensions.WithRetry(gaxgrpc::CallSettings.FromExpiration(gax::Expiration.FromTimeout(sys::TimeSpan.FromMilliseconds(600000))), gaxgrpc::RetrySettings.FromExponentialBackoff(maxAttempts: 2147483647, initialBackoff: sys::TimeSpan.FromMilliseconds(100), maxBackoff: sys::TimeSpan.FromMilliseconds(60000), backoffMultiplier: 1.3, retryFilter: gaxgrpc::RetrySettings.FilterForStatusCodes(grpccore::StatusCode.DeadlineExceeded, grpccore::StatusCode.Unavailable)));
 
         /// <summary>
         /// <see cref="gaxgrpc::CallSettings"/> for synchronous and asynchronous calls to
@@ -171,13 +187,11 @@ namespace Google.Cloud.Translate.V3
         /// <item><description>Initial retry delay: 100 milliseconds.</description></item>
         /// <item><description>Retry delay multiplier: 1.3</description></item>
         /// <item><description>Retry maximum delay: 60000 milliseconds.</description></item>
-        /// <item><description>Initial timeout: 600000 milliseconds.</description></item>
-        /// <item><description>Timeout multiplier: 1</description></item>
-        /// <item><description>Timeout maximum delay: 600000 milliseconds.</description></item>
-        /// <item><description>Total timeout: 600 seconds.</description></item>
+        /// <item><description>Maximum attempts: Unlimited</description></item>
+        /// <item><description>Timeout: 600 seconds.</description></item>
         /// </list>
         /// </remarks>
-        public gaxgrpc::CallSettings GetGlossarySettings { get; set; } = gaxgrpc::CallSettings.FromCallTiming(gaxgrpc::CallTiming.FromRetry(new gaxgrpc::RetrySettings(retryBackoff: new gaxgrpc::BackoffSettings(delay: sys::TimeSpan.FromMilliseconds(100), maxDelay: sys::TimeSpan.FromMilliseconds(60000), delayMultiplier: 1.3), timeoutBackoff: new gaxgrpc::BackoffSettings(delay: sys::TimeSpan.FromMilliseconds(600000), maxDelay: sys::TimeSpan.FromMilliseconds(600000), delayMultiplier: 1), totalExpiration: gax::Expiration.FromTimeout(sys::TimeSpan.FromMilliseconds(600000)), retryFilter: gaxgrpc::RetrySettings.FilterForStatusCodes(grpccore::StatusCode.DeadlineExceeded, grpccore::StatusCode.Unavailable))));
+        public gaxgrpc::CallSettings GetGlossarySettings { get; set; } = gaxgrpc::CallSettingsExtensions.WithRetry(gaxgrpc::CallSettings.FromExpiration(gax::Expiration.FromTimeout(sys::TimeSpan.FromMilliseconds(600000))), gaxgrpc::RetrySettings.FromExponentialBackoff(maxAttempts: 2147483647, initialBackoff: sys::TimeSpan.FromMilliseconds(100), maxBackoff: sys::TimeSpan.FromMilliseconds(60000), backoffMultiplier: 1.3, retryFilter: gaxgrpc::RetrySettings.FilterForStatusCodes(grpccore::StatusCode.DeadlineExceeded, grpccore::StatusCode.Unavailable)));
 
         /// <summary>
         /// <see cref="gaxgrpc::CallSettings"/> for synchronous and asynchronous calls to
@@ -188,13 +202,11 @@ namespace Google.Cloud.Translate.V3
         /// <item><description>Initial retry delay: 100 milliseconds.</description></item>
         /// <item><description>Retry delay multiplier: 1.3</description></item>
         /// <item><description>Retry maximum delay: 60000 milliseconds.</description></item>
-        /// <item><description>Initial timeout: 600000 milliseconds.</description></item>
-        /// <item><description>Timeout multiplier: 1</description></item>
-        /// <item><description>Timeout maximum delay: 600000 milliseconds.</description></item>
-        /// <item><description>Total timeout: 600 seconds.</description></item>
+        /// <item><description>Maximum attempts: Unlimited</description></item>
+        /// <item><description>Timeout: 600 seconds.</description></item>
         /// </list>
         /// </remarks>
-        public gaxgrpc::CallSettings DeleteGlossarySettings { get; set; } = gaxgrpc::CallSettings.FromCallTiming(gaxgrpc::CallTiming.FromRetry(new gaxgrpc::RetrySettings(retryBackoff: new gaxgrpc::BackoffSettings(delay: sys::TimeSpan.FromMilliseconds(100), maxDelay: sys::TimeSpan.FromMilliseconds(60000), delayMultiplier: 1.3), timeoutBackoff: new gaxgrpc::BackoffSettings(delay: sys::TimeSpan.FromMilliseconds(600000), maxDelay: sys::TimeSpan.FromMilliseconds(600000), delayMultiplier: 1), totalExpiration: gax::Expiration.FromTimeout(sys::TimeSpan.FromMilliseconds(600000)), retryFilter: gaxgrpc::RetrySettings.FilterForStatusCodes(grpccore::StatusCode.DeadlineExceeded, grpccore::StatusCode.Unavailable))));
+        public gaxgrpc::CallSettings DeleteGlossarySettings { get; set; } = gaxgrpc::CallSettingsExtensions.WithRetry(gaxgrpc::CallSettings.FromExpiration(gax::Expiration.FromTimeout(sys::TimeSpan.FromMilliseconds(600000))), gaxgrpc::RetrySettings.FromExponentialBackoff(maxAttempts: 2147483647, initialBackoff: sys::TimeSpan.FromMilliseconds(100), maxBackoff: sys::TimeSpan.FromMilliseconds(60000), backoffMultiplier: 1.3, retryFilter: gaxgrpc::RetrySettings.FilterForStatusCodes(grpccore::StatusCode.DeadlineExceeded, grpccore::StatusCode.Unavailable)));
 
         /// <summary>
         /// Long Running Operation settings for calls to <c>TranslationServiceClient.DeleteGlossary</c> and
@@ -228,40 +240,66 @@ namespace Google.Cloud.Translate.V3
         /// <summary>The settings to use for RPCs, or <c>null</c> for the default settings.</summary>
         public TranslationServiceSettings Settings { get; set; }
 
-        /// <inheritdoc/>
+        partial void InterceptBuild(ref TranslationServiceClient client);
+
+        partial void InterceptBuildAsync(st::CancellationToken cancellationToken, ref stt::Task<TranslationServiceClient> task);
+
+        /// <summary>Builds the resulting client.</summary>
         public override TranslationServiceClient Build()
+        {
+            TranslationServiceClient client = null;
+            InterceptBuild(ref client);
+            return client ?? BuildImpl();
+        }
+
+        /// <summary>Builds the resulting client asynchronously.</summary>
+        public override stt::Task<TranslationServiceClient> BuildAsync(st::CancellationToken cancellationToken = default)
+        {
+            stt::Task<TranslationServiceClient> task = null;
+            InterceptBuildAsync(cancellationToken, ref task);
+            return task ?? BuildAsyncImpl(cancellationToken);
+        }
+
+        private TranslationServiceClient BuildImpl()
         {
             Validate();
             grpccore::CallInvoker callInvoker = CreateCallInvoker();
             return TranslationServiceClient.Create(callInvoker, Settings);
         }
 
-        /// <inheritdoc/>
-        public override async stt::Task<TranslationServiceClient> BuildAsync(st::CancellationToken cancellationToken = default)
+        private async stt::Task<TranslationServiceClient> BuildAsyncImpl(st::CancellationToken cancellationToken)
         {
             Validate();
             grpccore::CallInvoker callInvoker = await CreateCallInvokerAsync(cancellationToken).ConfigureAwait(false);
             return TranslationServiceClient.Create(callInvoker, Settings);
         }
 
-        /// <inheritdoc/>
-        protected override gaxgrpc::ServiceEndpoint GetDefaultEndpoint() => TranslationServiceClient.DefaultEndpoint;
+        /// <summary>Returns the endpoint for this builder type, used if no endpoint is otherwise specified.</summary>
+        protected override string GetDefaultEndpoint() => TranslationServiceClient.DefaultEndpoint;
 
-        /// <inheritdoc/>
+        /// <summary>
+        /// Returns the default scopes for this builder type, used if no scopes are otherwise specified.
+        /// </summary>
         protected override scg::IReadOnlyList<string> GetDefaultScopes() => TranslationServiceClient.DefaultScopes;
 
-        /// <inheritdoc/>
+        /// <summary>Returns the channel pool to use when no other options are specified.</summary>
         protected override gaxgrpc::ChannelPool GetChannelPool() => TranslationServiceClient.ChannelPool;
+
+        /// <summary>Returns the default <see cref="gaxgrpc::GrpcAdapter"/>to use if not otherwise specified.</summary>
+        protected override gaxgrpc::GrpcAdapter DefaultGrpcAdapter => gaxgrpccore::GrpcCoreAdapter.Instance;
     }
 
     /// <summary>TranslationService client wrapper, for convenient use.</summary>
+    /// <remarks>
+    /// Provides natural language translation operations.
+    /// </remarks>
     public abstract partial class TranslationServiceClient
     {
         /// <summary>
         /// The default endpoint for the TranslationService service, which is a host of "translate.googleapis.com" and a
         /// port of 443.
         /// </summary>
-        public static gaxgrpc::ServiceEndpoint DefaultEndpoint { get; } = new gaxgrpc::ServiceEndpoint("translate.googleapis.com", 443);
+        public static string DefaultEndpoint { get; } = "translate.googleapis.com:443";
 
         /// <summary>The default TranslationService scopes.</summary>
         /// <remarks>
@@ -280,96 +318,24 @@ namespace Google.Cloud.Translate.V3
         internal static gaxgrpc::ChannelPool ChannelPool { get; } = new gaxgrpc::ChannelPool(DefaultScopes);
 
         /// <summary>
-        /// Asynchronously creates a <see cref="TranslationServiceClient"/>, applying defaults for all unspecified
-        /// settings, and creating a channel connecting to the given endpoint with application default credentials where
-        /// necessary. See the example for how to use custom credentials.
+        /// Asynchronously creates a <see cref="TranslationServiceClient"/> using the default credentials, endpoint and
+        /// settings. To specify custom credentials or other settings, use <see cref="TranslationServiceClientBuilder"/>
+        /// .
         /// </summary>
-        /// <example>
-        /// This sample shows how to create a client using default credentials:
-        /// <code>
-        /// using Google.Cloud.Vision.V1;
-        /// ...
-        /// // When running on Google Cloud Platform this will use the project Compute Credential.
-        /// // Or set the GOOGLE_APPLICATION_CREDENTIALS environment variable to the path of a JSON
-        /// // credential file to use that credential.
-        /// ImageAnnotatorClient client = await ImageAnnotatorClient.CreateAsync();
-        /// </code>
-        /// This sample shows how to create a client using credentials loaded from a JSON file:
-        /// <code>
-        /// using Google.Cloud.Vision.V1;
-        /// using Google.Apis.Auth.OAuth2;
-        /// using Grpc.Auth;
-        /// using Grpc.Core;
-        /// ...
-        /// GoogleCredential cred = GoogleCredential.FromFile("/path/to/credentials.json");
-        /// Channel channel = new Channel(
-        ///     ImageAnnotatorClient.DefaultEndpoint.Host, ImageAnnotatorClient.DefaultEndpoint.Port, cred.ToChannelCredentials());
-        /// ImageAnnotatorClient client = ImageAnnotatorClient.Create(channel);
-        /// ...
-        /// // Shutdown the channel when it is no longer required.
-        /// await channel.ShutdownAsync();
-        /// </code>
-        /// </example>
-        /// <param name="endpoint">Optional <see cref="gaxgrpc::ServiceEndpoint"/>.</param>
-        /// <param name="settings">Optional <see cref="TranslationServiceSettings"/>.</param>
+        /// <param name="cancellationToken">
+        /// The <see cref="st::CancellationToken"/> to use while creating the client.
+        /// </param>
         /// <returns>The task representing the created <see cref="TranslationServiceClient"/>.</returns>
-        public static async stt::Task<TranslationServiceClient> CreateAsync(gaxgrpc::ServiceEndpoint endpoint = null, TranslationServiceSettings settings = null)
-        {
-            grpccore::Channel channel = await ChannelPool.GetChannelAsync(endpoint ?? DefaultEndpoint).ConfigureAwait(false);
-            return Create(channel, settings);
-        }
+        public static stt::Task<TranslationServiceClient> CreateAsync(st::CancellationToken cancellationToken = default) =>
+            new TranslationServiceClientBuilder().BuildAsync(cancellationToken);
 
         /// <summary>
-        /// Synchronously creates a <see cref="TranslationServiceClient"/>, applying defaults for all unspecified
-        /// settings, and creating a channel connecting to the given endpoint with application default credentials where
-        /// necessary. See the example for how to use custom credentials.
+        /// Synchronously creates a <see cref="TranslationServiceClient"/> using the default credentials, endpoint and
+        /// settings. To specify custom credentials or other settings, use <see cref="TranslationServiceClientBuilder"/>
+        /// .
         /// </summary>
-        /// <example>
-        /// This sample shows how to create a client using default credentials:
-        /// <code>
-        /// using Google.Cloud.Vision.V1;
-        /// ...
-        /// // When running on Google Cloud Platform this will use the project Compute Credential.
-        /// // Or set the GOOGLE_APPLICATION_CREDENTIALS environment variable to the path of a JSON
-        /// // credential file to use that credential.
-        /// ImageAnnotatorClient client = ImageAnnotatorClient.Create();
-        /// </code>
-        /// This sample shows how to create a client using credentials loaded from a JSON file:
-        /// <code>
-        /// using Google.Cloud.Vision.V1;
-        /// using Google.Apis.Auth.OAuth2;
-        /// using Grpc.Auth;
-        /// using Grpc.Core;
-        /// ...
-        /// GoogleCredential cred = GoogleCredential.FromFile("/path/to/credentials.json");
-        /// Channel channel = new Channel(
-        ///     ImageAnnotatorClient.DefaultEndpoint.Host, ImageAnnotatorClient.DefaultEndpoint.Port, cred.ToChannelCredentials());
-        /// ImageAnnotatorClient client = ImageAnnotatorClient.Create(channel);
-        /// ...
-        /// // Shutdown the channel when it is no longer required.
-        /// channel.ShutdownAsync().Wait();
-        /// </code>
-        /// </example>
-        /// <param name="endpoint">Optional <see cref="gaxgrpc::ServiceEndpoint"/>.</param>
-        /// <param name="settings">Optional <see cref="TranslationServiceSettings"/>.</param>
         /// <returns>The created <see cref="TranslationServiceClient"/>.</returns>
-        public static TranslationServiceClient Create(gaxgrpc::ServiceEndpoint endpoint = null, TranslationServiceSettings settings = null)
-        {
-            grpccore::Channel channel = ChannelPool.GetChannel(endpoint ?? DefaultEndpoint);
-            return Create(channel, settings);
-        }
-
-        /// <summary>
-        /// Creates a <see cref="TranslationServiceClient"/> which uses the specified channel for remote operations.
-        /// </summary>
-        /// <param name="channel">The <see cref="grpccore::Channel"/> for remote operations. Must not be null.</param>
-        /// <param name="settings">Optional <see cref="TranslationServiceSettings"/>.</param>
-        /// <returns>The created <see cref="TranslationServiceClient"/>.</returns>
-        public static TranslationServiceClient Create(grpccore::Channel channel, TranslationServiceSettings settings = null)
-        {
-            gax::GaxPreconditions.CheckNotNull(channel, nameof(channel));
-            return Create(new grpccore::DefaultCallInvoker(channel), settings);
-        }
+        public static TranslationServiceClient Create() => new TranslationServiceClientBuilder().Build();
 
         /// <summary>
         /// Creates a <see cref="TranslationServiceClient"/> which uses the specified call invoker for remote
@@ -380,7 +346,7 @@ namespace Google.Cloud.Translate.V3
         /// </param>
         /// <param name="settings">Optional <see cref="TranslationServiceSettings"/>.</param>
         /// <returns>The created <see cref="TranslationServiceClient"/>.</returns>
-        public static TranslationServiceClient Create(grpccore::CallInvoker callInvoker, TranslationServiceSettings settings = null)
+        internal static TranslationServiceClient Create(grpccore::CallInvoker callInvoker, TranslationServiceSettings settings = null)
         {
             gax::GaxPreconditions.CheckNotNull(callInvoker, nameof(callInvoker));
             grpcinter::Interceptor interceptor = settings?.Interceptor;
@@ -393,16 +359,14 @@ namespace Google.Cloud.Translate.V3
         }
 
         /// <summary>
-        /// Shuts down any channels automatically created by
-        /// <see cref="Create(grpccore::CallInvoker,TranslationServiceSettings)"/> and
-        /// <see cref="CreateAsync(gaxgrpc::ServiceEndpoint,TranslationServiceSettings)"/>. Channels which weren't
-        /// automatically created are not affected.
+        /// Shuts down any channels automatically created by <see cref="Create()"/> and
+        /// <see cref="CreateAsync(st::CancellationToken)"/>. Channels which weren't automatically created are not
+        /// affected.
         /// </summary>
         /// <remarks>
-        /// After calling this method, further calls to
-        /// <see cref="Create(grpccore::CallInvoker,TranslationServiceSettings)"/> and
-        /// <see cref="CreateAsync(gaxgrpc::ServiceEndpoint,TranslationServiceSettings)"/> will create new channels,
-        /// which could in turn be shut down by another call to this method.
+        /// After calling this method, further calls to <see cref="Create()"/> and
+        /// <see cref="CreateAsync(st::CancellationToken)"/> will create new channels, which could in turn be shut down
+        /// by another call to this method.
         /// </remarks>
         /// <returns>A task representing the asynchronous shutdown operation.</returns>
         public static stt::Task ShutdownDefaultChannelsAsync() => ChannelPool.ShutdownChannelsAsync();
@@ -2304,6 +2268,9 @@ namespace Google.Cloud.Translate.V3
     }
 
     /// <summary>TranslationService client wrapper implementation, for convenient use.</summary>
+    /// <remarks>
+    /// Provides natural language translation operations.
+    /// </remarks>
     public sealed partial class TranslationServiceClientImpl : TranslationServiceClient
     {
         private readonly gaxgrpc::ApiCall<TranslateTextRequest, TranslateTextResponse> _callTranslateText;
@@ -2335,28 +2302,28 @@ namespace Google.Cloud.Translate.V3
             BatchTranslateTextOperationsClient = new lro::OperationsClientImpl(grpcClient.CreateOperationsClient(), effectiveSettings.BatchTranslateTextOperationsSettings);
             CreateGlossaryOperationsClient = new lro::OperationsClientImpl(grpcClient.CreateOperationsClient(), effectiveSettings.CreateGlossaryOperationsSettings);
             DeleteGlossaryOperationsClient = new lro::OperationsClientImpl(grpcClient.CreateOperationsClient(), effectiveSettings.DeleteGlossaryOperationsSettings);
-            _callTranslateText = clientHelper.BuildApiCall<TranslateTextRequest, TranslateTextResponse>(grpcClient.TranslateTextAsync, grpcClient.TranslateText, effectiveSettings.TranslateTextSettings).WithCallSettingsOverlay(request => gaxgrpc::CallSettings.FromHeader("x-goog-request-params", $"parent={(sysnet::WebUtility.UrlEncode(request.Parent))}"));
+            _callTranslateText = clientHelper.BuildApiCall<TranslateTextRequest, TranslateTextResponse>(grpcClient.TranslateTextAsync, grpcClient.TranslateText, effectiveSettings.TranslateTextSettings).WithGoogleRequestParam("parent", request => request.Parent);
             Modify_ApiCall(ref _callTranslateText);
             Modify_TranslateTextApiCall(ref _callTranslateText);
-            _callDetectLanguage = clientHelper.BuildApiCall<DetectLanguageRequest, DetectLanguageResponse>(grpcClient.DetectLanguageAsync, grpcClient.DetectLanguage, effectiveSettings.DetectLanguageSettings).WithCallSettingsOverlay(request => gaxgrpc::CallSettings.FromHeader("x-goog-request-params", $"parent={(sysnet::WebUtility.UrlEncode(request.Parent))}"));
+            _callDetectLanguage = clientHelper.BuildApiCall<DetectLanguageRequest, DetectLanguageResponse>(grpcClient.DetectLanguageAsync, grpcClient.DetectLanguage, effectiveSettings.DetectLanguageSettings).WithGoogleRequestParam("parent", request => request.Parent);
             Modify_ApiCall(ref _callDetectLanguage);
             Modify_DetectLanguageApiCall(ref _callDetectLanguage);
-            _callGetSupportedLanguages = clientHelper.BuildApiCall<GetSupportedLanguagesRequest, SupportedLanguages>(grpcClient.GetSupportedLanguagesAsync, grpcClient.GetSupportedLanguages, effectiveSettings.GetSupportedLanguagesSettings).WithCallSettingsOverlay(request => gaxgrpc::CallSettings.FromHeader("x-goog-request-params", $"parent={(sysnet::WebUtility.UrlEncode(request.Parent))}"));
+            _callGetSupportedLanguages = clientHelper.BuildApiCall<GetSupportedLanguagesRequest, SupportedLanguages>(grpcClient.GetSupportedLanguagesAsync, grpcClient.GetSupportedLanguages, effectiveSettings.GetSupportedLanguagesSettings).WithGoogleRequestParam("parent", request => request.Parent);
             Modify_ApiCall(ref _callGetSupportedLanguages);
             Modify_GetSupportedLanguagesApiCall(ref _callGetSupportedLanguages);
-            _callBatchTranslateText = clientHelper.BuildApiCall<BatchTranslateTextRequest, lro::Operation>(grpcClient.BatchTranslateTextAsync, grpcClient.BatchTranslateText, effectiveSettings.BatchTranslateTextSettings).WithCallSettingsOverlay(request => gaxgrpc::CallSettings.FromHeader("x-goog-request-params", $"parent={(sysnet::WebUtility.UrlEncode(request.Parent))}"));
+            _callBatchTranslateText = clientHelper.BuildApiCall<BatchTranslateTextRequest, lro::Operation>(grpcClient.BatchTranslateTextAsync, grpcClient.BatchTranslateText, effectiveSettings.BatchTranslateTextSettings).WithGoogleRequestParam("parent", request => request.Parent);
             Modify_ApiCall(ref _callBatchTranslateText);
             Modify_BatchTranslateTextApiCall(ref _callBatchTranslateText);
-            _callCreateGlossary = clientHelper.BuildApiCall<CreateGlossaryRequest, lro::Operation>(grpcClient.CreateGlossaryAsync, grpcClient.CreateGlossary, effectiveSettings.CreateGlossarySettings).WithCallSettingsOverlay(request => gaxgrpc::CallSettings.FromHeader("x-goog-request-params", $"parent={(sysnet::WebUtility.UrlEncode(request.Parent))}"));
+            _callCreateGlossary = clientHelper.BuildApiCall<CreateGlossaryRequest, lro::Operation>(grpcClient.CreateGlossaryAsync, grpcClient.CreateGlossary, effectiveSettings.CreateGlossarySettings).WithGoogleRequestParam("parent", request => request.Parent);
             Modify_ApiCall(ref _callCreateGlossary);
             Modify_CreateGlossaryApiCall(ref _callCreateGlossary);
-            _callListGlossaries = clientHelper.BuildApiCall<ListGlossariesRequest, ListGlossariesResponse>(grpcClient.ListGlossariesAsync, grpcClient.ListGlossaries, effectiveSettings.ListGlossariesSettings).WithCallSettingsOverlay(request => gaxgrpc::CallSettings.FromHeader("x-goog-request-params", $"parent={(sysnet::WebUtility.UrlEncode(request.Parent))}"));
+            _callListGlossaries = clientHelper.BuildApiCall<ListGlossariesRequest, ListGlossariesResponse>(grpcClient.ListGlossariesAsync, grpcClient.ListGlossaries, effectiveSettings.ListGlossariesSettings).WithGoogleRequestParam("parent", request => request.Parent);
             Modify_ApiCall(ref _callListGlossaries);
             Modify_ListGlossariesApiCall(ref _callListGlossaries);
-            _callGetGlossary = clientHelper.BuildApiCall<GetGlossaryRequest, Glossary>(grpcClient.GetGlossaryAsync, grpcClient.GetGlossary, effectiveSettings.GetGlossarySettings).WithCallSettingsOverlay(request => gaxgrpc::CallSettings.FromHeader("x-goog-request-params", $"name={(sysnet::WebUtility.UrlEncode(request.Name))}"));
+            _callGetGlossary = clientHelper.BuildApiCall<GetGlossaryRequest, Glossary>(grpcClient.GetGlossaryAsync, grpcClient.GetGlossary, effectiveSettings.GetGlossarySettings).WithGoogleRequestParam("name", request => request.Name);
             Modify_ApiCall(ref _callGetGlossary);
             Modify_GetGlossaryApiCall(ref _callGetGlossary);
-            _callDeleteGlossary = clientHelper.BuildApiCall<DeleteGlossaryRequest, lro::Operation>(grpcClient.DeleteGlossaryAsync, grpcClient.DeleteGlossary, effectiveSettings.DeleteGlossarySettings).WithCallSettingsOverlay(request => gaxgrpc::CallSettings.FromHeader("x-goog-request-params", $"name={(sysnet::WebUtility.UrlEncode(request.Name))}"));
+            _callDeleteGlossary = clientHelper.BuildApiCall<DeleteGlossaryRequest, lro::Operation>(grpcClient.DeleteGlossaryAsync, grpcClient.DeleteGlossary, effectiveSettings.DeleteGlossarySettings).WithGoogleRequestParam("name", request => request.Name);
             Modify_ApiCall(ref _callDeleteGlossary);
             Modify_DeleteGlossaryApiCall(ref _callDeleteGlossary);
             OnConstruction(grpcClient, effectiveSettings, clientHelper);

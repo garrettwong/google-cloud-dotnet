@@ -1,4 +1,4 @@
-// Copyright 2019 Google LLC
+// Copyright 2020 Google LLC
 //
 // Licensed under the Apache License, Version 2.0 (the "License");
 // you may not use this file except in compliance with the License.
@@ -23,7 +23,7 @@ namespace Google.Cloud.ErrorReporting.V1Beta1.Snippets
     public sealed class GeneratedReportErrorsServiceClientSnippets
     {
         /// <summary>Snippet for ReportErrorEvent</summary>
-        public void ReportErrorEvent_RequestObject()
+        public void ReportErrorEventRequestObject()
         {
             // Snippet: ReportErrorEvent(ReportErrorEventRequest, CallSettings)
             // Create client
@@ -31,7 +31,7 @@ namespace Google.Cloud.ErrorReporting.V1Beta1.Snippets
             // Initialize request argument(s)
             ReportErrorEventRequest request = new ReportErrorEventRequest
             {
-                ProjectNameAsProjectName = new ProjectName("[PROJECT]"),
+                ProjectNameAsProjectName = ProjectName.FromProject("[PROJECT]"),
                 Event = new ReportedErrorEvent(),
             };
             // Make the request
@@ -40,7 +40,7 @@ namespace Google.Cloud.ErrorReporting.V1Beta1.Snippets
         }
 
         /// <summary>Snippet for ReportErrorEventAsync</summary>
-        public async Task ReportErrorEventAsync_RequestObject()
+        public async Task ReportErrorEventRequestObjectAsync()
         {
             // Snippet: ReportErrorEventAsync(ReportErrorEventRequest, CallSettings)
             // Additional: ReportErrorEventAsync(ReportErrorEventRequest, CancellationToken)
@@ -49,7 +49,7 @@ namespace Google.Cloud.ErrorReporting.V1Beta1.Snippets
             // Initialize request argument(s)
             ReportErrorEventRequest request = new ReportErrorEventRequest
             {
-                ProjectNameAsProjectName = new ProjectName("[PROJECT]"),
+                ProjectNameAsProjectName = ProjectName.FromProject("[PROJECT]"),
                 Event = new ReportedErrorEvent(),
             };
             // Make the request
@@ -87,13 +87,13 @@ namespace Google.Cloud.ErrorReporting.V1Beta1.Snippets
         }
 
         /// <summary>Snippet for ReportErrorEvent</summary>
-        public void ReportErrorEvent_ResourceNames()
+        public void ReportErrorEventResourceNames()
         {
             // Snippet: ReportErrorEvent(ProjectName, ReportedErrorEvent, CallSettings)
             // Create client
             ReportErrorsServiceClient reportErrorsServiceClient = ReportErrorsServiceClient.Create();
             // Initialize request argument(s)
-            ProjectName projectName = new ProjectName("[PROJECT]");
+            ProjectName projectName = ProjectName.FromProject("[PROJECT]");
             ReportedErrorEvent @event = new ReportedErrorEvent();
             // Make the request
             ReportErrorEventResponse response = reportErrorsServiceClient.ReportErrorEvent(projectName, @event);
@@ -101,14 +101,14 @@ namespace Google.Cloud.ErrorReporting.V1Beta1.Snippets
         }
 
         /// <summary>Snippet for ReportErrorEventAsync</summary>
-        public async Task ReportErrorEventAsync_ResourceNames()
+        public async Task ReportErrorEventResourceNamesAsync()
         {
             // Snippet: ReportErrorEventAsync(ProjectName, ReportedErrorEvent, CallSettings)
             // Additional: ReportErrorEventAsync(ProjectName, ReportedErrorEvent, CancellationToken)
             // Create client
             ReportErrorsServiceClient reportErrorsServiceClient = await ReportErrorsServiceClient.CreateAsync();
             // Initialize request argument(s)
-            ProjectName projectName = new ProjectName("[PROJECT]");
+            ProjectName projectName = ProjectName.FromProject("[PROJECT]");
             ReportedErrorEvent @event = new ReportedErrorEvent();
             // Make the request
             ReportErrorEventResponse response = await reportErrorsServiceClient.ReportErrorEventAsync(projectName, @event);

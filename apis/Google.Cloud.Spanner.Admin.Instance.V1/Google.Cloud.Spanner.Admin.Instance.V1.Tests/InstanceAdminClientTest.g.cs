@@ -1,4 +1,4 @@
-// Copyright 2019 Google LLC
+// Copyright 2020 Google LLC
 //
 // Licensed under the Apache License, Version 2.0 (the "License");
 // you may not use this file except in compliance with the License.
@@ -39,11 +39,11 @@ namespace Google.Cloud.Spanner.Admin.Instance.V1.Tests
             mockGrpcClient.Setup(x => x.CreateOperationsClient()).Returns(new moq::Mock<lro::Operations.OperationsClient>().Object);
             GetInstanceConfigRequest request = new GetInstanceConfigRequest
             {
-                InstanceConfigName = new InstanceConfigName("[PROJECT]", "[INSTANCE_CONFIG]"),
+                InstanceConfigName = InstanceConfigName.FromProjectInstanceConfig("[PROJECT]", "[INSTANCE_CONFIG]"),
             };
             InstanceConfig expectedResponse = new InstanceConfig
             {
-                InstanceConfigName = new InstanceConfigName("[PROJECT]", "[INSTANCE_CONFIG]"),
+                InstanceConfigName = InstanceConfigName.FromProjectInstanceConfig("[PROJECT]", "[INSTANCE_CONFIG]"),
                 DisplayName = "display_name137f65c2",
                 Replicas = { new ReplicaInfo(), },
             };
@@ -61,11 +61,11 @@ namespace Google.Cloud.Spanner.Admin.Instance.V1.Tests
             mockGrpcClient.Setup(x => x.CreateOperationsClient()).Returns(new moq::Mock<lro::Operations.OperationsClient>().Object);
             GetInstanceConfigRequest request = new GetInstanceConfigRequest
             {
-                InstanceConfigName = new InstanceConfigName("[PROJECT]", "[INSTANCE_CONFIG]"),
+                InstanceConfigName = InstanceConfigName.FromProjectInstanceConfig("[PROJECT]", "[INSTANCE_CONFIG]"),
             };
             InstanceConfig expectedResponse = new InstanceConfig
             {
-                InstanceConfigName = new InstanceConfigName("[PROJECT]", "[INSTANCE_CONFIG]"),
+                InstanceConfigName = InstanceConfigName.FromProjectInstanceConfig("[PROJECT]", "[INSTANCE_CONFIG]"),
                 DisplayName = "display_name137f65c2",
                 Replicas = { new ReplicaInfo(), },
             };
@@ -85,11 +85,11 @@ namespace Google.Cloud.Spanner.Admin.Instance.V1.Tests
             mockGrpcClient.Setup(x => x.CreateOperationsClient()).Returns(new moq::Mock<lro::Operations.OperationsClient>().Object);
             GetInstanceConfigRequest request = new GetInstanceConfigRequest
             {
-                InstanceConfigName = new InstanceConfigName("[PROJECT]", "[INSTANCE_CONFIG]"),
+                InstanceConfigName = InstanceConfigName.FromProjectInstanceConfig("[PROJECT]", "[INSTANCE_CONFIG]"),
             };
             InstanceConfig expectedResponse = new InstanceConfig
             {
-                InstanceConfigName = new InstanceConfigName("[PROJECT]", "[INSTANCE_CONFIG]"),
+                InstanceConfigName = InstanceConfigName.FromProjectInstanceConfig("[PROJECT]", "[INSTANCE_CONFIG]"),
                 DisplayName = "display_name137f65c2",
                 Replicas = { new ReplicaInfo(), },
             };
@@ -107,11 +107,11 @@ namespace Google.Cloud.Spanner.Admin.Instance.V1.Tests
             mockGrpcClient.Setup(x => x.CreateOperationsClient()).Returns(new moq::Mock<lro::Operations.OperationsClient>().Object);
             GetInstanceConfigRequest request = new GetInstanceConfigRequest
             {
-                InstanceConfigName = new InstanceConfigName("[PROJECT]", "[INSTANCE_CONFIG]"),
+                InstanceConfigName = InstanceConfigName.FromProjectInstanceConfig("[PROJECT]", "[INSTANCE_CONFIG]"),
             };
             InstanceConfig expectedResponse = new InstanceConfig
             {
-                InstanceConfigName = new InstanceConfigName("[PROJECT]", "[INSTANCE_CONFIG]"),
+                InstanceConfigName = InstanceConfigName.FromProjectInstanceConfig("[PROJECT]", "[INSTANCE_CONFIG]"),
                 DisplayName = "display_name137f65c2",
                 Replicas = { new ReplicaInfo(), },
             };
@@ -125,17 +125,17 @@ namespace Google.Cloud.Spanner.Admin.Instance.V1.Tests
         }
 
         [xunit::FactAttribute]
-        public void GetInstanceConfig_ResourceNames()
+        public void GetInstanceConfigResourceNames()
         {
             moq::Mock<InstanceAdmin.InstanceAdminClient> mockGrpcClient = new moq::Mock<InstanceAdmin.InstanceAdminClient>(moq::MockBehavior.Strict);
             mockGrpcClient.Setup(x => x.CreateOperationsClient()).Returns(new moq::Mock<lro::Operations.OperationsClient>().Object);
             GetInstanceConfigRequest request = new GetInstanceConfigRequest
             {
-                InstanceConfigName = new InstanceConfigName("[PROJECT]", "[INSTANCE_CONFIG]"),
+                InstanceConfigName = InstanceConfigName.FromProjectInstanceConfig("[PROJECT]", "[INSTANCE_CONFIG]"),
             };
             InstanceConfig expectedResponse = new InstanceConfig
             {
-                InstanceConfigName = new InstanceConfigName("[PROJECT]", "[INSTANCE_CONFIG]"),
+                InstanceConfigName = InstanceConfigName.FromProjectInstanceConfig("[PROJECT]", "[INSTANCE_CONFIG]"),
                 DisplayName = "display_name137f65c2",
                 Replicas = { new ReplicaInfo(), },
             };
@@ -147,17 +147,17 @@ namespace Google.Cloud.Spanner.Admin.Instance.V1.Tests
         }
 
         [xunit::FactAttribute]
-        public async stt::Task GetInstanceConfigAsync_ResourceNames()
+        public async stt::Task GetInstanceConfigResourceNamesAsync()
         {
             moq::Mock<InstanceAdmin.InstanceAdminClient> mockGrpcClient = new moq::Mock<InstanceAdmin.InstanceAdminClient>(moq::MockBehavior.Strict);
             mockGrpcClient.Setup(x => x.CreateOperationsClient()).Returns(new moq::Mock<lro::Operations.OperationsClient>().Object);
             GetInstanceConfigRequest request = new GetInstanceConfigRequest
             {
-                InstanceConfigName = new InstanceConfigName("[PROJECT]", "[INSTANCE_CONFIG]"),
+                InstanceConfigName = InstanceConfigName.FromProjectInstanceConfig("[PROJECT]", "[INSTANCE_CONFIG]"),
             };
             InstanceConfig expectedResponse = new InstanceConfig
             {
-                InstanceConfigName = new InstanceConfigName("[PROJECT]", "[INSTANCE_CONFIG]"),
+                InstanceConfigName = InstanceConfigName.FromProjectInstanceConfig("[PROJECT]", "[INSTANCE_CONFIG]"),
                 DisplayName = "display_name137f65c2",
                 Replicas = { new ReplicaInfo(), },
             };
@@ -177,13 +177,13 @@ namespace Google.Cloud.Spanner.Admin.Instance.V1.Tests
             mockGrpcClient.Setup(x => x.CreateOperationsClient()).Returns(new moq::Mock<lro::Operations.OperationsClient>().Object);
             GetInstanceRequest request = new GetInstanceRequest
             {
-                InstanceName = new gcscv::InstanceName("[PROJECT]", "[INSTANCE]"),
+                InstanceName = gcscv::InstanceName.FromProjectInstance("[PROJECT]", "[INSTANCE]"),
                 FieldMask = new wkt::FieldMask(),
             };
             Instance expectedResponse = new Instance
             {
-                InstanceName = new gcscv::InstanceName("[PROJECT]", "[INSTANCE]"),
-                ConfigAsInstanceConfigName = new InstanceConfigName("[PROJECT]", "[INSTANCE_CONFIG]"),
+                InstanceName = gcscv::InstanceName.FromProjectInstance("[PROJECT]", "[INSTANCE]"),
+                ConfigAsInstanceConfigName = InstanceConfigName.FromProjectInstanceConfig("[PROJECT]", "[INSTANCE_CONFIG]"),
                 DisplayName = "display_name137f65c2",
                 NodeCount = -1659500730,
                 State = Instance.Types.State.Unspecified,
@@ -213,13 +213,13 @@ namespace Google.Cloud.Spanner.Admin.Instance.V1.Tests
             mockGrpcClient.Setup(x => x.CreateOperationsClient()).Returns(new moq::Mock<lro::Operations.OperationsClient>().Object);
             GetInstanceRequest request = new GetInstanceRequest
             {
-                InstanceName = new gcscv::InstanceName("[PROJECT]", "[INSTANCE]"),
+                InstanceName = gcscv::InstanceName.FromProjectInstance("[PROJECT]", "[INSTANCE]"),
                 FieldMask = new wkt::FieldMask(),
             };
             Instance expectedResponse = new Instance
             {
-                InstanceName = new gcscv::InstanceName("[PROJECT]", "[INSTANCE]"),
-                ConfigAsInstanceConfigName = new InstanceConfigName("[PROJECT]", "[INSTANCE_CONFIG]"),
+                InstanceName = gcscv::InstanceName.FromProjectInstance("[PROJECT]", "[INSTANCE]"),
+                ConfigAsInstanceConfigName = InstanceConfigName.FromProjectInstanceConfig("[PROJECT]", "[INSTANCE_CONFIG]"),
                 DisplayName = "display_name137f65c2",
                 NodeCount = -1659500730,
                 State = Instance.Types.State.Unspecified,
@@ -251,12 +251,12 @@ namespace Google.Cloud.Spanner.Admin.Instance.V1.Tests
             mockGrpcClient.Setup(x => x.CreateOperationsClient()).Returns(new moq::Mock<lro::Operations.OperationsClient>().Object);
             GetInstanceRequest request = new GetInstanceRequest
             {
-                InstanceName = new gcscv::InstanceName("[PROJECT]", "[INSTANCE]"),
+                InstanceName = gcscv::InstanceName.FromProjectInstance("[PROJECT]", "[INSTANCE]"),
             };
             Instance expectedResponse = new Instance
             {
-                InstanceName = new gcscv::InstanceName("[PROJECT]", "[INSTANCE]"),
-                ConfigAsInstanceConfigName = new InstanceConfigName("[PROJECT]", "[INSTANCE_CONFIG]"),
+                InstanceName = gcscv::InstanceName.FromProjectInstance("[PROJECT]", "[INSTANCE]"),
+                ConfigAsInstanceConfigName = InstanceConfigName.FromProjectInstanceConfig("[PROJECT]", "[INSTANCE_CONFIG]"),
                 DisplayName = "display_name137f65c2",
                 NodeCount = -1659500730,
                 State = Instance.Types.State.Unspecified,
@@ -286,12 +286,12 @@ namespace Google.Cloud.Spanner.Admin.Instance.V1.Tests
             mockGrpcClient.Setup(x => x.CreateOperationsClient()).Returns(new moq::Mock<lro::Operations.OperationsClient>().Object);
             GetInstanceRequest request = new GetInstanceRequest
             {
-                InstanceName = new gcscv::InstanceName("[PROJECT]", "[INSTANCE]"),
+                InstanceName = gcscv::InstanceName.FromProjectInstance("[PROJECT]", "[INSTANCE]"),
             };
             Instance expectedResponse = new Instance
             {
-                InstanceName = new gcscv::InstanceName("[PROJECT]", "[INSTANCE]"),
-                ConfigAsInstanceConfigName = new InstanceConfigName("[PROJECT]", "[INSTANCE_CONFIG]"),
+                InstanceName = gcscv::InstanceName.FromProjectInstance("[PROJECT]", "[INSTANCE]"),
+                ConfigAsInstanceConfigName = InstanceConfigName.FromProjectInstanceConfig("[PROJECT]", "[INSTANCE_CONFIG]"),
                 DisplayName = "display_name137f65c2",
                 NodeCount = -1659500730,
                 State = Instance.Types.State.Unspecified,
@@ -317,18 +317,18 @@ namespace Google.Cloud.Spanner.Admin.Instance.V1.Tests
         }
 
         [xunit::FactAttribute]
-        public void GetInstance_ResourceNames()
+        public void GetInstanceResourceNames()
         {
             moq::Mock<InstanceAdmin.InstanceAdminClient> mockGrpcClient = new moq::Mock<InstanceAdmin.InstanceAdminClient>(moq::MockBehavior.Strict);
             mockGrpcClient.Setup(x => x.CreateOperationsClient()).Returns(new moq::Mock<lro::Operations.OperationsClient>().Object);
             GetInstanceRequest request = new GetInstanceRequest
             {
-                InstanceName = new gcscv::InstanceName("[PROJECT]", "[INSTANCE]"),
+                InstanceName = gcscv::InstanceName.FromProjectInstance("[PROJECT]", "[INSTANCE]"),
             };
             Instance expectedResponse = new Instance
             {
-                InstanceName = new gcscv::InstanceName("[PROJECT]", "[INSTANCE]"),
-                ConfigAsInstanceConfigName = new InstanceConfigName("[PROJECT]", "[INSTANCE_CONFIG]"),
+                InstanceName = gcscv::InstanceName.FromProjectInstance("[PROJECT]", "[INSTANCE]"),
+                ConfigAsInstanceConfigName = InstanceConfigName.FromProjectInstanceConfig("[PROJECT]", "[INSTANCE_CONFIG]"),
                 DisplayName = "display_name137f65c2",
                 NodeCount = -1659500730,
                 State = Instance.Types.State.Unspecified,
@@ -352,18 +352,18 @@ namespace Google.Cloud.Spanner.Admin.Instance.V1.Tests
         }
 
         [xunit::FactAttribute]
-        public async stt::Task GetInstanceAsync_ResourceNames()
+        public async stt::Task GetInstanceResourceNamesAsync()
         {
             moq::Mock<InstanceAdmin.InstanceAdminClient> mockGrpcClient = new moq::Mock<InstanceAdmin.InstanceAdminClient>(moq::MockBehavior.Strict);
             mockGrpcClient.Setup(x => x.CreateOperationsClient()).Returns(new moq::Mock<lro::Operations.OperationsClient>().Object);
             GetInstanceRequest request = new GetInstanceRequest
             {
-                InstanceName = new gcscv::InstanceName("[PROJECT]", "[INSTANCE]"),
+                InstanceName = gcscv::InstanceName.FromProjectInstance("[PROJECT]", "[INSTANCE]"),
             };
             Instance expectedResponse = new Instance
             {
-                InstanceName = new gcscv::InstanceName("[PROJECT]", "[INSTANCE]"),
-                ConfigAsInstanceConfigName = new InstanceConfigName("[PROJECT]", "[INSTANCE_CONFIG]"),
+                InstanceName = gcscv::InstanceName.FromProjectInstance("[PROJECT]", "[INSTANCE]"),
+                ConfigAsInstanceConfigName = InstanceConfigName.FromProjectInstanceConfig("[PROJECT]", "[INSTANCE_CONFIG]"),
                 DisplayName = "display_name137f65c2",
                 NodeCount = -1659500730,
                 State = Instance.Types.State.Unspecified,
@@ -395,7 +395,7 @@ namespace Google.Cloud.Spanner.Admin.Instance.V1.Tests
             mockGrpcClient.Setup(x => x.CreateOperationsClient()).Returns(new moq::Mock<lro::Operations.OperationsClient>().Object);
             DeleteInstanceRequest request = new DeleteInstanceRequest
             {
-                InstanceName = new gcscv::InstanceName("[PROJECT]", "[INSTANCE]"),
+                InstanceName = gcscv::InstanceName.FromProjectInstance("[PROJECT]", "[INSTANCE]"),
             };
             wkt::Empty expectedResponse = new wkt::Empty { };
             mockGrpcClient.Setup(x => x.DeleteInstance(request, moq::It.IsAny<grpccore::CallOptions>())).Returns(expectedResponse);
@@ -411,7 +411,7 @@ namespace Google.Cloud.Spanner.Admin.Instance.V1.Tests
             mockGrpcClient.Setup(x => x.CreateOperationsClient()).Returns(new moq::Mock<lro::Operations.OperationsClient>().Object);
             DeleteInstanceRequest request = new DeleteInstanceRequest
             {
-                InstanceName = new gcscv::InstanceName("[PROJECT]", "[INSTANCE]"),
+                InstanceName = gcscv::InstanceName.FromProjectInstance("[PROJECT]", "[INSTANCE]"),
             };
             wkt::Empty expectedResponse = new wkt::Empty { };
             mockGrpcClient.Setup(x => x.DeleteInstanceAsync(request, moq::It.IsAny<grpccore::CallOptions>())).Returns(new grpccore::AsyncUnaryCall<wkt::Empty>(stt::Task.FromResult(expectedResponse), null, null, null, null));
@@ -428,7 +428,7 @@ namespace Google.Cloud.Spanner.Admin.Instance.V1.Tests
             mockGrpcClient.Setup(x => x.CreateOperationsClient()).Returns(new moq::Mock<lro::Operations.OperationsClient>().Object);
             DeleteInstanceRequest request = new DeleteInstanceRequest
             {
-                InstanceName = new gcscv::InstanceName("[PROJECT]", "[INSTANCE]"),
+                InstanceName = gcscv::InstanceName.FromProjectInstance("[PROJECT]", "[INSTANCE]"),
             };
             wkt::Empty expectedResponse = new wkt::Empty { };
             mockGrpcClient.Setup(x => x.DeleteInstance(request, moq::It.IsAny<grpccore::CallOptions>())).Returns(expectedResponse);
@@ -444,7 +444,7 @@ namespace Google.Cloud.Spanner.Admin.Instance.V1.Tests
             mockGrpcClient.Setup(x => x.CreateOperationsClient()).Returns(new moq::Mock<lro::Operations.OperationsClient>().Object);
             DeleteInstanceRequest request = new DeleteInstanceRequest
             {
-                InstanceName = new gcscv::InstanceName("[PROJECT]", "[INSTANCE]"),
+                InstanceName = gcscv::InstanceName.FromProjectInstance("[PROJECT]", "[INSTANCE]"),
             };
             wkt::Empty expectedResponse = new wkt::Empty { };
             mockGrpcClient.Setup(x => x.DeleteInstanceAsync(request, moq::It.IsAny<grpccore::CallOptions>())).Returns(new grpccore::AsyncUnaryCall<wkt::Empty>(stt::Task.FromResult(expectedResponse), null, null, null, null));
@@ -455,13 +455,13 @@ namespace Google.Cloud.Spanner.Admin.Instance.V1.Tests
         }
 
         [xunit::FactAttribute]
-        public void DeleteInstance_ResourceNames()
+        public void DeleteInstanceResourceNames()
         {
             moq::Mock<InstanceAdmin.InstanceAdminClient> mockGrpcClient = new moq::Mock<InstanceAdmin.InstanceAdminClient>(moq::MockBehavior.Strict);
             mockGrpcClient.Setup(x => x.CreateOperationsClient()).Returns(new moq::Mock<lro::Operations.OperationsClient>().Object);
             DeleteInstanceRequest request = new DeleteInstanceRequest
             {
-                InstanceName = new gcscv::InstanceName("[PROJECT]", "[INSTANCE]"),
+                InstanceName = gcscv::InstanceName.FromProjectInstance("[PROJECT]", "[INSTANCE]"),
             };
             wkt::Empty expectedResponse = new wkt::Empty { };
             mockGrpcClient.Setup(x => x.DeleteInstance(request, moq::It.IsAny<grpccore::CallOptions>())).Returns(expectedResponse);
@@ -471,13 +471,13 @@ namespace Google.Cloud.Spanner.Admin.Instance.V1.Tests
         }
 
         [xunit::FactAttribute]
-        public async stt::Task DeleteInstanceAsync_ResourceNames()
+        public async stt::Task DeleteInstanceResourceNamesAsync()
         {
             moq::Mock<InstanceAdmin.InstanceAdminClient> mockGrpcClient = new moq::Mock<InstanceAdmin.InstanceAdminClient>(moq::MockBehavior.Strict);
             mockGrpcClient.Setup(x => x.CreateOperationsClient()).Returns(new moq::Mock<lro::Operations.OperationsClient>().Object);
             DeleteInstanceRequest request = new DeleteInstanceRequest
             {
-                InstanceName = new gcscv::InstanceName("[PROJECT]", "[INSTANCE]"),
+                InstanceName = gcscv::InstanceName.FromProjectInstance("[PROJECT]", "[INSTANCE]"),
             };
             wkt::Empty expectedResponse = new wkt::Empty { };
             mockGrpcClient.Setup(x => x.DeleteInstanceAsync(request, moq::It.IsAny<grpccore::CallOptions>())).Returns(new grpccore::AsyncUnaryCall<wkt::Empty>(stt::Task.FromResult(expectedResponse), null, null, null, null));
@@ -494,7 +494,7 @@ namespace Google.Cloud.Spanner.Admin.Instance.V1.Tests
             mockGrpcClient.Setup(x => x.CreateOperationsClient()).Returns(new moq::Mock<lro::Operations.OperationsClient>().Object);
             gciv::SetIamPolicyRequest request = new gciv::SetIamPolicyRequest
             {
-                ResourceAsResourceName = new gax::UnknownResourceName("a/wildcard/resource"),
+                ResourceAsResourceName = new gax::UnparsedResourceName("a/wildcard/resource"),
                 Policy = new gciv::Policy(),
             };
             gciv::Policy expectedResponse = new gciv::Policy
@@ -520,7 +520,7 @@ namespace Google.Cloud.Spanner.Admin.Instance.V1.Tests
             mockGrpcClient.Setup(x => x.CreateOperationsClient()).Returns(new moq::Mock<lro::Operations.OperationsClient>().Object);
             gciv::SetIamPolicyRequest request = new gciv::SetIamPolicyRequest
             {
-                ResourceAsResourceName = new gax::UnknownResourceName("a/wildcard/resource"),
+                ResourceAsResourceName = new gax::UnparsedResourceName("a/wildcard/resource"),
                 Policy = new gciv::Policy(),
             };
             gciv::Policy expectedResponse = new gciv::Policy
@@ -548,7 +548,7 @@ namespace Google.Cloud.Spanner.Admin.Instance.V1.Tests
             mockGrpcClient.Setup(x => x.CreateOperationsClient()).Returns(new moq::Mock<lro::Operations.OperationsClient>().Object);
             gciv::SetIamPolicyRequest request = new gciv::SetIamPolicyRequest
             {
-                ResourceAsResourceName = new gax::UnknownResourceName("a/wildcard/resource"),
+                ResourceAsResourceName = new gax::UnparsedResourceName("a/wildcard/resource"),
                 Policy = new gciv::Policy(),
             };
             gciv::Policy expectedResponse = new gciv::Policy
@@ -574,7 +574,7 @@ namespace Google.Cloud.Spanner.Admin.Instance.V1.Tests
             mockGrpcClient.Setup(x => x.CreateOperationsClient()).Returns(new moq::Mock<lro::Operations.OperationsClient>().Object);
             gciv::SetIamPolicyRequest request = new gciv::SetIamPolicyRequest
             {
-                ResourceAsResourceName = new gax::UnknownResourceName("a/wildcard/resource"),
+                ResourceAsResourceName = new gax::UnparsedResourceName("a/wildcard/resource"),
                 Policy = new gciv::Policy(),
             };
             gciv::Policy expectedResponse = new gciv::Policy
@@ -596,13 +596,13 @@ namespace Google.Cloud.Spanner.Admin.Instance.V1.Tests
         }
 
         [xunit::FactAttribute]
-        public void SetIamPolicy_ResourceNames()
+        public void SetIamPolicyResourceNames()
         {
             moq::Mock<InstanceAdmin.InstanceAdminClient> mockGrpcClient = new moq::Mock<InstanceAdmin.InstanceAdminClient>(moq::MockBehavior.Strict);
             mockGrpcClient.Setup(x => x.CreateOperationsClient()).Returns(new moq::Mock<lro::Operations.OperationsClient>().Object);
             gciv::SetIamPolicyRequest request = new gciv::SetIamPolicyRequest
             {
-                ResourceAsResourceName = new gax::UnknownResourceName("a/wildcard/resource"),
+                ResourceAsResourceName = new gax::UnparsedResourceName("a/wildcard/resource"),
                 Policy = new gciv::Policy(),
             };
             gciv::Policy expectedResponse = new gciv::Policy
@@ -622,13 +622,13 @@ namespace Google.Cloud.Spanner.Admin.Instance.V1.Tests
         }
 
         [xunit::FactAttribute]
-        public async stt::Task SetIamPolicyAsync_ResourceNames()
+        public async stt::Task SetIamPolicyResourceNamesAsync()
         {
             moq::Mock<InstanceAdmin.InstanceAdminClient> mockGrpcClient = new moq::Mock<InstanceAdmin.InstanceAdminClient>(moq::MockBehavior.Strict);
             mockGrpcClient.Setup(x => x.CreateOperationsClient()).Returns(new moq::Mock<lro::Operations.OperationsClient>().Object);
             gciv::SetIamPolicyRequest request = new gciv::SetIamPolicyRequest
             {
-                ResourceAsResourceName = new gax::UnknownResourceName("a/wildcard/resource"),
+                ResourceAsResourceName = new gax::UnparsedResourceName("a/wildcard/resource"),
                 Policy = new gciv::Policy(),
             };
             gciv::Policy expectedResponse = new gciv::Policy
@@ -656,7 +656,7 @@ namespace Google.Cloud.Spanner.Admin.Instance.V1.Tests
             mockGrpcClient.Setup(x => x.CreateOperationsClient()).Returns(new moq::Mock<lro::Operations.OperationsClient>().Object);
             gciv::GetIamPolicyRequest request = new gciv::GetIamPolicyRequest
             {
-                ResourceAsResourceName = new gax::UnknownResourceName("a/wildcard/resource"),
+                ResourceAsResourceName = new gax::UnparsedResourceName("a/wildcard/resource"),
                 Options = new gciv::GetPolicyOptions(),
             };
             gciv::Policy expectedResponse = new gciv::Policy
@@ -682,7 +682,7 @@ namespace Google.Cloud.Spanner.Admin.Instance.V1.Tests
             mockGrpcClient.Setup(x => x.CreateOperationsClient()).Returns(new moq::Mock<lro::Operations.OperationsClient>().Object);
             gciv::GetIamPolicyRequest request = new gciv::GetIamPolicyRequest
             {
-                ResourceAsResourceName = new gax::UnknownResourceName("a/wildcard/resource"),
+                ResourceAsResourceName = new gax::UnparsedResourceName("a/wildcard/resource"),
                 Options = new gciv::GetPolicyOptions(),
             };
             gciv::Policy expectedResponse = new gciv::Policy
@@ -710,7 +710,7 @@ namespace Google.Cloud.Spanner.Admin.Instance.V1.Tests
             mockGrpcClient.Setup(x => x.CreateOperationsClient()).Returns(new moq::Mock<lro::Operations.OperationsClient>().Object);
             gciv::GetIamPolicyRequest request = new gciv::GetIamPolicyRequest
             {
-                ResourceAsResourceName = new gax::UnknownResourceName("a/wildcard/resource"),
+                ResourceAsResourceName = new gax::UnparsedResourceName("a/wildcard/resource"),
             };
             gciv::Policy expectedResponse = new gciv::Policy
             {
@@ -735,7 +735,7 @@ namespace Google.Cloud.Spanner.Admin.Instance.V1.Tests
             mockGrpcClient.Setup(x => x.CreateOperationsClient()).Returns(new moq::Mock<lro::Operations.OperationsClient>().Object);
             gciv::GetIamPolicyRequest request = new gciv::GetIamPolicyRequest
             {
-                ResourceAsResourceName = new gax::UnknownResourceName("a/wildcard/resource"),
+                ResourceAsResourceName = new gax::UnparsedResourceName("a/wildcard/resource"),
             };
             gciv::Policy expectedResponse = new gciv::Policy
             {
@@ -756,13 +756,13 @@ namespace Google.Cloud.Spanner.Admin.Instance.V1.Tests
         }
 
         [xunit::FactAttribute]
-        public void GetIamPolicy_ResourceNames()
+        public void GetIamPolicyResourceNames()
         {
             moq::Mock<InstanceAdmin.InstanceAdminClient> mockGrpcClient = new moq::Mock<InstanceAdmin.InstanceAdminClient>(moq::MockBehavior.Strict);
             mockGrpcClient.Setup(x => x.CreateOperationsClient()).Returns(new moq::Mock<lro::Operations.OperationsClient>().Object);
             gciv::GetIamPolicyRequest request = new gciv::GetIamPolicyRequest
             {
-                ResourceAsResourceName = new gax::UnknownResourceName("a/wildcard/resource"),
+                ResourceAsResourceName = new gax::UnparsedResourceName("a/wildcard/resource"),
             };
             gciv::Policy expectedResponse = new gciv::Policy
             {
@@ -781,13 +781,13 @@ namespace Google.Cloud.Spanner.Admin.Instance.V1.Tests
         }
 
         [xunit::FactAttribute]
-        public async stt::Task GetIamPolicyAsync_ResourceNames()
+        public async stt::Task GetIamPolicyResourceNamesAsync()
         {
             moq::Mock<InstanceAdmin.InstanceAdminClient> mockGrpcClient = new moq::Mock<InstanceAdmin.InstanceAdminClient>(moq::MockBehavior.Strict);
             mockGrpcClient.Setup(x => x.CreateOperationsClient()).Returns(new moq::Mock<lro::Operations.OperationsClient>().Object);
             gciv::GetIamPolicyRequest request = new gciv::GetIamPolicyRequest
             {
-                ResourceAsResourceName = new gax::UnknownResourceName("a/wildcard/resource"),
+                ResourceAsResourceName = new gax::UnparsedResourceName("a/wildcard/resource"),
             };
             gciv::Policy expectedResponse = new gciv::Policy
             {
@@ -814,7 +814,7 @@ namespace Google.Cloud.Spanner.Admin.Instance.V1.Tests
             mockGrpcClient.Setup(x => x.CreateOperationsClient()).Returns(new moq::Mock<lro::Operations.OperationsClient>().Object);
             gciv::TestIamPermissionsRequest request = new gciv::TestIamPermissionsRequest
             {
-                ResourceAsResourceName = new gax::UnknownResourceName("a/wildcard/resource"),
+                ResourceAsResourceName = new gax::UnparsedResourceName("a/wildcard/resource"),
                 Permissions =
                 {
                     "permissions535a2741",
@@ -841,7 +841,7 @@ namespace Google.Cloud.Spanner.Admin.Instance.V1.Tests
             mockGrpcClient.Setup(x => x.CreateOperationsClient()).Returns(new moq::Mock<lro::Operations.OperationsClient>().Object);
             gciv::TestIamPermissionsRequest request = new gciv::TestIamPermissionsRequest
             {
-                ResourceAsResourceName = new gax::UnknownResourceName("a/wildcard/resource"),
+                ResourceAsResourceName = new gax::UnparsedResourceName("a/wildcard/resource"),
                 Permissions =
                 {
                     "permissions535a2741",
@@ -870,7 +870,7 @@ namespace Google.Cloud.Spanner.Admin.Instance.V1.Tests
             mockGrpcClient.Setup(x => x.CreateOperationsClient()).Returns(new moq::Mock<lro::Operations.OperationsClient>().Object);
             gciv::TestIamPermissionsRequest request = new gciv::TestIamPermissionsRequest
             {
-                ResourceAsResourceName = new gax::UnknownResourceName("a/wildcard/resource"),
+                ResourceAsResourceName = new gax::UnparsedResourceName("a/wildcard/resource"),
                 Permissions =
                 {
                     "permissions535a2741",
@@ -897,7 +897,7 @@ namespace Google.Cloud.Spanner.Admin.Instance.V1.Tests
             mockGrpcClient.Setup(x => x.CreateOperationsClient()).Returns(new moq::Mock<lro::Operations.OperationsClient>().Object);
             gciv::TestIamPermissionsRequest request = new gciv::TestIamPermissionsRequest
             {
-                ResourceAsResourceName = new gax::UnknownResourceName("a/wildcard/resource"),
+                ResourceAsResourceName = new gax::UnparsedResourceName("a/wildcard/resource"),
                 Permissions =
                 {
                     "permissions535a2741",
@@ -920,13 +920,13 @@ namespace Google.Cloud.Spanner.Admin.Instance.V1.Tests
         }
 
         [xunit::FactAttribute]
-        public void TestIamPermissions_ResourceNames()
+        public void TestIamPermissionsResourceNames()
         {
             moq::Mock<InstanceAdmin.InstanceAdminClient> mockGrpcClient = new moq::Mock<InstanceAdmin.InstanceAdminClient>(moq::MockBehavior.Strict);
             mockGrpcClient.Setup(x => x.CreateOperationsClient()).Returns(new moq::Mock<lro::Operations.OperationsClient>().Object);
             gciv::TestIamPermissionsRequest request = new gciv::TestIamPermissionsRequest
             {
-                ResourceAsResourceName = new gax::UnknownResourceName("a/wildcard/resource"),
+                ResourceAsResourceName = new gax::UnparsedResourceName("a/wildcard/resource"),
                 Permissions =
                 {
                     "permissions535a2741",
@@ -947,13 +947,13 @@ namespace Google.Cloud.Spanner.Admin.Instance.V1.Tests
         }
 
         [xunit::FactAttribute]
-        public async stt::Task TestIamPermissionsAsync_ResourceNames()
+        public async stt::Task TestIamPermissionsResourceNamesAsync()
         {
             moq::Mock<InstanceAdmin.InstanceAdminClient> mockGrpcClient = new moq::Mock<InstanceAdmin.InstanceAdminClient>(moq::MockBehavior.Strict);
             mockGrpcClient.Setup(x => x.CreateOperationsClient()).Returns(new moq::Mock<lro::Operations.OperationsClient>().Object);
             gciv::TestIamPermissionsRequest request = new gciv::TestIamPermissionsRequest
             {
-                ResourceAsResourceName = new gax::UnknownResourceName("a/wildcard/resource"),
+                ResourceAsResourceName = new gax::UnparsedResourceName("a/wildcard/resource"),
                 Permissions =
                 {
                     "permissions535a2741",

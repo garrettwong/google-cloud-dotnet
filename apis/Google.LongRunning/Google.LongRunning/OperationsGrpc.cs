@@ -17,7 +17,6 @@
 // See the License for the specific language governing permissions and
 // limitations under the License.
 //
-//
 #pragma warning disable 0414, 1591
 #region Designer generated code
 
@@ -186,7 +185,7 @@ namespace Google.LongRunning {
     {
       /// <summary>Creates a new client for Operations</summary>
       /// <param name="channel">The channel to use to make remote calls.</param>
-      public OperationsClient(grpc::Channel channel) : base(channel)
+      public OperationsClient(grpc::ChannelBase channel) : base(channel)
       {
       }
       /// <summary>Creates a new client for Operations that uses a custom <c>CallInvoker</c>.</summary>

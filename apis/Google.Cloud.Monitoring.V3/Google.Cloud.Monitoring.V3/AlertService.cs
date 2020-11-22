@@ -26,56 +26,64 @@ namespace Google.Cloud.Monitoring.V3 {
           string.Concat(
             "Cihnb29nbGUvbW9uaXRvcmluZy92My9hbGVydF9zZXJ2aWNlLnByb3RvEhRn",
             "b29nbGUubW9uaXRvcmluZy52MxocZ29vZ2xlL2FwaS9hbm5vdGF0aW9ucy5w",
-            "cm90bxogZ29vZ2xlL21vbml0b3JpbmcvdjMvYWxlcnQucHJvdG8aG2dvb2ds",
-            "ZS9wcm90b2J1Zi9lbXB0eS5wcm90bxogZ29vZ2xlL3Byb3RvYnVmL2ZpZWxk",
-            "X21hc2sucHJvdG8aF2dvb2dsZS9hcGkvY2xpZW50LnByb3RvImEKGENyZWF0",
-            "ZUFsZXJ0UG9saWN5UmVxdWVzdBIMCgRuYW1lGAMgASgJEjcKDGFsZXJ0X3Bv",
-            "bGljeRgCIAEoCzIhLmdvb2dsZS5tb25pdG9yaW5nLnYzLkFsZXJ0UG9saWN5",
-            "IiUKFUdldEFsZXJ0UG9saWN5UmVxdWVzdBIMCgRuYW1lGAMgASgJInEKGExp",
-            "c3RBbGVydFBvbGljaWVzUmVxdWVzdBIMCgRuYW1lGAQgASgJEg4KBmZpbHRl",
-            "chgFIAEoCRIQCghvcmRlcl9ieRgGIAEoCRIRCglwYWdlX3NpemUYAiABKAUS",
-            "EgoKcGFnZV90b2tlbhgDIAEoCSJvChlMaXN0QWxlcnRQb2xpY2llc1Jlc3Bv",
-            "bnNlEjkKDmFsZXJ0X3BvbGljaWVzGAMgAygLMiEuZ29vZ2xlLm1vbml0b3Jp",
-            "bmcudjMuQWxlcnRQb2xpY3kSFwoPbmV4dF9wYWdlX3Rva2VuGAIgASgJIoQB",
-            "ChhVcGRhdGVBbGVydFBvbGljeVJlcXVlc3QSLwoLdXBkYXRlX21hc2sYAiAB",
-            "KAsyGi5nb29nbGUucHJvdG9idWYuRmllbGRNYXNrEjcKDGFsZXJ0X3BvbGlj",
-            "eRgDIAEoCzIhLmdvb2dsZS5tb25pdG9yaW5nLnYzLkFsZXJ0UG9saWN5IigK",
-            "GERlbGV0ZUFsZXJ0UG9saWN5UmVxdWVzdBIMCgRuYW1lGAMgASgJMtoHChJB",
-            "bGVydFBvbGljeVNlcnZpY2USoQEKEUxpc3RBbGVydFBvbGljaWVzEi4uZ29v",
-            "Z2xlLm1vbml0b3JpbmcudjMuTGlzdEFsZXJ0UG9saWNpZXNSZXF1ZXN0Gi8u",
-            "Z29vZ2xlLm1vbml0b3JpbmcudjMuTGlzdEFsZXJ0UG9saWNpZXNSZXNwb25z",
-            "ZSIrgtPkkwIlEiMvdjMve25hbWU9cHJvamVjdHMvKn0vYWxlcnRQb2xpY2ll",
-            "cxKPAQoOR2V0QWxlcnRQb2xpY3kSKy5nb29nbGUubW9uaXRvcmluZy52My5H",
-            "ZXRBbGVydFBvbGljeVJlcXVlc3QaIS5nb29nbGUubW9uaXRvcmluZy52My5B",
-            "bGVydFBvbGljeSItgtPkkwInEiUvdjMve25hbWU9cHJvamVjdHMvKi9hbGVy",
-            "dFBvbGljaWVzLyp9EqEBChFDcmVhdGVBbGVydFBvbGljeRIuLmdvb2dsZS5t",
-            "b25pdG9yaW5nLnYzLkNyZWF0ZUFsZXJ0UG9saWN5UmVxdWVzdBohLmdvb2ds",
-            "ZS5tb25pdG9yaW5nLnYzLkFsZXJ0UG9saWN5IjmC0+STAjMiIy92My97bmFt",
-            "ZT1wcm9qZWN0cy8qfS9hbGVydFBvbGljaWVzOgxhbGVydF9wb2xpY3kSigEK",
-            "EURlbGV0ZUFsZXJ0UG9saWN5Ei4uZ29vZ2xlLm1vbml0b3JpbmcudjMuRGVs",
-            "ZXRlQWxlcnRQb2xpY3lSZXF1ZXN0GhYuZ29vZ2xlLnByb3RvYnVmLkVtcHR5",
-            "Ii2C0+STAicqJS92My97bmFtZT1wcm9qZWN0cy8qL2FsZXJ0UG9saWNpZXMv",
-            "Kn0SsAEKEVVwZGF0ZUFsZXJ0UG9saWN5Ei4uZ29vZ2xlLm1vbml0b3Jpbmcu",
-            "djMuVXBkYXRlQWxlcnRQb2xpY3lSZXF1ZXN0GiEuZ29vZ2xlLm1vbml0b3Jp",
-            "bmcudjMuQWxlcnRQb2xpY3kiSILT5JMCQjIyL3YzL3thbGVydF9wb2xpY3ku",
-            "bmFtZT1wcm9qZWN0cy8qL2FsZXJ0UG9saWNpZXMvKn06DGFsZXJ0X3BvbGlj",
-            "eRqpAcpBGW1vbml0b3JpbmcuZ29vZ2xlYXBpcy5jb23SQYkBaHR0cHM6Ly93",
-            "d3cuZ29vZ2xlYXBpcy5jb20vYXV0aC9jbG91ZC1wbGF0Zm9ybSxodHRwczov",
-            "L3d3dy5nb29nbGVhcGlzLmNvbS9hdXRoL21vbml0b3JpbmcsaHR0cHM6Ly93",
-            "d3cuZ29vZ2xlYXBpcy5jb20vYXV0aC9tb25pdG9yaW5nLnJlYWRCqQEKGGNv",
-            "bS5nb29nbGUubW9uaXRvcmluZy52M0IRQWxlcnRTZXJ2aWNlUHJvdG9QAVo+",
-            "Z29vZ2xlLmdvbGFuZy5vcmcvZ2VucHJvdG8vZ29vZ2xlYXBpcy9tb25pdG9y",
-            "aW5nL3YzO21vbml0b3JpbmeqAhpHb29nbGUuQ2xvdWQuTW9uaXRvcmluZy5W",
-            "M8oCGkdvb2dsZVxDbG91ZFxNb25pdG9yaW5nXFYzYgZwcm90bzM="));
+            "cm90bxoXZ29vZ2xlL2FwaS9jbGllbnQucHJvdG8aH2dvb2dsZS9hcGkvZmll",
+            "bGRfYmVoYXZpb3IucHJvdG8aGWdvb2dsZS9hcGkvcmVzb3VyY2UucHJvdG8a",
+            "IGdvb2dsZS9tb25pdG9yaW5nL3YzL2FsZXJ0LnByb3RvGhtnb29nbGUvcHJv",
+            "dG9idWYvZW1wdHkucHJvdG8aIGdvb2dsZS9wcm90b2J1Zi9maWVsZF9tYXNr",
+            "LnByb3RvIpUBChhDcmVhdGVBbGVydFBvbGljeVJlcXVlc3QSOwoEbmFtZRgD",
+            "IAEoCUIt4EEC+kEnEiVtb25pdG9yaW5nLmdvb2dsZWFwaXMuY29tL0FsZXJ0",
+            "UG9saWN5EjwKDGFsZXJ0X3BvbGljeRgCIAEoCzIhLmdvb2dsZS5tb25pdG9y",
+            "aW5nLnYzLkFsZXJ0UG9saWN5QgPgQQIiVAoVR2V0QWxlcnRQb2xpY3lSZXF1",
+            "ZXN0EjsKBG5hbWUYAyABKAlCLeBBAvpBJwolbW9uaXRvcmluZy5nb29nbGVh",
+            "cGlzLmNvbS9BbGVydFBvbGljeSKgAQoYTGlzdEFsZXJ0UG9saWNpZXNSZXF1",
+            "ZXN0EjsKBG5hbWUYBCABKAlCLeBBAvpBJxIlbW9uaXRvcmluZy5nb29nbGVh",
+            "cGlzLmNvbS9BbGVydFBvbGljeRIOCgZmaWx0ZXIYBSABKAkSEAoIb3JkZXJf",
+            "YnkYBiABKAkSEQoJcGFnZV9zaXplGAIgASgFEhIKCnBhZ2VfdG9rZW4YAyAB",
+            "KAkibwoZTGlzdEFsZXJ0UG9saWNpZXNSZXNwb25zZRI5Cg5hbGVydF9wb2xp",
+            "Y2llcxgDIAMoCzIhLmdvb2dsZS5tb25pdG9yaW5nLnYzLkFsZXJ0UG9saWN5",
+            "EhcKD25leHRfcGFnZV90b2tlbhgCIAEoCSKJAQoYVXBkYXRlQWxlcnRQb2xp",
+            "Y3lSZXF1ZXN0Ei8KC3VwZGF0ZV9tYXNrGAIgASgLMhouZ29vZ2xlLnByb3Rv",
+            "YnVmLkZpZWxkTWFzaxI8CgxhbGVydF9wb2xpY3kYAyABKAsyIS5nb29nbGUu",
+            "bW9uaXRvcmluZy52My5BbGVydFBvbGljeUID4EECIlcKGERlbGV0ZUFsZXJ0",
+            "UG9saWN5UmVxdWVzdBI7CgRuYW1lGAMgASgJQi3gQQL6QScKJW1vbml0b3Jp",
+            "bmcuZ29vZ2xlYXBpcy5jb20vQWxlcnRQb2xpY3kynggKEkFsZXJ0UG9saWN5",
+            "U2VydmljZRKoAQoRTGlzdEFsZXJ0UG9saWNpZXMSLi5nb29nbGUubW9uaXRv",
+            "cmluZy52My5MaXN0QWxlcnRQb2xpY2llc1JlcXVlc3QaLy5nb29nbGUubW9u",
+            "aXRvcmluZy52My5MaXN0QWxlcnRQb2xpY2llc1Jlc3BvbnNlIjKC0+STAiUS",
+            "Iy92My97bmFtZT1wcm9qZWN0cy8qfS9hbGVydFBvbGljaWVz2kEEbmFtZRKW",
+            "AQoOR2V0QWxlcnRQb2xpY3kSKy5nb29nbGUubW9uaXRvcmluZy52My5HZXRB",
+            "bGVydFBvbGljeVJlcXVlc3QaIS5nb29nbGUubW9uaXRvcmluZy52My5BbGVy",
+            "dFBvbGljeSI0gtPkkwInEiUvdjMve25hbWU9cHJvamVjdHMvKi9hbGVydFBv",
+            "bGljaWVzLyp92kEEbmFtZRK1AQoRQ3JlYXRlQWxlcnRQb2xpY3kSLi5nb29n",
+            "bGUubW9uaXRvcmluZy52My5DcmVhdGVBbGVydFBvbGljeVJlcXVlc3QaIS5n",
+            "b29nbGUubW9uaXRvcmluZy52My5BbGVydFBvbGljeSJNgtPkkwIzIiMvdjMv",
+            "e25hbWU9cHJvamVjdHMvKn0vYWxlcnRQb2xpY2llczoMYWxlcnRfcG9saWN5",
+            "2kERbmFtZSxhbGVydF9wb2xpY3kSkQEKEURlbGV0ZUFsZXJ0UG9saWN5Ei4u",
+            "Z29vZ2xlLm1vbml0b3JpbmcudjMuRGVsZXRlQWxlcnRQb2xpY3lSZXF1ZXN0",
+            "GhYuZ29vZ2xlLnByb3RvYnVmLkVtcHR5IjSC0+STAicqJS92My97bmFtZT1w",
+            "cm9qZWN0cy8qL2FsZXJ0UG9saWNpZXMvKn3aQQRuYW1lEssBChFVcGRhdGVB",
+            "bGVydFBvbGljeRIuLmdvb2dsZS5tb25pdG9yaW5nLnYzLlVwZGF0ZUFsZXJ0",
+            "UG9saWN5UmVxdWVzdBohLmdvb2dsZS5tb25pdG9yaW5nLnYzLkFsZXJ0UG9s",
+            "aWN5ImOC0+STAkIyMi92My97YWxlcnRfcG9saWN5Lm5hbWU9cHJvamVjdHMv",
+            "Ki9hbGVydFBvbGljaWVzLyp9OgxhbGVydF9wb2xpY3naQRh1cGRhdGVfbWFz",
+            "ayxhbGVydF9wb2xpY3kaqQHKQRltb25pdG9yaW5nLmdvb2dsZWFwaXMuY29t",
+            "0kGJAWh0dHBzOi8vd3d3Lmdvb2dsZWFwaXMuY29tL2F1dGgvY2xvdWQtcGxh",
+            "dGZvcm0saHR0cHM6Ly93d3cuZ29vZ2xlYXBpcy5jb20vYXV0aC9tb25pdG9y",
+            "aW5nLGh0dHBzOi8vd3d3Lmdvb2dsZWFwaXMuY29tL2F1dGgvbW9uaXRvcmlu",
+            "Zy5yZWFkQskBChhjb20uZ29vZ2xlLm1vbml0b3JpbmcudjNCEUFsZXJ0U2Vy",
+            "dmljZVByb3RvUAFaPmdvb2dsZS5nb2xhbmcub3JnL2dlbnByb3RvL2dvb2ds",
+            "ZWFwaXMvbW9uaXRvcmluZy92Mzttb25pdG9yaW5nqgIaR29vZ2xlLkNsb3Vk",
+            "Lk1vbml0b3JpbmcuVjPKAhpHb29nbGVcQ2xvdWRcTW9uaXRvcmluZ1xWM+oC",
+            "HUdvb2dsZTo6Q2xvdWQ6Ok1vbml0b3Jpbmc6OlYzYgZwcm90bzM="));
       descriptor = pbr::FileDescriptor.FromGeneratedCode(descriptorData,
-          new pbr::FileDescriptor[] { global::Google.Api.AnnotationsReflection.Descriptor, global::Google.Cloud.Monitoring.V3.AlertReflection.Descriptor, global::Google.Protobuf.WellKnownTypes.EmptyReflection.Descriptor, global::Google.Protobuf.WellKnownTypes.FieldMaskReflection.Descriptor, global::Google.Api.ClientReflection.Descriptor, },
-          new pbr::GeneratedClrTypeInfo(null, new pbr::GeneratedClrTypeInfo[] {
-            new pbr::GeneratedClrTypeInfo(typeof(global::Google.Cloud.Monitoring.V3.CreateAlertPolicyRequest), global::Google.Cloud.Monitoring.V3.CreateAlertPolicyRequest.Parser, new[]{ "Name", "AlertPolicy" }, null, null, null),
-            new pbr::GeneratedClrTypeInfo(typeof(global::Google.Cloud.Monitoring.V3.GetAlertPolicyRequest), global::Google.Cloud.Monitoring.V3.GetAlertPolicyRequest.Parser, new[]{ "Name" }, null, null, null),
-            new pbr::GeneratedClrTypeInfo(typeof(global::Google.Cloud.Monitoring.V3.ListAlertPoliciesRequest), global::Google.Cloud.Monitoring.V3.ListAlertPoliciesRequest.Parser, new[]{ "Name", "Filter", "OrderBy", "PageSize", "PageToken" }, null, null, null),
-            new pbr::GeneratedClrTypeInfo(typeof(global::Google.Cloud.Monitoring.V3.ListAlertPoliciesResponse), global::Google.Cloud.Monitoring.V3.ListAlertPoliciesResponse.Parser, new[]{ "AlertPolicies", "NextPageToken" }, null, null, null),
-            new pbr::GeneratedClrTypeInfo(typeof(global::Google.Cloud.Monitoring.V3.UpdateAlertPolicyRequest), global::Google.Cloud.Monitoring.V3.UpdateAlertPolicyRequest.Parser, new[]{ "UpdateMask", "AlertPolicy" }, null, null, null),
-            new pbr::GeneratedClrTypeInfo(typeof(global::Google.Cloud.Monitoring.V3.DeleteAlertPolicyRequest), global::Google.Cloud.Monitoring.V3.DeleteAlertPolicyRequest.Parser, new[]{ "Name" }, null, null, null)
+          new pbr::FileDescriptor[] { global::Google.Api.AnnotationsReflection.Descriptor, global::Google.Api.ClientReflection.Descriptor, global::Google.Api.FieldBehaviorReflection.Descriptor, global::Google.Api.ResourceReflection.Descriptor, global::Google.Cloud.Monitoring.V3.AlertReflection.Descriptor, global::Google.Protobuf.WellKnownTypes.EmptyReflection.Descriptor, global::Google.Protobuf.WellKnownTypes.FieldMaskReflection.Descriptor, },
+          new pbr::GeneratedClrTypeInfo(null, null, new pbr::GeneratedClrTypeInfo[] {
+            new pbr::GeneratedClrTypeInfo(typeof(global::Google.Cloud.Monitoring.V3.CreateAlertPolicyRequest), global::Google.Cloud.Monitoring.V3.CreateAlertPolicyRequest.Parser, new[]{ "Name", "AlertPolicy" }, null, null, null, null),
+            new pbr::GeneratedClrTypeInfo(typeof(global::Google.Cloud.Monitoring.V3.GetAlertPolicyRequest), global::Google.Cloud.Monitoring.V3.GetAlertPolicyRequest.Parser, new[]{ "Name" }, null, null, null, null),
+            new pbr::GeneratedClrTypeInfo(typeof(global::Google.Cloud.Monitoring.V3.ListAlertPoliciesRequest), global::Google.Cloud.Monitoring.V3.ListAlertPoliciesRequest.Parser, new[]{ "Name", "Filter", "OrderBy", "PageSize", "PageToken" }, null, null, null, null),
+            new pbr::GeneratedClrTypeInfo(typeof(global::Google.Cloud.Monitoring.V3.ListAlertPoliciesResponse), global::Google.Cloud.Monitoring.V3.ListAlertPoliciesResponse.Parser, new[]{ "AlertPolicies", "NextPageToken" }, null, null, null, null),
+            new pbr::GeneratedClrTypeInfo(typeof(global::Google.Cloud.Monitoring.V3.UpdateAlertPolicyRequest), global::Google.Cloud.Monitoring.V3.UpdateAlertPolicyRequest.Parser, new[]{ "UpdateMask", "AlertPolicy" }, null, null, null, null),
+            new pbr::GeneratedClrTypeInfo(typeof(global::Google.Cloud.Monitoring.V3.DeleteAlertPolicyRequest), global::Google.Cloud.Monitoring.V3.DeleteAlertPolicyRequest.Parser, new[]{ "Name" }, null, null, null, null)
           }));
     }
     #endregion
@@ -85,7 +93,11 @@ namespace Google.Cloud.Monitoring.V3 {
   /// <summary>
   /// The protocol for the `CreateAlertPolicy` request.
   /// </summary>
-  public sealed partial class CreateAlertPolicyRequest : pb::IMessage<CreateAlertPolicyRequest> {
+  public sealed partial class CreateAlertPolicyRequest : pb::IMessage<CreateAlertPolicyRequest>
+  #if !GOOGLE_PROTOBUF_REFSTRUCT_COMPATIBILITY_MODE
+      , pb::IBufferMessage
+  #endif
+  {
     private static readonly pb::MessageParser<CreateAlertPolicyRequest> _parser = new pb::MessageParser<CreateAlertPolicyRequest>(() => new CreateAlertPolicyRequest());
     private pb::UnknownFieldSet _unknownFields;
     [global::System.Diagnostics.DebuggerNonUserCodeAttribute]
@@ -124,14 +136,16 @@ namespace Google.Cloud.Monitoring.V3 {
     public const int NameFieldNumber = 3;
     private string name_ = "";
     /// <summary>
-    /// The project in which to create the alerting policy. The format is
-    /// `projects/[PROJECT_ID]`.
+    /// Required. The project in which to create the alerting policy. The format is:
+    ///
+    ///     projects/[PROJECT_ID_OR_NUMBER]
     ///
     /// Note that this field names the parent container in which the alerting
     /// policy will be written, not the name of the created policy. The alerting
     /// policy that is returned will have a name that contains a normalized
     /// representation of this name as a prefix but adds a suffix of the form
-    /// `/alertPolicies/[POLICY_ID]`, identifying the policy in the container.
+    /// `/alertPolicies/[ALERT_POLICY_ID]`, identifying the policy in the
+    /// container.
     /// </summary>
     [global::System.Diagnostics.DebuggerNonUserCodeAttribute]
     public string Name {
@@ -145,9 +159,9 @@ namespace Google.Cloud.Monitoring.V3 {
     public const int AlertPolicyFieldNumber = 2;
     private global::Google.Cloud.Monitoring.V3.AlertPolicy alertPolicy_;
     /// <summary>
-    /// The requested alerting policy. You should omit the `name` field in this
+    /// Required. The requested alerting policy. You should omit the `name` field in this
     /// policy. The name will be returned in the new policy, including
-    /// a new [ALERT_POLICY_ID] value.
+    /// a new `[ALERT_POLICY_ID]` value.
     /// </summary>
     [global::System.Diagnostics.DebuggerNonUserCodeAttribute]
     public global::Google.Cloud.Monitoring.V3.AlertPolicy AlertPolicy {
@@ -193,6 +207,9 @@ namespace Google.Cloud.Monitoring.V3 {
 
     [global::System.Diagnostics.DebuggerNonUserCodeAttribute]
     public void WriteTo(pb::CodedOutputStream output) {
+    #if !GOOGLE_PROTOBUF_REFSTRUCT_COMPATIBILITY_MODE
+      output.WriteRawMessage(this);
+    #else
       if (alertPolicy_ != null) {
         output.WriteRawTag(18);
         output.WriteMessage(AlertPolicy);
@@ -204,7 +221,25 @@ namespace Google.Cloud.Monitoring.V3 {
       if (_unknownFields != null) {
         _unknownFields.WriteTo(output);
       }
+    #endif
     }
+
+    #if !GOOGLE_PROTOBUF_REFSTRUCT_COMPATIBILITY_MODE
+    [global::System.Diagnostics.DebuggerNonUserCodeAttribute]
+    void pb::IBufferMessage.InternalWriteTo(ref pb::WriteContext output) {
+      if (alertPolicy_ != null) {
+        output.WriteRawTag(18);
+        output.WriteMessage(AlertPolicy);
+      }
+      if (Name.Length != 0) {
+        output.WriteRawTag(26);
+        output.WriteString(Name);
+      }
+      if (_unknownFields != null) {
+        _unknownFields.WriteTo(ref output);
+      }
+    }
+    #endif
 
     [global::System.Diagnostics.DebuggerNonUserCodeAttribute]
     public int CalculateSize() {
@@ -240,6 +275,9 @@ namespace Google.Cloud.Monitoring.V3 {
 
     [global::System.Diagnostics.DebuggerNonUserCodeAttribute]
     public void MergeFrom(pb::CodedInputStream input) {
+    #if !GOOGLE_PROTOBUF_REFSTRUCT_COMPATIBILITY_MODE
+      input.ReadRawMessage(this);
+    #else
       uint tag;
       while ((tag = input.ReadTag()) != 0) {
         switch(tag) {
@@ -259,14 +297,44 @@ namespace Google.Cloud.Monitoring.V3 {
           }
         }
       }
+    #endif
     }
+
+    #if !GOOGLE_PROTOBUF_REFSTRUCT_COMPATIBILITY_MODE
+    [global::System.Diagnostics.DebuggerNonUserCodeAttribute]
+    void pb::IBufferMessage.InternalMergeFrom(ref pb::ParseContext input) {
+      uint tag;
+      while ((tag = input.ReadTag()) != 0) {
+        switch(tag) {
+          default:
+            _unknownFields = pb::UnknownFieldSet.MergeFieldFrom(_unknownFields, ref input);
+            break;
+          case 18: {
+            if (alertPolicy_ == null) {
+              AlertPolicy = new global::Google.Cloud.Monitoring.V3.AlertPolicy();
+            }
+            input.ReadMessage(AlertPolicy);
+            break;
+          }
+          case 26: {
+            Name = input.ReadString();
+            break;
+          }
+        }
+      }
+    }
+    #endif
 
   }
 
   /// <summary>
   /// The protocol for the `GetAlertPolicy` request.
   /// </summary>
-  public sealed partial class GetAlertPolicyRequest : pb::IMessage<GetAlertPolicyRequest> {
+  public sealed partial class GetAlertPolicyRequest : pb::IMessage<GetAlertPolicyRequest>
+  #if !GOOGLE_PROTOBUF_REFSTRUCT_COMPATIBILITY_MODE
+      , pb::IBufferMessage
+  #endif
+  {
     private static readonly pb::MessageParser<GetAlertPolicyRequest> _parser = new pb::MessageParser<GetAlertPolicyRequest>(() => new GetAlertPolicyRequest());
     private pb::UnknownFieldSet _unknownFields;
     [global::System.Diagnostics.DebuggerNonUserCodeAttribute]
@@ -304,9 +372,9 @@ namespace Google.Cloud.Monitoring.V3 {
     public const int NameFieldNumber = 3;
     private string name_ = "";
     /// <summary>
-    /// The alerting policy to retrieve. The format is
+    /// Required. The alerting policy to retrieve. The format is:
     ///
-    ///     projects/[PROJECT_ID]/alertPolicies/[ALERT_POLICY_ID]
+    ///     projects/[PROJECT_ID_OR_NUMBER]/alertPolicies/[ALERT_POLICY_ID]
     /// </summary>
     [global::System.Diagnostics.DebuggerNonUserCodeAttribute]
     public string Name {
@@ -350,6 +418,9 @@ namespace Google.Cloud.Monitoring.V3 {
 
     [global::System.Diagnostics.DebuggerNonUserCodeAttribute]
     public void WriteTo(pb::CodedOutputStream output) {
+    #if !GOOGLE_PROTOBUF_REFSTRUCT_COMPATIBILITY_MODE
+      output.WriteRawMessage(this);
+    #else
       if (Name.Length != 0) {
         output.WriteRawTag(26);
         output.WriteString(Name);
@@ -357,7 +428,21 @@ namespace Google.Cloud.Monitoring.V3 {
       if (_unknownFields != null) {
         _unknownFields.WriteTo(output);
       }
+    #endif
     }
+
+    #if !GOOGLE_PROTOBUF_REFSTRUCT_COMPATIBILITY_MODE
+    [global::System.Diagnostics.DebuggerNonUserCodeAttribute]
+    void pb::IBufferMessage.InternalWriteTo(ref pb::WriteContext output) {
+      if (Name.Length != 0) {
+        output.WriteRawTag(26);
+        output.WriteString(Name);
+      }
+      if (_unknownFields != null) {
+        _unknownFields.WriteTo(ref output);
+      }
+    }
+    #endif
 
     [global::System.Diagnostics.DebuggerNonUserCodeAttribute]
     public int CalculateSize() {
@@ -384,6 +469,9 @@ namespace Google.Cloud.Monitoring.V3 {
 
     [global::System.Diagnostics.DebuggerNonUserCodeAttribute]
     public void MergeFrom(pb::CodedInputStream input) {
+    #if !GOOGLE_PROTOBUF_REFSTRUCT_COMPATIBILITY_MODE
+      input.ReadRawMessage(this);
+    #else
       uint tag;
       while ((tag = input.ReadTag()) != 0) {
         switch(tag) {
@@ -396,14 +484,37 @@ namespace Google.Cloud.Monitoring.V3 {
           }
         }
       }
+    #endif
     }
+
+    #if !GOOGLE_PROTOBUF_REFSTRUCT_COMPATIBILITY_MODE
+    [global::System.Diagnostics.DebuggerNonUserCodeAttribute]
+    void pb::IBufferMessage.InternalMergeFrom(ref pb::ParseContext input) {
+      uint tag;
+      while ((tag = input.ReadTag()) != 0) {
+        switch(tag) {
+          default:
+            _unknownFields = pb::UnknownFieldSet.MergeFieldFrom(_unknownFields, ref input);
+            break;
+          case 26: {
+            Name = input.ReadString();
+            break;
+          }
+        }
+      }
+    }
+    #endif
 
   }
 
   /// <summary>
   /// The protocol for the `ListAlertPolicies` request.
   /// </summary>
-  public sealed partial class ListAlertPoliciesRequest : pb::IMessage<ListAlertPoliciesRequest> {
+  public sealed partial class ListAlertPoliciesRequest : pb::IMessage<ListAlertPoliciesRequest>
+  #if !GOOGLE_PROTOBUF_REFSTRUCT_COMPATIBILITY_MODE
+      , pb::IBufferMessage
+  #endif
+  {
     private static readonly pb::MessageParser<ListAlertPoliciesRequest> _parser = new pb::MessageParser<ListAlertPoliciesRequest>(() => new ListAlertPoliciesRequest());
     private pb::UnknownFieldSet _unknownFields;
     [global::System.Diagnostics.DebuggerNonUserCodeAttribute]
@@ -445,9 +556,9 @@ namespace Google.Cloud.Monitoring.V3 {
     public const int NameFieldNumber = 4;
     private string name_ = "";
     /// <summary>
-    /// The project whose alert policies are to be listed. The format is
+    /// Required. The project whose alert policies are to be listed. The format is:
     ///
-    ///     projects/[PROJECT_ID]
+    ///     projects/[PROJECT_ID_OR_NUMBER]
     ///
     /// Note that this field names the parent container in which the alerting
     /// policies to be listed are stored. To retrieve a single alerting policy
@@ -471,7 +582,7 @@ namespace Google.Cloud.Monitoring.V3 {
     /// alert policies to be included in the response.
     ///
     /// For more details, see [sorting and
-    /// filtering](/monitoring/api/v3/sorting-and-filtering).
+    /// filtering](https://cloud.google.com/monitoring/api/v3/sorting-and-filtering).
     /// </summary>
     [global::System.Diagnostics.DebuggerNonUserCodeAttribute]
     public string Filter {
@@ -490,7 +601,7 @@ namespace Google.Cloud.Monitoring.V3 {
     /// prefixed with a minus sign to sort by the field in descending order.
     ///
     /// For more details, see [sorting and
-    /// filtering](/monitoring/api/v3/sorting-and-filtering).
+    /// filtering](https://cloud.google.com/monitoring/api/v3/sorting-and-filtering).
     /// </summary>
     [global::System.Diagnostics.DebuggerNonUserCodeAttribute]
     public string OrderBy {
@@ -572,6 +683,9 @@ namespace Google.Cloud.Monitoring.V3 {
 
     [global::System.Diagnostics.DebuggerNonUserCodeAttribute]
     public void WriteTo(pb::CodedOutputStream output) {
+    #if !GOOGLE_PROTOBUF_REFSTRUCT_COMPATIBILITY_MODE
+      output.WriteRawMessage(this);
+    #else
       if (PageSize != 0) {
         output.WriteRawTag(16);
         output.WriteInt32(PageSize);
@@ -595,7 +709,37 @@ namespace Google.Cloud.Monitoring.V3 {
       if (_unknownFields != null) {
         _unknownFields.WriteTo(output);
       }
+    #endif
     }
+
+    #if !GOOGLE_PROTOBUF_REFSTRUCT_COMPATIBILITY_MODE
+    [global::System.Diagnostics.DebuggerNonUserCodeAttribute]
+    void pb::IBufferMessage.InternalWriteTo(ref pb::WriteContext output) {
+      if (PageSize != 0) {
+        output.WriteRawTag(16);
+        output.WriteInt32(PageSize);
+      }
+      if (PageToken.Length != 0) {
+        output.WriteRawTag(26);
+        output.WriteString(PageToken);
+      }
+      if (Name.Length != 0) {
+        output.WriteRawTag(34);
+        output.WriteString(Name);
+      }
+      if (Filter.Length != 0) {
+        output.WriteRawTag(42);
+        output.WriteString(Filter);
+      }
+      if (OrderBy.Length != 0) {
+        output.WriteRawTag(50);
+        output.WriteString(OrderBy);
+      }
+      if (_unknownFields != null) {
+        _unknownFields.WriteTo(ref output);
+      }
+    }
+    #endif
 
     [global::System.Diagnostics.DebuggerNonUserCodeAttribute]
     public int CalculateSize() {
@@ -646,6 +790,9 @@ namespace Google.Cloud.Monitoring.V3 {
 
     [global::System.Diagnostics.DebuggerNonUserCodeAttribute]
     public void MergeFrom(pb::CodedInputStream input) {
+    #if !GOOGLE_PROTOBUF_REFSTRUCT_COMPATIBILITY_MODE
+      input.ReadRawMessage(this);
+    #else
       uint tag;
       while ((tag = input.ReadTag()) != 0) {
         switch(tag) {
@@ -674,14 +821,53 @@ namespace Google.Cloud.Monitoring.V3 {
           }
         }
       }
+    #endif
     }
+
+    #if !GOOGLE_PROTOBUF_REFSTRUCT_COMPATIBILITY_MODE
+    [global::System.Diagnostics.DebuggerNonUserCodeAttribute]
+    void pb::IBufferMessage.InternalMergeFrom(ref pb::ParseContext input) {
+      uint tag;
+      while ((tag = input.ReadTag()) != 0) {
+        switch(tag) {
+          default:
+            _unknownFields = pb::UnknownFieldSet.MergeFieldFrom(_unknownFields, ref input);
+            break;
+          case 16: {
+            PageSize = input.ReadInt32();
+            break;
+          }
+          case 26: {
+            PageToken = input.ReadString();
+            break;
+          }
+          case 34: {
+            Name = input.ReadString();
+            break;
+          }
+          case 42: {
+            Filter = input.ReadString();
+            break;
+          }
+          case 50: {
+            OrderBy = input.ReadString();
+            break;
+          }
+        }
+      }
+    }
+    #endif
 
   }
 
   /// <summary>
   /// The protocol for the `ListAlertPolicies` response.
   /// </summary>
-  public sealed partial class ListAlertPoliciesResponse : pb::IMessage<ListAlertPoliciesResponse> {
+  public sealed partial class ListAlertPoliciesResponse : pb::IMessage<ListAlertPoliciesResponse>
+  #if !GOOGLE_PROTOBUF_REFSTRUCT_COMPATIBILITY_MODE
+      , pb::IBufferMessage
+  #endif
+  {
     private static readonly pb::MessageParser<ListAlertPoliciesResponse> _parser = new pb::MessageParser<ListAlertPoliciesResponse>(() => new ListAlertPoliciesResponse());
     private pb::UnknownFieldSet _unknownFields;
     [global::System.Diagnostics.DebuggerNonUserCodeAttribute]
@@ -735,7 +921,7 @@ namespace Google.Cloud.Monitoring.V3 {
     /// <summary>
     /// If there might be more results than were returned, then this field is set
     /// to a non-empty value. To see the additional results,
-    /// use that value as `pageToken` in the next call to this method.
+    /// use that value as `page_token` in the next call to this method.
     /// </summary>
     [global::System.Diagnostics.DebuggerNonUserCodeAttribute]
     public string NextPageToken {
@@ -781,6 +967,9 @@ namespace Google.Cloud.Monitoring.V3 {
 
     [global::System.Diagnostics.DebuggerNonUserCodeAttribute]
     public void WriteTo(pb::CodedOutputStream output) {
+    #if !GOOGLE_PROTOBUF_REFSTRUCT_COMPATIBILITY_MODE
+      output.WriteRawMessage(this);
+    #else
       if (NextPageToken.Length != 0) {
         output.WriteRawTag(18);
         output.WriteString(NextPageToken);
@@ -789,7 +978,22 @@ namespace Google.Cloud.Monitoring.V3 {
       if (_unknownFields != null) {
         _unknownFields.WriteTo(output);
       }
+    #endif
     }
+
+    #if !GOOGLE_PROTOBUF_REFSTRUCT_COMPATIBILITY_MODE
+    [global::System.Diagnostics.DebuggerNonUserCodeAttribute]
+    void pb::IBufferMessage.InternalWriteTo(ref pb::WriteContext output) {
+      if (NextPageToken.Length != 0) {
+        output.WriteRawTag(18);
+        output.WriteString(NextPageToken);
+      }
+      alertPolicies_.WriteTo(ref output, _repeated_alertPolicies_codec);
+      if (_unknownFields != null) {
+        _unknownFields.WriteTo(ref output);
+      }
+    }
+    #endif
 
     [global::System.Diagnostics.DebuggerNonUserCodeAttribute]
     public int CalculateSize() {
@@ -818,6 +1022,9 @@ namespace Google.Cloud.Monitoring.V3 {
 
     [global::System.Diagnostics.DebuggerNonUserCodeAttribute]
     public void MergeFrom(pb::CodedInputStream input) {
+    #if !GOOGLE_PROTOBUF_REFSTRUCT_COMPATIBILITY_MODE
+      input.ReadRawMessage(this);
+    #else
       uint tag;
       while ((tag = input.ReadTag()) != 0) {
         switch(tag) {
@@ -834,14 +1041,41 @@ namespace Google.Cloud.Monitoring.V3 {
           }
         }
       }
+    #endif
     }
+
+    #if !GOOGLE_PROTOBUF_REFSTRUCT_COMPATIBILITY_MODE
+    [global::System.Diagnostics.DebuggerNonUserCodeAttribute]
+    void pb::IBufferMessage.InternalMergeFrom(ref pb::ParseContext input) {
+      uint tag;
+      while ((tag = input.ReadTag()) != 0) {
+        switch(tag) {
+          default:
+            _unknownFields = pb::UnknownFieldSet.MergeFieldFrom(_unknownFields, ref input);
+            break;
+          case 18: {
+            NextPageToken = input.ReadString();
+            break;
+          }
+          case 26: {
+            alertPolicies_.AddEntriesFrom(ref input, _repeated_alertPolicies_codec);
+            break;
+          }
+        }
+      }
+    }
+    #endif
 
   }
 
   /// <summary>
   /// The protocol for the `UpdateAlertPolicy` request.
   /// </summary>
-  public sealed partial class UpdateAlertPolicyRequest : pb::IMessage<UpdateAlertPolicyRequest> {
+  public sealed partial class UpdateAlertPolicyRequest : pb::IMessage<UpdateAlertPolicyRequest>
+  #if !GOOGLE_PROTOBUF_REFSTRUCT_COMPATIBILITY_MODE
+      , pb::IBufferMessage
+  #endif
+  {
     private static readonly pb::MessageParser<UpdateAlertPolicyRequest> _parser = new pb::MessageParser<UpdateAlertPolicyRequest>(() => new UpdateAlertPolicyRequest());
     private pb::UnknownFieldSet _unknownFields;
     [global::System.Diagnostics.DebuggerNonUserCodeAttribute]
@@ -963,6 +1197,9 @@ namespace Google.Cloud.Monitoring.V3 {
 
     [global::System.Diagnostics.DebuggerNonUserCodeAttribute]
     public void WriteTo(pb::CodedOutputStream output) {
+    #if !GOOGLE_PROTOBUF_REFSTRUCT_COMPATIBILITY_MODE
+      output.WriteRawMessage(this);
+    #else
       if (updateMask_ != null) {
         output.WriteRawTag(18);
         output.WriteMessage(UpdateMask);
@@ -974,7 +1211,25 @@ namespace Google.Cloud.Monitoring.V3 {
       if (_unknownFields != null) {
         _unknownFields.WriteTo(output);
       }
+    #endif
     }
+
+    #if !GOOGLE_PROTOBUF_REFSTRUCT_COMPATIBILITY_MODE
+    [global::System.Diagnostics.DebuggerNonUserCodeAttribute]
+    void pb::IBufferMessage.InternalWriteTo(ref pb::WriteContext output) {
+      if (updateMask_ != null) {
+        output.WriteRawTag(18);
+        output.WriteMessage(UpdateMask);
+      }
+      if (alertPolicy_ != null) {
+        output.WriteRawTag(26);
+        output.WriteMessage(AlertPolicy);
+      }
+      if (_unknownFields != null) {
+        _unknownFields.WriteTo(ref output);
+      }
+    }
+    #endif
 
     [global::System.Diagnostics.DebuggerNonUserCodeAttribute]
     public int CalculateSize() {
@@ -1013,6 +1268,9 @@ namespace Google.Cloud.Monitoring.V3 {
 
     [global::System.Diagnostics.DebuggerNonUserCodeAttribute]
     public void MergeFrom(pb::CodedInputStream input) {
+    #if !GOOGLE_PROTOBUF_REFSTRUCT_COMPATIBILITY_MODE
+      input.ReadRawMessage(this);
+    #else
       uint tag;
       while ((tag = input.ReadTag()) != 0) {
         switch(tag) {
@@ -1035,14 +1293,47 @@ namespace Google.Cloud.Monitoring.V3 {
           }
         }
       }
+    #endif
     }
+
+    #if !GOOGLE_PROTOBUF_REFSTRUCT_COMPATIBILITY_MODE
+    [global::System.Diagnostics.DebuggerNonUserCodeAttribute]
+    void pb::IBufferMessage.InternalMergeFrom(ref pb::ParseContext input) {
+      uint tag;
+      while ((tag = input.ReadTag()) != 0) {
+        switch(tag) {
+          default:
+            _unknownFields = pb::UnknownFieldSet.MergeFieldFrom(_unknownFields, ref input);
+            break;
+          case 18: {
+            if (updateMask_ == null) {
+              UpdateMask = new global::Google.Protobuf.WellKnownTypes.FieldMask();
+            }
+            input.ReadMessage(UpdateMask);
+            break;
+          }
+          case 26: {
+            if (alertPolicy_ == null) {
+              AlertPolicy = new global::Google.Cloud.Monitoring.V3.AlertPolicy();
+            }
+            input.ReadMessage(AlertPolicy);
+            break;
+          }
+        }
+      }
+    }
+    #endif
 
   }
 
   /// <summary>
   /// The protocol for the `DeleteAlertPolicy` request.
   /// </summary>
-  public sealed partial class DeleteAlertPolicyRequest : pb::IMessage<DeleteAlertPolicyRequest> {
+  public sealed partial class DeleteAlertPolicyRequest : pb::IMessage<DeleteAlertPolicyRequest>
+  #if !GOOGLE_PROTOBUF_REFSTRUCT_COMPATIBILITY_MODE
+      , pb::IBufferMessage
+  #endif
+  {
     private static readonly pb::MessageParser<DeleteAlertPolicyRequest> _parser = new pb::MessageParser<DeleteAlertPolicyRequest>(() => new DeleteAlertPolicyRequest());
     private pb::UnknownFieldSet _unknownFields;
     [global::System.Diagnostics.DebuggerNonUserCodeAttribute]
@@ -1080,9 +1371,9 @@ namespace Google.Cloud.Monitoring.V3 {
     public const int NameFieldNumber = 3;
     private string name_ = "";
     /// <summary>
-    /// The alerting policy to delete. The format is:
+    /// Required. The alerting policy to delete. The format is:
     ///
-    ///     projects/[PROJECT_ID]/alertPolicies/[ALERT_POLICY_ID]
+    ///     projects/[PROJECT_ID_OR_NUMBER]/alertPolicies/[ALERT_POLICY_ID]
     ///
     /// For more information, see [AlertPolicy][google.monitoring.v3.AlertPolicy].
     /// </summary>
@@ -1128,6 +1419,9 @@ namespace Google.Cloud.Monitoring.V3 {
 
     [global::System.Diagnostics.DebuggerNonUserCodeAttribute]
     public void WriteTo(pb::CodedOutputStream output) {
+    #if !GOOGLE_PROTOBUF_REFSTRUCT_COMPATIBILITY_MODE
+      output.WriteRawMessage(this);
+    #else
       if (Name.Length != 0) {
         output.WriteRawTag(26);
         output.WriteString(Name);
@@ -1135,7 +1429,21 @@ namespace Google.Cloud.Monitoring.V3 {
       if (_unknownFields != null) {
         _unknownFields.WriteTo(output);
       }
+    #endif
     }
+
+    #if !GOOGLE_PROTOBUF_REFSTRUCT_COMPATIBILITY_MODE
+    [global::System.Diagnostics.DebuggerNonUserCodeAttribute]
+    void pb::IBufferMessage.InternalWriteTo(ref pb::WriteContext output) {
+      if (Name.Length != 0) {
+        output.WriteRawTag(26);
+        output.WriteString(Name);
+      }
+      if (_unknownFields != null) {
+        _unknownFields.WriteTo(ref output);
+      }
+    }
+    #endif
 
     [global::System.Diagnostics.DebuggerNonUserCodeAttribute]
     public int CalculateSize() {
@@ -1162,6 +1470,9 @@ namespace Google.Cloud.Monitoring.V3 {
 
     [global::System.Diagnostics.DebuggerNonUserCodeAttribute]
     public void MergeFrom(pb::CodedInputStream input) {
+    #if !GOOGLE_PROTOBUF_REFSTRUCT_COMPATIBILITY_MODE
+      input.ReadRawMessage(this);
+    #else
       uint tag;
       while ((tag = input.ReadTag()) != 0) {
         switch(tag) {
@@ -1174,7 +1485,26 @@ namespace Google.Cloud.Monitoring.V3 {
           }
         }
       }
+    #endif
     }
+
+    #if !GOOGLE_PROTOBUF_REFSTRUCT_COMPATIBILITY_MODE
+    [global::System.Diagnostics.DebuggerNonUserCodeAttribute]
+    void pb::IBufferMessage.InternalMergeFrom(ref pb::ParseContext input) {
+      uint tag;
+      while ((tag = input.ReadTag()) != 0) {
+        switch(tag) {
+          default:
+            _unknownFields = pb::UnknownFieldSet.MergeFieldFrom(_unknownFields, ref input);
+            break;
+          case 26: {
+            Name = input.ReadString();
+            break;
+          }
+        }
+      }
+    }
+    #endif
 
   }
 

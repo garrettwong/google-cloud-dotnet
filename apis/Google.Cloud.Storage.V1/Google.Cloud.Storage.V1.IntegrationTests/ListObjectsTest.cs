@@ -76,7 +76,7 @@ namespace Google.Cloud.Storage.V1.IntegrationTests
         public async Task CancellationTokenRespected()
         {
             var cts = new CancellationTokenSource();
-            var task = _fixture.Client.ListObjectsAsync(_fixture.ReadBucket, null).ToList(cts.Token);
+            var task = _fixture.Client.ListObjectsAsync(_fixture.ReadBucket, null).ToListAsync(cts.Token);
             cts.Cancel();
             await Assert.ThrowsAnyAsync<OperationCanceledException>(async () => await task);            
         }
@@ -94,11 +94,27 @@ namespace Google.Cloud.Storage.V1.IntegrationTests
             await AssertObjects(name, null, name);
         }
 
+        [Fact]
+        public void PartialResponses()
+        {
+            var options = new ListObjectsOptions { Fields = "items(name,contentType),nextPageToken" };
+            var objects = _fixture.Client.ListObjects(_fixture.ReadBucket, options: options).ToList();
+            foreach (var obj in objects)
+            {
+                // These fields are requested
+                Assert.NotNull(obj.Name);
+                Assert.NotNull(obj.ContentType);
+                // These are not
+                Assert.Null(obj.ContentEncoding);
+                Assert.Null(obj.ContentDisposition);
+            }
+        }
+
         private async Task AssertObjects(string prefix, ListObjectsOptions options, params string[] expectedNames)
         {
             IEnumerable<Object> actual = _fixture.Client.ListObjects(_fixture.ReadBucket, prefix, options);
             AssertObjectNames(actual, expectedNames);
-            actual = await _fixture.Client.ListObjectsAsync(_fixture.ReadBucket, prefix, options).ToList();
+            actual = await _fixture.Client.ListObjectsAsync(_fixture.ReadBucket, prefix, options).ToListAsync();
             AssertObjectNames(actual, expectedNames);
         }
 

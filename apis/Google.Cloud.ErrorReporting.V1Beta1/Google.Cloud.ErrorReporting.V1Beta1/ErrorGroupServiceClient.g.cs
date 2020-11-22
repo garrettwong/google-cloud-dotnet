@@ -1,4 +1,4 @@
-// Copyright 2019 Google LLC
+// Copyright 2020 Google LLC
 //
 // Licensed under the Apache License, Version 2.0 (the "License");
 // you may not use this file except in compliance with the License.
@@ -16,13 +16,13 @@
 
 using gax = Google.Api.Gax;
 using gaxgrpc = Google.Api.Gax.Grpc;
+using gaxgrpccore = Google.Api.Gax.Grpc.GrpcCore;
 using proto = Google.Protobuf;
 using grpccore = Grpc.Core;
 using grpcinter = Grpc.Core.Interceptors;
 using sys = System;
 using scg = System.Collections.Generic;
 using sco = System.Collections.ObjectModel;
-using sysnet = System.Net;
 using st = System.Threading;
 using stt = System.Threading.Tasks;
 
@@ -59,13 +59,11 @@ namespace Google.Cloud.ErrorReporting.V1Beta1
         /// <item><description>Initial retry delay: 100 milliseconds.</description></item>
         /// <item><description>Retry delay multiplier: 1.3</description></item>
         /// <item><description>Retry maximum delay: 60000 milliseconds.</description></item>
-        /// <item><description>Initial timeout: 600000 milliseconds.</description></item>
-        /// <item><description>Timeout multiplier: 1</description></item>
-        /// <item><description>Timeout maximum delay: 600000 milliseconds.</description></item>
-        /// <item><description>Total timeout: 600 seconds.</description></item>
+        /// <item><description>Maximum attempts: Unlimited</description></item>
+        /// <item><description>Timeout: 600 seconds.</description></item>
         /// </list>
         /// </remarks>
-        public gaxgrpc::CallSettings GetGroupSettings { get; set; } = gaxgrpc::CallSettings.FromCallTiming(gaxgrpc::CallTiming.FromRetry(new gaxgrpc::RetrySettings(retryBackoff: new gaxgrpc::BackoffSettings(delay: sys::TimeSpan.FromMilliseconds(100), maxDelay: sys::TimeSpan.FromMilliseconds(60000), delayMultiplier: 1.3), timeoutBackoff: new gaxgrpc::BackoffSettings(delay: sys::TimeSpan.FromMilliseconds(600000), maxDelay: sys::TimeSpan.FromMilliseconds(600000), delayMultiplier: 1), totalExpiration: gax::Expiration.FromTimeout(sys::TimeSpan.FromMilliseconds(600000)), retryFilter: gaxgrpc::RetrySettings.FilterForStatusCodes(grpccore::StatusCode.Unavailable, grpccore::StatusCode.DeadlineExceeded))));
+        public gaxgrpc::CallSettings GetGroupSettings { get; set; } = gaxgrpc::CallSettingsExtensions.WithRetry(gaxgrpc::CallSettings.FromExpiration(gax::Expiration.FromTimeout(sys::TimeSpan.FromMilliseconds(600000))), gaxgrpc::RetrySettings.FromExponentialBackoff(maxAttempts: 2147483647, initialBackoff: sys::TimeSpan.FromMilliseconds(100), maxBackoff: sys::TimeSpan.FromMilliseconds(60000), backoffMultiplier: 1.3, retryFilter: gaxgrpc::RetrySettings.FilterForStatusCodes(grpccore::StatusCode.Unavailable, grpccore::StatusCode.DeadlineExceeded)));
 
         /// <summary>
         /// <see cref="gaxgrpc::CallSettings"/> for synchronous and asynchronous calls to
@@ -76,13 +74,11 @@ namespace Google.Cloud.ErrorReporting.V1Beta1
         /// <item><description>Initial retry delay: 100 milliseconds.</description></item>
         /// <item><description>Retry delay multiplier: 1.3</description></item>
         /// <item><description>Retry maximum delay: 60000 milliseconds.</description></item>
-        /// <item><description>Initial timeout: 600000 milliseconds.</description></item>
-        /// <item><description>Timeout multiplier: 1</description></item>
-        /// <item><description>Timeout maximum delay: 600000 milliseconds.</description></item>
-        /// <item><description>Total timeout: 600 seconds.</description></item>
+        /// <item><description>Maximum attempts: Unlimited</description></item>
+        /// <item><description>Timeout: 600 seconds.</description></item>
         /// </list>
         /// </remarks>
-        public gaxgrpc::CallSettings UpdateGroupSettings { get; set; } = gaxgrpc::CallSettings.FromCallTiming(gaxgrpc::CallTiming.FromRetry(new gaxgrpc::RetrySettings(retryBackoff: new gaxgrpc::BackoffSettings(delay: sys::TimeSpan.FromMilliseconds(100), maxDelay: sys::TimeSpan.FromMilliseconds(60000), delayMultiplier: 1.3), timeoutBackoff: new gaxgrpc::BackoffSettings(delay: sys::TimeSpan.FromMilliseconds(600000), maxDelay: sys::TimeSpan.FromMilliseconds(600000), delayMultiplier: 1), totalExpiration: gax::Expiration.FromTimeout(sys::TimeSpan.FromMilliseconds(600000)), retryFilter: gaxgrpc::RetrySettings.FilterForStatusCodes(grpccore::StatusCode.Unavailable, grpccore::StatusCode.DeadlineExceeded))));
+        public gaxgrpc::CallSettings UpdateGroupSettings { get; set; } = gaxgrpc::CallSettingsExtensions.WithRetry(gaxgrpc::CallSettings.FromExpiration(gax::Expiration.FromTimeout(sys::TimeSpan.FromMilliseconds(600000))), gaxgrpc::RetrySettings.FromExponentialBackoff(maxAttempts: 2147483647, initialBackoff: sys::TimeSpan.FromMilliseconds(100), maxBackoff: sys::TimeSpan.FromMilliseconds(60000), backoffMultiplier: 1.3, retryFilter: gaxgrpc::RetrySettings.FilterForStatusCodes(grpccore::StatusCode.Unavailable, grpccore::StatusCode.DeadlineExceeded)));
 
         /// <summary>Creates a deep clone of this object, with all the same property values.</summary>
         /// <returns>A deep clone of this <see cref="ErrorGroupServiceSettings"/> object.</returns>
@@ -98,40 +94,66 @@ namespace Google.Cloud.ErrorReporting.V1Beta1
         /// <summary>The settings to use for RPCs, or <c>null</c> for the default settings.</summary>
         public ErrorGroupServiceSettings Settings { get; set; }
 
-        /// <inheritdoc/>
+        partial void InterceptBuild(ref ErrorGroupServiceClient client);
+
+        partial void InterceptBuildAsync(st::CancellationToken cancellationToken, ref stt::Task<ErrorGroupServiceClient> task);
+
+        /// <summary>Builds the resulting client.</summary>
         public override ErrorGroupServiceClient Build()
+        {
+            ErrorGroupServiceClient client = null;
+            InterceptBuild(ref client);
+            return client ?? BuildImpl();
+        }
+
+        /// <summary>Builds the resulting client asynchronously.</summary>
+        public override stt::Task<ErrorGroupServiceClient> BuildAsync(st::CancellationToken cancellationToken = default)
+        {
+            stt::Task<ErrorGroupServiceClient> task = null;
+            InterceptBuildAsync(cancellationToken, ref task);
+            return task ?? BuildAsyncImpl(cancellationToken);
+        }
+
+        private ErrorGroupServiceClient BuildImpl()
         {
             Validate();
             grpccore::CallInvoker callInvoker = CreateCallInvoker();
             return ErrorGroupServiceClient.Create(callInvoker, Settings);
         }
 
-        /// <inheritdoc/>
-        public override async stt::Task<ErrorGroupServiceClient> BuildAsync(st::CancellationToken cancellationToken = default)
+        private async stt::Task<ErrorGroupServiceClient> BuildAsyncImpl(st::CancellationToken cancellationToken)
         {
             Validate();
             grpccore::CallInvoker callInvoker = await CreateCallInvokerAsync(cancellationToken).ConfigureAwait(false);
             return ErrorGroupServiceClient.Create(callInvoker, Settings);
         }
 
-        /// <inheritdoc/>
-        protected override gaxgrpc::ServiceEndpoint GetDefaultEndpoint() => ErrorGroupServiceClient.DefaultEndpoint;
+        /// <summary>Returns the endpoint for this builder type, used if no endpoint is otherwise specified.</summary>
+        protected override string GetDefaultEndpoint() => ErrorGroupServiceClient.DefaultEndpoint;
 
-        /// <inheritdoc/>
+        /// <summary>
+        /// Returns the default scopes for this builder type, used if no scopes are otherwise specified.
+        /// </summary>
         protected override scg::IReadOnlyList<string> GetDefaultScopes() => ErrorGroupServiceClient.DefaultScopes;
 
-        /// <inheritdoc/>
+        /// <summary>Returns the channel pool to use when no other options are specified.</summary>
         protected override gaxgrpc::ChannelPool GetChannelPool() => ErrorGroupServiceClient.ChannelPool;
+
+        /// <summary>Returns the default <see cref="gaxgrpc::GrpcAdapter"/>to use if not otherwise specified.</summary>
+        protected override gaxgrpc::GrpcAdapter DefaultGrpcAdapter => gaxgrpccore::GrpcCoreAdapter.Instance;
     }
 
     /// <summary>ErrorGroupService client wrapper, for convenient use.</summary>
+    /// <remarks>
+    /// Service for retrieving and updating individual error groups.
+    /// </remarks>
     public abstract partial class ErrorGroupServiceClient
     {
         /// <summary>
         /// The default endpoint for the ErrorGroupService service, which is a host of
         /// "clouderrorreporting.googleapis.com" and a port of 443.
         /// </summary>
-        public static gaxgrpc::ServiceEndpoint DefaultEndpoint { get; } = new gaxgrpc::ServiceEndpoint("clouderrorreporting.googleapis.com", 443);
+        public static string DefaultEndpoint { get; } = "clouderrorreporting.googleapis.com:443";
 
         /// <summary>The default ErrorGroupService scopes.</summary>
         /// <remarks>
@@ -148,96 +170,22 @@ namespace Google.Cloud.ErrorReporting.V1Beta1
         internal static gaxgrpc::ChannelPool ChannelPool { get; } = new gaxgrpc::ChannelPool(DefaultScopes);
 
         /// <summary>
-        /// Asynchronously creates a <see cref="ErrorGroupServiceClient"/>, applying defaults for all unspecified
-        /// settings, and creating a channel connecting to the given endpoint with application default credentials where
-        /// necessary. See the example for how to use custom credentials.
+        /// Asynchronously creates a <see cref="ErrorGroupServiceClient"/> using the default credentials, endpoint and
+        /// settings. To specify custom credentials or other settings, use <see cref="ErrorGroupServiceClientBuilder"/>.
         /// </summary>
-        /// <example>
-        /// This sample shows how to create a client using default credentials:
-        /// <code>
-        /// using Google.Cloud.Vision.V1;
-        /// ...
-        /// // When running on Google Cloud Platform this will use the project Compute Credential.
-        /// // Or set the GOOGLE_APPLICATION_CREDENTIALS environment variable to the path of a JSON
-        /// // credential file to use that credential.
-        /// ImageAnnotatorClient client = await ImageAnnotatorClient.CreateAsync();
-        /// </code>
-        /// This sample shows how to create a client using credentials loaded from a JSON file:
-        /// <code>
-        /// using Google.Cloud.Vision.V1;
-        /// using Google.Apis.Auth.OAuth2;
-        /// using Grpc.Auth;
-        /// using Grpc.Core;
-        /// ...
-        /// GoogleCredential cred = GoogleCredential.FromFile("/path/to/credentials.json");
-        /// Channel channel = new Channel(
-        ///     ImageAnnotatorClient.DefaultEndpoint.Host, ImageAnnotatorClient.DefaultEndpoint.Port, cred.ToChannelCredentials());
-        /// ImageAnnotatorClient client = ImageAnnotatorClient.Create(channel);
-        /// ...
-        /// // Shutdown the channel when it is no longer required.
-        /// await channel.ShutdownAsync();
-        /// </code>
-        /// </example>
-        /// <param name="endpoint">Optional <see cref="gaxgrpc::ServiceEndpoint"/>.</param>
-        /// <param name="settings">Optional <see cref="ErrorGroupServiceSettings"/>.</param>
+        /// <param name="cancellationToken">
+        /// The <see cref="st::CancellationToken"/> to use while creating the client.
+        /// </param>
         /// <returns>The task representing the created <see cref="ErrorGroupServiceClient"/>.</returns>
-        public static async stt::Task<ErrorGroupServiceClient> CreateAsync(gaxgrpc::ServiceEndpoint endpoint = null, ErrorGroupServiceSettings settings = null)
-        {
-            grpccore::Channel channel = await ChannelPool.GetChannelAsync(endpoint ?? DefaultEndpoint).ConfigureAwait(false);
-            return Create(channel, settings);
-        }
+        public static stt::Task<ErrorGroupServiceClient> CreateAsync(st::CancellationToken cancellationToken = default) =>
+            new ErrorGroupServiceClientBuilder().BuildAsync(cancellationToken);
 
         /// <summary>
-        /// Synchronously creates a <see cref="ErrorGroupServiceClient"/>, applying defaults for all unspecified
-        /// settings, and creating a channel connecting to the given endpoint with application default credentials where
-        /// necessary. See the example for how to use custom credentials.
+        /// Synchronously creates a <see cref="ErrorGroupServiceClient"/> using the default credentials, endpoint and
+        /// settings. To specify custom credentials or other settings, use <see cref="ErrorGroupServiceClientBuilder"/>.
         /// </summary>
-        /// <example>
-        /// This sample shows how to create a client using default credentials:
-        /// <code>
-        /// using Google.Cloud.Vision.V1;
-        /// ...
-        /// // When running on Google Cloud Platform this will use the project Compute Credential.
-        /// // Or set the GOOGLE_APPLICATION_CREDENTIALS environment variable to the path of a JSON
-        /// // credential file to use that credential.
-        /// ImageAnnotatorClient client = ImageAnnotatorClient.Create();
-        /// </code>
-        /// This sample shows how to create a client using credentials loaded from a JSON file:
-        /// <code>
-        /// using Google.Cloud.Vision.V1;
-        /// using Google.Apis.Auth.OAuth2;
-        /// using Grpc.Auth;
-        /// using Grpc.Core;
-        /// ...
-        /// GoogleCredential cred = GoogleCredential.FromFile("/path/to/credentials.json");
-        /// Channel channel = new Channel(
-        ///     ImageAnnotatorClient.DefaultEndpoint.Host, ImageAnnotatorClient.DefaultEndpoint.Port, cred.ToChannelCredentials());
-        /// ImageAnnotatorClient client = ImageAnnotatorClient.Create(channel);
-        /// ...
-        /// // Shutdown the channel when it is no longer required.
-        /// channel.ShutdownAsync().Wait();
-        /// </code>
-        /// </example>
-        /// <param name="endpoint">Optional <see cref="gaxgrpc::ServiceEndpoint"/>.</param>
-        /// <param name="settings">Optional <see cref="ErrorGroupServiceSettings"/>.</param>
         /// <returns>The created <see cref="ErrorGroupServiceClient"/>.</returns>
-        public static ErrorGroupServiceClient Create(gaxgrpc::ServiceEndpoint endpoint = null, ErrorGroupServiceSettings settings = null)
-        {
-            grpccore::Channel channel = ChannelPool.GetChannel(endpoint ?? DefaultEndpoint);
-            return Create(channel, settings);
-        }
-
-        /// <summary>
-        /// Creates a <see cref="ErrorGroupServiceClient"/> which uses the specified channel for remote operations.
-        /// </summary>
-        /// <param name="channel">The <see cref="grpccore::Channel"/> for remote operations. Must not be null.</param>
-        /// <param name="settings">Optional <see cref="ErrorGroupServiceSettings"/>.</param>
-        /// <returns>The created <see cref="ErrorGroupServiceClient"/>.</returns>
-        public static ErrorGroupServiceClient Create(grpccore::Channel channel, ErrorGroupServiceSettings settings = null)
-        {
-            gax::GaxPreconditions.CheckNotNull(channel, nameof(channel));
-            return Create(new grpccore::DefaultCallInvoker(channel), settings);
-        }
+        public static ErrorGroupServiceClient Create() => new ErrorGroupServiceClientBuilder().Build();
 
         /// <summary>
         /// Creates a <see cref="ErrorGroupServiceClient"/> which uses the specified call invoker for remote operations.
@@ -247,7 +195,7 @@ namespace Google.Cloud.ErrorReporting.V1Beta1
         /// </param>
         /// <param name="settings">Optional <see cref="ErrorGroupServiceSettings"/>.</param>
         /// <returns>The created <see cref="ErrorGroupServiceClient"/>.</returns>
-        public static ErrorGroupServiceClient Create(grpccore::CallInvoker callInvoker, ErrorGroupServiceSettings settings = null)
+        internal static ErrorGroupServiceClient Create(grpccore::CallInvoker callInvoker, ErrorGroupServiceSettings settings = null)
         {
             gax::GaxPreconditions.CheckNotNull(callInvoker, nameof(callInvoker));
             grpcinter::Interceptor interceptor = settings?.Interceptor;
@@ -260,16 +208,14 @@ namespace Google.Cloud.ErrorReporting.V1Beta1
         }
 
         /// <summary>
-        /// Shuts down any channels automatically created by
-        /// <see cref="Create(grpccore::CallInvoker,ErrorGroupServiceSettings)"/> and
-        /// <see cref="CreateAsync(gaxgrpc::ServiceEndpoint,ErrorGroupServiceSettings)"/>. Channels which weren't
-        /// automatically created are not affected.
+        /// Shuts down any channels automatically created by <see cref="Create()"/> and
+        /// <see cref="CreateAsync(st::CancellationToken)"/>. Channels which weren't automatically created are not
+        /// affected.
         /// </summary>
         /// <remarks>
-        /// After calling this method, further calls to
-        /// <see cref="Create(grpccore::CallInvoker,ErrorGroupServiceSettings)"/> and
-        /// <see cref="CreateAsync(gaxgrpc::ServiceEndpoint,ErrorGroupServiceSettings)"/> will create new channels,
-        /// which could in turn be shut down by another call to this method.
+        /// After calling this method, further calls to <see cref="Create()"/> and
+        /// <see cref="CreateAsync(st::CancellationToken)"/> will create new channels, which could in turn be shut down
+        /// by another call to this method.
         /// </remarks>
         /// <returns>A task representing the asynchronous shutdown operation.</returns>
         public static stt::Task ShutdownDefaultChannelsAsync() => ChannelPool.ShutdownChannelsAsync();
@@ -308,14 +254,12 @@ namespace Google.Cloud.ErrorReporting.V1Beta1
         /// Get the specified group.
         /// </summary>
         /// <param name="groupName">
-        /// Required. The group resource name. Written as
-        /// &amp;lt;code&amp;gt;projects/&amp;lt;var&amp;gt;projectID&amp;lt;/var&amp;gt;/groups/&amp;lt;var&amp;gt;group_name&amp;lt;/var&amp;gt;&amp;lt;/code&amp;gt;.
-        /// Call
-        /// &amp;lt;a href="/error-reporting/reference/rest/v1beta1/projects.groupStats/list"&amp;gt;
-        /// &amp;lt;code&amp;gt;groupStats.list&amp;lt;/code&amp;gt;&amp;lt;/a&amp;gt; to return a list of groups belonging to
-        /// this project.
+        /// The group resource name. Written as
+        /// `projects/{projectID}/groups/{group_name}`. Call
+        /// [`groupStats.list`](https://cloud.google.com/error-reporting/reference/rest/v1beta1/projects.groupStats/list)
+        /// to return a list of groups belonging to this project.
         /// 
-        /// Example: &amp;lt;code&amp;gt;projects/my-project-123/groups/my-group&amp;lt;/code&amp;gt;
+        /// Example: `projects/my-project-123/groups/my-group`
         /// </param>
         /// <param name="callSettings">If not null, applies overrides to this RPC call.</param>
         /// <returns>The RPC response.</returns>
@@ -329,14 +273,12 @@ namespace Google.Cloud.ErrorReporting.V1Beta1
         /// Get the specified group.
         /// </summary>
         /// <param name="groupName">
-        /// Required. The group resource name. Written as
-        /// &amp;lt;code&amp;gt;projects/&amp;lt;var&amp;gt;projectID&amp;lt;/var&amp;gt;/groups/&amp;lt;var&amp;gt;group_name&amp;lt;/var&amp;gt;&amp;lt;/code&amp;gt;.
-        /// Call
-        /// &amp;lt;a href="/error-reporting/reference/rest/v1beta1/projects.groupStats/list"&amp;gt;
-        /// &amp;lt;code&amp;gt;groupStats.list&amp;lt;/code&amp;gt;&amp;lt;/a&amp;gt; to return a list of groups belonging to
-        /// this project.
+        /// The group resource name. Written as
+        /// `projects/{projectID}/groups/{group_name}`. Call
+        /// [`groupStats.list`](https://cloud.google.com/error-reporting/reference/rest/v1beta1/projects.groupStats/list)
+        /// to return a list of groups belonging to this project.
         /// 
-        /// Example: &amp;lt;code&amp;gt;projects/my-project-123/groups/my-group&amp;lt;/code&amp;gt;
+        /// Example: `projects/my-project-123/groups/my-group`
         /// </param>
         /// <param name="callSettings">If not null, applies overrides to this RPC call.</param>
         /// <returns>A Task containing the RPC response.</returns>
@@ -350,14 +292,12 @@ namespace Google.Cloud.ErrorReporting.V1Beta1
         /// Get the specified group.
         /// </summary>
         /// <param name="groupName">
-        /// Required. The group resource name. Written as
-        /// &amp;lt;code&amp;gt;projects/&amp;lt;var&amp;gt;projectID&amp;lt;/var&amp;gt;/groups/&amp;lt;var&amp;gt;group_name&amp;lt;/var&amp;gt;&amp;lt;/code&amp;gt;.
-        /// Call
-        /// &amp;lt;a href="/error-reporting/reference/rest/v1beta1/projects.groupStats/list"&amp;gt;
-        /// &amp;lt;code&amp;gt;groupStats.list&amp;lt;/code&amp;gt;&amp;lt;/a&amp;gt; to return a list of groups belonging to
-        /// this project.
+        /// The group resource name. Written as
+        /// `projects/{projectID}/groups/{group_name}`. Call
+        /// [`groupStats.list`](https://cloud.google.com/error-reporting/reference/rest/v1beta1/projects.groupStats/list)
+        /// to return a list of groups belonging to this project.
         /// 
-        /// Example: &amp;lt;code&amp;gt;projects/my-project-123/groups/my-group&amp;lt;/code&amp;gt;
+        /// Example: `projects/my-project-123/groups/my-group`
         /// </param>
         /// <param name="cancellationToken">A <see cref="st::CancellationToken"/> to use for this RPC.</param>
         /// <returns>A Task containing the RPC response.</returns>
@@ -368,14 +308,12 @@ namespace Google.Cloud.ErrorReporting.V1Beta1
         /// Get the specified group.
         /// </summary>
         /// <param name="groupName">
-        /// Required. The group resource name. Written as
-        /// &amp;lt;code&amp;gt;projects/&amp;lt;var&amp;gt;projectID&amp;lt;/var&amp;gt;/groups/&amp;lt;var&amp;gt;group_name&amp;lt;/var&amp;gt;&amp;lt;/code&amp;gt;.
-        /// Call
-        /// &amp;lt;a href="/error-reporting/reference/rest/v1beta1/projects.groupStats/list"&amp;gt;
-        /// &amp;lt;code&amp;gt;groupStats.list&amp;lt;/code&amp;gt;&amp;lt;/a&amp;gt; to return a list of groups belonging to
-        /// this project.
+        /// The group resource name. Written as
+        /// `projects/{projectID}/groups/{group_name}`. Call
+        /// [`groupStats.list`](https://cloud.google.com/error-reporting/reference/rest/v1beta1/projects.groupStats/list)
+        /// to return a list of groups belonging to this project.
         /// 
-        /// Example: &amp;lt;code&amp;gt;projects/my-project-123/groups/my-group&amp;lt;/code&amp;gt;
+        /// Example: `projects/my-project-123/groups/my-group`
         /// </param>
         /// <param name="callSettings">If not null, applies overrides to this RPC call.</param>
         /// <returns>The RPC response.</returns>
@@ -389,14 +327,12 @@ namespace Google.Cloud.ErrorReporting.V1Beta1
         /// Get the specified group.
         /// </summary>
         /// <param name="groupName">
-        /// Required. The group resource name. Written as
-        /// &amp;lt;code&amp;gt;projects/&amp;lt;var&amp;gt;projectID&amp;lt;/var&amp;gt;/groups/&amp;lt;var&amp;gt;group_name&amp;lt;/var&amp;gt;&amp;lt;/code&amp;gt;.
-        /// Call
-        /// &amp;lt;a href="/error-reporting/reference/rest/v1beta1/projects.groupStats/list"&amp;gt;
-        /// &amp;lt;code&amp;gt;groupStats.list&amp;lt;/code&amp;gt;&amp;lt;/a&amp;gt; to return a list of groups belonging to
-        /// this project.
+        /// The group resource name. Written as
+        /// `projects/{projectID}/groups/{group_name}`. Call
+        /// [`groupStats.list`](https://cloud.google.com/error-reporting/reference/rest/v1beta1/projects.groupStats/list)
+        /// to return a list of groups belonging to this project.
         /// 
-        /// Example: &amp;lt;code&amp;gt;projects/my-project-123/groups/my-group&amp;lt;/code&amp;gt;
+        /// Example: `projects/my-project-123/groups/my-group`
         /// </param>
         /// <param name="callSettings">If not null, applies overrides to this RPC call.</param>
         /// <returns>A Task containing the RPC response.</returns>
@@ -410,14 +346,12 @@ namespace Google.Cloud.ErrorReporting.V1Beta1
         /// Get the specified group.
         /// </summary>
         /// <param name="groupName">
-        /// Required. The group resource name. Written as
-        /// &amp;lt;code&amp;gt;projects/&amp;lt;var&amp;gt;projectID&amp;lt;/var&amp;gt;/groups/&amp;lt;var&amp;gt;group_name&amp;lt;/var&amp;gt;&amp;lt;/code&amp;gt;.
-        /// Call
-        /// &amp;lt;a href="/error-reporting/reference/rest/v1beta1/projects.groupStats/list"&amp;gt;
-        /// &amp;lt;code&amp;gt;groupStats.list&amp;lt;/code&amp;gt;&amp;lt;/a&amp;gt; to return a list of groups belonging to
-        /// this project.
+        /// The group resource name. Written as
+        /// `projects/{projectID}/groups/{group_name}`. Call
+        /// [`groupStats.list`](https://cloud.google.com/error-reporting/reference/rest/v1beta1/projects.groupStats/list)
+        /// to return a list of groups belonging to this project.
         /// 
-        /// Example: &amp;lt;code&amp;gt;projects/my-project-123/groups/my-group&amp;lt;/code&amp;gt;
+        /// Example: `projects/my-project-123/groups/my-group`
         /// </param>
         /// <param name="cancellationToken">A <see cref="st::CancellationToken"/> to use for this RPC.</param>
         /// <returns>A Task containing the RPC response.</returns>
@@ -498,6 +432,9 @@ namespace Google.Cloud.ErrorReporting.V1Beta1
     }
 
     /// <summary>ErrorGroupService client wrapper implementation, for convenient use.</summary>
+    /// <remarks>
+    /// Service for retrieving and updating individual error groups.
+    /// </remarks>
     public sealed partial class ErrorGroupServiceClientImpl : ErrorGroupServiceClient
     {
         private readonly gaxgrpc::ApiCall<GetGroupRequest, ErrorGroup> _callGetGroup;
@@ -514,10 +451,10 @@ namespace Google.Cloud.ErrorReporting.V1Beta1
             GrpcClient = grpcClient;
             ErrorGroupServiceSettings effectiveSettings = settings ?? ErrorGroupServiceSettings.GetDefault();
             gaxgrpc::ClientHelper clientHelper = new gaxgrpc::ClientHelper(effectiveSettings);
-            _callGetGroup = clientHelper.BuildApiCall<GetGroupRequest, ErrorGroup>(grpcClient.GetGroupAsync, grpcClient.GetGroup, effectiveSettings.GetGroupSettings).WithCallSettingsOverlay(request => gaxgrpc::CallSettings.FromHeader("x-goog-request-params", $"group_name={(sysnet::WebUtility.UrlEncode(request.GroupName))}"));
+            _callGetGroup = clientHelper.BuildApiCall<GetGroupRequest, ErrorGroup>(grpcClient.GetGroupAsync, grpcClient.GetGroup, effectiveSettings.GetGroupSettings).WithGoogleRequestParam("group_name", request => request.GroupName);
             Modify_ApiCall(ref _callGetGroup);
             Modify_GetGroupApiCall(ref _callGetGroup);
-            _callUpdateGroup = clientHelper.BuildApiCall<UpdateGroupRequest, ErrorGroup>(grpcClient.UpdateGroupAsync, grpcClient.UpdateGroup, effectiveSettings.UpdateGroupSettings).WithCallSettingsOverlay(request => gaxgrpc::CallSettings.FromHeader("x-goog-request-params", $"group.name={(sysnet::WebUtility.UrlEncode(request.Group.Name))}"));
+            _callUpdateGroup = clientHelper.BuildApiCall<UpdateGroupRequest, ErrorGroup>(grpcClient.UpdateGroupAsync, grpcClient.UpdateGroup, effectiveSettings.UpdateGroupSettings).WithGoogleRequestParam("group.name", request => request.Group?.Name);
             Modify_ApiCall(ref _callUpdateGroup);
             Modify_UpdateGroupApiCall(ref _callUpdateGroup);
             OnConstruction(grpcClient, effectiveSettings, clientHelper);

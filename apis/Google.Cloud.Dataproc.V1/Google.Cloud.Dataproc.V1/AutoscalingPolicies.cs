@@ -26,10 +26,10 @@ namespace Google.Cloud.Dataproc.V1 {
           string.Concat(
             "CjNnb29nbGUvY2xvdWQvZGF0YXByb2MvdjEvYXV0b3NjYWxpbmdfcG9saWNp",
             "ZXMucHJvdG8SGGdvb2dsZS5jbG91ZC5kYXRhcHJvYy52MRocZ29vZ2xlL2Fw",
-            "aS9hbm5vdGF0aW9ucy5wcm90bxofZ29vZ2xlL2FwaS9maWVsZF9iZWhhdmlv",
-            "ci5wcm90bxoZZ29vZ2xlL2FwaS9yZXNvdXJjZS5wcm90bxoeZ29vZ2xlL3By",
-            "b3RvYnVmL2R1cmF0aW9uLnByb3RvGhtnb29nbGUvcHJvdG9idWYvZW1wdHku",
-            "cHJvdG8aF2dvb2dsZS9hcGkvY2xpZW50LnByb3RvItQDChFBdXRvc2NhbGlu",
+            "aS9hbm5vdGF0aW9ucy5wcm90bxoXZ29vZ2xlL2FwaS9jbGllbnQucHJvdG8a",
+            "H2dvb2dsZS9hcGkvZmllbGRfYmVoYXZpb3IucHJvdG8aGWdvb2dsZS9hcGkv",
+            "cmVzb3VyY2UucHJvdG8aHmdvb2dsZS9wcm90b2J1Zi9kdXJhdGlvbi5wcm90",
+            "bxobZ29vZ2xlL3Byb3RvYnVmL2VtcHR5LnByb3RvIqgEChFBdXRvc2NhbGlu",
             "Z1BvbGljeRIKCgJpZBgBIAEoCRIRCgRuYW1lGAIgASgJQgPgQQMSUwoPYmFz",
             "aWNfYWxnb3JpdGhtGAMgASgLMjMuZ29vZ2xlLmNsb3VkLmRhdGFwcm9jLnYx",
             "LkJhc2ljQXV0b3NjYWxpbmdBbGdvcml0aG1CA+BBAkgAEloKDXdvcmtlcl9j",
@@ -37,85 +37,90 @@ namespace Google.Cloud.Dataproc.V1 {
             "Y2VHcm91cEF1dG9zY2FsaW5nUG9saWN5Q29uZmlnQgPgQQISZAoXc2Vjb25k",
             "YXJ5X3dvcmtlcl9jb25maWcYBSABKAsyPi5nb29nbGUuY2xvdWQuZGF0YXBy",
             "b2MudjEuSW5zdGFuY2VHcm91cEF1dG9zY2FsaW5nUG9saWN5Q29uZmlnQgPg",
-            "QQE6fOpBeQopZGF0YXByb2MuZ29vZ2xlYXBpcy5jb20vQXV0b3NjYWxpbmdQ",
-            "b2xpY3kSTHByb2plY3RzL3twcm9qZWN0fS9yZWdpb25zL3tyZWdpb259L2F1",
-            "dG9zY2FsaW5nUG9saWNpZXMve2F1dG9zY2FsaW5nX3BvbGljeX1CCwoJYWxn",
-            "b3JpdGhtIqQBChlCYXNpY0F1dG9zY2FsaW5nQWxnb3JpdGhtEk4KC3lhcm5f",
-            "Y29uZmlnGAEgASgLMjQuZ29vZ2xlLmNsb3VkLmRhdGFwcm9jLnYxLkJhc2lj",
-            "WWFybkF1dG9zY2FsaW5nQ29uZmlnQgPgQQISNwoPY29vbGRvd25fcGVyaW9k",
-            "GAIgASgLMhkuZ29vZ2xlLnByb3RvYnVmLkR1cmF0aW9uQgPgQQEi+QEKGkJh",
-            "c2ljWWFybkF1dG9zY2FsaW5nQ29uZmlnEkUKHWdyYWNlZnVsX2RlY29tbWlz",
-            "c2lvbl90aW1lb3V0GAUgASgLMhkuZ29vZ2xlLnByb3RvYnVmLkR1cmF0aW9u",
-            "QgPgQQISHAoPc2NhbGVfdXBfZmFjdG9yGAEgASgBQgPgQQISHgoRc2NhbGVf",
-            "ZG93bl9mYWN0b3IYAiABKAFCA+BBAhIpChxzY2FsZV91cF9taW5fd29ya2Vy",
-            "X2ZyYWN0aW9uGAMgASgBQgPgQQESKwoec2NhbGVfZG93bl9taW5fd29ya2Vy",
-            "X2ZyYWN0aW9uGAQgASgBQgPgQQEicwokSW5zdGFuY2VHcm91cEF1dG9zY2Fs",
-            "aW5nUG9saWN5Q29uZmlnEhoKDW1pbl9pbnN0YW5jZXMYASABKAVCA+BBARIa",
-            "Cg1tYXhfaW5zdGFuY2VzGAIgASgFQgPgQQISEwoGd2VpZ2h0GAMgASgFQgPg",
-            "QQEioAEKHkNyZWF0ZUF1dG9zY2FsaW5nUG9saWN5UmVxdWVzdBJBCgZwYXJl",
-            "bnQYASABKAlCMeBBAvpBKxIpZGF0YXByb2MuZ29vZ2xlYXBpcy5jb20vQXV0",
-            "b3NjYWxpbmdQb2xpY3kSOwoGcG9saWN5GAIgASgLMisuZ29vZ2xlLmNsb3Vk",
-            "LmRhdGFwcm9jLnYxLkF1dG9zY2FsaW5nUG9saWN5Il4KG0dldEF1dG9zY2Fs",
-            "aW5nUG9saWN5UmVxdWVzdBI/CgRuYW1lGAEgASgJQjHgQQL6QSsKKWRhdGFw",
-            "cm9jLmdvb2dsZWFwaXMuY29tL0F1dG9zY2FsaW5nUG9saWN5ImIKHlVwZGF0",
-            "ZUF1dG9zY2FsaW5nUG9saWN5UmVxdWVzdBJACgZwb2xpY3kYASABKAsyKy5n",
-            "b29nbGUuY2xvdWQuZGF0YXByb2MudjEuQXV0b3NjYWxpbmdQb2xpY3lCA+BB",
-            "AiJhCh5EZWxldGVBdXRvc2NhbGluZ1BvbGljeVJlcXVlc3QSPwoEbmFtZRgB",
-            "IAEoCUIx4EEC+kErCilkYXRhcHJvYy5nb29nbGVhcGlzLmNvbS9BdXRvc2Nh",
-            "bGluZ1BvbGljeSKUAQoeTGlzdEF1dG9zY2FsaW5nUG9saWNpZXNSZXF1ZXN0",
-            "EkEKBnBhcmVudBgBIAEoCUIx4EEC+kErEilkYXRhcHJvYy5nb29nbGVhcGlz",
-            "LmNvbS9BdXRvc2NhbGluZ1BvbGljeRIWCglwYWdlX3NpemUYAiABKAVCA+BB",
-            "ARIXCgpwYWdlX3Rva2VuGAMgASgJQgPgQQEigwEKH0xpc3RBdXRvc2NhbGlu",
-            "Z1BvbGljaWVzUmVzcG9uc2USQgoIcG9saWNpZXMYASADKAsyKy5nb29nbGUu",
-            "Y2xvdWQuZGF0YXByb2MudjEuQXV0b3NjYWxpbmdQb2xpY3lCA+BBAxIcCg9u",
-            "ZXh0X3BhZ2VfdG9rZW4YAiABKAlCA+BBAzL9CgoYQXV0b3NjYWxpbmdQb2xp",
-            "Y3lTZXJ2aWNlEowCChdDcmVhdGVBdXRvc2NhbGluZ1BvbGljeRI4Lmdvb2ds",
-            "ZS5jbG91ZC5kYXRhcHJvYy52MS5DcmVhdGVBdXRvc2NhbGluZ1BvbGljeVJl",
-            "cXVlc3QaKy5nb29nbGUuY2xvdWQuZGF0YXByb2MudjEuQXV0b3NjYWxpbmdQ",
-            "b2xpY3kiiQGC0+STAoIBIjcvdjEve3BhcmVudD1wcm9qZWN0cy8qL2xvY2F0",
-            "aW9ucy8qfS9hdXRvc2NhbGluZ1BvbGljaWVzOgZwb2xpY3laPyI1L3YxL3tw",
-            "YXJlbnQ9cHJvamVjdHMvKi9yZWdpb25zLyp9L2F1dG9zY2FsaW5nUG9saWNp",
-            "ZXM6BnBvbGljeRKaAgoXVXBkYXRlQXV0b3NjYWxpbmdQb2xpY3kSOC5nb29n",
-            "bGUuY2xvdWQuZGF0YXByb2MudjEuVXBkYXRlQXV0b3NjYWxpbmdQb2xpY3lS",
-            "ZXF1ZXN0GisuZ29vZ2xlLmNsb3VkLmRhdGFwcm9jLnYxLkF1dG9zY2FsaW5n",
-            "UG9saWN5IpcBgtPkkwKQARo+L3YxL3twb2xpY3kubmFtZT1wcm9qZWN0cy8q",
-            "L2xvY2F0aW9ucy8qL2F1dG9zY2FsaW5nUG9saWNpZXMvKn06BnBvbGljeVpG",
-            "GjwvdjEve3BvbGljeS5uYW1lPXByb2plY3RzLyovcmVnaW9ucy8qL2F1dG9z",
-            "Y2FsaW5nUG9saWNpZXMvKn06BnBvbGljeRL0AQoUR2V0QXV0b3NjYWxpbmdQ",
-            "b2xpY3kSNS5nb29nbGUuY2xvdWQuZGF0YXByb2MudjEuR2V0QXV0b3NjYWxp",
-            "bmdQb2xpY3lSZXF1ZXN0GisuZ29vZ2xlLmNsb3VkLmRhdGFwcm9jLnYxLkF1",
-            "dG9zY2FsaW5nUG9saWN5IniC0+STAnISNy92MS97bmFtZT1wcm9qZWN0cy8q",
-            "L2xvY2F0aW9ucy8qL2F1dG9zY2FsaW5nUG9saWNpZXMvKn1aNxI1L3YxL3tu",
+            "QQE6zwHqQcsBCilkYXRhcHJvYy5nb29nbGVhcGlzLmNvbS9BdXRvc2NhbGlu",
+            "Z1BvbGljeRJQcHJvamVjdHMve3Byb2plY3R9L2xvY2F0aW9ucy97bG9jYXRp",
+            "b259L2F1dG9zY2FsaW5nUG9saWNpZXMve2F1dG9zY2FsaW5nX3BvbGljeX0S",
+            "THByb2plY3RzL3twcm9qZWN0fS9yZWdpb25zL3tyZWdpb259L2F1dG9zY2Fs",
+            "aW5nUG9saWNpZXMve2F1dG9zY2FsaW5nX3BvbGljeX1CCwoJYWxnb3JpdGht",
+            "IqQBChlCYXNpY0F1dG9zY2FsaW5nQWxnb3JpdGhtEk4KC3lhcm5fY29uZmln",
+            "GAEgASgLMjQuZ29vZ2xlLmNsb3VkLmRhdGFwcm9jLnYxLkJhc2ljWWFybkF1",
+            "dG9zY2FsaW5nQ29uZmlnQgPgQQISNwoPY29vbGRvd25fcGVyaW9kGAIgASgL",
+            "MhkuZ29vZ2xlLnByb3RvYnVmLkR1cmF0aW9uQgPgQQEi+QEKGkJhc2ljWWFy",
+            "bkF1dG9zY2FsaW5nQ29uZmlnEkUKHWdyYWNlZnVsX2RlY29tbWlzc2lvbl90",
+            "aW1lb3V0GAUgASgLMhkuZ29vZ2xlLnByb3RvYnVmLkR1cmF0aW9uQgPgQQIS",
+            "HAoPc2NhbGVfdXBfZmFjdG9yGAEgASgBQgPgQQISHgoRc2NhbGVfZG93bl9m",
+            "YWN0b3IYAiABKAFCA+BBAhIpChxzY2FsZV91cF9taW5fd29ya2VyX2ZyYWN0",
+            "aW9uGAMgASgBQgPgQQESKwoec2NhbGVfZG93bl9taW5fd29ya2VyX2ZyYWN0",
+            "aW9uGAQgASgBQgPgQQEicwokSW5zdGFuY2VHcm91cEF1dG9zY2FsaW5nUG9s",
+            "aWN5Q29uZmlnEhoKDW1pbl9pbnN0YW5jZXMYASABKAVCA+BBARIaCg1tYXhf",
+            "aW5zdGFuY2VzGAIgASgFQgPgQQISEwoGd2VpZ2h0GAMgASgFQgPgQQEipQEK",
+            "HkNyZWF0ZUF1dG9zY2FsaW5nUG9saWN5UmVxdWVzdBJBCgZwYXJlbnQYASAB",
+            "KAlCMeBBAvpBKxIpZGF0YXByb2MuZ29vZ2xlYXBpcy5jb20vQXV0b3NjYWxp",
+            "bmdQb2xpY3kSQAoGcG9saWN5GAIgASgLMisuZ29vZ2xlLmNsb3VkLmRhdGFw",
+            "cm9jLnYxLkF1dG9zY2FsaW5nUG9saWN5QgPgQQIiXgobR2V0QXV0b3NjYWxp",
+            "bmdQb2xpY3lSZXF1ZXN0Ej8KBG5hbWUYASABKAlCMeBBAvpBKwopZGF0YXBy",
+            "b2MuZ29vZ2xlYXBpcy5jb20vQXV0b3NjYWxpbmdQb2xpY3kiYgoeVXBkYXRl",
+            "QXV0b3NjYWxpbmdQb2xpY3lSZXF1ZXN0EkAKBnBvbGljeRgBIAEoCzIrLmdv",
+            "b2dsZS5jbG91ZC5kYXRhcHJvYy52MS5BdXRvc2NhbGluZ1BvbGljeUID4EEC",
+            "ImEKHkRlbGV0ZUF1dG9zY2FsaW5nUG9saWN5UmVxdWVzdBI/CgRuYW1lGAEg",
+            "ASgJQjHgQQL6QSsKKWRhdGFwcm9jLmdvb2dsZWFwaXMuY29tL0F1dG9zY2Fs",
+            "aW5nUG9saWN5IpQBCh5MaXN0QXV0b3NjYWxpbmdQb2xpY2llc1JlcXVlc3QS",
+            "QQoGcGFyZW50GAEgASgJQjHgQQL6QSsSKWRhdGFwcm9jLmdvb2dsZWFwaXMu",
+            "Y29tL0F1dG9zY2FsaW5nUG9saWN5EhYKCXBhZ2Vfc2l6ZRgCIAEoBUID4EEB",
+            "EhcKCnBhZ2VfdG9rZW4YAyABKAlCA+BBASKDAQofTGlzdEF1dG9zY2FsaW5n",
+            "UG9saWNpZXNSZXNwb25zZRJCCghwb2xpY2llcxgBIAMoCzIrLmdvb2dsZS5j",
+            "bG91ZC5kYXRhcHJvYy52MS5BdXRvc2NhbGluZ1BvbGljeUID4EEDEhwKD25l",
+            "eHRfcGFnZV90b2tlbhgCIAEoCUID4EEDMq4LChhBdXRvc2NhbGluZ1BvbGlj",
+            "eVNlcnZpY2USnAIKF0NyZWF0ZUF1dG9zY2FsaW5nUG9saWN5EjguZ29vZ2xl",
+            "LmNsb3VkLmRhdGFwcm9jLnYxLkNyZWF0ZUF1dG9zY2FsaW5nUG9saWN5UmVx",
+            "dWVzdBorLmdvb2dsZS5jbG91ZC5kYXRhcHJvYy52MS5BdXRvc2NhbGluZ1Bv",
+            "bGljeSKZAYLT5JMCggEiNy92MS97cGFyZW50PXByb2plY3RzLyovbG9jYXRp",
+            "b25zLyp9L2F1dG9zY2FsaW5nUG9saWNpZXM6BnBvbGljeVo/IjUvdjEve3Bh",
+            "cmVudD1wcm9qZWN0cy8qL3JlZ2lvbnMvKn0vYXV0b3NjYWxpbmdQb2xpY2ll",
+            "czoGcG9saWN52kENcGFyZW50LHBvbGljeRKjAgoXVXBkYXRlQXV0b3NjYWxp",
+            "bmdQb2xpY3kSOC5nb29nbGUuY2xvdWQuZGF0YXByb2MudjEuVXBkYXRlQXV0",
+            "b3NjYWxpbmdQb2xpY3lSZXF1ZXN0GisuZ29vZ2xlLmNsb3VkLmRhdGFwcm9j",
+            "LnYxLkF1dG9zY2FsaW5nUG9saWN5IqABgtPkkwKQARo+L3YxL3twb2xpY3ku",
+            "bmFtZT1wcm9qZWN0cy8qL2xvY2F0aW9ucy8qL2F1dG9zY2FsaW5nUG9saWNp",
+            "ZXMvKn06BnBvbGljeVpGGjwvdjEve3BvbGljeS5uYW1lPXByb2plY3RzLyov",
+            "cmVnaW9ucy8qL2F1dG9zY2FsaW5nUG9saWNpZXMvKn06BnBvbGljedpBBnBv",
+            "bGljeRL7AQoUR2V0QXV0b3NjYWxpbmdQb2xpY3kSNS5nb29nbGUuY2xvdWQu",
+            "ZGF0YXByb2MudjEuR2V0QXV0b3NjYWxpbmdQb2xpY3lSZXF1ZXN0GisuZ29v",
+            "Z2xlLmNsb3VkLmRhdGFwcm9jLnYxLkF1dG9zY2FsaW5nUG9saWN5In+C0+ST",
+            "AnISNy92MS97bmFtZT1wcm9qZWN0cy8qL2xvY2F0aW9ucy8qL2F1dG9zY2Fs",
+            "aW5nUG9saWNpZXMvKn1aNxI1L3YxL3tuYW1lPXByb2plY3RzLyovcmVnaW9u",
+            "cy8qL2F1dG9zY2FsaW5nUG9saWNpZXMvKn3aQQRuYW1lEpICChdMaXN0QXV0",
+            "b3NjYWxpbmdQb2xpY2llcxI4Lmdvb2dsZS5jbG91ZC5kYXRhcHJvYy52MS5M",
+            "aXN0QXV0b3NjYWxpbmdQb2xpY2llc1JlcXVlc3QaOS5nb29nbGUuY2xvdWQu",
+            "ZGF0YXByb2MudjEuTGlzdEF1dG9zY2FsaW5nUG9saWNpZXNSZXNwb25zZSKB",
+            "AYLT5JMCchI3L3YxL3twYXJlbnQ9cHJvamVjdHMvKi9sb2NhdGlvbnMvKn0v",
+            "YXV0b3NjYWxpbmdQb2xpY2llc1o3EjUvdjEve3BhcmVudD1wcm9qZWN0cy8q",
+            "L3JlZ2lvbnMvKn0vYXV0b3NjYWxpbmdQb2xpY2llc9pBBnBhcmVudBLsAQoX",
+            "RGVsZXRlQXV0b3NjYWxpbmdQb2xpY3kSOC5nb29nbGUuY2xvdWQuZGF0YXBy",
+            "b2MudjEuRGVsZXRlQXV0b3NjYWxpbmdQb2xpY3lSZXF1ZXN0GhYuZ29vZ2xl",
+            "LnByb3RvYnVmLkVtcHR5In+C0+STAnIqNy92MS97bmFtZT1wcm9qZWN0cy8q",
+            "L2xvY2F0aW9ucy8qL2F1dG9zY2FsaW5nUG9saWNpZXMvKn1aNyo1L3YxL3tu",
             "YW1lPXByb2plY3RzLyovcmVnaW9ucy8qL2F1dG9zY2FsaW5nUG9saWNpZXMv",
-            "Kn0SiAIKF0xpc3RBdXRvc2NhbGluZ1BvbGljaWVzEjguZ29vZ2xlLmNsb3Vk",
-            "LmRhdGFwcm9jLnYxLkxpc3RBdXRvc2NhbGluZ1BvbGljaWVzUmVxdWVzdBo5",
-            "Lmdvb2dsZS5jbG91ZC5kYXRhcHJvYy52MS5MaXN0QXV0b3NjYWxpbmdQb2xp",
-            "Y2llc1Jlc3BvbnNlIniC0+STAnISNy92MS97cGFyZW50PXByb2plY3RzLyov",
-            "bG9jYXRpb25zLyp9L2F1dG9zY2FsaW5nUG9saWNpZXNaNxI1L3YxL3twYXJl",
-            "bnQ9cHJvamVjdHMvKi9yZWdpb25zLyp9L2F1dG9zY2FsaW5nUG9saWNpZXMS",
-            "5QEKF0RlbGV0ZUF1dG9zY2FsaW5nUG9saWN5EjguZ29vZ2xlLmNsb3VkLmRh",
-            "dGFwcm9jLnYxLkRlbGV0ZUF1dG9zY2FsaW5nUG9saWN5UmVxdWVzdBoWLmdv",
-            "b2dsZS5wcm90b2J1Zi5FbXB0eSJ4gtPkkwJyKjcvdjEve25hbWU9cHJvamVj",
-            "dHMvKi9sb2NhdGlvbnMvKi9hdXRvc2NhbGluZ1BvbGljaWVzLyp9WjcqNS92",
-            "MS97bmFtZT1wcm9qZWN0cy8qL3JlZ2lvbnMvKi9hdXRvc2NhbGluZ1BvbGlj",
-            "aWVzLyp9GkvKQRdkYXRhcHJvYy5nb29nbGVhcGlzLmNvbdJBLmh0dHBzOi8v",
-            "d3d3Lmdvb2dsZWFwaXMuY29tL2F1dGgvY2xvdWQtcGxhdGZvcm1CfAocY29t",
-            "Lmdvb2dsZS5jbG91ZC5kYXRhcHJvYy52MUIYQXV0b3NjYWxpbmdQb2xpY2ll",
-            "c1Byb3RvUAFaQGdvb2dsZS5nb2xhbmcub3JnL2dlbnByb3RvL2dvb2dsZWFw",
-            "aXMvY2xvdWQvZGF0YXByb2MvdjE7ZGF0YXByb2NiBnByb3RvMw=="));
+            "Kn3aQQRuYW1lGkvKQRdkYXRhcHJvYy5nb29nbGVhcGlzLmNvbdJBLmh0dHBz",
+            "Oi8vd3d3Lmdvb2dsZWFwaXMuY29tL2F1dGgvY2xvdWQtcGxhdGZvcm1CxAEK",
+            "HGNvbS5nb29nbGUuY2xvdWQuZGF0YXByb2MudjFCGEF1dG9zY2FsaW5nUG9s",
+            "aWNpZXNQcm90b1ABWkBnb29nbGUuZ29sYW5nLm9yZy9nZW5wcm90by9nb29n",
+            "bGVhcGlzL2Nsb3VkL2RhdGFwcm9jL3YxO2RhdGFwcm9j6kFFCh5kYXRhcHJv",
+            "Yy5nb29nbGVhcGlzLmNvbS9SZWdpb24SI3Byb2plY3RzL3twcm9qZWN0fS9y",
+            "ZWdpb25zL3tyZWdpb259YgZwcm90bzM="));
       descriptor = pbr::FileDescriptor.FromGeneratedCode(descriptorData,
-          new pbr::FileDescriptor[] { global::Google.Api.AnnotationsReflection.Descriptor, global::Google.Api.FieldBehaviorReflection.Descriptor, global::Google.Api.ResourceReflection.Descriptor, global::Google.Protobuf.WellKnownTypes.DurationReflection.Descriptor, global::Google.Protobuf.WellKnownTypes.EmptyReflection.Descriptor, global::Google.Api.ClientReflection.Descriptor, },
-          new pbr::GeneratedClrTypeInfo(null, new pbr::GeneratedClrTypeInfo[] {
-            new pbr::GeneratedClrTypeInfo(typeof(global::Google.Cloud.Dataproc.V1.AutoscalingPolicy), global::Google.Cloud.Dataproc.V1.AutoscalingPolicy.Parser, new[]{ "Id", "Name", "BasicAlgorithm", "WorkerConfig", "SecondaryWorkerConfig" }, new[]{ "Algorithm" }, null, null),
-            new pbr::GeneratedClrTypeInfo(typeof(global::Google.Cloud.Dataproc.V1.BasicAutoscalingAlgorithm), global::Google.Cloud.Dataproc.V1.BasicAutoscalingAlgorithm.Parser, new[]{ "YarnConfig", "CooldownPeriod" }, null, null, null),
-            new pbr::GeneratedClrTypeInfo(typeof(global::Google.Cloud.Dataproc.V1.BasicYarnAutoscalingConfig), global::Google.Cloud.Dataproc.V1.BasicYarnAutoscalingConfig.Parser, new[]{ "GracefulDecommissionTimeout", "ScaleUpFactor", "ScaleDownFactor", "ScaleUpMinWorkerFraction", "ScaleDownMinWorkerFraction" }, null, null, null),
-            new pbr::GeneratedClrTypeInfo(typeof(global::Google.Cloud.Dataproc.V1.InstanceGroupAutoscalingPolicyConfig), global::Google.Cloud.Dataproc.V1.InstanceGroupAutoscalingPolicyConfig.Parser, new[]{ "MinInstances", "MaxInstances", "Weight" }, null, null, null),
-            new pbr::GeneratedClrTypeInfo(typeof(global::Google.Cloud.Dataproc.V1.CreateAutoscalingPolicyRequest), global::Google.Cloud.Dataproc.V1.CreateAutoscalingPolicyRequest.Parser, new[]{ "Parent", "Policy" }, null, null, null),
-            new pbr::GeneratedClrTypeInfo(typeof(global::Google.Cloud.Dataproc.V1.GetAutoscalingPolicyRequest), global::Google.Cloud.Dataproc.V1.GetAutoscalingPolicyRequest.Parser, new[]{ "Name" }, null, null, null),
-            new pbr::GeneratedClrTypeInfo(typeof(global::Google.Cloud.Dataproc.V1.UpdateAutoscalingPolicyRequest), global::Google.Cloud.Dataproc.V1.UpdateAutoscalingPolicyRequest.Parser, new[]{ "Policy" }, null, null, null),
-            new pbr::GeneratedClrTypeInfo(typeof(global::Google.Cloud.Dataproc.V1.DeleteAutoscalingPolicyRequest), global::Google.Cloud.Dataproc.V1.DeleteAutoscalingPolicyRequest.Parser, new[]{ "Name" }, null, null, null),
-            new pbr::GeneratedClrTypeInfo(typeof(global::Google.Cloud.Dataproc.V1.ListAutoscalingPoliciesRequest), global::Google.Cloud.Dataproc.V1.ListAutoscalingPoliciesRequest.Parser, new[]{ "Parent", "PageSize", "PageToken" }, null, null, null),
-            new pbr::GeneratedClrTypeInfo(typeof(global::Google.Cloud.Dataproc.V1.ListAutoscalingPoliciesResponse), global::Google.Cloud.Dataproc.V1.ListAutoscalingPoliciesResponse.Parser, new[]{ "Policies", "NextPageToken" }, null, null, null)
+          new pbr::FileDescriptor[] { global::Google.Api.AnnotationsReflection.Descriptor, global::Google.Api.ClientReflection.Descriptor, global::Google.Api.FieldBehaviorReflection.Descriptor, global::Google.Api.ResourceReflection.Descriptor, global::Google.Protobuf.WellKnownTypes.DurationReflection.Descriptor, global::Google.Protobuf.WellKnownTypes.EmptyReflection.Descriptor, },
+          new pbr::GeneratedClrTypeInfo(null, null, new pbr::GeneratedClrTypeInfo[] {
+            new pbr::GeneratedClrTypeInfo(typeof(global::Google.Cloud.Dataproc.V1.AutoscalingPolicy), global::Google.Cloud.Dataproc.V1.AutoscalingPolicy.Parser, new[]{ "Id", "Name", "BasicAlgorithm", "WorkerConfig", "SecondaryWorkerConfig" }, new[]{ "Algorithm" }, null, null, null),
+            new pbr::GeneratedClrTypeInfo(typeof(global::Google.Cloud.Dataproc.V1.BasicAutoscalingAlgorithm), global::Google.Cloud.Dataproc.V1.BasicAutoscalingAlgorithm.Parser, new[]{ "YarnConfig", "CooldownPeriod" }, null, null, null, null),
+            new pbr::GeneratedClrTypeInfo(typeof(global::Google.Cloud.Dataproc.V1.BasicYarnAutoscalingConfig), global::Google.Cloud.Dataproc.V1.BasicYarnAutoscalingConfig.Parser, new[]{ "GracefulDecommissionTimeout", "ScaleUpFactor", "ScaleDownFactor", "ScaleUpMinWorkerFraction", "ScaleDownMinWorkerFraction" }, null, null, null, null),
+            new pbr::GeneratedClrTypeInfo(typeof(global::Google.Cloud.Dataproc.V1.InstanceGroupAutoscalingPolicyConfig), global::Google.Cloud.Dataproc.V1.InstanceGroupAutoscalingPolicyConfig.Parser, new[]{ "MinInstances", "MaxInstances", "Weight" }, null, null, null, null),
+            new pbr::GeneratedClrTypeInfo(typeof(global::Google.Cloud.Dataproc.V1.CreateAutoscalingPolicyRequest), global::Google.Cloud.Dataproc.V1.CreateAutoscalingPolicyRequest.Parser, new[]{ "Parent", "Policy" }, null, null, null, null),
+            new pbr::GeneratedClrTypeInfo(typeof(global::Google.Cloud.Dataproc.V1.GetAutoscalingPolicyRequest), global::Google.Cloud.Dataproc.V1.GetAutoscalingPolicyRequest.Parser, new[]{ "Name" }, null, null, null, null),
+            new pbr::GeneratedClrTypeInfo(typeof(global::Google.Cloud.Dataproc.V1.UpdateAutoscalingPolicyRequest), global::Google.Cloud.Dataproc.V1.UpdateAutoscalingPolicyRequest.Parser, new[]{ "Policy" }, null, null, null, null),
+            new pbr::GeneratedClrTypeInfo(typeof(global::Google.Cloud.Dataproc.V1.DeleteAutoscalingPolicyRequest), global::Google.Cloud.Dataproc.V1.DeleteAutoscalingPolicyRequest.Parser, new[]{ "Name" }, null, null, null, null),
+            new pbr::GeneratedClrTypeInfo(typeof(global::Google.Cloud.Dataproc.V1.ListAutoscalingPoliciesRequest), global::Google.Cloud.Dataproc.V1.ListAutoscalingPoliciesRequest.Parser, new[]{ "Parent", "PageSize", "PageToken" }, null, null, null, null),
+            new pbr::GeneratedClrTypeInfo(typeof(global::Google.Cloud.Dataproc.V1.ListAutoscalingPoliciesResponse), global::Google.Cloud.Dataproc.V1.ListAutoscalingPoliciesResponse.Parser, new[]{ "Policies", "NextPageToken" }, null, null, null, null)
           }));
     }
     #endregion
@@ -125,7 +130,11 @@ namespace Google.Cloud.Dataproc.V1 {
   /// <summary>
   /// Describes an autoscaling policy for Dataproc cluster autoscaler.
   /// </summary>
-  public sealed partial class AutoscalingPolicy : pb::IMessage<AutoscalingPolicy> {
+  public sealed partial class AutoscalingPolicy : pb::IMessage<AutoscalingPolicy>
+  #if !GOOGLE_PROTOBUF_REFSTRUCT_COMPATIBILITY_MODE
+      , pb::IBufferMessage
+  #endif
+  {
     private static readonly pb::MessageParser<AutoscalingPolicy> _parser = new pb::MessageParser<AutoscalingPolicy>(() => new AutoscalingPolicy());
     private pb::UnknownFieldSet _unknownFields;
     [global::System.Diagnostics.DebuggerNonUserCodeAttribute]
@@ -310,6 +319,9 @@ namespace Google.Cloud.Dataproc.V1 {
 
     [global::System.Diagnostics.DebuggerNonUserCodeAttribute]
     public void WriteTo(pb::CodedOutputStream output) {
+    #if !GOOGLE_PROTOBUF_REFSTRUCT_COMPATIBILITY_MODE
+      output.WriteRawMessage(this);
+    #else
       if (Id.Length != 0) {
         output.WriteRawTag(10);
         output.WriteString(Id);
@@ -333,7 +345,37 @@ namespace Google.Cloud.Dataproc.V1 {
       if (_unknownFields != null) {
         _unknownFields.WriteTo(output);
       }
+    #endif
     }
+
+    #if !GOOGLE_PROTOBUF_REFSTRUCT_COMPATIBILITY_MODE
+    [global::System.Diagnostics.DebuggerNonUserCodeAttribute]
+    void pb::IBufferMessage.InternalWriteTo(ref pb::WriteContext output) {
+      if (Id.Length != 0) {
+        output.WriteRawTag(10);
+        output.WriteString(Id);
+      }
+      if (Name.Length != 0) {
+        output.WriteRawTag(18);
+        output.WriteString(Name);
+      }
+      if (algorithmCase_ == AlgorithmOneofCase.BasicAlgorithm) {
+        output.WriteRawTag(26);
+        output.WriteMessage(BasicAlgorithm);
+      }
+      if (workerConfig_ != null) {
+        output.WriteRawTag(34);
+        output.WriteMessage(WorkerConfig);
+      }
+      if (secondaryWorkerConfig_ != null) {
+        output.WriteRawTag(42);
+        output.WriteMessage(SecondaryWorkerConfig);
+      }
+      if (_unknownFields != null) {
+        _unknownFields.WriteTo(ref output);
+      }
+    }
+    #endif
 
     [global::System.Diagnostics.DebuggerNonUserCodeAttribute]
     public int CalculateSize() {
@@ -396,6 +438,9 @@ namespace Google.Cloud.Dataproc.V1 {
 
     [global::System.Diagnostics.DebuggerNonUserCodeAttribute]
     public void MergeFrom(pb::CodedInputStream input) {
+    #if !GOOGLE_PROTOBUF_REFSTRUCT_COMPATIBILITY_MODE
+      input.ReadRawMessage(this);
+    #else
       uint tag;
       while ((tag = input.ReadTag()) != 0) {
         switch(tag) {
@@ -435,14 +480,64 @@ namespace Google.Cloud.Dataproc.V1 {
           }
         }
       }
+    #endif
     }
+
+    #if !GOOGLE_PROTOBUF_REFSTRUCT_COMPATIBILITY_MODE
+    [global::System.Diagnostics.DebuggerNonUserCodeAttribute]
+    void pb::IBufferMessage.InternalMergeFrom(ref pb::ParseContext input) {
+      uint tag;
+      while ((tag = input.ReadTag()) != 0) {
+        switch(tag) {
+          default:
+            _unknownFields = pb::UnknownFieldSet.MergeFieldFrom(_unknownFields, ref input);
+            break;
+          case 10: {
+            Id = input.ReadString();
+            break;
+          }
+          case 18: {
+            Name = input.ReadString();
+            break;
+          }
+          case 26: {
+            global::Google.Cloud.Dataproc.V1.BasicAutoscalingAlgorithm subBuilder = new global::Google.Cloud.Dataproc.V1.BasicAutoscalingAlgorithm();
+            if (algorithmCase_ == AlgorithmOneofCase.BasicAlgorithm) {
+              subBuilder.MergeFrom(BasicAlgorithm);
+            }
+            input.ReadMessage(subBuilder);
+            BasicAlgorithm = subBuilder;
+            break;
+          }
+          case 34: {
+            if (workerConfig_ == null) {
+              WorkerConfig = new global::Google.Cloud.Dataproc.V1.InstanceGroupAutoscalingPolicyConfig();
+            }
+            input.ReadMessage(WorkerConfig);
+            break;
+          }
+          case 42: {
+            if (secondaryWorkerConfig_ == null) {
+              SecondaryWorkerConfig = new global::Google.Cloud.Dataproc.V1.InstanceGroupAutoscalingPolicyConfig();
+            }
+            input.ReadMessage(SecondaryWorkerConfig);
+            break;
+          }
+        }
+      }
+    }
+    #endif
 
   }
 
   /// <summary>
   /// Basic algorithm for autoscaling.
   /// </summary>
-  public sealed partial class BasicAutoscalingAlgorithm : pb::IMessage<BasicAutoscalingAlgorithm> {
+  public sealed partial class BasicAutoscalingAlgorithm : pb::IMessage<BasicAutoscalingAlgorithm>
+  #if !GOOGLE_PROTOBUF_REFSTRUCT_COMPATIBILITY_MODE
+      , pb::IBufferMessage
+  #endif
+  {
     private static readonly pb::MessageParser<BasicAutoscalingAlgorithm> _parser = new pb::MessageParser<BasicAutoscalingAlgorithm>(() => new BasicAutoscalingAlgorithm());
     private pb::UnknownFieldSet _unknownFields;
     [global::System.Diagnostics.DebuggerNonUserCodeAttribute]
@@ -544,6 +639,9 @@ namespace Google.Cloud.Dataproc.V1 {
 
     [global::System.Diagnostics.DebuggerNonUserCodeAttribute]
     public void WriteTo(pb::CodedOutputStream output) {
+    #if !GOOGLE_PROTOBUF_REFSTRUCT_COMPATIBILITY_MODE
+      output.WriteRawMessage(this);
+    #else
       if (yarnConfig_ != null) {
         output.WriteRawTag(10);
         output.WriteMessage(YarnConfig);
@@ -555,7 +653,25 @@ namespace Google.Cloud.Dataproc.V1 {
       if (_unknownFields != null) {
         _unknownFields.WriteTo(output);
       }
+    #endif
     }
+
+    #if !GOOGLE_PROTOBUF_REFSTRUCT_COMPATIBILITY_MODE
+    [global::System.Diagnostics.DebuggerNonUserCodeAttribute]
+    void pb::IBufferMessage.InternalWriteTo(ref pb::WriteContext output) {
+      if (yarnConfig_ != null) {
+        output.WriteRawTag(10);
+        output.WriteMessage(YarnConfig);
+      }
+      if (cooldownPeriod_ != null) {
+        output.WriteRawTag(18);
+        output.WriteMessage(CooldownPeriod);
+      }
+      if (_unknownFields != null) {
+        _unknownFields.WriteTo(ref output);
+      }
+    }
+    #endif
 
     [global::System.Diagnostics.DebuggerNonUserCodeAttribute]
     public int CalculateSize() {
@@ -594,6 +710,9 @@ namespace Google.Cloud.Dataproc.V1 {
 
     [global::System.Diagnostics.DebuggerNonUserCodeAttribute]
     public void MergeFrom(pb::CodedInputStream input) {
+    #if !GOOGLE_PROTOBUF_REFSTRUCT_COMPATIBILITY_MODE
+      input.ReadRawMessage(this);
+    #else
       uint tag;
       while ((tag = input.ReadTag()) != 0) {
         switch(tag) {
@@ -616,14 +735,47 @@ namespace Google.Cloud.Dataproc.V1 {
           }
         }
       }
+    #endif
     }
+
+    #if !GOOGLE_PROTOBUF_REFSTRUCT_COMPATIBILITY_MODE
+    [global::System.Diagnostics.DebuggerNonUserCodeAttribute]
+    void pb::IBufferMessage.InternalMergeFrom(ref pb::ParseContext input) {
+      uint tag;
+      while ((tag = input.ReadTag()) != 0) {
+        switch(tag) {
+          default:
+            _unknownFields = pb::UnknownFieldSet.MergeFieldFrom(_unknownFields, ref input);
+            break;
+          case 10: {
+            if (yarnConfig_ == null) {
+              YarnConfig = new global::Google.Cloud.Dataproc.V1.BasicYarnAutoscalingConfig();
+            }
+            input.ReadMessage(YarnConfig);
+            break;
+          }
+          case 18: {
+            if (cooldownPeriod_ == null) {
+              CooldownPeriod = new global::Google.Protobuf.WellKnownTypes.Duration();
+            }
+            input.ReadMessage(CooldownPeriod);
+            break;
+          }
+        }
+      }
+    }
+    #endif
 
   }
 
   /// <summary>
   /// Basic autoscaling configurations for YARN.
   /// </summary>
-  public sealed partial class BasicYarnAutoscalingConfig : pb::IMessage<BasicYarnAutoscalingConfig> {
+  public sealed partial class BasicYarnAutoscalingConfig : pb::IMessage<BasicYarnAutoscalingConfig>
+  #if !GOOGLE_PROTOBUF_REFSTRUCT_COMPATIBILITY_MODE
+      , pb::IBufferMessage
+  #endif
+  {
     private static readonly pb::MessageParser<BasicYarnAutoscalingConfig> _parser = new pb::MessageParser<BasicYarnAutoscalingConfig>(() => new BasicYarnAutoscalingConfig());
     private pb::UnknownFieldSet _unknownFields;
     [global::System.Diagnostics.DebuggerNonUserCodeAttribute]
@@ -684,11 +836,14 @@ namespace Google.Cloud.Dataproc.V1 {
     public const int ScaleUpFactorFieldNumber = 1;
     private double scaleUpFactor_;
     /// <summary>
-    /// Required. Fraction of average pending memory in the last cooldown period
+    /// Required. Fraction of average YARN pending memory in the last cooldown period
     /// for which to add workers. A scale-up factor of 1.0 will result in scaling
     /// up so that there is no pending memory remaining after the update (more
     /// aggressive scaling). A scale-up factor closer to 0 will result in a smaller
     /// magnitude of scaling up (less aggressive scaling).
+    /// See [How autoscaling
+    /// works](https://cloud.google.com/dataproc/docs/concepts/configuring-clusters/autoscaling#how_autoscaling_works)
+    /// for more information.
     ///
     /// Bounds: [0.0, 1.0].
     /// </summary>
@@ -704,11 +859,14 @@ namespace Google.Cloud.Dataproc.V1 {
     public const int ScaleDownFactorFieldNumber = 2;
     private double scaleDownFactor_;
     /// <summary>
-    /// Required. Fraction of average pending memory in the last cooldown period
+    /// Required. Fraction of average YARN pending memory in the last cooldown period
     /// for which to remove workers. A scale-down factor of 1 will result in
     /// scaling down so that there is no available memory remaining after the
     /// update (more aggressive scaling). A scale-down factor of 0 disables
     /// removing workers, which can be beneficial for autoscaling a single job.
+    /// See [How autoscaling
+    /// works](https://cloud.google.com/dataproc/docs/concepts/configuring-clusters/autoscaling#how_autoscaling_works)
+    /// for more information.
     ///
     /// Bounds: [0.0, 1.0].
     /// </summary>
@@ -802,6 +960,9 @@ namespace Google.Cloud.Dataproc.V1 {
 
     [global::System.Diagnostics.DebuggerNonUserCodeAttribute]
     public void WriteTo(pb::CodedOutputStream output) {
+    #if !GOOGLE_PROTOBUF_REFSTRUCT_COMPATIBILITY_MODE
+      output.WriteRawMessage(this);
+    #else
       if (ScaleUpFactor != 0D) {
         output.WriteRawTag(9);
         output.WriteDouble(ScaleUpFactor);
@@ -825,7 +986,37 @@ namespace Google.Cloud.Dataproc.V1 {
       if (_unknownFields != null) {
         _unknownFields.WriteTo(output);
       }
+    #endif
     }
+
+    #if !GOOGLE_PROTOBUF_REFSTRUCT_COMPATIBILITY_MODE
+    [global::System.Diagnostics.DebuggerNonUserCodeAttribute]
+    void pb::IBufferMessage.InternalWriteTo(ref pb::WriteContext output) {
+      if (ScaleUpFactor != 0D) {
+        output.WriteRawTag(9);
+        output.WriteDouble(ScaleUpFactor);
+      }
+      if (ScaleDownFactor != 0D) {
+        output.WriteRawTag(17);
+        output.WriteDouble(ScaleDownFactor);
+      }
+      if (ScaleUpMinWorkerFraction != 0D) {
+        output.WriteRawTag(25);
+        output.WriteDouble(ScaleUpMinWorkerFraction);
+      }
+      if (ScaleDownMinWorkerFraction != 0D) {
+        output.WriteRawTag(33);
+        output.WriteDouble(ScaleDownMinWorkerFraction);
+      }
+      if (gracefulDecommissionTimeout_ != null) {
+        output.WriteRawTag(42);
+        output.WriteMessage(GracefulDecommissionTimeout);
+      }
+      if (_unknownFields != null) {
+        _unknownFields.WriteTo(ref output);
+      }
+    }
+    #endif
 
     [global::System.Diagnostics.DebuggerNonUserCodeAttribute]
     public int CalculateSize() {
@@ -879,6 +1070,9 @@ namespace Google.Cloud.Dataproc.V1 {
 
     [global::System.Diagnostics.DebuggerNonUserCodeAttribute]
     public void MergeFrom(pb::CodedInputStream input) {
+    #if !GOOGLE_PROTOBUF_REFSTRUCT_COMPATIBILITY_MODE
+      input.ReadRawMessage(this);
+    #else
       uint tag;
       while ((tag = input.ReadTag()) != 0) {
         switch(tag) {
@@ -910,7 +1104,45 @@ namespace Google.Cloud.Dataproc.V1 {
           }
         }
       }
+    #endif
     }
+
+    #if !GOOGLE_PROTOBUF_REFSTRUCT_COMPATIBILITY_MODE
+    [global::System.Diagnostics.DebuggerNonUserCodeAttribute]
+    void pb::IBufferMessage.InternalMergeFrom(ref pb::ParseContext input) {
+      uint tag;
+      while ((tag = input.ReadTag()) != 0) {
+        switch(tag) {
+          default:
+            _unknownFields = pb::UnknownFieldSet.MergeFieldFrom(_unknownFields, ref input);
+            break;
+          case 9: {
+            ScaleUpFactor = input.ReadDouble();
+            break;
+          }
+          case 17: {
+            ScaleDownFactor = input.ReadDouble();
+            break;
+          }
+          case 25: {
+            ScaleUpMinWorkerFraction = input.ReadDouble();
+            break;
+          }
+          case 33: {
+            ScaleDownMinWorkerFraction = input.ReadDouble();
+            break;
+          }
+          case 42: {
+            if (gracefulDecommissionTimeout_ == null) {
+              GracefulDecommissionTimeout = new global::Google.Protobuf.WellKnownTypes.Duration();
+            }
+            input.ReadMessage(GracefulDecommissionTimeout);
+            break;
+          }
+        }
+      }
+    }
+    #endif
 
   }
 
@@ -918,7 +1150,11 @@ namespace Google.Cloud.Dataproc.V1 {
   /// Configuration for the size bounds of an instance group, including its
   /// proportional size to other groups.
   /// </summary>
-  public sealed partial class InstanceGroupAutoscalingPolicyConfig : pb::IMessage<InstanceGroupAutoscalingPolicyConfig> {
+  public sealed partial class InstanceGroupAutoscalingPolicyConfig : pb::IMessage<InstanceGroupAutoscalingPolicyConfig>
+  #if !GOOGLE_PROTOBUF_REFSTRUCT_COMPATIBILITY_MODE
+      , pb::IBufferMessage
+  #endif
+  {
     private static readonly pb::MessageParser<InstanceGroupAutoscalingPolicyConfig> _parser = new pb::MessageParser<InstanceGroupAutoscalingPolicyConfig>(() => new InstanceGroupAutoscalingPolicyConfig());
     private pb::UnknownFieldSet _unknownFields;
     [global::System.Diagnostics.DebuggerNonUserCodeAttribute]
@@ -1059,6 +1295,9 @@ namespace Google.Cloud.Dataproc.V1 {
 
     [global::System.Diagnostics.DebuggerNonUserCodeAttribute]
     public void WriteTo(pb::CodedOutputStream output) {
+    #if !GOOGLE_PROTOBUF_REFSTRUCT_COMPATIBILITY_MODE
+      output.WriteRawMessage(this);
+    #else
       if (MinInstances != 0) {
         output.WriteRawTag(8);
         output.WriteInt32(MinInstances);
@@ -1074,7 +1313,29 @@ namespace Google.Cloud.Dataproc.V1 {
       if (_unknownFields != null) {
         _unknownFields.WriteTo(output);
       }
+    #endif
     }
+
+    #if !GOOGLE_PROTOBUF_REFSTRUCT_COMPATIBILITY_MODE
+    [global::System.Diagnostics.DebuggerNonUserCodeAttribute]
+    void pb::IBufferMessage.InternalWriteTo(ref pb::WriteContext output) {
+      if (MinInstances != 0) {
+        output.WriteRawTag(8);
+        output.WriteInt32(MinInstances);
+      }
+      if (MaxInstances != 0) {
+        output.WriteRawTag(16);
+        output.WriteInt32(MaxInstances);
+      }
+      if (Weight != 0) {
+        output.WriteRawTag(24);
+        output.WriteInt32(Weight);
+      }
+      if (_unknownFields != null) {
+        _unknownFields.WriteTo(ref output);
+      }
+    }
+    #endif
 
     [global::System.Diagnostics.DebuggerNonUserCodeAttribute]
     public int CalculateSize() {
@@ -1113,6 +1374,9 @@ namespace Google.Cloud.Dataproc.V1 {
 
     [global::System.Diagnostics.DebuggerNonUserCodeAttribute]
     public void MergeFrom(pb::CodedInputStream input) {
+    #if !GOOGLE_PROTOBUF_REFSTRUCT_COMPATIBILITY_MODE
+      input.ReadRawMessage(this);
+    #else
       uint tag;
       while ((tag = input.ReadTag()) != 0) {
         switch(tag) {
@@ -1133,14 +1397,45 @@ namespace Google.Cloud.Dataproc.V1 {
           }
         }
       }
+    #endif
     }
+
+    #if !GOOGLE_PROTOBUF_REFSTRUCT_COMPATIBILITY_MODE
+    [global::System.Diagnostics.DebuggerNonUserCodeAttribute]
+    void pb::IBufferMessage.InternalMergeFrom(ref pb::ParseContext input) {
+      uint tag;
+      while ((tag = input.ReadTag()) != 0) {
+        switch(tag) {
+          default:
+            _unknownFields = pb::UnknownFieldSet.MergeFieldFrom(_unknownFields, ref input);
+            break;
+          case 8: {
+            MinInstances = input.ReadInt32();
+            break;
+          }
+          case 16: {
+            MaxInstances = input.ReadInt32();
+            break;
+          }
+          case 24: {
+            Weight = input.ReadInt32();
+            break;
+          }
+        }
+      }
+    }
+    #endif
 
   }
 
   /// <summary>
   /// A request to create an autoscaling policy.
   /// </summary>
-  public sealed partial class CreateAutoscalingPolicyRequest : pb::IMessage<CreateAutoscalingPolicyRequest> {
+  public sealed partial class CreateAutoscalingPolicyRequest : pb::IMessage<CreateAutoscalingPolicyRequest>
+  #if !GOOGLE_PROTOBUF_REFSTRUCT_COMPATIBILITY_MODE
+      , pb::IBufferMessage
+  #endif
+  {
     private static readonly pb::MessageParser<CreateAutoscalingPolicyRequest> _parser = new pb::MessageParser<CreateAutoscalingPolicyRequest>(() => new CreateAutoscalingPolicyRequest());
     private pb::UnknownFieldSet _unknownFields;
     [global::System.Diagnostics.DebuggerNonUserCodeAttribute]
@@ -1202,7 +1497,7 @@ namespace Google.Cloud.Dataproc.V1 {
     public const int PolicyFieldNumber = 2;
     private global::Google.Cloud.Dataproc.V1.AutoscalingPolicy policy_;
     /// <summary>
-    /// The autoscaling policy to create.
+    /// Required. The autoscaling policy to create.
     /// </summary>
     [global::System.Diagnostics.DebuggerNonUserCodeAttribute]
     public global::Google.Cloud.Dataproc.V1.AutoscalingPolicy Policy {
@@ -1248,6 +1543,9 @@ namespace Google.Cloud.Dataproc.V1 {
 
     [global::System.Diagnostics.DebuggerNonUserCodeAttribute]
     public void WriteTo(pb::CodedOutputStream output) {
+    #if !GOOGLE_PROTOBUF_REFSTRUCT_COMPATIBILITY_MODE
+      output.WriteRawMessage(this);
+    #else
       if (Parent.Length != 0) {
         output.WriteRawTag(10);
         output.WriteString(Parent);
@@ -1259,7 +1557,25 @@ namespace Google.Cloud.Dataproc.V1 {
       if (_unknownFields != null) {
         _unknownFields.WriteTo(output);
       }
+    #endif
     }
+
+    #if !GOOGLE_PROTOBUF_REFSTRUCT_COMPATIBILITY_MODE
+    [global::System.Diagnostics.DebuggerNonUserCodeAttribute]
+    void pb::IBufferMessage.InternalWriteTo(ref pb::WriteContext output) {
+      if (Parent.Length != 0) {
+        output.WriteRawTag(10);
+        output.WriteString(Parent);
+      }
+      if (policy_ != null) {
+        output.WriteRawTag(18);
+        output.WriteMessage(Policy);
+      }
+      if (_unknownFields != null) {
+        _unknownFields.WriteTo(ref output);
+      }
+    }
+    #endif
 
     [global::System.Diagnostics.DebuggerNonUserCodeAttribute]
     public int CalculateSize() {
@@ -1295,6 +1611,9 @@ namespace Google.Cloud.Dataproc.V1 {
 
     [global::System.Diagnostics.DebuggerNonUserCodeAttribute]
     public void MergeFrom(pb::CodedInputStream input) {
+    #if !GOOGLE_PROTOBUF_REFSTRUCT_COMPATIBILITY_MODE
+      input.ReadRawMessage(this);
+    #else
       uint tag;
       while ((tag = input.ReadTag()) != 0) {
         switch(tag) {
@@ -1314,14 +1633,44 @@ namespace Google.Cloud.Dataproc.V1 {
           }
         }
       }
+    #endif
     }
+
+    #if !GOOGLE_PROTOBUF_REFSTRUCT_COMPATIBILITY_MODE
+    [global::System.Diagnostics.DebuggerNonUserCodeAttribute]
+    void pb::IBufferMessage.InternalMergeFrom(ref pb::ParseContext input) {
+      uint tag;
+      while ((tag = input.ReadTag()) != 0) {
+        switch(tag) {
+          default:
+            _unknownFields = pb::UnknownFieldSet.MergeFieldFrom(_unknownFields, ref input);
+            break;
+          case 10: {
+            Parent = input.ReadString();
+            break;
+          }
+          case 18: {
+            if (policy_ == null) {
+              Policy = new global::Google.Cloud.Dataproc.V1.AutoscalingPolicy();
+            }
+            input.ReadMessage(Policy);
+            break;
+          }
+        }
+      }
+    }
+    #endif
 
   }
 
   /// <summary>
   /// A request to fetch an autoscaling policy.
   /// </summary>
-  public sealed partial class GetAutoscalingPolicyRequest : pb::IMessage<GetAutoscalingPolicyRequest> {
+  public sealed partial class GetAutoscalingPolicyRequest : pb::IMessage<GetAutoscalingPolicyRequest>
+  #if !GOOGLE_PROTOBUF_REFSTRUCT_COMPATIBILITY_MODE
+      , pb::IBufferMessage
+  #endif
+  {
     private static readonly pb::MessageParser<GetAutoscalingPolicyRequest> _parser = new pb::MessageParser<GetAutoscalingPolicyRequest>(() => new GetAutoscalingPolicyRequest());
     private pb::UnknownFieldSet _unknownFields;
     [global::System.Diagnostics.DebuggerNonUserCodeAttribute]
@@ -1412,6 +1761,9 @@ namespace Google.Cloud.Dataproc.V1 {
 
     [global::System.Diagnostics.DebuggerNonUserCodeAttribute]
     public void WriteTo(pb::CodedOutputStream output) {
+    #if !GOOGLE_PROTOBUF_REFSTRUCT_COMPATIBILITY_MODE
+      output.WriteRawMessage(this);
+    #else
       if (Name.Length != 0) {
         output.WriteRawTag(10);
         output.WriteString(Name);
@@ -1419,7 +1771,21 @@ namespace Google.Cloud.Dataproc.V1 {
       if (_unknownFields != null) {
         _unknownFields.WriteTo(output);
       }
+    #endif
     }
+
+    #if !GOOGLE_PROTOBUF_REFSTRUCT_COMPATIBILITY_MODE
+    [global::System.Diagnostics.DebuggerNonUserCodeAttribute]
+    void pb::IBufferMessage.InternalWriteTo(ref pb::WriteContext output) {
+      if (Name.Length != 0) {
+        output.WriteRawTag(10);
+        output.WriteString(Name);
+      }
+      if (_unknownFields != null) {
+        _unknownFields.WriteTo(ref output);
+      }
+    }
+    #endif
 
     [global::System.Diagnostics.DebuggerNonUserCodeAttribute]
     public int CalculateSize() {
@@ -1446,6 +1812,9 @@ namespace Google.Cloud.Dataproc.V1 {
 
     [global::System.Diagnostics.DebuggerNonUserCodeAttribute]
     public void MergeFrom(pb::CodedInputStream input) {
+    #if !GOOGLE_PROTOBUF_REFSTRUCT_COMPATIBILITY_MODE
+      input.ReadRawMessage(this);
+    #else
       uint tag;
       while ((tag = input.ReadTag()) != 0) {
         switch(tag) {
@@ -1458,14 +1827,37 @@ namespace Google.Cloud.Dataproc.V1 {
           }
         }
       }
+    #endif
     }
+
+    #if !GOOGLE_PROTOBUF_REFSTRUCT_COMPATIBILITY_MODE
+    [global::System.Diagnostics.DebuggerNonUserCodeAttribute]
+    void pb::IBufferMessage.InternalMergeFrom(ref pb::ParseContext input) {
+      uint tag;
+      while ((tag = input.ReadTag()) != 0) {
+        switch(tag) {
+          default:
+            _unknownFields = pb::UnknownFieldSet.MergeFieldFrom(_unknownFields, ref input);
+            break;
+          case 10: {
+            Name = input.ReadString();
+            break;
+          }
+        }
+      }
+    }
+    #endif
 
   }
 
   /// <summary>
   /// A request to update an autoscaling policy.
   /// </summary>
-  public sealed partial class UpdateAutoscalingPolicyRequest : pb::IMessage<UpdateAutoscalingPolicyRequest> {
+  public sealed partial class UpdateAutoscalingPolicyRequest : pb::IMessage<UpdateAutoscalingPolicyRequest>
+  #if !GOOGLE_PROTOBUF_REFSTRUCT_COMPATIBILITY_MODE
+      , pb::IBufferMessage
+  #endif
+  {
     private static readonly pb::MessageParser<UpdateAutoscalingPolicyRequest> _parser = new pb::MessageParser<UpdateAutoscalingPolicyRequest>(() => new UpdateAutoscalingPolicyRequest());
     private pb::UnknownFieldSet _unknownFields;
     [global::System.Diagnostics.DebuggerNonUserCodeAttribute]
@@ -1547,6 +1939,9 @@ namespace Google.Cloud.Dataproc.V1 {
 
     [global::System.Diagnostics.DebuggerNonUserCodeAttribute]
     public void WriteTo(pb::CodedOutputStream output) {
+    #if !GOOGLE_PROTOBUF_REFSTRUCT_COMPATIBILITY_MODE
+      output.WriteRawMessage(this);
+    #else
       if (policy_ != null) {
         output.WriteRawTag(10);
         output.WriteMessage(Policy);
@@ -1554,7 +1949,21 @@ namespace Google.Cloud.Dataproc.V1 {
       if (_unknownFields != null) {
         _unknownFields.WriteTo(output);
       }
+    #endif
     }
+
+    #if !GOOGLE_PROTOBUF_REFSTRUCT_COMPATIBILITY_MODE
+    [global::System.Diagnostics.DebuggerNonUserCodeAttribute]
+    void pb::IBufferMessage.InternalWriteTo(ref pb::WriteContext output) {
+      if (policy_ != null) {
+        output.WriteRawTag(10);
+        output.WriteMessage(Policy);
+      }
+      if (_unknownFields != null) {
+        _unknownFields.WriteTo(ref output);
+      }
+    }
+    #endif
 
     [global::System.Diagnostics.DebuggerNonUserCodeAttribute]
     public int CalculateSize() {
@@ -1584,6 +1993,9 @@ namespace Google.Cloud.Dataproc.V1 {
 
     [global::System.Diagnostics.DebuggerNonUserCodeAttribute]
     public void MergeFrom(pb::CodedInputStream input) {
+    #if !GOOGLE_PROTOBUF_REFSTRUCT_COMPATIBILITY_MODE
+      input.ReadRawMessage(this);
+    #else
       uint tag;
       while ((tag = input.ReadTag()) != 0) {
         switch(tag) {
@@ -1599,7 +2011,29 @@ namespace Google.Cloud.Dataproc.V1 {
           }
         }
       }
+    #endif
     }
+
+    #if !GOOGLE_PROTOBUF_REFSTRUCT_COMPATIBILITY_MODE
+    [global::System.Diagnostics.DebuggerNonUserCodeAttribute]
+    void pb::IBufferMessage.InternalMergeFrom(ref pb::ParseContext input) {
+      uint tag;
+      while ((tag = input.ReadTag()) != 0) {
+        switch(tag) {
+          default:
+            _unknownFields = pb::UnknownFieldSet.MergeFieldFrom(_unknownFields, ref input);
+            break;
+          case 10: {
+            if (policy_ == null) {
+              Policy = new global::Google.Cloud.Dataproc.V1.AutoscalingPolicy();
+            }
+            input.ReadMessage(Policy);
+            break;
+          }
+        }
+      }
+    }
+    #endif
 
   }
 
@@ -1608,7 +2042,11 @@ namespace Google.Cloud.Dataproc.V1 {
   ///
   /// Autoscaling policies in use by one or more clusters will not be deleted.
   /// </summary>
-  public sealed partial class DeleteAutoscalingPolicyRequest : pb::IMessage<DeleteAutoscalingPolicyRequest> {
+  public sealed partial class DeleteAutoscalingPolicyRequest : pb::IMessage<DeleteAutoscalingPolicyRequest>
+  #if !GOOGLE_PROTOBUF_REFSTRUCT_COMPATIBILITY_MODE
+      , pb::IBufferMessage
+  #endif
+  {
     private static readonly pb::MessageParser<DeleteAutoscalingPolicyRequest> _parser = new pb::MessageParser<DeleteAutoscalingPolicyRequest>(() => new DeleteAutoscalingPolicyRequest());
     private pb::UnknownFieldSet _unknownFields;
     [global::System.Diagnostics.DebuggerNonUserCodeAttribute]
@@ -1699,6 +2137,9 @@ namespace Google.Cloud.Dataproc.V1 {
 
     [global::System.Diagnostics.DebuggerNonUserCodeAttribute]
     public void WriteTo(pb::CodedOutputStream output) {
+    #if !GOOGLE_PROTOBUF_REFSTRUCT_COMPATIBILITY_MODE
+      output.WriteRawMessage(this);
+    #else
       if (Name.Length != 0) {
         output.WriteRawTag(10);
         output.WriteString(Name);
@@ -1706,7 +2147,21 @@ namespace Google.Cloud.Dataproc.V1 {
       if (_unknownFields != null) {
         _unknownFields.WriteTo(output);
       }
+    #endif
     }
+
+    #if !GOOGLE_PROTOBUF_REFSTRUCT_COMPATIBILITY_MODE
+    [global::System.Diagnostics.DebuggerNonUserCodeAttribute]
+    void pb::IBufferMessage.InternalWriteTo(ref pb::WriteContext output) {
+      if (Name.Length != 0) {
+        output.WriteRawTag(10);
+        output.WriteString(Name);
+      }
+      if (_unknownFields != null) {
+        _unknownFields.WriteTo(ref output);
+      }
+    }
+    #endif
 
     [global::System.Diagnostics.DebuggerNonUserCodeAttribute]
     public int CalculateSize() {
@@ -1733,6 +2188,9 @@ namespace Google.Cloud.Dataproc.V1 {
 
     [global::System.Diagnostics.DebuggerNonUserCodeAttribute]
     public void MergeFrom(pb::CodedInputStream input) {
+    #if !GOOGLE_PROTOBUF_REFSTRUCT_COMPATIBILITY_MODE
+      input.ReadRawMessage(this);
+    #else
       uint tag;
       while ((tag = input.ReadTag()) != 0) {
         switch(tag) {
@@ -1745,14 +2203,37 @@ namespace Google.Cloud.Dataproc.V1 {
           }
         }
       }
+    #endif
     }
+
+    #if !GOOGLE_PROTOBUF_REFSTRUCT_COMPATIBILITY_MODE
+    [global::System.Diagnostics.DebuggerNonUserCodeAttribute]
+    void pb::IBufferMessage.InternalMergeFrom(ref pb::ParseContext input) {
+      uint tag;
+      while ((tag = input.ReadTag()) != 0) {
+        switch(tag) {
+          default:
+            _unknownFields = pb::UnknownFieldSet.MergeFieldFrom(_unknownFields, ref input);
+            break;
+          case 10: {
+            Name = input.ReadString();
+            break;
+          }
+        }
+      }
+    }
+    #endif
 
   }
 
   /// <summary>
   /// A request to list autoscaling policies in a project.
   /// </summary>
-  public sealed partial class ListAutoscalingPoliciesRequest : pb::IMessage<ListAutoscalingPoliciesRequest> {
+  public sealed partial class ListAutoscalingPoliciesRequest : pb::IMessage<ListAutoscalingPoliciesRequest>
+  #if !GOOGLE_PROTOBUF_REFSTRUCT_COMPATIBILITY_MODE
+      , pb::IBufferMessage
+  #endif
+  {
     private static readonly pb::MessageParser<ListAutoscalingPoliciesRequest> _parser = new pb::MessageParser<ListAutoscalingPoliciesRequest>(() => new ListAutoscalingPoliciesRequest());
     private pb::UnknownFieldSet _unknownFields;
     [global::System.Diagnostics.DebuggerNonUserCodeAttribute]
@@ -1879,6 +2360,9 @@ namespace Google.Cloud.Dataproc.V1 {
 
     [global::System.Diagnostics.DebuggerNonUserCodeAttribute]
     public void WriteTo(pb::CodedOutputStream output) {
+    #if !GOOGLE_PROTOBUF_REFSTRUCT_COMPATIBILITY_MODE
+      output.WriteRawMessage(this);
+    #else
       if (Parent.Length != 0) {
         output.WriteRawTag(10);
         output.WriteString(Parent);
@@ -1894,7 +2378,29 @@ namespace Google.Cloud.Dataproc.V1 {
       if (_unknownFields != null) {
         _unknownFields.WriteTo(output);
       }
+    #endif
     }
+
+    #if !GOOGLE_PROTOBUF_REFSTRUCT_COMPATIBILITY_MODE
+    [global::System.Diagnostics.DebuggerNonUserCodeAttribute]
+    void pb::IBufferMessage.InternalWriteTo(ref pb::WriteContext output) {
+      if (Parent.Length != 0) {
+        output.WriteRawTag(10);
+        output.WriteString(Parent);
+      }
+      if (PageSize != 0) {
+        output.WriteRawTag(16);
+        output.WriteInt32(PageSize);
+      }
+      if (PageToken.Length != 0) {
+        output.WriteRawTag(26);
+        output.WriteString(PageToken);
+      }
+      if (_unknownFields != null) {
+        _unknownFields.WriteTo(ref output);
+      }
+    }
+    #endif
 
     [global::System.Diagnostics.DebuggerNonUserCodeAttribute]
     public int CalculateSize() {
@@ -1933,6 +2439,9 @@ namespace Google.Cloud.Dataproc.V1 {
 
     [global::System.Diagnostics.DebuggerNonUserCodeAttribute]
     public void MergeFrom(pb::CodedInputStream input) {
+    #if !GOOGLE_PROTOBUF_REFSTRUCT_COMPATIBILITY_MODE
+      input.ReadRawMessage(this);
+    #else
       uint tag;
       while ((tag = input.ReadTag()) != 0) {
         switch(tag) {
@@ -1953,14 +2462,45 @@ namespace Google.Cloud.Dataproc.V1 {
           }
         }
       }
+    #endif
     }
+
+    #if !GOOGLE_PROTOBUF_REFSTRUCT_COMPATIBILITY_MODE
+    [global::System.Diagnostics.DebuggerNonUserCodeAttribute]
+    void pb::IBufferMessage.InternalMergeFrom(ref pb::ParseContext input) {
+      uint tag;
+      while ((tag = input.ReadTag()) != 0) {
+        switch(tag) {
+          default:
+            _unknownFields = pb::UnknownFieldSet.MergeFieldFrom(_unknownFields, ref input);
+            break;
+          case 10: {
+            Parent = input.ReadString();
+            break;
+          }
+          case 16: {
+            PageSize = input.ReadInt32();
+            break;
+          }
+          case 26: {
+            PageToken = input.ReadString();
+            break;
+          }
+        }
+      }
+    }
+    #endif
 
   }
 
   /// <summary>
   /// A response to a request to list autoscaling policies in a project.
   /// </summary>
-  public sealed partial class ListAutoscalingPoliciesResponse : pb::IMessage<ListAutoscalingPoliciesResponse> {
+  public sealed partial class ListAutoscalingPoliciesResponse : pb::IMessage<ListAutoscalingPoliciesResponse>
+  #if !GOOGLE_PROTOBUF_REFSTRUCT_COMPATIBILITY_MODE
+      , pb::IBufferMessage
+  #endif
+  {
     private static readonly pb::MessageParser<ListAutoscalingPoliciesResponse> _parser = new pb::MessageParser<ListAutoscalingPoliciesResponse>(() => new ListAutoscalingPoliciesResponse());
     private pb::UnknownFieldSet _unknownFields;
     [global::System.Diagnostics.DebuggerNonUserCodeAttribute]
@@ -2059,6 +2599,9 @@ namespace Google.Cloud.Dataproc.V1 {
 
     [global::System.Diagnostics.DebuggerNonUserCodeAttribute]
     public void WriteTo(pb::CodedOutputStream output) {
+    #if !GOOGLE_PROTOBUF_REFSTRUCT_COMPATIBILITY_MODE
+      output.WriteRawMessage(this);
+    #else
       policies_.WriteTo(output, _repeated_policies_codec);
       if (NextPageToken.Length != 0) {
         output.WriteRawTag(18);
@@ -2067,7 +2610,22 @@ namespace Google.Cloud.Dataproc.V1 {
       if (_unknownFields != null) {
         _unknownFields.WriteTo(output);
       }
+    #endif
     }
+
+    #if !GOOGLE_PROTOBUF_REFSTRUCT_COMPATIBILITY_MODE
+    [global::System.Diagnostics.DebuggerNonUserCodeAttribute]
+    void pb::IBufferMessage.InternalWriteTo(ref pb::WriteContext output) {
+      policies_.WriteTo(ref output, _repeated_policies_codec);
+      if (NextPageToken.Length != 0) {
+        output.WriteRawTag(18);
+        output.WriteString(NextPageToken);
+      }
+      if (_unknownFields != null) {
+        _unknownFields.WriteTo(ref output);
+      }
+    }
+    #endif
 
     [global::System.Diagnostics.DebuggerNonUserCodeAttribute]
     public int CalculateSize() {
@@ -2096,6 +2654,9 @@ namespace Google.Cloud.Dataproc.V1 {
 
     [global::System.Diagnostics.DebuggerNonUserCodeAttribute]
     public void MergeFrom(pb::CodedInputStream input) {
+    #if !GOOGLE_PROTOBUF_REFSTRUCT_COMPATIBILITY_MODE
+      input.ReadRawMessage(this);
+    #else
       uint tag;
       while ((tag = input.ReadTag()) != 0) {
         switch(tag) {
@@ -2112,7 +2673,30 @@ namespace Google.Cloud.Dataproc.V1 {
           }
         }
       }
+    #endif
     }
+
+    #if !GOOGLE_PROTOBUF_REFSTRUCT_COMPATIBILITY_MODE
+    [global::System.Diagnostics.DebuggerNonUserCodeAttribute]
+    void pb::IBufferMessage.InternalMergeFrom(ref pb::ParseContext input) {
+      uint tag;
+      while ((tag = input.ReadTag()) != 0) {
+        switch(tag) {
+          default:
+            _unknownFields = pb::UnknownFieldSet.MergeFieldFrom(_unknownFields, ref input);
+            break;
+          case 10: {
+            policies_.AddEntriesFrom(ref input, _repeated_policies_codec);
+            break;
+          }
+          case 18: {
+            NextPageToken = input.ReadString();
+            break;
+          }
+        }
+      }
+    }
+    #endif
 
   }
 

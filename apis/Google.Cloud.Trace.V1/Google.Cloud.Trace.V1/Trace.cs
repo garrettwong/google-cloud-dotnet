@@ -25,11 +25,11 @@ namespace Google.Cloud.Trace.V1 {
       byte[] descriptorData = global::System.Convert.FromBase64String(
           string.Concat(
             "Cilnb29nbGUvZGV2dG9vbHMvY2xvdWR0cmFjZS92MS90cmFjZS5wcm90bxId",
-            "Z29vZ2xlLmRldnRvb2xzLmNsb3VkdHJhY2UudjEaHGdvb2dsZS9hcGkvYW5u",
-            "b3RhdGlvbnMucHJvdG8aF2dvb2dsZS9hcGkvY2xpZW50LnByb3RvGh9nb29n",
-            "bGUvYXBpL2ZpZWxkX2JlaGF2aW9yLnByb3RvGhlnb29nbGUvYXBpL3Jlc291",
-            "cmNlLnByb3RvGhtnb29nbGUvcHJvdG9idWYvZW1wdHkucHJvdG8aH2dvb2ds",
-            "ZS9wcm90b2J1Zi90aW1lc3RhbXAucHJvdG8iZgoFVHJhY2USEgoKcHJvamVj",
+            "Z29vZ2xlLmRldnRvb2xzLmNsb3VkdHJhY2UudjEaF2dvb2dsZS9hcGkvY2xp",
+            "ZW50LnByb3RvGh9nb29nbGUvYXBpL2ZpZWxkX2JlaGF2aW9yLnByb3RvGhln",
+            "b29nbGUvYXBpL3Jlc291cmNlLnByb3RvGhtnb29nbGUvcHJvdG9idWYvZW1w",
+            "dHkucHJvdG8aH2dvb2dsZS9wcm90b2J1Zi90aW1lc3RhbXAucHJvdG8aHGdv",
+            "b2dsZS9hcGkvYW5ub3RhdGlvbnMucHJvdG8iZgoFVHJhY2USEgoKcHJvamVj",
             "dF9pZBgBIAEoCRIQCgh0cmFjZV9pZBgCIAEoCRI3CgVzcGFucxgDIAMoCzIo",
             "Lmdvb2dsZS5kZXZ0b29scy5jbG91ZHRyYWNlLnYxLlRyYWNlU3BhbiI+CgZU",
             "cmFjZXMSNAoGdHJhY2VzGAEgAygLMiQuZ29vZ2xlLmRldnRvb2xzLmNsb3Vk",
@@ -72,21 +72,22 @@ namespace Google.Cloud.Trace.V1 {
             "GqoBykEZY2xvdWR0cmFjZS5nb29nbGVhcGlzLmNvbdJBigFodHRwczovL3d3",
             "dy5nb29nbGVhcGlzLmNvbS9hdXRoL2Nsb3VkLXBsYXRmb3JtLGh0dHBzOi8v",
             "d3d3Lmdvb2dsZWFwaXMuY29tL2F1dGgvdHJhY2UuYXBwZW5kLGh0dHBzOi8v",
-            "d3d3Lmdvb2dsZWFwaXMuY29tL2F1dGgvdHJhY2UucmVhZG9ubHlCqgEKIWNv",
+            "d3d3Lmdvb2dsZWFwaXMuY29tL2F1dGgvdHJhY2UucmVhZG9ubHlCxQEKIWNv",
             "bS5nb29nbGUuZGV2dG9vbHMuY2xvdWR0cmFjZS52MUIKVHJhY2VQcm90b1AB",
             "Wkdnb29nbGUuZ29sYW5nLm9yZy9nZW5wcm90by9nb29nbGVhcGlzL2RldnRv",
             "b2xzL2Nsb3VkdHJhY2UvdjE7Y2xvdWR0cmFjZaoCFUdvb2dsZS5DbG91ZC5U",
-            "cmFjZS5WMcoCFUdvb2dsZVxDbG91ZFxUcmFjZVxWMWIGcHJvdG8z"));
+            "cmFjZS5WMcoCFUdvb2dsZVxDbG91ZFxUcmFjZVxWMeoCGEdvb2dsZTo6Q2xv",
+            "dWQ6OlRyYWNlOjpWMWIGcHJvdG8z"));
       descriptor = pbr::FileDescriptor.FromGeneratedCode(descriptorData,
-          new pbr::FileDescriptor[] { global::Google.Api.AnnotationsReflection.Descriptor, global::Google.Api.ClientReflection.Descriptor, global::Google.Api.FieldBehaviorReflection.Descriptor, global::Google.Api.ResourceReflection.Descriptor, global::Google.Protobuf.WellKnownTypes.EmptyReflection.Descriptor, global::Google.Protobuf.WellKnownTypes.TimestampReflection.Descriptor, },
-          new pbr::GeneratedClrTypeInfo(null, new pbr::GeneratedClrTypeInfo[] {
-            new pbr::GeneratedClrTypeInfo(typeof(global::Google.Cloud.Trace.V1.Trace), global::Google.Cloud.Trace.V1.Trace.Parser, new[]{ "ProjectId", "TraceId", "Spans" }, null, null, null),
-            new pbr::GeneratedClrTypeInfo(typeof(global::Google.Cloud.Trace.V1.Traces), global::Google.Cloud.Trace.V1.Traces.Parser, new[]{ "Traces_" }, null, null, null),
-            new pbr::GeneratedClrTypeInfo(typeof(global::Google.Cloud.Trace.V1.TraceSpan), global::Google.Cloud.Trace.V1.TraceSpan.Parser, new[]{ "SpanId", "Kind", "Name", "StartTime", "EndTime", "ParentSpanId", "Labels" }, null, new[]{ typeof(global::Google.Cloud.Trace.V1.TraceSpan.Types.SpanKind) }, new pbr::GeneratedClrTypeInfo[] { null, }),
-            new pbr::GeneratedClrTypeInfo(typeof(global::Google.Cloud.Trace.V1.ListTracesRequest), global::Google.Cloud.Trace.V1.ListTracesRequest.Parser, new[]{ "ProjectId", "View", "PageSize", "PageToken", "StartTime", "EndTime", "Filter", "OrderBy" }, null, new[]{ typeof(global::Google.Cloud.Trace.V1.ListTracesRequest.Types.ViewType) }, null),
-            new pbr::GeneratedClrTypeInfo(typeof(global::Google.Cloud.Trace.V1.ListTracesResponse), global::Google.Cloud.Trace.V1.ListTracesResponse.Parser, new[]{ "Traces", "NextPageToken" }, null, null, null),
-            new pbr::GeneratedClrTypeInfo(typeof(global::Google.Cloud.Trace.V1.GetTraceRequest), global::Google.Cloud.Trace.V1.GetTraceRequest.Parser, new[]{ "ProjectId", "TraceId" }, null, null, null),
-            new pbr::GeneratedClrTypeInfo(typeof(global::Google.Cloud.Trace.V1.PatchTracesRequest), global::Google.Cloud.Trace.V1.PatchTracesRequest.Parser, new[]{ "ProjectId", "Traces" }, null, null, null)
+          new pbr::FileDescriptor[] { global::Google.Api.ClientReflection.Descriptor, global::Google.Api.FieldBehaviorReflection.Descriptor, global::Google.Api.ResourceReflection.Descriptor, global::Google.Protobuf.WellKnownTypes.EmptyReflection.Descriptor, global::Google.Protobuf.WellKnownTypes.TimestampReflection.Descriptor, global::Google.Api.AnnotationsReflection.Descriptor, },
+          new pbr::GeneratedClrTypeInfo(null, null, new pbr::GeneratedClrTypeInfo[] {
+            new pbr::GeneratedClrTypeInfo(typeof(global::Google.Cloud.Trace.V1.Trace), global::Google.Cloud.Trace.V1.Trace.Parser, new[]{ "ProjectId", "TraceId", "Spans" }, null, null, null, null),
+            new pbr::GeneratedClrTypeInfo(typeof(global::Google.Cloud.Trace.V1.Traces), global::Google.Cloud.Trace.V1.Traces.Parser, new[]{ "Traces_" }, null, null, null, null),
+            new pbr::GeneratedClrTypeInfo(typeof(global::Google.Cloud.Trace.V1.TraceSpan), global::Google.Cloud.Trace.V1.TraceSpan.Parser, new[]{ "SpanId", "Kind", "Name", "StartTime", "EndTime", "ParentSpanId", "Labels" }, null, new[]{ typeof(global::Google.Cloud.Trace.V1.TraceSpan.Types.SpanKind) }, null, new pbr::GeneratedClrTypeInfo[] { null, }),
+            new pbr::GeneratedClrTypeInfo(typeof(global::Google.Cloud.Trace.V1.ListTracesRequest), global::Google.Cloud.Trace.V1.ListTracesRequest.Parser, new[]{ "ProjectId", "View", "PageSize", "PageToken", "StartTime", "EndTime", "Filter", "OrderBy" }, null, new[]{ typeof(global::Google.Cloud.Trace.V1.ListTracesRequest.Types.ViewType) }, null, null),
+            new pbr::GeneratedClrTypeInfo(typeof(global::Google.Cloud.Trace.V1.ListTracesResponse), global::Google.Cloud.Trace.V1.ListTracesResponse.Parser, new[]{ "Traces", "NextPageToken" }, null, null, null, null),
+            new pbr::GeneratedClrTypeInfo(typeof(global::Google.Cloud.Trace.V1.GetTraceRequest), global::Google.Cloud.Trace.V1.GetTraceRequest.Parser, new[]{ "ProjectId", "TraceId" }, null, null, null, null),
+            new pbr::GeneratedClrTypeInfo(typeof(global::Google.Cloud.Trace.V1.PatchTracesRequest), global::Google.Cloud.Trace.V1.PatchTracesRequest.Parser, new[]{ "ProjectId", "Traces" }, null, null, null, null)
           }));
     }
     #endregion
@@ -98,7 +99,11 @@ namespace Google.Cloud.Trace.V1 {
   /// operation. It consists of a set of spans, each of which represent a single
   /// timed event within the operation.
   /// </summary>
-  public sealed partial class Trace : pb::IMessage<Trace> {
+  public sealed partial class Trace : pb::IMessage<Trace>
+  #if !GOOGLE_PROTOBUF_REFSTRUCT_COMPATIBILITY_MODE
+      , pb::IBufferMessage
+  #endif
+  {
     private static readonly pb::MessageParser<Trace> _parser = new pb::MessageParser<Trace>(() => new Trace());
     private pb::UnknownFieldSet _unknownFields;
     [global::System.Diagnostics.DebuggerNonUserCodeAttribute]
@@ -215,6 +220,9 @@ namespace Google.Cloud.Trace.V1 {
 
     [global::System.Diagnostics.DebuggerNonUserCodeAttribute]
     public void WriteTo(pb::CodedOutputStream output) {
+    #if !GOOGLE_PROTOBUF_REFSTRUCT_COMPATIBILITY_MODE
+      output.WriteRawMessage(this);
+    #else
       if (ProjectId.Length != 0) {
         output.WriteRawTag(10);
         output.WriteString(ProjectId);
@@ -227,7 +235,26 @@ namespace Google.Cloud.Trace.V1 {
       if (_unknownFields != null) {
         _unknownFields.WriteTo(output);
       }
+    #endif
     }
+
+    #if !GOOGLE_PROTOBUF_REFSTRUCT_COMPATIBILITY_MODE
+    [global::System.Diagnostics.DebuggerNonUserCodeAttribute]
+    void pb::IBufferMessage.InternalWriteTo(ref pb::WriteContext output) {
+      if (ProjectId.Length != 0) {
+        output.WriteRawTag(10);
+        output.WriteString(ProjectId);
+      }
+      if (TraceId.Length != 0) {
+        output.WriteRawTag(18);
+        output.WriteString(TraceId);
+      }
+      spans_.WriteTo(ref output, _repeated_spans_codec);
+      if (_unknownFields != null) {
+        _unknownFields.WriteTo(ref output);
+      }
+    }
+    #endif
 
     [global::System.Diagnostics.DebuggerNonUserCodeAttribute]
     public int CalculateSize() {
@@ -262,6 +289,9 @@ namespace Google.Cloud.Trace.V1 {
 
     [global::System.Diagnostics.DebuggerNonUserCodeAttribute]
     public void MergeFrom(pb::CodedInputStream input) {
+    #if !GOOGLE_PROTOBUF_REFSTRUCT_COMPATIBILITY_MODE
+      input.ReadRawMessage(this);
+    #else
       uint tag;
       while ((tag = input.ReadTag()) != 0) {
         switch(tag) {
@@ -282,14 +312,45 @@ namespace Google.Cloud.Trace.V1 {
           }
         }
       }
+    #endif
     }
+
+    #if !GOOGLE_PROTOBUF_REFSTRUCT_COMPATIBILITY_MODE
+    [global::System.Diagnostics.DebuggerNonUserCodeAttribute]
+    void pb::IBufferMessage.InternalMergeFrom(ref pb::ParseContext input) {
+      uint tag;
+      while ((tag = input.ReadTag()) != 0) {
+        switch(tag) {
+          default:
+            _unknownFields = pb::UnknownFieldSet.MergeFieldFrom(_unknownFields, ref input);
+            break;
+          case 10: {
+            ProjectId = input.ReadString();
+            break;
+          }
+          case 18: {
+            TraceId = input.ReadString();
+            break;
+          }
+          case 26: {
+            spans_.AddEntriesFrom(ref input, _repeated_spans_codec);
+            break;
+          }
+        }
+      }
+    }
+    #endif
 
   }
 
   /// <summary>
   /// List of new or updated traces.
   /// </summary>
-  public sealed partial class Traces : pb::IMessage<Traces> {
+  public sealed partial class Traces : pb::IMessage<Traces>
+  #if !GOOGLE_PROTOBUF_REFSTRUCT_COMPATIBILITY_MODE
+      , pb::IBufferMessage
+  #endif
+  {
     private static readonly pb::MessageParser<Traces> _parser = new pb::MessageParser<Traces>(() => new Traces());
     private pb::UnknownFieldSet _unknownFields;
     [global::System.Diagnostics.DebuggerNonUserCodeAttribute]
@@ -370,11 +431,25 @@ namespace Google.Cloud.Trace.V1 {
 
     [global::System.Diagnostics.DebuggerNonUserCodeAttribute]
     public void WriteTo(pb::CodedOutputStream output) {
+    #if !GOOGLE_PROTOBUF_REFSTRUCT_COMPATIBILITY_MODE
+      output.WriteRawMessage(this);
+    #else
       traces_.WriteTo(output, _repeated_traces_codec);
       if (_unknownFields != null) {
         _unknownFields.WriteTo(output);
       }
+    #endif
     }
+
+    #if !GOOGLE_PROTOBUF_REFSTRUCT_COMPATIBILITY_MODE
+    [global::System.Diagnostics.DebuggerNonUserCodeAttribute]
+    void pb::IBufferMessage.InternalWriteTo(ref pb::WriteContext output) {
+      traces_.WriteTo(ref output, _repeated_traces_codec);
+      if (_unknownFields != null) {
+        _unknownFields.WriteTo(ref output);
+      }
+    }
+    #endif
 
     [global::System.Diagnostics.DebuggerNonUserCodeAttribute]
     public int CalculateSize() {
@@ -397,6 +472,9 @@ namespace Google.Cloud.Trace.V1 {
 
     [global::System.Diagnostics.DebuggerNonUserCodeAttribute]
     public void MergeFrom(pb::CodedInputStream input) {
+    #if !GOOGLE_PROTOBUF_REFSTRUCT_COMPATIBILITY_MODE
+      input.ReadRawMessage(this);
+    #else
       uint tag;
       while ((tag = input.ReadTag()) != 0) {
         switch(tag) {
@@ -409,7 +487,26 @@ namespace Google.Cloud.Trace.V1 {
           }
         }
       }
+    #endif
     }
+
+    #if !GOOGLE_PROTOBUF_REFSTRUCT_COMPATIBILITY_MODE
+    [global::System.Diagnostics.DebuggerNonUserCodeAttribute]
+    void pb::IBufferMessage.InternalMergeFrom(ref pb::ParseContext input) {
+      uint tag;
+      while ((tag = input.ReadTag()) != 0) {
+        switch(tag) {
+          default:
+            _unknownFields = pb::UnknownFieldSet.MergeFieldFrom(_unknownFields, ref input);
+            break;
+          case 10: {
+            traces_.AddEntriesFrom(ref input, _repeated_traces_codec);
+            break;
+          }
+        }
+      }
+    }
+    #endif
 
   }
 
@@ -420,7 +517,11 @@ namespace Google.Cloud.Trace.V1 {
   /// its suboperations. Spans do not need to be contiguous. There may be gaps
   /// between spans in a trace.
   /// </summary>
-  public sealed partial class TraceSpan : pb::IMessage<TraceSpan> {
+  public sealed partial class TraceSpan : pb::IMessage<TraceSpan>
+  #if !GOOGLE_PROTOBUF_REFSTRUCT_COMPATIBILITY_MODE
+      , pb::IBufferMessage
+  #endif
+  {
     private static readonly pb::MessageParser<TraceSpan> _parser = new pb::MessageParser<TraceSpan>(() => new TraceSpan());
     private pb::UnknownFieldSet _unknownFields;
     [global::System.Diagnostics.DebuggerNonUserCodeAttribute]
@@ -477,7 +578,7 @@ namespace Google.Cloud.Trace.V1 {
 
     /// <summary>Field number for the "kind" field.</summary>
     public const int KindFieldNumber = 2;
-    private global::Google.Cloud.Trace.V1.TraceSpan.Types.SpanKind kind_ = 0;
+    private global::Google.Cloud.Trace.V1.TraceSpan.Types.SpanKind kind_ = global::Google.Cloud.Trace.V1.TraceSpan.Types.SpanKind.Unspecified;
     /// <summary>
     /// Distinguishes between spans generated in a particular context. For example,
     /// two spans with the same name may be distinguished using `RPC_CLIENT`
@@ -556,7 +657,7 @@ namespace Google.Cloud.Trace.V1 {
     /// <summary>Field number for the "labels" field.</summary>
     public const int LabelsFieldNumber = 7;
     private static readonly pbc::MapField<string, string>.Codec _map_labels_codec
-        = new pbc::MapField<string, string>.Codec(pb::FieldCodec.ForString(10), pb::FieldCodec.ForString(18), 58);
+        = new pbc::MapField<string, string>.Codec(pb::FieldCodec.ForString(10, ""), pb::FieldCodec.ForString(18, ""), 58);
     private readonly pbc::MapField<string, string> labels_ = new pbc::MapField<string, string>();
     /// <summary>
     /// Collection of labels associated with the span. Label keys must be less than
@@ -627,7 +728,7 @@ namespace Google.Cloud.Trace.V1 {
     public override int GetHashCode() {
       int hash = 1;
       if (SpanId != 0UL) hash ^= SpanId.GetHashCode();
-      if (Kind != 0) hash ^= Kind.GetHashCode();
+      if (Kind != global::Google.Cloud.Trace.V1.TraceSpan.Types.SpanKind.Unspecified) hash ^= Kind.GetHashCode();
       if (Name.Length != 0) hash ^= Name.GetHashCode();
       if (startTime_ != null) hash ^= StartTime.GetHashCode();
       if (endTime_ != null) hash ^= EndTime.GetHashCode();
@@ -646,11 +747,14 @@ namespace Google.Cloud.Trace.V1 {
 
     [global::System.Diagnostics.DebuggerNonUserCodeAttribute]
     public void WriteTo(pb::CodedOutputStream output) {
+    #if !GOOGLE_PROTOBUF_REFSTRUCT_COMPATIBILITY_MODE
+      output.WriteRawMessage(this);
+    #else
       if (SpanId != 0UL) {
         output.WriteRawTag(9);
         output.WriteFixed64(SpanId);
       }
-      if (Kind != 0) {
+      if (Kind != global::Google.Cloud.Trace.V1.TraceSpan.Types.SpanKind.Unspecified) {
         output.WriteRawTag(16);
         output.WriteEnum((int) Kind);
       }
@@ -674,7 +778,42 @@ namespace Google.Cloud.Trace.V1 {
       if (_unknownFields != null) {
         _unknownFields.WriteTo(output);
       }
+    #endif
     }
+
+    #if !GOOGLE_PROTOBUF_REFSTRUCT_COMPATIBILITY_MODE
+    [global::System.Diagnostics.DebuggerNonUserCodeAttribute]
+    void pb::IBufferMessage.InternalWriteTo(ref pb::WriteContext output) {
+      if (SpanId != 0UL) {
+        output.WriteRawTag(9);
+        output.WriteFixed64(SpanId);
+      }
+      if (Kind != global::Google.Cloud.Trace.V1.TraceSpan.Types.SpanKind.Unspecified) {
+        output.WriteRawTag(16);
+        output.WriteEnum((int) Kind);
+      }
+      if (Name.Length != 0) {
+        output.WriteRawTag(26);
+        output.WriteString(Name);
+      }
+      if (startTime_ != null) {
+        output.WriteRawTag(34);
+        output.WriteMessage(StartTime);
+      }
+      if (endTime_ != null) {
+        output.WriteRawTag(42);
+        output.WriteMessage(EndTime);
+      }
+      if (ParentSpanId != 0UL) {
+        output.WriteRawTag(49);
+        output.WriteFixed64(ParentSpanId);
+      }
+      labels_.WriteTo(ref output, _map_labels_codec);
+      if (_unknownFields != null) {
+        _unknownFields.WriteTo(ref output);
+      }
+    }
+    #endif
 
     [global::System.Diagnostics.DebuggerNonUserCodeAttribute]
     public int CalculateSize() {
@@ -682,7 +821,7 @@ namespace Google.Cloud.Trace.V1 {
       if (SpanId != 0UL) {
         size += 1 + 8;
       }
-      if (Kind != 0) {
+      if (Kind != global::Google.Cloud.Trace.V1.TraceSpan.Types.SpanKind.Unspecified) {
         size += 1 + pb::CodedOutputStream.ComputeEnumSize((int) Kind);
       }
       if (Name.Length != 0) {
@@ -712,7 +851,7 @@ namespace Google.Cloud.Trace.V1 {
       if (other.SpanId != 0UL) {
         SpanId = other.SpanId;
       }
-      if (other.Kind != 0) {
+      if (other.Kind != global::Google.Cloud.Trace.V1.TraceSpan.Types.SpanKind.Unspecified) {
         Kind = other.Kind;
       }
       if (other.Name.Length != 0) {
@@ -739,6 +878,9 @@ namespace Google.Cloud.Trace.V1 {
 
     [global::System.Diagnostics.DebuggerNonUserCodeAttribute]
     public void MergeFrom(pb::CodedInputStream input) {
+    #if !GOOGLE_PROTOBUF_REFSTRUCT_COMPATIBILITY_MODE
+      input.ReadRawMessage(this);
+    #else
       uint tag;
       while ((tag = input.ReadTag()) != 0) {
         switch(tag) {
@@ -781,7 +923,56 @@ namespace Google.Cloud.Trace.V1 {
           }
         }
       }
+    #endif
     }
+
+    #if !GOOGLE_PROTOBUF_REFSTRUCT_COMPATIBILITY_MODE
+    [global::System.Diagnostics.DebuggerNonUserCodeAttribute]
+    void pb::IBufferMessage.InternalMergeFrom(ref pb::ParseContext input) {
+      uint tag;
+      while ((tag = input.ReadTag()) != 0) {
+        switch(tag) {
+          default:
+            _unknownFields = pb::UnknownFieldSet.MergeFieldFrom(_unknownFields, ref input);
+            break;
+          case 9: {
+            SpanId = input.ReadFixed64();
+            break;
+          }
+          case 16: {
+            Kind = (global::Google.Cloud.Trace.V1.TraceSpan.Types.SpanKind) input.ReadEnum();
+            break;
+          }
+          case 26: {
+            Name = input.ReadString();
+            break;
+          }
+          case 34: {
+            if (startTime_ == null) {
+              StartTime = new global::Google.Protobuf.WellKnownTypes.Timestamp();
+            }
+            input.ReadMessage(StartTime);
+            break;
+          }
+          case 42: {
+            if (endTime_ == null) {
+              EndTime = new global::Google.Protobuf.WellKnownTypes.Timestamp();
+            }
+            input.ReadMessage(EndTime);
+            break;
+          }
+          case 49: {
+            ParentSpanId = input.ReadFixed64();
+            break;
+          }
+          case 58: {
+            labels_.AddEntriesFrom(ref input, _map_labels_codec);
+            break;
+          }
+        }
+      }
+    }
+    #endif
 
     #region Nested types
     /// <summary>Container for nested types declared in the TraceSpan message type.</summary>
@@ -817,7 +1008,11 @@ namespace Google.Cloud.Trace.V1 {
   /// The request message for the `ListTraces` method. All fields are required
   /// unless specified.
   /// </summary>
-  public sealed partial class ListTracesRequest : pb::IMessage<ListTracesRequest> {
+  public sealed partial class ListTracesRequest : pb::IMessage<ListTracesRequest>
+  #if !GOOGLE_PROTOBUF_REFSTRUCT_COMPATIBILITY_MODE
+      , pb::IBufferMessage
+  #endif
+  {
     private static readonly pb::MessageParser<ListTracesRequest> _parser = new pb::MessageParser<ListTracesRequest>(() => new ListTracesRequest());
     private pb::UnknownFieldSet _unknownFields;
     [global::System.Diagnostics.DebuggerNonUserCodeAttribute]
@@ -874,7 +1069,7 @@ namespace Google.Cloud.Trace.V1 {
 
     /// <summary>Field number for the "view" field.</summary>
     public const int ViewFieldNumber = 2;
-    private global::Google.Cloud.Trace.V1.ListTracesRequest.Types.ViewType view_ = 0;
+    private global::Google.Cloud.Trace.V1.ListTracesRequest.Types.ViewType view_ = global::Google.Cloud.Trace.V1.ListTracesRequest.Types.ViewType.Unspecified;
     /// <summary>
     /// Optional. Type of data returned for traces in the list. Default is
     /// `MINIMAL`.
@@ -1045,7 +1240,7 @@ namespace Google.Cloud.Trace.V1 {
     public override int GetHashCode() {
       int hash = 1;
       if (ProjectId.Length != 0) hash ^= ProjectId.GetHashCode();
-      if (View != 0) hash ^= View.GetHashCode();
+      if (View != global::Google.Cloud.Trace.V1.ListTracesRequest.Types.ViewType.Unspecified) hash ^= View.GetHashCode();
       if (PageSize != 0) hash ^= PageSize.GetHashCode();
       if (PageToken.Length != 0) hash ^= PageToken.GetHashCode();
       if (startTime_ != null) hash ^= StartTime.GetHashCode();
@@ -1065,11 +1260,14 @@ namespace Google.Cloud.Trace.V1 {
 
     [global::System.Diagnostics.DebuggerNonUserCodeAttribute]
     public void WriteTo(pb::CodedOutputStream output) {
+    #if !GOOGLE_PROTOBUF_REFSTRUCT_COMPATIBILITY_MODE
+      output.WriteRawMessage(this);
+    #else
       if (ProjectId.Length != 0) {
         output.WriteRawTag(10);
         output.WriteString(ProjectId);
       }
-      if (View != 0) {
+      if (View != global::Google.Cloud.Trace.V1.ListTracesRequest.Types.ViewType.Unspecified) {
         output.WriteRawTag(16);
         output.WriteEnum((int) View);
       }
@@ -1100,7 +1298,49 @@ namespace Google.Cloud.Trace.V1 {
       if (_unknownFields != null) {
         _unknownFields.WriteTo(output);
       }
+    #endif
     }
+
+    #if !GOOGLE_PROTOBUF_REFSTRUCT_COMPATIBILITY_MODE
+    [global::System.Diagnostics.DebuggerNonUserCodeAttribute]
+    void pb::IBufferMessage.InternalWriteTo(ref pb::WriteContext output) {
+      if (ProjectId.Length != 0) {
+        output.WriteRawTag(10);
+        output.WriteString(ProjectId);
+      }
+      if (View != global::Google.Cloud.Trace.V1.ListTracesRequest.Types.ViewType.Unspecified) {
+        output.WriteRawTag(16);
+        output.WriteEnum((int) View);
+      }
+      if (PageSize != 0) {
+        output.WriteRawTag(24);
+        output.WriteInt32(PageSize);
+      }
+      if (PageToken.Length != 0) {
+        output.WriteRawTag(34);
+        output.WriteString(PageToken);
+      }
+      if (startTime_ != null) {
+        output.WriteRawTag(42);
+        output.WriteMessage(StartTime);
+      }
+      if (endTime_ != null) {
+        output.WriteRawTag(50);
+        output.WriteMessage(EndTime);
+      }
+      if (Filter.Length != 0) {
+        output.WriteRawTag(58);
+        output.WriteString(Filter);
+      }
+      if (OrderBy.Length != 0) {
+        output.WriteRawTag(66);
+        output.WriteString(OrderBy);
+      }
+      if (_unknownFields != null) {
+        _unknownFields.WriteTo(ref output);
+      }
+    }
+    #endif
 
     [global::System.Diagnostics.DebuggerNonUserCodeAttribute]
     public int CalculateSize() {
@@ -1108,7 +1348,7 @@ namespace Google.Cloud.Trace.V1 {
       if (ProjectId.Length != 0) {
         size += 1 + pb::CodedOutputStream.ComputeStringSize(ProjectId);
       }
-      if (View != 0) {
+      if (View != global::Google.Cloud.Trace.V1.ListTracesRequest.Types.ViewType.Unspecified) {
         size += 1 + pb::CodedOutputStream.ComputeEnumSize((int) View);
       }
       if (PageSize != 0) {
@@ -1143,7 +1383,7 @@ namespace Google.Cloud.Trace.V1 {
       if (other.ProjectId.Length != 0) {
         ProjectId = other.ProjectId;
       }
-      if (other.View != 0) {
+      if (other.View != global::Google.Cloud.Trace.V1.ListTracesRequest.Types.ViewType.Unspecified) {
         View = other.View;
       }
       if (other.PageSize != 0) {
@@ -1175,6 +1415,9 @@ namespace Google.Cloud.Trace.V1 {
 
     [global::System.Diagnostics.DebuggerNonUserCodeAttribute]
     public void MergeFrom(pb::CodedInputStream input) {
+    #if !GOOGLE_PROTOBUF_REFSTRUCT_COMPATIBILITY_MODE
+      input.ReadRawMessage(this);
+    #else
       uint tag;
       while ((tag = input.ReadTag()) != 0) {
         switch(tag) {
@@ -1221,7 +1464,60 @@ namespace Google.Cloud.Trace.V1 {
           }
         }
       }
+    #endif
     }
+
+    #if !GOOGLE_PROTOBUF_REFSTRUCT_COMPATIBILITY_MODE
+    [global::System.Diagnostics.DebuggerNonUserCodeAttribute]
+    void pb::IBufferMessage.InternalMergeFrom(ref pb::ParseContext input) {
+      uint tag;
+      while ((tag = input.ReadTag()) != 0) {
+        switch(tag) {
+          default:
+            _unknownFields = pb::UnknownFieldSet.MergeFieldFrom(_unknownFields, ref input);
+            break;
+          case 10: {
+            ProjectId = input.ReadString();
+            break;
+          }
+          case 16: {
+            View = (global::Google.Cloud.Trace.V1.ListTracesRequest.Types.ViewType) input.ReadEnum();
+            break;
+          }
+          case 24: {
+            PageSize = input.ReadInt32();
+            break;
+          }
+          case 34: {
+            PageToken = input.ReadString();
+            break;
+          }
+          case 42: {
+            if (startTime_ == null) {
+              StartTime = new global::Google.Protobuf.WellKnownTypes.Timestamp();
+            }
+            input.ReadMessage(StartTime);
+            break;
+          }
+          case 50: {
+            if (endTime_ == null) {
+              EndTime = new global::Google.Protobuf.WellKnownTypes.Timestamp();
+            }
+            input.ReadMessage(EndTime);
+            break;
+          }
+          case 58: {
+            Filter = input.ReadString();
+            break;
+          }
+          case 66: {
+            OrderBy = input.ReadString();
+            break;
+          }
+        }
+      }
+    }
+    #endif
 
     #region Nested types
     /// <summary>Container for nested types declared in the ListTracesRequest message type.</summary>
@@ -1261,7 +1557,11 @@ namespace Google.Cloud.Trace.V1 {
   /// <summary>
   /// The response message for the `ListTraces` method.
   /// </summary>
-  public sealed partial class ListTracesResponse : pb::IMessage<ListTracesResponse> {
+  public sealed partial class ListTracesResponse : pb::IMessage<ListTracesResponse>
+  #if !GOOGLE_PROTOBUF_REFSTRUCT_COMPATIBILITY_MODE
+      , pb::IBufferMessage
+  #endif
+  {
     private static readonly pb::MessageParser<ListTracesResponse> _parser = new pb::MessageParser<ListTracesResponse>(() => new ListTracesResponse());
     private pb::UnknownFieldSet _unknownFields;
     [global::System.Diagnostics.DebuggerNonUserCodeAttribute]
@@ -1361,6 +1661,9 @@ namespace Google.Cloud.Trace.V1 {
 
     [global::System.Diagnostics.DebuggerNonUserCodeAttribute]
     public void WriteTo(pb::CodedOutputStream output) {
+    #if !GOOGLE_PROTOBUF_REFSTRUCT_COMPATIBILITY_MODE
+      output.WriteRawMessage(this);
+    #else
       traces_.WriteTo(output, _repeated_traces_codec);
       if (NextPageToken.Length != 0) {
         output.WriteRawTag(18);
@@ -1369,7 +1672,22 @@ namespace Google.Cloud.Trace.V1 {
       if (_unknownFields != null) {
         _unknownFields.WriteTo(output);
       }
+    #endif
     }
+
+    #if !GOOGLE_PROTOBUF_REFSTRUCT_COMPATIBILITY_MODE
+    [global::System.Diagnostics.DebuggerNonUserCodeAttribute]
+    void pb::IBufferMessage.InternalWriteTo(ref pb::WriteContext output) {
+      traces_.WriteTo(ref output, _repeated_traces_codec);
+      if (NextPageToken.Length != 0) {
+        output.WriteRawTag(18);
+        output.WriteString(NextPageToken);
+      }
+      if (_unknownFields != null) {
+        _unknownFields.WriteTo(ref output);
+      }
+    }
+    #endif
 
     [global::System.Diagnostics.DebuggerNonUserCodeAttribute]
     public int CalculateSize() {
@@ -1398,6 +1716,9 @@ namespace Google.Cloud.Trace.V1 {
 
     [global::System.Diagnostics.DebuggerNonUserCodeAttribute]
     public void MergeFrom(pb::CodedInputStream input) {
+    #if !GOOGLE_PROTOBUF_REFSTRUCT_COMPATIBILITY_MODE
+      input.ReadRawMessage(this);
+    #else
       uint tag;
       while ((tag = input.ReadTag()) != 0) {
         switch(tag) {
@@ -1414,14 +1735,41 @@ namespace Google.Cloud.Trace.V1 {
           }
         }
       }
+    #endif
     }
+
+    #if !GOOGLE_PROTOBUF_REFSTRUCT_COMPATIBILITY_MODE
+    [global::System.Diagnostics.DebuggerNonUserCodeAttribute]
+    void pb::IBufferMessage.InternalMergeFrom(ref pb::ParseContext input) {
+      uint tag;
+      while ((tag = input.ReadTag()) != 0) {
+        switch(tag) {
+          default:
+            _unknownFields = pb::UnknownFieldSet.MergeFieldFrom(_unknownFields, ref input);
+            break;
+          case 10: {
+            traces_.AddEntriesFrom(ref input, _repeated_traces_codec);
+            break;
+          }
+          case 18: {
+            NextPageToken = input.ReadString();
+            break;
+          }
+        }
+      }
+    }
+    #endif
 
   }
 
   /// <summary>
   /// The request message for the `GetTrace` method.
   /// </summary>
-  public sealed partial class GetTraceRequest : pb::IMessage<GetTraceRequest> {
+  public sealed partial class GetTraceRequest : pb::IMessage<GetTraceRequest>
+  #if !GOOGLE_PROTOBUF_REFSTRUCT_COMPATIBILITY_MODE
+      , pb::IBufferMessage
+  #endif
+  {
     private static readonly pb::MessageParser<GetTraceRequest> _parser = new pb::MessageParser<GetTraceRequest>(() => new GetTraceRequest());
     private pb::UnknownFieldSet _unknownFields;
     [global::System.Diagnostics.DebuggerNonUserCodeAttribute]
@@ -1520,6 +1868,9 @@ namespace Google.Cloud.Trace.V1 {
 
     [global::System.Diagnostics.DebuggerNonUserCodeAttribute]
     public void WriteTo(pb::CodedOutputStream output) {
+    #if !GOOGLE_PROTOBUF_REFSTRUCT_COMPATIBILITY_MODE
+      output.WriteRawMessage(this);
+    #else
       if (ProjectId.Length != 0) {
         output.WriteRawTag(10);
         output.WriteString(ProjectId);
@@ -1531,7 +1882,25 @@ namespace Google.Cloud.Trace.V1 {
       if (_unknownFields != null) {
         _unknownFields.WriteTo(output);
       }
+    #endif
     }
+
+    #if !GOOGLE_PROTOBUF_REFSTRUCT_COMPATIBILITY_MODE
+    [global::System.Diagnostics.DebuggerNonUserCodeAttribute]
+    void pb::IBufferMessage.InternalWriteTo(ref pb::WriteContext output) {
+      if (ProjectId.Length != 0) {
+        output.WriteRawTag(10);
+        output.WriteString(ProjectId);
+      }
+      if (TraceId.Length != 0) {
+        output.WriteRawTag(18);
+        output.WriteString(TraceId);
+      }
+      if (_unknownFields != null) {
+        _unknownFields.WriteTo(ref output);
+      }
+    }
+    #endif
 
     [global::System.Diagnostics.DebuggerNonUserCodeAttribute]
     public int CalculateSize() {
@@ -1564,6 +1933,9 @@ namespace Google.Cloud.Trace.V1 {
 
     [global::System.Diagnostics.DebuggerNonUserCodeAttribute]
     public void MergeFrom(pb::CodedInputStream input) {
+    #if !GOOGLE_PROTOBUF_REFSTRUCT_COMPATIBILITY_MODE
+      input.ReadRawMessage(this);
+    #else
       uint tag;
       while ((tag = input.ReadTag()) != 0) {
         switch(tag) {
@@ -1580,14 +1952,41 @@ namespace Google.Cloud.Trace.V1 {
           }
         }
       }
+    #endif
     }
+
+    #if !GOOGLE_PROTOBUF_REFSTRUCT_COMPATIBILITY_MODE
+    [global::System.Diagnostics.DebuggerNonUserCodeAttribute]
+    void pb::IBufferMessage.InternalMergeFrom(ref pb::ParseContext input) {
+      uint tag;
+      while ((tag = input.ReadTag()) != 0) {
+        switch(tag) {
+          default:
+            _unknownFields = pb::UnknownFieldSet.MergeFieldFrom(_unknownFields, ref input);
+            break;
+          case 10: {
+            ProjectId = input.ReadString();
+            break;
+          }
+          case 18: {
+            TraceId = input.ReadString();
+            break;
+          }
+        }
+      }
+    }
+    #endif
 
   }
 
   /// <summary>
   /// The request message for the `PatchTraces` method.
   /// </summary>
-  public sealed partial class PatchTracesRequest : pb::IMessage<PatchTracesRequest> {
+  public sealed partial class PatchTracesRequest : pb::IMessage<PatchTracesRequest>
+  #if !GOOGLE_PROTOBUF_REFSTRUCT_COMPATIBILITY_MODE
+      , pb::IBufferMessage
+  #endif
+  {
     private static readonly pb::MessageParser<PatchTracesRequest> _parser = new pb::MessageParser<PatchTracesRequest>(() => new PatchTracesRequest());
     private pb::UnknownFieldSet _unknownFields;
     [global::System.Diagnostics.DebuggerNonUserCodeAttribute]
@@ -1686,6 +2085,9 @@ namespace Google.Cloud.Trace.V1 {
 
     [global::System.Diagnostics.DebuggerNonUserCodeAttribute]
     public void WriteTo(pb::CodedOutputStream output) {
+    #if !GOOGLE_PROTOBUF_REFSTRUCT_COMPATIBILITY_MODE
+      output.WriteRawMessage(this);
+    #else
       if (ProjectId.Length != 0) {
         output.WriteRawTag(10);
         output.WriteString(ProjectId);
@@ -1697,7 +2099,25 @@ namespace Google.Cloud.Trace.V1 {
       if (_unknownFields != null) {
         _unknownFields.WriteTo(output);
       }
+    #endif
     }
+
+    #if !GOOGLE_PROTOBUF_REFSTRUCT_COMPATIBILITY_MODE
+    [global::System.Diagnostics.DebuggerNonUserCodeAttribute]
+    void pb::IBufferMessage.InternalWriteTo(ref pb::WriteContext output) {
+      if (ProjectId.Length != 0) {
+        output.WriteRawTag(10);
+        output.WriteString(ProjectId);
+      }
+      if (traces_ != null) {
+        output.WriteRawTag(18);
+        output.WriteMessage(Traces);
+      }
+      if (_unknownFields != null) {
+        _unknownFields.WriteTo(ref output);
+      }
+    }
+    #endif
 
     [global::System.Diagnostics.DebuggerNonUserCodeAttribute]
     public int CalculateSize() {
@@ -1733,6 +2153,9 @@ namespace Google.Cloud.Trace.V1 {
 
     [global::System.Diagnostics.DebuggerNonUserCodeAttribute]
     public void MergeFrom(pb::CodedInputStream input) {
+    #if !GOOGLE_PROTOBUF_REFSTRUCT_COMPATIBILITY_MODE
+      input.ReadRawMessage(this);
+    #else
       uint tag;
       while ((tag = input.ReadTag()) != 0) {
         switch(tag) {
@@ -1752,7 +2175,33 @@ namespace Google.Cloud.Trace.V1 {
           }
         }
       }
+    #endif
     }
+
+    #if !GOOGLE_PROTOBUF_REFSTRUCT_COMPATIBILITY_MODE
+    [global::System.Diagnostics.DebuggerNonUserCodeAttribute]
+    void pb::IBufferMessage.InternalMergeFrom(ref pb::ParseContext input) {
+      uint tag;
+      while ((tag = input.ReadTag()) != 0) {
+        switch(tag) {
+          default:
+            _unknownFields = pb::UnknownFieldSet.MergeFieldFrom(_unknownFields, ref input);
+            break;
+          case 10: {
+            ProjectId = input.ReadString();
+            break;
+          }
+          case 18: {
+            if (traces_ == null) {
+              Traces = new global::Google.Cloud.Trace.V1.Traces();
+            }
+            input.ReadMessage(Traces);
+            break;
+          }
+        }
+      }
+    }
+    #endif
 
   }
 

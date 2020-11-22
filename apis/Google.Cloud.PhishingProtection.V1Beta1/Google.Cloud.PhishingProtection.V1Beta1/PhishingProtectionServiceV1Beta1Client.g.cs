@@ -1,4 +1,4 @@
-// Copyright 2019 Google LLC
+// Copyright 2020 Google LLC
 //
 // Licensed under the Apache License, Version 2.0 (the "License");
 // you may not use this file except in compliance with the License.
@@ -16,6 +16,7 @@
 
 using gax = Google.Api.Gax;
 using gaxgrpc = Google.Api.Gax.Grpc;
+using gaxgrpccore = Google.Api.Gax.Grpc.GrpcCore;
 using gagr = Google.Api.Gax.ResourceNames;
 using proto = Google.Protobuf;
 using grpccore = Grpc.Core;
@@ -23,7 +24,6 @@ using grpcinter = Grpc.Core.Interceptors;
 using sys = System;
 using scg = System.Collections.Generic;
 using sco = System.Collections.ObjectModel;
-using sysnet = System.Net;
 using st = System.Threading;
 using stt = System.Threading.Tasks;
 
@@ -57,8 +57,13 @@ namespace Google.Cloud.PhishingProtection.V1Beta1
         /// <c>PhishingProtectionServiceV1Beta1Client.ReportPhishing</c> and
         /// <c>PhishingProtectionServiceV1Beta1Client.ReportPhishingAsync</c>.
         /// </summary>
-        /// <remarks>By default, retry will not be attempted.</remarks>
-        public gaxgrpc::CallSettings ReportPhishingSettings { get; set; }
+        /// <remarks>
+        /// <list type="bullet">
+        /// <item><description>This call will not be retried.</description></item>
+        /// <item><description>Timeout: 600 seconds.</description></item>
+        /// </list>
+        /// </remarks>
+        public gaxgrpc::CallSettings ReportPhishingSettings { get; set; } = gaxgrpc::CallSettings.FromExpiration(gax::Expiration.FromTimeout(sys::TimeSpan.FromMilliseconds(600000)));
 
         /// <summary>Creates a deep clone of this object, with all the same property values.</summary>
         /// <returns>A deep clone of this <see cref="PhishingProtectionServiceV1Beta1Settings"/> object.</returns>
@@ -74,42 +79,67 @@ namespace Google.Cloud.PhishingProtection.V1Beta1
         /// <summary>The settings to use for RPCs, or <c>null</c> for the default settings.</summary>
         public PhishingProtectionServiceV1Beta1Settings Settings { get; set; }
 
-        /// <inheritdoc/>
+        partial void InterceptBuild(ref PhishingProtectionServiceV1Beta1Client client);
+
+        partial void InterceptBuildAsync(st::CancellationToken cancellationToken, ref stt::Task<PhishingProtectionServiceV1Beta1Client> task);
+
+        /// <summary>Builds the resulting client.</summary>
         public override PhishingProtectionServiceV1Beta1Client Build()
+        {
+            PhishingProtectionServiceV1Beta1Client client = null;
+            InterceptBuild(ref client);
+            return client ?? BuildImpl();
+        }
+
+        /// <summary>Builds the resulting client asynchronously.</summary>
+        public override stt::Task<PhishingProtectionServiceV1Beta1Client> BuildAsync(st::CancellationToken cancellationToken = default)
+        {
+            stt::Task<PhishingProtectionServiceV1Beta1Client> task = null;
+            InterceptBuildAsync(cancellationToken, ref task);
+            return task ?? BuildAsyncImpl(cancellationToken);
+        }
+
+        private PhishingProtectionServiceV1Beta1Client BuildImpl()
         {
             Validate();
             grpccore::CallInvoker callInvoker = CreateCallInvoker();
             return PhishingProtectionServiceV1Beta1Client.Create(callInvoker, Settings);
         }
 
-        /// <inheritdoc/>
-        public override async stt::Task<PhishingProtectionServiceV1Beta1Client> BuildAsync(st::CancellationToken cancellationToken = default)
+        private async stt::Task<PhishingProtectionServiceV1Beta1Client> BuildAsyncImpl(st::CancellationToken cancellationToken)
         {
             Validate();
             grpccore::CallInvoker callInvoker = await CreateCallInvokerAsync(cancellationToken).ConfigureAwait(false);
             return PhishingProtectionServiceV1Beta1Client.Create(callInvoker, Settings);
         }
 
-        /// <inheritdoc/>
-        protected override gaxgrpc::ServiceEndpoint GetDefaultEndpoint() =>
-            PhishingProtectionServiceV1Beta1Client.DefaultEndpoint;
+        /// <summary>Returns the endpoint for this builder type, used if no endpoint is otherwise specified.</summary>
+        protected override string GetDefaultEndpoint() => PhishingProtectionServiceV1Beta1Client.DefaultEndpoint;
 
-        /// <inheritdoc/>
+        /// <summary>
+        /// Returns the default scopes for this builder type, used if no scopes are otherwise specified.
+        /// </summary>
         protected override scg::IReadOnlyList<string> GetDefaultScopes() =>
             PhishingProtectionServiceV1Beta1Client.DefaultScopes;
 
-        /// <inheritdoc/>
+        /// <summary>Returns the channel pool to use when no other options are specified.</summary>
         protected override gaxgrpc::ChannelPool GetChannelPool() => PhishingProtectionServiceV1Beta1Client.ChannelPool;
+
+        /// <summary>Returns the default <see cref="gaxgrpc::GrpcAdapter"/>to use if not otherwise specified.</summary>
+        protected override gaxgrpc::GrpcAdapter DefaultGrpcAdapter => gaxgrpccore::GrpcCoreAdapter.Instance;
     }
 
     /// <summary>PhishingProtectionServiceV1Beta1 client wrapper, for convenient use.</summary>
+    /// <remarks>
+    /// Service to report phishing URIs.
+    /// </remarks>
     public abstract partial class PhishingProtectionServiceV1Beta1Client
     {
         /// <summary>
         /// The default endpoint for the PhishingProtectionServiceV1Beta1 service, which is a host of
         /// "phishingprotection.googleapis.com" and a port of 443.
         /// </summary>
-        public static gaxgrpc::ServiceEndpoint DefaultEndpoint { get; } = new gaxgrpc::ServiceEndpoint("phishingprotection.googleapis.com", 443);
+        public static string DefaultEndpoint { get; } = "phishingprotection.googleapis.com:443";
 
         /// <summary>The default PhishingProtectionServiceV1Beta1 scopes.</summary>
         /// <remarks>
@@ -126,97 +156,25 @@ namespace Google.Cloud.PhishingProtection.V1Beta1
         internal static gaxgrpc::ChannelPool ChannelPool { get; } = new gaxgrpc::ChannelPool(DefaultScopes);
 
         /// <summary>
-        /// Asynchronously creates a <see cref="PhishingProtectionServiceV1Beta1Client"/>, applying defaults for all
-        /// unspecified settings, and creating a channel connecting to the given endpoint with application default
-        /// credentials where necessary. See the example for how to use custom credentials.
+        /// Asynchronously creates a <see cref="PhishingProtectionServiceV1Beta1Client"/> using the default credentials,
+        /// endpoint and settings. To specify custom credentials or other settings, use
+        /// <see cref="PhishingProtectionServiceV1Beta1ClientBuilder"/>.
         /// </summary>
-        /// <example>
-        /// This sample shows how to create a client using default credentials:
-        /// <code>
-        /// using Google.Cloud.Vision.V1;
-        /// ...
-        /// // When running on Google Cloud Platform this will use the project Compute Credential.
-        /// // Or set the GOOGLE_APPLICATION_CREDENTIALS environment variable to the path of a JSON
-        /// // credential file to use that credential.
-        /// ImageAnnotatorClient client = await ImageAnnotatorClient.CreateAsync();
-        /// </code>
-        /// This sample shows how to create a client using credentials loaded from a JSON file:
-        /// <code>
-        /// using Google.Cloud.Vision.V1;
-        /// using Google.Apis.Auth.OAuth2;
-        /// using Grpc.Auth;
-        /// using Grpc.Core;
-        /// ...
-        /// GoogleCredential cred = GoogleCredential.FromFile("/path/to/credentials.json");
-        /// Channel channel = new Channel(
-        ///     ImageAnnotatorClient.DefaultEndpoint.Host, ImageAnnotatorClient.DefaultEndpoint.Port, cred.ToChannelCredentials());
-        /// ImageAnnotatorClient client = ImageAnnotatorClient.Create(channel);
-        /// ...
-        /// // Shutdown the channel when it is no longer required.
-        /// await channel.ShutdownAsync();
-        /// </code>
-        /// </example>
-        /// <param name="endpoint">Optional <see cref="gaxgrpc::ServiceEndpoint"/>.</param>
-        /// <param name="settings">Optional <see cref="PhishingProtectionServiceV1Beta1Settings"/>.</param>
+        /// <param name="cancellationToken">
+        /// The <see cref="st::CancellationToken"/> to use while creating the client.
+        /// </param>
         /// <returns>The task representing the created <see cref="PhishingProtectionServiceV1Beta1Client"/>.</returns>
-        public static async stt::Task<PhishingProtectionServiceV1Beta1Client> CreateAsync(gaxgrpc::ServiceEndpoint endpoint = null, PhishingProtectionServiceV1Beta1Settings settings = null)
-        {
-            grpccore::Channel channel = await ChannelPool.GetChannelAsync(endpoint ?? DefaultEndpoint).ConfigureAwait(false);
-            return Create(channel, settings);
-        }
+        public static stt::Task<PhishingProtectionServiceV1Beta1Client> CreateAsync(st::CancellationToken cancellationToken = default) =>
+            new PhishingProtectionServiceV1Beta1ClientBuilder().BuildAsync(cancellationToken);
 
         /// <summary>
-        /// Synchronously creates a <see cref="PhishingProtectionServiceV1Beta1Client"/>, applying defaults for all
-        /// unspecified settings, and creating a channel connecting to the given endpoint with application default
-        /// credentials where necessary. See the example for how to use custom credentials.
+        /// Synchronously creates a <see cref="PhishingProtectionServiceV1Beta1Client"/> using the default credentials,
+        /// endpoint and settings. To specify custom credentials or other settings, use
+        /// <see cref="PhishingProtectionServiceV1Beta1ClientBuilder"/>.
         /// </summary>
-        /// <example>
-        /// This sample shows how to create a client using default credentials:
-        /// <code>
-        /// using Google.Cloud.Vision.V1;
-        /// ...
-        /// // When running on Google Cloud Platform this will use the project Compute Credential.
-        /// // Or set the GOOGLE_APPLICATION_CREDENTIALS environment variable to the path of a JSON
-        /// // credential file to use that credential.
-        /// ImageAnnotatorClient client = ImageAnnotatorClient.Create();
-        /// </code>
-        /// This sample shows how to create a client using credentials loaded from a JSON file:
-        /// <code>
-        /// using Google.Cloud.Vision.V1;
-        /// using Google.Apis.Auth.OAuth2;
-        /// using Grpc.Auth;
-        /// using Grpc.Core;
-        /// ...
-        /// GoogleCredential cred = GoogleCredential.FromFile("/path/to/credentials.json");
-        /// Channel channel = new Channel(
-        ///     ImageAnnotatorClient.DefaultEndpoint.Host, ImageAnnotatorClient.DefaultEndpoint.Port, cred.ToChannelCredentials());
-        /// ImageAnnotatorClient client = ImageAnnotatorClient.Create(channel);
-        /// ...
-        /// // Shutdown the channel when it is no longer required.
-        /// channel.ShutdownAsync().Wait();
-        /// </code>
-        /// </example>
-        /// <param name="endpoint">Optional <see cref="gaxgrpc::ServiceEndpoint"/>.</param>
-        /// <param name="settings">Optional <see cref="PhishingProtectionServiceV1Beta1Settings"/>.</param>
         /// <returns>The created <see cref="PhishingProtectionServiceV1Beta1Client"/>.</returns>
-        public static PhishingProtectionServiceV1Beta1Client Create(gaxgrpc::ServiceEndpoint endpoint = null, PhishingProtectionServiceV1Beta1Settings settings = null)
-        {
-            grpccore::Channel channel = ChannelPool.GetChannel(endpoint ?? DefaultEndpoint);
-            return Create(channel, settings);
-        }
-
-        /// <summary>
-        /// Creates a <see cref="PhishingProtectionServiceV1Beta1Client"/> which uses the specified channel for remote
-        /// operations.
-        /// </summary>
-        /// <param name="channel">The <see cref="grpccore::Channel"/> for remote operations. Must not be null.</param>
-        /// <param name="settings">Optional <see cref="PhishingProtectionServiceV1Beta1Settings"/>.</param>
-        /// <returns>The created <see cref="PhishingProtectionServiceV1Beta1Client"/>.</returns>
-        public static PhishingProtectionServiceV1Beta1Client Create(grpccore::Channel channel, PhishingProtectionServiceV1Beta1Settings settings = null)
-        {
-            gax::GaxPreconditions.CheckNotNull(channel, nameof(channel));
-            return Create(new grpccore::DefaultCallInvoker(channel), settings);
-        }
+        public static PhishingProtectionServiceV1Beta1Client Create() =>
+            new PhishingProtectionServiceV1Beta1ClientBuilder().Build();
 
         /// <summary>
         /// Creates a <see cref="PhishingProtectionServiceV1Beta1Client"/> which uses the specified call invoker for
@@ -227,7 +185,7 @@ namespace Google.Cloud.PhishingProtection.V1Beta1
         /// </param>
         /// <param name="settings">Optional <see cref="PhishingProtectionServiceV1Beta1Settings"/>.</param>
         /// <returns>The created <see cref="PhishingProtectionServiceV1Beta1Client"/>.</returns>
-        public static PhishingProtectionServiceV1Beta1Client Create(grpccore::CallInvoker callInvoker, PhishingProtectionServiceV1Beta1Settings settings = null)
+        internal static PhishingProtectionServiceV1Beta1Client Create(grpccore::CallInvoker callInvoker, PhishingProtectionServiceV1Beta1Settings settings = null)
         {
             gax::GaxPreconditions.CheckNotNull(callInvoker, nameof(callInvoker));
             grpcinter::Interceptor interceptor = settings?.Interceptor;
@@ -240,16 +198,14 @@ namespace Google.Cloud.PhishingProtection.V1Beta1
         }
 
         /// <summary>
-        /// Shuts down any channels automatically created by
-        /// <see cref="Create(grpccore::CallInvoker,PhishingProtectionServiceV1Beta1Settings)"/> and
-        /// <see cref="CreateAsync(gaxgrpc::ServiceEndpoint,PhishingProtectionServiceV1Beta1Settings)"/>. Channels which
-        /// weren't automatically created are not affected.
+        /// Shuts down any channels automatically created by <see cref="Create()"/> and
+        /// <see cref="CreateAsync(st::CancellationToken)"/>. Channels which weren't automatically created are not
+        /// affected.
         /// </summary>
         /// <remarks>
-        /// After calling this method, further calls to
-        /// <see cref="Create(grpccore::CallInvoker,PhishingProtectionServiceV1Beta1Settings)"/> and
-        /// <see cref="CreateAsync(gaxgrpc::ServiceEndpoint,PhishingProtectionServiceV1Beta1Settings)"/> will create new
-        /// channels, which could in turn be shut down by another call to this method.
+        /// After calling this method, further calls to <see cref="Create()"/> and
+        /// <see cref="CreateAsync(st::CancellationToken)"/> will create new channels, which could in turn be shut down
+        /// by another call to this method.
         /// </remarks>
         /// <returns>A task representing the asynchronous shutdown operation.</returns>
         public static stt::Task ShutdownDefaultChannelsAsync() => ChannelPool.ShutdownChannelsAsync();
@@ -446,6 +402,9 @@ namespace Google.Cloud.PhishingProtection.V1Beta1
     }
 
     /// <summary>PhishingProtectionServiceV1Beta1 client wrapper implementation, for convenient use.</summary>
+    /// <remarks>
+    /// Service to report phishing URIs.
+    /// </remarks>
     public sealed partial class PhishingProtectionServiceV1Beta1ClientImpl : PhishingProtectionServiceV1Beta1Client
     {
         private readonly gaxgrpc::ApiCall<ReportPhishingRequest, ReportPhishingResponse> _callReportPhishing;
@@ -463,7 +422,7 @@ namespace Google.Cloud.PhishingProtection.V1Beta1
             GrpcClient = grpcClient;
             PhishingProtectionServiceV1Beta1Settings effectiveSettings = settings ?? PhishingProtectionServiceV1Beta1Settings.GetDefault();
             gaxgrpc::ClientHelper clientHelper = new gaxgrpc::ClientHelper(effectiveSettings);
-            _callReportPhishing = clientHelper.BuildApiCall<ReportPhishingRequest, ReportPhishingResponse>(grpcClient.ReportPhishingAsync, grpcClient.ReportPhishing, effectiveSettings.ReportPhishingSettings).WithCallSettingsOverlay(request => gaxgrpc::CallSettings.FromHeader("x-goog-request-params", $"parent={(sysnet::WebUtility.UrlEncode(request.Parent))}"));
+            _callReportPhishing = clientHelper.BuildApiCall<ReportPhishingRequest, ReportPhishingResponse>(grpcClient.ReportPhishingAsync, grpcClient.ReportPhishing, effectiveSettings.ReportPhishingSettings).WithGoogleRequestParam("parent", request => request.Parent);
             Modify_ApiCall(ref _callReportPhishing);
             Modify_ReportPhishingApiCall(ref _callReportPhishing);
             OnConstruction(grpcClient, effectiveSettings, clientHelper);

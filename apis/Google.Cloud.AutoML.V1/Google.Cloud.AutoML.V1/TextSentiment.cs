@@ -25,9 +25,9 @@ namespace Google.Cloud.AutoML.V1 {
       byte[] descriptorData = global::System.Convert.FromBase64String(
           string.Concat(
             "Citnb29nbGUvY2xvdWQvYXV0b21sL3YxL3RleHRfc2VudGltZW50LnByb3Rv",
-            "EhZnb29nbGUuY2xvdWQuYXV0b21sLnYxGhxnb29nbGUvYXBpL2Fubm90YXRp",
-            "b25zLnByb3RvGitnb29nbGUvY2xvdWQvYXV0b21sL3YxL2NsYXNzaWZpY2F0",
-            "aW9uLnByb3RvIiwKF1RleHRTZW50aW1lbnRBbm5vdGF0aW9uEhEKCXNlbnRp",
+            "EhZnb29nbGUuY2xvdWQuYXV0b21sLnYxGitnb29nbGUvY2xvdWQvYXV0b21s",
+            "L3YxL2NsYXNzaWZpY2F0aW9uLnByb3RvGhxnb29nbGUvYXBpL2Fubm90YXRp",
+            "b25zLnByb3RvIiwKF1RleHRTZW50aW1lbnRBbm5vdGF0aW9uEhEKCXNlbnRp",
             "bWVudBgBIAEoBSKgAgoeVGV4dFNlbnRpbWVudEV2YWx1YXRpb25NZXRyaWNz",
             "EhEKCXByZWNpc2lvbhgBIAEoAhIOCgZyZWNhbGwYAiABKAISEAoIZjFfc2Nv",
             "cmUYAyABKAISGwoTbWVhbl9hYnNvbHV0ZV9lcnJvchgEIAEoAhIaChJtZWFu",
@@ -41,10 +41,10 @@ namespace Google.Cloud.AutoML.V1 {
             "XENsb3VkXEF1dG9NbFxWMeoCGUdvb2dsZTo6Q2xvdWQ6OkF1dG9NTDo6VjFi",
             "BnByb3RvMw=="));
       descriptor = pbr::FileDescriptor.FromGeneratedCode(descriptorData,
-          new pbr::FileDescriptor[] { global::Google.Api.AnnotationsReflection.Descriptor, global::Google.Cloud.AutoML.V1.ClassificationReflection.Descriptor, },
-          new pbr::GeneratedClrTypeInfo(null, new pbr::GeneratedClrTypeInfo[] {
-            new pbr::GeneratedClrTypeInfo(typeof(global::Google.Cloud.AutoML.V1.TextSentimentAnnotation), global::Google.Cloud.AutoML.V1.TextSentimentAnnotation.Parser, new[]{ "Sentiment" }, null, null, null),
-            new pbr::GeneratedClrTypeInfo(typeof(global::Google.Cloud.AutoML.V1.TextSentimentEvaluationMetrics), global::Google.Cloud.AutoML.V1.TextSentimentEvaluationMetrics.Parser, new[]{ "Precision", "Recall", "F1Score", "MeanAbsoluteError", "MeanSquaredError", "LinearKappa", "QuadraticKappa", "ConfusionMatrix" }, null, null, null)
+          new pbr::FileDescriptor[] { global::Google.Cloud.AutoML.V1.ClassificationReflection.Descriptor, global::Google.Api.AnnotationsReflection.Descriptor, },
+          new pbr::GeneratedClrTypeInfo(null, null, new pbr::GeneratedClrTypeInfo[] {
+            new pbr::GeneratedClrTypeInfo(typeof(global::Google.Cloud.AutoML.V1.TextSentimentAnnotation), global::Google.Cloud.AutoML.V1.TextSentimentAnnotation.Parser, new[]{ "Sentiment" }, null, null, null, null),
+            new pbr::GeneratedClrTypeInfo(typeof(global::Google.Cloud.AutoML.V1.TextSentimentEvaluationMetrics), global::Google.Cloud.AutoML.V1.TextSentimentEvaluationMetrics.Parser, new[]{ "Precision", "Recall", "F1Score", "MeanAbsoluteError", "MeanSquaredError", "LinearKappa", "QuadraticKappa", "ConfusionMatrix" }, null, null, null, null)
           }));
     }
     #endregion
@@ -54,7 +54,11 @@ namespace Google.Cloud.AutoML.V1 {
   /// <summary>
   /// Contains annotation details specific to text sentiment.
   /// </summary>
-  public sealed partial class TextSentimentAnnotation : pb::IMessage<TextSentimentAnnotation> {
+  public sealed partial class TextSentimentAnnotation : pb::IMessage<TextSentimentAnnotation>
+  #if !GOOGLE_PROTOBUF_REFSTRUCT_COMPATIBILITY_MODE
+      , pb::IBufferMessage
+  #endif
+  {
     private static readonly pb::MessageParser<TextSentimentAnnotation> _parser = new pb::MessageParser<TextSentimentAnnotation>(() => new TextSentimentAnnotation());
     private pb::UnknownFieldSet _unknownFields;
     [global::System.Diagnostics.DebuggerNonUserCodeAttribute]
@@ -93,9 +97,9 @@ namespace Google.Cloud.AutoML.V1 {
     private int sentiment_;
     /// <summary>
     /// Output only. The sentiment with the semantic, as given to the
-    /// [AutoMl.ImportData][google.cloud.automl.v1.AutoMl.ImportData] when
-    /// populating the dataset from which the model used for the prediction had
-    /// been trained. The sentiment values are between 0 and
+    /// [AutoMl.ImportData][google.cloud.automl.v1.AutoMl.ImportData] when populating the dataset from which the model used
+    /// for the prediction had been trained.
+    /// The sentiment values are between 0 and
     /// Dataset.text_sentiment_dataset_metadata.sentiment_max (inclusive),
     /// with higher value meaning more positive sentiment. They are completely
     /// relative, i.e. 0 means least positive sentiment and sentiment_max means
@@ -147,6 +151,9 @@ namespace Google.Cloud.AutoML.V1 {
 
     [global::System.Diagnostics.DebuggerNonUserCodeAttribute]
     public void WriteTo(pb::CodedOutputStream output) {
+    #if !GOOGLE_PROTOBUF_REFSTRUCT_COMPATIBILITY_MODE
+      output.WriteRawMessage(this);
+    #else
       if (Sentiment != 0) {
         output.WriteRawTag(8);
         output.WriteInt32(Sentiment);
@@ -154,7 +161,21 @@ namespace Google.Cloud.AutoML.V1 {
       if (_unknownFields != null) {
         _unknownFields.WriteTo(output);
       }
+    #endif
     }
+
+    #if !GOOGLE_PROTOBUF_REFSTRUCT_COMPATIBILITY_MODE
+    [global::System.Diagnostics.DebuggerNonUserCodeAttribute]
+    void pb::IBufferMessage.InternalWriteTo(ref pb::WriteContext output) {
+      if (Sentiment != 0) {
+        output.WriteRawTag(8);
+        output.WriteInt32(Sentiment);
+      }
+      if (_unknownFields != null) {
+        _unknownFields.WriteTo(ref output);
+      }
+    }
+    #endif
 
     [global::System.Diagnostics.DebuggerNonUserCodeAttribute]
     public int CalculateSize() {
@@ -181,6 +202,9 @@ namespace Google.Cloud.AutoML.V1 {
 
     [global::System.Diagnostics.DebuggerNonUserCodeAttribute]
     public void MergeFrom(pb::CodedInputStream input) {
+    #if !GOOGLE_PROTOBUF_REFSTRUCT_COMPATIBILITY_MODE
+      input.ReadRawMessage(this);
+    #else
       uint tag;
       while ((tag = input.ReadTag()) != 0) {
         switch(tag) {
@@ -193,14 +217,37 @@ namespace Google.Cloud.AutoML.V1 {
           }
         }
       }
+    #endif
     }
+
+    #if !GOOGLE_PROTOBUF_REFSTRUCT_COMPATIBILITY_MODE
+    [global::System.Diagnostics.DebuggerNonUserCodeAttribute]
+    void pb::IBufferMessage.InternalMergeFrom(ref pb::ParseContext input) {
+      uint tag;
+      while ((tag = input.ReadTag()) != 0) {
+        switch(tag) {
+          default:
+            _unknownFields = pb::UnknownFieldSet.MergeFieldFrom(_unknownFields, ref input);
+            break;
+          case 8: {
+            Sentiment = input.ReadInt32();
+            break;
+          }
+        }
+      }
+    }
+    #endif
 
   }
 
   /// <summary>
   /// Model evaluation metrics for text sentiment problems.
   /// </summary>
-  public sealed partial class TextSentimentEvaluationMetrics : pb::IMessage<TextSentimentEvaluationMetrics> {
+  public sealed partial class TextSentimentEvaluationMetrics : pb::IMessage<TextSentimentEvaluationMetrics>
+  #if !GOOGLE_PROTOBUF_REFSTRUCT_COMPATIBILITY_MODE
+      , pb::IBufferMessage
+  #endif
+  {
     private static readonly pb::MessageParser<TextSentimentEvaluationMetrics> _parser = new pb::MessageParser<TextSentimentEvaluationMetrics>(() => new TextSentimentEvaluationMetrics());
     private pb::UnknownFieldSet _unknownFields;
     [global::System.Diagnostics.DebuggerNonUserCodeAttribute]
@@ -407,6 +454,9 @@ namespace Google.Cloud.AutoML.V1 {
 
     [global::System.Diagnostics.DebuggerNonUserCodeAttribute]
     public void WriteTo(pb::CodedOutputStream output) {
+    #if !GOOGLE_PROTOBUF_REFSTRUCT_COMPATIBILITY_MODE
+      output.WriteRawMessage(this);
+    #else
       if (Precision != 0F) {
         output.WriteRawTag(13);
         output.WriteFloat(Precision);
@@ -442,7 +492,49 @@ namespace Google.Cloud.AutoML.V1 {
       if (_unknownFields != null) {
         _unknownFields.WriteTo(output);
       }
+    #endif
     }
+
+    #if !GOOGLE_PROTOBUF_REFSTRUCT_COMPATIBILITY_MODE
+    [global::System.Diagnostics.DebuggerNonUserCodeAttribute]
+    void pb::IBufferMessage.InternalWriteTo(ref pb::WriteContext output) {
+      if (Precision != 0F) {
+        output.WriteRawTag(13);
+        output.WriteFloat(Precision);
+      }
+      if (Recall != 0F) {
+        output.WriteRawTag(21);
+        output.WriteFloat(Recall);
+      }
+      if (F1Score != 0F) {
+        output.WriteRawTag(29);
+        output.WriteFloat(F1Score);
+      }
+      if (MeanAbsoluteError != 0F) {
+        output.WriteRawTag(37);
+        output.WriteFloat(MeanAbsoluteError);
+      }
+      if (MeanSquaredError != 0F) {
+        output.WriteRawTag(45);
+        output.WriteFloat(MeanSquaredError);
+      }
+      if (LinearKappa != 0F) {
+        output.WriteRawTag(53);
+        output.WriteFloat(LinearKappa);
+      }
+      if (QuadraticKappa != 0F) {
+        output.WriteRawTag(61);
+        output.WriteFloat(QuadraticKappa);
+      }
+      if (confusionMatrix_ != null) {
+        output.WriteRawTag(66);
+        output.WriteMessage(ConfusionMatrix);
+      }
+      if (_unknownFields != null) {
+        _unknownFields.WriteTo(ref output);
+      }
+    }
+    #endif
 
     [global::System.Diagnostics.DebuggerNonUserCodeAttribute]
     public int CalculateSize() {
@@ -514,6 +606,9 @@ namespace Google.Cloud.AutoML.V1 {
 
     [global::System.Diagnostics.DebuggerNonUserCodeAttribute]
     public void MergeFrom(pb::CodedInputStream input) {
+    #if !GOOGLE_PROTOBUF_REFSTRUCT_COMPATIBILITY_MODE
+      input.ReadRawMessage(this);
+    #else
       uint tag;
       while ((tag = input.ReadTag()) != 0) {
         switch(tag) {
@@ -557,7 +652,57 @@ namespace Google.Cloud.AutoML.V1 {
           }
         }
       }
+    #endif
     }
+
+    #if !GOOGLE_PROTOBUF_REFSTRUCT_COMPATIBILITY_MODE
+    [global::System.Diagnostics.DebuggerNonUserCodeAttribute]
+    void pb::IBufferMessage.InternalMergeFrom(ref pb::ParseContext input) {
+      uint tag;
+      while ((tag = input.ReadTag()) != 0) {
+        switch(tag) {
+          default:
+            _unknownFields = pb::UnknownFieldSet.MergeFieldFrom(_unknownFields, ref input);
+            break;
+          case 13: {
+            Precision = input.ReadFloat();
+            break;
+          }
+          case 21: {
+            Recall = input.ReadFloat();
+            break;
+          }
+          case 29: {
+            F1Score = input.ReadFloat();
+            break;
+          }
+          case 37: {
+            MeanAbsoluteError = input.ReadFloat();
+            break;
+          }
+          case 45: {
+            MeanSquaredError = input.ReadFloat();
+            break;
+          }
+          case 53: {
+            LinearKappa = input.ReadFloat();
+            break;
+          }
+          case 61: {
+            QuadraticKappa = input.ReadFloat();
+            break;
+          }
+          case 66: {
+            if (confusionMatrix_ == null) {
+              ConfusionMatrix = new global::Google.Cloud.AutoML.V1.ClassificationEvaluationMetrics.Types.ConfusionMatrix();
+            }
+            input.ReadMessage(ConfusionMatrix);
+            break;
+          }
+        }
+      }
+    }
+    #endif
 
   }
 

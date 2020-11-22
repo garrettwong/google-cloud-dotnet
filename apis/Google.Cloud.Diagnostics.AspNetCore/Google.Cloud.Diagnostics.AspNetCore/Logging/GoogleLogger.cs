@@ -16,7 +16,6 @@ using Google.Api.Gax;
 using Google.Cloud.Diagnostics.Common;
 using Google.Cloud.Logging.V2;
 using Google.Protobuf.WellKnownTypes;
-using Microsoft.AspNetCore.Http;
 using Microsoft.Extensions.DependencyInjection;
 using Microsoft.Extensions.Logging;
 using System;
@@ -25,7 +24,13 @@ using System.IO;
 using System.Linq;
 using static System.FormattableString;
 
+#if NETCOREAPP3_1
+namespace Google.Cloud.Diagnostics.AspNetCore3
+#elif NETSTANDARD2_0
 namespace Google.Cloud.Diagnostics.AspNetCore
+#else
+#error unknown target framework
+#endif
 {
     /// <summary>
     /// <see cref="ILogger"/> for Google Stackdriver Logging.
@@ -123,8 +128,9 @@ namespace Google.Cloud.Diagnostics.AspNetCore
                     Timestamp = Timestamp.FromDateTime(_clock.GetCurrentDateTimeUtc()),
                     JsonPayload = CreateJsonPayload(eventId, state, exception, message),
                     Labels = { CreateLabels() },
-                    Trace = GetTraceName() ?? "",
                 };
+
+                SetTraceAndSpanIfAny(entry);
 
                 _consumer.Receive(new[] { entry });
             }
@@ -160,6 +166,11 @@ namespace Google.Cloud.Diagnostics.AspNetCore
             var jsonStruct = new Struct();
             jsonStruct.Fields.Add("message", Value.ForString(message));
             jsonStruct.Fields.Add("log_name", Value.ForString(_logName));
+
+            if (_loggerOptions.ServiceContext != null)
+            {
+                jsonStruct.Fields.Add("serviceContext", Value.ForStruct(_loggerOptions.ServiceContext));
+            }
             if (exception != null)
             {
                 jsonStruct.Fields.Add("exception", Value.ForString(exception.ToString()));
@@ -257,23 +268,23 @@ namespace Google.Cloud.Diagnostics.AspNetCore
             }
         }
 
-        /// <summary>
-        /// Gets the full trace name if the log target is a project, we have an
-        /// HTTP accessor and a valid trace header exists on the current context.
-        /// If the trace name cannot be determined null is returned.
-        /// See: See: https://cloud.google.com/logging/docs/reference/v2/rest/v2/LogEntry
-        /// </summary>
-        internal string GetTraceName()
+        private void SetTraceAndSpanIfAny(LogEntry entry)
         {
-            var httpContext = _serviceProvider?.GetService<IHttpContextAccessor>()?.HttpContext;
-            if (_traceTarget == null || httpContext == null)
+            if (_traceTarget is null)
             {
-                return null;
+                return;
             }
 
-            string header = httpContext.Request?.Headers[TraceHeaderContext.TraceHeader];
-            var traceContext = TraceHeaderContext.FromHeader(header);
-            return traceContext.TraceId == null ? null : _traceTarget.GetFullTraceName(traceContext.TraceId);
+            // If there's currently a Google trace and span use that one.
+            // This means that the Google Trace component of the diagnostics library
+            // has been initialized.
+            // Else attempt to use an external trace context.
+            if ((TraceContextForLogEntry.FromGoogleTrace() ?? TraceContextForLogEntry.FromExternalTrace(_serviceProvider)) is TraceContextForLogEntry trace)
+            {
+                entry.Trace = _traceTarget.GetFullTraceName(trace.TraceId);
+                entry.TraceSampled = true;
+                entry.SpanId = trace.SpanId;
+            }
         }
 
         /// <summary>

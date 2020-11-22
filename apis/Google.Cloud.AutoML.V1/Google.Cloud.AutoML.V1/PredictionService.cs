@@ -26,54 +26,59 @@ namespace Google.Cloud.AutoML.V1 {
           string.Concat(
             "Ci9nb29nbGUvY2xvdWQvYXV0b21sL3YxL3ByZWRpY3Rpb25fc2VydmljZS5w",
             "cm90bxIWZ29vZ2xlLmNsb3VkLmF1dG9tbC52MRocZ29vZ2xlL2FwaS9hbm5v",
-            "dGF0aW9ucy5wcm90bxoXZ29vZ2xlL2FwaS9jbGllbnQucHJvdG8aGWdvb2ds",
-            "ZS9hcGkvcmVzb3VyY2UucHJvdG8aL2dvb2dsZS9jbG91ZC9hdXRvbWwvdjEv",
-            "YW5ub3RhdGlvbl9wYXlsb2FkLnByb3RvGidnb29nbGUvY2xvdWQvYXV0b21s",
-            "L3YxL2RhdGFfaXRlbXMucHJvdG8aH2dvb2dsZS9jbG91ZC9hdXRvbWwvdjEv",
-            "aW8ucHJvdG8aJ2dvb2dsZS9jbG91ZC9hdXRvbWwvdjEvb3BlcmF0aW9ucy5w",
-            "cm90bxojZ29vZ2xlL2xvbmdydW5uaW5nL29wZXJhdGlvbnMucHJvdG8iygEK",
-            "DlByZWRpY3RSZXF1ZXN0EgwKBG5hbWUYASABKAkSNwoHcGF5bG9hZBgCIAEo",
-            "CzImLmdvb2dsZS5jbG91ZC5hdXRvbWwudjEuRXhhbXBsZVBheWxvYWQSQgoG",
-            "cGFyYW1zGAMgAygLMjIuZ29vZ2xlLmNsb3VkLmF1dG9tbC52MS5QcmVkaWN0",
-            "UmVxdWVzdC5QYXJhbXNFbnRyeRotCgtQYXJhbXNFbnRyeRILCgNrZXkYASAB",
-            "KAkSDQoFdmFsdWUYAiABKAk6AjgBIosCCg9QcmVkaWN0UmVzcG9uc2USOgoH",
-            "cGF5bG9hZBgBIAMoCzIpLmdvb2dsZS5jbG91ZC5hdXRvbWwudjEuQW5ub3Rh",
-            "dGlvblBheWxvYWQSQgoScHJlcHJvY2Vzc2VkX2lucHV0GAMgASgLMiYuZ29v",
-            "Z2xlLmNsb3VkLmF1dG9tbC52MS5FeGFtcGxlUGF5bG9hZBJHCghtZXRhZGF0",
-            "YRgCIAMoCzI1Lmdvb2dsZS5jbG91ZC5hdXRvbWwudjEuUHJlZGljdFJlc3Bv",
-            "bnNlLk1ldGFkYXRhRW50cnkaLwoNTWV0YWRhdGFFbnRyeRILCgNrZXkYASAB",
-            "KAkSDQoFdmFsdWUYAiABKAk6AjgBIqsCChNCYXRjaFByZWRpY3RSZXF1ZXN0",
-            "EgwKBG5hbWUYASABKAkSRQoMaW5wdXRfY29uZmlnGAMgASgLMi8uZ29vZ2xl",
-            "LmNsb3VkLmF1dG9tbC52MS5CYXRjaFByZWRpY3RJbnB1dENvbmZpZxJHCg1v",
-            "dXRwdXRfY29uZmlnGAQgASgLMjAuZ29vZ2xlLmNsb3VkLmF1dG9tbC52MS5C",
-            "YXRjaFByZWRpY3RPdXRwdXRDb25maWcSRwoGcGFyYW1zGAUgAygLMjcuZ29v",
-            "Z2xlLmNsb3VkLmF1dG9tbC52MS5CYXRjaFByZWRpY3RSZXF1ZXN0LlBhcmFt",
-            "c0VudHJ5Gi0KC1BhcmFtc0VudHJ5EgsKA2tleRgBIAEoCRINCgV2YWx1ZRgC",
-            "IAEoCToCOAEikQEKEkJhdGNoUHJlZGljdFJlc3VsdBJKCghtZXRhZGF0YRgB",
-            "IAMoCzI4Lmdvb2dsZS5jbG91ZC5hdXRvbWwudjEuQmF0Y2hQcmVkaWN0UmVz",
-            "dWx0Lk1ldGFkYXRhRW50cnkaLwoNTWV0YWRhdGFFbnRyeRILCgNrZXkYASAB",
-            "KAkSDQoFdmFsdWUYAiABKAk6AjgBMpsDChFQcmVkaWN0aW9uU2VydmljZRKZ",
-            "AQoHUHJlZGljdBImLmdvb2dsZS5jbG91ZC5hdXRvbWwudjEuUHJlZGljdFJl",
-            "cXVlc3QaJy5nb29nbGUuY2xvdWQuYXV0b21sLnYxLlByZWRpY3RSZXNwb25z",
-            "ZSI9gtPkkwI3IjIvdjEve25hbWU9cHJvamVjdHMvKi9sb2NhdGlvbnMvKi9t",
-            "b2RlbHMvKn06cHJlZGljdDoBKhKeAQoMQmF0Y2hQcmVkaWN0EisuZ29vZ2xl",
-            "LmNsb3VkLmF1dG9tbC52MS5CYXRjaFByZWRpY3RSZXF1ZXN0Gh0uZ29vZ2xl",
-            "LmxvbmdydW5uaW5nLk9wZXJhdGlvbiJCgtPkkwI8IjcvdjEve25hbWU9cHJv",
-            "amVjdHMvKi9sb2NhdGlvbnMvKi9tb2RlbHMvKn06YmF0Y2hQcmVkaWN0OgEq",
-            "GknKQRVhdXRvbWwuZ29vZ2xlYXBpcy5jb23SQS5odHRwczovL3d3dy5nb29n",
-            "bGVhcGlzLmNvbS9hdXRoL2Nsb3VkLXBsYXRmb3JtQsIBChpjb20uZ29vZ2xl",
-            "LmNsb3VkLmF1dG9tbC52MUIWUHJlZGljdGlvblNlcnZpY2VQcm90b1ABWjxn",
-            "b29nbGUuZ29sYW5nLm9yZy9nZW5wcm90by9nb29nbGVhcGlzL2Nsb3VkL2F1",
-            "dG9tbC92MTthdXRvbWyqAhZHb29nbGUuQ2xvdWQuQXV0b01MLlYxygIWR29v",
-            "Z2xlXENsb3VkXEF1dG9NbFxWMeoCGUdvb2dsZTo6Q2xvdWQ6OkF1dG9NTDo6",
-            "VjFiBnByb3RvMw=="));
+            "dGF0aW9ucy5wcm90bxoXZ29vZ2xlL2FwaS9jbGllbnQucHJvdG8aH2dvb2ds",
+            "ZS9hcGkvZmllbGRfYmVoYXZpb3IucHJvdG8aGWdvb2dsZS9hcGkvcmVzb3Vy",
+            "Y2UucHJvdG8aL2dvb2dsZS9jbG91ZC9hdXRvbWwvdjEvYW5ub3RhdGlvbl9w",
+            "YXlsb2FkLnByb3RvGidnb29nbGUvY2xvdWQvYXV0b21sL3YxL2RhdGFfaXRl",
+            "bXMucHJvdG8aH2dvb2dsZS9jbG91ZC9hdXRvbWwvdjEvaW8ucHJvdG8aJ2dv",
+            "b2dsZS9jbG91ZC9hdXRvbWwvdjEvb3BlcmF0aW9ucy5wcm90bxojZ29vZ2xl",
+            "L2xvbmdydW5uaW5nL29wZXJhdGlvbnMucHJvdG8i9AEKDlByZWRpY3RSZXF1",
+            "ZXN0EjEKBG5hbWUYASABKAlCI+BBAvpBHQobYXV0b21sLmdvb2dsZWFwaXMu",
+            "Y29tL01vZGVsEjwKB3BheWxvYWQYAiABKAsyJi5nb29nbGUuY2xvdWQuYXV0",
+            "b21sLnYxLkV4YW1wbGVQYXlsb2FkQgPgQQISQgoGcGFyYW1zGAMgAygLMjIu",
+            "Z29vZ2xlLmNsb3VkLmF1dG9tbC52MS5QcmVkaWN0UmVxdWVzdC5QYXJhbXNF",
+            "bnRyeRotCgtQYXJhbXNFbnRyeRILCgNrZXkYASABKAkSDQoFdmFsdWUYAiAB",
+            "KAk6AjgBIosCCg9QcmVkaWN0UmVzcG9uc2USOgoHcGF5bG9hZBgBIAMoCzIp",
+            "Lmdvb2dsZS5jbG91ZC5hdXRvbWwudjEuQW5ub3RhdGlvblBheWxvYWQSQgoS",
+            "cHJlcHJvY2Vzc2VkX2lucHV0GAMgASgLMiYuZ29vZ2xlLmNsb3VkLmF1dG9t",
+            "bC52MS5FeGFtcGxlUGF5bG9hZBJHCghtZXRhZGF0YRgCIAMoCzI1Lmdvb2ds",
+            "ZS5jbG91ZC5hdXRvbWwudjEuUHJlZGljdFJlc3BvbnNlLk1ldGFkYXRhRW50",
+            "cnkaLwoNTWV0YWRhdGFFbnRyeRILCgNrZXkYASABKAkSDQoFdmFsdWUYAiAB",
+            "KAk6AjgBItoCChNCYXRjaFByZWRpY3RSZXF1ZXN0EjEKBG5hbWUYASABKAlC",
+            "I+BBAvpBHQobYXV0b21sLmdvb2dsZWFwaXMuY29tL01vZGVsEkoKDGlucHV0",
+            "X2NvbmZpZxgDIAEoCzIvLmdvb2dsZS5jbG91ZC5hdXRvbWwudjEuQmF0Y2hQ",
+            "cmVkaWN0SW5wdXRDb25maWdCA+BBAhJMCg1vdXRwdXRfY29uZmlnGAQgASgL",
+            "MjAuZ29vZ2xlLmNsb3VkLmF1dG9tbC52MS5CYXRjaFByZWRpY3RPdXRwdXRD",
+            "b25maWdCA+BBAhJHCgZwYXJhbXMYBSADKAsyNy5nb29nbGUuY2xvdWQuYXV0",
+            "b21sLnYxLkJhdGNoUHJlZGljdFJlcXVlc3QuUGFyYW1zRW50cnkaLQoLUGFy",
+            "YW1zRW50cnkSCwoDa2V5GAEgASgJEg0KBXZhbHVlGAIgASgJOgI4ASKRAQoS",
+            "QmF0Y2hQcmVkaWN0UmVzdWx0EkoKCG1ldGFkYXRhGAEgAygLMjguZ29vZ2xl",
+            "LmNsb3VkLmF1dG9tbC52MS5CYXRjaFByZWRpY3RSZXN1bHQuTWV0YWRhdGFF",
+            "bnRyeRovCg1NZXRhZGF0YUVudHJ5EgsKA2tleRgBIAEoCRINCgV2YWx1ZRgC",
+            "IAEoCToCOAEyhQQKEVByZWRpY3Rpb25TZXJ2aWNlEq8BCgdQcmVkaWN0EiYu",
+            "Z29vZ2xlLmNsb3VkLmF1dG9tbC52MS5QcmVkaWN0UmVxdWVzdBonLmdvb2ds",
+            "ZS5jbG91ZC5hdXRvbWwudjEuUHJlZGljdFJlc3BvbnNlIlOC0+STAjciMi92",
+            "MS97bmFtZT1wcm9qZWN0cy8qL2xvY2F0aW9ucy8qL21vZGVscy8qfTpwcmVk",
+            "aWN0OgEq2kETbmFtZSxwYXlsb2FkLHBhcmFtcxLyAQoMQmF0Y2hQcmVkaWN0",
+            "EisuZ29vZ2xlLmNsb3VkLmF1dG9tbC52MS5CYXRjaFByZWRpY3RSZXF1ZXN0",
+            "Gh0uZ29vZ2xlLmxvbmdydW5uaW5nLk9wZXJhdGlvbiKVAYLT5JMCPCI3L3Yx",
+            "L3tuYW1lPXByb2plY3RzLyovbG9jYXRpb25zLyovbW9kZWxzLyp9OmJhdGNo",
+            "UHJlZGljdDoBKtpBJm5hbWUsaW5wdXRfY29uZmlnLG91dHB1dF9jb25maWcs",
+            "cGFyYW1zykEnChJCYXRjaFByZWRpY3RSZXN1bHQSEU9wZXJhdGlvbk1ldGFk",
+            "YXRhGknKQRVhdXRvbWwuZ29vZ2xlYXBpcy5jb23SQS5odHRwczovL3d3dy5n",
+            "b29nbGVhcGlzLmNvbS9hdXRoL2Nsb3VkLXBsYXRmb3JtQsIBChpjb20uZ29v",
+            "Z2xlLmNsb3VkLmF1dG9tbC52MUIWUHJlZGljdGlvblNlcnZpY2VQcm90b1AB",
+            "Wjxnb29nbGUuZ29sYW5nLm9yZy9nZW5wcm90by9nb29nbGVhcGlzL2Nsb3Vk",
+            "L2F1dG9tbC92MTthdXRvbWyqAhZHb29nbGUuQ2xvdWQuQXV0b01MLlYxygIW",
+            "R29vZ2xlXENsb3VkXEF1dG9NbFxWMeoCGUdvb2dsZTo6Q2xvdWQ6OkF1dG9N",
+            "TDo6VjFiBnByb3RvMw=="));
       descriptor = pbr::FileDescriptor.FromGeneratedCode(descriptorData,
-          new pbr::FileDescriptor[] { global::Google.Api.AnnotationsReflection.Descriptor, global::Google.Api.ClientReflection.Descriptor, global::Google.Api.ResourceReflection.Descriptor, global::Google.Cloud.AutoML.V1.AnnotationPayloadReflection.Descriptor, global::Google.Cloud.AutoML.V1.DataItemsReflection.Descriptor, global::Google.Cloud.AutoML.V1.IoReflection.Descriptor, global::Google.Cloud.AutoML.V1.OperationsReflection.Descriptor, global::Google.LongRunning.OperationsReflection.Descriptor, },
-          new pbr::GeneratedClrTypeInfo(null, new pbr::GeneratedClrTypeInfo[] {
-            new pbr::GeneratedClrTypeInfo(typeof(global::Google.Cloud.AutoML.V1.PredictRequest), global::Google.Cloud.AutoML.V1.PredictRequest.Parser, new[]{ "Name", "Payload", "Params" }, null, null, new pbr::GeneratedClrTypeInfo[] { null, }),
-            new pbr::GeneratedClrTypeInfo(typeof(global::Google.Cloud.AutoML.V1.PredictResponse), global::Google.Cloud.AutoML.V1.PredictResponse.Parser, new[]{ "Payload", "PreprocessedInput", "Metadata" }, null, null, new pbr::GeneratedClrTypeInfo[] { null, }),
-            new pbr::GeneratedClrTypeInfo(typeof(global::Google.Cloud.AutoML.V1.BatchPredictRequest), global::Google.Cloud.AutoML.V1.BatchPredictRequest.Parser, new[]{ "Name", "InputConfig", "OutputConfig", "Params" }, null, null, new pbr::GeneratedClrTypeInfo[] { null, }),
-            new pbr::GeneratedClrTypeInfo(typeof(global::Google.Cloud.AutoML.V1.BatchPredictResult), global::Google.Cloud.AutoML.V1.BatchPredictResult.Parser, new[]{ "Metadata" }, null, null, new pbr::GeneratedClrTypeInfo[] { null, })
+          new pbr::FileDescriptor[] { global::Google.Api.AnnotationsReflection.Descriptor, global::Google.Api.ClientReflection.Descriptor, global::Google.Api.FieldBehaviorReflection.Descriptor, global::Google.Api.ResourceReflection.Descriptor, global::Google.Cloud.AutoML.V1.AnnotationPayloadReflection.Descriptor, global::Google.Cloud.AutoML.V1.DataItemsReflection.Descriptor, global::Google.Cloud.AutoML.V1.IoReflection.Descriptor, global::Google.Cloud.AutoML.V1.OperationsReflection.Descriptor, global::Google.LongRunning.OperationsReflection.Descriptor, },
+          new pbr::GeneratedClrTypeInfo(null, null, new pbr::GeneratedClrTypeInfo[] {
+            new pbr::GeneratedClrTypeInfo(typeof(global::Google.Cloud.AutoML.V1.PredictRequest), global::Google.Cloud.AutoML.V1.PredictRequest.Parser, new[]{ "Name", "Payload", "Params" }, null, null, null, new pbr::GeneratedClrTypeInfo[] { null, }),
+            new pbr::GeneratedClrTypeInfo(typeof(global::Google.Cloud.AutoML.V1.PredictResponse), global::Google.Cloud.AutoML.V1.PredictResponse.Parser, new[]{ "Payload", "PreprocessedInput", "Metadata" }, null, null, null, new pbr::GeneratedClrTypeInfo[] { null, }),
+            new pbr::GeneratedClrTypeInfo(typeof(global::Google.Cloud.AutoML.V1.BatchPredictRequest), global::Google.Cloud.AutoML.V1.BatchPredictRequest.Parser, new[]{ "Name", "InputConfig", "OutputConfig", "Params" }, null, null, null, new pbr::GeneratedClrTypeInfo[] { null, }),
+            new pbr::GeneratedClrTypeInfo(typeof(global::Google.Cloud.AutoML.V1.BatchPredictResult), global::Google.Cloud.AutoML.V1.BatchPredictResult.Parser, new[]{ "Metadata" }, null, null, null, new pbr::GeneratedClrTypeInfo[] { null, })
           }));
     }
     #endregion
@@ -81,10 +86,13 @@ namespace Google.Cloud.AutoML.V1 {
   }
   #region Messages
   /// <summary>
-  /// Request message for
-  /// [PredictionService.Predict][google.cloud.automl.v1.PredictionService.Predict].
+  /// Request message for [PredictionService.Predict][google.cloud.automl.v1.PredictionService.Predict].
   /// </summary>
-  public sealed partial class PredictRequest : pb::IMessage<PredictRequest> {
+  public sealed partial class PredictRequest : pb::IMessage<PredictRequest>
+  #if !GOOGLE_PROTOBUF_REFSTRUCT_COMPATIBILITY_MODE
+      , pb::IBufferMessage
+  #endif
+  {
     private static readonly pb::MessageParser<PredictRequest> _parser = new pb::MessageParser<PredictRequest>(() => new PredictRequest());
     private pb::UnknownFieldSet _unknownFields;
     [global::System.Diagnostics.DebuggerNonUserCodeAttribute]
@@ -124,7 +132,7 @@ namespace Google.Cloud.AutoML.V1 {
     public const int NameFieldNumber = 1;
     private string name_ = "";
     /// <summary>
-    /// Name of the model requested to serve the prediction.
+    /// Required. Name of the model requested to serve the prediction.
     /// </summary>
     [global::System.Diagnostics.DebuggerNonUserCodeAttribute]
     public string Name {
@@ -152,25 +160,40 @@ namespace Google.Cloud.AutoML.V1 {
     /// <summary>Field number for the "params" field.</summary>
     public const int ParamsFieldNumber = 3;
     private static readonly pbc::MapField<string, string>.Codec _map_params_codec
-        = new pbc::MapField<string, string>.Codec(pb::FieldCodec.ForString(10), pb::FieldCodec.ForString(18), 26);
+        = new pbc::MapField<string, string>.Codec(pb::FieldCodec.ForString(10, ""), pb::FieldCodec.ForString(18, ""), 26);
     private readonly pbc::MapField<string, string> params_ = new pbc::MapField<string, string>();
     /// <summary>
     /// Additional domain-specific parameters, any string must be up to 25000
     /// characters long.
     ///
-    /// *  For Image Classification:
+    /// AutoML Vision Classification
     ///
-    ///    `score_threshold` - (float) A value from 0.0 to 1.0. When the model
-    ///     makes predictions for an image, it will only produce results that have
-    ///     at least this confidence score. The default is 0.5.
+    /// `score_threshold`
+    /// : (float) A value from 0.0 to 1.0. When the model
+    ///   makes predictions for an image, it will only produce results that have
+    ///   at least this confidence score. The default is 0.5.
     ///
-    ///  *  For Image Object Detection:
-    ///    `score_threshold` - (float) When Model detects objects on the image,
-    ///        it will only produce bounding boxes which have at least this
-    ///        confidence score. Value in 0 to 1 range, default is 0.5.
-    ///    `max_bounding_box_count` - (int64) No more than this number of bounding
-    ///        boxes will be returned in the response. Default is 100, the
-    ///        requested value may be limited by server.
+    /// AutoML Vision Object Detection
+    ///
+    /// `score_threshold`
+    /// : (float) When Model detects objects on the image,
+    ///   it will only produce bounding boxes which have at least this
+    ///   confidence score. Value in 0 to 1 range, default is 0.5.
+    ///
+    /// `max_bounding_box_count`
+    /// : (int64) The maximum number of bounding
+    ///   boxes returned. The default is 100. The
+    ///   number of returned bounding boxes might be limited by the server.
+    ///
+    /// AutoML Tables
+    ///
+    /// `feature_importance`
+    /// : (boolean) Whether
+    ///
+    /// [feature_importance][google.cloud.automl.v1.TablesModelColumnInfo.feature_importance]
+    ///   is populated in the returned list of
+    ///   [TablesAnnotation][google.cloud.automl.v1.TablesAnnotation]
+    ///   objects. The default is false.
     /// </summary>
     [global::System.Diagnostics.DebuggerNonUserCodeAttribute]
     public pbc::MapField<string, string> Params {
@@ -215,6 +238,9 @@ namespace Google.Cloud.AutoML.V1 {
 
     [global::System.Diagnostics.DebuggerNonUserCodeAttribute]
     public void WriteTo(pb::CodedOutputStream output) {
+    #if !GOOGLE_PROTOBUF_REFSTRUCT_COMPATIBILITY_MODE
+      output.WriteRawMessage(this);
+    #else
       if (Name.Length != 0) {
         output.WriteRawTag(10);
         output.WriteString(Name);
@@ -227,7 +253,26 @@ namespace Google.Cloud.AutoML.V1 {
       if (_unknownFields != null) {
         _unknownFields.WriteTo(output);
       }
+    #endif
     }
+
+    #if !GOOGLE_PROTOBUF_REFSTRUCT_COMPATIBILITY_MODE
+    [global::System.Diagnostics.DebuggerNonUserCodeAttribute]
+    void pb::IBufferMessage.InternalWriteTo(ref pb::WriteContext output) {
+      if (Name.Length != 0) {
+        output.WriteRawTag(10);
+        output.WriteString(Name);
+      }
+      if (payload_ != null) {
+        output.WriteRawTag(18);
+        output.WriteMessage(Payload);
+      }
+      params_.WriteTo(ref output, _map_params_codec);
+      if (_unknownFields != null) {
+        _unknownFields.WriteTo(ref output);
+      }
+    }
+    #endif
 
     [global::System.Diagnostics.DebuggerNonUserCodeAttribute]
     public int CalculateSize() {
@@ -265,6 +310,9 @@ namespace Google.Cloud.AutoML.V1 {
 
     [global::System.Diagnostics.DebuggerNonUserCodeAttribute]
     public void MergeFrom(pb::CodedInputStream input) {
+    #if !GOOGLE_PROTOBUF_REFSTRUCT_COMPATIBILITY_MODE
+      input.ReadRawMessage(this);
+    #else
       uint tag;
       while ((tag = input.ReadTag()) != 0) {
         switch(tag) {
@@ -288,15 +336,48 @@ namespace Google.Cloud.AutoML.V1 {
           }
         }
       }
+    #endif
     }
+
+    #if !GOOGLE_PROTOBUF_REFSTRUCT_COMPATIBILITY_MODE
+    [global::System.Diagnostics.DebuggerNonUserCodeAttribute]
+    void pb::IBufferMessage.InternalMergeFrom(ref pb::ParseContext input) {
+      uint tag;
+      while ((tag = input.ReadTag()) != 0) {
+        switch(tag) {
+          default:
+            _unknownFields = pb::UnknownFieldSet.MergeFieldFrom(_unknownFields, ref input);
+            break;
+          case 10: {
+            Name = input.ReadString();
+            break;
+          }
+          case 18: {
+            if (payload_ == null) {
+              Payload = new global::Google.Cloud.AutoML.V1.ExamplePayload();
+            }
+            input.ReadMessage(Payload);
+            break;
+          }
+          case 26: {
+            params_.AddEntriesFrom(ref input, _map_params_codec);
+            break;
+          }
+        }
+      }
+    }
+    #endif
 
   }
 
   /// <summary>
-  /// Response message for
-  /// [PredictionService.Predict][google.cloud.automl.v1.PredictionService.Predict].
+  /// Response message for [PredictionService.Predict][google.cloud.automl.v1.PredictionService.Predict].
   /// </summary>
-  public sealed partial class PredictResponse : pb::IMessage<PredictResponse> {
+  public sealed partial class PredictResponse : pb::IMessage<PredictResponse>
+  #if !GOOGLE_PROTOBUF_REFSTRUCT_COMPATIBILITY_MODE
+      , pb::IBufferMessage
+  #endif
+  {
     private static readonly pb::MessageParser<PredictResponse> _parser = new pb::MessageParser<PredictResponse>(() => new PredictResponse());
     private pb::UnknownFieldSet _unknownFields;
     [global::System.Diagnostics.DebuggerNonUserCodeAttribute]
@@ -339,7 +420,8 @@ namespace Google.Cloud.AutoML.V1 {
     private readonly pbc::RepeatedField<global::Google.Cloud.AutoML.V1.AnnotationPayload> payload_ = new pbc::RepeatedField<global::Google.Cloud.AutoML.V1.AnnotationPayload>();
     /// <summary>
     /// Prediction result.
-    /// Translation and Text Sentiment will return precisely one payload.
+    /// AutoML Translation and AutoML Natural Language Sentiment Analysis
+    /// return precisely one payload.
     /// </summary>
     [global::System.Diagnostics.DebuggerNonUserCodeAttribute]
     public pbc::RepeatedField<global::Google.Cloud.AutoML.V1.AnnotationPayload> Payload {
@@ -352,17 +434,12 @@ namespace Google.Cloud.AutoML.V1 {
     /// <summary>
     /// The preprocessed example that AutoML actually makes prediction on.
     /// Empty if AutoML does not preprocess the input example.
-    /// * For Text Extraction:
-    ///   If the input is a .pdf file, the OCR'ed text will be provided in
-    ///   [document_text][google.cloud.automl.v1.Document.document_text].
     ///
-    /// * For Text Classification:
-    ///   If the input is a .pdf file, the OCR'ed trucated text will be provided in
-    ///   [document_text][google.cloud.automl.v1.Document.document_text].
-    ///
-    /// * For Text Sentiment:
-    ///   If the input is a .pdf file, the OCR'ed trucated text will be provided in
-    ///   [document_text][google.cloud.automl.v1.Document.document_text].
+    /// For AutoML Natural Language (Classification, Entity Extraction, and
+    /// Sentiment Analysis), if the input is a document, the recognized text is
+    /// returned in the
+    /// [document_text][google.cloud.automl.v1.Document.document_text]
+    /// property.
     /// </summary>
     [global::System.Diagnostics.DebuggerNonUserCodeAttribute]
     public global::Google.Cloud.AutoML.V1.ExamplePayload PreprocessedInput {
@@ -375,24 +452,27 @@ namespace Google.Cloud.AutoML.V1 {
     /// <summary>Field number for the "metadata" field.</summary>
     public const int MetadataFieldNumber = 2;
     private static readonly pbc::MapField<string, string>.Codec _map_metadata_codec
-        = new pbc::MapField<string, string>.Codec(pb::FieldCodec.ForString(10), pb::FieldCodec.ForString(18), 18);
+        = new pbc::MapField<string, string>.Codec(pb::FieldCodec.ForString(10, ""), pb::FieldCodec.ForString(18, ""), 18);
     private readonly pbc::MapField<string, string> metadata_ = new pbc::MapField<string, string>();
     /// <summary>
     /// Additional domain-specific prediction response metadata.
     ///
-    /// * For Image Object Detection:
-    ///  `max_bounding_box_count` - (int64) At most that many bounding boxes per
-    ///      image could have been returned.
+    /// AutoML Vision Object Detection
     ///
-    /// * For Text Sentiment:
-    ///  `sentiment_score` - (float, deprecated) A value between -1 and 1,
-    ///      -1 maps to least positive sentiment, while 1 maps to the most positive
-    ///      one and the higher the score, the more positive the sentiment in the
-    ///      document is. Yet these values are relative to the training data, so
-    ///      e.g. if all data was positive then -1 will be also positive (though
-    ///      the least).
-    ///      The sentiment_score shouldn't be confused with "score" or "magnitude"
-    ///      from the previous Natural Language Sentiment Analysis API.
+    /// `max_bounding_box_count`
+    /// : (int64) The maximum number of bounding boxes to return per image.
+    ///
+    /// AutoML Natural Language Sentiment Analysis
+    ///
+    /// `sentiment_score`
+    /// : (float, deprecated) A value between -1 and 1,
+    ///   -1 maps to least positive sentiment, while 1 maps to the most positive
+    ///   one and the higher the score, the more positive the sentiment in the
+    ///   document is. Yet these values are relative to the training data, so
+    ///   e.g. if all data was positive then -1 is also positive (though
+    ///   the least).
+    ///   `sentiment_score` is not the same as "score" and "magnitude"
+    ///   from Sentiment Analysis in the Natural Language API.
     /// </summary>
     [global::System.Diagnostics.DebuggerNonUserCodeAttribute]
     public pbc::MapField<string, string> Metadata {
@@ -437,6 +517,9 @@ namespace Google.Cloud.AutoML.V1 {
 
     [global::System.Diagnostics.DebuggerNonUserCodeAttribute]
     public void WriteTo(pb::CodedOutputStream output) {
+    #if !GOOGLE_PROTOBUF_REFSTRUCT_COMPATIBILITY_MODE
+      output.WriteRawMessage(this);
+    #else
       payload_.WriteTo(output, _repeated_payload_codec);
       metadata_.WriteTo(output, _map_metadata_codec);
       if (preprocessedInput_ != null) {
@@ -446,7 +529,23 @@ namespace Google.Cloud.AutoML.V1 {
       if (_unknownFields != null) {
         _unknownFields.WriteTo(output);
       }
+    #endif
     }
+
+    #if !GOOGLE_PROTOBUF_REFSTRUCT_COMPATIBILITY_MODE
+    [global::System.Diagnostics.DebuggerNonUserCodeAttribute]
+    void pb::IBufferMessage.InternalWriteTo(ref pb::WriteContext output) {
+      payload_.WriteTo(ref output, _repeated_payload_codec);
+      metadata_.WriteTo(ref output, _map_metadata_codec);
+      if (preprocessedInput_ != null) {
+        output.WriteRawTag(26);
+        output.WriteMessage(PreprocessedInput);
+      }
+      if (_unknownFields != null) {
+        _unknownFields.WriteTo(ref output);
+      }
+    }
+    #endif
 
     [global::System.Diagnostics.DebuggerNonUserCodeAttribute]
     public int CalculateSize() {
@@ -480,6 +579,9 @@ namespace Google.Cloud.AutoML.V1 {
 
     [global::System.Diagnostics.DebuggerNonUserCodeAttribute]
     public void MergeFrom(pb::CodedInputStream input) {
+    #if !GOOGLE_PROTOBUF_REFSTRUCT_COMPATIBILITY_MODE
+      input.ReadRawMessage(this);
+    #else
       uint tag;
       while ((tag = input.ReadTag()) != 0) {
         switch(tag) {
@@ -503,15 +605,48 @@ namespace Google.Cloud.AutoML.V1 {
           }
         }
       }
+    #endif
     }
+
+    #if !GOOGLE_PROTOBUF_REFSTRUCT_COMPATIBILITY_MODE
+    [global::System.Diagnostics.DebuggerNonUserCodeAttribute]
+    void pb::IBufferMessage.InternalMergeFrom(ref pb::ParseContext input) {
+      uint tag;
+      while ((tag = input.ReadTag()) != 0) {
+        switch(tag) {
+          default:
+            _unknownFields = pb::UnknownFieldSet.MergeFieldFrom(_unknownFields, ref input);
+            break;
+          case 10: {
+            payload_.AddEntriesFrom(ref input, _repeated_payload_codec);
+            break;
+          }
+          case 18: {
+            metadata_.AddEntriesFrom(ref input, _map_metadata_codec);
+            break;
+          }
+          case 26: {
+            if (preprocessedInput_ == null) {
+              PreprocessedInput = new global::Google.Cloud.AutoML.V1.ExamplePayload();
+            }
+            input.ReadMessage(PreprocessedInput);
+            break;
+          }
+        }
+      }
+    }
+    #endif
 
   }
 
   /// <summary>
-  /// Request message for
-  /// [PredictionService.BatchPredict][google.cloud.automl.v1.PredictionService.BatchPredict].
+  /// Request message for [PredictionService.BatchPredict][google.cloud.automl.v1.PredictionService.BatchPredict].
   /// </summary>
-  public sealed partial class BatchPredictRequest : pb::IMessage<BatchPredictRequest> {
+  public sealed partial class BatchPredictRequest : pb::IMessage<BatchPredictRequest>
+  #if !GOOGLE_PROTOBUF_REFSTRUCT_COMPATIBILITY_MODE
+      , pb::IBufferMessage
+  #endif
+  {
     private static readonly pb::MessageParser<BatchPredictRequest> _parser = new pb::MessageParser<BatchPredictRequest>(() => new BatchPredictRequest());
     private pb::UnknownFieldSet _unknownFields;
     [global::System.Diagnostics.DebuggerNonUserCodeAttribute]
@@ -552,7 +687,7 @@ namespace Google.Cloud.AutoML.V1 {
     public const int NameFieldNumber = 1;
     private string name_ = "";
     /// <summary>
-    /// Name of the model requested to serve the batch prediction.
+    /// Required. Name of the model requested to serve the batch prediction.
     /// </summary>
     [global::System.Diagnostics.DebuggerNonUserCodeAttribute]
     public string Name {
@@ -594,32 +729,91 @@ namespace Google.Cloud.AutoML.V1 {
     /// <summary>Field number for the "params" field.</summary>
     public const int ParamsFieldNumber = 5;
     private static readonly pbc::MapField<string, string>.Codec _map_params_codec
-        = new pbc::MapField<string, string>.Codec(pb::FieldCodec.ForString(10), pb::FieldCodec.ForString(18), 42);
+        = new pbc::MapField<string, string>.Codec(pb::FieldCodec.ForString(10, ""), pb::FieldCodec.ForString(18, ""), 42);
     private readonly pbc::MapField<string, string> params_ = new pbc::MapField<string, string>();
     /// <summary>
     /// Additional domain-specific parameters for the predictions, any string must
     /// be up to 25000 characters long.
     ///
-    /// *  For Text Classification:
+    /// AutoML Natural Language Classification
     ///
-    ///    `score_threshold` - (float) A value from 0.0 to 1.0. When the model
-    ///         makes predictions for a text snippet, it will only produce results
-    ///         that have at least this confidence score. The default is 0.5.
+    /// `score_threshold`
+    /// : (float) A value from 0.0 to 1.0. When the model
+    ///   makes predictions for a text snippet, it will only produce results
+    ///   that have at least this confidence score. The default is 0.5.
     ///
-    /// *  For Image Classification:
+    /// AutoML Vision Classification
     ///
-    ///    `score_threshold` - (float) A value from 0.0 to 1.0. When the model
-    ///         makes predictions for an image, it will only produce results that
-    ///         have at least this confidence score. The default is 0.5.
+    /// `score_threshold`
+    /// : (float) A value from 0.0 to 1.0. When the model
+    ///   makes predictions for an image, it will only produce results that
+    ///   have at least this confidence score. The default is 0.5.
     ///
-    /// *  For Image Object Detection:
+    /// AutoML Vision Object Detection
     ///
-    ///    `score_threshold` - (float) When Model detects objects on the image,
-    ///        it will only produce bounding boxes which have at least this
-    ///        confidence score. Value in 0 to 1 range, default is 0.5.
-    ///    `max_bounding_box_count` - (int64) No more than this number of bounding
-    ///        boxes will be produced per image. Default is 100, the
-    ///        requested value may be limited by server.
+    /// `score_threshold`
+    /// : (float) When Model detects objects on the image,
+    ///   it will only produce bounding boxes which have at least this
+    ///   confidence score. Value in 0 to 1 range, default is 0.5.
+    ///
+    /// `max_bounding_box_count`
+    /// : (int64) The maximum number of bounding
+    ///   boxes returned per image. The default is 100, the
+    ///   number of bounding boxes returned might be limited by the server.
+    /// AutoML Video Intelligence Classification
+    ///
+    /// `score_threshold`
+    /// : (float) A value from 0.0 to 1.0. When the model
+    ///   makes predictions for a video, it will only produce results that
+    ///   have at least this confidence score. The default is 0.5.
+    ///
+    /// `segment_classification`
+    /// : (boolean) Set to true to request
+    ///   segment-level classification. AutoML Video Intelligence returns
+    ///   labels and their confidence scores for the entire segment of the
+    ///   video that user specified in the request configuration.
+    ///   The default is true.
+    ///
+    /// `shot_classification`
+    /// : (boolean) Set to true to request shot-level
+    ///   classification. AutoML Video Intelligence determines the boundaries
+    ///   for each camera shot in the entire segment of the video that user
+    ///   specified in the request configuration. AutoML Video Intelligence
+    ///   then returns labels and their confidence scores for each detected
+    ///   shot, along with the start and end time of the shot.
+    ///   The default is false.
+    ///
+    ///   WARNING: Model evaluation is not done for this classification type,
+    ///   the quality of it depends on training data, but there are no metrics
+    ///   provided to describe that quality.
+    ///
+    /// `1s_interval_classification`
+    /// : (boolean) Set to true to request
+    ///   classification for a video at one-second intervals. AutoML Video
+    ///   Intelligence returns labels and their confidence scores for each
+    ///   second of the entire segment of the video that user specified in the
+    ///   request configuration. The default is false.
+    ///
+    ///   WARNING: Model evaluation is not done for this classification
+    ///   type, the quality of it depends on training data, but there are no
+    ///   metrics provided to describe that quality.
+    ///
+    /// AutoML Video Intelligence Object Tracking
+    ///
+    /// `score_threshold`
+    /// : (float) When Model detects objects on video frames,
+    ///   it will only produce bounding boxes which have at least this
+    ///   confidence score. Value in 0 to 1 range, default is 0.5.
+    ///
+    /// `max_bounding_box_count`
+    /// : (int64) The maximum number of bounding
+    ///   boxes returned per image. The default is 100, the
+    ///   number of bounding boxes returned might be limited by the server.
+    ///
+    /// `min_bounding_box_size`
+    /// : (float) Only bounding boxes with shortest edge
+    ///   at least that long as a relative value of video frame size are
+    ///   returned. Value in 0 to 1 range. Default is 0.
     /// </summary>
     [global::System.Diagnostics.DebuggerNonUserCodeAttribute]
     public pbc::MapField<string, string> Params {
@@ -666,6 +860,9 @@ namespace Google.Cloud.AutoML.V1 {
 
     [global::System.Diagnostics.DebuggerNonUserCodeAttribute]
     public void WriteTo(pb::CodedOutputStream output) {
+    #if !GOOGLE_PROTOBUF_REFSTRUCT_COMPATIBILITY_MODE
+      output.WriteRawMessage(this);
+    #else
       if (Name.Length != 0) {
         output.WriteRawTag(10);
         output.WriteString(Name);
@@ -682,7 +879,30 @@ namespace Google.Cloud.AutoML.V1 {
       if (_unknownFields != null) {
         _unknownFields.WriteTo(output);
       }
+    #endif
     }
+
+    #if !GOOGLE_PROTOBUF_REFSTRUCT_COMPATIBILITY_MODE
+    [global::System.Diagnostics.DebuggerNonUserCodeAttribute]
+    void pb::IBufferMessage.InternalWriteTo(ref pb::WriteContext output) {
+      if (Name.Length != 0) {
+        output.WriteRawTag(10);
+        output.WriteString(Name);
+      }
+      if (inputConfig_ != null) {
+        output.WriteRawTag(26);
+        output.WriteMessage(InputConfig);
+      }
+      if (outputConfig_ != null) {
+        output.WriteRawTag(34);
+        output.WriteMessage(OutputConfig);
+      }
+      params_.WriteTo(ref output, _map_params_codec);
+      if (_unknownFields != null) {
+        _unknownFields.WriteTo(ref output);
+      }
+    }
+    #endif
 
     [global::System.Diagnostics.DebuggerNonUserCodeAttribute]
     public int CalculateSize() {
@@ -729,6 +949,9 @@ namespace Google.Cloud.AutoML.V1 {
 
     [global::System.Diagnostics.DebuggerNonUserCodeAttribute]
     public void MergeFrom(pb::CodedInputStream input) {
+    #if !GOOGLE_PROTOBUF_REFSTRUCT_COMPATIBILITY_MODE
+      input.ReadRawMessage(this);
+    #else
       uint tag;
       while ((tag = input.ReadTag()) != 0) {
         switch(tag) {
@@ -759,17 +982,57 @@ namespace Google.Cloud.AutoML.V1 {
           }
         }
       }
+    #endif
     }
+
+    #if !GOOGLE_PROTOBUF_REFSTRUCT_COMPATIBILITY_MODE
+    [global::System.Diagnostics.DebuggerNonUserCodeAttribute]
+    void pb::IBufferMessage.InternalMergeFrom(ref pb::ParseContext input) {
+      uint tag;
+      while ((tag = input.ReadTag()) != 0) {
+        switch(tag) {
+          default:
+            _unknownFields = pb::UnknownFieldSet.MergeFieldFrom(_unknownFields, ref input);
+            break;
+          case 10: {
+            Name = input.ReadString();
+            break;
+          }
+          case 26: {
+            if (inputConfig_ == null) {
+              InputConfig = new global::Google.Cloud.AutoML.V1.BatchPredictInputConfig();
+            }
+            input.ReadMessage(InputConfig);
+            break;
+          }
+          case 34: {
+            if (outputConfig_ == null) {
+              OutputConfig = new global::Google.Cloud.AutoML.V1.BatchPredictOutputConfig();
+            }
+            input.ReadMessage(OutputConfig);
+            break;
+          }
+          case 42: {
+            params_.AddEntriesFrom(ref input, _map_params_codec);
+            break;
+          }
+        }
+      }
+    }
+    #endif
 
   }
 
   /// <summary>
   /// Result of the Batch Predict. This message is returned in
   /// [response][google.longrunning.Operation.response] of the operation returned
-  /// by the
-  /// [PredictionService.BatchPredict][google.cloud.automl.v1.PredictionService.BatchPredict].
+  /// by the [PredictionService.BatchPredict][google.cloud.automl.v1.PredictionService.BatchPredict].
   /// </summary>
-  public sealed partial class BatchPredictResult : pb::IMessage<BatchPredictResult> {
+  public sealed partial class BatchPredictResult : pb::IMessage<BatchPredictResult>
+  #if !GOOGLE_PROTOBUF_REFSTRUCT_COMPATIBILITY_MODE
+      , pb::IBufferMessage
+  #endif
+  {
     private static readonly pb::MessageParser<BatchPredictResult> _parser = new pb::MessageParser<BatchPredictResult>(() => new BatchPredictResult());
     private pb::UnknownFieldSet _unknownFields;
     [global::System.Diagnostics.DebuggerNonUserCodeAttribute]
@@ -806,14 +1069,20 @@ namespace Google.Cloud.AutoML.V1 {
     /// <summary>Field number for the "metadata" field.</summary>
     public const int MetadataFieldNumber = 1;
     private static readonly pbc::MapField<string, string>.Codec _map_metadata_codec
-        = new pbc::MapField<string, string>.Codec(pb::FieldCodec.ForString(10), pb::FieldCodec.ForString(18), 10);
+        = new pbc::MapField<string, string>.Codec(pb::FieldCodec.ForString(10, ""), pb::FieldCodec.ForString(18, ""), 10);
     private readonly pbc::MapField<string, string> metadata_ = new pbc::MapField<string, string>();
     /// <summary>
     /// Additional domain-specific prediction response metadata.
     ///
-    /// *  For Image Object Detection:
-    ///  `max_bounding_box_count` - (int64) At most that many bounding boxes per
-    ///      image could have been returned.
+    /// AutoML Vision Object Detection
+    ///
+    /// `max_bounding_box_count`
+    /// : (int64) The maximum number of bounding boxes returned per image.
+    ///
+    /// AutoML Video Intelligence Object Tracking
+    ///
+    /// `max_bounding_box_count`
+    /// : (int64) The maximum number of bounding boxes returned per frame.
     /// </summary>
     [global::System.Diagnostics.DebuggerNonUserCodeAttribute]
     public pbc::MapField<string, string> Metadata {
@@ -854,11 +1123,25 @@ namespace Google.Cloud.AutoML.V1 {
 
     [global::System.Diagnostics.DebuggerNonUserCodeAttribute]
     public void WriteTo(pb::CodedOutputStream output) {
+    #if !GOOGLE_PROTOBUF_REFSTRUCT_COMPATIBILITY_MODE
+      output.WriteRawMessage(this);
+    #else
       metadata_.WriteTo(output, _map_metadata_codec);
       if (_unknownFields != null) {
         _unknownFields.WriteTo(output);
       }
+    #endif
     }
+
+    #if !GOOGLE_PROTOBUF_REFSTRUCT_COMPATIBILITY_MODE
+    [global::System.Diagnostics.DebuggerNonUserCodeAttribute]
+    void pb::IBufferMessage.InternalWriteTo(ref pb::WriteContext output) {
+      metadata_.WriteTo(ref output, _map_metadata_codec);
+      if (_unknownFields != null) {
+        _unknownFields.WriteTo(ref output);
+      }
+    }
+    #endif
 
     [global::System.Diagnostics.DebuggerNonUserCodeAttribute]
     public int CalculateSize() {
@@ -881,6 +1164,9 @@ namespace Google.Cloud.AutoML.V1 {
 
     [global::System.Diagnostics.DebuggerNonUserCodeAttribute]
     public void MergeFrom(pb::CodedInputStream input) {
+    #if !GOOGLE_PROTOBUF_REFSTRUCT_COMPATIBILITY_MODE
+      input.ReadRawMessage(this);
+    #else
       uint tag;
       while ((tag = input.ReadTag()) != 0) {
         switch(tag) {
@@ -893,7 +1179,26 @@ namespace Google.Cloud.AutoML.V1 {
           }
         }
       }
+    #endif
     }
+
+    #if !GOOGLE_PROTOBUF_REFSTRUCT_COMPATIBILITY_MODE
+    [global::System.Diagnostics.DebuggerNonUserCodeAttribute]
+    void pb::IBufferMessage.InternalMergeFrom(ref pb::ParseContext input) {
+      uint tag;
+      while ((tag = input.ReadTag()) != 0) {
+        switch(tag) {
+          default:
+            _unknownFields = pb::UnknownFieldSet.MergeFieldFrom(_unknownFields, ref input);
+            break;
+          case 10: {
+            metadata_.AddEntriesFrom(ref input, _map_metadata_codec);
+            break;
+          }
+        }
+      }
+    }
+    #endif
 
   }
 

@@ -29,40 +29,30 @@ namespace Google.Cloud.Storage.V1
     {
         private sealed class V2Signer : ISigner
         {
-            public string Sign(
-                string bucket,
-                string objectName,
-                DateTimeOffset expiration,
-                HttpMethod requestMethod,
-                Dictionary<string, IEnumerable<string>> requestHeaders,
-                Dictionary<string, IEnumerable<string>> contentHeaders,
-                IBlobSigner blobSigner,
-                IClock clock)
+            public string Sign(RequestTemplate requestTemplate, Options options, IBlobSigner blobSigner, IClock clock)
             {
-                var state = new SigningState(bucket, objectName, expiration, requestMethod, requestHeaders, contentHeaders, blobSigner);
+                var state = new SigningState(requestTemplate, options, blobSigner, clock);
                 var signature = blobSigner.CreateSignature(state._blobToSign);
                 return state.GetResult(signature);
             }
 
             public async Task<string> SignAsync(
-                string bucket,
-                string objectName,
-                DateTimeOffset expiration,
-                HttpMethod requestMethod,
-                Dictionary<string, IEnumerable<string>> requestHeaders,
-                Dictionary<string, IEnumerable<string>> contentHeaders,
-                IBlobSigner blobSigner,
-                IClock clock,
-                CancellationToken cancellationToken)
+                RequestTemplate requestTemplate, Options options, IBlobSigner blobSigner, IClock clock, CancellationToken cancellationToken)
             {
-                var state = new SigningState(bucket, objectName, expiration, requestMethod, requestHeaders, contentHeaders, blobSigner);
+                var state = new SigningState(requestTemplate, options, blobSigner, clock);
                 var signature = await blobSigner.CreateSignatureAsync(state._blobToSign, cancellationToken).ConfigureAwait(false);
                 return state.GetResult(signature);
             }
 
+            public SignedPostPolicy Sign(PostPolicy postPolicy, Options options, IBlobSigner blobSigner, IClock clock) =>
+                throw new NotSupportedException($"Post policy signing is not supported by {nameof(SigningVersion)}.{SigningVersion.V2}.");
+
+            public Task<SignedPostPolicy> SignAsync(PostPolicy postPolicy, Options options, IBlobSigner blobSigner, IClock clock, CancellationToken cancellationToken) =>
+                throw new NotSupportedException($"Post policy signing is not supported by {nameof(SigningVersion)}.{SigningVersion.V2}.");
+
             private static SortedDictionary<string, StringBuilder> GetExtensionHeaders(
-    Dictionary<string, IEnumerable<string>> requestHeaders,
-    Dictionary<string, IEnumerable<string>> contentHeaders)
+                IReadOnlyDictionary<string, IReadOnlyCollection<string>> requestHeaders,
+                IReadOnlyDictionary<string, IReadOnlyCollection<string>> contentHeaders)
             {
                 // These docs indicate how to include extension headers in the signature, but they're not exactly
                 // correct (values must be trimmed, newlines are replaced with empty strings, not whitespace, and
@@ -87,7 +77,7 @@ namespace Google.Cloud.Storage.V1
             }
 
             private static void PopulateExtensionHeaders(
-                Dictionary<string, IEnumerable<string>> headers,
+                IReadOnlyDictionary<string, IReadOnlyCollection<string>> headers,
                 SortedDictionary<string, StringBuilder> extensionHeaders,
                 HashSet<string> keysToExcludeSpaceInNextValueSeparator = null)
             {
@@ -117,13 +107,13 @@ namespace Google.Cloud.Storage.V1
                         values.Append(',');
                     }
 
-                    values.Append(string.Join(", ", header.Value.Select(PrepareHeaderValue)));
+                    values.Append(string.Join(", ", header.Value.Select(v => PrepareHeaderValue(v, false))));
                 }
             }
 
-            private static string GetFirstHeaderValue(Dictionary<string, IEnumerable<string>> contentHeaders, string name)
+            private static string GetFirstHeaderValue(IReadOnlyDictionary<string, IReadOnlyCollection<string>> contentHeaders, string name)
             {
-                IEnumerable<string> values;
+                IReadOnlyCollection<string> values;
                 if (contentHeaders != null && contentHeaders.TryGetValue(name, out values))
                 {
                     return values.FirstOrDefault();
@@ -137,57 +127,62 @@ namespace Google.Cloud.Storage.V1
             /// </summary>
             private struct SigningState
             {
-                private string _resourcePath;
+                private string _scheme;
+                private string _host;
+                private string _urlResourcePath;
                 private List<string> _queryParameters;
                 internal byte[] _blobToSign;
 
-                internal SigningState(
-                    string bucket,
-                    string objectName,
-                    DateTimeOffset expiration,
-                    HttpMethod requestMethod,
-                    Dictionary<string, IEnumerable<string>> requestHeaders,
-                    Dictionary<string, IEnumerable<string>> contentHeaders,
-                    IBlobSigner blobSigner)
+                internal SigningState(RequestTemplate template, Options options, IBlobSigner blobSigner, IClock clock)
                 {
-                    StorageClientImpl.ValidateBucketName(bucket);
+                    GaxPreconditions.CheckArgument(
+                        template.QueryParameters.Count == 0,
+                        nameof(template.QueryParameters),
+                        $"When using {nameof(SigningVersion.V2)} custom query parematers are not included as part of the signature so none should be specified.");
 
-                    bool isResumableUpload = false;
-                    if (requestMethod == null)
+                    (_host, _urlResourcePath) = options.UrlStyle switch
                     {
-                        requestMethod = HttpMethod.Get;
-                    }
-                    else if (requestMethod == ResumableHttpMethod)
+                        UrlStyle.PathStyle => (StorageHost, $"/{template.Bucket}"),
+                        UrlStyle.VirtualHostedStyle => ($"{template.Bucket}.{StorageHost}", string.Empty),
+                        _ => throw new ArgumentOutOfRangeException(
+                            nameof(options.UrlStyle),
+                            $"When using {nameof(SigningVersion.V2)} only {nameof(UrlStyle.PathStyle)} or {nameof(UrlStyle.VirtualHostedStyle)} can be specified.")
+                    };
+
+                    _scheme = options.Scheme;
+
+                    options = options.ToExpiration(clock);
+                    string expiryUnixSeconds = ((int) (options.Expiration.Value - UnixEpoch).TotalSeconds).ToString(CultureInfo.InvariantCulture);
+
+                    string signingResourcePath = $"/{template.Bucket}";
+                    if (template.ObjectName != null)
                     {
-                        isResumableUpload = true;
-                        requestMethod = HttpMethod.Post;
+                        string escaped = Uri.EscapeDataString(template.ObjectName);
+                        _urlResourcePath += $"/{escaped}";
+                        signingResourcePath += $"/{escaped}";
                     }
 
-                    string expiryUnixSeconds = ((int) (expiration - UnixEpoch).TotalSeconds).ToString(CultureInfo.InvariantCulture);
-                    _resourcePath = $"/{bucket}";
-                    if (objectName != null)
-                    {
-                        _resourcePath += $"/{Uri.EscapeDataString(objectName)}";
-                    }
-                    var extensionHeaders = GetExtensionHeaders(requestHeaders, contentHeaders);
-                    if (isResumableUpload)
+                    var extensionHeaders = GetExtensionHeaders(template.RequestHeaders, template.ContentHeaders);
+                    var effectiveHttpMethod = template.HttpMethod;
+                    if (effectiveHttpMethod == ResumableHttpMethod)
                     {
                         extensionHeaders["x-goog-resumable"] = new StringBuilder("start");
+                        effectiveHttpMethod = HttpMethod.Post;
                     }
 
-                    var contentMD5 = GetFirstHeaderValue(contentHeaders, "Content-MD5");
-                    var contentType = GetFirstHeaderValue(contentHeaders, "Content-Type");
+                    var contentMD5 = GetFirstHeaderValue(template.ContentHeaders, "Content-MD5");
+                    var contentType = GetFirstHeaderValue(template.ContentHeaders, "Content-Type");
 
                     var signatureLines = new List<string>
                     {
-                        requestMethod.ToString(),
+                        effectiveHttpMethod.ToString(),
                         contentMD5,
                         contentType,
                         expiryUnixSeconds
                     };
                     signatureLines.AddRange(extensionHeaders.Select(
                         header => $"{header.Key}:{string.Join(", ", header.Value)}"));
-                    signatureLines.Add(_resourcePath);
+                    signatureLines.Add(signingResourcePath);
                     _blobToSign = Encoding.UTF8.GetBytes(string.Join("\n", signatureLines));
                     _queryParameters = new List<string> { $"GoogleAccessId={blobSigner.Id}" };
                     if (expiryUnixSeconds != null)
@@ -199,7 +194,7 @@ namespace Google.Cloud.Storage.V1
                 internal string GetResult(string signature)
                 {
                     _queryParameters.Add($"Signature={WebUtility.UrlEncode(signature)}");
-                    return $"{StorageHost}{_resourcePath}?{string.Join("&", _queryParameters)}";
+                    return $"{_scheme}://{_host}{_urlResourcePath}?{string.Join("&", _queryParameters)}";
                 }
             }
         }

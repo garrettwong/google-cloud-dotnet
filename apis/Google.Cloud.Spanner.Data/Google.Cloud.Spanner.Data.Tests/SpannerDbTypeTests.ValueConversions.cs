@@ -12,6 +12,7 @@
 // See the License for the specific language governing permissions and
 // limitations under the License.
 
+using Google.Cloud.Spanner.V1;
 using Google.Protobuf;
 using Google.Protobuf.WellKnownTypes;
 using System;
@@ -52,13 +53,14 @@ namespace Google.Cloud.Spanner.Data.Tests
             { "Float64Field", SpannerDbType.Float64, double.NaN },
             { "BoolField", SpannerDbType.Bool, true },
             { "DateField", SpannerDbType.Date, new DateTime(2017, 1, 31) },
-            { "TimestampField", SpannerDbType.Timestamp, new DateTime(2017, 1, 31, 3, 15, 30) }
+            { "TimestampField", SpannerDbType.Timestamp, new DateTime(2017, 1, 31, 3, 15, 30) },
+            { "NumericField", SpannerDbType.Numeric, SpannerNumeric.MaxValue }
         };
 
         // Structs are serialized as lists of their values. The field names aren't present, as they're
         // specified in the type.
         private static readonly string s_sampleStructSerialized =
-            "[ \"stringValue\", \"2\", \"NaN\", true, \"2017-01-31\", \"2017-01-31T03:15:30Z\" ]";
+            "[ \"stringValue\", \"2\", \"NaN\", true, \"2017-01-31\", \"2017-01-31T03:15:30Z\", \"99999999999999999999999999999.999999999\" ]";
 
         private static string Quote(string s) => $"\"{s}\"";
 
@@ -104,17 +106,24 @@ namespace Google.Cloud.Spanner.Data.Tests
             yield return new DateTime(2015, 3, 31, 3, 15, 30, 250);
         }
 
+        private static IEnumerable<SpannerNumeric> GetSpannerNumericsForArray()
+        {
+            yield return SpannerNumeric.MinValue;
+            yield return SpannerNumeric.Epsilon;
+            yield return SpannerNumeric.MaxValue;
+        }
+
         private static void WithCulture(CultureInfo culture, Action action)
         {
-            var originalCulture = Thread.CurrentThread.CurrentCulture;
+            var originalCulture = CultureInfo.CurrentCulture;
             try
             {
-                Thread.CurrentThread.CurrentCulture = culture;
+                CultureInfo.CurrentCulture = culture;
                 action();
             }
             finally
             {
-                Thread.CurrentThread.CurrentCulture = originalCulture;
+                CultureInfo.CurrentCulture = originalCulture;
             }
         }
 
@@ -222,6 +231,23 @@ namespace Google.Cloud.Spanner.Data.Tests
             yield return new object[] {(short) 1, SpannerDbType.String, Quote("1")};
             yield return new object[] {(ushort) 1, SpannerDbType.String, Quote("1")};
             yield return new object[] {s_testDate, SpannerDbType.String, Quote("2017-01-31T03:15:30.5Z")};
+            // Spanner type = Numeric tests.
+            yield return new object[] {SpannerNumeric.Epsilon, SpannerDbType.Numeric, "\"0.000000001\""};
+            yield return new object[] {(byte) 1, SpannerDbType.Numeric, "\"1\""};
+            yield return new object[] {(sbyte) 1, SpannerDbType.Numeric, "\"1\""};
+            yield return new object[] {1.5M, SpannerDbType.Numeric, "\"1.5\""};
+            yield return new object[] {1.5D, SpannerDbType.Numeric, "\"1.5\""};
+            yield return new object[] {1.5F, SpannerDbType.Numeric, "\"1.5\""};
+            yield return new object[] {1, SpannerDbType.Numeric, "\"1\""};
+            yield return new object[] {1U, SpannerDbType.Numeric, "\"1\""};
+            yield return new object[] {1L, SpannerDbType.Numeric, "\"1\""};
+            yield return new object[] {(ulong) 1, SpannerDbType.Numeric, "\"1\""};
+            yield return new object[] {(short) 1, SpannerDbType.Numeric, "\"1\""};
+            yield return new object[] {(ushort) 1, SpannerDbType.Numeric, "\"1\""};
+            yield return new object[] {"1", SpannerDbType.Numeric, "\"1\""};
+            yield return new object[] {"1.5", SpannerDbType.Numeric, "\"1.5\""};
+            yield return new object[] {DBNull.Value, SpannerDbType.Numeric, "null"};
+
             // Note the difference in C# conversions from special doubles.
             yield return new object[] {double.NegativeInfinity, SpannerDbType.String, Quote("-Infinity") };
             yield return new object[] {double.PositiveInfinity, SpannerDbType.String, Quote("Infinity") };
@@ -282,6 +308,11 @@ namespace Google.Cloud.Spanner.Data.Tests
                 new List<DateTime>(GetTimestampsForArray()), SpannerDbType.ArrayOf(SpannerDbType.Timestamp),
                 "[ \"2017-01-31T03:15:30.5Z\", \"2016-02-15T13:15:30Z\", \"2015-03-31T03:15:30.25Z\" ]"
             };
+            yield return new object[]
+            {
+                new List<SpannerNumeric>(GetSpannerNumericsForArray()), SpannerDbType.ArrayOf(SpannerDbType.Numeric),
+                "[ \"-99999999999999999999999999999.999999999\", \"0.000000001\", \"99999999999999999999999999999.999999999\" ]"
+            };
 
             // List test cases (various source/target list types)
             yield return new object[]
@@ -289,11 +320,13 @@ namespace Google.Cloud.Spanner.Data.Tests
                 GetStringsForArray(), SpannerDbType.ArrayOf(SpannerDbType.String),
                 "[ \"abc\", \"123\", \"def\" ]", TestType.ClrToValue
             };
+#pragma warning disable DE0006 // ArrayList deprecation
             yield return new object[]
             {
                 new ArrayList(GetStringsForArray().ToList()), SpannerDbType.ArrayOf(SpannerDbType.String),
                 "[ \"abc\", \"123\", \"def\" ]"
             };
+#pragma warning restore DE0006
             yield return new object[]
             {
                 new List<object>(GetStringsForArray()), SpannerDbType.ArrayOf(SpannerDbType.String),
@@ -378,6 +411,12 @@ namespace Google.Cloud.Spanner.Data.Tests
             // Spanner type = Date tests.
             yield return new object[] {new ToStringClass("hello"), SpannerDbType.Date};
             yield return new object[] {"badjuju", SpannerDbType.Date};
+
+            // Spanner type = Numeric tests.
+            yield return new object[] {true, SpannerDbType.Numeric};
+            yield return new object[] {double.NegativeInfinity, SpannerDbType.Numeric};
+            yield return new object[] {double.PositiveInfinity, SpannerDbType.Numeric};
+            yield return new object[] {double.NaN, SpannerDbType.Numeric};
         }
 
         private static readonly CultureInfo[] s_cultures = new[]
@@ -587,7 +626,7 @@ namespace Google.Cloud.Spanner.Data.Tests
             {
                 type.ToProtobufValue(value, options: null);
             }
-            catch (Exception e) when (e is OverflowException || e is InvalidCastException || e is FormatException)
+            catch (Exception e) when (e is OverflowException || e is InvalidCastException || e is FormatException || e is ArgumentException)
             {
                 exceptionCaught = true;
             }
@@ -606,10 +645,12 @@ namespace Google.Cloud.Spanner.Data.Tests
 
         private class CustomList : IList
         {
+#pragma warning disable DE0006 // ArrayList deprecation
             private readonly IList _listImplementation = new ArrayList();
 
             public CustomList(IEnumerable contents) => _listImplementation =
                 new ArrayList(contents.Cast<object>().ToList());
+#pragma warning restore DE0006
 
             // Used by ValueConversion via reflection upon deserialization.
             public CustomList() { }

@@ -3,7 +3,7 @@
 //     source: google/cloud/videointelligence/v1/video_intelligence.proto
 // </auto-generated>
 // Original file comments:
-// Copyright 2019 Google LLC.
+// Copyright 2020 Google LLC
 //
 // Licensed under the Apache License, Version 2.0 (the "License");
 // you may not use this file except in compliance with the License.
@@ -17,7 +17,6 @@
 // See the License for the specific language governing permissions and
 // limitations under the License.
 //
-//
 #pragma warning disable 0414, 1591
 #region Designer generated code
 
@@ -25,7 +24,7 @@ using grpc = global::Grpc.Core;
 
 namespace Google.Cloud.VideoIntelligence.V1 {
   /// <summary>
-  /// Service that implements Google Cloud Video Intelligence API.
+  /// Service that implements the Video Intelligence API.
   /// </summary>
   public static partial class VideoIntelligenceService
   {
@@ -72,7 +71,7 @@ namespace Google.Cloud.VideoIntelligence.V1 {
     {
       /// <summary>Creates a new client for VideoIntelligenceService</summary>
       /// <param name="channel">The channel to use to make remote calls.</param>
-      public VideoIntelligenceServiceClient(grpc::Channel channel) : base(channel)
+      public VideoIntelligenceServiceClient(grpc::ChannelBase channel) : base(channel)
       {
       }
       /// <summary>Creates a new client for VideoIntelligenceService that uses a custom <c>CallInvoker</c>.</summary>

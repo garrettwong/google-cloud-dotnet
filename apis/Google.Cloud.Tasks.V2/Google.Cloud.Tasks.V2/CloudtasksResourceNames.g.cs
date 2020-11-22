@@ -1,4 +1,4 @@
-// Copyright 2019 Google LLC
+// Copyright 2020 Google LLC
 //
 // Licensed under the Apache License, Version 2.0 (the "License");
 // you may not use this file except in compliance with the License.
@@ -14,6 +14,7 @@
 
 // Generated code. DO NOT EDIT!
 
+using gagr = Google.Api.Gax.ResourceNames;
 using gctv = Google.Cloud.Tasks.V2;
 
 namespace Google.Cloud.Tasks.V2
@@ -21,11 +22,11 @@ namespace Google.Cloud.Tasks.V2
     public partial class ListQueuesRequest
     {
         /// <summary>
-        /// <see cref="LocationName"/>-typed view over the <see cref="Parent"/> resource name property.
+        /// <see cref="gagr::LocationName"/>-typed view over the <see cref="Parent"/> resource name property.
         /// </summary>
-        public LocationName ParentAsLocationName
+        public gagr::LocationName ParentAsLocationName
         {
-            get => string.IsNullOrEmpty(Parent) ? null : LocationName.Parse(Parent);
+            get => string.IsNullOrEmpty(Parent) ? null : gagr::LocationName.Parse(Parent, allowUnparsed: true);
             set => Parent = value?.ToString() ?? "";
         }
     }
@@ -37,7 +38,7 @@ namespace Google.Cloud.Tasks.V2
         /// </summary>
         public gctv::QueueName QueueName
         {
-            get => string.IsNullOrEmpty(Name) ? null : gctv::QueueName.Parse(Name);
+            get => string.IsNullOrEmpty(Name) ? null : gctv::QueueName.Parse(Name, allowUnparsed: true);
             set => Name = value?.ToString() ?? "";
         }
     }
@@ -45,11 +46,11 @@ namespace Google.Cloud.Tasks.V2
     public partial class CreateQueueRequest
     {
         /// <summary>
-        /// <see cref="LocationName"/>-typed view over the <see cref="Parent"/> resource name property.
+        /// <see cref="gagr::LocationName"/>-typed view over the <see cref="Parent"/> resource name property.
         /// </summary>
-        public LocationName ParentAsLocationName
+        public gagr::LocationName ParentAsLocationName
         {
-            get => string.IsNullOrEmpty(Parent) ? null : LocationName.Parse(Parent);
+            get => string.IsNullOrEmpty(Parent) ? null : gagr::LocationName.Parse(Parent, allowUnparsed: true);
             set => Parent = value?.ToString() ?? "";
         }
     }
@@ -61,7 +62,7 @@ namespace Google.Cloud.Tasks.V2
         /// </summary>
         public gctv::QueueName QueueName
         {
-            get => string.IsNullOrEmpty(Name) ? null : gctv::QueueName.Parse(Name);
+            get => string.IsNullOrEmpty(Name) ? null : gctv::QueueName.Parse(Name, allowUnparsed: true);
             set => Name = value?.ToString() ?? "";
         }
     }
@@ -73,7 +74,7 @@ namespace Google.Cloud.Tasks.V2
         /// </summary>
         public gctv::QueueName QueueName
         {
-            get => string.IsNullOrEmpty(Name) ? null : gctv::QueueName.Parse(Name);
+            get => string.IsNullOrEmpty(Name) ? null : gctv::QueueName.Parse(Name, allowUnparsed: true);
             set => Name = value?.ToString() ?? "";
         }
     }
@@ -85,7 +86,7 @@ namespace Google.Cloud.Tasks.V2
         /// </summary>
         public gctv::QueueName QueueName
         {
-            get => string.IsNullOrEmpty(Name) ? null : gctv::QueueName.Parse(Name);
+            get => string.IsNullOrEmpty(Name) ? null : gctv::QueueName.Parse(Name, allowUnparsed: true);
             set => Name = value?.ToString() ?? "";
         }
     }
@@ -97,7 +98,7 @@ namespace Google.Cloud.Tasks.V2
         /// </summary>
         public gctv::QueueName QueueName
         {
-            get => string.IsNullOrEmpty(Name) ? null : gctv::QueueName.Parse(Name);
+            get => string.IsNullOrEmpty(Name) ? null : gctv::QueueName.Parse(Name, allowUnparsed: true);
             set => Name = value?.ToString() ?? "";
         }
     }
@@ -107,7 +108,7 @@ namespace Google.Cloud.Tasks.V2
         /// <summary><see cref="QueueName"/>-typed view over the <see cref="Parent"/> resource name property.</summary>
         public QueueName ParentAsQueueName
         {
-            get => string.IsNullOrEmpty(Parent) ? null : QueueName.Parse(Parent);
+            get => string.IsNullOrEmpty(Parent) ? null : QueueName.Parse(Parent, allowUnparsed: true);
             set => Parent = value?.ToString() ?? "";
         }
     }
@@ -119,7 +120,7 @@ namespace Google.Cloud.Tasks.V2
         /// </summary>
         public gctv::TaskName TaskName
         {
-            get => string.IsNullOrEmpty(Name) ? null : gctv::TaskName.Parse(Name);
+            get => string.IsNullOrEmpty(Name) ? null : gctv::TaskName.Parse(Name, allowUnparsed: true);
             set => Name = value?.ToString() ?? "";
         }
     }
@@ -129,7 +130,7 @@ namespace Google.Cloud.Tasks.V2
         /// <summary><see cref="QueueName"/>-typed view over the <see cref="Parent"/> resource name property.</summary>
         public QueueName ParentAsQueueName
         {
-            get => string.IsNullOrEmpty(Parent) ? null : QueueName.Parse(Parent);
+            get => string.IsNullOrEmpty(Parent) ? null : QueueName.Parse(Parent, allowUnparsed: true);
             set => Parent = value?.ToString() ?? "";
         }
     }
@@ -141,7 +142,7 @@ namespace Google.Cloud.Tasks.V2
         /// </summary>
         public gctv::TaskName TaskName
         {
-            get => string.IsNullOrEmpty(Name) ? null : gctv::TaskName.Parse(Name);
+            get => string.IsNullOrEmpty(Name) ? null : gctv::TaskName.Parse(Name, allowUnparsed: true);
             set => Name = value?.ToString() ?? "";
         }
     }
@@ -153,7 +154,7 @@ namespace Google.Cloud.Tasks.V2
         /// </summary>
         public gctv::TaskName TaskName
         {
-            get => string.IsNullOrEmpty(Name) ? null : gctv::TaskName.Parse(Name);
+            get => string.IsNullOrEmpty(Name) ? null : gctv::TaskName.Parse(Name, allowUnparsed: true);
             set => Name = value?.ToString() ?? "";
         }
     }

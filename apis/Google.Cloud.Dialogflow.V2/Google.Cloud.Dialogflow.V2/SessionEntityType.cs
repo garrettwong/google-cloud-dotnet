@@ -30,7 +30,7 @@ namespace Google.Cloud.Dialogflow.V2 {
             "dG8aH2dvb2dsZS9hcGkvZmllbGRfYmVoYXZpb3IucHJvdG8aGWdvb2dsZS9h",
             "cGkvcmVzb3VyY2UucHJvdG8aLGdvb2dsZS9jbG91ZC9kaWFsb2dmbG93L3Yy",
             "L2VudGl0eV90eXBlLnByb3RvGhtnb29nbGUvcHJvdG9idWYvZW1wdHkucHJv",
-            "dG8aIGdvb2dsZS9wcm90b2J1Zi9maWVsZF9tYXNrLnByb3RvIssDChFTZXNz",
+            "dG8aIGdvb2dsZS9wcm90b2J1Zi9maWVsZF9tYXNrLnByb3RvIsAEChFTZXNz",
             "aW9uRW50aXR5VHlwZRIRCgRuYW1lGAEgASgJQgPgQQISYwoUZW50aXR5X292",
             "ZXJyaWRlX21vZGUYAiABKA4yQC5nb29nbGUuY2xvdWQuZGlhbG9nZmxvdy52",
             "Mi5TZXNzaW9uRW50aXR5VHlwZS5FbnRpdHlPdmVycmlkZU1vZGVCA+BBAhJE",
@@ -38,67 +38,84 @@ namespace Google.Cloud.Dialogflow.V2 {
             "LkVudGl0eVR5cGUuRW50aXR5QgPgQQIiggEKEkVudGl0eU92ZXJyaWRlTW9k",
             "ZRIkCiBFTlRJVFlfT1ZFUlJJREVfTU9ERV9VTlNQRUNJRklFRBAAEiEKHUVO",
             "VElUWV9PVkVSUklERV9NT0RFX09WRVJSSURFEAESIwofRU5USVRZX09WRVJS",
-            "SURFX01PREVfU1VQUExFTUVOVBACOnPqQXAKJ3B1YnN1Yi5nb29nbGVhcGlz",
-            "LmNvbS9TZXNzaW9uRW50aXR5VHlwZRJFcHJvamVjdHMve3Byb2plY3R9L2Fn",
-            "ZW50L3Nlc3Npb25zL3tzZXNzaW9ufS9lbnRpdHlUeXBlcy97ZW50aXR5X3R5",
-            "cGV9ImUKHUxpc3RTZXNzaW9uRW50aXR5VHlwZXNSZXF1ZXN0EhMKBnBhcmVu",
-            "dBgBIAEoCUID4EECEhYKCXBhZ2Vfc2l6ZRgCIAEoBUID4EEBEhcKCnBhZ2Vf",
-            "dG9rZW4YAyABKAlCA+BBASKGAQoeTGlzdFNlc3Npb25FbnRpdHlUeXBlc1Jl",
-            "c3BvbnNlEksKFHNlc3Npb25fZW50aXR5X3R5cGVzGAEgAygLMi0uZ29vZ2xl",
-            "LmNsb3VkLmRpYWxvZ2Zsb3cudjIuU2Vzc2lvbkVudGl0eVR5cGUSFwoPbmV4",
-            "dF9wYWdlX3Rva2VuGAIgASgJImAKG0dldFNlc3Npb25FbnRpdHlUeXBlUmVx",
-            "dWVzdBJBCgRuYW1lGAEgASgJQjPgQQL6QS0KK2RpYWxvZ2Zsb3cuZ29vZ2xl",
-            "YXBpcy5jb20vU2Vzc2lvbkVudGl0eVR5cGUihgEKHkNyZWF0ZVNlc3Npb25F",
-            "bnRpdHlUeXBlUmVxdWVzdBITCgZwYXJlbnQYASABKAlCA+BBAhJPChNzZXNz",
-            "aW9uX2VudGl0eV90eXBlGAIgASgLMi0uZ29vZ2xlLmNsb3VkLmRpYWxvZ2Zs",
-            "b3cudjIuU2Vzc2lvbkVudGl0eVR5cGVCA+BBAiKnAQoeVXBkYXRlU2Vzc2lv",
-            "bkVudGl0eVR5cGVSZXF1ZXN0Ek8KE3Nlc3Npb25fZW50aXR5X3R5cGUYASAB",
-            "KAsyLS5nb29nbGUuY2xvdWQuZGlhbG9nZmxvdy52Mi5TZXNzaW9uRW50aXR5",
-            "VHlwZUID4EECEjQKC3VwZGF0ZV9tYXNrGAIgASgLMhouZ29vZ2xlLnByb3Rv",
-            "YnVmLkZpZWxkTWFza0ID4EEBIlkKHkRlbGV0ZVNlc3Npb25FbnRpdHlUeXBl",
-            "UmVxdWVzdBI3CgRuYW1lGAEgASgJQingQQL6QSMKIWRpYWxvZ2Zsb3cuZ29v",
-            "Z2xlYXBpcy5jb20vQ29udGV4dDLWCQoSU2Vzc2lvbkVudGl0eVR5cGVzEtYB",
-            "ChZMaXN0U2Vzc2lvbkVudGl0eVR5cGVzEjkuZ29vZ2xlLmNsb3VkLmRpYWxv",
-            "Z2Zsb3cudjIuTGlzdFNlc3Npb25FbnRpdHlUeXBlc1JlcXVlc3QaOi5nb29n",
-            "bGUuY2xvdWQuZGlhbG9nZmxvdy52Mi5MaXN0U2Vzc2lvbkVudGl0eVR5cGVz",
-            "UmVzcG9uc2UiRYLT5JMCNhI0L3YyL3twYXJlbnQ9cHJvamVjdHMvKi9hZ2Vu",
-            "dC9zZXNzaW9ucy8qfS9lbnRpdHlUeXBlc9pBBnBhcmVudBK8AQoUR2V0U2Vz",
-            "c2lvbkVudGl0eVR5cGUSNy5nb29nbGUuY2xvdWQuZGlhbG9nZmxvdy52Mi5H",
-            "ZXRTZXNzaW9uRW50aXR5VHlwZVJlcXVlc3QaLS5nb29nbGUuY2xvdWQuZGlh",
-            "bG9nZmxvdy52Mi5TZXNzaW9uRW50aXR5VHlwZSI8gtPkkwI2EjQvdjIve25h",
-            "bWU9cHJvamVjdHMvKi9hZ2VudC9zZXNzaW9ucy8qL2VudGl0eVR5cGVzLyp9",
-            "EvQBChdDcmVhdGVTZXNzaW9uRW50aXR5VHlwZRI6Lmdvb2dsZS5jbG91ZC5k",
-            "aWFsb2dmbG93LnYyLkNyZWF0ZVNlc3Npb25FbnRpdHlUeXBlUmVxdWVzdBot",
-            "Lmdvb2dsZS5jbG91ZC5kaWFsb2dmbG93LnYyLlNlc3Npb25FbnRpdHlUeXBl",
-            "Im6C0+STAksiNC92Mi97cGFyZW50PXByb2plY3RzLyovYWdlbnQvc2Vzc2lv",
+            "SURFX01PREVfU1VQUExFTUVOVBACOucB6kHjAQorZGlhbG9nZmxvdy5nb29n",
+            "bGVhcGlzLmNvbS9TZXNzaW9uRW50aXR5VHlwZRJFcHJvamVjdHMve3Byb2pl",
+            "Y3R9L2FnZW50L3Nlc3Npb25zL3tzZXNzaW9ufS9lbnRpdHlUeXBlcy97ZW50",
+            "aXR5X3R5cGV9Em1wcm9qZWN0cy97cHJvamVjdH0vYWdlbnQvZW52aXJvbm1l",
+            "bnRzL3tlbnZpcm9ubWVudH0vdXNlcnMve3VzZXJ9L3Nlc3Npb25zL3tzZXNz",
+            "aW9ufS9lbnRpdHlUeXBlcy97ZW50aXR5X3R5cGV9IpUBCh1MaXN0U2Vzc2lv",
+            "bkVudGl0eVR5cGVzUmVxdWVzdBJDCgZwYXJlbnQYASABKAlCM+BBAvpBLRIr",
+            "ZGlhbG9nZmxvdy5nb29nbGVhcGlzLmNvbS9TZXNzaW9uRW50aXR5VHlwZRIW",
+            "CglwYWdlX3NpemUYAiABKAVCA+BBARIXCgpwYWdlX3Rva2VuGAMgASgJQgPg",
+            "QQEihgEKHkxpc3RTZXNzaW9uRW50aXR5VHlwZXNSZXNwb25zZRJLChRzZXNz",
+            "aW9uX2VudGl0eV90eXBlcxgBIAMoCzItLmdvb2dsZS5jbG91ZC5kaWFsb2dm",
+            "bG93LnYyLlNlc3Npb25FbnRpdHlUeXBlEhcKD25leHRfcGFnZV90b2tlbhgC",
+            "IAEoCSJgChtHZXRTZXNzaW9uRW50aXR5VHlwZVJlcXVlc3QSQQoEbmFtZRgB",
+            "IAEoCUIz4EEC+kEtCitkaWFsb2dmbG93Lmdvb2dsZWFwaXMuY29tL1Nlc3Np",
+            "b25FbnRpdHlUeXBlIrYBCh5DcmVhdGVTZXNzaW9uRW50aXR5VHlwZVJlcXVl",
+            "c3QSQwoGcGFyZW50GAEgASgJQjPgQQL6QS0SK2RpYWxvZ2Zsb3cuZ29vZ2xl",
+            "YXBpcy5jb20vU2Vzc2lvbkVudGl0eVR5cGUSTwoTc2Vzc2lvbl9lbnRpdHlf",
+            "dHlwZRgCIAEoCzItLmdvb2dsZS5jbG91ZC5kaWFsb2dmbG93LnYyLlNlc3Np",
+            "b25FbnRpdHlUeXBlQgPgQQIipwEKHlVwZGF0ZVNlc3Npb25FbnRpdHlUeXBl",
+            "UmVxdWVzdBJPChNzZXNzaW9uX2VudGl0eV90eXBlGAEgASgLMi0uZ29vZ2xl",
+            "LmNsb3VkLmRpYWxvZ2Zsb3cudjIuU2Vzc2lvbkVudGl0eVR5cGVCA+BBAhI0",
+            "Cgt1cGRhdGVfbWFzaxgCIAEoCzIaLmdvb2dsZS5wcm90b2J1Zi5GaWVsZE1h",
+            "c2tCA+BBASJjCh5EZWxldGVTZXNzaW9uRW50aXR5VHlwZVJlcXVlc3QSQQoE",
+            "bmFtZRgBIAEoCUIz4EEC+kEtCitkaWFsb2dmbG93Lmdvb2dsZWFwaXMuY29t",
+            "L1Nlc3Npb25FbnRpdHlUeXBlMtINChJTZXNzaW9uRW50aXR5VHlwZXMSpwIK",
+            "Fkxpc3RTZXNzaW9uRW50aXR5VHlwZXMSOS5nb29nbGUuY2xvdWQuZGlhbG9n",
+            "Zmxvdy52Mi5MaXN0U2Vzc2lvbkVudGl0eVR5cGVzUmVxdWVzdBo6Lmdvb2ds",
+            "ZS5jbG91ZC5kaWFsb2dmbG93LnYyLkxpc3RTZXNzaW9uRW50aXR5VHlwZXNS",
+            "ZXNwb25zZSKVAYLT5JMChQESNC92Mi97cGFyZW50PXByb2plY3RzLyovYWdl",
+            "bnQvc2Vzc2lvbnMvKn0vZW50aXR5VHlwZXNaTRJLL3YyL3twYXJlbnQ9cHJv",
+            "amVjdHMvKi9hZ2VudC9lbnZpcm9ubWVudHMvKi91c2Vycy8qL3Nlc3Npb25z",
+            "Lyp9L2VudGl0eVR5cGVz2kEGcGFyZW50EpQCChRHZXRTZXNzaW9uRW50aXR5",
+            "VHlwZRI3Lmdvb2dsZS5jbG91ZC5kaWFsb2dmbG93LnYyLkdldFNlc3Npb25F",
+            "bnRpdHlUeXBlUmVxdWVzdBotLmdvb2dsZS5jbG91ZC5kaWFsb2dmbG93LnYy",
+            "LlNlc3Npb25FbnRpdHlUeXBlIpMBgtPkkwKFARI0L3YyL3tuYW1lPXByb2pl",
+            "Y3RzLyovYWdlbnQvc2Vzc2lvbnMvKi9lbnRpdHlUeXBlcy8qfVpNEksvdjIv",
+            "e25hbWU9cHJvamVjdHMvKi9hZ2VudC9lbnZpcm9ubWVudHMvKi91c2Vycy8q",
+            "L3Nlc3Npb25zLyovZW50aXR5VHlwZXMvKn3aQQRuYW1lEtoCChdDcmVhdGVT",
+            "ZXNzaW9uRW50aXR5VHlwZRI6Lmdvb2dsZS5jbG91ZC5kaWFsb2dmbG93LnYy",
+            "LkNyZWF0ZVNlc3Npb25FbnRpdHlUeXBlUmVxdWVzdBotLmdvb2dsZS5jbG91",
+            "ZC5kaWFsb2dmbG93LnYyLlNlc3Npb25FbnRpdHlUeXBlItMBgtPkkwKvASI0",
+            "L3YyL3twYXJlbnQ9cHJvamVjdHMvKi9hZ2VudC9zZXNzaW9ucy8qfS9lbnRp",
+            "dHlUeXBlczoTc2Vzc2lvbl9lbnRpdHlfdHlwZVpiIksvdjIve3BhcmVudD1w",
+            "cm9qZWN0cy8qL2FnZW50L2Vudmlyb25tZW50cy8qL3VzZXJzLyovc2Vzc2lv",
             "bnMvKn0vZW50aXR5VHlwZXM6E3Nlc3Npb25fZW50aXR5X3R5cGXaQRpwYXJl",
-            "bnQsc2Vzc2lvbl9lbnRpdHlfdHlwZRKBAgoXVXBkYXRlU2Vzc2lvbkVudGl0",
+            "bnQsc2Vzc2lvbl9lbnRpdHlfdHlwZRKdAwoXVXBkYXRlU2Vzc2lvbkVudGl0",
             "eVR5cGUSOi5nb29nbGUuY2xvdWQuZGlhbG9nZmxvdy52Mi5VcGRhdGVTZXNz",
             "aW9uRW50aXR5VHlwZVJlcXVlc3QaLS5nb29nbGUuY2xvdWQuZGlhbG9nZmxv",
-            "dy52Mi5TZXNzaW9uRW50aXR5VHlwZSJ7gtPkkwJfMkgvdjIve3Nlc3Npb25f",
-            "ZW50aXR5X3R5cGUubmFtZT1wcm9qZWN0cy8qL2FnZW50L3Nlc3Npb25zLyov",
-            "ZW50aXR5VHlwZXMvKn06E3Nlc3Npb25fZW50aXR5X3R5cGXaQRNzZXNzaW9u",
-            "X2VudGl0eV90eXBlErIBChdEZWxldGVTZXNzaW9uRW50aXR5VHlwZRI6Lmdv",
-            "b2dsZS5jbG91ZC5kaWFsb2dmbG93LnYyLkRlbGV0ZVNlc3Npb25FbnRpdHlU",
-            "eXBlUmVxdWVzdBoWLmdvb2dsZS5wcm90b2J1Zi5FbXB0eSJDgtPkkwI2KjQv",
-            "djIve25hbWU9cHJvamVjdHMvKi9hZ2VudC9zZXNzaW9ucy8qL2VudGl0eVR5",
-            "cGVzLyp92kEEbmFtZRp4ykEZZGlhbG9nZmxvdy5nb29nbGVhcGlzLmNvbdJB",
-            "WWh0dHBzOi8vd3d3Lmdvb2dsZWFwaXMuY29tL2F1dGgvY2xvdWQtcGxhdGZv",
-            "cm0saHR0cHM6Ly93d3cuZ29vZ2xlYXBpcy5jb20vYXV0aC9kaWFsb2dmbG93",
-            "QqUBCh5jb20uZ29vZ2xlLmNsb3VkLmRpYWxvZ2Zsb3cudjJCFlNlc3Npb25F",
-            "bnRpdHlUeXBlUHJvdG9QAVpEZ29vZ2xlLmdvbGFuZy5vcmcvZ2VucHJvdG8v",
-            "Z29vZ2xlYXBpcy9jbG91ZC9kaWFsb2dmbG93L3YyO2RpYWxvZ2Zsb3f4AQGi",
-            "AgJERqoCGkdvb2dsZS5DbG91ZC5EaWFsb2dmbG93LlYyYgZwcm90bzM="));
+            "dy52Mi5TZXNzaW9uRW50aXR5VHlwZSKWAoLT5JMC1wEySC92Mi97c2Vzc2lv",
+            "bl9lbnRpdHlfdHlwZS5uYW1lPXByb2plY3RzLyovYWdlbnQvc2Vzc2lvbnMv",
+            "Ki9lbnRpdHlUeXBlcy8qfToTc2Vzc2lvbl9lbnRpdHlfdHlwZVp2Ml8vdjIv",
+            "e3Nlc3Npb25fZW50aXR5X3R5cGUubmFtZT1wcm9qZWN0cy8qL2FnZW50L2Vu",
+            "dmlyb25tZW50cy8qL3VzZXJzLyovc2Vzc2lvbnMvKi9lbnRpdHlUeXBlcy8q",
+            "fToTc2Vzc2lvbl9lbnRpdHlfdHlwZdpBE3Nlc3Npb25fZW50aXR5X3R5cGXa",
+            "QR9zZXNzaW9uX2VudGl0eV90eXBlLHVwZGF0ZV9tYXNrEoMCChdEZWxldGVT",
+            "ZXNzaW9uRW50aXR5VHlwZRI6Lmdvb2dsZS5jbG91ZC5kaWFsb2dmbG93LnYy",
+            "LkRlbGV0ZVNlc3Npb25FbnRpdHlUeXBlUmVxdWVzdBoWLmdvb2dsZS5wcm90",
+            "b2J1Zi5FbXB0eSKTAYLT5JMChQEqNC92Mi97bmFtZT1wcm9qZWN0cy8qL2Fn",
+            "ZW50L3Nlc3Npb25zLyovZW50aXR5VHlwZXMvKn1aTSpLL3YyL3tuYW1lPXBy",
+            "b2plY3RzLyovYWdlbnQvZW52aXJvbm1lbnRzLyovdXNlcnMvKi9zZXNzaW9u",
+            "cy8qL2VudGl0eVR5cGVzLyp92kEEbmFtZRp4ykEZZGlhbG9nZmxvdy5nb29n",
+            "bGVhcGlzLmNvbdJBWWh0dHBzOi8vd3d3Lmdvb2dsZWFwaXMuY29tL2F1dGgv",
+            "Y2xvdWQtcGxhdGZvcm0saHR0cHM6Ly93d3cuZ29vZ2xlYXBpcy5jb20vYXV0",
+            "aC9kaWFsb2dmbG93QqUBCh5jb20uZ29vZ2xlLmNsb3VkLmRpYWxvZ2Zsb3cu",
+            "djJCFlNlc3Npb25FbnRpdHlUeXBlUHJvdG9QAVpEZ29vZ2xlLmdvbGFuZy5v",
+            "cmcvZ2VucHJvdG8vZ29vZ2xlYXBpcy9jbG91ZC9kaWFsb2dmbG93L3YyO2Rp",
+            "YWxvZ2Zsb3f4AQGiAgJERqoCGkdvb2dsZS5DbG91ZC5EaWFsb2dmbG93LlYy",
+            "YgZwcm90bzM="));
       descriptor = pbr::FileDescriptor.FromGeneratedCode(descriptorData,
           new pbr::FileDescriptor[] { global::Google.Api.AnnotationsReflection.Descriptor, global::Google.Api.ClientReflection.Descriptor, global::Google.Api.FieldBehaviorReflection.Descriptor, global::Google.Api.ResourceReflection.Descriptor, global::Google.Cloud.Dialogflow.V2.EntityTypeReflection.Descriptor, global::Google.Protobuf.WellKnownTypes.EmptyReflection.Descriptor, global::Google.Protobuf.WellKnownTypes.FieldMaskReflection.Descriptor, },
-          new pbr::GeneratedClrTypeInfo(null, new pbr::GeneratedClrTypeInfo[] {
-            new pbr::GeneratedClrTypeInfo(typeof(global::Google.Cloud.Dialogflow.V2.SessionEntityType), global::Google.Cloud.Dialogflow.V2.SessionEntityType.Parser, new[]{ "Name", "EntityOverrideMode", "Entities" }, null, new[]{ typeof(global::Google.Cloud.Dialogflow.V2.SessionEntityType.Types.EntityOverrideMode) }, null),
-            new pbr::GeneratedClrTypeInfo(typeof(global::Google.Cloud.Dialogflow.V2.ListSessionEntityTypesRequest), global::Google.Cloud.Dialogflow.V2.ListSessionEntityTypesRequest.Parser, new[]{ "Parent", "PageSize", "PageToken" }, null, null, null),
-            new pbr::GeneratedClrTypeInfo(typeof(global::Google.Cloud.Dialogflow.V2.ListSessionEntityTypesResponse), global::Google.Cloud.Dialogflow.V2.ListSessionEntityTypesResponse.Parser, new[]{ "SessionEntityTypes", "NextPageToken" }, null, null, null),
-            new pbr::GeneratedClrTypeInfo(typeof(global::Google.Cloud.Dialogflow.V2.GetSessionEntityTypeRequest), global::Google.Cloud.Dialogflow.V2.GetSessionEntityTypeRequest.Parser, new[]{ "Name" }, null, null, null),
-            new pbr::GeneratedClrTypeInfo(typeof(global::Google.Cloud.Dialogflow.V2.CreateSessionEntityTypeRequest), global::Google.Cloud.Dialogflow.V2.CreateSessionEntityTypeRequest.Parser, new[]{ "Parent", "SessionEntityType" }, null, null, null),
-            new pbr::GeneratedClrTypeInfo(typeof(global::Google.Cloud.Dialogflow.V2.UpdateSessionEntityTypeRequest), global::Google.Cloud.Dialogflow.V2.UpdateSessionEntityTypeRequest.Parser, new[]{ "SessionEntityType", "UpdateMask" }, null, null, null),
-            new pbr::GeneratedClrTypeInfo(typeof(global::Google.Cloud.Dialogflow.V2.DeleteSessionEntityTypeRequest), global::Google.Cloud.Dialogflow.V2.DeleteSessionEntityTypeRequest.Parser, new[]{ "Name" }, null, null, null)
+          new pbr::GeneratedClrTypeInfo(null, null, new pbr::GeneratedClrTypeInfo[] {
+            new pbr::GeneratedClrTypeInfo(typeof(global::Google.Cloud.Dialogflow.V2.SessionEntityType), global::Google.Cloud.Dialogflow.V2.SessionEntityType.Parser, new[]{ "Name", "EntityOverrideMode", "Entities" }, null, new[]{ typeof(global::Google.Cloud.Dialogflow.V2.SessionEntityType.Types.EntityOverrideMode) }, null, null),
+            new pbr::GeneratedClrTypeInfo(typeof(global::Google.Cloud.Dialogflow.V2.ListSessionEntityTypesRequest), global::Google.Cloud.Dialogflow.V2.ListSessionEntityTypesRequest.Parser, new[]{ "Parent", "PageSize", "PageToken" }, null, null, null, null),
+            new pbr::GeneratedClrTypeInfo(typeof(global::Google.Cloud.Dialogflow.V2.ListSessionEntityTypesResponse), global::Google.Cloud.Dialogflow.V2.ListSessionEntityTypesResponse.Parser, new[]{ "SessionEntityTypes", "NextPageToken" }, null, null, null, null),
+            new pbr::GeneratedClrTypeInfo(typeof(global::Google.Cloud.Dialogflow.V2.GetSessionEntityTypeRequest), global::Google.Cloud.Dialogflow.V2.GetSessionEntityTypeRequest.Parser, new[]{ "Name" }, null, null, null, null),
+            new pbr::GeneratedClrTypeInfo(typeof(global::Google.Cloud.Dialogflow.V2.CreateSessionEntityTypeRequest), global::Google.Cloud.Dialogflow.V2.CreateSessionEntityTypeRequest.Parser, new[]{ "Parent", "SessionEntityType" }, null, null, null, null),
+            new pbr::GeneratedClrTypeInfo(typeof(global::Google.Cloud.Dialogflow.V2.UpdateSessionEntityTypeRequest), global::Google.Cloud.Dialogflow.V2.UpdateSessionEntityTypeRequest.Parser, new[]{ "SessionEntityType", "UpdateMask" }, null, null, null, null),
+            new pbr::GeneratedClrTypeInfo(typeof(global::Google.Cloud.Dialogflow.V2.DeleteSessionEntityTypeRequest), global::Google.Cloud.Dialogflow.V2.DeleteSessionEntityTypeRequest.Parser, new[]{ "Name" }, null, null, null, null)
           }));
     }
     #endregion
@@ -106,15 +123,20 @@ namespace Google.Cloud.Dialogflow.V2 {
   }
   #region Messages
   /// <summary>
-  /// Represents a session entity type.
+  /// A session represents a conversation between a Dialogflow agent and an
+  /// end-user. You can create special entities, called session entities, during a
+  /// session. Session entities can extend or replace custom entity types and only
+  /// exist during the session that they were created for. All session data,
+  /// including session entities, is stored by Dialogflow for 20 minutes.
   ///
-  /// Extends or replaces a developer entity type at the user session level (we
-  /// refer to the entity types defined at the agent level as "developer entity
-  /// types").
-  ///
-  /// Note: session entity types apply to all queries, regardless of the language.
+  /// For more information, see the [session entity
+  /// guide](https://cloud.google.com/dialogflow/docs/entities-session).
   /// </summary>
-  public sealed partial class SessionEntityType : pb::IMessage<SessionEntityType> {
+  public sealed partial class SessionEntityType : pb::IMessage<SessionEntityType>
+  #if !GOOGLE_PROTOBUF_REFSTRUCT_COMPATIBILITY_MODE
+      , pb::IBufferMessage
+  #endif
+  {
     private static readonly pb::MessageParser<SessionEntityType> _parser = new pb::MessageParser<SessionEntityType>(() => new SessionEntityType());
     private pb::UnknownFieldSet _unknownFields;
     [global::System.Diagnostics.DebuggerNonUserCodeAttribute]
@@ -155,10 +177,14 @@ namespace Google.Cloud.Dialogflow.V2 {
     private string name_ = "";
     /// <summary>
     /// Required. The unique identifier of this session entity type. Format:
-    /// `projects/&lt;Project ID>/agent/sessions/&lt;Session ID>/entityTypes/&lt;Entity Type
-    /// Display Name>`.
+    /// `projects/{Project ID}/agent/sessions/{Session ID}/entityTypes/{Entity Type
+    /// Display Name>`, or `projects/&lt;Project ID>/agent/environments/&lt;Environment
+    /// ID>/users/&lt;User ID>/sessions/&lt;Session ID>/entityTypes/&lt;Entity Type Display
+    /// Name>`.
+    /// If `Environment ID` is not specified, we assume default 'draft'
+    /// environment. If `User ID` is not specified, we assume default '-' user.
     ///
-    /// `&lt;Entity Type Display Name>` must be the display name of an existing entity
+    /// `{Entity Type Display Name}` must be the display name of an existing entity
     /// type in the same agent that will be overridden or supplemented.
     /// </summary>
     [global::System.Diagnostics.DebuggerNonUserCodeAttribute]
@@ -171,10 +197,10 @@ namespace Google.Cloud.Dialogflow.V2 {
 
     /// <summary>Field number for the "entity_override_mode" field.</summary>
     public const int EntityOverrideModeFieldNumber = 2;
-    private global::Google.Cloud.Dialogflow.V2.SessionEntityType.Types.EntityOverrideMode entityOverrideMode_ = 0;
+    private global::Google.Cloud.Dialogflow.V2.SessionEntityType.Types.EntityOverrideMode entityOverrideMode_ = global::Google.Cloud.Dialogflow.V2.SessionEntityType.Types.EntityOverrideMode.Unspecified;
     /// <summary>
     /// Required. Indicates whether the additional data should override or
-    /// supplement the developer entity type definition.
+    /// supplement the custom entity type definition.
     /// </summary>
     [global::System.Diagnostics.DebuggerNonUserCodeAttribute]
     public global::Google.Cloud.Dialogflow.V2.SessionEntityType.Types.EntityOverrideMode EntityOverrideMode {
@@ -221,7 +247,7 @@ namespace Google.Cloud.Dialogflow.V2 {
     public override int GetHashCode() {
       int hash = 1;
       if (Name.Length != 0) hash ^= Name.GetHashCode();
-      if (EntityOverrideMode != 0) hash ^= EntityOverrideMode.GetHashCode();
+      if (EntityOverrideMode != global::Google.Cloud.Dialogflow.V2.SessionEntityType.Types.EntityOverrideMode.Unspecified) hash ^= EntityOverrideMode.GetHashCode();
       hash ^= entities_.GetHashCode();
       if (_unknownFields != null) {
         hash ^= _unknownFields.GetHashCode();
@@ -236,11 +262,14 @@ namespace Google.Cloud.Dialogflow.V2 {
 
     [global::System.Diagnostics.DebuggerNonUserCodeAttribute]
     public void WriteTo(pb::CodedOutputStream output) {
+    #if !GOOGLE_PROTOBUF_REFSTRUCT_COMPATIBILITY_MODE
+      output.WriteRawMessage(this);
+    #else
       if (Name.Length != 0) {
         output.WriteRawTag(10);
         output.WriteString(Name);
       }
-      if (EntityOverrideMode != 0) {
+      if (EntityOverrideMode != global::Google.Cloud.Dialogflow.V2.SessionEntityType.Types.EntityOverrideMode.Unspecified) {
         output.WriteRawTag(16);
         output.WriteEnum((int) EntityOverrideMode);
       }
@@ -248,7 +277,26 @@ namespace Google.Cloud.Dialogflow.V2 {
       if (_unknownFields != null) {
         _unknownFields.WriteTo(output);
       }
+    #endif
     }
+
+    #if !GOOGLE_PROTOBUF_REFSTRUCT_COMPATIBILITY_MODE
+    [global::System.Diagnostics.DebuggerNonUserCodeAttribute]
+    void pb::IBufferMessage.InternalWriteTo(ref pb::WriteContext output) {
+      if (Name.Length != 0) {
+        output.WriteRawTag(10);
+        output.WriteString(Name);
+      }
+      if (EntityOverrideMode != global::Google.Cloud.Dialogflow.V2.SessionEntityType.Types.EntityOverrideMode.Unspecified) {
+        output.WriteRawTag(16);
+        output.WriteEnum((int) EntityOverrideMode);
+      }
+      entities_.WriteTo(ref output, _repeated_entities_codec);
+      if (_unknownFields != null) {
+        _unknownFields.WriteTo(ref output);
+      }
+    }
+    #endif
 
     [global::System.Diagnostics.DebuggerNonUserCodeAttribute]
     public int CalculateSize() {
@@ -256,7 +304,7 @@ namespace Google.Cloud.Dialogflow.V2 {
       if (Name.Length != 0) {
         size += 1 + pb::CodedOutputStream.ComputeStringSize(Name);
       }
-      if (EntityOverrideMode != 0) {
+      if (EntityOverrideMode != global::Google.Cloud.Dialogflow.V2.SessionEntityType.Types.EntityOverrideMode.Unspecified) {
         size += 1 + pb::CodedOutputStream.ComputeEnumSize((int) EntityOverrideMode);
       }
       size += entities_.CalculateSize(_repeated_entities_codec);
@@ -274,7 +322,7 @@ namespace Google.Cloud.Dialogflow.V2 {
       if (other.Name.Length != 0) {
         Name = other.Name;
       }
-      if (other.EntityOverrideMode != 0) {
+      if (other.EntityOverrideMode != global::Google.Cloud.Dialogflow.V2.SessionEntityType.Types.EntityOverrideMode.Unspecified) {
         EntityOverrideMode = other.EntityOverrideMode;
       }
       entities_.Add(other.entities_);
@@ -283,6 +331,9 @@ namespace Google.Cloud.Dialogflow.V2 {
 
     [global::System.Diagnostics.DebuggerNonUserCodeAttribute]
     public void MergeFrom(pb::CodedInputStream input) {
+    #if !GOOGLE_PROTOBUF_REFSTRUCT_COMPATIBILITY_MODE
+      input.ReadRawMessage(this);
+    #else
       uint tag;
       while ((tag = input.ReadTag()) != 0) {
         switch(tag) {
@@ -303,7 +354,34 @@ namespace Google.Cloud.Dialogflow.V2 {
           }
         }
       }
+    #endif
     }
+
+    #if !GOOGLE_PROTOBUF_REFSTRUCT_COMPATIBILITY_MODE
+    [global::System.Diagnostics.DebuggerNonUserCodeAttribute]
+    void pb::IBufferMessage.InternalMergeFrom(ref pb::ParseContext input) {
+      uint tag;
+      while ((tag = input.ReadTag()) != 0) {
+        switch(tag) {
+          default:
+            _unknownFields = pb::UnknownFieldSet.MergeFieldFrom(_unknownFields, ref input);
+            break;
+          case 10: {
+            Name = input.ReadString();
+            break;
+          }
+          case 16: {
+            EntityOverrideMode = (global::Google.Cloud.Dialogflow.V2.SessionEntityType.Types.EntityOverrideMode) input.ReadEnum();
+            break;
+          }
+          case 26: {
+            entities_.AddEntriesFrom(ref input, _repeated_entities_codec);
+            break;
+          }
+        }
+      }
+    }
+    #endif
 
     #region Nested types
     /// <summary>Container for nested types declared in the SessionEntityType message type.</summary>
@@ -319,18 +397,18 @@ namespace Google.Cloud.Dialogflow.V2 {
         [pbr::OriginalName("ENTITY_OVERRIDE_MODE_UNSPECIFIED")] Unspecified = 0,
         /// <summary>
         /// The collection of session entities overrides the collection of entities
-        /// in the corresponding developer entity type.
+        /// in the corresponding custom entity type.
         /// </summary>
         [pbr::OriginalName("ENTITY_OVERRIDE_MODE_OVERRIDE")] Override = 1,
         /// <summary>
         /// The collection of session entities extends the collection of entities in
-        /// the corresponding developer entity type.
+        /// the corresponding custom entity type.
         ///
         /// Note: Even in this override mode calls to `ListSessionEntityTypes`,
         /// `GetSessionEntityType`, `CreateSessionEntityType` and
         /// `UpdateSessionEntityType` only return the additional entities added in
         /// this session entity type. If you want to get the supplemented list,
-        /// please call [EntityTypes.GetEntityType][google.cloud.dialogflow.v2.EntityTypes.GetEntityType] on the developer entity type
+        /// please call [EntityTypes.GetEntityType][google.cloud.dialogflow.v2.EntityTypes.GetEntityType] on the custom entity type
         /// and merge.
         /// </summary>
         [pbr::OriginalName("ENTITY_OVERRIDE_MODE_SUPPLEMENT")] Supplement = 2,
@@ -344,7 +422,11 @@ namespace Google.Cloud.Dialogflow.V2 {
   /// <summary>
   /// The request message for [SessionEntityTypes.ListSessionEntityTypes][google.cloud.dialogflow.v2.SessionEntityTypes.ListSessionEntityTypes].
   /// </summary>
-  public sealed partial class ListSessionEntityTypesRequest : pb::IMessage<ListSessionEntityTypesRequest> {
+  public sealed partial class ListSessionEntityTypesRequest : pb::IMessage<ListSessionEntityTypesRequest>
+  #if !GOOGLE_PROTOBUF_REFSTRUCT_COMPATIBILITY_MODE
+      , pb::IBufferMessage
+  #endif
+  {
     private static readonly pb::MessageParser<ListSessionEntityTypesRequest> _parser = new pb::MessageParser<ListSessionEntityTypesRequest>(() => new ListSessionEntityTypesRequest());
     private pb::UnknownFieldSet _unknownFields;
     [global::System.Diagnostics.DebuggerNonUserCodeAttribute]
@@ -385,7 +467,11 @@ namespace Google.Cloud.Dialogflow.V2 {
     private string parent_ = "";
     /// <summary>
     /// Required. The session to list all session entity types from.
-    /// Format: `projects/&lt;Project ID>/agent/sessions/&lt;Session ID>`.
+    /// Format: `projects/{Project ID}/agent/sessions/{Session ID}` or
+    /// `projects/{Project ID}/agent/environments/{Environment ID}/users/{User ID}/
+    /// sessions/&lt;Session ID>`.
+    /// If `Environment ID` is not specified, we assume default 'draft'
+    /// environment. If `User ID` is not specified, we assume default '-' user.
     /// </summary>
     [global::System.Diagnostics.DebuggerNonUserCodeAttribute]
     public string Parent {
@@ -462,6 +548,9 @@ namespace Google.Cloud.Dialogflow.V2 {
 
     [global::System.Diagnostics.DebuggerNonUserCodeAttribute]
     public void WriteTo(pb::CodedOutputStream output) {
+    #if !GOOGLE_PROTOBUF_REFSTRUCT_COMPATIBILITY_MODE
+      output.WriteRawMessage(this);
+    #else
       if (Parent.Length != 0) {
         output.WriteRawTag(10);
         output.WriteString(Parent);
@@ -477,7 +566,29 @@ namespace Google.Cloud.Dialogflow.V2 {
       if (_unknownFields != null) {
         _unknownFields.WriteTo(output);
       }
+    #endif
     }
+
+    #if !GOOGLE_PROTOBUF_REFSTRUCT_COMPATIBILITY_MODE
+    [global::System.Diagnostics.DebuggerNonUserCodeAttribute]
+    void pb::IBufferMessage.InternalWriteTo(ref pb::WriteContext output) {
+      if (Parent.Length != 0) {
+        output.WriteRawTag(10);
+        output.WriteString(Parent);
+      }
+      if (PageSize != 0) {
+        output.WriteRawTag(16);
+        output.WriteInt32(PageSize);
+      }
+      if (PageToken.Length != 0) {
+        output.WriteRawTag(26);
+        output.WriteString(PageToken);
+      }
+      if (_unknownFields != null) {
+        _unknownFields.WriteTo(ref output);
+      }
+    }
+    #endif
 
     [global::System.Diagnostics.DebuggerNonUserCodeAttribute]
     public int CalculateSize() {
@@ -516,6 +627,9 @@ namespace Google.Cloud.Dialogflow.V2 {
 
     [global::System.Diagnostics.DebuggerNonUserCodeAttribute]
     public void MergeFrom(pb::CodedInputStream input) {
+    #if !GOOGLE_PROTOBUF_REFSTRUCT_COMPATIBILITY_MODE
+      input.ReadRawMessage(this);
+    #else
       uint tag;
       while ((tag = input.ReadTag()) != 0) {
         switch(tag) {
@@ -536,14 +650,45 @@ namespace Google.Cloud.Dialogflow.V2 {
           }
         }
       }
+    #endif
     }
+
+    #if !GOOGLE_PROTOBUF_REFSTRUCT_COMPATIBILITY_MODE
+    [global::System.Diagnostics.DebuggerNonUserCodeAttribute]
+    void pb::IBufferMessage.InternalMergeFrom(ref pb::ParseContext input) {
+      uint tag;
+      while ((tag = input.ReadTag()) != 0) {
+        switch(tag) {
+          default:
+            _unknownFields = pb::UnknownFieldSet.MergeFieldFrom(_unknownFields, ref input);
+            break;
+          case 10: {
+            Parent = input.ReadString();
+            break;
+          }
+          case 16: {
+            PageSize = input.ReadInt32();
+            break;
+          }
+          case 26: {
+            PageToken = input.ReadString();
+            break;
+          }
+        }
+      }
+    }
+    #endif
 
   }
 
   /// <summary>
   /// The response message for [SessionEntityTypes.ListSessionEntityTypes][google.cloud.dialogflow.v2.SessionEntityTypes.ListSessionEntityTypes].
   /// </summary>
-  public sealed partial class ListSessionEntityTypesResponse : pb::IMessage<ListSessionEntityTypesResponse> {
+  public sealed partial class ListSessionEntityTypesResponse : pb::IMessage<ListSessionEntityTypesResponse>
+  #if !GOOGLE_PROTOBUF_REFSTRUCT_COMPATIBILITY_MODE
+      , pb::IBufferMessage
+  #endif
+  {
     private static readonly pb::MessageParser<ListSessionEntityTypesResponse> _parser = new pb::MessageParser<ListSessionEntityTypesResponse>(() => new ListSessionEntityTypesResponse());
     private pb::UnknownFieldSet _unknownFields;
     [global::System.Diagnostics.DebuggerNonUserCodeAttribute]
@@ -643,6 +788,9 @@ namespace Google.Cloud.Dialogflow.V2 {
 
     [global::System.Diagnostics.DebuggerNonUserCodeAttribute]
     public void WriteTo(pb::CodedOutputStream output) {
+    #if !GOOGLE_PROTOBUF_REFSTRUCT_COMPATIBILITY_MODE
+      output.WriteRawMessage(this);
+    #else
       sessionEntityTypes_.WriteTo(output, _repeated_sessionEntityTypes_codec);
       if (NextPageToken.Length != 0) {
         output.WriteRawTag(18);
@@ -651,7 +799,22 @@ namespace Google.Cloud.Dialogflow.V2 {
       if (_unknownFields != null) {
         _unknownFields.WriteTo(output);
       }
+    #endif
     }
+
+    #if !GOOGLE_PROTOBUF_REFSTRUCT_COMPATIBILITY_MODE
+    [global::System.Diagnostics.DebuggerNonUserCodeAttribute]
+    void pb::IBufferMessage.InternalWriteTo(ref pb::WriteContext output) {
+      sessionEntityTypes_.WriteTo(ref output, _repeated_sessionEntityTypes_codec);
+      if (NextPageToken.Length != 0) {
+        output.WriteRawTag(18);
+        output.WriteString(NextPageToken);
+      }
+      if (_unknownFields != null) {
+        _unknownFields.WriteTo(ref output);
+      }
+    }
+    #endif
 
     [global::System.Diagnostics.DebuggerNonUserCodeAttribute]
     public int CalculateSize() {
@@ -680,6 +843,9 @@ namespace Google.Cloud.Dialogflow.V2 {
 
     [global::System.Diagnostics.DebuggerNonUserCodeAttribute]
     public void MergeFrom(pb::CodedInputStream input) {
+    #if !GOOGLE_PROTOBUF_REFSTRUCT_COMPATIBILITY_MODE
+      input.ReadRawMessage(this);
+    #else
       uint tag;
       while ((tag = input.ReadTag()) != 0) {
         switch(tag) {
@@ -696,14 +862,41 @@ namespace Google.Cloud.Dialogflow.V2 {
           }
         }
       }
+    #endif
     }
+
+    #if !GOOGLE_PROTOBUF_REFSTRUCT_COMPATIBILITY_MODE
+    [global::System.Diagnostics.DebuggerNonUserCodeAttribute]
+    void pb::IBufferMessage.InternalMergeFrom(ref pb::ParseContext input) {
+      uint tag;
+      while ((tag = input.ReadTag()) != 0) {
+        switch(tag) {
+          default:
+            _unknownFields = pb::UnknownFieldSet.MergeFieldFrom(_unknownFields, ref input);
+            break;
+          case 10: {
+            sessionEntityTypes_.AddEntriesFrom(ref input, _repeated_sessionEntityTypes_codec);
+            break;
+          }
+          case 18: {
+            NextPageToken = input.ReadString();
+            break;
+          }
+        }
+      }
+    }
+    #endif
 
   }
 
   /// <summary>
   /// The request message for [SessionEntityTypes.GetSessionEntityType][google.cloud.dialogflow.v2.SessionEntityTypes.GetSessionEntityType].
   /// </summary>
-  public sealed partial class GetSessionEntityTypeRequest : pb::IMessage<GetSessionEntityTypeRequest> {
+  public sealed partial class GetSessionEntityTypeRequest : pb::IMessage<GetSessionEntityTypeRequest>
+  #if !GOOGLE_PROTOBUF_REFSTRUCT_COMPATIBILITY_MODE
+      , pb::IBufferMessage
+  #endif
+  {
     private static readonly pb::MessageParser<GetSessionEntityTypeRequest> _parser = new pb::MessageParser<GetSessionEntityTypeRequest>(() => new GetSessionEntityTypeRequest());
     private pb::UnknownFieldSet _unknownFields;
     [global::System.Diagnostics.DebuggerNonUserCodeAttribute]
@@ -742,8 +935,12 @@ namespace Google.Cloud.Dialogflow.V2 {
     private string name_ = "";
     /// <summary>
     /// Required. The name of the session entity type. Format:
-    /// `projects/&lt;Project ID>/agent/sessions/&lt;Session ID>/entityTypes/&lt;Entity Type
-    /// Display Name>`.
+    /// `projects/{Project ID}/agent/sessions/{Session ID}/entityTypes/{Entity Type
+    /// Display Name>` or `projects/&lt;Project ID>/agent/environments/&lt;Environment
+    /// ID>/users/&lt;User ID>/sessions/&lt;Session ID>/entityTypes/&lt;Entity Type Display
+    /// Name>`.
+    /// If `Environment ID` is not specified, we assume default 'draft'
+    /// environment. If `User ID` is not specified, we assume default '-' user.
     /// </summary>
     [global::System.Diagnostics.DebuggerNonUserCodeAttribute]
     public string Name {
@@ -787,6 +984,9 @@ namespace Google.Cloud.Dialogflow.V2 {
 
     [global::System.Diagnostics.DebuggerNonUserCodeAttribute]
     public void WriteTo(pb::CodedOutputStream output) {
+    #if !GOOGLE_PROTOBUF_REFSTRUCT_COMPATIBILITY_MODE
+      output.WriteRawMessage(this);
+    #else
       if (Name.Length != 0) {
         output.WriteRawTag(10);
         output.WriteString(Name);
@@ -794,7 +994,21 @@ namespace Google.Cloud.Dialogflow.V2 {
       if (_unknownFields != null) {
         _unknownFields.WriteTo(output);
       }
+    #endif
     }
+
+    #if !GOOGLE_PROTOBUF_REFSTRUCT_COMPATIBILITY_MODE
+    [global::System.Diagnostics.DebuggerNonUserCodeAttribute]
+    void pb::IBufferMessage.InternalWriteTo(ref pb::WriteContext output) {
+      if (Name.Length != 0) {
+        output.WriteRawTag(10);
+        output.WriteString(Name);
+      }
+      if (_unknownFields != null) {
+        _unknownFields.WriteTo(ref output);
+      }
+    }
+    #endif
 
     [global::System.Diagnostics.DebuggerNonUserCodeAttribute]
     public int CalculateSize() {
@@ -821,6 +1035,9 @@ namespace Google.Cloud.Dialogflow.V2 {
 
     [global::System.Diagnostics.DebuggerNonUserCodeAttribute]
     public void MergeFrom(pb::CodedInputStream input) {
+    #if !GOOGLE_PROTOBUF_REFSTRUCT_COMPATIBILITY_MODE
+      input.ReadRawMessage(this);
+    #else
       uint tag;
       while ((tag = input.ReadTag()) != 0) {
         switch(tag) {
@@ -833,14 +1050,37 @@ namespace Google.Cloud.Dialogflow.V2 {
           }
         }
       }
+    #endif
     }
+
+    #if !GOOGLE_PROTOBUF_REFSTRUCT_COMPATIBILITY_MODE
+    [global::System.Diagnostics.DebuggerNonUserCodeAttribute]
+    void pb::IBufferMessage.InternalMergeFrom(ref pb::ParseContext input) {
+      uint tag;
+      while ((tag = input.ReadTag()) != 0) {
+        switch(tag) {
+          default:
+            _unknownFields = pb::UnknownFieldSet.MergeFieldFrom(_unknownFields, ref input);
+            break;
+          case 10: {
+            Name = input.ReadString();
+            break;
+          }
+        }
+      }
+    }
+    #endif
 
   }
 
   /// <summary>
   /// The request message for [SessionEntityTypes.CreateSessionEntityType][google.cloud.dialogflow.v2.SessionEntityTypes.CreateSessionEntityType].
   /// </summary>
-  public sealed partial class CreateSessionEntityTypeRequest : pb::IMessage<CreateSessionEntityTypeRequest> {
+  public sealed partial class CreateSessionEntityTypeRequest : pb::IMessage<CreateSessionEntityTypeRequest>
+  #if !GOOGLE_PROTOBUF_REFSTRUCT_COMPATIBILITY_MODE
+      , pb::IBufferMessage
+  #endif
+  {
     private static readonly pb::MessageParser<CreateSessionEntityTypeRequest> _parser = new pb::MessageParser<CreateSessionEntityTypeRequest>(() => new CreateSessionEntityTypeRequest());
     private pb::UnknownFieldSet _unknownFields;
     [global::System.Diagnostics.DebuggerNonUserCodeAttribute]
@@ -880,7 +1120,11 @@ namespace Google.Cloud.Dialogflow.V2 {
     private string parent_ = "";
     /// <summary>
     /// Required. The session to create a session entity type for.
-    /// Format: `projects/&lt;Project ID>/agent/sessions/&lt;Session ID>`.
+    /// Format: `projects/{Project ID}/agent/sessions/{Session ID}` or
+    /// `projects/{Project ID}/agent/environments/{Environment ID}/users/{User ID}/
+    /// sessions/&lt;Session ID>`.
+    /// If `Environment ID` is not specified, we assume default 'draft'
+    /// environment. If `User ID` is not specified, we assume default '-' user.
     /// </summary>
     [global::System.Diagnostics.DebuggerNonUserCodeAttribute]
     public string Parent {
@@ -940,6 +1184,9 @@ namespace Google.Cloud.Dialogflow.V2 {
 
     [global::System.Diagnostics.DebuggerNonUserCodeAttribute]
     public void WriteTo(pb::CodedOutputStream output) {
+    #if !GOOGLE_PROTOBUF_REFSTRUCT_COMPATIBILITY_MODE
+      output.WriteRawMessage(this);
+    #else
       if (Parent.Length != 0) {
         output.WriteRawTag(10);
         output.WriteString(Parent);
@@ -951,7 +1198,25 @@ namespace Google.Cloud.Dialogflow.V2 {
       if (_unknownFields != null) {
         _unknownFields.WriteTo(output);
       }
+    #endif
     }
+
+    #if !GOOGLE_PROTOBUF_REFSTRUCT_COMPATIBILITY_MODE
+    [global::System.Diagnostics.DebuggerNonUserCodeAttribute]
+    void pb::IBufferMessage.InternalWriteTo(ref pb::WriteContext output) {
+      if (Parent.Length != 0) {
+        output.WriteRawTag(10);
+        output.WriteString(Parent);
+      }
+      if (sessionEntityType_ != null) {
+        output.WriteRawTag(18);
+        output.WriteMessage(SessionEntityType);
+      }
+      if (_unknownFields != null) {
+        _unknownFields.WriteTo(ref output);
+      }
+    }
+    #endif
 
     [global::System.Diagnostics.DebuggerNonUserCodeAttribute]
     public int CalculateSize() {
@@ -987,6 +1252,9 @@ namespace Google.Cloud.Dialogflow.V2 {
 
     [global::System.Diagnostics.DebuggerNonUserCodeAttribute]
     public void MergeFrom(pb::CodedInputStream input) {
+    #if !GOOGLE_PROTOBUF_REFSTRUCT_COMPATIBILITY_MODE
+      input.ReadRawMessage(this);
+    #else
       uint tag;
       while ((tag = input.ReadTag()) != 0) {
         switch(tag) {
@@ -1006,14 +1274,44 @@ namespace Google.Cloud.Dialogflow.V2 {
           }
         }
       }
+    #endif
     }
+
+    #if !GOOGLE_PROTOBUF_REFSTRUCT_COMPATIBILITY_MODE
+    [global::System.Diagnostics.DebuggerNonUserCodeAttribute]
+    void pb::IBufferMessage.InternalMergeFrom(ref pb::ParseContext input) {
+      uint tag;
+      while ((tag = input.ReadTag()) != 0) {
+        switch(tag) {
+          default:
+            _unknownFields = pb::UnknownFieldSet.MergeFieldFrom(_unknownFields, ref input);
+            break;
+          case 10: {
+            Parent = input.ReadString();
+            break;
+          }
+          case 18: {
+            if (sessionEntityType_ == null) {
+              SessionEntityType = new global::Google.Cloud.Dialogflow.V2.SessionEntityType();
+            }
+            input.ReadMessage(SessionEntityType);
+            break;
+          }
+        }
+      }
+    }
+    #endif
 
   }
 
   /// <summary>
   /// The request message for [SessionEntityTypes.UpdateSessionEntityType][google.cloud.dialogflow.v2.SessionEntityTypes.UpdateSessionEntityType].
   /// </summary>
-  public sealed partial class UpdateSessionEntityTypeRequest : pb::IMessage<UpdateSessionEntityTypeRequest> {
+  public sealed partial class UpdateSessionEntityTypeRequest : pb::IMessage<UpdateSessionEntityTypeRequest>
+  #if !GOOGLE_PROTOBUF_REFSTRUCT_COMPATIBILITY_MODE
+      , pb::IBufferMessage
+  #endif
+  {
     private static readonly pb::MessageParser<UpdateSessionEntityTypeRequest> _parser = new pb::MessageParser<UpdateSessionEntityTypeRequest>(() => new UpdateSessionEntityTypeRequest());
     private pb::UnknownFieldSet _unknownFields;
     [global::System.Diagnostics.DebuggerNonUserCodeAttribute]
@@ -1052,9 +1350,7 @@ namespace Google.Cloud.Dialogflow.V2 {
     public const int SessionEntityTypeFieldNumber = 1;
     private global::Google.Cloud.Dialogflow.V2.SessionEntityType sessionEntityType_;
     /// <summary>
-    /// Required. The entity type to update. Format:
-    /// `projects/&lt;Project ID>/agent/sessions/&lt;Session ID>/entityTypes/&lt;Entity Type
-    /// Display Name>`.
+    /// Required. The session entity type to update.
     /// </summary>
     [global::System.Diagnostics.DebuggerNonUserCodeAttribute]
     public global::Google.Cloud.Dialogflow.V2.SessionEntityType SessionEntityType {
@@ -1114,6 +1410,9 @@ namespace Google.Cloud.Dialogflow.V2 {
 
     [global::System.Diagnostics.DebuggerNonUserCodeAttribute]
     public void WriteTo(pb::CodedOutputStream output) {
+    #if !GOOGLE_PROTOBUF_REFSTRUCT_COMPATIBILITY_MODE
+      output.WriteRawMessage(this);
+    #else
       if (sessionEntityType_ != null) {
         output.WriteRawTag(10);
         output.WriteMessage(SessionEntityType);
@@ -1125,7 +1424,25 @@ namespace Google.Cloud.Dialogflow.V2 {
       if (_unknownFields != null) {
         _unknownFields.WriteTo(output);
       }
+    #endif
     }
+
+    #if !GOOGLE_PROTOBUF_REFSTRUCT_COMPATIBILITY_MODE
+    [global::System.Diagnostics.DebuggerNonUserCodeAttribute]
+    void pb::IBufferMessage.InternalWriteTo(ref pb::WriteContext output) {
+      if (sessionEntityType_ != null) {
+        output.WriteRawTag(10);
+        output.WriteMessage(SessionEntityType);
+      }
+      if (updateMask_ != null) {
+        output.WriteRawTag(18);
+        output.WriteMessage(UpdateMask);
+      }
+      if (_unknownFields != null) {
+        _unknownFields.WriteTo(ref output);
+      }
+    }
+    #endif
 
     [global::System.Diagnostics.DebuggerNonUserCodeAttribute]
     public int CalculateSize() {
@@ -1164,6 +1481,9 @@ namespace Google.Cloud.Dialogflow.V2 {
 
     [global::System.Diagnostics.DebuggerNonUserCodeAttribute]
     public void MergeFrom(pb::CodedInputStream input) {
+    #if !GOOGLE_PROTOBUF_REFSTRUCT_COMPATIBILITY_MODE
+      input.ReadRawMessage(this);
+    #else
       uint tag;
       while ((tag = input.ReadTag()) != 0) {
         switch(tag) {
@@ -1186,14 +1506,47 @@ namespace Google.Cloud.Dialogflow.V2 {
           }
         }
       }
+    #endif
     }
+
+    #if !GOOGLE_PROTOBUF_REFSTRUCT_COMPATIBILITY_MODE
+    [global::System.Diagnostics.DebuggerNonUserCodeAttribute]
+    void pb::IBufferMessage.InternalMergeFrom(ref pb::ParseContext input) {
+      uint tag;
+      while ((tag = input.ReadTag()) != 0) {
+        switch(tag) {
+          default:
+            _unknownFields = pb::UnknownFieldSet.MergeFieldFrom(_unknownFields, ref input);
+            break;
+          case 10: {
+            if (sessionEntityType_ == null) {
+              SessionEntityType = new global::Google.Cloud.Dialogflow.V2.SessionEntityType();
+            }
+            input.ReadMessage(SessionEntityType);
+            break;
+          }
+          case 18: {
+            if (updateMask_ == null) {
+              UpdateMask = new global::Google.Protobuf.WellKnownTypes.FieldMask();
+            }
+            input.ReadMessage(UpdateMask);
+            break;
+          }
+        }
+      }
+    }
+    #endif
 
   }
 
   /// <summary>
   /// The request message for [SessionEntityTypes.DeleteSessionEntityType][google.cloud.dialogflow.v2.SessionEntityTypes.DeleteSessionEntityType].
   /// </summary>
-  public sealed partial class DeleteSessionEntityTypeRequest : pb::IMessage<DeleteSessionEntityTypeRequest> {
+  public sealed partial class DeleteSessionEntityTypeRequest : pb::IMessage<DeleteSessionEntityTypeRequest>
+  #if !GOOGLE_PROTOBUF_REFSTRUCT_COMPATIBILITY_MODE
+      , pb::IBufferMessage
+  #endif
+  {
     private static readonly pb::MessageParser<DeleteSessionEntityTypeRequest> _parser = new pb::MessageParser<DeleteSessionEntityTypeRequest>(() => new DeleteSessionEntityTypeRequest());
     private pb::UnknownFieldSet _unknownFields;
     [global::System.Diagnostics.DebuggerNonUserCodeAttribute]
@@ -1232,8 +1585,12 @@ namespace Google.Cloud.Dialogflow.V2 {
     private string name_ = "";
     /// <summary>
     /// Required. The name of the entity type to delete. Format:
-    /// `projects/&lt;Project ID>/agent/sessions/&lt;Session ID>/entityTypes/&lt;Entity Type
-    /// Display Name>`.
+    /// `projects/{Project ID}/agent/sessions/{Session ID}/entityTypes/{Entity Type
+    /// Display Name>` or `projects/&lt;Project ID>/agent/environments/&lt;Environment
+    /// ID>/users/&lt;User ID>/sessions/&lt;Session ID>/entityTypes/&lt;Entity Type Display
+    /// Name>`.
+    /// If `Environment ID` is not specified, we assume default 'draft'
+    /// environment. If `User ID` is not specified, we assume default '-' user.
     /// </summary>
     [global::System.Diagnostics.DebuggerNonUserCodeAttribute]
     public string Name {
@@ -1277,6 +1634,9 @@ namespace Google.Cloud.Dialogflow.V2 {
 
     [global::System.Diagnostics.DebuggerNonUserCodeAttribute]
     public void WriteTo(pb::CodedOutputStream output) {
+    #if !GOOGLE_PROTOBUF_REFSTRUCT_COMPATIBILITY_MODE
+      output.WriteRawMessage(this);
+    #else
       if (Name.Length != 0) {
         output.WriteRawTag(10);
         output.WriteString(Name);
@@ -1284,7 +1644,21 @@ namespace Google.Cloud.Dialogflow.V2 {
       if (_unknownFields != null) {
         _unknownFields.WriteTo(output);
       }
+    #endif
     }
+
+    #if !GOOGLE_PROTOBUF_REFSTRUCT_COMPATIBILITY_MODE
+    [global::System.Diagnostics.DebuggerNonUserCodeAttribute]
+    void pb::IBufferMessage.InternalWriteTo(ref pb::WriteContext output) {
+      if (Name.Length != 0) {
+        output.WriteRawTag(10);
+        output.WriteString(Name);
+      }
+      if (_unknownFields != null) {
+        _unknownFields.WriteTo(ref output);
+      }
+    }
+    #endif
 
     [global::System.Diagnostics.DebuggerNonUserCodeAttribute]
     public int CalculateSize() {
@@ -1311,6 +1685,9 @@ namespace Google.Cloud.Dialogflow.V2 {
 
     [global::System.Diagnostics.DebuggerNonUserCodeAttribute]
     public void MergeFrom(pb::CodedInputStream input) {
+    #if !GOOGLE_PROTOBUF_REFSTRUCT_COMPATIBILITY_MODE
+      input.ReadRawMessage(this);
+    #else
       uint tag;
       while ((tag = input.ReadTag()) != 0) {
         switch(tag) {
@@ -1323,7 +1700,26 @@ namespace Google.Cloud.Dialogflow.V2 {
           }
         }
       }
+    #endif
     }
+
+    #if !GOOGLE_PROTOBUF_REFSTRUCT_COMPATIBILITY_MODE
+    [global::System.Diagnostics.DebuggerNonUserCodeAttribute]
+    void pb::IBufferMessage.InternalMergeFrom(ref pb::ParseContext input) {
+      uint tag;
+      while ((tag = input.ReadTag()) != 0) {
+        switch(tag) {
+          default:
+            _unknownFields = pb::UnknownFieldSet.MergeFieldFrom(_unknownFields, ref input);
+            break;
+          case 10: {
+            Name = input.ReadString();
+            break;
+          }
+        }
+      }
+    }
+    #endif
 
   }
 

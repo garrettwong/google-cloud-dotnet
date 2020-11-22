@@ -25,14 +25,14 @@ namespace Google.Cloud.AutoML.V1 {
       byte[] descriptorData = global::System.Convert.FromBase64String(
           string.Concat(
             "Ci1nb29nbGUvY2xvdWQvYXV0b21sL3YxL21vZGVsX2V2YWx1YXRpb24ucHJv",
-            "dG8SFmdvb2dsZS5jbG91ZC5hdXRvbWwudjEaHGdvb2dsZS9hcGkvYW5ub3Rh",
-            "dGlvbnMucHJvdG8aGWdvb2dsZS9hcGkvcmVzb3VyY2UucHJvdG8aK2dvb2ds",
-            "ZS9jbG91ZC9hdXRvbWwvdjEvY2xhc3NpZmljYXRpb24ucHJvdG8aJmdvb2ds",
-            "ZS9jbG91ZC9hdXRvbWwvdjEvZGV0ZWN0aW9uLnByb3RvGixnb29nbGUvY2xv",
-            "dWQvYXV0b21sL3YxL3RleHRfZXh0cmFjdGlvbi5wcm90bxorZ29vZ2xlL2Ns",
-            "b3VkL2F1dG9tbC92MS90ZXh0X3NlbnRpbWVudC5wcm90bxooZ29vZ2xlL2Ns",
-            "b3VkL2F1dG9tbC92MS90cmFuc2xhdGlvbi5wcm90bxofZ29vZ2xlL3Byb3Rv",
-            "YnVmL3RpbWVzdGFtcC5wcm90byK0BQoPTW9kZWxFdmFsdWF0aW9uEmQKIWNs",
+            "dG8SFmdvb2dsZS5jbG91ZC5hdXRvbWwudjEaGWdvb2dsZS9hcGkvcmVzb3Vy",
+            "Y2UucHJvdG8aK2dvb2dsZS9jbG91ZC9hdXRvbWwvdjEvY2xhc3NpZmljYXRp",
+            "b24ucHJvdG8aJmdvb2dsZS9jbG91ZC9hdXRvbWwvdjEvZGV0ZWN0aW9uLnBy",
+            "b3RvGixnb29nbGUvY2xvdWQvYXV0b21sL3YxL3RleHRfZXh0cmFjdGlvbi5w",
+            "cm90bxorZ29vZ2xlL2Nsb3VkL2F1dG9tbC92MS90ZXh0X3NlbnRpbWVudC5w",
+            "cm90bxooZ29vZ2xlL2Nsb3VkL2F1dG9tbC92MS90cmFuc2xhdGlvbi5wcm90",
+            "bxofZ29vZ2xlL3Byb3RvYnVmL3RpbWVzdGFtcC5wcm90bxocZ29vZ2xlL2Fw",
+            "aS9hbm5vdGF0aW9ucy5wcm90byK+BgoPTW9kZWxFdmFsdWF0aW9uEmQKIWNs",
             "YXNzaWZpY2F0aW9uX2V2YWx1YXRpb25fbWV0cmljcxgIIAEoCzI3Lmdvb2ds",
             "ZS5jbG91ZC5hdXRvbWwudjEuQ2xhc3NpZmljYXRpb25FdmFsdWF0aW9uTWV0",
             "cmljc0gAEl4KHnRyYW5zbGF0aW9uX2V2YWx1YXRpb25fbWV0cmljcxgJIAEo",
@@ -47,15 +47,18 @@ namespace Google.Cloud.AutoML.V1 {
             "YWx1YXRpb25NZXRyaWNzSAASDAoEbmFtZRgBIAEoCRIaChJhbm5vdGF0aW9u",
             "X3NwZWNfaWQYAiABKAkSFAoMZGlzcGxheV9uYW1lGA8gASgJEi8KC2NyZWF0",
             "ZV90aW1lGAUgASgLMhouZ29vZ2xlLnByb3RvYnVmLlRpbWVzdGFtcBIfChdl",
-            "dmFsdWF0ZWRfZXhhbXBsZV9jb3VudBgGIAEoBUIJCgdtZXRyaWNzQqoBChpj",
-            "b20uZ29vZ2xlLmNsb3VkLmF1dG9tbC52MVABWjxnb29nbGUuZ29sYW5nLm9y",
-            "Zy9nZW5wcm90by9nb29nbGVhcGlzL2Nsb3VkL2F1dG9tbC92MTthdXRvbWyq",
-            "AhZHb29nbGUuQ2xvdWQuQXV0b01MLlYxygIWR29vZ2xlXENsb3VkXEF1dG9N",
-            "bFxWMeoCGUdvb2dsZTo6Q2xvdWQ6OkF1dG9NTDo6VjFiBnByb3RvMw=="));
+            "dmFsdWF0ZWRfZXhhbXBsZV9jb3VudBgGIAEoBTqHAepBgwEKJWF1dG9tbC5n",
+            "b29nbGVhcGlzLmNvbS9Nb2RlbEV2YWx1YXRpb24SWnByb2plY3RzL3twcm9q",
+            "ZWN0fS9sb2NhdGlvbnMve2xvY2F0aW9ufS9tb2RlbHMve21vZGVsfS9tb2Rl",
+            "bEV2YWx1YXRpb25zL3ttb2RlbF9ldmFsdWF0aW9ufUIJCgdtZXRyaWNzQqoB",
+            "Chpjb20uZ29vZ2xlLmNsb3VkLmF1dG9tbC52MVABWjxnb29nbGUuZ29sYW5n",
+            "Lm9yZy9nZW5wcm90by9nb29nbGVhcGlzL2Nsb3VkL2F1dG9tbC92MTthdXRv",
+            "bWyqAhZHb29nbGUuQ2xvdWQuQXV0b01MLlYxygIWR29vZ2xlXENsb3VkXEF1",
+            "dG9NbFxWMeoCGUdvb2dsZTo6Q2xvdWQ6OkF1dG9NTDo6VjFiBnByb3RvMw=="));
       descriptor = pbr::FileDescriptor.FromGeneratedCode(descriptorData,
-          new pbr::FileDescriptor[] { global::Google.Api.AnnotationsReflection.Descriptor, global::Google.Api.ResourceReflection.Descriptor, global::Google.Cloud.AutoML.V1.ClassificationReflection.Descriptor, global::Google.Cloud.AutoML.V1.DetectionReflection.Descriptor, global::Google.Cloud.AutoML.V1.TextExtractionReflection.Descriptor, global::Google.Cloud.AutoML.V1.TextSentimentReflection.Descriptor, global::Google.Cloud.AutoML.V1.TranslationReflection.Descriptor, global::Google.Protobuf.WellKnownTypes.TimestampReflection.Descriptor, },
-          new pbr::GeneratedClrTypeInfo(null, new pbr::GeneratedClrTypeInfo[] {
-            new pbr::GeneratedClrTypeInfo(typeof(global::Google.Cloud.AutoML.V1.ModelEvaluation), global::Google.Cloud.AutoML.V1.ModelEvaluation.Parser, new[]{ "ClassificationEvaluationMetrics", "TranslationEvaluationMetrics", "ImageObjectDetectionEvaluationMetrics", "TextSentimentEvaluationMetrics", "TextExtractionEvaluationMetrics", "Name", "AnnotationSpecId", "DisplayName", "CreateTime", "EvaluatedExampleCount" }, new[]{ "Metrics" }, null, null)
+          new pbr::FileDescriptor[] { global::Google.Api.ResourceReflection.Descriptor, global::Google.Cloud.AutoML.V1.ClassificationReflection.Descriptor, global::Google.Cloud.AutoML.V1.DetectionReflection.Descriptor, global::Google.Cloud.AutoML.V1.TextExtractionReflection.Descriptor, global::Google.Cloud.AutoML.V1.TextSentimentReflection.Descriptor, global::Google.Cloud.AutoML.V1.TranslationReflection.Descriptor, global::Google.Protobuf.WellKnownTypes.TimestampReflection.Descriptor, global::Google.Api.AnnotationsReflection.Descriptor, },
+          new pbr::GeneratedClrTypeInfo(null, null, new pbr::GeneratedClrTypeInfo[] {
+            new pbr::GeneratedClrTypeInfo(typeof(global::Google.Cloud.AutoML.V1.ModelEvaluation), global::Google.Cloud.AutoML.V1.ModelEvaluation.Parser, new[]{ "ClassificationEvaluationMetrics", "TranslationEvaluationMetrics", "ImageObjectDetectionEvaluationMetrics", "TextSentimentEvaluationMetrics", "TextExtractionEvaluationMetrics", "Name", "AnnotationSpecId", "DisplayName", "CreateTime", "EvaluatedExampleCount" }, new[]{ "Metrics" }, null, null, null)
           }));
     }
     #endregion
@@ -65,7 +68,11 @@ namespace Google.Cloud.AutoML.V1 {
   /// <summary>
   /// Evaluation results of a model.
   /// </summary>
-  public sealed partial class ModelEvaluation : pb::IMessage<ModelEvaluation> {
+  public sealed partial class ModelEvaluation : pb::IMessage<ModelEvaluation>
+  #if !GOOGLE_PROTOBUF_REFSTRUCT_COMPATIBILITY_MODE
+      , pb::IBufferMessage
+  #endif
+  {
     private static readonly pb::MessageParser<ModelEvaluation> _parser = new pb::MessageParser<ModelEvaluation>(() => new ModelEvaluation());
     private pb::UnknownFieldSet _unknownFields;
     [global::System.Diagnostics.DebuggerNonUserCodeAttribute]
@@ -124,7 +131,10 @@ namespace Google.Cloud.AutoML.V1 {
     /// <summary>Field number for the "classification_evaluation_metrics" field.</summary>
     public const int ClassificationEvaluationMetricsFieldNumber = 8;
     /// <summary>
-    /// Model evaluation metrics for image, text classification.
+    /// Model evaluation metrics for image, text, video and tables
+    /// classification.
+    /// Tables problem is considered a classification when the target column
+    /// is CATEGORY DataType.
     /// </summary>
     [global::System.Diagnostics.DebuggerNonUserCodeAttribute]
     public global::Google.Cloud.AutoML.V1.ClassificationEvaluationMetrics ClassificationEvaluationMetrics {
@@ -212,8 +222,15 @@ namespace Google.Cloud.AutoML.V1 {
     public const int AnnotationSpecIdFieldNumber = 2;
     private string annotationSpecId_ = "";
     /// <summary>
-    /// Output only. The ID of the annotation spec that the model evaluation
-    /// applies to. The The ID is empty for the overall model evaluation.
+    /// Output only. The ID of the annotation spec that the model evaluation applies to. The
+    /// The ID is empty for the overall model evaluation.
+    /// For Tables annotation specs in the dataset do not exist and this ID is
+    /// always not set, but for CLASSIFICATION
+    ///
+    /// [prediction_type-s][google.cloud.automl.v1.TablesModelMetadata.prediction_type]
+    /// the
+    /// [display_name][google.cloud.automl.v1.ModelEvaluation.display_name]
+    /// field is used.
     /// </summary>
     [global::System.Diagnostics.DebuggerNonUserCodeAttribute]
     public string AnnotationSpecId {
@@ -232,7 +249,12 @@ namespace Google.Cloud.AutoML.V1 {
     /// at the moment when the model was trained. Because this field returns a
     /// value at model training time, for different models trained from the same
     /// dataset, the values may differ, since display names could had been changed
-    /// between the two model's trainings.
+    /// between the two model's trainings. For Tables CLASSIFICATION
+    ///
+    /// [prediction_type-s][google.cloud.automl.v1.TablesModelMetadata.prediction_type]
+    /// distinct values of the target column at the moment of the model evaluation
+    /// are populated here.
+    /// The display_name is empty for the overall model evaluation.
     /// </summary>
     [global::System.Diagnostics.DebuggerNonUserCodeAttribute]
     public string DisplayName {
@@ -354,6 +376,9 @@ namespace Google.Cloud.AutoML.V1 {
 
     [global::System.Diagnostics.DebuggerNonUserCodeAttribute]
     public void WriteTo(pb::CodedOutputStream output) {
+    #if !GOOGLE_PROTOBUF_REFSTRUCT_COMPATIBILITY_MODE
+      output.WriteRawMessage(this);
+    #else
       if (Name.Length != 0) {
         output.WriteRawTag(10);
         output.WriteString(Name);
@@ -397,7 +422,57 @@ namespace Google.Cloud.AutoML.V1 {
       if (_unknownFields != null) {
         _unknownFields.WriteTo(output);
       }
+    #endif
     }
+
+    #if !GOOGLE_PROTOBUF_REFSTRUCT_COMPATIBILITY_MODE
+    [global::System.Diagnostics.DebuggerNonUserCodeAttribute]
+    void pb::IBufferMessage.InternalWriteTo(ref pb::WriteContext output) {
+      if (Name.Length != 0) {
+        output.WriteRawTag(10);
+        output.WriteString(Name);
+      }
+      if (AnnotationSpecId.Length != 0) {
+        output.WriteRawTag(18);
+        output.WriteString(AnnotationSpecId);
+      }
+      if (createTime_ != null) {
+        output.WriteRawTag(42);
+        output.WriteMessage(CreateTime);
+      }
+      if (EvaluatedExampleCount != 0) {
+        output.WriteRawTag(48);
+        output.WriteInt32(EvaluatedExampleCount);
+      }
+      if (metricsCase_ == MetricsOneofCase.ClassificationEvaluationMetrics) {
+        output.WriteRawTag(66);
+        output.WriteMessage(ClassificationEvaluationMetrics);
+      }
+      if (metricsCase_ == MetricsOneofCase.TranslationEvaluationMetrics) {
+        output.WriteRawTag(74);
+        output.WriteMessage(TranslationEvaluationMetrics);
+      }
+      if (metricsCase_ == MetricsOneofCase.TextSentimentEvaluationMetrics) {
+        output.WriteRawTag(90);
+        output.WriteMessage(TextSentimentEvaluationMetrics);
+      }
+      if (metricsCase_ == MetricsOneofCase.ImageObjectDetectionEvaluationMetrics) {
+        output.WriteRawTag(98);
+        output.WriteMessage(ImageObjectDetectionEvaluationMetrics);
+      }
+      if (metricsCase_ == MetricsOneofCase.TextExtractionEvaluationMetrics) {
+        output.WriteRawTag(106);
+        output.WriteMessage(TextExtractionEvaluationMetrics);
+      }
+      if (DisplayName.Length != 0) {
+        output.WriteRawTag(122);
+        output.WriteString(DisplayName);
+      }
+      if (_unknownFields != null) {
+        _unknownFields.WriteTo(ref output);
+      }
+    }
+    #endif
 
     [global::System.Diagnostics.DebuggerNonUserCodeAttribute]
     public int CalculateSize() {
@@ -499,6 +574,9 @@ namespace Google.Cloud.AutoML.V1 {
 
     [global::System.Diagnostics.DebuggerNonUserCodeAttribute]
     public void MergeFrom(pb::CodedInputStream input) {
+    #if !GOOGLE_PROTOBUF_REFSTRUCT_COMPATIBILITY_MODE
+      input.ReadRawMessage(this);
+    #else
       uint tag;
       while ((tag = input.ReadTag()) != 0) {
         switch(tag) {
@@ -575,7 +653,90 @@ namespace Google.Cloud.AutoML.V1 {
           }
         }
       }
+    #endif
     }
+
+    #if !GOOGLE_PROTOBUF_REFSTRUCT_COMPATIBILITY_MODE
+    [global::System.Diagnostics.DebuggerNonUserCodeAttribute]
+    void pb::IBufferMessage.InternalMergeFrom(ref pb::ParseContext input) {
+      uint tag;
+      while ((tag = input.ReadTag()) != 0) {
+        switch(tag) {
+          default:
+            _unknownFields = pb::UnknownFieldSet.MergeFieldFrom(_unknownFields, ref input);
+            break;
+          case 10: {
+            Name = input.ReadString();
+            break;
+          }
+          case 18: {
+            AnnotationSpecId = input.ReadString();
+            break;
+          }
+          case 42: {
+            if (createTime_ == null) {
+              CreateTime = new global::Google.Protobuf.WellKnownTypes.Timestamp();
+            }
+            input.ReadMessage(CreateTime);
+            break;
+          }
+          case 48: {
+            EvaluatedExampleCount = input.ReadInt32();
+            break;
+          }
+          case 66: {
+            global::Google.Cloud.AutoML.V1.ClassificationEvaluationMetrics subBuilder = new global::Google.Cloud.AutoML.V1.ClassificationEvaluationMetrics();
+            if (metricsCase_ == MetricsOneofCase.ClassificationEvaluationMetrics) {
+              subBuilder.MergeFrom(ClassificationEvaluationMetrics);
+            }
+            input.ReadMessage(subBuilder);
+            ClassificationEvaluationMetrics = subBuilder;
+            break;
+          }
+          case 74: {
+            global::Google.Cloud.AutoML.V1.TranslationEvaluationMetrics subBuilder = new global::Google.Cloud.AutoML.V1.TranslationEvaluationMetrics();
+            if (metricsCase_ == MetricsOneofCase.TranslationEvaluationMetrics) {
+              subBuilder.MergeFrom(TranslationEvaluationMetrics);
+            }
+            input.ReadMessage(subBuilder);
+            TranslationEvaluationMetrics = subBuilder;
+            break;
+          }
+          case 90: {
+            global::Google.Cloud.AutoML.V1.TextSentimentEvaluationMetrics subBuilder = new global::Google.Cloud.AutoML.V1.TextSentimentEvaluationMetrics();
+            if (metricsCase_ == MetricsOneofCase.TextSentimentEvaluationMetrics) {
+              subBuilder.MergeFrom(TextSentimentEvaluationMetrics);
+            }
+            input.ReadMessage(subBuilder);
+            TextSentimentEvaluationMetrics = subBuilder;
+            break;
+          }
+          case 98: {
+            global::Google.Cloud.AutoML.V1.ImageObjectDetectionEvaluationMetrics subBuilder = new global::Google.Cloud.AutoML.V1.ImageObjectDetectionEvaluationMetrics();
+            if (metricsCase_ == MetricsOneofCase.ImageObjectDetectionEvaluationMetrics) {
+              subBuilder.MergeFrom(ImageObjectDetectionEvaluationMetrics);
+            }
+            input.ReadMessage(subBuilder);
+            ImageObjectDetectionEvaluationMetrics = subBuilder;
+            break;
+          }
+          case 106: {
+            global::Google.Cloud.AutoML.V1.TextExtractionEvaluationMetrics subBuilder = new global::Google.Cloud.AutoML.V1.TextExtractionEvaluationMetrics();
+            if (metricsCase_ == MetricsOneofCase.TextExtractionEvaluationMetrics) {
+              subBuilder.MergeFrom(TextExtractionEvaluationMetrics);
+            }
+            input.ReadMessage(subBuilder);
+            TextExtractionEvaluationMetrics = subBuilder;
+            break;
+          }
+          case 122: {
+            DisplayName = input.ReadString();
+            break;
+          }
+        }
+      }
+    }
+    #endif
 
   }
 

@@ -1,4 +1,4 @@
-// Copyright 2019 Google LLC
+// Copyright 2020 Google LLC
 //
 // Licensed under the Apache License, Version 2.0 (the "License");
 // you may not use this file except in compliance with the License.
@@ -16,6 +16,7 @@
 
 using gax = Google.Api.Gax;
 using gaxgrpc = Google.Api.Gax.Grpc;
+using gaxgrpccore = Google.Api.Gax.Grpc.GrpcCore;
 using proto = Google.Protobuf;
 using grpccore = Grpc.Core;
 using grpcinter = Grpc.Core.Interceptors;
@@ -23,7 +24,6 @@ using sys = System;
 using scg = System.Collections.Generic;
 using sco = System.Collections.ObjectModel;
 using linq = System.Linq;
-using sysnet = System.Net;
 using st = System.Threading;
 using stt = System.Threading.Tasks;
 
@@ -65,13 +65,11 @@ namespace Google.Cloud.Datastore.V1
         /// <item><description>Initial retry delay: 100 milliseconds.</description></item>
         /// <item><description>Retry delay multiplier: 1.3</description></item>
         /// <item><description>Retry maximum delay: 60000 milliseconds.</description></item>
-        /// <item><description>Initial timeout: 60000 milliseconds.</description></item>
-        /// <item><description>Timeout multiplier: 1</description></item>
-        /// <item><description>Timeout maximum delay: 60000 milliseconds.</description></item>
-        /// <item><description>Total timeout: 60 seconds.</description></item>
+        /// <item><description>Maximum attempts: Unlimited</description></item>
+        /// <item><description>Timeout: 60 seconds.</description></item>
         /// </list>
         /// </remarks>
-        public gaxgrpc::CallSettings LookupSettings { get; set; } = gaxgrpc::CallSettings.FromCallTiming(gaxgrpc::CallTiming.FromRetry(new gaxgrpc::RetrySettings(retryBackoff: new gaxgrpc::BackoffSettings(delay: sys::TimeSpan.FromMilliseconds(100), maxDelay: sys::TimeSpan.FromMilliseconds(60000), delayMultiplier: 1.3), timeoutBackoff: new gaxgrpc::BackoffSettings(delay: sys::TimeSpan.FromMilliseconds(60000), maxDelay: sys::TimeSpan.FromMilliseconds(60000), delayMultiplier: 1), totalExpiration: gax::Expiration.FromTimeout(sys::TimeSpan.FromMilliseconds(60000)), retryFilter: gaxgrpc::RetrySettings.FilterForStatusCodes(grpccore::StatusCode.Unavailable, grpccore::StatusCode.DeadlineExceeded))));
+        public gaxgrpc::CallSettings LookupSettings { get; set; } = gaxgrpc::CallSettingsExtensions.WithRetry(gaxgrpc::CallSettings.FromExpiration(gax::Expiration.FromTimeout(sys::TimeSpan.FromMilliseconds(60000))), gaxgrpc::RetrySettings.FromExponentialBackoff(maxAttempts: 2147483647, initialBackoff: sys::TimeSpan.FromMilliseconds(100), maxBackoff: sys::TimeSpan.FromMilliseconds(60000), backoffMultiplier: 1.3, retryFilter: gaxgrpc::RetrySettings.FilterForStatusCodes(grpccore::StatusCode.Unavailable, grpccore::StatusCode.DeadlineExceeded)));
 
         /// <summary>
         /// <see cref="gaxgrpc::CallSettings"/> for synchronous and asynchronous calls to <c>DatastoreClient.RunQuery</c>
@@ -82,41 +80,59 @@ namespace Google.Cloud.Datastore.V1
         /// <item><description>Initial retry delay: 100 milliseconds.</description></item>
         /// <item><description>Retry delay multiplier: 1.3</description></item>
         /// <item><description>Retry maximum delay: 60000 milliseconds.</description></item>
-        /// <item><description>Initial timeout: 60000 milliseconds.</description></item>
-        /// <item><description>Timeout multiplier: 1</description></item>
-        /// <item><description>Timeout maximum delay: 60000 milliseconds.</description></item>
-        /// <item><description>Total timeout: 60 seconds.</description></item>
+        /// <item><description>Maximum attempts: Unlimited</description></item>
+        /// <item><description>Timeout: 60 seconds.</description></item>
         /// </list>
         /// </remarks>
-        public gaxgrpc::CallSettings RunQuerySettings { get; set; } = gaxgrpc::CallSettings.FromCallTiming(gaxgrpc::CallTiming.FromRetry(new gaxgrpc::RetrySettings(retryBackoff: new gaxgrpc::BackoffSettings(delay: sys::TimeSpan.FromMilliseconds(100), maxDelay: sys::TimeSpan.FromMilliseconds(60000), delayMultiplier: 1.3), timeoutBackoff: new gaxgrpc::BackoffSettings(delay: sys::TimeSpan.FromMilliseconds(60000), maxDelay: sys::TimeSpan.FromMilliseconds(60000), delayMultiplier: 1), totalExpiration: gax::Expiration.FromTimeout(sys::TimeSpan.FromMilliseconds(60000)), retryFilter: gaxgrpc::RetrySettings.FilterForStatusCodes(grpccore::StatusCode.Unavailable, grpccore::StatusCode.DeadlineExceeded))));
+        public gaxgrpc::CallSettings RunQuerySettings { get; set; } = gaxgrpc::CallSettingsExtensions.WithRetry(gaxgrpc::CallSettings.FromExpiration(gax::Expiration.FromTimeout(sys::TimeSpan.FromMilliseconds(60000))), gaxgrpc::RetrySettings.FromExponentialBackoff(maxAttempts: 2147483647, initialBackoff: sys::TimeSpan.FromMilliseconds(100), maxBackoff: sys::TimeSpan.FromMilliseconds(60000), backoffMultiplier: 1.3, retryFilter: gaxgrpc::RetrySettings.FilterForStatusCodes(grpccore::StatusCode.Unavailable, grpccore::StatusCode.DeadlineExceeded)));
 
         /// <summary>
         /// <see cref="gaxgrpc::CallSettings"/> for synchronous and asynchronous calls to
         /// <c>DatastoreClient.BeginTransaction</c> and <c>DatastoreClient.BeginTransactionAsync</c>.
         /// </summary>
-        /// <remarks>By default, retry will not be attempted.</remarks>
-        public gaxgrpc::CallSettings BeginTransactionSettings { get; set; }
+        /// <remarks>
+        /// <list type="bullet">
+        /// <item><description>This call will not be retried.</description></item>
+        /// <item><description>Timeout: 60 seconds.</description></item>
+        /// </list>
+        /// </remarks>
+        public gaxgrpc::CallSettings BeginTransactionSettings { get; set; } = gaxgrpc::CallSettings.FromExpiration(gax::Expiration.FromTimeout(sys::TimeSpan.FromMilliseconds(60000)));
 
         /// <summary>
         /// <see cref="gaxgrpc::CallSettings"/> for synchronous and asynchronous calls to <c>DatastoreClient.Commit</c>
         /// and <c>DatastoreClient.CommitAsync</c>.
         /// </summary>
-        /// <remarks>By default, retry will not be attempted.</remarks>
-        public gaxgrpc::CallSettings CommitSettings { get; set; }
+        /// <remarks>
+        /// <list type="bullet">
+        /// <item><description>This call will not be retried.</description></item>
+        /// <item><description>Timeout: 60 seconds.</description></item>
+        /// </list>
+        /// </remarks>
+        public gaxgrpc::CallSettings CommitSettings { get; set; } = gaxgrpc::CallSettings.FromExpiration(gax::Expiration.FromTimeout(sys::TimeSpan.FromMilliseconds(60000)));
 
         /// <summary>
         /// <see cref="gaxgrpc::CallSettings"/> for synchronous and asynchronous calls to <c>DatastoreClient.Rollback</c>
         ///  and <c>DatastoreClient.RollbackAsync</c>.
         /// </summary>
-        /// <remarks>By default, retry will not be attempted.</remarks>
-        public gaxgrpc::CallSettings RollbackSettings { get; set; }
+        /// <remarks>
+        /// <list type="bullet">
+        /// <item><description>This call will not be retried.</description></item>
+        /// <item><description>Timeout: 60 seconds.</description></item>
+        /// </list>
+        /// </remarks>
+        public gaxgrpc::CallSettings RollbackSettings { get; set; } = gaxgrpc::CallSettings.FromExpiration(gax::Expiration.FromTimeout(sys::TimeSpan.FromMilliseconds(60000)));
 
         /// <summary>
         /// <see cref="gaxgrpc::CallSettings"/> for synchronous and asynchronous calls to <c>DatastoreClient.AllocateIds</c>
         ///  and <c>DatastoreClient.AllocateIdsAsync</c>.
         /// </summary>
-        /// <remarks>By default, retry will not be attempted.</remarks>
-        public gaxgrpc::CallSettings AllocateIdsSettings { get; set; }
+        /// <remarks>
+        /// <list type="bullet">
+        /// <item><description>This call will not be retried.</description></item>
+        /// <item><description>Timeout: 60 seconds.</description></item>
+        /// </list>
+        /// </remarks>
+        public gaxgrpc::CallSettings AllocateIdsSettings { get; set; } = gaxgrpc::CallSettings.FromExpiration(gax::Expiration.FromTimeout(sys::TimeSpan.FromMilliseconds(60000)));
 
         /// <summary>
         /// <see cref="gaxgrpc::CallSettings"/> for synchronous and asynchronous calls to <c>DatastoreClient.ReserveIds</c>
@@ -127,13 +143,11 @@ namespace Google.Cloud.Datastore.V1
         /// <item><description>Initial retry delay: 100 milliseconds.</description></item>
         /// <item><description>Retry delay multiplier: 1.3</description></item>
         /// <item><description>Retry maximum delay: 60000 milliseconds.</description></item>
-        /// <item><description>Initial timeout: 60000 milliseconds.</description></item>
-        /// <item><description>Timeout multiplier: 1</description></item>
-        /// <item><description>Timeout maximum delay: 60000 milliseconds.</description></item>
-        /// <item><description>Total timeout: 60 seconds.</description></item>
+        /// <item><description>Maximum attempts: Unlimited</description></item>
+        /// <item><description>Timeout: 60 seconds.</description></item>
         /// </list>
         /// </remarks>
-        public gaxgrpc::CallSettings ReserveIdsSettings { get; set; } = gaxgrpc::CallSettings.FromCallTiming(gaxgrpc::CallTiming.FromRetry(new gaxgrpc::RetrySettings(retryBackoff: new gaxgrpc::BackoffSettings(delay: sys::TimeSpan.FromMilliseconds(100), maxDelay: sys::TimeSpan.FromMilliseconds(60000), delayMultiplier: 1.3), timeoutBackoff: new gaxgrpc::BackoffSettings(delay: sys::TimeSpan.FromMilliseconds(60000), maxDelay: sys::TimeSpan.FromMilliseconds(60000), delayMultiplier: 1), totalExpiration: gax::Expiration.FromTimeout(sys::TimeSpan.FromMilliseconds(60000)), retryFilter: gaxgrpc::RetrySettings.FilterForStatusCodes(grpccore::StatusCode.Unavailable, grpccore::StatusCode.DeadlineExceeded))));
+        public gaxgrpc::CallSettings ReserveIdsSettings { get; set; } = gaxgrpc::CallSettingsExtensions.WithRetry(gaxgrpc::CallSettings.FromExpiration(gax::Expiration.FromTimeout(sys::TimeSpan.FromMilliseconds(60000))), gaxgrpc::RetrySettings.FromExponentialBackoff(maxAttempts: 2147483647, initialBackoff: sys::TimeSpan.FromMilliseconds(100), maxBackoff: sys::TimeSpan.FromMilliseconds(60000), backoffMultiplier: 1.3, retryFilter: gaxgrpc::RetrySettings.FilterForStatusCodes(grpccore::StatusCode.Unavailable, grpccore::StatusCode.DeadlineExceeded)));
 
         /// <summary>Creates a deep clone of this object, with all the same property values.</summary>
         /// <returns>A deep clone of this <see cref="DatastoreSettings"/> object.</returns>
@@ -148,40 +162,71 @@ namespace Google.Cloud.Datastore.V1
         /// <summary>The settings to use for RPCs, or <c>null</c> for the default settings.</summary>
         public DatastoreSettings Settings { get; set; }
 
-        /// <inheritdoc/>
+        partial void InterceptBuild(ref DatastoreClient client);
+
+        partial void InterceptBuildAsync(st::CancellationToken cancellationToken, ref stt::Task<DatastoreClient> task);
+
+        /// <summary>Builds the resulting client.</summary>
         public override DatastoreClient Build()
+        {
+            DatastoreClient client = null;
+            InterceptBuild(ref client);
+            return client ?? BuildImpl();
+        }
+
+        /// <summary>Builds the resulting client asynchronously.</summary>
+        public override stt::Task<DatastoreClient> BuildAsync(st::CancellationToken cancellationToken = default)
+        {
+            stt::Task<DatastoreClient> task = null;
+            InterceptBuildAsync(cancellationToken, ref task);
+            return task ?? BuildAsyncImpl(cancellationToken);
+        }
+
+        private DatastoreClient BuildImpl()
         {
             Validate();
             grpccore::CallInvoker callInvoker = CreateCallInvoker();
             return DatastoreClient.Create(callInvoker, Settings);
         }
 
-        /// <inheritdoc/>
-        public override async stt::Task<DatastoreClient> BuildAsync(st::CancellationToken cancellationToken = default)
+        private async stt::Task<DatastoreClient> BuildAsyncImpl(st::CancellationToken cancellationToken)
         {
             Validate();
             grpccore::CallInvoker callInvoker = await CreateCallInvokerAsync(cancellationToken).ConfigureAwait(false);
             return DatastoreClient.Create(callInvoker, Settings);
         }
 
-        /// <inheritdoc/>
-        protected override gaxgrpc::ServiceEndpoint GetDefaultEndpoint() => DatastoreClient.DefaultEndpoint;
+        /// <summary>Returns the endpoint for this builder type, used if no endpoint is otherwise specified.</summary>
+        protected override string GetDefaultEndpoint() => DatastoreClient.DefaultEndpoint;
 
-        /// <inheritdoc/>
+        /// <summary>
+        /// Returns the default scopes for this builder type, used if no scopes are otherwise specified.
+        /// </summary>
         protected override scg::IReadOnlyList<string> GetDefaultScopes() => DatastoreClient.DefaultScopes;
 
-        /// <inheritdoc/>
+        /// <summary>Returns the channel pool to use when no other options are specified.</summary>
         protected override gaxgrpc::ChannelPool GetChannelPool() => DatastoreClient.ChannelPool;
+
+        /// <summary>Returns the default <see cref="gaxgrpc::GrpcAdapter"/>to use if not otherwise specified.</summary>
+        protected override gaxgrpc::GrpcAdapter DefaultGrpcAdapter => gaxgrpccore::GrpcCoreAdapter.Instance;
     }
 
     /// <summary>Datastore client wrapper, for convenient use.</summary>
+    /// <remarks>
+    /// Each RPC normalizes the partition IDs of the keys in its input entities,
+    /// and always returns entities with keys with normalized partition IDs.
+    /// This applies to all keys and entities, including those in values, except keys
+    /// with both an empty path and an empty or unset partition ID. Normalization of
+    /// input keys sets the project ID (if not already set) to the project ID from
+    /// the request.
+    /// </remarks>
     public abstract partial class DatastoreClient
     {
         /// <summary>
         /// The default endpoint for the Datastore service, which is a host of "datastore.googleapis.com" and a port of
         /// 443.
         /// </summary>
-        public static gaxgrpc::ServiceEndpoint DefaultEndpoint { get; } = new gaxgrpc::ServiceEndpoint("datastore.googleapis.com", 443);
+        public static string DefaultEndpoint { get; } = "datastore.googleapis.com:443";
 
         /// <summary>The default Datastore scopes.</summary>
         /// <remarks>
@@ -200,96 +245,22 @@ namespace Google.Cloud.Datastore.V1
         internal static gaxgrpc::ChannelPool ChannelPool { get; } = new gaxgrpc::ChannelPool(DefaultScopes);
 
         /// <summary>
-        /// Asynchronously creates a <see cref="DatastoreClient"/>, applying defaults for all unspecified settings, and
-        /// creating a channel connecting to the given endpoint with application default credentials where necessary.
-        /// See the example for how to use custom credentials.
+        /// Asynchronously creates a <see cref="DatastoreClient"/> using the default credentials, endpoint and settings.
+        /// To specify custom credentials or other settings, use <see cref="DatastoreClientBuilder"/>.
         /// </summary>
-        /// <example>
-        /// This sample shows how to create a client using default credentials:
-        /// <code>
-        /// using Google.Cloud.Vision.V1;
-        /// ...
-        /// // When running on Google Cloud Platform this will use the project Compute Credential.
-        /// // Or set the GOOGLE_APPLICATION_CREDENTIALS environment variable to the path of a JSON
-        /// // credential file to use that credential.
-        /// ImageAnnotatorClient client = await ImageAnnotatorClient.CreateAsync();
-        /// </code>
-        /// This sample shows how to create a client using credentials loaded from a JSON file:
-        /// <code>
-        /// using Google.Cloud.Vision.V1;
-        /// using Google.Apis.Auth.OAuth2;
-        /// using Grpc.Auth;
-        /// using Grpc.Core;
-        /// ...
-        /// GoogleCredential cred = GoogleCredential.FromFile("/path/to/credentials.json");
-        /// Channel channel = new Channel(
-        ///     ImageAnnotatorClient.DefaultEndpoint.Host, ImageAnnotatorClient.DefaultEndpoint.Port, cred.ToChannelCredentials());
-        /// ImageAnnotatorClient client = ImageAnnotatorClient.Create(channel);
-        /// ...
-        /// // Shutdown the channel when it is no longer required.
-        /// await channel.ShutdownAsync();
-        /// </code>
-        /// </example>
-        /// <param name="endpoint">Optional <see cref="gaxgrpc::ServiceEndpoint"/>.</param>
-        /// <param name="settings">Optional <see cref="DatastoreSettings"/>.</param>
+        /// <param name="cancellationToken">
+        /// The <see cref="st::CancellationToken"/> to use while creating the client.
+        /// </param>
         /// <returns>The task representing the created <see cref="DatastoreClient"/>.</returns>
-        public static async stt::Task<DatastoreClient> CreateAsync(gaxgrpc::ServiceEndpoint endpoint = null, DatastoreSettings settings = null)
-        {
-            grpccore::Channel channel = await ChannelPool.GetChannelAsync(endpoint ?? DefaultEndpoint).ConfigureAwait(false);
-            return Create(channel, settings);
-        }
+        public static stt::Task<DatastoreClient> CreateAsync(st::CancellationToken cancellationToken = default) =>
+            new DatastoreClientBuilder().BuildAsync(cancellationToken);
 
         /// <summary>
-        /// Synchronously creates a <see cref="DatastoreClient"/>, applying defaults for all unspecified settings, and
-        /// creating a channel connecting to the given endpoint with application default credentials where necessary.
-        /// See the example for how to use custom credentials.
+        /// Synchronously creates a <see cref="DatastoreClient"/> using the default credentials, endpoint and settings. 
+        /// To specify custom credentials or other settings, use <see cref="DatastoreClientBuilder"/>.
         /// </summary>
-        /// <example>
-        /// This sample shows how to create a client using default credentials:
-        /// <code>
-        /// using Google.Cloud.Vision.V1;
-        /// ...
-        /// // When running on Google Cloud Platform this will use the project Compute Credential.
-        /// // Or set the GOOGLE_APPLICATION_CREDENTIALS environment variable to the path of a JSON
-        /// // credential file to use that credential.
-        /// ImageAnnotatorClient client = ImageAnnotatorClient.Create();
-        /// </code>
-        /// This sample shows how to create a client using credentials loaded from a JSON file:
-        /// <code>
-        /// using Google.Cloud.Vision.V1;
-        /// using Google.Apis.Auth.OAuth2;
-        /// using Grpc.Auth;
-        /// using Grpc.Core;
-        /// ...
-        /// GoogleCredential cred = GoogleCredential.FromFile("/path/to/credentials.json");
-        /// Channel channel = new Channel(
-        ///     ImageAnnotatorClient.DefaultEndpoint.Host, ImageAnnotatorClient.DefaultEndpoint.Port, cred.ToChannelCredentials());
-        /// ImageAnnotatorClient client = ImageAnnotatorClient.Create(channel);
-        /// ...
-        /// // Shutdown the channel when it is no longer required.
-        /// channel.ShutdownAsync().Wait();
-        /// </code>
-        /// </example>
-        /// <param name="endpoint">Optional <see cref="gaxgrpc::ServiceEndpoint"/>.</param>
-        /// <param name="settings">Optional <see cref="DatastoreSettings"/>.</param>
         /// <returns>The created <see cref="DatastoreClient"/>.</returns>
-        public static DatastoreClient Create(gaxgrpc::ServiceEndpoint endpoint = null, DatastoreSettings settings = null)
-        {
-            grpccore::Channel channel = ChannelPool.GetChannel(endpoint ?? DefaultEndpoint);
-            return Create(channel, settings);
-        }
-
-        /// <summary>
-        /// Creates a <see cref="DatastoreClient"/> which uses the specified channel for remote operations.
-        /// </summary>
-        /// <param name="channel">The <see cref="grpccore::Channel"/> for remote operations. Must not be null.</param>
-        /// <param name="settings">Optional <see cref="DatastoreSettings"/>.</param>
-        /// <returns>The created <see cref="DatastoreClient"/>.</returns>
-        public static DatastoreClient Create(grpccore::Channel channel, DatastoreSettings settings = null)
-        {
-            gax::GaxPreconditions.CheckNotNull(channel, nameof(channel));
-            return Create(new grpccore::DefaultCallInvoker(channel), settings);
-        }
+        public static DatastoreClient Create() => new DatastoreClientBuilder().Build();
 
         /// <summary>
         /// Creates a <see cref="DatastoreClient"/> which uses the specified call invoker for remote operations.
@@ -299,7 +270,7 @@ namespace Google.Cloud.Datastore.V1
         /// </param>
         /// <param name="settings">Optional <see cref="DatastoreSettings"/>.</param>
         /// <returns>The created <see cref="DatastoreClient"/>.</returns>
-        public static DatastoreClient Create(grpccore::CallInvoker callInvoker, DatastoreSettings settings = null)
+        internal static DatastoreClient Create(grpccore::CallInvoker callInvoker, DatastoreSettings settings = null)
         {
             gax::GaxPreconditions.CheckNotNull(callInvoker, nameof(callInvoker));
             grpcinter::Interceptor interceptor = settings?.Interceptor;
@@ -312,15 +283,14 @@ namespace Google.Cloud.Datastore.V1
         }
 
         /// <summary>
-        /// Shuts down any channels automatically created by
-        /// <see cref="Create(grpccore::CallInvoker,DatastoreSettings)"/> and
-        /// <see cref="CreateAsync(gaxgrpc::ServiceEndpoint,DatastoreSettings)"/>. Channels which weren't automatically
-        /// created are not affected.
+        /// Shuts down any channels automatically created by <see cref="Create()"/> and
+        /// <see cref="CreateAsync(st::CancellationToken)"/>. Channels which weren't automatically created are not
+        /// affected.
         /// </summary>
         /// <remarks>
-        /// After calling this method, further calls to <see cref="Create(grpccore::CallInvoker,DatastoreSettings)"/>
-        /// and <see cref="CreateAsync(gaxgrpc::ServiceEndpoint,DatastoreSettings)"/> will create new channels, which
-        /// could in turn be shut down by another call to this method.
+        /// After calling this method, further calls to <see cref="Create()"/> and
+        /// <see cref="CreateAsync(st::CancellationToken)"/> will create new channels, which could in turn be shut down
+        /// by another call to this method.
         /// </remarks>
         /// <returns>A task representing the asynchronous shutdown operation.</returns>
         public static stt::Task ShutdownDefaultChannelsAsync() => ChannelPool.ShutdownChannelsAsync();
@@ -1040,6 +1010,14 @@ namespace Google.Cloud.Datastore.V1
     }
 
     /// <summary>Datastore client wrapper implementation, for convenient use.</summary>
+    /// <remarks>
+    /// Each RPC normalizes the partition IDs of the keys in its input entities,
+    /// and always returns entities with keys with normalized partition IDs.
+    /// This applies to all keys and entities, including those in values, except keys
+    /// with both an empty path and an empty or unset partition ID. Normalization of
+    /// input keys sets the project ID (if not already set) to the project ID from
+    /// the request.
+    /// </remarks>
     public sealed partial class DatastoreClientImpl : DatastoreClient
     {
         private readonly gaxgrpc::ApiCall<LookupRequest, LookupResponse> _callLookup;
@@ -1066,25 +1044,25 @@ namespace Google.Cloud.Datastore.V1
             GrpcClient = grpcClient;
             DatastoreSettings effectiveSettings = settings ?? DatastoreSettings.GetDefault();
             gaxgrpc::ClientHelper clientHelper = new gaxgrpc::ClientHelper(effectiveSettings);
-            _callLookup = clientHelper.BuildApiCall<LookupRequest, LookupResponse>(grpcClient.LookupAsync, grpcClient.Lookup, effectiveSettings.LookupSettings).WithCallSettingsOverlay(request => gaxgrpc::CallSettings.FromHeader("x-goog-request-params", $"project_id={(sysnet::WebUtility.UrlEncode(request.ProjectId))}"));
+            _callLookup = clientHelper.BuildApiCall<LookupRequest, LookupResponse>(grpcClient.LookupAsync, grpcClient.Lookup, effectiveSettings.LookupSettings).WithGoogleRequestParam("project_id", request => request.ProjectId);
             Modify_ApiCall(ref _callLookup);
             Modify_LookupApiCall(ref _callLookup);
-            _callRunQuery = clientHelper.BuildApiCall<RunQueryRequest, RunQueryResponse>(grpcClient.RunQueryAsync, grpcClient.RunQuery, effectiveSettings.RunQuerySettings).WithCallSettingsOverlay(request => gaxgrpc::CallSettings.FromHeader("x-goog-request-params", $"project_id={(sysnet::WebUtility.UrlEncode(request.ProjectId))}"));
+            _callRunQuery = clientHelper.BuildApiCall<RunQueryRequest, RunQueryResponse>(grpcClient.RunQueryAsync, grpcClient.RunQuery, effectiveSettings.RunQuerySettings).WithGoogleRequestParam("project_id", request => request.ProjectId);
             Modify_ApiCall(ref _callRunQuery);
             Modify_RunQueryApiCall(ref _callRunQuery);
-            _callBeginTransaction = clientHelper.BuildApiCall<BeginTransactionRequest, BeginTransactionResponse>(grpcClient.BeginTransactionAsync, grpcClient.BeginTransaction, effectiveSettings.BeginTransactionSettings).WithCallSettingsOverlay(request => gaxgrpc::CallSettings.FromHeader("x-goog-request-params", $"project_id={(sysnet::WebUtility.UrlEncode(request.ProjectId))}"));
+            _callBeginTransaction = clientHelper.BuildApiCall<BeginTransactionRequest, BeginTransactionResponse>(grpcClient.BeginTransactionAsync, grpcClient.BeginTransaction, effectiveSettings.BeginTransactionSettings).WithGoogleRequestParam("project_id", request => request.ProjectId);
             Modify_ApiCall(ref _callBeginTransaction);
             Modify_BeginTransactionApiCall(ref _callBeginTransaction);
-            _callCommit = clientHelper.BuildApiCall<CommitRequest, CommitResponse>(grpcClient.CommitAsync, grpcClient.Commit, effectiveSettings.CommitSettings).WithCallSettingsOverlay(request => gaxgrpc::CallSettings.FromHeader("x-goog-request-params", $"project_id={(sysnet::WebUtility.UrlEncode(request.ProjectId))}"));
+            _callCommit = clientHelper.BuildApiCall<CommitRequest, CommitResponse>(grpcClient.CommitAsync, grpcClient.Commit, effectiveSettings.CommitSettings).WithGoogleRequestParam("project_id", request => request.ProjectId);
             Modify_ApiCall(ref _callCommit);
             Modify_CommitApiCall(ref _callCommit);
-            _callRollback = clientHelper.BuildApiCall<RollbackRequest, RollbackResponse>(grpcClient.RollbackAsync, grpcClient.Rollback, effectiveSettings.RollbackSettings).WithCallSettingsOverlay(request => gaxgrpc::CallSettings.FromHeader("x-goog-request-params", $"project_id={(sysnet::WebUtility.UrlEncode(request.ProjectId))}"));
+            _callRollback = clientHelper.BuildApiCall<RollbackRequest, RollbackResponse>(grpcClient.RollbackAsync, grpcClient.Rollback, effectiveSettings.RollbackSettings).WithGoogleRequestParam("project_id", request => request.ProjectId);
             Modify_ApiCall(ref _callRollback);
             Modify_RollbackApiCall(ref _callRollback);
-            _callAllocateIds = clientHelper.BuildApiCall<AllocateIdsRequest, AllocateIdsResponse>(grpcClient.AllocateIdsAsync, grpcClient.AllocateIds, effectiveSettings.AllocateIdsSettings).WithCallSettingsOverlay(request => gaxgrpc::CallSettings.FromHeader("x-goog-request-params", $"project_id={(sysnet::WebUtility.UrlEncode(request.ProjectId))}"));
+            _callAllocateIds = clientHelper.BuildApiCall<AllocateIdsRequest, AllocateIdsResponse>(grpcClient.AllocateIdsAsync, grpcClient.AllocateIds, effectiveSettings.AllocateIdsSettings).WithGoogleRequestParam("project_id", request => request.ProjectId);
             Modify_ApiCall(ref _callAllocateIds);
             Modify_AllocateIdsApiCall(ref _callAllocateIds);
-            _callReserveIds = clientHelper.BuildApiCall<ReserveIdsRequest, ReserveIdsResponse>(grpcClient.ReserveIdsAsync, grpcClient.ReserveIds, effectiveSettings.ReserveIdsSettings).WithCallSettingsOverlay(request => gaxgrpc::CallSettings.FromHeader("x-goog-request-params", $"project_id={(sysnet::WebUtility.UrlEncode(request.ProjectId))}"));
+            _callReserveIds = clientHelper.BuildApiCall<ReserveIdsRequest, ReserveIdsResponse>(grpcClient.ReserveIdsAsync, grpcClient.ReserveIds, effectiveSettings.ReserveIdsSettings).WithGoogleRequestParam("project_id", request => request.ProjectId);
             Modify_ApiCall(ref _callReserveIds);
             Modify_ReserveIdsApiCall(ref _callReserveIds);
             OnConstruction(grpcClient, effectiveSettings, clientHelper);

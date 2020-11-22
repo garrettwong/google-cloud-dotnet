@@ -27,26 +27,28 @@ namespace Google.Cloud.Talent.V4Beta1 {
             "Ci9nb29nbGUvY2xvdWQvdGFsZW50L3Y0YmV0YTEvZXZlbnRfc2VydmljZS5w",
             "cm90bxIbZ29vZ2xlLmNsb3VkLnRhbGVudC52NGJldGExGhxnb29nbGUvYXBp",
             "L2Fubm90YXRpb25zLnByb3RvGhdnb29nbGUvYXBpL2NsaWVudC5wcm90bxof",
-            "Z29vZ2xlL2FwaS9maWVsZF9iZWhhdmlvci5wcm90bxonZ29vZ2xlL2Nsb3Vk",
-            "L3RhbGVudC92NGJldGExL2V2ZW50LnByb3RvInQKGENyZWF0ZUNsaWVudEV2",
-            "ZW50UmVxdWVzdBITCgZwYXJlbnQYASABKAlCA+BBAhJDCgxjbGllbnRfZXZl",
-            "bnQYAiABKAsyKC5nb29nbGUuY2xvdWQudGFsZW50LnY0YmV0YTEuQ2xpZW50",
-            "RXZlbnRCA+BBAjLjAgoMRXZlbnRTZXJ2aWNlEuQBChFDcmVhdGVDbGllbnRF",
-            "dmVudBI1Lmdvb2dsZS5jbG91ZC50YWxlbnQudjRiZXRhMS5DcmVhdGVDbGll",
-            "bnRFdmVudFJlcXVlc3QaKC5nb29nbGUuY2xvdWQudGFsZW50LnY0YmV0YTEu",
-            "Q2xpZW50RXZlbnQiboLT5JMCaCIzL3Y0YmV0YTEve3BhcmVudD1wcm9qZWN0",
-            "cy8qL3RlbmFudHMvKn0vY2xpZW50RXZlbnRzOgEqWi4iKS92NGJldGExL3tw",
-            "YXJlbnQ9cHJvamVjdHMvKn0vY2xpZW50RXZlbnRzOgEqGmzKQRNqb2JzLmdv",
-            "b2dsZWFwaXMuY29t0kFTaHR0cHM6Ly93d3cuZ29vZ2xlYXBpcy5jb20vYXV0",
-            "aC9jbG91ZC1wbGF0Zm9ybSxodHRwczovL3d3dy5nb29nbGVhcGlzLmNvbS9h",
-            "dXRoL2pvYnNCfwofY29tLmdvb2dsZS5jbG91ZC50YWxlbnQudjRiZXRhMUIR",
-            "RXZlbnRTZXJ2aWNlUHJvdG9QAVpBZ29vZ2xlLmdvbGFuZy5vcmcvZ2VucHJv",
-            "dG8vZ29vZ2xlYXBpcy9jbG91ZC90YWxlbnQvdjRiZXRhMTt0YWxlbnSiAgND",
-            "VFNiBnByb3RvMw=="));
+            "Z29vZ2xlL2FwaS9maWVsZF9iZWhhdmlvci5wcm90bxoZZ29vZ2xlL2FwaS9y",
+            "ZXNvdXJjZS5wcm90bxonZ29vZ2xlL2Nsb3VkL3RhbGVudC92NGJldGExL2V2",
+            "ZW50LnByb3RvIpQBChhDcmVhdGVDbGllbnRFdmVudFJlcXVlc3QSMwoGcGFy",
+            "ZW50GAEgASgJQiPgQQL6QR0SG2pvYnMuZ29vZ2xlYXBpcy5jb20vQ29tcGFu",
+            "eRJDCgxjbGllbnRfZXZlbnQYAiABKAsyKC5nb29nbGUuY2xvdWQudGFsZW50",
+            "LnY0YmV0YTEuQ2xpZW50RXZlbnRCA+BBAjL6AgoMRXZlbnRTZXJ2aWNlEvsB",
+            "ChFDcmVhdGVDbGllbnRFdmVudBI1Lmdvb2dsZS5jbG91ZC50YWxlbnQudjRi",
+            "ZXRhMS5DcmVhdGVDbGllbnRFdmVudFJlcXVlc3QaKC5nb29nbGUuY2xvdWQu",
+            "dGFsZW50LnY0YmV0YTEuQ2xpZW50RXZlbnQihAGC0+STAmgiMy92NGJldGEx",
+            "L3twYXJlbnQ9cHJvamVjdHMvKi90ZW5hbnRzLyp9L2NsaWVudEV2ZW50czoB",
+            "KlouIikvdjRiZXRhMS97cGFyZW50PXByb2plY3RzLyp9L2NsaWVudEV2ZW50",
+            "czoBKtpBE3BhcmVudCxjbGllbnRfZXZlbnQabMpBE2pvYnMuZ29vZ2xlYXBp",
+            "cy5jb23SQVNodHRwczovL3d3dy5nb29nbGVhcGlzLmNvbS9hdXRoL2Nsb3Vk",
+            "LXBsYXRmb3JtLGh0dHBzOi8vd3d3Lmdvb2dsZWFwaXMuY29tL2F1dGgvam9i",
+            "c0J/Ch9jb20uZ29vZ2xlLmNsb3VkLnRhbGVudC52NGJldGExQhFFdmVudFNl",
+            "cnZpY2VQcm90b1ABWkFnb29nbGUuZ29sYW5nLm9yZy9nZW5wcm90by9nb29n",
+            "bGVhcGlzL2Nsb3VkL3RhbGVudC92NGJldGExO3RhbGVudKICA0NUU2IGcHJv",
+            "dG8z"));
       descriptor = pbr::FileDescriptor.FromGeneratedCode(descriptorData,
-          new pbr::FileDescriptor[] { global::Google.Api.AnnotationsReflection.Descriptor, global::Google.Api.ClientReflection.Descriptor, global::Google.Api.FieldBehaviorReflection.Descriptor, global::Google.Cloud.Talent.V4Beta1.EventReflection.Descriptor, },
-          new pbr::GeneratedClrTypeInfo(null, new pbr::GeneratedClrTypeInfo[] {
-            new pbr::GeneratedClrTypeInfo(typeof(global::Google.Cloud.Talent.V4Beta1.CreateClientEventRequest), global::Google.Cloud.Talent.V4Beta1.CreateClientEventRequest.Parser, new[]{ "Parent", "ClientEvent" }, null, null, null)
+          new pbr::FileDescriptor[] { global::Google.Api.AnnotationsReflection.Descriptor, global::Google.Api.ClientReflection.Descriptor, global::Google.Api.FieldBehaviorReflection.Descriptor, global::Google.Api.ResourceReflection.Descriptor, global::Google.Cloud.Talent.V4Beta1.EventReflection.Descriptor, },
+          new pbr::GeneratedClrTypeInfo(null, null, new pbr::GeneratedClrTypeInfo[] {
+            new pbr::GeneratedClrTypeInfo(typeof(global::Google.Cloud.Talent.V4Beta1.CreateClientEventRequest), global::Google.Cloud.Talent.V4Beta1.CreateClientEventRequest.Parser, new[]{ "Parent", "ClientEvent" }, null, null, null, null)
           }));
     }
     #endregion
@@ -56,7 +58,11 @@ namespace Google.Cloud.Talent.V4Beta1 {
   /// <summary>
   /// The report event request.
   /// </summary>
-  public sealed partial class CreateClientEventRequest : pb::IMessage<CreateClientEventRequest> {
+  public sealed partial class CreateClientEventRequest : pb::IMessage<CreateClientEventRequest>
+  #if !GOOGLE_PROTOBUF_REFSTRUCT_COMPATIBILITY_MODE
+      , pb::IBufferMessage
+  #endif
+  {
     private static readonly pb::MessageParser<CreateClientEventRequest> _parser = new pb::MessageParser<CreateClientEventRequest>(() => new CreateClientEventRequest());
     private pb::UnknownFieldSet _unknownFields;
     [global::System.Diagnostics.DebuggerNonUserCodeAttribute]
@@ -113,8 +119,8 @@ namespace Google.Cloud.Talent.V4Beta1 {
     public const int ClientEventFieldNumber = 2;
     private global::Google.Cloud.Talent.V4Beta1.ClientEvent clientEvent_;
     /// <summary>
-    /// Required. Events issued when end user interacts with customer's application
-    /// that uses Cloud Talent Solution.
+    /// Required. Events issued when end user interacts with customer's application that
+    /// uses Cloud Talent Solution.
     /// </summary>
     [global::System.Diagnostics.DebuggerNonUserCodeAttribute]
     public global::Google.Cloud.Talent.V4Beta1.ClientEvent ClientEvent {
@@ -160,6 +166,9 @@ namespace Google.Cloud.Talent.V4Beta1 {
 
     [global::System.Diagnostics.DebuggerNonUserCodeAttribute]
     public void WriteTo(pb::CodedOutputStream output) {
+    #if !GOOGLE_PROTOBUF_REFSTRUCT_COMPATIBILITY_MODE
+      output.WriteRawMessage(this);
+    #else
       if (Parent.Length != 0) {
         output.WriteRawTag(10);
         output.WriteString(Parent);
@@ -171,7 +180,25 @@ namespace Google.Cloud.Talent.V4Beta1 {
       if (_unknownFields != null) {
         _unknownFields.WriteTo(output);
       }
+    #endif
     }
+
+    #if !GOOGLE_PROTOBUF_REFSTRUCT_COMPATIBILITY_MODE
+    [global::System.Diagnostics.DebuggerNonUserCodeAttribute]
+    void pb::IBufferMessage.InternalWriteTo(ref pb::WriteContext output) {
+      if (Parent.Length != 0) {
+        output.WriteRawTag(10);
+        output.WriteString(Parent);
+      }
+      if (clientEvent_ != null) {
+        output.WriteRawTag(18);
+        output.WriteMessage(ClientEvent);
+      }
+      if (_unknownFields != null) {
+        _unknownFields.WriteTo(ref output);
+      }
+    }
+    #endif
 
     [global::System.Diagnostics.DebuggerNonUserCodeAttribute]
     public int CalculateSize() {
@@ -207,6 +234,9 @@ namespace Google.Cloud.Talent.V4Beta1 {
 
     [global::System.Diagnostics.DebuggerNonUserCodeAttribute]
     public void MergeFrom(pb::CodedInputStream input) {
+    #if !GOOGLE_PROTOBUF_REFSTRUCT_COMPATIBILITY_MODE
+      input.ReadRawMessage(this);
+    #else
       uint tag;
       while ((tag = input.ReadTag()) != 0) {
         switch(tag) {
@@ -226,7 +256,33 @@ namespace Google.Cloud.Talent.V4Beta1 {
           }
         }
       }
+    #endif
     }
+
+    #if !GOOGLE_PROTOBUF_REFSTRUCT_COMPATIBILITY_MODE
+    [global::System.Diagnostics.DebuggerNonUserCodeAttribute]
+    void pb::IBufferMessage.InternalMergeFrom(ref pb::ParseContext input) {
+      uint tag;
+      while ((tag = input.ReadTag()) != 0) {
+        switch(tag) {
+          default:
+            _unknownFields = pb::UnknownFieldSet.MergeFieldFrom(_unknownFields, ref input);
+            break;
+          case 10: {
+            Parent = input.ReadString();
+            break;
+          }
+          case 18: {
+            if (clientEvent_ == null) {
+              ClientEvent = new global::Google.Cloud.Talent.V4Beta1.ClientEvent();
+            }
+            input.ReadMessage(ClientEvent);
+            break;
+          }
+        }
+      }
+    }
+    #endif
 
   }
 

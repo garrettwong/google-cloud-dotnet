@@ -136,32 +136,33 @@ namespace Google.Cloud.RecaptchaEnterprise.V1Beta1 {
             "S2V5UmVxdWVzdBoWLmdvb2dsZS5wcm90b2J1Zi5FbXB0eSIpgtPkkwIjKiEv",
             "djFiZXRhMS97bmFtZT1wcm9qZWN0cy8qL2tleXMvKn0aVspBInJlY2FwdGNo",
             "YWVudGVycHJpc2UuZ29vZ2xlYXBpcy5jb23SQS5odHRwczovL3d3dy5nb29n",
-            "bGVhcGlzLmNvbS9hdXRoL2Nsb3VkLXBsYXRmb3JtQv4BCiZjb20uZ29vZ2xl",
+            "bGVhcGlzLmNvbS9hdXRoL2Nsb3VkLXBsYXRmb3JtQqwCCiZjb20uZ29vZ2xl",
             "LnJlY2FwdGNoYWVudGVycHJpc2UudjFiZXRhMUIYUmVjYXB0Y2hhRW50ZXJw",
             "cmlzZVByb3RvUAFaW2dvb2dsZS5nb2xhbmcub3JnL2dlbnByb3RvL2dvb2ds",
             "ZWFwaXMvY2xvdWQvcmVjYXB0Y2hhZW50ZXJwcmlzZS92MWJldGExO3JlY2Fw",
             "dGNoYWVudGVycHJpc2WiAgRHQ1JFqgIoR29vZ2xlLkNsb3VkLlJlY2FwdGNo",
             "YUVudGVycHJpc2UuVjFCZXRhMcoCKEdvb2dsZVxDbG91ZFxSZWNhcHRjaGFF",
-            "bnRlcnByaXNlXFYxYmV0YTFiBnByb3RvMw=="));
+            "bnRlcnByaXNlXFYxYmV0YTHqAitHb29nbGU6OkNsb3VkOjpSZWNhcHRjaGFF",
+            "bnRlcnByaXNlOjpWMWJldGExYgZwcm90bzM="));
       descriptor = pbr::FileDescriptor.FromGeneratedCode(descriptorData,
           new pbr::FileDescriptor[] { global::Google.Api.AnnotationsReflection.Descriptor, global::Google.Api.ClientReflection.Descriptor, global::Google.Api.FieldBehaviorReflection.Descriptor, global::Google.Api.ResourceReflection.Descriptor, global::Google.Protobuf.WellKnownTypes.EmptyReflection.Descriptor, global::Google.Protobuf.WellKnownTypes.FieldMaskReflection.Descriptor, global::Google.Protobuf.WellKnownTypes.TimestampReflection.Descriptor, },
-          new pbr::GeneratedClrTypeInfo(null, new pbr::GeneratedClrTypeInfo[] {
-            new pbr::GeneratedClrTypeInfo(typeof(global::Google.Cloud.RecaptchaEnterprise.V1Beta1.CreateAssessmentRequest), global::Google.Cloud.RecaptchaEnterprise.V1Beta1.CreateAssessmentRequest.Parser, new[]{ "Parent", "Assessment" }, null, null, null),
-            new pbr::GeneratedClrTypeInfo(typeof(global::Google.Cloud.RecaptchaEnterprise.V1Beta1.AnnotateAssessmentRequest), global::Google.Cloud.RecaptchaEnterprise.V1Beta1.AnnotateAssessmentRequest.Parser, new[]{ "Name", "Annotation" }, null, new[]{ typeof(global::Google.Cloud.RecaptchaEnterprise.V1Beta1.AnnotateAssessmentRequest.Types.Annotation) }, null),
-            new pbr::GeneratedClrTypeInfo(typeof(global::Google.Cloud.RecaptchaEnterprise.V1Beta1.AnnotateAssessmentResponse), global::Google.Cloud.RecaptchaEnterprise.V1Beta1.AnnotateAssessmentResponse.Parser, null, null, null, null),
-            new pbr::GeneratedClrTypeInfo(typeof(global::Google.Cloud.RecaptchaEnterprise.V1Beta1.Assessment), global::Google.Cloud.RecaptchaEnterprise.V1Beta1.Assessment.Parser, new[]{ "Name", "Event", "Score", "TokenProperties", "Reasons" }, null, new[]{ typeof(global::Google.Cloud.RecaptchaEnterprise.V1Beta1.Assessment.Types.ClassificationReason) }, null),
-            new pbr::GeneratedClrTypeInfo(typeof(global::Google.Cloud.RecaptchaEnterprise.V1Beta1.Event), global::Google.Cloud.RecaptchaEnterprise.V1Beta1.Event.Parser, new[]{ "Token", "SiteKey", "UserAgent", "UserIpAddress", "ExpectedAction" }, null, null, null),
-            new pbr::GeneratedClrTypeInfo(typeof(global::Google.Cloud.RecaptchaEnterprise.V1Beta1.TokenProperties), global::Google.Cloud.RecaptchaEnterprise.V1Beta1.TokenProperties.Parser, new[]{ "Valid", "InvalidReason", "CreateTime", "Hostname", "Action" }, null, new[]{ typeof(global::Google.Cloud.RecaptchaEnterprise.V1Beta1.TokenProperties.Types.InvalidReason) }, null),
-            new pbr::GeneratedClrTypeInfo(typeof(global::Google.Cloud.RecaptchaEnterprise.V1Beta1.CreateKeyRequest), global::Google.Cloud.RecaptchaEnterprise.V1Beta1.CreateKeyRequest.Parser, new[]{ "Parent", "Key" }, null, null, null),
-            new pbr::GeneratedClrTypeInfo(typeof(global::Google.Cloud.RecaptchaEnterprise.V1Beta1.ListKeysRequest), global::Google.Cloud.RecaptchaEnterprise.V1Beta1.ListKeysRequest.Parser, new[]{ "Parent", "PageSize", "PageToken" }, null, null, null),
-            new pbr::GeneratedClrTypeInfo(typeof(global::Google.Cloud.RecaptchaEnterprise.V1Beta1.ListKeysResponse), global::Google.Cloud.RecaptchaEnterprise.V1Beta1.ListKeysResponse.Parser, new[]{ "Keys", "NextPageToken" }, null, null, null),
-            new pbr::GeneratedClrTypeInfo(typeof(global::Google.Cloud.RecaptchaEnterprise.V1Beta1.GetKeyRequest), global::Google.Cloud.RecaptchaEnterprise.V1Beta1.GetKeyRequest.Parser, new[]{ "Name" }, null, null, null),
-            new pbr::GeneratedClrTypeInfo(typeof(global::Google.Cloud.RecaptchaEnterprise.V1Beta1.UpdateKeyRequest), global::Google.Cloud.RecaptchaEnterprise.V1Beta1.UpdateKeyRequest.Parser, new[]{ "Key", "UpdateMask" }, null, null, null),
-            new pbr::GeneratedClrTypeInfo(typeof(global::Google.Cloud.RecaptchaEnterprise.V1Beta1.DeleteKeyRequest), global::Google.Cloud.RecaptchaEnterprise.V1Beta1.DeleteKeyRequest.Parser, new[]{ "Name" }, null, null, null),
-            new pbr::GeneratedClrTypeInfo(typeof(global::Google.Cloud.RecaptchaEnterprise.V1Beta1.Key), global::Google.Cloud.RecaptchaEnterprise.V1Beta1.Key.Parser, new[]{ "Name", "DisplayName", "WebSettings", "AndroidSettings", "IosSettings" }, new[]{ "PlatformSettings" }, null, null),
-            new pbr::GeneratedClrTypeInfo(typeof(global::Google.Cloud.RecaptchaEnterprise.V1Beta1.WebKeySettings), global::Google.Cloud.RecaptchaEnterprise.V1Beta1.WebKeySettings.Parser, new[]{ "EnforceAllowedDomains", "AllowedDomains", "AllowAmpTraffic", "IntegrationType", "ChallengeSecurityPreference" }, null, new[]{ typeof(global::Google.Cloud.RecaptchaEnterprise.V1Beta1.WebKeySettings.Types.IntegrationType), typeof(global::Google.Cloud.RecaptchaEnterprise.V1Beta1.WebKeySettings.Types.ChallengeSecurityPreference) }, null),
-            new pbr::GeneratedClrTypeInfo(typeof(global::Google.Cloud.RecaptchaEnterprise.V1Beta1.AndroidKeySettings), global::Google.Cloud.RecaptchaEnterprise.V1Beta1.AndroidKeySettings.Parser, new[]{ "AllowedPackageNames" }, null, null, null),
-            new pbr::GeneratedClrTypeInfo(typeof(global::Google.Cloud.RecaptchaEnterprise.V1Beta1.IOSKeySettings), global::Google.Cloud.RecaptchaEnterprise.V1Beta1.IOSKeySettings.Parser, new[]{ "AllowedBundleIds" }, null, null, null)
+          new pbr::GeneratedClrTypeInfo(null, null, new pbr::GeneratedClrTypeInfo[] {
+            new pbr::GeneratedClrTypeInfo(typeof(global::Google.Cloud.RecaptchaEnterprise.V1Beta1.CreateAssessmentRequest), global::Google.Cloud.RecaptchaEnterprise.V1Beta1.CreateAssessmentRequest.Parser, new[]{ "Parent", "Assessment" }, null, null, null, null),
+            new pbr::GeneratedClrTypeInfo(typeof(global::Google.Cloud.RecaptchaEnterprise.V1Beta1.AnnotateAssessmentRequest), global::Google.Cloud.RecaptchaEnterprise.V1Beta1.AnnotateAssessmentRequest.Parser, new[]{ "Name", "Annotation" }, null, new[]{ typeof(global::Google.Cloud.RecaptchaEnterprise.V1Beta1.AnnotateAssessmentRequest.Types.Annotation) }, null, null),
+            new pbr::GeneratedClrTypeInfo(typeof(global::Google.Cloud.RecaptchaEnterprise.V1Beta1.AnnotateAssessmentResponse), global::Google.Cloud.RecaptchaEnterprise.V1Beta1.AnnotateAssessmentResponse.Parser, null, null, null, null, null),
+            new pbr::GeneratedClrTypeInfo(typeof(global::Google.Cloud.RecaptchaEnterprise.V1Beta1.Assessment), global::Google.Cloud.RecaptchaEnterprise.V1Beta1.Assessment.Parser, new[]{ "Name", "Event", "Score", "TokenProperties", "Reasons" }, null, new[]{ typeof(global::Google.Cloud.RecaptchaEnterprise.V1Beta1.Assessment.Types.ClassificationReason) }, null, null),
+            new pbr::GeneratedClrTypeInfo(typeof(global::Google.Cloud.RecaptchaEnterprise.V1Beta1.Event), global::Google.Cloud.RecaptchaEnterprise.V1Beta1.Event.Parser, new[]{ "Token", "SiteKey", "UserAgent", "UserIpAddress", "ExpectedAction" }, null, null, null, null),
+            new pbr::GeneratedClrTypeInfo(typeof(global::Google.Cloud.RecaptchaEnterprise.V1Beta1.TokenProperties), global::Google.Cloud.RecaptchaEnterprise.V1Beta1.TokenProperties.Parser, new[]{ "Valid", "InvalidReason", "CreateTime", "Hostname", "Action" }, null, new[]{ typeof(global::Google.Cloud.RecaptchaEnterprise.V1Beta1.TokenProperties.Types.InvalidReason) }, null, null),
+            new pbr::GeneratedClrTypeInfo(typeof(global::Google.Cloud.RecaptchaEnterprise.V1Beta1.CreateKeyRequest), global::Google.Cloud.RecaptchaEnterprise.V1Beta1.CreateKeyRequest.Parser, new[]{ "Parent", "Key" }, null, null, null, null),
+            new pbr::GeneratedClrTypeInfo(typeof(global::Google.Cloud.RecaptchaEnterprise.V1Beta1.ListKeysRequest), global::Google.Cloud.RecaptchaEnterprise.V1Beta1.ListKeysRequest.Parser, new[]{ "Parent", "PageSize", "PageToken" }, null, null, null, null),
+            new pbr::GeneratedClrTypeInfo(typeof(global::Google.Cloud.RecaptchaEnterprise.V1Beta1.ListKeysResponse), global::Google.Cloud.RecaptchaEnterprise.V1Beta1.ListKeysResponse.Parser, new[]{ "Keys", "NextPageToken" }, null, null, null, null),
+            new pbr::GeneratedClrTypeInfo(typeof(global::Google.Cloud.RecaptchaEnterprise.V1Beta1.GetKeyRequest), global::Google.Cloud.RecaptchaEnterprise.V1Beta1.GetKeyRequest.Parser, new[]{ "Name" }, null, null, null, null),
+            new pbr::GeneratedClrTypeInfo(typeof(global::Google.Cloud.RecaptchaEnterprise.V1Beta1.UpdateKeyRequest), global::Google.Cloud.RecaptchaEnterprise.V1Beta1.UpdateKeyRequest.Parser, new[]{ "Key", "UpdateMask" }, null, null, null, null),
+            new pbr::GeneratedClrTypeInfo(typeof(global::Google.Cloud.RecaptchaEnterprise.V1Beta1.DeleteKeyRequest), global::Google.Cloud.RecaptchaEnterprise.V1Beta1.DeleteKeyRequest.Parser, new[]{ "Name" }, null, null, null, null),
+            new pbr::GeneratedClrTypeInfo(typeof(global::Google.Cloud.RecaptchaEnterprise.V1Beta1.Key), global::Google.Cloud.RecaptchaEnterprise.V1Beta1.Key.Parser, new[]{ "Name", "DisplayName", "WebSettings", "AndroidSettings", "IosSettings" }, new[]{ "PlatformSettings" }, null, null, null),
+            new pbr::GeneratedClrTypeInfo(typeof(global::Google.Cloud.RecaptchaEnterprise.V1Beta1.WebKeySettings), global::Google.Cloud.RecaptchaEnterprise.V1Beta1.WebKeySettings.Parser, new[]{ "EnforceAllowedDomains", "AllowedDomains", "AllowAmpTraffic", "IntegrationType", "ChallengeSecurityPreference" }, null, new[]{ typeof(global::Google.Cloud.RecaptchaEnterprise.V1Beta1.WebKeySettings.Types.IntegrationType), typeof(global::Google.Cloud.RecaptchaEnterprise.V1Beta1.WebKeySettings.Types.ChallengeSecurityPreference) }, null, null),
+            new pbr::GeneratedClrTypeInfo(typeof(global::Google.Cloud.RecaptchaEnterprise.V1Beta1.AndroidKeySettings), global::Google.Cloud.RecaptchaEnterprise.V1Beta1.AndroidKeySettings.Parser, new[]{ "AllowedPackageNames" }, null, null, null, null),
+            new pbr::GeneratedClrTypeInfo(typeof(global::Google.Cloud.RecaptchaEnterprise.V1Beta1.IOSKeySettings), global::Google.Cloud.RecaptchaEnterprise.V1Beta1.IOSKeySettings.Parser, new[]{ "AllowedBundleIds" }, null, null, null, null)
           }));
     }
     #endregion
@@ -171,7 +172,11 @@ namespace Google.Cloud.RecaptchaEnterprise.V1Beta1 {
   /// <summary>
   /// The create assessment request message.
   /// </summary>
-  public sealed partial class CreateAssessmentRequest : pb::IMessage<CreateAssessmentRequest> {
+  public sealed partial class CreateAssessmentRequest : pb::IMessage<CreateAssessmentRequest>
+  #if !GOOGLE_PROTOBUF_REFSTRUCT_COMPATIBILITY_MODE
+      , pb::IBufferMessage
+  #endif
+  {
     private static readonly pb::MessageParser<CreateAssessmentRequest> _parser = new pb::MessageParser<CreateAssessmentRequest>(() => new CreateAssessmentRequest());
     private pb::UnknownFieldSet _unknownFields;
     [global::System.Diagnostics.DebuggerNonUserCodeAttribute]
@@ -271,6 +276,9 @@ namespace Google.Cloud.RecaptchaEnterprise.V1Beta1 {
 
     [global::System.Diagnostics.DebuggerNonUserCodeAttribute]
     public void WriteTo(pb::CodedOutputStream output) {
+    #if !GOOGLE_PROTOBUF_REFSTRUCT_COMPATIBILITY_MODE
+      output.WriteRawMessage(this);
+    #else
       if (Parent.Length != 0) {
         output.WriteRawTag(10);
         output.WriteString(Parent);
@@ -282,7 +290,25 @@ namespace Google.Cloud.RecaptchaEnterprise.V1Beta1 {
       if (_unknownFields != null) {
         _unknownFields.WriteTo(output);
       }
+    #endif
     }
+
+    #if !GOOGLE_PROTOBUF_REFSTRUCT_COMPATIBILITY_MODE
+    [global::System.Diagnostics.DebuggerNonUserCodeAttribute]
+    void pb::IBufferMessage.InternalWriteTo(ref pb::WriteContext output) {
+      if (Parent.Length != 0) {
+        output.WriteRawTag(10);
+        output.WriteString(Parent);
+      }
+      if (assessment_ != null) {
+        output.WriteRawTag(18);
+        output.WriteMessage(Assessment);
+      }
+      if (_unknownFields != null) {
+        _unknownFields.WriteTo(ref output);
+      }
+    }
+    #endif
 
     [global::System.Diagnostics.DebuggerNonUserCodeAttribute]
     public int CalculateSize() {
@@ -318,6 +344,9 @@ namespace Google.Cloud.RecaptchaEnterprise.V1Beta1 {
 
     [global::System.Diagnostics.DebuggerNonUserCodeAttribute]
     public void MergeFrom(pb::CodedInputStream input) {
+    #if !GOOGLE_PROTOBUF_REFSTRUCT_COMPATIBILITY_MODE
+      input.ReadRawMessage(this);
+    #else
       uint tag;
       while ((tag = input.ReadTag()) != 0) {
         switch(tag) {
@@ -337,14 +366,44 @@ namespace Google.Cloud.RecaptchaEnterprise.V1Beta1 {
           }
         }
       }
+    #endif
     }
+
+    #if !GOOGLE_PROTOBUF_REFSTRUCT_COMPATIBILITY_MODE
+    [global::System.Diagnostics.DebuggerNonUserCodeAttribute]
+    void pb::IBufferMessage.InternalMergeFrom(ref pb::ParseContext input) {
+      uint tag;
+      while ((tag = input.ReadTag()) != 0) {
+        switch(tag) {
+          default:
+            _unknownFields = pb::UnknownFieldSet.MergeFieldFrom(_unknownFields, ref input);
+            break;
+          case 10: {
+            Parent = input.ReadString();
+            break;
+          }
+          case 18: {
+            if (assessment_ == null) {
+              Assessment = new global::Google.Cloud.RecaptchaEnterprise.V1Beta1.Assessment();
+            }
+            input.ReadMessage(Assessment);
+            break;
+          }
+        }
+      }
+    }
+    #endif
 
   }
 
   /// <summary>
   /// The request message to annotate an Assessment.
   /// </summary>
-  public sealed partial class AnnotateAssessmentRequest : pb::IMessage<AnnotateAssessmentRequest> {
+  public sealed partial class AnnotateAssessmentRequest : pb::IMessage<AnnotateAssessmentRequest>
+  #if !GOOGLE_PROTOBUF_REFSTRUCT_COMPATIBILITY_MODE
+      , pb::IBufferMessage
+  #endif
+  {
     private static readonly pb::MessageParser<AnnotateAssessmentRequest> _parser = new pb::MessageParser<AnnotateAssessmentRequest>(() => new AnnotateAssessmentRequest());
     private pb::UnknownFieldSet _unknownFields;
     [global::System.Diagnostics.DebuggerNonUserCodeAttribute]
@@ -396,7 +455,7 @@ namespace Google.Cloud.RecaptchaEnterprise.V1Beta1 {
 
     /// <summary>Field number for the "annotation" field.</summary>
     public const int AnnotationFieldNumber = 2;
-    private global::Google.Cloud.RecaptchaEnterprise.V1Beta1.AnnotateAssessmentRequest.Types.Annotation annotation_ = 0;
+    private global::Google.Cloud.RecaptchaEnterprise.V1Beta1.AnnotateAssessmentRequest.Types.Annotation annotation_ = global::Google.Cloud.RecaptchaEnterprise.V1Beta1.AnnotateAssessmentRequest.Types.Annotation.Unspecified;
     /// <summary>
     /// Required. The annotation that will be assigned to the Event.
     /// </summary>
@@ -430,7 +489,7 @@ namespace Google.Cloud.RecaptchaEnterprise.V1Beta1 {
     public override int GetHashCode() {
       int hash = 1;
       if (Name.Length != 0) hash ^= Name.GetHashCode();
-      if (Annotation != 0) hash ^= Annotation.GetHashCode();
+      if (Annotation != global::Google.Cloud.RecaptchaEnterprise.V1Beta1.AnnotateAssessmentRequest.Types.Annotation.Unspecified) hash ^= Annotation.GetHashCode();
       if (_unknownFields != null) {
         hash ^= _unknownFields.GetHashCode();
       }
@@ -444,18 +503,39 @@ namespace Google.Cloud.RecaptchaEnterprise.V1Beta1 {
 
     [global::System.Diagnostics.DebuggerNonUserCodeAttribute]
     public void WriteTo(pb::CodedOutputStream output) {
+    #if !GOOGLE_PROTOBUF_REFSTRUCT_COMPATIBILITY_MODE
+      output.WriteRawMessage(this);
+    #else
       if (Name.Length != 0) {
         output.WriteRawTag(10);
         output.WriteString(Name);
       }
-      if (Annotation != 0) {
+      if (Annotation != global::Google.Cloud.RecaptchaEnterprise.V1Beta1.AnnotateAssessmentRequest.Types.Annotation.Unspecified) {
         output.WriteRawTag(16);
         output.WriteEnum((int) Annotation);
       }
       if (_unknownFields != null) {
         _unknownFields.WriteTo(output);
       }
+    #endif
     }
+
+    #if !GOOGLE_PROTOBUF_REFSTRUCT_COMPATIBILITY_MODE
+    [global::System.Diagnostics.DebuggerNonUserCodeAttribute]
+    void pb::IBufferMessage.InternalWriteTo(ref pb::WriteContext output) {
+      if (Name.Length != 0) {
+        output.WriteRawTag(10);
+        output.WriteString(Name);
+      }
+      if (Annotation != global::Google.Cloud.RecaptchaEnterprise.V1Beta1.AnnotateAssessmentRequest.Types.Annotation.Unspecified) {
+        output.WriteRawTag(16);
+        output.WriteEnum((int) Annotation);
+      }
+      if (_unknownFields != null) {
+        _unknownFields.WriteTo(ref output);
+      }
+    }
+    #endif
 
     [global::System.Diagnostics.DebuggerNonUserCodeAttribute]
     public int CalculateSize() {
@@ -463,7 +543,7 @@ namespace Google.Cloud.RecaptchaEnterprise.V1Beta1 {
       if (Name.Length != 0) {
         size += 1 + pb::CodedOutputStream.ComputeStringSize(Name);
       }
-      if (Annotation != 0) {
+      if (Annotation != global::Google.Cloud.RecaptchaEnterprise.V1Beta1.AnnotateAssessmentRequest.Types.Annotation.Unspecified) {
         size += 1 + pb::CodedOutputStream.ComputeEnumSize((int) Annotation);
       }
       if (_unknownFields != null) {
@@ -480,7 +560,7 @@ namespace Google.Cloud.RecaptchaEnterprise.V1Beta1 {
       if (other.Name.Length != 0) {
         Name = other.Name;
       }
-      if (other.Annotation != 0) {
+      if (other.Annotation != global::Google.Cloud.RecaptchaEnterprise.V1Beta1.AnnotateAssessmentRequest.Types.Annotation.Unspecified) {
         Annotation = other.Annotation;
       }
       _unknownFields = pb::UnknownFieldSet.MergeFrom(_unknownFields, other._unknownFields);
@@ -488,6 +568,9 @@ namespace Google.Cloud.RecaptchaEnterprise.V1Beta1 {
 
     [global::System.Diagnostics.DebuggerNonUserCodeAttribute]
     public void MergeFrom(pb::CodedInputStream input) {
+    #if !GOOGLE_PROTOBUF_REFSTRUCT_COMPATIBILITY_MODE
+      input.ReadRawMessage(this);
+    #else
       uint tag;
       while ((tag = input.ReadTag()) != 0) {
         switch(tag) {
@@ -504,7 +587,30 @@ namespace Google.Cloud.RecaptchaEnterprise.V1Beta1 {
           }
         }
       }
+    #endif
     }
+
+    #if !GOOGLE_PROTOBUF_REFSTRUCT_COMPATIBILITY_MODE
+    [global::System.Diagnostics.DebuggerNonUserCodeAttribute]
+    void pb::IBufferMessage.InternalMergeFrom(ref pb::ParseContext input) {
+      uint tag;
+      while ((tag = input.ReadTag()) != 0) {
+        switch(tag) {
+          default:
+            _unknownFields = pb::UnknownFieldSet.MergeFieldFrom(_unknownFields, ref input);
+            break;
+          case 10: {
+            Name = input.ReadString();
+            break;
+          }
+          case 16: {
+            Annotation = (global::Google.Cloud.RecaptchaEnterprise.V1Beta1.AnnotateAssessmentRequest.Types.Annotation) input.ReadEnum();
+            break;
+          }
+        }
+      }
+    }
+    #endif
 
     #region Nested types
     /// <summary>Container for nested types declared in the AnnotateAssessmentRequest message type.</summary>
@@ -536,7 +642,11 @@ namespace Google.Cloud.RecaptchaEnterprise.V1Beta1 {
   /// <summary>
   /// Empty response for AnnotateAssessment.
   /// </summary>
-  public sealed partial class AnnotateAssessmentResponse : pb::IMessage<AnnotateAssessmentResponse> {
+  public sealed partial class AnnotateAssessmentResponse : pb::IMessage<AnnotateAssessmentResponse>
+  #if !GOOGLE_PROTOBUF_REFSTRUCT_COMPATIBILITY_MODE
+      , pb::IBufferMessage
+  #endif
+  {
     private static readonly pb::MessageParser<AnnotateAssessmentResponse> _parser = new pb::MessageParser<AnnotateAssessmentResponse>(() => new AnnotateAssessmentResponse());
     private pb::UnknownFieldSet _unknownFields;
     [global::System.Diagnostics.DebuggerNonUserCodeAttribute]
@@ -601,10 +711,23 @@ namespace Google.Cloud.RecaptchaEnterprise.V1Beta1 {
 
     [global::System.Diagnostics.DebuggerNonUserCodeAttribute]
     public void WriteTo(pb::CodedOutputStream output) {
+    #if !GOOGLE_PROTOBUF_REFSTRUCT_COMPATIBILITY_MODE
+      output.WriteRawMessage(this);
+    #else
       if (_unknownFields != null) {
         _unknownFields.WriteTo(output);
       }
+    #endif
     }
+
+    #if !GOOGLE_PROTOBUF_REFSTRUCT_COMPATIBILITY_MODE
+    [global::System.Diagnostics.DebuggerNonUserCodeAttribute]
+    void pb::IBufferMessage.InternalWriteTo(ref pb::WriteContext output) {
+      if (_unknownFields != null) {
+        _unknownFields.WriteTo(ref output);
+      }
+    }
+    #endif
 
     [global::System.Diagnostics.DebuggerNonUserCodeAttribute]
     public int CalculateSize() {
@@ -625,6 +748,9 @@ namespace Google.Cloud.RecaptchaEnterprise.V1Beta1 {
 
     [global::System.Diagnostics.DebuggerNonUserCodeAttribute]
     public void MergeFrom(pb::CodedInputStream input) {
+    #if !GOOGLE_PROTOBUF_REFSTRUCT_COMPATIBILITY_MODE
+      input.ReadRawMessage(this);
+    #else
       uint tag;
       while ((tag = input.ReadTag()) != 0) {
         switch(tag) {
@@ -633,14 +759,33 @@ namespace Google.Cloud.RecaptchaEnterprise.V1Beta1 {
             break;
         }
       }
+    #endif
     }
+
+    #if !GOOGLE_PROTOBUF_REFSTRUCT_COMPATIBILITY_MODE
+    [global::System.Diagnostics.DebuggerNonUserCodeAttribute]
+    void pb::IBufferMessage.InternalMergeFrom(ref pb::ParseContext input) {
+      uint tag;
+      while ((tag = input.ReadTag()) != 0) {
+        switch(tag) {
+          default:
+            _unknownFields = pb::UnknownFieldSet.MergeFieldFrom(_unknownFields, ref input);
+            break;
+        }
+      }
+    }
+    #endif
 
   }
 
   /// <summary>
   /// A recaptcha assessment resource.
   /// </summary>
-  public sealed partial class Assessment : pb::IMessage<Assessment> {
+  public sealed partial class Assessment : pb::IMessage<Assessment>
+  #if !GOOGLE_PROTOBUF_REFSTRUCT_COMPATIBILITY_MODE
+      , pb::IBufferMessage
+  #endif
+  {
     private static readonly pb::MessageParser<Assessment> _parser = new pb::MessageParser<Assessment>(() => new Assessment());
     private pb::UnknownFieldSet _unknownFields;
     [global::System.Diagnostics.DebuggerNonUserCodeAttribute]
@@ -792,6 +937,9 @@ namespace Google.Cloud.RecaptchaEnterprise.V1Beta1 {
 
     [global::System.Diagnostics.DebuggerNonUserCodeAttribute]
     public void WriteTo(pb::CodedOutputStream output) {
+    #if !GOOGLE_PROTOBUF_REFSTRUCT_COMPATIBILITY_MODE
+      output.WriteRawMessage(this);
+    #else
       if (Name.Length != 0) {
         output.WriteRawTag(10);
         output.WriteString(Name);
@@ -812,7 +960,34 @@ namespace Google.Cloud.RecaptchaEnterprise.V1Beta1 {
       if (_unknownFields != null) {
         _unknownFields.WriteTo(output);
       }
+    #endif
     }
+
+    #if !GOOGLE_PROTOBUF_REFSTRUCT_COMPATIBILITY_MODE
+    [global::System.Diagnostics.DebuggerNonUserCodeAttribute]
+    void pb::IBufferMessage.InternalWriteTo(ref pb::WriteContext output) {
+      if (Name.Length != 0) {
+        output.WriteRawTag(10);
+        output.WriteString(Name);
+      }
+      if (event_ != null) {
+        output.WriteRawTag(18);
+        output.WriteMessage(Event);
+      }
+      if (Score != 0F) {
+        output.WriteRawTag(29);
+        output.WriteFloat(Score);
+      }
+      if (tokenProperties_ != null) {
+        output.WriteRawTag(34);
+        output.WriteMessage(TokenProperties);
+      }
+      reasons_.WriteTo(ref output, _repeated_reasons_codec);
+      if (_unknownFields != null) {
+        _unknownFields.WriteTo(ref output);
+      }
+    }
+    #endif
 
     [global::System.Diagnostics.DebuggerNonUserCodeAttribute]
     public int CalculateSize() {
@@ -865,6 +1040,9 @@ namespace Google.Cloud.RecaptchaEnterprise.V1Beta1 {
 
     [global::System.Diagnostics.DebuggerNonUserCodeAttribute]
     public void MergeFrom(pb::CodedInputStream input) {
+    #if !GOOGLE_PROTOBUF_REFSTRUCT_COMPATIBILITY_MODE
+      input.ReadRawMessage(this);
+    #else
       uint tag;
       while ((tag = input.ReadTag()) != 0) {
         switch(tag) {
@@ -900,7 +1078,49 @@ namespace Google.Cloud.RecaptchaEnterprise.V1Beta1 {
           }
         }
       }
+    #endif
     }
+
+    #if !GOOGLE_PROTOBUF_REFSTRUCT_COMPATIBILITY_MODE
+    [global::System.Diagnostics.DebuggerNonUserCodeAttribute]
+    void pb::IBufferMessage.InternalMergeFrom(ref pb::ParseContext input) {
+      uint tag;
+      while ((tag = input.ReadTag()) != 0) {
+        switch(tag) {
+          default:
+            _unknownFields = pb::UnknownFieldSet.MergeFieldFrom(_unknownFields, ref input);
+            break;
+          case 10: {
+            Name = input.ReadString();
+            break;
+          }
+          case 18: {
+            if (event_ == null) {
+              Event = new global::Google.Cloud.RecaptchaEnterprise.V1Beta1.Event();
+            }
+            input.ReadMessage(Event);
+            break;
+          }
+          case 29: {
+            Score = input.ReadFloat();
+            break;
+          }
+          case 34: {
+            if (tokenProperties_ == null) {
+              TokenProperties = new global::Google.Cloud.RecaptchaEnterprise.V1Beta1.TokenProperties();
+            }
+            input.ReadMessage(TokenProperties);
+            break;
+          }
+          case 42:
+          case 40: {
+            reasons_.AddEntriesFrom(ref input, _repeated_reasons_codec);
+            break;
+          }
+        }
+      }
+    }
+    #endif
 
     #region Nested types
     /// <summary>Container for nested types declared in the Assessment message type.</summary>
@@ -944,7 +1164,11 @@ namespace Google.Cloud.RecaptchaEnterprise.V1Beta1 {
 
   }
 
-  public sealed partial class Event : pb::IMessage<Event> {
+  public sealed partial class Event : pb::IMessage<Event>
+  #if !GOOGLE_PROTOBUF_REFSTRUCT_COMPATIBILITY_MODE
+      , pb::IBufferMessage
+  #endif
+  {
     private static readonly pb::MessageParser<Event> _parser = new pb::MessageParser<Event>(() => new Event());
     private pb::UnknownFieldSet _unknownFields;
     [global::System.Diagnostics.DebuggerNonUserCodeAttribute]
@@ -1099,6 +1323,9 @@ namespace Google.Cloud.RecaptchaEnterprise.V1Beta1 {
 
     [global::System.Diagnostics.DebuggerNonUserCodeAttribute]
     public void WriteTo(pb::CodedOutputStream output) {
+    #if !GOOGLE_PROTOBUF_REFSTRUCT_COMPATIBILITY_MODE
+      output.WriteRawMessage(this);
+    #else
       if (Token.Length != 0) {
         output.WriteRawTag(10);
         output.WriteString(Token);
@@ -1122,7 +1349,37 @@ namespace Google.Cloud.RecaptchaEnterprise.V1Beta1 {
       if (_unknownFields != null) {
         _unknownFields.WriteTo(output);
       }
+    #endif
     }
+
+    #if !GOOGLE_PROTOBUF_REFSTRUCT_COMPATIBILITY_MODE
+    [global::System.Diagnostics.DebuggerNonUserCodeAttribute]
+    void pb::IBufferMessage.InternalWriteTo(ref pb::WriteContext output) {
+      if (Token.Length != 0) {
+        output.WriteRawTag(10);
+        output.WriteString(Token);
+      }
+      if (SiteKey.Length != 0) {
+        output.WriteRawTag(18);
+        output.WriteString(SiteKey);
+      }
+      if (UserAgent.Length != 0) {
+        output.WriteRawTag(26);
+        output.WriteString(UserAgent);
+      }
+      if (UserIpAddress.Length != 0) {
+        output.WriteRawTag(34);
+        output.WriteString(UserIpAddress);
+      }
+      if (ExpectedAction.Length != 0) {
+        output.WriteRawTag(42);
+        output.WriteString(ExpectedAction);
+      }
+      if (_unknownFields != null) {
+        _unknownFields.WriteTo(ref output);
+      }
+    }
+    #endif
 
     [global::System.Diagnostics.DebuggerNonUserCodeAttribute]
     public int CalculateSize() {
@@ -1173,6 +1430,9 @@ namespace Google.Cloud.RecaptchaEnterprise.V1Beta1 {
 
     [global::System.Diagnostics.DebuggerNonUserCodeAttribute]
     public void MergeFrom(pb::CodedInputStream input) {
+    #if !GOOGLE_PROTOBUF_REFSTRUCT_COMPATIBILITY_MODE
+      input.ReadRawMessage(this);
+    #else
       uint tag;
       while ((tag = input.ReadTag()) != 0) {
         switch(tag) {
@@ -1201,11 +1461,50 @@ namespace Google.Cloud.RecaptchaEnterprise.V1Beta1 {
           }
         }
       }
+    #endif
     }
+
+    #if !GOOGLE_PROTOBUF_REFSTRUCT_COMPATIBILITY_MODE
+    [global::System.Diagnostics.DebuggerNonUserCodeAttribute]
+    void pb::IBufferMessage.InternalMergeFrom(ref pb::ParseContext input) {
+      uint tag;
+      while ((tag = input.ReadTag()) != 0) {
+        switch(tag) {
+          default:
+            _unknownFields = pb::UnknownFieldSet.MergeFieldFrom(_unknownFields, ref input);
+            break;
+          case 10: {
+            Token = input.ReadString();
+            break;
+          }
+          case 18: {
+            SiteKey = input.ReadString();
+            break;
+          }
+          case 26: {
+            UserAgent = input.ReadString();
+            break;
+          }
+          case 34: {
+            UserIpAddress = input.ReadString();
+            break;
+          }
+          case 42: {
+            ExpectedAction = input.ReadString();
+            break;
+          }
+        }
+      }
+    }
+    #endif
 
   }
 
-  public sealed partial class TokenProperties : pb::IMessage<TokenProperties> {
+  public sealed partial class TokenProperties : pb::IMessage<TokenProperties>
+  #if !GOOGLE_PROTOBUF_REFSTRUCT_COMPATIBILITY_MODE
+      , pb::IBufferMessage
+  #endif
+  {
     private static readonly pb::MessageParser<TokenProperties> _parser = new pb::MessageParser<TokenProperties>(() => new TokenProperties());
     private pb::UnknownFieldSet _unknownFields;
     [global::System.Diagnostics.DebuggerNonUserCodeAttribute]
@@ -1259,7 +1558,7 @@ namespace Google.Cloud.RecaptchaEnterprise.V1Beta1 {
 
     /// <summary>Field number for the "invalid_reason" field.</summary>
     public const int InvalidReasonFieldNumber = 2;
-    private global::Google.Cloud.RecaptchaEnterprise.V1Beta1.TokenProperties.Types.InvalidReason invalidReason_ = 0;
+    private global::Google.Cloud.RecaptchaEnterprise.V1Beta1.TokenProperties.Types.InvalidReason invalidReason_ = global::Google.Cloud.RecaptchaEnterprise.V1Beta1.TokenProperties.Types.InvalidReason.Unspecified;
     /// <summary>
     /// Reason associated with the response when valid = false.
     /// </summary>
@@ -1338,7 +1637,7 @@ namespace Google.Cloud.RecaptchaEnterprise.V1Beta1 {
     public override int GetHashCode() {
       int hash = 1;
       if (Valid != false) hash ^= Valid.GetHashCode();
-      if (InvalidReason != 0) hash ^= InvalidReason.GetHashCode();
+      if (InvalidReason != global::Google.Cloud.RecaptchaEnterprise.V1Beta1.TokenProperties.Types.InvalidReason.Unspecified) hash ^= InvalidReason.GetHashCode();
       if (createTime_ != null) hash ^= CreateTime.GetHashCode();
       if (Hostname.Length != 0) hash ^= Hostname.GetHashCode();
       if (Action.Length != 0) hash ^= Action.GetHashCode();
@@ -1355,11 +1654,14 @@ namespace Google.Cloud.RecaptchaEnterprise.V1Beta1 {
 
     [global::System.Diagnostics.DebuggerNonUserCodeAttribute]
     public void WriteTo(pb::CodedOutputStream output) {
+    #if !GOOGLE_PROTOBUF_REFSTRUCT_COMPATIBILITY_MODE
+      output.WriteRawMessage(this);
+    #else
       if (Valid != false) {
         output.WriteRawTag(8);
         output.WriteBool(Valid);
       }
-      if (InvalidReason != 0) {
+      if (InvalidReason != global::Google.Cloud.RecaptchaEnterprise.V1Beta1.TokenProperties.Types.InvalidReason.Unspecified) {
         output.WriteRawTag(16);
         output.WriteEnum((int) InvalidReason);
       }
@@ -1378,7 +1680,37 @@ namespace Google.Cloud.RecaptchaEnterprise.V1Beta1 {
       if (_unknownFields != null) {
         _unknownFields.WriteTo(output);
       }
+    #endif
     }
+
+    #if !GOOGLE_PROTOBUF_REFSTRUCT_COMPATIBILITY_MODE
+    [global::System.Diagnostics.DebuggerNonUserCodeAttribute]
+    void pb::IBufferMessage.InternalWriteTo(ref pb::WriteContext output) {
+      if (Valid != false) {
+        output.WriteRawTag(8);
+        output.WriteBool(Valid);
+      }
+      if (InvalidReason != global::Google.Cloud.RecaptchaEnterprise.V1Beta1.TokenProperties.Types.InvalidReason.Unspecified) {
+        output.WriteRawTag(16);
+        output.WriteEnum((int) InvalidReason);
+      }
+      if (createTime_ != null) {
+        output.WriteRawTag(26);
+        output.WriteMessage(CreateTime);
+      }
+      if (Hostname.Length != 0) {
+        output.WriteRawTag(34);
+        output.WriteString(Hostname);
+      }
+      if (Action.Length != 0) {
+        output.WriteRawTag(42);
+        output.WriteString(Action);
+      }
+      if (_unknownFields != null) {
+        _unknownFields.WriteTo(ref output);
+      }
+    }
+    #endif
 
     [global::System.Diagnostics.DebuggerNonUserCodeAttribute]
     public int CalculateSize() {
@@ -1386,7 +1718,7 @@ namespace Google.Cloud.RecaptchaEnterprise.V1Beta1 {
       if (Valid != false) {
         size += 1 + 1;
       }
-      if (InvalidReason != 0) {
+      if (InvalidReason != global::Google.Cloud.RecaptchaEnterprise.V1Beta1.TokenProperties.Types.InvalidReason.Unspecified) {
         size += 1 + pb::CodedOutputStream.ComputeEnumSize((int) InvalidReason);
       }
       if (createTime_ != null) {
@@ -1412,7 +1744,7 @@ namespace Google.Cloud.RecaptchaEnterprise.V1Beta1 {
       if (other.Valid != false) {
         Valid = other.Valid;
       }
-      if (other.InvalidReason != 0) {
+      if (other.InvalidReason != global::Google.Cloud.RecaptchaEnterprise.V1Beta1.TokenProperties.Types.InvalidReason.Unspecified) {
         InvalidReason = other.InvalidReason;
       }
       if (other.createTime_ != null) {
@@ -1432,6 +1764,9 @@ namespace Google.Cloud.RecaptchaEnterprise.V1Beta1 {
 
     [global::System.Diagnostics.DebuggerNonUserCodeAttribute]
     public void MergeFrom(pb::CodedInputStream input) {
+    #if !GOOGLE_PROTOBUF_REFSTRUCT_COMPATIBILITY_MODE
+      input.ReadRawMessage(this);
+    #else
       uint tag;
       while ((tag = input.ReadTag()) != 0) {
         switch(tag) {
@@ -1463,7 +1798,45 @@ namespace Google.Cloud.RecaptchaEnterprise.V1Beta1 {
           }
         }
       }
+    #endif
     }
+
+    #if !GOOGLE_PROTOBUF_REFSTRUCT_COMPATIBILITY_MODE
+    [global::System.Diagnostics.DebuggerNonUserCodeAttribute]
+    void pb::IBufferMessage.InternalMergeFrom(ref pb::ParseContext input) {
+      uint tag;
+      while ((tag = input.ReadTag()) != 0) {
+        switch(tag) {
+          default:
+            _unknownFields = pb::UnknownFieldSet.MergeFieldFrom(_unknownFields, ref input);
+            break;
+          case 8: {
+            Valid = input.ReadBool();
+            break;
+          }
+          case 16: {
+            InvalidReason = (global::Google.Cloud.RecaptchaEnterprise.V1Beta1.TokenProperties.Types.InvalidReason) input.ReadEnum();
+            break;
+          }
+          case 26: {
+            if (createTime_ == null) {
+              CreateTime = new global::Google.Protobuf.WellKnownTypes.Timestamp();
+            }
+            input.ReadMessage(CreateTime);
+            break;
+          }
+          case 34: {
+            Hostname = input.ReadString();
+            break;
+          }
+          case 42: {
+            Action = input.ReadString();
+            break;
+          }
+        }
+      }
+    }
+    #endif
 
     #region Nested types
     /// <summary>Container for nested types declared in the TokenProperties message type.</summary>
@@ -1515,7 +1888,11 @@ namespace Google.Cloud.RecaptchaEnterprise.V1Beta1 {
   /// <summary>
   /// The create key request message.
   /// </summary>
-  public sealed partial class CreateKeyRequest : pb::IMessage<CreateKeyRequest> {
+  public sealed partial class CreateKeyRequest : pb::IMessage<CreateKeyRequest>
+  #if !GOOGLE_PROTOBUF_REFSTRUCT_COMPATIBILITY_MODE
+      , pb::IBufferMessage
+  #endif
+  {
     private static readonly pb::MessageParser<CreateKeyRequest> _parser = new pb::MessageParser<CreateKeyRequest>(() => new CreateKeyRequest());
     private pb::UnknownFieldSet _unknownFields;
     [global::System.Diagnostics.DebuggerNonUserCodeAttribute]
@@ -1615,6 +1992,9 @@ namespace Google.Cloud.RecaptchaEnterprise.V1Beta1 {
 
     [global::System.Diagnostics.DebuggerNonUserCodeAttribute]
     public void WriteTo(pb::CodedOutputStream output) {
+    #if !GOOGLE_PROTOBUF_REFSTRUCT_COMPATIBILITY_MODE
+      output.WriteRawMessage(this);
+    #else
       if (Parent.Length != 0) {
         output.WriteRawTag(10);
         output.WriteString(Parent);
@@ -1626,7 +2006,25 @@ namespace Google.Cloud.RecaptchaEnterprise.V1Beta1 {
       if (_unknownFields != null) {
         _unknownFields.WriteTo(output);
       }
+    #endif
     }
+
+    #if !GOOGLE_PROTOBUF_REFSTRUCT_COMPATIBILITY_MODE
+    [global::System.Diagnostics.DebuggerNonUserCodeAttribute]
+    void pb::IBufferMessage.InternalWriteTo(ref pb::WriteContext output) {
+      if (Parent.Length != 0) {
+        output.WriteRawTag(10);
+        output.WriteString(Parent);
+      }
+      if (key_ != null) {
+        output.WriteRawTag(18);
+        output.WriteMessage(Key);
+      }
+      if (_unknownFields != null) {
+        _unknownFields.WriteTo(ref output);
+      }
+    }
+    #endif
 
     [global::System.Diagnostics.DebuggerNonUserCodeAttribute]
     public int CalculateSize() {
@@ -1662,6 +2060,9 @@ namespace Google.Cloud.RecaptchaEnterprise.V1Beta1 {
 
     [global::System.Diagnostics.DebuggerNonUserCodeAttribute]
     public void MergeFrom(pb::CodedInputStream input) {
+    #if !GOOGLE_PROTOBUF_REFSTRUCT_COMPATIBILITY_MODE
+      input.ReadRawMessage(this);
+    #else
       uint tag;
       while ((tag = input.ReadTag()) != 0) {
         switch(tag) {
@@ -1681,14 +2082,44 @@ namespace Google.Cloud.RecaptchaEnterprise.V1Beta1 {
           }
         }
       }
+    #endif
     }
+
+    #if !GOOGLE_PROTOBUF_REFSTRUCT_COMPATIBILITY_MODE
+    [global::System.Diagnostics.DebuggerNonUserCodeAttribute]
+    void pb::IBufferMessage.InternalMergeFrom(ref pb::ParseContext input) {
+      uint tag;
+      while ((tag = input.ReadTag()) != 0) {
+        switch(tag) {
+          default:
+            _unknownFields = pb::UnknownFieldSet.MergeFieldFrom(_unknownFields, ref input);
+            break;
+          case 10: {
+            Parent = input.ReadString();
+            break;
+          }
+          case 18: {
+            if (key_ == null) {
+              Key = new global::Google.Cloud.RecaptchaEnterprise.V1Beta1.Key();
+            }
+            input.ReadMessage(Key);
+            break;
+          }
+        }
+      }
+    }
+    #endif
 
   }
 
   /// <summary>
   /// The list keys request message.
   /// </summary>
-  public sealed partial class ListKeysRequest : pb::IMessage<ListKeysRequest> {
+  public sealed partial class ListKeysRequest : pb::IMessage<ListKeysRequest>
+  #if !GOOGLE_PROTOBUF_REFSTRUCT_COMPATIBILITY_MODE
+      , pb::IBufferMessage
+  #endif
+  {
     private static readonly pb::MessageParser<ListKeysRequest> _parser = new pb::MessageParser<ListKeysRequest>(() => new ListKeysRequest());
     private pb::UnknownFieldSet _unknownFields;
     [global::System.Diagnostics.DebuggerNonUserCodeAttribute]
@@ -1807,6 +2238,9 @@ namespace Google.Cloud.RecaptchaEnterprise.V1Beta1 {
 
     [global::System.Diagnostics.DebuggerNonUserCodeAttribute]
     public void WriteTo(pb::CodedOutputStream output) {
+    #if !GOOGLE_PROTOBUF_REFSTRUCT_COMPATIBILITY_MODE
+      output.WriteRawMessage(this);
+    #else
       if (Parent.Length != 0) {
         output.WriteRawTag(10);
         output.WriteString(Parent);
@@ -1822,7 +2256,29 @@ namespace Google.Cloud.RecaptchaEnterprise.V1Beta1 {
       if (_unknownFields != null) {
         _unknownFields.WriteTo(output);
       }
+    #endif
     }
+
+    #if !GOOGLE_PROTOBUF_REFSTRUCT_COMPATIBILITY_MODE
+    [global::System.Diagnostics.DebuggerNonUserCodeAttribute]
+    void pb::IBufferMessage.InternalWriteTo(ref pb::WriteContext output) {
+      if (Parent.Length != 0) {
+        output.WriteRawTag(10);
+        output.WriteString(Parent);
+      }
+      if (PageSize != 0) {
+        output.WriteRawTag(16);
+        output.WriteInt32(PageSize);
+      }
+      if (PageToken.Length != 0) {
+        output.WriteRawTag(26);
+        output.WriteString(PageToken);
+      }
+      if (_unknownFields != null) {
+        _unknownFields.WriteTo(ref output);
+      }
+    }
+    #endif
 
     [global::System.Diagnostics.DebuggerNonUserCodeAttribute]
     public int CalculateSize() {
@@ -1861,6 +2317,9 @@ namespace Google.Cloud.RecaptchaEnterprise.V1Beta1 {
 
     [global::System.Diagnostics.DebuggerNonUserCodeAttribute]
     public void MergeFrom(pb::CodedInputStream input) {
+    #if !GOOGLE_PROTOBUF_REFSTRUCT_COMPATIBILITY_MODE
+      input.ReadRawMessage(this);
+    #else
       uint tag;
       while ((tag = input.ReadTag()) != 0) {
         switch(tag) {
@@ -1881,14 +2340,45 @@ namespace Google.Cloud.RecaptchaEnterprise.V1Beta1 {
           }
         }
       }
+    #endif
     }
+
+    #if !GOOGLE_PROTOBUF_REFSTRUCT_COMPATIBILITY_MODE
+    [global::System.Diagnostics.DebuggerNonUserCodeAttribute]
+    void pb::IBufferMessage.InternalMergeFrom(ref pb::ParseContext input) {
+      uint tag;
+      while ((tag = input.ReadTag()) != 0) {
+        switch(tag) {
+          default:
+            _unknownFields = pb::UnknownFieldSet.MergeFieldFrom(_unknownFields, ref input);
+            break;
+          case 10: {
+            Parent = input.ReadString();
+            break;
+          }
+          case 16: {
+            PageSize = input.ReadInt32();
+            break;
+          }
+          case 26: {
+            PageToken = input.ReadString();
+            break;
+          }
+        }
+      }
+    }
+    #endif
 
   }
 
   /// <summary>
   /// Response to request to list keys in a project.
   /// </summary>
-  public sealed partial class ListKeysResponse : pb::IMessage<ListKeysResponse> {
+  public sealed partial class ListKeysResponse : pb::IMessage<ListKeysResponse>
+  #if !GOOGLE_PROTOBUF_REFSTRUCT_COMPATIBILITY_MODE
+      , pb::IBufferMessage
+  #endif
+  {
     private static readonly pb::MessageParser<ListKeysResponse> _parser = new pb::MessageParser<ListKeysResponse>(() => new ListKeysResponse());
     private pb::UnknownFieldSet _unknownFields;
     [global::System.Diagnostics.DebuggerNonUserCodeAttribute]
@@ -1987,6 +2477,9 @@ namespace Google.Cloud.RecaptchaEnterprise.V1Beta1 {
 
     [global::System.Diagnostics.DebuggerNonUserCodeAttribute]
     public void WriteTo(pb::CodedOutputStream output) {
+    #if !GOOGLE_PROTOBUF_REFSTRUCT_COMPATIBILITY_MODE
+      output.WriteRawMessage(this);
+    #else
       keys_.WriteTo(output, _repeated_keys_codec);
       if (NextPageToken.Length != 0) {
         output.WriteRawTag(18);
@@ -1995,7 +2488,22 @@ namespace Google.Cloud.RecaptchaEnterprise.V1Beta1 {
       if (_unknownFields != null) {
         _unknownFields.WriteTo(output);
       }
+    #endif
     }
+
+    #if !GOOGLE_PROTOBUF_REFSTRUCT_COMPATIBILITY_MODE
+    [global::System.Diagnostics.DebuggerNonUserCodeAttribute]
+    void pb::IBufferMessage.InternalWriteTo(ref pb::WriteContext output) {
+      keys_.WriteTo(ref output, _repeated_keys_codec);
+      if (NextPageToken.Length != 0) {
+        output.WriteRawTag(18);
+        output.WriteString(NextPageToken);
+      }
+      if (_unknownFields != null) {
+        _unknownFields.WriteTo(ref output);
+      }
+    }
+    #endif
 
     [global::System.Diagnostics.DebuggerNonUserCodeAttribute]
     public int CalculateSize() {
@@ -2024,6 +2532,9 @@ namespace Google.Cloud.RecaptchaEnterprise.V1Beta1 {
 
     [global::System.Diagnostics.DebuggerNonUserCodeAttribute]
     public void MergeFrom(pb::CodedInputStream input) {
+    #if !GOOGLE_PROTOBUF_REFSTRUCT_COMPATIBILITY_MODE
+      input.ReadRawMessage(this);
+    #else
       uint tag;
       while ((tag = input.ReadTag()) != 0) {
         switch(tag) {
@@ -2040,14 +2551,41 @@ namespace Google.Cloud.RecaptchaEnterprise.V1Beta1 {
           }
         }
       }
+    #endif
     }
+
+    #if !GOOGLE_PROTOBUF_REFSTRUCT_COMPATIBILITY_MODE
+    [global::System.Diagnostics.DebuggerNonUserCodeAttribute]
+    void pb::IBufferMessage.InternalMergeFrom(ref pb::ParseContext input) {
+      uint tag;
+      while ((tag = input.ReadTag()) != 0) {
+        switch(tag) {
+          default:
+            _unknownFields = pb::UnknownFieldSet.MergeFieldFrom(_unknownFields, ref input);
+            break;
+          case 10: {
+            keys_.AddEntriesFrom(ref input, _repeated_keys_codec);
+            break;
+          }
+          case 18: {
+            NextPageToken = input.ReadString();
+            break;
+          }
+        }
+      }
+    }
+    #endif
 
   }
 
   /// <summary>
   /// The get key request message.
   /// </summary>
-  public sealed partial class GetKeyRequest : pb::IMessage<GetKeyRequest> {
+  public sealed partial class GetKeyRequest : pb::IMessage<GetKeyRequest>
+  #if !GOOGLE_PROTOBUF_REFSTRUCT_COMPATIBILITY_MODE
+      , pb::IBufferMessage
+  #endif
+  {
     private static readonly pb::MessageParser<GetKeyRequest> _parser = new pb::MessageParser<GetKeyRequest>(() => new GetKeyRequest());
     private pb::UnknownFieldSet _unknownFields;
     [global::System.Diagnostics.DebuggerNonUserCodeAttribute]
@@ -2130,6 +2668,9 @@ namespace Google.Cloud.RecaptchaEnterprise.V1Beta1 {
 
     [global::System.Diagnostics.DebuggerNonUserCodeAttribute]
     public void WriteTo(pb::CodedOutputStream output) {
+    #if !GOOGLE_PROTOBUF_REFSTRUCT_COMPATIBILITY_MODE
+      output.WriteRawMessage(this);
+    #else
       if (Name.Length != 0) {
         output.WriteRawTag(10);
         output.WriteString(Name);
@@ -2137,7 +2678,21 @@ namespace Google.Cloud.RecaptchaEnterprise.V1Beta1 {
       if (_unknownFields != null) {
         _unknownFields.WriteTo(output);
       }
+    #endif
     }
+
+    #if !GOOGLE_PROTOBUF_REFSTRUCT_COMPATIBILITY_MODE
+    [global::System.Diagnostics.DebuggerNonUserCodeAttribute]
+    void pb::IBufferMessage.InternalWriteTo(ref pb::WriteContext output) {
+      if (Name.Length != 0) {
+        output.WriteRawTag(10);
+        output.WriteString(Name);
+      }
+      if (_unknownFields != null) {
+        _unknownFields.WriteTo(ref output);
+      }
+    }
+    #endif
 
     [global::System.Diagnostics.DebuggerNonUserCodeAttribute]
     public int CalculateSize() {
@@ -2164,6 +2719,9 @@ namespace Google.Cloud.RecaptchaEnterprise.V1Beta1 {
 
     [global::System.Diagnostics.DebuggerNonUserCodeAttribute]
     public void MergeFrom(pb::CodedInputStream input) {
+    #if !GOOGLE_PROTOBUF_REFSTRUCT_COMPATIBILITY_MODE
+      input.ReadRawMessage(this);
+    #else
       uint tag;
       while ((tag = input.ReadTag()) != 0) {
         switch(tag) {
@@ -2176,14 +2734,37 @@ namespace Google.Cloud.RecaptchaEnterprise.V1Beta1 {
           }
         }
       }
+    #endif
     }
+
+    #if !GOOGLE_PROTOBUF_REFSTRUCT_COMPATIBILITY_MODE
+    [global::System.Diagnostics.DebuggerNonUserCodeAttribute]
+    void pb::IBufferMessage.InternalMergeFrom(ref pb::ParseContext input) {
+      uint tag;
+      while ((tag = input.ReadTag()) != 0) {
+        switch(tag) {
+          default:
+            _unknownFields = pb::UnknownFieldSet.MergeFieldFrom(_unknownFields, ref input);
+            break;
+          case 10: {
+            Name = input.ReadString();
+            break;
+          }
+        }
+      }
+    }
+    #endif
 
   }
 
   /// <summary>
   /// The update key request message.
   /// </summary>
-  public sealed partial class UpdateKeyRequest : pb::IMessage<UpdateKeyRequest> {
+  public sealed partial class UpdateKeyRequest : pb::IMessage<UpdateKeyRequest>
+  #if !GOOGLE_PROTOBUF_REFSTRUCT_COMPATIBILITY_MODE
+      , pb::IBufferMessage
+  #endif
+  {
     private static readonly pb::MessageParser<UpdateKeyRequest> _parser = new pb::MessageParser<UpdateKeyRequest>(() => new UpdateKeyRequest());
     private pb::UnknownFieldSet _unknownFields;
     [global::System.Diagnostics.DebuggerNonUserCodeAttribute]
@@ -2283,6 +2864,9 @@ namespace Google.Cloud.RecaptchaEnterprise.V1Beta1 {
 
     [global::System.Diagnostics.DebuggerNonUserCodeAttribute]
     public void WriteTo(pb::CodedOutputStream output) {
+    #if !GOOGLE_PROTOBUF_REFSTRUCT_COMPATIBILITY_MODE
+      output.WriteRawMessage(this);
+    #else
       if (key_ != null) {
         output.WriteRawTag(10);
         output.WriteMessage(Key);
@@ -2294,7 +2878,25 @@ namespace Google.Cloud.RecaptchaEnterprise.V1Beta1 {
       if (_unknownFields != null) {
         _unknownFields.WriteTo(output);
       }
+    #endif
     }
+
+    #if !GOOGLE_PROTOBUF_REFSTRUCT_COMPATIBILITY_MODE
+    [global::System.Diagnostics.DebuggerNonUserCodeAttribute]
+    void pb::IBufferMessage.InternalWriteTo(ref pb::WriteContext output) {
+      if (key_ != null) {
+        output.WriteRawTag(10);
+        output.WriteMessage(Key);
+      }
+      if (updateMask_ != null) {
+        output.WriteRawTag(18);
+        output.WriteMessage(UpdateMask);
+      }
+      if (_unknownFields != null) {
+        _unknownFields.WriteTo(ref output);
+      }
+    }
+    #endif
 
     [global::System.Diagnostics.DebuggerNonUserCodeAttribute]
     public int CalculateSize() {
@@ -2333,6 +2935,9 @@ namespace Google.Cloud.RecaptchaEnterprise.V1Beta1 {
 
     [global::System.Diagnostics.DebuggerNonUserCodeAttribute]
     public void MergeFrom(pb::CodedInputStream input) {
+    #if !GOOGLE_PROTOBUF_REFSTRUCT_COMPATIBILITY_MODE
+      input.ReadRawMessage(this);
+    #else
       uint tag;
       while ((tag = input.ReadTag()) != 0) {
         switch(tag) {
@@ -2355,14 +2960,47 @@ namespace Google.Cloud.RecaptchaEnterprise.V1Beta1 {
           }
         }
       }
+    #endif
     }
+
+    #if !GOOGLE_PROTOBUF_REFSTRUCT_COMPATIBILITY_MODE
+    [global::System.Diagnostics.DebuggerNonUserCodeAttribute]
+    void pb::IBufferMessage.InternalMergeFrom(ref pb::ParseContext input) {
+      uint tag;
+      while ((tag = input.ReadTag()) != 0) {
+        switch(tag) {
+          default:
+            _unknownFields = pb::UnknownFieldSet.MergeFieldFrom(_unknownFields, ref input);
+            break;
+          case 10: {
+            if (key_ == null) {
+              Key = new global::Google.Cloud.RecaptchaEnterprise.V1Beta1.Key();
+            }
+            input.ReadMessage(Key);
+            break;
+          }
+          case 18: {
+            if (updateMask_ == null) {
+              UpdateMask = new global::Google.Protobuf.WellKnownTypes.FieldMask();
+            }
+            input.ReadMessage(UpdateMask);
+            break;
+          }
+        }
+      }
+    }
+    #endif
 
   }
 
   /// <summary>
   /// The delete key request message.
   /// </summary>
-  public sealed partial class DeleteKeyRequest : pb::IMessage<DeleteKeyRequest> {
+  public sealed partial class DeleteKeyRequest : pb::IMessage<DeleteKeyRequest>
+  #if !GOOGLE_PROTOBUF_REFSTRUCT_COMPATIBILITY_MODE
+      , pb::IBufferMessage
+  #endif
+  {
     private static readonly pb::MessageParser<DeleteKeyRequest> _parser = new pb::MessageParser<DeleteKeyRequest>(() => new DeleteKeyRequest());
     private pb::UnknownFieldSet _unknownFields;
     [global::System.Diagnostics.DebuggerNonUserCodeAttribute]
@@ -2445,6 +3083,9 @@ namespace Google.Cloud.RecaptchaEnterprise.V1Beta1 {
 
     [global::System.Diagnostics.DebuggerNonUserCodeAttribute]
     public void WriteTo(pb::CodedOutputStream output) {
+    #if !GOOGLE_PROTOBUF_REFSTRUCT_COMPATIBILITY_MODE
+      output.WriteRawMessage(this);
+    #else
       if (Name.Length != 0) {
         output.WriteRawTag(10);
         output.WriteString(Name);
@@ -2452,7 +3093,21 @@ namespace Google.Cloud.RecaptchaEnterprise.V1Beta1 {
       if (_unknownFields != null) {
         _unknownFields.WriteTo(output);
       }
+    #endif
     }
+
+    #if !GOOGLE_PROTOBUF_REFSTRUCT_COMPATIBILITY_MODE
+    [global::System.Diagnostics.DebuggerNonUserCodeAttribute]
+    void pb::IBufferMessage.InternalWriteTo(ref pb::WriteContext output) {
+      if (Name.Length != 0) {
+        output.WriteRawTag(10);
+        output.WriteString(Name);
+      }
+      if (_unknownFields != null) {
+        _unknownFields.WriteTo(ref output);
+      }
+    }
+    #endif
 
     [global::System.Diagnostics.DebuggerNonUserCodeAttribute]
     public int CalculateSize() {
@@ -2479,6 +3134,9 @@ namespace Google.Cloud.RecaptchaEnterprise.V1Beta1 {
 
     [global::System.Diagnostics.DebuggerNonUserCodeAttribute]
     public void MergeFrom(pb::CodedInputStream input) {
+    #if !GOOGLE_PROTOBUF_REFSTRUCT_COMPATIBILITY_MODE
+      input.ReadRawMessage(this);
+    #else
       uint tag;
       while ((tag = input.ReadTag()) != 0) {
         switch(tag) {
@@ -2491,7 +3149,26 @@ namespace Google.Cloud.RecaptchaEnterprise.V1Beta1 {
           }
         }
       }
+    #endif
     }
+
+    #if !GOOGLE_PROTOBUF_REFSTRUCT_COMPATIBILITY_MODE
+    [global::System.Diagnostics.DebuggerNonUserCodeAttribute]
+    void pb::IBufferMessage.InternalMergeFrom(ref pb::ParseContext input) {
+      uint tag;
+      while ((tag = input.ReadTag()) != 0) {
+        switch(tag) {
+          default:
+            _unknownFields = pb::UnknownFieldSet.MergeFieldFrom(_unknownFields, ref input);
+            break;
+          case 10: {
+            Name = input.ReadString();
+            break;
+          }
+        }
+      }
+    }
+    #endif
 
   }
 
@@ -2499,7 +3176,11 @@ namespace Google.Cloud.RecaptchaEnterprise.V1Beta1 {
   /// A key used to identify and configure applications (web and/or mobile) that
   /// use reCAPTCHA Enterprise.
   /// </summary>
-  public sealed partial class Key : pb::IMessage<Key> {
+  public sealed partial class Key : pb::IMessage<Key>
+  #if !GOOGLE_PROTOBUF_REFSTRUCT_COMPATIBILITY_MODE
+      , pb::IBufferMessage
+  #endif
+  {
     private static readonly pb::MessageParser<Key> _parser = new pb::MessageParser<Key>(() => new Key());
     private pb::UnknownFieldSet _unknownFields;
     [global::System.Diagnostics.DebuggerNonUserCodeAttribute]
@@ -2681,6 +3362,9 @@ namespace Google.Cloud.RecaptchaEnterprise.V1Beta1 {
 
     [global::System.Diagnostics.DebuggerNonUserCodeAttribute]
     public void WriteTo(pb::CodedOutputStream output) {
+    #if !GOOGLE_PROTOBUF_REFSTRUCT_COMPATIBILITY_MODE
+      output.WriteRawMessage(this);
+    #else
       if (Name.Length != 0) {
         output.WriteRawTag(10);
         output.WriteString(Name);
@@ -2704,7 +3388,37 @@ namespace Google.Cloud.RecaptchaEnterprise.V1Beta1 {
       if (_unknownFields != null) {
         _unknownFields.WriteTo(output);
       }
+    #endif
     }
+
+    #if !GOOGLE_PROTOBUF_REFSTRUCT_COMPATIBILITY_MODE
+    [global::System.Diagnostics.DebuggerNonUserCodeAttribute]
+    void pb::IBufferMessage.InternalWriteTo(ref pb::WriteContext output) {
+      if (Name.Length != 0) {
+        output.WriteRawTag(10);
+        output.WriteString(Name);
+      }
+      if (DisplayName.Length != 0) {
+        output.WriteRawTag(18);
+        output.WriteString(DisplayName);
+      }
+      if (platformSettingsCase_ == PlatformSettingsOneofCase.WebSettings) {
+        output.WriteRawTag(26);
+        output.WriteMessage(WebSettings);
+      }
+      if (platformSettingsCase_ == PlatformSettingsOneofCase.AndroidSettings) {
+        output.WriteRawTag(34);
+        output.WriteMessage(AndroidSettings);
+      }
+      if (platformSettingsCase_ == PlatformSettingsOneofCase.IosSettings) {
+        output.WriteRawTag(42);
+        output.WriteMessage(IosSettings);
+      }
+      if (_unknownFields != null) {
+        _unknownFields.WriteTo(ref output);
+      }
+    }
+    #endif
 
     [global::System.Diagnostics.DebuggerNonUserCodeAttribute]
     public int CalculateSize() {
@@ -2767,6 +3481,9 @@ namespace Google.Cloud.RecaptchaEnterprise.V1Beta1 {
 
     [global::System.Diagnostics.DebuggerNonUserCodeAttribute]
     public void MergeFrom(pb::CodedInputStream input) {
+    #if !GOOGLE_PROTOBUF_REFSTRUCT_COMPATIBILITY_MODE
+      input.ReadRawMessage(this);
+    #else
       uint tag;
       while ((tag = input.ReadTag()) != 0) {
         switch(tag) {
@@ -2810,14 +3527,68 @@ namespace Google.Cloud.RecaptchaEnterprise.V1Beta1 {
           }
         }
       }
+    #endif
     }
+
+    #if !GOOGLE_PROTOBUF_REFSTRUCT_COMPATIBILITY_MODE
+    [global::System.Diagnostics.DebuggerNonUserCodeAttribute]
+    void pb::IBufferMessage.InternalMergeFrom(ref pb::ParseContext input) {
+      uint tag;
+      while ((tag = input.ReadTag()) != 0) {
+        switch(tag) {
+          default:
+            _unknownFields = pb::UnknownFieldSet.MergeFieldFrom(_unknownFields, ref input);
+            break;
+          case 10: {
+            Name = input.ReadString();
+            break;
+          }
+          case 18: {
+            DisplayName = input.ReadString();
+            break;
+          }
+          case 26: {
+            global::Google.Cloud.RecaptchaEnterprise.V1Beta1.WebKeySettings subBuilder = new global::Google.Cloud.RecaptchaEnterprise.V1Beta1.WebKeySettings();
+            if (platformSettingsCase_ == PlatformSettingsOneofCase.WebSettings) {
+              subBuilder.MergeFrom(WebSettings);
+            }
+            input.ReadMessage(subBuilder);
+            WebSettings = subBuilder;
+            break;
+          }
+          case 34: {
+            global::Google.Cloud.RecaptchaEnterprise.V1Beta1.AndroidKeySettings subBuilder = new global::Google.Cloud.RecaptchaEnterprise.V1Beta1.AndroidKeySettings();
+            if (platformSettingsCase_ == PlatformSettingsOneofCase.AndroidSettings) {
+              subBuilder.MergeFrom(AndroidSettings);
+            }
+            input.ReadMessage(subBuilder);
+            AndroidSettings = subBuilder;
+            break;
+          }
+          case 42: {
+            global::Google.Cloud.RecaptchaEnterprise.V1Beta1.IOSKeySettings subBuilder = new global::Google.Cloud.RecaptchaEnterprise.V1Beta1.IOSKeySettings();
+            if (platformSettingsCase_ == PlatformSettingsOneofCase.IosSettings) {
+              subBuilder.MergeFrom(IosSettings);
+            }
+            input.ReadMessage(subBuilder);
+            IosSettings = subBuilder;
+            break;
+          }
+        }
+      }
+    }
+    #endif
 
   }
 
   /// <summary>
   /// Settings specific to keys that can be used by websites.
   /// </summary>
-  public sealed partial class WebKeySettings : pb::IMessage<WebKeySettings> {
+  public sealed partial class WebKeySettings : pb::IMessage<WebKeySettings>
+  #if !GOOGLE_PROTOBUF_REFSTRUCT_COMPATIBILITY_MODE
+      , pb::IBufferMessage
+  #endif
+  {
     private static readonly pb::MessageParser<WebKeySettings> _parser = new pb::MessageParser<WebKeySettings>(() => new WebKeySettings());
     private pb::UnknownFieldSet _unknownFields;
     [global::System.Diagnostics.DebuggerNonUserCodeAttribute]
@@ -2901,7 +3672,7 @@ namespace Google.Cloud.RecaptchaEnterprise.V1Beta1 {
 
     /// <summary>Field number for the "integration_type" field.</summary>
     public const int IntegrationTypeFieldNumber = 4;
-    private global::Google.Cloud.RecaptchaEnterprise.V1Beta1.WebKeySettings.Types.IntegrationType integrationType_ = 0;
+    private global::Google.Cloud.RecaptchaEnterprise.V1Beta1.WebKeySettings.Types.IntegrationType integrationType_ = global::Google.Cloud.RecaptchaEnterprise.V1Beta1.WebKeySettings.Types.IntegrationType.Unspecified;
     /// <summary>
     /// Required. Describes how this key is integrated with the website.
     /// </summary>
@@ -2915,7 +3686,7 @@ namespace Google.Cloud.RecaptchaEnterprise.V1Beta1 {
 
     /// <summary>Field number for the "challenge_security_preference" field.</summary>
     public const int ChallengeSecurityPreferenceFieldNumber = 5;
-    private global::Google.Cloud.RecaptchaEnterprise.V1Beta1.WebKeySettings.Types.ChallengeSecurityPreference challengeSecurityPreference_ = 0;
+    private global::Google.Cloud.RecaptchaEnterprise.V1Beta1.WebKeySettings.Types.ChallengeSecurityPreference challengeSecurityPreference_ = global::Google.Cloud.RecaptchaEnterprise.V1Beta1.WebKeySettings.Types.ChallengeSecurityPreference.Unspecified;
     /// <summary>
     /// Settings for the frequency and difficulty at which this key triggers
     /// captcha challenges. This should only be specified for IntegrationTypes
@@ -2956,8 +3727,8 @@ namespace Google.Cloud.RecaptchaEnterprise.V1Beta1 {
       if (EnforceAllowedDomains != false) hash ^= EnforceAllowedDomains.GetHashCode();
       hash ^= allowedDomains_.GetHashCode();
       if (AllowAmpTraffic != false) hash ^= AllowAmpTraffic.GetHashCode();
-      if (IntegrationType != 0) hash ^= IntegrationType.GetHashCode();
-      if (ChallengeSecurityPreference != 0) hash ^= ChallengeSecurityPreference.GetHashCode();
+      if (IntegrationType != global::Google.Cloud.RecaptchaEnterprise.V1Beta1.WebKeySettings.Types.IntegrationType.Unspecified) hash ^= IntegrationType.GetHashCode();
+      if (ChallengeSecurityPreference != global::Google.Cloud.RecaptchaEnterprise.V1Beta1.WebKeySettings.Types.ChallengeSecurityPreference.Unspecified) hash ^= ChallengeSecurityPreference.GetHashCode();
       if (_unknownFields != null) {
         hash ^= _unknownFields.GetHashCode();
       }
@@ -2971,6 +3742,9 @@ namespace Google.Cloud.RecaptchaEnterprise.V1Beta1 {
 
     [global::System.Diagnostics.DebuggerNonUserCodeAttribute]
     public void WriteTo(pb::CodedOutputStream output) {
+    #if !GOOGLE_PROTOBUF_REFSTRUCT_COMPATIBILITY_MODE
+      output.WriteRawMessage(this);
+    #else
       allowedDomains_.WriteTo(output, _repeated_allowedDomains_codec);
       if (AllowAmpTraffic != false) {
         output.WriteRawTag(16);
@@ -2980,18 +3754,45 @@ namespace Google.Cloud.RecaptchaEnterprise.V1Beta1 {
         output.WriteRawTag(24);
         output.WriteBool(EnforceAllowedDomains);
       }
-      if (IntegrationType != 0) {
+      if (IntegrationType != global::Google.Cloud.RecaptchaEnterprise.V1Beta1.WebKeySettings.Types.IntegrationType.Unspecified) {
         output.WriteRawTag(32);
         output.WriteEnum((int) IntegrationType);
       }
-      if (ChallengeSecurityPreference != 0) {
+      if (ChallengeSecurityPreference != global::Google.Cloud.RecaptchaEnterprise.V1Beta1.WebKeySettings.Types.ChallengeSecurityPreference.Unspecified) {
         output.WriteRawTag(40);
         output.WriteEnum((int) ChallengeSecurityPreference);
       }
       if (_unknownFields != null) {
         _unknownFields.WriteTo(output);
       }
+    #endif
     }
+
+    #if !GOOGLE_PROTOBUF_REFSTRUCT_COMPATIBILITY_MODE
+    [global::System.Diagnostics.DebuggerNonUserCodeAttribute]
+    void pb::IBufferMessage.InternalWriteTo(ref pb::WriteContext output) {
+      allowedDomains_.WriteTo(ref output, _repeated_allowedDomains_codec);
+      if (AllowAmpTraffic != false) {
+        output.WriteRawTag(16);
+        output.WriteBool(AllowAmpTraffic);
+      }
+      if (EnforceAllowedDomains != false) {
+        output.WriteRawTag(24);
+        output.WriteBool(EnforceAllowedDomains);
+      }
+      if (IntegrationType != global::Google.Cloud.RecaptchaEnterprise.V1Beta1.WebKeySettings.Types.IntegrationType.Unspecified) {
+        output.WriteRawTag(32);
+        output.WriteEnum((int) IntegrationType);
+      }
+      if (ChallengeSecurityPreference != global::Google.Cloud.RecaptchaEnterprise.V1Beta1.WebKeySettings.Types.ChallengeSecurityPreference.Unspecified) {
+        output.WriteRawTag(40);
+        output.WriteEnum((int) ChallengeSecurityPreference);
+      }
+      if (_unknownFields != null) {
+        _unknownFields.WriteTo(ref output);
+      }
+    }
+    #endif
 
     [global::System.Diagnostics.DebuggerNonUserCodeAttribute]
     public int CalculateSize() {
@@ -3003,10 +3804,10 @@ namespace Google.Cloud.RecaptchaEnterprise.V1Beta1 {
       if (AllowAmpTraffic != false) {
         size += 1 + 1;
       }
-      if (IntegrationType != 0) {
+      if (IntegrationType != global::Google.Cloud.RecaptchaEnterprise.V1Beta1.WebKeySettings.Types.IntegrationType.Unspecified) {
         size += 1 + pb::CodedOutputStream.ComputeEnumSize((int) IntegrationType);
       }
-      if (ChallengeSecurityPreference != 0) {
+      if (ChallengeSecurityPreference != global::Google.Cloud.RecaptchaEnterprise.V1Beta1.WebKeySettings.Types.ChallengeSecurityPreference.Unspecified) {
         size += 1 + pb::CodedOutputStream.ComputeEnumSize((int) ChallengeSecurityPreference);
       }
       if (_unknownFields != null) {
@@ -3027,10 +3828,10 @@ namespace Google.Cloud.RecaptchaEnterprise.V1Beta1 {
       if (other.AllowAmpTraffic != false) {
         AllowAmpTraffic = other.AllowAmpTraffic;
       }
-      if (other.IntegrationType != 0) {
+      if (other.IntegrationType != global::Google.Cloud.RecaptchaEnterprise.V1Beta1.WebKeySettings.Types.IntegrationType.Unspecified) {
         IntegrationType = other.IntegrationType;
       }
-      if (other.ChallengeSecurityPreference != 0) {
+      if (other.ChallengeSecurityPreference != global::Google.Cloud.RecaptchaEnterprise.V1Beta1.WebKeySettings.Types.ChallengeSecurityPreference.Unspecified) {
         ChallengeSecurityPreference = other.ChallengeSecurityPreference;
       }
       _unknownFields = pb::UnknownFieldSet.MergeFrom(_unknownFields, other._unknownFields);
@@ -3038,6 +3839,9 @@ namespace Google.Cloud.RecaptchaEnterprise.V1Beta1 {
 
     [global::System.Diagnostics.DebuggerNonUserCodeAttribute]
     public void MergeFrom(pb::CodedInputStream input) {
+    #if !GOOGLE_PROTOBUF_REFSTRUCT_COMPATIBILITY_MODE
+      input.ReadRawMessage(this);
+    #else
       uint tag;
       while ((tag = input.ReadTag()) != 0) {
         switch(tag) {
@@ -3066,7 +3870,42 @@ namespace Google.Cloud.RecaptchaEnterprise.V1Beta1 {
           }
         }
       }
+    #endif
     }
+
+    #if !GOOGLE_PROTOBUF_REFSTRUCT_COMPATIBILITY_MODE
+    [global::System.Diagnostics.DebuggerNonUserCodeAttribute]
+    void pb::IBufferMessage.InternalMergeFrom(ref pb::ParseContext input) {
+      uint tag;
+      while ((tag = input.ReadTag()) != 0) {
+        switch(tag) {
+          default:
+            _unknownFields = pb::UnknownFieldSet.MergeFieldFrom(_unknownFields, ref input);
+            break;
+          case 10: {
+            allowedDomains_.AddEntriesFrom(ref input, _repeated_allowedDomains_codec);
+            break;
+          }
+          case 16: {
+            AllowAmpTraffic = input.ReadBool();
+            break;
+          }
+          case 24: {
+            EnforceAllowedDomains = input.ReadBool();
+            break;
+          }
+          case 32: {
+            IntegrationType = (global::Google.Cloud.RecaptchaEnterprise.V1Beta1.WebKeySettings.Types.IntegrationType) input.ReadEnum();
+            break;
+          }
+          case 40: {
+            ChallengeSecurityPreference = (global::Google.Cloud.RecaptchaEnterprise.V1Beta1.WebKeySettings.Types.ChallengeSecurityPreference) input.ReadEnum();
+            break;
+          }
+        }
+      }
+    }
+    #endif
 
     #region Nested types
     /// <summary>Container for nested types declared in the WebKeySettings message type.</summary>
@@ -3130,7 +3969,11 @@ namespace Google.Cloud.RecaptchaEnterprise.V1Beta1 {
   /// <summary>
   /// Settings specific to keys that can be used by Android apps.
   /// </summary>
-  public sealed partial class AndroidKeySettings : pb::IMessage<AndroidKeySettings> {
+  public sealed partial class AndroidKeySettings : pb::IMessage<AndroidKeySettings>
+  #if !GOOGLE_PROTOBUF_REFSTRUCT_COMPATIBILITY_MODE
+      , pb::IBufferMessage
+  #endif
+  {
     private static readonly pb::MessageParser<AndroidKeySettings> _parser = new pb::MessageParser<AndroidKeySettings>(() => new AndroidKeySettings());
     private pb::UnknownFieldSet _unknownFields;
     [global::System.Diagnostics.DebuggerNonUserCodeAttribute]
@@ -3212,11 +4055,25 @@ namespace Google.Cloud.RecaptchaEnterprise.V1Beta1 {
 
     [global::System.Diagnostics.DebuggerNonUserCodeAttribute]
     public void WriteTo(pb::CodedOutputStream output) {
+    #if !GOOGLE_PROTOBUF_REFSTRUCT_COMPATIBILITY_MODE
+      output.WriteRawMessage(this);
+    #else
       allowedPackageNames_.WriteTo(output, _repeated_allowedPackageNames_codec);
       if (_unknownFields != null) {
         _unknownFields.WriteTo(output);
       }
+    #endif
     }
+
+    #if !GOOGLE_PROTOBUF_REFSTRUCT_COMPATIBILITY_MODE
+    [global::System.Diagnostics.DebuggerNonUserCodeAttribute]
+    void pb::IBufferMessage.InternalWriteTo(ref pb::WriteContext output) {
+      allowedPackageNames_.WriteTo(ref output, _repeated_allowedPackageNames_codec);
+      if (_unknownFields != null) {
+        _unknownFields.WriteTo(ref output);
+      }
+    }
+    #endif
 
     [global::System.Diagnostics.DebuggerNonUserCodeAttribute]
     public int CalculateSize() {
@@ -3239,6 +4096,9 @@ namespace Google.Cloud.RecaptchaEnterprise.V1Beta1 {
 
     [global::System.Diagnostics.DebuggerNonUserCodeAttribute]
     public void MergeFrom(pb::CodedInputStream input) {
+    #if !GOOGLE_PROTOBUF_REFSTRUCT_COMPATIBILITY_MODE
+      input.ReadRawMessage(this);
+    #else
       uint tag;
       while ((tag = input.ReadTag()) != 0) {
         switch(tag) {
@@ -3251,14 +4111,37 @@ namespace Google.Cloud.RecaptchaEnterprise.V1Beta1 {
           }
         }
       }
+    #endif
     }
+
+    #if !GOOGLE_PROTOBUF_REFSTRUCT_COMPATIBILITY_MODE
+    [global::System.Diagnostics.DebuggerNonUserCodeAttribute]
+    void pb::IBufferMessage.InternalMergeFrom(ref pb::ParseContext input) {
+      uint tag;
+      while ((tag = input.ReadTag()) != 0) {
+        switch(tag) {
+          default:
+            _unknownFields = pb::UnknownFieldSet.MergeFieldFrom(_unknownFields, ref input);
+            break;
+          case 10: {
+            allowedPackageNames_.AddEntriesFrom(ref input, _repeated_allowedPackageNames_codec);
+            break;
+          }
+        }
+      }
+    }
+    #endif
 
   }
 
   /// <summary>
   /// Settings specific to keys that can be used by iOS apps.
   /// </summary>
-  public sealed partial class IOSKeySettings : pb::IMessage<IOSKeySettings> {
+  public sealed partial class IOSKeySettings : pb::IMessage<IOSKeySettings>
+  #if !GOOGLE_PROTOBUF_REFSTRUCT_COMPATIBILITY_MODE
+      , pb::IBufferMessage
+  #endif
+  {
     private static readonly pb::MessageParser<IOSKeySettings> _parser = new pb::MessageParser<IOSKeySettings>(() => new IOSKeySettings());
     private pb::UnknownFieldSet _unknownFields;
     [global::System.Diagnostics.DebuggerNonUserCodeAttribute]
@@ -3340,11 +4223,25 @@ namespace Google.Cloud.RecaptchaEnterprise.V1Beta1 {
 
     [global::System.Diagnostics.DebuggerNonUserCodeAttribute]
     public void WriteTo(pb::CodedOutputStream output) {
+    #if !GOOGLE_PROTOBUF_REFSTRUCT_COMPATIBILITY_MODE
+      output.WriteRawMessage(this);
+    #else
       allowedBundleIds_.WriteTo(output, _repeated_allowedBundleIds_codec);
       if (_unknownFields != null) {
         _unknownFields.WriteTo(output);
       }
+    #endif
     }
+
+    #if !GOOGLE_PROTOBUF_REFSTRUCT_COMPATIBILITY_MODE
+    [global::System.Diagnostics.DebuggerNonUserCodeAttribute]
+    void pb::IBufferMessage.InternalWriteTo(ref pb::WriteContext output) {
+      allowedBundleIds_.WriteTo(ref output, _repeated_allowedBundleIds_codec);
+      if (_unknownFields != null) {
+        _unknownFields.WriteTo(ref output);
+      }
+    }
+    #endif
 
     [global::System.Diagnostics.DebuggerNonUserCodeAttribute]
     public int CalculateSize() {
@@ -3367,6 +4264,9 @@ namespace Google.Cloud.RecaptchaEnterprise.V1Beta1 {
 
     [global::System.Diagnostics.DebuggerNonUserCodeAttribute]
     public void MergeFrom(pb::CodedInputStream input) {
+    #if !GOOGLE_PROTOBUF_REFSTRUCT_COMPATIBILITY_MODE
+      input.ReadRawMessage(this);
+    #else
       uint tag;
       while ((tag = input.ReadTag()) != 0) {
         switch(tag) {
@@ -3379,7 +4279,26 @@ namespace Google.Cloud.RecaptchaEnterprise.V1Beta1 {
           }
         }
       }
+    #endif
     }
+
+    #if !GOOGLE_PROTOBUF_REFSTRUCT_COMPATIBILITY_MODE
+    [global::System.Diagnostics.DebuggerNonUserCodeAttribute]
+    void pb::IBufferMessage.InternalMergeFrom(ref pb::ParseContext input) {
+      uint tag;
+      while ((tag = input.ReadTag()) != 0) {
+        switch(tag) {
+          default:
+            _unknownFields = pb::UnknownFieldSet.MergeFieldFrom(_unknownFields, ref input);
+            break;
+          case 10: {
+            allowedBundleIds_.AddEntriesFrom(ref input, _repeated_allowedBundleIds_codec);
+            break;
+          }
+        }
+      }
+    }
+    #endif
 
   }
 

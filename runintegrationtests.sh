@@ -73,6 +73,11 @@ then
     if [[ -d "$smoke_dir" ]]
     then
       temp_testdirs+=($smoke_dir)
+    fi
+    smoke_file="${api}/smoketests.json"
+    if [[ -f "$smoke_file" ]]
+    then
+      temp_testdirs+=($smoke_file)
     fi 
   done
   declare -r testdirs=${temp_testdirs[*]}
@@ -81,21 +86,23 @@ then
   declare -r testdirs=$(cat $FAILURE_FILE)
 elif [[ "$SMOKE_ARG" == "yes" ]]
 then
-  declare -r testdirs=$(echo */*.SmokeTests)
+  declare -r testdirs=$(echo */*.SmokeTests */smoketests.json)
 else
-  declare -r testdirs=$(echo */*.IntegrationTests */*.Snippets */*.SmokeTests)
+  declare -r testdirs=$(echo */*.IntegrationTests */*.Snippets */*.SmokeTests */smoketests.json)
 fi
 
 log_build_action "(Start) Integration tests"
 for testdir in $testdirs
 do
   log_build_action "Testing $testdir"
-  if [[ "$testdir" =~ Metadata || "$testdir" =~ EntityFrameworkCore.Spanner ]]
+  if [[ "$testdir" =~ smoketests.json ]]
   then
-    echo "Skipping $testdir; test not supported yet."
-  elif [[ "$testdir" =~ AspNet\. && "$OS" != "Windows_NT" ]]
-  then
-    echo "Skipping $testdir; test not supported on non windows environment."
+    # If we've found a smoketests.json file (which really isn't a "test directory" of course),
+    # run it via ReleaseManager
+    echo "Running $testdir"
+    dotnet run -p ../tools/Google.Cloud.Tools.ReleaseManager -- \
+    smoke-test $(dirname $testdir) $TEST_PROJECT \
+      || echo "$testdir" >> $FAILURE_TEMP_FILE
   elif [[ "$testdir" =~ SmokeTests ]]
   then
     # Smoke tests aren't unit tests - we just run them as console apps,

@@ -50,6 +50,7 @@ namespace Google.Cloud.Spanner.Data
         private const string DataSourceKeyword = "Data Source";
         private const string UseClrDefaultForNullKeyword = "UseClrDefaultForNull";
         private const string EnableGetSchemaTableKeyword = "EnableGetSchemaTable";
+        private const string EmulatorDetectionKeyword = "EmulatorDetection";
 
         private InstanceName _instanceName;
         private DatabaseName _databaseName;
@@ -141,10 +142,10 @@ namespace Google.Cloud.Spanner.Data
         // Note: EndPoint rather than Endpoint to avoid an unnecessary breaking change from V1.
 
         /// <summary>
-        /// The <see cref="ServiceEndpoint"/> to use to connect to Spanner. If not supplied in the
+        /// The endpoint to use to connect to Spanner. If not supplied in the
         /// connection string, the default endpoint will be used.
         /// </summary>
-        public ServiceEndpoint EndPoint => new ServiceEndpoint(Host, Port);
+        public string EndPoint => $"{Host}:{Port}";
 
         /// <summary>
         /// The TCP Host name to connect to Spanner. If not supplied in the connection string, the default
@@ -152,7 +153,10 @@ namespace Google.Cloud.Spanner.Data
         /// </summary>
         public string Host
         {
-            get => GetValueOrDefault(nameof(Host), SpannerClient.DefaultEndpoint.Host);
+            // TODO: Now that ServiceEndpoint has been removed, we don't have separate host/port for the default endpoint.
+            // This is currently hardcoded for convenience; it's unlikely to ever change, but ideally we'd parse it from the
+            // SpannerClient.DefaultEndpoint;
+            get => GetValueOrDefault(nameof(Host), "spanner.googleapis.com");
             set => this[nameof(Host)] = value;
         }
 
@@ -162,7 +166,10 @@ namespace Google.Cloud.Spanner.Data
         /// </summary>
         public int Port
         {
-            get => GetInt32OrDefault(nameof(Port), 1, 65535, SpannerClient.DefaultEndpoint.Port);
+            // TODO: Now that ServiceEndpoint has been removed, we don't have separate host/port for the default endpoint.
+            // This is currently hardcoded for convenience; it's unlikely to ever change, but ideally we'd parse it from the
+            // SpannerClient.DefaultEndpoint;
+            get => GetInt32OrDefault(nameof(Port), 1, 65535, 443);
             set => SetInt32WithValidation(nameof(Port), 1, 65535, value);
         }
 
@@ -283,6 +290,32 @@ namespace Google.Cloud.Spanner.Data
             set => SetInt32WithValidation(nameof(Timeout), 0, int.MaxValue, value);
         }
 
+        /// <summary>
+        /// Specifies whether to allow the connection to check for the presence of the emulator
+        /// environment variable.
+        /// </summary>
+        /// <remarks>
+        /// This property defaults to <see cref="EmulatorDetection.None"/>, meaning that the
+        /// environment variable is ignored.
+        /// </remarks>
+        public EmulatorDetection EmulatorDetection
+        {
+            get
+            {
+                if (TryGetValue(EmulatorDetectionKeyword, out object value) &&
+                    (value is EmulatorDetection parsed || (value is string text && Enum.TryParse(text, out parsed))))
+                {
+                    return parsed >= EmulatorDetection.None && parsed <= EmulatorDetection.EmulatorOrProduction ? parsed : EmulatorDetection.None;
+                }
+                return EmulatorDetection.None;
+            }
+            set
+            {
+                GaxPreconditions.CheckEnumValue(value, nameof(value));
+                this[EmulatorDetectionKeyword] = value.ToString();
+            }
+        }
+
         internal ChannelCredentials CredentialOverride { get; }
 
         private SessionPoolManager _sessionPoolManager = SessionPoolManager.Default;
@@ -344,10 +377,17 @@ namespace Google.Cloud.Spanner.Data
         public SpannerConnectionStringBuilder() { }
 
 
-        internal SpannerConnectionStringBuilder Clone() => new SpannerConnectionStringBuilder(ConnectionString, CredentialOverride, SessionPoolManager);
+        internal SpannerConnectionStringBuilder Clone() => new SpannerConnectionStringBuilder(ConnectionString, CredentialOverride, SessionPoolManager)
+        {
+            EnvironmentVariableProvider = EnvironmentVariableProvider
+        };
 
-        internal SpannerConnectionStringBuilder CloneWithNewDataSource(string dataSource) =>
-            new SpannerConnectionStringBuilder(ConnectionString, CredentialOverride, SessionPoolManager) { DataSource = dataSource };
+        internal SpannerConnectionStringBuilder CloneWithNewDataSource(string dataSource)
+        {
+            var clone = Clone();
+            clone.DataSource = dataSource;
+            return clone;
+        }
 
         /// <summary>
         /// Returns a new instance of a <see cref="SpannerConnectionStringBuilder"/> with the database
@@ -401,5 +441,14 @@ namespace Google.Cloud.Spanner.Data
                 base[keyword] = value;
             }
         }
+
+        /// <summary>
+        /// An environment variable provider function (variable -> value) that is used during
+        /// emulator environment detection. This is provided for testability, so that clients are able to test
+        /// how they would connect based on emulator environment variables. This is not expected to be used in
+        /// production code. (Indeed, this property is currently internal, although the equivalent in SpannerClientBuilder
+        /// is necessarily public.)
+        /// </summary>
+        internal Func<string, string> EnvironmentVariableProvider { get; set; }
     }
 }

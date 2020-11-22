@@ -25,28 +25,31 @@ namespace Google.Cloud.Talent.V4Beta1 {
       byte[] descriptorData = global::System.Convert.FromBase64String(
           string.Concat(
             "Cilnb29nbGUvY2xvdWQvdGFsZW50L3Y0YmV0YTEvY29tcGFueS5wcm90bxIb",
-            "Z29vZ2xlLmNsb3VkLnRhbGVudC52NGJldGExGhxnb29nbGUvYXBpL2Fubm90",
-            "YXRpb25zLnByb3RvGh9nb29nbGUvYXBpL2ZpZWxkX2JlaGF2aW9yLnByb3Rv",
-            "Gihnb29nbGUvY2xvdWQvdGFsZW50L3Y0YmV0YTEvY29tbW9uLnByb3RvIvgD",
-            "CgdDb21wYW55EgwKBG5hbWUYASABKAkSGQoMZGlzcGxheV9uYW1lGAIgASgJ",
-            "QgPgQQISGAoLZXh0ZXJuYWxfaWQYAyABKAlCA+BBAhI2CgRzaXplGAQgASgO",
-            "MiguZ29vZ2xlLmNsb3VkLnRhbGVudC52NGJldGExLkNvbXBhbnlTaXplEhwK",
-            "FGhlYWRxdWFydGVyc19hZGRyZXNzGAUgASgJEhUKDWhpcmluZ19hZ2VuY3kY",
-            "BiABKAgSEAoIZWVvX3RleHQYByABKAkSEwoLd2Vic2l0ZV91cmkYCCABKAkS",
-            "FwoPY2FyZWVyX3NpdGVfdXJpGAkgASgJEhEKCWltYWdlX3VyaRgKIAEoCRIw",
-            "CihrZXl3b3JkX3NlYXJjaGFibGVfam9iX2N1c3RvbV9hdHRyaWJ1dGVzGAsg",
-            "AygJEksKDGRlcml2ZWRfaW5mbxgMIAEoCzIwLmdvb2dsZS5jbG91ZC50YWxl",
-            "bnQudjRiZXRhMS5Db21wYW55LkRlcml2ZWRJbmZvQgPgQQMSFgoJc3VzcGVu",
-            "ZGVkGA0gASgIQgPgQQMaUwoLRGVyaXZlZEluZm8SRAoVaGVhZHF1YXJ0ZXJz",
-            "X2xvY2F0aW9uGAEgASgLMiUuZ29vZ2xlLmNsb3VkLnRhbGVudC52NGJldGEx",
-            "LkxvY2F0aW9uQoIBCh9jb20uZ29vZ2xlLmNsb3VkLnRhbGVudC52NGJldGEx",
-            "QhRDb21wYW55UmVzb3VyY2VQcm90b1ABWkFnb29nbGUuZ29sYW5nLm9yZy9n",
-            "ZW5wcm90by9nb29nbGVhcGlzL2Nsb3VkL3RhbGVudC92NGJldGExO3RhbGVu",
-            "dKICA0NUU2IGcHJvdG8z"));
+            "Z29vZ2xlLmNsb3VkLnRhbGVudC52NGJldGExGh9nb29nbGUvYXBpL2ZpZWxk",
+            "X2JlaGF2aW9yLnByb3RvGhlnb29nbGUvYXBpL3Jlc291cmNlLnByb3RvGihn",
+            "b29nbGUvY2xvdWQvdGFsZW50L3Y0YmV0YTEvY29tbW9uLnByb3RvGhxnb29n",
+            "bGUvYXBpL2Fubm90YXRpb25zLnByb3RvIvwECgdDb21wYW55EgwKBG5hbWUY",
+            "ASABKAkSGQoMZGlzcGxheV9uYW1lGAIgASgJQgPgQQISGAoLZXh0ZXJuYWxf",
+            "aWQYAyABKAlCA+BBAhI2CgRzaXplGAQgASgOMiguZ29vZ2xlLmNsb3VkLnRh",
+            "bGVudC52NGJldGExLkNvbXBhbnlTaXplEhwKFGhlYWRxdWFydGVyc19hZGRy",
+            "ZXNzGAUgASgJEhUKDWhpcmluZ19hZ2VuY3kYBiABKAgSEAoIZWVvX3RleHQY",
+            "ByABKAkSEwoLd2Vic2l0ZV91cmkYCCABKAkSFwoPY2FyZWVyX3NpdGVfdXJp",
+            "GAkgASgJEhEKCWltYWdlX3VyaRgKIAEoCRIwCihrZXl3b3JkX3NlYXJjaGFi",
+            "bGVfam9iX2N1c3RvbV9hdHRyaWJ1dGVzGAsgAygJEksKDGRlcml2ZWRfaW5m",
+            "bxgMIAEoCzIwLmdvb2dsZS5jbG91ZC50YWxlbnQudjRiZXRhMS5Db21wYW55",
+            "LkRlcml2ZWRJbmZvQgPgQQMSFgoJc3VzcGVuZGVkGA0gASgIQgPgQQMaUwoL",
+            "RGVyaXZlZEluZm8SRAoVaGVhZHF1YXJ0ZXJzX2xvY2F0aW9uGAEgASgLMiUu",
+            "Z29vZ2xlLmNsb3VkLnRhbGVudC52NGJldGExLkxvY2F0aW9uOoEB6kF+Chtq",
+            "b2JzLmdvb2dsZWFwaXMuY29tL0NvbXBhbnkSN3Byb2plY3RzL3twcm9qZWN0",
+            "fS90ZW5hbnRzL3t0ZW5hbnR9L2NvbXBhbmllcy97Y29tcGFueX0SJnByb2pl",
+            "Y3RzL3twcm9qZWN0fS9jb21wYW5pZXMve2NvbXBhbnl9QoIBCh9jb20uZ29v",
+            "Z2xlLmNsb3VkLnRhbGVudC52NGJldGExQhRDb21wYW55UmVzb3VyY2VQcm90",
+            "b1ABWkFnb29nbGUuZ29sYW5nLm9yZy9nZW5wcm90by9nb29nbGVhcGlzL2Ns",
+            "b3VkL3RhbGVudC92NGJldGExO3RhbGVudKICA0NUU2IGcHJvdG8z"));
       descriptor = pbr::FileDescriptor.FromGeneratedCode(descriptorData,
-          new pbr::FileDescriptor[] { global::Google.Api.AnnotationsReflection.Descriptor, global::Google.Api.FieldBehaviorReflection.Descriptor, global::Google.Cloud.Talent.V4Beta1.CommonReflection.Descriptor, },
-          new pbr::GeneratedClrTypeInfo(null, new pbr::GeneratedClrTypeInfo[] {
-            new pbr::GeneratedClrTypeInfo(typeof(global::Google.Cloud.Talent.V4Beta1.Company), global::Google.Cloud.Talent.V4Beta1.Company.Parser, new[]{ "Name", "DisplayName", "ExternalId", "Size", "HeadquartersAddress", "HiringAgency", "EeoText", "WebsiteUri", "CareerSiteUri", "ImageUri", "KeywordSearchableJobCustomAttributes", "DerivedInfo", "Suspended" }, null, null, new pbr::GeneratedClrTypeInfo[] { new pbr::GeneratedClrTypeInfo(typeof(global::Google.Cloud.Talent.V4Beta1.Company.Types.DerivedInfo), global::Google.Cloud.Talent.V4Beta1.Company.Types.DerivedInfo.Parser, new[]{ "HeadquartersLocation" }, null, null, null)})
+          new pbr::FileDescriptor[] { global::Google.Api.FieldBehaviorReflection.Descriptor, global::Google.Api.ResourceReflection.Descriptor, global::Google.Cloud.Talent.V4Beta1.CommonReflection.Descriptor, global::Google.Api.AnnotationsReflection.Descriptor, },
+          new pbr::GeneratedClrTypeInfo(null, null, new pbr::GeneratedClrTypeInfo[] {
+            new pbr::GeneratedClrTypeInfo(typeof(global::Google.Cloud.Talent.V4Beta1.Company), global::Google.Cloud.Talent.V4Beta1.Company.Parser, new[]{ "Name", "DisplayName", "ExternalId", "Size", "HeadquartersAddress", "HiringAgency", "EeoText", "WebsiteUri", "CareerSiteUri", "ImageUri", "KeywordSearchableJobCustomAttributes", "DerivedInfo", "Suspended" }, null, null, null, new pbr::GeneratedClrTypeInfo[] { new pbr::GeneratedClrTypeInfo(typeof(global::Google.Cloud.Talent.V4Beta1.Company.Types.DerivedInfo), global::Google.Cloud.Talent.V4Beta1.Company.Types.DerivedInfo.Parser, new[]{ "HeadquartersLocation" }, null, null, null, null)})
           }));
     }
     #endregion
@@ -58,7 +61,11 @@ namespace Google.Cloud.Talent.V4Beta1 {
   /// entity that owns job postings, that is, the hiring entity responsible for
   /// employing applicants for the job position.
   /// </summary>
-  public sealed partial class Company : pb::IMessage<Company> {
+  public sealed partial class Company : pb::IMessage<Company>
+  #if !GOOGLE_PROTOBUF_REFSTRUCT_COMPATIBILITY_MODE
+      , pb::IBufferMessage
+  #endif
+  {
     private static readonly pb::MessageParser<Company> _parser = new pb::MessageParser<Company>(() => new Company());
     private pb::UnknownFieldSet _unknownFields;
     [global::System.Diagnostics.DebuggerNonUserCodeAttribute]
@@ -161,7 +168,7 @@ namespace Google.Cloud.Talent.V4Beta1 {
 
     /// <summary>Field number for the "size" field.</summary>
     public const int SizeFieldNumber = 4;
-    private global::Google.Cloud.Talent.V4Beta1.CompanySize size_ = 0;
+    private global::Google.Cloud.Talent.V4Beta1.CompanySize size_ = global::Google.Cloud.Talent.V4Beta1.CompanySize.Unspecified;
     /// <summary>
     /// The employer's company size.
     /// </summary>
@@ -180,8 +187,7 @@ namespace Google.Cloud.Talent.V4Beta1 {
     /// The street address of the company's main headquarters, which may be
     /// different from the job location. The service attempts
     /// to geolocate the provided address, and populates a more specific
-    /// location wherever possible in
-    /// [DerivedInfo.headquarters_location][google.cloud.talent.v4beta1.Company.DerivedInfo.headquarters_location].
+    /// location wherever possible in [DerivedInfo.headquarters_location][google.cloud.talent.v4beta1.Company.DerivedInfo.headquarters_location].
     /// </summary>
     [global::System.Diagnostics.DebuggerNonUserCodeAttribute]
     public string HeadquartersAddress {
@@ -278,9 +284,8 @@ namespace Google.Cloud.Talent.V4Beta1 {
         = pb::FieldCodec.ForString(90);
     private readonly pbc::RepeatedField<string> keywordSearchableJobCustomAttributes_ = new pbc::RepeatedField<string>();
     /// <summary>
-    /// A list of keys of filterable
-    /// [Job.custom_attributes][google.cloud.talent.v4beta1.Job.custom_attributes],
-    /// whose corresponding `string_values` are used in keyword searches. Jobs with
+    /// A list of keys of filterable [Job.custom_attributes][google.cloud.talent.v4beta1.Job.custom_attributes], whose
+    /// corresponding `string_values` are used in keyword searches. Jobs with
     /// `string_values` under these specified field keys are returned if any
     /// of the values match the search keyword. Custom field values with
     /// parenthesis, brackets and special symbols are not searchable as-is,
@@ -356,7 +361,7 @@ namespace Google.Cloud.Talent.V4Beta1 {
       if (Name.Length != 0) hash ^= Name.GetHashCode();
       if (DisplayName.Length != 0) hash ^= DisplayName.GetHashCode();
       if (ExternalId.Length != 0) hash ^= ExternalId.GetHashCode();
-      if (Size != 0) hash ^= Size.GetHashCode();
+      if (Size != global::Google.Cloud.Talent.V4Beta1.CompanySize.Unspecified) hash ^= Size.GetHashCode();
       if (HeadquartersAddress.Length != 0) hash ^= HeadquartersAddress.GetHashCode();
       if (HiringAgency != false) hash ^= HiringAgency.GetHashCode();
       if (EeoText.Length != 0) hash ^= EeoText.GetHashCode();
@@ -379,6 +384,9 @@ namespace Google.Cloud.Talent.V4Beta1 {
 
     [global::System.Diagnostics.DebuggerNonUserCodeAttribute]
     public void WriteTo(pb::CodedOutputStream output) {
+    #if !GOOGLE_PROTOBUF_REFSTRUCT_COMPATIBILITY_MODE
+      output.WriteRawMessage(this);
+    #else
       if (Name.Length != 0) {
         output.WriteRawTag(10);
         output.WriteString(Name);
@@ -391,7 +399,7 @@ namespace Google.Cloud.Talent.V4Beta1 {
         output.WriteRawTag(26);
         output.WriteString(ExternalId);
       }
-      if (Size != 0) {
+      if (Size != global::Google.Cloud.Talent.V4Beta1.CompanySize.Unspecified) {
         output.WriteRawTag(32);
         output.WriteEnum((int) Size);
       }
@@ -431,7 +439,66 @@ namespace Google.Cloud.Talent.V4Beta1 {
       if (_unknownFields != null) {
         _unknownFields.WriteTo(output);
       }
+    #endif
     }
+
+    #if !GOOGLE_PROTOBUF_REFSTRUCT_COMPATIBILITY_MODE
+    [global::System.Diagnostics.DebuggerNonUserCodeAttribute]
+    void pb::IBufferMessage.InternalWriteTo(ref pb::WriteContext output) {
+      if (Name.Length != 0) {
+        output.WriteRawTag(10);
+        output.WriteString(Name);
+      }
+      if (DisplayName.Length != 0) {
+        output.WriteRawTag(18);
+        output.WriteString(DisplayName);
+      }
+      if (ExternalId.Length != 0) {
+        output.WriteRawTag(26);
+        output.WriteString(ExternalId);
+      }
+      if (Size != global::Google.Cloud.Talent.V4Beta1.CompanySize.Unspecified) {
+        output.WriteRawTag(32);
+        output.WriteEnum((int) Size);
+      }
+      if (HeadquartersAddress.Length != 0) {
+        output.WriteRawTag(42);
+        output.WriteString(HeadquartersAddress);
+      }
+      if (HiringAgency != false) {
+        output.WriteRawTag(48);
+        output.WriteBool(HiringAgency);
+      }
+      if (EeoText.Length != 0) {
+        output.WriteRawTag(58);
+        output.WriteString(EeoText);
+      }
+      if (WebsiteUri.Length != 0) {
+        output.WriteRawTag(66);
+        output.WriteString(WebsiteUri);
+      }
+      if (CareerSiteUri.Length != 0) {
+        output.WriteRawTag(74);
+        output.WriteString(CareerSiteUri);
+      }
+      if (ImageUri.Length != 0) {
+        output.WriteRawTag(82);
+        output.WriteString(ImageUri);
+      }
+      keywordSearchableJobCustomAttributes_.WriteTo(ref output, _repeated_keywordSearchableJobCustomAttributes_codec);
+      if (derivedInfo_ != null) {
+        output.WriteRawTag(98);
+        output.WriteMessage(DerivedInfo);
+      }
+      if (Suspended != false) {
+        output.WriteRawTag(104);
+        output.WriteBool(Suspended);
+      }
+      if (_unknownFields != null) {
+        _unknownFields.WriteTo(ref output);
+      }
+    }
+    #endif
 
     [global::System.Diagnostics.DebuggerNonUserCodeAttribute]
     public int CalculateSize() {
@@ -445,7 +512,7 @@ namespace Google.Cloud.Talent.V4Beta1 {
       if (ExternalId.Length != 0) {
         size += 1 + pb::CodedOutputStream.ComputeStringSize(ExternalId);
       }
-      if (Size != 0) {
+      if (Size != global::Google.Cloud.Talent.V4Beta1.CompanySize.Unspecified) {
         size += 1 + pb::CodedOutputStream.ComputeEnumSize((int) Size);
       }
       if (HeadquartersAddress.Length != 0) {
@@ -493,7 +560,7 @@ namespace Google.Cloud.Talent.V4Beta1 {
       if (other.ExternalId.Length != 0) {
         ExternalId = other.ExternalId;
       }
-      if (other.Size != 0) {
+      if (other.Size != global::Google.Cloud.Talent.V4Beta1.CompanySize.Unspecified) {
         Size = other.Size;
       }
       if (other.HeadquartersAddress.Length != 0) {
@@ -529,6 +596,9 @@ namespace Google.Cloud.Talent.V4Beta1 {
 
     [global::System.Diagnostics.DebuggerNonUserCodeAttribute]
     public void MergeFrom(pb::CodedInputStream input) {
+    #if !GOOGLE_PROTOBUF_REFSTRUCT_COMPATIBILITY_MODE
+      input.ReadRawMessage(this);
+    #else
       uint tag;
       while ((tag = input.ReadTag()) != 0) {
         switch(tag) {
@@ -592,7 +662,77 @@ namespace Google.Cloud.Talent.V4Beta1 {
           }
         }
       }
+    #endif
     }
+
+    #if !GOOGLE_PROTOBUF_REFSTRUCT_COMPATIBILITY_MODE
+    [global::System.Diagnostics.DebuggerNonUserCodeAttribute]
+    void pb::IBufferMessage.InternalMergeFrom(ref pb::ParseContext input) {
+      uint tag;
+      while ((tag = input.ReadTag()) != 0) {
+        switch(tag) {
+          default:
+            _unknownFields = pb::UnknownFieldSet.MergeFieldFrom(_unknownFields, ref input);
+            break;
+          case 10: {
+            Name = input.ReadString();
+            break;
+          }
+          case 18: {
+            DisplayName = input.ReadString();
+            break;
+          }
+          case 26: {
+            ExternalId = input.ReadString();
+            break;
+          }
+          case 32: {
+            Size = (global::Google.Cloud.Talent.V4Beta1.CompanySize) input.ReadEnum();
+            break;
+          }
+          case 42: {
+            HeadquartersAddress = input.ReadString();
+            break;
+          }
+          case 48: {
+            HiringAgency = input.ReadBool();
+            break;
+          }
+          case 58: {
+            EeoText = input.ReadString();
+            break;
+          }
+          case 66: {
+            WebsiteUri = input.ReadString();
+            break;
+          }
+          case 74: {
+            CareerSiteUri = input.ReadString();
+            break;
+          }
+          case 82: {
+            ImageUri = input.ReadString();
+            break;
+          }
+          case 90: {
+            keywordSearchableJobCustomAttributes_.AddEntriesFrom(ref input, _repeated_keywordSearchableJobCustomAttributes_codec);
+            break;
+          }
+          case 98: {
+            if (derivedInfo_ == null) {
+              DerivedInfo = new global::Google.Cloud.Talent.V4Beta1.Company.Types.DerivedInfo();
+            }
+            input.ReadMessage(DerivedInfo);
+            break;
+          }
+          case 104: {
+            Suspended = input.ReadBool();
+            break;
+          }
+        }
+      }
+    }
+    #endif
 
     #region Nested types
     /// <summary>Container for nested types declared in the Company message type.</summary>
@@ -601,7 +741,11 @@ namespace Google.Cloud.Talent.V4Beta1 {
       /// <summary>
       /// Derived details about the company.
       /// </summary>
-      public sealed partial class DerivedInfo : pb::IMessage<DerivedInfo> {
+      public sealed partial class DerivedInfo : pb::IMessage<DerivedInfo>
+      #if !GOOGLE_PROTOBUF_REFSTRUCT_COMPATIBILITY_MODE
+          , pb::IBufferMessage
+      #endif
+      {
         private static readonly pb::MessageParser<DerivedInfo> _parser = new pb::MessageParser<DerivedInfo>(() => new DerivedInfo());
         private pb::UnknownFieldSet _unknownFields;
         [global::System.Diagnostics.DebuggerNonUserCodeAttribute]
@@ -640,8 +784,7 @@ namespace Google.Cloud.Talent.V4Beta1 {
         private global::Google.Cloud.Talent.V4Beta1.Location headquartersLocation_;
         /// <summary>
         /// A structured headquarters location of the company, resolved from
-        /// [Company.headquarters_address][google.cloud.talent.v4beta1.Company.headquarters_address]
-        /// if provided.
+        /// [Company.headquarters_address][google.cloud.talent.v4beta1.Company.headquarters_address] if provided.
         /// </summary>
         [global::System.Diagnostics.DebuggerNonUserCodeAttribute]
         public global::Google.Cloud.Talent.V4Beta1.Location HeadquartersLocation {
@@ -685,6 +828,9 @@ namespace Google.Cloud.Talent.V4Beta1 {
 
         [global::System.Diagnostics.DebuggerNonUserCodeAttribute]
         public void WriteTo(pb::CodedOutputStream output) {
+        #if !GOOGLE_PROTOBUF_REFSTRUCT_COMPATIBILITY_MODE
+          output.WriteRawMessage(this);
+        #else
           if (headquartersLocation_ != null) {
             output.WriteRawTag(10);
             output.WriteMessage(HeadquartersLocation);
@@ -692,7 +838,21 @@ namespace Google.Cloud.Talent.V4Beta1 {
           if (_unknownFields != null) {
             _unknownFields.WriteTo(output);
           }
+        #endif
         }
+
+        #if !GOOGLE_PROTOBUF_REFSTRUCT_COMPATIBILITY_MODE
+        [global::System.Diagnostics.DebuggerNonUserCodeAttribute]
+        void pb::IBufferMessage.InternalWriteTo(ref pb::WriteContext output) {
+          if (headquartersLocation_ != null) {
+            output.WriteRawTag(10);
+            output.WriteMessage(HeadquartersLocation);
+          }
+          if (_unknownFields != null) {
+            _unknownFields.WriteTo(ref output);
+          }
+        }
+        #endif
 
         [global::System.Diagnostics.DebuggerNonUserCodeAttribute]
         public int CalculateSize() {
@@ -722,6 +882,9 @@ namespace Google.Cloud.Talent.V4Beta1 {
 
         [global::System.Diagnostics.DebuggerNonUserCodeAttribute]
         public void MergeFrom(pb::CodedInputStream input) {
+        #if !GOOGLE_PROTOBUF_REFSTRUCT_COMPATIBILITY_MODE
+          input.ReadRawMessage(this);
+        #else
           uint tag;
           while ((tag = input.ReadTag()) != 0) {
             switch(tag) {
@@ -737,7 +900,29 @@ namespace Google.Cloud.Talent.V4Beta1 {
               }
             }
           }
+        #endif
         }
+
+        #if !GOOGLE_PROTOBUF_REFSTRUCT_COMPATIBILITY_MODE
+        [global::System.Diagnostics.DebuggerNonUserCodeAttribute]
+        void pb::IBufferMessage.InternalMergeFrom(ref pb::ParseContext input) {
+          uint tag;
+          while ((tag = input.ReadTag()) != 0) {
+            switch(tag) {
+              default:
+                _unknownFields = pb::UnknownFieldSet.MergeFieldFrom(_unknownFields, ref input);
+                break;
+              case 10: {
+                if (headquartersLocation_ == null) {
+                  HeadquartersLocation = new global::Google.Cloud.Talent.V4Beta1.Location();
+                }
+                input.ReadMessage(HeadquartersLocation);
+                break;
+              }
+            }
+          }
+        }
+        #endif
 
       }
 

@@ -1,4 +1,4 @@
-// Copyright 2019 Google LLC
+// Copyright 2020 Google LLC
 //
 // Licensed under the Apache License, Version 2.0 (the "License");
 // you may not use this file except in compliance with the License.
@@ -17,66 +17,46 @@
 namespace Google.Cloud.SecurityCenter.V1.Snippets
 {
     using Google.Api.Gax;
-    using Google.Api.Gax.Grpc;
+    using Google.Api.Gax.ResourceNames;
     using Google.Cloud.Iam.V1;
-    using apis = Google.Cloud.SecurityCenter.V1;
     using Google.LongRunning;
-    using Google.Protobuf;
     using Google.Protobuf.WellKnownTypes;
-    using Grpc.Core;
-    using static ListAssetsResponse.Types;
-    using static ListFindingsResponse.Types;
     using System;
-    using System.Collections;
     using System.Collections.Generic;
-    using System.Collections.ObjectModel;
     using System.Linq;
-    using System.Threading;
     using System.Threading.Tasks;
 
-    /// <summary>Generated snippets</summary>
-    public class GeneratedSecurityCenterClientSnippets
+    /// <summary>Generated snippets.</summary>
+    public sealed class GeneratedSecurityCenterClientSnippets
     {
-        /// <summary>Snippet for CreateSourceAsync</summary>
-        public async Task CreateSourceAsync()
-        {
-            // Snippet: CreateSourceAsync(OrganizationName,Source,CallSettings)
-            // Additional: CreateSourceAsync(OrganizationName,Source,CancellationToken)
-            // Create client
-            SecurityCenterClient securityCenterClient = await SecurityCenterClient.CreateAsync();
-            // Initialize request argument(s)
-            OrganizationName parent = new OrganizationName("[ORGANIZATION]");
-            Source source = new Source();
-            // Make the request
-            Source response = await securityCenterClient.CreateSourceAsync(parent, source);
-            // End snippet
-        }
-
         /// <summary>Snippet for CreateSource</summary>
-        public void CreateSource()
+        public void CreateSourceRequestObject()
         {
-            // Snippet: CreateSource(OrganizationName,Source,CallSettings)
+            // Snippet: CreateSource(CreateSourceRequest, CallSettings)
             // Create client
             SecurityCenterClient securityCenterClient = SecurityCenterClient.Create();
             // Initialize request argument(s)
-            OrganizationName parent = new OrganizationName("[ORGANIZATION]");
-            Source source = new Source();
+            CreateSourceRequest request = new CreateSourceRequest
+            {
+                ParentAsOrganizationName = OrganizationName.FromOrganization("[ORGANIZATION]"),
+                Source = new Source(),
+            };
             // Make the request
-            Source response = securityCenterClient.CreateSource(parent, source);
+            Source response = securityCenterClient.CreateSource(request);
             // End snippet
         }
 
         /// <summary>Snippet for CreateSourceAsync</summary>
-        public async Task CreateSourceAsync_RequestObject()
+        public async Task CreateSourceRequestObjectAsync()
         {
-            // Snippet: CreateSourceAsync(CreateSourceRequest,CallSettings)
-            // Additional: CreateSourceAsync(CreateSourceRequest,CancellationToken)
+            // Snippet: CreateSourceAsync(CreateSourceRequest, CallSettings)
+            // Additional: CreateSourceAsync(CreateSourceRequest, CancellationToken)
             // Create client
             SecurityCenterClient securityCenterClient = await SecurityCenterClient.CreateAsync();
             // Initialize request argument(s)
             CreateSourceRequest request = new CreateSourceRequest
             {
-                ParentAsOrganizationName = new OrganizationName("[ORGANIZATION]"),
+                ParentAsOrganizationName = OrganizationName.FromOrganization("[ORGANIZATION]"),
                 Source = new Source(),
             };
             // Make the request
@@ -85,64 +65,92 @@ namespace Google.Cloud.SecurityCenter.V1.Snippets
         }
 
         /// <summary>Snippet for CreateSource</summary>
-        public void CreateSource_RequestObject()
+        public void CreateSource()
         {
-            // Snippet: CreateSource(CreateSourceRequest,CallSettings)
+            // Snippet: CreateSource(string, Source, CallSettings)
             // Create client
             SecurityCenterClient securityCenterClient = SecurityCenterClient.Create();
             // Initialize request argument(s)
-            CreateSourceRequest request = new CreateSourceRequest
-            {
-                ParentAsOrganizationName = new OrganizationName("[ORGANIZATION]"),
-                Source = new Source(),
-            };
+            string parent = "organizations/[ORGANIZATION]";
+            Source source = new Source();
             // Make the request
-            Source response = securityCenterClient.CreateSource(request);
+            Source response = securityCenterClient.CreateSource(parent, source);
             // End snippet
         }
 
-        /// <summary>Snippet for CreateFindingAsync</summary>
-        public async Task CreateFindingAsync()
+        /// <summary>Snippet for CreateSourceAsync</summary>
+        public async Task CreateSourceAsync()
         {
-            // Snippet: CreateFindingAsync(SourceName,string,Finding,CallSettings)
-            // Additional: CreateFindingAsync(SourceName,string,Finding,CancellationToken)
+            // Snippet: CreateSourceAsync(string, Source, CallSettings)
+            // Additional: CreateSourceAsync(string, Source, CancellationToken)
             // Create client
             SecurityCenterClient securityCenterClient = await SecurityCenterClient.CreateAsync();
             // Initialize request argument(s)
-            SourceName parent = new SourceName("[ORGANIZATION]", "[SOURCE]");
-            string findingId = "";
-            Finding finding = new Finding();
+            string parent = "organizations/[ORGANIZATION]";
+            Source source = new Source();
             // Make the request
-            Finding response = await securityCenterClient.CreateFindingAsync(parent, findingId, finding);
+            Source response = await securityCenterClient.CreateSourceAsync(parent, source);
+            // End snippet
+        }
+
+        /// <summary>Snippet for CreateSource</summary>
+        public void CreateSourceResourceNames()
+        {
+            // Snippet: CreateSource(OrganizationName, Source, CallSettings)
+            // Create client
+            SecurityCenterClient securityCenterClient = SecurityCenterClient.Create();
+            // Initialize request argument(s)
+            OrganizationName parent = OrganizationName.FromOrganization("[ORGANIZATION]");
+            Source source = new Source();
+            // Make the request
+            Source response = securityCenterClient.CreateSource(parent, source);
+            // End snippet
+        }
+
+        /// <summary>Snippet for CreateSourceAsync</summary>
+        public async Task CreateSourceResourceNamesAsync()
+        {
+            // Snippet: CreateSourceAsync(OrganizationName, Source, CallSettings)
+            // Additional: CreateSourceAsync(OrganizationName, Source, CancellationToken)
+            // Create client
+            SecurityCenterClient securityCenterClient = await SecurityCenterClient.CreateAsync();
+            // Initialize request argument(s)
+            OrganizationName parent = OrganizationName.FromOrganization("[ORGANIZATION]");
+            Source source = new Source();
+            // Make the request
+            Source response = await securityCenterClient.CreateSourceAsync(parent, source);
             // End snippet
         }
 
         /// <summary>Snippet for CreateFinding</summary>
-        public void CreateFinding()
+        public void CreateFindingRequestObject()
         {
-            // Snippet: CreateFinding(SourceName,string,Finding,CallSettings)
+            // Snippet: CreateFinding(CreateFindingRequest, CallSettings)
             // Create client
             SecurityCenterClient securityCenterClient = SecurityCenterClient.Create();
             // Initialize request argument(s)
-            SourceName parent = new SourceName("[ORGANIZATION]", "[SOURCE]");
-            string findingId = "";
-            Finding finding = new Finding();
+            CreateFindingRequest request = new CreateFindingRequest
+            {
+                ParentAsSourceName = SourceName.FromOrganizationSource("[ORGANIZATION]", "[SOURCE]"),
+                FindingId = "",
+                Finding = new Finding(),
+            };
             // Make the request
-            Finding response = securityCenterClient.CreateFinding(parent, findingId, finding);
+            Finding response = securityCenterClient.CreateFinding(request);
             // End snippet
         }
 
         /// <summary>Snippet for CreateFindingAsync</summary>
-        public async Task CreateFindingAsync_RequestObject()
+        public async Task CreateFindingRequestObjectAsync()
         {
-            // Snippet: CreateFindingAsync(CreateFindingRequest,CallSettings)
-            // Additional: CreateFindingAsync(CreateFindingRequest,CancellationToken)
+            // Snippet: CreateFindingAsync(CreateFindingRequest, CallSettings)
+            // Additional: CreateFindingAsync(CreateFindingRequest, CancellationToken)
             // Create client
             SecurityCenterClient securityCenterClient = await SecurityCenterClient.CreateAsync();
             // Initialize request argument(s)
             CreateFindingRequest request = new CreateFindingRequest
             {
-                ParentAsSourceName = new SourceName("[ORGANIZATION]", "[SOURCE]"),
+                ParentAsSourceName = SourceName.FromOrganizationSource("[ORGANIZATION]", "[SOURCE]"),
                 FindingId = "",
                 Finding = new Finding(),
             };
@@ -152,61 +160,340 @@ namespace Google.Cloud.SecurityCenter.V1.Snippets
         }
 
         /// <summary>Snippet for CreateFinding</summary>
-        public void CreateFinding_RequestObject()
+        public void CreateFinding()
         {
-            // Snippet: CreateFinding(CreateFindingRequest,CallSettings)
+            // Snippet: CreateFinding(string, string, Finding, CallSettings)
             // Create client
             SecurityCenterClient securityCenterClient = SecurityCenterClient.Create();
             // Initialize request argument(s)
-            CreateFindingRequest request = new CreateFindingRequest
-            {
-                ParentAsSourceName = new SourceName("[ORGANIZATION]", "[SOURCE]"),
-                FindingId = "",
-                Finding = new Finding(),
-            };
+            string parent = "organizations/[ORGANIZATION]/sources/[SOURCE]";
+            string findingId = "";
+            Finding finding = new Finding();
             // Make the request
-            Finding response = securityCenterClient.CreateFinding(request);
+            Finding response = securityCenterClient.CreateFinding(parent, findingId, finding);
             // End snippet
         }
 
-        /// <summary>Snippet for GetIamPolicyAsync</summary>
-        public async Task GetIamPolicyAsync()
+        /// <summary>Snippet for CreateFindingAsync</summary>
+        public async Task CreateFindingAsync()
         {
-            // Snippet: GetIamPolicyAsync(SourceName,CallSettings)
-            // Additional: GetIamPolicyAsync(SourceName,CancellationToken)
+            // Snippet: CreateFindingAsync(string, string, Finding, CallSettings)
+            // Additional: CreateFindingAsync(string, string, Finding, CancellationToken)
             // Create client
             SecurityCenterClient securityCenterClient = await SecurityCenterClient.CreateAsync();
             // Initialize request argument(s)
-            SourceName resource = new SourceName("[ORGANIZATION]", "[SOURCE]");
+            string parent = "organizations/[ORGANIZATION]/sources/[SOURCE]";
+            string findingId = "";
+            Finding finding = new Finding();
             // Make the request
-            Policy response = await securityCenterClient.GetIamPolicyAsync(resource);
+            Finding response = await securityCenterClient.CreateFindingAsync(parent, findingId, finding);
+            // End snippet
+        }
+
+        /// <summary>Snippet for CreateFinding</summary>
+        public void CreateFindingResourceNames()
+        {
+            // Snippet: CreateFinding(SourceName, string, Finding, CallSettings)
+            // Create client
+            SecurityCenterClient securityCenterClient = SecurityCenterClient.Create();
+            // Initialize request argument(s)
+            SourceName parent = SourceName.FromOrganizationSource("[ORGANIZATION]", "[SOURCE]");
+            string findingId = "";
+            Finding finding = new Finding();
+            // Make the request
+            Finding response = securityCenterClient.CreateFinding(parent, findingId, finding);
+            // End snippet
+        }
+
+        /// <summary>Snippet for CreateFindingAsync</summary>
+        public async Task CreateFindingResourceNamesAsync()
+        {
+            // Snippet: CreateFindingAsync(SourceName, string, Finding, CallSettings)
+            // Additional: CreateFindingAsync(SourceName, string, Finding, CancellationToken)
+            // Create client
+            SecurityCenterClient securityCenterClient = await SecurityCenterClient.CreateAsync();
+            // Initialize request argument(s)
+            SourceName parent = SourceName.FromOrganizationSource("[ORGANIZATION]", "[SOURCE]");
+            string findingId = "";
+            Finding finding = new Finding();
+            // Make the request
+            Finding response = await securityCenterClient.CreateFindingAsync(parent, findingId, finding);
+            // End snippet
+        }
+
+        /// <summary>Snippet for CreateNotificationConfig</summary>
+        public void CreateNotificationConfigRequestObject()
+        {
+            // Snippet: CreateNotificationConfig(CreateNotificationConfigRequest, CallSettings)
+            // Create client
+            SecurityCenterClient securityCenterClient = SecurityCenterClient.Create();
+            // Initialize request argument(s)
+            CreateNotificationConfigRequest request = new CreateNotificationConfigRequest
+            {
+                ParentAsOrganizationName = OrganizationName.FromOrganization("[ORGANIZATION]"),
+                ConfigId = "",
+                NotificationConfig = new NotificationConfig(),
+            };
+            // Make the request
+            NotificationConfig response = securityCenterClient.CreateNotificationConfig(request);
+            // End snippet
+        }
+
+        /// <summary>Snippet for CreateNotificationConfigAsync</summary>
+        public async Task CreateNotificationConfigRequestObjectAsync()
+        {
+            // Snippet: CreateNotificationConfigAsync(CreateNotificationConfigRequest, CallSettings)
+            // Additional: CreateNotificationConfigAsync(CreateNotificationConfigRequest, CancellationToken)
+            // Create client
+            SecurityCenterClient securityCenterClient = await SecurityCenterClient.CreateAsync();
+            // Initialize request argument(s)
+            CreateNotificationConfigRequest request = new CreateNotificationConfigRequest
+            {
+                ParentAsOrganizationName = OrganizationName.FromOrganization("[ORGANIZATION]"),
+                ConfigId = "",
+                NotificationConfig = new NotificationConfig(),
+            };
+            // Make the request
+            NotificationConfig response = await securityCenterClient.CreateNotificationConfigAsync(request);
+            // End snippet
+        }
+
+        /// <summary>Snippet for CreateNotificationConfig</summary>
+        public void CreateNotificationConfig1()
+        {
+            // Snippet: CreateNotificationConfig(string, string, NotificationConfig, CallSettings)
+            // Create client
+            SecurityCenterClient securityCenterClient = SecurityCenterClient.Create();
+            // Initialize request argument(s)
+            string parent = "organizations/[ORGANIZATION]";
+            string configId = "";
+            NotificationConfig notificationConfig = new NotificationConfig();
+            // Make the request
+            NotificationConfig response = securityCenterClient.CreateNotificationConfig(parent, configId, notificationConfig);
+            // End snippet
+        }
+
+        /// <summary>Snippet for CreateNotificationConfigAsync</summary>
+        public async Task CreateNotificationConfig1Async()
+        {
+            // Snippet: CreateNotificationConfigAsync(string, string, NotificationConfig, CallSettings)
+            // Additional: CreateNotificationConfigAsync(string, string, NotificationConfig, CancellationToken)
+            // Create client
+            SecurityCenterClient securityCenterClient = await SecurityCenterClient.CreateAsync();
+            // Initialize request argument(s)
+            string parent = "organizations/[ORGANIZATION]";
+            string configId = "";
+            NotificationConfig notificationConfig = new NotificationConfig();
+            // Make the request
+            NotificationConfig response = await securityCenterClient.CreateNotificationConfigAsync(parent, configId, notificationConfig);
+            // End snippet
+        }
+
+        /// <summary>Snippet for CreateNotificationConfig</summary>
+        public void CreateNotificationConfig1ResourceNames()
+        {
+            // Snippet: CreateNotificationConfig(OrganizationName, string, NotificationConfig, CallSettings)
+            // Create client
+            SecurityCenterClient securityCenterClient = SecurityCenterClient.Create();
+            // Initialize request argument(s)
+            OrganizationName parent = OrganizationName.FromOrganization("[ORGANIZATION]");
+            string configId = "";
+            NotificationConfig notificationConfig = new NotificationConfig();
+            // Make the request
+            NotificationConfig response = securityCenterClient.CreateNotificationConfig(parent, configId, notificationConfig);
+            // End snippet
+        }
+
+        /// <summary>Snippet for CreateNotificationConfigAsync</summary>
+        public async Task CreateNotificationConfig1ResourceNamesAsync()
+        {
+            // Snippet: CreateNotificationConfigAsync(OrganizationName, string, NotificationConfig, CallSettings)
+            // Additional: CreateNotificationConfigAsync(OrganizationName, string, NotificationConfig, CancellationToken)
+            // Create client
+            SecurityCenterClient securityCenterClient = await SecurityCenterClient.CreateAsync();
+            // Initialize request argument(s)
+            OrganizationName parent = OrganizationName.FromOrganization("[ORGANIZATION]");
+            string configId = "";
+            NotificationConfig notificationConfig = new NotificationConfig();
+            // Make the request
+            NotificationConfig response = await securityCenterClient.CreateNotificationConfigAsync(parent, configId, notificationConfig);
+            // End snippet
+        }
+
+        /// <summary>Snippet for CreateNotificationConfig</summary>
+        public void CreateNotificationConfig2()
+        {
+            // Snippet: CreateNotificationConfig(string, NotificationConfig, CallSettings)
+            // Create client
+            SecurityCenterClient securityCenterClient = SecurityCenterClient.Create();
+            // Initialize request argument(s)
+            string parent = "organizations/[ORGANIZATION]";
+            NotificationConfig notificationConfig = new NotificationConfig();
+            // Make the request
+            NotificationConfig response = securityCenterClient.CreateNotificationConfig(parent, notificationConfig);
+            // End snippet
+        }
+
+        /// <summary>Snippet for CreateNotificationConfigAsync</summary>
+        public async Task CreateNotificationConfig2Async()
+        {
+            // Snippet: CreateNotificationConfigAsync(string, NotificationConfig, CallSettings)
+            // Additional: CreateNotificationConfigAsync(string, NotificationConfig, CancellationToken)
+            // Create client
+            SecurityCenterClient securityCenterClient = await SecurityCenterClient.CreateAsync();
+            // Initialize request argument(s)
+            string parent = "organizations/[ORGANIZATION]";
+            NotificationConfig notificationConfig = new NotificationConfig();
+            // Make the request
+            NotificationConfig response = await securityCenterClient.CreateNotificationConfigAsync(parent, notificationConfig);
+            // End snippet
+        }
+
+        /// <summary>Snippet for CreateNotificationConfig</summary>
+        public void CreateNotificationConfig2ResourceNames()
+        {
+            // Snippet: CreateNotificationConfig(OrganizationName, NotificationConfig, CallSettings)
+            // Create client
+            SecurityCenterClient securityCenterClient = SecurityCenterClient.Create();
+            // Initialize request argument(s)
+            OrganizationName parent = OrganizationName.FromOrganization("[ORGANIZATION]");
+            NotificationConfig notificationConfig = new NotificationConfig();
+            // Make the request
+            NotificationConfig response = securityCenterClient.CreateNotificationConfig(parent, notificationConfig);
+            // End snippet
+        }
+
+        /// <summary>Snippet for CreateNotificationConfigAsync</summary>
+        public async Task CreateNotificationConfig2ResourceNamesAsync()
+        {
+            // Snippet: CreateNotificationConfigAsync(OrganizationName, NotificationConfig, CallSettings)
+            // Additional: CreateNotificationConfigAsync(OrganizationName, NotificationConfig, CancellationToken)
+            // Create client
+            SecurityCenterClient securityCenterClient = await SecurityCenterClient.CreateAsync();
+            // Initialize request argument(s)
+            OrganizationName parent = OrganizationName.FromOrganization("[ORGANIZATION]");
+            NotificationConfig notificationConfig = new NotificationConfig();
+            // Make the request
+            NotificationConfig response = await securityCenterClient.CreateNotificationConfigAsync(parent, notificationConfig);
+            // End snippet
+        }
+
+        /// <summary>Snippet for DeleteNotificationConfig</summary>
+        public void DeleteNotificationConfigRequestObject()
+        {
+            // Snippet: DeleteNotificationConfig(DeleteNotificationConfigRequest, CallSettings)
+            // Create client
+            SecurityCenterClient securityCenterClient = SecurityCenterClient.Create();
+            // Initialize request argument(s)
+            DeleteNotificationConfigRequest request = new DeleteNotificationConfigRequest
+            {
+                NotificationConfigName = NotificationConfigName.FromOrganizationNotificationConfig("[ORGANIZATION]", "[NOTIFICATION_CONFIG]"),
+            };
+            // Make the request
+            securityCenterClient.DeleteNotificationConfig(request);
+            // End snippet
+        }
+
+        /// <summary>Snippet for DeleteNotificationConfigAsync</summary>
+        public async Task DeleteNotificationConfigRequestObjectAsync()
+        {
+            // Snippet: DeleteNotificationConfigAsync(DeleteNotificationConfigRequest, CallSettings)
+            // Additional: DeleteNotificationConfigAsync(DeleteNotificationConfigRequest, CancellationToken)
+            // Create client
+            SecurityCenterClient securityCenterClient = await SecurityCenterClient.CreateAsync();
+            // Initialize request argument(s)
+            DeleteNotificationConfigRequest request = new DeleteNotificationConfigRequest
+            {
+                NotificationConfigName = NotificationConfigName.FromOrganizationNotificationConfig("[ORGANIZATION]", "[NOTIFICATION_CONFIG]"),
+            };
+            // Make the request
+            await securityCenterClient.DeleteNotificationConfigAsync(request);
+            // End snippet
+        }
+
+        /// <summary>Snippet for DeleteNotificationConfig</summary>
+        public void DeleteNotificationConfig()
+        {
+            // Snippet: DeleteNotificationConfig(string, CallSettings)
+            // Create client
+            SecurityCenterClient securityCenterClient = SecurityCenterClient.Create();
+            // Initialize request argument(s)
+            string name = "organizations/[ORGANIZATION]/notificationConfigs/[NOTIFICATION_CONFIG]";
+            // Make the request
+            securityCenterClient.DeleteNotificationConfig(name);
+            // End snippet
+        }
+
+        /// <summary>Snippet for DeleteNotificationConfigAsync</summary>
+        public async Task DeleteNotificationConfigAsync()
+        {
+            // Snippet: DeleteNotificationConfigAsync(string, CallSettings)
+            // Additional: DeleteNotificationConfigAsync(string, CancellationToken)
+            // Create client
+            SecurityCenterClient securityCenterClient = await SecurityCenterClient.CreateAsync();
+            // Initialize request argument(s)
+            string name = "organizations/[ORGANIZATION]/notificationConfigs/[NOTIFICATION_CONFIG]";
+            // Make the request
+            await securityCenterClient.DeleteNotificationConfigAsync(name);
+            // End snippet
+        }
+
+        /// <summary>Snippet for DeleteNotificationConfig</summary>
+        public void DeleteNotificationConfigResourceNames()
+        {
+            // Snippet: DeleteNotificationConfig(NotificationConfigName, CallSettings)
+            // Create client
+            SecurityCenterClient securityCenterClient = SecurityCenterClient.Create();
+            // Initialize request argument(s)
+            NotificationConfigName name = NotificationConfigName.FromOrganizationNotificationConfig("[ORGANIZATION]", "[NOTIFICATION_CONFIG]");
+            // Make the request
+            securityCenterClient.DeleteNotificationConfig(name);
+            // End snippet
+        }
+
+        /// <summary>Snippet for DeleteNotificationConfigAsync</summary>
+        public async Task DeleteNotificationConfigResourceNamesAsync()
+        {
+            // Snippet: DeleteNotificationConfigAsync(NotificationConfigName, CallSettings)
+            // Additional: DeleteNotificationConfigAsync(NotificationConfigName, CancellationToken)
+            // Create client
+            SecurityCenterClient securityCenterClient = await SecurityCenterClient.CreateAsync();
+            // Initialize request argument(s)
+            NotificationConfigName name = NotificationConfigName.FromOrganizationNotificationConfig("[ORGANIZATION]", "[NOTIFICATION_CONFIG]");
+            // Make the request
+            await securityCenterClient.DeleteNotificationConfigAsync(name);
             // End snippet
         }
 
         /// <summary>Snippet for GetIamPolicy</summary>
-        public void GetIamPolicy()
+        public void GetIamPolicyRequestObject()
         {
-            // Snippet: GetIamPolicy(SourceName,CallSettings)
+            // Snippet: GetIamPolicy(GetIamPolicyRequest, CallSettings)
             // Create client
             SecurityCenterClient securityCenterClient = SecurityCenterClient.Create();
             // Initialize request argument(s)
-            SourceName resource = new SourceName("[ORGANIZATION]", "[SOURCE]");
+            GetIamPolicyRequest request = new GetIamPolicyRequest
+            {
+                ResourceAsResourceName = new UnparsedResourceName("a/wildcard/resource"),
+                Options = new GetPolicyOptions(),
+            };
             // Make the request
-            Policy response = securityCenterClient.GetIamPolicy(resource);
+            Policy response = securityCenterClient.GetIamPolicy(request);
             // End snippet
         }
 
         /// <summary>Snippet for GetIamPolicyAsync</summary>
-        public async Task GetIamPolicyAsync_RequestObject()
+        public async Task GetIamPolicyRequestObjectAsync()
         {
-            // Snippet: GetIamPolicyAsync(GetIamPolicyRequest,CallSettings)
-            // Additional: GetIamPolicyAsync(GetIamPolicyRequest,CancellationToken)
+            // Snippet: GetIamPolicyAsync(GetIamPolicyRequest, CallSettings)
+            // Additional: GetIamPolicyAsync(GetIamPolicyRequest, CancellationToken)
             // Create client
             SecurityCenterClient securityCenterClient = await SecurityCenterClient.CreateAsync();
             // Initialize request argument(s)
             GetIamPolicyRequest request = new GetIamPolicyRequest
             {
-                ResourceAsResourceName = new SourceName("[ORGANIZATION]", "[SOURCE]"),
+                ResourceAsResourceName = new UnparsedResourceName("a/wildcard/resource"),
+                Options = new GetPolicyOptions(),
             };
             // Make the request
             Policy response = await securityCenterClient.GetIamPolicyAsync(request);
@@ -214,59 +501,173 @@ namespace Google.Cloud.SecurityCenter.V1.Snippets
         }
 
         /// <summary>Snippet for GetIamPolicy</summary>
-        public void GetIamPolicy_RequestObject()
+        public void GetIamPolicy()
         {
-            // Snippet: GetIamPolicy(GetIamPolicyRequest,CallSettings)
+            // Snippet: GetIamPolicy(string, CallSettings)
             // Create client
             SecurityCenterClient securityCenterClient = SecurityCenterClient.Create();
             // Initialize request argument(s)
-            GetIamPolicyRequest request = new GetIamPolicyRequest
-            {
-                ResourceAsResourceName = new SourceName("[ORGANIZATION]", "[SOURCE]"),
-            };
+            string resource = "a/wildcard/resource";
             // Make the request
-            Policy response = securityCenterClient.GetIamPolicy(request);
+            Policy response = securityCenterClient.GetIamPolicy(resource);
             // End snippet
         }
 
-        /// <summary>Snippet for GetOrganizationSettingsAsync</summary>
-        public async Task GetOrganizationSettingsAsync()
+        /// <summary>Snippet for GetIamPolicyAsync</summary>
+        public async Task GetIamPolicyAsync()
         {
-            // Snippet: GetOrganizationSettingsAsync(OrganizationSettingsName,CallSettings)
-            // Additional: GetOrganizationSettingsAsync(OrganizationSettingsName,CancellationToken)
+            // Snippet: GetIamPolicyAsync(string, CallSettings)
+            // Additional: GetIamPolicyAsync(string, CancellationToken)
             // Create client
             SecurityCenterClient securityCenterClient = await SecurityCenterClient.CreateAsync();
             // Initialize request argument(s)
-            OrganizationSettingsName name = new OrganizationSettingsName("[ORGANIZATION]");
+            string resource = "a/wildcard/resource";
             // Make the request
-            OrganizationSettings response = await securityCenterClient.GetOrganizationSettingsAsync(name);
+            Policy response = await securityCenterClient.GetIamPolicyAsync(resource);
+            // End snippet
+        }
+
+        /// <summary>Snippet for GetIamPolicy</summary>
+        public void GetIamPolicyResourceNames()
+        {
+            // Snippet: GetIamPolicy(IResourceName, CallSettings)
+            // Create client
+            SecurityCenterClient securityCenterClient = SecurityCenterClient.Create();
+            // Initialize request argument(s)
+            IResourceName resource = new UnparsedResourceName("a/wildcard/resource");
+            // Make the request
+            Policy response = securityCenterClient.GetIamPolicy(resource);
+            // End snippet
+        }
+
+        /// <summary>Snippet for GetIamPolicyAsync</summary>
+        public async Task GetIamPolicyResourceNamesAsync()
+        {
+            // Snippet: GetIamPolicyAsync(IResourceName, CallSettings)
+            // Additional: GetIamPolicyAsync(IResourceName, CancellationToken)
+            // Create client
+            SecurityCenterClient securityCenterClient = await SecurityCenterClient.CreateAsync();
+            // Initialize request argument(s)
+            IResourceName resource = new UnparsedResourceName("a/wildcard/resource");
+            // Make the request
+            Policy response = await securityCenterClient.GetIamPolicyAsync(resource);
+            // End snippet
+        }
+
+        /// <summary>Snippet for GetNotificationConfig</summary>
+        public void GetNotificationConfigRequestObject()
+        {
+            // Snippet: GetNotificationConfig(GetNotificationConfigRequest, CallSettings)
+            // Create client
+            SecurityCenterClient securityCenterClient = SecurityCenterClient.Create();
+            // Initialize request argument(s)
+            GetNotificationConfigRequest request = new GetNotificationConfigRequest
+            {
+                NotificationConfigName = NotificationConfigName.FromOrganizationNotificationConfig("[ORGANIZATION]", "[NOTIFICATION_CONFIG]"),
+            };
+            // Make the request
+            NotificationConfig response = securityCenterClient.GetNotificationConfig(request);
+            // End snippet
+        }
+
+        /// <summary>Snippet for GetNotificationConfigAsync</summary>
+        public async Task GetNotificationConfigRequestObjectAsync()
+        {
+            // Snippet: GetNotificationConfigAsync(GetNotificationConfigRequest, CallSettings)
+            // Additional: GetNotificationConfigAsync(GetNotificationConfigRequest, CancellationToken)
+            // Create client
+            SecurityCenterClient securityCenterClient = await SecurityCenterClient.CreateAsync();
+            // Initialize request argument(s)
+            GetNotificationConfigRequest request = new GetNotificationConfigRequest
+            {
+                NotificationConfigName = NotificationConfigName.FromOrganizationNotificationConfig("[ORGANIZATION]", "[NOTIFICATION_CONFIG]"),
+            };
+            // Make the request
+            NotificationConfig response = await securityCenterClient.GetNotificationConfigAsync(request);
+            // End snippet
+        }
+
+        /// <summary>Snippet for GetNotificationConfig</summary>
+        public void GetNotificationConfig()
+        {
+            // Snippet: GetNotificationConfig(string, CallSettings)
+            // Create client
+            SecurityCenterClient securityCenterClient = SecurityCenterClient.Create();
+            // Initialize request argument(s)
+            string name = "organizations/[ORGANIZATION]/notificationConfigs/[NOTIFICATION_CONFIG]";
+            // Make the request
+            NotificationConfig response = securityCenterClient.GetNotificationConfig(name);
+            // End snippet
+        }
+
+        /// <summary>Snippet for GetNotificationConfigAsync</summary>
+        public async Task GetNotificationConfigAsync()
+        {
+            // Snippet: GetNotificationConfigAsync(string, CallSettings)
+            // Additional: GetNotificationConfigAsync(string, CancellationToken)
+            // Create client
+            SecurityCenterClient securityCenterClient = await SecurityCenterClient.CreateAsync();
+            // Initialize request argument(s)
+            string name = "organizations/[ORGANIZATION]/notificationConfigs/[NOTIFICATION_CONFIG]";
+            // Make the request
+            NotificationConfig response = await securityCenterClient.GetNotificationConfigAsync(name);
+            // End snippet
+        }
+
+        /// <summary>Snippet for GetNotificationConfig</summary>
+        public void GetNotificationConfigResourceNames()
+        {
+            // Snippet: GetNotificationConfig(NotificationConfigName, CallSettings)
+            // Create client
+            SecurityCenterClient securityCenterClient = SecurityCenterClient.Create();
+            // Initialize request argument(s)
+            NotificationConfigName name = NotificationConfigName.FromOrganizationNotificationConfig("[ORGANIZATION]", "[NOTIFICATION_CONFIG]");
+            // Make the request
+            NotificationConfig response = securityCenterClient.GetNotificationConfig(name);
+            // End snippet
+        }
+
+        /// <summary>Snippet for GetNotificationConfigAsync</summary>
+        public async Task GetNotificationConfigResourceNamesAsync()
+        {
+            // Snippet: GetNotificationConfigAsync(NotificationConfigName, CallSettings)
+            // Additional: GetNotificationConfigAsync(NotificationConfigName, CancellationToken)
+            // Create client
+            SecurityCenterClient securityCenterClient = await SecurityCenterClient.CreateAsync();
+            // Initialize request argument(s)
+            NotificationConfigName name = NotificationConfigName.FromOrganizationNotificationConfig("[ORGANIZATION]", "[NOTIFICATION_CONFIG]");
+            // Make the request
+            NotificationConfig response = await securityCenterClient.GetNotificationConfigAsync(name);
             // End snippet
         }
 
         /// <summary>Snippet for GetOrganizationSettings</summary>
-        public void GetOrganizationSettings()
+        public void GetOrganizationSettingsRequestObject()
         {
-            // Snippet: GetOrganizationSettings(OrganizationSettingsName,CallSettings)
+            // Snippet: GetOrganizationSettings(GetOrganizationSettingsRequest, CallSettings)
             // Create client
             SecurityCenterClient securityCenterClient = SecurityCenterClient.Create();
             // Initialize request argument(s)
-            OrganizationSettingsName name = new OrganizationSettingsName("[ORGANIZATION]");
+            GetOrganizationSettingsRequest request = new GetOrganizationSettingsRequest
+            {
+                OrganizationSettingsName = OrganizationSettingsName.FromOrganization("[ORGANIZATION]"),
+            };
             // Make the request
-            OrganizationSettings response = securityCenterClient.GetOrganizationSettings(name);
+            OrganizationSettings response = securityCenterClient.GetOrganizationSettings(request);
             // End snippet
         }
 
         /// <summary>Snippet for GetOrganizationSettingsAsync</summary>
-        public async Task GetOrganizationSettingsAsync_RequestObject()
+        public async Task GetOrganizationSettingsRequestObjectAsync()
         {
-            // Snippet: GetOrganizationSettingsAsync(GetOrganizationSettingsRequest,CallSettings)
-            // Additional: GetOrganizationSettingsAsync(GetOrganizationSettingsRequest,CancellationToken)
+            // Snippet: GetOrganizationSettingsAsync(GetOrganizationSettingsRequest, CallSettings)
+            // Additional: GetOrganizationSettingsAsync(GetOrganizationSettingsRequest, CancellationToken)
             // Create client
             SecurityCenterClient securityCenterClient = await SecurityCenterClient.CreateAsync();
             // Initialize request argument(s)
             GetOrganizationSettingsRequest request = new GetOrganizationSettingsRequest
             {
-                OrganizationSettingsName = new OrganizationSettingsName("[ORGANIZATION]"),
+                OrganizationSettingsName = OrganizationSettingsName.FromOrganization("[ORGANIZATION]"),
             };
             // Make the request
             OrganizationSettings response = await securityCenterClient.GetOrganizationSettingsAsync(request);
@@ -274,59 +675,86 @@ namespace Google.Cloud.SecurityCenter.V1.Snippets
         }
 
         /// <summary>Snippet for GetOrganizationSettings</summary>
-        public void GetOrganizationSettings_RequestObject()
+        public void GetOrganizationSettings()
         {
-            // Snippet: GetOrganizationSettings(GetOrganizationSettingsRequest,CallSettings)
+            // Snippet: GetOrganizationSettings(string, CallSettings)
             // Create client
             SecurityCenterClient securityCenterClient = SecurityCenterClient.Create();
             // Initialize request argument(s)
-            GetOrganizationSettingsRequest request = new GetOrganizationSettingsRequest
-            {
-                OrganizationSettingsName = new OrganizationSettingsName("[ORGANIZATION]"),
-            };
+            string name = "organizations/[ORGANIZATION]/organizationSettings";
             // Make the request
-            OrganizationSettings response = securityCenterClient.GetOrganizationSettings(request);
+            OrganizationSettings response = securityCenterClient.GetOrganizationSettings(name);
             // End snippet
         }
 
-        /// <summary>Snippet for GetSourceAsync</summary>
-        public async Task GetSourceAsync()
+        /// <summary>Snippet for GetOrganizationSettingsAsync</summary>
+        public async Task GetOrganizationSettingsAsync()
         {
-            // Snippet: GetSourceAsync(SourceName,CallSettings)
-            // Additional: GetSourceAsync(SourceName,CancellationToken)
+            // Snippet: GetOrganizationSettingsAsync(string, CallSettings)
+            // Additional: GetOrganizationSettingsAsync(string, CancellationToken)
             // Create client
             SecurityCenterClient securityCenterClient = await SecurityCenterClient.CreateAsync();
             // Initialize request argument(s)
-            SourceName name = new SourceName("[ORGANIZATION]", "[SOURCE]");
+            string name = "organizations/[ORGANIZATION]/organizationSettings";
             // Make the request
-            Source response = await securityCenterClient.GetSourceAsync(name);
+            OrganizationSettings response = await securityCenterClient.GetOrganizationSettingsAsync(name);
+            // End snippet
+        }
+
+        /// <summary>Snippet for GetOrganizationSettings</summary>
+        public void GetOrganizationSettingsResourceNames()
+        {
+            // Snippet: GetOrganizationSettings(OrganizationSettingsName, CallSettings)
+            // Create client
+            SecurityCenterClient securityCenterClient = SecurityCenterClient.Create();
+            // Initialize request argument(s)
+            OrganizationSettingsName name = OrganizationSettingsName.FromOrganization("[ORGANIZATION]");
+            // Make the request
+            OrganizationSettings response = securityCenterClient.GetOrganizationSettings(name);
+            // End snippet
+        }
+
+        /// <summary>Snippet for GetOrganizationSettingsAsync</summary>
+        public async Task GetOrganizationSettingsResourceNamesAsync()
+        {
+            // Snippet: GetOrganizationSettingsAsync(OrganizationSettingsName, CallSettings)
+            // Additional: GetOrganizationSettingsAsync(OrganizationSettingsName, CancellationToken)
+            // Create client
+            SecurityCenterClient securityCenterClient = await SecurityCenterClient.CreateAsync();
+            // Initialize request argument(s)
+            OrganizationSettingsName name = OrganizationSettingsName.FromOrganization("[ORGANIZATION]");
+            // Make the request
+            OrganizationSettings response = await securityCenterClient.GetOrganizationSettingsAsync(name);
             // End snippet
         }
 
         /// <summary>Snippet for GetSource</summary>
-        public void GetSource()
+        public void GetSourceRequestObject()
         {
-            // Snippet: GetSource(SourceName,CallSettings)
+            // Snippet: GetSource(GetSourceRequest, CallSettings)
             // Create client
             SecurityCenterClient securityCenterClient = SecurityCenterClient.Create();
             // Initialize request argument(s)
-            SourceName name = new SourceName("[ORGANIZATION]", "[SOURCE]");
+            GetSourceRequest request = new GetSourceRequest
+            {
+                SourceName = SourceName.FromOrganizationSource("[ORGANIZATION]", "[SOURCE]"),
+            };
             // Make the request
-            Source response = securityCenterClient.GetSource(name);
+            Source response = securityCenterClient.GetSource(request);
             // End snippet
         }
 
         /// <summary>Snippet for GetSourceAsync</summary>
-        public async Task GetSourceAsync_RequestObject()
+        public async Task GetSourceRequestObjectAsync()
         {
-            // Snippet: GetSourceAsync(GetSourceRequest,CallSettings)
-            // Additional: GetSourceAsync(GetSourceRequest,CancellationToken)
+            // Snippet: GetSourceAsync(GetSourceRequest, CallSettings)
+            // Additional: GetSourceAsync(GetSourceRequest, CancellationToken)
             // Create client
             SecurityCenterClient securityCenterClient = await SecurityCenterClient.CreateAsync();
             // Initialize request argument(s)
             GetSourceRequest request = new GetSourceRequest
             {
-                SourceName = new SourceName("[ORGANIZATION]", "[SOURCE]"),
+                SourceName = SourceName.FromOrganizationSource("[ORGANIZATION]", "[SOURCE]"),
             };
             // Make the request
             Source response = await securityCenterClient.GetSourceAsync(request);
@@ -334,84 +762,76 @@ namespace Google.Cloud.SecurityCenter.V1.Snippets
         }
 
         /// <summary>Snippet for GetSource</summary>
-        public void GetSource_RequestObject()
+        public void GetSource()
         {
-            // Snippet: GetSource(GetSourceRequest,CallSettings)
+            // Snippet: GetSource(string, CallSettings)
             // Create client
             SecurityCenterClient securityCenterClient = SecurityCenterClient.Create();
             // Initialize request argument(s)
-            GetSourceRequest request = new GetSourceRequest
-            {
-                SourceName = new SourceName("[ORGANIZATION]", "[SOURCE]"),
-            };
+            string name = "organizations/[ORGANIZATION]/sources/[SOURCE]";
             // Make the request
-            Source response = securityCenterClient.GetSource(request);
+            Source response = securityCenterClient.GetSource(name);
             // End snippet
         }
 
-        /// <summary>Snippet for GroupAssetsAsync</summary>
-        public async Task GroupAssetsAsync_RequestObject()
+        /// <summary>Snippet for GetSourceAsync</summary>
+        public async Task GetSourceAsync()
         {
-            // Snippet: GroupAssetsAsync(GroupAssetsRequest,CallSettings)
+            // Snippet: GetSourceAsync(string, CallSettings)
+            // Additional: GetSourceAsync(string, CancellationToken)
             // Create client
             SecurityCenterClient securityCenterClient = await SecurityCenterClient.CreateAsync();
             // Initialize request argument(s)
-            GroupAssetsRequest request = new GroupAssetsRequest
-            {
-                ParentAsOrganizationName = new OrganizationName("[ORGANIZATION]"),
-                GroupBy = "",
-            };
+            string name = "organizations/[ORGANIZATION]/sources/[SOURCE]";
             // Make the request
-            PagedAsyncEnumerable<GroupAssetsResponse, GroupResult> response =
-                securityCenterClient.GroupAssetsAsync(request);
+            Source response = await securityCenterClient.GetSourceAsync(name);
+            // End snippet
+        }
 
-            // Iterate over all response items, lazily performing RPCs as required
-            await response.ForEachAsync((GroupResult item) =>
-            {
-                // Do something with each item
-                Console.WriteLine(item);
-            });
+        /// <summary>Snippet for GetSource</summary>
+        public void GetSourceResourceNames()
+        {
+            // Snippet: GetSource(SourceName, CallSettings)
+            // Create client
+            SecurityCenterClient securityCenterClient = SecurityCenterClient.Create();
+            // Initialize request argument(s)
+            SourceName name = SourceName.FromOrganizationSource("[ORGANIZATION]", "[SOURCE]");
+            // Make the request
+            Source response = securityCenterClient.GetSource(name);
+            // End snippet
+        }
 
-            // Or iterate over pages (of server-defined size), performing one RPC per page
-            await response.AsRawResponses().ForEachAsync((GroupAssetsResponse page) =>
-            {
-                // Do something with each page of items
-                Console.WriteLine("A page of results:");
-                foreach (GroupResult item in page)
-                {
-                    Console.WriteLine(item);
-                }
-            });
-
-            // Or retrieve a single page of known size (unless it's the final page), performing as many RPCs as required
-            int pageSize = 10;
-            Page<GroupResult> singlePage = await response.ReadPageAsync(pageSize);
-            // Do something with the page of items
-            Console.WriteLine($"A page of {pageSize} results (unless it's the final page):");
-            foreach (GroupResult item in singlePage)
-            {
-                Console.WriteLine(item);
-            }
-            // Store the pageToken, for when the next page is required.
-            string nextPageToken = singlePage.NextPageToken;
+        /// <summary>Snippet for GetSourceAsync</summary>
+        public async Task GetSourceResourceNamesAsync()
+        {
+            // Snippet: GetSourceAsync(SourceName, CallSettings)
+            // Additional: GetSourceAsync(SourceName, CancellationToken)
+            // Create client
+            SecurityCenterClient securityCenterClient = await SecurityCenterClient.CreateAsync();
+            // Initialize request argument(s)
+            SourceName name = SourceName.FromOrganizationSource("[ORGANIZATION]", "[SOURCE]");
+            // Make the request
+            Source response = await securityCenterClient.GetSourceAsync(name);
             // End snippet
         }
 
         /// <summary>Snippet for GroupAssets</summary>
-        public void GroupAssets_RequestObject()
+        public void GroupAssetsRequestObject()
         {
-            // Snippet: GroupAssets(GroupAssetsRequest,CallSettings)
+            // Snippet: GroupAssets(GroupAssetsRequest, CallSettings)
             // Create client
             SecurityCenterClient securityCenterClient = SecurityCenterClient.Create();
             // Initialize request argument(s)
             GroupAssetsRequest request = new GroupAssetsRequest
             {
-                ParentAsOrganizationName = new OrganizationName("[ORGANIZATION]"),
+                ParentAsOrganizationName = OrganizationName.FromOrganization("[ORGANIZATION]"),
+                Filter = "",
                 GroupBy = "",
+                CompareDuration = new Duration(),
+                ReadTime = new Timestamp(),
             };
             // Make the request
-            PagedEnumerable<GroupAssetsResponse, GroupResult> response =
-                securityCenterClient.GroupAssets(request);
+            PagedEnumerable<GroupAssetsResponse, GroupResult> response = securityCenterClient.GroupAssets(request);
 
             // Iterate over all response items, lazily performing RPCs as required
             foreach (GroupResult item in response)
@@ -427,6 +847,7 @@ namespace Google.Cloud.SecurityCenter.V1.Snippets
                 Console.WriteLine("A page of results:");
                 foreach (GroupResult item in page)
                 {
+                    // Do something with each item
                     Console.WriteLine(item);
                 }
             }
@@ -438,6 +859,7 @@ namespace Google.Cloud.SecurityCenter.V1.Snippets
             Console.WriteLine($"A page of {pageSize} results (unless it's the final page):");
             foreach (GroupResult item in singlePage)
             {
+                // Do something with each item
                 Console.WriteLine(item);
             }
             // Store the pageToken, for when the next page is required.
@@ -445,18 +867,127 @@ namespace Google.Cloud.SecurityCenter.V1.Snippets
             // End snippet
         }
 
-        /// <summary>Snippet for GroupFindingsAsync</summary>
-        public async Task GroupFindingsAsync()
+        /// <summary>Snippet for GroupAssets</summary>
+        public async Task GroupAssetsRequestObjectAsync()
         {
-            // Snippet: GroupFindingsAsync(SourceName,string,string,int?,CallSettings)
+            // Snippet: GroupAssetsAsync(GroupAssetsRequest, CallSettings)
             // Create client
             SecurityCenterClient securityCenterClient = await SecurityCenterClient.CreateAsync();
             // Initialize request argument(s)
-            SourceName parent = new SourceName("[ORGANIZATION]", "[SOURCE]");
-            string groupBy = "";
+            GroupAssetsRequest request = new GroupAssetsRequest
+            {
+                ParentAsOrganizationName = OrganizationName.FromOrganization("[ORGANIZATION]"),
+                Filter = "",
+                GroupBy = "",
+                CompareDuration = new Duration(),
+                ReadTime = new Timestamp(),
+            };
             // Make the request
-            PagedAsyncEnumerable<GroupFindingsResponse, GroupResult> response =
-                securityCenterClient.GroupFindingsAsync(parent, groupBy);
+            PagedAsyncEnumerable<GroupAssetsResponse, GroupResult> response = securityCenterClient.GroupAssetsAsync(request);
+
+            // Iterate over all response items, lazily performing RPCs as required
+            await response.ForEachAsync((GroupResult item) =>
+            {
+                // Do something with each item
+                Console.WriteLine(item);
+            });
+
+            // Or iterate over pages (of server-defined size), performing one RPC per page
+            await response.AsRawResponses().ForEachAsync((GroupAssetsResponse page) =>
+            {
+                // Do something with each page of items
+                Console.WriteLine("A page of results:");
+                foreach (GroupResult item in page)
+                {
+                    // Do something with each item
+                    Console.WriteLine(item);
+                }
+            });
+
+            // Or retrieve a single page of known size (unless it's the final page), performing as many RPCs as required
+            int pageSize = 10;
+            Page<GroupResult> singlePage = await response.ReadPageAsync(pageSize);
+            // Do something with the page of items
+            Console.WriteLine($"A page of {pageSize} results (unless it's the final page):");
+            foreach (GroupResult item in singlePage)
+            {
+                // Do something with each item
+                Console.WriteLine(item);
+            }
+            // Store the pageToken, for when the next page is required.
+            string nextPageToken = singlePage.NextPageToken;
+            // End snippet
+        }
+
+        /// <summary>Snippet for GroupFindings</summary>
+        public void GroupFindingsRequestObject()
+        {
+            // Snippet: GroupFindings(GroupFindingsRequest, CallSettings)
+            // Create client
+            SecurityCenterClient securityCenterClient = SecurityCenterClient.Create();
+            // Initialize request argument(s)
+            GroupFindingsRequest request = new GroupFindingsRequest
+            {
+                ParentAsSourceName = SourceName.FromOrganizationSource("[ORGANIZATION]", "[SOURCE]"),
+                Filter = "",
+                GroupBy = "",
+                ReadTime = new Timestamp(),
+                CompareDuration = new Duration(),
+            };
+            // Make the request
+            PagedEnumerable<GroupFindingsResponse, GroupResult> response = securityCenterClient.GroupFindings(request);
+
+            // Iterate over all response items, lazily performing RPCs as required
+            foreach (GroupResult item in response)
+            {
+                // Do something with each item
+                Console.WriteLine(item);
+            }
+
+            // Or iterate over pages (of server-defined size), performing one RPC per page
+            foreach (GroupFindingsResponse page in response.AsRawResponses())
+            {
+                // Do something with each page of items
+                Console.WriteLine("A page of results:");
+                foreach (GroupResult item in page)
+                {
+                    // Do something with each item
+                    Console.WriteLine(item);
+                }
+            }
+
+            // Or retrieve a single page of known size (unless it's the final page), performing as many RPCs as required
+            int pageSize = 10;
+            Page<GroupResult> singlePage = response.ReadPage(pageSize);
+            // Do something with the page of items
+            Console.WriteLine($"A page of {pageSize} results (unless it's the final page):");
+            foreach (GroupResult item in singlePage)
+            {
+                // Do something with each item
+                Console.WriteLine(item);
+            }
+            // Store the pageToken, for when the next page is required.
+            string nextPageToken = singlePage.NextPageToken;
+            // End snippet
+        }
+
+        /// <summary>Snippet for GroupFindings</summary>
+        public async Task GroupFindingsRequestObjectAsync()
+        {
+            // Snippet: GroupFindingsAsync(GroupFindingsRequest, CallSettings)
+            // Create client
+            SecurityCenterClient securityCenterClient = await SecurityCenterClient.CreateAsync();
+            // Initialize request argument(s)
+            GroupFindingsRequest request = new GroupFindingsRequest
+            {
+                ParentAsSourceName = SourceName.FromOrganizationSource("[ORGANIZATION]", "[SOURCE]"),
+                Filter = "",
+                GroupBy = "",
+                ReadTime = new Timestamp(),
+                CompareDuration = new Duration(),
+            };
+            // Make the request
+            PagedAsyncEnumerable<GroupFindingsResponse, GroupResult> response = securityCenterClient.GroupFindingsAsync(request);
 
             // Iterate over all response items, lazily performing RPCs as required
             await response.ForEachAsync((GroupResult item) =>
@@ -472,6 +1003,7 @@ namespace Google.Cloud.SecurityCenter.V1.Snippets
                 Console.WriteLine("A page of results:");
                 foreach (GroupResult item in page)
                 {
+                    // Do something with each item
                     Console.WriteLine(item);
                 }
             });
@@ -483,6 +1015,7 @@ namespace Google.Cloud.SecurityCenter.V1.Snippets
             Console.WriteLine($"A page of {pageSize} results (unless it's the final page):");
             foreach (GroupResult item in singlePage)
             {
+                // Do something with each item
                 Console.WriteLine(item);
             }
             // Store the pageToken, for when the next page is required.
@@ -493,15 +1026,14 @@ namespace Google.Cloud.SecurityCenter.V1.Snippets
         /// <summary>Snippet for GroupFindings</summary>
         public void GroupFindings()
         {
-            // Snippet: GroupFindings(SourceName,string,string,int?,CallSettings)
+            // Snippet: GroupFindings(string, string, string, int?, CallSettings)
             // Create client
             SecurityCenterClient securityCenterClient = SecurityCenterClient.Create();
             // Initialize request argument(s)
-            SourceName parent = new SourceName("[ORGANIZATION]", "[SOURCE]");
+            string parent = "organizations/[ORGANIZATION]/sources/[SOURCE]";
             string groupBy = "";
             // Make the request
-            PagedEnumerable<GroupFindingsResponse, GroupResult> response =
-                securityCenterClient.GroupFindings(parent, groupBy);
+            PagedEnumerable<GroupFindingsResponse, GroupResult> response = securityCenterClient.GroupFindings(parent, groupBy);
 
             // Iterate over all response items, lazily performing RPCs as required
             foreach (GroupResult item in response)
@@ -517,6 +1049,7 @@ namespace Google.Cloud.SecurityCenter.V1.Snippets
                 Console.WriteLine("A page of results:");
                 foreach (GroupResult item in page)
                 {
+                    // Do something with each item
                     Console.WriteLine(item);
                 }
             }
@@ -528,6 +1061,7 @@ namespace Google.Cloud.SecurityCenter.V1.Snippets
             Console.WriteLine($"A page of {pageSize} results (unless it's the final page):");
             foreach (GroupResult item in singlePage)
             {
+                // Do something with each item
                 Console.WriteLine(item);
             }
             // Store the pageToken, for when the next page is required.
@@ -535,21 +1069,17 @@ namespace Google.Cloud.SecurityCenter.V1.Snippets
             // End snippet
         }
 
-        /// <summary>Snippet for GroupFindingsAsync</summary>
-        public async Task GroupFindingsAsync_RequestObject()
+        /// <summary>Snippet for GroupFindings</summary>
+        public async Task GroupFindingsAsync()
         {
-            // Snippet: GroupFindingsAsync(GroupFindingsRequest,CallSettings)
+            // Snippet: GroupFindingsAsync(string, string, string, int?, CallSettings)
             // Create client
             SecurityCenterClient securityCenterClient = await SecurityCenterClient.CreateAsync();
             // Initialize request argument(s)
-            GroupFindingsRequest request = new GroupFindingsRequest
-            {
-                ParentAsSourceName = new SourceName("[ORGANIZATION]", "[SOURCE]"),
-                GroupBy = "",
-            };
+            string parent = "organizations/[ORGANIZATION]/sources/[SOURCE]";
+            string groupBy = "";
             // Make the request
-            PagedAsyncEnumerable<GroupFindingsResponse, GroupResult> response =
-                securityCenterClient.GroupFindingsAsync(request);
+            PagedAsyncEnumerable<GroupFindingsResponse, GroupResult> response = securityCenterClient.GroupFindingsAsync(parent, groupBy);
 
             // Iterate over all response items, lazily performing RPCs as required
             await response.ForEachAsync((GroupResult item) =>
@@ -565,6 +1095,7 @@ namespace Google.Cloud.SecurityCenter.V1.Snippets
                 Console.WriteLine("A page of results:");
                 foreach (GroupResult item in page)
                 {
+                    // Do something with each item
                     Console.WriteLine(item);
                 }
             });
@@ -576,6 +1107,7 @@ namespace Google.Cloud.SecurityCenter.V1.Snippets
             Console.WriteLine($"A page of {pageSize} results (unless it's the final page):");
             foreach (GroupResult item in singlePage)
             {
+                // Do something with each item
                 Console.WriteLine(item);
             }
             // Store the pageToken, for when the next page is required.
@@ -584,20 +1116,16 @@ namespace Google.Cloud.SecurityCenter.V1.Snippets
         }
 
         /// <summary>Snippet for GroupFindings</summary>
-        public void GroupFindings_RequestObject()
+        public void GroupFindingsResourceNames()
         {
-            // Snippet: GroupFindings(GroupFindingsRequest,CallSettings)
+            // Snippet: GroupFindings(SourceName, string, string, int?, CallSettings)
             // Create client
             SecurityCenterClient securityCenterClient = SecurityCenterClient.Create();
             // Initialize request argument(s)
-            GroupFindingsRequest request = new GroupFindingsRequest
-            {
-                ParentAsSourceName = new SourceName("[ORGANIZATION]", "[SOURCE]"),
-                GroupBy = "",
-            };
+            SourceName parent = SourceName.FromOrganizationSource("[ORGANIZATION]", "[SOURCE]");
+            string groupBy = "";
             // Make the request
-            PagedEnumerable<GroupFindingsResponse, GroupResult> response =
-                securityCenterClient.GroupFindings(request);
+            PagedEnumerable<GroupFindingsResponse, GroupResult> response = securityCenterClient.GroupFindings(parent, groupBy);
 
             // Iterate over all response items, lazily performing RPCs as required
             foreach (GroupResult item in response)
@@ -613,6 +1141,7 @@ namespace Google.Cloud.SecurityCenter.V1.Snippets
                 Console.WriteLine("A page of results:");
                 foreach (GroupResult item in page)
                 {
+                    // Do something with each item
                     Console.WriteLine(item);
                 }
             }
@@ -624,6 +1153,7 @@ namespace Google.Cloud.SecurityCenter.V1.Snippets
             Console.WriteLine($"A page of {pageSize} results (unless it's the final page):");
             foreach (GroupResult item in singlePage)
             {
+                // Do something with each item
                 Console.WriteLine(item);
             }
             // Store the pageToken, for when the next page is required.
@@ -631,46 +1161,45 @@ namespace Google.Cloud.SecurityCenter.V1.Snippets
             // End snippet
         }
 
-        /// <summary>Snippet for ListAssetsAsync</summary>
-        public async Task ListAssetsAsync_RequestObject()
+        /// <summary>Snippet for GroupFindings</summary>
+        public async Task GroupFindingsResourceNamesAsync()
         {
-            // Snippet: ListAssetsAsync(ListAssetsRequest,CallSettings)
+            // Snippet: GroupFindingsAsync(SourceName, string, string, int?, CallSettings)
             // Create client
             SecurityCenterClient securityCenterClient = await SecurityCenterClient.CreateAsync();
             // Initialize request argument(s)
-            ListAssetsRequest request = new ListAssetsRequest
-            {
-                ParentAsOrganizationName = new OrganizationName("[ORGANIZATION]"),
-            };
+            SourceName parent = SourceName.FromOrganizationSource("[ORGANIZATION]", "[SOURCE]");
+            string groupBy = "";
             // Make the request
-            PagedAsyncEnumerable<ListAssetsResponse, ListAssetsResult> response =
-                securityCenterClient.ListAssetsAsync(request);
+            PagedAsyncEnumerable<GroupFindingsResponse, GroupResult> response = securityCenterClient.GroupFindingsAsync(parent, groupBy);
 
             // Iterate over all response items, lazily performing RPCs as required
-            await response.ForEachAsync((ListAssetsResponse.Types.ListAssetsResult item) =>
+            await response.ForEachAsync((GroupResult item) =>
             {
                 // Do something with each item
                 Console.WriteLine(item);
             });
 
             // Or iterate over pages (of server-defined size), performing one RPC per page
-            await response.AsRawResponses().ForEachAsync((ListAssetsResponse page) =>
+            await response.AsRawResponses().ForEachAsync((GroupFindingsResponse page) =>
             {
                 // Do something with each page of items
                 Console.WriteLine("A page of results:");
-                foreach (ListAssetsResponse.Types.ListAssetsResult item in page)
+                foreach (GroupResult item in page)
                 {
+                    // Do something with each item
                     Console.WriteLine(item);
                 }
             });
 
             // Or retrieve a single page of known size (unless it's the final page), performing as many RPCs as required
             int pageSize = 10;
-            Page<ListAssetsResponse.Types.ListAssetsResult> singlePage = await response.ReadPageAsync(pageSize);
+            Page<GroupResult> singlePage = await response.ReadPageAsync(pageSize);
             // Do something with the page of items
             Console.WriteLine($"A page of {pageSize} results (unless it's the final page):");
-            foreach (ListAssetsResponse.Types.ListAssetsResult item in singlePage)
+            foreach (GroupResult item in singlePage)
             {
+                // Do something with each item
                 Console.WriteLine(item);
             }
             // Store the pageToken, for when the next page is required.
@@ -679,19 +1208,23 @@ namespace Google.Cloud.SecurityCenter.V1.Snippets
         }
 
         /// <summary>Snippet for ListAssets</summary>
-        public void ListAssets_RequestObject()
+        public void ListAssetsRequestObject()
         {
-            // Snippet: ListAssets(ListAssetsRequest,CallSettings)
+            // Snippet: ListAssets(ListAssetsRequest, CallSettings)
             // Create client
             SecurityCenterClient securityCenterClient = SecurityCenterClient.Create();
             // Initialize request argument(s)
             ListAssetsRequest request = new ListAssetsRequest
             {
-                ParentAsOrganizationName = new OrganizationName("[ORGANIZATION]"),
+                ParentAsOrganizationName = OrganizationName.FromOrganization("[ORGANIZATION]"),
+                Filter = "",
+                OrderBy = "",
+                ReadTime = new Timestamp(),
+                CompareDuration = new Duration(),
+                FieldMask = new FieldMask(),
             };
             // Make the request
-            PagedEnumerable<ListAssetsResponse, ListAssetsResult> response =
-                securityCenterClient.ListAssets(request);
+            PagedEnumerable<ListAssetsResponse, ListAssetsResponse.Types.ListAssetsResult> response = securityCenterClient.ListAssets(request);
 
             // Iterate over all response items, lazily performing RPCs as required
             foreach (ListAssetsResponse.Types.ListAssetsResult item in response)
@@ -707,6 +1240,7 @@ namespace Google.Cloud.SecurityCenter.V1.Snippets
                 Console.WriteLine("A page of results:");
                 foreach (ListAssetsResponse.Types.ListAssetsResult item in page)
                 {
+                    // Do something with each item
                     Console.WriteLine(item);
                 }
             }
@@ -718,6 +1252,7 @@ namespace Google.Cloud.SecurityCenter.V1.Snippets
             Console.WriteLine($"A page of {pageSize} results (unless it's the final page):");
             foreach (ListAssetsResponse.Types.ListAssetsResult item in singlePage)
             {
+                // Do something with each item
                 Console.WriteLine(item);
             }
             // Store the pageToken, for when the next page is required.
@@ -725,46 +1260,52 @@ namespace Google.Cloud.SecurityCenter.V1.Snippets
             // End snippet
         }
 
-        /// <summary>Snippet for ListFindingsAsync</summary>
-        public async Task ListFindingsAsync_RequestObject()
+        /// <summary>Snippet for ListAssets</summary>
+        public async Task ListAssetsRequestObjectAsync()
         {
-            // Snippet: ListFindingsAsync(ListFindingsRequest,CallSettings)
+            // Snippet: ListAssetsAsync(ListAssetsRequest, CallSettings)
             // Create client
             SecurityCenterClient securityCenterClient = await SecurityCenterClient.CreateAsync();
             // Initialize request argument(s)
-            ListFindingsRequest request = new ListFindingsRequest
+            ListAssetsRequest request = new ListAssetsRequest
             {
-                ParentAsSourceName = new SourceName("[ORGANIZATION]", "[SOURCE]"),
+                ParentAsOrganizationName = OrganizationName.FromOrganization("[ORGANIZATION]"),
+                Filter = "",
+                OrderBy = "",
+                ReadTime = new Timestamp(),
+                CompareDuration = new Duration(),
+                FieldMask = new FieldMask(),
             };
             // Make the request
-            PagedAsyncEnumerable<ListFindingsResponse, ListFindingsResult> response =
-                securityCenterClient.ListFindingsAsync(request);
+            PagedAsyncEnumerable<ListAssetsResponse, ListAssetsResponse.Types.ListAssetsResult> response = securityCenterClient.ListAssetsAsync(request);
 
             // Iterate over all response items, lazily performing RPCs as required
-            await response.ForEachAsync((ListFindingsResponse.Types.ListFindingsResult item) =>
+            await response.ForEachAsync((ListAssetsResponse.Types.ListAssetsResult item) =>
             {
                 // Do something with each item
                 Console.WriteLine(item);
             });
 
             // Or iterate over pages (of server-defined size), performing one RPC per page
-            await response.AsRawResponses().ForEachAsync((ListFindingsResponse page) =>
+            await response.AsRawResponses().ForEachAsync((ListAssetsResponse page) =>
             {
                 // Do something with each page of items
                 Console.WriteLine("A page of results:");
-                foreach (ListFindingsResponse.Types.ListFindingsResult item in page)
+                foreach (ListAssetsResponse.Types.ListAssetsResult item in page)
                 {
+                    // Do something with each item
                     Console.WriteLine(item);
                 }
             });
 
             // Or retrieve a single page of known size (unless it's the final page), performing as many RPCs as required
             int pageSize = 10;
-            Page<ListFindingsResponse.Types.ListFindingsResult> singlePage = await response.ReadPageAsync(pageSize);
+            Page<ListAssetsResponse.Types.ListAssetsResult> singlePage = await response.ReadPageAsync(pageSize);
             // Do something with the page of items
             Console.WriteLine($"A page of {pageSize} results (unless it's the final page):");
-            foreach (ListFindingsResponse.Types.ListFindingsResult item in singlePage)
+            foreach (ListAssetsResponse.Types.ListAssetsResult item in singlePage)
             {
+                // Do something with each item
                 Console.WriteLine(item);
             }
             // Store the pageToken, for when the next page is required.
@@ -773,19 +1314,23 @@ namespace Google.Cloud.SecurityCenter.V1.Snippets
         }
 
         /// <summary>Snippet for ListFindings</summary>
-        public void ListFindings_RequestObject()
+        public void ListFindingsRequestObject()
         {
-            // Snippet: ListFindings(ListFindingsRequest,CallSettings)
+            // Snippet: ListFindings(ListFindingsRequest, CallSettings)
             // Create client
             SecurityCenterClient securityCenterClient = SecurityCenterClient.Create();
             // Initialize request argument(s)
             ListFindingsRequest request = new ListFindingsRequest
             {
-                ParentAsSourceName = new SourceName("[ORGANIZATION]", "[SOURCE]"),
+                ParentAsSourceName = SourceName.FromOrganizationSource("[ORGANIZATION]", "[SOURCE]"),
+                Filter = "",
+                OrderBy = "",
+                ReadTime = new Timestamp(),
+                CompareDuration = new Duration(),
+                FieldMask = new FieldMask(),
             };
             // Make the request
-            PagedEnumerable<ListFindingsResponse, ListFindingsResult> response =
-                securityCenterClient.ListFindings(request);
+            PagedEnumerable<ListFindingsResponse, ListFindingsResponse.Types.ListFindingsResult> response = securityCenterClient.ListFindings(request);
 
             // Iterate over all response items, lazily performing RPCs as required
             foreach (ListFindingsResponse.Types.ListFindingsResult item in response)
@@ -801,6 +1346,7 @@ namespace Google.Cloud.SecurityCenter.V1.Snippets
                 Console.WriteLine("A page of results:");
                 foreach (ListFindingsResponse.Types.ListFindingsResult item in page)
                 {
+                    // Do something with each item
                     Console.WriteLine(item);
                 }
             }
@@ -812,6 +1358,7 @@ namespace Google.Cloud.SecurityCenter.V1.Snippets
             Console.WriteLine($"A page of {pageSize} results (unless it's the final page):");
             foreach (ListFindingsResponse.Types.ListFindingsResult item in singlePage)
             {
+                // Do something with each item
                 Console.WriteLine(item);
             }
             // Store the pageToken, for when the next page is required.
@@ -819,17 +1366,396 @@ namespace Google.Cloud.SecurityCenter.V1.Snippets
             // End snippet
         }
 
-        /// <summary>Snippet for ListSourcesAsync</summary>
-        public async Task ListSourcesAsync()
+        /// <summary>Snippet for ListFindings</summary>
+        public async Task ListFindingsRequestObjectAsync()
         {
-            // Snippet: ListSourcesAsync(OrganizationName,string,int?,CallSettings)
+            // Snippet: ListFindingsAsync(ListFindingsRequest, CallSettings)
             // Create client
             SecurityCenterClient securityCenterClient = await SecurityCenterClient.CreateAsync();
             // Initialize request argument(s)
-            OrganizationName parent = new OrganizationName("[ORGANIZATION]");
+            ListFindingsRequest request = new ListFindingsRequest
+            {
+                ParentAsSourceName = SourceName.FromOrganizationSource("[ORGANIZATION]", "[SOURCE]"),
+                Filter = "",
+                OrderBy = "",
+                ReadTime = new Timestamp(),
+                CompareDuration = new Duration(),
+                FieldMask = new FieldMask(),
+            };
             // Make the request
-            PagedAsyncEnumerable<ListSourcesResponse, Source> response =
-                securityCenterClient.ListSourcesAsync(parent);
+            PagedAsyncEnumerable<ListFindingsResponse, ListFindingsResponse.Types.ListFindingsResult> response = securityCenterClient.ListFindingsAsync(request);
+
+            // Iterate over all response items, lazily performing RPCs as required
+            await response.ForEachAsync((ListFindingsResponse.Types.ListFindingsResult item) =>
+            {
+                // Do something with each item
+                Console.WriteLine(item);
+            });
+
+            // Or iterate over pages (of server-defined size), performing one RPC per page
+            await response.AsRawResponses().ForEachAsync((ListFindingsResponse page) =>
+            {
+                // Do something with each page of items
+                Console.WriteLine("A page of results:");
+                foreach (ListFindingsResponse.Types.ListFindingsResult item in page)
+                {
+                    // Do something with each item
+                    Console.WriteLine(item);
+                }
+            });
+
+            // Or retrieve a single page of known size (unless it's the final page), performing as many RPCs as required
+            int pageSize = 10;
+            Page<ListFindingsResponse.Types.ListFindingsResult> singlePage = await response.ReadPageAsync(pageSize);
+            // Do something with the page of items
+            Console.WriteLine($"A page of {pageSize} results (unless it's the final page):");
+            foreach (ListFindingsResponse.Types.ListFindingsResult item in singlePage)
+            {
+                // Do something with each item
+                Console.WriteLine(item);
+            }
+            // Store the pageToken, for when the next page is required.
+            string nextPageToken = singlePage.NextPageToken;
+            // End snippet
+        }
+
+        /// <summary>Snippet for ListNotificationConfigs</summary>
+        public void ListNotificationConfigsRequestObject()
+        {
+            // Snippet: ListNotificationConfigs(ListNotificationConfigsRequest, CallSettings)
+            // Create client
+            SecurityCenterClient securityCenterClient = SecurityCenterClient.Create();
+            // Initialize request argument(s)
+            ListNotificationConfigsRequest request = new ListNotificationConfigsRequest
+            {
+                ParentAsOrganizationName = OrganizationName.FromOrganization("[ORGANIZATION]"),
+            };
+            // Make the request
+            PagedEnumerable<ListNotificationConfigsResponse, NotificationConfig> response = securityCenterClient.ListNotificationConfigs(request);
+
+            // Iterate over all response items, lazily performing RPCs as required
+            foreach (NotificationConfig item in response)
+            {
+                // Do something with each item
+                Console.WriteLine(item);
+            }
+
+            // Or iterate over pages (of server-defined size), performing one RPC per page
+            foreach (ListNotificationConfigsResponse page in response.AsRawResponses())
+            {
+                // Do something with each page of items
+                Console.WriteLine("A page of results:");
+                foreach (NotificationConfig item in page)
+                {
+                    // Do something with each item
+                    Console.WriteLine(item);
+                }
+            }
+
+            // Or retrieve a single page of known size (unless it's the final page), performing as many RPCs as required
+            int pageSize = 10;
+            Page<NotificationConfig> singlePage = response.ReadPage(pageSize);
+            // Do something with the page of items
+            Console.WriteLine($"A page of {pageSize} results (unless it's the final page):");
+            foreach (NotificationConfig item in singlePage)
+            {
+                // Do something with each item
+                Console.WriteLine(item);
+            }
+            // Store the pageToken, for when the next page is required.
+            string nextPageToken = singlePage.NextPageToken;
+            // End snippet
+        }
+
+        /// <summary>Snippet for ListNotificationConfigs</summary>
+        public async Task ListNotificationConfigsRequestObjectAsync()
+        {
+            // Snippet: ListNotificationConfigsAsync(ListNotificationConfigsRequest, CallSettings)
+            // Create client
+            SecurityCenterClient securityCenterClient = await SecurityCenterClient.CreateAsync();
+            // Initialize request argument(s)
+            ListNotificationConfigsRequest request = new ListNotificationConfigsRequest
+            {
+                ParentAsOrganizationName = OrganizationName.FromOrganization("[ORGANIZATION]"),
+            };
+            // Make the request
+            PagedAsyncEnumerable<ListNotificationConfigsResponse, NotificationConfig> response = securityCenterClient.ListNotificationConfigsAsync(request);
+
+            // Iterate over all response items, lazily performing RPCs as required
+            await response.ForEachAsync((NotificationConfig item) =>
+            {
+                // Do something with each item
+                Console.WriteLine(item);
+            });
+
+            // Or iterate over pages (of server-defined size), performing one RPC per page
+            await response.AsRawResponses().ForEachAsync((ListNotificationConfigsResponse page) =>
+            {
+                // Do something with each page of items
+                Console.WriteLine("A page of results:");
+                foreach (NotificationConfig item in page)
+                {
+                    // Do something with each item
+                    Console.WriteLine(item);
+                }
+            });
+
+            // Or retrieve a single page of known size (unless it's the final page), performing as many RPCs as required
+            int pageSize = 10;
+            Page<NotificationConfig> singlePage = await response.ReadPageAsync(pageSize);
+            // Do something with the page of items
+            Console.WriteLine($"A page of {pageSize} results (unless it's the final page):");
+            foreach (NotificationConfig item in singlePage)
+            {
+                // Do something with each item
+                Console.WriteLine(item);
+            }
+            // Store the pageToken, for when the next page is required.
+            string nextPageToken = singlePage.NextPageToken;
+            // End snippet
+        }
+
+        /// <summary>Snippet for ListNotificationConfigs</summary>
+        public void ListNotificationConfigs()
+        {
+            // Snippet: ListNotificationConfigs(string, string, int?, CallSettings)
+            // Create client
+            SecurityCenterClient securityCenterClient = SecurityCenterClient.Create();
+            // Initialize request argument(s)
+            string parent = "organizations/[ORGANIZATION]";
+            // Make the request
+            PagedEnumerable<ListNotificationConfigsResponse, NotificationConfig> response = securityCenterClient.ListNotificationConfigs(parent);
+
+            // Iterate over all response items, lazily performing RPCs as required
+            foreach (NotificationConfig item in response)
+            {
+                // Do something with each item
+                Console.WriteLine(item);
+            }
+
+            // Or iterate over pages (of server-defined size), performing one RPC per page
+            foreach (ListNotificationConfigsResponse page in response.AsRawResponses())
+            {
+                // Do something with each page of items
+                Console.WriteLine("A page of results:");
+                foreach (NotificationConfig item in page)
+                {
+                    // Do something with each item
+                    Console.WriteLine(item);
+                }
+            }
+
+            // Or retrieve a single page of known size (unless it's the final page), performing as many RPCs as required
+            int pageSize = 10;
+            Page<NotificationConfig> singlePage = response.ReadPage(pageSize);
+            // Do something with the page of items
+            Console.WriteLine($"A page of {pageSize} results (unless it's the final page):");
+            foreach (NotificationConfig item in singlePage)
+            {
+                // Do something with each item
+                Console.WriteLine(item);
+            }
+            // Store the pageToken, for when the next page is required.
+            string nextPageToken = singlePage.NextPageToken;
+            // End snippet
+        }
+
+        /// <summary>Snippet for ListNotificationConfigs</summary>
+        public async Task ListNotificationConfigsAsync()
+        {
+            // Snippet: ListNotificationConfigsAsync(string, string, int?, CallSettings)
+            // Create client
+            SecurityCenterClient securityCenterClient = await SecurityCenterClient.CreateAsync();
+            // Initialize request argument(s)
+            string parent = "organizations/[ORGANIZATION]";
+            // Make the request
+            PagedAsyncEnumerable<ListNotificationConfigsResponse, NotificationConfig> response = securityCenterClient.ListNotificationConfigsAsync(parent);
+
+            // Iterate over all response items, lazily performing RPCs as required
+            await response.ForEachAsync((NotificationConfig item) =>
+            {
+                // Do something with each item
+                Console.WriteLine(item);
+            });
+
+            // Or iterate over pages (of server-defined size), performing one RPC per page
+            await response.AsRawResponses().ForEachAsync((ListNotificationConfigsResponse page) =>
+            {
+                // Do something with each page of items
+                Console.WriteLine("A page of results:");
+                foreach (NotificationConfig item in page)
+                {
+                    // Do something with each item
+                    Console.WriteLine(item);
+                }
+            });
+
+            // Or retrieve a single page of known size (unless it's the final page), performing as many RPCs as required
+            int pageSize = 10;
+            Page<NotificationConfig> singlePage = await response.ReadPageAsync(pageSize);
+            // Do something with the page of items
+            Console.WriteLine($"A page of {pageSize} results (unless it's the final page):");
+            foreach (NotificationConfig item in singlePage)
+            {
+                // Do something with each item
+                Console.WriteLine(item);
+            }
+            // Store the pageToken, for when the next page is required.
+            string nextPageToken = singlePage.NextPageToken;
+            // End snippet
+        }
+
+        /// <summary>Snippet for ListNotificationConfigs</summary>
+        public void ListNotificationConfigsResourceNames()
+        {
+            // Snippet: ListNotificationConfigs(OrganizationName, string, int?, CallSettings)
+            // Create client
+            SecurityCenterClient securityCenterClient = SecurityCenterClient.Create();
+            // Initialize request argument(s)
+            OrganizationName parent = OrganizationName.FromOrganization("[ORGANIZATION]");
+            // Make the request
+            PagedEnumerable<ListNotificationConfigsResponse, NotificationConfig> response = securityCenterClient.ListNotificationConfigs(parent);
+
+            // Iterate over all response items, lazily performing RPCs as required
+            foreach (NotificationConfig item in response)
+            {
+                // Do something with each item
+                Console.WriteLine(item);
+            }
+
+            // Or iterate over pages (of server-defined size), performing one RPC per page
+            foreach (ListNotificationConfigsResponse page in response.AsRawResponses())
+            {
+                // Do something with each page of items
+                Console.WriteLine("A page of results:");
+                foreach (NotificationConfig item in page)
+                {
+                    // Do something with each item
+                    Console.WriteLine(item);
+                }
+            }
+
+            // Or retrieve a single page of known size (unless it's the final page), performing as many RPCs as required
+            int pageSize = 10;
+            Page<NotificationConfig> singlePage = response.ReadPage(pageSize);
+            // Do something with the page of items
+            Console.WriteLine($"A page of {pageSize} results (unless it's the final page):");
+            foreach (NotificationConfig item in singlePage)
+            {
+                // Do something with each item
+                Console.WriteLine(item);
+            }
+            // Store the pageToken, for when the next page is required.
+            string nextPageToken = singlePage.NextPageToken;
+            // End snippet
+        }
+
+        /// <summary>Snippet for ListNotificationConfigs</summary>
+        public async Task ListNotificationConfigsResourceNamesAsync()
+        {
+            // Snippet: ListNotificationConfigsAsync(OrganizationName, string, int?, CallSettings)
+            // Create client
+            SecurityCenterClient securityCenterClient = await SecurityCenterClient.CreateAsync();
+            // Initialize request argument(s)
+            OrganizationName parent = OrganizationName.FromOrganization("[ORGANIZATION]");
+            // Make the request
+            PagedAsyncEnumerable<ListNotificationConfigsResponse, NotificationConfig> response = securityCenterClient.ListNotificationConfigsAsync(parent);
+
+            // Iterate over all response items, lazily performing RPCs as required
+            await response.ForEachAsync((NotificationConfig item) =>
+            {
+                // Do something with each item
+                Console.WriteLine(item);
+            });
+
+            // Or iterate over pages (of server-defined size), performing one RPC per page
+            await response.AsRawResponses().ForEachAsync((ListNotificationConfigsResponse page) =>
+            {
+                // Do something with each page of items
+                Console.WriteLine("A page of results:");
+                foreach (NotificationConfig item in page)
+                {
+                    // Do something with each item
+                    Console.WriteLine(item);
+                }
+            });
+
+            // Or retrieve a single page of known size (unless it's the final page), performing as many RPCs as required
+            int pageSize = 10;
+            Page<NotificationConfig> singlePage = await response.ReadPageAsync(pageSize);
+            // Do something with the page of items
+            Console.WriteLine($"A page of {pageSize} results (unless it's the final page):");
+            foreach (NotificationConfig item in singlePage)
+            {
+                // Do something with each item
+                Console.WriteLine(item);
+            }
+            // Store the pageToken, for when the next page is required.
+            string nextPageToken = singlePage.NextPageToken;
+            // End snippet
+        }
+
+        /// <summary>Snippet for ListSources</summary>
+        public void ListSourcesRequestObject()
+        {
+            // Snippet: ListSources(ListSourcesRequest, CallSettings)
+            // Create client
+            SecurityCenterClient securityCenterClient = SecurityCenterClient.Create();
+            // Initialize request argument(s)
+            ListSourcesRequest request = new ListSourcesRequest
+            {
+                ParentAsOrganizationName = OrganizationName.FromOrganization("[ORGANIZATION]"),
+            };
+            // Make the request
+            PagedEnumerable<ListSourcesResponse, Source> response = securityCenterClient.ListSources(request);
+
+            // Iterate over all response items, lazily performing RPCs as required
+            foreach (Source item in response)
+            {
+                // Do something with each item
+                Console.WriteLine(item);
+            }
+
+            // Or iterate over pages (of server-defined size), performing one RPC per page
+            foreach (ListSourcesResponse page in response.AsRawResponses())
+            {
+                // Do something with each page of items
+                Console.WriteLine("A page of results:");
+                foreach (Source item in page)
+                {
+                    // Do something with each item
+                    Console.WriteLine(item);
+                }
+            }
+
+            // Or retrieve a single page of known size (unless it's the final page), performing as many RPCs as required
+            int pageSize = 10;
+            Page<Source> singlePage = response.ReadPage(pageSize);
+            // Do something with the page of items
+            Console.WriteLine($"A page of {pageSize} results (unless it's the final page):");
+            foreach (Source item in singlePage)
+            {
+                // Do something with each item
+                Console.WriteLine(item);
+            }
+            // Store the pageToken, for when the next page is required.
+            string nextPageToken = singlePage.NextPageToken;
+            // End snippet
+        }
+
+        /// <summary>Snippet for ListSources</summary>
+        public async Task ListSourcesRequestObjectAsync()
+        {
+            // Snippet: ListSourcesAsync(ListSourcesRequest, CallSettings)
+            // Create client
+            SecurityCenterClient securityCenterClient = await SecurityCenterClient.CreateAsync();
+            // Initialize request argument(s)
+            ListSourcesRequest request = new ListSourcesRequest
+            {
+                ParentAsOrganizationName = OrganizationName.FromOrganization("[ORGANIZATION]"),
+            };
+            // Make the request
+            PagedAsyncEnumerable<ListSourcesResponse, Source> response = securityCenterClient.ListSourcesAsync(request);
 
             // Iterate over all response items, lazily performing RPCs as required
             await response.ForEachAsync((Source item) =>
@@ -845,6 +1771,7 @@ namespace Google.Cloud.SecurityCenter.V1.Snippets
                 Console.WriteLine("A page of results:");
                 foreach (Source item in page)
                 {
+                    // Do something with each item
                     Console.WriteLine(item);
                 }
             });
@@ -856,6 +1783,7 @@ namespace Google.Cloud.SecurityCenter.V1.Snippets
             Console.WriteLine($"A page of {pageSize} results (unless it's the final page):");
             foreach (Source item in singlePage)
             {
+                // Do something with each item
                 Console.WriteLine(item);
             }
             // Store the pageToken, for when the next page is required.
@@ -866,14 +1794,13 @@ namespace Google.Cloud.SecurityCenter.V1.Snippets
         /// <summary>Snippet for ListSources</summary>
         public void ListSources()
         {
-            // Snippet: ListSources(OrganizationName,string,int?,CallSettings)
+            // Snippet: ListSources(string, string, int?, CallSettings)
             // Create client
             SecurityCenterClient securityCenterClient = SecurityCenterClient.Create();
             // Initialize request argument(s)
-            OrganizationName parent = new OrganizationName("[ORGANIZATION]");
+            string parent = "organizations/[ORGANIZATION]";
             // Make the request
-            PagedEnumerable<ListSourcesResponse, Source> response =
-                securityCenterClient.ListSources(parent);
+            PagedEnumerable<ListSourcesResponse, Source> response = securityCenterClient.ListSources(parent);
 
             // Iterate over all response items, lazily performing RPCs as required
             foreach (Source item in response)
@@ -889,6 +1816,7 @@ namespace Google.Cloud.SecurityCenter.V1.Snippets
                 Console.WriteLine("A page of results:");
                 foreach (Source item in page)
                 {
+                    // Do something with each item
                     Console.WriteLine(item);
                 }
             }
@@ -900,6 +1828,7 @@ namespace Google.Cloud.SecurityCenter.V1.Snippets
             Console.WriteLine($"A page of {pageSize} results (unless it's the final page):");
             foreach (Source item in singlePage)
             {
+                // Do something with each item
                 Console.WriteLine(item);
             }
             // Store the pageToken, for when the next page is required.
@@ -907,20 +1836,16 @@ namespace Google.Cloud.SecurityCenter.V1.Snippets
             // End snippet
         }
 
-        /// <summary>Snippet for ListSourcesAsync</summary>
-        public async Task ListSourcesAsync_RequestObject()
+        /// <summary>Snippet for ListSources</summary>
+        public async Task ListSourcesAsync()
         {
-            // Snippet: ListSourcesAsync(ListSourcesRequest,CallSettings)
+            // Snippet: ListSourcesAsync(string, string, int?, CallSettings)
             // Create client
             SecurityCenterClient securityCenterClient = await SecurityCenterClient.CreateAsync();
             // Initialize request argument(s)
-            ListSourcesRequest request = new ListSourcesRequest
-            {
-                ParentAsOrganizationName = new OrganizationName("[ORGANIZATION]"),
-            };
+            string parent = "organizations/[ORGANIZATION]";
             // Make the request
-            PagedAsyncEnumerable<ListSourcesResponse, Source> response =
-                securityCenterClient.ListSourcesAsync(request);
+            PagedAsyncEnumerable<ListSourcesResponse, Source> response = securityCenterClient.ListSourcesAsync(parent);
 
             // Iterate over all response items, lazily performing RPCs as required
             await response.ForEachAsync((Source item) =>
@@ -936,6 +1861,7 @@ namespace Google.Cloud.SecurityCenter.V1.Snippets
                 Console.WriteLine("A page of results:");
                 foreach (Source item in page)
                 {
+                    // Do something with each item
                     Console.WriteLine(item);
                 }
             });
@@ -947,6 +1873,7 @@ namespace Google.Cloud.SecurityCenter.V1.Snippets
             Console.WriteLine($"A page of {pageSize} results (unless it's the final page):");
             foreach (Source item in singlePage)
             {
+                // Do something with each item
                 Console.WriteLine(item);
             }
             // Store the pageToken, for when the next page is required.
@@ -955,19 +1882,15 @@ namespace Google.Cloud.SecurityCenter.V1.Snippets
         }
 
         /// <summary>Snippet for ListSources</summary>
-        public void ListSources_RequestObject()
+        public void ListSourcesResourceNames()
         {
-            // Snippet: ListSources(ListSourcesRequest,CallSettings)
+            // Snippet: ListSources(OrganizationName, string, int?, CallSettings)
             // Create client
             SecurityCenterClient securityCenterClient = SecurityCenterClient.Create();
             // Initialize request argument(s)
-            ListSourcesRequest request = new ListSourcesRequest
-            {
-                ParentAsOrganizationName = new OrganizationName("[ORGANIZATION]"),
-            };
+            OrganizationName parent = OrganizationName.FromOrganization("[ORGANIZATION]");
             // Make the request
-            PagedEnumerable<ListSourcesResponse, Source> response =
-                securityCenterClient.ListSources(request);
+            PagedEnumerable<ListSourcesResponse, Source> response = securityCenterClient.ListSources(parent);
 
             // Iterate over all response items, lazily performing RPCs as required
             foreach (Source item in response)
@@ -983,6 +1906,7 @@ namespace Google.Cloud.SecurityCenter.V1.Snippets
                 Console.WriteLine("A page of results:");
                 foreach (Source item in page)
                 {
+                    // Do something with each item
                     Console.WriteLine(item);
                 }
             }
@@ -994,6 +1918,7 @@ namespace Google.Cloud.SecurityCenter.V1.Snippets
             Console.WriteLine($"A page of {pageSize} results (unless it's the final page):");
             foreach (Source item in singlePage)
             {
+                // Do something with each item
                 Console.WriteLine(item);
             }
             // Store the pageToken, for when the next page is required.
@@ -1001,30 +1926,107 @@ namespace Google.Cloud.SecurityCenter.V1.Snippets
             // End snippet
         }
 
-        /// <summary>Snippet for RunAssetDiscoveryAsync</summary>
-        public async Task RunAssetDiscoveryAsync()
+        /// <summary>Snippet for ListSources</summary>
+        public async Task ListSourcesResourceNamesAsync()
         {
-            // Snippet: RunAssetDiscoveryAsync(OrganizationName,CallSettings)
-            // Additional: RunAssetDiscoveryAsync(OrganizationName,CancellationToken)
+            // Snippet: ListSourcesAsync(OrganizationName, string, int?, CallSettings)
             // Create client
             SecurityCenterClient securityCenterClient = await SecurityCenterClient.CreateAsync();
             // Initialize request argument(s)
-            OrganizationName parent = new OrganizationName("[ORGANIZATION]");
+            OrganizationName parent = OrganizationName.FromOrganization("[ORGANIZATION]");
             // Make the request
-            Operation<RunAssetDiscoveryResponse, Empty> response =
-                await securityCenterClient.RunAssetDiscoveryAsync(parent);
+            PagedAsyncEnumerable<ListSourcesResponse, Source> response = securityCenterClient.ListSourcesAsync(parent);
+
+            // Iterate over all response items, lazily performing RPCs as required
+            await response.ForEachAsync((Source item) =>
+            {
+                // Do something with each item
+                Console.WriteLine(item);
+            });
+
+            // Or iterate over pages (of server-defined size), performing one RPC per page
+            await response.AsRawResponses().ForEachAsync((ListSourcesResponse page) =>
+            {
+                // Do something with each page of items
+                Console.WriteLine("A page of results:");
+                foreach (Source item in page)
+                {
+                    // Do something with each item
+                    Console.WriteLine(item);
+                }
+            });
+
+            // Or retrieve a single page of known size (unless it's the final page), performing as many RPCs as required
+            int pageSize = 10;
+            Page<Source> singlePage = await response.ReadPageAsync(pageSize);
+            // Do something with the page of items
+            Console.WriteLine($"A page of {pageSize} results (unless it's the final page):");
+            foreach (Source item in singlePage)
+            {
+                // Do something with each item
+                Console.WriteLine(item);
+            }
+            // Store the pageToken, for when the next page is required.
+            string nextPageToken = singlePage.NextPageToken;
+            // End snippet
+        }
+
+        /// <summary>Snippet for RunAssetDiscovery</summary>
+        public void RunAssetDiscoveryRequestObject()
+        {
+            // Snippet: RunAssetDiscovery(RunAssetDiscoveryRequest, CallSettings)
+            // Create client
+            SecurityCenterClient securityCenterClient = SecurityCenterClient.Create();
+            // Initialize request argument(s)
+            RunAssetDiscoveryRequest request = new RunAssetDiscoveryRequest
+            {
+                ParentAsOrganizationName = OrganizationName.FromOrganization("[ORGANIZATION]"),
+            };
+            // Make the request
+            Operation<RunAssetDiscoveryResponse, Empty> response = securityCenterClient.RunAssetDiscovery(request);
 
             // Poll until the returned long-running operation is complete
-            Operation<RunAssetDiscoveryResponse, Empty> completedResponse =
-                await response.PollUntilCompletedAsync();
+            Operation<RunAssetDiscoveryResponse, Empty> completedResponse = response.PollUntilCompleted();
             // Retrieve the operation result
             RunAssetDiscoveryResponse result = completedResponse.Result;
 
             // Or get the name of the operation
             string operationName = response.Name;
             // This name can be stored, then the long-running operation retrieved later by name
-            Operation<RunAssetDiscoveryResponse, Empty> retrievedResponse =
-                await securityCenterClient.PollOnceRunAssetDiscoveryAsync(operationName);
+            Operation<RunAssetDiscoveryResponse, Empty> retrievedResponse = securityCenterClient.PollOnceRunAssetDiscovery(operationName);
+            // Check if the retrieved long-running operation has completed
+            if (retrievedResponse.IsCompleted)
+            {
+                // If it has completed, then access the result
+                RunAssetDiscoveryResponse retrievedResult = retrievedResponse.Result;
+            }
+            // End snippet
+        }
+
+        /// <summary>Snippet for RunAssetDiscoveryAsync</summary>
+        public async Task RunAssetDiscoveryRequestObjectAsync()
+        {
+            // Snippet: RunAssetDiscoveryAsync(RunAssetDiscoveryRequest, CallSettings)
+            // Additional: RunAssetDiscoveryAsync(RunAssetDiscoveryRequest, CancellationToken)
+            // Create client
+            SecurityCenterClient securityCenterClient = await SecurityCenterClient.CreateAsync();
+            // Initialize request argument(s)
+            RunAssetDiscoveryRequest request = new RunAssetDiscoveryRequest
+            {
+                ParentAsOrganizationName = OrganizationName.FromOrganization("[ORGANIZATION]"),
+            };
+            // Make the request
+            Operation<RunAssetDiscoveryResponse, Empty> response = await securityCenterClient.RunAssetDiscoveryAsync(request);
+
+            // Poll until the returned long-running operation is complete
+            Operation<RunAssetDiscoveryResponse, Empty> completedResponse = await response.PollUntilCompletedAsync();
+            // Retrieve the operation result
+            RunAssetDiscoveryResponse result = completedResponse.Result;
+
+            // Or get the name of the operation
+            string operationName = response.Name;
+            // This name can be stored, then the long-running operation retrieved later by name
+            Operation<RunAssetDiscoveryResponse, Empty> retrievedResponse = await securityCenterClient.PollOnceRunAssetDiscoveryAsync(operationName);
             // Check if the retrieved long-running operation has completed
             if (retrievedResponse.IsCompleted)
             {
@@ -1037,26 +2039,23 @@ namespace Google.Cloud.SecurityCenter.V1.Snippets
         /// <summary>Snippet for RunAssetDiscovery</summary>
         public void RunAssetDiscovery()
         {
-            // Snippet: RunAssetDiscovery(OrganizationName,CallSettings)
+            // Snippet: RunAssetDiscovery(string, CallSettings)
             // Create client
             SecurityCenterClient securityCenterClient = SecurityCenterClient.Create();
             // Initialize request argument(s)
-            OrganizationName parent = new OrganizationName("[ORGANIZATION]");
+            string parent = "organizations/[ORGANIZATION]";
             // Make the request
-            Operation<RunAssetDiscoveryResponse, Empty> response =
-                securityCenterClient.RunAssetDiscovery(parent);
+            Operation<RunAssetDiscoveryResponse, Empty> response = securityCenterClient.RunAssetDiscovery(parent);
 
             // Poll until the returned long-running operation is complete
-            Operation<RunAssetDiscoveryResponse, Empty> completedResponse =
-                response.PollUntilCompleted();
+            Operation<RunAssetDiscoveryResponse, Empty> completedResponse = response.PollUntilCompleted();
             // Retrieve the operation result
             RunAssetDiscoveryResponse result = completedResponse.Result;
 
             // Or get the name of the operation
             string operationName = response.Name;
             // This name can be stored, then the long-running operation retrieved later by name
-            Operation<RunAssetDiscoveryResponse, Empty> retrievedResponse =
-                securityCenterClient.PollOnceRunAssetDiscovery(operationName);
+            Operation<RunAssetDiscoveryResponse, Empty> retrievedResponse = securityCenterClient.PollOnceRunAssetDiscovery(operationName);
             // Check if the retrieved long-running operation has completed
             if (retrievedResponse.IsCompleted)
             {
@@ -1067,31 +2066,26 @@ namespace Google.Cloud.SecurityCenter.V1.Snippets
         }
 
         /// <summary>Snippet for RunAssetDiscoveryAsync</summary>
-        public async Task RunAssetDiscoveryAsync_RequestObject()
+        public async Task RunAssetDiscoveryAsync()
         {
-            // Snippet: RunAssetDiscoveryAsync(RunAssetDiscoveryRequest,CallSettings)
+            // Snippet: RunAssetDiscoveryAsync(string, CallSettings)
+            // Additional: RunAssetDiscoveryAsync(string, CancellationToken)
             // Create client
             SecurityCenterClient securityCenterClient = await SecurityCenterClient.CreateAsync();
             // Initialize request argument(s)
-            RunAssetDiscoveryRequest request = new RunAssetDiscoveryRequest
-            {
-                ParentAsOrganizationName = new OrganizationName("[ORGANIZATION]"),
-            };
+            string parent = "organizations/[ORGANIZATION]";
             // Make the request
-            Operation<RunAssetDiscoveryResponse, Empty> response =
-                await securityCenterClient.RunAssetDiscoveryAsync(request);
+            Operation<RunAssetDiscoveryResponse, Empty> response = await securityCenterClient.RunAssetDiscoveryAsync(parent);
 
             // Poll until the returned long-running operation is complete
-            Operation<RunAssetDiscoveryResponse, Empty> completedResponse =
-                await response.PollUntilCompletedAsync();
+            Operation<RunAssetDiscoveryResponse, Empty> completedResponse = await response.PollUntilCompletedAsync();
             // Retrieve the operation result
             RunAssetDiscoveryResponse result = completedResponse.Result;
 
             // Or get the name of the operation
             string operationName = response.Name;
             // This name can be stored, then the long-running operation retrieved later by name
-            Operation<RunAssetDiscoveryResponse, Empty> retrievedResponse =
-                await securityCenterClient.PollOnceRunAssetDiscoveryAsync(operationName);
+            Operation<RunAssetDiscoveryResponse, Empty> retrievedResponse = await securityCenterClient.PollOnceRunAssetDiscoveryAsync(operationName);
             // Check if the retrieved long-running operation has completed
             if (retrievedResponse.IsCompleted)
             {
@@ -1102,31 +2096,25 @@ namespace Google.Cloud.SecurityCenter.V1.Snippets
         }
 
         /// <summary>Snippet for RunAssetDiscovery</summary>
-        public void RunAssetDiscovery_RequestObject()
+        public void RunAssetDiscoveryResourceNames()
         {
-            // Snippet: RunAssetDiscovery(RunAssetDiscoveryRequest,CallSettings)
+            // Snippet: RunAssetDiscovery(OrganizationName, CallSettings)
             // Create client
             SecurityCenterClient securityCenterClient = SecurityCenterClient.Create();
             // Initialize request argument(s)
-            RunAssetDiscoveryRequest request = new RunAssetDiscoveryRequest
-            {
-                ParentAsOrganizationName = new OrganizationName("[ORGANIZATION]"),
-            };
+            OrganizationName parent = OrganizationName.FromOrganization("[ORGANIZATION]");
             // Make the request
-            Operation<RunAssetDiscoveryResponse, Empty> response =
-                securityCenterClient.RunAssetDiscovery(request);
+            Operation<RunAssetDiscoveryResponse, Empty> response = securityCenterClient.RunAssetDiscovery(parent);
 
             // Poll until the returned long-running operation is complete
-            Operation<RunAssetDiscoveryResponse, Empty> completedResponse =
-                response.PollUntilCompleted();
+            Operation<RunAssetDiscoveryResponse, Empty> completedResponse = response.PollUntilCompleted();
             // Retrieve the operation result
             RunAssetDiscoveryResponse result = completedResponse.Result;
 
             // Or get the name of the operation
             string operationName = response.Name;
             // This name can be stored, then the long-running operation retrieved later by name
-            Operation<RunAssetDiscoveryResponse, Empty> retrievedResponse =
-                securityCenterClient.PollOnceRunAssetDiscovery(operationName);
+            Operation<RunAssetDiscoveryResponse, Empty> retrievedResponse = securityCenterClient.PollOnceRunAssetDiscovery(operationName);
             // Check if the retrieved long-running operation has completed
             if (retrievedResponse.IsCompleted)
             {
@@ -1136,48 +2124,65 @@ namespace Google.Cloud.SecurityCenter.V1.Snippets
             // End snippet
         }
 
-        /// <summary>Snippet for SetFindingStateAsync</summary>
-        public async Task SetFindingStateAsync()
+        /// <summary>Snippet for RunAssetDiscoveryAsync</summary>
+        public async Task RunAssetDiscoveryResourceNamesAsync()
         {
-            // Snippet: SetFindingStateAsync(FindingName,Finding.Types.State,Timestamp,CallSettings)
-            // Additional: SetFindingStateAsync(FindingName,Finding.Types.State,Timestamp,CancellationToken)
+            // Snippet: RunAssetDiscoveryAsync(OrganizationName, CallSettings)
+            // Additional: RunAssetDiscoveryAsync(OrganizationName, CancellationToken)
             // Create client
             SecurityCenterClient securityCenterClient = await SecurityCenterClient.CreateAsync();
             // Initialize request argument(s)
-            FindingName name = new FindingName("[ORGANIZATION]", "[SOURCE]", "[FINDING]");
-            Finding.Types.State state = Finding.Types.State.Unspecified;
-            Timestamp startTime = new Timestamp();
+            OrganizationName parent = OrganizationName.FromOrganization("[ORGANIZATION]");
             // Make the request
-            Finding response = await securityCenterClient.SetFindingStateAsync(name, state, startTime);
+            Operation<RunAssetDiscoveryResponse, Empty> response = await securityCenterClient.RunAssetDiscoveryAsync(parent);
+
+            // Poll until the returned long-running operation is complete
+            Operation<RunAssetDiscoveryResponse, Empty> completedResponse = await response.PollUntilCompletedAsync();
+            // Retrieve the operation result
+            RunAssetDiscoveryResponse result = completedResponse.Result;
+
+            // Or get the name of the operation
+            string operationName = response.Name;
+            // This name can be stored, then the long-running operation retrieved later by name
+            Operation<RunAssetDiscoveryResponse, Empty> retrievedResponse = await securityCenterClient.PollOnceRunAssetDiscoveryAsync(operationName);
+            // Check if the retrieved long-running operation has completed
+            if (retrievedResponse.IsCompleted)
+            {
+                // If it has completed, then access the result
+                RunAssetDiscoveryResponse retrievedResult = retrievedResponse.Result;
+            }
             // End snippet
         }
 
         /// <summary>Snippet for SetFindingState</summary>
-        public void SetFindingState()
+        public void SetFindingStateRequestObject()
         {
-            // Snippet: SetFindingState(FindingName,Finding.Types.State,Timestamp,CallSettings)
+            // Snippet: SetFindingState(SetFindingStateRequest, CallSettings)
             // Create client
             SecurityCenterClient securityCenterClient = SecurityCenterClient.Create();
             // Initialize request argument(s)
-            FindingName name = new FindingName("[ORGANIZATION]", "[SOURCE]", "[FINDING]");
-            Finding.Types.State state = Finding.Types.State.Unspecified;
-            Timestamp startTime = new Timestamp();
+            SetFindingStateRequest request = new SetFindingStateRequest
+            {
+                FindingName = FindingName.FromOrganizationSourceFinding("[ORGANIZATION]", "[SOURCE]", "[FINDING]"),
+                State = Finding.Types.State.Unspecified,
+                StartTime = new Timestamp(),
+            };
             // Make the request
-            Finding response = securityCenterClient.SetFindingState(name, state, startTime);
+            Finding response = securityCenterClient.SetFindingState(request);
             // End snippet
         }
 
         /// <summary>Snippet for SetFindingStateAsync</summary>
-        public async Task SetFindingStateAsync_RequestObject()
+        public async Task SetFindingStateRequestObjectAsync()
         {
-            // Snippet: SetFindingStateAsync(SetFindingStateRequest,CallSettings)
-            // Additional: SetFindingStateAsync(SetFindingStateRequest,CancellationToken)
+            // Snippet: SetFindingStateAsync(SetFindingStateRequest, CallSettings)
+            // Additional: SetFindingStateAsync(SetFindingStateRequest, CancellationToken)
             // Create client
             SecurityCenterClient securityCenterClient = await SecurityCenterClient.CreateAsync();
             // Initialize request argument(s)
             SetFindingStateRequest request = new SetFindingStateRequest
             {
-                FindingName = new FindingName("[ORGANIZATION]", "[SOURCE]", "[FINDING]"),
+                FindingName = FindingName.FromOrganizationSourceFinding("[ORGANIZATION]", "[SOURCE]", "[FINDING]"),
                 State = Finding.Types.State.Unspecified,
                 StartTime = new Timestamp(),
             };
@@ -1187,63 +2192,95 @@ namespace Google.Cloud.SecurityCenter.V1.Snippets
         }
 
         /// <summary>Snippet for SetFindingState</summary>
-        public void SetFindingState_RequestObject()
+        public void SetFindingState()
         {
-            // Snippet: SetFindingState(SetFindingStateRequest,CallSettings)
+            // Snippet: SetFindingState(string, Finding.Types.State, Timestamp, CallSettings)
             // Create client
             SecurityCenterClient securityCenterClient = SecurityCenterClient.Create();
             // Initialize request argument(s)
-            SetFindingStateRequest request = new SetFindingStateRequest
-            {
-                FindingName = new FindingName("[ORGANIZATION]", "[SOURCE]", "[FINDING]"),
-                State = Finding.Types.State.Unspecified,
-                StartTime = new Timestamp(),
-            };
+            string name = "organizations/[ORGANIZATION]/sources/[SOURCE]/findings/[FINDING]";
+            Finding.Types.State state = Finding.Types.State.Unspecified;
+            Timestamp startTime = new Timestamp();
             // Make the request
-            Finding response = securityCenterClient.SetFindingState(request);
+            Finding response = securityCenterClient.SetFindingState(name, state, startTime);
             // End snippet
         }
 
-        /// <summary>Snippet for SetIamPolicyAsync</summary>
-        public async Task SetIamPolicyAsync()
+        /// <summary>Snippet for SetFindingStateAsync</summary>
+        public async Task SetFindingStateAsync()
         {
-            // Snippet: SetIamPolicyAsync(SourceName,Policy,CallSettings)
-            // Additional: SetIamPolicyAsync(SourceName,Policy,CancellationToken)
+            // Snippet: SetFindingStateAsync(string, Finding.Types.State, Timestamp, CallSettings)
+            // Additional: SetFindingStateAsync(string, Finding.Types.State, Timestamp, CancellationToken)
             // Create client
             SecurityCenterClient securityCenterClient = await SecurityCenterClient.CreateAsync();
             // Initialize request argument(s)
-            SourceName resource = new SourceName("[ORGANIZATION]", "[SOURCE]");
-            Policy policy = new Policy();
+            string name = "organizations/[ORGANIZATION]/sources/[SOURCE]/findings/[FINDING]";
+            Finding.Types.State state = Finding.Types.State.Unspecified;
+            Timestamp startTime = new Timestamp();
             // Make the request
-            Policy response = await securityCenterClient.SetIamPolicyAsync(resource, policy);
+            Finding response = await securityCenterClient.SetFindingStateAsync(name, state, startTime);
+            // End snippet
+        }
+
+        /// <summary>Snippet for SetFindingState</summary>
+        public void SetFindingStateResourceNames()
+        {
+            // Snippet: SetFindingState(FindingName, Finding.Types.State, Timestamp, CallSettings)
+            // Create client
+            SecurityCenterClient securityCenterClient = SecurityCenterClient.Create();
+            // Initialize request argument(s)
+            FindingName name = FindingName.FromOrganizationSourceFinding("[ORGANIZATION]", "[SOURCE]", "[FINDING]");
+            Finding.Types.State state = Finding.Types.State.Unspecified;
+            Timestamp startTime = new Timestamp();
+            // Make the request
+            Finding response = securityCenterClient.SetFindingState(name, state, startTime);
+            // End snippet
+        }
+
+        /// <summary>Snippet for SetFindingStateAsync</summary>
+        public async Task SetFindingStateResourceNamesAsync()
+        {
+            // Snippet: SetFindingStateAsync(FindingName, Finding.Types.State, Timestamp, CallSettings)
+            // Additional: SetFindingStateAsync(FindingName, Finding.Types.State, Timestamp, CancellationToken)
+            // Create client
+            SecurityCenterClient securityCenterClient = await SecurityCenterClient.CreateAsync();
+            // Initialize request argument(s)
+            FindingName name = FindingName.FromOrganizationSourceFinding("[ORGANIZATION]", "[SOURCE]", "[FINDING]");
+            Finding.Types.State state = Finding.Types.State.Unspecified;
+            Timestamp startTime = new Timestamp();
+            // Make the request
+            Finding response = await securityCenterClient.SetFindingStateAsync(name, state, startTime);
             // End snippet
         }
 
         /// <summary>Snippet for SetIamPolicy</summary>
-        public void SetIamPolicy()
+        public void SetIamPolicyRequestObject()
         {
-            // Snippet: SetIamPolicy(SourceName,Policy,CallSettings)
+            // Snippet: SetIamPolicy(SetIamPolicyRequest, CallSettings)
             // Create client
             SecurityCenterClient securityCenterClient = SecurityCenterClient.Create();
             // Initialize request argument(s)
-            SourceName resource = new SourceName("[ORGANIZATION]", "[SOURCE]");
-            Policy policy = new Policy();
+            SetIamPolicyRequest request = new SetIamPolicyRequest
+            {
+                ResourceAsResourceName = new UnparsedResourceName("a/wildcard/resource"),
+                Policy = new Policy(),
+            };
             // Make the request
-            Policy response = securityCenterClient.SetIamPolicy(resource, policy);
+            Policy response = securityCenterClient.SetIamPolicy(request);
             // End snippet
         }
 
         /// <summary>Snippet for SetIamPolicyAsync</summary>
-        public async Task SetIamPolicyAsync_RequestObject()
+        public async Task SetIamPolicyRequestObjectAsync()
         {
-            // Snippet: SetIamPolicyAsync(SetIamPolicyRequest,CallSettings)
-            // Additional: SetIamPolicyAsync(SetIamPolicyRequest,CancellationToken)
+            // Snippet: SetIamPolicyAsync(SetIamPolicyRequest, CallSettings)
+            // Additional: SetIamPolicyAsync(SetIamPolicyRequest, CancellationToken)
             // Create client
             SecurityCenterClient securityCenterClient = await SecurityCenterClient.CreateAsync();
             // Initialize request argument(s)
             SetIamPolicyRequest request = new SetIamPolicyRequest
             {
-                ResourceAsResourceName = new SourceName("[ORGANIZATION]", "[SOURCE]"),
+                ResourceAsResourceName = new UnparsedResourceName("a/wildcard/resource"),
                 Policy = new Policy(),
             };
             // Make the request
@@ -1252,63 +2289,92 @@ namespace Google.Cloud.SecurityCenter.V1.Snippets
         }
 
         /// <summary>Snippet for SetIamPolicy</summary>
-        public void SetIamPolicy_RequestObject()
+        public void SetIamPolicy()
         {
-            // Snippet: SetIamPolicy(SetIamPolicyRequest,CallSettings)
+            // Snippet: SetIamPolicy(string, Policy, CallSettings)
             // Create client
             SecurityCenterClient securityCenterClient = SecurityCenterClient.Create();
             // Initialize request argument(s)
-            SetIamPolicyRequest request = new SetIamPolicyRequest
-            {
-                ResourceAsResourceName = new SourceName("[ORGANIZATION]", "[SOURCE]"),
-                Policy = new Policy(),
-            };
+            string resource = "a/wildcard/resource";
+            Policy policy = new Policy();
             // Make the request
-            Policy response = securityCenterClient.SetIamPolicy(request);
+            Policy response = securityCenterClient.SetIamPolicy(resource, policy);
             // End snippet
         }
 
-        /// <summary>Snippet for TestIamPermissionsAsync</summary>
-        public async Task TestIamPermissionsAsync()
+        /// <summary>Snippet for SetIamPolicyAsync</summary>
+        public async Task SetIamPolicyAsync()
         {
-            // Snippet: TestIamPermissionsAsync(SourceName,IEnumerable<string>,CallSettings)
-            // Additional: TestIamPermissionsAsync(SourceName,IEnumerable<string>,CancellationToken)
+            // Snippet: SetIamPolicyAsync(string, Policy, CallSettings)
+            // Additional: SetIamPolicyAsync(string, Policy, CancellationToken)
             // Create client
             SecurityCenterClient securityCenterClient = await SecurityCenterClient.CreateAsync();
             // Initialize request argument(s)
-            SourceName resource = new SourceName("[ORGANIZATION]", "[SOURCE]");
-            IEnumerable<string> permissions = new List<string>();
+            string resource = "a/wildcard/resource";
+            Policy policy = new Policy();
             // Make the request
-            TestIamPermissionsResponse response = await securityCenterClient.TestIamPermissionsAsync(resource, permissions);
+            Policy response = await securityCenterClient.SetIamPolicyAsync(resource, policy);
+            // End snippet
+        }
+
+        /// <summary>Snippet for SetIamPolicy</summary>
+        public void SetIamPolicyResourceNames()
+        {
+            // Snippet: SetIamPolicy(IResourceName, Policy, CallSettings)
+            // Create client
+            SecurityCenterClient securityCenterClient = SecurityCenterClient.Create();
+            // Initialize request argument(s)
+            IResourceName resource = new UnparsedResourceName("a/wildcard/resource");
+            Policy policy = new Policy();
+            // Make the request
+            Policy response = securityCenterClient.SetIamPolicy(resource, policy);
+            // End snippet
+        }
+
+        /// <summary>Snippet for SetIamPolicyAsync</summary>
+        public async Task SetIamPolicyResourceNamesAsync()
+        {
+            // Snippet: SetIamPolicyAsync(IResourceName, Policy, CallSettings)
+            // Additional: SetIamPolicyAsync(IResourceName, Policy, CancellationToken)
+            // Create client
+            SecurityCenterClient securityCenterClient = await SecurityCenterClient.CreateAsync();
+            // Initialize request argument(s)
+            IResourceName resource = new UnparsedResourceName("a/wildcard/resource");
+            Policy policy = new Policy();
+            // Make the request
+            Policy response = await securityCenterClient.SetIamPolicyAsync(resource, policy);
             // End snippet
         }
 
         /// <summary>Snippet for TestIamPermissions</summary>
-        public void TestIamPermissions()
+        public void TestIamPermissionsRequestObject()
         {
-            // Snippet: TestIamPermissions(SourceName,IEnumerable<string>,CallSettings)
+            // Snippet: TestIamPermissions(TestIamPermissionsRequest, CallSettings)
             // Create client
             SecurityCenterClient securityCenterClient = SecurityCenterClient.Create();
             // Initialize request argument(s)
-            SourceName resource = new SourceName("[ORGANIZATION]", "[SOURCE]");
-            IEnumerable<string> permissions = new List<string>();
+            TestIamPermissionsRequest request = new TestIamPermissionsRequest
+            {
+                ResourceAsResourceName = new UnparsedResourceName("a/wildcard/resource"),
+                Permissions = { "", },
+            };
             // Make the request
-            TestIamPermissionsResponse response = securityCenterClient.TestIamPermissions(resource, permissions);
+            TestIamPermissionsResponse response = securityCenterClient.TestIamPermissions(request);
             // End snippet
         }
 
         /// <summary>Snippet for TestIamPermissionsAsync</summary>
-        public async Task TestIamPermissionsAsync_RequestObject()
+        public async Task TestIamPermissionsRequestObjectAsync()
         {
-            // Snippet: TestIamPermissionsAsync(TestIamPermissionsRequest,CallSettings)
-            // Additional: TestIamPermissionsAsync(TestIamPermissionsRequest,CancellationToken)
+            // Snippet: TestIamPermissionsAsync(TestIamPermissionsRequest, CallSettings)
+            // Additional: TestIamPermissionsAsync(TestIamPermissionsRequest, CancellationToken)
             // Create client
             SecurityCenterClient securityCenterClient = await SecurityCenterClient.CreateAsync();
             // Initialize request argument(s)
             TestIamPermissionsRequest request = new TestIamPermissionsRequest
             {
-                ResourceAsResourceName = new SourceName("[ORGANIZATION]", "[SOURCE]"),
-                Permissions = { },
+                ResourceAsResourceName = new UnparsedResourceName("a/wildcard/resource"),
+                Permissions = { "", },
             };
             // Make the request
             TestIamPermissionsResponse response = await securityCenterClient.TestIamPermissionsAsync(request);
@@ -1316,40 +2382,102 @@ namespace Google.Cloud.SecurityCenter.V1.Snippets
         }
 
         /// <summary>Snippet for TestIamPermissions</summary>
-        public void TestIamPermissions_RequestObject()
+        public void TestIamPermissions()
         {
-            // Snippet: TestIamPermissions(TestIamPermissionsRequest,CallSettings)
+            // Snippet: TestIamPermissions(string, IEnumerable<string>, CallSettings)
             // Create client
             SecurityCenterClient securityCenterClient = SecurityCenterClient.Create();
             // Initialize request argument(s)
-            TestIamPermissionsRequest request = new TestIamPermissionsRequest
+            string resource = "a/wildcard/resource";
+            IEnumerable<string> permissions = new string[] { "", };
+            // Make the request
+            TestIamPermissionsResponse response = securityCenterClient.TestIamPermissions(resource, permissions);
+            // End snippet
+        }
+
+        /// <summary>Snippet for TestIamPermissionsAsync</summary>
+        public async Task TestIamPermissionsAsync()
+        {
+            // Snippet: TestIamPermissionsAsync(string, IEnumerable<string>, CallSettings)
+            // Additional: TestIamPermissionsAsync(string, IEnumerable<string>, CancellationToken)
+            // Create client
+            SecurityCenterClient securityCenterClient = await SecurityCenterClient.CreateAsync();
+            // Initialize request argument(s)
+            string resource = "a/wildcard/resource";
+            IEnumerable<string> permissions = new string[] { "", };
+            // Make the request
+            TestIamPermissionsResponse response = await securityCenterClient.TestIamPermissionsAsync(resource, permissions);
+            // End snippet
+        }
+
+        /// <summary>Snippet for TestIamPermissions</summary>
+        public void TestIamPermissionsResourceNames()
+        {
+            // Snippet: TestIamPermissions(IResourceName, IEnumerable<string>, CallSettings)
+            // Create client
+            SecurityCenterClient securityCenterClient = SecurityCenterClient.Create();
+            // Initialize request argument(s)
+            IResourceName resource = new UnparsedResourceName("a/wildcard/resource");
+            IEnumerable<string> permissions = new string[] { "", };
+            // Make the request
+            TestIamPermissionsResponse response = securityCenterClient.TestIamPermissions(resource, permissions);
+            // End snippet
+        }
+
+        /// <summary>Snippet for TestIamPermissionsAsync</summary>
+        public async Task TestIamPermissionsResourceNamesAsync()
+        {
+            // Snippet: TestIamPermissionsAsync(IResourceName, IEnumerable<string>, CallSettings)
+            // Additional: TestIamPermissionsAsync(IResourceName, IEnumerable<string>, CancellationToken)
+            // Create client
+            SecurityCenterClient securityCenterClient = await SecurityCenterClient.CreateAsync();
+            // Initialize request argument(s)
+            IResourceName resource = new UnparsedResourceName("a/wildcard/resource");
+            IEnumerable<string> permissions = new string[] { "", };
+            // Make the request
+            TestIamPermissionsResponse response = await securityCenterClient.TestIamPermissionsAsync(resource, permissions);
+            // End snippet
+        }
+
+        /// <summary>Snippet for UpdateFinding</summary>
+        public void UpdateFindingRequestObject()
+        {
+            // Snippet: UpdateFinding(UpdateFindingRequest, CallSettings)
+            // Create client
+            SecurityCenterClient securityCenterClient = SecurityCenterClient.Create();
+            // Initialize request argument(s)
+            UpdateFindingRequest request = new UpdateFindingRequest
             {
-                ResourceAsResourceName = new SourceName("[ORGANIZATION]", "[SOURCE]"),
-                Permissions = { },
+                Finding = new Finding(),
+                UpdateMask = new FieldMask(),
             };
             // Make the request
-            TestIamPermissionsResponse response = securityCenterClient.TestIamPermissions(request);
+            Finding response = securityCenterClient.UpdateFinding(request);
             // End snippet
         }
 
         /// <summary>Snippet for UpdateFindingAsync</summary>
-        public async Task UpdateFindingAsync()
+        public async Task UpdateFindingRequestObjectAsync()
         {
-            // Snippet: UpdateFindingAsync(Finding,CallSettings)
-            // Additional: UpdateFindingAsync(Finding,CancellationToken)
+            // Snippet: UpdateFindingAsync(UpdateFindingRequest, CallSettings)
+            // Additional: UpdateFindingAsync(UpdateFindingRequest, CancellationToken)
             // Create client
             SecurityCenterClient securityCenterClient = await SecurityCenterClient.CreateAsync();
             // Initialize request argument(s)
-            Finding finding = new Finding();
+            UpdateFindingRequest request = new UpdateFindingRequest
+            {
+                Finding = new Finding(),
+                UpdateMask = new FieldMask(),
+            };
             // Make the request
-            Finding response = await securityCenterClient.UpdateFindingAsync(finding);
+            Finding response = await securityCenterClient.UpdateFindingAsync(request);
             // End snippet
         }
 
         /// <summary>Snippet for UpdateFinding</summary>
         public void UpdateFinding()
         {
-            // Snippet: UpdateFinding(Finding,CallSettings)
+            // Snippet: UpdateFinding(Finding, CallSettings)
             // Create client
             SecurityCenterClient securityCenterClient = SecurityCenterClient.Create();
             // Initialize request argument(s)
@@ -1360,56 +2488,149 @@ namespace Google.Cloud.SecurityCenter.V1.Snippets
         }
 
         /// <summary>Snippet for UpdateFindingAsync</summary>
-        public async Task UpdateFindingAsync_RequestObject()
+        public async Task UpdateFindingAsync()
         {
-            // Snippet: UpdateFindingAsync(UpdateFindingRequest,CallSettings)
-            // Additional: UpdateFindingAsync(UpdateFindingRequest,CancellationToken)
+            // Snippet: UpdateFindingAsync(Finding, CallSettings)
+            // Additional: UpdateFindingAsync(Finding, CancellationToken)
             // Create client
             SecurityCenterClient securityCenterClient = await SecurityCenterClient.CreateAsync();
             // Initialize request argument(s)
-            UpdateFindingRequest request = new UpdateFindingRequest
-            {
-                Finding = new Finding(),
-            };
+            Finding finding = new Finding();
             // Make the request
-            Finding response = await securityCenterClient.UpdateFindingAsync(request);
+            Finding response = await securityCenterClient.UpdateFindingAsync(finding);
             // End snippet
         }
 
-        /// <summary>Snippet for UpdateFinding</summary>
-        public void UpdateFinding_RequestObject()
+        /// <summary>Snippet for UpdateNotificationConfig</summary>
+        public void UpdateNotificationConfigRequestObject()
         {
-            // Snippet: UpdateFinding(UpdateFindingRequest,CallSettings)
+            // Snippet: UpdateNotificationConfig(UpdateNotificationConfigRequest, CallSettings)
             // Create client
             SecurityCenterClient securityCenterClient = SecurityCenterClient.Create();
             // Initialize request argument(s)
-            UpdateFindingRequest request = new UpdateFindingRequest
+            UpdateNotificationConfigRequest request = new UpdateNotificationConfigRequest
             {
-                Finding = new Finding(),
+                NotificationConfig = new NotificationConfig(),
+                UpdateMask = new FieldMask(),
             };
             // Make the request
-            Finding response = securityCenterClient.UpdateFinding(request);
+            NotificationConfig response = securityCenterClient.UpdateNotificationConfig(request);
+            // End snippet
+        }
+
+        /// <summary>Snippet for UpdateNotificationConfigAsync</summary>
+        public async Task UpdateNotificationConfigRequestObjectAsync()
+        {
+            // Snippet: UpdateNotificationConfigAsync(UpdateNotificationConfigRequest, CallSettings)
+            // Additional: UpdateNotificationConfigAsync(UpdateNotificationConfigRequest, CancellationToken)
+            // Create client
+            SecurityCenterClient securityCenterClient = await SecurityCenterClient.CreateAsync();
+            // Initialize request argument(s)
+            UpdateNotificationConfigRequest request = new UpdateNotificationConfigRequest
+            {
+                NotificationConfig = new NotificationConfig(),
+                UpdateMask = new FieldMask(),
+            };
+            // Make the request
+            NotificationConfig response = await securityCenterClient.UpdateNotificationConfigAsync(request);
+            // End snippet
+        }
+
+        /// <summary>Snippet for UpdateNotificationConfig</summary>
+        public void UpdateNotificationConfig1()
+        {
+            // Snippet: UpdateNotificationConfig(NotificationConfig, CallSettings)
+            // Create client
+            SecurityCenterClient securityCenterClient = SecurityCenterClient.Create();
+            // Initialize request argument(s)
+            NotificationConfig notificationConfig = new NotificationConfig();
+            // Make the request
+            NotificationConfig response = securityCenterClient.UpdateNotificationConfig(notificationConfig);
+            // End snippet
+        }
+
+        /// <summary>Snippet for UpdateNotificationConfigAsync</summary>
+        public async Task UpdateNotificationConfig1Async()
+        {
+            // Snippet: UpdateNotificationConfigAsync(NotificationConfig, CallSettings)
+            // Additional: UpdateNotificationConfigAsync(NotificationConfig, CancellationToken)
+            // Create client
+            SecurityCenterClient securityCenterClient = await SecurityCenterClient.CreateAsync();
+            // Initialize request argument(s)
+            NotificationConfig notificationConfig = new NotificationConfig();
+            // Make the request
+            NotificationConfig response = await securityCenterClient.UpdateNotificationConfigAsync(notificationConfig);
+            // End snippet
+        }
+
+        /// <summary>Snippet for UpdateNotificationConfig</summary>
+        public void UpdateNotificationConfig2()
+        {
+            // Snippet: UpdateNotificationConfig(NotificationConfig, FieldMask, CallSettings)
+            // Create client
+            SecurityCenterClient securityCenterClient = SecurityCenterClient.Create();
+            // Initialize request argument(s)
+            NotificationConfig notificationConfig = new NotificationConfig();
+            FieldMask updateMask = new FieldMask();
+            // Make the request
+            NotificationConfig response = securityCenterClient.UpdateNotificationConfig(notificationConfig, updateMask);
+            // End snippet
+        }
+
+        /// <summary>Snippet for UpdateNotificationConfigAsync</summary>
+        public async Task UpdateNotificationConfig2Async()
+        {
+            // Snippet: UpdateNotificationConfigAsync(NotificationConfig, FieldMask, CallSettings)
+            // Additional: UpdateNotificationConfigAsync(NotificationConfig, FieldMask, CancellationToken)
+            // Create client
+            SecurityCenterClient securityCenterClient = await SecurityCenterClient.CreateAsync();
+            // Initialize request argument(s)
+            NotificationConfig notificationConfig = new NotificationConfig();
+            FieldMask updateMask = new FieldMask();
+            // Make the request
+            NotificationConfig response = await securityCenterClient.UpdateNotificationConfigAsync(notificationConfig, updateMask);
+            // End snippet
+        }
+
+        /// <summary>Snippet for UpdateOrganizationSettings</summary>
+        public void UpdateOrganizationSettingsRequestObject()
+        {
+            // Snippet: UpdateOrganizationSettings(UpdateOrganizationSettingsRequest, CallSettings)
+            // Create client
+            SecurityCenterClient securityCenterClient = SecurityCenterClient.Create();
+            // Initialize request argument(s)
+            UpdateOrganizationSettingsRequest request = new UpdateOrganizationSettingsRequest
+            {
+                OrganizationSettings = new OrganizationSettings(),
+                UpdateMask = new FieldMask(),
+            };
+            // Make the request
+            OrganizationSettings response = securityCenterClient.UpdateOrganizationSettings(request);
             // End snippet
         }
 
         /// <summary>Snippet for UpdateOrganizationSettingsAsync</summary>
-        public async Task UpdateOrganizationSettingsAsync()
+        public async Task UpdateOrganizationSettingsRequestObjectAsync()
         {
-            // Snippet: UpdateOrganizationSettingsAsync(OrganizationSettings,CallSettings)
-            // Additional: UpdateOrganizationSettingsAsync(OrganizationSettings,CancellationToken)
+            // Snippet: UpdateOrganizationSettingsAsync(UpdateOrganizationSettingsRequest, CallSettings)
+            // Additional: UpdateOrganizationSettingsAsync(UpdateOrganizationSettingsRequest, CancellationToken)
             // Create client
             SecurityCenterClient securityCenterClient = await SecurityCenterClient.CreateAsync();
             // Initialize request argument(s)
-            OrganizationSettings organizationSettings = new OrganizationSettings();
+            UpdateOrganizationSettingsRequest request = new UpdateOrganizationSettingsRequest
+            {
+                OrganizationSettings = new OrganizationSettings(),
+                UpdateMask = new FieldMask(),
+            };
             // Make the request
-            OrganizationSettings response = await securityCenterClient.UpdateOrganizationSettingsAsync(organizationSettings);
+            OrganizationSettings response = await securityCenterClient.UpdateOrganizationSettingsAsync(request);
             // End snippet
         }
 
         /// <summary>Snippet for UpdateOrganizationSettings</summary>
         public void UpdateOrganizationSettings()
         {
-            // Snippet: UpdateOrganizationSettings(OrganizationSettings,CallSettings)
+            // Snippet: UpdateOrganizationSettings(OrganizationSettings, CallSettings)
             // Create client
             SecurityCenterClient securityCenterClient = SecurityCenterClient.Create();
             // Initialize request argument(s)
@@ -1420,56 +2641,58 @@ namespace Google.Cloud.SecurityCenter.V1.Snippets
         }
 
         /// <summary>Snippet for UpdateOrganizationSettingsAsync</summary>
-        public async Task UpdateOrganizationSettingsAsync_RequestObject()
+        public async Task UpdateOrganizationSettingsAsync()
         {
-            // Snippet: UpdateOrganizationSettingsAsync(UpdateOrganizationSettingsRequest,CallSettings)
-            // Additional: UpdateOrganizationSettingsAsync(UpdateOrganizationSettingsRequest,CancellationToken)
+            // Snippet: UpdateOrganizationSettingsAsync(OrganizationSettings, CallSettings)
+            // Additional: UpdateOrganizationSettingsAsync(OrganizationSettings, CancellationToken)
             // Create client
             SecurityCenterClient securityCenterClient = await SecurityCenterClient.CreateAsync();
             // Initialize request argument(s)
-            UpdateOrganizationSettingsRequest request = new UpdateOrganizationSettingsRequest
-            {
-                OrganizationSettings = new OrganizationSettings(),
-            };
+            OrganizationSettings organizationSettings = new OrganizationSettings();
             // Make the request
-            OrganizationSettings response = await securityCenterClient.UpdateOrganizationSettingsAsync(request);
+            OrganizationSettings response = await securityCenterClient.UpdateOrganizationSettingsAsync(organizationSettings);
             // End snippet
         }
 
-        /// <summary>Snippet for UpdateOrganizationSettings</summary>
-        public void UpdateOrganizationSettings_RequestObject()
+        /// <summary>Snippet for UpdateSource</summary>
+        public void UpdateSourceRequestObject()
         {
-            // Snippet: UpdateOrganizationSettings(UpdateOrganizationSettingsRequest,CallSettings)
+            // Snippet: UpdateSource(UpdateSourceRequest, CallSettings)
             // Create client
             SecurityCenterClient securityCenterClient = SecurityCenterClient.Create();
             // Initialize request argument(s)
-            UpdateOrganizationSettingsRequest request = new UpdateOrganizationSettingsRequest
+            UpdateSourceRequest request = new UpdateSourceRequest
             {
-                OrganizationSettings = new OrganizationSettings(),
+                Source = new Source(),
+                UpdateMask = new FieldMask(),
             };
             // Make the request
-            OrganizationSettings response = securityCenterClient.UpdateOrganizationSettings(request);
+            Source response = securityCenterClient.UpdateSource(request);
             // End snippet
         }
 
         /// <summary>Snippet for UpdateSourceAsync</summary>
-        public async Task UpdateSourceAsync()
+        public async Task UpdateSourceRequestObjectAsync()
         {
-            // Snippet: UpdateSourceAsync(Source,CallSettings)
-            // Additional: UpdateSourceAsync(Source,CancellationToken)
+            // Snippet: UpdateSourceAsync(UpdateSourceRequest, CallSettings)
+            // Additional: UpdateSourceAsync(UpdateSourceRequest, CancellationToken)
             // Create client
             SecurityCenterClient securityCenterClient = await SecurityCenterClient.CreateAsync();
             // Initialize request argument(s)
-            Source source = new Source();
+            UpdateSourceRequest request = new UpdateSourceRequest
+            {
+                Source = new Source(),
+                UpdateMask = new FieldMask(),
+            };
             // Make the request
-            Source response = await securityCenterClient.UpdateSourceAsync(source);
+            Source response = await securityCenterClient.UpdateSourceAsync(request);
             // End snippet
         }
 
         /// <summary>Snippet for UpdateSource</summary>
         public void UpdateSource()
         {
-            // Snippet: UpdateSource(Source,CallSettings)
+            // Snippet: UpdateSource(Source, CallSettings)
             // Create client
             SecurityCenterClient securityCenterClient = SecurityCenterClient.Create();
             // Initialize request argument(s)
@@ -1480,56 +2703,60 @@ namespace Google.Cloud.SecurityCenter.V1.Snippets
         }
 
         /// <summary>Snippet for UpdateSourceAsync</summary>
-        public async Task UpdateSourceAsync_RequestObject()
+        public async Task UpdateSourceAsync()
         {
-            // Snippet: UpdateSourceAsync(UpdateSourceRequest,CallSettings)
-            // Additional: UpdateSourceAsync(UpdateSourceRequest,CancellationToken)
+            // Snippet: UpdateSourceAsync(Source, CallSettings)
+            // Additional: UpdateSourceAsync(Source, CancellationToken)
             // Create client
             SecurityCenterClient securityCenterClient = await SecurityCenterClient.CreateAsync();
             // Initialize request argument(s)
-            UpdateSourceRequest request = new UpdateSourceRequest
-            {
-                Source = new Source(),
-            };
+            Source source = new Source();
             // Make the request
-            Source response = await securityCenterClient.UpdateSourceAsync(request);
+            Source response = await securityCenterClient.UpdateSourceAsync(source);
             // End snippet
         }
 
-        /// <summary>Snippet for UpdateSource</summary>
-        public void UpdateSource_RequestObject()
+        /// <summary>Snippet for UpdateSecurityMarks</summary>
+        public void UpdateSecurityMarksRequestObject()
         {
-            // Snippet: UpdateSource(UpdateSourceRequest,CallSettings)
+            // Snippet: UpdateSecurityMarks(UpdateSecurityMarksRequest, CallSettings)
             // Create client
             SecurityCenterClient securityCenterClient = SecurityCenterClient.Create();
             // Initialize request argument(s)
-            UpdateSourceRequest request = new UpdateSourceRequest
+            UpdateSecurityMarksRequest request = new UpdateSecurityMarksRequest
             {
-                Source = new Source(),
+                SecurityMarks = new SecurityMarks(),
+                UpdateMask = new FieldMask(),
+                StartTime = new Timestamp(),
             };
             // Make the request
-            Source response = securityCenterClient.UpdateSource(request);
+            SecurityMarks response = securityCenterClient.UpdateSecurityMarks(request);
             // End snippet
         }
 
         /// <summary>Snippet for UpdateSecurityMarksAsync</summary>
-        public async Task UpdateSecurityMarksAsync()
+        public async Task UpdateSecurityMarksRequestObjectAsync()
         {
-            // Snippet: UpdateSecurityMarksAsync(SecurityMarks,CallSettings)
-            // Additional: UpdateSecurityMarksAsync(SecurityMarks,CancellationToken)
+            // Snippet: UpdateSecurityMarksAsync(UpdateSecurityMarksRequest, CallSettings)
+            // Additional: UpdateSecurityMarksAsync(UpdateSecurityMarksRequest, CancellationToken)
             // Create client
             SecurityCenterClient securityCenterClient = await SecurityCenterClient.CreateAsync();
             // Initialize request argument(s)
-            SecurityMarks securityMarks = new SecurityMarks();
+            UpdateSecurityMarksRequest request = new UpdateSecurityMarksRequest
+            {
+                SecurityMarks = new SecurityMarks(),
+                UpdateMask = new FieldMask(),
+                StartTime = new Timestamp(),
+            };
             // Make the request
-            SecurityMarks response = await securityCenterClient.UpdateSecurityMarksAsync(securityMarks);
+            SecurityMarks response = await securityCenterClient.UpdateSecurityMarksAsync(request);
             // End snippet
         }
 
         /// <summary>Snippet for UpdateSecurityMarks</summary>
         public void UpdateSecurityMarks()
         {
-            // Snippet: UpdateSecurityMarks(SecurityMarks,CallSettings)
+            // Snippet: UpdateSecurityMarks(SecurityMarks, CallSettings)
             // Create client
             SecurityCenterClient securityCenterClient = SecurityCenterClient.Create();
             // Initialize request argument(s)
@@ -1540,37 +2767,17 @@ namespace Google.Cloud.SecurityCenter.V1.Snippets
         }
 
         /// <summary>Snippet for UpdateSecurityMarksAsync</summary>
-        public async Task UpdateSecurityMarksAsync_RequestObject()
+        public async Task UpdateSecurityMarksAsync()
         {
-            // Snippet: UpdateSecurityMarksAsync(UpdateSecurityMarksRequest,CallSettings)
-            // Additional: UpdateSecurityMarksAsync(UpdateSecurityMarksRequest,CancellationToken)
+            // Snippet: UpdateSecurityMarksAsync(SecurityMarks, CallSettings)
+            // Additional: UpdateSecurityMarksAsync(SecurityMarks, CancellationToken)
             // Create client
             SecurityCenterClient securityCenterClient = await SecurityCenterClient.CreateAsync();
             // Initialize request argument(s)
-            UpdateSecurityMarksRequest request = new UpdateSecurityMarksRequest
-            {
-                SecurityMarks = new SecurityMarks(),
-            };
+            SecurityMarks securityMarks = new SecurityMarks();
             // Make the request
-            SecurityMarks response = await securityCenterClient.UpdateSecurityMarksAsync(request);
+            SecurityMarks response = await securityCenterClient.UpdateSecurityMarksAsync(securityMarks);
             // End snippet
         }
-
-        /// <summary>Snippet for UpdateSecurityMarks</summary>
-        public void UpdateSecurityMarks_RequestObject()
-        {
-            // Snippet: UpdateSecurityMarks(UpdateSecurityMarksRequest,CallSettings)
-            // Create client
-            SecurityCenterClient securityCenterClient = SecurityCenterClient.Create();
-            // Initialize request argument(s)
-            UpdateSecurityMarksRequest request = new UpdateSecurityMarksRequest
-            {
-                SecurityMarks = new SecurityMarks(),
-            };
-            // Make the request
-            SecurityMarks response = securityCenterClient.UpdateSecurityMarks(request);
-            // End snippet
-        }
-
     }
 }

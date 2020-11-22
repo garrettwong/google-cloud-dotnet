@@ -19,10 +19,8 @@ using Google.Apis.Bigquery.v2;
 using Google.Apis.Bigquery.v2.Data;
 using Google.Apis.Json;
 using Google.Apis.Requests;
-using Google.Apis.Services;
 using Newtonsoft.Json;
 using System;
-using System.Linq;
 using System.Net;
 using System.Threading.Tasks;
 
@@ -85,11 +83,31 @@ namespace Google.Cloud.BigQuery.V2
         public virtual string DefaultLocation => throw new NotImplementedException();
 
         /// <summary>
+        /// Determines whether or not responses should be formatted with whitespace for readability.
+        /// </summary>
+        public virtual bool PrettyPrint => throw new NotImplementedException();
+
+        /// <summary>
         /// Asynchronously creates a <see cref="BigQueryClient"/>, using application default credentials if
         /// no credentials are specified.
         /// </summary>
         /// <remarks>
-        /// The credentials are scoped as necessary.
+        /// <para>
+        /// If the supplied credentials support scoping, the following scopes are specified, overwriting any
+        /// previously-specified scopes.
+        /// </para>
+        /// <list type="bullet">
+        /// <item><description>https://www.googleapis.com/auth/bigquery"</description></item>
+        /// <item><description>https://www.googleapis.com/auth/bigquery.insertdata"</description></item>
+        /// <item><description>https://www.googleapis.com/auth/devstorage.full_control"</description></item>
+        /// <item><description>https://www.googleapis.com/auth/cloud-platform"</description></item>
+        /// </list>
+        /// <para>
+        /// If you require a different set of scopes, please create and scope the credential,
+        /// then use <see cref="BigQueryClientBuilder"/>, specify the <see cref="ClientBuilderBase{TClient}.Credential"/>
+        /// and <see cref="BigQueryClientBuilder.ProjectId"/> properties, then call <see cref="ClientBuilderBase{TClient}.Build"/>
+        /// to create the client.
+        /// </para>
         /// </remarks>
         /// <param name="projectId">The ID of the project containing the BigQuery data. Must not be null.</param>
         /// <param name="credential">Optional <see cref="GoogleCredential"/>.</param>
@@ -106,7 +124,22 @@ namespace Google.Cloud.BigQuery.V2
         /// no credentials are specified.
         /// </summary>
         /// <remarks>
-        /// The credentials are scoped as necessary.
+        /// <para>
+        /// If the supplied credentials support scoping, the following scopes are specified, overwriting any
+        /// previously-specified scopes.
+        /// </para>
+        /// <list type="bullet">
+        /// <item><description>https://www.googleapis.com/auth/bigquery"</description></item>
+        /// <item><description>https://www.googleapis.com/auth/bigquery.insertdata"</description></item>
+        /// <item><description>https://www.googleapis.com/auth/devstorage.full_control"</description></item>
+        /// <item><description>https://www.googleapis.com/auth/cloud-platform"</description></item>
+        /// </list>
+        /// <para>
+        /// If you require a different set of scopes, please create and scope the credential,
+        /// then use <see cref="BigQueryClientBuilder"/>, specify the <see cref="ClientBuilderBase{TClient}.Credential"/>
+        /// and <see cref="BigQueryClientBuilder.ProjectId"/> properties, then call <see cref="ClientBuilderBase{TClient}.Build"/>
+        /// to create the client.
+        /// </para>
         /// </remarks>
         /// <param name="projectId">The ID of the project containing the BigQuery data. Must not be null.</param>
         /// <param name="credential">Optional <see cref="GoogleCredential"/>.</param>
@@ -231,6 +264,56 @@ namespace Google.Cloud.BigQuery.V2
                 ProjectId = GaxPreconditions.CheckNotNull(projectId, nameof(projectId)),
                 JobId = GaxPreconditions.CheckNotNull(jobId, nameof(jobId)),
                 Location = location
+            };
+
+        /// <summary>
+        /// Creates a <see cref="ModelReference"/> from the given dataset ID and model ID,
+        /// using this client's project ID.
+        /// </summary>
+        /// <param name="datasetId">The dataset ID. Must not be null.</param>
+        /// <param name="modelId">The model ID. Must not be null.</param>
+        /// <returns>A <see cref="ModelReference"/> representing the requested model.</returns>
+        public ModelReference GetModelReference(string datasetId, string modelId) =>
+            GetModelReference(ProjectId, datasetId, modelId);
+
+        /// <summary>
+        /// Creates a <see cref="ModelReference"/> from the given project ID, dataset ID and model ID.
+        /// </summary>
+        /// <param name="projectId">The project ID. Must not be null.</param>
+        /// <param name="datasetId">The dataset ID. Must not be null.</param>
+        /// <param name="modelId">The model ID. Must not be null.</param>
+        /// <returns>A <see cref="ModelReference"/> representing the requested model.</returns>
+        public ModelReference GetModelReference(string projectId, string datasetId, string modelId) =>
+            new ModelReference
+            {
+                ProjectId = GaxPreconditions.CheckNotNull(projectId, nameof(projectId)),
+                DatasetId = GaxPreconditions.CheckNotNull(datasetId, nameof(datasetId)),
+                ModelId = GaxPreconditions.CheckNotNull(modelId, nameof(modelId)),
+            };
+
+        /// <summary>
+        /// Creates a <see cref="RoutineReference"/> from the given dataset ID and routine ID,
+        /// using this client's project ID.
+        /// </summary>
+        /// <param name="datasetId">The dataset ID. Must not be null.</param>
+        /// <param name="routineId">The routine ID. Must not be null.</param>
+        /// <returns>A <see cref="RoutineReference"/> representing the requested routine.</returns>
+        public RoutineReference GetRoutineReference(string datasetId, string routineId) =>
+            GetRoutineReference(ProjectId, datasetId, routineId);
+
+        /// <summary>
+        /// Creates a <see cref="RoutineReference"/> from the given project ID, dataset ID and routine ID.
+        /// </summary>
+        /// <param name="projectId">The project ID. Must not be null.</param>
+        /// <param name="datasetId">The dataset ID. Must not be null.</param>
+        /// <param name="routineId">The routine ID. Must not be null.</param>
+        /// <returns>A <see cref="RoutineReference"/> representing the requested routine.</returns>
+        public RoutineReference GetRoutineReference(string projectId, string datasetId, string routineId) =>
+            new RoutineReference
+            {
+                ProjectId = GaxPreconditions.CheckNotNull(projectId, nameof(projectId)),
+                DatasetId = GaxPreconditions.CheckNotNull(datasetId, nameof(datasetId)),
+                RoutineId = GaxPreconditions.CheckNotNull(routineId, nameof(routineId)),
             };
 
         /// <summary>

@@ -38,8 +38,9 @@ namespace Google.Cloud.Spanner.Data.IntegrationTests
             _fixture = fixture;
 
         [Fact]
-        public Task RunWriteStress() =>
-            RunStress(async connectionStringBuilder =>
+        public Task RunWriteStress()
+        {
+            return RunStress(async connectionStringBuilder =>
             {
                 using (var connection = new SpannerConnection(connectionStringBuilder))
                 {
@@ -52,10 +53,14 @@ namespace Google.Cloud.Spanner.Data.IntegrationTests
                     await insertCommand.ExecuteNonQueryAsyncWithRetry();
                 }
             });
+        }
 
-        [Fact]
-        public Task RunParallelTransactionStress() =>
-            RunStress(connectionStringBuilder => RetryHelpers.ExecuteWithRetryAsync(async () =>
+        [SkippableFact]
+        public Task RunParallelTransactionStress()
+        {
+            Skip.If(_fixture.RunningOnEmulator, "Stress tests are flaky when running against the emulator");
+
+            return RunStress(connectionStringBuilder => RetryHelpers.ExecuteWithRetryAsync(async () =>
             {
                 using (var connection = new SpannerConnection(connectionStringBuilder))
                 {
@@ -86,10 +91,13 @@ namespace Google.Cloud.Spanner.Data.IntegrationTests
                     }
                 }
             }));
+        }
 
-        [Fact]
+        [SkippableFact]
         public async Task RunReadStress()
         {
+            Skip.If(_fixture.RunningOnEmulator, "Stress tests are flaky when running against the emulator");
+
             // Insert a single row first, but remember the ID so we can read it.
             int localCounter = Interlocked.Increment(ref s_rowCounter);
             string id = $"{s_guid}{localCounter}";

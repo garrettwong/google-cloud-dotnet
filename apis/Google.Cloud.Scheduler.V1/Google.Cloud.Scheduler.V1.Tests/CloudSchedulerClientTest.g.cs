@@ -1,4 +1,4 @@
-// Copyright 2019 Google LLC
+// Copyright 2020 Google LLC
 //
 // Licensed under the Apache License, Version 2.0 (the "License");
 // you may not use this file except in compliance with the License.
@@ -15,6 +15,7 @@
 // Generated code. DO NOT EDIT!
 
 using gaxgrpc = Google.Api.Gax.Grpc;
+using gagr = Google.Api.Gax.ResourceNames;
 using wkt = Google.Protobuf.WellKnownTypes;
 using gr = Google.Rpc;
 using grpccore = Grpc.Core;
@@ -34,11 +35,11 @@ namespace Google.Cloud.Scheduler.V1.Tests
             moq::Mock<CloudScheduler.CloudSchedulerClient> mockGrpcClient = new moq::Mock<CloudScheduler.CloudSchedulerClient>(moq::MockBehavior.Strict);
             GetJobRequest request = new GetJobRequest
             {
-                JobName = new JobName("[PROJECT]", "[LOCATION]", "[JOB]"),
+                JobName = JobName.FromProjectLocationJob("[PROJECT]", "[LOCATION]", "[JOB]"),
             };
             Job expectedResponse = new Job
             {
-                JobName = new JobName("[PROJECT]", "[LOCATION]", "[JOB]"),
+                JobName = JobName.FromProjectLocationJob("[PROJECT]", "[LOCATION]", "[JOB]"),
                 Description = "description2cf9da67",
                 PubsubTarget = new PubsubTarget(),
                 AppEngineHttpTarget = new AppEngineHttpTarget(),
@@ -66,11 +67,11 @@ namespace Google.Cloud.Scheduler.V1.Tests
             moq::Mock<CloudScheduler.CloudSchedulerClient> mockGrpcClient = new moq::Mock<CloudScheduler.CloudSchedulerClient>(moq::MockBehavior.Strict);
             GetJobRequest request = new GetJobRequest
             {
-                JobName = new JobName("[PROJECT]", "[LOCATION]", "[JOB]"),
+                JobName = JobName.FromProjectLocationJob("[PROJECT]", "[LOCATION]", "[JOB]"),
             };
             Job expectedResponse = new Job
             {
-                JobName = new JobName("[PROJECT]", "[LOCATION]", "[JOB]"),
+                JobName = JobName.FromProjectLocationJob("[PROJECT]", "[LOCATION]", "[JOB]"),
                 Description = "description2cf9da67",
                 PubsubTarget = new PubsubTarget(),
                 AppEngineHttpTarget = new AppEngineHttpTarget(),
@@ -100,11 +101,11 @@ namespace Google.Cloud.Scheduler.V1.Tests
             moq::Mock<CloudScheduler.CloudSchedulerClient> mockGrpcClient = new moq::Mock<CloudScheduler.CloudSchedulerClient>(moq::MockBehavior.Strict);
             GetJobRequest request = new GetJobRequest
             {
-                JobName = new JobName("[PROJECT]", "[LOCATION]", "[JOB]"),
+                JobName = JobName.FromProjectLocationJob("[PROJECT]", "[LOCATION]", "[JOB]"),
             };
             Job expectedResponse = new Job
             {
-                JobName = new JobName("[PROJECT]", "[LOCATION]", "[JOB]"),
+                JobName = JobName.FromProjectLocationJob("[PROJECT]", "[LOCATION]", "[JOB]"),
                 Description = "description2cf9da67",
                 PubsubTarget = new PubsubTarget(),
                 AppEngineHttpTarget = new AppEngineHttpTarget(),
@@ -132,11 +133,11 @@ namespace Google.Cloud.Scheduler.V1.Tests
             moq::Mock<CloudScheduler.CloudSchedulerClient> mockGrpcClient = new moq::Mock<CloudScheduler.CloudSchedulerClient>(moq::MockBehavior.Strict);
             GetJobRequest request = new GetJobRequest
             {
-                JobName = new JobName("[PROJECT]", "[LOCATION]", "[JOB]"),
+                JobName = JobName.FromProjectLocationJob("[PROJECT]", "[LOCATION]", "[JOB]"),
             };
             Job expectedResponse = new Job
             {
-                JobName = new JobName("[PROJECT]", "[LOCATION]", "[JOB]"),
+                JobName = JobName.FromProjectLocationJob("[PROJECT]", "[LOCATION]", "[JOB]"),
                 Description = "description2cf9da67",
                 PubsubTarget = new PubsubTarget(),
                 AppEngineHttpTarget = new AppEngineHttpTarget(),
@@ -161,16 +162,16 @@ namespace Google.Cloud.Scheduler.V1.Tests
         }
 
         [xunit::FactAttribute]
-        public void GetJob_ResourceNames()
+        public void GetJobResourceNames()
         {
             moq::Mock<CloudScheduler.CloudSchedulerClient> mockGrpcClient = new moq::Mock<CloudScheduler.CloudSchedulerClient>(moq::MockBehavior.Strict);
             GetJobRequest request = new GetJobRequest
             {
-                JobName = new JobName("[PROJECT]", "[LOCATION]", "[JOB]"),
+                JobName = JobName.FromProjectLocationJob("[PROJECT]", "[LOCATION]", "[JOB]"),
             };
             Job expectedResponse = new Job
             {
-                JobName = new JobName("[PROJECT]", "[LOCATION]", "[JOB]"),
+                JobName = JobName.FromProjectLocationJob("[PROJECT]", "[LOCATION]", "[JOB]"),
                 Description = "description2cf9da67",
                 PubsubTarget = new PubsubTarget(),
                 AppEngineHttpTarget = new AppEngineHttpTarget(),
@@ -193,16 +194,16 @@ namespace Google.Cloud.Scheduler.V1.Tests
         }
 
         [xunit::FactAttribute]
-        public async stt::Task GetJobAsync_ResourceNames()
+        public async stt::Task GetJobResourceNamesAsync()
         {
             moq::Mock<CloudScheduler.CloudSchedulerClient> mockGrpcClient = new moq::Mock<CloudScheduler.CloudSchedulerClient>(moq::MockBehavior.Strict);
             GetJobRequest request = new GetJobRequest
             {
-                JobName = new JobName("[PROJECT]", "[LOCATION]", "[JOB]"),
+                JobName = JobName.FromProjectLocationJob("[PROJECT]", "[LOCATION]", "[JOB]"),
             };
             Job expectedResponse = new Job
             {
-                JobName = new JobName("[PROJECT]", "[LOCATION]", "[JOB]"),
+                JobName = JobName.FromProjectLocationJob("[PROJECT]", "[LOCATION]", "[JOB]"),
                 Description = "description2cf9da67",
                 PubsubTarget = new PubsubTarget(),
                 AppEngineHttpTarget = new AppEngineHttpTarget(),
@@ -232,12 +233,12 @@ namespace Google.Cloud.Scheduler.V1.Tests
             moq::Mock<CloudScheduler.CloudSchedulerClient> mockGrpcClient = new moq::Mock<CloudScheduler.CloudSchedulerClient>(moq::MockBehavior.Strict);
             CreateJobRequest request = new CreateJobRequest
             {
-                ParentAsLocationName = new LocationName("[PROJECT]", "[LOCATION]"),
+                ParentAsLocationName = gagr::LocationName.FromProjectLocation("[PROJECT]", "[LOCATION]"),
                 Job = new Job(),
             };
             Job expectedResponse = new Job
             {
-                JobName = new JobName("[PROJECT]", "[LOCATION]", "[JOB]"),
+                JobName = JobName.FromProjectLocationJob("[PROJECT]", "[LOCATION]", "[JOB]"),
                 Description = "description2cf9da67",
                 PubsubTarget = new PubsubTarget(),
                 AppEngineHttpTarget = new AppEngineHttpTarget(),
@@ -265,12 +266,12 @@ namespace Google.Cloud.Scheduler.V1.Tests
             moq::Mock<CloudScheduler.CloudSchedulerClient> mockGrpcClient = new moq::Mock<CloudScheduler.CloudSchedulerClient>(moq::MockBehavior.Strict);
             CreateJobRequest request = new CreateJobRequest
             {
-                ParentAsLocationName = new LocationName("[PROJECT]", "[LOCATION]"),
+                ParentAsLocationName = gagr::LocationName.FromProjectLocation("[PROJECT]", "[LOCATION]"),
                 Job = new Job(),
             };
             Job expectedResponse = new Job
             {
-                JobName = new JobName("[PROJECT]", "[LOCATION]", "[JOB]"),
+                JobName = JobName.FromProjectLocationJob("[PROJECT]", "[LOCATION]", "[JOB]"),
                 Description = "description2cf9da67",
                 PubsubTarget = new PubsubTarget(),
                 AppEngineHttpTarget = new AppEngineHttpTarget(),
@@ -300,12 +301,12 @@ namespace Google.Cloud.Scheduler.V1.Tests
             moq::Mock<CloudScheduler.CloudSchedulerClient> mockGrpcClient = new moq::Mock<CloudScheduler.CloudSchedulerClient>(moq::MockBehavior.Strict);
             CreateJobRequest request = new CreateJobRequest
             {
-                ParentAsLocationName = new LocationName("[PROJECT]", "[LOCATION]"),
+                ParentAsLocationName = gagr::LocationName.FromProjectLocation("[PROJECT]", "[LOCATION]"),
                 Job = new Job(),
             };
             Job expectedResponse = new Job
             {
-                JobName = new JobName("[PROJECT]", "[LOCATION]", "[JOB]"),
+                JobName = JobName.FromProjectLocationJob("[PROJECT]", "[LOCATION]", "[JOB]"),
                 Description = "description2cf9da67",
                 PubsubTarget = new PubsubTarget(),
                 AppEngineHttpTarget = new AppEngineHttpTarget(),
@@ -333,12 +334,12 @@ namespace Google.Cloud.Scheduler.V1.Tests
             moq::Mock<CloudScheduler.CloudSchedulerClient> mockGrpcClient = new moq::Mock<CloudScheduler.CloudSchedulerClient>(moq::MockBehavior.Strict);
             CreateJobRequest request = new CreateJobRequest
             {
-                ParentAsLocationName = new LocationName("[PROJECT]", "[LOCATION]"),
+                ParentAsLocationName = gagr::LocationName.FromProjectLocation("[PROJECT]", "[LOCATION]"),
                 Job = new Job(),
             };
             Job expectedResponse = new Job
             {
-                JobName = new JobName("[PROJECT]", "[LOCATION]", "[JOB]"),
+                JobName = JobName.FromProjectLocationJob("[PROJECT]", "[LOCATION]", "[JOB]"),
                 Description = "description2cf9da67",
                 PubsubTarget = new PubsubTarget(),
                 AppEngineHttpTarget = new AppEngineHttpTarget(),
@@ -363,17 +364,17 @@ namespace Google.Cloud.Scheduler.V1.Tests
         }
 
         [xunit::FactAttribute]
-        public void CreateJob_ResourceNames()
+        public void CreateJobResourceNames()
         {
             moq::Mock<CloudScheduler.CloudSchedulerClient> mockGrpcClient = new moq::Mock<CloudScheduler.CloudSchedulerClient>(moq::MockBehavior.Strict);
             CreateJobRequest request = new CreateJobRequest
             {
-                ParentAsLocationName = new LocationName("[PROJECT]", "[LOCATION]"),
+                ParentAsLocationName = gagr::LocationName.FromProjectLocation("[PROJECT]", "[LOCATION]"),
                 Job = new Job(),
             };
             Job expectedResponse = new Job
             {
-                JobName = new JobName("[PROJECT]", "[LOCATION]", "[JOB]"),
+                JobName = JobName.FromProjectLocationJob("[PROJECT]", "[LOCATION]", "[JOB]"),
                 Description = "description2cf9da67",
                 PubsubTarget = new PubsubTarget(),
                 AppEngineHttpTarget = new AppEngineHttpTarget(),
@@ -396,17 +397,17 @@ namespace Google.Cloud.Scheduler.V1.Tests
         }
 
         [xunit::FactAttribute]
-        public async stt::Task CreateJobAsync_ResourceNames()
+        public async stt::Task CreateJobResourceNamesAsync()
         {
             moq::Mock<CloudScheduler.CloudSchedulerClient> mockGrpcClient = new moq::Mock<CloudScheduler.CloudSchedulerClient>(moq::MockBehavior.Strict);
             CreateJobRequest request = new CreateJobRequest
             {
-                ParentAsLocationName = new LocationName("[PROJECT]", "[LOCATION]"),
+                ParentAsLocationName = gagr::LocationName.FromProjectLocation("[PROJECT]", "[LOCATION]"),
                 Job = new Job(),
             };
             Job expectedResponse = new Job
             {
-                JobName = new JobName("[PROJECT]", "[LOCATION]", "[JOB]"),
+                JobName = JobName.FromProjectLocationJob("[PROJECT]", "[LOCATION]", "[JOB]"),
                 Description = "description2cf9da67",
                 PubsubTarget = new PubsubTarget(),
                 AppEngineHttpTarget = new AppEngineHttpTarget(),
@@ -441,7 +442,7 @@ namespace Google.Cloud.Scheduler.V1.Tests
             };
             Job expectedResponse = new Job
             {
-                JobName = new JobName("[PROJECT]", "[LOCATION]", "[JOB]"),
+                JobName = JobName.FromProjectLocationJob("[PROJECT]", "[LOCATION]", "[JOB]"),
                 Description = "description2cf9da67",
                 PubsubTarget = new PubsubTarget(),
                 AppEngineHttpTarget = new AppEngineHttpTarget(),
@@ -474,7 +475,7 @@ namespace Google.Cloud.Scheduler.V1.Tests
             };
             Job expectedResponse = new Job
             {
-                JobName = new JobName("[PROJECT]", "[LOCATION]", "[JOB]"),
+                JobName = JobName.FromProjectLocationJob("[PROJECT]", "[LOCATION]", "[JOB]"),
                 Description = "description2cf9da67",
                 PubsubTarget = new PubsubTarget(),
                 AppEngineHttpTarget = new AppEngineHttpTarget(),
@@ -509,7 +510,7 @@ namespace Google.Cloud.Scheduler.V1.Tests
             };
             Job expectedResponse = new Job
             {
-                JobName = new JobName("[PROJECT]", "[LOCATION]", "[JOB]"),
+                JobName = JobName.FromProjectLocationJob("[PROJECT]", "[LOCATION]", "[JOB]"),
                 Description = "description2cf9da67",
                 PubsubTarget = new PubsubTarget(),
                 AppEngineHttpTarget = new AppEngineHttpTarget(),
@@ -542,7 +543,7 @@ namespace Google.Cloud.Scheduler.V1.Tests
             };
             Job expectedResponse = new Job
             {
-                JobName = new JobName("[PROJECT]", "[LOCATION]", "[JOB]"),
+                JobName = JobName.FromProjectLocationJob("[PROJECT]", "[LOCATION]", "[JOB]"),
                 Description = "description2cf9da67",
                 PubsubTarget = new PubsubTarget(),
                 AppEngineHttpTarget = new AppEngineHttpTarget(),
@@ -572,7 +573,7 @@ namespace Google.Cloud.Scheduler.V1.Tests
             moq::Mock<CloudScheduler.CloudSchedulerClient> mockGrpcClient = new moq::Mock<CloudScheduler.CloudSchedulerClient>(moq::MockBehavior.Strict);
             DeleteJobRequest request = new DeleteJobRequest
             {
-                JobName = new JobName("[PROJECT]", "[LOCATION]", "[JOB]"),
+                JobName = JobName.FromProjectLocationJob("[PROJECT]", "[LOCATION]", "[JOB]"),
             };
             wkt::Empty expectedResponse = new wkt::Empty { };
             mockGrpcClient.Setup(x => x.DeleteJob(request, moq::It.IsAny<grpccore::CallOptions>())).Returns(expectedResponse);
@@ -587,7 +588,7 @@ namespace Google.Cloud.Scheduler.V1.Tests
             moq::Mock<CloudScheduler.CloudSchedulerClient> mockGrpcClient = new moq::Mock<CloudScheduler.CloudSchedulerClient>(moq::MockBehavior.Strict);
             DeleteJobRequest request = new DeleteJobRequest
             {
-                JobName = new JobName("[PROJECT]", "[LOCATION]", "[JOB]"),
+                JobName = JobName.FromProjectLocationJob("[PROJECT]", "[LOCATION]", "[JOB]"),
             };
             wkt::Empty expectedResponse = new wkt::Empty { };
             mockGrpcClient.Setup(x => x.DeleteJobAsync(request, moq::It.IsAny<grpccore::CallOptions>())).Returns(new grpccore::AsyncUnaryCall<wkt::Empty>(stt::Task.FromResult(expectedResponse), null, null, null, null));
@@ -603,7 +604,7 @@ namespace Google.Cloud.Scheduler.V1.Tests
             moq::Mock<CloudScheduler.CloudSchedulerClient> mockGrpcClient = new moq::Mock<CloudScheduler.CloudSchedulerClient>(moq::MockBehavior.Strict);
             DeleteJobRequest request = new DeleteJobRequest
             {
-                JobName = new JobName("[PROJECT]", "[LOCATION]", "[JOB]"),
+                JobName = JobName.FromProjectLocationJob("[PROJECT]", "[LOCATION]", "[JOB]"),
             };
             wkt::Empty expectedResponse = new wkt::Empty { };
             mockGrpcClient.Setup(x => x.DeleteJob(request, moq::It.IsAny<grpccore::CallOptions>())).Returns(expectedResponse);
@@ -618,7 +619,7 @@ namespace Google.Cloud.Scheduler.V1.Tests
             moq::Mock<CloudScheduler.CloudSchedulerClient> mockGrpcClient = new moq::Mock<CloudScheduler.CloudSchedulerClient>(moq::MockBehavior.Strict);
             DeleteJobRequest request = new DeleteJobRequest
             {
-                JobName = new JobName("[PROJECT]", "[LOCATION]", "[JOB]"),
+                JobName = JobName.FromProjectLocationJob("[PROJECT]", "[LOCATION]", "[JOB]"),
             };
             wkt::Empty expectedResponse = new wkt::Empty { };
             mockGrpcClient.Setup(x => x.DeleteJobAsync(request, moq::It.IsAny<grpccore::CallOptions>())).Returns(new grpccore::AsyncUnaryCall<wkt::Empty>(stt::Task.FromResult(expectedResponse), null, null, null, null));
@@ -629,12 +630,12 @@ namespace Google.Cloud.Scheduler.V1.Tests
         }
 
         [xunit::FactAttribute]
-        public void DeleteJob_ResourceNames()
+        public void DeleteJobResourceNames()
         {
             moq::Mock<CloudScheduler.CloudSchedulerClient> mockGrpcClient = new moq::Mock<CloudScheduler.CloudSchedulerClient>(moq::MockBehavior.Strict);
             DeleteJobRequest request = new DeleteJobRequest
             {
-                JobName = new JobName("[PROJECT]", "[LOCATION]", "[JOB]"),
+                JobName = JobName.FromProjectLocationJob("[PROJECT]", "[LOCATION]", "[JOB]"),
             };
             wkt::Empty expectedResponse = new wkt::Empty { };
             mockGrpcClient.Setup(x => x.DeleteJob(request, moq::It.IsAny<grpccore::CallOptions>())).Returns(expectedResponse);
@@ -644,12 +645,12 @@ namespace Google.Cloud.Scheduler.V1.Tests
         }
 
         [xunit::FactAttribute]
-        public async stt::Task DeleteJobAsync_ResourceNames()
+        public async stt::Task DeleteJobResourceNamesAsync()
         {
             moq::Mock<CloudScheduler.CloudSchedulerClient> mockGrpcClient = new moq::Mock<CloudScheduler.CloudSchedulerClient>(moq::MockBehavior.Strict);
             DeleteJobRequest request = new DeleteJobRequest
             {
-                JobName = new JobName("[PROJECT]", "[LOCATION]", "[JOB]"),
+                JobName = JobName.FromProjectLocationJob("[PROJECT]", "[LOCATION]", "[JOB]"),
             };
             wkt::Empty expectedResponse = new wkt::Empty { };
             mockGrpcClient.Setup(x => x.DeleteJobAsync(request, moq::It.IsAny<grpccore::CallOptions>())).Returns(new grpccore::AsyncUnaryCall<wkt::Empty>(stt::Task.FromResult(expectedResponse), null, null, null, null));
@@ -665,11 +666,11 @@ namespace Google.Cloud.Scheduler.V1.Tests
             moq::Mock<CloudScheduler.CloudSchedulerClient> mockGrpcClient = new moq::Mock<CloudScheduler.CloudSchedulerClient>(moq::MockBehavior.Strict);
             PauseJobRequest request = new PauseJobRequest
             {
-                JobName = new JobName("[PROJECT]", "[LOCATION]", "[JOB]"),
+                JobName = JobName.FromProjectLocationJob("[PROJECT]", "[LOCATION]", "[JOB]"),
             };
             Job expectedResponse = new Job
             {
-                JobName = new JobName("[PROJECT]", "[LOCATION]", "[JOB]"),
+                JobName = JobName.FromProjectLocationJob("[PROJECT]", "[LOCATION]", "[JOB]"),
                 Description = "description2cf9da67",
                 PubsubTarget = new PubsubTarget(),
                 AppEngineHttpTarget = new AppEngineHttpTarget(),
@@ -697,11 +698,11 @@ namespace Google.Cloud.Scheduler.V1.Tests
             moq::Mock<CloudScheduler.CloudSchedulerClient> mockGrpcClient = new moq::Mock<CloudScheduler.CloudSchedulerClient>(moq::MockBehavior.Strict);
             PauseJobRequest request = new PauseJobRequest
             {
-                JobName = new JobName("[PROJECT]", "[LOCATION]", "[JOB]"),
+                JobName = JobName.FromProjectLocationJob("[PROJECT]", "[LOCATION]", "[JOB]"),
             };
             Job expectedResponse = new Job
             {
-                JobName = new JobName("[PROJECT]", "[LOCATION]", "[JOB]"),
+                JobName = JobName.FromProjectLocationJob("[PROJECT]", "[LOCATION]", "[JOB]"),
                 Description = "description2cf9da67",
                 PubsubTarget = new PubsubTarget(),
                 AppEngineHttpTarget = new AppEngineHttpTarget(),
@@ -731,11 +732,11 @@ namespace Google.Cloud.Scheduler.V1.Tests
             moq::Mock<CloudScheduler.CloudSchedulerClient> mockGrpcClient = new moq::Mock<CloudScheduler.CloudSchedulerClient>(moq::MockBehavior.Strict);
             PauseJobRequest request = new PauseJobRequest
             {
-                JobName = new JobName("[PROJECT]", "[LOCATION]", "[JOB]"),
+                JobName = JobName.FromProjectLocationJob("[PROJECT]", "[LOCATION]", "[JOB]"),
             };
             Job expectedResponse = new Job
             {
-                JobName = new JobName("[PROJECT]", "[LOCATION]", "[JOB]"),
+                JobName = JobName.FromProjectLocationJob("[PROJECT]", "[LOCATION]", "[JOB]"),
                 Description = "description2cf9da67",
                 PubsubTarget = new PubsubTarget(),
                 AppEngineHttpTarget = new AppEngineHttpTarget(),
@@ -763,11 +764,11 @@ namespace Google.Cloud.Scheduler.V1.Tests
             moq::Mock<CloudScheduler.CloudSchedulerClient> mockGrpcClient = new moq::Mock<CloudScheduler.CloudSchedulerClient>(moq::MockBehavior.Strict);
             PauseJobRequest request = new PauseJobRequest
             {
-                JobName = new JobName("[PROJECT]", "[LOCATION]", "[JOB]"),
+                JobName = JobName.FromProjectLocationJob("[PROJECT]", "[LOCATION]", "[JOB]"),
             };
             Job expectedResponse = new Job
             {
-                JobName = new JobName("[PROJECT]", "[LOCATION]", "[JOB]"),
+                JobName = JobName.FromProjectLocationJob("[PROJECT]", "[LOCATION]", "[JOB]"),
                 Description = "description2cf9da67",
                 PubsubTarget = new PubsubTarget(),
                 AppEngineHttpTarget = new AppEngineHttpTarget(),
@@ -792,16 +793,16 @@ namespace Google.Cloud.Scheduler.V1.Tests
         }
 
         [xunit::FactAttribute]
-        public void PauseJob_ResourceNames()
+        public void PauseJobResourceNames()
         {
             moq::Mock<CloudScheduler.CloudSchedulerClient> mockGrpcClient = new moq::Mock<CloudScheduler.CloudSchedulerClient>(moq::MockBehavior.Strict);
             PauseJobRequest request = new PauseJobRequest
             {
-                JobName = new JobName("[PROJECT]", "[LOCATION]", "[JOB]"),
+                JobName = JobName.FromProjectLocationJob("[PROJECT]", "[LOCATION]", "[JOB]"),
             };
             Job expectedResponse = new Job
             {
-                JobName = new JobName("[PROJECT]", "[LOCATION]", "[JOB]"),
+                JobName = JobName.FromProjectLocationJob("[PROJECT]", "[LOCATION]", "[JOB]"),
                 Description = "description2cf9da67",
                 PubsubTarget = new PubsubTarget(),
                 AppEngineHttpTarget = new AppEngineHttpTarget(),
@@ -824,16 +825,16 @@ namespace Google.Cloud.Scheduler.V1.Tests
         }
 
         [xunit::FactAttribute]
-        public async stt::Task PauseJobAsync_ResourceNames()
+        public async stt::Task PauseJobResourceNamesAsync()
         {
             moq::Mock<CloudScheduler.CloudSchedulerClient> mockGrpcClient = new moq::Mock<CloudScheduler.CloudSchedulerClient>(moq::MockBehavior.Strict);
             PauseJobRequest request = new PauseJobRequest
             {
-                JobName = new JobName("[PROJECT]", "[LOCATION]", "[JOB]"),
+                JobName = JobName.FromProjectLocationJob("[PROJECT]", "[LOCATION]", "[JOB]"),
             };
             Job expectedResponse = new Job
             {
-                JobName = new JobName("[PROJECT]", "[LOCATION]", "[JOB]"),
+                JobName = JobName.FromProjectLocationJob("[PROJECT]", "[LOCATION]", "[JOB]"),
                 Description = "description2cf9da67",
                 PubsubTarget = new PubsubTarget(),
                 AppEngineHttpTarget = new AppEngineHttpTarget(),
@@ -863,11 +864,11 @@ namespace Google.Cloud.Scheduler.V1.Tests
             moq::Mock<CloudScheduler.CloudSchedulerClient> mockGrpcClient = new moq::Mock<CloudScheduler.CloudSchedulerClient>(moq::MockBehavior.Strict);
             ResumeJobRequest request = new ResumeJobRequest
             {
-                JobName = new JobName("[PROJECT]", "[LOCATION]", "[JOB]"),
+                JobName = JobName.FromProjectLocationJob("[PROJECT]", "[LOCATION]", "[JOB]"),
             };
             Job expectedResponse = new Job
             {
-                JobName = new JobName("[PROJECT]", "[LOCATION]", "[JOB]"),
+                JobName = JobName.FromProjectLocationJob("[PROJECT]", "[LOCATION]", "[JOB]"),
                 Description = "description2cf9da67",
                 PubsubTarget = new PubsubTarget(),
                 AppEngineHttpTarget = new AppEngineHttpTarget(),
@@ -895,11 +896,11 @@ namespace Google.Cloud.Scheduler.V1.Tests
             moq::Mock<CloudScheduler.CloudSchedulerClient> mockGrpcClient = new moq::Mock<CloudScheduler.CloudSchedulerClient>(moq::MockBehavior.Strict);
             ResumeJobRequest request = new ResumeJobRequest
             {
-                JobName = new JobName("[PROJECT]", "[LOCATION]", "[JOB]"),
+                JobName = JobName.FromProjectLocationJob("[PROJECT]", "[LOCATION]", "[JOB]"),
             };
             Job expectedResponse = new Job
             {
-                JobName = new JobName("[PROJECT]", "[LOCATION]", "[JOB]"),
+                JobName = JobName.FromProjectLocationJob("[PROJECT]", "[LOCATION]", "[JOB]"),
                 Description = "description2cf9da67",
                 PubsubTarget = new PubsubTarget(),
                 AppEngineHttpTarget = new AppEngineHttpTarget(),
@@ -929,11 +930,11 @@ namespace Google.Cloud.Scheduler.V1.Tests
             moq::Mock<CloudScheduler.CloudSchedulerClient> mockGrpcClient = new moq::Mock<CloudScheduler.CloudSchedulerClient>(moq::MockBehavior.Strict);
             ResumeJobRequest request = new ResumeJobRequest
             {
-                JobName = new JobName("[PROJECT]", "[LOCATION]", "[JOB]"),
+                JobName = JobName.FromProjectLocationJob("[PROJECT]", "[LOCATION]", "[JOB]"),
             };
             Job expectedResponse = new Job
             {
-                JobName = new JobName("[PROJECT]", "[LOCATION]", "[JOB]"),
+                JobName = JobName.FromProjectLocationJob("[PROJECT]", "[LOCATION]", "[JOB]"),
                 Description = "description2cf9da67",
                 PubsubTarget = new PubsubTarget(),
                 AppEngineHttpTarget = new AppEngineHttpTarget(),
@@ -961,11 +962,11 @@ namespace Google.Cloud.Scheduler.V1.Tests
             moq::Mock<CloudScheduler.CloudSchedulerClient> mockGrpcClient = new moq::Mock<CloudScheduler.CloudSchedulerClient>(moq::MockBehavior.Strict);
             ResumeJobRequest request = new ResumeJobRequest
             {
-                JobName = new JobName("[PROJECT]", "[LOCATION]", "[JOB]"),
+                JobName = JobName.FromProjectLocationJob("[PROJECT]", "[LOCATION]", "[JOB]"),
             };
             Job expectedResponse = new Job
             {
-                JobName = new JobName("[PROJECT]", "[LOCATION]", "[JOB]"),
+                JobName = JobName.FromProjectLocationJob("[PROJECT]", "[LOCATION]", "[JOB]"),
                 Description = "description2cf9da67",
                 PubsubTarget = new PubsubTarget(),
                 AppEngineHttpTarget = new AppEngineHttpTarget(),
@@ -990,16 +991,16 @@ namespace Google.Cloud.Scheduler.V1.Tests
         }
 
         [xunit::FactAttribute]
-        public void ResumeJob_ResourceNames()
+        public void ResumeJobResourceNames()
         {
             moq::Mock<CloudScheduler.CloudSchedulerClient> mockGrpcClient = new moq::Mock<CloudScheduler.CloudSchedulerClient>(moq::MockBehavior.Strict);
             ResumeJobRequest request = new ResumeJobRequest
             {
-                JobName = new JobName("[PROJECT]", "[LOCATION]", "[JOB]"),
+                JobName = JobName.FromProjectLocationJob("[PROJECT]", "[LOCATION]", "[JOB]"),
             };
             Job expectedResponse = new Job
             {
-                JobName = new JobName("[PROJECT]", "[LOCATION]", "[JOB]"),
+                JobName = JobName.FromProjectLocationJob("[PROJECT]", "[LOCATION]", "[JOB]"),
                 Description = "description2cf9da67",
                 PubsubTarget = new PubsubTarget(),
                 AppEngineHttpTarget = new AppEngineHttpTarget(),
@@ -1022,16 +1023,16 @@ namespace Google.Cloud.Scheduler.V1.Tests
         }
 
         [xunit::FactAttribute]
-        public async stt::Task ResumeJobAsync_ResourceNames()
+        public async stt::Task ResumeJobResourceNamesAsync()
         {
             moq::Mock<CloudScheduler.CloudSchedulerClient> mockGrpcClient = new moq::Mock<CloudScheduler.CloudSchedulerClient>(moq::MockBehavior.Strict);
             ResumeJobRequest request = new ResumeJobRequest
             {
-                JobName = new JobName("[PROJECT]", "[LOCATION]", "[JOB]"),
+                JobName = JobName.FromProjectLocationJob("[PROJECT]", "[LOCATION]", "[JOB]"),
             };
             Job expectedResponse = new Job
             {
-                JobName = new JobName("[PROJECT]", "[LOCATION]", "[JOB]"),
+                JobName = JobName.FromProjectLocationJob("[PROJECT]", "[LOCATION]", "[JOB]"),
                 Description = "description2cf9da67",
                 PubsubTarget = new PubsubTarget(),
                 AppEngineHttpTarget = new AppEngineHttpTarget(),
@@ -1061,11 +1062,11 @@ namespace Google.Cloud.Scheduler.V1.Tests
             moq::Mock<CloudScheduler.CloudSchedulerClient> mockGrpcClient = new moq::Mock<CloudScheduler.CloudSchedulerClient>(moq::MockBehavior.Strict);
             RunJobRequest request = new RunJobRequest
             {
-                JobName = new JobName("[PROJECT]", "[LOCATION]", "[JOB]"),
+                JobName = JobName.FromProjectLocationJob("[PROJECT]", "[LOCATION]", "[JOB]"),
             };
             Job expectedResponse = new Job
             {
-                JobName = new JobName("[PROJECT]", "[LOCATION]", "[JOB]"),
+                JobName = JobName.FromProjectLocationJob("[PROJECT]", "[LOCATION]", "[JOB]"),
                 Description = "description2cf9da67",
                 PubsubTarget = new PubsubTarget(),
                 AppEngineHttpTarget = new AppEngineHttpTarget(),
@@ -1093,11 +1094,11 @@ namespace Google.Cloud.Scheduler.V1.Tests
             moq::Mock<CloudScheduler.CloudSchedulerClient> mockGrpcClient = new moq::Mock<CloudScheduler.CloudSchedulerClient>(moq::MockBehavior.Strict);
             RunJobRequest request = new RunJobRequest
             {
-                JobName = new JobName("[PROJECT]", "[LOCATION]", "[JOB]"),
+                JobName = JobName.FromProjectLocationJob("[PROJECT]", "[LOCATION]", "[JOB]"),
             };
             Job expectedResponse = new Job
             {
-                JobName = new JobName("[PROJECT]", "[LOCATION]", "[JOB]"),
+                JobName = JobName.FromProjectLocationJob("[PROJECT]", "[LOCATION]", "[JOB]"),
                 Description = "description2cf9da67",
                 PubsubTarget = new PubsubTarget(),
                 AppEngineHttpTarget = new AppEngineHttpTarget(),
@@ -1127,11 +1128,11 @@ namespace Google.Cloud.Scheduler.V1.Tests
             moq::Mock<CloudScheduler.CloudSchedulerClient> mockGrpcClient = new moq::Mock<CloudScheduler.CloudSchedulerClient>(moq::MockBehavior.Strict);
             RunJobRequest request = new RunJobRequest
             {
-                JobName = new JobName("[PROJECT]", "[LOCATION]", "[JOB]"),
+                JobName = JobName.FromProjectLocationJob("[PROJECT]", "[LOCATION]", "[JOB]"),
             };
             Job expectedResponse = new Job
             {
-                JobName = new JobName("[PROJECT]", "[LOCATION]", "[JOB]"),
+                JobName = JobName.FromProjectLocationJob("[PROJECT]", "[LOCATION]", "[JOB]"),
                 Description = "description2cf9da67",
                 PubsubTarget = new PubsubTarget(),
                 AppEngineHttpTarget = new AppEngineHttpTarget(),
@@ -1159,11 +1160,11 @@ namespace Google.Cloud.Scheduler.V1.Tests
             moq::Mock<CloudScheduler.CloudSchedulerClient> mockGrpcClient = new moq::Mock<CloudScheduler.CloudSchedulerClient>(moq::MockBehavior.Strict);
             RunJobRequest request = new RunJobRequest
             {
-                JobName = new JobName("[PROJECT]", "[LOCATION]", "[JOB]"),
+                JobName = JobName.FromProjectLocationJob("[PROJECT]", "[LOCATION]", "[JOB]"),
             };
             Job expectedResponse = new Job
             {
-                JobName = new JobName("[PROJECT]", "[LOCATION]", "[JOB]"),
+                JobName = JobName.FromProjectLocationJob("[PROJECT]", "[LOCATION]", "[JOB]"),
                 Description = "description2cf9da67",
                 PubsubTarget = new PubsubTarget(),
                 AppEngineHttpTarget = new AppEngineHttpTarget(),
@@ -1188,16 +1189,16 @@ namespace Google.Cloud.Scheduler.V1.Tests
         }
 
         [xunit::FactAttribute]
-        public void RunJob_ResourceNames()
+        public void RunJobResourceNames()
         {
             moq::Mock<CloudScheduler.CloudSchedulerClient> mockGrpcClient = new moq::Mock<CloudScheduler.CloudSchedulerClient>(moq::MockBehavior.Strict);
             RunJobRequest request = new RunJobRequest
             {
-                JobName = new JobName("[PROJECT]", "[LOCATION]", "[JOB]"),
+                JobName = JobName.FromProjectLocationJob("[PROJECT]", "[LOCATION]", "[JOB]"),
             };
             Job expectedResponse = new Job
             {
-                JobName = new JobName("[PROJECT]", "[LOCATION]", "[JOB]"),
+                JobName = JobName.FromProjectLocationJob("[PROJECT]", "[LOCATION]", "[JOB]"),
                 Description = "description2cf9da67",
                 PubsubTarget = new PubsubTarget(),
                 AppEngineHttpTarget = new AppEngineHttpTarget(),
@@ -1220,16 +1221,16 @@ namespace Google.Cloud.Scheduler.V1.Tests
         }
 
         [xunit::FactAttribute]
-        public async stt::Task RunJobAsync_ResourceNames()
+        public async stt::Task RunJobResourceNamesAsync()
         {
             moq::Mock<CloudScheduler.CloudSchedulerClient> mockGrpcClient = new moq::Mock<CloudScheduler.CloudSchedulerClient>(moq::MockBehavior.Strict);
             RunJobRequest request = new RunJobRequest
             {
-                JobName = new JobName("[PROJECT]", "[LOCATION]", "[JOB]"),
+                JobName = JobName.FromProjectLocationJob("[PROJECT]", "[LOCATION]", "[JOB]"),
             };
             Job expectedResponse = new Job
             {
-                JobName = new JobName("[PROJECT]", "[LOCATION]", "[JOB]"),
+                JobName = JobName.FromProjectLocationJob("[PROJECT]", "[LOCATION]", "[JOB]"),
                 Description = "description2cf9da67",
                 PubsubTarget = new PubsubTarget(),
                 AppEngineHttpTarget = new AppEngineHttpTarget(),

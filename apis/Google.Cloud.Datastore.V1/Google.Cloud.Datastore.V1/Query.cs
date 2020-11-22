@@ -82,25 +82,26 @@ namespace Google.Cloud.Datastore.V1 {
             "c1R5cGUSIQodTU9SRV9SRVNVTFRTX1RZUEVfVU5TUEVDSUZJRUQQABIQCgxO",
             "T1RfRklOSVNIRUQQARIcChhNT1JFX1JFU1VMVFNfQUZURVJfTElNSVQQAhId",
             "ChlNT1JFX1JFU1VMVFNfQUZURVJfQ1VSU09SEAQSEwoPTk9fTU9SRV9SRVNV",
-            "TFRTEANCnQEKF2NvbS5nb29nbGUuZGF0YXN0b3JlLnYxQgpRdWVyeVByb3Rv",
+            "TFRTEANCvAEKF2NvbS5nb29nbGUuZGF0YXN0b3JlLnYxQgpRdWVyeVByb3Rv",
             "UAFaPGdvb2dsZS5nb2xhbmcub3JnL2dlbnByb3RvL2dvb2dsZWFwaXMvZGF0",
             "YXN0b3JlL3YxO2RhdGFzdG9yZaoCGUdvb2dsZS5DbG91ZC5EYXRhc3RvcmUu",
-            "VjHKAhlHb29nbGVcQ2xvdWRcRGF0YXN0b3JlXFYxYgZwcm90bzM="));
+            "VjHKAhlHb29nbGVcQ2xvdWRcRGF0YXN0b3JlXFYx6gIcR29vZ2xlOjpDbG91",
+            "ZDo6RGF0YXN0b3JlOjpWMWIGcHJvdG8z"));
       descriptor = pbr::FileDescriptor.FromGeneratedCode(descriptorData,
           new pbr::FileDescriptor[] { global::Google.Api.AnnotationsReflection.Descriptor, global::Google.Cloud.Datastore.V1.EntityReflection.Descriptor, global::Google.Protobuf.WellKnownTypes.WrappersReflection.Descriptor, global::Google.Type.LatlngReflection.Descriptor, },
-          new pbr::GeneratedClrTypeInfo(null, new pbr::GeneratedClrTypeInfo[] {
-            new pbr::GeneratedClrTypeInfo(typeof(global::Google.Cloud.Datastore.V1.EntityResult), global::Google.Cloud.Datastore.V1.EntityResult.Parser, new[]{ "Entity", "Version", "Cursor" }, null, new[]{ typeof(global::Google.Cloud.Datastore.V1.EntityResult.Types.ResultType) }, null),
-            new pbr::GeneratedClrTypeInfo(typeof(global::Google.Cloud.Datastore.V1.Query), global::Google.Cloud.Datastore.V1.Query.Parser, new[]{ "Projection", "Kind", "Filter", "Order", "DistinctOn", "StartCursor", "EndCursor", "Offset", "Limit" }, null, null, null),
-            new pbr::GeneratedClrTypeInfo(typeof(global::Google.Cloud.Datastore.V1.KindExpression), global::Google.Cloud.Datastore.V1.KindExpression.Parser, new[]{ "Name" }, null, null, null),
-            new pbr::GeneratedClrTypeInfo(typeof(global::Google.Cloud.Datastore.V1.PropertyReference), global::Google.Cloud.Datastore.V1.PropertyReference.Parser, new[]{ "Name" }, null, null, null),
-            new pbr::GeneratedClrTypeInfo(typeof(global::Google.Cloud.Datastore.V1.Projection), global::Google.Cloud.Datastore.V1.Projection.Parser, new[]{ "Property" }, null, null, null),
-            new pbr::GeneratedClrTypeInfo(typeof(global::Google.Cloud.Datastore.V1.PropertyOrder), global::Google.Cloud.Datastore.V1.PropertyOrder.Parser, new[]{ "Property", "Direction" }, null, new[]{ typeof(global::Google.Cloud.Datastore.V1.PropertyOrder.Types.Direction) }, null),
-            new pbr::GeneratedClrTypeInfo(typeof(global::Google.Cloud.Datastore.V1.Filter), global::Google.Cloud.Datastore.V1.Filter.Parser, new[]{ "CompositeFilter", "PropertyFilter" }, new[]{ "FilterType" }, null, null),
-            new pbr::GeneratedClrTypeInfo(typeof(global::Google.Cloud.Datastore.V1.CompositeFilter), global::Google.Cloud.Datastore.V1.CompositeFilter.Parser, new[]{ "Op", "Filters" }, null, new[]{ typeof(global::Google.Cloud.Datastore.V1.CompositeFilter.Types.Operator) }, null),
-            new pbr::GeneratedClrTypeInfo(typeof(global::Google.Cloud.Datastore.V1.PropertyFilter), global::Google.Cloud.Datastore.V1.PropertyFilter.Parser, new[]{ "Property", "Op", "Value" }, null, new[]{ typeof(global::Google.Cloud.Datastore.V1.PropertyFilter.Types.Operator) }, null),
-            new pbr::GeneratedClrTypeInfo(typeof(global::Google.Cloud.Datastore.V1.GqlQuery), global::Google.Cloud.Datastore.V1.GqlQuery.Parser, new[]{ "QueryString", "AllowLiterals", "NamedBindings", "PositionalBindings" }, null, null, new pbr::GeneratedClrTypeInfo[] { null, }),
-            new pbr::GeneratedClrTypeInfo(typeof(global::Google.Cloud.Datastore.V1.GqlQueryParameter), global::Google.Cloud.Datastore.V1.GqlQueryParameter.Parser, new[]{ "Value", "Cursor" }, new[]{ "ParameterType" }, null, null),
-            new pbr::GeneratedClrTypeInfo(typeof(global::Google.Cloud.Datastore.V1.QueryResultBatch), global::Google.Cloud.Datastore.V1.QueryResultBatch.Parser, new[]{ "SkippedResults", "SkippedCursor", "EntityResultType", "EntityResults", "EndCursor", "MoreResults", "SnapshotVersion" }, null, new[]{ typeof(global::Google.Cloud.Datastore.V1.QueryResultBatch.Types.MoreResultsType) }, null)
+          new pbr::GeneratedClrTypeInfo(null, null, new pbr::GeneratedClrTypeInfo[] {
+            new pbr::GeneratedClrTypeInfo(typeof(global::Google.Cloud.Datastore.V1.EntityResult), global::Google.Cloud.Datastore.V1.EntityResult.Parser, new[]{ "Entity", "Version", "Cursor" }, null, new[]{ typeof(global::Google.Cloud.Datastore.V1.EntityResult.Types.ResultType) }, null, null),
+            new pbr::GeneratedClrTypeInfo(typeof(global::Google.Cloud.Datastore.V1.Query), global::Google.Cloud.Datastore.V1.Query.Parser, new[]{ "Projection", "Kind", "Filter", "Order", "DistinctOn", "StartCursor", "EndCursor", "Offset", "Limit" }, null, null, null, null),
+            new pbr::GeneratedClrTypeInfo(typeof(global::Google.Cloud.Datastore.V1.KindExpression), global::Google.Cloud.Datastore.V1.KindExpression.Parser, new[]{ "Name" }, null, null, null, null),
+            new pbr::GeneratedClrTypeInfo(typeof(global::Google.Cloud.Datastore.V1.PropertyReference), global::Google.Cloud.Datastore.V1.PropertyReference.Parser, new[]{ "Name" }, null, null, null, null),
+            new pbr::GeneratedClrTypeInfo(typeof(global::Google.Cloud.Datastore.V1.Projection), global::Google.Cloud.Datastore.V1.Projection.Parser, new[]{ "Property" }, null, null, null, null),
+            new pbr::GeneratedClrTypeInfo(typeof(global::Google.Cloud.Datastore.V1.PropertyOrder), global::Google.Cloud.Datastore.V1.PropertyOrder.Parser, new[]{ "Property", "Direction" }, null, new[]{ typeof(global::Google.Cloud.Datastore.V1.PropertyOrder.Types.Direction) }, null, null),
+            new pbr::GeneratedClrTypeInfo(typeof(global::Google.Cloud.Datastore.V1.Filter), global::Google.Cloud.Datastore.V1.Filter.Parser, new[]{ "CompositeFilter", "PropertyFilter" }, new[]{ "FilterType" }, null, null, null),
+            new pbr::GeneratedClrTypeInfo(typeof(global::Google.Cloud.Datastore.V1.CompositeFilter), global::Google.Cloud.Datastore.V1.CompositeFilter.Parser, new[]{ "Op", "Filters" }, null, new[]{ typeof(global::Google.Cloud.Datastore.V1.CompositeFilter.Types.Operator) }, null, null),
+            new pbr::GeneratedClrTypeInfo(typeof(global::Google.Cloud.Datastore.V1.PropertyFilter), global::Google.Cloud.Datastore.V1.PropertyFilter.Parser, new[]{ "Property", "Op", "Value" }, null, new[]{ typeof(global::Google.Cloud.Datastore.V1.PropertyFilter.Types.Operator) }, null, null),
+            new pbr::GeneratedClrTypeInfo(typeof(global::Google.Cloud.Datastore.V1.GqlQuery), global::Google.Cloud.Datastore.V1.GqlQuery.Parser, new[]{ "QueryString", "AllowLiterals", "NamedBindings", "PositionalBindings" }, null, null, null, new pbr::GeneratedClrTypeInfo[] { null, }),
+            new pbr::GeneratedClrTypeInfo(typeof(global::Google.Cloud.Datastore.V1.GqlQueryParameter), global::Google.Cloud.Datastore.V1.GqlQueryParameter.Parser, new[]{ "Value", "Cursor" }, new[]{ "ParameterType" }, null, null, null),
+            new pbr::GeneratedClrTypeInfo(typeof(global::Google.Cloud.Datastore.V1.QueryResultBatch), global::Google.Cloud.Datastore.V1.QueryResultBatch.Parser, new[]{ "SkippedResults", "SkippedCursor", "EntityResultType", "EntityResults", "EndCursor", "MoreResults", "SnapshotVersion" }, null, new[]{ typeof(global::Google.Cloud.Datastore.V1.QueryResultBatch.Types.MoreResultsType) }, null, null)
           }));
     }
     #endregion
@@ -110,7 +111,11 @@ namespace Google.Cloud.Datastore.V1 {
   /// <summary>
   /// The result of fetching an entity from Datastore.
   /// </summary>
-  public sealed partial class EntityResult : pb::IMessage<EntityResult> {
+  public sealed partial class EntityResult : pb::IMessage<EntityResult>
+  #if !GOOGLE_PROTOBUF_REFSTRUCT_COMPATIBILITY_MODE
+      , pb::IBufferMessage
+  #endif
+  {
     private static readonly pb::MessageParser<EntityResult> _parser = new pb::MessageParser<EntityResult>(() => new EntityResult());
     private pb::UnknownFieldSet _unknownFields;
     [global::System.Diagnostics.DebuggerNonUserCodeAttribute]
@@ -235,6 +240,9 @@ namespace Google.Cloud.Datastore.V1 {
 
     [global::System.Diagnostics.DebuggerNonUserCodeAttribute]
     public void WriteTo(pb::CodedOutputStream output) {
+    #if !GOOGLE_PROTOBUF_REFSTRUCT_COMPATIBILITY_MODE
+      output.WriteRawMessage(this);
+    #else
       if (entity_ != null) {
         output.WriteRawTag(10);
         output.WriteMessage(Entity);
@@ -250,7 +258,29 @@ namespace Google.Cloud.Datastore.V1 {
       if (_unknownFields != null) {
         _unknownFields.WriteTo(output);
       }
+    #endif
     }
+
+    #if !GOOGLE_PROTOBUF_REFSTRUCT_COMPATIBILITY_MODE
+    [global::System.Diagnostics.DebuggerNonUserCodeAttribute]
+    void pb::IBufferMessage.InternalWriteTo(ref pb::WriteContext output) {
+      if (entity_ != null) {
+        output.WriteRawTag(10);
+        output.WriteMessage(Entity);
+      }
+      if (Cursor.Length != 0) {
+        output.WriteRawTag(26);
+        output.WriteBytes(Cursor);
+      }
+      if (Version != 0L) {
+        output.WriteRawTag(32);
+        output.WriteInt64(Version);
+      }
+      if (_unknownFields != null) {
+        _unknownFields.WriteTo(ref output);
+      }
+    }
+    #endif
 
     [global::System.Diagnostics.DebuggerNonUserCodeAttribute]
     public int CalculateSize() {
@@ -292,6 +322,9 @@ namespace Google.Cloud.Datastore.V1 {
 
     [global::System.Diagnostics.DebuggerNonUserCodeAttribute]
     public void MergeFrom(pb::CodedInputStream input) {
+    #if !GOOGLE_PROTOBUF_REFSTRUCT_COMPATIBILITY_MODE
+      input.ReadRawMessage(this);
+    #else
       uint tag;
       while ((tag = input.ReadTag()) != 0) {
         switch(tag) {
@@ -315,7 +348,37 @@ namespace Google.Cloud.Datastore.V1 {
           }
         }
       }
+    #endif
     }
+
+    #if !GOOGLE_PROTOBUF_REFSTRUCT_COMPATIBILITY_MODE
+    [global::System.Diagnostics.DebuggerNonUserCodeAttribute]
+    void pb::IBufferMessage.InternalMergeFrom(ref pb::ParseContext input) {
+      uint tag;
+      while ((tag = input.ReadTag()) != 0) {
+        switch(tag) {
+          default:
+            _unknownFields = pb::UnknownFieldSet.MergeFieldFrom(_unknownFields, ref input);
+            break;
+          case 10: {
+            if (entity_ == null) {
+              Entity = new global::Google.Cloud.Datastore.V1.Entity();
+            }
+            input.ReadMessage(Entity);
+            break;
+          }
+          case 26: {
+            Cursor = input.ReadBytes();
+            break;
+          }
+          case 32: {
+            Version = input.ReadInt64();
+            break;
+          }
+        }
+      }
+    }
+    #endif
 
     #region Nested types
     /// <summary>Container for nested types declared in the EntityResult message type.</summary>
@@ -355,7 +418,11 @@ namespace Google.Cloud.Datastore.V1 {
   /// <summary>
   /// A query for entities.
   /// </summary>
-  public sealed partial class Query : pb::IMessage<Query> {
+  public sealed partial class Query : pb::IMessage<Query>
+  #if !GOOGLE_PROTOBUF_REFSTRUCT_COMPATIBILITY_MODE
+      , pb::IBufferMessage
+  #endif
+  {
     private static readonly pb::MessageParser<Query> _parser = new pb::MessageParser<Query>(() => new Query());
     private pb::UnknownFieldSet _unknownFields;
     [global::System.Diagnostics.DebuggerNonUserCodeAttribute]
@@ -584,6 +651,9 @@ namespace Google.Cloud.Datastore.V1 {
 
     [global::System.Diagnostics.DebuggerNonUserCodeAttribute]
     public void WriteTo(pb::CodedOutputStream output) {
+    #if !GOOGLE_PROTOBUF_REFSTRUCT_COMPATIBILITY_MODE
+      output.WriteRawMessage(this);
+    #else
       projection_.WriteTo(output, _repeated_projection_codec);
       kind_.WriteTo(output, _repeated_kind_codec);
       if (filter_ != null) {
@@ -610,7 +680,40 @@ namespace Google.Cloud.Datastore.V1 {
       if (_unknownFields != null) {
         _unknownFields.WriteTo(output);
       }
+    #endif
     }
+
+    #if !GOOGLE_PROTOBUF_REFSTRUCT_COMPATIBILITY_MODE
+    [global::System.Diagnostics.DebuggerNonUserCodeAttribute]
+    void pb::IBufferMessage.InternalWriteTo(ref pb::WriteContext output) {
+      projection_.WriteTo(ref output, _repeated_projection_codec);
+      kind_.WriteTo(ref output, _repeated_kind_codec);
+      if (filter_ != null) {
+        output.WriteRawTag(34);
+        output.WriteMessage(Filter);
+      }
+      order_.WriteTo(ref output, _repeated_order_codec);
+      distinctOn_.WriteTo(ref output, _repeated_distinctOn_codec);
+      if (StartCursor.Length != 0) {
+        output.WriteRawTag(58);
+        output.WriteBytes(StartCursor);
+      }
+      if (EndCursor.Length != 0) {
+        output.WriteRawTag(66);
+        output.WriteBytes(EndCursor);
+      }
+      if (Offset != 0) {
+        output.WriteRawTag(80);
+        output.WriteInt32(Offset);
+      }
+      if (limit_ != null) {
+        _single_limit_codec.WriteTagAndValue(ref output, Limit);
+      }
+      if (_unknownFields != null) {
+        _unknownFields.WriteTo(ref output);
+      }
+    }
+    #endif
 
     [global::System.Diagnostics.DebuggerNonUserCodeAttribute]
     public int CalculateSize() {
@@ -674,6 +777,9 @@ namespace Google.Cloud.Datastore.V1 {
 
     [global::System.Diagnostics.DebuggerNonUserCodeAttribute]
     public void MergeFrom(pb::CodedInputStream input) {
+    #if !GOOGLE_PROTOBUF_REFSTRUCT_COMPATIBILITY_MODE
+      input.ReadRawMessage(this);
+    #else
       uint tag;
       while ((tag = input.ReadTag()) != 0) {
         switch(tag) {
@@ -724,14 +830,75 @@ namespace Google.Cloud.Datastore.V1 {
           }
         }
       }
+    #endif
     }
+
+    #if !GOOGLE_PROTOBUF_REFSTRUCT_COMPATIBILITY_MODE
+    [global::System.Diagnostics.DebuggerNonUserCodeAttribute]
+    void pb::IBufferMessage.InternalMergeFrom(ref pb::ParseContext input) {
+      uint tag;
+      while ((tag = input.ReadTag()) != 0) {
+        switch(tag) {
+          default:
+            _unknownFields = pb::UnknownFieldSet.MergeFieldFrom(_unknownFields, ref input);
+            break;
+          case 18: {
+            projection_.AddEntriesFrom(ref input, _repeated_projection_codec);
+            break;
+          }
+          case 26: {
+            kind_.AddEntriesFrom(ref input, _repeated_kind_codec);
+            break;
+          }
+          case 34: {
+            if (filter_ == null) {
+              Filter = new global::Google.Cloud.Datastore.V1.Filter();
+            }
+            input.ReadMessage(Filter);
+            break;
+          }
+          case 42: {
+            order_.AddEntriesFrom(ref input, _repeated_order_codec);
+            break;
+          }
+          case 50: {
+            distinctOn_.AddEntriesFrom(ref input, _repeated_distinctOn_codec);
+            break;
+          }
+          case 58: {
+            StartCursor = input.ReadBytes();
+            break;
+          }
+          case 66: {
+            EndCursor = input.ReadBytes();
+            break;
+          }
+          case 80: {
+            Offset = input.ReadInt32();
+            break;
+          }
+          case 98: {
+            int? value = _single_limit_codec.Read(ref input);
+            if (limit_ == null || value != 0) {
+              Limit = value;
+            }
+            break;
+          }
+        }
+      }
+    }
+    #endif
 
   }
 
   /// <summary>
   /// A representation of a kind.
   /// </summary>
-  public sealed partial class KindExpression : pb::IMessage<KindExpression> {
+  public sealed partial class KindExpression : pb::IMessage<KindExpression>
+  #if !GOOGLE_PROTOBUF_REFSTRUCT_COMPATIBILITY_MODE
+      , pb::IBufferMessage
+  #endif
+  {
     private static readonly pb::MessageParser<KindExpression> _parser = new pb::MessageParser<KindExpression>(() => new KindExpression());
     private pb::UnknownFieldSet _unknownFields;
     [global::System.Diagnostics.DebuggerNonUserCodeAttribute]
@@ -813,6 +980,9 @@ namespace Google.Cloud.Datastore.V1 {
 
     [global::System.Diagnostics.DebuggerNonUserCodeAttribute]
     public void WriteTo(pb::CodedOutputStream output) {
+    #if !GOOGLE_PROTOBUF_REFSTRUCT_COMPATIBILITY_MODE
+      output.WriteRawMessage(this);
+    #else
       if (Name.Length != 0) {
         output.WriteRawTag(10);
         output.WriteString(Name);
@@ -820,7 +990,21 @@ namespace Google.Cloud.Datastore.V1 {
       if (_unknownFields != null) {
         _unknownFields.WriteTo(output);
       }
+    #endif
     }
+
+    #if !GOOGLE_PROTOBUF_REFSTRUCT_COMPATIBILITY_MODE
+    [global::System.Diagnostics.DebuggerNonUserCodeAttribute]
+    void pb::IBufferMessage.InternalWriteTo(ref pb::WriteContext output) {
+      if (Name.Length != 0) {
+        output.WriteRawTag(10);
+        output.WriteString(Name);
+      }
+      if (_unknownFields != null) {
+        _unknownFields.WriteTo(ref output);
+      }
+    }
+    #endif
 
     [global::System.Diagnostics.DebuggerNonUserCodeAttribute]
     public int CalculateSize() {
@@ -847,6 +1031,9 @@ namespace Google.Cloud.Datastore.V1 {
 
     [global::System.Diagnostics.DebuggerNonUserCodeAttribute]
     public void MergeFrom(pb::CodedInputStream input) {
+    #if !GOOGLE_PROTOBUF_REFSTRUCT_COMPATIBILITY_MODE
+      input.ReadRawMessage(this);
+    #else
       uint tag;
       while ((tag = input.ReadTag()) != 0) {
         switch(tag) {
@@ -859,14 +1046,37 @@ namespace Google.Cloud.Datastore.V1 {
           }
         }
       }
+    #endif
     }
+
+    #if !GOOGLE_PROTOBUF_REFSTRUCT_COMPATIBILITY_MODE
+    [global::System.Diagnostics.DebuggerNonUserCodeAttribute]
+    void pb::IBufferMessage.InternalMergeFrom(ref pb::ParseContext input) {
+      uint tag;
+      while ((tag = input.ReadTag()) != 0) {
+        switch(tag) {
+          default:
+            _unknownFields = pb::UnknownFieldSet.MergeFieldFrom(_unknownFields, ref input);
+            break;
+          case 10: {
+            Name = input.ReadString();
+            break;
+          }
+        }
+      }
+    }
+    #endif
 
   }
 
   /// <summary>
   /// A reference to a property relative to the kind expressions.
   /// </summary>
-  public sealed partial class PropertyReference : pb::IMessage<PropertyReference> {
+  public sealed partial class PropertyReference : pb::IMessage<PropertyReference>
+  #if !GOOGLE_PROTOBUF_REFSTRUCT_COMPATIBILITY_MODE
+      , pb::IBufferMessage
+  #endif
+  {
     private static readonly pb::MessageParser<PropertyReference> _parser = new pb::MessageParser<PropertyReference>(() => new PropertyReference());
     private pb::UnknownFieldSet _unknownFields;
     [global::System.Diagnostics.DebuggerNonUserCodeAttribute]
@@ -949,6 +1159,9 @@ namespace Google.Cloud.Datastore.V1 {
 
     [global::System.Diagnostics.DebuggerNonUserCodeAttribute]
     public void WriteTo(pb::CodedOutputStream output) {
+    #if !GOOGLE_PROTOBUF_REFSTRUCT_COMPATIBILITY_MODE
+      output.WriteRawMessage(this);
+    #else
       if (Name.Length != 0) {
         output.WriteRawTag(18);
         output.WriteString(Name);
@@ -956,7 +1169,21 @@ namespace Google.Cloud.Datastore.V1 {
       if (_unknownFields != null) {
         _unknownFields.WriteTo(output);
       }
+    #endif
     }
+
+    #if !GOOGLE_PROTOBUF_REFSTRUCT_COMPATIBILITY_MODE
+    [global::System.Diagnostics.DebuggerNonUserCodeAttribute]
+    void pb::IBufferMessage.InternalWriteTo(ref pb::WriteContext output) {
+      if (Name.Length != 0) {
+        output.WriteRawTag(18);
+        output.WriteString(Name);
+      }
+      if (_unknownFields != null) {
+        _unknownFields.WriteTo(ref output);
+      }
+    }
+    #endif
 
     [global::System.Diagnostics.DebuggerNonUserCodeAttribute]
     public int CalculateSize() {
@@ -983,6 +1210,9 @@ namespace Google.Cloud.Datastore.V1 {
 
     [global::System.Diagnostics.DebuggerNonUserCodeAttribute]
     public void MergeFrom(pb::CodedInputStream input) {
+    #if !GOOGLE_PROTOBUF_REFSTRUCT_COMPATIBILITY_MODE
+      input.ReadRawMessage(this);
+    #else
       uint tag;
       while ((tag = input.ReadTag()) != 0) {
         switch(tag) {
@@ -995,14 +1225,37 @@ namespace Google.Cloud.Datastore.V1 {
           }
         }
       }
+    #endif
     }
+
+    #if !GOOGLE_PROTOBUF_REFSTRUCT_COMPATIBILITY_MODE
+    [global::System.Diagnostics.DebuggerNonUserCodeAttribute]
+    void pb::IBufferMessage.InternalMergeFrom(ref pb::ParseContext input) {
+      uint tag;
+      while ((tag = input.ReadTag()) != 0) {
+        switch(tag) {
+          default:
+            _unknownFields = pb::UnknownFieldSet.MergeFieldFrom(_unknownFields, ref input);
+            break;
+          case 18: {
+            Name = input.ReadString();
+            break;
+          }
+        }
+      }
+    }
+    #endif
 
   }
 
   /// <summary>
   /// A representation of a property in a projection.
   /// </summary>
-  public sealed partial class Projection : pb::IMessage<Projection> {
+  public sealed partial class Projection : pb::IMessage<Projection>
+  #if !GOOGLE_PROTOBUF_REFSTRUCT_COMPATIBILITY_MODE
+      , pb::IBufferMessage
+  #endif
+  {
     private static readonly pb::MessageParser<Projection> _parser = new pb::MessageParser<Projection>(() => new Projection());
     private pb::UnknownFieldSet _unknownFields;
     [global::System.Diagnostics.DebuggerNonUserCodeAttribute]
@@ -1084,6 +1337,9 @@ namespace Google.Cloud.Datastore.V1 {
 
     [global::System.Diagnostics.DebuggerNonUserCodeAttribute]
     public void WriteTo(pb::CodedOutputStream output) {
+    #if !GOOGLE_PROTOBUF_REFSTRUCT_COMPATIBILITY_MODE
+      output.WriteRawMessage(this);
+    #else
       if (property_ != null) {
         output.WriteRawTag(10);
         output.WriteMessage(Property);
@@ -1091,7 +1347,21 @@ namespace Google.Cloud.Datastore.V1 {
       if (_unknownFields != null) {
         _unknownFields.WriteTo(output);
       }
+    #endif
     }
+
+    #if !GOOGLE_PROTOBUF_REFSTRUCT_COMPATIBILITY_MODE
+    [global::System.Diagnostics.DebuggerNonUserCodeAttribute]
+    void pb::IBufferMessage.InternalWriteTo(ref pb::WriteContext output) {
+      if (property_ != null) {
+        output.WriteRawTag(10);
+        output.WriteMessage(Property);
+      }
+      if (_unknownFields != null) {
+        _unknownFields.WriteTo(ref output);
+      }
+    }
+    #endif
 
     [global::System.Diagnostics.DebuggerNonUserCodeAttribute]
     public int CalculateSize() {
@@ -1121,6 +1391,9 @@ namespace Google.Cloud.Datastore.V1 {
 
     [global::System.Diagnostics.DebuggerNonUserCodeAttribute]
     public void MergeFrom(pb::CodedInputStream input) {
+    #if !GOOGLE_PROTOBUF_REFSTRUCT_COMPATIBILITY_MODE
+      input.ReadRawMessage(this);
+    #else
       uint tag;
       while ((tag = input.ReadTag()) != 0) {
         switch(tag) {
@@ -1136,14 +1409,40 @@ namespace Google.Cloud.Datastore.V1 {
           }
         }
       }
+    #endif
     }
+
+    #if !GOOGLE_PROTOBUF_REFSTRUCT_COMPATIBILITY_MODE
+    [global::System.Diagnostics.DebuggerNonUserCodeAttribute]
+    void pb::IBufferMessage.InternalMergeFrom(ref pb::ParseContext input) {
+      uint tag;
+      while ((tag = input.ReadTag()) != 0) {
+        switch(tag) {
+          default:
+            _unknownFields = pb::UnknownFieldSet.MergeFieldFrom(_unknownFields, ref input);
+            break;
+          case 10: {
+            if (property_ == null) {
+              Property = new global::Google.Cloud.Datastore.V1.PropertyReference();
+            }
+            input.ReadMessage(Property);
+            break;
+          }
+        }
+      }
+    }
+    #endif
 
   }
 
   /// <summary>
   /// The desired order for a specific property.
   /// </summary>
-  public sealed partial class PropertyOrder : pb::IMessage<PropertyOrder> {
+  public sealed partial class PropertyOrder : pb::IMessage<PropertyOrder>
+  #if !GOOGLE_PROTOBUF_REFSTRUCT_COMPATIBILITY_MODE
+      , pb::IBufferMessage
+  #endif
+  {
     private static readonly pb::MessageParser<PropertyOrder> _parser = new pb::MessageParser<PropertyOrder>(() => new PropertyOrder());
     private pb::UnknownFieldSet _unknownFields;
     [global::System.Diagnostics.DebuggerNonUserCodeAttribute]
@@ -1194,7 +1493,7 @@ namespace Google.Cloud.Datastore.V1 {
 
     /// <summary>Field number for the "direction" field.</summary>
     public const int DirectionFieldNumber = 2;
-    private global::Google.Cloud.Datastore.V1.PropertyOrder.Types.Direction direction_ = 0;
+    private global::Google.Cloud.Datastore.V1.PropertyOrder.Types.Direction direction_ = global::Google.Cloud.Datastore.V1.PropertyOrder.Types.Direction.Unspecified;
     /// <summary>
     /// The direction to order by. Defaults to `ASCENDING`.
     /// </summary>
@@ -1228,7 +1527,7 @@ namespace Google.Cloud.Datastore.V1 {
     public override int GetHashCode() {
       int hash = 1;
       if (property_ != null) hash ^= Property.GetHashCode();
-      if (Direction != 0) hash ^= Direction.GetHashCode();
+      if (Direction != global::Google.Cloud.Datastore.V1.PropertyOrder.Types.Direction.Unspecified) hash ^= Direction.GetHashCode();
       if (_unknownFields != null) {
         hash ^= _unknownFields.GetHashCode();
       }
@@ -1242,18 +1541,39 @@ namespace Google.Cloud.Datastore.V1 {
 
     [global::System.Diagnostics.DebuggerNonUserCodeAttribute]
     public void WriteTo(pb::CodedOutputStream output) {
+    #if !GOOGLE_PROTOBUF_REFSTRUCT_COMPATIBILITY_MODE
+      output.WriteRawMessage(this);
+    #else
       if (property_ != null) {
         output.WriteRawTag(10);
         output.WriteMessage(Property);
       }
-      if (Direction != 0) {
+      if (Direction != global::Google.Cloud.Datastore.V1.PropertyOrder.Types.Direction.Unspecified) {
         output.WriteRawTag(16);
         output.WriteEnum((int) Direction);
       }
       if (_unknownFields != null) {
         _unknownFields.WriteTo(output);
       }
+    #endif
     }
+
+    #if !GOOGLE_PROTOBUF_REFSTRUCT_COMPATIBILITY_MODE
+    [global::System.Diagnostics.DebuggerNonUserCodeAttribute]
+    void pb::IBufferMessage.InternalWriteTo(ref pb::WriteContext output) {
+      if (property_ != null) {
+        output.WriteRawTag(10);
+        output.WriteMessage(Property);
+      }
+      if (Direction != global::Google.Cloud.Datastore.V1.PropertyOrder.Types.Direction.Unspecified) {
+        output.WriteRawTag(16);
+        output.WriteEnum((int) Direction);
+      }
+      if (_unknownFields != null) {
+        _unknownFields.WriteTo(ref output);
+      }
+    }
+    #endif
 
     [global::System.Diagnostics.DebuggerNonUserCodeAttribute]
     public int CalculateSize() {
@@ -1261,7 +1581,7 @@ namespace Google.Cloud.Datastore.V1 {
       if (property_ != null) {
         size += 1 + pb::CodedOutputStream.ComputeMessageSize(Property);
       }
-      if (Direction != 0) {
+      if (Direction != global::Google.Cloud.Datastore.V1.PropertyOrder.Types.Direction.Unspecified) {
         size += 1 + pb::CodedOutputStream.ComputeEnumSize((int) Direction);
       }
       if (_unknownFields != null) {
@@ -1281,7 +1601,7 @@ namespace Google.Cloud.Datastore.V1 {
         }
         Property.MergeFrom(other.Property);
       }
-      if (other.Direction != 0) {
+      if (other.Direction != global::Google.Cloud.Datastore.V1.PropertyOrder.Types.Direction.Unspecified) {
         Direction = other.Direction;
       }
       _unknownFields = pb::UnknownFieldSet.MergeFrom(_unknownFields, other._unknownFields);
@@ -1289,6 +1609,9 @@ namespace Google.Cloud.Datastore.V1 {
 
     [global::System.Diagnostics.DebuggerNonUserCodeAttribute]
     public void MergeFrom(pb::CodedInputStream input) {
+    #if !GOOGLE_PROTOBUF_REFSTRUCT_COMPATIBILITY_MODE
+      input.ReadRawMessage(this);
+    #else
       uint tag;
       while ((tag = input.ReadTag()) != 0) {
         switch(tag) {
@@ -1308,7 +1631,33 @@ namespace Google.Cloud.Datastore.V1 {
           }
         }
       }
+    #endif
     }
+
+    #if !GOOGLE_PROTOBUF_REFSTRUCT_COMPATIBILITY_MODE
+    [global::System.Diagnostics.DebuggerNonUserCodeAttribute]
+    void pb::IBufferMessage.InternalMergeFrom(ref pb::ParseContext input) {
+      uint tag;
+      while ((tag = input.ReadTag()) != 0) {
+        switch(tag) {
+          default:
+            _unknownFields = pb::UnknownFieldSet.MergeFieldFrom(_unknownFields, ref input);
+            break;
+          case 10: {
+            if (property_ == null) {
+              Property = new global::Google.Cloud.Datastore.V1.PropertyReference();
+            }
+            input.ReadMessage(Property);
+            break;
+          }
+          case 16: {
+            Direction = (global::Google.Cloud.Datastore.V1.PropertyOrder.Types.Direction) input.ReadEnum();
+            break;
+          }
+        }
+      }
+    }
+    #endif
 
     #region Nested types
     /// <summary>Container for nested types declared in the PropertyOrder message type.</summary>
@@ -1340,7 +1689,11 @@ namespace Google.Cloud.Datastore.V1 {
   /// <summary>
   /// A holder for any type of filter.
   /// </summary>
-  public sealed partial class Filter : pb::IMessage<Filter> {
+  public sealed partial class Filter : pb::IMessage<Filter>
+  #if !GOOGLE_PROTOBUF_REFSTRUCT_COMPATIBILITY_MODE
+      , pb::IBufferMessage
+  #endif
+  {
     private static readonly pb::MessageParser<Filter> _parser = new pb::MessageParser<Filter>(() => new Filter());
     private pb::UnknownFieldSet _unknownFields;
     [global::System.Diagnostics.DebuggerNonUserCodeAttribute]
@@ -1467,6 +1820,9 @@ namespace Google.Cloud.Datastore.V1 {
 
     [global::System.Diagnostics.DebuggerNonUserCodeAttribute]
     public void WriteTo(pb::CodedOutputStream output) {
+    #if !GOOGLE_PROTOBUF_REFSTRUCT_COMPATIBILITY_MODE
+      output.WriteRawMessage(this);
+    #else
       if (filterTypeCase_ == FilterTypeOneofCase.CompositeFilter) {
         output.WriteRawTag(10);
         output.WriteMessage(CompositeFilter);
@@ -1478,7 +1834,25 @@ namespace Google.Cloud.Datastore.V1 {
       if (_unknownFields != null) {
         _unknownFields.WriteTo(output);
       }
+    #endif
     }
+
+    #if !GOOGLE_PROTOBUF_REFSTRUCT_COMPATIBILITY_MODE
+    [global::System.Diagnostics.DebuggerNonUserCodeAttribute]
+    void pb::IBufferMessage.InternalWriteTo(ref pb::WriteContext output) {
+      if (filterTypeCase_ == FilterTypeOneofCase.CompositeFilter) {
+        output.WriteRawTag(10);
+        output.WriteMessage(CompositeFilter);
+      }
+      if (filterTypeCase_ == FilterTypeOneofCase.PropertyFilter) {
+        output.WriteRawTag(18);
+        output.WriteMessage(PropertyFilter);
+      }
+      if (_unknownFields != null) {
+        _unknownFields.WriteTo(ref output);
+      }
+    }
+    #endif
 
     [global::System.Diagnostics.DebuggerNonUserCodeAttribute]
     public int CalculateSize() {
@@ -1520,6 +1894,9 @@ namespace Google.Cloud.Datastore.V1 {
 
     [global::System.Diagnostics.DebuggerNonUserCodeAttribute]
     public void MergeFrom(pb::CodedInputStream input) {
+    #if !GOOGLE_PROTOBUF_REFSTRUCT_COMPATIBILITY_MODE
+      input.ReadRawMessage(this);
+    #else
       uint tag;
       while ((tag = input.ReadTag()) != 0) {
         switch(tag) {
@@ -1546,14 +1923,51 @@ namespace Google.Cloud.Datastore.V1 {
           }
         }
       }
+    #endif
     }
+
+    #if !GOOGLE_PROTOBUF_REFSTRUCT_COMPATIBILITY_MODE
+    [global::System.Diagnostics.DebuggerNonUserCodeAttribute]
+    void pb::IBufferMessage.InternalMergeFrom(ref pb::ParseContext input) {
+      uint tag;
+      while ((tag = input.ReadTag()) != 0) {
+        switch(tag) {
+          default:
+            _unknownFields = pb::UnknownFieldSet.MergeFieldFrom(_unknownFields, ref input);
+            break;
+          case 10: {
+            global::Google.Cloud.Datastore.V1.CompositeFilter subBuilder = new global::Google.Cloud.Datastore.V1.CompositeFilter();
+            if (filterTypeCase_ == FilterTypeOneofCase.CompositeFilter) {
+              subBuilder.MergeFrom(CompositeFilter);
+            }
+            input.ReadMessage(subBuilder);
+            CompositeFilter = subBuilder;
+            break;
+          }
+          case 18: {
+            global::Google.Cloud.Datastore.V1.PropertyFilter subBuilder = new global::Google.Cloud.Datastore.V1.PropertyFilter();
+            if (filterTypeCase_ == FilterTypeOneofCase.PropertyFilter) {
+              subBuilder.MergeFrom(PropertyFilter);
+            }
+            input.ReadMessage(subBuilder);
+            PropertyFilter = subBuilder;
+            break;
+          }
+        }
+      }
+    }
+    #endif
 
   }
 
   /// <summary>
   /// A filter that merges multiple other filters using the given operator.
   /// </summary>
-  public sealed partial class CompositeFilter : pb::IMessage<CompositeFilter> {
+  public sealed partial class CompositeFilter : pb::IMessage<CompositeFilter>
+  #if !GOOGLE_PROTOBUF_REFSTRUCT_COMPATIBILITY_MODE
+      , pb::IBufferMessage
+  #endif
+  {
     private static readonly pb::MessageParser<CompositeFilter> _parser = new pb::MessageParser<CompositeFilter>(() => new CompositeFilter());
     private pb::UnknownFieldSet _unknownFields;
     [global::System.Diagnostics.DebuggerNonUserCodeAttribute]
@@ -1590,7 +2004,7 @@ namespace Google.Cloud.Datastore.V1 {
 
     /// <summary>Field number for the "op" field.</summary>
     public const int OpFieldNumber = 1;
-    private global::Google.Cloud.Datastore.V1.CompositeFilter.Types.Operator op_ = 0;
+    private global::Google.Cloud.Datastore.V1.CompositeFilter.Types.Operator op_ = global::Google.Cloud.Datastore.V1.CompositeFilter.Types.Operator.Unspecified;
     /// <summary>
     /// The operator for combining multiple filters.
     /// </summary>
@@ -1637,7 +2051,7 @@ namespace Google.Cloud.Datastore.V1 {
     [global::System.Diagnostics.DebuggerNonUserCodeAttribute]
     public override int GetHashCode() {
       int hash = 1;
-      if (Op != 0) hash ^= Op.GetHashCode();
+      if (Op != global::Google.Cloud.Datastore.V1.CompositeFilter.Types.Operator.Unspecified) hash ^= Op.GetHashCode();
       hash ^= filters_.GetHashCode();
       if (_unknownFields != null) {
         hash ^= _unknownFields.GetHashCode();
@@ -1652,7 +2066,10 @@ namespace Google.Cloud.Datastore.V1 {
 
     [global::System.Diagnostics.DebuggerNonUserCodeAttribute]
     public void WriteTo(pb::CodedOutputStream output) {
-      if (Op != 0) {
+    #if !GOOGLE_PROTOBUF_REFSTRUCT_COMPATIBILITY_MODE
+      output.WriteRawMessage(this);
+    #else
+      if (Op != global::Google.Cloud.Datastore.V1.CompositeFilter.Types.Operator.Unspecified) {
         output.WriteRawTag(8);
         output.WriteEnum((int) Op);
       }
@@ -1660,12 +2077,27 @@ namespace Google.Cloud.Datastore.V1 {
       if (_unknownFields != null) {
         _unknownFields.WriteTo(output);
       }
+    #endif
     }
+
+    #if !GOOGLE_PROTOBUF_REFSTRUCT_COMPATIBILITY_MODE
+    [global::System.Diagnostics.DebuggerNonUserCodeAttribute]
+    void pb::IBufferMessage.InternalWriteTo(ref pb::WriteContext output) {
+      if (Op != global::Google.Cloud.Datastore.V1.CompositeFilter.Types.Operator.Unspecified) {
+        output.WriteRawTag(8);
+        output.WriteEnum((int) Op);
+      }
+      filters_.WriteTo(ref output, _repeated_filters_codec);
+      if (_unknownFields != null) {
+        _unknownFields.WriteTo(ref output);
+      }
+    }
+    #endif
 
     [global::System.Diagnostics.DebuggerNonUserCodeAttribute]
     public int CalculateSize() {
       int size = 0;
-      if (Op != 0) {
+      if (Op != global::Google.Cloud.Datastore.V1.CompositeFilter.Types.Operator.Unspecified) {
         size += 1 + pb::CodedOutputStream.ComputeEnumSize((int) Op);
       }
       size += filters_.CalculateSize(_repeated_filters_codec);
@@ -1680,7 +2112,7 @@ namespace Google.Cloud.Datastore.V1 {
       if (other == null) {
         return;
       }
-      if (other.Op != 0) {
+      if (other.Op != global::Google.Cloud.Datastore.V1.CompositeFilter.Types.Operator.Unspecified) {
         Op = other.Op;
       }
       filters_.Add(other.filters_);
@@ -1689,6 +2121,9 @@ namespace Google.Cloud.Datastore.V1 {
 
     [global::System.Diagnostics.DebuggerNonUserCodeAttribute]
     public void MergeFrom(pb::CodedInputStream input) {
+    #if !GOOGLE_PROTOBUF_REFSTRUCT_COMPATIBILITY_MODE
+      input.ReadRawMessage(this);
+    #else
       uint tag;
       while ((tag = input.ReadTag()) != 0) {
         switch(tag) {
@@ -1705,7 +2140,30 @@ namespace Google.Cloud.Datastore.V1 {
           }
         }
       }
+    #endif
     }
+
+    #if !GOOGLE_PROTOBUF_REFSTRUCT_COMPATIBILITY_MODE
+    [global::System.Diagnostics.DebuggerNonUserCodeAttribute]
+    void pb::IBufferMessage.InternalMergeFrom(ref pb::ParseContext input) {
+      uint tag;
+      while ((tag = input.ReadTag()) != 0) {
+        switch(tag) {
+          default:
+            _unknownFields = pb::UnknownFieldSet.MergeFieldFrom(_unknownFields, ref input);
+            break;
+          case 8: {
+            Op = (global::Google.Cloud.Datastore.V1.CompositeFilter.Types.Operator) input.ReadEnum();
+            break;
+          }
+          case 18: {
+            filters_.AddEntriesFrom(ref input, _repeated_filters_codec);
+            break;
+          }
+        }
+      }
+    }
+    #endif
 
     #region Nested types
     /// <summary>Container for nested types declared in the CompositeFilter message type.</summary>
@@ -1733,7 +2191,11 @@ namespace Google.Cloud.Datastore.V1 {
   /// <summary>
   /// A filter on a specific property.
   /// </summary>
-  public sealed partial class PropertyFilter : pb::IMessage<PropertyFilter> {
+  public sealed partial class PropertyFilter : pb::IMessage<PropertyFilter>
+  #if !GOOGLE_PROTOBUF_REFSTRUCT_COMPATIBILITY_MODE
+      , pb::IBufferMessage
+  #endif
+  {
     private static readonly pb::MessageParser<PropertyFilter> _parser = new pb::MessageParser<PropertyFilter>(() => new PropertyFilter());
     private pb::UnknownFieldSet _unknownFields;
     [global::System.Diagnostics.DebuggerNonUserCodeAttribute]
@@ -1785,7 +2247,7 @@ namespace Google.Cloud.Datastore.V1 {
 
     /// <summary>Field number for the "op" field.</summary>
     public const int OpFieldNumber = 2;
-    private global::Google.Cloud.Datastore.V1.PropertyFilter.Types.Operator op_ = 0;
+    private global::Google.Cloud.Datastore.V1.PropertyFilter.Types.Operator op_ = global::Google.Cloud.Datastore.V1.PropertyFilter.Types.Operator.Unspecified;
     /// <summary>
     /// The operator to filter by.
     /// </summary>
@@ -1834,7 +2296,7 @@ namespace Google.Cloud.Datastore.V1 {
     public override int GetHashCode() {
       int hash = 1;
       if (property_ != null) hash ^= Property.GetHashCode();
-      if (Op != 0) hash ^= Op.GetHashCode();
+      if (Op != global::Google.Cloud.Datastore.V1.PropertyFilter.Types.Operator.Unspecified) hash ^= Op.GetHashCode();
       if (value_ != null) hash ^= Value.GetHashCode();
       if (_unknownFields != null) {
         hash ^= _unknownFields.GetHashCode();
@@ -1849,11 +2311,14 @@ namespace Google.Cloud.Datastore.V1 {
 
     [global::System.Diagnostics.DebuggerNonUserCodeAttribute]
     public void WriteTo(pb::CodedOutputStream output) {
+    #if !GOOGLE_PROTOBUF_REFSTRUCT_COMPATIBILITY_MODE
+      output.WriteRawMessage(this);
+    #else
       if (property_ != null) {
         output.WriteRawTag(10);
         output.WriteMessage(Property);
       }
-      if (Op != 0) {
+      if (Op != global::Google.Cloud.Datastore.V1.PropertyFilter.Types.Operator.Unspecified) {
         output.WriteRawTag(16);
         output.WriteEnum((int) Op);
       }
@@ -1864,7 +2329,29 @@ namespace Google.Cloud.Datastore.V1 {
       if (_unknownFields != null) {
         _unknownFields.WriteTo(output);
       }
+    #endif
     }
+
+    #if !GOOGLE_PROTOBUF_REFSTRUCT_COMPATIBILITY_MODE
+    [global::System.Diagnostics.DebuggerNonUserCodeAttribute]
+    void pb::IBufferMessage.InternalWriteTo(ref pb::WriteContext output) {
+      if (property_ != null) {
+        output.WriteRawTag(10);
+        output.WriteMessage(Property);
+      }
+      if (Op != global::Google.Cloud.Datastore.V1.PropertyFilter.Types.Operator.Unspecified) {
+        output.WriteRawTag(16);
+        output.WriteEnum((int) Op);
+      }
+      if (value_ != null) {
+        output.WriteRawTag(26);
+        output.WriteMessage(Value);
+      }
+      if (_unknownFields != null) {
+        _unknownFields.WriteTo(ref output);
+      }
+    }
+    #endif
 
     [global::System.Diagnostics.DebuggerNonUserCodeAttribute]
     public int CalculateSize() {
@@ -1872,7 +2359,7 @@ namespace Google.Cloud.Datastore.V1 {
       if (property_ != null) {
         size += 1 + pb::CodedOutputStream.ComputeMessageSize(Property);
       }
-      if (Op != 0) {
+      if (Op != global::Google.Cloud.Datastore.V1.PropertyFilter.Types.Operator.Unspecified) {
         size += 1 + pb::CodedOutputStream.ComputeEnumSize((int) Op);
       }
       if (value_ != null) {
@@ -1895,7 +2382,7 @@ namespace Google.Cloud.Datastore.V1 {
         }
         Property.MergeFrom(other.Property);
       }
-      if (other.Op != 0) {
+      if (other.Op != global::Google.Cloud.Datastore.V1.PropertyFilter.Types.Operator.Unspecified) {
         Op = other.Op;
       }
       if (other.value_ != null) {
@@ -1909,6 +2396,9 @@ namespace Google.Cloud.Datastore.V1 {
 
     [global::System.Diagnostics.DebuggerNonUserCodeAttribute]
     public void MergeFrom(pb::CodedInputStream input) {
+    #if !GOOGLE_PROTOBUF_REFSTRUCT_COMPATIBILITY_MODE
+      input.ReadRawMessage(this);
+    #else
       uint tag;
       while ((tag = input.ReadTag()) != 0) {
         switch(tag) {
@@ -1935,7 +2425,40 @@ namespace Google.Cloud.Datastore.V1 {
           }
         }
       }
+    #endif
     }
+
+    #if !GOOGLE_PROTOBUF_REFSTRUCT_COMPATIBILITY_MODE
+    [global::System.Diagnostics.DebuggerNonUserCodeAttribute]
+    void pb::IBufferMessage.InternalMergeFrom(ref pb::ParseContext input) {
+      uint tag;
+      while ((tag = input.ReadTag()) != 0) {
+        switch(tag) {
+          default:
+            _unknownFields = pb::UnknownFieldSet.MergeFieldFrom(_unknownFields, ref input);
+            break;
+          case 10: {
+            if (property_ == null) {
+              Property = new global::Google.Cloud.Datastore.V1.PropertyReference();
+            }
+            input.ReadMessage(Property);
+            break;
+          }
+          case 16: {
+            Op = (global::Google.Cloud.Datastore.V1.PropertyFilter.Types.Operator) input.ReadEnum();
+            break;
+          }
+          case 26: {
+            if (value_ == null) {
+              Value = new global::Google.Cloud.Datastore.V1.Value();
+            }
+            input.ReadMessage(Value);
+            break;
+          }
+        }
+      }
+    }
+    #endif
 
     #region Nested types
     /// <summary>Container for nested types declared in the PropertyFilter message type.</summary>
@@ -1984,7 +2507,11 @@ namespace Google.Cloud.Datastore.V1 {
   /// A [GQL
   /// query](https://cloud.google.com/datastore/docs/apis/gql/gql_reference).
   /// </summary>
-  public sealed partial class GqlQuery : pb::IMessage<GqlQuery> {
+  public sealed partial class GqlQuery : pb::IMessage<GqlQuery>
+  #if !GOOGLE_PROTOBUF_REFSTRUCT_COMPATIBILITY_MODE
+      , pb::IBufferMessage
+  #endif
+  {
     private static readonly pb::MessageParser<GqlQuery> _parser = new pb::MessageParser<GqlQuery>(() => new GqlQuery());
     private pb::UnknownFieldSet _unknownFields;
     [global::System.Diagnostics.DebuggerNonUserCodeAttribute]
@@ -2056,7 +2583,7 @@ namespace Google.Cloud.Datastore.V1 {
     /// <summary>Field number for the "named_bindings" field.</summary>
     public const int NamedBindingsFieldNumber = 5;
     private static readonly pbc::MapField<string, global::Google.Cloud.Datastore.V1.GqlQueryParameter>.Codec _map_namedBindings_codec
-        = new pbc::MapField<string, global::Google.Cloud.Datastore.V1.GqlQueryParameter>.Codec(pb::FieldCodec.ForString(10), pb::FieldCodec.ForMessage(18, global::Google.Cloud.Datastore.V1.GqlQueryParameter.Parser), 42);
+        = new pbc::MapField<string, global::Google.Cloud.Datastore.V1.GqlQueryParameter>.Codec(pb::FieldCodec.ForString(10, ""), pb::FieldCodec.ForMessage(18, global::Google.Cloud.Datastore.V1.GqlQueryParameter.Parser), 42);
     private readonly pbc::MapField<string, global::Google.Cloud.Datastore.V1.GqlQueryParameter> namedBindings_ = new pbc::MapField<string, global::Google.Cloud.Datastore.V1.GqlQueryParameter>();
     /// <summary>
     /// For each non-reserved named binding site in the query string, there must be
@@ -2127,6 +2654,9 @@ namespace Google.Cloud.Datastore.V1 {
 
     [global::System.Diagnostics.DebuggerNonUserCodeAttribute]
     public void WriteTo(pb::CodedOutputStream output) {
+    #if !GOOGLE_PROTOBUF_REFSTRUCT_COMPATIBILITY_MODE
+      output.WriteRawMessage(this);
+    #else
       if (QueryString.Length != 0) {
         output.WriteRawTag(10);
         output.WriteString(QueryString);
@@ -2140,7 +2670,27 @@ namespace Google.Cloud.Datastore.V1 {
       if (_unknownFields != null) {
         _unknownFields.WriteTo(output);
       }
+    #endif
     }
+
+    #if !GOOGLE_PROTOBUF_REFSTRUCT_COMPATIBILITY_MODE
+    [global::System.Diagnostics.DebuggerNonUserCodeAttribute]
+    void pb::IBufferMessage.InternalWriteTo(ref pb::WriteContext output) {
+      if (QueryString.Length != 0) {
+        output.WriteRawTag(10);
+        output.WriteString(QueryString);
+      }
+      if (AllowLiterals != false) {
+        output.WriteRawTag(16);
+        output.WriteBool(AllowLiterals);
+      }
+      positionalBindings_.WriteTo(ref output, _repeated_positionalBindings_codec);
+      namedBindings_.WriteTo(ref output, _map_namedBindings_codec);
+      if (_unknownFields != null) {
+        _unknownFields.WriteTo(ref output);
+      }
+    }
+    #endif
 
     [global::System.Diagnostics.DebuggerNonUserCodeAttribute]
     public int CalculateSize() {
@@ -2177,6 +2727,9 @@ namespace Google.Cloud.Datastore.V1 {
 
     [global::System.Diagnostics.DebuggerNonUserCodeAttribute]
     public void MergeFrom(pb::CodedInputStream input) {
+    #if !GOOGLE_PROTOBUF_REFSTRUCT_COMPATIBILITY_MODE
+      input.ReadRawMessage(this);
+    #else
       uint tag;
       while ((tag = input.ReadTag()) != 0) {
         switch(tag) {
@@ -2201,14 +2754,49 @@ namespace Google.Cloud.Datastore.V1 {
           }
         }
       }
+    #endif
     }
+
+    #if !GOOGLE_PROTOBUF_REFSTRUCT_COMPATIBILITY_MODE
+    [global::System.Diagnostics.DebuggerNonUserCodeAttribute]
+    void pb::IBufferMessage.InternalMergeFrom(ref pb::ParseContext input) {
+      uint tag;
+      while ((tag = input.ReadTag()) != 0) {
+        switch(tag) {
+          default:
+            _unknownFields = pb::UnknownFieldSet.MergeFieldFrom(_unknownFields, ref input);
+            break;
+          case 10: {
+            QueryString = input.ReadString();
+            break;
+          }
+          case 16: {
+            AllowLiterals = input.ReadBool();
+            break;
+          }
+          case 34: {
+            positionalBindings_.AddEntriesFrom(ref input, _repeated_positionalBindings_codec);
+            break;
+          }
+          case 42: {
+            namedBindings_.AddEntriesFrom(ref input, _map_namedBindings_codec);
+            break;
+          }
+        }
+      }
+    }
+    #endif
 
   }
 
   /// <summary>
   /// A binding parameter for a GQL query.
   /// </summary>
-  public sealed partial class GqlQueryParameter : pb::IMessage<GqlQueryParameter> {
+  public sealed partial class GqlQueryParameter : pb::IMessage<GqlQueryParameter>
+  #if !GOOGLE_PROTOBUF_REFSTRUCT_COMPATIBILITY_MODE
+      , pb::IBufferMessage
+  #endif
+  {
     private static readonly pb::MessageParser<GqlQueryParameter> _parser = new pb::MessageParser<GqlQueryParameter>(() => new GqlQueryParameter());
     private pb::UnknownFieldSet _unknownFields;
     [global::System.Diagnostics.DebuggerNonUserCodeAttribute]
@@ -2336,6 +2924,9 @@ namespace Google.Cloud.Datastore.V1 {
 
     [global::System.Diagnostics.DebuggerNonUserCodeAttribute]
     public void WriteTo(pb::CodedOutputStream output) {
+    #if !GOOGLE_PROTOBUF_REFSTRUCT_COMPATIBILITY_MODE
+      output.WriteRawMessage(this);
+    #else
       if (parameterTypeCase_ == ParameterTypeOneofCase.Value) {
         output.WriteRawTag(18);
         output.WriteMessage(Value);
@@ -2347,7 +2938,25 @@ namespace Google.Cloud.Datastore.V1 {
       if (_unknownFields != null) {
         _unknownFields.WriteTo(output);
       }
+    #endif
     }
+
+    #if !GOOGLE_PROTOBUF_REFSTRUCT_COMPATIBILITY_MODE
+    [global::System.Diagnostics.DebuggerNonUserCodeAttribute]
+    void pb::IBufferMessage.InternalWriteTo(ref pb::WriteContext output) {
+      if (parameterTypeCase_ == ParameterTypeOneofCase.Value) {
+        output.WriteRawTag(18);
+        output.WriteMessage(Value);
+      }
+      if (parameterTypeCase_ == ParameterTypeOneofCase.Cursor) {
+        output.WriteRawTag(26);
+        output.WriteBytes(Cursor);
+      }
+      if (_unknownFields != null) {
+        _unknownFields.WriteTo(ref output);
+      }
+    }
+    #endif
 
     [global::System.Diagnostics.DebuggerNonUserCodeAttribute]
     public int CalculateSize() {
@@ -2386,6 +2995,9 @@ namespace Google.Cloud.Datastore.V1 {
 
     [global::System.Diagnostics.DebuggerNonUserCodeAttribute]
     public void MergeFrom(pb::CodedInputStream input) {
+    #if !GOOGLE_PROTOBUF_REFSTRUCT_COMPATIBILITY_MODE
+      input.ReadRawMessage(this);
+    #else
       uint tag;
       while ((tag = input.ReadTag()) != 0) {
         switch(tag) {
@@ -2407,14 +3019,46 @@ namespace Google.Cloud.Datastore.V1 {
           }
         }
       }
+    #endif
     }
+
+    #if !GOOGLE_PROTOBUF_REFSTRUCT_COMPATIBILITY_MODE
+    [global::System.Diagnostics.DebuggerNonUserCodeAttribute]
+    void pb::IBufferMessage.InternalMergeFrom(ref pb::ParseContext input) {
+      uint tag;
+      while ((tag = input.ReadTag()) != 0) {
+        switch(tag) {
+          default:
+            _unknownFields = pb::UnknownFieldSet.MergeFieldFrom(_unknownFields, ref input);
+            break;
+          case 18: {
+            global::Google.Cloud.Datastore.V1.Value subBuilder = new global::Google.Cloud.Datastore.V1.Value();
+            if (parameterTypeCase_ == ParameterTypeOneofCase.Value) {
+              subBuilder.MergeFrom(Value);
+            }
+            input.ReadMessage(subBuilder);
+            Value = subBuilder;
+            break;
+          }
+          case 26: {
+            Cursor = input.ReadBytes();
+            break;
+          }
+        }
+      }
+    }
+    #endif
 
   }
 
   /// <summary>
   /// A batch of results produced by a query.
   /// </summary>
-  public sealed partial class QueryResultBatch : pb::IMessage<QueryResultBatch> {
+  public sealed partial class QueryResultBatch : pb::IMessage<QueryResultBatch>
+  #if !GOOGLE_PROTOBUF_REFSTRUCT_COMPATIBILITY_MODE
+      , pb::IBufferMessage
+  #endif
+  {
     private static readonly pb::MessageParser<QueryResultBatch> _parser = new pb::MessageParser<QueryResultBatch>(() => new QueryResultBatch());
     private pb::UnknownFieldSet _unknownFields;
     [global::System.Diagnostics.DebuggerNonUserCodeAttribute]
@@ -2485,7 +3129,7 @@ namespace Google.Cloud.Datastore.V1 {
 
     /// <summary>Field number for the "entity_result_type" field.</summary>
     public const int EntityResultTypeFieldNumber = 1;
-    private global::Google.Cloud.Datastore.V1.EntityResult.Types.ResultType entityResultType_ = 0;
+    private global::Google.Cloud.Datastore.V1.EntityResult.Types.ResultType entityResultType_ = global::Google.Cloud.Datastore.V1.EntityResult.Types.ResultType.Unspecified;
     /// <summary>
     /// The result type for every entity in `entity_results`.
     /// </summary>
@@ -2526,7 +3170,7 @@ namespace Google.Cloud.Datastore.V1 {
 
     /// <summary>Field number for the "more_results" field.</summary>
     public const int MoreResultsFieldNumber = 5;
-    private global::Google.Cloud.Datastore.V1.QueryResultBatch.Types.MoreResultsType moreResults_ = 0;
+    private global::Google.Cloud.Datastore.V1.QueryResultBatch.Types.MoreResultsType moreResults_ = global::Google.Cloud.Datastore.V1.QueryResultBatch.Types.MoreResultsType.Unspecified;
     /// <summary>
     /// The state of the query after the current batch.
     /// </summary>
@@ -2588,10 +3232,10 @@ namespace Google.Cloud.Datastore.V1 {
       int hash = 1;
       if (SkippedResults != 0) hash ^= SkippedResults.GetHashCode();
       if (SkippedCursor.Length != 0) hash ^= SkippedCursor.GetHashCode();
-      if (EntityResultType != 0) hash ^= EntityResultType.GetHashCode();
+      if (EntityResultType != global::Google.Cloud.Datastore.V1.EntityResult.Types.ResultType.Unspecified) hash ^= EntityResultType.GetHashCode();
       hash ^= entityResults_.GetHashCode();
       if (EndCursor.Length != 0) hash ^= EndCursor.GetHashCode();
-      if (MoreResults != 0) hash ^= MoreResults.GetHashCode();
+      if (MoreResults != global::Google.Cloud.Datastore.V1.QueryResultBatch.Types.MoreResultsType.Unspecified) hash ^= MoreResults.GetHashCode();
       if (SnapshotVersion != 0L) hash ^= SnapshotVersion.GetHashCode();
       if (_unknownFields != null) {
         hash ^= _unknownFields.GetHashCode();
@@ -2606,7 +3250,10 @@ namespace Google.Cloud.Datastore.V1 {
 
     [global::System.Diagnostics.DebuggerNonUserCodeAttribute]
     public void WriteTo(pb::CodedOutputStream output) {
-      if (EntityResultType != 0) {
+    #if !GOOGLE_PROTOBUF_REFSTRUCT_COMPATIBILITY_MODE
+      output.WriteRawMessage(this);
+    #else
+      if (EntityResultType != global::Google.Cloud.Datastore.V1.EntityResult.Types.ResultType.Unspecified) {
         output.WriteRawTag(8);
         output.WriteEnum((int) EntityResultType);
       }
@@ -2619,7 +3266,7 @@ namespace Google.Cloud.Datastore.V1 {
         output.WriteRawTag(34);
         output.WriteBytes(EndCursor);
       }
-      if (MoreResults != 0) {
+      if (MoreResults != global::Google.Cloud.Datastore.V1.QueryResultBatch.Types.MoreResultsType.Unspecified) {
         output.WriteRawTag(40);
         output.WriteEnum((int) MoreResults);
       }
@@ -2634,7 +3281,42 @@ namespace Google.Cloud.Datastore.V1 {
       if (_unknownFields != null) {
         _unknownFields.WriteTo(output);
       }
+    #endif
     }
+
+    #if !GOOGLE_PROTOBUF_REFSTRUCT_COMPATIBILITY_MODE
+    [global::System.Diagnostics.DebuggerNonUserCodeAttribute]
+    void pb::IBufferMessage.InternalWriteTo(ref pb::WriteContext output) {
+      if (EntityResultType != global::Google.Cloud.Datastore.V1.EntityResult.Types.ResultType.Unspecified) {
+        output.WriteRawTag(8);
+        output.WriteEnum((int) EntityResultType);
+      }
+      entityResults_.WriteTo(ref output, _repeated_entityResults_codec);
+      if (SkippedCursor.Length != 0) {
+        output.WriteRawTag(26);
+        output.WriteBytes(SkippedCursor);
+      }
+      if (EndCursor.Length != 0) {
+        output.WriteRawTag(34);
+        output.WriteBytes(EndCursor);
+      }
+      if (MoreResults != global::Google.Cloud.Datastore.V1.QueryResultBatch.Types.MoreResultsType.Unspecified) {
+        output.WriteRawTag(40);
+        output.WriteEnum((int) MoreResults);
+      }
+      if (SkippedResults != 0) {
+        output.WriteRawTag(48);
+        output.WriteInt32(SkippedResults);
+      }
+      if (SnapshotVersion != 0L) {
+        output.WriteRawTag(56);
+        output.WriteInt64(SnapshotVersion);
+      }
+      if (_unknownFields != null) {
+        _unknownFields.WriteTo(ref output);
+      }
+    }
+    #endif
 
     [global::System.Diagnostics.DebuggerNonUserCodeAttribute]
     public int CalculateSize() {
@@ -2645,14 +3327,14 @@ namespace Google.Cloud.Datastore.V1 {
       if (SkippedCursor.Length != 0) {
         size += 1 + pb::CodedOutputStream.ComputeBytesSize(SkippedCursor);
       }
-      if (EntityResultType != 0) {
+      if (EntityResultType != global::Google.Cloud.Datastore.V1.EntityResult.Types.ResultType.Unspecified) {
         size += 1 + pb::CodedOutputStream.ComputeEnumSize((int) EntityResultType);
       }
       size += entityResults_.CalculateSize(_repeated_entityResults_codec);
       if (EndCursor.Length != 0) {
         size += 1 + pb::CodedOutputStream.ComputeBytesSize(EndCursor);
       }
-      if (MoreResults != 0) {
+      if (MoreResults != global::Google.Cloud.Datastore.V1.QueryResultBatch.Types.MoreResultsType.Unspecified) {
         size += 1 + pb::CodedOutputStream.ComputeEnumSize((int) MoreResults);
       }
       if (SnapshotVersion != 0L) {
@@ -2675,14 +3357,14 @@ namespace Google.Cloud.Datastore.V1 {
       if (other.SkippedCursor.Length != 0) {
         SkippedCursor = other.SkippedCursor;
       }
-      if (other.EntityResultType != 0) {
+      if (other.EntityResultType != global::Google.Cloud.Datastore.V1.EntityResult.Types.ResultType.Unspecified) {
         EntityResultType = other.EntityResultType;
       }
       entityResults_.Add(other.entityResults_);
       if (other.EndCursor.Length != 0) {
         EndCursor = other.EndCursor;
       }
-      if (other.MoreResults != 0) {
+      if (other.MoreResults != global::Google.Cloud.Datastore.V1.QueryResultBatch.Types.MoreResultsType.Unspecified) {
         MoreResults = other.MoreResults;
       }
       if (other.SnapshotVersion != 0L) {
@@ -2693,6 +3375,9 @@ namespace Google.Cloud.Datastore.V1 {
 
     [global::System.Diagnostics.DebuggerNonUserCodeAttribute]
     public void MergeFrom(pb::CodedInputStream input) {
+    #if !GOOGLE_PROTOBUF_REFSTRUCT_COMPATIBILITY_MODE
+      input.ReadRawMessage(this);
+    #else
       uint tag;
       while ((tag = input.ReadTag()) != 0) {
         switch(tag) {
@@ -2729,7 +3414,50 @@ namespace Google.Cloud.Datastore.V1 {
           }
         }
       }
+    #endif
     }
+
+    #if !GOOGLE_PROTOBUF_REFSTRUCT_COMPATIBILITY_MODE
+    [global::System.Diagnostics.DebuggerNonUserCodeAttribute]
+    void pb::IBufferMessage.InternalMergeFrom(ref pb::ParseContext input) {
+      uint tag;
+      while ((tag = input.ReadTag()) != 0) {
+        switch(tag) {
+          default:
+            _unknownFields = pb::UnknownFieldSet.MergeFieldFrom(_unknownFields, ref input);
+            break;
+          case 8: {
+            EntityResultType = (global::Google.Cloud.Datastore.V1.EntityResult.Types.ResultType) input.ReadEnum();
+            break;
+          }
+          case 18: {
+            entityResults_.AddEntriesFrom(ref input, _repeated_entityResults_codec);
+            break;
+          }
+          case 26: {
+            SkippedCursor = input.ReadBytes();
+            break;
+          }
+          case 34: {
+            EndCursor = input.ReadBytes();
+            break;
+          }
+          case 40: {
+            MoreResults = (global::Google.Cloud.Datastore.V1.QueryResultBatch.Types.MoreResultsType) input.ReadEnum();
+            break;
+          }
+          case 48: {
+            SkippedResults = input.ReadInt32();
+            break;
+          }
+          case 56: {
+            SnapshotVersion = input.ReadInt64();
+            break;
+          }
+        }
+      }
+    }
+    #endif
 
     #region Nested types
     /// <summary>Container for nested types declared in the QueryResultBatch message type.</summary>

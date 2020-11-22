@@ -1,4 +1,4 @@
-// Copyright 2019 Google LLC
+// Copyright 2020 Google LLC
 //
 // Licensed under the Apache License, Version 2.0 (the "License");
 // you may not use this file except in compliance with the License.
@@ -30,7 +30,7 @@ namespace Google.Cloud.Tasks.V2Beta3.Snippets
     public sealed class GeneratedCloudTasksClientSnippets
     {
         /// <summary>Snippet for ListQueues</summary>
-        public void ListQueues_RequestObject()
+        public void ListQueuesRequestObject()
         {
             // Snippet: ListQueues(ListQueuesRequest, CallSettings)
             // Create client
@@ -38,7 +38,7 @@ namespace Google.Cloud.Tasks.V2Beta3.Snippets
             // Initialize request argument(s)
             ListQueuesRequest request = new ListQueuesRequest
             {
-                ParentAsLocationName = new LocationName("[PROJECT]", "[LOCATION]"),
+                ParentAsLocationName = LocationName.FromProjectLocation("[PROJECT]", "[LOCATION]"),
                 Filter = "",
             };
             // Make the request
@@ -79,7 +79,7 @@ namespace Google.Cloud.Tasks.V2Beta3.Snippets
         }
 
         /// <summary>Snippet for ListQueues</summary>
-        public async Task ListQueuesAsync_RequestObject()
+        public async Task ListQueuesRequestObjectAsync()
         {
             // Snippet: ListQueuesAsync(ListQueuesRequest, CallSettings)
             // Create client
@@ -87,7 +87,7 @@ namespace Google.Cloud.Tasks.V2Beta3.Snippets
             // Initialize request argument(s)
             ListQueuesRequest request = new ListQueuesRequest
             {
-                ParentAsLocationName = new LocationName("[PROJECT]", "[LOCATION]"),
+                ParentAsLocationName = LocationName.FromProjectLocation("[PROJECT]", "[LOCATION]"),
                 Filter = "",
             };
             // Make the request
@@ -218,13 +218,13 @@ namespace Google.Cloud.Tasks.V2Beta3.Snippets
         }
 
         /// <summary>Snippet for ListQueues</summary>
-        public void ListQueues_ResourceNames()
+        public void ListQueuesResourceNames()
         {
             // Snippet: ListQueues(LocationName, string, int?, CallSettings)
             // Create client
             CloudTasksClient cloudTasksClient = CloudTasksClient.Create();
             // Initialize request argument(s)
-            LocationName parent = new LocationName("[PROJECT]", "[LOCATION]");
+            LocationName parent = LocationName.FromProjectLocation("[PROJECT]", "[LOCATION]");
             // Make the request
             PagedEnumerable<ListQueuesResponse, Queue> response = cloudTasksClient.ListQueues(parent);
 
@@ -263,13 +263,13 @@ namespace Google.Cloud.Tasks.V2Beta3.Snippets
         }
 
         /// <summary>Snippet for ListQueues</summary>
-        public async Task ListQueuesAsync_ResourceNames()
+        public async Task ListQueuesResourceNamesAsync()
         {
             // Snippet: ListQueuesAsync(LocationName, string, int?, CallSettings)
             // Create client
             CloudTasksClient cloudTasksClient = await CloudTasksClient.CreateAsync();
             // Initialize request argument(s)
-            LocationName parent = new LocationName("[PROJECT]", "[LOCATION]");
+            LocationName parent = LocationName.FromProjectLocation("[PROJECT]", "[LOCATION]");
             // Make the request
             PagedAsyncEnumerable<ListQueuesResponse, Queue> response = cloudTasksClient.ListQueuesAsync(parent);
 
@@ -308,7 +308,7 @@ namespace Google.Cloud.Tasks.V2Beta3.Snippets
         }
 
         /// <summary>Snippet for GetQueue</summary>
-        public void GetQueue_RequestObject()
+        public void GetQueueRequestObject()
         {
             // Snippet: GetQueue(GetQueueRequest, CallSettings)
             // Create client
@@ -316,7 +316,7 @@ namespace Google.Cloud.Tasks.V2Beta3.Snippets
             // Initialize request argument(s)
             GetQueueRequest request = new GetQueueRequest
             {
-                QueueName = new QueueName("[PROJECT]", "[LOCATION]", "[QUEUE]"),
+                QueueName = QueueName.FromProjectLocationQueue("[PROJECT]", "[LOCATION]", "[QUEUE]"),
             };
             // Make the request
             Queue response = cloudTasksClient.GetQueue(request);
@@ -324,7 +324,7 @@ namespace Google.Cloud.Tasks.V2Beta3.Snippets
         }
 
         /// <summary>Snippet for GetQueueAsync</summary>
-        public async Task GetQueueAsync_RequestObject()
+        public async Task GetQueueRequestObjectAsync()
         {
             // Snippet: GetQueueAsync(GetQueueRequest, CallSettings)
             // Additional: GetQueueAsync(GetQueueRequest, CancellationToken)
@@ -333,7 +333,7 @@ namespace Google.Cloud.Tasks.V2Beta3.Snippets
             // Initialize request argument(s)
             GetQueueRequest request = new GetQueueRequest
             {
-                QueueName = new QueueName("[PROJECT]", "[LOCATION]", "[QUEUE]"),
+                QueueName = QueueName.FromProjectLocationQueue("[PROJECT]", "[LOCATION]", "[QUEUE]"),
             };
             // Make the request
             Queue response = await cloudTasksClient.GetQueueAsync(request);
@@ -368,34 +368,34 @@ namespace Google.Cloud.Tasks.V2Beta3.Snippets
         }
 
         /// <summary>Snippet for GetQueue</summary>
-        public void GetQueue_ResourceNames()
+        public void GetQueueResourceNames()
         {
             // Snippet: GetQueue(QueueName, CallSettings)
             // Create client
             CloudTasksClient cloudTasksClient = CloudTasksClient.Create();
             // Initialize request argument(s)
-            QueueName name = new QueueName("[PROJECT]", "[LOCATION]", "[QUEUE]");
+            QueueName name = QueueName.FromProjectLocationQueue("[PROJECT]", "[LOCATION]", "[QUEUE]");
             // Make the request
             Queue response = cloudTasksClient.GetQueue(name);
             // End snippet
         }
 
         /// <summary>Snippet for GetQueueAsync</summary>
-        public async Task GetQueueAsync_ResourceNames()
+        public async Task GetQueueResourceNamesAsync()
         {
             // Snippet: GetQueueAsync(QueueName, CallSettings)
             // Additional: GetQueueAsync(QueueName, CancellationToken)
             // Create client
             CloudTasksClient cloudTasksClient = await CloudTasksClient.CreateAsync();
             // Initialize request argument(s)
-            QueueName name = new QueueName("[PROJECT]", "[LOCATION]", "[QUEUE]");
+            QueueName name = QueueName.FromProjectLocationQueue("[PROJECT]", "[LOCATION]", "[QUEUE]");
             // Make the request
             Queue response = await cloudTasksClient.GetQueueAsync(name);
             // End snippet
         }
 
         /// <summary>Snippet for CreateQueue</summary>
-        public void CreateQueue_RequestObject()
+        public void CreateQueueRequestObject()
         {
             // Snippet: CreateQueue(CreateQueueRequest, CallSettings)
             // Create client
@@ -403,7 +403,7 @@ namespace Google.Cloud.Tasks.V2Beta3.Snippets
             // Initialize request argument(s)
             CreateQueueRequest request = new CreateQueueRequest
             {
-                ParentAsLocationName = new LocationName("[PROJECT]", "[LOCATION]"),
+                ParentAsLocationName = LocationName.FromProjectLocation("[PROJECT]", "[LOCATION]"),
                 Queue = new Queue(),
             };
             // Make the request
@@ -412,7 +412,7 @@ namespace Google.Cloud.Tasks.V2Beta3.Snippets
         }
 
         /// <summary>Snippet for CreateQueueAsync</summary>
-        public async Task CreateQueueAsync_RequestObject()
+        public async Task CreateQueueRequestObjectAsync()
         {
             // Snippet: CreateQueueAsync(CreateQueueRequest, CallSettings)
             // Additional: CreateQueueAsync(CreateQueueRequest, CancellationToken)
@@ -421,7 +421,7 @@ namespace Google.Cloud.Tasks.V2Beta3.Snippets
             // Initialize request argument(s)
             CreateQueueRequest request = new CreateQueueRequest
             {
-                ParentAsLocationName = new LocationName("[PROJECT]", "[LOCATION]"),
+                ParentAsLocationName = LocationName.FromProjectLocation("[PROJECT]", "[LOCATION]"),
                 Queue = new Queue(),
             };
             // Make the request
@@ -459,13 +459,13 @@ namespace Google.Cloud.Tasks.V2Beta3.Snippets
         }
 
         /// <summary>Snippet for CreateQueue</summary>
-        public void CreateQueue_ResourceNames()
+        public void CreateQueueResourceNames()
         {
             // Snippet: CreateQueue(LocationName, Queue, CallSettings)
             // Create client
             CloudTasksClient cloudTasksClient = CloudTasksClient.Create();
             // Initialize request argument(s)
-            LocationName parent = new LocationName("[PROJECT]", "[LOCATION]");
+            LocationName parent = LocationName.FromProjectLocation("[PROJECT]", "[LOCATION]");
             Queue queue = new Queue();
             // Make the request
             Queue response = cloudTasksClient.CreateQueue(parent, queue);
@@ -473,14 +473,14 @@ namespace Google.Cloud.Tasks.V2Beta3.Snippets
         }
 
         /// <summary>Snippet for CreateQueueAsync</summary>
-        public async Task CreateQueueAsync_ResourceNames()
+        public async Task CreateQueueResourceNamesAsync()
         {
             // Snippet: CreateQueueAsync(LocationName, Queue, CallSettings)
             // Additional: CreateQueueAsync(LocationName, Queue, CancellationToken)
             // Create client
             CloudTasksClient cloudTasksClient = await CloudTasksClient.CreateAsync();
             // Initialize request argument(s)
-            LocationName parent = new LocationName("[PROJECT]", "[LOCATION]");
+            LocationName parent = LocationName.FromProjectLocation("[PROJECT]", "[LOCATION]");
             Queue queue = new Queue();
             // Make the request
             Queue response = await cloudTasksClient.CreateQueueAsync(parent, queue);
@@ -488,7 +488,7 @@ namespace Google.Cloud.Tasks.V2Beta3.Snippets
         }
 
         /// <summary>Snippet for UpdateQueue</summary>
-        public void UpdateQueue_RequestObject()
+        public void UpdateQueueRequestObject()
         {
             // Snippet: UpdateQueue(UpdateQueueRequest, CallSettings)
             // Create client
@@ -505,7 +505,7 @@ namespace Google.Cloud.Tasks.V2Beta3.Snippets
         }
 
         /// <summary>Snippet for UpdateQueueAsync</summary>
-        public async Task UpdateQueueAsync_RequestObject()
+        public async Task UpdateQueueRequestObjectAsync()
         {
             // Snippet: UpdateQueueAsync(UpdateQueueRequest, CallSettings)
             // Additional: UpdateQueueAsync(UpdateQueueRequest, CancellationToken)
@@ -552,7 +552,7 @@ namespace Google.Cloud.Tasks.V2Beta3.Snippets
         }
 
         /// <summary>Snippet for DeleteQueue</summary>
-        public void DeleteQueue_RequestObject()
+        public void DeleteQueueRequestObject()
         {
             // Snippet: DeleteQueue(DeleteQueueRequest, CallSettings)
             // Create client
@@ -560,7 +560,7 @@ namespace Google.Cloud.Tasks.V2Beta3.Snippets
             // Initialize request argument(s)
             DeleteQueueRequest request = new DeleteQueueRequest
             {
-                QueueName = new QueueName("[PROJECT]", "[LOCATION]", "[QUEUE]"),
+                QueueName = QueueName.FromProjectLocationQueue("[PROJECT]", "[LOCATION]", "[QUEUE]"),
             };
             // Make the request
             cloudTasksClient.DeleteQueue(request);
@@ -568,7 +568,7 @@ namespace Google.Cloud.Tasks.V2Beta3.Snippets
         }
 
         /// <summary>Snippet for DeleteQueueAsync</summary>
-        public async Task DeleteQueueAsync_RequestObject()
+        public async Task DeleteQueueRequestObjectAsync()
         {
             // Snippet: DeleteQueueAsync(DeleteQueueRequest, CallSettings)
             // Additional: DeleteQueueAsync(DeleteQueueRequest, CancellationToken)
@@ -577,7 +577,7 @@ namespace Google.Cloud.Tasks.V2Beta3.Snippets
             // Initialize request argument(s)
             DeleteQueueRequest request = new DeleteQueueRequest
             {
-                QueueName = new QueueName("[PROJECT]", "[LOCATION]", "[QUEUE]"),
+                QueueName = QueueName.FromProjectLocationQueue("[PROJECT]", "[LOCATION]", "[QUEUE]"),
             };
             // Make the request
             await cloudTasksClient.DeleteQueueAsync(request);
@@ -612,34 +612,34 @@ namespace Google.Cloud.Tasks.V2Beta3.Snippets
         }
 
         /// <summary>Snippet for DeleteQueue</summary>
-        public void DeleteQueue_ResourceNames()
+        public void DeleteQueueResourceNames()
         {
             // Snippet: DeleteQueue(QueueName, CallSettings)
             // Create client
             CloudTasksClient cloudTasksClient = CloudTasksClient.Create();
             // Initialize request argument(s)
-            QueueName name = new QueueName("[PROJECT]", "[LOCATION]", "[QUEUE]");
+            QueueName name = QueueName.FromProjectLocationQueue("[PROJECT]", "[LOCATION]", "[QUEUE]");
             // Make the request
             cloudTasksClient.DeleteQueue(name);
             // End snippet
         }
 
         /// <summary>Snippet for DeleteQueueAsync</summary>
-        public async Task DeleteQueueAsync_ResourceNames()
+        public async Task DeleteQueueResourceNamesAsync()
         {
             // Snippet: DeleteQueueAsync(QueueName, CallSettings)
             // Additional: DeleteQueueAsync(QueueName, CancellationToken)
             // Create client
             CloudTasksClient cloudTasksClient = await CloudTasksClient.CreateAsync();
             // Initialize request argument(s)
-            QueueName name = new QueueName("[PROJECT]", "[LOCATION]", "[QUEUE]");
+            QueueName name = QueueName.FromProjectLocationQueue("[PROJECT]", "[LOCATION]", "[QUEUE]");
             // Make the request
             await cloudTasksClient.DeleteQueueAsync(name);
             // End snippet
         }
 
         /// <summary>Snippet for PurgeQueue</summary>
-        public void PurgeQueue_RequestObject()
+        public void PurgeQueueRequestObject()
         {
             // Snippet: PurgeQueue(PurgeQueueRequest, CallSettings)
             // Create client
@@ -647,7 +647,7 @@ namespace Google.Cloud.Tasks.V2Beta3.Snippets
             // Initialize request argument(s)
             PurgeQueueRequest request = new PurgeQueueRequest
             {
-                QueueName = new QueueName("[PROJECT]", "[LOCATION]", "[QUEUE]"),
+                QueueName = QueueName.FromProjectLocationQueue("[PROJECT]", "[LOCATION]", "[QUEUE]"),
             };
             // Make the request
             Queue response = cloudTasksClient.PurgeQueue(request);
@@ -655,7 +655,7 @@ namespace Google.Cloud.Tasks.V2Beta3.Snippets
         }
 
         /// <summary>Snippet for PurgeQueueAsync</summary>
-        public async Task PurgeQueueAsync_RequestObject()
+        public async Task PurgeQueueRequestObjectAsync()
         {
             // Snippet: PurgeQueueAsync(PurgeQueueRequest, CallSettings)
             // Additional: PurgeQueueAsync(PurgeQueueRequest, CancellationToken)
@@ -664,7 +664,7 @@ namespace Google.Cloud.Tasks.V2Beta3.Snippets
             // Initialize request argument(s)
             PurgeQueueRequest request = new PurgeQueueRequest
             {
-                QueueName = new QueueName("[PROJECT]", "[LOCATION]", "[QUEUE]"),
+                QueueName = QueueName.FromProjectLocationQueue("[PROJECT]", "[LOCATION]", "[QUEUE]"),
             };
             // Make the request
             Queue response = await cloudTasksClient.PurgeQueueAsync(request);
@@ -699,34 +699,34 @@ namespace Google.Cloud.Tasks.V2Beta3.Snippets
         }
 
         /// <summary>Snippet for PurgeQueue</summary>
-        public void PurgeQueue_ResourceNames()
+        public void PurgeQueueResourceNames()
         {
             // Snippet: PurgeQueue(QueueName, CallSettings)
             // Create client
             CloudTasksClient cloudTasksClient = CloudTasksClient.Create();
             // Initialize request argument(s)
-            QueueName name = new QueueName("[PROJECT]", "[LOCATION]", "[QUEUE]");
+            QueueName name = QueueName.FromProjectLocationQueue("[PROJECT]", "[LOCATION]", "[QUEUE]");
             // Make the request
             Queue response = cloudTasksClient.PurgeQueue(name);
             // End snippet
         }
 
         /// <summary>Snippet for PurgeQueueAsync</summary>
-        public async Task PurgeQueueAsync_ResourceNames()
+        public async Task PurgeQueueResourceNamesAsync()
         {
             // Snippet: PurgeQueueAsync(QueueName, CallSettings)
             // Additional: PurgeQueueAsync(QueueName, CancellationToken)
             // Create client
             CloudTasksClient cloudTasksClient = await CloudTasksClient.CreateAsync();
             // Initialize request argument(s)
-            QueueName name = new QueueName("[PROJECT]", "[LOCATION]", "[QUEUE]");
+            QueueName name = QueueName.FromProjectLocationQueue("[PROJECT]", "[LOCATION]", "[QUEUE]");
             // Make the request
             Queue response = await cloudTasksClient.PurgeQueueAsync(name);
             // End snippet
         }
 
         /// <summary>Snippet for PauseQueue</summary>
-        public void PauseQueue_RequestObject()
+        public void PauseQueueRequestObject()
         {
             // Snippet: PauseQueue(PauseQueueRequest, CallSettings)
             // Create client
@@ -734,7 +734,7 @@ namespace Google.Cloud.Tasks.V2Beta3.Snippets
             // Initialize request argument(s)
             PauseQueueRequest request = new PauseQueueRequest
             {
-                QueueName = new QueueName("[PROJECT]", "[LOCATION]", "[QUEUE]"),
+                QueueName = QueueName.FromProjectLocationQueue("[PROJECT]", "[LOCATION]", "[QUEUE]"),
             };
             // Make the request
             Queue response = cloudTasksClient.PauseQueue(request);
@@ -742,7 +742,7 @@ namespace Google.Cloud.Tasks.V2Beta3.Snippets
         }
 
         /// <summary>Snippet for PauseQueueAsync</summary>
-        public async Task PauseQueueAsync_RequestObject()
+        public async Task PauseQueueRequestObjectAsync()
         {
             // Snippet: PauseQueueAsync(PauseQueueRequest, CallSettings)
             // Additional: PauseQueueAsync(PauseQueueRequest, CancellationToken)
@@ -751,7 +751,7 @@ namespace Google.Cloud.Tasks.V2Beta3.Snippets
             // Initialize request argument(s)
             PauseQueueRequest request = new PauseQueueRequest
             {
-                QueueName = new QueueName("[PROJECT]", "[LOCATION]", "[QUEUE]"),
+                QueueName = QueueName.FromProjectLocationQueue("[PROJECT]", "[LOCATION]", "[QUEUE]"),
             };
             // Make the request
             Queue response = await cloudTasksClient.PauseQueueAsync(request);
@@ -786,34 +786,34 @@ namespace Google.Cloud.Tasks.V2Beta3.Snippets
         }
 
         /// <summary>Snippet for PauseQueue</summary>
-        public void PauseQueue_ResourceNames()
+        public void PauseQueueResourceNames()
         {
             // Snippet: PauseQueue(QueueName, CallSettings)
             // Create client
             CloudTasksClient cloudTasksClient = CloudTasksClient.Create();
             // Initialize request argument(s)
-            QueueName name = new QueueName("[PROJECT]", "[LOCATION]", "[QUEUE]");
+            QueueName name = QueueName.FromProjectLocationQueue("[PROJECT]", "[LOCATION]", "[QUEUE]");
             // Make the request
             Queue response = cloudTasksClient.PauseQueue(name);
             // End snippet
         }
 
         /// <summary>Snippet for PauseQueueAsync</summary>
-        public async Task PauseQueueAsync_ResourceNames()
+        public async Task PauseQueueResourceNamesAsync()
         {
             // Snippet: PauseQueueAsync(QueueName, CallSettings)
             // Additional: PauseQueueAsync(QueueName, CancellationToken)
             // Create client
             CloudTasksClient cloudTasksClient = await CloudTasksClient.CreateAsync();
             // Initialize request argument(s)
-            QueueName name = new QueueName("[PROJECT]", "[LOCATION]", "[QUEUE]");
+            QueueName name = QueueName.FromProjectLocationQueue("[PROJECT]", "[LOCATION]", "[QUEUE]");
             // Make the request
             Queue response = await cloudTasksClient.PauseQueueAsync(name);
             // End snippet
         }
 
         /// <summary>Snippet for ResumeQueue</summary>
-        public void ResumeQueue_RequestObject()
+        public void ResumeQueueRequestObject()
         {
             // Snippet: ResumeQueue(ResumeQueueRequest, CallSettings)
             // Create client
@@ -821,7 +821,7 @@ namespace Google.Cloud.Tasks.V2Beta3.Snippets
             // Initialize request argument(s)
             ResumeQueueRequest request = new ResumeQueueRequest
             {
-                QueueName = new QueueName("[PROJECT]", "[LOCATION]", "[QUEUE]"),
+                QueueName = QueueName.FromProjectLocationQueue("[PROJECT]", "[LOCATION]", "[QUEUE]"),
             };
             // Make the request
             Queue response = cloudTasksClient.ResumeQueue(request);
@@ -829,7 +829,7 @@ namespace Google.Cloud.Tasks.V2Beta3.Snippets
         }
 
         /// <summary>Snippet for ResumeQueueAsync</summary>
-        public async Task ResumeQueueAsync_RequestObject()
+        public async Task ResumeQueueRequestObjectAsync()
         {
             // Snippet: ResumeQueueAsync(ResumeQueueRequest, CallSettings)
             // Additional: ResumeQueueAsync(ResumeQueueRequest, CancellationToken)
@@ -838,7 +838,7 @@ namespace Google.Cloud.Tasks.V2Beta3.Snippets
             // Initialize request argument(s)
             ResumeQueueRequest request = new ResumeQueueRequest
             {
-                QueueName = new QueueName("[PROJECT]", "[LOCATION]", "[QUEUE]"),
+                QueueName = QueueName.FromProjectLocationQueue("[PROJECT]", "[LOCATION]", "[QUEUE]"),
             };
             // Make the request
             Queue response = await cloudTasksClient.ResumeQueueAsync(request);
@@ -873,34 +873,34 @@ namespace Google.Cloud.Tasks.V2Beta3.Snippets
         }
 
         /// <summary>Snippet for ResumeQueue</summary>
-        public void ResumeQueue_ResourceNames()
+        public void ResumeQueueResourceNames()
         {
             // Snippet: ResumeQueue(QueueName, CallSettings)
             // Create client
             CloudTasksClient cloudTasksClient = CloudTasksClient.Create();
             // Initialize request argument(s)
-            QueueName name = new QueueName("[PROJECT]", "[LOCATION]", "[QUEUE]");
+            QueueName name = QueueName.FromProjectLocationQueue("[PROJECT]", "[LOCATION]", "[QUEUE]");
             // Make the request
             Queue response = cloudTasksClient.ResumeQueue(name);
             // End snippet
         }
 
         /// <summary>Snippet for ResumeQueueAsync</summary>
-        public async Task ResumeQueueAsync_ResourceNames()
+        public async Task ResumeQueueResourceNamesAsync()
         {
             // Snippet: ResumeQueueAsync(QueueName, CallSettings)
             // Additional: ResumeQueueAsync(QueueName, CancellationToken)
             // Create client
             CloudTasksClient cloudTasksClient = await CloudTasksClient.CreateAsync();
             // Initialize request argument(s)
-            QueueName name = new QueueName("[PROJECT]", "[LOCATION]", "[QUEUE]");
+            QueueName name = QueueName.FromProjectLocationQueue("[PROJECT]", "[LOCATION]", "[QUEUE]");
             // Make the request
             Queue response = await cloudTasksClient.ResumeQueueAsync(name);
             // End snippet
         }
 
         /// <summary>Snippet for GetIamPolicy</summary>
-        public void GetIamPolicy_RequestObject()
+        public void GetIamPolicyRequestObject()
         {
             // Snippet: GetIamPolicy(GetIamPolicyRequest, CallSettings)
             // Create client
@@ -908,7 +908,7 @@ namespace Google.Cloud.Tasks.V2Beta3.Snippets
             // Initialize request argument(s)
             GetIamPolicyRequest request = new GetIamPolicyRequest
             {
-                ResourceAsResourceName = new UnknownResourceName("a/wildcard/resource"),
+                ResourceAsResourceName = new UnparsedResourceName("a/wildcard/resource"),
                 Options = new GetPolicyOptions(),
             };
             // Make the request
@@ -917,7 +917,7 @@ namespace Google.Cloud.Tasks.V2Beta3.Snippets
         }
 
         /// <summary>Snippet for GetIamPolicyAsync</summary>
-        public async Task GetIamPolicyAsync_RequestObject()
+        public async Task GetIamPolicyRequestObjectAsync()
         {
             // Snippet: GetIamPolicyAsync(GetIamPolicyRequest, CallSettings)
             // Additional: GetIamPolicyAsync(GetIamPolicyRequest, CancellationToken)
@@ -926,7 +926,7 @@ namespace Google.Cloud.Tasks.V2Beta3.Snippets
             // Initialize request argument(s)
             GetIamPolicyRequest request = new GetIamPolicyRequest
             {
-                ResourceAsResourceName = new UnknownResourceName("a/wildcard/resource"),
+                ResourceAsResourceName = new UnparsedResourceName("a/wildcard/resource"),
                 Options = new GetPolicyOptions(),
             };
             // Make the request
@@ -962,34 +962,34 @@ namespace Google.Cloud.Tasks.V2Beta3.Snippets
         }
 
         /// <summary>Snippet for GetIamPolicy</summary>
-        public void GetIamPolicy_ResourceNames()
+        public void GetIamPolicyResourceNames()
         {
             // Snippet: GetIamPolicy(IResourceName, CallSettings)
             // Create client
             CloudTasksClient cloudTasksClient = CloudTasksClient.Create();
             // Initialize request argument(s)
-            IResourceName resource = new UnknownResourceName("a/wildcard/resource");
+            IResourceName resource = new UnparsedResourceName("a/wildcard/resource");
             // Make the request
             Policy response = cloudTasksClient.GetIamPolicy(resource);
             // End snippet
         }
 
         /// <summary>Snippet for GetIamPolicyAsync</summary>
-        public async Task GetIamPolicyAsync_ResourceNames()
+        public async Task GetIamPolicyResourceNamesAsync()
         {
             // Snippet: GetIamPolicyAsync(IResourceName, CallSettings)
             // Additional: GetIamPolicyAsync(IResourceName, CancellationToken)
             // Create client
             CloudTasksClient cloudTasksClient = await CloudTasksClient.CreateAsync();
             // Initialize request argument(s)
-            IResourceName resource = new UnknownResourceName("a/wildcard/resource");
+            IResourceName resource = new UnparsedResourceName("a/wildcard/resource");
             // Make the request
             Policy response = await cloudTasksClient.GetIamPolicyAsync(resource);
             // End snippet
         }
 
         /// <summary>Snippet for SetIamPolicy</summary>
-        public void SetIamPolicy_RequestObject()
+        public void SetIamPolicyRequestObject()
         {
             // Snippet: SetIamPolicy(SetIamPolicyRequest, CallSettings)
             // Create client
@@ -997,7 +997,7 @@ namespace Google.Cloud.Tasks.V2Beta3.Snippets
             // Initialize request argument(s)
             SetIamPolicyRequest request = new SetIamPolicyRequest
             {
-                ResourceAsResourceName = new UnknownResourceName("a/wildcard/resource"),
+                ResourceAsResourceName = new UnparsedResourceName("a/wildcard/resource"),
                 Policy = new Policy(),
             };
             // Make the request
@@ -1006,7 +1006,7 @@ namespace Google.Cloud.Tasks.V2Beta3.Snippets
         }
 
         /// <summary>Snippet for SetIamPolicyAsync</summary>
-        public async Task SetIamPolicyAsync_RequestObject()
+        public async Task SetIamPolicyRequestObjectAsync()
         {
             // Snippet: SetIamPolicyAsync(SetIamPolicyRequest, CallSettings)
             // Additional: SetIamPolicyAsync(SetIamPolicyRequest, CancellationToken)
@@ -1015,7 +1015,7 @@ namespace Google.Cloud.Tasks.V2Beta3.Snippets
             // Initialize request argument(s)
             SetIamPolicyRequest request = new SetIamPolicyRequest
             {
-                ResourceAsResourceName = new UnknownResourceName("a/wildcard/resource"),
+                ResourceAsResourceName = new UnparsedResourceName("a/wildcard/resource"),
                 Policy = new Policy(),
             };
             // Make the request
@@ -1053,13 +1053,13 @@ namespace Google.Cloud.Tasks.V2Beta3.Snippets
         }
 
         /// <summary>Snippet for SetIamPolicy</summary>
-        public void SetIamPolicy_ResourceNames()
+        public void SetIamPolicyResourceNames()
         {
             // Snippet: SetIamPolicy(IResourceName, Policy, CallSettings)
             // Create client
             CloudTasksClient cloudTasksClient = CloudTasksClient.Create();
             // Initialize request argument(s)
-            IResourceName resource = new UnknownResourceName("a/wildcard/resource");
+            IResourceName resource = new UnparsedResourceName("a/wildcard/resource");
             Policy policy = new Policy();
             // Make the request
             Policy response = cloudTasksClient.SetIamPolicy(resource, policy);
@@ -1067,14 +1067,14 @@ namespace Google.Cloud.Tasks.V2Beta3.Snippets
         }
 
         /// <summary>Snippet for SetIamPolicyAsync</summary>
-        public async Task SetIamPolicyAsync_ResourceNames()
+        public async Task SetIamPolicyResourceNamesAsync()
         {
             // Snippet: SetIamPolicyAsync(IResourceName, Policy, CallSettings)
             // Additional: SetIamPolicyAsync(IResourceName, Policy, CancellationToken)
             // Create client
             CloudTasksClient cloudTasksClient = await CloudTasksClient.CreateAsync();
             // Initialize request argument(s)
-            IResourceName resource = new UnknownResourceName("a/wildcard/resource");
+            IResourceName resource = new UnparsedResourceName("a/wildcard/resource");
             Policy policy = new Policy();
             // Make the request
             Policy response = await cloudTasksClient.SetIamPolicyAsync(resource, policy);
@@ -1082,7 +1082,7 @@ namespace Google.Cloud.Tasks.V2Beta3.Snippets
         }
 
         /// <summary>Snippet for TestIamPermissions</summary>
-        public void TestIamPermissions_RequestObject()
+        public void TestIamPermissionsRequestObject()
         {
             // Snippet: TestIamPermissions(TestIamPermissionsRequest, CallSettings)
             // Create client
@@ -1090,7 +1090,7 @@ namespace Google.Cloud.Tasks.V2Beta3.Snippets
             // Initialize request argument(s)
             TestIamPermissionsRequest request = new TestIamPermissionsRequest
             {
-                ResourceAsResourceName = new UnknownResourceName("a/wildcard/resource"),
+                ResourceAsResourceName = new UnparsedResourceName("a/wildcard/resource"),
                 Permissions = { "", },
             };
             // Make the request
@@ -1099,7 +1099,7 @@ namespace Google.Cloud.Tasks.V2Beta3.Snippets
         }
 
         /// <summary>Snippet for TestIamPermissionsAsync</summary>
-        public async Task TestIamPermissionsAsync_RequestObject()
+        public async Task TestIamPermissionsRequestObjectAsync()
         {
             // Snippet: TestIamPermissionsAsync(TestIamPermissionsRequest, CallSettings)
             // Additional: TestIamPermissionsAsync(TestIamPermissionsRequest, CancellationToken)
@@ -1108,7 +1108,7 @@ namespace Google.Cloud.Tasks.V2Beta3.Snippets
             // Initialize request argument(s)
             TestIamPermissionsRequest request = new TestIamPermissionsRequest
             {
-                ResourceAsResourceName = new UnknownResourceName("a/wildcard/resource"),
+                ResourceAsResourceName = new UnparsedResourceName("a/wildcard/resource"),
                 Permissions = { "", },
             };
             // Make the request
@@ -1146,13 +1146,13 @@ namespace Google.Cloud.Tasks.V2Beta3.Snippets
         }
 
         /// <summary>Snippet for TestIamPermissions</summary>
-        public void TestIamPermissions_ResourceNames()
+        public void TestIamPermissionsResourceNames()
         {
             // Snippet: TestIamPermissions(IResourceName, IEnumerable<string>, CallSettings)
             // Create client
             CloudTasksClient cloudTasksClient = CloudTasksClient.Create();
             // Initialize request argument(s)
-            IResourceName resource = new UnknownResourceName("a/wildcard/resource");
+            IResourceName resource = new UnparsedResourceName("a/wildcard/resource");
             IEnumerable<string> permissions = new string[] { "", };
             // Make the request
             TestIamPermissionsResponse response = cloudTasksClient.TestIamPermissions(resource, permissions);
@@ -1160,14 +1160,14 @@ namespace Google.Cloud.Tasks.V2Beta3.Snippets
         }
 
         /// <summary>Snippet for TestIamPermissionsAsync</summary>
-        public async Task TestIamPermissionsAsync_ResourceNames()
+        public async Task TestIamPermissionsResourceNamesAsync()
         {
             // Snippet: TestIamPermissionsAsync(IResourceName, IEnumerable<string>, CallSettings)
             // Additional: TestIamPermissionsAsync(IResourceName, IEnumerable<string>, CancellationToken)
             // Create client
             CloudTasksClient cloudTasksClient = await CloudTasksClient.CreateAsync();
             // Initialize request argument(s)
-            IResourceName resource = new UnknownResourceName("a/wildcard/resource");
+            IResourceName resource = new UnparsedResourceName("a/wildcard/resource");
             IEnumerable<string> permissions = new string[] { "", };
             // Make the request
             TestIamPermissionsResponse response = await cloudTasksClient.TestIamPermissionsAsync(resource, permissions);
@@ -1175,7 +1175,7 @@ namespace Google.Cloud.Tasks.V2Beta3.Snippets
         }
 
         /// <summary>Snippet for ListTasks</summary>
-        public void ListTasks_RequestObject()
+        public void ListTasksRequestObject()
         {
             // Snippet: ListTasks(ListTasksRequest, CallSettings)
             // Create client
@@ -1183,7 +1183,7 @@ namespace Google.Cloud.Tasks.V2Beta3.Snippets
             // Initialize request argument(s)
             ListTasksRequest request = new ListTasksRequest
             {
-                ParentAsQueueName = new QueueName("[PROJECT]", "[LOCATION]", "[QUEUE]"),
+                ParentAsQueueName = QueueName.FromProjectLocationQueue("[PROJECT]", "[LOCATION]", "[QUEUE]"),
                 ResponseView = gctv::Task.Types.View.Unspecified,
             };
             // Make the request
@@ -1224,7 +1224,7 @@ namespace Google.Cloud.Tasks.V2Beta3.Snippets
         }
 
         /// <summary>Snippet for ListTasks</summary>
-        public async Task ListTasksAsync_RequestObject()
+        public async Task ListTasksRequestObjectAsync()
         {
             // Snippet: ListTasksAsync(ListTasksRequest, CallSettings)
             // Create client
@@ -1232,7 +1232,7 @@ namespace Google.Cloud.Tasks.V2Beta3.Snippets
             // Initialize request argument(s)
             ListTasksRequest request = new ListTasksRequest
             {
-                ParentAsQueueName = new QueueName("[PROJECT]", "[LOCATION]", "[QUEUE]"),
+                ParentAsQueueName = QueueName.FromProjectLocationQueue("[PROJECT]", "[LOCATION]", "[QUEUE]"),
                 ResponseView = gctv::Task.Types.View.Unspecified,
             };
             // Make the request
@@ -1363,13 +1363,13 @@ namespace Google.Cloud.Tasks.V2Beta3.Snippets
         }
 
         /// <summary>Snippet for ListTasks</summary>
-        public void ListTasks_ResourceNames()
+        public void ListTasksResourceNames()
         {
             // Snippet: ListTasks(QueueName, string, int?, CallSettings)
             // Create client
             CloudTasksClient cloudTasksClient = CloudTasksClient.Create();
             // Initialize request argument(s)
-            QueueName parent = new QueueName("[PROJECT]", "[LOCATION]", "[QUEUE]");
+            QueueName parent = QueueName.FromProjectLocationQueue("[PROJECT]", "[LOCATION]", "[QUEUE]");
             // Make the request
             PagedEnumerable<ListTasksResponse, gctv::Task> response = cloudTasksClient.ListTasks(parent);
 
@@ -1408,13 +1408,13 @@ namespace Google.Cloud.Tasks.V2Beta3.Snippets
         }
 
         /// <summary>Snippet for ListTasks</summary>
-        public async Task ListTasksAsync_ResourceNames()
+        public async Task ListTasksResourceNamesAsync()
         {
             // Snippet: ListTasksAsync(QueueName, string, int?, CallSettings)
             // Create client
             CloudTasksClient cloudTasksClient = await CloudTasksClient.CreateAsync();
             // Initialize request argument(s)
-            QueueName parent = new QueueName("[PROJECT]", "[LOCATION]", "[QUEUE]");
+            QueueName parent = QueueName.FromProjectLocationQueue("[PROJECT]", "[LOCATION]", "[QUEUE]");
             // Make the request
             PagedAsyncEnumerable<ListTasksResponse, gctv::Task> response = cloudTasksClient.ListTasksAsync(parent);
 
@@ -1453,7 +1453,7 @@ namespace Google.Cloud.Tasks.V2Beta3.Snippets
         }
 
         /// <summary>Snippet for GetTask</summary>
-        public void GetTask_RequestObject()
+        public void GetTaskRequestObject()
         {
             // Snippet: GetTask(GetTaskRequest, CallSettings)
             // Create client
@@ -1461,7 +1461,7 @@ namespace Google.Cloud.Tasks.V2Beta3.Snippets
             // Initialize request argument(s)
             GetTaskRequest request = new GetTaskRequest
             {
-                TaskName = new TaskName("[PROJECT]", "[LOCATION]", "[QUEUE]", "[TASK]"),
+                TaskName = TaskName.FromProjectLocationQueueTask("[PROJECT]", "[LOCATION]", "[QUEUE]", "[TASK]"),
                 ResponseView = gctv::Task.Types.View.Unspecified,
             };
             // Make the request
@@ -1470,7 +1470,7 @@ namespace Google.Cloud.Tasks.V2Beta3.Snippets
         }
 
         /// <summary>Snippet for GetTaskAsync</summary>
-        public async Task GetTaskAsync_RequestObject()
+        public async Task GetTaskRequestObjectAsync()
         {
             // Snippet: GetTaskAsync(GetTaskRequest, CallSettings)
             // Additional: GetTaskAsync(GetTaskRequest, CancellationToken)
@@ -1479,7 +1479,7 @@ namespace Google.Cloud.Tasks.V2Beta3.Snippets
             // Initialize request argument(s)
             GetTaskRequest request = new GetTaskRequest
             {
-                TaskName = new TaskName("[PROJECT]", "[LOCATION]", "[QUEUE]", "[TASK]"),
+                TaskName = TaskName.FromProjectLocationQueueTask("[PROJECT]", "[LOCATION]", "[QUEUE]", "[TASK]"),
                 ResponseView = gctv::Task.Types.View.Unspecified,
             };
             // Make the request
@@ -1515,34 +1515,34 @@ namespace Google.Cloud.Tasks.V2Beta3.Snippets
         }
 
         /// <summary>Snippet for GetTask</summary>
-        public void GetTask_ResourceNames()
+        public void GetTaskResourceNames()
         {
             // Snippet: GetTask(TaskName, CallSettings)
             // Create client
             CloudTasksClient cloudTasksClient = CloudTasksClient.Create();
             // Initialize request argument(s)
-            TaskName name = new TaskName("[PROJECT]", "[LOCATION]", "[QUEUE]", "[TASK]");
+            TaskName name = TaskName.FromProjectLocationQueueTask("[PROJECT]", "[LOCATION]", "[QUEUE]", "[TASK]");
             // Make the request
             gctv::Task response = cloudTasksClient.GetTask(name);
             // End snippet
         }
 
         /// <summary>Snippet for GetTaskAsync</summary>
-        public async Task GetTaskAsync_ResourceNames()
+        public async Task GetTaskResourceNamesAsync()
         {
             // Snippet: GetTaskAsync(TaskName, CallSettings)
             // Additional: GetTaskAsync(TaskName, CancellationToken)
             // Create client
             CloudTasksClient cloudTasksClient = await CloudTasksClient.CreateAsync();
             // Initialize request argument(s)
-            TaskName name = new TaskName("[PROJECT]", "[LOCATION]", "[QUEUE]", "[TASK]");
+            TaskName name = TaskName.FromProjectLocationQueueTask("[PROJECT]", "[LOCATION]", "[QUEUE]", "[TASK]");
             // Make the request
             gctv::Task response = await cloudTasksClient.GetTaskAsync(name);
             // End snippet
         }
 
         /// <summary>Snippet for CreateTask</summary>
-        public void CreateTask_RequestObject()
+        public void CreateTaskRequestObject()
         {
             // Snippet: CreateTask(CreateTaskRequest, CallSettings)
             // Create client
@@ -1550,7 +1550,7 @@ namespace Google.Cloud.Tasks.V2Beta3.Snippets
             // Initialize request argument(s)
             CreateTaskRequest request = new CreateTaskRequest
             {
-                ParentAsQueueName = new QueueName("[PROJECT]", "[LOCATION]", "[QUEUE]"),
+                ParentAsQueueName = QueueName.FromProjectLocationQueue("[PROJECT]", "[LOCATION]", "[QUEUE]"),
                 Task = new gctv::Task(),
                 ResponseView = gctv::Task.Types.View.Unspecified,
             };
@@ -1560,7 +1560,7 @@ namespace Google.Cloud.Tasks.V2Beta3.Snippets
         }
 
         /// <summary>Snippet for CreateTaskAsync</summary>
-        public async Task CreateTaskAsync_RequestObject()
+        public async Task CreateTaskRequestObjectAsync()
         {
             // Snippet: CreateTaskAsync(CreateTaskRequest, CallSettings)
             // Additional: CreateTaskAsync(CreateTaskRequest, CancellationToken)
@@ -1569,7 +1569,7 @@ namespace Google.Cloud.Tasks.V2Beta3.Snippets
             // Initialize request argument(s)
             CreateTaskRequest request = new CreateTaskRequest
             {
-                ParentAsQueueName = new QueueName("[PROJECT]", "[LOCATION]", "[QUEUE]"),
+                ParentAsQueueName = QueueName.FromProjectLocationQueue("[PROJECT]", "[LOCATION]", "[QUEUE]"),
                 Task = new gctv::Task(),
                 ResponseView = gctv::Task.Types.View.Unspecified,
             };
@@ -1608,13 +1608,13 @@ namespace Google.Cloud.Tasks.V2Beta3.Snippets
         }
 
         /// <summary>Snippet for CreateTask</summary>
-        public void CreateTask_ResourceNames()
+        public void CreateTaskResourceNames()
         {
             // Snippet: CreateTask(QueueName, Task, CallSettings)
             // Create client
             CloudTasksClient cloudTasksClient = CloudTasksClient.Create();
             // Initialize request argument(s)
-            QueueName parent = new QueueName("[PROJECT]", "[LOCATION]", "[QUEUE]");
+            QueueName parent = QueueName.FromProjectLocationQueue("[PROJECT]", "[LOCATION]", "[QUEUE]");
             gctv::Task task = new gctv::Task();
             // Make the request
             gctv::Task response = cloudTasksClient.CreateTask(parent, task);
@@ -1622,14 +1622,14 @@ namespace Google.Cloud.Tasks.V2Beta3.Snippets
         }
 
         /// <summary>Snippet for CreateTaskAsync</summary>
-        public async Task CreateTaskAsync_ResourceNames()
+        public async Task CreateTaskResourceNamesAsync()
         {
             // Snippet: CreateTaskAsync(QueueName, Task, CallSettings)
             // Additional: CreateTaskAsync(QueueName, Task, CancellationToken)
             // Create client
             CloudTasksClient cloudTasksClient = await CloudTasksClient.CreateAsync();
             // Initialize request argument(s)
-            QueueName parent = new QueueName("[PROJECT]", "[LOCATION]", "[QUEUE]");
+            QueueName parent = QueueName.FromProjectLocationQueue("[PROJECT]", "[LOCATION]", "[QUEUE]");
             gctv::Task task = new gctv::Task();
             // Make the request
             gctv::Task response = await cloudTasksClient.CreateTaskAsync(parent, task);
@@ -1637,7 +1637,7 @@ namespace Google.Cloud.Tasks.V2Beta3.Snippets
         }
 
         /// <summary>Snippet for DeleteTask</summary>
-        public void DeleteTask_RequestObject()
+        public void DeleteTaskRequestObject()
         {
             // Snippet: DeleteTask(DeleteTaskRequest, CallSettings)
             // Create client
@@ -1645,7 +1645,7 @@ namespace Google.Cloud.Tasks.V2Beta3.Snippets
             // Initialize request argument(s)
             DeleteTaskRequest request = new DeleteTaskRequest
             {
-                TaskName = new TaskName("[PROJECT]", "[LOCATION]", "[QUEUE]", "[TASK]"),
+                TaskName = TaskName.FromProjectLocationQueueTask("[PROJECT]", "[LOCATION]", "[QUEUE]", "[TASK]"),
             };
             // Make the request
             cloudTasksClient.DeleteTask(request);
@@ -1653,7 +1653,7 @@ namespace Google.Cloud.Tasks.V2Beta3.Snippets
         }
 
         /// <summary>Snippet for DeleteTaskAsync</summary>
-        public async Task DeleteTaskAsync_RequestObject()
+        public async Task DeleteTaskRequestObjectAsync()
         {
             // Snippet: DeleteTaskAsync(DeleteTaskRequest, CallSettings)
             // Additional: DeleteTaskAsync(DeleteTaskRequest, CancellationToken)
@@ -1662,7 +1662,7 @@ namespace Google.Cloud.Tasks.V2Beta3.Snippets
             // Initialize request argument(s)
             DeleteTaskRequest request = new DeleteTaskRequest
             {
-                TaskName = new TaskName("[PROJECT]", "[LOCATION]", "[QUEUE]", "[TASK]"),
+                TaskName = TaskName.FromProjectLocationQueueTask("[PROJECT]", "[LOCATION]", "[QUEUE]", "[TASK]"),
             };
             // Make the request
             await cloudTasksClient.DeleteTaskAsync(request);
@@ -1697,34 +1697,34 @@ namespace Google.Cloud.Tasks.V2Beta3.Snippets
         }
 
         /// <summary>Snippet for DeleteTask</summary>
-        public void DeleteTask_ResourceNames()
+        public void DeleteTaskResourceNames()
         {
             // Snippet: DeleteTask(TaskName, CallSettings)
             // Create client
             CloudTasksClient cloudTasksClient = CloudTasksClient.Create();
             // Initialize request argument(s)
-            TaskName name = new TaskName("[PROJECT]", "[LOCATION]", "[QUEUE]", "[TASK]");
+            TaskName name = TaskName.FromProjectLocationQueueTask("[PROJECT]", "[LOCATION]", "[QUEUE]", "[TASK]");
             // Make the request
             cloudTasksClient.DeleteTask(name);
             // End snippet
         }
 
         /// <summary>Snippet for DeleteTaskAsync</summary>
-        public async Task DeleteTaskAsync_ResourceNames()
+        public async Task DeleteTaskResourceNamesAsync()
         {
             // Snippet: DeleteTaskAsync(TaskName, CallSettings)
             // Additional: DeleteTaskAsync(TaskName, CancellationToken)
             // Create client
             CloudTasksClient cloudTasksClient = await CloudTasksClient.CreateAsync();
             // Initialize request argument(s)
-            TaskName name = new TaskName("[PROJECT]", "[LOCATION]", "[QUEUE]", "[TASK]");
+            TaskName name = TaskName.FromProjectLocationQueueTask("[PROJECT]", "[LOCATION]", "[QUEUE]", "[TASK]");
             // Make the request
             await cloudTasksClient.DeleteTaskAsync(name);
             // End snippet
         }
 
         /// <summary>Snippet for RunTask</summary>
-        public void RunTask_RequestObject()
+        public void RunTaskRequestObject()
         {
             // Snippet: RunTask(RunTaskRequest, CallSettings)
             // Create client
@@ -1732,7 +1732,7 @@ namespace Google.Cloud.Tasks.V2Beta3.Snippets
             // Initialize request argument(s)
             RunTaskRequest request = new RunTaskRequest
             {
-                TaskName = new TaskName("[PROJECT]", "[LOCATION]", "[QUEUE]", "[TASK]"),
+                TaskName = TaskName.FromProjectLocationQueueTask("[PROJECT]", "[LOCATION]", "[QUEUE]", "[TASK]"),
                 ResponseView = gctv::Task.Types.View.Unspecified,
             };
             // Make the request
@@ -1741,7 +1741,7 @@ namespace Google.Cloud.Tasks.V2Beta3.Snippets
         }
 
         /// <summary>Snippet for RunTaskAsync</summary>
-        public async Task RunTaskAsync_RequestObject()
+        public async Task RunTaskRequestObjectAsync()
         {
             // Snippet: RunTaskAsync(RunTaskRequest, CallSettings)
             // Additional: RunTaskAsync(RunTaskRequest, CancellationToken)
@@ -1750,7 +1750,7 @@ namespace Google.Cloud.Tasks.V2Beta3.Snippets
             // Initialize request argument(s)
             RunTaskRequest request = new RunTaskRequest
             {
-                TaskName = new TaskName("[PROJECT]", "[LOCATION]", "[QUEUE]", "[TASK]"),
+                TaskName = TaskName.FromProjectLocationQueueTask("[PROJECT]", "[LOCATION]", "[QUEUE]", "[TASK]"),
                 ResponseView = gctv::Task.Types.View.Unspecified,
             };
             // Make the request
@@ -1786,27 +1786,27 @@ namespace Google.Cloud.Tasks.V2Beta3.Snippets
         }
 
         /// <summary>Snippet for RunTask</summary>
-        public void RunTask_ResourceNames()
+        public void RunTaskResourceNames()
         {
             // Snippet: RunTask(TaskName, CallSettings)
             // Create client
             CloudTasksClient cloudTasksClient = CloudTasksClient.Create();
             // Initialize request argument(s)
-            TaskName name = new TaskName("[PROJECT]", "[LOCATION]", "[QUEUE]", "[TASK]");
+            TaskName name = TaskName.FromProjectLocationQueueTask("[PROJECT]", "[LOCATION]", "[QUEUE]", "[TASK]");
             // Make the request
             gctv::Task response = cloudTasksClient.RunTask(name);
             // End snippet
         }
 
         /// <summary>Snippet for RunTaskAsync</summary>
-        public async Task RunTaskAsync_ResourceNames()
+        public async Task RunTaskResourceNamesAsync()
         {
             // Snippet: RunTaskAsync(TaskName, CallSettings)
             // Additional: RunTaskAsync(TaskName, CancellationToken)
             // Create client
             CloudTasksClient cloudTasksClient = await CloudTasksClient.CreateAsync();
             // Initialize request argument(s)
-            TaskName name = new TaskName("[PROJECT]", "[LOCATION]", "[QUEUE]", "[TASK]");
+            TaskName name = TaskName.FromProjectLocationQueueTask("[PROJECT]", "[LOCATION]", "[QUEUE]", "[TASK]");
             // Make the request
             gctv::Task response = await cloudTasksClient.RunTaskAsync(name);
             // End snippet

@@ -47,12 +47,12 @@ namespace Google.Cloud.Iam.V1 {
             "dWRcSWFtXFYxYgZwcm90bzM="));
       descriptor = pbr::FileDescriptor.FromGeneratedCode(descriptorData,
           new pbr::FileDescriptor[] { global::Google.Type.ExprReflection.Descriptor, global::Google.Api.AnnotationsReflection.Descriptor, },
-          new pbr::GeneratedClrTypeInfo(null, new pbr::GeneratedClrTypeInfo[] {
-            new pbr::GeneratedClrTypeInfo(typeof(global::Google.Cloud.Iam.V1.Policy), global::Google.Cloud.Iam.V1.Policy.Parser, new[]{ "Version", "Bindings", "Etag" }, null, null, null),
-            new pbr::GeneratedClrTypeInfo(typeof(global::Google.Cloud.Iam.V1.Binding), global::Google.Cloud.Iam.V1.Binding.Parser, new[]{ "Role", "Members", "Condition" }, null, null, null),
-            new pbr::GeneratedClrTypeInfo(typeof(global::Google.Cloud.Iam.V1.PolicyDelta), global::Google.Cloud.Iam.V1.PolicyDelta.Parser, new[]{ "BindingDeltas", "AuditConfigDeltas" }, null, null, null),
-            new pbr::GeneratedClrTypeInfo(typeof(global::Google.Cloud.Iam.V1.BindingDelta), global::Google.Cloud.Iam.V1.BindingDelta.Parser, new[]{ "Action", "Role", "Member", "Condition" }, null, new[]{ typeof(global::Google.Cloud.Iam.V1.BindingDelta.Types.Action) }, null),
-            new pbr::GeneratedClrTypeInfo(typeof(global::Google.Cloud.Iam.V1.AuditConfigDelta), global::Google.Cloud.Iam.V1.AuditConfigDelta.Parser, new[]{ "Action", "Service", "ExemptedMember", "LogType" }, null, new[]{ typeof(global::Google.Cloud.Iam.V1.AuditConfigDelta.Types.Action) }, null)
+          new pbr::GeneratedClrTypeInfo(null, null, new pbr::GeneratedClrTypeInfo[] {
+            new pbr::GeneratedClrTypeInfo(typeof(global::Google.Cloud.Iam.V1.Policy), global::Google.Cloud.Iam.V1.Policy.Parser, new[]{ "Version", "Bindings", "Etag" }, null, null, null, null),
+            new pbr::GeneratedClrTypeInfo(typeof(global::Google.Cloud.Iam.V1.Binding), global::Google.Cloud.Iam.V1.Binding.Parser, new[]{ "Role", "Members", "Condition" }, null, null, null, null),
+            new pbr::GeneratedClrTypeInfo(typeof(global::Google.Cloud.Iam.V1.PolicyDelta), global::Google.Cloud.Iam.V1.PolicyDelta.Parser, new[]{ "BindingDeltas", "AuditConfigDeltas" }, null, null, null, null),
+            new pbr::GeneratedClrTypeInfo(typeof(global::Google.Cloud.Iam.V1.BindingDelta), global::Google.Cloud.Iam.V1.BindingDelta.Parser, new[]{ "Action", "Role", "Member", "Condition" }, null, new[]{ typeof(global::Google.Cloud.Iam.V1.BindingDelta.Types.Action) }, null, null),
+            new pbr::GeneratedClrTypeInfo(typeof(global::Google.Cloud.Iam.V1.AuditConfigDelta), global::Google.Cloud.Iam.V1.AuditConfigDelta.Parser, new[]{ "Action", "Service", "ExemptedMember", "LogType" }, null, new[]{ typeof(global::Google.Cloud.Iam.V1.AuditConfigDelta.Types.Action) }, null, null)
           }));
     }
     #endregion
@@ -117,7 +117,11 @@ namespace Google.Cloud.Iam.V1 {
   /// For a description of IAM and its features, see the
   /// [IAM developer's guide](https://cloud.google.com/iam/docs).
   /// </summary>
-  public sealed partial class Policy : pb::IMessage<Policy> {
+  public sealed partial class Policy : pb::IMessage<Policy>
+  #if !GOOGLE_PROTOBUF_REFSTRUCT_COMPATIBILITY_MODE
+      , pb::IBufferMessage
+  #endif
+  {
     private static readonly pb::MessageParser<Policy> _parser = new pb::MessageParser<Policy>(() => new Policy());
     private pb::UnknownFieldSet _unknownFields;
     [global::System.Diagnostics.DebuggerNonUserCodeAttribute]
@@ -258,6 +262,9 @@ namespace Google.Cloud.Iam.V1 {
 
     [global::System.Diagnostics.DebuggerNonUserCodeAttribute]
     public void WriteTo(pb::CodedOutputStream output) {
+    #if !GOOGLE_PROTOBUF_REFSTRUCT_COMPATIBILITY_MODE
+      output.WriteRawMessage(this);
+    #else
       if (Version != 0) {
         output.WriteRawTag(8);
         output.WriteInt32(Version);
@@ -270,7 +277,26 @@ namespace Google.Cloud.Iam.V1 {
       if (_unknownFields != null) {
         _unknownFields.WriteTo(output);
       }
+    #endif
     }
+
+    #if !GOOGLE_PROTOBUF_REFSTRUCT_COMPATIBILITY_MODE
+    [global::System.Diagnostics.DebuggerNonUserCodeAttribute]
+    void pb::IBufferMessage.InternalWriteTo(ref pb::WriteContext output) {
+      if (Version != 0) {
+        output.WriteRawTag(8);
+        output.WriteInt32(Version);
+      }
+      if (Etag.Length != 0) {
+        output.WriteRawTag(26);
+        output.WriteBytes(Etag);
+      }
+      bindings_.WriteTo(ref output, _repeated_bindings_codec);
+      if (_unknownFields != null) {
+        _unknownFields.WriteTo(ref output);
+      }
+    }
+    #endif
 
     [global::System.Diagnostics.DebuggerNonUserCodeAttribute]
     public int CalculateSize() {
@@ -305,6 +331,9 @@ namespace Google.Cloud.Iam.V1 {
 
     [global::System.Diagnostics.DebuggerNonUserCodeAttribute]
     public void MergeFrom(pb::CodedInputStream input) {
+    #if !GOOGLE_PROTOBUF_REFSTRUCT_COMPATIBILITY_MODE
+      input.ReadRawMessage(this);
+    #else
       uint tag;
       while ((tag = input.ReadTag()) != 0) {
         switch(tag) {
@@ -325,14 +354,45 @@ namespace Google.Cloud.Iam.V1 {
           }
         }
       }
+    #endif
     }
+
+    #if !GOOGLE_PROTOBUF_REFSTRUCT_COMPATIBILITY_MODE
+    [global::System.Diagnostics.DebuggerNonUserCodeAttribute]
+    void pb::IBufferMessage.InternalMergeFrom(ref pb::ParseContext input) {
+      uint tag;
+      while ((tag = input.ReadTag()) != 0) {
+        switch(tag) {
+          default:
+            _unknownFields = pb::UnknownFieldSet.MergeFieldFrom(_unknownFields, ref input);
+            break;
+          case 8: {
+            Version = input.ReadInt32();
+            break;
+          }
+          case 26: {
+            Etag = input.ReadBytes();
+            break;
+          }
+          case 34: {
+            bindings_.AddEntriesFrom(ref input, _repeated_bindings_codec);
+            break;
+          }
+        }
+      }
+    }
+    #endif
 
   }
 
   /// <summary>
   /// Associates `members` with a `role`.
   /// </summary>
-  public sealed partial class Binding : pb::IMessage<Binding> {
+  public sealed partial class Binding : pb::IMessage<Binding>
+  #if !GOOGLE_PROTOBUF_REFSTRUCT_COMPATIBILITY_MODE
+      , pb::IBufferMessage
+  #endif
+  {
     private static readonly pb::MessageParser<Binding> _parser = new pb::MessageParser<Binding>(() => new Binding());
     private pb::UnknownFieldSet _unknownFields;
     [global::System.Diagnostics.DebuggerNonUserCodeAttribute]
@@ -470,6 +530,9 @@ namespace Google.Cloud.Iam.V1 {
 
     [global::System.Diagnostics.DebuggerNonUserCodeAttribute]
     public void WriteTo(pb::CodedOutputStream output) {
+    #if !GOOGLE_PROTOBUF_REFSTRUCT_COMPATIBILITY_MODE
+      output.WriteRawMessage(this);
+    #else
       if (Role.Length != 0) {
         output.WriteRawTag(10);
         output.WriteString(Role);
@@ -482,7 +545,26 @@ namespace Google.Cloud.Iam.V1 {
       if (_unknownFields != null) {
         _unknownFields.WriteTo(output);
       }
+    #endif
     }
+
+    #if !GOOGLE_PROTOBUF_REFSTRUCT_COMPATIBILITY_MODE
+    [global::System.Diagnostics.DebuggerNonUserCodeAttribute]
+    void pb::IBufferMessage.InternalWriteTo(ref pb::WriteContext output) {
+      if (Role.Length != 0) {
+        output.WriteRawTag(10);
+        output.WriteString(Role);
+      }
+      members_.WriteTo(ref output, _repeated_members_codec);
+      if (condition_ != null) {
+        output.WriteRawTag(26);
+        output.WriteMessage(Condition);
+      }
+      if (_unknownFields != null) {
+        _unknownFields.WriteTo(ref output);
+      }
+    }
+    #endif
 
     [global::System.Diagnostics.DebuggerNonUserCodeAttribute]
     public int CalculateSize() {
@@ -520,6 +602,9 @@ namespace Google.Cloud.Iam.V1 {
 
     [global::System.Diagnostics.DebuggerNonUserCodeAttribute]
     public void MergeFrom(pb::CodedInputStream input) {
+    #if !GOOGLE_PROTOBUF_REFSTRUCT_COMPATIBILITY_MODE
+      input.ReadRawMessage(this);
+    #else
       uint tag;
       while ((tag = input.ReadTag()) != 0) {
         switch(tag) {
@@ -543,14 +628,48 @@ namespace Google.Cloud.Iam.V1 {
           }
         }
       }
+    #endif
     }
+
+    #if !GOOGLE_PROTOBUF_REFSTRUCT_COMPATIBILITY_MODE
+    [global::System.Diagnostics.DebuggerNonUserCodeAttribute]
+    void pb::IBufferMessage.InternalMergeFrom(ref pb::ParseContext input) {
+      uint tag;
+      while ((tag = input.ReadTag()) != 0) {
+        switch(tag) {
+          default:
+            _unknownFields = pb::UnknownFieldSet.MergeFieldFrom(_unknownFields, ref input);
+            break;
+          case 10: {
+            Role = input.ReadString();
+            break;
+          }
+          case 18: {
+            members_.AddEntriesFrom(ref input, _repeated_members_codec);
+            break;
+          }
+          case 26: {
+            if (condition_ == null) {
+              Condition = new global::Google.Type.Expr();
+            }
+            input.ReadMessage(Condition);
+            break;
+          }
+        }
+      }
+    }
+    #endif
 
   }
 
   /// <summary>
   /// The difference delta between two policies.
   /// </summary>
-  public sealed partial class PolicyDelta : pb::IMessage<PolicyDelta> {
+  public sealed partial class PolicyDelta : pb::IMessage<PolicyDelta>
+  #if !GOOGLE_PROTOBUF_REFSTRUCT_COMPATIBILITY_MODE
+      , pb::IBufferMessage
+  #endif
+  {
     private static readonly pb::MessageParser<PolicyDelta> _parser = new pb::MessageParser<PolicyDelta>(() => new PolicyDelta());
     private pb::UnknownFieldSet _unknownFields;
     [global::System.Diagnostics.DebuggerNonUserCodeAttribute]
@@ -647,12 +766,27 @@ namespace Google.Cloud.Iam.V1 {
 
     [global::System.Diagnostics.DebuggerNonUserCodeAttribute]
     public void WriteTo(pb::CodedOutputStream output) {
+    #if !GOOGLE_PROTOBUF_REFSTRUCT_COMPATIBILITY_MODE
+      output.WriteRawMessage(this);
+    #else
       bindingDeltas_.WriteTo(output, _repeated_bindingDeltas_codec);
       auditConfigDeltas_.WriteTo(output, _repeated_auditConfigDeltas_codec);
       if (_unknownFields != null) {
         _unknownFields.WriteTo(output);
       }
+    #endif
     }
+
+    #if !GOOGLE_PROTOBUF_REFSTRUCT_COMPATIBILITY_MODE
+    [global::System.Diagnostics.DebuggerNonUserCodeAttribute]
+    void pb::IBufferMessage.InternalWriteTo(ref pb::WriteContext output) {
+      bindingDeltas_.WriteTo(ref output, _repeated_bindingDeltas_codec);
+      auditConfigDeltas_.WriteTo(ref output, _repeated_auditConfigDeltas_codec);
+      if (_unknownFields != null) {
+        _unknownFields.WriteTo(ref output);
+      }
+    }
+    #endif
 
     [global::System.Diagnostics.DebuggerNonUserCodeAttribute]
     public int CalculateSize() {
@@ -677,6 +811,9 @@ namespace Google.Cloud.Iam.V1 {
 
     [global::System.Diagnostics.DebuggerNonUserCodeAttribute]
     public void MergeFrom(pb::CodedInputStream input) {
+    #if !GOOGLE_PROTOBUF_REFSTRUCT_COMPATIBILITY_MODE
+      input.ReadRawMessage(this);
+    #else
       uint tag;
       while ((tag = input.ReadTag()) != 0) {
         switch(tag) {
@@ -693,7 +830,30 @@ namespace Google.Cloud.Iam.V1 {
           }
         }
       }
+    #endif
     }
+
+    #if !GOOGLE_PROTOBUF_REFSTRUCT_COMPATIBILITY_MODE
+    [global::System.Diagnostics.DebuggerNonUserCodeAttribute]
+    void pb::IBufferMessage.InternalMergeFrom(ref pb::ParseContext input) {
+      uint tag;
+      while ((tag = input.ReadTag()) != 0) {
+        switch(tag) {
+          default:
+            _unknownFields = pb::UnknownFieldSet.MergeFieldFrom(_unknownFields, ref input);
+            break;
+          case 10: {
+            bindingDeltas_.AddEntriesFrom(ref input, _repeated_bindingDeltas_codec);
+            break;
+          }
+          case 18: {
+            auditConfigDeltas_.AddEntriesFrom(ref input, _repeated_auditConfigDeltas_codec);
+            break;
+          }
+        }
+      }
+    }
+    #endif
 
   }
 
@@ -701,7 +861,11 @@ namespace Google.Cloud.Iam.V1 {
   /// One delta entry for Binding. Each individual change (only one member in each
   /// entry) to a binding will be a separate entry.
   /// </summary>
-  public sealed partial class BindingDelta : pb::IMessage<BindingDelta> {
+  public sealed partial class BindingDelta : pb::IMessage<BindingDelta>
+  #if !GOOGLE_PROTOBUF_REFSTRUCT_COMPATIBILITY_MODE
+      , pb::IBufferMessage
+  #endif
+  {
     private static readonly pb::MessageParser<BindingDelta> _parser = new pb::MessageParser<BindingDelta>(() => new BindingDelta());
     private pb::UnknownFieldSet _unknownFields;
     [global::System.Diagnostics.DebuggerNonUserCodeAttribute]
@@ -740,7 +904,7 @@ namespace Google.Cloud.Iam.V1 {
 
     /// <summary>Field number for the "action" field.</summary>
     public const int ActionFieldNumber = 1;
-    private global::Google.Cloud.Iam.V1.BindingDelta.Types.Action action_ = 0;
+    private global::Google.Cloud.Iam.V1.BindingDelta.Types.Action action_ = global::Google.Cloud.Iam.V1.BindingDelta.Types.Action.Unspecified;
     /// <summary>
     /// The action that was performed on a Binding.
     /// Required
@@ -822,7 +986,7 @@ namespace Google.Cloud.Iam.V1 {
     [global::System.Diagnostics.DebuggerNonUserCodeAttribute]
     public override int GetHashCode() {
       int hash = 1;
-      if (Action != 0) hash ^= Action.GetHashCode();
+      if (Action != global::Google.Cloud.Iam.V1.BindingDelta.Types.Action.Unspecified) hash ^= Action.GetHashCode();
       if (Role.Length != 0) hash ^= Role.GetHashCode();
       if (Member.Length != 0) hash ^= Member.GetHashCode();
       if (condition_ != null) hash ^= Condition.GetHashCode();
@@ -839,7 +1003,10 @@ namespace Google.Cloud.Iam.V1 {
 
     [global::System.Diagnostics.DebuggerNonUserCodeAttribute]
     public void WriteTo(pb::CodedOutputStream output) {
-      if (Action != 0) {
+    #if !GOOGLE_PROTOBUF_REFSTRUCT_COMPATIBILITY_MODE
+      output.WriteRawMessage(this);
+    #else
+      if (Action != global::Google.Cloud.Iam.V1.BindingDelta.Types.Action.Unspecified) {
         output.WriteRawTag(8);
         output.WriteEnum((int) Action);
       }
@@ -858,12 +1025,38 @@ namespace Google.Cloud.Iam.V1 {
       if (_unknownFields != null) {
         _unknownFields.WriteTo(output);
       }
+    #endif
     }
+
+    #if !GOOGLE_PROTOBUF_REFSTRUCT_COMPATIBILITY_MODE
+    [global::System.Diagnostics.DebuggerNonUserCodeAttribute]
+    void pb::IBufferMessage.InternalWriteTo(ref pb::WriteContext output) {
+      if (Action != global::Google.Cloud.Iam.V1.BindingDelta.Types.Action.Unspecified) {
+        output.WriteRawTag(8);
+        output.WriteEnum((int) Action);
+      }
+      if (Role.Length != 0) {
+        output.WriteRawTag(18);
+        output.WriteString(Role);
+      }
+      if (Member.Length != 0) {
+        output.WriteRawTag(26);
+        output.WriteString(Member);
+      }
+      if (condition_ != null) {
+        output.WriteRawTag(34);
+        output.WriteMessage(Condition);
+      }
+      if (_unknownFields != null) {
+        _unknownFields.WriteTo(ref output);
+      }
+    }
+    #endif
 
     [global::System.Diagnostics.DebuggerNonUserCodeAttribute]
     public int CalculateSize() {
       int size = 0;
-      if (Action != 0) {
+      if (Action != global::Google.Cloud.Iam.V1.BindingDelta.Types.Action.Unspecified) {
         size += 1 + pb::CodedOutputStream.ComputeEnumSize((int) Action);
       }
       if (Role.Length != 0) {
@@ -886,7 +1079,7 @@ namespace Google.Cloud.Iam.V1 {
       if (other == null) {
         return;
       }
-      if (other.Action != 0) {
+      if (other.Action != global::Google.Cloud.Iam.V1.BindingDelta.Types.Action.Unspecified) {
         Action = other.Action;
       }
       if (other.Role.Length != 0) {
@@ -906,6 +1099,9 @@ namespace Google.Cloud.Iam.V1 {
 
     [global::System.Diagnostics.DebuggerNonUserCodeAttribute]
     public void MergeFrom(pb::CodedInputStream input) {
+    #if !GOOGLE_PROTOBUF_REFSTRUCT_COMPATIBILITY_MODE
+      input.ReadRawMessage(this);
+    #else
       uint tag;
       while ((tag = input.ReadTag()) != 0) {
         switch(tag) {
@@ -933,7 +1129,41 @@ namespace Google.Cloud.Iam.V1 {
           }
         }
       }
+    #endif
     }
+
+    #if !GOOGLE_PROTOBUF_REFSTRUCT_COMPATIBILITY_MODE
+    [global::System.Diagnostics.DebuggerNonUserCodeAttribute]
+    void pb::IBufferMessage.InternalMergeFrom(ref pb::ParseContext input) {
+      uint tag;
+      while ((tag = input.ReadTag()) != 0) {
+        switch(tag) {
+          default:
+            _unknownFields = pb::UnknownFieldSet.MergeFieldFrom(_unknownFields, ref input);
+            break;
+          case 8: {
+            Action = (global::Google.Cloud.Iam.V1.BindingDelta.Types.Action) input.ReadEnum();
+            break;
+          }
+          case 18: {
+            Role = input.ReadString();
+            break;
+          }
+          case 26: {
+            Member = input.ReadString();
+            break;
+          }
+          case 34: {
+            if (condition_ == null) {
+              Condition = new global::Google.Type.Expr();
+            }
+            input.ReadMessage(Condition);
+            break;
+          }
+        }
+      }
+    }
+    #endif
 
     #region Nested types
     /// <summary>Container for nested types declared in the BindingDelta message type.</summary>
@@ -966,7 +1196,11 @@ namespace Google.Cloud.Iam.V1 {
   /// One delta entry for AuditConfig. Each individual change (only one
   /// exempted_member in each entry) to a AuditConfig will be a separate entry.
   /// </summary>
-  public sealed partial class AuditConfigDelta : pb::IMessage<AuditConfigDelta> {
+  public sealed partial class AuditConfigDelta : pb::IMessage<AuditConfigDelta>
+  #if !GOOGLE_PROTOBUF_REFSTRUCT_COMPATIBILITY_MODE
+      , pb::IBufferMessage
+  #endif
+  {
     private static readonly pb::MessageParser<AuditConfigDelta> _parser = new pb::MessageParser<AuditConfigDelta>(() => new AuditConfigDelta());
     private pb::UnknownFieldSet _unknownFields;
     [global::System.Diagnostics.DebuggerNonUserCodeAttribute]
@@ -1005,7 +1239,7 @@ namespace Google.Cloud.Iam.V1 {
 
     /// <summary>Field number for the "action" field.</summary>
     public const int ActionFieldNumber = 1;
-    private global::Google.Cloud.Iam.V1.AuditConfigDelta.Types.Action action_ = 0;
+    private global::Google.Cloud.Iam.V1.AuditConfigDelta.Types.Action action_ = global::Google.Cloud.Iam.V1.AuditConfigDelta.Types.Action.Unspecified;
     /// <summary>
     /// The action that was performed on an audit configuration in a policy.
     /// Required
@@ -1090,7 +1324,7 @@ namespace Google.Cloud.Iam.V1 {
     [global::System.Diagnostics.DebuggerNonUserCodeAttribute]
     public override int GetHashCode() {
       int hash = 1;
-      if (Action != 0) hash ^= Action.GetHashCode();
+      if (Action != global::Google.Cloud.Iam.V1.AuditConfigDelta.Types.Action.Unspecified) hash ^= Action.GetHashCode();
       if (Service.Length != 0) hash ^= Service.GetHashCode();
       if (ExemptedMember.Length != 0) hash ^= ExemptedMember.GetHashCode();
       if (LogType.Length != 0) hash ^= LogType.GetHashCode();
@@ -1107,7 +1341,10 @@ namespace Google.Cloud.Iam.V1 {
 
     [global::System.Diagnostics.DebuggerNonUserCodeAttribute]
     public void WriteTo(pb::CodedOutputStream output) {
-      if (Action != 0) {
+    #if !GOOGLE_PROTOBUF_REFSTRUCT_COMPATIBILITY_MODE
+      output.WriteRawMessage(this);
+    #else
+      if (Action != global::Google.Cloud.Iam.V1.AuditConfigDelta.Types.Action.Unspecified) {
         output.WriteRawTag(8);
         output.WriteEnum((int) Action);
       }
@@ -1126,12 +1363,38 @@ namespace Google.Cloud.Iam.V1 {
       if (_unknownFields != null) {
         _unknownFields.WriteTo(output);
       }
+    #endif
     }
+
+    #if !GOOGLE_PROTOBUF_REFSTRUCT_COMPATIBILITY_MODE
+    [global::System.Diagnostics.DebuggerNonUserCodeAttribute]
+    void pb::IBufferMessage.InternalWriteTo(ref pb::WriteContext output) {
+      if (Action != global::Google.Cloud.Iam.V1.AuditConfigDelta.Types.Action.Unspecified) {
+        output.WriteRawTag(8);
+        output.WriteEnum((int) Action);
+      }
+      if (Service.Length != 0) {
+        output.WriteRawTag(18);
+        output.WriteString(Service);
+      }
+      if (ExemptedMember.Length != 0) {
+        output.WriteRawTag(26);
+        output.WriteString(ExemptedMember);
+      }
+      if (LogType.Length != 0) {
+        output.WriteRawTag(34);
+        output.WriteString(LogType);
+      }
+      if (_unknownFields != null) {
+        _unknownFields.WriteTo(ref output);
+      }
+    }
+    #endif
 
     [global::System.Diagnostics.DebuggerNonUserCodeAttribute]
     public int CalculateSize() {
       int size = 0;
-      if (Action != 0) {
+      if (Action != global::Google.Cloud.Iam.V1.AuditConfigDelta.Types.Action.Unspecified) {
         size += 1 + pb::CodedOutputStream.ComputeEnumSize((int) Action);
       }
       if (Service.Length != 0) {
@@ -1154,7 +1417,7 @@ namespace Google.Cloud.Iam.V1 {
       if (other == null) {
         return;
       }
-      if (other.Action != 0) {
+      if (other.Action != global::Google.Cloud.Iam.V1.AuditConfigDelta.Types.Action.Unspecified) {
         Action = other.Action;
       }
       if (other.Service.Length != 0) {
@@ -1171,6 +1434,9 @@ namespace Google.Cloud.Iam.V1 {
 
     [global::System.Diagnostics.DebuggerNonUserCodeAttribute]
     public void MergeFrom(pb::CodedInputStream input) {
+    #if !GOOGLE_PROTOBUF_REFSTRUCT_COMPATIBILITY_MODE
+      input.ReadRawMessage(this);
+    #else
       uint tag;
       while ((tag = input.ReadTag()) != 0) {
         switch(tag) {
@@ -1195,7 +1461,38 @@ namespace Google.Cloud.Iam.V1 {
           }
         }
       }
+    #endif
     }
+
+    #if !GOOGLE_PROTOBUF_REFSTRUCT_COMPATIBILITY_MODE
+    [global::System.Diagnostics.DebuggerNonUserCodeAttribute]
+    void pb::IBufferMessage.InternalMergeFrom(ref pb::ParseContext input) {
+      uint tag;
+      while ((tag = input.ReadTag()) != 0) {
+        switch(tag) {
+          default:
+            _unknownFields = pb::UnknownFieldSet.MergeFieldFrom(_unknownFields, ref input);
+            break;
+          case 8: {
+            Action = (global::Google.Cloud.Iam.V1.AuditConfigDelta.Types.Action) input.ReadEnum();
+            break;
+          }
+          case 18: {
+            Service = input.ReadString();
+            break;
+          }
+          case 26: {
+            ExemptedMember = input.ReadString();
+            break;
+          }
+          case 34: {
+            LogType = input.ReadString();
+            break;
+          }
+        }
+      }
+    }
+    #endif
 
     #region Nested types
     /// <summary>Container for nested types declared in the AuditConfigDelta message type.</summary>

@@ -17,7 +17,13 @@ using Google.Cloud.Diagnostics.Common;
 using Microsoft.AspNetCore.Http;
 using Microsoft.AspNetCore.Http.Extensions;
 
+#if NETCOREAPP3_1
+namespace Google.Cloud.Diagnostics.AspNetCore3
+#elif NETSTANDARD2_0
 namespace Google.Cloud.Diagnostics.AspNetCore
+#else
+#error unknown target framework
+#endif
 {
     /// <summary>
     /// An <see cref="IContextWrapper"/> for an <see cref="HttpContext"/>.
@@ -28,16 +34,16 @@ namespace Google.Cloud.Diagnostics.AspNetCore
 
         internal HttpContextWrapper(HttpContext context)
         {
-            _context = GaxPreconditions.CheckNotNull(context, nameof(context));
+            _context = context;
         }
 
         /// <inheritdoc />
-        public string GetHttpMethod() => _context.Request?.Method?.ToString();
+        public string GetHttpMethod() => _context?.Request?.Method?.ToString();
 
         /// <inheritdoc />
-        public string GetUri() => _context.Request?.GetDisplayUrl();
+        public string GetUri() => _context?.Request?.GetDisplayUrl();
 
         /// <inheritdoc />
-        public string GetUserAgent() => _context.Request?.Headers["User-Agent"].ToString();
+        public string GetUserAgent() => _context?.Request?.Headers["User-Agent"].ToString();
     }
 }

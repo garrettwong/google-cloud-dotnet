@@ -1,4 +1,4 @@
-// Copyright 2019 Google LLC
+// Copyright 2020 Google LLC
 //
 // Licensed under the Apache License, Version 2.0 (the "License");
 // you may not use this file except in compliance with the License.
@@ -17,62 +17,43 @@
 namespace Google.Cloud.Talent.V4Beta1.Snippets
 {
     using Google.Api.Gax;
-    using Google.Api.Gax.Grpc;
-    using apis = Google.Cloud.Talent.V4Beta1;
-    using Google.Protobuf;
+    using Google.Api.Gax.ResourceNames;
     using Google.Protobuf.WellKnownTypes;
-    using Grpc.Core;
     using System;
-    using System.Collections;
-    using System.Collections.Generic;
-    using System.Collections.ObjectModel;
     using System.Linq;
-    using System.Threading;
     using System.Threading.Tasks;
 
-    /// <summary>Generated snippets</summary>
-    public class GeneratedCompanyServiceClientSnippets
+    /// <summary>Generated snippets.</summary>
+    public sealed class GeneratedCompanyServiceClientSnippets
     {
-        /// <summary>Snippet for CreateCompanyAsync</summary>
-        public async Task CreateCompanyAsync()
-        {
-            // Snippet: CreateCompanyAsync(TenantOrProjectNameOneof,Company,CallSettings)
-            // Additional: CreateCompanyAsync(TenantOrProjectNameOneof,Company,CancellationToken)
-            // Create client
-            CompanyServiceClient companyServiceClient = await CompanyServiceClient.CreateAsync();
-            // Initialize request argument(s)
-            TenantOrProjectNameOneof parent = TenantOrProjectNameOneof.From(new TenantName("[PROJECT]", "[TENANT]"));
-            Company company = new Company();
-            // Make the request
-            Company response = await companyServiceClient.CreateCompanyAsync(parent, company);
-            // End snippet
-        }
-
         /// <summary>Snippet for CreateCompany</summary>
-        public void CreateCompany()
+        public void CreateCompanyRequestObject()
         {
-            // Snippet: CreateCompany(TenantOrProjectNameOneof,Company,CallSettings)
+            // Snippet: CreateCompany(CreateCompanyRequest, CallSettings)
             // Create client
             CompanyServiceClient companyServiceClient = CompanyServiceClient.Create();
             // Initialize request argument(s)
-            TenantOrProjectNameOneof parent = TenantOrProjectNameOneof.From(new TenantName("[PROJECT]", "[TENANT]"));
-            Company company = new Company();
+            CreateCompanyRequest request = new CreateCompanyRequest
+            {
+                ParentAsTenantName = TenantName.FromProjectTenant("[PROJECT]", "[TENANT]"),
+                Company = new Company(),
+            };
             // Make the request
-            Company response = companyServiceClient.CreateCompany(parent, company);
+            Company response = companyServiceClient.CreateCompany(request);
             // End snippet
         }
 
         /// <summary>Snippet for CreateCompanyAsync</summary>
-        public async Task CreateCompanyAsync_RequestObject()
+        public async Task CreateCompanyRequestObjectAsync()
         {
-            // Snippet: CreateCompanyAsync(CreateCompanyRequest,CallSettings)
-            // Additional: CreateCompanyAsync(CreateCompanyRequest,CancellationToken)
+            // Snippet: CreateCompanyAsync(CreateCompanyRequest, CallSettings)
+            // Additional: CreateCompanyAsync(CreateCompanyRequest, CancellationToken)
             // Create client
             CompanyServiceClient companyServiceClient = await CompanyServiceClient.CreateAsync();
             // Initialize request argument(s)
             CreateCompanyRequest request = new CreateCompanyRequest
             {
-                ParentAsTenantOrProjectNameOneof = TenantOrProjectNameOneof.From(new TenantName("[PROJECT]", "[TENANT]")),
+                ParentAsTenantName = TenantName.FromProjectTenant("[PROJECT]", "[TENANT]"),
                 Company = new Company(),
             };
             // Make the request
@@ -81,60 +62,119 @@ namespace Google.Cloud.Talent.V4Beta1.Snippets
         }
 
         /// <summary>Snippet for CreateCompany</summary>
-        public void CreateCompany_RequestObject()
+        public void CreateCompany()
         {
-            // Snippet: CreateCompany(CreateCompanyRequest,CallSettings)
+            // Snippet: CreateCompany(string, Company, CallSettings)
             // Create client
             CompanyServiceClient companyServiceClient = CompanyServiceClient.Create();
             // Initialize request argument(s)
-            CreateCompanyRequest request = new CreateCompanyRequest
-            {
-                ParentAsTenantOrProjectNameOneof = TenantOrProjectNameOneof.From(new TenantName("[PROJECT]", "[TENANT]")),
-                Company = new Company(),
-            };
+            string parent = "projects/[PROJECT]/tenants/[TENANT]";
+            Company company = new Company();
             // Make the request
-            Company response = companyServiceClient.CreateCompany(request);
+            Company response = companyServiceClient.CreateCompany(parent, company);
             // End snippet
         }
 
-        /// <summary>Snippet for GetCompanyAsync</summary>
-        public async Task GetCompanyAsync()
+        /// <summary>Snippet for CreateCompanyAsync</summary>
+        public async Task CreateCompanyAsync()
         {
-            // Snippet: GetCompanyAsync(CompanyNameOneof,CallSettings)
-            // Additional: GetCompanyAsync(CompanyNameOneof,CancellationToken)
+            // Snippet: CreateCompanyAsync(string, Company, CallSettings)
+            // Additional: CreateCompanyAsync(string, Company, CancellationToken)
             // Create client
             CompanyServiceClient companyServiceClient = await CompanyServiceClient.CreateAsync();
             // Initialize request argument(s)
-            CompanyNameOneof name = CompanyNameOneof.From(new CompanyName("[PROJECT]", "[TENANT]", "[COMPANY]"));
+            string parent = "projects/[PROJECT]/tenants/[TENANT]";
+            Company company = new Company();
             // Make the request
-            Company response = await companyServiceClient.GetCompanyAsync(name);
+            Company response = await companyServiceClient.CreateCompanyAsync(parent, company);
+            // End snippet
+        }
+
+        /// <summary>Snippet for CreateCompany</summary>
+        public void CreateCompanyResourceNames1()
+        {
+            // Snippet: CreateCompany(TenantName, Company, CallSettings)
+            // Create client
+            CompanyServiceClient companyServiceClient = CompanyServiceClient.Create();
+            // Initialize request argument(s)
+            TenantName parent = TenantName.FromProjectTenant("[PROJECT]", "[TENANT]");
+            Company company = new Company();
+            // Make the request
+            Company response = companyServiceClient.CreateCompany(parent, company);
+            // End snippet
+        }
+
+        /// <summary>Snippet for CreateCompanyAsync</summary>
+        public async Task CreateCompanyResourceNames1Async()
+        {
+            // Snippet: CreateCompanyAsync(TenantName, Company, CallSettings)
+            // Additional: CreateCompanyAsync(TenantName, Company, CancellationToken)
+            // Create client
+            CompanyServiceClient companyServiceClient = await CompanyServiceClient.CreateAsync();
+            // Initialize request argument(s)
+            TenantName parent = TenantName.FromProjectTenant("[PROJECT]", "[TENANT]");
+            Company company = new Company();
+            // Make the request
+            Company response = await companyServiceClient.CreateCompanyAsync(parent, company);
+            // End snippet
+        }
+
+        /// <summary>Snippet for CreateCompany</summary>
+        public void CreateCompanyResourceNames2()
+        {
+            // Snippet: CreateCompany(ProjectName, Company, CallSettings)
+            // Create client
+            CompanyServiceClient companyServiceClient = CompanyServiceClient.Create();
+            // Initialize request argument(s)
+            ProjectName parent = ProjectName.FromProject("[PROJECT]");
+            Company company = new Company();
+            // Make the request
+            Company response = companyServiceClient.CreateCompany(parent, company);
+            // End snippet
+        }
+
+        /// <summary>Snippet for CreateCompanyAsync</summary>
+        public async Task CreateCompanyResourceNames2Async()
+        {
+            // Snippet: CreateCompanyAsync(ProjectName, Company, CallSettings)
+            // Additional: CreateCompanyAsync(ProjectName, Company, CancellationToken)
+            // Create client
+            CompanyServiceClient companyServiceClient = await CompanyServiceClient.CreateAsync();
+            // Initialize request argument(s)
+            ProjectName parent = ProjectName.FromProject("[PROJECT]");
+            Company company = new Company();
+            // Make the request
+            Company response = await companyServiceClient.CreateCompanyAsync(parent, company);
             // End snippet
         }
 
         /// <summary>Snippet for GetCompany</summary>
-        public void GetCompany()
+        public void GetCompanyRequestObject()
         {
-            // Snippet: GetCompany(CompanyNameOneof,CallSettings)
+            // Snippet: GetCompany(GetCompanyRequest, CallSettings)
             // Create client
             CompanyServiceClient companyServiceClient = CompanyServiceClient.Create();
             // Initialize request argument(s)
-            CompanyNameOneof name = CompanyNameOneof.From(new CompanyName("[PROJECT]", "[TENANT]", "[COMPANY]"));
+            GetCompanyRequest request = new GetCompanyRequest
+            {
+                CompanyName = CompanyName.FromProjectTenantCompany("[PROJECT]", "[TENANT]", "[COMPANY]"),
+            };
             // Make the request
-            Company response = companyServiceClient.GetCompany(name);
+            Company response = companyServiceClient.GetCompany(request);
             // End snippet
         }
 
         /// <summary>Snippet for GetCompanyAsync</summary>
-        public async Task GetCompanyAsync_RequestObject()
+        public async Task GetCompanyRequestObjectAsync()
         {
-            // Snippet: GetCompanyAsync(GetCompanyRequest,CallSettings)
-            // Additional: GetCompanyAsync(GetCompanyRequest,CancellationToken)
+            // Snippet: GetCompanyAsync(GetCompanyRequest, CallSettings)
+            // Additional: GetCompanyAsync(GetCompanyRequest, CancellationToken)
             // Create client
             CompanyServiceClient companyServiceClient = await CompanyServiceClient.CreateAsync();
             // Initialize request argument(s)
             GetCompanyRequest request = new GetCompanyRequest
             {
-                CompanyNameOneof = CompanyNameOneof.From(new CompanyName("[PROJECT]", "[TENANT]", "[COMPANY]")),
+                CompanyName = CompanyName.FromProjectTenantCompany("[PROJECT]", "[TENANT]", "[COMPANY]"),
             };
             // Make the request
             Company response = await companyServiceClient.GetCompanyAsync(request);
@@ -142,39 +182,98 @@ namespace Google.Cloud.Talent.V4Beta1.Snippets
         }
 
         /// <summary>Snippet for GetCompany</summary>
-        public void GetCompany_RequestObject()
+        public void GetCompany()
         {
-            // Snippet: GetCompany(GetCompanyRequest,CallSettings)
+            // Snippet: GetCompany(string, CallSettings)
             // Create client
             CompanyServiceClient companyServiceClient = CompanyServiceClient.Create();
             // Initialize request argument(s)
-            GetCompanyRequest request = new GetCompanyRequest
+            string name = "projects/[PROJECT]/tenants/[TENANT]/companies/[COMPANY]";
+            // Make the request
+            Company response = companyServiceClient.GetCompany(name);
+            // End snippet
+        }
+
+        /// <summary>Snippet for GetCompanyAsync</summary>
+        public async Task GetCompanyAsync()
+        {
+            // Snippet: GetCompanyAsync(string, CallSettings)
+            // Additional: GetCompanyAsync(string, CancellationToken)
+            // Create client
+            CompanyServiceClient companyServiceClient = await CompanyServiceClient.CreateAsync();
+            // Initialize request argument(s)
+            string name = "projects/[PROJECT]/tenants/[TENANT]/companies/[COMPANY]";
+            // Make the request
+            Company response = await companyServiceClient.GetCompanyAsync(name);
+            // End snippet
+        }
+
+        /// <summary>Snippet for GetCompany</summary>
+        public void GetCompanyResourceNames()
+        {
+            // Snippet: GetCompany(CompanyName, CallSettings)
+            // Create client
+            CompanyServiceClient companyServiceClient = CompanyServiceClient.Create();
+            // Initialize request argument(s)
+            CompanyName name = CompanyName.FromProjectTenantCompany("[PROJECT]", "[TENANT]", "[COMPANY]");
+            // Make the request
+            Company response = companyServiceClient.GetCompany(name);
+            // End snippet
+        }
+
+        /// <summary>Snippet for GetCompanyAsync</summary>
+        public async Task GetCompanyResourceNamesAsync()
+        {
+            // Snippet: GetCompanyAsync(CompanyName, CallSettings)
+            // Additional: GetCompanyAsync(CompanyName, CancellationToken)
+            // Create client
+            CompanyServiceClient companyServiceClient = await CompanyServiceClient.CreateAsync();
+            // Initialize request argument(s)
+            CompanyName name = CompanyName.FromProjectTenantCompany("[PROJECT]", "[TENANT]", "[COMPANY]");
+            // Make the request
+            Company response = await companyServiceClient.GetCompanyAsync(name);
+            // End snippet
+        }
+
+        /// <summary>Snippet for UpdateCompany</summary>
+        public void UpdateCompanyRequestObject()
+        {
+            // Snippet: UpdateCompany(UpdateCompanyRequest, CallSettings)
+            // Create client
+            CompanyServiceClient companyServiceClient = CompanyServiceClient.Create();
+            // Initialize request argument(s)
+            UpdateCompanyRequest request = new UpdateCompanyRequest
             {
-                CompanyNameOneof = CompanyNameOneof.From(new CompanyName("[PROJECT]", "[TENANT]", "[COMPANY]")),
+                Company = new Company(),
+                UpdateMask = new FieldMask(),
             };
             // Make the request
-            Company response = companyServiceClient.GetCompany(request);
+            Company response = companyServiceClient.UpdateCompany(request);
             // End snippet
         }
 
         /// <summary>Snippet for UpdateCompanyAsync</summary>
-        public async Task UpdateCompanyAsync()
+        public async Task UpdateCompanyRequestObjectAsync()
         {
-            // Snippet: UpdateCompanyAsync(Company,CallSettings)
-            // Additional: UpdateCompanyAsync(Company,CancellationToken)
+            // Snippet: UpdateCompanyAsync(UpdateCompanyRequest, CallSettings)
+            // Additional: UpdateCompanyAsync(UpdateCompanyRequest, CancellationToken)
             // Create client
             CompanyServiceClient companyServiceClient = await CompanyServiceClient.CreateAsync();
             // Initialize request argument(s)
-            Company company = new Company();
+            UpdateCompanyRequest request = new UpdateCompanyRequest
+            {
+                Company = new Company(),
+                UpdateMask = new FieldMask(),
+            };
             // Make the request
-            Company response = await companyServiceClient.UpdateCompanyAsync(company);
+            Company response = await companyServiceClient.UpdateCompanyAsync(request);
             // End snippet
         }
 
         /// <summary>Snippet for UpdateCompany</summary>
         public void UpdateCompany()
         {
-            // Snippet: UpdateCompany(Company,CallSettings)
+            // Snippet: UpdateCompany(Company, CallSettings)
             // Create client
             CompanyServiceClient companyServiceClient = CompanyServiceClient.Create();
             // Initialize request argument(s)
@@ -185,76 +284,46 @@ namespace Google.Cloud.Talent.V4Beta1.Snippets
         }
 
         /// <summary>Snippet for UpdateCompanyAsync</summary>
-        public async Task UpdateCompanyAsync_RequestObject()
+        public async Task UpdateCompanyAsync()
         {
-            // Snippet: UpdateCompanyAsync(UpdateCompanyRequest,CallSettings)
-            // Additional: UpdateCompanyAsync(UpdateCompanyRequest,CancellationToken)
+            // Snippet: UpdateCompanyAsync(Company, CallSettings)
+            // Additional: UpdateCompanyAsync(Company, CancellationToken)
             // Create client
             CompanyServiceClient companyServiceClient = await CompanyServiceClient.CreateAsync();
             // Initialize request argument(s)
-            UpdateCompanyRequest request = new UpdateCompanyRequest
-            {
-                Company = new Company(),
-            };
+            Company company = new Company();
             // Make the request
-            Company response = await companyServiceClient.UpdateCompanyAsync(request);
-            // End snippet
-        }
-
-        /// <summary>Snippet for UpdateCompany</summary>
-        public void UpdateCompany_RequestObject()
-        {
-            // Snippet: UpdateCompany(UpdateCompanyRequest,CallSettings)
-            // Create client
-            CompanyServiceClient companyServiceClient = CompanyServiceClient.Create();
-            // Initialize request argument(s)
-            UpdateCompanyRequest request = new UpdateCompanyRequest
-            {
-                Company = new Company(),
-            };
-            // Make the request
-            Company response = companyServiceClient.UpdateCompany(request);
-            // End snippet
-        }
-
-        /// <summary>Snippet for DeleteCompanyAsync</summary>
-        public async Task DeleteCompanyAsync()
-        {
-            // Snippet: DeleteCompanyAsync(CompanyNameOneof,CallSettings)
-            // Additional: DeleteCompanyAsync(CompanyNameOneof,CancellationToken)
-            // Create client
-            CompanyServiceClient companyServiceClient = await CompanyServiceClient.CreateAsync();
-            // Initialize request argument(s)
-            CompanyNameOneof name = CompanyNameOneof.From(new CompanyName("[PROJECT]", "[TENANT]", "[COMPANY]"));
-            // Make the request
-            await companyServiceClient.DeleteCompanyAsync(name);
+            Company response = await companyServiceClient.UpdateCompanyAsync(company);
             // End snippet
         }
 
         /// <summary>Snippet for DeleteCompany</summary>
-        public void DeleteCompany()
+        public void DeleteCompanyRequestObject()
         {
-            // Snippet: DeleteCompany(CompanyNameOneof,CallSettings)
+            // Snippet: DeleteCompany(DeleteCompanyRequest, CallSettings)
             // Create client
             CompanyServiceClient companyServiceClient = CompanyServiceClient.Create();
             // Initialize request argument(s)
-            CompanyNameOneof name = CompanyNameOneof.From(new CompanyName("[PROJECT]", "[TENANT]", "[COMPANY]"));
+            DeleteCompanyRequest request = new DeleteCompanyRequest
+            {
+                CompanyName = CompanyName.FromProjectTenantCompany("[PROJECT]", "[TENANT]", "[COMPANY]"),
+            };
             // Make the request
-            companyServiceClient.DeleteCompany(name);
+            companyServiceClient.DeleteCompany(request);
             // End snippet
         }
 
         /// <summary>Snippet for DeleteCompanyAsync</summary>
-        public async Task DeleteCompanyAsync_RequestObject()
+        public async Task DeleteCompanyRequestObjectAsync()
         {
-            // Snippet: DeleteCompanyAsync(DeleteCompanyRequest,CallSettings)
-            // Additional: DeleteCompanyAsync(DeleteCompanyRequest,CancellationToken)
+            // Snippet: DeleteCompanyAsync(DeleteCompanyRequest, CallSettings)
+            // Additional: DeleteCompanyAsync(DeleteCompanyRequest, CancellationToken)
             // Create client
             CompanyServiceClient companyServiceClient = await CompanyServiceClient.CreateAsync();
             // Initialize request argument(s)
             DeleteCompanyRequest request = new DeleteCompanyRequest
             {
-                CompanyNameOneof = CompanyNameOneof.From(new CompanyName("[PROJECT]", "[TENANT]", "[COMPANY]")),
+                CompanyName = CompanyName.FromProjectTenantCompany("[PROJECT]", "[TENANT]", "[COMPANY]"),
             };
             // Make the request
             await companyServiceClient.DeleteCompanyAsync(request);
@@ -262,32 +331,122 @@ namespace Google.Cloud.Talent.V4Beta1.Snippets
         }
 
         /// <summary>Snippet for DeleteCompany</summary>
-        public void DeleteCompany_RequestObject()
+        public void DeleteCompany()
         {
-            // Snippet: DeleteCompany(DeleteCompanyRequest,CallSettings)
+            // Snippet: DeleteCompany(string, CallSettings)
             // Create client
             CompanyServiceClient companyServiceClient = CompanyServiceClient.Create();
             // Initialize request argument(s)
-            DeleteCompanyRequest request = new DeleteCompanyRequest
-            {
-                CompanyNameOneof = CompanyNameOneof.From(new CompanyName("[PROJECT]", "[TENANT]", "[COMPANY]")),
-            };
+            string name = "projects/[PROJECT]/tenants/[TENANT]/companies/[COMPANY]";
             // Make the request
-            companyServiceClient.DeleteCompany(request);
+            companyServiceClient.DeleteCompany(name);
             // End snippet
         }
 
-        /// <summary>Snippet for ListCompaniesAsync</summary>
-        public async Task ListCompaniesAsync()
+        /// <summary>Snippet for DeleteCompanyAsync</summary>
+        public async Task DeleteCompanyAsync()
         {
-            // Snippet: ListCompaniesAsync(TenantOrProjectNameOneof,string,int?,CallSettings)
+            // Snippet: DeleteCompanyAsync(string, CallSettings)
+            // Additional: DeleteCompanyAsync(string, CancellationToken)
             // Create client
             CompanyServiceClient companyServiceClient = await CompanyServiceClient.CreateAsync();
             // Initialize request argument(s)
-            TenantOrProjectNameOneof parent = TenantOrProjectNameOneof.From(new TenantName("[PROJECT]", "[TENANT]"));
+            string name = "projects/[PROJECT]/tenants/[TENANT]/companies/[COMPANY]";
             // Make the request
-            PagedAsyncEnumerable<ListCompaniesResponse, Company> response =
-                companyServiceClient.ListCompaniesAsync(parent);
+            await companyServiceClient.DeleteCompanyAsync(name);
+            // End snippet
+        }
+
+        /// <summary>Snippet for DeleteCompany</summary>
+        public void DeleteCompanyResourceNames()
+        {
+            // Snippet: DeleteCompany(CompanyName, CallSettings)
+            // Create client
+            CompanyServiceClient companyServiceClient = CompanyServiceClient.Create();
+            // Initialize request argument(s)
+            CompanyName name = CompanyName.FromProjectTenantCompany("[PROJECT]", "[TENANT]", "[COMPANY]");
+            // Make the request
+            companyServiceClient.DeleteCompany(name);
+            // End snippet
+        }
+
+        /// <summary>Snippet for DeleteCompanyAsync</summary>
+        public async Task DeleteCompanyResourceNamesAsync()
+        {
+            // Snippet: DeleteCompanyAsync(CompanyName, CallSettings)
+            // Additional: DeleteCompanyAsync(CompanyName, CancellationToken)
+            // Create client
+            CompanyServiceClient companyServiceClient = await CompanyServiceClient.CreateAsync();
+            // Initialize request argument(s)
+            CompanyName name = CompanyName.FromProjectTenantCompany("[PROJECT]", "[TENANT]", "[COMPANY]");
+            // Make the request
+            await companyServiceClient.DeleteCompanyAsync(name);
+            // End snippet
+        }
+
+        /// <summary>Snippet for ListCompanies</summary>
+        public void ListCompaniesRequestObject()
+        {
+            // Snippet: ListCompanies(ListCompaniesRequest, CallSettings)
+            // Create client
+            CompanyServiceClient companyServiceClient = CompanyServiceClient.Create();
+            // Initialize request argument(s)
+            ListCompaniesRequest request = new ListCompaniesRequest
+            {
+                ParentAsTenantName = TenantName.FromProjectTenant("[PROJECT]", "[TENANT]"),
+                RequireOpenJobs = false,
+            };
+            // Make the request
+            PagedEnumerable<ListCompaniesResponse, Company> response = companyServiceClient.ListCompanies(request);
+
+            // Iterate over all response items, lazily performing RPCs as required
+            foreach (Company item in response)
+            {
+                // Do something with each item
+                Console.WriteLine(item);
+            }
+
+            // Or iterate over pages (of server-defined size), performing one RPC per page
+            foreach (ListCompaniesResponse page in response.AsRawResponses())
+            {
+                // Do something with each page of items
+                Console.WriteLine("A page of results:");
+                foreach (Company item in page)
+                {
+                    // Do something with each item
+                    Console.WriteLine(item);
+                }
+            }
+
+            // Or retrieve a single page of known size (unless it's the final page), performing as many RPCs as required
+            int pageSize = 10;
+            Page<Company> singlePage = response.ReadPage(pageSize);
+            // Do something with the page of items
+            Console.WriteLine($"A page of {pageSize} results (unless it's the final page):");
+            foreach (Company item in singlePage)
+            {
+                // Do something with each item
+                Console.WriteLine(item);
+            }
+            // Store the pageToken, for when the next page is required.
+            string nextPageToken = singlePage.NextPageToken;
+            // End snippet
+        }
+
+        /// <summary>Snippet for ListCompanies</summary>
+        public async Task ListCompaniesRequestObjectAsync()
+        {
+            // Snippet: ListCompaniesAsync(ListCompaniesRequest, CallSettings)
+            // Create client
+            CompanyServiceClient companyServiceClient = await CompanyServiceClient.CreateAsync();
+            // Initialize request argument(s)
+            ListCompaniesRequest request = new ListCompaniesRequest
+            {
+                ParentAsTenantName = TenantName.FromProjectTenant("[PROJECT]", "[TENANT]"),
+                RequireOpenJobs = false,
+            };
+            // Make the request
+            PagedAsyncEnumerable<ListCompaniesResponse, Company> response = companyServiceClient.ListCompaniesAsync(request);
 
             // Iterate over all response items, lazily performing RPCs as required
             await response.ForEachAsync((Company item) =>
@@ -303,6 +462,7 @@ namespace Google.Cloud.Talent.V4Beta1.Snippets
                 Console.WriteLine("A page of results:");
                 foreach (Company item in page)
                 {
+                    // Do something with each item
                     Console.WriteLine(item);
                 }
             });
@@ -314,6 +474,7 @@ namespace Google.Cloud.Talent.V4Beta1.Snippets
             Console.WriteLine($"A page of {pageSize} results (unless it's the final page):");
             foreach (Company item in singlePage)
             {
+                // Do something with each item
                 Console.WriteLine(item);
             }
             // Store the pageToken, for when the next page is required.
@@ -324,14 +485,13 @@ namespace Google.Cloud.Talent.V4Beta1.Snippets
         /// <summary>Snippet for ListCompanies</summary>
         public void ListCompanies()
         {
-            // Snippet: ListCompanies(TenantOrProjectNameOneof,string,int?,CallSettings)
+            // Snippet: ListCompanies(string, string, int?, CallSettings)
             // Create client
             CompanyServiceClient companyServiceClient = CompanyServiceClient.Create();
             // Initialize request argument(s)
-            TenantOrProjectNameOneof parent = TenantOrProjectNameOneof.From(new TenantName("[PROJECT]", "[TENANT]"));
+            string parent = "projects/[PROJECT]/tenants/[TENANT]";
             // Make the request
-            PagedEnumerable<ListCompaniesResponse, Company> response =
-                companyServiceClient.ListCompanies(parent);
+            PagedEnumerable<ListCompaniesResponse, Company> response = companyServiceClient.ListCompanies(parent);
 
             // Iterate over all response items, lazily performing RPCs as required
             foreach (Company item in response)
@@ -347,6 +507,7 @@ namespace Google.Cloud.Talent.V4Beta1.Snippets
                 Console.WriteLine("A page of results:");
                 foreach (Company item in page)
                 {
+                    // Do something with each item
                     Console.WriteLine(item);
                 }
             }
@@ -358,6 +519,7 @@ namespace Google.Cloud.Talent.V4Beta1.Snippets
             Console.WriteLine($"A page of {pageSize} results (unless it's the final page):");
             foreach (Company item in singlePage)
             {
+                // Do something with each item
                 Console.WriteLine(item);
             }
             // Store the pageToken, for when the next page is required.
@@ -365,20 +527,16 @@ namespace Google.Cloud.Talent.V4Beta1.Snippets
             // End snippet
         }
 
-        /// <summary>Snippet for ListCompaniesAsync</summary>
-        public async Task ListCompaniesAsync_RequestObject()
+        /// <summary>Snippet for ListCompanies</summary>
+        public async Task ListCompaniesAsync()
         {
-            // Snippet: ListCompaniesAsync(ListCompaniesRequest,CallSettings)
+            // Snippet: ListCompaniesAsync(string, string, int?, CallSettings)
             // Create client
             CompanyServiceClient companyServiceClient = await CompanyServiceClient.CreateAsync();
             // Initialize request argument(s)
-            ListCompaniesRequest request = new ListCompaniesRequest
-            {
-                ParentAsTenantOrProjectNameOneof = TenantOrProjectNameOneof.From(new TenantName("[PROJECT]", "[TENANT]")),
-            };
+            string parent = "projects/[PROJECT]/tenants/[TENANT]";
             // Make the request
-            PagedAsyncEnumerable<ListCompaniesResponse, Company> response =
-                companyServiceClient.ListCompaniesAsync(request);
+            PagedAsyncEnumerable<ListCompaniesResponse, Company> response = companyServiceClient.ListCompaniesAsync(parent);
 
             // Iterate over all response items, lazily performing RPCs as required
             await response.ForEachAsync((Company item) =>
@@ -394,6 +552,7 @@ namespace Google.Cloud.Talent.V4Beta1.Snippets
                 Console.WriteLine("A page of results:");
                 foreach (Company item in page)
                 {
+                    // Do something with each item
                     Console.WriteLine(item);
                 }
             });
@@ -405,6 +564,7 @@ namespace Google.Cloud.Talent.V4Beta1.Snippets
             Console.WriteLine($"A page of {pageSize} results (unless it's the final page):");
             foreach (Company item in singlePage)
             {
+                // Do something with each item
                 Console.WriteLine(item);
             }
             // Store the pageToken, for when the next page is required.
@@ -413,19 +573,15 @@ namespace Google.Cloud.Talent.V4Beta1.Snippets
         }
 
         /// <summary>Snippet for ListCompanies</summary>
-        public void ListCompanies_RequestObject()
+        public void ListCompaniesResourceNames1()
         {
-            // Snippet: ListCompanies(ListCompaniesRequest,CallSettings)
+            // Snippet: ListCompanies(TenantName, string, int?, CallSettings)
             // Create client
             CompanyServiceClient companyServiceClient = CompanyServiceClient.Create();
             // Initialize request argument(s)
-            ListCompaniesRequest request = new ListCompaniesRequest
-            {
-                ParentAsTenantOrProjectNameOneof = TenantOrProjectNameOneof.From(new TenantName("[PROJECT]", "[TENANT]")),
-            };
+            TenantName parent = TenantName.FromProjectTenant("[PROJECT]", "[TENANT]");
             // Make the request
-            PagedEnumerable<ListCompaniesResponse, Company> response =
-                companyServiceClient.ListCompanies(request);
+            PagedEnumerable<ListCompaniesResponse, Company> response = companyServiceClient.ListCompanies(parent);
 
             // Iterate over all response items, lazily performing RPCs as required
             foreach (Company item in response)
@@ -441,6 +597,7 @@ namespace Google.Cloud.Talent.V4Beta1.Snippets
                 Console.WriteLine("A page of results:");
                 foreach (Company item in page)
                 {
+                    // Do something with each item
                     Console.WriteLine(item);
                 }
             }
@@ -452,6 +609,7 @@ namespace Google.Cloud.Talent.V4Beta1.Snippets
             Console.WriteLine($"A page of {pageSize} results (unless it's the final page):");
             foreach (Company item in singlePage)
             {
+                // Do something with each item
                 Console.WriteLine(item);
             }
             // Store the pageToken, for when the next page is required.
@@ -459,5 +617,139 @@ namespace Google.Cloud.Talent.V4Beta1.Snippets
             // End snippet
         }
 
+        /// <summary>Snippet for ListCompanies</summary>
+        public async Task ListCompaniesResourceNames1Async()
+        {
+            // Snippet: ListCompaniesAsync(TenantName, string, int?, CallSettings)
+            // Create client
+            CompanyServiceClient companyServiceClient = await CompanyServiceClient.CreateAsync();
+            // Initialize request argument(s)
+            TenantName parent = TenantName.FromProjectTenant("[PROJECT]", "[TENANT]");
+            // Make the request
+            PagedAsyncEnumerable<ListCompaniesResponse, Company> response = companyServiceClient.ListCompaniesAsync(parent);
+
+            // Iterate over all response items, lazily performing RPCs as required
+            await response.ForEachAsync((Company item) =>
+            {
+                // Do something with each item
+                Console.WriteLine(item);
+            });
+
+            // Or iterate over pages (of server-defined size), performing one RPC per page
+            await response.AsRawResponses().ForEachAsync((ListCompaniesResponse page) =>
+            {
+                // Do something with each page of items
+                Console.WriteLine("A page of results:");
+                foreach (Company item in page)
+                {
+                    // Do something with each item
+                    Console.WriteLine(item);
+                }
+            });
+
+            // Or retrieve a single page of known size (unless it's the final page), performing as many RPCs as required
+            int pageSize = 10;
+            Page<Company> singlePage = await response.ReadPageAsync(pageSize);
+            // Do something with the page of items
+            Console.WriteLine($"A page of {pageSize} results (unless it's the final page):");
+            foreach (Company item in singlePage)
+            {
+                // Do something with each item
+                Console.WriteLine(item);
+            }
+            // Store the pageToken, for when the next page is required.
+            string nextPageToken = singlePage.NextPageToken;
+            // End snippet
+        }
+
+        /// <summary>Snippet for ListCompanies</summary>
+        public void ListCompaniesResourceNames2()
+        {
+            // Snippet: ListCompanies(ProjectName, string, int?, CallSettings)
+            // Create client
+            CompanyServiceClient companyServiceClient = CompanyServiceClient.Create();
+            // Initialize request argument(s)
+            ProjectName parent = ProjectName.FromProject("[PROJECT]");
+            // Make the request
+            PagedEnumerable<ListCompaniesResponse, Company> response = companyServiceClient.ListCompanies(parent);
+
+            // Iterate over all response items, lazily performing RPCs as required
+            foreach (Company item in response)
+            {
+                // Do something with each item
+                Console.WriteLine(item);
+            }
+
+            // Or iterate over pages (of server-defined size), performing one RPC per page
+            foreach (ListCompaniesResponse page in response.AsRawResponses())
+            {
+                // Do something with each page of items
+                Console.WriteLine("A page of results:");
+                foreach (Company item in page)
+                {
+                    // Do something with each item
+                    Console.WriteLine(item);
+                }
+            }
+
+            // Or retrieve a single page of known size (unless it's the final page), performing as many RPCs as required
+            int pageSize = 10;
+            Page<Company> singlePage = response.ReadPage(pageSize);
+            // Do something with the page of items
+            Console.WriteLine($"A page of {pageSize} results (unless it's the final page):");
+            foreach (Company item in singlePage)
+            {
+                // Do something with each item
+                Console.WriteLine(item);
+            }
+            // Store the pageToken, for when the next page is required.
+            string nextPageToken = singlePage.NextPageToken;
+            // End snippet
+        }
+
+        /// <summary>Snippet for ListCompanies</summary>
+        public async Task ListCompaniesResourceNames2Async()
+        {
+            // Snippet: ListCompaniesAsync(ProjectName, string, int?, CallSettings)
+            // Create client
+            CompanyServiceClient companyServiceClient = await CompanyServiceClient.CreateAsync();
+            // Initialize request argument(s)
+            ProjectName parent = ProjectName.FromProject("[PROJECT]");
+            // Make the request
+            PagedAsyncEnumerable<ListCompaniesResponse, Company> response = companyServiceClient.ListCompaniesAsync(parent);
+
+            // Iterate over all response items, lazily performing RPCs as required
+            await response.ForEachAsync((Company item) =>
+            {
+                // Do something with each item
+                Console.WriteLine(item);
+            });
+
+            // Or iterate over pages (of server-defined size), performing one RPC per page
+            await response.AsRawResponses().ForEachAsync((ListCompaniesResponse page) =>
+            {
+                // Do something with each page of items
+                Console.WriteLine("A page of results:");
+                foreach (Company item in page)
+                {
+                    // Do something with each item
+                    Console.WriteLine(item);
+                }
+            });
+
+            // Or retrieve a single page of known size (unless it's the final page), performing as many RPCs as required
+            int pageSize = 10;
+            Page<Company> singlePage = await response.ReadPageAsync(pageSize);
+            // Do something with the page of items
+            Console.WriteLine($"A page of {pageSize} results (unless it's the final page):");
+            foreach (Company item in singlePage)
+            {
+                // Do something with each item
+                Console.WriteLine(item);
+            }
+            // Store the pageToken, for when the next page is required.
+            string nextPageToken = singlePage.NextPageToken;
+            // End snippet
+        }
     }
 }

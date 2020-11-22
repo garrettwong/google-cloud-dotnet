@@ -246,45 +246,45 @@ namespace Google.Cloud.Vision.V1 {
             "aW9u+AEBogIER0NWTmIGcHJvdG8z"));
       descriptor = pbr::FileDescriptor.FromGeneratedCode(descriptorData,
           new pbr::FileDescriptor[] { global::Google.Api.AnnotationsReflection.Descriptor, global::Google.Api.ClientReflection.Descriptor, global::Google.Api.FieldBehaviorReflection.Descriptor, global::Google.Cloud.Vision.V1.GeometryReflection.Descriptor, global::Google.Cloud.Vision.V1.ProductSearchReflection.Descriptor, global::Google.Cloud.Vision.V1.TextAnnotationReflection.Descriptor, global::Google.Cloud.Vision.V1.WebDetectionReflection.Descriptor, global::Google.LongRunning.OperationsReflection.Descriptor, global::Google.Protobuf.WellKnownTypes.FieldMaskReflection.Descriptor, global::Google.Protobuf.WellKnownTypes.TimestampReflection.Descriptor, global::Google.Rpc.StatusReflection.Descriptor, global::Google.Type.ColorReflection.Descriptor, global::Google.Type.LatlngReflection.Descriptor, },
-          new pbr::GeneratedClrTypeInfo(new[] {typeof(global::Google.Cloud.Vision.V1.Likelihood), }, new pbr::GeneratedClrTypeInfo[] {
-            new pbr::GeneratedClrTypeInfo(typeof(global::Google.Cloud.Vision.V1.Feature), global::Google.Cloud.Vision.V1.Feature.Parser, new[]{ "Type", "MaxResults", "Model" }, null, new[]{ typeof(global::Google.Cloud.Vision.V1.Feature.Types.Type) }, null),
-            new pbr::GeneratedClrTypeInfo(typeof(global::Google.Cloud.Vision.V1.ImageSource), global::Google.Cloud.Vision.V1.ImageSource.Parser, new[]{ "GcsImageUri", "ImageUri" }, null, null, null),
-            new pbr::GeneratedClrTypeInfo(typeof(global::Google.Cloud.Vision.V1.Image), global::Google.Cloud.Vision.V1.Image.Parser, new[]{ "Content", "Source" }, null, null, null),
-            new pbr::GeneratedClrTypeInfo(typeof(global::Google.Cloud.Vision.V1.FaceAnnotation), global::Google.Cloud.Vision.V1.FaceAnnotation.Parser, new[]{ "BoundingPoly", "FdBoundingPoly", "Landmarks", "RollAngle", "PanAngle", "TiltAngle", "DetectionConfidence", "LandmarkingConfidence", "JoyLikelihood", "SorrowLikelihood", "AngerLikelihood", "SurpriseLikelihood", "UnderExposedLikelihood", "BlurredLikelihood", "HeadwearLikelihood" }, null, null, new pbr::GeneratedClrTypeInfo[] { new pbr::GeneratedClrTypeInfo(typeof(global::Google.Cloud.Vision.V1.FaceAnnotation.Types.Landmark), global::Google.Cloud.Vision.V1.FaceAnnotation.Types.Landmark.Parser, new[]{ "Type", "Position" }, null, new[]{ typeof(global::Google.Cloud.Vision.V1.FaceAnnotation.Types.Landmark.Types.Type) }, null)}),
-            new pbr::GeneratedClrTypeInfo(typeof(global::Google.Cloud.Vision.V1.LocationInfo), global::Google.Cloud.Vision.V1.LocationInfo.Parser, new[]{ "LatLng" }, null, null, null),
-            new pbr::GeneratedClrTypeInfo(typeof(global::Google.Cloud.Vision.V1.Property), global::Google.Cloud.Vision.V1.Property.Parser, new[]{ "Name", "Value", "Uint64Value" }, null, null, null),
-            new pbr::GeneratedClrTypeInfo(typeof(global::Google.Cloud.Vision.V1.EntityAnnotation), global::Google.Cloud.Vision.V1.EntityAnnotation.Parser, new[]{ "Mid", "Locale", "Description", "Score", "Confidence", "Topicality", "BoundingPoly", "Locations", "Properties" }, null, null, null),
-            new pbr::GeneratedClrTypeInfo(typeof(global::Google.Cloud.Vision.V1.LocalizedObjectAnnotation), global::Google.Cloud.Vision.V1.LocalizedObjectAnnotation.Parser, new[]{ "Mid", "LanguageCode", "Name", "Score", "BoundingPoly" }, null, null, null),
-            new pbr::GeneratedClrTypeInfo(typeof(global::Google.Cloud.Vision.V1.SafeSearchAnnotation), global::Google.Cloud.Vision.V1.SafeSearchAnnotation.Parser, new[]{ "Adult", "Spoof", "Medical", "Violence", "Racy", "AdultConfidence", "SpoofConfidence", "MedicalConfidence", "ViolenceConfidence", "RacyConfidence", "NsfwConfidence" }, null, null, null),
-            new pbr::GeneratedClrTypeInfo(typeof(global::Google.Cloud.Vision.V1.LatLongRect), global::Google.Cloud.Vision.V1.LatLongRect.Parser, new[]{ "MinLatLng", "MaxLatLng" }, null, null, null),
-            new pbr::GeneratedClrTypeInfo(typeof(global::Google.Cloud.Vision.V1.ColorInfo), global::Google.Cloud.Vision.V1.ColorInfo.Parser, new[]{ "Color", "Score", "PixelFraction" }, null, null, null),
-            new pbr::GeneratedClrTypeInfo(typeof(global::Google.Cloud.Vision.V1.DominantColorsAnnotation), global::Google.Cloud.Vision.V1.DominantColorsAnnotation.Parser, new[]{ "Colors" }, null, null, null),
-            new pbr::GeneratedClrTypeInfo(typeof(global::Google.Cloud.Vision.V1.ImageProperties), global::Google.Cloud.Vision.V1.ImageProperties.Parser, new[]{ "DominantColors" }, null, null, null),
-            new pbr::GeneratedClrTypeInfo(typeof(global::Google.Cloud.Vision.V1.CropHint), global::Google.Cloud.Vision.V1.CropHint.Parser, new[]{ "BoundingPoly", "Confidence", "ImportanceFraction" }, null, null, null),
-            new pbr::GeneratedClrTypeInfo(typeof(global::Google.Cloud.Vision.V1.CropHintsAnnotation), global::Google.Cloud.Vision.V1.CropHintsAnnotation.Parser, new[]{ "CropHints" }, null, null, null),
-            new pbr::GeneratedClrTypeInfo(typeof(global::Google.Cloud.Vision.V1.CropHintsParams), global::Google.Cloud.Vision.V1.CropHintsParams.Parser, new[]{ "AspectRatios" }, null, null, null),
-            new pbr::GeneratedClrTypeInfo(typeof(global::Google.Cloud.Vision.V1.WebDetectionParams), global::Google.Cloud.Vision.V1.WebDetectionParams.Parser, new[]{ "IncludeGeoResults" }, null, null, null),
-            new pbr::GeneratedClrTypeInfo(typeof(global::Google.Cloud.Vision.V1.ImageContext), global::Google.Cloud.Vision.V1.ImageContext.Parser, new[]{ "LatLongRect", "LanguageHints", "CropHintsParams", "ProductSearchParams", "WebDetectionParams" }, null, null, null),
-            new pbr::GeneratedClrTypeInfo(typeof(global::Google.Cloud.Vision.V1.AnnotateImageRequest), global::Google.Cloud.Vision.V1.AnnotateImageRequest.Parser, new[]{ "Image", "Features", "ImageContext" }, null, null, null),
-            new pbr::GeneratedClrTypeInfo(typeof(global::Google.Cloud.Vision.V1.ImageAnnotationContext), global::Google.Cloud.Vision.V1.ImageAnnotationContext.Parser, new[]{ "Uri", "PageNumber" }, null, null, null),
-            new pbr::GeneratedClrTypeInfo(typeof(global::Google.Cloud.Vision.V1.AnnotateImageResponse), global::Google.Cloud.Vision.V1.AnnotateImageResponse.Parser, new[]{ "FaceAnnotations", "LandmarkAnnotations", "LogoAnnotations", "LabelAnnotations", "LocalizedObjectAnnotations", "TextAnnotations", "FullTextAnnotation", "SafeSearchAnnotation", "ImagePropertiesAnnotation", "CropHintsAnnotation", "WebDetection", "ProductSearchResults", "Error", "Context" }, null, null, null),
-            new pbr::GeneratedClrTypeInfo(typeof(global::Google.Cloud.Vision.V1.BatchAnnotateImagesRequest), global::Google.Cloud.Vision.V1.BatchAnnotateImagesRequest.Parser, new[]{ "Requests", "Parent" }, null, null, null),
-            new pbr::GeneratedClrTypeInfo(typeof(global::Google.Cloud.Vision.V1.BatchAnnotateImagesResponse), global::Google.Cloud.Vision.V1.BatchAnnotateImagesResponse.Parser, new[]{ "Responses" }, null, null, null),
-            new pbr::GeneratedClrTypeInfo(typeof(global::Google.Cloud.Vision.V1.AnnotateFileRequest), global::Google.Cloud.Vision.V1.AnnotateFileRequest.Parser, new[]{ "InputConfig", "Features", "ImageContext", "Pages" }, null, null, null),
-            new pbr::GeneratedClrTypeInfo(typeof(global::Google.Cloud.Vision.V1.AnnotateFileResponse), global::Google.Cloud.Vision.V1.AnnotateFileResponse.Parser, new[]{ "InputConfig", "Responses", "TotalPages", "Error" }, null, null, null),
-            new pbr::GeneratedClrTypeInfo(typeof(global::Google.Cloud.Vision.V1.BatchAnnotateFilesRequest), global::Google.Cloud.Vision.V1.BatchAnnotateFilesRequest.Parser, new[]{ "Requests", "Parent" }, null, null, null),
-            new pbr::GeneratedClrTypeInfo(typeof(global::Google.Cloud.Vision.V1.BatchAnnotateFilesResponse), global::Google.Cloud.Vision.V1.BatchAnnotateFilesResponse.Parser, new[]{ "Responses" }, null, null, null),
-            new pbr::GeneratedClrTypeInfo(typeof(global::Google.Cloud.Vision.V1.AsyncAnnotateFileRequest), global::Google.Cloud.Vision.V1.AsyncAnnotateFileRequest.Parser, new[]{ "InputConfig", "Features", "ImageContext", "OutputConfig" }, null, null, null),
-            new pbr::GeneratedClrTypeInfo(typeof(global::Google.Cloud.Vision.V1.AsyncAnnotateFileResponse), global::Google.Cloud.Vision.V1.AsyncAnnotateFileResponse.Parser, new[]{ "OutputConfig" }, null, null, null),
-            new pbr::GeneratedClrTypeInfo(typeof(global::Google.Cloud.Vision.V1.AsyncBatchAnnotateImagesRequest), global::Google.Cloud.Vision.V1.AsyncBatchAnnotateImagesRequest.Parser, new[]{ "Requests", "OutputConfig", "Parent" }, null, null, null),
-            new pbr::GeneratedClrTypeInfo(typeof(global::Google.Cloud.Vision.V1.AsyncBatchAnnotateImagesResponse), global::Google.Cloud.Vision.V1.AsyncBatchAnnotateImagesResponse.Parser, new[]{ "OutputConfig" }, null, null, null),
-            new pbr::GeneratedClrTypeInfo(typeof(global::Google.Cloud.Vision.V1.AsyncBatchAnnotateFilesRequest), global::Google.Cloud.Vision.V1.AsyncBatchAnnotateFilesRequest.Parser, new[]{ "Requests", "Parent" }, null, null, null),
-            new pbr::GeneratedClrTypeInfo(typeof(global::Google.Cloud.Vision.V1.AsyncBatchAnnotateFilesResponse), global::Google.Cloud.Vision.V1.AsyncBatchAnnotateFilesResponse.Parser, new[]{ "Responses" }, null, null, null),
-            new pbr::GeneratedClrTypeInfo(typeof(global::Google.Cloud.Vision.V1.InputConfig), global::Google.Cloud.Vision.V1.InputConfig.Parser, new[]{ "GcsSource", "Content", "MimeType" }, null, null, null),
-            new pbr::GeneratedClrTypeInfo(typeof(global::Google.Cloud.Vision.V1.OutputConfig), global::Google.Cloud.Vision.V1.OutputConfig.Parser, new[]{ "GcsDestination", "BatchSize" }, null, null, null),
-            new pbr::GeneratedClrTypeInfo(typeof(global::Google.Cloud.Vision.V1.GcsSource), global::Google.Cloud.Vision.V1.GcsSource.Parser, new[]{ "Uri" }, null, null, null),
-            new pbr::GeneratedClrTypeInfo(typeof(global::Google.Cloud.Vision.V1.GcsDestination), global::Google.Cloud.Vision.V1.GcsDestination.Parser, new[]{ "Uri" }, null, null, null),
-            new pbr::GeneratedClrTypeInfo(typeof(global::Google.Cloud.Vision.V1.OperationMetadata), global::Google.Cloud.Vision.V1.OperationMetadata.Parser, new[]{ "State", "CreateTime", "UpdateTime" }, null, new[]{ typeof(global::Google.Cloud.Vision.V1.OperationMetadata.Types.State) }, null)
+          new pbr::GeneratedClrTypeInfo(new[] {typeof(global::Google.Cloud.Vision.V1.Likelihood), }, null, new pbr::GeneratedClrTypeInfo[] {
+            new pbr::GeneratedClrTypeInfo(typeof(global::Google.Cloud.Vision.V1.Feature), global::Google.Cloud.Vision.V1.Feature.Parser, new[]{ "Type", "MaxResults", "Model" }, null, new[]{ typeof(global::Google.Cloud.Vision.V1.Feature.Types.Type) }, null, null),
+            new pbr::GeneratedClrTypeInfo(typeof(global::Google.Cloud.Vision.V1.ImageSource), global::Google.Cloud.Vision.V1.ImageSource.Parser, new[]{ "GcsImageUri", "ImageUri" }, null, null, null, null),
+            new pbr::GeneratedClrTypeInfo(typeof(global::Google.Cloud.Vision.V1.Image), global::Google.Cloud.Vision.V1.Image.Parser, new[]{ "Content", "Source" }, null, null, null, null),
+            new pbr::GeneratedClrTypeInfo(typeof(global::Google.Cloud.Vision.V1.FaceAnnotation), global::Google.Cloud.Vision.V1.FaceAnnotation.Parser, new[]{ "BoundingPoly", "FdBoundingPoly", "Landmarks", "RollAngle", "PanAngle", "TiltAngle", "DetectionConfidence", "LandmarkingConfidence", "JoyLikelihood", "SorrowLikelihood", "AngerLikelihood", "SurpriseLikelihood", "UnderExposedLikelihood", "BlurredLikelihood", "HeadwearLikelihood" }, null, null, null, new pbr::GeneratedClrTypeInfo[] { new pbr::GeneratedClrTypeInfo(typeof(global::Google.Cloud.Vision.V1.FaceAnnotation.Types.Landmark), global::Google.Cloud.Vision.V1.FaceAnnotation.Types.Landmark.Parser, new[]{ "Type", "Position" }, null, new[]{ typeof(global::Google.Cloud.Vision.V1.FaceAnnotation.Types.Landmark.Types.Type) }, null, null)}),
+            new pbr::GeneratedClrTypeInfo(typeof(global::Google.Cloud.Vision.V1.LocationInfo), global::Google.Cloud.Vision.V1.LocationInfo.Parser, new[]{ "LatLng" }, null, null, null, null),
+            new pbr::GeneratedClrTypeInfo(typeof(global::Google.Cloud.Vision.V1.Property), global::Google.Cloud.Vision.V1.Property.Parser, new[]{ "Name", "Value", "Uint64Value" }, null, null, null, null),
+            new pbr::GeneratedClrTypeInfo(typeof(global::Google.Cloud.Vision.V1.EntityAnnotation), global::Google.Cloud.Vision.V1.EntityAnnotation.Parser, new[]{ "Mid", "Locale", "Description", "Score", "Confidence", "Topicality", "BoundingPoly", "Locations", "Properties" }, null, null, null, null),
+            new pbr::GeneratedClrTypeInfo(typeof(global::Google.Cloud.Vision.V1.LocalizedObjectAnnotation), global::Google.Cloud.Vision.V1.LocalizedObjectAnnotation.Parser, new[]{ "Mid", "LanguageCode", "Name", "Score", "BoundingPoly" }, null, null, null, null),
+            new pbr::GeneratedClrTypeInfo(typeof(global::Google.Cloud.Vision.V1.SafeSearchAnnotation), global::Google.Cloud.Vision.V1.SafeSearchAnnotation.Parser, new[]{ "Adult", "Spoof", "Medical", "Violence", "Racy", "AdultConfidence", "SpoofConfidence", "MedicalConfidence", "ViolenceConfidence", "RacyConfidence", "NsfwConfidence" }, null, null, null, null),
+            new pbr::GeneratedClrTypeInfo(typeof(global::Google.Cloud.Vision.V1.LatLongRect), global::Google.Cloud.Vision.V1.LatLongRect.Parser, new[]{ "MinLatLng", "MaxLatLng" }, null, null, null, null),
+            new pbr::GeneratedClrTypeInfo(typeof(global::Google.Cloud.Vision.V1.ColorInfo), global::Google.Cloud.Vision.V1.ColorInfo.Parser, new[]{ "Color", "Score", "PixelFraction" }, null, null, null, null),
+            new pbr::GeneratedClrTypeInfo(typeof(global::Google.Cloud.Vision.V1.DominantColorsAnnotation), global::Google.Cloud.Vision.V1.DominantColorsAnnotation.Parser, new[]{ "Colors" }, null, null, null, null),
+            new pbr::GeneratedClrTypeInfo(typeof(global::Google.Cloud.Vision.V1.ImageProperties), global::Google.Cloud.Vision.V1.ImageProperties.Parser, new[]{ "DominantColors" }, null, null, null, null),
+            new pbr::GeneratedClrTypeInfo(typeof(global::Google.Cloud.Vision.V1.CropHint), global::Google.Cloud.Vision.V1.CropHint.Parser, new[]{ "BoundingPoly", "Confidence", "ImportanceFraction" }, null, null, null, null),
+            new pbr::GeneratedClrTypeInfo(typeof(global::Google.Cloud.Vision.V1.CropHintsAnnotation), global::Google.Cloud.Vision.V1.CropHintsAnnotation.Parser, new[]{ "CropHints" }, null, null, null, null),
+            new pbr::GeneratedClrTypeInfo(typeof(global::Google.Cloud.Vision.V1.CropHintsParams), global::Google.Cloud.Vision.V1.CropHintsParams.Parser, new[]{ "AspectRatios" }, null, null, null, null),
+            new pbr::GeneratedClrTypeInfo(typeof(global::Google.Cloud.Vision.V1.WebDetectionParams), global::Google.Cloud.Vision.V1.WebDetectionParams.Parser, new[]{ "IncludeGeoResults" }, null, null, null, null),
+            new pbr::GeneratedClrTypeInfo(typeof(global::Google.Cloud.Vision.V1.ImageContext), global::Google.Cloud.Vision.V1.ImageContext.Parser, new[]{ "LatLongRect", "LanguageHints", "CropHintsParams", "ProductSearchParams", "WebDetectionParams" }, null, null, null, null),
+            new pbr::GeneratedClrTypeInfo(typeof(global::Google.Cloud.Vision.V1.AnnotateImageRequest), global::Google.Cloud.Vision.V1.AnnotateImageRequest.Parser, new[]{ "Image", "Features", "ImageContext" }, null, null, null, null),
+            new pbr::GeneratedClrTypeInfo(typeof(global::Google.Cloud.Vision.V1.ImageAnnotationContext), global::Google.Cloud.Vision.V1.ImageAnnotationContext.Parser, new[]{ "Uri", "PageNumber" }, null, null, null, null),
+            new pbr::GeneratedClrTypeInfo(typeof(global::Google.Cloud.Vision.V1.AnnotateImageResponse), global::Google.Cloud.Vision.V1.AnnotateImageResponse.Parser, new[]{ "FaceAnnotations", "LandmarkAnnotations", "LogoAnnotations", "LabelAnnotations", "LocalizedObjectAnnotations", "TextAnnotations", "FullTextAnnotation", "SafeSearchAnnotation", "ImagePropertiesAnnotation", "CropHintsAnnotation", "WebDetection", "ProductSearchResults", "Error", "Context" }, null, null, null, null),
+            new pbr::GeneratedClrTypeInfo(typeof(global::Google.Cloud.Vision.V1.BatchAnnotateImagesRequest), global::Google.Cloud.Vision.V1.BatchAnnotateImagesRequest.Parser, new[]{ "Requests", "Parent" }, null, null, null, null),
+            new pbr::GeneratedClrTypeInfo(typeof(global::Google.Cloud.Vision.V1.BatchAnnotateImagesResponse), global::Google.Cloud.Vision.V1.BatchAnnotateImagesResponse.Parser, new[]{ "Responses" }, null, null, null, null),
+            new pbr::GeneratedClrTypeInfo(typeof(global::Google.Cloud.Vision.V1.AnnotateFileRequest), global::Google.Cloud.Vision.V1.AnnotateFileRequest.Parser, new[]{ "InputConfig", "Features", "ImageContext", "Pages" }, null, null, null, null),
+            new pbr::GeneratedClrTypeInfo(typeof(global::Google.Cloud.Vision.V1.AnnotateFileResponse), global::Google.Cloud.Vision.V1.AnnotateFileResponse.Parser, new[]{ "InputConfig", "Responses", "TotalPages", "Error" }, null, null, null, null),
+            new pbr::GeneratedClrTypeInfo(typeof(global::Google.Cloud.Vision.V1.BatchAnnotateFilesRequest), global::Google.Cloud.Vision.V1.BatchAnnotateFilesRequest.Parser, new[]{ "Requests", "Parent" }, null, null, null, null),
+            new pbr::GeneratedClrTypeInfo(typeof(global::Google.Cloud.Vision.V1.BatchAnnotateFilesResponse), global::Google.Cloud.Vision.V1.BatchAnnotateFilesResponse.Parser, new[]{ "Responses" }, null, null, null, null),
+            new pbr::GeneratedClrTypeInfo(typeof(global::Google.Cloud.Vision.V1.AsyncAnnotateFileRequest), global::Google.Cloud.Vision.V1.AsyncAnnotateFileRequest.Parser, new[]{ "InputConfig", "Features", "ImageContext", "OutputConfig" }, null, null, null, null),
+            new pbr::GeneratedClrTypeInfo(typeof(global::Google.Cloud.Vision.V1.AsyncAnnotateFileResponse), global::Google.Cloud.Vision.V1.AsyncAnnotateFileResponse.Parser, new[]{ "OutputConfig" }, null, null, null, null),
+            new pbr::GeneratedClrTypeInfo(typeof(global::Google.Cloud.Vision.V1.AsyncBatchAnnotateImagesRequest), global::Google.Cloud.Vision.V1.AsyncBatchAnnotateImagesRequest.Parser, new[]{ "Requests", "OutputConfig", "Parent" }, null, null, null, null),
+            new pbr::GeneratedClrTypeInfo(typeof(global::Google.Cloud.Vision.V1.AsyncBatchAnnotateImagesResponse), global::Google.Cloud.Vision.V1.AsyncBatchAnnotateImagesResponse.Parser, new[]{ "OutputConfig" }, null, null, null, null),
+            new pbr::GeneratedClrTypeInfo(typeof(global::Google.Cloud.Vision.V1.AsyncBatchAnnotateFilesRequest), global::Google.Cloud.Vision.V1.AsyncBatchAnnotateFilesRequest.Parser, new[]{ "Requests", "Parent" }, null, null, null, null),
+            new pbr::GeneratedClrTypeInfo(typeof(global::Google.Cloud.Vision.V1.AsyncBatchAnnotateFilesResponse), global::Google.Cloud.Vision.V1.AsyncBatchAnnotateFilesResponse.Parser, new[]{ "Responses" }, null, null, null, null),
+            new pbr::GeneratedClrTypeInfo(typeof(global::Google.Cloud.Vision.V1.InputConfig), global::Google.Cloud.Vision.V1.InputConfig.Parser, new[]{ "GcsSource", "Content", "MimeType" }, null, null, null, null),
+            new pbr::GeneratedClrTypeInfo(typeof(global::Google.Cloud.Vision.V1.OutputConfig), global::Google.Cloud.Vision.V1.OutputConfig.Parser, new[]{ "GcsDestination", "BatchSize" }, null, null, null, null),
+            new pbr::GeneratedClrTypeInfo(typeof(global::Google.Cloud.Vision.V1.GcsSource), global::Google.Cloud.Vision.V1.GcsSource.Parser, new[]{ "Uri" }, null, null, null, null),
+            new pbr::GeneratedClrTypeInfo(typeof(global::Google.Cloud.Vision.V1.GcsDestination), global::Google.Cloud.Vision.V1.GcsDestination.Parser, new[]{ "Uri" }, null, null, null, null),
+            new pbr::GeneratedClrTypeInfo(typeof(global::Google.Cloud.Vision.V1.OperationMetadata), global::Google.Cloud.Vision.V1.OperationMetadata.Parser, new[]{ "State", "CreateTime", "UpdateTime" }, null, new[]{ typeof(global::Google.Cloud.Vision.V1.OperationMetadata.Types.State) }, null, null)
           }));
     }
     #endregion
@@ -330,7 +330,11 @@ namespace Google.Cloud.Vision.V1 {
   /// number of results to return for that type. Multiple `Feature` objects can
   /// be specified in the `features` list.
   /// </summary>
-  public sealed partial class Feature : pb::IMessage<Feature> {
+  public sealed partial class Feature : pb::IMessage<Feature>
+  #if !GOOGLE_PROTOBUF_REFSTRUCT_COMPATIBILITY_MODE
+      , pb::IBufferMessage
+  #endif
+  {
     private static readonly pb::MessageParser<Feature> _parser = new pb::MessageParser<Feature>(() => new Feature());
     private pb::UnknownFieldSet _unknownFields;
     [global::System.Diagnostics.DebuggerNonUserCodeAttribute]
@@ -368,7 +372,7 @@ namespace Google.Cloud.Vision.V1 {
 
     /// <summary>Field number for the "type" field.</summary>
     public const int TypeFieldNumber = 1;
-    private global::Google.Cloud.Vision.V1.Feature.Types.Type type_ = 0;
+    private global::Google.Cloud.Vision.V1.Feature.Types.Type type_ = global::Google.Cloud.Vision.V1.Feature.Types.Type.Unspecified;
     /// <summary>
     /// The feature type.
     /// </summary>
@@ -433,7 +437,7 @@ namespace Google.Cloud.Vision.V1 {
     [global::System.Diagnostics.DebuggerNonUserCodeAttribute]
     public override int GetHashCode() {
       int hash = 1;
-      if (Type != 0) hash ^= Type.GetHashCode();
+      if (Type != global::Google.Cloud.Vision.V1.Feature.Types.Type.Unspecified) hash ^= Type.GetHashCode();
       if (MaxResults != 0) hash ^= MaxResults.GetHashCode();
       if (Model.Length != 0) hash ^= Model.GetHashCode();
       if (_unknownFields != null) {
@@ -449,7 +453,10 @@ namespace Google.Cloud.Vision.V1 {
 
     [global::System.Diagnostics.DebuggerNonUserCodeAttribute]
     public void WriteTo(pb::CodedOutputStream output) {
-      if (Type != 0) {
+    #if !GOOGLE_PROTOBUF_REFSTRUCT_COMPATIBILITY_MODE
+      output.WriteRawMessage(this);
+    #else
+      if (Type != global::Google.Cloud.Vision.V1.Feature.Types.Type.Unspecified) {
         output.WriteRawTag(8);
         output.WriteEnum((int) Type);
       }
@@ -464,12 +471,34 @@ namespace Google.Cloud.Vision.V1 {
       if (_unknownFields != null) {
         _unknownFields.WriteTo(output);
       }
+    #endif
     }
+
+    #if !GOOGLE_PROTOBUF_REFSTRUCT_COMPATIBILITY_MODE
+    [global::System.Diagnostics.DebuggerNonUserCodeAttribute]
+    void pb::IBufferMessage.InternalWriteTo(ref pb::WriteContext output) {
+      if (Type != global::Google.Cloud.Vision.V1.Feature.Types.Type.Unspecified) {
+        output.WriteRawTag(8);
+        output.WriteEnum((int) Type);
+      }
+      if (MaxResults != 0) {
+        output.WriteRawTag(16);
+        output.WriteInt32(MaxResults);
+      }
+      if (Model.Length != 0) {
+        output.WriteRawTag(26);
+        output.WriteString(Model);
+      }
+      if (_unknownFields != null) {
+        _unknownFields.WriteTo(ref output);
+      }
+    }
+    #endif
 
     [global::System.Diagnostics.DebuggerNonUserCodeAttribute]
     public int CalculateSize() {
       int size = 0;
-      if (Type != 0) {
+      if (Type != global::Google.Cloud.Vision.V1.Feature.Types.Type.Unspecified) {
         size += 1 + pb::CodedOutputStream.ComputeEnumSize((int) Type);
       }
       if (MaxResults != 0) {
@@ -489,7 +518,7 @@ namespace Google.Cloud.Vision.V1 {
       if (other == null) {
         return;
       }
-      if (other.Type != 0) {
+      if (other.Type != global::Google.Cloud.Vision.V1.Feature.Types.Type.Unspecified) {
         Type = other.Type;
       }
       if (other.MaxResults != 0) {
@@ -503,6 +532,9 @@ namespace Google.Cloud.Vision.V1 {
 
     [global::System.Diagnostics.DebuggerNonUserCodeAttribute]
     public void MergeFrom(pb::CodedInputStream input) {
+    #if !GOOGLE_PROTOBUF_REFSTRUCT_COMPATIBILITY_MODE
+      input.ReadRawMessage(this);
+    #else
       uint tag;
       while ((tag = input.ReadTag()) != 0) {
         switch(tag) {
@@ -523,7 +555,34 @@ namespace Google.Cloud.Vision.V1 {
           }
         }
       }
+    #endif
     }
+
+    #if !GOOGLE_PROTOBUF_REFSTRUCT_COMPATIBILITY_MODE
+    [global::System.Diagnostics.DebuggerNonUserCodeAttribute]
+    void pb::IBufferMessage.InternalMergeFrom(ref pb::ParseContext input) {
+      uint tag;
+      while ((tag = input.ReadTag()) != 0) {
+        switch(tag) {
+          default:
+            _unknownFields = pb::UnknownFieldSet.MergeFieldFrom(_unknownFields, ref input);
+            break;
+          case 8: {
+            Type = (global::Google.Cloud.Vision.V1.Feature.Types.Type) input.ReadEnum();
+            break;
+          }
+          case 16: {
+            MaxResults = input.ReadInt32();
+            break;
+          }
+          case 26: {
+            Model = input.ReadString();
+            break;
+          }
+        }
+      }
+    }
+    #endif
 
     #region Nested types
     /// <summary>Container for nested types declared in the Feature message type.</summary>
@@ -600,7 +659,11 @@ namespace Google.Cloud.Vision.V1 {
   /// <summary>
   /// External image source (Google Cloud Storage or web URL image location).
   /// </summary>
-  public sealed partial class ImageSource : pb::IMessage<ImageSource> {
+  public sealed partial class ImageSource : pb::IMessage<ImageSource>
+  #if !GOOGLE_PROTOBUF_REFSTRUCT_COMPATIBILITY_MODE
+      , pb::IBufferMessage
+  #endif
+  {
     private static readonly pb::MessageParser<ImageSource> _parser = new pb::MessageParser<ImageSource>(() => new ImageSource());
     private pb::UnknownFieldSet _unknownFields;
     [global::System.Diagnostics.DebuggerNonUserCodeAttribute]
@@ -720,6 +783,9 @@ namespace Google.Cloud.Vision.V1 {
 
     [global::System.Diagnostics.DebuggerNonUserCodeAttribute]
     public void WriteTo(pb::CodedOutputStream output) {
+    #if !GOOGLE_PROTOBUF_REFSTRUCT_COMPATIBILITY_MODE
+      output.WriteRawMessage(this);
+    #else
       if (GcsImageUri.Length != 0) {
         output.WriteRawTag(10);
         output.WriteString(GcsImageUri);
@@ -731,7 +797,25 @@ namespace Google.Cloud.Vision.V1 {
       if (_unknownFields != null) {
         _unknownFields.WriteTo(output);
       }
+    #endif
     }
+
+    #if !GOOGLE_PROTOBUF_REFSTRUCT_COMPATIBILITY_MODE
+    [global::System.Diagnostics.DebuggerNonUserCodeAttribute]
+    void pb::IBufferMessage.InternalWriteTo(ref pb::WriteContext output) {
+      if (GcsImageUri.Length != 0) {
+        output.WriteRawTag(10);
+        output.WriteString(GcsImageUri);
+      }
+      if (ImageUri.Length != 0) {
+        output.WriteRawTag(18);
+        output.WriteString(ImageUri);
+      }
+      if (_unknownFields != null) {
+        _unknownFields.WriteTo(ref output);
+      }
+    }
+    #endif
 
     [global::System.Diagnostics.DebuggerNonUserCodeAttribute]
     public int CalculateSize() {
@@ -764,6 +848,9 @@ namespace Google.Cloud.Vision.V1 {
 
     [global::System.Diagnostics.DebuggerNonUserCodeAttribute]
     public void MergeFrom(pb::CodedInputStream input) {
+    #if !GOOGLE_PROTOBUF_REFSTRUCT_COMPATIBILITY_MODE
+      input.ReadRawMessage(this);
+    #else
       uint tag;
       while ((tag = input.ReadTag()) != 0) {
         switch(tag) {
@@ -780,14 +867,41 @@ namespace Google.Cloud.Vision.V1 {
           }
         }
       }
+    #endif
     }
+
+    #if !GOOGLE_PROTOBUF_REFSTRUCT_COMPATIBILITY_MODE
+    [global::System.Diagnostics.DebuggerNonUserCodeAttribute]
+    void pb::IBufferMessage.InternalMergeFrom(ref pb::ParseContext input) {
+      uint tag;
+      while ((tag = input.ReadTag()) != 0) {
+        switch(tag) {
+          default:
+            _unknownFields = pb::UnknownFieldSet.MergeFieldFrom(_unknownFields, ref input);
+            break;
+          case 10: {
+            GcsImageUri = input.ReadString();
+            break;
+          }
+          case 18: {
+            ImageUri = input.ReadString();
+            break;
+          }
+        }
+      }
+    }
+    #endif
 
   }
 
   /// <summary>
   /// Client image to perform Google Cloud Vision API tasks over.
   /// </summary>
-  public sealed partial class Image : pb::IMessage<Image> {
+  public sealed partial class Image : pb::IMessage<Image>
+  #if !GOOGLE_PROTOBUF_REFSTRUCT_COMPATIBILITY_MODE
+      , pb::IBufferMessage
+  #endif
+  {
     private static readonly pb::MessageParser<Image> _parser = new pb::MessageParser<Image>(() => new Image());
     private pb::UnknownFieldSet _unknownFields;
     [global::System.Diagnostics.DebuggerNonUserCodeAttribute]
@@ -890,6 +1004,9 @@ namespace Google.Cloud.Vision.V1 {
 
     [global::System.Diagnostics.DebuggerNonUserCodeAttribute]
     public void WriteTo(pb::CodedOutputStream output) {
+    #if !GOOGLE_PROTOBUF_REFSTRUCT_COMPATIBILITY_MODE
+      output.WriteRawMessage(this);
+    #else
       if (Content.Length != 0) {
         output.WriteRawTag(10);
         output.WriteBytes(Content);
@@ -901,7 +1018,25 @@ namespace Google.Cloud.Vision.V1 {
       if (_unknownFields != null) {
         _unknownFields.WriteTo(output);
       }
+    #endif
     }
+
+    #if !GOOGLE_PROTOBUF_REFSTRUCT_COMPATIBILITY_MODE
+    [global::System.Diagnostics.DebuggerNonUserCodeAttribute]
+    void pb::IBufferMessage.InternalWriteTo(ref pb::WriteContext output) {
+      if (Content.Length != 0) {
+        output.WriteRawTag(10);
+        output.WriteBytes(Content);
+      }
+      if (source_ != null) {
+        output.WriteRawTag(18);
+        output.WriteMessage(Source);
+      }
+      if (_unknownFields != null) {
+        _unknownFields.WriteTo(ref output);
+      }
+    }
+    #endif
 
     [global::System.Diagnostics.DebuggerNonUserCodeAttribute]
     public int CalculateSize() {
@@ -937,6 +1072,9 @@ namespace Google.Cloud.Vision.V1 {
 
     [global::System.Diagnostics.DebuggerNonUserCodeAttribute]
     public void MergeFrom(pb::CodedInputStream input) {
+    #if !GOOGLE_PROTOBUF_REFSTRUCT_COMPATIBILITY_MODE
+      input.ReadRawMessage(this);
+    #else
       uint tag;
       while ((tag = input.ReadTag()) != 0) {
         switch(tag) {
@@ -956,14 +1094,44 @@ namespace Google.Cloud.Vision.V1 {
           }
         }
       }
+    #endif
     }
+
+    #if !GOOGLE_PROTOBUF_REFSTRUCT_COMPATIBILITY_MODE
+    [global::System.Diagnostics.DebuggerNonUserCodeAttribute]
+    void pb::IBufferMessage.InternalMergeFrom(ref pb::ParseContext input) {
+      uint tag;
+      while ((tag = input.ReadTag()) != 0) {
+        switch(tag) {
+          default:
+            _unknownFields = pb::UnknownFieldSet.MergeFieldFrom(_unknownFields, ref input);
+            break;
+          case 10: {
+            Content = input.ReadBytes();
+            break;
+          }
+          case 18: {
+            if (source_ == null) {
+              Source = new global::Google.Cloud.Vision.V1.ImageSource();
+            }
+            input.ReadMessage(Source);
+            break;
+          }
+        }
+      }
+    }
+    #endif
 
   }
 
   /// <summary>
   /// A face annotation object contains the results of face detection.
   /// </summary>
-  public sealed partial class FaceAnnotation : pb::IMessage<FaceAnnotation> {
+  public sealed partial class FaceAnnotation : pb::IMessage<FaceAnnotation>
+  #if !GOOGLE_PROTOBUF_REFSTRUCT_COMPATIBILITY_MODE
+      , pb::IBufferMessage
+  #endif
+  {
     private static readonly pb::MessageParser<FaceAnnotation> _parser = new pb::MessageParser<FaceAnnotation>(() => new FaceAnnotation());
     private pb::UnknownFieldSet _unknownFields;
     [global::System.Diagnostics.DebuggerNonUserCodeAttribute]
@@ -1140,7 +1308,7 @@ namespace Google.Cloud.Vision.V1 {
 
     /// <summary>Field number for the "joy_likelihood" field.</summary>
     public const int JoyLikelihoodFieldNumber = 9;
-    private global::Google.Cloud.Vision.V1.Likelihood joyLikelihood_ = 0;
+    private global::Google.Cloud.Vision.V1.Likelihood joyLikelihood_ = global::Google.Cloud.Vision.V1.Likelihood.Unknown;
     /// <summary>
     /// Joy likelihood.
     /// </summary>
@@ -1154,7 +1322,7 @@ namespace Google.Cloud.Vision.V1 {
 
     /// <summary>Field number for the "sorrow_likelihood" field.</summary>
     public const int SorrowLikelihoodFieldNumber = 10;
-    private global::Google.Cloud.Vision.V1.Likelihood sorrowLikelihood_ = 0;
+    private global::Google.Cloud.Vision.V1.Likelihood sorrowLikelihood_ = global::Google.Cloud.Vision.V1.Likelihood.Unknown;
     /// <summary>
     /// Sorrow likelihood.
     /// </summary>
@@ -1168,7 +1336,7 @@ namespace Google.Cloud.Vision.V1 {
 
     /// <summary>Field number for the "anger_likelihood" field.</summary>
     public const int AngerLikelihoodFieldNumber = 11;
-    private global::Google.Cloud.Vision.V1.Likelihood angerLikelihood_ = 0;
+    private global::Google.Cloud.Vision.V1.Likelihood angerLikelihood_ = global::Google.Cloud.Vision.V1.Likelihood.Unknown;
     /// <summary>
     /// Anger likelihood.
     /// </summary>
@@ -1182,7 +1350,7 @@ namespace Google.Cloud.Vision.V1 {
 
     /// <summary>Field number for the "surprise_likelihood" field.</summary>
     public const int SurpriseLikelihoodFieldNumber = 12;
-    private global::Google.Cloud.Vision.V1.Likelihood surpriseLikelihood_ = 0;
+    private global::Google.Cloud.Vision.V1.Likelihood surpriseLikelihood_ = global::Google.Cloud.Vision.V1.Likelihood.Unknown;
     /// <summary>
     /// Surprise likelihood.
     /// </summary>
@@ -1196,7 +1364,7 @@ namespace Google.Cloud.Vision.V1 {
 
     /// <summary>Field number for the "under_exposed_likelihood" field.</summary>
     public const int UnderExposedLikelihoodFieldNumber = 13;
-    private global::Google.Cloud.Vision.V1.Likelihood underExposedLikelihood_ = 0;
+    private global::Google.Cloud.Vision.V1.Likelihood underExposedLikelihood_ = global::Google.Cloud.Vision.V1.Likelihood.Unknown;
     /// <summary>
     /// Under-exposed likelihood.
     /// </summary>
@@ -1210,7 +1378,7 @@ namespace Google.Cloud.Vision.V1 {
 
     /// <summary>Field number for the "blurred_likelihood" field.</summary>
     public const int BlurredLikelihoodFieldNumber = 14;
-    private global::Google.Cloud.Vision.V1.Likelihood blurredLikelihood_ = 0;
+    private global::Google.Cloud.Vision.V1.Likelihood blurredLikelihood_ = global::Google.Cloud.Vision.V1.Likelihood.Unknown;
     /// <summary>
     /// Blurred likelihood.
     /// </summary>
@@ -1224,7 +1392,7 @@ namespace Google.Cloud.Vision.V1 {
 
     /// <summary>Field number for the "headwear_likelihood" field.</summary>
     public const int HeadwearLikelihoodFieldNumber = 15;
-    private global::Google.Cloud.Vision.V1.Likelihood headwearLikelihood_ = 0;
+    private global::Google.Cloud.Vision.V1.Likelihood headwearLikelihood_ = global::Google.Cloud.Vision.V1.Likelihood.Unknown;
     /// <summary>
     /// Headwear likelihood.
     /// </summary>
@@ -1278,13 +1446,13 @@ namespace Google.Cloud.Vision.V1 {
       if (TiltAngle != 0F) hash ^= pbc::ProtobufEqualityComparers.BitwiseSingleEqualityComparer.GetHashCode(TiltAngle);
       if (DetectionConfidence != 0F) hash ^= pbc::ProtobufEqualityComparers.BitwiseSingleEqualityComparer.GetHashCode(DetectionConfidence);
       if (LandmarkingConfidence != 0F) hash ^= pbc::ProtobufEqualityComparers.BitwiseSingleEqualityComparer.GetHashCode(LandmarkingConfidence);
-      if (JoyLikelihood != 0) hash ^= JoyLikelihood.GetHashCode();
-      if (SorrowLikelihood != 0) hash ^= SorrowLikelihood.GetHashCode();
-      if (AngerLikelihood != 0) hash ^= AngerLikelihood.GetHashCode();
-      if (SurpriseLikelihood != 0) hash ^= SurpriseLikelihood.GetHashCode();
-      if (UnderExposedLikelihood != 0) hash ^= UnderExposedLikelihood.GetHashCode();
-      if (BlurredLikelihood != 0) hash ^= BlurredLikelihood.GetHashCode();
-      if (HeadwearLikelihood != 0) hash ^= HeadwearLikelihood.GetHashCode();
+      if (JoyLikelihood != global::Google.Cloud.Vision.V1.Likelihood.Unknown) hash ^= JoyLikelihood.GetHashCode();
+      if (SorrowLikelihood != global::Google.Cloud.Vision.V1.Likelihood.Unknown) hash ^= SorrowLikelihood.GetHashCode();
+      if (AngerLikelihood != global::Google.Cloud.Vision.V1.Likelihood.Unknown) hash ^= AngerLikelihood.GetHashCode();
+      if (SurpriseLikelihood != global::Google.Cloud.Vision.V1.Likelihood.Unknown) hash ^= SurpriseLikelihood.GetHashCode();
+      if (UnderExposedLikelihood != global::Google.Cloud.Vision.V1.Likelihood.Unknown) hash ^= UnderExposedLikelihood.GetHashCode();
+      if (BlurredLikelihood != global::Google.Cloud.Vision.V1.Likelihood.Unknown) hash ^= BlurredLikelihood.GetHashCode();
+      if (HeadwearLikelihood != global::Google.Cloud.Vision.V1.Likelihood.Unknown) hash ^= HeadwearLikelihood.GetHashCode();
       if (_unknownFields != null) {
         hash ^= _unknownFields.GetHashCode();
       }
@@ -1298,6 +1466,9 @@ namespace Google.Cloud.Vision.V1 {
 
     [global::System.Diagnostics.DebuggerNonUserCodeAttribute]
     public void WriteTo(pb::CodedOutputStream output) {
+    #if !GOOGLE_PROTOBUF_REFSTRUCT_COMPATIBILITY_MODE
+      output.WriteRawMessage(this);
+    #else
       if (boundingPoly_ != null) {
         output.WriteRawTag(10);
         output.WriteMessage(BoundingPoly);
@@ -1327,38 +1498,105 @@ namespace Google.Cloud.Vision.V1 {
         output.WriteRawTag(69);
         output.WriteFloat(LandmarkingConfidence);
       }
-      if (JoyLikelihood != 0) {
+      if (JoyLikelihood != global::Google.Cloud.Vision.V1.Likelihood.Unknown) {
         output.WriteRawTag(72);
         output.WriteEnum((int) JoyLikelihood);
       }
-      if (SorrowLikelihood != 0) {
+      if (SorrowLikelihood != global::Google.Cloud.Vision.V1.Likelihood.Unknown) {
         output.WriteRawTag(80);
         output.WriteEnum((int) SorrowLikelihood);
       }
-      if (AngerLikelihood != 0) {
+      if (AngerLikelihood != global::Google.Cloud.Vision.V1.Likelihood.Unknown) {
         output.WriteRawTag(88);
         output.WriteEnum((int) AngerLikelihood);
       }
-      if (SurpriseLikelihood != 0) {
+      if (SurpriseLikelihood != global::Google.Cloud.Vision.V1.Likelihood.Unknown) {
         output.WriteRawTag(96);
         output.WriteEnum((int) SurpriseLikelihood);
       }
-      if (UnderExposedLikelihood != 0) {
+      if (UnderExposedLikelihood != global::Google.Cloud.Vision.V1.Likelihood.Unknown) {
         output.WriteRawTag(104);
         output.WriteEnum((int) UnderExposedLikelihood);
       }
-      if (BlurredLikelihood != 0) {
+      if (BlurredLikelihood != global::Google.Cloud.Vision.V1.Likelihood.Unknown) {
         output.WriteRawTag(112);
         output.WriteEnum((int) BlurredLikelihood);
       }
-      if (HeadwearLikelihood != 0) {
+      if (HeadwearLikelihood != global::Google.Cloud.Vision.V1.Likelihood.Unknown) {
         output.WriteRawTag(120);
         output.WriteEnum((int) HeadwearLikelihood);
       }
       if (_unknownFields != null) {
         _unknownFields.WriteTo(output);
       }
+    #endif
     }
+
+    #if !GOOGLE_PROTOBUF_REFSTRUCT_COMPATIBILITY_MODE
+    [global::System.Diagnostics.DebuggerNonUserCodeAttribute]
+    void pb::IBufferMessage.InternalWriteTo(ref pb::WriteContext output) {
+      if (boundingPoly_ != null) {
+        output.WriteRawTag(10);
+        output.WriteMessage(BoundingPoly);
+      }
+      if (fdBoundingPoly_ != null) {
+        output.WriteRawTag(18);
+        output.WriteMessage(FdBoundingPoly);
+      }
+      landmarks_.WriteTo(ref output, _repeated_landmarks_codec);
+      if (RollAngle != 0F) {
+        output.WriteRawTag(37);
+        output.WriteFloat(RollAngle);
+      }
+      if (PanAngle != 0F) {
+        output.WriteRawTag(45);
+        output.WriteFloat(PanAngle);
+      }
+      if (TiltAngle != 0F) {
+        output.WriteRawTag(53);
+        output.WriteFloat(TiltAngle);
+      }
+      if (DetectionConfidence != 0F) {
+        output.WriteRawTag(61);
+        output.WriteFloat(DetectionConfidence);
+      }
+      if (LandmarkingConfidence != 0F) {
+        output.WriteRawTag(69);
+        output.WriteFloat(LandmarkingConfidence);
+      }
+      if (JoyLikelihood != global::Google.Cloud.Vision.V1.Likelihood.Unknown) {
+        output.WriteRawTag(72);
+        output.WriteEnum((int) JoyLikelihood);
+      }
+      if (SorrowLikelihood != global::Google.Cloud.Vision.V1.Likelihood.Unknown) {
+        output.WriteRawTag(80);
+        output.WriteEnum((int) SorrowLikelihood);
+      }
+      if (AngerLikelihood != global::Google.Cloud.Vision.V1.Likelihood.Unknown) {
+        output.WriteRawTag(88);
+        output.WriteEnum((int) AngerLikelihood);
+      }
+      if (SurpriseLikelihood != global::Google.Cloud.Vision.V1.Likelihood.Unknown) {
+        output.WriteRawTag(96);
+        output.WriteEnum((int) SurpriseLikelihood);
+      }
+      if (UnderExposedLikelihood != global::Google.Cloud.Vision.V1.Likelihood.Unknown) {
+        output.WriteRawTag(104);
+        output.WriteEnum((int) UnderExposedLikelihood);
+      }
+      if (BlurredLikelihood != global::Google.Cloud.Vision.V1.Likelihood.Unknown) {
+        output.WriteRawTag(112);
+        output.WriteEnum((int) BlurredLikelihood);
+      }
+      if (HeadwearLikelihood != global::Google.Cloud.Vision.V1.Likelihood.Unknown) {
+        output.WriteRawTag(120);
+        output.WriteEnum((int) HeadwearLikelihood);
+      }
+      if (_unknownFields != null) {
+        _unknownFields.WriteTo(ref output);
+      }
+    }
+    #endif
 
     [global::System.Diagnostics.DebuggerNonUserCodeAttribute]
     public int CalculateSize() {
@@ -1385,25 +1623,25 @@ namespace Google.Cloud.Vision.V1 {
       if (LandmarkingConfidence != 0F) {
         size += 1 + 4;
       }
-      if (JoyLikelihood != 0) {
+      if (JoyLikelihood != global::Google.Cloud.Vision.V1.Likelihood.Unknown) {
         size += 1 + pb::CodedOutputStream.ComputeEnumSize((int) JoyLikelihood);
       }
-      if (SorrowLikelihood != 0) {
+      if (SorrowLikelihood != global::Google.Cloud.Vision.V1.Likelihood.Unknown) {
         size += 1 + pb::CodedOutputStream.ComputeEnumSize((int) SorrowLikelihood);
       }
-      if (AngerLikelihood != 0) {
+      if (AngerLikelihood != global::Google.Cloud.Vision.V1.Likelihood.Unknown) {
         size += 1 + pb::CodedOutputStream.ComputeEnumSize((int) AngerLikelihood);
       }
-      if (SurpriseLikelihood != 0) {
+      if (SurpriseLikelihood != global::Google.Cloud.Vision.V1.Likelihood.Unknown) {
         size += 1 + pb::CodedOutputStream.ComputeEnumSize((int) SurpriseLikelihood);
       }
-      if (UnderExposedLikelihood != 0) {
+      if (UnderExposedLikelihood != global::Google.Cloud.Vision.V1.Likelihood.Unknown) {
         size += 1 + pb::CodedOutputStream.ComputeEnumSize((int) UnderExposedLikelihood);
       }
-      if (BlurredLikelihood != 0) {
+      if (BlurredLikelihood != global::Google.Cloud.Vision.V1.Likelihood.Unknown) {
         size += 1 + pb::CodedOutputStream.ComputeEnumSize((int) BlurredLikelihood);
       }
-      if (HeadwearLikelihood != 0) {
+      if (HeadwearLikelihood != global::Google.Cloud.Vision.V1.Likelihood.Unknown) {
         size += 1 + pb::CodedOutputStream.ComputeEnumSize((int) HeadwearLikelihood);
       }
       if (_unknownFields != null) {
@@ -1445,25 +1683,25 @@ namespace Google.Cloud.Vision.V1 {
       if (other.LandmarkingConfidence != 0F) {
         LandmarkingConfidence = other.LandmarkingConfidence;
       }
-      if (other.JoyLikelihood != 0) {
+      if (other.JoyLikelihood != global::Google.Cloud.Vision.V1.Likelihood.Unknown) {
         JoyLikelihood = other.JoyLikelihood;
       }
-      if (other.SorrowLikelihood != 0) {
+      if (other.SorrowLikelihood != global::Google.Cloud.Vision.V1.Likelihood.Unknown) {
         SorrowLikelihood = other.SorrowLikelihood;
       }
-      if (other.AngerLikelihood != 0) {
+      if (other.AngerLikelihood != global::Google.Cloud.Vision.V1.Likelihood.Unknown) {
         AngerLikelihood = other.AngerLikelihood;
       }
-      if (other.SurpriseLikelihood != 0) {
+      if (other.SurpriseLikelihood != global::Google.Cloud.Vision.V1.Likelihood.Unknown) {
         SurpriseLikelihood = other.SurpriseLikelihood;
       }
-      if (other.UnderExposedLikelihood != 0) {
+      if (other.UnderExposedLikelihood != global::Google.Cloud.Vision.V1.Likelihood.Unknown) {
         UnderExposedLikelihood = other.UnderExposedLikelihood;
       }
-      if (other.BlurredLikelihood != 0) {
+      if (other.BlurredLikelihood != global::Google.Cloud.Vision.V1.Likelihood.Unknown) {
         BlurredLikelihood = other.BlurredLikelihood;
       }
-      if (other.HeadwearLikelihood != 0) {
+      if (other.HeadwearLikelihood != global::Google.Cloud.Vision.V1.Likelihood.Unknown) {
         HeadwearLikelihood = other.HeadwearLikelihood;
       }
       _unknownFields = pb::UnknownFieldSet.MergeFrom(_unknownFields, other._unknownFields);
@@ -1471,6 +1709,9 @@ namespace Google.Cloud.Vision.V1 {
 
     [global::System.Diagnostics.DebuggerNonUserCodeAttribute]
     public void MergeFrom(pb::CodedInputStream input) {
+    #if !GOOGLE_PROTOBUF_REFSTRUCT_COMPATIBILITY_MODE
+      input.ReadRawMessage(this);
+    #else
       uint tag;
       while ((tag = input.ReadTag()) != 0) {
         switch(tag) {
@@ -1545,7 +1786,88 @@ namespace Google.Cloud.Vision.V1 {
           }
         }
       }
+    #endif
     }
+
+    #if !GOOGLE_PROTOBUF_REFSTRUCT_COMPATIBILITY_MODE
+    [global::System.Diagnostics.DebuggerNonUserCodeAttribute]
+    void pb::IBufferMessage.InternalMergeFrom(ref pb::ParseContext input) {
+      uint tag;
+      while ((tag = input.ReadTag()) != 0) {
+        switch(tag) {
+          default:
+            _unknownFields = pb::UnknownFieldSet.MergeFieldFrom(_unknownFields, ref input);
+            break;
+          case 10: {
+            if (boundingPoly_ == null) {
+              BoundingPoly = new global::Google.Cloud.Vision.V1.BoundingPoly();
+            }
+            input.ReadMessage(BoundingPoly);
+            break;
+          }
+          case 18: {
+            if (fdBoundingPoly_ == null) {
+              FdBoundingPoly = new global::Google.Cloud.Vision.V1.BoundingPoly();
+            }
+            input.ReadMessage(FdBoundingPoly);
+            break;
+          }
+          case 26: {
+            landmarks_.AddEntriesFrom(ref input, _repeated_landmarks_codec);
+            break;
+          }
+          case 37: {
+            RollAngle = input.ReadFloat();
+            break;
+          }
+          case 45: {
+            PanAngle = input.ReadFloat();
+            break;
+          }
+          case 53: {
+            TiltAngle = input.ReadFloat();
+            break;
+          }
+          case 61: {
+            DetectionConfidence = input.ReadFloat();
+            break;
+          }
+          case 69: {
+            LandmarkingConfidence = input.ReadFloat();
+            break;
+          }
+          case 72: {
+            JoyLikelihood = (global::Google.Cloud.Vision.V1.Likelihood) input.ReadEnum();
+            break;
+          }
+          case 80: {
+            SorrowLikelihood = (global::Google.Cloud.Vision.V1.Likelihood) input.ReadEnum();
+            break;
+          }
+          case 88: {
+            AngerLikelihood = (global::Google.Cloud.Vision.V1.Likelihood) input.ReadEnum();
+            break;
+          }
+          case 96: {
+            SurpriseLikelihood = (global::Google.Cloud.Vision.V1.Likelihood) input.ReadEnum();
+            break;
+          }
+          case 104: {
+            UnderExposedLikelihood = (global::Google.Cloud.Vision.V1.Likelihood) input.ReadEnum();
+            break;
+          }
+          case 112: {
+            BlurredLikelihood = (global::Google.Cloud.Vision.V1.Likelihood) input.ReadEnum();
+            break;
+          }
+          case 120: {
+            HeadwearLikelihood = (global::Google.Cloud.Vision.V1.Likelihood) input.ReadEnum();
+            break;
+          }
+        }
+      }
+    }
+    #endif
 
     #region Nested types
     /// <summary>Container for nested types declared in the FaceAnnotation message type.</summary>
@@ -1554,7 +1876,11 @@ namespace Google.Cloud.Vision.V1 {
       /// <summary>
       /// A face-specific landmark (for example, a face feature).
       /// </summary>
-      public sealed partial class Landmark : pb::IMessage<Landmark> {
+      public sealed partial class Landmark : pb::IMessage<Landmark>
+      #if !GOOGLE_PROTOBUF_REFSTRUCT_COMPATIBILITY_MODE
+          , pb::IBufferMessage
+      #endif
+      {
         private static readonly pb::MessageParser<Landmark> _parser = new pb::MessageParser<Landmark>(() => new Landmark());
         private pb::UnknownFieldSet _unknownFields;
         [global::System.Diagnostics.DebuggerNonUserCodeAttribute]
@@ -1591,7 +1917,7 @@ namespace Google.Cloud.Vision.V1 {
 
         /// <summary>Field number for the "type" field.</summary>
         public const int TypeFieldNumber = 3;
-        private global::Google.Cloud.Vision.V1.FaceAnnotation.Types.Landmark.Types.Type type_ = 0;
+        private global::Google.Cloud.Vision.V1.FaceAnnotation.Types.Landmark.Types.Type type_ = global::Google.Cloud.Vision.V1.FaceAnnotation.Types.Landmark.Types.Type.UnknownLandmark;
         /// <summary>
         /// Face landmark type.
         /// </summary>
@@ -1638,7 +1964,7 @@ namespace Google.Cloud.Vision.V1 {
         [global::System.Diagnostics.DebuggerNonUserCodeAttribute]
         public override int GetHashCode() {
           int hash = 1;
-          if (Type != 0) hash ^= Type.GetHashCode();
+          if (Type != global::Google.Cloud.Vision.V1.FaceAnnotation.Types.Landmark.Types.Type.UnknownLandmark) hash ^= Type.GetHashCode();
           if (position_ != null) hash ^= Position.GetHashCode();
           if (_unknownFields != null) {
             hash ^= _unknownFields.GetHashCode();
@@ -1653,7 +1979,10 @@ namespace Google.Cloud.Vision.V1 {
 
         [global::System.Diagnostics.DebuggerNonUserCodeAttribute]
         public void WriteTo(pb::CodedOutputStream output) {
-          if (Type != 0) {
+        #if !GOOGLE_PROTOBUF_REFSTRUCT_COMPATIBILITY_MODE
+          output.WriteRawMessage(this);
+        #else
+          if (Type != global::Google.Cloud.Vision.V1.FaceAnnotation.Types.Landmark.Types.Type.UnknownLandmark) {
             output.WriteRawTag(24);
             output.WriteEnum((int) Type);
           }
@@ -1664,12 +1993,30 @@ namespace Google.Cloud.Vision.V1 {
           if (_unknownFields != null) {
             _unknownFields.WriteTo(output);
           }
+        #endif
         }
+
+        #if !GOOGLE_PROTOBUF_REFSTRUCT_COMPATIBILITY_MODE
+        [global::System.Diagnostics.DebuggerNonUserCodeAttribute]
+        void pb::IBufferMessage.InternalWriteTo(ref pb::WriteContext output) {
+          if (Type != global::Google.Cloud.Vision.V1.FaceAnnotation.Types.Landmark.Types.Type.UnknownLandmark) {
+            output.WriteRawTag(24);
+            output.WriteEnum((int) Type);
+          }
+          if (position_ != null) {
+            output.WriteRawTag(34);
+            output.WriteMessage(Position);
+          }
+          if (_unknownFields != null) {
+            _unknownFields.WriteTo(ref output);
+          }
+        }
+        #endif
 
         [global::System.Diagnostics.DebuggerNonUserCodeAttribute]
         public int CalculateSize() {
           int size = 0;
-          if (Type != 0) {
+          if (Type != global::Google.Cloud.Vision.V1.FaceAnnotation.Types.Landmark.Types.Type.UnknownLandmark) {
             size += 1 + pb::CodedOutputStream.ComputeEnumSize((int) Type);
           }
           if (position_ != null) {
@@ -1686,7 +2033,7 @@ namespace Google.Cloud.Vision.V1 {
           if (other == null) {
             return;
           }
-          if (other.Type != 0) {
+          if (other.Type != global::Google.Cloud.Vision.V1.FaceAnnotation.Types.Landmark.Types.Type.UnknownLandmark) {
             Type = other.Type;
           }
           if (other.position_ != null) {
@@ -1700,6 +2047,9 @@ namespace Google.Cloud.Vision.V1 {
 
         [global::System.Diagnostics.DebuggerNonUserCodeAttribute]
         public void MergeFrom(pb::CodedInputStream input) {
+        #if !GOOGLE_PROTOBUF_REFSTRUCT_COMPATIBILITY_MODE
+          input.ReadRawMessage(this);
+        #else
           uint tag;
           while ((tag = input.ReadTag()) != 0) {
             switch(tag) {
@@ -1719,7 +2069,33 @@ namespace Google.Cloud.Vision.V1 {
               }
             }
           }
+        #endif
         }
+
+        #if !GOOGLE_PROTOBUF_REFSTRUCT_COMPATIBILITY_MODE
+        [global::System.Diagnostics.DebuggerNonUserCodeAttribute]
+        void pb::IBufferMessage.InternalMergeFrom(ref pb::ParseContext input) {
+          uint tag;
+          while ((tag = input.ReadTag()) != 0) {
+            switch(tag) {
+              default:
+                _unknownFields = pb::UnknownFieldSet.MergeFieldFrom(_unknownFields, ref input);
+                break;
+              case 24: {
+                Type = (global::Google.Cloud.Vision.V1.FaceAnnotation.Types.Landmark.Types.Type) input.ReadEnum();
+                break;
+              }
+              case 34: {
+                if (position_ == null) {
+                  Position = new global::Google.Cloud.Vision.V1.Position();
+                }
+                input.ReadMessage(Position);
+                break;
+              }
+            }
+          }
+        }
+        #endif
 
         #region Nested types
         /// <summary>Container for nested types declared in the Landmark message type.</summary>
@@ -1887,7 +2263,11 @@ namespace Google.Cloud.Vision.V1 {
   /// <summary>
   /// Detected entity location information.
   /// </summary>
-  public sealed partial class LocationInfo : pb::IMessage<LocationInfo> {
+  public sealed partial class LocationInfo : pb::IMessage<LocationInfo>
+  #if !GOOGLE_PROTOBUF_REFSTRUCT_COMPATIBILITY_MODE
+      , pb::IBufferMessage
+  #endif
+  {
     private static readonly pb::MessageParser<LocationInfo> _parser = new pb::MessageParser<LocationInfo>(() => new LocationInfo());
     private pb::UnknownFieldSet _unknownFields;
     [global::System.Diagnostics.DebuggerNonUserCodeAttribute]
@@ -1969,6 +2349,9 @@ namespace Google.Cloud.Vision.V1 {
 
     [global::System.Diagnostics.DebuggerNonUserCodeAttribute]
     public void WriteTo(pb::CodedOutputStream output) {
+    #if !GOOGLE_PROTOBUF_REFSTRUCT_COMPATIBILITY_MODE
+      output.WriteRawMessage(this);
+    #else
       if (latLng_ != null) {
         output.WriteRawTag(10);
         output.WriteMessage(LatLng);
@@ -1976,7 +2359,21 @@ namespace Google.Cloud.Vision.V1 {
       if (_unknownFields != null) {
         _unknownFields.WriteTo(output);
       }
+    #endif
     }
+
+    #if !GOOGLE_PROTOBUF_REFSTRUCT_COMPATIBILITY_MODE
+    [global::System.Diagnostics.DebuggerNonUserCodeAttribute]
+    void pb::IBufferMessage.InternalWriteTo(ref pb::WriteContext output) {
+      if (latLng_ != null) {
+        output.WriteRawTag(10);
+        output.WriteMessage(LatLng);
+      }
+      if (_unknownFields != null) {
+        _unknownFields.WriteTo(ref output);
+      }
+    }
+    #endif
 
     [global::System.Diagnostics.DebuggerNonUserCodeAttribute]
     public int CalculateSize() {
@@ -2006,6 +2403,9 @@ namespace Google.Cloud.Vision.V1 {
 
     [global::System.Diagnostics.DebuggerNonUserCodeAttribute]
     public void MergeFrom(pb::CodedInputStream input) {
+    #if !GOOGLE_PROTOBUF_REFSTRUCT_COMPATIBILITY_MODE
+      input.ReadRawMessage(this);
+    #else
       uint tag;
       while ((tag = input.ReadTag()) != 0) {
         switch(tag) {
@@ -2021,14 +2421,40 @@ namespace Google.Cloud.Vision.V1 {
           }
         }
       }
+    #endif
     }
+
+    #if !GOOGLE_PROTOBUF_REFSTRUCT_COMPATIBILITY_MODE
+    [global::System.Diagnostics.DebuggerNonUserCodeAttribute]
+    void pb::IBufferMessage.InternalMergeFrom(ref pb::ParseContext input) {
+      uint tag;
+      while ((tag = input.ReadTag()) != 0) {
+        switch(tag) {
+          default:
+            _unknownFields = pb::UnknownFieldSet.MergeFieldFrom(_unknownFields, ref input);
+            break;
+          case 10: {
+            if (latLng_ == null) {
+              LatLng = new global::Google.Type.LatLng();
+            }
+            input.ReadMessage(LatLng);
+            break;
+          }
+        }
+      }
+    }
+    #endif
 
   }
 
   /// <summary>
   /// A `Property` consists of a user-supplied name/value pair.
   /// </summary>
-  public sealed partial class Property : pb::IMessage<Property> {
+  public sealed partial class Property : pb::IMessage<Property>
+  #if !GOOGLE_PROTOBUF_REFSTRUCT_COMPATIBILITY_MODE
+      , pb::IBufferMessage
+  #endif
+  {
     private static readonly pb::MessageParser<Property> _parser = new pb::MessageParser<Property>(() => new Property());
     private pb::UnknownFieldSet _unknownFields;
     [global::System.Diagnostics.DebuggerNonUserCodeAttribute]
@@ -2144,6 +2570,9 @@ namespace Google.Cloud.Vision.V1 {
 
     [global::System.Diagnostics.DebuggerNonUserCodeAttribute]
     public void WriteTo(pb::CodedOutputStream output) {
+    #if !GOOGLE_PROTOBUF_REFSTRUCT_COMPATIBILITY_MODE
+      output.WriteRawMessage(this);
+    #else
       if (Name.Length != 0) {
         output.WriteRawTag(10);
         output.WriteString(Name);
@@ -2159,7 +2588,29 @@ namespace Google.Cloud.Vision.V1 {
       if (_unknownFields != null) {
         _unknownFields.WriteTo(output);
       }
+    #endif
     }
+
+    #if !GOOGLE_PROTOBUF_REFSTRUCT_COMPATIBILITY_MODE
+    [global::System.Diagnostics.DebuggerNonUserCodeAttribute]
+    void pb::IBufferMessage.InternalWriteTo(ref pb::WriteContext output) {
+      if (Name.Length != 0) {
+        output.WriteRawTag(10);
+        output.WriteString(Name);
+      }
+      if (Value.Length != 0) {
+        output.WriteRawTag(18);
+        output.WriteString(Value);
+      }
+      if (Uint64Value != 0UL) {
+        output.WriteRawTag(24);
+        output.WriteUInt64(Uint64Value);
+      }
+      if (_unknownFields != null) {
+        _unknownFields.WriteTo(ref output);
+      }
+    }
+    #endif
 
     [global::System.Diagnostics.DebuggerNonUserCodeAttribute]
     public int CalculateSize() {
@@ -2198,6 +2649,9 @@ namespace Google.Cloud.Vision.V1 {
 
     [global::System.Diagnostics.DebuggerNonUserCodeAttribute]
     public void MergeFrom(pb::CodedInputStream input) {
+    #if !GOOGLE_PROTOBUF_REFSTRUCT_COMPATIBILITY_MODE
+      input.ReadRawMessage(this);
+    #else
       uint tag;
       while ((tag = input.ReadTag()) != 0) {
         switch(tag) {
@@ -2218,14 +2672,45 @@ namespace Google.Cloud.Vision.V1 {
           }
         }
       }
+    #endif
     }
+
+    #if !GOOGLE_PROTOBUF_REFSTRUCT_COMPATIBILITY_MODE
+    [global::System.Diagnostics.DebuggerNonUserCodeAttribute]
+    void pb::IBufferMessage.InternalMergeFrom(ref pb::ParseContext input) {
+      uint tag;
+      while ((tag = input.ReadTag()) != 0) {
+        switch(tag) {
+          default:
+            _unknownFields = pb::UnknownFieldSet.MergeFieldFrom(_unknownFields, ref input);
+            break;
+          case 10: {
+            Name = input.ReadString();
+            break;
+          }
+          case 18: {
+            Value = input.ReadString();
+            break;
+          }
+          case 24: {
+            Uint64Value = input.ReadUInt64();
+            break;
+          }
+        }
+      }
+    }
+    #endif
 
   }
 
   /// <summary>
   /// Set of detected entity features.
   /// </summary>
-  public sealed partial class EntityAnnotation : pb::IMessage<EntityAnnotation> {
+  public sealed partial class EntityAnnotation : pb::IMessage<EntityAnnotation>
+  #if !GOOGLE_PROTOBUF_REFSTRUCT_COMPATIBILITY_MODE
+      , pb::IBufferMessage
+  #endif
+  {
     private static readonly pb::MessageParser<EntityAnnotation> _parser = new pb::MessageParser<EntityAnnotation>(() => new EntityAnnotation());
     private pb::UnknownFieldSet _unknownFields;
     [global::System.Diagnostics.DebuggerNonUserCodeAttribute]
@@ -2459,6 +2944,9 @@ namespace Google.Cloud.Vision.V1 {
 
     [global::System.Diagnostics.DebuggerNonUserCodeAttribute]
     public void WriteTo(pb::CodedOutputStream output) {
+    #if !GOOGLE_PROTOBUF_REFSTRUCT_COMPATIBILITY_MODE
+      output.WriteRawMessage(this);
+    #else
       if (Mid.Length != 0) {
         output.WriteRawTag(10);
         output.WriteString(Mid);
@@ -2492,7 +2980,47 @@ namespace Google.Cloud.Vision.V1 {
       if (_unknownFields != null) {
         _unknownFields.WriteTo(output);
       }
+    #endif
     }
+
+    #if !GOOGLE_PROTOBUF_REFSTRUCT_COMPATIBILITY_MODE
+    [global::System.Diagnostics.DebuggerNonUserCodeAttribute]
+    void pb::IBufferMessage.InternalWriteTo(ref pb::WriteContext output) {
+      if (Mid.Length != 0) {
+        output.WriteRawTag(10);
+        output.WriteString(Mid);
+      }
+      if (Locale.Length != 0) {
+        output.WriteRawTag(18);
+        output.WriteString(Locale);
+      }
+      if (Description.Length != 0) {
+        output.WriteRawTag(26);
+        output.WriteString(Description);
+      }
+      if (Score != 0F) {
+        output.WriteRawTag(37);
+        output.WriteFloat(Score);
+      }
+      if (Confidence != 0F) {
+        output.WriteRawTag(45);
+        output.WriteFloat(Confidence);
+      }
+      if (Topicality != 0F) {
+        output.WriteRawTag(53);
+        output.WriteFloat(Topicality);
+      }
+      if (boundingPoly_ != null) {
+        output.WriteRawTag(58);
+        output.WriteMessage(BoundingPoly);
+      }
+      locations_.WriteTo(ref output, _repeated_locations_codec);
+      properties_.WriteTo(ref output, _repeated_properties_codec);
+      if (_unknownFields != null) {
+        _unknownFields.WriteTo(ref output);
+      }
+    }
+    #endif
 
     [global::System.Diagnostics.DebuggerNonUserCodeAttribute]
     public int CalculateSize() {
@@ -2562,6 +3090,9 @@ namespace Google.Cloud.Vision.V1 {
 
     [global::System.Diagnostics.DebuggerNonUserCodeAttribute]
     public void MergeFrom(pb::CodedInputStream input) {
+    #if !GOOGLE_PROTOBUF_REFSTRUCT_COMPATIBILITY_MODE
+      input.ReadRawMessage(this);
+    #else
       uint tag;
       while ((tag = input.ReadTag()) != 0) {
         switch(tag) {
@@ -2609,14 +3140,72 @@ namespace Google.Cloud.Vision.V1 {
           }
         }
       }
+    #endif
     }
+
+    #if !GOOGLE_PROTOBUF_REFSTRUCT_COMPATIBILITY_MODE
+    [global::System.Diagnostics.DebuggerNonUserCodeAttribute]
+    void pb::IBufferMessage.InternalMergeFrom(ref pb::ParseContext input) {
+      uint tag;
+      while ((tag = input.ReadTag()) != 0) {
+        switch(tag) {
+          default:
+            _unknownFields = pb::UnknownFieldSet.MergeFieldFrom(_unknownFields, ref input);
+            break;
+          case 10: {
+            Mid = input.ReadString();
+            break;
+          }
+          case 18: {
+            Locale = input.ReadString();
+            break;
+          }
+          case 26: {
+            Description = input.ReadString();
+            break;
+          }
+          case 37: {
+            Score = input.ReadFloat();
+            break;
+          }
+          case 45: {
+            Confidence = input.ReadFloat();
+            break;
+          }
+          case 53: {
+            Topicality = input.ReadFloat();
+            break;
+          }
+          case 58: {
+            if (boundingPoly_ == null) {
+              BoundingPoly = new global::Google.Cloud.Vision.V1.BoundingPoly();
+            }
+            input.ReadMessage(BoundingPoly);
+            break;
+          }
+          case 66: {
+            locations_.AddEntriesFrom(ref input, _repeated_locations_codec);
+            break;
+          }
+          case 74: {
+            properties_.AddEntriesFrom(ref input, _repeated_properties_codec);
+            break;
+          }
+        }
+      }
+    }
+    #endif
 
   }
 
   /// <summary>
   /// Set of detected objects with bounding boxes.
   /// </summary>
-  public sealed partial class LocalizedObjectAnnotation : pb::IMessage<LocalizedObjectAnnotation> {
+  public sealed partial class LocalizedObjectAnnotation : pb::IMessage<LocalizedObjectAnnotation>
+  #if !GOOGLE_PROTOBUF_REFSTRUCT_COMPATIBILITY_MODE
+      , pb::IBufferMessage
+  #endif
+  {
     private static readonly pb::MessageParser<LocalizedObjectAnnotation> _parser = new pb::MessageParser<LocalizedObjectAnnotation>(() => new LocalizedObjectAnnotation());
     private pb::UnknownFieldSet _unknownFields;
     [global::System.Diagnostics.DebuggerNonUserCodeAttribute]
@@ -2768,6 +3357,9 @@ namespace Google.Cloud.Vision.V1 {
 
     [global::System.Diagnostics.DebuggerNonUserCodeAttribute]
     public void WriteTo(pb::CodedOutputStream output) {
+    #if !GOOGLE_PROTOBUF_REFSTRUCT_COMPATIBILITY_MODE
+      output.WriteRawMessage(this);
+    #else
       if (Mid.Length != 0) {
         output.WriteRawTag(10);
         output.WriteString(Mid);
@@ -2791,7 +3383,37 @@ namespace Google.Cloud.Vision.V1 {
       if (_unknownFields != null) {
         _unknownFields.WriteTo(output);
       }
+    #endif
     }
+
+    #if !GOOGLE_PROTOBUF_REFSTRUCT_COMPATIBILITY_MODE
+    [global::System.Diagnostics.DebuggerNonUserCodeAttribute]
+    void pb::IBufferMessage.InternalWriteTo(ref pb::WriteContext output) {
+      if (Mid.Length != 0) {
+        output.WriteRawTag(10);
+        output.WriteString(Mid);
+      }
+      if (LanguageCode.Length != 0) {
+        output.WriteRawTag(18);
+        output.WriteString(LanguageCode);
+      }
+      if (Name.Length != 0) {
+        output.WriteRawTag(26);
+        output.WriteString(Name);
+      }
+      if (Score != 0F) {
+        output.WriteRawTag(37);
+        output.WriteFloat(Score);
+      }
+      if (boundingPoly_ != null) {
+        output.WriteRawTag(42);
+        output.WriteMessage(BoundingPoly);
+      }
+      if (_unknownFields != null) {
+        _unknownFields.WriteTo(ref output);
+      }
+    }
+    #endif
 
     [global::System.Diagnostics.DebuggerNonUserCodeAttribute]
     public int CalculateSize() {
@@ -2845,6 +3467,9 @@ namespace Google.Cloud.Vision.V1 {
 
     [global::System.Diagnostics.DebuggerNonUserCodeAttribute]
     public void MergeFrom(pb::CodedInputStream input) {
+    #if !GOOGLE_PROTOBUF_REFSTRUCT_COMPATIBILITY_MODE
+      input.ReadRawMessage(this);
+    #else
       uint tag;
       while ((tag = input.ReadTag()) != 0) {
         switch(tag) {
@@ -2876,7 +3501,45 @@ namespace Google.Cloud.Vision.V1 {
           }
         }
       }
+    #endif
     }
+
+    #if !GOOGLE_PROTOBUF_REFSTRUCT_COMPATIBILITY_MODE
+    [global::System.Diagnostics.DebuggerNonUserCodeAttribute]
+    void pb::IBufferMessage.InternalMergeFrom(ref pb::ParseContext input) {
+      uint tag;
+      while ((tag = input.ReadTag()) != 0) {
+        switch(tag) {
+          default:
+            _unknownFields = pb::UnknownFieldSet.MergeFieldFrom(_unknownFields, ref input);
+            break;
+          case 10: {
+            Mid = input.ReadString();
+            break;
+          }
+          case 18: {
+            LanguageCode = input.ReadString();
+            break;
+          }
+          case 26: {
+            Name = input.ReadString();
+            break;
+          }
+          case 37: {
+            Score = input.ReadFloat();
+            break;
+          }
+          case 42: {
+            if (boundingPoly_ == null) {
+              BoundingPoly = new global::Google.Cloud.Vision.V1.BoundingPoly();
+            }
+            input.ReadMessage(BoundingPoly);
+            break;
+          }
+        }
+      }
+    }
+    #endif
 
   }
 
@@ -2885,7 +3548,11 @@ namespace Google.Cloud.Vision.V1 {
   /// methods over safe-search verticals (for example, adult, spoof, medical,
   /// violence).
   /// </summary>
-  public sealed partial class SafeSearchAnnotation : pb::IMessage<SafeSearchAnnotation> {
+  public sealed partial class SafeSearchAnnotation : pb::IMessage<SafeSearchAnnotation>
+  #if !GOOGLE_PROTOBUF_REFSTRUCT_COMPATIBILITY_MODE
+      , pb::IBufferMessage
+  #endif
+  {
     private static readonly pb::MessageParser<SafeSearchAnnotation> _parser = new pb::MessageParser<SafeSearchAnnotation>(() => new SafeSearchAnnotation());
     private pb::UnknownFieldSet _unknownFields;
     [global::System.Diagnostics.DebuggerNonUserCodeAttribute]
@@ -2931,7 +3598,7 @@ namespace Google.Cloud.Vision.V1 {
 
     /// <summary>Field number for the "adult" field.</summary>
     public const int AdultFieldNumber = 1;
-    private global::Google.Cloud.Vision.V1.Likelihood adult_ = 0;
+    private global::Google.Cloud.Vision.V1.Likelihood adult_ = global::Google.Cloud.Vision.V1.Likelihood.Unknown;
     /// <summary>
     /// Represents the adult content likelihood for the image. Adult content may
     /// contain elements such as nudity, pornographic images or cartoons, or
@@ -2947,7 +3614,7 @@ namespace Google.Cloud.Vision.V1 {
 
     /// <summary>Field number for the "spoof" field.</summary>
     public const int SpoofFieldNumber = 2;
-    private global::Google.Cloud.Vision.V1.Likelihood spoof_ = 0;
+    private global::Google.Cloud.Vision.V1.Likelihood spoof_ = global::Google.Cloud.Vision.V1.Likelihood.Unknown;
     /// <summary>
     /// Spoof likelihood. The likelihood that an modification
     /// was made to the image's canonical version to make it appear
@@ -2963,7 +3630,7 @@ namespace Google.Cloud.Vision.V1 {
 
     /// <summary>Field number for the "medical" field.</summary>
     public const int MedicalFieldNumber = 3;
-    private global::Google.Cloud.Vision.V1.Likelihood medical_ = 0;
+    private global::Google.Cloud.Vision.V1.Likelihood medical_ = global::Google.Cloud.Vision.V1.Likelihood.Unknown;
     /// <summary>
     /// Likelihood that this is a medical image.
     /// </summary>
@@ -2977,7 +3644,7 @@ namespace Google.Cloud.Vision.V1 {
 
     /// <summary>Field number for the "violence" field.</summary>
     public const int ViolenceFieldNumber = 4;
-    private global::Google.Cloud.Vision.V1.Likelihood violence_ = 0;
+    private global::Google.Cloud.Vision.V1.Likelihood violence_ = global::Google.Cloud.Vision.V1.Likelihood.Unknown;
     /// <summary>
     /// Likelihood that this image contains violent content.
     /// </summary>
@@ -2991,7 +3658,7 @@ namespace Google.Cloud.Vision.V1 {
 
     /// <summary>Field number for the "racy" field.</summary>
     public const int RacyFieldNumber = 9;
-    private global::Google.Cloud.Vision.V1.Likelihood racy_ = 0;
+    private global::Google.Cloud.Vision.V1.Likelihood racy_ = global::Google.Cloud.Vision.V1.Likelihood.Unknown;
     /// <summary>
     /// Likelihood that the request image contains racy content. Racy content may
     /// include (but is not limited to) skimpy or sheer clothing, strategically
@@ -3126,11 +3793,11 @@ namespace Google.Cloud.Vision.V1 {
     [global::System.Diagnostics.DebuggerNonUserCodeAttribute]
     public override int GetHashCode() {
       int hash = 1;
-      if (Adult != 0) hash ^= Adult.GetHashCode();
-      if (Spoof != 0) hash ^= Spoof.GetHashCode();
-      if (Medical != 0) hash ^= Medical.GetHashCode();
-      if (Violence != 0) hash ^= Violence.GetHashCode();
-      if (Racy != 0) hash ^= Racy.GetHashCode();
+      if (Adult != global::Google.Cloud.Vision.V1.Likelihood.Unknown) hash ^= Adult.GetHashCode();
+      if (Spoof != global::Google.Cloud.Vision.V1.Likelihood.Unknown) hash ^= Spoof.GetHashCode();
+      if (Medical != global::Google.Cloud.Vision.V1.Likelihood.Unknown) hash ^= Medical.GetHashCode();
+      if (Violence != global::Google.Cloud.Vision.V1.Likelihood.Unknown) hash ^= Violence.GetHashCode();
+      if (Racy != global::Google.Cloud.Vision.V1.Likelihood.Unknown) hash ^= Racy.GetHashCode();
       if (AdultConfidence != 0F) hash ^= pbc::ProtobufEqualityComparers.BitwiseSingleEqualityComparer.GetHashCode(AdultConfidence);
       if (SpoofConfidence != 0F) hash ^= pbc::ProtobufEqualityComparers.BitwiseSingleEqualityComparer.GetHashCode(SpoofConfidence);
       if (MedicalConfidence != 0F) hash ^= pbc::ProtobufEqualityComparers.BitwiseSingleEqualityComparer.GetHashCode(MedicalConfidence);
@@ -3150,23 +3817,26 @@ namespace Google.Cloud.Vision.V1 {
 
     [global::System.Diagnostics.DebuggerNonUserCodeAttribute]
     public void WriteTo(pb::CodedOutputStream output) {
-      if (Adult != 0) {
+    #if !GOOGLE_PROTOBUF_REFSTRUCT_COMPATIBILITY_MODE
+      output.WriteRawMessage(this);
+    #else
+      if (Adult != global::Google.Cloud.Vision.V1.Likelihood.Unknown) {
         output.WriteRawTag(8);
         output.WriteEnum((int) Adult);
       }
-      if (Spoof != 0) {
+      if (Spoof != global::Google.Cloud.Vision.V1.Likelihood.Unknown) {
         output.WriteRawTag(16);
         output.WriteEnum((int) Spoof);
       }
-      if (Medical != 0) {
+      if (Medical != global::Google.Cloud.Vision.V1.Likelihood.Unknown) {
         output.WriteRawTag(24);
         output.WriteEnum((int) Medical);
       }
-      if (Violence != 0) {
+      if (Violence != global::Google.Cloud.Vision.V1.Likelihood.Unknown) {
         output.WriteRawTag(32);
         output.WriteEnum((int) Violence);
       }
-      if (Racy != 0) {
+      if (Racy != global::Google.Cloud.Vision.V1.Likelihood.Unknown) {
         output.WriteRawTag(72);
         output.WriteEnum((int) Racy);
       }
@@ -3197,24 +3867,78 @@ namespace Google.Cloud.Vision.V1 {
       if (_unknownFields != null) {
         _unknownFields.WriteTo(output);
       }
+    #endif
     }
+
+    #if !GOOGLE_PROTOBUF_REFSTRUCT_COMPATIBILITY_MODE
+    [global::System.Diagnostics.DebuggerNonUserCodeAttribute]
+    void pb::IBufferMessage.InternalWriteTo(ref pb::WriteContext output) {
+      if (Adult != global::Google.Cloud.Vision.V1.Likelihood.Unknown) {
+        output.WriteRawTag(8);
+        output.WriteEnum((int) Adult);
+      }
+      if (Spoof != global::Google.Cloud.Vision.V1.Likelihood.Unknown) {
+        output.WriteRawTag(16);
+        output.WriteEnum((int) Spoof);
+      }
+      if (Medical != global::Google.Cloud.Vision.V1.Likelihood.Unknown) {
+        output.WriteRawTag(24);
+        output.WriteEnum((int) Medical);
+      }
+      if (Violence != global::Google.Cloud.Vision.V1.Likelihood.Unknown) {
+        output.WriteRawTag(32);
+        output.WriteEnum((int) Violence);
+      }
+      if (Racy != global::Google.Cloud.Vision.V1.Likelihood.Unknown) {
+        output.WriteRawTag(72);
+        output.WriteEnum((int) Racy);
+      }
+      if (AdultConfidence != 0F) {
+        output.WriteRawTag(133, 1);
+        output.WriteFloat(AdultConfidence);
+      }
+      if (SpoofConfidence != 0F) {
+        output.WriteRawTag(149, 1);
+        output.WriteFloat(SpoofConfidence);
+      }
+      if (MedicalConfidence != 0F) {
+        output.WriteRawTag(165, 1);
+        output.WriteFloat(MedicalConfidence);
+      }
+      if (ViolenceConfidence != 0F) {
+        output.WriteRawTag(181, 1);
+        output.WriteFloat(ViolenceConfidence);
+      }
+      if (RacyConfidence != 0F) {
+        output.WriteRawTag(197, 1);
+        output.WriteFloat(RacyConfidence);
+      }
+      if (NsfwConfidence != 0F) {
+        output.WriteRawTag(213, 1);
+        output.WriteFloat(NsfwConfidence);
+      }
+      if (_unknownFields != null) {
+        _unknownFields.WriteTo(ref output);
+      }
+    }
+    #endif
 
     [global::System.Diagnostics.DebuggerNonUserCodeAttribute]
     public int CalculateSize() {
       int size = 0;
-      if (Adult != 0) {
+      if (Adult != global::Google.Cloud.Vision.V1.Likelihood.Unknown) {
         size += 1 + pb::CodedOutputStream.ComputeEnumSize((int) Adult);
       }
-      if (Spoof != 0) {
+      if (Spoof != global::Google.Cloud.Vision.V1.Likelihood.Unknown) {
         size += 1 + pb::CodedOutputStream.ComputeEnumSize((int) Spoof);
       }
-      if (Medical != 0) {
+      if (Medical != global::Google.Cloud.Vision.V1.Likelihood.Unknown) {
         size += 1 + pb::CodedOutputStream.ComputeEnumSize((int) Medical);
       }
-      if (Violence != 0) {
+      if (Violence != global::Google.Cloud.Vision.V1.Likelihood.Unknown) {
         size += 1 + pb::CodedOutputStream.ComputeEnumSize((int) Violence);
       }
-      if (Racy != 0) {
+      if (Racy != global::Google.Cloud.Vision.V1.Likelihood.Unknown) {
         size += 1 + pb::CodedOutputStream.ComputeEnumSize((int) Racy);
       }
       if (AdultConfidence != 0F) {
@@ -3246,19 +3970,19 @@ namespace Google.Cloud.Vision.V1 {
       if (other == null) {
         return;
       }
-      if (other.Adult != 0) {
+      if (other.Adult != global::Google.Cloud.Vision.V1.Likelihood.Unknown) {
         Adult = other.Adult;
       }
-      if (other.Spoof != 0) {
+      if (other.Spoof != global::Google.Cloud.Vision.V1.Likelihood.Unknown) {
         Spoof = other.Spoof;
       }
-      if (other.Medical != 0) {
+      if (other.Medical != global::Google.Cloud.Vision.V1.Likelihood.Unknown) {
         Medical = other.Medical;
       }
-      if (other.Violence != 0) {
+      if (other.Violence != global::Google.Cloud.Vision.V1.Likelihood.Unknown) {
         Violence = other.Violence;
       }
-      if (other.Racy != 0) {
+      if (other.Racy != global::Google.Cloud.Vision.V1.Likelihood.Unknown) {
         Racy = other.Racy;
       }
       if (other.AdultConfidence != 0F) {
@@ -3284,6 +4008,9 @@ namespace Google.Cloud.Vision.V1 {
 
     [global::System.Diagnostics.DebuggerNonUserCodeAttribute]
     public void MergeFrom(pb::CodedInputStream input) {
+    #if !GOOGLE_PROTOBUF_REFSTRUCT_COMPATIBILITY_MODE
+      input.ReadRawMessage(this);
+    #else
       uint tag;
       while ((tag = input.ReadTag()) != 0) {
         switch(tag) {
@@ -3336,14 +4063,77 @@ namespace Google.Cloud.Vision.V1 {
           }
         }
       }
+    #endif
     }
+
+    #if !GOOGLE_PROTOBUF_REFSTRUCT_COMPATIBILITY_MODE
+    [global::System.Diagnostics.DebuggerNonUserCodeAttribute]
+    void pb::IBufferMessage.InternalMergeFrom(ref pb::ParseContext input) {
+      uint tag;
+      while ((tag = input.ReadTag()) != 0) {
+        switch(tag) {
+          default:
+            _unknownFields = pb::UnknownFieldSet.MergeFieldFrom(_unknownFields, ref input);
+            break;
+          case 8: {
+            Adult = (global::Google.Cloud.Vision.V1.Likelihood) input.ReadEnum();
+            break;
+          }
+          case 16: {
+            Spoof = (global::Google.Cloud.Vision.V1.Likelihood) input.ReadEnum();
+            break;
+          }
+          case 24: {
+            Medical = (global::Google.Cloud.Vision.V1.Likelihood) input.ReadEnum();
+            break;
+          }
+          case 32: {
+            Violence = (global::Google.Cloud.Vision.V1.Likelihood) input.ReadEnum();
+            break;
+          }
+          case 72: {
+            Racy = (global::Google.Cloud.Vision.V1.Likelihood) input.ReadEnum();
+            break;
+          }
+          case 133: {
+            AdultConfidence = input.ReadFloat();
+            break;
+          }
+          case 149: {
+            SpoofConfidence = input.ReadFloat();
+            break;
+          }
+          case 165: {
+            MedicalConfidence = input.ReadFloat();
+            break;
+          }
+          case 181: {
+            ViolenceConfidence = input.ReadFloat();
+            break;
+          }
+          case 197: {
+            RacyConfidence = input.ReadFloat();
+            break;
+          }
+          case 213: {
+            NsfwConfidence = input.ReadFloat();
+            break;
+          }
+        }
+      }
+    }
+    #endif
 
   }
 
   /// <summary>
   /// Rectangle determined by min and max `LatLng` pairs.
   /// </summary>
-  public sealed partial class LatLongRect : pb::IMessage<LatLongRect> {
+  public sealed partial class LatLongRect : pb::IMessage<LatLongRect>
+  #if !GOOGLE_PROTOBUF_REFSTRUCT_COMPATIBILITY_MODE
+      , pb::IBufferMessage
+  #endif
+  {
     private static readonly pb::MessageParser<LatLongRect> _parser = new pb::MessageParser<LatLongRect>(() => new LatLongRect());
     private pb::UnknownFieldSet _unknownFields;
     [global::System.Diagnostics.DebuggerNonUserCodeAttribute]
@@ -3442,6 +4232,9 @@ namespace Google.Cloud.Vision.V1 {
 
     [global::System.Diagnostics.DebuggerNonUserCodeAttribute]
     public void WriteTo(pb::CodedOutputStream output) {
+    #if !GOOGLE_PROTOBUF_REFSTRUCT_COMPATIBILITY_MODE
+      output.WriteRawMessage(this);
+    #else
       if (minLatLng_ != null) {
         output.WriteRawTag(10);
         output.WriteMessage(MinLatLng);
@@ -3453,7 +4246,25 @@ namespace Google.Cloud.Vision.V1 {
       if (_unknownFields != null) {
         _unknownFields.WriteTo(output);
       }
+    #endif
     }
+
+    #if !GOOGLE_PROTOBUF_REFSTRUCT_COMPATIBILITY_MODE
+    [global::System.Diagnostics.DebuggerNonUserCodeAttribute]
+    void pb::IBufferMessage.InternalWriteTo(ref pb::WriteContext output) {
+      if (minLatLng_ != null) {
+        output.WriteRawTag(10);
+        output.WriteMessage(MinLatLng);
+      }
+      if (maxLatLng_ != null) {
+        output.WriteRawTag(18);
+        output.WriteMessage(MaxLatLng);
+      }
+      if (_unknownFields != null) {
+        _unknownFields.WriteTo(ref output);
+      }
+    }
+    #endif
 
     [global::System.Diagnostics.DebuggerNonUserCodeAttribute]
     public int CalculateSize() {
@@ -3492,6 +4303,9 @@ namespace Google.Cloud.Vision.V1 {
 
     [global::System.Diagnostics.DebuggerNonUserCodeAttribute]
     public void MergeFrom(pb::CodedInputStream input) {
+    #if !GOOGLE_PROTOBUF_REFSTRUCT_COMPATIBILITY_MODE
+      input.ReadRawMessage(this);
+    #else
       uint tag;
       while ((tag = input.ReadTag()) != 0) {
         switch(tag) {
@@ -3514,7 +4328,36 @@ namespace Google.Cloud.Vision.V1 {
           }
         }
       }
+    #endif
     }
+
+    #if !GOOGLE_PROTOBUF_REFSTRUCT_COMPATIBILITY_MODE
+    [global::System.Diagnostics.DebuggerNonUserCodeAttribute]
+    void pb::IBufferMessage.InternalMergeFrom(ref pb::ParseContext input) {
+      uint tag;
+      while ((tag = input.ReadTag()) != 0) {
+        switch(tag) {
+          default:
+            _unknownFields = pb::UnknownFieldSet.MergeFieldFrom(_unknownFields, ref input);
+            break;
+          case 10: {
+            if (minLatLng_ == null) {
+              MinLatLng = new global::Google.Type.LatLng();
+            }
+            input.ReadMessage(MinLatLng);
+            break;
+          }
+          case 18: {
+            if (maxLatLng_ == null) {
+              MaxLatLng = new global::Google.Type.LatLng();
+            }
+            input.ReadMessage(MaxLatLng);
+            break;
+          }
+        }
+      }
+    }
+    #endif
 
   }
 
@@ -3522,7 +4365,11 @@ namespace Google.Cloud.Vision.V1 {
   /// Color information consists of RGB channels, score, and the fraction of
   /// the image that the color occupies in the image.
   /// </summary>
-  public sealed partial class ColorInfo : pb::IMessage<ColorInfo> {
+  public sealed partial class ColorInfo : pb::IMessage<ColorInfo>
+  #if !GOOGLE_PROTOBUF_REFSTRUCT_COMPATIBILITY_MODE
+      , pb::IBufferMessage
+  #endif
+  {
     private static readonly pb::MessageParser<ColorInfo> _parser = new pb::MessageParser<ColorInfo>(() => new ColorInfo());
     private pb::UnknownFieldSet _unknownFields;
     [global::System.Diagnostics.DebuggerNonUserCodeAttribute]
@@ -3639,6 +4486,9 @@ namespace Google.Cloud.Vision.V1 {
 
     [global::System.Diagnostics.DebuggerNonUserCodeAttribute]
     public void WriteTo(pb::CodedOutputStream output) {
+    #if !GOOGLE_PROTOBUF_REFSTRUCT_COMPATIBILITY_MODE
+      output.WriteRawMessage(this);
+    #else
       if (color_ != null) {
         output.WriteRawTag(10);
         output.WriteMessage(Color);
@@ -3654,7 +4504,29 @@ namespace Google.Cloud.Vision.V1 {
       if (_unknownFields != null) {
         _unknownFields.WriteTo(output);
       }
+    #endif
     }
+
+    #if !GOOGLE_PROTOBUF_REFSTRUCT_COMPATIBILITY_MODE
+    [global::System.Diagnostics.DebuggerNonUserCodeAttribute]
+    void pb::IBufferMessage.InternalWriteTo(ref pb::WriteContext output) {
+      if (color_ != null) {
+        output.WriteRawTag(10);
+        output.WriteMessage(Color);
+      }
+      if (Score != 0F) {
+        output.WriteRawTag(21);
+        output.WriteFloat(Score);
+      }
+      if (PixelFraction != 0F) {
+        output.WriteRawTag(29);
+        output.WriteFloat(PixelFraction);
+      }
+      if (_unknownFields != null) {
+        _unknownFields.WriteTo(ref output);
+      }
+    }
+    #endif
 
     [global::System.Diagnostics.DebuggerNonUserCodeAttribute]
     public int CalculateSize() {
@@ -3696,6 +4568,9 @@ namespace Google.Cloud.Vision.V1 {
 
     [global::System.Diagnostics.DebuggerNonUserCodeAttribute]
     public void MergeFrom(pb::CodedInputStream input) {
+    #if !GOOGLE_PROTOBUF_REFSTRUCT_COMPATIBILITY_MODE
+      input.ReadRawMessage(this);
+    #else
       uint tag;
       while ((tag = input.ReadTag()) != 0) {
         switch(tag) {
@@ -3719,14 +4594,48 @@ namespace Google.Cloud.Vision.V1 {
           }
         }
       }
+    #endif
     }
+
+    #if !GOOGLE_PROTOBUF_REFSTRUCT_COMPATIBILITY_MODE
+    [global::System.Diagnostics.DebuggerNonUserCodeAttribute]
+    void pb::IBufferMessage.InternalMergeFrom(ref pb::ParseContext input) {
+      uint tag;
+      while ((tag = input.ReadTag()) != 0) {
+        switch(tag) {
+          default:
+            _unknownFields = pb::UnknownFieldSet.MergeFieldFrom(_unknownFields, ref input);
+            break;
+          case 10: {
+            if (color_ == null) {
+              Color = new global::Google.Type.Color();
+            }
+            input.ReadMessage(Color);
+            break;
+          }
+          case 21: {
+            Score = input.ReadFloat();
+            break;
+          }
+          case 29: {
+            PixelFraction = input.ReadFloat();
+            break;
+          }
+        }
+      }
+    }
+    #endif
 
   }
 
   /// <summary>
   /// Set of dominant colors and their corresponding scores.
   /// </summary>
-  public sealed partial class DominantColorsAnnotation : pb::IMessage<DominantColorsAnnotation> {
+  public sealed partial class DominantColorsAnnotation : pb::IMessage<DominantColorsAnnotation>
+  #if !GOOGLE_PROTOBUF_REFSTRUCT_COMPATIBILITY_MODE
+      , pb::IBufferMessage
+  #endif
+  {
     private static readonly pb::MessageParser<DominantColorsAnnotation> _parser = new pb::MessageParser<DominantColorsAnnotation>(() => new DominantColorsAnnotation());
     private pb::UnknownFieldSet _unknownFields;
     [global::System.Diagnostics.DebuggerNonUserCodeAttribute]
@@ -3807,11 +4716,25 @@ namespace Google.Cloud.Vision.V1 {
 
     [global::System.Diagnostics.DebuggerNonUserCodeAttribute]
     public void WriteTo(pb::CodedOutputStream output) {
+    #if !GOOGLE_PROTOBUF_REFSTRUCT_COMPATIBILITY_MODE
+      output.WriteRawMessage(this);
+    #else
       colors_.WriteTo(output, _repeated_colors_codec);
       if (_unknownFields != null) {
         _unknownFields.WriteTo(output);
       }
+    #endif
     }
+
+    #if !GOOGLE_PROTOBUF_REFSTRUCT_COMPATIBILITY_MODE
+    [global::System.Diagnostics.DebuggerNonUserCodeAttribute]
+    void pb::IBufferMessage.InternalWriteTo(ref pb::WriteContext output) {
+      colors_.WriteTo(ref output, _repeated_colors_codec);
+      if (_unknownFields != null) {
+        _unknownFields.WriteTo(ref output);
+      }
+    }
+    #endif
 
     [global::System.Diagnostics.DebuggerNonUserCodeAttribute]
     public int CalculateSize() {
@@ -3834,6 +4757,9 @@ namespace Google.Cloud.Vision.V1 {
 
     [global::System.Diagnostics.DebuggerNonUserCodeAttribute]
     public void MergeFrom(pb::CodedInputStream input) {
+    #if !GOOGLE_PROTOBUF_REFSTRUCT_COMPATIBILITY_MODE
+      input.ReadRawMessage(this);
+    #else
       uint tag;
       while ((tag = input.ReadTag()) != 0) {
         switch(tag) {
@@ -3846,14 +4772,37 @@ namespace Google.Cloud.Vision.V1 {
           }
         }
       }
+    #endif
     }
+
+    #if !GOOGLE_PROTOBUF_REFSTRUCT_COMPATIBILITY_MODE
+    [global::System.Diagnostics.DebuggerNonUserCodeAttribute]
+    void pb::IBufferMessage.InternalMergeFrom(ref pb::ParseContext input) {
+      uint tag;
+      while ((tag = input.ReadTag()) != 0) {
+        switch(tag) {
+          default:
+            _unknownFields = pb::UnknownFieldSet.MergeFieldFrom(_unknownFields, ref input);
+            break;
+          case 10: {
+            colors_.AddEntriesFrom(ref input, _repeated_colors_codec);
+            break;
+          }
+        }
+      }
+    }
+    #endif
 
   }
 
   /// <summary>
   /// Stores image properties, such as dominant colors.
   /// </summary>
-  public sealed partial class ImageProperties : pb::IMessage<ImageProperties> {
+  public sealed partial class ImageProperties : pb::IMessage<ImageProperties>
+  #if !GOOGLE_PROTOBUF_REFSTRUCT_COMPATIBILITY_MODE
+      , pb::IBufferMessage
+  #endif
+  {
     private static readonly pb::MessageParser<ImageProperties> _parser = new pb::MessageParser<ImageProperties>(() => new ImageProperties());
     private pb::UnknownFieldSet _unknownFields;
     [global::System.Diagnostics.DebuggerNonUserCodeAttribute]
@@ -3935,6 +4884,9 @@ namespace Google.Cloud.Vision.V1 {
 
     [global::System.Diagnostics.DebuggerNonUserCodeAttribute]
     public void WriteTo(pb::CodedOutputStream output) {
+    #if !GOOGLE_PROTOBUF_REFSTRUCT_COMPATIBILITY_MODE
+      output.WriteRawMessage(this);
+    #else
       if (dominantColors_ != null) {
         output.WriteRawTag(10);
         output.WriteMessage(DominantColors);
@@ -3942,7 +4894,21 @@ namespace Google.Cloud.Vision.V1 {
       if (_unknownFields != null) {
         _unknownFields.WriteTo(output);
       }
+    #endif
     }
+
+    #if !GOOGLE_PROTOBUF_REFSTRUCT_COMPATIBILITY_MODE
+    [global::System.Diagnostics.DebuggerNonUserCodeAttribute]
+    void pb::IBufferMessage.InternalWriteTo(ref pb::WriteContext output) {
+      if (dominantColors_ != null) {
+        output.WriteRawTag(10);
+        output.WriteMessage(DominantColors);
+      }
+      if (_unknownFields != null) {
+        _unknownFields.WriteTo(ref output);
+      }
+    }
+    #endif
 
     [global::System.Diagnostics.DebuggerNonUserCodeAttribute]
     public int CalculateSize() {
@@ -3972,6 +4938,9 @@ namespace Google.Cloud.Vision.V1 {
 
     [global::System.Diagnostics.DebuggerNonUserCodeAttribute]
     public void MergeFrom(pb::CodedInputStream input) {
+    #if !GOOGLE_PROTOBUF_REFSTRUCT_COMPATIBILITY_MODE
+      input.ReadRawMessage(this);
+    #else
       uint tag;
       while ((tag = input.ReadTag()) != 0) {
         switch(tag) {
@@ -3987,14 +4956,40 @@ namespace Google.Cloud.Vision.V1 {
           }
         }
       }
+    #endif
     }
+
+    #if !GOOGLE_PROTOBUF_REFSTRUCT_COMPATIBILITY_MODE
+    [global::System.Diagnostics.DebuggerNonUserCodeAttribute]
+    void pb::IBufferMessage.InternalMergeFrom(ref pb::ParseContext input) {
+      uint tag;
+      while ((tag = input.ReadTag()) != 0) {
+        switch(tag) {
+          default:
+            _unknownFields = pb::UnknownFieldSet.MergeFieldFrom(_unknownFields, ref input);
+            break;
+          case 10: {
+            if (dominantColors_ == null) {
+              DominantColors = new global::Google.Cloud.Vision.V1.DominantColorsAnnotation();
+            }
+            input.ReadMessage(DominantColors);
+            break;
+          }
+        }
+      }
+    }
+    #endif
 
   }
 
   /// <summary>
   /// Single crop hint that is used to generate a new crop when serving an image.
   /// </summary>
-  public sealed partial class CropHint : pb::IMessage<CropHint> {
+  public sealed partial class CropHint : pb::IMessage<CropHint>
+  #if !GOOGLE_PROTOBUF_REFSTRUCT_COMPATIBILITY_MODE
+      , pb::IBufferMessage
+  #endif
+  {
     private static readonly pb::MessageParser<CropHint> _parser = new pb::MessageParser<CropHint>(() => new CropHint());
     private pb::UnknownFieldSet _unknownFields;
     [global::System.Diagnostics.DebuggerNonUserCodeAttribute]
@@ -4112,6 +5107,9 @@ namespace Google.Cloud.Vision.V1 {
 
     [global::System.Diagnostics.DebuggerNonUserCodeAttribute]
     public void WriteTo(pb::CodedOutputStream output) {
+    #if !GOOGLE_PROTOBUF_REFSTRUCT_COMPATIBILITY_MODE
+      output.WriteRawMessage(this);
+    #else
       if (boundingPoly_ != null) {
         output.WriteRawTag(10);
         output.WriteMessage(BoundingPoly);
@@ -4127,7 +5125,29 @@ namespace Google.Cloud.Vision.V1 {
       if (_unknownFields != null) {
         _unknownFields.WriteTo(output);
       }
+    #endif
     }
+
+    #if !GOOGLE_PROTOBUF_REFSTRUCT_COMPATIBILITY_MODE
+    [global::System.Diagnostics.DebuggerNonUserCodeAttribute]
+    void pb::IBufferMessage.InternalWriteTo(ref pb::WriteContext output) {
+      if (boundingPoly_ != null) {
+        output.WriteRawTag(10);
+        output.WriteMessage(BoundingPoly);
+      }
+      if (Confidence != 0F) {
+        output.WriteRawTag(21);
+        output.WriteFloat(Confidence);
+      }
+      if (ImportanceFraction != 0F) {
+        output.WriteRawTag(29);
+        output.WriteFloat(ImportanceFraction);
+      }
+      if (_unknownFields != null) {
+        _unknownFields.WriteTo(ref output);
+      }
+    }
+    #endif
 
     [global::System.Diagnostics.DebuggerNonUserCodeAttribute]
     public int CalculateSize() {
@@ -4169,6 +5189,9 @@ namespace Google.Cloud.Vision.V1 {
 
     [global::System.Diagnostics.DebuggerNonUserCodeAttribute]
     public void MergeFrom(pb::CodedInputStream input) {
+    #if !GOOGLE_PROTOBUF_REFSTRUCT_COMPATIBILITY_MODE
+      input.ReadRawMessage(this);
+    #else
       uint tag;
       while ((tag = input.ReadTag()) != 0) {
         switch(tag) {
@@ -4192,14 +5215,48 @@ namespace Google.Cloud.Vision.V1 {
           }
         }
       }
+    #endif
     }
+
+    #if !GOOGLE_PROTOBUF_REFSTRUCT_COMPATIBILITY_MODE
+    [global::System.Diagnostics.DebuggerNonUserCodeAttribute]
+    void pb::IBufferMessage.InternalMergeFrom(ref pb::ParseContext input) {
+      uint tag;
+      while ((tag = input.ReadTag()) != 0) {
+        switch(tag) {
+          default:
+            _unknownFields = pb::UnknownFieldSet.MergeFieldFrom(_unknownFields, ref input);
+            break;
+          case 10: {
+            if (boundingPoly_ == null) {
+              BoundingPoly = new global::Google.Cloud.Vision.V1.BoundingPoly();
+            }
+            input.ReadMessage(BoundingPoly);
+            break;
+          }
+          case 21: {
+            Confidence = input.ReadFloat();
+            break;
+          }
+          case 29: {
+            ImportanceFraction = input.ReadFloat();
+            break;
+          }
+        }
+      }
+    }
+    #endif
 
   }
 
   /// <summary>
   /// Set of crop hints that are used to generate new crops when serving images.
   /// </summary>
-  public sealed partial class CropHintsAnnotation : pb::IMessage<CropHintsAnnotation> {
+  public sealed partial class CropHintsAnnotation : pb::IMessage<CropHintsAnnotation>
+  #if !GOOGLE_PROTOBUF_REFSTRUCT_COMPATIBILITY_MODE
+      , pb::IBufferMessage
+  #endif
+  {
     private static readonly pb::MessageParser<CropHintsAnnotation> _parser = new pb::MessageParser<CropHintsAnnotation>(() => new CropHintsAnnotation());
     private pb::UnknownFieldSet _unknownFields;
     [global::System.Diagnostics.DebuggerNonUserCodeAttribute]
@@ -4280,11 +5337,25 @@ namespace Google.Cloud.Vision.V1 {
 
     [global::System.Diagnostics.DebuggerNonUserCodeAttribute]
     public void WriteTo(pb::CodedOutputStream output) {
+    #if !GOOGLE_PROTOBUF_REFSTRUCT_COMPATIBILITY_MODE
+      output.WriteRawMessage(this);
+    #else
       cropHints_.WriteTo(output, _repeated_cropHints_codec);
       if (_unknownFields != null) {
         _unknownFields.WriteTo(output);
       }
+    #endif
     }
+
+    #if !GOOGLE_PROTOBUF_REFSTRUCT_COMPATIBILITY_MODE
+    [global::System.Diagnostics.DebuggerNonUserCodeAttribute]
+    void pb::IBufferMessage.InternalWriteTo(ref pb::WriteContext output) {
+      cropHints_.WriteTo(ref output, _repeated_cropHints_codec);
+      if (_unknownFields != null) {
+        _unknownFields.WriteTo(ref output);
+      }
+    }
+    #endif
 
     [global::System.Diagnostics.DebuggerNonUserCodeAttribute]
     public int CalculateSize() {
@@ -4307,6 +5378,9 @@ namespace Google.Cloud.Vision.V1 {
 
     [global::System.Diagnostics.DebuggerNonUserCodeAttribute]
     public void MergeFrom(pb::CodedInputStream input) {
+    #if !GOOGLE_PROTOBUF_REFSTRUCT_COMPATIBILITY_MODE
+      input.ReadRawMessage(this);
+    #else
       uint tag;
       while ((tag = input.ReadTag()) != 0) {
         switch(tag) {
@@ -4319,14 +5393,37 @@ namespace Google.Cloud.Vision.V1 {
           }
         }
       }
+    #endif
     }
+
+    #if !GOOGLE_PROTOBUF_REFSTRUCT_COMPATIBILITY_MODE
+    [global::System.Diagnostics.DebuggerNonUserCodeAttribute]
+    void pb::IBufferMessage.InternalMergeFrom(ref pb::ParseContext input) {
+      uint tag;
+      while ((tag = input.ReadTag()) != 0) {
+        switch(tag) {
+          default:
+            _unknownFields = pb::UnknownFieldSet.MergeFieldFrom(_unknownFields, ref input);
+            break;
+          case 10: {
+            cropHints_.AddEntriesFrom(ref input, _repeated_cropHints_codec);
+            break;
+          }
+        }
+      }
+    }
+    #endif
 
   }
 
   /// <summary>
   /// Parameters for crop hints annotation request.
   /// </summary>
-  public sealed partial class CropHintsParams : pb::IMessage<CropHintsParams> {
+  public sealed partial class CropHintsParams : pb::IMessage<CropHintsParams>
+  #if !GOOGLE_PROTOBUF_REFSTRUCT_COMPATIBILITY_MODE
+      , pb::IBufferMessage
+  #endif
+  {
     private static readonly pb::MessageParser<CropHintsParams> _parser = new pb::MessageParser<CropHintsParams>(() => new CropHintsParams());
     private pb::UnknownFieldSet _unknownFields;
     [global::System.Diagnostics.DebuggerNonUserCodeAttribute]
@@ -4412,11 +5509,25 @@ namespace Google.Cloud.Vision.V1 {
 
     [global::System.Diagnostics.DebuggerNonUserCodeAttribute]
     public void WriteTo(pb::CodedOutputStream output) {
+    #if !GOOGLE_PROTOBUF_REFSTRUCT_COMPATIBILITY_MODE
+      output.WriteRawMessage(this);
+    #else
       aspectRatios_.WriteTo(output, _repeated_aspectRatios_codec);
       if (_unknownFields != null) {
         _unknownFields.WriteTo(output);
       }
+    #endif
     }
+
+    #if !GOOGLE_PROTOBUF_REFSTRUCT_COMPATIBILITY_MODE
+    [global::System.Diagnostics.DebuggerNonUserCodeAttribute]
+    void pb::IBufferMessage.InternalWriteTo(ref pb::WriteContext output) {
+      aspectRatios_.WriteTo(ref output, _repeated_aspectRatios_codec);
+      if (_unknownFields != null) {
+        _unknownFields.WriteTo(ref output);
+      }
+    }
+    #endif
 
     [global::System.Diagnostics.DebuggerNonUserCodeAttribute]
     public int CalculateSize() {
@@ -4439,6 +5550,9 @@ namespace Google.Cloud.Vision.V1 {
 
     [global::System.Diagnostics.DebuggerNonUserCodeAttribute]
     public void MergeFrom(pb::CodedInputStream input) {
+    #if !GOOGLE_PROTOBUF_REFSTRUCT_COMPATIBILITY_MODE
+      input.ReadRawMessage(this);
+    #else
       uint tag;
       while ((tag = input.ReadTag()) != 0) {
         switch(tag) {
@@ -4452,14 +5566,38 @@ namespace Google.Cloud.Vision.V1 {
           }
         }
       }
+    #endif
     }
+
+    #if !GOOGLE_PROTOBUF_REFSTRUCT_COMPATIBILITY_MODE
+    [global::System.Diagnostics.DebuggerNonUserCodeAttribute]
+    void pb::IBufferMessage.InternalMergeFrom(ref pb::ParseContext input) {
+      uint tag;
+      while ((tag = input.ReadTag()) != 0) {
+        switch(tag) {
+          default:
+            _unknownFields = pb::UnknownFieldSet.MergeFieldFrom(_unknownFields, ref input);
+            break;
+          case 10:
+          case 13: {
+            aspectRatios_.AddEntriesFrom(ref input, _repeated_aspectRatios_codec);
+            break;
+          }
+        }
+      }
+    }
+    #endif
 
   }
 
   /// <summary>
   /// Parameters for web detection request.
   /// </summary>
-  public sealed partial class WebDetectionParams : pb::IMessage<WebDetectionParams> {
+  public sealed partial class WebDetectionParams : pb::IMessage<WebDetectionParams>
+  #if !GOOGLE_PROTOBUF_REFSTRUCT_COMPATIBILITY_MODE
+      , pb::IBufferMessage
+  #endif
+  {
     private static readonly pb::MessageParser<WebDetectionParams> _parser = new pb::MessageParser<WebDetectionParams>(() => new WebDetectionParams());
     private pb::UnknownFieldSet _unknownFields;
     [global::System.Diagnostics.DebuggerNonUserCodeAttribute]
@@ -4541,6 +5679,9 @@ namespace Google.Cloud.Vision.V1 {
 
     [global::System.Diagnostics.DebuggerNonUserCodeAttribute]
     public void WriteTo(pb::CodedOutputStream output) {
+    #if !GOOGLE_PROTOBUF_REFSTRUCT_COMPATIBILITY_MODE
+      output.WriteRawMessage(this);
+    #else
       if (IncludeGeoResults != false) {
         output.WriteRawTag(16);
         output.WriteBool(IncludeGeoResults);
@@ -4548,7 +5689,21 @@ namespace Google.Cloud.Vision.V1 {
       if (_unknownFields != null) {
         _unknownFields.WriteTo(output);
       }
+    #endif
     }
+
+    #if !GOOGLE_PROTOBUF_REFSTRUCT_COMPATIBILITY_MODE
+    [global::System.Diagnostics.DebuggerNonUserCodeAttribute]
+    void pb::IBufferMessage.InternalWriteTo(ref pb::WriteContext output) {
+      if (IncludeGeoResults != false) {
+        output.WriteRawTag(16);
+        output.WriteBool(IncludeGeoResults);
+      }
+      if (_unknownFields != null) {
+        _unknownFields.WriteTo(ref output);
+      }
+    }
+    #endif
 
     [global::System.Diagnostics.DebuggerNonUserCodeAttribute]
     public int CalculateSize() {
@@ -4575,6 +5730,9 @@ namespace Google.Cloud.Vision.V1 {
 
     [global::System.Diagnostics.DebuggerNonUserCodeAttribute]
     public void MergeFrom(pb::CodedInputStream input) {
+    #if !GOOGLE_PROTOBUF_REFSTRUCT_COMPATIBILITY_MODE
+      input.ReadRawMessage(this);
+    #else
       uint tag;
       while ((tag = input.ReadTag()) != 0) {
         switch(tag) {
@@ -4587,14 +5745,37 @@ namespace Google.Cloud.Vision.V1 {
           }
         }
       }
+    #endif
     }
+
+    #if !GOOGLE_PROTOBUF_REFSTRUCT_COMPATIBILITY_MODE
+    [global::System.Diagnostics.DebuggerNonUserCodeAttribute]
+    void pb::IBufferMessage.InternalMergeFrom(ref pb::ParseContext input) {
+      uint tag;
+      while ((tag = input.ReadTag()) != 0) {
+        switch(tag) {
+          default:
+            _unknownFields = pb::UnknownFieldSet.MergeFieldFrom(_unknownFields, ref input);
+            break;
+          case 16: {
+            IncludeGeoResults = input.ReadBool();
+            break;
+          }
+        }
+      }
+    }
+    #endif
 
   }
 
   /// <summary>
   /// Image context and/or feature-specific parameters.
   /// </summary>
-  public sealed partial class ImageContext : pb::IMessage<ImageContext> {
+  public sealed partial class ImageContext : pb::IMessage<ImageContext>
+  #if !GOOGLE_PROTOBUF_REFSTRUCT_COMPATIBILITY_MODE
+      , pb::IBufferMessage
+  #endif
+  {
     private static readonly pb::MessageParser<ImageContext> _parser = new pb::MessageParser<ImageContext>(() => new ImageContext());
     private pb::UnknownFieldSet _unknownFields;
     [global::System.Diagnostics.DebuggerNonUserCodeAttribute]
@@ -4659,7 +5840,7 @@ namespace Google.Cloud.Vision.V1 {
     /// setting a hint will help get better results (although it will be a
     /// significant hindrance if the hint is wrong). Text detection returns an
     /// error if one or more of the specified languages is not one of the
-    /// [supported languages](/vision/docs/languages).
+    /// [supported languages](https://cloud.google.com/vision/docs/languages).
     /// </summary>
     [global::System.Diagnostics.DebuggerNonUserCodeAttribute]
     public pbc::RepeatedField<string> LanguageHints {
@@ -4750,6 +5931,9 @@ namespace Google.Cloud.Vision.V1 {
 
     [global::System.Diagnostics.DebuggerNonUserCodeAttribute]
     public void WriteTo(pb::CodedOutputStream output) {
+    #if !GOOGLE_PROTOBUF_REFSTRUCT_COMPATIBILITY_MODE
+      output.WriteRawMessage(this);
+    #else
       if (latLongRect_ != null) {
         output.WriteRawTag(10);
         output.WriteMessage(LatLongRect);
@@ -4770,7 +5954,34 @@ namespace Google.Cloud.Vision.V1 {
       if (_unknownFields != null) {
         _unknownFields.WriteTo(output);
       }
+    #endif
     }
+
+    #if !GOOGLE_PROTOBUF_REFSTRUCT_COMPATIBILITY_MODE
+    [global::System.Diagnostics.DebuggerNonUserCodeAttribute]
+    void pb::IBufferMessage.InternalWriteTo(ref pb::WriteContext output) {
+      if (latLongRect_ != null) {
+        output.WriteRawTag(10);
+        output.WriteMessage(LatLongRect);
+      }
+      languageHints_.WriteTo(ref output, _repeated_languageHints_codec);
+      if (cropHintsParams_ != null) {
+        output.WriteRawTag(34);
+        output.WriteMessage(CropHintsParams);
+      }
+      if (productSearchParams_ != null) {
+        output.WriteRawTag(42);
+        output.WriteMessage(ProductSearchParams);
+      }
+      if (webDetectionParams_ != null) {
+        output.WriteRawTag(50);
+        output.WriteMessage(WebDetectionParams);
+      }
+      if (_unknownFields != null) {
+        _unknownFields.WriteTo(ref output);
+      }
+    }
+    #endif
 
     [global::System.Diagnostics.DebuggerNonUserCodeAttribute]
     public int CalculateSize() {
@@ -4829,6 +6040,9 @@ namespace Google.Cloud.Vision.V1 {
 
     [global::System.Diagnostics.DebuggerNonUserCodeAttribute]
     public void MergeFrom(pb::CodedInputStream input) {
+    #if !GOOGLE_PROTOBUF_REFSTRUCT_COMPATIBILITY_MODE
+      input.ReadRawMessage(this);
+    #else
       uint tag;
       while ((tag = input.ReadTag()) != 0) {
         switch(tag) {
@@ -4869,7 +6083,54 @@ namespace Google.Cloud.Vision.V1 {
           }
         }
       }
+    #endif
     }
+
+    #if !GOOGLE_PROTOBUF_REFSTRUCT_COMPATIBILITY_MODE
+    [global::System.Diagnostics.DebuggerNonUserCodeAttribute]
+    void pb::IBufferMessage.InternalMergeFrom(ref pb::ParseContext input) {
+      uint tag;
+      while ((tag = input.ReadTag()) != 0) {
+        switch(tag) {
+          default:
+            _unknownFields = pb::UnknownFieldSet.MergeFieldFrom(_unknownFields, ref input);
+            break;
+          case 10: {
+            if (latLongRect_ == null) {
+              LatLongRect = new global::Google.Cloud.Vision.V1.LatLongRect();
+            }
+            input.ReadMessage(LatLongRect);
+            break;
+          }
+          case 18: {
+            languageHints_.AddEntriesFrom(ref input, _repeated_languageHints_codec);
+            break;
+          }
+          case 34: {
+            if (cropHintsParams_ == null) {
+              CropHintsParams = new global::Google.Cloud.Vision.V1.CropHintsParams();
+            }
+            input.ReadMessage(CropHintsParams);
+            break;
+          }
+          case 42: {
+            if (productSearchParams_ == null) {
+              ProductSearchParams = new global::Google.Cloud.Vision.V1.ProductSearchParams();
+            }
+            input.ReadMessage(ProductSearchParams);
+            break;
+          }
+          case 50: {
+            if (webDetectionParams_ == null) {
+              WebDetectionParams = new global::Google.Cloud.Vision.V1.WebDetectionParams();
+            }
+            input.ReadMessage(WebDetectionParams);
+            break;
+          }
+        }
+      }
+    }
+    #endif
 
   }
 
@@ -4877,7 +6138,11 @@ namespace Google.Cloud.Vision.V1 {
   /// Request for performing Google Cloud Vision API tasks over a user-provided
   /// image, with user-requested features, and with context information.
   /// </summary>
-  public sealed partial class AnnotateImageRequest : pb::IMessage<AnnotateImageRequest> {
+  public sealed partial class AnnotateImageRequest : pb::IMessage<AnnotateImageRequest>
+  #if !GOOGLE_PROTOBUF_REFSTRUCT_COMPATIBILITY_MODE
+      , pb::IBufferMessage
+  #endif
+  {
     private static readonly pb::MessageParser<AnnotateImageRequest> _parser = new pb::MessageParser<AnnotateImageRequest>(() => new AnnotateImageRequest());
     private pb::UnknownFieldSet _unknownFields;
     [global::System.Diagnostics.DebuggerNonUserCodeAttribute]
@@ -4992,6 +6257,9 @@ namespace Google.Cloud.Vision.V1 {
 
     [global::System.Diagnostics.DebuggerNonUserCodeAttribute]
     public void WriteTo(pb::CodedOutputStream output) {
+    #if !GOOGLE_PROTOBUF_REFSTRUCT_COMPATIBILITY_MODE
+      output.WriteRawMessage(this);
+    #else
       if (image_ != null) {
         output.WriteRawTag(10);
         output.WriteMessage(Image);
@@ -5004,7 +6272,26 @@ namespace Google.Cloud.Vision.V1 {
       if (_unknownFields != null) {
         _unknownFields.WriteTo(output);
       }
+    #endif
     }
+
+    #if !GOOGLE_PROTOBUF_REFSTRUCT_COMPATIBILITY_MODE
+    [global::System.Diagnostics.DebuggerNonUserCodeAttribute]
+    void pb::IBufferMessage.InternalWriteTo(ref pb::WriteContext output) {
+      if (image_ != null) {
+        output.WriteRawTag(10);
+        output.WriteMessage(Image);
+      }
+      features_.WriteTo(ref output, _repeated_features_codec);
+      if (imageContext_ != null) {
+        output.WriteRawTag(26);
+        output.WriteMessage(ImageContext);
+      }
+      if (_unknownFields != null) {
+        _unknownFields.WriteTo(ref output);
+      }
+    }
+    #endif
 
     [global::System.Diagnostics.DebuggerNonUserCodeAttribute]
     public int CalculateSize() {
@@ -5045,6 +6332,9 @@ namespace Google.Cloud.Vision.V1 {
 
     [global::System.Diagnostics.DebuggerNonUserCodeAttribute]
     public void MergeFrom(pb::CodedInputStream input) {
+    #if !GOOGLE_PROTOBUF_REFSTRUCT_COMPATIBILITY_MODE
+      input.ReadRawMessage(this);
+    #else
       uint tag;
       while ((tag = input.ReadTag()) != 0) {
         switch(tag) {
@@ -5071,7 +6361,40 @@ namespace Google.Cloud.Vision.V1 {
           }
         }
       }
+    #endif
     }
+
+    #if !GOOGLE_PROTOBUF_REFSTRUCT_COMPATIBILITY_MODE
+    [global::System.Diagnostics.DebuggerNonUserCodeAttribute]
+    void pb::IBufferMessage.InternalMergeFrom(ref pb::ParseContext input) {
+      uint tag;
+      while ((tag = input.ReadTag()) != 0) {
+        switch(tag) {
+          default:
+            _unknownFields = pb::UnknownFieldSet.MergeFieldFrom(_unknownFields, ref input);
+            break;
+          case 10: {
+            if (image_ == null) {
+              Image = new global::Google.Cloud.Vision.V1.Image();
+            }
+            input.ReadMessage(Image);
+            break;
+          }
+          case 18: {
+            features_.AddEntriesFrom(ref input, _repeated_features_codec);
+            break;
+          }
+          case 26: {
+            if (imageContext_ == null) {
+              ImageContext = new global::Google.Cloud.Vision.V1.ImageContext();
+            }
+            input.ReadMessage(ImageContext);
+            break;
+          }
+        }
+      }
+    }
+    #endif
 
   }
 
@@ -5079,7 +6402,11 @@ namespace Google.Cloud.Vision.V1 {
   /// If an image was produced from a file (e.g. a PDF), this message gives
   /// information about the source of that image.
   /// </summary>
-  public sealed partial class ImageAnnotationContext : pb::IMessage<ImageAnnotationContext> {
+  public sealed partial class ImageAnnotationContext : pb::IMessage<ImageAnnotationContext>
+  #if !GOOGLE_PROTOBUF_REFSTRUCT_COMPATIBILITY_MODE
+      , pb::IBufferMessage
+  #endif
+  {
     private static readonly pb::MessageParser<ImageAnnotationContext> _parser = new pb::MessageParser<ImageAnnotationContext>(() => new ImageAnnotationContext());
     private pb::UnknownFieldSet _unknownFields;
     [global::System.Diagnostics.DebuggerNonUserCodeAttribute]
@@ -5179,6 +6506,9 @@ namespace Google.Cloud.Vision.V1 {
 
     [global::System.Diagnostics.DebuggerNonUserCodeAttribute]
     public void WriteTo(pb::CodedOutputStream output) {
+    #if !GOOGLE_PROTOBUF_REFSTRUCT_COMPATIBILITY_MODE
+      output.WriteRawMessage(this);
+    #else
       if (Uri.Length != 0) {
         output.WriteRawTag(10);
         output.WriteString(Uri);
@@ -5190,7 +6520,25 @@ namespace Google.Cloud.Vision.V1 {
       if (_unknownFields != null) {
         _unknownFields.WriteTo(output);
       }
+    #endif
     }
+
+    #if !GOOGLE_PROTOBUF_REFSTRUCT_COMPATIBILITY_MODE
+    [global::System.Diagnostics.DebuggerNonUserCodeAttribute]
+    void pb::IBufferMessage.InternalWriteTo(ref pb::WriteContext output) {
+      if (Uri.Length != 0) {
+        output.WriteRawTag(10);
+        output.WriteString(Uri);
+      }
+      if (PageNumber != 0) {
+        output.WriteRawTag(16);
+        output.WriteInt32(PageNumber);
+      }
+      if (_unknownFields != null) {
+        _unknownFields.WriteTo(ref output);
+      }
+    }
+    #endif
 
     [global::System.Diagnostics.DebuggerNonUserCodeAttribute]
     public int CalculateSize() {
@@ -5223,6 +6571,9 @@ namespace Google.Cloud.Vision.V1 {
 
     [global::System.Diagnostics.DebuggerNonUserCodeAttribute]
     public void MergeFrom(pb::CodedInputStream input) {
+    #if !GOOGLE_PROTOBUF_REFSTRUCT_COMPATIBILITY_MODE
+      input.ReadRawMessage(this);
+    #else
       uint tag;
       while ((tag = input.ReadTag()) != 0) {
         switch(tag) {
@@ -5239,14 +6590,41 @@ namespace Google.Cloud.Vision.V1 {
           }
         }
       }
+    #endif
     }
+
+    #if !GOOGLE_PROTOBUF_REFSTRUCT_COMPATIBILITY_MODE
+    [global::System.Diagnostics.DebuggerNonUserCodeAttribute]
+    void pb::IBufferMessage.InternalMergeFrom(ref pb::ParseContext input) {
+      uint tag;
+      while ((tag = input.ReadTag()) != 0) {
+        switch(tag) {
+          default:
+            _unknownFields = pb::UnknownFieldSet.MergeFieldFrom(_unknownFields, ref input);
+            break;
+          case 10: {
+            Uri = input.ReadString();
+            break;
+          }
+          case 16: {
+            PageNumber = input.ReadInt32();
+            break;
+          }
+        }
+      }
+    }
+    #endif
 
   }
 
   /// <summary>
   /// Response to an image annotation request.
   /// </summary>
-  public sealed partial class AnnotateImageResponse : pb::IMessage<AnnotateImageResponse> {
+  public sealed partial class AnnotateImageResponse : pb::IMessage<AnnotateImageResponse>
+  #if !GOOGLE_PROTOBUF_REFSTRUCT_COMPATIBILITY_MODE
+      , pb::IBufferMessage
+  #endif
+  {
     private static readonly pb::MessageParser<AnnotateImageResponse> _parser = new pb::MessageParser<AnnotateImageResponse>(() => new AnnotateImageResponse());
     private pb::UnknownFieldSet _unknownFields;
     [global::System.Diagnostics.DebuggerNonUserCodeAttribute]
@@ -5550,6 +6928,9 @@ namespace Google.Cloud.Vision.V1 {
 
     [global::System.Diagnostics.DebuggerNonUserCodeAttribute]
     public void WriteTo(pb::CodedOutputStream output) {
+    #if !GOOGLE_PROTOBUF_REFSTRUCT_COMPATIBILITY_MODE
+      output.WriteRawMessage(this);
+    #else
       faceAnnotations_.WriteTo(output, _repeated_faceAnnotations_codec);
       landmarkAnnotations_.WriteTo(output, _repeated_landmarkAnnotations_codec);
       logoAnnotations_.WriteTo(output, _repeated_logoAnnotations_codec);
@@ -5591,7 +6972,55 @@ namespace Google.Cloud.Vision.V1 {
       if (_unknownFields != null) {
         _unknownFields.WriteTo(output);
       }
+    #endif
     }
+
+    #if !GOOGLE_PROTOBUF_REFSTRUCT_COMPATIBILITY_MODE
+    [global::System.Diagnostics.DebuggerNonUserCodeAttribute]
+    void pb::IBufferMessage.InternalWriteTo(ref pb::WriteContext output) {
+      faceAnnotations_.WriteTo(ref output, _repeated_faceAnnotations_codec);
+      landmarkAnnotations_.WriteTo(ref output, _repeated_landmarkAnnotations_codec);
+      logoAnnotations_.WriteTo(ref output, _repeated_logoAnnotations_codec);
+      labelAnnotations_.WriteTo(ref output, _repeated_labelAnnotations_codec);
+      textAnnotations_.WriteTo(ref output, _repeated_textAnnotations_codec);
+      if (safeSearchAnnotation_ != null) {
+        output.WriteRawTag(50);
+        output.WriteMessage(SafeSearchAnnotation);
+      }
+      if (imagePropertiesAnnotation_ != null) {
+        output.WriteRawTag(66);
+        output.WriteMessage(ImagePropertiesAnnotation);
+      }
+      if (error_ != null) {
+        output.WriteRawTag(74);
+        output.WriteMessage(Error);
+      }
+      if (cropHintsAnnotation_ != null) {
+        output.WriteRawTag(90);
+        output.WriteMessage(CropHintsAnnotation);
+      }
+      if (fullTextAnnotation_ != null) {
+        output.WriteRawTag(98);
+        output.WriteMessage(FullTextAnnotation);
+      }
+      if (webDetection_ != null) {
+        output.WriteRawTag(106);
+        output.WriteMessage(WebDetection);
+      }
+      if (productSearchResults_ != null) {
+        output.WriteRawTag(114);
+        output.WriteMessage(ProductSearchResults);
+      }
+      if (context_ != null) {
+        output.WriteRawTag(170, 1);
+        output.WriteMessage(Context);
+      }
+      localizedObjectAnnotations_.WriteTo(ref output, _repeated_localizedObjectAnnotations_codec);
+      if (_unknownFields != null) {
+        _unknownFields.WriteTo(ref output);
+      }
+    }
+    #endif
 
     [global::System.Diagnostics.DebuggerNonUserCodeAttribute]
     public int CalculateSize() {
@@ -5696,6 +7125,9 @@ namespace Google.Cloud.Vision.V1 {
 
     [global::System.Diagnostics.DebuggerNonUserCodeAttribute]
     public void MergeFrom(pb::CodedInputStream input) {
+    #if !GOOGLE_PROTOBUF_REFSTRUCT_COMPATIBILITY_MODE
+      input.ReadRawMessage(this);
+    #else
       uint tag;
       while ((tag = input.ReadTag()) != 0) {
         switch(tag) {
@@ -5784,14 +7216,113 @@ namespace Google.Cloud.Vision.V1 {
           }
         }
       }
+    #endif
     }
+
+    #if !GOOGLE_PROTOBUF_REFSTRUCT_COMPATIBILITY_MODE
+    [global::System.Diagnostics.DebuggerNonUserCodeAttribute]
+    void pb::IBufferMessage.InternalMergeFrom(ref pb::ParseContext input) {
+      uint tag;
+      while ((tag = input.ReadTag()) != 0) {
+        switch(tag) {
+          default:
+            _unknownFields = pb::UnknownFieldSet.MergeFieldFrom(_unknownFields, ref input);
+            break;
+          case 10: {
+            faceAnnotations_.AddEntriesFrom(ref input, _repeated_faceAnnotations_codec);
+            break;
+          }
+          case 18: {
+            landmarkAnnotations_.AddEntriesFrom(ref input, _repeated_landmarkAnnotations_codec);
+            break;
+          }
+          case 26: {
+            logoAnnotations_.AddEntriesFrom(ref input, _repeated_logoAnnotations_codec);
+            break;
+          }
+          case 34: {
+            labelAnnotations_.AddEntriesFrom(ref input, _repeated_labelAnnotations_codec);
+            break;
+          }
+          case 42: {
+            textAnnotations_.AddEntriesFrom(ref input, _repeated_textAnnotations_codec);
+            break;
+          }
+          case 50: {
+            if (safeSearchAnnotation_ == null) {
+              SafeSearchAnnotation = new global::Google.Cloud.Vision.V1.SafeSearchAnnotation();
+            }
+            input.ReadMessage(SafeSearchAnnotation);
+            break;
+          }
+          case 66: {
+            if (imagePropertiesAnnotation_ == null) {
+              ImagePropertiesAnnotation = new global::Google.Cloud.Vision.V1.ImageProperties();
+            }
+            input.ReadMessage(ImagePropertiesAnnotation);
+            break;
+          }
+          case 74: {
+            if (error_ == null) {
+              Error = new global::Google.Rpc.Status();
+            }
+            input.ReadMessage(Error);
+            break;
+          }
+          case 90: {
+            if (cropHintsAnnotation_ == null) {
+              CropHintsAnnotation = new global::Google.Cloud.Vision.V1.CropHintsAnnotation();
+            }
+            input.ReadMessage(CropHintsAnnotation);
+            break;
+          }
+          case 98: {
+            if (fullTextAnnotation_ == null) {
+              FullTextAnnotation = new global::Google.Cloud.Vision.V1.TextAnnotation();
+            }
+            input.ReadMessage(FullTextAnnotation);
+            break;
+          }
+          case 106: {
+            if (webDetection_ == null) {
+              WebDetection = new global::Google.Cloud.Vision.V1.WebDetection();
+            }
+            input.ReadMessage(WebDetection);
+            break;
+          }
+          case 114: {
+            if (productSearchResults_ == null) {
+              ProductSearchResults = new global::Google.Cloud.Vision.V1.ProductSearchResults();
+            }
+            input.ReadMessage(ProductSearchResults);
+            break;
+          }
+          case 170: {
+            if (context_ == null) {
+              Context = new global::Google.Cloud.Vision.V1.ImageAnnotationContext();
+            }
+            input.ReadMessage(Context);
+            break;
+          }
+          case 178: {
+            localizedObjectAnnotations_.AddEntriesFrom(ref input, _repeated_localizedObjectAnnotations_codec);
+            break;
+          }
+        }
+      }
+    }
+    #endif
 
   }
 
   /// <summary>
   /// Multiple image annotation requests are batched into a single service call.
   /// </summary>
-  public sealed partial class BatchAnnotateImagesRequest : pb::IMessage<BatchAnnotateImagesRequest> {
+  public sealed partial class BatchAnnotateImagesRequest : pb::IMessage<BatchAnnotateImagesRequest>
+  #if !GOOGLE_PROTOBUF_REFSTRUCT_COMPATIBILITY_MODE
+      , pb::IBufferMessage
+  #endif
+  {
     private static readonly pb::MessageParser<BatchAnnotateImagesRequest> _parser = new pb::MessageParser<BatchAnnotateImagesRequest>(() => new BatchAnnotateImagesRequest());
     private pb::UnknownFieldSet _unknownFields;
     [global::System.Diagnostics.DebuggerNonUserCodeAttribute]
@@ -5900,6 +7431,9 @@ namespace Google.Cloud.Vision.V1 {
 
     [global::System.Diagnostics.DebuggerNonUserCodeAttribute]
     public void WriteTo(pb::CodedOutputStream output) {
+    #if !GOOGLE_PROTOBUF_REFSTRUCT_COMPATIBILITY_MODE
+      output.WriteRawMessage(this);
+    #else
       requests_.WriteTo(output, _repeated_requests_codec);
       if (Parent.Length != 0) {
         output.WriteRawTag(34);
@@ -5908,7 +7442,22 @@ namespace Google.Cloud.Vision.V1 {
       if (_unknownFields != null) {
         _unknownFields.WriteTo(output);
       }
+    #endif
     }
+
+    #if !GOOGLE_PROTOBUF_REFSTRUCT_COMPATIBILITY_MODE
+    [global::System.Diagnostics.DebuggerNonUserCodeAttribute]
+    void pb::IBufferMessage.InternalWriteTo(ref pb::WriteContext output) {
+      requests_.WriteTo(ref output, _repeated_requests_codec);
+      if (Parent.Length != 0) {
+        output.WriteRawTag(34);
+        output.WriteString(Parent);
+      }
+      if (_unknownFields != null) {
+        _unknownFields.WriteTo(ref output);
+      }
+    }
+    #endif
 
     [global::System.Diagnostics.DebuggerNonUserCodeAttribute]
     public int CalculateSize() {
@@ -5937,6 +7486,9 @@ namespace Google.Cloud.Vision.V1 {
 
     [global::System.Diagnostics.DebuggerNonUserCodeAttribute]
     public void MergeFrom(pb::CodedInputStream input) {
+    #if !GOOGLE_PROTOBUF_REFSTRUCT_COMPATIBILITY_MODE
+      input.ReadRawMessage(this);
+    #else
       uint tag;
       while ((tag = input.ReadTag()) != 0) {
         switch(tag) {
@@ -5953,14 +7505,41 @@ namespace Google.Cloud.Vision.V1 {
           }
         }
       }
+    #endif
     }
+
+    #if !GOOGLE_PROTOBUF_REFSTRUCT_COMPATIBILITY_MODE
+    [global::System.Diagnostics.DebuggerNonUserCodeAttribute]
+    void pb::IBufferMessage.InternalMergeFrom(ref pb::ParseContext input) {
+      uint tag;
+      while ((tag = input.ReadTag()) != 0) {
+        switch(tag) {
+          default:
+            _unknownFields = pb::UnknownFieldSet.MergeFieldFrom(_unknownFields, ref input);
+            break;
+          case 10: {
+            requests_.AddEntriesFrom(ref input, _repeated_requests_codec);
+            break;
+          }
+          case 34: {
+            Parent = input.ReadString();
+            break;
+          }
+        }
+      }
+    }
+    #endif
 
   }
 
   /// <summary>
   /// Response to a batch image annotation request.
   /// </summary>
-  public sealed partial class BatchAnnotateImagesResponse : pb::IMessage<BatchAnnotateImagesResponse> {
+  public sealed partial class BatchAnnotateImagesResponse : pb::IMessage<BatchAnnotateImagesResponse>
+  #if !GOOGLE_PROTOBUF_REFSTRUCT_COMPATIBILITY_MODE
+      , pb::IBufferMessage
+  #endif
+  {
     private static readonly pb::MessageParser<BatchAnnotateImagesResponse> _parser = new pb::MessageParser<BatchAnnotateImagesResponse>(() => new BatchAnnotateImagesResponse());
     private pb::UnknownFieldSet _unknownFields;
     [global::System.Diagnostics.DebuggerNonUserCodeAttribute]
@@ -6041,11 +7620,25 @@ namespace Google.Cloud.Vision.V1 {
 
     [global::System.Diagnostics.DebuggerNonUserCodeAttribute]
     public void WriteTo(pb::CodedOutputStream output) {
+    #if !GOOGLE_PROTOBUF_REFSTRUCT_COMPATIBILITY_MODE
+      output.WriteRawMessage(this);
+    #else
       responses_.WriteTo(output, _repeated_responses_codec);
       if (_unknownFields != null) {
         _unknownFields.WriteTo(output);
       }
+    #endif
     }
+
+    #if !GOOGLE_PROTOBUF_REFSTRUCT_COMPATIBILITY_MODE
+    [global::System.Diagnostics.DebuggerNonUserCodeAttribute]
+    void pb::IBufferMessage.InternalWriteTo(ref pb::WriteContext output) {
+      responses_.WriteTo(ref output, _repeated_responses_codec);
+      if (_unknownFields != null) {
+        _unknownFields.WriteTo(ref output);
+      }
+    }
+    #endif
 
     [global::System.Diagnostics.DebuggerNonUserCodeAttribute]
     public int CalculateSize() {
@@ -6068,6 +7661,9 @@ namespace Google.Cloud.Vision.V1 {
 
     [global::System.Diagnostics.DebuggerNonUserCodeAttribute]
     public void MergeFrom(pb::CodedInputStream input) {
+    #if !GOOGLE_PROTOBUF_REFSTRUCT_COMPATIBILITY_MODE
+      input.ReadRawMessage(this);
+    #else
       uint tag;
       while ((tag = input.ReadTag()) != 0) {
         switch(tag) {
@@ -6080,14 +7676,37 @@ namespace Google.Cloud.Vision.V1 {
           }
         }
       }
+    #endif
     }
+
+    #if !GOOGLE_PROTOBUF_REFSTRUCT_COMPATIBILITY_MODE
+    [global::System.Diagnostics.DebuggerNonUserCodeAttribute]
+    void pb::IBufferMessage.InternalMergeFrom(ref pb::ParseContext input) {
+      uint tag;
+      while ((tag = input.ReadTag()) != 0) {
+        switch(tag) {
+          default:
+            _unknownFields = pb::UnknownFieldSet.MergeFieldFrom(_unknownFields, ref input);
+            break;
+          case 10: {
+            responses_.AddEntriesFrom(ref input, _repeated_responses_codec);
+            break;
+          }
+        }
+      }
+    }
+    #endif
 
   }
 
   /// <summary>
   /// A request to annotate one single file, e.g. a PDF, TIFF or GIF file.
   /// </summary>
-  public sealed partial class AnnotateFileRequest : pb::IMessage<AnnotateFileRequest> {
+  public sealed partial class AnnotateFileRequest : pb::IMessage<AnnotateFileRequest>
+  #if !GOOGLE_PROTOBUF_REFSTRUCT_COMPATIBILITY_MODE
+      , pb::IBufferMessage
+  #endif
+  {
     private static readonly pb::MessageParser<AnnotateFileRequest> _parser = new pb::MessageParser<AnnotateFileRequest>(() => new AnnotateFileRequest());
     private pb::UnknownFieldSet _unknownFields;
     [global::System.Diagnostics.DebuggerNonUserCodeAttribute]
@@ -6231,6 +7850,9 @@ namespace Google.Cloud.Vision.V1 {
 
     [global::System.Diagnostics.DebuggerNonUserCodeAttribute]
     public void WriteTo(pb::CodedOutputStream output) {
+    #if !GOOGLE_PROTOBUF_REFSTRUCT_COMPATIBILITY_MODE
+      output.WriteRawMessage(this);
+    #else
       if (inputConfig_ != null) {
         output.WriteRawTag(10);
         output.WriteMessage(InputConfig);
@@ -6244,7 +7866,27 @@ namespace Google.Cloud.Vision.V1 {
       if (_unknownFields != null) {
         _unknownFields.WriteTo(output);
       }
+    #endif
     }
+
+    #if !GOOGLE_PROTOBUF_REFSTRUCT_COMPATIBILITY_MODE
+    [global::System.Diagnostics.DebuggerNonUserCodeAttribute]
+    void pb::IBufferMessage.InternalWriteTo(ref pb::WriteContext output) {
+      if (inputConfig_ != null) {
+        output.WriteRawTag(10);
+        output.WriteMessage(InputConfig);
+      }
+      features_.WriteTo(ref output, _repeated_features_codec);
+      if (imageContext_ != null) {
+        output.WriteRawTag(26);
+        output.WriteMessage(ImageContext);
+      }
+      pages_.WriteTo(ref output, _repeated_pages_codec);
+      if (_unknownFields != null) {
+        _unknownFields.WriteTo(ref output);
+      }
+    }
+    #endif
 
     [global::System.Diagnostics.DebuggerNonUserCodeAttribute]
     public int CalculateSize() {
@@ -6287,6 +7929,9 @@ namespace Google.Cloud.Vision.V1 {
 
     [global::System.Diagnostics.DebuggerNonUserCodeAttribute]
     public void MergeFrom(pb::CodedInputStream input) {
+    #if !GOOGLE_PROTOBUF_REFSTRUCT_COMPATIBILITY_MODE
+      input.ReadRawMessage(this);
+    #else
       uint tag;
       while ((tag = input.ReadTag()) != 0) {
         switch(tag) {
@@ -6318,7 +7963,45 @@ namespace Google.Cloud.Vision.V1 {
           }
         }
       }
+    #endif
     }
+
+    #if !GOOGLE_PROTOBUF_REFSTRUCT_COMPATIBILITY_MODE
+    [global::System.Diagnostics.DebuggerNonUserCodeAttribute]
+    void pb::IBufferMessage.InternalMergeFrom(ref pb::ParseContext input) {
+      uint tag;
+      while ((tag = input.ReadTag()) != 0) {
+        switch(tag) {
+          default:
+            _unknownFields = pb::UnknownFieldSet.MergeFieldFrom(_unknownFields, ref input);
+            break;
+          case 10: {
+            if (inputConfig_ == null) {
+              InputConfig = new global::Google.Cloud.Vision.V1.InputConfig();
+            }
+            input.ReadMessage(InputConfig);
+            break;
+          }
+          case 18: {
+            features_.AddEntriesFrom(ref input, _repeated_features_codec);
+            break;
+          }
+          case 26: {
+            if (imageContext_ == null) {
+              ImageContext = new global::Google.Cloud.Vision.V1.ImageContext();
+            }
+            input.ReadMessage(ImageContext);
+            break;
+          }
+          case 34:
+          case 32: {
+            pages_.AddEntriesFrom(ref input, _repeated_pages_codec);
+            break;
+          }
+        }
+      }
+    }
+    #endif
 
   }
 
@@ -6326,7 +8009,11 @@ namespace Google.Cloud.Vision.V1 {
   /// Response to a single file annotation request. A file may contain one or more
   /// images, which individually have their own responses.
   /// </summary>
-  public sealed partial class AnnotateFileResponse : pb::IMessage<AnnotateFileResponse> {
+  public sealed partial class AnnotateFileResponse : pb::IMessage<AnnotateFileResponse>
+  #if !GOOGLE_PROTOBUF_REFSTRUCT_COMPATIBILITY_MODE
+      , pb::IBufferMessage
+  #endif
+  {
     private static readonly pb::MessageParser<AnnotateFileResponse> _parser = new pb::MessageParser<AnnotateFileResponse>(() => new AnnotateFileResponse());
     private pb::UnknownFieldSet _unknownFields;
     [global::System.Diagnostics.DebuggerNonUserCodeAttribute]
@@ -6460,6 +8147,9 @@ namespace Google.Cloud.Vision.V1 {
 
     [global::System.Diagnostics.DebuggerNonUserCodeAttribute]
     public void WriteTo(pb::CodedOutputStream output) {
+    #if !GOOGLE_PROTOBUF_REFSTRUCT_COMPATIBILITY_MODE
+      output.WriteRawMessage(this);
+    #else
       if (inputConfig_ != null) {
         output.WriteRawTag(10);
         output.WriteMessage(InputConfig);
@@ -6476,7 +8166,30 @@ namespace Google.Cloud.Vision.V1 {
       if (_unknownFields != null) {
         _unknownFields.WriteTo(output);
       }
+    #endif
     }
+
+    #if !GOOGLE_PROTOBUF_REFSTRUCT_COMPATIBILITY_MODE
+    [global::System.Diagnostics.DebuggerNonUserCodeAttribute]
+    void pb::IBufferMessage.InternalWriteTo(ref pb::WriteContext output) {
+      if (inputConfig_ != null) {
+        output.WriteRawTag(10);
+        output.WriteMessage(InputConfig);
+      }
+      responses_.WriteTo(ref output, _repeated_responses_codec);
+      if (TotalPages != 0) {
+        output.WriteRawTag(24);
+        output.WriteInt32(TotalPages);
+      }
+      if (error_ != null) {
+        output.WriteRawTag(34);
+        output.WriteMessage(Error);
+      }
+      if (_unknownFields != null) {
+        _unknownFields.WriteTo(ref output);
+      }
+    }
+    #endif
 
     [global::System.Diagnostics.DebuggerNonUserCodeAttribute]
     public int CalculateSize() {
@@ -6523,6 +8236,9 @@ namespace Google.Cloud.Vision.V1 {
 
     [global::System.Diagnostics.DebuggerNonUserCodeAttribute]
     public void MergeFrom(pb::CodedInputStream input) {
+    #if !GOOGLE_PROTOBUF_REFSTRUCT_COMPATIBILITY_MODE
+      input.ReadRawMessage(this);
+    #else
       uint tag;
       while ((tag = input.ReadTag()) != 0) {
         switch(tag) {
@@ -6553,14 +8269,55 @@ namespace Google.Cloud.Vision.V1 {
           }
         }
       }
+    #endif
     }
+
+    #if !GOOGLE_PROTOBUF_REFSTRUCT_COMPATIBILITY_MODE
+    [global::System.Diagnostics.DebuggerNonUserCodeAttribute]
+    void pb::IBufferMessage.InternalMergeFrom(ref pb::ParseContext input) {
+      uint tag;
+      while ((tag = input.ReadTag()) != 0) {
+        switch(tag) {
+          default:
+            _unknownFields = pb::UnknownFieldSet.MergeFieldFrom(_unknownFields, ref input);
+            break;
+          case 10: {
+            if (inputConfig_ == null) {
+              InputConfig = new global::Google.Cloud.Vision.V1.InputConfig();
+            }
+            input.ReadMessage(InputConfig);
+            break;
+          }
+          case 18: {
+            responses_.AddEntriesFrom(ref input, _repeated_responses_codec);
+            break;
+          }
+          case 24: {
+            TotalPages = input.ReadInt32();
+            break;
+          }
+          case 34: {
+            if (error_ == null) {
+              Error = new global::Google.Rpc.Status();
+            }
+            input.ReadMessage(Error);
+            break;
+          }
+        }
+      }
+    }
+    #endif
 
   }
 
   /// <summary>
   /// A list of requests to annotate files using the BatchAnnotateFiles API.
   /// </summary>
-  public sealed partial class BatchAnnotateFilesRequest : pb::IMessage<BatchAnnotateFilesRequest> {
+  public sealed partial class BatchAnnotateFilesRequest : pb::IMessage<BatchAnnotateFilesRequest>
+  #if !GOOGLE_PROTOBUF_REFSTRUCT_COMPATIBILITY_MODE
+      , pb::IBufferMessage
+  #endif
+  {
     private static readonly pb::MessageParser<BatchAnnotateFilesRequest> _parser = new pb::MessageParser<BatchAnnotateFilesRequest>(() => new BatchAnnotateFilesRequest());
     private pb::UnknownFieldSet _unknownFields;
     [global::System.Diagnostics.DebuggerNonUserCodeAttribute]
@@ -6670,6 +8427,9 @@ namespace Google.Cloud.Vision.V1 {
 
     [global::System.Diagnostics.DebuggerNonUserCodeAttribute]
     public void WriteTo(pb::CodedOutputStream output) {
+    #if !GOOGLE_PROTOBUF_REFSTRUCT_COMPATIBILITY_MODE
+      output.WriteRawMessage(this);
+    #else
       requests_.WriteTo(output, _repeated_requests_codec);
       if (Parent.Length != 0) {
         output.WriteRawTag(26);
@@ -6678,7 +8438,22 @@ namespace Google.Cloud.Vision.V1 {
       if (_unknownFields != null) {
         _unknownFields.WriteTo(output);
       }
+    #endif
     }
+
+    #if !GOOGLE_PROTOBUF_REFSTRUCT_COMPATIBILITY_MODE
+    [global::System.Diagnostics.DebuggerNonUserCodeAttribute]
+    void pb::IBufferMessage.InternalWriteTo(ref pb::WriteContext output) {
+      requests_.WriteTo(ref output, _repeated_requests_codec);
+      if (Parent.Length != 0) {
+        output.WriteRawTag(26);
+        output.WriteString(Parent);
+      }
+      if (_unknownFields != null) {
+        _unknownFields.WriteTo(ref output);
+      }
+    }
+    #endif
 
     [global::System.Diagnostics.DebuggerNonUserCodeAttribute]
     public int CalculateSize() {
@@ -6707,6 +8482,9 @@ namespace Google.Cloud.Vision.V1 {
 
     [global::System.Diagnostics.DebuggerNonUserCodeAttribute]
     public void MergeFrom(pb::CodedInputStream input) {
+    #if !GOOGLE_PROTOBUF_REFSTRUCT_COMPATIBILITY_MODE
+      input.ReadRawMessage(this);
+    #else
       uint tag;
       while ((tag = input.ReadTag()) != 0) {
         switch(tag) {
@@ -6723,14 +8501,41 @@ namespace Google.Cloud.Vision.V1 {
           }
         }
       }
+    #endif
     }
+
+    #if !GOOGLE_PROTOBUF_REFSTRUCT_COMPATIBILITY_MODE
+    [global::System.Diagnostics.DebuggerNonUserCodeAttribute]
+    void pb::IBufferMessage.InternalMergeFrom(ref pb::ParseContext input) {
+      uint tag;
+      while ((tag = input.ReadTag()) != 0) {
+        switch(tag) {
+          default:
+            _unknownFields = pb::UnknownFieldSet.MergeFieldFrom(_unknownFields, ref input);
+            break;
+          case 10: {
+            requests_.AddEntriesFrom(ref input, _repeated_requests_codec);
+            break;
+          }
+          case 26: {
+            Parent = input.ReadString();
+            break;
+          }
+        }
+      }
+    }
+    #endif
 
   }
 
   /// <summary>
   /// A list of file annotation responses.
   /// </summary>
-  public sealed partial class BatchAnnotateFilesResponse : pb::IMessage<BatchAnnotateFilesResponse> {
+  public sealed partial class BatchAnnotateFilesResponse : pb::IMessage<BatchAnnotateFilesResponse>
+  #if !GOOGLE_PROTOBUF_REFSTRUCT_COMPATIBILITY_MODE
+      , pb::IBufferMessage
+  #endif
+  {
     private static readonly pb::MessageParser<BatchAnnotateFilesResponse> _parser = new pb::MessageParser<BatchAnnotateFilesResponse>(() => new BatchAnnotateFilesResponse());
     private pb::UnknownFieldSet _unknownFields;
     [global::System.Diagnostics.DebuggerNonUserCodeAttribute]
@@ -6812,11 +8617,25 @@ namespace Google.Cloud.Vision.V1 {
 
     [global::System.Diagnostics.DebuggerNonUserCodeAttribute]
     public void WriteTo(pb::CodedOutputStream output) {
+    #if !GOOGLE_PROTOBUF_REFSTRUCT_COMPATIBILITY_MODE
+      output.WriteRawMessage(this);
+    #else
       responses_.WriteTo(output, _repeated_responses_codec);
       if (_unknownFields != null) {
         _unknownFields.WriteTo(output);
       }
+    #endif
     }
+
+    #if !GOOGLE_PROTOBUF_REFSTRUCT_COMPATIBILITY_MODE
+    [global::System.Diagnostics.DebuggerNonUserCodeAttribute]
+    void pb::IBufferMessage.InternalWriteTo(ref pb::WriteContext output) {
+      responses_.WriteTo(ref output, _repeated_responses_codec);
+      if (_unknownFields != null) {
+        _unknownFields.WriteTo(ref output);
+      }
+    }
+    #endif
 
     [global::System.Diagnostics.DebuggerNonUserCodeAttribute]
     public int CalculateSize() {
@@ -6839,6 +8658,9 @@ namespace Google.Cloud.Vision.V1 {
 
     [global::System.Diagnostics.DebuggerNonUserCodeAttribute]
     public void MergeFrom(pb::CodedInputStream input) {
+    #if !GOOGLE_PROTOBUF_REFSTRUCT_COMPATIBILITY_MODE
+      input.ReadRawMessage(this);
+    #else
       uint tag;
       while ((tag = input.ReadTag()) != 0) {
         switch(tag) {
@@ -6851,14 +8673,37 @@ namespace Google.Cloud.Vision.V1 {
           }
         }
       }
+    #endif
     }
+
+    #if !GOOGLE_PROTOBUF_REFSTRUCT_COMPATIBILITY_MODE
+    [global::System.Diagnostics.DebuggerNonUserCodeAttribute]
+    void pb::IBufferMessage.InternalMergeFrom(ref pb::ParseContext input) {
+      uint tag;
+      while ((tag = input.ReadTag()) != 0) {
+        switch(tag) {
+          default:
+            _unknownFields = pb::UnknownFieldSet.MergeFieldFrom(_unknownFields, ref input);
+            break;
+          case 10: {
+            responses_.AddEntriesFrom(ref input, _repeated_responses_codec);
+            break;
+          }
+        }
+      }
+    }
+    #endif
 
   }
 
   /// <summary>
   /// An offline file annotation request.
   /// </summary>
-  public sealed partial class AsyncAnnotateFileRequest : pb::IMessage<AsyncAnnotateFileRequest> {
+  public sealed partial class AsyncAnnotateFileRequest : pb::IMessage<AsyncAnnotateFileRequest>
+  #if !GOOGLE_PROTOBUF_REFSTRUCT_COMPATIBILITY_MODE
+      , pb::IBufferMessage
+  #endif
+  {
     private static readonly pb::MessageParser<AsyncAnnotateFileRequest> _parser = new pb::MessageParser<AsyncAnnotateFileRequest>(() => new AsyncAnnotateFileRequest());
     private pb::UnknownFieldSet _unknownFields;
     [global::System.Diagnostics.DebuggerNonUserCodeAttribute]
@@ -6990,6 +8835,9 @@ namespace Google.Cloud.Vision.V1 {
 
     [global::System.Diagnostics.DebuggerNonUserCodeAttribute]
     public void WriteTo(pb::CodedOutputStream output) {
+    #if !GOOGLE_PROTOBUF_REFSTRUCT_COMPATIBILITY_MODE
+      output.WriteRawMessage(this);
+    #else
       if (inputConfig_ != null) {
         output.WriteRawTag(10);
         output.WriteMessage(InputConfig);
@@ -7006,7 +8854,30 @@ namespace Google.Cloud.Vision.V1 {
       if (_unknownFields != null) {
         _unknownFields.WriteTo(output);
       }
+    #endif
     }
+
+    #if !GOOGLE_PROTOBUF_REFSTRUCT_COMPATIBILITY_MODE
+    [global::System.Diagnostics.DebuggerNonUserCodeAttribute]
+    void pb::IBufferMessage.InternalWriteTo(ref pb::WriteContext output) {
+      if (inputConfig_ != null) {
+        output.WriteRawTag(10);
+        output.WriteMessage(InputConfig);
+      }
+      features_.WriteTo(ref output, _repeated_features_codec);
+      if (imageContext_ != null) {
+        output.WriteRawTag(26);
+        output.WriteMessage(ImageContext);
+      }
+      if (outputConfig_ != null) {
+        output.WriteRawTag(34);
+        output.WriteMessage(OutputConfig);
+      }
+      if (_unknownFields != null) {
+        _unknownFields.WriteTo(ref output);
+      }
+    }
+    #endif
 
     [global::System.Diagnostics.DebuggerNonUserCodeAttribute]
     public int CalculateSize() {
@@ -7056,6 +8927,9 @@ namespace Google.Cloud.Vision.V1 {
 
     [global::System.Diagnostics.DebuggerNonUserCodeAttribute]
     public void MergeFrom(pb::CodedInputStream input) {
+    #if !GOOGLE_PROTOBUF_REFSTRUCT_COMPATIBILITY_MODE
+      input.ReadRawMessage(this);
+    #else
       uint tag;
       while ((tag = input.ReadTag()) != 0) {
         switch(tag) {
@@ -7089,14 +8963,58 @@ namespace Google.Cloud.Vision.V1 {
           }
         }
       }
+    #endif
     }
+
+    #if !GOOGLE_PROTOBUF_REFSTRUCT_COMPATIBILITY_MODE
+    [global::System.Diagnostics.DebuggerNonUserCodeAttribute]
+    void pb::IBufferMessage.InternalMergeFrom(ref pb::ParseContext input) {
+      uint tag;
+      while ((tag = input.ReadTag()) != 0) {
+        switch(tag) {
+          default:
+            _unknownFields = pb::UnknownFieldSet.MergeFieldFrom(_unknownFields, ref input);
+            break;
+          case 10: {
+            if (inputConfig_ == null) {
+              InputConfig = new global::Google.Cloud.Vision.V1.InputConfig();
+            }
+            input.ReadMessage(InputConfig);
+            break;
+          }
+          case 18: {
+            features_.AddEntriesFrom(ref input, _repeated_features_codec);
+            break;
+          }
+          case 26: {
+            if (imageContext_ == null) {
+              ImageContext = new global::Google.Cloud.Vision.V1.ImageContext();
+            }
+            input.ReadMessage(ImageContext);
+            break;
+          }
+          case 34: {
+            if (outputConfig_ == null) {
+              OutputConfig = new global::Google.Cloud.Vision.V1.OutputConfig();
+            }
+            input.ReadMessage(OutputConfig);
+            break;
+          }
+        }
+      }
+    }
+    #endif
 
   }
 
   /// <summary>
   /// The response for a single offline file annotation request.
   /// </summary>
-  public sealed partial class AsyncAnnotateFileResponse : pb::IMessage<AsyncAnnotateFileResponse> {
+  public sealed partial class AsyncAnnotateFileResponse : pb::IMessage<AsyncAnnotateFileResponse>
+  #if !GOOGLE_PROTOBUF_REFSTRUCT_COMPATIBILITY_MODE
+      , pb::IBufferMessage
+  #endif
+  {
     private static readonly pb::MessageParser<AsyncAnnotateFileResponse> _parser = new pb::MessageParser<AsyncAnnotateFileResponse>(() => new AsyncAnnotateFileResponse());
     private pb::UnknownFieldSet _unknownFields;
     [global::System.Diagnostics.DebuggerNonUserCodeAttribute]
@@ -7178,6 +9096,9 @@ namespace Google.Cloud.Vision.V1 {
 
     [global::System.Diagnostics.DebuggerNonUserCodeAttribute]
     public void WriteTo(pb::CodedOutputStream output) {
+    #if !GOOGLE_PROTOBUF_REFSTRUCT_COMPATIBILITY_MODE
+      output.WriteRawMessage(this);
+    #else
       if (outputConfig_ != null) {
         output.WriteRawTag(10);
         output.WriteMessage(OutputConfig);
@@ -7185,7 +9106,21 @@ namespace Google.Cloud.Vision.V1 {
       if (_unknownFields != null) {
         _unknownFields.WriteTo(output);
       }
+    #endif
     }
+
+    #if !GOOGLE_PROTOBUF_REFSTRUCT_COMPATIBILITY_MODE
+    [global::System.Diagnostics.DebuggerNonUserCodeAttribute]
+    void pb::IBufferMessage.InternalWriteTo(ref pb::WriteContext output) {
+      if (outputConfig_ != null) {
+        output.WriteRawTag(10);
+        output.WriteMessage(OutputConfig);
+      }
+      if (_unknownFields != null) {
+        _unknownFields.WriteTo(ref output);
+      }
+    }
+    #endif
 
     [global::System.Diagnostics.DebuggerNonUserCodeAttribute]
     public int CalculateSize() {
@@ -7215,6 +9150,9 @@ namespace Google.Cloud.Vision.V1 {
 
     [global::System.Diagnostics.DebuggerNonUserCodeAttribute]
     public void MergeFrom(pb::CodedInputStream input) {
+    #if !GOOGLE_PROTOBUF_REFSTRUCT_COMPATIBILITY_MODE
+      input.ReadRawMessage(this);
+    #else
       uint tag;
       while ((tag = input.ReadTag()) != 0) {
         switch(tag) {
@@ -7230,14 +9168,40 @@ namespace Google.Cloud.Vision.V1 {
           }
         }
       }
+    #endif
     }
+
+    #if !GOOGLE_PROTOBUF_REFSTRUCT_COMPATIBILITY_MODE
+    [global::System.Diagnostics.DebuggerNonUserCodeAttribute]
+    void pb::IBufferMessage.InternalMergeFrom(ref pb::ParseContext input) {
+      uint tag;
+      while ((tag = input.ReadTag()) != 0) {
+        switch(tag) {
+          default:
+            _unknownFields = pb::UnknownFieldSet.MergeFieldFrom(_unknownFields, ref input);
+            break;
+          case 10: {
+            if (outputConfig_ == null) {
+              OutputConfig = new global::Google.Cloud.Vision.V1.OutputConfig();
+            }
+            input.ReadMessage(OutputConfig);
+            break;
+          }
+        }
+      }
+    }
+    #endif
 
   }
 
   /// <summary>
   /// Request for async image annotation for a list of images.
   /// </summary>
-  public sealed partial class AsyncBatchAnnotateImagesRequest : pb::IMessage<AsyncBatchAnnotateImagesRequest> {
+  public sealed partial class AsyncBatchAnnotateImagesRequest : pb::IMessage<AsyncBatchAnnotateImagesRequest>
+  #if !GOOGLE_PROTOBUF_REFSTRUCT_COMPATIBILITY_MODE
+      , pb::IBufferMessage
+  #endif
+  {
     private static readonly pb::MessageParser<AsyncBatchAnnotateImagesRequest> _parser = new pb::MessageParser<AsyncBatchAnnotateImagesRequest>(() => new AsyncBatchAnnotateImagesRequest());
     private pb::UnknownFieldSet _unknownFields;
     [global::System.Diagnostics.DebuggerNonUserCodeAttribute]
@@ -7363,6 +9327,9 @@ namespace Google.Cloud.Vision.V1 {
 
     [global::System.Diagnostics.DebuggerNonUserCodeAttribute]
     public void WriteTo(pb::CodedOutputStream output) {
+    #if !GOOGLE_PROTOBUF_REFSTRUCT_COMPATIBILITY_MODE
+      output.WriteRawMessage(this);
+    #else
       requests_.WriteTo(output, _repeated_requests_codec);
       if (outputConfig_ != null) {
         output.WriteRawTag(18);
@@ -7375,7 +9342,26 @@ namespace Google.Cloud.Vision.V1 {
       if (_unknownFields != null) {
         _unknownFields.WriteTo(output);
       }
+    #endif
     }
+
+    #if !GOOGLE_PROTOBUF_REFSTRUCT_COMPATIBILITY_MODE
+    [global::System.Diagnostics.DebuggerNonUserCodeAttribute]
+    void pb::IBufferMessage.InternalWriteTo(ref pb::WriteContext output) {
+      requests_.WriteTo(ref output, _repeated_requests_codec);
+      if (outputConfig_ != null) {
+        output.WriteRawTag(18);
+        output.WriteMessage(OutputConfig);
+      }
+      if (Parent.Length != 0) {
+        output.WriteRawTag(34);
+        output.WriteString(Parent);
+      }
+      if (_unknownFields != null) {
+        _unknownFields.WriteTo(ref output);
+      }
+    }
+    #endif
 
     [global::System.Diagnostics.DebuggerNonUserCodeAttribute]
     public int CalculateSize() {
@@ -7413,6 +9399,9 @@ namespace Google.Cloud.Vision.V1 {
 
     [global::System.Diagnostics.DebuggerNonUserCodeAttribute]
     public void MergeFrom(pb::CodedInputStream input) {
+    #if !GOOGLE_PROTOBUF_REFSTRUCT_COMPATIBILITY_MODE
+      input.ReadRawMessage(this);
+    #else
       uint tag;
       while ((tag = input.ReadTag()) != 0) {
         switch(tag) {
@@ -7436,14 +9425,48 @@ namespace Google.Cloud.Vision.V1 {
           }
         }
       }
+    #endif
     }
+
+    #if !GOOGLE_PROTOBUF_REFSTRUCT_COMPATIBILITY_MODE
+    [global::System.Diagnostics.DebuggerNonUserCodeAttribute]
+    void pb::IBufferMessage.InternalMergeFrom(ref pb::ParseContext input) {
+      uint tag;
+      while ((tag = input.ReadTag()) != 0) {
+        switch(tag) {
+          default:
+            _unknownFields = pb::UnknownFieldSet.MergeFieldFrom(_unknownFields, ref input);
+            break;
+          case 10: {
+            requests_.AddEntriesFrom(ref input, _repeated_requests_codec);
+            break;
+          }
+          case 18: {
+            if (outputConfig_ == null) {
+              OutputConfig = new global::Google.Cloud.Vision.V1.OutputConfig();
+            }
+            input.ReadMessage(OutputConfig);
+            break;
+          }
+          case 34: {
+            Parent = input.ReadString();
+            break;
+          }
+        }
+      }
+    }
+    #endif
 
   }
 
   /// <summary>
   /// Response to an async batch image annotation request.
   /// </summary>
-  public sealed partial class AsyncBatchAnnotateImagesResponse : pb::IMessage<AsyncBatchAnnotateImagesResponse> {
+  public sealed partial class AsyncBatchAnnotateImagesResponse : pb::IMessage<AsyncBatchAnnotateImagesResponse>
+  #if !GOOGLE_PROTOBUF_REFSTRUCT_COMPATIBILITY_MODE
+      , pb::IBufferMessage
+  #endif
+  {
     private static readonly pb::MessageParser<AsyncBatchAnnotateImagesResponse> _parser = new pb::MessageParser<AsyncBatchAnnotateImagesResponse>(() => new AsyncBatchAnnotateImagesResponse());
     private pb::UnknownFieldSet _unknownFields;
     [global::System.Diagnostics.DebuggerNonUserCodeAttribute]
@@ -7525,6 +9548,9 @@ namespace Google.Cloud.Vision.V1 {
 
     [global::System.Diagnostics.DebuggerNonUserCodeAttribute]
     public void WriteTo(pb::CodedOutputStream output) {
+    #if !GOOGLE_PROTOBUF_REFSTRUCT_COMPATIBILITY_MODE
+      output.WriteRawMessage(this);
+    #else
       if (outputConfig_ != null) {
         output.WriteRawTag(10);
         output.WriteMessage(OutputConfig);
@@ -7532,7 +9558,21 @@ namespace Google.Cloud.Vision.V1 {
       if (_unknownFields != null) {
         _unknownFields.WriteTo(output);
       }
+    #endif
     }
+
+    #if !GOOGLE_PROTOBUF_REFSTRUCT_COMPATIBILITY_MODE
+    [global::System.Diagnostics.DebuggerNonUserCodeAttribute]
+    void pb::IBufferMessage.InternalWriteTo(ref pb::WriteContext output) {
+      if (outputConfig_ != null) {
+        output.WriteRawTag(10);
+        output.WriteMessage(OutputConfig);
+      }
+      if (_unknownFields != null) {
+        _unknownFields.WriteTo(ref output);
+      }
+    }
+    #endif
 
     [global::System.Diagnostics.DebuggerNonUserCodeAttribute]
     public int CalculateSize() {
@@ -7562,6 +9602,9 @@ namespace Google.Cloud.Vision.V1 {
 
     [global::System.Diagnostics.DebuggerNonUserCodeAttribute]
     public void MergeFrom(pb::CodedInputStream input) {
+    #if !GOOGLE_PROTOBUF_REFSTRUCT_COMPATIBILITY_MODE
+      input.ReadRawMessage(this);
+    #else
       uint tag;
       while ((tag = input.ReadTag()) != 0) {
         switch(tag) {
@@ -7577,7 +9620,29 @@ namespace Google.Cloud.Vision.V1 {
           }
         }
       }
+    #endif
     }
+
+    #if !GOOGLE_PROTOBUF_REFSTRUCT_COMPATIBILITY_MODE
+    [global::System.Diagnostics.DebuggerNonUserCodeAttribute]
+    void pb::IBufferMessage.InternalMergeFrom(ref pb::ParseContext input) {
+      uint tag;
+      while ((tag = input.ReadTag()) != 0) {
+        switch(tag) {
+          default:
+            _unknownFields = pb::UnknownFieldSet.MergeFieldFrom(_unknownFields, ref input);
+            break;
+          case 10: {
+            if (outputConfig_ == null) {
+              OutputConfig = new global::Google.Cloud.Vision.V1.OutputConfig();
+            }
+            input.ReadMessage(OutputConfig);
+            break;
+          }
+        }
+      }
+    }
+    #endif
 
   }
 
@@ -7585,7 +9650,11 @@ namespace Google.Cloud.Vision.V1 {
   /// Multiple async file annotation requests are batched into a single service
   /// call.
   /// </summary>
-  public sealed partial class AsyncBatchAnnotateFilesRequest : pb::IMessage<AsyncBatchAnnotateFilesRequest> {
+  public sealed partial class AsyncBatchAnnotateFilesRequest : pb::IMessage<AsyncBatchAnnotateFilesRequest>
+  #if !GOOGLE_PROTOBUF_REFSTRUCT_COMPATIBILITY_MODE
+      , pb::IBufferMessage
+  #endif
+  {
     private static readonly pb::MessageParser<AsyncBatchAnnotateFilesRequest> _parser = new pb::MessageParser<AsyncBatchAnnotateFilesRequest>(() => new AsyncBatchAnnotateFilesRequest());
     private pb::UnknownFieldSet _unknownFields;
     [global::System.Diagnostics.DebuggerNonUserCodeAttribute]
@@ -7694,6 +9763,9 @@ namespace Google.Cloud.Vision.V1 {
 
     [global::System.Diagnostics.DebuggerNonUserCodeAttribute]
     public void WriteTo(pb::CodedOutputStream output) {
+    #if !GOOGLE_PROTOBUF_REFSTRUCT_COMPATIBILITY_MODE
+      output.WriteRawMessage(this);
+    #else
       requests_.WriteTo(output, _repeated_requests_codec);
       if (Parent.Length != 0) {
         output.WriteRawTag(34);
@@ -7702,7 +9774,22 @@ namespace Google.Cloud.Vision.V1 {
       if (_unknownFields != null) {
         _unknownFields.WriteTo(output);
       }
+    #endif
     }
+
+    #if !GOOGLE_PROTOBUF_REFSTRUCT_COMPATIBILITY_MODE
+    [global::System.Diagnostics.DebuggerNonUserCodeAttribute]
+    void pb::IBufferMessage.InternalWriteTo(ref pb::WriteContext output) {
+      requests_.WriteTo(ref output, _repeated_requests_codec);
+      if (Parent.Length != 0) {
+        output.WriteRawTag(34);
+        output.WriteString(Parent);
+      }
+      if (_unknownFields != null) {
+        _unknownFields.WriteTo(ref output);
+      }
+    }
+    #endif
 
     [global::System.Diagnostics.DebuggerNonUserCodeAttribute]
     public int CalculateSize() {
@@ -7731,6 +9818,9 @@ namespace Google.Cloud.Vision.V1 {
 
     [global::System.Diagnostics.DebuggerNonUserCodeAttribute]
     public void MergeFrom(pb::CodedInputStream input) {
+    #if !GOOGLE_PROTOBUF_REFSTRUCT_COMPATIBILITY_MODE
+      input.ReadRawMessage(this);
+    #else
       uint tag;
       while ((tag = input.ReadTag()) != 0) {
         switch(tag) {
@@ -7747,14 +9837,41 @@ namespace Google.Cloud.Vision.V1 {
           }
         }
       }
+    #endif
     }
+
+    #if !GOOGLE_PROTOBUF_REFSTRUCT_COMPATIBILITY_MODE
+    [global::System.Diagnostics.DebuggerNonUserCodeAttribute]
+    void pb::IBufferMessage.InternalMergeFrom(ref pb::ParseContext input) {
+      uint tag;
+      while ((tag = input.ReadTag()) != 0) {
+        switch(tag) {
+          default:
+            _unknownFields = pb::UnknownFieldSet.MergeFieldFrom(_unknownFields, ref input);
+            break;
+          case 10: {
+            requests_.AddEntriesFrom(ref input, _repeated_requests_codec);
+            break;
+          }
+          case 34: {
+            Parent = input.ReadString();
+            break;
+          }
+        }
+      }
+    }
+    #endif
 
   }
 
   /// <summary>
   /// Response to an async batch file annotation request.
   /// </summary>
-  public sealed partial class AsyncBatchAnnotateFilesResponse : pb::IMessage<AsyncBatchAnnotateFilesResponse> {
+  public sealed partial class AsyncBatchAnnotateFilesResponse : pb::IMessage<AsyncBatchAnnotateFilesResponse>
+  #if !GOOGLE_PROTOBUF_REFSTRUCT_COMPATIBILITY_MODE
+      , pb::IBufferMessage
+  #endif
+  {
     private static readonly pb::MessageParser<AsyncBatchAnnotateFilesResponse> _parser = new pb::MessageParser<AsyncBatchAnnotateFilesResponse>(() => new AsyncBatchAnnotateFilesResponse());
     private pb::UnknownFieldSet _unknownFields;
     [global::System.Diagnostics.DebuggerNonUserCodeAttribute]
@@ -7836,11 +9953,25 @@ namespace Google.Cloud.Vision.V1 {
 
     [global::System.Diagnostics.DebuggerNonUserCodeAttribute]
     public void WriteTo(pb::CodedOutputStream output) {
+    #if !GOOGLE_PROTOBUF_REFSTRUCT_COMPATIBILITY_MODE
+      output.WriteRawMessage(this);
+    #else
       responses_.WriteTo(output, _repeated_responses_codec);
       if (_unknownFields != null) {
         _unknownFields.WriteTo(output);
       }
+    #endif
     }
+
+    #if !GOOGLE_PROTOBUF_REFSTRUCT_COMPATIBILITY_MODE
+    [global::System.Diagnostics.DebuggerNonUserCodeAttribute]
+    void pb::IBufferMessage.InternalWriteTo(ref pb::WriteContext output) {
+      responses_.WriteTo(ref output, _repeated_responses_codec);
+      if (_unknownFields != null) {
+        _unknownFields.WriteTo(ref output);
+      }
+    }
+    #endif
 
     [global::System.Diagnostics.DebuggerNonUserCodeAttribute]
     public int CalculateSize() {
@@ -7863,6 +9994,9 @@ namespace Google.Cloud.Vision.V1 {
 
     [global::System.Diagnostics.DebuggerNonUserCodeAttribute]
     public void MergeFrom(pb::CodedInputStream input) {
+    #if !GOOGLE_PROTOBUF_REFSTRUCT_COMPATIBILITY_MODE
+      input.ReadRawMessage(this);
+    #else
       uint tag;
       while ((tag = input.ReadTag()) != 0) {
         switch(tag) {
@@ -7875,14 +10009,37 @@ namespace Google.Cloud.Vision.V1 {
           }
         }
       }
+    #endif
     }
+
+    #if !GOOGLE_PROTOBUF_REFSTRUCT_COMPATIBILITY_MODE
+    [global::System.Diagnostics.DebuggerNonUserCodeAttribute]
+    void pb::IBufferMessage.InternalMergeFrom(ref pb::ParseContext input) {
+      uint tag;
+      while ((tag = input.ReadTag()) != 0) {
+        switch(tag) {
+          default:
+            _unknownFields = pb::UnknownFieldSet.MergeFieldFrom(_unknownFields, ref input);
+            break;
+          case 10: {
+            responses_.AddEntriesFrom(ref input, _repeated_responses_codec);
+            break;
+          }
+        }
+      }
+    }
+    #endif
 
   }
 
   /// <summary>
   /// The desired input location and metadata.
   /// </summary>
-  public sealed partial class InputConfig : pb::IMessage<InputConfig> {
+  public sealed partial class InputConfig : pb::IMessage<InputConfig>
+  #if !GOOGLE_PROTOBUF_REFSTRUCT_COMPATIBILITY_MODE
+      , pb::IBufferMessage
+  #endif
+  {
     private static readonly pb::MessageParser<InputConfig> _parser = new pb::MessageParser<InputConfig>(() => new InputConfig());
     private pb::UnknownFieldSet _unknownFields;
     [global::System.Diagnostics.DebuggerNonUserCodeAttribute]
@@ -8004,6 +10161,9 @@ namespace Google.Cloud.Vision.V1 {
 
     [global::System.Diagnostics.DebuggerNonUserCodeAttribute]
     public void WriteTo(pb::CodedOutputStream output) {
+    #if !GOOGLE_PROTOBUF_REFSTRUCT_COMPATIBILITY_MODE
+      output.WriteRawMessage(this);
+    #else
       if (gcsSource_ != null) {
         output.WriteRawTag(10);
         output.WriteMessage(GcsSource);
@@ -8019,7 +10179,29 @@ namespace Google.Cloud.Vision.V1 {
       if (_unknownFields != null) {
         _unknownFields.WriteTo(output);
       }
+    #endif
     }
+
+    #if !GOOGLE_PROTOBUF_REFSTRUCT_COMPATIBILITY_MODE
+    [global::System.Diagnostics.DebuggerNonUserCodeAttribute]
+    void pb::IBufferMessage.InternalWriteTo(ref pb::WriteContext output) {
+      if (gcsSource_ != null) {
+        output.WriteRawTag(10);
+        output.WriteMessage(GcsSource);
+      }
+      if (MimeType.Length != 0) {
+        output.WriteRawTag(18);
+        output.WriteString(MimeType);
+      }
+      if (Content.Length != 0) {
+        output.WriteRawTag(26);
+        output.WriteBytes(Content);
+      }
+      if (_unknownFields != null) {
+        _unknownFields.WriteTo(ref output);
+      }
+    }
+    #endif
 
     [global::System.Diagnostics.DebuggerNonUserCodeAttribute]
     public int CalculateSize() {
@@ -8061,6 +10243,9 @@ namespace Google.Cloud.Vision.V1 {
 
     [global::System.Diagnostics.DebuggerNonUserCodeAttribute]
     public void MergeFrom(pb::CodedInputStream input) {
+    #if !GOOGLE_PROTOBUF_REFSTRUCT_COMPATIBILITY_MODE
+      input.ReadRawMessage(this);
+    #else
       uint tag;
       while ((tag = input.ReadTag()) != 0) {
         switch(tag) {
@@ -8084,14 +10269,48 @@ namespace Google.Cloud.Vision.V1 {
           }
         }
       }
+    #endif
     }
+
+    #if !GOOGLE_PROTOBUF_REFSTRUCT_COMPATIBILITY_MODE
+    [global::System.Diagnostics.DebuggerNonUserCodeAttribute]
+    void pb::IBufferMessage.InternalMergeFrom(ref pb::ParseContext input) {
+      uint tag;
+      while ((tag = input.ReadTag()) != 0) {
+        switch(tag) {
+          default:
+            _unknownFields = pb::UnknownFieldSet.MergeFieldFrom(_unknownFields, ref input);
+            break;
+          case 10: {
+            if (gcsSource_ == null) {
+              GcsSource = new global::Google.Cloud.Vision.V1.GcsSource();
+            }
+            input.ReadMessage(GcsSource);
+            break;
+          }
+          case 18: {
+            MimeType = input.ReadString();
+            break;
+          }
+          case 26: {
+            Content = input.ReadBytes();
+            break;
+          }
+        }
+      }
+    }
+    #endif
 
   }
 
   /// <summary>
   /// The desired output location and metadata.
   /// </summary>
-  public sealed partial class OutputConfig : pb::IMessage<OutputConfig> {
+  public sealed partial class OutputConfig : pb::IMessage<OutputConfig>
+  #if !GOOGLE_PROTOBUF_REFSTRUCT_COMPATIBILITY_MODE
+      , pb::IBufferMessage
+  #endif
+  {
     private static readonly pb::MessageParser<OutputConfig> _parser = new pb::MessageParser<OutputConfig>(() => new OutputConfig());
     private pb::UnknownFieldSet _unknownFields;
     [global::System.Diagnostics.DebuggerNonUserCodeAttribute]
@@ -8200,6 +10419,9 @@ namespace Google.Cloud.Vision.V1 {
 
     [global::System.Diagnostics.DebuggerNonUserCodeAttribute]
     public void WriteTo(pb::CodedOutputStream output) {
+    #if !GOOGLE_PROTOBUF_REFSTRUCT_COMPATIBILITY_MODE
+      output.WriteRawMessage(this);
+    #else
       if (gcsDestination_ != null) {
         output.WriteRawTag(10);
         output.WriteMessage(GcsDestination);
@@ -8211,7 +10433,25 @@ namespace Google.Cloud.Vision.V1 {
       if (_unknownFields != null) {
         _unknownFields.WriteTo(output);
       }
+    #endif
     }
+
+    #if !GOOGLE_PROTOBUF_REFSTRUCT_COMPATIBILITY_MODE
+    [global::System.Diagnostics.DebuggerNonUserCodeAttribute]
+    void pb::IBufferMessage.InternalWriteTo(ref pb::WriteContext output) {
+      if (gcsDestination_ != null) {
+        output.WriteRawTag(10);
+        output.WriteMessage(GcsDestination);
+      }
+      if (BatchSize != 0) {
+        output.WriteRawTag(16);
+        output.WriteInt32(BatchSize);
+      }
+      if (_unknownFields != null) {
+        _unknownFields.WriteTo(ref output);
+      }
+    }
+    #endif
 
     [global::System.Diagnostics.DebuggerNonUserCodeAttribute]
     public int CalculateSize() {
@@ -8247,6 +10487,9 @@ namespace Google.Cloud.Vision.V1 {
 
     [global::System.Diagnostics.DebuggerNonUserCodeAttribute]
     public void MergeFrom(pb::CodedInputStream input) {
+    #if !GOOGLE_PROTOBUF_REFSTRUCT_COMPATIBILITY_MODE
+      input.ReadRawMessage(this);
+    #else
       uint tag;
       while ((tag = input.ReadTag()) != 0) {
         switch(tag) {
@@ -8266,14 +10509,44 @@ namespace Google.Cloud.Vision.V1 {
           }
         }
       }
+    #endif
     }
+
+    #if !GOOGLE_PROTOBUF_REFSTRUCT_COMPATIBILITY_MODE
+    [global::System.Diagnostics.DebuggerNonUserCodeAttribute]
+    void pb::IBufferMessage.InternalMergeFrom(ref pb::ParseContext input) {
+      uint tag;
+      while ((tag = input.ReadTag()) != 0) {
+        switch(tag) {
+          default:
+            _unknownFields = pb::UnknownFieldSet.MergeFieldFrom(_unknownFields, ref input);
+            break;
+          case 10: {
+            if (gcsDestination_ == null) {
+              GcsDestination = new global::Google.Cloud.Vision.V1.GcsDestination();
+            }
+            input.ReadMessage(GcsDestination);
+            break;
+          }
+          case 16: {
+            BatchSize = input.ReadInt32();
+            break;
+          }
+        }
+      }
+    }
+    #endif
 
   }
 
   /// <summary>
   /// The Google Cloud Storage location where the input will be read from.
   /// </summary>
-  public sealed partial class GcsSource : pb::IMessage<GcsSource> {
+  public sealed partial class GcsSource : pb::IMessage<GcsSource>
+  #if !GOOGLE_PROTOBUF_REFSTRUCT_COMPATIBILITY_MODE
+      , pb::IBufferMessage
+  #endif
+  {
     private static readonly pb::MessageParser<GcsSource> _parser = new pb::MessageParser<GcsSource>(() => new GcsSource());
     private pb::UnknownFieldSet _unknownFields;
     [global::System.Diagnostics.DebuggerNonUserCodeAttribute]
@@ -8356,6 +10629,9 @@ namespace Google.Cloud.Vision.V1 {
 
     [global::System.Diagnostics.DebuggerNonUserCodeAttribute]
     public void WriteTo(pb::CodedOutputStream output) {
+    #if !GOOGLE_PROTOBUF_REFSTRUCT_COMPATIBILITY_MODE
+      output.WriteRawMessage(this);
+    #else
       if (Uri.Length != 0) {
         output.WriteRawTag(10);
         output.WriteString(Uri);
@@ -8363,7 +10639,21 @@ namespace Google.Cloud.Vision.V1 {
       if (_unknownFields != null) {
         _unknownFields.WriteTo(output);
       }
+    #endif
     }
+
+    #if !GOOGLE_PROTOBUF_REFSTRUCT_COMPATIBILITY_MODE
+    [global::System.Diagnostics.DebuggerNonUserCodeAttribute]
+    void pb::IBufferMessage.InternalWriteTo(ref pb::WriteContext output) {
+      if (Uri.Length != 0) {
+        output.WriteRawTag(10);
+        output.WriteString(Uri);
+      }
+      if (_unknownFields != null) {
+        _unknownFields.WriteTo(ref output);
+      }
+    }
+    #endif
 
     [global::System.Diagnostics.DebuggerNonUserCodeAttribute]
     public int CalculateSize() {
@@ -8390,6 +10680,9 @@ namespace Google.Cloud.Vision.V1 {
 
     [global::System.Diagnostics.DebuggerNonUserCodeAttribute]
     public void MergeFrom(pb::CodedInputStream input) {
+    #if !GOOGLE_PROTOBUF_REFSTRUCT_COMPATIBILITY_MODE
+      input.ReadRawMessage(this);
+    #else
       uint tag;
       while ((tag = input.ReadTag()) != 0) {
         switch(tag) {
@@ -8402,14 +10695,37 @@ namespace Google.Cloud.Vision.V1 {
           }
         }
       }
+    #endif
     }
+
+    #if !GOOGLE_PROTOBUF_REFSTRUCT_COMPATIBILITY_MODE
+    [global::System.Diagnostics.DebuggerNonUserCodeAttribute]
+    void pb::IBufferMessage.InternalMergeFrom(ref pb::ParseContext input) {
+      uint tag;
+      while ((tag = input.ReadTag()) != 0) {
+        switch(tag) {
+          default:
+            _unknownFields = pb::UnknownFieldSet.MergeFieldFrom(_unknownFields, ref input);
+            break;
+          case 10: {
+            Uri = input.ReadString();
+            break;
+          }
+        }
+      }
+    }
+    #endif
 
   }
 
   /// <summary>
   /// The Google Cloud Storage location where the output will be written to.
   /// </summary>
-  public sealed partial class GcsDestination : pb::IMessage<GcsDestination> {
+  public sealed partial class GcsDestination : pb::IMessage<GcsDestination>
+  #if !GOOGLE_PROTOBUF_REFSTRUCT_COMPATIBILITY_MODE
+      , pb::IBufferMessage
+  #endif
+  {
     private static readonly pb::MessageParser<GcsDestination> _parser = new pb::MessageParser<GcsDestination>(() => new GcsDestination());
     private pb::UnknownFieldSet _unknownFields;
     [global::System.Diagnostics.DebuggerNonUserCodeAttribute]
@@ -8512,6 +10828,9 @@ namespace Google.Cloud.Vision.V1 {
 
     [global::System.Diagnostics.DebuggerNonUserCodeAttribute]
     public void WriteTo(pb::CodedOutputStream output) {
+    #if !GOOGLE_PROTOBUF_REFSTRUCT_COMPATIBILITY_MODE
+      output.WriteRawMessage(this);
+    #else
       if (Uri.Length != 0) {
         output.WriteRawTag(10);
         output.WriteString(Uri);
@@ -8519,7 +10838,21 @@ namespace Google.Cloud.Vision.V1 {
       if (_unknownFields != null) {
         _unknownFields.WriteTo(output);
       }
+    #endif
     }
+
+    #if !GOOGLE_PROTOBUF_REFSTRUCT_COMPATIBILITY_MODE
+    [global::System.Diagnostics.DebuggerNonUserCodeAttribute]
+    void pb::IBufferMessage.InternalWriteTo(ref pb::WriteContext output) {
+      if (Uri.Length != 0) {
+        output.WriteRawTag(10);
+        output.WriteString(Uri);
+      }
+      if (_unknownFields != null) {
+        _unknownFields.WriteTo(ref output);
+      }
+    }
+    #endif
 
     [global::System.Diagnostics.DebuggerNonUserCodeAttribute]
     public int CalculateSize() {
@@ -8546,6 +10879,9 @@ namespace Google.Cloud.Vision.V1 {
 
     [global::System.Diagnostics.DebuggerNonUserCodeAttribute]
     public void MergeFrom(pb::CodedInputStream input) {
+    #if !GOOGLE_PROTOBUF_REFSTRUCT_COMPATIBILITY_MODE
+      input.ReadRawMessage(this);
+    #else
       uint tag;
       while ((tag = input.ReadTag()) != 0) {
         switch(tag) {
@@ -8558,14 +10894,37 @@ namespace Google.Cloud.Vision.V1 {
           }
         }
       }
+    #endif
     }
+
+    #if !GOOGLE_PROTOBUF_REFSTRUCT_COMPATIBILITY_MODE
+    [global::System.Diagnostics.DebuggerNonUserCodeAttribute]
+    void pb::IBufferMessage.InternalMergeFrom(ref pb::ParseContext input) {
+      uint tag;
+      while ((tag = input.ReadTag()) != 0) {
+        switch(tag) {
+          default:
+            _unknownFields = pb::UnknownFieldSet.MergeFieldFrom(_unknownFields, ref input);
+            break;
+          case 10: {
+            Uri = input.ReadString();
+            break;
+          }
+        }
+      }
+    }
+    #endif
 
   }
 
   /// <summary>
   /// Contains metadata for the BatchAnnotateImages operation.
   /// </summary>
-  public sealed partial class OperationMetadata : pb::IMessage<OperationMetadata> {
+  public sealed partial class OperationMetadata : pb::IMessage<OperationMetadata>
+  #if !GOOGLE_PROTOBUF_REFSTRUCT_COMPATIBILITY_MODE
+      , pb::IBufferMessage
+  #endif
+  {
     private static readonly pb::MessageParser<OperationMetadata> _parser = new pb::MessageParser<OperationMetadata>(() => new OperationMetadata());
     private pb::UnknownFieldSet _unknownFields;
     [global::System.Diagnostics.DebuggerNonUserCodeAttribute]
@@ -8603,7 +10962,7 @@ namespace Google.Cloud.Vision.V1 {
 
     /// <summary>Field number for the "state" field.</summary>
     public const int StateFieldNumber = 1;
-    private global::Google.Cloud.Vision.V1.OperationMetadata.Types.State state_ = 0;
+    private global::Google.Cloud.Vision.V1.OperationMetadata.Types.State state_ = global::Google.Cloud.Vision.V1.OperationMetadata.Types.State.Unspecified;
     /// <summary>
     /// Current state of the batch operation.
     /// </summary>
@@ -8665,7 +11024,7 @@ namespace Google.Cloud.Vision.V1 {
     [global::System.Diagnostics.DebuggerNonUserCodeAttribute]
     public override int GetHashCode() {
       int hash = 1;
-      if (State != 0) hash ^= State.GetHashCode();
+      if (State != global::Google.Cloud.Vision.V1.OperationMetadata.Types.State.Unspecified) hash ^= State.GetHashCode();
       if (createTime_ != null) hash ^= CreateTime.GetHashCode();
       if (updateTime_ != null) hash ^= UpdateTime.GetHashCode();
       if (_unknownFields != null) {
@@ -8681,7 +11040,10 @@ namespace Google.Cloud.Vision.V1 {
 
     [global::System.Diagnostics.DebuggerNonUserCodeAttribute]
     public void WriteTo(pb::CodedOutputStream output) {
-      if (State != 0) {
+    #if !GOOGLE_PROTOBUF_REFSTRUCT_COMPATIBILITY_MODE
+      output.WriteRawMessage(this);
+    #else
+      if (State != global::Google.Cloud.Vision.V1.OperationMetadata.Types.State.Unspecified) {
         output.WriteRawTag(8);
         output.WriteEnum((int) State);
       }
@@ -8696,12 +11058,34 @@ namespace Google.Cloud.Vision.V1 {
       if (_unknownFields != null) {
         _unknownFields.WriteTo(output);
       }
+    #endif
     }
+
+    #if !GOOGLE_PROTOBUF_REFSTRUCT_COMPATIBILITY_MODE
+    [global::System.Diagnostics.DebuggerNonUserCodeAttribute]
+    void pb::IBufferMessage.InternalWriteTo(ref pb::WriteContext output) {
+      if (State != global::Google.Cloud.Vision.V1.OperationMetadata.Types.State.Unspecified) {
+        output.WriteRawTag(8);
+        output.WriteEnum((int) State);
+      }
+      if (createTime_ != null) {
+        output.WriteRawTag(42);
+        output.WriteMessage(CreateTime);
+      }
+      if (updateTime_ != null) {
+        output.WriteRawTag(50);
+        output.WriteMessage(UpdateTime);
+      }
+      if (_unknownFields != null) {
+        _unknownFields.WriteTo(ref output);
+      }
+    }
+    #endif
 
     [global::System.Diagnostics.DebuggerNonUserCodeAttribute]
     public int CalculateSize() {
       int size = 0;
-      if (State != 0) {
+      if (State != global::Google.Cloud.Vision.V1.OperationMetadata.Types.State.Unspecified) {
         size += 1 + pb::CodedOutputStream.ComputeEnumSize((int) State);
       }
       if (createTime_ != null) {
@@ -8721,7 +11105,7 @@ namespace Google.Cloud.Vision.V1 {
       if (other == null) {
         return;
       }
-      if (other.State != 0) {
+      if (other.State != global::Google.Cloud.Vision.V1.OperationMetadata.Types.State.Unspecified) {
         State = other.State;
       }
       if (other.createTime_ != null) {
@@ -8741,6 +11125,9 @@ namespace Google.Cloud.Vision.V1 {
 
     [global::System.Diagnostics.DebuggerNonUserCodeAttribute]
     public void MergeFrom(pb::CodedInputStream input) {
+    #if !GOOGLE_PROTOBUF_REFSTRUCT_COMPATIBILITY_MODE
+      input.ReadRawMessage(this);
+    #else
       uint tag;
       while ((tag = input.ReadTag()) != 0) {
         switch(tag) {
@@ -8767,7 +11154,40 @@ namespace Google.Cloud.Vision.V1 {
           }
         }
       }
+    #endif
     }
+
+    #if !GOOGLE_PROTOBUF_REFSTRUCT_COMPATIBILITY_MODE
+    [global::System.Diagnostics.DebuggerNonUserCodeAttribute]
+    void pb::IBufferMessage.InternalMergeFrom(ref pb::ParseContext input) {
+      uint tag;
+      while ((tag = input.ReadTag()) != 0) {
+        switch(tag) {
+          default:
+            _unknownFields = pb::UnknownFieldSet.MergeFieldFrom(_unknownFields, ref input);
+            break;
+          case 8: {
+            State = (global::Google.Cloud.Vision.V1.OperationMetadata.Types.State) input.ReadEnum();
+            break;
+          }
+          case 42: {
+            if (createTime_ == null) {
+              CreateTime = new global::Google.Protobuf.WellKnownTypes.Timestamp();
+            }
+            input.ReadMessage(CreateTime);
+            break;
+          }
+          case 50: {
+            if (updateTime_ == null) {
+              UpdateTime = new global::Google.Protobuf.WellKnownTypes.Timestamp();
+            }
+            input.ReadMessage(UpdateTime);
+            break;
+          }
+        }
+      }
+    }
+    #endif
 
     #region Nested types
     /// <summary>Container for nested types declared in the OperationMetadata message type.</summary>

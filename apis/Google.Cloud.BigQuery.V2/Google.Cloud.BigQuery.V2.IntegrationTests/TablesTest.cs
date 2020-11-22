@@ -13,6 +13,8 @@
 // limitations under the License.
 
 using Google.Apis.Bigquery.v2.Data;
+using System;
+using System.Collections.Generic;
 using System.Linq;
 using System.Net;
 using System.Threading.Tasks;
@@ -20,10 +22,6 @@ using Xunit;
 
 namespace Google.Cloud.BigQuery.V2.IntegrationTests
 {
-    // Note: some of these tests fetch the table in a way that looks unnecessary.
-    // Currently, the etag changes between a table being created and it first being fetched,
-    // which breaks the "create, update" approach. I'm investigating why this happens.
-
     [Collection(nameof(BigQueryFixture))]
     public class TablesTest
     {
@@ -42,10 +40,256 @@ namespace Google.Cloud.BigQuery.V2.IntegrationTests
             var client = BigQueryClient.Create(_fixture.ProjectId);
             string datasetId = _fixture.DatasetId;
             var tableId = _fixture.CreateTableId();
-            var created = client.CreateTable(datasetId, tableId, new TableSchema(), new CreateTableOptions { Description = "Description1", FriendlyName = "FriendlyName1" });
+            var created = client.CreateTable(datasetId, tableId, new Table { Description = "Description1", FriendlyName = "FriendlyName1" });
 
             var fetched = client.GetTable(datasetId, tableId);
             Assert.Equal(created.Resource.ETag, fetched.Resource.ETag);
+        }
+
+        [Fact]
+        public void CreateTable_TableNoReference()
+        {
+            var client = BigQueryClient.Create(_fixture.ProjectId);
+            string datasetId = _fixture.DatasetId;
+            var tableId = _fixture.CreateTableId();
+
+            var created = client.CreateTable(datasetId, tableId, new Table());
+
+            Assert.Equal(_fixture.ProjectId, created.Reference.ProjectId);
+            Assert.Equal(datasetId, created.Reference.DatasetId);
+            Assert.Equal(tableId, created.Reference.TableId);
+        }
+
+        [Fact]
+        public async Task CreateTableAsync_TableNoReference()
+        {
+            var client = BigQueryClient.Create(_fixture.ProjectId);
+            string datasetId = _fixture.DatasetId;
+            var tableId = _fixture.CreateTableId();
+
+            var created = await client.CreateTableAsync(datasetId, tableId, new Table());
+
+            Assert.Equal(_fixture.ProjectId, created.Reference.ProjectId);
+            Assert.Equal(datasetId, created.Reference.DatasetId);
+            Assert.Equal(tableId, created.Reference.TableId);
+        }
+
+        [Fact]
+        public void CreateTable_TableSameReference()
+        {
+            var client = BigQueryClient.Create(_fixture.ProjectId);
+            string datasetId = _fixture.DatasetId;
+            var tableId = _fixture.CreateTableId();
+
+            var created = client.CreateTable(
+                datasetId,
+                tableId,
+                new Table
+                { 
+                    TableReference = new TableReference
+                    {
+                        ProjectId = _fixture.ProjectId,
+                        DatasetId = _fixture.DatasetId,
+                        TableId = tableId
+                    }
+                });
+
+            Assert.Equal(_fixture.ProjectId, created.Reference.ProjectId);
+            Assert.Equal(datasetId, created.Reference.DatasetId);
+            Assert.Equal(tableId, created.Reference.TableId);
+        }
+
+        [Fact]
+        public async Task CreateTableAsync_TableSameReference()
+        {
+            var client = BigQueryClient.Create(_fixture.ProjectId);
+            string datasetId = _fixture.DatasetId;
+            var tableId = _fixture.CreateTableId();
+
+            var created = await client.CreateTableAsync(
+                datasetId,
+                tableId,
+                new Table
+                {
+                    TableReference = new TableReference
+                    {
+                        ProjectId = _fixture.ProjectId,
+                        DatasetId = _fixture.DatasetId,
+                        TableId = tableId
+                    }
+                });
+
+            Assert.Equal(_fixture.ProjectId, created.Reference.ProjectId);
+            Assert.Equal(datasetId, created.Reference.DatasetId);
+            Assert.Equal(tableId, created.Reference.TableId);
+        }
+
+        [Fact]
+        public void CreateTable_TableDifferentReference()
+        {
+            var client = BigQueryClient.Create(_fixture.ProjectId);
+            string datasetId = _fixture.DatasetId;
+            var tableId = _fixture.CreateTableId();
+
+            Assert.Throws<ArgumentException>(() => client.CreateTable(
+                datasetId,
+                tableId,
+                new Table
+                {
+                    TableReference = new TableReference
+                    {
+                        ProjectId = _fixture.ProjectId,
+                        DatasetId = _fixture.DatasetId,
+                        TableId = _fixture.CreateTableId()
+                    }
+                }));
+        }
+
+        [Fact]
+        public async Task CreateTableAsync_TableDifferentReference()
+        {
+            var client = BigQueryClient.Create(_fixture.ProjectId);
+            string datasetId = _fixture.DatasetId;
+            var tableId = _fixture.CreateTableId();
+
+            await Assert.ThrowsAsync<ArgumentException>(() => client.CreateTableAsync(
+                datasetId,
+                tableId,
+                new Table
+                {
+                    TableReference = new TableReference
+                    {
+                        ProjectId = _fixture.ProjectId,
+                        DatasetId = _fixture.DatasetId,
+                        TableId = _fixture.CreateTableId()
+                    }
+                }));
+        }
+
+        [Fact]
+        public void CreateTable_ViewAndExternalDataConfiguration()
+        {
+            var client = BigQueryClient.Create(_fixture.ProjectId);
+            string datasetId = _fixture.DatasetId;
+            var tableId = _fixture.CreateTableId();
+
+            Assert.Throws<ArgumentException>(() => client.CreateTable(
+                datasetId,
+                tableId,
+                new Table
+                {
+                    View = new ViewDefinition(),
+                    ExternalDataConfiguration = new ExternalDataConfiguration()
+                }));
+        }
+
+        [Fact]
+        public async Task CreateTableAsync_ViewAndExternalDataConfiguration()
+        {
+            var client = BigQueryClient.Create(_fixture.ProjectId);
+            string datasetId = _fixture.DatasetId;
+            var tableId = _fixture.CreateTableId();
+
+            await Assert.ThrowsAsync<ArgumentException>(() => client.CreateTableAsync(
+                datasetId,
+                tableId,
+                new Table
+                {
+                    View = new ViewDefinition(),
+                    ExternalDataConfiguration = new ExternalDataConfiguration()
+                }));
+        }
+
+        [Fact]
+        public void GetOrCreateTable_TableSameReference()
+        {
+            var client = BigQueryClient.Create(_fixture.ProjectId);
+            string datasetId = _fixture.DatasetId;
+            var tableId = _fixture.CreateTableId();
+
+            var created = client.GetOrCreateTable(
+                datasetId,
+                tableId,
+                resource: new Table
+                {
+                    TableReference = new TableReference
+                    {
+                        ProjectId = _fixture.ProjectId,
+                        DatasetId = _fixture.DatasetId,
+                        TableId = tableId
+                    }
+                });
+
+            Assert.Equal(_fixture.ProjectId, created.Reference.ProjectId);
+            Assert.Equal(datasetId, created.Reference.DatasetId);
+            Assert.Equal(tableId, created.Reference.TableId);
+        }
+
+        [Fact]
+        public async Task GetOrCreateTableAsync_TableSameReference()
+        {
+            var client = BigQueryClient.Create(_fixture.ProjectId);
+            string datasetId = _fixture.DatasetId;
+            var tableId = _fixture.CreateTableId();
+
+            var created = await client.GetOrCreateTableAsync(
+                datasetId,
+                tableId,
+                resource: new Table
+                {
+                    TableReference = new TableReference
+                    {
+                        ProjectId = _fixture.ProjectId,
+                        DatasetId = _fixture.DatasetId,
+                        TableId = tableId
+                    }
+                });
+
+            Assert.Equal(_fixture.ProjectId, created.Reference.ProjectId);
+            Assert.Equal(datasetId, created.Reference.DatasetId);
+            Assert.Equal(tableId, created.Reference.TableId);
+        }
+
+        [Fact]
+        public void GetOrCreateTable_TableDifferentReference()
+        {
+            var client = BigQueryClient.Create(_fixture.ProjectId);
+            string datasetId = _fixture.DatasetId;
+            var tableId = _fixture.CreateTableId();
+
+            Assert.Throws<ArgumentException>(() => client.GetOrCreateTable(
+                datasetId,
+                tableId,
+                resource: new Table
+                {
+                    TableReference = new TableReference
+                    {
+                        ProjectId = _fixture.ProjectId,
+                        DatasetId = _fixture.DatasetId,
+                        TableId = _fixture.CreateTableId()
+                    }
+                }));
+        }
+
+        [Fact]
+        public async Task GetOrCreateTableAsync_TableDifferentReference()
+        {
+            var client = BigQueryClient.Create(_fixture.ProjectId);
+            string datasetId = _fixture.DatasetId;
+            var tableId = _fixture.CreateTableId();
+
+            await Assert.ThrowsAsync<ArgumentException>(() => client.GetOrCreateTableAsync(
+                datasetId,
+                tableId,
+                resource: new Table
+                {
+                    TableReference = new TableReference
+                    {
+                        ProjectId = _fixture.ProjectId,
+                        DatasetId = _fixture.DatasetId,
+                        TableId = _fixture.CreateTableId()
+                    }
+                }));
         }
 
         [Fact]
@@ -55,7 +299,7 @@ namespace Google.Cloud.BigQuery.V2.IntegrationTests
             string datasetId = _fixture.DatasetId;
             var tableId = _fixture.CreateTableId();
 
-            var original = client.CreateTable(datasetId, tableId, new TableSchema(), new CreateTableOptions { Description = "Description1", FriendlyName = "FriendlyName1" });
+            var original = client.CreateTable(datasetId, tableId, new Table { Description = "Description1", FriendlyName = "FriendlyName1" });
 
             // Modify locally...
             original.Resource.Description = "Description2";
@@ -81,7 +325,7 @@ namespace Google.Cloud.BigQuery.V2.IntegrationTests
             string datasetId = _fixture.DatasetId;
             var tableId = _fixture.CreateTableId();
 
-            var original = client.CreateTable(datasetId, tableId, new TableSchema(), new CreateTableOptions { Description = "Description1", FriendlyName = "FriendlyName1" });
+            var original = client.CreateTable(datasetId, tableId, new Table { Description = "Description1", FriendlyName = "FriendlyName1" });
 
             // Modify on the server, which will change the etag
             var sneaky = client.GetTable(datasetId, tableId);
@@ -103,7 +347,7 @@ namespace Google.Cloud.BigQuery.V2.IntegrationTests
             string datasetId = _fixture.DatasetId;
             var tableId = _fixture.CreateTableId();
 
-            var original = client.CreateTable(datasetId, tableId, new TableSchema(), new CreateTableOptions { Description = "Description1", FriendlyName = "FriendlyName1" });
+            var original = client.CreateTable(datasetId, tableId, new Table { Description = "Description1", FriendlyName = "FriendlyName1" });
             var patched = original.Patch(new Table { Description = "Description2" }, matchETag: false);
 
             // Check the results of the patch
@@ -124,7 +368,7 @@ namespace Google.Cloud.BigQuery.V2.IntegrationTests
             string datasetId = _fixture.DatasetId;
             var tableId = _fixture.CreateTableId();
 
-            var original = client.CreateTable(datasetId, tableId, new TableSchema(), new CreateTableOptions { Description = "Description1", FriendlyName = "FriendlyName1" });
+            var original = client.CreateTable(datasetId, tableId, new Table { Description = "Description1", FriendlyName = "FriendlyName1" });
 
             // Modify on the server, which will change the etag
             var sneaky = client.GetTable(datasetId, tableId);
@@ -143,7 +387,7 @@ namespace Google.Cloud.BigQuery.V2.IntegrationTests
             string datasetId = _fixture.DatasetId;
             var tableId = _fixture.CreateTableId();
 
-            var original = client.CreateTable(datasetId, tableId, new TableSchema(), new CreateTableOptions { Description = "Description1", FriendlyName = "FriendlyName1" });
+            var original = client.CreateTable(datasetId, tableId, new Table { Description = "Description1", FriendlyName = "FriendlyName1" });
 
             // Modify on the server, which will change the etag
             var sneaky = client.GetTable(datasetId, tableId);
@@ -170,7 +414,7 @@ namespace Google.Cloud.BigQuery.V2.IntegrationTests
             string datasetId = _fixture.DatasetId;
             var tableId = _fixture.CreateTableId();
 
-            var original = await client.CreateTableAsync(datasetId, tableId, new TableSchema(), new CreateTableOptions { Description = "Description1", FriendlyName = "FriendlyName1" });
+            var original = await client.CreateTableAsync(datasetId, tableId, new Table { Description = "Description1", FriendlyName = "FriendlyName1" });
 
             // Modify locally...
             original.Resource.Description = "Description2";
@@ -196,7 +440,7 @@ namespace Google.Cloud.BigQuery.V2.IntegrationTests
             string datasetId = _fixture.DatasetId;
             var tableId = _fixture.CreateTableId();
 
-            var original = await client.CreateTableAsync(datasetId, tableId, new TableSchema(), new CreateTableOptions { Description = "Description1", FriendlyName = "FriendlyName1" });
+            var original = await client.CreateTableAsync(datasetId, tableId, new Table { Description = "Description1", FriendlyName = "FriendlyName1" });
 
             // Modify on the server, which will change the etag
             var sneaky = await client.GetTableAsync(datasetId, tableId);
@@ -218,7 +462,7 @@ namespace Google.Cloud.BigQuery.V2.IntegrationTests
             string datasetId = _fixture.DatasetId;
             var tableId = _fixture.CreateTableId();
 
-            var original = await client.CreateTableAsync(datasetId, tableId, new TableSchema(), new CreateTableOptions { Description = "Description1", FriendlyName = "FriendlyName1" });
+            var original = await client.CreateTableAsync(datasetId, tableId, new Table { Description = "Description1", FriendlyName = "FriendlyName1" });
             var patched = await original.PatchAsync(new Table { Description = "Description2" }, matchETag: false);
 
             // Check the results of the patch
@@ -239,7 +483,7 @@ namespace Google.Cloud.BigQuery.V2.IntegrationTests
             string datasetId = _fixture.DatasetId;
             var tableId = _fixture.CreateTableId();
 
-            var original = await client.CreateTableAsync(datasetId, tableId, new TableSchema(), new CreateTableOptions { Description = "Description1", FriendlyName = "FriendlyName1" });
+            var original = await client.CreateTableAsync(datasetId, tableId, new Table { Description = "Description1", FriendlyName = "FriendlyName1" });
 
             // Modify on the server, which will change the etag
             var sneaky = await client.GetTableAsync(datasetId, tableId);
@@ -258,7 +502,7 @@ namespace Google.Cloud.BigQuery.V2.IntegrationTests
             string datasetId = _fixture.DatasetId;
             var tableId = _fixture.CreateTableId();
 
-            var original = await client.CreateTableAsync(datasetId, tableId, new TableSchema(), new CreateTableOptions { Description = "Description1", FriendlyName = "FriendlyName1" });
+            var original = await client.CreateTableAsync(datasetId, tableId, new Table { Description = "Description1", FriendlyName = "FriendlyName1" });
 
             // Modify on the server, which will change the etag
             var sneaky = await client.GetTableAsync(datasetId, tableId);
@@ -285,7 +529,7 @@ namespace Google.Cloud.BigQuery.V2.IntegrationTests
             string datasetId = _fixture.DatasetId;
             var tableId = _fixture.CreateTableId();
 
-            client.CreateTable(datasetId, tableId, new TableSchema(), new CreateTableOptions { FriendlyName = "FriendlyName" });
+            client.CreateTable(datasetId, tableId, new Table { FriendlyName = "FriendlyName" });
             var list = client.ListTables(datasetId).ToList();
             Assert.Contains(list, candidate => candidate.Reference.TableId == tableId && candidate.Resource.FriendlyName == "FriendlyName");
         }
@@ -308,5 +552,100 @@ namespace Google.Cloud.BigQuery.V2.IntegrationTests
             Assert.Equal(totalCount - 2, remainder.Count);
         }
 
+        public static IEnumerable<object[]> FullSchemaOptions
+        {
+            get
+            {
+                yield return new object[] { null };
+                // Null or empty SelectedFields return the whole schema.
+                yield return new object[] { new GetTableOptions { SelectedFields = null } };
+                yield return new object[] { new GetTableOptions { SelectedFields = string.Empty } };
+            }
+        }
+
+        [Theory]
+        [MemberData(nameof(FullSchemaOptions))]
+        public void GetTable_FullSchema(GetTableOptions options)
+        {
+            var client = BigQueryClient.Create(_fixture.ProjectId);
+            string datasetId = _fixture.DatasetId;
+            string tableId = _fixture.HighScoreExtendedTableId;
+
+            var table = client.GetTable(datasetId, tableId, options);
+
+            Assert.Equal(4, table.Schema.Fields.Count);
+            Assert.Equal("player", table.Schema.Fields[0].Name);
+            Assert.Equal("gameStarted", table.Schema.Fields[1].Name);
+            Assert.Equal("score", table.Schema.Fields[2].Name);
+            Assert.Equal("gameFinished", table.Schema.Fields[3].Name);
+        }
+
+        [Fact]
+        public void GetTable_PartialSchema_SimpleTypes()
+        {
+            var client = BigQueryClient.Create(_fixture.ProjectId);
+            string datasetId = _fixture.DatasetId;
+            string tableId = _fixture.HighScoreExtendedTableId;
+            var options = new GetTableOptions
+            {
+                SelectedFields = "player,score"
+            };
+            var table = client.GetTable(datasetId, tableId, options);
+
+            Assert.Equal(2, table.Schema.Fields.Count);
+            Assert.Equal("player", table.Schema.Fields[0].Name);
+            Assert.Equal("score", table.Schema.Fields[1].Name);
+        }
+
+        [Fact]
+        public void GetTable_PartialSchema_SimpleTypes_Ordered()
+        {
+            var client = BigQueryClient.Create(_fixture.ProjectId);
+            string datasetId = _fixture.DatasetId;
+            string tableId = _fixture.HighScoreExtendedTableId;
+            var options = new GetTableOptions
+            {
+                // Specify selected fields in a different order
+                // to the one they were created in.
+                SelectedFields = "score,player"
+            };
+            var table = client.GetTable(datasetId, tableId, options);
+
+            Assert.Equal(2, table.Schema.Fields.Count);
+            // The schema still contains the fields in the same order
+            // as the one they were created in.
+            Assert.Equal("player", table.Schema.Fields[0].Name);
+            Assert.Equal("score", table.Schema.Fields[1].Name);
+        }
+
+        [Fact]
+        public void GetTable_PartialSchema_ComplexTypes()
+        {
+            var client = BigQueryClient.Create(_fixture.ProjectId);
+            string datasetId = _fixture.DatasetId;
+            string tableId = _fixture.PeopleTableId;
+            var options = new GetTableOptions
+            {
+                SelectedFields = "age,gender,phoneNumber,children.gender,children.age"
+            };
+            var table = client.GetTable(datasetId, tableId, options);
+
+            // We still have 4 top level fields because nesting is preserved
+            // when requesting a partial table schema.
+            Assert.Equal(4, table.Schema.Fields.Count);
+
+            Assert.Equal("age", table.Schema.Fields[0].Name);
+            Assert.Equal("gender", table.Schema.Fields[1].Name);
+
+            Assert.Equal("phoneNumber", table.Schema.Fields[2].Name);
+            Assert.Equal(2, table.Schema.Fields[2].Fields.Count);
+            Assert.Equal("areaCode", table.Schema.Fields[2].Fields[0].Name);
+            Assert.Equal("number", table.Schema.Fields[2].Fields[1].Name);
+
+            Assert.Equal("children", table.Schema.Fields[3].Name);
+            Assert.Equal(2, table.Schema.Fields[3].Fields.Count);
+            Assert.Equal("gender", table.Schema.Fields[3].Fields[0].Name);
+            Assert.Equal("age", table.Schema.Fields[3].Fields[1].Name);
+        }
     }
 }

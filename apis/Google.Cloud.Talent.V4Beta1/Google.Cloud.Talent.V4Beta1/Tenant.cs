@@ -25,22 +25,24 @@ namespace Google.Cloud.Talent.V4Beta1 {
       byte[] descriptorData = global::System.Convert.FromBase64String(
           string.Concat(
             "Cihnb29nbGUvY2xvdWQvdGFsZW50L3Y0YmV0YTEvdGVuYW50LnByb3RvEhtn",
-            "b29nbGUuY2xvdWQudGFsZW50LnY0YmV0YTEaHGdvb2dsZS9hcGkvYW5ub3Rh",
-            "dGlvbnMucHJvdG8aH2dvb2dsZS9hcGkvZmllbGRfYmVoYXZpb3IucHJvdG8a",
-            "H2dvb2dsZS9wcm90b2J1Zi90aW1lc3RhbXAucHJvdG8i/QEKBlRlbmFudBIM",
-            "CgRuYW1lGAEgASgJEhgKC2V4dGVybmFsX2lkGAIgASgJQgPgQQISRQoKdXNh",
-            "Z2VfdHlwZRgDIAEoDjIxLmdvb2dsZS5jbG91ZC50YWxlbnQudjRiZXRhMS5U",
-            "ZW5hbnQuRGF0YVVzYWdlVHlwZRI0CixrZXl3b3JkX3NlYXJjaGFibGVfcHJv",
-            "ZmlsZV9jdXN0b21fYXR0cmlidXRlcxgEIAMoCSJOCg1EYXRhVXNhZ2VUeXBl",
-            "Eh8KG0RBVEFfVVNBR0VfVFlQRV9VTlNQRUNJRklFRBAAEg4KCkFHR1JFR0FU",
-            "RUQQARIMCghJU09MQVRFRBACQoEBCh9jb20uZ29vZ2xlLmNsb3VkLnRhbGVu",
-            "dC52NGJldGExQhNUZW5hbnRSZXNvdXJjZVByb3RvUAFaQWdvb2dsZS5nb2xh",
-            "bmcub3JnL2dlbnByb3RvL2dvb2dsZWFwaXMvY2xvdWQvdGFsZW50L3Y0YmV0",
-            "YTE7dGFsZW50ogIDQ1RTYgZwcm90bzM="));
+            "b29nbGUuY2xvdWQudGFsZW50LnY0YmV0YTEaH2dvb2dsZS9hcGkvZmllbGRf",
+            "YmVoYXZpb3IucHJvdG8aGWdvb2dsZS9hcGkvcmVzb3VyY2UucHJvdG8aH2dv",
+            "b2dsZS9wcm90b2J1Zi90aW1lc3RhbXAucHJvdG8aHGdvb2dsZS9hcGkvYW5u",
+            "b3RhdGlvbnMucHJvdG8iwwIKBlRlbmFudBIMCgRuYW1lGAEgASgJEhgKC2V4",
+            "dGVybmFsX2lkGAIgASgJQgPgQQISRQoKdXNhZ2VfdHlwZRgDIAEoDjIxLmdv",
+            "b2dsZS5jbG91ZC50YWxlbnQudjRiZXRhMS5UZW5hbnQuRGF0YVVzYWdlVHlw",
+            "ZRI0CixrZXl3b3JkX3NlYXJjaGFibGVfcHJvZmlsZV9jdXN0b21fYXR0cmli",
+            "dXRlcxgEIAMoCSJOCg1EYXRhVXNhZ2VUeXBlEh8KG0RBVEFfVVNBR0VfVFlQ",
+            "RV9VTlNQRUNJRklFRBAAEg4KCkFHR1JFR0FURUQQARIMCghJU09MQVRFRBAC",
+            "OkTqQUEKGmpvYnMuZ29vZ2xlYXBpcy5jb20vVGVuYW50EiNwcm9qZWN0cy97",
+            "cHJvamVjdH0vdGVuYW50cy97dGVuYW50fUKBAQofY29tLmdvb2dsZS5jbG91",
+            "ZC50YWxlbnQudjRiZXRhMUITVGVuYW50UmVzb3VyY2VQcm90b1ABWkFnb29n",
+            "bGUuZ29sYW5nLm9yZy9nZW5wcm90by9nb29nbGVhcGlzL2Nsb3VkL3RhbGVu",
+            "dC92NGJldGExO3RhbGVudKICA0NUU2IGcHJvdG8z"));
       descriptor = pbr::FileDescriptor.FromGeneratedCode(descriptorData,
-          new pbr::FileDescriptor[] { global::Google.Api.AnnotationsReflection.Descriptor, global::Google.Api.FieldBehaviorReflection.Descriptor, global::Google.Protobuf.WellKnownTypes.TimestampReflection.Descriptor, },
-          new pbr::GeneratedClrTypeInfo(null, new pbr::GeneratedClrTypeInfo[] {
-            new pbr::GeneratedClrTypeInfo(typeof(global::Google.Cloud.Talent.V4Beta1.Tenant), global::Google.Cloud.Talent.V4Beta1.Tenant.Parser, new[]{ "Name", "ExternalId", "UsageType", "KeywordSearchableProfileCustomAttributes" }, null, new[]{ typeof(global::Google.Cloud.Talent.V4Beta1.Tenant.Types.DataUsageType) }, null)
+          new pbr::FileDescriptor[] { global::Google.Api.FieldBehaviorReflection.Descriptor, global::Google.Api.ResourceReflection.Descriptor, global::Google.Protobuf.WellKnownTypes.TimestampReflection.Descriptor, global::Google.Api.AnnotationsReflection.Descriptor, },
+          new pbr::GeneratedClrTypeInfo(null, null, new pbr::GeneratedClrTypeInfo[] {
+            new pbr::GeneratedClrTypeInfo(typeof(global::Google.Cloud.Talent.V4Beta1.Tenant), global::Google.Cloud.Talent.V4Beta1.Tenant.Parser, new[]{ "Name", "ExternalId", "UsageType", "KeywordSearchableProfileCustomAttributes" }, null, new[]{ typeof(global::Google.Cloud.Talent.V4Beta1.Tenant.Types.DataUsageType) }, null, null)
           }));
     }
     #endregion
@@ -53,7 +55,11 @@ namespace Google.Cloud.Talent.V4Beta1 {
   /// profiles. Customer may create multiple tenants to provide data isolation for
   /// different groups.
   /// </summary>
-  public sealed partial class Tenant : pb::IMessage<Tenant> {
+  public sealed partial class Tenant : pb::IMessage<Tenant>
+  #if !GOOGLE_PROTOBUF_REFSTRUCT_COMPATIBILITY_MODE
+      , pb::IBufferMessage
+  #endif
+  {
     private static readonly pb::MessageParser<Tenant> _parser = new pb::MessageParser<Tenant>(() => new Tenant());
     private pb::UnknownFieldSet _unknownFields;
     [global::System.Diagnostics.DebuggerNonUserCodeAttribute]
@@ -114,8 +120,7 @@ namespace Google.Cloud.Talent.V4Beta1 {
     public const int ExternalIdFieldNumber = 2;
     private string externalId_ = "";
     /// <summary>
-    /// Required. Client side tenant identifier, used to uniquely identify the
-    /// tenant.
+    /// Required. Client side tenant identifier, used to uniquely identify the tenant.
     ///
     /// The maximum number of allowed characters is 255.
     /// </summary>
@@ -129,14 +134,12 @@ namespace Google.Cloud.Talent.V4Beta1 {
 
     /// <summary>Field number for the "usage_type" field.</summary>
     public const int UsageTypeFieldNumber = 3;
-    private global::Google.Cloud.Talent.V4Beta1.Tenant.Types.DataUsageType usageType_ = 0;
+    private global::Google.Cloud.Talent.V4Beta1.Tenant.Types.DataUsageType usageType_ = global::Google.Cloud.Talent.V4Beta1.Tenant.Types.DataUsageType.Unspecified;
     /// <summary>
     /// Indicates whether data owned by this tenant may be used to provide product
     /// improvements across other tenants.
     ///
-    /// Defaults behavior is
-    /// [DataUsageType.ISOLATED][google.cloud.talent.v4beta1.Tenant.DataUsageType.ISOLATED]
-    /// if it's unset.
+    /// Defaults behavior is [DataUsageType.ISOLATED][google.cloud.talent.v4beta1.Tenant.DataUsageType.ISOLATED] if it's unset.
     /// </summary>
     [global::System.Diagnostics.DebuggerNonUserCodeAttribute]
     public global::Google.Cloud.Talent.V4Beta1.Tenant.Types.DataUsageType UsageType {
@@ -152,10 +155,9 @@ namespace Google.Cloud.Talent.V4Beta1 {
         = pb::FieldCodec.ForString(34);
     private readonly pbc::RepeatedField<string> keywordSearchableProfileCustomAttributes_ = new pbc::RepeatedField<string>();
     /// <summary>
-    /// A list of keys of filterable
-    /// [Profile.custom_attributes][google.cloud.talent.v4beta1.Profile.custom_attributes],
-    /// whose corresponding `string_values` are used in keyword searches. Profiles
-    /// with `string_values` under these specified field keys are returned if any
+    /// A list of keys of filterable [Profile.custom_attributes][google.cloud.talent.v4beta1.Profile.custom_attributes], whose
+    /// corresponding `string_values` are used in keyword searches. Profiles with
+    /// `string_values` under these specified field keys are returned if any
     /// of the values match the search keyword. Custom field values with
     /// parenthesis, brackets and special symbols are not searchable as-is,
     /// and must be surrounded by quotes.
@@ -190,7 +192,7 @@ namespace Google.Cloud.Talent.V4Beta1 {
       int hash = 1;
       if (Name.Length != 0) hash ^= Name.GetHashCode();
       if (ExternalId.Length != 0) hash ^= ExternalId.GetHashCode();
-      if (UsageType != 0) hash ^= UsageType.GetHashCode();
+      if (UsageType != global::Google.Cloud.Talent.V4Beta1.Tenant.Types.DataUsageType.Unspecified) hash ^= UsageType.GetHashCode();
       hash ^= keywordSearchableProfileCustomAttributes_.GetHashCode();
       if (_unknownFields != null) {
         hash ^= _unknownFields.GetHashCode();
@@ -205,6 +207,9 @@ namespace Google.Cloud.Talent.V4Beta1 {
 
     [global::System.Diagnostics.DebuggerNonUserCodeAttribute]
     public void WriteTo(pb::CodedOutputStream output) {
+    #if !GOOGLE_PROTOBUF_REFSTRUCT_COMPATIBILITY_MODE
+      output.WriteRawMessage(this);
+    #else
       if (Name.Length != 0) {
         output.WriteRawTag(10);
         output.WriteString(Name);
@@ -213,7 +218,7 @@ namespace Google.Cloud.Talent.V4Beta1 {
         output.WriteRawTag(18);
         output.WriteString(ExternalId);
       }
-      if (UsageType != 0) {
+      if (UsageType != global::Google.Cloud.Talent.V4Beta1.Tenant.Types.DataUsageType.Unspecified) {
         output.WriteRawTag(24);
         output.WriteEnum((int) UsageType);
       }
@@ -221,7 +226,30 @@ namespace Google.Cloud.Talent.V4Beta1 {
       if (_unknownFields != null) {
         _unknownFields.WriteTo(output);
       }
+    #endif
     }
+
+    #if !GOOGLE_PROTOBUF_REFSTRUCT_COMPATIBILITY_MODE
+    [global::System.Diagnostics.DebuggerNonUserCodeAttribute]
+    void pb::IBufferMessage.InternalWriteTo(ref pb::WriteContext output) {
+      if (Name.Length != 0) {
+        output.WriteRawTag(10);
+        output.WriteString(Name);
+      }
+      if (ExternalId.Length != 0) {
+        output.WriteRawTag(18);
+        output.WriteString(ExternalId);
+      }
+      if (UsageType != global::Google.Cloud.Talent.V4Beta1.Tenant.Types.DataUsageType.Unspecified) {
+        output.WriteRawTag(24);
+        output.WriteEnum((int) UsageType);
+      }
+      keywordSearchableProfileCustomAttributes_.WriteTo(ref output, _repeated_keywordSearchableProfileCustomAttributes_codec);
+      if (_unknownFields != null) {
+        _unknownFields.WriteTo(ref output);
+      }
+    }
+    #endif
 
     [global::System.Diagnostics.DebuggerNonUserCodeAttribute]
     public int CalculateSize() {
@@ -232,7 +260,7 @@ namespace Google.Cloud.Talent.V4Beta1 {
       if (ExternalId.Length != 0) {
         size += 1 + pb::CodedOutputStream.ComputeStringSize(ExternalId);
       }
-      if (UsageType != 0) {
+      if (UsageType != global::Google.Cloud.Talent.V4Beta1.Tenant.Types.DataUsageType.Unspecified) {
         size += 1 + pb::CodedOutputStream.ComputeEnumSize((int) UsageType);
       }
       size += keywordSearchableProfileCustomAttributes_.CalculateSize(_repeated_keywordSearchableProfileCustomAttributes_codec);
@@ -253,7 +281,7 @@ namespace Google.Cloud.Talent.V4Beta1 {
       if (other.ExternalId.Length != 0) {
         ExternalId = other.ExternalId;
       }
-      if (other.UsageType != 0) {
+      if (other.UsageType != global::Google.Cloud.Talent.V4Beta1.Tenant.Types.DataUsageType.Unspecified) {
         UsageType = other.UsageType;
       }
       keywordSearchableProfileCustomAttributes_.Add(other.keywordSearchableProfileCustomAttributes_);
@@ -262,6 +290,9 @@ namespace Google.Cloud.Talent.V4Beta1 {
 
     [global::System.Diagnostics.DebuggerNonUserCodeAttribute]
     public void MergeFrom(pb::CodedInputStream input) {
+    #if !GOOGLE_PROTOBUF_REFSTRUCT_COMPATIBILITY_MODE
+      input.ReadRawMessage(this);
+    #else
       uint tag;
       while ((tag = input.ReadTag()) != 0) {
         switch(tag) {
@@ -286,7 +317,38 @@ namespace Google.Cloud.Talent.V4Beta1 {
           }
         }
       }
+    #endif
     }
+
+    #if !GOOGLE_PROTOBUF_REFSTRUCT_COMPATIBILITY_MODE
+    [global::System.Diagnostics.DebuggerNonUserCodeAttribute]
+    void pb::IBufferMessage.InternalMergeFrom(ref pb::ParseContext input) {
+      uint tag;
+      while ((tag = input.ReadTag()) != 0) {
+        switch(tag) {
+          default:
+            _unknownFields = pb::UnknownFieldSet.MergeFieldFrom(_unknownFields, ref input);
+            break;
+          case 10: {
+            Name = input.ReadString();
+            break;
+          }
+          case 18: {
+            ExternalId = input.ReadString();
+            break;
+          }
+          case 24: {
+            UsageType = (global::Google.Cloud.Talent.V4Beta1.Tenant.Types.DataUsageType) input.ReadEnum();
+            break;
+          }
+          case 34: {
+            keywordSearchableProfileCustomAttributes_.AddEntriesFrom(ref input, _repeated_keywordSearchableProfileCustomAttributes_codec);
+            break;
+          }
+        }
+      }
+    }
+    #endif
 
     #region Nested types
     /// <summary>Container for nested types declared in the Tenant message type.</summary>

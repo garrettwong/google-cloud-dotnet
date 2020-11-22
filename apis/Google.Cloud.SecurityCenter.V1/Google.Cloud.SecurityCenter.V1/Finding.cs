@@ -25,12 +25,12 @@ namespace Google.Cloud.SecurityCenter.V1 {
       byte[] descriptorData = global::System.Convert.FromBase64String(
           string.Concat(
             "Cixnb29nbGUvY2xvdWQvc2VjdXJpdHljZW50ZXIvdjEvZmluZGluZy5wcm90",
-            "bxIeZ29vZ2xlLmNsb3VkLnNlY3VyaXR5Y2VudGVyLnYxGh9nb29nbGUvYXBp",
-            "L2ZpZWxkX2JlaGF2aW9yLnByb3RvGhlnb29nbGUvYXBpL3Jlc291cmNlLnBy",
-            "b3RvGjNnb29nbGUvY2xvdWQvc2VjdXJpdHljZW50ZXIvdjEvc2VjdXJpdHlf",
-            "bWFya3MucHJvdG8aHGdvb2dsZS9wcm90b2J1Zi9zdHJ1Y3QucHJvdG8aH2dv",
-            "b2dsZS9wcm90b2J1Zi90aW1lc3RhbXAucHJvdG8aHGdvb2dsZS9hcGkvYW5u",
-            "b3RhdGlvbnMucHJvdG8ipAUKB0ZpbmRpbmcSDAoEbmFtZRgBIAEoCRIOCgZw",
+            "bxIeZ29vZ2xlLmNsb3VkLnNlY3VyaXR5Y2VudGVyLnYxGhxnb29nbGUvYXBp",
+            "L2Fubm90YXRpb25zLnByb3RvGh9nb29nbGUvYXBpL2ZpZWxkX2JlaGF2aW9y",
+            "LnByb3RvGhlnb29nbGUvYXBpL3Jlc291cmNlLnByb3RvGjNnb29nbGUvY2xv",
+            "dWQvc2VjdXJpdHljZW50ZXIvdjEvc2VjdXJpdHlfbWFya3MucHJvdG8aHGdv",
+            "b2dsZS9wcm90b2J1Zi9zdHJ1Y3QucHJvdG8aH2dvb2dsZS9wcm90b2J1Zi90",
+            "aW1lc3RhbXAucHJvdG8ipAUKB0ZpbmRpbmcSDAoEbmFtZRgBIAEoCRIOCgZw",
             "YXJlbnQYAiABKAkSFQoNcmVzb3VyY2VfbmFtZRgDIAEoCRI8CgVzdGF0ZRgE",
             "IAEoDjItLmdvb2dsZS5jbG91ZC5zZWN1cml0eWNlbnRlci52MS5GaW5kaW5n",
             "LlN0YXRlEhAKCGNhdGVnb3J5GAUgASgJEhQKDGV4dGVybmFsX3VyaRgGIAEo",
@@ -52,9 +52,9 @@ namespace Google.Cloud.SecurityCenter.V1 {
             "Q2xvdWRcU2VjdXJpdHlDZW50ZXJcVjHqAiFHb29nbGU6OkNsb3VkOjpTZWN1",
             "cml0eUNlbnRlcjo6VjFiBnByb3RvMw=="));
       descriptor = pbr::FileDescriptor.FromGeneratedCode(descriptorData,
-          new pbr::FileDescriptor[] { global::Google.Api.FieldBehaviorReflection.Descriptor, global::Google.Api.ResourceReflection.Descriptor, global::Google.Cloud.SecurityCenter.V1.SecurityMarksReflection.Descriptor, global::Google.Protobuf.WellKnownTypes.StructReflection.Descriptor, global::Google.Protobuf.WellKnownTypes.TimestampReflection.Descriptor, global::Google.Api.AnnotationsReflection.Descriptor, },
-          new pbr::GeneratedClrTypeInfo(null, new pbr::GeneratedClrTypeInfo[] {
-            new pbr::GeneratedClrTypeInfo(typeof(global::Google.Cloud.SecurityCenter.V1.Finding), global::Google.Cloud.SecurityCenter.V1.Finding.Parser, new[]{ "Name", "Parent", "ResourceName", "State", "Category", "ExternalUri", "SourceProperties", "SecurityMarks", "EventTime", "CreateTime" }, null, new[]{ typeof(global::Google.Cloud.SecurityCenter.V1.Finding.Types.State) }, new pbr::GeneratedClrTypeInfo[] { null, })
+          new pbr::FileDescriptor[] { global::Google.Api.AnnotationsReflection.Descriptor, global::Google.Api.FieldBehaviorReflection.Descriptor, global::Google.Api.ResourceReflection.Descriptor, global::Google.Cloud.SecurityCenter.V1.SecurityMarksReflection.Descriptor, global::Google.Protobuf.WellKnownTypes.StructReflection.Descriptor, global::Google.Protobuf.WellKnownTypes.TimestampReflection.Descriptor, },
+          new pbr::GeneratedClrTypeInfo(null, null, new pbr::GeneratedClrTypeInfo[] {
+            new pbr::GeneratedClrTypeInfo(typeof(global::Google.Cloud.SecurityCenter.V1.Finding), global::Google.Cloud.SecurityCenter.V1.Finding.Parser, new[]{ "Name", "Parent", "ResourceName", "State", "Category", "ExternalUri", "SourceProperties", "SecurityMarks", "EventTime", "CreateTime" }, null, new[]{ typeof(global::Google.Cloud.SecurityCenter.V1.Finding.Types.State) }, null, new pbr::GeneratedClrTypeInfo[] { null, })
           }));
     }
     #endregion
@@ -62,15 +62,19 @@ namespace Google.Cloud.SecurityCenter.V1 {
   }
   #region Messages
   /// <summary>
-  /// Cloud Security Command Center (Cloud SCC) finding.
+  /// Security Command Center finding.
   ///
   /// A finding is a record of assessment data like security, risk, health, or
-  /// privacy, that is ingested into Cloud SCC for presentation, notification,
-  /// analysis, policy testing, and enforcement. For example, a
+  /// privacy, that is ingested into Security Command Center for presentation,
+  /// notification, analysis, policy testing, and enforcement. For example, a
   /// cross-site scripting (XSS) vulnerability in an App Engine application is a
   /// finding.
   /// </summary>
-  public sealed partial class Finding : pb::IMessage<Finding> {
+  public sealed partial class Finding : pb::IMessage<Finding>
+  #if !GOOGLE_PROTOBUF_REFSTRUCT_COMPATIBILITY_MODE
+      , pb::IBufferMessage
+  #endif
+  {
     private static readonly pb::MessageParser<Finding> _parser = new pb::MessageParser<Finding>(() => new Finding());
     private pb::UnknownFieldSet _unknownFields;
     [global::System.Diagnostics.DebuggerNonUserCodeAttribute]
@@ -152,12 +156,12 @@ namespace Google.Cloud.SecurityCenter.V1 {
     public const int ResourceNameFieldNumber = 3;
     private string resourceName_ = "";
     /// <summary>
-    /// For findings on Google Cloud Platform (GCP) resources, the full resource
-    /// name of the GCP resource this finding is for. See:
+    /// For findings on Google Cloud resources, the full resource
+    /// name of the Google Cloud resource this finding is for. See:
     /// https://cloud.google.com/apis/design/resource_names#full_resource_name
-    /// When the finding is for a non-GCP resource, the resourceName can be a
-    /// customer or partner defined string.
-    /// This field is immutable after creation time.
+    /// When the finding is for a non-Google Cloud resource, the resourceName can
+    /// be a customer or partner defined string. This field is immutable after
+    /// creation time.
     /// </summary>
     [global::System.Diagnostics.DebuggerNonUserCodeAttribute]
     public string ResourceName {
@@ -169,7 +173,7 @@ namespace Google.Cloud.SecurityCenter.V1 {
 
     /// <summary>Field number for the "state" field.</summary>
     public const int StateFieldNumber = 4;
-    private global::Google.Cloud.SecurityCenter.V1.Finding.Types.State state_ = 0;
+    private global::Google.Cloud.SecurityCenter.V1.Finding.Types.State state_ = global::Google.Cloud.SecurityCenter.V1.Finding.Types.State.Unspecified;
     /// <summary>
     /// The state of the finding.
     /// </summary>
@@ -201,9 +205,9 @@ namespace Google.Cloud.SecurityCenter.V1 {
     public const int ExternalUriFieldNumber = 6;
     private string externalUri_ = "";
     /// <summary>
-    /// The URI that, if available, points to a web page outside of Cloud SCC
-    /// where additional information about the finding can be found. This field is
-    /// guaranteed to be either empty or a well formed URL.
+    /// The URI that, if available, points to a web page outside of Security
+    /// Command Center where additional information about the finding can be found.
+    /// This field is guaranteed to be either empty or a well formed URL.
     /// </summary>
     [global::System.Diagnostics.DebuggerNonUserCodeAttribute]
     public string ExternalUri {
@@ -216,7 +220,7 @@ namespace Google.Cloud.SecurityCenter.V1 {
     /// <summary>Field number for the "source_properties" field.</summary>
     public const int SourcePropertiesFieldNumber = 7;
     private static readonly pbc::MapField<string, global::Google.Protobuf.WellKnownTypes.Value>.Codec _map_sourceProperties_codec
-        = new pbc::MapField<string, global::Google.Protobuf.WellKnownTypes.Value>.Codec(pb::FieldCodec.ForString(10), pb::FieldCodec.ForMessage(18, global::Google.Protobuf.WellKnownTypes.Value.Parser), 58);
+        = new pbc::MapField<string, global::Google.Protobuf.WellKnownTypes.Value>.Codec(pb::FieldCodec.ForString(10, ""), pb::FieldCodec.ForMessage(18, global::Google.Protobuf.WellKnownTypes.Value.Parser), 58);
     private readonly pbc::MapField<string, global::Google.Protobuf.WellKnownTypes.Value> sourceProperties_ = new pbc::MapField<string, global::Google.Protobuf.WellKnownTypes.Value>();
     /// <summary>
     /// Source specific properties. These properties are managed by the source
@@ -249,9 +253,11 @@ namespace Google.Cloud.SecurityCenter.V1 {
     public const int EventTimeFieldNumber = 9;
     private global::Google.Protobuf.WellKnownTypes.Timestamp eventTime_;
     /// <summary>
-    /// The time at which the event took place. For example, if the finding
-    /// represents an open firewall it would capture the time the detector believes
-    /// the firewall became open. The accuracy is determined by the detector.
+    /// The time at which the event took place, or when an update to the finding
+    /// occurred. For example, if the finding represents an open firewall it would
+    /// capture the time the detector believes the firewall became open. The
+    /// accuracy is determined by the detector. If the finding were to be resolved
+    /// afterward, this time would reflect when the finding was resolved.
     /// </summary>
     [global::System.Diagnostics.DebuggerNonUserCodeAttribute]
     public global::Google.Protobuf.WellKnownTypes.Timestamp EventTime {
@@ -265,7 +271,7 @@ namespace Google.Cloud.SecurityCenter.V1 {
     public const int CreateTimeFieldNumber = 10;
     private global::Google.Protobuf.WellKnownTypes.Timestamp createTime_;
     /// <summary>
-    /// The time at which the finding was created in Cloud SCC.
+    /// The time at which the finding was created in Security Command Center.
     /// </summary>
     [global::System.Diagnostics.DebuggerNonUserCodeAttribute]
     public global::Google.Protobuf.WellKnownTypes.Timestamp CreateTime {
@@ -307,7 +313,7 @@ namespace Google.Cloud.SecurityCenter.V1 {
       if (Name.Length != 0) hash ^= Name.GetHashCode();
       if (Parent.Length != 0) hash ^= Parent.GetHashCode();
       if (ResourceName.Length != 0) hash ^= ResourceName.GetHashCode();
-      if (State != 0) hash ^= State.GetHashCode();
+      if (State != global::Google.Cloud.SecurityCenter.V1.Finding.Types.State.Unspecified) hash ^= State.GetHashCode();
       if (Category.Length != 0) hash ^= Category.GetHashCode();
       if (ExternalUri.Length != 0) hash ^= ExternalUri.GetHashCode();
       hash ^= SourceProperties.GetHashCode();
@@ -327,6 +333,9 @@ namespace Google.Cloud.SecurityCenter.V1 {
 
     [global::System.Diagnostics.DebuggerNonUserCodeAttribute]
     public void WriteTo(pb::CodedOutputStream output) {
+    #if !GOOGLE_PROTOBUF_REFSTRUCT_COMPATIBILITY_MODE
+      output.WriteRawMessage(this);
+    #else
       if (Name.Length != 0) {
         output.WriteRawTag(10);
         output.WriteString(Name);
@@ -339,7 +348,7 @@ namespace Google.Cloud.SecurityCenter.V1 {
         output.WriteRawTag(26);
         output.WriteString(ResourceName);
       }
-      if (State != 0) {
+      if (State != global::Google.Cloud.SecurityCenter.V1.Finding.Types.State.Unspecified) {
         output.WriteRawTag(32);
         output.WriteEnum((int) State);
       }
@@ -367,7 +376,54 @@ namespace Google.Cloud.SecurityCenter.V1 {
       if (_unknownFields != null) {
         _unknownFields.WriteTo(output);
       }
+    #endif
     }
+
+    #if !GOOGLE_PROTOBUF_REFSTRUCT_COMPATIBILITY_MODE
+    [global::System.Diagnostics.DebuggerNonUserCodeAttribute]
+    void pb::IBufferMessage.InternalWriteTo(ref pb::WriteContext output) {
+      if (Name.Length != 0) {
+        output.WriteRawTag(10);
+        output.WriteString(Name);
+      }
+      if (Parent.Length != 0) {
+        output.WriteRawTag(18);
+        output.WriteString(Parent);
+      }
+      if (ResourceName.Length != 0) {
+        output.WriteRawTag(26);
+        output.WriteString(ResourceName);
+      }
+      if (State != global::Google.Cloud.SecurityCenter.V1.Finding.Types.State.Unspecified) {
+        output.WriteRawTag(32);
+        output.WriteEnum((int) State);
+      }
+      if (Category.Length != 0) {
+        output.WriteRawTag(42);
+        output.WriteString(Category);
+      }
+      if (ExternalUri.Length != 0) {
+        output.WriteRawTag(50);
+        output.WriteString(ExternalUri);
+      }
+      sourceProperties_.WriteTo(ref output, _map_sourceProperties_codec);
+      if (securityMarks_ != null) {
+        output.WriteRawTag(66);
+        output.WriteMessage(SecurityMarks);
+      }
+      if (eventTime_ != null) {
+        output.WriteRawTag(74);
+        output.WriteMessage(EventTime);
+      }
+      if (createTime_ != null) {
+        output.WriteRawTag(82);
+        output.WriteMessage(CreateTime);
+      }
+      if (_unknownFields != null) {
+        _unknownFields.WriteTo(ref output);
+      }
+    }
+    #endif
 
     [global::System.Diagnostics.DebuggerNonUserCodeAttribute]
     public int CalculateSize() {
@@ -381,7 +437,7 @@ namespace Google.Cloud.SecurityCenter.V1 {
       if (ResourceName.Length != 0) {
         size += 1 + pb::CodedOutputStream.ComputeStringSize(ResourceName);
       }
-      if (State != 0) {
+      if (State != global::Google.Cloud.SecurityCenter.V1.Finding.Types.State.Unspecified) {
         size += 1 + pb::CodedOutputStream.ComputeEnumSize((int) State);
       }
       if (Category.Length != 0) {
@@ -420,7 +476,7 @@ namespace Google.Cloud.SecurityCenter.V1 {
       if (other.ResourceName.Length != 0) {
         ResourceName = other.ResourceName;
       }
-      if (other.State != 0) {
+      if (other.State != global::Google.Cloud.SecurityCenter.V1.Finding.Types.State.Unspecified) {
         State = other.State;
       }
       if (other.Category.Length != 0) {
@@ -453,6 +509,9 @@ namespace Google.Cloud.SecurityCenter.V1 {
 
     [global::System.Diagnostics.DebuggerNonUserCodeAttribute]
     public void MergeFrom(pb::CodedInputStream input) {
+    #if !GOOGLE_PROTOBUF_REFSTRUCT_COMPATIBILITY_MODE
+      input.ReadRawMessage(this);
+    #else
       uint tag;
       while ((tag = input.ReadTag()) != 0) {
         switch(tag) {
@@ -510,7 +569,71 @@ namespace Google.Cloud.SecurityCenter.V1 {
           }
         }
       }
+    #endif
     }
+
+    #if !GOOGLE_PROTOBUF_REFSTRUCT_COMPATIBILITY_MODE
+    [global::System.Diagnostics.DebuggerNonUserCodeAttribute]
+    void pb::IBufferMessage.InternalMergeFrom(ref pb::ParseContext input) {
+      uint tag;
+      while ((tag = input.ReadTag()) != 0) {
+        switch(tag) {
+          default:
+            _unknownFields = pb::UnknownFieldSet.MergeFieldFrom(_unknownFields, ref input);
+            break;
+          case 10: {
+            Name = input.ReadString();
+            break;
+          }
+          case 18: {
+            Parent = input.ReadString();
+            break;
+          }
+          case 26: {
+            ResourceName = input.ReadString();
+            break;
+          }
+          case 32: {
+            State = (global::Google.Cloud.SecurityCenter.V1.Finding.Types.State) input.ReadEnum();
+            break;
+          }
+          case 42: {
+            Category = input.ReadString();
+            break;
+          }
+          case 50: {
+            ExternalUri = input.ReadString();
+            break;
+          }
+          case 58: {
+            sourceProperties_.AddEntriesFrom(ref input, _map_sourceProperties_codec);
+            break;
+          }
+          case 66: {
+            if (securityMarks_ == null) {
+              SecurityMarks = new global::Google.Cloud.SecurityCenter.V1.SecurityMarks();
+            }
+            input.ReadMessage(SecurityMarks);
+            break;
+          }
+          case 74: {
+            if (eventTime_ == null) {
+              EventTime = new global::Google.Protobuf.WellKnownTypes.Timestamp();
+            }
+            input.ReadMessage(EventTime);
+            break;
+          }
+          case 82: {
+            if (createTime_ == null) {
+              CreateTime = new global::Google.Protobuf.WellKnownTypes.Timestamp();
+            }
+            input.ReadMessage(CreateTime);
+            break;
+          }
+        }
+      }
+    }
+    #endif
 
     #region Nested types
     /// <summary>Container for nested types declared in the Finding message type.</summary>

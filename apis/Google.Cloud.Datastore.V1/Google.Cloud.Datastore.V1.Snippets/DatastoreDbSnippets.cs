@@ -11,6 +11,7 @@
 // WITHOUT WARRANTIES OR CONDITIONS OF ANY KIND, either express or implied.
 // See the License for the specific language governing permissions and
 // limitations under the License.
+using Google.Api.Gax;
 using Google.Cloud.ClientTesting;
 using Google.Protobuf;
 using Grpc.Core;
@@ -149,7 +150,7 @@ namespace Google.Cloud.Datastore.V1.Snippets
             // End snippet
 
             // This will run the query again, admittedly...
-            List<Entity> entities = await results.ToList();
+            List<Entity> entities = await results.ToListAsync();
             Assert.Equal(1, entities.Count);
             Entity book = entities[0];
             Assert.Equal("Jane Austen", (string)book["author"]);
@@ -213,7 +214,7 @@ namespace Google.Cloud.Datastore.V1.Snippets
             // End snippet
 
             // This will run the query again, admittedly...
-            List<Entity> entities = await results.ToList();
+            List<Entity> entities = await results.ToListAsync();
             Assert.Equal(1, entities.Count);
             Entity book = entities[0];
             Assert.Equal("Jane Austen", (string)book["author"]);
@@ -1159,43 +1160,6 @@ namespace Google.Cloud.Datastore.V1.Snippets
             return db.Insert(entity);
         }
 
-        // Sample: EmulatorInit
-        private const string EmulatorHostVariable = "DATASTORE_EMULATOR_HOST";
-        private const string ProjectIdVariable = "DATASTORE_PROJECT_ID";
-
-        /// <summary>
-        /// Creates a <see cref="DatastoreDb"/>, using environment variables to support
-        /// the Datastore Emulator if they have been set.
-        /// </summary>
-        /// <remarks>
-        /// <para>
-        /// If the DATASTORE_EMULATOR_HOST environment variable is set and not empty,
-        /// this method will use the value to connect to the emulator. Otherwise, the default
-        /// endpoint (and credentials) will be used.
-        /// </para>
-        /// <para>
-        /// If the DATASTORE_PROJECT_ID environment variable is set and not empty, this
-        /// overrides the value of <paramref name="projectId"/>.
-        /// </para>
-        /// </remarks>
-        /// <param name="projectId">The project ID to use, unless overridden by DATASTORE_PROJECT_ID</param>
-        /// <param name="namespaceId">The namespace ID to use in operations requiring a partition.</param>
-        /// <returns>A <see cref="DatastoreDb"/> connected to either an emulator or production servers.</returns>
-        public static DatastoreDb CreateDatastoreDb(string projectId, string namespaceId = "")
-        {
-            string emulatorHost = Environment.GetEnvironmentVariable(EmulatorHostVariable);
-            string projectIdOverride = Environment.GetEnvironmentVariable(ProjectIdVariable);
-            if (!string.IsNullOrEmpty(projectIdOverride))
-            {
-                projectId = projectIdOverride;
-            }
-            DatastoreClient client = string.IsNullOrEmpty(emulatorHost)
-                ? DatastoreClient.Create()
-                : DatastoreClient.Create(new Channel(emulatorHost, ChannelCredentials.Insecure));
-            return DatastoreDb.Create(projectId, namespaceId, client);
-        }
-        // End sample
-
         [Fact]
         public void DetectEmulator()
         {
@@ -1204,7 +1168,7 @@ namespace Google.Cloud.Datastore.V1.Snippets
             DatastoreDb db = new DatastoreDbBuilder
             {
                 ProjectId = projectId,
-                EmulatorDetection = EmulatorDetection.ProductionOrEmulator
+                EmulatorDetection = EmulatorDetection.EmulatorOrProduction
             }.Build();
             // Use db as normal
             // End sample

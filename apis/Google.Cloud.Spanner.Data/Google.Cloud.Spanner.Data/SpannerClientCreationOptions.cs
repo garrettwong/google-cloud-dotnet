@@ -12,6 +12,7 @@
 // See the License for the specific language governing permissions and
 // limitations under the License.
 
+using Google.Api.Gax;
 using Google.Api.Gax.Grpc;
 using Google.Apis.Auth.OAuth2;
 using Google.Cloud.Spanner.V1;
@@ -42,7 +43,7 @@ namespace Google.Cloud.Spanner.Data
         /// <summary>
         /// The end-point to connect to; never null.
         /// </summary>
-        internal ServiceEndpoint Endpoint { get; }
+        internal string Endpoint { get; }
 
         /// <summary>
         /// The number of gRPC channels to use (passed to Grpc.Gcp)
@@ -55,6 +56,8 @@ namespace Google.Cloud.Spanner.Data
         /// </summary>
         internal uint MaximumConcurrentStreamsLowWatermark { get; }
 
+        internal bool UsesEmulator { get; }
+
         // Credential-related fields; not properties as GetCredentials is used to
         // obtain properties where necessary.
 
@@ -65,9 +68,18 @@ namespace Google.Cloud.Spanner.Data
 
         internal SpannerClientCreationOptions(SpannerConnectionStringBuilder builder)
         {
-            Endpoint = builder.EndPoint;
+            var emulatorBuilder = new SpannerClientBuilder
+            {
+                EmulatorDetection = builder.EmulatorDetection,
+                EnvironmentVariableProvider = builder.EnvironmentVariableProvider
+            }.MaybeCreateEmulatorClientBuilder();
+            UsesEmulator = emulatorBuilder is object;
+            // If the client connects to the emulator use its endpoint (regardless of builder.Endpoint)
+            Endpoint = emulatorBuilder?.Endpoint ?? builder.EndPoint;
             _credentialsFile = builder.CredentialFile;
-            _credentialsOverride = builder.CredentialOverride;
+
+            // If the client connects to the emulator, use its credentials (regardless of builder.CredentialOverride)
+            _credentialsOverride = emulatorBuilder?.ChannelCredentials ?? builder.CredentialOverride;
             MaximumGrpcChannels = builder.MaximumGrpcChannels;
             MaximumConcurrentStreamsLowWatermark = (uint) builder.MaxConcurrentStreamsLowWatermark;
         }
@@ -79,6 +91,7 @@ namespace Google.Cloud.Spanner.Data
             Endpoint.Equals(other.Endpoint) &&
             Equals(_credentialsFile, other._credentialsFile) &&
             Equals(_credentialsOverride, other._credentialsOverride) &&
+            UsesEmulator == other.UsesEmulator &&
             MaximumGrpcChannels == other.MaximumGrpcChannels &&
             MaximumConcurrentStreamsLowWatermark == other.MaximumConcurrentStreamsLowWatermark;
 
@@ -90,6 +103,7 @@ namespace Google.Cloud.Spanner.Data
                 hash = hash * 23 + Endpoint.GetHashCode();
                 hash = hash * 23 + (_credentialsFile?.GetHashCode() ?? 0);
                 hash = hash * 23 + (_credentialsOverride?.GetHashCode() ?? 0);
+                hash = hash * 23 + UsesEmulator.GetHashCode();
                 hash = hash * 23 + MaximumGrpcChannels;
                 hash = hash * 23 + (int) MaximumConcurrentStreamsLowWatermark;
                 return hash;
@@ -111,6 +125,7 @@ namespace Google.Cloud.Spanner.Data
             {
                 builder.Append($"; CredentialsOverride: True");
             }
+            builder.Append($"; UsesEmulator: {UsesEmulator}");
             return builder.ToString();
         }
 

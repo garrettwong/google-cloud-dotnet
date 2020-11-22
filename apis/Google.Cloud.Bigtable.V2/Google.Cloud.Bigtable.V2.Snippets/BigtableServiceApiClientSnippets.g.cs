@@ -1,4 +1,4 @@
-// Copyright 2019 Google LLC
+// Copyright 2020 Google LLC
 //
 // Licensed under the Apache License, Version 2.0 (the "License");
 // you may not use this file except in compliance with the License.
@@ -16,6 +16,7 @@
 
 namespace Google.Cloud.Bigtable.V2.Snippets
 {
+    using Google.Api.Gax.Grpc;
     using Google.Cloud.Bigtable.Common.V2;
     using Google.Protobuf;
     using System.Collections.Generic;
@@ -25,7 +26,7 @@ namespace Google.Cloud.Bigtable.V2.Snippets
     public sealed class GeneratedBigtableServiceApiClientSnippets
     {
         /// <summary>Snippet for ReadRows</summary>
-        public async Task ReadRows_RequestObject()
+        public async Task ReadRowsRequestObject()
         {
             // Snippet: ReadRows(ReadRowsRequest, CallSettings)
             // Create client
@@ -33,7 +34,7 @@ namespace Google.Cloud.Bigtable.V2.Snippets
             // Initialize request argument(s)
             ReadRowsRequest request = new ReadRowsRequest
             {
-                TableNameAsTableName = new TableName("[PROJECT]", "[INSTANCE]", "[TABLE]"),
+                TableNameAsTableName = TableName.FromProjectInstanceTable("[PROJECT]", "[INSTANCE]", "[TABLE]"),
                 Rows = new RowSet(),
                 Filter = new RowFilter(),
                 RowsLimit = 0L,
@@ -43,8 +44,9 @@ namespace Google.Cloud.Bigtable.V2.Snippets
             BigtableServiceApiClient.ReadRowsStream response = bigtableServiceApiClient.ReadRows(request);
 
             // Read streaming responses from server until complete
-            IAsyncEnumerator<ReadRowsResponse> responseStream = response.ResponseStream;
-            while (await responseStream.MoveNext())
+            // Note that C# 8 code can use await foreach
+            AsyncResponseStream<ReadRowsResponse> responseStream = response.GetResponseStream();
+            while (await responseStream.MoveNextAsync())
             {
                 ReadRowsResponse responseItem = responseStream.Current;
                 // Do something with streamed response
@@ -65,8 +67,9 @@ namespace Google.Cloud.Bigtable.V2.Snippets
             BigtableServiceApiClient.ReadRowsStream response = bigtableServiceApiClient.ReadRows(tableName);
 
             // Read streaming responses from server until complete
-            IAsyncEnumerator<ReadRowsResponse> responseStream = response.ResponseStream;
-            while (await responseStream.MoveNext())
+            // Note that C# 8 code can use await foreach
+            AsyncResponseStream<ReadRowsResponse> responseStream = response.GetResponseStream();
+            while (await responseStream.MoveNextAsync())
             {
                 ReadRowsResponse responseItem = responseStream.Current;
                 // Do something with streamed response
@@ -76,19 +79,20 @@ namespace Google.Cloud.Bigtable.V2.Snippets
         }
 
         /// <summary>Snippet for ReadRows</summary>
-        public async Task ReadRows1_ResourceNames()
+        public async Task ReadRows1ResourceNames()
         {
             // Snippet: ReadRows(TableName, CallSettings)
             // Create client
             BigtableServiceApiClient bigtableServiceApiClient = BigtableServiceApiClient.Create();
             // Initialize request argument(s)
-            TableName tableName = new TableName("[PROJECT]", "[INSTANCE]", "[TABLE]");
+            TableName tableName = TableName.FromProjectInstanceTable("[PROJECT]", "[INSTANCE]", "[TABLE]");
             // Make the request, returning a streaming response
             BigtableServiceApiClient.ReadRowsStream response = bigtableServiceApiClient.ReadRows(tableName);
 
             // Read streaming responses from server until complete
-            IAsyncEnumerator<ReadRowsResponse> responseStream = response.ResponseStream;
-            while (await responseStream.MoveNext())
+            // Note that C# 8 code can use await foreach
+            AsyncResponseStream<ReadRowsResponse> responseStream = response.GetResponseStream();
+            while (await responseStream.MoveNextAsync())
             {
                 ReadRowsResponse responseItem = responseStream.Current;
                 // Do something with streamed response
@@ -110,8 +114,9 @@ namespace Google.Cloud.Bigtable.V2.Snippets
             BigtableServiceApiClient.ReadRowsStream response = bigtableServiceApiClient.ReadRows(tableName, appProfileId);
 
             // Read streaming responses from server until complete
-            IAsyncEnumerator<ReadRowsResponse> responseStream = response.ResponseStream;
-            while (await responseStream.MoveNext())
+            // Note that C# 8 code can use await foreach
+            AsyncResponseStream<ReadRowsResponse> responseStream = response.GetResponseStream();
+            while (await responseStream.MoveNextAsync())
             {
                 ReadRowsResponse responseItem = responseStream.Current;
                 // Do something with streamed response
@@ -121,20 +126,21 @@ namespace Google.Cloud.Bigtable.V2.Snippets
         }
 
         /// <summary>Snippet for ReadRows</summary>
-        public async Task ReadRows2_ResourceNames()
+        public async Task ReadRows2ResourceNames()
         {
             // Snippet: ReadRows(TableName, string, CallSettings)
             // Create client
             BigtableServiceApiClient bigtableServiceApiClient = BigtableServiceApiClient.Create();
             // Initialize request argument(s)
-            TableName tableName = new TableName("[PROJECT]", "[INSTANCE]", "[TABLE]");
+            TableName tableName = TableName.FromProjectInstanceTable("[PROJECT]", "[INSTANCE]", "[TABLE]");
             string appProfileId = "";
             // Make the request, returning a streaming response
             BigtableServiceApiClient.ReadRowsStream response = bigtableServiceApiClient.ReadRows(tableName, appProfileId);
 
             // Read streaming responses from server until complete
-            IAsyncEnumerator<ReadRowsResponse> responseStream = response.ResponseStream;
-            while (await responseStream.MoveNext())
+            // Note that C# 8 code can use await foreach
+            AsyncResponseStream<ReadRowsResponse> responseStream = response.GetResponseStream();
+            while (await responseStream.MoveNextAsync())
             {
                 ReadRowsResponse responseItem = responseStream.Current;
                 // Do something with streamed response
@@ -144,7 +150,7 @@ namespace Google.Cloud.Bigtable.V2.Snippets
         }
 
         /// <summary>Snippet for SampleRowKeys</summary>
-        public async Task SampleRowKeys_RequestObject()
+        public async Task SampleRowKeysRequestObject()
         {
             // Snippet: SampleRowKeys(SampleRowKeysRequest, CallSettings)
             // Create client
@@ -152,15 +158,16 @@ namespace Google.Cloud.Bigtable.V2.Snippets
             // Initialize request argument(s)
             SampleRowKeysRequest request = new SampleRowKeysRequest
             {
-                TableNameAsTableName = new TableName("[PROJECT]", "[INSTANCE]", "[TABLE]"),
+                TableNameAsTableName = TableName.FromProjectInstanceTable("[PROJECT]", "[INSTANCE]", "[TABLE]"),
                 AppProfileId = "",
             };
             // Make the request, returning a streaming response
             BigtableServiceApiClient.SampleRowKeysStream response = bigtableServiceApiClient.SampleRowKeys(request);
 
             // Read streaming responses from server until complete
-            IAsyncEnumerator<SampleRowKeysResponse> responseStream = response.ResponseStream;
-            while (await responseStream.MoveNext())
+            // Note that C# 8 code can use await foreach
+            AsyncResponseStream<SampleRowKeysResponse> responseStream = response.GetResponseStream();
+            while (await responseStream.MoveNextAsync())
             {
                 SampleRowKeysResponse responseItem = responseStream.Current;
                 // Do something with streamed response
@@ -181,8 +188,9 @@ namespace Google.Cloud.Bigtable.V2.Snippets
             BigtableServiceApiClient.SampleRowKeysStream response = bigtableServiceApiClient.SampleRowKeys(tableName);
 
             // Read streaming responses from server until complete
-            IAsyncEnumerator<SampleRowKeysResponse> responseStream = response.ResponseStream;
-            while (await responseStream.MoveNext())
+            // Note that C# 8 code can use await foreach
+            AsyncResponseStream<SampleRowKeysResponse> responseStream = response.GetResponseStream();
+            while (await responseStream.MoveNextAsync())
             {
                 SampleRowKeysResponse responseItem = responseStream.Current;
                 // Do something with streamed response
@@ -192,19 +200,20 @@ namespace Google.Cloud.Bigtable.V2.Snippets
         }
 
         /// <summary>Snippet for SampleRowKeys</summary>
-        public async Task SampleRowKeys1_ResourceNames()
+        public async Task SampleRowKeys1ResourceNames()
         {
             // Snippet: SampleRowKeys(TableName, CallSettings)
             // Create client
             BigtableServiceApiClient bigtableServiceApiClient = BigtableServiceApiClient.Create();
             // Initialize request argument(s)
-            TableName tableName = new TableName("[PROJECT]", "[INSTANCE]", "[TABLE]");
+            TableName tableName = TableName.FromProjectInstanceTable("[PROJECT]", "[INSTANCE]", "[TABLE]");
             // Make the request, returning a streaming response
             BigtableServiceApiClient.SampleRowKeysStream response = bigtableServiceApiClient.SampleRowKeys(tableName);
 
             // Read streaming responses from server until complete
-            IAsyncEnumerator<SampleRowKeysResponse> responseStream = response.ResponseStream;
-            while (await responseStream.MoveNext())
+            // Note that C# 8 code can use await foreach
+            AsyncResponseStream<SampleRowKeysResponse> responseStream = response.GetResponseStream();
+            while (await responseStream.MoveNextAsync())
             {
                 SampleRowKeysResponse responseItem = responseStream.Current;
                 // Do something with streamed response
@@ -226,8 +235,9 @@ namespace Google.Cloud.Bigtable.V2.Snippets
             BigtableServiceApiClient.SampleRowKeysStream response = bigtableServiceApiClient.SampleRowKeys(tableName, appProfileId);
 
             // Read streaming responses from server until complete
-            IAsyncEnumerator<SampleRowKeysResponse> responseStream = response.ResponseStream;
-            while (await responseStream.MoveNext())
+            // Note that C# 8 code can use await foreach
+            AsyncResponseStream<SampleRowKeysResponse> responseStream = response.GetResponseStream();
+            while (await responseStream.MoveNextAsync())
             {
                 SampleRowKeysResponse responseItem = responseStream.Current;
                 // Do something with streamed response
@@ -237,20 +247,21 @@ namespace Google.Cloud.Bigtable.V2.Snippets
         }
 
         /// <summary>Snippet for SampleRowKeys</summary>
-        public async Task SampleRowKeys2_ResourceNames()
+        public async Task SampleRowKeys2ResourceNames()
         {
             // Snippet: SampleRowKeys(TableName, string, CallSettings)
             // Create client
             BigtableServiceApiClient bigtableServiceApiClient = BigtableServiceApiClient.Create();
             // Initialize request argument(s)
-            TableName tableName = new TableName("[PROJECT]", "[INSTANCE]", "[TABLE]");
+            TableName tableName = TableName.FromProjectInstanceTable("[PROJECT]", "[INSTANCE]", "[TABLE]");
             string appProfileId = "";
             // Make the request, returning a streaming response
             BigtableServiceApiClient.SampleRowKeysStream response = bigtableServiceApiClient.SampleRowKeys(tableName, appProfileId);
 
             // Read streaming responses from server until complete
-            IAsyncEnumerator<SampleRowKeysResponse> responseStream = response.ResponseStream;
-            while (await responseStream.MoveNext())
+            // Note that C# 8 code can use await foreach
+            AsyncResponseStream<SampleRowKeysResponse> responseStream = response.GetResponseStream();
+            while (await responseStream.MoveNextAsync())
             {
                 SampleRowKeysResponse responseItem = responseStream.Current;
                 // Do something with streamed response
@@ -260,7 +271,7 @@ namespace Google.Cloud.Bigtable.V2.Snippets
         }
 
         /// <summary>Snippet for MutateRow</summary>
-        public void MutateRow_RequestObject()
+        public void MutateRowRequestObject()
         {
             // Snippet: MutateRow(MutateRowRequest, CallSettings)
             // Create client
@@ -268,7 +279,7 @@ namespace Google.Cloud.Bigtable.V2.Snippets
             // Initialize request argument(s)
             MutateRowRequest request = new MutateRowRequest
             {
-                TableNameAsTableName = new TableName("[PROJECT]", "[INSTANCE]", "[TABLE]"),
+                TableNameAsTableName = TableName.FromProjectInstanceTable("[PROJECT]", "[INSTANCE]", "[TABLE]"),
                 RowKey = ByteString.Empty,
                 Mutations = { new Mutation(), },
                 AppProfileId = "",
@@ -279,7 +290,7 @@ namespace Google.Cloud.Bigtable.V2.Snippets
         }
 
         /// <summary>Snippet for MutateRowAsync</summary>
-        public async Task MutateRowAsync_RequestObject()
+        public async Task MutateRowRequestObjectAsync()
         {
             // Snippet: MutateRowAsync(MutateRowRequest, CallSettings)
             // Additional: MutateRowAsync(MutateRowRequest, CancellationToken)
@@ -288,7 +299,7 @@ namespace Google.Cloud.Bigtable.V2.Snippets
             // Initialize request argument(s)
             MutateRowRequest request = new MutateRowRequest
             {
-                TableNameAsTableName = new TableName("[PROJECT]", "[INSTANCE]", "[TABLE]"),
+                TableNameAsTableName = TableName.FromProjectInstanceTable("[PROJECT]", "[INSTANCE]", "[TABLE]"),
                 RowKey = ByteString.Empty,
                 Mutations = { new Mutation(), },
                 AppProfileId = "",
@@ -330,13 +341,13 @@ namespace Google.Cloud.Bigtable.V2.Snippets
         }
 
         /// <summary>Snippet for MutateRow</summary>
-        public void MutateRow1_ResourceNames()
+        public void MutateRow1ResourceNames()
         {
             // Snippet: MutateRow(TableName, ByteString, IEnumerable<Mutation>, CallSettings)
             // Create client
             BigtableServiceApiClient bigtableServiceApiClient = BigtableServiceApiClient.Create();
             // Initialize request argument(s)
-            TableName tableName = new TableName("[PROJECT]", "[INSTANCE]", "[TABLE]");
+            TableName tableName = TableName.FromProjectInstanceTable("[PROJECT]", "[INSTANCE]", "[TABLE]");
             ByteString rowKey = ByteString.Empty;
             IEnumerable<Mutation> mutations = new Mutation[] { new Mutation(), };
             // Make the request
@@ -345,14 +356,14 @@ namespace Google.Cloud.Bigtable.V2.Snippets
         }
 
         /// <summary>Snippet for MutateRowAsync</summary>
-        public async Task MutateRow1Async_ResourceNames()
+        public async Task MutateRow1ResourceNamesAsync()
         {
             // Snippet: MutateRowAsync(TableName, ByteString, IEnumerable<Mutation>, CallSettings)
             // Additional: MutateRowAsync(TableName, ByteString, IEnumerable<Mutation>, CancellationToken)
             // Create client
             BigtableServiceApiClient bigtableServiceApiClient = await BigtableServiceApiClient.CreateAsync();
             // Initialize request argument(s)
-            TableName tableName = new TableName("[PROJECT]", "[INSTANCE]", "[TABLE]");
+            TableName tableName = TableName.FromProjectInstanceTable("[PROJECT]", "[INSTANCE]", "[TABLE]");
             ByteString rowKey = ByteString.Empty;
             IEnumerable<Mutation> mutations = new Mutation[] { new Mutation(), };
             // Make the request
@@ -394,13 +405,13 @@ namespace Google.Cloud.Bigtable.V2.Snippets
         }
 
         /// <summary>Snippet for MutateRow</summary>
-        public void MutateRow2_ResourceNames()
+        public void MutateRow2ResourceNames()
         {
             // Snippet: MutateRow(TableName, ByteString, IEnumerable<Mutation>, string, CallSettings)
             // Create client
             BigtableServiceApiClient bigtableServiceApiClient = BigtableServiceApiClient.Create();
             // Initialize request argument(s)
-            TableName tableName = new TableName("[PROJECT]", "[INSTANCE]", "[TABLE]");
+            TableName tableName = TableName.FromProjectInstanceTable("[PROJECT]", "[INSTANCE]", "[TABLE]");
             ByteString rowKey = ByteString.Empty;
             IEnumerable<Mutation> mutations = new Mutation[] { new Mutation(), };
             string appProfileId = "";
@@ -410,14 +421,14 @@ namespace Google.Cloud.Bigtable.V2.Snippets
         }
 
         /// <summary>Snippet for MutateRowAsync</summary>
-        public async Task MutateRow2Async_ResourceNames()
+        public async Task MutateRow2ResourceNamesAsync()
         {
             // Snippet: MutateRowAsync(TableName, ByteString, IEnumerable<Mutation>, string, CallSettings)
             // Additional: MutateRowAsync(TableName, ByteString, IEnumerable<Mutation>, string, CancellationToken)
             // Create client
             BigtableServiceApiClient bigtableServiceApiClient = await BigtableServiceApiClient.CreateAsync();
             // Initialize request argument(s)
-            TableName tableName = new TableName("[PROJECT]", "[INSTANCE]", "[TABLE]");
+            TableName tableName = TableName.FromProjectInstanceTable("[PROJECT]", "[INSTANCE]", "[TABLE]");
             ByteString rowKey = ByteString.Empty;
             IEnumerable<Mutation> mutations = new Mutation[] { new Mutation(), };
             string appProfileId = "";
@@ -427,7 +438,7 @@ namespace Google.Cloud.Bigtable.V2.Snippets
         }
 
         /// <summary>Snippet for MutateRows</summary>
-        public async Task MutateRows_RequestObject()
+        public async Task MutateRowsRequestObject()
         {
             // Snippet: MutateRows(MutateRowsRequest, CallSettings)
             // Create client
@@ -435,7 +446,7 @@ namespace Google.Cloud.Bigtable.V2.Snippets
             // Initialize request argument(s)
             MutateRowsRequest request = new MutateRowsRequest
             {
-                TableNameAsTableName = new TableName("[PROJECT]", "[INSTANCE]", "[TABLE]"),
+                TableNameAsTableName = TableName.FromProjectInstanceTable("[PROJECT]", "[INSTANCE]", "[TABLE]"),
                 Entries =
                 {
                     new MutateRowsRequest.Types.Entry(),
@@ -446,8 +457,9 @@ namespace Google.Cloud.Bigtable.V2.Snippets
             BigtableServiceApiClient.MutateRowsStream response = bigtableServiceApiClient.MutateRows(request);
 
             // Read streaming responses from server until complete
-            IAsyncEnumerator<MutateRowsResponse> responseStream = response.ResponseStream;
-            while (await responseStream.MoveNext())
+            // Note that C# 8 code can use await foreach
+            AsyncResponseStream<MutateRowsResponse> responseStream = response.GetResponseStream();
+            while (await responseStream.MoveNextAsync())
             {
                 MutateRowsResponse responseItem = responseStream.Current;
                 // Do something with streamed response
@@ -472,8 +484,9 @@ namespace Google.Cloud.Bigtable.V2.Snippets
             BigtableServiceApiClient.MutateRowsStream response = bigtableServiceApiClient.MutateRows(tableName, entries);
 
             // Read streaming responses from server until complete
-            IAsyncEnumerator<MutateRowsResponse> responseStream = response.ResponseStream;
-            while (await responseStream.MoveNext())
+            // Note that C# 8 code can use await foreach
+            AsyncResponseStream<MutateRowsResponse> responseStream = response.GetResponseStream();
+            while (await responseStream.MoveNextAsync())
             {
                 MutateRowsResponse responseItem = responseStream.Current;
                 // Do something with streamed response
@@ -483,13 +496,13 @@ namespace Google.Cloud.Bigtable.V2.Snippets
         }
 
         /// <summary>Snippet for MutateRows</summary>
-        public async Task MutateRows1_ResourceNames()
+        public async Task MutateRows1ResourceNames()
         {
             // Snippet: MutateRows(TableName, IEnumerable<MutateRowsRequest.Types.Entry>, CallSettings)
             // Create client
             BigtableServiceApiClient bigtableServiceApiClient = BigtableServiceApiClient.Create();
             // Initialize request argument(s)
-            TableName tableName = new TableName("[PROJECT]", "[INSTANCE]", "[TABLE]");
+            TableName tableName = TableName.FromProjectInstanceTable("[PROJECT]", "[INSTANCE]", "[TABLE]");
             IEnumerable<MutateRowsRequest.Types.Entry> entries = new MutateRowsRequest.Types.Entry[]
             {
                 new MutateRowsRequest.Types.Entry(),
@@ -498,8 +511,9 @@ namespace Google.Cloud.Bigtable.V2.Snippets
             BigtableServiceApiClient.MutateRowsStream response = bigtableServiceApiClient.MutateRows(tableName, entries);
 
             // Read streaming responses from server until complete
-            IAsyncEnumerator<MutateRowsResponse> responseStream = response.ResponseStream;
-            while (await responseStream.MoveNext())
+            // Note that C# 8 code can use await foreach
+            AsyncResponseStream<MutateRowsResponse> responseStream = response.GetResponseStream();
+            while (await responseStream.MoveNextAsync())
             {
                 MutateRowsResponse responseItem = responseStream.Current;
                 // Do something with streamed response
@@ -525,8 +539,9 @@ namespace Google.Cloud.Bigtable.V2.Snippets
             BigtableServiceApiClient.MutateRowsStream response = bigtableServiceApiClient.MutateRows(tableName, entries, appProfileId);
 
             // Read streaming responses from server until complete
-            IAsyncEnumerator<MutateRowsResponse> responseStream = response.ResponseStream;
-            while (await responseStream.MoveNext())
+            // Note that C# 8 code can use await foreach
+            AsyncResponseStream<MutateRowsResponse> responseStream = response.GetResponseStream();
+            while (await responseStream.MoveNextAsync())
             {
                 MutateRowsResponse responseItem = responseStream.Current;
                 // Do something with streamed response
@@ -536,13 +551,13 @@ namespace Google.Cloud.Bigtable.V2.Snippets
         }
 
         /// <summary>Snippet for MutateRows</summary>
-        public async Task MutateRows2_ResourceNames()
+        public async Task MutateRows2ResourceNames()
         {
             // Snippet: MutateRows(TableName, IEnumerable<MutateRowsRequest.Types.Entry>, string, CallSettings)
             // Create client
             BigtableServiceApiClient bigtableServiceApiClient = BigtableServiceApiClient.Create();
             // Initialize request argument(s)
-            TableName tableName = new TableName("[PROJECT]", "[INSTANCE]", "[TABLE]");
+            TableName tableName = TableName.FromProjectInstanceTable("[PROJECT]", "[INSTANCE]", "[TABLE]");
             IEnumerable<MutateRowsRequest.Types.Entry> entries = new MutateRowsRequest.Types.Entry[]
             {
                 new MutateRowsRequest.Types.Entry(),
@@ -552,8 +567,9 @@ namespace Google.Cloud.Bigtable.V2.Snippets
             BigtableServiceApiClient.MutateRowsStream response = bigtableServiceApiClient.MutateRows(tableName, entries, appProfileId);
 
             // Read streaming responses from server until complete
-            IAsyncEnumerator<MutateRowsResponse> responseStream = response.ResponseStream;
-            while (await responseStream.MoveNext())
+            // Note that C# 8 code can use await foreach
+            AsyncResponseStream<MutateRowsResponse> responseStream = response.GetResponseStream();
+            while (await responseStream.MoveNextAsync())
             {
                 MutateRowsResponse responseItem = responseStream.Current;
                 // Do something with streamed response
@@ -563,7 +579,7 @@ namespace Google.Cloud.Bigtable.V2.Snippets
         }
 
         /// <summary>Snippet for CheckAndMutateRow</summary>
-        public void CheckAndMutateRow_RequestObject()
+        public void CheckAndMutateRowRequestObject()
         {
             // Snippet: CheckAndMutateRow(CheckAndMutateRowRequest, CallSettings)
             // Create client
@@ -571,7 +587,7 @@ namespace Google.Cloud.Bigtable.V2.Snippets
             // Initialize request argument(s)
             CheckAndMutateRowRequest request = new CheckAndMutateRowRequest
             {
-                TableNameAsTableName = new TableName("[PROJECT]", "[INSTANCE]", "[TABLE]"),
+                TableNameAsTableName = TableName.FromProjectInstanceTable("[PROJECT]", "[INSTANCE]", "[TABLE]"),
                 RowKey = ByteString.Empty,
                 TrueMutations = { new Mutation(), },
                 FalseMutations = { new Mutation(), },
@@ -584,7 +600,7 @@ namespace Google.Cloud.Bigtable.V2.Snippets
         }
 
         /// <summary>Snippet for CheckAndMutateRowAsync</summary>
-        public async Task CheckAndMutateRowAsync_RequestObject()
+        public async Task CheckAndMutateRowRequestObjectAsync()
         {
             // Snippet: CheckAndMutateRowAsync(CheckAndMutateRowRequest, CallSettings)
             // Additional: CheckAndMutateRowAsync(CheckAndMutateRowRequest, CancellationToken)
@@ -593,7 +609,7 @@ namespace Google.Cloud.Bigtable.V2.Snippets
             // Initialize request argument(s)
             CheckAndMutateRowRequest request = new CheckAndMutateRowRequest
             {
-                TableNameAsTableName = new TableName("[PROJECT]", "[INSTANCE]", "[TABLE]"),
+                TableNameAsTableName = TableName.FromProjectInstanceTable("[PROJECT]", "[INSTANCE]", "[TABLE]"),
                 RowKey = ByteString.Empty,
                 TrueMutations = { new Mutation(), },
                 FalseMutations = { new Mutation(), },
@@ -641,13 +657,13 @@ namespace Google.Cloud.Bigtable.V2.Snippets
         }
 
         /// <summary>Snippet for CheckAndMutateRow</summary>
-        public void CheckAndMutateRow1_ResourceNames()
+        public void CheckAndMutateRow1ResourceNames()
         {
             // Snippet: CheckAndMutateRow(TableName, ByteString, RowFilter, IEnumerable<Mutation>, IEnumerable<Mutation>, CallSettings)
             // Create client
             BigtableServiceApiClient bigtableServiceApiClient = BigtableServiceApiClient.Create();
             // Initialize request argument(s)
-            TableName tableName = new TableName("[PROJECT]", "[INSTANCE]", "[TABLE]");
+            TableName tableName = TableName.FromProjectInstanceTable("[PROJECT]", "[INSTANCE]", "[TABLE]");
             ByteString rowKey = ByteString.Empty;
             RowFilter predicateFilter = new RowFilter();
             IEnumerable<Mutation> trueMutations = new Mutation[] { new Mutation(), };
@@ -658,14 +674,14 @@ namespace Google.Cloud.Bigtable.V2.Snippets
         }
 
         /// <summary>Snippet for CheckAndMutateRowAsync</summary>
-        public async Task CheckAndMutateRow1Async_ResourceNames()
+        public async Task CheckAndMutateRow1ResourceNamesAsync()
         {
             // Snippet: CheckAndMutateRowAsync(TableName, ByteString, RowFilter, IEnumerable<Mutation>, IEnumerable<Mutation>, CallSettings)
             // Additional: CheckAndMutateRowAsync(TableName, ByteString, RowFilter, IEnumerable<Mutation>, IEnumerable<Mutation>, CancellationToken)
             // Create client
             BigtableServiceApiClient bigtableServiceApiClient = await BigtableServiceApiClient.CreateAsync();
             // Initialize request argument(s)
-            TableName tableName = new TableName("[PROJECT]", "[INSTANCE]", "[TABLE]");
+            TableName tableName = TableName.FromProjectInstanceTable("[PROJECT]", "[INSTANCE]", "[TABLE]");
             ByteString rowKey = ByteString.Empty;
             RowFilter predicateFilter = new RowFilter();
             IEnumerable<Mutation> trueMutations = new Mutation[] { new Mutation(), };
@@ -713,13 +729,13 @@ namespace Google.Cloud.Bigtable.V2.Snippets
         }
 
         /// <summary>Snippet for CheckAndMutateRow</summary>
-        public void CheckAndMutateRow2_ResourceNames()
+        public void CheckAndMutateRow2ResourceNames()
         {
             // Snippet: CheckAndMutateRow(TableName, ByteString, RowFilter, IEnumerable<Mutation>, IEnumerable<Mutation>, string, CallSettings)
             // Create client
             BigtableServiceApiClient bigtableServiceApiClient = BigtableServiceApiClient.Create();
             // Initialize request argument(s)
-            TableName tableName = new TableName("[PROJECT]", "[INSTANCE]", "[TABLE]");
+            TableName tableName = TableName.FromProjectInstanceTable("[PROJECT]", "[INSTANCE]", "[TABLE]");
             ByteString rowKey = ByteString.Empty;
             RowFilter predicateFilter = new RowFilter();
             IEnumerable<Mutation> trueMutations = new Mutation[] { new Mutation(), };
@@ -731,14 +747,14 @@ namespace Google.Cloud.Bigtable.V2.Snippets
         }
 
         /// <summary>Snippet for CheckAndMutateRowAsync</summary>
-        public async Task CheckAndMutateRow2Async_ResourceNames()
+        public async Task CheckAndMutateRow2ResourceNamesAsync()
         {
             // Snippet: CheckAndMutateRowAsync(TableName, ByteString, RowFilter, IEnumerable<Mutation>, IEnumerable<Mutation>, string, CallSettings)
             // Additional: CheckAndMutateRowAsync(TableName, ByteString, RowFilter, IEnumerable<Mutation>, IEnumerable<Mutation>, string, CancellationToken)
             // Create client
             BigtableServiceApiClient bigtableServiceApiClient = await BigtableServiceApiClient.CreateAsync();
             // Initialize request argument(s)
-            TableName tableName = new TableName("[PROJECT]", "[INSTANCE]", "[TABLE]");
+            TableName tableName = TableName.FromProjectInstanceTable("[PROJECT]", "[INSTANCE]", "[TABLE]");
             ByteString rowKey = ByteString.Empty;
             RowFilter predicateFilter = new RowFilter();
             IEnumerable<Mutation> trueMutations = new Mutation[] { new Mutation(), };
@@ -750,7 +766,7 @@ namespace Google.Cloud.Bigtable.V2.Snippets
         }
 
         /// <summary>Snippet for ReadModifyWriteRow</summary>
-        public void ReadModifyWriteRow_RequestObject()
+        public void ReadModifyWriteRowRequestObject()
         {
             // Snippet: ReadModifyWriteRow(ReadModifyWriteRowRequest, CallSettings)
             // Create client
@@ -758,7 +774,7 @@ namespace Google.Cloud.Bigtable.V2.Snippets
             // Initialize request argument(s)
             ReadModifyWriteRowRequest request = new ReadModifyWriteRowRequest
             {
-                TableNameAsTableName = new TableName("[PROJECT]", "[INSTANCE]", "[TABLE]"),
+                TableNameAsTableName = TableName.FromProjectInstanceTable("[PROJECT]", "[INSTANCE]", "[TABLE]"),
                 RowKey = ByteString.Empty,
                 Rules =
                 {
@@ -772,7 +788,7 @@ namespace Google.Cloud.Bigtable.V2.Snippets
         }
 
         /// <summary>Snippet for ReadModifyWriteRowAsync</summary>
-        public async Task ReadModifyWriteRowAsync_RequestObject()
+        public async Task ReadModifyWriteRowRequestObjectAsync()
         {
             // Snippet: ReadModifyWriteRowAsync(ReadModifyWriteRowRequest, CallSettings)
             // Additional: ReadModifyWriteRowAsync(ReadModifyWriteRowRequest, CancellationToken)
@@ -781,7 +797,7 @@ namespace Google.Cloud.Bigtable.V2.Snippets
             // Initialize request argument(s)
             ReadModifyWriteRowRequest request = new ReadModifyWriteRowRequest
             {
-                TableNameAsTableName = new TableName("[PROJECT]", "[INSTANCE]", "[TABLE]"),
+                TableNameAsTableName = TableName.FromProjectInstanceTable("[PROJECT]", "[INSTANCE]", "[TABLE]"),
                 RowKey = ByteString.Empty,
                 Rules =
                 {
@@ -832,13 +848,13 @@ namespace Google.Cloud.Bigtable.V2.Snippets
         }
 
         /// <summary>Snippet for ReadModifyWriteRow</summary>
-        public void ReadModifyWriteRow1_ResourceNames()
+        public void ReadModifyWriteRow1ResourceNames()
         {
             // Snippet: ReadModifyWriteRow(TableName, ByteString, IEnumerable<ReadModifyWriteRule>, CallSettings)
             // Create client
             BigtableServiceApiClient bigtableServiceApiClient = BigtableServiceApiClient.Create();
             // Initialize request argument(s)
-            TableName tableName = new TableName("[PROJECT]", "[INSTANCE]", "[TABLE]");
+            TableName tableName = TableName.FromProjectInstanceTable("[PROJECT]", "[INSTANCE]", "[TABLE]");
             ByteString rowKey = ByteString.Empty;
             IEnumerable<ReadModifyWriteRule> rules = new ReadModifyWriteRule[]
             {
@@ -850,14 +866,14 @@ namespace Google.Cloud.Bigtable.V2.Snippets
         }
 
         /// <summary>Snippet for ReadModifyWriteRowAsync</summary>
-        public async Task ReadModifyWriteRow1Async_ResourceNames()
+        public async Task ReadModifyWriteRow1ResourceNamesAsync()
         {
             // Snippet: ReadModifyWriteRowAsync(TableName, ByteString, IEnumerable<ReadModifyWriteRule>, CallSettings)
             // Additional: ReadModifyWriteRowAsync(TableName, ByteString, IEnumerable<ReadModifyWriteRule>, CancellationToken)
             // Create client
             BigtableServiceApiClient bigtableServiceApiClient = await BigtableServiceApiClient.CreateAsync();
             // Initialize request argument(s)
-            TableName tableName = new TableName("[PROJECT]", "[INSTANCE]", "[TABLE]");
+            TableName tableName = TableName.FromProjectInstanceTable("[PROJECT]", "[INSTANCE]", "[TABLE]");
             ByteString rowKey = ByteString.Empty;
             IEnumerable<ReadModifyWriteRule> rules = new ReadModifyWriteRule[]
             {
@@ -908,13 +924,13 @@ namespace Google.Cloud.Bigtable.V2.Snippets
         }
 
         /// <summary>Snippet for ReadModifyWriteRow</summary>
-        public void ReadModifyWriteRow2_ResourceNames()
+        public void ReadModifyWriteRow2ResourceNames()
         {
             // Snippet: ReadModifyWriteRow(TableName, ByteString, IEnumerable<ReadModifyWriteRule>, string, CallSettings)
             // Create client
             BigtableServiceApiClient bigtableServiceApiClient = BigtableServiceApiClient.Create();
             // Initialize request argument(s)
-            TableName tableName = new TableName("[PROJECT]", "[INSTANCE]", "[TABLE]");
+            TableName tableName = TableName.FromProjectInstanceTable("[PROJECT]", "[INSTANCE]", "[TABLE]");
             ByteString rowKey = ByteString.Empty;
             IEnumerable<ReadModifyWriteRule> rules = new ReadModifyWriteRule[]
             {
@@ -927,14 +943,14 @@ namespace Google.Cloud.Bigtable.V2.Snippets
         }
 
         /// <summary>Snippet for ReadModifyWriteRowAsync</summary>
-        public async Task ReadModifyWriteRow2Async_ResourceNames()
+        public async Task ReadModifyWriteRow2ResourceNamesAsync()
         {
             // Snippet: ReadModifyWriteRowAsync(TableName, ByteString, IEnumerable<ReadModifyWriteRule>, string, CallSettings)
             // Additional: ReadModifyWriteRowAsync(TableName, ByteString, IEnumerable<ReadModifyWriteRule>, string, CancellationToken)
             // Create client
             BigtableServiceApiClient bigtableServiceApiClient = await BigtableServiceApiClient.CreateAsync();
             // Initialize request argument(s)
-            TableName tableName = new TableName("[PROJECT]", "[INSTANCE]", "[TABLE]");
+            TableName tableName = TableName.FromProjectInstanceTable("[PROJECT]", "[INSTANCE]", "[TABLE]");
             ByteString rowKey = ByteString.Empty;
             IEnumerable<ReadModifyWriteRule> rules = new ReadModifyWriteRule[]
             {

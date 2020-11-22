@@ -20,7 +20,13 @@ using System.Threading;
 using System.Threading.Tasks;
 using Xunit;
 
+#if NETCOREAPP3_1
+namespace Google.Cloud.Diagnostics.AspNetCore3.Tests
+#elif NETCOREAPP2_1 || NET461
 namespace Google.Cloud.Diagnostics.AspNetCore.Tests
+#else
+#error unknown target framework
+#endif
 {
     public class GoogleExceptionLoggerTest
     {
@@ -42,6 +48,18 @@ namespace Google.Cloud.Diagnostics.AspNetCore.Tests
         {
             var mockAccessor = new Mock<IHttpContextAccessor>();
             mockAccessor.Setup(a => a.HttpContext).Returns(new DefaultHttpContext());
+            var mockContextLogger = new Mock<IContextExceptionLogger>();
+            var logger = new GoogleExceptionLogger(mockContextLogger.Object, mockAccessor.Object);
+
+            logger.Log(_exception);
+            mockContextLogger.Verify(lb => lb.Log(_exception, It.IsAny<HttpContextWrapper>()));
+        }
+
+        [Fact]
+        public void Log_NoContext_NoAccessorContext()
+        {
+            var mockAccessor = new Mock<IHttpContextAccessor>();
+            mockAccessor.Setup(a => a.HttpContext).Returns<DefaultHttpContext>(null);
             var mockContextLogger = new Mock<IContextExceptionLogger>();
             var logger = new GoogleExceptionLogger(mockContextLogger.Object, mockAccessor.Object);
 

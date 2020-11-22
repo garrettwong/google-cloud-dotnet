@@ -3,7 +3,7 @@
 //     source: google/cloud/kms/v1/service.proto
 // </auto-generated>
 // Original file comments:
-// Copyright 2019 Google LLC.
+// Copyright 2020 Google LLC
 //
 // Licensed under the Apache License, Version 2.0 (the "License");
 // you may not use this file except in compliance with the License.
@@ -16,7 +16,6 @@
 // WITHOUT WARRANTIES OR CONDITIONS OF ANY KIND, either express or implied.
 // See the License for the specific language governing permissions and
 // limitations under the License.
-//
 //
 #pragma warning disable 0414, 1591
 #region Designer generated code
@@ -33,6 +32,7 @@ namespace Google.Cloud.Kms.V1 {
   /// * [KeyRing][google.cloud.kms.v1.KeyRing]
   /// * [CryptoKey][google.cloud.kms.v1.CryptoKey]
   /// * [CryptoKeyVersion][google.cloud.kms.v1.CryptoKeyVersion]
+  /// * [ImportJob][google.cloud.kms.v1.ImportJob]
   ///
   /// If you are using manual gRPC libraries, see
   /// [Using gRPC with Cloud KMS](https://cloud.google.com/kms/docs/grpc).
@@ -559,7 +559,7 @@ namespace Google.Cloud.Kms.V1 {
     {
       /// <summary>Creates a new client for KeyManagementService</summary>
       /// <param name="channel">The channel to use to make remote calls.</param>
-      public KeyManagementServiceClient(grpc::Channel channel) : base(channel)
+      public KeyManagementServiceClient(grpc::ChannelBase channel) : base(channel)
       {
       }
       /// <summary>Creates a new client for KeyManagementService that uses a custom <c>CallInvoker</c>.</summary>

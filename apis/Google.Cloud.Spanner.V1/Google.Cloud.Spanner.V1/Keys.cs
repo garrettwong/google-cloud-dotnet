@@ -34,15 +34,16 @@ namespace Google.Cloud.Spanner.V1 {
             "VmFsdWVIAUIQCg5zdGFydF9rZXlfdHlwZUIOCgxlbmRfa2V5X3R5cGUibAoG",
             "S2V5U2V0EigKBGtleXMYASADKAsyGi5nb29nbGUucHJvdG9idWYuTGlzdFZh",
             "bHVlEisKBnJhbmdlcxgCIAMoCzIbLmdvb2dsZS5zcGFubmVyLnYxLktleVJh",
-            "bmdlEgsKA2FsbBgDIAEoCEKSAQoVY29tLmdvb2dsZS5zcGFubmVyLnYxQglL",
+            "bmdlEgsKA2FsbBgDIAEoCEKvAQoVY29tLmdvb2dsZS5zcGFubmVyLnYxQglL",
             "ZXlzUHJvdG9QAVo4Z29vZ2xlLmdvbGFuZy5vcmcvZ2VucHJvdG8vZ29vZ2xl",
             "YXBpcy9zcGFubmVyL3YxO3NwYW5uZXKqAhdHb29nbGUuQ2xvdWQuU3Bhbm5l",
-            "ci5WMcoCF0dvb2dsZVxDbG91ZFxTcGFubmVyXFYxYgZwcm90bzM="));
+            "ci5WMcoCF0dvb2dsZVxDbG91ZFxTcGFubmVyXFYx6gIaR29vZ2xlOjpDbG91",
+            "ZDo6U3Bhbm5lcjo6VjFiBnByb3RvMw=="));
       descriptor = pbr::FileDescriptor.FromGeneratedCode(descriptorData,
           new pbr::FileDescriptor[] { global::Google.Protobuf.WellKnownTypes.StructReflection.Descriptor, global::Google.Api.AnnotationsReflection.Descriptor, },
-          new pbr::GeneratedClrTypeInfo(null, new pbr::GeneratedClrTypeInfo[] {
-            new pbr::GeneratedClrTypeInfo(typeof(global::Google.Cloud.Spanner.V1.KeyRange), global::Google.Cloud.Spanner.V1.KeyRange.Parser, new[]{ "StartClosed", "StartOpen", "EndClosed", "EndOpen" }, new[]{ "StartKeyType", "EndKeyType" }, null, null),
-            new pbr::GeneratedClrTypeInfo(typeof(global::Google.Cloud.Spanner.V1.KeySet), global::Google.Cloud.Spanner.V1.KeySet.Parser, new[]{ "Keys", "Ranges", "All" }, null, null, null)
+          new pbr::GeneratedClrTypeInfo(null, null, new pbr::GeneratedClrTypeInfo[] {
+            new pbr::GeneratedClrTypeInfo(typeof(global::Google.Cloud.Spanner.V1.KeyRange), global::Google.Cloud.Spanner.V1.KeyRange.Parser, new[]{ "StartClosed", "StartOpen", "EndClosed", "EndOpen" }, new[]{ "StartKeyType", "EndKeyType" }, null, null, null),
+            new pbr::GeneratedClrTypeInfo(typeof(global::Google.Cloud.Spanner.V1.KeySet), global::Google.Cloud.Spanner.V1.KeySet.Parser, new[]{ "Keys", "Ranges", "All" }, null, null, null, null)
           }));
     }
     #endregion
@@ -139,7 +140,11 @@ namespace Google.Cloud.Spanner.V1 {
   /// Note that 100 is passed as the start, and 1 is passed as the end,
   /// because `Key` is a descending column in the schema.
   /// </summary>
-  public sealed partial class KeyRange : pb::IMessage<KeyRange> {
+  public sealed partial class KeyRange : pb::IMessage<KeyRange>
+  #if !GOOGLE_PROTOBUF_REFSTRUCT_COMPATIBILITY_MODE
+      , pb::IBufferMessage
+  #endif
+  {
     private static readonly pb::MessageParser<KeyRange> _parser = new pb::MessageParser<KeyRange>(() => new KeyRange());
     private pb::UnknownFieldSet _unknownFields;
     [global::System.Diagnostics.DebuggerNonUserCodeAttribute]
@@ -332,6 +337,9 @@ namespace Google.Cloud.Spanner.V1 {
 
     [global::System.Diagnostics.DebuggerNonUserCodeAttribute]
     public void WriteTo(pb::CodedOutputStream output) {
+    #if !GOOGLE_PROTOBUF_REFSTRUCT_COMPATIBILITY_MODE
+      output.WriteRawMessage(this);
+    #else
       if (startKeyTypeCase_ == StartKeyTypeOneofCase.StartClosed) {
         output.WriteRawTag(10);
         output.WriteMessage(StartClosed);
@@ -351,7 +359,33 @@ namespace Google.Cloud.Spanner.V1 {
       if (_unknownFields != null) {
         _unknownFields.WriteTo(output);
       }
+    #endif
     }
+
+    #if !GOOGLE_PROTOBUF_REFSTRUCT_COMPATIBILITY_MODE
+    [global::System.Diagnostics.DebuggerNonUserCodeAttribute]
+    void pb::IBufferMessage.InternalWriteTo(ref pb::WriteContext output) {
+      if (startKeyTypeCase_ == StartKeyTypeOneofCase.StartClosed) {
+        output.WriteRawTag(10);
+        output.WriteMessage(StartClosed);
+      }
+      if (startKeyTypeCase_ == StartKeyTypeOneofCase.StartOpen) {
+        output.WriteRawTag(18);
+        output.WriteMessage(StartOpen);
+      }
+      if (endKeyTypeCase_ == EndKeyTypeOneofCase.EndClosed) {
+        output.WriteRawTag(26);
+        output.WriteMessage(EndClosed);
+      }
+      if (endKeyTypeCase_ == EndKeyTypeOneofCase.EndOpen) {
+        output.WriteRawTag(34);
+        output.WriteMessage(EndOpen);
+      }
+      if (_unknownFields != null) {
+        _unknownFields.WriteTo(ref output);
+      }
+    }
+    #endif
 
     [global::System.Diagnostics.DebuggerNonUserCodeAttribute]
     public int CalculateSize() {
@@ -414,6 +448,9 @@ namespace Google.Cloud.Spanner.V1 {
 
     [global::System.Diagnostics.DebuggerNonUserCodeAttribute]
     public void MergeFrom(pb::CodedInputStream input) {
+    #if !GOOGLE_PROTOBUF_REFSTRUCT_COMPATIBILITY_MODE
+      input.ReadRawMessage(this);
+    #else
       uint tag;
       while ((tag = input.ReadTag()) != 0) {
         switch(tag) {
@@ -458,7 +495,58 @@ namespace Google.Cloud.Spanner.V1 {
           }
         }
       }
+    #endif
     }
+
+    #if !GOOGLE_PROTOBUF_REFSTRUCT_COMPATIBILITY_MODE
+    [global::System.Diagnostics.DebuggerNonUserCodeAttribute]
+    void pb::IBufferMessage.InternalMergeFrom(ref pb::ParseContext input) {
+      uint tag;
+      while ((tag = input.ReadTag()) != 0) {
+        switch(tag) {
+          default:
+            _unknownFields = pb::UnknownFieldSet.MergeFieldFrom(_unknownFields, ref input);
+            break;
+          case 10: {
+            global::Google.Protobuf.WellKnownTypes.ListValue subBuilder = new global::Google.Protobuf.WellKnownTypes.ListValue();
+            if (startKeyTypeCase_ == StartKeyTypeOneofCase.StartClosed) {
+              subBuilder.MergeFrom(StartClosed);
+            }
+            input.ReadMessage(subBuilder);
+            StartClosed = subBuilder;
+            break;
+          }
+          case 18: {
+            global::Google.Protobuf.WellKnownTypes.ListValue subBuilder = new global::Google.Protobuf.WellKnownTypes.ListValue();
+            if (startKeyTypeCase_ == StartKeyTypeOneofCase.StartOpen) {
+              subBuilder.MergeFrom(StartOpen);
+            }
+            input.ReadMessage(subBuilder);
+            StartOpen = subBuilder;
+            break;
+          }
+          case 26: {
+            global::Google.Protobuf.WellKnownTypes.ListValue subBuilder = new global::Google.Protobuf.WellKnownTypes.ListValue();
+            if (endKeyTypeCase_ == EndKeyTypeOneofCase.EndClosed) {
+              subBuilder.MergeFrom(EndClosed);
+            }
+            input.ReadMessage(subBuilder);
+            EndClosed = subBuilder;
+            break;
+          }
+          case 34: {
+            global::Google.Protobuf.WellKnownTypes.ListValue subBuilder = new global::Google.Protobuf.WellKnownTypes.ListValue();
+            if (endKeyTypeCase_ == EndKeyTypeOneofCase.EndOpen) {
+              subBuilder.MergeFrom(EndOpen);
+            }
+            input.ReadMessage(subBuilder);
+            EndOpen = subBuilder;
+            break;
+          }
+        }
+      }
+    }
+    #endif
 
   }
 
@@ -471,7 +559,11 @@ namespace Google.Cloud.Spanner.V1 {
   /// if two ranges, two keys, or a key and a range overlap), Cloud Spanner
   /// behaves as if the key were only specified once.
   /// </summary>
-  public sealed partial class KeySet : pb::IMessage<KeySet> {
+  public sealed partial class KeySet : pb::IMessage<KeySet>
+  #if !GOOGLE_PROTOBUF_REFSTRUCT_COMPATIBILITY_MODE
+      , pb::IBufferMessage
+  #endif
+  {
     private static readonly pb::MessageParser<KeySet> _parser = new pb::MessageParser<KeySet>(() => new KeySet());
     private pb::UnknownFieldSet _unknownFields;
     [global::System.Diagnostics.DebuggerNonUserCodeAttribute]
@@ -591,6 +683,9 @@ namespace Google.Cloud.Spanner.V1 {
 
     [global::System.Diagnostics.DebuggerNonUserCodeAttribute]
     public void WriteTo(pb::CodedOutputStream output) {
+    #if !GOOGLE_PROTOBUF_REFSTRUCT_COMPATIBILITY_MODE
+      output.WriteRawMessage(this);
+    #else
       keys_.WriteTo(output, _repeated_keys_codec);
       ranges_.WriteTo(output, _repeated_ranges_codec);
       if (All != false) {
@@ -600,7 +695,23 @@ namespace Google.Cloud.Spanner.V1 {
       if (_unknownFields != null) {
         _unknownFields.WriteTo(output);
       }
+    #endif
     }
+
+    #if !GOOGLE_PROTOBUF_REFSTRUCT_COMPATIBILITY_MODE
+    [global::System.Diagnostics.DebuggerNonUserCodeAttribute]
+    void pb::IBufferMessage.InternalWriteTo(ref pb::WriteContext output) {
+      keys_.WriteTo(ref output, _repeated_keys_codec);
+      ranges_.WriteTo(ref output, _repeated_ranges_codec);
+      if (All != false) {
+        output.WriteRawTag(24);
+        output.WriteBool(All);
+      }
+      if (_unknownFields != null) {
+        _unknownFields.WriteTo(ref output);
+      }
+    }
+    #endif
 
     [global::System.Diagnostics.DebuggerNonUserCodeAttribute]
     public int CalculateSize() {
@@ -631,6 +742,9 @@ namespace Google.Cloud.Spanner.V1 {
 
     [global::System.Diagnostics.DebuggerNonUserCodeAttribute]
     public void MergeFrom(pb::CodedInputStream input) {
+    #if !GOOGLE_PROTOBUF_REFSTRUCT_COMPATIBILITY_MODE
+      input.ReadRawMessage(this);
+    #else
       uint tag;
       while ((tag = input.ReadTag()) != 0) {
         switch(tag) {
@@ -651,7 +765,34 @@ namespace Google.Cloud.Spanner.V1 {
           }
         }
       }
+    #endif
     }
+
+    #if !GOOGLE_PROTOBUF_REFSTRUCT_COMPATIBILITY_MODE
+    [global::System.Diagnostics.DebuggerNonUserCodeAttribute]
+    void pb::IBufferMessage.InternalMergeFrom(ref pb::ParseContext input) {
+      uint tag;
+      while ((tag = input.ReadTag()) != 0) {
+        switch(tag) {
+          default:
+            _unknownFields = pb::UnknownFieldSet.MergeFieldFrom(_unknownFields, ref input);
+            break;
+          case 10: {
+            keys_.AddEntriesFrom(ref input, _repeated_keys_codec);
+            break;
+          }
+          case 18: {
+            ranges_.AddEntriesFrom(ref input, _repeated_ranges_codec);
+            break;
+          }
+          case 24: {
+            All = input.ReadBool();
+            break;
+          }
+        }
+      }
+    }
+    #endif
 
   }
 

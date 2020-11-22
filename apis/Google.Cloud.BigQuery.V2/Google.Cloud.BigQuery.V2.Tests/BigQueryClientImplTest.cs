@@ -32,6 +32,25 @@ namespace Google.Cloud.BigQuery.V2.Tests
         private const string DefaultLocation = "default-location";
 
         [Fact]
+        public void PrettyPrintEnabledOnClientIsPropagatedToRequest()
+        {
+            var projectId = "project";
+            var datasetId = "dataset";
+            var service = new FakeBigqueryService();
+            var client = new BigQueryClientBuilder
+            {
+                Service = service,
+                PrettyPrint = true,
+                ProjectId = projectId
+            }.Build();
+            var reference = client.GetDatasetReference(projectId, datasetId);
+            var expectedRequest = service.Datasets.Delete(projectId, datasetId);
+            expectedRequest.PrettyPrint = true;
+            service.ExpectRequest(expectedRequest, "OK");
+            client.DeleteDataset(reference);
+        }
+
+        [Fact]
         public void Constructor_DefaultLocations()
         {
             var projectId = "project";
@@ -274,6 +293,221 @@ namespace Google.Cloud.BigQuery.V2.Tests
         }
 
         [Fact]
+        public void GetModel()
+        {
+            var projectId = "project";
+            var datasetId = "dataset";
+            var modelId = "model";
+            var service = new FakeBigqueryService();
+            var client = new BigQueryClientImpl(projectId, service);
+            var reference = client.GetModelReference(projectId, datasetId, modelId);
+            service.ExpectRequest(
+                service.Models.Get(projectId, datasetId, modelId),
+                new Model { ModelReference = reference });
+            var result = client.GetModel(reference);
+            Assert.Equal(projectId, result.Reference.ProjectId);
+            Assert.Equal(datasetId, result.Reference.DatasetId);
+            Assert.Equal(modelId, result.Reference.ModelId);
+        }
+
+        [Fact]
+        public void ListModels()
+        {
+            var projectId = "project";
+            var datasetId = "dataset";
+            var modelId = "model";
+            var service = new FakeBigqueryService();
+            var client = new BigQueryClientImpl(projectId, service);
+            var datasetReference = client.GetDatasetReference(projectId, datasetId);
+            var modelReference = client.GetModelReference(projectId, datasetId, modelId);
+            service.ExpectRequest(
+                service.Models.List(projectId, datasetId),
+                new ListModelsResponse { Models = new[] { new Model { ModelReference = modelReference } } });
+            var result = client.ListModels(datasetReference);
+            var model = result.Single();
+            Assert.Equal(projectId, model.Reference.ProjectId);
+            Assert.Equal(datasetId, model.Reference.DatasetId);
+            Assert.Equal(modelId, model.Reference.ModelId);
+        }
+
+        [Fact]
+        public void DeleteModel()
+        {
+            var projectId = "project";
+            var datasetId = "dataset";
+            var modelId = "model";
+            var service = new FakeBigqueryService();
+            var client = new BigQueryClientImpl(projectId, service);
+            var reference = client.GetModelReference(projectId, datasetId, modelId);
+            service.ExpectRequest(
+                service.Models.Delete(projectId, datasetId, modelId),
+                "OK");
+            client.DeleteModel(reference);
+        }
+
+        [Fact]
+        public void PatchModel()
+        {
+            var projectId = "project";
+            var datasetId = "dataset";
+            var modelId = "model";
+            var service = new FakeBigqueryService();
+            var client = new BigQueryClientImpl(projectId, service);
+            var reference = client.GetModelReference(projectId, datasetId, modelId);
+            service.ExpectRequest(
+                service.Models.Patch(new Model(), projectId, datasetId, modelId),
+                new Model { ModelReference = reference, Description = "patched" });
+            var result = client.PatchModel(reference, new Model());
+            Assert.Equal(projectId, result.Reference.ProjectId);
+            Assert.Equal(datasetId, result.Reference.DatasetId);
+            Assert.Equal(modelId, result.Reference.ModelId);
+            Assert.Equal("patched", result.Resource.Description);
+        }
+
+        [Fact]
+        public void GetRoutine()
+        {
+            var projectId = "project";
+            var datasetId = "dataset";
+            var routineId = "routine";
+            var service = new FakeBigqueryService();
+            var client = new BigQueryClientImpl(projectId, service);
+            var reference = client.GetRoutineReference(projectId, datasetId, routineId);
+            service.ExpectRequest(
+                service.Routines.Get(projectId, datasetId, routineId),
+                new Routine { RoutineReference = reference });
+            var result = client.GetRoutine(reference);
+            Assert.Equal(projectId, result.Reference.ProjectId);
+            Assert.Equal(datasetId, result.Reference.DatasetId);
+            Assert.Equal(routineId, result.Reference.RoutineId);
+        }
+
+        [Fact]
+        public void ListRoutines()
+        {
+            var projectId = "project";
+            var datasetId = "dataset";
+            var routineId = "routine";
+            var service = new FakeBigqueryService();
+            var client = new BigQueryClientImpl(projectId, service);
+            var datasetReference = client.GetDatasetReference(projectId, datasetId);
+            var routineReference = client.GetRoutineReference(projectId, datasetId, routineId);
+            service.ExpectRequest(
+                service.Routines.List(projectId, datasetId),
+                new ListRoutinesResponse { Routines = new[] { new Routine { RoutineReference = routineReference } } });
+            var result = client.ListRoutines(datasetReference);
+            var routine = result.Single();
+            Assert.Equal(projectId, routine.Reference.ProjectId);
+            Assert.Equal(datasetId, routine.Reference.DatasetId);
+            Assert.Equal(routineId, routine.Reference.RoutineId);
+        }
+
+        [Fact]
+        public void CreateRoutine()
+        {
+            var projectId = "project";
+            var datasetId = "dataset";
+            var routineId = "routine";
+            var service = new FakeBigqueryService();
+            var client = new BigQueryClientImpl(projectId, service);
+            var reference = client.GetRoutineReference(projectId, datasetId, routineId);
+            service.ExpectRequest(
+                service.Routines.Insert(new Routine { RoutineReference = reference }, projectId, datasetId),
+                new Routine { RoutineReference = reference });
+            var result = client.CreateRoutine(reference, new Routine());
+            Assert.Equal(projectId, result.Reference.ProjectId);
+            Assert.Equal(datasetId, result.Reference.DatasetId);
+            Assert.Equal(routineId, result.Reference.RoutineId);
+        }
+
+        [Fact]
+        public void CreateRoutine_UnmatchingReferences()
+        {
+            var projectId = "project";
+            var datasetId = "dataset";
+            var service = new FakeBigqueryService();
+            var client = new BigQueryClientImpl(projectId, service);
+            var reference = client.GetRoutineReference(projectId, datasetId, "routine");
+            var anotherReference = client.GetRoutineReference(projectId, datasetId, "anotherRoutine");
+
+            Assert.Throws<ArgumentException>(() => client.CreateRoutine(reference, new Routine { RoutineReference = anotherReference }));
+        }
+
+        [Fact]
+        public void GetOrCreateRoutine_Gets()
+        {
+            var projectId = "project";
+            var datasetId = "dataset";
+            var routineId = "routine";
+            var service = new FakeBigqueryService();
+            var client = new BigQueryClientImpl(projectId, service);
+            var reference = client.GetRoutineReference(projectId, datasetId, routineId);
+            service.ExpectRequest(
+                service.Routines.Get(projectId, datasetId, routineId),
+                new Routine { RoutineReference = reference });
+            var result = client.GetOrCreateRoutine(reference, new Routine());
+            Assert.Equal(projectId, result.Reference.ProjectId);
+            Assert.Equal(datasetId, result.Reference.DatasetId);
+            Assert.Equal(routineId, result.Reference.RoutineId);
+        }
+
+        [Fact]
+        public void GetOrCreateRoutine_Creates()
+        {
+            var projectId = "project";
+            var datasetId = "dataset";
+            var routineId = "routine";
+            var service = new FakeBigqueryService();
+            var client = new BigQueryClientImpl(projectId, service);
+            var reference = client.GetRoutineReference(projectId, datasetId, routineId);
+            service.ExpectRequest(
+                service.Routines.Get(projectId, datasetId, routineId),
+                HttpStatusCode.NotFound,
+                new RequestError());
+            service.ExpectRequest(
+                service.Routines.Insert(new Routine { RoutineReference = reference }, projectId, datasetId),
+                new Routine { RoutineReference = reference });
+            var result = client.GetOrCreateRoutine(reference, new Routine());
+            Assert.Equal(projectId, result.Reference.ProjectId);
+            Assert.Equal(datasetId, result.Reference.DatasetId);
+            Assert.Equal(routineId, result.Reference.RoutineId);
+        }
+
+        [Fact]
+        public void DeleteRoutine()
+        {
+            var projectId = "project";
+            var datasetId = "dataset";
+            var routineId = "routine";
+            var service = new FakeBigqueryService();
+            var client = new BigQueryClientImpl(projectId, service);
+            var reference = client.GetRoutineReference(projectId, datasetId, routineId);
+            service.ExpectRequest(
+                service.Routines.Delete(projectId, datasetId, routineId),
+                "OK");
+            client.DeleteRoutine(reference);
+        }
+
+        [Fact]
+        public void UpdateRoutine()
+        {
+            var projectId = "project";
+            var datasetId = "dataset";
+            var routineId = "routine";
+            var service = new FakeBigqueryService();
+            var client = new BigQueryClientImpl(projectId, service);
+            var reference = client.GetRoutineReference(projectId, datasetId, routineId);
+            service.ExpectRequest(
+                service.Routines.Update(new Routine(), projectId, datasetId, routineId),
+                new Routine { RoutineReference = reference, Description = "updated" });
+            var result = client.UpdateRoutine(reference, new Routine());
+            Assert.Equal(projectId, result.Reference.ProjectId);
+            Assert.Equal(datasetId, result.Reference.DatasetId);
+            Assert.Equal(routineId, result.Reference.RoutineId);
+            Assert.Equal("updated", result.Resource.Description);
+        }
+
+        [Fact]
         public void GetJob()
         {
             var projectId = "project";
@@ -334,7 +568,7 @@ namespace Google.Cloud.BigQuery.V2.Tests
                 service.Projects.List(),
                 new ProjectList { Projects = new[] { new ProjectsData { ProjectReference = reference } } });
             var result = client.ListProjectsAsync();
-            var dataset = await result.Single();
+            var dataset = await result.SingleAsync();
             Assert.Equal(projectId, dataset.Reference.ProjectId);
         }
 
@@ -383,7 +617,7 @@ namespace Google.Cloud.BigQuery.V2.Tests
                 service.Datasets.List(projectId),
                 new DatasetList { Datasets = new[] { new DatasetsData { DatasetReference = datasetReference } } });
             var result = client.ListDatasetsAsync(projectReference);
-            var dataset = await result.Single();
+            var dataset = await result.SingleAsync();
             Assert.Equal(projectId, dataset.Reference.ProjectId);
             Assert.Equal(datasetId, dataset.Reference.DatasetId);
         }
@@ -456,6 +690,221 @@ namespace Google.Cloud.BigQuery.V2.Tests
         }
 
         [Fact]
+        public async Task GetModelAsync()
+        {
+            var projectId = "project";
+            var datasetId = "dataset";
+            var modelId = "model";
+            var service = new FakeBigqueryService();
+            var client = new BigQueryClientImpl(projectId, service);
+            var reference = client.GetModelReference(projectId, datasetId, modelId);
+            service.ExpectRequest(
+                service.Models.Get(projectId, datasetId, modelId),
+                new Model { ModelReference = reference });
+            var result = await client.GetModelAsync(reference);
+            Assert.Equal(projectId, result.Reference.ProjectId);
+            Assert.Equal(datasetId, result.Reference.DatasetId);
+            Assert.Equal(modelId, result.Reference.ModelId);
+        }
+
+        [Fact]
+        public async Task ListModelsAsync()
+        {
+            var projectId = "project";
+            var datasetId = "dataset";
+            var modelId = "model";
+            var service = new FakeBigqueryService();
+            var client = new BigQueryClientImpl(projectId, service);
+            var datasetReference = client.GetDatasetReference(projectId, datasetId);
+            var modelReference = client.GetModelReference(projectId, datasetId, modelId);
+            service.ExpectRequest(
+                service.Models.List(projectId, datasetId),
+                new ListModelsResponse { Models = new[] { new Model { ModelReference = modelReference } } });
+            var result = client.ListModelsAsync(datasetReference);
+            var model = await result.SingleAsync();
+            Assert.Equal(projectId, model.Reference.ProjectId);
+            Assert.Equal(datasetId, model.Reference.DatasetId);
+            Assert.Equal(modelId, model.Reference.ModelId);
+        }
+
+        [Fact]
+        public async Task DeleteModelAsync()
+        {
+            var projectId = "project";
+            var datasetId = "dataset";
+            var modelId = "model";
+            var service = new FakeBigqueryService();
+            var client = new BigQueryClientImpl(projectId, service);
+            var reference = client.GetModelReference(projectId, datasetId, modelId);
+            service.ExpectRequest(
+                service.Models.Delete(projectId, datasetId, modelId),
+                "OK");
+            await client.DeleteModelAsync(reference);
+        }
+
+        [Fact]
+        public async Task PatchModelAsync()
+        {
+            var projectId = "project";
+            var datasetId = "dataset";
+            var modelId = "model";
+            var service = new FakeBigqueryService();
+            var client = new BigQueryClientImpl(projectId, service);
+            var reference = client.GetModelReference(projectId, datasetId, modelId);
+            service.ExpectRequest(
+                service.Models.Patch(new Model(), projectId, datasetId, modelId),
+                new Model { ModelReference = reference, Description = "patched" });
+            var result = await client.PatchModelAsync(reference, new Model());
+            Assert.Equal(projectId, result.Reference.ProjectId);
+            Assert.Equal(datasetId, result.Reference.DatasetId);
+            Assert.Equal(modelId, result.Reference.ModelId);
+            Assert.Equal("patched", result.Resource.Description);
+        }
+
+        [Fact]
+        public async Task GetRoutineAsync()
+        {
+            var projectId = "project";
+            var datasetId = "dataset";
+            var routineId = "routine";
+            var service = new FakeBigqueryService();
+            var client = new BigQueryClientImpl(projectId, service);
+            var reference = client.GetRoutineReference(projectId, datasetId, routineId);
+            service.ExpectRequest(
+                service.Routines.Get(projectId, datasetId, routineId),
+                new Routine { RoutineReference = reference });
+            var result = await client.GetRoutineAsync(reference);
+            Assert.Equal(projectId, result.Reference.ProjectId);
+            Assert.Equal(datasetId, result.Reference.DatasetId);
+            Assert.Equal(routineId, result.Reference.RoutineId);
+        }
+
+        [Fact]
+        public async Task ListRoutinesAsync()
+        {
+            var projectId = "project";
+            var datasetId = "dataset";
+            var routineId = "job";
+            var service = new FakeBigqueryService();
+            var client = new BigQueryClientImpl(projectId, service);
+            var datasetReference = client.GetDatasetReference(projectId, datasetId);
+            var routineReference = client.GetRoutineReference(projectId, datasetId, routineId);
+            service.ExpectRequest(
+                service.Routines.List(projectId, datasetId),
+                new ListRoutinesResponse { Routines = new[] { new Routine { RoutineReference = routineReference } } });
+            var result = client.ListRoutinesAsync(datasetReference);
+            var routine = await result.SingleAsync();
+            Assert.Equal(projectId, routine.Reference.ProjectId);
+            Assert.Equal(datasetId, routine.Reference.DatasetId);
+            Assert.Equal(routineId, routine.Reference.RoutineId);
+        }
+
+        [Fact]
+        public async Task CreateRoutineAsync()
+        {
+            var projectId = "project";
+            var datasetId = "dataset";
+            var routineId = "routine";
+            var service = new FakeBigqueryService();
+            var client = new BigQueryClientImpl(projectId, service);
+            var reference = client.GetRoutineReference(projectId, datasetId, routineId);
+            service.ExpectRequest(
+                service.Routines.Insert(new Routine { RoutineReference = reference }, projectId, datasetId),
+                new Routine { RoutineReference = reference });
+            var result = await client.CreateRoutineAsync(reference, new Routine());
+            Assert.Equal(projectId, result.Reference.ProjectId);
+            Assert.Equal(datasetId, result.Reference.DatasetId);
+            Assert.Equal(routineId, result.Reference.RoutineId);
+        }
+
+        [Fact]
+        public async Task CreateRoutineAsync_UnmatchingReferences()
+        {
+            var projectId = "project";
+            var datasetId = "dataset";
+            var service = new FakeBigqueryService();
+            var client = new BigQueryClientImpl(projectId, service);
+            var reference = client.GetRoutineReference(projectId, datasetId, "routine");
+            var anotherReference = client.GetRoutineReference(projectId, datasetId, "anotherRoutine");
+
+            await Assert.ThrowsAsync<ArgumentException>(() => client.CreateRoutineAsync(reference, new Routine { RoutineReference = anotherReference }));
+        }
+
+        [Fact]
+        public async Task GetOrCreateRoutineAsync_Gets()
+        {
+            var projectId = "project";
+            var datasetId = "dataset";
+            var routineId = "routine";
+            var service = new FakeBigqueryService();
+            var client = new BigQueryClientImpl(projectId, service);
+            var reference = client.GetRoutineReference(projectId, datasetId, routineId);
+            service.ExpectRequest(
+                service.Routines.Get(projectId, datasetId, routineId),
+                new Routine { RoutineReference = reference });
+            var result =  await client.GetOrCreateRoutineAsync(reference, new Routine());
+            Assert.Equal(projectId, result.Reference.ProjectId);
+            Assert.Equal(datasetId, result.Reference.DatasetId);
+            Assert.Equal(routineId, result.Reference.RoutineId);
+        }
+
+        [Fact]
+        public async Task GetOrCreateRoutineAsync_Creates()
+        {
+            var projectId = "project";
+            var datasetId = "dataset";
+            var routineId = "routine";
+            var service = new FakeBigqueryService();
+            var client = new BigQueryClientImpl(projectId, service);
+            var reference = client.GetRoutineReference(projectId, datasetId, routineId);
+            service.ExpectRequest(
+                service.Routines.Get(projectId, datasetId, routineId),
+                HttpStatusCode.NotFound,
+                new RequestError());
+            service.ExpectRequest(
+                service.Routines.Insert(new Routine { RoutineReference = reference }, projectId, datasetId),
+                new Routine { RoutineReference = reference });
+            var result = await client.GetOrCreateRoutineAsync(reference, new Routine());
+            Assert.Equal(projectId, result.Reference.ProjectId);
+            Assert.Equal(datasetId, result.Reference.DatasetId);
+            Assert.Equal(routineId, result.Reference.RoutineId);
+        }
+
+        [Fact]
+        public async Task DeleteRoutineAsync()
+        {
+            var projectId = "project";
+            var datasetId = "dataset";
+            var routineId = "routine";
+            var service = new FakeBigqueryService();
+            var client = new BigQueryClientImpl(projectId, service);
+            var reference = client.GetRoutineReference(projectId, datasetId, routineId);
+            service.ExpectRequest(
+                service.Routines.Delete(projectId, datasetId, routineId),
+                "OK");
+            await client.DeleteRoutineAsync(reference);
+        }
+
+        [Fact]
+        public async Task UpdateRoutineAsync()
+        {
+            var projectId = "project";
+            var datasetId = "dataset";
+            var routineId = "routine";
+            var service = new FakeBigqueryService();
+            var client = new BigQueryClientImpl(projectId, service);
+            var reference = client.GetRoutineReference(projectId, datasetId, routineId);
+            service.ExpectRequest(
+                service.Routines.Update(new Routine(), projectId, datasetId, routineId),
+                new Routine { RoutineReference = reference, Description = "updated" });
+            var result = await client.UpdateRoutineAsync(reference, new Routine());
+            Assert.Equal(projectId, result.Reference.ProjectId);
+            Assert.Equal(datasetId, result.Reference.DatasetId);
+            Assert.Equal(routineId, result.Reference.RoutineId);
+            Assert.Equal("updated", result.Resource.Description);
+        }
+
+        [Fact]
         public async Task GetJobAsync()
         {
             var projectId = "project";
@@ -484,7 +933,7 @@ namespace Google.Cloud.BigQuery.V2.Tests
                 service.Jobs.List(projectId),
                 new JobList { Jobs = new[] { new JobsData { JobReference = jobReference } } });
             var result = client.ListJobsAsync(projectReference);
-            var job = await result.Single();
+            var job = await result.SingleAsync();
             Assert.Equal(projectId, job.Reference.ProjectId);
             Assert.Equal(jobId, job.Reference.JobId);
         }

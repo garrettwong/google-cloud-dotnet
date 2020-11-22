@@ -25,42 +25,45 @@ namespace Google.Cloud.Tasks.V2Beta3 {
       byte[] descriptorData = global::System.Convert.FromBase64String(
           string.Concat(
             "CiZnb29nbGUvY2xvdWQvdGFza3MvdjJiZXRhMy9xdWV1ZS5wcm90bxIaZ29v",
-            "Z2xlLmNsb3VkLnRhc2tzLnYyYmV0YTMaGWdvb2dsZS9hcGkvcmVzb3VyY2Uu",
-            "cHJvdG8aJ2dvb2dsZS9jbG91ZC90YXNrcy92MmJldGEzL3RhcmdldC5wcm90",
-            "bxoeZ29vZ2xlL3Byb3RvYnVmL2R1cmF0aW9uLnByb3RvGh9nb29nbGUvcHJv",
-            "dG9idWYvdGltZXN0YW1wLnByb3RvGhxnb29nbGUvYXBpL2Fubm90YXRpb25z",
-            "LnByb3RvItcECgVRdWV1ZRIMCgRuYW1lGAEgASgJEk8KFWFwcF9lbmdpbmVf",
-            "aHR0cF9xdWV1ZRgDIAEoCzIuLmdvb2dsZS5jbG91ZC50YXNrcy52MmJldGEz",
-            "LkFwcEVuZ2luZUh0dHBRdWV1ZUgAEjsKC3JhdGVfbGltaXRzGAQgASgLMiYu",
-            "Z29vZ2xlLmNsb3VkLnRhc2tzLnYyYmV0YTMuUmF0ZUxpbWl0cxI9CgxyZXRy",
-            "eV9jb25maWcYBSABKAsyJy5nb29nbGUuY2xvdWQudGFza3MudjJiZXRhMy5S",
-            "ZXRyeUNvbmZpZxI2CgVzdGF0ZRgGIAEoDjInLmdvb2dsZS5jbG91ZC50YXNr",
-            "cy52MmJldGEzLlF1ZXVlLlN0YXRlEi4KCnB1cmdlX3RpbWUYByABKAsyGi5n",
-            "b29nbGUucHJvdG9idWYuVGltZXN0YW1wElgKGnN0YWNrZHJpdmVyX2xvZ2dp",
-            "bmdfY29uZmlnGAogASgLMjQuZ29vZ2xlLmNsb3VkLnRhc2tzLnYyYmV0YTMu",
-            "U3RhY2tkcml2ZXJMb2dnaW5nQ29uZmlnIkUKBVN0YXRlEhUKEVNUQVRFX1VO",
-            "U1BFQ0lGSUVEEAASCwoHUlVOTklORxABEgoKBlBBVVNFRBACEgwKCERJU0FC",
-            "TEVEEAM6XOpBWQofY2xvdWR0YXNrcy5nb29nbGVhcGlzLmNvbS9RdWV1ZRI2",
-            "cHJvamVjdHMve3Byb2plY3R9L2xvY2F0aW9ucy97bG9jYXRpb259L3F1ZXVl",
-            "cy97cXVldWV9QgwKCnF1ZXVlX3R5cGUiagoKUmF0ZUxpbWl0cxIhChltYXhf",
-            "ZGlzcGF0Y2hlc19wZXJfc2Vjb25kGAEgASgBEhYKDm1heF9idXJzdF9zaXpl",
-            "GAIgASgFEiEKGW1heF9jb25jdXJyZW50X2Rpc3BhdGNoZXMYAyABKAUi0QEK",
-            "C1JldHJ5Q29uZmlnEhQKDG1heF9hdHRlbXB0cxgBIAEoBRI1ChJtYXhfcmV0",
-            "cnlfZHVyYXRpb24YAiABKAsyGS5nb29nbGUucHJvdG9idWYuRHVyYXRpb24S",
-            "LgoLbWluX2JhY2tvZmYYAyABKAsyGS5nb29nbGUucHJvdG9idWYuRHVyYXRp",
-            "b24SLgoLbWF4X2JhY2tvZmYYBCABKAsyGS5nb29nbGUucHJvdG9idWYuRHVy",
-            "YXRpb24SFQoNbWF4X2RvdWJsaW5ncxgFIAEoBSIyChhTdGFja2RyaXZlckxv",
-            "Z2dpbmdDb25maWcSFgoOc2FtcGxpbmdfcmF0aW8YASABKAFCbwoeY29tLmdv",
-            "b2dsZS5jbG91ZC50YXNrcy52MmJldGEzQgpRdWV1ZVByb3RvUAFaP2dvb2ds",
-            "ZS5nb2xhbmcub3JnL2dlbnByb3RvL2dvb2dsZWFwaXMvY2xvdWQvdGFza3Mv",
-            "djJiZXRhMzt0YXNrc2IGcHJvdG8z"));
+            "Z2xlLmNsb3VkLnRhc2tzLnYyYmV0YTMaH2dvb2dsZS9hcGkvZmllbGRfYmVo",
+            "YXZpb3IucHJvdG8aGWdvb2dsZS9hcGkvcmVzb3VyY2UucHJvdG8aJ2dvb2ds",
+            "ZS9jbG91ZC90YXNrcy92MmJldGEzL3RhcmdldC5wcm90bxoeZ29vZ2xlL3By",
+            "b3RvYnVmL2R1cmF0aW9uLnByb3RvGh9nb29nbGUvcHJvdG9idWYvdGltZXN0",
+            "YW1wLnByb3RvGhxnb29nbGUvYXBpL2Fubm90YXRpb25zLnByb3RvIsQFCgVR",
+            "dWV1ZRIMCgRuYW1lGAEgASgJEk8KFWFwcF9lbmdpbmVfaHR0cF9xdWV1ZRgD",
+            "IAEoCzIuLmdvb2dsZS5jbG91ZC50YXNrcy52MmJldGEzLkFwcEVuZ2luZUh0",
+            "dHBRdWV1ZUgAEjsKC3JhdGVfbGltaXRzGAQgASgLMiYuZ29vZ2xlLmNsb3Vk",
+            "LnRhc2tzLnYyYmV0YTMuUmF0ZUxpbWl0cxI9CgxyZXRyeV9jb25maWcYBSAB",
+            "KAsyJy5nb29nbGUuY2xvdWQudGFza3MudjJiZXRhMy5SZXRyeUNvbmZpZxI2",
+            "CgVzdGF0ZRgGIAEoDjInLmdvb2dsZS5jbG91ZC50YXNrcy52MmJldGEzLlF1",
+            "ZXVlLlN0YXRlEi4KCnB1cmdlX3RpbWUYByABKAsyGi5nb29nbGUucHJvdG9i",
+            "dWYuVGltZXN0YW1wElgKGnN0YWNrZHJpdmVyX2xvZ2dpbmdfY29uZmlnGAog",
+            "ASgLMjQuZ29vZ2xlLmNsb3VkLnRhc2tzLnYyYmV0YTMuU3RhY2tkcml2ZXJM",
+            "b2dnaW5nQ29uZmlnEjkKBHR5cGUYCyABKA4yJi5nb29nbGUuY2xvdWQudGFz",
+            "a3MudjJiZXRhMy5RdWV1ZS5UeXBlQgPgQQUiRQoFU3RhdGUSFQoRU1RBVEVf",
+            "VU5TUEVDSUZJRUQQABILCgdSVU5OSU5HEAESCgoGUEFVU0VEEAISDAoIRElT",
+            "QUJMRUQQAyIwCgRUeXBlEhQKEFRZUEVfVU5TUEVDSUZJRUQQABIICgRQVUxM",
+            "EAESCAoEUFVTSBACOlzqQVkKH2Nsb3VkdGFza3MuZ29vZ2xlYXBpcy5jb20v",
+            "UXVldWUSNnByb2plY3RzL3twcm9qZWN0fS9sb2NhdGlvbnMve2xvY2F0aW9u",
+            "fS9xdWV1ZXMve3F1ZXVlfUIMCgpxdWV1ZV90eXBlImoKClJhdGVMaW1pdHMS",
+            "IQoZbWF4X2Rpc3BhdGNoZXNfcGVyX3NlY29uZBgBIAEoARIWCg5tYXhfYnVy",
+            "c3Rfc2l6ZRgCIAEoBRIhChltYXhfY29uY3VycmVudF9kaXNwYXRjaGVzGAMg",
+            "ASgFItEBCgtSZXRyeUNvbmZpZxIUCgxtYXhfYXR0ZW1wdHMYASABKAUSNQoS",
+            "bWF4X3JldHJ5X2R1cmF0aW9uGAIgASgLMhkuZ29vZ2xlLnByb3RvYnVmLkR1",
+            "cmF0aW9uEi4KC21pbl9iYWNrb2ZmGAMgASgLMhkuZ29vZ2xlLnByb3RvYnVm",
+            "LkR1cmF0aW9uEi4KC21heF9iYWNrb2ZmGAQgASgLMhkuZ29vZ2xlLnByb3Rv",
+            "YnVmLkR1cmF0aW9uEhUKDW1heF9kb3VibGluZ3MYBSABKAUiMgoYU3RhY2tk",
+            "cml2ZXJMb2dnaW5nQ29uZmlnEhYKDnNhbXBsaW5nX3JhdGlvGAEgASgBQm8K",
+            "HmNvbS5nb29nbGUuY2xvdWQudGFza3MudjJiZXRhM0IKUXVldWVQcm90b1AB",
+            "Wj9nb29nbGUuZ29sYW5nLm9yZy9nZW5wcm90by9nb29nbGVhcGlzL2Nsb3Vk",
+            "L3Rhc2tzL3YyYmV0YTM7dGFza3NiBnByb3RvMw=="));
       descriptor = pbr::FileDescriptor.FromGeneratedCode(descriptorData,
-          new pbr::FileDescriptor[] { global::Google.Api.ResourceReflection.Descriptor, global::Google.Cloud.Tasks.V2Beta3.TargetReflection.Descriptor, global::Google.Protobuf.WellKnownTypes.DurationReflection.Descriptor, global::Google.Protobuf.WellKnownTypes.TimestampReflection.Descriptor, global::Google.Api.AnnotationsReflection.Descriptor, },
-          new pbr::GeneratedClrTypeInfo(null, new pbr::GeneratedClrTypeInfo[] {
-            new pbr::GeneratedClrTypeInfo(typeof(global::Google.Cloud.Tasks.V2Beta3.Queue), global::Google.Cloud.Tasks.V2Beta3.Queue.Parser, new[]{ "Name", "AppEngineHttpQueue", "RateLimits", "RetryConfig", "State", "PurgeTime", "StackdriverLoggingConfig" }, new[]{ "QueueType" }, new[]{ typeof(global::Google.Cloud.Tasks.V2Beta3.Queue.Types.State) }, null),
-            new pbr::GeneratedClrTypeInfo(typeof(global::Google.Cloud.Tasks.V2Beta3.RateLimits), global::Google.Cloud.Tasks.V2Beta3.RateLimits.Parser, new[]{ "MaxDispatchesPerSecond", "MaxBurstSize", "MaxConcurrentDispatches" }, null, null, null),
-            new pbr::GeneratedClrTypeInfo(typeof(global::Google.Cloud.Tasks.V2Beta3.RetryConfig), global::Google.Cloud.Tasks.V2Beta3.RetryConfig.Parser, new[]{ "MaxAttempts", "MaxRetryDuration", "MinBackoff", "MaxBackoff", "MaxDoublings" }, null, null, null),
-            new pbr::GeneratedClrTypeInfo(typeof(global::Google.Cloud.Tasks.V2Beta3.StackdriverLoggingConfig), global::Google.Cloud.Tasks.V2Beta3.StackdriverLoggingConfig.Parser, new[]{ "SamplingRatio" }, null, null, null)
+          new pbr::FileDescriptor[] { global::Google.Api.FieldBehaviorReflection.Descriptor, global::Google.Api.ResourceReflection.Descriptor, global::Google.Cloud.Tasks.V2Beta3.TargetReflection.Descriptor, global::Google.Protobuf.WellKnownTypes.DurationReflection.Descriptor, global::Google.Protobuf.WellKnownTypes.TimestampReflection.Descriptor, global::Google.Api.AnnotationsReflection.Descriptor, },
+          new pbr::GeneratedClrTypeInfo(null, null, new pbr::GeneratedClrTypeInfo[] {
+            new pbr::GeneratedClrTypeInfo(typeof(global::Google.Cloud.Tasks.V2Beta3.Queue), global::Google.Cloud.Tasks.V2Beta3.Queue.Parser, new[]{ "Name", "AppEngineHttpQueue", "RateLimits", "RetryConfig", "State", "PurgeTime", "StackdriverLoggingConfig", "Type" }, new[]{ "QueueType" }, new[]{ typeof(global::Google.Cloud.Tasks.V2Beta3.Queue.Types.State), typeof(global::Google.Cloud.Tasks.V2Beta3.Queue.Types.Type) }, null, null),
+            new pbr::GeneratedClrTypeInfo(typeof(global::Google.Cloud.Tasks.V2Beta3.RateLimits), global::Google.Cloud.Tasks.V2Beta3.RateLimits.Parser, new[]{ "MaxDispatchesPerSecond", "MaxBurstSize", "MaxConcurrentDispatches" }, null, null, null, null),
+            new pbr::GeneratedClrTypeInfo(typeof(global::Google.Cloud.Tasks.V2Beta3.RetryConfig), global::Google.Cloud.Tasks.V2Beta3.RetryConfig.Parser, new[]{ "MaxAttempts", "MaxRetryDuration", "MinBackoff", "MaxBackoff", "MaxDoublings" }, null, null, null, null),
+            new pbr::GeneratedClrTypeInfo(typeof(global::Google.Cloud.Tasks.V2Beta3.StackdriverLoggingConfig), global::Google.Cloud.Tasks.V2Beta3.StackdriverLoggingConfig.Parser, new[]{ "SamplingRatio" }, null, null, null, null)
           }));
     }
     #endregion
@@ -72,7 +75,11 @@ namespace Google.Cloud.Tasks.V2Beta3 {
   /// how those tasks are dispatched. Configurable properties include rate limits,
   /// retry options, queue types, and others.
   /// </summary>
-  public sealed partial class Queue : pb::IMessage<Queue> {
+  public sealed partial class Queue : pb::IMessage<Queue>
+  #if !GOOGLE_PROTOBUF_REFSTRUCT_COMPATIBILITY_MODE
+      , pb::IBufferMessage
+  #endif
+  {
     private static readonly pb::MessageParser<Queue> _parser = new pb::MessageParser<Queue>(() => new Queue());
     private pb::UnknownFieldSet _unknownFields;
     [global::System.Diagnostics.DebuggerNonUserCodeAttribute]
@@ -103,6 +110,7 @@ namespace Google.Cloud.Tasks.V2Beta3 {
       state_ = other.state_;
       purgeTime_ = other.purgeTime_ != null ? other.purgeTime_.Clone() : null;
       stackdriverLoggingConfig_ = other.stackdriverLoggingConfig_ != null ? other.stackdriverLoggingConfig_.Clone() : null;
+      type_ = other.type_;
       switch (other.QueueTypeCase) {
         case QueueTypeOneofCase.AppEngineHttpQueue:
           AppEngineHttpQueue = other.AppEngineHttpQueue.Clone();
@@ -227,7 +235,7 @@ namespace Google.Cloud.Tasks.V2Beta3 {
 
     /// <summary>Field number for the "state" field.</summary>
     public const int StateFieldNumber = 6;
-    private global::Google.Cloud.Tasks.V2Beta3.Queue.Types.State state_ = 0;
+    private global::Google.Cloud.Tasks.V2Beta3.Queue.Types.State state_ = global::Google.Cloud.Tasks.V2Beta3.Queue.Types.State.Unspecified;
     /// <summary>
     /// Output only. The state of the queue.
     ///
@@ -285,6 +293,24 @@ namespace Google.Cloud.Tasks.V2Beta3 {
       }
     }
 
+    /// <summary>Field number for the "type" field.</summary>
+    public const int TypeFieldNumber = 11;
+    private global::Google.Cloud.Tasks.V2Beta3.Queue.Types.Type type_ = global::Google.Cloud.Tasks.V2Beta3.Queue.Types.Type.Unspecified;
+    /// <summary>
+    /// Immutable. The type of a queue (push or pull).
+    ///
+    /// `Queue.type` is an immutable property of the queue that is set at the queue
+    /// creation time. When left unspecified, the default value of `PUSH` is
+    /// selected.
+    /// </summary>
+    [global::System.Diagnostics.DebuggerNonUserCodeAttribute]
+    public global::Google.Cloud.Tasks.V2Beta3.Queue.Types.Type Type {
+      get { return type_; }
+      set {
+        type_ = value;
+      }
+    }
+
     private object queueType_;
     /// <summary>Enum of possible cases for the "queue_type" oneof.</summary>
     public enum QueueTypeOneofCase {
@@ -323,6 +349,7 @@ namespace Google.Cloud.Tasks.V2Beta3 {
       if (State != other.State) return false;
       if (!object.Equals(PurgeTime, other.PurgeTime)) return false;
       if (!object.Equals(StackdriverLoggingConfig, other.StackdriverLoggingConfig)) return false;
+      if (Type != other.Type) return false;
       if (QueueTypeCase != other.QueueTypeCase) return false;
       return Equals(_unknownFields, other._unknownFields);
     }
@@ -334,9 +361,10 @@ namespace Google.Cloud.Tasks.V2Beta3 {
       if (queueTypeCase_ == QueueTypeOneofCase.AppEngineHttpQueue) hash ^= AppEngineHttpQueue.GetHashCode();
       if (rateLimits_ != null) hash ^= RateLimits.GetHashCode();
       if (retryConfig_ != null) hash ^= RetryConfig.GetHashCode();
-      if (State != 0) hash ^= State.GetHashCode();
+      if (State != global::Google.Cloud.Tasks.V2Beta3.Queue.Types.State.Unspecified) hash ^= State.GetHashCode();
       if (purgeTime_ != null) hash ^= PurgeTime.GetHashCode();
       if (stackdriverLoggingConfig_ != null) hash ^= StackdriverLoggingConfig.GetHashCode();
+      if (Type != global::Google.Cloud.Tasks.V2Beta3.Queue.Types.Type.Unspecified) hash ^= Type.GetHashCode();
       hash ^= (int) queueTypeCase_;
       if (_unknownFields != null) {
         hash ^= _unknownFields.GetHashCode();
@@ -351,6 +379,9 @@ namespace Google.Cloud.Tasks.V2Beta3 {
 
     [global::System.Diagnostics.DebuggerNonUserCodeAttribute]
     public void WriteTo(pb::CodedOutputStream output) {
+    #if !GOOGLE_PROTOBUF_REFSTRUCT_COMPATIBILITY_MODE
+      output.WriteRawMessage(this);
+    #else
       if (Name.Length != 0) {
         output.WriteRawTag(10);
         output.WriteString(Name);
@@ -367,7 +398,7 @@ namespace Google.Cloud.Tasks.V2Beta3 {
         output.WriteRawTag(42);
         output.WriteMessage(RetryConfig);
       }
-      if (State != 0) {
+      if (State != global::Google.Cloud.Tasks.V2Beta3.Queue.Types.State.Unspecified) {
         output.WriteRawTag(48);
         output.WriteEnum((int) State);
       }
@@ -379,10 +410,56 @@ namespace Google.Cloud.Tasks.V2Beta3 {
         output.WriteRawTag(82);
         output.WriteMessage(StackdriverLoggingConfig);
       }
+      if (Type != global::Google.Cloud.Tasks.V2Beta3.Queue.Types.Type.Unspecified) {
+        output.WriteRawTag(88);
+        output.WriteEnum((int) Type);
+      }
       if (_unknownFields != null) {
         _unknownFields.WriteTo(output);
       }
+    #endif
     }
+
+    #if !GOOGLE_PROTOBUF_REFSTRUCT_COMPATIBILITY_MODE
+    [global::System.Diagnostics.DebuggerNonUserCodeAttribute]
+    void pb::IBufferMessage.InternalWriteTo(ref pb::WriteContext output) {
+      if (Name.Length != 0) {
+        output.WriteRawTag(10);
+        output.WriteString(Name);
+      }
+      if (queueTypeCase_ == QueueTypeOneofCase.AppEngineHttpQueue) {
+        output.WriteRawTag(26);
+        output.WriteMessage(AppEngineHttpQueue);
+      }
+      if (rateLimits_ != null) {
+        output.WriteRawTag(34);
+        output.WriteMessage(RateLimits);
+      }
+      if (retryConfig_ != null) {
+        output.WriteRawTag(42);
+        output.WriteMessage(RetryConfig);
+      }
+      if (State != global::Google.Cloud.Tasks.V2Beta3.Queue.Types.State.Unspecified) {
+        output.WriteRawTag(48);
+        output.WriteEnum((int) State);
+      }
+      if (purgeTime_ != null) {
+        output.WriteRawTag(58);
+        output.WriteMessage(PurgeTime);
+      }
+      if (stackdriverLoggingConfig_ != null) {
+        output.WriteRawTag(82);
+        output.WriteMessage(StackdriverLoggingConfig);
+      }
+      if (Type != global::Google.Cloud.Tasks.V2Beta3.Queue.Types.Type.Unspecified) {
+        output.WriteRawTag(88);
+        output.WriteEnum((int) Type);
+      }
+      if (_unknownFields != null) {
+        _unknownFields.WriteTo(ref output);
+      }
+    }
+    #endif
 
     [global::System.Diagnostics.DebuggerNonUserCodeAttribute]
     public int CalculateSize() {
@@ -399,7 +476,7 @@ namespace Google.Cloud.Tasks.V2Beta3 {
       if (retryConfig_ != null) {
         size += 1 + pb::CodedOutputStream.ComputeMessageSize(RetryConfig);
       }
-      if (State != 0) {
+      if (State != global::Google.Cloud.Tasks.V2Beta3.Queue.Types.State.Unspecified) {
         size += 1 + pb::CodedOutputStream.ComputeEnumSize((int) State);
       }
       if (purgeTime_ != null) {
@@ -407,6 +484,9 @@ namespace Google.Cloud.Tasks.V2Beta3 {
       }
       if (stackdriverLoggingConfig_ != null) {
         size += 1 + pb::CodedOutputStream.ComputeMessageSize(StackdriverLoggingConfig);
+      }
+      if (Type != global::Google.Cloud.Tasks.V2Beta3.Queue.Types.Type.Unspecified) {
+        size += 1 + pb::CodedOutputStream.ComputeEnumSize((int) Type);
       }
       if (_unknownFields != null) {
         size += _unknownFields.CalculateSize();
@@ -434,7 +514,7 @@ namespace Google.Cloud.Tasks.V2Beta3 {
         }
         RetryConfig.MergeFrom(other.RetryConfig);
       }
-      if (other.State != 0) {
+      if (other.State != global::Google.Cloud.Tasks.V2Beta3.Queue.Types.State.Unspecified) {
         State = other.State;
       }
       if (other.purgeTime_ != null) {
@@ -448,6 +528,9 @@ namespace Google.Cloud.Tasks.V2Beta3 {
           StackdriverLoggingConfig = new global::Google.Cloud.Tasks.V2Beta3.StackdriverLoggingConfig();
         }
         StackdriverLoggingConfig.MergeFrom(other.StackdriverLoggingConfig);
+      }
+      if (other.Type != global::Google.Cloud.Tasks.V2Beta3.Queue.Types.Type.Unspecified) {
+        Type = other.Type;
       }
       switch (other.QueueTypeCase) {
         case QueueTypeOneofCase.AppEngineHttpQueue:
@@ -463,6 +546,9 @@ namespace Google.Cloud.Tasks.V2Beta3 {
 
     [global::System.Diagnostics.DebuggerNonUserCodeAttribute]
     public void MergeFrom(pb::CodedInputStream input) {
+    #if !GOOGLE_PROTOBUF_REFSTRUCT_COMPATIBILITY_MODE
+      input.ReadRawMessage(this);
+    #else
       uint tag;
       while ((tag = input.ReadTag()) != 0) {
         switch(tag) {
@@ -514,9 +600,77 @@ namespace Google.Cloud.Tasks.V2Beta3 {
             input.ReadMessage(StackdriverLoggingConfig);
             break;
           }
+          case 88: {
+            Type = (global::Google.Cloud.Tasks.V2Beta3.Queue.Types.Type) input.ReadEnum();
+            break;
+          }
+        }
+      }
+    #endif
+    }
+
+    #if !GOOGLE_PROTOBUF_REFSTRUCT_COMPATIBILITY_MODE
+    [global::System.Diagnostics.DebuggerNonUserCodeAttribute]
+    void pb::IBufferMessage.InternalMergeFrom(ref pb::ParseContext input) {
+      uint tag;
+      while ((tag = input.ReadTag()) != 0) {
+        switch(tag) {
+          default:
+            _unknownFields = pb::UnknownFieldSet.MergeFieldFrom(_unknownFields, ref input);
+            break;
+          case 10: {
+            Name = input.ReadString();
+            break;
+          }
+          case 26: {
+            global::Google.Cloud.Tasks.V2Beta3.AppEngineHttpQueue subBuilder = new global::Google.Cloud.Tasks.V2Beta3.AppEngineHttpQueue();
+            if (queueTypeCase_ == QueueTypeOneofCase.AppEngineHttpQueue) {
+              subBuilder.MergeFrom(AppEngineHttpQueue);
+            }
+            input.ReadMessage(subBuilder);
+            AppEngineHttpQueue = subBuilder;
+            break;
+          }
+          case 34: {
+            if (rateLimits_ == null) {
+              RateLimits = new global::Google.Cloud.Tasks.V2Beta3.RateLimits();
+            }
+            input.ReadMessage(RateLimits);
+            break;
+          }
+          case 42: {
+            if (retryConfig_ == null) {
+              RetryConfig = new global::Google.Cloud.Tasks.V2Beta3.RetryConfig();
+            }
+            input.ReadMessage(RetryConfig);
+            break;
+          }
+          case 48: {
+            State = (global::Google.Cloud.Tasks.V2Beta3.Queue.Types.State) input.ReadEnum();
+            break;
+          }
+          case 58: {
+            if (purgeTime_ == null) {
+              PurgeTime = new global::Google.Protobuf.WellKnownTypes.Timestamp();
+            }
+            input.ReadMessage(PurgeTime);
+            break;
+          }
+          case 82: {
+            if (stackdriverLoggingConfig_ == null) {
+              StackdriverLoggingConfig = new global::Google.Cloud.Tasks.V2Beta3.StackdriverLoggingConfig();
+            }
+            input.ReadMessage(StackdriverLoggingConfig);
+            break;
+          }
+          case 88: {
+            Type = (global::Google.Cloud.Tasks.V2Beta3.Queue.Types.Type) input.ReadEnum();
+            break;
+          }
         }
       }
     }
+    #endif
 
     #region Nested types
     /// <summary>Container for nested types declared in the Queue message type.</summary>
@@ -566,6 +720,24 @@ namespace Google.Cloud.Tasks.V2Beta3 {
         [pbr::OriginalName("DISABLED")] Disabled = 3,
       }
 
+      /// <summary>
+      /// The type of the queue.
+      /// </summary>
+      public enum Type {
+        /// <summary>
+        /// Default value.
+        /// </summary>
+        [pbr::OriginalName("TYPE_UNSPECIFIED")] Unspecified = 0,
+        /// <summary>
+        /// A pull queue.
+        /// </summary>
+        [pbr::OriginalName("PULL")] Pull = 1,
+        /// <summary>
+        /// A push queue.
+        /// </summary>
+        [pbr::OriginalName("PUSH")] Push = 2,
+      }
+
     }
     #endregion
 
@@ -580,7 +752,11 @@ namespace Google.Cloud.Tasks.V2Beta3 {
   /// Note: The debugging command, [RunTask][google.cloud.tasks.v2beta3.CloudTasks.RunTask], will run a task
   /// even if the queue has reached its [RateLimits][google.cloud.tasks.v2beta3.RateLimits].
   /// </summary>
-  public sealed partial class RateLimits : pb::IMessage<RateLimits> {
+  public sealed partial class RateLimits : pb::IMessage<RateLimits>
+  #if !GOOGLE_PROTOBUF_REFSTRUCT_COMPATIBILITY_MODE
+      , pb::IBufferMessage
+  #endif
+  {
     private static readonly pb::MessageParser<RateLimits> _parser = new pb::MessageParser<RateLimits>(() => new RateLimits());
     private pb::UnknownFieldSet _unknownFields;
     [global::System.Diagnostics.DebuggerNonUserCodeAttribute]
@@ -749,6 +925,9 @@ namespace Google.Cloud.Tasks.V2Beta3 {
 
     [global::System.Diagnostics.DebuggerNonUserCodeAttribute]
     public void WriteTo(pb::CodedOutputStream output) {
+    #if !GOOGLE_PROTOBUF_REFSTRUCT_COMPATIBILITY_MODE
+      output.WriteRawMessage(this);
+    #else
       if (MaxDispatchesPerSecond != 0D) {
         output.WriteRawTag(9);
         output.WriteDouble(MaxDispatchesPerSecond);
@@ -764,7 +943,29 @@ namespace Google.Cloud.Tasks.V2Beta3 {
       if (_unknownFields != null) {
         _unknownFields.WriteTo(output);
       }
+    #endif
     }
+
+    #if !GOOGLE_PROTOBUF_REFSTRUCT_COMPATIBILITY_MODE
+    [global::System.Diagnostics.DebuggerNonUserCodeAttribute]
+    void pb::IBufferMessage.InternalWriteTo(ref pb::WriteContext output) {
+      if (MaxDispatchesPerSecond != 0D) {
+        output.WriteRawTag(9);
+        output.WriteDouble(MaxDispatchesPerSecond);
+      }
+      if (MaxBurstSize != 0) {
+        output.WriteRawTag(16);
+        output.WriteInt32(MaxBurstSize);
+      }
+      if (MaxConcurrentDispatches != 0) {
+        output.WriteRawTag(24);
+        output.WriteInt32(MaxConcurrentDispatches);
+      }
+      if (_unknownFields != null) {
+        _unknownFields.WriteTo(ref output);
+      }
+    }
+    #endif
 
     [global::System.Diagnostics.DebuggerNonUserCodeAttribute]
     public int CalculateSize() {
@@ -803,6 +1004,9 @@ namespace Google.Cloud.Tasks.V2Beta3 {
 
     [global::System.Diagnostics.DebuggerNonUserCodeAttribute]
     public void MergeFrom(pb::CodedInputStream input) {
+    #if !GOOGLE_PROTOBUF_REFSTRUCT_COMPATIBILITY_MODE
+      input.ReadRawMessage(this);
+    #else
       uint tag;
       while ((tag = input.ReadTag()) != 0) {
         switch(tag) {
@@ -823,7 +1027,34 @@ namespace Google.Cloud.Tasks.V2Beta3 {
           }
         }
       }
+    #endif
     }
+
+    #if !GOOGLE_PROTOBUF_REFSTRUCT_COMPATIBILITY_MODE
+    [global::System.Diagnostics.DebuggerNonUserCodeAttribute]
+    void pb::IBufferMessage.InternalMergeFrom(ref pb::ParseContext input) {
+      uint tag;
+      while ((tag = input.ReadTag()) != 0) {
+        switch(tag) {
+          default:
+            _unknownFields = pb::UnknownFieldSet.MergeFieldFrom(_unknownFields, ref input);
+            break;
+          case 9: {
+            MaxDispatchesPerSecond = input.ReadDouble();
+            break;
+          }
+          case 16: {
+            MaxBurstSize = input.ReadInt32();
+            break;
+          }
+          case 24: {
+            MaxConcurrentDispatches = input.ReadInt32();
+            break;
+          }
+        }
+      }
+    }
+    #endif
 
   }
 
@@ -832,7 +1063,11 @@ namespace Google.Cloud.Tasks.V2Beta3 {
   ///
   /// These settings determine when a failed task attempt is retried.
   /// </summary>
-  public sealed partial class RetryConfig : pb::IMessage<RetryConfig> {
+  public sealed partial class RetryConfig : pb::IMessage<RetryConfig>
+  #if !GOOGLE_PROTOBUF_REFSTRUCT_COMPATIBILITY_MODE
+      , pb::IBufferMessage
+  #endif
+  {
     private static readonly pb::MessageParser<RetryConfig> _parser = new pb::MessageParser<RetryConfig>(() => new RetryConfig());
     private pb::UnknownFieldSet _unknownFields;
     [global::System.Diagnostics.DebuggerNonUserCodeAttribute]
@@ -990,7 +1225,7 @@ namespace Google.Cloud.Tasks.V2Beta3 {
     /// A task's retry interval starts at
     /// [min_backoff][google.cloud.tasks.v2beta3.RetryConfig.min_backoff], then doubles
     /// `max_doublings` times, then increases linearly, and finally
-    /// retries retries at intervals of
+    /// retries at intervals of
     /// [max_backoff][google.cloud.tasks.v2beta3.RetryConfig.max_backoff] up to
     /// [max_attempts][google.cloud.tasks.v2beta3.RetryConfig.max_attempts] times.
     ///
@@ -1061,6 +1296,9 @@ namespace Google.Cloud.Tasks.V2Beta3 {
 
     [global::System.Diagnostics.DebuggerNonUserCodeAttribute]
     public void WriteTo(pb::CodedOutputStream output) {
+    #if !GOOGLE_PROTOBUF_REFSTRUCT_COMPATIBILITY_MODE
+      output.WriteRawMessage(this);
+    #else
       if (MaxAttempts != 0) {
         output.WriteRawTag(8);
         output.WriteInt32(MaxAttempts);
@@ -1084,7 +1322,37 @@ namespace Google.Cloud.Tasks.V2Beta3 {
       if (_unknownFields != null) {
         _unknownFields.WriteTo(output);
       }
+    #endif
     }
+
+    #if !GOOGLE_PROTOBUF_REFSTRUCT_COMPATIBILITY_MODE
+    [global::System.Diagnostics.DebuggerNonUserCodeAttribute]
+    void pb::IBufferMessage.InternalWriteTo(ref pb::WriteContext output) {
+      if (MaxAttempts != 0) {
+        output.WriteRawTag(8);
+        output.WriteInt32(MaxAttempts);
+      }
+      if (maxRetryDuration_ != null) {
+        output.WriteRawTag(18);
+        output.WriteMessage(MaxRetryDuration);
+      }
+      if (minBackoff_ != null) {
+        output.WriteRawTag(26);
+        output.WriteMessage(MinBackoff);
+      }
+      if (maxBackoff_ != null) {
+        output.WriteRawTag(34);
+        output.WriteMessage(MaxBackoff);
+      }
+      if (MaxDoublings != 0) {
+        output.WriteRawTag(40);
+        output.WriteInt32(MaxDoublings);
+      }
+      if (_unknownFields != null) {
+        _unknownFields.WriteTo(ref output);
+      }
+    }
+    #endif
 
     [global::System.Diagnostics.DebuggerNonUserCodeAttribute]
     public int CalculateSize() {
@@ -1144,6 +1412,9 @@ namespace Google.Cloud.Tasks.V2Beta3 {
 
     [global::System.Diagnostics.DebuggerNonUserCodeAttribute]
     public void MergeFrom(pb::CodedInputStream input) {
+    #if !GOOGLE_PROTOBUF_REFSTRUCT_COMPATIBILITY_MODE
+      input.ReadRawMessage(this);
+    #else
       uint tag;
       while ((tag = input.ReadTag()) != 0) {
         switch(tag) {
@@ -1181,7 +1452,51 @@ namespace Google.Cloud.Tasks.V2Beta3 {
           }
         }
       }
+    #endif
     }
+
+    #if !GOOGLE_PROTOBUF_REFSTRUCT_COMPATIBILITY_MODE
+    [global::System.Diagnostics.DebuggerNonUserCodeAttribute]
+    void pb::IBufferMessage.InternalMergeFrom(ref pb::ParseContext input) {
+      uint tag;
+      while ((tag = input.ReadTag()) != 0) {
+        switch(tag) {
+          default:
+            _unknownFields = pb::UnknownFieldSet.MergeFieldFrom(_unknownFields, ref input);
+            break;
+          case 8: {
+            MaxAttempts = input.ReadInt32();
+            break;
+          }
+          case 18: {
+            if (maxRetryDuration_ == null) {
+              MaxRetryDuration = new global::Google.Protobuf.WellKnownTypes.Duration();
+            }
+            input.ReadMessage(MaxRetryDuration);
+            break;
+          }
+          case 26: {
+            if (minBackoff_ == null) {
+              MinBackoff = new global::Google.Protobuf.WellKnownTypes.Duration();
+            }
+            input.ReadMessage(MinBackoff);
+            break;
+          }
+          case 34: {
+            if (maxBackoff_ == null) {
+              MaxBackoff = new global::Google.Protobuf.WellKnownTypes.Duration();
+            }
+            input.ReadMessage(MaxBackoff);
+            break;
+          }
+          case 40: {
+            MaxDoublings = input.ReadInt32();
+            break;
+          }
+        }
+      }
+    }
+    #endif
 
   }
 
@@ -1189,7 +1504,11 @@ namespace Google.Cloud.Tasks.V2Beta3 {
   /// Configuration options for writing logs to
   /// [Stackdriver Logging](https://cloud.google.com/logging/docs/).
   /// </summary>
-  public sealed partial class StackdriverLoggingConfig : pb::IMessage<StackdriverLoggingConfig> {
+  public sealed partial class StackdriverLoggingConfig : pb::IMessage<StackdriverLoggingConfig>
+  #if !GOOGLE_PROTOBUF_REFSTRUCT_COMPATIBILITY_MODE
+      , pb::IBufferMessage
+  #endif
+  {
     private static readonly pb::MessageParser<StackdriverLoggingConfig> _parser = new pb::MessageParser<StackdriverLoggingConfig>(() => new StackdriverLoggingConfig());
     private pb::UnknownFieldSet _unknownFields;
     [global::System.Diagnostics.DebuggerNonUserCodeAttribute]
@@ -1274,6 +1593,9 @@ namespace Google.Cloud.Tasks.V2Beta3 {
 
     [global::System.Diagnostics.DebuggerNonUserCodeAttribute]
     public void WriteTo(pb::CodedOutputStream output) {
+    #if !GOOGLE_PROTOBUF_REFSTRUCT_COMPATIBILITY_MODE
+      output.WriteRawMessage(this);
+    #else
       if (SamplingRatio != 0D) {
         output.WriteRawTag(9);
         output.WriteDouble(SamplingRatio);
@@ -1281,7 +1603,21 @@ namespace Google.Cloud.Tasks.V2Beta3 {
       if (_unknownFields != null) {
         _unknownFields.WriteTo(output);
       }
+    #endif
     }
+
+    #if !GOOGLE_PROTOBUF_REFSTRUCT_COMPATIBILITY_MODE
+    [global::System.Diagnostics.DebuggerNonUserCodeAttribute]
+    void pb::IBufferMessage.InternalWriteTo(ref pb::WriteContext output) {
+      if (SamplingRatio != 0D) {
+        output.WriteRawTag(9);
+        output.WriteDouble(SamplingRatio);
+      }
+      if (_unknownFields != null) {
+        _unknownFields.WriteTo(ref output);
+      }
+    }
+    #endif
 
     [global::System.Diagnostics.DebuggerNonUserCodeAttribute]
     public int CalculateSize() {
@@ -1308,6 +1644,9 @@ namespace Google.Cloud.Tasks.V2Beta3 {
 
     [global::System.Diagnostics.DebuggerNonUserCodeAttribute]
     public void MergeFrom(pb::CodedInputStream input) {
+    #if !GOOGLE_PROTOBUF_REFSTRUCT_COMPATIBILITY_MODE
+      input.ReadRawMessage(this);
+    #else
       uint tag;
       while ((tag = input.ReadTag()) != 0) {
         switch(tag) {
@@ -1320,7 +1659,26 @@ namespace Google.Cloud.Tasks.V2Beta3 {
           }
         }
       }
+    #endif
     }
+
+    #if !GOOGLE_PROTOBUF_REFSTRUCT_COMPATIBILITY_MODE
+    [global::System.Diagnostics.DebuggerNonUserCodeAttribute]
+    void pb::IBufferMessage.InternalMergeFrom(ref pb::ParseContext input) {
+      uint tag;
+      while ((tag = input.ReadTag()) != 0) {
+        switch(tag) {
+          default:
+            _unknownFields = pb::UnknownFieldSet.MergeFieldFrom(_unknownFields, ref input);
+            break;
+          case 9: {
+            SamplingRatio = input.ReadDouble();
+            break;
+          }
+        }
+      }
+    }
+    #endif
 
   }
 

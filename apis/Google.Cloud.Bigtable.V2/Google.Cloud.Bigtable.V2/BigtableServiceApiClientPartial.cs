@@ -15,6 +15,7 @@
 using Google.Api.Gax;
 using Google.Api.Gax.Grpc;
 using Google.Api.Gax.Grpc.Gcp;
+using Google.Api.Gax.Grpc.GrpcCore;
 using Grpc.Core;
 using Grpc.Gcp;
 using System;
@@ -36,29 +37,26 @@ namespace Google.Cloud.Bigtable.V2
         /// The default <c>BigtableClient.MutateRows</c> and <c>BigtableClient.MutateRowsAsync</c>
         /// <see cref="RetrySettings"/> are:
         /// <list type="bullet">
+        /// <item><description>Max attempts: 5</description></item>
         /// <item><description>Initial retry delay: 10 milliseconds</description></item>
         /// <item><description>Retry delay multiplier: 2.0</description></item>
         /// <item><description>Retry maximum delay: 60000 milliseconds</description></item>
-        /// <item><description>Initial timeout: 20000 milliseconds</description></item>
-        /// <item><description>Timeout multiplier: 1.0</description></item>
-        /// <item><description>Timeout maximum delay: 20000 milliseconds</description></item>
         /// </list>
         /// Retry will be attempted on the following response status codes on individual mutations:
         /// <list>
         /// <item><description><see cref="StatusCode.DeadlineExceeded"/></description></item>
         /// <item><description><see cref="StatusCode.Unavailable"/></description></item>
         /// </list>
-        /// Default RPC expiration is 600000 milliseconds.
         /// </remarks>
         /// <seealso cref="MutateRowsSettings"/>
         public RetrySettings MutateRowsRetrySettings { get; set; } =
-            new RetrySettings(
-                retryBackoff: new BackoffSettings(delay: TimeSpan.FromMilliseconds(10), maxDelay: TimeSpan.FromMilliseconds(60000), delayMultiplier: 2.0),
-                timeoutBackoff: new BackoffSettings(delay: TimeSpan.FromMilliseconds(20000), maxDelay: TimeSpan.FromMilliseconds(20000), delayMultiplier: 1.0),
-                totalExpiration: Expiration.FromTimeout(TimeSpan.FromMilliseconds(600000)),
-                retryFilter: RetrySettings.FilterForStatusCodes(StatusCode.DeadlineExceeded, StatusCode.Unavailable)
-            );
-        
+            RetrySettings.FromExponentialBackoff(
+                maxAttempts: 5,
+                initialBackoff: TimeSpan.FromMilliseconds(10),
+                maxBackoff: TimeSpan.FromMinutes(1),
+                backoffMultiplier: 2,
+                retryFilter: RetrySettings.FilterForStatusCodes(StatusCode.DeadlineExceeded, StatusCode.Unavailable));
+
         /// <summary>
         /// <see cref="RetrySettings"/> for calls to <c>BigtableClient.ReadRows</c> when the stream
         /// of results ends prematurely.
@@ -66,28 +64,25 @@ namespace Google.Cloud.Bigtable.V2
         /// <remarks>
         /// The default <c>BigtableClient.ReadRows</c> <see cref="RetrySettings"/> are:
         /// <list type="bullet">
+        /// <item><description>Max attempts: 5</description></item>
         /// <item><description>Initial retry delay: 10 milliseconds</description></item>
         /// <item><description>Retry delay multiplier: 2.0</description></item>
         /// <item><description>Retry maximum delay: 60000 milliseconds</description></item>
-        /// <item><description>Initial timeout: 20000 milliseconds</description></item>
-        /// <item><description>Timeout multiplier: 1.0</description></item>
-        /// <item><description>Timeout maximum delay: 20000 milliseconds</description></item>
         /// </list>
         /// Retry will be attempted on the following response status codes on individual mutations:
         /// <list>
         /// <item><description><see cref="StatusCode.DeadlineExceeded"/></description></item>
         /// <item><description><see cref="StatusCode.Unavailable"/></description></item>
         /// </list>
-        /// Default RPC expiration is 600000 milliseconds.
         /// </remarks>
         /// <seealso cref="ReadRowsSettings"/>
         public RetrySettings ReadRowsRetrySettings { get; set; } =
-            new RetrySettings(
-                retryBackoff: new BackoffSettings(delay: TimeSpan.FromMilliseconds(10), maxDelay: TimeSpan.FromMilliseconds(60000), delayMultiplier: 2.0),
-                timeoutBackoff: new BackoffSettings(delay: TimeSpan.FromMilliseconds(20000), maxDelay: TimeSpan.FromMilliseconds(20000), delayMultiplier: 1.0),
-                totalExpiration: Expiration.FromTimeout(TimeSpan.FromMilliseconds(600000)),
-                retryFilter: RetrySettings.FilterForStatusCodes(StatusCode.DeadlineExceeded, StatusCode.Unavailable)
-            );
+            RetrySettings.FromExponentialBackoff(
+                maxAttempts: 5,
+                initialBackoff: TimeSpan.FromMilliseconds(10),
+                maxBackoff: TimeSpan.FromMinutes(1),
+                backoffMultiplier: 2,
+                retryFilter: RetrySettings.FilterForStatusCodes(StatusCode.DeadlineExceeded, StatusCode.Unavailable));
 
         /// <summary>
         /// This value specifies routing for replication. If not specified, the
@@ -103,9 +98,8 @@ namespace Google.Cloud.Bigtable.V2
         /// Note that channels are managed and shared amongst <see cref="BigtableClient"/> instances using the same
         /// endpoint and channel options and which use the default credentials. So this property will have no bearing
         /// across clients using different options. To create a custom grouping of channels to be managed, create a
-        /// <see cref="GcpCallInvoker"/> manually and use the
-        /// <see cref="BigtableClient.Create(CallInvoker, BigtableServiceApiSettings)">BigtableClient.Create</see>
-        /// overload taking a <see cref="CallInvoker"/> to create clients from it.
+        /// <see cref="GcpCallInvoker"/> manually and set the <see cref="ClientBuilderBase{BigtableClient}.CallInvoker" />
+        /// property on a <see cref="BigtableClientBuilder" />, then build the client.
         /// </para>
         /// </remarks>
         public uint MaxChannels { get; set; } = 16;
@@ -119,9 +113,8 @@ namespace Google.Cloud.Bigtable.V2
         /// Note that channels are managed and shared amongst <see cref="BigtableClient"/> instances using the same
         /// endpoint and channel options and which use the default credentials. So this property will have no bearing
         /// across clients using different options. To create a custom grouping of channels to be managed, create a
-        /// <see cref="GcpCallInvoker"/> manually and use the
-        /// <see cref="BigtableClient.Create(CallInvoker, BigtableServiceApiSettings)">BigtableClient.Create</see>
-        /// overload taking a <see cref="CallInvoker"/> to create clients from it.
+        /// <see cref="GcpCallInvoker"/> manually and set the <see cref="ClientBuilderBase{BigtableClient}.CallInvoker" />
+        /// property on a <see cref="BigtableClientBuilder" />, then build the client.
         /// </para>
         /// </remarks>
         public uint PreferredMaxStreamsPerChannel { get; set; } = 5;
@@ -141,10 +134,8 @@ namespace Google.Cloud.Bigtable.V2
     /// </summary>
     public static class BigtableServiceApiSettingsExtensions
     {
-        private static readonly Lazy<IEnumerable<ChannelOption>> s_defaultChannelOptions =
-            new Lazy<IEnumerable<ChannelOption>>(
-                () => new ReadOnlyCollection<ChannelOption>(
-                    BigtableServiceApiSettings.GetDefault().CreateChannelOptionsImpl()));
+        private static readonly Lazy<GrpcChannelOptions> s_defaultChannelOptions =
+            new Lazy<GrpcChannelOptions>(() => BigtableServiceApiSettings.GetDefault().CreateChannelOptionsImpl());
 
         /// <summary>
         /// Creates a collection of <see cref="ChannelOption"/> instances which can be used to create a <see cref="Channel"/>
@@ -161,16 +152,10 @@ namespace Google.Cloud.Bigtable.V2
         /// The settings with which to create channel options. May be null, in which case the default settings will be used.
         /// </param>
         /// <returns>A collection of <see cref="ChannelOption"/> instances.</returns>
-        public static IEnumerable<ChannelOption> CreateChannelOptions(this BigtableServiceApiSettings settings)
-        {
-            if (settings == null)
-            {
-                return s_defaultChannelOptions.Value;
-            }
-            return CreateChannelOptionsImpl(settings);
-        }
+        public static GrpcChannelOptions CreateChannelOptions(this BigtableServiceApiSettings settings) =>
+            settings is null ? s_defaultChannelOptions.Value : CreateChannelOptionsImpl(settings);
 
-        private static ChannelOption[] CreateChannelOptionsImpl(this BigtableServiceApiSettings settings)
+        private static GrpcChannelOptions CreateChannelOptionsImpl(this BigtableServiceApiSettings settings)
         {
             var apiConfig = new ApiConfig
             {
@@ -181,17 +166,11 @@ namespace Google.Cloud.Bigtable.V2
                 }
             };
 
-            return new[]
-            {
-                // Set channel send/recv message size to unlimited.
-                new ChannelOption(ChannelOptions.MaxSendMessageLength, -1),
-                new ChannelOption(ChannelOptions.MaxReceiveMessageLength, -1),
-
-                // TODO: Figure out if there's a good way to test this
-                new ChannelOption(ChannelOptions.PrimaryUserAgentString, BigtableClient.UserAgent),
-
-                new ChannelOption(GcpCallInvoker.ApiConfigChannelArg, apiConfig.ToString())
-            };
+            return GrpcChannelOptions.Empty
+                .WithPrimaryUserAgent(BigtableClient.UserAgent)
+                .WithMaxSendMessageSize(-1)
+                .WithMaxReceiveMessageSize(-1)
+                .WithCustomOption(GcpCallInvoker.ApiConfigChannelArg, apiConfig.ToString());
         }
     }
 
@@ -218,7 +197,7 @@ namespace Google.Cloud.Bigtable.V2
                 return CallInvoker;
             }
             var endpoint = Endpoint ?? GetDefaultEndpoint();
-            var channelOptions = Settings.CreateChannelOptions().Concat(GetChannelOptions()).ToList();
+            var channelOptions = GetChannelOptions().MergedWith(Settings.CreateChannelOptions());
             // Although *we* never allow the use of the channel pool, we can use the call invoker pool if and
             // only if the base class thinks it can use the channel pool - i.e. it's only using default credentials.
             if (base.CanUseChannelPool)
@@ -228,7 +207,7 @@ namespace Google.Cloud.Bigtable.V2
             else
             {
                 var credentials = GetChannelCredentials();
-                return new GcpCallInvoker(endpoint.ToString(), credentials, channelOptions);
+                return new GcpCallInvoker(endpoint.ToString(), credentials, GrpcCoreAdapter.Instance.ConvertOptions(channelOptions));
             }
         }
 
@@ -240,7 +219,7 @@ namespace Google.Cloud.Bigtable.V2
                 return CallInvoker;
             }
             var endpoint = Endpoint ?? GetDefaultEndpoint();
-            var channelOptions = Settings.CreateChannelOptions().Concat(GetChannelOptions()).ToList();
+            var channelOptions = GetChannelOptions().MergedWith(Settings.CreateChannelOptions());
             // Although *we* never allow the use of the channel pool, we can use the call invoker pool if and
             // only if the base class thinks it can use the channel pool - i.e. it's only using default credentials.
             if (base.CanUseChannelPool)
@@ -250,7 +229,7 @@ namespace Google.Cloud.Bigtable.V2
             else
             {
                 var credentials = GetChannelCredentials();
-                return new GcpCallInvoker(endpoint.ToString(), credentials, channelOptions);
+                return new GcpCallInvoker(endpoint.ToString(), credentials, GrpcCoreAdapter.Instance.ConvertOptions(channelOptions));
             }
         }
 
@@ -291,9 +270,9 @@ namespace Google.Cloud.Bigtable.V2
                 CancellationToken cancellationToken = default)
             {
                 var responses = new List<SampleRowKeysResponse>();
-                while (await ResponseStream.MoveNext(cancellationToken).ConfigureAwait(false))
+                while (await GrpcCall.ResponseStream.MoveNext(cancellationToken).ConfigureAwait(false))
                 {
-                    responses.Add(ResponseStream.Current);
+                    responses.Add(GrpcCall.ResponseStream.Current);
                 }
                 return responses;
             }

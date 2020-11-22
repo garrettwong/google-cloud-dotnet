@@ -210,29 +210,29 @@ namespace Google.Cloud.Language.V1 {
             "MTtsYW5ndWFnZWIGcHJvdG8z"));
       descriptor = pbr::FileDescriptor.FromGeneratedCode(descriptorData,
           new pbr::FileDescriptor[] { global::Google.Api.AnnotationsReflection.Descriptor, global::Google.Api.ClientReflection.Descriptor, global::Google.Api.FieldBehaviorReflection.Descriptor, },
-          new pbr::GeneratedClrTypeInfo(new[] {typeof(global::Google.Cloud.Language.V1.EncodingType), }, new pbr::GeneratedClrTypeInfo[] {
-            new pbr::GeneratedClrTypeInfo(typeof(global::Google.Cloud.Language.V1.Document), global::Google.Cloud.Language.V1.Document.Parser, new[]{ "Type", "Content", "GcsContentUri", "Language" }, new[]{ "Source" }, new[]{ typeof(global::Google.Cloud.Language.V1.Document.Types.Type) }, null),
-            new pbr::GeneratedClrTypeInfo(typeof(global::Google.Cloud.Language.V1.Sentence), global::Google.Cloud.Language.V1.Sentence.Parser, new[]{ "Text", "Sentiment" }, null, null, null),
-            new pbr::GeneratedClrTypeInfo(typeof(global::Google.Cloud.Language.V1.Entity), global::Google.Cloud.Language.V1.Entity.Parser, new[]{ "Name", "Type", "Metadata", "Salience", "Mentions", "Sentiment" }, null, new[]{ typeof(global::Google.Cloud.Language.V1.Entity.Types.Type) }, new pbr::GeneratedClrTypeInfo[] { null, }),
-            new pbr::GeneratedClrTypeInfo(typeof(global::Google.Cloud.Language.V1.Token), global::Google.Cloud.Language.V1.Token.Parser, new[]{ "Text", "PartOfSpeech", "DependencyEdge", "Lemma" }, null, null, null),
-            new pbr::GeneratedClrTypeInfo(typeof(global::Google.Cloud.Language.V1.Sentiment), global::Google.Cloud.Language.V1.Sentiment.Parser, new[]{ "Magnitude", "Score" }, null, null, null),
-            new pbr::GeneratedClrTypeInfo(typeof(global::Google.Cloud.Language.V1.PartOfSpeech), global::Google.Cloud.Language.V1.PartOfSpeech.Parser, new[]{ "Tag", "Aspect", "Case", "Form", "Gender", "Mood", "Number", "Person", "Proper", "Reciprocity", "Tense", "Voice" }, null, new[]{ typeof(global::Google.Cloud.Language.V1.PartOfSpeech.Types.Tag), typeof(global::Google.Cloud.Language.V1.PartOfSpeech.Types.Aspect), typeof(global::Google.Cloud.Language.V1.PartOfSpeech.Types.Case), typeof(global::Google.Cloud.Language.V1.PartOfSpeech.Types.Form), typeof(global::Google.Cloud.Language.V1.PartOfSpeech.Types.Gender), typeof(global::Google.Cloud.Language.V1.PartOfSpeech.Types.Mood), typeof(global::Google.Cloud.Language.V1.PartOfSpeech.Types.Number), typeof(global::Google.Cloud.Language.V1.PartOfSpeech.Types.Person), typeof(global::Google.Cloud.Language.V1.PartOfSpeech.Types.Proper), typeof(global::Google.Cloud.Language.V1.PartOfSpeech.Types.Reciprocity), typeof(global::Google.Cloud.Language.V1.PartOfSpeech.Types.Tense), typeof(global::Google.Cloud.Language.V1.PartOfSpeech.Types.Voice) }, null),
-            new pbr::GeneratedClrTypeInfo(typeof(global::Google.Cloud.Language.V1.DependencyEdge), global::Google.Cloud.Language.V1.DependencyEdge.Parser, new[]{ "HeadTokenIndex", "Label" }, null, new[]{ typeof(global::Google.Cloud.Language.V1.DependencyEdge.Types.Label) }, null),
-            new pbr::GeneratedClrTypeInfo(typeof(global::Google.Cloud.Language.V1.EntityMention), global::Google.Cloud.Language.V1.EntityMention.Parser, new[]{ "Text", "Type", "Sentiment" }, null, new[]{ typeof(global::Google.Cloud.Language.V1.EntityMention.Types.Type) }, null),
-            new pbr::GeneratedClrTypeInfo(typeof(global::Google.Cloud.Language.V1.TextSpan), global::Google.Cloud.Language.V1.TextSpan.Parser, new[]{ "Content", "BeginOffset" }, null, null, null),
-            new pbr::GeneratedClrTypeInfo(typeof(global::Google.Cloud.Language.V1.ClassificationCategory), global::Google.Cloud.Language.V1.ClassificationCategory.Parser, new[]{ "Name", "Confidence" }, null, null, null),
-            new pbr::GeneratedClrTypeInfo(typeof(global::Google.Cloud.Language.V1.AnalyzeSentimentRequest), global::Google.Cloud.Language.V1.AnalyzeSentimentRequest.Parser, new[]{ "Document", "EncodingType" }, null, null, null),
-            new pbr::GeneratedClrTypeInfo(typeof(global::Google.Cloud.Language.V1.AnalyzeSentimentResponse), global::Google.Cloud.Language.V1.AnalyzeSentimentResponse.Parser, new[]{ "DocumentSentiment", "Language", "Sentences" }, null, null, null),
-            new pbr::GeneratedClrTypeInfo(typeof(global::Google.Cloud.Language.V1.AnalyzeEntitySentimentRequest), global::Google.Cloud.Language.V1.AnalyzeEntitySentimentRequest.Parser, new[]{ "Document", "EncodingType" }, null, null, null),
-            new pbr::GeneratedClrTypeInfo(typeof(global::Google.Cloud.Language.V1.AnalyzeEntitySentimentResponse), global::Google.Cloud.Language.V1.AnalyzeEntitySentimentResponse.Parser, new[]{ "Entities", "Language" }, null, null, null),
-            new pbr::GeneratedClrTypeInfo(typeof(global::Google.Cloud.Language.V1.AnalyzeEntitiesRequest), global::Google.Cloud.Language.V1.AnalyzeEntitiesRequest.Parser, new[]{ "Document", "EncodingType" }, null, null, null),
-            new pbr::GeneratedClrTypeInfo(typeof(global::Google.Cloud.Language.V1.AnalyzeEntitiesResponse), global::Google.Cloud.Language.V1.AnalyzeEntitiesResponse.Parser, new[]{ "Entities", "Language" }, null, null, null),
-            new pbr::GeneratedClrTypeInfo(typeof(global::Google.Cloud.Language.V1.AnalyzeSyntaxRequest), global::Google.Cloud.Language.V1.AnalyzeSyntaxRequest.Parser, new[]{ "Document", "EncodingType" }, null, null, null),
-            new pbr::GeneratedClrTypeInfo(typeof(global::Google.Cloud.Language.V1.AnalyzeSyntaxResponse), global::Google.Cloud.Language.V1.AnalyzeSyntaxResponse.Parser, new[]{ "Sentences", "Tokens", "Language" }, null, null, null),
-            new pbr::GeneratedClrTypeInfo(typeof(global::Google.Cloud.Language.V1.ClassifyTextRequest), global::Google.Cloud.Language.V1.ClassifyTextRequest.Parser, new[]{ "Document" }, null, null, null),
-            new pbr::GeneratedClrTypeInfo(typeof(global::Google.Cloud.Language.V1.ClassifyTextResponse), global::Google.Cloud.Language.V1.ClassifyTextResponse.Parser, new[]{ "Categories" }, null, null, null),
-            new pbr::GeneratedClrTypeInfo(typeof(global::Google.Cloud.Language.V1.AnnotateTextRequest), global::Google.Cloud.Language.V1.AnnotateTextRequest.Parser, new[]{ "Document", "Features", "EncodingType" }, null, null, new pbr::GeneratedClrTypeInfo[] { new pbr::GeneratedClrTypeInfo(typeof(global::Google.Cloud.Language.V1.AnnotateTextRequest.Types.Features), global::Google.Cloud.Language.V1.AnnotateTextRequest.Types.Features.Parser, new[]{ "ExtractSyntax", "ExtractEntities", "ExtractDocumentSentiment", "ExtractEntitySentiment", "ClassifyText" }, null, null, null)}),
-            new pbr::GeneratedClrTypeInfo(typeof(global::Google.Cloud.Language.V1.AnnotateTextResponse), global::Google.Cloud.Language.V1.AnnotateTextResponse.Parser, new[]{ "Sentences", "Tokens", "Entities", "DocumentSentiment", "Language", "Categories" }, null, null, null)
+          new pbr::GeneratedClrTypeInfo(new[] {typeof(global::Google.Cloud.Language.V1.EncodingType), }, null, new pbr::GeneratedClrTypeInfo[] {
+            new pbr::GeneratedClrTypeInfo(typeof(global::Google.Cloud.Language.V1.Document), global::Google.Cloud.Language.V1.Document.Parser, new[]{ "Type", "Content", "GcsContentUri", "Language" }, new[]{ "Source" }, new[]{ typeof(global::Google.Cloud.Language.V1.Document.Types.Type) }, null, null),
+            new pbr::GeneratedClrTypeInfo(typeof(global::Google.Cloud.Language.V1.Sentence), global::Google.Cloud.Language.V1.Sentence.Parser, new[]{ "Text", "Sentiment" }, null, null, null, null),
+            new pbr::GeneratedClrTypeInfo(typeof(global::Google.Cloud.Language.V1.Entity), global::Google.Cloud.Language.V1.Entity.Parser, new[]{ "Name", "Type", "Metadata", "Salience", "Mentions", "Sentiment" }, null, new[]{ typeof(global::Google.Cloud.Language.V1.Entity.Types.Type) }, null, new pbr::GeneratedClrTypeInfo[] { null, }),
+            new pbr::GeneratedClrTypeInfo(typeof(global::Google.Cloud.Language.V1.Token), global::Google.Cloud.Language.V1.Token.Parser, new[]{ "Text", "PartOfSpeech", "DependencyEdge", "Lemma" }, null, null, null, null),
+            new pbr::GeneratedClrTypeInfo(typeof(global::Google.Cloud.Language.V1.Sentiment), global::Google.Cloud.Language.V1.Sentiment.Parser, new[]{ "Magnitude", "Score" }, null, null, null, null),
+            new pbr::GeneratedClrTypeInfo(typeof(global::Google.Cloud.Language.V1.PartOfSpeech), global::Google.Cloud.Language.V1.PartOfSpeech.Parser, new[]{ "Tag", "Aspect", "Case", "Form", "Gender", "Mood", "Number", "Person", "Proper", "Reciprocity", "Tense", "Voice" }, null, new[]{ typeof(global::Google.Cloud.Language.V1.PartOfSpeech.Types.Tag), typeof(global::Google.Cloud.Language.V1.PartOfSpeech.Types.Aspect), typeof(global::Google.Cloud.Language.V1.PartOfSpeech.Types.Case), typeof(global::Google.Cloud.Language.V1.PartOfSpeech.Types.Form), typeof(global::Google.Cloud.Language.V1.PartOfSpeech.Types.Gender), typeof(global::Google.Cloud.Language.V1.PartOfSpeech.Types.Mood), typeof(global::Google.Cloud.Language.V1.PartOfSpeech.Types.Number), typeof(global::Google.Cloud.Language.V1.PartOfSpeech.Types.Person), typeof(global::Google.Cloud.Language.V1.PartOfSpeech.Types.Proper), typeof(global::Google.Cloud.Language.V1.PartOfSpeech.Types.Reciprocity), typeof(global::Google.Cloud.Language.V1.PartOfSpeech.Types.Tense), typeof(global::Google.Cloud.Language.V1.PartOfSpeech.Types.Voice) }, null, null),
+            new pbr::GeneratedClrTypeInfo(typeof(global::Google.Cloud.Language.V1.DependencyEdge), global::Google.Cloud.Language.V1.DependencyEdge.Parser, new[]{ "HeadTokenIndex", "Label" }, null, new[]{ typeof(global::Google.Cloud.Language.V1.DependencyEdge.Types.Label) }, null, null),
+            new pbr::GeneratedClrTypeInfo(typeof(global::Google.Cloud.Language.V1.EntityMention), global::Google.Cloud.Language.V1.EntityMention.Parser, new[]{ "Text", "Type", "Sentiment" }, null, new[]{ typeof(global::Google.Cloud.Language.V1.EntityMention.Types.Type) }, null, null),
+            new pbr::GeneratedClrTypeInfo(typeof(global::Google.Cloud.Language.V1.TextSpan), global::Google.Cloud.Language.V1.TextSpan.Parser, new[]{ "Content", "BeginOffset" }, null, null, null, null),
+            new pbr::GeneratedClrTypeInfo(typeof(global::Google.Cloud.Language.V1.ClassificationCategory), global::Google.Cloud.Language.V1.ClassificationCategory.Parser, new[]{ "Name", "Confidence" }, null, null, null, null),
+            new pbr::GeneratedClrTypeInfo(typeof(global::Google.Cloud.Language.V1.AnalyzeSentimentRequest), global::Google.Cloud.Language.V1.AnalyzeSentimentRequest.Parser, new[]{ "Document", "EncodingType" }, null, null, null, null),
+            new pbr::GeneratedClrTypeInfo(typeof(global::Google.Cloud.Language.V1.AnalyzeSentimentResponse), global::Google.Cloud.Language.V1.AnalyzeSentimentResponse.Parser, new[]{ "DocumentSentiment", "Language", "Sentences" }, null, null, null, null),
+            new pbr::GeneratedClrTypeInfo(typeof(global::Google.Cloud.Language.V1.AnalyzeEntitySentimentRequest), global::Google.Cloud.Language.V1.AnalyzeEntitySentimentRequest.Parser, new[]{ "Document", "EncodingType" }, null, null, null, null),
+            new pbr::GeneratedClrTypeInfo(typeof(global::Google.Cloud.Language.V1.AnalyzeEntitySentimentResponse), global::Google.Cloud.Language.V1.AnalyzeEntitySentimentResponse.Parser, new[]{ "Entities", "Language" }, null, null, null, null),
+            new pbr::GeneratedClrTypeInfo(typeof(global::Google.Cloud.Language.V1.AnalyzeEntitiesRequest), global::Google.Cloud.Language.V1.AnalyzeEntitiesRequest.Parser, new[]{ "Document", "EncodingType" }, null, null, null, null),
+            new pbr::GeneratedClrTypeInfo(typeof(global::Google.Cloud.Language.V1.AnalyzeEntitiesResponse), global::Google.Cloud.Language.V1.AnalyzeEntitiesResponse.Parser, new[]{ "Entities", "Language" }, null, null, null, null),
+            new pbr::GeneratedClrTypeInfo(typeof(global::Google.Cloud.Language.V1.AnalyzeSyntaxRequest), global::Google.Cloud.Language.V1.AnalyzeSyntaxRequest.Parser, new[]{ "Document", "EncodingType" }, null, null, null, null),
+            new pbr::GeneratedClrTypeInfo(typeof(global::Google.Cloud.Language.V1.AnalyzeSyntaxResponse), global::Google.Cloud.Language.V1.AnalyzeSyntaxResponse.Parser, new[]{ "Sentences", "Tokens", "Language" }, null, null, null, null),
+            new pbr::GeneratedClrTypeInfo(typeof(global::Google.Cloud.Language.V1.ClassifyTextRequest), global::Google.Cloud.Language.V1.ClassifyTextRequest.Parser, new[]{ "Document" }, null, null, null, null),
+            new pbr::GeneratedClrTypeInfo(typeof(global::Google.Cloud.Language.V1.ClassifyTextResponse), global::Google.Cloud.Language.V1.ClassifyTextResponse.Parser, new[]{ "Categories" }, null, null, null, null),
+            new pbr::GeneratedClrTypeInfo(typeof(global::Google.Cloud.Language.V1.AnnotateTextRequest), global::Google.Cloud.Language.V1.AnnotateTextRequest.Parser, new[]{ "Document", "Features", "EncodingType" }, null, null, null, new pbr::GeneratedClrTypeInfo[] { new pbr::GeneratedClrTypeInfo(typeof(global::Google.Cloud.Language.V1.AnnotateTextRequest.Types.Features), global::Google.Cloud.Language.V1.AnnotateTextRequest.Types.Features.Parser, new[]{ "ExtractSyntax", "ExtractEntities", "ExtractDocumentSentiment", "ExtractEntitySentiment", "ClassifyText" }, null, null, null, null)}),
+            new pbr::GeneratedClrTypeInfo(typeof(global::Google.Cloud.Language.V1.AnnotateTextResponse), global::Google.Cloud.Language.V1.AnnotateTextResponse.Parser, new[]{ "Sentences", "Tokens", "Entities", "DocumentSentiment", "Language", "Categories" }, null, null, null, null)
           }));
     }
     #endregion
@@ -276,11 +276,14 @@ namespace Google.Cloud.Language.V1 {
 
   #region Messages
   /// <summary>
-  /// ################################################################ #
   ///
   /// Represents the input to API methods.
   /// </summary>
-  public sealed partial class Document : pb::IMessage<Document> {
+  public sealed partial class Document : pb::IMessage<Document>
+  #if !GOOGLE_PROTOBUF_REFSTRUCT_COMPATIBILITY_MODE
+      , pb::IBufferMessage
+  #endif
+  {
     private static readonly pb::MessageParser<Document> _parser = new pb::MessageParser<Document>(() => new Document());
     private pb::UnknownFieldSet _unknownFields;
     [global::System.Diagnostics.DebuggerNonUserCodeAttribute]
@@ -326,7 +329,7 @@ namespace Google.Cloud.Language.V1 {
 
     /// <summary>Field number for the "type" field.</summary>
     public const int TypeFieldNumber = 1;
-    private global::Google.Cloud.Language.V1.Document.Types.Type type_ = 0;
+    private global::Google.Cloud.Language.V1.Document.Types.Type type_ = global::Google.Cloud.Language.V1.Document.Types.Type.Unspecified;
     /// <summary>
     /// Required. If the type is not set or is `TYPE_UNSPECIFIED`,
     /// returns an `INVALID_ARGUMENT` error.
@@ -378,11 +381,11 @@ namespace Google.Cloud.Language.V1 {
     /// The language of the document (if not specified, the language is
     /// automatically detected). Both ISO and BCP-47 language codes are
     /// accepted.&lt;br>
-    /// [Language Support](/natural-language/docs/languages)
-    /// lists currently supported languages for each API method.
-    /// If the language (either specified by the caller or automatically detected)
-    /// is not supported by the called API method, an `INVALID_ARGUMENT` error
-    /// is returned.
+    /// [Language
+    /// Support](https://cloud.google.com/natural-language/docs/languages) lists
+    /// currently supported languages for each API method. If the language (either
+    /// specified by the caller or automatically detected) is not supported by the
+    /// called API method, an `INVALID_ARGUMENT` error is returned.
     /// </summary>
     [global::System.Diagnostics.DebuggerNonUserCodeAttribute]
     public string Language {
@@ -435,7 +438,7 @@ namespace Google.Cloud.Language.V1 {
     [global::System.Diagnostics.DebuggerNonUserCodeAttribute]
     public override int GetHashCode() {
       int hash = 1;
-      if (Type != 0) hash ^= Type.GetHashCode();
+      if (Type != global::Google.Cloud.Language.V1.Document.Types.Type.Unspecified) hash ^= Type.GetHashCode();
       if (sourceCase_ == SourceOneofCase.Content) hash ^= Content.GetHashCode();
       if (sourceCase_ == SourceOneofCase.GcsContentUri) hash ^= GcsContentUri.GetHashCode();
       if (Language.Length != 0) hash ^= Language.GetHashCode();
@@ -453,7 +456,10 @@ namespace Google.Cloud.Language.V1 {
 
     [global::System.Diagnostics.DebuggerNonUserCodeAttribute]
     public void WriteTo(pb::CodedOutputStream output) {
-      if (Type != 0) {
+    #if !GOOGLE_PROTOBUF_REFSTRUCT_COMPATIBILITY_MODE
+      output.WriteRawMessage(this);
+    #else
+      if (Type != global::Google.Cloud.Language.V1.Document.Types.Type.Unspecified) {
         output.WriteRawTag(8);
         output.WriteEnum((int) Type);
       }
@@ -472,12 +478,38 @@ namespace Google.Cloud.Language.V1 {
       if (_unknownFields != null) {
         _unknownFields.WriteTo(output);
       }
+    #endif
     }
+
+    #if !GOOGLE_PROTOBUF_REFSTRUCT_COMPATIBILITY_MODE
+    [global::System.Diagnostics.DebuggerNonUserCodeAttribute]
+    void pb::IBufferMessage.InternalWriteTo(ref pb::WriteContext output) {
+      if (Type != global::Google.Cloud.Language.V1.Document.Types.Type.Unspecified) {
+        output.WriteRawTag(8);
+        output.WriteEnum((int) Type);
+      }
+      if (sourceCase_ == SourceOneofCase.Content) {
+        output.WriteRawTag(18);
+        output.WriteString(Content);
+      }
+      if (sourceCase_ == SourceOneofCase.GcsContentUri) {
+        output.WriteRawTag(26);
+        output.WriteString(GcsContentUri);
+      }
+      if (Language.Length != 0) {
+        output.WriteRawTag(34);
+        output.WriteString(Language);
+      }
+      if (_unknownFields != null) {
+        _unknownFields.WriteTo(ref output);
+      }
+    }
+    #endif
 
     [global::System.Diagnostics.DebuggerNonUserCodeAttribute]
     public int CalculateSize() {
       int size = 0;
-      if (Type != 0) {
+      if (Type != global::Google.Cloud.Language.V1.Document.Types.Type.Unspecified) {
         size += 1 + pb::CodedOutputStream.ComputeEnumSize((int) Type);
       }
       if (sourceCase_ == SourceOneofCase.Content) {
@@ -500,7 +532,7 @@ namespace Google.Cloud.Language.V1 {
       if (other == null) {
         return;
       }
-      if (other.Type != 0) {
+      if (other.Type != global::Google.Cloud.Language.V1.Document.Types.Type.Unspecified) {
         Type = other.Type;
       }
       if (other.Language.Length != 0) {
@@ -520,6 +552,9 @@ namespace Google.Cloud.Language.V1 {
 
     [global::System.Diagnostics.DebuggerNonUserCodeAttribute]
     public void MergeFrom(pb::CodedInputStream input) {
+    #if !GOOGLE_PROTOBUF_REFSTRUCT_COMPATIBILITY_MODE
+      input.ReadRawMessage(this);
+    #else
       uint tag;
       while ((tag = input.ReadTag()) != 0) {
         switch(tag) {
@@ -544,7 +579,38 @@ namespace Google.Cloud.Language.V1 {
           }
         }
       }
+    #endif
     }
+
+    #if !GOOGLE_PROTOBUF_REFSTRUCT_COMPATIBILITY_MODE
+    [global::System.Diagnostics.DebuggerNonUserCodeAttribute]
+    void pb::IBufferMessage.InternalMergeFrom(ref pb::ParseContext input) {
+      uint tag;
+      while ((tag = input.ReadTag()) != 0) {
+        switch(tag) {
+          default:
+            _unknownFields = pb::UnknownFieldSet.MergeFieldFrom(_unknownFields, ref input);
+            break;
+          case 8: {
+            Type = (global::Google.Cloud.Language.V1.Document.Types.Type) input.ReadEnum();
+            break;
+          }
+          case 18: {
+            Content = input.ReadString();
+            break;
+          }
+          case 26: {
+            GcsContentUri = input.ReadString();
+            break;
+          }
+          case 34: {
+            Language = input.ReadString();
+            break;
+          }
+        }
+      }
+    }
+    #endif
 
     #region Nested types
     /// <summary>Container for nested types declared in the Document message type.</summary>
@@ -576,7 +642,11 @@ namespace Google.Cloud.Language.V1 {
   /// <summary>
   /// Represents a sentence in the input document.
   /// </summary>
-  public sealed partial class Sentence : pb::IMessage<Sentence> {
+  public sealed partial class Sentence : pb::IMessage<Sentence>
+  #if !GOOGLE_PROTOBUF_REFSTRUCT_COMPATIBILITY_MODE
+      , pb::IBufferMessage
+  #endif
+  {
     private static readonly pb::MessageParser<Sentence> _parser = new pb::MessageParser<Sentence>(() => new Sentence());
     private pb::UnknownFieldSet _unknownFields;
     [global::System.Diagnostics.DebuggerNonUserCodeAttribute]
@@ -677,6 +747,9 @@ namespace Google.Cloud.Language.V1 {
 
     [global::System.Diagnostics.DebuggerNonUserCodeAttribute]
     public void WriteTo(pb::CodedOutputStream output) {
+    #if !GOOGLE_PROTOBUF_REFSTRUCT_COMPATIBILITY_MODE
+      output.WriteRawMessage(this);
+    #else
       if (text_ != null) {
         output.WriteRawTag(10);
         output.WriteMessage(Text);
@@ -688,7 +761,25 @@ namespace Google.Cloud.Language.V1 {
       if (_unknownFields != null) {
         _unknownFields.WriteTo(output);
       }
+    #endif
     }
+
+    #if !GOOGLE_PROTOBUF_REFSTRUCT_COMPATIBILITY_MODE
+    [global::System.Diagnostics.DebuggerNonUserCodeAttribute]
+    void pb::IBufferMessage.InternalWriteTo(ref pb::WriteContext output) {
+      if (text_ != null) {
+        output.WriteRawTag(10);
+        output.WriteMessage(Text);
+      }
+      if (sentiment_ != null) {
+        output.WriteRawTag(18);
+        output.WriteMessage(Sentiment);
+      }
+      if (_unknownFields != null) {
+        _unknownFields.WriteTo(ref output);
+      }
+    }
+    #endif
 
     [global::System.Diagnostics.DebuggerNonUserCodeAttribute]
     public int CalculateSize() {
@@ -727,6 +818,9 @@ namespace Google.Cloud.Language.V1 {
 
     [global::System.Diagnostics.DebuggerNonUserCodeAttribute]
     public void MergeFrom(pb::CodedInputStream input) {
+    #if !GOOGLE_PROTOBUF_REFSTRUCT_COMPATIBILITY_MODE
+      input.ReadRawMessage(this);
+    #else
       uint tag;
       while ((tag = input.ReadTag()) != 0) {
         switch(tag) {
@@ -749,7 +843,36 @@ namespace Google.Cloud.Language.V1 {
           }
         }
       }
+    #endif
     }
+
+    #if !GOOGLE_PROTOBUF_REFSTRUCT_COMPATIBILITY_MODE
+    [global::System.Diagnostics.DebuggerNonUserCodeAttribute]
+    void pb::IBufferMessage.InternalMergeFrom(ref pb::ParseContext input) {
+      uint tag;
+      while ((tag = input.ReadTag()) != 0) {
+        switch(tag) {
+          default:
+            _unknownFields = pb::UnknownFieldSet.MergeFieldFrom(_unknownFields, ref input);
+            break;
+          case 10: {
+            if (text_ == null) {
+              Text = new global::Google.Cloud.Language.V1.TextSpan();
+            }
+            input.ReadMessage(Text);
+            break;
+          }
+          case 18: {
+            if (sentiment_ == null) {
+              Sentiment = new global::Google.Cloud.Language.V1.Sentiment();
+            }
+            input.ReadMessage(Sentiment);
+            break;
+          }
+        }
+      }
+    }
+    #endif
 
   }
 
@@ -758,7 +881,11 @@ namespace Google.Cloud.Language.V1 {
   /// a person, an organization, or location. The API associates information, such
   /// as salience and mentions, with entities.
   /// </summary>
-  public sealed partial class Entity : pb::IMessage<Entity> {
+  public sealed partial class Entity : pb::IMessage<Entity>
+  #if !GOOGLE_PROTOBUF_REFSTRUCT_COMPATIBILITY_MODE
+      , pb::IBufferMessage
+  #endif
+  {
     private static readonly pb::MessageParser<Entity> _parser = new pb::MessageParser<Entity>(() => new Entity());
     private pb::UnknownFieldSet _unknownFields;
     [global::System.Diagnostics.DebuggerNonUserCodeAttribute]
@@ -813,7 +940,7 @@ namespace Google.Cloud.Language.V1 {
 
     /// <summary>Field number for the "type" field.</summary>
     public const int TypeFieldNumber = 2;
-    private global::Google.Cloud.Language.V1.Entity.Types.Type type_ = 0;
+    private global::Google.Cloud.Language.V1.Entity.Types.Type type_ = global::Google.Cloud.Language.V1.Entity.Types.Type.Unknown;
     /// <summary>
     /// The entity type.
     /// </summary>
@@ -828,7 +955,7 @@ namespace Google.Cloud.Language.V1 {
     /// <summary>Field number for the "metadata" field.</summary>
     public const int MetadataFieldNumber = 3;
     private static readonly pbc::MapField<string, string>.Codec _map_metadata_codec
-        = new pbc::MapField<string, string>.Codec(pb::FieldCodec.ForString(10), pb::FieldCodec.ForString(18), 26);
+        = new pbc::MapField<string, string>.Codec(pb::FieldCodec.ForString(10, ""), pb::FieldCodec.ForString(18, ""), 26);
     private readonly pbc::MapField<string, string> metadata_ = new pbc::MapField<string, string>();
     /// <summary>
     /// Metadata associated with the entity.
@@ -918,7 +1045,7 @@ namespace Google.Cloud.Language.V1 {
     public override int GetHashCode() {
       int hash = 1;
       if (Name.Length != 0) hash ^= Name.GetHashCode();
-      if (Type != 0) hash ^= Type.GetHashCode();
+      if (Type != global::Google.Cloud.Language.V1.Entity.Types.Type.Unknown) hash ^= Type.GetHashCode();
       hash ^= Metadata.GetHashCode();
       if (Salience != 0F) hash ^= pbc::ProtobufEqualityComparers.BitwiseSingleEqualityComparer.GetHashCode(Salience);
       hash ^= mentions_.GetHashCode();
@@ -936,11 +1063,14 @@ namespace Google.Cloud.Language.V1 {
 
     [global::System.Diagnostics.DebuggerNonUserCodeAttribute]
     public void WriteTo(pb::CodedOutputStream output) {
+    #if !GOOGLE_PROTOBUF_REFSTRUCT_COMPATIBILITY_MODE
+      output.WriteRawMessage(this);
+    #else
       if (Name.Length != 0) {
         output.WriteRawTag(10);
         output.WriteString(Name);
       }
-      if (Type != 0) {
+      if (Type != global::Google.Cloud.Language.V1.Entity.Types.Type.Unknown) {
         output.WriteRawTag(16);
         output.WriteEnum((int) Type);
       }
@@ -957,7 +1087,35 @@ namespace Google.Cloud.Language.V1 {
       if (_unknownFields != null) {
         _unknownFields.WriteTo(output);
       }
+    #endif
     }
+
+    #if !GOOGLE_PROTOBUF_REFSTRUCT_COMPATIBILITY_MODE
+    [global::System.Diagnostics.DebuggerNonUserCodeAttribute]
+    void pb::IBufferMessage.InternalWriteTo(ref pb::WriteContext output) {
+      if (Name.Length != 0) {
+        output.WriteRawTag(10);
+        output.WriteString(Name);
+      }
+      if (Type != global::Google.Cloud.Language.V1.Entity.Types.Type.Unknown) {
+        output.WriteRawTag(16);
+        output.WriteEnum((int) Type);
+      }
+      metadata_.WriteTo(ref output, _map_metadata_codec);
+      if (Salience != 0F) {
+        output.WriteRawTag(37);
+        output.WriteFloat(Salience);
+      }
+      mentions_.WriteTo(ref output, _repeated_mentions_codec);
+      if (sentiment_ != null) {
+        output.WriteRawTag(50);
+        output.WriteMessage(Sentiment);
+      }
+      if (_unknownFields != null) {
+        _unknownFields.WriteTo(ref output);
+      }
+    }
+    #endif
 
     [global::System.Diagnostics.DebuggerNonUserCodeAttribute]
     public int CalculateSize() {
@@ -965,7 +1123,7 @@ namespace Google.Cloud.Language.V1 {
       if (Name.Length != 0) {
         size += 1 + pb::CodedOutputStream.ComputeStringSize(Name);
       }
-      if (Type != 0) {
+      if (Type != global::Google.Cloud.Language.V1.Entity.Types.Type.Unknown) {
         size += 1 + pb::CodedOutputStream.ComputeEnumSize((int) Type);
       }
       size += metadata_.CalculateSize(_map_metadata_codec);
@@ -990,7 +1148,7 @@ namespace Google.Cloud.Language.V1 {
       if (other.Name.Length != 0) {
         Name = other.Name;
       }
-      if (other.Type != 0) {
+      if (other.Type != global::Google.Cloud.Language.V1.Entity.Types.Type.Unknown) {
         Type = other.Type;
       }
       metadata_.Add(other.metadata_);
@@ -1009,6 +1167,9 @@ namespace Google.Cloud.Language.V1 {
 
     [global::System.Diagnostics.DebuggerNonUserCodeAttribute]
     public void MergeFrom(pb::CodedInputStream input) {
+    #if !GOOGLE_PROTOBUF_REFSTRUCT_COMPATIBILITY_MODE
+      input.ReadRawMessage(this);
+    #else
       uint tag;
       while ((tag = input.ReadTag()) != 0) {
         switch(tag) {
@@ -1044,7 +1205,49 @@ namespace Google.Cloud.Language.V1 {
           }
         }
       }
+    #endif
     }
+
+    #if !GOOGLE_PROTOBUF_REFSTRUCT_COMPATIBILITY_MODE
+    [global::System.Diagnostics.DebuggerNonUserCodeAttribute]
+    void pb::IBufferMessage.InternalMergeFrom(ref pb::ParseContext input) {
+      uint tag;
+      while ((tag = input.ReadTag()) != 0) {
+        switch(tag) {
+          default:
+            _unknownFields = pb::UnknownFieldSet.MergeFieldFrom(_unknownFields, ref input);
+            break;
+          case 10: {
+            Name = input.ReadString();
+            break;
+          }
+          case 16: {
+            Type = (global::Google.Cloud.Language.V1.Entity.Types.Type) input.ReadEnum();
+            break;
+          }
+          case 26: {
+            metadata_.AddEntriesFrom(ref input, _map_metadata_codec);
+            break;
+          }
+          case 37: {
+            Salience = input.ReadFloat();
+            break;
+          }
+          case 42: {
+            mentions_.AddEntriesFrom(ref input, _repeated_mentions_codec);
+            break;
+          }
+          case 50: {
+            if (sentiment_ == null) {
+              Sentiment = new global::Google.Cloud.Language.V1.Sentiment();
+            }
+            input.ReadMessage(Sentiment);
+            break;
+          }
+        }
+      }
+    }
+    #endif
 
     #region Nested types
     /// <summary>Container for nested types declared in the Entity message type.</summary>
@@ -1144,7 +1347,11 @@ namespace Google.Cloud.Language.V1 {
   /// <summary>
   /// Represents the smallest syntactic building block of the text.
   /// </summary>
-  public sealed partial class Token : pb::IMessage<Token> {
+  public sealed partial class Token : pb::IMessage<Token>
+  #if !GOOGLE_PROTOBUF_REFSTRUCT_COMPATIBILITY_MODE
+      , pb::IBufferMessage
+  #endif
+  {
     private static readonly pb::MessageParser<Token> _parser = new pb::MessageParser<Token>(() => new Token());
     private pb::UnknownFieldSet _unknownFields;
     [global::System.Diagnostics.DebuggerNonUserCodeAttribute]
@@ -1277,6 +1484,9 @@ namespace Google.Cloud.Language.V1 {
 
     [global::System.Diagnostics.DebuggerNonUserCodeAttribute]
     public void WriteTo(pb::CodedOutputStream output) {
+    #if !GOOGLE_PROTOBUF_REFSTRUCT_COMPATIBILITY_MODE
+      output.WriteRawMessage(this);
+    #else
       if (text_ != null) {
         output.WriteRawTag(10);
         output.WriteMessage(Text);
@@ -1296,7 +1506,33 @@ namespace Google.Cloud.Language.V1 {
       if (_unknownFields != null) {
         _unknownFields.WriteTo(output);
       }
+    #endif
     }
+
+    #if !GOOGLE_PROTOBUF_REFSTRUCT_COMPATIBILITY_MODE
+    [global::System.Diagnostics.DebuggerNonUserCodeAttribute]
+    void pb::IBufferMessage.InternalWriteTo(ref pb::WriteContext output) {
+      if (text_ != null) {
+        output.WriteRawTag(10);
+        output.WriteMessage(Text);
+      }
+      if (partOfSpeech_ != null) {
+        output.WriteRawTag(18);
+        output.WriteMessage(PartOfSpeech);
+      }
+      if (dependencyEdge_ != null) {
+        output.WriteRawTag(26);
+        output.WriteMessage(DependencyEdge);
+      }
+      if (Lemma.Length != 0) {
+        output.WriteRawTag(34);
+        output.WriteString(Lemma);
+      }
+      if (_unknownFields != null) {
+        _unknownFields.WriteTo(ref output);
+      }
+    }
+    #endif
 
     [global::System.Diagnostics.DebuggerNonUserCodeAttribute]
     public int CalculateSize() {
@@ -1350,6 +1586,9 @@ namespace Google.Cloud.Language.V1 {
 
     [global::System.Diagnostics.DebuggerNonUserCodeAttribute]
     public void MergeFrom(pb::CodedInputStream input) {
+    #if !GOOGLE_PROTOBUF_REFSTRUCT_COMPATIBILITY_MODE
+      input.ReadRawMessage(this);
+    #else
       uint tag;
       while ((tag = input.ReadTag()) != 0) {
         switch(tag) {
@@ -1383,7 +1622,47 @@ namespace Google.Cloud.Language.V1 {
           }
         }
       }
+    #endif
     }
+
+    #if !GOOGLE_PROTOBUF_REFSTRUCT_COMPATIBILITY_MODE
+    [global::System.Diagnostics.DebuggerNonUserCodeAttribute]
+    void pb::IBufferMessage.InternalMergeFrom(ref pb::ParseContext input) {
+      uint tag;
+      while ((tag = input.ReadTag()) != 0) {
+        switch(tag) {
+          default:
+            _unknownFields = pb::UnknownFieldSet.MergeFieldFrom(_unknownFields, ref input);
+            break;
+          case 10: {
+            if (text_ == null) {
+              Text = new global::Google.Cloud.Language.V1.TextSpan();
+            }
+            input.ReadMessage(Text);
+            break;
+          }
+          case 18: {
+            if (partOfSpeech_ == null) {
+              PartOfSpeech = new global::Google.Cloud.Language.V1.PartOfSpeech();
+            }
+            input.ReadMessage(PartOfSpeech);
+            break;
+          }
+          case 26: {
+            if (dependencyEdge_ == null) {
+              DependencyEdge = new global::Google.Cloud.Language.V1.DependencyEdge();
+            }
+            input.ReadMessage(DependencyEdge);
+            break;
+          }
+          case 34: {
+            Lemma = input.ReadString();
+            break;
+          }
+        }
+      }
+    }
+    #endif
 
   }
 
@@ -1391,7 +1670,11 @@ namespace Google.Cloud.Language.V1 {
   /// Represents the feeling associated with the entire text or entities in
   /// the text.
   /// </summary>
-  public sealed partial class Sentiment : pb::IMessage<Sentiment> {
+  public sealed partial class Sentiment : pb::IMessage<Sentiment>
+  #if !GOOGLE_PROTOBUF_REFSTRUCT_COMPATIBILITY_MODE
+      , pb::IBufferMessage
+  #endif
+  {
     private static readonly pb::MessageParser<Sentiment> _parser = new pb::MessageParser<Sentiment>(() => new Sentiment());
     private pb::UnknownFieldSet _unknownFields;
     [global::System.Diagnostics.DebuggerNonUserCodeAttribute]
@@ -1493,6 +1776,9 @@ namespace Google.Cloud.Language.V1 {
 
     [global::System.Diagnostics.DebuggerNonUserCodeAttribute]
     public void WriteTo(pb::CodedOutputStream output) {
+    #if !GOOGLE_PROTOBUF_REFSTRUCT_COMPATIBILITY_MODE
+      output.WriteRawMessage(this);
+    #else
       if (Magnitude != 0F) {
         output.WriteRawTag(21);
         output.WriteFloat(Magnitude);
@@ -1504,7 +1790,25 @@ namespace Google.Cloud.Language.V1 {
       if (_unknownFields != null) {
         _unknownFields.WriteTo(output);
       }
+    #endif
     }
+
+    #if !GOOGLE_PROTOBUF_REFSTRUCT_COMPATIBILITY_MODE
+    [global::System.Diagnostics.DebuggerNonUserCodeAttribute]
+    void pb::IBufferMessage.InternalWriteTo(ref pb::WriteContext output) {
+      if (Magnitude != 0F) {
+        output.WriteRawTag(21);
+        output.WriteFloat(Magnitude);
+      }
+      if (Score != 0F) {
+        output.WriteRawTag(29);
+        output.WriteFloat(Score);
+      }
+      if (_unknownFields != null) {
+        _unknownFields.WriteTo(ref output);
+      }
+    }
+    #endif
 
     [global::System.Diagnostics.DebuggerNonUserCodeAttribute]
     public int CalculateSize() {
@@ -1537,6 +1841,9 @@ namespace Google.Cloud.Language.V1 {
 
     [global::System.Diagnostics.DebuggerNonUserCodeAttribute]
     public void MergeFrom(pb::CodedInputStream input) {
+    #if !GOOGLE_PROTOBUF_REFSTRUCT_COMPATIBILITY_MODE
+      input.ReadRawMessage(this);
+    #else
       uint tag;
       while ((tag = input.ReadTag()) != 0) {
         switch(tag) {
@@ -1553,7 +1860,30 @@ namespace Google.Cloud.Language.V1 {
           }
         }
       }
+    #endif
     }
+
+    #if !GOOGLE_PROTOBUF_REFSTRUCT_COMPATIBILITY_MODE
+    [global::System.Diagnostics.DebuggerNonUserCodeAttribute]
+    void pb::IBufferMessage.InternalMergeFrom(ref pb::ParseContext input) {
+      uint tag;
+      while ((tag = input.ReadTag()) != 0) {
+        switch(tag) {
+          default:
+            _unknownFields = pb::UnknownFieldSet.MergeFieldFrom(_unknownFields, ref input);
+            break;
+          case 21: {
+            Magnitude = input.ReadFloat();
+            break;
+          }
+          case 29: {
+            Score = input.ReadFloat();
+            break;
+          }
+        }
+      }
+    }
+    #endif
 
   }
 
@@ -1562,7 +1892,11 @@ namespace Google.Cloud.Language.V1 {
   /// are as defined in
   /// http://www.lrec-conf.org/proceedings/lrec2012/pdf/274_Paper.pdf
   /// </summary>
-  public sealed partial class PartOfSpeech : pb::IMessage<PartOfSpeech> {
+  public sealed partial class PartOfSpeech : pb::IMessage<PartOfSpeech>
+  #if !GOOGLE_PROTOBUF_REFSTRUCT_COMPATIBILITY_MODE
+      , pb::IBufferMessage
+  #endif
+  {
     private static readonly pb::MessageParser<PartOfSpeech> _parser = new pb::MessageParser<PartOfSpeech>(() => new PartOfSpeech());
     private pb::UnknownFieldSet _unknownFields;
     [global::System.Diagnostics.DebuggerNonUserCodeAttribute]
@@ -1609,7 +1943,7 @@ namespace Google.Cloud.Language.V1 {
 
     /// <summary>Field number for the "tag" field.</summary>
     public const int TagFieldNumber = 1;
-    private global::Google.Cloud.Language.V1.PartOfSpeech.Types.Tag tag_ = 0;
+    private global::Google.Cloud.Language.V1.PartOfSpeech.Types.Tag tag_ = global::Google.Cloud.Language.V1.PartOfSpeech.Types.Tag.Unknown;
     /// <summary>
     /// The part of speech tag.
     /// </summary>
@@ -1623,7 +1957,7 @@ namespace Google.Cloud.Language.V1 {
 
     /// <summary>Field number for the "aspect" field.</summary>
     public const int AspectFieldNumber = 2;
-    private global::Google.Cloud.Language.V1.PartOfSpeech.Types.Aspect aspect_ = 0;
+    private global::Google.Cloud.Language.V1.PartOfSpeech.Types.Aspect aspect_ = global::Google.Cloud.Language.V1.PartOfSpeech.Types.Aspect.Unknown;
     /// <summary>
     /// The grammatical aspect.
     /// </summary>
@@ -1637,7 +1971,7 @@ namespace Google.Cloud.Language.V1 {
 
     /// <summary>Field number for the "case" field.</summary>
     public const int CaseFieldNumber = 3;
-    private global::Google.Cloud.Language.V1.PartOfSpeech.Types.Case case_ = 0;
+    private global::Google.Cloud.Language.V1.PartOfSpeech.Types.Case case_ = global::Google.Cloud.Language.V1.PartOfSpeech.Types.Case.Unknown;
     /// <summary>
     /// The grammatical case.
     /// </summary>
@@ -1651,7 +1985,7 @@ namespace Google.Cloud.Language.V1 {
 
     /// <summary>Field number for the "form" field.</summary>
     public const int FormFieldNumber = 4;
-    private global::Google.Cloud.Language.V1.PartOfSpeech.Types.Form form_ = 0;
+    private global::Google.Cloud.Language.V1.PartOfSpeech.Types.Form form_ = global::Google.Cloud.Language.V1.PartOfSpeech.Types.Form.Unknown;
     /// <summary>
     /// The grammatical form.
     /// </summary>
@@ -1665,7 +1999,7 @@ namespace Google.Cloud.Language.V1 {
 
     /// <summary>Field number for the "gender" field.</summary>
     public const int GenderFieldNumber = 5;
-    private global::Google.Cloud.Language.V1.PartOfSpeech.Types.Gender gender_ = 0;
+    private global::Google.Cloud.Language.V1.PartOfSpeech.Types.Gender gender_ = global::Google.Cloud.Language.V1.PartOfSpeech.Types.Gender.Unknown;
     /// <summary>
     /// The grammatical gender.
     /// </summary>
@@ -1679,7 +2013,7 @@ namespace Google.Cloud.Language.V1 {
 
     /// <summary>Field number for the "mood" field.</summary>
     public const int MoodFieldNumber = 6;
-    private global::Google.Cloud.Language.V1.PartOfSpeech.Types.Mood mood_ = 0;
+    private global::Google.Cloud.Language.V1.PartOfSpeech.Types.Mood mood_ = global::Google.Cloud.Language.V1.PartOfSpeech.Types.Mood.Unknown;
     /// <summary>
     /// The grammatical mood.
     /// </summary>
@@ -1693,7 +2027,7 @@ namespace Google.Cloud.Language.V1 {
 
     /// <summary>Field number for the "number" field.</summary>
     public const int NumberFieldNumber = 7;
-    private global::Google.Cloud.Language.V1.PartOfSpeech.Types.Number number_ = 0;
+    private global::Google.Cloud.Language.V1.PartOfSpeech.Types.Number number_ = global::Google.Cloud.Language.V1.PartOfSpeech.Types.Number.Unknown;
     /// <summary>
     /// The grammatical number.
     /// </summary>
@@ -1707,7 +2041,7 @@ namespace Google.Cloud.Language.V1 {
 
     /// <summary>Field number for the "person" field.</summary>
     public const int PersonFieldNumber = 8;
-    private global::Google.Cloud.Language.V1.PartOfSpeech.Types.Person person_ = 0;
+    private global::Google.Cloud.Language.V1.PartOfSpeech.Types.Person person_ = global::Google.Cloud.Language.V1.PartOfSpeech.Types.Person.Unknown;
     /// <summary>
     /// The grammatical person.
     /// </summary>
@@ -1721,7 +2055,7 @@ namespace Google.Cloud.Language.V1 {
 
     /// <summary>Field number for the "proper" field.</summary>
     public const int ProperFieldNumber = 9;
-    private global::Google.Cloud.Language.V1.PartOfSpeech.Types.Proper proper_ = 0;
+    private global::Google.Cloud.Language.V1.PartOfSpeech.Types.Proper proper_ = global::Google.Cloud.Language.V1.PartOfSpeech.Types.Proper.Unknown;
     /// <summary>
     /// The grammatical properness.
     /// </summary>
@@ -1735,7 +2069,7 @@ namespace Google.Cloud.Language.V1 {
 
     /// <summary>Field number for the "reciprocity" field.</summary>
     public const int ReciprocityFieldNumber = 10;
-    private global::Google.Cloud.Language.V1.PartOfSpeech.Types.Reciprocity reciprocity_ = 0;
+    private global::Google.Cloud.Language.V1.PartOfSpeech.Types.Reciprocity reciprocity_ = global::Google.Cloud.Language.V1.PartOfSpeech.Types.Reciprocity.Unknown;
     /// <summary>
     /// The grammatical reciprocity.
     /// </summary>
@@ -1749,7 +2083,7 @@ namespace Google.Cloud.Language.V1 {
 
     /// <summary>Field number for the "tense" field.</summary>
     public const int TenseFieldNumber = 11;
-    private global::Google.Cloud.Language.V1.PartOfSpeech.Types.Tense tense_ = 0;
+    private global::Google.Cloud.Language.V1.PartOfSpeech.Types.Tense tense_ = global::Google.Cloud.Language.V1.PartOfSpeech.Types.Tense.Unknown;
     /// <summary>
     /// The grammatical tense.
     /// </summary>
@@ -1763,7 +2097,7 @@ namespace Google.Cloud.Language.V1 {
 
     /// <summary>Field number for the "voice" field.</summary>
     public const int VoiceFieldNumber = 12;
-    private global::Google.Cloud.Language.V1.PartOfSpeech.Types.Voice voice_ = 0;
+    private global::Google.Cloud.Language.V1.PartOfSpeech.Types.Voice voice_ = global::Google.Cloud.Language.V1.PartOfSpeech.Types.Voice.Unknown;
     /// <summary>
     /// The grammatical voice.
     /// </summary>
@@ -1806,18 +2140,18 @@ namespace Google.Cloud.Language.V1 {
     [global::System.Diagnostics.DebuggerNonUserCodeAttribute]
     public override int GetHashCode() {
       int hash = 1;
-      if (Tag != 0) hash ^= Tag.GetHashCode();
-      if (Aspect != 0) hash ^= Aspect.GetHashCode();
-      if (Case != 0) hash ^= Case.GetHashCode();
-      if (Form != 0) hash ^= Form.GetHashCode();
-      if (Gender != 0) hash ^= Gender.GetHashCode();
-      if (Mood != 0) hash ^= Mood.GetHashCode();
-      if (Number != 0) hash ^= Number.GetHashCode();
-      if (Person != 0) hash ^= Person.GetHashCode();
-      if (Proper != 0) hash ^= Proper.GetHashCode();
-      if (Reciprocity != 0) hash ^= Reciprocity.GetHashCode();
-      if (Tense != 0) hash ^= Tense.GetHashCode();
-      if (Voice != 0) hash ^= Voice.GetHashCode();
+      if (Tag != global::Google.Cloud.Language.V1.PartOfSpeech.Types.Tag.Unknown) hash ^= Tag.GetHashCode();
+      if (Aspect != global::Google.Cloud.Language.V1.PartOfSpeech.Types.Aspect.Unknown) hash ^= Aspect.GetHashCode();
+      if (Case != global::Google.Cloud.Language.V1.PartOfSpeech.Types.Case.Unknown) hash ^= Case.GetHashCode();
+      if (Form != global::Google.Cloud.Language.V1.PartOfSpeech.Types.Form.Unknown) hash ^= Form.GetHashCode();
+      if (Gender != global::Google.Cloud.Language.V1.PartOfSpeech.Types.Gender.Unknown) hash ^= Gender.GetHashCode();
+      if (Mood != global::Google.Cloud.Language.V1.PartOfSpeech.Types.Mood.Unknown) hash ^= Mood.GetHashCode();
+      if (Number != global::Google.Cloud.Language.V1.PartOfSpeech.Types.Number.Unknown) hash ^= Number.GetHashCode();
+      if (Person != global::Google.Cloud.Language.V1.PartOfSpeech.Types.Person.Unknown) hash ^= Person.GetHashCode();
+      if (Proper != global::Google.Cloud.Language.V1.PartOfSpeech.Types.Proper.Unknown) hash ^= Proper.GetHashCode();
+      if (Reciprocity != global::Google.Cloud.Language.V1.PartOfSpeech.Types.Reciprocity.Unknown) hash ^= Reciprocity.GetHashCode();
+      if (Tense != global::Google.Cloud.Language.V1.PartOfSpeech.Types.Tense.Unknown) hash ^= Tense.GetHashCode();
+      if (Voice != global::Google.Cloud.Language.V1.PartOfSpeech.Types.Voice.Unknown) hash ^= Voice.GetHashCode();
       if (_unknownFields != null) {
         hash ^= _unknownFields.GetHashCode();
       }
@@ -1831,96 +2165,157 @@ namespace Google.Cloud.Language.V1 {
 
     [global::System.Diagnostics.DebuggerNonUserCodeAttribute]
     public void WriteTo(pb::CodedOutputStream output) {
-      if (Tag != 0) {
+    #if !GOOGLE_PROTOBUF_REFSTRUCT_COMPATIBILITY_MODE
+      output.WriteRawMessage(this);
+    #else
+      if (Tag != global::Google.Cloud.Language.V1.PartOfSpeech.Types.Tag.Unknown) {
         output.WriteRawTag(8);
         output.WriteEnum((int) Tag);
       }
-      if (Aspect != 0) {
+      if (Aspect != global::Google.Cloud.Language.V1.PartOfSpeech.Types.Aspect.Unknown) {
         output.WriteRawTag(16);
         output.WriteEnum((int) Aspect);
       }
-      if (Case != 0) {
+      if (Case != global::Google.Cloud.Language.V1.PartOfSpeech.Types.Case.Unknown) {
         output.WriteRawTag(24);
         output.WriteEnum((int) Case);
       }
-      if (Form != 0) {
+      if (Form != global::Google.Cloud.Language.V1.PartOfSpeech.Types.Form.Unknown) {
         output.WriteRawTag(32);
         output.WriteEnum((int) Form);
       }
-      if (Gender != 0) {
+      if (Gender != global::Google.Cloud.Language.V1.PartOfSpeech.Types.Gender.Unknown) {
         output.WriteRawTag(40);
         output.WriteEnum((int) Gender);
       }
-      if (Mood != 0) {
+      if (Mood != global::Google.Cloud.Language.V1.PartOfSpeech.Types.Mood.Unknown) {
         output.WriteRawTag(48);
         output.WriteEnum((int) Mood);
       }
-      if (Number != 0) {
+      if (Number != global::Google.Cloud.Language.V1.PartOfSpeech.Types.Number.Unknown) {
         output.WriteRawTag(56);
         output.WriteEnum((int) Number);
       }
-      if (Person != 0) {
+      if (Person != global::Google.Cloud.Language.V1.PartOfSpeech.Types.Person.Unknown) {
         output.WriteRawTag(64);
         output.WriteEnum((int) Person);
       }
-      if (Proper != 0) {
+      if (Proper != global::Google.Cloud.Language.V1.PartOfSpeech.Types.Proper.Unknown) {
         output.WriteRawTag(72);
         output.WriteEnum((int) Proper);
       }
-      if (Reciprocity != 0) {
+      if (Reciprocity != global::Google.Cloud.Language.V1.PartOfSpeech.Types.Reciprocity.Unknown) {
         output.WriteRawTag(80);
         output.WriteEnum((int) Reciprocity);
       }
-      if (Tense != 0) {
+      if (Tense != global::Google.Cloud.Language.V1.PartOfSpeech.Types.Tense.Unknown) {
         output.WriteRawTag(88);
         output.WriteEnum((int) Tense);
       }
-      if (Voice != 0) {
+      if (Voice != global::Google.Cloud.Language.V1.PartOfSpeech.Types.Voice.Unknown) {
         output.WriteRawTag(96);
         output.WriteEnum((int) Voice);
       }
       if (_unknownFields != null) {
         _unknownFields.WriteTo(output);
       }
+    #endif
     }
+
+    #if !GOOGLE_PROTOBUF_REFSTRUCT_COMPATIBILITY_MODE
+    [global::System.Diagnostics.DebuggerNonUserCodeAttribute]
+    void pb::IBufferMessage.InternalWriteTo(ref pb::WriteContext output) {
+      if (Tag != global::Google.Cloud.Language.V1.PartOfSpeech.Types.Tag.Unknown) {
+        output.WriteRawTag(8);
+        output.WriteEnum((int) Tag);
+      }
+      if (Aspect != global::Google.Cloud.Language.V1.PartOfSpeech.Types.Aspect.Unknown) {
+        output.WriteRawTag(16);
+        output.WriteEnum((int) Aspect);
+      }
+      if (Case != global::Google.Cloud.Language.V1.PartOfSpeech.Types.Case.Unknown) {
+        output.WriteRawTag(24);
+        output.WriteEnum((int) Case);
+      }
+      if (Form != global::Google.Cloud.Language.V1.PartOfSpeech.Types.Form.Unknown) {
+        output.WriteRawTag(32);
+        output.WriteEnum((int) Form);
+      }
+      if (Gender != global::Google.Cloud.Language.V1.PartOfSpeech.Types.Gender.Unknown) {
+        output.WriteRawTag(40);
+        output.WriteEnum((int) Gender);
+      }
+      if (Mood != global::Google.Cloud.Language.V1.PartOfSpeech.Types.Mood.Unknown) {
+        output.WriteRawTag(48);
+        output.WriteEnum((int) Mood);
+      }
+      if (Number != global::Google.Cloud.Language.V1.PartOfSpeech.Types.Number.Unknown) {
+        output.WriteRawTag(56);
+        output.WriteEnum((int) Number);
+      }
+      if (Person != global::Google.Cloud.Language.V1.PartOfSpeech.Types.Person.Unknown) {
+        output.WriteRawTag(64);
+        output.WriteEnum((int) Person);
+      }
+      if (Proper != global::Google.Cloud.Language.V1.PartOfSpeech.Types.Proper.Unknown) {
+        output.WriteRawTag(72);
+        output.WriteEnum((int) Proper);
+      }
+      if (Reciprocity != global::Google.Cloud.Language.V1.PartOfSpeech.Types.Reciprocity.Unknown) {
+        output.WriteRawTag(80);
+        output.WriteEnum((int) Reciprocity);
+      }
+      if (Tense != global::Google.Cloud.Language.V1.PartOfSpeech.Types.Tense.Unknown) {
+        output.WriteRawTag(88);
+        output.WriteEnum((int) Tense);
+      }
+      if (Voice != global::Google.Cloud.Language.V1.PartOfSpeech.Types.Voice.Unknown) {
+        output.WriteRawTag(96);
+        output.WriteEnum((int) Voice);
+      }
+      if (_unknownFields != null) {
+        _unknownFields.WriteTo(ref output);
+      }
+    }
+    #endif
 
     [global::System.Diagnostics.DebuggerNonUserCodeAttribute]
     public int CalculateSize() {
       int size = 0;
-      if (Tag != 0) {
+      if (Tag != global::Google.Cloud.Language.V1.PartOfSpeech.Types.Tag.Unknown) {
         size += 1 + pb::CodedOutputStream.ComputeEnumSize((int) Tag);
       }
-      if (Aspect != 0) {
+      if (Aspect != global::Google.Cloud.Language.V1.PartOfSpeech.Types.Aspect.Unknown) {
         size += 1 + pb::CodedOutputStream.ComputeEnumSize((int) Aspect);
       }
-      if (Case != 0) {
+      if (Case != global::Google.Cloud.Language.V1.PartOfSpeech.Types.Case.Unknown) {
         size += 1 + pb::CodedOutputStream.ComputeEnumSize((int) Case);
       }
-      if (Form != 0) {
+      if (Form != global::Google.Cloud.Language.V1.PartOfSpeech.Types.Form.Unknown) {
         size += 1 + pb::CodedOutputStream.ComputeEnumSize((int) Form);
       }
-      if (Gender != 0) {
+      if (Gender != global::Google.Cloud.Language.V1.PartOfSpeech.Types.Gender.Unknown) {
         size += 1 + pb::CodedOutputStream.ComputeEnumSize((int) Gender);
       }
-      if (Mood != 0) {
+      if (Mood != global::Google.Cloud.Language.V1.PartOfSpeech.Types.Mood.Unknown) {
         size += 1 + pb::CodedOutputStream.ComputeEnumSize((int) Mood);
       }
-      if (Number != 0) {
+      if (Number != global::Google.Cloud.Language.V1.PartOfSpeech.Types.Number.Unknown) {
         size += 1 + pb::CodedOutputStream.ComputeEnumSize((int) Number);
       }
-      if (Person != 0) {
+      if (Person != global::Google.Cloud.Language.V1.PartOfSpeech.Types.Person.Unknown) {
         size += 1 + pb::CodedOutputStream.ComputeEnumSize((int) Person);
       }
-      if (Proper != 0) {
+      if (Proper != global::Google.Cloud.Language.V1.PartOfSpeech.Types.Proper.Unknown) {
         size += 1 + pb::CodedOutputStream.ComputeEnumSize((int) Proper);
       }
-      if (Reciprocity != 0) {
+      if (Reciprocity != global::Google.Cloud.Language.V1.PartOfSpeech.Types.Reciprocity.Unknown) {
         size += 1 + pb::CodedOutputStream.ComputeEnumSize((int) Reciprocity);
       }
-      if (Tense != 0) {
+      if (Tense != global::Google.Cloud.Language.V1.PartOfSpeech.Types.Tense.Unknown) {
         size += 1 + pb::CodedOutputStream.ComputeEnumSize((int) Tense);
       }
-      if (Voice != 0) {
+      if (Voice != global::Google.Cloud.Language.V1.PartOfSpeech.Types.Voice.Unknown) {
         size += 1 + pb::CodedOutputStream.ComputeEnumSize((int) Voice);
       }
       if (_unknownFields != null) {
@@ -1934,40 +2329,40 @@ namespace Google.Cloud.Language.V1 {
       if (other == null) {
         return;
       }
-      if (other.Tag != 0) {
+      if (other.Tag != global::Google.Cloud.Language.V1.PartOfSpeech.Types.Tag.Unknown) {
         Tag = other.Tag;
       }
-      if (other.Aspect != 0) {
+      if (other.Aspect != global::Google.Cloud.Language.V1.PartOfSpeech.Types.Aspect.Unknown) {
         Aspect = other.Aspect;
       }
-      if (other.Case != 0) {
+      if (other.Case != global::Google.Cloud.Language.V1.PartOfSpeech.Types.Case.Unknown) {
         Case = other.Case;
       }
-      if (other.Form != 0) {
+      if (other.Form != global::Google.Cloud.Language.V1.PartOfSpeech.Types.Form.Unknown) {
         Form = other.Form;
       }
-      if (other.Gender != 0) {
+      if (other.Gender != global::Google.Cloud.Language.V1.PartOfSpeech.Types.Gender.Unknown) {
         Gender = other.Gender;
       }
-      if (other.Mood != 0) {
+      if (other.Mood != global::Google.Cloud.Language.V1.PartOfSpeech.Types.Mood.Unknown) {
         Mood = other.Mood;
       }
-      if (other.Number != 0) {
+      if (other.Number != global::Google.Cloud.Language.V1.PartOfSpeech.Types.Number.Unknown) {
         Number = other.Number;
       }
-      if (other.Person != 0) {
+      if (other.Person != global::Google.Cloud.Language.V1.PartOfSpeech.Types.Person.Unknown) {
         Person = other.Person;
       }
-      if (other.Proper != 0) {
+      if (other.Proper != global::Google.Cloud.Language.V1.PartOfSpeech.Types.Proper.Unknown) {
         Proper = other.Proper;
       }
-      if (other.Reciprocity != 0) {
+      if (other.Reciprocity != global::Google.Cloud.Language.V1.PartOfSpeech.Types.Reciprocity.Unknown) {
         Reciprocity = other.Reciprocity;
       }
-      if (other.Tense != 0) {
+      if (other.Tense != global::Google.Cloud.Language.V1.PartOfSpeech.Types.Tense.Unknown) {
         Tense = other.Tense;
       }
-      if (other.Voice != 0) {
+      if (other.Voice != global::Google.Cloud.Language.V1.PartOfSpeech.Types.Voice.Unknown) {
         Voice = other.Voice;
       }
       _unknownFields = pb::UnknownFieldSet.MergeFrom(_unknownFields, other._unknownFields);
@@ -1975,6 +2370,9 @@ namespace Google.Cloud.Language.V1 {
 
     [global::System.Diagnostics.DebuggerNonUserCodeAttribute]
     public void MergeFrom(pb::CodedInputStream input) {
+    #if !GOOGLE_PROTOBUF_REFSTRUCT_COMPATIBILITY_MODE
+      input.ReadRawMessage(this);
+    #else
       uint tag;
       while ((tag = input.ReadTag()) != 0) {
         switch(tag) {
@@ -2031,7 +2429,70 @@ namespace Google.Cloud.Language.V1 {
           }
         }
       }
+    #endif
     }
+
+    #if !GOOGLE_PROTOBUF_REFSTRUCT_COMPATIBILITY_MODE
+    [global::System.Diagnostics.DebuggerNonUserCodeAttribute]
+    void pb::IBufferMessage.InternalMergeFrom(ref pb::ParseContext input) {
+      uint tag;
+      while ((tag = input.ReadTag()) != 0) {
+        switch(tag) {
+          default:
+            _unknownFields = pb::UnknownFieldSet.MergeFieldFrom(_unknownFields, ref input);
+            break;
+          case 8: {
+            Tag = (global::Google.Cloud.Language.V1.PartOfSpeech.Types.Tag) input.ReadEnum();
+            break;
+          }
+          case 16: {
+            Aspect = (global::Google.Cloud.Language.V1.PartOfSpeech.Types.Aspect) input.ReadEnum();
+            break;
+          }
+          case 24: {
+            Case = (global::Google.Cloud.Language.V1.PartOfSpeech.Types.Case) input.ReadEnum();
+            break;
+          }
+          case 32: {
+            Form = (global::Google.Cloud.Language.V1.PartOfSpeech.Types.Form) input.ReadEnum();
+            break;
+          }
+          case 40: {
+            Gender = (global::Google.Cloud.Language.V1.PartOfSpeech.Types.Gender) input.ReadEnum();
+            break;
+          }
+          case 48: {
+            Mood = (global::Google.Cloud.Language.V1.PartOfSpeech.Types.Mood) input.ReadEnum();
+            break;
+          }
+          case 56: {
+            Number = (global::Google.Cloud.Language.V1.PartOfSpeech.Types.Number) input.ReadEnum();
+            break;
+          }
+          case 64: {
+            Person = (global::Google.Cloud.Language.V1.PartOfSpeech.Types.Person) input.ReadEnum();
+            break;
+          }
+          case 72: {
+            Proper = (global::Google.Cloud.Language.V1.PartOfSpeech.Types.Proper) input.ReadEnum();
+            break;
+          }
+          case 80: {
+            Reciprocity = (global::Google.Cloud.Language.V1.PartOfSpeech.Types.Reciprocity) input.ReadEnum();
+            break;
+          }
+          case 88: {
+            Tense = (global::Google.Cloud.Language.V1.PartOfSpeech.Types.Tense) input.ReadEnum();
+            break;
+          }
+          case 96: {
+            Voice = (global::Google.Cloud.Language.V1.PartOfSpeech.Types.Voice) input.ReadEnum();
+            break;
+          }
+        }
+      }
+    }
+    #endif
 
     #region Nested types
     /// <summary>Container for nested types declared in the PartOfSpeech message type.</summary>
@@ -2454,7 +2915,11 @@ namespace Google.Cloud.Language.V1 {
   /// information on dependency labels, see
   /// http://www.aclweb.org/anthology/P13-2017
   /// </summary>
-  public sealed partial class DependencyEdge : pb::IMessage<DependencyEdge> {
+  public sealed partial class DependencyEdge : pb::IMessage<DependencyEdge>
+  #if !GOOGLE_PROTOBUF_REFSTRUCT_COMPATIBILITY_MODE
+      , pb::IBufferMessage
+  #endif
+  {
     private static readonly pb::MessageParser<DependencyEdge> _parser = new pb::MessageParser<DependencyEdge>(() => new DependencyEdge());
     private pb::UnknownFieldSet _unknownFields;
     [global::System.Diagnostics.DebuggerNonUserCodeAttribute]
@@ -2509,7 +2974,7 @@ namespace Google.Cloud.Language.V1 {
 
     /// <summary>Field number for the "label" field.</summary>
     public const int LabelFieldNumber = 2;
-    private global::Google.Cloud.Language.V1.DependencyEdge.Types.Label label_ = 0;
+    private global::Google.Cloud.Language.V1.DependencyEdge.Types.Label label_ = global::Google.Cloud.Language.V1.DependencyEdge.Types.Label.Unknown;
     /// <summary>
     /// The parse label for the token.
     /// </summary>
@@ -2543,7 +3008,7 @@ namespace Google.Cloud.Language.V1 {
     public override int GetHashCode() {
       int hash = 1;
       if (HeadTokenIndex != 0) hash ^= HeadTokenIndex.GetHashCode();
-      if (Label != 0) hash ^= Label.GetHashCode();
+      if (Label != global::Google.Cloud.Language.V1.DependencyEdge.Types.Label.Unknown) hash ^= Label.GetHashCode();
       if (_unknownFields != null) {
         hash ^= _unknownFields.GetHashCode();
       }
@@ -2557,18 +3022,39 @@ namespace Google.Cloud.Language.V1 {
 
     [global::System.Diagnostics.DebuggerNonUserCodeAttribute]
     public void WriteTo(pb::CodedOutputStream output) {
+    #if !GOOGLE_PROTOBUF_REFSTRUCT_COMPATIBILITY_MODE
+      output.WriteRawMessage(this);
+    #else
       if (HeadTokenIndex != 0) {
         output.WriteRawTag(8);
         output.WriteInt32(HeadTokenIndex);
       }
-      if (Label != 0) {
+      if (Label != global::Google.Cloud.Language.V1.DependencyEdge.Types.Label.Unknown) {
         output.WriteRawTag(16);
         output.WriteEnum((int) Label);
       }
       if (_unknownFields != null) {
         _unknownFields.WriteTo(output);
       }
+    #endif
     }
+
+    #if !GOOGLE_PROTOBUF_REFSTRUCT_COMPATIBILITY_MODE
+    [global::System.Diagnostics.DebuggerNonUserCodeAttribute]
+    void pb::IBufferMessage.InternalWriteTo(ref pb::WriteContext output) {
+      if (HeadTokenIndex != 0) {
+        output.WriteRawTag(8);
+        output.WriteInt32(HeadTokenIndex);
+      }
+      if (Label != global::Google.Cloud.Language.V1.DependencyEdge.Types.Label.Unknown) {
+        output.WriteRawTag(16);
+        output.WriteEnum((int) Label);
+      }
+      if (_unknownFields != null) {
+        _unknownFields.WriteTo(ref output);
+      }
+    }
+    #endif
 
     [global::System.Diagnostics.DebuggerNonUserCodeAttribute]
     public int CalculateSize() {
@@ -2576,7 +3062,7 @@ namespace Google.Cloud.Language.V1 {
       if (HeadTokenIndex != 0) {
         size += 1 + pb::CodedOutputStream.ComputeInt32Size(HeadTokenIndex);
       }
-      if (Label != 0) {
+      if (Label != global::Google.Cloud.Language.V1.DependencyEdge.Types.Label.Unknown) {
         size += 1 + pb::CodedOutputStream.ComputeEnumSize((int) Label);
       }
       if (_unknownFields != null) {
@@ -2593,7 +3079,7 @@ namespace Google.Cloud.Language.V1 {
       if (other.HeadTokenIndex != 0) {
         HeadTokenIndex = other.HeadTokenIndex;
       }
-      if (other.Label != 0) {
+      if (other.Label != global::Google.Cloud.Language.V1.DependencyEdge.Types.Label.Unknown) {
         Label = other.Label;
       }
       _unknownFields = pb::UnknownFieldSet.MergeFrom(_unknownFields, other._unknownFields);
@@ -2601,6 +3087,9 @@ namespace Google.Cloud.Language.V1 {
 
     [global::System.Diagnostics.DebuggerNonUserCodeAttribute]
     public void MergeFrom(pb::CodedInputStream input) {
+    #if !GOOGLE_PROTOBUF_REFSTRUCT_COMPATIBILITY_MODE
+      input.ReadRawMessage(this);
+    #else
       uint tag;
       while ((tag = input.ReadTag()) != 0) {
         switch(tag) {
@@ -2617,7 +3106,30 @@ namespace Google.Cloud.Language.V1 {
           }
         }
       }
+    #endif
     }
+
+    #if !GOOGLE_PROTOBUF_REFSTRUCT_COMPATIBILITY_MODE
+    [global::System.Diagnostics.DebuggerNonUserCodeAttribute]
+    void pb::IBufferMessage.InternalMergeFrom(ref pb::ParseContext input) {
+      uint tag;
+      while ((tag = input.ReadTag()) != 0) {
+        switch(tag) {
+          default:
+            _unknownFields = pb::UnknownFieldSet.MergeFieldFrom(_unknownFields, ref input);
+            break;
+          case 8: {
+            HeadTokenIndex = input.ReadInt32();
+            break;
+          }
+          case 16: {
+            Label = (global::Google.Cloud.Language.V1.DependencyEdge.Types.Label) input.ReadEnum();
+            break;
+          }
+        }
+      }
+    }
+    #endif
 
     #region Nested types
     /// <summary>Container for nested types declared in the DependencyEdge message type.</summary>
@@ -2970,7 +3482,11 @@ namespace Google.Cloud.Language.V1 {
   /// Represents a mention for an entity in the text. Currently, proper noun
   /// mentions are supported.
   /// </summary>
-  public sealed partial class EntityMention : pb::IMessage<EntityMention> {
+  public sealed partial class EntityMention : pb::IMessage<EntityMention>
+  #if !GOOGLE_PROTOBUF_REFSTRUCT_COMPATIBILITY_MODE
+      , pb::IBufferMessage
+  #endif
+  {
     private static readonly pb::MessageParser<EntityMention> _parser = new pb::MessageParser<EntityMention>(() => new EntityMention());
     private pb::UnknownFieldSet _unknownFields;
     [global::System.Diagnostics.DebuggerNonUserCodeAttribute]
@@ -3022,7 +3538,7 @@ namespace Google.Cloud.Language.V1 {
 
     /// <summary>Field number for the "type" field.</summary>
     public const int TypeFieldNumber = 2;
-    private global::Google.Cloud.Language.V1.EntityMention.Types.Type type_ = 0;
+    private global::Google.Cloud.Language.V1.EntityMention.Types.Type type_ = global::Google.Cloud.Language.V1.EntityMention.Types.Type.Unknown;
     /// <summary>
     /// The type of the entity mention.
     /// </summary>
@@ -3074,7 +3590,7 @@ namespace Google.Cloud.Language.V1 {
     public override int GetHashCode() {
       int hash = 1;
       if (text_ != null) hash ^= Text.GetHashCode();
-      if (Type != 0) hash ^= Type.GetHashCode();
+      if (Type != global::Google.Cloud.Language.V1.EntityMention.Types.Type.Unknown) hash ^= Type.GetHashCode();
       if (sentiment_ != null) hash ^= Sentiment.GetHashCode();
       if (_unknownFields != null) {
         hash ^= _unknownFields.GetHashCode();
@@ -3089,11 +3605,14 @@ namespace Google.Cloud.Language.V1 {
 
     [global::System.Diagnostics.DebuggerNonUserCodeAttribute]
     public void WriteTo(pb::CodedOutputStream output) {
+    #if !GOOGLE_PROTOBUF_REFSTRUCT_COMPATIBILITY_MODE
+      output.WriteRawMessage(this);
+    #else
       if (text_ != null) {
         output.WriteRawTag(10);
         output.WriteMessage(Text);
       }
-      if (Type != 0) {
+      if (Type != global::Google.Cloud.Language.V1.EntityMention.Types.Type.Unknown) {
         output.WriteRawTag(16);
         output.WriteEnum((int) Type);
       }
@@ -3104,7 +3623,29 @@ namespace Google.Cloud.Language.V1 {
       if (_unknownFields != null) {
         _unknownFields.WriteTo(output);
       }
+    #endif
     }
+
+    #if !GOOGLE_PROTOBUF_REFSTRUCT_COMPATIBILITY_MODE
+    [global::System.Diagnostics.DebuggerNonUserCodeAttribute]
+    void pb::IBufferMessage.InternalWriteTo(ref pb::WriteContext output) {
+      if (text_ != null) {
+        output.WriteRawTag(10);
+        output.WriteMessage(Text);
+      }
+      if (Type != global::Google.Cloud.Language.V1.EntityMention.Types.Type.Unknown) {
+        output.WriteRawTag(16);
+        output.WriteEnum((int) Type);
+      }
+      if (sentiment_ != null) {
+        output.WriteRawTag(26);
+        output.WriteMessage(Sentiment);
+      }
+      if (_unknownFields != null) {
+        _unknownFields.WriteTo(ref output);
+      }
+    }
+    #endif
 
     [global::System.Diagnostics.DebuggerNonUserCodeAttribute]
     public int CalculateSize() {
@@ -3112,7 +3653,7 @@ namespace Google.Cloud.Language.V1 {
       if (text_ != null) {
         size += 1 + pb::CodedOutputStream.ComputeMessageSize(Text);
       }
-      if (Type != 0) {
+      if (Type != global::Google.Cloud.Language.V1.EntityMention.Types.Type.Unknown) {
         size += 1 + pb::CodedOutputStream.ComputeEnumSize((int) Type);
       }
       if (sentiment_ != null) {
@@ -3135,7 +3676,7 @@ namespace Google.Cloud.Language.V1 {
         }
         Text.MergeFrom(other.Text);
       }
-      if (other.Type != 0) {
+      if (other.Type != global::Google.Cloud.Language.V1.EntityMention.Types.Type.Unknown) {
         Type = other.Type;
       }
       if (other.sentiment_ != null) {
@@ -3149,6 +3690,9 @@ namespace Google.Cloud.Language.V1 {
 
     [global::System.Diagnostics.DebuggerNonUserCodeAttribute]
     public void MergeFrom(pb::CodedInputStream input) {
+    #if !GOOGLE_PROTOBUF_REFSTRUCT_COMPATIBILITY_MODE
+      input.ReadRawMessage(this);
+    #else
       uint tag;
       while ((tag = input.ReadTag()) != 0) {
         switch(tag) {
@@ -3175,7 +3719,40 @@ namespace Google.Cloud.Language.V1 {
           }
         }
       }
+    #endif
     }
+
+    #if !GOOGLE_PROTOBUF_REFSTRUCT_COMPATIBILITY_MODE
+    [global::System.Diagnostics.DebuggerNonUserCodeAttribute]
+    void pb::IBufferMessage.InternalMergeFrom(ref pb::ParseContext input) {
+      uint tag;
+      while ((tag = input.ReadTag()) != 0) {
+        switch(tag) {
+          default:
+            _unknownFields = pb::UnknownFieldSet.MergeFieldFrom(_unknownFields, ref input);
+            break;
+          case 10: {
+            if (text_ == null) {
+              Text = new global::Google.Cloud.Language.V1.TextSpan();
+            }
+            input.ReadMessage(Text);
+            break;
+          }
+          case 16: {
+            Type = (global::Google.Cloud.Language.V1.EntityMention.Types.Type) input.ReadEnum();
+            break;
+          }
+          case 26: {
+            if (sentiment_ == null) {
+              Sentiment = new global::Google.Cloud.Language.V1.Sentiment();
+            }
+            input.ReadMessage(Sentiment);
+            break;
+          }
+        }
+      }
+    }
+    #endif
 
     #region Nested types
     /// <summary>Container for nested types declared in the EntityMention message type.</summary>
@@ -3207,7 +3784,11 @@ namespace Google.Cloud.Language.V1 {
   /// <summary>
   /// Represents an output piece of text.
   /// </summary>
-  public sealed partial class TextSpan : pb::IMessage<TextSpan> {
+  public sealed partial class TextSpan : pb::IMessage<TextSpan>
+  #if !GOOGLE_PROTOBUF_REFSTRUCT_COMPATIBILITY_MODE
+      , pb::IBufferMessage
+  #endif
+  {
     private static readonly pb::MessageParser<TextSpan> _parser = new pb::MessageParser<TextSpan>(() => new TextSpan());
     private pb::UnknownFieldSet _unknownFields;
     [global::System.Diagnostics.DebuggerNonUserCodeAttribute]
@@ -3307,6 +3888,9 @@ namespace Google.Cloud.Language.V1 {
 
     [global::System.Diagnostics.DebuggerNonUserCodeAttribute]
     public void WriteTo(pb::CodedOutputStream output) {
+    #if !GOOGLE_PROTOBUF_REFSTRUCT_COMPATIBILITY_MODE
+      output.WriteRawMessage(this);
+    #else
       if (Content.Length != 0) {
         output.WriteRawTag(10);
         output.WriteString(Content);
@@ -3318,7 +3902,25 @@ namespace Google.Cloud.Language.V1 {
       if (_unknownFields != null) {
         _unknownFields.WriteTo(output);
       }
+    #endif
     }
+
+    #if !GOOGLE_PROTOBUF_REFSTRUCT_COMPATIBILITY_MODE
+    [global::System.Diagnostics.DebuggerNonUserCodeAttribute]
+    void pb::IBufferMessage.InternalWriteTo(ref pb::WriteContext output) {
+      if (Content.Length != 0) {
+        output.WriteRawTag(10);
+        output.WriteString(Content);
+      }
+      if (BeginOffset != 0) {
+        output.WriteRawTag(16);
+        output.WriteInt32(BeginOffset);
+      }
+      if (_unknownFields != null) {
+        _unknownFields.WriteTo(ref output);
+      }
+    }
+    #endif
 
     [global::System.Diagnostics.DebuggerNonUserCodeAttribute]
     public int CalculateSize() {
@@ -3351,6 +3953,9 @@ namespace Google.Cloud.Language.V1 {
 
     [global::System.Diagnostics.DebuggerNonUserCodeAttribute]
     public void MergeFrom(pb::CodedInputStream input) {
+    #if !GOOGLE_PROTOBUF_REFSTRUCT_COMPATIBILITY_MODE
+      input.ReadRawMessage(this);
+    #else
       uint tag;
       while ((tag = input.ReadTag()) != 0) {
         switch(tag) {
@@ -3367,14 +3972,41 @@ namespace Google.Cloud.Language.V1 {
           }
         }
       }
+    #endif
     }
+
+    #if !GOOGLE_PROTOBUF_REFSTRUCT_COMPATIBILITY_MODE
+    [global::System.Diagnostics.DebuggerNonUserCodeAttribute]
+    void pb::IBufferMessage.InternalMergeFrom(ref pb::ParseContext input) {
+      uint tag;
+      while ((tag = input.ReadTag()) != 0) {
+        switch(tag) {
+          default:
+            _unknownFields = pb::UnknownFieldSet.MergeFieldFrom(_unknownFields, ref input);
+            break;
+          case 10: {
+            Content = input.ReadString();
+            break;
+          }
+          case 16: {
+            BeginOffset = input.ReadInt32();
+            break;
+          }
+        }
+      }
+    }
+    #endif
 
   }
 
   /// <summary>
   /// Represents a category returned from the text classifier.
   /// </summary>
-  public sealed partial class ClassificationCategory : pb::IMessage<ClassificationCategory> {
+  public sealed partial class ClassificationCategory : pb::IMessage<ClassificationCategory>
+  #if !GOOGLE_PROTOBUF_REFSTRUCT_COMPATIBILITY_MODE
+      , pb::IBufferMessage
+  #endif
+  {
     private static readonly pb::MessageParser<ClassificationCategory> _parser = new pb::MessageParser<ClassificationCategory>(() => new ClassificationCategory());
     private pb::UnknownFieldSet _unknownFields;
     [global::System.Diagnostics.DebuggerNonUserCodeAttribute]
@@ -3414,7 +4046,7 @@ namespace Google.Cloud.Language.V1 {
     private string name_ = "";
     /// <summary>
     /// The name of the category representing the document, from the [predefined
-    /// taxonomy](/natural-language/docs/categories).
+    /// taxonomy](https://cloud.google.com/natural-language/docs/categories).
     /// </summary>
     [global::System.Diagnostics.DebuggerNonUserCodeAttribute]
     public string Name {
@@ -3475,6 +4107,9 @@ namespace Google.Cloud.Language.V1 {
 
     [global::System.Diagnostics.DebuggerNonUserCodeAttribute]
     public void WriteTo(pb::CodedOutputStream output) {
+    #if !GOOGLE_PROTOBUF_REFSTRUCT_COMPATIBILITY_MODE
+      output.WriteRawMessage(this);
+    #else
       if (Name.Length != 0) {
         output.WriteRawTag(10);
         output.WriteString(Name);
@@ -3486,7 +4121,25 @@ namespace Google.Cloud.Language.V1 {
       if (_unknownFields != null) {
         _unknownFields.WriteTo(output);
       }
+    #endif
     }
+
+    #if !GOOGLE_PROTOBUF_REFSTRUCT_COMPATIBILITY_MODE
+    [global::System.Diagnostics.DebuggerNonUserCodeAttribute]
+    void pb::IBufferMessage.InternalWriteTo(ref pb::WriteContext output) {
+      if (Name.Length != 0) {
+        output.WriteRawTag(10);
+        output.WriteString(Name);
+      }
+      if (Confidence != 0F) {
+        output.WriteRawTag(21);
+        output.WriteFloat(Confidence);
+      }
+      if (_unknownFields != null) {
+        _unknownFields.WriteTo(ref output);
+      }
+    }
+    #endif
 
     [global::System.Diagnostics.DebuggerNonUserCodeAttribute]
     public int CalculateSize() {
@@ -3519,6 +4172,9 @@ namespace Google.Cloud.Language.V1 {
 
     [global::System.Diagnostics.DebuggerNonUserCodeAttribute]
     public void MergeFrom(pb::CodedInputStream input) {
+    #if !GOOGLE_PROTOBUF_REFSTRUCT_COMPATIBILITY_MODE
+      input.ReadRawMessage(this);
+    #else
       uint tag;
       while ((tag = input.ReadTag()) != 0) {
         switch(tag) {
@@ -3535,14 +4191,41 @@ namespace Google.Cloud.Language.V1 {
           }
         }
       }
+    #endif
     }
+
+    #if !GOOGLE_PROTOBUF_REFSTRUCT_COMPATIBILITY_MODE
+    [global::System.Diagnostics.DebuggerNonUserCodeAttribute]
+    void pb::IBufferMessage.InternalMergeFrom(ref pb::ParseContext input) {
+      uint tag;
+      while ((tag = input.ReadTag()) != 0) {
+        switch(tag) {
+          default:
+            _unknownFields = pb::UnknownFieldSet.MergeFieldFrom(_unknownFields, ref input);
+            break;
+          case 10: {
+            Name = input.ReadString();
+            break;
+          }
+          case 21: {
+            Confidence = input.ReadFloat();
+            break;
+          }
+        }
+      }
+    }
+    #endif
 
   }
 
   /// <summary>
   /// The sentiment analysis request message.
   /// </summary>
-  public sealed partial class AnalyzeSentimentRequest : pb::IMessage<AnalyzeSentimentRequest> {
+  public sealed partial class AnalyzeSentimentRequest : pb::IMessage<AnalyzeSentimentRequest>
+  #if !GOOGLE_PROTOBUF_REFSTRUCT_COMPATIBILITY_MODE
+      , pb::IBufferMessage
+  #endif
+  {
     private static readonly pb::MessageParser<AnalyzeSentimentRequest> _parser = new pb::MessageParser<AnalyzeSentimentRequest>(() => new AnalyzeSentimentRequest());
     private pb::UnknownFieldSet _unknownFields;
     [global::System.Diagnostics.DebuggerNonUserCodeAttribute]
@@ -3593,7 +4276,7 @@ namespace Google.Cloud.Language.V1 {
 
     /// <summary>Field number for the "encoding_type" field.</summary>
     public const int EncodingTypeFieldNumber = 2;
-    private global::Google.Cloud.Language.V1.EncodingType encodingType_ = 0;
+    private global::Google.Cloud.Language.V1.EncodingType encodingType_ = global::Google.Cloud.Language.V1.EncodingType.None;
     /// <summary>
     /// The encoding type used by the API to calculate sentence offsets.
     /// </summary>
@@ -3627,7 +4310,7 @@ namespace Google.Cloud.Language.V1 {
     public override int GetHashCode() {
       int hash = 1;
       if (document_ != null) hash ^= Document.GetHashCode();
-      if (EncodingType != 0) hash ^= EncodingType.GetHashCode();
+      if (EncodingType != global::Google.Cloud.Language.V1.EncodingType.None) hash ^= EncodingType.GetHashCode();
       if (_unknownFields != null) {
         hash ^= _unknownFields.GetHashCode();
       }
@@ -3641,18 +4324,39 @@ namespace Google.Cloud.Language.V1 {
 
     [global::System.Diagnostics.DebuggerNonUserCodeAttribute]
     public void WriteTo(pb::CodedOutputStream output) {
+    #if !GOOGLE_PROTOBUF_REFSTRUCT_COMPATIBILITY_MODE
+      output.WriteRawMessage(this);
+    #else
       if (document_ != null) {
         output.WriteRawTag(10);
         output.WriteMessage(Document);
       }
-      if (EncodingType != 0) {
+      if (EncodingType != global::Google.Cloud.Language.V1.EncodingType.None) {
         output.WriteRawTag(16);
         output.WriteEnum((int) EncodingType);
       }
       if (_unknownFields != null) {
         _unknownFields.WriteTo(output);
       }
+    #endif
     }
+
+    #if !GOOGLE_PROTOBUF_REFSTRUCT_COMPATIBILITY_MODE
+    [global::System.Diagnostics.DebuggerNonUserCodeAttribute]
+    void pb::IBufferMessage.InternalWriteTo(ref pb::WriteContext output) {
+      if (document_ != null) {
+        output.WriteRawTag(10);
+        output.WriteMessage(Document);
+      }
+      if (EncodingType != global::Google.Cloud.Language.V1.EncodingType.None) {
+        output.WriteRawTag(16);
+        output.WriteEnum((int) EncodingType);
+      }
+      if (_unknownFields != null) {
+        _unknownFields.WriteTo(ref output);
+      }
+    }
+    #endif
 
     [global::System.Diagnostics.DebuggerNonUserCodeAttribute]
     public int CalculateSize() {
@@ -3660,7 +4364,7 @@ namespace Google.Cloud.Language.V1 {
       if (document_ != null) {
         size += 1 + pb::CodedOutputStream.ComputeMessageSize(Document);
       }
-      if (EncodingType != 0) {
+      if (EncodingType != global::Google.Cloud.Language.V1.EncodingType.None) {
         size += 1 + pb::CodedOutputStream.ComputeEnumSize((int) EncodingType);
       }
       if (_unknownFields != null) {
@@ -3680,7 +4384,7 @@ namespace Google.Cloud.Language.V1 {
         }
         Document.MergeFrom(other.Document);
       }
-      if (other.EncodingType != 0) {
+      if (other.EncodingType != global::Google.Cloud.Language.V1.EncodingType.None) {
         EncodingType = other.EncodingType;
       }
       _unknownFields = pb::UnknownFieldSet.MergeFrom(_unknownFields, other._unknownFields);
@@ -3688,6 +4392,9 @@ namespace Google.Cloud.Language.V1 {
 
     [global::System.Diagnostics.DebuggerNonUserCodeAttribute]
     public void MergeFrom(pb::CodedInputStream input) {
+    #if !GOOGLE_PROTOBUF_REFSTRUCT_COMPATIBILITY_MODE
+      input.ReadRawMessage(this);
+    #else
       uint tag;
       while ((tag = input.ReadTag()) != 0) {
         switch(tag) {
@@ -3707,14 +4414,44 @@ namespace Google.Cloud.Language.V1 {
           }
         }
       }
+    #endif
     }
+
+    #if !GOOGLE_PROTOBUF_REFSTRUCT_COMPATIBILITY_MODE
+    [global::System.Diagnostics.DebuggerNonUserCodeAttribute]
+    void pb::IBufferMessage.InternalMergeFrom(ref pb::ParseContext input) {
+      uint tag;
+      while ((tag = input.ReadTag()) != 0) {
+        switch(tag) {
+          default:
+            _unknownFields = pb::UnknownFieldSet.MergeFieldFrom(_unknownFields, ref input);
+            break;
+          case 10: {
+            if (document_ == null) {
+              Document = new global::Google.Cloud.Language.V1.Document();
+            }
+            input.ReadMessage(Document);
+            break;
+          }
+          case 16: {
+            EncodingType = (global::Google.Cloud.Language.V1.EncodingType) input.ReadEnum();
+            break;
+          }
+        }
+      }
+    }
+    #endif
 
   }
 
   /// <summary>
   /// The sentiment analysis response message.
   /// </summary>
-  public sealed partial class AnalyzeSentimentResponse : pb::IMessage<AnalyzeSentimentResponse> {
+  public sealed partial class AnalyzeSentimentResponse : pb::IMessage<AnalyzeSentimentResponse>
+  #if !GOOGLE_PROTOBUF_REFSTRUCT_COMPATIBILITY_MODE
+      , pb::IBufferMessage
+  #endif
+  {
     private static readonly pb::MessageParser<AnalyzeSentimentResponse> _parser = new pb::MessageParser<AnalyzeSentimentResponse>(() => new AnalyzeSentimentResponse());
     private pb::UnknownFieldSet _unknownFields;
     [global::System.Diagnostics.DebuggerNonUserCodeAttribute]
@@ -3831,6 +4568,9 @@ namespace Google.Cloud.Language.V1 {
 
     [global::System.Diagnostics.DebuggerNonUserCodeAttribute]
     public void WriteTo(pb::CodedOutputStream output) {
+    #if !GOOGLE_PROTOBUF_REFSTRUCT_COMPATIBILITY_MODE
+      output.WriteRawMessage(this);
+    #else
       if (documentSentiment_ != null) {
         output.WriteRawTag(10);
         output.WriteMessage(DocumentSentiment);
@@ -3843,7 +4583,26 @@ namespace Google.Cloud.Language.V1 {
       if (_unknownFields != null) {
         _unknownFields.WriteTo(output);
       }
+    #endif
     }
+
+    #if !GOOGLE_PROTOBUF_REFSTRUCT_COMPATIBILITY_MODE
+    [global::System.Diagnostics.DebuggerNonUserCodeAttribute]
+    void pb::IBufferMessage.InternalWriteTo(ref pb::WriteContext output) {
+      if (documentSentiment_ != null) {
+        output.WriteRawTag(10);
+        output.WriteMessage(DocumentSentiment);
+      }
+      if (Language.Length != 0) {
+        output.WriteRawTag(18);
+        output.WriteString(Language);
+      }
+      sentences_.WriteTo(ref output, _repeated_sentences_codec);
+      if (_unknownFields != null) {
+        _unknownFields.WriteTo(ref output);
+      }
+    }
+    #endif
 
     [global::System.Diagnostics.DebuggerNonUserCodeAttribute]
     public int CalculateSize() {
@@ -3881,6 +4640,9 @@ namespace Google.Cloud.Language.V1 {
 
     [global::System.Diagnostics.DebuggerNonUserCodeAttribute]
     public void MergeFrom(pb::CodedInputStream input) {
+    #if !GOOGLE_PROTOBUF_REFSTRUCT_COMPATIBILITY_MODE
+      input.ReadRawMessage(this);
+    #else
       uint tag;
       while ((tag = input.ReadTag()) != 0) {
         switch(tag) {
@@ -3904,14 +4666,48 @@ namespace Google.Cloud.Language.V1 {
           }
         }
       }
+    #endif
     }
+
+    #if !GOOGLE_PROTOBUF_REFSTRUCT_COMPATIBILITY_MODE
+    [global::System.Diagnostics.DebuggerNonUserCodeAttribute]
+    void pb::IBufferMessage.InternalMergeFrom(ref pb::ParseContext input) {
+      uint tag;
+      while ((tag = input.ReadTag()) != 0) {
+        switch(tag) {
+          default:
+            _unknownFields = pb::UnknownFieldSet.MergeFieldFrom(_unknownFields, ref input);
+            break;
+          case 10: {
+            if (documentSentiment_ == null) {
+              DocumentSentiment = new global::Google.Cloud.Language.V1.Sentiment();
+            }
+            input.ReadMessage(DocumentSentiment);
+            break;
+          }
+          case 18: {
+            Language = input.ReadString();
+            break;
+          }
+          case 26: {
+            sentences_.AddEntriesFrom(ref input, _repeated_sentences_codec);
+            break;
+          }
+        }
+      }
+    }
+    #endif
 
   }
 
   /// <summary>
   /// The entity-level sentiment analysis request message.
   /// </summary>
-  public sealed partial class AnalyzeEntitySentimentRequest : pb::IMessage<AnalyzeEntitySentimentRequest> {
+  public sealed partial class AnalyzeEntitySentimentRequest : pb::IMessage<AnalyzeEntitySentimentRequest>
+  #if !GOOGLE_PROTOBUF_REFSTRUCT_COMPATIBILITY_MODE
+      , pb::IBufferMessage
+  #endif
+  {
     private static readonly pb::MessageParser<AnalyzeEntitySentimentRequest> _parser = new pb::MessageParser<AnalyzeEntitySentimentRequest>(() => new AnalyzeEntitySentimentRequest());
     private pb::UnknownFieldSet _unknownFields;
     [global::System.Diagnostics.DebuggerNonUserCodeAttribute]
@@ -3962,7 +4758,7 @@ namespace Google.Cloud.Language.V1 {
 
     /// <summary>Field number for the "encoding_type" field.</summary>
     public const int EncodingTypeFieldNumber = 2;
-    private global::Google.Cloud.Language.V1.EncodingType encodingType_ = 0;
+    private global::Google.Cloud.Language.V1.EncodingType encodingType_ = global::Google.Cloud.Language.V1.EncodingType.None;
     /// <summary>
     /// The encoding type used by the API to calculate offsets.
     /// </summary>
@@ -3996,7 +4792,7 @@ namespace Google.Cloud.Language.V1 {
     public override int GetHashCode() {
       int hash = 1;
       if (document_ != null) hash ^= Document.GetHashCode();
-      if (EncodingType != 0) hash ^= EncodingType.GetHashCode();
+      if (EncodingType != global::Google.Cloud.Language.V1.EncodingType.None) hash ^= EncodingType.GetHashCode();
       if (_unknownFields != null) {
         hash ^= _unknownFields.GetHashCode();
       }
@@ -4010,18 +4806,39 @@ namespace Google.Cloud.Language.V1 {
 
     [global::System.Diagnostics.DebuggerNonUserCodeAttribute]
     public void WriteTo(pb::CodedOutputStream output) {
+    #if !GOOGLE_PROTOBUF_REFSTRUCT_COMPATIBILITY_MODE
+      output.WriteRawMessage(this);
+    #else
       if (document_ != null) {
         output.WriteRawTag(10);
         output.WriteMessage(Document);
       }
-      if (EncodingType != 0) {
+      if (EncodingType != global::Google.Cloud.Language.V1.EncodingType.None) {
         output.WriteRawTag(16);
         output.WriteEnum((int) EncodingType);
       }
       if (_unknownFields != null) {
         _unknownFields.WriteTo(output);
       }
+    #endif
     }
+
+    #if !GOOGLE_PROTOBUF_REFSTRUCT_COMPATIBILITY_MODE
+    [global::System.Diagnostics.DebuggerNonUserCodeAttribute]
+    void pb::IBufferMessage.InternalWriteTo(ref pb::WriteContext output) {
+      if (document_ != null) {
+        output.WriteRawTag(10);
+        output.WriteMessage(Document);
+      }
+      if (EncodingType != global::Google.Cloud.Language.V1.EncodingType.None) {
+        output.WriteRawTag(16);
+        output.WriteEnum((int) EncodingType);
+      }
+      if (_unknownFields != null) {
+        _unknownFields.WriteTo(ref output);
+      }
+    }
+    #endif
 
     [global::System.Diagnostics.DebuggerNonUserCodeAttribute]
     public int CalculateSize() {
@@ -4029,7 +4846,7 @@ namespace Google.Cloud.Language.V1 {
       if (document_ != null) {
         size += 1 + pb::CodedOutputStream.ComputeMessageSize(Document);
       }
-      if (EncodingType != 0) {
+      if (EncodingType != global::Google.Cloud.Language.V1.EncodingType.None) {
         size += 1 + pb::CodedOutputStream.ComputeEnumSize((int) EncodingType);
       }
       if (_unknownFields != null) {
@@ -4049,7 +4866,7 @@ namespace Google.Cloud.Language.V1 {
         }
         Document.MergeFrom(other.Document);
       }
-      if (other.EncodingType != 0) {
+      if (other.EncodingType != global::Google.Cloud.Language.V1.EncodingType.None) {
         EncodingType = other.EncodingType;
       }
       _unknownFields = pb::UnknownFieldSet.MergeFrom(_unknownFields, other._unknownFields);
@@ -4057,6 +4874,9 @@ namespace Google.Cloud.Language.V1 {
 
     [global::System.Diagnostics.DebuggerNonUserCodeAttribute]
     public void MergeFrom(pb::CodedInputStream input) {
+    #if !GOOGLE_PROTOBUF_REFSTRUCT_COMPATIBILITY_MODE
+      input.ReadRawMessage(this);
+    #else
       uint tag;
       while ((tag = input.ReadTag()) != 0) {
         switch(tag) {
@@ -4076,14 +4896,44 @@ namespace Google.Cloud.Language.V1 {
           }
         }
       }
+    #endif
     }
+
+    #if !GOOGLE_PROTOBUF_REFSTRUCT_COMPATIBILITY_MODE
+    [global::System.Diagnostics.DebuggerNonUserCodeAttribute]
+    void pb::IBufferMessage.InternalMergeFrom(ref pb::ParseContext input) {
+      uint tag;
+      while ((tag = input.ReadTag()) != 0) {
+        switch(tag) {
+          default:
+            _unknownFields = pb::UnknownFieldSet.MergeFieldFrom(_unknownFields, ref input);
+            break;
+          case 10: {
+            if (document_ == null) {
+              Document = new global::Google.Cloud.Language.V1.Document();
+            }
+            input.ReadMessage(Document);
+            break;
+          }
+          case 16: {
+            EncodingType = (global::Google.Cloud.Language.V1.EncodingType) input.ReadEnum();
+            break;
+          }
+        }
+      }
+    }
+    #endif
 
   }
 
   /// <summary>
   /// The entity-level sentiment analysis response message.
   /// </summary>
-  public sealed partial class AnalyzeEntitySentimentResponse : pb::IMessage<AnalyzeEntitySentimentResponse> {
+  public sealed partial class AnalyzeEntitySentimentResponse : pb::IMessage<AnalyzeEntitySentimentResponse>
+  #if !GOOGLE_PROTOBUF_REFSTRUCT_COMPATIBILITY_MODE
+      , pb::IBufferMessage
+  #endif
+  {
     private static readonly pb::MessageParser<AnalyzeEntitySentimentResponse> _parser = new pb::MessageParser<AnalyzeEntitySentimentResponse>(() => new AnalyzeEntitySentimentResponse());
     private pb::UnknownFieldSet _unknownFields;
     [global::System.Diagnostics.DebuggerNonUserCodeAttribute]
@@ -4183,6 +5033,9 @@ namespace Google.Cloud.Language.V1 {
 
     [global::System.Diagnostics.DebuggerNonUserCodeAttribute]
     public void WriteTo(pb::CodedOutputStream output) {
+    #if !GOOGLE_PROTOBUF_REFSTRUCT_COMPATIBILITY_MODE
+      output.WriteRawMessage(this);
+    #else
       entities_.WriteTo(output, _repeated_entities_codec);
       if (Language.Length != 0) {
         output.WriteRawTag(18);
@@ -4191,7 +5044,22 @@ namespace Google.Cloud.Language.V1 {
       if (_unknownFields != null) {
         _unknownFields.WriteTo(output);
       }
+    #endif
     }
+
+    #if !GOOGLE_PROTOBUF_REFSTRUCT_COMPATIBILITY_MODE
+    [global::System.Diagnostics.DebuggerNonUserCodeAttribute]
+    void pb::IBufferMessage.InternalWriteTo(ref pb::WriteContext output) {
+      entities_.WriteTo(ref output, _repeated_entities_codec);
+      if (Language.Length != 0) {
+        output.WriteRawTag(18);
+        output.WriteString(Language);
+      }
+      if (_unknownFields != null) {
+        _unknownFields.WriteTo(ref output);
+      }
+    }
+    #endif
 
     [global::System.Diagnostics.DebuggerNonUserCodeAttribute]
     public int CalculateSize() {
@@ -4220,6 +5088,9 @@ namespace Google.Cloud.Language.V1 {
 
     [global::System.Diagnostics.DebuggerNonUserCodeAttribute]
     public void MergeFrom(pb::CodedInputStream input) {
+    #if !GOOGLE_PROTOBUF_REFSTRUCT_COMPATIBILITY_MODE
+      input.ReadRawMessage(this);
+    #else
       uint tag;
       while ((tag = input.ReadTag()) != 0) {
         switch(tag) {
@@ -4236,14 +5107,41 @@ namespace Google.Cloud.Language.V1 {
           }
         }
       }
+    #endif
     }
+
+    #if !GOOGLE_PROTOBUF_REFSTRUCT_COMPATIBILITY_MODE
+    [global::System.Diagnostics.DebuggerNonUserCodeAttribute]
+    void pb::IBufferMessage.InternalMergeFrom(ref pb::ParseContext input) {
+      uint tag;
+      while ((tag = input.ReadTag()) != 0) {
+        switch(tag) {
+          default:
+            _unknownFields = pb::UnknownFieldSet.MergeFieldFrom(_unknownFields, ref input);
+            break;
+          case 10: {
+            entities_.AddEntriesFrom(ref input, _repeated_entities_codec);
+            break;
+          }
+          case 18: {
+            Language = input.ReadString();
+            break;
+          }
+        }
+      }
+    }
+    #endif
 
   }
 
   /// <summary>
   /// The entity analysis request message.
   /// </summary>
-  public sealed partial class AnalyzeEntitiesRequest : pb::IMessage<AnalyzeEntitiesRequest> {
+  public sealed partial class AnalyzeEntitiesRequest : pb::IMessage<AnalyzeEntitiesRequest>
+  #if !GOOGLE_PROTOBUF_REFSTRUCT_COMPATIBILITY_MODE
+      , pb::IBufferMessage
+  #endif
+  {
     private static readonly pb::MessageParser<AnalyzeEntitiesRequest> _parser = new pb::MessageParser<AnalyzeEntitiesRequest>(() => new AnalyzeEntitiesRequest());
     private pb::UnknownFieldSet _unknownFields;
     [global::System.Diagnostics.DebuggerNonUserCodeAttribute]
@@ -4294,7 +5192,7 @@ namespace Google.Cloud.Language.V1 {
 
     /// <summary>Field number for the "encoding_type" field.</summary>
     public const int EncodingTypeFieldNumber = 2;
-    private global::Google.Cloud.Language.V1.EncodingType encodingType_ = 0;
+    private global::Google.Cloud.Language.V1.EncodingType encodingType_ = global::Google.Cloud.Language.V1.EncodingType.None;
     /// <summary>
     /// The encoding type used by the API to calculate offsets.
     /// </summary>
@@ -4328,7 +5226,7 @@ namespace Google.Cloud.Language.V1 {
     public override int GetHashCode() {
       int hash = 1;
       if (document_ != null) hash ^= Document.GetHashCode();
-      if (EncodingType != 0) hash ^= EncodingType.GetHashCode();
+      if (EncodingType != global::Google.Cloud.Language.V1.EncodingType.None) hash ^= EncodingType.GetHashCode();
       if (_unknownFields != null) {
         hash ^= _unknownFields.GetHashCode();
       }
@@ -4342,18 +5240,39 @@ namespace Google.Cloud.Language.V1 {
 
     [global::System.Diagnostics.DebuggerNonUserCodeAttribute]
     public void WriteTo(pb::CodedOutputStream output) {
+    #if !GOOGLE_PROTOBUF_REFSTRUCT_COMPATIBILITY_MODE
+      output.WriteRawMessage(this);
+    #else
       if (document_ != null) {
         output.WriteRawTag(10);
         output.WriteMessage(Document);
       }
-      if (EncodingType != 0) {
+      if (EncodingType != global::Google.Cloud.Language.V1.EncodingType.None) {
         output.WriteRawTag(16);
         output.WriteEnum((int) EncodingType);
       }
       if (_unknownFields != null) {
         _unknownFields.WriteTo(output);
       }
+    #endif
     }
+
+    #if !GOOGLE_PROTOBUF_REFSTRUCT_COMPATIBILITY_MODE
+    [global::System.Diagnostics.DebuggerNonUserCodeAttribute]
+    void pb::IBufferMessage.InternalWriteTo(ref pb::WriteContext output) {
+      if (document_ != null) {
+        output.WriteRawTag(10);
+        output.WriteMessage(Document);
+      }
+      if (EncodingType != global::Google.Cloud.Language.V1.EncodingType.None) {
+        output.WriteRawTag(16);
+        output.WriteEnum((int) EncodingType);
+      }
+      if (_unknownFields != null) {
+        _unknownFields.WriteTo(ref output);
+      }
+    }
+    #endif
 
     [global::System.Diagnostics.DebuggerNonUserCodeAttribute]
     public int CalculateSize() {
@@ -4361,7 +5280,7 @@ namespace Google.Cloud.Language.V1 {
       if (document_ != null) {
         size += 1 + pb::CodedOutputStream.ComputeMessageSize(Document);
       }
-      if (EncodingType != 0) {
+      if (EncodingType != global::Google.Cloud.Language.V1.EncodingType.None) {
         size += 1 + pb::CodedOutputStream.ComputeEnumSize((int) EncodingType);
       }
       if (_unknownFields != null) {
@@ -4381,7 +5300,7 @@ namespace Google.Cloud.Language.V1 {
         }
         Document.MergeFrom(other.Document);
       }
-      if (other.EncodingType != 0) {
+      if (other.EncodingType != global::Google.Cloud.Language.V1.EncodingType.None) {
         EncodingType = other.EncodingType;
       }
       _unknownFields = pb::UnknownFieldSet.MergeFrom(_unknownFields, other._unknownFields);
@@ -4389,6 +5308,9 @@ namespace Google.Cloud.Language.V1 {
 
     [global::System.Diagnostics.DebuggerNonUserCodeAttribute]
     public void MergeFrom(pb::CodedInputStream input) {
+    #if !GOOGLE_PROTOBUF_REFSTRUCT_COMPATIBILITY_MODE
+      input.ReadRawMessage(this);
+    #else
       uint tag;
       while ((tag = input.ReadTag()) != 0) {
         switch(tag) {
@@ -4408,14 +5330,44 @@ namespace Google.Cloud.Language.V1 {
           }
         }
       }
+    #endif
     }
+
+    #if !GOOGLE_PROTOBUF_REFSTRUCT_COMPATIBILITY_MODE
+    [global::System.Diagnostics.DebuggerNonUserCodeAttribute]
+    void pb::IBufferMessage.InternalMergeFrom(ref pb::ParseContext input) {
+      uint tag;
+      while ((tag = input.ReadTag()) != 0) {
+        switch(tag) {
+          default:
+            _unknownFields = pb::UnknownFieldSet.MergeFieldFrom(_unknownFields, ref input);
+            break;
+          case 10: {
+            if (document_ == null) {
+              Document = new global::Google.Cloud.Language.V1.Document();
+            }
+            input.ReadMessage(Document);
+            break;
+          }
+          case 16: {
+            EncodingType = (global::Google.Cloud.Language.V1.EncodingType) input.ReadEnum();
+            break;
+          }
+        }
+      }
+    }
+    #endif
 
   }
 
   /// <summary>
   /// The entity analysis response message.
   /// </summary>
-  public sealed partial class AnalyzeEntitiesResponse : pb::IMessage<AnalyzeEntitiesResponse> {
+  public sealed partial class AnalyzeEntitiesResponse : pb::IMessage<AnalyzeEntitiesResponse>
+  #if !GOOGLE_PROTOBUF_REFSTRUCT_COMPATIBILITY_MODE
+      , pb::IBufferMessage
+  #endif
+  {
     private static readonly pb::MessageParser<AnalyzeEntitiesResponse> _parser = new pb::MessageParser<AnalyzeEntitiesResponse>(() => new AnalyzeEntitiesResponse());
     private pb::UnknownFieldSet _unknownFields;
     [global::System.Diagnostics.DebuggerNonUserCodeAttribute]
@@ -4515,6 +5467,9 @@ namespace Google.Cloud.Language.V1 {
 
     [global::System.Diagnostics.DebuggerNonUserCodeAttribute]
     public void WriteTo(pb::CodedOutputStream output) {
+    #if !GOOGLE_PROTOBUF_REFSTRUCT_COMPATIBILITY_MODE
+      output.WriteRawMessage(this);
+    #else
       entities_.WriteTo(output, _repeated_entities_codec);
       if (Language.Length != 0) {
         output.WriteRawTag(18);
@@ -4523,7 +5478,22 @@ namespace Google.Cloud.Language.V1 {
       if (_unknownFields != null) {
         _unknownFields.WriteTo(output);
       }
+    #endif
     }
+
+    #if !GOOGLE_PROTOBUF_REFSTRUCT_COMPATIBILITY_MODE
+    [global::System.Diagnostics.DebuggerNonUserCodeAttribute]
+    void pb::IBufferMessage.InternalWriteTo(ref pb::WriteContext output) {
+      entities_.WriteTo(ref output, _repeated_entities_codec);
+      if (Language.Length != 0) {
+        output.WriteRawTag(18);
+        output.WriteString(Language);
+      }
+      if (_unknownFields != null) {
+        _unknownFields.WriteTo(ref output);
+      }
+    }
+    #endif
 
     [global::System.Diagnostics.DebuggerNonUserCodeAttribute]
     public int CalculateSize() {
@@ -4552,6 +5522,9 @@ namespace Google.Cloud.Language.V1 {
 
     [global::System.Diagnostics.DebuggerNonUserCodeAttribute]
     public void MergeFrom(pb::CodedInputStream input) {
+    #if !GOOGLE_PROTOBUF_REFSTRUCT_COMPATIBILITY_MODE
+      input.ReadRawMessage(this);
+    #else
       uint tag;
       while ((tag = input.ReadTag()) != 0) {
         switch(tag) {
@@ -4568,14 +5541,41 @@ namespace Google.Cloud.Language.V1 {
           }
         }
       }
+    #endif
     }
+
+    #if !GOOGLE_PROTOBUF_REFSTRUCT_COMPATIBILITY_MODE
+    [global::System.Diagnostics.DebuggerNonUserCodeAttribute]
+    void pb::IBufferMessage.InternalMergeFrom(ref pb::ParseContext input) {
+      uint tag;
+      while ((tag = input.ReadTag()) != 0) {
+        switch(tag) {
+          default:
+            _unknownFields = pb::UnknownFieldSet.MergeFieldFrom(_unknownFields, ref input);
+            break;
+          case 10: {
+            entities_.AddEntriesFrom(ref input, _repeated_entities_codec);
+            break;
+          }
+          case 18: {
+            Language = input.ReadString();
+            break;
+          }
+        }
+      }
+    }
+    #endif
 
   }
 
   /// <summary>
   /// The syntax analysis request message.
   /// </summary>
-  public sealed partial class AnalyzeSyntaxRequest : pb::IMessage<AnalyzeSyntaxRequest> {
+  public sealed partial class AnalyzeSyntaxRequest : pb::IMessage<AnalyzeSyntaxRequest>
+  #if !GOOGLE_PROTOBUF_REFSTRUCT_COMPATIBILITY_MODE
+      , pb::IBufferMessage
+  #endif
+  {
     private static readonly pb::MessageParser<AnalyzeSyntaxRequest> _parser = new pb::MessageParser<AnalyzeSyntaxRequest>(() => new AnalyzeSyntaxRequest());
     private pb::UnknownFieldSet _unknownFields;
     [global::System.Diagnostics.DebuggerNonUserCodeAttribute]
@@ -4626,7 +5626,7 @@ namespace Google.Cloud.Language.V1 {
 
     /// <summary>Field number for the "encoding_type" field.</summary>
     public const int EncodingTypeFieldNumber = 2;
-    private global::Google.Cloud.Language.V1.EncodingType encodingType_ = 0;
+    private global::Google.Cloud.Language.V1.EncodingType encodingType_ = global::Google.Cloud.Language.V1.EncodingType.None;
     /// <summary>
     /// The encoding type used by the API to calculate offsets.
     /// </summary>
@@ -4660,7 +5660,7 @@ namespace Google.Cloud.Language.V1 {
     public override int GetHashCode() {
       int hash = 1;
       if (document_ != null) hash ^= Document.GetHashCode();
-      if (EncodingType != 0) hash ^= EncodingType.GetHashCode();
+      if (EncodingType != global::Google.Cloud.Language.V1.EncodingType.None) hash ^= EncodingType.GetHashCode();
       if (_unknownFields != null) {
         hash ^= _unknownFields.GetHashCode();
       }
@@ -4674,18 +5674,39 @@ namespace Google.Cloud.Language.V1 {
 
     [global::System.Diagnostics.DebuggerNonUserCodeAttribute]
     public void WriteTo(pb::CodedOutputStream output) {
+    #if !GOOGLE_PROTOBUF_REFSTRUCT_COMPATIBILITY_MODE
+      output.WriteRawMessage(this);
+    #else
       if (document_ != null) {
         output.WriteRawTag(10);
         output.WriteMessage(Document);
       }
-      if (EncodingType != 0) {
+      if (EncodingType != global::Google.Cloud.Language.V1.EncodingType.None) {
         output.WriteRawTag(16);
         output.WriteEnum((int) EncodingType);
       }
       if (_unknownFields != null) {
         _unknownFields.WriteTo(output);
       }
+    #endif
     }
+
+    #if !GOOGLE_PROTOBUF_REFSTRUCT_COMPATIBILITY_MODE
+    [global::System.Diagnostics.DebuggerNonUserCodeAttribute]
+    void pb::IBufferMessage.InternalWriteTo(ref pb::WriteContext output) {
+      if (document_ != null) {
+        output.WriteRawTag(10);
+        output.WriteMessage(Document);
+      }
+      if (EncodingType != global::Google.Cloud.Language.V1.EncodingType.None) {
+        output.WriteRawTag(16);
+        output.WriteEnum((int) EncodingType);
+      }
+      if (_unknownFields != null) {
+        _unknownFields.WriteTo(ref output);
+      }
+    }
+    #endif
 
     [global::System.Diagnostics.DebuggerNonUserCodeAttribute]
     public int CalculateSize() {
@@ -4693,7 +5714,7 @@ namespace Google.Cloud.Language.V1 {
       if (document_ != null) {
         size += 1 + pb::CodedOutputStream.ComputeMessageSize(Document);
       }
-      if (EncodingType != 0) {
+      if (EncodingType != global::Google.Cloud.Language.V1.EncodingType.None) {
         size += 1 + pb::CodedOutputStream.ComputeEnumSize((int) EncodingType);
       }
       if (_unknownFields != null) {
@@ -4713,7 +5734,7 @@ namespace Google.Cloud.Language.V1 {
         }
         Document.MergeFrom(other.Document);
       }
-      if (other.EncodingType != 0) {
+      if (other.EncodingType != global::Google.Cloud.Language.V1.EncodingType.None) {
         EncodingType = other.EncodingType;
       }
       _unknownFields = pb::UnknownFieldSet.MergeFrom(_unknownFields, other._unknownFields);
@@ -4721,6 +5742,9 @@ namespace Google.Cloud.Language.V1 {
 
     [global::System.Diagnostics.DebuggerNonUserCodeAttribute]
     public void MergeFrom(pb::CodedInputStream input) {
+    #if !GOOGLE_PROTOBUF_REFSTRUCT_COMPATIBILITY_MODE
+      input.ReadRawMessage(this);
+    #else
       uint tag;
       while ((tag = input.ReadTag()) != 0) {
         switch(tag) {
@@ -4740,14 +5764,44 @@ namespace Google.Cloud.Language.V1 {
           }
         }
       }
+    #endif
     }
+
+    #if !GOOGLE_PROTOBUF_REFSTRUCT_COMPATIBILITY_MODE
+    [global::System.Diagnostics.DebuggerNonUserCodeAttribute]
+    void pb::IBufferMessage.InternalMergeFrom(ref pb::ParseContext input) {
+      uint tag;
+      while ((tag = input.ReadTag()) != 0) {
+        switch(tag) {
+          default:
+            _unknownFields = pb::UnknownFieldSet.MergeFieldFrom(_unknownFields, ref input);
+            break;
+          case 10: {
+            if (document_ == null) {
+              Document = new global::Google.Cloud.Language.V1.Document();
+            }
+            input.ReadMessage(Document);
+            break;
+          }
+          case 16: {
+            EncodingType = (global::Google.Cloud.Language.V1.EncodingType) input.ReadEnum();
+            break;
+          }
+        }
+      }
+    }
+    #endif
 
   }
 
   /// <summary>
   /// The syntax analysis response message.
   /// </summary>
-  public sealed partial class AnalyzeSyntaxResponse : pb::IMessage<AnalyzeSyntaxResponse> {
+  public sealed partial class AnalyzeSyntaxResponse : pb::IMessage<AnalyzeSyntaxResponse>
+  #if !GOOGLE_PROTOBUF_REFSTRUCT_COMPATIBILITY_MODE
+      , pb::IBufferMessage
+  #endif
+  {
     private static readonly pb::MessageParser<AnalyzeSyntaxResponse> _parser = new pb::MessageParser<AnalyzeSyntaxResponse>(() => new AnalyzeSyntaxResponse());
     private pb::UnknownFieldSet _unknownFields;
     [global::System.Diagnostics.DebuggerNonUserCodeAttribute]
@@ -4863,6 +5917,9 @@ namespace Google.Cloud.Language.V1 {
 
     [global::System.Diagnostics.DebuggerNonUserCodeAttribute]
     public void WriteTo(pb::CodedOutputStream output) {
+    #if !GOOGLE_PROTOBUF_REFSTRUCT_COMPATIBILITY_MODE
+      output.WriteRawMessage(this);
+    #else
       sentences_.WriteTo(output, _repeated_sentences_codec);
       tokens_.WriteTo(output, _repeated_tokens_codec);
       if (Language.Length != 0) {
@@ -4872,7 +5929,23 @@ namespace Google.Cloud.Language.V1 {
       if (_unknownFields != null) {
         _unknownFields.WriteTo(output);
       }
+    #endif
     }
+
+    #if !GOOGLE_PROTOBUF_REFSTRUCT_COMPATIBILITY_MODE
+    [global::System.Diagnostics.DebuggerNonUserCodeAttribute]
+    void pb::IBufferMessage.InternalWriteTo(ref pb::WriteContext output) {
+      sentences_.WriteTo(ref output, _repeated_sentences_codec);
+      tokens_.WriteTo(ref output, _repeated_tokens_codec);
+      if (Language.Length != 0) {
+        output.WriteRawTag(26);
+        output.WriteString(Language);
+      }
+      if (_unknownFields != null) {
+        _unknownFields.WriteTo(ref output);
+      }
+    }
+    #endif
 
     [global::System.Diagnostics.DebuggerNonUserCodeAttribute]
     public int CalculateSize() {
@@ -4903,6 +5976,9 @@ namespace Google.Cloud.Language.V1 {
 
     [global::System.Diagnostics.DebuggerNonUserCodeAttribute]
     public void MergeFrom(pb::CodedInputStream input) {
+    #if !GOOGLE_PROTOBUF_REFSTRUCT_COMPATIBILITY_MODE
+      input.ReadRawMessage(this);
+    #else
       uint tag;
       while ((tag = input.ReadTag()) != 0) {
         switch(tag) {
@@ -4923,14 +5999,45 @@ namespace Google.Cloud.Language.V1 {
           }
         }
       }
+    #endif
     }
+
+    #if !GOOGLE_PROTOBUF_REFSTRUCT_COMPATIBILITY_MODE
+    [global::System.Diagnostics.DebuggerNonUserCodeAttribute]
+    void pb::IBufferMessage.InternalMergeFrom(ref pb::ParseContext input) {
+      uint tag;
+      while ((tag = input.ReadTag()) != 0) {
+        switch(tag) {
+          default:
+            _unknownFields = pb::UnknownFieldSet.MergeFieldFrom(_unknownFields, ref input);
+            break;
+          case 10: {
+            sentences_.AddEntriesFrom(ref input, _repeated_sentences_codec);
+            break;
+          }
+          case 18: {
+            tokens_.AddEntriesFrom(ref input, _repeated_tokens_codec);
+            break;
+          }
+          case 26: {
+            Language = input.ReadString();
+            break;
+          }
+        }
+      }
+    }
+    #endif
 
   }
 
   /// <summary>
   /// The document classification request message.
   /// </summary>
-  public sealed partial class ClassifyTextRequest : pb::IMessage<ClassifyTextRequest> {
+  public sealed partial class ClassifyTextRequest : pb::IMessage<ClassifyTextRequest>
+  #if !GOOGLE_PROTOBUF_REFSTRUCT_COMPATIBILITY_MODE
+      , pb::IBufferMessage
+  #endif
+  {
     private static readonly pb::MessageParser<ClassifyTextRequest> _parser = new pb::MessageParser<ClassifyTextRequest>(() => new ClassifyTextRequest());
     private pb::UnknownFieldSet _unknownFields;
     [global::System.Diagnostics.DebuggerNonUserCodeAttribute]
@@ -5012,6 +6119,9 @@ namespace Google.Cloud.Language.V1 {
 
     [global::System.Diagnostics.DebuggerNonUserCodeAttribute]
     public void WriteTo(pb::CodedOutputStream output) {
+    #if !GOOGLE_PROTOBUF_REFSTRUCT_COMPATIBILITY_MODE
+      output.WriteRawMessage(this);
+    #else
       if (document_ != null) {
         output.WriteRawTag(10);
         output.WriteMessage(Document);
@@ -5019,7 +6129,21 @@ namespace Google.Cloud.Language.V1 {
       if (_unknownFields != null) {
         _unknownFields.WriteTo(output);
       }
+    #endif
     }
+
+    #if !GOOGLE_PROTOBUF_REFSTRUCT_COMPATIBILITY_MODE
+    [global::System.Diagnostics.DebuggerNonUserCodeAttribute]
+    void pb::IBufferMessage.InternalWriteTo(ref pb::WriteContext output) {
+      if (document_ != null) {
+        output.WriteRawTag(10);
+        output.WriteMessage(Document);
+      }
+      if (_unknownFields != null) {
+        _unknownFields.WriteTo(ref output);
+      }
+    }
+    #endif
 
     [global::System.Diagnostics.DebuggerNonUserCodeAttribute]
     public int CalculateSize() {
@@ -5049,6 +6173,9 @@ namespace Google.Cloud.Language.V1 {
 
     [global::System.Diagnostics.DebuggerNonUserCodeAttribute]
     public void MergeFrom(pb::CodedInputStream input) {
+    #if !GOOGLE_PROTOBUF_REFSTRUCT_COMPATIBILITY_MODE
+      input.ReadRawMessage(this);
+    #else
       uint tag;
       while ((tag = input.ReadTag()) != 0) {
         switch(tag) {
@@ -5064,14 +6191,40 @@ namespace Google.Cloud.Language.V1 {
           }
         }
       }
+    #endif
     }
+
+    #if !GOOGLE_PROTOBUF_REFSTRUCT_COMPATIBILITY_MODE
+    [global::System.Diagnostics.DebuggerNonUserCodeAttribute]
+    void pb::IBufferMessage.InternalMergeFrom(ref pb::ParseContext input) {
+      uint tag;
+      while ((tag = input.ReadTag()) != 0) {
+        switch(tag) {
+          default:
+            _unknownFields = pb::UnknownFieldSet.MergeFieldFrom(_unknownFields, ref input);
+            break;
+          case 10: {
+            if (document_ == null) {
+              Document = new global::Google.Cloud.Language.V1.Document();
+            }
+            input.ReadMessage(Document);
+            break;
+          }
+        }
+      }
+    }
+    #endif
 
   }
 
   /// <summary>
   /// The document classification response message.
   /// </summary>
-  public sealed partial class ClassifyTextResponse : pb::IMessage<ClassifyTextResponse> {
+  public sealed partial class ClassifyTextResponse : pb::IMessage<ClassifyTextResponse>
+  #if !GOOGLE_PROTOBUF_REFSTRUCT_COMPATIBILITY_MODE
+      , pb::IBufferMessage
+  #endif
+  {
     private static readonly pb::MessageParser<ClassifyTextResponse> _parser = new pb::MessageParser<ClassifyTextResponse>(() => new ClassifyTextResponse());
     private pb::UnknownFieldSet _unknownFields;
     [global::System.Diagnostics.DebuggerNonUserCodeAttribute]
@@ -5152,11 +6305,25 @@ namespace Google.Cloud.Language.V1 {
 
     [global::System.Diagnostics.DebuggerNonUserCodeAttribute]
     public void WriteTo(pb::CodedOutputStream output) {
+    #if !GOOGLE_PROTOBUF_REFSTRUCT_COMPATIBILITY_MODE
+      output.WriteRawMessage(this);
+    #else
       categories_.WriteTo(output, _repeated_categories_codec);
       if (_unknownFields != null) {
         _unknownFields.WriteTo(output);
       }
+    #endif
     }
+
+    #if !GOOGLE_PROTOBUF_REFSTRUCT_COMPATIBILITY_MODE
+    [global::System.Diagnostics.DebuggerNonUserCodeAttribute]
+    void pb::IBufferMessage.InternalWriteTo(ref pb::WriteContext output) {
+      categories_.WriteTo(ref output, _repeated_categories_codec);
+      if (_unknownFields != null) {
+        _unknownFields.WriteTo(ref output);
+      }
+    }
+    #endif
 
     [global::System.Diagnostics.DebuggerNonUserCodeAttribute]
     public int CalculateSize() {
@@ -5179,6 +6346,9 @@ namespace Google.Cloud.Language.V1 {
 
     [global::System.Diagnostics.DebuggerNonUserCodeAttribute]
     public void MergeFrom(pb::CodedInputStream input) {
+    #if !GOOGLE_PROTOBUF_REFSTRUCT_COMPATIBILITY_MODE
+      input.ReadRawMessage(this);
+    #else
       uint tag;
       while ((tag = input.ReadTag()) != 0) {
         switch(tag) {
@@ -5191,7 +6361,26 @@ namespace Google.Cloud.Language.V1 {
           }
         }
       }
+    #endif
     }
+
+    #if !GOOGLE_PROTOBUF_REFSTRUCT_COMPATIBILITY_MODE
+    [global::System.Diagnostics.DebuggerNonUserCodeAttribute]
+    void pb::IBufferMessage.InternalMergeFrom(ref pb::ParseContext input) {
+      uint tag;
+      while ((tag = input.ReadTag()) != 0) {
+        switch(tag) {
+          default:
+            _unknownFields = pb::UnknownFieldSet.MergeFieldFrom(_unknownFields, ref input);
+            break;
+          case 10: {
+            categories_.AddEntriesFrom(ref input, _repeated_categories_codec);
+            break;
+          }
+        }
+      }
+    }
+    #endif
 
   }
 
@@ -5199,7 +6388,11 @@ namespace Google.Cloud.Language.V1 {
   /// The request message for the text annotation API, which can perform multiple
   /// analysis types (sentiment, entities, and syntax) in one call.
   /// </summary>
-  public sealed partial class AnnotateTextRequest : pb::IMessage<AnnotateTextRequest> {
+  public sealed partial class AnnotateTextRequest : pb::IMessage<AnnotateTextRequest>
+  #if !GOOGLE_PROTOBUF_REFSTRUCT_COMPATIBILITY_MODE
+      , pb::IBufferMessage
+  #endif
+  {
     private static readonly pb::MessageParser<AnnotateTextRequest> _parser = new pb::MessageParser<AnnotateTextRequest>(() => new AnnotateTextRequest());
     private pb::UnknownFieldSet _unknownFields;
     [global::System.Diagnostics.DebuggerNonUserCodeAttribute]
@@ -5265,7 +6458,7 @@ namespace Google.Cloud.Language.V1 {
 
     /// <summary>Field number for the "encoding_type" field.</summary>
     public const int EncodingTypeFieldNumber = 3;
-    private global::Google.Cloud.Language.V1.EncodingType encodingType_ = 0;
+    private global::Google.Cloud.Language.V1.EncodingType encodingType_ = global::Google.Cloud.Language.V1.EncodingType.None;
     /// <summary>
     /// The encoding type used by the API to calculate offsets.
     /// </summary>
@@ -5301,7 +6494,7 @@ namespace Google.Cloud.Language.V1 {
       int hash = 1;
       if (document_ != null) hash ^= Document.GetHashCode();
       if (features_ != null) hash ^= Features.GetHashCode();
-      if (EncodingType != 0) hash ^= EncodingType.GetHashCode();
+      if (EncodingType != global::Google.Cloud.Language.V1.EncodingType.None) hash ^= EncodingType.GetHashCode();
       if (_unknownFields != null) {
         hash ^= _unknownFields.GetHashCode();
       }
@@ -5315,6 +6508,9 @@ namespace Google.Cloud.Language.V1 {
 
     [global::System.Diagnostics.DebuggerNonUserCodeAttribute]
     public void WriteTo(pb::CodedOutputStream output) {
+    #if !GOOGLE_PROTOBUF_REFSTRUCT_COMPATIBILITY_MODE
+      output.WriteRawMessage(this);
+    #else
       if (document_ != null) {
         output.WriteRawTag(10);
         output.WriteMessage(Document);
@@ -5323,14 +6519,36 @@ namespace Google.Cloud.Language.V1 {
         output.WriteRawTag(18);
         output.WriteMessage(Features);
       }
-      if (EncodingType != 0) {
+      if (EncodingType != global::Google.Cloud.Language.V1.EncodingType.None) {
         output.WriteRawTag(24);
         output.WriteEnum((int) EncodingType);
       }
       if (_unknownFields != null) {
         _unknownFields.WriteTo(output);
       }
+    #endif
     }
+
+    #if !GOOGLE_PROTOBUF_REFSTRUCT_COMPATIBILITY_MODE
+    [global::System.Diagnostics.DebuggerNonUserCodeAttribute]
+    void pb::IBufferMessage.InternalWriteTo(ref pb::WriteContext output) {
+      if (document_ != null) {
+        output.WriteRawTag(10);
+        output.WriteMessage(Document);
+      }
+      if (features_ != null) {
+        output.WriteRawTag(18);
+        output.WriteMessage(Features);
+      }
+      if (EncodingType != global::Google.Cloud.Language.V1.EncodingType.None) {
+        output.WriteRawTag(24);
+        output.WriteEnum((int) EncodingType);
+      }
+      if (_unknownFields != null) {
+        _unknownFields.WriteTo(ref output);
+      }
+    }
+    #endif
 
     [global::System.Diagnostics.DebuggerNonUserCodeAttribute]
     public int CalculateSize() {
@@ -5341,7 +6559,7 @@ namespace Google.Cloud.Language.V1 {
       if (features_ != null) {
         size += 1 + pb::CodedOutputStream.ComputeMessageSize(Features);
       }
-      if (EncodingType != 0) {
+      if (EncodingType != global::Google.Cloud.Language.V1.EncodingType.None) {
         size += 1 + pb::CodedOutputStream.ComputeEnumSize((int) EncodingType);
       }
       if (_unknownFields != null) {
@@ -5367,7 +6585,7 @@ namespace Google.Cloud.Language.V1 {
         }
         Features.MergeFrom(other.Features);
       }
-      if (other.EncodingType != 0) {
+      if (other.EncodingType != global::Google.Cloud.Language.V1.EncodingType.None) {
         EncodingType = other.EncodingType;
       }
       _unknownFields = pb::UnknownFieldSet.MergeFrom(_unknownFields, other._unknownFields);
@@ -5375,6 +6593,9 @@ namespace Google.Cloud.Language.V1 {
 
     [global::System.Diagnostics.DebuggerNonUserCodeAttribute]
     public void MergeFrom(pb::CodedInputStream input) {
+    #if !GOOGLE_PROTOBUF_REFSTRUCT_COMPATIBILITY_MODE
+      input.ReadRawMessage(this);
+    #else
       uint tag;
       while ((tag = input.ReadTag()) != 0) {
         switch(tag) {
@@ -5401,7 +6622,40 @@ namespace Google.Cloud.Language.V1 {
           }
         }
       }
+    #endif
     }
+
+    #if !GOOGLE_PROTOBUF_REFSTRUCT_COMPATIBILITY_MODE
+    [global::System.Diagnostics.DebuggerNonUserCodeAttribute]
+    void pb::IBufferMessage.InternalMergeFrom(ref pb::ParseContext input) {
+      uint tag;
+      while ((tag = input.ReadTag()) != 0) {
+        switch(tag) {
+          default:
+            _unknownFields = pb::UnknownFieldSet.MergeFieldFrom(_unknownFields, ref input);
+            break;
+          case 10: {
+            if (document_ == null) {
+              Document = new global::Google.Cloud.Language.V1.Document();
+            }
+            input.ReadMessage(Document);
+            break;
+          }
+          case 18: {
+            if (features_ == null) {
+              Features = new global::Google.Cloud.Language.V1.AnnotateTextRequest.Types.Features();
+            }
+            input.ReadMessage(Features);
+            break;
+          }
+          case 24: {
+            EncodingType = (global::Google.Cloud.Language.V1.EncodingType) input.ReadEnum();
+            break;
+          }
+        }
+      }
+    }
+    #endif
 
     #region Nested types
     /// <summary>Container for nested types declared in the AnnotateTextRequest message type.</summary>
@@ -5411,7 +6665,11 @@ namespace Google.Cloud.Language.V1 {
       /// All available features for sentiment, syntax, and semantic analysis.
       /// Setting each one to true will enable that specific analysis for the input.
       /// </summary>
-      public sealed partial class Features : pb::IMessage<Features> {
+      public sealed partial class Features : pb::IMessage<Features>
+      #if !GOOGLE_PROTOBUF_REFSTRUCT_COMPATIBILITY_MODE
+          , pb::IBufferMessage
+      #endif
+      {
         private static readonly pb::MessageParser<Features> _parser = new pb::MessageParser<Features>(() => new Features());
         private pb::UnknownFieldSet _unknownFields;
         [global::System.Diagnostics.DebuggerNonUserCodeAttribute]
@@ -5561,6 +6819,9 @@ namespace Google.Cloud.Language.V1 {
 
         [global::System.Diagnostics.DebuggerNonUserCodeAttribute]
         public void WriteTo(pb::CodedOutputStream output) {
+        #if !GOOGLE_PROTOBUF_REFSTRUCT_COMPATIBILITY_MODE
+          output.WriteRawMessage(this);
+        #else
           if (ExtractSyntax != false) {
             output.WriteRawTag(8);
             output.WriteBool(ExtractSyntax);
@@ -5584,7 +6845,37 @@ namespace Google.Cloud.Language.V1 {
           if (_unknownFields != null) {
             _unknownFields.WriteTo(output);
           }
+        #endif
         }
+
+        #if !GOOGLE_PROTOBUF_REFSTRUCT_COMPATIBILITY_MODE
+        [global::System.Diagnostics.DebuggerNonUserCodeAttribute]
+        void pb::IBufferMessage.InternalWriteTo(ref pb::WriteContext output) {
+          if (ExtractSyntax != false) {
+            output.WriteRawTag(8);
+            output.WriteBool(ExtractSyntax);
+          }
+          if (ExtractEntities != false) {
+            output.WriteRawTag(16);
+            output.WriteBool(ExtractEntities);
+          }
+          if (ExtractDocumentSentiment != false) {
+            output.WriteRawTag(24);
+            output.WriteBool(ExtractDocumentSentiment);
+          }
+          if (ExtractEntitySentiment != false) {
+            output.WriteRawTag(32);
+            output.WriteBool(ExtractEntitySentiment);
+          }
+          if (ClassifyText != false) {
+            output.WriteRawTag(48);
+            output.WriteBool(ClassifyText);
+          }
+          if (_unknownFields != null) {
+            _unknownFields.WriteTo(ref output);
+          }
+        }
+        #endif
 
         [global::System.Diagnostics.DebuggerNonUserCodeAttribute]
         public int CalculateSize() {
@@ -5635,6 +6926,9 @@ namespace Google.Cloud.Language.V1 {
 
         [global::System.Diagnostics.DebuggerNonUserCodeAttribute]
         public void MergeFrom(pb::CodedInputStream input) {
+        #if !GOOGLE_PROTOBUF_REFSTRUCT_COMPATIBILITY_MODE
+          input.ReadRawMessage(this);
+        #else
           uint tag;
           while ((tag = input.ReadTag()) != 0) {
             switch(tag) {
@@ -5663,7 +6957,42 @@ namespace Google.Cloud.Language.V1 {
               }
             }
           }
+        #endif
         }
+
+        #if !GOOGLE_PROTOBUF_REFSTRUCT_COMPATIBILITY_MODE
+        [global::System.Diagnostics.DebuggerNonUserCodeAttribute]
+        void pb::IBufferMessage.InternalMergeFrom(ref pb::ParseContext input) {
+          uint tag;
+          while ((tag = input.ReadTag()) != 0) {
+            switch(tag) {
+              default:
+                _unknownFields = pb::UnknownFieldSet.MergeFieldFrom(_unknownFields, ref input);
+                break;
+              case 8: {
+                ExtractSyntax = input.ReadBool();
+                break;
+              }
+              case 16: {
+                ExtractEntities = input.ReadBool();
+                break;
+              }
+              case 24: {
+                ExtractDocumentSentiment = input.ReadBool();
+                break;
+              }
+              case 32: {
+                ExtractEntitySentiment = input.ReadBool();
+                break;
+              }
+              case 48: {
+                ClassifyText = input.ReadBool();
+                break;
+              }
+            }
+          }
+        }
+        #endif
 
       }
 
@@ -5675,7 +7004,11 @@ namespace Google.Cloud.Language.V1 {
   /// <summary>
   /// The text annotations response message.
   /// </summary>
-  public sealed partial class AnnotateTextResponse : pb::IMessage<AnnotateTextResponse> {
+  public sealed partial class AnnotateTextResponse : pb::IMessage<AnnotateTextResponse>
+  #if !GOOGLE_PROTOBUF_REFSTRUCT_COMPATIBILITY_MODE
+      , pb::IBufferMessage
+  #endif
+  {
     private static readonly pb::MessageParser<AnnotateTextResponse> _parser = new pb::MessageParser<AnnotateTextResponse>(() => new AnnotateTextResponse());
     private pb::UnknownFieldSet _unknownFields;
     [global::System.Diagnostics.DebuggerNonUserCodeAttribute]
@@ -5846,6 +7179,9 @@ namespace Google.Cloud.Language.V1 {
 
     [global::System.Diagnostics.DebuggerNonUserCodeAttribute]
     public void WriteTo(pb::CodedOutputStream output) {
+    #if !GOOGLE_PROTOBUF_REFSTRUCT_COMPATIBILITY_MODE
+      output.WriteRawMessage(this);
+    #else
       sentences_.WriteTo(output, _repeated_sentences_codec);
       tokens_.WriteTo(output, _repeated_tokens_codec);
       entities_.WriteTo(output, _repeated_entities_codec);
@@ -5861,7 +7197,29 @@ namespace Google.Cloud.Language.V1 {
       if (_unknownFields != null) {
         _unknownFields.WriteTo(output);
       }
+    #endif
     }
+
+    #if !GOOGLE_PROTOBUF_REFSTRUCT_COMPATIBILITY_MODE
+    [global::System.Diagnostics.DebuggerNonUserCodeAttribute]
+    void pb::IBufferMessage.InternalWriteTo(ref pb::WriteContext output) {
+      sentences_.WriteTo(ref output, _repeated_sentences_codec);
+      tokens_.WriteTo(ref output, _repeated_tokens_codec);
+      entities_.WriteTo(ref output, _repeated_entities_codec);
+      if (documentSentiment_ != null) {
+        output.WriteRawTag(34);
+        output.WriteMessage(DocumentSentiment);
+      }
+      if (Language.Length != 0) {
+        output.WriteRawTag(42);
+        output.WriteString(Language);
+      }
+      categories_.WriteTo(ref output, _repeated_categories_codec);
+      if (_unknownFields != null) {
+        _unknownFields.WriteTo(ref output);
+      }
+    }
+    #endif
 
     [global::System.Diagnostics.DebuggerNonUserCodeAttribute]
     public int CalculateSize() {
@@ -5905,6 +7263,9 @@ namespace Google.Cloud.Language.V1 {
 
     [global::System.Diagnostics.DebuggerNonUserCodeAttribute]
     public void MergeFrom(pb::CodedInputStream input) {
+    #if !GOOGLE_PROTOBUF_REFSTRUCT_COMPATIBILITY_MODE
+      input.ReadRawMessage(this);
+    #else
       uint tag;
       while ((tag = input.ReadTag()) != 0) {
         switch(tag) {
@@ -5940,7 +7301,49 @@ namespace Google.Cloud.Language.V1 {
           }
         }
       }
+    #endif
     }
+
+    #if !GOOGLE_PROTOBUF_REFSTRUCT_COMPATIBILITY_MODE
+    [global::System.Diagnostics.DebuggerNonUserCodeAttribute]
+    void pb::IBufferMessage.InternalMergeFrom(ref pb::ParseContext input) {
+      uint tag;
+      while ((tag = input.ReadTag()) != 0) {
+        switch(tag) {
+          default:
+            _unknownFields = pb::UnknownFieldSet.MergeFieldFrom(_unknownFields, ref input);
+            break;
+          case 10: {
+            sentences_.AddEntriesFrom(ref input, _repeated_sentences_codec);
+            break;
+          }
+          case 18: {
+            tokens_.AddEntriesFrom(ref input, _repeated_tokens_codec);
+            break;
+          }
+          case 26: {
+            entities_.AddEntriesFrom(ref input, _repeated_entities_codec);
+            break;
+          }
+          case 34: {
+            if (documentSentiment_ == null) {
+              DocumentSentiment = new global::Google.Cloud.Language.V1.Sentiment();
+            }
+            input.ReadMessage(DocumentSentiment);
+            break;
+          }
+          case 42: {
+            Language = input.ReadString();
+            break;
+          }
+          case 50: {
+            categories_.AddEntriesFrom(ref input, _repeated_categories_codec);
+            break;
+          }
+        }
+      }
+    }
+    #endif
 
   }
 

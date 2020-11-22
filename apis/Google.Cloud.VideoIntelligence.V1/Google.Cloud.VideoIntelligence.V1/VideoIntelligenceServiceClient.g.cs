@@ -1,4 +1,4 @@
-// Copyright 2019 Google LLC
+// Copyright 2020 Google LLC
 //
 // Licensed under the Apache License, Version 2.0 (the "License");
 // you may not use this file except in compliance with the License.
@@ -16,6 +16,7 @@
 
 using gax = Google.Api.Gax;
 using gaxgrpc = Google.Api.Gax.Grpc;
+using gaxgrpccore = Google.Api.Gax.Grpc.GrpcCore;
 using lro = Google.LongRunning;
 using proto = Google.Protobuf;
 using grpccore = Grpc.Core;
@@ -62,13 +63,11 @@ namespace Google.Cloud.VideoIntelligence.V1
         /// <item><description>Initial retry delay: 1000 milliseconds.</description></item>
         /// <item><description>Retry delay multiplier: 2.5</description></item>
         /// <item><description>Retry maximum delay: 120000 milliseconds.</description></item>
-        /// <item><description>Initial timeout: 600000 milliseconds.</description></item>
-        /// <item><description>Timeout multiplier: 1</description></item>
-        /// <item><description>Timeout maximum delay: 600000 milliseconds.</description></item>
-        /// <item><description>Total timeout: 600 seconds.</description></item>
+        /// <item><description>Maximum attempts: Unlimited</description></item>
+        /// <item><description>Timeout: 600 seconds.</description></item>
         /// </list>
         /// </remarks>
-        public gaxgrpc::CallSettings AnnotateVideoSettings { get; set; } = gaxgrpc::CallSettings.FromCallTiming(gaxgrpc::CallTiming.FromRetry(new gaxgrpc::RetrySettings(retryBackoff: new gaxgrpc::BackoffSettings(delay: sys::TimeSpan.FromMilliseconds(1000), maxDelay: sys::TimeSpan.FromMilliseconds(120000), delayMultiplier: 2.5), timeoutBackoff: new gaxgrpc::BackoffSettings(delay: sys::TimeSpan.FromMilliseconds(600000), maxDelay: sys::TimeSpan.FromMilliseconds(600000), delayMultiplier: 1), totalExpiration: gax::Expiration.FromTimeout(sys::TimeSpan.FromMilliseconds(600000)), retryFilter: gaxgrpc::RetrySettings.FilterForStatusCodes(grpccore::StatusCode.Unavailable, grpccore::StatusCode.DeadlineExceeded))));
+        public gaxgrpc::CallSettings AnnotateVideoSettings { get; set; } = gaxgrpc::CallSettingsExtensions.WithRetry(gaxgrpc::CallSettings.FromExpiration(gax::Expiration.FromTimeout(sys::TimeSpan.FromMilliseconds(600000))), gaxgrpc::RetrySettings.FromExponentialBackoff(maxAttempts: 2147483647, initialBackoff: sys::TimeSpan.FromMilliseconds(1000), maxBackoff: sys::TimeSpan.FromMilliseconds(120000), backoffMultiplier: 2.5, retryFilter: gaxgrpc::RetrySettings.FilterForStatusCodes(grpccore::StatusCode.Unavailable, grpccore::StatusCode.DeadlineExceeded)));
 
         /// <summary>
         /// Long Running Operation settings for calls to <c>VideoIntelligenceServiceClient.AnnotateVideo</c> and
@@ -102,40 +101,66 @@ namespace Google.Cloud.VideoIntelligence.V1
         /// <summary>The settings to use for RPCs, or <c>null</c> for the default settings.</summary>
         public VideoIntelligenceServiceSettings Settings { get; set; }
 
-        /// <inheritdoc/>
+        partial void InterceptBuild(ref VideoIntelligenceServiceClient client);
+
+        partial void InterceptBuildAsync(st::CancellationToken cancellationToken, ref stt::Task<VideoIntelligenceServiceClient> task);
+
+        /// <summary>Builds the resulting client.</summary>
         public override VideoIntelligenceServiceClient Build()
+        {
+            VideoIntelligenceServiceClient client = null;
+            InterceptBuild(ref client);
+            return client ?? BuildImpl();
+        }
+
+        /// <summary>Builds the resulting client asynchronously.</summary>
+        public override stt::Task<VideoIntelligenceServiceClient> BuildAsync(st::CancellationToken cancellationToken = default)
+        {
+            stt::Task<VideoIntelligenceServiceClient> task = null;
+            InterceptBuildAsync(cancellationToken, ref task);
+            return task ?? BuildAsyncImpl(cancellationToken);
+        }
+
+        private VideoIntelligenceServiceClient BuildImpl()
         {
             Validate();
             grpccore::CallInvoker callInvoker = CreateCallInvoker();
             return VideoIntelligenceServiceClient.Create(callInvoker, Settings);
         }
 
-        /// <inheritdoc/>
-        public override async stt::Task<VideoIntelligenceServiceClient> BuildAsync(st::CancellationToken cancellationToken = default)
+        private async stt::Task<VideoIntelligenceServiceClient> BuildAsyncImpl(st::CancellationToken cancellationToken)
         {
             Validate();
             grpccore::CallInvoker callInvoker = await CreateCallInvokerAsync(cancellationToken).ConfigureAwait(false);
             return VideoIntelligenceServiceClient.Create(callInvoker, Settings);
         }
 
-        /// <inheritdoc/>
-        protected override gaxgrpc::ServiceEndpoint GetDefaultEndpoint() => VideoIntelligenceServiceClient.DefaultEndpoint;
+        /// <summary>Returns the endpoint for this builder type, used if no endpoint is otherwise specified.</summary>
+        protected override string GetDefaultEndpoint() => VideoIntelligenceServiceClient.DefaultEndpoint;
 
-        /// <inheritdoc/>
+        /// <summary>
+        /// Returns the default scopes for this builder type, used if no scopes are otherwise specified.
+        /// </summary>
         protected override scg::IReadOnlyList<string> GetDefaultScopes() => VideoIntelligenceServiceClient.DefaultScopes;
 
-        /// <inheritdoc/>
+        /// <summary>Returns the channel pool to use when no other options are specified.</summary>
         protected override gaxgrpc::ChannelPool GetChannelPool() => VideoIntelligenceServiceClient.ChannelPool;
+
+        /// <summary>Returns the default <see cref="gaxgrpc::GrpcAdapter"/>to use if not otherwise specified.</summary>
+        protected override gaxgrpc::GrpcAdapter DefaultGrpcAdapter => gaxgrpccore::GrpcCoreAdapter.Instance;
     }
 
     /// <summary>VideoIntelligenceService client wrapper, for convenient use.</summary>
+    /// <remarks>
+    /// Service that implements the Video Intelligence API.
+    /// </remarks>
     public abstract partial class VideoIntelligenceServiceClient
     {
         /// <summary>
         /// The default endpoint for the VideoIntelligenceService service, which is a host of
         /// "videointelligence.googleapis.com" and a port of 443.
         /// </summary>
-        public static gaxgrpc::ServiceEndpoint DefaultEndpoint { get; } = new gaxgrpc::ServiceEndpoint("videointelligence.googleapis.com", 443);
+        public static string DefaultEndpoint { get; } = "videointelligence.googleapis.com:443";
 
         /// <summary>The default VideoIntelligenceService scopes.</summary>
         /// <remarks>
@@ -152,97 +177,24 @@ namespace Google.Cloud.VideoIntelligence.V1
         internal static gaxgrpc::ChannelPool ChannelPool { get; } = new gaxgrpc::ChannelPool(DefaultScopes);
 
         /// <summary>
-        /// Asynchronously creates a <see cref="VideoIntelligenceServiceClient"/>, applying defaults for all unspecified
-        /// settings, and creating a channel connecting to the given endpoint with application default credentials where
-        /// necessary. See the example for how to use custom credentials.
+        /// Asynchronously creates a <see cref="VideoIntelligenceServiceClient"/> using the default credentials,
+        /// endpoint and settings. To specify custom credentials or other settings, use
+        /// <see cref="VideoIntelligenceServiceClientBuilder"/>.
         /// </summary>
-        /// <example>
-        /// This sample shows how to create a client using default credentials:
-        /// <code>
-        /// using Google.Cloud.Vision.V1;
-        /// ...
-        /// // When running on Google Cloud Platform this will use the project Compute Credential.
-        /// // Or set the GOOGLE_APPLICATION_CREDENTIALS environment variable to the path of a JSON
-        /// // credential file to use that credential.
-        /// ImageAnnotatorClient client = await ImageAnnotatorClient.CreateAsync();
-        /// </code>
-        /// This sample shows how to create a client using credentials loaded from a JSON file:
-        /// <code>
-        /// using Google.Cloud.Vision.V1;
-        /// using Google.Apis.Auth.OAuth2;
-        /// using Grpc.Auth;
-        /// using Grpc.Core;
-        /// ...
-        /// GoogleCredential cred = GoogleCredential.FromFile("/path/to/credentials.json");
-        /// Channel channel = new Channel(
-        ///     ImageAnnotatorClient.DefaultEndpoint.Host, ImageAnnotatorClient.DefaultEndpoint.Port, cred.ToChannelCredentials());
-        /// ImageAnnotatorClient client = ImageAnnotatorClient.Create(channel);
-        /// ...
-        /// // Shutdown the channel when it is no longer required.
-        /// await channel.ShutdownAsync();
-        /// </code>
-        /// </example>
-        /// <param name="endpoint">Optional <see cref="gaxgrpc::ServiceEndpoint"/>.</param>
-        /// <param name="settings">Optional <see cref="VideoIntelligenceServiceSettings"/>.</param>
+        /// <param name="cancellationToken">
+        /// The <see cref="st::CancellationToken"/> to use while creating the client.
+        /// </param>
         /// <returns>The task representing the created <see cref="VideoIntelligenceServiceClient"/>.</returns>
-        public static async stt::Task<VideoIntelligenceServiceClient> CreateAsync(gaxgrpc::ServiceEndpoint endpoint = null, VideoIntelligenceServiceSettings settings = null)
-        {
-            grpccore::Channel channel = await ChannelPool.GetChannelAsync(endpoint ?? DefaultEndpoint).ConfigureAwait(false);
-            return Create(channel, settings);
-        }
+        public static stt::Task<VideoIntelligenceServiceClient> CreateAsync(st::CancellationToken cancellationToken = default) =>
+            new VideoIntelligenceServiceClientBuilder().BuildAsync(cancellationToken);
 
         /// <summary>
-        /// Synchronously creates a <see cref="VideoIntelligenceServiceClient"/>, applying defaults for all unspecified
-        /// settings, and creating a channel connecting to the given endpoint with application default credentials where
-        /// necessary. See the example for how to use custom credentials.
+        /// Synchronously creates a <see cref="VideoIntelligenceServiceClient"/> using the default credentials, endpoint
+        /// and settings. To specify custom credentials or other settings, use
+        /// <see cref="VideoIntelligenceServiceClientBuilder"/>.
         /// </summary>
-        /// <example>
-        /// This sample shows how to create a client using default credentials:
-        /// <code>
-        /// using Google.Cloud.Vision.V1;
-        /// ...
-        /// // When running on Google Cloud Platform this will use the project Compute Credential.
-        /// // Or set the GOOGLE_APPLICATION_CREDENTIALS environment variable to the path of a JSON
-        /// // credential file to use that credential.
-        /// ImageAnnotatorClient client = ImageAnnotatorClient.Create();
-        /// </code>
-        /// This sample shows how to create a client using credentials loaded from a JSON file:
-        /// <code>
-        /// using Google.Cloud.Vision.V1;
-        /// using Google.Apis.Auth.OAuth2;
-        /// using Grpc.Auth;
-        /// using Grpc.Core;
-        /// ...
-        /// GoogleCredential cred = GoogleCredential.FromFile("/path/to/credentials.json");
-        /// Channel channel = new Channel(
-        ///     ImageAnnotatorClient.DefaultEndpoint.Host, ImageAnnotatorClient.DefaultEndpoint.Port, cred.ToChannelCredentials());
-        /// ImageAnnotatorClient client = ImageAnnotatorClient.Create(channel);
-        /// ...
-        /// // Shutdown the channel when it is no longer required.
-        /// channel.ShutdownAsync().Wait();
-        /// </code>
-        /// </example>
-        /// <param name="endpoint">Optional <see cref="gaxgrpc::ServiceEndpoint"/>.</param>
-        /// <param name="settings">Optional <see cref="VideoIntelligenceServiceSettings"/>.</param>
         /// <returns>The created <see cref="VideoIntelligenceServiceClient"/>.</returns>
-        public static VideoIntelligenceServiceClient Create(gaxgrpc::ServiceEndpoint endpoint = null, VideoIntelligenceServiceSettings settings = null)
-        {
-            grpccore::Channel channel = ChannelPool.GetChannel(endpoint ?? DefaultEndpoint);
-            return Create(channel, settings);
-        }
-
-        /// <summary>
-        /// Creates a <see cref="VideoIntelligenceServiceClient"/> which uses the specified channel for remote
-        /// operations.
-        /// </summary>
-        /// <param name="channel">The <see cref="grpccore::Channel"/> for remote operations. Must not be null.</param>
-        /// <param name="settings">Optional <see cref="VideoIntelligenceServiceSettings"/>.</param>
-        /// <returns>The created <see cref="VideoIntelligenceServiceClient"/>.</returns>
-        public static VideoIntelligenceServiceClient Create(grpccore::Channel channel, VideoIntelligenceServiceSettings settings = null)
-        {
-            gax::GaxPreconditions.CheckNotNull(channel, nameof(channel));
-            return Create(new grpccore::DefaultCallInvoker(channel), settings);
-        }
+        public static VideoIntelligenceServiceClient Create() => new VideoIntelligenceServiceClientBuilder().Build();
 
         /// <summary>
         /// Creates a <see cref="VideoIntelligenceServiceClient"/> which uses the specified call invoker for remote
@@ -253,7 +205,7 @@ namespace Google.Cloud.VideoIntelligence.V1
         /// </param>
         /// <param name="settings">Optional <see cref="VideoIntelligenceServiceSettings"/>.</param>
         /// <returns>The created <see cref="VideoIntelligenceServiceClient"/>.</returns>
-        public static VideoIntelligenceServiceClient Create(grpccore::CallInvoker callInvoker, VideoIntelligenceServiceSettings settings = null)
+        internal static VideoIntelligenceServiceClient Create(grpccore::CallInvoker callInvoker, VideoIntelligenceServiceSettings settings = null)
         {
             gax::GaxPreconditions.CheckNotNull(callInvoker, nameof(callInvoker));
             grpcinter::Interceptor interceptor = settings?.Interceptor;
@@ -266,16 +218,14 @@ namespace Google.Cloud.VideoIntelligence.V1
         }
 
         /// <summary>
-        /// Shuts down any channels automatically created by
-        /// <see cref="Create(grpccore::CallInvoker,VideoIntelligenceServiceSettings)"/> and
-        /// <see cref="CreateAsync(gaxgrpc::ServiceEndpoint,VideoIntelligenceServiceSettings)"/>. Channels which weren't
-        /// automatically created are not affected.
+        /// Shuts down any channels automatically created by <see cref="Create()"/> and
+        /// <see cref="CreateAsync(st::CancellationToken)"/>. Channels which weren't automatically created are not
+        /// affected.
         /// </summary>
         /// <remarks>
-        /// After calling this method, further calls to
-        /// <see cref="Create(grpccore::CallInvoker,VideoIntelligenceServiceSettings)"/> and
-        /// <see cref="CreateAsync(gaxgrpc::ServiceEndpoint,VideoIntelligenceServiceSettings)"/> will create new
-        /// channels, which could in turn be shut down by another call to this method.
+        /// After calling this method, further calls to <see cref="Create()"/> and
+        /// <see cref="CreateAsync(st::CancellationToken)"/> will create new channels, which could in turn be shut down
+        /// by another call to this method.
         /// </remarks>
         /// <returns>A task representing the asynchronous shutdown operation.</returns>
         public static stt::Task ShutdownDefaultChannelsAsync() => ChannelPool.ShutdownChannelsAsync();
@@ -353,15 +303,16 @@ namespace Google.Cloud.VideoIntelligence.V1
         /// </summary>
         /// <param name="inputUri">
         /// Input video location. Currently, only
-        /// [Google Cloud Storage](https://cloud.google.com/storage/) URIs are
-        /// supported, which must be specified in the following format:
+        /// [Cloud Storage](https://cloud.google.com/storage/) URIs are
+        /// supported. URIs must be specified in the following format:
         /// `gs://bucket-id/object-id` (other URI formats return
-        /// [google.rpc.Code.INVALID_ARGUMENT][google.rpc.Code.INVALID_ARGUMENT]). For more information, see
-        /// [Request URIs](/storage/docs/reference-uris).
-        /// A video URI may include wildcards in `object-id`, and thus identify
-        /// multiple videos. Supported wildcards: '*' to match 0 or more characters;
+        /// [google.rpc.Code.INVALID_ARGUMENT][google.rpc.Code.INVALID_ARGUMENT]). For
+        /// more information, see [Request
+        /// URIs](https://cloud.google.com/storage/docs/request-endpoints). To identify
+        /// multiple videos, a video URI may include wildcards in the `object-id`.
+        /// Supported wildcards: '*' to match 0 or more characters;
         /// '?' to match 1 character. If unset, the input video should be embedded
-        /// in the request as `input_content`. If set, `input_content` should be unset.
+        /// in the request as `input_content`. If set, `input_content` must be unset.
         /// </param>
         /// <param name="features">
         /// Required. Requested video annotation features.
@@ -386,15 +337,16 @@ namespace Google.Cloud.VideoIntelligence.V1
         /// </summary>
         /// <param name="inputUri">
         /// Input video location. Currently, only
-        /// [Google Cloud Storage](https://cloud.google.com/storage/) URIs are
-        /// supported, which must be specified in the following format:
+        /// [Cloud Storage](https://cloud.google.com/storage/) URIs are
+        /// supported. URIs must be specified in the following format:
         /// `gs://bucket-id/object-id` (other URI formats return
-        /// [google.rpc.Code.INVALID_ARGUMENT][google.rpc.Code.INVALID_ARGUMENT]). For more information, see
-        /// [Request URIs](/storage/docs/reference-uris).
-        /// A video URI may include wildcards in `object-id`, and thus identify
-        /// multiple videos. Supported wildcards: '*' to match 0 or more characters;
+        /// [google.rpc.Code.INVALID_ARGUMENT][google.rpc.Code.INVALID_ARGUMENT]). For
+        /// more information, see [Request
+        /// URIs](https://cloud.google.com/storage/docs/request-endpoints). To identify
+        /// multiple videos, a video URI may include wildcards in the `object-id`.
+        /// Supported wildcards: '*' to match 0 or more characters;
         /// '?' to match 1 character. If unset, the input video should be embedded
-        /// in the request as `input_content`. If set, `input_content` should be unset.
+        /// in the request as `input_content`. If set, `input_content` must be unset.
         /// </param>
         /// <param name="features">
         /// Required. Requested video annotation features.
@@ -419,15 +371,16 @@ namespace Google.Cloud.VideoIntelligence.V1
         /// </summary>
         /// <param name="inputUri">
         /// Input video location. Currently, only
-        /// [Google Cloud Storage](https://cloud.google.com/storage/) URIs are
-        /// supported, which must be specified in the following format:
+        /// [Cloud Storage](https://cloud.google.com/storage/) URIs are
+        /// supported. URIs must be specified in the following format:
         /// `gs://bucket-id/object-id` (other URI formats return
-        /// [google.rpc.Code.INVALID_ARGUMENT][google.rpc.Code.INVALID_ARGUMENT]). For more information, see
-        /// [Request URIs](/storage/docs/reference-uris).
-        /// A video URI may include wildcards in `object-id`, and thus identify
-        /// multiple videos. Supported wildcards: '*' to match 0 or more characters;
+        /// [google.rpc.Code.INVALID_ARGUMENT][google.rpc.Code.INVALID_ARGUMENT]). For
+        /// more information, see [Request
+        /// URIs](https://cloud.google.com/storage/docs/request-endpoints). To identify
+        /// multiple videos, a video URI may include wildcards in the `object-id`.
+        /// Supported wildcards: '*' to match 0 or more characters;
         /// '?' to match 1 character. If unset, the input video should be embedded
-        /// in the request as `input_content`. If set, `input_content` should be unset.
+        /// in the request as `input_content`. If set, `input_content` must be unset.
         /// </param>
         /// <param name="features">
         /// Required. Requested video annotation features.
@@ -439,6 +392,9 @@ namespace Google.Cloud.VideoIntelligence.V1
     }
 
     /// <summary>VideoIntelligenceService client wrapper implementation, for convenient use.</summary>
+    /// <remarks>
+    /// Service that implements the Video Intelligence API.
+    /// </remarks>
     public sealed partial class VideoIntelligenceServiceClientImpl : VideoIntelligenceServiceClient
     {
         private readonly gaxgrpc::ApiCall<AnnotateVideoRequest, lro::Operation> _callAnnotateVideo;

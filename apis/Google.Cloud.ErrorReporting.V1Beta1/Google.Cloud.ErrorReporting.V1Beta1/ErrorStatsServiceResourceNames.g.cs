@@ -1,4 +1,4 @@
-// Copyright 2019 Google LLC
+// Copyright 2020 Google LLC
 //
 // Licensed under the Apache License, Version 2.0 (the "License");
 // you may not use this file except in compliance with the License.
@@ -25,7 +25,7 @@ namespace Google.Cloud.ErrorReporting.V1Beta1
         /// </summary>
         public gagr::ProjectName ProjectNameAsProjectName
         {
-            get => string.IsNullOrEmpty(ProjectName) ? null : gagr::ProjectName.Parse(ProjectName);
+            get => string.IsNullOrEmpty(ProjectName) ? null : gagr::ProjectName.Parse(ProjectName, allowUnparsed: true);
             set => ProjectName = value?.ToString() ?? "";
         }
     }
@@ -37,7 +37,7 @@ namespace Google.Cloud.ErrorReporting.V1Beta1
         /// </summary>
         public gagr::ProjectName ProjectNameAsProjectName
         {
-            get => string.IsNullOrEmpty(ProjectName) ? null : gagr::ProjectName.Parse(ProjectName);
+            get => string.IsNullOrEmpty(ProjectName) ? null : gagr::ProjectName.Parse(ProjectName, allowUnparsed: true);
             set => ProjectName = value?.ToString() ?? "";
         }
     }
@@ -49,7 +49,7 @@ namespace Google.Cloud.ErrorReporting.V1Beta1
         /// </summary>
         public gagr::ProjectName ProjectNameAsProjectName
         {
-            get => string.IsNullOrEmpty(ProjectName) ? null : gagr::ProjectName.Parse(ProjectName);
+            get => string.IsNullOrEmpty(ProjectName) ? null : gagr::ProjectName.Parse(ProjectName, allowUnparsed: true);
             set => ProjectName = value?.ToString() ?? "";
         }
     }

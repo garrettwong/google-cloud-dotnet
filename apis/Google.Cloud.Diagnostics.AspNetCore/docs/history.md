@@ -1,5 +1,53 @@
 # Version history
 
+# Version 4.2.0-beta02, released 2020-10-12
+
+- [Commit 1cd4ee6](https://github.com/googleapis/google-cloud-dotnet/commit/1cd4ee6): build: Removes ASP.NET Core unused dependencies from Diagnostics* packages. Towards [issue 4750](https://github.com/googleapis/google-cloud-dotnet/issues/4750).
+
+# Version 4.2.0-beta01, released 2020-09-29
+
+- [Commit 5710321](https://github.com/googleapis/google-cloud-dotnet/commit/5710321): feat: Adds GoogleTraceProvider to be used by Logging when Tracing is not configured. Closes [issue 5359](https://github.com/googleapis/google-cloud-dotnet/issues/5359).
+- [Commit f46b1c6](https://github.com/googleapis/google-cloud-dotnet/commit/f46b1c6): fix: Corrects Span ID format for adding to Log Entries. Fixes [issue 5358](https://github.com/googleapis/google-cloud-dotnet/issues/5358).
+- [Commit 924c503](https://github.com/googleapis/google-cloud-dotnet/commit/924c503): docs: Adds documentation about environments that limit background activities. Closes [issue 5275](https://github.com/googleapis/google-cloud-dotnet/issues/5275).
+- [Commit 7480149](https://github.com/googleapis/google-cloud-dotnet/commit/7480149): fix: Sets LogEntry.TraceSampled to true if tracing information is adding to the entry. Fixes [issue 5307](https://github.com/googleapis/google-cloud-dotnet/issues/5307).
+
+# Version 4.1.0, released 2020-08-18
+
+No changes compared with 4.1.0-beta01
+
+# Version 4.1.0-beta01, released 2020-08-03
+
+- [Commit 587cafd](https://github.com/googleapis/google-cloud-dotnet/commit/587cafd): Makes Tracing rate limiter treat overflow values as always/never trace.
+- [Commit b6dcc51](https://github.com/googleapis/google-cloud-dotnet/commit/b6dcc51):
+  - Adds external trace context support for log entries.
+  -   * Fixes [issue 5044](https://github.com/googleapis/google-cloud-dotnet/issues/5044)
+  - Stops explicitly looking at Google trace header for trace information to include in log entries.
+  -   * Looking at Google trace header for trace information can now be achieved by either:
+  -     * Activating the Diagnostics Tracing component of this library.
+  -     * Implementing an external trace provider to do so.
+- [Commit 20601d4](https://github.com/googleapis/google-cloud-dotnet/commit/20601d4):
+  - Associates logs to the correct trace/span if there is one.
+  -   * Fixes [issue 5190](https://github.com/googleapis/google-cloud-dotnet/issues/5190)
+- [Commit 1509482](https://github.com/googleapis/google-cloud-dotnet/commit/1509482): Fixes [issue 5028](https://github.com/googleapis/google-cloud-dotnet/issues/5028): Adds options to specify service context values for GoogleLogger.
+
+# Version 4.0.0, released 2020-03-18
+
+No API surface changes compared with 4.0.0-beta02, just dependency
+and implementation changes.
+
+# Version 4.0.0-beta02, released 2020-03-10
+
+- [Commit 5bc0cf5](https://github.com/googleapis/google-cloud-dotnet/commit/5bc0cf5): GoogleExceptionLogger accepts null HttpContext.
+
+# Version 4.0.0-beta01, released 2020-02-19
+
+This is the first prerelease targeting GAX v3. Please see the [breaking changes
+guide](https://googleapis.github.io/google-cloud-dotnet/docs/guides/breaking-gax2.html)
+for details of changes to both GAX and code generation.
+
+There are no direct API surface changes in *this* package, but the
+changes in dependencies can still cause breaking changes.
+
 # Version 3.0.0, released 2019-12-16
 
 This is the last version of this package to depend on GAX 2.x and

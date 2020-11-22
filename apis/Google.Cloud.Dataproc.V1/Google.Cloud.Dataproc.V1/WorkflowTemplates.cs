@@ -61,159 +61,162 @@ namespace Google.Cloud.Dataproc.V1 {
             "GAEgASgJQgPgQQESWQoOY2x1c3Rlcl9sYWJlbHMYAiADKAsyPC5nb29nbGUu",
             "Y2xvdWQuZGF0YXByb2MudjEuQ2x1c3RlclNlbGVjdG9yLkNsdXN0ZXJMYWJl",
             "bHNFbnRyeUID4EECGjQKEkNsdXN0ZXJMYWJlbHNFbnRyeRILCgNrZXkYASAB",
-            "KAkSDQoFdmFsdWUYAiABKAk6AjgBIucECgpPcmRlcmVkSm9iEhQKB3N0ZXBf",
-            "aWQYASABKAlCA+BBAhI5CgpoYWRvb3Bfam9iGAIgASgLMiMuZ29vZ2xlLmNs",
-            "b3VkLmRhdGFwcm9jLnYxLkhhZG9vcEpvYkgAEjcKCXNwYXJrX2pvYhgDIAEo",
-            "CzIiLmdvb2dsZS5jbG91ZC5kYXRhcHJvYy52MS5TcGFya0pvYkgAEjsKC3B5",
-            "c3Bhcmtfam9iGAQgASgLMiQuZ29vZ2xlLmNsb3VkLmRhdGFwcm9jLnYxLlB5",
-            "U3BhcmtKb2JIABI1CghoaXZlX2pvYhgFIAEoCzIhLmdvb2dsZS5jbG91ZC5k",
-            "YXRhcHJvYy52MS5IaXZlSm9iSAASMwoHcGlnX2pvYhgGIAEoCzIgLmdvb2ds",
-            "ZS5jbG91ZC5kYXRhcHJvYy52MS5QaWdKb2JIABI+Cg1zcGFya19zcWxfam9i",
+            "KAkSDQoFdmFsdWUYAiABKAk6AjgBIoYGCgpPcmRlcmVkSm9iEhQKB3N0ZXBf",
+            "aWQYASABKAlCA+BBAhI+CgpoYWRvb3Bfam9iGAIgASgLMiMuZ29vZ2xlLmNs",
+            "b3VkLmRhdGFwcm9jLnYxLkhhZG9vcEpvYkID4EEBSAASPAoJc3Bhcmtfam9i",
+            "GAMgASgLMiIuZ29vZ2xlLmNsb3VkLmRhdGFwcm9jLnYxLlNwYXJrSm9iQgPg",
+            "QQFIABJACgtweXNwYXJrX2pvYhgEIAEoCzIkLmdvb2dsZS5jbG91ZC5kYXRh",
+            "cHJvYy52MS5QeVNwYXJrSm9iQgPgQQFIABI6CghoaXZlX2pvYhgFIAEoCzIh",
+            "Lmdvb2dsZS5jbG91ZC5kYXRhcHJvYy52MS5IaXZlSm9iQgPgQQFIABI4Cgdw",
+            "aWdfam9iGAYgASgLMiAuZ29vZ2xlLmNsb3VkLmRhdGFwcm9jLnYxLlBpZ0pv",
+            "YkID4EEBSAASPwoLc3Bhcmtfcl9qb2IYCyABKAsyIy5nb29nbGUuY2xvdWQu",
+            "ZGF0YXByb2MudjEuU3BhcmtSSm9iQgPgQQFIABJDCg1zcGFya19zcWxfam9i",
             "GAcgASgLMiUuZ29vZ2xlLmNsb3VkLmRhdGFwcm9jLnYxLlNwYXJrU3FsSm9i",
-            "SAASRQoGbGFiZWxzGAggAygLMjAuZ29vZ2xlLmNsb3VkLmRhdGFwcm9jLnYx",
-            "Lk9yZGVyZWRKb2IuTGFiZWxzRW50cnlCA+BBARJACgpzY2hlZHVsaW5nGAkg",
-            "ASgLMicuZ29vZ2xlLmNsb3VkLmRhdGFwcm9jLnYxLkpvYlNjaGVkdWxpbmdC",
-            "A+BBARIiChVwcmVyZXF1aXNpdGVfc3RlcF9pZHMYCiADKAlCA+BBARotCgtM",
-            "YWJlbHNFbnRyeRILCgNrZXkYASABKAkSDQoFdmFsdWUYAiABKAk6AjgBQgoK",
-            "CGpvYl90eXBlIp0BChFUZW1wbGF0ZVBhcmFtZXRlchIRCgRuYW1lGAEgASgJ",
-            "QgPgQQISEwoGZmllbGRzGAIgAygJQgPgQQISGAoLZGVzY3JpcHRpb24YAyAB",
-            "KAlCA+BBARJGCgp2YWxpZGF0aW9uGAQgASgLMi0uZ29vZ2xlLmNsb3VkLmRh",
-            "dGFwcm9jLnYxLlBhcmFtZXRlclZhbGlkYXRpb25CA+BBASKhAQoTUGFyYW1l",
-            "dGVyVmFsaWRhdGlvbhI6CgVyZWdleBgBIAEoCzIpLmdvb2dsZS5jbG91ZC5k",
-            "YXRhcHJvYy52MS5SZWdleFZhbGlkYXRpb25IABI7CgZ2YWx1ZXMYAiABKAsy",
-            "KS5nb29nbGUuY2xvdWQuZGF0YXByb2MudjEuVmFsdWVWYWxpZGF0aW9uSABC",
-            "EQoPdmFsaWRhdGlvbl90eXBlIicKD1JlZ2V4VmFsaWRhdGlvbhIUCgdyZWdl",
-            "eGVzGAEgAygJQgPgQQIiJgoPVmFsdWVWYWxpZGF0aW9uEhMKBnZhbHVlcxgB",
-            "IAMoCUID4EECIq8FChBXb3JrZmxvd01ldGFkYXRhEhUKCHRlbXBsYXRlGAEg",
-            "ASgJQgPgQQMSFAoHdmVyc2lvbhgCIAEoBUID4EEDEkcKDmNyZWF0ZV9jbHVz",
-            "dGVyGAMgASgLMiouZ29vZ2xlLmNsb3VkLmRhdGFwcm9jLnYxLkNsdXN0ZXJP",
-            "cGVyYXRpb25CA+BBAxI7CgVncmFwaBgEIAEoCzInLmdvb2dsZS5jbG91ZC5k",
-            "YXRhcHJvYy52MS5Xb3JrZmxvd0dyYXBoQgPgQQMSRwoOZGVsZXRlX2NsdXN0",
-            "ZXIYBSABKAsyKi5nb29nbGUuY2xvdWQuZGF0YXByb2MudjEuQ2x1c3Rlck9w",
-            "ZXJhdGlvbkID4EEDEkQKBXN0YXRlGAYgASgOMjAuZ29vZ2xlLmNsb3VkLmRh",
-            "dGFwcm9jLnYxLldvcmtmbG93TWV0YWRhdGEuU3RhdGVCA+BBAxIZCgxjbHVz",
-            "dGVyX25hbWUYByABKAlCA+BBAxJOCgpwYXJhbWV0ZXJzGAggAygLMjouZ29v",
-            "Z2xlLmNsb3VkLmRhdGFwcm9jLnYxLldvcmtmbG93TWV0YWRhdGEuUGFyYW1l",
-            "dGVyc0VudHJ5EjMKCnN0YXJ0X3RpbWUYCSABKAsyGi5nb29nbGUucHJvdG9i",
-            "dWYuVGltZXN0YW1wQgPgQQMSMQoIZW5kX3RpbWUYCiABKAsyGi5nb29nbGUu",
-            "cHJvdG9idWYuVGltZXN0YW1wQgPgQQMSGQoMY2x1c3Rlcl91dWlkGAsgASgJ",
-            "QgPgQQMaMQoPUGFyYW1ldGVyc0VudHJ5EgsKA2tleRgBIAEoCRINCgV2YWx1",
-            "ZRgCIAEoCToCOAEiOAoFU3RhdGUSCwoHVU5LTk9XThAAEgsKB1BFTkRJTkcQ",
-            "ARILCgdSVU5OSU5HEAISCAoERE9ORRADIlQKEENsdXN0ZXJPcGVyYXRpb24S",
-            "GQoMb3BlcmF0aW9uX2lkGAEgASgJQgPgQQMSEgoFZXJyb3IYAiABKAlCA+BB",
-            "AxIRCgRkb25lGAMgASgIQgPgQQMiSwoNV29ya2Zsb3dHcmFwaBI6CgVub2Rl",
-            "cxgBIAMoCzImLmdvb2dsZS5jbG91ZC5kYXRhcHJvYy52MS5Xb3JrZmxvd05v",
-            "ZGVCA+BBAyKjAgoMV29ya2Zsb3dOb2RlEhQKB3N0ZXBfaWQYASABKAlCA+BB",
-            "AxIiChVwcmVyZXF1aXNpdGVfc3RlcF9pZHMYAiADKAlCA+BBAxITCgZqb2Jf",
-            "aWQYAyABKAlCA+BBAxJECgVzdGF0ZRgFIAEoDjIwLmdvb2dsZS5jbG91ZC5k",
-            "YXRhcHJvYy52MS5Xb3JrZmxvd05vZGUuTm9kZVN0YXRlQgPgQQMSEgoFZXJy",
-            "b3IYBiABKAlCA+BBAyJqCglOb2RlU3RhdGUSGgoWTk9ERV9TVEFURV9VTlNQ",
-            "RUNJRklFRBAAEgsKB0JMT0NLRUQQARIMCghSVU5OQUJMRRACEgsKB1JVTk5J",
-            "TkcQAxINCglDT01QTEVURUQQBBIKCgZGQUlMRUQQBSKkAQodQ3JlYXRlV29y",
-            "a2Zsb3dUZW1wbGF0ZVJlcXVlc3QSQAoGcGFyZW50GAEgASgJQjDgQQL6QSoS",
-            "KGRhdGFwcm9jLmdvb2dsZWFwaXMuY29tL1dvcmtmbG93VGVtcGxhdGUSQQoI",
-            "dGVtcGxhdGUYAiABKAsyKi5nb29nbGUuY2xvdWQuZGF0YXByb2MudjEuV29y",
-            "a2Zsb3dUZW1wbGF0ZUID4EECInIKGkdldFdvcmtmbG93VGVtcGxhdGVSZXF1",
-            "ZXN0Ej4KBG5hbWUYASABKAlCMOBBAvpBKgooZGF0YXByb2MuZ29vZ2xlYXBp",
-            "cy5jb20vV29ya2Zsb3dUZW1wbGF0ZRIUCgd2ZXJzaW9uGAIgASgFQgPgQQEi",
-            "rQIKIkluc3RhbnRpYXRlV29ya2Zsb3dUZW1wbGF0ZVJlcXVlc3QSPgoEbmFt",
-            "ZRgBIAEoCUIw4EEC+kEqCihkYXRhcHJvYy5nb29nbGVhcGlzLmNvbS9Xb3Jr",
-            "Zmxvd1RlbXBsYXRlEhQKB3ZlcnNpb24YAiABKAVCA+BBARIXCgpyZXF1ZXN0",
-            "X2lkGAUgASgJQgPgQQESZQoKcGFyYW1ldGVycxgGIAMoCzJMLmdvb2dsZS5j",
-            "bG91ZC5kYXRhcHJvYy52MS5JbnN0YW50aWF0ZVdvcmtmbG93VGVtcGxhdGVS",
-            "ZXF1ZXN0LlBhcmFtZXRlcnNFbnRyeUID4EEBGjEKD1BhcmFtZXRlcnNFbnRy",
-            "eRILCgNrZXkYASABKAkSDQoFdmFsdWUYAiABKAk6AjgBIsgBCihJbnN0YW50",
-            "aWF0ZUlubGluZVdvcmtmbG93VGVtcGxhdGVSZXF1ZXN0EkAKBnBhcmVudBgB",
+            "QgPgQQFIABI+CgpwcmVzdG9fam9iGAwgASgLMiMuZ29vZ2xlLmNsb3VkLmRh",
+            "dGFwcm9jLnYxLlByZXN0b0pvYkID4EEBSAASRQoGbGFiZWxzGAggAygLMjAu",
+            "Z29vZ2xlLmNsb3VkLmRhdGFwcm9jLnYxLk9yZGVyZWRKb2IuTGFiZWxzRW50",
+            "cnlCA+BBARJACgpzY2hlZHVsaW5nGAkgASgLMicuZ29vZ2xlLmNsb3VkLmRh",
+            "dGFwcm9jLnYxLkpvYlNjaGVkdWxpbmdCA+BBARIiChVwcmVyZXF1aXNpdGVf",
+            "c3RlcF9pZHMYCiADKAlCA+BBARotCgtMYWJlbHNFbnRyeRILCgNrZXkYASAB",
+            "KAkSDQoFdmFsdWUYAiABKAk6AjgBQgoKCGpvYl90eXBlIp0BChFUZW1wbGF0",
+            "ZVBhcmFtZXRlchIRCgRuYW1lGAEgASgJQgPgQQISEwoGZmllbGRzGAIgAygJ",
+            "QgPgQQISGAoLZGVzY3JpcHRpb24YAyABKAlCA+BBARJGCgp2YWxpZGF0aW9u",
+            "GAQgASgLMi0uZ29vZ2xlLmNsb3VkLmRhdGFwcm9jLnYxLlBhcmFtZXRlclZh",
+            "bGlkYXRpb25CA+BBASKhAQoTUGFyYW1ldGVyVmFsaWRhdGlvbhI6CgVyZWdl",
+            "eBgBIAEoCzIpLmdvb2dsZS5jbG91ZC5kYXRhcHJvYy52MS5SZWdleFZhbGlk",
+            "YXRpb25IABI7CgZ2YWx1ZXMYAiABKAsyKS5nb29nbGUuY2xvdWQuZGF0YXBy",
+            "b2MudjEuVmFsdWVWYWxpZGF0aW9uSABCEQoPdmFsaWRhdGlvbl90eXBlIicK",
+            "D1JlZ2V4VmFsaWRhdGlvbhIUCgdyZWdleGVzGAEgAygJQgPgQQIiJgoPVmFs",
+            "dWVWYWxpZGF0aW9uEhMKBnZhbHVlcxgBIAMoCUID4EECIq8FChBXb3JrZmxv",
+            "d01ldGFkYXRhEhUKCHRlbXBsYXRlGAEgASgJQgPgQQMSFAoHdmVyc2lvbhgC",
+            "IAEoBUID4EEDEkcKDmNyZWF0ZV9jbHVzdGVyGAMgASgLMiouZ29vZ2xlLmNs",
+            "b3VkLmRhdGFwcm9jLnYxLkNsdXN0ZXJPcGVyYXRpb25CA+BBAxI7CgVncmFw",
+            "aBgEIAEoCzInLmdvb2dsZS5jbG91ZC5kYXRhcHJvYy52MS5Xb3JrZmxvd0dy",
+            "YXBoQgPgQQMSRwoOZGVsZXRlX2NsdXN0ZXIYBSABKAsyKi5nb29nbGUuY2xv",
+            "dWQuZGF0YXByb2MudjEuQ2x1c3Rlck9wZXJhdGlvbkID4EEDEkQKBXN0YXRl",
+            "GAYgASgOMjAuZ29vZ2xlLmNsb3VkLmRhdGFwcm9jLnYxLldvcmtmbG93TWV0",
+            "YWRhdGEuU3RhdGVCA+BBAxIZCgxjbHVzdGVyX25hbWUYByABKAlCA+BBAxJO",
+            "CgpwYXJhbWV0ZXJzGAggAygLMjouZ29vZ2xlLmNsb3VkLmRhdGFwcm9jLnYx",
+            "LldvcmtmbG93TWV0YWRhdGEuUGFyYW1ldGVyc0VudHJ5EjMKCnN0YXJ0X3Rp",
+            "bWUYCSABKAsyGi5nb29nbGUucHJvdG9idWYuVGltZXN0YW1wQgPgQQMSMQoI",
+            "ZW5kX3RpbWUYCiABKAsyGi5nb29nbGUucHJvdG9idWYuVGltZXN0YW1wQgPg",
+            "QQMSGQoMY2x1c3Rlcl91dWlkGAsgASgJQgPgQQMaMQoPUGFyYW1ldGVyc0Vu",
+            "dHJ5EgsKA2tleRgBIAEoCRINCgV2YWx1ZRgCIAEoCToCOAEiOAoFU3RhdGUS",
+            "CwoHVU5LTk9XThAAEgsKB1BFTkRJTkcQARILCgdSVU5OSU5HEAISCAoERE9O",
+            "RRADIlQKEENsdXN0ZXJPcGVyYXRpb24SGQoMb3BlcmF0aW9uX2lkGAEgASgJ",
+            "QgPgQQMSEgoFZXJyb3IYAiABKAlCA+BBAxIRCgRkb25lGAMgASgIQgPgQQMi",
+            "SwoNV29ya2Zsb3dHcmFwaBI6CgVub2RlcxgBIAMoCzImLmdvb2dsZS5jbG91",
+            "ZC5kYXRhcHJvYy52MS5Xb3JrZmxvd05vZGVCA+BBAyKjAgoMV29ya2Zsb3dO",
+            "b2RlEhQKB3N0ZXBfaWQYASABKAlCA+BBAxIiChVwcmVyZXF1aXNpdGVfc3Rl",
+            "cF9pZHMYAiADKAlCA+BBAxITCgZqb2JfaWQYAyABKAlCA+BBAxJECgVzdGF0",
+            "ZRgFIAEoDjIwLmdvb2dsZS5jbG91ZC5kYXRhcHJvYy52MS5Xb3JrZmxvd05v",
+            "ZGUuTm9kZVN0YXRlQgPgQQMSEgoFZXJyb3IYBiABKAlCA+BBAyJqCglOb2Rl",
+            "U3RhdGUSGgoWTk9ERV9TVEFURV9VTlNQRUNJRklFRBAAEgsKB0JMT0NLRUQQ",
+            "ARIMCghSVU5OQUJMRRACEgsKB1JVTk5JTkcQAxINCglDT01QTEVURUQQBBIK",
+            "CgZGQUlMRUQQBSKkAQodQ3JlYXRlV29ya2Zsb3dUZW1wbGF0ZVJlcXVlc3QS",
+            "QAoGcGFyZW50GAEgASgJQjDgQQL6QSoSKGRhdGFwcm9jLmdvb2dsZWFwaXMu",
+            "Y29tL1dvcmtmbG93VGVtcGxhdGUSQQoIdGVtcGxhdGUYAiABKAsyKi5nb29n",
+            "bGUuY2xvdWQuZGF0YXByb2MudjEuV29ya2Zsb3dUZW1wbGF0ZUID4EECInIK",
+            "GkdldFdvcmtmbG93VGVtcGxhdGVSZXF1ZXN0Ej4KBG5hbWUYASABKAlCMOBB",
+            "AvpBKgooZGF0YXByb2MuZ29vZ2xlYXBpcy5jb20vV29ya2Zsb3dUZW1wbGF0",
+            "ZRIUCgd2ZXJzaW9uGAIgASgFQgPgQQEirQIKIkluc3RhbnRpYXRlV29ya2Zs",
+            "b3dUZW1wbGF0ZVJlcXVlc3QSPgoEbmFtZRgBIAEoCUIw4EEC+kEqCihkYXRh",
+            "cHJvYy5nb29nbGVhcGlzLmNvbS9Xb3JrZmxvd1RlbXBsYXRlEhQKB3ZlcnNp",
+            "b24YAiABKAVCA+BBARIXCgpyZXF1ZXN0X2lkGAUgASgJQgPgQQESZQoKcGFy",
+            "YW1ldGVycxgGIAMoCzJMLmdvb2dsZS5jbG91ZC5kYXRhcHJvYy52MS5JbnN0",
+            "YW50aWF0ZVdvcmtmbG93VGVtcGxhdGVSZXF1ZXN0LlBhcmFtZXRlcnNFbnRy",
+            "eUID4EEBGjEKD1BhcmFtZXRlcnNFbnRyeRILCgNrZXkYASABKAkSDQoFdmFs",
+            "dWUYAiABKAk6AjgBIsgBCihJbnN0YW50aWF0ZUlubGluZVdvcmtmbG93VGVt",
+            "cGxhdGVSZXF1ZXN0EkAKBnBhcmVudBgBIAEoCUIw4EEC+kEqEihkYXRhcHJv",
+            "Yy5nb29nbGVhcGlzLmNvbS9Xb3JrZmxvd1RlbXBsYXRlEkEKCHRlbXBsYXRl",
+            "GAIgASgLMiouZ29vZ2xlLmNsb3VkLmRhdGFwcm9jLnYxLldvcmtmbG93VGVt",
+            "cGxhdGVCA+BBAhIXCgpyZXF1ZXN0X2lkGAMgASgJQgPgQQEiYgodVXBkYXRl",
+            "V29ya2Zsb3dUZW1wbGF0ZVJlcXVlc3QSQQoIdGVtcGxhdGUYASABKAsyKi5n",
+            "b29nbGUuY2xvdWQuZGF0YXByb2MudjEuV29ya2Zsb3dUZW1wbGF0ZUID4EEC",
+            "IpEBChxMaXN0V29ya2Zsb3dUZW1wbGF0ZXNSZXF1ZXN0EkAKBnBhcmVudBgB",
             "IAEoCUIw4EEC+kEqEihkYXRhcHJvYy5nb29nbGVhcGlzLmNvbS9Xb3JrZmxv",
-            "d1RlbXBsYXRlEkEKCHRlbXBsYXRlGAIgASgLMiouZ29vZ2xlLmNsb3VkLmRh",
-            "dGFwcm9jLnYxLldvcmtmbG93VGVtcGxhdGVCA+BBAhIXCgpyZXF1ZXN0X2lk",
-            "GAMgASgJQgPgQQEiYgodVXBkYXRlV29ya2Zsb3dUZW1wbGF0ZVJlcXVlc3QS",
-            "QQoIdGVtcGxhdGUYASABKAsyKi5nb29nbGUuY2xvdWQuZGF0YXByb2MudjEu",
-            "V29ya2Zsb3dUZW1wbGF0ZUID4EECIpEBChxMaXN0V29ya2Zsb3dUZW1wbGF0",
-            "ZXNSZXF1ZXN0EkAKBnBhcmVudBgBIAEoCUIw4EEC+kEqEihkYXRhcHJvYy5n",
-            "b29nbGVhcGlzLmNvbS9Xb3JrZmxvd1RlbXBsYXRlEhYKCXBhZ2Vfc2l6ZRgC",
-            "IAEoBUID4EEBEhcKCnBhZ2VfdG9rZW4YAyABKAlCA+BBASKBAQodTGlzdFdv",
-            "cmtmbG93VGVtcGxhdGVzUmVzcG9uc2USQgoJdGVtcGxhdGVzGAEgAygLMiou",
-            "Z29vZ2xlLmNsb3VkLmRhdGFwcm9jLnYxLldvcmtmbG93VGVtcGxhdGVCA+BB",
-            "AxIcCg9uZXh0X3BhZ2VfdG9rZW4YAiABKAlCA+BBAyJ1Ch1EZWxldGVXb3Jr",
-            "Zmxvd1RlbXBsYXRlUmVxdWVzdBI+CgRuYW1lGAEgASgJQjDgQQL6QSoKKGRh",
-            "dGFwcm9jLmdvb2dsZWFwaXMuY29tL1dvcmtmbG93VGVtcGxhdGUSFAoHdmVy",
-            "c2lvbhgCIAEoBUID4EEBMuYQChdXb3JrZmxvd1RlbXBsYXRlU2VydmljZRKb",
-            "AgoWQ3JlYXRlV29ya2Zsb3dUZW1wbGF0ZRI3Lmdvb2dsZS5jbG91ZC5kYXRh",
-            "cHJvYy52MS5DcmVhdGVXb3JrZmxvd1RlbXBsYXRlUmVxdWVzdBoqLmdvb2ds",
-            "ZS5jbG91ZC5kYXRhcHJvYy52MS5Xb3JrZmxvd1RlbXBsYXRlIpsBgtPkkwKC",
-            "ASI1L3YxL3twYXJlbnQ9cHJvamVjdHMvKi9sb2NhdGlvbnMvKn0vd29ya2Zs",
-            "b3dUZW1wbGF0ZXM6CHRlbXBsYXRlWj8iMy92MS97cGFyZW50PXByb2plY3Rz",
-            "LyovcmVnaW9ucy8qfS93b3JrZmxvd1RlbXBsYXRlczoIdGVtcGxhdGXaQQ9w",
-            "YXJlbnQsdGVtcGxhdGUS9AEKE0dldFdvcmtmbG93VGVtcGxhdGUSNC5nb29n",
-            "bGUuY2xvdWQuZGF0YXByb2MudjEuR2V0V29ya2Zsb3dUZW1wbGF0ZVJlcXVl",
-            "c3QaKi5nb29nbGUuY2xvdWQuZGF0YXByb2MudjEuV29ya2Zsb3dUZW1wbGF0",
-            "ZSJ7gtPkkwJuEjUvdjEve25hbWU9cHJvamVjdHMvKi9sb2NhdGlvbnMvKi93",
-            "b3JrZmxvd1RlbXBsYXRlcy8qfVo1EjMvdjEve25hbWU9cHJvamVjdHMvKi9y",
-            "ZWdpb25zLyovd29ya2Zsb3dUZW1wbGF0ZXMvKn3aQQRuYW1lEtUCChtJbnN0",
-            "YW50aWF0ZVdvcmtmbG93VGVtcGxhdGUSPC5nb29nbGUuY2xvdWQuZGF0YXBy",
-            "b2MudjEuSW5zdGFudGlhdGVXb3JrZmxvd1RlbXBsYXRlUmVxdWVzdBodLmdv",
-            "b2dsZS5sb25ncnVubmluZy5PcGVyYXRpb24i2AGC0+STAowBIkEvdjEve25h",
-            "bWU9cHJvamVjdHMvKi9sb2NhdGlvbnMvKi93b3JrZmxvd1RlbXBsYXRlcy8q",
-            "fTppbnN0YW50aWF0ZToBKlpEIj8vdjEve25hbWU9cHJvamVjdHMvKi9yZWdp",
-            "b25zLyovd29ya2Zsb3dUZW1wbGF0ZXMvKn06aW5zdGFudGlhdGU6ASraQQRu",
-            "YW1l2kEPbmFtZSxwYXJhbWV0ZXJzykEpChVnb29nbGUucHJvdG9idWYuRW1w",
-            "dHkSEFdvcmtmbG93TWV0YWRhdGES9AIKIUluc3RhbnRpYXRlSW5saW5lV29y",
-            "a2Zsb3dUZW1wbGF0ZRJCLmdvb2dsZS5jbG91ZC5kYXRhcHJvYy52MS5JbnN0",
-            "YW50aWF0ZUlubGluZVdvcmtmbG93VGVtcGxhdGVSZXF1ZXN0Gh0uZ29vZ2xl",
-            "LmxvbmdydW5uaW5nLk9wZXJhdGlvbiLrAYLT5JMCpgEiRy92MS97cGFyZW50",
-            "PXByb2plY3RzLyovbG9jYXRpb25zLyp9L3dvcmtmbG93VGVtcGxhdGVzOmlu",
-            "c3RhbnRpYXRlSW5saW5lOgh0ZW1wbGF0ZVpRIkUvdjEve3BhcmVudD1wcm9q",
-            "ZWN0cy8qL3JlZ2lvbnMvKn0vd29ya2Zsb3dUZW1wbGF0ZXM6aW5zdGFudGlh",
-            "dGVJbmxpbmU6CHRlbXBsYXRl2kEPcGFyZW50LHRlbXBsYXRlykEpChVnb29n",
-            "bGUucHJvdG9idWYuRW1wdHkSEFdvcmtmbG93TWV0YWRhdGESpgIKFlVwZGF0",
-            "ZVdvcmtmbG93VGVtcGxhdGUSNy5nb29nbGUuY2xvdWQuZGF0YXByb2MudjEu",
-            "VXBkYXRlV29ya2Zsb3dUZW1wbGF0ZVJlcXVlc3QaKi5nb29nbGUuY2xvdWQu",
-            "ZGF0YXByb2MudjEuV29ya2Zsb3dUZW1wbGF0ZSKmAYLT5JMClAEaPi92MS97",
-            "dGVtcGxhdGUubmFtZT1wcm9qZWN0cy8qL2xvY2F0aW9ucy8qL3dvcmtmbG93",
-            "VGVtcGxhdGVzLyp9Ogh0ZW1wbGF0ZVpIGjwvdjEve3RlbXBsYXRlLm5hbWU9",
-            "cHJvamVjdHMvKi9yZWdpb25zLyovd29ya2Zsb3dUZW1wbGF0ZXMvKn06CHRl",
-            "bXBsYXRl2kEIdGVtcGxhdGUShwIKFUxpc3RXb3JrZmxvd1RlbXBsYXRlcxI2",
-            "Lmdvb2dsZS5jbG91ZC5kYXRhcHJvYy52MS5MaXN0V29ya2Zsb3dUZW1wbGF0",
-            "ZXNSZXF1ZXN0GjcuZ29vZ2xlLmNsb3VkLmRhdGFwcm9jLnYxLkxpc3RXb3Jr",
-            "Zmxvd1RlbXBsYXRlc1Jlc3BvbnNlIn2C0+STAm4SNS92MS97cGFyZW50PXBy",
-            "b2plY3RzLyovbG9jYXRpb25zLyp9L3dvcmtmbG93VGVtcGxhdGVzWjUSMy92",
-            "MS97cGFyZW50PXByb2plY3RzLyovcmVnaW9ucy8qfS93b3JrZmxvd1RlbXBs",
-            "YXRlc9pBBnBhcmVudBLmAQoWRGVsZXRlV29ya2Zsb3dUZW1wbGF0ZRI3Lmdv",
-            "b2dsZS5jbG91ZC5kYXRhcHJvYy52MS5EZWxldGVXb3JrZmxvd1RlbXBsYXRl",
-            "UmVxdWVzdBoWLmdvb2dsZS5wcm90b2J1Zi5FbXB0eSJ7gtPkkwJuKjUvdjEv",
-            "e25hbWU9cHJvamVjdHMvKi9sb2NhdGlvbnMvKi93b3JrZmxvd1RlbXBsYXRl",
-            "cy8qfVo1KjMvdjEve25hbWU9cHJvamVjdHMvKi9yZWdpb25zLyovd29ya2Zs",
-            "b3dUZW1wbGF0ZXMvKn3aQQRuYW1lGkvKQRdkYXRhcHJvYy5nb29nbGVhcGlz",
-            "LmNvbdJBLmh0dHBzOi8vd3d3Lmdvb2dsZWFwaXMuY29tL2F1dGgvY2xvdWQt",
-            "cGxhdGZvcm1CegocY29tLmdvb2dsZS5jbG91ZC5kYXRhcHJvYy52MUIWV29y",
-            "a2Zsb3dUZW1wbGF0ZXNQcm90b1ABWkBnb29nbGUuZ29sYW5nLm9yZy9nZW5w",
-            "cm90by9nb29nbGVhcGlzL2Nsb3VkL2RhdGFwcm9jL3YxO2RhdGFwcm9jYgZw",
-            "cm90bzM="));
+            "d1RlbXBsYXRlEhYKCXBhZ2Vfc2l6ZRgCIAEoBUID4EEBEhcKCnBhZ2VfdG9r",
+            "ZW4YAyABKAlCA+BBASKBAQodTGlzdFdvcmtmbG93VGVtcGxhdGVzUmVzcG9u",
+            "c2USQgoJdGVtcGxhdGVzGAEgAygLMiouZ29vZ2xlLmNsb3VkLmRhdGFwcm9j",
+            "LnYxLldvcmtmbG93VGVtcGxhdGVCA+BBAxIcCg9uZXh0X3BhZ2VfdG9rZW4Y",
+            "AiABKAlCA+BBAyJ1Ch1EZWxldGVXb3JrZmxvd1RlbXBsYXRlUmVxdWVzdBI+",
+            "CgRuYW1lGAEgASgJQjDgQQL6QSoKKGRhdGFwcm9jLmdvb2dsZWFwaXMuY29t",
+            "L1dvcmtmbG93VGVtcGxhdGUSFAoHdmVyc2lvbhgCIAEoBUID4EEBMuYQChdX",
+            "b3JrZmxvd1RlbXBsYXRlU2VydmljZRKbAgoWQ3JlYXRlV29ya2Zsb3dUZW1w",
+            "bGF0ZRI3Lmdvb2dsZS5jbG91ZC5kYXRhcHJvYy52MS5DcmVhdGVXb3JrZmxv",
+            "d1RlbXBsYXRlUmVxdWVzdBoqLmdvb2dsZS5jbG91ZC5kYXRhcHJvYy52MS5X",
+            "b3JrZmxvd1RlbXBsYXRlIpsBgtPkkwKCASI1L3YxL3twYXJlbnQ9cHJvamVj",
+            "dHMvKi9sb2NhdGlvbnMvKn0vd29ya2Zsb3dUZW1wbGF0ZXM6CHRlbXBsYXRl",
+            "Wj8iMy92MS97cGFyZW50PXByb2plY3RzLyovcmVnaW9ucy8qfS93b3JrZmxv",
+            "d1RlbXBsYXRlczoIdGVtcGxhdGXaQQ9wYXJlbnQsdGVtcGxhdGUS9AEKE0dl",
+            "dFdvcmtmbG93VGVtcGxhdGUSNC5nb29nbGUuY2xvdWQuZGF0YXByb2MudjEu",
+            "R2V0V29ya2Zsb3dUZW1wbGF0ZVJlcXVlc3QaKi5nb29nbGUuY2xvdWQuZGF0",
+            "YXByb2MudjEuV29ya2Zsb3dUZW1wbGF0ZSJ7gtPkkwJuEjUvdjEve25hbWU9",
+            "cHJvamVjdHMvKi9sb2NhdGlvbnMvKi93b3JrZmxvd1RlbXBsYXRlcy8qfVo1",
+            "EjMvdjEve25hbWU9cHJvamVjdHMvKi9yZWdpb25zLyovd29ya2Zsb3dUZW1w",
+            "bGF0ZXMvKn3aQQRuYW1lEtUCChtJbnN0YW50aWF0ZVdvcmtmbG93VGVtcGxh",
+            "dGUSPC5nb29nbGUuY2xvdWQuZGF0YXByb2MudjEuSW5zdGFudGlhdGVXb3Jr",
+            "Zmxvd1RlbXBsYXRlUmVxdWVzdBodLmdvb2dsZS5sb25ncnVubmluZy5PcGVy",
+            "YXRpb24i2AGC0+STAowBIkEvdjEve25hbWU9cHJvamVjdHMvKi9sb2NhdGlv",
+            "bnMvKi93b3JrZmxvd1RlbXBsYXRlcy8qfTppbnN0YW50aWF0ZToBKlpEIj8v",
+            "djEve25hbWU9cHJvamVjdHMvKi9yZWdpb25zLyovd29ya2Zsb3dUZW1wbGF0",
+            "ZXMvKn06aW5zdGFudGlhdGU6ASraQQRuYW1l2kEPbmFtZSxwYXJhbWV0ZXJz",
+            "ykEpChVnb29nbGUucHJvdG9idWYuRW1wdHkSEFdvcmtmbG93TWV0YWRhdGES",
+            "9AIKIUluc3RhbnRpYXRlSW5saW5lV29ya2Zsb3dUZW1wbGF0ZRJCLmdvb2ds",
+            "ZS5jbG91ZC5kYXRhcHJvYy52MS5JbnN0YW50aWF0ZUlubGluZVdvcmtmbG93",
+            "VGVtcGxhdGVSZXF1ZXN0Gh0uZ29vZ2xlLmxvbmdydW5uaW5nLk9wZXJhdGlv",
+            "biLrAYLT5JMCpgEiRy92MS97cGFyZW50PXByb2plY3RzLyovbG9jYXRpb25z",
+            "Lyp9L3dvcmtmbG93VGVtcGxhdGVzOmluc3RhbnRpYXRlSW5saW5lOgh0ZW1w",
+            "bGF0ZVpRIkUvdjEve3BhcmVudD1wcm9qZWN0cy8qL3JlZ2lvbnMvKn0vd29y",
+            "a2Zsb3dUZW1wbGF0ZXM6aW5zdGFudGlhdGVJbmxpbmU6CHRlbXBsYXRl2kEP",
+            "cGFyZW50LHRlbXBsYXRlykEpChVnb29nbGUucHJvdG9idWYuRW1wdHkSEFdv",
+            "cmtmbG93TWV0YWRhdGESpgIKFlVwZGF0ZVdvcmtmbG93VGVtcGxhdGUSNy5n",
+            "b29nbGUuY2xvdWQuZGF0YXByb2MudjEuVXBkYXRlV29ya2Zsb3dUZW1wbGF0",
+            "ZVJlcXVlc3QaKi5nb29nbGUuY2xvdWQuZGF0YXByb2MudjEuV29ya2Zsb3dU",
+            "ZW1wbGF0ZSKmAYLT5JMClAEaPi92MS97dGVtcGxhdGUubmFtZT1wcm9qZWN0",
+            "cy8qL2xvY2F0aW9ucy8qL3dvcmtmbG93VGVtcGxhdGVzLyp9Ogh0ZW1wbGF0",
+            "ZVpIGjwvdjEve3RlbXBsYXRlLm5hbWU9cHJvamVjdHMvKi9yZWdpb25zLyov",
+            "d29ya2Zsb3dUZW1wbGF0ZXMvKn06CHRlbXBsYXRl2kEIdGVtcGxhdGUShwIK",
+            "FUxpc3RXb3JrZmxvd1RlbXBsYXRlcxI2Lmdvb2dsZS5jbG91ZC5kYXRhcHJv",
+            "Yy52MS5MaXN0V29ya2Zsb3dUZW1wbGF0ZXNSZXF1ZXN0GjcuZ29vZ2xlLmNs",
+            "b3VkLmRhdGFwcm9jLnYxLkxpc3RXb3JrZmxvd1RlbXBsYXRlc1Jlc3BvbnNl",
+            "In2C0+STAm4SNS92MS97cGFyZW50PXByb2plY3RzLyovbG9jYXRpb25zLyp9",
+            "L3dvcmtmbG93VGVtcGxhdGVzWjUSMy92MS97cGFyZW50PXByb2plY3RzLyov",
+            "cmVnaW9ucy8qfS93b3JrZmxvd1RlbXBsYXRlc9pBBnBhcmVudBLmAQoWRGVs",
+            "ZXRlV29ya2Zsb3dUZW1wbGF0ZRI3Lmdvb2dsZS5jbG91ZC5kYXRhcHJvYy52",
+            "MS5EZWxldGVXb3JrZmxvd1RlbXBsYXRlUmVxdWVzdBoWLmdvb2dsZS5wcm90",
+            "b2J1Zi5FbXB0eSJ7gtPkkwJuKjUvdjEve25hbWU9cHJvamVjdHMvKi9sb2Nh",
+            "dGlvbnMvKi93b3JrZmxvd1RlbXBsYXRlcy8qfVo1KjMvdjEve25hbWU9cHJv",
+            "amVjdHMvKi9yZWdpb25zLyovd29ya2Zsb3dUZW1wbGF0ZXMvKn3aQQRuYW1l",
+            "GkvKQRdkYXRhcHJvYy5nb29nbGVhcGlzLmNvbdJBLmh0dHBzOi8vd3d3Lmdv",
+            "b2dsZWFwaXMuY29tL2F1dGgvY2xvdWQtcGxhdGZvcm1CegocY29tLmdvb2ds",
+            "ZS5jbG91ZC5kYXRhcHJvYy52MUIWV29ya2Zsb3dUZW1wbGF0ZXNQcm90b1AB",
+            "WkBnb29nbGUuZ29sYW5nLm9yZy9nZW5wcm90by9nb29nbGVhcGlzL2Nsb3Vk",
+            "L2RhdGFwcm9jL3YxO2RhdGFwcm9jYgZwcm90bzM="));
       descriptor = pbr::FileDescriptor.FromGeneratedCode(descriptorData,
           new pbr::FileDescriptor[] { global::Google.Api.AnnotationsReflection.Descriptor, global::Google.Api.ClientReflection.Descriptor, global::Google.Api.FieldBehaviorReflection.Descriptor, global::Google.Api.ResourceReflection.Descriptor, global::Google.Cloud.Dataproc.V1.ClustersReflection.Descriptor, global::Google.Cloud.Dataproc.V1.JobsReflection.Descriptor, global::Google.LongRunning.OperationsReflection.Descriptor, global::Google.Protobuf.WellKnownTypes.EmptyReflection.Descriptor, global::Google.Protobuf.WellKnownTypes.TimestampReflection.Descriptor, },
-          new pbr::GeneratedClrTypeInfo(null, new pbr::GeneratedClrTypeInfo[] {
-            new pbr::GeneratedClrTypeInfo(typeof(global::Google.Cloud.Dataproc.V1.WorkflowTemplate), global::Google.Cloud.Dataproc.V1.WorkflowTemplate.Parser, new[]{ "Id", "Name", "Version", "CreateTime", "UpdateTime", "Labels", "Placement", "Jobs", "Parameters" }, null, null, new pbr::GeneratedClrTypeInfo[] { null, }),
-            new pbr::GeneratedClrTypeInfo(typeof(global::Google.Cloud.Dataproc.V1.WorkflowTemplatePlacement), global::Google.Cloud.Dataproc.V1.WorkflowTemplatePlacement.Parser, new[]{ "ManagedCluster", "ClusterSelector" }, new[]{ "Placement" }, null, null),
-            new pbr::GeneratedClrTypeInfo(typeof(global::Google.Cloud.Dataproc.V1.ManagedCluster), global::Google.Cloud.Dataproc.V1.ManagedCluster.Parser, new[]{ "ClusterName", "Config", "Labels" }, null, null, new pbr::GeneratedClrTypeInfo[] { null, }),
-            new pbr::GeneratedClrTypeInfo(typeof(global::Google.Cloud.Dataproc.V1.ClusterSelector), global::Google.Cloud.Dataproc.V1.ClusterSelector.Parser, new[]{ "Zone", "ClusterLabels" }, null, null, new pbr::GeneratedClrTypeInfo[] { null, }),
-            new pbr::GeneratedClrTypeInfo(typeof(global::Google.Cloud.Dataproc.V1.OrderedJob), global::Google.Cloud.Dataproc.V1.OrderedJob.Parser, new[]{ "StepId", "HadoopJob", "SparkJob", "PysparkJob", "HiveJob", "PigJob", "SparkSqlJob", "Labels", "Scheduling", "PrerequisiteStepIds" }, new[]{ "JobType" }, null, new pbr::GeneratedClrTypeInfo[] { null, }),
-            new pbr::GeneratedClrTypeInfo(typeof(global::Google.Cloud.Dataproc.V1.TemplateParameter), global::Google.Cloud.Dataproc.V1.TemplateParameter.Parser, new[]{ "Name", "Fields", "Description", "Validation" }, null, null, null),
-            new pbr::GeneratedClrTypeInfo(typeof(global::Google.Cloud.Dataproc.V1.ParameterValidation), global::Google.Cloud.Dataproc.V1.ParameterValidation.Parser, new[]{ "Regex", "Values" }, new[]{ "ValidationType" }, null, null),
-            new pbr::GeneratedClrTypeInfo(typeof(global::Google.Cloud.Dataproc.V1.RegexValidation), global::Google.Cloud.Dataproc.V1.RegexValidation.Parser, new[]{ "Regexes" }, null, null, null),
-            new pbr::GeneratedClrTypeInfo(typeof(global::Google.Cloud.Dataproc.V1.ValueValidation), global::Google.Cloud.Dataproc.V1.ValueValidation.Parser, new[]{ "Values" }, null, null, null),
-            new pbr::GeneratedClrTypeInfo(typeof(global::Google.Cloud.Dataproc.V1.WorkflowMetadata), global::Google.Cloud.Dataproc.V1.WorkflowMetadata.Parser, new[]{ "Template", "Version", "CreateCluster", "Graph", "DeleteCluster", "State", "ClusterName", "Parameters", "StartTime", "EndTime", "ClusterUuid" }, null, new[]{ typeof(global::Google.Cloud.Dataproc.V1.WorkflowMetadata.Types.State) }, new pbr::GeneratedClrTypeInfo[] { null, }),
-            new pbr::GeneratedClrTypeInfo(typeof(global::Google.Cloud.Dataproc.V1.ClusterOperation), global::Google.Cloud.Dataproc.V1.ClusterOperation.Parser, new[]{ "OperationId", "Error", "Done" }, null, null, null),
-            new pbr::GeneratedClrTypeInfo(typeof(global::Google.Cloud.Dataproc.V1.WorkflowGraph), global::Google.Cloud.Dataproc.V1.WorkflowGraph.Parser, new[]{ "Nodes" }, null, null, null),
-            new pbr::GeneratedClrTypeInfo(typeof(global::Google.Cloud.Dataproc.V1.WorkflowNode), global::Google.Cloud.Dataproc.V1.WorkflowNode.Parser, new[]{ "StepId", "PrerequisiteStepIds", "JobId", "State", "Error" }, null, new[]{ typeof(global::Google.Cloud.Dataproc.V1.WorkflowNode.Types.NodeState) }, null),
-            new pbr::GeneratedClrTypeInfo(typeof(global::Google.Cloud.Dataproc.V1.CreateWorkflowTemplateRequest), global::Google.Cloud.Dataproc.V1.CreateWorkflowTemplateRequest.Parser, new[]{ "Parent", "Template" }, null, null, null),
-            new pbr::GeneratedClrTypeInfo(typeof(global::Google.Cloud.Dataproc.V1.GetWorkflowTemplateRequest), global::Google.Cloud.Dataproc.V1.GetWorkflowTemplateRequest.Parser, new[]{ "Name", "Version" }, null, null, null),
-            new pbr::GeneratedClrTypeInfo(typeof(global::Google.Cloud.Dataproc.V1.InstantiateWorkflowTemplateRequest), global::Google.Cloud.Dataproc.V1.InstantiateWorkflowTemplateRequest.Parser, new[]{ "Name", "Version", "RequestId", "Parameters" }, null, null, new pbr::GeneratedClrTypeInfo[] { null, }),
-            new pbr::GeneratedClrTypeInfo(typeof(global::Google.Cloud.Dataproc.V1.InstantiateInlineWorkflowTemplateRequest), global::Google.Cloud.Dataproc.V1.InstantiateInlineWorkflowTemplateRequest.Parser, new[]{ "Parent", "Template", "RequestId" }, null, null, null),
-            new pbr::GeneratedClrTypeInfo(typeof(global::Google.Cloud.Dataproc.V1.UpdateWorkflowTemplateRequest), global::Google.Cloud.Dataproc.V1.UpdateWorkflowTemplateRequest.Parser, new[]{ "Template" }, null, null, null),
-            new pbr::GeneratedClrTypeInfo(typeof(global::Google.Cloud.Dataproc.V1.ListWorkflowTemplatesRequest), global::Google.Cloud.Dataproc.V1.ListWorkflowTemplatesRequest.Parser, new[]{ "Parent", "PageSize", "PageToken" }, null, null, null),
-            new pbr::GeneratedClrTypeInfo(typeof(global::Google.Cloud.Dataproc.V1.ListWorkflowTemplatesResponse), global::Google.Cloud.Dataproc.V1.ListWorkflowTemplatesResponse.Parser, new[]{ "Templates", "NextPageToken" }, null, null, null),
-            new pbr::GeneratedClrTypeInfo(typeof(global::Google.Cloud.Dataproc.V1.DeleteWorkflowTemplateRequest), global::Google.Cloud.Dataproc.V1.DeleteWorkflowTemplateRequest.Parser, new[]{ "Name", "Version" }, null, null, null)
+          new pbr::GeneratedClrTypeInfo(null, null, new pbr::GeneratedClrTypeInfo[] {
+            new pbr::GeneratedClrTypeInfo(typeof(global::Google.Cloud.Dataproc.V1.WorkflowTemplate), global::Google.Cloud.Dataproc.V1.WorkflowTemplate.Parser, new[]{ "Id", "Name", "Version", "CreateTime", "UpdateTime", "Labels", "Placement", "Jobs", "Parameters" }, null, null, null, new pbr::GeneratedClrTypeInfo[] { null, }),
+            new pbr::GeneratedClrTypeInfo(typeof(global::Google.Cloud.Dataproc.V1.WorkflowTemplatePlacement), global::Google.Cloud.Dataproc.V1.WorkflowTemplatePlacement.Parser, new[]{ "ManagedCluster", "ClusterSelector" }, new[]{ "Placement" }, null, null, null),
+            new pbr::GeneratedClrTypeInfo(typeof(global::Google.Cloud.Dataproc.V1.ManagedCluster), global::Google.Cloud.Dataproc.V1.ManagedCluster.Parser, new[]{ "ClusterName", "Config", "Labels" }, null, null, null, new pbr::GeneratedClrTypeInfo[] { null, }),
+            new pbr::GeneratedClrTypeInfo(typeof(global::Google.Cloud.Dataproc.V1.ClusterSelector), global::Google.Cloud.Dataproc.V1.ClusterSelector.Parser, new[]{ "Zone", "ClusterLabels" }, null, null, null, new pbr::GeneratedClrTypeInfo[] { null, }),
+            new pbr::GeneratedClrTypeInfo(typeof(global::Google.Cloud.Dataproc.V1.OrderedJob), global::Google.Cloud.Dataproc.V1.OrderedJob.Parser, new[]{ "StepId", "HadoopJob", "SparkJob", "PysparkJob", "HiveJob", "PigJob", "SparkRJob", "SparkSqlJob", "PrestoJob", "Labels", "Scheduling", "PrerequisiteStepIds" }, new[]{ "JobType" }, null, null, new pbr::GeneratedClrTypeInfo[] { null, }),
+            new pbr::GeneratedClrTypeInfo(typeof(global::Google.Cloud.Dataproc.V1.TemplateParameter), global::Google.Cloud.Dataproc.V1.TemplateParameter.Parser, new[]{ "Name", "Fields", "Description", "Validation" }, null, null, null, null),
+            new pbr::GeneratedClrTypeInfo(typeof(global::Google.Cloud.Dataproc.V1.ParameterValidation), global::Google.Cloud.Dataproc.V1.ParameterValidation.Parser, new[]{ "Regex", "Values" }, new[]{ "ValidationType" }, null, null, null),
+            new pbr::GeneratedClrTypeInfo(typeof(global::Google.Cloud.Dataproc.V1.RegexValidation), global::Google.Cloud.Dataproc.V1.RegexValidation.Parser, new[]{ "Regexes" }, null, null, null, null),
+            new pbr::GeneratedClrTypeInfo(typeof(global::Google.Cloud.Dataproc.V1.ValueValidation), global::Google.Cloud.Dataproc.V1.ValueValidation.Parser, new[]{ "Values" }, null, null, null, null),
+            new pbr::GeneratedClrTypeInfo(typeof(global::Google.Cloud.Dataproc.V1.WorkflowMetadata), global::Google.Cloud.Dataproc.V1.WorkflowMetadata.Parser, new[]{ "Template", "Version", "CreateCluster", "Graph", "DeleteCluster", "State", "ClusterName", "Parameters", "StartTime", "EndTime", "ClusterUuid" }, null, new[]{ typeof(global::Google.Cloud.Dataproc.V1.WorkflowMetadata.Types.State) }, null, new pbr::GeneratedClrTypeInfo[] { null, }),
+            new pbr::GeneratedClrTypeInfo(typeof(global::Google.Cloud.Dataproc.V1.ClusterOperation), global::Google.Cloud.Dataproc.V1.ClusterOperation.Parser, new[]{ "OperationId", "Error", "Done" }, null, null, null, null),
+            new pbr::GeneratedClrTypeInfo(typeof(global::Google.Cloud.Dataproc.V1.WorkflowGraph), global::Google.Cloud.Dataproc.V1.WorkflowGraph.Parser, new[]{ "Nodes" }, null, null, null, null),
+            new pbr::GeneratedClrTypeInfo(typeof(global::Google.Cloud.Dataproc.V1.WorkflowNode), global::Google.Cloud.Dataproc.V1.WorkflowNode.Parser, new[]{ "StepId", "PrerequisiteStepIds", "JobId", "State", "Error" }, null, new[]{ typeof(global::Google.Cloud.Dataproc.V1.WorkflowNode.Types.NodeState) }, null, null),
+            new pbr::GeneratedClrTypeInfo(typeof(global::Google.Cloud.Dataproc.V1.CreateWorkflowTemplateRequest), global::Google.Cloud.Dataproc.V1.CreateWorkflowTemplateRequest.Parser, new[]{ "Parent", "Template" }, null, null, null, null),
+            new pbr::GeneratedClrTypeInfo(typeof(global::Google.Cloud.Dataproc.V1.GetWorkflowTemplateRequest), global::Google.Cloud.Dataproc.V1.GetWorkflowTemplateRequest.Parser, new[]{ "Name", "Version" }, null, null, null, null),
+            new pbr::GeneratedClrTypeInfo(typeof(global::Google.Cloud.Dataproc.V1.InstantiateWorkflowTemplateRequest), global::Google.Cloud.Dataproc.V1.InstantiateWorkflowTemplateRequest.Parser, new[]{ "Name", "Version", "RequestId", "Parameters" }, null, null, null, new pbr::GeneratedClrTypeInfo[] { null, }),
+            new pbr::GeneratedClrTypeInfo(typeof(global::Google.Cloud.Dataproc.V1.InstantiateInlineWorkflowTemplateRequest), global::Google.Cloud.Dataproc.V1.InstantiateInlineWorkflowTemplateRequest.Parser, new[]{ "Parent", "Template", "RequestId" }, null, null, null, null),
+            new pbr::GeneratedClrTypeInfo(typeof(global::Google.Cloud.Dataproc.V1.UpdateWorkflowTemplateRequest), global::Google.Cloud.Dataproc.V1.UpdateWorkflowTemplateRequest.Parser, new[]{ "Template" }, null, null, null, null),
+            new pbr::GeneratedClrTypeInfo(typeof(global::Google.Cloud.Dataproc.V1.ListWorkflowTemplatesRequest), global::Google.Cloud.Dataproc.V1.ListWorkflowTemplatesRequest.Parser, new[]{ "Parent", "PageSize", "PageToken" }, null, null, null, null),
+            new pbr::GeneratedClrTypeInfo(typeof(global::Google.Cloud.Dataproc.V1.ListWorkflowTemplatesResponse), global::Google.Cloud.Dataproc.V1.ListWorkflowTemplatesResponse.Parser, new[]{ "Templates", "NextPageToken" }, null, null, null, null),
+            new pbr::GeneratedClrTypeInfo(typeof(global::Google.Cloud.Dataproc.V1.DeleteWorkflowTemplateRequest), global::Google.Cloud.Dataproc.V1.DeleteWorkflowTemplateRequest.Parser, new[]{ "Name", "Version" }, null, null, null, null)
           }));
     }
     #endregion
@@ -223,7 +226,11 @@ namespace Google.Cloud.Dataproc.V1 {
   /// <summary>
   /// A Dataproc workflow template resource.
   /// </summary>
-  public sealed partial class WorkflowTemplate : pb::IMessage<WorkflowTemplate> {
+  public sealed partial class WorkflowTemplate : pb::IMessage<WorkflowTemplate>
+  #if !GOOGLE_PROTOBUF_REFSTRUCT_COMPATIBILITY_MODE
+      , pb::IBufferMessage
+  #endif
+  {
     private static readonly pb::MessageParser<WorkflowTemplate> _parser = new pb::MessageParser<WorkflowTemplate>(() => new WorkflowTemplate());
     private pb::UnknownFieldSet _unknownFields;
     [global::System.Diagnostics.DebuggerNonUserCodeAttribute]
@@ -352,7 +359,7 @@ namespace Google.Cloud.Dataproc.V1 {
     /// <summary>Field number for the "labels" field.</summary>
     public const int LabelsFieldNumber = 6;
     private static readonly pbc::MapField<string, string>.Codec _map_labels_codec
-        = new pbc::MapField<string, string>.Codec(pb::FieldCodec.ForString(10), pb::FieldCodec.ForString(18), 50);
+        = new pbc::MapField<string, string>.Codec(pb::FieldCodec.ForString(10, ""), pb::FieldCodec.ForString(18, ""), 50);
     private readonly pbc::MapField<string, string> labels_ = new pbc::MapField<string, string>();
     /// <summary>
     /// Optional. The labels to associate with this template. These labels
@@ -406,7 +413,7 @@ namespace Google.Cloud.Dataproc.V1 {
         = pb::FieldCodec.ForMessage(74, global::Google.Cloud.Dataproc.V1.TemplateParameter.Parser);
     private readonly pbc::RepeatedField<global::Google.Cloud.Dataproc.V1.TemplateParameter> parameters_ = new pbc::RepeatedField<global::Google.Cloud.Dataproc.V1.TemplateParameter>();
     /// <summary>
-    /// Optional. emplate parameters whose values are substituted into the
+    /// Optional. Template parameters whose values are substituted into the
     /// template. Values for parameters must be provided when the template is
     /// instantiated.
     /// </summary>
@@ -465,6 +472,9 @@ namespace Google.Cloud.Dataproc.V1 {
 
     [global::System.Diagnostics.DebuggerNonUserCodeAttribute]
     public void WriteTo(pb::CodedOutputStream output) {
+    #if !GOOGLE_PROTOBUF_REFSTRUCT_COMPATIBILITY_MODE
+      output.WriteRawMessage(this);
+    #else
       if (Name.Length != 0) {
         output.WriteRawTag(10);
         output.WriteString(Name);
@@ -495,7 +505,44 @@ namespace Google.Cloud.Dataproc.V1 {
       if (_unknownFields != null) {
         _unknownFields.WriteTo(output);
       }
+    #endif
     }
+
+    #if !GOOGLE_PROTOBUF_REFSTRUCT_COMPATIBILITY_MODE
+    [global::System.Diagnostics.DebuggerNonUserCodeAttribute]
+    void pb::IBufferMessage.InternalWriteTo(ref pb::WriteContext output) {
+      if (Name.Length != 0) {
+        output.WriteRawTag(10);
+        output.WriteString(Name);
+      }
+      if (Id.Length != 0) {
+        output.WriteRawTag(18);
+        output.WriteString(Id);
+      }
+      if (Version != 0) {
+        output.WriteRawTag(24);
+        output.WriteInt32(Version);
+      }
+      if (createTime_ != null) {
+        output.WriteRawTag(34);
+        output.WriteMessage(CreateTime);
+      }
+      if (updateTime_ != null) {
+        output.WriteRawTag(42);
+        output.WriteMessage(UpdateTime);
+      }
+      labels_.WriteTo(ref output, _map_labels_codec);
+      if (placement_ != null) {
+        output.WriteRawTag(58);
+        output.WriteMessage(Placement);
+      }
+      jobs_.WriteTo(ref output, _repeated_jobs_codec);
+      parameters_.WriteTo(ref output, _repeated_parameters_codec);
+      if (_unknownFields != null) {
+        _unknownFields.WriteTo(ref output);
+      }
+    }
+    #endif
 
     [global::System.Diagnostics.DebuggerNonUserCodeAttribute]
     public int CalculateSize() {
@@ -567,6 +614,9 @@ namespace Google.Cloud.Dataproc.V1 {
 
     [global::System.Diagnostics.DebuggerNonUserCodeAttribute]
     public void MergeFrom(pb::CodedInputStream input) {
+    #if !GOOGLE_PROTOBUF_REFSTRUCT_COMPATIBILITY_MODE
+      input.ReadRawMessage(this);
+    #else
       uint tag;
       while ((tag = input.ReadTag()) != 0) {
         switch(tag) {
@@ -620,7 +670,67 @@ namespace Google.Cloud.Dataproc.V1 {
           }
         }
       }
+    #endif
     }
+
+    #if !GOOGLE_PROTOBUF_REFSTRUCT_COMPATIBILITY_MODE
+    [global::System.Diagnostics.DebuggerNonUserCodeAttribute]
+    void pb::IBufferMessage.InternalMergeFrom(ref pb::ParseContext input) {
+      uint tag;
+      while ((tag = input.ReadTag()) != 0) {
+        switch(tag) {
+          default:
+            _unknownFields = pb::UnknownFieldSet.MergeFieldFrom(_unknownFields, ref input);
+            break;
+          case 10: {
+            Name = input.ReadString();
+            break;
+          }
+          case 18: {
+            Id = input.ReadString();
+            break;
+          }
+          case 24: {
+            Version = input.ReadInt32();
+            break;
+          }
+          case 34: {
+            if (createTime_ == null) {
+              CreateTime = new global::Google.Protobuf.WellKnownTypes.Timestamp();
+            }
+            input.ReadMessage(CreateTime);
+            break;
+          }
+          case 42: {
+            if (updateTime_ == null) {
+              UpdateTime = new global::Google.Protobuf.WellKnownTypes.Timestamp();
+            }
+            input.ReadMessage(UpdateTime);
+            break;
+          }
+          case 50: {
+            labels_.AddEntriesFrom(ref input, _map_labels_codec);
+            break;
+          }
+          case 58: {
+            if (placement_ == null) {
+              Placement = new global::Google.Cloud.Dataproc.V1.WorkflowTemplatePlacement();
+            }
+            input.ReadMessage(Placement);
+            break;
+          }
+          case 66: {
+            jobs_.AddEntriesFrom(ref input, _repeated_jobs_codec);
+            break;
+          }
+          case 74: {
+            parameters_.AddEntriesFrom(ref input, _repeated_parameters_codec);
+            break;
+          }
+        }
+      }
+    }
+    #endif
 
   }
 
@@ -629,7 +739,11 @@ namespace Google.Cloud.Dataproc.V1 {
   ///
   /// Either `managed_cluster` or `cluster_selector` is required.
   /// </summary>
-  public sealed partial class WorkflowTemplatePlacement : pb::IMessage<WorkflowTemplatePlacement> {
+  public sealed partial class WorkflowTemplatePlacement : pb::IMessage<WorkflowTemplatePlacement>
+  #if !GOOGLE_PROTOBUF_REFSTRUCT_COMPATIBILITY_MODE
+      , pb::IBufferMessage
+  #endif
+  {
     private static readonly pb::MessageParser<WorkflowTemplatePlacement> _parser = new pb::MessageParser<WorkflowTemplatePlacement>(() => new WorkflowTemplatePlacement());
     private pb::UnknownFieldSet _unknownFields;
     [global::System.Diagnostics.DebuggerNonUserCodeAttribute]
@@ -759,6 +873,9 @@ namespace Google.Cloud.Dataproc.V1 {
 
     [global::System.Diagnostics.DebuggerNonUserCodeAttribute]
     public void WriteTo(pb::CodedOutputStream output) {
+    #if !GOOGLE_PROTOBUF_REFSTRUCT_COMPATIBILITY_MODE
+      output.WriteRawMessage(this);
+    #else
       if (placementCase_ == PlacementOneofCase.ManagedCluster) {
         output.WriteRawTag(10);
         output.WriteMessage(ManagedCluster);
@@ -770,7 +887,25 @@ namespace Google.Cloud.Dataproc.V1 {
       if (_unknownFields != null) {
         _unknownFields.WriteTo(output);
       }
+    #endif
     }
+
+    #if !GOOGLE_PROTOBUF_REFSTRUCT_COMPATIBILITY_MODE
+    [global::System.Diagnostics.DebuggerNonUserCodeAttribute]
+    void pb::IBufferMessage.InternalWriteTo(ref pb::WriteContext output) {
+      if (placementCase_ == PlacementOneofCase.ManagedCluster) {
+        output.WriteRawTag(10);
+        output.WriteMessage(ManagedCluster);
+      }
+      if (placementCase_ == PlacementOneofCase.ClusterSelector) {
+        output.WriteRawTag(18);
+        output.WriteMessage(ClusterSelector);
+      }
+      if (_unknownFields != null) {
+        _unknownFields.WriteTo(ref output);
+      }
+    }
+    #endif
 
     [global::System.Diagnostics.DebuggerNonUserCodeAttribute]
     public int CalculateSize() {
@@ -812,6 +947,9 @@ namespace Google.Cloud.Dataproc.V1 {
 
     [global::System.Diagnostics.DebuggerNonUserCodeAttribute]
     public void MergeFrom(pb::CodedInputStream input) {
+    #if !GOOGLE_PROTOBUF_REFSTRUCT_COMPATIBILITY_MODE
+      input.ReadRawMessage(this);
+    #else
       uint tag;
       while ((tag = input.ReadTag()) != 0) {
         switch(tag) {
@@ -838,14 +976,51 @@ namespace Google.Cloud.Dataproc.V1 {
           }
         }
       }
+    #endif
     }
+
+    #if !GOOGLE_PROTOBUF_REFSTRUCT_COMPATIBILITY_MODE
+    [global::System.Diagnostics.DebuggerNonUserCodeAttribute]
+    void pb::IBufferMessage.InternalMergeFrom(ref pb::ParseContext input) {
+      uint tag;
+      while ((tag = input.ReadTag()) != 0) {
+        switch(tag) {
+          default:
+            _unknownFields = pb::UnknownFieldSet.MergeFieldFrom(_unknownFields, ref input);
+            break;
+          case 10: {
+            global::Google.Cloud.Dataproc.V1.ManagedCluster subBuilder = new global::Google.Cloud.Dataproc.V1.ManagedCluster();
+            if (placementCase_ == PlacementOneofCase.ManagedCluster) {
+              subBuilder.MergeFrom(ManagedCluster);
+            }
+            input.ReadMessage(subBuilder);
+            ManagedCluster = subBuilder;
+            break;
+          }
+          case 18: {
+            global::Google.Cloud.Dataproc.V1.ClusterSelector subBuilder = new global::Google.Cloud.Dataproc.V1.ClusterSelector();
+            if (placementCase_ == PlacementOneofCase.ClusterSelector) {
+              subBuilder.MergeFrom(ClusterSelector);
+            }
+            input.ReadMessage(subBuilder);
+            ClusterSelector = subBuilder;
+            break;
+          }
+        }
+      }
+    }
+    #endif
 
   }
 
   /// <summary>
   /// Cluster that is managed by the workflow.
   /// </summary>
-  public sealed partial class ManagedCluster : pb::IMessage<ManagedCluster> {
+  public sealed partial class ManagedCluster : pb::IMessage<ManagedCluster>
+  #if !GOOGLE_PROTOBUF_REFSTRUCT_COMPATIBILITY_MODE
+      , pb::IBufferMessage
+  #endif
+  {
     private static readonly pb::MessageParser<ManagedCluster> _parser = new pb::MessageParser<ManagedCluster>(() => new ManagedCluster());
     private pb::UnknownFieldSet _unknownFields;
     [global::System.Diagnostics.DebuggerNonUserCodeAttribute]
@@ -917,7 +1092,7 @@ namespace Google.Cloud.Dataproc.V1 {
     /// <summary>Field number for the "labels" field.</summary>
     public const int LabelsFieldNumber = 4;
     private static readonly pbc::MapField<string, string>.Codec _map_labels_codec
-        = new pbc::MapField<string, string>.Codec(pb::FieldCodec.ForString(10), pb::FieldCodec.ForString(18), 34);
+        = new pbc::MapField<string, string>.Codec(pb::FieldCodec.ForString(10, ""), pb::FieldCodec.ForString(18, ""), 34);
     private readonly pbc::MapField<string, string> labels_ = new pbc::MapField<string, string>();
     /// <summary>
     /// Optional. The labels to associate with this cluster.
@@ -974,6 +1149,9 @@ namespace Google.Cloud.Dataproc.V1 {
 
     [global::System.Diagnostics.DebuggerNonUserCodeAttribute]
     public void WriteTo(pb::CodedOutputStream output) {
+    #if !GOOGLE_PROTOBUF_REFSTRUCT_COMPATIBILITY_MODE
+      output.WriteRawMessage(this);
+    #else
       if (ClusterName.Length != 0) {
         output.WriteRawTag(18);
         output.WriteString(ClusterName);
@@ -986,7 +1164,26 @@ namespace Google.Cloud.Dataproc.V1 {
       if (_unknownFields != null) {
         _unknownFields.WriteTo(output);
       }
+    #endif
     }
+
+    #if !GOOGLE_PROTOBUF_REFSTRUCT_COMPATIBILITY_MODE
+    [global::System.Diagnostics.DebuggerNonUserCodeAttribute]
+    void pb::IBufferMessage.InternalWriteTo(ref pb::WriteContext output) {
+      if (ClusterName.Length != 0) {
+        output.WriteRawTag(18);
+        output.WriteString(ClusterName);
+      }
+      if (config_ != null) {
+        output.WriteRawTag(26);
+        output.WriteMessage(Config);
+      }
+      labels_.WriteTo(ref output, _map_labels_codec);
+      if (_unknownFields != null) {
+        _unknownFields.WriteTo(ref output);
+      }
+    }
+    #endif
 
     [global::System.Diagnostics.DebuggerNonUserCodeAttribute]
     public int CalculateSize() {
@@ -1024,6 +1221,9 @@ namespace Google.Cloud.Dataproc.V1 {
 
     [global::System.Diagnostics.DebuggerNonUserCodeAttribute]
     public void MergeFrom(pb::CodedInputStream input) {
+    #if !GOOGLE_PROTOBUF_REFSTRUCT_COMPATIBILITY_MODE
+      input.ReadRawMessage(this);
+    #else
       uint tag;
       while ((tag = input.ReadTag()) != 0) {
         switch(tag) {
@@ -1047,14 +1247,48 @@ namespace Google.Cloud.Dataproc.V1 {
           }
         }
       }
+    #endif
     }
+
+    #if !GOOGLE_PROTOBUF_REFSTRUCT_COMPATIBILITY_MODE
+    [global::System.Diagnostics.DebuggerNonUserCodeAttribute]
+    void pb::IBufferMessage.InternalMergeFrom(ref pb::ParseContext input) {
+      uint tag;
+      while ((tag = input.ReadTag()) != 0) {
+        switch(tag) {
+          default:
+            _unknownFields = pb::UnknownFieldSet.MergeFieldFrom(_unknownFields, ref input);
+            break;
+          case 18: {
+            ClusterName = input.ReadString();
+            break;
+          }
+          case 26: {
+            if (config_ == null) {
+              Config = new global::Google.Cloud.Dataproc.V1.ClusterConfig();
+            }
+            input.ReadMessage(Config);
+            break;
+          }
+          case 34: {
+            labels_.AddEntriesFrom(ref input, _map_labels_codec);
+            break;
+          }
+        }
+      }
+    }
+    #endif
 
   }
 
   /// <summary>
   /// A selector that chooses target cluster for jobs based on metadata.
   /// </summary>
-  public sealed partial class ClusterSelector : pb::IMessage<ClusterSelector> {
+  public sealed partial class ClusterSelector : pb::IMessage<ClusterSelector>
+  #if !GOOGLE_PROTOBUF_REFSTRUCT_COMPATIBILITY_MODE
+      , pb::IBufferMessage
+  #endif
+  {
     private static readonly pb::MessageParser<ClusterSelector> _parser = new pb::MessageParser<ClusterSelector>(() => new ClusterSelector());
     private pb::UnknownFieldSet _unknownFields;
     [global::System.Diagnostics.DebuggerNonUserCodeAttribute]
@@ -1110,7 +1344,7 @@ namespace Google.Cloud.Dataproc.V1 {
     /// <summary>Field number for the "cluster_labels" field.</summary>
     public const int ClusterLabelsFieldNumber = 2;
     private static readonly pbc::MapField<string, string>.Codec _map_clusterLabels_codec
-        = new pbc::MapField<string, string>.Codec(pb::FieldCodec.ForString(10), pb::FieldCodec.ForString(18), 18);
+        = new pbc::MapField<string, string>.Codec(pb::FieldCodec.ForString(10, ""), pb::FieldCodec.ForString(18, ""), 18);
     private readonly pbc::MapField<string, string> clusterLabels_ = new pbc::MapField<string, string>();
     /// <summary>
     /// Required. The cluster labels. Cluster must have all labels
@@ -1157,6 +1391,9 @@ namespace Google.Cloud.Dataproc.V1 {
 
     [global::System.Diagnostics.DebuggerNonUserCodeAttribute]
     public void WriteTo(pb::CodedOutputStream output) {
+    #if !GOOGLE_PROTOBUF_REFSTRUCT_COMPATIBILITY_MODE
+      output.WriteRawMessage(this);
+    #else
       if (Zone.Length != 0) {
         output.WriteRawTag(10);
         output.WriteString(Zone);
@@ -1165,7 +1402,22 @@ namespace Google.Cloud.Dataproc.V1 {
       if (_unknownFields != null) {
         _unknownFields.WriteTo(output);
       }
+    #endif
     }
+
+    #if !GOOGLE_PROTOBUF_REFSTRUCT_COMPATIBILITY_MODE
+    [global::System.Diagnostics.DebuggerNonUserCodeAttribute]
+    void pb::IBufferMessage.InternalWriteTo(ref pb::WriteContext output) {
+      if (Zone.Length != 0) {
+        output.WriteRawTag(10);
+        output.WriteString(Zone);
+      }
+      clusterLabels_.WriteTo(ref output, _map_clusterLabels_codec);
+      if (_unknownFields != null) {
+        _unknownFields.WriteTo(ref output);
+      }
+    }
+    #endif
 
     [global::System.Diagnostics.DebuggerNonUserCodeAttribute]
     public int CalculateSize() {
@@ -1194,6 +1446,9 @@ namespace Google.Cloud.Dataproc.V1 {
 
     [global::System.Diagnostics.DebuggerNonUserCodeAttribute]
     public void MergeFrom(pb::CodedInputStream input) {
+    #if !GOOGLE_PROTOBUF_REFSTRUCT_COMPATIBILITY_MODE
+      input.ReadRawMessage(this);
+    #else
       uint tag;
       while ((tag = input.ReadTag()) != 0) {
         switch(tag) {
@@ -1210,14 +1465,41 @@ namespace Google.Cloud.Dataproc.V1 {
           }
         }
       }
+    #endif
     }
+
+    #if !GOOGLE_PROTOBUF_REFSTRUCT_COMPATIBILITY_MODE
+    [global::System.Diagnostics.DebuggerNonUserCodeAttribute]
+    void pb::IBufferMessage.InternalMergeFrom(ref pb::ParseContext input) {
+      uint tag;
+      while ((tag = input.ReadTag()) != 0) {
+        switch(tag) {
+          default:
+            _unknownFields = pb::UnknownFieldSet.MergeFieldFrom(_unknownFields, ref input);
+            break;
+          case 10: {
+            Zone = input.ReadString();
+            break;
+          }
+          case 18: {
+            clusterLabels_.AddEntriesFrom(ref input, _map_clusterLabels_codec);
+            break;
+          }
+        }
+      }
+    }
+    #endif
 
   }
 
   /// <summary>
   /// A job executed by the workflow.
   /// </summary>
-  public sealed partial class OrderedJob : pb::IMessage<OrderedJob> {
+  public sealed partial class OrderedJob : pb::IMessage<OrderedJob>
+  #if !GOOGLE_PROTOBUF_REFSTRUCT_COMPATIBILITY_MODE
+      , pb::IBufferMessage
+  #endif
+  {
     private static readonly pb::MessageParser<OrderedJob> _parser = new pb::MessageParser<OrderedJob>(() => new OrderedJob());
     private pb::UnknownFieldSet _unknownFields;
     [global::System.Diagnostics.DebuggerNonUserCodeAttribute]
@@ -1262,8 +1544,14 @@ namespace Google.Cloud.Dataproc.V1 {
         case JobTypeOneofCase.PigJob:
           PigJob = other.PigJob.Clone();
           break;
+        case JobTypeOneofCase.SparkRJob:
+          SparkRJob = other.SparkRJob.Clone();
+          break;
         case JobTypeOneofCase.SparkSqlJob:
           SparkSqlJob = other.SparkSqlJob.Clone();
+          break;
+        case JobTypeOneofCase.PrestoJob:
+          PrestoJob = other.PrestoJob.Clone();
           break;
       }
 
@@ -1302,7 +1590,7 @@ namespace Google.Cloud.Dataproc.V1 {
     /// <summary>Field number for the "hadoop_job" field.</summary>
     public const int HadoopJobFieldNumber = 2;
     /// <summary>
-    /// Job is a Hadoop job.
+    /// Optional. Job is a Hadoop job.
     /// </summary>
     [global::System.Diagnostics.DebuggerNonUserCodeAttribute]
     public global::Google.Cloud.Dataproc.V1.HadoopJob HadoopJob {
@@ -1316,7 +1604,7 @@ namespace Google.Cloud.Dataproc.V1 {
     /// <summary>Field number for the "spark_job" field.</summary>
     public const int SparkJobFieldNumber = 3;
     /// <summary>
-    /// Job is a Spark job.
+    /// Optional. Job is a Spark job.
     /// </summary>
     [global::System.Diagnostics.DebuggerNonUserCodeAttribute]
     public global::Google.Cloud.Dataproc.V1.SparkJob SparkJob {
@@ -1330,7 +1618,7 @@ namespace Google.Cloud.Dataproc.V1 {
     /// <summary>Field number for the "pyspark_job" field.</summary>
     public const int PysparkJobFieldNumber = 4;
     /// <summary>
-    /// Job is a Pyspark job.
+    /// Optional. Job is a PySpark job.
     /// </summary>
     [global::System.Diagnostics.DebuggerNonUserCodeAttribute]
     public global::Google.Cloud.Dataproc.V1.PySparkJob PysparkJob {
@@ -1344,7 +1632,7 @@ namespace Google.Cloud.Dataproc.V1 {
     /// <summary>Field number for the "hive_job" field.</summary>
     public const int HiveJobFieldNumber = 5;
     /// <summary>
-    /// Job is a Hive job.
+    /// Optional. Job is a Hive job.
     /// </summary>
     [global::System.Diagnostics.DebuggerNonUserCodeAttribute]
     public global::Google.Cloud.Dataproc.V1.HiveJob HiveJob {
@@ -1358,7 +1646,7 @@ namespace Google.Cloud.Dataproc.V1 {
     /// <summary>Field number for the "pig_job" field.</summary>
     public const int PigJobFieldNumber = 6;
     /// <summary>
-    /// Job is a Pig job.
+    /// Optional. Job is a Pig job.
     /// </summary>
     [global::System.Diagnostics.DebuggerNonUserCodeAttribute]
     public global::Google.Cloud.Dataproc.V1.PigJob PigJob {
@@ -1369,10 +1657,24 @@ namespace Google.Cloud.Dataproc.V1 {
       }
     }
 
+    /// <summary>Field number for the "spark_r_job" field.</summary>
+    public const int SparkRJobFieldNumber = 11;
+    /// <summary>
+    /// Optional. Job is a SparkR job.
+    /// </summary>
+    [global::System.Diagnostics.DebuggerNonUserCodeAttribute]
+    public global::Google.Cloud.Dataproc.V1.SparkRJob SparkRJob {
+      get { return jobTypeCase_ == JobTypeOneofCase.SparkRJob ? (global::Google.Cloud.Dataproc.V1.SparkRJob) jobType_ : null; }
+      set {
+        jobType_ = value;
+        jobTypeCase_ = value == null ? JobTypeOneofCase.None : JobTypeOneofCase.SparkRJob;
+      }
+    }
+
     /// <summary>Field number for the "spark_sql_job" field.</summary>
     public const int SparkSqlJobFieldNumber = 7;
     /// <summary>
-    /// Job is a SparkSql job.
+    /// Optional. Job is a SparkSql job.
     /// </summary>
     [global::System.Diagnostics.DebuggerNonUserCodeAttribute]
     public global::Google.Cloud.Dataproc.V1.SparkSqlJob SparkSqlJob {
@@ -1383,10 +1685,24 @@ namespace Google.Cloud.Dataproc.V1 {
       }
     }
 
+    /// <summary>Field number for the "presto_job" field.</summary>
+    public const int PrestoJobFieldNumber = 12;
+    /// <summary>
+    /// Optional. Job is a Presto job.
+    /// </summary>
+    [global::System.Diagnostics.DebuggerNonUserCodeAttribute]
+    public global::Google.Cloud.Dataproc.V1.PrestoJob PrestoJob {
+      get { return jobTypeCase_ == JobTypeOneofCase.PrestoJob ? (global::Google.Cloud.Dataproc.V1.PrestoJob) jobType_ : null; }
+      set {
+        jobType_ = value;
+        jobTypeCase_ = value == null ? JobTypeOneofCase.None : JobTypeOneofCase.PrestoJob;
+      }
+    }
+
     /// <summary>Field number for the "labels" field.</summary>
     public const int LabelsFieldNumber = 8;
     private static readonly pbc::MapField<string, string>.Codec _map_labels_codec
-        = new pbc::MapField<string, string>.Codec(pb::FieldCodec.ForString(10), pb::FieldCodec.ForString(18), 66);
+        = new pbc::MapField<string, string>.Codec(pb::FieldCodec.ForString(10, ""), pb::FieldCodec.ForString(18, ""), 66);
     private readonly pbc::MapField<string, string> labels_ = new pbc::MapField<string, string>();
     /// <summary>
     /// Optional. The labels to associate with this job.
@@ -1442,7 +1758,9 @@ namespace Google.Cloud.Dataproc.V1 {
       PysparkJob = 4,
       HiveJob = 5,
       PigJob = 6,
+      SparkRJob = 11,
       SparkSqlJob = 7,
+      PrestoJob = 12,
     }
     private JobTypeOneofCase jobTypeCase_ = JobTypeOneofCase.None;
     [global::System.Diagnostics.DebuggerNonUserCodeAttribute]
@@ -1475,7 +1793,9 @@ namespace Google.Cloud.Dataproc.V1 {
       if (!object.Equals(PysparkJob, other.PysparkJob)) return false;
       if (!object.Equals(HiveJob, other.HiveJob)) return false;
       if (!object.Equals(PigJob, other.PigJob)) return false;
+      if (!object.Equals(SparkRJob, other.SparkRJob)) return false;
       if (!object.Equals(SparkSqlJob, other.SparkSqlJob)) return false;
+      if (!object.Equals(PrestoJob, other.PrestoJob)) return false;
       if (!Labels.Equals(other.Labels)) return false;
       if (!object.Equals(Scheduling, other.Scheduling)) return false;
       if(!prerequisiteStepIds_.Equals(other.prerequisiteStepIds_)) return false;
@@ -1492,7 +1812,9 @@ namespace Google.Cloud.Dataproc.V1 {
       if (jobTypeCase_ == JobTypeOneofCase.PysparkJob) hash ^= PysparkJob.GetHashCode();
       if (jobTypeCase_ == JobTypeOneofCase.HiveJob) hash ^= HiveJob.GetHashCode();
       if (jobTypeCase_ == JobTypeOneofCase.PigJob) hash ^= PigJob.GetHashCode();
+      if (jobTypeCase_ == JobTypeOneofCase.SparkRJob) hash ^= SparkRJob.GetHashCode();
       if (jobTypeCase_ == JobTypeOneofCase.SparkSqlJob) hash ^= SparkSqlJob.GetHashCode();
+      if (jobTypeCase_ == JobTypeOneofCase.PrestoJob) hash ^= PrestoJob.GetHashCode();
       hash ^= Labels.GetHashCode();
       if (scheduling_ != null) hash ^= Scheduling.GetHashCode();
       hash ^= prerequisiteStepIds_.GetHashCode();
@@ -1510,6 +1832,9 @@ namespace Google.Cloud.Dataproc.V1 {
 
     [global::System.Diagnostics.DebuggerNonUserCodeAttribute]
     public void WriteTo(pb::CodedOutputStream output) {
+    #if !GOOGLE_PROTOBUF_REFSTRUCT_COMPATIBILITY_MODE
+      output.WriteRawMessage(this);
+    #else
       if (StepId.Length != 0) {
         output.WriteRawTag(10);
         output.WriteString(StepId);
@@ -1544,10 +1869,70 @@ namespace Google.Cloud.Dataproc.V1 {
         output.WriteMessage(Scheduling);
       }
       prerequisiteStepIds_.WriteTo(output, _repeated_prerequisiteStepIds_codec);
+      if (jobTypeCase_ == JobTypeOneofCase.SparkRJob) {
+        output.WriteRawTag(90);
+        output.WriteMessage(SparkRJob);
+      }
+      if (jobTypeCase_ == JobTypeOneofCase.PrestoJob) {
+        output.WriteRawTag(98);
+        output.WriteMessage(PrestoJob);
+      }
       if (_unknownFields != null) {
         _unknownFields.WriteTo(output);
       }
+    #endif
     }
+
+    #if !GOOGLE_PROTOBUF_REFSTRUCT_COMPATIBILITY_MODE
+    [global::System.Diagnostics.DebuggerNonUserCodeAttribute]
+    void pb::IBufferMessage.InternalWriteTo(ref pb::WriteContext output) {
+      if (StepId.Length != 0) {
+        output.WriteRawTag(10);
+        output.WriteString(StepId);
+      }
+      if (jobTypeCase_ == JobTypeOneofCase.HadoopJob) {
+        output.WriteRawTag(18);
+        output.WriteMessage(HadoopJob);
+      }
+      if (jobTypeCase_ == JobTypeOneofCase.SparkJob) {
+        output.WriteRawTag(26);
+        output.WriteMessage(SparkJob);
+      }
+      if (jobTypeCase_ == JobTypeOneofCase.PysparkJob) {
+        output.WriteRawTag(34);
+        output.WriteMessage(PysparkJob);
+      }
+      if (jobTypeCase_ == JobTypeOneofCase.HiveJob) {
+        output.WriteRawTag(42);
+        output.WriteMessage(HiveJob);
+      }
+      if (jobTypeCase_ == JobTypeOneofCase.PigJob) {
+        output.WriteRawTag(50);
+        output.WriteMessage(PigJob);
+      }
+      if (jobTypeCase_ == JobTypeOneofCase.SparkSqlJob) {
+        output.WriteRawTag(58);
+        output.WriteMessage(SparkSqlJob);
+      }
+      labels_.WriteTo(ref output, _map_labels_codec);
+      if (scheduling_ != null) {
+        output.WriteRawTag(74);
+        output.WriteMessage(Scheduling);
+      }
+      prerequisiteStepIds_.WriteTo(ref output, _repeated_prerequisiteStepIds_codec);
+      if (jobTypeCase_ == JobTypeOneofCase.SparkRJob) {
+        output.WriteRawTag(90);
+        output.WriteMessage(SparkRJob);
+      }
+      if (jobTypeCase_ == JobTypeOneofCase.PrestoJob) {
+        output.WriteRawTag(98);
+        output.WriteMessage(PrestoJob);
+      }
+      if (_unknownFields != null) {
+        _unknownFields.WriteTo(ref output);
+      }
+    }
+    #endif
 
     [global::System.Diagnostics.DebuggerNonUserCodeAttribute]
     public int CalculateSize() {
@@ -1570,8 +1955,14 @@ namespace Google.Cloud.Dataproc.V1 {
       if (jobTypeCase_ == JobTypeOneofCase.PigJob) {
         size += 1 + pb::CodedOutputStream.ComputeMessageSize(PigJob);
       }
+      if (jobTypeCase_ == JobTypeOneofCase.SparkRJob) {
+        size += 1 + pb::CodedOutputStream.ComputeMessageSize(SparkRJob);
+      }
       if (jobTypeCase_ == JobTypeOneofCase.SparkSqlJob) {
         size += 1 + pb::CodedOutputStream.ComputeMessageSize(SparkSqlJob);
+      }
+      if (jobTypeCase_ == JobTypeOneofCase.PrestoJob) {
+        size += 1 + pb::CodedOutputStream.ComputeMessageSize(PrestoJob);
       }
       size += labels_.CalculateSize(_map_labels_codec);
       if (scheduling_ != null) {
@@ -1631,11 +2022,23 @@ namespace Google.Cloud.Dataproc.V1 {
           }
           PigJob.MergeFrom(other.PigJob);
           break;
+        case JobTypeOneofCase.SparkRJob:
+          if (SparkRJob == null) {
+            SparkRJob = new global::Google.Cloud.Dataproc.V1.SparkRJob();
+          }
+          SparkRJob.MergeFrom(other.SparkRJob);
+          break;
         case JobTypeOneofCase.SparkSqlJob:
           if (SparkSqlJob == null) {
             SparkSqlJob = new global::Google.Cloud.Dataproc.V1.SparkSqlJob();
           }
           SparkSqlJob.MergeFrom(other.SparkSqlJob);
+          break;
+        case JobTypeOneofCase.PrestoJob:
+          if (PrestoJob == null) {
+            PrestoJob = new global::Google.Cloud.Dataproc.V1.PrestoJob();
+          }
+          PrestoJob.MergeFrom(other.PrestoJob);
           break;
       }
 
@@ -1644,6 +2047,9 @@ namespace Google.Cloud.Dataproc.V1 {
 
     [global::System.Diagnostics.DebuggerNonUserCodeAttribute]
     public void MergeFrom(pb::CodedInputStream input) {
+    #if !GOOGLE_PROTOBUF_REFSTRUCT_COMPATIBILITY_MODE
+      input.ReadRawMessage(this);
+    #else
       uint tag;
       while ((tag = input.ReadTag()) != 0) {
         switch(tag) {
@@ -1723,9 +2129,133 @@ namespace Google.Cloud.Dataproc.V1 {
             prerequisiteStepIds_.AddEntriesFrom(input, _repeated_prerequisiteStepIds_codec);
             break;
           }
+          case 90: {
+            global::Google.Cloud.Dataproc.V1.SparkRJob subBuilder = new global::Google.Cloud.Dataproc.V1.SparkRJob();
+            if (jobTypeCase_ == JobTypeOneofCase.SparkRJob) {
+              subBuilder.MergeFrom(SparkRJob);
+            }
+            input.ReadMessage(subBuilder);
+            SparkRJob = subBuilder;
+            break;
+          }
+          case 98: {
+            global::Google.Cloud.Dataproc.V1.PrestoJob subBuilder = new global::Google.Cloud.Dataproc.V1.PrestoJob();
+            if (jobTypeCase_ == JobTypeOneofCase.PrestoJob) {
+              subBuilder.MergeFrom(PrestoJob);
+            }
+            input.ReadMessage(subBuilder);
+            PrestoJob = subBuilder;
+            break;
+          }
+        }
+      }
+    #endif
+    }
+
+    #if !GOOGLE_PROTOBUF_REFSTRUCT_COMPATIBILITY_MODE
+    [global::System.Diagnostics.DebuggerNonUserCodeAttribute]
+    void pb::IBufferMessage.InternalMergeFrom(ref pb::ParseContext input) {
+      uint tag;
+      while ((tag = input.ReadTag()) != 0) {
+        switch(tag) {
+          default:
+            _unknownFields = pb::UnknownFieldSet.MergeFieldFrom(_unknownFields, ref input);
+            break;
+          case 10: {
+            StepId = input.ReadString();
+            break;
+          }
+          case 18: {
+            global::Google.Cloud.Dataproc.V1.HadoopJob subBuilder = new global::Google.Cloud.Dataproc.V1.HadoopJob();
+            if (jobTypeCase_ == JobTypeOneofCase.HadoopJob) {
+              subBuilder.MergeFrom(HadoopJob);
+            }
+            input.ReadMessage(subBuilder);
+            HadoopJob = subBuilder;
+            break;
+          }
+          case 26: {
+            global::Google.Cloud.Dataproc.V1.SparkJob subBuilder = new global::Google.Cloud.Dataproc.V1.SparkJob();
+            if (jobTypeCase_ == JobTypeOneofCase.SparkJob) {
+              subBuilder.MergeFrom(SparkJob);
+            }
+            input.ReadMessage(subBuilder);
+            SparkJob = subBuilder;
+            break;
+          }
+          case 34: {
+            global::Google.Cloud.Dataproc.V1.PySparkJob subBuilder = new global::Google.Cloud.Dataproc.V1.PySparkJob();
+            if (jobTypeCase_ == JobTypeOneofCase.PysparkJob) {
+              subBuilder.MergeFrom(PysparkJob);
+            }
+            input.ReadMessage(subBuilder);
+            PysparkJob = subBuilder;
+            break;
+          }
+          case 42: {
+            global::Google.Cloud.Dataproc.V1.HiveJob subBuilder = new global::Google.Cloud.Dataproc.V1.HiveJob();
+            if (jobTypeCase_ == JobTypeOneofCase.HiveJob) {
+              subBuilder.MergeFrom(HiveJob);
+            }
+            input.ReadMessage(subBuilder);
+            HiveJob = subBuilder;
+            break;
+          }
+          case 50: {
+            global::Google.Cloud.Dataproc.V1.PigJob subBuilder = new global::Google.Cloud.Dataproc.V1.PigJob();
+            if (jobTypeCase_ == JobTypeOneofCase.PigJob) {
+              subBuilder.MergeFrom(PigJob);
+            }
+            input.ReadMessage(subBuilder);
+            PigJob = subBuilder;
+            break;
+          }
+          case 58: {
+            global::Google.Cloud.Dataproc.V1.SparkSqlJob subBuilder = new global::Google.Cloud.Dataproc.V1.SparkSqlJob();
+            if (jobTypeCase_ == JobTypeOneofCase.SparkSqlJob) {
+              subBuilder.MergeFrom(SparkSqlJob);
+            }
+            input.ReadMessage(subBuilder);
+            SparkSqlJob = subBuilder;
+            break;
+          }
+          case 66: {
+            labels_.AddEntriesFrom(ref input, _map_labels_codec);
+            break;
+          }
+          case 74: {
+            if (scheduling_ == null) {
+              Scheduling = new global::Google.Cloud.Dataproc.V1.JobScheduling();
+            }
+            input.ReadMessage(Scheduling);
+            break;
+          }
+          case 82: {
+            prerequisiteStepIds_.AddEntriesFrom(ref input, _repeated_prerequisiteStepIds_codec);
+            break;
+          }
+          case 90: {
+            global::Google.Cloud.Dataproc.V1.SparkRJob subBuilder = new global::Google.Cloud.Dataproc.V1.SparkRJob();
+            if (jobTypeCase_ == JobTypeOneofCase.SparkRJob) {
+              subBuilder.MergeFrom(SparkRJob);
+            }
+            input.ReadMessage(subBuilder);
+            SparkRJob = subBuilder;
+            break;
+          }
+          case 98: {
+            global::Google.Cloud.Dataproc.V1.PrestoJob subBuilder = new global::Google.Cloud.Dataproc.V1.PrestoJob();
+            if (jobTypeCase_ == JobTypeOneofCase.PrestoJob) {
+              subBuilder.MergeFrom(PrestoJob);
+            }
+            input.ReadMessage(subBuilder);
+            PrestoJob = subBuilder;
+            break;
+          }
         }
       }
     }
+    #endif
 
   }
 
@@ -1740,7 +2270,11 @@ namespace Google.Cloud.Dataproc.V1 {
   /// - Main class (in HadoopJob and SparkJob)
   /// - Zone (in ClusterSelector)
   /// </summary>
-  public sealed partial class TemplateParameter : pb::IMessage<TemplateParameter> {
+  public sealed partial class TemplateParameter : pb::IMessage<TemplateParameter>
+  #if !GOOGLE_PROTOBUF_REFSTRUCT_COMPATIBILITY_MODE
+      , pb::IBufferMessage
+  #endif
+  {
     private static readonly pb::MessageParser<TemplateParameter> _parser = new pb::MessageParser<TemplateParameter>(() => new TemplateParameter());
     private pb::UnknownFieldSet _unknownFields;
     [global::System.Diagnostics.DebuggerNonUserCodeAttribute]
@@ -1922,6 +2456,9 @@ namespace Google.Cloud.Dataproc.V1 {
 
     [global::System.Diagnostics.DebuggerNonUserCodeAttribute]
     public void WriteTo(pb::CodedOutputStream output) {
+    #if !GOOGLE_PROTOBUF_REFSTRUCT_COMPATIBILITY_MODE
+      output.WriteRawMessage(this);
+    #else
       if (Name.Length != 0) {
         output.WriteRawTag(10);
         output.WriteString(Name);
@@ -1938,7 +2475,30 @@ namespace Google.Cloud.Dataproc.V1 {
       if (_unknownFields != null) {
         _unknownFields.WriteTo(output);
       }
+    #endif
     }
+
+    #if !GOOGLE_PROTOBUF_REFSTRUCT_COMPATIBILITY_MODE
+    [global::System.Diagnostics.DebuggerNonUserCodeAttribute]
+    void pb::IBufferMessage.InternalWriteTo(ref pb::WriteContext output) {
+      if (Name.Length != 0) {
+        output.WriteRawTag(10);
+        output.WriteString(Name);
+      }
+      fields_.WriteTo(ref output, _repeated_fields_codec);
+      if (Description.Length != 0) {
+        output.WriteRawTag(26);
+        output.WriteString(Description);
+      }
+      if (validation_ != null) {
+        output.WriteRawTag(34);
+        output.WriteMessage(Validation);
+      }
+      if (_unknownFields != null) {
+        _unknownFields.WriteTo(ref output);
+      }
+    }
+    #endif
 
     [global::System.Diagnostics.DebuggerNonUserCodeAttribute]
     public int CalculateSize() {
@@ -1982,6 +2542,9 @@ namespace Google.Cloud.Dataproc.V1 {
 
     [global::System.Diagnostics.DebuggerNonUserCodeAttribute]
     public void MergeFrom(pb::CodedInputStream input) {
+    #if !GOOGLE_PROTOBUF_REFSTRUCT_COMPATIBILITY_MODE
+      input.ReadRawMessage(this);
+    #else
       uint tag;
       while ((tag = input.ReadTag()) != 0) {
         switch(tag) {
@@ -2009,14 +2572,52 @@ namespace Google.Cloud.Dataproc.V1 {
           }
         }
       }
+    #endif
     }
+
+    #if !GOOGLE_PROTOBUF_REFSTRUCT_COMPATIBILITY_MODE
+    [global::System.Diagnostics.DebuggerNonUserCodeAttribute]
+    void pb::IBufferMessage.InternalMergeFrom(ref pb::ParseContext input) {
+      uint tag;
+      while ((tag = input.ReadTag()) != 0) {
+        switch(tag) {
+          default:
+            _unknownFields = pb::UnknownFieldSet.MergeFieldFrom(_unknownFields, ref input);
+            break;
+          case 10: {
+            Name = input.ReadString();
+            break;
+          }
+          case 18: {
+            fields_.AddEntriesFrom(ref input, _repeated_fields_codec);
+            break;
+          }
+          case 26: {
+            Description = input.ReadString();
+            break;
+          }
+          case 34: {
+            if (validation_ == null) {
+              Validation = new global::Google.Cloud.Dataproc.V1.ParameterValidation();
+            }
+            input.ReadMessage(Validation);
+            break;
+          }
+        }
+      }
+    }
+    #endif
 
   }
 
   /// <summary>
   /// Configuration for parameter validation.
   /// </summary>
-  public sealed partial class ParameterValidation : pb::IMessage<ParameterValidation> {
+  public sealed partial class ParameterValidation : pb::IMessage<ParameterValidation>
+  #if !GOOGLE_PROTOBUF_REFSTRUCT_COMPATIBILITY_MODE
+      , pb::IBufferMessage
+  #endif
+  {
     private static readonly pb::MessageParser<ParameterValidation> _parser = new pb::MessageParser<ParameterValidation>(() => new ParameterValidation());
     private pb::UnknownFieldSet _unknownFields;
     [global::System.Diagnostics.DebuggerNonUserCodeAttribute]
@@ -2143,6 +2744,9 @@ namespace Google.Cloud.Dataproc.V1 {
 
     [global::System.Diagnostics.DebuggerNonUserCodeAttribute]
     public void WriteTo(pb::CodedOutputStream output) {
+    #if !GOOGLE_PROTOBUF_REFSTRUCT_COMPATIBILITY_MODE
+      output.WriteRawMessage(this);
+    #else
       if (validationTypeCase_ == ValidationTypeOneofCase.Regex) {
         output.WriteRawTag(10);
         output.WriteMessage(Regex);
@@ -2154,7 +2758,25 @@ namespace Google.Cloud.Dataproc.V1 {
       if (_unknownFields != null) {
         _unknownFields.WriteTo(output);
       }
+    #endif
     }
+
+    #if !GOOGLE_PROTOBUF_REFSTRUCT_COMPATIBILITY_MODE
+    [global::System.Diagnostics.DebuggerNonUserCodeAttribute]
+    void pb::IBufferMessage.InternalWriteTo(ref pb::WriteContext output) {
+      if (validationTypeCase_ == ValidationTypeOneofCase.Regex) {
+        output.WriteRawTag(10);
+        output.WriteMessage(Regex);
+      }
+      if (validationTypeCase_ == ValidationTypeOneofCase.Values) {
+        output.WriteRawTag(18);
+        output.WriteMessage(Values);
+      }
+      if (_unknownFields != null) {
+        _unknownFields.WriteTo(ref output);
+      }
+    }
+    #endif
 
     [global::System.Diagnostics.DebuggerNonUserCodeAttribute]
     public int CalculateSize() {
@@ -2196,6 +2818,9 @@ namespace Google.Cloud.Dataproc.V1 {
 
     [global::System.Diagnostics.DebuggerNonUserCodeAttribute]
     public void MergeFrom(pb::CodedInputStream input) {
+    #if !GOOGLE_PROTOBUF_REFSTRUCT_COMPATIBILITY_MODE
+      input.ReadRawMessage(this);
+    #else
       uint tag;
       while ((tag = input.ReadTag()) != 0) {
         switch(tag) {
@@ -2222,14 +2847,51 @@ namespace Google.Cloud.Dataproc.V1 {
           }
         }
       }
+    #endif
     }
+
+    #if !GOOGLE_PROTOBUF_REFSTRUCT_COMPATIBILITY_MODE
+    [global::System.Diagnostics.DebuggerNonUserCodeAttribute]
+    void pb::IBufferMessage.InternalMergeFrom(ref pb::ParseContext input) {
+      uint tag;
+      while ((tag = input.ReadTag()) != 0) {
+        switch(tag) {
+          default:
+            _unknownFields = pb::UnknownFieldSet.MergeFieldFrom(_unknownFields, ref input);
+            break;
+          case 10: {
+            global::Google.Cloud.Dataproc.V1.RegexValidation subBuilder = new global::Google.Cloud.Dataproc.V1.RegexValidation();
+            if (validationTypeCase_ == ValidationTypeOneofCase.Regex) {
+              subBuilder.MergeFrom(Regex);
+            }
+            input.ReadMessage(subBuilder);
+            Regex = subBuilder;
+            break;
+          }
+          case 18: {
+            global::Google.Cloud.Dataproc.V1.ValueValidation subBuilder = new global::Google.Cloud.Dataproc.V1.ValueValidation();
+            if (validationTypeCase_ == ValidationTypeOneofCase.Values) {
+              subBuilder.MergeFrom(Values);
+            }
+            input.ReadMessage(subBuilder);
+            Values = subBuilder;
+            break;
+          }
+        }
+      }
+    }
+    #endif
 
   }
 
   /// <summary>
   /// Validation based on regular expressions.
   /// </summary>
-  public sealed partial class RegexValidation : pb::IMessage<RegexValidation> {
+  public sealed partial class RegexValidation : pb::IMessage<RegexValidation>
+  #if !GOOGLE_PROTOBUF_REFSTRUCT_COMPATIBILITY_MODE
+      , pb::IBufferMessage
+  #endif
+  {
     private static readonly pb::MessageParser<RegexValidation> _parser = new pb::MessageParser<RegexValidation>(() => new RegexValidation());
     private pb::UnknownFieldSet _unknownFields;
     [global::System.Diagnostics.DebuggerNonUserCodeAttribute]
@@ -2312,11 +2974,25 @@ namespace Google.Cloud.Dataproc.V1 {
 
     [global::System.Diagnostics.DebuggerNonUserCodeAttribute]
     public void WriteTo(pb::CodedOutputStream output) {
+    #if !GOOGLE_PROTOBUF_REFSTRUCT_COMPATIBILITY_MODE
+      output.WriteRawMessage(this);
+    #else
       regexes_.WriteTo(output, _repeated_regexes_codec);
       if (_unknownFields != null) {
         _unknownFields.WriteTo(output);
       }
+    #endif
     }
+
+    #if !GOOGLE_PROTOBUF_REFSTRUCT_COMPATIBILITY_MODE
+    [global::System.Diagnostics.DebuggerNonUserCodeAttribute]
+    void pb::IBufferMessage.InternalWriteTo(ref pb::WriteContext output) {
+      regexes_.WriteTo(ref output, _repeated_regexes_codec);
+      if (_unknownFields != null) {
+        _unknownFields.WriteTo(ref output);
+      }
+    }
+    #endif
 
     [global::System.Diagnostics.DebuggerNonUserCodeAttribute]
     public int CalculateSize() {
@@ -2339,6 +3015,9 @@ namespace Google.Cloud.Dataproc.V1 {
 
     [global::System.Diagnostics.DebuggerNonUserCodeAttribute]
     public void MergeFrom(pb::CodedInputStream input) {
+    #if !GOOGLE_PROTOBUF_REFSTRUCT_COMPATIBILITY_MODE
+      input.ReadRawMessage(this);
+    #else
       uint tag;
       while ((tag = input.ReadTag()) != 0) {
         switch(tag) {
@@ -2351,14 +3030,37 @@ namespace Google.Cloud.Dataproc.V1 {
           }
         }
       }
+    #endif
     }
+
+    #if !GOOGLE_PROTOBUF_REFSTRUCT_COMPATIBILITY_MODE
+    [global::System.Diagnostics.DebuggerNonUserCodeAttribute]
+    void pb::IBufferMessage.InternalMergeFrom(ref pb::ParseContext input) {
+      uint tag;
+      while ((tag = input.ReadTag()) != 0) {
+        switch(tag) {
+          default:
+            _unknownFields = pb::UnknownFieldSet.MergeFieldFrom(_unknownFields, ref input);
+            break;
+          case 10: {
+            regexes_.AddEntriesFrom(ref input, _repeated_regexes_codec);
+            break;
+          }
+        }
+      }
+    }
+    #endif
 
   }
 
   /// <summary>
   /// Validation based on a list of allowed values.
   /// </summary>
-  public sealed partial class ValueValidation : pb::IMessage<ValueValidation> {
+  public sealed partial class ValueValidation : pb::IMessage<ValueValidation>
+  #if !GOOGLE_PROTOBUF_REFSTRUCT_COMPATIBILITY_MODE
+      , pb::IBufferMessage
+  #endif
+  {
     private static readonly pb::MessageParser<ValueValidation> _parser = new pb::MessageParser<ValueValidation>(() => new ValueValidation());
     private pb::UnknownFieldSet _unknownFields;
     [global::System.Diagnostics.DebuggerNonUserCodeAttribute]
@@ -2439,11 +3141,25 @@ namespace Google.Cloud.Dataproc.V1 {
 
     [global::System.Diagnostics.DebuggerNonUserCodeAttribute]
     public void WriteTo(pb::CodedOutputStream output) {
+    #if !GOOGLE_PROTOBUF_REFSTRUCT_COMPATIBILITY_MODE
+      output.WriteRawMessage(this);
+    #else
       values_.WriteTo(output, _repeated_values_codec);
       if (_unknownFields != null) {
         _unknownFields.WriteTo(output);
       }
+    #endif
     }
+
+    #if !GOOGLE_PROTOBUF_REFSTRUCT_COMPATIBILITY_MODE
+    [global::System.Diagnostics.DebuggerNonUserCodeAttribute]
+    void pb::IBufferMessage.InternalWriteTo(ref pb::WriteContext output) {
+      values_.WriteTo(ref output, _repeated_values_codec);
+      if (_unknownFields != null) {
+        _unknownFields.WriteTo(ref output);
+      }
+    }
+    #endif
 
     [global::System.Diagnostics.DebuggerNonUserCodeAttribute]
     public int CalculateSize() {
@@ -2466,6 +3182,9 @@ namespace Google.Cloud.Dataproc.V1 {
 
     [global::System.Diagnostics.DebuggerNonUserCodeAttribute]
     public void MergeFrom(pb::CodedInputStream input) {
+    #if !GOOGLE_PROTOBUF_REFSTRUCT_COMPATIBILITY_MODE
+      input.ReadRawMessage(this);
+    #else
       uint tag;
       while ((tag = input.ReadTag()) != 0) {
         switch(tag) {
@@ -2478,14 +3197,37 @@ namespace Google.Cloud.Dataproc.V1 {
           }
         }
       }
+    #endif
     }
+
+    #if !GOOGLE_PROTOBUF_REFSTRUCT_COMPATIBILITY_MODE
+    [global::System.Diagnostics.DebuggerNonUserCodeAttribute]
+    void pb::IBufferMessage.InternalMergeFrom(ref pb::ParseContext input) {
+      uint tag;
+      while ((tag = input.ReadTag()) != 0) {
+        switch(tag) {
+          default:
+            _unknownFields = pb::UnknownFieldSet.MergeFieldFrom(_unknownFields, ref input);
+            break;
+          case 10: {
+            values_.AddEntriesFrom(ref input, _repeated_values_codec);
+            break;
+          }
+        }
+      }
+    }
+    #endif
 
   }
 
   /// <summary>
   /// A Dataproc workflow template resource.
   /// </summary>
-  public sealed partial class WorkflowMetadata : pb::IMessage<WorkflowMetadata> {
+  public sealed partial class WorkflowMetadata : pb::IMessage<WorkflowMetadata>
+  #if !GOOGLE_PROTOBUF_REFSTRUCT_COMPATIBILITY_MODE
+      , pb::IBufferMessage
+  #endif
+  {
     private static readonly pb::MessageParser<WorkflowMetadata> _parser = new pb::MessageParser<WorkflowMetadata>(() => new WorkflowMetadata());
     private pb::UnknownFieldSet _unknownFields;
     [global::System.Diagnostics.DebuggerNonUserCodeAttribute]
@@ -2611,7 +3353,7 @@ namespace Google.Cloud.Dataproc.V1 {
 
     /// <summary>Field number for the "state" field.</summary>
     public const int StateFieldNumber = 6;
-    private global::Google.Cloud.Dataproc.V1.WorkflowMetadata.Types.State state_ = 0;
+    private global::Google.Cloud.Dataproc.V1.WorkflowMetadata.Types.State state_ = global::Google.Cloud.Dataproc.V1.WorkflowMetadata.Types.State.Unknown;
     /// <summary>
     /// Output only. The workflow state.
     /// </summary>
@@ -2640,7 +3382,7 @@ namespace Google.Cloud.Dataproc.V1 {
     /// <summary>Field number for the "parameters" field.</summary>
     public const int ParametersFieldNumber = 8;
     private static readonly pbc::MapField<string, string>.Codec _map_parameters_codec
-        = new pbc::MapField<string, string>.Codec(pb::FieldCodec.ForString(10), pb::FieldCodec.ForString(18), 66);
+        = new pbc::MapField<string, string>.Codec(pb::FieldCodec.ForString(10, ""), pb::FieldCodec.ForString(18, ""), 66);
     private readonly pbc::MapField<string, string> parameters_ = new pbc::MapField<string, string>();
     /// <summary>
     /// Map from parameter names to values that were used for those parameters.
@@ -2727,7 +3469,7 @@ namespace Google.Cloud.Dataproc.V1 {
       if (createCluster_ != null) hash ^= CreateCluster.GetHashCode();
       if (graph_ != null) hash ^= Graph.GetHashCode();
       if (deleteCluster_ != null) hash ^= DeleteCluster.GetHashCode();
-      if (State != 0) hash ^= State.GetHashCode();
+      if (State != global::Google.Cloud.Dataproc.V1.WorkflowMetadata.Types.State.Unknown) hash ^= State.GetHashCode();
       if (ClusterName.Length != 0) hash ^= ClusterName.GetHashCode();
       hash ^= Parameters.GetHashCode();
       if (startTime_ != null) hash ^= StartTime.GetHashCode();
@@ -2746,6 +3488,9 @@ namespace Google.Cloud.Dataproc.V1 {
 
     [global::System.Diagnostics.DebuggerNonUserCodeAttribute]
     public void WriteTo(pb::CodedOutputStream output) {
+    #if !GOOGLE_PROTOBUF_REFSTRUCT_COMPATIBILITY_MODE
+      output.WriteRawMessage(this);
+    #else
       if (Template.Length != 0) {
         output.WriteRawTag(10);
         output.WriteString(Template);
@@ -2766,7 +3511,7 @@ namespace Google.Cloud.Dataproc.V1 {
         output.WriteRawTag(42);
         output.WriteMessage(DeleteCluster);
       }
-      if (State != 0) {
+      if (State != global::Google.Cloud.Dataproc.V1.WorkflowMetadata.Types.State.Unknown) {
         output.WriteRawTag(48);
         output.WriteEnum((int) State);
       }
@@ -2790,7 +3535,58 @@ namespace Google.Cloud.Dataproc.V1 {
       if (_unknownFields != null) {
         _unknownFields.WriteTo(output);
       }
+    #endif
     }
+
+    #if !GOOGLE_PROTOBUF_REFSTRUCT_COMPATIBILITY_MODE
+    [global::System.Diagnostics.DebuggerNonUserCodeAttribute]
+    void pb::IBufferMessage.InternalWriteTo(ref pb::WriteContext output) {
+      if (Template.Length != 0) {
+        output.WriteRawTag(10);
+        output.WriteString(Template);
+      }
+      if (Version != 0) {
+        output.WriteRawTag(16);
+        output.WriteInt32(Version);
+      }
+      if (createCluster_ != null) {
+        output.WriteRawTag(26);
+        output.WriteMessage(CreateCluster);
+      }
+      if (graph_ != null) {
+        output.WriteRawTag(34);
+        output.WriteMessage(Graph);
+      }
+      if (deleteCluster_ != null) {
+        output.WriteRawTag(42);
+        output.WriteMessage(DeleteCluster);
+      }
+      if (State != global::Google.Cloud.Dataproc.V1.WorkflowMetadata.Types.State.Unknown) {
+        output.WriteRawTag(48);
+        output.WriteEnum((int) State);
+      }
+      if (ClusterName.Length != 0) {
+        output.WriteRawTag(58);
+        output.WriteString(ClusterName);
+      }
+      parameters_.WriteTo(ref output, _map_parameters_codec);
+      if (startTime_ != null) {
+        output.WriteRawTag(74);
+        output.WriteMessage(StartTime);
+      }
+      if (endTime_ != null) {
+        output.WriteRawTag(82);
+        output.WriteMessage(EndTime);
+      }
+      if (ClusterUuid.Length != 0) {
+        output.WriteRawTag(90);
+        output.WriteString(ClusterUuid);
+      }
+      if (_unknownFields != null) {
+        _unknownFields.WriteTo(ref output);
+      }
+    }
+    #endif
 
     [global::System.Diagnostics.DebuggerNonUserCodeAttribute]
     public int CalculateSize() {
@@ -2810,7 +3606,7 @@ namespace Google.Cloud.Dataproc.V1 {
       if (deleteCluster_ != null) {
         size += 1 + pb::CodedOutputStream.ComputeMessageSize(DeleteCluster);
       }
-      if (State != 0) {
+      if (State != global::Google.Cloud.Dataproc.V1.WorkflowMetadata.Types.State.Unknown) {
         size += 1 + pb::CodedOutputStream.ComputeEnumSize((int) State);
       }
       if (ClusterName.Length != 0) {
@@ -2861,7 +3657,7 @@ namespace Google.Cloud.Dataproc.V1 {
         }
         DeleteCluster.MergeFrom(other.DeleteCluster);
       }
-      if (other.State != 0) {
+      if (other.State != global::Google.Cloud.Dataproc.V1.WorkflowMetadata.Types.State.Unknown) {
         State = other.State;
       }
       if (other.ClusterName.Length != 0) {
@@ -2888,6 +3684,9 @@ namespace Google.Cloud.Dataproc.V1 {
 
     [global::System.Diagnostics.DebuggerNonUserCodeAttribute]
     public void MergeFrom(pb::CodedInputStream input) {
+    #if !GOOGLE_PROTOBUF_REFSTRUCT_COMPATIBILITY_MODE
+      input.ReadRawMessage(this);
+    #else
       uint tag;
       while ((tag = input.ReadTag()) != 0) {
         switch(tag) {
@@ -2955,7 +3754,81 @@ namespace Google.Cloud.Dataproc.V1 {
           }
         }
       }
+    #endif
     }
+
+    #if !GOOGLE_PROTOBUF_REFSTRUCT_COMPATIBILITY_MODE
+    [global::System.Diagnostics.DebuggerNonUserCodeAttribute]
+    void pb::IBufferMessage.InternalMergeFrom(ref pb::ParseContext input) {
+      uint tag;
+      while ((tag = input.ReadTag()) != 0) {
+        switch(tag) {
+          default:
+            _unknownFields = pb::UnknownFieldSet.MergeFieldFrom(_unknownFields, ref input);
+            break;
+          case 10: {
+            Template = input.ReadString();
+            break;
+          }
+          case 16: {
+            Version = input.ReadInt32();
+            break;
+          }
+          case 26: {
+            if (createCluster_ == null) {
+              CreateCluster = new global::Google.Cloud.Dataproc.V1.ClusterOperation();
+            }
+            input.ReadMessage(CreateCluster);
+            break;
+          }
+          case 34: {
+            if (graph_ == null) {
+              Graph = new global::Google.Cloud.Dataproc.V1.WorkflowGraph();
+            }
+            input.ReadMessage(Graph);
+            break;
+          }
+          case 42: {
+            if (deleteCluster_ == null) {
+              DeleteCluster = new global::Google.Cloud.Dataproc.V1.ClusterOperation();
+            }
+            input.ReadMessage(DeleteCluster);
+            break;
+          }
+          case 48: {
+            State = (global::Google.Cloud.Dataproc.V1.WorkflowMetadata.Types.State) input.ReadEnum();
+            break;
+          }
+          case 58: {
+            ClusterName = input.ReadString();
+            break;
+          }
+          case 66: {
+            parameters_.AddEntriesFrom(ref input, _map_parameters_codec);
+            break;
+          }
+          case 74: {
+            if (startTime_ == null) {
+              StartTime = new global::Google.Protobuf.WellKnownTypes.Timestamp();
+            }
+            input.ReadMessage(StartTime);
+            break;
+          }
+          case 82: {
+            if (endTime_ == null) {
+              EndTime = new global::Google.Protobuf.WellKnownTypes.Timestamp();
+            }
+            input.ReadMessage(EndTime);
+            break;
+          }
+          case 90: {
+            ClusterUuid = input.ReadString();
+            break;
+          }
+        }
+      }
+    }
+    #endif
 
     #region Nested types
     /// <summary>Container for nested types declared in the WorkflowMetadata message type.</summary>
@@ -2991,7 +3864,11 @@ namespace Google.Cloud.Dataproc.V1 {
   /// <summary>
   /// The cluster operation triggered by a workflow.
   /// </summary>
-  public sealed partial class ClusterOperation : pb::IMessage<ClusterOperation> {
+  public sealed partial class ClusterOperation : pb::IMessage<ClusterOperation>
+  #if !GOOGLE_PROTOBUF_REFSTRUCT_COMPATIBILITY_MODE
+      , pb::IBufferMessage
+  #endif
+  {
     private static readonly pb::MessageParser<ClusterOperation> _parser = new pb::MessageParser<ClusterOperation>(() => new ClusterOperation());
     private pb::UnknownFieldSet _unknownFields;
     [global::System.Diagnostics.DebuggerNonUserCodeAttribute]
@@ -3107,6 +3984,9 @@ namespace Google.Cloud.Dataproc.V1 {
 
     [global::System.Diagnostics.DebuggerNonUserCodeAttribute]
     public void WriteTo(pb::CodedOutputStream output) {
+    #if !GOOGLE_PROTOBUF_REFSTRUCT_COMPATIBILITY_MODE
+      output.WriteRawMessage(this);
+    #else
       if (OperationId.Length != 0) {
         output.WriteRawTag(10);
         output.WriteString(OperationId);
@@ -3122,7 +4002,29 @@ namespace Google.Cloud.Dataproc.V1 {
       if (_unknownFields != null) {
         _unknownFields.WriteTo(output);
       }
+    #endif
     }
+
+    #if !GOOGLE_PROTOBUF_REFSTRUCT_COMPATIBILITY_MODE
+    [global::System.Diagnostics.DebuggerNonUserCodeAttribute]
+    void pb::IBufferMessage.InternalWriteTo(ref pb::WriteContext output) {
+      if (OperationId.Length != 0) {
+        output.WriteRawTag(10);
+        output.WriteString(OperationId);
+      }
+      if (Error.Length != 0) {
+        output.WriteRawTag(18);
+        output.WriteString(Error);
+      }
+      if (Done != false) {
+        output.WriteRawTag(24);
+        output.WriteBool(Done);
+      }
+      if (_unknownFields != null) {
+        _unknownFields.WriteTo(ref output);
+      }
+    }
+    #endif
 
     [global::System.Diagnostics.DebuggerNonUserCodeAttribute]
     public int CalculateSize() {
@@ -3161,6 +4063,9 @@ namespace Google.Cloud.Dataproc.V1 {
 
     [global::System.Diagnostics.DebuggerNonUserCodeAttribute]
     public void MergeFrom(pb::CodedInputStream input) {
+    #if !GOOGLE_PROTOBUF_REFSTRUCT_COMPATIBILITY_MODE
+      input.ReadRawMessage(this);
+    #else
       uint tag;
       while ((tag = input.ReadTag()) != 0) {
         switch(tag) {
@@ -3181,14 +4086,45 @@ namespace Google.Cloud.Dataproc.V1 {
           }
         }
       }
+    #endif
     }
+
+    #if !GOOGLE_PROTOBUF_REFSTRUCT_COMPATIBILITY_MODE
+    [global::System.Diagnostics.DebuggerNonUserCodeAttribute]
+    void pb::IBufferMessage.InternalMergeFrom(ref pb::ParseContext input) {
+      uint tag;
+      while ((tag = input.ReadTag()) != 0) {
+        switch(tag) {
+          default:
+            _unknownFields = pb::UnknownFieldSet.MergeFieldFrom(_unknownFields, ref input);
+            break;
+          case 10: {
+            OperationId = input.ReadString();
+            break;
+          }
+          case 18: {
+            Error = input.ReadString();
+            break;
+          }
+          case 24: {
+            Done = input.ReadBool();
+            break;
+          }
+        }
+      }
+    }
+    #endif
 
   }
 
   /// <summary>
   /// The workflow graph.
   /// </summary>
-  public sealed partial class WorkflowGraph : pb::IMessage<WorkflowGraph> {
+  public sealed partial class WorkflowGraph : pb::IMessage<WorkflowGraph>
+  #if !GOOGLE_PROTOBUF_REFSTRUCT_COMPATIBILITY_MODE
+      , pb::IBufferMessage
+  #endif
+  {
     private static readonly pb::MessageParser<WorkflowGraph> _parser = new pb::MessageParser<WorkflowGraph>(() => new WorkflowGraph());
     private pb::UnknownFieldSet _unknownFields;
     [global::System.Diagnostics.DebuggerNonUserCodeAttribute]
@@ -3269,11 +4205,25 @@ namespace Google.Cloud.Dataproc.V1 {
 
     [global::System.Diagnostics.DebuggerNonUserCodeAttribute]
     public void WriteTo(pb::CodedOutputStream output) {
+    #if !GOOGLE_PROTOBUF_REFSTRUCT_COMPATIBILITY_MODE
+      output.WriteRawMessage(this);
+    #else
       nodes_.WriteTo(output, _repeated_nodes_codec);
       if (_unknownFields != null) {
         _unknownFields.WriteTo(output);
       }
+    #endif
     }
+
+    #if !GOOGLE_PROTOBUF_REFSTRUCT_COMPATIBILITY_MODE
+    [global::System.Diagnostics.DebuggerNonUserCodeAttribute]
+    void pb::IBufferMessage.InternalWriteTo(ref pb::WriteContext output) {
+      nodes_.WriteTo(ref output, _repeated_nodes_codec);
+      if (_unknownFields != null) {
+        _unknownFields.WriteTo(ref output);
+      }
+    }
+    #endif
 
     [global::System.Diagnostics.DebuggerNonUserCodeAttribute]
     public int CalculateSize() {
@@ -3296,6 +4246,9 @@ namespace Google.Cloud.Dataproc.V1 {
 
     [global::System.Diagnostics.DebuggerNonUserCodeAttribute]
     public void MergeFrom(pb::CodedInputStream input) {
+    #if !GOOGLE_PROTOBUF_REFSTRUCT_COMPATIBILITY_MODE
+      input.ReadRawMessage(this);
+    #else
       uint tag;
       while ((tag = input.ReadTag()) != 0) {
         switch(tag) {
@@ -3308,14 +4261,37 @@ namespace Google.Cloud.Dataproc.V1 {
           }
         }
       }
+    #endif
     }
+
+    #if !GOOGLE_PROTOBUF_REFSTRUCT_COMPATIBILITY_MODE
+    [global::System.Diagnostics.DebuggerNonUserCodeAttribute]
+    void pb::IBufferMessage.InternalMergeFrom(ref pb::ParseContext input) {
+      uint tag;
+      while ((tag = input.ReadTag()) != 0) {
+        switch(tag) {
+          default:
+            _unknownFields = pb::UnknownFieldSet.MergeFieldFrom(_unknownFields, ref input);
+            break;
+          case 10: {
+            nodes_.AddEntriesFrom(ref input, _repeated_nodes_codec);
+            break;
+          }
+        }
+      }
+    }
+    #endif
 
   }
 
   /// <summary>
   /// The workflow node.
   /// </summary>
-  public sealed partial class WorkflowNode : pb::IMessage<WorkflowNode> {
+  public sealed partial class WorkflowNode : pb::IMessage<WorkflowNode>
+  #if !GOOGLE_PROTOBUF_REFSTRUCT_COMPATIBILITY_MODE
+      , pb::IBufferMessage
+  #endif
+  {
     private static readonly pb::MessageParser<WorkflowNode> _parser = new pb::MessageParser<WorkflowNode>(() => new WorkflowNode());
     private pb::UnknownFieldSet _unknownFields;
     [global::System.Diagnostics.DebuggerNonUserCodeAttribute]
@@ -3396,7 +4372,7 @@ namespace Google.Cloud.Dataproc.V1 {
 
     /// <summary>Field number for the "state" field.</summary>
     public const int StateFieldNumber = 5;
-    private global::Google.Cloud.Dataproc.V1.WorkflowNode.Types.NodeState state_ = 0;
+    private global::Google.Cloud.Dataproc.V1.WorkflowNode.Types.NodeState state_ = global::Google.Cloud.Dataproc.V1.WorkflowNode.Types.NodeState.Unspecified;
     /// <summary>
     /// Output only. The node state.
     /// </summary>
@@ -3449,7 +4425,7 @@ namespace Google.Cloud.Dataproc.V1 {
       if (StepId.Length != 0) hash ^= StepId.GetHashCode();
       hash ^= prerequisiteStepIds_.GetHashCode();
       if (JobId.Length != 0) hash ^= JobId.GetHashCode();
-      if (State != 0) hash ^= State.GetHashCode();
+      if (State != global::Google.Cloud.Dataproc.V1.WorkflowNode.Types.NodeState.Unspecified) hash ^= State.GetHashCode();
       if (Error.Length != 0) hash ^= Error.GetHashCode();
       if (_unknownFields != null) {
         hash ^= _unknownFields.GetHashCode();
@@ -3464,6 +4440,9 @@ namespace Google.Cloud.Dataproc.V1 {
 
     [global::System.Diagnostics.DebuggerNonUserCodeAttribute]
     public void WriteTo(pb::CodedOutputStream output) {
+    #if !GOOGLE_PROTOBUF_REFSTRUCT_COMPATIBILITY_MODE
+      output.WriteRawMessage(this);
+    #else
       if (StepId.Length != 0) {
         output.WriteRawTag(10);
         output.WriteString(StepId);
@@ -3473,7 +4452,7 @@ namespace Google.Cloud.Dataproc.V1 {
         output.WriteRawTag(26);
         output.WriteString(JobId);
       }
-      if (State != 0) {
+      if (State != global::Google.Cloud.Dataproc.V1.WorkflowNode.Types.NodeState.Unspecified) {
         output.WriteRawTag(40);
         output.WriteEnum((int) State);
       }
@@ -3484,7 +4463,34 @@ namespace Google.Cloud.Dataproc.V1 {
       if (_unknownFields != null) {
         _unknownFields.WriteTo(output);
       }
+    #endif
     }
+
+    #if !GOOGLE_PROTOBUF_REFSTRUCT_COMPATIBILITY_MODE
+    [global::System.Diagnostics.DebuggerNonUserCodeAttribute]
+    void pb::IBufferMessage.InternalWriteTo(ref pb::WriteContext output) {
+      if (StepId.Length != 0) {
+        output.WriteRawTag(10);
+        output.WriteString(StepId);
+      }
+      prerequisiteStepIds_.WriteTo(ref output, _repeated_prerequisiteStepIds_codec);
+      if (JobId.Length != 0) {
+        output.WriteRawTag(26);
+        output.WriteString(JobId);
+      }
+      if (State != global::Google.Cloud.Dataproc.V1.WorkflowNode.Types.NodeState.Unspecified) {
+        output.WriteRawTag(40);
+        output.WriteEnum((int) State);
+      }
+      if (Error.Length != 0) {
+        output.WriteRawTag(50);
+        output.WriteString(Error);
+      }
+      if (_unknownFields != null) {
+        _unknownFields.WriteTo(ref output);
+      }
+    }
+    #endif
 
     [global::System.Diagnostics.DebuggerNonUserCodeAttribute]
     public int CalculateSize() {
@@ -3496,7 +4502,7 @@ namespace Google.Cloud.Dataproc.V1 {
       if (JobId.Length != 0) {
         size += 1 + pb::CodedOutputStream.ComputeStringSize(JobId);
       }
-      if (State != 0) {
+      if (State != global::Google.Cloud.Dataproc.V1.WorkflowNode.Types.NodeState.Unspecified) {
         size += 1 + pb::CodedOutputStream.ComputeEnumSize((int) State);
       }
       if (Error.Length != 0) {
@@ -3520,7 +4526,7 @@ namespace Google.Cloud.Dataproc.V1 {
       if (other.JobId.Length != 0) {
         JobId = other.JobId;
       }
-      if (other.State != 0) {
+      if (other.State != global::Google.Cloud.Dataproc.V1.WorkflowNode.Types.NodeState.Unspecified) {
         State = other.State;
       }
       if (other.Error.Length != 0) {
@@ -3531,6 +4537,9 @@ namespace Google.Cloud.Dataproc.V1 {
 
     [global::System.Diagnostics.DebuggerNonUserCodeAttribute]
     public void MergeFrom(pb::CodedInputStream input) {
+    #if !GOOGLE_PROTOBUF_REFSTRUCT_COMPATIBILITY_MODE
+      input.ReadRawMessage(this);
+    #else
       uint tag;
       while ((tag = input.ReadTag()) != 0) {
         switch(tag) {
@@ -3559,7 +4568,42 @@ namespace Google.Cloud.Dataproc.V1 {
           }
         }
       }
+    #endif
     }
+
+    #if !GOOGLE_PROTOBUF_REFSTRUCT_COMPATIBILITY_MODE
+    [global::System.Diagnostics.DebuggerNonUserCodeAttribute]
+    void pb::IBufferMessage.InternalMergeFrom(ref pb::ParseContext input) {
+      uint tag;
+      while ((tag = input.ReadTag()) != 0) {
+        switch(tag) {
+          default:
+            _unknownFields = pb::UnknownFieldSet.MergeFieldFrom(_unknownFields, ref input);
+            break;
+          case 10: {
+            StepId = input.ReadString();
+            break;
+          }
+          case 18: {
+            prerequisiteStepIds_.AddEntriesFrom(ref input, _repeated_prerequisiteStepIds_codec);
+            break;
+          }
+          case 26: {
+            JobId = input.ReadString();
+            break;
+          }
+          case 40: {
+            State = (global::Google.Cloud.Dataproc.V1.WorkflowNode.Types.NodeState) input.ReadEnum();
+            break;
+          }
+          case 50: {
+            Error = input.ReadString();
+            break;
+          }
+        }
+      }
+    }
+    #endif
 
     #region Nested types
     /// <summary>Container for nested types declared in the WorkflowNode message type.</summary>
@@ -3604,7 +4648,11 @@ namespace Google.Cloud.Dataproc.V1 {
   /// <summary>
   /// A request to create a workflow template.
   /// </summary>
-  public sealed partial class CreateWorkflowTemplateRequest : pb::IMessage<CreateWorkflowTemplateRequest> {
+  public sealed partial class CreateWorkflowTemplateRequest : pb::IMessage<CreateWorkflowTemplateRequest>
+  #if !GOOGLE_PROTOBUF_REFSTRUCT_COMPATIBILITY_MODE
+      , pb::IBufferMessage
+  #endif
+  {
     private static readonly pb::MessageParser<CreateWorkflowTemplateRequest> _parser = new pb::MessageParser<CreateWorkflowTemplateRequest>(() => new CreateWorkflowTemplateRequest());
     private pb::UnknownFieldSet _unknownFields;
     [global::System.Diagnostics.DebuggerNonUserCodeAttribute]
@@ -3712,6 +4760,9 @@ namespace Google.Cloud.Dataproc.V1 {
 
     [global::System.Diagnostics.DebuggerNonUserCodeAttribute]
     public void WriteTo(pb::CodedOutputStream output) {
+    #if !GOOGLE_PROTOBUF_REFSTRUCT_COMPATIBILITY_MODE
+      output.WriteRawMessage(this);
+    #else
       if (Parent.Length != 0) {
         output.WriteRawTag(10);
         output.WriteString(Parent);
@@ -3723,7 +4774,25 @@ namespace Google.Cloud.Dataproc.V1 {
       if (_unknownFields != null) {
         _unknownFields.WriteTo(output);
       }
+    #endif
     }
+
+    #if !GOOGLE_PROTOBUF_REFSTRUCT_COMPATIBILITY_MODE
+    [global::System.Diagnostics.DebuggerNonUserCodeAttribute]
+    void pb::IBufferMessage.InternalWriteTo(ref pb::WriteContext output) {
+      if (Parent.Length != 0) {
+        output.WriteRawTag(10);
+        output.WriteString(Parent);
+      }
+      if (template_ != null) {
+        output.WriteRawTag(18);
+        output.WriteMessage(Template);
+      }
+      if (_unknownFields != null) {
+        _unknownFields.WriteTo(ref output);
+      }
+    }
+    #endif
 
     [global::System.Diagnostics.DebuggerNonUserCodeAttribute]
     public int CalculateSize() {
@@ -3759,6 +4828,9 @@ namespace Google.Cloud.Dataproc.V1 {
 
     [global::System.Diagnostics.DebuggerNonUserCodeAttribute]
     public void MergeFrom(pb::CodedInputStream input) {
+    #if !GOOGLE_PROTOBUF_REFSTRUCT_COMPATIBILITY_MODE
+      input.ReadRawMessage(this);
+    #else
       uint tag;
       while ((tag = input.ReadTag()) != 0) {
         switch(tag) {
@@ -3778,14 +4850,44 @@ namespace Google.Cloud.Dataproc.V1 {
           }
         }
       }
+    #endif
     }
+
+    #if !GOOGLE_PROTOBUF_REFSTRUCT_COMPATIBILITY_MODE
+    [global::System.Diagnostics.DebuggerNonUserCodeAttribute]
+    void pb::IBufferMessage.InternalMergeFrom(ref pb::ParseContext input) {
+      uint tag;
+      while ((tag = input.ReadTag()) != 0) {
+        switch(tag) {
+          default:
+            _unknownFields = pb::UnknownFieldSet.MergeFieldFrom(_unknownFields, ref input);
+            break;
+          case 10: {
+            Parent = input.ReadString();
+            break;
+          }
+          case 18: {
+            if (template_ == null) {
+              Template = new global::Google.Cloud.Dataproc.V1.WorkflowTemplate();
+            }
+            input.ReadMessage(Template);
+            break;
+          }
+        }
+      }
+    }
+    #endif
 
   }
 
   /// <summary>
   /// A request to fetch a workflow template.
   /// </summary>
-  public sealed partial class GetWorkflowTemplateRequest : pb::IMessage<GetWorkflowTemplateRequest> {
+  public sealed partial class GetWorkflowTemplateRequest : pb::IMessage<GetWorkflowTemplateRequest>
+  #if !GOOGLE_PROTOBUF_REFSTRUCT_COMPATIBILITY_MODE
+      , pb::IBufferMessage
+  #endif
+  {
     private static readonly pb::MessageParser<GetWorkflowTemplateRequest> _parser = new pb::MessageParser<GetWorkflowTemplateRequest>(() => new GetWorkflowTemplateRequest());
     private pb::UnknownFieldSet _unknownFields;
     [global::System.Diagnostics.DebuggerNonUserCodeAttribute]
@@ -3896,6 +4998,9 @@ namespace Google.Cloud.Dataproc.V1 {
 
     [global::System.Diagnostics.DebuggerNonUserCodeAttribute]
     public void WriteTo(pb::CodedOutputStream output) {
+    #if !GOOGLE_PROTOBUF_REFSTRUCT_COMPATIBILITY_MODE
+      output.WriteRawMessage(this);
+    #else
       if (Name.Length != 0) {
         output.WriteRawTag(10);
         output.WriteString(Name);
@@ -3907,7 +5012,25 @@ namespace Google.Cloud.Dataproc.V1 {
       if (_unknownFields != null) {
         _unknownFields.WriteTo(output);
       }
+    #endif
     }
+
+    #if !GOOGLE_PROTOBUF_REFSTRUCT_COMPATIBILITY_MODE
+    [global::System.Diagnostics.DebuggerNonUserCodeAttribute]
+    void pb::IBufferMessage.InternalWriteTo(ref pb::WriteContext output) {
+      if (Name.Length != 0) {
+        output.WriteRawTag(10);
+        output.WriteString(Name);
+      }
+      if (Version != 0) {
+        output.WriteRawTag(16);
+        output.WriteInt32(Version);
+      }
+      if (_unknownFields != null) {
+        _unknownFields.WriteTo(ref output);
+      }
+    }
+    #endif
 
     [global::System.Diagnostics.DebuggerNonUserCodeAttribute]
     public int CalculateSize() {
@@ -3940,6 +5063,9 @@ namespace Google.Cloud.Dataproc.V1 {
 
     [global::System.Diagnostics.DebuggerNonUserCodeAttribute]
     public void MergeFrom(pb::CodedInputStream input) {
+    #if !GOOGLE_PROTOBUF_REFSTRUCT_COMPATIBILITY_MODE
+      input.ReadRawMessage(this);
+    #else
       uint tag;
       while ((tag = input.ReadTag()) != 0) {
         switch(tag) {
@@ -3956,14 +5082,41 @@ namespace Google.Cloud.Dataproc.V1 {
           }
         }
       }
+    #endif
     }
+
+    #if !GOOGLE_PROTOBUF_REFSTRUCT_COMPATIBILITY_MODE
+    [global::System.Diagnostics.DebuggerNonUserCodeAttribute]
+    void pb::IBufferMessage.InternalMergeFrom(ref pb::ParseContext input) {
+      uint tag;
+      while ((tag = input.ReadTag()) != 0) {
+        switch(tag) {
+          default:
+            _unknownFields = pb::UnknownFieldSet.MergeFieldFrom(_unknownFields, ref input);
+            break;
+          case 10: {
+            Name = input.ReadString();
+            break;
+          }
+          case 16: {
+            Version = input.ReadInt32();
+            break;
+          }
+        }
+      }
+    }
+    #endif
 
   }
 
   /// <summary>
   /// A request to instantiate a workflow template.
   /// </summary>
-  public sealed partial class InstantiateWorkflowTemplateRequest : pb::IMessage<InstantiateWorkflowTemplateRequest> {
+  public sealed partial class InstantiateWorkflowTemplateRequest : pb::IMessage<InstantiateWorkflowTemplateRequest>
+  #if !GOOGLE_PROTOBUF_REFSTRUCT_COMPATIBILITY_MODE
+      , pb::IBufferMessage
+  #endif
+  {
     private static readonly pb::MessageParser<InstantiateWorkflowTemplateRequest> _parser = new pb::MessageParser<InstantiateWorkflowTemplateRequest>(() => new InstantiateWorkflowTemplateRequest());
     private pb::UnknownFieldSet _unknownFields;
     [global::System.Diagnostics.DebuggerNonUserCodeAttribute]
@@ -4067,7 +5220,7 @@ namespace Google.Cloud.Dataproc.V1 {
     /// <summary>Field number for the "parameters" field.</summary>
     public const int ParametersFieldNumber = 6;
     private static readonly pbc::MapField<string, string>.Codec _map_parameters_codec
-        = new pbc::MapField<string, string>.Codec(pb::FieldCodec.ForString(10), pb::FieldCodec.ForString(18), 50);
+        = new pbc::MapField<string, string>.Codec(pb::FieldCodec.ForString(10, ""), pb::FieldCodec.ForString(18, ""), 50);
     private readonly pbc::MapField<string, string> parameters_ = new pbc::MapField<string, string>();
     /// <summary>
     /// Optional. Map from parameter names to values that should be used for those
@@ -4118,6 +5271,9 @@ namespace Google.Cloud.Dataproc.V1 {
 
     [global::System.Diagnostics.DebuggerNonUserCodeAttribute]
     public void WriteTo(pb::CodedOutputStream output) {
+    #if !GOOGLE_PROTOBUF_REFSTRUCT_COMPATIBILITY_MODE
+      output.WriteRawMessage(this);
+    #else
       if (Name.Length != 0) {
         output.WriteRawTag(10);
         output.WriteString(Name);
@@ -4134,7 +5290,30 @@ namespace Google.Cloud.Dataproc.V1 {
       if (_unknownFields != null) {
         _unknownFields.WriteTo(output);
       }
+    #endif
     }
+
+    #if !GOOGLE_PROTOBUF_REFSTRUCT_COMPATIBILITY_MODE
+    [global::System.Diagnostics.DebuggerNonUserCodeAttribute]
+    void pb::IBufferMessage.InternalWriteTo(ref pb::WriteContext output) {
+      if (Name.Length != 0) {
+        output.WriteRawTag(10);
+        output.WriteString(Name);
+      }
+      if (Version != 0) {
+        output.WriteRawTag(16);
+        output.WriteInt32(Version);
+      }
+      if (RequestId.Length != 0) {
+        output.WriteRawTag(42);
+        output.WriteString(RequestId);
+      }
+      parameters_.WriteTo(ref output, _map_parameters_codec);
+      if (_unknownFields != null) {
+        _unknownFields.WriteTo(ref output);
+      }
+    }
+    #endif
 
     [global::System.Diagnostics.DebuggerNonUserCodeAttribute]
     public int CalculateSize() {
@@ -4175,6 +5354,9 @@ namespace Google.Cloud.Dataproc.V1 {
 
     [global::System.Diagnostics.DebuggerNonUserCodeAttribute]
     public void MergeFrom(pb::CodedInputStream input) {
+    #if !GOOGLE_PROTOBUF_REFSTRUCT_COMPATIBILITY_MODE
+      input.ReadRawMessage(this);
+    #else
       uint tag;
       while ((tag = input.ReadTag()) != 0) {
         switch(tag) {
@@ -4199,14 +5381,49 @@ namespace Google.Cloud.Dataproc.V1 {
           }
         }
       }
+    #endif
     }
+
+    #if !GOOGLE_PROTOBUF_REFSTRUCT_COMPATIBILITY_MODE
+    [global::System.Diagnostics.DebuggerNonUserCodeAttribute]
+    void pb::IBufferMessage.InternalMergeFrom(ref pb::ParseContext input) {
+      uint tag;
+      while ((tag = input.ReadTag()) != 0) {
+        switch(tag) {
+          default:
+            _unknownFields = pb::UnknownFieldSet.MergeFieldFrom(_unknownFields, ref input);
+            break;
+          case 10: {
+            Name = input.ReadString();
+            break;
+          }
+          case 16: {
+            Version = input.ReadInt32();
+            break;
+          }
+          case 42: {
+            RequestId = input.ReadString();
+            break;
+          }
+          case 50: {
+            parameters_.AddEntriesFrom(ref input, _map_parameters_codec);
+            break;
+          }
+        }
+      }
+    }
+    #endif
 
   }
 
   /// <summary>
   /// A request to instantiate an inline workflow template.
   /// </summary>
-  public sealed partial class InstantiateInlineWorkflowTemplateRequest : pb::IMessage<InstantiateInlineWorkflowTemplateRequest> {
+  public sealed partial class InstantiateInlineWorkflowTemplateRequest : pb::IMessage<InstantiateInlineWorkflowTemplateRequest>
+  #if !GOOGLE_PROTOBUF_REFSTRUCT_COMPATIBILITY_MODE
+      , pb::IBufferMessage
+  #endif
+  {
     private static readonly pb::MessageParser<InstantiateInlineWorkflowTemplateRequest> _parser = new pb::MessageParser<InstantiateInlineWorkflowTemplateRequest>(() => new InstantiateInlineWorkflowTemplateRequest());
     private pb::UnknownFieldSet _unknownFields;
     [global::System.Diagnostics.DebuggerNonUserCodeAttribute]
@@ -4339,6 +5556,9 @@ namespace Google.Cloud.Dataproc.V1 {
 
     [global::System.Diagnostics.DebuggerNonUserCodeAttribute]
     public void WriteTo(pb::CodedOutputStream output) {
+    #if !GOOGLE_PROTOBUF_REFSTRUCT_COMPATIBILITY_MODE
+      output.WriteRawMessage(this);
+    #else
       if (Parent.Length != 0) {
         output.WriteRawTag(10);
         output.WriteString(Parent);
@@ -4354,7 +5574,29 @@ namespace Google.Cloud.Dataproc.V1 {
       if (_unknownFields != null) {
         _unknownFields.WriteTo(output);
       }
+    #endif
     }
+
+    #if !GOOGLE_PROTOBUF_REFSTRUCT_COMPATIBILITY_MODE
+    [global::System.Diagnostics.DebuggerNonUserCodeAttribute]
+    void pb::IBufferMessage.InternalWriteTo(ref pb::WriteContext output) {
+      if (Parent.Length != 0) {
+        output.WriteRawTag(10);
+        output.WriteString(Parent);
+      }
+      if (template_ != null) {
+        output.WriteRawTag(18);
+        output.WriteMessage(Template);
+      }
+      if (RequestId.Length != 0) {
+        output.WriteRawTag(26);
+        output.WriteString(RequestId);
+      }
+      if (_unknownFields != null) {
+        _unknownFields.WriteTo(ref output);
+      }
+    }
+    #endif
 
     [global::System.Diagnostics.DebuggerNonUserCodeAttribute]
     public int CalculateSize() {
@@ -4396,6 +5638,9 @@ namespace Google.Cloud.Dataproc.V1 {
 
     [global::System.Diagnostics.DebuggerNonUserCodeAttribute]
     public void MergeFrom(pb::CodedInputStream input) {
+    #if !GOOGLE_PROTOBUF_REFSTRUCT_COMPATIBILITY_MODE
+      input.ReadRawMessage(this);
+    #else
       uint tag;
       while ((tag = input.ReadTag()) != 0) {
         switch(tag) {
@@ -4419,14 +5664,48 @@ namespace Google.Cloud.Dataproc.V1 {
           }
         }
       }
+    #endif
     }
+
+    #if !GOOGLE_PROTOBUF_REFSTRUCT_COMPATIBILITY_MODE
+    [global::System.Diagnostics.DebuggerNonUserCodeAttribute]
+    void pb::IBufferMessage.InternalMergeFrom(ref pb::ParseContext input) {
+      uint tag;
+      while ((tag = input.ReadTag()) != 0) {
+        switch(tag) {
+          default:
+            _unknownFields = pb::UnknownFieldSet.MergeFieldFrom(_unknownFields, ref input);
+            break;
+          case 10: {
+            Parent = input.ReadString();
+            break;
+          }
+          case 18: {
+            if (template_ == null) {
+              Template = new global::Google.Cloud.Dataproc.V1.WorkflowTemplate();
+            }
+            input.ReadMessage(Template);
+            break;
+          }
+          case 26: {
+            RequestId = input.ReadString();
+            break;
+          }
+        }
+      }
+    }
+    #endif
 
   }
 
   /// <summary>
   /// A request to update a workflow template.
   /// </summary>
-  public sealed partial class UpdateWorkflowTemplateRequest : pb::IMessage<UpdateWorkflowTemplateRequest> {
+  public sealed partial class UpdateWorkflowTemplateRequest : pb::IMessage<UpdateWorkflowTemplateRequest>
+  #if !GOOGLE_PROTOBUF_REFSTRUCT_COMPATIBILITY_MODE
+      , pb::IBufferMessage
+  #endif
+  {
     private static readonly pb::MessageParser<UpdateWorkflowTemplateRequest> _parser = new pb::MessageParser<UpdateWorkflowTemplateRequest>(() => new UpdateWorkflowTemplateRequest());
     private pb::UnknownFieldSet _unknownFields;
     [global::System.Diagnostics.DebuggerNonUserCodeAttribute]
@@ -4510,6 +5789,9 @@ namespace Google.Cloud.Dataproc.V1 {
 
     [global::System.Diagnostics.DebuggerNonUserCodeAttribute]
     public void WriteTo(pb::CodedOutputStream output) {
+    #if !GOOGLE_PROTOBUF_REFSTRUCT_COMPATIBILITY_MODE
+      output.WriteRawMessage(this);
+    #else
       if (template_ != null) {
         output.WriteRawTag(10);
         output.WriteMessage(Template);
@@ -4517,7 +5799,21 @@ namespace Google.Cloud.Dataproc.V1 {
       if (_unknownFields != null) {
         _unknownFields.WriteTo(output);
       }
+    #endif
     }
+
+    #if !GOOGLE_PROTOBUF_REFSTRUCT_COMPATIBILITY_MODE
+    [global::System.Diagnostics.DebuggerNonUserCodeAttribute]
+    void pb::IBufferMessage.InternalWriteTo(ref pb::WriteContext output) {
+      if (template_ != null) {
+        output.WriteRawTag(10);
+        output.WriteMessage(Template);
+      }
+      if (_unknownFields != null) {
+        _unknownFields.WriteTo(ref output);
+      }
+    }
+    #endif
 
     [global::System.Diagnostics.DebuggerNonUserCodeAttribute]
     public int CalculateSize() {
@@ -4547,6 +5843,9 @@ namespace Google.Cloud.Dataproc.V1 {
 
     [global::System.Diagnostics.DebuggerNonUserCodeAttribute]
     public void MergeFrom(pb::CodedInputStream input) {
+    #if !GOOGLE_PROTOBUF_REFSTRUCT_COMPATIBILITY_MODE
+      input.ReadRawMessage(this);
+    #else
       uint tag;
       while ((tag = input.ReadTag()) != 0) {
         switch(tag) {
@@ -4562,14 +5861,40 @@ namespace Google.Cloud.Dataproc.V1 {
           }
         }
       }
+    #endif
     }
+
+    #if !GOOGLE_PROTOBUF_REFSTRUCT_COMPATIBILITY_MODE
+    [global::System.Diagnostics.DebuggerNonUserCodeAttribute]
+    void pb::IBufferMessage.InternalMergeFrom(ref pb::ParseContext input) {
+      uint tag;
+      while ((tag = input.ReadTag()) != 0) {
+        switch(tag) {
+          default:
+            _unknownFields = pb::UnknownFieldSet.MergeFieldFrom(_unknownFields, ref input);
+            break;
+          case 10: {
+            if (template_ == null) {
+              Template = new global::Google.Cloud.Dataproc.V1.WorkflowTemplate();
+            }
+            input.ReadMessage(Template);
+            break;
+          }
+        }
+      }
+    }
+    #endif
 
   }
 
   /// <summary>
   /// A request to list workflow templates in a project.
   /// </summary>
-  public sealed partial class ListWorkflowTemplatesRequest : pb::IMessage<ListWorkflowTemplatesRequest> {
+  public sealed partial class ListWorkflowTemplatesRequest : pb::IMessage<ListWorkflowTemplatesRequest>
+  #if !GOOGLE_PROTOBUF_REFSTRUCT_COMPATIBILITY_MODE
+      , pb::IBufferMessage
+  #endif
+  {
     private static readonly pb::MessageParser<ListWorkflowTemplatesRequest> _parser = new pb::MessageParser<ListWorkflowTemplatesRequest>(() => new ListWorkflowTemplatesRequest());
     private pb::UnknownFieldSet _unknownFields;
     [global::System.Diagnostics.DebuggerNonUserCodeAttribute]
@@ -4695,6 +6020,9 @@ namespace Google.Cloud.Dataproc.V1 {
 
     [global::System.Diagnostics.DebuggerNonUserCodeAttribute]
     public void WriteTo(pb::CodedOutputStream output) {
+    #if !GOOGLE_PROTOBUF_REFSTRUCT_COMPATIBILITY_MODE
+      output.WriteRawMessage(this);
+    #else
       if (Parent.Length != 0) {
         output.WriteRawTag(10);
         output.WriteString(Parent);
@@ -4710,7 +6038,29 @@ namespace Google.Cloud.Dataproc.V1 {
       if (_unknownFields != null) {
         _unknownFields.WriteTo(output);
       }
+    #endif
     }
+
+    #if !GOOGLE_PROTOBUF_REFSTRUCT_COMPATIBILITY_MODE
+    [global::System.Diagnostics.DebuggerNonUserCodeAttribute]
+    void pb::IBufferMessage.InternalWriteTo(ref pb::WriteContext output) {
+      if (Parent.Length != 0) {
+        output.WriteRawTag(10);
+        output.WriteString(Parent);
+      }
+      if (PageSize != 0) {
+        output.WriteRawTag(16);
+        output.WriteInt32(PageSize);
+      }
+      if (PageToken.Length != 0) {
+        output.WriteRawTag(26);
+        output.WriteString(PageToken);
+      }
+      if (_unknownFields != null) {
+        _unknownFields.WriteTo(ref output);
+      }
+    }
+    #endif
 
     [global::System.Diagnostics.DebuggerNonUserCodeAttribute]
     public int CalculateSize() {
@@ -4749,6 +6099,9 @@ namespace Google.Cloud.Dataproc.V1 {
 
     [global::System.Diagnostics.DebuggerNonUserCodeAttribute]
     public void MergeFrom(pb::CodedInputStream input) {
+    #if !GOOGLE_PROTOBUF_REFSTRUCT_COMPATIBILITY_MODE
+      input.ReadRawMessage(this);
+    #else
       uint tag;
       while ((tag = input.ReadTag()) != 0) {
         switch(tag) {
@@ -4769,14 +6122,45 @@ namespace Google.Cloud.Dataproc.V1 {
           }
         }
       }
+    #endif
     }
+
+    #if !GOOGLE_PROTOBUF_REFSTRUCT_COMPATIBILITY_MODE
+    [global::System.Diagnostics.DebuggerNonUserCodeAttribute]
+    void pb::IBufferMessage.InternalMergeFrom(ref pb::ParseContext input) {
+      uint tag;
+      while ((tag = input.ReadTag()) != 0) {
+        switch(tag) {
+          default:
+            _unknownFields = pb::UnknownFieldSet.MergeFieldFrom(_unknownFields, ref input);
+            break;
+          case 10: {
+            Parent = input.ReadString();
+            break;
+          }
+          case 16: {
+            PageSize = input.ReadInt32();
+            break;
+          }
+          case 26: {
+            PageToken = input.ReadString();
+            break;
+          }
+        }
+      }
+    }
+    #endif
 
   }
 
   /// <summary>
   /// A response to a request to list workflow templates in a project.
   /// </summary>
-  public sealed partial class ListWorkflowTemplatesResponse : pb::IMessage<ListWorkflowTemplatesResponse> {
+  public sealed partial class ListWorkflowTemplatesResponse : pb::IMessage<ListWorkflowTemplatesResponse>
+  #if !GOOGLE_PROTOBUF_REFSTRUCT_COMPATIBILITY_MODE
+      , pb::IBufferMessage
+  #endif
+  {
     private static readonly pb::MessageParser<ListWorkflowTemplatesResponse> _parser = new pb::MessageParser<ListWorkflowTemplatesResponse>(() => new ListWorkflowTemplatesResponse());
     private pb::UnknownFieldSet _unknownFields;
     [global::System.Diagnostics.DebuggerNonUserCodeAttribute]
@@ -4876,6 +6260,9 @@ namespace Google.Cloud.Dataproc.V1 {
 
     [global::System.Diagnostics.DebuggerNonUserCodeAttribute]
     public void WriteTo(pb::CodedOutputStream output) {
+    #if !GOOGLE_PROTOBUF_REFSTRUCT_COMPATIBILITY_MODE
+      output.WriteRawMessage(this);
+    #else
       templates_.WriteTo(output, _repeated_templates_codec);
       if (NextPageToken.Length != 0) {
         output.WriteRawTag(18);
@@ -4884,7 +6271,22 @@ namespace Google.Cloud.Dataproc.V1 {
       if (_unknownFields != null) {
         _unknownFields.WriteTo(output);
       }
+    #endif
     }
+
+    #if !GOOGLE_PROTOBUF_REFSTRUCT_COMPATIBILITY_MODE
+    [global::System.Diagnostics.DebuggerNonUserCodeAttribute]
+    void pb::IBufferMessage.InternalWriteTo(ref pb::WriteContext output) {
+      templates_.WriteTo(ref output, _repeated_templates_codec);
+      if (NextPageToken.Length != 0) {
+        output.WriteRawTag(18);
+        output.WriteString(NextPageToken);
+      }
+      if (_unknownFields != null) {
+        _unknownFields.WriteTo(ref output);
+      }
+    }
+    #endif
 
     [global::System.Diagnostics.DebuggerNonUserCodeAttribute]
     public int CalculateSize() {
@@ -4913,6 +6315,9 @@ namespace Google.Cloud.Dataproc.V1 {
 
     [global::System.Diagnostics.DebuggerNonUserCodeAttribute]
     public void MergeFrom(pb::CodedInputStream input) {
+    #if !GOOGLE_PROTOBUF_REFSTRUCT_COMPATIBILITY_MODE
+      input.ReadRawMessage(this);
+    #else
       uint tag;
       while ((tag = input.ReadTag()) != 0) {
         switch(tag) {
@@ -4929,7 +6334,30 @@ namespace Google.Cloud.Dataproc.V1 {
           }
         }
       }
+    #endif
     }
+
+    #if !GOOGLE_PROTOBUF_REFSTRUCT_COMPATIBILITY_MODE
+    [global::System.Diagnostics.DebuggerNonUserCodeAttribute]
+    void pb::IBufferMessage.InternalMergeFrom(ref pb::ParseContext input) {
+      uint tag;
+      while ((tag = input.ReadTag()) != 0) {
+        switch(tag) {
+          default:
+            _unknownFields = pb::UnknownFieldSet.MergeFieldFrom(_unknownFields, ref input);
+            break;
+          case 10: {
+            templates_.AddEntriesFrom(ref input, _repeated_templates_codec);
+            break;
+          }
+          case 18: {
+            NextPageToken = input.ReadString();
+            break;
+          }
+        }
+      }
+    }
+    #endif
 
   }
 
@@ -4938,7 +6366,11 @@ namespace Google.Cloud.Dataproc.V1 {
   ///
   /// Currently started workflows will remain running.
   /// </summary>
-  public sealed partial class DeleteWorkflowTemplateRequest : pb::IMessage<DeleteWorkflowTemplateRequest> {
+  public sealed partial class DeleteWorkflowTemplateRequest : pb::IMessage<DeleteWorkflowTemplateRequest>
+  #if !GOOGLE_PROTOBUF_REFSTRUCT_COMPATIBILITY_MODE
+      , pb::IBufferMessage
+  #endif
+  {
     private static readonly pb::MessageParser<DeleteWorkflowTemplateRequest> _parser = new pb::MessageParser<DeleteWorkflowTemplateRequest>(() => new DeleteWorkflowTemplateRequest());
     private pb::UnknownFieldSet _unknownFields;
     [global::System.Diagnostics.DebuggerNonUserCodeAttribute]
@@ -5048,6 +6480,9 @@ namespace Google.Cloud.Dataproc.V1 {
 
     [global::System.Diagnostics.DebuggerNonUserCodeAttribute]
     public void WriteTo(pb::CodedOutputStream output) {
+    #if !GOOGLE_PROTOBUF_REFSTRUCT_COMPATIBILITY_MODE
+      output.WriteRawMessage(this);
+    #else
       if (Name.Length != 0) {
         output.WriteRawTag(10);
         output.WriteString(Name);
@@ -5059,7 +6494,25 @@ namespace Google.Cloud.Dataproc.V1 {
       if (_unknownFields != null) {
         _unknownFields.WriteTo(output);
       }
+    #endif
     }
+
+    #if !GOOGLE_PROTOBUF_REFSTRUCT_COMPATIBILITY_MODE
+    [global::System.Diagnostics.DebuggerNonUserCodeAttribute]
+    void pb::IBufferMessage.InternalWriteTo(ref pb::WriteContext output) {
+      if (Name.Length != 0) {
+        output.WriteRawTag(10);
+        output.WriteString(Name);
+      }
+      if (Version != 0) {
+        output.WriteRawTag(16);
+        output.WriteInt32(Version);
+      }
+      if (_unknownFields != null) {
+        _unknownFields.WriteTo(ref output);
+      }
+    }
+    #endif
 
     [global::System.Diagnostics.DebuggerNonUserCodeAttribute]
     public int CalculateSize() {
@@ -5092,6 +6545,9 @@ namespace Google.Cloud.Dataproc.V1 {
 
     [global::System.Diagnostics.DebuggerNonUserCodeAttribute]
     public void MergeFrom(pb::CodedInputStream input) {
+    #if !GOOGLE_PROTOBUF_REFSTRUCT_COMPATIBILITY_MODE
+      input.ReadRawMessage(this);
+    #else
       uint tag;
       while ((tag = input.ReadTag()) != 0) {
         switch(tag) {
@@ -5108,7 +6564,30 @@ namespace Google.Cloud.Dataproc.V1 {
           }
         }
       }
+    #endif
     }
+
+    #if !GOOGLE_PROTOBUF_REFSTRUCT_COMPATIBILITY_MODE
+    [global::System.Diagnostics.DebuggerNonUserCodeAttribute]
+    void pb::IBufferMessage.InternalMergeFrom(ref pb::ParseContext input) {
+      uint tag;
+      while ((tag = input.ReadTag()) != 0) {
+        switch(tag) {
+          default:
+            _unknownFields = pb::UnknownFieldSet.MergeFieldFrom(_unknownFields, ref input);
+            break;
+          case 10: {
+            Name = input.ReadString();
+            break;
+          }
+          case 16: {
+            Version = input.ReadInt32();
+            break;
+          }
+        }
+      }
+    }
+    #endif
 
   }
 

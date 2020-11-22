@@ -1,4 +1,4 @@
-// Copyright 2019 Google LLC
+// Copyright 2020 Google LLC
 //
 // Licensed under the Apache License, Version 2.0 (the "License");
 // you may not use this file except in compliance with the License.
@@ -23,7 +23,7 @@ namespace Google.Cloud.ErrorReporting.V1Beta1
         /// </summary>
         public ErrorGroupName GroupNameAsErrorGroupName
         {
-            get => string.IsNullOrEmpty(GroupName) ? null : ErrorGroupName.Parse(GroupName);
+            get => string.IsNullOrEmpty(GroupName) ? null : ErrorGroupName.Parse(GroupName, allowUnparsed: true);
             set => GroupName = value?.ToString() ?? "";
         }
     }

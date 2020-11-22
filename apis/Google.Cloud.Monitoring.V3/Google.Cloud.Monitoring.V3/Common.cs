@@ -60,17 +60,18 @@ namespace Google.Cloud.Monitoring.V3 {
             "EQoNQ09NUEFSSVNPTl9MRRAEEhEKDUNPTVBBUklTT05fRVEQBRIRCg1DT01Q",
             "QVJJU09OX05FEAYqYQoLU2VydmljZVRpZXISHAoYU0VSVklDRV9USUVSX1VO",
             "U1BFQ0lGSUVEEAASFgoSU0VSVklDRV9USUVSX0JBU0lDEAESGAoUU0VSVklD",
-            "RV9USUVSX1BSRU1JVU0QAhoCGAFCowEKGGNvbS5nb29nbGUubW9uaXRvcmlu",
+            "RV9USUVSX1BSRU1JVU0QAhoCGAFCwwEKGGNvbS5nb29nbGUubW9uaXRvcmlu",
             "Zy52M0ILQ29tbW9uUHJvdG9QAVo+Z29vZ2xlLmdvbGFuZy5vcmcvZ2VucHJv",
             "dG8vZ29vZ2xlYXBpcy9tb25pdG9yaW5nL3YzO21vbml0b3JpbmeqAhpHb29n",
             "bGUuQ2xvdWQuTW9uaXRvcmluZy5WM8oCGkdvb2dsZVxDbG91ZFxNb25pdG9y",
-            "aW5nXFYzYgZwcm90bzM="));
+            "aW5nXFYz6gIdR29vZ2xlOjpDbG91ZDo6TW9uaXRvcmluZzo6VjNiBnByb3Rv",
+            "Mw=="));
       descriptor = pbr::FileDescriptor.FromGeneratedCode(descriptorData,
           new pbr::FileDescriptor[] { global::Google.Api.DistributionReflection.Descriptor, global::Google.Protobuf.WellKnownTypes.DurationReflection.Descriptor, global::Google.Protobuf.WellKnownTypes.TimestampReflection.Descriptor, },
-          new pbr::GeneratedClrTypeInfo(new[] {typeof(global::Google.Cloud.Monitoring.V3.ComparisonType), typeof(global::Google.Cloud.Monitoring.V3.ServiceTier), }, new pbr::GeneratedClrTypeInfo[] {
-            new pbr::GeneratedClrTypeInfo(typeof(global::Google.Cloud.Monitoring.V3.TypedValue), global::Google.Cloud.Monitoring.V3.TypedValue.Parser, new[]{ "BoolValue", "Int64Value", "DoubleValue", "StringValue", "DistributionValue" }, new[]{ "Value" }, null, null),
-            new pbr::GeneratedClrTypeInfo(typeof(global::Google.Cloud.Monitoring.V3.TimeInterval), global::Google.Cloud.Monitoring.V3.TimeInterval.Parser, new[]{ "EndTime", "StartTime" }, null, null, null),
-            new pbr::GeneratedClrTypeInfo(typeof(global::Google.Cloud.Monitoring.V3.Aggregation), global::Google.Cloud.Monitoring.V3.Aggregation.Parser, new[]{ "AlignmentPeriod", "PerSeriesAligner", "CrossSeriesReducer", "GroupByFields" }, null, new[]{ typeof(global::Google.Cloud.Monitoring.V3.Aggregation.Types.Aligner), typeof(global::Google.Cloud.Monitoring.V3.Aggregation.Types.Reducer) }, null)
+          new pbr::GeneratedClrTypeInfo(new[] {typeof(global::Google.Cloud.Monitoring.V3.ComparisonType), typeof(global::Google.Cloud.Monitoring.V3.ServiceTier), }, null, new pbr::GeneratedClrTypeInfo[] {
+            new pbr::GeneratedClrTypeInfo(typeof(global::Google.Cloud.Monitoring.V3.TypedValue), global::Google.Cloud.Monitoring.V3.TypedValue.Parser, new[]{ "BoolValue", "Int64Value", "DoubleValue", "StringValue", "DistributionValue" }, new[]{ "Value" }, null, null, null),
+            new pbr::GeneratedClrTypeInfo(typeof(global::Google.Cloud.Monitoring.V3.TimeInterval), global::Google.Cloud.Monitoring.V3.TimeInterval.Parser, new[]{ "EndTime", "StartTime" }, null, null, null, null),
+            new pbr::GeneratedClrTypeInfo(typeof(global::Google.Cloud.Monitoring.V3.Aggregation), global::Google.Cloud.Monitoring.V3.Aggregation.Parser, new[]{ "AlignmentPeriod", "PerSeriesAligner", "CrossSeriesReducer", "GroupByFields" }, null, new[]{ typeof(global::Google.Cloud.Monitoring.V3.Aggregation.Types.Aligner), typeof(global::Google.Cloud.Monitoring.V3.Aggregation.Types.Reducer) }, null, null)
           }));
     }
     #endregion
@@ -78,8 +79,8 @@ namespace Google.Cloud.Monitoring.V3 {
   }
   #region Enums
   /// <summary>
-  /// Specifies an ordering relationship on two arguments, here called left and
-  /// right.
+  /// Specifies an ordering relationship on two arguments, called `left` and
+  /// `right`.
   /// </summary>
   public enum ComparisonType {
     /// <summary>
@@ -87,27 +88,27 @@ namespace Google.Cloud.Monitoring.V3 {
     /// </summary>
     [pbr::OriginalName("COMPARISON_UNSPECIFIED")] ComparisonUnspecified = 0,
     /// <summary>
-    /// The left argument is greater than the right argument.
+    /// True if the left argument is greater than the right argument.
     /// </summary>
     [pbr::OriginalName("COMPARISON_GT")] ComparisonGt = 1,
     /// <summary>
-    /// The left argument is greater than or equal to the right argument.
+    /// True if the left argument is greater than or equal to the right argument.
     /// </summary>
     [pbr::OriginalName("COMPARISON_GE")] ComparisonGe = 2,
     /// <summary>
-    /// The left argument is less than the right argument.
+    /// True if the left argument is less than the right argument.
     /// </summary>
     [pbr::OriginalName("COMPARISON_LT")] ComparisonLt = 3,
     /// <summary>
-    /// The left argument is less than or equal to the right argument.
+    /// True if the left argument is less than or equal to the right argument.
     /// </summary>
     [pbr::OriginalName("COMPARISON_LE")] ComparisonLe = 4,
     /// <summary>
-    /// The left argument is equal to the right argument.
+    /// True if the left argument is equal to the right argument.
     /// </summary>
     [pbr::OriginalName("COMPARISON_EQ")] ComparisonEq = 5,
     /// <summary>
-    /// The left argument is not equal to the right argument.
+    /// True if the left argument is not equal to the right argument.
     /// </summary>
     [pbr::OriginalName("COMPARISON_NE")] ComparisonNe = 6,
   }
@@ -148,7 +149,11 @@ namespace Google.Cloud.Monitoring.V3 {
   /// <summary>
   /// A single strongly-typed value.
   /// </summary>
-  public sealed partial class TypedValue : pb::IMessage<TypedValue> {
+  public sealed partial class TypedValue : pb::IMessage<TypedValue>
+  #if !GOOGLE_PROTOBUF_REFSTRUCT_COMPATIBILITY_MODE
+      , pb::IBufferMessage
+  #endif
+  {
     private static readonly pb::MessageParser<TypedValue> _parser = new pb::MessageParser<TypedValue>(() => new TypedValue());
     private pb::UnknownFieldSet _unknownFields;
     [global::System.Diagnostics.DebuggerNonUserCodeAttribute]
@@ -337,6 +342,9 @@ namespace Google.Cloud.Monitoring.V3 {
 
     [global::System.Diagnostics.DebuggerNonUserCodeAttribute]
     public void WriteTo(pb::CodedOutputStream output) {
+    #if !GOOGLE_PROTOBUF_REFSTRUCT_COMPATIBILITY_MODE
+      output.WriteRawMessage(this);
+    #else
       if (valueCase_ == ValueOneofCase.BoolValue) {
         output.WriteRawTag(8);
         output.WriteBool(BoolValue);
@@ -360,7 +368,37 @@ namespace Google.Cloud.Monitoring.V3 {
       if (_unknownFields != null) {
         _unknownFields.WriteTo(output);
       }
+    #endif
     }
+
+    #if !GOOGLE_PROTOBUF_REFSTRUCT_COMPATIBILITY_MODE
+    [global::System.Diagnostics.DebuggerNonUserCodeAttribute]
+    void pb::IBufferMessage.InternalWriteTo(ref pb::WriteContext output) {
+      if (valueCase_ == ValueOneofCase.BoolValue) {
+        output.WriteRawTag(8);
+        output.WriteBool(BoolValue);
+      }
+      if (valueCase_ == ValueOneofCase.Int64Value) {
+        output.WriteRawTag(16);
+        output.WriteInt64(Int64Value);
+      }
+      if (valueCase_ == ValueOneofCase.DoubleValue) {
+        output.WriteRawTag(25);
+        output.WriteDouble(DoubleValue);
+      }
+      if (valueCase_ == ValueOneofCase.StringValue) {
+        output.WriteRawTag(34);
+        output.WriteString(StringValue);
+      }
+      if (valueCase_ == ValueOneofCase.DistributionValue) {
+        output.WriteRawTag(42);
+        output.WriteMessage(DistributionValue);
+      }
+      if (_unknownFields != null) {
+        _unknownFields.WriteTo(ref output);
+      }
+    }
+    #endif
 
     [global::System.Diagnostics.DebuggerNonUserCodeAttribute]
     public int CalculateSize() {
@@ -417,6 +455,9 @@ namespace Google.Cloud.Monitoring.V3 {
 
     [global::System.Diagnostics.DebuggerNonUserCodeAttribute]
     public void MergeFrom(pb::CodedInputStream input) {
+    #if !GOOGLE_PROTOBUF_REFSTRUCT_COMPATIBILITY_MODE
+      input.ReadRawMessage(this);
+    #else
       uint tag;
       while ((tag = input.ReadTag()) != 0) {
         switch(tag) {
@@ -450,12 +491,56 @@ namespace Google.Cloud.Monitoring.V3 {
           }
         }
       }
+    #endif
     }
+
+    #if !GOOGLE_PROTOBUF_REFSTRUCT_COMPATIBILITY_MODE
+    [global::System.Diagnostics.DebuggerNonUserCodeAttribute]
+    void pb::IBufferMessage.InternalMergeFrom(ref pb::ParseContext input) {
+      uint tag;
+      while ((tag = input.ReadTag()) != 0) {
+        switch(tag) {
+          default:
+            _unknownFields = pb::UnknownFieldSet.MergeFieldFrom(_unknownFields, ref input);
+            break;
+          case 8: {
+            BoolValue = input.ReadBool();
+            break;
+          }
+          case 16: {
+            Int64Value = input.ReadInt64();
+            break;
+          }
+          case 25: {
+            DoubleValue = input.ReadDouble();
+            break;
+          }
+          case 34: {
+            StringValue = input.ReadString();
+            break;
+          }
+          case 42: {
+            global::Google.Api.Distribution subBuilder = new global::Google.Api.Distribution();
+            if (valueCase_ == ValueOneofCase.DistributionValue) {
+              subBuilder.MergeFrom(DistributionValue);
+            }
+            input.ReadMessage(subBuilder);
+            DistributionValue = subBuilder;
+            break;
+          }
+        }
+      }
+    }
+    #endif
 
   }
 
   /// <summary>
-  /// A closed time interval. It extends from the start time to the end time, and includes both: `[startTime, endTime]`. Valid time intervals depend on the [`MetricKind`](/monitoring/api/ref_v3/rest/v3/projects.metricDescriptors#MetricKind) of the metric value. In no case can the end time be earlier than the start time.
+  /// A closed time interval. It extends from the start time to the end time, and
+  /// includes both: `[startTime, endTime]`. Valid time intervals depend on the
+  /// [`MetricKind`](https://cloud.google.com/monitoring/api/ref_v3/rest/v3/projects.metricDescriptors#MetricKind)
+  /// of the metric value. In no case can the end time be earlier than the start
+  /// time.
   ///
   /// * For a `GAUGE` metric, the `startTime` value is technically optional; if
   ///   no value is specified, the start time defaults to the value of the
@@ -468,13 +553,17 @@ namespace Google.Cloud.Monitoring.V3 {
   ///   than the end time.
   ///
   /// * In all cases, the start time of the next interval must be
-  ///   at least a microsecond after the end time of the previous interval.
+  ///   at least a millisecond after the end time of the previous interval.
   ///   Because the interval is closed, if the start time of a new interval
   ///   is the same as the end time of the previous interval, data written
   ///   at the new start time could overwrite data written at the previous
   ///   end time.
   /// </summary>
-  public sealed partial class TimeInterval : pb::IMessage<TimeInterval> {
+  public sealed partial class TimeInterval : pb::IMessage<TimeInterval>
+  #if !GOOGLE_PROTOBUF_REFSTRUCT_COMPATIBILITY_MODE
+      , pb::IBufferMessage
+  #endif
+  {
     private static readonly pb::MessageParser<TimeInterval> _parser = new pb::MessageParser<TimeInterval>(() => new TimeInterval());
     private pb::UnknownFieldSet _unknownFields;
     [global::System.Diagnostics.DebuggerNonUserCodeAttribute]
@@ -575,6 +664,9 @@ namespace Google.Cloud.Monitoring.V3 {
 
     [global::System.Diagnostics.DebuggerNonUserCodeAttribute]
     public void WriteTo(pb::CodedOutputStream output) {
+    #if !GOOGLE_PROTOBUF_REFSTRUCT_COMPATIBILITY_MODE
+      output.WriteRawMessage(this);
+    #else
       if (startTime_ != null) {
         output.WriteRawTag(10);
         output.WriteMessage(StartTime);
@@ -586,7 +678,25 @@ namespace Google.Cloud.Monitoring.V3 {
       if (_unknownFields != null) {
         _unknownFields.WriteTo(output);
       }
+    #endif
     }
+
+    #if !GOOGLE_PROTOBUF_REFSTRUCT_COMPATIBILITY_MODE
+    [global::System.Diagnostics.DebuggerNonUserCodeAttribute]
+    void pb::IBufferMessage.InternalWriteTo(ref pb::WriteContext output) {
+      if (startTime_ != null) {
+        output.WriteRawTag(10);
+        output.WriteMessage(StartTime);
+      }
+      if (endTime_ != null) {
+        output.WriteRawTag(18);
+        output.WriteMessage(EndTime);
+      }
+      if (_unknownFields != null) {
+        _unknownFields.WriteTo(ref output);
+      }
+    }
+    #endif
 
     [global::System.Diagnostics.DebuggerNonUserCodeAttribute]
     public int CalculateSize() {
@@ -625,6 +735,9 @@ namespace Google.Cloud.Monitoring.V3 {
 
     [global::System.Diagnostics.DebuggerNonUserCodeAttribute]
     public void MergeFrom(pb::CodedInputStream input) {
+    #if !GOOGLE_PROTOBUF_REFSTRUCT_COMPATIBILITY_MODE
+      input.ReadRawMessage(this);
+    #else
       uint tag;
       while ((tag = input.ReadTag()) != 0) {
         switch(tag) {
@@ -647,19 +760,72 @@ namespace Google.Cloud.Monitoring.V3 {
           }
         }
       }
+    #endif
     }
+
+    #if !GOOGLE_PROTOBUF_REFSTRUCT_COMPATIBILITY_MODE
+    [global::System.Diagnostics.DebuggerNonUserCodeAttribute]
+    void pb::IBufferMessage.InternalMergeFrom(ref pb::ParseContext input) {
+      uint tag;
+      while ((tag = input.ReadTag()) != 0) {
+        switch(tag) {
+          default:
+            _unknownFields = pb::UnknownFieldSet.MergeFieldFrom(_unknownFields, ref input);
+            break;
+          case 10: {
+            if (startTime_ == null) {
+              StartTime = new global::Google.Protobuf.WellKnownTypes.Timestamp();
+            }
+            input.ReadMessage(StartTime);
+            break;
+          }
+          case 18: {
+            if (endTime_ == null) {
+              EndTime = new global::Google.Protobuf.WellKnownTypes.Timestamp();
+            }
+            input.ReadMessage(EndTime);
+            break;
+          }
+        }
+      }
+    }
+    #endif
 
   }
 
   /// <summary>
-  /// Describes how to combine multiple time series to provide different views of
-  /// the data.  Aggregation consists of an alignment step on individual time
-  /// series (`alignment_period` and `per_series_aligner`) followed by an optional
-  /// reduction step of the data across the aligned time series
-  /// (`cross_series_reducer` and `group_by_fields`).  For more details, see
-  /// [Aggregation](/monitoring/api/learn_more#aggregation).
+  /// Describes how to combine multiple time series to provide a different view of
+  /// the data.  Aggregation of time series is done in two steps. First, each time
+  /// series in the set is _aligned_ to the same time interval boundaries, then the
+  /// set of time series is optionally _reduced_ in number.
+  ///
+  /// Alignment consists of applying the `per_series_aligner` operation
+  /// to each time series after its data has been divided into regular
+  /// `alignment_period` time intervals. This process takes _all_ of the data
+  /// points in an alignment period, applies a mathematical transformation such as
+  /// averaging, minimum, maximum, delta, etc., and converts them into a single
+  /// data point per period.
+  ///
+  /// Reduction is when the aligned and transformed time series can optionally be
+  /// combined, reducing the number of time series through similar mathematical
+  /// transformations. Reduction involves applying a `cross_series_reducer` to
+  /// all the time series, optionally sorting the time series into subsets with
+  /// `group_by_fields`, and applying the reducer to each subset.
+  ///
+  /// The raw time series data can contain a huge amount of information from
+  /// multiple sources. Alignment and reduction transforms this mass of data into
+  /// a more manageable and representative collection of data, for example "the
+  /// 95% latency across the average of all tasks in a cluster". This
+  /// representative data can be more easily graphed and comprehended, and the
+  /// individual time series data is still available for later drilldown. For more
+  /// details, see [Filtering and
+  /// aggregation](https://cloud.google.com/monitoring/api/v3/aggregation).
   /// </summary>
-  public sealed partial class Aggregation : pb::IMessage<Aggregation> {
+  public sealed partial class Aggregation : pb::IMessage<Aggregation>
+  #if !GOOGLE_PROTOBUF_REFSTRUCT_COMPATIBILITY_MODE
+      , pb::IBufferMessage
+  #endif
+  {
     private static readonly pb::MessageParser<Aggregation> _parser = new pb::MessageParser<Aggregation>(() => new Aggregation());
     private pb::UnknownFieldSet _unknownFields;
     [global::System.Diagnostics.DebuggerNonUserCodeAttribute]
@@ -700,14 +866,16 @@ namespace Google.Cloud.Monitoring.V3 {
     public const int AlignmentPeriodFieldNumber = 1;
     private global::Google.Protobuf.WellKnownTypes.Duration alignmentPeriod_;
     /// <summary>
-    /// The alignment period for per-[time series][google.monitoring.v3.TimeSeries]
-    /// alignment. If present, `alignmentPeriod` must be at least 60
-    /// seconds.  After per-time series alignment, each time series will
-    /// contain data points only on the period boundaries. If
-    /// `perSeriesAligner` is not specified or equals `ALIGN_NONE`, then
-    /// this field is ignored. If `perSeriesAligner` is specified and
-    /// does not equal `ALIGN_NONE`, then this field must be defined;
-    /// otherwise an error is returned.
+    /// The `alignment_period` specifies a time interval, in seconds, that is used
+    /// to divide the data in all the
+    /// [time series][google.monitoring.v3.TimeSeries] into consistent blocks of
+    /// time. This will be done before the per-series aligner can be applied to
+    /// the data.
+    ///
+    /// The value must be at least 60 seconds. If a per-series aligner other than
+    /// `ALIGN_NONE` is specified, this field is required or an error is returned.
+    /// If no per-series aligner is specified, or the aligner `ALIGN_NONE` is
+    /// specified, then this field is ignored.
     /// </summary>
     [global::System.Diagnostics.DebuggerNonUserCodeAttribute]
     public global::Google.Protobuf.WellKnownTypes.Duration AlignmentPeriod {
@@ -719,18 +887,23 @@ namespace Google.Cloud.Monitoring.V3 {
 
     /// <summary>Field number for the "per_series_aligner" field.</summary>
     public const int PerSeriesAlignerFieldNumber = 2;
-    private global::Google.Cloud.Monitoring.V3.Aggregation.Types.Aligner perSeriesAligner_ = 0;
+    private global::Google.Cloud.Monitoring.V3.Aggregation.Types.Aligner perSeriesAligner_ = global::Google.Cloud.Monitoring.V3.Aggregation.Types.Aligner.AlignNone;
     /// <summary>
-    /// The approach to be used to align individual time series. Not all
-    /// alignment functions may be applied to all time series, depending
-    /// on the metric type and value type of the original time
-    /// series. Alignment may change the metric type or the value type of
+    /// An `Aligner` describes how to bring the data points in a single
+    /// time series into temporal alignment. Except for `ALIGN_NONE`, all
+    /// alignments cause all the data points in an `alignment_period` to be
+    /// mathematically grouped together, resulting in a single data point for
+    /// each `alignment_period` with end timestamp at the end of the period.
+    ///
+    /// Not all alignment operations may be applied to all time series. The valid
+    /// choices depend on the `metric_kind` and `value_type` of the original time
+    /// series. Alignment can change the `metric_kind` or the `value_type` of
     /// the time series.
     ///
     /// Time series data must be aligned in order to perform cross-time
-    /// series reduction. If `crossSeriesReducer` is specified, then
-    /// `perSeriesAligner` must be specified and not equal `ALIGN_NONE`
-    /// and `alignmentPeriod` must be specified; otherwise, an error is
+    /// series reduction. If `cross_series_reducer` is specified, then
+    /// `per_series_aligner` must be specified and not equal to `ALIGN_NONE`
+    /// and `alignment_period` must be specified; otherwise, an error is
     /// returned.
     /// </summary>
     [global::System.Diagnostics.DebuggerNonUserCodeAttribute]
@@ -743,19 +916,22 @@ namespace Google.Cloud.Monitoring.V3 {
 
     /// <summary>Field number for the "cross_series_reducer" field.</summary>
     public const int CrossSeriesReducerFieldNumber = 4;
-    private global::Google.Cloud.Monitoring.V3.Aggregation.Types.Reducer crossSeriesReducer_ = 0;
+    private global::Google.Cloud.Monitoring.V3.Aggregation.Types.Reducer crossSeriesReducer_ = global::Google.Cloud.Monitoring.V3.Aggregation.Types.Reducer.ReduceNone;
     /// <summary>
-    /// The approach to be used to combine time series. Not all reducer
-    /// functions may be applied to all time series, depending on the
-    /// metric type and the value type of the original time
-    /// series. Reduction may change the metric type of value type of the
-    /// time series.
+    /// The reduction operation to be used to combine time series into a single
+    /// time series, where the value of each data point in the resulting series is
+    /// a function of all the already aligned values in the input time series.
     ///
-    /// Time series data must be aligned in order to perform cross-time
-    /// series reduction. If `crossSeriesReducer` is specified, then
-    /// `perSeriesAligner` must be specified and not equal `ALIGN_NONE`
-    /// and `alignmentPeriod` must be specified; otherwise, an error is
-    /// returned.
+    /// Not all reducer operations can be applied to all time series. The valid
+    /// choices depend on the `metric_kind` and the `value_type` of the original
+    /// time series. Reduction can yield a time series with a different
+    /// `metric_kind` or `value_type` than the input time series.
+    ///
+    /// Time series data must first be aligned (see `per_series_aligner`) in order
+    /// to perform cross-time series reduction. If `cross_series_reducer` is
+    /// specified, then `per_series_aligner` must be specified, and must not be
+    /// `ALIGN_NONE`. An `alignment_period` must also be specified; otherwise, an
+    /// error is returned.
     /// </summary>
     [global::System.Diagnostics.DebuggerNonUserCodeAttribute]
     public global::Google.Cloud.Monitoring.V3.Aggregation.Types.Reducer CrossSeriesReducer {
@@ -771,19 +947,19 @@ namespace Google.Cloud.Monitoring.V3 {
         = pb::FieldCodec.ForString(42);
     private readonly pbc::RepeatedField<string> groupByFields_ = new pbc::RepeatedField<string>();
     /// <summary>
-    /// The set of fields to preserve when `crossSeriesReducer` is
-    /// specified. The `groupByFields` determine how the time series are
+    /// The set of fields to preserve when `cross_series_reducer` is
+    /// specified. The `group_by_fields` determine how the time series are
     /// partitioned into subsets prior to applying the aggregation
-    /// function. Each subset contains time series that have the same
+    /// operation. Each subset contains time series that have the same
     /// value for each of the grouping fields. Each individual time
     /// series is a member of exactly one subset. The
-    /// `crossSeriesReducer` is applied to each subset of time series.
+    /// `cross_series_reducer` is applied to each subset of time series.
     /// It is not possible to reduce across different resource types, so
     /// this field implicitly contains `resource.type`.  Fields not
-    /// specified in `groupByFields` are aggregated away.  If
-    /// `groupByFields` is not specified and all the time series have
+    /// specified in `group_by_fields` are aggregated away.  If
+    /// `group_by_fields` is not specified and all the time series have
     /// the same resource type, then the time series are aggregated into
-    /// a single output time series. If `crossSeriesReducer` is not
+    /// a single output time series. If `cross_series_reducer` is not
     /// defined, this field is ignored.
     /// </summary>
     [global::System.Diagnostics.DebuggerNonUserCodeAttribute]
@@ -815,8 +991,8 @@ namespace Google.Cloud.Monitoring.V3 {
     public override int GetHashCode() {
       int hash = 1;
       if (alignmentPeriod_ != null) hash ^= AlignmentPeriod.GetHashCode();
-      if (PerSeriesAligner != 0) hash ^= PerSeriesAligner.GetHashCode();
-      if (CrossSeriesReducer != 0) hash ^= CrossSeriesReducer.GetHashCode();
+      if (PerSeriesAligner != global::Google.Cloud.Monitoring.V3.Aggregation.Types.Aligner.AlignNone) hash ^= PerSeriesAligner.GetHashCode();
+      if (CrossSeriesReducer != global::Google.Cloud.Monitoring.V3.Aggregation.Types.Reducer.ReduceNone) hash ^= CrossSeriesReducer.GetHashCode();
       hash ^= groupByFields_.GetHashCode();
       if (_unknownFields != null) {
         hash ^= _unknownFields.GetHashCode();
@@ -831,15 +1007,18 @@ namespace Google.Cloud.Monitoring.V3 {
 
     [global::System.Diagnostics.DebuggerNonUserCodeAttribute]
     public void WriteTo(pb::CodedOutputStream output) {
+    #if !GOOGLE_PROTOBUF_REFSTRUCT_COMPATIBILITY_MODE
+      output.WriteRawMessage(this);
+    #else
       if (alignmentPeriod_ != null) {
         output.WriteRawTag(10);
         output.WriteMessage(AlignmentPeriod);
       }
-      if (PerSeriesAligner != 0) {
+      if (PerSeriesAligner != global::Google.Cloud.Monitoring.V3.Aggregation.Types.Aligner.AlignNone) {
         output.WriteRawTag(16);
         output.WriteEnum((int) PerSeriesAligner);
       }
-      if (CrossSeriesReducer != 0) {
+      if (CrossSeriesReducer != global::Google.Cloud.Monitoring.V3.Aggregation.Types.Reducer.ReduceNone) {
         output.WriteRawTag(32);
         output.WriteEnum((int) CrossSeriesReducer);
       }
@@ -847,7 +1026,30 @@ namespace Google.Cloud.Monitoring.V3 {
       if (_unknownFields != null) {
         _unknownFields.WriteTo(output);
       }
+    #endif
     }
+
+    #if !GOOGLE_PROTOBUF_REFSTRUCT_COMPATIBILITY_MODE
+    [global::System.Diagnostics.DebuggerNonUserCodeAttribute]
+    void pb::IBufferMessage.InternalWriteTo(ref pb::WriteContext output) {
+      if (alignmentPeriod_ != null) {
+        output.WriteRawTag(10);
+        output.WriteMessage(AlignmentPeriod);
+      }
+      if (PerSeriesAligner != global::Google.Cloud.Monitoring.V3.Aggregation.Types.Aligner.AlignNone) {
+        output.WriteRawTag(16);
+        output.WriteEnum((int) PerSeriesAligner);
+      }
+      if (CrossSeriesReducer != global::Google.Cloud.Monitoring.V3.Aggregation.Types.Reducer.ReduceNone) {
+        output.WriteRawTag(32);
+        output.WriteEnum((int) CrossSeriesReducer);
+      }
+      groupByFields_.WriteTo(ref output, _repeated_groupByFields_codec);
+      if (_unknownFields != null) {
+        _unknownFields.WriteTo(ref output);
+      }
+    }
+    #endif
 
     [global::System.Diagnostics.DebuggerNonUserCodeAttribute]
     public int CalculateSize() {
@@ -855,10 +1057,10 @@ namespace Google.Cloud.Monitoring.V3 {
       if (alignmentPeriod_ != null) {
         size += 1 + pb::CodedOutputStream.ComputeMessageSize(AlignmentPeriod);
       }
-      if (PerSeriesAligner != 0) {
+      if (PerSeriesAligner != global::Google.Cloud.Monitoring.V3.Aggregation.Types.Aligner.AlignNone) {
         size += 1 + pb::CodedOutputStream.ComputeEnumSize((int) PerSeriesAligner);
       }
-      if (CrossSeriesReducer != 0) {
+      if (CrossSeriesReducer != global::Google.Cloud.Monitoring.V3.Aggregation.Types.Reducer.ReduceNone) {
         size += 1 + pb::CodedOutputStream.ComputeEnumSize((int) CrossSeriesReducer);
       }
       size += groupByFields_.CalculateSize(_repeated_groupByFields_codec);
@@ -879,10 +1081,10 @@ namespace Google.Cloud.Monitoring.V3 {
         }
         AlignmentPeriod.MergeFrom(other.AlignmentPeriod);
       }
-      if (other.PerSeriesAligner != 0) {
+      if (other.PerSeriesAligner != global::Google.Cloud.Monitoring.V3.Aggregation.Types.Aligner.AlignNone) {
         PerSeriesAligner = other.PerSeriesAligner;
       }
-      if (other.CrossSeriesReducer != 0) {
+      if (other.CrossSeriesReducer != global::Google.Cloud.Monitoring.V3.Aggregation.Types.Reducer.ReduceNone) {
         CrossSeriesReducer = other.CrossSeriesReducer;
       }
       groupByFields_.Add(other.groupByFields_);
@@ -891,6 +1093,9 @@ namespace Google.Cloud.Monitoring.V3 {
 
     [global::System.Diagnostics.DebuggerNonUserCodeAttribute]
     public void MergeFrom(pb::CodedInputStream input) {
+    #if !GOOGLE_PROTOBUF_REFSTRUCT_COMPATIBILITY_MODE
+      input.ReadRawMessage(this);
+    #else
       uint tag;
       while ((tag = input.ReadTag()) != 0) {
         switch(tag) {
@@ -918,288 +1123,335 @@ namespace Google.Cloud.Monitoring.V3 {
           }
         }
       }
+    #endif
     }
+
+    #if !GOOGLE_PROTOBUF_REFSTRUCT_COMPATIBILITY_MODE
+    [global::System.Diagnostics.DebuggerNonUserCodeAttribute]
+    void pb::IBufferMessage.InternalMergeFrom(ref pb::ParseContext input) {
+      uint tag;
+      while ((tag = input.ReadTag()) != 0) {
+        switch(tag) {
+          default:
+            _unknownFields = pb::UnknownFieldSet.MergeFieldFrom(_unknownFields, ref input);
+            break;
+          case 10: {
+            if (alignmentPeriod_ == null) {
+              AlignmentPeriod = new global::Google.Protobuf.WellKnownTypes.Duration();
+            }
+            input.ReadMessage(AlignmentPeriod);
+            break;
+          }
+          case 16: {
+            PerSeriesAligner = (global::Google.Cloud.Monitoring.V3.Aggregation.Types.Aligner) input.ReadEnum();
+            break;
+          }
+          case 32: {
+            CrossSeriesReducer = (global::Google.Cloud.Monitoring.V3.Aggregation.Types.Reducer) input.ReadEnum();
+            break;
+          }
+          case 42: {
+            groupByFields_.AddEntriesFrom(ref input, _repeated_groupByFields_codec);
+            break;
+          }
+        }
+      }
+    }
+    #endif
 
     #region Nested types
     /// <summary>Container for nested types declared in the Aggregation message type.</summary>
     [global::System.Diagnostics.DebuggerNonUserCodeAttribute]
     public static partial class Types {
       /// <summary>
-      /// The Aligner describes how to bring the data points in a single
-      /// time series into temporal alignment.
+      /// The `Aligner` specifies the operation that will be applied to the data
+      /// points in each alignment period in a time series. Except for
+      /// `ALIGN_NONE`, which specifies that no operation be applied, each alignment
+      /// operation replaces the set of data values in each alignment period with
+      /// a single value: the result of applying the operation to the data values.
+      /// An aligned time series has a single data value at the end of each
+      /// `alignment_period`.
+      ///
+      /// An alignment operation can change the data type of the values, too. For
+      /// example, if you apply a counting operation to boolean values, the data
+      /// `value_type` in the original time series is `BOOLEAN`, but the `value_type`
+      /// in the aligned result is `INT64`.
       /// </summary>
       public enum Aligner {
         /// <summary>
-        /// No alignment. Raw data is returned. Not valid if cross-time
-        /// series reduction is requested. The value type of the result is
-        /// the same as the value type of the input.
+        /// No alignment. Raw data is returned. Not valid if cross-series reduction
+        /// is requested. The `value_type` of the result is the same as the
+        /// `value_type` of the input.
         /// </summary>
         [pbr::OriginalName("ALIGN_NONE")] AlignNone = 0,
         /// <summary>
-        /// Align and convert to delta metric type. This alignment is valid
-        /// for cumulative metrics and delta metrics. Aligning an existing
-        /// delta metric to a delta metric requires that the alignment
-        /// period be increased. The value type of the result is the same
-        /// as the value type of the input.
+        /// Align and convert to
+        /// [DELTA][google.api.MetricDescriptor.MetricKind.DELTA].
+        /// The output is `delta = y1 - y0`.
         ///
-        /// One can think of this aligner as a rate but without time units; that
-        /// is, the output is conceptually (second_point - first_point).
+        /// This alignment is valid for
+        /// [CUMULATIVE][google.api.MetricDescriptor.MetricKind.CUMULATIVE] and
+        /// `DELTA` metrics. If the selected alignment period results in periods
+        /// with no data, then the aligned value for such a period is created by
+        /// interpolation. The `value_type`  of the aligned result is the same as
+        /// the `value_type` of the input.
         /// </summary>
         [pbr::OriginalName("ALIGN_DELTA")] AlignDelta = 1,
         /// <summary>
-        /// Align and convert to a rate. This alignment is valid for
-        /// cumulative metrics and delta metrics with numeric values. The output is a
-        /// gauge metric with value type
-        /// [DOUBLE][google.api.MetricDescriptor.ValueType.DOUBLE].
+        /// Align and convert to a rate. The result is computed as
+        /// `rate = (y1 - y0)/(t1 - t0)`, or "delta over time".
+        /// Think of this aligner as providing the slope of the line that passes
+        /// through the value at the start and at the end of the `alignment_period`.
         ///
-        /// One can think of this aligner as conceptually providing the slope of
-        /// the line that passes through the value at the start and end of the
-        /// window. In other words, this is conceptually ((y1 - y0)/(t1 - t0)),
-        /// and the output unit is one that has a "/time" dimension.
+        /// This aligner is valid for `CUMULATIVE`
+        /// and `DELTA` metrics with numeric values. If the selected alignment
+        /// period results in periods with no data, then the aligned value for
+        /// such a period is created by interpolation. The output is a `GAUGE`
+        /// metric with `value_type` `DOUBLE`.
         ///
-        /// If, by rate, you are looking for percentage change, see the
-        /// `ALIGN_PERCENT_CHANGE` aligner option.
+        /// If, by "rate", you mean "percentage change", see the
+        /// `ALIGN_PERCENT_CHANGE` aligner instead.
         /// </summary>
         [pbr::OriginalName("ALIGN_RATE")] AlignRate = 2,
         /// <summary>
-        /// Align by interpolating between adjacent points around the
-        /// period boundary. This alignment is valid for gauge
-        /// metrics with numeric values. The value type of the result is the same
-        /// as the value type of the input.
+        /// Align by interpolating between adjacent points around the alignment
+        /// period boundary. This aligner is valid for `GAUGE` metrics with
+        /// numeric values. The `value_type` of the aligned result is the same as the
+        /// `value_type` of the input.
         /// </summary>
         [pbr::OriginalName("ALIGN_INTERPOLATE")] AlignInterpolate = 3,
         /// <summary>
-        /// Align by shifting the oldest data point before the period
-        /// boundary to the boundary. This alignment is valid for gauge
-        /// metrics. The value type of the result is the same as the
-        /// value type of the input.
+        /// Align by moving the most recent data point before the end of the
+        /// alignment period to the boundary at the end of the alignment
+        /// period. This aligner is valid for `GAUGE` metrics. The `value_type` of
+        /// the aligned result is the same as the `value_type` of the input.
         /// </summary>
         [pbr::OriginalName("ALIGN_NEXT_OLDER")] AlignNextOlder = 4,
         /// <summary>
-        /// Align time series via aggregation. The resulting data point in
-        /// the alignment period is the minimum of all data points in the
-        /// period. This alignment is valid for gauge and delta metrics with numeric
-        /// values. The value type of the result is the same as the value
-        /// type of the input.
+        /// Align the time series by returning the minimum value in each alignment
+        /// period. This aligner is valid for `GAUGE` and `DELTA` metrics with
+        /// numeric values. The `value_type` of the aligned result is the same as
+        /// the `value_type` of the input.
         /// </summary>
         [pbr::OriginalName("ALIGN_MIN")] AlignMin = 10,
         /// <summary>
-        /// Align time series via aggregation. The resulting data point in
-        /// the alignment period is the maximum of all data points in the
-        /// period. This alignment is valid for gauge and delta metrics with numeric
-        /// values. The value type of the result is the same as the value
-        /// type of the input.
+        /// Align the time series by returning the maximum value in each alignment
+        /// period. This aligner is valid for `GAUGE` and `DELTA` metrics with
+        /// numeric values. The `value_type` of the aligned result is the same as
+        /// the `value_type` of the input.
         /// </summary>
         [pbr::OriginalName("ALIGN_MAX")] AlignMax = 11,
         /// <summary>
-        /// Align time series via aggregation. The resulting data point in
-        /// the alignment period is the average or arithmetic mean of all
-        /// data points in the period. This alignment is valid for gauge and delta
-        /// metrics with numeric values. The value type of the output is
-        /// [DOUBLE][google.api.MetricDescriptor.ValueType.DOUBLE].
+        /// Align the time series by returning the mean value in each alignment
+        /// period. This aligner is valid for `GAUGE` and `DELTA` metrics with
+        /// numeric values. The `value_type` of the aligned result is `DOUBLE`.
         /// </summary>
         [pbr::OriginalName("ALIGN_MEAN")] AlignMean = 12,
         /// <summary>
-        /// Align time series via aggregation. The resulting data point in
-        /// the alignment period is the count of all data points in the
-        /// period. This alignment is valid for gauge and delta metrics with numeric
-        /// or Boolean values. The value type of the output is
-        /// [INT64][google.api.MetricDescriptor.ValueType.INT64].
+        /// Align the time series by returning the number of values in each alignment
+        /// period. This aligner is valid for `GAUGE` and `DELTA` metrics with
+        /// numeric or Boolean values. The `value_type` of the aligned result is
+        /// `INT64`.
         /// </summary>
         [pbr::OriginalName("ALIGN_COUNT")] AlignCount = 13,
         /// <summary>
-        /// Align time series via aggregation. The resulting data point in
-        /// the alignment period is the sum of all data points in the
-        /// period. This alignment is valid for gauge and delta metrics with numeric
-        /// and distribution values. The value type of the output is the
-        /// same as the value type of the input.
+        /// Align the time series by returning the sum of the values in each
+        /// alignment period. This aligner is valid for `GAUGE` and `DELTA`
+        /// metrics with numeric and distribution values. The `value_type` of the
+        /// aligned result is the same as the `value_type` of the input.
         /// </summary>
         [pbr::OriginalName("ALIGN_SUM")] AlignSum = 14,
         /// <summary>
-        /// Align time series via aggregation. The resulting data point in
-        /// the alignment period is the standard deviation of all data
-        /// points in the period. This alignment is valid for gauge and delta metrics
-        /// with numeric values. The value type of the output is
-        /// [DOUBLE][google.api.MetricDescriptor.ValueType.DOUBLE].
+        /// Align the time series by returning the standard deviation of the values
+        /// in each alignment period. This aligner is valid for `GAUGE` and
+        /// `DELTA` metrics with numeric values. The `value_type` of the output is
+        /// `DOUBLE`.
         /// </summary>
         [pbr::OriginalName("ALIGN_STDDEV")] AlignStddev = 15,
         /// <summary>
-        /// Align time series via aggregation. The resulting data point in
-        /// the alignment period is the count of True-valued data points in the
-        /// period. This alignment is valid for gauge metrics with
-        /// Boolean values. The value type of the output is
-        /// [INT64][google.api.MetricDescriptor.ValueType.INT64].
+        /// Align the time series by returning the number of `True` values in
+        /// each alignment period. This aligner is valid for `GAUGE` metrics with
+        /// Boolean values. The `value_type` of the output is `INT64`.
         /// </summary>
         [pbr::OriginalName("ALIGN_COUNT_TRUE")] AlignCountTrue = 16,
         /// <summary>
-        /// Align time series via aggregation. The resulting data point in
-        /// the alignment period is the count of False-valued data points in the
-        /// period. This alignment is valid for gauge metrics with
-        /// Boolean values. The value type of the output is
-        /// [INT64][google.api.MetricDescriptor.ValueType.INT64].
+        /// Align the time series by returning the number of `False` values in
+        /// each alignment period. This aligner is valid for `GAUGE` metrics with
+        /// Boolean values. The `value_type` of the output is `INT64`.
         /// </summary>
         [pbr::OriginalName("ALIGN_COUNT_FALSE")] AlignCountFalse = 24,
         /// <summary>
-        /// Align time series via aggregation. The resulting data point in
-        /// the alignment period is the fraction of True-valued data points in the
-        /// period. This alignment is valid for gauge metrics with Boolean values.
-        /// The output value is in the range [0, 1] and has value type
-        /// [DOUBLE][google.api.MetricDescriptor.ValueType.DOUBLE].
+        /// Align the time series by returning the ratio of the number of `True`
+        /// values to the total number of values in each alignment period. This
+        /// aligner is valid for `GAUGE` metrics with Boolean values. The output
+        /// value is in the range [0.0, 1.0] and has `value_type` `DOUBLE`.
         /// </summary>
         [pbr::OriginalName("ALIGN_FRACTION_TRUE")] AlignFractionTrue = 17,
         /// <summary>
-        /// Align time series via aggregation. The resulting data point in
-        /// the alignment period is the 99th percentile of all data
-        /// points in the period. This alignment is valid for gauge and delta metrics
-        /// with distribution values. The output is a gauge metric with value type
-        /// [DOUBLE][google.api.MetricDescriptor.ValueType.DOUBLE].
+        /// Align the time series by using [percentile
+        /// aggregation](https://en.wikipedia.org/wiki/Percentile). The resulting
+        /// data point in each alignment period is the 99th percentile of all data
+        /// points in the period. This aligner is valid for `GAUGE` and `DELTA`
+        /// metrics with distribution values. The output is a `GAUGE` metric with
+        /// `value_type` `DOUBLE`.
         /// </summary>
         [pbr::OriginalName("ALIGN_PERCENTILE_99")] AlignPercentile99 = 18,
         /// <summary>
-        /// Align time series via aggregation. The resulting data point in
-        /// the alignment period is the 95th percentile of all data
-        /// points in the period. This alignment is valid for gauge and delta metrics
-        /// with distribution values. The output is a gauge metric with value type
-        /// [DOUBLE][google.api.MetricDescriptor.ValueType.DOUBLE].
+        /// Align the time series by using [percentile
+        /// aggregation](https://en.wikipedia.org/wiki/Percentile). The resulting
+        /// data point in each alignment period is the 95th percentile of all data
+        /// points in the period. This aligner is valid for `GAUGE` and `DELTA`
+        /// metrics with distribution values. The output is a `GAUGE` metric with
+        /// `value_type` `DOUBLE`.
         /// </summary>
         [pbr::OriginalName("ALIGN_PERCENTILE_95")] AlignPercentile95 = 19,
         /// <summary>
-        /// Align time series via aggregation. The resulting data point in
-        /// the alignment period is the 50th percentile of all data
-        /// points in the period. This alignment is valid for gauge and delta metrics
-        /// with distribution values. The output is a gauge metric with value type
-        /// [DOUBLE][google.api.MetricDescriptor.ValueType.DOUBLE].
+        /// Align the time series by using [percentile
+        /// aggregation](https://en.wikipedia.org/wiki/Percentile). The resulting
+        /// data point in each alignment period is the 50th percentile of all data
+        /// points in the period. This aligner is valid for `GAUGE` and `DELTA`
+        /// metrics with distribution values. The output is a `GAUGE` metric with
+        /// `value_type` `DOUBLE`.
         /// </summary>
         [pbr::OriginalName("ALIGN_PERCENTILE_50")] AlignPercentile50 = 20,
         /// <summary>
-        /// Align time series via aggregation. The resulting data point in
-        /// the alignment period is the 5th percentile of all data
-        /// points in the period. This alignment is valid for gauge and delta metrics
-        /// with distribution values. The output is a gauge metric with value type
-        /// [DOUBLE][google.api.MetricDescriptor.ValueType.DOUBLE].
+        /// Align the time series by using [percentile
+        /// aggregation](https://en.wikipedia.org/wiki/Percentile). The resulting
+        /// data point in each alignment period is the 5th percentile of all data
+        /// points in the period. This aligner is valid for `GAUGE` and `DELTA`
+        /// metrics with distribution values. The output is a `GAUGE` metric with
+        /// `value_type` `DOUBLE`.
         /// </summary>
         [pbr::OriginalName("ALIGN_PERCENTILE_05")] AlignPercentile05 = 21,
         /// <summary>
-        /// Align and convert to a percentage change. This alignment is valid for
-        /// gauge and delta metrics with numeric values. This alignment conceptually
-        /// computes the equivalent of "((current - previous)/previous)*100"
-        /// where previous value is determined based on the alignmentPeriod.
-        /// In the event that previous is 0 the calculated value is infinity with the
-        /// exception that if both (current - previous) and previous are 0 the
-        /// calculated value is 0.
-        /// A 10 minute moving mean is computed at each point of the time window
+        /// Align and convert to a percentage change. This aligner is valid for
+        /// `GAUGE` and `DELTA` metrics with numeric values. This alignment returns
+        /// `((current - previous)/previous) * 100`, where the value of `previous` is
+        /// determined based on the `alignment_period`.
+        ///
+        /// If the values of `current` and `previous` are both 0, then the returned
+        /// value is 0. If only `previous` is 0, the returned value is infinity.
+        ///
+        /// A 10-minute moving mean is computed at each point of the alignment period
         /// prior to the above calculation to smooth the metric and prevent false
-        /// positives from very short lived spikes.
-        /// Only applicable for data that is >= 0. Any values &lt; 0 are treated as
-        /// no data. While delta metrics are accepted by this alignment special care
-        /// should be taken that the values for the metric will always be positive.
-        /// The output is a gauge metric with value type
-        /// [DOUBLE][google.api.MetricDescriptor.ValueType.DOUBLE].
+        /// positives from very short-lived spikes. The moving mean is only
+        /// applicable for data whose values are `>= 0`. Any values `&lt; 0` are
+        /// treated as a missing datapoint, and are ignored. While `DELTA`
+        /// metrics are accepted by this alignment, special care should be taken that
+        /// the values for the metric will always be positive. The output is a
+        /// `GAUGE` metric with `value_type` `DOUBLE`.
         /// </summary>
         [pbr::OriginalName("ALIGN_PERCENT_CHANGE")] AlignPercentChange = 23,
       }
 
       /// <summary>
-      /// A Reducer describes how to aggregate data points from multiple
-      /// time series into a single time series.
+      /// A Reducer operation describes how to aggregate data points from multiple
+      /// time series into a single time series, where the value of each data point
+      /// in the resulting series is a function of all the already aligned values in
+      /// the input time series.
       /// </summary>
       public enum Reducer {
         /// <summary>
-        /// No cross-time series reduction. The output of the aligner is
+        /// No cross-time series reduction. The output of the `Aligner` is
         /// returned.
         /// </summary>
         [pbr::OriginalName("REDUCE_NONE")] ReduceNone = 0,
         /// <summary>
-        /// Reduce by computing the mean across time series for each
-        /// alignment period. This reducer is valid for delta and
-        /// gauge metrics with numeric or distribution values. The value type of the
-        /// output is [DOUBLE][google.api.MetricDescriptor.ValueType.DOUBLE].
+        /// Reduce by computing the mean value across time series for each
+        /// alignment period. This reducer is valid for
+        /// [DELTA][google.api.MetricDescriptor.MetricKind.DELTA] and
+        /// [GAUGE][google.api.MetricDescriptor.MetricKind.GAUGE] metrics with
+        /// numeric or distribution values. The `value_type` of the output is
+        /// [DOUBLE][google.api.MetricDescriptor.ValueType.DOUBLE].
         /// </summary>
         [pbr::OriginalName("REDUCE_MEAN")] ReduceMean = 1,
         /// <summary>
-        /// Reduce by computing the minimum across time series for each
-        /// alignment period. This reducer is valid for delta and
-        /// gauge metrics with numeric values. The value type of the output
-        /// is the same as the value type of the input.
+        /// Reduce by computing the minimum value across time series for each
+        /// alignment period. This reducer is valid for `DELTA` and `GAUGE` metrics
+        /// with numeric values. The `value_type` of the output is the same as the
+        /// `value_type` of the input.
         /// </summary>
         [pbr::OriginalName("REDUCE_MIN")] ReduceMin = 2,
         /// <summary>
-        /// Reduce by computing the maximum across time series for each
-        /// alignment period. This reducer is valid for delta and
-        /// gauge metrics with numeric values. The value type of the output
-        /// is the same as the value type of the input.
+        /// Reduce by computing the maximum value across time series for each
+        /// alignment period. This reducer is valid for `DELTA` and `GAUGE` metrics
+        /// with numeric values. The `value_type` of the output is the same as the
+        /// `value_type` of the input.
         /// </summary>
         [pbr::OriginalName("REDUCE_MAX")] ReduceMax = 3,
         /// <summary>
         /// Reduce by computing the sum across time series for each
-        /// alignment period. This reducer is valid for delta and
-        /// gauge metrics with numeric and distribution values. The value type of
-        /// the output is the same as the value type of the input.
+        /// alignment period. This reducer is valid for `DELTA` and `GAUGE` metrics
+        /// with numeric and distribution values. The `value_type` of the output is
+        /// the same as the `value_type` of the input.
         /// </summary>
         [pbr::OriginalName("REDUCE_SUM")] ReduceSum = 4,
         /// <summary>
         /// Reduce by computing the standard deviation across time series
-        /// for each alignment period. This reducer is valid for delta
-        /// and gauge metrics with numeric or distribution values. The value type of
-        /// the output is [DOUBLE][google.api.MetricDescriptor.ValueType.DOUBLE].
+        /// for each alignment period. This reducer is valid for `DELTA` and
+        /// `GAUGE` metrics with numeric or distribution values. The `value_type`
+        /// of the output is `DOUBLE`.
         /// </summary>
         [pbr::OriginalName("REDUCE_STDDEV")] ReduceStddev = 5,
         /// <summary>
-        /// Reduce by computing the count of data points across time series
-        /// for each alignment period. This reducer is valid for delta
-        /// and gauge metrics of numeric, Boolean, distribution, and string value
-        /// type. The value type of the output is
-        /// [INT64][google.api.MetricDescriptor.ValueType.INT64].
+        /// Reduce by computing the number of data points across time series
+        /// for each alignment period. This reducer is valid for `DELTA` and
+        /// `GAUGE` metrics of numeric, Boolean, distribution, and string
+        /// `value_type`. The `value_type` of the output is `INT64`.
         /// </summary>
         [pbr::OriginalName("REDUCE_COUNT")] ReduceCount = 6,
         /// <summary>
-        /// Reduce by computing the count of True-valued data points across time
-        /// series for each alignment period. This reducer is valid for delta
-        /// and gauge metrics of Boolean value type. The value type of
-        /// the output is [INT64][google.api.MetricDescriptor.ValueType.INT64].
+        /// Reduce by computing the number of `True`-valued data points across time
+        /// series for each alignment period. This reducer is valid for `DELTA` and
+        /// `GAUGE` metrics of Boolean `value_type`. The `value_type` of the output
+        /// is `INT64`.
         /// </summary>
         [pbr::OriginalName("REDUCE_COUNT_TRUE")] ReduceCountTrue = 7,
         /// <summary>
-        /// Reduce by computing the count of False-valued data points across time
-        /// series for each alignment period. This reducer is valid for delta
-        /// and gauge metrics of Boolean value type. The value type of
-        /// the output is [INT64][google.api.MetricDescriptor.ValueType.INT64].
+        /// Reduce by computing the number of `False`-valued data points across time
+        /// series for each alignment period. This reducer is valid for `DELTA` and
+        /// `GAUGE` metrics of Boolean `value_type`. The `value_type` of the output
+        /// is `INT64`.
         /// </summary>
         [pbr::OriginalName("REDUCE_COUNT_FALSE")] ReduceCountFalse = 15,
         /// <summary>
-        /// Reduce by computing the fraction of True-valued data points across time
-        /// series for each alignment period. This reducer is valid for delta
-        /// and gauge metrics of Boolean value type. The output value is in the
-        /// range [0, 1] and has value type
-        /// [DOUBLE][google.api.MetricDescriptor.ValueType.DOUBLE].
+        /// Reduce by computing the ratio of the number of `True`-valued data points
+        /// to the total number of data points for each alignment period. This
+        /// reducer is valid for `DELTA` and `GAUGE` metrics of Boolean `value_type`.
+        /// The output value is in the range [0.0, 1.0] and has `value_type`
+        /// `DOUBLE`.
         /// </summary>
         [pbr::OriginalName("REDUCE_FRACTION_TRUE")] ReduceFractionTrue = 8,
         /// <summary>
-        /// Reduce by computing 99th percentile of data points across time series
-        /// for each alignment period. This reducer is valid for gauge and delta
-        /// metrics of numeric and distribution type. The value of the output is
-        /// [DOUBLE][google.api.MetricDescriptor.ValueType.DOUBLE]
+        /// Reduce by computing the [99th
+        /// percentile](https://en.wikipedia.org/wiki/Percentile) of data points
+        /// across time series for each alignment period. This reducer is valid for
+        /// `GAUGE` and `DELTA` metrics of numeric and distribution type. The value
+        /// of the output is `DOUBLE`.
         /// </summary>
         [pbr::OriginalName("REDUCE_PERCENTILE_99")] ReducePercentile99 = 9,
         /// <summary>
-        /// Reduce by computing 95th percentile of data points across time series
-        /// for each alignment period. This reducer is valid for gauge and delta
-        /// metrics of numeric and distribution type. The value of the output is
-        /// [DOUBLE][google.api.MetricDescriptor.ValueType.DOUBLE]
+        /// Reduce by computing the [95th
+        /// percentile](https://en.wikipedia.org/wiki/Percentile) of data points
+        /// across time series for each alignment period. This reducer is valid for
+        /// `GAUGE` and `DELTA` metrics of numeric and distribution type. The value
+        /// of the output is `DOUBLE`.
         /// </summary>
         [pbr::OriginalName("REDUCE_PERCENTILE_95")] ReducePercentile95 = 10,
         /// <summary>
-        /// Reduce by computing 50th percentile of data points across time series
-        /// for each alignment period. This reducer is valid for gauge and delta
-        /// metrics of numeric and distribution type. The value of the output is
-        /// [DOUBLE][google.api.MetricDescriptor.ValueType.DOUBLE]
+        /// Reduce by computing the [50th
+        /// percentile](https://en.wikipedia.org/wiki/Percentile) of data points
+        /// across time series for each alignment period. This reducer is valid for
+        /// `GAUGE` and `DELTA` metrics of numeric and distribution type. The value
+        /// of the output is `DOUBLE`.
         /// </summary>
         [pbr::OriginalName("REDUCE_PERCENTILE_50")] ReducePercentile50 = 11,
         /// <summary>
-        /// Reduce by computing 5th percentile of data points across time series
-        /// for each alignment period. This reducer is valid for gauge and delta
-        /// metrics of numeric and distribution type. The value of the output is
-        /// [DOUBLE][google.api.MetricDescriptor.ValueType.DOUBLE]
+        /// Reduce by computing the [5th
+        /// percentile](https://en.wikipedia.org/wiki/Percentile) of data points
+        /// across time series for each alignment period. This reducer is valid for
+        /// `GAUGE` and `DELTA` metrics of numeric and distribution type. The value
+        /// of the output is `DOUBLE`.
         /// </summary>
         [pbr::OriginalName("REDUCE_PERCENTILE_05")] ReducePercentile05 = 12,
       }

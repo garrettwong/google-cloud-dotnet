@@ -48,8 +48,7 @@ namespace Google.Cloud.Firestore
         // cancellation token provided to Listen, or the cancellation token provided to StopAsync.
         private readonly CancellationTokenSource _callbackCancellationTokenSource;
         private readonly IWatchState _state;
-        private readonly RetrySettings.IJitter _backoffJitter;
-        private readonly BackoffSettings _backoffSettings;
+        private readonly RetrySettings _backoffSettings;
         private readonly Target _target;
         private readonly CallSettings _listenCallSettings;
 
@@ -77,8 +76,13 @@ namespace Google.Cloud.Firestore
             _listenCallSettings = CallSettings.FromHeader(FirestoreClientImpl.ResourcePrefixHeader, db.RootPath);
 
             // TODO: Make these configurable?
-            _backoffSettings = new BackoffSettings(TimeSpan.FromSeconds(1), TimeSpan.FromSeconds(30), 2.0);
-            _backoffJitter = RetrySettings.RandomJitter;
+            _backoffSettings = RetrySettings.FromExponentialBackoff(
+                maxAttempts: int.MaxValue,
+                initialBackoff: TimeSpan.FromSeconds(1),
+                maxBackoff: TimeSpan.FromSeconds(30),
+                backoffMultiplier: 2.0,
+                retryFilter: _ => false, // Ignored
+                backoffJitter: RetrySettings.RandomJitter);
         }
 
         internal async Task StartAsync()
@@ -86,7 +90,7 @@ namespace Google.Cloud.Firestore
             // State used within the method. This is modified by local methods too.
             StreamInitializationCause cause = StreamInitializationCause.WatchStarting;
             FirestoreClient.ListenStream underlyingStream = null;
-            TimeSpan nextBackoff = TimeSpan.Zero;
+            IEnumerator<RetryAttempt> retryAttempts = CreateRetryAttemptSequence();
 
             try
             {
@@ -106,7 +110,8 @@ namespace Google.Cloud.Firestore
                             cause = StreamInitializationCause.ResetRequested;
                             break;
                         case WatchResponseResult.StreamHealthy:
-                            nextBackoff = TimeSpan.Zero;
+                            // Reset the retry backoff to zero.
+                            retryAttempts = CreateRetryAttemptSequence();
                             break;
                         default:
                             throw new InvalidOperationException($"Unknown result type: {result}");
@@ -145,19 +150,19 @@ namespace Google.Cloud.Firestore
                         // If we're just starting, or we've closed the stream or it broke, restart.
                         if (underlyingStream == null)
                         {
-                            await _scheduler.Delay(_backoffJitter.GetDelay(nextBackoff), _networkCancellationTokenSource.Token).ConfigureAwait(false);
-                            nextBackoff = _backoffSettings.NextDelay(nextBackoff);
+                            await retryAttempts.Current.BackoffAsync(_networkCancellationTokenSource.Token).ConfigureAwait(false);
+                            retryAttempts.MoveNext();
                             underlyingStream = _db.Client.Listen(_listenCallSettings);
                             await underlyingStream.TryWriteAsync(CreateRequest(_state.ResumeToken)).ConfigureAwait(false);
                             _state.OnStreamInitialization(cause);
                         }
                         // Wait for a response or end-of-stream
-                        var next = await underlyingStream.ResponseStream.MoveNext(_networkCancellationTokenSource.Token).ConfigureAwait(false);
+                        var next = await underlyingStream.GrpcCall.ResponseStream.MoveNext(_networkCancellationTokenSource.Token).ConfigureAwait(false);
 
                         // If the server provided a response, return it
                         if (next)
                         {
-                            return underlyingStream.ResponseStream.Current;
+                            return underlyingStream.GrpcCall.ResponseStream.Current;
                         }
                         // Otherwise, close the current stream and restart.
                         await CloseStreamAsync().ConfigureAwait(false);
@@ -170,7 +175,7 @@ namespace Google.Cloud.Firestore
                         // Extend the back-off if necessary.
                         if (e.Status.StatusCode == StatusCode.ResourceExhausted)
                         {
-                            nextBackoff = _backoffSettings.NextDelay(nextBackoff);
+                            retryAttempts.MoveNext();
                         }
                         cause = StreamInitializationCause.RpcError;
                     }
@@ -198,6 +203,17 @@ namespace Google.Cloud.Firestore
                     underlyingStream.GrpcCall.Dispose();
                 }
                 underlyingStream = null;
+            }
+
+            // Create a new enumerator for the retry attempt sequence, starting with a backoff of zero.
+            IEnumerator<RetryAttempt> CreateRetryAttemptSequence()
+            {
+                var iterator = RetryAttempt
+                    .CreateRetrySequence(_backoffSettings, _scheduler, initialBackoffOverride: TimeSpan.Zero)
+                    .GetEnumerator();
+                // Make sure Current is already valid
+                iterator.MoveNext();
+                return iterator;
             }
         }
 

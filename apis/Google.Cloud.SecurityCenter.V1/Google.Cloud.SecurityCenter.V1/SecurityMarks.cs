@@ -25,9 +25,9 @@ namespace Google.Cloud.SecurityCenter.V1 {
       byte[] descriptorData = global::System.Convert.FromBase64String(
           string.Concat(
             "CjNnb29nbGUvY2xvdWQvc2VjdXJpdHljZW50ZXIvdjEvc2VjdXJpdHlfbWFy",
-            "a3MucHJvdG8SHmdvb2dsZS5jbG91ZC5zZWN1cml0eWNlbnRlci52MRoZZ29v",
-            "Z2xlL2FwaS9yZXNvdXJjZS5wcm90bxocZ29vZ2xlL2FwaS9hbm5vdGF0aW9u",
-            "cy5wcm90byLTAgoNU2VjdXJpdHlNYXJrcxIMCgRuYW1lGAEgASgJEkcKBW1h",
+            "a3MucHJvdG8SHmdvb2dsZS5jbG91ZC5zZWN1cml0eWNlbnRlci52MRocZ29v",
+            "Z2xlL2FwaS9hbm5vdGF0aW9ucy5wcm90bxoZZ29vZ2xlL2FwaS9yZXNvdXJj",
+            "ZS5wcm90byLTAgoNU2VjdXJpdHlNYXJrcxIMCgRuYW1lGAEgASgJEkcKBW1h",
             "cmtzGAIgAygLMjguZ29vZ2xlLmNsb3VkLnNlY3VyaXR5Y2VudGVyLnYxLlNl",
             "Y3VyaXR5TWFya3MuTWFya3NFbnRyeRosCgpNYXJrc0VudHJ5EgsKA2tleRgB",
             "IAEoCRINCgV2YWx1ZRgCIAEoCToCOAE6vAHqQbgBCitzZWN1cml0eWNlbnRl",
@@ -41,9 +41,9 @@ namespace Google.Cloud.SecurityCenter.V1 {
             "dGVyLlYxygIeR29vZ2xlXENsb3VkXFNlY3VyaXR5Q2VudGVyXFYx6gIhR29v",
             "Z2xlOjpDbG91ZDo6U2VjdXJpdHlDZW50ZXI6OlYxYgZwcm90bzM="));
       descriptor = pbr::FileDescriptor.FromGeneratedCode(descriptorData,
-          new pbr::FileDescriptor[] { global::Google.Api.ResourceReflection.Descriptor, global::Google.Api.AnnotationsReflection.Descriptor, },
-          new pbr::GeneratedClrTypeInfo(null, new pbr::GeneratedClrTypeInfo[] {
-            new pbr::GeneratedClrTypeInfo(typeof(global::Google.Cloud.SecurityCenter.V1.SecurityMarks), global::Google.Cloud.SecurityCenter.V1.SecurityMarks.Parser, new[]{ "Name", "Marks" }, null, null, new pbr::GeneratedClrTypeInfo[] { null, })
+          new pbr::FileDescriptor[] { global::Google.Api.AnnotationsReflection.Descriptor, global::Google.Api.ResourceReflection.Descriptor, },
+          new pbr::GeneratedClrTypeInfo(null, null, new pbr::GeneratedClrTypeInfo[] {
+            new pbr::GeneratedClrTypeInfo(typeof(global::Google.Cloud.SecurityCenter.V1.SecurityMarks), global::Google.Cloud.SecurityCenter.V1.SecurityMarks.Parser, new[]{ "Name", "Marks" }, null, null, null, new pbr::GeneratedClrTypeInfo[] { null, })
           }));
     }
     #endregion
@@ -51,12 +51,16 @@ namespace Google.Cloud.SecurityCenter.V1 {
   }
   #region Messages
   /// <summary>
-  /// User specified security marks that are attached to the parent Cloud Security
-  /// Command Center (Cloud SCC) resource. Security marks are scoped within a Cloud
-  /// SCC organization -- they can be modified and viewed by all users who have
+  /// User specified security marks that are attached to the parent Security
+  /// Command Center resource. Security marks are scoped within a Security Command
+  /// Center organization -- they can be modified and viewed by all users who have
   /// proper permissions on the organization.
   /// </summary>
-  public sealed partial class SecurityMarks : pb::IMessage<SecurityMarks> {
+  public sealed partial class SecurityMarks : pb::IMessage<SecurityMarks>
+  #if !GOOGLE_PROTOBUF_REFSTRUCT_COMPATIBILITY_MODE
+      , pb::IBufferMessage
+  #endif
+  {
     private static readonly pb::MessageParser<SecurityMarks> _parser = new pb::MessageParser<SecurityMarks>(() => new SecurityMarks());
     private pb::UnknownFieldSet _unknownFields;
     [global::System.Diagnostics.DebuggerNonUserCodeAttribute]
@@ -112,7 +116,7 @@ namespace Google.Cloud.SecurityCenter.V1 {
     /// <summary>Field number for the "marks" field.</summary>
     public const int MarksFieldNumber = 2;
     private static readonly pbc::MapField<string, string>.Codec _map_marks_codec
-        = new pbc::MapField<string, string>.Codec(pb::FieldCodec.ForString(10), pb::FieldCodec.ForString(18), 18);
+        = new pbc::MapField<string, string>.Codec(pb::FieldCodec.ForString(10, ""), pb::FieldCodec.ForString(18, ""), 18);
     private readonly pbc::MapField<string, string> marks_ = new pbc::MapField<string, string>();
     /// <summary>
     /// Mutable user specified security marks belonging to the parent resource.
@@ -165,6 +169,9 @@ namespace Google.Cloud.SecurityCenter.V1 {
 
     [global::System.Diagnostics.DebuggerNonUserCodeAttribute]
     public void WriteTo(pb::CodedOutputStream output) {
+    #if !GOOGLE_PROTOBUF_REFSTRUCT_COMPATIBILITY_MODE
+      output.WriteRawMessage(this);
+    #else
       if (Name.Length != 0) {
         output.WriteRawTag(10);
         output.WriteString(Name);
@@ -173,7 +180,22 @@ namespace Google.Cloud.SecurityCenter.V1 {
       if (_unknownFields != null) {
         _unknownFields.WriteTo(output);
       }
+    #endif
     }
+
+    #if !GOOGLE_PROTOBUF_REFSTRUCT_COMPATIBILITY_MODE
+    [global::System.Diagnostics.DebuggerNonUserCodeAttribute]
+    void pb::IBufferMessage.InternalWriteTo(ref pb::WriteContext output) {
+      if (Name.Length != 0) {
+        output.WriteRawTag(10);
+        output.WriteString(Name);
+      }
+      marks_.WriteTo(ref output, _map_marks_codec);
+      if (_unknownFields != null) {
+        _unknownFields.WriteTo(ref output);
+      }
+    }
+    #endif
 
     [global::System.Diagnostics.DebuggerNonUserCodeAttribute]
     public int CalculateSize() {
@@ -202,6 +224,9 @@ namespace Google.Cloud.SecurityCenter.V1 {
 
     [global::System.Diagnostics.DebuggerNonUserCodeAttribute]
     public void MergeFrom(pb::CodedInputStream input) {
+    #if !GOOGLE_PROTOBUF_REFSTRUCT_COMPATIBILITY_MODE
+      input.ReadRawMessage(this);
+    #else
       uint tag;
       while ((tag = input.ReadTag()) != 0) {
         switch(tag) {
@@ -218,7 +243,30 @@ namespace Google.Cloud.SecurityCenter.V1 {
           }
         }
       }
+    #endif
     }
+
+    #if !GOOGLE_PROTOBUF_REFSTRUCT_COMPATIBILITY_MODE
+    [global::System.Diagnostics.DebuggerNonUserCodeAttribute]
+    void pb::IBufferMessage.InternalMergeFrom(ref pb::ParseContext input) {
+      uint tag;
+      while ((tag = input.ReadTag()) != 0) {
+        switch(tag) {
+          default:
+            _unknownFields = pb::UnknownFieldSet.MergeFieldFrom(_unknownFields, ref input);
+            break;
+          case 10: {
+            Name = input.ReadString();
+            break;
+          }
+          case 18: {
+            marks_.AddEntriesFrom(ref input, _map_marks_codec);
+            break;
+          }
+        }
+      }
+    }
+    #endif
 
   }
 

@@ -19,11 +19,15 @@ Common operations are exposed via the
 In many cases you don't need to worry about disposing of
 `StorageClient` objects, and can create them reasonably freely -
 but be aware that this *can* causes issues with memory and network
-connection usage. We advise you to reuse a single client object if
-possible; if your architecture requires you to frequently create new
-client objects, please dispose of them to help with timely resource
-clean-up. See [the resource clean-up guide](../guides/cleanup.html#rest-based-apis) for more
-details.
+connection usage. We advise you to reuse a single client object if possible.
+`StorageClient` is thread-safe, so in most cases a single object is
+the simplest option.
+
+If your architecture requires you to frequently create new client
+objects, please dispose of them to help with timely resource
+clean-up. See [the resource clean-up
+guide](https://googleapis.github.io/google-cloud-dotnet/docs/guides/cleanup.html#rest-based-apis)
+for more details.
 
 # Sample code
 
@@ -90,6 +94,36 @@ Note that V4 signing is restricted to generating URLs that are valid
 for at most 7 days.
 
 {{sample:UrlSigner.WithSigningVersion}}
+
+## Uploading objects by using HTML forms
+
+In some cases, you might need to allow your users to upload objects via HTML forms.
+You can create signed POST policies that specify what is and is not allowed in such
+scenarios.
+You can read the [Policy Document](https://cloud.google.com/storage/docs/authentication/signatures#policy-document)
+documentation to get more information on how a POST policy document should be built.
+You can read the [POST object](https://cloud.google.com/storage/docs/xml-api/post-object)
+documentation to get more details on how the forms should be built.
+
+Below you will find some samples on how to create a signed POST policy.
+
+Simplest approach, where you restrict the upload to a specific bucket and a 
+specific object name.
+
+{{sample:UrlSigner.PostPolicySimple}}
+
+Enforce how browser's cache will treat the uploaded object.
+
+{{sample:UrlSigner.PostPolicyCacheControl}}
+
+You can also set starts-with conditions for some form elements. This means that the
+posting form should contain that element with a value that matches the condition.
+
+{{sample:UrlSigner.PostPolicyAcl}}
+
+Tell the server which HTTP status code you want it to return on succes.
+
+{{sample:UrlSigner.PostPolicySuccessStatus}}
 
 ## Upload URIs
 

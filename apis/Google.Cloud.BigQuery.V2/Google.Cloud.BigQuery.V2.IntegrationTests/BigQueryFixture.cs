@@ -49,6 +49,7 @@ namespace Google.Cloud.BigQuery.V2.IntegrationTests
         public string PeopleTableId { get; } = "people";
         public string ComplexTypesTableId { get; } = "complex";
         public string ExhaustiveTypesTableId { get; } = "exhaustive";
+
         /// <summary>
         /// A GCS bucket created for this fixture.
         /// </summary>
@@ -263,15 +264,30 @@ namespace Google.Cloud.BigQuery.V2.IntegrationTests
             InsertAndWait(table, () => table.InsertRow(ExhaustiveTypesTest.GetSampleRow()), 1);
         }
 
-        internal void InsertAndWait(BigQueryTable table, Action insertAction, int expectedRowCountChange)
+        internal void CreateRoutine(string routineId, BigQueryDataset dataset)
+        {
+            Routine routine = new Routine
+            {
+                DefinitionBody = "SELECT 1;",
+                Description = "test routine",
+            };
+            routine.SetRoutineLanguage(RoutineLanguage.Sql);
+            routine.SetRoutineType(RoutineType.StoredProcedure);
+
+            dataset.CreateRoutine(routineId, routine);
+        }
+
+        internal BigQueryInsertResults InsertAndWait(BigQueryTable table, Func<BigQueryInsertResults> insertAction, int expectedRowCountChange)
         {
             var countBefore = table.ListRows().Count();
             var expectedCount = countBefore + expectedRowCountChange;
-            insertAction();
+            var results = insertAction();
             // Wait until there are *at least* enough rows
             int actualCount = table.PollUntilRowCountIsAtLeast(expectedCount);
             // Now check it's *exactly* the right number of rows.
             Assert.Equal(expectedCount, actualCount);
+
+            return results;
         }
 
         internal List<string> LoadTextResource(string relativeName)
@@ -292,6 +308,7 @@ namespace Google.Cloud.BigQuery.V2.IntegrationTests
 
         internal string CreateTableId() => IdGenerator.FromGuid(prefix: "test_", separator: "_");
         internal string CreateDatasetId() => $"{DatasetId}_{Interlocked.Increment(ref extraDatasetCounter)}";
+        internal string CreateRoutineId() => IdGenerator.FromGuid(prefix: "test_", separator: "_");
 
         /// <summary>
         /// Sets the labels on <see cref="LabelsDatasetId"/> without using any of the client *Labels methods.

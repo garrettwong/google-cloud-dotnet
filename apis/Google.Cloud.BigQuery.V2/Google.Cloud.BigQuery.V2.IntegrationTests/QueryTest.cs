@@ -397,7 +397,7 @@ namespace Google.Cloud.BigQuery.V2.IntegrationTests
             var client = BigQueryClient.Create(_fixture.ProjectId);
             var table = client.GetTable(_fixture.DatasetId, _fixture.HighScoreTableId);
             var viewDefinition = new ViewDefinition { Query = $"SELECT player, MAX(score) AS score FROM {table} WHERE player IS NOT NULL GROUP BY player ORDER BY 2 DESC", UseLegacySql = false };
-            var view = client.CreateTable(_fixture.DatasetId, "highscore_view", schema: null, options: new CreateTableOptions { View = viewDefinition });
+            var view = client.CreateTable(_fixture.DatasetId, "highscore_view", new Table { View = viewDefinition });
 
             // This is how a client can check that a BigQueryTable is a view.
             Assert.NotNull(view.Resource.View);
@@ -505,7 +505,61 @@ namespace Google.Cloud.BigQuery.V2.IntegrationTests
             var results = await client.ExecuteQueryAsync(sql, parameters: null, resultsOptions: new GetQueryResultsOptions { PageSize = 5, StartIndex = 7 });
             // Iterate over multiple pages automatically to get all results. The query has 20 results, but
             // we're asking to start at index 7, so we actually see 13.
-            var rows = await results.GetRowsAsync().ToList();
+            var rows = await results.GetRowsAsync().ToListAsync();
+            Assert.Equal(13, rows.Count);
+
+            // Now try getting one page at a time, in the same way we would if we were in a web application.
+            var page1 = await results.ReadPageAsync(5);
+            var page2 = await client.GetQueryResults(results.JobReference, new GetQueryResultsOptions { PageToken = page1.NextPageToken }).ReadPageAsync(5);
+            var page3 = await client.GetQueryResults(results.JobReference, new GetQueryResultsOptions { PageToken = page2.NextPageToken }).ReadPageAsync(5);
+
+            var titleComparer = new TitleComparer();
+            Assert.Equal(rows.Take(5), page1.Rows, titleComparer);
+            Assert.Equal(rows.Skip(5).Take(5), page2.Rows, titleComparer);
+            Assert.Equal(rows.Skip(10).Take(5), page3.Rows, titleComparer);
+            Assert.Null(page3.NextPageToken);
+        }
+
+        [Fact]
+        public void MultiplePages_PageSizeNotInOptions()
+        {
+            // We create the client using our user, but then access a dataset in a public data
+            // project. We can't run a query "as" the public data project.
+            var projectId = _fixture.ProjectId;
+            var client = BigQueryClient.Create(projectId);
+            var table = client.GetTable(PublicDatasetsProject, PublicDatasetsDataset, ShakespeareTable);
+            var sql = $"SELECT corpus as title, COUNT(word) as unique_words FROM {table} GROUP BY title ORDER BY unique_words DESC LIMIT 13";
+            // Note that we don't specify any options. That means when we want to read a page at a time later, we'll need to perform the query again.
+            var results = client.ExecuteQuery(sql, parameters: null);
+            // Iterate over multiple pages automatically to get all results. The query has 13 results.
+            var rows = results.ToList();
+            Assert.Equal(13, rows.Count);
+
+            // Now try getting one page at a time, in the same way we would if we were in a web application.
+            var page1 = results.ReadPage(5);
+            var page2 = client.GetQueryResults(results.JobReference, new GetQueryResultsOptions { PageToken = page1.NextPageToken }).ReadPage(5);
+            var page3 = client.GetQueryResults(results.JobReference, new GetQueryResultsOptions { PageToken = page2.NextPageToken }).ReadPage(5);
+
+            var titleComparer = new TitleComparer();
+            Assert.Equal(rows.Take(5), page1.Rows, titleComparer);
+            Assert.Equal(rows.Skip(5).Take(5), page2.Rows, titleComparer);
+            Assert.Equal(rows.Skip(10).Take(5), page3.Rows, titleComparer);
+            Assert.Null(page3.NextPageToken);
+        }
+
+        [Fact]
+        public async Task MultiplePagesAsync_PageSizeNotInOptions()
+        {
+            // We create the client using our user, but then access a dataset in a public data
+            // project. We can't run a query "as" the public data project.
+            var projectId = _fixture.ProjectId;
+            var client = BigQueryClient.Create(projectId);
+            var table = client.GetTable(PublicDatasetsProject, PublicDatasetsDataset, ShakespeareTable);
+            var sql = $"SELECT corpus as title, COUNT(word) as unique_words FROM {table} GROUP BY title ORDER BY unique_words DESC LIMIT 13";
+            // Note that we don't specify any options. That means when we want to read a page at a time later, we'll need to perform the query again.
+            var results = await client.ExecuteQueryAsync(sql, parameters: null);
+            // Iterate over multiple pages automatically to get all results. The query has 13 results.
+            var rows = await results.GetRowsAsync().ToListAsync();
             Assert.Equal(13, rows.Count);
 
             // Now try getting one page at a time, in the same way we would if we were in a web application.
@@ -559,8 +613,8 @@ namespace Google.Cloud.BigQuery.V2.IntegrationTests
                 MaxBadRecords = 1,
                 SourceUris = new[] { $"gs://{bucketName}/{objectName}" },
             };
-            var table = client.CreateTable(_fixture.DatasetId, _fixture.CreateTableId(),
-                schema, new CreateTableOptions { ExternalDataConfiguration = configuration });
+            var table = client.CreateTable(
+                _fixture.DatasetId, _fixture.CreateTableId(), new Table { ExternalDataConfiguration = configuration, Schema = schema });
 
             // Run a query
             var results = client.ExecuteQuery($"SELECT * FROM {table:legacy}", null, new QueryOptions { UseLegacySql = true });
@@ -668,7 +722,7 @@ namespace Google.Cloud.BigQuery.V2.IntegrationTests
                 $"INSERT INTO {table} (player, gameStarted, score) VALUES (@player, @gameStarted, @score)",
                 parameters)
                 .ThrowOnAnyError();
-            Assert.Null(results.SafeTotalRows);
+            Assert.Null(results.TotalRows);
             Assert.Equal(1, results.NumDmlAffectedRows);
 
             // This used to query the whole table; now it returns empty results (as we're using GetQueryResults rather than ListRows).
@@ -683,8 +737,8 @@ namespace Google.Cloud.BigQuery.V2.IntegrationTests
             string sql = "DECLARE accumulator INT64 DEFAULT 5; SELECT accumulator;";
             var results = client.ExecuteQuery(sql, null).ThrowOnAnyError();
 
-            Assert.True(results.SafeTotalRows.HasValue);
-            Assert.Equal<ulong>(1, results.SafeTotalRows.Value);
+            Assert.True(results.TotalRows.HasValue);
+            Assert.Equal<ulong>(1, results.TotalRows.Value);
 
             var row = results.Single();
             Assert.Equal((long)5, row[0]);

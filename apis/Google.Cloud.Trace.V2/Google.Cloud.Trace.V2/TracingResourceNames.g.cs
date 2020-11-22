@@ -1,4 +1,4 @@
-// Copyright 2019 Google LLC
+// Copyright 2020 Google LLC
 //
 // Licensed under the Apache License, Version 2.0 (the "License");
 // you may not use this file except in compliance with the License.
@@ -25,7 +25,7 @@ namespace Google.Cloud.Trace.V2
         /// </summary>
         public gagr::ProjectName ProjectName
         {
-            get => string.IsNullOrEmpty(Name) ? null : gagr::ProjectName.Parse(Name);
+            get => string.IsNullOrEmpty(Name) ? null : gagr::ProjectName.Parse(Name, allowUnparsed: true);
             set => Name = value?.ToString() ?? "";
         }
     }

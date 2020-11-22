@@ -3,7 +3,7 @@
 //     source: google/logging/v2/logging.proto
 // </auto-generated>
 // Original file comments:
-// Copyright 2019 Google LLC.
+// Copyright 2020 Google LLC
 //
 // Licensed under the Apache License, Version 2.0 (the "License");
 // you may not use this file except in compliance with the License.
@@ -16,7 +16,6 @@
 // WITHOUT WARRANTIES OR CONDITIONS OF ANY KIND, either express or implied.
 // See the License for the specific language governing permissions and
 // limitations under the License.
-//
 //
 #pragma warning disable 0414, 1591
 #region Designer generated code
@@ -88,10 +87,10 @@ namespace Google.Cloud.Logging.V2 {
     public abstract partial class LoggingServiceV2Base
     {
       /// <summary>
-      /// Deletes all the log entries in a log.
-      /// The log reappears if it receives new entries.
-      /// Log entries written shortly before the delete operation might not be
-      /// deleted.
+      /// Deletes all the log entries in a log. The log reappears if it receives new
+      /// entries. Log entries written shortly before the delete operation might not
+      /// be deleted. Entries received after the delete operation with a timestamp
+      /// before the operation will be deleted.
       /// </summary>
       /// <param name="request">The request received from the client.</param>
       /// <param name="context">The context of the server-side call handler being invoked.</param>
@@ -121,7 +120,8 @@ namespace Google.Cloud.Logging.V2 {
       /// <summary>
       /// Lists log entries.  Use this method to retrieve log entries that originated
       /// from a project/folder/organization/billing account.  For ways to export log
-      /// entries, see [Exporting Logs](/logging/docs/export).
+      /// entries, see [Exporting
+      /// Logs](https://cloud.google.com/logging/docs/export).
       /// </summary>
       /// <param name="request">The request received from the client.</param>
       /// <param name="context">The context of the server-side call handler being invoked.</param>
@@ -161,7 +161,7 @@ namespace Google.Cloud.Logging.V2 {
     {
       /// <summary>Creates a new client for LoggingServiceV2</summary>
       /// <param name="channel">The channel to use to make remote calls.</param>
-      public LoggingServiceV2Client(grpc::Channel channel) : base(channel)
+      public LoggingServiceV2Client(grpc::ChannelBase channel) : base(channel)
       {
       }
       /// <summary>Creates a new client for LoggingServiceV2 that uses a custom <c>CallInvoker</c>.</summary>
@@ -180,10 +180,10 @@ namespace Google.Cloud.Logging.V2 {
       }
 
       /// <summary>
-      /// Deletes all the log entries in a log.
-      /// The log reappears if it receives new entries.
-      /// Log entries written shortly before the delete operation might not be
-      /// deleted.
+      /// Deletes all the log entries in a log. The log reappears if it receives new
+      /// entries. Log entries written shortly before the delete operation might not
+      /// be deleted. Entries received after the delete operation with a timestamp
+      /// before the operation will be deleted.
       /// </summary>
       /// <param name="request">The request to send to the server.</param>
       /// <param name="headers">The initial metadata to send with the call. This parameter is optional.</param>
@@ -195,10 +195,10 @@ namespace Google.Cloud.Logging.V2 {
         return DeleteLog(request, new grpc::CallOptions(headers, deadline, cancellationToken));
       }
       /// <summary>
-      /// Deletes all the log entries in a log.
-      /// The log reappears if it receives new entries.
-      /// Log entries written shortly before the delete operation might not be
-      /// deleted.
+      /// Deletes all the log entries in a log. The log reappears if it receives new
+      /// entries. Log entries written shortly before the delete operation might not
+      /// be deleted. Entries received after the delete operation with a timestamp
+      /// before the operation will be deleted.
       /// </summary>
       /// <param name="request">The request to send to the server.</param>
       /// <param name="options">The options for the call.</param>
@@ -208,10 +208,10 @@ namespace Google.Cloud.Logging.V2 {
         return CallInvoker.BlockingUnaryCall(__Method_DeleteLog, null, options, request);
       }
       /// <summary>
-      /// Deletes all the log entries in a log.
-      /// The log reappears if it receives new entries.
-      /// Log entries written shortly before the delete operation might not be
-      /// deleted.
+      /// Deletes all the log entries in a log. The log reappears if it receives new
+      /// entries. Log entries written shortly before the delete operation might not
+      /// be deleted. Entries received after the delete operation with a timestamp
+      /// before the operation will be deleted.
       /// </summary>
       /// <param name="request">The request to send to the server.</param>
       /// <param name="headers">The initial metadata to send with the call. This parameter is optional.</param>
@@ -223,10 +223,10 @@ namespace Google.Cloud.Logging.V2 {
         return DeleteLogAsync(request, new grpc::CallOptions(headers, deadline, cancellationToken));
       }
       /// <summary>
-      /// Deletes all the log entries in a log.
-      /// The log reappears if it receives new entries.
-      /// Log entries written shortly before the delete operation might not be
-      /// deleted.
+      /// Deletes all the log entries in a log. The log reappears if it receives new
+      /// entries. Log entries written shortly before the delete operation might not
+      /// be deleted. Entries received after the delete operation with a timestamp
+      /// before the operation will be deleted.
       /// </summary>
       /// <param name="request">The request to send to the server.</param>
       /// <param name="options">The options for the call.</param>
@@ -306,7 +306,8 @@ namespace Google.Cloud.Logging.V2 {
       /// <summary>
       /// Lists log entries.  Use this method to retrieve log entries that originated
       /// from a project/folder/organization/billing account.  For ways to export log
-      /// entries, see [Exporting Logs](/logging/docs/export).
+      /// entries, see [Exporting
+      /// Logs](https://cloud.google.com/logging/docs/export).
       /// </summary>
       /// <param name="request">The request to send to the server.</param>
       /// <param name="headers">The initial metadata to send with the call. This parameter is optional.</param>
@@ -320,7 +321,8 @@ namespace Google.Cloud.Logging.V2 {
       /// <summary>
       /// Lists log entries.  Use this method to retrieve log entries that originated
       /// from a project/folder/organization/billing account.  For ways to export log
-      /// entries, see [Exporting Logs](/logging/docs/export).
+      /// entries, see [Exporting
+      /// Logs](https://cloud.google.com/logging/docs/export).
       /// </summary>
       /// <param name="request">The request to send to the server.</param>
       /// <param name="options">The options for the call.</param>
@@ -332,7 +334,8 @@ namespace Google.Cloud.Logging.V2 {
       /// <summary>
       /// Lists log entries.  Use this method to retrieve log entries that originated
       /// from a project/folder/organization/billing account.  For ways to export log
-      /// entries, see [Exporting Logs](/logging/docs/export).
+      /// entries, see [Exporting
+      /// Logs](https://cloud.google.com/logging/docs/export).
       /// </summary>
       /// <param name="request">The request to send to the server.</param>
       /// <param name="headers">The initial metadata to send with the call. This parameter is optional.</param>
@@ -346,7 +349,8 @@ namespace Google.Cloud.Logging.V2 {
       /// <summary>
       /// Lists log entries.  Use this method to retrieve log entries that originated
       /// from a project/folder/organization/billing account.  For ways to export log
-      /// entries, see [Exporting Logs](/logging/docs/export).
+      /// entries, see [Exporting
+      /// Logs](https://cloud.google.com/logging/docs/export).
       /// </summary>
       /// <param name="request">The request to send to the server.</param>
       /// <param name="options">The options for the call.</param>

@@ -35,10 +35,10 @@ namespace Google.Cloud.Firestore
 
         private readonly FirestoreDb _db;
 
-        internal bool IsEmpty => Elements.Count == 0;
+        internal bool IsEmpty => Writes.Count == 0;
 
         // Visible for testing and for this class; should not be used elsewhere in the production code.
-        internal List<BatchElement> Elements { get; } = new List<BatchElement>();
+        internal List<Write> Writes { get; } = new List<Write>();
 
         internal WriteBatch(FirestoreDb firestoreDb)
         {
@@ -60,9 +60,7 @@ namespace Google.Cloud.Firestore
             var sentinels = FindSentinels(fields);
             GaxPreconditions.CheckArgument(!sentinels.Any(sf => sf.IsDelete), nameof(documentData), "Delete sentinels cannot appear in Create calls");
             RemoveSentinels(fields, sentinels);
-            // Force a write if we've not got any sentinel values. Otherwise, we end up with an empty transform instead,
-            // just to specify the precondition.
-            AddUpdateWrites(documentReference, fields, s_emptyFieldPathList, Precondition.MustNotExist, sentinels, sentinels.Count == 0, false);
+            AddUpdateWrite(documentReference, fields, updatePaths: null, Precondition.MustNotExist, sentinels);
             return this;
         }
 
@@ -80,7 +78,7 @@ namespace Google.Cloud.Firestore
                 CurrentDocument = precondition?.Proto,
                 Delete = documentReference.Path
             };
-            Elements.Add(new BatchElement(write, true)); // No sentinel values to worry about here; always a single write
+            Writes.Add(write);
             return this;
         }
 
@@ -137,7 +135,7 @@ namespace Google.Cloud.Firestore
             RemoveSentinels(expanded, sentinels);
 
             var nonDeletes = sentinels.Where(sf => !sf.IsDelete).ToList();
-            AddUpdateWrites(documentReference, expanded, updates.Keys.ToList(), precondition ?? Precondition.MustExist, nonDeletes, false, false);
+            AddUpdateWrite(documentReference, expanded, updates.Keys.ToList(), precondition ?? Precondition.MustExist, sentinelFields: nonDeletes);
             return this;
         }
 
@@ -159,7 +157,6 @@ namespace Google.Cloud.Firestore
             var deletes = sentinels.Where(sf => sf.IsDelete).ToList();
             var nonDeletes = sentinels.Where(sf => !sf.IsDelete).ToList();
 
-            bool forceWrite = false;
             IDictionary<FieldPath, Value> updates;
             IReadOnlyList<FieldPath> updatePaths;
             if (options.Merge)
@@ -172,7 +169,6 @@ namespace Google.Cloud.Firestore
                     // - Deletes are allowed anywhere
                     // - All timestamps converted to transforms
                     // - Each top-level entry becomes a FieldPath
-                    forceWrite = fields.Count == 0;
                     RemoveSentinels(fields, nonDeletes);
                     // Work out the update paths after removing server timestamps but before removing deletes,
                     // so that we correctly perform the deletes.
@@ -210,11 +206,10 @@ namespace Google.Cloud.Firestore
                 GaxPreconditions.CheckArgument(deletes.Count == 0, nameof(documentData), "Delete cannot appear in document data when overwriting");
                 RemoveSentinels(fields, nonDeletes);
                 updates = fields.ToDictionary(pair => new FieldPath(pair.Key), pair => pair.Value);
-                updatePaths = s_emptyFieldPathList;
-                forceWrite = true;
+                updatePaths = null;
             }
 
-            AddUpdateWrites(documentReference, ExpandObject(updates), updatePaths, null, nonDeletes, forceWrite, options.Merge);
+            AddUpdateWrite(documentReference, ExpandObject(updates), updatePaths, precondition: null, sentinelFields: nonDeletes);
             return this;
         }
 
@@ -227,54 +222,34 @@ namespace Google.Cloud.Firestore
 
         internal async Task<IList<WriteResult>> CommitAsync(ByteString transactionId, CancellationToken cancellationToken)
         {
-            var request = new CommitRequest { Database = _db.RootPath, Writes = { Elements.Select(e => e.Write) }, Transaction = transactionId };
+            var request = new CommitRequest { Database = _db.RootPath, Writes = { Writes }, Transaction = transactionId };
             var response = await _db.Client.CommitAsync(request, CallSettings.FromCancellationToken(cancellationToken)).ConfigureAwait(false);
             return response.WriteResults
-                // Only include write results from appropriate elements
-                .Where((wr, index) => Elements[index].IncludeInWriteResults)
                 .Select(wr => WriteResult.FromProto(wr, response.CommitTime))
                 .ToList();
         }
 
-        private void AddUpdateWrites(
+        private void AddUpdateWrite(
             DocumentReference documentReference,
             IDictionary<string, Value> fields,
-            IReadOnlyList<FieldPath> updatePaths,
+            IReadOnlyList<FieldPath> updatePaths, // Null if an update mask isn't required
             Precondition precondition,
-            IList<SentinelField> sentinelFields,
-            bool forceWrite,
-            bool includeEmptyUpdatePath)
+            IList<SentinelField> sentinelFields)
         {
-            updatePaths = updatePaths.Except(sentinelFields.Select(sf => sf.FieldPath)).ToList();
-            bool includeTransformInWriteResults = true;
-            if (forceWrite || fields.Count > 0 || updatePaths.Count > 0)
+            var write = new Write
             {
-                Elements.Add(new BatchElement(new Write
+                CurrentDocument = precondition?.Proto,
+                Update = new Document
                 {
-                    CurrentDocument = precondition?.Proto,
-                    Update = new Document
-                    {
-                        Fields = { fields },
-                        Name = documentReference.Path,
-                    },
-                    UpdateMask = includeEmptyUpdatePath || updatePaths.Count > 0 ? new DocumentMask { FieldPaths = { updatePaths.Select(fp => fp.EncodedPath) } } : null
-                }, true));
-                includeTransformInWriteResults = false;
-                // Don't include the precondition in the Transform write, if there is one.
-                precondition = null;
-            }
-            if (sentinelFields.Count > 0)
-            {
-                Elements.Add(new BatchElement(new Write
-                {
-                    CurrentDocument = precondition?.Proto,
-                    Transform = new DocumentTransform
-                    {
-                        Document = documentReference.Path,
-                        FieldTransforms = { sentinelFields.Select(p => p.ToFieldTransform()) }
-                    }
-                }, includeTransformInWriteResults));
-            }
+                    Fields = { fields },
+                    Name = documentReference.Path,
+                },
+                UpdateMask = updatePaths is null
+                    ? null
+                    : new DocumentMask { FieldPaths = { updatePaths.Except(sentinelFields.Select(sf => sf.FieldPath)).Select(fp => fp.EncodedPath) } },
+                UpdateTransforms = { sentinelFields.Select(p => p.ToFieldTransform()) }
+            };
+            Writes.Add(write);
         }
 
         /// <summary>
@@ -489,20 +464,6 @@ namespace Google.Cloud.Firestore
                 {
                     throw new ArgumentException($"{current} is a prefix of {next}. Prefixes must not be specified in updates.");
                 }
-            }
-        }
-
-        // Part of the batch: the write, and whether or not the corresponding WriteResult
-        // should be returned from CommitAsync.
-        internal struct BatchElement
-        {
-            internal Write Write { get; }
-            internal bool IncludeInWriteResults { get; }
-
-            internal BatchElement(Write write, bool includeInWriteResults)
-            {
-                Write = write;
-                IncludeInWriteResults = includeInWriteResults;
             }
         }
 

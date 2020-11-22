@@ -1,4 +1,4 @@
-// Copyright 2019 Google LLC
+// Copyright 2020 Google LLC
 //
 // Licensed under the Apache License, Version 2.0 (the "License");
 // you may not use this file except in compliance with the License.
@@ -17,6 +17,7 @@
 using gax = Google.Api.Gax;
 using gaxgrpc = Google.Api.Gax.Grpc;
 using gaxgrpcgcp = Google.Api.Gax.Grpc.Gcp;
+using gaxgrpccore = Google.Api.Gax.Grpc.GrpcCore;
 using gcbcv = Google.Cloud.Bigtable.Common.V2;
 using proto = Google.Protobuf;
 using grpccore = Grpc.Core;
@@ -25,7 +26,6 @@ using sys = System;
 using scg = System.Collections.Generic;
 using sco = System.Collections.ObjectModel;
 using linq = System.Linq;
-using sysnet = System.Net;
 using st = System.Threading;
 using stt = System.Threading.Tasks;
 
@@ -61,15 +61,25 @@ namespace Google.Cloud.Bigtable.V2
         /// <see cref="gaxgrpc::CallSettings"/> for synchronous and asynchronous calls to
         /// <c>BigtableServiceApiClient.ReadRows</c> and <c>BigtableServiceApiClient.ReadRowsAsync</c>.
         /// </summary>
-        /// <remarks>Total timeout: 43200 seconds.</remarks>
-        public gaxgrpc::CallSettings ReadRowsSettings { get; set; } = gaxgrpc::CallSettings.FromCallTiming(gaxgrpc::CallTiming.FromTimeout(sys::TimeSpan.FromMilliseconds(43200000)));
+        /// <remarks>
+        /// <list type="bullet">
+        /// <item><description>This call will not be retried.</description></item>
+        /// <item><description>Timeout: 43200 seconds.</description></item>
+        /// </list>
+        /// </remarks>
+        public gaxgrpc::CallSettings ReadRowsSettings { get; set; } = gaxgrpc::CallSettings.FromExpiration(gax::Expiration.FromTimeout(sys::TimeSpan.FromMilliseconds(43200000)));
 
         /// <summary>
         /// <see cref="gaxgrpc::CallSettings"/> for synchronous and asynchronous calls to
         /// <c>BigtableServiceApiClient.SampleRowKeys</c> and <c>BigtableServiceApiClient.SampleRowKeysAsync</c>.
         /// </summary>
-        /// <remarks>Total timeout: 20 seconds.</remarks>
-        public gaxgrpc::CallSettings SampleRowKeysSettings { get; set; } = gaxgrpc::CallSettings.FromCallTiming(gaxgrpc::CallTiming.FromTimeout(sys::TimeSpan.FromMilliseconds(20000)));
+        /// <remarks>
+        /// <list type="bullet">
+        /// <item><description>This call will not be retried.</description></item>
+        /// <item><description>Timeout: 60 seconds.</description></item>
+        /// </list>
+        /// </remarks>
+        public gaxgrpc::CallSettings SampleRowKeysSettings { get; set; } = gaxgrpc::CallSettings.FromExpiration(gax::Expiration.FromTimeout(sys::TimeSpan.FromMilliseconds(60000)));
 
         /// <summary>
         /// <see cref="gaxgrpc::CallSettings"/> for synchronous and asynchronous calls to
@@ -80,36 +90,49 @@ namespace Google.Cloud.Bigtable.V2
         /// <item><description>Initial retry delay: 10 milliseconds.</description></item>
         /// <item><description>Retry delay multiplier: 2</description></item>
         /// <item><description>Retry maximum delay: 60000 milliseconds.</description></item>
-        /// <item><description>Initial timeout: 20000 milliseconds.</description></item>
-        /// <item><description>Timeout multiplier: 1</description></item>
-        /// <item><description>Timeout maximum delay: 20000 milliseconds.</description></item>
-        /// <item><description>Total timeout: 20 seconds.</description></item>
+        /// <item><description>Maximum attempts: 5</description></item>
+        /// <item><description>Timeout: 60 seconds.</description></item>
         /// </list>
         /// </remarks>
-        public gaxgrpc::CallSettings MutateRowSettings { get; set; } = gaxgrpc::CallSettings.FromCallTiming(gaxgrpc::CallTiming.FromRetry(new gaxgrpc::RetrySettings(retryBackoff: new gaxgrpc::BackoffSettings(delay: sys::TimeSpan.FromMilliseconds(10), maxDelay: sys::TimeSpan.FromMilliseconds(60000), delayMultiplier: 2), timeoutBackoff: new gaxgrpc::BackoffSettings(delay: sys::TimeSpan.FromMilliseconds(20000), maxDelay: sys::TimeSpan.FromMilliseconds(20000), delayMultiplier: 1), totalExpiration: gax::Expiration.FromTimeout(sys::TimeSpan.FromMilliseconds(20000)), retryFilter: gaxgrpc::RetrySettings.FilterForStatusCodes(grpccore::StatusCode.Unavailable, grpccore::StatusCode.DeadlineExceeded))));
+        public gaxgrpc::CallSettings MutateRowSettings { get; set; } = gaxgrpc::CallSettingsExtensions.WithRetry(gaxgrpc::CallSettings.FromExpiration(gax::Expiration.FromTimeout(sys::TimeSpan.FromMilliseconds(60000))), gaxgrpc::RetrySettings.FromExponentialBackoff(maxAttempts: 5, initialBackoff: sys::TimeSpan.FromMilliseconds(10), maxBackoff: sys::TimeSpan.FromMilliseconds(60000), backoffMultiplier: 2, retryFilter: gaxgrpc::RetrySettings.FilterForStatusCodes(grpccore::StatusCode.Unavailable, grpccore::StatusCode.DeadlineExceeded)));
 
         /// <summary>
         /// <see cref="gaxgrpc::CallSettings"/> for synchronous and asynchronous calls to
         /// <c>BigtableServiceApiClient.MutateRows</c> and <c>BigtableServiceApiClient.MutateRowsAsync</c>.
         /// </summary>
-        /// <remarks>Total timeout: 60 seconds.</remarks>
-        public gaxgrpc::CallSettings MutateRowsSettings { get; set; } = gaxgrpc::CallSettings.FromCallTiming(gaxgrpc::CallTiming.FromTimeout(sys::TimeSpan.FromMilliseconds(60000)));
+        /// <remarks>
+        /// <list type="bullet">
+        /// <item><description>This call will not be retried.</description></item>
+        /// <item><description>Timeout: 600 seconds.</description></item>
+        /// </list>
+        /// </remarks>
+        public gaxgrpc::CallSettings MutateRowsSettings { get; set; } = gaxgrpc::CallSettings.FromExpiration(gax::Expiration.FromTimeout(sys::TimeSpan.FromMilliseconds(600000)));
 
         /// <summary>
         /// <see cref="gaxgrpc::CallSettings"/> for synchronous and asynchronous calls to
         /// <c>BigtableServiceApiClient.CheckAndMutateRow</c> and <c>BigtableServiceApiClient.CheckAndMutateRowAsync</c>
         /// .
         /// </summary>
-        /// <remarks>By default, retry will not be attempted.</remarks>
-        public gaxgrpc::CallSettings CheckAndMutateRowSettings { get; set; }
+        /// <remarks>
+        /// <list type="bullet">
+        /// <item><description>This call will not be retried.</description></item>
+        /// <item><description>Timeout: 20 seconds.</description></item>
+        /// </list>
+        /// </remarks>
+        public gaxgrpc::CallSettings CheckAndMutateRowSettings { get; set; } = gaxgrpc::CallSettings.FromExpiration(gax::Expiration.FromTimeout(sys::TimeSpan.FromMilliseconds(20000)));
 
         /// <summary>
         /// <see cref="gaxgrpc::CallSettings"/> for synchronous and asynchronous calls to
         /// <c>BigtableServiceApiClient.ReadModifyWriteRow</c> and <c>BigtableServiceApiClient.ReadModifyWriteRowAsync</c>
         /// .
         /// </summary>
-        /// <remarks>By default, retry will not be attempted.</remarks>
-        public gaxgrpc::CallSettings ReadModifyWriteRowSettings { get; set; }
+        /// <remarks>
+        /// <list type="bullet">
+        /// <item><description>This call will not be retried.</description></item>
+        /// <item><description>Timeout: 20 seconds.</description></item>
+        /// </list>
+        /// </remarks>
+        public gaxgrpc::CallSettings ReadModifyWriteRowSettings { get; set; } = gaxgrpc::CallSettings.FromExpiration(gax::Expiration.FromTimeout(sys::TimeSpan.FromMilliseconds(20000)));
 
         /// <summary>Creates a deep clone of this object, with all the same property values.</summary>
         /// <returns>A deep clone of this <see cref="BigtableServiceApiSettings"/> object.</returns>
@@ -125,37 +148,63 @@ namespace Google.Cloud.Bigtable.V2
         /// <summary>The settings to use for RPCs, or <c>null</c> for the default settings.</summary>
         public BigtableServiceApiSettings Settings { get; set; }
 
-        /// <inheritdoc/>
+        partial void InterceptBuild(ref BigtableServiceApiClient client);
+
+        partial void InterceptBuildAsync(st::CancellationToken cancellationToken, ref stt::Task<BigtableServiceApiClient> task);
+
+        /// <summary>Builds the resulting client.</summary>
         public override BigtableServiceApiClient Build()
+        {
+            BigtableServiceApiClient client = null;
+            InterceptBuild(ref client);
+            return client ?? BuildImpl();
+        }
+
+        /// <summary>Builds the resulting client asynchronously.</summary>
+        public override stt::Task<BigtableServiceApiClient> BuildAsync(st::CancellationToken cancellationToken = default)
+        {
+            stt::Task<BigtableServiceApiClient> task = null;
+            InterceptBuildAsync(cancellationToken, ref task);
+            return task ?? BuildAsyncImpl(cancellationToken);
+        }
+
+        private BigtableServiceApiClient BuildImpl()
         {
             Validate();
             grpccore::CallInvoker callInvoker = CreateCallInvoker();
             return BigtableServiceApiClient.Create(callInvoker, Settings);
         }
 
-        /// <inheritdoc/>
-        public override async stt::Task<BigtableServiceApiClient> BuildAsync(st::CancellationToken cancellationToken = default)
+        private async stt::Task<BigtableServiceApiClient> BuildAsyncImpl(st::CancellationToken cancellationToken)
         {
             Validate();
             grpccore::CallInvoker callInvoker = await CreateCallInvokerAsync(cancellationToken).ConfigureAwait(false);
             return BigtableServiceApiClient.Create(callInvoker, Settings);
         }
 
-        /// <inheritdoc/>
-        protected override gaxgrpc::ServiceEndpoint GetDefaultEndpoint() => BigtableServiceApiClient.DefaultEndpoint;
+        /// <summary>Returns the endpoint for this builder type, used if no endpoint is otherwise specified.</summary>
+        protected override string GetDefaultEndpoint() => BigtableServiceApiClient.DefaultEndpoint;
 
-        /// <inheritdoc/>
+        /// <summary>
+        /// Returns the default scopes for this builder type, used if no scopes are otherwise specified.
+        /// </summary>
         protected override scg::IReadOnlyList<string> GetDefaultScopes() => BigtableServiceApiClient.DefaultScopes;
+
+        /// <summary>Returns the default <see cref="gaxgrpc::GrpcAdapter"/>to use if not otherwise specified.</summary>
+        protected override gaxgrpc::GrpcAdapter DefaultGrpcAdapter => gaxgrpccore::GrpcCoreAdapter.Instance;
     }
 
     /// <summary>BigtableServiceApi client wrapper, for convenient use.</summary>
+    /// <remarks>
+    /// Service for reading from and writing to existing Bigtable tables.
+    /// </remarks>
     public abstract partial class BigtableServiceApiClient
     {
         /// <summary>
         /// The default endpoint for the BigtableServiceApi service, which is a host of "bigtable.googleapis.com" and a
         /// port of 443.
         /// </summary>
-        public static gaxgrpc::ServiceEndpoint DefaultEndpoint { get; } = new gaxgrpc::ServiceEndpoint("bigtable.googleapis.com", 443);
+        public static string DefaultEndpoint { get; } = "bigtable.googleapis.com:443";
 
         /// <summary>The default BigtableServiceApi scopes.</summary>
         /// <remarks>
@@ -182,96 +231,24 @@ namespace Google.Cloud.Bigtable.V2
         internal static gaxgrpcgcp::GcpCallInvokerPool CallInvokerPool { get; } = new gaxgrpcgcp::GcpCallInvokerPool(DefaultScopes);
 
         /// <summary>
-        /// Asynchronously creates a <see cref="BigtableServiceApiClient"/>, applying defaults for all unspecified
-        /// settings, and creating a channel connecting to the given endpoint with application default credentials where
-        /// necessary. See the example for how to use custom credentials.
+        /// Asynchronously creates a <see cref="BigtableServiceApiClient"/> using the default credentials, endpoint and
+        /// settings. To specify custom credentials or other settings, use <see cref="BigtableServiceApiClientBuilder"/>
+        /// .
         /// </summary>
-        /// <example>
-        /// This sample shows how to create a client using default credentials:
-        /// <code>
-        /// using Google.Cloud.Vision.V1;
-        /// ...
-        /// // When running on Google Cloud Platform this will use the project Compute Credential.
-        /// // Or set the GOOGLE_APPLICATION_CREDENTIALS environment variable to the path of a JSON
-        /// // credential file to use that credential.
-        /// ImageAnnotatorClient client = await ImageAnnotatorClient.CreateAsync();
-        /// </code>
-        /// This sample shows how to create a client using credentials loaded from a JSON file:
-        /// <code>
-        /// using Google.Cloud.Vision.V1;
-        /// using Google.Apis.Auth.OAuth2;
-        /// using Grpc.Auth;
-        /// using Grpc.Core;
-        /// ...
-        /// GoogleCredential cred = GoogleCredential.FromFile("/path/to/credentials.json");
-        /// Channel channel = new Channel(
-        ///     ImageAnnotatorClient.DefaultEndpoint.Host, ImageAnnotatorClient.DefaultEndpoint.Port, cred.ToChannelCredentials());
-        /// ImageAnnotatorClient client = ImageAnnotatorClient.Create(channel);
-        /// ...
-        /// // Shutdown the channel when it is no longer required.
-        /// await channel.ShutdownAsync();
-        /// </code>
-        /// </example>
-        /// <param name="endpoint">Optional <see cref="gaxgrpc::ServiceEndpoint"/>.</param>
-        /// <param name="settings">Optional <see cref="BigtableServiceApiSettings"/>.</param>
+        /// <param name="cancellationToken">
+        /// The <see cref="st::CancellationToken"/> to use while creating the client.
+        /// </param>
         /// <returns>The task representing the created <see cref="BigtableServiceApiClient"/>.</returns>
-        public static async stt::Task<BigtableServiceApiClient> CreateAsync(gaxgrpc::ServiceEndpoint endpoint = null, BigtableServiceApiSettings settings = null)
-        {
-            grpccore::CallInvoker callInvoker = await CallInvokerPool.GetCallInvokerAsync(endpoint ?? DefaultEndpoint, settings.CreateChannelOptions()).ConfigureAwait(false);
-            return Create(callInvoker, settings);
-        }
+        public static stt::Task<BigtableServiceApiClient> CreateAsync(st::CancellationToken cancellationToken = default) =>
+            new BigtableServiceApiClientBuilder().BuildAsync(cancellationToken);
 
         /// <summary>
-        /// Synchronously creates a <see cref="BigtableServiceApiClient"/>, applying defaults for all unspecified
-        /// settings, and creating a channel connecting to the given endpoint with application default credentials where
-        /// necessary. See the example for how to use custom credentials.
+        /// Synchronously creates a <see cref="BigtableServiceApiClient"/> using the default credentials, endpoint and
+        /// settings. To specify custom credentials or other settings, use <see cref="BigtableServiceApiClientBuilder"/>
+        /// .
         /// </summary>
-        /// <example>
-        /// This sample shows how to create a client using default credentials:
-        /// <code>
-        /// using Google.Cloud.Vision.V1;
-        /// ...
-        /// // When running on Google Cloud Platform this will use the project Compute Credential.
-        /// // Or set the GOOGLE_APPLICATION_CREDENTIALS environment variable to the path of a JSON
-        /// // credential file to use that credential.
-        /// ImageAnnotatorClient client = ImageAnnotatorClient.Create();
-        /// </code>
-        /// This sample shows how to create a client using credentials loaded from a JSON file:
-        /// <code>
-        /// using Google.Cloud.Vision.V1;
-        /// using Google.Apis.Auth.OAuth2;
-        /// using Grpc.Auth;
-        /// using Grpc.Core;
-        /// ...
-        /// GoogleCredential cred = GoogleCredential.FromFile("/path/to/credentials.json");
-        /// Channel channel = new Channel(
-        ///     ImageAnnotatorClient.DefaultEndpoint.Host, ImageAnnotatorClient.DefaultEndpoint.Port, cred.ToChannelCredentials());
-        /// ImageAnnotatorClient client = ImageAnnotatorClient.Create(channel);
-        /// ...
-        /// // Shutdown the channel when it is no longer required.
-        /// channel.ShutdownAsync().Wait();
-        /// </code>
-        /// </example>
-        /// <param name="endpoint">Optional <see cref="gaxgrpc::ServiceEndpoint"/>.</param>
-        /// <param name="settings">Optional <see cref="BigtableServiceApiSettings"/>.</param>
         /// <returns>The created <see cref="BigtableServiceApiClient"/>.</returns>
-        public static BigtableServiceApiClient Create(gaxgrpc::ServiceEndpoint endpoint = null, BigtableServiceApiSettings settings = null)
-        {
-            grpccore::CallInvoker callInvoker = CallInvokerPool.GetCallInvoker(endpoint ?? DefaultEndpoint, settings.CreateChannelOptions());
-            return Create(callInvoker, settings);
-        }
-
-        /// <summary>
-        /// Creates a <see cref="BigtableServiceApiClient"/> which uses the specified channel for remote operations.
-        /// </summary>
-        /// <param name="channel">The <see cref="grpccore::Channel"/> for remote operations. Must not be null.</param>
-        /// <param name="settings">Optional <see cref="BigtableServiceApiSettings"/>.</param>
-        /// <returns>The created <see cref="BigtableServiceApiClient"/>.</returns>
-        public static BigtableServiceApiClient Create(grpccore::Channel channel, BigtableServiceApiSettings settings = null)
-        {
-            gax::GaxPreconditions.CheckNotNull(channel, nameof(channel));
-            return Create(new grpccore::DefaultCallInvoker(channel), settings);
-        }
+        public static BigtableServiceApiClient Create() => new BigtableServiceApiClientBuilder().Build();
 
         /// <summary>
         /// Creates a <see cref="BigtableServiceApiClient"/> which uses the specified call invoker for remote
@@ -282,7 +259,7 @@ namespace Google.Cloud.Bigtable.V2
         /// </param>
         /// <param name="settings">Optional <see cref="BigtableServiceApiSettings"/>.</param>
         /// <returns>The created <see cref="BigtableServiceApiClient"/>.</returns>
-        public static BigtableServiceApiClient Create(grpccore::CallInvoker callInvoker, BigtableServiceApiSettings settings = null)
+        internal static BigtableServiceApiClient Create(grpccore::CallInvoker callInvoker, BigtableServiceApiSettings settings = null)
         {
             gax::GaxPreconditions.CheckNotNull(callInvoker, nameof(callInvoker));
             grpcinter::Interceptor interceptor = settings?.Interceptor;
@@ -295,16 +272,14 @@ namespace Google.Cloud.Bigtable.V2
         }
 
         /// <summary>
-        /// Shuts down any channels automatically created by
-        /// <see cref="Create(grpccore::CallInvoker,BigtableServiceApiSettings)"/> and
-        /// <see cref="CreateAsync(gaxgrpc::ServiceEndpoint,BigtableServiceApiSettings)"/>. Channels which weren't
-        /// automatically created are not affected.
+        /// Shuts down any channels automatically created by <see cref="Create()"/> and
+        /// <see cref="CreateAsync(st::CancellationToken)"/>. Channels which weren't automatically created are not
+        /// affected.
         /// </summary>
         /// <remarks>
-        /// After calling this method, further calls to
-        /// <see cref="Create(grpccore::CallInvoker,BigtableServiceApiSettings)"/> and
-        /// <see cref="CreateAsync(gaxgrpc::ServiceEndpoint,BigtableServiceApiSettings)"/> will create new channels,
-        /// which could in turn be shut down by another call to this method.
+        /// After calling this method, further calls to <see cref="Create()"/> and
+        /// <see cref="CreateAsync(st::CancellationToken)"/> will create new channels, which could in turn be shut down
+        /// by another call to this method.
         /// </remarks>
         /// <returns>A task representing the asynchronous shutdown operation.</returns>
         public static stt::Task ShutdownDefaultChannelsAsync() => CallInvokerPool.ShutdownChannelsAsync();
@@ -568,9 +543,6 @@ namespace Google.Cloud.Bigtable.V2
         /// </param>
         /// <param name="rowKey">
         /// Required. The key of the row to which the mutation should be applied.
-        /// 
-        /// Classified as IDENTIFYING_ID to provide context around data accesses for
-        /// auditing systems.
         /// </param>
         /// <param name="mutations">
         /// Required. Changes to be atomically applied to the specified row. Entries are applied
@@ -601,9 +573,6 @@ namespace Google.Cloud.Bigtable.V2
         /// </param>
         /// <param name="rowKey">
         /// Required. The key of the row to which the mutation should be applied.
-        /// 
-        /// Classified as IDENTIFYING_ID to provide context around data accesses for
-        /// auditing systems.
         /// </param>
         /// <param name="mutations">
         /// Required. Changes to be atomically applied to the specified row. Entries are applied
@@ -634,9 +603,6 @@ namespace Google.Cloud.Bigtable.V2
         /// </param>
         /// <param name="rowKey">
         /// Required. The key of the row to which the mutation should be applied.
-        /// 
-        /// Classified as IDENTIFYING_ID to provide context around data accesses for
-        /// auditing systems.
         /// </param>
         /// <param name="mutations">
         /// Required. Changes to be atomically applied to the specified row. Entries are applied
@@ -659,9 +625,6 @@ namespace Google.Cloud.Bigtable.V2
         /// </param>
         /// <param name="rowKey">
         /// Required. The key of the row to which the mutation should be applied.
-        /// 
-        /// Classified as IDENTIFYING_ID to provide context around data accesses for
-        /// auditing systems.
         /// </param>
         /// <param name="mutations">
         /// Required. Changes to be atomically applied to the specified row. Entries are applied
@@ -692,9 +655,6 @@ namespace Google.Cloud.Bigtable.V2
         /// </param>
         /// <param name="rowKey">
         /// Required. The key of the row to which the mutation should be applied.
-        /// 
-        /// Classified as IDENTIFYING_ID to provide context around data accesses for
-        /// auditing systems.
         /// </param>
         /// <param name="mutations">
         /// Required. Changes to be atomically applied to the specified row. Entries are applied
@@ -725,9 +685,6 @@ namespace Google.Cloud.Bigtable.V2
         /// </param>
         /// <param name="rowKey">
         /// Required. The key of the row to which the mutation should be applied.
-        /// 
-        /// Classified as IDENTIFYING_ID to provide context around data accesses for
-        /// auditing systems.
         /// </param>
         /// <param name="mutations">
         /// Required. Changes to be atomically applied to the specified row. Entries are applied
@@ -750,9 +707,6 @@ namespace Google.Cloud.Bigtable.V2
         /// </param>
         /// <param name="rowKey">
         /// Required. The key of the row to which the mutation should be applied.
-        /// 
-        /// Classified as IDENTIFYING_ID to provide context around data accesses for
-        /// auditing systems.
         /// </param>
         /// <param name="mutations">
         /// Required. Changes to be atomically applied to the specified row. Entries are applied
@@ -788,9 +742,6 @@ namespace Google.Cloud.Bigtable.V2
         /// </param>
         /// <param name="rowKey">
         /// Required. The key of the row to which the mutation should be applied.
-        /// 
-        /// Classified as IDENTIFYING_ID to provide context around data accesses for
-        /// auditing systems.
         /// </param>
         /// <param name="mutations">
         /// Required. Changes to be atomically applied to the specified row. Entries are applied
@@ -826,9 +777,6 @@ namespace Google.Cloud.Bigtable.V2
         /// </param>
         /// <param name="rowKey">
         /// Required. The key of the row to which the mutation should be applied.
-        /// 
-        /// Classified as IDENTIFYING_ID to provide context around data accesses for
-        /// auditing systems.
         /// </param>
         /// <param name="mutations">
         /// Required. Changes to be atomically applied to the specified row. Entries are applied
@@ -855,9 +803,6 @@ namespace Google.Cloud.Bigtable.V2
         /// </param>
         /// <param name="rowKey">
         /// Required. The key of the row to which the mutation should be applied.
-        /// 
-        /// Classified as IDENTIFYING_ID to provide context around data accesses for
-        /// auditing systems.
         /// </param>
         /// <param name="mutations">
         /// Required. Changes to be atomically applied to the specified row. Entries are applied
@@ -893,9 +838,6 @@ namespace Google.Cloud.Bigtable.V2
         /// </param>
         /// <param name="rowKey">
         /// Required. The key of the row to which the mutation should be applied.
-        /// 
-        /// Classified as IDENTIFYING_ID to provide context around data accesses for
-        /// auditing systems.
         /// </param>
         /// <param name="mutations">
         /// Required. Changes to be atomically applied to the specified row. Entries are applied
@@ -931,9 +873,6 @@ namespace Google.Cloud.Bigtable.V2
         /// </param>
         /// <param name="rowKey">
         /// Required. The key of the row to which the mutation should be applied.
-        /// 
-        /// Classified as IDENTIFYING_ID to provide context around data accesses for
-        /// auditing systems.
         /// </param>
         /// <param name="mutations">
         /// Required. Changes to be atomically applied to the specified row. Entries are applied
@@ -1123,9 +1062,6 @@ namespace Google.Cloud.Bigtable.V2
         /// </param>
         /// <param name="rowKey">
         /// Required. The key of the row to which the conditional mutation should be applied.
-        /// 
-        /// Classified as IDENTIFYING_ID to provide context around data accesses for
-        /// auditing systems.
         /// </param>
         /// <param name="predicateFilter">
         /// The filter to be applied to the contents of the specified row. Depending
@@ -1176,9 +1112,6 @@ namespace Google.Cloud.Bigtable.V2
         /// </param>
         /// <param name="rowKey">
         /// Required. The key of the row to which the conditional mutation should be applied.
-        /// 
-        /// Classified as IDENTIFYING_ID to provide context around data accesses for
-        /// auditing systems.
         /// </param>
         /// <param name="predicateFilter">
         /// The filter to be applied to the contents of the specified row. Depending
@@ -1229,9 +1162,6 @@ namespace Google.Cloud.Bigtable.V2
         /// </param>
         /// <param name="rowKey">
         /// Required. The key of the row to which the conditional mutation should be applied.
-        /// 
-        /// Classified as IDENTIFYING_ID to provide context around data accesses for
-        /// auditing systems.
         /// </param>
         /// <param name="predicateFilter">
         /// The filter to be applied to the contents of the specified row. Depending
@@ -1269,9 +1199,6 @@ namespace Google.Cloud.Bigtable.V2
         /// </param>
         /// <param name="rowKey">
         /// Required. The key of the row to which the conditional mutation should be applied.
-        /// 
-        /// Classified as IDENTIFYING_ID to provide context around data accesses for
-        /// auditing systems.
         /// </param>
         /// <param name="predicateFilter">
         /// The filter to be applied to the contents of the specified row. Depending
@@ -1322,9 +1249,6 @@ namespace Google.Cloud.Bigtable.V2
         /// </param>
         /// <param name="rowKey">
         /// Required. The key of the row to which the conditional mutation should be applied.
-        /// 
-        /// Classified as IDENTIFYING_ID to provide context around data accesses for
-        /// auditing systems.
         /// </param>
         /// <param name="predicateFilter">
         /// The filter to be applied to the contents of the specified row. Depending
@@ -1375,9 +1299,6 @@ namespace Google.Cloud.Bigtable.V2
         /// </param>
         /// <param name="rowKey">
         /// Required. The key of the row to which the conditional mutation should be applied.
-        /// 
-        /// Classified as IDENTIFYING_ID to provide context around data accesses for
-        /// auditing systems.
         /// </param>
         /// <param name="predicateFilter">
         /// The filter to be applied to the contents of the specified row. Depending
@@ -1415,9 +1336,6 @@ namespace Google.Cloud.Bigtable.V2
         /// </param>
         /// <param name="rowKey">
         /// Required. The key of the row to which the conditional mutation should be applied.
-        /// 
-        /// Classified as IDENTIFYING_ID to provide context around data accesses for
-        /// auditing systems.
         /// </param>
         /// <param name="predicateFilter">
         /// The filter to be applied to the contents of the specified row. Depending
@@ -1473,9 +1391,6 @@ namespace Google.Cloud.Bigtable.V2
         /// </param>
         /// <param name="rowKey">
         /// Required. The key of the row to which the conditional mutation should be applied.
-        /// 
-        /// Classified as IDENTIFYING_ID to provide context around data accesses for
-        /// auditing systems.
         /// </param>
         /// <param name="predicateFilter">
         /// The filter to be applied to the contents of the specified row. Depending
@@ -1531,9 +1446,6 @@ namespace Google.Cloud.Bigtable.V2
         /// </param>
         /// <param name="rowKey">
         /// Required. The key of the row to which the conditional mutation should be applied.
-        /// 
-        /// Classified as IDENTIFYING_ID to provide context around data accesses for
-        /// auditing systems.
         /// </param>
         /// <param name="predicateFilter">
         /// The filter to be applied to the contents of the specified row. Depending
@@ -1575,9 +1487,6 @@ namespace Google.Cloud.Bigtable.V2
         /// </param>
         /// <param name="rowKey">
         /// Required. The key of the row to which the conditional mutation should be applied.
-        /// 
-        /// Classified as IDENTIFYING_ID to provide context around data accesses for
-        /// auditing systems.
         /// </param>
         /// <param name="predicateFilter">
         /// The filter to be applied to the contents of the specified row. Depending
@@ -1633,9 +1542,6 @@ namespace Google.Cloud.Bigtable.V2
         /// </param>
         /// <param name="rowKey">
         /// Required. The key of the row to which the conditional mutation should be applied.
-        /// 
-        /// Classified as IDENTIFYING_ID to provide context around data accesses for
-        /// auditing systems.
         /// </param>
         /// <param name="predicateFilter">
         /// The filter to be applied to the contents of the specified row. Depending
@@ -1691,9 +1597,6 @@ namespace Google.Cloud.Bigtable.V2
         /// </param>
         /// <param name="rowKey">
         /// Required. The key of the row to which the conditional mutation should be applied.
-        /// 
-        /// Classified as IDENTIFYING_ID to provide context around data accesses for
-        /// auditing systems.
         /// </param>
         /// <param name="predicateFilter">
         /// The filter to be applied to the contents of the specified row. Depending
@@ -1778,9 +1681,6 @@ namespace Google.Cloud.Bigtable.V2
         /// </param>
         /// <param name="rowKey">
         /// Required. The key of the row to which the read/modify/write rules should be applied.
-        /// 
-        /// Classified as IDENTIFYING_ID to provide context around data accesses for
-        /// auditing systems.
         /// </param>
         /// <param name="rules">
         /// Required. Rules specifying how the specified row's contents are to be transformed
@@ -1815,9 +1715,6 @@ namespace Google.Cloud.Bigtable.V2
         /// </param>
         /// <param name="rowKey">
         /// Required. The key of the row to which the read/modify/write rules should be applied.
-        /// 
-        /// Classified as IDENTIFYING_ID to provide context around data accesses for
-        /// auditing systems.
         /// </param>
         /// <param name="rules">
         /// Required. Rules specifying how the specified row's contents are to be transformed
@@ -1852,9 +1749,6 @@ namespace Google.Cloud.Bigtable.V2
         /// </param>
         /// <param name="rowKey">
         /// Required. The key of the row to which the read/modify/write rules should be applied.
-        /// 
-        /// Classified as IDENTIFYING_ID to provide context around data accesses for
-        /// auditing systems.
         /// </param>
         /// <param name="rules">
         /// Required. Rules specifying how the specified row's contents are to be transformed
@@ -1881,9 +1775,6 @@ namespace Google.Cloud.Bigtable.V2
         /// </param>
         /// <param name="rowKey">
         /// Required. The key of the row to which the read/modify/write rules should be applied.
-        /// 
-        /// Classified as IDENTIFYING_ID to provide context around data accesses for
-        /// auditing systems.
         /// </param>
         /// <param name="rules">
         /// Required. Rules specifying how the specified row's contents are to be transformed
@@ -1918,9 +1809,6 @@ namespace Google.Cloud.Bigtable.V2
         /// </param>
         /// <param name="rowKey">
         /// Required. The key of the row to which the read/modify/write rules should be applied.
-        /// 
-        /// Classified as IDENTIFYING_ID to provide context around data accesses for
-        /// auditing systems.
         /// </param>
         /// <param name="rules">
         /// Required. Rules specifying how the specified row's contents are to be transformed
@@ -1955,9 +1843,6 @@ namespace Google.Cloud.Bigtable.V2
         /// </param>
         /// <param name="rowKey">
         /// Required. The key of the row to which the read/modify/write rules should be applied.
-        /// 
-        /// Classified as IDENTIFYING_ID to provide context around data accesses for
-        /// auditing systems.
         /// </param>
         /// <param name="rules">
         /// Required. Rules specifying how the specified row's contents are to be transformed
@@ -1984,9 +1869,6 @@ namespace Google.Cloud.Bigtable.V2
         /// </param>
         /// <param name="rowKey">
         /// Required. The key of the row to which the read/modify/write rules should be applied.
-        /// 
-        /// Classified as IDENTIFYING_ID to provide context around data accesses for
-        /// auditing systems.
         /// </param>
         /// <param name="rules">
         /// Required. Rules specifying how the specified row's contents are to be transformed
@@ -2026,9 +1908,6 @@ namespace Google.Cloud.Bigtable.V2
         /// </param>
         /// <param name="rowKey">
         /// Required. The key of the row to which the read/modify/write rules should be applied.
-        /// 
-        /// Classified as IDENTIFYING_ID to provide context around data accesses for
-        /// auditing systems.
         /// </param>
         /// <param name="rules">
         /// Required. Rules specifying how the specified row's contents are to be transformed
@@ -2068,9 +1947,6 @@ namespace Google.Cloud.Bigtable.V2
         /// </param>
         /// <param name="rowKey">
         /// Required. The key of the row to which the read/modify/write rules should be applied.
-        /// 
-        /// Classified as IDENTIFYING_ID to provide context around data accesses for
-        /// auditing systems.
         /// </param>
         /// <param name="rules">
         /// Required. Rules specifying how the specified row's contents are to be transformed
@@ -2101,9 +1977,6 @@ namespace Google.Cloud.Bigtable.V2
         /// </param>
         /// <param name="rowKey">
         /// Required. The key of the row to which the read/modify/write rules should be applied.
-        /// 
-        /// Classified as IDENTIFYING_ID to provide context around data accesses for
-        /// auditing systems.
         /// </param>
         /// <param name="rules">
         /// Required. Rules specifying how the specified row's contents are to be transformed
@@ -2143,9 +2016,6 @@ namespace Google.Cloud.Bigtable.V2
         /// </param>
         /// <param name="rowKey">
         /// Required. The key of the row to which the read/modify/write rules should be applied.
-        /// 
-        /// Classified as IDENTIFYING_ID to provide context around data accesses for
-        /// auditing systems.
         /// </param>
         /// <param name="rules">
         /// Required. Rules specifying how the specified row's contents are to be transformed
@@ -2185,9 +2055,6 @@ namespace Google.Cloud.Bigtable.V2
         /// </param>
         /// <param name="rowKey">
         /// Required. The key of the row to which the read/modify/write rules should be applied.
-        /// 
-        /// Classified as IDENTIFYING_ID to provide context around data accesses for
-        /// auditing systems.
         /// </param>
         /// <param name="rules">
         /// Required. Rules specifying how the specified row's contents are to be transformed
@@ -2205,6 +2072,9 @@ namespace Google.Cloud.Bigtable.V2
     }
 
     /// <summary>BigtableServiceApi client wrapper implementation, for convenient use.</summary>
+    /// <remarks>
+    /// Service for reading from and writing to existing Bigtable tables.
+    /// </remarks>
     public sealed partial class BigtableServiceApiClientImpl : BigtableServiceApiClient
     {
         private readonly gaxgrpc::ApiServerStreamingCall<ReadRowsRequest, ReadRowsResponse> _callReadRows;
@@ -2235,16 +2105,16 @@ namespace Google.Cloud.Bigtable.V2
             _callSampleRowKeys = clientHelper.BuildApiCall<SampleRowKeysRequest, SampleRowKeysResponse>(grpcClient.SampleRowKeys, effectiveSettings.SampleRowKeysSettings);
             Modify_ApiCall(ref _callSampleRowKeys);
             Modify_SampleRowKeysApiCall(ref _callSampleRowKeys);
-            _callMutateRow = clientHelper.BuildApiCall<MutateRowRequest, MutateRowResponse>(grpcClient.MutateRowAsync, grpcClient.MutateRow, effectiveSettings.MutateRowSettings).WithCallSettingsOverlay(request => gaxgrpc::CallSettings.FromHeader("x-goog-request-params", $"table_name={(sysnet::WebUtility.UrlEncode(request.TableName))}"));
+            _callMutateRow = clientHelper.BuildApiCall<MutateRowRequest, MutateRowResponse>(grpcClient.MutateRowAsync, grpcClient.MutateRow, effectiveSettings.MutateRowSettings).WithGoogleRequestParam("table_name", request => request.TableName);
             Modify_ApiCall(ref _callMutateRow);
             Modify_MutateRowApiCall(ref _callMutateRow);
             _callMutateRows = clientHelper.BuildApiCall<MutateRowsRequest, MutateRowsResponse>(grpcClient.MutateRows, effectiveSettings.MutateRowsSettings);
             Modify_ApiCall(ref _callMutateRows);
             Modify_MutateRowsApiCall(ref _callMutateRows);
-            _callCheckAndMutateRow = clientHelper.BuildApiCall<CheckAndMutateRowRequest, CheckAndMutateRowResponse>(grpcClient.CheckAndMutateRowAsync, grpcClient.CheckAndMutateRow, effectiveSettings.CheckAndMutateRowSettings).WithCallSettingsOverlay(request => gaxgrpc::CallSettings.FromHeader("x-goog-request-params", $"table_name={(sysnet::WebUtility.UrlEncode(request.TableName))}"));
+            _callCheckAndMutateRow = clientHelper.BuildApiCall<CheckAndMutateRowRequest, CheckAndMutateRowResponse>(grpcClient.CheckAndMutateRowAsync, grpcClient.CheckAndMutateRow, effectiveSettings.CheckAndMutateRowSettings).WithGoogleRequestParam("table_name", request => request.TableName);
             Modify_ApiCall(ref _callCheckAndMutateRow);
             Modify_CheckAndMutateRowApiCall(ref _callCheckAndMutateRow);
-            _callReadModifyWriteRow = clientHelper.BuildApiCall<ReadModifyWriteRowRequest, ReadModifyWriteRowResponse>(grpcClient.ReadModifyWriteRowAsync, grpcClient.ReadModifyWriteRow, effectiveSettings.ReadModifyWriteRowSettings).WithCallSettingsOverlay(request => gaxgrpc::CallSettings.FromHeader("x-goog-request-params", $"table_name={(sysnet::WebUtility.UrlEncode(request.TableName))}"));
+            _callReadModifyWriteRow = clientHelper.BuildApiCall<ReadModifyWriteRowRequest, ReadModifyWriteRowResponse>(grpcClient.ReadModifyWriteRowAsync, grpcClient.ReadModifyWriteRow, effectiveSettings.ReadModifyWriteRowSettings).WithGoogleRequestParam("table_name", request => request.TableName);
             Modify_ApiCall(ref _callReadModifyWriteRow);
             Modify_ReadModifyWriteRowApiCall(ref _callReadModifyWriteRow);
             OnConstruction(grpcClient, effectiveSettings, clientHelper);
@@ -2290,8 +2160,6 @@ namespace Google.Cloud.Bigtable.V2
             public ReadRowsStreamImpl(grpccore::AsyncServerStreamingCall<ReadRowsResponse> call) => GrpcCall = call;
 
             public override grpccore::AsyncServerStreamingCall<ReadRowsResponse> GrpcCall { get; }
-
-            public override scg::IAsyncEnumerator<ReadRowsResponse> ResponseStream => GrpcCall.ResponseStream;
         }
 
         /// <summary>
@@ -2317,8 +2185,6 @@ namespace Google.Cloud.Bigtable.V2
             public SampleRowKeysStreamImpl(grpccore::AsyncServerStreamingCall<SampleRowKeysResponse> call) => GrpcCall = call;
 
             public override grpccore::AsyncServerStreamingCall<SampleRowKeysResponse> GrpcCall { get; }
-
-            public override scg::IAsyncEnumerator<SampleRowKeysResponse> ResponseStream => GrpcCall.ResponseStream;
         }
 
         /// <summary>
@@ -2369,8 +2235,6 @@ namespace Google.Cloud.Bigtable.V2
             public MutateRowsStreamImpl(grpccore::AsyncServerStreamingCall<MutateRowsResponse> call) => GrpcCall = call;
 
             public override grpccore::AsyncServerStreamingCall<MutateRowsResponse> GrpcCall { get; }
-
-            public override scg::IAsyncEnumerator<MutateRowsResponse> ResponseStream => GrpcCall.ResponseStream;
         }
 
         /// <summary>

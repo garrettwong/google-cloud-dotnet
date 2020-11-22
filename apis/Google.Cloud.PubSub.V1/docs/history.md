@@ -1,5 +1,55 @@
 # Version history
 
+# Version 2.1.0, released 2020-08-03
+
+- [Commit 330b04e](https://github.com/googleapis/google-cloud-dotnet/commit/330b04e): Fix: PubSub methods will now be retried appropriately. Fixes [issue 5225](https://github.com/googleapis/google-cloud-dotnet/issues/5225)
+- [Commit 0cd128c](https://github.com/googleapis/google-cloud-dotnet/commit/0cd128c): docs: Remove experimental warning for ordering keys properties. ([issue 5219](https://github.com/googleapis/google-cloud-dotnet/issues/5219))
+- [Commit 6bde7a3](https://github.com/googleapis/google-cloud-dotnet/commit/6bde7a3): docs: Regenerate all APIs with service comments in client documentation
+- [Commit 6165e07](https://github.com/googleapis/google-cloud-dotnet/commit/6165e07): feat: Add support for server-side streaming pull flow control ([issue 5119](https://github.com/googleapis/google-cloud-dotnet/issues/5119))
+- [Commit 2c5f3c1](https://github.com/googleapis/google-cloud-dotnet/commit/2c5f3c1): feat: Add flow control settings for StreamingPullRequest to pubsub.proto
+- [Commit b5500f5](https://github.com/googleapis/google-cloud-dotnet/commit/b5500f5): docs: Add a link to Pub/Sub filtering language public documentation to pubsub.proto
+- [Commit ac924f2](https://github.com/googleapis/google-cloud-dotnet/commit/ac924f2): feat: Add "detached" bool to Subscription
+- [Commit f3eeca0](https://github.com/googleapis/google-cloud-dotnet/commit/f3eeca0): docs: Add comment for MessageStoragePolicy message
+- [Commit 1dae64f](https://github.com/googleapis/google-cloud-dotnet/commit/1dae64f): fix: Use correct resource type for DetachSubscriptionRequest
+- [Commit 5f5b8aa](https://github.com/googleapis/google-cloud-dotnet/commit/5f5b8aa): feat: DetachSubscription RPC
+- [Commit 947a573](https://github.com/googleapis/google-cloud-dotnet/commit/947a573): docs: Regenerate all clients with more explicit documentation
+- [Commit 777b926](https://github.com/googleapis/google-cloud-dotnet/commit/777b926): docs: Removing the experimental tag from dead letter policy related fields.
+- [Commit 8cd3929](https://github.com/googleapis/google-cloud-dotnet/commit/8cd3929): docs: Removing experimental tag from DeadLetterPolicy for Cloud Pub/Sub.
+
+# Version 2.0.0, released 2020-04-09
+
+- [Commit 26de65c](https://github.com/googleapis/google-cloud-dotnet/commit/26de65c): Fix: Fix comment around default AckDeadline
+- [Commit b872180](https://github.com/googleapis/google-cloud-dotnet/commit/b872180): docs: treat a dummy example URL as a string literal instead of a link
+- [Commit ab949d1](https://github.com/googleapis/google-cloud-dotnet/commit/ab949d1): Feature: experimental Subscription.Filter property
+
+First GA release targeting GAX 3.0.0.
+
+# Version 2.0.0-beta02, released 2020-03-18
+
+- [Commit 2096b6d](https://github.com/googleapis/google-cloud-dotnet/commit/2096b6d): Feature: Subscription.RetryPolicy
+- [Commit e4226b7](https://github.com/googleapis/google-cloud-dotnet/commit/e4226b7):
+  - Regenerate Google.Cloud.PubSub.V1 ([issue 4515](https://github.com/googleapis/google-cloud-dotnet/issues/4515))
+  - PullRequest.ReturnImmediately is now obsolete
+  - ListTopicSnapshots methods have new overloads accepting a topic name
+  - GetSnapshot methods have new overloads accepting a snapshot name
+
+Additionally, dependencies have been updated to target GAX 3.0.0.
+
+# Version 2.0.0-beta01, released 2020-02-18
+
+This is the first prerelease targeting GAX v3. Please see the [breaking changes
+guide](https://googleapis.github.io/google-cloud-dotnet/docs/guides/breaking-gax2.html)
+for details of changes to both GAX and code generation.
+
+Additional significant changes in this release:
+
+- [Commit 173b019](https://github.com/googleapis/google-cloud-dotnet/commit/173b019): Dead-letter queue support in subscriber client
+
+# Version 1.2.0-beta01, released 2020-01-06
+
+- [Commit d859592](https://github.com/googleapis/google-cloud-dotnet/commit/d859592): Fully enable ordering-keys ([issue 3921](https://github.com/googleapis/google-cloud-dotnet/issues/3921))
+- [Commit e13ab00](https://github.com/googleapis/google-cloud-dotnet/commit/e13ab00): Update default settings; add maximum total lease extension ([issue 3920](https://github.com/googleapis/google-cloud-dotnet/issues/3920))
+
 # Version 1.1.0, released 2019-12-10
 
 Note that support is present in the code for ordering keys, but it's currently disabled; it will be enabled in a future release.

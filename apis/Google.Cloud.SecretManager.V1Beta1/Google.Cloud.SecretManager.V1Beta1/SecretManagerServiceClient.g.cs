@@ -1,4 +1,4 @@
-// Copyright 2019 Google LLC
+// Copyright 2020 Google LLC
 //
 // Licensed under the Apache License, Version 2.0 (the "License");
 // you may not use this file except in compliance with the License.
@@ -16,6 +16,7 @@
 
 using gax = Google.Api.Gax;
 using gaxgrpc = Google.Api.Gax.Grpc;
+using gaxgrpccore = Google.Api.Gax.Grpc.GrpcCore;
 using gagr = Google.Api.Gax.ResourceNames;
 using gciv = Google.Cloud.Iam.V1;
 using proto = Google.Protobuf;
@@ -26,7 +27,6 @@ using sys = System;
 using sc = System.Collections;
 using scg = System.Collections.Generic;
 using sco = System.Collections.ObjectModel;
-using sysnet = System.Net;
 using st = System.Threading;
 using stt = System.Threading.Tasks;
 
@@ -71,60 +71,100 @@ namespace Google.Cloud.SecretManager.V1Beta1
         /// <see cref="gaxgrpc::CallSettings"/> for synchronous and asynchronous calls to
         /// <c>SecretManagerServiceClient.ListSecrets</c> and <c>SecretManagerServiceClient.ListSecretsAsync</c>.
         /// </summary>
-        /// <remarks>By default, retry will not be attempted.</remarks>
-        public gaxgrpc::CallSettings ListSecretsSettings { get; set; }
+        /// <remarks>
+        /// <list type="bullet">
+        /// <item><description>This call will not be retried.</description></item>
+        /// <item><description>Timeout: 60 seconds.</description></item>
+        /// </list>
+        /// </remarks>
+        public gaxgrpc::CallSettings ListSecretsSettings { get; set; } = gaxgrpc::CallSettings.FromExpiration(gax::Expiration.FromTimeout(sys::TimeSpan.FromMilliseconds(60000)));
 
         /// <summary>
         /// <see cref="gaxgrpc::CallSettings"/> for synchronous and asynchronous calls to
         /// <c>SecretManagerServiceClient.CreateSecret</c> and <c>SecretManagerServiceClient.CreateSecretAsync</c>.
         /// </summary>
-        /// <remarks>By default, retry will not be attempted.</remarks>
-        public gaxgrpc::CallSettings CreateSecretSettings { get; set; }
+        /// <remarks>
+        /// <list type="bullet">
+        /// <item><description>This call will not be retried.</description></item>
+        /// <item><description>Timeout: 60 seconds.</description></item>
+        /// </list>
+        /// </remarks>
+        public gaxgrpc::CallSettings CreateSecretSettings { get; set; } = gaxgrpc::CallSettings.FromExpiration(gax::Expiration.FromTimeout(sys::TimeSpan.FromMilliseconds(60000)));
 
         /// <summary>
         /// <see cref="gaxgrpc::CallSettings"/> for synchronous and asynchronous calls to
         /// <c>SecretManagerServiceClient.AddSecretVersion</c> and <c>SecretManagerServiceClient.AddSecretVersionAsync</c>
         /// .
         /// </summary>
-        /// <remarks>By default, retry will not be attempted.</remarks>
-        public gaxgrpc::CallSettings AddSecretVersionSettings { get; set; }
+        /// <remarks>
+        /// <list type="bullet">
+        /// <item><description>This call will not be retried.</description></item>
+        /// <item><description>Timeout: 60 seconds.</description></item>
+        /// </list>
+        /// </remarks>
+        public gaxgrpc::CallSettings AddSecretVersionSettings { get; set; } = gaxgrpc::CallSettings.FromExpiration(gax::Expiration.FromTimeout(sys::TimeSpan.FromMilliseconds(60000)));
 
         /// <summary>
         /// <see cref="gaxgrpc::CallSettings"/> for synchronous and asynchronous calls to
         /// <c>SecretManagerServiceClient.GetSecret</c> and <c>SecretManagerServiceClient.GetSecretAsync</c>.
         /// </summary>
-        /// <remarks>By default, retry will not be attempted.</remarks>
-        public gaxgrpc::CallSettings GetSecretSettings { get; set; }
+        /// <remarks>
+        /// <list type="bullet">
+        /// <item><description>This call will not be retried.</description></item>
+        /// <item><description>Timeout: 60 seconds.</description></item>
+        /// </list>
+        /// </remarks>
+        public gaxgrpc::CallSettings GetSecretSettings { get; set; } = gaxgrpc::CallSettings.FromExpiration(gax::Expiration.FromTimeout(sys::TimeSpan.FromMilliseconds(60000)));
 
         /// <summary>
         /// <see cref="gaxgrpc::CallSettings"/> for synchronous and asynchronous calls to
         /// <c>SecretManagerServiceClient.UpdateSecret</c> and <c>SecretManagerServiceClient.UpdateSecretAsync</c>.
         /// </summary>
-        /// <remarks>By default, retry will not be attempted.</remarks>
-        public gaxgrpc::CallSettings UpdateSecretSettings { get; set; }
+        /// <remarks>
+        /// <list type="bullet">
+        /// <item><description>This call will not be retried.</description></item>
+        /// <item><description>Timeout: 60 seconds.</description></item>
+        /// </list>
+        /// </remarks>
+        public gaxgrpc::CallSettings UpdateSecretSettings { get; set; } = gaxgrpc::CallSettings.FromExpiration(gax::Expiration.FromTimeout(sys::TimeSpan.FromMilliseconds(60000)));
 
         /// <summary>
         /// <see cref="gaxgrpc::CallSettings"/> for synchronous and asynchronous calls to
         /// <c>SecretManagerServiceClient.DeleteSecret</c> and <c>SecretManagerServiceClient.DeleteSecretAsync</c>.
         /// </summary>
-        /// <remarks>By default, retry will not be attempted.</remarks>
-        public gaxgrpc::CallSettings DeleteSecretSettings { get; set; }
+        /// <remarks>
+        /// <list type="bullet">
+        /// <item><description>This call will not be retried.</description></item>
+        /// <item><description>Timeout: 60 seconds.</description></item>
+        /// </list>
+        /// </remarks>
+        public gaxgrpc::CallSettings DeleteSecretSettings { get; set; } = gaxgrpc::CallSettings.FromExpiration(gax::Expiration.FromTimeout(sys::TimeSpan.FromMilliseconds(60000)));
 
         /// <summary>
         /// <see cref="gaxgrpc::CallSettings"/> for synchronous and asynchronous calls to
         /// <c>SecretManagerServiceClient.ListSecretVersions</c> and
         /// <c>SecretManagerServiceClient.ListSecretVersionsAsync</c>.
         /// </summary>
-        /// <remarks>By default, retry will not be attempted.</remarks>
-        public gaxgrpc::CallSettings ListSecretVersionsSettings { get; set; }
+        /// <remarks>
+        /// <list type="bullet">
+        /// <item><description>This call will not be retried.</description></item>
+        /// <item><description>Timeout: 60 seconds.</description></item>
+        /// </list>
+        /// </remarks>
+        public gaxgrpc::CallSettings ListSecretVersionsSettings { get; set; } = gaxgrpc::CallSettings.FromExpiration(gax::Expiration.FromTimeout(sys::TimeSpan.FromMilliseconds(60000)));
 
         /// <summary>
         /// <see cref="gaxgrpc::CallSettings"/> for synchronous and asynchronous calls to
         /// <c>SecretManagerServiceClient.GetSecretVersion</c> and <c>SecretManagerServiceClient.GetSecretVersionAsync</c>
         /// .
         /// </summary>
-        /// <remarks>By default, retry will not be attempted.</remarks>
-        public gaxgrpc::CallSettings GetSecretVersionSettings { get; set; }
+        /// <remarks>
+        /// <list type="bullet">
+        /// <item><description>This call will not be retried.</description></item>
+        /// <item><description>Timeout: 60 seconds.</description></item>
+        /// </list>
+        /// </remarks>
+        public gaxgrpc::CallSettings GetSecretVersionSettings { get; set; } = gaxgrpc::CallSettings.FromExpiration(gax::Expiration.FromTimeout(sys::TimeSpan.FromMilliseconds(60000)));
 
         /// <summary>
         /// <see cref="gaxgrpc::CallSettings"/> for synchronous and asynchronous calls to
@@ -136,59 +176,87 @@ namespace Google.Cloud.SecretManager.V1Beta1
         /// <item><description>Initial retry delay: 1000 milliseconds.</description></item>
         /// <item><description>Retry delay multiplier: 1.3</description></item>
         /// <item><description>Retry maximum delay: 60000 milliseconds.</description></item>
-        /// <item><description>Initial timeout: 60000 milliseconds.</description></item>
-        /// <item><description>Timeout multiplier: 1</description></item>
-        /// <item><description>Timeout maximum delay: 60000 milliseconds.</description></item>
-        /// <item><description>Total timeout: 60 seconds.</description></item>
+        /// <item><description>Maximum attempts: Unlimited</description></item>
+        /// <item><description>Timeout: 60 seconds.</description></item>
         /// </list>
         /// </remarks>
-        public gaxgrpc::CallSettings AccessSecretVersionSettings { get; set; } = gaxgrpc::CallSettings.FromCallTiming(gaxgrpc::CallTiming.FromRetry(new gaxgrpc::RetrySettings(retryBackoff: new gaxgrpc::BackoffSettings(delay: sys::TimeSpan.FromMilliseconds(1000), maxDelay: sys::TimeSpan.FromMilliseconds(60000), delayMultiplier: 1.3), timeoutBackoff: new gaxgrpc::BackoffSettings(delay: sys::TimeSpan.FromMilliseconds(60000), maxDelay: sys::TimeSpan.FromMilliseconds(60000), delayMultiplier: 1), totalExpiration: gax::Expiration.FromTimeout(sys::TimeSpan.FromMilliseconds(60000)), retryFilter: gaxgrpc::RetrySettings.FilterForStatusCodes(grpccore::StatusCode.Unavailable, grpccore::StatusCode.Unknown))));
+        public gaxgrpc::CallSettings AccessSecretVersionSettings { get; set; } = gaxgrpc::CallSettingsExtensions.WithRetry(gaxgrpc::CallSettings.FromExpiration(gax::Expiration.FromTimeout(sys::TimeSpan.FromMilliseconds(60000))), gaxgrpc::RetrySettings.FromExponentialBackoff(maxAttempts: 2147483647, initialBackoff: sys::TimeSpan.FromMilliseconds(1000), maxBackoff: sys::TimeSpan.FromMilliseconds(60000), backoffMultiplier: 1.3, retryFilter: gaxgrpc::RetrySettings.FilterForStatusCodes(grpccore::StatusCode.Unavailable, grpccore::StatusCode.Unknown)));
 
         /// <summary>
         /// <see cref="gaxgrpc::CallSettings"/> for synchronous and asynchronous calls to
         /// <c>SecretManagerServiceClient.DisableSecretVersion</c> and
         /// <c>SecretManagerServiceClient.DisableSecretVersionAsync</c>.
         /// </summary>
-        /// <remarks>By default, retry will not be attempted.</remarks>
-        public gaxgrpc::CallSettings DisableSecretVersionSettings { get; set; }
+        /// <remarks>
+        /// <list type="bullet">
+        /// <item><description>This call will not be retried.</description></item>
+        /// <item><description>Timeout: 60 seconds.</description></item>
+        /// </list>
+        /// </remarks>
+        public gaxgrpc::CallSettings DisableSecretVersionSettings { get; set; } = gaxgrpc::CallSettings.FromExpiration(gax::Expiration.FromTimeout(sys::TimeSpan.FromMilliseconds(60000)));
 
         /// <summary>
         /// <see cref="gaxgrpc::CallSettings"/> for synchronous and asynchronous calls to
         /// <c>SecretManagerServiceClient.EnableSecretVersion</c> and
         /// <c>SecretManagerServiceClient.EnableSecretVersionAsync</c>.
         /// </summary>
-        /// <remarks>By default, retry will not be attempted.</remarks>
-        public gaxgrpc::CallSettings EnableSecretVersionSettings { get; set; }
+        /// <remarks>
+        /// <list type="bullet">
+        /// <item><description>This call will not be retried.</description></item>
+        /// <item><description>Timeout: 60 seconds.</description></item>
+        /// </list>
+        /// </remarks>
+        public gaxgrpc::CallSettings EnableSecretVersionSettings { get; set; } = gaxgrpc::CallSettings.FromExpiration(gax::Expiration.FromTimeout(sys::TimeSpan.FromMilliseconds(60000)));
 
         /// <summary>
         /// <see cref="gaxgrpc::CallSettings"/> for synchronous and asynchronous calls to
         /// <c>SecretManagerServiceClient.DestroySecretVersion</c> and
         /// <c>SecretManagerServiceClient.DestroySecretVersionAsync</c>.
         /// </summary>
-        /// <remarks>By default, retry will not be attempted.</remarks>
-        public gaxgrpc::CallSettings DestroySecretVersionSettings { get; set; }
+        /// <remarks>
+        /// <list type="bullet">
+        /// <item><description>This call will not be retried.</description></item>
+        /// <item><description>Timeout: 60 seconds.</description></item>
+        /// </list>
+        /// </remarks>
+        public gaxgrpc::CallSettings DestroySecretVersionSettings { get; set; } = gaxgrpc::CallSettings.FromExpiration(gax::Expiration.FromTimeout(sys::TimeSpan.FromMilliseconds(60000)));
 
         /// <summary>
         /// <see cref="gaxgrpc::CallSettings"/> for synchronous and asynchronous calls to
         /// <c>SecretManagerServiceClient.SetIamPolicy</c> and <c>SecretManagerServiceClient.SetIamPolicyAsync</c>.
         /// </summary>
-        /// <remarks>By default, retry will not be attempted.</remarks>
-        public gaxgrpc::CallSettings SetIamPolicySettings { get; set; }
+        /// <remarks>
+        /// <list type="bullet">
+        /// <item><description>This call will not be retried.</description></item>
+        /// <item><description>Timeout: 60 seconds.</description></item>
+        /// </list>
+        /// </remarks>
+        public gaxgrpc::CallSettings SetIamPolicySettings { get; set; } = gaxgrpc::CallSettings.FromExpiration(gax::Expiration.FromTimeout(sys::TimeSpan.FromMilliseconds(60000)));
 
         /// <summary>
         /// <see cref="gaxgrpc::CallSettings"/> for synchronous and asynchronous calls to
         /// <c>SecretManagerServiceClient.GetIamPolicy</c> and <c>SecretManagerServiceClient.GetIamPolicyAsync</c>.
         /// </summary>
-        /// <remarks>By default, retry will not be attempted.</remarks>
-        public gaxgrpc::CallSettings GetIamPolicySettings { get; set; }
+        /// <remarks>
+        /// <list type="bullet">
+        /// <item><description>This call will not be retried.</description></item>
+        /// <item><description>Timeout: 60 seconds.</description></item>
+        /// </list>
+        /// </remarks>
+        public gaxgrpc::CallSettings GetIamPolicySettings { get; set; } = gaxgrpc::CallSettings.FromExpiration(gax::Expiration.FromTimeout(sys::TimeSpan.FromMilliseconds(60000)));
 
         /// <summary>
         /// <see cref="gaxgrpc::CallSettings"/> for synchronous and asynchronous calls to
         /// <c>SecretManagerServiceClient.TestIamPermissions</c> and
         /// <c>SecretManagerServiceClient.TestIamPermissionsAsync</c>.
         /// </summary>
-        /// <remarks>By default, retry will not be attempted.</remarks>
-        public gaxgrpc::CallSettings TestIamPermissionsSettings { get; set; }
+        /// <remarks>
+        /// <list type="bullet">
+        /// <item><description>This call will not be retried.</description></item>
+        /// <item><description>Timeout: 60 seconds.</description></item>
+        /// </list>
+        /// </remarks>
+        public gaxgrpc::CallSettings TestIamPermissionsSettings { get; set; } = gaxgrpc::CallSettings.FromExpiration(gax::Expiration.FromTimeout(sys::TimeSpan.FromMilliseconds(60000)));
 
         /// <summary>Creates a deep clone of this object, with all the same property values.</summary>
         /// <returns>A deep clone of this <see cref="SecretManagerServiceSettings"/> object.</returns>
@@ -204,40 +272,72 @@ namespace Google.Cloud.SecretManager.V1Beta1
         /// <summary>The settings to use for RPCs, or <c>null</c> for the default settings.</summary>
         public SecretManagerServiceSettings Settings { get; set; }
 
-        /// <inheritdoc/>
+        partial void InterceptBuild(ref SecretManagerServiceClient client);
+
+        partial void InterceptBuildAsync(st::CancellationToken cancellationToken, ref stt::Task<SecretManagerServiceClient> task);
+
+        /// <summary>Builds the resulting client.</summary>
         public override SecretManagerServiceClient Build()
+        {
+            SecretManagerServiceClient client = null;
+            InterceptBuild(ref client);
+            return client ?? BuildImpl();
+        }
+
+        /// <summary>Builds the resulting client asynchronously.</summary>
+        public override stt::Task<SecretManagerServiceClient> BuildAsync(st::CancellationToken cancellationToken = default)
+        {
+            stt::Task<SecretManagerServiceClient> task = null;
+            InterceptBuildAsync(cancellationToken, ref task);
+            return task ?? BuildAsyncImpl(cancellationToken);
+        }
+
+        private SecretManagerServiceClient BuildImpl()
         {
             Validate();
             grpccore::CallInvoker callInvoker = CreateCallInvoker();
             return SecretManagerServiceClient.Create(callInvoker, Settings);
         }
 
-        /// <inheritdoc/>
-        public override async stt::Task<SecretManagerServiceClient> BuildAsync(st::CancellationToken cancellationToken = default)
+        private async stt::Task<SecretManagerServiceClient> BuildAsyncImpl(st::CancellationToken cancellationToken)
         {
             Validate();
             grpccore::CallInvoker callInvoker = await CreateCallInvokerAsync(cancellationToken).ConfigureAwait(false);
             return SecretManagerServiceClient.Create(callInvoker, Settings);
         }
 
-        /// <inheritdoc/>
-        protected override gaxgrpc::ServiceEndpoint GetDefaultEndpoint() => SecretManagerServiceClient.DefaultEndpoint;
+        /// <summary>Returns the endpoint for this builder type, used if no endpoint is otherwise specified.</summary>
+        protected override string GetDefaultEndpoint() => SecretManagerServiceClient.DefaultEndpoint;
 
-        /// <inheritdoc/>
+        /// <summary>
+        /// Returns the default scopes for this builder type, used if no scopes are otherwise specified.
+        /// </summary>
         protected override scg::IReadOnlyList<string> GetDefaultScopes() => SecretManagerServiceClient.DefaultScopes;
 
-        /// <inheritdoc/>
+        /// <summary>Returns the channel pool to use when no other options are specified.</summary>
         protected override gaxgrpc::ChannelPool GetChannelPool() => SecretManagerServiceClient.ChannelPool;
+
+        /// <summary>Returns the default <see cref="gaxgrpc::GrpcAdapter"/>to use if not otherwise specified.</summary>
+        protected override gaxgrpc::GrpcAdapter DefaultGrpcAdapter => gaxgrpccore::GrpcCoreAdapter.Instance;
     }
 
     /// <summary>SecretManagerService client wrapper, for convenient use.</summary>
+    /// <remarks>
+    /// Secret Manager Service
+    /// 
+    /// Manages secrets and operations using those secrets. Implements a REST
+    /// model with the following objects:
+    /// 
+    /// * [Secret][google.cloud.secrets.v1beta1.Secret]
+    /// * [SecretVersion][google.cloud.secrets.v1beta1.SecretVersion]
+    /// </remarks>
     public abstract partial class SecretManagerServiceClient
     {
         /// <summary>
         /// The default endpoint for the SecretManagerService service, which is a host of "secretmanager.googleapis.com"
         /// and a port of 443.
         /// </summary>
-        public static gaxgrpc::ServiceEndpoint DefaultEndpoint { get; } = new gaxgrpc::ServiceEndpoint("secretmanager.googleapis.com", 443);
+        public static string DefaultEndpoint { get; } = "secretmanager.googleapis.com:443";
 
         /// <summary>The default SecretManagerService scopes.</summary>
         /// <remarks>
@@ -254,96 +354,24 @@ namespace Google.Cloud.SecretManager.V1Beta1
         internal static gaxgrpc::ChannelPool ChannelPool { get; } = new gaxgrpc::ChannelPool(DefaultScopes);
 
         /// <summary>
-        /// Asynchronously creates a <see cref="SecretManagerServiceClient"/>, applying defaults for all unspecified
-        /// settings, and creating a channel connecting to the given endpoint with application default credentials where
-        /// necessary. See the example for how to use custom credentials.
+        /// Asynchronously creates a <see cref="SecretManagerServiceClient"/> using the default credentials, endpoint
+        /// and settings. To specify custom credentials or other settings, use
+        /// <see cref="SecretManagerServiceClientBuilder"/>.
         /// </summary>
-        /// <example>
-        /// This sample shows how to create a client using default credentials:
-        /// <code>
-        /// using Google.Cloud.Vision.V1;
-        /// ...
-        /// // When running on Google Cloud Platform this will use the project Compute Credential.
-        /// // Or set the GOOGLE_APPLICATION_CREDENTIALS environment variable to the path of a JSON
-        /// // credential file to use that credential.
-        /// ImageAnnotatorClient client = await ImageAnnotatorClient.CreateAsync();
-        /// </code>
-        /// This sample shows how to create a client using credentials loaded from a JSON file:
-        /// <code>
-        /// using Google.Cloud.Vision.V1;
-        /// using Google.Apis.Auth.OAuth2;
-        /// using Grpc.Auth;
-        /// using Grpc.Core;
-        /// ...
-        /// GoogleCredential cred = GoogleCredential.FromFile("/path/to/credentials.json");
-        /// Channel channel = new Channel(
-        ///     ImageAnnotatorClient.DefaultEndpoint.Host, ImageAnnotatorClient.DefaultEndpoint.Port, cred.ToChannelCredentials());
-        /// ImageAnnotatorClient client = ImageAnnotatorClient.Create(channel);
-        /// ...
-        /// // Shutdown the channel when it is no longer required.
-        /// await channel.ShutdownAsync();
-        /// </code>
-        /// </example>
-        /// <param name="endpoint">Optional <see cref="gaxgrpc::ServiceEndpoint"/>.</param>
-        /// <param name="settings">Optional <see cref="SecretManagerServiceSettings"/>.</param>
+        /// <param name="cancellationToken">
+        /// The <see cref="st::CancellationToken"/> to use while creating the client.
+        /// </param>
         /// <returns>The task representing the created <see cref="SecretManagerServiceClient"/>.</returns>
-        public static async stt::Task<SecretManagerServiceClient> CreateAsync(gaxgrpc::ServiceEndpoint endpoint = null, SecretManagerServiceSettings settings = null)
-        {
-            grpccore::Channel channel = await ChannelPool.GetChannelAsync(endpoint ?? DefaultEndpoint).ConfigureAwait(false);
-            return Create(channel, settings);
-        }
+        public static stt::Task<SecretManagerServiceClient> CreateAsync(st::CancellationToken cancellationToken = default) =>
+            new SecretManagerServiceClientBuilder().BuildAsync(cancellationToken);
 
         /// <summary>
-        /// Synchronously creates a <see cref="SecretManagerServiceClient"/>, applying defaults for all unspecified
-        /// settings, and creating a channel connecting to the given endpoint with application default credentials where
-        /// necessary. See the example for how to use custom credentials.
+        /// Synchronously creates a <see cref="SecretManagerServiceClient"/> using the default credentials, endpoint and
+        /// settings. To specify custom credentials or other settings, use
+        /// <see cref="SecretManagerServiceClientBuilder"/>.
         /// </summary>
-        /// <example>
-        /// This sample shows how to create a client using default credentials:
-        /// <code>
-        /// using Google.Cloud.Vision.V1;
-        /// ...
-        /// // When running on Google Cloud Platform this will use the project Compute Credential.
-        /// // Or set the GOOGLE_APPLICATION_CREDENTIALS environment variable to the path of a JSON
-        /// // credential file to use that credential.
-        /// ImageAnnotatorClient client = ImageAnnotatorClient.Create();
-        /// </code>
-        /// This sample shows how to create a client using credentials loaded from a JSON file:
-        /// <code>
-        /// using Google.Cloud.Vision.V1;
-        /// using Google.Apis.Auth.OAuth2;
-        /// using Grpc.Auth;
-        /// using Grpc.Core;
-        /// ...
-        /// GoogleCredential cred = GoogleCredential.FromFile("/path/to/credentials.json");
-        /// Channel channel = new Channel(
-        ///     ImageAnnotatorClient.DefaultEndpoint.Host, ImageAnnotatorClient.DefaultEndpoint.Port, cred.ToChannelCredentials());
-        /// ImageAnnotatorClient client = ImageAnnotatorClient.Create(channel);
-        /// ...
-        /// // Shutdown the channel when it is no longer required.
-        /// channel.ShutdownAsync().Wait();
-        /// </code>
-        /// </example>
-        /// <param name="endpoint">Optional <see cref="gaxgrpc::ServiceEndpoint"/>.</param>
-        /// <param name="settings">Optional <see cref="SecretManagerServiceSettings"/>.</param>
         /// <returns>The created <see cref="SecretManagerServiceClient"/>.</returns>
-        public static SecretManagerServiceClient Create(gaxgrpc::ServiceEndpoint endpoint = null, SecretManagerServiceSettings settings = null)
-        {
-            grpccore::Channel channel = ChannelPool.GetChannel(endpoint ?? DefaultEndpoint);
-            return Create(channel, settings);
-        }
-
-        /// <summary>
-        /// Creates a <see cref="SecretManagerServiceClient"/> which uses the specified channel for remote operations.
-        /// </summary>
-        /// <param name="channel">The <see cref="grpccore::Channel"/> for remote operations. Must not be null.</param>
-        /// <param name="settings">Optional <see cref="SecretManagerServiceSettings"/>.</param>
-        /// <returns>The created <see cref="SecretManagerServiceClient"/>.</returns>
-        public static SecretManagerServiceClient Create(grpccore::Channel channel, SecretManagerServiceSettings settings = null)
-        {
-            gax::GaxPreconditions.CheckNotNull(channel, nameof(channel));
-            return Create(new grpccore::DefaultCallInvoker(channel), settings);
-        }
+        public static SecretManagerServiceClient Create() => new SecretManagerServiceClientBuilder().Build();
 
         /// <summary>
         /// Creates a <see cref="SecretManagerServiceClient"/> which uses the specified call invoker for remote
@@ -354,7 +382,7 @@ namespace Google.Cloud.SecretManager.V1Beta1
         /// </param>
         /// <param name="settings">Optional <see cref="SecretManagerServiceSettings"/>.</param>
         /// <returns>The created <see cref="SecretManagerServiceClient"/>.</returns>
-        public static SecretManagerServiceClient Create(grpccore::CallInvoker callInvoker, SecretManagerServiceSettings settings = null)
+        internal static SecretManagerServiceClient Create(grpccore::CallInvoker callInvoker, SecretManagerServiceSettings settings = null)
         {
             gax::GaxPreconditions.CheckNotNull(callInvoker, nameof(callInvoker));
             grpcinter::Interceptor interceptor = settings?.Interceptor;
@@ -367,16 +395,14 @@ namespace Google.Cloud.SecretManager.V1Beta1
         }
 
         /// <summary>
-        /// Shuts down any channels automatically created by
-        /// <see cref="Create(grpccore::CallInvoker,SecretManagerServiceSettings)"/> and
-        /// <see cref="CreateAsync(gaxgrpc::ServiceEndpoint,SecretManagerServiceSettings)"/>. Channels which weren't
-        /// automatically created are not affected.
+        /// Shuts down any channels automatically created by <see cref="Create()"/> and
+        /// <see cref="CreateAsync(st::CancellationToken)"/>. Channels which weren't automatically created are not
+        /// affected.
         /// </summary>
         /// <remarks>
-        /// After calling this method, further calls to
-        /// <see cref="Create(grpccore::CallInvoker,SecretManagerServiceSettings)"/> and
-        /// <see cref="CreateAsync(gaxgrpc::ServiceEndpoint,SecretManagerServiceSettings)"/> will create new channels,
-        /// which could in turn be shut down by another call to this method.
+        /// After calling this method, further calls to <see cref="Create()"/> and
+        /// <see cref="CreateAsync(st::CancellationToken)"/> will create new channels, which could in turn be shut down
+        /// by another call to this method.
         /// </remarks>
         /// <returns>A task representing the asynchronous shutdown operation.</returns>
         public static stt::Task ShutdownDefaultChannelsAsync() => ChannelPool.ShutdownChannelsAsync();
@@ -538,9 +564,13 @@ namespace Google.Cloud.SecretManager.V1Beta1
         /// </param>
         /// <param name="secretId">
         /// Required. This must be unique within the project.
+        /// 
+        /// A secret ID is a string with a maximum length of 255 characters and can
+        /// contain uppercase and lowercase letters, numerals, and the hyphen (`-`) and
+        /// underscore (`_`) characters.
         /// </param>
         /// <param name="secret">
-        /// A [Secret][google.cloud.secrets.v1beta1.Secret] with initial field values.
+        /// Required. A [Secret][google.cloud.secrets.v1beta1.Secret] with initial field values.
         /// </param>
         /// <param name="callSettings">If not null, applies overrides to this RPC call.</param>
         /// <returns>The RPC response.</returns>
@@ -549,7 +579,7 @@ namespace Google.Cloud.SecretManager.V1Beta1
             {
                 Parent = gax::GaxPreconditions.CheckNotNullOrEmpty(parent, nameof(parent)),
                 SecretId = gax::GaxPreconditions.CheckNotNullOrEmpty(secretId, nameof(secretId)),
-                Secret = secret,
+                Secret = gax::GaxPreconditions.CheckNotNull(secret, nameof(secret)),
             }, callSettings);
 
         /// <summary>
@@ -561,9 +591,13 @@ namespace Google.Cloud.SecretManager.V1Beta1
         /// </param>
         /// <param name="secretId">
         /// Required. This must be unique within the project.
+        /// 
+        /// A secret ID is a string with a maximum length of 255 characters and can
+        /// contain uppercase and lowercase letters, numerals, and the hyphen (`-`) and
+        /// underscore (`_`) characters.
         /// </param>
         /// <param name="secret">
-        /// A [Secret][google.cloud.secrets.v1beta1.Secret] with initial field values.
+        /// Required. A [Secret][google.cloud.secrets.v1beta1.Secret] with initial field values.
         /// </param>
         /// <param name="callSettings">If not null, applies overrides to this RPC call.</param>
         /// <returns>A Task containing the RPC response.</returns>
@@ -572,7 +606,7 @@ namespace Google.Cloud.SecretManager.V1Beta1
             {
                 Parent = gax::GaxPreconditions.CheckNotNullOrEmpty(parent, nameof(parent)),
                 SecretId = gax::GaxPreconditions.CheckNotNullOrEmpty(secretId, nameof(secretId)),
-                Secret = secret,
+                Secret = gax::GaxPreconditions.CheckNotNull(secret, nameof(secret)),
             }, callSettings);
 
         /// <summary>
@@ -584,9 +618,13 @@ namespace Google.Cloud.SecretManager.V1Beta1
         /// </param>
         /// <param name="secretId">
         /// Required. This must be unique within the project.
+        /// 
+        /// A secret ID is a string with a maximum length of 255 characters and can
+        /// contain uppercase and lowercase letters, numerals, and the hyphen (`-`) and
+        /// underscore (`_`) characters.
         /// </param>
         /// <param name="secret">
-        /// A [Secret][google.cloud.secrets.v1beta1.Secret] with initial field values.
+        /// Required. A [Secret][google.cloud.secrets.v1beta1.Secret] with initial field values.
         /// </param>
         /// <param name="cancellationToken">A <see cref="st::CancellationToken"/> to use for this RPC.</param>
         /// <returns>A Task containing the RPC response.</returns>
@@ -602,9 +640,13 @@ namespace Google.Cloud.SecretManager.V1Beta1
         /// </param>
         /// <param name="secretId">
         /// Required. This must be unique within the project.
+        /// 
+        /// A secret ID is a string with a maximum length of 255 characters and can
+        /// contain uppercase and lowercase letters, numerals, and the hyphen (`-`) and
+        /// underscore (`_`) characters.
         /// </param>
         /// <param name="secret">
-        /// A [Secret][google.cloud.secrets.v1beta1.Secret] with initial field values.
+        /// Required. A [Secret][google.cloud.secrets.v1beta1.Secret] with initial field values.
         /// </param>
         /// <param name="callSettings">If not null, applies overrides to this RPC call.</param>
         /// <returns>The RPC response.</returns>
@@ -613,7 +655,7 @@ namespace Google.Cloud.SecretManager.V1Beta1
             {
                 ParentAsProjectName = gax::GaxPreconditions.CheckNotNull(parent, nameof(parent)),
                 SecretId = gax::GaxPreconditions.CheckNotNullOrEmpty(secretId, nameof(secretId)),
-                Secret = secret,
+                Secret = gax::GaxPreconditions.CheckNotNull(secret, nameof(secret)),
             }, callSettings);
 
         /// <summary>
@@ -625,9 +667,13 @@ namespace Google.Cloud.SecretManager.V1Beta1
         /// </param>
         /// <param name="secretId">
         /// Required. This must be unique within the project.
+        /// 
+        /// A secret ID is a string with a maximum length of 255 characters and can
+        /// contain uppercase and lowercase letters, numerals, and the hyphen (`-`) and
+        /// underscore (`_`) characters.
         /// </param>
         /// <param name="secret">
-        /// A [Secret][google.cloud.secrets.v1beta1.Secret] with initial field values.
+        /// Required. A [Secret][google.cloud.secrets.v1beta1.Secret] with initial field values.
         /// </param>
         /// <param name="callSettings">If not null, applies overrides to this RPC call.</param>
         /// <returns>A Task containing the RPC response.</returns>
@@ -636,7 +682,7 @@ namespace Google.Cloud.SecretManager.V1Beta1
             {
                 ParentAsProjectName = gax::GaxPreconditions.CheckNotNull(parent, nameof(parent)),
                 SecretId = gax::GaxPreconditions.CheckNotNullOrEmpty(secretId, nameof(secretId)),
-                Secret = secret,
+                Secret = gax::GaxPreconditions.CheckNotNull(secret, nameof(secret)),
             }, callSettings);
 
         /// <summary>
@@ -648,9 +694,13 @@ namespace Google.Cloud.SecretManager.V1Beta1
         /// </param>
         /// <param name="secretId">
         /// Required. This must be unique within the project.
+        /// 
+        /// A secret ID is a string with a maximum length of 255 characters and can
+        /// contain uppercase and lowercase letters, numerals, and the hyphen (`-`) and
+        /// underscore (`_`) characters.
         /// </param>
         /// <param name="secret">
-        /// A [Secret][google.cloud.secrets.v1beta1.Secret] with initial field values.
+        /// Required. A [Secret][google.cloud.secrets.v1beta1.Secret] with initial field values.
         /// </param>
         /// <param name="cancellationToken">A <see cref="st::CancellationToken"/> to use for this RPC.</param>
         /// <returns>A Task containing the RPC response.</returns>
@@ -2047,6 +2097,15 @@ namespace Google.Cloud.SecretManager.V1Beta1
     }
 
     /// <summary>SecretManagerService client wrapper implementation, for convenient use.</summary>
+    /// <remarks>
+    /// Secret Manager Service
+    /// 
+    /// Manages secrets and operations using those secrets. Implements a REST
+    /// model with the following objects:
+    /// 
+    /// * [Secret][google.cloud.secrets.v1beta1.Secret]
+    /// * [SecretVersion][google.cloud.secrets.v1beta1.SecretVersion]
+    /// </remarks>
     public sealed partial class SecretManagerServiceClientImpl : SecretManagerServiceClient
     {
         private readonly gaxgrpc::ApiCall<ListSecretsRequest, ListSecretsResponse> _callListSecrets;
@@ -2090,49 +2149,49 @@ namespace Google.Cloud.SecretManager.V1Beta1
             GrpcClient = grpcClient;
             SecretManagerServiceSettings effectiveSettings = settings ?? SecretManagerServiceSettings.GetDefault();
             gaxgrpc::ClientHelper clientHelper = new gaxgrpc::ClientHelper(effectiveSettings);
-            _callListSecrets = clientHelper.BuildApiCall<ListSecretsRequest, ListSecretsResponse>(grpcClient.ListSecretsAsync, grpcClient.ListSecrets, effectiveSettings.ListSecretsSettings).WithCallSettingsOverlay(request => gaxgrpc::CallSettings.FromHeader("x-goog-request-params", $"parent={(sysnet::WebUtility.UrlEncode(request.Parent))}"));
+            _callListSecrets = clientHelper.BuildApiCall<ListSecretsRequest, ListSecretsResponse>(grpcClient.ListSecretsAsync, grpcClient.ListSecrets, effectiveSettings.ListSecretsSettings).WithGoogleRequestParam("parent", request => request.Parent);
             Modify_ApiCall(ref _callListSecrets);
             Modify_ListSecretsApiCall(ref _callListSecrets);
-            _callCreateSecret = clientHelper.BuildApiCall<CreateSecretRequest, Secret>(grpcClient.CreateSecretAsync, grpcClient.CreateSecret, effectiveSettings.CreateSecretSettings).WithCallSettingsOverlay(request => gaxgrpc::CallSettings.FromHeader("x-goog-request-params", $"parent={(sysnet::WebUtility.UrlEncode(request.Parent))}"));
+            _callCreateSecret = clientHelper.BuildApiCall<CreateSecretRequest, Secret>(grpcClient.CreateSecretAsync, grpcClient.CreateSecret, effectiveSettings.CreateSecretSettings).WithGoogleRequestParam("parent", request => request.Parent);
             Modify_ApiCall(ref _callCreateSecret);
             Modify_CreateSecretApiCall(ref _callCreateSecret);
-            _callAddSecretVersion = clientHelper.BuildApiCall<AddSecretVersionRequest, SecretVersion>(grpcClient.AddSecretVersionAsync, grpcClient.AddSecretVersion, effectiveSettings.AddSecretVersionSettings).WithCallSettingsOverlay(request => gaxgrpc::CallSettings.FromHeader("x-goog-request-params", $"parent={(sysnet::WebUtility.UrlEncode(request.Parent))}"));
+            _callAddSecretVersion = clientHelper.BuildApiCall<AddSecretVersionRequest, SecretVersion>(grpcClient.AddSecretVersionAsync, grpcClient.AddSecretVersion, effectiveSettings.AddSecretVersionSettings).WithGoogleRequestParam("parent", request => request.Parent);
             Modify_ApiCall(ref _callAddSecretVersion);
             Modify_AddSecretVersionApiCall(ref _callAddSecretVersion);
-            _callGetSecret = clientHelper.BuildApiCall<GetSecretRequest, Secret>(grpcClient.GetSecretAsync, grpcClient.GetSecret, effectiveSettings.GetSecretSettings).WithCallSettingsOverlay(request => gaxgrpc::CallSettings.FromHeader("x-goog-request-params", $"name={(sysnet::WebUtility.UrlEncode(request.Name))}"));
+            _callGetSecret = clientHelper.BuildApiCall<GetSecretRequest, Secret>(grpcClient.GetSecretAsync, grpcClient.GetSecret, effectiveSettings.GetSecretSettings).WithGoogleRequestParam("name", request => request.Name);
             Modify_ApiCall(ref _callGetSecret);
             Modify_GetSecretApiCall(ref _callGetSecret);
-            _callUpdateSecret = clientHelper.BuildApiCall<UpdateSecretRequest, Secret>(grpcClient.UpdateSecretAsync, grpcClient.UpdateSecret, effectiveSettings.UpdateSecretSettings).WithCallSettingsOverlay(request => gaxgrpc::CallSettings.FromHeader("x-goog-request-params", $"secret.name={(sysnet::WebUtility.UrlEncode(request.Secret.Name))}"));
+            _callUpdateSecret = clientHelper.BuildApiCall<UpdateSecretRequest, Secret>(grpcClient.UpdateSecretAsync, grpcClient.UpdateSecret, effectiveSettings.UpdateSecretSettings).WithGoogleRequestParam("secret.name", request => request.Secret?.Name);
             Modify_ApiCall(ref _callUpdateSecret);
             Modify_UpdateSecretApiCall(ref _callUpdateSecret);
-            _callDeleteSecret = clientHelper.BuildApiCall<DeleteSecretRequest, wkt::Empty>(grpcClient.DeleteSecretAsync, grpcClient.DeleteSecret, effectiveSettings.DeleteSecretSettings).WithCallSettingsOverlay(request => gaxgrpc::CallSettings.FromHeader("x-goog-request-params", $"name={(sysnet::WebUtility.UrlEncode(request.Name))}"));
+            _callDeleteSecret = clientHelper.BuildApiCall<DeleteSecretRequest, wkt::Empty>(grpcClient.DeleteSecretAsync, grpcClient.DeleteSecret, effectiveSettings.DeleteSecretSettings).WithGoogleRequestParam("name", request => request.Name);
             Modify_ApiCall(ref _callDeleteSecret);
             Modify_DeleteSecretApiCall(ref _callDeleteSecret);
-            _callListSecretVersions = clientHelper.BuildApiCall<ListSecretVersionsRequest, ListSecretVersionsResponse>(grpcClient.ListSecretVersionsAsync, grpcClient.ListSecretVersions, effectiveSettings.ListSecretVersionsSettings).WithCallSettingsOverlay(request => gaxgrpc::CallSettings.FromHeader("x-goog-request-params", $"parent={(sysnet::WebUtility.UrlEncode(request.Parent))}"));
+            _callListSecretVersions = clientHelper.BuildApiCall<ListSecretVersionsRequest, ListSecretVersionsResponse>(grpcClient.ListSecretVersionsAsync, grpcClient.ListSecretVersions, effectiveSettings.ListSecretVersionsSettings).WithGoogleRequestParam("parent", request => request.Parent);
             Modify_ApiCall(ref _callListSecretVersions);
             Modify_ListSecretVersionsApiCall(ref _callListSecretVersions);
-            _callGetSecretVersion = clientHelper.BuildApiCall<GetSecretVersionRequest, SecretVersion>(grpcClient.GetSecretVersionAsync, grpcClient.GetSecretVersion, effectiveSettings.GetSecretVersionSettings).WithCallSettingsOverlay(request => gaxgrpc::CallSettings.FromHeader("x-goog-request-params", $"name={(sysnet::WebUtility.UrlEncode(request.Name))}"));
+            _callGetSecretVersion = clientHelper.BuildApiCall<GetSecretVersionRequest, SecretVersion>(grpcClient.GetSecretVersionAsync, grpcClient.GetSecretVersion, effectiveSettings.GetSecretVersionSettings).WithGoogleRequestParam("name", request => request.Name);
             Modify_ApiCall(ref _callGetSecretVersion);
             Modify_GetSecretVersionApiCall(ref _callGetSecretVersion);
-            _callAccessSecretVersion = clientHelper.BuildApiCall<AccessSecretVersionRequest, AccessSecretVersionResponse>(grpcClient.AccessSecretVersionAsync, grpcClient.AccessSecretVersion, effectiveSettings.AccessSecretVersionSettings).WithCallSettingsOverlay(request => gaxgrpc::CallSettings.FromHeader("x-goog-request-params", $"name={(sysnet::WebUtility.UrlEncode(request.Name))}"));
+            _callAccessSecretVersion = clientHelper.BuildApiCall<AccessSecretVersionRequest, AccessSecretVersionResponse>(grpcClient.AccessSecretVersionAsync, grpcClient.AccessSecretVersion, effectiveSettings.AccessSecretVersionSettings).WithGoogleRequestParam("name", request => request.Name);
             Modify_ApiCall(ref _callAccessSecretVersion);
             Modify_AccessSecretVersionApiCall(ref _callAccessSecretVersion);
-            _callDisableSecretVersion = clientHelper.BuildApiCall<DisableSecretVersionRequest, SecretVersion>(grpcClient.DisableSecretVersionAsync, grpcClient.DisableSecretVersion, effectiveSettings.DisableSecretVersionSettings).WithCallSettingsOverlay(request => gaxgrpc::CallSettings.FromHeader("x-goog-request-params", $"name={(sysnet::WebUtility.UrlEncode(request.Name))}"));
+            _callDisableSecretVersion = clientHelper.BuildApiCall<DisableSecretVersionRequest, SecretVersion>(grpcClient.DisableSecretVersionAsync, grpcClient.DisableSecretVersion, effectiveSettings.DisableSecretVersionSettings).WithGoogleRequestParam("name", request => request.Name);
             Modify_ApiCall(ref _callDisableSecretVersion);
             Modify_DisableSecretVersionApiCall(ref _callDisableSecretVersion);
-            _callEnableSecretVersion = clientHelper.BuildApiCall<EnableSecretVersionRequest, SecretVersion>(grpcClient.EnableSecretVersionAsync, grpcClient.EnableSecretVersion, effectiveSettings.EnableSecretVersionSettings).WithCallSettingsOverlay(request => gaxgrpc::CallSettings.FromHeader("x-goog-request-params", $"name={(sysnet::WebUtility.UrlEncode(request.Name))}"));
+            _callEnableSecretVersion = clientHelper.BuildApiCall<EnableSecretVersionRequest, SecretVersion>(grpcClient.EnableSecretVersionAsync, grpcClient.EnableSecretVersion, effectiveSettings.EnableSecretVersionSettings).WithGoogleRequestParam("name", request => request.Name);
             Modify_ApiCall(ref _callEnableSecretVersion);
             Modify_EnableSecretVersionApiCall(ref _callEnableSecretVersion);
-            _callDestroySecretVersion = clientHelper.BuildApiCall<DestroySecretVersionRequest, SecretVersion>(grpcClient.DestroySecretVersionAsync, grpcClient.DestroySecretVersion, effectiveSettings.DestroySecretVersionSettings).WithCallSettingsOverlay(request => gaxgrpc::CallSettings.FromHeader("x-goog-request-params", $"name={(sysnet::WebUtility.UrlEncode(request.Name))}"));
+            _callDestroySecretVersion = clientHelper.BuildApiCall<DestroySecretVersionRequest, SecretVersion>(grpcClient.DestroySecretVersionAsync, grpcClient.DestroySecretVersion, effectiveSettings.DestroySecretVersionSettings).WithGoogleRequestParam("name", request => request.Name);
             Modify_ApiCall(ref _callDestroySecretVersion);
             Modify_DestroySecretVersionApiCall(ref _callDestroySecretVersion);
-            _callSetIamPolicy = clientHelper.BuildApiCall<gciv::SetIamPolicyRequest, gciv::Policy>(grpcClient.SetIamPolicyAsync, grpcClient.SetIamPolicy, effectiveSettings.SetIamPolicySettings).WithCallSettingsOverlay(request => gaxgrpc::CallSettings.FromHeader("x-goog-request-params", $"resource={(sysnet::WebUtility.UrlEncode(request.Resource))}"));
+            _callSetIamPolicy = clientHelper.BuildApiCall<gciv::SetIamPolicyRequest, gciv::Policy>(grpcClient.SetIamPolicyAsync, grpcClient.SetIamPolicy, effectiveSettings.SetIamPolicySettings).WithGoogleRequestParam("resource", request => request.Resource);
             Modify_ApiCall(ref _callSetIamPolicy);
             Modify_SetIamPolicyApiCall(ref _callSetIamPolicy);
-            _callGetIamPolicy = clientHelper.BuildApiCall<gciv::GetIamPolicyRequest, gciv::Policy>(grpcClient.GetIamPolicyAsync, grpcClient.GetIamPolicy, effectiveSettings.GetIamPolicySettings).WithCallSettingsOverlay(request => gaxgrpc::CallSettings.FromHeader("x-goog-request-params", $"resource={(sysnet::WebUtility.UrlEncode(request.Resource))}"));
+            _callGetIamPolicy = clientHelper.BuildApiCall<gciv::GetIamPolicyRequest, gciv::Policy>(grpcClient.GetIamPolicyAsync, grpcClient.GetIamPolicy, effectiveSettings.GetIamPolicySettings).WithGoogleRequestParam("resource", request => request.Resource);
             Modify_ApiCall(ref _callGetIamPolicy);
             Modify_GetIamPolicyApiCall(ref _callGetIamPolicy);
-            _callTestIamPermissions = clientHelper.BuildApiCall<gciv::TestIamPermissionsRequest, gciv::TestIamPermissionsResponse>(grpcClient.TestIamPermissionsAsync, grpcClient.TestIamPermissions, effectiveSettings.TestIamPermissionsSettings).WithCallSettingsOverlay(request => gaxgrpc::CallSettings.FromHeader("x-goog-request-params", $"resource={(sysnet::WebUtility.UrlEncode(request.Resource))}"));
+            _callTestIamPermissions = clientHelper.BuildApiCall<gciv::TestIamPermissionsRequest, gciv::TestIamPermissionsResponse>(grpcClient.TestIamPermissionsAsync, grpcClient.TestIamPermissions, effectiveSettings.TestIamPermissionsSettings).WithGoogleRequestParam("resource", request => request.Resource);
             Modify_ApiCall(ref _callTestIamPermissions);
             Modify_TestIamPermissionsApiCall(ref _callTestIamPermissions);
             OnConstruction(grpcClient, effectiveSettings, clientHelper);

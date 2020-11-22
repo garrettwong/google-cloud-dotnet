@@ -1,5 +1,33 @@
 # Version history
 
+# Version 3.1.0, released 2020-09-28
+
+- [Commit 0790924](https://github.com/googleapis/google-cloud-dotnet/commit/0790924): fix: Add gRPC compatibility constructors
+- [Commit a009b4b](https://github.com/googleapis/google-cloud-dotnet/commit/a009b4b): fix: Specify insecure credentials when connecting to the emulator. Fixes [issue 5365](https://github.com/googleapis/google-cloud-dotnet/issues/5365).
+- [Commit 0ca05f5](https://github.com/googleapis/google-cloud-dotnet/commit/0ca05f5): feat: Regenerate all APIs using protoc 3.13 and Grpc.Tools 2.31
+- [Commit 6bde7a3](https://github.com/googleapis/google-cloud-dotnet/commit/6bde7a3): docs: Regenerate all APIs with service comments in client documentation
+- [Commit f83bdf1](https://github.com/googleapis/google-cloud-dotnet/commit/f83bdf1): fix: Regenerate all APIs with proper timeout handling
+- [Commit 42b9797](https://github.com/googleapis/google-cloud-dotnet/commit/42b9797): chore: set Ruby namespace in proto options
+- [Commit 947a573](https://github.com/googleapis/google-cloud-dotnet/commit/947a573): docs: Regenerate all clients with more explicit documentation
+- [Commit 03279b9](https://github.com/googleapis/google-cloud-dotnet/commit/03279b9): docs: Fix documentation for string_value. The value does not have to be at least 1MB, but rather, at most 1MB.
+
+# Version 3.0.0, released 2020-03-17
+
+No API surface changes compared with 3.0.0-beta01, just dependency
+and implementation changes.
+
+# Version 3.0.0-beta01, released 2020-02-18
+
+This is the first prerelease targeting GAX v3. Please see the [breaking changes
+guide](https://googleapis.github.io/google-cloud-dotnet/docs/guides/breaking-gax2.html)
+for details of changes to both GAX and code generation.
+
+Additional breaking changes not covered in the guide:
+
+- The `EmulatorDetection` enum is now in the `Google.Api.Gax`
+  namespace, and the previous `ProductionOrEmulator` value within
+  it has been renamed to `EmulatorOrProduction`.
+
 # Version 2.2.0, released 2019-12-09
 
 - Implement DatastoreDbBuilder for easy configuration, including emulator support

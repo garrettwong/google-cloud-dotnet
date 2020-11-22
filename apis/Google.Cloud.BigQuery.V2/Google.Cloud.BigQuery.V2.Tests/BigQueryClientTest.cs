@@ -13,7 +13,6 @@
 // limitations under the License.
 
 using Google.Api.Gax;
-using Google.Apis.Bigquery.v2;
 using Google.Apis.Bigquery.v2.Data;
 using Google.Cloud.ClientTesting;
 using Moq;
@@ -131,6 +130,42 @@ namespace Google.Cloud.BigQuery.V2.Tests
         }
 
         [Fact]
+        public void GetModelReference_ImplicitProject()
+        {
+            var reference = new DerivedBigQueryClient().GetModelReference("datasetid", "modelid");
+            Assert.Equal("datasetid", reference.DatasetId);
+            Assert.Equal("modelid", reference.ModelId);
+            Assert.Equal(ProjectId, reference.ProjectId);
+        }
+
+        [Fact]
+        public void GetModelReference_ExplicitProject()
+        {
+            var reference = new DerivedBigQueryClient().GetModelReference("p", "datasetid", "modelid");
+            Assert.Equal("datasetid", reference.DatasetId);
+            Assert.Equal("modelid", reference.ModelId);
+            Assert.Equal("p", reference.ProjectId);
+        }
+
+        [Fact]
+        public void GetRoutineReference_ImplicitProject()
+        {
+            var reference = new DerivedBigQueryClient().GetRoutineReference("datasetid", "routineid");
+            Assert.Equal("datasetid", reference.DatasetId);
+            Assert.Equal("routineid", reference.RoutineId);
+            Assert.Equal(ProjectId, reference.ProjectId);
+        }
+
+        [Fact]
+        public void GetRoutineReference_ExplicitProject()
+        {
+            var reference = new DerivedBigQueryClient().GetRoutineReference("p", "datasetid", "routineid");
+            Assert.Equal("datasetid", reference.DatasetId);
+            Assert.Equal("routineid", reference.RoutineId);
+            Assert.Equal("p", reference.ProjectId);
+        }
+
+        [Fact]
         public void GetDatasetReference_ImplicitProject()
         {
             var reference = new DerivedBigQueryClient().GetDatasetReference("datasetid");
@@ -158,11 +193,12 @@ namespace Google.Cloud.BigQuery.V2.Tests
         {
             var datasetId = "dataset";
             var reference = GetDatasetReference(datasetId);
+            var dataset = new Dataset();
             var options = new CreateDatasetOptions();
             VerifyEquivalent(new BigQueryDataset(new DerivedBigQueryClient(), GetDataset(reference)),
-                client => client.CreateDataset(MatchesWhenSerialized(reference), options),
-                client => client.CreateDataset(datasetId, options),
-                client => client.CreateDataset(ProjectId, datasetId, options));
+                client => client.CreateDataset(MatchesWhenSerialized(reference), dataset, options),
+                client => client.CreateDataset(datasetId, dataset, options),
+                client => client.CreateDataset(ProjectId, datasetId, dataset, options));
         }
 
         [Fact]
@@ -225,10 +261,11 @@ namespace Google.Cloud.BigQuery.V2.Tests
             var reference = GetDatasetReference(datasetId);
             var getOptions = new GetDatasetOptions();
             var createOptions = new CreateDatasetOptions();
+            var dataset = new Dataset();
             VerifyEquivalent(new BigQueryDataset(new DerivedBigQueryClient(), GetDataset(reference)),
-                client => client.GetOrCreateDataset(MatchesWhenSerialized(reference), getOptions, createOptions),
-                client => client.GetOrCreateDataset(datasetId, getOptions, createOptions),
-                client => client.GetOrCreateDataset(ProjectId, datasetId, getOptions, createOptions));
+                client => client.GetOrCreateDataset(MatchesWhenSerialized(reference), dataset, getOptions, createOptions),
+                client => client.GetOrCreateDataset(datasetId, dataset, getOptions, createOptions),
+                client => client.GetOrCreateDataset(ProjectId, datasetId, dataset, getOptions, createOptions));
         }
 
         [Fact]
@@ -295,7 +332,7 @@ namespace Google.Cloud.BigQuery.V2.Tests
         }
 
         [Fact]
-        public void CreateTableEquivalents()
+        public void CreateTableEquivalents_Schema()
         {
             var datasetId = "dataset";
             var tableId = "table";
@@ -307,6 +344,22 @@ namespace Google.Cloud.BigQuery.V2.Tests
                 client => client.CreateTable(datasetId, tableId, schema, options),
                 client => client.CreateTable(ProjectId, datasetId, tableId, schema, options),
                 client => new BigQueryDataset(client, GetDataset(datasetId)).CreateTable(tableId, schema, options));
+        }
+
+        [Fact]
+        public void CreateTableEquivalents_Table()
+        {
+            var datasetId = "dataset";
+            var tableId = "table";
+            var schema = new TableSchemaBuilder().Build();
+            var table = new Table { Schema = schema };
+            var reference = GetTableReference(datasetId, tableId);
+            var options = new CreateTableOptions();
+            VerifyEquivalent(new BigQueryTable(new DerivedBigQueryClient(), GetTable(reference)),
+                client => client.CreateTable(MatchesWhenSerialized(reference), table, options),
+                client => client.CreateTable(datasetId, tableId, table, options),
+                client => client.CreateTable(ProjectId, datasetId, tableId, table, options),
+                client => new BigQueryDataset(client, GetDataset(datasetId)).CreateTable(tableId, table, options));
         }
 
         [Fact]
@@ -339,7 +392,7 @@ namespace Google.Cloud.BigQuery.V2.Tests
         }
 
         [Fact]
-        public void GetOrCreateTableEquivalents()
+        public void GetOrCreateTableEquivalents_Schema()
         {
             var datasetId = "dataset";
             var tableId = "table";
@@ -352,6 +405,23 @@ namespace Google.Cloud.BigQuery.V2.Tests
                 client => client.GetOrCreateTable(datasetId, tableId, schema, getOptions, createOptions),
                 client => client.GetOrCreateTable(ProjectId, datasetId, tableId, schema, getOptions, createOptions),
                 client => new BigQueryDataset(client, GetDataset(datasetId)).GetOrCreateTable(tableId, schema, getOptions, createOptions));
+        }
+
+        [Fact]
+        public void GetOrCreateTableEquivalents_Table()
+        {
+            var datasetId = "dataset";
+            var tableId = "table";
+            var schema = new TableSchemaBuilder().Build();
+            var table = new Table { Schema = schema };
+            var reference = GetTableReference(datasetId, tableId);
+            var getOptions = new GetTableOptions();
+            var createOptions = new CreateTableOptions();
+            VerifyEquivalent(new BigQueryTable(new DerivedBigQueryClient(), GetTable(reference)),
+                client => client.GetOrCreateTable(MatchesWhenSerialized(reference), table, getOptions, createOptions),
+                client => client.GetOrCreateTable(datasetId, tableId, table, getOptions, createOptions),
+                client => client.GetOrCreateTable(ProjectId, datasetId, tableId, table, getOptions, createOptions),
+                client => new BigQueryDataset(client, GetDataset(datasetId)).GetOrCreateTable(tableId, table, getOptions, createOptions));
         }
 
         [Fact]
@@ -395,6 +465,149 @@ namespace Google.Cloud.BigQuery.V2.Tests
                 client => client.PatchTable(datasetId, tableId, resource, options),
                 client => client.PatchTable(ProjectId, datasetId, tableId, resource, options),
                 client => new BigQueryTable(client, GetTable(reference)).Patch(resource, false, options));
+        }
+
+        [Fact]
+        public void DeleteModelEquivalents()
+        {
+            var datasetId = "dataset";
+            var modelId = "model";
+            var reference = GetModelReference(datasetId, modelId);
+            var options = new DeleteModelOptions();
+            VerifyEquivalent(
+                client => client.DeleteModel(MatchesWhenSerialized(reference), options),
+                client => client.DeleteModel(datasetId, modelId, options),
+                client => client.DeleteModel(ProjectId, datasetId, modelId, options),
+                client => new BigQueryModel(client, new Model { ModelReference = reference }).Delete(options));
+        }
+
+        [Fact]
+        public void GetModelEquivalents()
+        {
+            var datasetId = "dataset";
+            var modelId = "model";
+            var reference = GetModelReference(datasetId, modelId);
+            var options = new GetModelOptions();
+            VerifyEquivalent(new BigQueryModel(new DerivedBigQueryClient(), GetModel(reference)),
+                client => client.GetModel(MatchesWhenSerialized(reference), options),
+                client => client.GetModel(datasetId, modelId, options),
+                client => client.GetModel(ProjectId, datasetId, modelId, options),
+                client => new BigQueryDataset(client, GetDataset(datasetId)).GetModel(modelId, options));
+        }
+
+        [Fact]
+        public void ListModelsEquivalents()
+        {
+            var datasetId = "dataset";
+            var reference = GetDatasetReference(datasetId);
+            var options = new ListModelsOptions();
+            VerifyEquivalent(new UnimplementedPagedEnumerable<ListModelsResponse, BigQueryModel>(),
+                client => client.ListModels(MatchesWhenSerialized(reference), options),
+                client => client.ListModels(datasetId, options),
+                client => client.ListModels(ProjectId, datasetId, options),
+                client => new BigQueryDataset(client, GetDataset(datasetId)).ListModels(options));
+        }
+
+        [Fact]
+        public void PatchModelEquivalents()
+        {
+            var datasetId = "dataset";
+            var modelId = "model";
+            var reference = GetModelReference(datasetId, modelId);
+            var resource = new Model();
+            var options = new PatchModelOptions();
+            VerifyEquivalent(new BigQueryModel(new DerivedBigQueryClient(), resource),
+                client => client.PatchModel(MatchesWhenSerialized(reference), resource, options),
+                client => client.PatchModel(datasetId, modelId, resource, options),
+                client => client.PatchModel(ProjectId, datasetId, modelId, resource, options),
+                client => new BigQueryModel(client, GetModel(reference)).Patch(resource, false, options));
+        }
+
+        [Fact]
+        public void GetRoutineEquivalents()
+        {
+            var datasetId = "dataset";
+            var routineId = "routine";
+            var reference = GetRoutineReference(datasetId, routineId);
+            var options = new GetRoutineOptions();
+            VerifyEquivalent(new BigQueryRoutine(new DerivedBigQueryClient(), GetRoutine(reference)),
+                client => client.GetRoutine(MatchesWhenSerialized(reference), options),
+                client => client.GetRoutine(datasetId, routineId, options),
+                client => client.GetRoutine(ProjectId, datasetId, routineId, options),
+                client => new BigQueryDataset(client, GetDataset(datasetId)).GetRoutine(routineId, options));
+        }
+
+        [Fact]
+        public void ListRoutinesEquivalents()
+        {
+            var datasetId = "dataset";
+            var reference = GetDatasetReference(datasetId);
+            var options = new ListRoutinesOptions();
+            VerifyEquivalent(new UnimplementedPagedEnumerable<ListRoutinesResponse, BigQueryRoutine>(),
+                client => client.ListRoutines(MatchesWhenSerialized(reference), options),
+                client => client.ListRoutines(datasetId, options),
+                client => client.ListRoutines(ProjectId, datasetId, options),
+                client => new BigQueryDataset(client, GetDataset(datasetId)).ListRoutines(options));
+        }
+
+        [Fact]
+        public void CreateRoutineEquivalents()
+        {
+            var datasetId = "dataset";
+            var routineId = "routine";
+            var routine = new Routine();
+            var reference = GetRoutineReference(datasetId, routineId);
+            var options = new CreateRoutineOptions();
+            VerifyEquivalent(new BigQueryRoutine(new DerivedBigQueryClient(), GetRoutine(reference)),
+                client => client.CreateRoutine(MatchesWhenSerialized(reference), routine, options),
+                client => client.CreateRoutine(datasetId, routineId, routine, options),
+                client => client.CreateRoutine(ProjectId, datasetId, routineId, routine, options),
+                client => new BigQueryDataset(client, GetDataset(datasetId)).CreateRoutine(routineId, routine, options));
+        }
+
+        [Fact]
+        public void GetOrCreateRoutineEquivalents()
+        {
+            var datasetId = "dataset";
+            var routineId = "routine";
+            var routine = new Routine();
+            var reference = GetRoutineReference(datasetId, routineId);
+            var getOptions = new GetRoutineOptions();
+            var createOptions = new CreateRoutineOptions();
+            VerifyEquivalent(new BigQueryRoutine(new DerivedBigQueryClient(), GetRoutine(reference)),
+                client => client.GetOrCreateRoutine(MatchesWhenSerialized(reference), routine, getOptions, createOptions),
+                client => client.GetOrCreateRoutine(datasetId, routineId, routine, getOptions, createOptions),
+                client => client.GetOrCreateRoutine(ProjectId, datasetId, routineId, routine, getOptions, createOptions),
+                client => new BigQueryDataset(client, GetDataset(datasetId)).GetOrCreateRoutine(routineId, routine, getOptions, createOptions));
+        }
+
+        [Fact]
+        public void DeleteRoutineEquivalents()
+        {
+            var datasetId = "dataset";
+            var routineId = "routine";
+            var reference = GetRoutineReference(datasetId, routineId);
+            var options = new DeleteRoutineOptions();
+            VerifyEquivalent(
+                client => client.DeleteRoutine(MatchesWhenSerialized(reference), options),
+                client => client.DeleteRoutine(datasetId, routineId, options),
+                client => client.DeleteRoutine(ProjectId, datasetId, routineId, options),
+                client => new BigQueryRoutine(client, new Routine { RoutineReference = reference }).Delete(options));
+        }
+
+        [Fact]
+        public void UpdateRoutineEquivalents()
+        {
+            var datasetId = "dataset";
+            var routineId = "routine";
+            var reference = GetRoutineReference(datasetId, routineId);
+            var resource = new Routine();
+            var options = new UpdateRoutineOptions();
+            VerifyEquivalent(new BigQueryRoutine(new DerivedBigQueryClient(), resource),
+                client => client.UpdateRoutine(MatchesWhenSerialized(reference), resource, options),
+                client => client.UpdateRoutine(datasetId, routineId, resource, options),
+                client => client.UpdateRoutine(ProjectId, datasetId, routineId, resource, options),
+                client => new BigQueryRoutine(client, GetRoutine(reference)).Update(resource, options));
         }
 
         [Fact]
@@ -584,7 +797,7 @@ namespace Google.Cloud.BigQuery.V2.Tests
             var options = new InsertOptions();
             var stream = new MemoryStream();
             var row = new BigQueryInsertRow();
-            VerifyEquivalent(
+            VerifyEquivalent(new BigQueryInsertResults(new DerivedBigQueryClient(), options, Enumerable.Repeat(row, 1).ToList(), new TableDataInsertAllResponse()),
                 client => client.InsertRows(MatchesWhenSerialized(reference), new[] { row }, options),
                 client => client.InsertRow(datasetId, tableId, row, options),
                 client => client.InsertRow(ProjectId, datasetId, tableId, row, options),
@@ -601,7 +814,7 @@ namespace Google.Cloud.BigQuery.V2.Tests
             var options = new InsertOptions();
             var stream = new MemoryStream();
             var rows = new[] { new BigQueryInsertRow(), new BigQueryInsertRow() };
-            VerifyEquivalent(
+            VerifyEquivalent(new BigQueryInsertResults(new DerivedBigQueryClient(), options, rows, new TableDataInsertAllResponse()),
                 client => client.InsertRows(MatchesWhenSerialized(reference), rows, options),
                 client => client.InsertRows(datasetId, tableId, rows, options),
                 client => client.InsertRows(ProjectId, datasetId, tableId, rows, options),
@@ -618,7 +831,7 @@ namespace Google.Cloud.BigQuery.V2.Tests
             var options = new InsertOptions();
             var stream = new MemoryStream();
             var rows = new[] { new BigQueryInsertRow(), new BigQueryInsertRow() };
-            VerifyEquivalent(
+            VerifyEquivalent(new BigQueryInsertResults(new DerivedBigQueryClient(), options, rows, new TableDataInsertAllResponse()),
                 client => client.InsertRows(MatchesWhenSerialized(reference), rows, null),
                 client => client.InsertRows(datasetId, tableId, rows[0], rows[1]),
                 client => client.InsertRows(ProjectId, datasetId, tableId, rows[0], rows[1]),
@@ -680,11 +893,12 @@ namespace Google.Cloud.BigQuery.V2.Tests
             var datasetId = "dataset";
             var reference = GetDatasetReference(datasetId);
             var options = new CreateDatasetOptions();
+            var dataset = new Dataset();
             var token = new CancellationTokenSource().Token;
             VerifyEquivalentAsync(new BigQueryDataset(new DerivedBigQueryClient(), GetDataset(reference)),
-                client => client.CreateDatasetAsync(MatchesWhenSerialized(reference), options, token),
-                client => client.CreateDatasetAsync(datasetId, options, token),
-                client => client.CreateDatasetAsync(ProjectId, datasetId, options, token));
+                client => client.CreateDatasetAsync(MatchesWhenSerialized(reference), dataset, options, token),
+                client => client.CreateDatasetAsync(datasetId, dataset, options, token),
+                client => client.CreateDatasetAsync(ProjectId, datasetId, dataset, options, token));
         }
 
         [Fact]
@@ -721,11 +935,12 @@ namespace Google.Cloud.BigQuery.V2.Tests
             var reference = GetDatasetReference(datasetId);
             var getOptions = new GetDatasetOptions();
             var createOptions = new CreateDatasetOptions();
+            var dataset = new Dataset();
             var token = new CancellationTokenSource().Token;
             VerifyEquivalentAsync(new BigQueryDataset(new DerivedBigQueryClient(), GetDataset(reference)),
-                client => client.GetOrCreateDatasetAsync(MatchesWhenSerialized(reference), getOptions, createOptions, token),
-                client => client.GetOrCreateDatasetAsync(datasetId, getOptions, createOptions, token),
-                client => client.GetOrCreateDatasetAsync(ProjectId, datasetId, getOptions, createOptions, token));
+                client => client.GetOrCreateDatasetAsync(MatchesWhenSerialized(reference), dataset, getOptions, createOptions, token),
+                client => client.GetOrCreateDatasetAsync(datasetId, dataset, getOptions, createOptions, token),
+                client => client.GetOrCreateDatasetAsync(ProjectId, datasetId, dataset, getOptions, createOptions, token));
         }
 
         [Fact]
@@ -826,7 +1041,7 @@ namespace Google.Cloud.BigQuery.V2.Tests
         }
 
         [Fact]
-        public void CreateTableAsyncEquivalents()
+        public void CreateTableAsyncEquivalents_Schema()
         {
             var datasetId = "dataset";
             var tableId = "table";
@@ -839,6 +1054,23 @@ namespace Google.Cloud.BigQuery.V2.Tests
                 client => client.CreateTableAsync(datasetId, tableId, schema, options, token),
                 client => client.CreateTableAsync(ProjectId, datasetId, tableId, schema, options, token),
                 client => new BigQueryDataset(client, GetDataset(datasetId)).CreateTableAsync(tableId, schema, options, token));
+        }
+
+        [Fact]
+        public void CreateTableAsyncEquivalents_Table()
+        {
+            var datasetId = "dataset";
+            var tableId = "table";
+            var schema = new TableSchemaBuilder().Build();
+            var table = new Table { Schema = schema };
+            var reference = GetTableReference(datasetId, tableId);
+            var options = new CreateTableOptions();
+            var token = new CancellationTokenSource().Token;
+            VerifyEquivalentAsync(new BigQueryTable(new DerivedBigQueryClient(), GetTable(reference)),
+                client => client.CreateTableAsync(MatchesWhenSerialized(reference), table, options, token),
+                client => client.CreateTableAsync(datasetId, tableId, table, options, token),
+                client => client.CreateTableAsync(ProjectId, datasetId, tableId, table, options, token),
+                client => new BigQueryDataset(client, GetDataset(datasetId)).CreateTableAsync(tableId, table, options, token));
         }
 
         [Fact]
@@ -873,7 +1105,7 @@ namespace Google.Cloud.BigQuery.V2.Tests
         }
 
         [Fact]
-        public void GetOrCreateTableAsyncEquivalents()
+        public void GetOrCreateTableAsyncEquivalents_Schema()
         {
             var datasetId = "dataset";
             var tableId = "table";
@@ -887,6 +1119,24 @@ namespace Google.Cloud.BigQuery.V2.Tests
                 client => client.GetOrCreateTableAsync(datasetId, tableId, schema, getOptions, createOptions, token),
                 client => client.GetOrCreateTableAsync(ProjectId, datasetId, tableId, schema, getOptions, createOptions, token),
                 client => new BigQueryDataset(client, GetDataset(datasetId)).GetOrCreateTableAsync(tableId, schema, getOptions, createOptions, token));
+        }
+
+        [Fact]
+        public void GetOrCreateTableAsyncEquivalents_Table()
+        {
+            var datasetId = "dataset";
+            var tableId = "table";
+            var schema = new TableSchemaBuilder().Build();
+            var table = new Table { Schema = schema };
+            var reference = GetTableReference(datasetId, tableId);
+            var getOptions = new GetTableOptions();
+            var createOptions = new CreateTableOptions();
+            var token = new CancellationTokenSource().Token;
+            VerifyEquivalentAsync(new BigQueryTable(new DerivedBigQueryClient(), GetTable(reference)),
+                client => client.GetOrCreateTableAsync(MatchesWhenSerialized(reference), table, getOptions, createOptions, token),
+                client => client.GetOrCreateTableAsync(datasetId, tableId, table, getOptions, createOptions, token),
+                client => client.GetOrCreateTableAsync(ProjectId, datasetId, tableId, table, getOptions, createOptions, token),
+                client => new BigQueryDataset(client, GetDataset(datasetId)).GetOrCreateTableAsync(tableId, table, getOptions, createOptions, token));
         }
 
         [Fact]
@@ -933,6 +1183,157 @@ namespace Google.Cloud.BigQuery.V2.Tests
                 client => client.PatchTableAsync(datasetId, tableId, resource, options, token),
                 client => client.PatchTableAsync(ProjectId, datasetId, tableId, resource, options, token),
                 client => new BigQueryTable(client, GetTable(reference)).PatchAsync(resource, false, options, token));
+        }
+
+        [Fact]
+        public void DeleteModelAsyncEquivalents()
+        {
+            var datasetId = "dataset";
+            var modelId = "model";
+            var reference = GetModelReference(datasetId, modelId);
+            var options = new DeleteModelOptions();
+            var token = new CancellationTokenSource().Token;
+            VerifyEquivalentAsync(
+                client => client.DeleteModelAsync(MatchesWhenSerialized(reference), options, token),
+                client => client.DeleteModelAsync(datasetId, modelId, options, token),
+                client => client.DeleteModelAsync(ProjectId, datasetId, modelId, options, token),
+                client => new BigQueryModel(client, new Model { ModelReference = reference }).DeleteAsync(options, token));
+        }
+
+        [Fact]
+        public void GetModelAsyncEquivalents()
+        {
+            var datasetId = "dataset";
+            var modelId = "model";
+            var reference = GetModelReference(datasetId, modelId);
+            var options = new GetModelOptions();
+            var token = new CancellationTokenSource().Token;
+            VerifyEquivalentAsync(new BigQueryModel(new DerivedBigQueryClient(), GetModel(reference)),
+                client => client.GetModelAsync(MatchesWhenSerialized(reference), options, token),
+                client => client.GetModelAsync(datasetId, modelId, options, token),
+                client => client.GetModelAsync(ProjectId, datasetId, modelId, options, token),
+                client => new BigQueryDataset(client, GetDataset(datasetId)).GetModelAsync(modelId, options, token));
+        }
+
+        [Fact]
+        public void ListModelsAsyncEquivalents()
+        {
+            var datasetId = "dataset";
+            var reference = GetDatasetReference(datasetId);
+            var options = new ListModelsOptions();
+            VerifyEquivalent(new UnimplementedPagedAsyncEnumerable<ListModelsResponse, BigQueryModel>(),
+                client => client.ListModelsAsync(MatchesWhenSerialized(reference), options),
+                client => client.ListModelsAsync(datasetId, options),
+                client => client.ListModelsAsync(ProjectId, datasetId, options),
+                client => new BigQueryDataset(client, GetDataset(datasetId)).ListModelsAsync(options));
+        }
+
+        [Fact]
+        public void PatchModelAsyncEquivalents()
+        {
+            var datasetId = "dataset";
+            var modelId = "model";
+            var reference = GetModelReference(datasetId, modelId);
+            var resource = new Model();
+            var options = new PatchModelOptions();
+            var token = new CancellationTokenSource().Token;
+            VerifyEquivalentAsync(new BigQueryModel(new DerivedBigQueryClient(), resource),
+                client => client.PatchModelAsync(MatchesWhenSerialized(reference), resource, options, token),
+                client => client.PatchModelAsync(datasetId, modelId, resource, options, token),
+                client => client.PatchModelAsync(ProjectId, datasetId, modelId, resource, options, token),
+                client => new BigQueryModel(client, GetModel(reference)).PatchAsync(resource, false, options, token));
+        }
+
+        [Fact]
+        public void GetRoutineAsyncEquivalents()
+        {
+            var datasetId = "dataset";
+            var routineId = "routine";
+            var reference = GetRoutineReference(datasetId, routineId);
+            var options = new GetRoutineOptions();
+            var token = new CancellationTokenSource().Token;
+            VerifyEquivalentAsync(new BigQueryRoutine(new DerivedBigQueryClient(), GetRoutine(reference)),
+                client => client.GetRoutineAsync(MatchesWhenSerialized(reference), options, token),
+                client => client.GetRoutineAsync(datasetId, routineId, options, token),
+                client => client.GetRoutineAsync(ProjectId, datasetId, routineId, options, token),
+                client => new BigQueryDataset(client, GetDataset(datasetId)).GetRoutineAsync(routineId, options, token));
+        }
+
+        [Fact]
+        public void ListRoutinesAsyncEquivalents()
+        {
+            var datasetId = "dataset";
+            var reference = GetDatasetReference(datasetId);
+            var options = new ListRoutinesOptions();
+            VerifyEquivalent(new UnimplementedPagedAsyncEnumerable<ListRoutinesResponse, BigQueryRoutine>(),
+                client => client.ListRoutinesAsync(MatchesWhenSerialized(reference), options),
+                client => client.ListRoutinesAsync(datasetId, options),
+                client => client.ListRoutinesAsync(ProjectId, datasetId, options),
+                client => new BigQueryDataset(client, GetDataset(datasetId)).ListRoutinesAsync(options));
+        }
+
+        [Fact]
+        public void CreateRoutineAsyncEquivalents()
+        {
+            var datasetId = "dataset";
+            var routineId = "routine";
+            var routine = new Routine();
+            var reference = GetRoutineReference(datasetId, routineId);
+            var options = new CreateRoutineOptions();
+            var token = new CancellationTokenSource().Token;
+            VerifyEquivalentAsync(new BigQueryRoutine(new DerivedBigQueryClient(), GetRoutine(reference)),
+                client => client.CreateRoutineAsync(MatchesWhenSerialized(reference), routine, options, token),
+                client => client.CreateRoutineAsync(datasetId, routineId, routine, options, token),
+                client => client.CreateRoutineAsync(ProjectId, datasetId, routineId, routine, options, token),
+                client => new BigQueryDataset(client, GetDataset(datasetId)).CreateRoutineAsync(routineId, routine, options, token));
+        }
+
+        [Fact]
+        public void GetOrCreateRoutineAsyncEquivalents()
+        {
+            var datasetId = "dataset";
+            var routineId = "routine";
+            var routine = new Routine();
+            var reference = GetRoutineReference(datasetId, routineId);
+            var getOptions = new GetRoutineOptions();
+            var createOptions = new CreateRoutineOptions();
+            var token = new CancellationTokenSource().Token;
+            VerifyEquivalentAsync(new BigQueryRoutine(new DerivedBigQueryClient(), GetRoutine(reference)),
+                client => client.GetOrCreateRoutineAsync(MatchesWhenSerialized(reference), routine, getOptions, createOptions, token),
+                client => client.GetOrCreateRoutineAsync(datasetId, routineId, routine, getOptions, createOptions, token),
+                client => client.GetOrCreateRoutineAsync(ProjectId, datasetId, routineId, routine, getOptions, createOptions, token),
+                client => new BigQueryDataset(client, GetDataset(datasetId)).GetOrCreateRoutineAsync(routineId, routine, getOptions, createOptions, token));
+        }
+
+        [Fact]
+        public void DeleteRoutineAsyncEquivalents()
+        {
+            var datasetId = "dataset";
+            var routineId = "routine";
+            var reference = GetRoutineReference(datasetId, routineId);
+            var options = new DeleteRoutineOptions();
+            var token = new CancellationTokenSource().Token;
+            VerifyEquivalentAsync(
+                client => client.DeleteRoutineAsync(MatchesWhenSerialized(reference), options, token),
+                client => client.DeleteRoutineAsync(datasetId, routineId, options, token),
+                client => client.DeleteRoutineAsync(ProjectId, datasetId, routineId, options, token),
+                client => new BigQueryRoutine(client, new Routine { RoutineReference = reference }).DeleteAsync(options, token));
+        }
+
+        [Fact]
+        public void UpdateRoutineAsyncEquivalents()
+        {
+            var datasetId = "dataset";
+            var routineId = "routine";
+            var reference = GetRoutineReference(datasetId, routineId);
+            var resource = new Routine();
+            var options = new UpdateRoutineOptions();
+            var token = new CancellationTokenSource().Token;
+            VerifyEquivalentAsync(new BigQueryRoutine(new DerivedBigQueryClient(), resource),
+                client => client.UpdateRoutineAsync(MatchesWhenSerialized(reference), resource, options, token),
+                client => client.UpdateRoutineAsync(datasetId, routineId, resource, options, token),
+                client => client.UpdateRoutineAsync(ProjectId, datasetId, routineId, resource, options, token),
+                client => new BigQueryRoutine(client, GetRoutine(reference)).UpdateAsync(resource, options, token));
         }
 
         [Fact]
@@ -1132,7 +1533,7 @@ namespace Google.Cloud.BigQuery.V2.Tests
             var token = new CancellationTokenSource().Token;
             var stream = new MemoryStream();
             var row = new BigQueryInsertRow();
-            VerifyEquivalentAsync(
+            VerifyEquivalentAsync(new BigQueryInsertResults(new DerivedBigQueryClient(), options, Enumerable.Repeat(row, 1).ToList(), new TableDataInsertAllResponse()),
                 client => client.InsertRowsAsync(MatchesWhenSerialized(reference), new[] { row }, options, token),
                 client => client.InsertRowAsync(datasetId, tableId, row, options, token),
                 client => client.InsertRowAsync(ProjectId, datasetId, tableId, row, options, token),
@@ -1150,7 +1551,7 @@ namespace Google.Cloud.BigQuery.V2.Tests
             var token = new CancellationTokenSource().Token;
             var stream = new MemoryStream();
             var rows = new[] { new BigQueryInsertRow(), new BigQueryInsertRow() };
-            VerifyEquivalentAsync(
+            VerifyEquivalentAsync(new BigQueryInsertResults(new DerivedBigQueryClient(), options, rows, new TableDataInsertAllResponse()),
                 client => client.InsertRowsAsync(MatchesWhenSerialized(reference), rows, options, token),
                 client => client.InsertRowsAsync(datasetId, tableId, rows, options, token),
                 client => client.InsertRowsAsync(ProjectId, datasetId, tableId, rows, options, token),
@@ -1168,7 +1569,7 @@ namespace Google.Cloud.BigQuery.V2.Tests
             var token = new CancellationTokenSource().Token;
             var stream = new MemoryStream();
             var rows = new[] { new BigQueryInsertRow(), new BigQueryInsertRow() };
-            VerifyEquivalentAsync(
+            VerifyEquivalentAsync(new BigQueryInsertResults(new DerivedBigQueryClient(), options, rows, new TableDataInsertAllResponse()),
                 client => client.InsertRowsAsync(MatchesWhenSerialized(reference), rows, null, default),
                 client => client.InsertRowsAsync(datasetId, tableId, rows[0], rows[1]),
                 client => client.InsertRowsAsync(ProjectId, datasetId, tableId, rows[0], rows[1]),
@@ -1301,6 +1702,21 @@ namespace Google.Cloud.BigQuery.V2.Tests
 
         private static TableReference GetTableReference(string datasetId, string tableId) =>
             new TableReference { ProjectId = ProjectId, DatasetId = datasetId, TableId = tableId };
+
+        private static Model GetModel(string datasetId, string modelId) =>
+            GetModel(GetModelReference(datasetId, modelId));
+
+        private static Model GetModel(ModelReference reference) =>
+            new Model { ModelReference = reference };
+
+        private static ModelReference GetModelReference(string datasetId, string modelId) =>
+            new ModelReference { ProjectId = ProjectId, DatasetId = datasetId, ModelId = modelId };
+
+        private static Routine GetRoutine(RoutineReference reference) =>
+            new Routine { RoutineReference = reference };
+
+        private static RoutineReference GetRoutineReference(string datasetId, string routineId) =>
+            new RoutineReference { ProjectId = ProjectId, DatasetId = datasetId, RoutineId = routineId };
 
         private static Dataset GetDataset(string datasetId) => GetDataset(GetDatasetReference(datasetId));
 

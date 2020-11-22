@@ -37,128 +37,128 @@ namespace Google.Cloud.SecretManager.V1Beta1 {
             "EhYKCXBhZ2Vfc2l6ZRgCIAEoBUID4EEBEhcKCnBhZ2VfdG9rZW4YAyABKAlC",
             "A+BBASJ5ChNMaXN0U2VjcmV0c1Jlc3BvbnNlEjUKB3NlY3JldHMYASADKAsy",
             "JC5nb29nbGUuY2xvdWQuc2VjcmV0cy52MWJldGExLlNlY3JldBIXCg9uZXh0",
-            "X3BhZ2VfdG9rZW4YAiABKAkSEgoKdG90YWxfc2l6ZRgDIAEoBSKoAQoTQ3Jl",
+            "X3BhZ2VfdG9rZW4YAiABKAkSEgoKdG90YWxfc2l6ZRgDIAEoBSKtAQoTQ3Jl",
             "YXRlU2VjcmV0UmVxdWVzdBJDCgZwYXJlbnQYASABKAlCM+BBAvpBLQorY2xv",
             "dWRyZXNvdXJjZW1hbmFnZXIuZ29vZ2xlYXBpcy5jb20vUHJvamVjdBIWCglz",
-            "ZWNyZXRfaWQYAiABKAlCA+BBAhI0CgZzZWNyZXQYAyABKAsyJC5nb29nbGUu",
-            "Y2xvdWQuc2VjcmV0cy52MWJldGExLlNlY3JldCKZAQoXQWRkU2VjcmV0VmVy",
-            "c2lvblJlcXVlc3QSOwoGcGFyZW50GAEgASgJQivgQQL6QSUKI3NlY3JldG1h",
-            "bmFnZXIuZ29vZ2xlYXBpcy5jb20vU2VjcmV0EkEKB3BheWxvYWQYAiABKAsy",
-            "Ky5nb29nbGUuY2xvdWQuc2VjcmV0cy52MWJldGExLlNlY3JldFBheWxvYWRC",
-            "A+BBAiJNChBHZXRTZWNyZXRSZXF1ZXN0EjkKBG5hbWUYASABKAlCK+BBAvpB",
-            "JQojc2VjcmV0bWFuYWdlci5nb29nbGVhcGlzLmNvbS9TZWNyZXQiiQEKGUxp",
-            "c3RTZWNyZXRWZXJzaW9uc1JlcXVlc3QSOwoGcGFyZW50GAEgASgJQivgQQL6",
-            "QSUKI3NlY3JldG1hbmFnZXIuZ29vZ2xlYXBpcy5jb20vU2VjcmV0EhYKCXBh",
-            "Z2Vfc2l6ZRgCIAEoBUID4EEBEhcKCnBhZ2VfdG9rZW4YAyABKAlCA+BBASKI",
-            "AQoaTGlzdFNlY3JldFZlcnNpb25zUmVzcG9uc2USPQoIdmVyc2lvbnMYASAD",
-            "KAsyKy5nb29nbGUuY2xvdWQuc2VjcmV0cy52MWJldGExLlNlY3JldFZlcnNp",
-            "b24SFwoPbmV4dF9wYWdlX3Rva2VuGAIgASgJEhIKCnRvdGFsX3NpemUYAyAB",
-            "KAUiWwoXR2V0U2VjcmV0VmVyc2lvblJlcXVlc3QSQAoEbmFtZRgBIAEoCUIy",
-            "4EEC+kEsCipzZWNyZXRtYW5hZ2VyLmdvb2dsZWFwaXMuY29tL1NlY3JldFZl",
-            "cnNpb24ihgEKE1VwZGF0ZVNlY3JldFJlcXVlc3QSOQoGc2VjcmV0GAEgASgL",
-            "MiQuZ29vZ2xlLmNsb3VkLnNlY3JldHMudjFiZXRhMS5TZWNyZXRCA+BBAhI0",
-            "Cgt1cGRhdGVfbWFzaxgCIAEoCzIaLmdvb2dsZS5wcm90b2J1Zi5GaWVsZE1h",
-            "c2tCA+BBAiJeChpBY2Nlc3NTZWNyZXRWZXJzaW9uUmVxdWVzdBJACgRuYW1l",
-            "GAEgASgJQjLgQQL6QSwKKnNlY3JldG1hbmFnZXIuZ29vZ2xlYXBpcy5jb20v",
-            "U2VjcmV0VmVyc2lvbiKaAQobQWNjZXNzU2VjcmV0VmVyc2lvblJlc3BvbnNl",
-            "Ej0KBG5hbWUYASABKAlCL/pBLAoqc2VjcmV0bWFuYWdlci5nb29nbGVhcGlz",
-            "LmNvbS9TZWNyZXRWZXJzaW9uEjwKB3BheWxvYWQYAiABKAsyKy5nb29nbGUu",
-            "Y2xvdWQuc2VjcmV0cy52MWJldGExLlNlY3JldFBheWxvYWQiUAoTRGVsZXRl",
-            "U2VjcmV0UmVxdWVzdBI5CgRuYW1lGAEgASgJQivgQQL6QSUKI3NlY3JldG1h",
-            "bmFnZXIuZ29vZ2xlYXBpcy5jb20vU2VjcmV0Il8KG0Rpc2FibGVTZWNyZXRW",
-            "ZXJzaW9uUmVxdWVzdBJACgRuYW1lGAEgASgJQjLgQQL6QSwKKnNlY3JldG1h",
-            "bmFnZXIuZ29vZ2xlYXBpcy5jb20vU2VjcmV0VmVyc2lvbiJeChpFbmFibGVT",
-            "ZWNyZXRWZXJzaW9uUmVxdWVzdBJACgRuYW1lGAEgASgJQjLgQQL6QSwKKnNl",
-            "Y3JldG1hbmFnZXIuZ29vZ2xlYXBpcy5jb20vU2VjcmV0VmVyc2lvbiJfChtE",
-            "ZXN0cm95U2VjcmV0VmVyc2lvblJlcXVlc3QSQAoEbmFtZRgBIAEoCUIy4EEC",
-            "+kEsCipzZWNyZXRtYW5hZ2VyLmdvb2dsZWFwaXMuY29tL1NlY3JldFZlcnNp",
-            "b24ygxYKFFNlY3JldE1hbmFnZXJTZXJ2aWNlEqkBCgtMaXN0U2VjcmV0cxIw",
-            "Lmdvb2dsZS5jbG91ZC5zZWNyZXRzLnYxYmV0YTEuTGlzdFNlY3JldHNSZXF1",
-            "ZXN0GjEuZ29vZ2xlLmNsb3VkLnNlY3JldHMudjFiZXRhMS5MaXN0U2VjcmV0",
-            "c1Jlc3BvbnNlIjWC0+STAiYSJC92MWJldGExL3twYXJlbnQ9cHJvamVjdHMv",
-            "Kn0vc2VjcmV0c9pBBnBhcmVudBK3AQoMQ3JlYXRlU2VjcmV0EjEuZ29vZ2xl",
-            "LmNsb3VkLnNlY3JldHMudjFiZXRhMS5DcmVhdGVTZWNyZXRSZXF1ZXN0GiQu",
-            "Z29vZ2xlLmNsb3VkLnNlY3JldHMudjFiZXRhMS5TZWNyZXQiToLT5JMCLiIk",
-            "L3YxYmV0YTEve3BhcmVudD1wcm9qZWN0cy8qfS9zZWNyZXRzOgZzZWNyZXTa",
-            "QRdwYXJlbnQsc2VjcmV0X2lkLHNlY3JldBLFAQoQQWRkU2VjcmV0VmVyc2lv",
-            "bhI1Lmdvb2dsZS5jbG91ZC5zZWNyZXRzLnYxYmV0YTEuQWRkU2VjcmV0VmVy",
-            "c2lvblJlcXVlc3QaKy5nb29nbGUuY2xvdWQuc2VjcmV0cy52MWJldGExLlNl",
-            "Y3JldFZlcnNpb24iTYLT5JMCNiIxL3YxYmV0YTEve3BhcmVudD1wcm9qZWN0",
-            "cy8qL3NlY3JldHMvKn06YWRkVmVyc2lvbjoBKtpBDnBhcmVudCxwYXlsb2Fk",
-            "EpYBCglHZXRTZWNyZXQSLi5nb29nbGUuY2xvdWQuc2VjcmV0cy52MWJldGEx",
-            "LkdldFNlY3JldFJlcXVlc3QaJC5nb29nbGUuY2xvdWQuc2VjcmV0cy52MWJl",
-            "dGExLlNlY3JldCIzgtPkkwImEiQvdjFiZXRhMS97bmFtZT1wcm9qZWN0cy8q",
-            "L3NlY3JldHMvKn3aQQRuYW1lErkBCgxVcGRhdGVTZWNyZXQSMS5nb29nbGUu",
-            "Y2xvdWQuc2VjcmV0cy52MWJldGExLlVwZGF0ZVNlY3JldFJlcXVlc3QaJC5n",
-            "b29nbGUuY2xvdWQuc2VjcmV0cy52MWJldGExLlNlY3JldCJQgtPkkwI1Misv",
-            "djFiZXRhMS97c2VjcmV0Lm5hbWU9cHJvamVjdHMvKi9zZWNyZXRzLyp9OgZz",
-            "ZWNyZXTaQRJzZWNyZXQsdXBkYXRlX21hc2sSjgEKDERlbGV0ZVNlY3JldBIx",
-            "Lmdvb2dsZS5jbG91ZC5zZWNyZXRzLnYxYmV0YTEuRGVsZXRlU2VjcmV0UmVx",
-            "dWVzdBoWLmdvb2dsZS5wcm90b2J1Zi5FbXB0eSIzgtPkkwImKiQvdjFiZXRh",
-            "MS97bmFtZT1wcm9qZWN0cy8qL3NlY3JldHMvKn3aQQRuYW1lEskBChJMaXN0",
-            "U2VjcmV0VmVyc2lvbnMSNy5nb29nbGUuY2xvdWQuc2VjcmV0cy52MWJldGEx",
-            "Lkxpc3RTZWNyZXRWZXJzaW9uc1JlcXVlc3QaOC5nb29nbGUuY2xvdWQuc2Vj",
-            "cmV0cy52MWJldGExLkxpc3RTZWNyZXRWZXJzaW9uc1Jlc3BvbnNlIkCC0+ST",
-            "AjESLy92MWJldGExL3twYXJlbnQ9cHJvamVjdHMvKi9zZWNyZXRzLyp9L3Zl",
-            "cnNpb25z2kEGcGFyZW50ErYBChBHZXRTZWNyZXRWZXJzaW9uEjUuZ29vZ2xl",
-            "LmNsb3VkLnNlY3JldHMudjFiZXRhMS5HZXRTZWNyZXRWZXJzaW9uUmVxdWVz",
-            "dBorLmdvb2dsZS5jbG91ZC5zZWNyZXRzLnYxYmV0YTEuU2VjcmV0VmVyc2lv",
-            "biI+gtPkkwIxEi8vdjFiZXRhMS97bmFtZT1wcm9qZWN0cy8qL3NlY3JldHMv",
-            "Ki92ZXJzaW9ucy8qfdpBBG5hbWUS0QEKE0FjY2Vzc1NlY3JldFZlcnNpb24S",
-            "OC5nb29nbGUuY2xvdWQuc2VjcmV0cy52MWJldGExLkFjY2Vzc1NlY3JldFZl",
-            "cnNpb25SZXF1ZXN0GjkuZ29vZ2xlLmNsb3VkLnNlY3JldHMudjFiZXRhMS5B",
-            "Y2Nlc3NTZWNyZXRWZXJzaW9uUmVzcG9uc2UiRYLT5JMCOBI2L3YxYmV0YTEv",
-            "e25hbWU9cHJvamVjdHMvKi9zZWNyZXRzLyovdmVyc2lvbnMvKn06YWNjZXNz",
-            "2kEEbmFtZRLJAQoURGlzYWJsZVNlY3JldFZlcnNpb24SOS5nb29nbGUuY2xv",
-            "dWQuc2VjcmV0cy52MWJldGExLkRpc2FibGVTZWNyZXRWZXJzaW9uUmVxdWVz",
-            "dBorLmdvb2dsZS5jbG91ZC5zZWNyZXRzLnYxYmV0YTEuU2VjcmV0VmVyc2lv",
-            "biJJgtPkkwI8IjcvdjFiZXRhMS97bmFtZT1wcm9qZWN0cy8qL3NlY3JldHMv",
-            "Ki92ZXJzaW9ucy8qfTpkaXNhYmxlOgEq2kEEbmFtZRLGAQoTRW5hYmxlU2Vj",
-            "cmV0VmVyc2lvbhI4Lmdvb2dsZS5jbG91ZC5zZWNyZXRzLnYxYmV0YTEuRW5h",
-            "YmxlU2VjcmV0VmVyc2lvblJlcXVlc3QaKy5nb29nbGUuY2xvdWQuc2VjcmV0",
-            "cy52MWJldGExLlNlY3JldFZlcnNpb24iSILT5JMCOyI2L3YxYmV0YTEve25h",
-            "bWU9cHJvamVjdHMvKi9zZWNyZXRzLyovdmVyc2lvbnMvKn06ZW5hYmxlOgEq",
-            "2kEEbmFtZRLJAQoURGVzdHJveVNlY3JldFZlcnNpb24SOS5nb29nbGUuY2xv",
-            "dWQuc2VjcmV0cy52MWJldGExLkRlc3Ryb3lTZWNyZXRWZXJzaW9uUmVxdWVz",
-            "dBorLmdvb2dsZS5jbG91ZC5zZWNyZXRzLnYxYmV0YTEuU2VjcmV0VmVyc2lv",
-            "biJJgtPkkwI8IjcvdjFiZXRhMS97bmFtZT1wcm9qZWN0cy8qL3NlY3JldHMv",
-            "Ki92ZXJzaW9ucy8qfTpkZXN0cm95OgEq2kEEbmFtZRKLAQoMU2V0SWFtUG9s",
-            "aWN5EiIuZ29vZ2xlLmlhbS52MS5TZXRJYW1Qb2xpY3lSZXF1ZXN0GhUuZ29v",
-            "Z2xlLmlhbS52MS5Qb2xpY3kiQILT5JMCOiI1L3YxYmV0YTEve3Jlc291cmNl",
-            "PXByb2plY3RzLyovc2VjcmV0cy8qfTpzZXRJYW1Qb2xpY3k6ASoSiAEKDEdl",
-            "dElhbVBvbGljeRIiLmdvb2dsZS5pYW0udjEuR2V0SWFtUG9saWN5UmVxdWVz",
-            "dBoVLmdvb2dsZS5pYW0udjEuUG9saWN5Ij2C0+STAjcSNS92MWJldGExL3ty",
-            "ZXNvdXJjZT1wcm9qZWN0cy8qL3NlY3JldHMvKn06Z2V0SWFtUG9saWN5ErEB",
-            "ChJUZXN0SWFtUGVybWlzc2lvbnMSKC5nb29nbGUuaWFtLnYxLlRlc3RJYW1Q",
-            "ZXJtaXNzaW9uc1JlcXVlc3QaKS5nb29nbGUuaWFtLnYxLlRlc3RJYW1QZXJt",
-            "aXNzaW9uc1Jlc3BvbnNlIkaC0+STAkAiOy92MWJldGExL3tyZXNvdXJjZT1w",
-            "cm9qZWN0cy8qL3NlY3JldHMvKn06dGVzdElhbVBlcm1pc3Npb25zOgEqGlDK",
-            "QRxzZWNyZXRtYW5hZ2VyLmdvb2dsZWFwaXMuY29t0kEuaHR0cHM6Ly93d3cu",
-            "Z29vZ2xlYXBpcy5jb20vYXV0aC9jbG91ZC1wbGF0Zm9ybUKEAgomY29tLmdv",
-            "b2dsZS5jbG91ZC5zZWNyZXRtYW5hZ2VyLnYxYmV0YTFCDFNlcnZpY2VQcm90",
-            "b1ABWk9nb29nbGUuZ29sYW5nLm9yZy9nZW5wcm90by9nb29nbGVhcGlzL2Ns",
-            "b3VkL3NlY3JldG1hbmFnZXIvdjFiZXRhMTtzZWNyZXRtYW5hZ2Vy+AEBogID",
-            "R1NNqgIiR29vZ2xlLkNsb3VkLlNlY3JldE1hbmFnZXIuVjFCZXRhMcoCIkdv",
-            "b2dsZVxDbG91ZFxTZWNyZXRNYW5hZ2VyXFYxYmV0YTHqAiVHb29nbGU6OkNs",
-            "b3VkOjpTZWNyZXRNYW5hZ2VyOjpWMWJldGExYgZwcm90bzM="));
+            "ZWNyZXRfaWQYAiABKAlCA+BBAhI5CgZzZWNyZXQYAyABKAsyJC5nb29nbGUu",
+            "Y2xvdWQuc2VjcmV0cy52MWJldGExLlNlY3JldEID4EECIpkBChdBZGRTZWNy",
+            "ZXRWZXJzaW9uUmVxdWVzdBI7CgZwYXJlbnQYASABKAlCK+BBAvpBJQojc2Vj",
+            "cmV0bWFuYWdlci5nb29nbGVhcGlzLmNvbS9TZWNyZXQSQQoHcGF5bG9hZBgC",
+            "IAEoCzIrLmdvb2dsZS5jbG91ZC5zZWNyZXRzLnYxYmV0YTEuU2VjcmV0UGF5",
+            "bG9hZEID4EECIk0KEEdldFNlY3JldFJlcXVlc3QSOQoEbmFtZRgBIAEoCUIr",
+            "4EEC+kElCiNzZWNyZXRtYW5hZ2VyLmdvb2dsZWFwaXMuY29tL1NlY3JldCKJ",
+            "AQoZTGlzdFNlY3JldFZlcnNpb25zUmVxdWVzdBI7CgZwYXJlbnQYASABKAlC",
+            "K+BBAvpBJQojc2VjcmV0bWFuYWdlci5nb29nbGVhcGlzLmNvbS9TZWNyZXQS",
+            "FgoJcGFnZV9zaXplGAIgASgFQgPgQQESFwoKcGFnZV90b2tlbhgDIAEoCUID",
+            "4EEBIogBChpMaXN0U2VjcmV0VmVyc2lvbnNSZXNwb25zZRI9Cgh2ZXJzaW9u",
+            "cxgBIAMoCzIrLmdvb2dsZS5jbG91ZC5zZWNyZXRzLnYxYmV0YTEuU2VjcmV0",
+            "VmVyc2lvbhIXCg9uZXh0X3BhZ2VfdG9rZW4YAiABKAkSEgoKdG90YWxfc2l6",
+            "ZRgDIAEoBSJbChdHZXRTZWNyZXRWZXJzaW9uUmVxdWVzdBJACgRuYW1lGAEg",
+            "ASgJQjLgQQL6QSwKKnNlY3JldG1hbmFnZXIuZ29vZ2xlYXBpcy5jb20vU2Vj",
+            "cmV0VmVyc2lvbiKGAQoTVXBkYXRlU2VjcmV0UmVxdWVzdBI5CgZzZWNyZXQY",
+            "ASABKAsyJC5nb29nbGUuY2xvdWQuc2VjcmV0cy52MWJldGExLlNlY3JldEID",
+            "4EECEjQKC3VwZGF0ZV9tYXNrGAIgASgLMhouZ29vZ2xlLnByb3RvYnVmLkZp",
+            "ZWxkTWFza0ID4EECIl4KGkFjY2Vzc1NlY3JldFZlcnNpb25SZXF1ZXN0EkAK",
+            "BG5hbWUYASABKAlCMuBBAvpBLAoqc2VjcmV0bWFuYWdlci5nb29nbGVhcGlz",
+            "LmNvbS9TZWNyZXRWZXJzaW9uIpoBChtBY2Nlc3NTZWNyZXRWZXJzaW9uUmVz",
+            "cG9uc2USPQoEbmFtZRgBIAEoCUIv+kEsCipzZWNyZXRtYW5hZ2VyLmdvb2ds",
+            "ZWFwaXMuY29tL1NlY3JldFZlcnNpb24SPAoHcGF5bG9hZBgCIAEoCzIrLmdv",
+            "b2dsZS5jbG91ZC5zZWNyZXRzLnYxYmV0YTEuU2VjcmV0UGF5bG9hZCJQChNE",
+            "ZWxldGVTZWNyZXRSZXF1ZXN0EjkKBG5hbWUYASABKAlCK+BBAvpBJQojc2Vj",
+            "cmV0bWFuYWdlci5nb29nbGVhcGlzLmNvbS9TZWNyZXQiXwobRGlzYWJsZVNl",
+            "Y3JldFZlcnNpb25SZXF1ZXN0EkAKBG5hbWUYASABKAlCMuBBAvpBLAoqc2Vj",
+            "cmV0bWFuYWdlci5nb29nbGVhcGlzLmNvbS9TZWNyZXRWZXJzaW9uIl4KGkVu",
+            "YWJsZVNlY3JldFZlcnNpb25SZXF1ZXN0EkAKBG5hbWUYASABKAlCMuBBAvpB",
+            "LAoqc2VjcmV0bWFuYWdlci5nb29nbGVhcGlzLmNvbS9TZWNyZXRWZXJzaW9u",
+            "Il8KG0Rlc3Ryb3lTZWNyZXRWZXJzaW9uUmVxdWVzdBJACgRuYW1lGAEgASgJ",
+            "QjLgQQL6QSwKKnNlY3JldG1hbmFnZXIuZ29vZ2xlYXBpcy5jb20vU2VjcmV0",
+            "VmVyc2lvbjKDFgoUU2VjcmV0TWFuYWdlclNlcnZpY2USqQEKC0xpc3RTZWNy",
+            "ZXRzEjAuZ29vZ2xlLmNsb3VkLnNlY3JldHMudjFiZXRhMS5MaXN0U2VjcmV0",
+            "c1JlcXVlc3QaMS5nb29nbGUuY2xvdWQuc2VjcmV0cy52MWJldGExLkxpc3RT",
+            "ZWNyZXRzUmVzcG9uc2UiNYLT5JMCJhIkL3YxYmV0YTEve3BhcmVudD1wcm9q",
+            "ZWN0cy8qfS9zZWNyZXRz2kEGcGFyZW50ErcBCgxDcmVhdGVTZWNyZXQSMS5n",
+            "b29nbGUuY2xvdWQuc2VjcmV0cy52MWJldGExLkNyZWF0ZVNlY3JldFJlcXVl",
+            "c3QaJC5nb29nbGUuY2xvdWQuc2VjcmV0cy52MWJldGExLlNlY3JldCJOgtPk",
+            "kwIuIiQvdjFiZXRhMS97cGFyZW50PXByb2plY3RzLyp9L3NlY3JldHM6BnNl",
+            "Y3JldNpBF3BhcmVudCxzZWNyZXRfaWQsc2VjcmV0EsUBChBBZGRTZWNyZXRW",
+            "ZXJzaW9uEjUuZ29vZ2xlLmNsb3VkLnNlY3JldHMudjFiZXRhMS5BZGRTZWNy",
+            "ZXRWZXJzaW9uUmVxdWVzdBorLmdvb2dsZS5jbG91ZC5zZWNyZXRzLnYxYmV0",
+            "YTEuU2VjcmV0VmVyc2lvbiJNgtPkkwI2IjEvdjFiZXRhMS97cGFyZW50PXBy",
+            "b2plY3RzLyovc2VjcmV0cy8qfTphZGRWZXJzaW9uOgEq2kEOcGFyZW50LHBh",
+            "eWxvYWQSlgEKCUdldFNlY3JldBIuLmdvb2dsZS5jbG91ZC5zZWNyZXRzLnYx",
+            "YmV0YTEuR2V0U2VjcmV0UmVxdWVzdBokLmdvb2dsZS5jbG91ZC5zZWNyZXRz",
+            "LnYxYmV0YTEuU2VjcmV0IjOC0+STAiYSJC92MWJldGExL3tuYW1lPXByb2pl",
+            "Y3RzLyovc2VjcmV0cy8qfdpBBG5hbWUSuQEKDFVwZGF0ZVNlY3JldBIxLmdv",
+            "b2dsZS5jbG91ZC5zZWNyZXRzLnYxYmV0YTEuVXBkYXRlU2VjcmV0UmVxdWVz",
+            "dBokLmdvb2dsZS5jbG91ZC5zZWNyZXRzLnYxYmV0YTEuU2VjcmV0IlCC0+ST",
+            "AjUyKy92MWJldGExL3tzZWNyZXQubmFtZT1wcm9qZWN0cy8qL3NlY3JldHMv",
+            "Kn06BnNlY3JldNpBEnNlY3JldCx1cGRhdGVfbWFzaxKOAQoMRGVsZXRlU2Vj",
+            "cmV0EjEuZ29vZ2xlLmNsb3VkLnNlY3JldHMudjFiZXRhMS5EZWxldGVTZWNy",
+            "ZXRSZXF1ZXN0GhYuZ29vZ2xlLnByb3RvYnVmLkVtcHR5IjOC0+STAiYqJC92",
+            "MWJldGExL3tuYW1lPXByb2plY3RzLyovc2VjcmV0cy8qfdpBBG5hbWUSyQEK",
+            "Ekxpc3RTZWNyZXRWZXJzaW9ucxI3Lmdvb2dsZS5jbG91ZC5zZWNyZXRzLnYx",
+            "YmV0YTEuTGlzdFNlY3JldFZlcnNpb25zUmVxdWVzdBo4Lmdvb2dsZS5jbG91",
+            "ZC5zZWNyZXRzLnYxYmV0YTEuTGlzdFNlY3JldFZlcnNpb25zUmVzcG9uc2Ui",
+            "QILT5JMCMRIvL3YxYmV0YTEve3BhcmVudD1wcm9qZWN0cy8qL3NlY3JldHMv",
+            "Kn0vdmVyc2lvbnPaQQZwYXJlbnQStgEKEEdldFNlY3JldFZlcnNpb24SNS5n",
+            "b29nbGUuY2xvdWQuc2VjcmV0cy52MWJldGExLkdldFNlY3JldFZlcnNpb25S",
+            "ZXF1ZXN0GisuZ29vZ2xlLmNsb3VkLnNlY3JldHMudjFiZXRhMS5TZWNyZXRW",
+            "ZXJzaW9uIj6C0+STAjESLy92MWJldGExL3tuYW1lPXByb2plY3RzLyovc2Vj",
+            "cmV0cy8qL3ZlcnNpb25zLyp92kEEbmFtZRLRAQoTQWNjZXNzU2VjcmV0VmVy",
+            "c2lvbhI4Lmdvb2dsZS5jbG91ZC5zZWNyZXRzLnYxYmV0YTEuQWNjZXNzU2Vj",
+            "cmV0VmVyc2lvblJlcXVlc3QaOS5nb29nbGUuY2xvdWQuc2VjcmV0cy52MWJl",
+            "dGExLkFjY2Vzc1NlY3JldFZlcnNpb25SZXNwb25zZSJFgtPkkwI4EjYvdjFi",
+            "ZXRhMS97bmFtZT1wcm9qZWN0cy8qL3NlY3JldHMvKi92ZXJzaW9ucy8qfTph",
+            "Y2Nlc3PaQQRuYW1lEskBChREaXNhYmxlU2VjcmV0VmVyc2lvbhI5Lmdvb2ds",
+            "ZS5jbG91ZC5zZWNyZXRzLnYxYmV0YTEuRGlzYWJsZVNlY3JldFZlcnNpb25S",
+            "ZXF1ZXN0GisuZ29vZ2xlLmNsb3VkLnNlY3JldHMudjFiZXRhMS5TZWNyZXRW",
+            "ZXJzaW9uIkmC0+STAjwiNy92MWJldGExL3tuYW1lPXByb2plY3RzLyovc2Vj",
+            "cmV0cy8qL3ZlcnNpb25zLyp9OmRpc2FibGU6ASraQQRuYW1lEsYBChNFbmFi",
+            "bGVTZWNyZXRWZXJzaW9uEjguZ29vZ2xlLmNsb3VkLnNlY3JldHMudjFiZXRh",
+            "MS5FbmFibGVTZWNyZXRWZXJzaW9uUmVxdWVzdBorLmdvb2dsZS5jbG91ZC5z",
+            "ZWNyZXRzLnYxYmV0YTEuU2VjcmV0VmVyc2lvbiJIgtPkkwI7IjYvdjFiZXRh",
+            "MS97bmFtZT1wcm9qZWN0cy8qL3NlY3JldHMvKi92ZXJzaW9ucy8qfTplbmFi",
+            "bGU6ASraQQRuYW1lEskBChREZXN0cm95U2VjcmV0VmVyc2lvbhI5Lmdvb2ds",
+            "ZS5jbG91ZC5zZWNyZXRzLnYxYmV0YTEuRGVzdHJveVNlY3JldFZlcnNpb25S",
+            "ZXF1ZXN0GisuZ29vZ2xlLmNsb3VkLnNlY3JldHMudjFiZXRhMS5TZWNyZXRW",
+            "ZXJzaW9uIkmC0+STAjwiNy92MWJldGExL3tuYW1lPXByb2plY3RzLyovc2Vj",
+            "cmV0cy8qL3ZlcnNpb25zLyp9OmRlc3Ryb3k6ASraQQRuYW1lEosBCgxTZXRJ",
+            "YW1Qb2xpY3kSIi5nb29nbGUuaWFtLnYxLlNldElhbVBvbGljeVJlcXVlc3Qa",
+            "FS5nb29nbGUuaWFtLnYxLlBvbGljeSJAgtPkkwI6IjUvdjFiZXRhMS97cmVz",
+            "b3VyY2U9cHJvamVjdHMvKi9zZWNyZXRzLyp9OnNldElhbVBvbGljeToBKhKI",
+            "AQoMR2V0SWFtUG9saWN5EiIuZ29vZ2xlLmlhbS52MS5HZXRJYW1Qb2xpY3lS",
+            "ZXF1ZXN0GhUuZ29vZ2xlLmlhbS52MS5Qb2xpY3kiPYLT5JMCNxI1L3YxYmV0",
+            "YTEve3Jlc291cmNlPXByb2plY3RzLyovc2VjcmV0cy8qfTpnZXRJYW1Qb2xp",
+            "Y3kSsQEKElRlc3RJYW1QZXJtaXNzaW9ucxIoLmdvb2dsZS5pYW0udjEuVGVz",
+            "dElhbVBlcm1pc3Npb25zUmVxdWVzdBopLmdvb2dsZS5pYW0udjEuVGVzdElh",
+            "bVBlcm1pc3Npb25zUmVzcG9uc2UiRoLT5JMCQCI7L3YxYmV0YTEve3Jlc291",
+            "cmNlPXByb2plY3RzLyovc2VjcmV0cy8qfTp0ZXN0SWFtUGVybWlzc2lvbnM6",
+            "ASoaUMpBHHNlY3JldG1hbmFnZXIuZ29vZ2xlYXBpcy5jb23SQS5odHRwczov",
+            "L3d3dy5nb29nbGVhcGlzLmNvbS9hdXRoL2Nsb3VkLXBsYXRmb3JtQoQCCiZj",
+            "b20uZ29vZ2xlLmNsb3VkLnNlY3JldG1hbmFnZXIudjFiZXRhMUIMU2Vydmlj",
+            "ZVByb3RvUAFaT2dvb2dsZS5nb2xhbmcub3JnL2dlbnByb3RvL2dvb2dsZWFw",
+            "aXMvY2xvdWQvc2VjcmV0bWFuYWdlci92MWJldGExO3NlY3JldG1hbmFnZXL4",
+            "AQGiAgNHU02qAiJHb29nbGUuQ2xvdWQuU2VjcmV0TWFuYWdlci5WMUJldGEx",
+            "ygIiR29vZ2xlXENsb3VkXFNlY3JldE1hbmFnZXJcVjFiZXRhMeoCJUdvb2ds",
+            "ZTo6Q2xvdWQ6OlNlY3JldE1hbmFnZXI6OlYxYmV0YTFiBnByb3RvMw=="));
       descriptor = pbr::FileDescriptor.FromGeneratedCode(descriptorData,
           new pbr::FileDescriptor[] { global::Google.Api.AnnotationsReflection.Descriptor, global::Google.Api.ClientReflection.Descriptor, global::Google.Api.FieldBehaviorReflection.Descriptor, global::Google.Api.ResourceReflection.Descriptor, global::Google.Cloud.SecretManager.V1Beta1.ResourcesReflection.Descriptor, global::Google.Cloud.Iam.V1.IamPolicyReflection.Descriptor, global::Google.Cloud.Iam.V1.PolicyReflection.Descriptor, global::Google.Protobuf.WellKnownTypes.EmptyReflection.Descriptor, global::Google.Protobuf.WellKnownTypes.FieldMaskReflection.Descriptor, },
-          new pbr::GeneratedClrTypeInfo(null, new pbr::GeneratedClrTypeInfo[] {
-            new pbr::GeneratedClrTypeInfo(typeof(global::Google.Cloud.SecretManager.V1Beta1.ListSecretsRequest), global::Google.Cloud.SecretManager.V1Beta1.ListSecretsRequest.Parser, new[]{ "Parent", "PageSize", "PageToken" }, null, null, null),
-            new pbr::GeneratedClrTypeInfo(typeof(global::Google.Cloud.SecretManager.V1Beta1.ListSecretsResponse), global::Google.Cloud.SecretManager.V1Beta1.ListSecretsResponse.Parser, new[]{ "Secrets", "NextPageToken", "TotalSize" }, null, null, null),
-            new pbr::GeneratedClrTypeInfo(typeof(global::Google.Cloud.SecretManager.V1Beta1.CreateSecretRequest), global::Google.Cloud.SecretManager.V1Beta1.CreateSecretRequest.Parser, new[]{ "Parent", "SecretId", "Secret" }, null, null, null),
-            new pbr::GeneratedClrTypeInfo(typeof(global::Google.Cloud.SecretManager.V1Beta1.AddSecretVersionRequest), global::Google.Cloud.SecretManager.V1Beta1.AddSecretVersionRequest.Parser, new[]{ "Parent", "Payload" }, null, null, null),
-            new pbr::GeneratedClrTypeInfo(typeof(global::Google.Cloud.SecretManager.V1Beta1.GetSecretRequest), global::Google.Cloud.SecretManager.V1Beta1.GetSecretRequest.Parser, new[]{ "Name" }, null, null, null),
-            new pbr::GeneratedClrTypeInfo(typeof(global::Google.Cloud.SecretManager.V1Beta1.ListSecretVersionsRequest), global::Google.Cloud.SecretManager.V1Beta1.ListSecretVersionsRequest.Parser, new[]{ "Parent", "PageSize", "PageToken" }, null, null, null),
-            new pbr::GeneratedClrTypeInfo(typeof(global::Google.Cloud.SecretManager.V1Beta1.ListSecretVersionsResponse), global::Google.Cloud.SecretManager.V1Beta1.ListSecretVersionsResponse.Parser, new[]{ "Versions", "NextPageToken", "TotalSize" }, null, null, null),
-            new pbr::GeneratedClrTypeInfo(typeof(global::Google.Cloud.SecretManager.V1Beta1.GetSecretVersionRequest), global::Google.Cloud.SecretManager.V1Beta1.GetSecretVersionRequest.Parser, new[]{ "Name" }, null, null, null),
-            new pbr::GeneratedClrTypeInfo(typeof(global::Google.Cloud.SecretManager.V1Beta1.UpdateSecretRequest), global::Google.Cloud.SecretManager.V1Beta1.UpdateSecretRequest.Parser, new[]{ "Secret", "UpdateMask" }, null, null, null),
-            new pbr::GeneratedClrTypeInfo(typeof(global::Google.Cloud.SecretManager.V1Beta1.AccessSecretVersionRequest), global::Google.Cloud.SecretManager.V1Beta1.AccessSecretVersionRequest.Parser, new[]{ "Name" }, null, null, null),
-            new pbr::GeneratedClrTypeInfo(typeof(global::Google.Cloud.SecretManager.V1Beta1.AccessSecretVersionResponse), global::Google.Cloud.SecretManager.V1Beta1.AccessSecretVersionResponse.Parser, new[]{ "Name", "Payload" }, null, null, null),
-            new pbr::GeneratedClrTypeInfo(typeof(global::Google.Cloud.SecretManager.V1Beta1.DeleteSecretRequest), global::Google.Cloud.SecretManager.V1Beta1.DeleteSecretRequest.Parser, new[]{ "Name" }, null, null, null),
-            new pbr::GeneratedClrTypeInfo(typeof(global::Google.Cloud.SecretManager.V1Beta1.DisableSecretVersionRequest), global::Google.Cloud.SecretManager.V1Beta1.DisableSecretVersionRequest.Parser, new[]{ "Name" }, null, null, null),
-            new pbr::GeneratedClrTypeInfo(typeof(global::Google.Cloud.SecretManager.V1Beta1.EnableSecretVersionRequest), global::Google.Cloud.SecretManager.V1Beta1.EnableSecretVersionRequest.Parser, new[]{ "Name" }, null, null, null),
-            new pbr::GeneratedClrTypeInfo(typeof(global::Google.Cloud.SecretManager.V1Beta1.DestroySecretVersionRequest), global::Google.Cloud.SecretManager.V1Beta1.DestroySecretVersionRequest.Parser, new[]{ "Name" }, null, null, null)
+          new pbr::GeneratedClrTypeInfo(null, null, new pbr::GeneratedClrTypeInfo[] {
+            new pbr::GeneratedClrTypeInfo(typeof(global::Google.Cloud.SecretManager.V1Beta1.ListSecretsRequest), global::Google.Cloud.SecretManager.V1Beta1.ListSecretsRequest.Parser, new[]{ "Parent", "PageSize", "PageToken" }, null, null, null, null),
+            new pbr::GeneratedClrTypeInfo(typeof(global::Google.Cloud.SecretManager.V1Beta1.ListSecretsResponse), global::Google.Cloud.SecretManager.V1Beta1.ListSecretsResponse.Parser, new[]{ "Secrets", "NextPageToken", "TotalSize" }, null, null, null, null),
+            new pbr::GeneratedClrTypeInfo(typeof(global::Google.Cloud.SecretManager.V1Beta1.CreateSecretRequest), global::Google.Cloud.SecretManager.V1Beta1.CreateSecretRequest.Parser, new[]{ "Parent", "SecretId", "Secret" }, null, null, null, null),
+            new pbr::GeneratedClrTypeInfo(typeof(global::Google.Cloud.SecretManager.V1Beta1.AddSecretVersionRequest), global::Google.Cloud.SecretManager.V1Beta1.AddSecretVersionRequest.Parser, new[]{ "Parent", "Payload" }, null, null, null, null),
+            new pbr::GeneratedClrTypeInfo(typeof(global::Google.Cloud.SecretManager.V1Beta1.GetSecretRequest), global::Google.Cloud.SecretManager.V1Beta1.GetSecretRequest.Parser, new[]{ "Name" }, null, null, null, null),
+            new pbr::GeneratedClrTypeInfo(typeof(global::Google.Cloud.SecretManager.V1Beta1.ListSecretVersionsRequest), global::Google.Cloud.SecretManager.V1Beta1.ListSecretVersionsRequest.Parser, new[]{ "Parent", "PageSize", "PageToken" }, null, null, null, null),
+            new pbr::GeneratedClrTypeInfo(typeof(global::Google.Cloud.SecretManager.V1Beta1.ListSecretVersionsResponse), global::Google.Cloud.SecretManager.V1Beta1.ListSecretVersionsResponse.Parser, new[]{ "Versions", "NextPageToken", "TotalSize" }, null, null, null, null),
+            new pbr::GeneratedClrTypeInfo(typeof(global::Google.Cloud.SecretManager.V1Beta1.GetSecretVersionRequest), global::Google.Cloud.SecretManager.V1Beta1.GetSecretVersionRequest.Parser, new[]{ "Name" }, null, null, null, null),
+            new pbr::GeneratedClrTypeInfo(typeof(global::Google.Cloud.SecretManager.V1Beta1.UpdateSecretRequest), global::Google.Cloud.SecretManager.V1Beta1.UpdateSecretRequest.Parser, new[]{ "Secret", "UpdateMask" }, null, null, null, null),
+            new pbr::GeneratedClrTypeInfo(typeof(global::Google.Cloud.SecretManager.V1Beta1.AccessSecretVersionRequest), global::Google.Cloud.SecretManager.V1Beta1.AccessSecretVersionRequest.Parser, new[]{ "Name" }, null, null, null, null),
+            new pbr::GeneratedClrTypeInfo(typeof(global::Google.Cloud.SecretManager.V1Beta1.AccessSecretVersionResponse), global::Google.Cloud.SecretManager.V1Beta1.AccessSecretVersionResponse.Parser, new[]{ "Name", "Payload" }, null, null, null, null),
+            new pbr::GeneratedClrTypeInfo(typeof(global::Google.Cloud.SecretManager.V1Beta1.DeleteSecretRequest), global::Google.Cloud.SecretManager.V1Beta1.DeleteSecretRequest.Parser, new[]{ "Name" }, null, null, null, null),
+            new pbr::GeneratedClrTypeInfo(typeof(global::Google.Cloud.SecretManager.V1Beta1.DisableSecretVersionRequest), global::Google.Cloud.SecretManager.V1Beta1.DisableSecretVersionRequest.Parser, new[]{ "Name" }, null, null, null, null),
+            new pbr::GeneratedClrTypeInfo(typeof(global::Google.Cloud.SecretManager.V1Beta1.EnableSecretVersionRequest), global::Google.Cloud.SecretManager.V1Beta1.EnableSecretVersionRequest.Parser, new[]{ "Name" }, null, null, null, null),
+            new pbr::GeneratedClrTypeInfo(typeof(global::Google.Cloud.SecretManager.V1Beta1.DestroySecretVersionRequest), global::Google.Cloud.SecretManager.V1Beta1.DestroySecretVersionRequest.Parser, new[]{ "Name" }, null, null, null, null)
           }));
     }
     #endregion
@@ -168,7 +168,11 @@ namespace Google.Cloud.SecretManager.V1Beta1 {
   /// <summary>
   /// Request message for [SecretManagerService.ListSecrets][google.cloud.secrets.v1beta1.SecretManagerService.ListSecrets].
   /// </summary>
-  public sealed partial class ListSecretsRequest : pb::IMessage<ListSecretsRequest> {
+  public sealed partial class ListSecretsRequest : pb::IMessage<ListSecretsRequest>
+  #if !GOOGLE_PROTOBUF_REFSTRUCT_COMPATIBILITY_MODE
+      , pb::IBufferMessage
+  #endif
+  {
     private static readonly pb::MessageParser<ListSecretsRequest> _parser = new pb::MessageParser<ListSecretsRequest>(() => new ListSecretsRequest());
     private pb::UnknownFieldSet _unknownFields;
     [global::System.Diagnostics.DebuggerNonUserCodeAttribute]
@@ -288,6 +292,9 @@ namespace Google.Cloud.SecretManager.V1Beta1 {
 
     [global::System.Diagnostics.DebuggerNonUserCodeAttribute]
     public void WriteTo(pb::CodedOutputStream output) {
+    #if !GOOGLE_PROTOBUF_REFSTRUCT_COMPATIBILITY_MODE
+      output.WriteRawMessage(this);
+    #else
       if (Parent.Length != 0) {
         output.WriteRawTag(10);
         output.WriteString(Parent);
@@ -303,7 +310,29 @@ namespace Google.Cloud.SecretManager.V1Beta1 {
       if (_unknownFields != null) {
         _unknownFields.WriteTo(output);
       }
+    #endif
     }
+
+    #if !GOOGLE_PROTOBUF_REFSTRUCT_COMPATIBILITY_MODE
+    [global::System.Diagnostics.DebuggerNonUserCodeAttribute]
+    void pb::IBufferMessage.InternalWriteTo(ref pb::WriteContext output) {
+      if (Parent.Length != 0) {
+        output.WriteRawTag(10);
+        output.WriteString(Parent);
+      }
+      if (PageSize != 0) {
+        output.WriteRawTag(16);
+        output.WriteInt32(PageSize);
+      }
+      if (PageToken.Length != 0) {
+        output.WriteRawTag(26);
+        output.WriteString(PageToken);
+      }
+      if (_unknownFields != null) {
+        _unknownFields.WriteTo(ref output);
+      }
+    }
+    #endif
 
     [global::System.Diagnostics.DebuggerNonUserCodeAttribute]
     public int CalculateSize() {
@@ -342,6 +371,9 @@ namespace Google.Cloud.SecretManager.V1Beta1 {
 
     [global::System.Diagnostics.DebuggerNonUserCodeAttribute]
     public void MergeFrom(pb::CodedInputStream input) {
+    #if !GOOGLE_PROTOBUF_REFSTRUCT_COMPATIBILITY_MODE
+      input.ReadRawMessage(this);
+    #else
       uint tag;
       while ((tag = input.ReadTag()) != 0) {
         switch(tag) {
@@ -362,14 +394,45 @@ namespace Google.Cloud.SecretManager.V1Beta1 {
           }
         }
       }
+    #endif
     }
+
+    #if !GOOGLE_PROTOBUF_REFSTRUCT_COMPATIBILITY_MODE
+    [global::System.Diagnostics.DebuggerNonUserCodeAttribute]
+    void pb::IBufferMessage.InternalMergeFrom(ref pb::ParseContext input) {
+      uint tag;
+      while ((tag = input.ReadTag()) != 0) {
+        switch(tag) {
+          default:
+            _unknownFields = pb::UnknownFieldSet.MergeFieldFrom(_unknownFields, ref input);
+            break;
+          case 10: {
+            Parent = input.ReadString();
+            break;
+          }
+          case 16: {
+            PageSize = input.ReadInt32();
+            break;
+          }
+          case 26: {
+            PageToken = input.ReadString();
+            break;
+          }
+        }
+      }
+    }
+    #endif
 
   }
 
   /// <summary>
   /// Response message for [SecretManagerService.ListSecrets][google.cloud.secrets.v1beta1.SecretManagerService.ListSecrets].
   /// </summary>
-  public sealed partial class ListSecretsResponse : pb::IMessage<ListSecretsResponse> {
+  public sealed partial class ListSecretsResponse : pb::IMessage<ListSecretsResponse>
+  #if !GOOGLE_PROTOBUF_REFSTRUCT_COMPATIBILITY_MODE
+      , pb::IBufferMessage
+  #endif
+  {
     private static readonly pb::MessageParser<ListSecretsResponse> _parser = new pb::MessageParser<ListSecretsResponse>(() => new ListSecretsResponse());
     private pb::UnknownFieldSet _unknownFields;
     [global::System.Diagnostics.DebuggerNonUserCodeAttribute]
@@ -486,6 +549,9 @@ namespace Google.Cloud.SecretManager.V1Beta1 {
 
     [global::System.Diagnostics.DebuggerNonUserCodeAttribute]
     public void WriteTo(pb::CodedOutputStream output) {
+    #if !GOOGLE_PROTOBUF_REFSTRUCT_COMPATIBILITY_MODE
+      output.WriteRawMessage(this);
+    #else
       secrets_.WriteTo(output, _repeated_secrets_codec);
       if (NextPageToken.Length != 0) {
         output.WriteRawTag(18);
@@ -498,7 +564,26 @@ namespace Google.Cloud.SecretManager.V1Beta1 {
       if (_unknownFields != null) {
         _unknownFields.WriteTo(output);
       }
+    #endif
     }
+
+    #if !GOOGLE_PROTOBUF_REFSTRUCT_COMPATIBILITY_MODE
+    [global::System.Diagnostics.DebuggerNonUserCodeAttribute]
+    void pb::IBufferMessage.InternalWriteTo(ref pb::WriteContext output) {
+      secrets_.WriteTo(ref output, _repeated_secrets_codec);
+      if (NextPageToken.Length != 0) {
+        output.WriteRawTag(18);
+        output.WriteString(NextPageToken);
+      }
+      if (TotalSize != 0) {
+        output.WriteRawTag(24);
+        output.WriteInt32(TotalSize);
+      }
+      if (_unknownFields != null) {
+        _unknownFields.WriteTo(ref output);
+      }
+    }
+    #endif
 
     [global::System.Diagnostics.DebuggerNonUserCodeAttribute]
     public int CalculateSize() {
@@ -533,6 +618,9 @@ namespace Google.Cloud.SecretManager.V1Beta1 {
 
     [global::System.Diagnostics.DebuggerNonUserCodeAttribute]
     public void MergeFrom(pb::CodedInputStream input) {
+    #if !GOOGLE_PROTOBUF_REFSTRUCT_COMPATIBILITY_MODE
+      input.ReadRawMessage(this);
+    #else
       uint tag;
       while ((tag = input.ReadTag()) != 0) {
         switch(tag) {
@@ -553,14 +641,45 @@ namespace Google.Cloud.SecretManager.V1Beta1 {
           }
         }
       }
+    #endif
     }
+
+    #if !GOOGLE_PROTOBUF_REFSTRUCT_COMPATIBILITY_MODE
+    [global::System.Diagnostics.DebuggerNonUserCodeAttribute]
+    void pb::IBufferMessage.InternalMergeFrom(ref pb::ParseContext input) {
+      uint tag;
+      while ((tag = input.ReadTag()) != 0) {
+        switch(tag) {
+          default:
+            _unknownFields = pb::UnknownFieldSet.MergeFieldFrom(_unknownFields, ref input);
+            break;
+          case 10: {
+            secrets_.AddEntriesFrom(ref input, _repeated_secrets_codec);
+            break;
+          }
+          case 18: {
+            NextPageToken = input.ReadString();
+            break;
+          }
+          case 24: {
+            TotalSize = input.ReadInt32();
+            break;
+          }
+        }
+      }
+    }
+    #endif
 
   }
 
   /// <summary>
   /// Request message for [SecretManagerService.CreateSecret][google.cloud.secrets.v1beta1.SecretManagerService.CreateSecret].
   /// </summary>
-  public sealed partial class CreateSecretRequest : pb::IMessage<CreateSecretRequest> {
+  public sealed partial class CreateSecretRequest : pb::IMessage<CreateSecretRequest>
+  #if !GOOGLE_PROTOBUF_REFSTRUCT_COMPATIBILITY_MODE
+      , pb::IBufferMessage
+  #endif
+  {
     private static readonly pb::MessageParser<CreateSecretRequest> _parser = new pb::MessageParser<CreateSecretRequest>(() => new CreateSecretRequest());
     private pb::UnknownFieldSet _unknownFields;
     [global::System.Diagnostics.DebuggerNonUserCodeAttribute]
@@ -616,6 +735,10 @@ namespace Google.Cloud.SecretManager.V1Beta1 {
     private string secretId_ = "";
     /// <summary>
     /// Required. This must be unique within the project.
+    ///
+    /// A secret ID is a string with a maximum length of 255 characters and can
+    /// contain uppercase and lowercase letters, numerals, and the hyphen (`-`) and
+    /// underscore (`_`) characters.
     /// </summary>
     [global::System.Diagnostics.DebuggerNonUserCodeAttribute]
     public string SecretId {
@@ -629,7 +752,7 @@ namespace Google.Cloud.SecretManager.V1Beta1 {
     public const int SecretFieldNumber = 3;
     private global::Google.Cloud.SecretManager.V1Beta1.Secret secret_;
     /// <summary>
-    /// A [Secret][google.cloud.secrets.v1beta1.Secret] with initial field values.
+    /// Required. A [Secret][google.cloud.secrets.v1beta1.Secret] with initial field values.
     /// </summary>
     [global::System.Diagnostics.DebuggerNonUserCodeAttribute]
     public global::Google.Cloud.SecretManager.V1Beta1.Secret Secret {
@@ -677,6 +800,9 @@ namespace Google.Cloud.SecretManager.V1Beta1 {
 
     [global::System.Diagnostics.DebuggerNonUserCodeAttribute]
     public void WriteTo(pb::CodedOutputStream output) {
+    #if !GOOGLE_PROTOBUF_REFSTRUCT_COMPATIBILITY_MODE
+      output.WriteRawMessage(this);
+    #else
       if (Parent.Length != 0) {
         output.WriteRawTag(10);
         output.WriteString(Parent);
@@ -692,7 +818,29 @@ namespace Google.Cloud.SecretManager.V1Beta1 {
       if (_unknownFields != null) {
         _unknownFields.WriteTo(output);
       }
+    #endif
     }
+
+    #if !GOOGLE_PROTOBUF_REFSTRUCT_COMPATIBILITY_MODE
+    [global::System.Diagnostics.DebuggerNonUserCodeAttribute]
+    void pb::IBufferMessage.InternalWriteTo(ref pb::WriteContext output) {
+      if (Parent.Length != 0) {
+        output.WriteRawTag(10);
+        output.WriteString(Parent);
+      }
+      if (SecretId.Length != 0) {
+        output.WriteRawTag(18);
+        output.WriteString(SecretId);
+      }
+      if (secret_ != null) {
+        output.WriteRawTag(26);
+        output.WriteMessage(Secret);
+      }
+      if (_unknownFields != null) {
+        _unknownFields.WriteTo(ref output);
+      }
+    }
+    #endif
 
     [global::System.Diagnostics.DebuggerNonUserCodeAttribute]
     public int CalculateSize() {
@@ -734,6 +882,9 @@ namespace Google.Cloud.SecretManager.V1Beta1 {
 
     [global::System.Diagnostics.DebuggerNonUserCodeAttribute]
     public void MergeFrom(pb::CodedInputStream input) {
+    #if !GOOGLE_PROTOBUF_REFSTRUCT_COMPATIBILITY_MODE
+      input.ReadRawMessage(this);
+    #else
       uint tag;
       while ((tag = input.ReadTag()) != 0) {
         switch(tag) {
@@ -757,14 +908,48 @@ namespace Google.Cloud.SecretManager.V1Beta1 {
           }
         }
       }
+    #endif
     }
+
+    #if !GOOGLE_PROTOBUF_REFSTRUCT_COMPATIBILITY_MODE
+    [global::System.Diagnostics.DebuggerNonUserCodeAttribute]
+    void pb::IBufferMessage.InternalMergeFrom(ref pb::ParseContext input) {
+      uint tag;
+      while ((tag = input.ReadTag()) != 0) {
+        switch(tag) {
+          default:
+            _unknownFields = pb::UnknownFieldSet.MergeFieldFrom(_unknownFields, ref input);
+            break;
+          case 10: {
+            Parent = input.ReadString();
+            break;
+          }
+          case 18: {
+            SecretId = input.ReadString();
+            break;
+          }
+          case 26: {
+            if (secret_ == null) {
+              Secret = new global::Google.Cloud.SecretManager.V1Beta1.Secret();
+            }
+            input.ReadMessage(Secret);
+            break;
+          }
+        }
+      }
+    }
+    #endif
 
   }
 
   /// <summary>
   /// Request message for [SecretManagerService.AddSecretVersion][google.cloud.secrets.v1beta1.SecretManagerService.AddSecretVersion].
   /// </summary>
-  public sealed partial class AddSecretVersionRequest : pb::IMessage<AddSecretVersionRequest> {
+  public sealed partial class AddSecretVersionRequest : pb::IMessage<AddSecretVersionRequest>
+  #if !GOOGLE_PROTOBUF_REFSTRUCT_COMPATIBILITY_MODE
+      , pb::IBufferMessage
+  #endif
+  {
     private static readonly pb::MessageParser<AddSecretVersionRequest> _parser = new pb::MessageParser<AddSecretVersionRequest>(() => new AddSecretVersionRequest());
     private pb::UnknownFieldSet _unknownFields;
     [global::System.Diagnostics.DebuggerNonUserCodeAttribute]
@@ -864,6 +1049,9 @@ namespace Google.Cloud.SecretManager.V1Beta1 {
 
     [global::System.Diagnostics.DebuggerNonUserCodeAttribute]
     public void WriteTo(pb::CodedOutputStream output) {
+    #if !GOOGLE_PROTOBUF_REFSTRUCT_COMPATIBILITY_MODE
+      output.WriteRawMessage(this);
+    #else
       if (Parent.Length != 0) {
         output.WriteRawTag(10);
         output.WriteString(Parent);
@@ -875,7 +1063,25 @@ namespace Google.Cloud.SecretManager.V1Beta1 {
       if (_unknownFields != null) {
         _unknownFields.WriteTo(output);
       }
+    #endif
     }
+
+    #if !GOOGLE_PROTOBUF_REFSTRUCT_COMPATIBILITY_MODE
+    [global::System.Diagnostics.DebuggerNonUserCodeAttribute]
+    void pb::IBufferMessage.InternalWriteTo(ref pb::WriteContext output) {
+      if (Parent.Length != 0) {
+        output.WriteRawTag(10);
+        output.WriteString(Parent);
+      }
+      if (payload_ != null) {
+        output.WriteRawTag(18);
+        output.WriteMessage(Payload);
+      }
+      if (_unknownFields != null) {
+        _unknownFields.WriteTo(ref output);
+      }
+    }
+    #endif
 
     [global::System.Diagnostics.DebuggerNonUserCodeAttribute]
     public int CalculateSize() {
@@ -911,6 +1117,9 @@ namespace Google.Cloud.SecretManager.V1Beta1 {
 
     [global::System.Diagnostics.DebuggerNonUserCodeAttribute]
     public void MergeFrom(pb::CodedInputStream input) {
+    #if !GOOGLE_PROTOBUF_REFSTRUCT_COMPATIBILITY_MODE
+      input.ReadRawMessage(this);
+    #else
       uint tag;
       while ((tag = input.ReadTag()) != 0) {
         switch(tag) {
@@ -930,14 +1139,44 @@ namespace Google.Cloud.SecretManager.V1Beta1 {
           }
         }
       }
+    #endif
     }
+
+    #if !GOOGLE_PROTOBUF_REFSTRUCT_COMPATIBILITY_MODE
+    [global::System.Diagnostics.DebuggerNonUserCodeAttribute]
+    void pb::IBufferMessage.InternalMergeFrom(ref pb::ParseContext input) {
+      uint tag;
+      while ((tag = input.ReadTag()) != 0) {
+        switch(tag) {
+          default:
+            _unknownFields = pb::UnknownFieldSet.MergeFieldFrom(_unknownFields, ref input);
+            break;
+          case 10: {
+            Parent = input.ReadString();
+            break;
+          }
+          case 18: {
+            if (payload_ == null) {
+              Payload = new global::Google.Cloud.SecretManager.V1Beta1.SecretPayload();
+            }
+            input.ReadMessage(Payload);
+            break;
+          }
+        }
+      }
+    }
+    #endif
 
   }
 
   /// <summary>
   /// Request message for [SecretManagerService.GetSecret][google.cloud.secrets.v1beta1.SecretManagerService.GetSecret].
   /// </summary>
-  public sealed partial class GetSecretRequest : pb::IMessage<GetSecretRequest> {
+  public sealed partial class GetSecretRequest : pb::IMessage<GetSecretRequest>
+  #if !GOOGLE_PROTOBUF_REFSTRUCT_COMPATIBILITY_MODE
+      , pb::IBufferMessage
+  #endif
+  {
     private static readonly pb::MessageParser<GetSecretRequest> _parser = new pb::MessageParser<GetSecretRequest>(() => new GetSecretRequest());
     private pb::UnknownFieldSet _unknownFields;
     [global::System.Diagnostics.DebuggerNonUserCodeAttribute]
@@ -1019,6 +1258,9 @@ namespace Google.Cloud.SecretManager.V1Beta1 {
 
     [global::System.Diagnostics.DebuggerNonUserCodeAttribute]
     public void WriteTo(pb::CodedOutputStream output) {
+    #if !GOOGLE_PROTOBUF_REFSTRUCT_COMPATIBILITY_MODE
+      output.WriteRawMessage(this);
+    #else
       if (Name.Length != 0) {
         output.WriteRawTag(10);
         output.WriteString(Name);
@@ -1026,7 +1268,21 @@ namespace Google.Cloud.SecretManager.V1Beta1 {
       if (_unknownFields != null) {
         _unknownFields.WriteTo(output);
       }
+    #endif
     }
+
+    #if !GOOGLE_PROTOBUF_REFSTRUCT_COMPATIBILITY_MODE
+    [global::System.Diagnostics.DebuggerNonUserCodeAttribute]
+    void pb::IBufferMessage.InternalWriteTo(ref pb::WriteContext output) {
+      if (Name.Length != 0) {
+        output.WriteRawTag(10);
+        output.WriteString(Name);
+      }
+      if (_unknownFields != null) {
+        _unknownFields.WriteTo(ref output);
+      }
+    }
+    #endif
 
     [global::System.Diagnostics.DebuggerNonUserCodeAttribute]
     public int CalculateSize() {
@@ -1053,6 +1309,9 @@ namespace Google.Cloud.SecretManager.V1Beta1 {
 
     [global::System.Diagnostics.DebuggerNonUserCodeAttribute]
     public void MergeFrom(pb::CodedInputStream input) {
+    #if !GOOGLE_PROTOBUF_REFSTRUCT_COMPATIBILITY_MODE
+      input.ReadRawMessage(this);
+    #else
       uint tag;
       while ((tag = input.ReadTag()) != 0) {
         switch(tag) {
@@ -1065,14 +1324,37 @@ namespace Google.Cloud.SecretManager.V1Beta1 {
           }
         }
       }
+    #endif
     }
+
+    #if !GOOGLE_PROTOBUF_REFSTRUCT_COMPATIBILITY_MODE
+    [global::System.Diagnostics.DebuggerNonUserCodeAttribute]
+    void pb::IBufferMessage.InternalMergeFrom(ref pb::ParseContext input) {
+      uint tag;
+      while ((tag = input.ReadTag()) != 0) {
+        switch(tag) {
+          default:
+            _unknownFields = pb::UnknownFieldSet.MergeFieldFrom(_unknownFields, ref input);
+            break;
+          case 10: {
+            Name = input.ReadString();
+            break;
+          }
+        }
+      }
+    }
+    #endif
 
   }
 
   /// <summary>
   /// Request message for [SecretManagerService.ListSecretVersions][google.cloud.secrets.v1beta1.SecretManagerService.ListSecretVersions].
   /// </summary>
-  public sealed partial class ListSecretVersionsRequest : pb::IMessage<ListSecretVersionsRequest> {
+  public sealed partial class ListSecretVersionsRequest : pb::IMessage<ListSecretVersionsRequest>
+  #if !GOOGLE_PROTOBUF_REFSTRUCT_COMPATIBILITY_MODE
+      , pb::IBufferMessage
+  #endif
+  {
     private static readonly pb::MessageParser<ListSecretVersionsRequest> _parser = new pb::MessageParser<ListSecretVersionsRequest>(() => new ListSecretVersionsRequest());
     private pb::UnknownFieldSet _unknownFields;
     [global::System.Diagnostics.DebuggerNonUserCodeAttribute]
@@ -1193,6 +1475,9 @@ namespace Google.Cloud.SecretManager.V1Beta1 {
 
     [global::System.Diagnostics.DebuggerNonUserCodeAttribute]
     public void WriteTo(pb::CodedOutputStream output) {
+    #if !GOOGLE_PROTOBUF_REFSTRUCT_COMPATIBILITY_MODE
+      output.WriteRawMessage(this);
+    #else
       if (Parent.Length != 0) {
         output.WriteRawTag(10);
         output.WriteString(Parent);
@@ -1208,7 +1493,29 @@ namespace Google.Cloud.SecretManager.V1Beta1 {
       if (_unknownFields != null) {
         _unknownFields.WriteTo(output);
       }
+    #endif
     }
+
+    #if !GOOGLE_PROTOBUF_REFSTRUCT_COMPATIBILITY_MODE
+    [global::System.Diagnostics.DebuggerNonUserCodeAttribute]
+    void pb::IBufferMessage.InternalWriteTo(ref pb::WriteContext output) {
+      if (Parent.Length != 0) {
+        output.WriteRawTag(10);
+        output.WriteString(Parent);
+      }
+      if (PageSize != 0) {
+        output.WriteRawTag(16);
+        output.WriteInt32(PageSize);
+      }
+      if (PageToken.Length != 0) {
+        output.WriteRawTag(26);
+        output.WriteString(PageToken);
+      }
+      if (_unknownFields != null) {
+        _unknownFields.WriteTo(ref output);
+      }
+    }
+    #endif
 
     [global::System.Diagnostics.DebuggerNonUserCodeAttribute]
     public int CalculateSize() {
@@ -1247,6 +1554,9 @@ namespace Google.Cloud.SecretManager.V1Beta1 {
 
     [global::System.Diagnostics.DebuggerNonUserCodeAttribute]
     public void MergeFrom(pb::CodedInputStream input) {
+    #if !GOOGLE_PROTOBUF_REFSTRUCT_COMPATIBILITY_MODE
+      input.ReadRawMessage(this);
+    #else
       uint tag;
       while ((tag = input.ReadTag()) != 0) {
         switch(tag) {
@@ -1267,14 +1577,45 @@ namespace Google.Cloud.SecretManager.V1Beta1 {
           }
         }
       }
+    #endif
     }
+
+    #if !GOOGLE_PROTOBUF_REFSTRUCT_COMPATIBILITY_MODE
+    [global::System.Diagnostics.DebuggerNonUserCodeAttribute]
+    void pb::IBufferMessage.InternalMergeFrom(ref pb::ParseContext input) {
+      uint tag;
+      while ((tag = input.ReadTag()) != 0) {
+        switch(tag) {
+          default:
+            _unknownFields = pb::UnknownFieldSet.MergeFieldFrom(_unknownFields, ref input);
+            break;
+          case 10: {
+            Parent = input.ReadString();
+            break;
+          }
+          case 16: {
+            PageSize = input.ReadInt32();
+            break;
+          }
+          case 26: {
+            PageToken = input.ReadString();
+            break;
+          }
+        }
+      }
+    }
+    #endif
 
   }
 
   /// <summary>
   /// Response message for [SecretManagerService.ListSecretVersions][google.cloud.secrets.v1beta1.SecretManagerService.ListSecretVersions].
   /// </summary>
-  public sealed partial class ListSecretVersionsResponse : pb::IMessage<ListSecretVersionsResponse> {
+  public sealed partial class ListSecretVersionsResponse : pb::IMessage<ListSecretVersionsResponse>
+  #if !GOOGLE_PROTOBUF_REFSTRUCT_COMPATIBILITY_MODE
+      , pb::IBufferMessage
+  #endif
+  {
     private static readonly pb::MessageParser<ListSecretVersionsResponse> _parser = new pb::MessageParser<ListSecretVersionsResponse>(() => new ListSecretVersionsResponse());
     private pb::UnknownFieldSet _unknownFields;
     [global::System.Diagnostics.DebuggerNonUserCodeAttribute]
@@ -1391,6 +1732,9 @@ namespace Google.Cloud.SecretManager.V1Beta1 {
 
     [global::System.Diagnostics.DebuggerNonUserCodeAttribute]
     public void WriteTo(pb::CodedOutputStream output) {
+    #if !GOOGLE_PROTOBUF_REFSTRUCT_COMPATIBILITY_MODE
+      output.WriteRawMessage(this);
+    #else
       versions_.WriteTo(output, _repeated_versions_codec);
       if (NextPageToken.Length != 0) {
         output.WriteRawTag(18);
@@ -1403,7 +1747,26 @@ namespace Google.Cloud.SecretManager.V1Beta1 {
       if (_unknownFields != null) {
         _unknownFields.WriteTo(output);
       }
+    #endif
     }
+
+    #if !GOOGLE_PROTOBUF_REFSTRUCT_COMPATIBILITY_MODE
+    [global::System.Diagnostics.DebuggerNonUserCodeAttribute]
+    void pb::IBufferMessage.InternalWriteTo(ref pb::WriteContext output) {
+      versions_.WriteTo(ref output, _repeated_versions_codec);
+      if (NextPageToken.Length != 0) {
+        output.WriteRawTag(18);
+        output.WriteString(NextPageToken);
+      }
+      if (TotalSize != 0) {
+        output.WriteRawTag(24);
+        output.WriteInt32(TotalSize);
+      }
+      if (_unknownFields != null) {
+        _unknownFields.WriteTo(ref output);
+      }
+    }
+    #endif
 
     [global::System.Diagnostics.DebuggerNonUserCodeAttribute]
     public int CalculateSize() {
@@ -1438,6 +1801,9 @@ namespace Google.Cloud.SecretManager.V1Beta1 {
 
     [global::System.Diagnostics.DebuggerNonUserCodeAttribute]
     public void MergeFrom(pb::CodedInputStream input) {
+    #if !GOOGLE_PROTOBUF_REFSTRUCT_COMPATIBILITY_MODE
+      input.ReadRawMessage(this);
+    #else
       uint tag;
       while ((tag = input.ReadTag()) != 0) {
         switch(tag) {
@@ -1458,14 +1824,45 @@ namespace Google.Cloud.SecretManager.V1Beta1 {
           }
         }
       }
+    #endif
     }
+
+    #if !GOOGLE_PROTOBUF_REFSTRUCT_COMPATIBILITY_MODE
+    [global::System.Diagnostics.DebuggerNonUserCodeAttribute]
+    void pb::IBufferMessage.InternalMergeFrom(ref pb::ParseContext input) {
+      uint tag;
+      while ((tag = input.ReadTag()) != 0) {
+        switch(tag) {
+          default:
+            _unknownFields = pb::UnknownFieldSet.MergeFieldFrom(_unknownFields, ref input);
+            break;
+          case 10: {
+            versions_.AddEntriesFrom(ref input, _repeated_versions_codec);
+            break;
+          }
+          case 18: {
+            NextPageToken = input.ReadString();
+            break;
+          }
+          case 24: {
+            TotalSize = input.ReadInt32();
+            break;
+          }
+        }
+      }
+    }
+    #endif
 
   }
 
   /// <summary>
   /// Request message for [SecretManagerService.GetSecretVersion][google.cloud.secrets.v1beta1.SecretManagerService.GetSecretVersion].
   /// </summary>
-  public sealed partial class GetSecretVersionRequest : pb::IMessage<GetSecretVersionRequest> {
+  public sealed partial class GetSecretVersionRequest : pb::IMessage<GetSecretVersionRequest>
+  #if !GOOGLE_PROTOBUF_REFSTRUCT_COMPATIBILITY_MODE
+      , pb::IBufferMessage
+  #endif
+  {
     private static readonly pb::MessageParser<GetSecretVersionRequest> _parser = new pb::MessageParser<GetSecretVersionRequest>(() => new GetSecretVersionRequest());
     private pb::UnknownFieldSet _unknownFields;
     [global::System.Diagnostics.DebuggerNonUserCodeAttribute]
@@ -1550,6 +1947,9 @@ namespace Google.Cloud.SecretManager.V1Beta1 {
 
     [global::System.Diagnostics.DebuggerNonUserCodeAttribute]
     public void WriteTo(pb::CodedOutputStream output) {
+    #if !GOOGLE_PROTOBUF_REFSTRUCT_COMPATIBILITY_MODE
+      output.WriteRawMessage(this);
+    #else
       if (Name.Length != 0) {
         output.WriteRawTag(10);
         output.WriteString(Name);
@@ -1557,7 +1957,21 @@ namespace Google.Cloud.SecretManager.V1Beta1 {
       if (_unknownFields != null) {
         _unknownFields.WriteTo(output);
       }
+    #endif
     }
+
+    #if !GOOGLE_PROTOBUF_REFSTRUCT_COMPATIBILITY_MODE
+    [global::System.Diagnostics.DebuggerNonUserCodeAttribute]
+    void pb::IBufferMessage.InternalWriteTo(ref pb::WriteContext output) {
+      if (Name.Length != 0) {
+        output.WriteRawTag(10);
+        output.WriteString(Name);
+      }
+      if (_unknownFields != null) {
+        _unknownFields.WriteTo(ref output);
+      }
+    }
+    #endif
 
     [global::System.Diagnostics.DebuggerNonUserCodeAttribute]
     public int CalculateSize() {
@@ -1584,6 +1998,9 @@ namespace Google.Cloud.SecretManager.V1Beta1 {
 
     [global::System.Diagnostics.DebuggerNonUserCodeAttribute]
     public void MergeFrom(pb::CodedInputStream input) {
+    #if !GOOGLE_PROTOBUF_REFSTRUCT_COMPATIBILITY_MODE
+      input.ReadRawMessage(this);
+    #else
       uint tag;
       while ((tag = input.ReadTag()) != 0) {
         switch(tag) {
@@ -1596,14 +2013,37 @@ namespace Google.Cloud.SecretManager.V1Beta1 {
           }
         }
       }
+    #endif
     }
+
+    #if !GOOGLE_PROTOBUF_REFSTRUCT_COMPATIBILITY_MODE
+    [global::System.Diagnostics.DebuggerNonUserCodeAttribute]
+    void pb::IBufferMessage.InternalMergeFrom(ref pb::ParseContext input) {
+      uint tag;
+      while ((tag = input.ReadTag()) != 0) {
+        switch(tag) {
+          default:
+            _unknownFields = pb::UnknownFieldSet.MergeFieldFrom(_unknownFields, ref input);
+            break;
+          case 10: {
+            Name = input.ReadString();
+            break;
+          }
+        }
+      }
+    }
+    #endif
 
   }
 
   /// <summary>
   /// Request message for [SecretManagerService.UpdateSecret][google.cloud.secrets.v1beta1.SecretManagerService.UpdateSecret].
   /// </summary>
-  public sealed partial class UpdateSecretRequest : pb::IMessage<UpdateSecretRequest> {
+  public sealed partial class UpdateSecretRequest : pb::IMessage<UpdateSecretRequest>
+  #if !GOOGLE_PROTOBUF_REFSTRUCT_COMPATIBILITY_MODE
+      , pb::IBufferMessage
+  #endif
+  {
     private static readonly pb::MessageParser<UpdateSecretRequest> _parser = new pb::MessageParser<UpdateSecretRequest>(() => new UpdateSecretRequest());
     private pb::UnknownFieldSet _unknownFields;
     [global::System.Diagnostics.DebuggerNonUserCodeAttribute]
@@ -1702,6 +2142,9 @@ namespace Google.Cloud.SecretManager.V1Beta1 {
 
     [global::System.Diagnostics.DebuggerNonUserCodeAttribute]
     public void WriteTo(pb::CodedOutputStream output) {
+    #if !GOOGLE_PROTOBUF_REFSTRUCT_COMPATIBILITY_MODE
+      output.WriteRawMessage(this);
+    #else
       if (secret_ != null) {
         output.WriteRawTag(10);
         output.WriteMessage(Secret);
@@ -1713,7 +2156,25 @@ namespace Google.Cloud.SecretManager.V1Beta1 {
       if (_unknownFields != null) {
         _unknownFields.WriteTo(output);
       }
+    #endif
     }
+
+    #if !GOOGLE_PROTOBUF_REFSTRUCT_COMPATIBILITY_MODE
+    [global::System.Diagnostics.DebuggerNonUserCodeAttribute]
+    void pb::IBufferMessage.InternalWriteTo(ref pb::WriteContext output) {
+      if (secret_ != null) {
+        output.WriteRawTag(10);
+        output.WriteMessage(Secret);
+      }
+      if (updateMask_ != null) {
+        output.WriteRawTag(18);
+        output.WriteMessage(UpdateMask);
+      }
+      if (_unknownFields != null) {
+        _unknownFields.WriteTo(ref output);
+      }
+    }
+    #endif
 
     [global::System.Diagnostics.DebuggerNonUserCodeAttribute]
     public int CalculateSize() {
@@ -1752,6 +2213,9 @@ namespace Google.Cloud.SecretManager.V1Beta1 {
 
     [global::System.Diagnostics.DebuggerNonUserCodeAttribute]
     public void MergeFrom(pb::CodedInputStream input) {
+    #if !GOOGLE_PROTOBUF_REFSTRUCT_COMPATIBILITY_MODE
+      input.ReadRawMessage(this);
+    #else
       uint tag;
       while ((tag = input.ReadTag()) != 0) {
         switch(tag) {
@@ -1774,14 +2238,47 @@ namespace Google.Cloud.SecretManager.V1Beta1 {
           }
         }
       }
+    #endif
     }
+
+    #if !GOOGLE_PROTOBUF_REFSTRUCT_COMPATIBILITY_MODE
+    [global::System.Diagnostics.DebuggerNonUserCodeAttribute]
+    void pb::IBufferMessage.InternalMergeFrom(ref pb::ParseContext input) {
+      uint tag;
+      while ((tag = input.ReadTag()) != 0) {
+        switch(tag) {
+          default:
+            _unknownFields = pb::UnknownFieldSet.MergeFieldFrom(_unknownFields, ref input);
+            break;
+          case 10: {
+            if (secret_ == null) {
+              Secret = new global::Google.Cloud.SecretManager.V1Beta1.Secret();
+            }
+            input.ReadMessage(Secret);
+            break;
+          }
+          case 18: {
+            if (updateMask_ == null) {
+              UpdateMask = new global::Google.Protobuf.WellKnownTypes.FieldMask();
+            }
+            input.ReadMessage(UpdateMask);
+            break;
+          }
+        }
+      }
+    }
+    #endif
 
   }
 
   /// <summary>
   /// Request message for [SecretManagerService.AccessSecretVersion][google.cloud.secrets.v1beta1.SecretManagerService.AccessSecretVersion].
   /// </summary>
-  public sealed partial class AccessSecretVersionRequest : pb::IMessage<AccessSecretVersionRequest> {
+  public sealed partial class AccessSecretVersionRequest : pb::IMessage<AccessSecretVersionRequest>
+  #if !GOOGLE_PROTOBUF_REFSTRUCT_COMPATIBILITY_MODE
+      , pb::IBufferMessage
+  #endif
+  {
     private static readonly pb::MessageParser<AccessSecretVersionRequest> _parser = new pb::MessageParser<AccessSecretVersionRequest>(() => new AccessSecretVersionRequest());
     private pb::UnknownFieldSet _unknownFields;
     [global::System.Diagnostics.DebuggerNonUserCodeAttribute]
@@ -1864,6 +2361,9 @@ namespace Google.Cloud.SecretManager.V1Beta1 {
 
     [global::System.Diagnostics.DebuggerNonUserCodeAttribute]
     public void WriteTo(pb::CodedOutputStream output) {
+    #if !GOOGLE_PROTOBUF_REFSTRUCT_COMPATIBILITY_MODE
+      output.WriteRawMessage(this);
+    #else
       if (Name.Length != 0) {
         output.WriteRawTag(10);
         output.WriteString(Name);
@@ -1871,7 +2371,21 @@ namespace Google.Cloud.SecretManager.V1Beta1 {
       if (_unknownFields != null) {
         _unknownFields.WriteTo(output);
       }
+    #endif
     }
+
+    #if !GOOGLE_PROTOBUF_REFSTRUCT_COMPATIBILITY_MODE
+    [global::System.Diagnostics.DebuggerNonUserCodeAttribute]
+    void pb::IBufferMessage.InternalWriteTo(ref pb::WriteContext output) {
+      if (Name.Length != 0) {
+        output.WriteRawTag(10);
+        output.WriteString(Name);
+      }
+      if (_unknownFields != null) {
+        _unknownFields.WriteTo(ref output);
+      }
+    }
+    #endif
 
     [global::System.Diagnostics.DebuggerNonUserCodeAttribute]
     public int CalculateSize() {
@@ -1898,6 +2412,9 @@ namespace Google.Cloud.SecretManager.V1Beta1 {
 
     [global::System.Diagnostics.DebuggerNonUserCodeAttribute]
     public void MergeFrom(pb::CodedInputStream input) {
+    #if !GOOGLE_PROTOBUF_REFSTRUCT_COMPATIBILITY_MODE
+      input.ReadRawMessage(this);
+    #else
       uint tag;
       while ((tag = input.ReadTag()) != 0) {
         switch(tag) {
@@ -1910,14 +2427,37 @@ namespace Google.Cloud.SecretManager.V1Beta1 {
           }
         }
       }
+    #endif
     }
+
+    #if !GOOGLE_PROTOBUF_REFSTRUCT_COMPATIBILITY_MODE
+    [global::System.Diagnostics.DebuggerNonUserCodeAttribute]
+    void pb::IBufferMessage.InternalMergeFrom(ref pb::ParseContext input) {
+      uint tag;
+      while ((tag = input.ReadTag()) != 0) {
+        switch(tag) {
+          default:
+            _unknownFields = pb::UnknownFieldSet.MergeFieldFrom(_unknownFields, ref input);
+            break;
+          case 10: {
+            Name = input.ReadString();
+            break;
+          }
+        }
+      }
+    }
+    #endif
 
   }
 
   /// <summary>
   /// Response message for [SecretManagerService.AccessSecretVersion][google.cloud.secrets.v1beta1.SecretManagerService.AccessSecretVersion].
   /// </summary>
-  public sealed partial class AccessSecretVersionResponse : pb::IMessage<AccessSecretVersionResponse> {
+  public sealed partial class AccessSecretVersionResponse : pb::IMessage<AccessSecretVersionResponse>
+  #if !GOOGLE_PROTOBUF_REFSTRUCT_COMPATIBILITY_MODE
+      , pb::IBufferMessage
+  #endif
+  {
     private static readonly pb::MessageParser<AccessSecretVersionResponse> _parser = new pb::MessageParser<AccessSecretVersionResponse>(() => new AccessSecretVersionResponse());
     private pb::UnknownFieldSet _unknownFields;
     [global::System.Diagnostics.DebuggerNonUserCodeAttribute]
@@ -2017,6 +2557,9 @@ namespace Google.Cloud.SecretManager.V1Beta1 {
 
     [global::System.Diagnostics.DebuggerNonUserCodeAttribute]
     public void WriteTo(pb::CodedOutputStream output) {
+    #if !GOOGLE_PROTOBUF_REFSTRUCT_COMPATIBILITY_MODE
+      output.WriteRawMessage(this);
+    #else
       if (Name.Length != 0) {
         output.WriteRawTag(10);
         output.WriteString(Name);
@@ -2028,7 +2571,25 @@ namespace Google.Cloud.SecretManager.V1Beta1 {
       if (_unknownFields != null) {
         _unknownFields.WriteTo(output);
       }
+    #endif
     }
+
+    #if !GOOGLE_PROTOBUF_REFSTRUCT_COMPATIBILITY_MODE
+    [global::System.Diagnostics.DebuggerNonUserCodeAttribute]
+    void pb::IBufferMessage.InternalWriteTo(ref pb::WriteContext output) {
+      if (Name.Length != 0) {
+        output.WriteRawTag(10);
+        output.WriteString(Name);
+      }
+      if (payload_ != null) {
+        output.WriteRawTag(18);
+        output.WriteMessage(Payload);
+      }
+      if (_unknownFields != null) {
+        _unknownFields.WriteTo(ref output);
+      }
+    }
+    #endif
 
     [global::System.Diagnostics.DebuggerNonUserCodeAttribute]
     public int CalculateSize() {
@@ -2064,6 +2625,9 @@ namespace Google.Cloud.SecretManager.V1Beta1 {
 
     [global::System.Diagnostics.DebuggerNonUserCodeAttribute]
     public void MergeFrom(pb::CodedInputStream input) {
+    #if !GOOGLE_PROTOBUF_REFSTRUCT_COMPATIBILITY_MODE
+      input.ReadRawMessage(this);
+    #else
       uint tag;
       while ((tag = input.ReadTag()) != 0) {
         switch(tag) {
@@ -2083,14 +2647,44 @@ namespace Google.Cloud.SecretManager.V1Beta1 {
           }
         }
       }
+    #endif
     }
+
+    #if !GOOGLE_PROTOBUF_REFSTRUCT_COMPATIBILITY_MODE
+    [global::System.Diagnostics.DebuggerNonUserCodeAttribute]
+    void pb::IBufferMessage.InternalMergeFrom(ref pb::ParseContext input) {
+      uint tag;
+      while ((tag = input.ReadTag()) != 0) {
+        switch(tag) {
+          default:
+            _unknownFields = pb::UnknownFieldSet.MergeFieldFrom(_unknownFields, ref input);
+            break;
+          case 10: {
+            Name = input.ReadString();
+            break;
+          }
+          case 18: {
+            if (payload_ == null) {
+              Payload = new global::Google.Cloud.SecretManager.V1Beta1.SecretPayload();
+            }
+            input.ReadMessage(Payload);
+            break;
+          }
+        }
+      }
+    }
+    #endif
 
   }
 
   /// <summary>
   /// Request message for [SecretManagerService.DeleteSecret][google.cloud.secrets.v1beta1.SecretManagerService.DeleteSecret].
   /// </summary>
-  public sealed partial class DeleteSecretRequest : pb::IMessage<DeleteSecretRequest> {
+  public sealed partial class DeleteSecretRequest : pb::IMessage<DeleteSecretRequest>
+  #if !GOOGLE_PROTOBUF_REFSTRUCT_COMPATIBILITY_MODE
+      , pb::IBufferMessage
+  #endif
+  {
     private static readonly pb::MessageParser<DeleteSecretRequest> _parser = new pb::MessageParser<DeleteSecretRequest>(() => new DeleteSecretRequest());
     private pb::UnknownFieldSet _unknownFields;
     [global::System.Diagnostics.DebuggerNonUserCodeAttribute]
@@ -2173,6 +2767,9 @@ namespace Google.Cloud.SecretManager.V1Beta1 {
 
     [global::System.Diagnostics.DebuggerNonUserCodeAttribute]
     public void WriteTo(pb::CodedOutputStream output) {
+    #if !GOOGLE_PROTOBUF_REFSTRUCT_COMPATIBILITY_MODE
+      output.WriteRawMessage(this);
+    #else
       if (Name.Length != 0) {
         output.WriteRawTag(10);
         output.WriteString(Name);
@@ -2180,7 +2777,21 @@ namespace Google.Cloud.SecretManager.V1Beta1 {
       if (_unknownFields != null) {
         _unknownFields.WriteTo(output);
       }
+    #endif
     }
+
+    #if !GOOGLE_PROTOBUF_REFSTRUCT_COMPATIBILITY_MODE
+    [global::System.Diagnostics.DebuggerNonUserCodeAttribute]
+    void pb::IBufferMessage.InternalWriteTo(ref pb::WriteContext output) {
+      if (Name.Length != 0) {
+        output.WriteRawTag(10);
+        output.WriteString(Name);
+      }
+      if (_unknownFields != null) {
+        _unknownFields.WriteTo(ref output);
+      }
+    }
+    #endif
 
     [global::System.Diagnostics.DebuggerNonUserCodeAttribute]
     public int CalculateSize() {
@@ -2207,6 +2818,9 @@ namespace Google.Cloud.SecretManager.V1Beta1 {
 
     [global::System.Diagnostics.DebuggerNonUserCodeAttribute]
     public void MergeFrom(pb::CodedInputStream input) {
+    #if !GOOGLE_PROTOBUF_REFSTRUCT_COMPATIBILITY_MODE
+      input.ReadRawMessage(this);
+    #else
       uint tag;
       while ((tag = input.ReadTag()) != 0) {
         switch(tag) {
@@ -2219,14 +2833,37 @@ namespace Google.Cloud.SecretManager.V1Beta1 {
           }
         }
       }
+    #endif
     }
+
+    #if !GOOGLE_PROTOBUF_REFSTRUCT_COMPATIBILITY_MODE
+    [global::System.Diagnostics.DebuggerNonUserCodeAttribute]
+    void pb::IBufferMessage.InternalMergeFrom(ref pb::ParseContext input) {
+      uint tag;
+      while ((tag = input.ReadTag()) != 0) {
+        switch(tag) {
+          default:
+            _unknownFields = pb::UnknownFieldSet.MergeFieldFrom(_unknownFields, ref input);
+            break;
+          case 10: {
+            Name = input.ReadString();
+            break;
+          }
+        }
+      }
+    }
+    #endif
 
   }
 
   /// <summary>
   /// Request message for [SecretManagerService.DisableSecretVersion][google.cloud.secrets.v1beta1.SecretManagerService.DisableSecretVersion].
   /// </summary>
-  public sealed partial class DisableSecretVersionRequest : pb::IMessage<DisableSecretVersionRequest> {
+  public sealed partial class DisableSecretVersionRequest : pb::IMessage<DisableSecretVersionRequest>
+  #if !GOOGLE_PROTOBUF_REFSTRUCT_COMPATIBILITY_MODE
+      , pb::IBufferMessage
+  #endif
+  {
     private static readonly pb::MessageParser<DisableSecretVersionRequest> _parser = new pb::MessageParser<DisableSecretVersionRequest>(() => new DisableSecretVersionRequest());
     private pb::UnknownFieldSet _unknownFields;
     [global::System.Diagnostics.DebuggerNonUserCodeAttribute]
@@ -2309,6 +2946,9 @@ namespace Google.Cloud.SecretManager.V1Beta1 {
 
     [global::System.Diagnostics.DebuggerNonUserCodeAttribute]
     public void WriteTo(pb::CodedOutputStream output) {
+    #if !GOOGLE_PROTOBUF_REFSTRUCT_COMPATIBILITY_MODE
+      output.WriteRawMessage(this);
+    #else
       if (Name.Length != 0) {
         output.WriteRawTag(10);
         output.WriteString(Name);
@@ -2316,7 +2956,21 @@ namespace Google.Cloud.SecretManager.V1Beta1 {
       if (_unknownFields != null) {
         _unknownFields.WriteTo(output);
       }
+    #endif
     }
+
+    #if !GOOGLE_PROTOBUF_REFSTRUCT_COMPATIBILITY_MODE
+    [global::System.Diagnostics.DebuggerNonUserCodeAttribute]
+    void pb::IBufferMessage.InternalWriteTo(ref pb::WriteContext output) {
+      if (Name.Length != 0) {
+        output.WriteRawTag(10);
+        output.WriteString(Name);
+      }
+      if (_unknownFields != null) {
+        _unknownFields.WriteTo(ref output);
+      }
+    }
+    #endif
 
     [global::System.Diagnostics.DebuggerNonUserCodeAttribute]
     public int CalculateSize() {
@@ -2343,6 +2997,9 @@ namespace Google.Cloud.SecretManager.V1Beta1 {
 
     [global::System.Diagnostics.DebuggerNonUserCodeAttribute]
     public void MergeFrom(pb::CodedInputStream input) {
+    #if !GOOGLE_PROTOBUF_REFSTRUCT_COMPATIBILITY_MODE
+      input.ReadRawMessage(this);
+    #else
       uint tag;
       while ((tag = input.ReadTag()) != 0) {
         switch(tag) {
@@ -2355,14 +3012,37 @@ namespace Google.Cloud.SecretManager.V1Beta1 {
           }
         }
       }
+    #endif
     }
+
+    #if !GOOGLE_PROTOBUF_REFSTRUCT_COMPATIBILITY_MODE
+    [global::System.Diagnostics.DebuggerNonUserCodeAttribute]
+    void pb::IBufferMessage.InternalMergeFrom(ref pb::ParseContext input) {
+      uint tag;
+      while ((tag = input.ReadTag()) != 0) {
+        switch(tag) {
+          default:
+            _unknownFields = pb::UnknownFieldSet.MergeFieldFrom(_unknownFields, ref input);
+            break;
+          case 10: {
+            Name = input.ReadString();
+            break;
+          }
+        }
+      }
+    }
+    #endif
 
   }
 
   /// <summary>
   /// Request message for [SecretManagerService.EnableSecretVersion][google.cloud.secrets.v1beta1.SecretManagerService.EnableSecretVersion].
   /// </summary>
-  public sealed partial class EnableSecretVersionRequest : pb::IMessage<EnableSecretVersionRequest> {
+  public sealed partial class EnableSecretVersionRequest : pb::IMessage<EnableSecretVersionRequest>
+  #if !GOOGLE_PROTOBUF_REFSTRUCT_COMPATIBILITY_MODE
+      , pb::IBufferMessage
+  #endif
+  {
     private static readonly pb::MessageParser<EnableSecretVersionRequest> _parser = new pb::MessageParser<EnableSecretVersionRequest>(() => new EnableSecretVersionRequest());
     private pb::UnknownFieldSet _unknownFields;
     [global::System.Diagnostics.DebuggerNonUserCodeAttribute]
@@ -2445,6 +3125,9 @@ namespace Google.Cloud.SecretManager.V1Beta1 {
 
     [global::System.Diagnostics.DebuggerNonUserCodeAttribute]
     public void WriteTo(pb::CodedOutputStream output) {
+    #if !GOOGLE_PROTOBUF_REFSTRUCT_COMPATIBILITY_MODE
+      output.WriteRawMessage(this);
+    #else
       if (Name.Length != 0) {
         output.WriteRawTag(10);
         output.WriteString(Name);
@@ -2452,7 +3135,21 @@ namespace Google.Cloud.SecretManager.V1Beta1 {
       if (_unknownFields != null) {
         _unknownFields.WriteTo(output);
       }
+    #endif
     }
+
+    #if !GOOGLE_PROTOBUF_REFSTRUCT_COMPATIBILITY_MODE
+    [global::System.Diagnostics.DebuggerNonUserCodeAttribute]
+    void pb::IBufferMessage.InternalWriteTo(ref pb::WriteContext output) {
+      if (Name.Length != 0) {
+        output.WriteRawTag(10);
+        output.WriteString(Name);
+      }
+      if (_unknownFields != null) {
+        _unknownFields.WriteTo(ref output);
+      }
+    }
+    #endif
 
     [global::System.Diagnostics.DebuggerNonUserCodeAttribute]
     public int CalculateSize() {
@@ -2479,6 +3176,9 @@ namespace Google.Cloud.SecretManager.V1Beta1 {
 
     [global::System.Diagnostics.DebuggerNonUserCodeAttribute]
     public void MergeFrom(pb::CodedInputStream input) {
+    #if !GOOGLE_PROTOBUF_REFSTRUCT_COMPATIBILITY_MODE
+      input.ReadRawMessage(this);
+    #else
       uint tag;
       while ((tag = input.ReadTag()) != 0) {
         switch(tag) {
@@ -2491,14 +3191,37 @@ namespace Google.Cloud.SecretManager.V1Beta1 {
           }
         }
       }
+    #endif
     }
+
+    #if !GOOGLE_PROTOBUF_REFSTRUCT_COMPATIBILITY_MODE
+    [global::System.Diagnostics.DebuggerNonUserCodeAttribute]
+    void pb::IBufferMessage.InternalMergeFrom(ref pb::ParseContext input) {
+      uint tag;
+      while ((tag = input.ReadTag()) != 0) {
+        switch(tag) {
+          default:
+            _unknownFields = pb::UnknownFieldSet.MergeFieldFrom(_unknownFields, ref input);
+            break;
+          case 10: {
+            Name = input.ReadString();
+            break;
+          }
+        }
+      }
+    }
+    #endif
 
   }
 
   /// <summary>
   /// Request message for [SecretManagerService.DestroySecretVersion][google.cloud.secrets.v1beta1.SecretManagerService.DestroySecretVersion].
   /// </summary>
-  public sealed partial class DestroySecretVersionRequest : pb::IMessage<DestroySecretVersionRequest> {
+  public sealed partial class DestroySecretVersionRequest : pb::IMessage<DestroySecretVersionRequest>
+  #if !GOOGLE_PROTOBUF_REFSTRUCT_COMPATIBILITY_MODE
+      , pb::IBufferMessage
+  #endif
+  {
     private static readonly pb::MessageParser<DestroySecretVersionRequest> _parser = new pb::MessageParser<DestroySecretVersionRequest>(() => new DestroySecretVersionRequest());
     private pb::UnknownFieldSet _unknownFields;
     [global::System.Diagnostics.DebuggerNonUserCodeAttribute]
@@ -2581,6 +3304,9 @@ namespace Google.Cloud.SecretManager.V1Beta1 {
 
     [global::System.Diagnostics.DebuggerNonUserCodeAttribute]
     public void WriteTo(pb::CodedOutputStream output) {
+    #if !GOOGLE_PROTOBUF_REFSTRUCT_COMPATIBILITY_MODE
+      output.WriteRawMessage(this);
+    #else
       if (Name.Length != 0) {
         output.WriteRawTag(10);
         output.WriteString(Name);
@@ -2588,7 +3314,21 @@ namespace Google.Cloud.SecretManager.V1Beta1 {
       if (_unknownFields != null) {
         _unknownFields.WriteTo(output);
       }
+    #endif
     }
+
+    #if !GOOGLE_PROTOBUF_REFSTRUCT_COMPATIBILITY_MODE
+    [global::System.Diagnostics.DebuggerNonUserCodeAttribute]
+    void pb::IBufferMessage.InternalWriteTo(ref pb::WriteContext output) {
+      if (Name.Length != 0) {
+        output.WriteRawTag(10);
+        output.WriteString(Name);
+      }
+      if (_unknownFields != null) {
+        _unknownFields.WriteTo(ref output);
+      }
+    }
+    #endif
 
     [global::System.Diagnostics.DebuggerNonUserCodeAttribute]
     public int CalculateSize() {
@@ -2615,6 +3355,9 @@ namespace Google.Cloud.SecretManager.V1Beta1 {
 
     [global::System.Diagnostics.DebuggerNonUserCodeAttribute]
     public void MergeFrom(pb::CodedInputStream input) {
+    #if !GOOGLE_PROTOBUF_REFSTRUCT_COMPATIBILITY_MODE
+      input.ReadRawMessage(this);
+    #else
       uint tag;
       while ((tag = input.ReadTag()) != 0) {
         switch(tag) {
@@ -2627,7 +3370,26 @@ namespace Google.Cloud.SecretManager.V1Beta1 {
           }
         }
       }
+    #endif
     }
+
+    #if !GOOGLE_PROTOBUF_REFSTRUCT_COMPATIBILITY_MODE
+    [global::System.Diagnostics.DebuggerNonUserCodeAttribute]
+    void pb::IBufferMessage.InternalMergeFrom(ref pb::ParseContext input) {
+      uint tag;
+      while ((tag = input.ReadTag()) != 0) {
+        switch(tag) {
+          default:
+            _unknownFields = pb::UnknownFieldSet.MergeFieldFrom(_unknownFields, ref input);
+            break;
+          case 10: {
+            Name = input.ReadString();
+            break;
+          }
+        }
+      }
+    }
+    #endif
 
   }
 

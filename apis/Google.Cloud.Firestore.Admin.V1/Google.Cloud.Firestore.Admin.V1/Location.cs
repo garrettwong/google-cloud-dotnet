@@ -27,15 +27,16 @@ namespace Google.Cloud.Firestore.Admin.V1 {
             "Cihnb29nbGUvZmlyZXN0b3JlL2FkbWluL3YxL2xvY2F0aW9uLnByb3RvEhln",
             "b29nbGUuZmlyZXN0b3JlLmFkbWluLnYxGhhnb29nbGUvdHlwZS9sYXRsbmcu",
             "cHJvdG8aHGdvb2dsZS9hcGkvYW5ub3RhdGlvbnMucHJvdG8iEgoQTG9jYXRp",
-            "b25NZXRhZGF0YUK7AQodY29tLmdvb2dsZS5maXJlc3RvcmUuYWRtaW4udjFC",
+            "b25NZXRhZGF0YULhAQodY29tLmdvb2dsZS5maXJlc3RvcmUuYWRtaW4udjFC",
             "DUxvY2F0aW9uUHJvdG9QAVo+Z29vZ2xlLmdvbGFuZy5vcmcvZ2VucHJvdG8v",
             "Z29vZ2xlYXBpcy9maXJlc3RvcmUvYWRtaW4vdjE7YWRtaW6iAgRHQ0ZTqgIf",
             "R29vZ2xlLkNsb3VkLkZpcmVzdG9yZS5BZG1pbi5WMcoCH0dvb2dsZVxDbG91",
-            "ZFxGaXJlc3RvcmVcQWRtaW5cVjFiBnByb3RvMw=="));
+            "ZFxGaXJlc3RvcmVcQWRtaW5cVjHqAiNHb29nbGU6OkNsb3VkOjpGaXJlc3Rv",
+            "cmU6OkFkbWluOjpWMWIGcHJvdG8z"));
       descriptor = pbr::FileDescriptor.FromGeneratedCode(descriptorData,
           new pbr::FileDescriptor[] { global::Google.Type.LatlngReflection.Descriptor, global::Google.Api.AnnotationsReflection.Descriptor, },
-          new pbr::GeneratedClrTypeInfo(null, new pbr::GeneratedClrTypeInfo[] {
-            new pbr::GeneratedClrTypeInfo(typeof(global::Google.Cloud.Firestore.Admin.V1.LocationMetadata), global::Google.Cloud.Firestore.Admin.V1.LocationMetadata.Parser, null, null, null, null)
+          new pbr::GeneratedClrTypeInfo(null, null, new pbr::GeneratedClrTypeInfo[] {
+            new pbr::GeneratedClrTypeInfo(typeof(global::Google.Cloud.Firestore.Admin.V1.LocationMetadata), global::Google.Cloud.Firestore.Admin.V1.LocationMetadata.Parser, null, null, null, null, null)
           }));
     }
     #endregion
@@ -45,7 +46,11 @@ namespace Google.Cloud.Firestore.Admin.V1 {
   /// <summary>
   /// The metadata message for [google.cloud.location.Location.metadata][google.cloud.location.Location.metadata].
   /// </summary>
-  public sealed partial class LocationMetadata : pb::IMessage<LocationMetadata> {
+  public sealed partial class LocationMetadata : pb::IMessage<LocationMetadata>
+  #if !GOOGLE_PROTOBUF_REFSTRUCT_COMPATIBILITY_MODE
+      , pb::IBufferMessage
+  #endif
+  {
     private static readonly pb::MessageParser<LocationMetadata> _parser = new pb::MessageParser<LocationMetadata>(() => new LocationMetadata());
     private pb::UnknownFieldSet _unknownFields;
     [global::System.Diagnostics.DebuggerNonUserCodeAttribute]
@@ -110,10 +115,23 @@ namespace Google.Cloud.Firestore.Admin.V1 {
 
     [global::System.Diagnostics.DebuggerNonUserCodeAttribute]
     public void WriteTo(pb::CodedOutputStream output) {
+    #if !GOOGLE_PROTOBUF_REFSTRUCT_COMPATIBILITY_MODE
+      output.WriteRawMessage(this);
+    #else
       if (_unknownFields != null) {
         _unknownFields.WriteTo(output);
       }
+    #endif
     }
+
+    #if !GOOGLE_PROTOBUF_REFSTRUCT_COMPATIBILITY_MODE
+    [global::System.Diagnostics.DebuggerNonUserCodeAttribute]
+    void pb::IBufferMessage.InternalWriteTo(ref pb::WriteContext output) {
+      if (_unknownFields != null) {
+        _unknownFields.WriteTo(ref output);
+      }
+    }
+    #endif
 
     [global::System.Diagnostics.DebuggerNonUserCodeAttribute]
     public int CalculateSize() {
@@ -134,6 +152,9 @@ namespace Google.Cloud.Firestore.Admin.V1 {
 
     [global::System.Diagnostics.DebuggerNonUserCodeAttribute]
     public void MergeFrom(pb::CodedInputStream input) {
+    #if !GOOGLE_PROTOBUF_REFSTRUCT_COMPATIBILITY_MODE
+      input.ReadRawMessage(this);
+    #else
       uint tag;
       while ((tag = input.ReadTag()) != 0) {
         switch(tag) {
@@ -142,7 +163,22 @@ namespace Google.Cloud.Firestore.Admin.V1 {
             break;
         }
       }
+    #endif
     }
+
+    #if !GOOGLE_PROTOBUF_REFSTRUCT_COMPATIBILITY_MODE
+    [global::System.Diagnostics.DebuggerNonUserCodeAttribute]
+    void pb::IBufferMessage.InternalMergeFrom(ref pb::ParseContext input) {
+      uint tag;
+      while ((tag = input.ReadTag()) != 0) {
+        switch(tag) {
+          default:
+            _unknownFields = pb::UnknownFieldSet.MergeFieldFrom(_unknownFields, ref input);
+            break;
+        }
+      }
+    }
+    #endif
 
   }
 

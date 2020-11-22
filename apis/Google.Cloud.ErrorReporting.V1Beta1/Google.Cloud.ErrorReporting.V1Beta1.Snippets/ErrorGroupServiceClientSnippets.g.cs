@@ -1,4 +1,4 @@
-// Copyright 2019 Google LLC
+// Copyright 2020 Google LLC
 //
 // Licensed under the Apache License, Version 2.0 (the "License");
 // you may not use this file except in compliance with the License.
@@ -22,7 +22,7 @@ namespace Google.Cloud.ErrorReporting.V1Beta1.Snippets
     public sealed class GeneratedErrorGroupServiceClientSnippets
     {
         /// <summary>Snippet for GetGroup</summary>
-        public void GetGroup_RequestObject()
+        public void GetGroupRequestObject()
         {
             // Snippet: GetGroup(GetGroupRequest, CallSettings)
             // Create client
@@ -30,7 +30,7 @@ namespace Google.Cloud.ErrorReporting.V1Beta1.Snippets
             // Initialize request argument(s)
             GetGroupRequest request = new GetGroupRequest
             {
-                GroupNameAsErrorGroupName = new ErrorGroupName("[PROJECT]", "[GROUP]"),
+                GroupNameAsErrorGroupName = ErrorGroupName.FromProjectGroup("[PROJECT]", "[GROUP]"),
             };
             // Make the request
             ErrorGroup response = errorGroupServiceClient.GetGroup(request);
@@ -38,7 +38,7 @@ namespace Google.Cloud.ErrorReporting.V1Beta1.Snippets
         }
 
         /// <summary>Snippet for GetGroupAsync</summary>
-        public async Task GetGroupAsync_RequestObject()
+        public async Task GetGroupRequestObjectAsync()
         {
             // Snippet: GetGroupAsync(GetGroupRequest, CallSettings)
             // Additional: GetGroupAsync(GetGroupRequest, CancellationToken)
@@ -47,7 +47,7 @@ namespace Google.Cloud.ErrorReporting.V1Beta1.Snippets
             // Initialize request argument(s)
             GetGroupRequest request = new GetGroupRequest
             {
-                GroupNameAsErrorGroupName = new ErrorGroupName("[PROJECT]", "[GROUP]"),
+                GroupNameAsErrorGroupName = ErrorGroupName.FromProjectGroup("[PROJECT]", "[GROUP]"),
             };
             // Make the request
             ErrorGroup response = await errorGroupServiceClient.GetGroupAsync(request);
@@ -82,34 +82,34 @@ namespace Google.Cloud.ErrorReporting.V1Beta1.Snippets
         }
 
         /// <summary>Snippet for GetGroup</summary>
-        public void GetGroup_ResourceNames()
+        public void GetGroupResourceNames()
         {
             // Snippet: GetGroup(ErrorGroupName, CallSettings)
             // Create client
             ErrorGroupServiceClient errorGroupServiceClient = ErrorGroupServiceClient.Create();
             // Initialize request argument(s)
-            ErrorGroupName groupName = new ErrorGroupName("[PROJECT]", "[GROUP]");
+            ErrorGroupName groupName = ErrorGroupName.FromProjectGroup("[PROJECT]", "[GROUP]");
             // Make the request
             ErrorGroup response = errorGroupServiceClient.GetGroup(groupName);
             // End snippet
         }
 
         /// <summary>Snippet for GetGroupAsync</summary>
-        public async Task GetGroupAsync_ResourceNames()
+        public async Task GetGroupResourceNamesAsync()
         {
             // Snippet: GetGroupAsync(ErrorGroupName, CallSettings)
             // Additional: GetGroupAsync(ErrorGroupName, CancellationToken)
             // Create client
             ErrorGroupServiceClient errorGroupServiceClient = await ErrorGroupServiceClient.CreateAsync();
             // Initialize request argument(s)
-            ErrorGroupName groupName = new ErrorGroupName("[PROJECT]", "[GROUP]");
+            ErrorGroupName groupName = ErrorGroupName.FromProjectGroup("[PROJECT]", "[GROUP]");
             // Make the request
             ErrorGroup response = await errorGroupServiceClient.GetGroupAsync(groupName);
             // End snippet
         }
 
         /// <summary>Snippet for UpdateGroup</summary>
-        public void UpdateGroup_RequestObject()
+        public void UpdateGroupRequestObject()
         {
             // Snippet: UpdateGroup(UpdateGroupRequest, CallSettings)
             // Create client
@@ -125,7 +125,7 @@ namespace Google.Cloud.ErrorReporting.V1Beta1.Snippets
         }
 
         /// <summary>Snippet for UpdateGroupAsync</summary>
-        public async Task UpdateGroupAsync_RequestObject()
+        public async Task UpdateGroupRequestObjectAsync()
         {
             // Snippet: UpdateGroupAsync(UpdateGroupRequest, CallSettings)
             // Additional: UpdateGroupAsync(UpdateGroupRequest, CancellationToken)

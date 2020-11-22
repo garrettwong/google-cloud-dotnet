@@ -25,25 +25,27 @@ namespace Google.Cloud.Spanner.V1 {
       byte[] descriptorData = global::System.Convert.FromBase64String(
           string.Concat(
             "Chxnb29nbGUvc3Bhbm5lci92MS90eXBlLnByb3RvEhFnb29nbGUuc3Bhbm5l",
-            "ci52MRocZ29vZ2xlL2FwaS9hbm5vdGF0aW9ucy5wcm90byKaAQoEVHlwZRIp",
-            "CgRjb2RlGAEgASgOMhsuZ29vZ2xlLnNwYW5uZXIudjEuVHlwZUNvZGUSMwoS",
-            "YXJyYXlfZWxlbWVudF90eXBlGAIgASgLMhcuZ29vZ2xlLnNwYW5uZXIudjEu",
-            "VHlwZRIyCgtzdHJ1Y3RfdHlwZRgDIAEoCzIdLmdvb2dsZS5zcGFubmVyLnYx",
-            "LlN0cnVjdFR5cGUifwoKU3RydWN0VHlwZRIzCgZmaWVsZHMYASADKAsyIy5n",
-            "b29nbGUuc3Bhbm5lci52MS5TdHJ1Y3RUeXBlLkZpZWxkGjwKBUZpZWxkEgwK",
-            "BG5hbWUYASABKAkSJQoEdHlwZRgCIAEoCzIXLmdvb2dsZS5zcGFubmVyLnYx",
-            "LlR5cGUqjgEKCFR5cGVDb2RlEhkKFVRZUEVfQ09ERV9VTlNQRUNJRklFRBAA",
-            "EggKBEJPT0wQARIJCgVJTlQ2NBACEgsKB0ZMT0FUNjQQAxINCglUSU1FU1RB",
-            "TVAQBBIICgREQVRFEAUSCgoGU1RSSU5HEAYSCQoFQllURVMQBxIJCgVBUlJB",
-            "WRAIEgoKBlNUUlVDVBAJQpIBChVjb20uZ29vZ2xlLnNwYW5uZXIudjFCCVR5",
-            "cGVQcm90b1ABWjhnb29nbGUuZ29sYW5nLm9yZy9nZW5wcm90by9nb29nbGVh",
-            "cGlzL3NwYW5uZXIvdjE7c3Bhbm5lcqoCF0dvb2dsZS5DbG91ZC5TcGFubmVy",
-            "LlYxygIXR29vZ2xlXENsb3VkXFNwYW5uZXJcVjFiBnByb3RvMw=="));
+            "ci52MRofZ29vZ2xlL2FwaS9maWVsZF9iZWhhdmlvci5wcm90bxocZ29vZ2xl",
+            "L2FwaS9hbm5vdGF0aW9ucy5wcm90byKfAQoEVHlwZRIuCgRjb2RlGAEgASgO",
+            "MhsuZ29vZ2xlLnNwYW5uZXIudjEuVHlwZUNvZGVCA+BBAhIzChJhcnJheV9l",
+            "bGVtZW50X3R5cGUYAiABKAsyFy5nb29nbGUuc3Bhbm5lci52MS5UeXBlEjIK",
+            "C3N0cnVjdF90eXBlGAMgASgLMh0uZ29vZ2xlLnNwYW5uZXIudjEuU3RydWN0",
+            "VHlwZSJ/CgpTdHJ1Y3RUeXBlEjMKBmZpZWxkcxgBIAMoCzIjLmdvb2dsZS5z",
+            "cGFubmVyLnYxLlN0cnVjdFR5cGUuRmllbGQaPAoFRmllbGQSDAoEbmFtZRgB",
+            "IAEoCRIlCgR0eXBlGAIgASgLMhcuZ29vZ2xlLnNwYW5uZXIudjEuVHlwZSqb",
+            "AQoIVHlwZUNvZGUSGQoVVFlQRV9DT0RFX1VOU1BFQ0lGSUVEEAASCAoEQk9P",
+            "TBABEgkKBUlOVDY0EAISCwoHRkxPQVQ2NBADEg0KCVRJTUVTVEFNUBAEEggK",
+            "BERBVEUQBRIKCgZTVFJJTkcQBhIJCgVCWVRFUxAHEgkKBUFSUkFZEAgSCgoG",
+            "U1RSVUNUEAkSCwoHTlVNRVJJQxAKQq8BChVjb20uZ29vZ2xlLnNwYW5uZXIu",
+            "djFCCVR5cGVQcm90b1ABWjhnb29nbGUuZ29sYW5nLm9yZy9nZW5wcm90by9n",
+            "b29nbGVhcGlzL3NwYW5uZXIvdjE7c3Bhbm5lcqoCF0dvb2dsZS5DbG91ZC5T",
+            "cGFubmVyLlYxygIXR29vZ2xlXENsb3VkXFNwYW5uZXJcVjHqAhpHb29nbGU6",
+            "OkNsb3VkOjpTcGFubmVyOjpWMWIGcHJvdG8z"));
       descriptor = pbr::FileDescriptor.FromGeneratedCode(descriptorData,
-          new pbr::FileDescriptor[] { global::Google.Api.AnnotationsReflection.Descriptor, },
-          new pbr::GeneratedClrTypeInfo(new[] {typeof(global::Google.Cloud.Spanner.V1.TypeCode), }, new pbr::GeneratedClrTypeInfo[] {
-            new pbr::GeneratedClrTypeInfo(typeof(global::Google.Cloud.Spanner.V1.Type), global::Google.Cloud.Spanner.V1.Type.Parser, new[]{ "Code", "ArrayElementType", "StructType" }, null, null, null),
-            new pbr::GeneratedClrTypeInfo(typeof(global::Google.Cloud.Spanner.V1.StructType), global::Google.Cloud.Spanner.V1.StructType.Parser, new[]{ "Fields" }, null, null, new pbr::GeneratedClrTypeInfo[] { new pbr::GeneratedClrTypeInfo(typeof(global::Google.Cloud.Spanner.V1.StructType.Types.Field), global::Google.Cloud.Spanner.V1.StructType.Types.Field.Parser, new[]{ "Name", "Type" }, null, null, null)})
+          new pbr::FileDescriptor[] { global::Google.Api.FieldBehaviorReflection.Descriptor, global::Google.Api.AnnotationsReflection.Descriptor, },
+          new pbr::GeneratedClrTypeInfo(new[] {typeof(global::Google.Cloud.Spanner.V1.TypeCode), }, null, new pbr::GeneratedClrTypeInfo[] {
+            new pbr::GeneratedClrTypeInfo(typeof(global::Google.Cloud.Spanner.V1.Type), global::Google.Cloud.Spanner.V1.Type.Parser, new[]{ "Code", "ArrayElementType", "StructType" }, null, null, null, null),
+            new pbr::GeneratedClrTypeInfo(typeof(global::Google.Cloud.Spanner.V1.StructType), global::Google.Cloud.Spanner.V1.StructType.Parser, new[]{ "Fields" }, null, null, null, new pbr::GeneratedClrTypeInfo[] { new pbr::GeneratedClrTypeInfo(typeof(global::Google.Cloud.Spanner.V1.StructType.Types.Field), global::Google.Cloud.Spanner.V1.StructType.Types.Field.Parser, new[]{ "Name", "Type" }, null, null, null, null)})
           }));
     }
     #endregion
@@ -112,6 +114,18 @@ namespace Google.Cloud.Spanner.V1 {
     /// to [struct_type.fields[i]][google.spanner.v1.StructType.fields].
     /// </summary>
     [pbr::OriginalName("STRUCT")] Struct = 9,
+    /// <summary>
+    /// Encoded as `string`, in decimal format or scientific notation format.
+    /// &lt;br>Decimal format:
+    /// &lt;br>`[+-]Digits[.[Digits]]` or
+    /// &lt;br>`[+-][Digits].Digits`
+    ///
+    /// Scientific notation:
+    /// &lt;br>`[+-]Digits[.[Digits]][ExponentIndicator[+-]Digits]` or
+    /// &lt;br>`[+-][Digits].Digits[ExponentIndicator[+-]Digits]`
+    /// &lt;br>(ExponentIndicator is `"e"` or `"E"`)
+    /// </summary>
+    [pbr::OriginalName("NUMERIC")] Numeric = 10,
   }
 
   #endregion
@@ -121,7 +135,11 @@ namespace Google.Cloud.Spanner.V1 {
   /// `Type` indicates the type of a Cloud Spanner value, as might be stored in a
   /// table cell or returned from an SQL query.
   /// </summary>
-  public sealed partial class Type : pb::IMessage<Type> {
+  public sealed partial class Type : pb::IMessage<Type>
+  #if !GOOGLE_PROTOBUF_REFSTRUCT_COMPATIBILITY_MODE
+      , pb::IBufferMessage
+  #endif
+  {
     private static readonly pb::MessageParser<Type> _parser = new pb::MessageParser<Type>(() => new Type());
     private pb::UnknownFieldSet _unknownFields;
     [global::System.Diagnostics.DebuggerNonUserCodeAttribute]
@@ -159,7 +177,7 @@ namespace Google.Cloud.Spanner.V1 {
 
     /// <summary>Field number for the "code" field.</summary>
     public const int CodeFieldNumber = 1;
-    private global::Google.Cloud.Spanner.V1.TypeCode code_ = 0;
+    private global::Google.Cloud.Spanner.V1.TypeCode code_ = global::Google.Cloud.Spanner.V1.TypeCode.Unspecified;
     /// <summary>
     /// Required. The [TypeCode][google.spanner.v1.TypeCode] for this type.
     /// </summary>
@@ -223,7 +241,7 @@ namespace Google.Cloud.Spanner.V1 {
     [global::System.Diagnostics.DebuggerNonUserCodeAttribute]
     public override int GetHashCode() {
       int hash = 1;
-      if (Code != 0) hash ^= Code.GetHashCode();
+      if (Code != global::Google.Cloud.Spanner.V1.TypeCode.Unspecified) hash ^= Code.GetHashCode();
       if (arrayElementType_ != null) hash ^= ArrayElementType.GetHashCode();
       if (structType_ != null) hash ^= StructType.GetHashCode();
       if (_unknownFields != null) {
@@ -239,7 +257,10 @@ namespace Google.Cloud.Spanner.V1 {
 
     [global::System.Diagnostics.DebuggerNonUserCodeAttribute]
     public void WriteTo(pb::CodedOutputStream output) {
-      if (Code != 0) {
+    #if !GOOGLE_PROTOBUF_REFSTRUCT_COMPATIBILITY_MODE
+      output.WriteRawMessage(this);
+    #else
+      if (Code != global::Google.Cloud.Spanner.V1.TypeCode.Unspecified) {
         output.WriteRawTag(8);
         output.WriteEnum((int) Code);
       }
@@ -254,12 +275,34 @@ namespace Google.Cloud.Spanner.V1 {
       if (_unknownFields != null) {
         _unknownFields.WriteTo(output);
       }
+    #endif
     }
+
+    #if !GOOGLE_PROTOBUF_REFSTRUCT_COMPATIBILITY_MODE
+    [global::System.Diagnostics.DebuggerNonUserCodeAttribute]
+    void pb::IBufferMessage.InternalWriteTo(ref pb::WriteContext output) {
+      if (Code != global::Google.Cloud.Spanner.V1.TypeCode.Unspecified) {
+        output.WriteRawTag(8);
+        output.WriteEnum((int) Code);
+      }
+      if (arrayElementType_ != null) {
+        output.WriteRawTag(18);
+        output.WriteMessage(ArrayElementType);
+      }
+      if (structType_ != null) {
+        output.WriteRawTag(26);
+        output.WriteMessage(StructType);
+      }
+      if (_unknownFields != null) {
+        _unknownFields.WriteTo(ref output);
+      }
+    }
+    #endif
 
     [global::System.Diagnostics.DebuggerNonUserCodeAttribute]
     public int CalculateSize() {
       int size = 0;
-      if (Code != 0) {
+      if (Code != global::Google.Cloud.Spanner.V1.TypeCode.Unspecified) {
         size += 1 + pb::CodedOutputStream.ComputeEnumSize((int) Code);
       }
       if (arrayElementType_ != null) {
@@ -279,7 +322,7 @@ namespace Google.Cloud.Spanner.V1 {
       if (other == null) {
         return;
       }
-      if (other.Code != 0) {
+      if (other.Code != global::Google.Cloud.Spanner.V1.TypeCode.Unspecified) {
         Code = other.Code;
       }
       if (other.arrayElementType_ != null) {
@@ -299,6 +342,9 @@ namespace Google.Cloud.Spanner.V1 {
 
     [global::System.Diagnostics.DebuggerNonUserCodeAttribute]
     public void MergeFrom(pb::CodedInputStream input) {
+    #if !GOOGLE_PROTOBUF_REFSTRUCT_COMPATIBILITY_MODE
+      input.ReadRawMessage(this);
+    #else
       uint tag;
       while ((tag = input.ReadTag()) != 0) {
         switch(tag) {
@@ -325,14 +371,51 @@ namespace Google.Cloud.Spanner.V1 {
           }
         }
       }
+    #endif
     }
+
+    #if !GOOGLE_PROTOBUF_REFSTRUCT_COMPATIBILITY_MODE
+    [global::System.Diagnostics.DebuggerNonUserCodeAttribute]
+    void pb::IBufferMessage.InternalMergeFrom(ref pb::ParseContext input) {
+      uint tag;
+      while ((tag = input.ReadTag()) != 0) {
+        switch(tag) {
+          default:
+            _unknownFields = pb::UnknownFieldSet.MergeFieldFrom(_unknownFields, ref input);
+            break;
+          case 8: {
+            Code = (global::Google.Cloud.Spanner.V1.TypeCode) input.ReadEnum();
+            break;
+          }
+          case 18: {
+            if (arrayElementType_ == null) {
+              ArrayElementType = new global::Google.Cloud.Spanner.V1.Type();
+            }
+            input.ReadMessage(ArrayElementType);
+            break;
+          }
+          case 26: {
+            if (structType_ == null) {
+              StructType = new global::Google.Cloud.Spanner.V1.StructType();
+            }
+            input.ReadMessage(StructType);
+            break;
+          }
+        }
+      }
+    }
+    #endif
 
   }
 
   /// <summary>
   /// `StructType` defines the fields of a [STRUCT][google.spanner.v1.TypeCode.STRUCT] type.
   /// </summary>
-  public sealed partial class StructType : pb::IMessage<StructType> {
+  public sealed partial class StructType : pb::IMessage<StructType>
+  #if !GOOGLE_PROTOBUF_REFSTRUCT_COMPATIBILITY_MODE
+      , pb::IBufferMessage
+  #endif
+  {
     private static readonly pb::MessageParser<StructType> _parser = new pb::MessageParser<StructType>(() => new StructType());
     private pb::UnknownFieldSet _unknownFields;
     [global::System.Diagnostics.DebuggerNonUserCodeAttribute]
@@ -418,11 +501,25 @@ namespace Google.Cloud.Spanner.V1 {
 
     [global::System.Diagnostics.DebuggerNonUserCodeAttribute]
     public void WriteTo(pb::CodedOutputStream output) {
+    #if !GOOGLE_PROTOBUF_REFSTRUCT_COMPATIBILITY_MODE
+      output.WriteRawMessage(this);
+    #else
       fields_.WriteTo(output, _repeated_fields_codec);
       if (_unknownFields != null) {
         _unknownFields.WriteTo(output);
       }
+    #endif
     }
+
+    #if !GOOGLE_PROTOBUF_REFSTRUCT_COMPATIBILITY_MODE
+    [global::System.Diagnostics.DebuggerNonUserCodeAttribute]
+    void pb::IBufferMessage.InternalWriteTo(ref pb::WriteContext output) {
+      fields_.WriteTo(ref output, _repeated_fields_codec);
+      if (_unknownFields != null) {
+        _unknownFields.WriteTo(ref output);
+      }
+    }
+    #endif
 
     [global::System.Diagnostics.DebuggerNonUserCodeAttribute]
     public int CalculateSize() {
@@ -445,6 +542,9 @@ namespace Google.Cloud.Spanner.V1 {
 
     [global::System.Diagnostics.DebuggerNonUserCodeAttribute]
     public void MergeFrom(pb::CodedInputStream input) {
+    #if !GOOGLE_PROTOBUF_REFSTRUCT_COMPATIBILITY_MODE
+      input.ReadRawMessage(this);
+    #else
       uint tag;
       while ((tag = input.ReadTag()) != 0) {
         switch(tag) {
@@ -457,7 +557,26 @@ namespace Google.Cloud.Spanner.V1 {
           }
         }
       }
+    #endif
     }
+
+    #if !GOOGLE_PROTOBUF_REFSTRUCT_COMPATIBILITY_MODE
+    [global::System.Diagnostics.DebuggerNonUserCodeAttribute]
+    void pb::IBufferMessage.InternalMergeFrom(ref pb::ParseContext input) {
+      uint tag;
+      while ((tag = input.ReadTag()) != 0) {
+        switch(tag) {
+          default:
+            _unknownFields = pb::UnknownFieldSet.MergeFieldFrom(_unknownFields, ref input);
+            break;
+          case 10: {
+            fields_.AddEntriesFrom(ref input, _repeated_fields_codec);
+            break;
+          }
+        }
+      }
+    }
+    #endif
 
     #region Nested types
     /// <summary>Container for nested types declared in the StructType message type.</summary>
@@ -466,7 +585,11 @@ namespace Google.Cloud.Spanner.V1 {
       /// <summary>
       /// Message representing a single field of a struct.
       /// </summary>
-      public sealed partial class Field : pb::IMessage<Field> {
+      public sealed partial class Field : pb::IMessage<Field>
+      #if !GOOGLE_PROTOBUF_REFSTRUCT_COMPATIBILITY_MODE
+          , pb::IBufferMessage
+      #endif
+      {
         private static readonly pb::MessageParser<Field> _parser = new pb::MessageParser<Field>(() => new Field());
         private pb::UnknownFieldSet _unknownFields;
         [global::System.Diagnostics.DebuggerNonUserCodeAttribute]
@@ -571,6 +694,9 @@ namespace Google.Cloud.Spanner.V1 {
 
         [global::System.Diagnostics.DebuggerNonUserCodeAttribute]
         public void WriteTo(pb::CodedOutputStream output) {
+        #if !GOOGLE_PROTOBUF_REFSTRUCT_COMPATIBILITY_MODE
+          output.WriteRawMessage(this);
+        #else
           if (Name.Length != 0) {
             output.WriteRawTag(10);
             output.WriteString(Name);
@@ -582,7 +708,25 @@ namespace Google.Cloud.Spanner.V1 {
           if (_unknownFields != null) {
             _unknownFields.WriteTo(output);
           }
+        #endif
         }
+
+        #if !GOOGLE_PROTOBUF_REFSTRUCT_COMPATIBILITY_MODE
+        [global::System.Diagnostics.DebuggerNonUserCodeAttribute]
+        void pb::IBufferMessage.InternalWriteTo(ref pb::WriteContext output) {
+          if (Name.Length != 0) {
+            output.WriteRawTag(10);
+            output.WriteString(Name);
+          }
+          if (type_ != null) {
+            output.WriteRawTag(18);
+            output.WriteMessage(Type);
+          }
+          if (_unknownFields != null) {
+            _unknownFields.WriteTo(ref output);
+          }
+        }
+        #endif
 
         [global::System.Diagnostics.DebuggerNonUserCodeAttribute]
         public int CalculateSize() {
@@ -618,6 +762,9 @@ namespace Google.Cloud.Spanner.V1 {
 
         [global::System.Diagnostics.DebuggerNonUserCodeAttribute]
         public void MergeFrom(pb::CodedInputStream input) {
+        #if !GOOGLE_PROTOBUF_REFSTRUCT_COMPATIBILITY_MODE
+          input.ReadRawMessage(this);
+        #else
           uint tag;
           while ((tag = input.ReadTag()) != 0) {
             switch(tag) {
@@ -637,7 +784,33 @@ namespace Google.Cloud.Spanner.V1 {
               }
             }
           }
+        #endif
         }
+
+        #if !GOOGLE_PROTOBUF_REFSTRUCT_COMPATIBILITY_MODE
+        [global::System.Diagnostics.DebuggerNonUserCodeAttribute]
+        void pb::IBufferMessage.InternalMergeFrom(ref pb::ParseContext input) {
+          uint tag;
+          while ((tag = input.ReadTag()) != 0) {
+            switch(tag) {
+              default:
+                _unknownFields = pb::UnknownFieldSet.MergeFieldFrom(_unknownFields, ref input);
+                break;
+              case 10: {
+                Name = input.ReadString();
+                break;
+              }
+              case 18: {
+                if (type_ == null) {
+                  Type = new global::Google.Cloud.Spanner.V1.Type();
+                }
+                input.ReadMessage(Type);
+                break;
+              }
+            }
+          }
+        }
+        #endif
 
       }
 

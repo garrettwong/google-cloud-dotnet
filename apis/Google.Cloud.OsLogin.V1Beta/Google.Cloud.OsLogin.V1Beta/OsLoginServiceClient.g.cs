@@ -1,4 +1,4 @@
-// Copyright 2019 Google LLC
+// Copyright 2020 Google LLC
 //
 // Licensed under the Apache License, Version 2.0 (the "License");
 // you may not use this file except in compliance with the License.
@@ -16,6 +16,7 @@
 
 using gax = Google.Api.Gax;
 using gaxgrpc = Google.Api.Gax.Grpc;
+using gaxgrpccore = Google.Api.Gax.Grpc.GrpcCore;
 using gcoc = Google.Cloud.OsLogin.Common;
 using proto = Google.Protobuf;
 using wkt = Google.Protobuf.WellKnownTypes;
@@ -24,7 +25,6 @@ using grpcinter = Grpc.Core.Interceptors;
 using sys = System;
 using scg = System.Collections.Generic;
 using sco = System.Collections.ObjectModel;
-using sysnet = System.Net;
 using st = System.Threading;
 using stt = System.Threading.Tasks;
 
@@ -65,13 +65,11 @@ namespace Google.Cloud.OsLogin.V1Beta
         /// <item><description>Initial retry delay: 100 milliseconds.</description></item>
         /// <item><description>Retry delay multiplier: 1.3</description></item>
         /// <item><description>Retry maximum delay: 60000 milliseconds.</description></item>
-        /// <item><description>Initial timeout: 10000 milliseconds.</description></item>
-        /// <item><description>Timeout multiplier: 1</description></item>
-        /// <item><description>Timeout maximum delay: 10000 milliseconds.</description></item>
-        /// <item><description>Total timeout: 10 seconds.</description></item>
+        /// <item><description>Maximum attempts: Unlimited</description></item>
+        /// <item><description>Timeout: 10 seconds.</description></item>
         /// </list>
         /// </remarks>
-        public gaxgrpc::CallSettings DeletePosixAccountSettings { get; set; } = gaxgrpc::CallSettings.FromCallTiming(gaxgrpc::CallTiming.FromRetry(new gaxgrpc::RetrySettings(retryBackoff: new gaxgrpc::BackoffSettings(delay: sys::TimeSpan.FromMilliseconds(100), maxDelay: sys::TimeSpan.FromMilliseconds(60000), delayMultiplier: 1.3), timeoutBackoff: new gaxgrpc::BackoffSettings(delay: sys::TimeSpan.FromMilliseconds(10000), maxDelay: sys::TimeSpan.FromMilliseconds(10000), delayMultiplier: 1), totalExpiration: gax::Expiration.FromTimeout(sys::TimeSpan.FromMilliseconds(10000)), retryFilter: gaxgrpc::RetrySettings.FilterForStatusCodes(grpccore::StatusCode.Unavailable, grpccore::StatusCode.DeadlineExceeded))));
+        public gaxgrpc::CallSettings DeletePosixAccountSettings { get; set; } = gaxgrpc::CallSettingsExtensions.WithRetry(gaxgrpc::CallSettings.FromExpiration(gax::Expiration.FromTimeout(sys::TimeSpan.FromMilliseconds(10000))), gaxgrpc::RetrySettings.FromExponentialBackoff(maxAttempts: 2147483647, initialBackoff: sys::TimeSpan.FromMilliseconds(100), maxBackoff: sys::TimeSpan.FromMilliseconds(60000), backoffMultiplier: 1.3, retryFilter: gaxgrpc::RetrySettings.FilterForStatusCodes(grpccore::StatusCode.Unavailable, grpccore::StatusCode.DeadlineExceeded)));
 
         /// <summary>
         /// <see cref="gaxgrpc::CallSettings"/> for synchronous and asynchronous calls to
@@ -82,13 +80,11 @@ namespace Google.Cloud.OsLogin.V1Beta
         /// <item><description>Initial retry delay: 100 milliseconds.</description></item>
         /// <item><description>Retry delay multiplier: 1.3</description></item>
         /// <item><description>Retry maximum delay: 60000 milliseconds.</description></item>
-        /// <item><description>Initial timeout: 10000 milliseconds.</description></item>
-        /// <item><description>Timeout multiplier: 1</description></item>
-        /// <item><description>Timeout maximum delay: 10000 milliseconds.</description></item>
-        /// <item><description>Total timeout: 10 seconds.</description></item>
+        /// <item><description>Maximum attempts: Unlimited</description></item>
+        /// <item><description>Timeout: 10 seconds.</description></item>
         /// </list>
         /// </remarks>
-        public gaxgrpc::CallSettings DeleteSshPublicKeySettings { get; set; } = gaxgrpc::CallSettings.FromCallTiming(gaxgrpc::CallTiming.FromRetry(new gaxgrpc::RetrySettings(retryBackoff: new gaxgrpc::BackoffSettings(delay: sys::TimeSpan.FromMilliseconds(100), maxDelay: sys::TimeSpan.FromMilliseconds(60000), delayMultiplier: 1.3), timeoutBackoff: new gaxgrpc::BackoffSettings(delay: sys::TimeSpan.FromMilliseconds(10000), maxDelay: sys::TimeSpan.FromMilliseconds(10000), delayMultiplier: 1), totalExpiration: gax::Expiration.FromTimeout(sys::TimeSpan.FromMilliseconds(10000)), retryFilter: gaxgrpc::RetrySettings.FilterForStatusCodes(grpccore::StatusCode.Unavailable, grpccore::StatusCode.DeadlineExceeded))));
+        public gaxgrpc::CallSettings DeleteSshPublicKeySettings { get; set; } = gaxgrpc::CallSettingsExtensions.WithRetry(gaxgrpc::CallSettings.FromExpiration(gax::Expiration.FromTimeout(sys::TimeSpan.FromMilliseconds(10000))), gaxgrpc::RetrySettings.FromExponentialBackoff(maxAttempts: 2147483647, initialBackoff: sys::TimeSpan.FromMilliseconds(100), maxBackoff: sys::TimeSpan.FromMilliseconds(60000), backoffMultiplier: 1.3, retryFilter: gaxgrpc::RetrySettings.FilterForStatusCodes(grpccore::StatusCode.Unavailable, grpccore::StatusCode.DeadlineExceeded)));
 
         /// <summary>
         /// <see cref="gaxgrpc::CallSettings"/> for synchronous and asynchronous calls to
@@ -99,13 +95,11 @@ namespace Google.Cloud.OsLogin.V1Beta
         /// <item><description>Initial retry delay: 100 milliseconds.</description></item>
         /// <item><description>Retry delay multiplier: 1.3</description></item>
         /// <item><description>Retry maximum delay: 60000 milliseconds.</description></item>
-        /// <item><description>Initial timeout: 10000 milliseconds.</description></item>
-        /// <item><description>Timeout multiplier: 1</description></item>
-        /// <item><description>Timeout maximum delay: 10000 milliseconds.</description></item>
-        /// <item><description>Total timeout: 10 seconds.</description></item>
+        /// <item><description>Maximum attempts: Unlimited</description></item>
+        /// <item><description>Timeout: 10 seconds.</description></item>
         /// </list>
         /// </remarks>
-        public gaxgrpc::CallSettings GetLoginProfileSettings { get; set; } = gaxgrpc::CallSettings.FromCallTiming(gaxgrpc::CallTiming.FromRetry(new gaxgrpc::RetrySettings(retryBackoff: new gaxgrpc::BackoffSettings(delay: sys::TimeSpan.FromMilliseconds(100), maxDelay: sys::TimeSpan.FromMilliseconds(60000), delayMultiplier: 1.3), timeoutBackoff: new gaxgrpc::BackoffSettings(delay: sys::TimeSpan.FromMilliseconds(10000), maxDelay: sys::TimeSpan.FromMilliseconds(10000), delayMultiplier: 1), totalExpiration: gax::Expiration.FromTimeout(sys::TimeSpan.FromMilliseconds(10000)), retryFilter: gaxgrpc::RetrySettings.FilterForStatusCodes(grpccore::StatusCode.Unavailable, grpccore::StatusCode.DeadlineExceeded))));
+        public gaxgrpc::CallSettings GetLoginProfileSettings { get; set; } = gaxgrpc::CallSettingsExtensions.WithRetry(gaxgrpc::CallSettings.FromExpiration(gax::Expiration.FromTimeout(sys::TimeSpan.FromMilliseconds(10000))), gaxgrpc::RetrySettings.FromExponentialBackoff(maxAttempts: 2147483647, initialBackoff: sys::TimeSpan.FromMilliseconds(100), maxBackoff: sys::TimeSpan.FromMilliseconds(60000), backoffMultiplier: 1.3, retryFilter: gaxgrpc::RetrySettings.FilterForStatusCodes(grpccore::StatusCode.Unavailable, grpccore::StatusCode.DeadlineExceeded)));
 
         /// <summary>
         /// <see cref="gaxgrpc::CallSettings"/> for synchronous and asynchronous calls to
@@ -116,13 +110,11 @@ namespace Google.Cloud.OsLogin.V1Beta
         /// <item><description>Initial retry delay: 100 milliseconds.</description></item>
         /// <item><description>Retry delay multiplier: 1.3</description></item>
         /// <item><description>Retry maximum delay: 60000 milliseconds.</description></item>
-        /// <item><description>Initial timeout: 10000 milliseconds.</description></item>
-        /// <item><description>Timeout multiplier: 1</description></item>
-        /// <item><description>Timeout maximum delay: 10000 milliseconds.</description></item>
-        /// <item><description>Total timeout: 10 seconds.</description></item>
+        /// <item><description>Maximum attempts: Unlimited</description></item>
+        /// <item><description>Timeout: 10 seconds.</description></item>
         /// </list>
         /// </remarks>
-        public gaxgrpc::CallSettings GetSshPublicKeySettings { get; set; } = gaxgrpc::CallSettings.FromCallTiming(gaxgrpc::CallTiming.FromRetry(new gaxgrpc::RetrySettings(retryBackoff: new gaxgrpc::BackoffSettings(delay: sys::TimeSpan.FromMilliseconds(100), maxDelay: sys::TimeSpan.FromMilliseconds(60000), delayMultiplier: 1.3), timeoutBackoff: new gaxgrpc::BackoffSettings(delay: sys::TimeSpan.FromMilliseconds(10000), maxDelay: sys::TimeSpan.FromMilliseconds(10000), delayMultiplier: 1), totalExpiration: gax::Expiration.FromTimeout(sys::TimeSpan.FromMilliseconds(10000)), retryFilter: gaxgrpc::RetrySettings.FilterForStatusCodes(grpccore::StatusCode.Unavailable, grpccore::StatusCode.DeadlineExceeded))));
+        public gaxgrpc::CallSettings GetSshPublicKeySettings { get; set; } = gaxgrpc::CallSettingsExtensions.WithRetry(gaxgrpc::CallSettings.FromExpiration(gax::Expiration.FromTimeout(sys::TimeSpan.FromMilliseconds(10000))), gaxgrpc::RetrySettings.FromExponentialBackoff(maxAttempts: 2147483647, initialBackoff: sys::TimeSpan.FromMilliseconds(100), maxBackoff: sys::TimeSpan.FromMilliseconds(60000), backoffMultiplier: 1.3, retryFilter: gaxgrpc::RetrySettings.FilterForStatusCodes(grpccore::StatusCode.Unavailable, grpccore::StatusCode.DeadlineExceeded)));
 
         /// <summary>
         /// <see cref="gaxgrpc::CallSettings"/> for synchronous and asynchronous calls to
@@ -133,13 +125,11 @@ namespace Google.Cloud.OsLogin.V1Beta
         /// <item><description>Initial retry delay: 100 milliseconds.</description></item>
         /// <item><description>Retry delay multiplier: 1.3</description></item>
         /// <item><description>Retry maximum delay: 60000 milliseconds.</description></item>
-        /// <item><description>Initial timeout: 10000 milliseconds.</description></item>
-        /// <item><description>Timeout multiplier: 1</description></item>
-        /// <item><description>Timeout maximum delay: 10000 milliseconds.</description></item>
-        /// <item><description>Total timeout: 10 seconds.</description></item>
+        /// <item><description>Maximum attempts: Unlimited</description></item>
+        /// <item><description>Timeout: 10 seconds.</description></item>
         /// </list>
         /// </remarks>
-        public gaxgrpc::CallSettings ImportSshPublicKeySettings { get; set; } = gaxgrpc::CallSettings.FromCallTiming(gaxgrpc::CallTiming.FromRetry(new gaxgrpc::RetrySettings(retryBackoff: new gaxgrpc::BackoffSettings(delay: sys::TimeSpan.FromMilliseconds(100), maxDelay: sys::TimeSpan.FromMilliseconds(60000), delayMultiplier: 1.3), timeoutBackoff: new gaxgrpc::BackoffSettings(delay: sys::TimeSpan.FromMilliseconds(10000), maxDelay: sys::TimeSpan.FromMilliseconds(10000), delayMultiplier: 1), totalExpiration: gax::Expiration.FromTimeout(sys::TimeSpan.FromMilliseconds(10000)), retryFilter: gaxgrpc::RetrySettings.FilterForStatusCodes(grpccore::StatusCode.Unavailable, grpccore::StatusCode.DeadlineExceeded))));
+        public gaxgrpc::CallSettings ImportSshPublicKeySettings { get; set; } = gaxgrpc::CallSettingsExtensions.WithRetry(gaxgrpc::CallSettings.FromExpiration(gax::Expiration.FromTimeout(sys::TimeSpan.FromMilliseconds(10000))), gaxgrpc::RetrySettings.FromExponentialBackoff(maxAttempts: 2147483647, initialBackoff: sys::TimeSpan.FromMilliseconds(100), maxBackoff: sys::TimeSpan.FromMilliseconds(60000), backoffMultiplier: 1.3, retryFilter: gaxgrpc::RetrySettings.FilterForStatusCodes(grpccore::StatusCode.Unavailable, grpccore::StatusCode.DeadlineExceeded)));
 
         /// <summary>
         /// <see cref="gaxgrpc::CallSettings"/> for synchronous and asynchronous calls to
@@ -150,13 +140,11 @@ namespace Google.Cloud.OsLogin.V1Beta
         /// <item><description>Initial retry delay: 100 milliseconds.</description></item>
         /// <item><description>Retry delay multiplier: 1.3</description></item>
         /// <item><description>Retry maximum delay: 60000 milliseconds.</description></item>
-        /// <item><description>Initial timeout: 10000 milliseconds.</description></item>
-        /// <item><description>Timeout multiplier: 1</description></item>
-        /// <item><description>Timeout maximum delay: 10000 milliseconds.</description></item>
-        /// <item><description>Total timeout: 10 seconds.</description></item>
+        /// <item><description>Maximum attempts: Unlimited</description></item>
+        /// <item><description>Timeout: 10 seconds.</description></item>
         /// </list>
         /// </remarks>
-        public gaxgrpc::CallSettings UpdateSshPublicKeySettings { get; set; } = gaxgrpc::CallSettings.FromCallTiming(gaxgrpc::CallTiming.FromRetry(new gaxgrpc::RetrySettings(retryBackoff: new gaxgrpc::BackoffSettings(delay: sys::TimeSpan.FromMilliseconds(100), maxDelay: sys::TimeSpan.FromMilliseconds(60000), delayMultiplier: 1.3), timeoutBackoff: new gaxgrpc::BackoffSettings(delay: sys::TimeSpan.FromMilliseconds(10000), maxDelay: sys::TimeSpan.FromMilliseconds(10000), delayMultiplier: 1), totalExpiration: gax::Expiration.FromTimeout(sys::TimeSpan.FromMilliseconds(10000)), retryFilter: gaxgrpc::RetrySettings.FilterForStatusCodes(grpccore::StatusCode.Unavailable, grpccore::StatusCode.DeadlineExceeded))));
+        public gaxgrpc::CallSettings UpdateSshPublicKeySettings { get; set; } = gaxgrpc::CallSettingsExtensions.WithRetry(gaxgrpc::CallSettings.FromExpiration(gax::Expiration.FromTimeout(sys::TimeSpan.FromMilliseconds(10000))), gaxgrpc::RetrySettings.FromExponentialBackoff(maxAttempts: 2147483647, initialBackoff: sys::TimeSpan.FromMilliseconds(100), maxBackoff: sys::TimeSpan.FromMilliseconds(60000), backoffMultiplier: 1.3, retryFilter: gaxgrpc::RetrySettings.FilterForStatusCodes(grpccore::StatusCode.Unavailable, grpccore::StatusCode.DeadlineExceeded)));
 
         /// <summary>Creates a deep clone of this object, with all the same property values.</summary>
         /// <returns>A deep clone of this <see cref="OsLoginServiceSettings"/> object.</returns>
@@ -172,40 +160,69 @@ namespace Google.Cloud.OsLogin.V1Beta
         /// <summary>The settings to use for RPCs, or <c>null</c> for the default settings.</summary>
         public OsLoginServiceSettings Settings { get; set; }
 
-        /// <inheritdoc/>
+        partial void InterceptBuild(ref OsLoginServiceClient client);
+
+        partial void InterceptBuildAsync(st::CancellationToken cancellationToken, ref stt::Task<OsLoginServiceClient> task);
+
+        /// <summary>Builds the resulting client.</summary>
         public override OsLoginServiceClient Build()
+        {
+            OsLoginServiceClient client = null;
+            InterceptBuild(ref client);
+            return client ?? BuildImpl();
+        }
+
+        /// <summary>Builds the resulting client asynchronously.</summary>
+        public override stt::Task<OsLoginServiceClient> BuildAsync(st::CancellationToken cancellationToken = default)
+        {
+            stt::Task<OsLoginServiceClient> task = null;
+            InterceptBuildAsync(cancellationToken, ref task);
+            return task ?? BuildAsyncImpl(cancellationToken);
+        }
+
+        private OsLoginServiceClient BuildImpl()
         {
             Validate();
             grpccore::CallInvoker callInvoker = CreateCallInvoker();
             return OsLoginServiceClient.Create(callInvoker, Settings);
         }
 
-        /// <inheritdoc/>
-        public override async stt::Task<OsLoginServiceClient> BuildAsync(st::CancellationToken cancellationToken = default)
+        private async stt::Task<OsLoginServiceClient> BuildAsyncImpl(st::CancellationToken cancellationToken)
         {
             Validate();
             grpccore::CallInvoker callInvoker = await CreateCallInvokerAsync(cancellationToken).ConfigureAwait(false);
             return OsLoginServiceClient.Create(callInvoker, Settings);
         }
 
-        /// <inheritdoc/>
-        protected override gaxgrpc::ServiceEndpoint GetDefaultEndpoint() => OsLoginServiceClient.DefaultEndpoint;
+        /// <summary>Returns the endpoint for this builder type, used if no endpoint is otherwise specified.</summary>
+        protected override string GetDefaultEndpoint() => OsLoginServiceClient.DefaultEndpoint;
 
-        /// <inheritdoc/>
+        /// <summary>
+        /// Returns the default scopes for this builder type, used if no scopes are otherwise specified.
+        /// </summary>
         protected override scg::IReadOnlyList<string> GetDefaultScopes() => OsLoginServiceClient.DefaultScopes;
 
-        /// <inheritdoc/>
+        /// <summary>Returns the channel pool to use when no other options are specified.</summary>
         protected override gaxgrpc::ChannelPool GetChannelPool() => OsLoginServiceClient.ChannelPool;
+
+        /// <summary>Returns the default <see cref="gaxgrpc::GrpcAdapter"/>to use if not otherwise specified.</summary>
+        protected override gaxgrpc::GrpcAdapter DefaultGrpcAdapter => gaxgrpccore::GrpcCoreAdapter.Instance;
     }
 
     /// <summary>OsLoginService client wrapper, for convenient use.</summary>
+    /// <remarks>
+    /// Cloud OS Login API
+    /// 
+    /// The Cloud OS Login API allows you to manage users and their associated SSH
+    /// public keys for logging into virtual machines on Google Cloud Platform.
+    /// </remarks>
     public abstract partial class OsLoginServiceClient
     {
         /// <summary>
         /// The default endpoint for the OsLoginService service, which is a host of "oslogin.googleapis.com" and a port
         /// of 443.
         /// </summary>
-        public static gaxgrpc::ServiceEndpoint DefaultEndpoint { get; } = new gaxgrpc::ServiceEndpoint("oslogin.googleapis.com", 443);
+        public static string DefaultEndpoint { get; } = "oslogin.googleapis.com:443";
 
         /// <summary>The default OsLoginService scopes.</summary>
         /// <remarks>
@@ -228,96 +245,22 @@ namespace Google.Cloud.OsLogin.V1Beta
         internal static gaxgrpc::ChannelPool ChannelPool { get; } = new gaxgrpc::ChannelPool(DefaultScopes);
 
         /// <summary>
-        /// Asynchronously creates a <see cref="OsLoginServiceClient"/>, applying defaults for all unspecified settings,
-        /// and creating a channel connecting to the given endpoint with application default credentials where 
-        /// necessary. See the example for how to use custom credentials.
+        /// Asynchronously creates a <see cref="OsLoginServiceClient"/> using the default credentials, endpoint and
+        /// settings. To specify custom credentials or other settings, use <see cref="OsLoginServiceClientBuilder"/>.
         /// </summary>
-        /// <example>
-        /// This sample shows how to create a client using default credentials:
-        /// <code>
-        /// using Google.Cloud.Vision.V1;
-        /// ...
-        /// // When running on Google Cloud Platform this will use the project Compute Credential.
-        /// // Or set the GOOGLE_APPLICATION_CREDENTIALS environment variable to the path of a JSON
-        /// // credential file to use that credential.
-        /// ImageAnnotatorClient client = await ImageAnnotatorClient.CreateAsync();
-        /// </code>
-        /// This sample shows how to create a client using credentials loaded from a JSON file:
-        /// <code>
-        /// using Google.Cloud.Vision.V1;
-        /// using Google.Apis.Auth.OAuth2;
-        /// using Grpc.Auth;
-        /// using Grpc.Core;
-        /// ...
-        /// GoogleCredential cred = GoogleCredential.FromFile("/path/to/credentials.json");
-        /// Channel channel = new Channel(
-        ///     ImageAnnotatorClient.DefaultEndpoint.Host, ImageAnnotatorClient.DefaultEndpoint.Port, cred.ToChannelCredentials());
-        /// ImageAnnotatorClient client = ImageAnnotatorClient.Create(channel);
-        /// ...
-        /// // Shutdown the channel when it is no longer required.
-        /// await channel.ShutdownAsync();
-        /// </code>
-        /// </example>
-        /// <param name="endpoint">Optional <see cref="gaxgrpc::ServiceEndpoint"/>.</param>
-        /// <param name="settings">Optional <see cref="OsLoginServiceSettings"/>.</param>
+        /// <param name="cancellationToken">
+        /// The <see cref="st::CancellationToken"/> to use while creating the client.
+        /// </param>
         /// <returns>The task representing the created <see cref="OsLoginServiceClient"/>.</returns>
-        public static async stt::Task<OsLoginServiceClient> CreateAsync(gaxgrpc::ServiceEndpoint endpoint = null, OsLoginServiceSettings settings = null)
-        {
-            grpccore::Channel channel = await ChannelPool.GetChannelAsync(endpoint ?? DefaultEndpoint).ConfigureAwait(false);
-            return Create(channel, settings);
-        }
+        public static stt::Task<OsLoginServiceClient> CreateAsync(st::CancellationToken cancellationToken = default) =>
+            new OsLoginServiceClientBuilder().BuildAsync(cancellationToken);
 
         /// <summary>
-        /// Synchronously creates a <see cref="OsLoginServiceClient"/>, applying defaults for all unspecified settings, 
-        /// and creating a channel connecting to the given endpoint with application default credentials where 
-        /// necessary. See the example for how to use custom credentials.
+        /// Synchronously creates a <see cref="OsLoginServiceClient"/> using the default credentials, endpoint and
+        /// settings. To specify custom credentials or other settings, use <see cref="OsLoginServiceClientBuilder"/>.
         /// </summary>
-        /// <example>
-        /// This sample shows how to create a client using default credentials:
-        /// <code>
-        /// using Google.Cloud.Vision.V1;
-        /// ...
-        /// // When running on Google Cloud Platform this will use the project Compute Credential.
-        /// // Or set the GOOGLE_APPLICATION_CREDENTIALS environment variable to the path of a JSON
-        /// // credential file to use that credential.
-        /// ImageAnnotatorClient client = ImageAnnotatorClient.Create();
-        /// </code>
-        /// This sample shows how to create a client using credentials loaded from a JSON file:
-        /// <code>
-        /// using Google.Cloud.Vision.V1;
-        /// using Google.Apis.Auth.OAuth2;
-        /// using Grpc.Auth;
-        /// using Grpc.Core;
-        /// ...
-        /// GoogleCredential cred = GoogleCredential.FromFile("/path/to/credentials.json");
-        /// Channel channel = new Channel(
-        ///     ImageAnnotatorClient.DefaultEndpoint.Host, ImageAnnotatorClient.DefaultEndpoint.Port, cred.ToChannelCredentials());
-        /// ImageAnnotatorClient client = ImageAnnotatorClient.Create(channel);
-        /// ...
-        /// // Shutdown the channel when it is no longer required.
-        /// channel.ShutdownAsync().Wait();
-        /// </code>
-        /// </example>
-        /// <param name="endpoint">Optional <see cref="gaxgrpc::ServiceEndpoint"/>.</param>
-        /// <param name="settings">Optional <see cref="OsLoginServiceSettings"/>.</param>
         /// <returns>The created <see cref="OsLoginServiceClient"/>.</returns>
-        public static OsLoginServiceClient Create(gaxgrpc::ServiceEndpoint endpoint = null, OsLoginServiceSettings settings = null)
-        {
-            grpccore::Channel channel = ChannelPool.GetChannel(endpoint ?? DefaultEndpoint);
-            return Create(channel, settings);
-        }
-
-        /// <summary>
-        /// Creates a <see cref="OsLoginServiceClient"/> which uses the specified channel for remote operations.
-        /// </summary>
-        /// <param name="channel">The <see cref="grpccore::Channel"/> for remote operations. Must not be null.</param>
-        /// <param name="settings">Optional <see cref="OsLoginServiceSettings"/>.</param>
-        /// <returns>The created <see cref="OsLoginServiceClient"/>.</returns>
-        public static OsLoginServiceClient Create(grpccore::Channel channel, OsLoginServiceSettings settings = null)
-        {
-            gax::GaxPreconditions.CheckNotNull(channel, nameof(channel));
-            return Create(new grpccore::DefaultCallInvoker(channel), settings);
-        }
+        public static OsLoginServiceClient Create() => new OsLoginServiceClientBuilder().Build();
 
         /// <summary>
         /// Creates a <see cref="OsLoginServiceClient"/> which uses the specified call invoker for remote operations.
@@ -327,7 +270,7 @@ namespace Google.Cloud.OsLogin.V1Beta
         /// </param>
         /// <param name="settings">Optional <see cref="OsLoginServiceSettings"/>.</param>
         /// <returns>The created <see cref="OsLoginServiceClient"/>.</returns>
-        public static OsLoginServiceClient Create(grpccore::CallInvoker callInvoker, OsLoginServiceSettings settings = null)
+        internal static OsLoginServiceClient Create(grpccore::CallInvoker callInvoker, OsLoginServiceSettings settings = null)
         {
             gax::GaxPreconditions.CheckNotNull(callInvoker, nameof(callInvoker));
             grpcinter::Interceptor interceptor = settings?.Interceptor;
@@ -340,16 +283,14 @@ namespace Google.Cloud.OsLogin.V1Beta
         }
 
         /// <summary>
-        /// Shuts down any channels automatically created by
-        /// <see cref="Create(grpccore::CallInvoker,OsLoginServiceSettings)"/> and
-        /// <see cref="CreateAsync(gaxgrpc::ServiceEndpoint,OsLoginServiceSettings)"/>. Channels which weren't
-        /// automatically created are not affected.
+        /// Shuts down any channels automatically created by <see cref="Create()"/> and
+        /// <see cref="CreateAsync(st::CancellationToken)"/>. Channels which weren't automatically created are not
+        /// affected.
         /// </summary>
         /// <remarks>
-        /// After calling this method, further calls to
-        /// <see cref="Create(grpccore::CallInvoker,OsLoginServiceSettings)"/> and
-        /// <see cref="CreateAsync(gaxgrpc::ServiceEndpoint,OsLoginServiceSettings)"/> will create new channels, which
-        /// could in turn be shut down by another call to this method.
+        /// After calling this method, further calls to <see cref="Create()"/> and
+        /// <see cref="CreateAsync(st::CancellationToken)"/> will create new channels, which could in turn be shut down
+        /// by another call to this method.
         /// </remarks>
         /// <returns>A task representing the asynchronous shutdown operation.</returns>
         public static stt::Task ShutdownDefaultChannelsAsync() => ChannelPool.ShutdownChannelsAsync();
@@ -1391,6 +1332,12 @@ namespace Google.Cloud.OsLogin.V1Beta
     }
 
     /// <summary>OsLoginService client wrapper implementation, for convenient use.</summary>
+    /// <remarks>
+    /// Cloud OS Login API
+    /// 
+    /// The Cloud OS Login API allows you to manage users and their associated SSH
+    /// public keys for logging into virtual machines on Google Cloud Platform.
+    /// </remarks>
     public sealed partial class OsLoginServiceClientImpl : OsLoginServiceClient
     {
         private readonly gaxgrpc::ApiCall<DeletePosixAccountRequest, wkt::Empty> _callDeletePosixAccount;
@@ -1415,22 +1362,22 @@ namespace Google.Cloud.OsLogin.V1Beta
             GrpcClient = grpcClient;
             OsLoginServiceSettings effectiveSettings = settings ?? OsLoginServiceSettings.GetDefault();
             gaxgrpc::ClientHelper clientHelper = new gaxgrpc::ClientHelper(effectiveSettings);
-            _callDeletePosixAccount = clientHelper.BuildApiCall<DeletePosixAccountRequest, wkt::Empty>(grpcClient.DeletePosixAccountAsync, grpcClient.DeletePosixAccount, effectiveSettings.DeletePosixAccountSettings).WithCallSettingsOverlay(request => gaxgrpc::CallSettings.FromHeader("x-goog-request-params", $"name={(sysnet::WebUtility.UrlEncode(request.Name))}"));
+            _callDeletePosixAccount = clientHelper.BuildApiCall<DeletePosixAccountRequest, wkt::Empty>(grpcClient.DeletePosixAccountAsync, grpcClient.DeletePosixAccount, effectiveSettings.DeletePosixAccountSettings).WithGoogleRequestParam("name", request => request.Name);
             Modify_ApiCall(ref _callDeletePosixAccount);
             Modify_DeletePosixAccountApiCall(ref _callDeletePosixAccount);
-            _callDeleteSshPublicKey = clientHelper.BuildApiCall<DeleteSshPublicKeyRequest, wkt::Empty>(grpcClient.DeleteSshPublicKeyAsync, grpcClient.DeleteSshPublicKey, effectiveSettings.DeleteSshPublicKeySettings).WithCallSettingsOverlay(request => gaxgrpc::CallSettings.FromHeader("x-goog-request-params", $"name={(sysnet::WebUtility.UrlEncode(request.Name))}"));
+            _callDeleteSshPublicKey = clientHelper.BuildApiCall<DeleteSshPublicKeyRequest, wkt::Empty>(grpcClient.DeleteSshPublicKeyAsync, grpcClient.DeleteSshPublicKey, effectiveSettings.DeleteSshPublicKeySettings).WithGoogleRequestParam("name", request => request.Name);
             Modify_ApiCall(ref _callDeleteSshPublicKey);
             Modify_DeleteSshPublicKeyApiCall(ref _callDeleteSshPublicKey);
-            _callGetLoginProfile = clientHelper.BuildApiCall<GetLoginProfileRequest, LoginProfile>(grpcClient.GetLoginProfileAsync, grpcClient.GetLoginProfile, effectiveSettings.GetLoginProfileSettings).WithCallSettingsOverlay(request => gaxgrpc::CallSettings.FromHeader("x-goog-request-params", $"name={(sysnet::WebUtility.UrlEncode(request.Name))}"));
+            _callGetLoginProfile = clientHelper.BuildApiCall<GetLoginProfileRequest, LoginProfile>(grpcClient.GetLoginProfileAsync, grpcClient.GetLoginProfile, effectiveSettings.GetLoginProfileSettings).WithGoogleRequestParam("name", request => request.Name);
             Modify_ApiCall(ref _callGetLoginProfile);
             Modify_GetLoginProfileApiCall(ref _callGetLoginProfile);
-            _callGetSshPublicKey = clientHelper.BuildApiCall<GetSshPublicKeyRequest, gcoc::SshPublicKey>(grpcClient.GetSshPublicKeyAsync, grpcClient.GetSshPublicKey, effectiveSettings.GetSshPublicKeySettings).WithCallSettingsOverlay(request => gaxgrpc::CallSettings.FromHeader("x-goog-request-params", $"name={(sysnet::WebUtility.UrlEncode(request.Name))}"));
+            _callGetSshPublicKey = clientHelper.BuildApiCall<GetSshPublicKeyRequest, gcoc::SshPublicKey>(grpcClient.GetSshPublicKeyAsync, grpcClient.GetSshPublicKey, effectiveSettings.GetSshPublicKeySettings).WithGoogleRequestParam("name", request => request.Name);
             Modify_ApiCall(ref _callGetSshPublicKey);
             Modify_GetSshPublicKeyApiCall(ref _callGetSshPublicKey);
-            _callImportSshPublicKey = clientHelper.BuildApiCall<ImportSshPublicKeyRequest, ImportSshPublicKeyResponse>(grpcClient.ImportSshPublicKeyAsync, grpcClient.ImportSshPublicKey, effectiveSettings.ImportSshPublicKeySettings).WithCallSettingsOverlay(request => gaxgrpc::CallSettings.FromHeader("x-goog-request-params", $"parent={(sysnet::WebUtility.UrlEncode(request.Parent))}"));
+            _callImportSshPublicKey = clientHelper.BuildApiCall<ImportSshPublicKeyRequest, ImportSshPublicKeyResponse>(grpcClient.ImportSshPublicKeyAsync, grpcClient.ImportSshPublicKey, effectiveSettings.ImportSshPublicKeySettings).WithGoogleRequestParam("parent", request => request.Parent);
             Modify_ApiCall(ref _callImportSshPublicKey);
             Modify_ImportSshPublicKeyApiCall(ref _callImportSshPublicKey);
-            _callUpdateSshPublicKey = clientHelper.BuildApiCall<UpdateSshPublicKeyRequest, gcoc::SshPublicKey>(grpcClient.UpdateSshPublicKeyAsync, grpcClient.UpdateSshPublicKey, effectiveSettings.UpdateSshPublicKeySettings).WithCallSettingsOverlay(request => gaxgrpc::CallSettings.FromHeader("x-goog-request-params", $"name={(sysnet::WebUtility.UrlEncode(request.Name))}"));
+            _callUpdateSshPublicKey = clientHelper.BuildApiCall<UpdateSshPublicKeyRequest, gcoc::SshPublicKey>(grpcClient.UpdateSshPublicKeyAsync, grpcClient.UpdateSshPublicKey, effectiveSettings.UpdateSshPublicKeySettings).WithGoogleRequestParam("name", request => request.Name);
             Modify_ApiCall(ref _callUpdateSshPublicKey);
             Modify_UpdateSshPublicKeyApiCall(ref _callUpdateSshPublicKey);
             OnConstruction(grpcClient, effectiveSettings, clientHelper);

@@ -25,17 +25,22 @@ namespace Google.Cloud.Monitoring.V3 {
       byte[] descriptorData = global::System.Convert.FromBase64String(
           string.Concat(
             "CiBnb29nbGUvbW9uaXRvcmluZy92My9ncm91cC5wcm90bxIUZ29vZ2xlLm1v",
-            "bml0b3JpbmcudjMiZAoFR3JvdXASDAoEbmFtZRgBIAEoCRIUCgxkaXNwbGF5",
-            "X25hbWUYAiABKAkSEwoLcGFyZW50X25hbWUYAyABKAkSDgoGZmlsdGVyGAUg",
-            "ASgJEhIKCmlzX2NsdXN0ZXIYBiABKAhCogEKGGNvbS5nb29nbGUubW9uaXRv",
-            "cmluZy52M0IKR3JvdXBQcm90b1ABWj5nb29nbGUuZ29sYW5nLm9yZy9nZW5w",
-            "cm90by9nb29nbGVhcGlzL21vbml0b3JpbmcvdjM7bW9uaXRvcmluZ6oCGkdv",
-            "b2dsZS5DbG91ZC5Nb25pdG9yaW5nLlYzygIaR29vZ2xlXENsb3VkXE1vbml0",
-            "b3JpbmdcVjNiBnByb3RvMw=="));
+            "bml0b3JpbmcudjMaGWdvb2dsZS9hcGkvcmVzb3VyY2UucHJvdG8igAIKBUdy",
+            "b3VwEgwKBG5hbWUYASABKAkSFAoMZGlzcGxheV9uYW1lGAIgASgJEhMKC3Bh",
+            "cmVudF9uYW1lGAMgASgJEg4KBmZpbHRlchgFIAEoCRISCgppc19jbHVzdGVy",
+            "GAYgASgIOpkB6kGVAQofbW9uaXRvcmluZy5nb29nbGVhcGlzLmNvbS9Hcm91",
+            "cBIhcHJvamVjdHMve3Byb2plY3R9L2dyb3Vwcy97Z3JvdXB9Eitvcmdhbml6",
+            "YXRpb25zL3tvcmdhbml6YXRpb259L2dyb3Vwcy97Z3JvdXB9Eh9mb2xkZXJz",
+            "L3tmb2xkZXJ9L2dyb3Vwcy97Z3JvdXB9EgEqQsIBChhjb20uZ29vZ2xlLm1v",
+            "bml0b3JpbmcudjNCCkdyb3VwUHJvdG9QAVo+Z29vZ2xlLmdvbGFuZy5vcmcv",
+            "Z2VucHJvdG8vZ29vZ2xlYXBpcy9tb25pdG9yaW5nL3YzO21vbml0b3Jpbmeq",
+            "AhpHb29nbGUuQ2xvdWQuTW9uaXRvcmluZy5WM8oCGkdvb2dsZVxDbG91ZFxN",
+            "b25pdG9yaW5nXFYz6gIdR29vZ2xlOjpDbG91ZDo6TW9uaXRvcmluZzo6VjNi",
+            "BnByb3RvMw=="));
       descriptor = pbr::FileDescriptor.FromGeneratedCode(descriptorData,
-          new pbr::FileDescriptor[] { },
-          new pbr::GeneratedClrTypeInfo(null, new pbr::GeneratedClrTypeInfo[] {
-            new pbr::GeneratedClrTypeInfo(typeof(global::Google.Cloud.Monitoring.V3.Group), global::Google.Cloud.Monitoring.V3.Group.Parser, new[]{ "Name", "DisplayName", "ParentName", "Filter", "IsCluster" }, null, null, null)
+          new pbr::FileDescriptor[] { global::Google.Api.ResourceReflection.Descriptor, },
+          new pbr::GeneratedClrTypeInfo(null, null, new pbr::GeneratedClrTypeInfo[] {
+            new pbr::GeneratedClrTypeInfo(typeof(global::Google.Cloud.Monitoring.V3.Group), global::Google.Cloud.Monitoring.V3.Group.Parser, new[]{ "Name", "DisplayName", "ParentName", "Filter", "IsCluster" }, null, null, null, null)
           }));
     }
     #endregion
@@ -70,7 +75,11 @@ namespace Google.Cloud.Monitoring.V3 {
   /// depending on what resources exist and what filters are associated with the
   /// group and its ancestors.
   /// </summary>
-  public sealed partial class Group : pb::IMessage<Group> {
+  public sealed partial class Group : pb::IMessage<Group>
+  #if !GOOGLE_PROTOBUF_REFSTRUCT_COMPATIBILITY_MODE
+      , pb::IBufferMessage
+  #endif
+  {
     private static readonly pb::MessageParser<Group> _parser = new pb::MessageParser<Group>(() => new Group());
     private pb::UnknownFieldSet _unknownFields;
     [global::System.Diagnostics.DebuggerNonUserCodeAttribute]
@@ -112,11 +121,13 @@ namespace Google.Cloud.Monitoring.V3 {
     public const int NameFieldNumber = 1;
     private string name_ = "";
     /// <summary>
-    /// Output only. The name of this group. The format is
-    /// `"projects/{project_id_or_number}/groups/{group_id}"`.
+    /// Output only. The name of this group. The format is:
+    ///
+    ///     projects/[PROJECT_ID_OR_NUMBER]/groups/[GROUP_ID]
+    ///
     /// When creating a group, this field is ignored and a new name is created
     /// consisting of the project specified in the call to `CreateGroup`
-    /// and a unique `{group_id}` that is generated automatically.
+    /// and a unique `[GROUP_ID]` that is generated automatically.
     /// </summary>
     [global::System.Diagnostics.DebuggerNonUserCodeAttribute]
     public string Name {
@@ -144,9 +155,11 @@ namespace Google.Cloud.Monitoring.V3 {
     public const int ParentNameFieldNumber = 3;
     private string parentName_ = "";
     /// <summary>
-    /// The name of the group's parent, if it has one.
-    /// The format is `"projects/{project_id_or_number}/groups/{group_id}"`.
-    /// For groups with no parent, `parentName` is the empty string, `""`.
+    /// The name of the group's parent, if it has one. The format is:
+    ///
+    ///     projects/[PROJECT_ID_OR_NUMBER]/groups/[GROUP_ID]
+    ///
+    /// For groups with no parent, `parent_name` is the empty string, `""`.
     /// </summary>
     [global::System.Diagnostics.DebuggerNonUserCodeAttribute]
     public string ParentName {
@@ -228,6 +241,9 @@ namespace Google.Cloud.Monitoring.V3 {
 
     [global::System.Diagnostics.DebuggerNonUserCodeAttribute]
     public void WriteTo(pb::CodedOutputStream output) {
+    #if !GOOGLE_PROTOBUF_REFSTRUCT_COMPATIBILITY_MODE
+      output.WriteRawMessage(this);
+    #else
       if (Name.Length != 0) {
         output.WriteRawTag(10);
         output.WriteString(Name);
@@ -251,7 +267,37 @@ namespace Google.Cloud.Monitoring.V3 {
       if (_unknownFields != null) {
         _unknownFields.WriteTo(output);
       }
+    #endif
     }
+
+    #if !GOOGLE_PROTOBUF_REFSTRUCT_COMPATIBILITY_MODE
+    [global::System.Diagnostics.DebuggerNonUserCodeAttribute]
+    void pb::IBufferMessage.InternalWriteTo(ref pb::WriteContext output) {
+      if (Name.Length != 0) {
+        output.WriteRawTag(10);
+        output.WriteString(Name);
+      }
+      if (DisplayName.Length != 0) {
+        output.WriteRawTag(18);
+        output.WriteString(DisplayName);
+      }
+      if (ParentName.Length != 0) {
+        output.WriteRawTag(26);
+        output.WriteString(ParentName);
+      }
+      if (Filter.Length != 0) {
+        output.WriteRawTag(42);
+        output.WriteString(Filter);
+      }
+      if (IsCluster != false) {
+        output.WriteRawTag(48);
+        output.WriteBool(IsCluster);
+      }
+      if (_unknownFields != null) {
+        _unknownFields.WriteTo(ref output);
+      }
+    }
+    #endif
 
     [global::System.Diagnostics.DebuggerNonUserCodeAttribute]
     public int CalculateSize() {
@@ -302,6 +348,9 @@ namespace Google.Cloud.Monitoring.V3 {
 
     [global::System.Diagnostics.DebuggerNonUserCodeAttribute]
     public void MergeFrom(pb::CodedInputStream input) {
+    #if !GOOGLE_PROTOBUF_REFSTRUCT_COMPATIBILITY_MODE
+      input.ReadRawMessage(this);
+    #else
       uint tag;
       while ((tag = input.ReadTag()) != 0) {
         switch(tag) {
@@ -330,7 +379,42 @@ namespace Google.Cloud.Monitoring.V3 {
           }
         }
       }
+    #endif
     }
+
+    #if !GOOGLE_PROTOBUF_REFSTRUCT_COMPATIBILITY_MODE
+    [global::System.Diagnostics.DebuggerNonUserCodeAttribute]
+    void pb::IBufferMessage.InternalMergeFrom(ref pb::ParseContext input) {
+      uint tag;
+      while ((tag = input.ReadTag()) != 0) {
+        switch(tag) {
+          default:
+            _unknownFields = pb::UnknownFieldSet.MergeFieldFrom(_unknownFields, ref input);
+            break;
+          case 10: {
+            Name = input.ReadString();
+            break;
+          }
+          case 18: {
+            DisplayName = input.ReadString();
+            break;
+          }
+          case 26: {
+            ParentName = input.ReadString();
+            break;
+          }
+          case 42: {
+            Filter = input.ReadString();
+            break;
+          }
+          case 48: {
+            IsCluster = input.ReadBool();
+            break;
+          }
+        }
+      }
+    }
+    #endif
 
   }
 

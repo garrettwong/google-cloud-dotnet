@@ -25,12 +25,12 @@ namespace Google.Cloud.AutoML.V1 {
       byte[] descriptorData = global::System.Convert.FromBase64String(
           string.Concat(
             "Cidnb29nbGUvY2xvdWQvYXV0b21sL3YxL2RhdGFfaXRlbXMucHJvdG8SFmdv",
-            "b2dsZS5jbG91ZC5hdXRvbWwudjEaHGdvb2dsZS9hcGkvYW5ub3RhdGlvbnMu",
-            "cHJvdG8aJWdvb2dsZS9jbG91ZC9hdXRvbWwvdjEvZ2VvbWV0cnkucHJvdG8a",
-            "H2dvb2dsZS9jbG91ZC9hdXRvbWwvdjEvaW8ucHJvdG8aKWdvb2dsZS9jbG91",
-            "ZC9hdXRvbWwvdjEvdGV4dF9zZWdtZW50LnByb3RvGhlnb29nbGUvcHJvdG9i",
-            "dWYvYW55LnByb3RvGh5nb29nbGUvcHJvdG9idWYvZHVyYXRpb24ucHJvdG8a",
-            "HGdvb2dsZS9wcm90b2J1Zi9zdHJ1Y3QucHJvdG8iPQoFSW1hZ2USFQoLaW1h",
+            "b2dsZS5jbG91ZC5hdXRvbWwudjEaJWdvb2dsZS9jbG91ZC9hdXRvbWwvdjEv",
+            "Z2VvbWV0cnkucHJvdG8aH2dvb2dsZS9jbG91ZC9hdXRvbWwvdjEvaW8ucHJv",
+            "dG8aKWdvb2dsZS9jbG91ZC9hdXRvbWwvdjEvdGV4dF9zZWdtZW50LnByb3Rv",
+            "Ghlnb29nbGUvcHJvdG9idWYvYW55LnByb3RvGh5nb29nbGUvcHJvdG9idWYv",
+            "ZHVyYXRpb24ucHJvdG8aHGdvb2dsZS9wcm90b2J1Zi9zdHJ1Y3QucHJvdG8a",
+            "HGdvb2dsZS9hcGkvYW5ub3RhdGlvbnMucHJvdG8iPQoFSW1hZ2USFQoLaW1h",
             "Z2VfYnl0ZXMYASABKAxIABIVCg10aHVtYm5haWxfdXJpGAQgASgJQgYKBGRh",
             "dGEiRgoLVGV4dFNuaXBwZXQSDwoHY29udGVudBgBIAEoCRIRCgltaW1lX3R5",
             "cGUYAiABKAkSEwoLY29udGVudF91cmkYBCABKAki6gEKEkRvY3VtZW50RGlt",
@@ -65,13 +65,13 @@ namespace Google.Cloud.AutoML.V1 {
             "LlYxygIWR29vZ2xlXENsb3VkXEF1dG9NbFxWMeoCGUdvb2dsZTo6Q2xvdWQ6",
             "OkF1dG9NTDo6VjFiBnByb3RvMw=="));
       descriptor = pbr::FileDescriptor.FromGeneratedCode(descriptorData,
-          new pbr::FileDescriptor[] { global::Google.Api.AnnotationsReflection.Descriptor, global::Google.Cloud.AutoML.V1.GeometryReflection.Descriptor, global::Google.Cloud.AutoML.V1.IoReflection.Descriptor, global::Google.Cloud.AutoML.V1.TextSegmentReflection.Descriptor, global::Google.Protobuf.WellKnownTypes.AnyReflection.Descriptor, global::Google.Protobuf.WellKnownTypes.DurationReflection.Descriptor, global::Google.Protobuf.WellKnownTypes.StructReflection.Descriptor, },
-          new pbr::GeneratedClrTypeInfo(null, new pbr::GeneratedClrTypeInfo[] {
-            new pbr::GeneratedClrTypeInfo(typeof(global::Google.Cloud.AutoML.V1.Image), global::Google.Cloud.AutoML.V1.Image.Parser, new[]{ "ImageBytes", "ThumbnailUri" }, new[]{ "Data" }, null, null),
-            new pbr::GeneratedClrTypeInfo(typeof(global::Google.Cloud.AutoML.V1.TextSnippet), global::Google.Cloud.AutoML.V1.TextSnippet.Parser, new[]{ "Content", "MimeType", "ContentUri" }, null, null, null),
-            new pbr::GeneratedClrTypeInfo(typeof(global::Google.Cloud.AutoML.V1.DocumentDimensions), global::Google.Cloud.AutoML.V1.DocumentDimensions.Parser, new[]{ "Unit", "Width", "Height" }, null, new[]{ typeof(global::Google.Cloud.AutoML.V1.DocumentDimensions.Types.DocumentDimensionUnit) }, null),
-            new pbr::GeneratedClrTypeInfo(typeof(global::Google.Cloud.AutoML.V1.Document), global::Google.Cloud.AutoML.V1.Document.Parser, new[]{ "InputConfig", "DocumentText", "Layout", "DocumentDimensions", "PageCount" }, null, null, new pbr::GeneratedClrTypeInfo[] { new pbr::GeneratedClrTypeInfo(typeof(global::Google.Cloud.AutoML.V1.Document.Types.Layout), global::Google.Cloud.AutoML.V1.Document.Types.Layout.Parser, new[]{ "TextSegment", "PageNumber", "BoundingPoly", "TextSegmentType" }, null, new[]{ typeof(global::Google.Cloud.AutoML.V1.Document.Types.Layout.Types.TextSegmentType) }, null)}),
-            new pbr::GeneratedClrTypeInfo(typeof(global::Google.Cloud.AutoML.V1.ExamplePayload), global::Google.Cloud.AutoML.V1.ExamplePayload.Parser, new[]{ "Image", "TextSnippet", "Document" }, new[]{ "Payload" }, null, null)
+          new pbr::FileDescriptor[] { global::Google.Cloud.AutoML.V1.GeometryReflection.Descriptor, global::Google.Cloud.AutoML.V1.IoReflection.Descriptor, global::Google.Cloud.AutoML.V1.TextSegmentReflection.Descriptor, global::Google.Protobuf.WellKnownTypes.AnyReflection.Descriptor, global::Google.Protobuf.WellKnownTypes.DurationReflection.Descriptor, global::Google.Protobuf.WellKnownTypes.StructReflection.Descriptor, global::Google.Api.AnnotationsReflection.Descriptor, },
+          new pbr::GeneratedClrTypeInfo(null, null, new pbr::GeneratedClrTypeInfo[] {
+            new pbr::GeneratedClrTypeInfo(typeof(global::Google.Cloud.AutoML.V1.Image), global::Google.Cloud.AutoML.V1.Image.Parser, new[]{ "ImageBytes", "ThumbnailUri" }, new[]{ "Data" }, null, null, null),
+            new pbr::GeneratedClrTypeInfo(typeof(global::Google.Cloud.AutoML.V1.TextSnippet), global::Google.Cloud.AutoML.V1.TextSnippet.Parser, new[]{ "Content", "MimeType", "ContentUri" }, null, null, null, null),
+            new pbr::GeneratedClrTypeInfo(typeof(global::Google.Cloud.AutoML.V1.DocumentDimensions), global::Google.Cloud.AutoML.V1.DocumentDimensions.Parser, new[]{ "Unit", "Width", "Height" }, null, new[]{ typeof(global::Google.Cloud.AutoML.V1.DocumentDimensions.Types.DocumentDimensionUnit) }, null, null),
+            new pbr::GeneratedClrTypeInfo(typeof(global::Google.Cloud.AutoML.V1.Document), global::Google.Cloud.AutoML.V1.Document.Parser, new[]{ "InputConfig", "DocumentText", "Layout", "DocumentDimensions", "PageCount" }, null, null, null, new pbr::GeneratedClrTypeInfo[] { new pbr::GeneratedClrTypeInfo(typeof(global::Google.Cloud.AutoML.V1.Document.Types.Layout), global::Google.Cloud.AutoML.V1.Document.Types.Layout.Parser, new[]{ "TextSegment", "PageNumber", "BoundingPoly", "TextSegmentType" }, null, new[]{ typeof(global::Google.Cloud.AutoML.V1.Document.Types.Layout.Types.TextSegmentType) }, null, null)}),
+            new pbr::GeneratedClrTypeInfo(typeof(global::Google.Cloud.AutoML.V1.ExamplePayload), global::Google.Cloud.AutoML.V1.ExamplePayload.Parser, new[]{ "Image", "TextSnippet", "Document" }, new[]{ "Payload" }, null, null, null)
           }));
     }
     #endregion
@@ -82,7 +82,11 @@ namespace Google.Cloud.AutoML.V1 {
   /// A representation of an image.
   /// Only images up to 30MB in size are supported.
   /// </summary>
-  public sealed partial class Image : pb::IMessage<Image> {
+  public sealed partial class Image : pb::IMessage<Image>
+  #if !GOOGLE_PROTOBUF_REFSTRUCT_COMPATIBILITY_MODE
+      , pb::IBufferMessage
+  #endif
+  {
     private static readonly pb::MessageParser<Image> _parser = new pb::MessageParser<Image>(() => new Image());
     private pb::UnknownFieldSet _unknownFields;
     [global::System.Diagnostics.DebuggerNonUserCodeAttribute]
@@ -208,6 +212,9 @@ namespace Google.Cloud.AutoML.V1 {
 
     [global::System.Diagnostics.DebuggerNonUserCodeAttribute]
     public void WriteTo(pb::CodedOutputStream output) {
+    #if !GOOGLE_PROTOBUF_REFSTRUCT_COMPATIBILITY_MODE
+      output.WriteRawMessage(this);
+    #else
       if (dataCase_ == DataOneofCase.ImageBytes) {
         output.WriteRawTag(10);
         output.WriteBytes(ImageBytes);
@@ -219,7 +226,25 @@ namespace Google.Cloud.AutoML.V1 {
       if (_unknownFields != null) {
         _unknownFields.WriteTo(output);
       }
+    #endif
     }
+
+    #if !GOOGLE_PROTOBUF_REFSTRUCT_COMPATIBILITY_MODE
+    [global::System.Diagnostics.DebuggerNonUserCodeAttribute]
+    void pb::IBufferMessage.InternalWriteTo(ref pb::WriteContext output) {
+      if (dataCase_ == DataOneofCase.ImageBytes) {
+        output.WriteRawTag(10);
+        output.WriteBytes(ImageBytes);
+      }
+      if (ThumbnailUri.Length != 0) {
+        output.WriteRawTag(34);
+        output.WriteString(ThumbnailUri);
+      }
+      if (_unknownFields != null) {
+        _unknownFields.WriteTo(ref output);
+      }
+    }
+    #endif
 
     [global::System.Diagnostics.DebuggerNonUserCodeAttribute]
     public int CalculateSize() {
@@ -255,6 +280,9 @@ namespace Google.Cloud.AutoML.V1 {
 
     [global::System.Diagnostics.DebuggerNonUserCodeAttribute]
     public void MergeFrom(pb::CodedInputStream input) {
+    #if !GOOGLE_PROTOBUF_REFSTRUCT_COMPATIBILITY_MODE
+      input.ReadRawMessage(this);
+    #else
       uint tag;
       while ((tag = input.ReadTag()) != 0) {
         switch(tag) {
@@ -271,14 +299,41 @@ namespace Google.Cloud.AutoML.V1 {
           }
         }
       }
+    #endif
     }
+
+    #if !GOOGLE_PROTOBUF_REFSTRUCT_COMPATIBILITY_MODE
+    [global::System.Diagnostics.DebuggerNonUserCodeAttribute]
+    void pb::IBufferMessage.InternalMergeFrom(ref pb::ParseContext input) {
+      uint tag;
+      while ((tag = input.ReadTag()) != 0) {
+        switch(tag) {
+          default:
+            _unknownFields = pb::UnknownFieldSet.MergeFieldFrom(_unknownFields, ref input);
+            break;
+          case 10: {
+            ImageBytes = input.ReadBytes();
+            break;
+          }
+          case 34: {
+            ThumbnailUri = input.ReadString();
+            break;
+          }
+        }
+      }
+    }
+    #endif
 
   }
 
   /// <summary>
   /// A representation of a text snippet.
   /// </summary>
-  public sealed partial class TextSnippet : pb::IMessage<TextSnippet> {
+  public sealed partial class TextSnippet : pb::IMessage<TextSnippet>
+  #if !GOOGLE_PROTOBUF_REFSTRUCT_COMPATIBILITY_MODE
+      , pb::IBufferMessage
+  #endif
+  {
     private static readonly pb::MessageParser<TextSnippet> _parser = new pb::MessageParser<TextSnippet>(() => new TextSnippet());
     private pb::UnknownFieldSet _unknownFields;
     [global::System.Diagnostics.DebuggerNonUserCodeAttribute]
@@ -333,11 +388,9 @@ namespace Google.Cloud.AutoML.V1 {
     public const int MimeTypeFieldNumber = 2;
     private string mimeType_ = "";
     /// <summary>
-    /// Optional. The format of
-    /// [content][google.cloud.automl.v1.TextSnippet.content]. Currently the only
-    /// two allowed values are "text/html" and "text/plain". If left blank, the
-    /// format is automatically determined from the type of the uploaded
-    /// [content][google.cloud.automl.v1.TextSnippet.content].
+    /// Optional. The format of [content][google.cloud.automl.v1.TextSnippet.content]. Currently the only two allowed
+    /// values are "text/html" and "text/plain". If left blank, the format is
+    /// automatically determined from the type of the uploaded [content][google.cloud.automl.v1.TextSnippet.content].
     /// </summary>
     [global::System.Diagnostics.DebuggerNonUserCodeAttribute]
     public string MimeType {
@@ -399,6 +452,9 @@ namespace Google.Cloud.AutoML.V1 {
 
     [global::System.Diagnostics.DebuggerNonUserCodeAttribute]
     public void WriteTo(pb::CodedOutputStream output) {
+    #if !GOOGLE_PROTOBUF_REFSTRUCT_COMPATIBILITY_MODE
+      output.WriteRawMessage(this);
+    #else
       if (Content.Length != 0) {
         output.WriteRawTag(10);
         output.WriteString(Content);
@@ -414,7 +470,29 @@ namespace Google.Cloud.AutoML.V1 {
       if (_unknownFields != null) {
         _unknownFields.WriteTo(output);
       }
+    #endif
     }
+
+    #if !GOOGLE_PROTOBUF_REFSTRUCT_COMPATIBILITY_MODE
+    [global::System.Diagnostics.DebuggerNonUserCodeAttribute]
+    void pb::IBufferMessage.InternalWriteTo(ref pb::WriteContext output) {
+      if (Content.Length != 0) {
+        output.WriteRawTag(10);
+        output.WriteString(Content);
+      }
+      if (MimeType.Length != 0) {
+        output.WriteRawTag(18);
+        output.WriteString(MimeType);
+      }
+      if (ContentUri.Length != 0) {
+        output.WriteRawTag(34);
+        output.WriteString(ContentUri);
+      }
+      if (_unknownFields != null) {
+        _unknownFields.WriteTo(ref output);
+      }
+    }
+    #endif
 
     [global::System.Diagnostics.DebuggerNonUserCodeAttribute]
     public int CalculateSize() {
@@ -453,6 +531,9 @@ namespace Google.Cloud.AutoML.V1 {
 
     [global::System.Diagnostics.DebuggerNonUserCodeAttribute]
     public void MergeFrom(pb::CodedInputStream input) {
+    #if !GOOGLE_PROTOBUF_REFSTRUCT_COMPATIBILITY_MODE
+      input.ReadRawMessage(this);
+    #else
       uint tag;
       while ((tag = input.ReadTag()) != 0) {
         switch(tag) {
@@ -473,14 +554,45 @@ namespace Google.Cloud.AutoML.V1 {
           }
         }
       }
+    #endif
     }
+
+    #if !GOOGLE_PROTOBUF_REFSTRUCT_COMPATIBILITY_MODE
+    [global::System.Diagnostics.DebuggerNonUserCodeAttribute]
+    void pb::IBufferMessage.InternalMergeFrom(ref pb::ParseContext input) {
+      uint tag;
+      while ((tag = input.ReadTag()) != 0) {
+        switch(tag) {
+          default:
+            _unknownFields = pb::UnknownFieldSet.MergeFieldFrom(_unknownFields, ref input);
+            break;
+          case 10: {
+            Content = input.ReadString();
+            break;
+          }
+          case 18: {
+            MimeType = input.ReadString();
+            break;
+          }
+          case 34: {
+            ContentUri = input.ReadString();
+            break;
+          }
+        }
+      }
+    }
+    #endif
 
   }
 
   /// <summary>
   /// Message that describes dimension of a document.
   /// </summary>
-  public sealed partial class DocumentDimensions : pb::IMessage<DocumentDimensions> {
+  public sealed partial class DocumentDimensions : pb::IMessage<DocumentDimensions>
+  #if !GOOGLE_PROTOBUF_REFSTRUCT_COMPATIBILITY_MODE
+      , pb::IBufferMessage
+  #endif
+  {
     private static readonly pb::MessageParser<DocumentDimensions> _parser = new pb::MessageParser<DocumentDimensions>(() => new DocumentDimensions());
     private pb::UnknownFieldSet _unknownFields;
     [global::System.Diagnostics.DebuggerNonUserCodeAttribute]
@@ -518,7 +630,7 @@ namespace Google.Cloud.AutoML.V1 {
 
     /// <summary>Field number for the "unit" field.</summary>
     public const int UnitFieldNumber = 1;
-    private global::Google.Cloud.AutoML.V1.DocumentDimensions.Types.DocumentDimensionUnit unit_ = 0;
+    private global::Google.Cloud.AutoML.V1.DocumentDimensions.Types.DocumentDimensionUnit unit_ = global::Google.Cloud.AutoML.V1.DocumentDimensions.Types.DocumentDimensionUnit.Unspecified;
     /// <summary>
     /// Unit of the dimension.
     /// </summary>
@@ -580,7 +692,7 @@ namespace Google.Cloud.AutoML.V1 {
     [global::System.Diagnostics.DebuggerNonUserCodeAttribute]
     public override int GetHashCode() {
       int hash = 1;
-      if (Unit != 0) hash ^= Unit.GetHashCode();
+      if (Unit != global::Google.Cloud.AutoML.V1.DocumentDimensions.Types.DocumentDimensionUnit.Unspecified) hash ^= Unit.GetHashCode();
       if (Width != 0F) hash ^= pbc::ProtobufEqualityComparers.BitwiseSingleEqualityComparer.GetHashCode(Width);
       if (Height != 0F) hash ^= pbc::ProtobufEqualityComparers.BitwiseSingleEqualityComparer.GetHashCode(Height);
       if (_unknownFields != null) {
@@ -596,7 +708,10 @@ namespace Google.Cloud.AutoML.V1 {
 
     [global::System.Diagnostics.DebuggerNonUserCodeAttribute]
     public void WriteTo(pb::CodedOutputStream output) {
-      if (Unit != 0) {
+    #if !GOOGLE_PROTOBUF_REFSTRUCT_COMPATIBILITY_MODE
+      output.WriteRawMessage(this);
+    #else
+      if (Unit != global::Google.Cloud.AutoML.V1.DocumentDimensions.Types.DocumentDimensionUnit.Unspecified) {
         output.WriteRawTag(8);
         output.WriteEnum((int) Unit);
       }
@@ -611,12 +726,34 @@ namespace Google.Cloud.AutoML.V1 {
       if (_unknownFields != null) {
         _unknownFields.WriteTo(output);
       }
+    #endif
     }
+
+    #if !GOOGLE_PROTOBUF_REFSTRUCT_COMPATIBILITY_MODE
+    [global::System.Diagnostics.DebuggerNonUserCodeAttribute]
+    void pb::IBufferMessage.InternalWriteTo(ref pb::WriteContext output) {
+      if (Unit != global::Google.Cloud.AutoML.V1.DocumentDimensions.Types.DocumentDimensionUnit.Unspecified) {
+        output.WriteRawTag(8);
+        output.WriteEnum((int) Unit);
+      }
+      if (Width != 0F) {
+        output.WriteRawTag(21);
+        output.WriteFloat(Width);
+      }
+      if (Height != 0F) {
+        output.WriteRawTag(29);
+        output.WriteFloat(Height);
+      }
+      if (_unknownFields != null) {
+        _unknownFields.WriteTo(ref output);
+      }
+    }
+    #endif
 
     [global::System.Diagnostics.DebuggerNonUserCodeAttribute]
     public int CalculateSize() {
       int size = 0;
-      if (Unit != 0) {
+      if (Unit != global::Google.Cloud.AutoML.V1.DocumentDimensions.Types.DocumentDimensionUnit.Unspecified) {
         size += 1 + pb::CodedOutputStream.ComputeEnumSize((int) Unit);
       }
       if (Width != 0F) {
@@ -636,7 +773,7 @@ namespace Google.Cloud.AutoML.V1 {
       if (other == null) {
         return;
       }
-      if (other.Unit != 0) {
+      if (other.Unit != global::Google.Cloud.AutoML.V1.DocumentDimensions.Types.DocumentDimensionUnit.Unspecified) {
         Unit = other.Unit;
       }
       if (other.Width != 0F) {
@@ -650,6 +787,9 @@ namespace Google.Cloud.AutoML.V1 {
 
     [global::System.Diagnostics.DebuggerNonUserCodeAttribute]
     public void MergeFrom(pb::CodedInputStream input) {
+    #if !GOOGLE_PROTOBUF_REFSTRUCT_COMPATIBILITY_MODE
+      input.ReadRawMessage(this);
+    #else
       uint tag;
       while ((tag = input.ReadTag()) != 0) {
         switch(tag) {
@@ -670,7 +810,34 @@ namespace Google.Cloud.AutoML.V1 {
           }
         }
       }
+    #endif
     }
+
+    #if !GOOGLE_PROTOBUF_REFSTRUCT_COMPATIBILITY_MODE
+    [global::System.Diagnostics.DebuggerNonUserCodeAttribute]
+    void pb::IBufferMessage.InternalMergeFrom(ref pb::ParseContext input) {
+      uint tag;
+      while ((tag = input.ReadTag()) != 0) {
+        switch(tag) {
+          default:
+            _unknownFields = pb::UnknownFieldSet.MergeFieldFrom(_unknownFields, ref input);
+            break;
+          case 8: {
+            Unit = (global::Google.Cloud.AutoML.V1.DocumentDimensions.Types.DocumentDimensionUnit) input.ReadEnum();
+            break;
+          }
+          case 21: {
+            Width = input.ReadFloat();
+            break;
+          }
+          case 29: {
+            Height = input.ReadFloat();
+            break;
+          }
+        }
+      }
+    }
+    #endif
 
     #region Nested types
     /// <summary>Container for nested types declared in the DocumentDimensions message type.</summary>
@@ -706,7 +873,11 @@ namespace Google.Cloud.AutoML.V1 {
   /// <summary>
   /// A structured text document e.g. a PDF.
   /// </summary>
-  public sealed partial class Document : pb::IMessage<Document> {
+  public sealed partial class Document : pb::IMessage<Document>
+  #if !GOOGLE_PROTOBUF_REFSTRUCT_COMPATIBILITY_MODE
+      , pb::IBufferMessage
+  #endif
+  {
     private static readonly pb::MessageParser<Document> _parser = new pb::MessageParser<Document>(() => new Document());
     private pb::UnknownFieldSet _unknownFields;
     [global::System.Diagnostics.DebuggerNonUserCodeAttribute]
@@ -856,6 +1027,9 @@ namespace Google.Cloud.AutoML.V1 {
 
     [global::System.Diagnostics.DebuggerNonUserCodeAttribute]
     public void WriteTo(pb::CodedOutputStream output) {
+    #if !GOOGLE_PROTOBUF_REFSTRUCT_COMPATIBILITY_MODE
+      output.WriteRawMessage(this);
+    #else
       if (inputConfig_ != null) {
         output.WriteRawTag(10);
         output.WriteMessage(InputConfig);
@@ -876,7 +1050,34 @@ namespace Google.Cloud.AutoML.V1 {
       if (_unknownFields != null) {
         _unknownFields.WriteTo(output);
       }
+    #endif
     }
+
+    #if !GOOGLE_PROTOBUF_REFSTRUCT_COMPATIBILITY_MODE
+    [global::System.Diagnostics.DebuggerNonUserCodeAttribute]
+    void pb::IBufferMessage.InternalWriteTo(ref pb::WriteContext output) {
+      if (inputConfig_ != null) {
+        output.WriteRawTag(10);
+        output.WriteMessage(InputConfig);
+      }
+      if (documentText_ != null) {
+        output.WriteRawTag(18);
+        output.WriteMessage(DocumentText);
+      }
+      layout_.WriteTo(ref output, _repeated_layout_codec);
+      if (documentDimensions_ != null) {
+        output.WriteRawTag(34);
+        output.WriteMessage(DocumentDimensions);
+      }
+      if (PageCount != 0) {
+        output.WriteRawTag(40);
+        output.WriteInt32(PageCount);
+      }
+      if (_unknownFields != null) {
+        _unknownFields.WriteTo(ref output);
+      }
+    }
+    #endif
 
     [global::System.Diagnostics.DebuggerNonUserCodeAttribute]
     public int CalculateSize() {
@@ -932,6 +1133,9 @@ namespace Google.Cloud.AutoML.V1 {
 
     [global::System.Diagnostics.DebuggerNonUserCodeAttribute]
     public void MergeFrom(pb::CodedInputStream input) {
+    #if !GOOGLE_PROTOBUF_REFSTRUCT_COMPATIBILITY_MODE
+      input.ReadRawMessage(this);
+    #else
       uint tag;
       while ((tag = input.ReadTag()) != 0) {
         switch(tag) {
@@ -969,18 +1173,64 @@ namespace Google.Cloud.AutoML.V1 {
           }
         }
       }
+    #endif
     }
+
+    #if !GOOGLE_PROTOBUF_REFSTRUCT_COMPATIBILITY_MODE
+    [global::System.Diagnostics.DebuggerNonUserCodeAttribute]
+    void pb::IBufferMessage.InternalMergeFrom(ref pb::ParseContext input) {
+      uint tag;
+      while ((tag = input.ReadTag()) != 0) {
+        switch(tag) {
+          default:
+            _unknownFields = pb::UnknownFieldSet.MergeFieldFrom(_unknownFields, ref input);
+            break;
+          case 10: {
+            if (inputConfig_ == null) {
+              InputConfig = new global::Google.Cloud.AutoML.V1.DocumentInputConfig();
+            }
+            input.ReadMessage(InputConfig);
+            break;
+          }
+          case 18: {
+            if (documentText_ == null) {
+              DocumentText = new global::Google.Cloud.AutoML.V1.TextSnippet();
+            }
+            input.ReadMessage(DocumentText);
+            break;
+          }
+          case 26: {
+            layout_.AddEntriesFrom(ref input, _repeated_layout_codec);
+            break;
+          }
+          case 34: {
+            if (documentDimensions_ == null) {
+              DocumentDimensions = new global::Google.Cloud.AutoML.V1.DocumentDimensions();
+            }
+            input.ReadMessage(DocumentDimensions);
+            break;
+          }
+          case 40: {
+            PageCount = input.ReadInt32();
+            break;
+          }
+        }
+      }
+    }
+    #endif
 
     #region Nested types
     /// <summary>Container for nested types declared in the Document message type.</summary>
     [global::System.Diagnostics.DebuggerNonUserCodeAttribute]
     public static partial class Types {
       /// <summary>
-      /// Describes the layout information of a
-      /// [text_segment][google.cloud.automl.v1.Document.Layout.text_segment] in the
-      /// document.
+      /// Describes the layout information of a [text_segment][google.cloud.automl.v1.Document.Layout.text_segment] in the document.
       /// </summary>
-      public sealed partial class Layout : pb::IMessage<Layout> {
+      public sealed partial class Layout : pb::IMessage<Layout>
+      #if !GOOGLE_PROTOBUF_REFSTRUCT_COMPATIBILITY_MODE
+          , pb::IBufferMessage
+      #endif
+      {
         private static readonly pb::MessageParser<Layout> _parser = new pb::MessageParser<Layout>(() => new Layout());
         private pb::UnknownFieldSet _unknownFields;
         [global::System.Diagnostics.DebuggerNonUserCodeAttribute]
@@ -1022,7 +1272,7 @@ namespace Google.Cloud.AutoML.V1 {
         private global::Google.Cloud.AutoML.V1.TextSegment textSegment_;
         /// <summary>
         /// Text Segment that represents a segment in
-        /// [document_text][google.cloud.automl.v1.Document.document_text].
+        /// [document_text][google.cloud.automl.v1p1beta.Document.document_text].
         /// </summary>
         [global::System.Diagnostics.DebuggerNonUserCodeAttribute]
         public global::Google.Cloud.AutoML.V1.TextSegment TextSegment {
@@ -1036,9 +1286,8 @@ namespace Google.Cloud.AutoML.V1 {
         public const int PageNumberFieldNumber = 2;
         private int pageNumber_;
         /// <summary>
-        /// Page number of the
-        /// [text_segment][google.cloud.automl.v1.Document.Layout.text_segment] in
-        /// the original document, starts from 1.
+        /// Page number of the [text_segment][google.cloud.automl.v1.Document.Layout.text_segment] in the original document, starts
+        /// from 1.
         /// </summary>
         [global::System.Diagnostics.DebuggerNonUserCodeAttribute]
         public int PageNumber {
@@ -1052,14 +1301,13 @@ namespace Google.Cloud.AutoML.V1 {
         public const int BoundingPolyFieldNumber = 3;
         private global::Google.Cloud.AutoML.V1.BoundingPoly boundingPoly_;
         /// <summary>
-        /// The position of the
-        /// [text_segment][google.cloud.automl.v1.Document.Layout.text_segment] in
-        /// the page. Contains exactly 4
+        /// The position of the [text_segment][google.cloud.automl.v1.Document.Layout.text_segment] in the page.
+        /// Contains exactly 4
         ///
-        /// [normalized_vertices][google.cloud.automl.v1.BoundingPoly.normalized_vertices]
+        /// [normalized_vertices][google.cloud.automl.v1p1beta.BoundingPoly.normalized_vertices]
         /// and they are connected by edges in the order provided, which will
         /// represent a rectangle parallel to the frame. The
-        /// [NormalizedVertex-s][google.cloud.automl.v1.NormalizedVertex] are
+        /// [NormalizedVertex-s][google.cloud.automl.v1p1beta.NormalizedVertex] are
         /// relative to the page.
         /// Coordinates are based on top-left as point (0,0).
         /// </summary>
@@ -1073,11 +1321,9 @@ namespace Google.Cloud.AutoML.V1 {
 
         /// <summary>Field number for the "text_segment_type" field.</summary>
         public const int TextSegmentTypeFieldNumber = 4;
-        private global::Google.Cloud.AutoML.V1.Document.Types.Layout.Types.TextSegmentType textSegmentType_ = 0;
+        private global::Google.Cloud.AutoML.V1.Document.Types.Layout.Types.TextSegmentType textSegmentType_ = global::Google.Cloud.AutoML.V1.Document.Types.Layout.Types.TextSegmentType.Unspecified;
         /// <summary>
-        /// The type of the
-        /// [text_segment][google.cloud.automl.v1.Document.Layout.text_segment] in
-        /// document.
+        /// The type of the [text_segment][google.cloud.automl.v1.Document.Layout.text_segment] in document.
         /// </summary>
         [global::System.Diagnostics.DebuggerNonUserCodeAttribute]
         public global::Google.Cloud.AutoML.V1.Document.Types.Layout.Types.TextSegmentType TextSegmentType {
@@ -1113,7 +1359,7 @@ namespace Google.Cloud.AutoML.V1 {
           if (textSegment_ != null) hash ^= TextSegment.GetHashCode();
           if (PageNumber != 0) hash ^= PageNumber.GetHashCode();
           if (boundingPoly_ != null) hash ^= BoundingPoly.GetHashCode();
-          if (TextSegmentType != 0) hash ^= TextSegmentType.GetHashCode();
+          if (TextSegmentType != global::Google.Cloud.AutoML.V1.Document.Types.Layout.Types.TextSegmentType.Unspecified) hash ^= TextSegmentType.GetHashCode();
           if (_unknownFields != null) {
             hash ^= _unknownFields.GetHashCode();
           }
@@ -1127,6 +1373,9 @@ namespace Google.Cloud.AutoML.V1 {
 
         [global::System.Diagnostics.DebuggerNonUserCodeAttribute]
         public void WriteTo(pb::CodedOutputStream output) {
+        #if !GOOGLE_PROTOBUF_REFSTRUCT_COMPATIBILITY_MODE
+          output.WriteRawMessage(this);
+        #else
           if (textSegment_ != null) {
             output.WriteRawTag(10);
             output.WriteMessage(TextSegment);
@@ -1139,14 +1388,40 @@ namespace Google.Cloud.AutoML.V1 {
             output.WriteRawTag(26);
             output.WriteMessage(BoundingPoly);
           }
-          if (TextSegmentType != 0) {
+          if (TextSegmentType != global::Google.Cloud.AutoML.V1.Document.Types.Layout.Types.TextSegmentType.Unspecified) {
             output.WriteRawTag(32);
             output.WriteEnum((int) TextSegmentType);
           }
           if (_unknownFields != null) {
             _unknownFields.WriteTo(output);
           }
+        #endif
         }
+
+        #if !GOOGLE_PROTOBUF_REFSTRUCT_COMPATIBILITY_MODE
+        [global::System.Diagnostics.DebuggerNonUserCodeAttribute]
+        void pb::IBufferMessage.InternalWriteTo(ref pb::WriteContext output) {
+          if (textSegment_ != null) {
+            output.WriteRawTag(10);
+            output.WriteMessage(TextSegment);
+          }
+          if (PageNumber != 0) {
+            output.WriteRawTag(16);
+            output.WriteInt32(PageNumber);
+          }
+          if (boundingPoly_ != null) {
+            output.WriteRawTag(26);
+            output.WriteMessage(BoundingPoly);
+          }
+          if (TextSegmentType != global::Google.Cloud.AutoML.V1.Document.Types.Layout.Types.TextSegmentType.Unspecified) {
+            output.WriteRawTag(32);
+            output.WriteEnum((int) TextSegmentType);
+          }
+          if (_unknownFields != null) {
+            _unknownFields.WriteTo(ref output);
+          }
+        }
+        #endif
 
         [global::System.Diagnostics.DebuggerNonUserCodeAttribute]
         public int CalculateSize() {
@@ -1160,7 +1435,7 @@ namespace Google.Cloud.AutoML.V1 {
           if (boundingPoly_ != null) {
             size += 1 + pb::CodedOutputStream.ComputeMessageSize(BoundingPoly);
           }
-          if (TextSegmentType != 0) {
+          if (TextSegmentType != global::Google.Cloud.AutoML.V1.Document.Types.Layout.Types.TextSegmentType.Unspecified) {
             size += 1 + pb::CodedOutputStream.ComputeEnumSize((int) TextSegmentType);
           }
           if (_unknownFields != null) {
@@ -1189,7 +1464,7 @@ namespace Google.Cloud.AutoML.V1 {
             }
             BoundingPoly.MergeFrom(other.BoundingPoly);
           }
-          if (other.TextSegmentType != 0) {
+          if (other.TextSegmentType != global::Google.Cloud.AutoML.V1.Document.Types.Layout.Types.TextSegmentType.Unspecified) {
             TextSegmentType = other.TextSegmentType;
           }
           _unknownFields = pb::UnknownFieldSet.MergeFrom(_unknownFields, other._unknownFields);
@@ -1197,6 +1472,9 @@ namespace Google.Cloud.AutoML.V1 {
 
         [global::System.Diagnostics.DebuggerNonUserCodeAttribute]
         public void MergeFrom(pb::CodedInputStream input) {
+        #if !GOOGLE_PROTOBUF_REFSTRUCT_COMPATIBILITY_MODE
+          input.ReadRawMessage(this);
+        #else
           uint tag;
           while ((tag = input.ReadTag()) != 0) {
             switch(tag) {
@@ -1227,7 +1505,44 @@ namespace Google.Cloud.AutoML.V1 {
               }
             }
           }
+        #endif
         }
+
+        #if !GOOGLE_PROTOBUF_REFSTRUCT_COMPATIBILITY_MODE
+        [global::System.Diagnostics.DebuggerNonUserCodeAttribute]
+        void pb::IBufferMessage.InternalMergeFrom(ref pb::ParseContext input) {
+          uint tag;
+          while ((tag = input.ReadTag()) != 0) {
+            switch(tag) {
+              default:
+                _unknownFields = pb::UnknownFieldSet.MergeFieldFrom(_unknownFields, ref input);
+                break;
+              case 10: {
+                if (textSegment_ == null) {
+                  TextSegment = new global::Google.Cloud.AutoML.V1.TextSegment();
+                }
+                input.ReadMessage(TextSegment);
+                break;
+              }
+              case 16: {
+                PageNumber = input.ReadInt32();
+                break;
+              }
+              case 26: {
+                if (boundingPoly_ == null) {
+                  BoundingPoly = new global::Google.Cloud.AutoML.V1.BoundingPoly();
+                }
+                input.ReadMessage(BoundingPoly);
+                break;
+              }
+              case 32: {
+                TextSegmentType = (global::Google.Cloud.AutoML.V1.Document.Types.Layout.Types.TextSegmentType) input.ReadEnum();
+                break;
+              }
+            }
+          }
+        }
+        #endif
 
         #region Nested types
         /// <summary>Container for nested types declared in the Layout message type.</summary>
@@ -1302,7 +1617,11 @@ namespace Google.Cloud.AutoML.V1 {
   /// <summary>
   /// Example data used for training or prediction.
   /// </summary>
-  public sealed partial class ExamplePayload : pb::IMessage<ExamplePayload> {
+  public sealed partial class ExamplePayload : pb::IMessage<ExamplePayload>
+  #if !GOOGLE_PROTOBUF_REFSTRUCT_COMPATIBILITY_MODE
+      , pb::IBufferMessage
+  #endif
+  {
     private static readonly pb::MessageParser<ExamplePayload> _parser = new pb::MessageParser<ExamplePayload>(() => new ExamplePayload());
     private pb::UnknownFieldSet _unknownFields;
     [global::System.Diagnostics.DebuggerNonUserCodeAttribute]
@@ -1449,6 +1768,9 @@ namespace Google.Cloud.AutoML.V1 {
 
     [global::System.Diagnostics.DebuggerNonUserCodeAttribute]
     public void WriteTo(pb::CodedOutputStream output) {
+    #if !GOOGLE_PROTOBUF_REFSTRUCT_COMPATIBILITY_MODE
+      output.WriteRawMessage(this);
+    #else
       if (payloadCase_ == PayloadOneofCase.Image) {
         output.WriteRawTag(10);
         output.WriteMessage(Image);
@@ -1464,7 +1786,29 @@ namespace Google.Cloud.AutoML.V1 {
       if (_unknownFields != null) {
         _unknownFields.WriteTo(output);
       }
+    #endif
     }
+
+    #if !GOOGLE_PROTOBUF_REFSTRUCT_COMPATIBILITY_MODE
+    [global::System.Diagnostics.DebuggerNonUserCodeAttribute]
+    void pb::IBufferMessage.InternalWriteTo(ref pb::WriteContext output) {
+      if (payloadCase_ == PayloadOneofCase.Image) {
+        output.WriteRawTag(10);
+        output.WriteMessage(Image);
+      }
+      if (payloadCase_ == PayloadOneofCase.TextSnippet) {
+        output.WriteRawTag(18);
+        output.WriteMessage(TextSnippet);
+      }
+      if (payloadCase_ == PayloadOneofCase.Document) {
+        output.WriteRawTag(34);
+        output.WriteMessage(Document);
+      }
+      if (_unknownFields != null) {
+        _unknownFields.WriteTo(ref output);
+      }
+    }
+    #endif
 
     [global::System.Diagnostics.DebuggerNonUserCodeAttribute]
     public int CalculateSize() {
@@ -1515,6 +1859,9 @@ namespace Google.Cloud.AutoML.V1 {
 
     [global::System.Diagnostics.DebuggerNonUserCodeAttribute]
     public void MergeFrom(pb::CodedInputStream input) {
+    #if !GOOGLE_PROTOBUF_REFSTRUCT_COMPATIBILITY_MODE
+      input.ReadRawMessage(this);
+    #else
       uint tag;
       while ((tag = input.ReadTag()) != 0) {
         switch(tag) {
@@ -1550,7 +1897,49 @@ namespace Google.Cloud.AutoML.V1 {
           }
         }
       }
+    #endif
     }
+
+    #if !GOOGLE_PROTOBUF_REFSTRUCT_COMPATIBILITY_MODE
+    [global::System.Diagnostics.DebuggerNonUserCodeAttribute]
+    void pb::IBufferMessage.InternalMergeFrom(ref pb::ParseContext input) {
+      uint tag;
+      while ((tag = input.ReadTag()) != 0) {
+        switch(tag) {
+          default:
+            _unknownFields = pb::UnknownFieldSet.MergeFieldFrom(_unknownFields, ref input);
+            break;
+          case 10: {
+            global::Google.Cloud.AutoML.V1.Image subBuilder = new global::Google.Cloud.AutoML.V1.Image();
+            if (payloadCase_ == PayloadOneofCase.Image) {
+              subBuilder.MergeFrom(Image);
+            }
+            input.ReadMessage(subBuilder);
+            Image = subBuilder;
+            break;
+          }
+          case 18: {
+            global::Google.Cloud.AutoML.V1.TextSnippet subBuilder = new global::Google.Cloud.AutoML.V1.TextSnippet();
+            if (payloadCase_ == PayloadOneofCase.TextSnippet) {
+              subBuilder.MergeFrom(TextSnippet);
+            }
+            input.ReadMessage(subBuilder);
+            TextSnippet = subBuilder;
+            break;
+          }
+          case 34: {
+            global::Google.Cloud.AutoML.V1.Document subBuilder = new global::Google.Cloud.AutoML.V1.Document();
+            if (payloadCase_ == PayloadOneofCase.Document) {
+              subBuilder.MergeFrom(Document);
+            }
+            input.ReadMessage(subBuilder);
+            Document = subBuilder;
+            break;
+          }
+        }
+      }
+    }
+    #endif
 
   }
 

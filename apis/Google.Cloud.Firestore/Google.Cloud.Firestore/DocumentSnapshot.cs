@@ -159,7 +159,7 @@ namespace Google.Cloud.Firestore
             var raw = ExtractValue(path);
             if (raw == null)
             {
-                value = default(T);
+                value = default;
                 return false;
             }
             var context = new DeserializationContext(this);
@@ -223,6 +223,6 @@ namespace Google.Cloud.Firestore
 
         /// <inheritdoc />
         public override int GetHashCode() =>
-            EqualityHelpers.CombineHashCodes(Reference.GetHashCode(), Document?.Fields.GetHashCode() ?? 0);
+            GaxEqualityHelpers.CombineHashCodes(Reference.GetHashCode(), Document?.Fields.GetHashCode() ?? 0);
     }
 }

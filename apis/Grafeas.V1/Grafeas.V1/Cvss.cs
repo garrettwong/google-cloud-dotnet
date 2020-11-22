@@ -56,8 +56,8 @@ namespace Grafeas.V1 {
             "by9nb29nbGVhcGlzL2dyYWZlYXMvdjE7Z3JhZmVhc6ICA0dSQWIGcHJvdG8z"));
       descriptor = pbr::FileDescriptor.FromGeneratedCode(descriptorData,
           new pbr::FileDescriptor[] { },
-          new pbr::GeneratedClrTypeInfo(null, new pbr::GeneratedClrTypeInfo[] {
-            new pbr::GeneratedClrTypeInfo(typeof(global::Grafeas.V1.CVSSv3), global::Grafeas.V1.CVSSv3.Parser, new[]{ "BaseScore", "ExploitabilityScore", "ImpactScore", "AttackVector", "AttackComplexity", "PrivilegesRequired", "UserInteraction", "Scope", "ConfidentialityImpact", "IntegrityImpact", "AvailabilityImpact" }, null, new[]{ typeof(global::Grafeas.V1.CVSSv3.Types.AttackVector), typeof(global::Grafeas.V1.CVSSv3.Types.AttackComplexity), typeof(global::Grafeas.V1.CVSSv3.Types.PrivilegesRequired), typeof(global::Grafeas.V1.CVSSv3.Types.UserInteraction), typeof(global::Grafeas.V1.CVSSv3.Types.Scope), typeof(global::Grafeas.V1.CVSSv3.Types.Impact) }, null)
+          new pbr::GeneratedClrTypeInfo(null, null, new pbr::GeneratedClrTypeInfo[] {
+            new pbr::GeneratedClrTypeInfo(typeof(global::Grafeas.V1.CVSSv3), global::Grafeas.V1.CVSSv3.Parser, new[]{ "BaseScore", "ExploitabilityScore", "ImpactScore", "AttackVector", "AttackComplexity", "PrivilegesRequired", "UserInteraction", "Scope", "ConfidentialityImpact", "IntegrityImpact", "AvailabilityImpact" }, null, new[]{ typeof(global::Grafeas.V1.CVSSv3.Types.AttackVector), typeof(global::Grafeas.V1.CVSSv3.Types.AttackComplexity), typeof(global::Grafeas.V1.CVSSv3.Types.PrivilegesRequired), typeof(global::Grafeas.V1.CVSSv3.Types.UserInteraction), typeof(global::Grafeas.V1.CVSSv3.Types.Scope), typeof(global::Grafeas.V1.CVSSv3.Types.Impact) }, null, null)
           }));
     }
     #endregion
@@ -68,7 +68,11 @@ namespace Grafeas.V1 {
   /// Common Vulnerability Scoring System version 3.
   /// For details, see https://www.first.org/cvss/specification-document
   /// </summary>
-  public sealed partial class CVSSv3 : pb::IMessage<CVSSv3> {
+  public sealed partial class CVSSv3 : pb::IMessage<CVSSv3>
+  #if !GOOGLE_PROTOBUF_REFSTRUCT_COMPATIBILITY_MODE
+      , pb::IBufferMessage
+  #endif
+  {
     private static readonly pb::MessageParser<CVSSv3> _parser = new pb::MessageParser<CVSSv3>(() => new CVSSv3());
     private pb::UnknownFieldSet _unknownFields;
     [global::System.Diagnostics.DebuggerNonUserCodeAttribute]
@@ -150,7 +154,7 @@ namespace Grafeas.V1 {
 
     /// <summary>Field number for the "attack_vector" field.</summary>
     public const int AttackVectorFieldNumber = 5;
-    private global::Grafeas.V1.CVSSv3.Types.AttackVector attackVector_ = 0;
+    private global::Grafeas.V1.CVSSv3.Types.AttackVector attackVector_ = global::Grafeas.V1.CVSSv3.Types.AttackVector.Unspecified;
     /// <summary>
     /// Base Metrics
     /// Represents the intrinsic characteristics of a vulnerability that are
@@ -166,7 +170,7 @@ namespace Grafeas.V1 {
 
     /// <summary>Field number for the "attack_complexity" field.</summary>
     public const int AttackComplexityFieldNumber = 6;
-    private global::Grafeas.V1.CVSSv3.Types.AttackComplexity attackComplexity_ = 0;
+    private global::Grafeas.V1.CVSSv3.Types.AttackComplexity attackComplexity_ = global::Grafeas.V1.CVSSv3.Types.AttackComplexity.Unspecified;
     [global::System.Diagnostics.DebuggerNonUserCodeAttribute]
     public global::Grafeas.V1.CVSSv3.Types.AttackComplexity AttackComplexity {
       get { return attackComplexity_; }
@@ -177,7 +181,7 @@ namespace Grafeas.V1 {
 
     /// <summary>Field number for the "privileges_required" field.</summary>
     public const int PrivilegesRequiredFieldNumber = 7;
-    private global::Grafeas.V1.CVSSv3.Types.PrivilegesRequired privilegesRequired_ = 0;
+    private global::Grafeas.V1.CVSSv3.Types.PrivilegesRequired privilegesRequired_ = global::Grafeas.V1.CVSSv3.Types.PrivilegesRequired.Unspecified;
     [global::System.Diagnostics.DebuggerNonUserCodeAttribute]
     public global::Grafeas.V1.CVSSv3.Types.PrivilegesRequired PrivilegesRequired {
       get { return privilegesRequired_; }
@@ -188,7 +192,7 @@ namespace Grafeas.V1 {
 
     /// <summary>Field number for the "user_interaction" field.</summary>
     public const int UserInteractionFieldNumber = 8;
-    private global::Grafeas.V1.CVSSv3.Types.UserInteraction userInteraction_ = 0;
+    private global::Grafeas.V1.CVSSv3.Types.UserInteraction userInteraction_ = global::Grafeas.V1.CVSSv3.Types.UserInteraction.Unspecified;
     [global::System.Diagnostics.DebuggerNonUserCodeAttribute]
     public global::Grafeas.V1.CVSSv3.Types.UserInteraction UserInteraction {
       get { return userInteraction_; }
@@ -199,7 +203,7 @@ namespace Grafeas.V1 {
 
     /// <summary>Field number for the "scope" field.</summary>
     public const int ScopeFieldNumber = 9;
-    private global::Grafeas.V1.CVSSv3.Types.Scope scope_ = 0;
+    private global::Grafeas.V1.CVSSv3.Types.Scope scope_ = global::Grafeas.V1.CVSSv3.Types.Scope.Unspecified;
     [global::System.Diagnostics.DebuggerNonUserCodeAttribute]
     public global::Grafeas.V1.CVSSv3.Types.Scope Scope {
       get { return scope_; }
@@ -210,7 +214,7 @@ namespace Grafeas.V1 {
 
     /// <summary>Field number for the "confidentiality_impact" field.</summary>
     public const int ConfidentialityImpactFieldNumber = 10;
-    private global::Grafeas.V1.CVSSv3.Types.Impact confidentialityImpact_ = 0;
+    private global::Grafeas.V1.CVSSv3.Types.Impact confidentialityImpact_ = global::Grafeas.V1.CVSSv3.Types.Impact.Unspecified;
     [global::System.Diagnostics.DebuggerNonUserCodeAttribute]
     public global::Grafeas.V1.CVSSv3.Types.Impact ConfidentialityImpact {
       get { return confidentialityImpact_; }
@@ -221,7 +225,7 @@ namespace Grafeas.V1 {
 
     /// <summary>Field number for the "integrity_impact" field.</summary>
     public const int IntegrityImpactFieldNumber = 11;
-    private global::Grafeas.V1.CVSSv3.Types.Impact integrityImpact_ = 0;
+    private global::Grafeas.V1.CVSSv3.Types.Impact integrityImpact_ = global::Grafeas.V1.CVSSv3.Types.Impact.Unspecified;
     [global::System.Diagnostics.DebuggerNonUserCodeAttribute]
     public global::Grafeas.V1.CVSSv3.Types.Impact IntegrityImpact {
       get { return integrityImpact_; }
@@ -232,7 +236,7 @@ namespace Grafeas.V1 {
 
     /// <summary>Field number for the "availability_impact" field.</summary>
     public const int AvailabilityImpactFieldNumber = 12;
-    private global::Grafeas.V1.CVSSv3.Types.Impact availabilityImpact_ = 0;
+    private global::Grafeas.V1.CVSSv3.Types.Impact availabilityImpact_ = global::Grafeas.V1.CVSSv3.Types.Impact.Unspecified;
     [global::System.Diagnostics.DebuggerNonUserCodeAttribute]
     public global::Grafeas.V1.CVSSv3.Types.Impact AvailabilityImpact {
       get { return availabilityImpact_; }
@@ -274,14 +278,14 @@ namespace Grafeas.V1 {
       if (BaseScore != 0F) hash ^= pbc::ProtobufEqualityComparers.BitwiseSingleEqualityComparer.GetHashCode(BaseScore);
       if (ExploitabilityScore != 0F) hash ^= pbc::ProtobufEqualityComparers.BitwiseSingleEqualityComparer.GetHashCode(ExploitabilityScore);
       if (ImpactScore != 0F) hash ^= pbc::ProtobufEqualityComparers.BitwiseSingleEqualityComparer.GetHashCode(ImpactScore);
-      if (AttackVector != 0) hash ^= AttackVector.GetHashCode();
-      if (AttackComplexity != 0) hash ^= AttackComplexity.GetHashCode();
-      if (PrivilegesRequired != 0) hash ^= PrivilegesRequired.GetHashCode();
-      if (UserInteraction != 0) hash ^= UserInteraction.GetHashCode();
-      if (Scope != 0) hash ^= Scope.GetHashCode();
-      if (ConfidentialityImpact != 0) hash ^= ConfidentialityImpact.GetHashCode();
-      if (IntegrityImpact != 0) hash ^= IntegrityImpact.GetHashCode();
-      if (AvailabilityImpact != 0) hash ^= AvailabilityImpact.GetHashCode();
+      if (AttackVector != global::Grafeas.V1.CVSSv3.Types.AttackVector.Unspecified) hash ^= AttackVector.GetHashCode();
+      if (AttackComplexity != global::Grafeas.V1.CVSSv3.Types.AttackComplexity.Unspecified) hash ^= AttackComplexity.GetHashCode();
+      if (PrivilegesRequired != global::Grafeas.V1.CVSSv3.Types.PrivilegesRequired.Unspecified) hash ^= PrivilegesRequired.GetHashCode();
+      if (UserInteraction != global::Grafeas.V1.CVSSv3.Types.UserInteraction.Unspecified) hash ^= UserInteraction.GetHashCode();
+      if (Scope != global::Grafeas.V1.CVSSv3.Types.Scope.Unspecified) hash ^= Scope.GetHashCode();
+      if (ConfidentialityImpact != global::Grafeas.V1.CVSSv3.Types.Impact.Unspecified) hash ^= ConfidentialityImpact.GetHashCode();
+      if (IntegrityImpact != global::Grafeas.V1.CVSSv3.Types.Impact.Unspecified) hash ^= IntegrityImpact.GetHashCode();
+      if (AvailabilityImpact != global::Grafeas.V1.CVSSv3.Types.Impact.Unspecified) hash ^= AvailabilityImpact.GetHashCode();
       if (_unknownFields != null) {
         hash ^= _unknownFields.GetHashCode();
       }
@@ -295,6 +299,9 @@ namespace Grafeas.V1 {
 
     [global::System.Diagnostics.DebuggerNonUserCodeAttribute]
     public void WriteTo(pb::CodedOutputStream output) {
+    #if !GOOGLE_PROTOBUF_REFSTRUCT_COMPATIBILITY_MODE
+      output.WriteRawMessage(this);
+    #else
       if (BaseScore != 0F) {
         output.WriteRawTag(13);
         output.WriteFloat(BaseScore);
@@ -307,42 +314,96 @@ namespace Grafeas.V1 {
         output.WriteRawTag(29);
         output.WriteFloat(ImpactScore);
       }
-      if (AttackVector != 0) {
+      if (AttackVector != global::Grafeas.V1.CVSSv3.Types.AttackVector.Unspecified) {
         output.WriteRawTag(40);
         output.WriteEnum((int) AttackVector);
       }
-      if (AttackComplexity != 0) {
+      if (AttackComplexity != global::Grafeas.V1.CVSSv3.Types.AttackComplexity.Unspecified) {
         output.WriteRawTag(48);
         output.WriteEnum((int) AttackComplexity);
       }
-      if (PrivilegesRequired != 0) {
+      if (PrivilegesRequired != global::Grafeas.V1.CVSSv3.Types.PrivilegesRequired.Unspecified) {
         output.WriteRawTag(56);
         output.WriteEnum((int) PrivilegesRequired);
       }
-      if (UserInteraction != 0) {
+      if (UserInteraction != global::Grafeas.V1.CVSSv3.Types.UserInteraction.Unspecified) {
         output.WriteRawTag(64);
         output.WriteEnum((int) UserInteraction);
       }
-      if (Scope != 0) {
+      if (Scope != global::Grafeas.V1.CVSSv3.Types.Scope.Unspecified) {
         output.WriteRawTag(72);
         output.WriteEnum((int) Scope);
       }
-      if (ConfidentialityImpact != 0) {
+      if (ConfidentialityImpact != global::Grafeas.V1.CVSSv3.Types.Impact.Unspecified) {
         output.WriteRawTag(80);
         output.WriteEnum((int) ConfidentialityImpact);
       }
-      if (IntegrityImpact != 0) {
+      if (IntegrityImpact != global::Grafeas.V1.CVSSv3.Types.Impact.Unspecified) {
         output.WriteRawTag(88);
         output.WriteEnum((int) IntegrityImpact);
       }
-      if (AvailabilityImpact != 0) {
+      if (AvailabilityImpact != global::Grafeas.V1.CVSSv3.Types.Impact.Unspecified) {
         output.WriteRawTag(96);
         output.WriteEnum((int) AvailabilityImpact);
       }
       if (_unknownFields != null) {
         _unknownFields.WriteTo(output);
       }
+    #endif
     }
+
+    #if !GOOGLE_PROTOBUF_REFSTRUCT_COMPATIBILITY_MODE
+    [global::System.Diagnostics.DebuggerNonUserCodeAttribute]
+    void pb::IBufferMessage.InternalWriteTo(ref pb::WriteContext output) {
+      if (BaseScore != 0F) {
+        output.WriteRawTag(13);
+        output.WriteFloat(BaseScore);
+      }
+      if (ExploitabilityScore != 0F) {
+        output.WriteRawTag(21);
+        output.WriteFloat(ExploitabilityScore);
+      }
+      if (ImpactScore != 0F) {
+        output.WriteRawTag(29);
+        output.WriteFloat(ImpactScore);
+      }
+      if (AttackVector != global::Grafeas.V1.CVSSv3.Types.AttackVector.Unspecified) {
+        output.WriteRawTag(40);
+        output.WriteEnum((int) AttackVector);
+      }
+      if (AttackComplexity != global::Grafeas.V1.CVSSv3.Types.AttackComplexity.Unspecified) {
+        output.WriteRawTag(48);
+        output.WriteEnum((int) AttackComplexity);
+      }
+      if (PrivilegesRequired != global::Grafeas.V1.CVSSv3.Types.PrivilegesRequired.Unspecified) {
+        output.WriteRawTag(56);
+        output.WriteEnum((int) PrivilegesRequired);
+      }
+      if (UserInteraction != global::Grafeas.V1.CVSSv3.Types.UserInteraction.Unspecified) {
+        output.WriteRawTag(64);
+        output.WriteEnum((int) UserInteraction);
+      }
+      if (Scope != global::Grafeas.V1.CVSSv3.Types.Scope.Unspecified) {
+        output.WriteRawTag(72);
+        output.WriteEnum((int) Scope);
+      }
+      if (ConfidentialityImpact != global::Grafeas.V1.CVSSv3.Types.Impact.Unspecified) {
+        output.WriteRawTag(80);
+        output.WriteEnum((int) ConfidentialityImpact);
+      }
+      if (IntegrityImpact != global::Grafeas.V1.CVSSv3.Types.Impact.Unspecified) {
+        output.WriteRawTag(88);
+        output.WriteEnum((int) IntegrityImpact);
+      }
+      if (AvailabilityImpact != global::Grafeas.V1.CVSSv3.Types.Impact.Unspecified) {
+        output.WriteRawTag(96);
+        output.WriteEnum((int) AvailabilityImpact);
+      }
+      if (_unknownFields != null) {
+        _unknownFields.WriteTo(ref output);
+      }
+    }
+    #endif
 
     [global::System.Diagnostics.DebuggerNonUserCodeAttribute]
     public int CalculateSize() {
@@ -356,28 +417,28 @@ namespace Grafeas.V1 {
       if (ImpactScore != 0F) {
         size += 1 + 4;
       }
-      if (AttackVector != 0) {
+      if (AttackVector != global::Grafeas.V1.CVSSv3.Types.AttackVector.Unspecified) {
         size += 1 + pb::CodedOutputStream.ComputeEnumSize((int) AttackVector);
       }
-      if (AttackComplexity != 0) {
+      if (AttackComplexity != global::Grafeas.V1.CVSSv3.Types.AttackComplexity.Unspecified) {
         size += 1 + pb::CodedOutputStream.ComputeEnumSize((int) AttackComplexity);
       }
-      if (PrivilegesRequired != 0) {
+      if (PrivilegesRequired != global::Grafeas.V1.CVSSv3.Types.PrivilegesRequired.Unspecified) {
         size += 1 + pb::CodedOutputStream.ComputeEnumSize((int) PrivilegesRequired);
       }
-      if (UserInteraction != 0) {
+      if (UserInteraction != global::Grafeas.V1.CVSSv3.Types.UserInteraction.Unspecified) {
         size += 1 + pb::CodedOutputStream.ComputeEnumSize((int) UserInteraction);
       }
-      if (Scope != 0) {
+      if (Scope != global::Grafeas.V1.CVSSv3.Types.Scope.Unspecified) {
         size += 1 + pb::CodedOutputStream.ComputeEnumSize((int) Scope);
       }
-      if (ConfidentialityImpact != 0) {
+      if (ConfidentialityImpact != global::Grafeas.V1.CVSSv3.Types.Impact.Unspecified) {
         size += 1 + pb::CodedOutputStream.ComputeEnumSize((int) ConfidentialityImpact);
       }
-      if (IntegrityImpact != 0) {
+      if (IntegrityImpact != global::Grafeas.V1.CVSSv3.Types.Impact.Unspecified) {
         size += 1 + pb::CodedOutputStream.ComputeEnumSize((int) IntegrityImpact);
       }
-      if (AvailabilityImpact != 0) {
+      if (AvailabilityImpact != global::Grafeas.V1.CVSSv3.Types.Impact.Unspecified) {
         size += 1 + pb::CodedOutputStream.ComputeEnumSize((int) AvailabilityImpact);
       }
       if (_unknownFields != null) {
@@ -400,28 +461,28 @@ namespace Grafeas.V1 {
       if (other.ImpactScore != 0F) {
         ImpactScore = other.ImpactScore;
       }
-      if (other.AttackVector != 0) {
+      if (other.AttackVector != global::Grafeas.V1.CVSSv3.Types.AttackVector.Unspecified) {
         AttackVector = other.AttackVector;
       }
-      if (other.AttackComplexity != 0) {
+      if (other.AttackComplexity != global::Grafeas.V1.CVSSv3.Types.AttackComplexity.Unspecified) {
         AttackComplexity = other.AttackComplexity;
       }
-      if (other.PrivilegesRequired != 0) {
+      if (other.PrivilegesRequired != global::Grafeas.V1.CVSSv3.Types.PrivilegesRequired.Unspecified) {
         PrivilegesRequired = other.PrivilegesRequired;
       }
-      if (other.UserInteraction != 0) {
+      if (other.UserInteraction != global::Grafeas.V1.CVSSv3.Types.UserInteraction.Unspecified) {
         UserInteraction = other.UserInteraction;
       }
-      if (other.Scope != 0) {
+      if (other.Scope != global::Grafeas.V1.CVSSv3.Types.Scope.Unspecified) {
         Scope = other.Scope;
       }
-      if (other.ConfidentialityImpact != 0) {
+      if (other.ConfidentialityImpact != global::Grafeas.V1.CVSSv3.Types.Impact.Unspecified) {
         ConfidentialityImpact = other.ConfidentialityImpact;
       }
-      if (other.IntegrityImpact != 0) {
+      if (other.IntegrityImpact != global::Grafeas.V1.CVSSv3.Types.Impact.Unspecified) {
         IntegrityImpact = other.IntegrityImpact;
       }
-      if (other.AvailabilityImpact != 0) {
+      if (other.AvailabilityImpact != global::Grafeas.V1.CVSSv3.Types.Impact.Unspecified) {
         AvailabilityImpact = other.AvailabilityImpact;
       }
       _unknownFields = pb::UnknownFieldSet.MergeFrom(_unknownFields, other._unknownFields);
@@ -429,6 +490,9 @@ namespace Grafeas.V1 {
 
     [global::System.Diagnostics.DebuggerNonUserCodeAttribute]
     public void MergeFrom(pb::CodedInputStream input) {
+    #if !GOOGLE_PROTOBUF_REFSTRUCT_COMPATIBILITY_MODE
+      input.ReadRawMessage(this);
+    #else
       uint tag;
       while ((tag = input.ReadTag()) != 0) {
         switch(tag) {
@@ -481,7 +545,66 @@ namespace Grafeas.V1 {
           }
         }
       }
+    #endif
     }
+
+    #if !GOOGLE_PROTOBUF_REFSTRUCT_COMPATIBILITY_MODE
+    [global::System.Diagnostics.DebuggerNonUserCodeAttribute]
+    void pb::IBufferMessage.InternalMergeFrom(ref pb::ParseContext input) {
+      uint tag;
+      while ((tag = input.ReadTag()) != 0) {
+        switch(tag) {
+          default:
+            _unknownFields = pb::UnknownFieldSet.MergeFieldFrom(_unknownFields, ref input);
+            break;
+          case 13: {
+            BaseScore = input.ReadFloat();
+            break;
+          }
+          case 21: {
+            ExploitabilityScore = input.ReadFloat();
+            break;
+          }
+          case 29: {
+            ImpactScore = input.ReadFloat();
+            break;
+          }
+          case 40: {
+            AttackVector = (global::Grafeas.V1.CVSSv3.Types.AttackVector) input.ReadEnum();
+            break;
+          }
+          case 48: {
+            AttackComplexity = (global::Grafeas.V1.CVSSv3.Types.AttackComplexity) input.ReadEnum();
+            break;
+          }
+          case 56: {
+            PrivilegesRequired = (global::Grafeas.V1.CVSSv3.Types.PrivilegesRequired) input.ReadEnum();
+            break;
+          }
+          case 64: {
+            UserInteraction = (global::Grafeas.V1.CVSSv3.Types.UserInteraction) input.ReadEnum();
+            break;
+          }
+          case 72: {
+            Scope = (global::Grafeas.V1.CVSSv3.Types.Scope) input.ReadEnum();
+            break;
+          }
+          case 80: {
+            ConfidentialityImpact = (global::Grafeas.V1.CVSSv3.Types.Impact) input.ReadEnum();
+            break;
+          }
+          case 88: {
+            IntegrityImpact = (global::Grafeas.V1.CVSSv3.Types.Impact) input.ReadEnum();
+            break;
+          }
+          case 96: {
+            AvailabilityImpact = (global::Grafeas.V1.CVSSv3.Types.Impact) input.ReadEnum();
+            break;
+          }
+        }
+      }
+    }
+    #endif
 
     #region Nested types
     /// <summary>Container for nested types declared in the CVSSv3 message type.</summary>

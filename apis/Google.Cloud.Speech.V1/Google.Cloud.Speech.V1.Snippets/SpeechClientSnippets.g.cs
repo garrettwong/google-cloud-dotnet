@@ -1,4 +1,4 @@
-// Copyright 2019 Google LLC
+// Copyright 2020 Google LLC
 //
 // Licensed under the Apache License, Version 2.0 (the "License");
 // you may not use this file except in compliance with the License.
@@ -16,16 +16,16 @@
 
 namespace Google.Cloud.Speech.V1.Snippets
 {
+    using Google.Api.Gax.Grpc;
     using Google.LongRunning;
     using Google.Protobuf;
-    using System.Collections.Generic;
     using System.Threading.Tasks;
 
     /// <summary>Generated snippets.</summary>
     public sealed class GeneratedSpeechClientSnippets
     {
         /// <summary>Snippet for Recognize</summary>
-        public void Recognize_RequestObject()
+        public void RecognizeRequestObject()
         {
             // Snippet: Recognize(RecognizeRequest, CallSettings)
             // Create client
@@ -42,7 +42,7 @@ namespace Google.Cloud.Speech.V1.Snippets
         }
 
         /// <summary>Snippet for RecognizeAsync</summary>
-        public async Task RecognizeAsync_RequestObject()
+        public async Task RecognizeRequestObjectAsync()
         {
             // Snippet: RecognizeAsync(RecognizeRequest, CallSettings)
             // Additional: RecognizeAsync(RecognizeRequest, CancellationToken)
@@ -89,7 +89,7 @@ namespace Google.Cloud.Speech.V1.Snippets
         }
 
         /// <summary>Snippet for LongRunningRecognize</summary>
-        public void LongRunningRecognize_RequestObject()
+        public void LongRunningRecognizeRequestObject()
         {
             // Snippet: LongRunningRecognize(LongRunningRecognizeRequest, CallSettings)
             // Create client
@@ -122,7 +122,7 @@ namespace Google.Cloud.Speech.V1.Snippets
         }
 
         /// <summary>Snippet for LongRunningRecognizeAsync</summary>
-        public async Task LongRunningRecognizeAsync_RequestObject()
+        public async Task LongRunningRecognizeRequestObjectAsync()
         {
             // Snippet: LongRunningRecognizeAsync(LongRunningRecognizeRequest, CallSettings)
             // Additional: LongRunningRecognizeAsync(LongRunningRecognizeRequest, CancellationToken)
@@ -231,8 +231,9 @@ namespace Google.Cloud.Speech.V1.Snippets
             // Create task to do something with responses from server
             Task responseHandlerTask = Task.Run(async () =>
             {
-                IAsyncEnumerator<StreamingRecognizeResponse> responseStream = response.ResponseStream;
-                while (await responseStream.MoveNext())
+                // Note that C# 8 code can use await foreach
+                AsyncResponseStream<StreamingRecognizeResponse> responseStream = response.GetResponseStream();
+                while (await responseStream.MoveNextAsync())
                 {
                     StreamingRecognizeResponse responseItem = responseStream.Current;
                     // Do something with streamed response

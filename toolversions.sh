@@ -6,11 +6,11 @@
 declare -r REPO_ROOT=$(readlink -f $(dirname ${BASH_SOURCE}))
 declare -r TOOL_PACKAGES=$REPO_ROOT/packages
 
-declare -r DOCFX_VERSION=2.39.1
-declare -r DOTCOVER_VERSION=2018.2.3
+declare -r DOCFX_VERSION=2.50
+declare -r DOTCOVER_VERSION=2019.3.4
 declare -r REPORTGENERATOR_VERSION=2.4.5.0
-declare -r PROTOC_VERSION=3.8.0
-declare -r GRPC_VERSION=1.22.0
+declare -r PROTOC_VERSION=3.13.0
+declare -r GRPC_VERSION=2.31.0
 
 # Tools that only run under Windows (at the moment)
 declare -r DOCFX=$TOOL_PACKAGES/docfx.$DOCFX_VERSION/docfx.exe
@@ -19,6 +19,18 @@ declare -r REPORTGENERATOR=$TOOL_PACKAGES/ReportGenerator.$REPORTGENERATOR_VERSI
 
 declare -r PROTOBUF_TOOLS_ROOT=$TOOL_PACKAGES/Google.Protobuf.Tools.$PROTOC_VERSION
 
+if [[ "$KOKORO_GIT_COMMIT" != "" ]]; then declare -r RUNNING_ON_KOKORO=true; fi
+
+# Bit of a hack... assume that if we're running on Kokoro, we should be able to use the cache...
+# TODO: Remove this, and create the cache in the autosynth script instead, perhaps.
+if [[ $RUNNING_ON_KOKORO == "true" ]]
+then
+  mkdir -p ~/.cache/synthtool
+fi
+
+# Detect a synthtool cache, used for other repos that we clone and build from.
+if [[ -d ~/.cache/synthtool ]]; then declare -r SYNTHTOOL_CACHE=~/.cache/synthtool; fi
+
 # Try to detect Python 3. It's quite different between Windows and Linux.
 if which python > /dev/null && python --version 2>&1 | grep -q "Python 3"; then declare -r PYTHON3=python
 elif which py > /dev/null && py -3 --version 2>&1 | grep -q "Python 3"; then declare -r PYTHON3="py -3"
@@ -26,13 +38,6 @@ elif which python3 > /dev/null && python3 --version 2>&1 | grep -q "Python 3"; t
 else
   echo "Unable to detect Python 3 installation."
   exit 1
-fi
-
-# When running in Java 9+, we want to disable some warnings... but
-# the options aren't available in Java 8. Even detecting Java 9+ is ugly :(
-if java -? 2>&1 | grep -q add-modules
-then
-  declare -r JAVA9OPTS="--add-opens=java.base/java.nio=ALL-UNNAMED --add-opens=java.base/java.lang=ALL-UNNAMED"
 fi
 
 # Cross-platform tools
@@ -91,15 +96,6 @@ install_protoc() {
 }
 
 install_microgenerator() {
-  # TODO: Use a specific tag, or even a NuGet package eventually
-  if [ -d "gapic-generator-csharp" ]
-  then
-    git -C gapic-generator-csharp pull -q
-    git -C gapic-generator-csharp submodule update
-  else
-    git clone --recursive https://github.com/googleapis/gapic-generator-csharp
-  fi
-
   case "$OSTYPE" in
     linux*)
       declare -r RUNTIME=linux-x64
@@ -117,9 +113,30 @@ install_microgenerator() {
       echo "Unknown OSTYPE: $OSTYPE"
       exit 1
   esac
-  (cd gapic-generator-csharp; dotnet publish -v quiet -nologo -clp:NoSummary -c Release --self-contained --runtime=$RUNTIME Google.Api.Generator)
   
-  export GAPIC_PLUGIN=$REPO_ROOT/gapic-generator-csharp/Google.Api.Generator/bin/Release/netcoreapp2.2/$RUNTIME/publish/Google.Api.Generator$EXTENSION
+  if [[ "$SYNTHTOOL_CACHE" != "" ]]
+  then
+    declare -r GENERATOR_ROOT=$SYNTHTOOL_CACHE/gapic-generator-csharp
+  else
+    declare -r GENERATOR_ROOT=$REPO_ROOT/gapic-generator-csharp
+  fi
+  
+  export GAPIC_PLUGIN=$GENERATOR_ROOT/Google.Api.Generator/bin/Release/netcoreapp3.1/$RUNTIME/publish/Google.Api.Generator$EXTENSION
+  
+  if [[ $RUNNING_ON_KOKORO == "true" && -f $GAPIC_PLUGIN ]]
+  then
+    echo "Skipping microgenerator fetch/build: already built, and running on Kokoro"
+  else
+    # TODO: Use a specific tag, or even a NuGet package eventually
+    if [ -d $GENERATOR_ROOT ]
+    then
+      git -C $GENERATOR_ROOT pull -q
+    else
+      git clone https://github.com/googleapis/gapic-generator-csharp $GENERATOR_ROOT -b master --depth 1
+    fi
+
+    (cd $GENERATOR_ROOT; dotnet publish -v quiet -nologo -clp:NoSummary -c Release --self-contained --runtime=$RUNTIME Google.Api.Generator)
+  fi
 }
 
 install_grpc() {
@@ -144,6 +161,9 @@ install_docfx() {
 
 # Logs to both stdout and a build timing log, allowing
 # post-processing to see how long each part of the build takes.
+# The console log is in magenta to stand out, and doesn't include the
+# timing part.
 log_build_action() {
-  echo "$(date -u -Iseconds) $1" | tee -a $REPO_ROOT/build_timing_log.txt
+  echo -e "\e[1;35m$1\e[0m"
+  echo "$(date -u -Iseconds) $1" >> $REPO_ROOT/build_timing_log.txt
 }

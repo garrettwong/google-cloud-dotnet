@@ -25,69 +25,82 @@ namespace Google.Cloud.Logging.V2 {
       byte[] descriptorData = global::System.Convert.FromBase64String(
           string.Concat(
             "Cidnb29nbGUvbG9nZ2luZy92Mi9sb2dnaW5nX21ldHJpY3MucHJvdG8SEWdv",
-            "b2dsZS5sb2dnaW5nLnYyGh1nb29nbGUvYXBpL2Rpc3RyaWJ1dGlvbi5wcm90",
-            "bxoXZ29vZ2xlL2FwaS9tZXRyaWMucHJvdG8aG2dvb2dsZS9wcm90b2J1Zi9l",
-            "bXB0eS5wcm90bxogZ29vZ2xlL3Byb3RvYnVmL2ZpZWxkX21hc2sucHJvdG8a",
-            "H2dvb2dsZS9wcm90b2J1Zi90aW1lc3RhbXAucHJvdG8aHGdvb2dsZS9hcGkv",
-            "YW5ub3RhdGlvbnMucHJvdG8aF2dvb2dsZS9hcGkvY2xpZW50LnByb3RvIpME",
-            "CglMb2dNZXRyaWMSDAoEbmFtZRgBIAEoCRITCgtkZXNjcmlwdGlvbhgCIAEo",
-            "CRIOCgZmaWx0ZXIYAyABKAkSNwoRbWV0cmljX2Rlc2NyaXB0b3IYBSABKAsy",
-            "HC5nb29nbGUuYXBpLk1ldHJpY0Rlc2NyaXB0b3ISFwoPdmFsdWVfZXh0cmFj",
-            "dG9yGAYgASgJEksKEGxhYmVsX2V4dHJhY3RvcnMYByADKAsyMS5nb29nbGUu",
-            "bG9nZ2luZy52Mi5Mb2dNZXRyaWMuTGFiZWxFeHRyYWN0b3JzRW50cnkSPgoO",
-            "YnVja2V0X29wdGlvbnMYCCABKAsyJi5nb29nbGUuYXBpLkRpc3RyaWJ1dGlv",
-            "bi5CdWNrZXRPcHRpb25zEi8KC2NyZWF0ZV90aW1lGAkgASgLMhouZ29vZ2xl",
-            "LnByb3RvYnVmLlRpbWVzdGFtcBIvCgt1cGRhdGVfdGltZRgKIAEoCzIaLmdv",
-            "b2dsZS5wcm90b2J1Zi5UaW1lc3RhbXASPAoHdmVyc2lvbhgEIAEoDjInLmdv",
-            "b2dsZS5sb2dnaW5nLnYyLkxvZ01ldHJpYy5BcGlWZXJzaW9uQgIYARo2ChRM",
-            "YWJlbEV4dHJhY3RvcnNFbnRyeRILCgNrZXkYASABKAkSDQoFdmFsdWUYAiAB",
-            "KAk6AjgBIhwKCkFwaVZlcnNpb24SBgoCVjIQABIGCgJWMRABIk4KFUxpc3RM",
-            "b2dNZXRyaWNzUmVxdWVzdBIOCgZwYXJlbnQYASABKAkSEgoKcGFnZV90b2tl",
-            "bhgCIAEoCRIRCglwYWdlX3NpemUYAyABKAUiYAoWTGlzdExvZ01ldHJpY3NS",
-            "ZXNwb25zZRItCgdtZXRyaWNzGAEgAygLMhwuZ29vZ2xlLmxvZ2dpbmcudjIu",
-            "TG9nTWV0cmljEhcKD25leHRfcGFnZV90b2tlbhgCIAEoCSIqChNHZXRMb2dN",
-            "ZXRyaWNSZXF1ZXN0EhMKC21ldHJpY19uYW1lGAEgASgJIlYKFkNyZWF0ZUxv",
-            "Z01ldHJpY1JlcXVlc3QSDgoGcGFyZW50GAEgASgJEiwKBm1ldHJpYxgCIAEo",
-            "CzIcLmdvb2dsZS5sb2dnaW5nLnYyLkxvZ01ldHJpYyJbChZVcGRhdGVMb2dN",
-            "ZXRyaWNSZXF1ZXN0EhMKC21ldHJpY19uYW1lGAEgASgJEiwKBm1ldHJpYxgC",
-            "IAEoCzIcLmdvb2dsZS5sb2dnaW5nLnYyLkxvZ01ldHJpYyItChZEZWxldGVM",
-            "b2dNZXRyaWNSZXF1ZXN0EhMKC21ldHJpY19uYW1lGAEgASgJMuQHChBNZXRy",
-            "aWNzU2VydmljZVYyEo4BCg5MaXN0TG9nTWV0cmljcxIoLmdvb2dsZS5sb2dn",
-            "aW5nLnYyLkxpc3RMb2dNZXRyaWNzUmVxdWVzdBopLmdvb2dsZS5sb2dnaW5n",
-            "LnYyLkxpc3RMb2dNZXRyaWNzUmVzcG9uc2UiJ4LT5JMCIRIfL3YyL3twYXJl",
-            "bnQ9cHJvamVjdHMvKn0vbWV0cmljcxKEAQoMR2V0TG9nTWV0cmljEiYuZ29v",
-            "Z2xlLmxvZ2dpbmcudjIuR2V0TG9nTWV0cmljUmVxdWVzdBocLmdvb2dsZS5s",
-            "b2dnaW5nLnYyLkxvZ01ldHJpYyIugtPkkwIoEiYvdjIve21ldHJpY19uYW1l",
-            "PXByb2plY3RzLyovbWV0cmljcy8qfRKLAQoPQ3JlYXRlTG9nTWV0cmljEiku",
-            "Z29vZ2xlLmxvZ2dpbmcudjIuQ3JlYXRlTG9nTWV0cmljUmVxdWVzdBocLmdv",
-            "b2dsZS5sb2dnaW5nLnYyLkxvZ01ldHJpYyIvgtPkkwIpIh8vdjIve3BhcmVu",
-            "dD1wcm9qZWN0cy8qfS9tZXRyaWNzOgZtZXRyaWMSkgEKD1VwZGF0ZUxvZ01l",
-            "dHJpYxIpLmdvb2dsZS5sb2dnaW5nLnYyLlVwZGF0ZUxvZ01ldHJpY1JlcXVl",
-            "c3QaHC5nb29nbGUubG9nZ2luZy52Mi5Mb2dNZXRyaWMiNoLT5JMCMBomL3Yy",
-            "L3ttZXRyaWNfbmFtZT1wcm9qZWN0cy8qL21ldHJpY3MvKn06Bm1ldHJpYxKE",
-            "AQoPRGVsZXRlTG9nTWV0cmljEikuZ29vZ2xlLmxvZ2dpbmcudjIuRGVsZXRl",
-            "TG9nTWV0cmljUmVxdWVzdBoWLmdvb2dsZS5wcm90b2J1Zi5FbXB0eSIugtPk",
-            "kwIoKiYvdjIve21ldHJpY19uYW1lPXByb2plY3RzLyovbWV0cmljcy8qfRqN",
-            "AspBFmxvZ2dpbmcuZ29vZ2xlYXBpcy5jb23SQfABaHR0cHM6Ly93d3cuZ29v",
-            "Z2xlYXBpcy5jb20vYXV0aC9jbG91ZC1wbGF0Zm9ybSxodHRwczovL3d3dy5n",
-            "b29nbGVhcGlzLmNvbS9hdXRoL2Nsb3VkLXBsYXRmb3JtLnJlYWQtb25seSxo",
-            "dHRwczovL3d3dy5nb29nbGVhcGlzLmNvbS9hdXRoL2xvZ2dpbmcuYWRtaW4s",
-            "aHR0cHM6Ly93d3cuZ29vZ2xlYXBpcy5jb20vYXV0aC9sb2dnaW5nLnJlYWQs",
-            "aHR0cHM6Ly93d3cuZ29vZ2xlYXBpcy5jb20vYXV0aC9sb2dnaW5nLndyaXRl",
-            "Qp8BChVjb20uZ29vZ2xlLmxvZ2dpbmcudjJCE0xvZ2dpbmdNZXRyaWNzUHJv",
-            "dG9QAVo4Z29vZ2xlLmdvbGFuZy5vcmcvZ2VucHJvdG8vZ29vZ2xlYXBpcy9s",
-            "b2dnaW5nL3YyO2xvZ2dpbmf4AQGqAhdHb29nbGUuQ2xvdWQuTG9nZ2luZy5W",
-            "MsoCF0dvb2dsZVxDbG91ZFxMb2dnaW5nXFYyYgZwcm90bzM="));
+            "b2dsZS5sb2dnaW5nLnYyGhdnb29nbGUvYXBpL2NsaWVudC5wcm90bxodZ29v",
+            "Z2xlL2FwaS9kaXN0cmlidXRpb24ucHJvdG8aH2dvb2dsZS9hcGkvZmllbGRf",
+            "YmVoYXZpb3IucHJvdG8aF2dvb2dsZS9hcGkvbWV0cmljLnByb3RvGhlnb29n",
+            "bGUvYXBpL3Jlc291cmNlLnByb3RvGh5nb29nbGUvcHJvdG9idWYvZHVyYXRp",
+            "b24ucHJvdG8aG2dvb2dsZS9wcm90b2J1Zi9lbXB0eS5wcm90bxogZ29vZ2xl",
+            "L3Byb3RvYnVmL2ZpZWxkX21hc2sucHJvdG8aH2dvb2dsZS9wcm90b2J1Zi90",
+            "aW1lc3RhbXAucHJvdG8aHGdvb2dsZS9hcGkvYW5ub3RhdGlvbnMucHJvdG8i",
+            "jAUKCUxvZ01ldHJpYxIRCgRuYW1lGAEgASgJQgPgQQISGAoLZGVzY3JpcHRp",
+            "b24YAiABKAlCA+BBARITCgZmaWx0ZXIYAyABKAlCA+BBAhI8ChFtZXRyaWNf",
+            "ZGVzY3JpcHRvchgFIAEoCzIcLmdvb2dsZS5hcGkuTWV0cmljRGVzY3JpcHRv",
+            "ckID4EEBEhwKD3ZhbHVlX2V4dHJhY3RvchgGIAEoCUID4EEBElAKEGxhYmVs",
+            "X2V4dHJhY3RvcnMYByADKAsyMS5nb29nbGUubG9nZ2luZy52Mi5Mb2dNZXRy",
+            "aWMuTGFiZWxFeHRyYWN0b3JzRW50cnlCA+BBARJDCg5idWNrZXRfb3B0aW9u",
+            "cxgIIAEoCzImLmdvb2dsZS5hcGkuRGlzdHJpYnV0aW9uLkJ1Y2tldE9wdGlv",
+            "bnNCA+BBARI0CgtjcmVhdGVfdGltZRgJIAEoCzIaLmdvb2dsZS5wcm90b2J1",
+            "Zi5UaW1lc3RhbXBCA+BBAxI0Cgt1cGRhdGVfdGltZRgKIAEoCzIaLmdvb2ds",
+            "ZS5wcm90b2J1Zi5UaW1lc3RhbXBCA+BBAxI8Cgd2ZXJzaW9uGAQgASgOMicu",
+            "Z29vZ2xlLmxvZ2dpbmcudjIuTG9nTWV0cmljLkFwaVZlcnNpb25CAhgBGjYK",
+            "FExhYmVsRXh0cmFjdG9yc0VudHJ5EgsKA2tleRgBIAEoCRINCgV2YWx1ZRgC",
+            "IAEoCToCOAEiHAoKQXBpVmVyc2lvbhIGCgJWMhAAEgYKAlYxEAE6SupBRwog",
+            "bG9nZ2luZy5nb29nbGVhcGlzLmNvbS9Mb2dNZXRyaWMSI3Byb2plY3RzL3tw",
+            "cm9qZWN0fS9tZXRyaWNzL3ttZXRyaWN9Io0BChVMaXN0TG9nTWV0cmljc1Jl",
+            "cXVlc3QSQwoGcGFyZW50GAEgASgJQjPgQQL6QS0KK2Nsb3VkcmVzb3VyY2Vt",
+            "YW5hZ2VyLmdvb2dsZWFwaXMuY29tL1Byb2plY3QSFwoKcGFnZV90b2tlbhgC",
+            "IAEoCUID4EEBEhYKCXBhZ2Vfc2l6ZRgDIAEoBUID4EEBImAKFkxpc3RMb2dN",
+            "ZXRyaWNzUmVzcG9uc2USLQoHbWV0cmljcxgBIAMoCzIcLmdvb2dsZS5sb2dn",
+            "aW5nLnYyLkxvZ01ldHJpYxIXCg9uZXh0X3BhZ2VfdG9rZW4YAiABKAkiVAoT",
+            "R2V0TG9nTWV0cmljUmVxdWVzdBI9CgttZXRyaWNfbmFtZRgBIAEoCUIo4EEC",
+            "+kEiCiBsb2dnaW5nLmdvb2dsZWFwaXMuY29tL0xvZ01ldHJpYyKFAQoWQ3Jl",
+            "YXRlTG9nTWV0cmljUmVxdWVzdBI4CgZwYXJlbnQYASABKAlCKOBBAvpBIhIg",
+            "bG9nZ2luZy5nb29nbGVhcGlzLmNvbS9Mb2dNZXRyaWMSMQoGbWV0cmljGAIg",
+            "ASgLMhwuZ29vZ2xlLmxvZ2dpbmcudjIuTG9nTWV0cmljQgPgQQIiigEKFlVw",
+            "ZGF0ZUxvZ01ldHJpY1JlcXVlc3QSPQoLbWV0cmljX25hbWUYASABKAlCKOBB",
+            "AvpBIgogbG9nZ2luZy5nb29nbGVhcGlzLmNvbS9Mb2dNZXRyaWMSMQoGbWV0",
+            "cmljGAIgASgLMhwuZ29vZ2xlLmxvZ2dpbmcudjIuTG9nTWV0cmljQgPgQQIi",
+            "VwoWRGVsZXRlTG9nTWV0cmljUmVxdWVzdBI9CgttZXRyaWNfbmFtZRgBIAEo",
+            "CUIo4EEC+kEiCiBsb2dnaW5nLmdvb2dsZWFwaXMuY29tL0xvZ01ldHJpYzKu",
+            "CAoQTWV0cmljc1NlcnZpY2VWMhKXAQoOTGlzdExvZ01ldHJpY3MSKC5nb29n",
+            "bGUubG9nZ2luZy52Mi5MaXN0TG9nTWV0cmljc1JlcXVlc3QaKS5nb29nbGUu",
+            "bG9nZ2luZy52Mi5MaXN0TG9nTWV0cmljc1Jlc3BvbnNlIjCC0+STAiESHy92",
+            "Mi97cGFyZW50PXByb2plY3RzLyp9L21ldHJpY3PaQQZwYXJlbnQSkgEKDEdl",
+            "dExvZ01ldHJpYxImLmdvb2dsZS5sb2dnaW5nLnYyLkdldExvZ01ldHJpY1Jl",
+            "cXVlc3QaHC5nb29nbGUubG9nZ2luZy52Mi5Mb2dNZXRyaWMiPILT5JMCKBIm",
+            "L3YyL3ttZXRyaWNfbmFtZT1wcm9qZWN0cy8qL21ldHJpY3MvKn3aQQttZXRy",
+            "aWNfbmFtZRKbAQoPQ3JlYXRlTG9nTWV0cmljEikuZ29vZ2xlLmxvZ2dpbmcu",
+            "djIuQ3JlYXRlTG9nTWV0cmljUmVxdWVzdBocLmdvb2dsZS5sb2dnaW5nLnYy",
+            "LkxvZ01ldHJpYyI/gtPkkwIpIh8vdjIve3BhcmVudD1wcm9qZWN0cy8qfS9t",
+            "ZXRyaWNzOgZtZXRyaWPaQQ1wYXJlbnQsbWV0cmljEqcBCg9VcGRhdGVMb2dN",
+            "ZXRyaWMSKS5nb29nbGUubG9nZ2luZy52Mi5VcGRhdGVMb2dNZXRyaWNSZXF1",
+            "ZXN0GhwuZ29vZ2xlLmxvZ2dpbmcudjIuTG9nTWV0cmljIkuC0+STAjAaJi92",
+            "Mi97bWV0cmljX25hbWU9cHJvamVjdHMvKi9tZXRyaWNzLyp9OgZtZXRyaWPa",
+            "QRJtZXRyaWNfbmFtZSxtZXRyaWMSkgEKD0RlbGV0ZUxvZ01ldHJpYxIpLmdv",
+            "b2dsZS5sb2dnaW5nLnYyLkRlbGV0ZUxvZ01ldHJpY1JlcXVlc3QaFi5nb29n",
+            "bGUucHJvdG9idWYuRW1wdHkiPILT5JMCKComL3YyL3ttZXRyaWNfbmFtZT1w",
+            "cm9qZWN0cy8qL21ldHJpY3MvKn3aQQttZXRyaWNfbmFtZRqNAspBFmxvZ2dp",
+            "bmcuZ29vZ2xlYXBpcy5jb23SQfABaHR0cHM6Ly93d3cuZ29vZ2xlYXBpcy5j",
+            "b20vYXV0aC9jbG91ZC1wbGF0Zm9ybSxodHRwczovL3d3dy5nb29nbGVhcGlz",
+            "LmNvbS9hdXRoL2Nsb3VkLXBsYXRmb3JtLnJlYWQtb25seSxodHRwczovL3d3",
+            "dy5nb29nbGVhcGlzLmNvbS9hdXRoL2xvZ2dpbmcuYWRtaW4saHR0cHM6Ly93",
+            "d3cuZ29vZ2xlYXBpcy5jb20vYXV0aC9sb2dnaW5nLnJlYWQsaHR0cHM6Ly93",
+            "d3cuZ29vZ2xlYXBpcy5jb20vYXV0aC9sb2dnaW5nLndyaXRlQrwBChVjb20u",
+            "Z29vZ2xlLmxvZ2dpbmcudjJCE0xvZ2dpbmdNZXRyaWNzUHJvdG9QAVo4Z29v",
+            "Z2xlLmdvbGFuZy5vcmcvZ2VucHJvdG8vZ29vZ2xlYXBpcy9sb2dnaW5nL3Yy",
+            "O2xvZ2dpbmf4AQGqAhdHb29nbGUuQ2xvdWQuTG9nZ2luZy5WMsoCF0dvb2ds",
+            "ZVxDbG91ZFxMb2dnaW5nXFYy6gIaR29vZ2xlOjpDbG91ZDo6TG9nZ2luZzo6",
+            "VjJiBnByb3RvMw=="));
       descriptor = pbr::FileDescriptor.FromGeneratedCode(descriptorData,
-          new pbr::FileDescriptor[] { global::Google.Api.DistributionReflection.Descriptor, global::Google.Api.MetricReflection.Descriptor, global::Google.Protobuf.WellKnownTypes.EmptyReflection.Descriptor, global::Google.Protobuf.WellKnownTypes.FieldMaskReflection.Descriptor, global::Google.Protobuf.WellKnownTypes.TimestampReflection.Descriptor, global::Google.Api.AnnotationsReflection.Descriptor, global::Google.Api.ClientReflection.Descriptor, },
-          new pbr::GeneratedClrTypeInfo(null, new pbr::GeneratedClrTypeInfo[] {
-            new pbr::GeneratedClrTypeInfo(typeof(global::Google.Cloud.Logging.V2.LogMetric), global::Google.Cloud.Logging.V2.LogMetric.Parser, new[]{ "Name", "Description", "Filter", "MetricDescriptor", "ValueExtractor", "LabelExtractors", "BucketOptions", "CreateTime", "UpdateTime", "Version" }, null, new[]{ typeof(global::Google.Cloud.Logging.V2.LogMetric.Types.ApiVersion) }, new pbr::GeneratedClrTypeInfo[] { null, }),
-            new pbr::GeneratedClrTypeInfo(typeof(global::Google.Cloud.Logging.V2.ListLogMetricsRequest), global::Google.Cloud.Logging.V2.ListLogMetricsRequest.Parser, new[]{ "Parent", "PageToken", "PageSize" }, null, null, null),
-            new pbr::GeneratedClrTypeInfo(typeof(global::Google.Cloud.Logging.V2.ListLogMetricsResponse), global::Google.Cloud.Logging.V2.ListLogMetricsResponse.Parser, new[]{ "Metrics", "NextPageToken" }, null, null, null),
-            new pbr::GeneratedClrTypeInfo(typeof(global::Google.Cloud.Logging.V2.GetLogMetricRequest), global::Google.Cloud.Logging.V2.GetLogMetricRequest.Parser, new[]{ "MetricName" }, null, null, null),
-            new pbr::GeneratedClrTypeInfo(typeof(global::Google.Cloud.Logging.V2.CreateLogMetricRequest), global::Google.Cloud.Logging.V2.CreateLogMetricRequest.Parser, new[]{ "Parent", "Metric" }, null, null, null),
-            new pbr::GeneratedClrTypeInfo(typeof(global::Google.Cloud.Logging.V2.UpdateLogMetricRequest), global::Google.Cloud.Logging.V2.UpdateLogMetricRequest.Parser, new[]{ "MetricName", "Metric" }, null, null, null),
-            new pbr::GeneratedClrTypeInfo(typeof(global::Google.Cloud.Logging.V2.DeleteLogMetricRequest), global::Google.Cloud.Logging.V2.DeleteLogMetricRequest.Parser, new[]{ "MetricName" }, null, null, null)
+          new pbr::FileDescriptor[] { global::Google.Api.ClientReflection.Descriptor, global::Google.Api.DistributionReflection.Descriptor, global::Google.Api.FieldBehaviorReflection.Descriptor, global::Google.Api.MetricReflection.Descriptor, global::Google.Api.ResourceReflection.Descriptor, global::Google.Protobuf.WellKnownTypes.DurationReflection.Descriptor, global::Google.Protobuf.WellKnownTypes.EmptyReflection.Descriptor, global::Google.Protobuf.WellKnownTypes.FieldMaskReflection.Descriptor, global::Google.Protobuf.WellKnownTypes.TimestampReflection.Descriptor, global::Google.Api.AnnotationsReflection.Descriptor, },
+          new pbr::GeneratedClrTypeInfo(null, null, new pbr::GeneratedClrTypeInfo[] {
+            new pbr::GeneratedClrTypeInfo(typeof(global::Google.Cloud.Logging.V2.LogMetric), global::Google.Cloud.Logging.V2.LogMetric.Parser, new[]{ "Name", "Description", "Filter", "MetricDescriptor", "ValueExtractor", "LabelExtractors", "BucketOptions", "CreateTime", "UpdateTime", "Version" }, null, new[]{ typeof(global::Google.Cloud.Logging.V2.LogMetric.Types.ApiVersion) }, null, new pbr::GeneratedClrTypeInfo[] { null, }),
+            new pbr::GeneratedClrTypeInfo(typeof(global::Google.Cloud.Logging.V2.ListLogMetricsRequest), global::Google.Cloud.Logging.V2.ListLogMetricsRequest.Parser, new[]{ "Parent", "PageToken", "PageSize" }, null, null, null, null),
+            new pbr::GeneratedClrTypeInfo(typeof(global::Google.Cloud.Logging.V2.ListLogMetricsResponse), global::Google.Cloud.Logging.V2.ListLogMetricsResponse.Parser, new[]{ "Metrics", "NextPageToken" }, null, null, null, null),
+            new pbr::GeneratedClrTypeInfo(typeof(global::Google.Cloud.Logging.V2.GetLogMetricRequest), global::Google.Cloud.Logging.V2.GetLogMetricRequest.Parser, new[]{ "MetricName" }, null, null, null, null),
+            new pbr::GeneratedClrTypeInfo(typeof(global::Google.Cloud.Logging.V2.CreateLogMetricRequest), global::Google.Cloud.Logging.V2.CreateLogMetricRequest.Parser, new[]{ "Parent", "Metric" }, null, null, null, null),
+            new pbr::GeneratedClrTypeInfo(typeof(global::Google.Cloud.Logging.V2.UpdateLogMetricRequest), global::Google.Cloud.Logging.V2.UpdateLogMetricRequest.Parser, new[]{ "MetricName", "Metric" }, null, null, null, null),
+            new pbr::GeneratedClrTypeInfo(typeof(global::Google.Cloud.Logging.V2.DeleteLogMetricRequest), global::Google.Cloud.Logging.V2.DeleteLogMetricRequest.Parser, new[]{ "MetricName" }, null, null, null, null)
           }));
     }
     #endregion
@@ -98,12 +111,16 @@ namespace Google.Cloud.Logging.V2 {
   /// Describes a logs-based metric. The value of the metric is the number of log
   /// entries that match a logs filter in a given time interval.
   ///
-  /// Logs-based metric can also be used to extract values from logs and create a
-  /// a distribution of the values. The distribution records the statistics of the
+  /// Logs-based metrics can also be used to extract values from logs and create a
+  /// distribution of the values. The distribution records the statistics of the
   /// extracted values along with an optional histogram of the values as specified
   /// by the bucket options.
   /// </summary>
-  public sealed partial class LogMetric : pb::IMessage<LogMetric> {
+  public sealed partial class LogMetric : pb::IMessage<LogMetric>
+  #if !GOOGLE_PROTOBUF_REFSTRUCT_COMPATIBILITY_MODE
+      , pb::IBufferMessage
+  #endif
+  {
     private static readonly pb::MessageParser<LogMetric> _parser = new pb::MessageParser<LogMetric>(() => new LogMetric());
     private pb::UnknownFieldSet _unknownFields;
     [global::System.Diagnostics.DebuggerNonUserCodeAttribute]
@@ -191,9 +208,9 @@ namespace Google.Cloud.Logging.V2 {
     public const int FilterFieldNumber = 3;
     private string filter_ = "";
     /// <summary>
-    /// Required. An [advanced logs filter](/logging/docs/view/advanced_filters)
-    /// which is used to match log entries.
-    /// Example:
+    /// Required. An [advanced logs
+    /// filter](https://cloud.google.com/logging/docs/view/advanced_filters) which
+    /// is used to match log entries. Example:
     ///
     ///     "resource.type=gae_app AND severity>=ERROR"
     ///
@@ -276,7 +293,7 @@ namespace Google.Cloud.Logging.V2 {
     /// <summary>Field number for the "label_extractors" field.</summary>
     public const int LabelExtractorsFieldNumber = 7;
     private static readonly pbc::MapField<string, string>.Codec _map_labelExtractors_codec
-        = new pbc::MapField<string, string>.Codec(pb::FieldCodec.ForString(10), pb::FieldCodec.ForString(18), 58);
+        = new pbc::MapField<string, string>.Codec(pb::FieldCodec.ForString(10, ""), pb::FieldCodec.ForString(18, ""), 58);
     private readonly pbc::MapField<string, string> labelExtractors_ = new pbc::MapField<string, string>();
     /// <summary>
     /// Optional. A map from a label key string to an extractor expression which is
@@ -349,7 +366,7 @@ namespace Google.Cloud.Logging.V2 {
 
     /// <summary>Field number for the "version" field.</summary>
     public const int VersionFieldNumber = 4;
-    private global::Google.Cloud.Logging.V2.LogMetric.Types.ApiVersion version_ = 0;
+    private global::Google.Cloud.Logging.V2.LogMetric.Types.ApiVersion version_ = global::Google.Cloud.Logging.V2.LogMetric.Types.ApiVersion.V2;
     /// <summary>
     /// Deprecated. The API version that created or updated this metric.
     /// The v2 format is used by default and cannot be changed.
@@ -401,7 +418,7 @@ namespace Google.Cloud.Logging.V2 {
       if (bucketOptions_ != null) hash ^= BucketOptions.GetHashCode();
       if (createTime_ != null) hash ^= CreateTime.GetHashCode();
       if (updateTime_ != null) hash ^= UpdateTime.GetHashCode();
-      if (Version != 0) hash ^= Version.GetHashCode();
+      if (Version != global::Google.Cloud.Logging.V2.LogMetric.Types.ApiVersion.V2) hash ^= Version.GetHashCode();
       if (_unknownFields != null) {
         hash ^= _unknownFields.GetHashCode();
       }
@@ -415,6 +432,9 @@ namespace Google.Cloud.Logging.V2 {
 
     [global::System.Diagnostics.DebuggerNonUserCodeAttribute]
     public void WriteTo(pb::CodedOutputStream output) {
+    #if !GOOGLE_PROTOBUF_REFSTRUCT_COMPATIBILITY_MODE
+      output.WriteRawMessage(this);
+    #else
       if (Name.Length != 0) {
         output.WriteRawTag(10);
         output.WriteString(Name);
@@ -427,7 +447,7 @@ namespace Google.Cloud.Logging.V2 {
         output.WriteRawTag(26);
         output.WriteString(Filter);
       }
-      if (Version != 0) {
+      if (Version != global::Google.Cloud.Logging.V2.LogMetric.Types.ApiVersion.V2) {
         output.WriteRawTag(32);
         output.WriteEnum((int) Version);
       }
@@ -455,7 +475,54 @@ namespace Google.Cloud.Logging.V2 {
       if (_unknownFields != null) {
         _unknownFields.WriteTo(output);
       }
+    #endif
     }
+
+    #if !GOOGLE_PROTOBUF_REFSTRUCT_COMPATIBILITY_MODE
+    [global::System.Diagnostics.DebuggerNonUserCodeAttribute]
+    void pb::IBufferMessage.InternalWriteTo(ref pb::WriteContext output) {
+      if (Name.Length != 0) {
+        output.WriteRawTag(10);
+        output.WriteString(Name);
+      }
+      if (Description.Length != 0) {
+        output.WriteRawTag(18);
+        output.WriteString(Description);
+      }
+      if (Filter.Length != 0) {
+        output.WriteRawTag(26);
+        output.WriteString(Filter);
+      }
+      if (Version != global::Google.Cloud.Logging.V2.LogMetric.Types.ApiVersion.V2) {
+        output.WriteRawTag(32);
+        output.WriteEnum((int) Version);
+      }
+      if (metricDescriptor_ != null) {
+        output.WriteRawTag(42);
+        output.WriteMessage(MetricDescriptor);
+      }
+      if (ValueExtractor.Length != 0) {
+        output.WriteRawTag(50);
+        output.WriteString(ValueExtractor);
+      }
+      labelExtractors_.WriteTo(ref output, _map_labelExtractors_codec);
+      if (bucketOptions_ != null) {
+        output.WriteRawTag(66);
+        output.WriteMessage(BucketOptions);
+      }
+      if (createTime_ != null) {
+        output.WriteRawTag(74);
+        output.WriteMessage(CreateTime);
+      }
+      if (updateTime_ != null) {
+        output.WriteRawTag(82);
+        output.WriteMessage(UpdateTime);
+      }
+      if (_unknownFields != null) {
+        _unknownFields.WriteTo(ref output);
+      }
+    }
+    #endif
 
     [global::System.Diagnostics.DebuggerNonUserCodeAttribute]
     public int CalculateSize() {
@@ -485,7 +552,7 @@ namespace Google.Cloud.Logging.V2 {
       if (updateTime_ != null) {
         size += 1 + pb::CodedOutputStream.ComputeMessageSize(UpdateTime);
       }
-      if (Version != 0) {
+      if (Version != global::Google.Cloud.Logging.V2.LogMetric.Types.ApiVersion.V2) {
         size += 1 + pb::CodedOutputStream.ComputeEnumSize((int) Version);
       }
       if (_unknownFields != null) {
@@ -536,7 +603,7 @@ namespace Google.Cloud.Logging.V2 {
         }
         UpdateTime.MergeFrom(other.UpdateTime);
       }
-      if (other.Version != 0) {
+      if (other.Version != global::Google.Cloud.Logging.V2.LogMetric.Types.ApiVersion.V2) {
         Version = other.Version;
       }
       _unknownFields = pb::UnknownFieldSet.MergeFrom(_unknownFields, other._unknownFields);
@@ -544,6 +611,9 @@ namespace Google.Cloud.Logging.V2 {
 
     [global::System.Diagnostics.DebuggerNonUserCodeAttribute]
     public void MergeFrom(pb::CodedInputStream input) {
+    #if !GOOGLE_PROTOBUF_REFSTRUCT_COMPATIBILITY_MODE
+      input.ReadRawMessage(this);
+    #else
       uint tag;
       while ((tag = input.ReadTag()) != 0) {
         switch(tag) {
@@ -604,7 +674,74 @@ namespace Google.Cloud.Logging.V2 {
           }
         }
       }
+    #endif
     }
+
+    #if !GOOGLE_PROTOBUF_REFSTRUCT_COMPATIBILITY_MODE
+    [global::System.Diagnostics.DebuggerNonUserCodeAttribute]
+    void pb::IBufferMessage.InternalMergeFrom(ref pb::ParseContext input) {
+      uint tag;
+      while ((tag = input.ReadTag()) != 0) {
+        switch(tag) {
+          default:
+            _unknownFields = pb::UnknownFieldSet.MergeFieldFrom(_unknownFields, ref input);
+            break;
+          case 10: {
+            Name = input.ReadString();
+            break;
+          }
+          case 18: {
+            Description = input.ReadString();
+            break;
+          }
+          case 26: {
+            Filter = input.ReadString();
+            break;
+          }
+          case 32: {
+            Version = (global::Google.Cloud.Logging.V2.LogMetric.Types.ApiVersion) input.ReadEnum();
+            break;
+          }
+          case 42: {
+            if (metricDescriptor_ == null) {
+              MetricDescriptor = new global::Google.Api.MetricDescriptor();
+            }
+            input.ReadMessage(MetricDescriptor);
+            break;
+          }
+          case 50: {
+            ValueExtractor = input.ReadString();
+            break;
+          }
+          case 58: {
+            labelExtractors_.AddEntriesFrom(ref input, _map_labelExtractors_codec);
+            break;
+          }
+          case 66: {
+            if (bucketOptions_ == null) {
+              BucketOptions = new global::Google.Api.Distribution.Types.BucketOptions();
+            }
+            input.ReadMessage(BucketOptions);
+            break;
+          }
+          case 74: {
+            if (createTime_ == null) {
+              CreateTime = new global::Google.Protobuf.WellKnownTypes.Timestamp();
+            }
+            input.ReadMessage(CreateTime);
+            break;
+          }
+          case 82: {
+            if (updateTime_ == null) {
+              UpdateTime = new global::Google.Protobuf.WellKnownTypes.Timestamp();
+            }
+            input.ReadMessage(UpdateTime);
+            break;
+          }
+        }
+      }
+    }
+    #endif
 
     #region Nested types
     /// <summary>Container for nested types declared in the LogMetric message type.</summary>
@@ -632,7 +769,11 @@ namespace Google.Cloud.Logging.V2 {
   /// <summary>
   /// The parameters to ListLogMetrics.
   /// </summary>
-  public sealed partial class ListLogMetricsRequest : pb::IMessage<ListLogMetricsRequest> {
+  public sealed partial class ListLogMetricsRequest : pb::IMessage<ListLogMetricsRequest>
+  #if !GOOGLE_PROTOBUF_REFSTRUCT_COMPATIBILITY_MODE
+      , pb::IBufferMessage
+  #endif
+  {
     private static readonly pb::MessageParser<ListLogMetricsRequest> _parser = new pb::MessageParser<ListLogMetricsRequest>(() => new ListLogMetricsRequest());
     private pb::UnknownFieldSet _unknownFields;
     [global::System.Diagnostics.DebuggerNonUserCodeAttribute]
@@ -755,6 +896,9 @@ namespace Google.Cloud.Logging.V2 {
 
     [global::System.Diagnostics.DebuggerNonUserCodeAttribute]
     public void WriteTo(pb::CodedOutputStream output) {
+    #if !GOOGLE_PROTOBUF_REFSTRUCT_COMPATIBILITY_MODE
+      output.WriteRawMessage(this);
+    #else
       if (Parent.Length != 0) {
         output.WriteRawTag(10);
         output.WriteString(Parent);
@@ -770,7 +914,29 @@ namespace Google.Cloud.Logging.V2 {
       if (_unknownFields != null) {
         _unknownFields.WriteTo(output);
       }
+    #endif
     }
+
+    #if !GOOGLE_PROTOBUF_REFSTRUCT_COMPATIBILITY_MODE
+    [global::System.Diagnostics.DebuggerNonUserCodeAttribute]
+    void pb::IBufferMessage.InternalWriteTo(ref pb::WriteContext output) {
+      if (Parent.Length != 0) {
+        output.WriteRawTag(10);
+        output.WriteString(Parent);
+      }
+      if (PageToken.Length != 0) {
+        output.WriteRawTag(18);
+        output.WriteString(PageToken);
+      }
+      if (PageSize != 0) {
+        output.WriteRawTag(24);
+        output.WriteInt32(PageSize);
+      }
+      if (_unknownFields != null) {
+        _unknownFields.WriteTo(ref output);
+      }
+    }
+    #endif
 
     [global::System.Diagnostics.DebuggerNonUserCodeAttribute]
     public int CalculateSize() {
@@ -809,6 +975,9 @@ namespace Google.Cloud.Logging.V2 {
 
     [global::System.Diagnostics.DebuggerNonUserCodeAttribute]
     public void MergeFrom(pb::CodedInputStream input) {
+    #if !GOOGLE_PROTOBUF_REFSTRUCT_COMPATIBILITY_MODE
+      input.ReadRawMessage(this);
+    #else
       uint tag;
       while ((tag = input.ReadTag()) != 0) {
         switch(tag) {
@@ -829,14 +998,45 @@ namespace Google.Cloud.Logging.V2 {
           }
         }
       }
+    #endif
     }
+
+    #if !GOOGLE_PROTOBUF_REFSTRUCT_COMPATIBILITY_MODE
+    [global::System.Diagnostics.DebuggerNonUserCodeAttribute]
+    void pb::IBufferMessage.InternalMergeFrom(ref pb::ParseContext input) {
+      uint tag;
+      while ((tag = input.ReadTag()) != 0) {
+        switch(tag) {
+          default:
+            _unknownFields = pb::UnknownFieldSet.MergeFieldFrom(_unknownFields, ref input);
+            break;
+          case 10: {
+            Parent = input.ReadString();
+            break;
+          }
+          case 18: {
+            PageToken = input.ReadString();
+            break;
+          }
+          case 24: {
+            PageSize = input.ReadInt32();
+            break;
+          }
+        }
+      }
+    }
+    #endif
 
   }
 
   /// <summary>
   /// Result returned from ListLogMetrics.
   /// </summary>
-  public sealed partial class ListLogMetricsResponse : pb::IMessage<ListLogMetricsResponse> {
+  public sealed partial class ListLogMetricsResponse : pb::IMessage<ListLogMetricsResponse>
+  #if !GOOGLE_PROTOBUF_REFSTRUCT_COMPATIBILITY_MODE
+      , pb::IBufferMessage
+  #endif
+  {
     private static readonly pb::MessageParser<ListLogMetricsResponse> _parser = new pb::MessageParser<ListLogMetricsResponse>(() => new ListLogMetricsResponse());
     private pb::UnknownFieldSet _unknownFields;
     [global::System.Diagnostics.DebuggerNonUserCodeAttribute]
@@ -936,6 +1136,9 @@ namespace Google.Cloud.Logging.V2 {
 
     [global::System.Diagnostics.DebuggerNonUserCodeAttribute]
     public void WriteTo(pb::CodedOutputStream output) {
+    #if !GOOGLE_PROTOBUF_REFSTRUCT_COMPATIBILITY_MODE
+      output.WriteRawMessage(this);
+    #else
       metrics_.WriteTo(output, _repeated_metrics_codec);
       if (NextPageToken.Length != 0) {
         output.WriteRawTag(18);
@@ -944,7 +1147,22 @@ namespace Google.Cloud.Logging.V2 {
       if (_unknownFields != null) {
         _unknownFields.WriteTo(output);
       }
+    #endif
     }
+
+    #if !GOOGLE_PROTOBUF_REFSTRUCT_COMPATIBILITY_MODE
+    [global::System.Diagnostics.DebuggerNonUserCodeAttribute]
+    void pb::IBufferMessage.InternalWriteTo(ref pb::WriteContext output) {
+      metrics_.WriteTo(ref output, _repeated_metrics_codec);
+      if (NextPageToken.Length != 0) {
+        output.WriteRawTag(18);
+        output.WriteString(NextPageToken);
+      }
+      if (_unknownFields != null) {
+        _unknownFields.WriteTo(ref output);
+      }
+    }
+    #endif
 
     [global::System.Diagnostics.DebuggerNonUserCodeAttribute]
     public int CalculateSize() {
@@ -973,6 +1191,9 @@ namespace Google.Cloud.Logging.V2 {
 
     [global::System.Diagnostics.DebuggerNonUserCodeAttribute]
     public void MergeFrom(pb::CodedInputStream input) {
+    #if !GOOGLE_PROTOBUF_REFSTRUCT_COMPATIBILITY_MODE
+      input.ReadRawMessage(this);
+    #else
       uint tag;
       while ((tag = input.ReadTag()) != 0) {
         switch(tag) {
@@ -989,14 +1210,41 @@ namespace Google.Cloud.Logging.V2 {
           }
         }
       }
+    #endif
     }
+
+    #if !GOOGLE_PROTOBUF_REFSTRUCT_COMPATIBILITY_MODE
+    [global::System.Diagnostics.DebuggerNonUserCodeAttribute]
+    void pb::IBufferMessage.InternalMergeFrom(ref pb::ParseContext input) {
+      uint tag;
+      while ((tag = input.ReadTag()) != 0) {
+        switch(tag) {
+          default:
+            _unknownFields = pb::UnknownFieldSet.MergeFieldFrom(_unknownFields, ref input);
+            break;
+          case 10: {
+            metrics_.AddEntriesFrom(ref input, _repeated_metrics_codec);
+            break;
+          }
+          case 18: {
+            NextPageToken = input.ReadString();
+            break;
+          }
+        }
+      }
+    }
+    #endif
 
   }
 
   /// <summary>
   /// The parameters to GetLogMetric.
   /// </summary>
-  public sealed partial class GetLogMetricRequest : pb::IMessage<GetLogMetricRequest> {
+  public sealed partial class GetLogMetricRequest : pb::IMessage<GetLogMetricRequest>
+  #if !GOOGLE_PROTOBUF_REFSTRUCT_COMPATIBILITY_MODE
+      , pb::IBufferMessage
+  #endif
+  {
     private static readonly pb::MessageParser<GetLogMetricRequest> _parser = new pb::MessageParser<GetLogMetricRequest>(() => new GetLogMetricRequest());
     private pb::UnknownFieldSet _unknownFields;
     [global::System.Diagnostics.DebuggerNonUserCodeAttribute]
@@ -1034,7 +1282,7 @@ namespace Google.Cloud.Logging.V2 {
     public const int MetricNameFieldNumber = 1;
     private string metricName_ = "";
     /// <summary>
-    /// The resource name of the desired metric:
+    /// Required. The resource name of the desired metric:
     ///
     ///     "projects/[PROJECT_ID]/metrics/[METRIC_ID]"
     /// </summary>
@@ -1080,6 +1328,9 @@ namespace Google.Cloud.Logging.V2 {
 
     [global::System.Diagnostics.DebuggerNonUserCodeAttribute]
     public void WriteTo(pb::CodedOutputStream output) {
+    #if !GOOGLE_PROTOBUF_REFSTRUCT_COMPATIBILITY_MODE
+      output.WriteRawMessage(this);
+    #else
       if (MetricName.Length != 0) {
         output.WriteRawTag(10);
         output.WriteString(MetricName);
@@ -1087,7 +1338,21 @@ namespace Google.Cloud.Logging.V2 {
       if (_unknownFields != null) {
         _unknownFields.WriteTo(output);
       }
+    #endif
     }
+
+    #if !GOOGLE_PROTOBUF_REFSTRUCT_COMPATIBILITY_MODE
+    [global::System.Diagnostics.DebuggerNonUserCodeAttribute]
+    void pb::IBufferMessage.InternalWriteTo(ref pb::WriteContext output) {
+      if (MetricName.Length != 0) {
+        output.WriteRawTag(10);
+        output.WriteString(MetricName);
+      }
+      if (_unknownFields != null) {
+        _unknownFields.WriteTo(ref output);
+      }
+    }
+    #endif
 
     [global::System.Diagnostics.DebuggerNonUserCodeAttribute]
     public int CalculateSize() {
@@ -1114,6 +1379,9 @@ namespace Google.Cloud.Logging.V2 {
 
     [global::System.Diagnostics.DebuggerNonUserCodeAttribute]
     public void MergeFrom(pb::CodedInputStream input) {
+    #if !GOOGLE_PROTOBUF_REFSTRUCT_COMPATIBILITY_MODE
+      input.ReadRawMessage(this);
+    #else
       uint tag;
       while ((tag = input.ReadTag()) != 0) {
         switch(tag) {
@@ -1126,14 +1394,37 @@ namespace Google.Cloud.Logging.V2 {
           }
         }
       }
+    #endif
     }
+
+    #if !GOOGLE_PROTOBUF_REFSTRUCT_COMPATIBILITY_MODE
+    [global::System.Diagnostics.DebuggerNonUserCodeAttribute]
+    void pb::IBufferMessage.InternalMergeFrom(ref pb::ParseContext input) {
+      uint tag;
+      while ((tag = input.ReadTag()) != 0) {
+        switch(tag) {
+          default:
+            _unknownFields = pb::UnknownFieldSet.MergeFieldFrom(_unknownFields, ref input);
+            break;
+          case 10: {
+            MetricName = input.ReadString();
+            break;
+          }
+        }
+      }
+    }
+    #endif
 
   }
 
   /// <summary>
   /// The parameters to CreateLogMetric.
   /// </summary>
-  public sealed partial class CreateLogMetricRequest : pb::IMessage<CreateLogMetricRequest> {
+  public sealed partial class CreateLogMetricRequest : pb::IMessage<CreateLogMetricRequest>
+  #if !GOOGLE_PROTOBUF_REFSTRUCT_COMPATIBILITY_MODE
+      , pb::IBufferMessage
+  #endif
+  {
     private static readonly pb::MessageParser<CreateLogMetricRequest> _parser = new pb::MessageParser<CreateLogMetricRequest>(() => new CreateLogMetricRequest());
     private pb::UnknownFieldSet _unknownFields;
     [global::System.Diagnostics.DebuggerNonUserCodeAttribute]
@@ -1172,7 +1463,7 @@ namespace Google.Cloud.Logging.V2 {
     public const int ParentFieldNumber = 1;
     private string parent_ = "";
     /// <summary>
-    /// The resource name of the project in which to create the metric:
+    /// Required. The resource name of the project in which to create the metric:
     ///
     ///     "projects/[PROJECT_ID]"
     ///
@@ -1190,7 +1481,7 @@ namespace Google.Cloud.Logging.V2 {
     public const int MetricFieldNumber = 2;
     private global::Google.Cloud.Logging.V2.LogMetric metric_;
     /// <summary>
-    /// The new logs-based metric, which must not have an identifier that
+    /// Required. The new logs-based metric, which must not have an identifier that
     /// already exists.
     /// </summary>
     [global::System.Diagnostics.DebuggerNonUserCodeAttribute]
@@ -1237,6 +1528,9 @@ namespace Google.Cloud.Logging.V2 {
 
     [global::System.Diagnostics.DebuggerNonUserCodeAttribute]
     public void WriteTo(pb::CodedOutputStream output) {
+    #if !GOOGLE_PROTOBUF_REFSTRUCT_COMPATIBILITY_MODE
+      output.WriteRawMessage(this);
+    #else
       if (Parent.Length != 0) {
         output.WriteRawTag(10);
         output.WriteString(Parent);
@@ -1248,7 +1542,25 @@ namespace Google.Cloud.Logging.V2 {
       if (_unknownFields != null) {
         _unknownFields.WriteTo(output);
       }
+    #endif
     }
+
+    #if !GOOGLE_PROTOBUF_REFSTRUCT_COMPATIBILITY_MODE
+    [global::System.Diagnostics.DebuggerNonUserCodeAttribute]
+    void pb::IBufferMessage.InternalWriteTo(ref pb::WriteContext output) {
+      if (Parent.Length != 0) {
+        output.WriteRawTag(10);
+        output.WriteString(Parent);
+      }
+      if (metric_ != null) {
+        output.WriteRawTag(18);
+        output.WriteMessage(Metric);
+      }
+      if (_unknownFields != null) {
+        _unknownFields.WriteTo(ref output);
+      }
+    }
+    #endif
 
     [global::System.Diagnostics.DebuggerNonUserCodeAttribute]
     public int CalculateSize() {
@@ -1284,6 +1596,9 @@ namespace Google.Cloud.Logging.V2 {
 
     [global::System.Diagnostics.DebuggerNonUserCodeAttribute]
     public void MergeFrom(pb::CodedInputStream input) {
+    #if !GOOGLE_PROTOBUF_REFSTRUCT_COMPATIBILITY_MODE
+      input.ReadRawMessage(this);
+    #else
       uint tag;
       while ((tag = input.ReadTag()) != 0) {
         switch(tag) {
@@ -1303,14 +1618,44 @@ namespace Google.Cloud.Logging.V2 {
           }
         }
       }
+    #endif
     }
+
+    #if !GOOGLE_PROTOBUF_REFSTRUCT_COMPATIBILITY_MODE
+    [global::System.Diagnostics.DebuggerNonUserCodeAttribute]
+    void pb::IBufferMessage.InternalMergeFrom(ref pb::ParseContext input) {
+      uint tag;
+      while ((tag = input.ReadTag()) != 0) {
+        switch(tag) {
+          default:
+            _unknownFields = pb::UnknownFieldSet.MergeFieldFrom(_unknownFields, ref input);
+            break;
+          case 10: {
+            Parent = input.ReadString();
+            break;
+          }
+          case 18: {
+            if (metric_ == null) {
+              Metric = new global::Google.Cloud.Logging.V2.LogMetric();
+            }
+            input.ReadMessage(Metric);
+            break;
+          }
+        }
+      }
+    }
+    #endif
 
   }
 
   /// <summary>
   /// The parameters to UpdateLogMetric.
   /// </summary>
-  public sealed partial class UpdateLogMetricRequest : pb::IMessage<UpdateLogMetricRequest> {
+  public sealed partial class UpdateLogMetricRequest : pb::IMessage<UpdateLogMetricRequest>
+  #if !GOOGLE_PROTOBUF_REFSTRUCT_COMPATIBILITY_MODE
+      , pb::IBufferMessage
+  #endif
+  {
     private static readonly pb::MessageParser<UpdateLogMetricRequest> _parser = new pb::MessageParser<UpdateLogMetricRequest>(() => new UpdateLogMetricRequest());
     private pb::UnknownFieldSet _unknownFields;
     [global::System.Diagnostics.DebuggerNonUserCodeAttribute]
@@ -1349,7 +1694,7 @@ namespace Google.Cloud.Logging.V2 {
     public const int MetricNameFieldNumber = 1;
     private string metricName_ = "";
     /// <summary>
-    /// The resource name of the metric to update:
+    /// Required. The resource name of the metric to update:
     ///
     ///     "projects/[PROJECT_ID]/metrics/[METRIC_ID]"
     ///
@@ -1369,7 +1714,7 @@ namespace Google.Cloud.Logging.V2 {
     public const int MetricFieldNumber = 2;
     private global::Google.Cloud.Logging.V2.LogMetric metric_;
     /// <summary>
-    /// The updated metric.
+    /// Required. The updated metric.
     /// </summary>
     [global::System.Diagnostics.DebuggerNonUserCodeAttribute]
     public global::Google.Cloud.Logging.V2.LogMetric Metric {
@@ -1415,6 +1760,9 @@ namespace Google.Cloud.Logging.V2 {
 
     [global::System.Diagnostics.DebuggerNonUserCodeAttribute]
     public void WriteTo(pb::CodedOutputStream output) {
+    #if !GOOGLE_PROTOBUF_REFSTRUCT_COMPATIBILITY_MODE
+      output.WriteRawMessage(this);
+    #else
       if (MetricName.Length != 0) {
         output.WriteRawTag(10);
         output.WriteString(MetricName);
@@ -1426,7 +1774,25 @@ namespace Google.Cloud.Logging.V2 {
       if (_unknownFields != null) {
         _unknownFields.WriteTo(output);
       }
+    #endif
     }
+
+    #if !GOOGLE_PROTOBUF_REFSTRUCT_COMPATIBILITY_MODE
+    [global::System.Diagnostics.DebuggerNonUserCodeAttribute]
+    void pb::IBufferMessage.InternalWriteTo(ref pb::WriteContext output) {
+      if (MetricName.Length != 0) {
+        output.WriteRawTag(10);
+        output.WriteString(MetricName);
+      }
+      if (metric_ != null) {
+        output.WriteRawTag(18);
+        output.WriteMessage(Metric);
+      }
+      if (_unknownFields != null) {
+        _unknownFields.WriteTo(ref output);
+      }
+    }
+    #endif
 
     [global::System.Diagnostics.DebuggerNonUserCodeAttribute]
     public int CalculateSize() {
@@ -1462,6 +1828,9 @@ namespace Google.Cloud.Logging.V2 {
 
     [global::System.Diagnostics.DebuggerNonUserCodeAttribute]
     public void MergeFrom(pb::CodedInputStream input) {
+    #if !GOOGLE_PROTOBUF_REFSTRUCT_COMPATIBILITY_MODE
+      input.ReadRawMessage(this);
+    #else
       uint tag;
       while ((tag = input.ReadTag()) != 0) {
         switch(tag) {
@@ -1481,14 +1850,44 @@ namespace Google.Cloud.Logging.V2 {
           }
         }
       }
+    #endif
     }
+
+    #if !GOOGLE_PROTOBUF_REFSTRUCT_COMPATIBILITY_MODE
+    [global::System.Diagnostics.DebuggerNonUserCodeAttribute]
+    void pb::IBufferMessage.InternalMergeFrom(ref pb::ParseContext input) {
+      uint tag;
+      while ((tag = input.ReadTag()) != 0) {
+        switch(tag) {
+          default:
+            _unknownFields = pb::UnknownFieldSet.MergeFieldFrom(_unknownFields, ref input);
+            break;
+          case 10: {
+            MetricName = input.ReadString();
+            break;
+          }
+          case 18: {
+            if (metric_ == null) {
+              Metric = new global::Google.Cloud.Logging.V2.LogMetric();
+            }
+            input.ReadMessage(Metric);
+            break;
+          }
+        }
+      }
+    }
+    #endif
 
   }
 
   /// <summary>
   /// The parameters to DeleteLogMetric.
   /// </summary>
-  public sealed partial class DeleteLogMetricRequest : pb::IMessage<DeleteLogMetricRequest> {
+  public sealed partial class DeleteLogMetricRequest : pb::IMessage<DeleteLogMetricRequest>
+  #if !GOOGLE_PROTOBUF_REFSTRUCT_COMPATIBILITY_MODE
+      , pb::IBufferMessage
+  #endif
+  {
     private static readonly pb::MessageParser<DeleteLogMetricRequest> _parser = new pb::MessageParser<DeleteLogMetricRequest>(() => new DeleteLogMetricRequest());
     private pb::UnknownFieldSet _unknownFields;
     [global::System.Diagnostics.DebuggerNonUserCodeAttribute]
@@ -1526,7 +1925,7 @@ namespace Google.Cloud.Logging.V2 {
     public const int MetricNameFieldNumber = 1;
     private string metricName_ = "";
     /// <summary>
-    /// The resource name of the metric to delete:
+    /// Required. The resource name of the metric to delete:
     ///
     ///     "projects/[PROJECT_ID]/metrics/[METRIC_ID]"
     /// </summary>
@@ -1572,6 +1971,9 @@ namespace Google.Cloud.Logging.V2 {
 
     [global::System.Diagnostics.DebuggerNonUserCodeAttribute]
     public void WriteTo(pb::CodedOutputStream output) {
+    #if !GOOGLE_PROTOBUF_REFSTRUCT_COMPATIBILITY_MODE
+      output.WriteRawMessage(this);
+    #else
       if (MetricName.Length != 0) {
         output.WriteRawTag(10);
         output.WriteString(MetricName);
@@ -1579,7 +1981,21 @@ namespace Google.Cloud.Logging.V2 {
       if (_unknownFields != null) {
         _unknownFields.WriteTo(output);
       }
+    #endif
     }
+
+    #if !GOOGLE_PROTOBUF_REFSTRUCT_COMPATIBILITY_MODE
+    [global::System.Diagnostics.DebuggerNonUserCodeAttribute]
+    void pb::IBufferMessage.InternalWriteTo(ref pb::WriteContext output) {
+      if (MetricName.Length != 0) {
+        output.WriteRawTag(10);
+        output.WriteString(MetricName);
+      }
+      if (_unknownFields != null) {
+        _unknownFields.WriteTo(ref output);
+      }
+    }
+    #endif
 
     [global::System.Diagnostics.DebuggerNonUserCodeAttribute]
     public int CalculateSize() {
@@ -1606,6 +2022,9 @@ namespace Google.Cloud.Logging.V2 {
 
     [global::System.Diagnostics.DebuggerNonUserCodeAttribute]
     public void MergeFrom(pb::CodedInputStream input) {
+    #if !GOOGLE_PROTOBUF_REFSTRUCT_COMPATIBILITY_MODE
+      input.ReadRawMessage(this);
+    #else
       uint tag;
       while ((tag = input.ReadTag()) != 0) {
         switch(tag) {
@@ -1618,7 +2037,26 @@ namespace Google.Cloud.Logging.V2 {
           }
         }
       }
+    #endif
     }
+
+    #if !GOOGLE_PROTOBUF_REFSTRUCT_COMPATIBILITY_MODE
+    [global::System.Diagnostics.DebuggerNonUserCodeAttribute]
+    void pb::IBufferMessage.InternalMergeFrom(ref pb::ParseContext input) {
+      uint tag;
+      while ((tag = input.ReadTag()) != 0) {
+        switch(tag) {
+          default:
+            _unknownFields = pb::UnknownFieldSet.MergeFieldFrom(_unknownFields, ref input);
+            break;
+          case 10: {
+            MetricName = input.ReadString();
+            break;
+          }
+        }
+      }
+    }
+    #endif
 
   }
 

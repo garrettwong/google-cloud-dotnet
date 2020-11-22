@@ -50,9 +50,12 @@ namespace Google.Cloud.Bigtable.V2
         protected override ChannelPool GetChannelPool() => throw new NotImplementedException();
 
         /// <inheritdoc />
-        protected override ServiceEndpoint GetDefaultEndpoint() => throw new NotImplementedException();
+        protected override string GetDefaultEndpoint() => throw new NotImplementedException();
 
         /// <inheritdoc />
         protected override IReadOnlyList<string> GetDefaultScopes() => throw new NotImplementedException();
+
+        /// <inheritdoc />
+        protected override GrpcAdapter DefaultGrpcAdapter => throw new NotImplementedException();
     }
 }

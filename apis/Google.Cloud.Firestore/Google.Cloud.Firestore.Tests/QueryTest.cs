@@ -73,6 +73,30 @@ namespace Google.Cloud.Firestore.Tests
         }
 
         [Fact]
+        public void Where_NotEqualTo_String()
+        {
+            var query = GetEmptyQuery().WhereNotEqualTo("a.b", "x");
+            var expected = new StructuredQuery
+            {
+                Where = Filter(new FieldFilter { Field = Field("a.b"), Op = FieldFilter.Types.Operator.NotEqual, Value = CreateValue("x") }),
+                From = { new CollectionSelector { CollectionId = "col" } }
+            };
+            Assert.Equal(expected, query.ToStructuredQuery());
+        }
+
+        [Fact]
+        public void Where_NotEqualTo_FieldPath()
+        {
+            var query = GetEmptyQuery().WhereNotEqualTo(new FieldPath("a", "b"), "x");
+            var expected = new StructuredQuery
+            {
+                Where = Filter(new FieldFilter { Field = Field("a.b"), Op = FieldFilter.Types.Operator.NotEqual, Value = CreateValue("x") }),
+                From = { new CollectionSelector { CollectionId = "col" } }
+            };
+            Assert.Equal(expected, query.ToStructuredQuery());
+        }
+
+        [Fact]
         public void Where_LessThan_String()
         {
             var query = GetEmptyQuery().WhereLessThan("a.b", "x");
@@ -218,6 +242,32 @@ namespace Google.Cloud.Firestore.Tests
             Assert.Equal(expected, query.ToStructuredQuery());
         }
 
+        [Theory]
+        [InlineData(double.NaN)]
+        [InlineData(float.NaN)]
+        public void Where_NotSingleNaNFilter(object value)
+        {
+            var query = GetEmptyQuery().WhereNotEqualTo("a.b", value);
+            var expected = new StructuredQuery
+            {
+                Where = Filter(new UnaryFilter { Field = Field("a.b"), Op = UnaryFilter.Types.Operator.IsNotNan }),
+                From = { new CollectionSelector { CollectionId = "col" } }
+            };
+            Assert.Equal(expected, query.ToStructuredQuery());
+        }
+
+        [Fact]
+        public void Where_NotSingleNullFilter()
+        {
+            var query = GetEmptyQuery().WhereNotEqualTo("a.b", null);
+            var expected = new StructuredQuery
+            {
+                Where = Filter(new UnaryFilter { Field = Field("a.b"), Op = UnaryFilter.Types.Operator.IsNotNull }),
+                From = { new CollectionSelector { CollectionId = "col" } }
+            };
+            Assert.Equal(expected, query.ToStructuredQuery());
+        }
+
         [Fact]
         public void Where_CompositeFilter()
         {
@@ -257,6 +307,114 @@ namespace Google.Cloud.Firestore.Tests
             {
                 Where = Filter(new FieldFilter { Field = Field("a.b"), Op = FieldFilter.Types.Operator.In, Value = CreateArray(CreateValue(10), CreateValue(20)) }),
                 From = { new CollectionSelector { CollectionId = "col" } }
+            };
+            Assert.Equal(expected, query.ToStructuredQuery());
+        }
+
+        [Fact]
+        public void WhereNotIn_String()
+        {
+            var query = GetEmptyQuery().WhereNotIn("a.b", new[] { 10, 20 });
+            var expected = new StructuredQuery
+            {
+                Where = Filter(new FieldFilter { Field = Field("a.b"), Op = FieldFilter.Types.Operator.NotIn, Value = CreateArray(CreateValue(10), CreateValue(20)) }),
+                From = { new CollectionSelector { CollectionId = "col" } }
+            };
+            Assert.Equal(expected, query.ToStructuredQuery());
+        }
+
+        [Fact]
+        public void WhereNotIn_FieldPath()
+        {
+            var query = GetEmptyQuery().WhereNotIn(new FieldPath("a", "b"), new[] { 10, 20 });
+            var expected = new StructuredQuery
+            {
+                Where = Filter(new FieldFilter { Field = Field("a.b"), Op = FieldFilter.Types.Operator.NotIn, Value = CreateArray(CreateValue(10), CreateValue(20)) }),
+                From = { new CollectionSelector { CollectionId = "col" } }
+            };
+            Assert.Equal(expected, query.ToStructuredQuery());
+        }
+
+        // See comments in WhereIn for details.
+        [Fact]
+        public void WhereIn_StringPath_StringValueThrows()
+        {
+            var empty = GetEmptyQuery();
+            Assert.Throws<ArgumentException>(() => empty.WhereIn("a.b", "value"));
+        }
+
+        [Fact]
+        public void WhereIn_FieldPath_StringValueThrows()
+        {
+            var empty = GetEmptyQuery();
+            Assert.Throws<ArgumentException>(() => empty.WhereIn(new FieldPath("a", "b"), "value"));
+        }
+
+        [Fact]
+        public void WhereIn_StringPath_NullValueThrows()
+        {
+            var empty = GetEmptyQuery();
+            Assert.Throws<ArgumentNullException>(() => empty.WhereIn("a.b", null));
+        }
+
+        [Fact]
+        public void WhereIn_FieldPath_NullValueThrows()
+        {
+            var empty = GetEmptyQuery();
+            Assert.Throws<ArgumentNullException>(() => empty.WhereIn(new FieldPath("a", "b"), null));
+        }
+
+        [Fact]
+        public void WhereNotIn_StringPath_StringValueThrows()
+        {
+            var empty = GetEmptyQuery();
+            Assert.Throws<ArgumentException>(() => empty.WhereNotIn("a.b", "value"));
+        }
+
+        [Fact]
+        public void WhereNotIn_FieldPath_StringValueThrows()
+        {
+            var empty = GetEmptyQuery();
+            Assert.Throws<ArgumentException>(() => empty.WhereNotIn(new FieldPath("a", "b"), "value"));
+        }
+
+        [Fact]
+        public void WhereNotIn_StringPath_NullValueThrows()
+        {
+            var empty = GetEmptyQuery();
+            Assert.Throws<ArgumentNullException>(() => empty.WhereNotIn("a.b", null));
+        }
+
+        [Fact]
+        public void WhereNotIn_FieldPath_NullValueThrows()
+        {
+            var empty = GetEmptyQuery();
+            Assert.Throws<ArgumentNullException>(() => empty.WhereNotIn(new FieldPath("a", "b"), null));
+        }
+
+        // Note: no corresponding NotIn query as it's all in the same path anyway.
+        [Fact]
+        public void WhereIn_NotInOrdering()
+        {
+            var collection = s_db.Collection("col");
+            var document = new Document
+            {
+                CreateTime = CreateProtoTimestamp(0, 0),
+                UpdateTime = CreateProtoTimestamp(0, 0),
+                Name = collection.Document("doc").Path,
+                Fields = { { "foo", CreateArray(CreateValue(1), CreateValue(2)) } }
+            };
+            var snapshot = DocumentSnapshot.ForDocument(s_db, document, Timestamp.FromProto(document.CreateTime));
+
+            var query = collection
+                .WhereIn("foo", new[] { "value1", "value2" })
+                .StartAt(snapshot);
+            var expected = new StructuredQuery
+            {
+                From = { new CollectionSelector { CollectionId = "col" } },
+                Where = Filter(new FieldFilter { Field = Field("foo"), Op = FieldFilter.Types.Operator.In, Value = CreateArray(CreateValue("value1"), CreateValue("value2")) }),
+                OrderBy = { new Order { Field = Field("__name__"), Direction = Direction.Ascending } },
+                StartAt = new Cursor { Values = { CreateValue(collection.Document("doc")) }, Before = true }
             };
             Assert.Equal(expected, query.ToStructuredQuery());
         }
@@ -752,7 +910,7 @@ namespace Google.Cloud.Firestore.Tests
             var db = FirestoreDb.Create("proj", "db", mock.Object);
             var query = db.Collection("col").Select("Name").Offset(3);
             // Just for variety, we'll provide a transaction ID this time...
-            var documents = await query.StreamAsync(ByteString.CopyFrom(1, 2, 3, 4), CancellationToken.None).ToList();
+            var documents = await query.StreamAsync(ByteString.CopyFrom(1, 2, 3, 4), CancellationToken.None, allowLimitToLast: false).ToListAsync();
             Assert.Equal(2, documents.Count);
 
             var doc1 = documents[0];
@@ -788,7 +946,7 @@ namespace Google.Cloud.Firestore.Tests
             mock.Setup(c => c.RunQuery(request, It.IsAny<CallSettings>())).Returns(new FakeQueryStream(responses));
             var db = FirestoreDb.Create("proj", "db", mock.Object);
             var query = db.Collection("col").Select("Name");
-            var documents = await query.StreamAsync().ToList();
+            var documents = await query.StreamAsync().ToListAsync();
             Assert.Empty(documents);
             mock.VerifyAll();
         }
@@ -1048,6 +1206,35 @@ namespace Google.Cloud.Firestore.Tests
             };
             Assert.Equal(expected, query.ToStructuredQuery());
         }
+
+        // Note: the LimitToLast tests are mostly written in terms of "Query X is equivalent to Query Y";
+        // the feature is intended to be a convenience to avoid users writing more complicated queries.
+        [Fact]
+        public void LimitToLast_ReversesOrderingConstraints()
+        {
+            var query = s_db.Collection("col").OrderBy("foo").LimitToLast(42);
+            var expectedProto = s_db.Collection("col").OrderByDescending("foo").Limit(42).ToStructuredQuery();
+            var actualProto = query.ToStructuredQuery();
+            Assert.Equal(expectedProto, actualProto);
+        }
+
+        [Fact]
+        public void LimitToLast_ReversesCursors()
+        {
+            var query = s_db.Collection("col").OrderBy("foo").StartAt("start").EndBefore("end").LimitToLast(42);
+            var expectedProto = s_db.Collection("col").OrderByDescending("foo").StartAfter("end").EndAt("start").Limit(42).ToStructuredQuery();
+            var actualProto = query.ToStructuredQuery();
+            Assert.Equal(expectedProto, actualProto);
+        }
+
+        [Fact]
+        public void LimitToLast_RequiresAtLeastOneOrderingConstraint()
+        {
+            var query = s_db.Collection("col").LimitToLast(42);
+            Assert.Throws<InvalidOperationException>(() => query.ToStructuredQuery());
+        }
+
+        // Result reversal and StreamAsync being rejected are handled in integration tests.
 
         private static FieldReference Field(string path) => new FieldReference { FieldPath = path };
         private static Filter Filter(UnaryFilter filter) => new Filter { UnaryFilter = filter };

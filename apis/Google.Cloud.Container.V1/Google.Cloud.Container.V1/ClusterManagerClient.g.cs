@@ -1,4 +1,4 @@
-// Copyright 2019 Google LLC
+// Copyright 2020 Google LLC
 //
 // Licensed under the Apache License, Version 2.0 (the "License");
 // you may not use this file except in compliance with the License.
@@ -14,13 +14,9 @@
 
 // Generated code. DO NOT EDIT!
 
-// Ignore obsolete members within this file.
-// This is currently a hand-written addition to the generated file, until the
-// generator includes it automatically.
-#pragma warning disable CS0612 // Type or member is obsolete
-
 using gax = Google.Api.Gax;
 using gaxgrpc = Google.Api.Gax.Grpc;
+using gaxgrpccore = Google.Api.Gax.Grpc.GrpcCore;
 using proto = Google.Protobuf;
 using wkt = Google.Protobuf.WellKnownTypes;
 using grpccore = Grpc.Core;
@@ -29,7 +25,6 @@ using sys = System;
 using sc = System.Collections;
 using scg = System.Collections.Generic;
 using sco = System.Collections.ObjectModel;
-using sysnet = System.Net;
 using st = System.Threading;
 using stt = System.Threading.Tasks;
 
@@ -67,6 +62,7 @@ namespace Google.Cloud.Container.V1
             GetOperationSettings = existing.GetOperationSettings;
             CancelOperationSettings = existing.CancelOperationSettings;
             GetServerConfigSettings = existing.GetServerConfigSettings;
+            GetJSONWebKeysSettings = existing.GetJSONWebKeysSettings;
             ListNodePoolsSettings = existing.ListNodePoolsSettings;
             GetNodePoolSettings = existing.GetNodePoolSettings;
             CreateNodePoolSettings = existing.CreateNodePoolSettings;
@@ -95,13 +91,11 @@ namespace Google.Cloud.Container.V1
         /// <item><description>Initial retry delay: 100 milliseconds.</description></item>
         /// <item><description>Retry delay multiplier: 1.3</description></item>
         /// <item><description>Retry maximum delay: 60000 milliseconds.</description></item>
-        /// <item><description>Initial timeout: 20000 milliseconds.</description></item>
-        /// <item><description>Timeout multiplier: 1</description></item>
-        /// <item><description>Timeout maximum delay: 20000 milliseconds.</description></item>
-        /// <item><description>Total timeout: 20 seconds.</description></item>
+        /// <item><description>Maximum attempts: Unlimited</description></item>
+        /// <item><description>Timeout: 20 seconds.</description></item>
         /// </list>
         /// </remarks>
-        public gaxgrpc::CallSettings ListClustersSettings { get; set; } = gaxgrpc::CallSettings.FromCallTiming(gaxgrpc::CallTiming.FromRetry(new gaxgrpc::RetrySettings(retryBackoff: new gaxgrpc::BackoffSettings(delay: sys::TimeSpan.FromMilliseconds(100), maxDelay: sys::TimeSpan.FromMilliseconds(60000), delayMultiplier: 1.3), timeoutBackoff: new gaxgrpc::BackoffSettings(delay: sys::TimeSpan.FromMilliseconds(20000), maxDelay: sys::TimeSpan.FromMilliseconds(20000), delayMultiplier: 1), totalExpiration: gax::Expiration.FromTimeout(sys::TimeSpan.FromMilliseconds(20000)), retryFilter: gaxgrpc::RetrySettings.FilterForStatusCodes(grpccore::StatusCode.Unavailable, grpccore::StatusCode.DeadlineExceeded))));
+        public gaxgrpc::CallSettings ListClustersSettings { get; set; } = gaxgrpc::CallSettingsExtensions.WithRetry(gaxgrpc::CallSettings.FromExpiration(gax::Expiration.FromTimeout(sys::TimeSpan.FromMilliseconds(20000))), gaxgrpc::RetrySettings.FromExponentialBackoff(maxAttempts: 2147483647, initialBackoff: sys::TimeSpan.FromMilliseconds(100), maxBackoff: sys::TimeSpan.FromMilliseconds(60000), backoffMultiplier: 1.3, retryFilter: gaxgrpc::RetrySettings.FilterForStatusCodes(grpccore::StatusCode.Unavailable, grpccore::StatusCode.DeadlineExceeded)));
 
         /// <summary>
         /// <see cref="gaxgrpc::CallSettings"/> for synchronous and asynchronous calls to
@@ -112,84 +106,132 @@ namespace Google.Cloud.Container.V1
         /// <item><description>Initial retry delay: 100 milliseconds.</description></item>
         /// <item><description>Retry delay multiplier: 1.3</description></item>
         /// <item><description>Retry maximum delay: 60000 milliseconds.</description></item>
-        /// <item><description>Initial timeout: 20000 milliseconds.</description></item>
-        /// <item><description>Timeout multiplier: 1</description></item>
-        /// <item><description>Timeout maximum delay: 20000 milliseconds.</description></item>
-        /// <item><description>Total timeout: 20 seconds.</description></item>
+        /// <item><description>Maximum attempts: Unlimited</description></item>
+        /// <item><description>Timeout: 20 seconds.</description></item>
         /// </list>
         /// </remarks>
-        public gaxgrpc::CallSettings GetClusterSettings { get; set; } = gaxgrpc::CallSettings.FromCallTiming(gaxgrpc::CallTiming.FromRetry(new gaxgrpc::RetrySettings(retryBackoff: new gaxgrpc::BackoffSettings(delay: sys::TimeSpan.FromMilliseconds(100), maxDelay: sys::TimeSpan.FromMilliseconds(60000), delayMultiplier: 1.3), timeoutBackoff: new gaxgrpc::BackoffSettings(delay: sys::TimeSpan.FromMilliseconds(20000), maxDelay: sys::TimeSpan.FromMilliseconds(20000), delayMultiplier: 1), totalExpiration: gax::Expiration.FromTimeout(sys::TimeSpan.FromMilliseconds(20000)), retryFilter: gaxgrpc::RetrySettings.FilterForStatusCodes(grpccore::StatusCode.Unavailable, grpccore::StatusCode.DeadlineExceeded))));
+        public gaxgrpc::CallSettings GetClusterSettings { get; set; } = gaxgrpc::CallSettingsExtensions.WithRetry(gaxgrpc::CallSettings.FromExpiration(gax::Expiration.FromTimeout(sys::TimeSpan.FromMilliseconds(20000))), gaxgrpc::RetrySettings.FromExponentialBackoff(maxAttempts: 2147483647, initialBackoff: sys::TimeSpan.FromMilliseconds(100), maxBackoff: sys::TimeSpan.FromMilliseconds(60000), backoffMultiplier: 1.3, retryFilter: gaxgrpc::RetrySettings.FilterForStatusCodes(grpccore::StatusCode.Unavailable, grpccore::StatusCode.DeadlineExceeded)));
 
         /// <summary>
         /// <see cref="gaxgrpc::CallSettings"/> for synchronous and asynchronous calls to
         /// <c>ClusterManagerClient.CreateCluster</c> and <c>ClusterManagerClient.CreateClusterAsync</c>.
         /// </summary>
-        /// <remarks>By default, retry will not be attempted.</remarks>
-        public gaxgrpc::CallSettings CreateClusterSettings { get; set; }
+        /// <remarks>
+        /// <list type="bullet">
+        /// <item><description>This call will not be retried.</description></item>
+        /// <item><description>Timeout: 45 seconds.</description></item>
+        /// </list>
+        /// </remarks>
+        public gaxgrpc::CallSettings CreateClusterSettings { get; set; } = gaxgrpc::CallSettings.FromExpiration(gax::Expiration.FromTimeout(sys::TimeSpan.FromMilliseconds(45000)));
 
         /// <summary>
         /// <see cref="gaxgrpc::CallSettings"/> for synchronous and asynchronous calls to
         /// <c>ClusterManagerClient.UpdateCluster</c> and <c>ClusterManagerClient.UpdateClusterAsync</c>.
         /// </summary>
-        /// <remarks>By default, retry will not be attempted.</remarks>
-        public gaxgrpc::CallSettings UpdateClusterSettings { get; set; }
+        /// <remarks>
+        /// <list type="bullet">
+        /// <item><description>This call will not be retried.</description></item>
+        /// <item><description>Timeout: 45 seconds.</description></item>
+        /// </list>
+        /// </remarks>
+        public gaxgrpc::CallSettings UpdateClusterSettings { get; set; } = gaxgrpc::CallSettings.FromExpiration(gax::Expiration.FromTimeout(sys::TimeSpan.FromMilliseconds(45000)));
 
         /// <summary>
         /// <see cref="gaxgrpc::CallSettings"/> for synchronous and asynchronous calls to
         /// <c>ClusterManagerClient.UpdateNodePool</c> and <c>ClusterManagerClient.UpdateNodePoolAsync</c>.
         /// </summary>
-        /// <remarks>By default, retry will not be attempted.</remarks>
-        public gaxgrpc::CallSettings UpdateNodePoolSettings { get; set; }
+        /// <remarks>
+        /// <list type="bullet">
+        /// <item><description>This call will not be retried.</description></item>
+        /// <item><description>Timeout: 45 seconds.</description></item>
+        /// </list>
+        /// </remarks>
+        public gaxgrpc::CallSettings UpdateNodePoolSettings { get; set; } = gaxgrpc::CallSettings.FromExpiration(gax::Expiration.FromTimeout(sys::TimeSpan.FromMilliseconds(45000)));
 
         /// <summary>
         /// <see cref="gaxgrpc::CallSettings"/> for synchronous and asynchronous calls to
         /// <c>ClusterManagerClient.SetNodePoolAutoscaling</c> and <c>ClusterManagerClient.SetNodePoolAutoscalingAsync</c>
         /// .
         /// </summary>
-        /// <remarks>By default, retry will not be attempted.</remarks>
-        public gaxgrpc::CallSettings SetNodePoolAutoscalingSettings { get; set; }
+        /// <remarks>
+        /// <list type="bullet">
+        /// <item><description>This call will not be retried.</description></item>
+        /// <item><description>Timeout: 45 seconds.</description></item>
+        /// </list>
+        /// </remarks>
+        public gaxgrpc::CallSettings SetNodePoolAutoscalingSettings { get; set; } = gaxgrpc::CallSettings.FromExpiration(gax::Expiration.FromTimeout(sys::TimeSpan.FromMilliseconds(45000)));
 
         /// <summary>
         /// <see cref="gaxgrpc::CallSettings"/> for synchronous and asynchronous calls to
         /// <c>ClusterManagerClient.SetLoggingService</c> and <c>ClusterManagerClient.SetLoggingServiceAsync</c>.
         /// </summary>
-        /// <remarks>By default, retry will not be attempted.</remarks>
-        public gaxgrpc::CallSettings SetLoggingServiceSettings { get; set; }
+        /// <remarks>
+        /// <list type="bullet">
+        /// <item><description>This call will not be retried.</description></item>
+        /// <item><description>Timeout: 45 seconds.</description></item>
+        /// </list>
+        /// </remarks>
+        public gaxgrpc::CallSettings SetLoggingServiceSettings { get; set; } = gaxgrpc::CallSettings.FromExpiration(gax::Expiration.FromTimeout(sys::TimeSpan.FromMilliseconds(45000)));
 
         /// <summary>
         /// <see cref="gaxgrpc::CallSettings"/> for synchronous and asynchronous calls to
         /// <c>ClusterManagerClient.SetMonitoringService</c> and <c>ClusterManagerClient.SetMonitoringServiceAsync</c>.
         /// </summary>
-        /// <remarks>By default, retry will not be attempted.</remarks>
-        public gaxgrpc::CallSettings SetMonitoringServiceSettings { get; set; }
+        /// <remarks>
+        /// <list type="bullet">
+        /// <item><description>This call will not be retried.</description></item>
+        /// <item><description>Timeout: 45 seconds.</description></item>
+        /// </list>
+        /// </remarks>
+        public gaxgrpc::CallSettings SetMonitoringServiceSettings { get; set; } = gaxgrpc::CallSettings.FromExpiration(gax::Expiration.FromTimeout(sys::TimeSpan.FromMilliseconds(45000)));
 
         /// <summary>
         /// <see cref="gaxgrpc::CallSettings"/> for synchronous and asynchronous calls to
         /// <c>ClusterManagerClient.SetAddonsConfig</c> and <c>ClusterManagerClient.SetAddonsConfigAsync</c>.
         /// </summary>
-        /// <remarks>By default, retry will not be attempted.</remarks>
-        public gaxgrpc::CallSettings SetAddonsConfigSettings { get; set; }
+        /// <remarks>
+        /// <list type="bullet">
+        /// <item><description>This call will not be retried.</description></item>
+        /// <item><description>Timeout: 45 seconds.</description></item>
+        /// </list>
+        /// </remarks>
+        public gaxgrpc::CallSettings SetAddonsConfigSettings { get; set; } = gaxgrpc::CallSettings.FromExpiration(gax::Expiration.FromTimeout(sys::TimeSpan.FromMilliseconds(45000)));
 
         /// <summary>
         /// <see cref="gaxgrpc::CallSettings"/> for synchronous and asynchronous calls to
         /// <c>ClusterManagerClient.SetLocations</c> and <c>ClusterManagerClient.SetLocationsAsync</c>.
         /// </summary>
-        /// <remarks>By default, retry will not be attempted.</remarks>
-        public gaxgrpc::CallSettings SetLocationsSettings { get; set; }
+        /// <remarks>
+        /// <list type="bullet">
+        /// <item><description>This call will not be retried.</description></item>
+        /// <item><description>Timeout: 45 seconds.</description></item>
+        /// </list>
+        /// </remarks>
+        public gaxgrpc::CallSettings SetLocationsSettings { get; set; } = gaxgrpc::CallSettings.FromExpiration(gax::Expiration.FromTimeout(sys::TimeSpan.FromMilliseconds(45000)));
 
         /// <summary>
         /// <see cref="gaxgrpc::CallSettings"/> for synchronous and asynchronous calls to
         /// <c>ClusterManagerClient.UpdateMaster</c> and <c>ClusterManagerClient.UpdateMasterAsync</c>.
         /// </summary>
-        /// <remarks>By default, retry will not be attempted.</remarks>
-        public gaxgrpc::CallSettings UpdateMasterSettings { get; set; }
+        /// <remarks>
+        /// <list type="bullet">
+        /// <item><description>This call will not be retried.</description></item>
+        /// <item><description>Timeout: 45 seconds.</description></item>
+        /// </list>
+        /// </remarks>
+        public gaxgrpc::CallSettings UpdateMasterSettings { get; set; } = gaxgrpc::CallSettings.FromExpiration(gax::Expiration.FromTimeout(sys::TimeSpan.FromMilliseconds(45000)));
 
         /// <summary>
         /// <see cref="gaxgrpc::CallSettings"/> for synchronous and asynchronous calls to
         /// <c>ClusterManagerClient.SetMasterAuth</c> and <c>ClusterManagerClient.SetMasterAuthAsync</c>.
         /// </summary>
-        /// <remarks>By default, retry will not be attempted.</remarks>
-        public gaxgrpc::CallSettings SetMasterAuthSettings { get; set; }
+        /// <remarks>
+        /// <list type="bullet">
+        /// <item><description>This call will not be retried.</description></item>
+        /// <item><description>Timeout: 45 seconds.</description></item>
+        /// </list>
+        /// </remarks>
+        public gaxgrpc::CallSettings SetMasterAuthSettings { get; set; } = gaxgrpc::CallSettings.FromExpiration(gax::Expiration.FromTimeout(sys::TimeSpan.FromMilliseconds(45000)));
 
         /// <summary>
         /// <see cref="gaxgrpc::CallSettings"/> for synchronous and asynchronous calls to
@@ -200,13 +242,11 @@ namespace Google.Cloud.Container.V1
         /// <item><description>Initial retry delay: 100 milliseconds.</description></item>
         /// <item><description>Retry delay multiplier: 1.3</description></item>
         /// <item><description>Retry maximum delay: 60000 milliseconds.</description></item>
-        /// <item><description>Initial timeout: 20000 milliseconds.</description></item>
-        /// <item><description>Timeout multiplier: 1</description></item>
-        /// <item><description>Timeout maximum delay: 20000 milliseconds.</description></item>
-        /// <item><description>Total timeout: 20 seconds.</description></item>
+        /// <item><description>Maximum attempts: Unlimited</description></item>
+        /// <item><description>Timeout: 20 seconds.</description></item>
         /// </list>
         /// </remarks>
-        public gaxgrpc::CallSettings DeleteClusterSettings { get; set; } = gaxgrpc::CallSettings.FromCallTiming(gaxgrpc::CallTiming.FromRetry(new gaxgrpc::RetrySettings(retryBackoff: new gaxgrpc::BackoffSettings(delay: sys::TimeSpan.FromMilliseconds(100), maxDelay: sys::TimeSpan.FromMilliseconds(60000), delayMultiplier: 1.3), timeoutBackoff: new gaxgrpc::BackoffSettings(delay: sys::TimeSpan.FromMilliseconds(20000), maxDelay: sys::TimeSpan.FromMilliseconds(20000), delayMultiplier: 1), totalExpiration: gax::Expiration.FromTimeout(sys::TimeSpan.FromMilliseconds(20000)), retryFilter: gaxgrpc::RetrySettings.FilterForStatusCodes(grpccore::StatusCode.Unavailable, grpccore::StatusCode.DeadlineExceeded))));
+        public gaxgrpc::CallSettings DeleteClusterSettings { get; set; } = gaxgrpc::CallSettingsExtensions.WithRetry(gaxgrpc::CallSettings.FromExpiration(gax::Expiration.FromTimeout(sys::TimeSpan.FromMilliseconds(20000))), gaxgrpc::RetrySettings.FromExponentialBackoff(maxAttempts: 2147483647, initialBackoff: sys::TimeSpan.FromMilliseconds(100), maxBackoff: sys::TimeSpan.FromMilliseconds(60000), backoffMultiplier: 1.3, retryFilter: gaxgrpc::RetrySettings.FilterForStatusCodes(grpccore::StatusCode.Unavailable, grpccore::StatusCode.DeadlineExceeded)));
 
         /// <summary>
         /// <see cref="gaxgrpc::CallSettings"/> for synchronous and asynchronous calls to
@@ -217,13 +257,11 @@ namespace Google.Cloud.Container.V1
         /// <item><description>Initial retry delay: 100 milliseconds.</description></item>
         /// <item><description>Retry delay multiplier: 1.3</description></item>
         /// <item><description>Retry maximum delay: 60000 milliseconds.</description></item>
-        /// <item><description>Initial timeout: 20000 milliseconds.</description></item>
-        /// <item><description>Timeout multiplier: 1</description></item>
-        /// <item><description>Timeout maximum delay: 20000 milliseconds.</description></item>
-        /// <item><description>Total timeout: 20 seconds.</description></item>
+        /// <item><description>Maximum attempts: Unlimited</description></item>
+        /// <item><description>Timeout: 20 seconds.</description></item>
         /// </list>
         /// </remarks>
-        public gaxgrpc::CallSettings ListOperationsSettings { get; set; } = gaxgrpc::CallSettings.FromCallTiming(gaxgrpc::CallTiming.FromRetry(new gaxgrpc::RetrySettings(retryBackoff: new gaxgrpc::BackoffSettings(delay: sys::TimeSpan.FromMilliseconds(100), maxDelay: sys::TimeSpan.FromMilliseconds(60000), delayMultiplier: 1.3), timeoutBackoff: new gaxgrpc::BackoffSettings(delay: sys::TimeSpan.FromMilliseconds(20000), maxDelay: sys::TimeSpan.FromMilliseconds(20000), delayMultiplier: 1), totalExpiration: gax::Expiration.FromTimeout(sys::TimeSpan.FromMilliseconds(20000)), retryFilter: gaxgrpc::RetrySettings.FilterForStatusCodes(grpccore::StatusCode.Unavailable, grpccore::StatusCode.DeadlineExceeded))));
+        public gaxgrpc::CallSettings ListOperationsSettings { get; set; } = gaxgrpc::CallSettingsExtensions.WithRetry(gaxgrpc::CallSettings.FromExpiration(gax::Expiration.FromTimeout(sys::TimeSpan.FromMilliseconds(20000))), gaxgrpc::RetrySettings.FromExponentialBackoff(maxAttempts: 2147483647, initialBackoff: sys::TimeSpan.FromMilliseconds(100), maxBackoff: sys::TimeSpan.FromMilliseconds(60000), backoffMultiplier: 1.3, retryFilter: gaxgrpc::RetrySettings.FilterForStatusCodes(grpccore::StatusCode.Unavailable, grpccore::StatusCode.DeadlineExceeded)));
 
         /// <summary>
         /// <see cref="gaxgrpc::CallSettings"/> for synchronous and asynchronous calls to
@@ -234,20 +272,23 @@ namespace Google.Cloud.Container.V1
         /// <item><description>Initial retry delay: 100 milliseconds.</description></item>
         /// <item><description>Retry delay multiplier: 1.3</description></item>
         /// <item><description>Retry maximum delay: 60000 milliseconds.</description></item>
-        /// <item><description>Initial timeout: 20000 milliseconds.</description></item>
-        /// <item><description>Timeout multiplier: 1</description></item>
-        /// <item><description>Timeout maximum delay: 20000 milliseconds.</description></item>
-        /// <item><description>Total timeout: 20 seconds.</description></item>
+        /// <item><description>Maximum attempts: Unlimited</description></item>
+        /// <item><description>Timeout: 20 seconds.</description></item>
         /// </list>
         /// </remarks>
-        public gaxgrpc::CallSettings GetOperationSettings { get; set; } = gaxgrpc::CallSettings.FromCallTiming(gaxgrpc::CallTiming.FromRetry(new gaxgrpc::RetrySettings(retryBackoff: new gaxgrpc::BackoffSettings(delay: sys::TimeSpan.FromMilliseconds(100), maxDelay: sys::TimeSpan.FromMilliseconds(60000), delayMultiplier: 1.3), timeoutBackoff: new gaxgrpc::BackoffSettings(delay: sys::TimeSpan.FromMilliseconds(20000), maxDelay: sys::TimeSpan.FromMilliseconds(20000), delayMultiplier: 1), totalExpiration: gax::Expiration.FromTimeout(sys::TimeSpan.FromMilliseconds(20000)), retryFilter: gaxgrpc::RetrySettings.FilterForStatusCodes(grpccore::StatusCode.Unavailable, grpccore::StatusCode.DeadlineExceeded))));
+        public gaxgrpc::CallSettings GetOperationSettings { get; set; } = gaxgrpc::CallSettingsExtensions.WithRetry(gaxgrpc::CallSettings.FromExpiration(gax::Expiration.FromTimeout(sys::TimeSpan.FromMilliseconds(20000))), gaxgrpc::RetrySettings.FromExponentialBackoff(maxAttempts: 2147483647, initialBackoff: sys::TimeSpan.FromMilliseconds(100), maxBackoff: sys::TimeSpan.FromMilliseconds(60000), backoffMultiplier: 1.3, retryFilter: gaxgrpc::RetrySettings.FilterForStatusCodes(grpccore::StatusCode.Unavailable, grpccore::StatusCode.DeadlineExceeded)));
 
         /// <summary>
         /// <see cref="gaxgrpc::CallSettings"/> for synchronous and asynchronous calls to
         /// <c>ClusterManagerClient.CancelOperation</c> and <c>ClusterManagerClient.CancelOperationAsync</c>.
         /// </summary>
-        /// <remarks>By default, retry will not be attempted.</remarks>
-        public gaxgrpc::CallSettings CancelOperationSettings { get; set; }
+        /// <remarks>
+        /// <list type="bullet">
+        /// <item><description>This call will not be retried.</description></item>
+        /// <item><description>Timeout: 45 seconds.</description></item>
+        /// </list>
+        /// </remarks>
+        public gaxgrpc::CallSettings CancelOperationSettings { get; set; } = gaxgrpc::CallSettings.FromExpiration(gax::Expiration.FromTimeout(sys::TimeSpan.FromMilliseconds(45000)));
 
         /// <summary>
         /// <see cref="gaxgrpc::CallSettings"/> for synchronous and asynchronous calls to
@@ -258,13 +299,23 @@ namespace Google.Cloud.Container.V1
         /// <item><description>Initial retry delay: 100 milliseconds.</description></item>
         /// <item><description>Retry delay multiplier: 1.3</description></item>
         /// <item><description>Retry maximum delay: 60000 milliseconds.</description></item>
-        /// <item><description>Initial timeout: 20000 milliseconds.</description></item>
-        /// <item><description>Timeout multiplier: 1</description></item>
-        /// <item><description>Timeout maximum delay: 20000 milliseconds.</description></item>
-        /// <item><description>Total timeout: 20 seconds.</description></item>
+        /// <item><description>Maximum attempts: Unlimited</description></item>
+        /// <item><description>Timeout: 20 seconds.</description></item>
         /// </list>
         /// </remarks>
-        public gaxgrpc::CallSettings GetServerConfigSettings { get; set; } = gaxgrpc::CallSettings.FromCallTiming(gaxgrpc::CallTiming.FromRetry(new gaxgrpc::RetrySettings(retryBackoff: new gaxgrpc::BackoffSettings(delay: sys::TimeSpan.FromMilliseconds(100), maxDelay: sys::TimeSpan.FromMilliseconds(60000), delayMultiplier: 1.3), timeoutBackoff: new gaxgrpc::BackoffSettings(delay: sys::TimeSpan.FromMilliseconds(20000), maxDelay: sys::TimeSpan.FromMilliseconds(20000), delayMultiplier: 1), totalExpiration: gax::Expiration.FromTimeout(sys::TimeSpan.FromMilliseconds(20000)), retryFilter: gaxgrpc::RetrySettings.FilterForStatusCodes(grpccore::StatusCode.Unavailable, grpccore::StatusCode.DeadlineExceeded))));
+        public gaxgrpc::CallSettings GetServerConfigSettings { get; set; } = gaxgrpc::CallSettingsExtensions.WithRetry(gaxgrpc::CallSettings.FromExpiration(gax::Expiration.FromTimeout(sys::TimeSpan.FromMilliseconds(20000))), gaxgrpc::RetrySettings.FromExponentialBackoff(maxAttempts: 2147483647, initialBackoff: sys::TimeSpan.FromMilliseconds(100), maxBackoff: sys::TimeSpan.FromMilliseconds(60000), backoffMultiplier: 1.3, retryFilter: gaxgrpc::RetrySettings.FilterForStatusCodes(grpccore::StatusCode.Unavailable, grpccore::StatusCode.DeadlineExceeded)));
+
+        /// <summary>
+        /// <see cref="gaxgrpc::CallSettings"/> for synchronous and asynchronous calls to
+        /// <c>ClusterManagerClient.GetJSONWebKeys</c> and <c>ClusterManagerClient.GetJSONWebKeysAsync</c>.
+        /// </summary>
+        /// <remarks>
+        /// <list type="bullet">
+        /// <item><description>This call will not be retried.</description></item>
+        /// <item><description>No timeout is applied.</description></item>
+        /// </list>
+        /// </remarks>
+        public gaxgrpc::CallSettings GetJSONWebKeysSettings { get; set; } = gaxgrpc::CallSettings.FromExpiration(gax::Expiration.None);
 
         /// <summary>
         /// <see cref="gaxgrpc::CallSettings"/> for synchronous and asynchronous calls to
@@ -275,13 +326,11 @@ namespace Google.Cloud.Container.V1
         /// <item><description>Initial retry delay: 100 milliseconds.</description></item>
         /// <item><description>Retry delay multiplier: 1.3</description></item>
         /// <item><description>Retry maximum delay: 60000 milliseconds.</description></item>
-        /// <item><description>Initial timeout: 20000 milliseconds.</description></item>
-        /// <item><description>Timeout multiplier: 1</description></item>
-        /// <item><description>Timeout maximum delay: 20000 milliseconds.</description></item>
-        /// <item><description>Total timeout: 20 seconds.</description></item>
+        /// <item><description>Maximum attempts: Unlimited</description></item>
+        /// <item><description>Timeout: 20 seconds.</description></item>
         /// </list>
         /// </remarks>
-        public gaxgrpc::CallSettings ListNodePoolsSettings { get; set; } = gaxgrpc::CallSettings.FromCallTiming(gaxgrpc::CallTiming.FromRetry(new gaxgrpc::RetrySettings(retryBackoff: new gaxgrpc::BackoffSettings(delay: sys::TimeSpan.FromMilliseconds(100), maxDelay: sys::TimeSpan.FromMilliseconds(60000), delayMultiplier: 1.3), timeoutBackoff: new gaxgrpc::BackoffSettings(delay: sys::TimeSpan.FromMilliseconds(20000), maxDelay: sys::TimeSpan.FromMilliseconds(20000), delayMultiplier: 1), totalExpiration: gax::Expiration.FromTimeout(sys::TimeSpan.FromMilliseconds(20000)), retryFilter: gaxgrpc::RetrySettings.FilterForStatusCodes(grpccore::StatusCode.Unavailable, grpccore::StatusCode.DeadlineExceeded))));
+        public gaxgrpc::CallSettings ListNodePoolsSettings { get; set; } = gaxgrpc::CallSettingsExtensions.WithRetry(gaxgrpc::CallSettings.FromExpiration(gax::Expiration.FromTimeout(sys::TimeSpan.FromMilliseconds(20000))), gaxgrpc::RetrySettings.FromExponentialBackoff(maxAttempts: 2147483647, initialBackoff: sys::TimeSpan.FromMilliseconds(100), maxBackoff: sys::TimeSpan.FromMilliseconds(60000), backoffMultiplier: 1.3, retryFilter: gaxgrpc::RetrySettings.FilterForStatusCodes(grpccore::StatusCode.Unavailable, grpccore::StatusCode.DeadlineExceeded)));
 
         /// <summary>
         /// <see cref="gaxgrpc::CallSettings"/> for synchronous and asynchronous calls to
@@ -292,20 +341,23 @@ namespace Google.Cloud.Container.V1
         /// <item><description>Initial retry delay: 100 milliseconds.</description></item>
         /// <item><description>Retry delay multiplier: 1.3</description></item>
         /// <item><description>Retry maximum delay: 60000 milliseconds.</description></item>
-        /// <item><description>Initial timeout: 20000 milliseconds.</description></item>
-        /// <item><description>Timeout multiplier: 1</description></item>
-        /// <item><description>Timeout maximum delay: 20000 milliseconds.</description></item>
-        /// <item><description>Total timeout: 20 seconds.</description></item>
+        /// <item><description>Maximum attempts: Unlimited</description></item>
+        /// <item><description>Timeout: 20 seconds.</description></item>
         /// </list>
         /// </remarks>
-        public gaxgrpc::CallSettings GetNodePoolSettings { get; set; } = gaxgrpc::CallSettings.FromCallTiming(gaxgrpc::CallTiming.FromRetry(new gaxgrpc::RetrySettings(retryBackoff: new gaxgrpc::BackoffSettings(delay: sys::TimeSpan.FromMilliseconds(100), maxDelay: sys::TimeSpan.FromMilliseconds(60000), delayMultiplier: 1.3), timeoutBackoff: new gaxgrpc::BackoffSettings(delay: sys::TimeSpan.FromMilliseconds(20000), maxDelay: sys::TimeSpan.FromMilliseconds(20000), delayMultiplier: 1), totalExpiration: gax::Expiration.FromTimeout(sys::TimeSpan.FromMilliseconds(20000)), retryFilter: gaxgrpc::RetrySettings.FilterForStatusCodes(grpccore::StatusCode.Unavailable, grpccore::StatusCode.DeadlineExceeded))));
+        public gaxgrpc::CallSettings GetNodePoolSettings { get; set; } = gaxgrpc::CallSettingsExtensions.WithRetry(gaxgrpc::CallSettings.FromExpiration(gax::Expiration.FromTimeout(sys::TimeSpan.FromMilliseconds(20000))), gaxgrpc::RetrySettings.FromExponentialBackoff(maxAttempts: 2147483647, initialBackoff: sys::TimeSpan.FromMilliseconds(100), maxBackoff: sys::TimeSpan.FromMilliseconds(60000), backoffMultiplier: 1.3, retryFilter: gaxgrpc::RetrySettings.FilterForStatusCodes(grpccore::StatusCode.Unavailable, grpccore::StatusCode.DeadlineExceeded)));
 
         /// <summary>
         /// <see cref="gaxgrpc::CallSettings"/> for synchronous and asynchronous calls to
         /// <c>ClusterManagerClient.CreateNodePool</c> and <c>ClusterManagerClient.CreateNodePoolAsync</c>.
         /// </summary>
-        /// <remarks>By default, retry will not be attempted.</remarks>
-        public gaxgrpc::CallSettings CreateNodePoolSettings { get; set; }
+        /// <remarks>
+        /// <list type="bullet">
+        /// <item><description>This call will not be retried.</description></item>
+        /// <item><description>Timeout: 45 seconds.</description></item>
+        /// </list>
+        /// </remarks>
+        public gaxgrpc::CallSettings CreateNodePoolSettings { get; set; } = gaxgrpc::CallSettings.FromExpiration(gax::Expiration.FromTimeout(sys::TimeSpan.FromMilliseconds(45000)));
 
         /// <summary>
         /// <see cref="gaxgrpc::CallSettings"/> for synchronous and asynchronous calls to
@@ -316,86 +368,134 @@ namespace Google.Cloud.Container.V1
         /// <item><description>Initial retry delay: 100 milliseconds.</description></item>
         /// <item><description>Retry delay multiplier: 1.3</description></item>
         /// <item><description>Retry maximum delay: 60000 milliseconds.</description></item>
-        /// <item><description>Initial timeout: 20000 milliseconds.</description></item>
-        /// <item><description>Timeout multiplier: 1</description></item>
-        /// <item><description>Timeout maximum delay: 20000 milliseconds.</description></item>
-        /// <item><description>Total timeout: 20 seconds.</description></item>
+        /// <item><description>Maximum attempts: Unlimited</description></item>
+        /// <item><description>Timeout: 20 seconds.</description></item>
         /// </list>
         /// </remarks>
-        public gaxgrpc::CallSettings DeleteNodePoolSettings { get; set; } = gaxgrpc::CallSettings.FromCallTiming(gaxgrpc::CallTiming.FromRetry(new gaxgrpc::RetrySettings(retryBackoff: new gaxgrpc::BackoffSettings(delay: sys::TimeSpan.FromMilliseconds(100), maxDelay: sys::TimeSpan.FromMilliseconds(60000), delayMultiplier: 1.3), timeoutBackoff: new gaxgrpc::BackoffSettings(delay: sys::TimeSpan.FromMilliseconds(20000), maxDelay: sys::TimeSpan.FromMilliseconds(20000), delayMultiplier: 1), totalExpiration: gax::Expiration.FromTimeout(sys::TimeSpan.FromMilliseconds(20000)), retryFilter: gaxgrpc::RetrySettings.FilterForStatusCodes(grpccore::StatusCode.Unavailable, grpccore::StatusCode.DeadlineExceeded))));
+        public gaxgrpc::CallSettings DeleteNodePoolSettings { get; set; } = gaxgrpc::CallSettingsExtensions.WithRetry(gaxgrpc::CallSettings.FromExpiration(gax::Expiration.FromTimeout(sys::TimeSpan.FromMilliseconds(20000))), gaxgrpc::RetrySettings.FromExponentialBackoff(maxAttempts: 2147483647, initialBackoff: sys::TimeSpan.FromMilliseconds(100), maxBackoff: sys::TimeSpan.FromMilliseconds(60000), backoffMultiplier: 1.3, retryFilter: gaxgrpc::RetrySettings.FilterForStatusCodes(grpccore::StatusCode.Unavailable, grpccore::StatusCode.DeadlineExceeded)));
 
         /// <summary>
         /// <see cref="gaxgrpc::CallSettings"/> for synchronous and asynchronous calls to
         /// <c>ClusterManagerClient.RollbackNodePoolUpgrade</c> and <c>ClusterManagerClient.RollbackNodePoolUpgradeAsync</c>
         /// .
         /// </summary>
-        /// <remarks>By default, retry will not be attempted.</remarks>
-        public gaxgrpc::CallSettings RollbackNodePoolUpgradeSettings { get; set; }
+        /// <remarks>
+        /// <list type="bullet">
+        /// <item><description>This call will not be retried.</description></item>
+        /// <item><description>Timeout: 45 seconds.</description></item>
+        /// </list>
+        /// </remarks>
+        public gaxgrpc::CallSettings RollbackNodePoolUpgradeSettings { get; set; } = gaxgrpc::CallSettings.FromExpiration(gax::Expiration.FromTimeout(sys::TimeSpan.FromMilliseconds(45000)));
 
         /// <summary>
         /// <see cref="gaxgrpc::CallSettings"/> for synchronous and asynchronous calls to
         /// <c>ClusterManagerClient.SetNodePoolManagement</c> and <c>ClusterManagerClient.SetNodePoolManagementAsync</c>
         /// .
         /// </summary>
-        /// <remarks>By default, retry will not be attempted.</remarks>
-        public gaxgrpc::CallSettings SetNodePoolManagementSettings { get; set; }
+        /// <remarks>
+        /// <list type="bullet">
+        /// <item><description>This call will not be retried.</description></item>
+        /// <item><description>Timeout: 45 seconds.</description></item>
+        /// </list>
+        /// </remarks>
+        public gaxgrpc::CallSettings SetNodePoolManagementSettings { get; set; } = gaxgrpc::CallSettings.FromExpiration(gax::Expiration.FromTimeout(sys::TimeSpan.FromMilliseconds(45000)));
 
         /// <summary>
         /// <see cref="gaxgrpc::CallSettings"/> for synchronous and asynchronous calls to
         /// <c>ClusterManagerClient.SetLabels</c> and <c>ClusterManagerClient.SetLabelsAsync</c>.
         /// </summary>
-        /// <remarks>By default, retry will not be attempted.</remarks>
-        public gaxgrpc::CallSettings SetLabelsSettings { get; set; }
+        /// <remarks>
+        /// <list type="bullet">
+        /// <item><description>This call will not be retried.</description></item>
+        /// <item><description>Timeout: 45 seconds.</description></item>
+        /// </list>
+        /// </remarks>
+        public gaxgrpc::CallSettings SetLabelsSettings { get; set; } = gaxgrpc::CallSettings.FromExpiration(gax::Expiration.FromTimeout(sys::TimeSpan.FromMilliseconds(45000)));
 
         /// <summary>
         /// <see cref="gaxgrpc::CallSettings"/> for synchronous and asynchronous calls to
         /// <c>ClusterManagerClient.SetLegacyAbac</c> and <c>ClusterManagerClient.SetLegacyAbacAsync</c>.
         /// </summary>
-        /// <remarks>By default, retry will not be attempted.</remarks>
-        public gaxgrpc::CallSettings SetLegacyAbacSettings { get; set; }
+        /// <remarks>
+        /// <list type="bullet">
+        /// <item><description>This call will not be retried.</description></item>
+        /// <item><description>Timeout: 45 seconds.</description></item>
+        /// </list>
+        /// </remarks>
+        public gaxgrpc::CallSettings SetLegacyAbacSettings { get; set; } = gaxgrpc::CallSettings.FromExpiration(gax::Expiration.FromTimeout(sys::TimeSpan.FromMilliseconds(45000)));
 
         /// <summary>
         /// <see cref="gaxgrpc::CallSettings"/> for synchronous and asynchronous calls to
         /// <c>ClusterManagerClient.StartIPRotation</c> and <c>ClusterManagerClient.StartIPRotationAsync</c>.
         /// </summary>
-        /// <remarks>By default, retry will not be attempted.</remarks>
-        public gaxgrpc::CallSettings StartIPRotationSettings { get; set; }
+        /// <remarks>
+        /// <list type="bullet">
+        /// <item><description>This call will not be retried.</description></item>
+        /// <item><description>Timeout: 45 seconds.</description></item>
+        /// </list>
+        /// </remarks>
+        public gaxgrpc::CallSettings StartIPRotationSettings { get; set; } = gaxgrpc::CallSettings.FromExpiration(gax::Expiration.FromTimeout(sys::TimeSpan.FromMilliseconds(45000)));
 
         /// <summary>
         /// <see cref="gaxgrpc::CallSettings"/> for synchronous and asynchronous calls to
         /// <c>ClusterManagerClient.CompleteIPRotation</c> and <c>ClusterManagerClient.CompleteIPRotationAsync</c>.
         /// </summary>
-        /// <remarks>By default, retry will not be attempted.</remarks>
-        public gaxgrpc::CallSettings CompleteIPRotationSettings { get; set; }
+        /// <remarks>
+        /// <list type="bullet">
+        /// <item><description>This call will not be retried.</description></item>
+        /// <item><description>Timeout: 45 seconds.</description></item>
+        /// </list>
+        /// </remarks>
+        public gaxgrpc::CallSettings CompleteIPRotationSettings { get; set; } = gaxgrpc::CallSettings.FromExpiration(gax::Expiration.FromTimeout(sys::TimeSpan.FromMilliseconds(45000)));
 
         /// <summary>
         /// <see cref="gaxgrpc::CallSettings"/> for synchronous and asynchronous calls to
         /// <c>ClusterManagerClient.SetNodePoolSize</c> and <c>ClusterManagerClient.SetNodePoolSizeAsync</c>.
         /// </summary>
-        /// <remarks>By default, retry will not be attempted.</remarks>
-        public gaxgrpc::CallSettings SetNodePoolSizeSettings { get; set; }
+        /// <remarks>
+        /// <list type="bullet">
+        /// <item><description>This call will not be retried.</description></item>
+        /// <item><description>Timeout: 45 seconds.</description></item>
+        /// </list>
+        /// </remarks>
+        public gaxgrpc::CallSettings SetNodePoolSizeSettings { get; set; } = gaxgrpc::CallSettings.FromExpiration(gax::Expiration.FromTimeout(sys::TimeSpan.FromMilliseconds(45000)));
 
         /// <summary>
         /// <see cref="gaxgrpc::CallSettings"/> for synchronous and asynchronous calls to
         /// <c>ClusterManagerClient.SetNetworkPolicy</c> and <c>ClusterManagerClient.SetNetworkPolicyAsync</c>.
         /// </summary>
-        /// <remarks>By default, retry will not be attempted.</remarks>
-        public gaxgrpc::CallSettings SetNetworkPolicySettings { get; set; }
+        /// <remarks>
+        /// <list type="bullet">
+        /// <item><description>This call will not be retried.</description></item>
+        /// <item><description>Timeout: 45 seconds.</description></item>
+        /// </list>
+        /// </remarks>
+        public gaxgrpc::CallSettings SetNetworkPolicySettings { get; set; } = gaxgrpc::CallSettings.FromExpiration(gax::Expiration.FromTimeout(sys::TimeSpan.FromMilliseconds(45000)));
 
         /// <summary>
         /// <see cref="gaxgrpc::CallSettings"/> for synchronous and asynchronous calls to
         /// <c>ClusterManagerClient.SetMaintenancePolicy</c> and <c>ClusterManagerClient.SetMaintenancePolicyAsync</c>.
         /// </summary>
-        /// <remarks>By default, retry will not be attempted.</remarks>
-        public gaxgrpc::CallSettings SetMaintenancePolicySettings { get; set; }
+        /// <remarks>
+        /// <list type="bullet">
+        /// <item><description>This call will not be retried.</description></item>
+        /// <item><description>Timeout: 45 seconds.</description></item>
+        /// </list>
+        /// </remarks>
+        public gaxgrpc::CallSettings SetMaintenancePolicySettings { get; set; } = gaxgrpc::CallSettings.FromExpiration(gax::Expiration.FromTimeout(sys::TimeSpan.FromMilliseconds(45000)));
 
         /// <summary>
         /// <see cref="gaxgrpc::CallSettings"/> for synchronous and asynchronous calls to
         /// <c>ClusterManagerClient.ListUsableSubnetworks</c> and <c>ClusterManagerClient.ListUsableSubnetworksAsync</c>
         /// .
         /// </summary>
-        /// <remarks>By default, retry will not be attempted.</remarks>
-        public gaxgrpc::CallSettings ListUsableSubnetworksSettings { get; set; }
+        /// <remarks>
+        /// <list type="bullet">
+        /// <item><description>This call will not be retried.</description></item>
+        /// <item><description>No timeout is applied.</description></item>
+        /// </list>
+        /// </remarks>
+        public gaxgrpc::CallSettings ListUsableSubnetworksSettings { get; set; } = gaxgrpc::CallSettings.FromExpiration(gax::Expiration.None);
 
         /// <summary>Creates a deep clone of this object, with all the same property values.</summary>
         /// <returns>A deep clone of this <see cref="ClusterManagerSettings"/> object.</returns>
@@ -411,40 +511,66 @@ namespace Google.Cloud.Container.V1
         /// <summary>The settings to use for RPCs, or <c>null</c> for the default settings.</summary>
         public ClusterManagerSettings Settings { get; set; }
 
-        /// <inheritdoc/>
+        partial void InterceptBuild(ref ClusterManagerClient client);
+
+        partial void InterceptBuildAsync(st::CancellationToken cancellationToken, ref stt::Task<ClusterManagerClient> task);
+
+        /// <summary>Builds the resulting client.</summary>
         public override ClusterManagerClient Build()
+        {
+            ClusterManagerClient client = null;
+            InterceptBuild(ref client);
+            return client ?? BuildImpl();
+        }
+
+        /// <summary>Builds the resulting client asynchronously.</summary>
+        public override stt::Task<ClusterManagerClient> BuildAsync(st::CancellationToken cancellationToken = default)
+        {
+            stt::Task<ClusterManagerClient> task = null;
+            InterceptBuildAsync(cancellationToken, ref task);
+            return task ?? BuildAsyncImpl(cancellationToken);
+        }
+
+        private ClusterManagerClient BuildImpl()
         {
             Validate();
             grpccore::CallInvoker callInvoker = CreateCallInvoker();
             return ClusterManagerClient.Create(callInvoker, Settings);
         }
 
-        /// <inheritdoc/>
-        public override async stt::Task<ClusterManagerClient> BuildAsync(st::CancellationToken cancellationToken = default)
+        private async stt::Task<ClusterManagerClient> BuildAsyncImpl(st::CancellationToken cancellationToken)
         {
             Validate();
             grpccore::CallInvoker callInvoker = await CreateCallInvokerAsync(cancellationToken).ConfigureAwait(false);
             return ClusterManagerClient.Create(callInvoker, Settings);
         }
 
-        /// <inheritdoc/>
-        protected override gaxgrpc::ServiceEndpoint GetDefaultEndpoint() => ClusterManagerClient.DefaultEndpoint;
+        /// <summary>Returns the endpoint for this builder type, used if no endpoint is otherwise specified.</summary>
+        protected override string GetDefaultEndpoint() => ClusterManagerClient.DefaultEndpoint;
 
-        /// <inheritdoc/>
+        /// <summary>
+        /// Returns the default scopes for this builder type, used if no scopes are otherwise specified.
+        /// </summary>
         protected override scg::IReadOnlyList<string> GetDefaultScopes() => ClusterManagerClient.DefaultScopes;
 
-        /// <inheritdoc/>
+        /// <summary>Returns the channel pool to use when no other options are specified.</summary>
         protected override gaxgrpc::ChannelPool GetChannelPool() => ClusterManagerClient.ChannelPool;
+
+        /// <summary>Returns the default <see cref="gaxgrpc::GrpcAdapter"/>to use if not otherwise specified.</summary>
+        protected override gaxgrpc::GrpcAdapter DefaultGrpcAdapter => gaxgrpccore::GrpcCoreAdapter.Instance;
     }
 
     /// <summary>ClusterManager client wrapper, for convenient use.</summary>
+    /// <remarks>
+    /// Google Kubernetes Engine Cluster Manager v1
+    /// </remarks>
     public abstract partial class ClusterManagerClient
     {
         /// <summary>
         /// The default endpoint for the ClusterManager service, which is a host of "container.googleapis.com" and a
         /// port of 443.
         /// </summary>
-        public static gaxgrpc::ServiceEndpoint DefaultEndpoint { get; } = new gaxgrpc::ServiceEndpoint("container.googleapis.com", 443);
+        public static string DefaultEndpoint { get; } = "container.googleapis.com:443";
 
         /// <summary>The default ClusterManager scopes.</summary>
         /// <remarks>
@@ -461,96 +587,22 @@ namespace Google.Cloud.Container.V1
         internal static gaxgrpc::ChannelPool ChannelPool { get; } = new gaxgrpc::ChannelPool(DefaultScopes);
 
         /// <summary>
-        /// Asynchronously creates a <see cref="ClusterManagerClient"/>, applying defaults for all unspecified settings,
-        /// and creating a channel connecting to the given endpoint with application default credentials where 
-        /// necessary. See the example for how to use custom credentials.
+        /// Asynchronously creates a <see cref="ClusterManagerClient"/> using the default credentials, endpoint and
+        /// settings. To specify custom credentials or other settings, use <see cref="ClusterManagerClientBuilder"/>.
         /// </summary>
-        /// <example>
-        /// This sample shows how to create a client using default credentials:
-        /// <code>
-        /// using Google.Cloud.Vision.V1;
-        /// ...
-        /// // When running on Google Cloud Platform this will use the project Compute Credential.
-        /// // Or set the GOOGLE_APPLICATION_CREDENTIALS environment variable to the path of a JSON
-        /// // credential file to use that credential.
-        /// ImageAnnotatorClient client = await ImageAnnotatorClient.CreateAsync();
-        /// </code>
-        /// This sample shows how to create a client using credentials loaded from a JSON file:
-        /// <code>
-        /// using Google.Cloud.Vision.V1;
-        /// using Google.Apis.Auth.OAuth2;
-        /// using Grpc.Auth;
-        /// using Grpc.Core;
-        /// ...
-        /// GoogleCredential cred = GoogleCredential.FromFile("/path/to/credentials.json");
-        /// Channel channel = new Channel(
-        ///     ImageAnnotatorClient.DefaultEndpoint.Host, ImageAnnotatorClient.DefaultEndpoint.Port, cred.ToChannelCredentials());
-        /// ImageAnnotatorClient client = ImageAnnotatorClient.Create(channel);
-        /// ...
-        /// // Shutdown the channel when it is no longer required.
-        /// await channel.ShutdownAsync();
-        /// </code>
-        /// </example>
-        /// <param name="endpoint">Optional <see cref="gaxgrpc::ServiceEndpoint"/>.</param>
-        /// <param name="settings">Optional <see cref="ClusterManagerSettings"/>.</param>
+        /// <param name="cancellationToken">
+        /// The <see cref="st::CancellationToken"/> to use while creating the client.
+        /// </param>
         /// <returns>The task representing the created <see cref="ClusterManagerClient"/>.</returns>
-        public static async stt::Task<ClusterManagerClient> CreateAsync(gaxgrpc::ServiceEndpoint endpoint = null, ClusterManagerSettings settings = null)
-        {
-            grpccore::Channel channel = await ChannelPool.GetChannelAsync(endpoint ?? DefaultEndpoint).ConfigureAwait(false);
-            return Create(channel, settings);
-        }
+        public static stt::Task<ClusterManagerClient> CreateAsync(st::CancellationToken cancellationToken = default) =>
+            new ClusterManagerClientBuilder().BuildAsync(cancellationToken);
 
         /// <summary>
-        /// Synchronously creates a <see cref="ClusterManagerClient"/>, applying defaults for all unspecified settings, 
-        /// and creating a channel connecting to the given endpoint with application default credentials where 
-        /// necessary. See the example for how to use custom credentials.
+        /// Synchronously creates a <see cref="ClusterManagerClient"/> using the default credentials, endpoint and
+        /// settings. To specify custom credentials or other settings, use <see cref="ClusterManagerClientBuilder"/>.
         /// </summary>
-        /// <example>
-        /// This sample shows how to create a client using default credentials:
-        /// <code>
-        /// using Google.Cloud.Vision.V1;
-        /// ...
-        /// // When running on Google Cloud Platform this will use the project Compute Credential.
-        /// // Or set the GOOGLE_APPLICATION_CREDENTIALS environment variable to the path of a JSON
-        /// // credential file to use that credential.
-        /// ImageAnnotatorClient client = ImageAnnotatorClient.Create();
-        /// </code>
-        /// This sample shows how to create a client using credentials loaded from a JSON file:
-        /// <code>
-        /// using Google.Cloud.Vision.V1;
-        /// using Google.Apis.Auth.OAuth2;
-        /// using Grpc.Auth;
-        /// using Grpc.Core;
-        /// ...
-        /// GoogleCredential cred = GoogleCredential.FromFile("/path/to/credentials.json");
-        /// Channel channel = new Channel(
-        ///     ImageAnnotatorClient.DefaultEndpoint.Host, ImageAnnotatorClient.DefaultEndpoint.Port, cred.ToChannelCredentials());
-        /// ImageAnnotatorClient client = ImageAnnotatorClient.Create(channel);
-        /// ...
-        /// // Shutdown the channel when it is no longer required.
-        /// channel.ShutdownAsync().Wait();
-        /// </code>
-        /// </example>
-        /// <param name="endpoint">Optional <see cref="gaxgrpc::ServiceEndpoint"/>.</param>
-        /// <param name="settings">Optional <see cref="ClusterManagerSettings"/>.</param>
         /// <returns>The created <see cref="ClusterManagerClient"/>.</returns>
-        public static ClusterManagerClient Create(gaxgrpc::ServiceEndpoint endpoint = null, ClusterManagerSettings settings = null)
-        {
-            grpccore::Channel channel = ChannelPool.GetChannel(endpoint ?? DefaultEndpoint);
-            return Create(channel, settings);
-        }
-
-        /// <summary>
-        /// Creates a <see cref="ClusterManagerClient"/> which uses the specified channel for remote operations.
-        /// </summary>
-        /// <param name="channel">The <see cref="grpccore::Channel"/> for remote operations. Must not be null.</param>
-        /// <param name="settings">Optional <see cref="ClusterManagerSettings"/>.</param>
-        /// <returns>The created <see cref="ClusterManagerClient"/>.</returns>
-        public static ClusterManagerClient Create(grpccore::Channel channel, ClusterManagerSettings settings = null)
-        {
-            gax::GaxPreconditions.CheckNotNull(channel, nameof(channel));
-            return Create(new grpccore::DefaultCallInvoker(channel), settings);
-        }
+        public static ClusterManagerClient Create() => new ClusterManagerClientBuilder().Build();
 
         /// <summary>
         /// Creates a <see cref="ClusterManagerClient"/> which uses the specified call invoker for remote operations.
@@ -560,7 +612,7 @@ namespace Google.Cloud.Container.V1
         /// </param>
         /// <param name="settings">Optional <see cref="ClusterManagerSettings"/>.</param>
         /// <returns>The created <see cref="ClusterManagerClient"/>.</returns>
-        public static ClusterManagerClient Create(grpccore::CallInvoker callInvoker, ClusterManagerSettings settings = null)
+        internal static ClusterManagerClient Create(grpccore::CallInvoker callInvoker, ClusterManagerSettings settings = null)
         {
             gax::GaxPreconditions.CheckNotNull(callInvoker, nameof(callInvoker));
             grpcinter::Interceptor interceptor = settings?.Interceptor;
@@ -573,16 +625,14 @@ namespace Google.Cloud.Container.V1
         }
 
         /// <summary>
-        /// Shuts down any channels automatically created by
-        /// <see cref="Create(grpccore::CallInvoker,ClusterManagerSettings)"/> and
-        /// <see cref="CreateAsync(gaxgrpc::ServiceEndpoint,ClusterManagerSettings)"/>. Channels which weren't
-        /// automatically created are not affected.
+        /// Shuts down any channels automatically created by <see cref="Create()"/> and
+        /// <see cref="CreateAsync(st::CancellationToken)"/>. Channels which weren't automatically created are not
+        /// affected.
         /// </summary>
         /// <remarks>
-        /// After calling this method, further calls to
-        /// <see cref="Create(grpccore::CallInvoker,ClusterManagerSettings)"/> and
-        /// <see cref="CreateAsync(gaxgrpc::ServiceEndpoint,ClusterManagerSettings)"/> will create new channels, which
-        /// could in turn be shut down by another call to this method.
+        /// After calling this method, further calls to <see cref="Create()"/> and
+        /// <see cref="CreateAsync(st::CancellationToken)"/> will create new channels, which could in turn be shut down
+        /// by another call to this method.
         /// </remarks>
         /// <returns>A task representing the asynchronous shutdown operation.</returns>
         public static stt::Task ShutdownDefaultChannelsAsync() => ChannelPool.ShutdownChannelsAsync();
@@ -625,23 +675,25 @@ namespace Google.Cloud.Container.V1
         /// zones.
         /// </summary>
         /// <param name="projectId">
-        /// Required. Deprecated. The Google Developers Console [project ID or project
+        /// Deprecated. The Google Developers Console [project ID or project
         /// number](https://support.google.com/cloud/answer/6158840).
         /// This field has been deprecated and replaced by the parent field.
         /// </param>
         /// <param name="zone">
-        /// Required. Deprecated. The name of the Google Compute Engine
-        /// [zone](https://cloud.google.com/compute/docs/zones#available) in which the cluster
-        /// resides, or "-" for all zones.
-        /// This field has been deprecated and replaced by the parent field.
+        /// Deprecated. The name of the Google Compute Engine
+        /// [zone](https://cloud.google.com/compute/docs/zones#available) in which the
+        /// cluster resides, or "-" for all zones. This field has been deprecated and
+        /// replaced by the parent field.
         /// </param>
         /// <param name="callSettings">If not null, applies overrides to this RPC call.</param>
         /// <returns>The RPC response.</returns>
         public virtual ListClustersResponse ListClusters(string projectId, string zone, gaxgrpc::CallSettings callSettings = null) =>
             ListClusters(new ListClustersRequest
             {
-                ProjectId = gax::GaxPreconditions.CheckNotNullOrEmpty(projectId, nameof(projectId)),
-                Zone = gax::GaxPreconditions.CheckNotNullOrEmpty(zone, nameof(zone)),
+#pragma warning disable CS0612
+                ProjectId = projectId ?? "",
+                Zone = zone ?? "",
+#pragma warning restore CS0612
             }, callSettings);
 
         /// <summary>
@@ -649,23 +701,25 @@ namespace Google.Cloud.Container.V1
         /// zones.
         /// </summary>
         /// <param name="projectId">
-        /// Required. Deprecated. The Google Developers Console [project ID or project
+        /// Deprecated. The Google Developers Console [project ID or project
         /// number](https://support.google.com/cloud/answer/6158840).
         /// This field has been deprecated and replaced by the parent field.
         /// </param>
         /// <param name="zone">
-        /// Required. Deprecated. The name of the Google Compute Engine
-        /// [zone](https://cloud.google.com/compute/docs/zones#available) in which the cluster
-        /// resides, or "-" for all zones.
-        /// This field has been deprecated and replaced by the parent field.
+        /// Deprecated. The name of the Google Compute Engine
+        /// [zone](https://cloud.google.com/compute/docs/zones#available) in which the
+        /// cluster resides, or "-" for all zones. This field has been deprecated and
+        /// replaced by the parent field.
         /// </param>
         /// <param name="callSettings">If not null, applies overrides to this RPC call.</param>
         /// <returns>A Task containing the RPC response.</returns>
         public virtual stt::Task<ListClustersResponse> ListClustersAsync(string projectId, string zone, gaxgrpc::CallSettings callSettings = null) =>
             ListClustersAsync(new ListClustersRequest
             {
-                ProjectId = gax::GaxPreconditions.CheckNotNullOrEmpty(projectId, nameof(projectId)),
-                Zone = gax::GaxPreconditions.CheckNotNullOrEmpty(zone, nameof(zone)),
+#pragma warning disable CS0612
+                ProjectId = projectId ?? "",
+                Zone = zone ?? "",
+#pragma warning restore CS0612
             }, callSettings);
 
         /// <summary>
@@ -673,20 +727,62 @@ namespace Google.Cloud.Container.V1
         /// zones.
         /// </summary>
         /// <param name="projectId">
-        /// Required. Deprecated. The Google Developers Console [project ID or project
+        /// Deprecated. The Google Developers Console [project ID or project
         /// number](https://support.google.com/cloud/answer/6158840).
         /// This field has been deprecated and replaced by the parent field.
         /// </param>
         /// <param name="zone">
-        /// Required. Deprecated. The name of the Google Compute Engine
-        /// [zone](https://cloud.google.com/compute/docs/zones#available) in which the cluster
-        /// resides, or "-" for all zones.
-        /// This field has been deprecated and replaced by the parent field.
+        /// Deprecated. The name of the Google Compute Engine
+        /// [zone](https://cloud.google.com/compute/docs/zones#available) in which the
+        /// cluster resides, or "-" for all zones. This field has been deprecated and
+        /// replaced by the parent field.
         /// </param>
         /// <param name="cancellationToken">A <see cref="st::CancellationToken"/> to use for this RPC.</param>
         /// <returns>A Task containing the RPC response.</returns>
         public virtual stt::Task<ListClustersResponse> ListClustersAsync(string projectId, string zone, st::CancellationToken cancellationToken) =>
             ListClustersAsync(projectId, zone, gaxgrpc::CallSettings.FromCancellationToken(cancellationToken));
+
+        /// <summary>
+        /// Lists all clusters owned by a project in either the specified zone or all
+        /// zones.
+        /// </summary>
+        /// <param name="parent">
+        /// The parent (project and location) where the clusters will be listed.
+        /// Specified in the format `projects/*/locations/*`.
+        /// Location "-" matches all zones and all regions.
+        /// </param>
+        /// <param name="callSettings">If not null, applies overrides to this RPC call.</param>
+        /// <returns>The RPC response.</returns>
+        public virtual ListClustersResponse ListClusters(string parent, gaxgrpc::CallSettings callSettings = null) =>
+            ListClusters(new ListClustersRequest { Parent = parent ?? "", }, callSettings);
+
+        /// <summary>
+        /// Lists all clusters owned by a project in either the specified zone or all
+        /// zones.
+        /// </summary>
+        /// <param name="parent">
+        /// The parent (project and location) where the clusters will be listed.
+        /// Specified in the format `projects/*/locations/*`.
+        /// Location "-" matches all zones and all regions.
+        /// </param>
+        /// <param name="callSettings">If not null, applies overrides to this RPC call.</param>
+        /// <returns>A Task containing the RPC response.</returns>
+        public virtual stt::Task<ListClustersResponse> ListClustersAsync(string parent, gaxgrpc::CallSettings callSettings = null) =>
+            ListClustersAsync(new ListClustersRequest { Parent = parent ?? "", }, callSettings);
+
+        /// <summary>
+        /// Lists all clusters owned by a project in either the specified zone or all
+        /// zones.
+        /// </summary>
+        /// <param name="parent">
+        /// The parent (project and location) where the clusters will be listed.
+        /// Specified in the format `projects/*/locations/*`.
+        /// Location "-" matches all zones and all regions.
+        /// </param>
+        /// <param name="cancellationToken">A <see cref="st::CancellationToken"/> to use for this RPC.</param>
+        /// <returns>A Task containing the RPC response.</returns>
+        public virtual stt::Task<ListClustersResponse> ListClustersAsync(string parent, st::CancellationToken cancellationToken) =>
+            ListClustersAsync(parent, gaxgrpc::CallSettings.FromCancellationToken(cancellationToken));
 
         /// <summary>
         /// Gets the details of a specific cluster.
@@ -719,18 +815,18 @@ namespace Google.Cloud.Container.V1
         /// Gets the details of a specific cluster.
         /// </summary>
         /// <param name="projectId">
-        /// Required. Deprecated. The Google Developers Console [project ID or project
+        /// Deprecated. The Google Developers Console [project ID or project
         /// number](https://support.google.com/cloud/answer/6158840).
         /// This field has been deprecated and replaced by the name field.
         /// </param>
         /// <param name="zone">
-        /// Required. Deprecated. The name of the Google Compute Engine
-        /// [zone](https://cloud.google.com/compute/docs/zones#available) in which the cluster
-        /// resides.
-        /// This field has been deprecated and replaced by the name field.
+        /// Deprecated. The name of the Google Compute Engine
+        /// [zone](https://cloud.google.com/compute/docs/zones#available) in which the
+        /// cluster resides. This field has been deprecated and replaced by the name
+        /// field.
         /// </param>
         /// <param name="clusterId">
-        /// Required. Deprecated. The name of the cluster to retrieve.
+        /// Deprecated. The name of the cluster to retrieve.
         /// This field has been deprecated and replaced by the name field.
         /// </param>
         /// <param name="callSettings">If not null, applies overrides to this RPC call.</param>
@@ -738,27 +834,29 @@ namespace Google.Cloud.Container.V1
         public virtual Cluster GetCluster(string projectId, string zone, string clusterId, gaxgrpc::CallSettings callSettings = null) =>
             GetCluster(new GetClusterRequest
             {
-                ProjectId = gax::GaxPreconditions.CheckNotNullOrEmpty(projectId, nameof(projectId)),
-                Zone = gax::GaxPreconditions.CheckNotNullOrEmpty(zone, nameof(zone)),
-                ClusterId = gax::GaxPreconditions.CheckNotNullOrEmpty(clusterId, nameof(clusterId)),
+#pragma warning disable CS0612
+                ProjectId = projectId ?? "",
+                Zone = zone ?? "",
+                ClusterId = clusterId ?? "",
+#pragma warning restore CS0612
             }, callSettings);
 
         /// <summary>
         /// Gets the details of a specific cluster.
         /// </summary>
         /// <param name="projectId">
-        /// Required. Deprecated. The Google Developers Console [project ID or project
+        /// Deprecated. The Google Developers Console [project ID or project
         /// number](https://support.google.com/cloud/answer/6158840).
         /// This field has been deprecated and replaced by the name field.
         /// </param>
         /// <param name="zone">
-        /// Required. Deprecated. The name of the Google Compute Engine
-        /// [zone](https://cloud.google.com/compute/docs/zones#available) in which the cluster
-        /// resides.
-        /// This field has been deprecated and replaced by the name field.
+        /// Deprecated. The name of the Google Compute Engine
+        /// [zone](https://cloud.google.com/compute/docs/zones#available) in which the
+        /// cluster resides. This field has been deprecated and replaced by the name
+        /// field.
         /// </param>
         /// <param name="clusterId">
-        /// Required. Deprecated. The name of the cluster to retrieve.
+        /// Deprecated. The name of the cluster to retrieve.
         /// This field has been deprecated and replaced by the name field.
         /// </param>
         /// <param name="callSettings">If not null, applies overrides to this RPC call.</param>
@@ -766,27 +864,29 @@ namespace Google.Cloud.Container.V1
         public virtual stt::Task<Cluster> GetClusterAsync(string projectId, string zone, string clusterId, gaxgrpc::CallSettings callSettings = null) =>
             GetClusterAsync(new GetClusterRequest
             {
-                ProjectId = gax::GaxPreconditions.CheckNotNullOrEmpty(projectId, nameof(projectId)),
-                Zone = gax::GaxPreconditions.CheckNotNullOrEmpty(zone, nameof(zone)),
-                ClusterId = gax::GaxPreconditions.CheckNotNullOrEmpty(clusterId, nameof(clusterId)),
+#pragma warning disable CS0612
+                ProjectId = projectId ?? "",
+                Zone = zone ?? "",
+                ClusterId = clusterId ?? "",
+#pragma warning restore CS0612
             }, callSettings);
 
         /// <summary>
         /// Gets the details of a specific cluster.
         /// </summary>
         /// <param name="projectId">
-        /// Required. Deprecated. The Google Developers Console [project ID or project
+        /// Deprecated. The Google Developers Console [project ID or project
         /// number](https://support.google.com/cloud/answer/6158840).
         /// This field has been deprecated and replaced by the name field.
         /// </param>
         /// <param name="zone">
-        /// Required. Deprecated. The name of the Google Compute Engine
-        /// [zone](https://cloud.google.com/compute/docs/zones#available) in which the cluster
-        /// resides.
-        /// This field has been deprecated and replaced by the name field.
+        /// Deprecated. The name of the Google Compute Engine
+        /// [zone](https://cloud.google.com/compute/docs/zones#available) in which the
+        /// cluster resides. This field has been deprecated and replaced by the name
+        /// field.
         /// </param>
         /// <param name="clusterId">
-        /// Required. Deprecated. The name of the cluster to retrieve.
+        /// Deprecated. The name of the cluster to retrieve.
         /// This field has been deprecated and replaced by the name field.
         /// </param>
         /// <param name="cancellationToken">A <see cref="st::CancellationToken"/> to use for this RPC.</param>
@@ -795,11 +895,48 @@ namespace Google.Cloud.Container.V1
             GetClusterAsync(projectId, zone, clusterId, gaxgrpc::CallSettings.FromCancellationToken(cancellationToken));
 
         /// <summary>
+        /// Gets the details of a specific cluster.
+        /// </summary>
+        /// <param name="name">
+        /// The name (project, location, cluster) of the cluster to retrieve.
+        /// Specified in the format `projects/*/locations/*/clusters/*`.
+        /// </param>
+        /// <param name="callSettings">If not null, applies overrides to this RPC call.</param>
+        /// <returns>The RPC response.</returns>
+        public virtual Cluster GetCluster(string name, gaxgrpc::CallSettings callSettings = null) =>
+            GetCluster(new GetClusterRequest { Name = name ?? "", }, callSettings);
+
+        /// <summary>
+        /// Gets the details of a specific cluster.
+        /// </summary>
+        /// <param name="name">
+        /// The name (project, location, cluster) of the cluster to retrieve.
+        /// Specified in the format `projects/*/locations/*/clusters/*`.
+        /// </param>
+        /// <param name="callSettings">If not null, applies overrides to this RPC call.</param>
+        /// <returns>A Task containing the RPC response.</returns>
+        public virtual stt::Task<Cluster> GetClusterAsync(string name, gaxgrpc::CallSettings callSettings = null) =>
+            GetClusterAsync(new GetClusterRequest { Name = name ?? "", }, callSettings);
+
+        /// <summary>
+        /// Gets the details of a specific cluster.
+        /// </summary>
+        /// <param name="name">
+        /// The name (project, location, cluster) of the cluster to retrieve.
+        /// Specified in the format `projects/*/locations/*/clusters/*`.
+        /// </param>
+        /// <param name="cancellationToken">A <see cref="st::CancellationToken"/> to use for this RPC.</param>
+        /// <returns>A Task containing the RPC response.</returns>
+        public virtual stt::Task<Cluster> GetClusterAsync(string name, st::CancellationToken cancellationToken) =>
+            GetClusterAsync(name, gaxgrpc::CallSettings.FromCancellationToken(cancellationToken));
+
+        /// <summary>
         /// Creates a cluster, consisting of the specified number and type of Google
         /// Compute Engine instances.
         /// 
         /// By default, the cluster is created in the project's
-        /// [default network](https://cloud.google.com/compute/docs/networks-and-firewalls#networks).
+        /// [default
+        /// network](https://cloud.google.com/compute/docs/networks-and-firewalls#networks).
         /// 
         /// One firewall is added for the cluster. After cluster creation,
         /// the Kubelet creates routes for each node to allow the containers
@@ -820,7 +957,8 @@ namespace Google.Cloud.Container.V1
         /// Compute Engine instances.
         /// 
         /// By default, the cluster is created in the project's
-        /// [default network](https://cloud.google.com/compute/docs/networks-and-firewalls#networks).
+        /// [default
+        /// network](https://cloud.google.com/compute/docs/networks-and-firewalls#networks).
         /// 
         /// One firewall is added for the cluster. After cluster creation,
         /// the Kubelet creates routes for each node to allow the containers
@@ -841,7 +979,8 @@ namespace Google.Cloud.Container.V1
         /// Compute Engine instances.
         /// 
         /// By default, the cluster is created in the project's
-        /// [default network](https://cloud.google.com/compute/docs/networks-and-firewalls#networks).
+        /// [default
+        /// network](https://cloud.google.com/compute/docs/networks-and-firewalls#networks).
         /// 
         /// One firewall is added for the cluster. After cluster creation,
         /// the Kubelet creates routes for each node to allow the containers
@@ -862,7 +1001,8 @@ namespace Google.Cloud.Container.V1
         /// Compute Engine instances.
         /// 
         /// By default, the cluster is created in the project's
-        /// [default network](https://cloud.google.com/compute/docs/networks-and-firewalls#networks).
+        /// [default
+        /// network](https://cloud.google.com/compute/docs/networks-and-firewalls#networks).
         /// 
         /// One firewall is added for the cluster. After cluster creation,
         /// the Kubelet creates routes for each node to allow the containers
@@ -873,27 +1013,29 @@ namespace Google.Cloud.Container.V1
         /// which CIDR range the cluster is using.
         /// </summary>
         /// <param name="projectId">
-        /// Required. Deprecated. The Google Developers Console [project ID or project
+        /// Deprecated. The Google Developers Console [project ID or project
         /// number](https://support.google.com/cloud/answer/6158840).
         /// This field has been deprecated and replaced by the parent field.
         /// </param>
         /// <param name="zone">
-        /// Required. Deprecated. The name of the Google Compute Engine
-        /// [zone](https://cloud.google.com/compute/docs/zones#available) in which the cluster
-        /// resides.
-        /// This field has been deprecated and replaced by the parent field.
+        /// Deprecated. The name of the Google Compute Engine
+        /// [zone](https://cloud.google.com/compute/docs/zones#available) in which the
+        /// cluster resides. This field has been deprecated and replaced by the parent
+        /// field.
         /// </param>
         /// <param name="cluster">
         /// Required. A [cluster
-        /// resource](https://cloud.google.com/container-engine/reference/rest/v1/projects.zones.clusters)
+        /// resource](https://cloud.google.com/container-engine/reference/rest/v1/projects.locations.clusters)
         /// </param>
         /// <param name="callSettings">If not null, applies overrides to this RPC call.</param>
         /// <returns>The RPC response.</returns>
         public virtual Operation CreateCluster(string projectId, string zone, Cluster cluster, gaxgrpc::CallSettings callSettings = null) =>
             CreateCluster(new CreateClusterRequest
             {
-                ProjectId = gax::GaxPreconditions.CheckNotNullOrEmpty(projectId, nameof(projectId)),
-                Zone = gax::GaxPreconditions.CheckNotNullOrEmpty(zone, nameof(zone)),
+#pragma warning disable CS0612
+                ProjectId = projectId ?? "",
+                Zone = zone ?? "",
+#pragma warning restore CS0612
                 Cluster = gax::GaxPreconditions.CheckNotNull(cluster, nameof(cluster)),
             }, callSettings);
 
@@ -902,7 +1044,8 @@ namespace Google.Cloud.Container.V1
         /// Compute Engine instances.
         /// 
         /// By default, the cluster is created in the project's
-        /// [default network](https://cloud.google.com/compute/docs/networks-and-firewalls#networks).
+        /// [default
+        /// network](https://cloud.google.com/compute/docs/networks-and-firewalls#networks).
         /// 
         /// One firewall is added for the cluster. After cluster creation,
         /// the Kubelet creates routes for each node to allow the containers
@@ -913,27 +1056,29 @@ namespace Google.Cloud.Container.V1
         /// which CIDR range the cluster is using.
         /// </summary>
         /// <param name="projectId">
-        /// Required. Deprecated. The Google Developers Console [project ID or project
+        /// Deprecated. The Google Developers Console [project ID or project
         /// number](https://support.google.com/cloud/answer/6158840).
         /// This field has been deprecated and replaced by the parent field.
         /// </param>
         /// <param name="zone">
-        /// Required. Deprecated. The name of the Google Compute Engine
-        /// [zone](https://cloud.google.com/compute/docs/zones#available) in which the cluster
-        /// resides.
-        /// This field has been deprecated and replaced by the parent field.
+        /// Deprecated. The name of the Google Compute Engine
+        /// [zone](https://cloud.google.com/compute/docs/zones#available) in which the
+        /// cluster resides. This field has been deprecated and replaced by the parent
+        /// field.
         /// </param>
         /// <param name="cluster">
         /// Required. A [cluster
-        /// resource](https://cloud.google.com/container-engine/reference/rest/v1/projects.zones.clusters)
+        /// resource](https://cloud.google.com/container-engine/reference/rest/v1/projects.locations.clusters)
         /// </param>
         /// <param name="callSettings">If not null, applies overrides to this RPC call.</param>
         /// <returns>A Task containing the RPC response.</returns>
         public virtual stt::Task<Operation> CreateClusterAsync(string projectId, string zone, Cluster cluster, gaxgrpc::CallSettings callSettings = null) =>
             CreateClusterAsync(new CreateClusterRequest
             {
-                ProjectId = gax::GaxPreconditions.CheckNotNullOrEmpty(projectId, nameof(projectId)),
-                Zone = gax::GaxPreconditions.CheckNotNullOrEmpty(zone, nameof(zone)),
+#pragma warning disable CS0612
+                ProjectId = projectId ?? "",
+                Zone = zone ?? "",
+#pragma warning restore CS0612
                 Cluster = gax::GaxPreconditions.CheckNotNull(cluster, nameof(cluster)),
             }, callSettings);
 
@@ -942,7 +1087,8 @@ namespace Google.Cloud.Container.V1
         /// Compute Engine instances.
         /// 
         /// By default, the cluster is created in the project's
-        /// [default network](https://cloud.google.com/compute/docs/networks-and-firewalls#networks).
+        /// [default
+        /// network](https://cloud.google.com/compute/docs/networks-and-firewalls#networks).
         /// 
         /// One firewall is added for the cluster. After cluster creation,
         /// the Kubelet creates routes for each node to allow the containers
@@ -953,24 +1099,119 @@ namespace Google.Cloud.Container.V1
         /// which CIDR range the cluster is using.
         /// </summary>
         /// <param name="projectId">
-        /// Required. Deprecated. The Google Developers Console [project ID or project
+        /// Deprecated. The Google Developers Console [project ID or project
         /// number](https://support.google.com/cloud/answer/6158840).
         /// This field has been deprecated and replaced by the parent field.
         /// </param>
         /// <param name="zone">
-        /// Required. Deprecated. The name of the Google Compute Engine
-        /// [zone](https://cloud.google.com/compute/docs/zones#available) in which the cluster
-        /// resides.
-        /// This field has been deprecated and replaced by the parent field.
+        /// Deprecated. The name of the Google Compute Engine
+        /// [zone](https://cloud.google.com/compute/docs/zones#available) in which the
+        /// cluster resides. This field has been deprecated and replaced by the parent
+        /// field.
         /// </param>
         /// <param name="cluster">
         /// Required. A [cluster
-        /// resource](https://cloud.google.com/container-engine/reference/rest/v1/projects.zones.clusters)
+        /// resource](https://cloud.google.com/container-engine/reference/rest/v1/projects.locations.clusters)
         /// </param>
         /// <param name="cancellationToken">A <see cref="st::CancellationToken"/> to use for this RPC.</param>
         /// <returns>A Task containing the RPC response.</returns>
         public virtual stt::Task<Operation> CreateClusterAsync(string projectId, string zone, Cluster cluster, st::CancellationToken cancellationToken) =>
             CreateClusterAsync(projectId, zone, cluster, gaxgrpc::CallSettings.FromCancellationToken(cancellationToken));
+
+        /// <summary>
+        /// Creates a cluster, consisting of the specified number and type of Google
+        /// Compute Engine instances.
+        /// 
+        /// By default, the cluster is created in the project's
+        /// [default
+        /// network](https://cloud.google.com/compute/docs/networks-and-firewalls#networks).
+        /// 
+        /// One firewall is added for the cluster. After cluster creation,
+        /// the Kubelet creates routes for each node to allow the containers
+        /// on that node to communicate with all other instances in the
+        /// cluster.
+        /// 
+        /// Finally, an entry is added to the project's global metadata indicating
+        /// which CIDR range the cluster is using.
+        /// </summary>
+        /// <param name="parent">
+        /// The parent (project and location) where the cluster will be created.
+        /// Specified in the format `projects/*/locations/*`.
+        /// </param>
+        /// <param name="cluster">
+        /// Required. A [cluster
+        /// resource](https://cloud.google.com/container-engine/reference/rest/v1/projects.locations.clusters)
+        /// </param>
+        /// <param name="callSettings">If not null, applies overrides to this RPC call.</param>
+        /// <returns>The RPC response.</returns>
+        public virtual Operation CreateCluster(string parent, Cluster cluster, gaxgrpc::CallSettings callSettings = null) =>
+            CreateCluster(new CreateClusterRequest
+            {
+                Cluster = gax::GaxPreconditions.CheckNotNull(cluster, nameof(cluster)),
+                Parent = parent ?? "",
+            }, callSettings);
+
+        /// <summary>
+        /// Creates a cluster, consisting of the specified number and type of Google
+        /// Compute Engine instances.
+        /// 
+        /// By default, the cluster is created in the project's
+        /// [default
+        /// network](https://cloud.google.com/compute/docs/networks-and-firewalls#networks).
+        /// 
+        /// One firewall is added for the cluster. After cluster creation,
+        /// the Kubelet creates routes for each node to allow the containers
+        /// on that node to communicate with all other instances in the
+        /// cluster.
+        /// 
+        /// Finally, an entry is added to the project's global metadata indicating
+        /// which CIDR range the cluster is using.
+        /// </summary>
+        /// <param name="parent">
+        /// The parent (project and location) where the cluster will be created.
+        /// Specified in the format `projects/*/locations/*`.
+        /// </param>
+        /// <param name="cluster">
+        /// Required. A [cluster
+        /// resource](https://cloud.google.com/container-engine/reference/rest/v1/projects.locations.clusters)
+        /// </param>
+        /// <param name="callSettings">If not null, applies overrides to this RPC call.</param>
+        /// <returns>A Task containing the RPC response.</returns>
+        public virtual stt::Task<Operation> CreateClusterAsync(string parent, Cluster cluster, gaxgrpc::CallSettings callSettings = null) =>
+            CreateClusterAsync(new CreateClusterRequest
+            {
+                Cluster = gax::GaxPreconditions.CheckNotNull(cluster, nameof(cluster)),
+                Parent = parent ?? "",
+            }, callSettings);
+
+        /// <summary>
+        /// Creates a cluster, consisting of the specified number and type of Google
+        /// Compute Engine instances.
+        /// 
+        /// By default, the cluster is created in the project's
+        /// [default
+        /// network](https://cloud.google.com/compute/docs/networks-and-firewalls#networks).
+        /// 
+        /// One firewall is added for the cluster. After cluster creation,
+        /// the Kubelet creates routes for each node to allow the containers
+        /// on that node to communicate with all other instances in the
+        /// cluster.
+        /// 
+        /// Finally, an entry is added to the project's global metadata indicating
+        /// which CIDR range the cluster is using.
+        /// </summary>
+        /// <param name="parent">
+        /// The parent (project and location) where the cluster will be created.
+        /// Specified in the format `projects/*/locations/*`.
+        /// </param>
+        /// <param name="cluster">
+        /// Required. A [cluster
+        /// resource](https://cloud.google.com/container-engine/reference/rest/v1/projects.locations.clusters)
+        /// </param>
+        /// <param name="cancellationToken">A <see cref="st::CancellationToken"/> to use for this RPC.</param>
+        /// <returns>A Task containing the RPC response.</returns>
+        public virtual stt::Task<Operation> CreateClusterAsync(string parent, Cluster cluster, st::CancellationToken cancellationToken) =>
+            CreateClusterAsync(parent, cluster, gaxgrpc::CallSettings.FromCancellationToken(cancellationToken));
 
         /// <summary>
         /// Updates the settings of a specific cluster.
@@ -1003,18 +1244,18 @@ namespace Google.Cloud.Container.V1
         /// Updates the settings of a specific cluster.
         /// </summary>
         /// <param name="projectId">
-        /// Required. Deprecated. The Google Developers Console [project ID or project
+        /// Deprecated. The Google Developers Console [project ID or project
         /// number](https://support.google.com/cloud/answer/6158840).
         /// This field has been deprecated and replaced by the name field.
         /// </param>
         /// <param name="zone">
-        /// Required. Deprecated. The name of the Google Compute Engine
-        /// [zone](https://cloud.google.com/compute/docs/zones#available) in which the cluster
-        /// resides.
-        /// This field has been deprecated and replaced by the name field.
+        /// Deprecated. The name of the Google Compute Engine
+        /// [zone](https://cloud.google.com/compute/docs/zones#available) in which the
+        /// cluster resides. This field has been deprecated and replaced by the name
+        /// field.
         /// </param>
         /// <param name="clusterId">
-        /// Required. Deprecated. The name of the cluster to upgrade.
+        /// Deprecated. The name of the cluster to upgrade.
         /// This field has been deprecated and replaced by the name field.
         /// </param>
         /// <param name="update">
@@ -1025,9 +1266,11 @@ namespace Google.Cloud.Container.V1
         public virtual Operation UpdateCluster(string projectId, string zone, string clusterId, ClusterUpdate update, gaxgrpc::CallSettings callSettings = null) =>
             UpdateCluster(new UpdateClusterRequest
             {
-                ProjectId = gax::GaxPreconditions.CheckNotNullOrEmpty(projectId, nameof(projectId)),
-                Zone = gax::GaxPreconditions.CheckNotNullOrEmpty(zone, nameof(zone)),
-                ClusterId = gax::GaxPreconditions.CheckNotNullOrEmpty(clusterId, nameof(clusterId)),
+#pragma warning disable CS0612
+                ProjectId = projectId ?? "",
+                Zone = zone ?? "",
+                ClusterId = clusterId ?? "",
+#pragma warning restore CS0612
                 Update = gax::GaxPreconditions.CheckNotNull(update, nameof(update)),
             }, callSettings);
 
@@ -1035,18 +1278,18 @@ namespace Google.Cloud.Container.V1
         /// Updates the settings of a specific cluster.
         /// </summary>
         /// <param name="projectId">
-        /// Required. Deprecated. The Google Developers Console [project ID or project
+        /// Deprecated. The Google Developers Console [project ID or project
         /// number](https://support.google.com/cloud/answer/6158840).
         /// This field has been deprecated and replaced by the name field.
         /// </param>
         /// <param name="zone">
-        /// Required. Deprecated. The name of the Google Compute Engine
-        /// [zone](https://cloud.google.com/compute/docs/zones#available) in which the cluster
-        /// resides.
-        /// This field has been deprecated and replaced by the name field.
+        /// Deprecated. The name of the Google Compute Engine
+        /// [zone](https://cloud.google.com/compute/docs/zones#available) in which the
+        /// cluster resides. This field has been deprecated and replaced by the name
+        /// field.
         /// </param>
         /// <param name="clusterId">
-        /// Required. Deprecated. The name of the cluster to upgrade.
+        /// Deprecated. The name of the cluster to upgrade.
         /// This field has been deprecated and replaced by the name field.
         /// </param>
         /// <param name="update">
@@ -1057,9 +1300,11 @@ namespace Google.Cloud.Container.V1
         public virtual stt::Task<Operation> UpdateClusterAsync(string projectId, string zone, string clusterId, ClusterUpdate update, gaxgrpc::CallSettings callSettings = null) =>
             UpdateClusterAsync(new UpdateClusterRequest
             {
-                ProjectId = gax::GaxPreconditions.CheckNotNullOrEmpty(projectId, nameof(projectId)),
-                Zone = gax::GaxPreconditions.CheckNotNullOrEmpty(zone, nameof(zone)),
-                ClusterId = gax::GaxPreconditions.CheckNotNullOrEmpty(clusterId, nameof(clusterId)),
+#pragma warning disable CS0612
+                ProjectId = projectId ?? "",
+                Zone = zone ?? "",
+                ClusterId = clusterId ?? "",
+#pragma warning restore CS0612
                 Update = gax::GaxPreconditions.CheckNotNull(update, nameof(update)),
             }, callSettings);
 
@@ -1067,18 +1312,18 @@ namespace Google.Cloud.Container.V1
         /// Updates the settings of a specific cluster.
         /// </summary>
         /// <param name="projectId">
-        /// Required. Deprecated. The Google Developers Console [project ID or project
+        /// Deprecated. The Google Developers Console [project ID or project
         /// number](https://support.google.com/cloud/answer/6158840).
         /// This field has been deprecated and replaced by the name field.
         /// </param>
         /// <param name="zone">
-        /// Required. Deprecated. The name of the Google Compute Engine
-        /// [zone](https://cloud.google.com/compute/docs/zones#available) in which the cluster
-        /// resides.
-        /// This field has been deprecated and replaced by the name field.
+        /// Deprecated. The name of the Google Compute Engine
+        /// [zone](https://cloud.google.com/compute/docs/zones#available) in which the
+        /// cluster resides. This field has been deprecated and replaced by the name
+        /// field.
         /// </param>
         /// <param name="clusterId">
-        /// Required. Deprecated. The name of the cluster to upgrade.
+        /// Deprecated. The name of the cluster to upgrade.
         /// This field has been deprecated and replaced by the name field.
         /// </param>
         /// <param name="update">
@@ -1088,6 +1333,59 @@ namespace Google.Cloud.Container.V1
         /// <returns>A Task containing the RPC response.</returns>
         public virtual stt::Task<Operation> UpdateClusterAsync(string projectId, string zone, string clusterId, ClusterUpdate update, st::CancellationToken cancellationToken) =>
             UpdateClusterAsync(projectId, zone, clusterId, update, gaxgrpc::CallSettings.FromCancellationToken(cancellationToken));
+
+        /// <summary>
+        /// Updates the settings of a specific cluster.
+        /// </summary>
+        /// <param name="name">
+        /// The name (project, location, cluster) of the cluster to update.
+        /// Specified in the format `projects/*/locations/*/clusters/*`.
+        /// </param>
+        /// <param name="update">
+        /// Required. A description of the update.
+        /// </param>
+        /// <param name="callSettings">If not null, applies overrides to this RPC call.</param>
+        /// <returns>The RPC response.</returns>
+        public virtual Operation UpdateCluster(string name, ClusterUpdate update, gaxgrpc::CallSettings callSettings = null) =>
+            UpdateCluster(new UpdateClusterRequest
+            {
+                Update = gax::GaxPreconditions.CheckNotNull(update, nameof(update)),
+                Name = name ?? "",
+            }, callSettings);
+
+        /// <summary>
+        /// Updates the settings of a specific cluster.
+        /// </summary>
+        /// <param name="name">
+        /// The name (project, location, cluster) of the cluster to update.
+        /// Specified in the format `projects/*/locations/*/clusters/*`.
+        /// </param>
+        /// <param name="update">
+        /// Required. A description of the update.
+        /// </param>
+        /// <param name="callSettings">If not null, applies overrides to this RPC call.</param>
+        /// <returns>A Task containing the RPC response.</returns>
+        public virtual stt::Task<Operation> UpdateClusterAsync(string name, ClusterUpdate update, gaxgrpc::CallSettings callSettings = null) =>
+            UpdateClusterAsync(new UpdateClusterRequest
+            {
+                Update = gax::GaxPreconditions.CheckNotNull(update, nameof(update)),
+                Name = name ?? "",
+            }, callSettings);
+
+        /// <summary>
+        /// Updates the settings of a specific cluster.
+        /// </summary>
+        /// <param name="name">
+        /// The name (project, location, cluster) of the cluster to update.
+        /// Specified in the format `projects/*/locations/*/clusters/*`.
+        /// </param>
+        /// <param name="update">
+        /// Required. A description of the update.
+        /// </param>
+        /// <param name="cancellationToken">A <see cref="st::CancellationToken"/> to use for this RPC.</param>
+        /// <returns>A Task containing the RPC response.</returns>
+        public virtual stt::Task<Operation> UpdateClusterAsync(string name, ClusterUpdate update, st::CancellationToken cancellationToken) =>
+            UpdateClusterAsync(name, update, gaxgrpc::CallSettings.FromCancellationToken(cancellationToken));
 
         /// <summary>
         /// Updates the version and/or image type for the specified node pool.
@@ -1174,35 +1472,43 @@ namespace Google.Cloud.Container.V1
         /// Sets the logging service for a specific cluster.
         /// </summary>
         /// <param name="projectId">
-        /// Required. Deprecated. The Google Developers Console [project ID or project
+        /// Deprecated. The Google Developers Console [project ID or project
         /// number](https://support.google.com/cloud/answer/6158840).
         /// This field has been deprecated and replaced by the name field.
         /// </param>
         /// <param name="zone">
-        /// Required. Deprecated. The name of the Google Compute Engine
-        /// [zone](https://cloud.google.com/compute/docs/zones#available) in which the cluster
-        /// resides.
-        /// This field has been deprecated and replaced by the name field.
+        /// Deprecated. The name of the Google Compute Engine
+        /// [zone](https://cloud.google.com/compute/docs/zones#available) in which the
+        /// cluster resides. This field has been deprecated and replaced by the name
+        /// field.
         /// </param>
         /// <param name="clusterId">
-        /// Required. Deprecated. The name of the cluster to upgrade.
+        /// Deprecated. The name of the cluster to upgrade.
         /// This field has been deprecated and replaced by the name field.
         /// </param>
         /// <param name="loggingService">
-        /// Required. The logging service the cluster should use to write metrics.
+        /// Required. The logging service the cluster should use to write logs.
         /// Currently available options:
         /// 
-        /// * "logging.googleapis.com" - the Google Cloud Logging service
-        /// * "none" - no metrics will be exported from the cluster
+        /// * `logging.googleapis.com/kubernetes` - The Cloud Logging
+        /// service with a Kubernetes-native resource model
+        /// * `logging.googleapis.com` - The legacy Cloud Logging service (no longer
+        /// available as of GKE 1.15).
+        /// * `none` - no logs will be exported from the cluster.
+        /// 
+        /// If left as an empty string,`logging.googleapis.com/kubernetes` will be
+        /// used for GKE 1.14+ or `logging.googleapis.com` for earlier versions.
         /// </param>
         /// <param name="callSettings">If not null, applies overrides to this RPC call.</param>
         /// <returns>The RPC response.</returns>
         public virtual Operation SetLoggingService(string projectId, string zone, string clusterId, string loggingService, gaxgrpc::CallSettings callSettings = null) =>
             SetLoggingService(new SetLoggingServiceRequest
             {
-                ProjectId = gax::GaxPreconditions.CheckNotNullOrEmpty(projectId, nameof(projectId)),
-                Zone = gax::GaxPreconditions.CheckNotNullOrEmpty(zone, nameof(zone)),
-                ClusterId = gax::GaxPreconditions.CheckNotNullOrEmpty(clusterId, nameof(clusterId)),
+#pragma warning disable CS0612
+                ProjectId = projectId ?? "",
+                Zone = zone ?? "",
+                ClusterId = clusterId ?? "",
+#pragma warning restore CS0612
                 LoggingService = gax::GaxPreconditions.CheckNotNullOrEmpty(loggingService, nameof(loggingService)),
             }, callSettings);
 
@@ -1210,35 +1516,43 @@ namespace Google.Cloud.Container.V1
         /// Sets the logging service for a specific cluster.
         /// </summary>
         /// <param name="projectId">
-        /// Required. Deprecated. The Google Developers Console [project ID or project
+        /// Deprecated. The Google Developers Console [project ID or project
         /// number](https://support.google.com/cloud/answer/6158840).
         /// This field has been deprecated and replaced by the name field.
         /// </param>
         /// <param name="zone">
-        /// Required. Deprecated. The name of the Google Compute Engine
-        /// [zone](https://cloud.google.com/compute/docs/zones#available) in which the cluster
-        /// resides.
-        /// This field has been deprecated and replaced by the name field.
+        /// Deprecated. The name of the Google Compute Engine
+        /// [zone](https://cloud.google.com/compute/docs/zones#available) in which the
+        /// cluster resides. This field has been deprecated and replaced by the name
+        /// field.
         /// </param>
         /// <param name="clusterId">
-        /// Required. Deprecated. The name of the cluster to upgrade.
+        /// Deprecated. The name of the cluster to upgrade.
         /// This field has been deprecated and replaced by the name field.
         /// </param>
         /// <param name="loggingService">
-        /// Required. The logging service the cluster should use to write metrics.
+        /// Required. The logging service the cluster should use to write logs.
         /// Currently available options:
         /// 
-        /// * "logging.googleapis.com" - the Google Cloud Logging service
-        /// * "none" - no metrics will be exported from the cluster
+        /// * `logging.googleapis.com/kubernetes` - The Cloud Logging
+        /// service with a Kubernetes-native resource model
+        /// * `logging.googleapis.com` - The legacy Cloud Logging service (no longer
+        /// available as of GKE 1.15).
+        /// * `none` - no logs will be exported from the cluster.
+        /// 
+        /// If left as an empty string,`logging.googleapis.com/kubernetes` will be
+        /// used for GKE 1.14+ or `logging.googleapis.com` for earlier versions.
         /// </param>
         /// <param name="callSettings">If not null, applies overrides to this RPC call.</param>
         /// <returns>A Task containing the RPC response.</returns>
         public virtual stt::Task<Operation> SetLoggingServiceAsync(string projectId, string zone, string clusterId, string loggingService, gaxgrpc::CallSettings callSettings = null) =>
             SetLoggingServiceAsync(new SetLoggingServiceRequest
             {
-                ProjectId = gax::GaxPreconditions.CheckNotNullOrEmpty(projectId, nameof(projectId)),
-                Zone = gax::GaxPreconditions.CheckNotNullOrEmpty(zone, nameof(zone)),
-                ClusterId = gax::GaxPreconditions.CheckNotNullOrEmpty(clusterId, nameof(clusterId)),
+#pragma warning disable CS0612
+                ProjectId = projectId ?? "",
+                Zone = zone ?? "",
+                ClusterId = clusterId ?? "",
+#pragma warning restore CS0612
                 LoggingService = gax::GaxPreconditions.CheckNotNullOrEmpty(loggingService, nameof(loggingService)),
             }, callSettings);
 
@@ -1246,31 +1560,120 @@ namespace Google.Cloud.Container.V1
         /// Sets the logging service for a specific cluster.
         /// </summary>
         /// <param name="projectId">
-        /// Required. Deprecated. The Google Developers Console [project ID or project
+        /// Deprecated. The Google Developers Console [project ID or project
         /// number](https://support.google.com/cloud/answer/6158840).
         /// This field has been deprecated and replaced by the name field.
         /// </param>
         /// <param name="zone">
-        /// Required. Deprecated. The name of the Google Compute Engine
-        /// [zone](https://cloud.google.com/compute/docs/zones#available) in which the cluster
-        /// resides.
-        /// This field has been deprecated and replaced by the name field.
+        /// Deprecated. The name of the Google Compute Engine
+        /// [zone](https://cloud.google.com/compute/docs/zones#available) in which the
+        /// cluster resides. This field has been deprecated and replaced by the name
+        /// field.
         /// </param>
         /// <param name="clusterId">
-        /// Required. Deprecated. The name of the cluster to upgrade.
+        /// Deprecated. The name of the cluster to upgrade.
         /// This field has been deprecated and replaced by the name field.
         /// </param>
         /// <param name="loggingService">
-        /// Required. The logging service the cluster should use to write metrics.
+        /// Required. The logging service the cluster should use to write logs.
         /// Currently available options:
         /// 
-        /// * "logging.googleapis.com" - the Google Cloud Logging service
-        /// * "none" - no metrics will be exported from the cluster
+        /// * `logging.googleapis.com/kubernetes` - The Cloud Logging
+        /// service with a Kubernetes-native resource model
+        /// * `logging.googleapis.com` - The legacy Cloud Logging service (no longer
+        /// available as of GKE 1.15).
+        /// * `none` - no logs will be exported from the cluster.
+        /// 
+        /// If left as an empty string,`logging.googleapis.com/kubernetes` will be
+        /// used for GKE 1.14+ or `logging.googleapis.com` for earlier versions.
         /// </param>
         /// <param name="cancellationToken">A <see cref="st::CancellationToken"/> to use for this RPC.</param>
         /// <returns>A Task containing the RPC response.</returns>
         public virtual stt::Task<Operation> SetLoggingServiceAsync(string projectId, string zone, string clusterId, string loggingService, st::CancellationToken cancellationToken) =>
             SetLoggingServiceAsync(projectId, zone, clusterId, loggingService, gaxgrpc::CallSettings.FromCancellationToken(cancellationToken));
+
+        /// <summary>
+        /// Sets the logging service for a specific cluster.
+        /// </summary>
+        /// <param name="name">
+        /// The name (project, location, cluster) of the cluster to set logging.
+        /// Specified in the format `projects/*/locations/*/clusters/*`.
+        /// </param>
+        /// <param name="loggingService">
+        /// Required. The logging service the cluster should use to write logs.
+        /// Currently available options:
+        /// 
+        /// * `logging.googleapis.com/kubernetes` - The Cloud Logging
+        /// service with a Kubernetes-native resource model
+        /// * `logging.googleapis.com` - The legacy Cloud Logging service (no longer
+        /// available as of GKE 1.15).
+        /// * `none` - no logs will be exported from the cluster.
+        /// 
+        /// If left as an empty string,`logging.googleapis.com/kubernetes` will be
+        /// used for GKE 1.14+ or `logging.googleapis.com` for earlier versions.
+        /// </param>
+        /// <param name="callSettings">If not null, applies overrides to this RPC call.</param>
+        /// <returns>The RPC response.</returns>
+        public virtual Operation SetLoggingService(string name, string loggingService, gaxgrpc::CallSettings callSettings = null) =>
+            SetLoggingService(new SetLoggingServiceRequest
+            {
+                LoggingService = gax::GaxPreconditions.CheckNotNullOrEmpty(loggingService, nameof(loggingService)),
+                Name = name ?? "",
+            }, callSettings);
+
+        /// <summary>
+        /// Sets the logging service for a specific cluster.
+        /// </summary>
+        /// <param name="name">
+        /// The name (project, location, cluster) of the cluster to set logging.
+        /// Specified in the format `projects/*/locations/*/clusters/*`.
+        /// </param>
+        /// <param name="loggingService">
+        /// Required. The logging service the cluster should use to write logs.
+        /// Currently available options:
+        /// 
+        /// * `logging.googleapis.com/kubernetes` - The Cloud Logging
+        /// service with a Kubernetes-native resource model
+        /// * `logging.googleapis.com` - The legacy Cloud Logging service (no longer
+        /// available as of GKE 1.15).
+        /// * `none` - no logs will be exported from the cluster.
+        /// 
+        /// If left as an empty string,`logging.googleapis.com/kubernetes` will be
+        /// used for GKE 1.14+ or `logging.googleapis.com` for earlier versions.
+        /// </param>
+        /// <param name="callSettings">If not null, applies overrides to this RPC call.</param>
+        /// <returns>A Task containing the RPC response.</returns>
+        public virtual stt::Task<Operation> SetLoggingServiceAsync(string name, string loggingService, gaxgrpc::CallSettings callSettings = null) =>
+            SetLoggingServiceAsync(new SetLoggingServiceRequest
+            {
+                LoggingService = gax::GaxPreconditions.CheckNotNullOrEmpty(loggingService, nameof(loggingService)),
+                Name = name ?? "",
+            }, callSettings);
+
+        /// <summary>
+        /// Sets the logging service for a specific cluster.
+        /// </summary>
+        /// <param name="name">
+        /// The name (project, location, cluster) of the cluster to set logging.
+        /// Specified in the format `projects/*/locations/*/clusters/*`.
+        /// </param>
+        /// <param name="loggingService">
+        /// Required. The logging service the cluster should use to write logs.
+        /// Currently available options:
+        /// 
+        /// * `logging.googleapis.com/kubernetes` - The Cloud Logging
+        /// service with a Kubernetes-native resource model
+        /// * `logging.googleapis.com` - The legacy Cloud Logging service (no longer
+        /// available as of GKE 1.15).
+        /// * `none` - no logs will be exported from the cluster.
+        /// 
+        /// If left as an empty string,`logging.googleapis.com/kubernetes` will be
+        /// used for GKE 1.14+ or `logging.googleapis.com` for earlier versions.
+        /// </param>
+        /// <param name="cancellationToken">A <see cref="st::CancellationToken"/> to use for this RPC.</param>
+        /// <returns>A Task containing the RPC response.</returns>
+        public virtual stt::Task<Operation> SetLoggingServiceAsync(string name, string loggingService, st::CancellationToken cancellationToken) =>
+            SetLoggingServiceAsync(name, loggingService, gaxgrpc::CallSettings.FromCancellationToken(cancellationToken));
 
         /// <summary>
         /// Sets the monitoring service for a specific cluster.
@@ -1303,37 +1706,43 @@ namespace Google.Cloud.Container.V1
         /// Sets the monitoring service for a specific cluster.
         /// </summary>
         /// <param name="projectId">
-        /// Required. Deprecated. The Google Developers Console [project ID or project
+        /// Deprecated. The Google Developers Console [project ID or project
         /// number](https://support.google.com/cloud/answer/6158840).
         /// This field has been deprecated and replaced by the name field.
         /// </param>
         /// <param name="zone">
-        /// Required. Deprecated. The name of the Google Compute Engine
-        /// [zone](https://cloud.google.com/compute/docs/zones#available) in which the cluster
-        /// resides.
-        /// This field has been deprecated and replaced by the name field.
+        /// Deprecated. The name of the Google Compute Engine
+        /// [zone](https://cloud.google.com/compute/docs/zones#available) in which the
+        /// cluster resides. This field has been deprecated and replaced by the name
+        /// field.
         /// </param>
         /// <param name="clusterId">
-        /// Required. Deprecated. The name of the cluster to upgrade.
+        /// Deprecated. The name of the cluster to upgrade.
         /// This field has been deprecated and replaced by the name field.
         /// </param>
         /// <param name="monitoringService">
         /// Required. The monitoring service the cluster should use to write metrics.
         /// Currently available options:
         /// 
-        /// * "monitoring.googleapis.com/kubernetes" - the Google Cloud Monitoring
-        /// service with Kubernetes-native resource model
-        /// * "monitoring.googleapis.com" - the Google Cloud Monitoring service
-        /// * "none" - no metrics will be exported from the cluster
+        /// * "monitoring.googleapis.com/kubernetes" - The Cloud Monitoring
+        /// service with a Kubernetes-native resource model
+        /// * `monitoring.googleapis.com` - The legacy Cloud Monitoring service (no
+        /// longer available as of GKE 1.15).
+        /// * `none` - No metrics will be exported from the cluster.
+        /// 
+        /// If left as an empty string,`monitoring.googleapis.com/kubernetes` will be
+        /// used for GKE 1.14+ or `monitoring.googleapis.com` for earlier versions.
         /// </param>
         /// <param name="callSettings">If not null, applies overrides to this RPC call.</param>
         /// <returns>The RPC response.</returns>
         public virtual Operation SetMonitoringService(string projectId, string zone, string clusterId, string monitoringService, gaxgrpc::CallSettings callSettings = null) =>
             SetMonitoringService(new SetMonitoringServiceRequest
             {
-                ProjectId = gax::GaxPreconditions.CheckNotNullOrEmpty(projectId, nameof(projectId)),
-                Zone = gax::GaxPreconditions.CheckNotNullOrEmpty(zone, nameof(zone)),
-                ClusterId = gax::GaxPreconditions.CheckNotNullOrEmpty(clusterId, nameof(clusterId)),
+#pragma warning disable CS0612
+                ProjectId = projectId ?? "",
+                Zone = zone ?? "",
+                ClusterId = clusterId ?? "",
+#pragma warning restore CS0612
                 MonitoringService = gax::GaxPreconditions.CheckNotNullOrEmpty(monitoringService, nameof(monitoringService)),
             }, callSettings);
 
@@ -1341,37 +1750,43 @@ namespace Google.Cloud.Container.V1
         /// Sets the monitoring service for a specific cluster.
         /// </summary>
         /// <param name="projectId">
-        /// Required. Deprecated. The Google Developers Console [project ID or project
+        /// Deprecated. The Google Developers Console [project ID or project
         /// number](https://support.google.com/cloud/answer/6158840).
         /// This field has been deprecated and replaced by the name field.
         /// </param>
         /// <param name="zone">
-        /// Required. Deprecated. The name of the Google Compute Engine
-        /// [zone](https://cloud.google.com/compute/docs/zones#available) in which the cluster
-        /// resides.
-        /// This field has been deprecated and replaced by the name field.
+        /// Deprecated. The name of the Google Compute Engine
+        /// [zone](https://cloud.google.com/compute/docs/zones#available) in which the
+        /// cluster resides. This field has been deprecated and replaced by the name
+        /// field.
         /// </param>
         /// <param name="clusterId">
-        /// Required. Deprecated. The name of the cluster to upgrade.
+        /// Deprecated. The name of the cluster to upgrade.
         /// This field has been deprecated and replaced by the name field.
         /// </param>
         /// <param name="monitoringService">
         /// Required. The monitoring service the cluster should use to write metrics.
         /// Currently available options:
         /// 
-        /// * "monitoring.googleapis.com/kubernetes" - the Google Cloud Monitoring
-        /// service with Kubernetes-native resource model
-        /// * "monitoring.googleapis.com" - the Google Cloud Monitoring service
-        /// * "none" - no metrics will be exported from the cluster
+        /// * "monitoring.googleapis.com/kubernetes" - The Cloud Monitoring
+        /// service with a Kubernetes-native resource model
+        /// * `monitoring.googleapis.com` - The legacy Cloud Monitoring service (no
+        /// longer available as of GKE 1.15).
+        /// * `none` - No metrics will be exported from the cluster.
+        /// 
+        /// If left as an empty string,`monitoring.googleapis.com/kubernetes` will be
+        /// used for GKE 1.14+ or `monitoring.googleapis.com` for earlier versions.
         /// </param>
         /// <param name="callSettings">If not null, applies overrides to this RPC call.</param>
         /// <returns>A Task containing the RPC response.</returns>
         public virtual stt::Task<Operation> SetMonitoringServiceAsync(string projectId, string zone, string clusterId, string monitoringService, gaxgrpc::CallSettings callSettings = null) =>
             SetMonitoringServiceAsync(new SetMonitoringServiceRequest
             {
-                ProjectId = gax::GaxPreconditions.CheckNotNullOrEmpty(projectId, nameof(projectId)),
-                Zone = gax::GaxPreconditions.CheckNotNullOrEmpty(zone, nameof(zone)),
-                ClusterId = gax::GaxPreconditions.CheckNotNullOrEmpty(clusterId, nameof(clusterId)),
+#pragma warning disable CS0612
+                ProjectId = projectId ?? "",
+                Zone = zone ?? "",
+                ClusterId = clusterId ?? "",
+#pragma warning restore CS0612
                 MonitoringService = gax::GaxPreconditions.CheckNotNullOrEmpty(monitoringService, nameof(monitoringService)),
             }, callSettings);
 
@@ -1379,33 +1794,120 @@ namespace Google.Cloud.Container.V1
         /// Sets the monitoring service for a specific cluster.
         /// </summary>
         /// <param name="projectId">
-        /// Required. Deprecated. The Google Developers Console [project ID or project
+        /// Deprecated. The Google Developers Console [project ID or project
         /// number](https://support.google.com/cloud/answer/6158840).
         /// This field has been deprecated and replaced by the name field.
         /// </param>
         /// <param name="zone">
-        /// Required. Deprecated. The name of the Google Compute Engine
-        /// [zone](https://cloud.google.com/compute/docs/zones#available) in which the cluster
-        /// resides.
-        /// This field has been deprecated and replaced by the name field.
+        /// Deprecated. The name of the Google Compute Engine
+        /// [zone](https://cloud.google.com/compute/docs/zones#available) in which the
+        /// cluster resides. This field has been deprecated and replaced by the name
+        /// field.
         /// </param>
         /// <param name="clusterId">
-        /// Required. Deprecated. The name of the cluster to upgrade.
+        /// Deprecated. The name of the cluster to upgrade.
         /// This field has been deprecated and replaced by the name field.
         /// </param>
         /// <param name="monitoringService">
         /// Required. The monitoring service the cluster should use to write metrics.
         /// Currently available options:
         /// 
-        /// * "monitoring.googleapis.com/kubernetes" - the Google Cloud Monitoring
-        /// service with Kubernetes-native resource model
-        /// * "monitoring.googleapis.com" - the Google Cloud Monitoring service
-        /// * "none" - no metrics will be exported from the cluster
+        /// * "monitoring.googleapis.com/kubernetes" - The Cloud Monitoring
+        /// service with a Kubernetes-native resource model
+        /// * `monitoring.googleapis.com` - The legacy Cloud Monitoring service (no
+        /// longer available as of GKE 1.15).
+        /// * `none` - No metrics will be exported from the cluster.
+        /// 
+        /// If left as an empty string,`monitoring.googleapis.com/kubernetes` will be
+        /// used for GKE 1.14+ or `monitoring.googleapis.com` for earlier versions.
         /// </param>
         /// <param name="cancellationToken">A <see cref="st::CancellationToken"/> to use for this RPC.</param>
         /// <returns>A Task containing the RPC response.</returns>
         public virtual stt::Task<Operation> SetMonitoringServiceAsync(string projectId, string zone, string clusterId, string monitoringService, st::CancellationToken cancellationToken) =>
             SetMonitoringServiceAsync(projectId, zone, clusterId, monitoringService, gaxgrpc::CallSettings.FromCancellationToken(cancellationToken));
+
+        /// <summary>
+        /// Sets the monitoring service for a specific cluster.
+        /// </summary>
+        /// <param name="name">
+        /// The name (project, location, cluster) of the cluster to set monitoring.
+        /// Specified in the format `projects/*/locations/*/clusters/*`.
+        /// </param>
+        /// <param name="monitoringService">
+        /// Required. The monitoring service the cluster should use to write metrics.
+        /// Currently available options:
+        /// 
+        /// * "monitoring.googleapis.com/kubernetes" - The Cloud Monitoring
+        /// service with a Kubernetes-native resource model
+        /// * `monitoring.googleapis.com` - The legacy Cloud Monitoring service (no
+        /// longer available as of GKE 1.15).
+        /// * `none` - No metrics will be exported from the cluster.
+        /// 
+        /// If left as an empty string,`monitoring.googleapis.com/kubernetes` will be
+        /// used for GKE 1.14+ or `monitoring.googleapis.com` for earlier versions.
+        /// </param>
+        /// <param name="callSettings">If not null, applies overrides to this RPC call.</param>
+        /// <returns>The RPC response.</returns>
+        public virtual Operation SetMonitoringService(string name, string monitoringService, gaxgrpc::CallSettings callSettings = null) =>
+            SetMonitoringService(new SetMonitoringServiceRequest
+            {
+                MonitoringService = gax::GaxPreconditions.CheckNotNullOrEmpty(monitoringService, nameof(monitoringService)),
+                Name = name ?? "",
+            }, callSettings);
+
+        /// <summary>
+        /// Sets the monitoring service for a specific cluster.
+        /// </summary>
+        /// <param name="name">
+        /// The name (project, location, cluster) of the cluster to set monitoring.
+        /// Specified in the format `projects/*/locations/*/clusters/*`.
+        /// </param>
+        /// <param name="monitoringService">
+        /// Required. The monitoring service the cluster should use to write metrics.
+        /// Currently available options:
+        /// 
+        /// * "monitoring.googleapis.com/kubernetes" - The Cloud Monitoring
+        /// service with a Kubernetes-native resource model
+        /// * `monitoring.googleapis.com` - The legacy Cloud Monitoring service (no
+        /// longer available as of GKE 1.15).
+        /// * `none` - No metrics will be exported from the cluster.
+        /// 
+        /// If left as an empty string,`monitoring.googleapis.com/kubernetes` will be
+        /// used for GKE 1.14+ or `monitoring.googleapis.com` for earlier versions.
+        /// </param>
+        /// <param name="callSettings">If not null, applies overrides to this RPC call.</param>
+        /// <returns>A Task containing the RPC response.</returns>
+        public virtual stt::Task<Operation> SetMonitoringServiceAsync(string name, string monitoringService, gaxgrpc::CallSettings callSettings = null) =>
+            SetMonitoringServiceAsync(new SetMonitoringServiceRequest
+            {
+                MonitoringService = gax::GaxPreconditions.CheckNotNullOrEmpty(monitoringService, nameof(monitoringService)),
+                Name = name ?? "",
+            }, callSettings);
+
+        /// <summary>
+        /// Sets the monitoring service for a specific cluster.
+        /// </summary>
+        /// <param name="name">
+        /// The name (project, location, cluster) of the cluster to set monitoring.
+        /// Specified in the format `projects/*/locations/*/clusters/*`.
+        /// </param>
+        /// <param name="monitoringService">
+        /// Required. The monitoring service the cluster should use to write metrics.
+        /// Currently available options:
+        /// 
+        /// * "monitoring.googleapis.com/kubernetes" - The Cloud Monitoring
+        /// service with a Kubernetes-native resource model
+        /// * `monitoring.googleapis.com` - The legacy Cloud Monitoring service (no
+        /// longer available as of GKE 1.15).
+        /// * `none` - No metrics will be exported from the cluster.
+        /// 
+        /// If left as an empty string,`monitoring.googleapis.com/kubernetes` will be
+        /// used for GKE 1.14+ or `monitoring.googleapis.com` for earlier versions.
+        /// </param>
+        /// <param name="cancellationToken">A <see cref="st::CancellationToken"/> to use for this RPC.</param>
+        /// <returns>A Task containing the RPC response.</returns>
+        public virtual stt::Task<Operation> SetMonitoringServiceAsync(string name, string monitoringService, st::CancellationToken cancellationToken) =>
+            SetMonitoringServiceAsync(name, monitoringService, gaxgrpc::CallSettings.FromCancellationToken(cancellationToken));
 
         /// <summary>
         /// Sets the addons for a specific cluster.
@@ -1438,18 +1940,18 @@ namespace Google.Cloud.Container.V1
         /// Sets the addons for a specific cluster.
         /// </summary>
         /// <param name="projectId">
-        /// Required. Deprecated. The Google Developers Console [project ID or project
+        /// Deprecated. The Google Developers Console [project ID or project
         /// number](https://support.google.com/cloud/answer/6158840).
         /// This field has been deprecated and replaced by the name field.
         /// </param>
         /// <param name="zone">
-        /// Required. Deprecated. The name of the Google Compute Engine
-        /// [zone](https://cloud.google.com/compute/docs/zones#available) in which the cluster
-        /// resides.
-        /// This field has been deprecated and replaced by the name field.
+        /// Deprecated. The name of the Google Compute Engine
+        /// [zone](https://cloud.google.com/compute/docs/zones#available) in which the
+        /// cluster resides. This field has been deprecated and replaced by the name
+        /// field.
         /// </param>
         /// <param name="clusterId">
-        /// Required. Deprecated. The name of the cluster to upgrade.
+        /// Deprecated. The name of the cluster to upgrade.
         /// This field has been deprecated and replaced by the name field.
         /// </param>
         /// <param name="addonsConfig">
@@ -1461,9 +1963,11 @@ namespace Google.Cloud.Container.V1
         public virtual Operation SetAddonsConfig(string projectId, string zone, string clusterId, AddonsConfig addonsConfig, gaxgrpc::CallSettings callSettings = null) =>
             SetAddonsConfig(new SetAddonsConfigRequest
             {
-                ProjectId = gax::GaxPreconditions.CheckNotNullOrEmpty(projectId, nameof(projectId)),
-                Zone = gax::GaxPreconditions.CheckNotNullOrEmpty(zone, nameof(zone)),
-                ClusterId = gax::GaxPreconditions.CheckNotNullOrEmpty(clusterId, nameof(clusterId)),
+#pragma warning disable CS0612
+                ProjectId = projectId ?? "",
+                Zone = zone ?? "",
+                ClusterId = clusterId ?? "",
+#pragma warning restore CS0612
                 AddonsConfig = gax::GaxPreconditions.CheckNotNull(addonsConfig, nameof(addonsConfig)),
             }, callSettings);
 
@@ -1471,18 +1975,18 @@ namespace Google.Cloud.Container.V1
         /// Sets the addons for a specific cluster.
         /// </summary>
         /// <param name="projectId">
-        /// Required. Deprecated. The Google Developers Console [project ID or project
+        /// Deprecated. The Google Developers Console [project ID or project
         /// number](https://support.google.com/cloud/answer/6158840).
         /// This field has been deprecated and replaced by the name field.
         /// </param>
         /// <param name="zone">
-        /// Required. Deprecated. The name of the Google Compute Engine
-        /// [zone](https://cloud.google.com/compute/docs/zones#available) in which the cluster
-        /// resides.
-        /// This field has been deprecated and replaced by the name field.
+        /// Deprecated. The name of the Google Compute Engine
+        /// [zone](https://cloud.google.com/compute/docs/zones#available) in which the
+        /// cluster resides. This field has been deprecated and replaced by the name
+        /// field.
         /// </param>
         /// <param name="clusterId">
-        /// Required. Deprecated. The name of the cluster to upgrade.
+        /// Deprecated. The name of the cluster to upgrade.
         /// This field has been deprecated and replaced by the name field.
         /// </param>
         /// <param name="addonsConfig">
@@ -1494,9 +1998,11 @@ namespace Google.Cloud.Container.V1
         public virtual stt::Task<Operation> SetAddonsConfigAsync(string projectId, string zone, string clusterId, AddonsConfig addonsConfig, gaxgrpc::CallSettings callSettings = null) =>
             SetAddonsConfigAsync(new SetAddonsConfigRequest
             {
-                ProjectId = gax::GaxPreconditions.CheckNotNullOrEmpty(projectId, nameof(projectId)),
-                Zone = gax::GaxPreconditions.CheckNotNullOrEmpty(zone, nameof(zone)),
-                ClusterId = gax::GaxPreconditions.CheckNotNullOrEmpty(clusterId, nameof(clusterId)),
+#pragma warning disable CS0612
+                ProjectId = projectId ?? "",
+                Zone = zone ?? "",
+                ClusterId = clusterId ?? "",
+#pragma warning restore CS0612
                 AddonsConfig = gax::GaxPreconditions.CheckNotNull(addonsConfig, nameof(addonsConfig)),
             }, callSettings);
 
@@ -1504,18 +2010,18 @@ namespace Google.Cloud.Container.V1
         /// Sets the addons for a specific cluster.
         /// </summary>
         /// <param name="projectId">
-        /// Required. Deprecated. The Google Developers Console [project ID or project
+        /// Deprecated. The Google Developers Console [project ID or project
         /// number](https://support.google.com/cloud/answer/6158840).
         /// This field has been deprecated and replaced by the name field.
         /// </param>
         /// <param name="zone">
-        /// Required. Deprecated. The name of the Google Compute Engine
-        /// [zone](https://cloud.google.com/compute/docs/zones#available) in which the cluster
-        /// resides.
-        /// This field has been deprecated and replaced by the name field.
+        /// Deprecated. The name of the Google Compute Engine
+        /// [zone](https://cloud.google.com/compute/docs/zones#available) in which the
+        /// cluster resides. This field has been deprecated and replaced by the name
+        /// field.
         /// </param>
         /// <param name="clusterId">
-        /// Required. Deprecated. The name of the cluster to upgrade.
+        /// Deprecated. The name of the cluster to upgrade.
         /// This field has been deprecated and replaced by the name field.
         /// </param>
         /// <param name="addonsConfig">
@@ -1528,7 +2034,66 @@ namespace Google.Cloud.Container.V1
             SetAddonsConfigAsync(projectId, zone, clusterId, addonsConfig, gaxgrpc::CallSettings.FromCancellationToken(cancellationToken));
 
         /// <summary>
+        /// Sets the addons for a specific cluster.
+        /// </summary>
+        /// <param name="name">
+        /// The name (project, location, cluster) of the cluster to set addons.
+        /// Specified in the format `projects/*/locations/*/clusters/*`.
+        /// </param>
+        /// <param name="addonsConfig">
+        /// Required. The desired configurations for the various addons available to run in the
+        /// cluster.
+        /// </param>
+        /// <param name="callSettings">If not null, applies overrides to this RPC call.</param>
+        /// <returns>The RPC response.</returns>
+        public virtual Operation SetAddonsConfig(string name, AddonsConfig addonsConfig, gaxgrpc::CallSettings callSettings = null) =>
+            SetAddonsConfig(new SetAddonsConfigRequest
+            {
+                AddonsConfig = gax::GaxPreconditions.CheckNotNull(addonsConfig, nameof(addonsConfig)),
+                Name = name ?? "",
+            }, callSettings);
+
+        /// <summary>
+        /// Sets the addons for a specific cluster.
+        /// </summary>
+        /// <param name="name">
+        /// The name (project, location, cluster) of the cluster to set addons.
+        /// Specified in the format `projects/*/locations/*/clusters/*`.
+        /// </param>
+        /// <param name="addonsConfig">
+        /// Required. The desired configurations for the various addons available to run in the
+        /// cluster.
+        /// </param>
+        /// <param name="callSettings">If not null, applies overrides to this RPC call.</param>
+        /// <returns>A Task containing the RPC response.</returns>
+        public virtual stt::Task<Operation> SetAddonsConfigAsync(string name, AddonsConfig addonsConfig, gaxgrpc::CallSettings callSettings = null) =>
+            SetAddonsConfigAsync(new SetAddonsConfigRequest
+            {
+                AddonsConfig = gax::GaxPreconditions.CheckNotNull(addonsConfig, nameof(addonsConfig)),
+                Name = name ?? "",
+            }, callSettings);
+
+        /// <summary>
+        /// Sets the addons for a specific cluster.
+        /// </summary>
+        /// <param name="name">
+        /// The name (project, location, cluster) of the cluster to set addons.
+        /// Specified in the format `projects/*/locations/*/clusters/*`.
+        /// </param>
+        /// <param name="addonsConfig">
+        /// Required. The desired configurations for the various addons available to run in the
+        /// cluster.
+        /// </param>
+        /// <param name="cancellationToken">A <see cref="st::CancellationToken"/> to use for this RPC.</param>
+        /// <returns>A Task containing the RPC response.</returns>
+        public virtual stt::Task<Operation> SetAddonsConfigAsync(string name, AddonsConfig addonsConfig, st::CancellationToken cancellationToken) =>
+            SetAddonsConfigAsync(name, addonsConfig, gaxgrpc::CallSettings.FromCancellationToken(cancellationToken));
+
+        /// <summary>
         /// Sets the locations for a specific cluster.
+        /// Deprecated. Use
+        /// [projects.locations.clusters.update](https://cloud.google.com/kubernetes-engine/docs/reference/rest/v1/projects.locations.clusters/update)
+        /// instead.
         /// </summary>
         /// <param name="request">The request object containing all of the parameters for the API call.</param>
         /// <param name="callSettings">If not null, applies overrides to this RPC call.</param>
@@ -1538,6 +2103,9 @@ namespace Google.Cloud.Container.V1
 
         /// <summary>
         /// Sets the locations for a specific cluster.
+        /// Deprecated. Use
+        /// [projects.locations.clusters.update](https://cloud.google.com/kubernetes-engine/docs/reference/rest/v1/projects.locations.clusters/update)
+        /// instead.
         /// </summary>
         /// <param name="request">The request object containing all of the parameters for the API call.</param>
         /// <param name="callSettings">If not null, applies overrides to this RPC call.</param>
@@ -1547,6 +2115,9 @@ namespace Google.Cloud.Container.V1
 
         /// <summary>
         /// Sets the locations for a specific cluster.
+        /// Deprecated. Use
+        /// [projects.locations.clusters.update](https://cloud.google.com/kubernetes-engine/docs/reference/rest/v1/projects.locations.clusters/update)
+        /// instead.
         /// </summary>
         /// <param name="request">The request object containing all of the parameters for the API call.</param>
         /// <param name="cancellationToken">A <see cref="st::CancellationToken"/> to use for this RPC.</param>
@@ -1556,28 +2127,31 @@ namespace Google.Cloud.Container.V1
 
         /// <summary>
         /// Sets the locations for a specific cluster.
+        /// Deprecated. Use
+        /// [projects.locations.clusters.update](https://cloud.google.com/kubernetes-engine/docs/reference/rest/v1/projects.locations.clusters/update)
+        /// instead.
         /// </summary>
         /// <param name="projectId">
-        /// Required. Deprecated. The Google Developers Console [project ID or project
+        /// Deprecated. The Google Developers Console [project ID or project
         /// number](https://support.google.com/cloud/answer/6158840).
         /// This field has been deprecated and replaced by the name field.
         /// </param>
         /// <param name="zone">
-        /// Required. Deprecated. The name of the Google Compute Engine
-        /// [zone](https://cloud.google.com/compute/docs/zones#available) in which the cluster
-        /// resides.
-        /// This field has been deprecated and replaced by the name field.
+        /// Deprecated. The name of the Google Compute Engine
+        /// [zone](https://cloud.google.com/compute/docs/zones#available) in which the
+        /// cluster resides. This field has been deprecated and replaced by the name
+        /// field.
         /// </param>
         /// <param name="clusterId">
-        /// Required. Deprecated. The name of the cluster to upgrade.
+        /// Deprecated. The name of the cluster to upgrade.
         /// This field has been deprecated and replaced by the name field.
         /// </param>
         /// <param name="locations">
         /// Required. The desired list of Google Compute Engine
-        /// [zones](https://cloud.google.com/compute/docs/zones#available) in which the cluster's nodes
-        /// should be located. Changing the locations a cluster is in will result
-        /// in nodes being either created or removed from the cluster, depending on
-        /// whether locations are being added or removed.
+        /// [zones](https://cloud.google.com/compute/docs/zones#available) in which the
+        /// cluster's nodes should be located. Changing the locations a cluster is in
+        /// will result in nodes being either created or removed from the cluster,
+        /// depending on whether locations are being added or removed.
         /// 
         /// This list must always include the cluster's primary zone.
         /// </param>
@@ -1586,9 +2160,11 @@ namespace Google.Cloud.Container.V1
         public virtual Operation SetLocations(string projectId, string zone, string clusterId, scg::IEnumerable<string> locations, gaxgrpc::CallSettings callSettings = null) =>
             SetLocations(new SetLocationsRequest
             {
-                ProjectId = gax::GaxPreconditions.CheckNotNullOrEmpty(projectId, nameof(projectId)),
-                Zone = gax::GaxPreconditions.CheckNotNullOrEmpty(zone, nameof(zone)),
-                ClusterId = gax::GaxPreconditions.CheckNotNullOrEmpty(clusterId, nameof(clusterId)),
+#pragma warning disable CS0612
+                ProjectId = projectId ?? "",
+                Zone = zone ?? "",
+                ClusterId = clusterId ?? "",
+#pragma warning restore CS0612
                 Locations =
                 {
                     gax::GaxPreconditions.CheckNotNull(locations, nameof(locations)),
@@ -1597,28 +2173,31 @@ namespace Google.Cloud.Container.V1
 
         /// <summary>
         /// Sets the locations for a specific cluster.
+        /// Deprecated. Use
+        /// [projects.locations.clusters.update](https://cloud.google.com/kubernetes-engine/docs/reference/rest/v1/projects.locations.clusters/update)
+        /// instead.
         /// </summary>
         /// <param name="projectId">
-        /// Required. Deprecated. The Google Developers Console [project ID or project
+        /// Deprecated. The Google Developers Console [project ID or project
         /// number](https://support.google.com/cloud/answer/6158840).
         /// This field has been deprecated and replaced by the name field.
         /// </param>
         /// <param name="zone">
-        /// Required. Deprecated. The name of the Google Compute Engine
-        /// [zone](https://cloud.google.com/compute/docs/zones#available) in which the cluster
-        /// resides.
-        /// This field has been deprecated and replaced by the name field.
+        /// Deprecated. The name of the Google Compute Engine
+        /// [zone](https://cloud.google.com/compute/docs/zones#available) in which the
+        /// cluster resides. This field has been deprecated and replaced by the name
+        /// field.
         /// </param>
         /// <param name="clusterId">
-        /// Required. Deprecated. The name of the cluster to upgrade.
+        /// Deprecated. The name of the cluster to upgrade.
         /// This field has been deprecated and replaced by the name field.
         /// </param>
         /// <param name="locations">
         /// Required. The desired list of Google Compute Engine
-        /// [zones](https://cloud.google.com/compute/docs/zones#available) in which the cluster's nodes
-        /// should be located. Changing the locations a cluster is in will result
-        /// in nodes being either created or removed from the cluster, depending on
-        /// whether locations are being added or removed.
+        /// [zones](https://cloud.google.com/compute/docs/zones#available) in which the
+        /// cluster's nodes should be located. Changing the locations a cluster is in
+        /// will result in nodes being either created or removed from the cluster,
+        /// depending on whether locations are being added or removed.
         /// 
         /// This list must always include the cluster's primary zone.
         /// </param>
@@ -1627,9 +2206,11 @@ namespace Google.Cloud.Container.V1
         public virtual stt::Task<Operation> SetLocationsAsync(string projectId, string zone, string clusterId, scg::IEnumerable<string> locations, gaxgrpc::CallSettings callSettings = null) =>
             SetLocationsAsync(new SetLocationsRequest
             {
-                ProjectId = gax::GaxPreconditions.CheckNotNullOrEmpty(projectId, nameof(projectId)),
-                Zone = gax::GaxPreconditions.CheckNotNullOrEmpty(zone, nameof(zone)),
-                ClusterId = gax::GaxPreconditions.CheckNotNullOrEmpty(clusterId, nameof(clusterId)),
+#pragma warning disable CS0612
+                ProjectId = projectId ?? "",
+                Zone = zone ?? "",
+                ClusterId = clusterId ?? "",
+#pragma warning restore CS0612
                 Locations =
                 {
                     gax::GaxPreconditions.CheckNotNull(locations, nameof(locations)),
@@ -1638,28 +2219,31 @@ namespace Google.Cloud.Container.V1
 
         /// <summary>
         /// Sets the locations for a specific cluster.
+        /// Deprecated. Use
+        /// [projects.locations.clusters.update](https://cloud.google.com/kubernetes-engine/docs/reference/rest/v1/projects.locations.clusters/update)
+        /// instead.
         /// </summary>
         /// <param name="projectId">
-        /// Required. Deprecated. The Google Developers Console [project ID or project
+        /// Deprecated. The Google Developers Console [project ID or project
         /// number](https://support.google.com/cloud/answer/6158840).
         /// This field has been deprecated and replaced by the name field.
         /// </param>
         /// <param name="zone">
-        /// Required. Deprecated. The name of the Google Compute Engine
-        /// [zone](https://cloud.google.com/compute/docs/zones#available) in which the cluster
-        /// resides.
-        /// This field has been deprecated and replaced by the name field.
+        /// Deprecated. The name of the Google Compute Engine
+        /// [zone](https://cloud.google.com/compute/docs/zones#available) in which the
+        /// cluster resides. This field has been deprecated and replaced by the name
+        /// field.
         /// </param>
         /// <param name="clusterId">
-        /// Required. Deprecated. The name of the cluster to upgrade.
+        /// Deprecated. The name of the cluster to upgrade.
         /// This field has been deprecated and replaced by the name field.
         /// </param>
         /// <param name="locations">
         /// Required. The desired list of Google Compute Engine
-        /// [zones](https://cloud.google.com/compute/docs/zones#available) in which the cluster's nodes
-        /// should be located. Changing the locations a cluster is in will result
-        /// in nodes being either created or removed from the cluster, depending on
-        /// whether locations are being added or removed.
+        /// [zones](https://cloud.google.com/compute/docs/zones#available) in which the
+        /// cluster's nodes should be located. Changing the locations a cluster is in
+        /// will result in nodes being either created or removed from the cluster,
+        /// depending on whether locations are being added or removed.
         /// 
         /// This list must always include the cluster's primary zone.
         /// </param>
@@ -1667,6 +2251,92 @@ namespace Google.Cloud.Container.V1
         /// <returns>A Task containing the RPC response.</returns>
         public virtual stt::Task<Operation> SetLocationsAsync(string projectId, string zone, string clusterId, scg::IEnumerable<string> locations, st::CancellationToken cancellationToken) =>
             SetLocationsAsync(projectId, zone, clusterId, locations, gaxgrpc::CallSettings.FromCancellationToken(cancellationToken));
+
+        /// <summary>
+        /// Sets the locations for a specific cluster.
+        /// Deprecated. Use
+        /// [projects.locations.clusters.update](https://cloud.google.com/kubernetes-engine/docs/reference/rest/v1/projects.locations.clusters/update)
+        /// instead.
+        /// </summary>
+        /// <param name="name">
+        /// The name (project, location, cluster) of the cluster to set locations.
+        /// Specified in the format `projects/*/locations/*/clusters/*`.
+        /// </param>
+        /// <param name="locations">
+        /// Required. The desired list of Google Compute Engine
+        /// [zones](https://cloud.google.com/compute/docs/zones#available) in which the
+        /// cluster's nodes should be located. Changing the locations a cluster is in
+        /// will result in nodes being either created or removed from the cluster,
+        /// depending on whether locations are being added or removed.
+        /// 
+        /// This list must always include the cluster's primary zone.
+        /// </param>
+        /// <param name="callSettings">If not null, applies overrides to this RPC call.</param>
+        /// <returns>The RPC response.</returns>
+        public virtual Operation SetLocations(string name, scg::IEnumerable<string> locations, gaxgrpc::CallSettings callSettings = null) =>
+            SetLocations(new SetLocationsRequest
+            {
+                Locations =
+                {
+                    gax::GaxPreconditions.CheckNotNull(locations, nameof(locations)),
+                },
+                Name = name ?? "",
+            }, callSettings);
+
+        /// <summary>
+        /// Sets the locations for a specific cluster.
+        /// Deprecated. Use
+        /// [projects.locations.clusters.update](https://cloud.google.com/kubernetes-engine/docs/reference/rest/v1/projects.locations.clusters/update)
+        /// instead.
+        /// </summary>
+        /// <param name="name">
+        /// The name (project, location, cluster) of the cluster to set locations.
+        /// Specified in the format `projects/*/locations/*/clusters/*`.
+        /// </param>
+        /// <param name="locations">
+        /// Required. The desired list of Google Compute Engine
+        /// [zones](https://cloud.google.com/compute/docs/zones#available) in which the
+        /// cluster's nodes should be located. Changing the locations a cluster is in
+        /// will result in nodes being either created or removed from the cluster,
+        /// depending on whether locations are being added or removed.
+        /// 
+        /// This list must always include the cluster's primary zone.
+        /// </param>
+        /// <param name="callSettings">If not null, applies overrides to this RPC call.</param>
+        /// <returns>A Task containing the RPC response.</returns>
+        public virtual stt::Task<Operation> SetLocationsAsync(string name, scg::IEnumerable<string> locations, gaxgrpc::CallSettings callSettings = null) =>
+            SetLocationsAsync(new SetLocationsRequest
+            {
+                Locations =
+                {
+                    gax::GaxPreconditions.CheckNotNull(locations, nameof(locations)),
+                },
+                Name = name ?? "",
+            }, callSettings);
+
+        /// <summary>
+        /// Sets the locations for a specific cluster.
+        /// Deprecated. Use
+        /// [projects.locations.clusters.update](https://cloud.google.com/kubernetes-engine/docs/reference/rest/v1/projects.locations.clusters/update)
+        /// instead.
+        /// </summary>
+        /// <param name="name">
+        /// The name (project, location, cluster) of the cluster to set locations.
+        /// Specified in the format `projects/*/locations/*/clusters/*`.
+        /// </param>
+        /// <param name="locations">
+        /// Required. The desired list of Google Compute Engine
+        /// [zones](https://cloud.google.com/compute/docs/zones#available) in which the
+        /// cluster's nodes should be located. Changing the locations a cluster is in
+        /// will result in nodes being either created or removed from the cluster,
+        /// depending on whether locations are being added or removed.
+        /// 
+        /// This list must always include the cluster's primary zone.
+        /// </param>
+        /// <param name="cancellationToken">A <see cref="st::CancellationToken"/> to use for this RPC.</param>
+        /// <returns>A Task containing the RPC response.</returns>
+        public virtual stt::Task<Operation> SetLocationsAsync(string name, scg::IEnumerable<string> locations, st::CancellationToken cancellationToken) =>
+            SetLocationsAsync(name, locations, gaxgrpc::CallSettings.FromCancellationToken(cancellationToken));
 
         /// <summary>
         /// Updates the master for a specific cluster.
@@ -1699,18 +2369,18 @@ namespace Google.Cloud.Container.V1
         /// Updates the master for a specific cluster.
         /// </summary>
         /// <param name="projectId">
-        /// Required. Deprecated. The Google Developers Console [project ID or project
+        /// Deprecated. The Google Developers Console [project ID or project
         /// number](https://support.google.com/cloud/answer/6158840).
         /// This field has been deprecated and replaced by the name field.
         /// </param>
         /// <param name="zone">
-        /// Required. Deprecated. The name of the Google Compute Engine
-        /// [zone](https://cloud.google.com/compute/docs/zones#available) in which the cluster
-        /// resides.
-        /// This field has been deprecated and replaced by the name field.
+        /// Deprecated. The name of the Google Compute Engine
+        /// [zone](https://cloud.google.com/compute/docs/zones#available) in which the
+        /// cluster resides. This field has been deprecated and replaced by the name
+        /// field.
         /// </param>
         /// <param name="clusterId">
-        /// Required. Deprecated. The name of the cluster to upgrade.
+        /// Deprecated. The name of the cluster to upgrade.
         /// This field has been deprecated and replaced by the name field.
         /// </param>
         /// <param name="masterVersion">
@@ -1730,9 +2400,11 @@ namespace Google.Cloud.Container.V1
         public virtual Operation UpdateMaster(string projectId, string zone, string clusterId, string masterVersion, gaxgrpc::CallSettings callSettings = null) =>
             UpdateMaster(new UpdateMasterRequest
             {
-                ProjectId = gax::GaxPreconditions.CheckNotNullOrEmpty(projectId, nameof(projectId)),
-                Zone = gax::GaxPreconditions.CheckNotNullOrEmpty(zone, nameof(zone)),
-                ClusterId = gax::GaxPreconditions.CheckNotNullOrEmpty(clusterId, nameof(clusterId)),
+#pragma warning disable CS0612
+                ProjectId = projectId ?? "",
+                Zone = zone ?? "",
+                ClusterId = clusterId ?? "",
+#pragma warning restore CS0612
                 MasterVersion = gax::GaxPreconditions.CheckNotNullOrEmpty(masterVersion, nameof(masterVersion)),
             }, callSettings);
 
@@ -1740,18 +2412,18 @@ namespace Google.Cloud.Container.V1
         /// Updates the master for a specific cluster.
         /// </summary>
         /// <param name="projectId">
-        /// Required. Deprecated. The Google Developers Console [project ID or project
+        /// Deprecated. The Google Developers Console [project ID or project
         /// number](https://support.google.com/cloud/answer/6158840).
         /// This field has been deprecated and replaced by the name field.
         /// </param>
         /// <param name="zone">
-        /// Required. Deprecated. The name of the Google Compute Engine
-        /// [zone](https://cloud.google.com/compute/docs/zones#available) in which the cluster
-        /// resides.
-        /// This field has been deprecated and replaced by the name field.
+        /// Deprecated. The name of the Google Compute Engine
+        /// [zone](https://cloud.google.com/compute/docs/zones#available) in which the
+        /// cluster resides. This field has been deprecated and replaced by the name
+        /// field.
         /// </param>
         /// <param name="clusterId">
-        /// Required. Deprecated. The name of the cluster to upgrade.
+        /// Deprecated. The name of the cluster to upgrade.
         /// This field has been deprecated and replaced by the name field.
         /// </param>
         /// <param name="masterVersion">
@@ -1771,9 +2443,11 @@ namespace Google.Cloud.Container.V1
         public virtual stt::Task<Operation> UpdateMasterAsync(string projectId, string zone, string clusterId, string masterVersion, gaxgrpc::CallSettings callSettings = null) =>
             UpdateMasterAsync(new UpdateMasterRequest
             {
-                ProjectId = gax::GaxPreconditions.CheckNotNullOrEmpty(projectId, nameof(projectId)),
-                Zone = gax::GaxPreconditions.CheckNotNullOrEmpty(zone, nameof(zone)),
-                ClusterId = gax::GaxPreconditions.CheckNotNullOrEmpty(clusterId, nameof(clusterId)),
+#pragma warning disable CS0612
+                ProjectId = projectId ?? "",
+                Zone = zone ?? "",
+                ClusterId = clusterId ?? "",
+#pragma warning restore CS0612
                 MasterVersion = gax::GaxPreconditions.CheckNotNullOrEmpty(masterVersion, nameof(masterVersion)),
             }, callSettings);
 
@@ -1781,18 +2455,18 @@ namespace Google.Cloud.Container.V1
         /// Updates the master for a specific cluster.
         /// </summary>
         /// <param name="projectId">
-        /// Required. Deprecated. The Google Developers Console [project ID or project
+        /// Deprecated. The Google Developers Console [project ID or project
         /// number](https://support.google.com/cloud/answer/6158840).
         /// This field has been deprecated and replaced by the name field.
         /// </param>
         /// <param name="zone">
-        /// Required. Deprecated. The name of the Google Compute Engine
-        /// [zone](https://cloud.google.com/compute/docs/zones#available) in which the cluster
-        /// resides.
-        /// This field has been deprecated and replaced by the name field.
+        /// Deprecated. The name of the Google Compute Engine
+        /// [zone](https://cloud.google.com/compute/docs/zones#available) in which the
+        /// cluster resides. This field has been deprecated and replaced by the name
+        /// field.
         /// </param>
         /// <param name="clusterId">
-        /// Required. Deprecated. The name of the cluster to upgrade.
+        /// Deprecated. The name of the cluster to upgrade.
         /// This field has been deprecated and replaced by the name field.
         /// </param>
         /// <param name="masterVersion">
@@ -1811,6 +2485,86 @@ namespace Google.Cloud.Container.V1
         /// <returns>A Task containing the RPC response.</returns>
         public virtual stt::Task<Operation> UpdateMasterAsync(string projectId, string zone, string clusterId, string masterVersion, st::CancellationToken cancellationToken) =>
             UpdateMasterAsync(projectId, zone, clusterId, masterVersion, gaxgrpc::CallSettings.FromCancellationToken(cancellationToken));
+
+        /// <summary>
+        /// Updates the master for a specific cluster.
+        /// </summary>
+        /// <param name="name">
+        /// The name (project, location, cluster) of the cluster to update.
+        /// Specified in the format `projects/*/locations/*/clusters/*`.
+        /// </param>
+        /// <param name="masterVersion">
+        /// Required. The Kubernetes version to change the master to.
+        /// 
+        /// Users may specify either explicit versions offered by Kubernetes Engine or
+        /// version aliases, which have the following behavior:
+        /// 
+        /// - "latest": picks the highest valid Kubernetes version
+        /// - "1.X": picks the highest valid patch+gke.N patch in the 1.X version
+        /// - "1.X.Y": picks the highest valid gke.N patch in the 1.X.Y version
+        /// - "1.X.Y-gke.N": picks an explicit Kubernetes version
+        /// - "-": picks the default Kubernetes version
+        /// </param>
+        /// <param name="callSettings">If not null, applies overrides to this RPC call.</param>
+        /// <returns>The RPC response.</returns>
+        public virtual Operation UpdateMaster(string name, string masterVersion, gaxgrpc::CallSettings callSettings = null) =>
+            UpdateMaster(new UpdateMasterRequest
+            {
+                MasterVersion = gax::GaxPreconditions.CheckNotNullOrEmpty(masterVersion, nameof(masterVersion)),
+                Name = name ?? "",
+            }, callSettings);
+
+        /// <summary>
+        /// Updates the master for a specific cluster.
+        /// </summary>
+        /// <param name="name">
+        /// The name (project, location, cluster) of the cluster to update.
+        /// Specified in the format `projects/*/locations/*/clusters/*`.
+        /// </param>
+        /// <param name="masterVersion">
+        /// Required. The Kubernetes version to change the master to.
+        /// 
+        /// Users may specify either explicit versions offered by Kubernetes Engine or
+        /// version aliases, which have the following behavior:
+        /// 
+        /// - "latest": picks the highest valid Kubernetes version
+        /// - "1.X": picks the highest valid patch+gke.N patch in the 1.X version
+        /// - "1.X.Y": picks the highest valid gke.N patch in the 1.X.Y version
+        /// - "1.X.Y-gke.N": picks an explicit Kubernetes version
+        /// - "-": picks the default Kubernetes version
+        /// </param>
+        /// <param name="callSettings">If not null, applies overrides to this RPC call.</param>
+        /// <returns>A Task containing the RPC response.</returns>
+        public virtual stt::Task<Operation> UpdateMasterAsync(string name, string masterVersion, gaxgrpc::CallSettings callSettings = null) =>
+            UpdateMasterAsync(new UpdateMasterRequest
+            {
+                MasterVersion = gax::GaxPreconditions.CheckNotNullOrEmpty(masterVersion, nameof(masterVersion)),
+                Name = name ?? "",
+            }, callSettings);
+
+        /// <summary>
+        /// Updates the master for a specific cluster.
+        /// </summary>
+        /// <param name="name">
+        /// The name (project, location, cluster) of the cluster to update.
+        /// Specified in the format `projects/*/locations/*/clusters/*`.
+        /// </param>
+        /// <param name="masterVersion">
+        /// Required. The Kubernetes version to change the master to.
+        /// 
+        /// Users may specify either explicit versions offered by Kubernetes Engine or
+        /// version aliases, which have the following behavior:
+        /// 
+        /// - "latest": picks the highest valid Kubernetes version
+        /// - "1.X": picks the highest valid patch+gke.N patch in the 1.X version
+        /// - "1.X.Y": picks the highest valid gke.N patch in the 1.X.Y version
+        /// - "1.X.Y-gke.N": picks an explicit Kubernetes version
+        /// - "-": picks the default Kubernetes version
+        /// </param>
+        /// <param name="cancellationToken">A <see cref="st::CancellationToken"/> to use for this RPC.</param>
+        /// <returns>A Task containing the RPC response.</returns>
+        public virtual stt::Task<Operation> UpdateMasterAsync(string name, string masterVersion, st::CancellationToken cancellationToken) =>
+            UpdateMasterAsync(name, masterVersion, gaxgrpc::CallSettings.FromCancellationToken(cancellationToken));
 
         /// <summary>
         /// Sets master auth materials. Currently supports changing the admin password
@@ -1908,18 +2662,18 @@ namespace Google.Cloud.Container.V1
         /// when the cluster was initially created.
         /// </summary>
         /// <param name="projectId">
-        /// Required. Deprecated. The Google Developers Console [project ID or project
+        /// Deprecated. The Google Developers Console [project ID or project
         /// number](https://support.google.com/cloud/answer/6158840).
         /// This field has been deprecated and replaced by the name field.
         /// </param>
         /// <param name="zone">
-        /// Required. Deprecated. The name of the Google Compute Engine
-        /// [zone](https://cloud.google.com/compute/docs/zones#available) in which the cluster
-        /// resides.
-        /// This field has been deprecated and replaced by the name field.
+        /// Deprecated. The name of the Google Compute Engine
+        /// [zone](https://cloud.google.com/compute/docs/zones#available) in which the
+        /// cluster resides. This field has been deprecated and replaced by the name
+        /// field.
         /// </param>
         /// <param name="clusterId">
-        /// Required. Deprecated. The name of the cluster to delete.
+        /// Deprecated. The name of the cluster to delete.
         /// This field has been deprecated and replaced by the name field.
         /// </param>
         /// <param name="callSettings">If not null, applies overrides to this RPC call.</param>
@@ -1927,9 +2681,11 @@ namespace Google.Cloud.Container.V1
         public virtual Operation DeleteCluster(string projectId, string zone, string clusterId, gaxgrpc::CallSettings callSettings = null) =>
             DeleteCluster(new DeleteClusterRequest
             {
-                ProjectId = gax::GaxPreconditions.CheckNotNullOrEmpty(projectId, nameof(projectId)),
-                Zone = gax::GaxPreconditions.CheckNotNullOrEmpty(zone, nameof(zone)),
-                ClusterId = gax::GaxPreconditions.CheckNotNullOrEmpty(clusterId, nameof(clusterId)),
+#pragma warning disable CS0612
+                ProjectId = projectId ?? "",
+                Zone = zone ?? "",
+                ClusterId = clusterId ?? "",
+#pragma warning restore CS0612
             }, callSettings);
 
         /// <summary>
@@ -1944,18 +2700,18 @@ namespace Google.Cloud.Container.V1
         /// when the cluster was initially created.
         /// </summary>
         /// <param name="projectId">
-        /// Required. Deprecated. The Google Developers Console [project ID or project
+        /// Deprecated. The Google Developers Console [project ID or project
         /// number](https://support.google.com/cloud/answer/6158840).
         /// This field has been deprecated and replaced by the name field.
         /// </param>
         /// <param name="zone">
-        /// Required. Deprecated. The name of the Google Compute Engine
-        /// [zone](https://cloud.google.com/compute/docs/zones#available) in which the cluster
-        /// resides.
-        /// This field has been deprecated and replaced by the name field.
+        /// Deprecated. The name of the Google Compute Engine
+        /// [zone](https://cloud.google.com/compute/docs/zones#available) in which the
+        /// cluster resides. This field has been deprecated and replaced by the name
+        /// field.
         /// </param>
         /// <param name="clusterId">
-        /// Required. Deprecated. The name of the cluster to delete.
+        /// Deprecated. The name of the cluster to delete.
         /// This field has been deprecated and replaced by the name field.
         /// </param>
         /// <param name="callSettings">If not null, applies overrides to this RPC call.</param>
@@ -1963,9 +2719,11 @@ namespace Google.Cloud.Container.V1
         public virtual stt::Task<Operation> DeleteClusterAsync(string projectId, string zone, string clusterId, gaxgrpc::CallSettings callSettings = null) =>
             DeleteClusterAsync(new DeleteClusterRequest
             {
-                ProjectId = gax::GaxPreconditions.CheckNotNullOrEmpty(projectId, nameof(projectId)),
-                Zone = gax::GaxPreconditions.CheckNotNullOrEmpty(zone, nameof(zone)),
-                ClusterId = gax::GaxPreconditions.CheckNotNullOrEmpty(clusterId, nameof(clusterId)),
+#pragma warning disable CS0612
+                ProjectId = projectId ?? "",
+                Zone = zone ?? "",
+                ClusterId = clusterId ?? "",
+#pragma warning restore CS0612
             }, callSettings);
 
         /// <summary>
@@ -1980,24 +2738,84 @@ namespace Google.Cloud.Container.V1
         /// when the cluster was initially created.
         /// </summary>
         /// <param name="projectId">
-        /// Required. Deprecated. The Google Developers Console [project ID or project
+        /// Deprecated. The Google Developers Console [project ID or project
         /// number](https://support.google.com/cloud/answer/6158840).
         /// This field has been deprecated and replaced by the name field.
         /// </param>
         /// <param name="zone">
-        /// Required. Deprecated. The name of the Google Compute Engine
-        /// [zone](https://cloud.google.com/compute/docs/zones#available) in which the cluster
-        /// resides.
-        /// This field has been deprecated and replaced by the name field.
+        /// Deprecated. The name of the Google Compute Engine
+        /// [zone](https://cloud.google.com/compute/docs/zones#available) in which the
+        /// cluster resides. This field has been deprecated and replaced by the name
+        /// field.
         /// </param>
         /// <param name="clusterId">
-        /// Required. Deprecated. The name of the cluster to delete.
+        /// Deprecated. The name of the cluster to delete.
         /// This field has been deprecated and replaced by the name field.
         /// </param>
         /// <param name="cancellationToken">A <see cref="st::CancellationToken"/> to use for this RPC.</param>
         /// <returns>A Task containing the RPC response.</returns>
         public virtual stt::Task<Operation> DeleteClusterAsync(string projectId, string zone, string clusterId, st::CancellationToken cancellationToken) =>
             DeleteClusterAsync(projectId, zone, clusterId, gaxgrpc::CallSettings.FromCancellationToken(cancellationToken));
+
+        /// <summary>
+        /// Deletes the cluster, including the Kubernetes endpoint and all worker
+        /// nodes.
+        /// 
+        /// Firewalls and routes that were configured during cluster creation
+        /// are also deleted.
+        /// 
+        /// Other Google Compute Engine resources that might be in use by the cluster,
+        /// such as load balancer resources, are not deleted if they weren't present
+        /// when the cluster was initially created.
+        /// </summary>
+        /// <param name="name">
+        /// The name (project, location, cluster) of the cluster to delete.
+        /// Specified in the format `projects/*/locations/*/clusters/*`.
+        /// </param>
+        /// <param name="callSettings">If not null, applies overrides to this RPC call.</param>
+        /// <returns>The RPC response.</returns>
+        public virtual Operation DeleteCluster(string name, gaxgrpc::CallSettings callSettings = null) =>
+            DeleteCluster(new DeleteClusterRequest { Name = name ?? "", }, callSettings);
+
+        /// <summary>
+        /// Deletes the cluster, including the Kubernetes endpoint and all worker
+        /// nodes.
+        /// 
+        /// Firewalls and routes that were configured during cluster creation
+        /// are also deleted.
+        /// 
+        /// Other Google Compute Engine resources that might be in use by the cluster,
+        /// such as load balancer resources, are not deleted if they weren't present
+        /// when the cluster was initially created.
+        /// </summary>
+        /// <param name="name">
+        /// The name (project, location, cluster) of the cluster to delete.
+        /// Specified in the format `projects/*/locations/*/clusters/*`.
+        /// </param>
+        /// <param name="callSettings">If not null, applies overrides to this RPC call.</param>
+        /// <returns>A Task containing the RPC response.</returns>
+        public virtual stt::Task<Operation> DeleteClusterAsync(string name, gaxgrpc::CallSettings callSettings = null) =>
+            DeleteClusterAsync(new DeleteClusterRequest { Name = name ?? "", }, callSettings);
+
+        /// <summary>
+        /// Deletes the cluster, including the Kubernetes endpoint and all worker
+        /// nodes.
+        /// 
+        /// Firewalls and routes that were configured during cluster creation
+        /// are also deleted.
+        /// 
+        /// Other Google Compute Engine resources that might be in use by the cluster,
+        /// such as load balancer resources, are not deleted if they weren't present
+        /// when the cluster was initially created.
+        /// </summary>
+        /// <param name="name">
+        /// The name (project, location, cluster) of the cluster to delete.
+        /// Specified in the format `projects/*/locations/*/clusters/*`.
+        /// </param>
+        /// <param name="cancellationToken">A <see cref="st::CancellationToken"/> to use for this RPC.</param>
+        /// <returns>A Task containing the RPC response.</returns>
+        public virtual stt::Task<Operation> DeleteClusterAsync(string name, st::CancellationToken cancellationToken) =>
+            DeleteClusterAsync(name, gaxgrpc::CallSettings.FromCancellationToken(cancellationToken));
 
         /// <summary>
         /// Lists all operations in a project in a specific zone or all zones.
@@ -2030,58 +2848,65 @@ namespace Google.Cloud.Container.V1
         /// Lists all operations in a project in a specific zone or all zones.
         /// </summary>
         /// <param name="projectId">
-        /// Required. Deprecated. The Google Developers Console [project ID or project
+        /// Deprecated. The Google Developers Console [project ID or project
         /// number](https://support.google.com/cloud/answer/6158840).
         /// This field has been deprecated and replaced by the parent field.
         /// </param>
         /// <param name="zone">
-        /// Required. Deprecated. The name of the Google Compute Engine
-        /// [zone](https://cloud.google.com/compute/docs/zones#available) to return operations for, or `-` for
-        /// all zones. This field has been deprecated and replaced by the parent field.
+        /// Deprecated. The name of the Google Compute Engine
+        /// [zone](https://cloud.google.com/compute/docs/zones#available) to return
+        /// operations for, or `-` for all zones. This field has been deprecated and
+        /// replaced by the parent field.
         /// </param>
         /// <param name="callSettings">If not null, applies overrides to this RPC call.</param>
         /// <returns>The RPC response.</returns>
         public virtual ListOperationsResponse ListOperations(string projectId, string zone, gaxgrpc::CallSettings callSettings = null) =>
             ListOperations(new ListOperationsRequest
             {
-                ProjectId = gax::GaxPreconditions.CheckNotNullOrEmpty(projectId, nameof(projectId)),
-                Zone = gax::GaxPreconditions.CheckNotNullOrEmpty(zone, nameof(zone)),
+#pragma warning disable CS0612
+                ProjectId = projectId ?? "",
+                Zone = zone ?? "",
+#pragma warning restore CS0612
             }, callSettings);
 
         /// <summary>
         /// Lists all operations in a project in a specific zone or all zones.
         /// </summary>
         /// <param name="projectId">
-        /// Required. Deprecated. The Google Developers Console [project ID or project
+        /// Deprecated. The Google Developers Console [project ID or project
         /// number](https://support.google.com/cloud/answer/6158840).
         /// This field has been deprecated and replaced by the parent field.
         /// </param>
         /// <param name="zone">
-        /// Required. Deprecated. The name of the Google Compute Engine
-        /// [zone](https://cloud.google.com/compute/docs/zones#available) to return operations for, or `-` for
-        /// all zones. This field has been deprecated and replaced by the parent field.
+        /// Deprecated. The name of the Google Compute Engine
+        /// [zone](https://cloud.google.com/compute/docs/zones#available) to return
+        /// operations for, or `-` for all zones. This field has been deprecated and
+        /// replaced by the parent field.
         /// </param>
         /// <param name="callSettings">If not null, applies overrides to this RPC call.</param>
         /// <returns>A Task containing the RPC response.</returns>
         public virtual stt::Task<ListOperationsResponse> ListOperationsAsync(string projectId, string zone, gaxgrpc::CallSettings callSettings = null) =>
             ListOperationsAsync(new ListOperationsRequest
             {
-                ProjectId = gax::GaxPreconditions.CheckNotNullOrEmpty(projectId, nameof(projectId)),
-                Zone = gax::GaxPreconditions.CheckNotNullOrEmpty(zone, nameof(zone)),
+#pragma warning disable CS0612
+                ProjectId = projectId ?? "",
+                Zone = zone ?? "",
+#pragma warning restore CS0612
             }, callSettings);
 
         /// <summary>
         /// Lists all operations in a project in a specific zone or all zones.
         /// </summary>
         /// <param name="projectId">
-        /// Required. Deprecated. The Google Developers Console [project ID or project
+        /// Deprecated. The Google Developers Console [project ID or project
         /// number](https://support.google.com/cloud/answer/6158840).
         /// This field has been deprecated and replaced by the parent field.
         /// </param>
         /// <param name="zone">
-        /// Required. Deprecated. The name of the Google Compute Engine
-        /// [zone](https://cloud.google.com/compute/docs/zones#available) to return operations for, or `-` for
-        /// all zones. This field has been deprecated and replaced by the parent field.
+        /// Deprecated. The name of the Google Compute Engine
+        /// [zone](https://cloud.google.com/compute/docs/zones#available) to return
+        /// operations for, or `-` for all zones. This field has been deprecated and
+        /// replaced by the parent field.
         /// </param>
         /// <param name="cancellationToken">A <see cref="st::CancellationToken"/> to use for this RPC.</param>
         /// <returns>A Task containing the RPC response.</returns>
@@ -2119,18 +2944,18 @@ namespace Google.Cloud.Container.V1
         /// Gets the specified operation.
         /// </summary>
         /// <param name="projectId">
-        /// Required. Deprecated. The Google Developers Console [project ID or project
+        /// Deprecated. The Google Developers Console [project ID or project
         /// number](https://support.google.com/cloud/answer/6158840).
         /// This field has been deprecated and replaced by the name field.
         /// </param>
         /// <param name="zone">
-        /// Required. Deprecated. The name of the Google Compute Engine
-        /// [zone](https://cloud.google.com/compute/docs/zones#available) in which the cluster
-        /// resides.
-        /// This field has been deprecated and replaced by the name field.
+        /// Deprecated. The name of the Google Compute Engine
+        /// [zone](https://cloud.google.com/compute/docs/zones#available) in which the
+        /// cluster resides. This field has been deprecated and replaced by the name
+        /// field.
         /// </param>
         /// <param name="operationId">
-        /// Required. Deprecated. The server-assigned `name` of the operation.
+        /// Deprecated. The server-assigned `name` of the operation.
         /// This field has been deprecated and replaced by the name field.
         /// </param>
         /// <param name="callSettings">If not null, applies overrides to this RPC call.</param>
@@ -2138,27 +2963,29 @@ namespace Google.Cloud.Container.V1
         public virtual Operation GetOperation(string projectId, string zone, string operationId, gaxgrpc::CallSettings callSettings = null) =>
             GetOperation(new GetOperationRequest
             {
-                ProjectId = gax::GaxPreconditions.CheckNotNullOrEmpty(projectId, nameof(projectId)),
-                Zone = gax::GaxPreconditions.CheckNotNullOrEmpty(zone, nameof(zone)),
-                OperationId = gax::GaxPreconditions.CheckNotNullOrEmpty(operationId, nameof(operationId)),
+#pragma warning disable CS0612
+                ProjectId = projectId ?? "",
+                Zone = zone ?? "",
+                OperationId = operationId ?? "",
+#pragma warning restore CS0612
             }, callSettings);
 
         /// <summary>
         /// Gets the specified operation.
         /// </summary>
         /// <param name="projectId">
-        /// Required. Deprecated. The Google Developers Console [project ID or project
+        /// Deprecated. The Google Developers Console [project ID or project
         /// number](https://support.google.com/cloud/answer/6158840).
         /// This field has been deprecated and replaced by the name field.
         /// </param>
         /// <param name="zone">
-        /// Required. Deprecated. The name of the Google Compute Engine
-        /// [zone](https://cloud.google.com/compute/docs/zones#available) in which the cluster
-        /// resides.
-        /// This field has been deprecated and replaced by the name field.
+        /// Deprecated. The name of the Google Compute Engine
+        /// [zone](https://cloud.google.com/compute/docs/zones#available) in which the
+        /// cluster resides. This field has been deprecated and replaced by the name
+        /// field.
         /// </param>
         /// <param name="operationId">
-        /// Required. Deprecated. The server-assigned `name` of the operation.
+        /// Deprecated. The server-assigned `name` of the operation.
         /// This field has been deprecated and replaced by the name field.
         /// </param>
         /// <param name="callSettings">If not null, applies overrides to this RPC call.</param>
@@ -2166,33 +2993,71 @@ namespace Google.Cloud.Container.V1
         public virtual stt::Task<Operation> GetOperationAsync(string projectId, string zone, string operationId, gaxgrpc::CallSettings callSettings = null) =>
             GetOperationAsync(new GetOperationRequest
             {
-                ProjectId = gax::GaxPreconditions.CheckNotNullOrEmpty(projectId, nameof(projectId)),
-                Zone = gax::GaxPreconditions.CheckNotNullOrEmpty(zone, nameof(zone)),
-                OperationId = gax::GaxPreconditions.CheckNotNullOrEmpty(operationId, nameof(operationId)),
+#pragma warning disable CS0612
+                ProjectId = projectId ?? "",
+                Zone = zone ?? "",
+                OperationId = operationId ?? "",
+#pragma warning restore CS0612
             }, callSettings);
 
         /// <summary>
         /// Gets the specified operation.
         /// </summary>
         /// <param name="projectId">
-        /// Required. Deprecated. The Google Developers Console [project ID or project
+        /// Deprecated. The Google Developers Console [project ID or project
         /// number](https://support.google.com/cloud/answer/6158840).
         /// This field has been deprecated and replaced by the name field.
         /// </param>
         /// <param name="zone">
-        /// Required. Deprecated. The name of the Google Compute Engine
-        /// [zone](https://cloud.google.com/compute/docs/zones#available) in which the cluster
-        /// resides.
-        /// This field has been deprecated and replaced by the name field.
+        /// Deprecated. The name of the Google Compute Engine
+        /// [zone](https://cloud.google.com/compute/docs/zones#available) in which the
+        /// cluster resides. This field has been deprecated and replaced by the name
+        /// field.
         /// </param>
         /// <param name="operationId">
-        /// Required. Deprecated. The server-assigned `name` of the operation.
+        /// Deprecated. The server-assigned `name` of the operation.
         /// This field has been deprecated and replaced by the name field.
         /// </param>
         /// <param name="cancellationToken">A <see cref="st::CancellationToken"/> to use for this RPC.</param>
         /// <returns>A Task containing the RPC response.</returns>
         public virtual stt::Task<Operation> GetOperationAsync(string projectId, string zone, string operationId, st::CancellationToken cancellationToken) =>
             GetOperationAsync(projectId, zone, operationId, gaxgrpc::CallSettings.FromCancellationToken(cancellationToken));
+
+        /// <summary>
+        /// Gets the specified operation.
+        /// </summary>
+        /// <param name="name">
+        /// The name (project, location, operation id) of the operation to get.
+        /// Specified in the format `projects/*/locations/*/operations/*`.
+        /// </param>
+        /// <param name="callSettings">If not null, applies overrides to this RPC call.</param>
+        /// <returns>The RPC response.</returns>
+        public virtual Operation GetOperation(string name, gaxgrpc::CallSettings callSettings = null) =>
+            GetOperation(new GetOperationRequest { Name = name ?? "", }, callSettings);
+
+        /// <summary>
+        /// Gets the specified operation.
+        /// </summary>
+        /// <param name="name">
+        /// The name (project, location, operation id) of the operation to get.
+        /// Specified in the format `projects/*/locations/*/operations/*`.
+        /// </param>
+        /// <param name="callSettings">If not null, applies overrides to this RPC call.</param>
+        /// <returns>A Task containing the RPC response.</returns>
+        public virtual stt::Task<Operation> GetOperationAsync(string name, gaxgrpc::CallSettings callSettings = null) =>
+            GetOperationAsync(new GetOperationRequest { Name = name ?? "", }, callSettings);
+
+        /// <summary>
+        /// Gets the specified operation.
+        /// </summary>
+        /// <param name="name">
+        /// The name (project, location, operation id) of the operation to get.
+        /// Specified in the format `projects/*/locations/*/operations/*`.
+        /// </param>
+        /// <param name="cancellationToken">A <see cref="st::CancellationToken"/> to use for this RPC.</param>
+        /// <returns>A Task containing the RPC response.</returns>
+        public virtual stt::Task<Operation> GetOperationAsync(string name, st::CancellationToken cancellationToken) =>
+            GetOperationAsync(name, gaxgrpc::CallSettings.FromCancellationToken(cancellationToken));
 
         /// <summary>
         /// Cancels the specified operation.
@@ -2225,17 +3090,18 @@ namespace Google.Cloud.Container.V1
         /// Cancels the specified operation.
         /// </summary>
         /// <param name="projectId">
-        /// Required. Deprecated. The Google Developers Console [project ID or project
+        /// Deprecated. The Google Developers Console [project ID or project
         /// number](https://support.google.com/cloud/answer/6158840).
         /// This field has been deprecated and replaced by the name field.
         /// </param>
         /// <param name="zone">
-        /// Required. Deprecated. The name of the Google Compute Engine
-        /// [zone](https://cloud.google.com/compute/docs/zones#available) in which the operation resides.
-        /// This field has been deprecated and replaced by the name field.
+        /// Deprecated. The name of the Google Compute Engine
+        /// [zone](https://cloud.google.com/compute/docs/zones#available) in which the
+        /// operation resides. This field has been deprecated and replaced by the name
+        /// field.
         /// </param>
         /// <param name="operationId">
-        /// Required. Deprecated. The server-assigned `name` of the operation.
+        /// Deprecated. The server-assigned `name` of the operation.
         /// This field has been deprecated and replaced by the name field.
         /// </param>
         /// <param name="callSettings">If not null, applies overrides to this RPC call.</param>
@@ -2243,26 +3109,29 @@ namespace Google.Cloud.Container.V1
         public virtual void CancelOperation(string projectId, string zone, string operationId, gaxgrpc::CallSettings callSettings = null) =>
             CancelOperation(new CancelOperationRequest
             {
-                ProjectId = gax::GaxPreconditions.CheckNotNullOrEmpty(projectId, nameof(projectId)),
-                Zone = gax::GaxPreconditions.CheckNotNullOrEmpty(zone, nameof(zone)),
-                OperationId = gax::GaxPreconditions.CheckNotNullOrEmpty(operationId, nameof(operationId)),
+#pragma warning disable CS0612
+                ProjectId = projectId ?? "",
+                Zone = zone ?? "",
+                OperationId = operationId ?? "",
+#pragma warning restore CS0612
             }, callSettings);
 
         /// <summary>
         /// Cancels the specified operation.
         /// </summary>
         /// <param name="projectId">
-        /// Required. Deprecated. The Google Developers Console [project ID or project
+        /// Deprecated. The Google Developers Console [project ID or project
         /// number](https://support.google.com/cloud/answer/6158840).
         /// This field has been deprecated and replaced by the name field.
         /// </param>
         /// <param name="zone">
-        /// Required. Deprecated. The name of the Google Compute Engine
-        /// [zone](https://cloud.google.com/compute/docs/zones#available) in which the operation resides.
-        /// This field has been deprecated and replaced by the name field.
+        /// Deprecated. The name of the Google Compute Engine
+        /// [zone](https://cloud.google.com/compute/docs/zones#available) in which the
+        /// operation resides. This field has been deprecated and replaced by the name
+        /// field.
         /// </param>
         /// <param name="operationId">
-        /// Required. Deprecated. The server-assigned `name` of the operation.
+        /// Deprecated. The server-assigned `name` of the operation.
         /// This field has been deprecated and replaced by the name field.
         /// </param>
         /// <param name="callSettings">If not null, applies overrides to this RPC call.</param>
@@ -2270,32 +3139,71 @@ namespace Google.Cloud.Container.V1
         public virtual stt::Task CancelOperationAsync(string projectId, string zone, string operationId, gaxgrpc::CallSettings callSettings = null) =>
             CancelOperationAsync(new CancelOperationRequest
             {
-                ProjectId = gax::GaxPreconditions.CheckNotNullOrEmpty(projectId, nameof(projectId)),
-                Zone = gax::GaxPreconditions.CheckNotNullOrEmpty(zone, nameof(zone)),
-                OperationId = gax::GaxPreconditions.CheckNotNullOrEmpty(operationId, nameof(operationId)),
+#pragma warning disable CS0612
+                ProjectId = projectId ?? "",
+                Zone = zone ?? "",
+                OperationId = operationId ?? "",
+#pragma warning restore CS0612
             }, callSettings);
 
         /// <summary>
         /// Cancels the specified operation.
         /// </summary>
         /// <param name="projectId">
-        /// Required. Deprecated. The Google Developers Console [project ID or project
+        /// Deprecated. The Google Developers Console [project ID or project
         /// number](https://support.google.com/cloud/answer/6158840).
         /// This field has been deprecated and replaced by the name field.
         /// </param>
         /// <param name="zone">
-        /// Required. Deprecated. The name of the Google Compute Engine
-        /// [zone](https://cloud.google.com/compute/docs/zones#available) in which the operation resides.
-        /// This field has been deprecated and replaced by the name field.
+        /// Deprecated. The name of the Google Compute Engine
+        /// [zone](https://cloud.google.com/compute/docs/zones#available) in which the
+        /// operation resides. This field has been deprecated and replaced by the name
+        /// field.
         /// </param>
         /// <param name="operationId">
-        /// Required. Deprecated. The server-assigned `name` of the operation.
+        /// Deprecated. The server-assigned `name` of the operation.
         /// This field has been deprecated and replaced by the name field.
         /// </param>
         /// <param name="cancellationToken">A <see cref="st::CancellationToken"/> to use for this RPC.</param>
         /// <returns>A Task containing the RPC response.</returns>
         public virtual stt::Task CancelOperationAsync(string projectId, string zone, string operationId, st::CancellationToken cancellationToken) =>
             CancelOperationAsync(projectId, zone, operationId, gaxgrpc::CallSettings.FromCancellationToken(cancellationToken));
+
+        /// <summary>
+        /// Cancels the specified operation.
+        /// </summary>
+        /// <param name="name">
+        /// The name (project, location, operation id) of the operation to cancel.
+        /// Specified in the format `projects/*/locations/*/operations/*`.
+        /// </param>
+        /// <param name="callSettings">If not null, applies overrides to this RPC call.</param>
+        /// <returns>The RPC response.</returns>
+        public virtual void CancelOperation(string name, gaxgrpc::CallSettings callSettings = null) =>
+            CancelOperation(new CancelOperationRequest { Name = name ?? "", }, callSettings);
+
+        /// <summary>
+        /// Cancels the specified operation.
+        /// </summary>
+        /// <param name="name">
+        /// The name (project, location, operation id) of the operation to cancel.
+        /// Specified in the format `projects/*/locations/*/operations/*`.
+        /// </param>
+        /// <param name="callSettings">If not null, applies overrides to this RPC call.</param>
+        /// <returns>A Task containing the RPC response.</returns>
+        public virtual stt::Task CancelOperationAsync(string name, gaxgrpc::CallSettings callSettings = null) =>
+            CancelOperationAsync(new CancelOperationRequest { Name = name ?? "", }, callSettings);
+
+        /// <summary>
+        /// Cancels the specified operation.
+        /// </summary>
+        /// <param name="name">
+        /// The name (project, location, operation id) of the operation to cancel.
+        /// Specified in the format `projects/*/locations/*/operations/*`.
+        /// </param>
+        /// <param name="cancellationToken">A <see cref="st::CancellationToken"/> to use for this RPC.</param>
+        /// <returns>A Task containing the RPC response.</returns>
+        public virtual stt::Task CancelOperationAsync(string name, st::CancellationToken cancellationToken) =>
+            CancelOperationAsync(name, gaxgrpc::CallSettings.FromCancellationToken(cancellationToken));
 
         /// <summary>
         /// Returns configuration info about the Google Kubernetes Engine service.
@@ -2328,63 +3236,142 @@ namespace Google.Cloud.Container.V1
         /// Returns configuration info about the Google Kubernetes Engine service.
         /// </summary>
         /// <param name="projectId">
-        /// Required. Deprecated. The Google Developers Console [project ID or project
+        /// Deprecated. The Google Developers Console [project ID or project
         /// number](https://support.google.com/cloud/answer/6158840).
         /// This field has been deprecated and replaced by the name field.
         /// </param>
         /// <param name="zone">
-        /// Required. Deprecated. The name of the Google Compute Engine
-        /// [zone](https://cloud.google.com/compute/docs/zones#available) to return operations for.
-        /// This field has been deprecated and replaced by the name field.
+        /// Deprecated. The name of the Google Compute Engine
+        /// [zone](https://cloud.google.com/compute/docs/zones#available) to return
+        /// operations for. This field has been deprecated and replaced by the name
+        /// field.
         /// </param>
         /// <param name="callSettings">If not null, applies overrides to this RPC call.</param>
         /// <returns>The RPC response.</returns>
         public virtual ServerConfig GetServerConfig(string projectId, string zone, gaxgrpc::CallSettings callSettings = null) =>
             GetServerConfig(new GetServerConfigRequest
             {
-                ProjectId = gax::GaxPreconditions.CheckNotNullOrEmpty(projectId, nameof(projectId)),
-                Zone = gax::GaxPreconditions.CheckNotNullOrEmpty(zone, nameof(zone)),
+#pragma warning disable CS0612
+                ProjectId = projectId ?? "",
+                Zone = zone ?? "",
+#pragma warning restore CS0612
             }, callSettings);
 
         /// <summary>
         /// Returns configuration info about the Google Kubernetes Engine service.
         /// </summary>
         /// <param name="projectId">
-        /// Required. Deprecated. The Google Developers Console [project ID or project
+        /// Deprecated. The Google Developers Console [project ID or project
         /// number](https://support.google.com/cloud/answer/6158840).
         /// This field has been deprecated and replaced by the name field.
         /// </param>
         /// <param name="zone">
-        /// Required. Deprecated. The name of the Google Compute Engine
-        /// [zone](https://cloud.google.com/compute/docs/zones#available) to return operations for.
-        /// This field has been deprecated and replaced by the name field.
+        /// Deprecated. The name of the Google Compute Engine
+        /// [zone](https://cloud.google.com/compute/docs/zones#available) to return
+        /// operations for. This field has been deprecated and replaced by the name
+        /// field.
         /// </param>
         /// <param name="callSettings">If not null, applies overrides to this RPC call.</param>
         /// <returns>A Task containing the RPC response.</returns>
         public virtual stt::Task<ServerConfig> GetServerConfigAsync(string projectId, string zone, gaxgrpc::CallSettings callSettings = null) =>
             GetServerConfigAsync(new GetServerConfigRequest
             {
-                ProjectId = gax::GaxPreconditions.CheckNotNullOrEmpty(projectId, nameof(projectId)),
-                Zone = gax::GaxPreconditions.CheckNotNullOrEmpty(zone, nameof(zone)),
+#pragma warning disable CS0612
+                ProjectId = projectId ?? "",
+                Zone = zone ?? "",
+#pragma warning restore CS0612
             }, callSettings);
 
         /// <summary>
         /// Returns configuration info about the Google Kubernetes Engine service.
         /// </summary>
         /// <param name="projectId">
-        /// Required. Deprecated. The Google Developers Console [project ID or project
+        /// Deprecated. The Google Developers Console [project ID or project
         /// number](https://support.google.com/cloud/answer/6158840).
         /// This field has been deprecated and replaced by the name field.
         /// </param>
         /// <param name="zone">
-        /// Required. Deprecated. The name of the Google Compute Engine
-        /// [zone](https://cloud.google.com/compute/docs/zones#available) to return operations for.
-        /// This field has been deprecated and replaced by the name field.
+        /// Deprecated. The name of the Google Compute Engine
+        /// [zone](https://cloud.google.com/compute/docs/zones#available) to return
+        /// operations for. This field has been deprecated and replaced by the name
+        /// field.
         /// </param>
         /// <param name="cancellationToken">A <see cref="st::CancellationToken"/> to use for this RPC.</param>
         /// <returns>A Task containing the RPC response.</returns>
         public virtual stt::Task<ServerConfig> GetServerConfigAsync(string projectId, string zone, st::CancellationToken cancellationToken) =>
             GetServerConfigAsync(projectId, zone, gaxgrpc::CallSettings.FromCancellationToken(cancellationToken));
+
+        /// <summary>
+        /// Returns configuration info about the Google Kubernetes Engine service.
+        /// </summary>
+        /// <param name="name">
+        /// The name (project and location) of the server config to get,
+        /// specified in the format `projects/*/locations/*`.
+        /// </param>
+        /// <param name="callSettings">If not null, applies overrides to this RPC call.</param>
+        /// <returns>The RPC response.</returns>
+        public virtual ServerConfig GetServerConfig(string name, gaxgrpc::CallSettings callSettings = null) =>
+            GetServerConfig(new GetServerConfigRequest { Name = name ?? "", }, callSettings);
+
+        /// <summary>
+        /// Returns configuration info about the Google Kubernetes Engine service.
+        /// </summary>
+        /// <param name="name">
+        /// The name (project and location) of the server config to get,
+        /// specified in the format `projects/*/locations/*`.
+        /// </param>
+        /// <param name="callSettings">If not null, applies overrides to this RPC call.</param>
+        /// <returns>A Task containing the RPC response.</returns>
+        public virtual stt::Task<ServerConfig> GetServerConfigAsync(string name, gaxgrpc::CallSettings callSettings = null) =>
+            GetServerConfigAsync(new GetServerConfigRequest { Name = name ?? "", }, callSettings);
+
+        /// <summary>
+        /// Returns configuration info about the Google Kubernetes Engine service.
+        /// </summary>
+        /// <param name="name">
+        /// The name (project and location) of the server config to get,
+        /// specified in the format `projects/*/locations/*`.
+        /// </param>
+        /// <param name="cancellationToken">A <see cref="st::CancellationToken"/> to use for this RPC.</param>
+        /// <returns>A Task containing the RPC response.</returns>
+        public virtual stt::Task<ServerConfig> GetServerConfigAsync(string name, st::CancellationToken cancellationToken) =>
+            GetServerConfigAsync(name, gaxgrpc::CallSettings.FromCancellationToken(cancellationToken));
+
+        /// <summary>
+        /// Gets the public component of the cluster signing keys in
+        /// JSON Web Key format.
+        /// This API is not yet intended for general use, and is not available for all
+        /// clusters.
+        /// </summary>
+        /// <param name="request">The request object containing all of the parameters for the API call.</param>
+        /// <param name="callSettings">If not null, applies overrides to this RPC call.</param>
+        /// <returns>The RPC response.</returns>
+        public virtual GetJSONWebKeysResponse GetJSONWebKeys(GetJSONWebKeysRequest request, gaxgrpc::CallSettings callSettings = null) =>
+            throw new sys::NotImplementedException();
+
+        /// <summary>
+        /// Gets the public component of the cluster signing keys in
+        /// JSON Web Key format.
+        /// This API is not yet intended for general use, and is not available for all
+        /// clusters.
+        /// </summary>
+        /// <param name="request">The request object containing all of the parameters for the API call.</param>
+        /// <param name="callSettings">If not null, applies overrides to this RPC call.</param>
+        /// <returns>A Task containing the RPC response.</returns>
+        public virtual stt::Task<GetJSONWebKeysResponse> GetJSONWebKeysAsync(GetJSONWebKeysRequest request, gaxgrpc::CallSettings callSettings = null) =>
+            throw new sys::NotImplementedException();
+
+        /// <summary>
+        /// Gets the public component of the cluster signing keys in
+        /// JSON Web Key format.
+        /// This API is not yet intended for general use, and is not available for all
+        /// clusters.
+        /// </summary>
+        /// <param name="request">The request object containing all of the parameters for the API call.</param>
+        /// <param name="cancellationToken">A <see cref="st::CancellationToken"/> to use for this RPC.</param>
+        /// <returns>A Task containing the RPC response.</returns>
+        public virtual stt::Task<GetJSONWebKeysResponse> GetJSONWebKeysAsync(GetJSONWebKeysRequest request, st::CancellationToken cancellationToken) =>
+            GetJSONWebKeysAsync(request, gaxgrpc::CallSettings.FromCancellationToken(cancellationToken));
 
         /// <summary>
         /// Lists the node pools for a cluster.
@@ -2417,18 +3404,18 @@ namespace Google.Cloud.Container.V1
         /// Lists the node pools for a cluster.
         /// </summary>
         /// <param name="projectId">
-        /// Required. Deprecated. The Google Developers Console [project ID or project
+        /// Deprecated. The Google Developers Console [project ID or project
         /// number](https://developers.google.com/console/help/new/#projectnumber).
         /// This field has been deprecated and replaced by the parent field.
         /// </param>
         /// <param name="zone">
-        /// Required. Deprecated. The name of the Google Compute Engine
-        /// [zone](https://cloud.google.com/compute/docs/zones#available) in which the cluster
-        /// resides.
-        /// This field has been deprecated and replaced by the parent field.
+        /// Deprecated. The name of the Google Compute Engine
+        /// [zone](https://cloud.google.com/compute/docs/zones#available) in which the
+        /// cluster resides. This field has been deprecated and replaced by the parent
+        /// field.
         /// </param>
         /// <param name="clusterId">
-        /// Required. Deprecated. The name of the cluster.
+        /// Deprecated. The name of the cluster.
         /// This field has been deprecated and replaced by the parent field.
         /// </param>
         /// <param name="callSettings">If not null, applies overrides to this RPC call.</param>
@@ -2436,27 +3423,29 @@ namespace Google.Cloud.Container.V1
         public virtual ListNodePoolsResponse ListNodePools(string projectId, string zone, string clusterId, gaxgrpc::CallSettings callSettings = null) =>
             ListNodePools(new ListNodePoolsRequest
             {
-                ProjectId = gax::GaxPreconditions.CheckNotNullOrEmpty(projectId, nameof(projectId)),
-                Zone = gax::GaxPreconditions.CheckNotNullOrEmpty(zone, nameof(zone)),
-                ClusterId = gax::GaxPreconditions.CheckNotNullOrEmpty(clusterId, nameof(clusterId)),
+#pragma warning disable CS0612
+                ProjectId = projectId ?? "",
+                Zone = zone ?? "",
+                ClusterId = clusterId ?? "",
+#pragma warning restore CS0612
             }, callSettings);
 
         /// <summary>
         /// Lists the node pools for a cluster.
         /// </summary>
         /// <param name="projectId">
-        /// Required. Deprecated. The Google Developers Console [project ID or project
+        /// Deprecated. The Google Developers Console [project ID or project
         /// number](https://developers.google.com/console/help/new/#projectnumber).
         /// This field has been deprecated and replaced by the parent field.
         /// </param>
         /// <param name="zone">
-        /// Required. Deprecated. The name of the Google Compute Engine
-        /// [zone](https://cloud.google.com/compute/docs/zones#available) in which the cluster
-        /// resides.
-        /// This field has been deprecated and replaced by the parent field.
+        /// Deprecated. The name of the Google Compute Engine
+        /// [zone](https://cloud.google.com/compute/docs/zones#available) in which the
+        /// cluster resides. This field has been deprecated and replaced by the parent
+        /// field.
         /// </param>
         /// <param name="clusterId">
-        /// Required. Deprecated. The name of the cluster.
+        /// Deprecated. The name of the cluster.
         /// This field has been deprecated and replaced by the parent field.
         /// </param>
         /// <param name="callSettings">If not null, applies overrides to this RPC call.</param>
@@ -2464,33 +3453,71 @@ namespace Google.Cloud.Container.V1
         public virtual stt::Task<ListNodePoolsResponse> ListNodePoolsAsync(string projectId, string zone, string clusterId, gaxgrpc::CallSettings callSettings = null) =>
             ListNodePoolsAsync(new ListNodePoolsRequest
             {
-                ProjectId = gax::GaxPreconditions.CheckNotNullOrEmpty(projectId, nameof(projectId)),
-                Zone = gax::GaxPreconditions.CheckNotNullOrEmpty(zone, nameof(zone)),
-                ClusterId = gax::GaxPreconditions.CheckNotNullOrEmpty(clusterId, nameof(clusterId)),
+#pragma warning disable CS0612
+                ProjectId = projectId ?? "",
+                Zone = zone ?? "",
+                ClusterId = clusterId ?? "",
+#pragma warning restore CS0612
             }, callSettings);
 
         /// <summary>
         /// Lists the node pools for a cluster.
         /// </summary>
         /// <param name="projectId">
-        /// Required. Deprecated. The Google Developers Console [project ID or project
+        /// Deprecated. The Google Developers Console [project ID or project
         /// number](https://developers.google.com/console/help/new/#projectnumber).
         /// This field has been deprecated and replaced by the parent field.
         /// </param>
         /// <param name="zone">
-        /// Required. Deprecated. The name of the Google Compute Engine
-        /// [zone](https://cloud.google.com/compute/docs/zones#available) in which the cluster
-        /// resides.
-        /// This field has been deprecated and replaced by the parent field.
+        /// Deprecated. The name of the Google Compute Engine
+        /// [zone](https://cloud.google.com/compute/docs/zones#available) in which the
+        /// cluster resides. This field has been deprecated and replaced by the parent
+        /// field.
         /// </param>
         /// <param name="clusterId">
-        /// Required. Deprecated. The name of the cluster.
+        /// Deprecated. The name of the cluster.
         /// This field has been deprecated and replaced by the parent field.
         /// </param>
         /// <param name="cancellationToken">A <see cref="st::CancellationToken"/> to use for this RPC.</param>
         /// <returns>A Task containing the RPC response.</returns>
         public virtual stt::Task<ListNodePoolsResponse> ListNodePoolsAsync(string projectId, string zone, string clusterId, st::CancellationToken cancellationToken) =>
             ListNodePoolsAsync(projectId, zone, clusterId, gaxgrpc::CallSettings.FromCancellationToken(cancellationToken));
+
+        /// <summary>
+        /// Lists the node pools for a cluster.
+        /// </summary>
+        /// <param name="parent">
+        /// The parent (project, location, cluster id) where the node pools will be
+        /// listed. Specified in the format `projects/*/locations/*/clusters/*`.
+        /// </param>
+        /// <param name="callSettings">If not null, applies overrides to this RPC call.</param>
+        /// <returns>The RPC response.</returns>
+        public virtual ListNodePoolsResponse ListNodePools(string parent, gaxgrpc::CallSettings callSettings = null) =>
+            ListNodePools(new ListNodePoolsRequest { Parent = parent ?? "", }, callSettings);
+
+        /// <summary>
+        /// Lists the node pools for a cluster.
+        /// </summary>
+        /// <param name="parent">
+        /// The parent (project, location, cluster id) where the node pools will be
+        /// listed. Specified in the format `projects/*/locations/*/clusters/*`.
+        /// </param>
+        /// <param name="callSettings">If not null, applies overrides to this RPC call.</param>
+        /// <returns>A Task containing the RPC response.</returns>
+        public virtual stt::Task<ListNodePoolsResponse> ListNodePoolsAsync(string parent, gaxgrpc::CallSettings callSettings = null) =>
+            ListNodePoolsAsync(new ListNodePoolsRequest { Parent = parent ?? "", }, callSettings);
+
+        /// <summary>
+        /// Lists the node pools for a cluster.
+        /// </summary>
+        /// <param name="parent">
+        /// The parent (project, location, cluster id) where the node pools will be
+        /// listed. Specified in the format `projects/*/locations/*/clusters/*`.
+        /// </param>
+        /// <param name="cancellationToken">A <see cref="st::CancellationToken"/> to use for this RPC.</param>
+        /// <returns>A Task containing the RPC response.</returns>
+        public virtual stt::Task<ListNodePoolsResponse> ListNodePoolsAsync(string parent, st::CancellationToken cancellationToken) =>
+            ListNodePoolsAsync(parent, gaxgrpc::CallSettings.FromCancellationToken(cancellationToken));
 
         /// <summary>
         /// Retrieves the requested node pool.
@@ -2523,22 +3550,22 @@ namespace Google.Cloud.Container.V1
         /// Retrieves the requested node pool.
         /// </summary>
         /// <param name="projectId">
-        /// Required. Deprecated. The Google Developers Console [project ID or project
+        /// Deprecated. The Google Developers Console [project ID or project
         /// number](https://developers.google.com/console/help/new/#projectnumber).
         /// This field has been deprecated and replaced by the name field.
         /// </param>
         /// <param name="zone">
-        /// Required. Deprecated. The name of the Google Compute Engine
-        /// [zone](https://cloud.google.com/compute/docs/zones#available) in which the cluster
-        /// resides.
-        /// This field has been deprecated and replaced by the name field.
+        /// Deprecated. The name of the Google Compute Engine
+        /// [zone](https://cloud.google.com/compute/docs/zones#available) in which the
+        /// cluster resides. This field has been deprecated and replaced by the name
+        /// field.
         /// </param>
         /// <param name="clusterId">
-        /// Required. Deprecated. The name of the cluster.
+        /// Deprecated. The name of the cluster.
         /// This field has been deprecated and replaced by the name field.
         /// </param>
         /// <param name="nodePoolId">
-        /// Required. Deprecated. The name of the node pool.
+        /// Deprecated. The name of the node pool.
         /// This field has been deprecated and replaced by the name field.
         /// </param>
         /// <param name="callSettings">If not null, applies overrides to this RPC call.</param>
@@ -2546,32 +3573,34 @@ namespace Google.Cloud.Container.V1
         public virtual NodePool GetNodePool(string projectId, string zone, string clusterId, string nodePoolId, gaxgrpc::CallSettings callSettings = null) =>
             GetNodePool(new GetNodePoolRequest
             {
-                ProjectId = gax::GaxPreconditions.CheckNotNullOrEmpty(projectId, nameof(projectId)),
-                Zone = gax::GaxPreconditions.CheckNotNullOrEmpty(zone, nameof(zone)),
-                ClusterId = gax::GaxPreconditions.CheckNotNullOrEmpty(clusterId, nameof(clusterId)),
-                NodePoolId = gax::GaxPreconditions.CheckNotNullOrEmpty(nodePoolId, nameof(nodePoolId)),
+#pragma warning disable CS0612
+                ProjectId = projectId ?? "",
+                Zone = zone ?? "",
+                ClusterId = clusterId ?? "",
+                NodePoolId = nodePoolId ?? "",
+#pragma warning restore CS0612
             }, callSettings);
 
         /// <summary>
         /// Retrieves the requested node pool.
         /// </summary>
         /// <param name="projectId">
-        /// Required. Deprecated. The Google Developers Console [project ID or project
+        /// Deprecated. The Google Developers Console [project ID or project
         /// number](https://developers.google.com/console/help/new/#projectnumber).
         /// This field has been deprecated and replaced by the name field.
         /// </param>
         /// <param name="zone">
-        /// Required. Deprecated. The name of the Google Compute Engine
-        /// [zone](https://cloud.google.com/compute/docs/zones#available) in which the cluster
-        /// resides.
-        /// This field has been deprecated and replaced by the name field.
+        /// Deprecated. The name of the Google Compute Engine
+        /// [zone](https://cloud.google.com/compute/docs/zones#available) in which the
+        /// cluster resides. This field has been deprecated and replaced by the name
+        /// field.
         /// </param>
         /// <param name="clusterId">
-        /// Required. Deprecated. The name of the cluster.
+        /// Deprecated. The name of the cluster.
         /// This field has been deprecated and replaced by the name field.
         /// </param>
         /// <param name="nodePoolId">
-        /// Required. Deprecated. The name of the node pool.
+        /// Deprecated. The name of the node pool.
         /// This field has been deprecated and replaced by the name field.
         /// </param>
         /// <param name="callSettings">If not null, applies overrides to this RPC call.</param>
@@ -2579,38 +3608,79 @@ namespace Google.Cloud.Container.V1
         public virtual stt::Task<NodePool> GetNodePoolAsync(string projectId, string zone, string clusterId, string nodePoolId, gaxgrpc::CallSettings callSettings = null) =>
             GetNodePoolAsync(new GetNodePoolRequest
             {
-                ProjectId = gax::GaxPreconditions.CheckNotNullOrEmpty(projectId, nameof(projectId)),
-                Zone = gax::GaxPreconditions.CheckNotNullOrEmpty(zone, nameof(zone)),
-                ClusterId = gax::GaxPreconditions.CheckNotNullOrEmpty(clusterId, nameof(clusterId)),
-                NodePoolId = gax::GaxPreconditions.CheckNotNullOrEmpty(nodePoolId, nameof(nodePoolId)),
+#pragma warning disable CS0612
+                ProjectId = projectId ?? "",
+                Zone = zone ?? "",
+                ClusterId = clusterId ?? "",
+                NodePoolId = nodePoolId ?? "",
+#pragma warning restore CS0612
             }, callSettings);
 
         /// <summary>
         /// Retrieves the requested node pool.
         /// </summary>
         /// <param name="projectId">
-        /// Required. Deprecated. The Google Developers Console [project ID or project
+        /// Deprecated. The Google Developers Console [project ID or project
         /// number](https://developers.google.com/console/help/new/#projectnumber).
         /// This field has been deprecated and replaced by the name field.
         /// </param>
         /// <param name="zone">
-        /// Required. Deprecated. The name of the Google Compute Engine
-        /// [zone](https://cloud.google.com/compute/docs/zones#available) in which the cluster
-        /// resides.
-        /// This field has been deprecated and replaced by the name field.
+        /// Deprecated. The name of the Google Compute Engine
+        /// [zone](https://cloud.google.com/compute/docs/zones#available) in which the
+        /// cluster resides. This field has been deprecated and replaced by the name
+        /// field.
         /// </param>
         /// <param name="clusterId">
-        /// Required. Deprecated. The name of the cluster.
+        /// Deprecated. The name of the cluster.
         /// This field has been deprecated and replaced by the name field.
         /// </param>
         /// <param name="nodePoolId">
-        /// Required. Deprecated. The name of the node pool.
+        /// Deprecated. The name of the node pool.
         /// This field has been deprecated and replaced by the name field.
         /// </param>
         /// <param name="cancellationToken">A <see cref="st::CancellationToken"/> to use for this RPC.</param>
         /// <returns>A Task containing the RPC response.</returns>
         public virtual stt::Task<NodePool> GetNodePoolAsync(string projectId, string zone, string clusterId, string nodePoolId, st::CancellationToken cancellationToken) =>
             GetNodePoolAsync(projectId, zone, clusterId, nodePoolId, gaxgrpc::CallSettings.FromCancellationToken(cancellationToken));
+
+        /// <summary>
+        /// Retrieves the requested node pool.
+        /// </summary>
+        /// <param name="name">
+        /// The name (project, location, cluster, node pool id) of the node pool to
+        /// get. Specified in the format
+        /// `projects/*/locations/*/clusters/*/nodePools/*`.
+        /// </param>
+        /// <param name="callSettings">If not null, applies overrides to this RPC call.</param>
+        /// <returns>The RPC response.</returns>
+        public virtual NodePool GetNodePool(string name, gaxgrpc::CallSettings callSettings = null) =>
+            GetNodePool(new GetNodePoolRequest { Name = name ?? "", }, callSettings);
+
+        /// <summary>
+        /// Retrieves the requested node pool.
+        /// </summary>
+        /// <param name="name">
+        /// The name (project, location, cluster, node pool id) of the node pool to
+        /// get. Specified in the format
+        /// `projects/*/locations/*/clusters/*/nodePools/*`.
+        /// </param>
+        /// <param name="callSettings">If not null, applies overrides to this RPC call.</param>
+        /// <returns>A Task containing the RPC response.</returns>
+        public virtual stt::Task<NodePool> GetNodePoolAsync(string name, gaxgrpc::CallSettings callSettings = null) =>
+            GetNodePoolAsync(new GetNodePoolRequest { Name = name ?? "", }, callSettings);
+
+        /// <summary>
+        /// Retrieves the requested node pool.
+        /// </summary>
+        /// <param name="name">
+        /// The name (project, location, cluster, node pool id) of the node pool to
+        /// get. Specified in the format
+        /// `projects/*/locations/*/clusters/*/nodePools/*`.
+        /// </param>
+        /// <param name="cancellationToken">A <see cref="st::CancellationToken"/> to use for this RPC.</param>
+        /// <returns>A Task containing the RPC response.</returns>
+        public virtual stt::Task<NodePool> GetNodePoolAsync(string name, st::CancellationToken cancellationToken) =>
+            GetNodePoolAsync(name, gaxgrpc::CallSettings.FromCancellationToken(cancellationToken));
 
         /// <summary>
         /// Creates a node pool for a cluster.
@@ -2643,18 +3713,18 @@ namespace Google.Cloud.Container.V1
         /// Creates a node pool for a cluster.
         /// </summary>
         /// <param name="projectId">
-        /// Required. Deprecated. The Google Developers Console [project ID or project
+        /// Deprecated. The Google Developers Console [project ID or project
         /// number](https://developers.google.com/console/help/new/#projectnumber).
         /// This field has been deprecated and replaced by the parent field.
         /// </param>
         /// <param name="zone">
-        /// Required. Deprecated. The name of the Google Compute Engine
-        /// [zone](https://cloud.google.com/compute/docs/zones#available) in which the cluster
-        /// resides.
-        /// This field has been deprecated and replaced by the parent field.
+        /// Deprecated. The name of the Google Compute Engine
+        /// [zone](https://cloud.google.com/compute/docs/zones#available) in which the
+        /// cluster resides. This field has been deprecated and replaced by the parent
+        /// field.
         /// </param>
         /// <param name="clusterId">
-        /// Required. Deprecated. The name of the cluster.
+        /// Deprecated. The name of the cluster.
         /// This field has been deprecated and replaced by the parent field.
         /// </param>
         /// <param name="nodePool">
@@ -2665,9 +3735,11 @@ namespace Google.Cloud.Container.V1
         public virtual Operation CreateNodePool(string projectId, string zone, string clusterId, NodePool nodePool, gaxgrpc::CallSettings callSettings = null) =>
             CreateNodePool(new CreateNodePoolRequest
             {
-                ProjectId = gax::GaxPreconditions.CheckNotNullOrEmpty(projectId, nameof(projectId)),
-                Zone = gax::GaxPreconditions.CheckNotNullOrEmpty(zone, nameof(zone)),
-                ClusterId = gax::GaxPreconditions.CheckNotNullOrEmpty(clusterId, nameof(clusterId)),
+#pragma warning disable CS0612
+                ProjectId = projectId ?? "",
+                Zone = zone ?? "",
+                ClusterId = clusterId ?? "",
+#pragma warning restore CS0612
                 NodePool = gax::GaxPreconditions.CheckNotNull(nodePool, nameof(nodePool)),
             }, callSettings);
 
@@ -2675,18 +3747,18 @@ namespace Google.Cloud.Container.V1
         /// Creates a node pool for a cluster.
         /// </summary>
         /// <param name="projectId">
-        /// Required. Deprecated. The Google Developers Console [project ID or project
+        /// Deprecated. The Google Developers Console [project ID or project
         /// number](https://developers.google.com/console/help/new/#projectnumber).
         /// This field has been deprecated and replaced by the parent field.
         /// </param>
         /// <param name="zone">
-        /// Required. Deprecated. The name of the Google Compute Engine
-        /// [zone](https://cloud.google.com/compute/docs/zones#available) in which the cluster
-        /// resides.
-        /// This field has been deprecated and replaced by the parent field.
+        /// Deprecated. The name of the Google Compute Engine
+        /// [zone](https://cloud.google.com/compute/docs/zones#available) in which the
+        /// cluster resides. This field has been deprecated and replaced by the parent
+        /// field.
         /// </param>
         /// <param name="clusterId">
-        /// Required. Deprecated. The name of the cluster.
+        /// Deprecated. The name of the cluster.
         /// This field has been deprecated and replaced by the parent field.
         /// </param>
         /// <param name="nodePool">
@@ -2697,9 +3769,11 @@ namespace Google.Cloud.Container.V1
         public virtual stt::Task<Operation> CreateNodePoolAsync(string projectId, string zone, string clusterId, NodePool nodePool, gaxgrpc::CallSettings callSettings = null) =>
             CreateNodePoolAsync(new CreateNodePoolRequest
             {
-                ProjectId = gax::GaxPreconditions.CheckNotNullOrEmpty(projectId, nameof(projectId)),
-                Zone = gax::GaxPreconditions.CheckNotNullOrEmpty(zone, nameof(zone)),
-                ClusterId = gax::GaxPreconditions.CheckNotNullOrEmpty(clusterId, nameof(clusterId)),
+#pragma warning disable CS0612
+                ProjectId = projectId ?? "",
+                Zone = zone ?? "",
+                ClusterId = clusterId ?? "",
+#pragma warning restore CS0612
                 NodePool = gax::GaxPreconditions.CheckNotNull(nodePool, nameof(nodePool)),
             }, callSettings);
 
@@ -2707,18 +3781,18 @@ namespace Google.Cloud.Container.V1
         /// Creates a node pool for a cluster.
         /// </summary>
         /// <param name="projectId">
-        /// Required. Deprecated. The Google Developers Console [project ID or project
+        /// Deprecated. The Google Developers Console [project ID or project
         /// number](https://developers.google.com/console/help/new/#projectnumber).
         /// This field has been deprecated and replaced by the parent field.
         /// </param>
         /// <param name="zone">
-        /// Required. Deprecated. The name of the Google Compute Engine
-        /// [zone](https://cloud.google.com/compute/docs/zones#available) in which the cluster
-        /// resides.
-        /// This field has been deprecated and replaced by the parent field.
+        /// Deprecated. The name of the Google Compute Engine
+        /// [zone](https://cloud.google.com/compute/docs/zones#available) in which the
+        /// cluster resides. This field has been deprecated and replaced by the parent
+        /// field.
         /// </param>
         /// <param name="clusterId">
-        /// Required. Deprecated. The name of the cluster.
+        /// Deprecated. The name of the cluster.
         /// This field has been deprecated and replaced by the parent field.
         /// </param>
         /// <param name="nodePool">
@@ -2728,6 +3802,62 @@ namespace Google.Cloud.Container.V1
         /// <returns>A Task containing the RPC response.</returns>
         public virtual stt::Task<Operation> CreateNodePoolAsync(string projectId, string zone, string clusterId, NodePool nodePool, st::CancellationToken cancellationToken) =>
             CreateNodePoolAsync(projectId, zone, clusterId, nodePool, gaxgrpc::CallSettings.FromCancellationToken(cancellationToken));
+
+        /// <summary>
+        /// Creates a node pool for a cluster.
+        /// </summary>
+        /// <param name="parent">
+        /// The parent (project, location, cluster id) where the node pool will be
+        /// created. Specified in the format
+        /// `projects/*/locations/*/clusters/*`.
+        /// </param>
+        /// <param name="nodePool">
+        /// Required. The node pool to create.
+        /// </param>
+        /// <param name="callSettings">If not null, applies overrides to this RPC call.</param>
+        /// <returns>The RPC response.</returns>
+        public virtual Operation CreateNodePool(string parent, NodePool nodePool, gaxgrpc::CallSettings callSettings = null) =>
+            CreateNodePool(new CreateNodePoolRequest
+            {
+                NodePool = gax::GaxPreconditions.CheckNotNull(nodePool, nameof(nodePool)),
+                Parent = parent ?? "",
+            }, callSettings);
+
+        /// <summary>
+        /// Creates a node pool for a cluster.
+        /// </summary>
+        /// <param name="parent">
+        /// The parent (project, location, cluster id) where the node pool will be
+        /// created. Specified in the format
+        /// `projects/*/locations/*/clusters/*`.
+        /// </param>
+        /// <param name="nodePool">
+        /// Required. The node pool to create.
+        /// </param>
+        /// <param name="callSettings">If not null, applies overrides to this RPC call.</param>
+        /// <returns>A Task containing the RPC response.</returns>
+        public virtual stt::Task<Operation> CreateNodePoolAsync(string parent, NodePool nodePool, gaxgrpc::CallSettings callSettings = null) =>
+            CreateNodePoolAsync(new CreateNodePoolRequest
+            {
+                NodePool = gax::GaxPreconditions.CheckNotNull(nodePool, nameof(nodePool)),
+                Parent = parent ?? "",
+            }, callSettings);
+
+        /// <summary>
+        /// Creates a node pool for a cluster.
+        /// </summary>
+        /// <param name="parent">
+        /// The parent (project, location, cluster id) where the node pool will be
+        /// created. Specified in the format
+        /// `projects/*/locations/*/clusters/*`.
+        /// </param>
+        /// <param name="nodePool">
+        /// Required. The node pool to create.
+        /// </param>
+        /// <param name="cancellationToken">A <see cref="st::CancellationToken"/> to use for this RPC.</param>
+        /// <returns>A Task containing the RPC response.</returns>
+        public virtual stt::Task<Operation> CreateNodePoolAsync(string parent, NodePool nodePool, st::CancellationToken cancellationToken) =>
+            CreateNodePoolAsync(parent, nodePool, gaxgrpc::CallSettings.FromCancellationToken(cancellationToken));
 
         /// <summary>
         /// Deletes a node pool from a cluster.
@@ -2760,22 +3890,22 @@ namespace Google.Cloud.Container.V1
         /// Deletes a node pool from a cluster.
         /// </summary>
         /// <param name="projectId">
-        /// Required. Deprecated. The Google Developers Console [project ID or project
+        /// Deprecated. The Google Developers Console [project ID or project
         /// number](https://developers.google.com/console/help/new/#projectnumber).
         /// This field has been deprecated and replaced by the name field.
         /// </param>
         /// <param name="zone">
-        /// Required. Deprecated. The name of the Google Compute Engine
-        /// [zone](https://cloud.google.com/compute/docs/zones#available) in which the cluster
-        /// resides.
-        /// This field has been deprecated and replaced by the name field.
+        /// Deprecated. The name of the Google Compute Engine
+        /// [zone](https://cloud.google.com/compute/docs/zones#available) in which the
+        /// cluster resides. This field has been deprecated and replaced by the name
+        /// field.
         /// </param>
         /// <param name="clusterId">
-        /// Required. Deprecated. The name of the cluster.
+        /// Deprecated. The name of the cluster.
         /// This field has been deprecated and replaced by the name field.
         /// </param>
         /// <param name="nodePoolId">
-        /// Required. Deprecated. The name of the node pool to delete.
+        /// Deprecated. The name of the node pool to delete.
         /// This field has been deprecated and replaced by the name field.
         /// </param>
         /// <param name="callSettings">If not null, applies overrides to this RPC call.</param>
@@ -2783,32 +3913,34 @@ namespace Google.Cloud.Container.V1
         public virtual Operation DeleteNodePool(string projectId, string zone, string clusterId, string nodePoolId, gaxgrpc::CallSettings callSettings = null) =>
             DeleteNodePool(new DeleteNodePoolRequest
             {
-                ProjectId = gax::GaxPreconditions.CheckNotNullOrEmpty(projectId, nameof(projectId)),
-                Zone = gax::GaxPreconditions.CheckNotNullOrEmpty(zone, nameof(zone)),
-                ClusterId = gax::GaxPreconditions.CheckNotNullOrEmpty(clusterId, nameof(clusterId)),
-                NodePoolId = gax::GaxPreconditions.CheckNotNullOrEmpty(nodePoolId, nameof(nodePoolId)),
+#pragma warning disable CS0612
+                ProjectId = projectId ?? "",
+                Zone = zone ?? "",
+                ClusterId = clusterId ?? "",
+                NodePoolId = nodePoolId ?? "",
+#pragma warning restore CS0612
             }, callSettings);
 
         /// <summary>
         /// Deletes a node pool from a cluster.
         /// </summary>
         /// <param name="projectId">
-        /// Required. Deprecated. The Google Developers Console [project ID or project
+        /// Deprecated. The Google Developers Console [project ID or project
         /// number](https://developers.google.com/console/help/new/#projectnumber).
         /// This field has been deprecated and replaced by the name field.
         /// </param>
         /// <param name="zone">
-        /// Required. Deprecated. The name of the Google Compute Engine
-        /// [zone](https://cloud.google.com/compute/docs/zones#available) in which the cluster
-        /// resides.
-        /// This field has been deprecated and replaced by the name field.
+        /// Deprecated. The name of the Google Compute Engine
+        /// [zone](https://cloud.google.com/compute/docs/zones#available) in which the
+        /// cluster resides. This field has been deprecated and replaced by the name
+        /// field.
         /// </param>
         /// <param name="clusterId">
-        /// Required. Deprecated. The name of the cluster.
+        /// Deprecated. The name of the cluster.
         /// This field has been deprecated and replaced by the name field.
         /// </param>
         /// <param name="nodePoolId">
-        /// Required. Deprecated. The name of the node pool to delete.
+        /// Deprecated. The name of the node pool to delete.
         /// This field has been deprecated and replaced by the name field.
         /// </param>
         /// <param name="callSettings">If not null, applies overrides to this RPC call.</param>
@@ -2816,38 +3948,79 @@ namespace Google.Cloud.Container.V1
         public virtual stt::Task<Operation> DeleteNodePoolAsync(string projectId, string zone, string clusterId, string nodePoolId, gaxgrpc::CallSettings callSettings = null) =>
             DeleteNodePoolAsync(new DeleteNodePoolRequest
             {
-                ProjectId = gax::GaxPreconditions.CheckNotNullOrEmpty(projectId, nameof(projectId)),
-                Zone = gax::GaxPreconditions.CheckNotNullOrEmpty(zone, nameof(zone)),
-                ClusterId = gax::GaxPreconditions.CheckNotNullOrEmpty(clusterId, nameof(clusterId)),
-                NodePoolId = gax::GaxPreconditions.CheckNotNullOrEmpty(nodePoolId, nameof(nodePoolId)),
+#pragma warning disable CS0612
+                ProjectId = projectId ?? "",
+                Zone = zone ?? "",
+                ClusterId = clusterId ?? "",
+                NodePoolId = nodePoolId ?? "",
+#pragma warning restore CS0612
             }, callSettings);
 
         /// <summary>
         /// Deletes a node pool from a cluster.
         /// </summary>
         /// <param name="projectId">
-        /// Required. Deprecated. The Google Developers Console [project ID or project
+        /// Deprecated. The Google Developers Console [project ID or project
         /// number](https://developers.google.com/console/help/new/#projectnumber).
         /// This field has been deprecated and replaced by the name field.
         /// </param>
         /// <param name="zone">
-        /// Required. Deprecated. The name of the Google Compute Engine
-        /// [zone](https://cloud.google.com/compute/docs/zones#available) in which the cluster
-        /// resides.
-        /// This field has been deprecated and replaced by the name field.
+        /// Deprecated. The name of the Google Compute Engine
+        /// [zone](https://cloud.google.com/compute/docs/zones#available) in which the
+        /// cluster resides. This field has been deprecated and replaced by the name
+        /// field.
         /// </param>
         /// <param name="clusterId">
-        /// Required. Deprecated. The name of the cluster.
+        /// Deprecated. The name of the cluster.
         /// This field has been deprecated and replaced by the name field.
         /// </param>
         /// <param name="nodePoolId">
-        /// Required. Deprecated. The name of the node pool to delete.
+        /// Deprecated. The name of the node pool to delete.
         /// This field has been deprecated and replaced by the name field.
         /// </param>
         /// <param name="cancellationToken">A <see cref="st::CancellationToken"/> to use for this RPC.</param>
         /// <returns>A Task containing the RPC response.</returns>
         public virtual stt::Task<Operation> DeleteNodePoolAsync(string projectId, string zone, string clusterId, string nodePoolId, st::CancellationToken cancellationToken) =>
             DeleteNodePoolAsync(projectId, zone, clusterId, nodePoolId, gaxgrpc::CallSettings.FromCancellationToken(cancellationToken));
+
+        /// <summary>
+        /// Deletes a node pool from a cluster.
+        /// </summary>
+        /// <param name="name">
+        /// The name (project, location, cluster, node pool id) of the node pool to
+        /// delete. Specified in the format
+        /// `projects/*/locations/*/clusters/*/nodePools/*`.
+        /// </param>
+        /// <param name="callSettings">If not null, applies overrides to this RPC call.</param>
+        /// <returns>The RPC response.</returns>
+        public virtual Operation DeleteNodePool(string name, gaxgrpc::CallSettings callSettings = null) =>
+            DeleteNodePool(new DeleteNodePoolRequest { Name = name ?? "", }, callSettings);
+
+        /// <summary>
+        /// Deletes a node pool from a cluster.
+        /// </summary>
+        /// <param name="name">
+        /// The name (project, location, cluster, node pool id) of the node pool to
+        /// delete. Specified in the format
+        /// `projects/*/locations/*/clusters/*/nodePools/*`.
+        /// </param>
+        /// <param name="callSettings">If not null, applies overrides to this RPC call.</param>
+        /// <returns>A Task containing the RPC response.</returns>
+        public virtual stt::Task<Operation> DeleteNodePoolAsync(string name, gaxgrpc::CallSettings callSettings = null) =>
+            DeleteNodePoolAsync(new DeleteNodePoolRequest { Name = name ?? "", }, callSettings);
+
+        /// <summary>
+        /// Deletes a node pool from a cluster.
+        /// </summary>
+        /// <param name="name">
+        /// The name (project, location, cluster, node pool id) of the node pool to
+        /// delete. Specified in the format
+        /// `projects/*/locations/*/clusters/*/nodePools/*`.
+        /// </param>
+        /// <param name="cancellationToken">A <see cref="st::CancellationToken"/> to use for this RPC.</param>
+        /// <returns>A Task containing the RPC response.</returns>
+        public virtual stt::Task<Operation> DeleteNodePoolAsync(string name, st::CancellationToken cancellationToken) =>
+            DeleteNodePoolAsync(name, gaxgrpc::CallSettings.FromCancellationToken(cancellationToken));
 
         /// <summary>
         /// Rolls back a previously Aborted or Failed NodePool upgrade.
@@ -2884,22 +4057,22 @@ namespace Google.Cloud.Container.V1
         /// This makes no changes if the last upgrade successfully completed.
         /// </summary>
         /// <param name="projectId">
-        /// Required. Deprecated. The Google Developers Console [project ID or project
+        /// Deprecated. The Google Developers Console [project ID or project
         /// number](https://support.google.com/cloud/answer/6158840).
         /// This field has been deprecated and replaced by the name field.
         /// </param>
         /// <param name="zone">
-        /// Required. Deprecated. The name of the Google Compute Engine
-        /// [zone](https://cloud.google.com/compute/docs/zones#available) in which the cluster
-        /// resides.
-        /// This field has been deprecated and replaced by the name field.
+        /// Deprecated. The name of the Google Compute Engine
+        /// [zone](https://cloud.google.com/compute/docs/zones#available) in which the
+        /// cluster resides. This field has been deprecated and replaced by the name
+        /// field.
         /// </param>
         /// <param name="clusterId">
-        /// Required. Deprecated. The name of the cluster to rollback.
+        /// Deprecated. The name of the cluster to rollback.
         /// This field has been deprecated and replaced by the name field.
         /// </param>
         /// <param name="nodePoolId">
-        /// Required. Deprecated. The name of the node pool to rollback.
+        /// Deprecated. The name of the node pool to rollback.
         /// This field has been deprecated and replaced by the name field.
         /// </param>
         /// <param name="callSettings">If not null, applies overrides to this RPC call.</param>
@@ -2907,10 +4080,12 @@ namespace Google.Cloud.Container.V1
         public virtual Operation RollbackNodePoolUpgrade(string projectId, string zone, string clusterId, string nodePoolId, gaxgrpc::CallSettings callSettings = null) =>
             RollbackNodePoolUpgrade(new RollbackNodePoolUpgradeRequest
             {
-                ProjectId = gax::GaxPreconditions.CheckNotNullOrEmpty(projectId, nameof(projectId)),
-                Zone = gax::GaxPreconditions.CheckNotNullOrEmpty(zone, nameof(zone)),
-                ClusterId = gax::GaxPreconditions.CheckNotNullOrEmpty(clusterId, nameof(clusterId)),
-                NodePoolId = gax::GaxPreconditions.CheckNotNullOrEmpty(nodePoolId, nameof(nodePoolId)),
+#pragma warning disable CS0612
+                ProjectId = projectId ?? "",
+                Zone = zone ?? "",
+                ClusterId = clusterId ?? "",
+                NodePoolId = nodePoolId ?? "",
+#pragma warning restore CS0612
             }, callSettings);
 
         /// <summary>
@@ -2918,22 +4093,22 @@ namespace Google.Cloud.Container.V1
         /// This makes no changes if the last upgrade successfully completed.
         /// </summary>
         /// <param name="projectId">
-        /// Required. Deprecated. The Google Developers Console [project ID or project
+        /// Deprecated. The Google Developers Console [project ID or project
         /// number](https://support.google.com/cloud/answer/6158840).
         /// This field has been deprecated and replaced by the name field.
         /// </param>
         /// <param name="zone">
-        /// Required. Deprecated. The name of the Google Compute Engine
-        /// [zone](https://cloud.google.com/compute/docs/zones#available) in which the cluster
-        /// resides.
-        /// This field has been deprecated and replaced by the name field.
+        /// Deprecated. The name of the Google Compute Engine
+        /// [zone](https://cloud.google.com/compute/docs/zones#available) in which the
+        /// cluster resides. This field has been deprecated and replaced by the name
+        /// field.
         /// </param>
         /// <param name="clusterId">
-        /// Required. Deprecated. The name of the cluster to rollback.
+        /// Deprecated. The name of the cluster to rollback.
         /// This field has been deprecated and replaced by the name field.
         /// </param>
         /// <param name="nodePoolId">
-        /// Required. Deprecated. The name of the node pool to rollback.
+        /// Deprecated. The name of the node pool to rollback.
         /// This field has been deprecated and replaced by the name field.
         /// </param>
         /// <param name="callSettings">If not null, applies overrides to this RPC call.</param>
@@ -2941,10 +4116,12 @@ namespace Google.Cloud.Container.V1
         public virtual stt::Task<Operation> RollbackNodePoolUpgradeAsync(string projectId, string zone, string clusterId, string nodePoolId, gaxgrpc::CallSettings callSettings = null) =>
             RollbackNodePoolUpgradeAsync(new RollbackNodePoolUpgradeRequest
             {
-                ProjectId = gax::GaxPreconditions.CheckNotNullOrEmpty(projectId, nameof(projectId)),
-                Zone = gax::GaxPreconditions.CheckNotNullOrEmpty(zone, nameof(zone)),
-                ClusterId = gax::GaxPreconditions.CheckNotNullOrEmpty(clusterId, nameof(clusterId)),
-                NodePoolId = gax::GaxPreconditions.CheckNotNullOrEmpty(nodePoolId, nameof(nodePoolId)),
+#pragma warning disable CS0612
+                ProjectId = projectId ?? "",
+                Zone = zone ?? "",
+                ClusterId = clusterId ?? "",
+                NodePoolId = nodePoolId ?? "",
+#pragma warning restore CS0612
             }, callSettings);
 
         /// <summary>
@@ -2952,28 +4129,70 @@ namespace Google.Cloud.Container.V1
         /// This makes no changes if the last upgrade successfully completed.
         /// </summary>
         /// <param name="projectId">
-        /// Required. Deprecated. The Google Developers Console [project ID or project
+        /// Deprecated. The Google Developers Console [project ID or project
         /// number](https://support.google.com/cloud/answer/6158840).
         /// This field has been deprecated and replaced by the name field.
         /// </param>
         /// <param name="zone">
-        /// Required. Deprecated. The name of the Google Compute Engine
-        /// [zone](https://cloud.google.com/compute/docs/zones#available) in which the cluster
-        /// resides.
-        /// This field has been deprecated and replaced by the name field.
+        /// Deprecated. The name of the Google Compute Engine
+        /// [zone](https://cloud.google.com/compute/docs/zones#available) in which the
+        /// cluster resides. This field has been deprecated and replaced by the name
+        /// field.
         /// </param>
         /// <param name="clusterId">
-        /// Required. Deprecated. The name of the cluster to rollback.
+        /// Deprecated. The name of the cluster to rollback.
         /// This field has been deprecated and replaced by the name field.
         /// </param>
         /// <param name="nodePoolId">
-        /// Required. Deprecated. The name of the node pool to rollback.
+        /// Deprecated. The name of the node pool to rollback.
         /// This field has been deprecated and replaced by the name field.
         /// </param>
         /// <param name="cancellationToken">A <see cref="st::CancellationToken"/> to use for this RPC.</param>
         /// <returns>A Task containing the RPC response.</returns>
         public virtual stt::Task<Operation> RollbackNodePoolUpgradeAsync(string projectId, string zone, string clusterId, string nodePoolId, st::CancellationToken cancellationToken) =>
             RollbackNodePoolUpgradeAsync(projectId, zone, clusterId, nodePoolId, gaxgrpc::CallSettings.FromCancellationToken(cancellationToken));
+
+        /// <summary>
+        /// Rolls back a previously Aborted or Failed NodePool upgrade.
+        /// This makes no changes if the last upgrade successfully completed.
+        /// </summary>
+        /// <param name="name">
+        /// The name (project, location, cluster, node pool id) of the node poll to
+        /// rollback upgrade.
+        /// Specified in the format `projects/*/locations/*/clusters/*/nodePools/*`.
+        /// </param>
+        /// <param name="callSettings">If not null, applies overrides to this RPC call.</param>
+        /// <returns>The RPC response.</returns>
+        public virtual Operation RollbackNodePoolUpgrade(string name, gaxgrpc::CallSettings callSettings = null) =>
+            RollbackNodePoolUpgrade(new RollbackNodePoolUpgradeRequest { Name = name ?? "", }, callSettings);
+
+        /// <summary>
+        /// Rolls back a previously Aborted or Failed NodePool upgrade.
+        /// This makes no changes if the last upgrade successfully completed.
+        /// </summary>
+        /// <param name="name">
+        /// The name (project, location, cluster, node pool id) of the node poll to
+        /// rollback upgrade.
+        /// Specified in the format `projects/*/locations/*/clusters/*/nodePools/*`.
+        /// </param>
+        /// <param name="callSettings">If not null, applies overrides to this RPC call.</param>
+        /// <returns>A Task containing the RPC response.</returns>
+        public virtual stt::Task<Operation> RollbackNodePoolUpgradeAsync(string name, gaxgrpc::CallSettings callSettings = null) =>
+            RollbackNodePoolUpgradeAsync(new RollbackNodePoolUpgradeRequest { Name = name ?? "", }, callSettings);
+
+        /// <summary>
+        /// Rolls back a previously Aborted or Failed NodePool upgrade.
+        /// This makes no changes if the last upgrade successfully completed.
+        /// </summary>
+        /// <param name="name">
+        /// The name (project, location, cluster, node pool id) of the node poll to
+        /// rollback upgrade.
+        /// Specified in the format `projects/*/locations/*/clusters/*/nodePools/*`.
+        /// </param>
+        /// <param name="cancellationToken">A <see cref="st::CancellationToken"/> to use for this RPC.</param>
+        /// <returns>A Task containing the RPC response.</returns>
+        public virtual stt::Task<Operation> RollbackNodePoolUpgradeAsync(string name, st::CancellationToken cancellationToken) =>
+            RollbackNodePoolUpgradeAsync(name, gaxgrpc::CallSettings.FromCancellationToken(cancellationToken));
 
         /// <summary>
         /// Sets the NodeManagement options for a node pool.
@@ -3060,18 +4279,18 @@ namespace Google.Cloud.Container.V1
         /// Enables or disables the ABAC authorization mechanism on a cluster.
         /// </summary>
         /// <param name="projectId">
-        /// Required. Deprecated. The Google Developers Console [project ID or project
+        /// Deprecated. The Google Developers Console [project ID or project
         /// number](https://support.google.com/cloud/answer/6158840).
         /// This field has been deprecated and replaced by the name field.
         /// </param>
         /// <param name="zone">
-        /// Required. Deprecated. The name of the Google Compute Engine
-        /// [zone](https://cloud.google.com/compute/docs/zones#available) in which the cluster
-        /// resides.
-        /// This field has been deprecated and replaced by the name field.
+        /// Deprecated. The name of the Google Compute Engine
+        /// [zone](https://cloud.google.com/compute/docs/zones#available) in which the
+        /// cluster resides. This field has been deprecated and replaced by the name
+        /// field.
         /// </param>
         /// <param name="clusterId">
-        /// Required. Deprecated. The name of the cluster to update.
+        /// Deprecated. The name of the cluster to update.
         /// This field has been deprecated and replaced by the name field.
         /// </param>
         /// <param name="enabled">
@@ -3082,9 +4301,11 @@ namespace Google.Cloud.Container.V1
         public virtual Operation SetLegacyAbac(string projectId, string zone, string clusterId, bool enabled, gaxgrpc::CallSettings callSettings = null) =>
             SetLegacyAbac(new SetLegacyAbacRequest
             {
-                ProjectId = gax::GaxPreconditions.CheckNotNullOrEmpty(projectId, nameof(projectId)),
-                Zone = gax::GaxPreconditions.CheckNotNullOrEmpty(zone, nameof(zone)),
-                ClusterId = gax::GaxPreconditions.CheckNotNullOrEmpty(clusterId, nameof(clusterId)),
+#pragma warning disable CS0612
+                ProjectId = projectId ?? "",
+                Zone = zone ?? "",
+                ClusterId = clusterId ?? "",
+#pragma warning restore CS0612
                 Enabled = enabled,
             }, callSettings);
 
@@ -3092,18 +4313,18 @@ namespace Google.Cloud.Container.V1
         /// Enables or disables the ABAC authorization mechanism on a cluster.
         /// </summary>
         /// <param name="projectId">
-        /// Required. Deprecated. The Google Developers Console [project ID or project
+        /// Deprecated. The Google Developers Console [project ID or project
         /// number](https://support.google.com/cloud/answer/6158840).
         /// This field has been deprecated and replaced by the name field.
         /// </param>
         /// <param name="zone">
-        /// Required. Deprecated. The name of the Google Compute Engine
-        /// [zone](https://cloud.google.com/compute/docs/zones#available) in which the cluster
-        /// resides.
-        /// This field has been deprecated and replaced by the name field.
+        /// Deprecated. The name of the Google Compute Engine
+        /// [zone](https://cloud.google.com/compute/docs/zones#available) in which the
+        /// cluster resides. This field has been deprecated and replaced by the name
+        /// field.
         /// </param>
         /// <param name="clusterId">
-        /// Required. Deprecated. The name of the cluster to update.
+        /// Deprecated. The name of the cluster to update.
         /// This field has been deprecated and replaced by the name field.
         /// </param>
         /// <param name="enabled">
@@ -3114,9 +4335,11 @@ namespace Google.Cloud.Container.V1
         public virtual stt::Task<Operation> SetLegacyAbacAsync(string projectId, string zone, string clusterId, bool enabled, gaxgrpc::CallSettings callSettings = null) =>
             SetLegacyAbacAsync(new SetLegacyAbacRequest
             {
-                ProjectId = gax::GaxPreconditions.CheckNotNullOrEmpty(projectId, nameof(projectId)),
-                Zone = gax::GaxPreconditions.CheckNotNullOrEmpty(zone, nameof(zone)),
-                ClusterId = gax::GaxPreconditions.CheckNotNullOrEmpty(clusterId, nameof(clusterId)),
+#pragma warning disable CS0612
+                ProjectId = projectId ?? "",
+                Zone = zone ?? "",
+                ClusterId = clusterId ?? "",
+#pragma warning restore CS0612
                 Enabled = enabled,
             }, callSettings);
 
@@ -3124,18 +4347,18 @@ namespace Google.Cloud.Container.V1
         /// Enables or disables the ABAC authorization mechanism on a cluster.
         /// </summary>
         /// <param name="projectId">
-        /// Required. Deprecated. The Google Developers Console [project ID or project
+        /// Deprecated. The Google Developers Console [project ID or project
         /// number](https://support.google.com/cloud/answer/6158840).
         /// This field has been deprecated and replaced by the name field.
         /// </param>
         /// <param name="zone">
-        /// Required. Deprecated. The name of the Google Compute Engine
-        /// [zone](https://cloud.google.com/compute/docs/zones#available) in which the cluster
-        /// resides.
-        /// This field has been deprecated and replaced by the name field.
+        /// Deprecated. The name of the Google Compute Engine
+        /// [zone](https://cloud.google.com/compute/docs/zones#available) in which the
+        /// cluster resides. This field has been deprecated and replaced by the name
+        /// field.
         /// </param>
         /// <param name="clusterId">
-        /// Required. Deprecated. The name of the cluster to update.
+        /// Deprecated. The name of the cluster to update.
         /// This field has been deprecated and replaced by the name field.
         /// </param>
         /// <param name="enabled">
@@ -3145,6 +4368,59 @@ namespace Google.Cloud.Container.V1
         /// <returns>A Task containing the RPC response.</returns>
         public virtual stt::Task<Operation> SetLegacyAbacAsync(string projectId, string zone, string clusterId, bool enabled, st::CancellationToken cancellationToken) =>
             SetLegacyAbacAsync(projectId, zone, clusterId, enabled, gaxgrpc::CallSettings.FromCancellationToken(cancellationToken));
+
+        /// <summary>
+        /// Enables or disables the ABAC authorization mechanism on a cluster.
+        /// </summary>
+        /// <param name="name">
+        /// The name (project, location, cluster id) of the cluster to set legacy abac.
+        /// Specified in the format `projects/*/locations/*/clusters/*`.
+        /// </param>
+        /// <param name="enabled">
+        /// Required. Whether ABAC authorization will be enabled in the cluster.
+        /// </param>
+        /// <param name="callSettings">If not null, applies overrides to this RPC call.</param>
+        /// <returns>The RPC response.</returns>
+        public virtual Operation SetLegacyAbac(string name, bool enabled, gaxgrpc::CallSettings callSettings = null) =>
+            SetLegacyAbac(new SetLegacyAbacRequest
+            {
+                Enabled = enabled,
+                Name = name ?? "",
+            }, callSettings);
+
+        /// <summary>
+        /// Enables or disables the ABAC authorization mechanism on a cluster.
+        /// </summary>
+        /// <param name="name">
+        /// The name (project, location, cluster id) of the cluster to set legacy abac.
+        /// Specified in the format `projects/*/locations/*/clusters/*`.
+        /// </param>
+        /// <param name="enabled">
+        /// Required. Whether ABAC authorization will be enabled in the cluster.
+        /// </param>
+        /// <param name="callSettings">If not null, applies overrides to this RPC call.</param>
+        /// <returns>A Task containing the RPC response.</returns>
+        public virtual stt::Task<Operation> SetLegacyAbacAsync(string name, bool enabled, gaxgrpc::CallSettings callSettings = null) =>
+            SetLegacyAbacAsync(new SetLegacyAbacRequest
+            {
+                Enabled = enabled,
+                Name = name ?? "",
+            }, callSettings);
+
+        /// <summary>
+        /// Enables or disables the ABAC authorization mechanism on a cluster.
+        /// </summary>
+        /// <param name="name">
+        /// The name (project, location, cluster id) of the cluster to set legacy abac.
+        /// Specified in the format `projects/*/locations/*/clusters/*`.
+        /// </param>
+        /// <param name="enabled">
+        /// Required. Whether ABAC authorization will be enabled in the cluster.
+        /// </param>
+        /// <param name="cancellationToken">A <see cref="st::CancellationToken"/> to use for this RPC.</param>
+        /// <returns>A Task containing the RPC response.</returns>
+        public virtual stt::Task<Operation> SetLegacyAbacAsync(string name, bool enabled, st::CancellationToken cancellationToken) =>
+            SetLegacyAbacAsync(name, enabled, gaxgrpc::CallSettings.FromCancellationToken(cancellationToken));
 
         /// <summary>
         /// Starts master IP rotation.
@@ -3177,18 +4453,18 @@ namespace Google.Cloud.Container.V1
         /// Starts master IP rotation.
         /// </summary>
         /// <param name="projectId">
-        /// Required. Deprecated. The Google Developers Console [project ID or project
+        /// Deprecated. The Google Developers Console [project ID or project
         /// number](https://developers.google.com/console/help/new/#projectnumber).
         /// This field has been deprecated and replaced by the name field.
         /// </param>
         /// <param name="zone">
-        /// Required. Deprecated. The name of the Google Compute Engine
-        /// [zone](https://cloud.google.com/compute/docs/zones#available) in which the cluster
-        /// resides.
-        /// This field has been deprecated and replaced by the name field.
+        /// Deprecated. The name of the Google Compute Engine
+        /// [zone](https://cloud.google.com/compute/docs/zones#available) in which the
+        /// cluster resides. This field has been deprecated and replaced by the name
+        /// field.
         /// </param>
         /// <param name="clusterId">
-        /// Required. Deprecated. The name of the cluster.
+        /// Deprecated. The name of the cluster.
         /// This field has been deprecated and replaced by the name field.
         /// </param>
         /// <param name="callSettings">If not null, applies overrides to this RPC call.</param>
@@ -3196,27 +4472,29 @@ namespace Google.Cloud.Container.V1
         public virtual Operation StartIPRotation(string projectId, string zone, string clusterId, gaxgrpc::CallSettings callSettings = null) =>
             StartIPRotation(new StartIPRotationRequest
             {
-                ProjectId = gax::GaxPreconditions.CheckNotNullOrEmpty(projectId, nameof(projectId)),
-                Zone = gax::GaxPreconditions.CheckNotNullOrEmpty(zone, nameof(zone)),
-                ClusterId = gax::GaxPreconditions.CheckNotNullOrEmpty(clusterId, nameof(clusterId)),
+#pragma warning disable CS0612
+                ProjectId = projectId ?? "",
+                Zone = zone ?? "",
+                ClusterId = clusterId ?? "",
+#pragma warning restore CS0612
             }, callSettings);
 
         /// <summary>
         /// Starts master IP rotation.
         /// </summary>
         /// <param name="projectId">
-        /// Required. Deprecated. The Google Developers Console [project ID or project
+        /// Deprecated. The Google Developers Console [project ID or project
         /// number](https://developers.google.com/console/help/new/#projectnumber).
         /// This field has been deprecated and replaced by the name field.
         /// </param>
         /// <param name="zone">
-        /// Required. Deprecated. The name of the Google Compute Engine
-        /// [zone](https://cloud.google.com/compute/docs/zones#available) in which the cluster
-        /// resides.
-        /// This field has been deprecated and replaced by the name field.
+        /// Deprecated. The name of the Google Compute Engine
+        /// [zone](https://cloud.google.com/compute/docs/zones#available) in which the
+        /// cluster resides. This field has been deprecated and replaced by the name
+        /// field.
         /// </param>
         /// <param name="clusterId">
-        /// Required. Deprecated. The name of the cluster.
+        /// Deprecated. The name of the cluster.
         /// This field has been deprecated and replaced by the name field.
         /// </param>
         /// <param name="callSettings">If not null, applies overrides to this RPC call.</param>
@@ -3224,33 +4502,71 @@ namespace Google.Cloud.Container.V1
         public virtual stt::Task<Operation> StartIPRotationAsync(string projectId, string zone, string clusterId, gaxgrpc::CallSettings callSettings = null) =>
             StartIPRotationAsync(new StartIPRotationRequest
             {
-                ProjectId = gax::GaxPreconditions.CheckNotNullOrEmpty(projectId, nameof(projectId)),
-                Zone = gax::GaxPreconditions.CheckNotNullOrEmpty(zone, nameof(zone)),
-                ClusterId = gax::GaxPreconditions.CheckNotNullOrEmpty(clusterId, nameof(clusterId)),
+#pragma warning disable CS0612
+                ProjectId = projectId ?? "",
+                Zone = zone ?? "",
+                ClusterId = clusterId ?? "",
+#pragma warning restore CS0612
             }, callSettings);
 
         /// <summary>
         /// Starts master IP rotation.
         /// </summary>
         /// <param name="projectId">
-        /// Required. Deprecated. The Google Developers Console [project ID or project
+        /// Deprecated. The Google Developers Console [project ID or project
         /// number](https://developers.google.com/console/help/new/#projectnumber).
         /// This field has been deprecated and replaced by the name field.
         /// </param>
         /// <param name="zone">
-        /// Required. Deprecated. The name of the Google Compute Engine
-        /// [zone](https://cloud.google.com/compute/docs/zones#available) in which the cluster
-        /// resides.
-        /// This field has been deprecated and replaced by the name field.
+        /// Deprecated. The name of the Google Compute Engine
+        /// [zone](https://cloud.google.com/compute/docs/zones#available) in which the
+        /// cluster resides. This field has been deprecated and replaced by the name
+        /// field.
         /// </param>
         /// <param name="clusterId">
-        /// Required. Deprecated. The name of the cluster.
+        /// Deprecated. The name of the cluster.
         /// This field has been deprecated and replaced by the name field.
         /// </param>
         /// <param name="cancellationToken">A <see cref="st::CancellationToken"/> to use for this RPC.</param>
         /// <returns>A Task containing the RPC response.</returns>
         public virtual stt::Task<Operation> StartIPRotationAsync(string projectId, string zone, string clusterId, st::CancellationToken cancellationToken) =>
             StartIPRotationAsync(projectId, zone, clusterId, gaxgrpc::CallSettings.FromCancellationToken(cancellationToken));
+
+        /// <summary>
+        /// Starts master IP rotation.
+        /// </summary>
+        /// <param name="name">
+        /// The name (project, location, cluster id) of the cluster to start IP
+        /// rotation. Specified in the format `projects/*/locations/*/clusters/*`.
+        /// </param>
+        /// <param name="callSettings">If not null, applies overrides to this RPC call.</param>
+        /// <returns>The RPC response.</returns>
+        public virtual Operation StartIPRotation(string name, gaxgrpc::CallSettings callSettings = null) =>
+            StartIPRotation(new StartIPRotationRequest { Name = name ?? "", }, callSettings);
+
+        /// <summary>
+        /// Starts master IP rotation.
+        /// </summary>
+        /// <param name="name">
+        /// The name (project, location, cluster id) of the cluster to start IP
+        /// rotation. Specified in the format `projects/*/locations/*/clusters/*`.
+        /// </param>
+        /// <param name="callSettings">If not null, applies overrides to this RPC call.</param>
+        /// <returns>A Task containing the RPC response.</returns>
+        public virtual stt::Task<Operation> StartIPRotationAsync(string name, gaxgrpc::CallSettings callSettings = null) =>
+            StartIPRotationAsync(new StartIPRotationRequest { Name = name ?? "", }, callSettings);
+
+        /// <summary>
+        /// Starts master IP rotation.
+        /// </summary>
+        /// <param name="name">
+        /// The name (project, location, cluster id) of the cluster to start IP
+        /// rotation. Specified in the format `projects/*/locations/*/clusters/*`.
+        /// </param>
+        /// <param name="cancellationToken">A <see cref="st::CancellationToken"/> to use for this RPC.</param>
+        /// <returns>A Task containing the RPC response.</returns>
+        public virtual stt::Task<Operation> StartIPRotationAsync(string name, st::CancellationToken cancellationToken) =>
+            StartIPRotationAsync(name, gaxgrpc::CallSettings.FromCancellationToken(cancellationToken));
 
         /// <summary>
         /// Completes master IP rotation.
@@ -3283,18 +4599,18 @@ namespace Google.Cloud.Container.V1
         /// Completes master IP rotation.
         /// </summary>
         /// <param name="projectId">
-        /// Required. Deprecated. The Google Developers Console [project ID or project
+        /// Deprecated. The Google Developers Console [project ID or project
         /// number](https://developers.google.com/console/help/new/#projectnumber).
         /// This field has been deprecated and replaced by the name field.
         /// </param>
         /// <param name="zone">
-        /// Required. Deprecated. The name of the Google Compute Engine
-        /// [zone](https://cloud.google.com/compute/docs/zones#available) in which the cluster
-        /// resides.
-        /// This field has been deprecated and replaced by the name field.
+        /// Deprecated. The name of the Google Compute Engine
+        /// [zone](https://cloud.google.com/compute/docs/zones#available) in which the
+        /// cluster resides. This field has been deprecated and replaced by the name
+        /// field.
         /// </param>
         /// <param name="clusterId">
-        /// Required. Deprecated. The name of the cluster.
+        /// Deprecated. The name of the cluster.
         /// This field has been deprecated and replaced by the name field.
         /// </param>
         /// <param name="callSettings">If not null, applies overrides to this RPC call.</param>
@@ -3302,27 +4618,29 @@ namespace Google.Cloud.Container.V1
         public virtual Operation CompleteIPRotation(string projectId, string zone, string clusterId, gaxgrpc::CallSettings callSettings = null) =>
             CompleteIPRotation(new CompleteIPRotationRequest
             {
-                ProjectId = gax::GaxPreconditions.CheckNotNullOrEmpty(projectId, nameof(projectId)),
-                Zone = gax::GaxPreconditions.CheckNotNullOrEmpty(zone, nameof(zone)),
-                ClusterId = gax::GaxPreconditions.CheckNotNullOrEmpty(clusterId, nameof(clusterId)),
+#pragma warning disable CS0612
+                ProjectId = projectId ?? "",
+                Zone = zone ?? "",
+                ClusterId = clusterId ?? "",
+#pragma warning restore CS0612
             }, callSettings);
 
         /// <summary>
         /// Completes master IP rotation.
         /// </summary>
         /// <param name="projectId">
-        /// Required. Deprecated. The Google Developers Console [project ID or project
+        /// Deprecated. The Google Developers Console [project ID or project
         /// number](https://developers.google.com/console/help/new/#projectnumber).
         /// This field has been deprecated and replaced by the name field.
         /// </param>
         /// <param name="zone">
-        /// Required. Deprecated. The name of the Google Compute Engine
-        /// [zone](https://cloud.google.com/compute/docs/zones#available) in which the cluster
-        /// resides.
-        /// This field has been deprecated and replaced by the name field.
+        /// Deprecated. The name of the Google Compute Engine
+        /// [zone](https://cloud.google.com/compute/docs/zones#available) in which the
+        /// cluster resides. This field has been deprecated and replaced by the name
+        /// field.
         /// </param>
         /// <param name="clusterId">
-        /// Required. Deprecated. The name of the cluster.
+        /// Deprecated. The name of the cluster.
         /// This field has been deprecated and replaced by the name field.
         /// </param>
         /// <param name="callSettings">If not null, applies overrides to this RPC call.</param>
@@ -3330,33 +4648,71 @@ namespace Google.Cloud.Container.V1
         public virtual stt::Task<Operation> CompleteIPRotationAsync(string projectId, string zone, string clusterId, gaxgrpc::CallSettings callSettings = null) =>
             CompleteIPRotationAsync(new CompleteIPRotationRequest
             {
-                ProjectId = gax::GaxPreconditions.CheckNotNullOrEmpty(projectId, nameof(projectId)),
-                Zone = gax::GaxPreconditions.CheckNotNullOrEmpty(zone, nameof(zone)),
-                ClusterId = gax::GaxPreconditions.CheckNotNullOrEmpty(clusterId, nameof(clusterId)),
+#pragma warning disable CS0612
+                ProjectId = projectId ?? "",
+                Zone = zone ?? "",
+                ClusterId = clusterId ?? "",
+#pragma warning restore CS0612
             }, callSettings);
 
         /// <summary>
         /// Completes master IP rotation.
         /// </summary>
         /// <param name="projectId">
-        /// Required. Deprecated. The Google Developers Console [project ID or project
+        /// Deprecated. The Google Developers Console [project ID or project
         /// number](https://developers.google.com/console/help/new/#projectnumber).
         /// This field has been deprecated and replaced by the name field.
         /// </param>
         /// <param name="zone">
-        /// Required. Deprecated. The name of the Google Compute Engine
-        /// [zone](https://cloud.google.com/compute/docs/zones#available) in which the cluster
-        /// resides.
-        /// This field has been deprecated and replaced by the name field.
+        /// Deprecated. The name of the Google Compute Engine
+        /// [zone](https://cloud.google.com/compute/docs/zones#available) in which the
+        /// cluster resides. This field has been deprecated and replaced by the name
+        /// field.
         /// </param>
         /// <param name="clusterId">
-        /// Required. Deprecated. The name of the cluster.
+        /// Deprecated. The name of the cluster.
         /// This field has been deprecated and replaced by the name field.
         /// </param>
         /// <param name="cancellationToken">A <see cref="st::CancellationToken"/> to use for this RPC.</param>
         /// <returns>A Task containing the RPC response.</returns>
         public virtual stt::Task<Operation> CompleteIPRotationAsync(string projectId, string zone, string clusterId, st::CancellationToken cancellationToken) =>
             CompleteIPRotationAsync(projectId, zone, clusterId, gaxgrpc::CallSettings.FromCancellationToken(cancellationToken));
+
+        /// <summary>
+        /// Completes master IP rotation.
+        /// </summary>
+        /// <param name="name">
+        /// The name (project, location, cluster id) of the cluster to complete IP
+        /// rotation. Specified in the format `projects/*/locations/*/clusters/*`.
+        /// </param>
+        /// <param name="callSettings">If not null, applies overrides to this RPC call.</param>
+        /// <returns>The RPC response.</returns>
+        public virtual Operation CompleteIPRotation(string name, gaxgrpc::CallSettings callSettings = null) =>
+            CompleteIPRotation(new CompleteIPRotationRequest { Name = name ?? "", }, callSettings);
+
+        /// <summary>
+        /// Completes master IP rotation.
+        /// </summary>
+        /// <param name="name">
+        /// The name (project, location, cluster id) of the cluster to complete IP
+        /// rotation. Specified in the format `projects/*/locations/*/clusters/*`.
+        /// </param>
+        /// <param name="callSettings">If not null, applies overrides to this RPC call.</param>
+        /// <returns>A Task containing the RPC response.</returns>
+        public virtual stt::Task<Operation> CompleteIPRotationAsync(string name, gaxgrpc::CallSettings callSettings = null) =>
+            CompleteIPRotationAsync(new CompleteIPRotationRequest { Name = name ?? "", }, callSettings);
+
+        /// <summary>
+        /// Completes master IP rotation.
+        /// </summary>
+        /// <param name="name">
+        /// The name (project, location, cluster id) of the cluster to complete IP
+        /// rotation. Specified in the format `projects/*/locations/*/clusters/*`.
+        /// </param>
+        /// <param name="cancellationToken">A <see cref="st::CancellationToken"/> to use for this RPC.</param>
+        /// <returns>A Task containing the RPC response.</returns>
+        public virtual stt::Task<Operation> CompleteIPRotationAsync(string name, st::CancellationToken cancellationToken) =>
+            CompleteIPRotationAsync(name, gaxgrpc::CallSettings.FromCancellationToken(cancellationToken));
 
         /// <summary>
         /// Sets the size for a specific node pool.
@@ -3416,18 +4772,18 @@ namespace Google.Cloud.Container.V1
         /// Enables or disables Network Policy for a cluster.
         /// </summary>
         /// <param name="projectId">
-        /// Required. Deprecated. The Google Developers Console [project ID or project
+        /// Deprecated. The Google Developers Console [project ID or project
         /// number](https://developers.google.com/console/help/new/#projectnumber).
         /// This field has been deprecated and replaced by the name field.
         /// </param>
         /// <param name="zone">
-        /// Required. Deprecated. The name of the Google Compute Engine
-        /// [zone](https://cloud.google.com/compute/docs/zones#available) in which the cluster
-        /// resides.
-        /// This field has been deprecated and replaced by the name field.
+        /// Deprecated. The name of the Google Compute Engine
+        /// [zone](https://cloud.google.com/compute/docs/zones#available) in which the
+        /// cluster resides. This field has been deprecated and replaced by the name
+        /// field.
         /// </param>
         /// <param name="clusterId">
-        /// Required. Deprecated. The name of the cluster.
+        /// Deprecated. The name of the cluster.
         /// This field has been deprecated and replaced by the name field.
         /// </param>
         /// <param name="networkPolicy">
@@ -3438,9 +4794,11 @@ namespace Google.Cloud.Container.V1
         public virtual Operation SetNetworkPolicy(string projectId, string zone, string clusterId, NetworkPolicy networkPolicy, gaxgrpc::CallSettings callSettings = null) =>
             SetNetworkPolicy(new SetNetworkPolicyRequest
             {
-                ProjectId = gax::GaxPreconditions.CheckNotNullOrEmpty(projectId, nameof(projectId)),
-                Zone = gax::GaxPreconditions.CheckNotNullOrEmpty(zone, nameof(zone)),
-                ClusterId = gax::GaxPreconditions.CheckNotNullOrEmpty(clusterId, nameof(clusterId)),
+#pragma warning disable CS0612
+                ProjectId = projectId ?? "",
+                Zone = zone ?? "",
+                ClusterId = clusterId ?? "",
+#pragma warning restore CS0612
                 NetworkPolicy = gax::GaxPreconditions.CheckNotNull(networkPolicy, nameof(networkPolicy)),
             }, callSettings);
 
@@ -3448,18 +4806,18 @@ namespace Google.Cloud.Container.V1
         /// Enables or disables Network Policy for a cluster.
         /// </summary>
         /// <param name="projectId">
-        /// Required. Deprecated. The Google Developers Console [project ID or project
+        /// Deprecated. The Google Developers Console [project ID or project
         /// number](https://developers.google.com/console/help/new/#projectnumber).
         /// This field has been deprecated and replaced by the name field.
         /// </param>
         /// <param name="zone">
-        /// Required. Deprecated. The name of the Google Compute Engine
-        /// [zone](https://cloud.google.com/compute/docs/zones#available) in which the cluster
-        /// resides.
-        /// This field has been deprecated and replaced by the name field.
+        /// Deprecated. The name of the Google Compute Engine
+        /// [zone](https://cloud.google.com/compute/docs/zones#available) in which the
+        /// cluster resides. This field has been deprecated and replaced by the name
+        /// field.
         /// </param>
         /// <param name="clusterId">
-        /// Required. Deprecated. The name of the cluster.
+        /// Deprecated. The name of the cluster.
         /// This field has been deprecated and replaced by the name field.
         /// </param>
         /// <param name="networkPolicy">
@@ -3470,9 +4828,11 @@ namespace Google.Cloud.Container.V1
         public virtual stt::Task<Operation> SetNetworkPolicyAsync(string projectId, string zone, string clusterId, NetworkPolicy networkPolicy, gaxgrpc::CallSettings callSettings = null) =>
             SetNetworkPolicyAsync(new SetNetworkPolicyRequest
             {
-                ProjectId = gax::GaxPreconditions.CheckNotNullOrEmpty(projectId, nameof(projectId)),
-                Zone = gax::GaxPreconditions.CheckNotNullOrEmpty(zone, nameof(zone)),
-                ClusterId = gax::GaxPreconditions.CheckNotNullOrEmpty(clusterId, nameof(clusterId)),
+#pragma warning disable CS0612
+                ProjectId = projectId ?? "",
+                Zone = zone ?? "",
+                ClusterId = clusterId ?? "",
+#pragma warning restore CS0612
                 NetworkPolicy = gax::GaxPreconditions.CheckNotNull(networkPolicy, nameof(networkPolicy)),
             }, callSettings);
 
@@ -3480,18 +4840,18 @@ namespace Google.Cloud.Container.V1
         /// Enables or disables Network Policy for a cluster.
         /// </summary>
         /// <param name="projectId">
-        /// Required. Deprecated. The Google Developers Console [project ID or project
+        /// Deprecated. The Google Developers Console [project ID or project
         /// number](https://developers.google.com/console/help/new/#projectnumber).
         /// This field has been deprecated and replaced by the name field.
         /// </param>
         /// <param name="zone">
-        /// Required. Deprecated. The name of the Google Compute Engine
-        /// [zone](https://cloud.google.com/compute/docs/zones#available) in which the cluster
-        /// resides.
-        /// This field has been deprecated and replaced by the name field.
+        /// Deprecated. The name of the Google Compute Engine
+        /// [zone](https://cloud.google.com/compute/docs/zones#available) in which the
+        /// cluster resides. This field has been deprecated and replaced by the name
+        /// field.
         /// </param>
         /// <param name="clusterId">
-        /// Required. Deprecated. The name of the cluster.
+        /// Deprecated. The name of the cluster.
         /// This field has been deprecated and replaced by the name field.
         /// </param>
         /// <param name="networkPolicy">
@@ -3501,6 +4861,59 @@ namespace Google.Cloud.Container.V1
         /// <returns>A Task containing the RPC response.</returns>
         public virtual stt::Task<Operation> SetNetworkPolicyAsync(string projectId, string zone, string clusterId, NetworkPolicy networkPolicy, st::CancellationToken cancellationToken) =>
             SetNetworkPolicyAsync(projectId, zone, clusterId, networkPolicy, gaxgrpc::CallSettings.FromCancellationToken(cancellationToken));
+
+        /// <summary>
+        /// Enables or disables Network Policy for a cluster.
+        /// </summary>
+        /// <param name="name">
+        /// The name (project, location, cluster id) of the cluster to set networking
+        /// policy. Specified in the format `projects/*/locations/*/clusters/*`.
+        /// </param>
+        /// <param name="networkPolicy">
+        /// Required. Configuration options for the NetworkPolicy feature.
+        /// </param>
+        /// <param name="callSettings">If not null, applies overrides to this RPC call.</param>
+        /// <returns>The RPC response.</returns>
+        public virtual Operation SetNetworkPolicy(string name, NetworkPolicy networkPolicy, gaxgrpc::CallSettings callSettings = null) =>
+            SetNetworkPolicy(new SetNetworkPolicyRequest
+            {
+                NetworkPolicy = gax::GaxPreconditions.CheckNotNull(networkPolicy, nameof(networkPolicy)),
+                Name = name ?? "",
+            }, callSettings);
+
+        /// <summary>
+        /// Enables or disables Network Policy for a cluster.
+        /// </summary>
+        /// <param name="name">
+        /// The name (project, location, cluster id) of the cluster to set networking
+        /// policy. Specified in the format `projects/*/locations/*/clusters/*`.
+        /// </param>
+        /// <param name="networkPolicy">
+        /// Required. Configuration options for the NetworkPolicy feature.
+        /// </param>
+        /// <param name="callSettings">If not null, applies overrides to this RPC call.</param>
+        /// <returns>A Task containing the RPC response.</returns>
+        public virtual stt::Task<Operation> SetNetworkPolicyAsync(string name, NetworkPolicy networkPolicy, gaxgrpc::CallSettings callSettings = null) =>
+            SetNetworkPolicyAsync(new SetNetworkPolicyRequest
+            {
+                NetworkPolicy = gax::GaxPreconditions.CheckNotNull(networkPolicy, nameof(networkPolicy)),
+                Name = name ?? "",
+            }, callSettings);
+
+        /// <summary>
+        /// Enables or disables Network Policy for a cluster.
+        /// </summary>
+        /// <param name="name">
+        /// The name (project, location, cluster id) of the cluster to set networking
+        /// policy. Specified in the format `projects/*/locations/*/clusters/*`.
+        /// </param>
+        /// <param name="networkPolicy">
+        /// Required. Configuration options for the NetworkPolicy feature.
+        /// </param>
+        /// <param name="cancellationToken">A <see cref="st::CancellationToken"/> to use for this RPC.</param>
+        /// <returns>A Task containing the RPC response.</returns>
+        public virtual stt::Task<Operation> SetNetworkPolicyAsync(string name, NetworkPolicy networkPolicy, st::CancellationToken cancellationToken) =>
+            SetNetworkPolicyAsync(name, networkPolicy, gaxgrpc::CallSettings.FromCancellationToken(cancellationToken));
 
         /// <summary>
         /// Sets the maintenance policy for a cluster.
@@ -3538,8 +4951,8 @@ namespace Google.Cloud.Container.V1
         /// </param>
         /// <param name="zone">
         /// Required. The name of the Google Compute Engine
-        /// [zone](https://cloud.google.com/compute/docs/zones#available) in which the cluster
-        /// resides.
+        /// [zone](https://cloud.google.com/compute/docs/zones#available) in which the
+        /// cluster resides.
         /// </param>
         /// <param name="clusterId">
         /// Required. The name of the cluster to update.
@@ -3568,8 +4981,8 @@ namespace Google.Cloud.Container.V1
         /// </param>
         /// <param name="zone">
         /// Required. The name of the Google Compute Engine
-        /// [zone](https://cloud.google.com/compute/docs/zones#available) in which the cluster
-        /// resides.
+        /// [zone](https://cloud.google.com/compute/docs/zones#available) in which the
+        /// cluster resides.
         /// </param>
         /// <param name="clusterId">
         /// Required. The name of the cluster to update.
@@ -3598,8 +5011,8 @@ namespace Google.Cloud.Container.V1
         /// </param>
         /// <param name="zone">
         /// Required. The name of the Google Compute Engine
-        /// [zone](https://cloud.google.com/compute/docs/zones#available) in which the cluster
-        /// resides.
+        /// [zone](https://cloud.google.com/compute/docs/zones#available) in which the
+        /// cluster resides.
         /// </param>
         /// <param name="clusterId">
         /// Required. The name of the cluster to update.
@@ -3612,6 +5025,65 @@ namespace Google.Cloud.Container.V1
         /// <returns>A Task containing the RPC response.</returns>
         public virtual stt::Task<Operation> SetMaintenancePolicyAsync(string projectId, string zone, string clusterId, MaintenancePolicy maintenancePolicy, st::CancellationToken cancellationToken) =>
             SetMaintenancePolicyAsync(projectId, zone, clusterId, maintenancePolicy, gaxgrpc::CallSettings.FromCancellationToken(cancellationToken));
+
+        /// <summary>
+        /// Sets the maintenance policy for a cluster.
+        /// </summary>
+        /// <param name="name">
+        /// The name (project, location, cluster id) of the cluster to set maintenance
+        /// policy.
+        /// Specified in the format `projects/*/locations/*/clusters/*`.
+        /// </param>
+        /// <param name="maintenancePolicy">
+        /// Required. The maintenance policy to be set for the cluster. An empty field
+        /// clears the existing maintenance policy.
+        /// </param>
+        /// <param name="callSettings">If not null, applies overrides to this RPC call.</param>
+        /// <returns>The RPC response.</returns>
+        public virtual Operation SetMaintenancePolicy(string name, MaintenancePolicy maintenancePolicy, gaxgrpc::CallSettings callSettings = null) =>
+            SetMaintenancePolicy(new SetMaintenancePolicyRequest
+            {
+                MaintenancePolicy = gax::GaxPreconditions.CheckNotNull(maintenancePolicy, nameof(maintenancePolicy)),
+                Name = name ?? "",
+            }, callSettings);
+
+        /// <summary>
+        /// Sets the maintenance policy for a cluster.
+        /// </summary>
+        /// <param name="name">
+        /// The name (project, location, cluster id) of the cluster to set maintenance
+        /// policy.
+        /// Specified in the format `projects/*/locations/*/clusters/*`.
+        /// </param>
+        /// <param name="maintenancePolicy">
+        /// Required. The maintenance policy to be set for the cluster. An empty field
+        /// clears the existing maintenance policy.
+        /// </param>
+        /// <param name="callSettings">If not null, applies overrides to this RPC call.</param>
+        /// <returns>A Task containing the RPC response.</returns>
+        public virtual stt::Task<Operation> SetMaintenancePolicyAsync(string name, MaintenancePolicy maintenancePolicy, gaxgrpc::CallSettings callSettings = null) =>
+            SetMaintenancePolicyAsync(new SetMaintenancePolicyRequest
+            {
+                MaintenancePolicy = gax::GaxPreconditions.CheckNotNull(maintenancePolicy, nameof(maintenancePolicy)),
+                Name = name ?? "",
+            }, callSettings);
+
+        /// <summary>
+        /// Sets the maintenance policy for a cluster.
+        /// </summary>
+        /// <param name="name">
+        /// The name (project, location, cluster id) of the cluster to set maintenance
+        /// policy.
+        /// Specified in the format `projects/*/locations/*/clusters/*`.
+        /// </param>
+        /// <param name="maintenancePolicy">
+        /// Required. The maintenance policy to be set for the cluster. An empty field
+        /// clears the existing maintenance policy.
+        /// </param>
+        /// <param name="cancellationToken">A <see cref="st::CancellationToken"/> to use for this RPC.</param>
+        /// <returns>A Task containing the RPC response.</returns>
+        public virtual stt::Task<Operation> SetMaintenancePolicyAsync(string name, MaintenancePolicy maintenancePolicy, st::CancellationToken cancellationToken) =>
+            SetMaintenancePolicyAsync(name, maintenancePolicy, gaxgrpc::CallSettings.FromCancellationToken(cancellationToken));
 
         /// <summary>
         /// Lists subnetworks that are usable for creating clusters in a project.
@@ -3633,6 +5105,9 @@ namespace Google.Cloud.Container.V1
     }
 
     /// <summary>ClusterManager client wrapper implementation, for convenient use.</summary>
+    /// <remarks>
+    /// Google Kubernetes Engine Cluster Manager v1
+    /// </remarks>
     public sealed partial class ClusterManagerClientImpl : ClusterManagerClient
     {
         private readonly gaxgrpc::ApiCall<ListClustersRequest, ListClustersResponse> _callListClusters;
@@ -3668,6 +5143,8 @@ namespace Google.Cloud.Container.V1
         private readonly gaxgrpc::ApiCall<CancelOperationRequest, wkt::Empty> _callCancelOperation;
 
         private readonly gaxgrpc::ApiCall<GetServerConfigRequest, ServerConfig> _callGetServerConfig;
+
+        private readonly gaxgrpc::ApiCall<GetJSONWebKeysRequest, GetJSONWebKeysResponse> _callGetJSONWebKeys;
 
         private readonly gaxgrpc::ApiCall<ListNodePoolsRequest, ListNodePoolsResponse> _callListNodePools;
 
@@ -3707,97 +5184,100 @@ namespace Google.Cloud.Container.V1
             GrpcClient = grpcClient;
             ClusterManagerSettings effectiveSettings = settings ?? ClusterManagerSettings.GetDefault();
             gaxgrpc::ClientHelper clientHelper = new gaxgrpc::ClientHelper(effectiveSettings);
-            _callListClusters = clientHelper.BuildApiCall<ListClustersRequest, ListClustersResponse>(grpcClient.ListClustersAsync, grpcClient.ListClusters, effectiveSettings.ListClustersSettings).WithCallSettingsOverlay(request => gaxgrpc::CallSettings.FromHeader("x-goog-request-params", $"parent={(sysnet::WebUtility.UrlEncode(request.Parent))}"));
+            _callListClusters = clientHelper.BuildApiCall<ListClustersRequest, ListClustersResponse>(grpcClient.ListClustersAsync, grpcClient.ListClusters, effectiveSettings.ListClustersSettings).WithGoogleRequestParam("parent", request => request.Parent);
             Modify_ApiCall(ref _callListClusters);
             Modify_ListClustersApiCall(ref _callListClusters);
-            _callGetCluster = clientHelper.BuildApiCall<GetClusterRequest, Cluster>(grpcClient.GetClusterAsync, grpcClient.GetCluster, effectiveSettings.GetClusterSettings).WithCallSettingsOverlay(request => gaxgrpc::CallSettings.FromHeader("x-goog-request-params", $"name={(sysnet::WebUtility.UrlEncode(request.Name))}"));
+            _callGetCluster = clientHelper.BuildApiCall<GetClusterRequest, Cluster>(grpcClient.GetClusterAsync, grpcClient.GetCluster, effectiveSettings.GetClusterSettings).WithGoogleRequestParam("name", request => request.Name);
             Modify_ApiCall(ref _callGetCluster);
             Modify_GetClusterApiCall(ref _callGetCluster);
-            _callCreateCluster = clientHelper.BuildApiCall<CreateClusterRequest, Operation>(grpcClient.CreateClusterAsync, grpcClient.CreateCluster, effectiveSettings.CreateClusterSettings).WithCallSettingsOverlay(request => gaxgrpc::CallSettings.FromHeader("x-goog-request-params", $"parent={(sysnet::WebUtility.UrlEncode(request.Parent))}"));
+            _callCreateCluster = clientHelper.BuildApiCall<CreateClusterRequest, Operation>(grpcClient.CreateClusterAsync, grpcClient.CreateCluster, effectiveSettings.CreateClusterSettings).WithGoogleRequestParam("parent", request => request.Parent);
             Modify_ApiCall(ref _callCreateCluster);
             Modify_CreateClusterApiCall(ref _callCreateCluster);
-            _callUpdateCluster = clientHelper.BuildApiCall<UpdateClusterRequest, Operation>(grpcClient.UpdateClusterAsync, grpcClient.UpdateCluster, effectiveSettings.UpdateClusterSettings).WithCallSettingsOverlay(request => gaxgrpc::CallSettings.FromHeader("x-goog-request-params", $"name={(sysnet::WebUtility.UrlEncode(request.Name))}"));
+            _callUpdateCluster = clientHelper.BuildApiCall<UpdateClusterRequest, Operation>(grpcClient.UpdateClusterAsync, grpcClient.UpdateCluster, effectiveSettings.UpdateClusterSettings).WithGoogleRequestParam("name", request => request.Name);
             Modify_ApiCall(ref _callUpdateCluster);
             Modify_UpdateClusterApiCall(ref _callUpdateCluster);
-            _callUpdateNodePool = clientHelper.BuildApiCall<UpdateNodePoolRequest, Operation>(grpcClient.UpdateNodePoolAsync, grpcClient.UpdateNodePool, effectiveSettings.UpdateNodePoolSettings).WithCallSettingsOverlay(request => gaxgrpc::CallSettings.FromHeader("x-goog-request-params", $"name={(sysnet::WebUtility.UrlEncode(request.Name))}"));
+            _callUpdateNodePool = clientHelper.BuildApiCall<UpdateNodePoolRequest, Operation>(grpcClient.UpdateNodePoolAsync, grpcClient.UpdateNodePool, effectiveSettings.UpdateNodePoolSettings).WithGoogleRequestParam("name", request => request.Name);
             Modify_ApiCall(ref _callUpdateNodePool);
             Modify_UpdateNodePoolApiCall(ref _callUpdateNodePool);
-            _callSetNodePoolAutoscaling = clientHelper.BuildApiCall<SetNodePoolAutoscalingRequest, Operation>(grpcClient.SetNodePoolAutoscalingAsync, grpcClient.SetNodePoolAutoscaling, effectiveSettings.SetNodePoolAutoscalingSettings).WithCallSettingsOverlay(request => gaxgrpc::CallSettings.FromHeader("x-goog-request-params", $"name={(sysnet::WebUtility.UrlEncode(request.Name))}"));
+            _callSetNodePoolAutoscaling = clientHelper.BuildApiCall<SetNodePoolAutoscalingRequest, Operation>(grpcClient.SetNodePoolAutoscalingAsync, grpcClient.SetNodePoolAutoscaling, effectiveSettings.SetNodePoolAutoscalingSettings).WithGoogleRequestParam("name", request => request.Name);
             Modify_ApiCall(ref _callSetNodePoolAutoscaling);
             Modify_SetNodePoolAutoscalingApiCall(ref _callSetNodePoolAutoscaling);
-            _callSetLoggingService = clientHelper.BuildApiCall<SetLoggingServiceRequest, Operation>(grpcClient.SetLoggingServiceAsync, grpcClient.SetLoggingService, effectiveSettings.SetLoggingServiceSettings).WithCallSettingsOverlay(request => gaxgrpc::CallSettings.FromHeader("x-goog-request-params", $"name={(sysnet::WebUtility.UrlEncode(request.Name))}"));
+            _callSetLoggingService = clientHelper.BuildApiCall<SetLoggingServiceRequest, Operation>(grpcClient.SetLoggingServiceAsync, grpcClient.SetLoggingService, effectiveSettings.SetLoggingServiceSettings).WithGoogleRequestParam("name", request => request.Name);
             Modify_ApiCall(ref _callSetLoggingService);
             Modify_SetLoggingServiceApiCall(ref _callSetLoggingService);
-            _callSetMonitoringService = clientHelper.BuildApiCall<SetMonitoringServiceRequest, Operation>(grpcClient.SetMonitoringServiceAsync, grpcClient.SetMonitoringService, effectiveSettings.SetMonitoringServiceSettings).WithCallSettingsOverlay(request => gaxgrpc::CallSettings.FromHeader("x-goog-request-params", $"name={(sysnet::WebUtility.UrlEncode(request.Name))}"));
+            _callSetMonitoringService = clientHelper.BuildApiCall<SetMonitoringServiceRequest, Operation>(grpcClient.SetMonitoringServiceAsync, grpcClient.SetMonitoringService, effectiveSettings.SetMonitoringServiceSettings).WithGoogleRequestParam("name", request => request.Name);
             Modify_ApiCall(ref _callSetMonitoringService);
             Modify_SetMonitoringServiceApiCall(ref _callSetMonitoringService);
-            _callSetAddonsConfig = clientHelper.BuildApiCall<SetAddonsConfigRequest, Operation>(grpcClient.SetAddonsConfigAsync, grpcClient.SetAddonsConfig, effectiveSettings.SetAddonsConfigSettings).WithCallSettingsOverlay(request => gaxgrpc::CallSettings.FromHeader("x-goog-request-params", $"name={(sysnet::WebUtility.UrlEncode(request.Name))}"));
+            _callSetAddonsConfig = clientHelper.BuildApiCall<SetAddonsConfigRequest, Operation>(grpcClient.SetAddonsConfigAsync, grpcClient.SetAddonsConfig, effectiveSettings.SetAddonsConfigSettings).WithGoogleRequestParam("name", request => request.Name);
             Modify_ApiCall(ref _callSetAddonsConfig);
             Modify_SetAddonsConfigApiCall(ref _callSetAddonsConfig);
-            _callSetLocations = clientHelper.BuildApiCall<SetLocationsRequest, Operation>(grpcClient.SetLocationsAsync, grpcClient.SetLocations, effectiveSettings.SetLocationsSettings).WithCallSettingsOverlay(request => gaxgrpc::CallSettings.FromHeader("x-goog-request-params", $"name={(sysnet::WebUtility.UrlEncode(request.Name))}"));
+            _callSetLocations = clientHelper.BuildApiCall<SetLocationsRequest, Operation>(grpcClient.SetLocationsAsync, grpcClient.SetLocations, effectiveSettings.SetLocationsSettings).WithGoogleRequestParam("name", request => request.Name);
             Modify_ApiCall(ref _callSetLocations);
             Modify_SetLocationsApiCall(ref _callSetLocations);
-            _callUpdateMaster = clientHelper.BuildApiCall<UpdateMasterRequest, Operation>(grpcClient.UpdateMasterAsync, grpcClient.UpdateMaster, effectiveSettings.UpdateMasterSettings).WithCallSettingsOverlay(request => gaxgrpc::CallSettings.FromHeader("x-goog-request-params", $"name={(sysnet::WebUtility.UrlEncode(request.Name))}"));
+            _callUpdateMaster = clientHelper.BuildApiCall<UpdateMasterRequest, Operation>(grpcClient.UpdateMasterAsync, grpcClient.UpdateMaster, effectiveSettings.UpdateMasterSettings).WithGoogleRequestParam("name", request => request.Name);
             Modify_ApiCall(ref _callUpdateMaster);
             Modify_UpdateMasterApiCall(ref _callUpdateMaster);
-            _callSetMasterAuth = clientHelper.BuildApiCall<SetMasterAuthRequest, Operation>(grpcClient.SetMasterAuthAsync, grpcClient.SetMasterAuth, effectiveSettings.SetMasterAuthSettings).WithCallSettingsOverlay(request => gaxgrpc::CallSettings.FromHeader("x-goog-request-params", $"name={(sysnet::WebUtility.UrlEncode(request.Name))}"));
+            _callSetMasterAuth = clientHelper.BuildApiCall<SetMasterAuthRequest, Operation>(grpcClient.SetMasterAuthAsync, grpcClient.SetMasterAuth, effectiveSettings.SetMasterAuthSettings).WithGoogleRequestParam("name", request => request.Name);
             Modify_ApiCall(ref _callSetMasterAuth);
             Modify_SetMasterAuthApiCall(ref _callSetMasterAuth);
-            _callDeleteCluster = clientHelper.BuildApiCall<DeleteClusterRequest, Operation>(grpcClient.DeleteClusterAsync, grpcClient.DeleteCluster, effectiveSettings.DeleteClusterSettings).WithCallSettingsOverlay(request => gaxgrpc::CallSettings.FromHeader("x-goog-request-params", $"name={(sysnet::WebUtility.UrlEncode(request.Name))}"));
+            _callDeleteCluster = clientHelper.BuildApiCall<DeleteClusterRequest, Operation>(grpcClient.DeleteClusterAsync, grpcClient.DeleteCluster, effectiveSettings.DeleteClusterSettings).WithGoogleRequestParam("name", request => request.Name);
             Modify_ApiCall(ref _callDeleteCluster);
             Modify_DeleteClusterApiCall(ref _callDeleteCluster);
-            _callListOperations = clientHelper.BuildApiCall<ListOperationsRequest, ListOperationsResponse>(grpcClient.ListOperationsAsync, grpcClient.ListOperations, effectiveSettings.ListOperationsSettings).WithCallSettingsOverlay(request => gaxgrpc::CallSettings.FromHeader("x-goog-request-params", $"parent={(sysnet::WebUtility.UrlEncode(request.Parent))}"));
+            _callListOperations = clientHelper.BuildApiCall<ListOperationsRequest, ListOperationsResponse>(grpcClient.ListOperationsAsync, grpcClient.ListOperations, effectiveSettings.ListOperationsSettings).WithGoogleRequestParam("parent", request => request.Parent);
             Modify_ApiCall(ref _callListOperations);
             Modify_ListOperationsApiCall(ref _callListOperations);
-            _callGetOperation = clientHelper.BuildApiCall<GetOperationRequest, Operation>(grpcClient.GetOperationAsync, grpcClient.GetOperation, effectiveSettings.GetOperationSettings).WithCallSettingsOverlay(request => gaxgrpc::CallSettings.FromHeader("x-goog-request-params", $"name={(sysnet::WebUtility.UrlEncode(request.Name))}"));
+            _callGetOperation = clientHelper.BuildApiCall<GetOperationRequest, Operation>(grpcClient.GetOperationAsync, grpcClient.GetOperation, effectiveSettings.GetOperationSettings).WithGoogleRequestParam("name", request => request.Name);
             Modify_ApiCall(ref _callGetOperation);
             Modify_GetOperationApiCall(ref _callGetOperation);
-            _callCancelOperation = clientHelper.BuildApiCall<CancelOperationRequest, wkt::Empty>(grpcClient.CancelOperationAsync, grpcClient.CancelOperation, effectiveSettings.CancelOperationSettings).WithCallSettingsOverlay(request => gaxgrpc::CallSettings.FromHeader("x-goog-request-params", $"name={(sysnet::WebUtility.UrlEncode(request.Name))}"));
+            _callCancelOperation = clientHelper.BuildApiCall<CancelOperationRequest, wkt::Empty>(grpcClient.CancelOperationAsync, grpcClient.CancelOperation, effectiveSettings.CancelOperationSettings).WithGoogleRequestParam("name", request => request.Name);
             Modify_ApiCall(ref _callCancelOperation);
             Modify_CancelOperationApiCall(ref _callCancelOperation);
-            _callGetServerConfig = clientHelper.BuildApiCall<GetServerConfigRequest, ServerConfig>(grpcClient.GetServerConfigAsync, grpcClient.GetServerConfig, effectiveSettings.GetServerConfigSettings).WithCallSettingsOverlay(request => gaxgrpc::CallSettings.FromHeader("x-goog-request-params", $"name={(sysnet::WebUtility.UrlEncode(request.Name))}"));
+            _callGetServerConfig = clientHelper.BuildApiCall<GetServerConfigRequest, ServerConfig>(grpcClient.GetServerConfigAsync, grpcClient.GetServerConfig, effectiveSettings.GetServerConfigSettings).WithGoogleRequestParam("name", request => request.Name);
             Modify_ApiCall(ref _callGetServerConfig);
             Modify_GetServerConfigApiCall(ref _callGetServerConfig);
-            _callListNodePools = clientHelper.BuildApiCall<ListNodePoolsRequest, ListNodePoolsResponse>(grpcClient.ListNodePoolsAsync, grpcClient.ListNodePools, effectiveSettings.ListNodePoolsSettings).WithCallSettingsOverlay(request => gaxgrpc::CallSettings.FromHeader("x-goog-request-params", $"parent={(sysnet::WebUtility.UrlEncode(request.Parent))}"));
+            _callGetJSONWebKeys = clientHelper.BuildApiCall<GetJSONWebKeysRequest, GetJSONWebKeysResponse>(grpcClient.GetJSONWebKeysAsync, grpcClient.GetJSONWebKeys, effectiveSettings.GetJSONWebKeysSettings).WithGoogleRequestParam("parent", request => request.Parent);
+            Modify_ApiCall(ref _callGetJSONWebKeys);
+            Modify_GetJSONWebKeysApiCall(ref _callGetJSONWebKeys);
+            _callListNodePools = clientHelper.BuildApiCall<ListNodePoolsRequest, ListNodePoolsResponse>(grpcClient.ListNodePoolsAsync, grpcClient.ListNodePools, effectiveSettings.ListNodePoolsSettings).WithGoogleRequestParam("parent", request => request.Parent);
             Modify_ApiCall(ref _callListNodePools);
             Modify_ListNodePoolsApiCall(ref _callListNodePools);
-            _callGetNodePool = clientHelper.BuildApiCall<GetNodePoolRequest, NodePool>(grpcClient.GetNodePoolAsync, grpcClient.GetNodePool, effectiveSettings.GetNodePoolSettings).WithCallSettingsOverlay(request => gaxgrpc::CallSettings.FromHeader("x-goog-request-params", $"name={(sysnet::WebUtility.UrlEncode(request.Name))}"));
+            _callGetNodePool = clientHelper.BuildApiCall<GetNodePoolRequest, NodePool>(grpcClient.GetNodePoolAsync, grpcClient.GetNodePool, effectiveSettings.GetNodePoolSettings).WithGoogleRequestParam("name", request => request.Name);
             Modify_ApiCall(ref _callGetNodePool);
             Modify_GetNodePoolApiCall(ref _callGetNodePool);
-            _callCreateNodePool = clientHelper.BuildApiCall<CreateNodePoolRequest, Operation>(grpcClient.CreateNodePoolAsync, grpcClient.CreateNodePool, effectiveSettings.CreateNodePoolSettings).WithCallSettingsOverlay(request => gaxgrpc::CallSettings.FromHeader("x-goog-request-params", $"parent={(sysnet::WebUtility.UrlEncode(request.Parent))}"));
+            _callCreateNodePool = clientHelper.BuildApiCall<CreateNodePoolRequest, Operation>(grpcClient.CreateNodePoolAsync, grpcClient.CreateNodePool, effectiveSettings.CreateNodePoolSettings).WithGoogleRequestParam("parent", request => request.Parent);
             Modify_ApiCall(ref _callCreateNodePool);
             Modify_CreateNodePoolApiCall(ref _callCreateNodePool);
-            _callDeleteNodePool = clientHelper.BuildApiCall<DeleteNodePoolRequest, Operation>(grpcClient.DeleteNodePoolAsync, grpcClient.DeleteNodePool, effectiveSettings.DeleteNodePoolSettings).WithCallSettingsOverlay(request => gaxgrpc::CallSettings.FromHeader("x-goog-request-params", $"name={(sysnet::WebUtility.UrlEncode(request.Name))}"));
+            _callDeleteNodePool = clientHelper.BuildApiCall<DeleteNodePoolRequest, Operation>(grpcClient.DeleteNodePoolAsync, grpcClient.DeleteNodePool, effectiveSettings.DeleteNodePoolSettings).WithGoogleRequestParam("name", request => request.Name);
             Modify_ApiCall(ref _callDeleteNodePool);
             Modify_DeleteNodePoolApiCall(ref _callDeleteNodePool);
-            _callRollbackNodePoolUpgrade = clientHelper.BuildApiCall<RollbackNodePoolUpgradeRequest, Operation>(grpcClient.RollbackNodePoolUpgradeAsync, grpcClient.RollbackNodePoolUpgrade, effectiveSettings.RollbackNodePoolUpgradeSettings).WithCallSettingsOverlay(request => gaxgrpc::CallSettings.FromHeader("x-goog-request-params", $"name={(sysnet::WebUtility.UrlEncode(request.Name))}"));
+            _callRollbackNodePoolUpgrade = clientHelper.BuildApiCall<RollbackNodePoolUpgradeRequest, Operation>(grpcClient.RollbackNodePoolUpgradeAsync, grpcClient.RollbackNodePoolUpgrade, effectiveSettings.RollbackNodePoolUpgradeSettings).WithGoogleRequestParam("name", request => request.Name);
             Modify_ApiCall(ref _callRollbackNodePoolUpgrade);
             Modify_RollbackNodePoolUpgradeApiCall(ref _callRollbackNodePoolUpgrade);
-            _callSetNodePoolManagement = clientHelper.BuildApiCall<SetNodePoolManagementRequest, Operation>(grpcClient.SetNodePoolManagementAsync, grpcClient.SetNodePoolManagement, effectiveSettings.SetNodePoolManagementSettings).WithCallSettingsOverlay(request => gaxgrpc::CallSettings.FromHeader("x-goog-request-params", $"name={(sysnet::WebUtility.UrlEncode(request.Name))}"));
+            _callSetNodePoolManagement = clientHelper.BuildApiCall<SetNodePoolManagementRequest, Operation>(grpcClient.SetNodePoolManagementAsync, grpcClient.SetNodePoolManagement, effectiveSettings.SetNodePoolManagementSettings).WithGoogleRequestParam("name", request => request.Name);
             Modify_ApiCall(ref _callSetNodePoolManagement);
             Modify_SetNodePoolManagementApiCall(ref _callSetNodePoolManagement);
-            _callSetLabels = clientHelper.BuildApiCall<SetLabelsRequest, Operation>(grpcClient.SetLabelsAsync, grpcClient.SetLabels, effectiveSettings.SetLabelsSettings).WithCallSettingsOverlay(request => gaxgrpc::CallSettings.FromHeader("x-goog-request-params", $"name={(sysnet::WebUtility.UrlEncode(request.Name))}"));
+            _callSetLabels = clientHelper.BuildApiCall<SetLabelsRequest, Operation>(grpcClient.SetLabelsAsync, grpcClient.SetLabels, effectiveSettings.SetLabelsSettings).WithGoogleRequestParam("name", request => request.Name);
             Modify_ApiCall(ref _callSetLabels);
             Modify_SetLabelsApiCall(ref _callSetLabels);
-            _callSetLegacyAbac = clientHelper.BuildApiCall<SetLegacyAbacRequest, Operation>(grpcClient.SetLegacyAbacAsync, grpcClient.SetLegacyAbac, effectiveSettings.SetLegacyAbacSettings).WithCallSettingsOverlay(request => gaxgrpc::CallSettings.FromHeader("x-goog-request-params", $"name={(sysnet::WebUtility.UrlEncode(request.Name))}"));
+            _callSetLegacyAbac = clientHelper.BuildApiCall<SetLegacyAbacRequest, Operation>(grpcClient.SetLegacyAbacAsync, grpcClient.SetLegacyAbac, effectiveSettings.SetLegacyAbacSettings).WithGoogleRequestParam("name", request => request.Name);
             Modify_ApiCall(ref _callSetLegacyAbac);
             Modify_SetLegacyAbacApiCall(ref _callSetLegacyAbac);
-            _callStartIPRotation = clientHelper.BuildApiCall<StartIPRotationRequest, Operation>(grpcClient.StartIPRotationAsync, grpcClient.StartIPRotation, effectiveSettings.StartIPRotationSettings).WithCallSettingsOverlay(request => gaxgrpc::CallSettings.FromHeader("x-goog-request-params", $"name={(sysnet::WebUtility.UrlEncode(request.Name))}"));
+            _callStartIPRotation = clientHelper.BuildApiCall<StartIPRotationRequest, Operation>(grpcClient.StartIPRotationAsync, grpcClient.StartIPRotation, effectiveSettings.StartIPRotationSettings).WithGoogleRequestParam("name", request => request.Name);
             Modify_ApiCall(ref _callStartIPRotation);
             Modify_StartIPRotationApiCall(ref _callStartIPRotation);
-            _callCompleteIPRotation = clientHelper.BuildApiCall<CompleteIPRotationRequest, Operation>(grpcClient.CompleteIPRotationAsync, grpcClient.CompleteIPRotation, effectiveSettings.CompleteIPRotationSettings).WithCallSettingsOverlay(request => gaxgrpc::CallSettings.FromHeader("x-goog-request-params", $"name={(sysnet::WebUtility.UrlEncode(request.Name))}"));
+            _callCompleteIPRotation = clientHelper.BuildApiCall<CompleteIPRotationRequest, Operation>(grpcClient.CompleteIPRotationAsync, grpcClient.CompleteIPRotation, effectiveSettings.CompleteIPRotationSettings).WithGoogleRequestParam("name", request => request.Name);
             Modify_ApiCall(ref _callCompleteIPRotation);
             Modify_CompleteIPRotationApiCall(ref _callCompleteIPRotation);
-            _callSetNodePoolSize = clientHelper.BuildApiCall<SetNodePoolSizeRequest, Operation>(grpcClient.SetNodePoolSizeAsync, grpcClient.SetNodePoolSize, effectiveSettings.SetNodePoolSizeSettings).WithCallSettingsOverlay(request => gaxgrpc::CallSettings.FromHeader("x-goog-request-params", $"name={(sysnet::WebUtility.UrlEncode(request.Name))}"));
+            _callSetNodePoolSize = clientHelper.BuildApiCall<SetNodePoolSizeRequest, Operation>(grpcClient.SetNodePoolSizeAsync, grpcClient.SetNodePoolSize, effectiveSettings.SetNodePoolSizeSettings).WithGoogleRequestParam("name", request => request.Name);
             Modify_ApiCall(ref _callSetNodePoolSize);
             Modify_SetNodePoolSizeApiCall(ref _callSetNodePoolSize);
-            _callSetNetworkPolicy = clientHelper.BuildApiCall<SetNetworkPolicyRequest, Operation>(grpcClient.SetNetworkPolicyAsync, grpcClient.SetNetworkPolicy, effectiveSettings.SetNetworkPolicySettings).WithCallSettingsOverlay(request => gaxgrpc::CallSettings.FromHeader("x-goog-request-params", $"name={(sysnet::WebUtility.UrlEncode(request.Name))}"));
+            _callSetNetworkPolicy = clientHelper.BuildApiCall<SetNetworkPolicyRequest, Operation>(grpcClient.SetNetworkPolicyAsync, grpcClient.SetNetworkPolicy, effectiveSettings.SetNetworkPolicySettings).WithGoogleRequestParam("name", request => request.Name);
             Modify_ApiCall(ref _callSetNetworkPolicy);
             Modify_SetNetworkPolicyApiCall(ref _callSetNetworkPolicy);
-            _callSetMaintenancePolicy = clientHelper.BuildApiCall<SetMaintenancePolicyRequest, Operation>(grpcClient.SetMaintenancePolicyAsync, grpcClient.SetMaintenancePolicy, effectiveSettings.SetMaintenancePolicySettings).WithCallSettingsOverlay(request => gaxgrpc::CallSettings.FromHeader("x-goog-request-params", $"name={(sysnet::WebUtility.UrlEncode(request.Name))}"));
+            _callSetMaintenancePolicy = clientHelper.BuildApiCall<SetMaintenancePolicyRequest, Operation>(grpcClient.SetMaintenancePolicyAsync, grpcClient.SetMaintenancePolicy, effectiveSettings.SetMaintenancePolicySettings).WithGoogleRequestParam("name", request => request.Name);
             Modify_ApiCall(ref _callSetMaintenancePolicy);
             Modify_SetMaintenancePolicyApiCall(ref _callSetMaintenancePolicy);
-            _callListUsableSubnetworks = clientHelper.BuildApiCall<ListUsableSubnetworksRequest, ListUsableSubnetworksResponse>(grpcClient.ListUsableSubnetworksAsync, grpcClient.ListUsableSubnetworks, effectiveSettings.ListUsableSubnetworksSettings).WithCallSettingsOverlay(request => gaxgrpc::CallSettings.FromHeader("x-goog-request-params", $"parent={(sysnet::WebUtility.UrlEncode(request.Parent))}"));
+            _callListUsableSubnetworks = clientHelper.BuildApiCall<ListUsableSubnetworksRequest, ListUsableSubnetworksResponse>(grpcClient.ListUsableSubnetworksAsync, grpcClient.ListUsableSubnetworks, effectiveSettings.ListUsableSubnetworksSettings).WithGoogleRequestParam("parent", request => request.Parent);
             Modify_ApiCall(ref _callListUsableSubnetworks);
             Modify_ListUsableSubnetworksApiCall(ref _callListUsableSubnetworks);
             OnConstruction(grpcClient, effectiveSettings, clientHelper);
@@ -3838,6 +5318,8 @@ namespace Google.Cloud.Container.V1
         partial void Modify_CancelOperationApiCall(ref gaxgrpc::ApiCall<CancelOperationRequest, wkt::Empty> call);
 
         partial void Modify_GetServerConfigApiCall(ref gaxgrpc::ApiCall<GetServerConfigRequest, ServerConfig> call);
+
+        partial void Modify_GetJSONWebKeysApiCall(ref gaxgrpc::ApiCall<GetJSONWebKeysRequest, GetJSONWebKeysResponse> call);
 
         partial void Modify_ListNodePoolsApiCall(ref gaxgrpc::ApiCall<ListNodePoolsRequest, ListNodePoolsResponse> call);
 
@@ -3905,6 +5387,8 @@ namespace Google.Cloud.Container.V1
         partial void Modify_CancelOperationRequest(ref CancelOperationRequest request, ref gaxgrpc::CallSettings settings);
 
         partial void Modify_GetServerConfigRequest(ref GetServerConfigRequest request, ref gaxgrpc::CallSettings settings);
+
+        partial void Modify_GetJSONWebKeysRequest(ref GetJSONWebKeysRequest request, ref gaxgrpc::CallSettings settings);
 
         partial void Modify_ListNodePoolsRequest(ref ListNodePoolsRequest request, ref gaxgrpc::CallSettings settings);
 
@@ -3989,7 +5473,8 @@ namespace Google.Cloud.Container.V1
         /// Compute Engine instances.
         /// 
         /// By default, the cluster is created in the project's
-        /// [default network](https://cloud.google.com/compute/docs/networks-and-firewalls#networks).
+        /// [default
+        /// network](https://cloud.google.com/compute/docs/networks-and-firewalls#networks).
         /// 
         /// One firewall is added for the cluster. After cluster creation,
         /// the Kubelet creates routes for each node to allow the containers
@@ -4013,7 +5498,8 @@ namespace Google.Cloud.Container.V1
         /// Compute Engine instances.
         /// 
         /// By default, the cluster is created in the project's
-        /// [default network](https://cloud.google.com/compute/docs/networks-and-firewalls#networks).
+        /// [default
+        /// network](https://cloud.google.com/compute/docs/networks-and-firewalls#networks).
         /// 
         /// One firewall is added for the cluster. After cluster creation,
         /// the Kubelet creates routes for each node to allow the containers
@@ -4178,6 +5664,9 @@ namespace Google.Cloud.Container.V1
 
         /// <summary>
         /// Sets the locations for a specific cluster.
+        /// Deprecated. Use
+        /// [projects.locations.clusters.update](https://cloud.google.com/kubernetes-engine/docs/reference/rest/v1/projects.locations.clusters/update)
+        /// instead.
         /// </summary>
         /// <param name="request">The request object containing all of the parameters for the API call.</param>
         /// <param name="callSettings">If not null, applies overrides to this RPC call.</param>
@@ -4190,6 +5679,9 @@ namespace Google.Cloud.Container.V1
 
         /// <summary>
         /// Sets the locations for a specific cluster.
+        /// Deprecated. Use
+        /// [projects.locations.clusters.update](https://cloud.google.com/kubernetes-engine/docs/reference/rest/v1/projects.locations.clusters/update)
+        /// instead.
         /// </summary>
         /// <param name="request">The request object containing all of the parameters for the API call.</param>
         /// <param name="callSettings">If not null, applies overrides to this RPC call.</param>
@@ -4386,6 +5878,36 @@ namespace Google.Cloud.Container.V1
         {
             Modify_GetServerConfigRequest(ref request, ref callSettings);
             return _callGetServerConfig.Async(request, callSettings);
+        }
+
+        /// <summary>
+        /// Gets the public component of the cluster signing keys in
+        /// JSON Web Key format.
+        /// This API is not yet intended for general use, and is not available for all
+        /// clusters.
+        /// </summary>
+        /// <param name="request">The request object containing all of the parameters for the API call.</param>
+        /// <param name="callSettings">If not null, applies overrides to this RPC call.</param>
+        /// <returns>The RPC response.</returns>
+        public override GetJSONWebKeysResponse GetJSONWebKeys(GetJSONWebKeysRequest request, gaxgrpc::CallSettings callSettings = null)
+        {
+            Modify_GetJSONWebKeysRequest(ref request, ref callSettings);
+            return _callGetJSONWebKeys.Sync(request, callSettings);
+        }
+
+        /// <summary>
+        /// Gets the public component of the cluster signing keys in
+        /// JSON Web Key format.
+        /// This API is not yet intended for general use, and is not available for all
+        /// clusters.
+        /// </summary>
+        /// <param name="request">The request object containing all of the parameters for the API call.</param>
+        /// <param name="callSettings">If not null, applies overrides to this RPC call.</param>
+        /// <returns>A Task containing the RPC response.</returns>
+        public override stt::Task<GetJSONWebKeysResponse> GetJSONWebKeysAsync(GetJSONWebKeysRequest request, gaxgrpc::CallSettings callSettings = null)
+        {
+            Modify_GetJSONWebKeysRequest(ref request, ref callSettings);
+            return _callGetJSONWebKeys.Async(request, callSettings);
         }
 
         /// <summary>

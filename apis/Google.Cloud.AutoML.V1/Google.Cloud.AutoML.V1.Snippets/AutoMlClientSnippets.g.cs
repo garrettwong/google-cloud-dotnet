@@ -1,4 +1,4 @@
-// Copyright 2019 Google LLC
+// Copyright 2020 Google LLC
 //
 // Licensed under the Apache License, Version 2.0 (the "License");
 // you may not use this file except in compliance with the License.
@@ -17,48 +17,74 @@
 namespace Google.Cloud.AutoML.V1.Snippets
 {
     using Google.Api.Gax;
-    using Google.Api.Gax.Grpc;
-    using apis = Google.Cloud.AutoML.V1;
+    using Google.Api.Gax.ResourceNames;
     using Google.LongRunning;
-    using Google.Protobuf;
     using Google.Protobuf.WellKnownTypes;
-    using Grpc.Core;
     using System;
-    using System.Collections;
-    using System.Collections.Generic;
-    using System.Collections.ObjectModel;
     using System.Linq;
-    using System.Threading;
     using System.Threading.Tasks;
 
-    /// <summary>Generated snippets</summary>
-    public class GeneratedAutoMlClientSnippets
+    /// <summary>Generated snippets.</summary>
+    public sealed class GeneratedAutoMlClientSnippets
     {
-        /// <summary>Snippet for CreateDatasetAsync</summary>
-        public async Task CreateDatasetAsync()
+        /// <summary>Snippet for CreateDataset</summary>
+        public void CreateDatasetRequestObject()
         {
-            // Snippet: CreateDatasetAsync(LocationName,Dataset,CallSettings)
-            // Additional: CreateDatasetAsync(LocationName,Dataset,CancellationToken)
+            // Snippet: CreateDataset(CreateDatasetRequest, CallSettings)
             // Create client
-            AutoMlClient autoMlClient = await AutoMlClient.CreateAsync();
+            AutoMlClient autoMlClient = AutoMlClient.Create();
             // Initialize request argument(s)
-            LocationName parent = new LocationName("[PROJECT]", "[LOCATION]");
-            Dataset dataset = new Dataset();
+            CreateDatasetRequest request = new CreateDatasetRequest
+            {
+                ParentAsLocationName = LocationName.FromProjectLocation("[PROJECT]", "[LOCATION]"),
+                Dataset = new Dataset(),
+            };
             // Make the request
-            Operation<Dataset, OperationMetadata> response =
-                await autoMlClient.CreateDatasetAsync(parent, dataset);
+            Operation<Dataset, OperationMetadata> response = autoMlClient.CreateDataset(request);
 
             // Poll until the returned long-running operation is complete
-            Operation<Dataset, OperationMetadata> completedResponse =
-                await response.PollUntilCompletedAsync();
+            Operation<Dataset, OperationMetadata> completedResponse = response.PollUntilCompleted();
             // Retrieve the operation result
             Dataset result = completedResponse.Result;
 
             // Or get the name of the operation
             string operationName = response.Name;
             // This name can be stored, then the long-running operation retrieved later by name
-            Operation<Dataset, OperationMetadata> retrievedResponse =
-                await autoMlClient.PollOnceCreateDatasetAsync(operationName);
+            Operation<Dataset, OperationMetadata> retrievedResponse = autoMlClient.PollOnceCreateDataset(operationName);
+            // Check if the retrieved long-running operation has completed
+            if (retrievedResponse.IsCompleted)
+            {
+                // If it has completed, then access the result
+                Dataset retrievedResult = retrievedResponse.Result;
+            }
+            // End snippet
+        }
+
+        /// <summary>Snippet for CreateDatasetAsync</summary>
+        public async Task CreateDatasetRequestObjectAsync()
+        {
+            // Snippet: CreateDatasetAsync(CreateDatasetRequest, CallSettings)
+            // Additional: CreateDatasetAsync(CreateDatasetRequest, CancellationToken)
+            // Create client
+            AutoMlClient autoMlClient = await AutoMlClient.CreateAsync();
+            // Initialize request argument(s)
+            CreateDatasetRequest request = new CreateDatasetRequest
+            {
+                ParentAsLocationName = LocationName.FromProjectLocation("[PROJECT]", "[LOCATION]"),
+                Dataset = new Dataset(),
+            };
+            // Make the request
+            Operation<Dataset, OperationMetadata> response = await autoMlClient.CreateDatasetAsync(request);
+
+            // Poll until the returned long-running operation is complete
+            Operation<Dataset, OperationMetadata> completedResponse = await response.PollUntilCompletedAsync();
+            // Retrieve the operation result
+            Dataset result = completedResponse.Result;
+
+            // Or get the name of the operation
+            string operationName = response.Name;
+            // This name can be stored, then the long-running operation retrieved later by name
+            Operation<Dataset, OperationMetadata> retrievedResponse = await autoMlClient.PollOnceCreateDatasetAsync(operationName);
             // Check if the retrieved long-running operation has completed
             if (retrievedResponse.IsCompleted)
             {
@@ -71,27 +97,24 @@ namespace Google.Cloud.AutoML.V1.Snippets
         /// <summary>Snippet for CreateDataset</summary>
         public void CreateDataset()
         {
-            // Snippet: CreateDataset(LocationName,Dataset,CallSettings)
+            // Snippet: CreateDataset(string, Dataset, CallSettings)
             // Create client
             AutoMlClient autoMlClient = AutoMlClient.Create();
             // Initialize request argument(s)
-            LocationName parent = new LocationName("[PROJECT]", "[LOCATION]");
+            string parent = "projects/[PROJECT]/locations/[LOCATION]";
             Dataset dataset = new Dataset();
             // Make the request
-            Operation<Dataset, OperationMetadata> response =
-                autoMlClient.CreateDataset(parent, dataset);
+            Operation<Dataset, OperationMetadata> response = autoMlClient.CreateDataset(parent, dataset);
 
             // Poll until the returned long-running operation is complete
-            Operation<Dataset, OperationMetadata> completedResponse =
-                response.PollUntilCompleted();
+            Operation<Dataset, OperationMetadata> completedResponse = response.PollUntilCompleted();
             // Retrieve the operation result
             Dataset result = completedResponse.Result;
 
             // Or get the name of the operation
             string operationName = response.Name;
             // This name can be stored, then the long-running operation retrieved later by name
-            Operation<Dataset, OperationMetadata> retrievedResponse =
-                autoMlClient.PollOnceCreateDataset(operationName);
+            Operation<Dataset, OperationMetadata> retrievedResponse = autoMlClient.PollOnceCreateDataset(operationName);
             // Check if the retrieved long-running operation has completed
             if (retrievedResponse.IsCompleted)
             {
@@ -102,32 +125,27 @@ namespace Google.Cloud.AutoML.V1.Snippets
         }
 
         /// <summary>Snippet for CreateDatasetAsync</summary>
-        public async Task CreateDatasetAsync_RequestObject()
+        public async Task CreateDatasetAsync()
         {
-            // Snippet: CreateDatasetAsync(CreateDatasetRequest,CallSettings)
+            // Snippet: CreateDatasetAsync(string, Dataset, CallSettings)
+            // Additional: CreateDatasetAsync(string, Dataset, CancellationToken)
             // Create client
             AutoMlClient autoMlClient = await AutoMlClient.CreateAsync();
             // Initialize request argument(s)
-            CreateDatasetRequest request = new CreateDatasetRequest
-            {
-                ParentAsLocationName = new LocationName("[PROJECT]", "[LOCATION]"),
-                Dataset = new Dataset(),
-            };
+            string parent = "projects/[PROJECT]/locations/[LOCATION]";
+            Dataset dataset = new Dataset();
             // Make the request
-            Operation<Dataset, OperationMetadata> response =
-                await autoMlClient.CreateDatasetAsync(request);
+            Operation<Dataset, OperationMetadata> response = await autoMlClient.CreateDatasetAsync(parent, dataset);
 
             // Poll until the returned long-running operation is complete
-            Operation<Dataset, OperationMetadata> completedResponse =
-                await response.PollUntilCompletedAsync();
+            Operation<Dataset, OperationMetadata> completedResponse = await response.PollUntilCompletedAsync();
             // Retrieve the operation result
             Dataset result = completedResponse.Result;
 
             // Or get the name of the operation
             string operationName = response.Name;
             // This name can be stored, then the long-running operation retrieved later by name
-            Operation<Dataset, OperationMetadata> retrievedResponse =
-                await autoMlClient.PollOnceCreateDatasetAsync(operationName);
+            Operation<Dataset, OperationMetadata> retrievedResponse = await autoMlClient.PollOnceCreateDatasetAsync(operationName);
             // Check if the retrieved long-running operation has completed
             if (retrievedResponse.IsCompleted)
             {
@@ -138,32 +156,26 @@ namespace Google.Cloud.AutoML.V1.Snippets
         }
 
         /// <summary>Snippet for CreateDataset</summary>
-        public void CreateDataset_RequestObject()
+        public void CreateDatasetResourceNames()
         {
-            // Snippet: CreateDataset(CreateDatasetRequest,CallSettings)
+            // Snippet: CreateDataset(LocationName, Dataset, CallSettings)
             // Create client
             AutoMlClient autoMlClient = AutoMlClient.Create();
             // Initialize request argument(s)
-            CreateDatasetRequest request = new CreateDatasetRequest
-            {
-                ParentAsLocationName = new LocationName("[PROJECT]", "[LOCATION]"),
-                Dataset = new Dataset(),
-            };
+            LocationName parent = LocationName.FromProjectLocation("[PROJECT]", "[LOCATION]");
+            Dataset dataset = new Dataset();
             // Make the request
-            Operation<Dataset, OperationMetadata> response =
-                autoMlClient.CreateDataset(request);
+            Operation<Dataset, OperationMetadata> response = autoMlClient.CreateDataset(parent, dataset);
 
             // Poll until the returned long-running operation is complete
-            Operation<Dataset, OperationMetadata> completedResponse =
-                response.PollUntilCompleted();
+            Operation<Dataset, OperationMetadata> completedResponse = response.PollUntilCompleted();
             // Retrieve the operation result
             Dataset result = completedResponse.Result;
 
             // Or get the name of the operation
             string operationName = response.Name;
             // This name can be stored, then the long-running operation retrieved later by name
-            Operation<Dataset, OperationMetadata> retrievedResponse =
-                autoMlClient.PollOnceCreateDataset(operationName);
+            Operation<Dataset, OperationMetadata> retrievedResponse = autoMlClient.PollOnceCreateDataset(operationName);
             // Check if the retrieved long-running operation has completed
             if (retrievedResponse.IsCompleted)
             {
@@ -173,40 +185,424 @@ namespace Google.Cloud.AutoML.V1.Snippets
             // End snippet
         }
 
-        /// <summary>Snippet for UpdateDatasetAsync</summary>
-        public async Task UpdateDatasetAsync()
+        /// <summary>Snippet for CreateDatasetAsync</summary>
+        public async Task CreateDatasetResourceNamesAsync()
         {
-            // Snippet: UpdateDatasetAsync(Dataset,FieldMask,CallSettings)
-            // Additional: UpdateDatasetAsync(Dataset,FieldMask,CancellationToken)
+            // Snippet: CreateDatasetAsync(LocationName, Dataset, CallSettings)
+            // Additional: CreateDatasetAsync(LocationName, Dataset, CancellationToken)
             // Create client
             AutoMlClient autoMlClient = await AutoMlClient.CreateAsync();
             // Initialize request argument(s)
+            LocationName parent = LocationName.FromProjectLocation("[PROJECT]", "[LOCATION]");
             Dataset dataset = new Dataset();
-            FieldMask updateMask = new FieldMask();
             // Make the request
-            Dataset response = await autoMlClient.UpdateDatasetAsync(dataset, updateMask);
+            Operation<Dataset, OperationMetadata> response = await autoMlClient.CreateDatasetAsync(parent, dataset);
+
+            // Poll until the returned long-running operation is complete
+            Operation<Dataset, OperationMetadata> completedResponse = await response.PollUntilCompletedAsync();
+            // Retrieve the operation result
+            Dataset result = completedResponse.Result;
+
+            // Or get the name of the operation
+            string operationName = response.Name;
+            // This name can be stored, then the long-running operation retrieved later by name
+            Operation<Dataset, OperationMetadata> retrievedResponse = await autoMlClient.PollOnceCreateDatasetAsync(operationName);
+            // Check if the retrieved long-running operation has completed
+            if (retrievedResponse.IsCompleted)
+            {
+                // If it has completed, then access the result
+                Dataset retrievedResult = retrievedResponse.Result;
+            }
+            // End snippet
+        }
+
+        /// <summary>Snippet for GetDataset</summary>
+        public void GetDatasetRequestObject()
+        {
+            // Snippet: GetDataset(GetDatasetRequest, CallSettings)
+            // Create client
+            AutoMlClient autoMlClient = AutoMlClient.Create();
+            // Initialize request argument(s)
+            GetDatasetRequest request = new GetDatasetRequest
+            {
+                DatasetName = DatasetName.FromProjectLocationDataset("[PROJECT]", "[LOCATION]", "[DATASET]"),
+            };
+            // Make the request
+            Dataset response = autoMlClient.GetDataset(request);
+            // End snippet
+        }
+
+        /// <summary>Snippet for GetDatasetAsync</summary>
+        public async Task GetDatasetRequestObjectAsync()
+        {
+            // Snippet: GetDatasetAsync(GetDatasetRequest, CallSettings)
+            // Additional: GetDatasetAsync(GetDatasetRequest, CancellationToken)
+            // Create client
+            AutoMlClient autoMlClient = await AutoMlClient.CreateAsync();
+            // Initialize request argument(s)
+            GetDatasetRequest request = new GetDatasetRequest
+            {
+                DatasetName = DatasetName.FromProjectLocationDataset("[PROJECT]", "[LOCATION]", "[DATASET]"),
+            };
+            // Make the request
+            Dataset response = await autoMlClient.GetDatasetAsync(request);
+            // End snippet
+        }
+
+        /// <summary>Snippet for GetDataset</summary>
+        public void GetDataset()
+        {
+            // Snippet: GetDataset(string, CallSettings)
+            // Create client
+            AutoMlClient autoMlClient = AutoMlClient.Create();
+            // Initialize request argument(s)
+            string name = "projects/[PROJECT]/locations/[LOCATION]/datasets/[DATASET]";
+            // Make the request
+            Dataset response = autoMlClient.GetDataset(name);
+            // End snippet
+        }
+
+        /// <summary>Snippet for GetDatasetAsync</summary>
+        public async Task GetDatasetAsync()
+        {
+            // Snippet: GetDatasetAsync(string, CallSettings)
+            // Additional: GetDatasetAsync(string, CancellationToken)
+            // Create client
+            AutoMlClient autoMlClient = await AutoMlClient.CreateAsync();
+            // Initialize request argument(s)
+            string name = "projects/[PROJECT]/locations/[LOCATION]/datasets/[DATASET]";
+            // Make the request
+            Dataset response = await autoMlClient.GetDatasetAsync(name);
+            // End snippet
+        }
+
+        /// <summary>Snippet for GetDataset</summary>
+        public void GetDatasetResourceNames()
+        {
+            // Snippet: GetDataset(DatasetName, CallSettings)
+            // Create client
+            AutoMlClient autoMlClient = AutoMlClient.Create();
+            // Initialize request argument(s)
+            DatasetName name = DatasetName.FromProjectLocationDataset("[PROJECT]", "[LOCATION]", "[DATASET]");
+            // Make the request
+            Dataset response = autoMlClient.GetDataset(name);
+            // End snippet
+        }
+
+        /// <summary>Snippet for GetDatasetAsync</summary>
+        public async Task GetDatasetResourceNamesAsync()
+        {
+            // Snippet: GetDatasetAsync(DatasetName, CallSettings)
+            // Additional: GetDatasetAsync(DatasetName, CancellationToken)
+            // Create client
+            AutoMlClient autoMlClient = await AutoMlClient.CreateAsync();
+            // Initialize request argument(s)
+            DatasetName name = DatasetName.FromProjectLocationDataset("[PROJECT]", "[LOCATION]", "[DATASET]");
+            // Make the request
+            Dataset response = await autoMlClient.GetDatasetAsync(name);
+            // End snippet
+        }
+
+        /// <summary>Snippet for ListDatasets</summary>
+        public void ListDatasetsRequestObject()
+        {
+            // Snippet: ListDatasets(ListDatasetsRequest, CallSettings)
+            // Create client
+            AutoMlClient autoMlClient = AutoMlClient.Create();
+            // Initialize request argument(s)
+            ListDatasetsRequest request = new ListDatasetsRequest
+            {
+                ParentAsLocationName = LocationName.FromProjectLocation("[PROJECT]", "[LOCATION]"),
+                Filter = "",
+            };
+            // Make the request
+            PagedEnumerable<ListDatasetsResponse, Dataset> response = autoMlClient.ListDatasets(request);
+
+            // Iterate over all response items, lazily performing RPCs as required
+            foreach (Dataset item in response)
+            {
+                // Do something with each item
+                Console.WriteLine(item);
+            }
+
+            // Or iterate over pages (of server-defined size), performing one RPC per page
+            foreach (ListDatasetsResponse page in response.AsRawResponses())
+            {
+                // Do something with each page of items
+                Console.WriteLine("A page of results:");
+                foreach (Dataset item in page)
+                {
+                    // Do something with each item
+                    Console.WriteLine(item);
+                }
+            }
+
+            // Or retrieve a single page of known size (unless it's the final page), performing as many RPCs as required
+            int pageSize = 10;
+            Page<Dataset> singlePage = response.ReadPage(pageSize);
+            // Do something with the page of items
+            Console.WriteLine($"A page of {pageSize} results (unless it's the final page):");
+            foreach (Dataset item in singlePage)
+            {
+                // Do something with each item
+                Console.WriteLine(item);
+            }
+            // Store the pageToken, for when the next page is required.
+            string nextPageToken = singlePage.NextPageToken;
+            // End snippet
+        }
+
+        /// <summary>Snippet for ListDatasets</summary>
+        public async Task ListDatasetsRequestObjectAsync()
+        {
+            // Snippet: ListDatasetsAsync(ListDatasetsRequest, CallSettings)
+            // Create client
+            AutoMlClient autoMlClient = await AutoMlClient.CreateAsync();
+            // Initialize request argument(s)
+            ListDatasetsRequest request = new ListDatasetsRequest
+            {
+                ParentAsLocationName = LocationName.FromProjectLocation("[PROJECT]", "[LOCATION]"),
+                Filter = "",
+            };
+            // Make the request
+            PagedAsyncEnumerable<ListDatasetsResponse, Dataset> response = autoMlClient.ListDatasetsAsync(request);
+
+            // Iterate over all response items, lazily performing RPCs as required
+            await response.ForEachAsync((Dataset item) =>
+            {
+                // Do something with each item
+                Console.WriteLine(item);
+            });
+
+            // Or iterate over pages (of server-defined size), performing one RPC per page
+            await response.AsRawResponses().ForEachAsync((ListDatasetsResponse page) =>
+            {
+                // Do something with each page of items
+                Console.WriteLine("A page of results:");
+                foreach (Dataset item in page)
+                {
+                    // Do something with each item
+                    Console.WriteLine(item);
+                }
+            });
+
+            // Or retrieve a single page of known size (unless it's the final page), performing as many RPCs as required
+            int pageSize = 10;
+            Page<Dataset> singlePage = await response.ReadPageAsync(pageSize);
+            // Do something with the page of items
+            Console.WriteLine($"A page of {pageSize} results (unless it's the final page):");
+            foreach (Dataset item in singlePage)
+            {
+                // Do something with each item
+                Console.WriteLine(item);
+            }
+            // Store the pageToken, for when the next page is required.
+            string nextPageToken = singlePage.NextPageToken;
+            // End snippet
+        }
+
+        /// <summary>Snippet for ListDatasets</summary>
+        public void ListDatasets()
+        {
+            // Snippet: ListDatasets(string, string, int?, CallSettings)
+            // Create client
+            AutoMlClient autoMlClient = AutoMlClient.Create();
+            // Initialize request argument(s)
+            string parent = "projects/[PROJECT]/locations/[LOCATION]";
+            // Make the request
+            PagedEnumerable<ListDatasetsResponse, Dataset> response = autoMlClient.ListDatasets(parent);
+
+            // Iterate over all response items, lazily performing RPCs as required
+            foreach (Dataset item in response)
+            {
+                // Do something with each item
+                Console.WriteLine(item);
+            }
+
+            // Or iterate over pages (of server-defined size), performing one RPC per page
+            foreach (ListDatasetsResponse page in response.AsRawResponses())
+            {
+                // Do something with each page of items
+                Console.WriteLine("A page of results:");
+                foreach (Dataset item in page)
+                {
+                    // Do something with each item
+                    Console.WriteLine(item);
+                }
+            }
+
+            // Or retrieve a single page of known size (unless it's the final page), performing as many RPCs as required
+            int pageSize = 10;
+            Page<Dataset> singlePage = response.ReadPage(pageSize);
+            // Do something with the page of items
+            Console.WriteLine($"A page of {pageSize} results (unless it's the final page):");
+            foreach (Dataset item in singlePage)
+            {
+                // Do something with each item
+                Console.WriteLine(item);
+            }
+            // Store the pageToken, for when the next page is required.
+            string nextPageToken = singlePage.NextPageToken;
+            // End snippet
+        }
+
+        /// <summary>Snippet for ListDatasets</summary>
+        public async Task ListDatasetsAsync()
+        {
+            // Snippet: ListDatasetsAsync(string, string, int?, CallSettings)
+            // Create client
+            AutoMlClient autoMlClient = await AutoMlClient.CreateAsync();
+            // Initialize request argument(s)
+            string parent = "projects/[PROJECT]/locations/[LOCATION]";
+            // Make the request
+            PagedAsyncEnumerable<ListDatasetsResponse, Dataset> response = autoMlClient.ListDatasetsAsync(parent);
+
+            // Iterate over all response items, lazily performing RPCs as required
+            await response.ForEachAsync((Dataset item) =>
+            {
+                // Do something with each item
+                Console.WriteLine(item);
+            });
+
+            // Or iterate over pages (of server-defined size), performing one RPC per page
+            await response.AsRawResponses().ForEachAsync((ListDatasetsResponse page) =>
+            {
+                // Do something with each page of items
+                Console.WriteLine("A page of results:");
+                foreach (Dataset item in page)
+                {
+                    // Do something with each item
+                    Console.WriteLine(item);
+                }
+            });
+
+            // Or retrieve a single page of known size (unless it's the final page), performing as many RPCs as required
+            int pageSize = 10;
+            Page<Dataset> singlePage = await response.ReadPageAsync(pageSize);
+            // Do something with the page of items
+            Console.WriteLine($"A page of {pageSize} results (unless it's the final page):");
+            foreach (Dataset item in singlePage)
+            {
+                // Do something with each item
+                Console.WriteLine(item);
+            }
+            // Store the pageToken, for when the next page is required.
+            string nextPageToken = singlePage.NextPageToken;
+            // End snippet
+        }
+
+        /// <summary>Snippet for ListDatasets</summary>
+        public void ListDatasetsResourceNames()
+        {
+            // Snippet: ListDatasets(LocationName, string, int?, CallSettings)
+            // Create client
+            AutoMlClient autoMlClient = AutoMlClient.Create();
+            // Initialize request argument(s)
+            LocationName parent = LocationName.FromProjectLocation("[PROJECT]", "[LOCATION]");
+            // Make the request
+            PagedEnumerable<ListDatasetsResponse, Dataset> response = autoMlClient.ListDatasets(parent);
+
+            // Iterate over all response items, lazily performing RPCs as required
+            foreach (Dataset item in response)
+            {
+                // Do something with each item
+                Console.WriteLine(item);
+            }
+
+            // Or iterate over pages (of server-defined size), performing one RPC per page
+            foreach (ListDatasetsResponse page in response.AsRawResponses())
+            {
+                // Do something with each page of items
+                Console.WriteLine("A page of results:");
+                foreach (Dataset item in page)
+                {
+                    // Do something with each item
+                    Console.WriteLine(item);
+                }
+            }
+
+            // Or retrieve a single page of known size (unless it's the final page), performing as many RPCs as required
+            int pageSize = 10;
+            Page<Dataset> singlePage = response.ReadPage(pageSize);
+            // Do something with the page of items
+            Console.WriteLine($"A page of {pageSize} results (unless it's the final page):");
+            foreach (Dataset item in singlePage)
+            {
+                // Do something with each item
+                Console.WriteLine(item);
+            }
+            // Store the pageToken, for when the next page is required.
+            string nextPageToken = singlePage.NextPageToken;
+            // End snippet
+        }
+
+        /// <summary>Snippet for ListDatasets</summary>
+        public async Task ListDatasetsResourceNamesAsync()
+        {
+            // Snippet: ListDatasetsAsync(LocationName, string, int?, CallSettings)
+            // Create client
+            AutoMlClient autoMlClient = await AutoMlClient.CreateAsync();
+            // Initialize request argument(s)
+            LocationName parent = LocationName.FromProjectLocation("[PROJECT]", "[LOCATION]");
+            // Make the request
+            PagedAsyncEnumerable<ListDatasetsResponse, Dataset> response = autoMlClient.ListDatasetsAsync(parent);
+
+            // Iterate over all response items, lazily performing RPCs as required
+            await response.ForEachAsync((Dataset item) =>
+            {
+                // Do something with each item
+                Console.WriteLine(item);
+            });
+
+            // Or iterate over pages (of server-defined size), performing one RPC per page
+            await response.AsRawResponses().ForEachAsync((ListDatasetsResponse page) =>
+            {
+                // Do something with each page of items
+                Console.WriteLine("A page of results:");
+                foreach (Dataset item in page)
+                {
+                    // Do something with each item
+                    Console.WriteLine(item);
+                }
+            });
+
+            // Or retrieve a single page of known size (unless it's the final page), performing as many RPCs as required
+            int pageSize = 10;
+            Page<Dataset> singlePage = await response.ReadPageAsync(pageSize);
+            // Do something with the page of items
+            Console.WriteLine($"A page of {pageSize} results (unless it's the final page):");
+            foreach (Dataset item in singlePage)
+            {
+                // Do something with each item
+                Console.WriteLine(item);
+            }
+            // Store the pageToken, for when the next page is required.
+            string nextPageToken = singlePage.NextPageToken;
             // End snippet
         }
 
         /// <summary>Snippet for UpdateDataset</summary>
-        public void UpdateDataset()
+        public void UpdateDatasetRequestObject()
         {
-            // Snippet: UpdateDataset(Dataset,FieldMask,CallSettings)
+            // Snippet: UpdateDataset(UpdateDatasetRequest, CallSettings)
             // Create client
             AutoMlClient autoMlClient = AutoMlClient.Create();
             // Initialize request argument(s)
-            Dataset dataset = new Dataset();
-            FieldMask updateMask = new FieldMask();
+            UpdateDatasetRequest request = new UpdateDatasetRequest
+            {
+                Dataset = new Dataset(),
+                UpdateMask = new FieldMask(),
+            };
             // Make the request
-            Dataset response = autoMlClient.UpdateDataset(dataset, updateMask);
+            Dataset response = autoMlClient.UpdateDataset(request);
             // End snippet
         }
 
         /// <summary>Snippet for UpdateDatasetAsync</summary>
-        public async Task UpdateDatasetAsync_RequestObject()
+        public async Task UpdateDatasetRequestObjectAsync()
         {
-            // Snippet: UpdateDatasetAsync(UpdateDatasetRequest,CallSettings)
-            // Additional: UpdateDatasetAsync(UpdateDatasetRequest,CancellationToken)
+            // Snippet: UpdateDatasetAsync(UpdateDatasetRequest, CallSettings)
+            // Additional: UpdateDatasetAsync(UpdateDatasetRequest, CancellationToken)
             // Create client
             AutoMlClient autoMlClient = await AutoMlClient.CreateAsync();
             // Initialize request argument(s)
@@ -221,291 +617,95 @@ namespace Google.Cloud.AutoML.V1.Snippets
         }
 
         /// <summary>Snippet for UpdateDataset</summary>
-        public void UpdateDataset_RequestObject()
+        public void UpdateDataset()
         {
-            // Snippet: UpdateDataset(UpdateDatasetRequest,CallSettings)
+            // Snippet: UpdateDataset(Dataset, FieldMask, CallSettings)
             // Create client
             AutoMlClient autoMlClient = AutoMlClient.Create();
             // Initialize request argument(s)
-            UpdateDatasetRequest request = new UpdateDatasetRequest
-            {
-                Dataset = new Dataset(),
-                UpdateMask = new FieldMask(),
-            };
+            Dataset dataset = new Dataset();
+            FieldMask updateMask = new FieldMask();
             // Make the request
-            Dataset response = autoMlClient.UpdateDataset(request);
+            Dataset response = autoMlClient.UpdateDataset(dataset, updateMask);
             // End snippet
         }
 
-        /// <summary>Snippet for GetDatasetAsync</summary>
-        public async Task GetDatasetAsync()
+        /// <summary>Snippet for UpdateDatasetAsync</summary>
+        public async Task UpdateDatasetAsync()
         {
-            // Snippet: GetDatasetAsync(DatasetName,CallSettings)
-            // Additional: GetDatasetAsync(DatasetName,CancellationToken)
+            // Snippet: UpdateDatasetAsync(Dataset, FieldMask, CallSettings)
+            // Additional: UpdateDatasetAsync(Dataset, FieldMask, CancellationToken)
             // Create client
             AutoMlClient autoMlClient = await AutoMlClient.CreateAsync();
             // Initialize request argument(s)
-            DatasetName name = new DatasetName("[PROJECT]", "[LOCATION]", "[DATASET]");
+            Dataset dataset = new Dataset();
+            FieldMask updateMask = new FieldMask();
             // Make the request
-            Dataset response = await autoMlClient.GetDatasetAsync(name);
+            Dataset response = await autoMlClient.UpdateDatasetAsync(dataset, updateMask);
             // End snippet
         }
 
-        /// <summary>Snippet for GetDataset</summary>
-        public void GetDataset()
+        /// <summary>Snippet for DeleteDataset</summary>
+        public void DeleteDatasetRequestObject()
         {
-            // Snippet: GetDataset(DatasetName,CallSettings)
+            // Snippet: DeleteDataset(DeleteDatasetRequest, CallSettings)
             // Create client
             AutoMlClient autoMlClient = AutoMlClient.Create();
             // Initialize request argument(s)
-            DatasetName name = new DatasetName("[PROJECT]", "[LOCATION]", "[DATASET]");
-            // Make the request
-            Dataset response = autoMlClient.GetDataset(name);
-            // End snippet
-        }
-
-        /// <summary>Snippet for GetDatasetAsync</summary>
-        public async Task GetDatasetAsync_RequestObject()
-        {
-            // Snippet: GetDatasetAsync(GetDatasetRequest,CallSettings)
-            // Additional: GetDatasetAsync(GetDatasetRequest,CancellationToken)
-            // Create client
-            AutoMlClient autoMlClient = await AutoMlClient.CreateAsync();
-            // Initialize request argument(s)
-            GetDatasetRequest request = new GetDatasetRequest
+            DeleteDatasetRequest request = new DeleteDatasetRequest
             {
-                DatasetName = new DatasetName("[PROJECT]", "[LOCATION]", "[DATASET]"),
+                DatasetName = DatasetName.FromProjectLocationDataset("[PROJECT]", "[LOCATION]", "[DATASET]"),
             };
             // Make the request
-            Dataset response = await autoMlClient.GetDatasetAsync(request);
-            // End snippet
-        }
-
-        /// <summary>Snippet for GetDataset</summary>
-        public void GetDataset_RequestObject()
-        {
-            // Snippet: GetDataset(GetDatasetRequest,CallSettings)
-            // Create client
-            AutoMlClient autoMlClient = AutoMlClient.Create();
-            // Initialize request argument(s)
-            GetDatasetRequest request = new GetDatasetRequest
-            {
-                DatasetName = new DatasetName("[PROJECT]", "[LOCATION]", "[DATASET]"),
-            };
-            // Make the request
-            Dataset response = autoMlClient.GetDataset(request);
-            // End snippet
-        }
-
-        /// <summary>Snippet for ListDatasetsAsync</summary>
-        public async Task ListDatasetsAsync()
-        {
-            // Snippet: ListDatasetsAsync(LocationName,string,int?,CallSettings)
-            // Create client
-            AutoMlClient autoMlClient = await AutoMlClient.CreateAsync();
-            // Initialize request argument(s)
-            LocationName parent = new LocationName("[PROJECT]", "[LOCATION]");
-            // Make the request
-            PagedAsyncEnumerable<ListDatasetsResponse, Dataset> response =
-                autoMlClient.ListDatasetsAsync(parent);
-
-            // Iterate over all response items, lazily performing RPCs as required
-            await response.ForEachAsync((Dataset item) =>
-            {
-                // Do something with each item
-                Console.WriteLine(item);
-            });
-
-            // Or iterate over pages (of server-defined size), performing one RPC per page
-            await response.AsRawResponses().ForEachAsync((ListDatasetsResponse page) =>
-            {
-                // Do something with each page of items
-                Console.WriteLine("A page of results:");
-                foreach (Dataset item in page)
-                {
-                    Console.WriteLine(item);
-                }
-            });
-
-            // Or retrieve a single page of known size (unless it's the final page), performing as many RPCs as required
-            int pageSize = 10;
-            Page<Dataset> singlePage = await response.ReadPageAsync(pageSize);
-            // Do something with the page of items
-            Console.WriteLine($"A page of {pageSize} results (unless it's the final page):");
-            foreach (Dataset item in singlePage)
-            {
-                Console.WriteLine(item);
-            }
-            // Store the pageToken, for when the next page is required.
-            string nextPageToken = singlePage.NextPageToken;
-            // End snippet
-        }
-
-        /// <summary>Snippet for ListDatasets</summary>
-        public void ListDatasets()
-        {
-            // Snippet: ListDatasets(LocationName,string,int?,CallSettings)
-            // Create client
-            AutoMlClient autoMlClient = AutoMlClient.Create();
-            // Initialize request argument(s)
-            LocationName parent = new LocationName("[PROJECT]", "[LOCATION]");
-            // Make the request
-            PagedEnumerable<ListDatasetsResponse, Dataset> response =
-                autoMlClient.ListDatasets(parent);
-
-            // Iterate over all response items, lazily performing RPCs as required
-            foreach (Dataset item in response)
-            {
-                // Do something with each item
-                Console.WriteLine(item);
-            }
-
-            // Or iterate over pages (of server-defined size), performing one RPC per page
-            foreach (ListDatasetsResponse page in response.AsRawResponses())
-            {
-                // Do something with each page of items
-                Console.WriteLine("A page of results:");
-                foreach (Dataset item in page)
-                {
-                    Console.WriteLine(item);
-                }
-            }
-
-            // Or retrieve a single page of known size (unless it's the final page), performing as many RPCs as required
-            int pageSize = 10;
-            Page<Dataset> singlePage = response.ReadPage(pageSize);
-            // Do something with the page of items
-            Console.WriteLine($"A page of {pageSize} results (unless it's the final page):");
-            foreach (Dataset item in singlePage)
-            {
-                Console.WriteLine(item);
-            }
-            // Store the pageToken, for when the next page is required.
-            string nextPageToken = singlePage.NextPageToken;
-            // End snippet
-        }
-
-        /// <summary>Snippet for ListDatasetsAsync</summary>
-        public async Task ListDatasetsAsync_RequestObject()
-        {
-            // Snippet: ListDatasetsAsync(ListDatasetsRequest,CallSettings)
-            // Create client
-            AutoMlClient autoMlClient = await AutoMlClient.CreateAsync();
-            // Initialize request argument(s)
-            ListDatasetsRequest request = new ListDatasetsRequest
-            {
-                ParentAsLocationName = new LocationName("[PROJECT]", "[LOCATION]"),
-            };
-            // Make the request
-            PagedAsyncEnumerable<ListDatasetsResponse, Dataset> response =
-                autoMlClient.ListDatasetsAsync(request);
-
-            // Iterate over all response items, lazily performing RPCs as required
-            await response.ForEachAsync((Dataset item) =>
-            {
-                // Do something with each item
-                Console.WriteLine(item);
-            });
-
-            // Or iterate over pages (of server-defined size), performing one RPC per page
-            await response.AsRawResponses().ForEachAsync((ListDatasetsResponse page) =>
-            {
-                // Do something with each page of items
-                Console.WriteLine("A page of results:");
-                foreach (Dataset item in page)
-                {
-                    Console.WriteLine(item);
-                }
-            });
-
-            // Or retrieve a single page of known size (unless it's the final page), performing as many RPCs as required
-            int pageSize = 10;
-            Page<Dataset> singlePage = await response.ReadPageAsync(pageSize);
-            // Do something with the page of items
-            Console.WriteLine($"A page of {pageSize} results (unless it's the final page):");
-            foreach (Dataset item in singlePage)
-            {
-                Console.WriteLine(item);
-            }
-            // Store the pageToken, for when the next page is required.
-            string nextPageToken = singlePage.NextPageToken;
-            // End snippet
-        }
-
-        /// <summary>Snippet for ListDatasets</summary>
-        public void ListDatasets_RequestObject()
-        {
-            // Snippet: ListDatasets(ListDatasetsRequest,CallSettings)
-            // Create client
-            AutoMlClient autoMlClient = AutoMlClient.Create();
-            // Initialize request argument(s)
-            ListDatasetsRequest request = new ListDatasetsRequest
-            {
-                ParentAsLocationName = new LocationName("[PROJECT]", "[LOCATION]"),
-            };
-            // Make the request
-            PagedEnumerable<ListDatasetsResponse, Dataset> response =
-                autoMlClient.ListDatasets(request);
-
-            // Iterate over all response items, lazily performing RPCs as required
-            foreach (Dataset item in response)
-            {
-                // Do something with each item
-                Console.WriteLine(item);
-            }
-
-            // Or iterate over pages (of server-defined size), performing one RPC per page
-            foreach (ListDatasetsResponse page in response.AsRawResponses())
-            {
-                // Do something with each page of items
-                Console.WriteLine("A page of results:");
-                foreach (Dataset item in page)
-                {
-                    Console.WriteLine(item);
-                }
-            }
-
-            // Or retrieve a single page of known size (unless it's the final page), performing as many RPCs as required
-            int pageSize = 10;
-            Page<Dataset> singlePage = response.ReadPage(pageSize);
-            // Do something with the page of items
-            Console.WriteLine($"A page of {pageSize} results (unless it's the final page):");
-            foreach (Dataset item in singlePage)
-            {
-                Console.WriteLine(item);
-            }
-            // Store the pageToken, for when the next page is required.
-            string nextPageToken = singlePage.NextPageToken;
-            // End snippet
-        }
-
-        /// <summary>Snippet for DeleteDatasetAsync</summary>
-        public async Task DeleteDatasetAsync()
-        {
-            // Snippet: DeleteDatasetAsync(DatasetName,CallSettings)
-            // Additional: DeleteDatasetAsync(DatasetName,CancellationToken)
-            // Create client
-            AutoMlClient autoMlClient = await AutoMlClient.CreateAsync();
-            // Initialize request argument(s)
-            DatasetName name = new DatasetName("[PROJECT]", "[LOCATION]", "[DATASET]");
-            // Make the request
-            Operation<Empty, OperationMetadata> response =
-                await autoMlClient.DeleteDatasetAsync(name);
+            Operation<Empty, OperationMetadata> response = autoMlClient.DeleteDataset(request);
 
             // Poll until the returned long-running operation is complete
-            Operation<Empty, OperationMetadata> completedResponse =
-                await response.PollUntilCompletedAsync();
-            // The long-running operation is now complete.
+            Operation<Empty, OperationMetadata> completedResponse = response.PollUntilCompleted();
+            // Retrieve the operation result
+            Empty result = completedResponse.Result;
 
             // Or get the name of the operation
             string operationName = response.Name;
             // This name can be stored, then the long-running operation retrieved later by name
-            Operation<Empty, OperationMetadata> retrievedResponse =
-                await autoMlClient.PollOnceDeleteDatasetAsync(operationName);
+            Operation<Empty, OperationMetadata> retrievedResponse = autoMlClient.PollOnceDeleteDataset(operationName);
             // Check if the retrieved long-running operation has completed
             if (retrievedResponse.IsCompleted)
             {
-                // The long-running operation is now complete.
+                // If it has completed, then access the result
+                Empty retrievedResult = retrievedResponse.Result;
+            }
+            // End snippet
+        }
+
+        /// <summary>Snippet for DeleteDatasetAsync</summary>
+        public async Task DeleteDatasetRequestObjectAsync()
+        {
+            // Snippet: DeleteDatasetAsync(DeleteDatasetRequest, CallSettings)
+            // Additional: DeleteDatasetAsync(DeleteDatasetRequest, CancellationToken)
+            // Create client
+            AutoMlClient autoMlClient = await AutoMlClient.CreateAsync();
+            // Initialize request argument(s)
+            DeleteDatasetRequest request = new DeleteDatasetRequest
+            {
+                DatasetName = DatasetName.FromProjectLocationDataset("[PROJECT]", "[LOCATION]", "[DATASET]"),
+            };
+            // Make the request
+            Operation<Empty, OperationMetadata> response = await autoMlClient.DeleteDatasetAsync(request);
+
+            // Poll until the returned long-running operation is complete
+            Operation<Empty, OperationMetadata> completedResponse = await response.PollUntilCompletedAsync();
+            // Retrieve the operation result
+            Empty result = completedResponse.Result;
+
+            // Or get the name of the operation
+            string operationName = response.Name;
+            // This name can be stored, then the long-running operation retrieved later by name
+            Operation<Empty, OperationMetadata> retrievedResponse = await autoMlClient.PollOnceDeleteDatasetAsync(operationName);
+            // Check if the retrieved long-running operation has completed
+            if (retrievedResponse.IsCompleted)
+            {
+                // If it has completed, then access the result
+                Empty retrievedResult = retrievedResponse.Result;
             }
             // End snippet
         }
@@ -513,127 +713,184 @@ namespace Google.Cloud.AutoML.V1.Snippets
         /// <summary>Snippet for DeleteDataset</summary>
         public void DeleteDataset()
         {
-            // Snippet: DeleteDataset(DatasetName,CallSettings)
+            // Snippet: DeleteDataset(string, CallSettings)
             // Create client
             AutoMlClient autoMlClient = AutoMlClient.Create();
             // Initialize request argument(s)
-            DatasetName name = new DatasetName("[PROJECT]", "[LOCATION]", "[DATASET]");
+            string name = "projects/[PROJECT]/locations/[LOCATION]/datasets/[DATASET]";
             // Make the request
-            Operation<Empty, OperationMetadata> response =
-                autoMlClient.DeleteDataset(name);
+            Operation<Empty, OperationMetadata> response = autoMlClient.DeleteDataset(name);
 
             // Poll until the returned long-running operation is complete
-            Operation<Empty, OperationMetadata> completedResponse =
-                response.PollUntilCompleted();
-            // The long-running operation is now complete.
+            Operation<Empty, OperationMetadata> completedResponse = response.PollUntilCompleted();
+            // Retrieve the operation result
+            Empty result = completedResponse.Result;
 
             // Or get the name of the operation
             string operationName = response.Name;
             // This name can be stored, then the long-running operation retrieved later by name
-            Operation<Empty, OperationMetadata> retrievedResponse =
-                autoMlClient.PollOnceDeleteDataset(operationName);
+            Operation<Empty, OperationMetadata> retrievedResponse = autoMlClient.PollOnceDeleteDataset(operationName);
             // Check if the retrieved long-running operation has completed
             if (retrievedResponse.IsCompleted)
             {
-                // The long-running operation is now complete.
+                // If it has completed, then access the result
+                Empty retrievedResult = retrievedResponse.Result;
             }
             // End snippet
         }
 
         /// <summary>Snippet for DeleteDatasetAsync</summary>
-        public async Task DeleteDatasetAsync_RequestObject()
+        public async Task DeleteDatasetAsync()
         {
-            // Snippet: DeleteDatasetAsync(DeleteDatasetRequest,CallSettings)
+            // Snippet: DeleteDatasetAsync(string, CallSettings)
+            // Additional: DeleteDatasetAsync(string, CancellationToken)
             // Create client
             AutoMlClient autoMlClient = await AutoMlClient.CreateAsync();
             // Initialize request argument(s)
-            DeleteDatasetRequest request = new DeleteDatasetRequest
-            {
-                DatasetName = new DatasetName("[PROJECT]", "[LOCATION]", "[DATASET]"),
-            };
+            string name = "projects/[PROJECT]/locations/[LOCATION]/datasets/[DATASET]";
             // Make the request
-            Operation<Empty, OperationMetadata> response =
-                await autoMlClient.DeleteDatasetAsync(request);
+            Operation<Empty, OperationMetadata> response = await autoMlClient.DeleteDatasetAsync(name);
 
             // Poll until the returned long-running operation is complete
-            Operation<Empty, OperationMetadata> completedResponse =
-                await response.PollUntilCompletedAsync();
-            // The long-running operation is now complete.
+            Operation<Empty, OperationMetadata> completedResponse = await response.PollUntilCompletedAsync();
+            // Retrieve the operation result
+            Empty result = completedResponse.Result;
 
             // Or get the name of the operation
             string operationName = response.Name;
             // This name can be stored, then the long-running operation retrieved later by name
-            Operation<Empty, OperationMetadata> retrievedResponse =
-                await autoMlClient.PollOnceDeleteDatasetAsync(operationName);
+            Operation<Empty, OperationMetadata> retrievedResponse = await autoMlClient.PollOnceDeleteDatasetAsync(operationName);
             // Check if the retrieved long-running operation has completed
             if (retrievedResponse.IsCompleted)
             {
-                // The long-running operation is now complete.
+                // If it has completed, then access the result
+                Empty retrievedResult = retrievedResponse.Result;
             }
             // End snippet
         }
 
         /// <summary>Snippet for DeleteDataset</summary>
-        public void DeleteDataset_RequestObject()
+        public void DeleteDatasetResourceNames()
         {
-            // Snippet: DeleteDataset(DeleteDatasetRequest,CallSettings)
+            // Snippet: DeleteDataset(DatasetName, CallSettings)
             // Create client
             AutoMlClient autoMlClient = AutoMlClient.Create();
             // Initialize request argument(s)
-            DeleteDatasetRequest request = new DeleteDatasetRequest
-            {
-                DatasetName = new DatasetName("[PROJECT]", "[LOCATION]", "[DATASET]"),
-            };
+            DatasetName name = DatasetName.FromProjectLocationDataset("[PROJECT]", "[LOCATION]", "[DATASET]");
             // Make the request
-            Operation<Empty, OperationMetadata> response =
-                autoMlClient.DeleteDataset(request);
+            Operation<Empty, OperationMetadata> response = autoMlClient.DeleteDataset(name);
 
             // Poll until the returned long-running operation is complete
-            Operation<Empty, OperationMetadata> completedResponse =
-                response.PollUntilCompleted();
-            // The long-running operation is now complete.
+            Operation<Empty, OperationMetadata> completedResponse = response.PollUntilCompleted();
+            // Retrieve the operation result
+            Empty result = completedResponse.Result;
 
             // Or get the name of the operation
             string operationName = response.Name;
             // This name can be stored, then the long-running operation retrieved later by name
-            Operation<Empty, OperationMetadata> retrievedResponse =
-                autoMlClient.PollOnceDeleteDataset(operationName);
+            Operation<Empty, OperationMetadata> retrievedResponse = autoMlClient.PollOnceDeleteDataset(operationName);
             // Check if the retrieved long-running operation has completed
             if (retrievedResponse.IsCompleted)
             {
-                // The long-running operation is now complete.
+                // If it has completed, then access the result
+                Empty retrievedResult = retrievedResponse.Result;
+            }
+            // End snippet
+        }
+
+        /// <summary>Snippet for DeleteDatasetAsync</summary>
+        public async Task DeleteDatasetResourceNamesAsync()
+        {
+            // Snippet: DeleteDatasetAsync(DatasetName, CallSettings)
+            // Additional: DeleteDatasetAsync(DatasetName, CancellationToken)
+            // Create client
+            AutoMlClient autoMlClient = await AutoMlClient.CreateAsync();
+            // Initialize request argument(s)
+            DatasetName name = DatasetName.FromProjectLocationDataset("[PROJECT]", "[LOCATION]", "[DATASET]");
+            // Make the request
+            Operation<Empty, OperationMetadata> response = await autoMlClient.DeleteDatasetAsync(name);
+
+            // Poll until the returned long-running operation is complete
+            Operation<Empty, OperationMetadata> completedResponse = await response.PollUntilCompletedAsync();
+            // Retrieve the operation result
+            Empty result = completedResponse.Result;
+
+            // Or get the name of the operation
+            string operationName = response.Name;
+            // This name can be stored, then the long-running operation retrieved later by name
+            Operation<Empty, OperationMetadata> retrievedResponse = await autoMlClient.PollOnceDeleteDatasetAsync(operationName);
+            // Check if the retrieved long-running operation has completed
+            if (retrievedResponse.IsCompleted)
+            {
+                // If it has completed, then access the result
+                Empty retrievedResult = retrievedResponse.Result;
+            }
+            // End snippet
+        }
+
+        /// <summary>Snippet for ImportData</summary>
+        public void ImportDataRequestObject()
+        {
+            // Snippet: ImportData(ImportDataRequest, CallSettings)
+            // Create client
+            AutoMlClient autoMlClient = AutoMlClient.Create();
+            // Initialize request argument(s)
+            ImportDataRequest request = new ImportDataRequest
+            {
+                DatasetName = DatasetName.FromProjectLocationDataset("[PROJECT]", "[LOCATION]", "[DATASET]"),
+                InputConfig = new InputConfig(),
+            };
+            // Make the request
+            Operation<Empty, OperationMetadata> response = autoMlClient.ImportData(request);
+
+            // Poll until the returned long-running operation is complete
+            Operation<Empty, OperationMetadata> completedResponse = response.PollUntilCompleted();
+            // Retrieve the operation result
+            Empty result = completedResponse.Result;
+
+            // Or get the name of the operation
+            string operationName = response.Name;
+            // This name can be stored, then the long-running operation retrieved later by name
+            Operation<Empty, OperationMetadata> retrievedResponse = autoMlClient.PollOnceImportData(operationName);
+            // Check if the retrieved long-running operation has completed
+            if (retrievedResponse.IsCompleted)
+            {
+                // If it has completed, then access the result
+                Empty retrievedResult = retrievedResponse.Result;
             }
             // End snippet
         }
 
         /// <summary>Snippet for ImportDataAsync</summary>
-        public async Task ImportDataAsync()
+        public async Task ImportDataRequestObjectAsync()
         {
-            // Snippet: ImportDataAsync(DatasetName,InputConfig,CallSettings)
-            // Additional: ImportDataAsync(DatasetName,InputConfig,CancellationToken)
+            // Snippet: ImportDataAsync(ImportDataRequest, CallSettings)
+            // Additional: ImportDataAsync(ImportDataRequest, CancellationToken)
             // Create client
             AutoMlClient autoMlClient = await AutoMlClient.CreateAsync();
             // Initialize request argument(s)
-            DatasetName name = new DatasetName("[PROJECT]", "[LOCATION]", "[DATASET]");
-            InputConfig inputConfig = new InputConfig();
+            ImportDataRequest request = new ImportDataRequest
+            {
+                DatasetName = DatasetName.FromProjectLocationDataset("[PROJECT]", "[LOCATION]", "[DATASET]"),
+                InputConfig = new InputConfig(),
+            };
             // Make the request
-            Operation<Empty, OperationMetadata> response =
-                await autoMlClient.ImportDataAsync(name, inputConfig);
+            Operation<Empty, OperationMetadata> response = await autoMlClient.ImportDataAsync(request);
 
             // Poll until the returned long-running operation is complete
-            Operation<Empty, OperationMetadata> completedResponse =
-                await response.PollUntilCompletedAsync();
-            // The long-running operation is now complete.
+            Operation<Empty, OperationMetadata> completedResponse = await response.PollUntilCompletedAsync();
+            // Retrieve the operation result
+            Empty result = completedResponse.Result;
 
             // Or get the name of the operation
             string operationName = response.Name;
             // This name can be stored, then the long-running operation retrieved later by name
-            Operation<Empty, OperationMetadata> retrievedResponse =
-                await autoMlClient.PollOnceImportDataAsync(operationName);
+            Operation<Empty, OperationMetadata> retrievedResponse = await autoMlClient.PollOnceImportDataAsync(operationName);
             // Check if the retrieved long-running operation has completed
             if (retrievedResponse.IsCompleted)
             {
-                // The long-running operation is now complete.
+                // If it has completed, then access the result
+                Empty retrievedResult = retrievedResponse.Result;
             }
             // End snippet
         }
@@ -641,130 +898,188 @@ namespace Google.Cloud.AutoML.V1.Snippets
         /// <summary>Snippet for ImportData</summary>
         public void ImportData()
         {
-            // Snippet: ImportData(DatasetName,InputConfig,CallSettings)
+            // Snippet: ImportData(string, InputConfig, CallSettings)
             // Create client
             AutoMlClient autoMlClient = AutoMlClient.Create();
             // Initialize request argument(s)
-            DatasetName name = new DatasetName("[PROJECT]", "[LOCATION]", "[DATASET]");
+            string name = "projects/[PROJECT]/locations/[LOCATION]/datasets/[DATASET]";
             InputConfig inputConfig = new InputConfig();
             // Make the request
-            Operation<Empty, OperationMetadata> response =
-                autoMlClient.ImportData(name, inputConfig);
+            Operation<Empty, OperationMetadata> response = autoMlClient.ImportData(name, inputConfig);
 
             // Poll until the returned long-running operation is complete
-            Operation<Empty, OperationMetadata> completedResponse =
-                response.PollUntilCompleted();
-            // The long-running operation is now complete.
+            Operation<Empty, OperationMetadata> completedResponse = response.PollUntilCompleted();
+            // Retrieve the operation result
+            Empty result = completedResponse.Result;
 
             // Or get the name of the operation
             string operationName = response.Name;
             // This name can be stored, then the long-running operation retrieved later by name
-            Operation<Empty, OperationMetadata> retrievedResponse =
-                autoMlClient.PollOnceImportData(operationName);
+            Operation<Empty, OperationMetadata> retrievedResponse = autoMlClient.PollOnceImportData(operationName);
             // Check if the retrieved long-running operation has completed
             if (retrievedResponse.IsCompleted)
             {
-                // The long-running operation is now complete.
+                // If it has completed, then access the result
+                Empty retrievedResult = retrievedResponse.Result;
             }
             // End snippet
         }
 
         /// <summary>Snippet for ImportDataAsync</summary>
-        public async Task ImportDataAsync_RequestObject()
+        public async Task ImportDataAsync()
         {
-            // Snippet: ImportDataAsync(ImportDataRequest,CallSettings)
+            // Snippet: ImportDataAsync(string, InputConfig, CallSettings)
+            // Additional: ImportDataAsync(string, InputConfig, CancellationToken)
             // Create client
             AutoMlClient autoMlClient = await AutoMlClient.CreateAsync();
             // Initialize request argument(s)
-            ImportDataRequest request = new ImportDataRequest
-            {
-                DatasetName = new DatasetName("[PROJECT]", "[LOCATION]", "[DATASET]"),
-                InputConfig = new InputConfig(),
-            };
+            string name = "projects/[PROJECT]/locations/[LOCATION]/datasets/[DATASET]";
+            InputConfig inputConfig = new InputConfig();
             // Make the request
-            Operation<Empty, OperationMetadata> response =
-                await autoMlClient.ImportDataAsync(request);
+            Operation<Empty, OperationMetadata> response = await autoMlClient.ImportDataAsync(name, inputConfig);
 
             // Poll until the returned long-running operation is complete
-            Operation<Empty, OperationMetadata> completedResponse =
-                await response.PollUntilCompletedAsync();
-            // The long-running operation is now complete.
+            Operation<Empty, OperationMetadata> completedResponse = await response.PollUntilCompletedAsync();
+            // Retrieve the operation result
+            Empty result = completedResponse.Result;
 
             // Or get the name of the operation
             string operationName = response.Name;
             // This name can be stored, then the long-running operation retrieved later by name
-            Operation<Empty, OperationMetadata> retrievedResponse =
-                await autoMlClient.PollOnceImportDataAsync(operationName);
+            Operation<Empty, OperationMetadata> retrievedResponse = await autoMlClient.PollOnceImportDataAsync(operationName);
             // Check if the retrieved long-running operation has completed
             if (retrievedResponse.IsCompleted)
             {
-                // The long-running operation is now complete.
+                // If it has completed, then access the result
+                Empty retrievedResult = retrievedResponse.Result;
             }
             // End snippet
         }
 
         /// <summary>Snippet for ImportData</summary>
-        public void ImportData_RequestObject()
+        public void ImportDataResourceNames()
         {
-            // Snippet: ImportData(ImportDataRequest,CallSettings)
+            // Snippet: ImportData(DatasetName, InputConfig, CallSettings)
             // Create client
             AutoMlClient autoMlClient = AutoMlClient.Create();
             // Initialize request argument(s)
-            ImportDataRequest request = new ImportDataRequest
-            {
-                DatasetName = new DatasetName("[PROJECT]", "[LOCATION]", "[DATASET]"),
-                InputConfig = new InputConfig(),
-            };
+            DatasetName name = DatasetName.FromProjectLocationDataset("[PROJECT]", "[LOCATION]", "[DATASET]");
+            InputConfig inputConfig = new InputConfig();
             // Make the request
-            Operation<Empty, OperationMetadata> response =
-                autoMlClient.ImportData(request);
+            Operation<Empty, OperationMetadata> response = autoMlClient.ImportData(name, inputConfig);
 
             // Poll until the returned long-running operation is complete
-            Operation<Empty, OperationMetadata> completedResponse =
-                response.PollUntilCompleted();
-            // The long-running operation is now complete.
+            Operation<Empty, OperationMetadata> completedResponse = response.PollUntilCompleted();
+            // Retrieve the operation result
+            Empty result = completedResponse.Result;
 
             // Or get the name of the operation
             string operationName = response.Name;
             // This name can be stored, then the long-running operation retrieved later by name
-            Operation<Empty, OperationMetadata> retrievedResponse =
-                autoMlClient.PollOnceImportData(operationName);
+            Operation<Empty, OperationMetadata> retrievedResponse = autoMlClient.PollOnceImportData(operationName);
             // Check if the retrieved long-running operation has completed
             if (retrievedResponse.IsCompleted)
             {
-                // The long-running operation is now complete.
+                // If it has completed, then access the result
+                Empty retrievedResult = retrievedResponse.Result;
+            }
+            // End snippet
+        }
+
+        /// <summary>Snippet for ImportDataAsync</summary>
+        public async Task ImportDataResourceNamesAsync()
+        {
+            // Snippet: ImportDataAsync(DatasetName, InputConfig, CallSettings)
+            // Additional: ImportDataAsync(DatasetName, InputConfig, CancellationToken)
+            // Create client
+            AutoMlClient autoMlClient = await AutoMlClient.CreateAsync();
+            // Initialize request argument(s)
+            DatasetName name = DatasetName.FromProjectLocationDataset("[PROJECT]", "[LOCATION]", "[DATASET]");
+            InputConfig inputConfig = new InputConfig();
+            // Make the request
+            Operation<Empty, OperationMetadata> response = await autoMlClient.ImportDataAsync(name, inputConfig);
+
+            // Poll until the returned long-running operation is complete
+            Operation<Empty, OperationMetadata> completedResponse = await response.PollUntilCompletedAsync();
+            // Retrieve the operation result
+            Empty result = completedResponse.Result;
+
+            // Or get the name of the operation
+            string operationName = response.Name;
+            // This name can be stored, then the long-running operation retrieved later by name
+            Operation<Empty, OperationMetadata> retrievedResponse = await autoMlClient.PollOnceImportDataAsync(operationName);
+            // Check if the retrieved long-running operation has completed
+            if (retrievedResponse.IsCompleted)
+            {
+                // If it has completed, then access the result
+                Empty retrievedResult = retrievedResponse.Result;
+            }
+            // End snippet
+        }
+
+        /// <summary>Snippet for ExportData</summary>
+        public void ExportDataRequestObject()
+        {
+            // Snippet: ExportData(ExportDataRequest, CallSettings)
+            // Create client
+            AutoMlClient autoMlClient = AutoMlClient.Create();
+            // Initialize request argument(s)
+            ExportDataRequest request = new ExportDataRequest
+            {
+                DatasetName = DatasetName.FromProjectLocationDataset("[PROJECT]", "[LOCATION]", "[DATASET]"),
+                OutputConfig = new OutputConfig(),
+            };
+            // Make the request
+            Operation<Empty, OperationMetadata> response = autoMlClient.ExportData(request);
+
+            // Poll until the returned long-running operation is complete
+            Operation<Empty, OperationMetadata> completedResponse = response.PollUntilCompleted();
+            // Retrieve the operation result
+            Empty result = completedResponse.Result;
+
+            // Or get the name of the operation
+            string operationName = response.Name;
+            // This name can be stored, then the long-running operation retrieved later by name
+            Operation<Empty, OperationMetadata> retrievedResponse = autoMlClient.PollOnceExportData(operationName);
+            // Check if the retrieved long-running operation has completed
+            if (retrievedResponse.IsCompleted)
+            {
+                // If it has completed, then access the result
+                Empty retrievedResult = retrievedResponse.Result;
             }
             // End snippet
         }
 
         /// <summary>Snippet for ExportDataAsync</summary>
-        public async Task ExportDataAsync()
+        public async Task ExportDataRequestObjectAsync()
         {
-            // Snippet: ExportDataAsync(DatasetName,OutputConfig,CallSettings)
-            // Additional: ExportDataAsync(DatasetName,OutputConfig,CancellationToken)
+            // Snippet: ExportDataAsync(ExportDataRequest, CallSettings)
+            // Additional: ExportDataAsync(ExportDataRequest, CancellationToken)
             // Create client
             AutoMlClient autoMlClient = await AutoMlClient.CreateAsync();
             // Initialize request argument(s)
-            DatasetName name = new DatasetName("[PROJECT]", "[LOCATION]", "[DATASET]");
-            OutputConfig outputConfig = new OutputConfig();
+            ExportDataRequest request = new ExportDataRequest
+            {
+                DatasetName = DatasetName.FromProjectLocationDataset("[PROJECT]", "[LOCATION]", "[DATASET]"),
+                OutputConfig = new OutputConfig(),
+            };
             // Make the request
-            Operation<Empty, OperationMetadata> response =
-                await autoMlClient.ExportDataAsync(name, outputConfig);
+            Operation<Empty, OperationMetadata> response = await autoMlClient.ExportDataAsync(request);
 
             // Poll until the returned long-running operation is complete
-            Operation<Empty, OperationMetadata> completedResponse =
-                await response.PollUntilCompletedAsync();
-            // The long-running operation is now complete.
+            Operation<Empty, OperationMetadata> completedResponse = await response.PollUntilCompletedAsync();
+            // Retrieve the operation result
+            Empty result = completedResponse.Result;
 
             // Or get the name of the operation
             string operationName = response.Name;
             // This name can be stored, then the long-running operation retrieved later by name
-            Operation<Empty, OperationMetadata> retrievedResponse =
-                await autoMlClient.PollOnceExportDataAsync(operationName);
+            Operation<Empty, OperationMetadata> retrievedResponse = await autoMlClient.PollOnceExportDataAsync(operationName);
             // Check if the retrieved long-running operation has completed
             if (retrievedResponse.IsCompleted)
             {
-                // The long-running operation is now complete.
+                // If it has completed, then access the result
+                Empty retrievedResult = retrievedResponse.Result;
             }
             // End snippet
         }
@@ -772,140 +1087,152 @@ namespace Google.Cloud.AutoML.V1.Snippets
         /// <summary>Snippet for ExportData</summary>
         public void ExportData()
         {
-            // Snippet: ExportData(DatasetName,OutputConfig,CallSettings)
+            // Snippet: ExportData(string, OutputConfig, CallSettings)
             // Create client
             AutoMlClient autoMlClient = AutoMlClient.Create();
             // Initialize request argument(s)
-            DatasetName name = new DatasetName("[PROJECT]", "[LOCATION]", "[DATASET]");
+            string name = "projects/[PROJECT]/locations/[LOCATION]/datasets/[DATASET]";
             OutputConfig outputConfig = new OutputConfig();
             // Make the request
-            Operation<Empty, OperationMetadata> response =
-                autoMlClient.ExportData(name, outputConfig);
+            Operation<Empty, OperationMetadata> response = autoMlClient.ExportData(name, outputConfig);
 
             // Poll until the returned long-running operation is complete
-            Operation<Empty, OperationMetadata> completedResponse =
-                response.PollUntilCompleted();
-            // The long-running operation is now complete.
+            Operation<Empty, OperationMetadata> completedResponse = response.PollUntilCompleted();
+            // Retrieve the operation result
+            Empty result = completedResponse.Result;
 
             // Or get the name of the operation
             string operationName = response.Name;
             // This name can be stored, then the long-running operation retrieved later by name
-            Operation<Empty, OperationMetadata> retrievedResponse =
-                autoMlClient.PollOnceExportData(operationName);
+            Operation<Empty, OperationMetadata> retrievedResponse = autoMlClient.PollOnceExportData(operationName);
             // Check if the retrieved long-running operation has completed
             if (retrievedResponse.IsCompleted)
             {
-                // The long-running operation is now complete.
+                // If it has completed, then access the result
+                Empty retrievedResult = retrievedResponse.Result;
             }
             // End snippet
         }
 
         /// <summary>Snippet for ExportDataAsync</summary>
-        public async Task ExportDataAsync_RequestObject()
+        public async Task ExportDataAsync()
         {
-            // Snippet: ExportDataAsync(ExportDataRequest,CallSettings)
+            // Snippet: ExportDataAsync(string, OutputConfig, CallSettings)
+            // Additional: ExportDataAsync(string, OutputConfig, CancellationToken)
             // Create client
             AutoMlClient autoMlClient = await AutoMlClient.CreateAsync();
             // Initialize request argument(s)
-            ExportDataRequest request = new ExportDataRequest
-            {
-                DatasetName = new DatasetName("[PROJECT]", "[LOCATION]", "[DATASET]"),
-                OutputConfig = new OutputConfig(),
-            };
+            string name = "projects/[PROJECT]/locations/[LOCATION]/datasets/[DATASET]";
+            OutputConfig outputConfig = new OutputConfig();
             // Make the request
-            Operation<Empty, OperationMetadata> response =
-                await autoMlClient.ExportDataAsync(request);
+            Operation<Empty, OperationMetadata> response = await autoMlClient.ExportDataAsync(name, outputConfig);
 
             // Poll until the returned long-running operation is complete
-            Operation<Empty, OperationMetadata> completedResponse =
-                await response.PollUntilCompletedAsync();
-            // The long-running operation is now complete.
+            Operation<Empty, OperationMetadata> completedResponse = await response.PollUntilCompletedAsync();
+            // Retrieve the operation result
+            Empty result = completedResponse.Result;
 
             // Or get the name of the operation
             string operationName = response.Name;
             // This name can be stored, then the long-running operation retrieved later by name
-            Operation<Empty, OperationMetadata> retrievedResponse =
-                await autoMlClient.PollOnceExportDataAsync(operationName);
+            Operation<Empty, OperationMetadata> retrievedResponse = await autoMlClient.PollOnceExportDataAsync(operationName);
             // Check if the retrieved long-running operation has completed
             if (retrievedResponse.IsCompleted)
             {
-                // The long-running operation is now complete.
+                // If it has completed, then access the result
+                Empty retrievedResult = retrievedResponse.Result;
             }
             // End snippet
         }
 
         /// <summary>Snippet for ExportData</summary>
-        public void ExportData_RequestObject()
+        public void ExportDataResourceNames()
         {
-            // Snippet: ExportData(ExportDataRequest,CallSettings)
+            // Snippet: ExportData(DatasetName, OutputConfig, CallSettings)
             // Create client
             AutoMlClient autoMlClient = AutoMlClient.Create();
             // Initialize request argument(s)
-            ExportDataRequest request = new ExportDataRequest
-            {
-                DatasetName = new DatasetName("[PROJECT]", "[LOCATION]", "[DATASET]"),
-                OutputConfig = new OutputConfig(),
-            };
+            DatasetName name = DatasetName.FromProjectLocationDataset("[PROJECT]", "[LOCATION]", "[DATASET]");
+            OutputConfig outputConfig = new OutputConfig();
             // Make the request
-            Operation<Empty, OperationMetadata> response =
-                autoMlClient.ExportData(request);
+            Operation<Empty, OperationMetadata> response = autoMlClient.ExportData(name, outputConfig);
 
             // Poll until the returned long-running operation is complete
-            Operation<Empty, OperationMetadata> completedResponse =
-                response.PollUntilCompleted();
-            // The long-running operation is now complete.
+            Operation<Empty, OperationMetadata> completedResponse = response.PollUntilCompleted();
+            // Retrieve the operation result
+            Empty result = completedResponse.Result;
 
             // Or get the name of the operation
             string operationName = response.Name;
             // This name can be stored, then the long-running operation retrieved later by name
-            Operation<Empty, OperationMetadata> retrievedResponse =
-                autoMlClient.PollOnceExportData(operationName);
+            Operation<Empty, OperationMetadata> retrievedResponse = autoMlClient.PollOnceExportData(operationName);
             // Check if the retrieved long-running operation has completed
             if (retrievedResponse.IsCompleted)
             {
-                // The long-running operation is now complete.
+                // If it has completed, then access the result
+                Empty retrievedResult = retrievedResponse.Result;
             }
             // End snippet
         }
 
-        /// <summary>Snippet for GetAnnotationSpecAsync</summary>
-        public async Task GetAnnotationSpecAsync()
+        /// <summary>Snippet for ExportDataAsync</summary>
+        public async Task ExportDataResourceNamesAsync()
         {
-            // Snippet: GetAnnotationSpecAsync(AnnotationSpecName,CallSettings)
-            // Additional: GetAnnotationSpecAsync(AnnotationSpecName,CancellationToken)
+            // Snippet: ExportDataAsync(DatasetName, OutputConfig, CallSettings)
+            // Additional: ExportDataAsync(DatasetName, OutputConfig, CancellationToken)
             // Create client
             AutoMlClient autoMlClient = await AutoMlClient.CreateAsync();
             // Initialize request argument(s)
-            AnnotationSpecName name = new AnnotationSpecName("[PROJECT]", "[LOCATION]", "[DATASET]", "[ANNOTATION_SPEC]");
+            DatasetName name = DatasetName.FromProjectLocationDataset("[PROJECT]", "[LOCATION]", "[DATASET]");
+            OutputConfig outputConfig = new OutputConfig();
             // Make the request
-            AnnotationSpec response = await autoMlClient.GetAnnotationSpecAsync(name);
+            Operation<Empty, OperationMetadata> response = await autoMlClient.ExportDataAsync(name, outputConfig);
+
+            // Poll until the returned long-running operation is complete
+            Operation<Empty, OperationMetadata> completedResponse = await response.PollUntilCompletedAsync();
+            // Retrieve the operation result
+            Empty result = completedResponse.Result;
+
+            // Or get the name of the operation
+            string operationName = response.Name;
+            // This name can be stored, then the long-running operation retrieved later by name
+            Operation<Empty, OperationMetadata> retrievedResponse = await autoMlClient.PollOnceExportDataAsync(operationName);
+            // Check if the retrieved long-running operation has completed
+            if (retrievedResponse.IsCompleted)
+            {
+                // If it has completed, then access the result
+                Empty retrievedResult = retrievedResponse.Result;
+            }
             // End snippet
         }
 
         /// <summary>Snippet for GetAnnotationSpec</summary>
-        public void GetAnnotationSpec()
+        public void GetAnnotationSpecRequestObject()
         {
-            // Snippet: GetAnnotationSpec(AnnotationSpecName,CallSettings)
+            // Snippet: GetAnnotationSpec(GetAnnotationSpecRequest, CallSettings)
             // Create client
             AutoMlClient autoMlClient = AutoMlClient.Create();
             // Initialize request argument(s)
-            AnnotationSpecName name = new AnnotationSpecName("[PROJECT]", "[LOCATION]", "[DATASET]", "[ANNOTATION_SPEC]");
+            GetAnnotationSpecRequest request = new GetAnnotationSpecRequest
+            {
+                AnnotationSpecName = AnnotationSpecName.FromProjectLocationDatasetAnnotationSpec("[PROJECT]", "[LOCATION]", "[DATASET]", "[ANNOTATION_SPEC]"),
+            };
             // Make the request
-            AnnotationSpec response = autoMlClient.GetAnnotationSpec(name);
+            AnnotationSpec response = autoMlClient.GetAnnotationSpec(request);
             // End snippet
         }
 
         /// <summary>Snippet for GetAnnotationSpecAsync</summary>
-        public async Task GetAnnotationSpecAsync_RequestObject()
+        public async Task GetAnnotationSpecRequestObjectAsync()
         {
-            // Snippet: GetAnnotationSpecAsync(GetAnnotationSpecRequest,CallSettings)
-            // Additional: GetAnnotationSpecAsync(GetAnnotationSpecRequest,CancellationToken)
+            // Snippet: GetAnnotationSpecAsync(GetAnnotationSpecRequest, CallSettings)
+            // Additional: GetAnnotationSpecAsync(GetAnnotationSpecRequest, CancellationToken)
             // Create client
             AutoMlClient autoMlClient = await AutoMlClient.CreateAsync();
             // Initialize request argument(s)
             GetAnnotationSpecRequest request = new GetAnnotationSpecRequest
             {
-                AnnotationSpecName = new AnnotationSpecName("[PROJECT]", "[LOCATION]", "[DATASET]", "[ANNOTATION_SPEC]"),
+                AnnotationSpecName = AnnotationSpecName.FromProjectLocationDatasetAnnotationSpec("[PROJECT]", "[LOCATION]", "[DATASET]", "[ANNOTATION_SPEC]"),
             };
             // Make the request
             AnnotationSpec response = await autoMlClient.GetAnnotationSpecAsync(request);
@@ -913,46 +1240,117 @@ namespace Google.Cloud.AutoML.V1.Snippets
         }
 
         /// <summary>Snippet for GetAnnotationSpec</summary>
-        public void GetAnnotationSpec_RequestObject()
+        public void GetAnnotationSpec()
         {
-            // Snippet: GetAnnotationSpec(GetAnnotationSpecRequest,CallSettings)
+            // Snippet: GetAnnotationSpec(string, CallSettings)
             // Create client
             AutoMlClient autoMlClient = AutoMlClient.Create();
             // Initialize request argument(s)
-            GetAnnotationSpecRequest request = new GetAnnotationSpecRequest
-            {
-                AnnotationSpecName = new AnnotationSpecName("[PROJECT]", "[LOCATION]", "[DATASET]", "[ANNOTATION_SPEC]"),
-            };
+            string name = "projects/[PROJECT]/locations/[LOCATION]/datasets/[DATASET]/annotationSpecs/[ANNOTATION_SPEC]";
             // Make the request
-            AnnotationSpec response = autoMlClient.GetAnnotationSpec(request);
+            AnnotationSpec response = autoMlClient.GetAnnotationSpec(name);
             // End snippet
         }
 
-        /// <summary>Snippet for CreateModelAsync</summary>
-        public async Task CreateModelAsync()
+        /// <summary>Snippet for GetAnnotationSpecAsync</summary>
+        public async Task GetAnnotationSpecAsync()
         {
-            // Snippet: CreateModelAsync(LocationName,Model,CallSettings)
-            // Additional: CreateModelAsync(LocationName,Model,CancellationToken)
+            // Snippet: GetAnnotationSpecAsync(string, CallSettings)
+            // Additional: GetAnnotationSpecAsync(string, CancellationToken)
             // Create client
             AutoMlClient autoMlClient = await AutoMlClient.CreateAsync();
             // Initialize request argument(s)
-            LocationName parent = new LocationName("[PROJECT]", "[LOCATION]");
-            Model model = new Model();
+            string name = "projects/[PROJECT]/locations/[LOCATION]/datasets/[DATASET]/annotationSpecs/[ANNOTATION_SPEC]";
             // Make the request
-            Operation<Model, OperationMetadata> response =
-                await autoMlClient.CreateModelAsync(parent, model);
+            AnnotationSpec response = await autoMlClient.GetAnnotationSpecAsync(name);
+            // End snippet
+        }
+
+        /// <summary>Snippet for GetAnnotationSpec</summary>
+        public void GetAnnotationSpecResourceNames()
+        {
+            // Snippet: GetAnnotationSpec(AnnotationSpecName, CallSettings)
+            // Create client
+            AutoMlClient autoMlClient = AutoMlClient.Create();
+            // Initialize request argument(s)
+            AnnotationSpecName name = AnnotationSpecName.FromProjectLocationDatasetAnnotationSpec("[PROJECT]", "[LOCATION]", "[DATASET]", "[ANNOTATION_SPEC]");
+            // Make the request
+            AnnotationSpec response = autoMlClient.GetAnnotationSpec(name);
+            // End snippet
+        }
+
+        /// <summary>Snippet for GetAnnotationSpecAsync</summary>
+        public async Task GetAnnotationSpecResourceNamesAsync()
+        {
+            // Snippet: GetAnnotationSpecAsync(AnnotationSpecName, CallSettings)
+            // Additional: GetAnnotationSpecAsync(AnnotationSpecName, CancellationToken)
+            // Create client
+            AutoMlClient autoMlClient = await AutoMlClient.CreateAsync();
+            // Initialize request argument(s)
+            AnnotationSpecName name = AnnotationSpecName.FromProjectLocationDatasetAnnotationSpec("[PROJECT]", "[LOCATION]", "[DATASET]", "[ANNOTATION_SPEC]");
+            // Make the request
+            AnnotationSpec response = await autoMlClient.GetAnnotationSpecAsync(name);
+            // End snippet
+        }
+
+        /// <summary>Snippet for CreateModel</summary>
+        public void CreateModelRequestObject()
+        {
+            // Snippet: CreateModel(CreateModelRequest, CallSettings)
+            // Create client
+            AutoMlClient autoMlClient = AutoMlClient.Create();
+            // Initialize request argument(s)
+            CreateModelRequest request = new CreateModelRequest
+            {
+                ParentAsLocationName = LocationName.FromProjectLocation("[PROJECT]", "[LOCATION]"),
+                Model = new Model(),
+            };
+            // Make the request
+            Operation<Model, OperationMetadata> response = autoMlClient.CreateModel(request);
 
             // Poll until the returned long-running operation is complete
-            Operation<Model, OperationMetadata> completedResponse =
-                await response.PollUntilCompletedAsync();
+            Operation<Model, OperationMetadata> completedResponse = response.PollUntilCompleted();
             // Retrieve the operation result
             Model result = completedResponse.Result;
 
             // Or get the name of the operation
             string operationName = response.Name;
             // This name can be stored, then the long-running operation retrieved later by name
-            Operation<Model, OperationMetadata> retrievedResponse =
-                await autoMlClient.PollOnceCreateModelAsync(operationName);
+            Operation<Model, OperationMetadata> retrievedResponse = autoMlClient.PollOnceCreateModel(operationName);
+            // Check if the retrieved long-running operation has completed
+            if (retrievedResponse.IsCompleted)
+            {
+                // If it has completed, then access the result
+                Model retrievedResult = retrievedResponse.Result;
+            }
+            // End snippet
+        }
+
+        /// <summary>Snippet for CreateModelAsync</summary>
+        public async Task CreateModelRequestObjectAsync()
+        {
+            // Snippet: CreateModelAsync(CreateModelRequest, CallSettings)
+            // Additional: CreateModelAsync(CreateModelRequest, CancellationToken)
+            // Create client
+            AutoMlClient autoMlClient = await AutoMlClient.CreateAsync();
+            // Initialize request argument(s)
+            CreateModelRequest request = new CreateModelRequest
+            {
+                ParentAsLocationName = LocationName.FromProjectLocation("[PROJECT]", "[LOCATION]"),
+                Model = new Model(),
+            };
+            // Make the request
+            Operation<Model, OperationMetadata> response = await autoMlClient.CreateModelAsync(request);
+
+            // Poll until the returned long-running operation is complete
+            Operation<Model, OperationMetadata> completedResponse = await response.PollUntilCompletedAsync();
+            // Retrieve the operation result
+            Model result = completedResponse.Result;
+
+            // Or get the name of the operation
+            string operationName = response.Name;
+            // This name can be stored, then the long-running operation retrieved later by name
+            Operation<Model, OperationMetadata> retrievedResponse = await autoMlClient.PollOnceCreateModelAsync(operationName);
             // Check if the retrieved long-running operation has completed
             if (retrievedResponse.IsCompleted)
             {
@@ -965,27 +1363,24 @@ namespace Google.Cloud.AutoML.V1.Snippets
         /// <summary>Snippet for CreateModel</summary>
         public void CreateModel()
         {
-            // Snippet: CreateModel(LocationName,Model,CallSettings)
+            // Snippet: CreateModel(string, Model, CallSettings)
             // Create client
             AutoMlClient autoMlClient = AutoMlClient.Create();
             // Initialize request argument(s)
-            LocationName parent = new LocationName("[PROJECT]", "[LOCATION]");
+            string parent = "projects/[PROJECT]/locations/[LOCATION]";
             Model model = new Model();
             // Make the request
-            Operation<Model, OperationMetadata> response =
-                autoMlClient.CreateModel(parent, model);
+            Operation<Model, OperationMetadata> response = autoMlClient.CreateModel(parent, model);
 
             // Poll until the returned long-running operation is complete
-            Operation<Model, OperationMetadata> completedResponse =
-                response.PollUntilCompleted();
+            Operation<Model, OperationMetadata> completedResponse = response.PollUntilCompleted();
             // Retrieve the operation result
             Model result = completedResponse.Result;
 
             // Or get the name of the operation
             string operationName = response.Name;
             // This name can be stored, then the long-running operation retrieved later by name
-            Operation<Model, OperationMetadata> retrievedResponse =
-                autoMlClient.PollOnceCreateModel(operationName);
+            Operation<Model, OperationMetadata> retrievedResponse = autoMlClient.PollOnceCreateModel(operationName);
             // Check if the retrieved long-running operation has completed
             if (retrievedResponse.IsCompleted)
             {
@@ -996,32 +1391,27 @@ namespace Google.Cloud.AutoML.V1.Snippets
         }
 
         /// <summary>Snippet for CreateModelAsync</summary>
-        public async Task CreateModelAsync_RequestObject()
+        public async Task CreateModelAsync()
         {
-            // Snippet: CreateModelAsync(CreateModelRequest,CallSettings)
+            // Snippet: CreateModelAsync(string, Model, CallSettings)
+            // Additional: CreateModelAsync(string, Model, CancellationToken)
             // Create client
             AutoMlClient autoMlClient = await AutoMlClient.CreateAsync();
             // Initialize request argument(s)
-            CreateModelRequest request = new CreateModelRequest
-            {
-                ParentAsLocationName = new LocationName("[PROJECT]", "[LOCATION]"),
-                Model = new Model(),
-            };
+            string parent = "projects/[PROJECT]/locations/[LOCATION]";
+            Model model = new Model();
             // Make the request
-            Operation<Model, OperationMetadata> response =
-                await autoMlClient.CreateModelAsync(request);
+            Operation<Model, OperationMetadata> response = await autoMlClient.CreateModelAsync(parent, model);
 
             // Poll until the returned long-running operation is complete
-            Operation<Model, OperationMetadata> completedResponse =
-                await response.PollUntilCompletedAsync();
+            Operation<Model, OperationMetadata> completedResponse = await response.PollUntilCompletedAsync();
             // Retrieve the operation result
             Model result = completedResponse.Result;
 
             // Or get the name of the operation
             string operationName = response.Name;
             // This name can be stored, then the long-running operation retrieved later by name
-            Operation<Model, OperationMetadata> retrievedResponse =
-                await autoMlClient.PollOnceCreateModelAsync(operationName);
+            Operation<Model, OperationMetadata> retrievedResponse = await autoMlClient.PollOnceCreateModelAsync(operationName);
             // Check if the retrieved long-running operation has completed
             if (retrievedResponse.IsCompleted)
             {
@@ -1032,32 +1422,26 @@ namespace Google.Cloud.AutoML.V1.Snippets
         }
 
         /// <summary>Snippet for CreateModel</summary>
-        public void CreateModel_RequestObject()
+        public void CreateModelResourceNames()
         {
-            // Snippet: CreateModel(CreateModelRequest,CallSettings)
+            // Snippet: CreateModel(LocationName, Model, CallSettings)
             // Create client
             AutoMlClient autoMlClient = AutoMlClient.Create();
             // Initialize request argument(s)
-            CreateModelRequest request = new CreateModelRequest
-            {
-                ParentAsLocationName = new LocationName("[PROJECT]", "[LOCATION]"),
-                Model = new Model(),
-            };
+            LocationName parent = LocationName.FromProjectLocation("[PROJECT]", "[LOCATION]");
+            Model model = new Model();
             // Make the request
-            Operation<Model, OperationMetadata> response =
-                autoMlClient.CreateModel(request);
+            Operation<Model, OperationMetadata> response = autoMlClient.CreateModel(parent, model);
 
             // Poll until the returned long-running operation is complete
-            Operation<Model, OperationMetadata> completedResponse =
-                response.PollUntilCompleted();
+            Operation<Model, OperationMetadata> completedResponse = response.PollUntilCompleted();
             // Retrieve the operation result
             Model result = completedResponse.Result;
 
             // Or get the name of the operation
             string operationName = response.Name;
             // This name can be stored, then the long-running operation retrieved later by name
-            Operation<Model, OperationMetadata> retrievedResponse =
-                autoMlClient.PollOnceCreateModel(operationName);
+            Operation<Model, OperationMetadata> retrievedResponse = autoMlClient.PollOnceCreateModel(operationName);
             // Check if the retrieved long-running operation has completed
             if (retrievedResponse.IsCompleted)
             {
@@ -1067,44 +1451,64 @@ namespace Google.Cloud.AutoML.V1.Snippets
             // End snippet
         }
 
-        /// <summary>Snippet for GetModelAsync</summary>
-        public async Task GetModelAsync()
+        /// <summary>Snippet for CreateModelAsync</summary>
+        public async Task CreateModelResourceNamesAsync()
         {
-            // Snippet: GetModelAsync(ModelName,CallSettings)
-            // Additional: GetModelAsync(ModelName,CancellationToken)
+            // Snippet: CreateModelAsync(LocationName, Model, CallSettings)
+            // Additional: CreateModelAsync(LocationName, Model, CancellationToken)
             // Create client
             AutoMlClient autoMlClient = await AutoMlClient.CreateAsync();
             // Initialize request argument(s)
-            ModelName name = new ModelName("[PROJECT]", "[LOCATION]", "[MODEL]");
+            LocationName parent = LocationName.FromProjectLocation("[PROJECT]", "[LOCATION]");
+            Model model = new Model();
             // Make the request
-            Model response = await autoMlClient.GetModelAsync(name);
+            Operation<Model, OperationMetadata> response = await autoMlClient.CreateModelAsync(parent, model);
+
+            // Poll until the returned long-running operation is complete
+            Operation<Model, OperationMetadata> completedResponse = await response.PollUntilCompletedAsync();
+            // Retrieve the operation result
+            Model result = completedResponse.Result;
+
+            // Or get the name of the operation
+            string operationName = response.Name;
+            // This name can be stored, then the long-running operation retrieved later by name
+            Operation<Model, OperationMetadata> retrievedResponse = await autoMlClient.PollOnceCreateModelAsync(operationName);
+            // Check if the retrieved long-running operation has completed
+            if (retrievedResponse.IsCompleted)
+            {
+                // If it has completed, then access the result
+                Model retrievedResult = retrievedResponse.Result;
+            }
             // End snippet
         }
 
         /// <summary>Snippet for GetModel</summary>
-        public void GetModel()
+        public void GetModelRequestObject()
         {
-            // Snippet: GetModel(ModelName,CallSettings)
+            // Snippet: GetModel(GetModelRequest, CallSettings)
             // Create client
             AutoMlClient autoMlClient = AutoMlClient.Create();
             // Initialize request argument(s)
-            ModelName name = new ModelName("[PROJECT]", "[LOCATION]", "[MODEL]");
+            GetModelRequest request = new GetModelRequest
+            {
+                ModelName = ModelName.FromProjectLocationModel("[PROJECT]", "[LOCATION]", "[MODEL]"),
+            };
             // Make the request
-            Model response = autoMlClient.GetModel(name);
+            Model response = autoMlClient.GetModel(request);
             // End snippet
         }
 
         /// <summary>Snippet for GetModelAsync</summary>
-        public async Task GetModelAsync_RequestObject()
+        public async Task GetModelRequestObjectAsync()
         {
-            // Snippet: GetModelAsync(GetModelRequest,CallSettings)
-            // Additional: GetModelAsync(GetModelRequest,CancellationToken)
+            // Snippet: GetModelAsync(GetModelRequest, CallSettings)
+            // Additional: GetModelAsync(GetModelRequest, CancellationToken)
             // Create client
             AutoMlClient autoMlClient = await AutoMlClient.CreateAsync();
             // Initialize request argument(s)
             GetModelRequest request = new GetModelRequest
             {
-                ModelName = new ModelName("[PROJECT]", "[LOCATION]", "[MODEL]"),
+                ModelName = ModelName.FromProjectLocationModel("[PROJECT]", "[LOCATION]", "[MODEL]"),
             };
             // Make the request
             Model response = await autoMlClient.GetModelAsync(request);
@@ -1112,55 +1516,542 @@ namespace Google.Cloud.AutoML.V1.Snippets
         }
 
         /// <summary>Snippet for GetModel</summary>
-        public void GetModel_RequestObject()
+        public void GetModel()
         {
-            // Snippet: GetModel(GetModelRequest,CallSettings)
+            // Snippet: GetModel(string, CallSettings)
             // Create client
             AutoMlClient autoMlClient = AutoMlClient.Create();
             // Initialize request argument(s)
-            GetModelRequest request = new GetModelRequest
-            {
-                ModelName = new ModelName("[PROJECT]", "[LOCATION]", "[MODEL]"),
-            };
+            string name = "projects/[PROJECT]/locations/[LOCATION]/models/[MODEL]";
             // Make the request
-            Model response = autoMlClient.GetModel(request);
+            Model response = autoMlClient.GetModel(name);
             // End snippet
         }
 
-        /// <summary>Snippet for UpdateModelAsync</summary>
-        public async Task UpdateModelAsync()
+        /// <summary>Snippet for GetModelAsync</summary>
+        public async Task GetModelAsync()
         {
-            // Snippet: UpdateModelAsync(Model,FieldMask,CallSettings)
-            // Additional: UpdateModelAsync(Model,FieldMask,CancellationToken)
+            // Snippet: GetModelAsync(string, CallSettings)
+            // Additional: GetModelAsync(string, CancellationToken)
             // Create client
             AutoMlClient autoMlClient = await AutoMlClient.CreateAsync();
             // Initialize request argument(s)
-            Model model = new Model();
-            FieldMask updateMask = new FieldMask();
+            string name = "projects/[PROJECT]/locations/[LOCATION]/models/[MODEL]";
             // Make the request
-            Model response = await autoMlClient.UpdateModelAsync(model, updateMask);
+            Model response = await autoMlClient.GetModelAsync(name);
+            // End snippet
+        }
+
+        /// <summary>Snippet for GetModel</summary>
+        public void GetModelResourceNames()
+        {
+            // Snippet: GetModel(ModelName, CallSettings)
+            // Create client
+            AutoMlClient autoMlClient = AutoMlClient.Create();
+            // Initialize request argument(s)
+            ModelName name = ModelName.FromProjectLocationModel("[PROJECT]", "[LOCATION]", "[MODEL]");
+            // Make the request
+            Model response = autoMlClient.GetModel(name);
+            // End snippet
+        }
+
+        /// <summary>Snippet for GetModelAsync</summary>
+        public async Task GetModelResourceNamesAsync()
+        {
+            // Snippet: GetModelAsync(ModelName, CallSettings)
+            // Additional: GetModelAsync(ModelName, CancellationToken)
+            // Create client
+            AutoMlClient autoMlClient = await AutoMlClient.CreateAsync();
+            // Initialize request argument(s)
+            ModelName name = ModelName.FromProjectLocationModel("[PROJECT]", "[LOCATION]", "[MODEL]");
+            // Make the request
+            Model response = await autoMlClient.GetModelAsync(name);
+            // End snippet
+        }
+
+        /// <summary>Snippet for ListModels</summary>
+        public void ListModelsRequestObject()
+        {
+            // Snippet: ListModels(ListModelsRequest, CallSettings)
+            // Create client
+            AutoMlClient autoMlClient = AutoMlClient.Create();
+            // Initialize request argument(s)
+            ListModelsRequest request = new ListModelsRequest
+            {
+                ParentAsLocationName = LocationName.FromProjectLocation("[PROJECT]", "[LOCATION]"),
+                Filter = "",
+            };
+            // Make the request
+            PagedEnumerable<ListModelsResponse, Model> response = autoMlClient.ListModels(request);
+
+            // Iterate over all response items, lazily performing RPCs as required
+            foreach (Model item in response)
+            {
+                // Do something with each item
+                Console.WriteLine(item);
+            }
+
+            // Or iterate over pages (of server-defined size), performing one RPC per page
+            foreach (ListModelsResponse page in response.AsRawResponses())
+            {
+                // Do something with each page of items
+                Console.WriteLine("A page of results:");
+                foreach (Model item in page)
+                {
+                    // Do something with each item
+                    Console.WriteLine(item);
+                }
+            }
+
+            // Or retrieve a single page of known size (unless it's the final page), performing as many RPCs as required
+            int pageSize = 10;
+            Page<Model> singlePage = response.ReadPage(pageSize);
+            // Do something with the page of items
+            Console.WriteLine($"A page of {pageSize} results (unless it's the final page):");
+            foreach (Model item in singlePage)
+            {
+                // Do something with each item
+                Console.WriteLine(item);
+            }
+            // Store the pageToken, for when the next page is required.
+            string nextPageToken = singlePage.NextPageToken;
+            // End snippet
+        }
+
+        /// <summary>Snippet for ListModels</summary>
+        public async Task ListModelsRequestObjectAsync()
+        {
+            // Snippet: ListModelsAsync(ListModelsRequest, CallSettings)
+            // Create client
+            AutoMlClient autoMlClient = await AutoMlClient.CreateAsync();
+            // Initialize request argument(s)
+            ListModelsRequest request = new ListModelsRequest
+            {
+                ParentAsLocationName = LocationName.FromProjectLocation("[PROJECT]", "[LOCATION]"),
+                Filter = "",
+            };
+            // Make the request
+            PagedAsyncEnumerable<ListModelsResponse, Model> response = autoMlClient.ListModelsAsync(request);
+
+            // Iterate over all response items, lazily performing RPCs as required
+            await response.ForEachAsync((Model item) =>
+            {
+                // Do something with each item
+                Console.WriteLine(item);
+            });
+
+            // Or iterate over pages (of server-defined size), performing one RPC per page
+            await response.AsRawResponses().ForEachAsync((ListModelsResponse page) =>
+            {
+                // Do something with each page of items
+                Console.WriteLine("A page of results:");
+                foreach (Model item in page)
+                {
+                    // Do something with each item
+                    Console.WriteLine(item);
+                }
+            });
+
+            // Or retrieve a single page of known size (unless it's the final page), performing as many RPCs as required
+            int pageSize = 10;
+            Page<Model> singlePage = await response.ReadPageAsync(pageSize);
+            // Do something with the page of items
+            Console.WriteLine($"A page of {pageSize} results (unless it's the final page):");
+            foreach (Model item in singlePage)
+            {
+                // Do something with each item
+                Console.WriteLine(item);
+            }
+            // Store the pageToken, for when the next page is required.
+            string nextPageToken = singlePage.NextPageToken;
+            // End snippet
+        }
+
+        /// <summary>Snippet for ListModels</summary>
+        public void ListModels()
+        {
+            // Snippet: ListModels(string, string, int?, CallSettings)
+            // Create client
+            AutoMlClient autoMlClient = AutoMlClient.Create();
+            // Initialize request argument(s)
+            string parent = "projects/[PROJECT]/locations/[LOCATION]";
+            // Make the request
+            PagedEnumerable<ListModelsResponse, Model> response = autoMlClient.ListModels(parent);
+
+            // Iterate over all response items, lazily performing RPCs as required
+            foreach (Model item in response)
+            {
+                // Do something with each item
+                Console.WriteLine(item);
+            }
+
+            // Or iterate over pages (of server-defined size), performing one RPC per page
+            foreach (ListModelsResponse page in response.AsRawResponses())
+            {
+                // Do something with each page of items
+                Console.WriteLine("A page of results:");
+                foreach (Model item in page)
+                {
+                    // Do something with each item
+                    Console.WriteLine(item);
+                }
+            }
+
+            // Or retrieve a single page of known size (unless it's the final page), performing as many RPCs as required
+            int pageSize = 10;
+            Page<Model> singlePage = response.ReadPage(pageSize);
+            // Do something with the page of items
+            Console.WriteLine($"A page of {pageSize} results (unless it's the final page):");
+            foreach (Model item in singlePage)
+            {
+                // Do something with each item
+                Console.WriteLine(item);
+            }
+            // Store the pageToken, for when the next page is required.
+            string nextPageToken = singlePage.NextPageToken;
+            // End snippet
+        }
+
+        /// <summary>Snippet for ListModels</summary>
+        public async Task ListModelsAsync()
+        {
+            // Snippet: ListModelsAsync(string, string, int?, CallSettings)
+            // Create client
+            AutoMlClient autoMlClient = await AutoMlClient.CreateAsync();
+            // Initialize request argument(s)
+            string parent = "projects/[PROJECT]/locations/[LOCATION]";
+            // Make the request
+            PagedAsyncEnumerable<ListModelsResponse, Model> response = autoMlClient.ListModelsAsync(parent);
+
+            // Iterate over all response items, lazily performing RPCs as required
+            await response.ForEachAsync((Model item) =>
+            {
+                // Do something with each item
+                Console.WriteLine(item);
+            });
+
+            // Or iterate over pages (of server-defined size), performing one RPC per page
+            await response.AsRawResponses().ForEachAsync((ListModelsResponse page) =>
+            {
+                // Do something with each page of items
+                Console.WriteLine("A page of results:");
+                foreach (Model item in page)
+                {
+                    // Do something with each item
+                    Console.WriteLine(item);
+                }
+            });
+
+            // Or retrieve a single page of known size (unless it's the final page), performing as many RPCs as required
+            int pageSize = 10;
+            Page<Model> singlePage = await response.ReadPageAsync(pageSize);
+            // Do something with the page of items
+            Console.WriteLine($"A page of {pageSize} results (unless it's the final page):");
+            foreach (Model item in singlePage)
+            {
+                // Do something with each item
+                Console.WriteLine(item);
+            }
+            // Store the pageToken, for when the next page is required.
+            string nextPageToken = singlePage.NextPageToken;
+            // End snippet
+        }
+
+        /// <summary>Snippet for ListModels</summary>
+        public void ListModelsResourceNames()
+        {
+            // Snippet: ListModels(LocationName, string, int?, CallSettings)
+            // Create client
+            AutoMlClient autoMlClient = AutoMlClient.Create();
+            // Initialize request argument(s)
+            LocationName parent = LocationName.FromProjectLocation("[PROJECT]", "[LOCATION]");
+            // Make the request
+            PagedEnumerable<ListModelsResponse, Model> response = autoMlClient.ListModels(parent);
+
+            // Iterate over all response items, lazily performing RPCs as required
+            foreach (Model item in response)
+            {
+                // Do something with each item
+                Console.WriteLine(item);
+            }
+
+            // Or iterate over pages (of server-defined size), performing one RPC per page
+            foreach (ListModelsResponse page in response.AsRawResponses())
+            {
+                // Do something with each page of items
+                Console.WriteLine("A page of results:");
+                foreach (Model item in page)
+                {
+                    // Do something with each item
+                    Console.WriteLine(item);
+                }
+            }
+
+            // Or retrieve a single page of known size (unless it's the final page), performing as many RPCs as required
+            int pageSize = 10;
+            Page<Model> singlePage = response.ReadPage(pageSize);
+            // Do something with the page of items
+            Console.WriteLine($"A page of {pageSize} results (unless it's the final page):");
+            foreach (Model item in singlePage)
+            {
+                // Do something with each item
+                Console.WriteLine(item);
+            }
+            // Store the pageToken, for when the next page is required.
+            string nextPageToken = singlePage.NextPageToken;
+            // End snippet
+        }
+
+        /// <summary>Snippet for ListModels</summary>
+        public async Task ListModelsResourceNamesAsync()
+        {
+            // Snippet: ListModelsAsync(LocationName, string, int?, CallSettings)
+            // Create client
+            AutoMlClient autoMlClient = await AutoMlClient.CreateAsync();
+            // Initialize request argument(s)
+            LocationName parent = LocationName.FromProjectLocation("[PROJECT]", "[LOCATION]");
+            // Make the request
+            PagedAsyncEnumerable<ListModelsResponse, Model> response = autoMlClient.ListModelsAsync(parent);
+
+            // Iterate over all response items, lazily performing RPCs as required
+            await response.ForEachAsync((Model item) =>
+            {
+                // Do something with each item
+                Console.WriteLine(item);
+            });
+
+            // Or iterate over pages (of server-defined size), performing one RPC per page
+            await response.AsRawResponses().ForEachAsync((ListModelsResponse page) =>
+            {
+                // Do something with each page of items
+                Console.WriteLine("A page of results:");
+                foreach (Model item in page)
+                {
+                    // Do something with each item
+                    Console.WriteLine(item);
+                }
+            });
+
+            // Or retrieve a single page of known size (unless it's the final page), performing as many RPCs as required
+            int pageSize = 10;
+            Page<Model> singlePage = await response.ReadPageAsync(pageSize);
+            // Do something with the page of items
+            Console.WriteLine($"A page of {pageSize} results (unless it's the final page):");
+            foreach (Model item in singlePage)
+            {
+                // Do something with each item
+                Console.WriteLine(item);
+            }
+            // Store the pageToken, for when the next page is required.
+            string nextPageToken = singlePage.NextPageToken;
+            // End snippet
+        }
+
+        /// <summary>Snippet for DeleteModel</summary>
+        public void DeleteModelRequestObject()
+        {
+            // Snippet: DeleteModel(DeleteModelRequest, CallSettings)
+            // Create client
+            AutoMlClient autoMlClient = AutoMlClient.Create();
+            // Initialize request argument(s)
+            DeleteModelRequest request = new DeleteModelRequest
+            {
+                ModelName = ModelName.FromProjectLocationModel("[PROJECT]", "[LOCATION]", "[MODEL]"),
+            };
+            // Make the request
+            Operation<Empty, OperationMetadata> response = autoMlClient.DeleteModel(request);
+
+            // Poll until the returned long-running operation is complete
+            Operation<Empty, OperationMetadata> completedResponse = response.PollUntilCompleted();
+            // Retrieve the operation result
+            Empty result = completedResponse.Result;
+
+            // Or get the name of the operation
+            string operationName = response.Name;
+            // This name can be stored, then the long-running operation retrieved later by name
+            Operation<Empty, OperationMetadata> retrievedResponse = autoMlClient.PollOnceDeleteModel(operationName);
+            // Check if the retrieved long-running operation has completed
+            if (retrievedResponse.IsCompleted)
+            {
+                // If it has completed, then access the result
+                Empty retrievedResult = retrievedResponse.Result;
+            }
+            // End snippet
+        }
+
+        /// <summary>Snippet for DeleteModelAsync</summary>
+        public async Task DeleteModelRequestObjectAsync()
+        {
+            // Snippet: DeleteModelAsync(DeleteModelRequest, CallSettings)
+            // Additional: DeleteModelAsync(DeleteModelRequest, CancellationToken)
+            // Create client
+            AutoMlClient autoMlClient = await AutoMlClient.CreateAsync();
+            // Initialize request argument(s)
+            DeleteModelRequest request = new DeleteModelRequest
+            {
+                ModelName = ModelName.FromProjectLocationModel("[PROJECT]", "[LOCATION]", "[MODEL]"),
+            };
+            // Make the request
+            Operation<Empty, OperationMetadata> response = await autoMlClient.DeleteModelAsync(request);
+
+            // Poll until the returned long-running operation is complete
+            Operation<Empty, OperationMetadata> completedResponse = await response.PollUntilCompletedAsync();
+            // Retrieve the operation result
+            Empty result = completedResponse.Result;
+
+            // Or get the name of the operation
+            string operationName = response.Name;
+            // This name can be stored, then the long-running operation retrieved later by name
+            Operation<Empty, OperationMetadata> retrievedResponse = await autoMlClient.PollOnceDeleteModelAsync(operationName);
+            // Check if the retrieved long-running operation has completed
+            if (retrievedResponse.IsCompleted)
+            {
+                // If it has completed, then access the result
+                Empty retrievedResult = retrievedResponse.Result;
+            }
+            // End snippet
+        }
+
+        /// <summary>Snippet for DeleteModel</summary>
+        public void DeleteModel()
+        {
+            // Snippet: DeleteModel(string, CallSettings)
+            // Create client
+            AutoMlClient autoMlClient = AutoMlClient.Create();
+            // Initialize request argument(s)
+            string name = "projects/[PROJECT]/locations/[LOCATION]/models/[MODEL]";
+            // Make the request
+            Operation<Empty, OperationMetadata> response = autoMlClient.DeleteModel(name);
+
+            // Poll until the returned long-running operation is complete
+            Operation<Empty, OperationMetadata> completedResponse = response.PollUntilCompleted();
+            // Retrieve the operation result
+            Empty result = completedResponse.Result;
+
+            // Or get the name of the operation
+            string operationName = response.Name;
+            // This name can be stored, then the long-running operation retrieved later by name
+            Operation<Empty, OperationMetadata> retrievedResponse = autoMlClient.PollOnceDeleteModel(operationName);
+            // Check if the retrieved long-running operation has completed
+            if (retrievedResponse.IsCompleted)
+            {
+                // If it has completed, then access the result
+                Empty retrievedResult = retrievedResponse.Result;
+            }
+            // End snippet
+        }
+
+        /// <summary>Snippet for DeleteModelAsync</summary>
+        public async Task DeleteModelAsync()
+        {
+            // Snippet: DeleteModelAsync(string, CallSettings)
+            // Additional: DeleteModelAsync(string, CancellationToken)
+            // Create client
+            AutoMlClient autoMlClient = await AutoMlClient.CreateAsync();
+            // Initialize request argument(s)
+            string name = "projects/[PROJECT]/locations/[LOCATION]/models/[MODEL]";
+            // Make the request
+            Operation<Empty, OperationMetadata> response = await autoMlClient.DeleteModelAsync(name);
+
+            // Poll until the returned long-running operation is complete
+            Operation<Empty, OperationMetadata> completedResponse = await response.PollUntilCompletedAsync();
+            // Retrieve the operation result
+            Empty result = completedResponse.Result;
+
+            // Or get the name of the operation
+            string operationName = response.Name;
+            // This name can be stored, then the long-running operation retrieved later by name
+            Operation<Empty, OperationMetadata> retrievedResponse = await autoMlClient.PollOnceDeleteModelAsync(operationName);
+            // Check if the retrieved long-running operation has completed
+            if (retrievedResponse.IsCompleted)
+            {
+                // If it has completed, then access the result
+                Empty retrievedResult = retrievedResponse.Result;
+            }
+            // End snippet
+        }
+
+        /// <summary>Snippet for DeleteModel</summary>
+        public void DeleteModelResourceNames()
+        {
+            // Snippet: DeleteModel(ModelName, CallSettings)
+            // Create client
+            AutoMlClient autoMlClient = AutoMlClient.Create();
+            // Initialize request argument(s)
+            ModelName name = ModelName.FromProjectLocationModel("[PROJECT]", "[LOCATION]", "[MODEL]");
+            // Make the request
+            Operation<Empty, OperationMetadata> response = autoMlClient.DeleteModel(name);
+
+            // Poll until the returned long-running operation is complete
+            Operation<Empty, OperationMetadata> completedResponse = response.PollUntilCompleted();
+            // Retrieve the operation result
+            Empty result = completedResponse.Result;
+
+            // Or get the name of the operation
+            string operationName = response.Name;
+            // This name can be stored, then the long-running operation retrieved later by name
+            Operation<Empty, OperationMetadata> retrievedResponse = autoMlClient.PollOnceDeleteModel(operationName);
+            // Check if the retrieved long-running operation has completed
+            if (retrievedResponse.IsCompleted)
+            {
+                // If it has completed, then access the result
+                Empty retrievedResult = retrievedResponse.Result;
+            }
+            // End snippet
+        }
+
+        /// <summary>Snippet for DeleteModelAsync</summary>
+        public async Task DeleteModelResourceNamesAsync()
+        {
+            // Snippet: DeleteModelAsync(ModelName, CallSettings)
+            // Additional: DeleteModelAsync(ModelName, CancellationToken)
+            // Create client
+            AutoMlClient autoMlClient = await AutoMlClient.CreateAsync();
+            // Initialize request argument(s)
+            ModelName name = ModelName.FromProjectLocationModel("[PROJECT]", "[LOCATION]", "[MODEL]");
+            // Make the request
+            Operation<Empty, OperationMetadata> response = await autoMlClient.DeleteModelAsync(name);
+
+            // Poll until the returned long-running operation is complete
+            Operation<Empty, OperationMetadata> completedResponse = await response.PollUntilCompletedAsync();
+            // Retrieve the operation result
+            Empty result = completedResponse.Result;
+
+            // Or get the name of the operation
+            string operationName = response.Name;
+            // This name can be stored, then the long-running operation retrieved later by name
+            Operation<Empty, OperationMetadata> retrievedResponse = await autoMlClient.PollOnceDeleteModelAsync(operationName);
+            // Check if the retrieved long-running operation has completed
+            if (retrievedResponse.IsCompleted)
+            {
+                // If it has completed, then access the result
+                Empty retrievedResult = retrievedResponse.Result;
+            }
             // End snippet
         }
 
         /// <summary>Snippet for UpdateModel</summary>
-        public void UpdateModel()
+        public void UpdateModelRequestObject()
         {
-            // Snippet: UpdateModel(Model,FieldMask,CallSettings)
+            // Snippet: UpdateModel(UpdateModelRequest, CallSettings)
             // Create client
             AutoMlClient autoMlClient = AutoMlClient.Create();
             // Initialize request argument(s)
-            Model model = new Model();
-            FieldMask updateMask = new FieldMask();
+            UpdateModelRequest request = new UpdateModelRequest
+            {
+                Model = new Model(),
+                UpdateMask = new FieldMask(),
+            };
             // Make the request
-            Model response = autoMlClient.UpdateModel(model, updateMask);
+            Model response = autoMlClient.UpdateModel(request);
             // End snippet
         }
 
         /// <summary>Snippet for UpdateModelAsync</summary>
-        public async Task UpdateModelAsync_RequestObject()
+        public async Task UpdateModelRequestObjectAsync()
         {
-            // Snippet: UpdateModelAsync(UpdateModelRequest,CallSettings)
-            // Additional: UpdateModelAsync(UpdateModelRequest,CancellationToken)
+            // Snippet: UpdateModelAsync(UpdateModelRequest, CallSettings)
+            // Additional: UpdateModelAsync(UpdateModelRequest, CancellationToken)
             // Create client
             AutoMlClient autoMlClient = await AutoMlClient.CreateAsync();
             // Initialize request argument(s)
@@ -1175,358 +2066,99 @@ namespace Google.Cloud.AutoML.V1.Snippets
         }
 
         /// <summary>Snippet for UpdateModel</summary>
-        public void UpdateModel_RequestObject()
+        public void UpdateModel()
         {
-            // Snippet: UpdateModel(UpdateModelRequest,CallSettings)
+            // Snippet: UpdateModel(Model, FieldMask, CallSettings)
             // Create client
             AutoMlClient autoMlClient = AutoMlClient.Create();
             // Initialize request argument(s)
-            UpdateModelRequest request = new UpdateModelRequest
-            {
-                Model = new Model(),
-                UpdateMask = new FieldMask(),
-            };
+            Model model = new Model();
+            FieldMask updateMask = new FieldMask();
             // Make the request
-            Model response = autoMlClient.UpdateModel(request);
+            Model response = autoMlClient.UpdateModel(model, updateMask);
             // End snippet
         }
 
-        /// <summary>Snippet for ListModelsAsync</summary>
-        public async Task ListModelsAsync()
+        /// <summary>Snippet for UpdateModelAsync</summary>
+        public async Task UpdateModelAsync()
         {
-            // Snippet: ListModelsAsync(LocationName,string,int?,CallSettings)
+            // Snippet: UpdateModelAsync(Model, FieldMask, CallSettings)
+            // Additional: UpdateModelAsync(Model, FieldMask, CancellationToken)
             // Create client
             AutoMlClient autoMlClient = await AutoMlClient.CreateAsync();
             // Initialize request argument(s)
-            LocationName parent = new LocationName("[PROJECT]", "[LOCATION]");
+            Model model = new Model();
+            FieldMask updateMask = new FieldMask();
             // Make the request
-            PagedAsyncEnumerable<ListModelsResponse, Model> response =
-                autoMlClient.ListModelsAsync(parent);
-
-            // Iterate over all response items, lazily performing RPCs as required
-            await response.ForEachAsync((Model item) =>
-            {
-                // Do something with each item
-                Console.WriteLine(item);
-            });
-
-            // Or iterate over pages (of server-defined size), performing one RPC per page
-            await response.AsRawResponses().ForEachAsync((ListModelsResponse page) =>
-            {
-                // Do something with each page of items
-                Console.WriteLine("A page of results:");
-                foreach (Model item in page)
-                {
-                    Console.WriteLine(item);
-                }
-            });
-
-            // Or retrieve a single page of known size (unless it's the final page), performing as many RPCs as required
-            int pageSize = 10;
-            Page<Model> singlePage = await response.ReadPageAsync(pageSize);
-            // Do something with the page of items
-            Console.WriteLine($"A page of {pageSize} results (unless it's the final page):");
-            foreach (Model item in singlePage)
-            {
-                Console.WriteLine(item);
-            }
-            // Store the pageToken, for when the next page is required.
-            string nextPageToken = singlePage.NextPageToken;
+            Model response = await autoMlClient.UpdateModelAsync(model, updateMask);
             // End snippet
         }
 
-        /// <summary>Snippet for ListModels</summary>
-        public void ListModels()
+        /// <summary>Snippet for DeployModel</summary>
+        public void DeployModelRequestObject()
         {
-            // Snippet: ListModels(LocationName,string,int?,CallSettings)
+            // Snippet: DeployModel(DeployModelRequest, CallSettings)
             // Create client
             AutoMlClient autoMlClient = AutoMlClient.Create();
             // Initialize request argument(s)
-            LocationName parent = new LocationName("[PROJECT]", "[LOCATION]");
-            // Make the request
-            PagedEnumerable<ListModelsResponse, Model> response =
-                autoMlClient.ListModels(parent);
-
-            // Iterate over all response items, lazily performing RPCs as required
-            foreach (Model item in response)
+            DeployModelRequest request = new DeployModelRequest
             {
-                // Do something with each item
-                Console.WriteLine(item);
-            }
-
-            // Or iterate over pages (of server-defined size), performing one RPC per page
-            foreach (ListModelsResponse page in response.AsRawResponses())
-            {
-                // Do something with each page of items
-                Console.WriteLine("A page of results:");
-                foreach (Model item in page)
-                {
-                    Console.WriteLine(item);
-                }
-            }
-
-            // Or retrieve a single page of known size (unless it's the final page), performing as many RPCs as required
-            int pageSize = 10;
-            Page<Model> singlePage = response.ReadPage(pageSize);
-            // Do something with the page of items
-            Console.WriteLine($"A page of {pageSize} results (unless it's the final page):");
-            foreach (Model item in singlePage)
-            {
-                Console.WriteLine(item);
-            }
-            // Store the pageToken, for when the next page is required.
-            string nextPageToken = singlePage.NextPageToken;
-            // End snippet
-        }
-
-        /// <summary>Snippet for ListModelsAsync</summary>
-        public async Task ListModelsAsync_RequestObject()
-        {
-            // Snippet: ListModelsAsync(ListModelsRequest,CallSettings)
-            // Create client
-            AutoMlClient autoMlClient = await AutoMlClient.CreateAsync();
-            // Initialize request argument(s)
-            ListModelsRequest request = new ListModelsRequest
-            {
-                ParentAsLocationName = new LocationName("[PROJECT]", "[LOCATION]"),
+                ModelName = ModelName.FromProjectLocationModel("[PROJECT]", "[LOCATION]", "[MODEL]"),
+                ImageObjectDetectionModelDeploymentMetadata = new ImageObjectDetectionModelDeploymentMetadata(),
+                ImageClassificationModelDeploymentMetadata = new ImageClassificationModelDeploymentMetadata(),
             };
             // Make the request
-            PagedAsyncEnumerable<ListModelsResponse, Model> response =
-                autoMlClient.ListModelsAsync(request);
-
-            // Iterate over all response items, lazily performing RPCs as required
-            await response.ForEachAsync((Model item) =>
-            {
-                // Do something with each item
-                Console.WriteLine(item);
-            });
-
-            // Or iterate over pages (of server-defined size), performing one RPC per page
-            await response.AsRawResponses().ForEachAsync((ListModelsResponse page) =>
-            {
-                // Do something with each page of items
-                Console.WriteLine("A page of results:");
-                foreach (Model item in page)
-                {
-                    Console.WriteLine(item);
-                }
-            });
-
-            // Or retrieve a single page of known size (unless it's the final page), performing as many RPCs as required
-            int pageSize = 10;
-            Page<Model> singlePage = await response.ReadPageAsync(pageSize);
-            // Do something with the page of items
-            Console.WriteLine($"A page of {pageSize} results (unless it's the final page):");
-            foreach (Model item in singlePage)
-            {
-                Console.WriteLine(item);
-            }
-            // Store the pageToken, for when the next page is required.
-            string nextPageToken = singlePage.NextPageToken;
-            // End snippet
-        }
-
-        /// <summary>Snippet for ListModels</summary>
-        public void ListModels_RequestObject()
-        {
-            // Snippet: ListModels(ListModelsRequest,CallSettings)
-            // Create client
-            AutoMlClient autoMlClient = AutoMlClient.Create();
-            // Initialize request argument(s)
-            ListModelsRequest request = new ListModelsRequest
-            {
-                ParentAsLocationName = new LocationName("[PROJECT]", "[LOCATION]"),
-            };
-            // Make the request
-            PagedEnumerable<ListModelsResponse, Model> response =
-                autoMlClient.ListModels(request);
-
-            // Iterate over all response items, lazily performing RPCs as required
-            foreach (Model item in response)
-            {
-                // Do something with each item
-                Console.WriteLine(item);
-            }
-
-            // Or iterate over pages (of server-defined size), performing one RPC per page
-            foreach (ListModelsResponse page in response.AsRawResponses())
-            {
-                // Do something with each page of items
-                Console.WriteLine("A page of results:");
-                foreach (Model item in page)
-                {
-                    Console.WriteLine(item);
-                }
-            }
-
-            // Or retrieve a single page of known size (unless it's the final page), performing as many RPCs as required
-            int pageSize = 10;
-            Page<Model> singlePage = response.ReadPage(pageSize);
-            // Do something with the page of items
-            Console.WriteLine($"A page of {pageSize} results (unless it's the final page):");
-            foreach (Model item in singlePage)
-            {
-                Console.WriteLine(item);
-            }
-            // Store the pageToken, for when the next page is required.
-            string nextPageToken = singlePage.NextPageToken;
-            // End snippet
-        }
-
-        /// <summary>Snippet for DeleteModelAsync</summary>
-        public async Task DeleteModelAsync()
-        {
-            // Snippet: DeleteModelAsync(ModelName,CallSettings)
-            // Additional: DeleteModelAsync(ModelName,CancellationToken)
-            // Create client
-            AutoMlClient autoMlClient = await AutoMlClient.CreateAsync();
-            // Initialize request argument(s)
-            ModelName name = new ModelName("[PROJECT]", "[LOCATION]", "[MODEL]");
-            // Make the request
-            Operation<Empty, OperationMetadata> response =
-                await autoMlClient.DeleteModelAsync(name);
+            Operation<Empty, OperationMetadata> response = autoMlClient.DeployModel(request);
 
             // Poll until the returned long-running operation is complete
-            Operation<Empty, OperationMetadata> completedResponse =
-                await response.PollUntilCompletedAsync();
-            // The long-running operation is now complete.
+            Operation<Empty, OperationMetadata> completedResponse = response.PollUntilCompleted();
+            // Retrieve the operation result
+            Empty result = completedResponse.Result;
 
             // Or get the name of the operation
             string operationName = response.Name;
             // This name can be stored, then the long-running operation retrieved later by name
-            Operation<Empty, OperationMetadata> retrievedResponse =
-                await autoMlClient.PollOnceDeleteModelAsync(operationName);
+            Operation<Empty, OperationMetadata> retrievedResponse = autoMlClient.PollOnceDeployModel(operationName);
             // Check if the retrieved long-running operation has completed
             if (retrievedResponse.IsCompleted)
             {
-                // The long-running operation is now complete.
-            }
-            // End snippet
-        }
-
-        /// <summary>Snippet for DeleteModel</summary>
-        public void DeleteModel()
-        {
-            // Snippet: DeleteModel(ModelName,CallSettings)
-            // Create client
-            AutoMlClient autoMlClient = AutoMlClient.Create();
-            // Initialize request argument(s)
-            ModelName name = new ModelName("[PROJECT]", "[LOCATION]", "[MODEL]");
-            // Make the request
-            Operation<Empty, OperationMetadata> response =
-                autoMlClient.DeleteModel(name);
-
-            // Poll until the returned long-running operation is complete
-            Operation<Empty, OperationMetadata> completedResponse =
-                response.PollUntilCompleted();
-            // The long-running operation is now complete.
-
-            // Or get the name of the operation
-            string operationName = response.Name;
-            // This name can be stored, then the long-running operation retrieved later by name
-            Operation<Empty, OperationMetadata> retrievedResponse =
-                autoMlClient.PollOnceDeleteModel(operationName);
-            // Check if the retrieved long-running operation has completed
-            if (retrievedResponse.IsCompleted)
-            {
-                // The long-running operation is now complete.
-            }
-            // End snippet
-        }
-
-        /// <summary>Snippet for DeleteModelAsync</summary>
-        public async Task DeleteModelAsync_RequestObject()
-        {
-            // Snippet: DeleteModelAsync(DeleteModelRequest,CallSettings)
-            // Create client
-            AutoMlClient autoMlClient = await AutoMlClient.CreateAsync();
-            // Initialize request argument(s)
-            DeleteModelRequest request = new DeleteModelRequest
-            {
-                ModelName = new ModelName("[PROJECT]", "[LOCATION]", "[MODEL]"),
-            };
-            // Make the request
-            Operation<Empty, OperationMetadata> response =
-                await autoMlClient.DeleteModelAsync(request);
-
-            // Poll until the returned long-running operation is complete
-            Operation<Empty, OperationMetadata> completedResponse =
-                await response.PollUntilCompletedAsync();
-            // The long-running operation is now complete.
-
-            // Or get the name of the operation
-            string operationName = response.Name;
-            // This name can be stored, then the long-running operation retrieved later by name
-            Operation<Empty, OperationMetadata> retrievedResponse =
-                await autoMlClient.PollOnceDeleteModelAsync(operationName);
-            // Check if the retrieved long-running operation has completed
-            if (retrievedResponse.IsCompleted)
-            {
-                // The long-running operation is now complete.
-            }
-            // End snippet
-        }
-
-        /// <summary>Snippet for DeleteModel</summary>
-        public void DeleteModel_RequestObject()
-        {
-            // Snippet: DeleteModel(DeleteModelRequest,CallSettings)
-            // Create client
-            AutoMlClient autoMlClient = AutoMlClient.Create();
-            // Initialize request argument(s)
-            DeleteModelRequest request = new DeleteModelRequest
-            {
-                ModelName = new ModelName("[PROJECT]", "[LOCATION]", "[MODEL]"),
-            };
-            // Make the request
-            Operation<Empty, OperationMetadata> response =
-                autoMlClient.DeleteModel(request);
-
-            // Poll until the returned long-running operation is complete
-            Operation<Empty, OperationMetadata> completedResponse =
-                response.PollUntilCompleted();
-            // The long-running operation is now complete.
-
-            // Or get the name of the operation
-            string operationName = response.Name;
-            // This name can be stored, then the long-running operation retrieved later by name
-            Operation<Empty, OperationMetadata> retrievedResponse =
-                autoMlClient.PollOnceDeleteModel(operationName);
-            // Check if the retrieved long-running operation has completed
-            if (retrievedResponse.IsCompleted)
-            {
-                // The long-running operation is now complete.
+                // If it has completed, then access the result
+                Empty retrievedResult = retrievedResponse.Result;
             }
             // End snippet
         }
 
         /// <summary>Snippet for DeployModelAsync</summary>
-        public async Task DeployModelAsync()
+        public async Task DeployModelRequestObjectAsync()
         {
-            // Snippet: DeployModelAsync(ModelName,CallSettings)
-            // Additional: DeployModelAsync(ModelName,CancellationToken)
+            // Snippet: DeployModelAsync(DeployModelRequest, CallSettings)
+            // Additional: DeployModelAsync(DeployModelRequest, CancellationToken)
             // Create client
             AutoMlClient autoMlClient = await AutoMlClient.CreateAsync();
             // Initialize request argument(s)
-            ModelName name = new ModelName("[PROJECT]", "[LOCATION]", "[MODEL]");
+            DeployModelRequest request = new DeployModelRequest
+            {
+                ModelName = ModelName.FromProjectLocationModel("[PROJECT]", "[LOCATION]", "[MODEL]"),
+                ImageObjectDetectionModelDeploymentMetadata = new ImageObjectDetectionModelDeploymentMetadata(),
+                ImageClassificationModelDeploymentMetadata = new ImageClassificationModelDeploymentMetadata(),
+            };
             // Make the request
-            Operation<Empty, OperationMetadata> response =
-                await autoMlClient.DeployModelAsync(name);
+            Operation<Empty, OperationMetadata> response = await autoMlClient.DeployModelAsync(request);
 
             // Poll until the returned long-running operation is complete
-            Operation<Empty, OperationMetadata> completedResponse =
-                await response.PollUntilCompletedAsync();
-            // The long-running operation is now complete.
+            Operation<Empty, OperationMetadata> completedResponse = await response.PollUntilCompletedAsync();
+            // Retrieve the operation result
+            Empty result = completedResponse.Result;
 
             // Or get the name of the operation
             string operationName = response.Name;
             // This name can be stored, then the long-running operation retrieved later by name
-            Operation<Empty, OperationMetadata> retrievedResponse =
-                await autoMlClient.PollOnceDeployModelAsync(operationName);
+            Operation<Empty, OperationMetadata> retrievedResponse = await autoMlClient.PollOnceDeployModelAsync(operationName);
             // Check if the retrieved long-running operation has completed
             if (retrievedResponse.IsCompleted)
             {
-                // The long-running operation is now complete.
+                // If it has completed, then access the result
+                Empty retrievedResult = retrievedResponse.Result;
             }
             // End snippet
         }
@@ -1534,126 +2166,182 @@ namespace Google.Cloud.AutoML.V1.Snippets
         /// <summary>Snippet for DeployModel</summary>
         public void DeployModel()
         {
-            // Snippet: DeployModel(ModelName,CallSettings)
+            // Snippet: DeployModel(string, CallSettings)
             // Create client
             AutoMlClient autoMlClient = AutoMlClient.Create();
             // Initialize request argument(s)
-            ModelName name = new ModelName("[PROJECT]", "[LOCATION]", "[MODEL]");
+            string name = "projects/[PROJECT]/locations/[LOCATION]/models/[MODEL]";
             // Make the request
-            Operation<Empty, OperationMetadata> response =
-                autoMlClient.DeployModel(name);
+            Operation<Empty, OperationMetadata> response = autoMlClient.DeployModel(name);
 
             // Poll until the returned long-running operation is complete
-            Operation<Empty, OperationMetadata> completedResponse =
-                response.PollUntilCompleted();
-            // The long-running operation is now complete.
+            Operation<Empty, OperationMetadata> completedResponse = response.PollUntilCompleted();
+            // Retrieve the operation result
+            Empty result = completedResponse.Result;
 
             // Or get the name of the operation
             string operationName = response.Name;
             // This name can be stored, then the long-running operation retrieved later by name
-            Operation<Empty, OperationMetadata> retrievedResponse =
-                autoMlClient.PollOnceDeployModel(operationName);
+            Operation<Empty, OperationMetadata> retrievedResponse = autoMlClient.PollOnceDeployModel(operationName);
             // Check if the retrieved long-running operation has completed
             if (retrievedResponse.IsCompleted)
             {
-                // The long-running operation is now complete.
+                // If it has completed, then access the result
+                Empty retrievedResult = retrievedResponse.Result;
             }
             // End snippet
         }
 
         /// <summary>Snippet for DeployModelAsync</summary>
-        public async Task DeployModelAsync_RequestObject()
+        public async Task DeployModelAsync()
         {
-            // Snippet: DeployModelAsync(DeployModelRequest,CallSettings)
+            // Snippet: DeployModelAsync(string, CallSettings)
+            // Additional: DeployModelAsync(string, CancellationToken)
             // Create client
             AutoMlClient autoMlClient = await AutoMlClient.CreateAsync();
             // Initialize request argument(s)
-            DeployModelRequest request = new DeployModelRequest
-            {
-                ModelName = new ModelName("[PROJECT]", "[LOCATION]", "[MODEL]"),
-            };
+            string name = "projects/[PROJECT]/locations/[LOCATION]/models/[MODEL]";
             // Make the request
-            Operation<Empty, OperationMetadata> response =
-                await autoMlClient.DeployModelAsync(request);
+            Operation<Empty, OperationMetadata> response = await autoMlClient.DeployModelAsync(name);
 
             // Poll until the returned long-running operation is complete
-            Operation<Empty, OperationMetadata> completedResponse =
-                await response.PollUntilCompletedAsync();
-            // The long-running operation is now complete.
+            Operation<Empty, OperationMetadata> completedResponse = await response.PollUntilCompletedAsync();
+            // Retrieve the operation result
+            Empty result = completedResponse.Result;
 
             // Or get the name of the operation
             string operationName = response.Name;
             // This name can be stored, then the long-running operation retrieved later by name
-            Operation<Empty, OperationMetadata> retrievedResponse =
-                await autoMlClient.PollOnceDeployModelAsync(operationName);
+            Operation<Empty, OperationMetadata> retrievedResponse = await autoMlClient.PollOnceDeployModelAsync(operationName);
             // Check if the retrieved long-running operation has completed
             if (retrievedResponse.IsCompleted)
             {
-                // The long-running operation is now complete.
+                // If it has completed, then access the result
+                Empty retrievedResult = retrievedResponse.Result;
             }
             // End snippet
         }
 
         /// <summary>Snippet for DeployModel</summary>
-        public void DeployModel_RequestObject()
+        public void DeployModelResourceNames()
         {
-            // Snippet: DeployModel(DeployModelRequest,CallSettings)
+            // Snippet: DeployModel(ModelName, CallSettings)
             // Create client
             AutoMlClient autoMlClient = AutoMlClient.Create();
             // Initialize request argument(s)
-            DeployModelRequest request = new DeployModelRequest
-            {
-                ModelName = new ModelName("[PROJECT]", "[LOCATION]", "[MODEL]"),
-            };
+            ModelName name = ModelName.FromProjectLocationModel("[PROJECT]", "[LOCATION]", "[MODEL]");
             // Make the request
-            Operation<Empty, OperationMetadata> response =
-                autoMlClient.DeployModel(request);
+            Operation<Empty, OperationMetadata> response = autoMlClient.DeployModel(name);
 
             // Poll until the returned long-running operation is complete
-            Operation<Empty, OperationMetadata> completedResponse =
-                response.PollUntilCompleted();
-            // The long-running operation is now complete.
+            Operation<Empty, OperationMetadata> completedResponse = response.PollUntilCompleted();
+            // Retrieve the operation result
+            Empty result = completedResponse.Result;
 
             // Or get the name of the operation
             string operationName = response.Name;
             // This name can be stored, then the long-running operation retrieved later by name
-            Operation<Empty, OperationMetadata> retrievedResponse =
-                autoMlClient.PollOnceDeployModel(operationName);
+            Operation<Empty, OperationMetadata> retrievedResponse = autoMlClient.PollOnceDeployModel(operationName);
             // Check if the retrieved long-running operation has completed
             if (retrievedResponse.IsCompleted)
             {
-                // The long-running operation is now complete.
+                // If it has completed, then access the result
+                Empty retrievedResult = retrievedResponse.Result;
+            }
+            // End snippet
+        }
+
+        /// <summary>Snippet for DeployModelAsync</summary>
+        public async Task DeployModelResourceNamesAsync()
+        {
+            // Snippet: DeployModelAsync(ModelName, CallSettings)
+            // Additional: DeployModelAsync(ModelName, CancellationToken)
+            // Create client
+            AutoMlClient autoMlClient = await AutoMlClient.CreateAsync();
+            // Initialize request argument(s)
+            ModelName name = ModelName.FromProjectLocationModel("[PROJECT]", "[LOCATION]", "[MODEL]");
+            // Make the request
+            Operation<Empty, OperationMetadata> response = await autoMlClient.DeployModelAsync(name);
+
+            // Poll until the returned long-running operation is complete
+            Operation<Empty, OperationMetadata> completedResponse = await response.PollUntilCompletedAsync();
+            // Retrieve the operation result
+            Empty result = completedResponse.Result;
+
+            // Or get the name of the operation
+            string operationName = response.Name;
+            // This name can be stored, then the long-running operation retrieved later by name
+            Operation<Empty, OperationMetadata> retrievedResponse = await autoMlClient.PollOnceDeployModelAsync(operationName);
+            // Check if the retrieved long-running operation has completed
+            if (retrievedResponse.IsCompleted)
+            {
+                // If it has completed, then access the result
+                Empty retrievedResult = retrievedResponse.Result;
+            }
+            // End snippet
+        }
+
+        /// <summary>Snippet for UndeployModel</summary>
+        public void UndeployModelRequestObject()
+        {
+            // Snippet: UndeployModel(UndeployModelRequest, CallSettings)
+            // Create client
+            AutoMlClient autoMlClient = AutoMlClient.Create();
+            // Initialize request argument(s)
+            UndeployModelRequest request = new UndeployModelRequest
+            {
+                ModelName = ModelName.FromProjectLocationModel("[PROJECT]", "[LOCATION]", "[MODEL]"),
+            };
+            // Make the request
+            Operation<Empty, OperationMetadata> response = autoMlClient.UndeployModel(request);
+
+            // Poll until the returned long-running operation is complete
+            Operation<Empty, OperationMetadata> completedResponse = response.PollUntilCompleted();
+            // Retrieve the operation result
+            Empty result = completedResponse.Result;
+
+            // Or get the name of the operation
+            string operationName = response.Name;
+            // This name can be stored, then the long-running operation retrieved later by name
+            Operation<Empty, OperationMetadata> retrievedResponse = autoMlClient.PollOnceUndeployModel(operationName);
+            // Check if the retrieved long-running operation has completed
+            if (retrievedResponse.IsCompleted)
+            {
+                // If it has completed, then access the result
+                Empty retrievedResult = retrievedResponse.Result;
             }
             // End snippet
         }
 
         /// <summary>Snippet for UndeployModelAsync</summary>
-        public async Task UndeployModelAsync()
+        public async Task UndeployModelRequestObjectAsync()
         {
-            // Snippet: UndeployModelAsync(ModelName,CallSettings)
-            // Additional: UndeployModelAsync(ModelName,CancellationToken)
+            // Snippet: UndeployModelAsync(UndeployModelRequest, CallSettings)
+            // Additional: UndeployModelAsync(UndeployModelRequest, CancellationToken)
             // Create client
             AutoMlClient autoMlClient = await AutoMlClient.CreateAsync();
             // Initialize request argument(s)
-            ModelName name = new ModelName("[PROJECT]", "[LOCATION]", "[MODEL]");
+            UndeployModelRequest request = new UndeployModelRequest
+            {
+                ModelName = ModelName.FromProjectLocationModel("[PROJECT]", "[LOCATION]", "[MODEL]"),
+            };
             // Make the request
-            Operation<Empty, OperationMetadata> response =
-                await autoMlClient.UndeployModelAsync(name);
+            Operation<Empty, OperationMetadata> response = await autoMlClient.UndeployModelAsync(request);
 
             // Poll until the returned long-running operation is complete
-            Operation<Empty, OperationMetadata> completedResponse =
-                await response.PollUntilCompletedAsync();
-            // The long-running operation is now complete.
+            Operation<Empty, OperationMetadata> completedResponse = await response.PollUntilCompletedAsync();
+            // Retrieve the operation result
+            Empty result = completedResponse.Result;
 
             // Or get the name of the operation
             string operationName = response.Name;
             // This name can be stored, then the long-running operation retrieved later by name
-            Operation<Empty, OperationMetadata> retrievedResponse =
-                await autoMlClient.PollOnceUndeployModelAsync(operationName);
+            Operation<Empty, OperationMetadata> retrievedResponse = await autoMlClient.PollOnceUndeployModelAsync(operationName);
             // Check if the retrieved long-running operation has completed
             if (retrievedResponse.IsCompleted)
             {
-                // The long-running operation is now complete.
+                // If it has completed, then access the result
+                Empty retrievedResult = retrievedResponse.Result;
             }
             // End snippet
         }
@@ -1661,205 +2349,337 @@ namespace Google.Cloud.AutoML.V1.Snippets
         /// <summary>Snippet for UndeployModel</summary>
         public void UndeployModel()
         {
-            // Snippet: UndeployModel(ModelName,CallSettings)
+            // Snippet: UndeployModel(string, CallSettings)
             // Create client
             AutoMlClient autoMlClient = AutoMlClient.Create();
             // Initialize request argument(s)
-            ModelName name = new ModelName("[PROJECT]", "[LOCATION]", "[MODEL]");
+            string name = "projects/[PROJECT]/locations/[LOCATION]/models/[MODEL]";
             // Make the request
-            Operation<Empty, OperationMetadata> response =
-                autoMlClient.UndeployModel(name);
+            Operation<Empty, OperationMetadata> response = autoMlClient.UndeployModel(name);
 
             // Poll until the returned long-running operation is complete
-            Operation<Empty, OperationMetadata> completedResponse =
-                response.PollUntilCompleted();
-            // The long-running operation is now complete.
+            Operation<Empty, OperationMetadata> completedResponse = response.PollUntilCompleted();
+            // Retrieve the operation result
+            Empty result = completedResponse.Result;
 
             // Or get the name of the operation
             string operationName = response.Name;
             // This name can be stored, then the long-running operation retrieved later by name
-            Operation<Empty, OperationMetadata> retrievedResponse =
-                autoMlClient.PollOnceUndeployModel(operationName);
+            Operation<Empty, OperationMetadata> retrievedResponse = autoMlClient.PollOnceUndeployModel(operationName);
             // Check if the retrieved long-running operation has completed
             if (retrievedResponse.IsCompleted)
             {
-                // The long-running operation is now complete.
+                // If it has completed, then access the result
+                Empty retrievedResult = retrievedResponse.Result;
             }
             // End snippet
         }
 
         /// <summary>Snippet for UndeployModelAsync</summary>
-        public async Task UndeployModelAsync_RequestObject()
+        public async Task UndeployModelAsync()
         {
-            // Snippet: UndeployModelAsync(UndeployModelRequest,CallSettings)
+            // Snippet: UndeployModelAsync(string, CallSettings)
+            // Additional: UndeployModelAsync(string, CancellationToken)
             // Create client
             AutoMlClient autoMlClient = await AutoMlClient.CreateAsync();
             // Initialize request argument(s)
-            UndeployModelRequest request = new UndeployModelRequest
-            {
-                ModelName = new ModelName("[PROJECT]", "[LOCATION]", "[MODEL]"),
-            };
+            string name = "projects/[PROJECT]/locations/[LOCATION]/models/[MODEL]";
             // Make the request
-            Operation<Empty, OperationMetadata> response =
-                await autoMlClient.UndeployModelAsync(request);
+            Operation<Empty, OperationMetadata> response = await autoMlClient.UndeployModelAsync(name);
 
             // Poll until the returned long-running operation is complete
-            Operation<Empty, OperationMetadata> completedResponse =
-                await response.PollUntilCompletedAsync();
-            // The long-running operation is now complete.
+            Operation<Empty, OperationMetadata> completedResponse = await response.PollUntilCompletedAsync();
+            // Retrieve the operation result
+            Empty result = completedResponse.Result;
 
             // Or get the name of the operation
             string operationName = response.Name;
             // This name can be stored, then the long-running operation retrieved later by name
-            Operation<Empty, OperationMetadata> retrievedResponse =
-                await autoMlClient.PollOnceUndeployModelAsync(operationName);
+            Operation<Empty, OperationMetadata> retrievedResponse = await autoMlClient.PollOnceUndeployModelAsync(operationName);
             // Check if the retrieved long-running operation has completed
             if (retrievedResponse.IsCompleted)
             {
-                // The long-running operation is now complete.
+                // If it has completed, then access the result
+                Empty retrievedResult = retrievedResponse.Result;
             }
             // End snippet
         }
 
         /// <summary>Snippet for UndeployModel</summary>
-        public void UndeployModel_RequestObject()
+        public void UndeployModelResourceNames()
         {
-            // Snippet: UndeployModel(UndeployModelRequest,CallSettings)
+            // Snippet: UndeployModel(ModelName, CallSettings)
             // Create client
             AutoMlClient autoMlClient = AutoMlClient.Create();
             // Initialize request argument(s)
-            UndeployModelRequest request = new UndeployModelRequest
-            {
-                ModelName = new ModelName("[PROJECT]", "[LOCATION]", "[MODEL]"),
-            };
+            ModelName name = ModelName.FromProjectLocationModel("[PROJECT]", "[LOCATION]", "[MODEL]");
             // Make the request
-            Operation<Empty, OperationMetadata> response =
-                autoMlClient.UndeployModel(request);
+            Operation<Empty, OperationMetadata> response = autoMlClient.UndeployModel(name);
 
             // Poll until the returned long-running operation is complete
-            Operation<Empty, OperationMetadata> completedResponse =
-                response.PollUntilCompleted();
-            // The long-running operation is now complete.
+            Operation<Empty, OperationMetadata> completedResponse = response.PollUntilCompleted();
+            // Retrieve the operation result
+            Empty result = completedResponse.Result;
 
             // Or get the name of the operation
             string operationName = response.Name;
             // This name can be stored, then the long-running operation retrieved later by name
-            Operation<Empty, OperationMetadata> retrievedResponse =
-                autoMlClient.PollOnceUndeployModel(operationName);
+            Operation<Empty, OperationMetadata> retrievedResponse = autoMlClient.PollOnceUndeployModel(operationName);
             // Check if the retrieved long-running operation has completed
             if (retrievedResponse.IsCompleted)
             {
-                // The long-running operation is now complete.
+                // If it has completed, then access the result
+                Empty retrievedResult = retrievedResponse.Result;
             }
             // End snippet
         }
 
-        /// <summary>Snippet for ExportModelAsync</summary>
-        public async Task ExportModelAsync_RequestObject()
+        /// <summary>Snippet for UndeployModelAsync</summary>
+        public async Task UndeployModelResourceNamesAsync()
         {
-            // Snippet: ExportModelAsync(ExportModelRequest,CallSettings)
+            // Snippet: UndeployModelAsync(ModelName, CallSettings)
+            // Additional: UndeployModelAsync(ModelName, CancellationToken)
             // Create client
             AutoMlClient autoMlClient = await AutoMlClient.CreateAsync();
             // Initialize request argument(s)
-            ExportModelRequest request = new ExportModelRequest
-            {
-                ModelName = new ModelName("[PROJECT]", "[LOCATION]", "[MODEL]"),
-                OutputConfig = new ModelExportOutputConfig(),
-            };
+            ModelName name = ModelName.FromProjectLocationModel("[PROJECT]", "[LOCATION]", "[MODEL]");
             // Make the request
-            Operation<Empty, OperationMetadata> response =
-                await autoMlClient.ExportModelAsync(request);
+            Operation<Empty, OperationMetadata> response = await autoMlClient.UndeployModelAsync(name);
 
             // Poll until the returned long-running operation is complete
-            Operation<Empty, OperationMetadata> completedResponse =
-                await response.PollUntilCompletedAsync();
-            // The long-running operation is now complete.
+            Operation<Empty, OperationMetadata> completedResponse = await response.PollUntilCompletedAsync();
+            // Retrieve the operation result
+            Empty result = completedResponse.Result;
 
             // Or get the name of the operation
             string operationName = response.Name;
             // This name can be stored, then the long-running operation retrieved later by name
-            Operation<Empty, OperationMetadata> retrievedResponse =
-                await autoMlClient.PollOnceExportModelAsync(operationName);
+            Operation<Empty, OperationMetadata> retrievedResponse = await autoMlClient.PollOnceUndeployModelAsync(operationName);
             // Check if the retrieved long-running operation has completed
             if (retrievedResponse.IsCompleted)
             {
-                // The long-running operation is now complete.
+                // If it has completed, then access the result
+                Empty retrievedResult = retrievedResponse.Result;
             }
             // End snippet
         }
 
         /// <summary>Snippet for ExportModel</summary>
-        public void ExportModel_RequestObject()
+        public void ExportModelRequestObject()
         {
-            // Snippet: ExportModel(ExportModelRequest,CallSettings)
+            // Snippet: ExportModel(ExportModelRequest, CallSettings)
             // Create client
             AutoMlClient autoMlClient = AutoMlClient.Create();
             // Initialize request argument(s)
             ExportModelRequest request = new ExportModelRequest
             {
-                ModelName = new ModelName("[PROJECT]", "[LOCATION]", "[MODEL]"),
+                ModelName = ModelName.FromProjectLocationModel("[PROJECT]", "[LOCATION]", "[MODEL]"),
                 OutputConfig = new ModelExportOutputConfig(),
             };
             // Make the request
-            Operation<Empty, OperationMetadata> response =
-                autoMlClient.ExportModel(request);
+            Operation<Empty, OperationMetadata> response = autoMlClient.ExportModel(request);
 
             // Poll until the returned long-running operation is complete
-            Operation<Empty, OperationMetadata> completedResponse =
-                response.PollUntilCompleted();
-            // The long-running operation is now complete.
+            Operation<Empty, OperationMetadata> completedResponse = response.PollUntilCompleted();
+            // Retrieve the operation result
+            Empty result = completedResponse.Result;
 
             // Or get the name of the operation
             string operationName = response.Name;
             // This name can be stored, then the long-running operation retrieved later by name
-            Operation<Empty, OperationMetadata> retrievedResponse =
-                autoMlClient.PollOnceExportModel(operationName);
+            Operation<Empty, OperationMetadata> retrievedResponse = autoMlClient.PollOnceExportModel(operationName);
             // Check if the retrieved long-running operation has completed
             if (retrievedResponse.IsCompleted)
             {
-                // The long-running operation is now complete.
+                // If it has completed, then access the result
+                Empty retrievedResult = retrievedResponse.Result;
             }
             // End snippet
         }
 
-        /// <summary>Snippet for GetModelEvaluationAsync</summary>
-        public async Task GetModelEvaluationAsync()
+        /// <summary>Snippet for ExportModelAsync</summary>
+        public async Task ExportModelRequestObjectAsync()
         {
-            // Snippet: GetModelEvaluationAsync(ModelEvaluationName,CallSettings)
-            // Additional: GetModelEvaluationAsync(ModelEvaluationName,CancellationToken)
+            // Snippet: ExportModelAsync(ExportModelRequest, CallSettings)
+            // Additional: ExportModelAsync(ExportModelRequest, CancellationToken)
             // Create client
             AutoMlClient autoMlClient = await AutoMlClient.CreateAsync();
             // Initialize request argument(s)
-            ModelEvaluationName name = new ModelEvaluationName("[PROJECT]", "[LOCATION]", "[MODEL]", "[MODEL_EVALUATION]");
+            ExportModelRequest request = new ExportModelRequest
+            {
+                ModelName = ModelName.FromProjectLocationModel("[PROJECT]", "[LOCATION]", "[MODEL]"),
+                OutputConfig = new ModelExportOutputConfig(),
+            };
             // Make the request
-            ModelEvaluation response = await autoMlClient.GetModelEvaluationAsync(name);
+            Operation<Empty, OperationMetadata> response = await autoMlClient.ExportModelAsync(request);
+
+            // Poll until the returned long-running operation is complete
+            Operation<Empty, OperationMetadata> completedResponse = await response.PollUntilCompletedAsync();
+            // Retrieve the operation result
+            Empty result = completedResponse.Result;
+
+            // Or get the name of the operation
+            string operationName = response.Name;
+            // This name can be stored, then the long-running operation retrieved later by name
+            Operation<Empty, OperationMetadata> retrievedResponse = await autoMlClient.PollOnceExportModelAsync(operationName);
+            // Check if the retrieved long-running operation has completed
+            if (retrievedResponse.IsCompleted)
+            {
+                // If it has completed, then access the result
+                Empty retrievedResult = retrievedResponse.Result;
+            }
+            // End snippet
+        }
+
+        /// <summary>Snippet for ExportModel</summary>
+        public void ExportModel()
+        {
+            // Snippet: ExportModel(string, ModelExportOutputConfig, CallSettings)
+            // Create client
+            AutoMlClient autoMlClient = AutoMlClient.Create();
+            // Initialize request argument(s)
+            string name = "projects/[PROJECT]/locations/[LOCATION]/models/[MODEL]";
+            ModelExportOutputConfig outputConfig = new ModelExportOutputConfig();
+            // Make the request
+            Operation<Empty, OperationMetadata> response = autoMlClient.ExportModel(name, outputConfig);
+
+            // Poll until the returned long-running operation is complete
+            Operation<Empty, OperationMetadata> completedResponse = response.PollUntilCompleted();
+            // Retrieve the operation result
+            Empty result = completedResponse.Result;
+
+            // Or get the name of the operation
+            string operationName = response.Name;
+            // This name can be stored, then the long-running operation retrieved later by name
+            Operation<Empty, OperationMetadata> retrievedResponse = autoMlClient.PollOnceExportModel(operationName);
+            // Check if the retrieved long-running operation has completed
+            if (retrievedResponse.IsCompleted)
+            {
+                // If it has completed, then access the result
+                Empty retrievedResult = retrievedResponse.Result;
+            }
+            // End snippet
+        }
+
+        /// <summary>Snippet for ExportModelAsync</summary>
+        public async Task ExportModelAsync()
+        {
+            // Snippet: ExportModelAsync(string, ModelExportOutputConfig, CallSettings)
+            // Additional: ExportModelAsync(string, ModelExportOutputConfig, CancellationToken)
+            // Create client
+            AutoMlClient autoMlClient = await AutoMlClient.CreateAsync();
+            // Initialize request argument(s)
+            string name = "projects/[PROJECT]/locations/[LOCATION]/models/[MODEL]";
+            ModelExportOutputConfig outputConfig = new ModelExportOutputConfig();
+            // Make the request
+            Operation<Empty, OperationMetadata> response = await autoMlClient.ExportModelAsync(name, outputConfig);
+
+            // Poll until the returned long-running operation is complete
+            Operation<Empty, OperationMetadata> completedResponse = await response.PollUntilCompletedAsync();
+            // Retrieve the operation result
+            Empty result = completedResponse.Result;
+
+            // Or get the name of the operation
+            string operationName = response.Name;
+            // This name can be stored, then the long-running operation retrieved later by name
+            Operation<Empty, OperationMetadata> retrievedResponse = await autoMlClient.PollOnceExportModelAsync(operationName);
+            // Check if the retrieved long-running operation has completed
+            if (retrievedResponse.IsCompleted)
+            {
+                // If it has completed, then access the result
+                Empty retrievedResult = retrievedResponse.Result;
+            }
+            // End snippet
+        }
+
+        /// <summary>Snippet for ExportModel</summary>
+        public void ExportModelResourceNames()
+        {
+            // Snippet: ExportModel(ModelName, ModelExportOutputConfig, CallSettings)
+            // Create client
+            AutoMlClient autoMlClient = AutoMlClient.Create();
+            // Initialize request argument(s)
+            ModelName name = ModelName.FromProjectLocationModel("[PROJECT]", "[LOCATION]", "[MODEL]");
+            ModelExportOutputConfig outputConfig = new ModelExportOutputConfig();
+            // Make the request
+            Operation<Empty, OperationMetadata> response = autoMlClient.ExportModel(name, outputConfig);
+
+            // Poll until the returned long-running operation is complete
+            Operation<Empty, OperationMetadata> completedResponse = response.PollUntilCompleted();
+            // Retrieve the operation result
+            Empty result = completedResponse.Result;
+
+            // Or get the name of the operation
+            string operationName = response.Name;
+            // This name can be stored, then the long-running operation retrieved later by name
+            Operation<Empty, OperationMetadata> retrievedResponse = autoMlClient.PollOnceExportModel(operationName);
+            // Check if the retrieved long-running operation has completed
+            if (retrievedResponse.IsCompleted)
+            {
+                // If it has completed, then access the result
+                Empty retrievedResult = retrievedResponse.Result;
+            }
+            // End snippet
+        }
+
+        /// <summary>Snippet for ExportModelAsync</summary>
+        public async Task ExportModelResourceNamesAsync()
+        {
+            // Snippet: ExportModelAsync(ModelName, ModelExportOutputConfig, CallSettings)
+            // Additional: ExportModelAsync(ModelName, ModelExportOutputConfig, CancellationToken)
+            // Create client
+            AutoMlClient autoMlClient = await AutoMlClient.CreateAsync();
+            // Initialize request argument(s)
+            ModelName name = ModelName.FromProjectLocationModel("[PROJECT]", "[LOCATION]", "[MODEL]");
+            ModelExportOutputConfig outputConfig = new ModelExportOutputConfig();
+            // Make the request
+            Operation<Empty, OperationMetadata> response = await autoMlClient.ExportModelAsync(name, outputConfig);
+
+            // Poll until the returned long-running operation is complete
+            Operation<Empty, OperationMetadata> completedResponse = await response.PollUntilCompletedAsync();
+            // Retrieve the operation result
+            Empty result = completedResponse.Result;
+
+            // Or get the name of the operation
+            string operationName = response.Name;
+            // This name can be stored, then the long-running operation retrieved later by name
+            Operation<Empty, OperationMetadata> retrievedResponse = await autoMlClient.PollOnceExportModelAsync(operationName);
+            // Check if the retrieved long-running operation has completed
+            if (retrievedResponse.IsCompleted)
+            {
+                // If it has completed, then access the result
+                Empty retrievedResult = retrievedResponse.Result;
+            }
             // End snippet
         }
 
         /// <summary>Snippet for GetModelEvaluation</summary>
-        public void GetModelEvaluation()
+        public void GetModelEvaluationRequestObject()
         {
-            // Snippet: GetModelEvaluation(ModelEvaluationName,CallSettings)
+            // Snippet: GetModelEvaluation(GetModelEvaluationRequest, CallSettings)
             // Create client
             AutoMlClient autoMlClient = AutoMlClient.Create();
             // Initialize request argument(s)
-            ModelEvaluationName name = new ModelEvaluationName("[PROJECT]", "[LOCATION]", "[MODEL]", "[MODEL_EVALUATION]");
+            GetModelEvaluationRequest request = new GetModelEvaluationRequest
+            {
+                ModelEvaluationName = ModelEvaluationName.FromProjectLocationModelModelEvaluation("[PROJECT]", "[LOCATION]", "[MODEL]", "[MODEL_EVALUATION]"),
+            };
             // Make the request
-            ModelEvaluation response = autoMlClient.GetModelEvaluation(name);
+            ModelEvaluation response = autoMlClient.GetModelEvaluation(request);
             // End snippet
         }
 
         /// <summary>Snippet for GetModelEvaluationAsync</summary>
-        public async Task GetModelEvaluationAsync_RequestObject()
+        public async Task GetModelEvaluationRequestObjectAsync()
         {
-            // Snippet: GetModelEvaluationAsync(GetModelEvaluationRequest,CallSettings)
-            // Additional: GetModelEvaluationAsync(GetModelEvaluationRequest,CancellationToken)
+            // Snippet: GetModelEvaluationAsync(GetModelEvaluationRequest, CallSettings)
+            // Additional: GetModelEvaluationAsync(GetModelEvaluationRequest, CancellationToken)
             // Create client
             AutoMlClient autoMlClient = await AutoMlClient.CreateAsync();
             // Initialize request argument(s)
             GetModelEvaluationRequest request = new GetModelEvaluationRequest
             {
-                ModelEvaluationName = new ModelEvaluationName("[PROJECT]", "[LOCATION]", "[MODEL]", "[MODEL_EVALUATION]"),
+                ModelEvaluationName = ModelEvaluationName.FromProjectLocationModelModelEvaluation("[PROJECT]", "[LOCATION]", "[MODEL]", "[MODEL_EVALUATION]"),
             };
             // Make the request
             ModelEvaluation response = await autoMlClient.GetModelEvaluationAsync(request);
@@ -1867,33 +2687,122 @@ namespace Google.Cloud.AutoML.V1.Snippets
         }
 
         /// <summary>Snippet for GetModelEvaluation</summary>
-        public void GetModelEvaluation_RequestObject()
+        public void GetModelEvaluation()
         {
-            // Snippet: GetModelEvaluation(GetModelEvaluationRequest,CallSettings)
+            // Snippet: GetModelEvaluation(string, CallSettings)
             // Create client
             AutoMlClient autoMlClient = AutoMlClient.Create();
             // Initialize request argument(s)
-            GetModelEvaluationRequest request = new GetModelEvaluationRequest
-            {
-                ModelEvaluationName = new ModelEvaluationName("[PROJECT]", "[LOCATION]", "[MODEL]", "[MODEL_EVALUATION]"),
-            };
+            string name = "projects/[PROJECT]/locations/[LOCATION]/models/[MODEL]/modelEvaluations/[MODEL_EVALUATION]";
             // Make the request
-            ModelEvaluation response = autoMlClient.GetModelEvaluation(request);
+            ModelEvaluation response = autoMlClient.GetModelEvaluation(name);
             // End snippet
         }
 
-        /// <summary>Snippet for ListModelEvaluationsAsync</summary>
-        public async Task ListModelEvaluationsAsync()
+        /// <summary>Snippet for GetModelEvaluationAsync</summary>
+        public async Task GetModelEvaluationAsync()
         {
-            // Snippet: ListModelEvaluationsAsync(ModelName,string,string,int?,CallSettings)
+            // Snippet: GetModelEvaluationAsync(string, CallSettings)
+            // Additional: GetModelEvaluationAsync(string, CancellationToken)
             // Create client
             AutoMlClient autoMlClient = await AutoMlClient.CreateAsync();
             // Initialize request argument(s)
-            ModelName parent = new ModelName("[PROJECT]", "[LOCATION]", "[MODEL]");
-            string filter = "";
+            string name = "projects/[PROJECT]/locations/[LOCATION]/models/[MODEL]/modelEvaluations/[MODEL_EVALUATION]";
             // Make the request
-            PagedAsyncEnumerable<ListModelEvaluationsResponse, ModelEvaluation> response =
-                autoMlClient.ListModelEvaluationsAsync(parent, filter);
+            ModelEvaluation response = await autoMlClient.GetModelEvaluationAsync(name);
+            // End snippet
+        }
+
+        /// <summary>Snippet for GetModelEvaluation</summary>
+        public void GetModelEvaluationResourceNames()
+        {
+            // Snippet: GetModelEvaluation(ModelEvaluationName, CallSettings)
+            // Create client
+            AutoMlClient autoMlClient = AutoMlClient.Create();
+            // Initialize request argument(s)
+            ModelEvaluationName name = ModelEvaluationName.FromProjectLocationModelModelEvaluation("[PROJECT]", "[LOCATION]", "[MODEL]", "[MODEL_EVALUATION]");
+            // Make the request
+            ModelEvaluation response = autoMlClient.GetModelEvaluation(name);
+            // End snippet
+        }
+
+        /// <summary>Snippet for GetModelEvaluationAsync</summary>
+        public async Task GetModelEvaluationResourceNamesAsync()
+        {
+            // Snippet: GetModelEvaluationAsync(ModelEvaluationName, CallSettings)
+            // Additional: GetModelEvaluationAsync(ModelEvaluationName, CancellationToken)
+            // Create client
+            AutoMlClient autoMlClient = await AutoMlClient.CreateAsync();
+            // Initialize request argument(s)
+            ModelEvaluationName name = ModelEvaluationName.FromProjectLocationModelModelEvaluation("[PROJECT]", "[LOCATION]", "[MODEL]", "[MODEL_EVALUATION]");
+            // Make the request
+            ModelEvaluation response = await autoMlClient.GetModelEvaluationAsync(name);
+            // End snippet
+        }
+
+        /// <summary>Snippet for ListModelEvaluations</summary>
+        public void ListModelEvaluationsRequestObject()
+        {
+            // Snippet: ListModelEvaluations(ListModelEvaluationsRequest, CallSettings)
+            // Create client
+            AutoMlClient autoMlClient = AutoMlClient.Create();
+            // Initialize request argument(s)
+            ListModelEvaluationsRequest request = new ListModelEvaluationsRequest
+            {
+                ParentAsModelName = ModelName.FromProjectLocationModel("[PROJECT]", "[LOCATION]", "[MODEL]"),
+                Filter = "",
+            };
+            // Make the request
+            PagedEnumerable<ListModelEvaluationsResponse, ModelEvaluation> response = autoMlClient.ListModelEvaluations(request);
+
+            // Iterate over all response items, lazily performing RPCs as required
+            foreach (ModelEvaluation item in response)
+            {
+                // Do something with each item
+                Console.WriteLine(item);
+            }
+
+            // Or iterate over pages (of server-defined size), performing one RPC per page
+            foreach (ListModelEvaluationsResponse page in response.AsRawResponses())
+            {
+                // Do something with each page of items
+                Console.WriteLine("A page of results:");
+                foreach (ModelEvaluation item in page)
+                {
+                    // Do something with each item
+                    Console.WriteLine(item);
+                }
+            }
+
+            // Or retrieve a single page of known size (unless it's the final page), performing as many RPCs as required
+            int pageSize = 10;
+            Page<ModelEvaluation> singlePage = response.ReadPage(pageSize);
+            // Do something with the page of items
+            Console.WriteLine($"A page of {pageSize} results (unless it's the final page):");
+            foreach (ModelEvaluation item in singlePage)
+            {
+                // Do something with each item
+                Console.WriteLine(item);
+            }
+            // Store the pageToken, for when the next page is required.
+            string nextPageToken = singlePage.NextPageToken;
+            // End snippet
+        }
+
+        /// <summary>Snippet for ListModelEvaluations</summary>
+        public async Task ListModelEvaluationsRequestObjectAsync()
+        {
+            // Snippet: ListModelEvaluationsAsync(ListModelEvaluationsRequest, CallSettings)
+            // Create client
+            AutoMlClient autoMlClient = await AutoMlClient.CreateAsync();
+            // Initialize request argument(s)
+            ListModelEvaluationsRequest request = new ListModelEvaluationsRequest
+            {
+                ParentAsModelName = ModelName.FromProjectLocationModel("[PROJECT]", "[LOCATION]", "[MODEL]"),
+                Filter = "",
+            };
+            // Make the request
+            PagedAsyncEnumerable<ListModelEvaluationsResponse, ModelEvaluation> response = autoMlClient.ListModelEvaluationsAsync(request);
 
             // Iterate over all response items, lazily performing RPCs as required
             await response.ForEachAsync((ModelEvaluation item) =>
@@ -1909,6 +2818,7 @@ namespace Google.Cloud.AutoML.V1.Snippets
                 Console.WriteLine("A page of results:");
                 foreach (ModelEvaluation item in page)
                 {
+                    // Do something with each item
                     Console.WriteLine(item);
                 }
             });
@@ -1920,6 +2830,7 @@ namespace Google.Cloud.AutoML.V1.Snippets
             Console.WriteLine($"A page of {pageSize} results (unless it's the final page):");
             foreach (ModelEvaluation item in singlePage)
             {
+                // Do something with each item
                 Console.WriteLine(item);
             }
             // Store the pageToken, for when the next page is required.
@@ -1930,15 +2841,14 @@ namespace Google.Cloud.AutoML.V1.Snippets
         /// <summary>Snippet for ListModelEvaluations</summary>
         public void ListModelEvaluations()
         {
-            // Snippet: ListModelEvaluations(ModelName,string,string,int?,CallSettings)
+            // Snippet: ListModelEvaluations(string, string, string, int?, CallSettings)
             // Create client
             AutoMlClient autoMlClient = AutoMlClient.Create();
             // Initialize request argument(s)
-            ModelName parent = new ModelName("[PROJECT]", "[LOCATION]", "[MODEL]");
+            string parent = "projects/[PROJECT]/locations/[LOCATION]/models/[MODEL]";
             string filter = "";
             // Make the request
-            PagedEnumerable<ListModelEvaluationsResponse, ModelEvaluation> response =
-                autoMlClient.ListModelEvaluations(parent, filter);
+            PagedEnumerable<ListModelEvaluationsResponse, ModelEvaluation> response = autoMlClient.ListModelEvaluations(parent, filter);
 
             // Iterate over all response items, lazily performing RPCs as required
             foreach (ModelEvaluation item in response)
@@ -1954,6 +2864,7 @@ namespace Google.Cloud.AutoML.V1.Snippets
                 Console.WriteLine("A page of results:");
                 foreach (ModelEvaluation item in page)
                 {
+                    // Do something with each item
                     Console.WriteLine(item);
                 }
             }
@@ -1965,6 +2876,7 @@ namespace Google.Cloud.AutoML.V1.Snippets
             Console.WriteLine($"A page of {pageSize} results (unless it's the final page):");
             foreach (ModelEvaluation item in singlePage)
             {
+                // Do something with each item
                 Console.WriteLine(item);
             }
             // Store the pageToken, for when the next page is required.
@@ -1972,21 +2884,17 @@ namespace Google.Cloud.AutoML.V1.Snippets
             // End snippet
         }
 
-        /// <summary>Snippet for ListModelEvaluationsAsync</summary>
-        public async Task ListModelEvaluationsAsync_RequestObject()
+        /// <summary>Snippet for ListModelEvaluations</summary>
+        public async Task ListModelEvaluationsAsync()
         {
-            // Snippet: ListModelEvaluationsAsync(ListModelEvaluationsRequest,CallSettings)
+            // Snippet: ListModelEvaluationsAsync(string, string, string, int?, CallSettings)
             // Create client
             AutoMlClient autoMlClient = await AutoMlClient.CreateAsync();
             // Initialize request argument(s)
-            ListModelEvaluationsRequest request = new ListModelEvaluationsRequest
-            {
-                ParentAsModelName = new ModelName("[PROJECT]", "[LOCATION]", "[MODEL]"),
-                Filter = "",
-            };
+            string parent = "projects/[PROJECT]/locations/[LOCATION]/models/[MODEL]";
+            string filter = "";
             // Make the request
-            PagedAsyncEnumerable<ListModelEvaluationsResponse, ModelEvaluation> response =
-                autoMlClient.ListModelEvaluationsAsync(request);
+            PagedAsyncEnumerable<ListModelEvaluationsResponse, ModelEvaluation> response = autoMlClient.ListModelEvaluationsAsync(parent, filter);
 
             // Iterate over all response items, lazily performing RPCs as required
             await response.ForEachAsync((ModelEvaluation item) =>
@@ -2002,6 +2910,7 @@ namespace Google.Cloud.AutoML.V1.Snippets
                 Console.WriteLine("A page of results:");
                 foreach (ModelEvaluation item in page)
                 {
+                    // Do something with each item
                     Console.WriteLine(item);
                 }
             });
@@ -2013,6 +2922,7 @@ namespace Google.Cloud.AutoML.V1.Snippets
             Console.WriteLine($"A page of {pageSize} results (unless it's the final page):");
             foreach (ModelEvaluation item in singlePage)
             {
+                // Do something with each item
                 Console.WriteLine(item);
             }
             // Store the pageToken, for when the next page is required.
@@ -2021,20 +2931,16 @@ namespace Google.Cloud.AutoML.V1.Snippets
         }
 
         /// <summary>Snippet for ListModelEvaluations</summary>
-        public void ListModelEvaluations_RequestObject()
+        public void ListModelEvaluationsResourceNames()
         {
-            // Snippet: ListModelEvaluations(ListModelEvaluationsRequest,CallSettings)
+            // Snippet: ListModelEvaluations(ModelName, string, string, int?, CallSettings)
             // Create client
             AutoMlClient autoMlClient = AutoMlClient.Create();
             // Initialize request argument(s)
-            ListModelEvaluationsRequest request = new ListModelEvaluationsRequest
-            {
-                ParentAsModelName = new ModelName("[PROJECT]", "[LOCATION]", "[MODEL]"),
-                Filter = "",
-            };
+            ModelName parent = ModelName.FromProjectLocationModel("[PROJECT]", "[LOCATION]", "[MODEL]");
+            string filter = "";
             // Make the request
-            PagedEnumerable<ListModelEvaluationsResponse, ModelEvaluation> response =
-                autoMlClient.ListModelEvaluations(request);
+            PagedEnumerable<ListModelEvaluationsResponse, ModelEvaluation> response = autoMlClient.ListModelEvaluations(parent, filter);
 
             // Iterate over all response items, lazily performing RPCs as required
             foreach (ModelEvaluation item in response)
@@ -2050,6 +2956,7 @@ namespace Google.Cloud.AutoML.V1.Snippets
                 Console.WriteLine("A page of results:");
                 foreach (ModelEvaluation item in page)
                 {
+                    // Do something with each item
                     Console.WriteLine(item);
                 }
             }
@@ -2061,6 +2968,7 @@ namespace Google.Cloud.AutoML.V1.Snippets
             Console.WriteLine($"A page of {pageSize} results (unless it's the final page):");
             foreach (ModelEvaluation item in singlePage)
             {
+                // Do something with each item
                 Console.WriteLine(item);
             }
             // Store the pageToken, for when the next page is required.
@@ -2068,5 +2976,50 @@ namespace Google.Cloud.AutoML.V1.Snippets
             // End snippet
         }
 
+        /// <summary>Snippet for ListModelEvaluations</summary>
+        public async Task ListModelEvaluationsResourceNamesAsync()
+        {
+            // Snippet: ListModelEvaluationsAsync(ModelName, string, string, int?, CallSettings)
+            // Create client
+            AutoMlClient autoMlClient = await AutoMlClient.CreateAsync();
+            // Initialize request argument(s)
+            ModelName parent = ModelName.FromProjectLocationModel("[PROJECT]", "[LOCATION]", "[MODEL]");
+            string filter = "";
+            // Make the request
+            PagedAsyncEnumerable<ListModelEvaluationsResponse, ModelEvaluation> response = autoMlClient.ListModelEvaluationsAsync(parent, filter);
+
+            // Iterate over all response items, lazily performing RPCs as required
+            await response.ForEachAsync((ModelEvaluation item) =>
+            {
+                // Do something with each item
+                Console.WriteLine(item);
+            });
+
+            // Or iterate over pages (of server-defined size), performing one RPC per page
+            await response.AsRawResponses().ForEachAsync((ListModelEvaluationsResponse page) =>
+            {
+                // Do something with each page of items
+                Console.WriteLine("A page of results:");
+                foreach (ModelEvaluation item in page)
+                {
+                    // Do something with each item
+                    Console.WriteLine(item);
+                }
+            });
+
+            // Or retrieve a single page of known size (unless it's the final page), performing as many RPCs as required
+            int pageSize = 10;
+            Page<ModelEvaluation> singlePage = await response.ReadPageAsync(pageSize);
+            // Do something with the page of items
+            Console.WriteLine($"A page of {pageSize} results (unless it's the final page):");
+            foreach (ModelEvaluation item in singlePage)
+            {
+                // Do something with each item
+                Console.WriteLine(item);
+            }
+            // Store the pageToken, for when the next page is required.
+            string nextPageToken = singlePage.NextPageToken;
+            // End snippet
+        }
     }
 }

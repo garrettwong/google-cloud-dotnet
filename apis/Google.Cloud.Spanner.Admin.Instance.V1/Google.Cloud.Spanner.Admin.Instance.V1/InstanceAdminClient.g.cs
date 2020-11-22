@@ -1,4 +1,4 @@
-// Copyright 2019 Google LLC
+// Copyright 2020 Google LLC
 //
 // Licensed under the Apache License, Version 2.0 (the "License");
 // you may not use this file except in compliance with the License.
@@ -16,6 +16,7 @@
 
 using gax = Google.Api.Gax;
 using gaxgrpc = Google.Api.Gax.Grpc;
+using gaxgrpccore = Google.Api.Gax.Grpc.GrpcCore;
 using gagr = Google.Api.Gax.ResourceNames;
 using gciv = Google.Cloud.Iam.V1;
 using gcscv = Google.Cloud.Spanner.Common.V1;
@@ -28,7 +29,6 @@ using sys = System;
 using sc = System.Collections;
 using scg = System.Collections.Generic;
 using sco = System.Collections.ObjectModel;
-using sysnet = System.Net;
 using st = System.Threading;
 using stt = System.Threading.Tasks;
 
@@ -75,13 +75,11 @@ namespace Google.Cloud.Spanner.Admin.Instance.V1
         /// <item><description>Initial retry delay: 1000 milliseconds.</description></item>
         /// <item><description>Retry delay multiplier: 1.3</description></item>
         /// <item><description>Retry maximum delay: 32000 milliseconds.</description></item>
-        /// <item><description>Initial timeout: 3600000 milliseconds.</description></item>
-        /// <item><description>Timeout multiplier: 1</description></item>
-        /// <item><description>Timeout maximum delay: 3600000 milliseconds.</description></item>
-        /// <item><description>Total timeout: 3600 seconds.</description></item>
+        /// <item><description>Maximum attempts: Unlimited</description></item>
+        /// <item><description>Timeout: 3600 seconds.</description></item>
         /// </list>
         /// </remarks>
-        public gaxgrpc::CallSettings ListInstanceConfigsSettings { get; set; } = gaxgrpc::CallSettings.FromCallTiming(gaxgrpc::CallTiming.FromRetry(new gaxgrpc::RetrySettings(retryBackoff: new gaxgrpc::BackoffSettings(delay: sys::TimeSpan.FromMilliseconds(1000), maxDelay: sys::TimeSpan.FromMilliseconds(32000), delayMultiplier: 1.3), timeoutBackoff: new gaxgrpc::BackoffSettings(delay: sys::TimeSpan.FromMilliseconds(3600000), maxDelay: sys::TimeSpan.FromMilliseconds(3600000), delayMultiplier: 1), totalExpiration: gax::Expiration.FromTimeout(sys::TimeSpan.FromMilliseconds(3600000)), retryFilter: gaxgrpc::RetrySettings.FilterForStatusCodes(grpccore::StatusCode.Unavailable, grpccore::StatusCode.DeadlineExceeded))));
+        public gaxgrpc::CallSettings ListInstanceConfigsSettings { get; set; } = gaxgrpc::CallSettingsExtensions.WithRetry(gaxgrpc::CallSettings.FromExpiration(gax::Expiration.FromTimeout(sys::TimeSpan.FromMilliseconds(3600000))), gaxgrpc::RetrySettings.FromExponentialBackoff(maxAttempts: 2147483647, initialBackoff: sys::TimeSpan.FromMilliseconds(1000), maxBackoff: sys::TimeSpan.FromMilliseconds(32000), backoffMultiplier: 1.3, retryFilter: gaxgrpc::RetrySettings.FilterForStatusCodes(grpccore::StatusCode.Unavailable, grpccore::StatusCode.DeadlineExceeded)));
 
         /// <summary>
         /// <see cref="gaxgrpc::CallSettings"/> for synchronous and asynchronous calls to
@@ -92,13 +90,11 @@ namespace Google.Cloud.Spanner.Admin.Instance.V1
         /// <item><description>Initial retry delay: 1000 milliseconds.</description></item>
         /// <item><description>Retry delay multiplier: 1.3</description></item>
         /// <item><description>Retry maximum delay: 32000 milliseconds.</description></item>
-        /// <item><description>Initial timeout: 3600000 milliseconds.</description></item>
-        /// <item><description>Timeout multiplier: 1</description></item>
-        /// <item><description>Timeout maximum delay: 3600000 milliseconds.</description></item>
-        /// <item><description>Total timeout: 3600 seconds.</description></item>
+        /// <item><description>Maximum attempts: Unlimited</description></item>
+        /// <item><description>Timeout: 3600 seconds.</description></item>
         /// </list>
         /// </remarks>
-        public gaxgrpc::CallSettings GetInstanceConfigSettings { get; set; } = gaxgrpc::CallSettings.FromCallTiming(gaxgrpc::CallTiming.FromRetry(new gaxgrpc::RetrySettings(retryBackoff: new gaxgrpc::BackoffSettings(delay: sys::TimeSpan.FromMilliseconds(1000), maxDelay: sys::TimeSpan.FromMilliseconds(32000), delayMultiplier: 1.3), timeoutBackoff: new gaxgrpc::BackoffSettings(delay: sys::TimeSpan.FromMilliseconds(3600000), maxDelay: sys::TimeSpan.FromMilliseconds(3600000), delayMultiplier: 1), totalExpiration: gax::Expiration.FromTimeout(sys::TimeSpan.FromMilliseconds(3600000)), retryFilter: gaxgrpc::RetrySettings.FilterForStatusCodes(grpccore::StatusCode.Unavailable, grpccore::StatusCode.DeadlineExceeded))));
+        public gaxgrpc::CallSettings GetInstanceConfigSettings { get; set; } = gaxgrpc::CallSettingsExtensions.WithRetry(gaxgrpc::CallSettings.FromExpiration(gax::Expiration.FromTimeout(sys::TimeSpan.FromMilliseconds(3600000))), gaxgrpc::RetrySettings.FromExponentialBackoff(maxAttempts: 2147483647, initialBackoff: sys::TimeSpan.FromMilliseconds(1000), maxBackoff: sys::TimeSpan.FromMilliseconds(32000), backoffMultiplier: 1.3, retryFilter: gaxgrpc::RetrySettings.FilterForStatusCodes(grpccore::StatusCode.Unavailable, grpccore::StatusCode.DeadlineExceeded)));
 
         /// <summary>
         /// <see cref="gaxgrpc::CallSettings"/> for synchronous and asynchronous calls to
@@ -109,13 +105,11 @@ namespace Google.Cloud.Spanner.Admin.Instance.V1
         /// <item><description>Initial retry delay: 1000 milliseconds.</description></item>
         /// <item><description>Retry delay multiplier: 1.3</description></item>
         /// <item><description>Retry maximum delay: 32000 milliseconds.</description></item>
-        /// <item><description>Initial timeout: 3600000 milliseconds.</description></item>
-        /// <item><description>Timeout multiplier: 1</description></item>
-        /// <item><description>Timeout maximum delay: 3600000 milliseconds.</description></item>
-        /// <item><description>Total timeout: 3600 seconds.</description></item>
+        /// <item><description>Maximum attempts: Unlimited</description></item>
+        /// <item><description>Timeout: 3600 seconds.</description></item>
         /// </list>
         /// </remarks>
-        public gaxgrpc::CallSettings ListInstancesSettings { get; set; } = gaxgrpc::CallSettings.FromCallTiming(gaxgrpc::CallTiming.FromRetry(new gaxgrpc::RetrySettings(retryBackoff: new gaxgrpc::BackoffSettings(delay: sys::TimeSpan.FromMilliseconds(1000), maxDelay: sys::TimeSpan.FromMilliseconds(32000), delayMultiplier: 1.3), timeoutBackoff: new gaxgrpc::BackoffSettings(delay: sys::TimeSpan.FromMilliseconds(3600000), maxDelay: sys::TimeSpan.FromMilliseconds(3600000), delayMultiplier: 1), totalExpiration: gax::Expiration.FromTimeout(sys::TimeSpan.FromMilliseconds(3600000)), retryFilter: gaxgrpc::RetrySettings.FilterForStatusCodes(grpccore::StatusCode.Unavailable, grpccore::StatusCode.DeadlineExceeded))));
+        public gaxgrpc::CallSettings ListInstancesSettings { get; set; } = gaxgrpc::CallSettingsExtensions.WithRetry(gaxgrpc::CallSettings.FromExpiration(gax::Expiration.FromTimeout(sys::TimeSpan.FromMilliseconds(3600000))), gaxgrpc::RetrySettings.FromExponentialBackoff(maxAttempts: 2147483647, initialBackoff: sys::TimeSpan.FromMilliseconds(1000), maxBackoff: sys::TimeSpan.FromMilliseconds(32000), backoffMultiplier: 1.3, retryFilter: gaxgrpc::RetrySettings.FilterForStatusCodes(grpccore::StatusCode.Unavailable, grpccore::StatusCode.DeadlineExceeded)));
 
         /// <summary>
         /// <see cref="gaxgrpc::CallSettings"/> for synchronous and asynchronous calls to
@@ -126,20 +120,23 @@ namespace Google.Cloud.Spanner.Admin.Instance.V1
         /// <item><description>Initial retry delay: 1000 milliseconds.</description></item>
         /// <item><description>Retry delay multiplier: 1.3</description></item>
         /// <item><description>Retry maximum delay: 32000 milliseconds.</description></item>
-        /// <item><description>Initial timeout: 3600000 milliseconds.</description></item>
-        /// <item><description>Timeout multiplier: 1</description></item>
-        /// <item><description>Timeout maximum delay: 3600000 milliseconds.</description></item>
-        /// <item><description>Total timeout: 3600 seconds.</description></item>
+        /// <item><description>Maximum attempts: Unlimited</description></item>
+        /// <item><description>Timeout: 3600 seconds.</description></item>
         /// </list>
         /// </remarks>
-        public gaxgrpc::CallSettings GetInstanceSettings { get; set; } = gaxgrpc::CallSettings.FromCallTiming(gaxgrpc::CallTiming.FromRetry(new gaxgrpc::RetrySettings(retryBackoff: new gaxgrpc::BackoffSettings(delay: sys::TimeSpan.FromMilliseconds(1000), maxDelay: sys::TimeSpan.FromMilliseconds(32000), delayMultiplier: 1.3), timeoutBackoff: new gaxgrpc::BackoffSettings(delay: sys::TimeSpan.FromMilliseconds(3600000), maxDelay: sys::TimeSpan.FromMilliseconds(3600000), delayMultiplier: 1), totalExpiration: gax::Expiration.FromTimeout(sys::TimeSpan.FromMilliseconds(3600000)), retryFilter: gaxgrpc::RetrySettings.FilterForStatusCodes(grpccore::StatusCode.Unavailable, grpccore::StatusCode.DeadlineExceeded))));
+        public gaxgrpc::CallSettings GetInstanceSettings { get; set; } = gaxgrpc::CallSettingsExtensions.WithRetry(gaxgrpc::CallSettings.FromExpiration(gax::Expiration.FromTimeout(sys::TimeSpan.FromMilliseconds(3600000))), gaxgrpc::RetrySettings.FromExponentialBackoff(maxAttempts: 2147483647, initialBackoff: sys::TimeSpan.FromMilliseconds(1000), maxBackoff: sys::TimeSpan.FromMilliseconds(32000), backoffMultiplier: 1.3, retryFilter: gaxgrpc::RetrySettings.FilterForStatusCodes(grpccore::StatusCode.Unavailable, grpccore::StatusCode.DeadlineExceeded)));
 
         /// <summary>
         /// <see cref="gaxgrpc::CallSettings"/> for synchronous and asynchronous calls to
         /// <c>InstanceAdminClient.CreateInstance</c> and <c>InstanceAdminClient.CreateInstanceAsync</c>.
         /// </summary>
-        /// <remarks>By default, retry will not be attempted.</remarks>
-        public gaxgrpc::CallSettings CreateInstanceSettings { get; set; }
+        /// <remarks>
+        /// <list type="bullet">
+        /// <item><description>This call will not be retried.</description></item>
+        /// <item><description>Timeout: 3600 seconds.</description></item>
+        /// </list>
+        /// </remarks>
+        public gaxgrpc::CallSettings CreateInstanceSettings { get; set; } = gaxgrpc::CallSettings.FromExpiration(gax::Expiration.FromTimeout(sys::TimeSpan.FromMilliseconds(3600000)));
 
         /// <summary>
         /// Long Running Operation settings for calls to <c>InstanceAdminClient.CreateInstance</c> and
@@ -163,8 +160,13 @@ namespace Google.Cloud.Spanner.Admin.Instance.V1
         /// <see cref="gaxgrpc::CallSettings"/> for synchronous and asynchronous calls to
         /// <c>InstanceAdminClient.UpdateInstance</c> and <c>InstanceAdminClient.UpdateInstanceAsync</c>.
         /// </summary>
-        /// <remarks>By default, retry will not be attempted.</remarks>
-        public gaxgrpc::CallSettings UpdateInstanceSettings { get; set; }
+        /// <remarks>
+        /// <list type="bullet">
+        /// <item><description>This call will not be retried.</description></item>
+        /// <item><description>Timeout: 3600 seconds.</description></item>
+        /// </list>
+        /// </remarks>
+        public gaxgrpc::CallSettings UpdateInstanceSettings { get; set; } = gaxgrpc::CallSettings.FromExpiration(gax::Expiration.FromTimeout(sys::TimeSpan.FromMilliseconds(3600000)));
 
         /// <summary>
         /// Long Running Operation settings for calls to <c>InstanceAdminClient.UpdateInstance</c> and
@@ -193,20 +195,23 @@ namespace Google.Cloud.Spanner.Admin.Instance.V1
         /// <item><description>Initial retry delay: 1000 milliseconds.</description></item>
         /// <item><description>Retry delay multiplier: 1.3</description></item>
         /// <item><description>Retry maximum delay: 32000 milliseconds.</description></item>
-        /// <item><description>Initial timeout: 3600000 milliseconds.</description></item>
-        /// <item><description>Timeout multiplier: 1</description></item>
-        /// <item><description>Timeout maximum delay: 3600000 milliseconds.</description></item>
-        /// <item><description>Total timeout: 3600 seconds.</description></item>
+        /// <item><description>Maximum attempts: Unlimited</description></item>
+        /// <item><description>Timeout: 3600 seconds.</description></item>
         /// </list>
         /// </remarks>
-        public gaxgrpc::CallSettings DeleteInstanceSettings { get; set; } = gaxgrpc::CallSettings.FromCallTiming(gaxgrpc::CallTiming.FromRetry(new gaxgrpc::RetrySettings(retryBackoff: new gaxgrpc::BackoffSettings(delay: sys::TimeSpan.FromMilliseconds(1000), maxDelay: sys::TimeSpan.FromMilliseconds(32000), delayMultiplier: 1.3), timeoutBackoff: new gaxgrpc::BackoffSettings(delay: sys::TimeSpan.FromMilliseconds(3600000), maxDelay: sys::TimeSpan.FromMilliseconds(3600000), delayMultiplier: 1), totalExpiration: gax::Expiration.FromTimeout(sys::TimeSpan.FromMilliseconds(3600000)), retryFilter: gaxgrpc::RetrySettings.FilterForStatusCodes(grpccore::StatusCode.Unavailable, grpccore::StatusCode.DeadlineExceeded))));
+        public gaxgrpc::CallSettings DeleteInstanceSettings { get; set; } = gaxgrpc::CallSettingsExtensions.WithRetry(gaxgrpc::CallSettings.FromExpiration(gax::Expiration.FromTimeout(sys::TimeSpan.FromMilliseconds(3600000))), gaxgrpc::RetrySettings.FromExponentialBackoff(maxAttempts: 2147483647, initialBackoff: sys::TimeSpan.FromMilliseconds(1000), maxBackoff: sys::TimeSpan.FromMilliseconds(32000), backoffMultiplier: 1.3, retryFilter: gaxgrpc::RetrySettings.FilterForStatusCodes(grpccore::StatusCode.Unavailable, grpccore::StatusCode.DeadlineExceeded)));
 
         /// <summary>
         /// <see cref="gaxgrpc::CallSettings"/> for synchronous and asynchronous calls to
         /// <c>InstanceAdminClient.SetIamPolicy</c> and <c>InstanceAdminClient.SetIamPolicyAsync</c>.
         /// </summary>
-        /// <remarks>By default, retry will not be attempted.</remarks>
-        public gaxgrpc::CallSettings SetIamPolicySettings { get; set; }
+        /// <remarks>
+        /// <list type="bullet">
+        /// <item><description>This call will not be retried.</description></item>
+        /// <item><description>Timeout: 30 seconds.</description></item>
+        /// </list>
+        /// </remarks>
+        public gaxgrpc::CallSettings SetIamPolicySettings { get; set; } = gaxgrpc::CallSettings.FromExpiration(gax::Expiration.FromTimeout(sys::TimeSpan.FromMilliseconds(30000)));
 
         /// <summary>
         /// <see cref="gaxgrpc::CallSettings"/> for synchronous and asynchronous calls to
@@ -217,20 +222,23 @@ namespace Google.Cloud.Spanner.Admin.Instance.V1
         /// <item><description>Initial retry delay: 1000 milliseconds.</description></item>
         /// <item><description>Retry delay multiplier: 1.3</description></item>
         /// <item><description>Retry maximum delay: 32000 milliseconds.</description></item>
-        /// <item><description>Initial timeout: 3600000 milliseconds.</description></item>
-        /// <item><description>Timeout multiplier: 1</description></item>
-        /// <item><description>Timeout maximum delay: 3600000 milliseconds.</description></item>
-        /// <item><description>Total timeout: 3600 seconds.</description></item>
+        /// <item><description>Maximum attempts: Unlimited</description></item>
+        /// <item><description>Timeout: 30 seconds.</description></item>
         /// </list>
         /// </remarks>
-        public gaxgrpc::CallSettings GetIamPolicySettings { get; set; } = gaxgrpc::CallSettings.FromCallTiming(gaxgrpc::CallTiming.FromRetry(new gaxgrpc::RetrySettings(retryBackoff: new gaxgrpc::BackoffSettings(delay: sys::TimeSpan.FromMilliseconds(1000), maxDelay: sys::TimeSpan.FromMilliseconds(32000), delayMultiplier: 1.3), timeoutBackoff: new gaxgrpc::BackoffSettings(delay: sys::TimeSpan.FromMilliseconds(3600000), maxDelay: sys::TimeSpan.FromMilliseconds(3600000), delayMultiplier: 1), totalExpiration: gax::Expiration.FromTimeout(sys::TimeSpan.FromMilliseconds(3600000)), retryFilter: gaxgrpc::RetrySettings.FilterForStatusCodes(grpccore::StatusCode.Unavailable, grpccore::StatusCode.DeadlineExceeded))));
+        public gaxgrpc::CallSettings GetIamPolicySettings { get; set; } = gaxgrpc::CallSettingsExtensions.WithRetry(gaxgrpc::CallSettings.FromExpiration(gax::Expiration.FromTimeout(sys::TimeSpan.FromMilliseconds(30000))), gaxgrpc::RetrySettings.FromExponentialBackoff(maxAttempts: 2147483647, initialBackoff: sys::TimeSpan.FromMilliseconds(1000), maxBackoff: sys::TimeSpan.FromMilliseconds(32000), backoffMultiplier: 1.3, retryFilter: gaxgrpc::RetrySettings.FilterForStatusCodes(grpccore::StatusCode.Unavailable, grpccore::StatusCode.DeadlineExceeded)));
 
         /// <summary>
         /// <see cref="gaxgrpc::CallSettings"/> for synchronous and asynchronous calls to
         /// <c>InstanceAdminClient.TestIamPermissions</c> and <c>InstanceAdminClient.TestIamPermissionsAsync</c>.
         /// </summary>
-        /// <remarks>By default, retry will not be attempted.</remarks>
-        public gaxgrpc::CallSettings TestIamPermissionsSettings { get; set; }
+        /// <remarks>
+        /// <list type="bullet">
+        /// <item><description>This call will not be retried.</description></item>
+        /// <item><description>Timeout: 30 seconds.</description></item>
+        /// </list>
+        /// </remarks>
+        public gaxgrpc::CallSettings TestIamPermissionsSettings { get; set; } = gaxgrpc::CallSettings.FromExpiration(gax::Expiration.FromTimeout(sys::TimeSpan.FromMilliseconds(30000)));
 
         /// <summary>Creates a deep clone of this object, with all the same property values.</summary>
         /// <returns>A deep clone of this <see cref="InstanceAdminSettings"/> object.</returns>
@@ -246,40 +254,86 @@ namespace Google.Cloud.Spanner.Admin.Instance.V1
         /// <summary>The settings to use for RPCs, or <c>null</c> for the default settings.</summary>
         public InstanceAdminSettings Settings { get; set; }
 
-        /// <inheritdoc/>
+        partial void InterceptBuild(ref InstanceAdminClient client);
+
+        partial void InterceptBuildAsync(st::CancellationToken cancellationToken, ref stt::Task<InstanceAdminClient> task);
+
+        /// <summary>Builds the resulting client.</summary>
         public override InstanceAdminClient Build()
+        {
+            InstanceAdminClient client = null;
+            InterceptBuild(ref client);
+            return client ?? BuildImpl();
+        }
+
+        /// <summary>Builds the resulting client asynchronously.</summary>
+        public override stt::Task<InstanceAdminClient> BuildAsync(st::CancellationToken cancellationToken = default)
+        {
+            stt::Task<InstanceAdminClient> task = null;
+            InterceptBuildAsync(cancellationToken, ref task);
+            return task ?? BuildAsyncImpl(cancellationToken);
+        }
+
+        private InstanceAdminClient BuildImpl()
         {
             Validate();
             grpccore::CallInvoker callInvoker = CreateCallInvoker();
             return InstanceAdminClient.Create(callInvoker, Settings);
         }
 
-        /// <inheritdoc/>
-        public override async stt::Task<InstanceAdminClient> BuildAsync(st::CancellationToken cancellationToken = default)
+        private async stt::Task<InstanceAdminClient> BuildAsyncImpl(st::CancellationToken cancellationToken)
         {
             Validate();
             grpccore::CallInvoker callInvoker = await CreateCallInvokerAsync(cancellationToken).ConfigureAwait(false);
             return InstanceAdminClient.Create(callInvoker, Settings);
         }
 
-        /// <inheritdoc/>
-        protected override gaxgrpc::ServiceEndpoint GetDefaultEndpoint() => InstanceAdminClient.DefaultEndpoint;
+        /// <summary>Returns the endpoint for this builder type, used if no endpoint is otherwise specified.</summary>
+        protected override string GetDefaultEndpoint() => InstanceAdminClient.DefaultEndpoint;
 
-        /// <inheritdoc/>
+        /// <summary>
+        /// Returns the default scopes for this builder type, used if no scopes are otherwise specified.
+        /// </summary>
         protected override scg::IReadOnlyList<string> GetDefaultScopes() => InstanceAdminClient.DefaultScopes;
 
-        /// <inheritdoc/>
+        /// <summary>Returns the channel pool to use when no other options are specified.</summary>
         protected override gaxgrpc::ChannelPool GetChannelPool() => InstanceAdminClient.ChannelPool;
+
+        /// <summary>Returns the default <see cref="gaxgrpc::GrpcAdapter"/>to use if not otherwise specified.</summary>
+        protected override gaxgrpc::GrpcAdapter DefaultGrpcAdapter => gaxgrpccore::GrpcCoreAdapter.Instance;
     }
 
     /// <summary>InstanceAdmin client wrapper, for convenient use.</summary>
+    /// <remarks>
+    /// Cloud Spanner Instance Admin API
+    /// 
+    /// The Cloud Spanner Instance Admin API can be used to create, delete,
+    /// modify and list instances. Instances are dedicated Cloud Spanner serving
+    /// and storage resources to be used by Cloud Spanner databases.
+    /// 
+    /// Each instance has a "configuration", which dictates where the
+    /// serving resources for the Cloud Spanner instance are located (e.g.,
+    /// US-central, Europe). Configurations are created by Google based on
+    /// resource availability.
+    /// 
+    /// Cloud Spanner billing is based on the instances that exist and their
+    /// sizes. After an instance exists, there are no additional
+    /// per-database or per-operation charges for use of the instance
+    /// (though there may be additional network bandwidth charges).
+    /// Instances offer isolation: problems with databases in one instance
+    /// will not affect other instances. However, within an instance
+    /// databases can affect each other. For example, if one database in an
+    /// instance receives a lot of requests and consumes most of the
+    /// instance resources, fewer resources are available for other
+    /// databases in that instance, and their performance may suffer.
+    /// </remarks>
     public abstract partial class InstanceAdminClient
     {
         /// <summary>
         /// The default endpoint for the InstanceAdmin service, which is a host of "spanner.googleapis.com" and a port
         /// of 443.
         /// </summary>
-        public static gaxgrpc::ServiceEndpoint DefaultEndpoint { get; } = new gaxgrpc::ServiceEndpoint("spanner.googleapis.com", 443);
+        public static string DefaultEndpoint { get; } = "spanner.googleapis.com:443";
 
         /// <summary>The default InstanceAdmin scopes.</summary>
         /// <remarks>
@@ -298,96 +352,22 @@ namespace Google.Cloud.Spanner.Admin.Instance.V1
         internal static gaxgrpc::ChannelPool ChannelPool { get; } = new gaxgrpc::ChannelPool(DefaultScopes);
 
         /// <summary>
-        /// Asynchronously creates a <see cref="InstanceAdminClient"/>, applying defaults for all unspecified settings, 
-        /// and creating a channel connecting to the given endpoint with application default credentials where 
-        /// necessary. See the example for how to use custom credentials.
+        /// Asynchronously creates a <see cref="InstanceAdminClient"/> using the default credentials, endpoint and
+        /// settings. To specify custom credentials or other settings, use <see cref="InstanceAdminClientBuilder"/>.
         /// </summary>
-        /// <example>
-        /// This sample shows how to create a client using default credentials:
-        /// <code>
-        /// using Google.Cloud.Vision.V1;
-        /// ...
-        /// // When running on Google Cloud Platform this will use the project Compute Credential.
-        /// // Or set the GOOGLE_APPLICATION_CREDENTIALS environment variable to the path of a JSON
-        /// // credential file to use that credential.
-        /// ImageAnnotatorClient client = await ImageAnnotatorClient.CreateAsync();
-        /// </code>
-        /// This sample shows how to create a client using credentials loaded from a JSON file:
-        /// <code>
-        /// using Google.Cloud.Vision.V1;
-        /// using Google.Apis.Auth.OAuth2;
-        /// using Grpc.Auth;
-        /// using Grpc.Core;
-        /// ...
-        /// GoogleCredential cred = GoogleCredential.FromFile("/path/to/credentials.json");
-        /// Channel channel = new Channel(
-        ///     ImageAnnotatorClient.DefaultEndpoint.Host, ImageAnnotatorClient.DefaultEndpoint.Port, cred.ToChannelCredentials());
-        /// ImageAnnotatorClient client = ImageAnnotatorClient.Create(channel);
-        /// ...
-        /// // Shutdown the channel when it is no longer required.
-        /// await channel.ShutdownAsync();
-        /// </code>
-        /// </example>
-        /// <param name="endpoint">Optional <see cref="gaxgrpc::ServiceEndpoint"/>.</param>
-        /// <param name="settings">Optional <see cref="InstanceAdminSettings"/>.</param>
+        /// <param name="cancellationToken">
+        /// The <see cref="st::CancellationToken"/> to use while creating the client.
+        /// </param>
         /// <returns>The task representing the created <see cref="InstanceAdminClient"/>.</returns>
-        public static async stt::Task<InstanceAdminClient> CreateAsync(gaxgrpc::ServiceEndpoint endpoint = null, InstanceAdminSettings settings = null)
-        {
-            grpccore::Channel channel = await ChannelPool.GetChannelAsync(endpoint ?? DefaultEndpoint).ConfigureAwait(false);
-            return Create(channel, settings);
-        }
+        public static stt::Task<InstanceAdminClient> CreateAsync(st::CancellationToken cancellationToken = default) =>
+            new InstanceAdminClientBuilder().BuildAsync(cancellationToken);
 
         /// <summary>
-        /// Synchronously creates a <see cref="InstanceAdminClient"/>, applying defaults for all unspecified settings, 
-        /// and creating a channel connecting to the given endpoint with application default credentials where 
-        /// necessary. See the example for how to use custom credentials.
+        /// Synchronously creates a <see cref="InstanceAdminClient"/> using the default credentials, endpoint and
+        /// settings. To specify custom credentials or other settings, use <see cref="InstanceAdminClientBuilder"/>.
         /// </summary>
-        /// <example>
-        /// This sample shows how to create a client using default credentials:
-        /// <code>
-        /// using Google.Cloud.Vision.V1;
-        /// ...
-        /// // When running on Google Cloud Platform this will use the project Compute Credential.
-        /// // Or set the GOOGLE_APPLICATION_CREDENTIALS environment variable to the path of a JSON
-        /// // credential file to use that credential.
-        /// ImageAnnotatorClient client = ImageAnnotatorClient.Create();
-        /// </code>
-        /// This sample shows how to create a client using credentials loaded from a JSON file:
-        /// <code>
-        /// using Google.Cloud.Vision.V1;
-        /// using Google.Apis.Auth.OAuth2;
-        /// using Grpc.Auth;
-        /// using Grpc.Core;
-        /// ...
-        /// GoogleCredential cred = GoogleCredential.FromFile("/path/to/credentials.json");
-        /// Channel channel = new Channel(
-        ///     ImageAnnotatorClient.DefaultEndpoint.Host, ImageAnnotatorClient.DefaultEndpoint.Port, cred.ToChannelCredentials());
-        /// ImageAnnotatorClient client = ImageAnnotatorClient.Create(channel);
-        /// ...
-        /// // Shutdown the channel when it is no longer required.
-        /// channel.ShutdownAsync().Wait();
-        /// </code>
-        /// </example>
-        /// <param name="endpoint">Optional <see cref="gaxgrpc::ServiceEndpoint"/>.</param>
-        /// <param name="settings">Optional <see cref="InstanceAdminSettings"/>.</param>
         /// <returns>The created <see cref="InstanceAdminClient"/>.</returns>
-        public static InstanceAdminClient Create(gaxgrpc::ServiceEndpoint endpoint = null, InstanceAdminSettings settings = null)
-        {
-            grpccore::Channel channel = ChannelPool.GetChannel(endpoint ?? DefaultEndpoint);
-            return Create(channel, settings);
-        }
-
-        /// <summary>
-        /// Creates a <see cref="InstanceAdminClient"/> which uses the specified channel for remote operations.
-        /// </summary>
-        /// <param name="channel">The <see cref="grpccore::Channel"/> for remote operations. Must not be null.</param>
-        /// <param name="settings">Optional <see cref="InstanceAdminSettings"/>.</param>
-        /// <returns>The created <see cref="InstanceAdminClient"/>.</returns>
-        public static InstanceAdminClient Create(grpccore::Channel channel, InstanceAdminSettings settings = null)
-        {
-            gax::GaxPreconditions.CheckNotNull(channel, nameof(channel));
-            return Create(new grpccore::DefaultCallInvoker(channel), settings);
-        }
+        public static InstanceAdminClient Create() => new InstanceAdminClientBuilder().Build();
 
         /// <summary>
         /// Creates a <see cref="InstanceAdminClient"/> which uses the specified call invoker for remote operations.
@@ -397,7 +377,7 @@ namespace Google.Cloud.Spanner.Admin.Instance.V1
         /// </param>
         /// <param name="settings">Optional <see cref="InstanceAdminSettings"/>.</param>
         /// <returns>The created <see cref="InstanceAdminClient"/>.</returns>
-        public static InstanceAdminClient Create(grpccore::CallInvoker callInvoker, InstanceAdminSettings settings = null)
+        internal static InstanceAdminClient Create(grpccore::CallInvoker callInvoker, InstanceAdminSettings settings = null)
         {
             gax::GaxPreconditions.CheckNotNull(callInvoker, nameof(callInvoker));
             grpcinter::Interceptor interceptor = settings?.Interceptor;
@@ -410,16 +390,14 @@ namespace Google.Cloud.Spanner.Admin.Instance.V1
         }
 
         /// <summary>
-        /// Shuts down any channels automatically created by
-        /// <see cref="Create(grpccore::CallInvoker,InstanceAdminSettings)"/> and
-        /// <see cref="CreateAsync(gaxgrpc::ServiceEndpoint,InstanceAdminSettings)"/>. Channels which weren't
-        /// automatically created are not affected.
+        /// Shuts down any channels automatically created by <see cref="Create()"/> and
+        /// <see cref="CreateAsync(st::CancellationToken)"/>. Channels which weren't automatically created are not
+        /// affected.
         /// </summary>
         /// <remarks>
-        /// After calling this method, further calls to
-        /// <see cref="Create(grpccore::CallInvoker,InstanceAdminSettings)"/> and
-        /// <see cref="CreateAsync(gaxgrpc::ServiceEndpoint,InstanceAdminSettings)"/> will create new channels, which
-        /// could in turn be shut down by another call to this method.
+        /// After calling this method, further calls to <see cref="Create()"/> and
+        /// <see cref="CreateAsync(st::CancellationToken)"/> will create new channels, which could in turn be shut down
+        /// by another call to this method.
         /// </remarks>
         /// <returns>A task representing the asynchronous shutdown operation.</returns>
         public static stt::Task ShutdownDefaultChannelsAsync() => ChannelPool.ShutdownChannelsAsync();
@@ -1599,12 +1577,12 @@ namespace Google.Cloud.Spanner.Admin.Instance.V1
         /// </summary>
         /// <param name="instance">
         /// Required. The instance to update, which must always include the instance
-        /// name.  Otherwise, only fields mentioned in [][google.spanner.admin.instance.v1.UpdateInstanceRequest.field_mask] need be included.
+        /// name.  Otherwise, only fields mentioned in [field_mask][google.spanner.admin.instance.v1.UpdateInstanceRequest.field_mask] need be included.
         /// </param>
         /// <param name="fieldMask">
-        /// Required. A mask specifying which fields in [][google.spanner.admin.instance.v1.UpdateInstanceRequest.instance] should be updated.
+        /// Required. A mask specifying which fields in [Instance][google.spanner.admin.instance.v1.Instance] should be updated.
         /// The field mask must always be specified; this prevents any future fields in
-        /// [][google.spanner.admin.instance.v1.Instance] from being erased accidentally by clients that do not know
+        /// [Instance][google.spanner.admin.instance.v1.Instance] from being erased accidentally by clients that do not know
         /// about them.
         /// </param>
         /// <param name="callSettings">If not null, applies overrides to this RPC call.</param>
@@ -1660,12 +1638,12 @@ namespace Google.Cloud.Spanner.Admin.Instance.V1
         /// </summary>
         /// <param name="instance">
         /// Required. The instance to update, which must always include the instance
-        /// name.  Otherwise, only fields mentioned in [][google.spanner.admin.instance.v1.UpdateInstanceRequest.field_mask] need be included.
+        /// name.  Otherwise, only fields mentioned in [field_mask][google.spanner.admin.instance.v1.UpdateInstanceRequest.field_mask] need be included.
         /// </param>
         /// <param name="fieldMask">
-        /// Required. A mask specifying which fields in [][google.spanner.admin.instance.v1.UpdateInstanceRequest.instance] should be updated.
+        /// Required. A mask specifying which fields in [Instance][google.spanner.admin.instance.v1.Instance] should be updated.
         /// The field mask must always be specified; this prevents any future fields in
-        /// [][google.spanner.admin.instance.v1.Instance] from being erased accidentally by clients that do not know
+        /// [Instance][google.spanner.admin.instance.v1.Instance] from being erased accidentally by clients that do not know
         /// about them.
         /// </param>
         /// <param name="callSettings">If not null, applies overrides to this RPC call.</param>
@@ -1721,12 +1699,12 @@ namespace Google.Cloud.Spanner.Admin.Instance.V1
         /// </summary>
         /// <param name="instance">
         /// Required. The instance to update, which must always include the instance
-        /// name.  Otherwise, only fields mentioned in [][google.spanner.admin.instance.v1.UpdateInstanceRequest.field_mask] need be included.
+        /// name.  Otherwise, only fields mentioned in [field_mask][google.spanner.admin.instance.v1.UpdateInstanceRequest.field_mask] need be included.
         /// </param>
         /// <param name="fieldMask">
-        /// Required. A mask specifying which fields in [][google.spanner.admin.instance.v1.UpdateInstanceRequest.instance] should be updated.
+        /// Required. A mask specifying which fields in [Instance][google.spanner.admin.instance.v1.Instance] should be updated.
         /// The field mask must always be specified; this prevents any future fields in
-        /// [][google.spanner.admin.instance.v1.Instance] from being erased accidentally by clients that do not know
+        /// [Instance][google.spanner.admin.instance.v1.Instance] from being erased accidentally by clients that do not know
         /// about them.
         /// </param>
         /// <param name="cancellationToken">A <see cref="st::CancellationToken"/> to use for this RPC.</param>
@@ -2479,6 +2457,29 @@ namespace Google.Cloud.Spanner.Admin.Instance.V1
     }
 
     /// <summary>InstanceAdmin client wrapper implementation, for convenient use.</summary>
+    /// <remarks>
+    /// Cloud Spanner Instance Admin API
+    /// 
+    /// The Cloud Spanner Instance Admin API can be used to create, delete,
+    /// modify and list instances. Instances are dedicated Cloud Spanner serving
+    /// and storage resources to be used by Cloud Spanner databases.
+    /// 
+    /// Each instance has a "configuration", which dictates where the
+    /// serving resources for the Cloud Spanner instance are located (e.g.,
+    /// US-central, Europe). Configurations are created by Google based on
+    /// resource availability.
+    /// 
+    /// Cloud Spanner billing is based on the instances that exist and their
+    /// sizes. After an instance exists, there are no additional
+    /// per-database or per-operation charges for use of the instance
+    /// (though there may be additional network bandwidth charges).
+    /// Instances offer isolation: problems with databases in one instance
+    /// will not affect other instances. However, within an instance
+    /// databases can affect each other. For example, if one database in an
+    /// instance receives a lot of requests and consumes most of the
+    /// instance resources, fewer resources are available for other
+    /// databases in that instance, and their performance may suffer.
+    /// </remarks>
     public sealed partial class InstanceAdminClientImpl : InstanceAdminClient
     {
         private readonly gaxgrpc::ApiCall<ListInstanceConfigsRequest, ListInstanceConfigsResponse> _callListInstanceConfigs;
@@ -2513,34 +2514,34 @@ namespace Google.Cloud.Spanner.Admin.Instance.V1
             gaxgrpc::ClientHelper clientHelper = new gaxgrpc::ClientHelper(effectiveSettings);
             CreateInstanceOperationsClient = new lro::OperationsClientImpl(grpcClient.CreateOperationsClient(), effectiveSettings.CreateInstanceOperationsSettings);
             UpdateInstanceOperationsClient = new lro::OperationsClientImpl(grpcClient.CreateOperationsClient(), effectiveSettings.UpdateInstanceOperationsSettings);
-            _callListInstanceConfigs = clientHelper.BuildApiCall<ListInstanceConfigsRequest, ListInstanceConfigsResponse>(grpcClient.ListInstanceConfigsAsync, grpcClient.ListInstanceConfigs, effectiveSettings.ListInstanceConfigsSettings).WithCallSettingsOverlay(request => gaxgrpc::CallSettings.FromHeader("x-goog-request-params", $"parent={(sysnet::WebUtility.UrlEncode(request.Parent))}"));
+            _callListInstanceConfigs = clientHelper.BuildApiCall<ListInstanceConfigsRequest, ListInstanceConfigsResponse>(grpcClient.ListInstanceConfigsAsync, grpcClient.ListInstanceConfigs, effectiveSettings.ListInstanceConfigsSettings).WithGoogleRequestParam("parent", request => request.Parent);
             Modify_ApiCall(ref _callListInstanceConfigs);
             Modify_ListInstanceConfigsApiCall(ref _callListInstanceConfigs);
-            _callGetInstanceConfig = clientHelper.BuildApiCall<GetInstanceConfigRequest, InstanceConfig>(grpcClient.GetInstanceConfigAsync, grpcClient.GetInstanceConfig, effectiveSettings.GetInstanceConfigSettings).WithCallSettingsOverlay(request => gaxgrpc::CallSettings.FromHeader("x-goog-request-params", $"name={(sysnet::WebUtility.UrlEncode(request.Name))}"));
+            _callGetInstanceConfig = clientHelper.BuildApiCall<GetInstanceConfigRequest, InstanceConfig>(grpcClient.GetInstanceConfigAsync, grpcClient.GetInstanceConfig, effectiveSettings.GetInstanceConfigSettings).WithGoogleRequestParam("name", request => request.Name);
             Modify_ApiCall(ref _callGetInstanceConfig);
             Modify_GetInstanceConfigApiCall(ref _callGetInstanceConfig);
-            _callListInstances = clientHelper.BuildApiCall<ListInstancesRequest, ListInstancesResponse>(grpcClient.ListInstancesAsync, grpcClient.ListInstances, effectiveSettings.ListInstancesSettings).WithCallSettingsOverlay(request => gaxgrpc::CallSettings.FromHeader("x-goog-request-params", $"parent={(sysnet::WebUtility.UrlEncode(request.Parent))}"));
+            _callListInstances = clientHelper.BuildApiCall<ListInstancesRequest, ListInstancesResponse>(grpcClient.ListInstancesAsync, grpcClient.ListInstances, effectiveSettings.ListInstancesSettings).WithGoogleRequestParam("parent", request => request.Parent);
             Modify_ApiCall(ref _callListInstances);
             Modify_ListInstancesApiCall(ref _callListInstances);
-            _callGetInstance = clientHelper.BuildApiCall<GetInstanceRequest, Instance>(grpcClient.GetInstanceAsync, grpcClient.GetInstance, effectiveSettings.GetInstanceSettings).WithCallSettingsOverlay(request => gaxgrpc::CallSettings.FromHeader("x-goog-request-params", $"name={(sysnet::WebUtility.UrlEncode(request.Name))}"));
+            _callGetInstance = clientHelper.BuildApiCall<GetInstanceRequest, Instance>(grpcClient.GetInstanceAsync, grpcClient.GetInstance, effectiveSettings.GetInstanceSettings).WithGoogleRequestParam("name", request => request.Name);
             Modify_ApiCall(ref _callGetInstance);
             Modify_GetInstanceApiCall(ref _callGetInstance);
-            _callCreateInstance = clientHelper.BuildApiCall<CreateInstanceRequest, lro::Operation>(grpcClient.CreateInstanceAsync, grpcClient.CreateInstance, effectiveSettings.CreateInstanceSettings).WithCallSettingsOverlay(request => gaxgrpc::CallSettings.FromHeader("x-goog-request-params", $"parent={(sysnet::WebUtility.UrlEncode(request.Parent))}"));
+            _callCreateInstance = clientHelper.BuildApiCall<CreateInstanceRequest, lro::Operation>(grpcClient.CreateInstanceAsync, grpcClient.CreateInstance, effectiveSettings.CreateInstanceSettings).WithGoogleRequestParam("parent", request => request.Parent);
             Modify_ApiCall(ref _callCreateInstance);
             Modify_CreateInstanceApiCall(ref _callCreateInstance);
-            _callUpdateInstance = clientHelper.BuildApiCall<UpdateInstanceRequest, lro::Operation>(grpcClient.UpdateInstanceAsync, grpcClient.UpdateInstance, effectiveSettings.UpdateInstanceSettings).WithCallSettingsOverlay(request => gaxgrpc::CallSettings.FromHeader("x-goog-request-params", $"instance.name={(sysnet::WebUtility.UrlEncode(request.Instance.Name))}"));
+            _callUpdateInstance = clientHelper.BuildApiCall<UpdateInstanceRequest, lro::Operation>(grpcClient.UpdateInstanceAsync, grpcClient.UpdateInstance, effectiveSettings.UpdateInstanceSettings).WithGoogleRequestParam("instance.name", request => request.Instance?.Name);
             Modify_ApiCall(ref _callUpdateInstance);
             Modify_UpdateInstanceApiCall(ref _callUpdateInstance);
-            _callDeleteInstance = clientHelper.BuildApiCall<DeleteInstanceRequest, wkt::Empty>(grpcClient.DeleteInstanceAsync, grpcClient.DeleteInstance, effectiveSettings.DeleteInstanceSettings).WithCallSettingsOverlay(request => gaxgrpc::CallSettings.FromHeader("x-goog-request-params", $"name={(sysnet::WebUtility.UrlEncode(request.Name))}"));
+            _callDeleteInstance = clientHelper.BuildApiCall<DeleteInstanceRequest, wkt::Empty>(grpcClient.DeleteInstanceAsync, grpcClient.DeleteInstance, effectiveSettings.DeleteInstanceSettings).WithGoogleRequestParam("name", request => request.Name);
             Modify_ApiCall(ref _callDeleteInstance);
             Modify_DeleteInstanceApiCall(ref _callDeleteInstance);
-            _callSetIamPolicy = clientHelper.BuildApiCall<gciv::SetIamPolicyRequest, gciv::Policy>(grpcClient.SetIamPolicyAsync, grpcClient.SetIamPolicy, effectiveSettings.SetIamPolicySettings).WithCallSettingsOverlay(request => gaxgrpc::CallSettings.FromHeader("x-goog-request-params", $"resource={(sysnet::WebUtility.UrlEncode(request.Resource))}"));
+            _callSetIamPolicy = clientHelper.BuildApiCall<gciv::SetIamPolicyRequest, gciv::Policy>(grpcClient.SetIamPolicyAsync, grpcClient.SetIamPolicy, effectiveSettings.SetIamPolicySettings).WithGoogleRequestParam("resource", request => request.Resource);
             Modify_ApiCall(ref _callSetIamPolicy);
             Modify_SetIamPolicyApiCall(ref _callSetIamPolicy);
-            _callGetIamPolicy = clientHelper.BuildApiCall<gciv::GetIamPolicyRequest, gciv::Policy>(grpcClient.GetIamPolicyAsync, grpcClient.GetIamPolicy, effectiveSettings.GetIamPolicySettings).WithCallSettingsOverlay(request => gaxgrpc::CallSettings.FromHeader("x-goog-request-params", $"resource={(sysnet::WebUtility.UrlEncode(request.Resource))}"));
+            _callGetIamPolicy = clientHelper.BuildApiCall<gciv::GetIamPolicyRequest, gciv::Policy>(grpcClient.GetIamPolicyAsync, grpcClient.GetIamPolicy, effectiveSettings.GetIamPolicySettings).WithGoogleRequestParam("resource", request => request.Resource);
             Modify_ApiCall(ref _callGetIamPolicy);
             Modify_GetIamPolicyApiCall(ref _callGetIamPolicy);
-            _callTestIamPermissions = clientHelper.BuildApiCall<gciv::TestIamPermissionsRequest, gciv::TestIamPermissionsResponse>(grpcClient.TestIamPermissionsAsync, grpcClient.TestIamPermissions, effectiveSettings.TestIamPermissionsSettings).WithCallSettingsOverlay(request => gaxgrpc::CallSettings.FromHeader("x-goog-request-params", $"resource={(sysnet::WebUtility.UrlEncode(request.Resource))}"));
+            _callTestIamPermissions = clientHelper.BuildApiCall<gciv::TestIamPermissionsRequest, gciv::TestIamPermissionsResponse>(grpcClient.TestIamPermissionsAsync, grpcClient.TestIamPermissions, effectiveSettings.TestIamPermissionsSettings).WithGoogleRequestParam("resource", request => request.Resource);
             Modify_ApiCall(ref _callTestIamPermissions);
             Modify_TestIamPermissionsApiCall(ref _callTestIamPermissions);
             OnConstruction(grpcClient, effectiveSettings, clientHelper);

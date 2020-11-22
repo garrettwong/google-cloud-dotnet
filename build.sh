@@ -28,6 +28,7 @@ runtests=true
 runcoverage=false
 apiregex=
 nobuild=false
+diff=false
 while (( "$#" )); do
   if [[ "$1" == "--notests" ]]
   then 
@@ -35,6 +36,7 @@ while (( "$#" )); do
   elif [[ "$1" == "--diff" ]]
   then
     apis+=($(git diff master --name-only | grep -e 'apis/.*/' | cut -d/ -f 2 | uniq))
+    diff=true
   elif [[ "$1" == "--regex" ]]
   then
     shift
@@ -57,9 +59,9 @@ done
 [[ "$OS" == "Windows_NT" ]] && tools="tools" || tools=""
 
 # If no APIs were specified explicitly, build all of them (and tools on Windows)
-if [[ ${#apis[@]} -eq 0 ]]
+if [[ ${#apis[@]} -eq 0 && $diff == false ]]
 then
-  apis=(${tools} $(find apis -mindepth 1 -maxdepth 1 -type d | sed 's/apis\///g'))
+  apis=(${tools} $($PYTHON3 tools/listapis.py apis/apis.json))
 fi
 
 # If we were given an API filter regex, apply it now.
@@ -76,15 +78,25 @@ then
     do
       if [[ ! "$api" =~ $apiregex ]]
       then
-        filteredapis+=($api)
+        if [[ -d "apis/$api" ]]
+        then
+          filteredapis+=($api)
+        else
+          echo "Skipping missing API $api; recently deleted?"
+        fi
       fi
     done
   else
     for api in ${apis[*]}
-    do
+    do    
       if [[ "$api" =~ $apiregex ]]
       then
-        filteredapis+=($api)
+        if [[ -d "apis/$api" ]]
+        then
+          filteredapis+=($api)
+        else
+          echo "Skipping missing API $api; recently deleted?"
+        fi
       fi
     done
   fi
@@ -119,6 +131,12 @@ for api in ${apis[*]}
 do
   [[ -d "$api" ]] && apidir=$api || apidir=apis/$api
 
+  # ServiceDirectory is in apis/ for the sake of autosynth, but doesn't really build.
+  if [[ "$api" == "ServiceDirectory" ]]
+  then
+    continue
+  fi
+
   # Only build ASP.NET support on Windows
   if [[ "$OS" != "Windows_NT" ]] && [[ "$apidir" == "apis/Google.Cloud.Diagnostics.AspNet" ]]
   then
@@ -137,6 +155,14 @@ do
       echo "$testproject" >> AllTests.txt
     fi
   done
+  
+  # If we're not going to test the desktop .NET builds, let's remove them
+  # entirely. This saves a huge amount of disk space, as the desktop framework
+  # builds include copies of gRPC.
+  if [[ ! "$OS" == "Windows_NT" ]]
+  then
+    rm -rf $apidir/*/bin/Release/net[0-9]*
+  fi
 done
 
 if [[ "$runtests" = true ]]
@@ -144,13 +170,13 @@ then
   log_build_action "(Start) Unit tests"
   # Could use xargs, but this is more flexible
   while read testproject
-  do  
+  do
     testdir=$(dirname $testproject)
     log_build_action "Testing $testdir"
     if [[ "$runcoverage" = true && -f "$testdir/coverage.xml" ]]
     then
       echo "(Running with coverage)"
-      (cd "$testdir"; $DOTCOVER cover "coverage.xml" -ReturnTargetExitCode)
+      (cd "$testdir"; $DOTCOVER cover "coverage.xml" --ReturnTargetExitCode)
     else
       dotnet test -nologo -c Release --no-build $testproject
     fi

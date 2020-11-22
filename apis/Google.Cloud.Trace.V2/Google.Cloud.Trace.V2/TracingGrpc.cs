@@ -3,7 +3,7 @@
 //     source: google/devtools/cloudtrace/v2/tracing.proto
 // </auto-generated>
 // Original file comments:
-// Copyright 2019 Google LLC.
+// Copyright 2020 Google LLC
 //
 // Licensed under the Apache License, Version 2.0 (the "License");
 // you may not use this file except in compliance with the License.
@@ -16,7 +16,6 @@
 // WITHOUT WARRANTIES OR CONDITIONS OF ANY KIND, either express or implied.
 // See the License for the specific language governing permissions and
 // limitations under the License.
-//
 //
 #pragma warning disable 0414, 1591
 #region Designer generated code
@@ -93,7 +92,7 @@ namespace Google.Cloud.Trace.V2 {
     {
       /// <summary>Creates a new client for TraceService</summary>
       /// <param name="channel">The channel to use to make remote calls.</param>
-      public TraceServiceClient(grpc::Channel channel) : base(channel)
+      public TraceServiceClient(grpc::ChannelBase channel) : base(channel)
       {
       }
       /// <summary>Creates a new client for TraceService that uses a custom <c>CallInvoker</c>.</summary>

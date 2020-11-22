@@ -33,6 +33,8 @@ namespace Google.Cloud.Storage.V1.Tests
             Assert.Null(request.Versions);
             Assert.Null(request.UserProject);
             Assert.Null(request.PageToken);
+            Assert.Null(request.StartOffset);
+            Assert.Null(request.EndOffset);
         }
 
         [Fact]
@@ -48,6 +50,9 @@ namespace Google.Cloud.Storage.V1.Tests
                 Versions = true,
                 UserProject = "proj",
                 PageToken = "nextpage",
+                Fields = "items(name),nextPageToken",
+                StartOffset = "start",
+                EndOffset = "end"
             };
             options.ModifyRequest(request);
             Assert.Equal(10, request.MaxResults);
@@ -57,6 +62,9 @@ namespace Google.Cloud.Storage.V1.Tests
             Assert.True(request.Versions);
             Assert.Equal("proj", request.UserProject);
             Assert.Equal("nextpage", request.PageToken);
+            Assert.Equal("items(name),nextPageToken", request.Fields);
+            Assert.Equal("start", request.StartOffset);
+            Assert.Equal("end", request.EndOffset);
         }
     }
 }

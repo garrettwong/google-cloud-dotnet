@@ -1,4 +1,4 @@
-// Copyright 2019 Google LLC
+// Copyright 2020 Google LLC
 //
 // Licensed under the Apache License, Version 2.0 (the "License");
 // you may not use this file except in compliance with the License.
@@ -13,9 +13,6 @@
 // limitations under the License.
 
 // Generated code. DO NOT EDIT!
-
-// Do not warn when using obsolete members
-#pragma warning disable CS0612
 
 using gaxgrpc = Google.Api.Gax.Grpc;
 using wkt = Google.Protobuf.WellKnownTypes;
@@ -286,7 +283,9 @@ namespace Google.Cloud.Debugger.V2.Tests
                 IncludeAllUsers = false,
                 IncludeInactive = true,
                 Action = new ListBreakpointsRequest.Types.BreakpointActionValue(),
+#pragma warning disable CS0612
                 StripResults = false,
+#pragma warning restore CS0612
                 WaitToken = "wait_tokencb600154",
                 ClientVersion = "client_version92be8ead",
             };
@@ -312,7 +311,9 @@ namespace Google.Cloud.Debugger.V2.Tests
                 IncludeAllUsers = false,
                 IncludeInactive = true,
                 Action = new ListBreakpointsRequest.Types.BreakpointActionValue(),
+#pragma warning disable CS0612
                 StripResults = false,
+#pragma warning restore CS0612
                 WaitToken = "wait_tokencb600154",
                 ClientVersion = "client_version92be8ead",
             };

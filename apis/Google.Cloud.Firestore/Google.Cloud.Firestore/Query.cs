@@ -41,13 +41,15 @@ namespace Google.Cloud.Firestore
         // multiple Query objects may share the same internal references.
         // Any additional fields should be included in equality/hash code checks.
         private readonly int _offset;
-        private readonly int? _limit;
+        private readonly (int count, LimitType type)? _limit;
         private readonly IReadOnlyList<InternalOrdering> _orderings; // Never null
         private readonly IReadOnlyList<InternalFilter> _filters; // May be null
         private readonly IReadOnlyList<FieldPath> _projections; // May be null
         private readonly Cursor _startAt;
         private readonly Cursor _endAt;
         private readonly QueryRoot _root;
+
+        private bool IsLimitToLast => _limit?.type == LimitType.Last;
 
         /// <summary>
         /// The database this query will search over.
@@ -73,7 +75,7 @@ namespace Google.Cloud.Firestore
         // no further cloning: it is the responsibility of each method to ensure it creates a clone for any new data.
         private Query(
             QueryRoot root,
-            int offset, int? limit,
+            int offset, (int count, LimitType type)? limit,
             IReadOnlyList<InternalOrdering> orderings, IReadOnlyList<InternalFilter> filters, IReadOnlyList<FieldPath> projections,
             Cursor startAt, Cursor endAt)
         {
@@ -90,20 +92,31 @@ namespace Google.Cloud.Firestore
         internal static Query ForCollectionGroup(FirestoreDb database, string collectionId) =>
             new Query(QueryRoot.ForCollectionGroup(database, collectionId));
 
-        internal StructuredQuery ToStructuredQuery() =>
-            new StructuredQuery
+        internal StructuredQuery ToStructuredQuery()
+        {
+            bool limitToLast = IsLimitToLast;
+            if (limitToLast && !_orderings.Any())
+            {
+                throw new InvalidOperationException($"Queries using {nameof(LimitToLast)} must specify at least one ordering.");
+            }
+
+            return new StructuredQuery
             {
                 From = { new CollectionSelector { AllDescendants = _root.AllDescendants, CollectionId = _root.CollectionId } },
-                Limit = _limit,
+                Limit = _limit?.count,
                 Offset = _offset,
-                OrderBy = { _orderings.Select(o => o.ToProto()) },
-                EndAt = _endAt,
+                OrderBy = { _orderings.Select(o => o.ToProto(invertDirection: limitToLast)) },
+                EndAt = limitToLast ? InvertCursor(_startAt) :_endAt,
                 Select = _projections == null ? null : new Projection { Fields = { _projections.Select(fp => fp.ToFieldReference()) } },
-                StartAt = _startAt,
+                StartAt = limitToLast ? InvertCursor(_endAt) : _startAt,
                 Where = _filters == null ? null
                     : _filters.Count == 1 ? _filters[0].ToProto()
                     : new Filter { CompositeFilter = new CompositeFilter { Op = CompositeFilter.Types.Operator.And, Filters = { _filters.Select(f => f.ToProto()) } } }
             };
+
+            Cursor InvertCursor(Cursor cursor) =>
+                cursor == null ? null : new Cursor { Before = !cursor.Before, Values = { cursor.Values } };
+        }
 
         /// <summary>
         /// Specifies the field paths to return in the results.
@@ -168,6 +181,32 @@ namespace Google.Cloud.Firestore
         /// <returns>A new query based on the current one, but with the additional specified filter applied.</returns>
         public Query WhereEqualTo(FieldPath fieldPath, object value) =>
             Where(fieldPath, FieldOp.Equal, value);
+
+        /// <summary>
+        /// Returns a query with a filter specifying that the value in <paramref name="fieldPath"/> must not be
+        /// equal to <paramref name="value"/>.
+        /// </summary>
+        /// <remarks>
+        /// This call adds additional filters to any previously-specified ones.
+        /// </remarks>
+        /// <param name="fieldPath">The dot-separated field path to filter on. Must not be null or empty.</param>
+        /// <param name="value">The value to compare in the filter.</param>
+        /// <returns>A new query based on the current one, but with the additional specified filter applied.</returns>
+        public Query WhereNotEqualTo(string fieldPath, object value) =>
+            Where(fieldPath, FieldOp.NotEqual, value);
+
+        /// <summary>
+        /// Returns a query with a filter specifying that the value in <paramref name="fieldPath"/> must not be
+        /// equal to <paramref name="value"/>.
+        /// </summary>
+        /// <remarks>
+        /// This call adds additional filters to any previously-specified ones.
+        /// </remarks>
+        /// <param name="fieldPath">The field path to filter on. Must not be null.</param>
+        /// <param name="value">The value to compare in the filter.</param>
+        /// <returns>A new query based on the current one, but with the additional specified filter applied.</returns>
+        public Query WhereNotEqualTo(FieldPath fieldPath, object value) =>
+            Where(fieldPath, FieldOp.NotEqual, value);
 
         /// <summary>
         /// Returns a query with a filter specifying that the value in <paramref name="fieldPath"/> must be less than
@@ -328,7 +367,7 @@ namespace Google.Cloud.Firestore
 
         /// <summary>
         /// Returns a query with a filter specifying that <paramref name="fieldPath"/> must be
-        /// a field present in the document, with a value which is one of the values <paramref name="values"/>.
+        /// a field present in the document, with a value which is one of the values in <paramref name="values"/>.
         /// </summary>
         /// <remarks>
         /// This call adds additional filters to any previously-specified ones.
@@ -337,11 +376,11 @@ namespace Google.Cloud.Firestore
         /// <param name="values">The values to compare in the filter. Must not be null.</param>
         /// <returns>A new query based on the current one, but with the additional specified filter applied.</returns>
         public Query WhereIn(string fieldPath, IEnumerable values) =>
-            Where(fieldPath, FieldOp.In, values);
+            Where(fieldPath, FieldOp.In, ValidateWhereInValues(values));
 
         /// <summary>
         /// Returns a query with a filter specifying that <paramref name="fieldPath"/> must be
-        /// a field present in the document, with a value which is one of the values <paramref name="values"/>.
+        /// a field present in the document, with a value which is one of the values in <paramref name="values"/>.
         /// </summary>
         /// <remarks>
         /// This call adds additional filters to any previously-specified ones.
@@ -350,7 +389,56 @@ namespace Google.Cloud.Firestore
         /// <param name="values">The values to compare in the filter. Must not be null.</param>
         /// <returns>A new query based on the current one, but with the additional specified filter applied.</returns>
         public Query WhereIn(FieldPath fieldPath, IEnumerable values) =>
-            Where(fieldPath, FieldOp.In, values);
+            Where(fieldPath, FieldOp.In, ValidateWhereInValues(values));
+
+        /// <summary>
+        /// Returns a query with a filter specifying that <paramref name="fieldPath"/> must be
+        /// a field present in the document, with a value which is not one of the values in <paramref name="values"/>.
+        /// </summary>
+        /// <remarks>
+        /// This call adds additional filters to any previously-specified ones.
+        /// </remarks>
+        /// <param name="fieldPath">The dot-separated field path to filter on. Must not be null or empty.</param>
+        /// <param name="values">The values to compare in the filter. Must not be null.</param>
+        /// <returns>A new query based on the current one, but with the additional specified filter applied.</returns>
+        public Query WhereNotIn(string fieldPath, IEnumerable values) =>
+            Where(fieldPath, FieldOp.NotIn, ValidateWhereInValues(values));
+
+        /// <summary>
+        /// Returns a query with a filter specifying that <paramref name="fieldPath"/> must be
+        /// a field present in the document, with a value which is not one of the values in <paramref name="values"/>.
+        /// </summary>
+        /// <remarks>
+        /// This call adds additional filters to any previously-specified ones.
+        /// </remarks>
+        /// <param name="fieldPath">The field path to filter on. Must not be null.</param>
+        /// <param name="values">The values to compare in the filter. Must not be null.</param>
+        /// <returns>A new query based on the current one, but with the additional specified filter applied.</returns>
+        public Query WhereNotIn(FieldPath fieldPath, IEnumerable values) =>
+            Where(fieldPath, FieldOp.NotIn, ValidateWhereInValues(values));
+
+        /// <summary>
+        /// Validates that a value is suitable for a WhereIn or WhereNotIn query. It can't be null or a string.
+        /// The reason for highlighting string is that it's an IEnumerable{char}, but users
+        /// don't tend to think of it that way: anyone passing a single string to WhereIn is doing so
+        /// expecting it to be treated as an array containing just that string, I'm sure. So let's call that out.
+        /// </summary>
+        /// <param name="values">The value to validate.</param>
+        /// <returns>The original value, if it's valid.</returns>
+        private IEnumerable ValidateWhereInValues(IEnumerable values)
+        {
+            if (values is null)
+            {
+                throw new ArgumentNullException(nameof(values), "The list of values for a WhereIn or WhereNotIn query must not be null.");
+            }
+            if (values is string)
+            {
+                // This is a really long error message, but it's good at saying exactly what's wrong.
+                throw new ArgumentException("The list of values for a WhereIn or WhereNotIn query must not be a single string. The code compiles because string implements IEnumerable<char>, but you almost certainly meant to pass a collection of strings, e.g. a string[] or a List<string>",
+                    nameof(values));
+            }
+            return values;
+        }
 
         // Note: the two general Where methods were originally public, accepting a public QueryOperator enum.
         // If we ever want to make them public again, we should reinstate the QueryOperator enum to avoid an API
@@ -384,10 +472,32 @@ namespace Google.Cloud.Firestore
         /// <returns>A new query based on the current one, but with the additional specified filter applied.</returns>
         private Query Where(FieldPath fieldPath, FieldOp op, object value)
         {
+            if (fieldPath.Equals(FieldPath.DocumentId))
+            {
+                value = op switch
+                {
+                    FieldOp.ArrayContains => throw new ArgumentException($"Invalid query. Document IDs cannot be used with the {op} operator.", nameof(op)),
+                    FieldOp.ArrayContainsAny => throw new ArgumentException($"Invalid query. Document IDs cannot be used with the {op} operator.", nameof(op)),
+                    FieldOp.In => ConvertValueToDocumentReferencesForInQuery(),
+                    FieldOp.NotIn => ConvertValueToDocumentReferencesForInQuery(),
+                    _ => ConvertReference(value, nameof(value))
+                };
+            }
+
             InternalFilter filter = InternalFilter.Create(Database.SerializationContext, fieldPath, op, value);
             var newFilters = _filters == null ? new List<InternalFilter>() : new List<InternalFilter>(_filters);
             newFilters.Add(filter);
             return new Query(_root, _offset, _limit, _orderings, newFilters, _projections, _startAt, _endAt);
+
+            object ConvertValueToDocumentReferencesForInQuery()
+            {
+                var list = (value as IEnumerable)?.Cast<object>().ToList();
+                if (list is null || list.Count == 0)
+                {
+                    throw new ArgumentException($"Invalid Query. A non-empty array is required for '{op}' filters.", nameof(value));
+                }
+                return list.Select(item => ConvertReference(item, nameof(value))).ToList();
+            }
         }
 
         /// <summary>
@@ -487,9 +597,30 @@ namespace Google.Cloud.Firestore
         public Query Limit(int limit)
         {
             GaxPreconditions.CheckArgumentRange(limit, nameof(limit), 0, int.MaxValue);
-            return new Query(_root, _offset, limit, _orderings, _filters, _projections, _startAt, _endAt);
+            return new Query(_root, _offset, (limit, LimitType.First), _orderings, _filters, _projections, _startAt, _endAt);
         }
-        
+
+        /// <summary>
+        /// Creates and returns a new query that only returns the last <paramref name="limit"/> matching documents.
+        /// </summary>
+        /// <remarks>
+        /// <para>
+        /// You must specify at least one <see cref="OrderBy(string)"/> clause for limit-to-last queries. Otherwise,
+        /// an <see cref="InvalidOperationException"/> is thrown during execution.
+        /// </para>
+        /// <para>
+        /// Results for limit-to-last queries are only available once all documents are received, which means
+        /// that these queries cannot be streamed using the <see cref="StreamAsync(CancellationToken)"/> method.
+        /// </para>
+        /// </remarks>
+        /// <param name="limit">The maximum number of results to return. Must be greater than or equal to 0.</param>
+        /// <returns>A new query based on the current one, but with the specified limit applied.</returns>
+        public Query LimitToLast(int limit)
+        {
+            GaxPreconditions.CheckArgumentRange(limit, nameof(limit), 0, int.MaxValue);
+            return new Query(_root, _offset, (limit, LimitType.Last), _orderings, _filters, _projections, _startAt, _endAt);
+        }
+
         /// <summary>
         /// Specifies a number of results to skip.
         /// </summary>
@@ -601,7 +732,7 @@ namespace Google.Cloud.Firestore
 
         internal async Task<QuerySnapshot> GetSnapshotAsync(ByteString transactionId, CancellationToken cancellationToken)
         {
-            var responses = StreamResponsesAsync(transactionId, cancellationToken);
+            var responses = StreamResponsesAsync(transactionId, cancellationToken, allowLimitToLast: true);
             Timestamp? readTime = null;
             List<DocumentSnapshot> snapshots = new List<DocumentSnapshot>();
             await responses.ForEachAsync(response =>
@@ -617,7 +748,12 @@ namespace Google.Cloud.Firestore
             }, cancellationToken).ConfigureAwait(false);
 
             GaxPreconditions.CheckState(readTime != null, "The stream returned from RunQuery did not provide a read timestamp.");
-
+            if (IsLimitToLast)
+            {
+                // Reverse in-place. We *could* create an IReadOnlyList<T> which acted as a "reversing view"
+                // but that seems like unnecessary work for now.
+                snapshots.Reverse();
+            }
             return QuerySnapshot.ForDocuments(this, snapshots.AsReadOnly(), readTime.Value);
         }
 
@@ -633,24 +769,34 @@ namespace Google.Cloud.Firestore
         /// <remarks>
         /// Each time you iterate over the sequence, a new query will be performed.
         /// </remarks>
-        /// <param name="cancellationToken">A cancellation token for the operation.</param>
+        /// <param name="cancellationToken">The cancellation token to apply to the streaming operation. Note that even if this is
+        /// <see cref="CancellationToken.None"/>, a cancellation token can still be applied when iterating over
+        /// the stream, by passing it into <see cref="IAsyncEnumerable{T}.GetAsyncEnumerator(CancellationToken)"/>.
+        /// If a cancellation token is passed both to this method and GetAsyncEnumerator,
+        /// then cancelling either of the tokens will result in the operation being cancelled.
+        /// </param>
         /// <returns>An asynchronous sequence of document snapshots matching the query.</returns>
-        public IAsyncEnumerable<DocumentSnapshot> StreamAsync(CancellationToken cancellationToken = default) => StreamAsync(null, cancellationToken);
+        public IAsyncEnumerable<DocumentSnapshot> StreamAsync(CancellationToken cancellationToken = default) =>
+            StreamAsync(transactionId: null, cancellationToken, false);
 
-        internal IAsyncEnumerable<DocumentSnapshot> StreamAsync(ByteString transactionId, CancellationToken cancellationToken) =>
-             StreamResponsesAsync(transactionId, cancellationToken)
+        internal IAsyncEnumerable<DocumentSnapshot> StreamAsync(ByteString transactionId, CancellationToken cancellationToken, bool allowLimitToLast) =>
+             StreamResponsesAsync(transactionId, cancellationToken, allowLimitToLast)
                 .Where(resp => resp.Document != null)
                 .Select(resp => DocumentSnapshot.ForDocument(Database, resp.Document, Timestamp.FromProto(resp.ReadTime)));
 
-        private IAsyncEnumerable<RunQueryResponse> StreamResponsesAsync(ByteString transactionId, CancellationToken cancellationToken)
+        private IAsyncEnumerable<RunQueryResponse> StreamResponsesAsync(ByteString transactionId, CancellationToken cancellationToken, bool allowLimitToLast)
         {
+            if (IsLimitToLast && !allowLimitToLast)
+            {
+                throw new InvalidOperationException($"Cannot stream responses for query using {nameof(LimitToLast)}");
+            }
             var request = new RunQueryRequest { StructuredQuery = ToStructuredQuery(), Parent = ParentPath };
             if (transactionId != null)
             {
                 request.Transaction = transactionId;
             }
             var settings = CallSettings.FromCancellationToken(cancellationToken);
-            return AsyncEnumerable.CreateEnumerable(() => Database.Client.RunQuery(request, settings).ResponseStream);
+            return Database.Client.RunQuery(request, settings).GetResponseStream();
         }
 
         // Helper methods for cursor-related functionality
@@ -692,18 +838,12 @@ namespace Google.Cloud.Firestore
         private DocumentReference ConvertReference(object fieldValue, string parameterName)
         {
             string basePath = _root.AllDescendants ? ParentPath : $"{ParentPath}/{_root.CollectionId}";
-            DocumentReference reference;
-            switch (fieldValue)
+            var reference = fieldValue switch
             {
-                case string relativePath:
-                    reference = Database.GetDocumentReferenceFromResourceName($"{basePath}/{relativePath}");
-                    break;
-                case DocumentReference absoluteRef:
-                    reference = absoluteRef;
-                    break;
-                default:
-                    throw new ArgumentException($"A cursor value for a document ID must be a string (relative path) or a DocumentReference", parameterName);
-            }
+                string relativePath => Database.GetDocumentReferenceFromResourceName($"{basePath}/{relativePath}"),
+                DocumentReference absoluteRef => absoluteRef,
+                _ => throw new ArgumentException($"The corresponding value for a document ID must be a string (relative path) or a DocumentReference", parameterName),
+            };
             GaxPreconditions.CheckArgument(
                 reference.Path.StartsWith(basePath + "/"),
                 parameterName,
@@ -754,10 +894,10 @@ namespace Google.Cloud.Firestore
 
             if (_orderings.Count == 0 && _filters != null)
             {
-                // If no explicit ordering is specified, use the first inequality to define an implicit order.
+                // If no explicit ordering is specified, use the first ordering filter to define an implicit order.
                 foreach (var filter in _filters)
                 {
-                    if (!filter.IsEqualityFilter())
+                    if (filter.IsOrderingFilter())
                     {
                         modifiedOrderings = new List<InternalOrdering>(newOrderings) { new InternalOrdering(filter.Field, Direction.Ascending) };
                         newOrderings = modifiedOrderings;
@@ -816,7 +956,7 @@ namespace Google.Cloud.Firestore
             {
                 return true;
             }
-            if (ReferenceEquals(other, null))
+            if (other is null)
             {
                 return false;
             }
@@ -827,21 +967,21 @@ namespace Google.Cloud.Firestore
             return _root.Equals(other._root) &&
                 _offset == other._offset &&
                 _limit == other._limit &&
-                EqualityHelpers.ListsEqual(_orderings, other._orderings) &&
-                EqualityHelpers.ListsEqual(_filters, other._filters) &&
-                EqualityHelpers.ListsEqual(_projections, other._projections) &&
+                GaxEqualityHelpers.ListsEqual(_orderings, other._orderings) &&
+                GaxEqualityHelpers.ListsEqual(_filters, other._filters) &&
+                GaxEqualityHelpers.ListsEqual(_projections, other._projections) &&
                 Equals(_startAt, other._startAt) &&
                 Equals(_endAt, other._endAt);
         }
 
         /// <inheritdoc />
-        public override int GetHashCode() => EqualityHelpers.CombineHashCodes(
+        public override int GetHashCode() => GaxEqualityHelpers.CombineHashCodes(
             _root.GetHashCode(),
             _offset,
-            _limit ?? -1,
-            EqualityHelpers.GetListHashCode(_orderings),
-            EqualityHelpers.GetListHashCode(_filters),
-            EqualityHelpers.GetListHashCode(_projections),
+            _limit?.GetHashCode() ?? -1,
+            GaxEqualityHelpers.GetListHashCode(_orderings),
+            GaxEqualityHelpers.GetListHashCode(_filters),
+            GaxEqualityHelpers.GetListHashCode(_projections),
             _startAt?.GetHashCode() ?? -1,
             _endAt?.GetHashCode() ?? -1);
 
@@ -905,9 +1045,17 @@ namespace Google.Cloud.Firestore
         {
             internal FieldPath Field { get; }
             internal Direction Direction { get; }
-            internal Order ToProto() => new Order { Direction = Direction, Field = Field.ToFieldReference() };
+            internal Direction InverseDirection =>
+                Direction switch
+                {
+                    Direction.Ascending  => Direction.Descending,
+                    Direction.Descending => Direction.Ascending,
+                    _ => throw new InvalidOperationException($"Can't invert direction {Direction}")
+                };
 
-            public override int GetHashCode() => EqualityHelpers.CombineHashCodes(Field.GetHashCode(), (int) Direction);
+            internal Order ToProto(bool invertDirection) => new Order { Direction = invertDirection ? InverseDirection : Direction, Field = Field.ToFieldReference() };
+
+            public override int GetHashCode() => GaxEqualityHelpers.CombineHashCodes(Field.GetHashCode(), (int) Direction);
 
             internal InternalOrdering(FieldPath field, Direction direction)
             {
@@ -941,24 +1089,22 @@ namespace Google.Cloud.Firestore
             }
 
             /// <summary>
-            /// Checks whether this is an equality operator. Unary filters are always equality operators, and field filters can be.
+            /// Checks whether this is a comparison operator.
             /// </summary>
-            internal bool IsEqualityFilter() => _value == null || _op == (int) FieldOp.Equal || _op == (int) FieldOp.ArrayContains;
+            internal bool IsOrderingFilter() =>
+                _value is object &&
+                _op == (int) FieldOp.GreaterThan ||
+                _op == (int) FieldOp.GreaterThanOrEqual ||
+                _op == (int) FieldOp.LessThan ||
+                _op == (int) FieldOp.LessThanOrEqual;
 
             internal static InternalFilter Create(SerializationContext context, FieldPath fieldPath, FieldOp op, object value)
             {
                 GaxPreconditions.CheckNotNull(fieldPath, nameof(fieldPath));
-                var unaryOperator = GetUnaryOperator(value);
+                var unaryOperator = GetUnaryOperator(value, op);
                 if (unaryOperator != UnaryOp.Unspecified)
                 {
-                    if (op == FieldOp.Equal)
-                    {
-                        return new InternalFilter(fieldPath, (int) unaryOperator, null);
-                    }
-                    else
-                    {
-                        throw new ArgumentException(nameof(value), "null and NaN values can only be used with the Equal operator");
-                    }
+                    return new InternalFilter(fieldPath, (int) unaryOperator, null);
                 }
                 else
                 {
@@ -968,15 +1114,25 @@ namespace Google.Cloud.Firestore
                 }
             }
 
-            private static UnaryOp GetUnaryOperator(object value)
+            private static UnaryOp GetUnaryOperator(object value, FieldOp op)
             {
                 switch (value)
                 {
                     case null:
-                        return UnaryOp.IsNull;
+                        return op switch
+                        {
+                            FieldOp.Equal => UnaryOp.IsNull,
+                            FieldOp.NotEqual => UnaryOp.IsNotNull,
+                            _ => throw new ArgumentException("Null values can only be used with the Equal/NotEqual operators", nameof(value))
+                        };
                     case double d when double.IsNaN(d):
                     case float f when float.IsNaN(f):
-                        return UnaryOp.IsNan;
+                        return op switch
+                        {
+                            FieldOp.Equal => UnaryOp.IsNan,
+                            FieldOp.NotEqual => UnaryOp.IsNotNan,
+                            _ => throw new ArgumentException("Not-a-number values can only be used with the Equal/NotEqual operators", nameof(value))
+                        };
                     default:
                         return UnaryOp.Unspecified;
                 }
@@ -988,7 +1144,7 @@ namespace Google.Cloud.Firestore
                 Field.Equals(other.Field) && _op == other._op && Equals(_value, other._value);
 
             public override int GetHashCode() =>
-                EqualityHelpers.CombineHashCodes(Field.GetHashCode(), _op, _value?.GetHashCode() ?? -1);
+                GaxEqualityHelpers.CombineHashCodes(Field.GetHashCode(), _op, _value?.GetHashCode() ?? -1);
         }
 
         private sealed class DocumentSnapshotComparer : IComparer<DocumentSnapshot>
@@ -1001,7 +1157,6 @@ namespace Google.Cloud.Firestore
             {
                 GaxPreconditions.CheckArgument(x.Exists, nameof(x), "Document snapshot comparer for a query cannot be used with snapshots of missing documents");
                 GaxPreconditions.CheckArgument(y.Exists, nameof(y), "Document snapshot comparer for a query cannot be used with snapshots of missing documents");
-                var orderings = _query._orderings;
 
                 Direction lastDirection = Direction.Ascending;
                 foreach (var ordering in _query._orderings)
@@ -1071,7 +1226,13 @@ namespace Google.Cloud.Firestore
                 AllDescendants == other.AllDescendants;
 
             public override int GetHashCode() =>
-                EqualityHelpers.CombineHashCodes(Database.GetHashCode(), ParentPath.GetHashCode(), CollectionId?.GetHashCode() ?? 0, AllDescendants ? 1 : 0);
+                GaxEqualityHelpers.CombineHashCodes(Database.GetHashCode(), ParentPath.GetHashCode(), CollectionId?.GetHashCode() ?? 0, AllDescendants ? 1 : 0);
+        }
+
+        private enum LimitType
+        {
+            First,
+            Last
         }
     }
 }

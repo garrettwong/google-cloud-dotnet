@@ -15,6 +15,7 @@
 using Google.Api.Gax;
 using Google.Api.Gax.Grpc;
 using Google.Cloud.Spanner.Common.V1;
+using Google.Protobuf;
 using Grpc.Core;
 using System;
 using System.Collections.Concurrent;
@@ -486,10 +487,29 @@ namespace Google.Cloud.Spanner.V1
 
             /// <summary>
             /// Release a session back to the pool (or refresh or evict it) and decrement the number of active sessions.
+            /// All the work is done in a background task, as it can involve RPCs.
             /// </summary>
-            public override void Release(PooledSession session, bool deleteSession)
+            public override void Release(PooledSession session, ByteString transactionId, bool deleteSession) =>
+                Parent.ConsumeBackgroundTask(ReleaseAsync(session, transactionId, deleteSession), "session release");
+
+            private async Task ReleaseAsync(PooledSession session, ByteString transactionId, bool deleteSession)
             {
                 Interlocked.Decrement(ref _activeSessionCount);
+                // If we've got a transaction to rollback, do that first.
+                if (transactionId is object)
+                {
+                    var request = new RollbackRequest { SessionAsSessionName = session.SessionName, TransactionId = transactionId };
+                    try
+                    {
+                        await Client.RollbackAsync(request).ConfigureAwait(false);
+                    }
+                    catch (RpcException e)
+                    {
+                        // Rollback failed. Evict the session as it's effectively unstable now.
+                        Parent._logger.Warn("Failed to rollback transaction for pooled session", e);
+                        deleteSession = true;
+                    }
+                }
                 if (deleteSession)
                 {
                     EvictSession(session);
@@ -637,7 +657,7 @@ namespace Google.Cloud.Spanner.V1
                 var previousTcs = Interlocked.CompareExchange(ref _nurseBackToHealthTask, newTcs, null);
                 if (previousTcs != null)
                 {
-                    return WithCancellationToken(previousTcs, cancellationToken);
+                    return WithCancellationTokenAsync(previousTcs.Task, cancellationToken);
                 }
 
                 // We want to try and nurse the pool back to health even if the (first) caller cancels the call.
@@ -683,26 +703,16 @@ namespace Google.Cloud.Spanner.V1
 
                 // Use the cancellation token now, if the caller cancels, the task they are waiting on will be canceled,
                 // but not the nursing.
-                return WithCancellationToken(newTcs, cancellationToken);
+                return WithCancellationTokenAsync(newTcs.Task, cancellationToken);
 
-                Task WithCancellationToken(TaskCompletionSource<int> source, CancellationToken token)
+                async Task<TTaskResult> WithCancellationTokenAsync<TTaskResult>(Task<TTaskResult> underlying, CancellationToken token)
                 {
-                    TaskCompletionSource<int> cancellable = new TaskCompletionSource<int>();
-                    token.Register(() => cancellable.TrySetCanceled());
-                    Parent.ConsumeBackgroundTask(Task.Run(async () => 
+                    TaskCompletionSource<TTaskResult> cancellable = new TaskCompletionSource<TTaskResult>();
+                    using (token.Register(() => cancellable.TrySetCanceled()))
                     {
-                        try
-                        {
-                            int dummyResult = await source.Task.ConfigureAwait(false);
-                            cancellable.TrySetResult(dummyResult);
-                        }
-                        catch (Exception e)
-                        {
-                            cancellable.TrySetException(e);
-                        }
-                    }), "don't propagate cancellation to underlying task");
-
-                    return cancellable.Task;
+                        Task<TTaskResult> completedTask = await Task.WhenAny(underlying, cancellable.Task).ConfigureAwait(false);
+                        return await completedTask.ConfigureAwait(false);
+                    }
                 }
             }
 

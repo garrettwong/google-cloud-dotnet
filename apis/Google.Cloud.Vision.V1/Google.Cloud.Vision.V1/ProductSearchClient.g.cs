@@ -1,4 +1,4 @@
-// Copyright 2019 Google LLC
+// Copyright 2020 Google LLC
 //
 // Licensed under the Apache License, Version 2.0 (the "License");
 // you may not use this file except in compliance with the License.
@@ -16,6 +16,8 @@
 
 using gax = Google.Api.Gax;
 using gaxgrpc = Google.Api.Gax.Grpc;
+using gaxgrpccore = Google.Api.Gax.Grpc.GrpcCore;
+using gagr = Google.Api.Gax.ResourceNames;
 using lro = Google.LongRunning;
 using proto = Google.Protobuf;
 using wkt = Google.Protobuf.WellKnownTypes;
@@ -25,7 +27,6 @@ using sys = System;
 using sc = System.Collections;
 using scg = System.Collections.Generic;
 using sco = System.Collections.ObjectModel;
-using sysnet = System.Net;
 using st = System.Threading;
 using stt = System.Threading.Tasks;
 
@@ -81,13 +82,11 @@ namespace Google.Cloud.Vision.V1
         /// <item><description>Initial retry delay: 100 milliseconds.</description></item>
         /// <item><description>Retry delay multiplier: 1.3</description></item>
         /// <item><description>Retry maximum delay: 60000 milliseconds.</description></item>
-        /// <item><description>Initial timeout: 600000 milliseconds.</description></item>
-        /// <item><description>Timeout multiplier: 1</description></item>
-        /// <item><description>Timeout maximum delay: 600000 milliseconds.</description></item>
-        /// <item><description>Total timeout: 600 seconds.</description></item>
+        /// <item><description>Maximum attempts: Unlimited</description></item>
+        /// <item><description>Timeout: 600 seconds.</description></item>
         /// </list>
         /// </remarks>
-        public gaxgrpc::CallSettings CreateProductSetSettings { get; set; } = gaxgrpc::CallSettings.FromCallTiming(gaxgrpc::CallTiming.FromRetry(new gaxgrpc::RetrySettings(retryBackoff: new gaxgrpc::BackoffSettings(delay: sys::TimeSpan.FromMilliseconds(100), maxDelay: sys::TimeSpan.FromMilliseconds(60000), delayMultiplier: 1.3), timeoutBackoff: new gaxgrpc::BackoffSettings(delay: sys::TimeSpan.FromMilliseconds(600000), maxDelay: sys::TimeSpan.FromMilliseconds(600000), delayMultiplier: 1), totalExpiration: gax::Expiration.FromTimeout(sys::TimeSpan.FromMilliseconds(600000)), retryFilter: gaxgrpc::RetrySettings.FilterForStatusCodes())));
+        public gaxgrpc::CallSettings CreateProductSetSettings { get; set; } = gaxgrpc::CallSettingsExtensions.WithRetry(gaxgrpc::CallSettings.FromExpiration(gax::Expiration.FromTimeout(sys::TimeSpan.FromMilliseconds(600000))), gaxgrpc::RetrySettings.FromExponentialBackoff(maxAttempts: 2147483647, initialBackoff: sys::TimeSpan.FromMilliseconds(100), maxBackoff: sys::TimeSpan.FromMilliseconds(60000), backoffMultiplier: 1.3, retryFilter: gaxgrpc::RetrySettings.FilterForStatusCodes()));
 
         /// <summary>
         /// <see cref="gaxgrpc::CallSettings"/> for synchronous and asynchronous calls to
@@ -98,13 +97,11 @@ namespace Google.Cloud.Vision.V1
         /// <item><description>Initial retry delay: 100 milliseconds.</description></item>
         /// <item><description>Retry delay multiplier: 1.3</description></item>
         /// <item><description>Retry maximum delay: 60000 milliseconds.</description></item>
-        /// <item><description>Initial timeout: 600000 milliseconds.</description></item>
-        /// <item><description>Timeout multiplier: 1</description></item>
-        /// <item><description>Timeout maximum delay: 600000 milliseconds.</description></item>
-        /// <item><description>Total timeout: 600 seconds.</description></item>
+        /// <item><description>Maximum attempts: Unlimited</description></item>
+        /// <item><description>Timeout: 600 seconds.</description></item>
         /// </list>
         /// </remarks>
-        public gaxgrpc::CallSettings ListProductSetsSettings { get; set; } = gaxgrpc::CallSettings.FromCallTiming(gaxgrpc::CallTiming.FromRetry(new gaxgrpc::RetrySettings(retryBackoff: new gaxgrpc::BackoffSettings(delay: sys::TimeSpan.FromMilliseconds(100), maxDelay: sys::TimeSpan.FromMilliseconds(60000), delayMultiplier: 1.3), timeoutBackoff: new gaxgrpc::BackoffSettings(delay: sys::TimeSpan.FromMilliseconds(600000), maxDelay: sys::TimeSpan.FromMilliseconds(600000), delayMultiplier: 1), totalExpiration: gax::Expiration.FromTimeout(sys::TimeSpan.FromMilliseconds(600000)), retryFilter: gaxgrpc::RetrySettings.FilterForStatusCodes(grpccore::StatusCode.DeadlineExceeded, grpccore::StatusCode.Unavailable))));
+        public gaxgrpc::CallSettings ListProductSetsSettings { get; set; } = gaxgrpc::CallSettingsExtensions.WithRetry(gaxgrpc::CallSettings.FromExpiration(gax::Expiration.FromTimeout(sys::TimeSpan.FromMilliseconds(600000))), gaxgrpc::RetrySettings.FromExponentialBackoff(maxAttempts: 2147483647, initialBackoff: sys::TimeSpan.FromMilliseconds(100), maxBackoff: sys::TimeSpan.FromMilliseconds(60000), backoffMultiplier: 1.3, retryFilter: gaxgrpc::RetrySettings.FilterForStatusCodes(grpccore::StatusCode.DeadlineExceeded, grpccore::StatusCode.Unavailable)));
 
         /// <summary>
         /// <see cref="gaxgrpc::CallSettings"/> for synchronous and asynchronous calls to
@@ -115,13 +112,11 @@ namespace Google.Cloud.Vision.V1
         /// <item><description>Initial retry delay: 100 milliseconds.</description></item>
         /// <item><description>Retry delay multiplier: 1.3</description></item>
         /// <item><description>Retry maximum delay: 60000 milliseconds.</description></item>
-        /// <item><description>Initial timeout: 600000 milliseconds.</description></item>
-        /// <item><description>Timeout multiplier: 1</description></item>
-        /// <item><description>Timeout maximum delay: 600000 milliseconds.</description></item>
-        /// <item><description>Total timeout: 600 seconds.</description></item>
+        /// <item><description>Maximum attempts: Unlimited</description></item>
+        /// <item><description>Timeout: 600 seconds.</description></item>
         /// </list>
         /// </remarks>
-        public gaxgrpc::CallSettings GetProductSetSettings { get; set; } = gaxgrpc::CallSettings.FromCallTiming(gaxgrpc::CallTiming.FromRetry(new gaxgrpc::RetrySettings(retryBackoff: new gaxgrpc::BackoffSettings(delay: sys::TimeSpan.FromMilliseconds(100), maxDelay: sys::TimeSpan.FromMilliseconds(60000), delayMultiplier: 1.3), timeoutBackoff: new gaxgrpc::BackoffSettings(delay: sys::TimeSpan.FromMilliseconds(600000), maxDelay: sys::TimeSpan.FromMilliseconds(600000), delayMultiplier: 1), totalExpiration: gax::Expiration.FromTimeout(sys::TimeSpan.FromMilliseconds(600000)), retryFilter: gaxgrpc::RetrySettings.FilterForStatusCodes(grpccore::StatusCode.DeadlineExceeded, grpccore::StatusCode.Unavailable))));
+        public gaxgrpc::CallSettings GetProductSetSettings { get; set; } = gaxgrpc::CallSettingsExtensions.WithRetry(gaxgrpc::CallSettings.FromExpiration(gax::Expiration.FromTimeout(sys::TimeSpan.FromMilliseconds(600000))), gaxgrpc::RetrySettings.FromExponentialBackoff(maxAttempts: 2147483647, initialBackoff: sys::TimeSpan.FromMilliseconds(100), maxBackoff: sys::TimeSpan.FromMilliseconds(60000), backoffMultiplier: 1.3, retryFilter: gaxgrpc::RetrySettings.FilterForStatusCodes(grpccore::StatusCode.DeadlineExceeded, grpccore::StatusCode.Unavailable)));
 
         /// <summary>
         /// <see cref="gaxgrpc::CallSettings"/> for synchronous and asynchronous calls to
@@ -132,13 +127,11 @@ namespace Google.Cloud.Vision.V1
         /// <item><description>Initial retry delay: 100 milliseconds.</description></item>
         /// <item><description>Retry delay multiplier: 1.3</description></item>
         /// <item><description>Retry maximum delay: 60000 milliseconds.</description></item>
-        /// <item><description>Initial timeout: 600000 milliseconds.</description></item>
-        /// <item><description>Timeout multiplier: 1</description></item>
-        /// <item><description>Timeout maximum delay: 600000 milliseconds.</description></item>
-        /// <item><description>Total timeout: 600 seconds.</description></item>
+        /// <item><description>Maximum attempts: Unlimited</description></item>
+        /// <item><description>Timeout: 600 seconds.</description></item>
         /// </list>
         /// </remarks>
-        public gaxgrpc::CallSettings UpdateProductSetSettings { get; set; } = gaxgrpc::CallSettings.FromCallTiming(gaxgrpc::CallTiming.FromRetry(new gaxgrpc::RetrySettings(retryBackoff: new gaxgrpc::BackoffSettings(delay: sys::TimeSpan.FromMilliseconds(100), maxDelay: sys::TimeSpan.FromMilliseconds(60000), delayMultiplier: 1.3), timeoutBackoff: new gaxgrpc::BackoffSettings(delay: sys::TimeSpan.FromMilliseconds(600000), maxDelay: sys::TimeSpan.FromMilliseconds(600000), delayMultiplier: 1), totalExpiration: gax::Expiration.FromTimeout(sys::TimeSpan.FromMilliseconds(600000)), retryFilter: gaxgrpc::RetrySettings.FilterForStatusCodes(grpccore::StatusCode.DeadlineExceeded, grpccore::StatusCode.Unavailable))));
+        public gaxgrpc::CallSettings UpdateProductSetSettings { get; set; } = gaxgrpc::CallSettingsExtensions.WithRetry(gaxgrpc::CallSettings.FromExpiration(gax::Expiration.FromTimeout(sys::TimeSpan.FromMilliseconds(600000))), gaxgrpc::RetrySettings.FromExponentialBackoff(maxAttempts: 2147483647, initialBackoff: sys::TimeSpan.FromMilliseconds(100), maxBackoff: sys::TimeSpan.FromMilliseconds(60000), backoffMultiplier: 1.3, retryFilter: gaxgrpc::RetrySettings.FilterForStatusCodes(grpccore::StatusCode.DeadlineExceeded, grpccore::StatusCode.Unavailable)));
 
         /// <summary>
         /// <see cref="gaxgrpc::CallSettings"/> for synchronous and asynchronous calls to
@@ -149,13 +142,11 @@ namespace Google.Cloud.Vision.V1
         /// <item><description>Initial retry delay: 100 milliseconds.</description></item>
         /// <item><description>Retry delay multiplier: 1.3</description></item>
         /// <item><description>Retry maximum delay: 60000 milliseconds.</description></item>
-        /// <item><description>Initial timeout: 600000 milliseconds.</description></item>
-        /// <item><description>Timeout multiplier: 1</description></item>
-        /// <item><description>Timeout maximum delay: 600000 milliseconds.</description></item>
-        /// <item><description>Total timeout: 600 seconds.</description></item>
+        /// <item><description>Maximum attempts: Unlimited</description></item>
+        /// <item><description>Timeout: 600 seconds.</description></item>
         /// </list>
         /// </remarks>
-        public gaxgrpc::CallSettings DeleteProductSetSettings { get; set; } = gaxgrpc::CallSettings.FromCallTiming(gaxgrpc::CallTiming.FromRetry(new gaxgrpc::RetrySettings(retryBackoff: new gaxgrpc::BackoffSettings(delay: sys::TimeSpan.FromMilliseconds(100), maxDelay: sys::TimeSpan.FromMilliseconds(60000), delayMultiplier: 1.3), timeoutBackoff: new gaxgrpc::BackoffSettings(delay: sys::TimeSpan.FromMilliseconds(600000), maxDelay: sys::TimeSpan.FromMilliseconds(600000), delayMultiplier: 1), totalExpiration: gax::Expiration.FromTimeout(sys::TimeSpan.FromMilliseconds(600000)), retryFilter: gaxgrpc::RetrySettings.FilterForStatusCodes(grpccore::StatusCode.DeadlineExceeded, grpccore::StatusCode.Unavailable))));
+        public gaxgrpc::CallSettings DeleteProductSetSettings { get; set; } = gaxgrpc::CallSettingsExtensions.WithRetry(gaxgrpc::CallSettings.FromExpiration(gax::Expiration.FromTimeout(sys::TimeSpan.FromMilliseconds(600000))), gaxgrpc::RetrySettings.FromExponentialBackoff(maxAttempts: 2147483647, initialBackoff: sys::TimeSpan.FromMilliseconds(100), maxBackoff: sys::TimeSpan.FromMilliseconds(60000), backoffMultiplier: 1.3, retryFilter: gaxgrpc::RetrySettings.FilterForStatusCodes(grpccore::StatusCode.DeadlineExceeded, grpccore::StatusCode.Unavailable)));
 
         /// <summary>
         /// <see cref="gaxgrpc::CallSettings"/> for synchronous and asynchronous calls to
@@ -166,13 +157,11 @@ namespace Google.Cloud.Vision.V1
         /// <item><description>Initial retry delay: 100 milliseconds.</description></item>
         /// <item><description>Retry delay multiplier: 1.3</description></item>
         /// <item><description>Retry maximum delay: 60000 milliseconds.</description></item>
-        /// <item><description>Initial timeout: 600000 milliseconds.</description></item>
-        /// <item><description>Timeout multiplier: 1</description></item>
-        /// <item><description>Timeout maximum delay: 600000 milliseconds.</description></item>
-        /// <item><description>Total timeout: 600 seconds.</description></item>
+        /// <item><description>Maximum attempts: Unlimited</description></item>
+        /// <item><description>Timeout: 600 seconds.</description></item>
         /// </list>
         /// </remarks>
-        public gaxgrpc::CallSettings CreateProductSettings { get; set; } = gaxgrpc::CallSettings.FromCallTiming(gaxgrpc::CallTiming.FromRetry(new gaxgrpc::RetrySettings(retryBackoff: new gaxgrpc::BackoffSettings(delay: sys::TimeSpan.FromMilliseconds(100), maxDelay: sys::TimeSpan.FromMilliseconds(60000), delayMultiplier: 1.3), timeoutBackoff: new gaxgrpc::BackoffSettings(delay: sys::TimeSpan.FromMilliseconds(600000), maxDelay: sys::TimeSpan.FromMilliseconds(600000), delayMultiplier: 1), totalExpiration: gax::Expiration.FromTimeout(sys::TimeSpan.FromMilliseconds(600000)), retryFilter: gaxgrpc::RetrySettings.FilterForStatusCodes())));
+        public gaxgrpc::CallSettings CreateProductSettings { get; set; } = gaxgrpc::CallSettingsExtensions.WithRetry(gaxgrpc::CallSettings.FromExpiration(gax::Expiration.FromTimeout(sys::TimeSpan.FromMilliseconds(600000))), gaxgrpc::RetrySettings.FromExponentialBackoff(maxAttempts: 2147483647, initialBackoff: sys::TimeSpan.FromMilliseconds(100), maxBackoff: sys::TimeSpan.FromMilliseconds(60000), backoffMultiplier: 1.3, retryFilter: gaxgrpc::RetrySettings.FilterForStatusCodes()));
 
         /// <summary>
         /// <see cref="gaxgrpc::CallSettings"/> for synchronous and asynchronous calls to
@@ -183,13 +172,11 @@ namespace Google.Cloud.Vision.V1
         /// <item><description>Initial retry delay: 100 milliseconds.</description></item>
         /// <item><description>Retry delay multiplier: 1.3</description></item>
         /// <item><description>Retry maximum delay: 60000 milliseconds.</description></item>
-        /// <item><description>Initial timeout: 600000 milliseconds.</description></item>
-        /// <item><description>Timeout multiplier: 1</description></item>
-        /// <item><description>Timeout maximum delay: 600000 milliseconds.</description></item>
-        /// <item><description>Total timeout: 600 seconds.</description></item>
+        /// <item><description>Maximum attempts: Unlimited</description></item>
+        /// <item><description>Timeout: 600 seconds.</description></item>
         /// </list>
         /// </remarks>
-        public gaxgrpc::CallSettings ListProductsSettings { get; set; } = gaxgrpc::CallSettings.FromCallTiming(gaxgrpc::CallTiming.FromRetry(new gaxgrpc::RetrySettings(retryBackoff: new gaxgrpc::BackoffSettings(delay: sys::TimeSpan.FromMilliseconds(100), maxDelay: sys::TimeSpan.FromMilliseconds(60000), delayMultiplier: 1.3), timeoutBackoff: new gaxgrpc::BackoffSettings(delay: sys::TimeSpan.FromMilliseconds(600000), maxDelay: sys::TimeSpan.FromMilliseconds(600000), delayMultiplier: 1), totalExpiration: gax::Expiration.FromTimeout(sys::TimeSpan.FromMilliseconds(600000)), retryFilter: gaxgrpc::RetrySettings.FilterForStatusCodes(grpccore::StatusCode.DeadlineExceeded, grpccore::StatusCode.Unavailable))));
+        public gaxgrpc::CallSettings ListProductsSettings { get; set; } = gaxgrpc::CallSettingsExtensions.WithRetry(gaxgrpc::CallSettings.FromExpiration(gax::Expiration.FromTimeout(sys::TimeSpan.FromMilliseconds(600000))), gaxgrpc::RetrySettings.FromExponentialBackoff(maxAttempts: 2147483647, initialBackoff: sys::TimeSpan.FromMilliseconds(100), maxBackoff: sys::TimeSpan.FromMilliseconds(60000), backoffMultiplier: 1.3, retryFilter: gaxgrpc::RetrySettings.FilterForStatusCodes(grpccore::StatusCode.DeadlineExceeded, grpccore::StatusCode.Unavailable)));
 
         /// <summary>
         /// <see cref="gaxgrpc::CallSettings"/> for synchronous and asynchronous calls to
@@ -200,13 +187,11 @@ namespace Google.Cloud.Vision.V1
         /// <item><description>Initial retry delay: 100 milliseconds.</description></item>
         /// <item><description>Retry delay multiplier: 1.3</description></item>
         /// <item><description>Retry maximum delay: 60000 milliseconds.</description></item>
-        /// <item><description>Initial timeout: 600000 milliseconds.</description></item>
-        /// <item><description>Timeout multiplier: 1</description></item>
-        /// <item><description>Timeout maximum delay: 600000 milliseconds.</description></item>
-        /// <item><description>Total timeout: 600 seconds.</description></item>
+        /// <item><description>Maximum attempts: Unlimited</description></item>
+        /// <item><description>Timeout: 600 seconds.</description></item>
         /// </list>
         /// </remarks>
-        public gaxgrpc::CallSettings GetProductSettings { get; set; } = gaxgrpc::CallSettings.FromCallTiming(gaxgrpc::CallTiming.FromRetry(new gaxgrpc::RetrySettings(retryBackoff: new gaxgrpc::BackoffSettings(delay: sys::TimeSpan.FromMilliseconds(100), maxDelay: sys::TimeSpan.FromMilliseconds(60000), delayMultiplier: 1.3), timeoutBackoff: new gaxgrpc::BackoffSettings(delay: sys::TimeSpan.FromMilliseconds(600000), maxDelay: sys::TimeSpan.FromMilliseconds(600000), delayMultiplier: 1), totalExpiration: gax::Expiration.FromTimeout(sys::TimeSpan.FromMilliseconds(600000)), retryFilter: gaxgrpc::RetrySettings.FilterForStatusCodes(grpccore::StatusCode.DeadlineExceeded, grpccore::StatusCode.Unavailable))));
+        public gaxgrpc::CallSettings GetProductSettings { get; set; } = gaxgrpc::CallSettingsExtensions.WithRetry(gaxgrpc::CallSettings.FromExpiration(gax::Expiration.FromTimeout(sys::TimeSpan.FromMilliseconds(600000))), gaxgrpc::RetrySettings.FromExponentialBackoff(maxAttempts: 2147483647, initialBackoff: sys::TimeSpan.FromMilliseconds(100), maxBackoff: sys::TimeSpan.FromMilliseconds(60000), backoffMultiplier: 1.3, retryFilter: gaxgrpc::RetrySettings.FilterForStatusCodes(grpccore::StatusCode.DeadlineExceeded, grpccore::StatusCode.Unavailable)));
 
         /// <summary>
         /// <see cref="gaxgrpc::CallSettings"/> for synchronous and asynchronous calls to
@@ -217,13 +202,11 @@ namespace Google.Cloud.Vision.V1
         /// <item><description>Initial retry delay: 100 milliseconds.</description></item>
         /// <item><description>Retry delay multiplier: 1.3</description></item>
         /// <item><description>Retry maximum delay: 60000 milliseconds.</description></item>
-        /// <item><description>Initial timeout: 600000 milliseconds.</description></item>
-        /// <item><description>Timeout multiplier: 1</description></item>
-        /// <item><description>Timeout maximum delay: 600000 milliseconds.</description></item>
-        /// <item><description>Total timeout: 600 seconds.</description></item>
+        /// <item><description>Maximum attempts: Unlimited</description></item>
+        /// <item><description>Timeout: 600 seconds.</description></item>
         /// </list>
         /// </remarks>
-        public gaxgrpc::CallSettings UpdateProductSettings { get; set; } = gaxgrpc::CallSettings.FromCallTiming(gaxgrpc::CallTiming.FromRetry(new gaxgrpc::RetrySettings(retryBackoff: new gaxgrpc::BackoffSettings(delay: sys::TimeSpan.FromMilliseconds(100), maxDelay: sys::TimeSpan.FromMilliseconds(60000), delayMultiplier: 1.3), timeoutBackoff: new gaxgrpc::BackoffSettings(delay: sys::TimeSpan.FromMilliseconds(600000), maxDelay: sys::TimeSpan.FromMilliseconds(600000), delayMultiplier: 1), totalExpiration: gax::Expiration.FromTimeout(sys::TimeSpan.FromMilliseconds(600000)), retryFilter: gaxgrpc::RetrySettings.FilterForStatusCodes(grpccore::StatusCode.DeadlineExceeded, grpccore::StatusCode.Unavailable))));
+        public gaxgrpc::CallSettings UpdateProductSettings { get; set; } = gaxgrpc::CallSettingsExtensions.WithRetry(gaxgrpc::CallSettings.FromExpiration(gax::Expiration.FromTimeout(sys::TimeSpan.FromMilliseconds(600000))), gaxgrpc::RetrySettings.FromExponentialBackoff(maxAttempts: 2147483647, initialBackoff: sys::TimeSpan.FromMilliseconds(100), maxBackoff: sys::TimeSpan.FromMilliseconds(60000), backoffMultiplier: 1.3, retryFilter: gaxgrpc::RetrySettings.FilterForStatusCodes(grpccore::StatusCode.DeadlineExceeded, grpccore::StatusCode.Unavailable)));
 
         /// <summary>
         /// <see cref="gaxgrpc::CallSettings"/> for synchronous and asynchronous calls to
@@ -234,13 +217,11 @@ namespace Google.Cloud.Vision.V1
         /// <item><description>Initial retry delay: 100 milliseconds.</description></item>
         /// <item><description>Retry delay multiplier: 1.3</description></item>
         /// <item><description>Retry maximum delay: 60000 milliseconds.</description></item>
-        /// <item><description>Initial timeout: 600000 milliseconds.</description></item>
-        /// <item><description>Timeout multiplier: 1</description></item>
-        /// <item><description>Timeout maximum delay: 600000 milliseconds.</description></item>
-        /// <item><description>Total timeout: 600 seconds.</description></item>
+        /// <item><description>Maximum attempts: Unlimited</description></item>
+        /// <item><description>Timeout: 600 seconds.</description></item>
         /// </list>
         /// </remarks>
-        public gaxgrpc::CallSettings DeleteProductSettings { get; set; } = gaxgrpc::CallSettings.FromCallTiming(gaxgrpc::CallTiming.FromRetry(new gaxgrpc::RetrySettings(retryBackoff: new gaxgrpc::BackoffSettings(delay: sys::TimeSpan.FromMilliseconds(100), maxDelay: sys::TimeSpan.FromMilliseconds(60000), delayMultiplier: 1.3), timeoutBackoff: new gaxgrpc::BackoffSettings(delay: sys::TimeSpan.FromMilliseconds(600000), maxDelay: sys::TimeSpan.FromMilliseconds(600000), delayMultiplier: 1), totalExpiration: gax::Expiration.FromTimeout(sys::TimeSpan.FromMilliseconds(600000)), retryFilter: gaxgrpc::RetrySettings.FilterForStatusCodes(grpccore::StatusCode.DeadlineExceeded, grpccore::StatusCode.Unavailable))));
+        public gaxgrpc::CallSettings DeleteProductSettings { get; set; } = gaxgrpc::CallSettingsExtensions.WithRetry(gaxgrpc::CallSettings.FromExpiration(gax::Expiration.FromTimeout(sys::TimeSpan.FromMilliseconds(600000))), gaxgrpc::RetrySettings.FromExponentialBackoff(maxAttempts: 2147483647, initialBackoff: sys::TimeSpan.FromMilliseconds(100), maxBackoff: sys::TimeSpan.FromMilliseconds(60000), backoffMultiplier: 1.3, retryFilter: gaxgrpc::RetrySettings.FilterForStatusCodes(grpccore::StatusCode.DeadlineExceeded, grpccore::StatusCode.Unavailable)));
 
         /// <summary>
         /// <see cref="gaxgrpc::CallSettings"/> for synchronous and asynchronous calls to
@@ -251,13 +232,11 @@ namespace Google.Cloud.Vision.V1
         /// <item><description>Initial retry delay: 100 milliseconds.</description></item>
         /// <item><description>Retry delay multiplier: 1.3</description></item>
         /// <item><description>Retry maximum delay: 60000 milliseconds.</description></item>
-        /// <item><description>Initial timeout: 600000 milliseconds.</description></item>
-        /// <item><description>Timeout multiplier: 1</description></item>
-        /// <item><description>Timeout maximum delay: 600000 milliseconds.</description></item>
-        /// <item><description>Total timeout: 600 seconds.</description></item>
+        /// <item><description>Maximum attempts: Unlimited</description></item>
+        /// <item><description>Timeout: 600 seconds.</description></item>
         /// </list>
         /// </remarks>
-        public gaxgrpc::CallSettings CreateReferenceImageSettings { get; set; } = gaxgrpc::CallSettings.FromCallTiming(gaxgrpc::CallTiming.FromRetry(new gaxgrpc::RetrySettings(retryBackoff: new gaxgrpc::BackoffSettings(delay: sys::TimeSpan.FromMilliseconds(100), maxDelay: sys::TimeSpan.FromMilliseconds(60000), delayMultiplier: 1.3), timeoutBackoff: new gaxgrpc::BackoffSettings(delay: sys::TimeSpan.FromMilliseconds(600000), maxDelay: sys::TimeSpan.FromMilliseconds(600000), delayMultiplier: 1), totalExpiration: gax::Expiration.FromTimeout(sys::TimeSpan.FromMilliseconds(600000)), retryFilter: gaxgrpc::RetrySettings.FilterForStatusCodes())));
+        public gaxgrpc::CallSettings CreateReferenceImageSettings { get; set; } = gaxgrpc::CallSettingsExtensions.WithRetry(gaxgrpc::CallSettings.FromExpiration(gax::Expiration.FromTimeout(sys::TimeSpan.FromMilliseconds(600000))), gaxgrpc::RetrySettings.FromExponentialBackoff(maxAttempts: 2147483647, initialBackoff: sys::TimeSpan.FromMilliseconds(100), maxBackoff: sys::TimeSpan.FromMilliseconds(60000), backoffMultiplier: 1.3, retryFilter: gaxgrpc::RetrySettings.FilterForStatusCodes()));
 
         /// <summary>
         /// <see cref="gaxgrpc::CallSettings"/> for synchronous and asynchronous calls to
@@ -268,13 +247,11 @@ namespace Google.Cloud.Vision.V1
         /// <item><description>Initial retry delay: 100 milliseconds.</description></item>
         /// <item><description>Retry delay multiplier: 1.3</description></item>
         /// <item><description>Retry maximum delay: 60000 milliseconds.</description></item>
-        /// <item><description>Initial timeout: 600000 milliseconds.</description></item>
-        /// <item><description>Timeout multiplier: 1</description></item>
-        /// <item><description>Timeout maximum delay: 600000 milliseconds.</description></item>
-        /// <item><description>Total timeout: 600 seconds.</description></item>
+        /// <item><description>Maximum attempts: Unlimited</description></item>
+        /// <item><description>Timeout: 600 seconds.</description></item>
         /// </list>
         /// </remarks>
-        public gaxgrpc::CallSettings DeleteReferenceImageSettings { get; set; } = gaxgrpc::CallSettings.FromCallTiming(gaxgrpc::CallTiming.FromRetry(new gaxgrpc::RetrySettings(retryBackoff: new gaxgrpc::BackoffSettings(delay: sys::TimeSpan.FromMilliseconds(100), maxDelay: sys::TimeSpan.FromMilliseconds(60000), delayMultiplier: 1.3), timeoutBackoff: new gaxgrpc::BackoffSettings(delay: sys::TimeSpan.FromMilliseconds(600000), maxDelay: sys::TimeSpan.FromMilliseconds(600000), delayMultiplier: 1), totalExpiration: gax::Expiration.FromTimeout(sys::TimeSpan.FromMilliseconds(600000)), retryFilter: gaxgrpc::RetrySettings.FilterForStatusCodes(grpccore::StatusCode.DeadlineExceeded, grpccore::StatusCode.Unavailable))));
+        public gaxgrpc::CallSettings DeleteReferenceImageSettings { get; set; } = gaxgrpc::CallSettingsExtensions.WithRetry(gaxgrpc::CallSettings.FromExpiration(gax::Expiration.FromTimeout(sys::TimeSpan.FromMilliseconds(600000))), gaxgrpc::RetrySettings.FromExponentialBackoff(maxAttempts: 2147483647, initialBackoff: sys::TimeSpan.FromMilliseconds(100), maxBackoff: sys::TimeSpan.FromMilliseconds(60000), backoffMultiplier: 1.3, retryFilter: gaxgrpc::RetrySettings.FilterForStatusCodes(grpccore::StatusCode.DeadlineExceeded, grpccore::StatusCode.Unavailable)));
 
         /// <summary>
         /// <see cref="gaxgrpc::CallSettings"/> for synchronous and asynchronous calls to
@@ -285,13 +262,11 @@ namespace Google.Cloud.Vision.V1
         /// <item><description>Initial retry delay: 100 milliseconds.</description></item>
         /// <item><description>Retry delay multiplier: 1.3</description></item>
         /// <item><description>Retry maximum delay: 60000 milliseconds.</description></item>
-        /// <item><description>Initial timeout: 600000 milliseconds.</description></item>
-        /// <item><description>Timeout multiplier: 1</description></item>
-        /// <item><description>Timeout maximum delay: 600000 milliseconds.</description></item>
-        /// <item><description>Total timeout: 600 seconds.</description></item>
+        /// <item><description>Maximum attempts: Unlimited</description></item>
+        /// <item><description>Timeout: 600 seconds.</description></item>
         /// </list>
         /// </remarks>
-        public gaxgrpc::CallSettings ListReferenceImagesSettings { get; set; } = gaxgrpc::CallSettings.FromCallTiming(gaxgrpc::CallTiming.FromRetry(new gaxgrpc::RetrySettings(retryBackoff: new gaxgrpc::BackoffSettings(delay: sys::TimeSpan.FromMilliseconds(100), maxDelay: sys::TimeSpan.FromMilliseconds(60000), delayMultiplier: 1.3), timeoutBackoff: new gaxgrpc::BackoffSettings(delay: sys::TimeSpan.FromMilliseconds(600000), maxDelay: sys::TimeSpan.FromMilliseconds(600000), delayMultiplier: 1), totalExpiration: gax::Expiration.FromTimeout(sys::TimeSpan.FromMilliseconds(600000)), retryFilter: gaxgrpc::RetrySettings.FilterForStatusCodes(grpccore::StatusCode.DeadlineExceeded, grpccore::StatusCode.Unavailable))));
+        public gaxgrpc::CallSettings ListReferenceImagesSettings { get; set; } = gaxgrpc::CallSettingsExtensions.WithRetry(gaxgrpc::CallSettings.FromExpiration(gax::Expiration.FromTimeout(sys::TimeSpan.FromMilliseconds(600000))), gaxgrpc::RetrySettings.FromExponentialBackoff(maxAttempts: 2147483647, initialBackoff: sys::TimeSpan.FromMilliseconds(100), maxBackoff: sys::TimeSpan.FromMilliseconds(60000), backoffMultiplier: 1.3, retryFilter: gaxgrpc::RetrySettings.FilterForStatusCodes(grpccore::StatusCode.DeadlineExceeded, grpccore::StatusCode.Unavailable)));
 
         /// <summary>
         /// <see cref="gaxgrpc::CallSettings"/> for synchronous and asynchronous calls to
@@ -302,13 +277,11 @@ namespace Google.Cloud.Vision.V1
         /// <item><description>Initial retry delay: 100 milliseconds.</description></item>
         /// <item><description>Retry delay multiplier: 1.3</description></item>
         /// <item><description>Retry maximum delay: 60000 milliseconds.</description></item>
-        /// <item><description>Initial timeout: 600000 milliseconds.</description></item>
-        /// <item><description>Timeout multiplier: 1</description></item>
-        /// <item><description>Timeout maximum delay: 600000 milliseconds.</description></item>
-        /// <item><description>Total timeout: 600 seconds.</description></item>
+        /// <item><description>Maximum attempts: Unlimited</description></item>
+        /// <item><description>Timeout: 600 seconds.</description></item>
         /// </list>
         /// </remarks>
-        public gaxgrpc::CallSettings GetReferenceImageSettings { get; set; } = gaxgrpc::CallSettings.FromCallTiming(gaxgrpc::CallTiming.FromRetry(new gaxgrpc::RetrySettings(retryBackoff: new gaxgrpc::BackoffSettings(delay: sys::TimeSpan.FromMilliseconds(100), maxDelay: sys::TimeSpan.FromMilliseconds(60000), delayMultiplier: 1.3), timeoutBackoff: new gaxgrpc::BackoffSettings(delay: sys::TimeSpan.FromMilliseconds(600000), maxDelay: sys::TimeSpan.FromMilliseconds(600000), delayMultiplier: 1), totalExpiration: gax::Expiration.FromTimeout(sys::TimeSpan.FromMilliseconds(600000)), retryFilter: gaxgrpc::RetrySettings.FilterForStatusCodes(grpccore::StatusCode.DeadlineExceeded, grpccore::StatusCode.Unavailable))));
+        public gaxgrpc::CallSettings GetReferenceImageSettings { get; set; } = gaxgrpc::CallSettingsExtensions.WithRetry(gaxgrpc::CallSettings.FromExpiration(gax::Expiration.FromTimeout(sys::TimeSpan.FromMilliseconds(600000))), gaxgrpc::RetrySettings.FromExponentialBackoff(maxAttempts: 2147483647, initialBackoff: sys::TimeSpan.FromMilliseconds(100), maxBackoff: sys::TimeSpan.FromMilliseconds(60000), backoffMultiplier: 1.3, retryFilter: gaxgrpc::RetrySettings.FilterForStatusCodes(grpccore::StatusCode.DeadlineExceeded, grpccore::StatusCode.Unavailable)));
 
         /// <summary>
         /// <see cref="gaxgrpc::CallSettings"/> for synchronous and asynchronous calls to
@@ -320,13 +293,11 @@ namespace Google.Cloud.Vision.V1
         /// <item><description>Initial retry delay: 100 milliseconds.</description></item>
         /// <item><description>Retry delay multiplier: 1.3</description></item>
         /// <item><description>Retry maximum delay: 60000 milliseconds.</description></item>
-        /// <item><description>Initial timeout: 600000 milliseconds.</description></item>
-        /// <item><description>Timeout multiplier: 1</description></item>
-        /// <item><description>Timeout maximum delay: 600000 milliseconds.</description></item>
-        /// <item><description>Total timeout: 600 seconds.</description></item>
+        /// <item><description>Maximum attempts: Unlimited</description></item>
+        /// <item><description>Timeout: 600 seconds.</description></item>
         /// </list>
         /// </remarks>
-        public gaxgrpc::CallSettings AddProductToProductSetSettings { get; set; } = gaxgrpc::CallSettings.FromCallTiming(gaxgrpc::CallTiming.FromRetry(new gaxgrpc::RetrySettings(retryBackoff: new gaxgrpc::BackoffSettings(delay: sys::TimeSpan.FromMilliseconds(100), maxDelay: sys::TimeSpan.FromMilliseconds(60000), delayMultiplier: 1.3), timeoutBackoff: new gaxgrpc::BackoffSettings(delay: sys::TimeSpan.FromMilliseconds(600000), maxDelay: sys::TimeSpan.FromMilliseconds(600000), delayMultiplier: 1), totalExpiration: gax::Expiration.FromTimeout(sys::TimeSpan.FromMilliseconds(600000)), retryFilter: gaxgrpc::RetrySettings.FilterForStatusCodes(grpccore::StatusCode.DeadlineExceeded, grpccore::StatusCode.Unavailable))));
+        public gaxgrpc::CallSettings AddProductToProductSetSettings { get; set; } = gaxgrpc::CallSettingsExtensions.WithRetry(gaxgrpc::CallSettings.FromExpiration(gax::Expiration.FromTimeout(sys::TimeSpan.FromMilliseconds(600000))), gaxgrpc::RetrySettings.FromExponentialBackoff(maxAttempts: 2147483647, initialBackoff: sys::TimeSpan.FromMilliseconds(100), maxBackoff: sys::TimeSpan.FromMilliseconds(60000), backoffMultiplier: 1.3, retryFilter: gaxgrpc::RetrySettings.FilterForStatusCodes(grpccore::StatusCode.DeadlineExceeded, grpccore::StatusCode.Unavailable)));
 
         /// <summary>
         /// <see cref="gaxgrpc::CallSettings"/> for synchronous and asynchronous calls to
@@ -338,13 +309,11 @@ namespace Google.Cloud.Vision.V1
         /// <item><description>Initial retry delay: 100 milliseconds.</description></item>
         /// <item><description>Retry delay multiplier: 1.3</description></item>
         /// <item><description>Retry maximum delay: 60000 milliseconds.</description></item>
-        /// <item><description>Initial timeout: 600000 milliseconds.</description></item>
-        /// <item><description>Timeout multiplier: 1</description></item>
-        /// <item><description>Timeout maximum delay: 600000 milliseconds.</description></item>
-        /// <item><description>Total timeout: 600 seconds.</description></item>
+        /// <item><description>Maximum attempts: Unlimited</description></item>
+        /// <item><description>Timeout: 600 seconds.</description></item>
         /// </list>
         /// </remarks>
-        public gaxgrpc::CallSettings RemoveProductFromProductSetSettings { get; set; } = gaxgrpc::CallSettings.FromCallTiming(gaxgrpc::CallTiming.FromRetry(new gaxgrpc::RetrySettings(retryBackoff: new gaxgrpc::BackoffSettings(delay: sys::TimeSpan.FromMilliseconds(100), maxDelay: sys::TimeSpan.FromMilliseconds(60000), delayMultiplier: 1.3), timeoutBackoff: new gaxgrpc::BackoffSettings(delay: sys::TimeSpan.FromMilliseconds(600000), maxDelay: sys::TimeSpan.FromMilliseconds(600000), delayMultiplier: 1), totalExpiration: gax::Expiration.FromTimeout(sys::TimeSpan.FromMilliseconds(600000)), retryFilter: gaxgrpc::RetrySettings.FilterForStatusCodes(grpccore::StatusCode.DeadlineExceeded, grpccore::StatusCode.Unavailable))));
+        public gaxgrpc::CallSettings RemoveProductFromProductSetSettings { get; set; } = gaxgrpc::CallSettingsExtensions.WithRetry(gaxgrpc::CallSettings.FromExpiration(gax::Expiration.FromTimeout(sys::TimeSpan.FromMilliseconds(600000))), gaxgrpc::RetrySettings.FromExponentialBackoff(maxAttempts: 2147483647, initialBackoff: sys::TimeSpan.FromMilliseconds(100), maxBackoff: sys::TimeSpan.FromMilliseconds(60000), backoffMultiplier: 1.3, retryFilter: gaxgrpc::RetrySettings.FilterForStatusCodes(grpccore::StatusCode.DeadlineExceeded, grpccore::StatusCode.Unavailable)));
 
         /// <summary>
         /// <see cref="gaxgrpc::CallSettings"/> for synchronous and asynchronous calls to
@@ -356,13 +325,11 @@ namespace Google.Cloud.Vision.V1
         /// <item><description>Initial retry delay: 100 milliseconds.</description></item>
         /// <item><description>Retry delay multiplier: 1.3</description></item>
         /// <item><description>Retry maximum delay: 60000 milliseconds.</description></item>
-        /// <item><description>Initial timeout: 600000 milliseconds.</description></item>
-        /// <item><description>Timeout multiplier: 1</description></item>
-        /// <item><description>Timeout maximum delay: 600000 milliseconds.</description></item>
-        /// <item><description>Total timeout: 600 seconds.</description></item>
+        /// <item><description>Maximum attempts: Unlimited</description></item>
+        /// <item><description>Timeout: 600 seconds.</description></item>
         /// </list>
         /// </remarks>
-        public gaxgrpc::CallSettings ListProductsInProductSetSettings { get; set; } = gaxgrpc::CallSettings.FromCallTiming(gaxgrpc::CallTiming.FromRetry(new gaxgrpc::RetrySettings(retryBackoff: new gaxgrpc::BackoffSettings(delay: sys::TimeSpan.FromMilliseconds(100), maxDelay: sys::TimeSpan.FromMilliseconds(60000), delayMultiplier: 1.3), timeoutBackoff: new gaxgrpc::BackoffSettings(delay: sys::TimeSpan.FromMilliseconds(600000), maxDelay: sys::TimeSpan.FromMilliseconds(600000), delayMultiplier: 1), totalExpiration: gax::Expiration.FromTimeout(sys::TimeSpan.FromMilliseconds(600000)), retryFilter: gaxgrpc::RetrySettings.FilterForStatusCodes(grpccore::StatusCode.DeadlineExceeded, grpccore::StatusCode.Unavailable))));
+        public gaxgrpc::CallSettings ListProductsInProductSetSettings { get; set; } = gaxgrpc::CallSettingsExtensions.WithRetry(gaxgrpc::CallSettings.FromExpiration(gax::Expiration.FromTimeout(sys::TimeSpan.FromMilliseconds(600000))), gaxgrpc::RetrySettings.FromExponentialBackoff(maxAttempts: 2147483647, initialBackoff: sys::TimeSpan.FromMilliseconds(100), maxBackoff: sys::TimeSpan.FromMilliseconds(60000), backoffMultiplier: 1.3, retryFilter: gaxgrpc::RetrySettings.FilterForStatusCodes(grpccore::StatusCode.DeadlineExceeded, grpccore::StatusCode.Unavailable)));
 
         /// <summary>
         /// <see cref="gaxgrpc::CallSettings"/> for synchronous and asynchronous calls to
@@ -373,13 +340,11 @@ namespace Google.Cloud.Vision.V1
         /// <item><description>Initial retry delay: 100 milliseconds.</description></item>
         /// <item><description>Retry delay multiplier: 1.3</description></item>
         /// <item><description>Retry maximum delay: 60000 milliseconds.</description></item>
-        /// <item><description>Initial timeout: 600000 milliseconds.</description></item>
-        /// <item><description>Timeout multiplier: 1</description></item>
-        /// <item><description>Timeout maximum delay: 600000 milliseconds.</description></item>
-        /// <item><description>Total timeout: 600 seconds.</description></item>
+        /// <item><description>Maximum attempts: Unlimited</description></item>
+        /// <item><description>Timeout: 600 seconds.</description></item>
         /// </list>
         /// </remarks>
-        public gaxgrpc::CallSettings ImportProductSetsSettings { get; set; } = gaxgrpc::CallSettings.FromCallTiming(gaxgrpc::CallTiming.FromRetry(new gaxgrpc::RetrySettings(retryBackoff: new gaxgrpc::BackoffSettings(delay: sys::TimeSpan.FromMilliseconds(100), maxDelay: sys::TimeSpan.FromMilliseconds(60000), delayMultiplier: 1.3), timeoutBackoff: new gaxgrpc::BackoffSettings(delay: sys::TimeSpan.FromMilliseconds(600000), maxDelay: sys::TimeSpan.FromMilliseconds(600000), delayMultiplier: 1), totalExpiration: gax::Expiration.FromTimeout(sys::TimeSpan.FromMilliseconds(600000)), retryFilter: gaxgrpc::RetrySettings.FilterForStatusCodes())));
+        public gaxgrpc::CallSettings ImportProductSetsSettings { get; set; } = gaxgrpc::CallSettingsExtensions.WithRetry(gaxgrpc::CallSettings.FromExpiration(gax::Expiration.FromTimeout(sys::TimeSpan.FromMilliseconds(600000))), gaxgrpc::RetrySettings.FromExponentialBackoff(maxAttempts: 2147483647, initialBackoff: sys::TimeSpan.FromMilliseconds(100), maxBackoff: sys::TimeSpan.FromMilliseconds(60000), backoffMultiplier: 1.3, retryFilter: gaxgrpc::RetrySettings.FilterForStatusCodes()));
 
         /// <summary>
         /// Long Running Operation settings for calls to <c>ProductSearchClient.ImportProductSets</c> and
@@ -408,13 +373,11 @@ namespace Google.Cloud.Vision.V1
         /// <item><description>Initial retry delay: 100 milliseconds.</description></item>
         /// <item><description>Retry delay multiplier: 1.3</description></item>
         /// <item><description>Retry maximum delay: 60000 milliseconds.</description></item>
-        /// <item><description>Initial timeout: 600000 milliseconds.</description></item>
-        /// <item><description>Timeout multiplier: 1</description></item>
-        /// <item><description>Timeout maximum delay: 600000 milliseconds.</description></item>
-        /// <item><description>Total timeout: 600 seconds.</description></item>
+        /// <item><description>Maximum attempts: Unlimited</description></item>
+        /// <item><description>Timeout: 600 seconds.</description></item>
         /// </list>
         /// </remarks>
-        public gaxgrpc::CallSettings PurgeProductsSettings { get; set; } = gaxgrpc::CallSettings.FromCallTiming(gaxgrpc::CallTiming.FromRetry(new gaxgrpc::RetrySettings(retryBackoff: new gaxgrpc::BackoffSettings(delay: sys::TimeSpan.FromMilliseconds(100), maxDelay: sys::TimeSpan.FromMilliseconds(60000), delayMultiplier: 1.3), timeoutBackoff: new gaxgrpc::BackoffSettings(delay: sys::TimeSpan.FromMilliseconds(600000), maxDelay: sys::TimeSpan.FromMilliseconds(600000), delayMultiplier: 1), totalExpiration: gax::Expiration.FromTimeout(sys::TimeSpan.FromMilliseconds(600000)), retryFilter: gaxgrpc::RetrySettings.FilterForStatusCodes())));
+        public gaxgrpc::CallSettings PurgeProductsSettings { get; set; } = gaxgrpc::CallSettingsExtensions.WithRetry(gaxgrpc::CallSettings.FromExpiration(gax::Expiration.FromTimeout(sys::TimeSpan.FromMilliseconds(600000))), gaxgrpc::RetrySettings.FromExponentialBackoff(maxAttempts: 2147483647, initialBackoff: sys::TimeSpan.FromMilliseconds(100), maxBackoff: sys::TimeSpan.FromMilliseconds(60000), backoffMultiplier: 1.3, retryFilter: gaxgrpc::RetrySettings.FilterForStatusCodes()));
 
         /// <summary>
         /// Long Running Operation settings for calls to <c>ProductSearchClient.PurgeProducts</c> and
@@ -448,40 +411,79 @@ namespace Google.Cloud.Vision.V1
         /// <summary>The settings to use for RPCs, or <c>null</c> for the default settings.</summary>
         public ProductSearchSettings Settings { get; set; }
 
-        /// <inheritdoc/>
+        partial void InterceptBuild(ref ProductSearchClient client);
+
+        partial void InterceptBuildAsync(st::CancellationToken cancellationToken, ref stt::Task<ProductSearchClient> task);
+
+        /// <summary>Builds the resulting client.</summary>
         public override ProductSearchClient Build()
+        {
+            ProductSearchClient client = null;
+            InterceptBuild(ref client);
+            return client ?? BuildImpl();
+        }
+
+        /// <summary>Builds the resulting client asynchronously.</summary>
+        public override stt::Task<ProductSearchClient> BuildAsync(st::CancellationToken cancellationToken = default)
+        {
+            stt::Task<ProductSearchClient> task = null;
+            InterceptBuildAsync(cancellationToken, ref task);
+            return task ?? BuildAsyncImpl(cancellationToken);
+        }
+
+        private ProductSearchClient BuildImpl()
         {
             Validate();
             grpccore::CallInvoker callInvoker = CreateCallInvoker();
             return ProductSearchClient.Create(callInvoker, Settings);
         }
 
-        /// <inheritdoc/>
-        public override async stt::Task<ProductSearchClient> BuildAsync(st::CancellationToken cancellationToken = default)
+        private async stt::Task<ProductSearchClient> BuildAsyncImpl(st::CancellationToken cancellationToken)
         {
             Validate();
             grpccore::CallInvoker callInvoker = await CreateCallInvokerAsync(cancellationToken).ConfigureAwait(false);
             return ProductSearchClient.Create(callInvoker, Settings);
         }
 
-        /// <inheritdoc/>
-        protected override gaxgrpc::ServiceEndpoint GetDefaultEndpoint() => ProductSearchClient.DefaultEndpoint;
+        /// <summary>Returns the endpoint for this builder type, used if no endpoint is otherwise specified.</summary>
+        protected override string GetDefaultEndpoint() => ProductSearchClient.DefaultEndpoint;
 
-        /// <inheritdoc/>
+        /// <summary>
+        /// Returns the default scopes for this builder type, used if no scopes are otherwise specified.
+        /// </summary>
         protected override scg::IReadOnlyList<string> GetDefaultScopes() => ProductSearchClient.DefaultScopes;
 
-        /// <inheritdoc/>
+        /// <summary>Returns the channel pool to use when no other options are specified.</summary>
         protected override gaxgrpc::ChannelPool GetChannelPool() => ProductSearchClient.ChannelPool;
+
+        /// <summary>Returns the default <see cref="gaxgrpc::GrpcAdapter"/>to use if not otherwise specified.</summary>
+        protected override gaxgrpc::GrpcAdapter DefaultGrpcAdapter => gaxgrpccore::GrpcCoreAdapter.Instance;
     }
 
     /// <summary>ProductSearch client wrapper, for convenient use.</summary>
+    /// <remarks>
+    /// Manages Products and ProductSets of reference images for use in product
+    /// search. It uses the following resource model:
+    /// 
+    /// - The API has a collection of [ProductSet][google.cloud.vision.v1.ProductSet] resources, named
+    /// `projects/*/locations/*/productSets/*`, which acts as a way to put different
+    /// products into groups to limit identification.
+    /// 
+    /// In parallel,
+    /// 
+    /// - The API has a collection of [Product][google.cloud.vision.v1.Product] resources, named
+    /// `projects/*/locations/*/products/*`
+    /// 
+    /// - Each [Product][google.cloud.vision.v1.Product] has a collection of [ReferenceImage][google.cloud.vision.v1.ReferenceImage] resources, named
+    /// `projects/*/locations/*/products/*/referenceImages/*`
+    /// </remarks>
     public abstract partial class ProductSearchClient
     {
         /// <summary>
         /// The default endpoint for the ProductSearch service, which is a host of "vision.googleapis.com" and a port of
         /// 443.
         /// </summary>
-        public static gaxgrpc::ServiceEndpoint DefaultEndpoint { get; } = new gaxgrpc::ServiceEndpoint("vision.googleapis.com", 443);
+        public static string DefaultEndpoint { get; } = "vision.googleapis.com:443";
 
         /// <summary>The default ProductSearch scopes.</summary>
         /// <remarks>
@@ -500,96 +502,22 @@ namespace Google.Cloud.Vision.V1
         internal static gaxgrpc::ChannelPool ChannelPool { get; } = new gaxgrpc::ChannelPool(DefaultScopes);
 
         /// <summary>
-        /// Asynchronously creates a <see cref="ProductSearchClient"/>, applying defaults for all unspecified settings, 
-        /// and creating a channel connecting to the given endpoint with application default credentials where 
-        /// necessary. See the example for how to use custom credentials.
+        /// Asynchronously creates a <see cref="ProductSearchClient"/> using the default credentials, endpoint and
+        /// settings. To specify custom credentials or other settings, use <see cref="ProductSearchClientBuilder"/>.
         /// </summary>
-        /// <example>
-        /// This sample shows how to create a client using default credentials:
-        /// <code>
-        /// using Google.Cloud.Vision.V1;
-        /// ...
-        /// // When running on Google Cloud Platform this will use the project Compute Credential.
-        /// // Or set the GOOGLE_APPLICATION_CREDENTIALS environment variable to the path of a JSON
-        /// // credential file to use that credential.
-        /// ImageAnnotatorClient client = await ImageAnnotatorClient.CreateAsync();
-        /// </code>
-        /// This sample shows how to create a client using credentials loaded from a JSON file:
-        /// <code>
-        /// using Google.Cloud.Vision.V1;
-        /// using Google.Apis.Auth.OAuth2;
-        /// using Grpc.Auth;
-        /// using Grpc.Core;
-        /// ...
-        /// GoogleCredential cred = GoogleCredential.FromFile("/path/to/credentials.json");
-        /// Channel channel = new Channel(
-        ///     ImageAnnotatorClient.DefaultEndpoint.Host, ImageAnnotatorClient.DefaultEndpoint.Port, cred.ToChannelCredentials());
-        /// ImageAnnotatorClient client = ImageAnnotatorClient.Create(channel);
-        /// ...
-        /// // Shutdown the channel when it is no longer required.
-        /// await channel.ShutdownAsync();
-        /// </code>
-        /// </example>
-        /// <param name="endpoint">Optional <see cref="gaxgrpc::ServiceEndpoint"/>.</param>
-        /// <param name="settings">Optional <see cref="ProductSearchSettings"/>.</param>
+        /// <param name="cancellationToken">
+        /// The <see cref="st::CancellationToken"/> to use while creating the client.
+        /// </param>
         /// <returns>The task representing the created <see cref="ProductSearchClient"/>.</returns>
-        public static async stt::Task<ProductSearchClient> CreateAsync(gaxgrpc::ServiceEndpoint endpoint = null, ProductSearchSettings settings = null)
-        {
-            grpccore::Channel channel = await ChannelPool.GetChannelAsync(endpoint ?? DefaultEndpoint).ConfigureAwait(false);
-            return Create(channel, settings);
-        }
+        public static stt::Task<ProductSearchClient> CreateAsync(st::CancellationToken cancellationToken = default) =>
+            new ProductSearchClientBuilder().BuildAsync(cancellationToken);
 
         /// <summary>
-        /// Synchronously creates a <see cref="ProductSearchClient"/>, applying defaults for all unspecified settings, 
-        /// and creating a channel connecting to the given endpoint with application default credentials where 
-        /// necessary. See the example for how to use custom credentials.
+        /// Synchronously creates a <see cref="ProductSearchClient"/> using the default credentials, endpoint and
+        /// settings. To specify custom credentials or other settings, use <see cref="ProductSearchClientBuilder"/>.
         /// </summary>
-        /// <example>
-        /// This sample shows how to create a client using default credentials:
-        /// <code>
-        /// using Google.Cloud.Vision.V1;
-        /// ...
-        /// // When running on Google Cloud Platform this will use the project Compute Credential.
-        /// // Or set the GOOGLE_APPLICATION_CREDENTIALS environment variable to the path of a JSON
-        /// // credential file to use that credential.
-        /// ImageAnnotatorClient client = ImageAnnotatorClient.Create();
-        /// </code>
-        /// This sample shows how to create a client using credentials loaded from a JSON file:
-        /// <code>
-        /// using Google.Cloud.Vision.V1;
-        /// using Google.Apis.Auth.OAuth2;
-        /// using Grpc.Auth;
-        /// using Grpc.Core;
-        /// ...
-        /// GoogleCredential cred = GoogleCredential.FromFile("/path/to/credentials.json");
-        /// Channel channel = new Channel(
-        ///     ImageAnnotatorClient.DefaultEndpoint.Host, ImageAnnotatorClient.DefaultEndpoint.Port, cred.ToChannelCredentials());
-        /// ImageAnnotatorClient client = ImageAnnotatorClient.Create(channel);
-        /// ...
-        /// // Shutdown the channel when it is no longer required.
-        /// channel.ShutdownAsync().Wait();
-        /// </code>
-        /// </example>
-        /// <param name="endpoint">Optional <see cref="gaxgrpc::ServiceEndpoint"/>.</param>
-        /// <param name="settings">Optional <see cref="ProductSearchSettings"/>.</param>
         /// <returns>The created <see cref="ProductSearchClient"/>.</returns>
-        public static ProductSearchClient Create(gaxgrpc::ServiceEndpoint endpoint = null, ProductSearchSettings settings = null)
-        {
-            grpccore::Channel channel = ChannelPool.GetChannel(endpoint ?? DefaultEndpoint);
-            return Create(channel, settings);
-        }
-
-        /// <summary>
-        /// Creates a <see cref="ProductSearchClient"/> which uses the specified channel for remote operations.
-        /// </summary>
-        /// <param name="channel">The <see cref="grpccore::Channel"/> for remote operations. Must not be null.</param>
-        /// <param name="settings">Optional <see cref="ProductSearchSettings"/>.</param>
-        /// <returns>The created <see cref="ProductSearchClient"/>.</returns>
-        public static ProductSearchClient Create(grpccore::Channel channel, ProductSearchSettings settings = null)
-        {
-            gax::GaxPreconditions.CheckNotNull(channel, nameof(channel));
-            return Create(new grpccore::DefaultCallInvoker(channel), settings);
-        }
+        public static ProductSearchClient Create() => new ProductSearchClientBuilder().Build();
 
         /// <summary>
         /// Creates a <see cref="ProductSearchClient"/> which uses the specified call invoker for remote operations.
@@ -599,7 +527,7 @@ namespace Google.Cloud.Vision.V1
         /// </param>
         /// <param name="settings">Optional <see cref="ProductSearchSettings"/>.</param>
         /// <returns>The created <see cref="ProductSearchClient"/>.</returns>
-        public static ProductSearchClient Create(grpccore::CallInvoker callInvoker, ProductSearchSettings settings = null)
+        internal static ProductSearchClient Create(grpccore::CallInvoker callInvoker, ProductSearchSettings settings = null)
         {
             gax::GaxPreconditions.CheckNotNull(callInvoker, nameof(callInvoker));
             grpcinter::Interceptor interceptor = settings?.Interceptor;
@@ -612,16 +540,14 @@ namespace Google.Cloud.Vision.V1
         }
 
         /// <summary>
-        /// Shuts down any channels automatically created by
-        /// <see cref="Create(grpccore::CallInvoker,ProductSearchSettings)"/> and
-        /// <see cref="CreateAsync(gaxgrpc::ServiceEndpoint,ProductSearchSettings)"/>. Channels which weren't
-        /// automatically created are not affected.
+        /// Shuts down any channels automatically created by <see cref="Create()"/> and
+        /// <see cref="CreateAsync(st::CancellationToken)"/>. Channels which weren't automatically created are not
+        /// affected.
         /// </summary>
         /// <remarks>
-        /// After calling this method, further calls to
-        /// <see cref="Create(grpccore::CallInvoker,ProductSearchSettings)"/> and
-        /// <see cref="CreateAsync(gaxgrpc::ServiceEndpoint,ProductSearchSettings)"/> will create new channels, which
-        /// could in turn be shut down by another call to this method.
+        /// After calling this method, further calls to <see cref="Create()"/> and
+        /// <see cref="CreateAsync(st::CancellationToken)"/> will create new channels, which could in turn be shut down
+        /// by another call to this method.
         /// </remarks>
         /// <returns>A task representing the asynchronous shutdown operation.</returns>
         public static stt::Task ShutdownDefaultChannelsAsync() => ChannelPool.ShutdownChannelsAsync();
@@ -786,7 +712,7 @@ namespace Google.Cloud.Vision.V1
         /// </param>
         /// <param name="callSettings">If not null, applies overrides to this RPC call.</param>
         /// <returns>The RPC response.</returns>
-        public virtual ProductSet CreateProductSet(LocationName parent, ProductSet productSet, string productSetId, gaxgrpc::CallSettings callSettings = null) =>
+        public virtual ProductSet CreateProductSet(gagr::LocationName parent, ProductSet productSet, string productSetId, gaxgrpc::CallSettings callSettings = null) =>
             CreateProductSet(new CreateProductSetRequest
             {
                 ParentAsLocationName = gax::GaxPreconditions.CheckNotNull(parent, nameof(parent)),
@@ -818,7 +744,7 @@ namespace Google.Cloud.Vision.V1
         /// </param>
         /// <param name="callSettings">If not null, applies overrides to this RPC call.</param>
         /// <returns>A Task containing the RPC response.</returns>
-        public virtual stt::Task<ProductSet> CreateProductSetAsync(LocationName parent, ProductSet productSet, string productSetId, gaxgrpc::CallSettings callSettings = null) =>
+        public virtual stt::Task<ProductSet> CreateProductSetAsync(gagr::LocationName parent, ProductSet productSet, string productSetId, gaxgrpc::CallSettings callSettings = null) =>
             CreateProductSetAsync(new CreateProductSetRequest
             {
                 ParentAsLocationName = gax::GaxPreconditions.CheckNotNull(parent, nameof(parent)),
@@ -850,7 +776,7 @@ namespace Google.Cloud.Vision.V1
         /// </param>
         /// <param name="cancellationToken">A <see cref="st::CancellationToken"/> to use for this RPC.</param>
         /// <returns>A Task containing the RPC response.</returns>
-        public virtual stt::Task<ProductSet> CreateProductSetAsync(LocationName parent, ProductSet productSet, string productSetId, st::CancellationToken cancellationToken) =>
+        public virtual stt::Task<ProductSet> CreateProductSetAsync(gagr::LocationName parent, ProductSet productSet, string productSetId, st::CancellationToken cancellationToken) =>
             CreateProductSetAsync(parent, productSet, productSetId, gaxgrpc::CallSettings.FromCancellationToken(cancellationToken));
 
         /// <summary>
@@ -966,7 +892,7 @@ namespace Google.Cloud.Vision.V1
         /// </param>
         /// <param name="callSettings">If not null, applies overrides to this RPC call.</param>
         /// <returns>A pageable sequence of <see cref="ProductSet"/> resources.</returns>
-        public virtual gax::PagedEnumerable<ListProductSetsResponse, ProductSet> ListProductSets(LocationName parent, string pageToken = null, int? pageSize = null, gaxgrpc::CallSettings callSettings = null) =>
+        public virtual gax::PagedEnumerable<ListProductSetsResponse, ProductSet> ListProductSets(gagr::LocationName parent, string pageToken = null, int? pageSize = null, gaxgrpc::CallSettings callSettings = null) =>
             ListProductSets(new ListProductSetsRequest
             {
                 ParentAsLocationName = gax::GaxPreconditions.CheckNotNull(parent, nameof(parent)),
@@ -997,7 +923,7 @@ namespace Google.Cloud.Vision.V1
         /// </param>
         /// <param name="callSettings">If not null, applies overrides to this RPC call.</param>
         /// <returns>A pageable asynchronous sequence of <see cref="ProductSet"/> resources.</returns>
-        public virtual gax::PagedAsyncEnumerable<ListProductSetsResponse, ProductSet> ListProductSetsAsync(LocationName parent, string pageToken = null, int? pageSize = null, gaxgrpc::CallSettings callSettings = null) =>
+        public virtual gax::PagedAsyncEnumerable<ListProductSetsResponse, ProductSet> ListProductSetsAsync(gagr::LocationName parent, string pageToken = null, int? pageSize = null, gaxgrpc::CallSettings callSettings = null) =>
             ListProductSetsAsync(new ListProductSetsRequest
             {
                 ParentAsLocationName = gax::GaxPreconditions.CheckNotNull(parent, nameof(parent)),
@@ -1617,7 +1543,7 @@ namespace Google.Cloud.Vision.V1
         /// </param>
         /// <param name="callSettings">If not null, applies overrides to this RPC call.</param>
         /// <returns>The RPC response.</returns>
-        public virtual Product CreateProduct(LocationName parent, Product product, string productId, gaxgrpc::CallSettings callSettings = null) =>
+        public virtual Product CreateProduct(gagr::LocationName parent, Product product, string productId, gaxgrpc::CallSettings callSettings = null) =>
             CreateProduct(new CreateProductRequest
             {
                 ParentAsLocationName = gax::GaxPreconditions.CheckNotNull(parent, nameof(parent)),
@@ -1652,7 +1578,7 @@ namespace Google.Cloud.Vision.V1
         /// </param>
         /// <param name="callSettings">If not null, applies overrides to this RPC call.</param>
         /// <returns>A Task containing the RPC response.</returns>
-        public virtual stt::Task<Product> CreateProductAsync(LocationName parent, Product product, string productId, gaxgrpc::CallSettings callSettings = null) =>
+        public virtual stt::Task<Product> CreateProductAsync(gagr::LocationName parent, Product product, string productId, gaxgrpc::CallSettings callSettings = null) =>
             CreateProductAsync(new CreateProductRequest
             {
                 ParentAsLocationName = gax::GaxPreconditions.CheckNotNull(parent, nameof(parent)),
@@ -1687,7 +1613,7 @@ namespace Google.Cloud.Vision.V1
         /// </param>
         /// <param name="cancellationToken">A <see cref="st::CancellationToken"/> to use for this RPC.</param>
         /// <returns>A Task containing the RPC response.</returns>
-        public virtual stt::Task<Product> CreateProductAsync(LocationName parent, Product product, string productId, st::CancellationToken cancellationToken) =>
+        public virtual stt::Task<Product> CreateProductAsync(gagr::LocationName parent, Product product, string productId, st::CancellationToken cancellationToken) =>
             CreateProductAsync(parent, product, productId, gaxgrpc::CallSettings.FromCancellationToken(cancellationToken));
 
         /// <summary>
@@ -1801,7 +1727,7 @@ namespace Google.Cloud.Vision.V1
         /// </param>
         /// <param name="callSettings">If not null, applies overrides to this RPC call.</param>
         /// <returns>A pageable sequence of <see cref="Product"/> resources.</returns>
-        public virtual gax::PagedEnumerable<ListProductsResponse, Product> ListProducts(LocationName parent, string pageToken = null, int? pageSize = null, gaxgrpc::CallSettings callSettings = null) =>
+        public virtual gax::PagedEnumerable<ListProductsResponse, Product> ListProducts(gagr::LocationName parent, string pageToken = null, int? pageSize = null, gaxgrpc::CallSettings callSettings = null) =>
             ListProducts(new ListProductsRequest
             {
                 ParentAsLocationName = gax::GaxPreconditions.CheckNotNull(parent, nameof(parent)),
@@ -1832,7 +1758,7 @@ namespace Google.Cloud.Vision.V1
         /// </param>
         /// <param name="callSettings">If not null, applies overrides to this RPC call.</param>
         /// <returns>A pageable asynchronous sequence of <see cref="Product"/> resources.</returns>
-        public virtual gax::PagedAsyncEnumerable<ListProductsResponse, Product> ListProductsAsync(LocationName parent, string pageToken = null, int? pageSize = null, gaxgrpc::CallSettings callSettings = null) =>
+        public virtual gax::PagedAsyncEnumerable<ListProductsResponse, Product> ListProductsAsync(gagr::LocationName parent, string pageToken = null, int? pageSize = null, gaxgrpc::CallSettings callSettings = null) =>
             ListProductsAsync(new ListProductsRequest
             {
                 ParentAsLocationName = gax::GaxPreconditions.CheckNotNull(parent, nameof(parent)),
@@ -3941,7 +3867,7 @@ namespace Google.Cloud.Vision.V1
         /// </param>
         /// <param name="callSettings">If not null, applies overrides to this RPC call.</param>
         /// <returns>The RPC response.</returns>
-        public virtual lro::Operation<ImportProductSetsResponse, BatchOperationMetadata> ImportProductSets(LocationName parent, ImportProductSetsInputConfig inputConfig, gaxgrpc::CallSettings callSettings = null) =>
+        public virtual lro::Operation<ImportProductSetsResponse, BatchOperationMetadata> ImportProductSets(gagr::LocationName parent, ImportProductSetsInputConfig inputConfig, gaxgrpc::CallSettings callSettings = null) =>
             ImportProductSets(new ImportProductSetsRequest
             {
                 ParentAsLocationName = gax::GaxPreconditions.CheckNotNull(parent, nameof(parent)),
@@ -3971,7 +3897,7 @@ namespace Google.Cloud.Vision.V1
         /// </param>
         /// <param name="callSettings">If not null, applies overrides to this RPC call.</param>
         /// <returns>A Task containing the RPC response.</returns>
-        public virtual stt::Task<lro::Operation<ImportProductSetsResponse, BatchOperationMetadata>> ImportProductSetsAsync(LocationName parent, ImportProductSetsInputConfig inputConfig, gaxgrpc::CallSettings callSettings = null) =>
+        public virtual stt::Task<lro::Operation<ImportProductSetsResponse, BatchOperationMetadata>> ImportProductSetsAsync(gagr::LocationName parent, ImportProductSetsInputConfig inputConfig, gaxgrpc::CallSettings callSettings = null) =>
             ImportProductSetsAsync(new ImportProductSetsRequest
             {
                 ParentAsLocationName = gax::GaxPreconditions.CheckNotNull(parent, nameof(parent)),
@@ -4001,7 +3927,7 @@ namespace Google.Cloud.Vision.V1
         /// </param>
         /// <param name="cancellationToken">A <see cref="st::CancellationToken"/> to use for this RPC.</param>
         /// <returns>A Task containing the RPC response.</returns>
-        public virtual stt::Task<lro::Operation<ImportProductSetsResponse, BatchOperationMetadata>> ImportProductSetsAsync(LocationName parent, ImportProductSetsInputConfig inputConfig, st::CancellationToken cancellationToken) =>
+        public virtual stt::Task<lro::Operation<ImportProductSetsResponse, BatchOperationMetadata>> ImportProductSetsAsync(gagr::LocationName parent, ImportProductSetsInputConfig inputConfig, st::CancellationToken cancellationToken) =>
             ImportProductSetsAsync(parent, inputConfig, gaxgrpc::CallSettings.FromCancellationToken(cancellationToken));
 
         /// <summary>
@@ -4273,7 +4199,7 @@ namespace Google.Cloud.Vision.V1
         /// </param>
         /// <param name="callSettings">If not null, applies overrides to this RPC call.</param>
         /// <returns>The RPC response.</returns>
-        public virtual lro::Operation<wkt::Empty, BatchOperationMetadata> PurgeProducts(LocationName parent, gaxgrpc::CallSettings callSettings = null) =>
+        public virtual lro::Operation<wkt::Empty, BatchOperationMetadata> PurgeProducts(gagr::LocationName parent, gaxgrpc::CallSettings callSettings = null) =>
             PurgeProducts(new PurgeProductsRequest
             {
                 ParentAsLocationName = gax::GaxPreconditions.CheckNotNull(parent, nameof(parent)),
@@ -4312,7 +4238,7 @@ namespace Google.Cloud.Vision.V1
         /// </param>
         /// <param name="callSettings">If not null, applies overrides to this RPC call.</param>
         /// <returns>A Task containing the RPC response.</returns>
-        public virtual stt::Task<lro::Operation<wkt::Empty, BatchOperationMetadata>> PurgeProductsAsync(LocationName parent, gaxgrpc::CallSettings callSettings = null) =>
+        public virtual stt::Task<lro::Operation<wkt::Empty, BatchOperationMetadata>> PurgeProductsAsync(gagr::LocationName parent, gaxgrpc::CallSettings callSettings = null) =>
             PurgeProductsAsync(new PurgeProductsRequest
             {
                 ParentAsLocationName = gax::GaxPreconditions.CheckNotNull(parent, nameof(parent)),
@@ -4351,11 +4277,27 @@ namespace Google.Cloud.Vision.V1
         /// </param>
         /// <param name="cancellationToken">A <see cref="st::CancellationToken"/> to use for this RPC.</param>
         /// <returns>A Task containing the RPC response.</returns>
-        public virtual stt::Task<lro::Operation<wkt::Empty, BatchOperationMetadata>> PurgeProductsAsync(LocationName parent, st::CancellationToken cancellationToken) =>
+        public virtual stt::Task<lro::Operation<wkt::Empty, BatchOperationMetadata>> PurgeProductsAsync(gagr::LocationName parent, st::CancellationToken cancellationToken) =>
             PurgeProductsAsync(parent, gaxgrpc::CallSettings.FromCancellationToken(cancellationToken));
     }
 
     /// <summary>ProductSearch client wrapper implementation, for convenient use.</summary>
+    /// <remarks>
+    /// Manages Products and ProductSets of reference images for use in product
+    /// search. It uses the following resource model:
+    /// 
+    /// - The API has a collection of [ProductSet][google.cloud.vision.v1.ProductSet] resources, named
+    /// `projects/*/locations/*/productSets/*`, which acts as a way to put different
+    /// products into groups to limit identification.
+    /// 
+    /// In parallel,
+    /// 
+    /// - The API has a collection of [Product][google.cloud.vision.v1.Product] resources, named
+    /// `projects/*/locations/*/products/*`
+    /// 
+    /// - Each [Product][google.cloud.vision.v1.Product] has a collection of [ReferenceImage][google.cloud.vision.v1.ReferenceImage] resources, named
+    /// `projects/*/locations/*/products/*/referenceImages/*`
+    /// </remarks>
     public sealed partial class ProductSearchClientImpl : ProductSearchClient
     {
         private readonly gaxgrpc::ApiCall<CreateProductSetRequest, ProductSet> _callCreateProductSet;
@@ -4408,61 +4350,61 @@ namespace Google.Cloud.Vision.V1
             gaxgrpc::ClientHelper clientHelper = new gaxgrpc::ClientHelper(effectiveSettings);
             ImportProductSetsOperationsClient = new lro::OperationsClientImpl(grpcClient.CreateOperationsClient(), effectiveSettings.ImportProductSetsOperationsSettings);
             PurgeProductsOperationsClient = new lro::OperationsClientImpl(grpcClient.CreateOperationsClient(), effectiveSettings.PurgeProductsOperationsSettings);
-            _callCreateProductSet = clientHelper.BuildApiCall<CreateProductSetRequest, ProductSet>(grpcClient.CreateProductSetAsync, grpcClient.CreateProductSet, effectiveSettings.CreateProductSetSettings).WithCallSettingsOverlay(request => gaxgrpc::CallSettings.FromHeader("x-goog-request-params", $"parent={(sysnet::WebUtility.UrlEncode(request.Parent))}"));
+            _callCreateProductSet = clientHelper.BuildApiCall<CreateProductSetRequest, ProductSet>(grpcClient.CreateProductSetAsync, grpcClient.CreateProductSet, effectiveSettings.CreateProductSetSettings).WithGoogleRequestParam("parent", request => request.Parent);
             Modify_ApiCall(ref _callCreateProductSet);
             Modify_CreateProductSetApiCall(ref _callCreateProductSet);
-            _callListProductSets = clientHelper.BuildApiCall<ListProductSetsRequest, ListProductSetsResponse>(grpcClient.ListProductSetsAsync, grpcClient.ListProductSets, effectiveSettings.ListProductSetsSettings).WithCallSettingsOverlay(request => gaxgrpc::CallSettings.FromHeader("x-goog-request-params", $"parent={(sysnet::WebUtility.UrlEncode(request.Parent))}"));
+            _callListProductSets = clientHelper.BuildApiCall<ListProductSetsRequest, ListProductSetsResponse>(grpcClient.ListProductSetsAsync, grpcClient.ListProductSets, effectiveSettings.ListProductSetsSettings).WithGoogleRequestParam("parent", request => request.Parent);
             Modify_ApiCall(ref _callListProductSets);
             Modify_ListProductSetsApiCall(ref _callListProductSets);
-            _callGetProductSet = clientHelper.BuildApiCall<GetProductSetRequest, ProductSet>(grpcClient.GetProductSetAsync, grpcClient.GetProductSet, effectiveSettings.GetProductSetSettings).WithCallSettingsOverlay(request => gaxgrpc::CallSettings.FromHeader("x-goog-request-params", $"name={(sysnet::WebUtility.UrlEncode(request.Name))}"));
+            _callGetProductSet = clientHelper.BuildApiCall<GetProductSetRequest, ProductSet>(grpcClient.GetProductSetAsync, grpcClient.GetProductSet, effectiveSettings.GetProductSetSettings).WithGoogleRequestParam("name", request => request.Name);
             Modify_ApiCall(ref _callGetProductSet);
             Modify_GetProductSetApiCall(ref _callGetProductSet);
-            _callUpdateProductSet = clientHelper.BuildApiCall<UpdateProductSetRequest, ProductSet>(grpcClient.UpdateProductSetAsync, grpcClient.UpdateProductSet, effectiveSettings.UpdateProductSetSettings).WithCallSettingsOverlay(request => gaxgrpc::CallSettings.FromHeader("x-goog-request-params", $"product_set.name={(sysnet::WebUtility.UrlEncode(request.ProductSet.Name))}"));
+            _callUpdateProductSet = clientHelper.BuildApiCall<UpdateProductSetRequest, ProductSet>(grpcClient.UpdateProductSetAsync, grpcClient.UpdateProductSet, effectiveSettings.UpdateProductSetSettings).WithGoogleRequestParam("product_set.name", request => request.ProductSet?.Name);
             Modify_ApiCall(ref _callUpdateProductSet);
             Modify_UpdateProductSetApiCall(ref _callUpdateProductSet);
-            _callDeleteProductSet = clientHelper.BuildApiCall<DeleteProductSetRequest, wkt::Empty>(grpcClient.DeleteProductSetAsync, grpcClient.DeleteProductSet, effectiveSettings.DeleteProductSetSettings).WithCallSettingsOverlay(request => gaxgrpc::CallSettings.FromHeader("x-goog-request-params", $"name={(sysnet::WebUtility.UrlEncode(request.Name))}"));
+            _callDeleteProductSet = clientHelper.BuildApiCall<DeleteProductSetRequest, wkt::Empty>(grpcClient.DeleteProductSetAsync, grpcClient.DeleteProductSet, effectiveSettings.DeleteProductSetSettings).WithGoogleRequestParam("name", request => request.Name);
             Modify_ApiCall(ref _callDeleteProductSet);
             Modify_DeleteProductSetApiCall(ref _callDeleteProductSet);
-            _callCreateProduct = clientHelper.BuildApiCall<CreateProductRequest, Product>(grpcClient.CreateProductAsync, grpcClient.CreateProduct, effectiveSettings.CreateProductSettings).WithCallSettingsOverlay(request => gaxgrpc::CallSettings.FromHeader("x-goog-request-params", $"parent={(sysnet::WebUtility.UrlEncode(request.Parent))}"));
+            _callCreateProduct = clientHelper.BuildApiCall<CreateProductRequest, Product>(grpcClient.CreateProductAsync, grpcClient.CreateProduct, effectiveSettings.CreateProductSettings).WithGoogleRequestParam("parent", request => request.Parent);
             Modify_ApiCall(ref _callCreateProduct);
             Modify_CreateProductApiCall(ref _callCreateProduct);
-            _callListProducts = clientHelper.BuildApiCall<ListProductsRequest, ListProductsResponse>(grpcClient.ListProductsAsync, grpcClient.ListProducts, effectiveSettings.ListProductsSettings).WithCallSettingsOverlay(request => gaxgrpc::CallSettings.FromHeader("x-goog-request-params", $"parent={(sysnet::WebUtility.UrlEncode(request.Parent))}"));
+            _callListProducts = clientHelper.BuildApiCall<ListProductsRequest, ListProductsResponse>(grpcClient.ListProductsAsync, grpcClient.ListProducts, effectiveSettings.ListProductsSettings).WithGoogleRequestParam("parent", request => request.Parent);
             Modify_ApiCall(ref _callListProducts);
             Modify_ListProductsApiCall(ref _callListProducts);
-            _callGetProduct = clientHelper.BuildApiCall<GetProductRequest, Product>(grpcClient.GetProductAsync, grpcClient.GetProduct, effectiveSettings.GetProductSettings).WithCallSettingsOverlay(request => gaxgrpc::CallSettings.FromHeader("x-goog-request-params", $"name={(sysnet::WebUtility.UrlEncode(request.Name))}"));
+            _callGetProduct = clientHelper.BuildApiCall<GetProductRequest, Product>(grpcClient.GetProductAsync, grpcClient.GetProduct, effectiveSettings.GetProductSettings).WithGoogleRequestParam("name", request => request.Name);
             Modify_ApiCall(ref _callGetProduct);
             Modify_GetProductApiCall(ref _callGetProduct);
-            _callUpdateProduct = clientHelper.BuildApiCall<UpdateProductRequest, Product>(grpcClient.UpdateProductAsync, grpcClient.UpdateProduct, effectiveSettings.UpdateProductSettings).WithCallSettingsOverlay(request => gaxgrpc::CallSettings.FromHeader("x-goog-request-params", $"product.name={(sysnet::WebUtility.UrlEncode(request.Product.Name))}"));
+            _callUpdateProduct = clientHelper.BuildApiCall<UpdateProductRequest, Product>(grpcClient.UpdateProductAsync, grpcClient.UpdateProduct, effectiveSettings.UpdateProductSettings).WithGoogleRequestParam("product.name", request => request.Product?.Name);
             Modify_ApiCall(ref _callUpdateProduct);
             Modify_UpdateProductApiCall(ref _callUpdateProduct);
-            _callDeleteProduct = clientHelper.BuildApiCall<DeleteProductRequest, wkt::Empty>(grpcClient.DeleteProductAsync, grpcClient.DeleteProduct, effectiveSettings.DeleteProductSettings).WithCallSettingsOverlay(request => gaxgrpc::CallSettings.FromHeader("x-goog-request-params", $"name={(sysnet::WebUtility.UrlEncode(request.Name))}"));
+            _callDeleteProduct = clientHelper.BuildApiCall<DeleteProductRequest, wkt::Empty>(grpcClient.DeleteProductAsync, grpcClient.DeleteProduct, effectiveSettings.DeleteProductSettings).WithGoogleRequestParam("name", request => request.Name);
             Modify_ApiCall(ref _callDeleteProduct);
             Modify_DeleteProductApiCall(ref _callDeleteProduct);
-            _callCreateReferenceImage = clientHelper.BuildApiCall<CreateReferenceImageRequest, ReferenceImage>(grpcClient.CreateReferenceImageAsync, grpcClient.CreateReferenceImage, effectiveSettings.CreateReferenceImageSettings).WithCallSettingsOverlay(request => gaxgrpc::CallSettings.FromHeader("x-goog-request-params", $"parent={(sysnet::WebUtility.UrlEncode(request.Parent))}"));
+            _callCreateReferenceImage = clientHelper.BuildApiCall<CreateReferenceImageRequest, ReferenceImage>(grpcClient.CreateReferenceImageAsync, grpcClient.CreateReferenceImage, effectiveSettings.CreateReferenceImageSettings).WithGoogleRequestParam("parent", request => request.Parent);
             Modify_ApiCall(ref _callCreateReferenceImage);
             Modify_CreateReferenceImageApiCall(ref _callCreateReferenceImage);
-            _callDeleteReferenceImage = clientHelper.BuildApiCall<DeleteReferenceImageRequest, wkt::Empty>(grpcClient.DeleteReferenceImageAsync, grpcClient.DeleteReferenceImage, effectiveSettings.DeleteReferenceImageSettings).WithCallSettingsOverlay(request => gaxgrpc::CallSettings.FromHeader("x-goog-request-params", $"name={(sysnet::WebUtility.UrlEncode(request.Name))}"));
+            _callDeleteReferenceImage = clientHelper.BuildApiCall<DeleteReferenceImageRequest, wkt::Empty>(grpcClient.DeleteReferenceImageAsync, grpcClient.DeleteReferenceImage, effectiveSettings.DeleteReferenceImageSettings).WithGoogleRequestParam("name", request => request.Name);
             Modify_ApiCall(ref _callDeleteReferenceImage);
             Modify_DeleteReferenceImageApiCall(ref _callDeleteReferenceImage);
-            _callListReferenceImages = clientHelper.BuildApiCall<ListReferenceImagesRequest, ListReferenceImagesResponse>(grpcClient.ListReferenceImagesAsync, grpcClient.ListReferenceImages, effectiveSettings.ListReferenceImagesSettings).WithCallSettingsOverlay(request => gaxgrpc::CallSettings.FromHeader("x-goog-request-params", $"parent={(sysnet::WebUtility.UrlEncode(request.Parent))}"));
+            _callListReferenceImages = clientHelper.BuildApiCall<ListReferenceImagesRequest, ListReferenceImagesResponse>(grpcClient.ListReferenceImagesAsync, grpcClient.ListReferenceImages, effectiveSettings.ListReferenceImagesSettings).WithGoogleRequestParam("parent", request => request.Parent);
             Modify_ApiCall(ref _callListReferenceImages);
             Modify_ListReferenceImagesApiCall(ref _callListReferenceImages);
-            _callGetReferenceImage = clientHelper.BuildApiCall<GetReferenceImageRequest, ReferenceImage>(grpcClient.GetReferenceImageAsync, grpcClient.GetReferenceImage, effectiveSettings.GetReferenceImageSettings).WithCallSettingsOverlay(request => gaxgrpc::CallSettings.FromHeader("x-goog-request-params", $"name={(sysnet::WebUtility.UrlEncode(request.Name))}"));
+            _callGetReferenceImage = clientHelper.BuildApiCall<GetReferenceImageRequest, ReferenceImage>(grpcClient.GetReferenceImageAsync, grpcClient.GetReferenceImage, effectiveSettings.GetReferenceImageSettings).WithGoogleRequestParam("name", request => request.Name);
             Modify_ApiCall(ref _callGetReferenceImage);
             Modify_GetReferenceImageApiCall(ref _callGetReferenceImage);
-            _callAddProductToProductSet = clientHelper.BuildApiCall<AddProductToProductSetRequest, wkt::Empty>(grpcClient.AddProductToProductSetAsync, grpcClient.AddProductToProductSet, effectiveSettings.AddProductToProductSetSettings).WithCallSettingsOverlay(request => gaxgrpc::CallSettings.FromHeader("x-goog-request-params", $"name={(sysnet::WebUtility.UrlEncode(request.Name))}"));
+            _callAddProductToProductSet = clientHelper.BuildApiCall<AddProductToProductSetRequest, wkt::Empty>(grpcClient.AddProductToProductSetAsync, grpcClient.AddProductToProductSet, effectiveSettings.AddProductToProductSetSettings).WithGoogleRequestParam("name", request => request.Name);
             Modify_ApiCall(ref _callAddProductToProductSet);
             Modify_AddProductToProductSetApiCall(ref _callAddProductToProductSet);
-            _callRemoveProductFromProductSet = clientHelper.BuildApiCall<RemoveProductFromProductSetRequest, wkt::Empty>(grpcClient.RemoveProductFromProductSetAsync, grpcClient.RemoveProductFromProductSet, effectiveSettings.RemoveProductFromProductSetSettings).WithCallSettingsOverlay(request => gaxgrpc::CallSettings.FromHeader("x-goog-request-params", $"name={(sysnet::WebUtility.UrlEncode(request.Name))}"));
+            _callRemoveProductFromProductSet = clientHelper.BuildApiCall<RemoveProductFromProductSetRequest, wkt::Empty>(grpcClient.RemoveProductFromProductSetAsync, grpcClient.RemoveProductFromProductSet, effectiveSettings.RemoveProductFromProductSetSettings).WithGoogleRequestParam("name", request => request.Name);
             Modify_ApiCall(ref _callRemoveProductFromProductSet);
             Modify_RemoveProductFromProductSetApiCall(ref _callRemoveProductFromProductSet);
-            _callListProductsInProductSet = clientHelper.BuildApiCall<ListProductsInProductSetRequest, ListProductsInProductSetResponse>(grpcClient.ListProductsInProductSetAsync, grpcClient.ListProductsInProductSet, effectiveSettings.ListProductsInProductSetSettings).WithCallSettingsOverlay(request => gaxgrpc::CallSettings.FromHeader("x-goog-request-params", $"name={(sysnet::WebUtility.UrlEncode(request.Name))}"));
+            _callListProductsInProductSet = clientHelper.BuildApiCall<ListProductsInProductSetRequest, ListProductsInProductSetResponse>(grpcClient.ListProductsInProductSetAsync, grpcClient.ListProductsInProductSet, effectiveSettings.ListProductsInProductSetSettings).WithGoogleRequestParam("name", request => request.Name);
             Modify_ApiCall(ref _callListProductsInProductSet);
             Modify_ListProductsInProductSetApiCall(ref _callListProductsInProductSet);
-            _callImportProductSets = clientHelper.BuildApiCall<ImportProductSetsRequest, lro::Operation>(grpcClient.ImportProductSetsAsync, grpcClient.ImportProductSets, effectiveSettings.ImportProductSetsSettings).WithCallSettingsOverlay(request => gaxgrpc::CallSettings.FromHeader("x-goog-request-params", $"parent={(sysnet::WebUtility.UrlEncode(request.Parent))}"));
+            _callImportProductSets = clientHelper.BuildApiCall<ImportProductSetsRequest, lro::Operation>(grpcClient.ImportProductSetsAsync, grpcClient.ImportProductSets, effectiveSettings.ImportProductSetsSettings).WithGoogleRequestParam("parent", request => request.Parent);
             Modify_ApiCall(ref _callImportProductSets);
             Modify_ImportProductSetsApiCall(ref _callImportProductSets);
-            _callPurgeProducts = clientHelper.BuildApiCall<PurgeProductsRequest, lro::Operation>(grpcClient.PurgeProductsAsync, grpcClient.PurgeProducts, effectiveSettings.PurgeProductsSettings).WithCallSettingsOverlay(request => gaxgrpc::CallSettings.FromHeader("x-goog-request-params", $"parent={(sysnet::WebUtility.UrlEncode(request.Parent))}"));
+            _callPurgeProducts = clientHelper.BuildApiCall<PurgeProductsRequest, lro::Operation>(grpcClient.PurgeProductsAsync, grpcClient.PurgeProducts, effectiveSettings.PurgeProductsSettings).WithGoogleRequestParam("parent", request => request.Parent);
             Modify_ApiCall(ref _callPurgeProducts);
             Modify_PurgeProductsApiCall(ref _callPurgeProducts);
             OnConstruction(grpcClient, effectiveSettings, clientHelper);

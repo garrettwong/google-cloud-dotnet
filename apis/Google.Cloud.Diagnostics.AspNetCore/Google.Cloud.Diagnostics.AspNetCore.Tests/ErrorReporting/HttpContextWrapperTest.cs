@@ -15,7 +15,13 @@
 using Microsoft.AspNetCore.Http;
 using Xunit;
 
+#if NETCOREAPP3_1
+namespace Google.Cloud.Diagnostics.AspNetCore3.Tests
+#elif NETCOREAPP2_1 || NET461
 namespace Google.Cloud.Diagnostics.AspNetCore.Tests
+#else
+#error unknown target framework
+#endif
 {
     public class HttpContextWrapperTest
     {
@@ -49,6 +55,15 @@ namespace Google.Cloud.Diagnostics.AspNetCore.Tests
             Assert.Equal("", wrapper.GetHttpMethod());
             Assert.Equal("http://google.com", wrapper.GetUri());
             Assert.Equal("", wrapper.GetUserAgent());
+        }
+
+        [Fact]
+        public void NoContextToWrap()
+        {
+            var wrapper = new HttpContextWrapper(null);
+            Assert.Null(wrapper.GetHttpMethod());
+            Assert.Null(wrapper.GetUri());
+            Assert.Null(wrapper.GetUserAgent());
         }
     }
 }

@@ -25,43 +25,52 @@ namespace Google.Cloud.Bigtable.Admin.V2 {
       byte[] descriptorData = global::System.Convert.FromBase64String(
           string.Concat(
             "Cidnb29nbGUvYmlndGFibGUvYWRtaW4vdjIvaW5zdGFuY2UucHJvdG8SGGdv",
-            "b2dsZS5iaWd0YWJsZS5hZG1pbi52MhocZ29vZ2xlL2FwaS9hbm5vdGF0aW9u",
-            "cy5wcm90bxolZ29vZ2xlL2JpZ3RhYmxlL2FkbWluL3YyL2NvbW1vbi5wcm90",
-            "byKDAwoISW5zdGFuY2USDAoEbmFtZRgBIAEoCRIUCgxkaXNwbGF5X25hbWUY",
-            "AiABKAkSNwoFc3RhdGUYAyABKA4yKC5nb29nbGUuYmlndGFibGUuYWRtaW4u",
-            "djIuSW5zdGFuY2UuU3RhdGUSNQoEdHlwZRgEIAEoDjInLmdvb2dsZS5iaWd0",
-            "YWJsZS5hZG1pbi52Mi5JbnN0YW5jZS5UeXBlEj4KBmxhYmVscxgFIAMoCzIu",
-            "Lmdvb2dsZS5iaWd0YWJsZS5hZG1pbi52Mi5JbnN0YW5jZS5MYWJlbHNFbnRy",
-            "eRotCgtMYWJlbHNFbnRyeRILCgNrZXkYASABKAkSDQoFdmFsdWUYAiABKAk6",
-            "AjgBIjUKBVN0YXRlEhMKD1NUQVRFX05PVF9LTk9XThAAEgkKBVJFQURZEAES",
-            "DAoIQ1JFQVRJTkcQAiI9CgRUeXBlEhQKEFRZUEVfVU5TUEVDSUZJRUQQABIO",
-            "CgpQUk9EVUNUSU9OEAESDwoLREVWRUxPUE1FTlQQAiKOAgoHQ2x1c3RlchIM",
-            "CgRuYW1lGAEgASgJEhAKCGxvY2F0aW9uGAIgASgJEjYKBXN0YXRlGAMgASgO",
-            "MicuZ29vZ2xlLmJpZ3RhYmxlLmFkbWluLnYyLkNsdXN0ZXIuU3RhdGUSEwoL",
-            "c2VydmVfbm9kZXMYBCABKAUSQwoUZGVmYXVsdF9zdG9yYWdlX3R5cGUYBSAB",
-            "KA4yJS5nb29nbGUuYmlndGFibGUuYWRtaW4udjIuU3RvcmFnZVR5cGUiUQoF",
-            "U3RhdGUSEwoPU1RBVEVfTk9UX0tOT1dOEAASCQoFUkVBRFkQARIMCghDUkVB",
-            "VElORxACEgwKCFJFU0laSU5HEAMSDAoIRElTQUJMRUQQBCKCAwoKQXBwUHJv",
-            "ZmlsZRIMCgRuYW1lGAEgASgJEgwKBGV0YWcYAiABKAkSEwoLZGVzY3JpcHRp",
-            "b24YAyABKAkSZwodbXVsdGlfY2x1c3Rlcl9yb3V0aW5nX3VzZV9hbnkYBSAB",
-            "KAsyPi5nb29nbGUuYmlndGFibGUuYWRtaW4udjIuQXBwUHJvZmlsZS5NdWx0",
-            "aUNsdXN0ZXJSb3V0aW5nVXNlQW55SAASWwoWc2luZ2xlX2NsdXN0ZXJfcm91",
-            "dGluZxgGIAEoCzI5Lmdvb2dsZS5iaWd0YWJsZS5hZG1pbi52Mi5BcHBQcm9m",
-            "aWxlLlNpbmdsZUNsdXN0ZXJSb3V0aW5nSAAaGwoZTXVsdGlDbHVzdGVyUm91",
-            "dGluZ1VzZUFueRpOChRTaW5nbGVDbHVzdGVyUm91dGluZxISCgpjbHVzdGVy",
-            "X2lkGAEgASgJEiIKGmFsbG93X3RyYW5zYWN0aW9uYWxfd3JpdGVzGAIgASgI",
-            "QhAKDnJvdXRpbmdfcG9saWN5QrABChxjb20uZ29vZ2xlLmJpZ3RhYmxlLmFk",
-            "bWluLnYyQg1JbnN0YW5jZVByb3RvUAFaPWdvb2dsZS5nb2xhbmcub3JnL2dl",
-            "bnByb3RvL2dvb2dsZWFwaXMvYmlndGFibGUvYWRtaW4vdjI7YWRtaW6qAh5H",
-            "b29nbGUuQ2xvdWQuQmlndGFibGUuQWRtaW4uVjLKAh5Hb29nbGVcQ2xvdWRc",
-            "QmlndGFibGVcQWRtaW5cVjJiBnByb3RvMw=="));
+            "b2dsZS5iaWd0YWJsZS5hZG1pbi52MhofZ29vZ2xlL2FwaS9maWVsZF9iZWhh",
+            "dmlvci5wcm90bxoZZ29vZ2xlL2FwaS9yZXNvdXJjZS5wcm90bxolZ29vZ2xl",
+            "L2JpZ3RhYmxlL2FkbWluL3YyL2NvbW1vbi5wcm90byLdAwoISW5zdGFuY2US",
+            "EQoEbmFtZRgBIAEoCUID4EEDEhkKDGRpc3BsYXlfbmFtZRgCIAEoCUID4EEC",
+            "EjcKBXN0YXRlGAMgASgOMiguZ29vZ2xlLmJpZ3RhYmxlLmFkbWluLnYyLklu",
+            "c3RhbmNlLlN0YXRlEjUKBHR5cGUYBCABKA4yJy5nb29nbGUuYmlndGFibGUu",
+            "YWRtaW4udjIuSW5zdGFuY2UuVHlwZRI+CgZsYWJlbHMYBSADKAsyLi5nb29n",
+            "bGUuYmlndGFibGUuYWRtaW4udjIuSW5zdGFuY2UuTGFiZWxzRW50cnkaLQoL",
+            "TGFiZWxzRW50cnkSCwoDa2V5GAEgASgJEg0KBXZhbHVlGAIgASgJOgI4ASI1",
+            "CgVTdGF0ZRITCg9TVEFURV9OT1RfS05PV04QABIJCgVSRUFEWRABEgwKCENS",
+            "RUFUSU5HEAIiPQoEVHlwZRIUChBUWVBFX1VOU1BFQ0lGSUVEEAASDgoKUFJP",
+            "RFVDVElPThABEg8KC0RFVkVMT1BNRU5UEAI6TupBSwogYmlndGFibGUuZ29v",
+            "Z2xlYXBpcy5jb20vSW5zdGFuY2USJ3Byb2plY3RzL3twcm9qZWN0fS9pbnN0",
+            "YW5jZXMve2luc3RhbmNlfSKnAwoHQ2x1c3RlchIRCgRuYW1lGAEgASgJQgPg",
+            "QQMSOAoIbG9jYXRpb24YAiABKAlCJvpBIwohbG9jYXRpb25zLmdvb2dsZWFw",
+            "aXMuY29tL0xvY2F0aW9uEjsKBXN0YXRlGAMgASgOMicuZ29vZ2xlLmJpZ3Rh",
+            "YmxlLmFkbWluLnYyLkNsdXN0ZXIuU3RhdGVCA+BBAxIYCgtzZXJ2ZV9ub2Rl",
+            "cxgEIAEoBUID4EECEkMKFGRlZmF1bHRfc3RvcmFnZV90eXBlGAUgASgOMiUu",
+            "Z29vZ2xlLmJpZ3RhYmxlLmFkbWluLnYyLlN0b3JhZ2VUeXBlIlEKBVN0YXRl",
+            "EhMKD1NUQVRFX05PVF9LTk9XThAAEgkKBVJFQURZEAESDAoIQ1JFQVRJTkcQ",
+            "AhIMCghSRVNJWklORxADEgwKCERJU0FCTEVEEAQ6YOpBXQofYmlndGFibGUu",
+            "Z29vZ2xlYXBpcy5jb20vQ2x1c3RlchI6cHJvamVjdHMve3Byb2plY3R9L2lu",
+            "c3RhbmNlcy97aW5zdGFuY2V9L2NsdXN0ZXJzL3tjbHVzdGVyfSLuAwoKQXBw",
+            "UHJvZmlsZRIMCgRuYW1lGAEgASgJEgwKBGV0YWcYAiABKAkSEwoLZGVzY3Jp",
+            "cHRpb24YAyABKAkSZwodbXVsdGlfY2x1c3Rlcl9yb3V0aW5nX3VzZV9hbnkY",
+            "BSABKAsyPi5nb29nbGUuYmlndGFibGUuYWRtaW4udjIuQXBwUHJvZmlsZS5N",
+            "dWx0aUNsdXN0ZXJSb3V0aW5nVXNlQW55SAASWwoWc2luZ2xlX2NsdXN0ZXJf",
+            "cm91dGluZxgGIAEoCzI5Lmdvb2dsZS5iaWd0YWJsZS5hZG1pbi52Mi5BcHBQ",
+            "cm9maWxlLlNpbmdsZUNsdXN0ZXJSb3V0aW5nSAAaGwoZTXVsdGlDbHVzdGVy",
+            "Um91dGluZ1VzZUFueRpOChRTaW5nbGVDbHVzdGVyUm91dGluZxISCgpjbHVz",
+            "dGVyX2lkGAEgASgJEiIKGmFsbG93X3RyYW5zYWN0aW9uYWxfd3JpdGVzGAIg",
+            "ASgIOmrqQWcKImJpZ3RhYmxlLmdvb2dsZWFwaXMuY29tL0FwcFByb2ZpbGUS",
+            "QXByb2plY3RzL3twcm9qZWN0fS9pbnN0YW5jZXMve2luc3RhbmNlfS9hcHBQ",
+            "cm9maWxlcy97YXBwX3Byb2ZpbGV9QhAKDnJvdXRpbmdfcG9saWN5QtUBChxj",
+            "b20uZ29vZ2xlLmJpZ3RhYmxlLmFkbWluLnYyQg1JbnN0YW5jZVByb3RvUAFa",
+            "PWdvb2dsZS5nb2xhbmcub3JnL2dlbnByb3RvL2dvb2dsZWFwaXMvYmlndGFi",
+            "bGUvYWRtaW4vdjI7YWRtaW6qAh5Hb29nbGUuQ2xvdWQuQmlndGFibGUuQWRt",
+            "aW4uVjLKAh5Hb29nbGVcQ2xvdWRcQmlndGFibGVcQWRtaW5cVjLqAiJHb29n",
+            "bGU6OkNsb3VkOjpCaWd0YWJsZTo6QWRtaW46OlYyYgZwcm90bzM="));
       descriptor = pbr::FileDescriptor.FromGeneratedCode(descriptorData,
-          new pbr::FileDescriptor[] { global::Google.Api.AnnotationsReflection.Descriptor, global::Google.Cloud.Bigtable.Admin.V2.CommonReflection.Descriptor, },
-          new pbr::GeneratedClrTypeInfo(null, new pbr::GeneratedClrTypeInfo[] {
-            new pbr::GeneratedClrTypeInfo(typeof(global::Google.Cloud.Bigtable.Admin.V2.Instance), global::Google.Cloud.Bigtable.Admin.V2.Instance.Parser, new[]{ "Name", "DisplayName", "State", "Type", "Labels" }, null, new[]{ typeof(global::Google.Cloud.Bigtable.Admin.V2.Instance.Types.State), typeof(global::Google.Cloud.Bigtable.Admin.V2.Instance.Types.Type) }, new pbr::GeneratedClrTypeInfo[] { null, }),
-            new pbr::GeneratedClrTypeInfo(typeof(global::Google.Cloud.Bigtable.Admin.V2.Cluster), global::Google.Cloud.Bigtable.Admin.V2.Cluster.Parser, new[]{ "Name", "Location", "State", "ServeNodes", "DefaultStorageType" }, null, new[]{ typeof(global::Google.Cloud.Bigtable.Admin.V2.Cluster.Types.State) }, null),
-            new pbr::GeneratedClrTypeInfo(typeof(global::Google.Cloud.Bigtable.Admin.V2.AppProfile), global::Google.Cloud.Bigtable.Admin.V2.AppProfile.Parser, new[]{ "Name", "Etag", "Description", "MultiClusterRoutingUseAny", "SingleClusterRouting" }, new[]{ "RoutingPolicy" }, null, new pbr::GeneratedClrTypeInfo[] { new pbr::GeneratedClrTypeInfo(typeof(global::Google.Cloud.Bigtable.Admin.V2.AppProfile.Types.MultiClusterRoutingUseAny), global::Google.Cloud.Bigtable.Admin.V2.AppProfile.Types.MultiClusterRoutingUseAny.Parser, null, null, null, null),
-            new pbr::GeneratedClrTypeInfo(typeof(global::Google.Cloud.Bigtable.Admin.V2.AppProfile.Types.SingleClusterRouting), global::Google.Cloud.Bigtable.Admin.V2.AppProfile.Types.SingleClusterRouting.Parser, new[]{ "ClusterId", "AllowTransactionalWrites" }, null, null, null)})
+          new pbr::FileDescriptor[] { global::Google.Api.FieldBehaviorReflection.Descriptor, global::Google.Api.ResourceReflection.Descriptor, global::Google.Cloud.Bigtable.Admin.V2.CommonReflection.Descriptor, },
+          new pbr::GeneratedClrTypeInfo(null, null, new pbr::GeneratedClrTypeInfo[] {
+            new pbr::GeneratedClrTypeInfo(typeof(global::Google.Cloud.Bigtable.Admin.V2.Instance), global::Google.Cloud.Bigtable.Admin.V2.Instance.Parser, new[]{ "Name", "DisplayName", "State", "Type", "Labels" }, null, new[]{ typeof(global::Google.Cloud.Bigtable.Admin.V2.Instance.Types.State), typeof(global::Google.Cloud.Bigtable.Admin.V2.Instance.Types.Type) }, null, new pbr::GeneratedClrTypeInfo[] { null, }),
+            new pbr::GeneratedClrTypeInfo(typeof(global::Google.Cloud.Bigtable.Admin.V2.Cluster), global::Google.Cloud.Bigtable.Admin.V2.Cluster.Parser, new[]{ "Name", "Location", "State", "ServeNodes", "DefaultStorageType" }, null, new[]{ typeof(global::Google.Cloud.Bigtable.Admin.V2.Cluster.Types.State) }, null, null),
+            new pbr::GeneratedClrTypeInfo(typeof(global::Google.Cloud.Bigtable.Admin.V2.AppProfile), global::Google.Cloud.Bigtable.Admin.V2.AppProfile.Parser, new[]{ "Name", "Etag", "Description", "MultiClusterRoutingUseAny", "SingleClusterRouting" }, new[]{ "RoutingPolicy" }, null, null, new pbr::GeneratedClrTypeInfo[] { new pbr::GeneratedClrTypeInfo(typeof(global::Google.Cloud.Bigtable.Admin.V2.AppProfile.Types.MultiClusterRoutingUseAny), global::Google.Cloud.Bigtable.Admin.V2.AppProfile.Types.MultiClusterRoutingUseAny.Parser, null, null, null, null, null),
+            new pbr::GeneratedClrTypeInfo(typeof(global::Google.Cloud.Bigtable.Admin.V2.AppProfile.Types.SingleClusterRouting), global::Google.Cloud.Bigtable.Admin.V2.AppProfile.Types.SingleClusterRouting.Parser, new[]{ "ClusterId", "AllowTransactionalWrites" }, null, null, null, null)})
           }));
     }
     #endregion
@@ -71,10 +80,14 @@ namespace Google.Cloud.Bigtable.Admin.V2 {
   /// <summary>
   /// A collection of Bigtable [Tables][google.bigtable.admin.v2.Table] and
   /// the resources that serve them.
-  /// All tables in an instance are served from a single
-  /// [Cluster][google.bigtable.admin.v2.Cluster].
+  /// All tables in an instance are served from all
+  /// [Clusters][google.bigtable.admin.v2.Cluster] in the instance.
   /// </summary>
-  public sealed partial class Instance : pb::IMessage<Instance> {
+  public sealed partial class Instance : pb::IMessage<Instance>
+  #if !GOOGLE_PROTOBUF_REFSTRUCT_COMPATIBILITY_MODE
+      , pb::IBufferMessage
+  #endif
+  {
     private static readonly pb::MessageParser<Instance> _parser = new pb::MessageParser<Instance>(() => new Instance());
     private pb::UnknownFieldSet _unknownFields;
     [global::System.Diagnostics.DebuggerNonUserCodeAttribute]
@@ -116,9 +129,8 @@ namespace Google.Cloud.Bigtable.Admin.V2 {
     public const int NameFieldNumber = 1;
     private string name_ = "";
     /// <summary>
-    /// (`OutputOnly`)
     /// The unique name of the instance. Values are of the form
-    /// `projects/&lt;project>/instances/[a-z][a-z0-9\\-]+[a-z0-9]`.
+    /// `projects/{project}/instances/[a-z][a-z0-9\\-]+[a-z0-9]`.
     /// </summary>
     [global::System.Diagnostics.DebuggerNonUserCodeAttribute]
     public string Name {
@@ -132,7 +144,7 @@ namespace Google.Cloud.Bigtable.Admin.V2 {
     public const int DisplayNameFieldNumber = 2;
     private string displayName_ = "";
     /// <summary>
-    /// The descriptive name for this instance as it appears in UIs.
+    /// Required. The descriptive name for this instance as it appears in UIs.
     /// Can be changed at any time, but should be kept globally unique
     /// to avoid confusion.
     /// </summary>
@@ -146,7 +158,7 @@ namespace Google.Cloud.Bigtable.Admin.V2 {
 
     /// <summary>Field number for the "state" field.</summary>
     public const int StateFieldNumber = 3;
-    private global::Google.Cloud.Bigtable.Admin.V2.Instance.Types.State state_ = 0;
+    private global::Google.Cloud.Bigtable.Admin.V2.Instance.Types.State state_ = global::Google.Cloud.Bigtable.Admin.V2.Instance.Types.State.NotKnown;
     /// <summary>
     /// (`OutputOnly`)
     /// The current state of the instance.
@@ -161,7 +173,7 @@ namespace Google.Cloud.Bigtable.Admin.V2 {
 
     /// <summary>Field number for the "type" field.</summary>
     public const int TypeFieldNumber = 4;
-    private global::Google.Cloud.Bigtable.Admin.V2.Instance.Types.Type type_ = 0;
+    private global::Google.Cloud.Bigtable.Admin.V2.Instance.Types.Type type_ = global::Google.Cloud.Bigtable.Admin.V2.Instance.Types.Type.Unspecified;
     /// <summary>
     /// The type of the instance. Defaults to `PRODUCTION`.
     /// </summary>
@@ -176,7 +188,7 @@ namespace Google.Cloud.Bigtable.Admin.V2 {
     /// <summary>Field number for the "labels" field.</summary>
     public const int LabelsFieldNumber = 5;
     private static readonly pbc::MapField<string, string>.Codec _map_labels_codec
-        = new pbc::MapField<string, string>.Codec(pb::FieldCodec.ForString(10), pb::FieldCodec.ForString(18), 42);
+        = new pbc::MapField<string, string>.Codec(pb::FieldCodec.ForString(10, ""), pb::FieldCodec.ForString(18, ""), 42);
     private readonly pbc::MapField<string, string> labels_ = new pbc::MapField<string, string>();
     /// <summary>
     /// Labels are a flexible and lightweight mechanism for organizing cloud
@@ -222,8 +234,8 @@ namespace Google.Cloud.Bigtable.Admin.V2 {
       int hash = 1;
       if (Name.Length != 0) hash ^= Name.GetHashCode();
       if (DisplayName.Length != 0) hash ^= DisplayName.GetHashCode();
-      if (State != 0) hash ^= State.GetHashCode();
-      if (Type != 0) hash ^= Type.GetHashCode();
+      if (State != global::Google.Cloud.Bigtable.Admin.V2.Instance.Types.State.NotKnown) hash ^= State.GetHashCode();
+      if (Type != global::Google.Cloud.Bigtable.Admin.V2.Instance.Types.Type.Unspecified) hash ^= Type.GetHashCode();
       hash ^= Labels.GetHashCode();
       if (_unknownFields != null) {
         hash ^= _unknownFields.GetHashCode();
@@ -238,6 +250,9 @@ namespace Google.Cloud.Bigtable.Admin.V2 {
 
     [global::System.Diagnostics.DebuggerNonUserCodeAttribute]
     public void WriteTo(pb::CodedOutputStream output) {
+    #if !GOOGLE_PROTOBUF_REFSTRUCT_COMPATIBILITY_MODE
+      output.WriteRawMessage(this);
+    #else
       if (Name.Length != 0) {
         output.WriteRawTag(10);
         output.WriteString(Name);
@@ -246,11 +261,11 @@ namespace Google.Cloud.Bigtable.Admin.V2 {
         output.WriteRawTag(18);
         output.WriteString(DisplayName);
       }
-      if (State != 0) {
+      if (State != global::Google.Cloud.Bigtable.Admin.V2.Instance.Types.State.NotKnown) {
         output.WriteRawTag(24);
         output.WriteEnum((int) State);
       }
-      if (Type != 0) {
+      if (Type != global::Google.Cloud.Bigtable.Admin.V2.Instance.Types.Type.Unspecified) {
         output.WriteRawTag(32);
         output.WriteEnum((int) Type);
       }
@@ -258,7 +273,34 @@ namespace Google.Cloud.Bigtable.Admin.V2 {
       if (_unknownFields != null) {
         _unknownFields.WriteTo(output);
       }
+    #endif
     }
+
+    #if !GOOGLE_PROTOBUF_REFSTRUCT_COMPATIBILITY_MODE
+    [global::System.Diagnostics.DebuggerNonUserCodeAttribute]
+    void pb::IBufferMessage.InternalWriteTo(ref pb::WriteContext output) {
+      if (Name.Length != 0) {
+        output.WriteRawTag(10);
+        output.WriteString(Name);
+      }
+      if (DisplayName.Length != 0) {
+        output.WriteRawTag(18);
+        output.WriteString(DisplayName);
+      }
+      if (State != global::Google.Cloud.Bigtable.Admin.V2.Instance.Types.State.NotKnown) {
+        output.WriteRawTag(24);
+        output.WriteEnum((int) State);
+      }
+      if (Type != global::Google.Cloud.Bigtable.Admin.V2.Instance.Types.Type.Unspecified) {
+        output.WriteRawTag(32);
+        output.WriteEnum((int) Type);
+      }
+      labels_.WriteTo(ref output, _map_labels_codec);
+      if (_unknownFields != null) {
+        _unknownFields.WriteTo(ref output);
+      }
+    }
+    #endif
 
     [global::System.Diagnostics.DebuggerNonUserCodeAttribute]
     public int CalculateSize() {
@@ -269,10 +311,10 @@ namespace Google.Cloud.Bigtable.Admin.V2 {
       if (DisplayName.Length != 0) {
         size += 1 + pb::CodedOutputStream.ComputeStringSize(DisplayName);
       }
-      if (State != 0) {
+      if (State != global::Google.Cloud.Bigtable.Admin.V2.Instance.Types.State.NotKnown) {
         size += 1 + pb::CodedOutputStream.ComputeEnumSize((int) State);
       }
-      if (Type != 0) {
+      if (Type != global::Google.Cloud.Bigtable.Admin.V2.Instance.Types.Type.Unspecified) {
         size += 1 + pb::CodedOutputStream.ComputeEnumSize((int) Type);
       }
       size += labels_.CalculateSize(_map_labels_codec);
@@ -293,10 +335,10 @@ namespace Google.Cloud.Bigtable.Admin.V2 {
       if (other.DisplayName.Length != 0) {
         DisplayName = other.DisplayName;
       }
-      if (other.State != 0) {
+      if (other.State != global::Google.Cloud.Bigtable.Admin.V2.Instance.Types.State.NotKnown) {
         State = other.State;
       }
-      if (other.Type != 0) {
+      if (other.Type != global::Google.Cloud.Bigtable.Admin.V2.Instance.Types.Type.Unspecified) {
         Type = other.Type;
       }
       labels_.Add(other.labels_);
@@ -305,6 +347,9 @@ namespace Google.Cloud.Bigtable.Admin.V2 {
 
     [global::System.Diagnostics.DebuggerNonUserCodeAttribute]
     public void MergeFrom(pb::CodedInputStream input) {
+    #if !GOOGLE_PROTOBUF_REFSTRUCT_COMPATIBILITY_MODE
+      input.ReadRawMessage(this);
+    #else
       uint tag;
       while ((tag = input.ReadTag()) != 0) {
         switch(tag) {
@@ -333,7 +378,42 @@ namespace Google.Cloud.Bigtable.Admin.V2 {
           }
         }
       }
+    #endif
     }
+
+    #if !GOOGLE_PROTOBUF_REFSTRUCT_COMPATIBILITY_MODE
+    [global::System.Diagnostics.DebuggerNonUserCodeAttribute]
+    void pb::IBufferMessage.InternalMergeFrom(ref pb::ParseContext input) {
+      uint tag;
+      while ((tag = input.ReadTag()) != 0) {
+        switch(tag) {
+          default:
+            _unknownFields = pb::UnknownFieldSet.MergeFieldFrom(_unknownFields, ref input);
+            break;
+          case 10: {
+            Name = input.ReadString();
+            break;
+          }
+          case 18: {
+            DisplayName = input.ReadString();
+            break;
+          }
+          case 24: {
+            State = (global::Google.Cloud.Bigtable.Admin.V2.Instance.Types.State) input.ReadEnum();
+            break;
+          }
+          case 32: {
+            Type = (global::Google.Cloud.Bigtable.Admin.V2.Instance.Types.Type) input.ReadEnum();
+            break;
+          }
+          case 42: {
+            labels_.AddEntriesFrom(ref input, _map_labels_codec);
+            break;
+          }
+        }
+      }
+    }
+    #endif
 
     #region Nested types
     /// <summary>Container for nested types declared in the Instance message type.</summary>
@@ -396,7 +476,11 @@ namespace Google.Cloud.Bigtable.Admin.V2 {
   /// of serving all [Tables][google.bigtable.admin.v2.Table] in the parent
   /// [Instance][google.bigtable.admin.v2.Instance].
   /// </summary>
-  public sealed partial class Cluster : pb::IMessage<Cluster> {
+  public sealed partial class Cluster : pb::IMessage<Cluster>
+  #if !GOOGLE_PROTOBUF_REFSTRUCT_COMPATIBILITY_MODE
+      , pb::IBufferMessage
+  #endif
+  {
     private static readonly pb::MessageParser<Cluster> _parser = new pb::MessageParser<Cluster>(() => new Cluster());
     private pb::UnknownFieldSet _unknownFields;
     [global::System.Diagnostics.DebuggerNonUserCodeAttribute]
@@ -438,9 +522,8 @@ namespace Google.Cloud.Bigtable.Admin.V2 {
     public const int NameFieldNumber = 1;
     private string name_ = "";
     /// <summary>
-    /// (`OutputOnly`)
     /// The unique name of the cluster. Values are of the form
-    /// `projects/&lt;project>/instances/&lt;instance>/clusters/[a-z][-a-z0-9]*`.
+    /// `projects/{project}/instances/{instance}/clusters/[a-z][-a-z0-9]*`.
     /// </summary>
     [global::System.Diagnostics.DebuggerNonUserCodeAttribute]
     public string Name {
@@ -458,7 +541,7 @@ namespace Google.Cloud.Bigtable.Admin.V2 {
     /// The location where this cluster's nodes and storage reside. For best
     /// performance, clients should be located as close as possible to this
     /// cluster. Currently only zones are supported, so values should be of the
-    /// form `projects/&lt;project>/locations/&lt;zone>`.
+    /// form `projects/{project}/locations/{zone}`.
     /// </summary>
     [global::System.Diagnostics.DebuggerNonUserCodeAttribute]
     public string Location {
@@ -470,9 +553,8 @@ namespace Google.Cloud.Bigtable.Admin.V2 {
 
     /// <summary>Field number for the "state" field.</summary>
     public const int StateFieldNumber = 3;
-    private global::Google.Cloud.Bigtable.Admin.V2.Cluster.Types.State state_ = 0;
+    private global::Google.Cloud.Bigtable.Admin.V2.Cluster.Types.State state_ = global::Google.Cloud.Bigtable.Admin.V2.Cluster.Types.State.NotKnown;
     /// <summary>
-    /// (`OutputOnly`)
     /// The current state of the cluster.
     /// </summary>
     [global::System.Diagnostics.DebuggerNonUserCodeAttribute]
@@ -487,8 +569,8 @@ namespace Google.Cloud.Bigtable.Admin.V2 {
     public const int ServeNodesFieldNumber = 4;
     private int serveNodes_;
     /// <summary>
-    /// The number of nodes allocated to this cluster. More nodes enable higher
-    /// throughput and more consistent performance.
+    /// Required. The number of nodes allocated to this cluster. More nodes enable
+    /// higher throughput and more consistent performance.
     /// </summary>
     [global::System.Diagnostics.DebuggerNonUserCodeAttribute]
     public int ServeNodes {
@@ -500,7 +582,7 @@ namespace Google.Cloud.Bigtable.Admin.V2 {
 
     /// <summary>Field number for the "default_storage_type" field.</summary>
     public const int DefaultStorageTypeFieldNumber = 5;
-    private global::Google.Cloud.Bigtable.Admin.V2.StorageType defaultStorageType_ = 0;
+    private global::Google.Cloud.Bigtable.Admin.V2.StorageType defaultStorageType_ = global::Google.Cloud.Bigtable.Admin.V2.StorageType.Unspecified;
     /// <summary>
     /// (`CreationOnly`)
     /// The type of storage used by this cluster to serve its
@@ -540,9 +622,9 @@ namespace Google.Cloud.Bigtable.Admin.V2 {
       int hash = 1;
       if (Name.Length != 0) hash ^= Name.GetHashCode();
       if (Location.Length != 0) hash ^= Location.GetHashCode();
-      if (State != 0) hash ^= State.GetHashCode();
+      if (State != global::Google.Cloud.Bigtable.Admin.V2.Cluster.Types.State.NotKnown) hash ^= State.GetHashCode();
       if (ServeNodes != 0) hash ^= ServeNodes.GetHashCode();
-      if (DefaultStorageType != 0) hash ^= DefaultStorageType.GetHashCode();
+      if (DefaultStorageType != global::Google.Cloud.Bigtable.Admin.V2.StorageType.Unspecified) hash ^= DefaultStorageType.GetHashCode();
       if (_unknownFields != null) {
         hash ^= _unknownFields.GetHashCode();
       }
@@ -556,6 +638,9 @@ namespace Google.Cloud.Bigtable.Admin.V2 {
 
     [global::System.Diagnostics.DebuggerNonUserCodeAttribute]
     public void WriteTo(pb::CodedOutputStream output) {
+    #if !GOOGLE_PROTOBUF_REFSTRUCT_COMPATIBILITY_MODE
+      output.WriteRawMessage(this);
+    #else
       if (Name.Length != 0) {
         output.WriteRawTag(10);
         output.WriteString(Name);
@@ -564,7 +649,7 @@ namespace Google.Cloud.Bigtable.Admin.V2 {
         output.WriteRawTag(18);
         output.WriteString(Location);
       }
-      if (State != 0) {
+      if (State != global::Google.Cloud.Bigtable.Admin.V2.Cluster.Types.State.NotKnown) {
         output.WriteRawTag(24);
         output.WriteEnum((int) State);
       }
@@ -572,14 +657,44 @@ namespace Google.Cloud.Bigtable.Admin.V2 {
         output.WriteRawTag(32);
         output.WriteInt32(ServeNodes);
       }
-      if (DefaultStorageType != 0) {
+      if (DefaultStorageType != global::Google.Cloud.Bigtable.Admin.V2.StorageType.Unspecified) {
         output.WriteRawTag(40);
         output.WriteEnum((int) DefaultStorageType);
       }
       if (_unknownFields != null) {
         _unknownFields.WriteTo(output);
       }
+    #endif
     }
+
+    #if !GOOGLE_PROTOBUF_REFSTRUCT_COMPATIBILITY_MODE
+    [global::System.Diagnostics.DebuggerNonUserCodeAttribute]
+    void pb::IBufferMessage.InternalWriteTo(ref pb::WriteContext output) {
+      if (Name.Length != 0) {
+        output.WriteRawTag(10);
+        output.WriteString(Name);
+      }
+      if (Location.Length != 0) {
+        output.WriteRawTag(18);
+        output.WriteString(Location);
+      }
+      if (State != global::Google.Cloud.Bigtable.Admin.V2.Cluster.Types.State.NotKnown) {
+        output.WriteRawTag(24);
+        output.WriteEnum((int) State);
+      }
+      if (ServeNodes != 0) {
+        output.WriteRawTag(32);
+        output.WriteInt32(ServeNodes);
+      }
+      if (DefaultStorageType != global::Google.Cloud.Bigtable.Admin.V2.StorageType.Unspecified) {
+        output.WriteRawTag(40);
+        output.WriteEnum((int) DefaultStorageType);
+      }
+      if (_unknownFields != null) {
+        _unknownFields.WriteTo(ref output);
+      }
+    }
+    #endif
 
     [global::System.Diagnostics.DebuggerNonUserCodeAttribute]
     public int CalculateSize() {
@@ -590,13 +705,13 @@ namespace Google.Cloud.Bigtable.Admin.V2 {
       if (Location.Length != 0) {
         size += 1 + pb::CodedOutputStream.ComputeStringSize(Location);
       }
-      if (State != 0) {
+      if (State != global::Google.Cloud.Bigtable.Admin.V2.Cluster.Types.State.NotKnown) {
         size += 1 + pb::CodedOutputStream.ComputeEnumSize((int) State);
       }
       if (ServeNodes != 0) {
         size += 1 + pb::CodedOutputStream.ComputeInt32Size(ServeNodes);
       }
-      if (DefaultStorageType != 0) {
+      if (DefaultStorageType != global::Google.Cloud.Bigtable.Admin.V2.StorageType.Unspecified) {
         size += 1 + pb::CodedOutputStream.ComputeEnumSize((int) DefaultStorageType);
       }
       if (_unknownFields != null) {
@@ -616,13 +731,13 @@ namespace Google.Cloud.Bigtable.Admin.V2 {
       if (other.Location.Length != 0) {
         Location = other.Location;
       }
-      if (other.State != 0) {
+      if (other.State != global::Google.Cloud.Bigtable.Admin.V2.Cluster.Types.State.NotKnown) {
         State = other.State;
       }
       if (other.ServeNodes != 0) {
         ServeNodes = other.ServeNodes;
       }
-      if (other.DefaultStorageType != 0) {
+      if (other.DefaultStorageType != global::Google.Cloud.Bigtable.Admin.V2.StorageType.Unspecified) {
         DefaultStorageType = other.DefaultStorageType;
       }
       _unknownFields = pb::UnknownFieldSet.MergeFrom(_unknownFields, other._unknownFields);
@@ -630,6 +745,9 @@ namespace Google.Cloud.Bigtable.Admin.V2 {
 
     [global::System.Diagnostics.DebuggerNonUserCodeAttribute]
     public void MergeFrom(pb::CodedInputStream input) {
+    #if !GOOGLE_PROTOBUF_REFSTRUCT_COMPATIBILITY_MODE
+      input.ReadRawMessage(this);
+    #else
       uint tag;
       while ((tag = input.ReadTag()) != 0) {
         switch(tag) {
@@ -658,7 +776,42 @@ namespace Google.Cloud.Bigtable.Admin.V2 {
           }
         }
       }
+    #endif
     }
+
+    #if !GOOGLE_PROTOBUF_REFSTRUCT_COMPATIBILITY_MODE
+    [global::System.Diagnostics.DebuggerNonUserCodeAttribute]
+    void pb::IBufferMessage.InternalMergeFrom(ref pb::ParseContext input) {
+      uint tag;
+      while ((tag = input.ReadTag()) != 0) {
+        switch(tag) {
+          default:
+            _unknownFields = pb::UnknownFieldSet.MergeFieldFrom(_unknownFields, ref input);
+            break;
+          case 10: {
+            Name = input.ReadString();
+            break;
+          }
+          case 18: {
+            Location = input.ReadString();
+            break;
+          }
+          case 24: {
+            State = (global::Google.Cloud.Bigtable.Admin.V2.Cluster.Types.State) input.ReadEnum();
+            break;
+          }
+          case 32: {
+            ServeNodes = input.ReadInt32();
+            break;
+          }
+          case 40: {
+            DefaultStorageType = (global::Google.Cloud.Bigtable.Admin.V2.StorageType) input.ReadEnum();
+            break;
+          }
+        }
+      }
+    }
+    #endif
 
     #region Nested types
     /// <summary>Container for nested types declared in the Cluster message type.</summary>
@@ -706,7 +859,11 @@ namespace Google.Cloud.Bigtable.Admin.V2 {
   /// A configuration object describing how Cloud Bigtable should treat traffic
   /// from a particular end user application.
   /// </summary>
-  public sealed partial class AppProfile : pb::IMessage<AppProfile> {
+  public sealed partial class AppProfile : pb::IMessage<AppProfile>
+  #if !GOOGLE_PROTOBUF_REFSTRUCT_COMPATIBILITY_MODE
+      , pb::IBufferMessage
+  #endif
+  {
     private static readonly pb::MessageParser<AppProfile> _parser = new pb::MessageParser<AppProfile>(() => new AppProfile());
     private pb::UnknownFieldSet _unknownFields;
     [global::System.Diagnostics.DebuggerNonUserCodeAttribute]
@@ -805,7 +962,7 @@ namespace Google.Cloud.Bigtable.Admin.V2 {
     /// <summary>Field number for the "multi_cluster_routing_use_any" field.</summary>
     public const int MultiClusterRoutingUseAnyFieldNumber = 5;
     /// <summary>
-    /// Use a multi-cluster routing policy that may pick any cluster.
+    /// Use a multi-cluster routing policy.
     /// </summary>
     [global::System.Diagnostics.DebuggerNonUserCodeAttribute]
     public global::Google.Cloud.Bigtable.Admin.V2.AppProfile.Types.MultiClusterRoutingUseAny MultiClusterRoutingUseAny {
@@ -893,6 +1050,9 @@ namespace Google.Cloud.Bigtable.Admin.V2 {
 
     [global::System.Diagnostics.DebuggerNonUserCodeAttribute]
     public void WriteTo(pb::CodedOutputStream output) {
+    #if !GOOGLE_PROTOBUF_REFSTRUCT_COMPATIBILITY_MODE
+      output.WriteRawMessage(this);
+    #else
       if (Name.Length != 0) {
         output.WriteRawTag(10);
         output.WriteString(Name);
@@ -916,7 +1076,37 @@ namespace Google.Cloud.Bigtable.Admin.V2 {
       if (_unknownFields != null) {
         _unknownFields.WriteTo(output);
       }
+    #endif
     }
+
+    #if !GOOGLE_PROTOBUF_REFSTRUCT_COMPATIBILITY_MODE
+    [global::System.Diagnostics.DebuggerNonUserCodeAttribute]
+    void pb::IBufferMessage.InternalWriteTo(ref pb::WriteContext output) {
+      if (Name.Length != 0) {
+        output.WriteRawTag(10);
+        output.WriteString(Name);
+      }
+      if (Etag.Length != 0) {
+        output.WriteRawTag(18);
+        output.WriteString(Etag);
+      }
+      if (Description.Length != 0) {
+        output.WriteRawTag(26);
+        output.WriteString(Description);
+      }
+      if (routingPolicyCase_ == RoutingPolicyOneofCase.MultiClusterRoutingUseAny) {
+        output.WriteRawTag(42);
+        output.WriteMessage(MultiClusterRoutingUseAny);
+      }
+      if (routingPolicyCase_ == RoutingPolicyOneofCase.SingleClusterRouting) {
+        output.WriteRawTag(50);
+        output.WriteMessage(SingleClusterRouting);
+      }
+      if (_unknownFields != null) {
+        _unknownFields.WriteTo(ref output);
+      }
+    }
+    #endif
 
     [global::System.Diagnostics.DebuggerNonUserCodeAttribute]
     public int CalculateSize() {
@@ -976,6 +1166,9 @@ namespace Google.Cloud.Bigtable.Admin.V2 {
 
     [global::System.Diagnostics.DebuggerNonUserCodeAttribute]
     public void MergeFrom(pb::CodedInputStream input) {
+    #if !GOOGLE_PROTOBUF_REFSTRUCT_COMPATIBILITY_MODE
+      input.ReadRawMessage(this);
+    #else
       uint tag;
       while ((tag = input.ReadTag()) != 0) {
         switch(tag) {
@@ -1014,19 +1207,69 @@ namespace Google.Cloud.Bigtable.Admin.V2 {
           }
         }
       }
+    #endif
     }
+
+    #if !GOOGLE_PROTOBUF_REFSTRUCT_COMPATIBILITY_MODE
+    [global::System.Diagnostics.DebuggerNonUserCodeAttribute]
+    void pb::IBufferMessage.InternalMergeFrom(ref pb::ParseContext input) {
+      uint tag;
+      while ((tag = input.ReadTag()) != 0) {
+        switch(tag) {
+          default:
+            _unknownFields = pb::UnknownFieldSet.MergeFieldFrom(_unknownFields, ref input);
+            break;
+          case 10: {
+            Name = input.ReadString();
+            break;
+          }
+          case 18: {
+            Etag = input.ReadString();
+            break;
+          }
+          case 26: {
+            Description = input.ReadString();
+            break;
+          }
+          case 42: {
+            global::Google.Cloud.Bigtable.Admin.V2.AppProfile.Types.MultiClusterRoutingUseAny subBuilder = new global::Google.Cloud.Bigtable.Admin.V2.AppProfile.Types.MultiClusterRoutingUseAny();
+            if (routingPolicyCase_ == RoutingPolicyOneofCase.MultiClusterRoutingUseAny) {
+              subBuilder.MergeFrom(MultiClusterRoutingUseAny);
+            }
+            input.ReadMessage(subBuilder);
+            MultiClusterRoutingUseAny = subBuilder;
+            break;
+          }
+          case 50: {
+            global::Google.Cloud.Bigtable.Admin.V2.AppProfile.Types.SingleClusterRouting subBuilder = new global::Google.Cloud.Bigtable.Admin.V2.AppProfile.Types.SingleClusterRouting();
+            if (routingPolicyCase_ == RoutingPolicyOneofCase.SingleClusterRouting) {
+              subBuilder.MergeFrom(SingleClusterRouting);
+            }
+            input.ReadMessage(subBuilder);
+            SingleClusterRouting = subBuilder;
+            break;
+          }
+        }
+      }
+    }
+    #endif
 
     #region Nested types
     /// <summary>Container for nested types declared in the AppProfile message type.</summary>
     [global::System.Diagnostics.DebuggerNonUserCodeAttribute]
     public static partial class Types {
       /// <summary>
-      /// Read/write requests may be routed to any cluster in the instance, and will
-      /// fail over to another cluster in the event of transient errors or delays.
-      /// Choosing this option sacrifices read-your-writes consistency to improve
-      /// availability.
+      /// Read/write requests are routed to the nearest cluster in the instance, and
+      /// will fail over to the nearest cluster that is available in the event of
+      /// transient errors or delays. Clusters in a region are considered
+      /// equidistant. Choosing this option sacrifices read-your-writes consistency
+      /// to improve availability.
       /// </summary>
-      public sealed partial class MultiClusterRoutingUseAny : pb::IMessage<MultiClusterRoutingUseAny> {
+      public sealed partial class MultiClusterRoutingUseAny : pb::IMessage<MultiClusterRoutingUseAny>
+      #if !GOOGLE_PROTOBUF_REFSTRUCT_COMPATIBILITY_MODE
+          , pb::IBufferMessage
+      #endif
+      {
         private static readonly pb::MessageParser<MultiClusterRoutingUseAny> _parser = new pb::MessageParser<MultiClusterRoutingUseAny>(() => new MultiClusterRoutingUseAny());
         private pb::UnknownFieldSet _unknownFields;
         [global::System.Diagnostics.DebuggerNonUserCodeAttribute]
@@ -1091,10 +1334,23 @@ namespace Google.Cloud.Bigtable.Admin.V2 {
 
         [global::System.Diagnostics.DebuggerNonUserCodeAttribute]
         public void WriteTo(pb::CodedOutputStream output) {
+        #if !GOOGLE_PROTOBUF_REFSTRUCT_COMPATIBILITY_MODE
+          output.WriteRawMessage(this);
+        #else
           if (_unknownFields != null) {
             _unknownFields.WriteTo(output);
           }
+        #endif
         }
+
+        #if !GOOGLE_PROTOBUF_REFSTRUCT_COMPATIBILITY_MODE
+        [global::System.Diagnostics.DebuggerNonUserCodeAttribute]
+        void pb::IBufferMessage.InternalWriteTo(ref pb::WriteContext output) {
+          if (_unknownFields != null) {
+            _unknownFields.WriteTo(ref output);
+          }
+        }
+        #endif
 
         [global::System.Diagnostics.DebuggerNonUserCodeAttribute]
         public int CalculateSize() {
@@ -1115,6 +1371,9 @@ namespace Google.Cloud.Bigtable.Admin.V2 {
 
         [global::System.Diagnostics.DebuggerNonUserCodeAttribute]
         public void MergeFrom(pb::CodedInputStream input) {
+        #if !GOOGLE_PROTOBUF_REFSTRUCT_COMPATIBILITY_MODE
+          input.ReadRawMessage(this);
+        #else
           uint tag;
           while ((tag = input.ReadTag()) != 0) {
             switch(tag) {
@@ -1123,16 +1382,35 @@ namespace Google.Cloud.Bigtable.Admin.V2 {
                 break;
             }
           }
+        #endif
         }
+
+        #if !GOOGLE_PROTOBUF_REFSTRUCT_COMPATIBILITY_MODE
+        [global::System.Diagnostics.DebuggerNonUserCodeAttribute]
+        void pb::IBufferMessage.InternalMergeFrom(ref pb::ParseContext input) {
+          uint tag;
+          while ((tag = input.ReadTag()) != 0) {
+            switch(tag) {
+              default:
+                _unknownFields = pb::UnknownFieldSet.MergeFieldFrom(_unknownFields, ref input);
+                break;
+            }
+          }
+        }
+        #endif
 
       }
 
       /// <summary>
       /// Unconditionally routes all read/write requests to a specific cluster.
-      /// This option preserves read-your-writes consistency, but does not improve
+      /// This option preserves read-your-writes consistency but does not improve
       /// availability.
       /// </summary>
-      public sealed partial class SingleClusterRouting : pb::IMessage<SingleClusterRouting> {
+      public sealed partial class SingleClusterRouting : pb::IMessage<SingleClusterRouting>
+      #if !GOOGLE_PROTOBUF_REFSTRUCT_COMPATIBILITY_MODE
+          , pb::IBufferMessage
+      #endif
+      {
         private static readonly pb::MessageParser<SingleClusterRouting> _parser = new pb::MessageParser<SingleClusterRouting>(() => new SingleClusterRouting());
         private pb::UnknownFieldSet _unknownFields;
         [global::System.Diagnostics.DebuggerNonUserCodeAttribute]
@@ -1233,6 +1511,9 @@ namespace Google.Cloud.Bigtable.Admin.V2 {
 
         [global::System.Diagnostics.DebuggerNonUserCodeAttribute]
         public void WriteTo(pb::CodedOutputStream output) {
+        #if !GOOGLE_PROTOBUF_REFSTRUCT_COMPATIBILITY_MODE
+          output.WriteRawMessage(this);
+        #else
           if (ClusterId.Length != 0) {
             output.WriteRawTag(10);
             output.WriteString(ClusterId);
@@ -1244,7 +1525,25 @@ namespace Google.Cloud.Bigtable.Admin.V2 {
           if (_unknownFields != null) {
             _unknownFields.WriteTo(output);
           }
+        #endif
         }
+
+        #if !GOOGLE_PROTOBUF_REFSTRUCT_COMPATIBILITY_MODE
+        [global::System.Diagnostics.DebuggerNonUserCodeAttribute]
+        void pb::IBufferMessage.InternalWriteTo(ref pb::WriteContext output) {
+          if (ClusterId.Length != 0) {
+            output.WriteRawTag(10);
+            output.WriteString(ClusterId);
+          }
+          if (AllowTransactionalWrites != false) {
+            output.WriteRawTag(16);
+            output.WriteBool(AllowTransactionalWrites);
+          }
+          if (_unknownFields != null) {
+            _unknownFields.WriteTo(ref output);
+          }
+        }
+        #endif
 
         [global::System.Diagnostics.DebuggerNonUserCodeAttribute]
         public int CalculateSize() {
@@ -1277,6 +1576,9 @@ namespace Google.Cloud.Bigtable.Admin.V2 {
 
         [global::System.Diagnostics.DebuggerNonUserCodeAttribute]
         public void MergeFrom(pb::CodedInputStream input) {
+        #if !GOOGLE_PROTOBUF_REFSTRUCT_COMPATIBILITY_MODE
+          input.ReadRawMessage(this);
+        #else
           uint tag;
           while ((tag = input.ReadTag()) != 0) {
             switch(tag) {
@@ -1293,7 +1595,30 @@ namespace Google.Cloud.Bigtable.Admin.V2 {
               }
             }
           }
+        #endif
         }
+
+        #if !GOOGLE_PROTOBUF_REFSTRUCT_COMPATIBILITY_MODE
+        [global::System.Diagnostics.DebuggerNonUserCodeAttribute]
+        void pb::IBufferMessage.InternalMergeFrom(ref pb::ParseContext input) {
+          uint tag;
+          while ((tag = input.ReadTag()) != 0) {
+            switch(tag) {
+              default:
+                _unknownFields = pb::UnknownFieldSet.MergeFieldFrom(_unknownFields, ref input);
+                break;
+              case 10: {
+                ClusterId = input.ReadString();
+                break;
+              }
+              case 16: {
+                AllowTransactionalWrites = input.ReadBool();
+                break;
+              }
+            }
+          }
+        }
+        #endif
 
       }
 

@@ -136,36 +136,41 @@ namespace Google.Cloud.Spanner.Admin.Instance.V1 {
             "b25zOgEq2kEUcmVzb3VyY2UscGVybWlzc2lvbnMaeMpBFnNwYW5uZXIuZ29v",
             "Z2xlYXBpcy5jb23SQVxodHRwczovL3d3dy5nb29nbGVhcGlzLmNvbS9hdXRo",
             "L2Nsb3VkLXBsYXRmb3JtLGh0dHBzOi8vd3d3Lmdvb2dsZWFwaXMuY29tL2F1",
-            "dGgvc3Bhbm5lci5hZG1pbkLfAQokY29tLmdvb2dsZS5zcGFubmVyLmFkbWlu",
+            "dGgvc3Bhbm5lci5hZG1pbkKNAgokY29tLmdvb2dsZS5zcGFubmVyLmFkbWlu",
             "Lmluc3RhbmNlLnYxQhlTcGFubmVySW5zdGFuY2VBZG1pblByb3RvUAFaSGdv",
             "b2dsZS5nb2xhbmcub3JnL2dlbnByb3RvL2dvb2dsZWFwaXMvc3Bhbm5lci9h",
             "ZG1pbi9pbnN0YW5jZS92MTtpbnN0YW5jZaoCJkdvb2dsZS5DbG91ZC5TcGFu",
             "bmVyLkFkbWluLkluc3RhbmNlLlYxygImR29vZ2xlXENsb3VkXFNwYW5uZXJc",
-            "QWRtaW5cSW5zdGFuY2VcVjFiBnByb3RvMw=="));
+            "QWRtaW5cSW5zdGFuY2VcVjHqAitHb29nbGU6OkNsb3VkOjpTcGFubmVyOjpB",
+            "ZG1pbjo6SW5zdGFuY2U6OlYxYgZwcm90bzM="));
       descriptor = pbr::FileDescriptor.FromGeneratedCode(descriptorData,
           new pbr::FileDescriptor[] { global::Google.Api.AnnotationsReflection.Descriptor, global::Google.Api.ClientReflection.Descriptor, global::Google.Api.FieldBehaviorReflection.Descriptor, global::Google.Api.ResourceReflection.Descriptor, global::Google.Cloud.Iam.V1.IamPolicyReflection.Descriptor, global::Google.Cloud.Iam.V1.PolicyReflection.Descriptor, global::Google.LongRunning.OperationsReflection.Descriptor, global::Google.Protobuf.WellKnownTypes.EmptyReflection.Descriptor, global::Google.Protobuf.WellKnownTypes.FieldMaskReflection.Descriptor, global::Google.Protobuf.WellKnownTypes.TimestampReflection.Descriptor, },
-          new pbr::GeneratedClrTypeInfo(null, new pbr::GeneratedClrTypeInfo[] {
-            new pbr::GeneratedClrTypeInfo(typeof(global::Google.Cloud.Spanner.Admin.Instance.V1.ReplicaInfo), global::Google.Cloud.Spanner.Admin.Instance.V1.ReplicaInfo.Parser, new[]{ "Location", "Type", "DefaultLeaderLocation" }, null, new[]{ typeof(global::Google.Cloud.Spanner.Admin.Instance.V1.ReplicaInfo.Types.ReplicaType) }, null),
-            new pbr::GeneratedClrTypeInfo(typeof(global::Google.Cloud.Spanner.Admin.Instance.V1.InstanceConfig), global::Google.Cloud.Spanner.Admin.Instance.V1.InstanceConfig.Parser, new[]{ "Name", "DisplayName", "Replicas" }, null, null, null),
-            new pbr::GeneratedClrTypeInfo(typeof(global::Google.Cloud.Spanner.Admin.Instance.V1.Instance), global::Google.Cloud.Spanner.Admin.Instance.V1.Instance.Parser, new[]{ "Name", "Config", "DisplayName", "NodeCount", "State", "Labels", "EndpointUris" }, null, new[]{ typeof(global::Google.Cloud.Spanner.Admin.Instance.V1.Instance.Types.State) }, new pbr::GeneratedClrTypeInfo[] { null, }),
-            new pbr::GeneratedClrTypeInfo(typeof(global::Google.Cloud.Spanner.Admin.Instance.V1.ListInstanceConfigsRequest), global::Google.Cloud.Spanner.Admin.Instance.V1.ListInstanceConfigsRequest.Parser, new[]{ "Parent", "PageSize", "PageToken" }, null, null, null),
-            new pbr::GeneratedClrTypeInfo(typeof(global::Google.Cloud.Spanner.Admin.Instance.V1.ListInstanceConfigsResponse), global::Google.Cloud.Spanner.Admin.Instance.V1.ListInstanceConfigsResponse.Parser, new[]{ "InstanceConfigs", "NextPageToken" }, null, null, null),
-            new pbr::GeneratedClrTypeInfo(typeof(global::Google.Cloud.Spanner.Admin.Instance.V1.GetInstanceConfigRequest), global::Google.Cloud.Spanner.Admin.Instance.V1.GetInstanceConfigRequest.Parser, new[]{ "Name" }, null, null, null),
-            new pbr::GeneratedClrTypeInfo(typeof(global::Google.Cloud.Spanner.Admin.Instance.V1.GetInstanceRequest), global::Google.Cloud.Spanner.Admin.Instance.V1.GetInstanceRequest.Parser, new[]{ "Name", "FieldMask" }, null, null, null),
-            new pbr::GeneratedClrTypeInfo(typeof(global::Google.Cloud.Spanner.Admin.Instance.V1.CreateInstanceRequest), global::Google.Cloud.Spanner.Admin.Instance.V1.CreateInstanceRequest.Parser, new[]{ "Parent", "InstanceId", "Instance" }, null, null, null),
-            new pbr::GeneratedClrTypeInfo(typeof(global::Google.Cloud.Spanner.Admin.Instance.V1.ListInstancesRequest), global::Google.Cloud.Spanner.Admin.Instance.V1.ListInstancesRequest.Parser, new[]{ "Parent", "PageSize", "PageToken", "Filter" }, null, null, null),
-            new pbr::GeneratedClrTypeInfo(typeof(global::Google.Cloud.Spanner.Admin.Instance.V1.ListInstancesResponse), global::Google.Cloud.Spanner.Admin.Instance.V1.ListInstancesResponse.Parser, new[]{ "Instances", "NextPageToken" }, null, null, null),
-            new pbr::GeneratedClrTypeInfo(typeof(global::Google.Cloud.Spanner.Admin.Instance.V1.UpdateInstanceRequest), global::Google.Cloud.Spanner.Admin.Instance.V1.UpdateInstanceRequest.Parser, new[]{ "Instance", "FieldMask" }, null, null, null),
-            new pbr::GeneratedClrTypeInfo(typeof(global::Google.Cloud.Spanner.Admin.Instance.V1.DeleteInstanceRequest), global::Google.Cloud.Spanner.Admin.Instance.V1.DeleteInstanceRequest.Parser, new[]{ "Name" }, null, null, null),
-            new pbr::GeneratedClrTypeInfo(typeof(global::Google.Cloud.Spanner.Admin.Instance.V1.CreateInstanceMetadata), global::Google.Cloud.Spanner.Admin.Instance.V1.CreateInstanceMetadata.Parser, new[]{ "Instance", "StartTime", "CancelTime", "EndTime" }, null, null, null),
-            new pbr::GeneratedClrTypeInfo(typeof(global::Google.Cloud.Spanner.Admin.Instance.V1.UpdateInstanceMetadata), global::Google.Cloud.Spanner.Admin.Instance.V1.UpdateInstanceMetadata.Parser, new[]{ "Instance", "StartTime", "CancelTime", "EndTime" }, null, null, null)
+          new pbr::GeneratedClrTypeInfo(null, null, new pbr::GeneratedClrTypeInfo[] {
+            new pbr::GeneratedClrTypeInfo(typeof(global::Google.Cloud.Spanner.Admin.Instance.V1.ReplicaInfo), global::Google.Cloud.Spanner.Admin.Instance.V1.ReplicaInfo.Parser, new[]{ "Location", "Type", "DefaultLeaderLocation" }, null, new[]{ typeof(global::Google.Cloud.Spanner.Admin.Instance.V1.ReplicaInfo.Types.ReplicaType) }, null, null),
+            new pbr::GeneratedClrTypeInfo(typeof(global::Google.Cloud.Spanner.Admin.Instance.V1.InstanceConfig), global::Google.Cloud.Spanner.Admin.Instance.V1.InstanceConfig.Parser, new[]{ "Name", "DisplayName", "Replicas" }, null, null, null, null),
+            new pbr::GeneratedClrTypeInfo(typeof(global::Google.Cloud.Spanner.Admin.Instance.V1.Instance), global::Google.Cloud.Spanner.Admin.Instance.V1.Instance.Parser, new[]{ "Name", "Config", "DisplayName", "NodeCount", "State", "Labels", "EndpointUris" }, null, new[]{ typeof(global::Google.Cloud.Spanner.Admin.Instance.V1.Instance.Types.State) }, null, new pbr::GeneratedClrTypeInfo[] { null, }),
+            new pbr::GeneratedClrTypeInfo(typeof(global::Google.Cloud.Spanner.Admin.Instance.V1.ListInstanceConfigsRequest), global::Google.Cloud.Spanner.Admin.Instance.V1.ListInstanceConfigsRequest.Parser, new[]{ "Parent", "PageSize", "PageToken" }, null, null, null, null),
+            new pbr::GeneratedClrTypeInfo(typeof(global::Google.Cloud.Spanner.Admin.Instance.V1.ListInstanceConfigsResponse), global::Google.Cloud.Spanner.Admin.Instance.V1.ListInstanceConfigsResponse.Parser, new[]{ "InstanceConfigs", "NextPageToken" }, null, null, null, null),
+            new pbr::GeneratedClrTypeInfo(typeof(global::Google.Cloud.Spanner.Admin.Instance.V1.GetInstanceConfigRequest), global::Google.Cloud.Spanner.Admin.Instance.V1.GetInstanceConfigRequest.Parser, new[]{ "Name" }, null, null, null, null),
+            new pbr::GeneratedClrTypeInfo(typeof(global::Google.Cloud.Spanner.Admin.Instance.V1.GetInstanceRequest), global::Google.Cloud.Spanner.Admin.Instance.V1.GetInstanceRequest.Parser, new[]{ "Name", "FieldMask" }, null, null, null, null),
+            new pbr::GeneratedClrTypeInfo(typeof(global::Google.Cloud.Spanner.Admin.Instance.V1.CreateInstanceRequest), global::Google.Cloud.Spanner.Admin.Instance.V1.CreateInstanceRequest.Parser, new[]{ "Parent", "InstanceId", "Instance" }, null, null, null, null),
+            new pbr::GeneratedClrTypeInfo(typeof(global::Google.Cloud.Spanner.Admin.Instance.V1.ListInstancesRequest), global::Google.Cloud.Spanner.Admin.Instance.V1.ListInstancesRequest.Parser, new[]{ "Parent", "PageSize", "PageToken", "Filter" }, null, null, null, null),
+            new pbr::GeneratedClrTypeInfo(typeof(global::Google.Cloud.Spanner.Admin.Instance.V1.ListInstancesResponse), global::Google.Cloud.Spanner.Admin.Instance.V1.ListInstancesResponse.Parser, new[]{ "Instances", "NextPageToken" }, null, null, null, null),
+            new pbr::GeneratedClrTypeInfo(typeof(global::Google.Cloud.Spanner.Admin.Instance.V1.UpdateInstanceRequest), global::Google.Cloud.Spanner.Admin.Instance.V1.UpdateInstanceRequest.Parser, new[]{ "Instance", "FieldMask" }, null, null, null, null),
+            new pbr::GeneratedClrTypeInfo(typeof(global::Google.Cloud.Spanner.Admin.Instance.V1.DeleteInstanceRequest), global::Google.Cloud.Spanner.Admin.Instance.V1.DeleteInstanceRequest.Parser, new[]{ "Name" }, null, null, null, null),
+            new pbr::GeneratedClrTypeInfo(typeof(global::Google.Cloud.Spanner.Admin.Instance.V1.CreateInstanceMetadata), global::Google.Cloud.Spanner.Admin.Instance.V1.CreateInstanceMetadata.Parser, new[]{ "Instance", "StartTime", "CancelTime", "EndTime" }, null, null, null, null),
+            new pbr::GeneratedClrTypeInfo(typeof(global::Google.Cloud.Spanner.Admin.Instance.V1.UpdateInstanceMetadata), global::Google.Cloud.Spanner.Admin.Instance.V1.UpdateInstanceMetadata.Parser, new[]{ "Instance", "StartTime", "CancelTime", "EndTime" }, null, null, null, null)
           }));
     }
     #endregion
 
   }
   #region Messages
-  public sealed partial class ReplicaInfo : pb::IMessage<ReplicaInfo> {
+  public sealed partial class ReplicaInfo : pb::IMessage<ReplicaInfo>
+  #if !GOOGLE_PROTOBUF_REFSTRUCT_COMPATIBILITY_MODE
+      , pb::IBufferMessage
+  #endif
+  {
     private static readonly pb::MessageParser<ReplicaInfo> _parser = new pb::MessageParser<ReplicaInfo>(() => new ReplicaInfo());
     private pb::UnknownFieldSet _unknownFields;
     [global::System.Diagnostics.DebuggerNonUserCodeAttribute]
@@ -217,7 +222,7 @@ namespace Google.Cloud.Spanner.Admin.Instance.V1 {
 
     /// <summary>Field number for the "type" field.</summary>
     public const int TypeFieldNumber = 2;
-    private global::Google.Cloud.Spanner.Admin.Instance.V1.ReplicaInfo.Types.ReplicaType type_ = 0;
+    private global::Google.Cloud.Spanner.Admin.Instance.V1.ReplicaInfo.Types.ReplicaType type_ = global::Google.Cloud.Spanner.Admin.Instance.V1.ReplicaInfo.Types.ReplicaType.TypeUnspecified;
     /// <summary>
     /// The type of replica.
     /// </summary>
@@ -269,7 +274,7 @@ namespace Google.Cloud.Spanner.Admin.Instance.V1 {
     public override int GetHashCode() {
       int hash = 1;
       if (Location.Length != 0) hash ^= Location.GetHashCode();
-      if (Type != 0) hash ^= Type.GetHashCode();
+      if (Type != global::Google.Cloud.Spanner.Admin.Instance.V1.ReplicaInfo.Types.ReplicaType.TypeUnspecified) hash ^= Type.GetHashCode();
       if (DefaultLeaderLocation != false) hash ^= DefaultLeaderLocation.GetHashCode();
       if (_unknownFields != null) {
         hash ^= _unknownFields.GetHashCode();
@@ -284,11 +289,14 @@ namespace Google.Cloud.Spanner.Admin.Instance.V1 {
 
     [global::System.Diagnostics.DebuggerNonUserCodeAttribute]
     public void WriteTo(pb::CodedOutputStream output) {
+    #if !GOOGLE_PROTOBUF_REFSTRUCT_COMPATIBILITY_MODE
+      output.WriteRawMessage(this);
+    #else
       if (Location.Length != 0) {
         output.WriteRawTag(10);
         output.WriteString(Location);
       }
-      if (Type != 0) {
+      if (Type != global::Google.Cloud.Spanner.Admin.Instance.V1.ReplicaInfo.Types.ReplicaType.TypeUnspecified) {
         output.WriteRawTag(16);
         output.WriteEnum((int) Type);
       }
@@ -299,7 +307,29 @@ namespace Google.Cloud.Spanner.Admin.Instance.V1 {
       if (_unknownFields != null) {
         _unknownFields.WriteTo(output);
       }
+    #endif
     }
+
+    #if !GOOGLE_PROTOBUF_REFSTRUCT_COMPATIBILITY_MODE
+    [global::System.Diagnostics.DebuggerNonUserCodeAttribute]
+    void pb::IBufferMessage.InternalWriteTo(ref pb::WriteContext output) {
+      if (Location.Length != 0) {
+        output.WriteRawTag(10);
+        output.WriteString(Location);
+      }
+      if (Type != global::Google.Cloud.Spanner.Admin.Instance.V1.ReplicaInfo.Types.ReplicaType.TypeUnspecified) {
+        output.WriteRawTag(16);
+        output.WriteEnum((int) Type);
+      }
+      if (DefaultLeaderLocation != false) {
+        output.WriteRawTag(24);
+        output.WriteBool(DefaultLeaderLocation);
+      }
+      if (_unknownFields != null) {
+        _unknownFields.WriteTo(ref output);
+      }
+    }
+    #endif
 
     [global::System.Diagnostics.DebuggerNonUserCodeAttribute]
     public int CalculateSize() {
@@ -307,7 +337,7 @@ namespace Google.Cloud.Spanner.Admin.Instance.V1 {
       if (Location.Length != 0) {
         size += 1 + pb::CodedOutputStream.ComputeStringSize(Location);
       }
-      if (Type != 0) {
+      if (Type != global::Google.Cloud.Spanner.Admin.Instance.V1.ReplicaInfo.Types.ReplicaType.TypeUnspecified) {
         size += 1 + pb::CodedOutputStream.ComputeEnumSize((int) Type);
       }
       if (DefaultLeaderLocation != false) {
@@ -327,7 +357,7 @@ namespace Google.Cloud.Spanner.Admin.Instance.V1 {
       if (other.Location.Length != 0) {
         Location = other.Location;
       }
-      if (other.Type != 0) {
+      if (other.Type != global::Google.Cloud.Spanner.Admin.Instance.V1.ReplicaInfo.Types.ReplicaType.TypeUnspecified) {
         Type = other.Type;
       }
       if (other.DefaultLeaderLocation != false) {
@@ -338,6 +368,9 @@ namespace Google.Cloud.Spanner.Admin.Instance.V1 {
 
     [global::System.Diagnostics.DebuggerNonUserCodeAttribute]
     public void MergeFrom(pb::CodedInputStream input) {
+    #if !GOOGLE_PROTOBUF_REFSTRUCT_COMPATIBILITY_MODE
+      input.ReadRawMessage(this);
+    #else
       uint tag;
       while ((tag = input.ReadTag()) != 0) {
         switch(tag) {
@@ -358,7 +391,34 @@ namespace Google.Cloud.Spanner.Admin.Instance.V1 {
           }
         }
       }
+    #endif
     }
+
+    #if !GOOGLE_PROTOBUF_REFSTRUCT_COMPATIBILITY_MODE
+    [global::System.Diagnostics.DebuggerNonUserCodeAttribute]
+    void pb::IBufferMessage.InternalMergeFrom(ref pb::ParseContext input) {
+      uint tag;
+      while ((tag = input.ReadTag()) != 0) {
+        switch(tag) {
+          default:
+            _unknownFields = pb::UnknownFieldSet.MergeFieldFrom(_unknownFields, ref input);
+            break;
+          case 10: {
+            Location = input.ReadString();
+            break;
+          }
+          case 16: {
+            Type = (global::Google.Cloud.Spanner.Admin.Instance.V1.ReplicaInfo.Types.ReplicaType) input.ReadEnum();
+            break;
+          }
+          case 24: {
+            DefaultLeaderLocation = input.ReadBool();
+            break;
+          }
+        }
+      }
+    }
+    #endif
 
     #region Nested types
     /// <summary>Container for nested types declared in the ReplicaInfo message type.</summary>
@@ -414,7 +474,11 @@ namespace Google.Cloud.Spanner.Admin.Instance.V1 {
   /// A possible configuration for a Cloud Spanner instance. Configurations
   /// define the geographic placement of nodes and their replication.
   /// </summary>
-  public sealed partial class InstanceConfig : pb::IMessage<InstanceConfig> {
+  public sealed partial class InstanceConfig : pb::IMessage<InstanceConfig>
+  #if !GOOGLE_PROTOBUF_REFSTRUCT_COMPATIBILITY_MODE
+      , pb::IBufferMessage
+  #endif
+  {
     private static readonly pb::MessageParser<InstanceConfig> _parser = new pb::MessageParser<InstanceConfig>(() => new InstanceConfig());
     private pb::UnknownFieldSet _unknownFields;
     [global::System.Diagnostics.DebuggerNonUserCodeAttribute]
@@ -532,6 +596,9 @@ namespace Google.Cloud.Spanner.Admin.Instance.V1 {
 
     [global::System.Diagnostics.DebuggerNonUserCodeAttribute]
     public void WriteTo(pb::CodedOutputStream output) {
+    #if !GOOGLE_PROTOBUF_REFSTRUCT_COMPATIBILITY_MODE
+      output.WriteRawMessage(this);
+    #else
       if (Name.Length != 0) {
         output.WriteRawTag(10);
         output.WriteString(Name);
@@ -544,7 +611,26 @@ namespace Google.Cloud.Spanner.Admin.Instance.V1 {
       if (_unknownFields != null) {
         _unknownFields.WriteTo(output);
       }
+    #endif
     }
+
+    #if !GOOGLE_PROTOBUF_REFSTRUCT_COMPATIBILITY_MODE
+    [global::System.Diagnostics.DebuggerNonUserCodeAttribute]
+    void pb::IBufferMessage.InternalWriteTo(ref pb::WriteContext output) {
+      if (Name.Length != 0) {
+        output.WriteRawTag(10);
+        output.WriteString(Name);
+      }
+      if (DisplayName.Length != 0) {
+        output.WriteRawTag(18);
+        output.WriteString(DisplayName);
+      }
+      replicas_.WriteTo(ref output, _repeated_replicas_codec);
+      if (_unknownFields != null) {
+        _unknownFields.WriteTo(ref output);
+      }
+    }
+    #endif
 
     [global::System.Diagnostics.DebuggerNonUserCodeAttribute]
     public int CalculateSize() {
@@ -579,6 +665,9 @@ namespace Google.Cloud.Spanner.Admin.Instance.V1 {
 
     [global::System.Diagnostics.DebuggerNonUserCodeAttribute]
     public void MergeFrom(pb::CodedInputStream input) {
+    #if !GOOGLE_PROTOBUF_REFSTRUCT_COMPATIBILITY_MODE
+      input.ReadRawMessage(this);
+    #else
       uint tag;
       while ((tag = input.ReadTag()) != 0) {
         switch(tag) {
@@ -599,14 +688,45 @@ namespace Google.Cloud.Spanner.Admin.Instance.V1 {
           }
         }
       }
+    #endif
     }
+
+    #if !GOOGLE_PROTOBUF_REFSTRUCT_COMPATIBILITY_MODE
+    [global::System.Diagnostics.DebuggerNonUserCodeAttribute]
+    void pb::IBufferMessage.InternalMergeFrom(ref pb::ParseContext input) {
+      uint tag;
+      while ((tag = input.ReadTag()) != 0) {
+        switch(tag) {
+          default:
+            _unknownFields = pb::UnknownFieldSet.MergeFieldFrom(_unknownFields, ref input);
+            break;
+          case 10: {
+            Name = input.ReadString();
+            break;
+          }
+          case 18: {
+            DisplayName = input.ReadString();
+            break;
+          }
+          case 26: {
+            replicas_.AddEntriesFrom(ref input, _repeated_replicas_codec);
+            break;
+          }
+        }
+      }
+    }
+    #endif
 
   }
 
   /// <summary>
   /// An isolated set of Cloud Spanner resources on which databases can be hosted.
   /// </summary>
-  public sealed partial class Instance : pb::IMessage<Instance> {
+  public sealed partial class Instance : pb::IMessage<Instance>
+  #if !GOOGLE_PROTOBUF_REFSTRUCT_COMPATIBILITY_MODE
+      , pb::IBufferMessage
+  #endif
+  {
     private static readonly pb::MessageParser<Instance> _parser = new pb::MessageParser<Instance>(() => new Instance());
     private pb::UnknownFieldSet _unknownFields;
     [global::System.Diagnostics.DebuggerNonUserCodeAttribute]
@@ -716,7 +836,7 @@ namespace Google.Cloud.Spanner.Admin.Instance.V1 {
 
     /// <summary>Field number for the "state" field.</summary>
     public const int StateFieldNumber = 6;
-    private global::Google.Cloud.Spanner.Admin.Instance.V1.Instance.Types.State state_ = 0;
+    private global::Google.Cloud.Spanner.Admin.Instance.V1.Instance.Types.State state_ = global::Google.Cloud.Spanner.Admin.Instance.V1.Instance.Types.State.Unspecified;
     /// <summary>
     /// Output only. The current instance state. For
     /// [CreateInstance][google.spanner.admin.instance.v1.InstanceAdmin.CreateInstance], the state must be
@@ -735,7 +855,7 @@ namespace Google.Cloud.Spanner.Admin.Instance.V1 {
     /// <summary>Field number for the "labels" field.</summary>
     public const int LabelsFieldNumber = 7;
     private static readonly pbc::MapField<string, string>.Codec _map_labels_codec
-        = new pbc::MapField<string, string>.Codec(pb::FieldCodec.ForString(10), pb::FieldCodec.ForString(18), 58);
+        = new pbc::MapField<string, string>.Codec(pb::FieldCodec.ForString(10, ""), pb::FieldCodec.ForString(18, ""), 58);
     private readonly pbc::MapField<string, string> labels_ = new pbc::MapField<string, string>();
     /// <summary>
     /// Cloud Labels are a flexible and lightweight mechanism for organizing cloud
@@ -771,14 +891,7 @@ namespace Google.Cloud.Spanner.Admin.Instance.V1 {
         = pb::FieldCodec.ForString(66);
     private readonly pbc::RepeatedField<string> endpointUris_ = new pbc::RepeatedField<string>();
     /// <summary>
-    /// Output only. The endpoint URIs based on the instance config.
-    /// For example, instances located in a specific cloud region (or multi region)
-    /// such as nam3, would have a nam3 specific endpoint URI.
-    /// This URI is to be used implictly by SDK clients, with fallback to default
-    /// URI. These endpoints are intended to optimize the network routing between
-    /// the client and the instance's serving resources.
-    /// If multiple endpoints are present, client may establish connections using
-    /// any of the given URIs.
+    /// Deprecated. This field is not populated.
     /// </summary>
     [global::System.Diagnostics.DebuggerNonUserCodeAttribute]
     public pbc::RepeatedField<string> EndpointUris {
@@ -815,7 +928,7 @@ namespace Google.Cloud.Spanner.Admin.Instance.V1 {
       if (Config.Length != 0) hash ^= Config.GetHashCode();
       if (DisplayName.Length != 0) hash ^= DisplayName.GetHashCode();
       if (NodeCount != 0) hash ^= NodeCount.GetHashCode();
-      if (State != 0) hash ^= State.GetHashCode();
+      if (State != global::Google.Cloud.Spanner.Admin.Instance.V1.Instance.Types.State.Unspecified) hash ^= State.GetHashCode();
       hash ^= Labels.GetHashCode();
       hash ^= endpointUris_.GetHashCode();
       if (_unknownFields != null) {
@@ -831,6 +944,9 @@ namespace Google.Cloud.Spanner.Admin.Instance.V1 {
 
     [global::System.Diagnostics.DebuggerNonUserCodeAttribute]
     public void WriteTo(pb::CodedOutputStream output) {
+    #if !GOOGLE_PROTOBUF_REFSTRUCT_COMPATIBILITY_MODE
+      output.WriteRawMessage(this);
+    #else
       if (Name.Length != 0) {
         output.WriteRawTag(10);
         output.WriteString(Name);
@@ -847,7 +963,7 @@ namespace Google.Cloud.Spanner.Admin.Instance.V1 {
         output.WriteRawTag(40);
         output.WriteInt32(NodeCount);
       }
-      if (State != 0) {
+      if (State != global::Google.Cloud.Spanner.Admin.Instance.V1.Instance.Types.State.Unspecified) {
         output.WriteRawTag(48);
         output.WriteEnum((int) State);
       }
@@ -856,7 +972,39 @@ namespace Google.Cloud.Spanner.Admin.Instance.V1 {
       if (_unknownFields != null) {
         _unknownFields.WriteTo(output);
       }
+    #endif
     }
+
+    #if !GOOGLE_PROTOBUF_REFSTRUCT_COMPATIBILITY_MODE
+    [global::System.Diagnostics.DebuggerNonUserCodeAttribute]
+    void pb::IBufferMessage.InternalWriteTo(ref pb::WriteContext output) {
+      if (Name.Length != 0) {
+        output.WriteRawTag(10);
+        output.WriteString(Name);
+      }
+      if (Config.Length != 0) {
+        output.WriteRawTag(18);
+        output.WriteString(Config);
+      }
+      if (DisplayName.Length != 0) {
+        output.WriteRawTag(26);
+        output.WriteString(DisplayName);
+      }
+      if (NodeCount != 0) {
+        output.WriteRawTag(40);
+        output.WriteInt32(NodeCount);
+      }
+      if (State != global::Google.Cloud.Spanner.Admin.Instance.V1.Instance.Types.State.Unspecified) {
+        output.WriteRawTag(48);
+        output.WriteEnum((int) State);
+      }
+      labels_.WriteTo(ref output, _map_labels_codec);
+      endpointUris_.WriteTo(ref output, _repeated_endpointUris_codec);
+      if (_unknownFields != null) {
+        _unknownFields.WriteTo(ref output);
+      }
+    }
+    #endif
 
     [global::System.Diagnostics.DebuggerNonUserCodeAttribute]
     public int CalculateSize() {
@@ -873,7 +1021,7 @@ namespace Google.Cloud.Spanner.Admin.Instance.V1 {
       if (NodeCount != 0) {
         size += 1 + pb::CodedOutputStream.ComputeInt32Size(NodeCount);
       }
-      if (State != 0) {
+      if (State != global::Google.Cloud.Spanner.Admin.Instance.V1.Instance.Types.State.Unspecified) {
         size += 1 + pb::CodedOutputStream.ComputeEnumSize((int) State);
       }
       size += labels_.CalculateSize(_map_labels_codec);
@@ -901,7 +1049,7 @@ namespace Google.Cloud.Spanner.Admin.Instance.V1 {
       if (other.NodeCount != 0) {
         NodeCount = other.NodeCount;
       }
-      if (other.State != 0) {
+      if (other.State != global::Google.Cloud.Spanner.Admin.Instance.V1.Instance.Types.State.Unspecified) {
         State = other.State;
       }
       labels_.Add(other.labels_);
@@ -911,6 +1059,9 @@ namespace Google.Cloud.Spanner.Admin.Instance.V1 {
 
     [global::System.Diagnostics.DebuggerNonUserCodeAttribute]
     public void MergeFrom(pb::CodedInputStream input) {
+    #if !GOOGLE_PROTOBUF_REFSTRUCT_COMPATIBILITY_MODE
+      input.ReadRawMessage(this);
+    #else
       uint tag;
       while ((tag = input.ReadTag()) != 0) {
         switch(tag) {
@@ -947,7 +1098,50 @@ namespace Google.Cloud.Spanner.Admin.Instance.V1 {
           }
         }
       }
+    #endif
     }
+
+    #if !GOOGLE_PROTOBUF_REFSTRUCT_COMPATIBILITY_MODE
+    [global::System.Diagnostics.DebuggerNonUserCodeAttribute]
+    void pb::IBufferMessage.InternalMergeFrom(ref pb::ParseContext input) {
+      uint tag;
+      while ((tag = input.ReadTag()) != 0) {
+        switch(tag) {
+          default:
+            _unknownFields = pb::UnknownFieldSet.MergeFieldFrom(_unknownFields, ref input);
+            break;
+          case 10: {
+            Name = input.ReadString();
+            break;
+          }
+          case 18: {
+            Config = input.ReadString();
+            break;
+          }
+          case 26: {
+            DisplayName = input.ReadString();
+            break;
+          }
+          case 40: {
+            NodeCount = input.ReadInt32();
+            break;
+          }
+          case 48: {
+            State = (global::Google.Cloud.Spanner.Admin.Instance.V1.Instance.Types.State) input.ReadEnum();
+            break;
+          }
+          case 58: {
+            labels_.AddEntriesFrom(ref input, _map_labels_codec);
+            break;
+          }
+          case 66: {
+            endpointUris_.AddEntriesFrom(ref input, _repeated_endpointUris_codec);
+            break;
+          }
+        }
+      }
+    }
+    #endif
 
     #region Nested types
     /// <summary>Container for nested types declared in the Instance message type.</summary>
@@ -982,7 +1176,11 @@ namespace Google.Cloud.Spanner.Admin.Instance.V1 {
   /// <summary>
   /// The request for [ListInstanceConfigs][google.spanner.admin.instance.v1.InstanceAdmin.ListInstanceConfigs].
   /// </summary>
-  public sealed partial class ListInstanceConfigsRequest : pb::IMessage<ListInstanceConfigsRequest> {
+  public sealed partial class ListInstanceConfigsRequest : pb::IMessage<ListInstanceConfigsRequest>
+  #if !GOOGLE_PROTOBUF_REFSTRUCT_COMPATIBILITY_MODE
+      , pb::IBufferMessage
+  #endif
+  {
     private static readonly pb::MessageParser<ListInstanceConfigsRequest> _parser = new pb::MessageParser<ListInstanceConfigsRequest>(() => new ListInstanceConfigsRequest());
     private pb::UnknownFieldSet _unknownFields;
     [global::System.Diagnostics.DebuggerNonUserCodeAttribute]
@@ -1103,6 +1301,9 @@ namespace Google.Cloud.Spanner.Admin.Instance.V1 {
 
     [global::System.Diagnostics.DebuggerNonUserCodeAttribute]
     public void WriteTo(pb::CodedOutputStream output) {
+    #if !GOOGLE_PROTOBUF_REFSTRUCT_COMPATIBILITY_MODE
+      output.WriteRawMessage(this);
+    #else
       if (Parent.Length != 0) {
         output.WriteRawTag(10);
         output.WriteString(Parent);
@@ -1118,7 +1319,29 @@ namespace Google.Cloud.Spanner.Admin.Instance.V1 {
       if (_unknownFields != null) {
         _unknownFields.WriteTo(output);
       }
+    #endif
     }
+
+    #if !GOOGLE_PROTOBUF_REFSTRUCT_COMPATIBILITY_MODE
+    [global::System.Diagnostics.DebuggerNonUserCodeAttribute]
+    void pb::IBufferMessage.InternalWriteTo(ref pb::WriteContext output) {
+      if (Parent.Length != 0) {
+        output.WriteRawTag(10);
+        output.WriteString(Parent);
+      }
+      if (PageSize != 0) {
+        output.WriteRawTag(16);
+        output.WriteInt32(PageSize);
+      }
+      if (PageToken.Length != 0) {
+        output.WriteRawTag(26);
+        output.WriteString(PageToken);
+      }
+      if (_unknownFields != null) {
+        _unknownFields.WriteTo(ref output);
+      }
+    }
+    #endif
 
     [global::System.Diagnostics.DebuggerNonUserCodeAttribute]
     public int CalculateSize() {
@@ -1157,6 +1380,9 @@ namespace Google.Cloud.Spanner.Admin.Instance.V1 {
 
     [global::System.Diagnostics.DebuggerNonUserCodeAttribute]
     public void MergeFrom(pb::CodedInputStream input) {
+    #if !GOOGLE_PROTOBUF_REFSTRUCT_COMPATIBILITY_MODE
+      input.ReadRawMessage(this);
+    #else
       uint tag;
       while ((tag = input.ReadTag()) != 0) {
         switch(tag) {
@@ -1177,14 +1403,45 @@ namespace Google.Cloud.Spanner.Admin.Instance.V1 {
           }
         }
       }
+    #endif
     }
+
+    #if !GOOGLE_PROTOBUF_REFSTRUCT_COMPATIBILITY_MODE
+    [global::System.Diagnostics.DebuggerNonUserCodeAttribute]
+    void pb::IBufferMessage.InternalMergeFrom(ref pb::ParseContext input) {
+      uint tag;
+      while ((tag = input.ReadTag()) != 0) {
+        switch(tag) {
+          default:
+            _unknownFields = pb::UnknownFieldSet.MergeFieldFrom(_unknownFields, ref input);
+            break;
+          case 10: {
+            Parent = input.ReadString();
+            break;
+          }
+          case 16: {
+            PageSize = input.ReadInt32();
+            break;
+          }
+          case 26: {
+            PageToken = input.ReadString();
+            break;
+          }
+        }
+      }
+    }
+    #endif
 
   }
 
   /// <summary>
   /// The response for [ListInstanceConfigs][google.spanner.admin.instance.v1.InstanceAdmin.ListInstanceConfigs].
   /// </summary>
-  public sealed partial class ListInstanceConfigsResponse : pb::IMessage<ListInstanceConfigsResponse> {
+  public sealed partial class ListInstanceConfigsResponse : pb::IMessage<ListInstanceConfigsResponse>
+  #if !GOOGLE_PROTOBUF_REFSTRUCT_COMPATIBILITY_MODE
+      , pb::IBufferMessage
+  #endif
+  {
     private static readonly pb::MessageParser<ListInstanceConfigsResponse> _parser = new pb::MessageParser<ListInstanceConfigsResponse>(() => new ListInstanceConfigsResponse());
     private pb::UnknownFieldSet _unknownFields;
     [global::System.Diagnostics.DebuggerNonUserCodeAttribute]
@@ -1284,6 +1541,9 @@ namespace Google.Cloud.Spanner.Admin.Instance.V1 {
 
     [global::System.Diagnostics.DebuggerNonUserCodeAttribute]
     public void WriteTo(pb::CodedOutputStream output) {
+    #if !GOOGLE_PROTOBUF_REFSTRUCT_COMPATIBILITY_MODE
+      output.WriteRawMessage(this);
+    #else
       instanceConfigs_.WriteTo(output, _repeated_instanceConfigs_codec);
       if (NextPageToken.Length != 0) {
         output.WriteRawTag(18);
@@ -1292,7 +1552,22 @@ namespace Google.Cloud.Spanner.Admin.Instance.V1 {
       if (_unknownFields != null) {
         _unknownFields.WriteTo(output);
       }
+    #endif
     }
+
+    #if !GOOGLE_PROTOBUF_REFSTRUCT_COMPATIBILITY_MODE
+    [global::System.Diagnostics.DebuggerNonUserCodeAttribute]
+    void pb::IBufferMessage.InternalWriteTo(ref pb::WriteContext output) {
+      instanceConfigs_.WriteTo(ref output, _repeated_instanceConfigs_codec);
+      if (NextPageToken.Length != 0) {
+        output.WriteRawTag(18);
+        output.WriteString(NextPageToken);
+      }
+      if (_unknownFields != null) {
+        _unknownFields.WriteTo(ref output);
+      }
+    }
+    #endif
 
     [global::System.Diagnostics.DebuggerNonUserCodeAttribute]
     public int CalculateSize() {
@@ -1321,6 +1596,9 @@ namespace Google.Cloud.Spanner.Admin.Instance.V1 {
 
     [global::System.Diagnostics.DebuggerNonUserCodeAttribute]
     public void MergeFrom(pb::CodedInputStream input) {
+    #if !GOOGLE_PROTOBUF_REFSTRUCT_COMPATIBILITY_MODE
+      input.ReadRawMessage(this);
+    #else
       uint tag;
       while ((tag = input.ReadTag()) != 0) {
         switch(tag) {
@@ -1337,7 +1615,30 @@ namespace Google.Cloud.Spanner.Admin.Instance.V1 {
           }
         }
       }
+    #endif
     }
+
+    #if !GOOGLE_PROTOBUF_REFSTRUCT_COMPATIBILITY_MODE
+    [global::System.Diagnostics.DebuggerNonUserCodeAttribute]
+    void pb::IBufferMessage.InternalMergeFrom(ref pb::ParseContext input) {
+      uint tag;
+      while ((tag = input.ReadTag()) != 0) {
+        switch(tag) {
+          default:
+            _unknownFields = pb::UnknownFieldSet.MergeFieldFrom(_unknownFields, ref input);
+            break;
+          case 10: {
+            instanceConfigs_.AddEntriesFrom(ref input, _repeated_instanceConfigs_codec);
+            break;
+          }
+          case 18: {
+            NextPageToken = input.ReadString();
+            break;
+          }
+        }
+      }
+    }
+    #endif
 
   }
 
@@ -1345,7 +1646,11 @@ namespace Google.Cloud.Spanner.Admin.Instance.V1 {
   /// The request for
   /// [GetInstanceConfigRequest][google.spanner.admin.instance.v1.InstanceAdmin.GetInstanceConfig].
   /// </summary>
-  public sealed partial class GetInstanceConfigRequest : pb::IMessage<GetInstanceConfigRequest> {
+  public sealed partial class GetInstanceConfigRequest : pb::IMessage<GetInstanceConfigRequest>
+  #if !GOOGLE_PROTOBUF_REFSTRUCT_COMPATIBILITY_MODE
+      , pb::IBufferMessage
+  #endif
+  {
     private static readonly pb::MessageParser<GetInstanceConfigRequest> _parser = new pb::MessageParser<GetInstanceConfigRequest>(() => new GetInstanceConfigRequest());
     private pb::UnknownFieldSet _unknownFields;
     [global::System.Diagnostics.DebuggerNonUserCodeAttribute]
@@ -1428,6 +1733,9 @@ namespace Google.Cloud.Spanner.Admin.Instance.V1 {
 
     [global::System.Diagnostics.DebuggerNonUserCodeAttribute]
     public void WriteTo(pb::CodedOutputStream output) {
+    #if !GOOGLE_PROTOBUF_REFSTRUCT_COMPATIBILITY_MODE
+      output.WriteRawMessage(this);
+    #else
       if (Name.Length != 0) {
         output.WriteRawTag(10);
         output.WriteString(Name);
@@ -1435,7 +1743,21 @@ namespace Google.Cloud.Spanner.Admin.Instance.V1 {
       if (_unknownFields != null) {
         _unknownFields.WriteTo(output);
       }
+    #endif
     }
+
+    #if !GOOGLE_PROTOBUF_REFSTRUCT_COMPATIBILITY_MODE
+    [global::System.Diagnostics.DebuggerNonUserCodeAttribute]
+    void pb::IBufferMessage.InternalWriteTo(ref pb::WriteContext output) {
+      if (Name.Length != 0) {
+        output.WriteRawTag(10);
+        output.WriteString(Name);
+      }
+      if (_unknownFields != null) {
+        _unknownFields.WriteTo(ref output);
+      }
+    }
+    #endif
 
     [global::System.Diagnostics.DebuggerNonUserCodeAttribute]
     public int CalculateSize() {
@@ -1462,6 +1784,9 @@ namespace Google.Cloud.Spanner.Admin.Instance.V1 {
 
     [global::System.Diagnostics.DebuggerNonUserCodeAttribute]
     public void MergeFrom(pb::CodedInputStream input) {
+    #if !GOOGLE_PROTOBUF_REFSTRUCT_COMPATIBILITY_MODE
+      input.ReadRawMessage(this);
+    #else
       uint tag;
       while ((tag = input.ReadTag()) != 0) {
         switch(tag) {
@@ -1474,14 +1799,37 @@ namespace Google.Cloud.Spanner.Admin.Instance.V1 {
           }
         }
       }
+    #endif
     }
+
+    #if !GOOGLE_PROTOBUF_REFSTRUCT_COMPATIBILITY_MODE
+    [global::System.Diagnostics.DebuggerNonUserCodeAttribute]
+    void pb::IBufferMessage.InternalMergeFrom(ref pb::ParseContext input) {
+      uint tag;
+      while ((tag = input.ReadTag()) != 0) {
+        switch(tag) {
+          default:
+            _unknownFields = pb::UnknownFieldSet.MergeFieldFrom(_unknownFields, ref input);
+            break;
+          case 10: {
+            Name = input.ReadString();
+            break;
+          }
+        }
+      }
+    }
+    #endif
 
   }
 
   /// <summary>
   /// The request for [GetInstance][google.spanner.admin.instance.v1.InstanceAdmin.GetInstance].
   /// </summary>
-  public sealed partial class GetInstanceRequest : pb::IMessage<GetInstanceRequest> {
+  public sealed partial class GetInstanceRequest : pb::IMessage<GetInstanceRequest>
+  #if !GOOGLE_PROTOBUF_REFSTRUCT_COMPATIBILITY_MODE
+      , pb::IBufferMessage
+  #endif
+  {
     private static readonly pb::MessageParser<GetInstanceRequest> _parser = new pb::MessageParser<GetInstanceRequest>(() => new GetInstanceRequest());
     private pb::UnknownFieldSet _unknownFields;
     [global::System.Diagnostics.DebuggerNonUserCodeAttribute]
@@ -1535,9 +1883,9 @@ namespace Google.Cloud.Spanner.Admin.Instance.V1 {
     public const int FieldMaskFieldNumber = 2;
     private global::Google.Protobuf.WellKnownTypes.FieldMask fieldMask_;
     /// <summary>
-    /// If field_mask is present, specifies the subset of [][Instance] fields that
+    /// If field_mask is present, specifies the subset of [Instance][google.spanner.admin.instance.v1.Instance] fields that
     /// should be returned.
-    /// If absent, all [][Instance] fields are returned.
+    /// If absent, all [Instance][google.spanner.admin.instance.v1.Instance] fields are returned.
     /// </summary>
     [global::System.Diagnostics.DebuggerNonUserCodeAttribute]
     public global::Google.Protobuf.WellKnownTypes.FieldMask FieldMask {
@@ -1583,6 +1931,9 @@ namespace Google.Cloud.Spanner.Admin.Instance.V1 {
 
     [global::System.Diagnostics.DebuggerNonUserCodeAttribute]
     public void WriteTo(pb::CodedOutputStream output) {
+    #if !GOOGLE_PROTOBUF_REFSTRUCT_COMPATIBILITY_MODE
+      output.WriteRawMessage(this);
+    #else
       if (Name.Length != 0) {
         output.WriteRawTag(10);
         output.WriteString(Name);
@@ -1594,7 +1945,25 @@ namespace Google.Cloud.Spanner.Admin.Instance.V1 {
       if (_unknownFields != null) {
         _unknownFields.WriteTo(output);
       }
+    #endif
     }
+
+    #if !GOOGLE_PROTOBUF_REFSTRUCT_COMPATIBILITY_MODE
+    [global::System.Diagnostics.DebuggerNonUserCodeAttribute]
+    void pb::IBufferMessage.InternalWriteTo(ref pb::WriteContext output) {
+      if (Name.Length != 0) {
+        output.WriteRawTag(10);
+        output.WriteString(Name);
+      }
+      if (fieldMask_ != null) {
+        output.WriteRawTag(18);
+        output.WriteMessage(FieldMask);
+      }
+      if (_unknownFields != null) {
+        _unknownFields.WriteTo(ref output);
+      }
+    }
+    #endif
 
     [global::System.Diagnostics.DebuggerNonUserCodeAttribute]
     public int CalculateSize() {
@@ -1630,6 +1999,9 @@ namespace Google.Cloud.Spanner.Admin.Instance.V1 {
 
     [global::System.Diagnostics.DebuggerNonUserCodeAttribute]
     public void MergeFrom(pb::CodedInputStream input) {
+    #if !GOOGLE_PROTOBUF_REFSTRUCT_COMPATIBILITY_MODE
+      input.ReadRawMessage(this);
+    #else
       uint tag;
       while ((tag = input.ReadTag()) != 0) {
         switch(tag) {
@@ -1649,14 +2021,44 @@ namespace Google.Cloud.Spanner.Admin.Instance.V1 {
           }
         }
       }
+    #endif
     }
+
+    #if !GOOGLE_PROTOBUF_REFSTRUCT_COMPATIBILITY_MODE
+    [global::System.Diagnostics.DebuggerNonUserCodeAttribute]
+    void pb::IBufferMessage.InternalMergeFrom(ref pb::ParseContext input) {
+      uint tag;
+      while ((tag = input.ReadTag()) != 0) {
+        switch(tag) {
+          default:
+            _unknownFields = pb::UnknownFieldSet.MergeFieldFrom(_unknownFields, ref input);
+            break;
+          case 10: {
+            Name = input.ReadString();
+            break;
+          }
+          case 18: {
+            if (fieldMask_ == null) {
+              FieldMask = new global::Google.Protobuf.WellKnownTypes.FieldMask();
+            }
+            input.ReadMessage(FieldMask);
+            break;
+          }
+        }
+      }
+    }
+    #endif
 
   }
 
   /// <summary>
   /// The request for [CreateInstance][google.spanner.admin.instance.v1.InstanceAdmin.CreateInstance].
   /// </summary>
-  public sealed partial class CreateInstanceRequest : pb::IMessage<CreateInstanceRequest> {
+  public sealed partial class CreateInstanceRequest : pb::IMessage<CreateInstanceRequest>
+  #if !GOOGLE_PROTOBUF_REFSTRUCT_COMPATIBILITY_MODE
+      , pb::IBufferMessage
+  #endif
+  {
     private static readonly pb::MessageParser<CreateInstanceRequest> _parser = new pb::MessageParser<CreateInstanceRequest>(() => new CreateInstanceRequest());
     private pb::UnknownFieldSet _unknownFields;
     [global::System.Diagnostics.DebuggerNonUserCodeAttribute]
@@ -1776,6 +2178,9 @@ namespace Google.Cloud.Spanner.Admin.Instance.V1 {
 
     [global::System.Diagnostics.DebuggerNonUserCodeAttribute]
     public void WriteTo(pb::CodedOutputStream output) {
+    #if !GOOGLE_PROTOBUF_REFSTRUCT_COMPATIBILITY_MODE
+      output.WriteRawMessage(this);
+    #else
       if (Parent.Length != 0) {
         output.WriteRawTag(10);
         output.WriteString(Parent);
@@ -1791,7 +2196,29 @@ namespace Google.Cloud.Spanner.Admin.Instance.V1 {
       if (_unknownFields != null) {
         _unknownFields.WriteTo(output);
       }
+    #endif
     }
+
+    #if !GOOGLE_PROTOBUF_REFSTRUCT_COMPATIBILITY_MODE
+    [global::System.Diagnostics.DebuggerNonUserCodeAttribute]
+    void pb::IBufferMessage.InternalWriteTo(ref pb::WriteContext output) {
+      if (Parent.Length != 0) {
+        output.WriteRawTag(10);
+        output.WriteString(Parent);
+      }
+      if (InstanceId.Length != 0) {
+        output.WriteRawTag(18);
+        output.WriteString(InstanceId);
+      }
+      if (instance_ != null) {
+        output.WriteRawTag(26);
+        output.WriteMessage(Instance);
+      }
+      if (_unknownFields != null) {
+        _unknownFields.WriteTo(ref output);
+      }
+    }
+    #endif
 
     [global::System.Diagnostics.DebuggerNonUserCodeAttribute]
     public int CalculateSize() {
@@ -1833,6 +2260,9 @@ namespace Google.Cloud.Spanner.Admin.Instance.V1 {
 
     [global::System.Diagnostics.DebuggerNonUserCodeAttribute]
     public void MergeFrom(pb::CodedInputStream input) {
+    #if !GOOGLE_PROTOBUF_REFSTRUCT_COMPATIBILITY_MODE
+      input.ReadRawMessage(this);
+    #else
       uint tag;
       while ((tag = input.ReadTag()) != 0) {
         switch(tag) {
@@ -1856,14 +2286,48 @@ namespace Google.Cloud.Spanner.Admin.Instance.V1 {
           }
         }
       }
+    #endif
     }
+
+    #if !GOOGLE_PROTOBUF_REFSTRUCT_COMPATIBILITY_MODE
+    [global::System.Diagnostics.DebuggerNonUserCodeAttribute]
+    void pb::IBufferMessage.InternalMergeFrom(ref pb::ParseContext input) {
+      uint tag;
+      while ((tag = input.ReadTag()) != 0) {
+        switch(tag) {
+          default:
+            _unknownFields = pb::UnknownFieldSet.MergeFieldFrom(_unknownFields, ref input);
+            break;
+          case 10: {
+            Parent = input.ReadString();
+            break;
+          }
+          case 18: {
+            InstanceId = input.ReadString();
+            break;
+          }
+          case 26: {
+            if (instance_ == null) {
+              Instance = new global::Google.Cloud.Spanner.Admin.Instance.V1.Instance();
+            }
+            input.ReadMessage(Instance);
+            break;
+          }
+        }
+      }
+    }
+    #endif
 
   }
 
   /// <summary>
   /// The request for [ListInstances][google.spanner.admin.instance.v1.InstanceAdmin.ListInstances].
   /// </summary>
-  public sealed partial class ListInstancesRequest : pb::IMessage<ListInstancesRequest> {
+  public sealed partial class ListInstancesRequest : pb::IMessage<ListInstancesRequest>
+  #if !GOOGLE_PROTOBUF_REFSTRUCT_COMPATIBILITY_MODE
+      , pb::IBufferMessage
+  #endif
+  {
     private static readonly pb::MessageParser<ListInstancesRequest> _parser = new pb::MessageParser<ListInstancesRequest>(() => new ListInstancesRequest());
     private pb::UnknownFieldSet _unknownFields;
     [global::System.Diagnostics.DebuggerNonUserCodeAttribute]
@@ -2018,6 +2482,9 @@ namespace Google.Cloud.Spanner.Admin.Instance.V1 {
 
     [global::System.Diagnostics.DebuggerNonUserCodeAttribute]
     public void WriteTo(pb::CodedOutputStream output) {
+    #if !GOOGLE_PROTOBUF_REFSTRUCT_COMPATIBILITY_MODE
+      output.WriteRawMessage(this);
+    #else
       if (Parent.Length != 0) {
         output.WriteRawTag(10);
         output.WriteString(Parent);
@@ -2037,7 +2504,33 @@ namespace Google.Cloud.Spanner.Admin.Instance.V1 {
       if (_unknownFields != null) {
         _unknownFields.WriteTo(output);
       }
+    #endif
     }
+
+    #if !GOOGLE_PROTOBUF_REFSTRUCT_COMPATIBILITY_MODE
+    [global::System.Diagnostics.DebuggerNonUserCodeAttribute]
+    void pb::IBufferMessage.InternalWriteTo(ref pb::WriteContext output) {
+      if (Parent.Length != 0) {
+        output.WriteRawTag(10);
+        output.WriteString(Parent);
+      }
+      if (PageSize != 0) {
+        output.WriteRawTag(16);
+        output.WriteInt32(PageSize);
+      }
+      if (PageToken.Length != 0) {
+        output.WriteRawTag(26);
+        output.WriteString(PageToken);
+      }
+      if (Filter.Length != 0) {
+        output.WriteRawTag(34);
+        output.WriteString(Filter);
+      }
+      if (_unknownFields != null) {
+        _unknownFields.WriteTo(ref output);
+      }
+    }
+    #endif
 
     [global::System.Diagnostics.DebuggerNonUserCodeAttribute]
     public int CalculateSize() {
@@ -2082,6 +2575,9 @@ namespace Google.Cloud.Spanner.Admin.Instance.V1 {
 
     [global::System.Diagnostics.DebuggerNonUserCodeAttribute]
     public void MergeFrom(pb::CodedInputStream input) {
+    #if !GOOGLE_PROTOBUF_REFSTRUCT_COMPATIBILITY_MODE
+      input.ReadRawMessage(this);
+    #else
       uint tag;
       while ((tag = input.ReadTag()) != 0) {
         switch(tag) {
@@ -2106,14 +2602,49 @@ namespace Google.Cloud.Spanner.Admin.Instance.V1 {
           }
         }
       }
+    #endif
     }
+
+    #if !GOOGLE_PROTOBUF_REFSTRUCT_COMPATIBILITY_MODE
+    [global::System.Diagnostics.DebuggerNonUserCodeAttribute]
+    void pb::IBufferMessage.InternalMergeFrom(ref pb::ParseContext input) {
+      uint tag;
+      while ((tag = input.ReadTag()) != 0) {
+        switch(tag) {
+          default:
+            _unknownFields = pb::UnknownFieldSet.MergeFieldFrom(_unknownFields, ref input);
+            break;
+          case 10: {
+            Parent = input.ReadString();
+            break;
+          }
+          case 16: {
+            PageSize = input.ReadInt32();
+            break;
+          }
+          case 26: {
+            PageToken = input.ReadString();
+            break;
+          }
+          case 34: {
+            Filter = input.ReadString();
+            break;
+          }
+        }
+      }
+    }
+    #endif
 
   }
 
   /// <summary>
   /// The response for [ListInstances][google.spanner.admin.instance.v1.InstanceAdmin.ListInstances].
   /// </summary>
-  public sealed partial class ListInstancesResponse : pb::IMessage<ListInstancesResponse> {
+  public sealed partial class ListInstancesResponse : pb::IMessage<ListInstancesResponse>
+  #if !GOOGLE_PROTOBUF_REFSTRUCT_COMPATIBILITY_MODE
+      , pb::IBufferMessage
+  #endif
+  {
     private static readonly pb::MessageParser<ListInstancesResponse> _parser = new pb::MessageParser<ListInstancesResponse>(() => new ListInstancesResponse());
     private pb::UnknownFieldSet _unknownFields;
     [global::System.Diagnostics.DebuggerNonUserCodeAttribute]
@@ -2213,6 +2744,9 @@ namespace Google.Cloud.Spanner.Admin.Instance.V1 {
 
     [global::System.Diagnostics.DebuggerNonUserCodeAttribute]
     public void WriteTo(pb::CodedOutputStream output) {
+    #if !GOOGLE_PROTOBUF_REFSTRUCT_COMPATIBILITY_MODE
+      output.WriteRawMessage(this);
+    #else
       instances_.WriteTo(output, _repeated_instances_codec);
       if (NextPageToken.Length != 0) {
         output.WriteRawTag(18);
@@ -2221,7 +2755,22 @@ namespace Google.Cloud.Spanner.Admin.Instance.V1 {
       if (_unknownFields != null) {
         _unknownFields.WriteTo(output);
       }
+    #endif
     }
+
+    #if !GOOGLE_PROTOBUF_REFSTRUCT_COMPATIBILITY_MODE
+    [global::System.Diagnostics.DebuggerNonUserCodeAttribute]
+    void pb::IBufferMessage.InternalWriteTo(ref pb::WriteContext output) {
+      instances_.WriteTo(ref output, _repeated_instances_codec);
+      if (NextPageToken.Length != 0) {
+        output.WriteRawTag(18);
+        output.WriteString(NextPageToken);
+      }
+      if (_unknownFields != null) {
+        _unknownFields.WriteTo(ref output);
+      }
+    }
+    #endif
 
     [global::System.Diagnostics.DebuggerNonUserCodeAttribute]
     public int CalculateSize() {
@@ -2250,6 +2799,9 @@ namespace Google.Cloud.Spanner.Admin.Instance.V1 {
 
     [global::System.Diagnostics.DebuggerNonUserCodeAttribute]
     public void MergeFrom(pb::CodedInputStream input) {
+    #if !GOOGLE_PROTOBUF_REFSTRUCT_COMPATIBILITY_MODE
+      input.ReadRawMessage(this);
+    #else
       uint tag;
       while ((tag = input.ReadTag()) != 0) {
         switch(tag) {
@@ -2266,14 +2818,41 @@ namespace Google.Cloud.Spanner.Admin.Instance.V1 {
           }
         }
       }
+    #endif
     }
+
+    #if !GOOGLE_PROTOBUF_REFSTRUCT_COMPATIBILITY_MODE
+    [global::System.Diagnostics.DebuggerNonUserCodeAttribute]
+    void pb::IBufferMessage.InternalMergeFrom(ref pb::ParseContext input) {
+      uint tag;
+      while ((tag = input.ReadTag()) != 0) {
+        switch(tag) {
+          default:
+            _unknownFields = pb::UnknownFieldSet.MergeFieldFrom(_unknownFields, ref input);
+            break;
+          case 10: {
+            instances_.AddEntriesFrom(ref input, _repeated_instances_codec);
+            break;
+          }
+          case 18: {
+            NextPageToken = input.ReadString();
+            break;
+          }
+        }
+      }
+    }
+    #endif
 
   }
 
   /// <summary>
   /// The request for [UpdateInstance][google.spanner.admin.instance.v1.InstanceAdmin.UpdateInstance].
   /// </summary>
-  public sealed partial class UpdateInstanceRequest : pb::IMessage<UpdateInstanceRequest> {
+  public sealed partial class UpdateInstanceRequest : pb::IMessage<UpdateInstanceRequest>
+  #if !GOOGLE_PROTOBUF_REFSTRUCT_COMPATIBILITY_MODE
+      , pb::IBufferMessage
+  #endif
+  {
     private static readonly pb::MessageParser<UpdateInstanceRequest> _parser = new pb::MessageParser<UpdateInstanceRequest>(() => new UpdateInstanceRequest());
     private pb::UnknownFieldSet _unknownFields;
     [global::System.Diagnostics.DebuggerNonUserCodeAttribute]
@@ -2313,7 +2892,7 @@ namespace Google.Cloud.Spanner.Admin.Instance.V1 {
     private global::Google.Cloud.Spanner.Admin.Instance.V1.Instance instance_;
     /// <summary>
     /// Required. The instance to update, which must always include the instance
-    /// name.  Otherwise, only fields mentioned in [][google.spanner.admin.instance.v1.UpdateInstanceRequest.field_mask] need be included.
+    /// name.  Otherwise, only fields mentioned in [field_mask][google.spanner.admin.instance.v1.UpdateInstanceRequest.field_mask] need be included.
     /// </summary>
     [global::System.Diagnostics.DebuggerNonUserCodeAttribute]
     public global::Google.Cloud.Spanner.Admin.Instance.V1.Instance Instance {
@@ -2327,9 +2906,9 @@ namespace Google.Cloud.Spanner.Admin.Instance.V1 {
     public const int FieldMaskFieldNumber = 2;
     private global::Google.Protobuf.WellKnownTypes.FieldMask fieldMask_;
     /// <summary>
-    /// Required. A mask specifying which fields in [][google.spanner.admin.instance.v1.UpdateInstanceRequest.instance] should be updated.
+    /// Required. A mask specifying which fields in [Instance][google.spanner.admin.instance.v1.Instance] should be updated.
     /// The field mask must always be specified; this prevents any future fields in
-    /// [][google.spanner.admin.instance.v1.Instance] from being erased accidentally by clients that do not know
+    /// [Instance][google.spanner.admin.instance.v1.Instance] from being erased accidentally by clients that do not know
     /// about them.
     /// </summary>
     [global::System.Diagnostics.DebuggerNonUserCodeAttribute]
@@ -2376,6 +2955,9 @@ namespace Google.Cloud.Spanner.Admin.Instance.V1 {
 
     [global::System.Diagnostics.DebuggerNonUserCodeAttribute]
     public void WriteTo(pb::CodedOutputStream output) {
+    #if !GOOGLE_PROTOBUF_REFSTRUCT_COMPATIBILITY_MODE
+      output.WriteRawMessage(this);
+    #else
       if (instance_ != null) {
         output.WriteRawTag(10);
         output.WriteMessage(Instance);
@@ -2387,7 +2969,25 @@ namespace Google.Cloud.Spanner.Admin.Instance.V1 {
       if (_unknownFields != null) {
         _unknownFields.WriteTo(output);
       }
+    #endif
     }
+
+    #if !GOOGLE_PROTOBUF_REFSTRUCT_COMPATIBILITY_MODE
+    [global::System.Diagnostics.DebuggerNonUserCodeAttribute]
+    void pb::IBufferMessage.InternalWriteTo(ref pb::WriteContext output) {
+      if (instance_ != null) {
+        output.WriteRawTag(10);
+        output.WriteMessage(Instance);
+      }
+      if (fieldMask_ != null) {
+        output.WriteRawTag(18);
+        output.WriteMessage(FieldMask);
+      }
+      if (_unknownFields != null) {
+        _unknownFields.WriteTo(ref output);
+      }
+    }
+    #endif
 
     [global::System.Diagnostics.DebuggerNonUserCodeAttribute]
     public int CalculateSize() {
@@ -2426,6 +3026,9 @@ namespace Google.Cloud.Spanner.Admin.Instance.V1 {
 
     [global::System.Diagnostics.DebuggerNonUserCodeAttribute]
     public void MergeFrom(pb::CodedInputStream input) {
+    #if !GOOGLE_PROTOBUF_REFSTRUCT_COMPATIBILITY_MODE
+      input.ReadRawMessage(this);
+    #else
       uint tag;
       while ((tag = input.ReadTag()) != 0) {
         switch(tag) {
@@ -2448,14 +3051,47 @@ namespace Google.Cloud.Spanner.Admin.Instance.V1 {
           }
         }
       }
+    #endif
     }
+
+    #if !GOOGLE_PROTOBUF_REFSTRUCT_COMPATIBILITY_MODE
+    [global::System.Diagnostics.DebuggerNonUserCodeAttribute]
+    void pb::IBufferMessage.InternalMergeFrom(ref pb::ParseContext input) {
+      uint tag;
+      while ((tag = input.ReadTag()) != 0) {
+        switch(tag) {
+          default:
+            _unknownFields = pb::UnknownFieldSet.MergeFieldFrom(_unknownFields, ref input);
+            break;
+          case 10: {
+            if (instance_ == null) {
+              Instance = new global::Google.Cloud.Spanner.Admin.Instance.V1.Instance();
+            }
+            input.ReadMessage(Instance);
+            break;
+          }
+          case 18: {
+            if (fieldMask_ == null) {
+              FieldMask = new global::Google.Protobuf.WellKnownTypes.FieldMask();
+            }
+            input.ReadMessage(FieldMask);
+            break;
+          }
+        }
+      }
+    }
+    #endif
 
   }
 
   /// <summary>
   /// The request for [DeleteInstance][google.spanner.admin.instance.v1.InstanceAdmin.DeleteInstance].
   /// </summary>
-  public sealed partial class DeleteInstanceRequest : pb::IMessage<DeleteInstanceRequest> {
+  public sealed partial class DeleteInstanceRequest : pb::IMessage<DeleteInstanceRequest>
+  #if !GOOGLE_PROTOBUF_REFSTRUCT_COMPATIBILITY_MODE
+      , pb::IBufferMessage
+  #endif
+  {
     private static readonly pb::MessageParser<DeleteInstanceRequest> _parser = new pb::MessageParser<DeleteInstanceRequest>(() => new DeleteInstanceRequest());
     private pb::UnknownFieldSet _unknownFields;
     [global::System.Diagnostics.DebuggerNonUserCodeAttribute]
@@ -2538,6 +3174,9 @@ namespace Google.Cloud.Spanner.Admin.Instance.V1 {
 
     [global::System.Diagnostics.DebuggerNonUserCodeAttribute]
     public void WriteTo(pb::CodedOutputStream output) {
+    #if !GOOGLE_PROTOBUF_REFSTRUCT_COMPATIBILITY_MODE
+      output.WriteRawMessage(this);
+    #else
       if (Name.Length != 0) {
         output.WriteRawTag(10);
         output.WriteString(Name);
@@ -2545,7 +3184,21 @@ namespace Google.Cloud.Spanner.Admin.Instance.V1 {
       if (_unknownFields != null) {
         _unknownFields.WriteTo(output);
       }
+    #endif
     }
+
+    #if !GOOGLE_PROTOBUF_REFSTRUCT_COMPATIBILITY_MODE
+    [global::System.Diagnostics.DebuggerNonUserCodeAttribute]
+    void pb::IBufferMessage.InternalWriteTo(ref pb::WriteContext output) {
+      if (Name.Length != 0) {
+        output.WriteRawTag(10);
+        output.WriteString(Name);
+      }
+      if (_unknownFields != null) {
+        _unknownFields.WriteTo(ref output);
+      }
+    }
+    #endif
 
     [global::System.Diagnostics.DebuggerNonUserCodeAttribute]
     public int CalculateSize() {
@@ -2572,6 +3225,9 @@ namespace Google.Cloud.Spanner.Admin.Instance.V1 {
 
     [global::System.Diagnostics.DebuggerNonUserCodeAttribute]
     public void MergeFrom(pb::CodedInputStream input) {
+    #if !GOOGLE_PROTOBUF_REFSTRUCT_COMPATIBILITY_MODE
+      input.ReadRawMessage(this);
+    #else
       uint tag;
       while ((tag = input.ReadTag()) != 0) {
         switch(tag) {
@@ -2584,7 +3240,26 @@ namespace Google.Cloud.Spanner.Admin.Instance.V1 {
           }
         }
       }
+    #endif
     }
+
+    #if !GOOGLE_PROTOBUF_REFSTRUCT_COMPATIBILITY_MODE
+    [global::System.Diagnostics.DebuggerNonUserCodeAttribute]
+    void pb::IBufferMessage.InternalMergeFrom(ref pb::ParseContext input) {
+      uint tag;
+      while ((tag = input.ReadTag()) != 0) {
+        switch(tag) {
+          default:
+            _unknownFields = pb::UnknownFieldSet.MergeFieldFrom(_unknownFields, ref input);
+            break;
+          case 10: {
+            Name = input.ReadString();
+            break;
+          }
+        }
+      }
+    }
+    #endif
 
   }
 
@@ -2592,7 +3267,11 @@ namespace Google.Cloud.Spanner.Admin.Instance.V1 {
   /// Metadata type for the operation returned by
   /// [CreateInstance][google.spanner.admin.instance.v1.InstanceAdmin.CreateInstance].
   /// </summary>
-  public sealed partial class CreateInstanceMetadata : pb::IMessage<CreateInstanceMetadata> {
+  public sealed partial class CreateInstanceMetadata : pb::IMessage<CreateInstanceMetadata>
+  #if !GOOGLE_PROTOBUF_REFSTRUCT_COMPATIBILITY_MODE
+      , pb::IBufferMessage
+  #endif
+  {
     private static readonly pb::MessageParser<CreateInstanceMetadata> _parser = new pb::MessageParser<CreateInstanceMetadata>(() => new CreateInstanceMetadata());
     private pb::UnknownFieldSet _unknownFields;
     [global::System.Diagnostics.DebuggerNonUserCodeAttribute]
@@ -2729,6 +3408,9 @@ namespace Google.Cloud.Spanner.Admin.Instance.V1 {
 
     [global::System.Diagnostics.DebuggerNonUserCodeAttribute]
     public void WriteTo(pb::CodedOutputStream output) {
+    #if !GOOGLE_PROTOBUF_REFSTRUCT_COMPATIBILITY_MODE
+      output.WriteRawMessage(this);
+    #else
       if (instance_ != null) {
         output.WriteRawTag(10);
         output.WriteMessage(Instance);
@@ -2748,7 +3430,33 @@ namespace Google.Cloud.Spanner.Admin.Instance.V1 {
       if (_unknownFields != null) {
         _unknownFields.WriteTo(output);
       }
+    #endif
     }
+
+    #if !GOOGLE_PROTOBUF_REFSTRUCT_COMPATIBILITY_MODE
+    [global::System.Diagnostics.DebuggerNonUserCodeAttribute]
+    void pb::IBufferMessage.InternalWriteTo(ref pb::WriteContext output) {
+      if (instance_ != null) {
+        output.WriteRawTag(10);
+        output.WriteMessage(Instance);
+      }
+      if (startTime_ != null) {
+        output.WriteRawTag(18);
+        output.WriteMessage(StartTime);
+      }
+      if (cancelTime_ != null) {
+        output.WriteRawTag(26);
+        output.WriteMessage(CancelTime);
+      }
+      if (endTime_ != null) {
+        output.WriteRawTag(34);
+        output.WriteMessage(EndTime);
+      }
+      if (_unknownFields != null) {
+        _unknownFields.WriteTo(ref output);
+      }
+    }
+    #endif
 
     [global::System.Diagnostics.DebuggerNonUserCodeAttribute]
     public int CalculateSize() {
@@ -2805,6 +3513,9 @@ namespace Google.Cloud.Spanner.Admin.Instance.V1 {
 
     [global::System.Diagnostics.DebuggerNonUserCodeAttribute]
     public void MergeFrom(pb::CodedInputStream input) {
+    #if !GOOGLE_PROTOBUF_REFSTRUCT_COMPATIBILITY_MODE
+      input.ReadRawMessage(this);
+    #else
       uint tag;
       while ((tag = input.ReadTag()) != 0) {
         switch(tag) {
@@ -2841,7 +3552,50 @@ namespace Google.Cloud.Spanner.Admin.Instance.V1 {
           }
         }
       }
+    #endif
     }
+
+    #if !GOOGLE_PROTOBUF_REFSTRUCT_COMPATIBILITY_MODE
+    [global::System.Diagnostics.DebuggerNonUserCodeAttribute]
+    void pb::IBufferMessage.InternalMergeFrom(ref pb::ParseContext input) {
+      uint tag;
+      while ((tag = input.ReadTag()) != 0) {
+        switch(tag) {
+          default:
+            _unknownFields = pb::UnknownFieldSet.MergeFieldFrom(_unknownFields, ref input);
+            break;
+          case 10: {
+            if (instance_ == null) {
+              Instance = new global::Google.Cloud.Spanner.Admin.Instance.V1.Instance();
+            }
+            input.ReadMessage(Instance);
+            break;
+          }
+          case 18: {
+            if (startTime_ == null) {
+              StartTime = new global::Google.Protobuf.WellKnownTypes.Timestamp();
+            }
+            input.ReadMessage(StartTime);
+            break;
+          }
+          case 26: {
+            if (cancelTime_ == null) {
+              CancelTime = new global::Google.Protobuf.WellKnownTypes.Timestamp();
+            }
+            input.ReadMessage(CancelTime);
+            break;
+          }
+          case 34: {
+            if (endTime_ == null) {
+              EndTime = new global::Google.Protobuf.WellKnownTypes.Timestamp();
+            }
+            input.ReadMessage(EndTime);
+            break;
+          }
+        }
+      }
+    }
+    #endif
 
   }
 
@@ -2849,7 +3603,11 @@ namespace Google.Cloud.Spanner.Admin.Instance.V1 {
   /// Metadata type for the operation returned by
   /// [UpdateInstance][google.spanner.admin.instance.v1.InstanceAdmin.UpdateInstance].
   /// </summary>
-  public sealed partial class UpdateInstanceMetadata : pb::IMessage<UpdateInstanceMetadata> {
+  public sealed partial class UpdateInstanceMetadata : pb::IMessage<UpdateInstanceMetadata>
+  #if !GOOGLE_PROTOBUF_REFSTRUCT_COMPATIBILITY_MODE
+      , pb::IBufferMessage
+  #endif
+  {
     private static readonly pb::MessageParser<UpdateInstanceMetadata> _parser = new pb::MessageParser<UpdateInstanceMetadata>(() => new UpdateInstanceMetadata());
     private pb::UnknownFieldSet _unknownFields;
     [global::System.Diagnostics.DebuggerNonUserCodeAttribute]
@@ -2985,6 +3743,9 @@ namespace Google.Cloud.Spanner.Admin.Instance.V1 {
 
     [global::System.Diagnostics.DebuggerNonUserCodeAttribute]
     public void WriteTo(pb::CodedOutputStream output) {
+    #if !GOOGLE_PROTOBUF_REFSTRUCT_COMPATIBILITY_MODE
+      output.WriteRawMessage(this);
+    #else
       if (instance_ != null) {
         output.WriteRawTag(10);
         output.WriteMessage(Instance);
@@ -3004,7 +3765,33 @@ namespace Google.Cloud.Spanner.Admin.Instance.V1 {
       if (_unknownFields != null) {
         _unknownFields.WriteTo(output);
       }
+    #endif
     }
+
+    #if !GOOGLE_PROTOBUF_REFSTRUCT_COMPATIBILITY_MODE
+    [global::System.Diagnostics.DebuggerNonUserCodeAttribute]
+    void pb::IBufferMessage.InternalWriteTo(ref pb::WriteContext output) {
+      if (instance_ != null) {
+        output.WriteRawTag(10);
+        output.WriteMessage(Instance);
+      }
+      if (startTime_ != null) {
+        output.WriteRawTag(18);
+        output.WriteMessage(StartTime);
+      }
+      if (cancelTime_ != null) {
+        output.WriteRawTag(26);
+        output.WriteMessage(CancelTime);
+      }
+      if (endTime_ != null) {
+        output.WriteRawTag(34);
+        output.WriteMessage(EndTime);
+      }
+      if (_unknownFields != null) {
+        _unknownFields.WriteTo(ref output);
+      }
+    }
+    #endif
 
     [global::System.Diagnostics.DebuggerNonUserCodeAttribute]
     public int CalculateSize() {
@@ -3061,6 +3848,9 @@ namespace Google.Cloud.Spanner.Admin.Instance.V1 {
 
     [global::System.Diagnostics.DebuggerNonUserCodeAttribute]
     public void MergeFrom(pb::CodedInputStream input) {
+    #if !GOOGLE_PROTOBUF_REFSTRUCT_COMPATIBILITY_MODE
+      input.ReadRawMessage(this);
+    #else
       uint tag;
       while ((tag = input.ReadTag()) != 0) {
         switch(tag) {
@@ -3097,7 +3887,50 @@ namespace Google.Cloud.Spanner.Admin.Instance.V1 {
           }
         }
       }
+    #endif
     }
+
+    #if !GOOGLE_PROTOBUF_REFSTRUCT_COMPATIBILITY_MODE
+    [global::System.Diagnostics.DebuggerNonUserCodeAttribute]
+    void pb::IBufferMessage.InternalMergeFrom(ref pb::ParseContext input) {
+      uint tag;
+      while ((tag = input.ReadTag()) != 0) {
+        switch(tag) {
+          default:
+            _unknownFields = pb::UnknownFieldSet.MergeFieldFrom(_unknownFields, ref input);
+            break;
+          case 10: {
+            if (instance_ == null) {
+              Instance = new global::Google.Cloud.Spanner.Admin.Instance.V1.Instance();
+            }
+            input.ReadMessage(Instance);
+            break;
+          }
+          case 18: {
+            if (startTime_ == null) {
+              StartTime = new global::Google.Protobuf.WellKnownTypes.Timestamp();
+            }
+            input.ReadMessage(StartTime);
+            break;
+          }
+          case 26: {
+            if (cancelTime_ == null) {
+              CancelTime = new global::Google.Protobuf.WellKnownTypes.Timestamp();
+            }
+            input.ReadMessage(CancelTime);
+            break;
+          }
+          case 34: {
+            if (endTime_ == null) {
+              EndTime = new global::Google.Protobuf.WellKnownTypes.Timestamp();
+            }
+            input.ReadMessage(EndTime);
+            break;
+          }
+        }
+      }
+    }
+    #endif
 
   }
 

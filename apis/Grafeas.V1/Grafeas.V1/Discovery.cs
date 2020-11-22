@@ -24,27 +24,29 @@ namespace Grafeas.V1 {
     static DiscoveryReflection() {
       byte[] descriptorData = global::System.Convert.FromBase64String(
           string.Concat(
-            "ChpncmFmZWFzL3YxL2Rpc2NvdmVyeS5wcm90bxIKZ3JhZmVhcy52MRoXZ29v",
-            "Z2xlL3JwYy9zdGF0dXMucHJvdG8aF2dyYWZlYXMvdjEvY29tbW9uLnByb3Rv",
-            "IjwKDURpc2NvdmVyeU5vdGUSKwoNYW5hbHlzaXNfa2luZBgBIAEoDjIULmdy",
-            "YWZlYXMudjEuTm90ZUtpbmQiywMKE0Rpc2NvdmVyeU9jY3VycmVuY2USTwoT",
-            "Y29udGludW91c19hbmFseXNpcxgBIAEoDjIyLmdyYWZlYXMudjEuRGlzY292",
-            "ZXJ5T2NjdXJyZW5jZS5Db250aW51b3VzQW5hbHlzaXMSRwoPYW5hbHlzaXNf",
-            "c3RhdHVzGAIgASgOMi4uZ3JhZmVhcy52MS5EaXNjb3ZlcnlPY2N1cnJlbmNl",
-            "LkFuYWx5c2lzU3RhdHVzEjEKFWFuYWx5c2lzX3N0YXR1c19lcnJvchgDIAEo",
-            "CzISLmdvb2dsZS5ycGMuU3RhdHVzIlMKEkNvbnRpbnVvdXNBbmFseXNpcxIj",
-            "Ch9DT05USU5VT1VTX0FOQUxZU0lTX1VOU1BFQ0lGSUVEEAASCgoGQUNUSVZF",
-            "EAESDAoISU5BQ1RJVkUQAiKRAQoOQW5hbHlzaXNTdGF0dXMSHwobQU5BTFlT",
-            "SVNfU1RBVFVTX1VOU1BFQ0lGSUVEEAASCwoHUEVORElORxABEgwKCFNDQU5O",
-            "SU5HEAISFAoQRklOSVNIRURfU1VDQ0VTUxADEhMKD0ZJTklTSEVEX0ZBSUxF",
-            "RBAEEhgKFEZJTklTSEVEX1VOU1VQUE9SVEVEEAVCUQoNaW8uZ3JhZmVhcy52",
-            "MVABWjhnb29nbGUuZ29sYW5nLm9yZy9nZW5wcm90by9nb29nbGVhcGlzL2dy",
-            "YWZlYXMvdjE7Z3JhZmVhc6ICA0dSQWIGcHJvdG8z"));
+            "ChpncmFmZWFzL3YxL2Rpc2NvdmVyeS5wcm90bxIKZ3JhZmVhcy52MRofZ29v",
+            "Z2xlL3Byb3RvYnVmL3RpbWVzdGFtcC5wcm90bxoXZ29vZ2xlL3JwYy9zdGF0",
+            "dXMucHJvdG8aF2dyYWZlYXMvdjEvY29tbW9uLnByb3RvIjwKDURpc2NvdmVy",
+            "eU5vdGUSKwoNYW5hbHlzaXNfa2luZBgBIAEoDjIULmdyYWZlYXMudjEuTm90",
+            "ZUtpbmQijAQKE0Rpc2NvdmVyeU9jY3VycmVuY2USTwoTY29udGludW91c19h",
+            "bmFseXNpcxgBIAEoDjIyLmdyYWZlYXMudjEuRGlzY292ZXJ5T2NjdXJyZW5j",
+            "ZS5Db250aW51b3VzQW5hbHlzaXMSRwoPYW5hbHlzaXNfc3RhdHVzGAIgASgO",
+            "Mi4uZ3JhZmVhcy52MS5EaXNjb3ZlcnlPY2N1cnJlbmNlLkFuYWx5c2lzU3Rh",
+            "dHVzEjEKFWFuYWx5c2lzX3N0YXR1c19lcnJvchgDIAEoCzISLmdvb2dsZS5y",
+            "cGMuU3RhdHVzEgsKA2NwZRgEIAEoCRIyCg5sYXN0X3NjYW5fdGltZRgFIAEo",
+            "CzIaLmdvb2dsZS5wcm90b2J1Zi5UaW1lc3RhbXAiUwoSQ29udGludW91c0Fu",
+            "YWx5c2lzEiMKH0NPTlRJTlVPVVNfQU5BTFlTSVNfVU5TUEVDSUZJRUQQABIK",
+            "CgZBQ1RJVkUQARIMCghJTkFDVElWRRACIpEBCg5BbmFseXNpc1N0YXR1cxIf",
+            "ChtBTkFMWVNJU19TVEFUVVNfVU5TUEVDSUZJRUQQABILCgdQRU5ESU5HEAES",
+            "DAoIU0NBTk5JTkcQAhIUChBGSU5JU0hFRF9TVUNDRVNTEAMSEwoPRklOSVNI",
+            "RURfRkFJTEVEEAQSGAoURklOSVNIRURfVU5TVVBQT1JURUQQBUJRCg1pby5n",
+            "cmFmZWFzLnYxUAFaOGdvb2dsZS5nb2xhbmcub3JnL2dlbnByb3RvL2dvb2ds",
+            "ZWFwaXMvZ3JhZmVhcy92MTtncmFmZWFzogIDR1JBYgZwcm90bzM="));
       descriptor = pbr::FileDescriptor.FromGeneratedCode(descriptorData,
-          new pbr::FileDescriptor[] { global::Google.Rpc.StatusReflection.Descriptor, global::Grafeas.V1.CommonReflection.Descriptor, },
-          new pbr::GeneratedClrTypeInfo(null, new pbr::GeneratedClrTypeInfo[] {
-            new pbr::GeneratedClrTypeInfo(typeof(global::Grafeas.V1.DiscoveryNote), global::Grafeas.V1.DiscoveryNote.Parser, new[]{ "AnalysisKind" }, null, null, null),
-            new pbr::GeneratedClrTypeInfo(typeof(global::Grafeas.V1.DiscoveryOccurrence), global::Grafeas.V1.DiscoveryOccurrence.Parser, new[]{ "ContinuousAnalysis", "AnalysisStatus", "AnalysisStatusError" }, null, new[]{ typeof(global::Grafeas.V1.DiscoveryOccurrence.Types.ContinuousAnalysis), typeof(global::Grafeas.V1.DiscoveryOccurrence.Types.AnalysisStatus) }, null)
+          new pbr::FileDescriptor[] { global::Google.Protobuf.WellKnownTypes.TimestampReflection.Descriptor, global::Google.Rpc.StatusReflection.Descriptor, global::Grafeas.V1.CommonReflection.Descriptor, },
+          new pbr::GeneratedClrTypeInfo(null, null, new pbr::GeneratedClrTypeInfo[] {
+            new pbr::GeneratedClrTypeInfo(typeof(global::Grafeas.V1.DiscoveryNote), global::Grafeas.V1.DiscoveryNote.Parser, new[]{ "AnalysisKind" }, null, null, null, null),
+            new pbr::GeneratedClrTypeInfo(typeof(global::Grafeas.V1.DiscoveryOccurrence), global::Grafeas.V1.DiscoveryOccurrence.Parser, new[]{ "ContinuousAnalysis", "AnalysisStatus", "AnalysisStatusError", "Cpe", "LastScanTime" }, null, new[]{ typeof(global::Grafeas.V1.DiscoveryOccurrence.Types.ContinuousAnalysis), typeof(global::Grafeas.V1.DiscoveryOccurrence.Types.AnalysisStatus) }, null, null)
           }));
     }
     #endregion
@@ -56,7 +58,11 @@ namespace Grafeas.V1 {
   /// exists in a provider's project. A `Discovery` occurrence is created in a
   /// consumer's project at the start of analysis.
   /// </summary>
-  public sealed partial class DiscoveryNote : pb::IMessage<DiscoveryNote> {
+  public sealed partial class DiscoveryNote : pb::IMessage<DiscoveryNote>
+  #if !GOOGLE_PROTOBUF_REFSTRUCT_COMPATIBILITY_MODE
+      , pb::IBufferMessage
+  #endif
+  {
     private static readonly pb::MessageParser<DiscoveryNote> _parser = new pb::MessageParser<DiscoveryNote>(() => new DiscoveryNote());
     private pb::UnknownFieldSet _unknownFields;
     [global::System.Diagnostics.DebuggerNonUserCodeAttribute]
@@ -92,7 +98,7 @@ namespace Grafeas.V1 {
 
     /// <summary>Field number for the "analysis_kind" field.</summary>
     public const int AnalysisKindFieldNumber = 1;
-    private global::Grafeas.V1.NoteKind analysisKind_ = 0;
+    private global::Grafeas.V1.NoteKind analysisKind_ = global::Grafeas.V1.NoteKind.Unspecified;
     /// <summary>
     /// Required. Immutable. The kind of analysis that is handled by this
     /// discovery.
@@ -125,7 +131,7 @@ namespace Grafeas.V1 {
     [global::System.Diagnostics.DebuggerNonUserCodeAttribute]
     public override int GetHashCode() {
       int hash = 1;
-      if (AnalysisKind != 0) hash ^= AnalysisKind.GetHashCode();
+      if (AnalysisKind != global::Grafeas.V1.NoteKind.Unspecified) hash ^= AnalysisKind.GetHashCode();
       if (_unknownFields != null) {
         hash ^= _unknownFields.GetHashCode();
       }
@@ -139,19 +145,36 @@ namespace Grafeas.V1 {
 
     [global::System.Diagnostics.DebuggerNonUserCodeAttribute]
     public void WriteTo(pb::CodedOutputStream output) {
-      if (AnalysisKind != 0) {
+    #if !GOOGLE_PROTOBUF_REFSTRUCT_COMPATIBILITY_MODE
+      output.WriteRawMessage(this);
+    #else
+      if (AnalysisKind != global::Grafeas.V1.NoteKind.Unspecified) {
         output.WriteRawTag(8);
         output.WriteEnum((int) AnalysisKind);
       }
       if (_unknownFields != null) {
         _unknownFields.WriteTo(output);
       }
+    #endif
     }
+
+    #if !GOOGLE_PROTOBUF_REFSTRUCT_COMPATIBILITY_MODE
+    [global::System.Diagnostics.DebuggerNonUserCodeAttribute]
+    void pb::IBufferMessage.InternalWriteTo(ref pb::WriteContext output) {
+      if (AnalysisKind != global::Grafeas.V1.NoteKind.Unspecified) {
+        output.WriteRawTag(8);
+        output.WriteEnum((int) AnalysisKind);
+      }
+      if (_unknownFields != null) {
+        _unknownFields.WriteTo(ref output);
+      }
+    }
+    #endif
 
     [global::System.Diagnostics.DebuggerNonUserCodeAttribute]
     public int CalculateSize() {
       int size = 0;
-      if (AnalysisKind != 0) {
+      if (AnalysisKind != global::Grafeas.V1.NoteKind.Unspecified) {
         size += 1 + pb::CodedOutputStream.ComputeEnumSize((int) AnalysisKind);
       }
       if (_unknownFields != null) {
@@ -165,7 +188,7 @@ namespace Grafeas.V1 {
       if (other == null) {
         return;
       }
-      if (other.AnalysisKind != 0) {
+      if (other.AnalysisKind != global::Grafeas.V1.NoteKind.Unspecified) {
         AnalysisKind = other.AnalysisKind;
       }
       _unknownFields = pb::UnknownFieldSet.MergeFrom(_unknownFields, other._unknownFields);
@@ -173,6 +196,9 @@ namespace Grafeas.V1 {
 
     [global::System.Diagnostics.DebuggerNonUserCodeAttribute]
     public void MergeFrom(pb::CodedInputStream input) {
+    #if !GOOGLE_PROTOBUF_REFSTRUCT_COMPATIBILITY_MODE
+      input.ReadRawMessage(this);
+    #else
       uint tag;
       while ((tag = input.ReadTag()) != 0) {
         switch(tag) {
@@ -185,14 +211,37 @@ namespace Grafeas.V1 {
           }
         }
       }
+    #endif
     }
+
+    #if !GOOGLE_PROTOBUF_REFSTRUCT_COMPATIBILITY_MODE
+    [global::System.Diagnostics.DebuggerNonUserCodeAttribute]
+    void pb::IBufferMessage.InternalMergeFrom(ref pb::ParseContext input) {
+      uint tag;
+      while ((tag = input.ReadTag()) != 0) {
+        switch(tag) {
+          default:
+            _unknownFields = pb::UnknownFieldSet.MergeFieldFrom(_unknownFields, ref input);
+            break;
+          case 8: {
+            AnalysisKind = (global::Grafeas.V1.NoteKind) input.ReadEnum();
+            break;
+          }
+        }
+      }
+    }
+    #endif
 
   }
 
   /// <summary>
   /// Provides information about the analysis status of a discovered resource.
   /// </summary>
-  public sealed partial class DiscoveryOccurrence : pb::IMessage<DiscoveryOccurrence> {
+  public sealed partial class DiscoveryOccurrence : pb::IMessage<DiscoveryOccurrence>
+  #if !GOOGLE_PROTOBUF_REFSTRUCT_COMPATIBILITY_MODE
+      , pb::IBufferMessage
+  #endif
+  {
     private static readonly pb::MessageParser<DiscoveryOccurrence> _parser = new pb::MessageParser<DiscoveryOccurrence>(() => new DiscoveryOccurrence());
     private pb::UnknownFieldSet _unknownFields;
     [global::System.Diagnostics.DebuggerNonUserCodeAttribute]
@@ -220,6 +269,8 @@ namespace Grafeas.V1 {
       continuousAnalysis_ = other.continuousAnalysis_;
       analysisStatus_ = other.analysisStatus_;
       analysisStatusError_ = other.analysisStatusError_ != null ? other.analysisStatusError_.Clone() : null;
+      cpe_ = other.cpe_;
+      lastScanTime_ = other.lastScanTime_ != null ? other.lastScanTime_.Clone() : null;
       _unknownFields = pb::UnknownFieldSet.Clone(other._unknownFields);
     }
 
@@ -230,7 +281,7 @@ namespace Grafeas.V1 {
 
     /// <summary>Field number for the "continuous_analysis" field.</summary>
     public const int ContinuousAnalysisFieldNumber = 1;
-    private global::Grafeas.V1.DiscoveryOccurrence.Types.ContinuousAnalysis continuousAnalysis_ = 0;
+    private global::Grafeas.V1.DiscoveryOccurrence.Types.ContinuousAnalysis continuousAnalysis_ = global::Grafeas.V1.DiscoveryOccurrence.Types.ContinuousAnalysis.Unspecified;
     /// <summary>
     /// Whether the resource is continuously analyzed.
     /// </summary>
@@ -244,7 +295,7 @@ namespace Grafeas.V1 {
 
     /// <summary>Field number for the "analysis_status" field.</summary>
     public const int AnalysisStatusFieldNumber = 2;
-    private global::Grafeas.V1.DiscoveryOccurrence.Types.AnalysisStatus analysisStatus_ = 0;
+    private global::Grafeas.V1.DiscoveryOccurrence.Types.AnalysisStatus analysisStatus_ = global::Grafeas.V1.DiscoveryOccurrence.Types.AnalysisStatus.Unspecified;
     /// <summary>
     /// The status of discovery for the resource.
     /// </summary>
@@ -272,6 +323,34 @@ namespace Grafeas.V1 {
       }
     }
 
+    /// <summary>Field number for the "cpe" field.</summary>
+    public const int CpeFieldNumber = 4;
+    private string cpe_ = "";
+    /// <summary>
+    /// The CPE of the resource being scanned.
+    /// </summary>
+    [global::System.Diagnostics.DebuggerNonUserCodeAttribute]
+    public string Cpe {
+      get { return cpe_; }
+      set {
+        cpe_ = pb::ProtoPreconditions.CheckNotNull(value, "value");
+      }
+    }
+
+    /// <summary>Field number for the "last_scan_time" field.</summary>
+    public const int LastScanTimeFieldNumber = 5;
+    private global::Google.Protobuf.WellKnownTypes.Timestamp lastScanTime_;
+    /// <summary>
+    /// The last time this resource was scanned.
+    /// </summary>
+    [global::System.Diagnostics.DebuggerNonUserCodeAttribute]
+    public global::Google.Protobuf.WellKnownTypes.Timestamp LastScanTime {
+      get { return lastScanTime_; }
+      set {
+        lastScanTime_ = value;
+      }
+    }
+
     [global::System.Diagnostics.DebuggerNonUserCodeAttribute]
     public override bool Equals(object other) {
       return Equals(other as DiscoveryOccurrence);
@@ -288,15 +367,19 @@ namespace Grafeas.V1 {
       if (ContinuousAnalysis != other.ContinuousAnalysis) return false;
       if (AnalysisStatus != other.AnalysisStatus) return false;
       if (!object.Equals(AnalysisStatusError, other.AnalysisStatusError)) return false;
+      if (Cpe != other.Cpe) return false;
+      if (!object.Equals(LastScanTime, other.LastScanTime)) return false;
       return Equals(_unknownFields, other._unknownFields);
     }
 
     [global::System.Diagnostics.DebuggerNonUserCodeAttribute]
     public override int GetHashCode() {
       int hash = 1;
-      if (ContinuousAnalysis != 0) hash ^= ContinuousAnalysis.GetHashCode();
-      if (AnalysisStatus != 0) hash ^= AnalysisStatus.GetHashCode();
+      if (ContinuousAnalysis != global::Grafeas.V1.DiscoveryOccurrence.Types.ContinuousAnalysis.Unspecified) hash ^= ContinuousAnalysis.GetHashCode();
+      if (AnalysisStatus != global::Grafeas.V1.DiscoveryOccurrence.Types.AnalysisStatus.Unspecified) hash ^= AnalysisStatus.GetHashCode();
       if (analysisStatusError_ != null) hash ^= AnalysisStatusError.GetHashCode();
+      if (Cpe.Length != 0) hash ^= Cpe.GetHashCode();
+      if (lastScanTime_ != null) hash ^= LastScanTime.GetHashCode();
       if (_unknownFields != null) {
         hash ^= _unknownFields.GetHashCode();
       }
@@ -310,11 +393,14 @@ namespace Grafeas.V1 {
 
     [global::System.Diagnostics.DebuggerNonUserCodeAttribute]
     public void WriteTo(pb::CodedOutputStream output) {
-      if (ContinuousAnalysis != 0) {
+    #if !GOOGLE_PROTOBUF_REFSTRUCT_COMPATIBILITY_MODE
+      output.WriteRawMessage(this);
+    #else
+      if (ContinuousAnalysis != global::Grafeas.V1.DiscoveryOccurrence.Types.ContinuousAnalysis.Unspecified) {
         output.WriteRawTag(8);
         output.WriteEnum((int) ContinuousAnalysis);
       }
-      if (AnalysisStatus != 0) {
+      if (AnalysisStatus != global::Grafeas.V1.DiscoveryOccurrence.Types.AnalysisStatus.Unspecified) {
         output.WriteRawTag(16);
         output.WriteEnum((int) AnalysisStatus);
       }
@@ -322,22 +408,66 @@ namespace Grafeas.V1 {
         output.WriteRawTag(26);
         output.WriteMessage(AnalysisStatusError);
       }
+      if (Cpe.Length != 0) {
+        output.WriteRawTag(34);
+        output.WriteString(Cpe);
+      }
+      if (lastScanTime_ != null) {
+        output.WriteRawTag(42);
+        output.WriteMessage(LastScanTime);
+      }
       if (_unknownFields != null) {
         _unknownFields.WriteTo(output);
       }
+    #endif
     }
+
+    #if !GOOGLE_PROTOBUF_REFSTRUCT_COMPATIBILITY_MODE
+    [global::System.Diagnostics.DebuggerNonUserCodeAttribute]
+    void pb::IBufferMessage.InternalWriteTo(ref pb::WriteContext output) {
+      if (ContinuousAnalysis != global::Grafeas.V1.DiscoveryOccurrence.Types.ContinuousAnalysis.Unspecified) {
+        output.WriteRawTag(8);
+        output.WriteEnum((int) ContinuousAnalysis);
+      }
+      if (AnalysisStatus != global::Grafeas.V1.DiscoveryOccurrence.Types.AnalysisStatus.Unspecified) {
+        output.WriteRawTag(16);
+        output.WriteEnum((int) AnalysisStatus);
+      }
+      if (analysisStatusError_ != null) {
+        output.WriteRawTag(26);
+        output.WriteMessage(AnalysisStatusError);
+      }
+      if (Cpe.Length != 0) {
+        output.WriteRawTag(34);
+        output.WriteString(Cpe);
+      }
+      if (lastScanTime_ != null) {
+        output.WriteRawTag(42);
+        output.WriteMessage(LastScanTime);
+      }
+      if (_unknownFields != null) {
+        _unknownFields.WriteTo(ref output);
+      }
+    }
+    #endif
 
     [global::System.Diagnostics.DebuggerNonUserCodeAttribute]
     public int CalculateSize() {
       int size = 0;
-      if (ContinuousAnalysis != 0) {
+      if (ContinuousAnalysis != global::Grafeas.V1.DiscoveryOccurrence.Types.ContinuousAnalysis.Unspecified) {
         size += 1 + pb::CodedOutputStream.ComputeEnumSize((int) ContinuousAnalysis);
       }
-      if (AnalysisStatus != 0) {
+      if (AnalysisStatus != global::Grafeas.V1.DiscoveryOccurrence.Types.AnalysisStatus.Unspecified) {
         size += 1 + pb::CodedOutputStream.ComputeEnumSize((int) AnalysisStatus);
       }
       if (analysisStatusError_ != null) {
         size += 1 + pb::CodedOutputStream.ComputeMessageSize(AnalysisStatusError);
+      }
+      if (Cpe.Length != 0) {
+        size += 1 + pb::CodedOutputStream.ComputeStringSize(Cpe);
+      }
+      if (lastScanTime_ != null) {
+        size += 1 + pb::CodedOutputStream.ComputeMessageSize(LastScanTime);
       }
       if (_unknownFields != null) {
         size += _unknownFields.CalculateSize();
@@ -350,10 +480,10 @@ namespace Grafeas.V1 {
       if (other == null) {
         return;
       }
-      if (other.ContinuousAnalysis != 0) {
+      if (other.ContinuousAnalysis != global::Grafeas.V1.DiscoveryOccurrence.Types.ContinuousAnalysis.Unspecified) {
         ContinuousAnalysis = other.ContinuousAnalysis;
       }
-      if (other.AnalysisStatus != 0) {
+      if (other.AnalysisStatus != global::Grafeas.V1.DiscoveryOccurrence.Types.AnalysisStatus.Unspecified) {
         AnalysisStatus = other.AnalysisStatus;
       }
       if (other.analysisStatusError_ != null) {
@@ -362,11 +492,23 @@ namespace Grafeas.V1 {
         }
         AnalysisStatusError.MergeFrom(other.AnalysisStatusError);
       }
+      if (other.Cpe.Length != 0) {
+        Cpe = other.Cpe;
+      }
+      if (other.lastScanTime_ != null) {
+        if (lastScanTime_ == null) {
+          LastScanTime = new global::Google.Protobuf.WellKnownTypes.Timestamp();
+        }
+        LastScanTime.MergeFrom(other.LastScanTime);
+      }
       _unknownFields = pb::UnknownFieldSet.MergeFrom(_unknownFields, other._unknownFields);
     }
 
     [global::System.Diagnostics.DebuggerNonUserCodeAttribute]
     public void MergeFrom(pb::CodedInputStream input) {
+    #if !GOOGLE_PROTOBUF_REFSTRUCT_COMPATIBILITY_MODE
+      input.ReadRawMessage(this);
+    #else
       uint tag;
       while ((tag = input.ReadTag()) != 0) {
         switch(tag) {
@@ -388,9 +530,61 @@ namespace Grafeas.V1 {
             input.ReadMessage(AnalysisStatusError);
             break;
           }
+          case 34: {
+            Cpe = input.ReadString();
+            break;
+          }
+          case 42: {
+            if (lastScanTime_ == null) {
+              LastScanTime = new global::Google.Protobuf.WellKnownTypes.Timestamp();
+            }
+            input.ReadMessage(LastScanTime);
+            break;
+          }
+        }
+      }
+    #endif
+    }
+
+    #if !GOOGLE_PROTOBUF_REFSTRUCT_COMPATIBILITY_MODE
+    [global::System.Diagnostics.DebuggerNonUserCodeAttribute]
+    void pb::IBufferMessage.InternalMergeFrom(ref pb::ParseContext input) {
+      uint tag;
+      while ((tag = input.ReadTag()) != 0) {
+        switch(tag) {
+          default:
+            _unknownFields = pb::UnknownFieldSet.MergeFieldFrom(_unknownFields, ref input);
+            break;
+          case 8: {
+            ContinuousAnalysis = (global::Grafeas.V1.DiscoveryOccurrence.Types.ContinuousAnalysis) input.ReadEnum();
+            break;
+          }
+          case 16: {
+            AnalysisStatus = (global::Grafeas.V1.DiscoveryOccurrence.Types.AnalysisStatus) input.ReadEnum();
+            break;
+          }
+          case 26: {
+            if (analysisStatusError_ == null) {
+              AnalysisStatusError = new global::Google.Rpc.Status();
+            }
+            input.ReadMessage(AnalysisStatusError);
+            break;
+          }
+          case 34: {
+            Cpe = input.ReadString();
+            break;
+          }
+          case 42: {
+            if (lastScanTime_ == null) {
+              LastScanTime = new global::Google.Protobuf.WellKnownTypes.Timestamp();
+            }
+            input.ReadMessage(LastScanTime);
+            break;
+          }
         }
       }
     }
+    #endif
 
     #region Nested types
     /// <summary>Container for nested types declared in the DiscoveryOccurrence message type.</summary>

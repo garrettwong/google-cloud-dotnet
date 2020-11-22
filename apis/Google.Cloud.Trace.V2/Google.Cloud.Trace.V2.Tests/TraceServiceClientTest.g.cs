@@ -1,4 +1,4 @@
-// Copyright 2019 Google LLC
+// Copyright 2020 Google LLC
 //
 // Licensed under the Apache License, Version 2.0 (the "License");
 // you may not use this file except in compliance with the License.
@@ -35,7 +35,7 @@ namespace Google.Cloud.Trace.V2.Tests
             moq::Mock<TraceService.TraceServiceClient> mockGrpcClient = new moq::Mock<TraceService.TraceServiceClient>(moq::MockBehavior.Strict);
             BatchWriteSpansRequest request = new BatchWriteSpansRequest
             {
-                ProjectName = new gagr::ProjectName("[PROJECT]"),
+                ProjectName = gagr::ProjectName.FromProject("[PROJECT]"),
                 Spans = { new Span(), },
             };
             wkt::Empty expectedResponse = new wkt::Empty { };
@@ -51,7 +51,7 @@ namespace Google.Cloud.Trace.V2.Tests
             moq::Mock<TraceService.TraceServiceClient> mockGrpcClient = new moq::Mock<TraceService.TraceServiceClient>(moq::MockBehavior.Strict);
             BatchWriteSpansRequest request = new BatchWriteSpansRequest
             {
-                ProjectName = new gagr::ProjectName("[PROJECT]"),
+                ProjectName = gagr::ProjectName.FromProject("[PROJECT]"),
                 Spans = { new Span(), },
             };
             wkt::Empty expectedResponse = new wkt::Empty { };
@@ -68,7 +68,7 @@ namespace Google.Cloud.Trace.V2.Tests
             moq::Mock<TraceService.TraceServiceClient> mockGrpcClient = new moq::Mock<TraceService.TraceServiceClient>(moq::MockBehavior.Strict);
             BatchWriteSpansRequest request = new BatchWriteSpansRequest
             {
-                ProjectName = new gagr::ProjectName("[PROJECT]"),
+                ProjectName = gagr::ProjectName.FromProject("[PROJECT]"),
                 Spans = { new Span(), },
             };
             wkt::Empty expectedResponse = new wkt::Empty { };
@@ -84,7 +84,7 @@ namespace Google.Cloud.Trace.V2.Tests
             moq::Mock<TraceService.TraceServiceClient> mockGrpcClient = new moq::Mock<TraceService.TraceServiceClient>(moq::MockBehavior.Strict);
             BatchWriteSpansRequest request = new BatchWriteSpansRequest
             {
-                ProjectName = new gagr::ProjectName("[PROJECT]"),
+                ProjectName = gagr::ProjectName.FromProject("[PROJECT]"),
                 Spans = { new Span(), },
             };
             wkt::Empty expectedResponse = new wkt::Empty { };
@@ -96,12 +96,12 @@ namespace Google.Cloud.Trace.V2.Tests
         }
 
         [xunit::FactAttribute]
-        public void BatchWriteSpans_ResourceNames()
+        public void BatchWriteSpansResourceNames()
         {
             moq::Mock<TraceService.TraceServiceClient> mockGrpcClient = new moq::Mock<TraceService.TraceServiceClient>(moq::MockBehavior.Strict);
             BatchWriteSpansRequest request = new BatchWriteSpansRequest
             {
-                ProjectName = new gagr::ProjectName("[PROJECT]"),
+                ProjectName = gagr::ProjectName.FromProject("[PROJECT]"),
                 Spans = { new Span(), },
             };
             wkt::Empty expectedResponse = new wkt::Empty { };
@@ -112,12 +112,12 @@ namespace Google.Cloud.Trace.V2.Tests
         }
 
         [xunit::FactAttribute]
-        public async stt::Task BatchWriteSpansAsync_ResourceNames()
+        public async stt::Task BatchWriteSpansResourceNamesAsync()
         {
             moq::Mock<TraceService.TraceServiceClient> mockGrpcClient = new moq::Mock<TraceService.TraceServiceClient>(moq::MockBehavior.Strict);
             BatchWriteSpansRequest request = new BatchWriteSpansRequest
             {
-                ProjectName = new gagr::ProjectName("[PROJECT]"),
+                ProjectName = gagr::ProjectName.FromProject("[PROJECT]"),
                 Spans = { new Span(), },
             };
             wkt::Empty expectedResponse = new wkt::Empty { };
@@ -134,7 +134,7 @@ namespace Google.Cloud.Trace.V2.Tests
             moq::Mock<TraceService.TraceServiceClient> mockGrpcClient = new moq::Mock<TraceService.TraceServiceClient>(moq::MockBehavior.Strict);
             Span request = new Span
             {
-                SpanName = new SpanName("[PROJECT]", "[TRACE]", "[SPAN]"),
+                SpanName = SpanName.FromProjectTraceSpan("[PROJECT]", "[TRACE]", "[SPAN]"),
                 SpanId = "span_id47c232d3",
                 ParentSpanId = "parent_span_ide637f6a2",
                 DisplayName = new TruncatableString(),
@@ -145,12 +145,13 @@ namespace Google.Cloud.Trace.V2.Tests
                 TimeEvents = new Span.Types.TimeEvents(),
                 Links = new Span.Types.Links(),
                 Status = new gr::Status(),
-                SameProcessAsParentSpan = new bool?(),
-                ChildSpanCount = new int?(),
+                SameProcessAsParentSpan = false,
+                ChildSpanCount = -1491694397,
+                SpanKind = Span.Types.SpanKind.Consumer,
             };
             Span expectedResponse = new Span
             {
-                SpanName = new SpanName("[PROJECT]", "[TRACE]", "[SPAN]"),
+                SpanName = SpanName.FromProjectTraceSpan("[PROJECT]", "[TRACE]", "[SPAN]"),
                 SpanId = "span_id47c232d3",
                 ParentSpanId = "parent_span_ide637f6a2",
                 DisplayName = new TruncatableString(),
@@ -161,8 +162,9 @@ namespace Google.Cloud.Trace.V2.Tests
                 TimeEvents = new Span.Types.TimeEvents(),
                 Links = new Span.Types.Links(),
                 Status = new gr::Status(),
-                SameProcessAsParentSpan = new bool?(),
-                ChildSpanCount = new int?(),
+                SameProcessAsParentSpan = false,
+                ChildSpanCount = -1491694397,
+                SpanKind = Span.Types.SpanKind.Consumer,
             };
             mockGrpcClient.Setup(x => x.CreateSpan(request, moq::It.IsAny<grpccore::CallOptions>())).Returns(expectedResponse);
             TraceServiceClient client = new TraceServiceClientImpl(mockGrpcClient.Object, null);
@@ -177,7 +179,7 @@ namespace Google.Cloud.Trace.V2.Tests
             moq::Mock<TraceService.TraceServiceClient> mockGrpcClient = new moq::Mock<TraceService.TraceServiceClient>(moq::MockBehavior.Strict);
             Span request = new Span
             {
-                SpanName = new SpanName("[PROJECT]", "[TRACE]", "[SPAN]"),
+                SpanName = SpanName.FromProjectTraceSpan("[PROJECT]", "[TRACE]", "[SPAN]"),
                 SpanId = "span_id47c232d3",
                 ParentSpanId = "parent_span_ide637f6a2",
                 DisplayName = new TruncatableString(),
@@ -188,12 +190,13 @@ namespace Google.Cloud.Trace.V2.Tests
                 TimeEvents = new Span.Types.TimeEvents(),
                 Links = new Span.Types.Links(),
                 Status = new gr::Status(),
-                SameProcessAsParentSpan = new bool?(),
-                ChildSpanCount = new int?(),
+                SameProcessAsParentSpan = false,
+                ChildSpanCount = -1491694397,
+                SpanKind = Span.Types.SpanKind.Consumer,
             };
             Span expectedResponse = new Span
             {
-                SpanName = new SpanName("[PROJECT]", "[TRACE]", "[SPAN]"),
+                SpanName = SpanName.FromProjectTraceSpan("[PROJECT]", "[TRACE]", "[SPAN]"),
                 SpanId = "span_id47c232d3",
                 ParentSpanId = "parent_span_ide637f6a2",
                 DisplayName = new TruncatableString(),
@@ -204,8 +207,9 @@ namespace Google.Cloud.Trace.V2.Tests
                 TimeEvents = new Span.Types.TimeEvents(),
                 Links = new Span.Types.Links(),
                 Status = new gr::Status(),
-                SameProcessAsParentSpan = new bool?(),
-                ChildSpanCount = new int?(),
+                SameProcessAsParentSpan = false,
+                ChildSpanCount = -1491694397,
+                SpanKind = Span.Types.SpanKind.Consumer,
             };
             mockGrpcClient.Setup(x => x.CreateSpanAsync(request, moq::It.IsAny<grpccore::CallOptions>())).Returns(new grpccore::AsyncUnaryCall<Span>(stt::Task.FromResult(expectedResponse), null, null, null, null));
             TraceServiceClient client = new TraceServiceClientImpl(mockGrpcClient.Object, null);

@@ -25,145 +25,167 @@ namespace Grafeas.V1 {
       byte[] descriptorData = global::System.Convert.FromBase64String(
           string.Concat(
             "ChhncmFmZWFzL3YxL2dyYWZlYXMucHJvdG8SCmdyYWZlYXMudjEaHGdvb2ds",
-            "ZS9hcGkvYW5ub3RhdGlvbnMucHJvdG8aG2dvb2dsZS9wcm90b2J1Zi9lbXB0",
-            "eS5wcm90bxogZ29vZ2xlL3Byb3RvYnVmL2ZpZWxkX21hc2sucHJvdG8aH2dv",
-            "b2dsZS9wcm90b2J1Zi90aW1lc3RhbXAucHJvdG8aHGdyYWZlYXMvdjEvYXR0",
-            "ZXN0YXRpb24ucHJvdG8aFmdyYWZlYXMvdjEvYnVpbGQucHJvdG8aF2dyYWZl",
-            "YXMvdjEvY29tbW9uLnByb3RvGhtncmFmZWFzL3YxL2RlcGxveW1lbnQucHJv",
-            "dG8aGmdyYWZlYXMvdjEvZGlzY292ZXJ5LnByb3RvGhZncmFmZWFzL3YxL2lt",
-            "YWdlLnByb3RvGhhncmFmZWFzL3YxL3BhY2thZ2UucHJvdG8aG2dyYWZlYXMv",
-            "djEvcHJvdmVuYW5jZS5wcm90bxoeZ3JhZmVhcy92MS92dWxuZXJhYmlsaXR5",
-            "LnByb3RvIt0ECgpPY2N1cnJlbmNlEgwKBG5hbWUYASABKAkSFAoMcmVzb3Vy",
-            "Y2VfdXJpGAIgASgJEhEKCW5vdGVfbmFtZRgDIAEoCRIiCgRraW5kGAQgASgO",
-            "MhQuZ3JhZmVhcy52MS5Ob3RlS2luZBITCgtyZW1lZGlhdGlvbhgFIAEoCRIv",
-            "CgtjcmVhdGVfdGltZRgGIAEoCzIaLmdvb2dsZS5wcm90b2J1Zi5UaW1lc3Rh",
-            "bXASLwoLdXBkYXRlX3RpbWUYByABKAsyGi5nb29nbGUucHJvdG9idWYuVGlt",
-            "ZXN0YW1wEjwKDXZ1bG5lcmFiaWxpdHkYCCABKAsyIy5ncmFmZWFzLnYxLlZ1",
-            "bG5lcmFiaWxpdHlPY2N1cnJlbmNlSAASLAoFYnVpbGQYCSABKAsyGy5ncmFm",
-            "ZWFzLnYxLkJ1aWxkT2NjdXJyZW5jZUgAEiwKBWltYWdlGAogASgLMhsuZ3Jh",
-            "ZmVhcy52MS5JbWFnZU9jY3VycmVuY2VIABIwCgdwYWNrYWdlGAsgASgLMh0u",
-            "Z3JhZmVhcy52MS5QYWNrYWdlT2NjdXJyZW5jZUgAEjYKCmRlcGxveW1lbnQY",
-            "DCABKAsyIC5ncmFmZWFzLnYxLkRlcGxveW1lbnRPY2N1cnJlbmNlSAASNAoJ",
-            "ZGlzY292ZXJ5GA0gASgLMh8uZ3JhZmVhcy52MS5EaXNjb3ZlcnlPY2N1cnJl",
-            "bmNlSAASOAoLYXR0ZXN0YXRpb24YDiABKAsyIS5ncmFmZWFzLnYxLkF0dGVz",
-            "dGF0aW9uT2NjdXJyZW5jZUgAQgkKB2RldGFpbHMinwUKBE5vdGUSDAoEbmFt",
-            "ZRgBIAEoCRIZChFzaG9ydF9kZXNjcmlwdGlvbhgCIAEoCRIYChBsb25nX2Rl",
-            "c2NyaXB0aW9uGAMgASgJEiIKBGtpbmQYBCABKA4yFC5ncmFmZWFzLnYxLk5v",
-            "dGVLaW5kEisKC3JlbGF0ZWRfdXJsGAUgAygLMhYuZ3JhZmVhcy52MS5SZWxh",
-            "dGVkVXJsEjMKD2V4cGlyYXRpb25fdGltZRgGIAEoCzIaLmdvb2dsZS5wcm90",
-            "b2J1Zi5UaW1lc3RhbXASLwoLY3JlYXRlX3RpbWUYByABKAsyGi5nb29nbGUu",
-            "cHJvdG9idWYuVGltZXN0YW1wEi8KC3VwZGF0ZV90aW1lGAggASgLMhouZ29v",
-            "Z2xlLnByb3RvYnVmLlRpbWVzdGFtcBIaChJyZWxhdGVkX25vdGVfbmFtZXMY",
-            "CSADKAkSNgoNdnVsbmVyYWJpbGl0eRgKIAEoCzIdLmdyYWZlYXMudjEuVnVs",
-            "bmVyYWJpbGl0eU5vdGVIABImCgVidWlsZBgLIAEoCzIVLmdyYWZlYXMudjEu",
-            "QnVpbGROb3RlSAASJgoFaW1hZ2UYDCABKAsyFS5ncmFmZWFzLnYxLkltYWdl",
-            "Tm90ZUgAEioKB3BhY2thZ2UYDSABKAsyFy5ncmFmZWFzLnYxLlBhY2thZ2VO",
-            "b3RlSAASMAoKZGVwbG95bWVudBgOIAEoCzIaLmdyYWZlYXMudjEuRGVwbG95",
-            "bWVudE5vdGVIABIuCglkaXNjb3ZlcnkYDyABKAsyGS5ncmFmZWFzLnYxLkRp",
-            "c2NvdmVyeU5vdGVIABIyCgthdHRlc3RhdGlvbhgQIAEoCzIbLmdyYWZlYXMu",
-            "djEuQXR0ZXN0YXRpb25Ob3RlSABCBgoEdHlwZSIkChRHZXRPY2N1cnJlbmNl",
-            "UmVxdWVzdBIMCgRuYW1lGAEgASgJIl8KFkxpc3RPY2N1cnJlbmNlc1JlcXVl",
-            "c3QSDgoGcGFyZW50GAEgASgJEg4KBmZpbHRlchgCIAEoCRIRCglwYWdlX3Np",
-            "emUYAyABKAUSEgoKcGFnZV90b2tlbhgEIAEoCSJfChdMaXN0T2NjdXJyZW5j",
-            "ZXNSZXNwb25zZRIrCgtvY2N1cnJlbmNlcxgBIAMoCzIWLmdyYWZlYXMudjEu",
-            "T2NjdXJyZW5jZRIXCg9uZXh0X3BhZ2VfdG9rZW4YAiABKAkiJwoXRGVsZXRl",
-            "T2NjdXJyZW5jZVJlcXVlc3QSDAoEbmFtZRgBIAEoCSJVChdDcmVhdGVPY2N1",
-            "cnJlbmNlUmVxdWVzdBIOCgZwYXJlbnQYASABKAkSKgoKb2NjdXJyZW5jZRgC",
-            "IAEoCzIWLmdyYWZlYXMudjEuT2NjdXJyZW5jZSKEAQoXVXBkYXRlT2NjdXJy",
-            "ZW5jZVJlcXVlc3QSDAoEbmFtZRgBIAEoCRIqCgpvY2N1cnJlbmNlGAIgASgL",
-            "MhYuZ3JhZmVhcy52MS5PY2N1cnJlbmNlEi8KC3VwZGF0ZV9tYXNrGAMgASgL",
-            "MhouZ29vZ2xlLnByb3RvYnVmLkZpZWxkTWFzayIeCg5HZXROb3RlUmVxdWVz",
-            "dBIMCgRuYW1lGAEgASgJIigKGEdldE9jY3VycmVuY2VOb3RlUmVxdWVzdBIM",
-            "CgRuYW1lGAEgASgJIlkKEExpc3ROb3Rlc1JlcXVlc3QSDgoGcGFyZW50GAEg",
-            "ASgJEg4KBmZpbHRlchgCIAEoCRIRCglwYWdlX3NpemUYAyABKAUSEgoKcGFn",
-            "ZV90b2tlbhgEIAEoCSJNChFMaXN0Tm90ZXNSZXNwb25zZRIfCgVub3RlcxgB",
-            "IAMoCzIQLmdyYWZlYXMudjEuTm90ZRIXCg9uZXh0X3BhZ2VfdG9rZW4YAiAB",
-            "KAkiIQoRRGVsZXRlTm90ZVJlcXVlc3QSDAoEbmFtZRgBIAEoCSJUChFDcmVh",
-            "dGVOb3RlUmVxdWVzdBIOCgZwYXJlbnQYASABKAkSDwoHbm90ZV9pZBgCIAEo",
-            "CRIeCgRub3RlGAMgASgLMhAuZ3JhZmVhcy52MS5Ob3RlInIKEVVwZGF0ZU5v",
-            "dGVSZXF1ZXN0EgwKBG5hbWUYASABKAkSHgoEbm90ZRgCIAEoCzIQLmdyYWZl",
-            "YXMudjEuTm90ZRIvCgt1cGRhdGVfbWFzaxgDIAEoCzIaLmdvb2dsZS5wcm90",
-            "b2J1Zi5GaWVsZE1hc2siYQoaTGlzdE5vdGVPY2N1cnJlbmNlc1JlcXVlc3QS",
-            "DAoEbmFtZRgBIAEoCRIOCgZmaWx0ZXIYAiABKAkSEQoJcGFnZV9zaXplGAMg",
-            "ASgFEhIKCnBhZ2VfdG9rZW4YBCABKAkiYwobTGlzdE5vdGVPY2N1cnJlbmNl",
-            "c1Jlc3BvbnNlEisKC29jY3VycmVuY2VzGAEgAygLMhYuZ3JhZmVhcy52MS5P",
-            "Y2N1cnJlbmNlEhcKD25leHRfcGFnZV90b2tlbhgCIAEoCSKoAQoXQmF0Y2hD",
-            "cmVhdGVOb3Rlc1JlcXVlc3QSDgoGcGFyZW50GAEgASgJEj0KBW5vdGVzGAIg",
-            "AygLMi4uZ3JhZmVhcy52MS5CYXRjaENyZWF0ZU5vdGVzUmVxdWVzdC5Ob3Rl",
-            "c0VudHJ5Gj4KCk5vdGVzRW50cnkSCwoDa2V5GAEgASgJEh8KBXZhbHVlGAIg",
-            "ASgLMhAuZ3JhZmVhcy52MS5Ob3RlOgI4ASI7ChhCYXRjaENyZWF0ZU5vdGVz",
-            "UmVzcG9uc2USHwoFbm90ZXMYASADKAsyEC5ncmFmZWFzLnYxLk5vdGUiXAod",
-            "QmF0Y2hDcmVhdGVPY2N1cnJlbmNlc1JlcXVlc3QSDgoGcGFyZW50GAEgASgJ",
-            "EisKC29jY3VycmVuY2VzGAIgAygLMhYuZ3JhZmVhcy52MS5PY2N1cnJlbmNl",
-            "Ik0KHkJhdGNoQ3JlYXRlT2NjdXJyZW5jZXNSZXNwb25zZRIrCgtvY2N1cnJl",
-            "bmNlcxgBIAMoCzIWLmdyYWZlYXMudjEuT2NjdXJyZW5jZTKUDgoHR3JhZmVh",
-            "cxJ2Cg1HZXRPY2N1cnJlbmNlEiAuZ3JhZmVhcy52MS5HZXRPY2N1cnJlbmNl",
-            "UmVxdWVzdBoWLmdyYWZlYXMudjEuT2NjdXJyZW5jZSIrgtPkkwIlEiMvdjEv",
-            "e25hbWU9cHJvamVjdHMvKi9vY2N1cnJlbmNlcy8qfRKHAQoPTGlzdE9jY3Vy",
-            "cmVuY2VzEiIuZ3JhZmVhcy52MS5MaXN0T2NjdXJyZW5jZXNSZXF1ZXN0GiMu",
-            "Z3JhZmVhcy52MS5MaXN0T2NjdXJyZW5jZXNSZXNwb25zZSIrgtPkkwIlEiMv",
-            "djEve3BhcmVudD1wcm9qZWN0cy8qfS9vY2N1cnJlbmNlcxJ8ChBEZWxldGVP",
-            "Y2N1cnJlbmNlEiMuZ3JhZmVhcy52MS5EZWxldGVPY2N1cnJlbmNlUmVxdWVz",
-            "dBoWLmdvb2dsZS5wcm90b2J1Zi5FbXB0eSIrgtPkkwIlKiMvdjEve25hbWU9",
-            "cHJvamVjdHMvKi9vY2N1cnJlbmNlcy8qfRKIAQoQQ3JlYXRlT2NjdXJyZW5j",
-            "ZRIjLmdyYWZlYXMudjEuQ3JlYXRlT2NjdXJyZW5jZVJlcXVlc3QaFi5ncmFm",
-            "ZWFzLnYxLk9jY3VycmVuY2UiN4LT5JMCMSIjL3YxL3twYXJlbnQ9cHJvamVj",
-            "dHMvKn0vb2NjdXJyZW5jZXM6Cm9jY3VycmVuY2USqwEKFkJhdGNoQ3JlYXRl",
-            "T2NjdXJyZW5jZXMSKS5ncmFmZWFzLnYxLkJhdGNoQ3JlYXRlT2NjdXJyZW5j",
-            "ZXNSZXF1ZXN0GiouZ3JhZmVhcy52MS5CYXRjaENyZWF0ZU9jY3VycmVuY2Vz",
-            "UmVzcG9uc2UiOoLT5JMCNCIvL3YxL3twYXJlbnQ9cHJvamVjdHMvKn0vb2Nj",
-            "dXJyZW5jZXM6YmF0Y2hDcmVhdGU6ASoSiAEKEFVwZGF0ZU9jY3VycmVuY2US",
-            "Iy5ncmFmZWFzLnYxLlVwZGF0ZU9jY3VycmVuY2VSZXF1ZXN0GhYuZ3JhZmVh",
-            "cy52MS5PY2N1cnJlbmNlIjeC0+STAjEyIy92MS97bmFtZT1wcm9qZWN0cy8q",
-            "L29jY3VycmVuY2VzLyp9OgpvY2N1cnJlbmNlEn4KEUdldE9jY3VycmVuY2VO",
-            "b3RlEiQuZ3JhZmVhcy52MS5HZXRPY2N1cnJlbmNlTm90ZVJlcXVlc3QaEC5n",
-            "cmFmZWFzLnYxLk5vdGUiMYLT5JMCKxIpL3YxL3tuYW1lPXByb2plY3RzLyov",
-            "b2NjdXJyZW5jZXMvKn0vbm90ZXMSXgoHR2V0Tm90ZRIaLmdyYWZlYXMudjEu",
-            "R2V0Tm90ZVJlcXVlc3QaEC5ncmFmZWFzLnYxLk5vdGUiJYLT5JMCHxIdL3Yx",
-            "L3tuYW1lPXByb2plY3RzLyovbm90ZXMvKn0SbwoJTGlzdE5vdGVzEhwuZ3Jh",
-            "ZmVhcy52MS5MaXN0Tm90ZXNSZXF1ZXN0Gh0uZ3JhZmVhcy52MS5MaXN0Tm90",
-            "ZXNSZXNwb25zZSIlgtPkkwIfEh0vdjEve3BhcmVudD1wcm9qZWN0cy8qfS9u",
-            "b3RlcxJqCgpEZWxldGVOb3RlEh0uZ3JhZmVhcy52MS5EZWxldGVOb3RlUmVx",
-            "dWVzdBoWLmdvb2dsZS5wcm90b2J1Zi5FbXB0eSIlgtPkkwIfKh0vdjEve25h",
-            "bWU9cHJvamVjdHMvKi9ub3Rlcy8qfRJqCgpDcmVhdGVOb3RlEh0uZ3JhZmVh",
-            "cy52MS5DcmVhdGVOb3RlUmVxdWVzdBoQLmdyYWZlYXMudjEuTm90ZSIrgtPk",
-            "kwIlIh0vdjEve3BhcmVudD1wcm9qZWN0cy8qfS9ub3RlczoEbm90ZRKTAQoQ",
-            "QmF0Y2hDcmVhdGVOb3RlcxIjLmdyYWZlYXMudjEuQmF0Y2hDcmVhdGVOb3Rl",
-            "c1JlcXVlc3QaJC5ncmFmZWFzLnYxLkJhdGNoQ3JlYXRlTm90ZXNSZXNwb25z",
-            "ZSI0gtPkkwIuIikvdjEve3BhcmVudD1wcm9qZWN0cy8qfS9ub3RlczpiYXRj",
-            "aENyZWF0ZToBKhJqCgpVcGRhdGVOb3RlEh0uZ3JhZmVhcy52MS5VcGRhdGVO",
-            "b3RlUmVxdWVzdBoQLmdyYWZlYXMudjEuTm90ZSIrgtPkkwIlMh0vdjEve25h",
-            "bWU9cHJvamVjdHMvKi9ub3Rlcy8qfToEbm90ZRKZAQoTTGlzdE5vdGVPY2N1",
-            "cnJlbmNlcxImLmdyYWZlYXMudjEuTGlzdE5vdGVPY2N1cnJlbmNlc1JlcXVl",
-            "c3QaJy5ncmFmZWFzLnYxLkxpc3ROb3RlT2NjdXJyZW5jZXNSZXNwb25zZSIx",
-            "gtPkkwIrEikvdjEve25hbWU9cHJvamVjdHMvKi9ub3Rlcy8qfS9vY2N1cnJl",
-            "bmNlc0JRCg1pby5ncmFmZWFzLnYxUAFaOGdvb2dsZS5nb2xhbmcub3JnL2dl",
-            "bnByb3RvL2dvb2dsZWFwaXMvZ3JhZmVhcy92MTtncmFmZWFzogIDR1JBYgZw",
-            "cm90bzM="));
+            "ZS9hcGkvYW5ub3RhdGlvbnMucHJvdG8aF2dvb2dsZS9hcGkvY2xpZW50LnBy",
+            "b3RvGh9nb29nbGUvYXBpL2ZpZWxkX2JlaGF2aW9yLnByb3RvGhlnb29nbGUv",
+            "YXBpL3Jlc291cmNlLnByb3RvGhtnb29nbGUvcHJvdG9idWYvZW1wdHkucHJv",
+            "dG8aIGdvb2dsZS9wcm90b2J1Zi9maWVsZF9tYXNrLnByb3RvGh9nb29nbGUv",
+            "cHJvdG9idWYvdGltZXN0YW1wLnByb3RvGhxncmFmZWFzL3YxL2F0dGVzdGF0",
+            "aW9uLnByb3RvGhZncmFmZWFzL3YxL2J1aWxkLnByb3RvGhdncmFmZWFzL3Yx",
+            "L2NvbW1vbi5wcm90bxobZ3JhZmVhcy92MS9kZXBsb3ltZW50LnByb3RvGhpn",
+            "cmFmZWFzL3YxL2Rpc2NvdmVyeS5wcm90bxoWZ3JhZmVhcy92MS9pbWFnZS5w",
+            "cm90bxoYZ3JhZmVhcy92MS9wYWNrYWdlLnByb3RvGhhncmFmZWFzL3YxL3Vw",
+            "Z3JhZGUucHJvdG8aHmdyYWZlYXMvdjEvdnVsbmVyYWJpbGl0eS5wcm90byLY",
+            "BQoKT2NjdXJyZW5jZRIMCgRuYW1lGAEgASgJEhQKDHJlc291cmNlX3VyaRgC",
+            "IAEoCRIRCglub3RlX25hbWUYAyABKAkSIgoEa2luZBgEIAEoDjIULmdyYWZl",
+            "YXMudjEuTm90ZUtpbmQSEwoLcmVtZWRpYXRpb24YBSABKAkSLwoLY3JlYXRl",
+            "X3RpbWUYBiABKAsyGi5nb29nbGUucHJvdG9idWYuVGltZXN0YW1wEi8KC3Vw",
+            "ZGF0ZV90aW1lGAcgASgLMhouZ29vZ2xlLnByb3RvYnVmLlRpbWVzdGFtcBI8",
+            "Cg12dWxuZXJhYmlsaXR5GAggASgLMiMuZ3JhZmVhcy52MS5WdWxuZXJhYmls",
+            "aXR5T2NjdXJyZW5jZUgAEiwKBWJ1aWxkGAkgASgLMhsuZ3JhZmVhcy52MS5C",
+            "dWlsZE9jY3VycmVuY2VIABIsCgVpbWFnZRgKIAEoCzIbLmdyYWZlYXMudjEu",
+            "SW1hZ2VPY2N1cnJlbmNlSAASMAoHcGFja2FnZRgLIAEoCzIdLmdyYWZlYXMu",
+            "djEuUGFja2FnZU9jY3VycmVuY2VIABI2CgpkZXBsb3ltZW50GAwgASgLMiAu",
+            "Z3JhZmVhcy52MS5EZXBsb3ltZW50T2NjdXJyZW5jZUgAEjQKCWRpc2NvdmVy",
+            "eRgNIAEoCzIfLmdyYWZlYXMudjEuRGlzY292ZXJ5T2NjdXJyZW5jZUgAEjgK",
+            "C2F0dGVzdGF0aW9uGA4gASgLMiEuZ3JhZmVhcy52MS5BdHRlc3RhdGlvbk9j",
+            "Y3VycmVuY2VIABIwCgd1cGdyYWRlGA8gASgLMh0uZ3JhZmVhcy52MS5VcGdy",
+            "YWRlT2NjdXJyZW5jZUgAOkfqQUQKFWdyYWZlYXMuaW8vT2NjdXJyZW5jZRIr",
+            "cHJvamVjdHMve3Byb2plY3R9L29jY3VycmVuY2VzL3tvY2N1cnJlbmNlfUIJ",
+            "CgdkZXRhaWxzIoIGCgROb3RlEgwKBG5hbWUYASABKAkSGQoRc2hvcnRfZGVz",
+            "Y3JpcHRpb24YAiABKAkSGAoQbG9uZ19kZXNjcmlwdGlvbhgDIAEoCRIiCgRr",
+            "aW5kGAQgASgOMhQuZ3JhZmVhcy52MS5Ob3RlS2luZBIrCgtyZWxhdGVkX3Vy",
+            "bBgFIAMoCzIWLmdyYWZlYXMudjEuUmVsYXRlZFVybBIzCg9leHBpcmF0aW9u",
+            "X3RpbWUYBiABKAsyGi5nb29nbGUucHJvdG9idWYuVGltZXN0YW1wEi8KC2Ny",
+            "ZWF0ZV90aW1lGAcgASgLMhouZ29vZ2xlLnByb3RvYnVmLlRpbWVzdGFtcBIv",
+            "Cgt1cGRhdGVfdGltZRgIIAEoCzIaLmdvb2dsZS5wcm90b2J1Zi5UaW1lc3Rh",
+            "bXASGgoScmVsYXRlZF9ub3RlX25hbWVzGAkgAygJEjYKDXZ1bG5lcmFiaWxp",
+            "dHkYCiABKAsyHS5ncmFmZWFzLnYxLlZ1bG5lcmFiaWxpdHlOb3RlSAASJgoF",
+            "YnVpbGQYCyABKAsyFS5ncmFmZWFzLnYxLkJ1aWxkTm90ZUgAEiYKBWltYWdl",
+            "GAwgASgLMhUuZ3JhZmVhcy52MS5JbWFnZU5vdGVIABIqCgdwYWNrYWdlGA0g",
+            "ASgLMhcuZ3JhZmVhcy52MS5QYWNrYWdlTm90ZUgAEjAKCmRlcGxveW1lbnQY",
+            "DiABKAsyGi5ncmFmZWFzLnYxLkRlcGxveW1lbnROb3RlSAASLgoJZGlzY292",
+            "ZXJ5GA8gASgLMhkuZ3JhZmVhcy52MS5EaXNjb3ZlcnlOb3RlSAASMgoLYXR0",
+            "ZXN0YXRpb24YECABKAsyGy5ncmFmZWFzLnYxLkF0dGVzdGF0aW9uTm90ZUgA",
+            "EioKB3VwZ3JhZGUYESABKAsyFy5ncmFmZWFzLnYxLlVwZ3JhZGVOb3RlSAA6",
+            "NepBMgoPZ3JhZmVhcy5pby9Ob3RlEh9wcm9qZWN0cy97cHJvamVjdH0vbm90",
+            "ZXMve25vdGV9QgYKBHR5cGUiQwoUR2V0T2NjdXJyZW5jZVJlcXVlc3QSKwoE",
+            "bmFtZRgBIAEoCUId4EEC+kEXChVncmFmZWFzLmlvL09jY3VycmVuY2UiewoW",
+            "TGlzdE9jY3VycmVuY2VzUmVxdWVzdBIqCgZwYXJlbnQYASABKAlCGuBBAvpB",
+            "FAoSZ3JhZmVhcy5pby9Qcm9qZWN0Eg4KBmZpbHRlchgCIAEoCRIRCglwYWdl",
+            "X3NpemUYAyABKAUSEgoKcGFnZV90b2tlbhgEIAEoCSJfChdMaXN0T2NjdXJy",
+            "ZW5jZXNSZXNwb25zZRIrCgtvY2N1cnJlbmNlcxgBIAMoCzIWLmdyYWZlYXMu",
+            "djEuT2NjdXJyZW5jZRIXCg9uZXh0X3BhZ2VfdG9rZW4YAiABKAkiRgoXRGVs",
+            "ZXRlT2NjdXJyZW5jZVJlcXVlc3QSKwoEbmFtZRgBIAEoCUId4EEC+kEXChVn",
+            "cmFmZWFzLmlvL09jY3VycmVuY2UidgoXQ3JlYXRlT2NjdXJyZW5jZVJlcXVl",
+            "c3QSKgoGcGFyZW50GAEgASgJQhrgQQL6QRQKEmdyYWZlYXMuaW8vUHJvamVj",
+            "dBIvCgpvY2N1cnJlbmNlGAIgASgLMhYuZ3JhZmVhcy52MS5PY2N1cnJlbmNl",
+            "QgPgQQIiqAEKF1VwZGF0ZU9jY3VycmVuY2VSZXF1ZXN0EisKBG5hbWUYASAB",
+            "KAlCHeBBAvpBFwoVZ3JhZmVhcy5pby9PY2N1cnJlbmNlEi8KCm9jY3VycmVu",
+            "Y2UYAiABKAsyFi5ncmFmZWFzLnYxLk9jY3VycmVuY2VCA+BBAhIvCgt1cGRh",
+            "dGVfbWFzaxgDIAEoCzIaLmdvb2dsZS5wcm90b2J1Zi5GaWVsZE1hc2siNwoO",
+            "R2V0Tm90ZVJlcXVlc3QSJQoEbmFtZRgBIAEoCUIX4EEC+kERCg9ncmFmZWFz",
+            "LmlvL05vdGUiRwoYR2V0T2NjdXJyZW5jZU5vdGVSZXF1ZXN0EisKBG5hbWUY",
+            "ASABKAlCHeBBAvpBFwoVZ3JhZmVhcy5pby9PY2N1cnJlbmNlInUKEExpc3RO",
+            "b3Rlc1JlcXVlc3QSKgoGcGFyZW50GAEgASgJQhrgQQL6QRQKEmdyYWZlYXMu",
+            "aW8vUHJvamVjdBIOCgZmaWx0ZXIYAiABKAkSEQoJcGFnZV9zaXplGAMgASgF",
+            "EhIKCnBhZ2VfdG9rZW4YBCABKAkiTQoRTGlzdE5vdGVzUmVzcG9uc2USHwoF",
+            "bm90ZXMYASADKAsyEC5ncmFmZWFzLnYxLk5vdGUSFwoPbmV4dF9wYWdlX3Rv",
+            "a2VuGAIgASgJIjoKEURlbGV0ZU5vdGVSZXF1ZXN0EiUKBG5hbWUYASABKAlC",
+            "F+BBAvpBEQoPZ3JhZmVhcy5pby9Ob3RlInoKEUNyZWF0ZU5vdGVSZXF1ZXN0",
+            "EioKBnBhcmVudBgBIAEoCUIa4EEC+kEUChJncmFmZWFzLmlvL1Byb2plY3QS",
+            "FAoHbm90ZV9pZBgCIAEoCUID4EECEiMKBG5vdGUYAyABKAsyEC5ncmFmZWFz",
+            "LnYxLk5vdGVCA+BBAiKQAQoRVXBkYXRlTm90ZVJlcXVlc3QSJQoEbmFtZRgB",
+            "IAEoCUIX4EEC+kERCg9ncmFmZWFzLmlvL05vdGUSIwoEbm90ZRgCIAEoCzIQ",
+            "LmdyYWZlYXMudjEuTm90ZUID4EECEi8KC3VwZGF0ZV9tYXNrGAMgASgLMhou",
+            "Z29vZ2xlLnByb3RvYnVmLkZpZWxkTWFzayJ6ChpMaXN0Tm90ZU9jY3VycmVu",
+            "Y2VzUmVxdWVzdBIlCgRuYW1lGAEgASgJQhfgQQL6QREKD2dyYWZlYXMuaW8v",
+            "Tm90ZRIOCgZmaWx0ZXIYAiABKAkSEQoJcGFnZV9zaXplGAMgASgFEhIKCnBh",
+            "Z2VfdG9rZW4YBCABKAkiYwobTGlzdE5vdGVPY2N1cnJlbmNlc1Jlc3BvbnNl",
+            "EisKC29jY3VycmVuY2VzGAEgAygLMhYuZ3JhZmVhcy52MS5PY2N1cnJlbmNl",
+            "EhcKD25leHRfcGFnZV90b2tlbhgCIAEoCSLJAQoXQmF0Y2hDcmVhdGVOb3Rl",
+            "c1JlcXVlc3QSKgoGcGFyZW50GAEgASgJQhrgQQL6QRQKEmdyYWZlYXMuaW8v",
+            "UHJvamVjdBJCCgVub3RlcxgCIAMoCzIuLmdyYWZlYXMudjEuQmF0Y2hDcmVh",
+            "dGVOb3Rlc1JlcXVlc3QuTm90ZXNFbnRyeUID4EECGj4KCk5vdGVzRW50cnkS",
+            "CwoDa2V5GAEgASgJEh8KBXZhbHVlGAIgASgLMhAuZ3JhZmVhcy52MS5Ob3Rl",
+            "OgI4ASI7ChhCYXRjaENyZWF0ZU5vdGVzUmVzcG9uc2USHwoFbm90ZXMYASAD",
+            "KAsyEC5ncmFmZWFzLnYxLk5vdGUifQodQmF0Y2hDcmVhdGVPY2N1cnJlbmNl",
+            "c1JlcXVlc3QSKgoGcGFyZW50GAEgASgJQhrgQQL6QRQKEmdyYWZlYXMuaW8v",
+            "UHJvamVjdBIwCgtvY2N1cnJlbmNlcxgCIAMoCzIWLmdyYWZlYXMudjEuT2Nj",
+            "dXJyZW5jZUID4EECIk0KHkJhdGNoQ3JlYXRlT2NjdXJyZW5jZXNSZXNwb25z",
+            "ZRIrCgtvY2N1cnJlbmNlcxgBIAMoCzIWLmdyYWZlYXMudjEuT2NjdXJyZW5j",
+            "ZTKSEAoHR3JhZmVhcxJ9Cg1HZXRPY2N1cnJlbmNlEiAuZ3JhZmVhcy52MS5H",
+            "ZXRPY2N1cnJlbmNlUmVxdWVzdBoWLmdyYWZlYXMudjEuT2NjdXJyZW5jZSIy",
+            "gtPkkwIlEiMvdjEve25hbWU9cHJvamVjdHMvKi9vY2N1cnJlbmNlcy8qfdpB",
+            "BG5hbWUSlwEKD0xpc3RPY2N1cnJlbmNlcxIiLmdyYWZlYXMudjEuTGlzdE9j",
+            "Y3VycmVuY2VzUmVxdWVzdBojLmdyYWZlYXMudjEuTGlzdE9jY3VycmVuY2Vz",
+            "UmVzcG9uc2UiO4LT5JMCJRIjL3YxL3twYXJlbnQ9cHJvamVjdHMvKn0vb2Nj",
+            "dXJyZW5jZXPaQQ1wYXJlbnQsZmlsdGVyEoMBChBEZWxldGVPY2N1cnJlbmNl",
+            "EiMuZ3JhZmVhcy52MS5EZWxldGVPY2N1cnJlbmNlUmVxdWVzdBoWLmdvb2ds",
+            "ZS5wcm90b2J1Zi5FbXB0eSIygtPkkwIlKiMvdjEve25hbWU9cHJvamVjdHMv",
+            "Ki9vY2N1cnJlbmNlcy8qfdpBBG5hbWUSnAEKEENyZWF0ZU9jY3VycmVuY2US",
+            "Iy5ncmFmZWFzLnYxLkNyZWF0ZU9jY3VycmVuY2VSZXF1ZXN0GhYuZ3JhZmVh",
+            "cy52MS5PY2N1cnJlbmNlIkuC0+STAjEiIy92MS97cGFyZW50PXByb2plY3Rz",
+            "Lyp9L29jY3VycmVuY2VzOgpvY2N1cnJlbmNl2kERcGFyZW50LG9jY3VycmVu",
+            "Y2USwAEKFkJhdGNoQ3JlYXRlT2NjdXJyZW5jZXMSKS5ncmFmZWFzLnYxLkJh",
+            "dGNoQ3JlYXRlT2NjdXJyZW5jZXNSZXF1ZXN0GiouZ3JhZmVhcy52MS5CYXRj",
+            "aENyZWF0ZU9jY3VycmVuY2VzUmVzcG9uc2UiT4LT5JMCNCIvL3YxL3twYXJl",
+            "bnQ9cHJvamVjdHMvKn0vb2NjdXJyZW5jZXM6YmF0Y2hDcmVhdGU6ASraQRJw",
+            "YXJlbnQsb2NjdXJyZW5jZXMSpgEKEFVwZGF0ZU9jY3VycmVuY2USIy5ncmFm",
+            "ZWFzLnYxLlVwZGF0ZU9jY3VycmVuY2VSZXF1ZXN0GhYuZ3JhZmVhcy52MS5P",
+            "Y2N1cnJlbmNlIlWC0+STAjEyIy92MS97bmFtZT1wcm9qZWN0cy8qL29jY3Vy",
+            "cmVuY2VzLyp9OgpvY2N1cnJlbmNl2kEbbmFtZSxvY2N1cnJlbmNlLHVwZGF0",
+            "ZV9tYXNrEoUBChFHZXRPY2N1cnJlbmNlTm90ZRIkLmdyYWZlYXMudjEuR2V0",
+            "T2NjdXJyZW5jZU5vdGVSZXF1ZXN0GhAuZ3JhZmVhcy52MS5Ob3RlIjiC0+ST",
+            "AisSKS92MS97bmFtZT1wcm9qZWN0cy8qL29jY3VycmVuY2VzLyp9L25vdGVz",
+            "2kEEbmFtZRJlCgdHZXROb3RlEhouZ3JhZmVhcy52MS5HZXROb3RlUmVxdWVz",
+            "dBoQLmdyYWZlYXMudjEuTm90ZSIsgtPkkwIfEh0vdjEve25hbWU9cHJvamVj",
+            "dHMvKi9ub3Rlcy8qfdpBBG5hbWUSfwoJTGlzdE5vdGVzEhwuZ3JhZmVhcy52",
+            "MS5MaXN0Tm90ZXNSZXF1ZXN0Gh0uZ3JhZmVhcy52MS5MaXN0Tm90ZXNSZXNw",
+            "b25zZSI1gtPkkwIfEh0vdjEve3BhcmVudD1wcm9qZWN0cy8qfS9ub3Rlc9pB",
+            "DXBhcmVudCxmaWx0ZXIScQoKRGVsZXRlTm90ZRIdLmdyYWZlYXMudjEuRGVs",
+            "ZXRlTm90ZVJlcXVlc3QaFi5nb29nbGUucHJvdG9idWYuRW1wdHkiLILT5JMC",
+            "HyodL3YxL3tuYW1lPXByb2plY3RzLyovbm90ZXMvKn3aQQRuYW1lEoABCgpD",
+            "cmVhdGVOb3RlEh0uZ3JhZmVhcy52MS5DcmVhdGVOb3RlUmVxdWVzdBoQLmdy",
+            "YWZlYXMudjEuTm90ZSJBgtPkkwIlIh0vdjEve3BhcmVudD1wcm9qZWN0cy8q",
+            "fS9ub3RlczoEbm90ZdpBE3BhcmVudCxub3RlX2lkLG5vdGUSogEKEEJhdGNo",
+            "Q3JlYXRlTm90ZXMSIy5ncmFmZWFzLnYxLkJhdGNoQ3JlYXRlTm90ZXNSZXF1",
+            "ZXN0GiQuZ3JhZmVhcy52MS5CYXRjaENyZWF0ZU5vdGVzUmVzcG9uc2UiQ4LT",
+            "5JMCLiIpL3YxL3twYXJlbnQ9cHJvamVjdHMvKn0vbm90ZXM6YmF0Y2hDcmVh",
+            "dGU6ASraQQxwYXJlbnQsbm90ZXMSggEKClVwZGF0ZU5vdGUSHS5ncmFmZWFz",
+            "LnYxLlVwZGF0ZU5vdGVSZXF1ZXN0GhAuZ3JhZmVhcy52MS5Ob3RlIkOC0+ST",
+            "AiUyHS92MS97bmFtZT1wcm9qZWN0cy8qL25vdGVzLyp9OgRub3Rl2kEVbmFt",
+            "ZSxub3RlLHVwZGF0ZV9tYXNrEqcBChNMaXN0Tm90ZU9jY3VycmVuY2VzEiYu",
+            "Z3JhZmVhcy52MS5MaXN0Tm90ZU9jY3VycmVuY2VzUmVxdWVzdBonLmdyYWZl",
+            "YXMudjEuTGlzdE5vdGVPY2N1cnJlbmNlc1Jlc3BvbnNlIj+C0+STAisSKS92",
+            "MS97bmFtZT1wcm9qZWN0cy8qL25vdGVzLyp9L29jY3VycmVuY2Vz2kELbmFt",
+            "ZSxmaWx0ZXIaI8pBIGNvbnRhaW5lcmFuYWx5c2lzLmdvb2dsZWFwaXMuY29t",
+            "QnwKDWlvLmdyYWZlYXMudjFQAVo4Z29vZ2xlLmdvbGFuZy5vcmcvZ2VucHJv",
+            "dG8vZ29vZ2xlYXBpcy9ncmFmZWFzL3YxO2dyYWZlYXOiAgNHUkHqQSgKEmdy",
+            "YWZlYXMuaW8vUHJvamVjdBIScHJvamVjdHMve3Byb2plY3R9YgZwcm90bzM="));
       descriptor = pbr::FileDescriptor.FromGeneratedCode(descriptorData,
-          new pbr::FileDescriptor[] { global::Google.Api.AnnotationsReflection.Descriptor, global::Google.Protobuf.WellKnownTypes.EmptyReflection.Descriptor, global::Google.Protobuf.WellKnownTypes.FieldMaskReflection.Descriptor, global::Google.Protobuf.WellKnownTypes.TimestampReflection.Descriptor, global::Grafeas.V1.AttestationReflection.Descriptor, global::Grafeas.V1.BuildReflection.Descriptor, global::Grafeas.V1.CommonReflection.Descriptor, global::Grafeas.V1.DeploymentReflection.Descriptor, global::Grafeas.V1.DiscoveryReflection.Descriptor, global::Grafeas.V1.ImageReflection.Descriptor, global::Grafeas.V1.PackageReflection.Descriptor, global::Grafeas.V1.ProvenanceReflection.Descriptor, global::Grafeas.V1.VulnerabilityReflection.Descriptor, },
-          new pbr::GeneratedClrTypeInfo(null, new pbr::GeneratedClrTypeInfo[] {
-            new pbr::GeneratedClrTypeInfo(typeof(global::Grafeas.V1.Occurrence), global::Grafeas.V1.Occurrence.Parser, new[]{ "Name", "ResourceUri", "NoteName", "Kind", "Remediation", "CreateTime", "UpdateTime", "Vulnerability", "Build", "Image", "Package", "Deployment", "Discovery", "Attestation" }, new[]{ "Details" }, null, null),
-            new pbr::GeneratedClrTypeInfo(typeof(global::Grafeas.V1.Note), global::Grafeas.V1.Note.Parser, new[]{ "Name", "ShortDescription", "LongDescription", "Kind", "RelatedUrl", "ExpirationTime", "CreateTime", "UpdateTime", "RelatedNoteNames", "Vulnerability", "Build", "Image", "Package", "Deployment", "Discovery", "Attestation" }, new[]{ "Type" }, null, null),
-            new pbr::GeneratedClrTypeInfo(typeof(global::Grafeas.V1.GetOccurrenceRequest), global::Grafeas.V1.GetOccurrenceRequest.Parser, new[]{ "Name" }, null, null, null),
-            new pbr::GeneratedClrTypeInfo(typeof(global::Grafeas.V1.ListOccurrencesRequest), global::Grafeas.V1.ListOccurrencesRequest.Parser, new[]{ "Parent", "Filter", "PageSize", "PageToken" }, null, null, null),
-            new pbr::GeneratedClrTypeInfo(typeof(global::Grafeas.V1.ListOccurrencesResponse), global::Grafeas.V1.ListOccurrencesResponse.Parser, new[]{ "Occurrences", "NextPageToken" }, null, null, null),
-            new pbr::GeneratedClrTypeInfo(typeof(global::Grafeas.V1.DeleteOccurrenceRequest), global::Grafeas.V1.DeleteOccurrenceRequest.Parser, new[]{ "Name" }, null, null, null),
-            new pbr::GeneratedClrTypeInfo(typeof(global::Grafeas.V1.CreateOccurrenceRequest), global::Grafeas.V1.CreateOccurrenceRequest.Parser, new[]{ "Parent", "Occurrence" }, null, null, null),
-            new pbr::GeneratedClrTypeInfo(typeof(global::Grafeas.V1.UpdateOccurrenceRequest), global::Grafeas.V1.UpdateOccurrenceRequest.Parser, new[]{ "Name", "Occurrence", "UpdateMask" }, null, null, null),
-            new pbr::GeneratedClrTypeInfo(typeof(global::Grafeas.V1.GetNoteRequest), global::Grafeas.V1.GetNoteRequest.Parser, new[]{ "Name" }, null, null, null),
-            new pbr::GeneratedClrTypeInfo(typeof(global::Grafeas.V1.GetOccurrenceNoteRequest), global::Grafeas.V1.GetOccurrenceNoteRequest.Parser, new[]{ "Name" }, null, null, null),
-            new pbr::GeneratedClrTypeInfo(typeof(global::Grafeas.V1.ListNotesRequest), global::Grafeas.V1.ListNotesRequest.Parser, new[]{ "Parent", "Filter", "PageSize", "PageToken" }, null, null, null),
-            new pbr::GeneratedClrTypeInfo(typeof(global::Grafeas.V1.ListNotesResponse), global::Grafeas.V1.ListNotesResponse.Parser, new[]{ "Notes", "NextPageToken" }, null, null, null),
-            new pbr::GeneratedClrTypeInfo(typeof(global::Grafeas.V1.DeleteNoteRequest), global::Grafeas.V1.DeleteNoteRequest.Parser, new[]{ "Name" }, null, null, null),
-            new pbr::GeneratedClrTypeInfo(typeof(global::Grafeas.V1.CreateNoteRequest), global::Grafeas.V1.CreateNoteRequest.Parser, new[]{ "Parent", "NoteId", "Note" }, null, null, null),
-            new pbr::GeneratedClrTypeInfo(typeof(global::Grafeas.V1.UpdateNoteRequest), global::Grafeas.V1.UpdateNoteRequest.Parser, new[]{ "Name", "Note", "UpdateMask" }, null, null, null),
-            new pbr::GeneratedClrTypeInfo(typeof(global::Grafeas.V1.ListNoteOccurrencesRequest), global::Grafeas.V1.ListNoteOccurrencesRequest.Parser, new[]{ "Name", "Filter", "PageSize", "PageToken" }, null, null, null),
-            new pbr::GeneratedClrTypeInfo(typeof(global::Grafeas.V1.ListNoteOccurrencesResponse), global::Grafeas.V1.ListNoteOccurrencesResponse.Parser, new[]{ "Occurrences", "NextPageToken" }, null, null, null),
-            new pbr::GeneratedClrTypeInfo(typeof(global::Grafeas.V1.BatchCreateNotesRequest), global::Grafeas.V1.BatchCreateNotesRequest.Parser, new[]{ "Parent", "Notes" }, null, null, new pbr::GeneratedClrTypeInfo[] { null, }),
-            new pbr::GeneratedClrTypeInfo(typeof(global::Grafeas.V1.BatchCreateNotesResponse), global::Grafeas.V1.BatchCreateNotesResponse.Parser, new[]{ "Notes" }, null, null, null),
-            new pbr::GeneratedClrTypeInfo(typeof(global::Grafeas.V1.BatchCreateOccurrencesRequest), global::Grafeas.V1.BatchCreateOccurrencesRequest.Parser, new[]{ "Parent", "Occurrences" }, null, null, null),
-            new pbr::GeneratedClrTypeInfo(typeof(global::Grafeas.V1.BatchCreateOccurrencesResponse), global::Grafeas.V1.BatchCreateOccurrencesResponse.Parser, new[]{ "Occurrences" }, null, null, null)
+          new pbr::FileDescriptor[] { global::Google.Api.AnnotationsReflection.Descriptor, global::Google.Api.ClientReflection.Descriptor, global::Google.Api.FieldBehaviorReflection.Descriptor, global::Google.Api.ResourceReflection.Descriptor, global::Google.Protobuf.WellKnownTypes.EmptyReflection.Descriptor, global::Google.Protobuf.WellKnownTypes.FieldMaskReflection.Descriptor, global::Google.Protobuf.WellKnownTypes.TimestampReflection.Descriptor, global::Grafeas.V1.AttestationReflection.Descriptor, global::Grafeas.V1.BuildReflection.Descriptor, global::Grafeas.V1.CommonReflection.Descriptor, global::Grafeas.V1.DeploymentReflection.Descriptor, global::Grafeas.V1.DiscoveryReflection.Descriptor, global::Grafeas.V1.ImageReflection.Descriptor, global::Grafeas.V1.PackageReflection.Descriptor, global::Grafeas.V1.UpgradeReflection.Descriptor, global::Grafeas.V1.VulnerabilityReflection.Descriptor, },
+          new pbr::GeneratedClrTypeInfo(null, null, new pbr::GeneratedClrTypeInfo[] {
+            new pbr::GeneratedClrTypeInfo(typeof(global::Grafeas.V1.Occurrence), global::Grafeas.V1.Occurrence.Parser, new[]{ "Name", "ResourceUri", "NoteName", "Kind", "Remediation", "CreateTime", "UpdateTime", "Vulnerability", "Build", "Image", "Package", "Deployment", "Discovery", "Attestation", "Upgrade" }, new[]{ "Details" }, null, null, null),
+            new pbr::GeneratedClrTypeInfo(typeof(global::Grafeas.V1.Note), global::Grafeas.V1.Note.Parser, new[]{ "Name", "ShortDescription", "LongDescription", "Kind", "RelatedUrl", "ExpirationTime", "CreateTime", "UpdateTime", "RelatedNoteNames", "Vulnerability", "Build", "Image", "Package", "Deployment", "Discovery", "Attestation", "Upgrade" }, new[]{ "Type" }, null, null, null),
+            new pbr::GeneratedClrTypeInfo(typeof(global::Grafeas.V1.GetOccurrenceRequest), global::Grafeas.V1.GetOccurrenceRequest.Parser, new[]{ "Name" }, null, null, null, null),
+            new pbr::GeneratedClrTypeInfo(typeof(global::Grafeas.V1.ListOccurrencesRequest), global::Grafeas.V1.ListOccurrencesRequest.Parser, new[]{ "Parent", "Filter", "PageSize", "PageToken" }, null, null, null, null),
+            new pbr::GeneratedClrTypeInfo(typeof(global::Grafeas.V1.ListOccurrencesResponse), global::Grafeas.V1.ListOccurrencesResponse.Parser, new[]{ "Occurrences", "NextPageToken" }, null, null, null, null),
+            new pbr::GeneratedClrTypeInfo(typeof(global::Grafeas.V1.DeleteOccurrenceRequest), global::Grafeas.V1.DeleteOccurrenceRequest.Parser, new[]{ "Name" }, null, null, null, null),
+            new pbr::GeneratedClrTypeInfo(typeof(global::Grafeas.V1.CreateOccurrenceRequest), global::Grafeas.V1.CreateOccurrenceRequest.Parser, new[]{ "Parent", "Occurrence" }, null, null, null, null),
+            new pbr::GeneratedClrTypeInfo(typeof(global::Grafeas.V1.UpdateOccurrenceRequest), global::Grafeas.V1.UpdateOccurrenceRequest.Parser, new[]{ "Name", "Occurrence", "UpdateMask" }, null, null, null, null),
+            new pbr::GeneratedClrTypeInfo(typeof(global::Grafeas.V1.GetNoteRequest), global::Grafeas.V1.GetNoteRequest.Parser, new[]{ "Name" }, null, null, null, null),
+            new pbr::GeneratedClrTypeInfo(typeof(global::Grafeas.V1.GetOccurrenceNoteRequest), global::Grafeas.V1.GetOccurrenceNoteRequest.Parser, new[]{ "Name" }, null, null, null, null),
+            new pbr::GeneratedClrTypeInfo(typeof(global::Grafeas.V1.ListNotesRequest), global::Grafeas.V1.ListNotesRequest.Parser, new[]{ "Parent", "Filter", "PageSize", "PageToken" }, null, null, null, null),
+            new pbr::GeneratedClrTypeInfo(typeof(global::Grafeas.V1.ListNotesResponse), global::Grafeas.V1.ListNotesResponse.Parser, new[]{ "Notes", "NextPageToken" }, null, null, null, null),
+            new pbr::GeneratedClrTypeInfo(typeof(global::Grafeas.V1.DeleteNoteRequest), global::Grafeas.V1.DeleteNoteRequest.Parser, new[]{ "Name" }, null, null, null, null),
+            new pbr::GeneratedClrTypeInfo(typeof(global::Grafeas.V1.CreateNoteRequest), global::Grafeas.V1.CreateNoteRequest.Parser, new[]{ "Parent", "NoteId", "Note" }, null, null, null, null),
+            new pbr::GeneratedClrTypeInfo(typeof(global::Grafeas.V1.UpdateNoteRequest), global::Grafeas.V1.UpdateNoteRequest.Parser, new[]{ "Name", "Note", "UpdateMask" }, null, null, null, null),
+            new pbr::GeneratedClrTypeInfo(typeof(global::Grafeas.V1.ListNoteOccurrencesRequest), global::Grafeas.V1.ListNoteOccurrencesRequest.Parser, new[]{ "Name", "Filter", "PageSize", "PageToken" }, null, null, null, null),
+            new pbr::GeneratedClrTypeInfo(typeof(global::Grafeas.V1.ListNoteOccurrencesResponse), global::Grafeas.V1.ListNoteOccurrencesResponse.Parser, new[]{ "Occurrences", "NextPageToken" }, null, null, null, null),
+            new pbr::GeneratedClrTypeInfo(typeof(global::Grafeas.V1.BatchCreateNotesRequest), global::Grafeas.V1.BatchCreateNotesRequest.Parser, new[]{ "Parent", "Notes" }, null, null, null, new pbr::GeneratedClrTypeInfo[] { null, }),
+            new pbr::GeneratedClrTypeInfo(typeof(global::Grafeas.V1.BatchCreateNotesResponse), global::Grafeas.V1.BatchCreateNotesResponse.Parser, new[]{ "Notes" }, null, null, null, null),
+            new pbr::GeneratedClrTypeInfo(typeof(global::Grafeas.V1.BatchCreateOccurrencesRequest), global::Grafeas.V1.BatchCreateOccurrencesRequest.Parser, new[]{ "Parent", "Occurrences" }, null, null, null, null),
+            new pbr::GeneratedClrTypeInfo(typeof(global::Grafeas.V1.BatchCreateOccurrencesResponse), global::Grafeas.V1.BatchCreateOccurrencesResponse.Parser, new[]{ "Occurrences" }, null, null, null, null)
           }));
     }
     #endregion
@@ -173,7 +195,11 @@ namespace Grafeas.V1 {
   /// <summary>
   /// An instance of an analysis type that has been found on a resource.
   /// </summary>
-  public sealed partial class Occurrence : pb::IMessage<Occurrence> {
+  public sealed partial class Occurrence : pb::IMessage<Occurrence>
+  #if !GOOGLE_PROTOBUF_REFSTRUCT_COMPATIBILITY_MODE
+      , pb::IBufferMessage
+  #endif
+  {
     private static readonly pb::MessageParser<Occurrence> _parser = new pb::MessageParser<Occurrence>(() => new Occurrence());
     private pb::UnknownFieldSet _unknownFields;
     [global::System.Diagnostics.DebuggerNonUserCodeAttribute]
@@ -226,6 +252,9 @@ namespace Grafeas.V1 {
           break;
         case DetailsOneofCase.Attestation:
           Attestation = other.Attestation.Clone();
+          break;
+        case DetailsOneofCase.Upgrade:
+          Upgrade = other.Upgrade.Clone();
           break;
       }
 
@@ -286,7 +315,7 @@ namespace Grafeas.V1 {
 
     /// <summary>Field number for the "kind" field.</summary>
     public const int KindFieldNumber = 4;
-    private global::Grafeas.V1.NoteKind kind_ = 0;
+    private global::Grafeas.V1.NoteKind kind_ = global::Grafeas.V1.NoteKind.Unspecified;
     /// <summary>
     /// Output only. This explicitly denotes which of the occurrence details are
     /// specified. This field can be used as a filter in list requests.
@@ -440,6 +469,20 @@ namespace Grafeas.V1 {
       }
     }
 
+    /// <summary>Field number for the "upgrade" field.</summary>
+    public const int UpgradeFieldNumber = 15;
+    /// <summary>
+    /// Describes an available package upgrade on the linked resource.
+    /// </summary>
+    [global::System.Diagnostics.DebuggerNonUserCodeAttribute]
+    public global::Grafeas.V1.UpgradeOccurrence Upgrade {
+      get { return detailsCase_ == DetailsOneofCase.Upgrade ? (global::Grafeas.V1.UpgradeOccurrence) details_ : null; }
+      set {
+        details_ = value;
+        detailsCase_ = value == null ? DetailsOneofCase.None : DetailsOneofCase.Upgrade;
+      }
+    }
+
     private object details_;
     /// <summary>Enum of possible cases for the "details" oneof.</summary>
     public enum DetailsOneofCase {
@@ -451,6 +494,7 @@ namespace Grafeas.V1 {
       Deployment = 12,
       Discovery = 13,
       Attestation = 14,
+      Upgrade = 15,
     }
     private DetailsOneofCase detailsCase_ = DetailsOneofCase.None;
     [global::System.Diagnostics.DebuggerNonUserCodeAttribute]
@@ -491,6 +535,7 @@ namespace Grafeas.V1 {
       if (!object.Equals(Deployment, other.Deployment)) return false;
       if (!object.Equals(Discovery, other.Discovery)) return false;
       if (!object.Equals(Attestation, other.Attestation)) return false;
+      if (!object.Equals(Upgrade, other.Upgrade)) return false;
       if (DetailsCase != other.DetailsCase) return false;
       return Equals(_unknownFields, other._unknownFields);
     }
@@ -501,7 +546,7 @@ namespace Grafeas.V1 {
       if (Name.Length != 0) hash ^= Name.GetHashCode();
       if (ResourceUri.Length != 0) hash ^= ResourceUri.GetHashCode();
       if (NoteName.Length != 0) hash ^= NoteName.GetHashCode();
-      if (Kind != 0) hash ^= Kind.GetHashCode();
+      if (Kind != global::Grafeas.V1.NoteKind.Unspecified) hash ^= Kind.GetHashCode();
       if (Remediation.Length != 0) hash ^= Remediation.GetHashCode();
       if (createTime_ != null) hash ^= CreateTime.GetHashCode();
       if (updateTime_ != null) hash ^= UpdateTime.GetHashCode();
@@ -512,6 +557,7 @@ namespace Grafeas.V1 {
       if (detailsCase_ == DetailsOneofCase.Deployment) hash ^= Deployment.GetHashCode();
       if (detailsCase_ == DetailsOneofCase.Discovery) hash ^= Discovery.GetHashCode();
       if (detailsCase_ == DetailsOneofCase.Attestation) hash ^= Attestation.GetHashCode();
+      if (detailsCase_ == DetailsOneofCase.Upgrade) hash ^= Upgrade.GetHashCode();
       hash ^= (int) detailsCase_;
       if (_unknownFields != null) {
         hash ^= _unknownFields.GetHashCode();
@@ -526,6 +572,9 @@ namespace Grafeas.V1 {
 
     [global::System.Diagnostics.DebuggerNonUserCodeAttribute]
     public void WriteTo(pb::CodedOutputStream output) {
+    #if !GOOGLE_PROTOBUF_REFSTRUCT_COMPATIBILITY_MODE
+      output.WriteRawMessage(this);
+    #else
       if (Name.Length != 0) {
         output.WriteRawTag(10);
         output.WriteString(Name);
@@ -538,7 +587,7 @@ namespace Grafeas.V1 {
         output.WriteRawTag(26);
         output.WriteString(NoteName);
       }
-      if (Kind != 0) {
+      if (Kind != global::Grafeas.V1.NoteKind.Unspecified) {
         output.WriteRawTag(32);
         output.WriteEnum((int) Kind);
       }
@@ -582,10 +631,84 @@ namespace Grafeas.V1 {
         output.WriteRawTag(114);
         output.WriteMessage(Attestation);
       }
+      if (detailsCase_ == DetailsOneofCase.Upgrade) {
+        output.WriteRawTag(122);
+        output.WriteMessage(Upgrade);
+      }
       if (_unknownFields != null) {
         _unknownFields.WriteTo(output);
       }
+    #endif
     }
+
+    #if !GOOGLE_PROTOBUF_REFSTRUCT_COMPATIBILITY_MODE
+    [global::System.Diagnostics.DebuggerNonUserCodeAttribute]
+    void pb::IBufferMessage.InternalWriteTo(ref pb::WriteContext output) {
+      if (Name.Length != 0) {
+        output.WriteRawTag(10);
+        output.WriteString(Name);
+      }
+      if (ResourceUri.Length != 0) {
+        output.WriteRawTag(18);
+        output.WriteString(ResourceUri);
+      }
+      if (NoteName.Length != 0) {
+        output.WriteRawTag(26);
+        output.WriteString(NoteName);
+      }
+      if (Kind != global::Grafeas.V1.NoteKind.Unspecified) {
+        output.WriteRawTag(32);
+        output.WriteEnum((int) Kind);
+      }
+      if (Remediation.Length != 0) {
+        output.WriteRawTag(42);
+        output.WriteString(Remediation);
+      }
+      if (createTime_ != null) {
+        output.WriteRawTag(50);
+        output.WriteMessage(CreateTime);
+      }
+      if (updateTime_ != null) {
+        output.WriteRawTag(58);
+        output.WriteMessage(UpdateTime);
+      }
+      if (detailsCase_ == DetailsOneofCase.Vulnerability) {
+        output.WriteRawTag(66);
+        output.WriteMessage(Vulnerability);
+      }
+      if (detailsCase_ == DetailsOneofCase.Build) {
+        output.WriteRawTag(74);
+        output.WriteMessage(Build);
+      }
+      if (detailsCase_ == DetailsOneofCase.Image) {
+        output.WriteRawTag(82);
+        output.WriteMessage(Image);
+      }
+      if (detailsCase_ == DetailsOneofCase.Package) {
+        output.WriteRawTag(90);
+        output.WriteMessage(Package);
+      }
+      if (detailsCase_ == DetailsOneofCase.Deployment) {
+        output.WriteRawTag(98);
+        output.WriteMessage(Deployment);
+      }
+      if (detailsCase_ == DetailsOneofCase.Discovery) {
+        output.WriteRawTag(106);
+        output.WriteMessage(Discovery);
+      }
+      if (detailsCase_ == DetailsOneofCase.Attestation) {
+        output.WriteRawTag(114);
+        output.WriteMessage(Attestation);
+      }
+      if (detailsCase_ == DetailsOneofCase.Upgrade) {
+        output.WriteRawTag(122);
+        output.WriteMessage(Upgrade);
+      }
+      if (_unknownFields != null) {
+        _unknownFields.WriteTo(ref output);
+      }
+    }
+    #endif
 
     [global::System.Diagnostics.DebuggerNonUserCodeAttribute]
     public int CalculateSize() {
@@ -599,7 +722,7 @@ namespace Grafeas.V1 {
       if (NoteName.Length != 0) {
         size += 1 + pb::CodedOutputStream.ComputeStringSize(NoteName);
       }
-      if (Kind != 0) {
+      if (Kind != global::Grafeas.V1.NoteKind.Unspecified) {
         size += 1 + pb::CodedOutputStream.ComputeEnumSize((int) Kind);
       }
       if (Remediation.Length != 0) {
@@ -632,6 +755,9 @@ namespace Grafeas.V1 {
       if (detailsCase_ == DetailsOneofCase.Attestation) {
         size += 1 + pb::CodedOutputStream.ComputeMessageSize(Attestation);
       }
+      if (detailsCase_ == DetailsOneofCase.Upgrade) {
+        size += 1 + pb::CodedOutputStream.ComputeMessageSize(Upgrade);
+      }
       if (_unknownFields != null) {
         size += _unknownFields.CalculateSize();
       }
@@ -652,7 +778,7 @@ namespace Grafeas.V1 {
       if (other.NoteName.Length != 0) {
         NoteName = other.NoteName;
       }
-      if (other.Kind != 0) {
+      if (other.Kind != global::Grafeas.V1.NoteKind.Unspecified) {
         Kind = other.Kind;
       }
       if (other.Remediation.Length != 0) {
@@ -713,6 +839,12 @@ namespace Grafeas.V1 {
           }
           Attestation.MergeFrom(other.Attestation);
           break;
+        case DetailsOneofCase.Upgrade:
+          if (Upgrade == null) {
+            Upgrade = new global::Grafeas.V1.UpgradeOccurrence();
+          }
+          Upgrade.MergeFrom(other.Upgrade);
+          break;
       }
 
       _unknownFields = pb::UnknownFieldSet.MergeFrom(_unknownFields, other._unknownFields);
@@ -720,6 +852,9 @@ namespace Grafeas.V1 {
 
     [global::System.Diagnostics.DebuggerNonUserCodeAttribute]
     public void MergeFrom(pb::CodedInputStream input) {
+    #if !GOOGLE_PROTOBUF_REFSTRUCT_COMPATIBILITY_MODE
+      input.ReadRawMessage(this);
+    #else
       uint tag;
       while ((tag = input.ReadTag()) != 0) {
         switch(tag) {
@@ -823,16 +958,150 @@ namespace Grafeas.V1 {
             Attestation = subBuilder;
             break;
           }
+          case 122: {
+            global::Grafeas.V1.UpgradeOccurrence subBuilder = new global::Grafeas.V1.UpgradeOccurrence();
+            if (detailsCase_ == DetailsOneofCase.Upgrade) {
+              subBuilder.MergeFrom(Upgrade);
+            }
+            input.ReadMessage(subBuilder);
+            Upgrade = subBuilder;
+            break;
+          }
+        }
+      }
+    #endif
+    }
+
+    #if !GOOGLE_PROTOBUF_REFSTRUCT_COMPATIBILITY_MODE
+    [global::System.Diagnostics.DebuggerNonUserCodeAttribute]
+    void pb::IBufferMessage.InternalMergeFrom(ref pb::ParseContext input) {
+      uint tag;
+      while ((tag = input.ReadTag()) != 0) {
+        switch(tag) {
+          default:
+            _unknownFields = pb::UnknownFieldSet.MergeFieldFrom(_unknownFields, ref input);
+            break;
+          case 10: {
+            Name = input.ReadString();
+            break;
+          }
+          case 18: {
+            ResourceUri = input.ReadString();
+            break;
+          }
+          case 26: {
+            NoteName = input.ReadString();
+            break;
+          }
+          case 32: {
+            Kind = (global::Grafeas.V1.NoteKind) input.ReadEnum();
+            break;
+          }
+          case 42: {
+            Remediation = input.ReadString();
+            break;
+          }
+          case 50: {
+            if (createTime_ == null) {
+              CreateTime = new global::Google.Protobuf.WellKnownTypes.Timestamp();
+            }
+            input.ReadMessage(CreateTime);
+            break;
+          }
+          case 58: {
+            if (updateTime_ == null) {
+              UpdateTime = new global::Google.Protobuf.WellKnownTypes.Timestamp();
+            }
+            input.ReadMessage(UpdateTime);
+            break;
+          }
+          case 66: {
+            global::Grafeas.V1.VulnerabilityOccurrence subBuilder = new global::Grafeas.V1.VulnerabilityOccurrence();
+            if (detailsCase_ == DetailsOneofCase.Vulnerability) {
+              subBuilder.MergeFrom(Vulnerability);
+            }
+            input.ReadMessage(subBuilder);
+            Vulnerability = subBuilder;
+            break;
+          }
+          case 74: {
+            global::Grafeas.V1.BuildOccurrence subBuilder = new global::Grafeas.V1.BuildOccurrence();
+            if (detailsCase_ == DetailsOneofCase.Build) {
+              subBuilder.MergeFrom(Build);
+            }
+            input.ReadMessage(subBuilder);
+            Build = subBuilder;
+            break;
+          }
+          case 82: {
+            global::Grafeas.V1.ImageOccurrence subBuilder = new global::Grafeas.V1.ImageOccurrence();
+            if (detailsCase_ == DetailsOneofCase.Image) {
+              subBuilder.MergeFrom(Image);
+            }
+            input.ReadMessage(subBuilder);
+            Image = subBuilder;
+            break;
+          }
+          case 90: {
+            global::Grafeas.V1.PackageOccurrence subBuilder = new global::Grafeas.V1.PackageOccurrence();
+            if (detailsCase_ == DetailsOneofCase.Package) {
+              subBuilder.MergeFrom(Package);
+            }
+            input.ReadMessage(subBuilder);
+            Package = subBuilder;
+            break;
+          }
+          case 98: {
+            global::Grafeas.V1.DeploymentOccurrence subBuilder = new global::Grafeas.V1.DeploymentOccurrence();
+            if (detailsCase_ == DetailsOneofCase.Deployment) {
+              subBuilder.MergeFrom(Deployment);
+            }
+            input.ReadMessage(subBuilder);
+            Deployment = subBuilder;
+            break;
+          }
+          case 106: {
+            global::Grafeas.V1.DiscoveryOccurrence subBuilder = new global::Grafeas.V1.DiscoveryOccurrence();
+            if (detailsCase_ == DetailsOneofCase.Discovery) {
+              subBuilder.MergeFrom(Discovery);
+            }
+            input.ReadMessage(subBuilder);
+            Discovery = subBuilder;
+            break;
+          }
+          case 114: {
+            global::Grafeas.V1.AttestationOccurrence subBuilder = new global::Grafeas.V1.AttestationOccurrence();
+            if (detailsCase_ == DetailsOneofCase.Attestation) {
+              subBuilder.MergeFrom(Attestation);
+            }
+            input.ReadMessage(subBuilder);
+            Attestation = subBuilder;
+            break;
+          }
+          case 122: {
+            global::Grafeas.V1.UpgradeOccurrence subBuilder = new global::Grafeas.V1.UpgradeOccurrence();
+            if (detailsCase_ == DetailsOneofCase.Upgrade) {
+              subBuilder.MergeFrom(Upgrade);
+            }
+            input.ReadMessage(subBuilder);
+            Upgrade = subBuilder;
+            break;
+          }
         }
       }
     }
+    #endif
 
   }
 
   /// <summary>
   /// A type of analysis that can be done for a resource.
   /// </summary>
-  public sealed partial class Note : pb::IMessage<Note> {
+  public sealed partial class Note : pb::IMessage<Note>
+  #if !GOOGLE_PROTOBUF_REFSTRUCT_COMPATIBILITY_MODE
+      , pb::IBufferMessage
+  #endif
+  {
     private static readonly pb::MessageParser<Note> _parser = new pb::MessageParser<Note>(() => new Note());
     private pb::UnknownFieldSet _unknownFields;
     [global::System.Diagnostics.DebuggerNonUserCodeAttribute]
@@ -887,6 +1156,9 @@ namespace Grafeas.V1 {
           break;
         case TypeOneofCase.Attestation:
           Attestation = other.Attestation.Clone();
+          break;
+        case TypeOneofCase.Upgrade:
+          Upgrade = other.Upgrade.Clone();
           break;
       }
 
@@ -943,7 +1215,7 @@ namespace Grafeas.V1 {
 
     /// <summary>Field number for the "kind" field.</summary>
     public const int KindFieldNumber = 4;
-    private global::Grafeas.V1.NoteKind kind_ = 0;
+    private global::Grafeas.V1.NoteKind kind_ = global::Grafeas.V1.NoteKind.Unspecified;
     /// <summary>
     /// Output only. The type of analysis. This field can be used as a filter in
     /// list requests.
@@ -1124,6 +1396,20 @@ namespace Grafeas.V1 {
       }
     }
 
+    /// <summary>Field number for the "upgrade" field.</summary>
+    public const int UpgradeFieldNumber = 17;
+    /// <summary>
+    /// A note describing available package upgrades.
+    /// </summary>
+    [global::System.Diagnostics.DebuggerNonUserCodeAttribute]
+    public global::Grafeas.V1.UpgradeNote Upgrade {
+      get { return typeCase_ == TypeOneofCase.Upgrade ? (global::Grafeas.V1.UpgradeNote) type_ : null; }
+      set {
+        type_ = value;
+        typeCase_ = value == null ? TypeOneofCase.None : TypeOneofCase.Upgrade;
+      }
+    }
+
     private object type_;
     /// <summary>Enum of possible cases for the "type" oneof.</summary>
     public enum TypeOneofCase {
@@ -1135,6 +1421,7 @@ namespace Grafeas.V1 {
       Deployment = 14,
       Discovery = 15,
       Attestation = 16,
+      Upgrade = 17,
     }
     private TypeOneofCase typeCase_ = TypeOneofCase.None;
     [global::System.Diagnostics.DebuggerNonUserCodeAttribute]
@@ -1177,6 +1464,7 @@ namespace Grafeas.V1 {
       if (!object.Equals(Deployment, other.Deployment)) return false;
       if (!object.Equals(Discovery, other.Discovery)) return false;
       if (!object.Equals(Attestation, other.Attestation)) return false;
+      if (!object.Equals(Upgrade, other.Upgrade)) return false;
       if (TypeCase != other.TypeCase) return false;
       return Equals(_unknownFields, other._unknownFields);
     }
@@ -1187,7 +1475,7 @@ namespace Grafeas.V1 {
       if (Name.Length != 0) hash ^= Name.GetHashCode();
       if (ShortDescription.Length != 0) hash ^= ShortDescription.GetHashCode();
       if (LongDescription.Length != 0) hash ^= LongDescription.GetHashCode();
-      if (Kind != 0) hash ^= Kind.GetHashCode();
+      if (Kind != global::Grafeas.V1.NoteKind.Unspecified) hash ^= Kind.GetHashCode();
       hash ^= relatedUrl_.GetHashCode();
       if (expirationTime_ != null) hash ^= ExpirationTime.GetHashCode();
       if (createTime_ != null) hash ^= CreateTime.GetHashCode();
@@ -1200,6 +1488,7 @@ namespace Grafeas.V1 {
       if (typeCase_ == TypeOneofCase.Deployment) hash ^= Deployment.GetHashCode();
       if (typeCase_ == TypeOneofCase.Discovery) hash ^= Discovery.GetHashCode();
       if (typeCase_ == TypeOneofCase.Attestation) hash ^= Attestation.GetHashCode();
+      if (typeCase_ == TypeOneofCase.Upgrade) hash ^= Upgrade.GetHashCode();
       hash ^= (int) typeCase_;
       if (_unknownFields != null) {
         hash ^= _unknownFields.GetHashCode();
@@ -1214,6 +1503,9 @@ namespace Grafeas.V1 {
 
     [global::System.Diagnostics.DebuggerNonUserCodeAttribute]
     public void WriteTo(pb::CodedOutputStream output) {
+    #if !GOOGLE_PROTOBUF_REFSTRUCT_COMPATIBILITY_MODE
+      output.WriteRawMessage(this);
+    #else
       if (Name.Length != 0) {
         output.WriteRawTag(10);
         output.WriteString(Name);
@@ -1226,7 +1518,7 @@ namespace Grafeas.V1 {
         output.WriteRawTag(26);
         output.WriteString(LongDescription);
       }
-      if (Kind != 0) {
+      if (Kind != global::Grafeas.V1.NoteKind.Unspecified) {
         output.WriteRawTag(32);
         output.WriteEnum((int) Kind);
       }
@@ -1272,10 +1564,86 @@ namespace Grafeas.V1 {
         output.WriteRawTag(130, 1);
         output.WriteMessage(Attestation);
       }
+      if (typeCase_ == TypeOneofCase.Upgrade) {
+        output.WriteRawTag(138, 1);
+        output.WriteMessage(Upgrade);
+      }
       if (_unknownFields != null) {
         _unknownFields.WriteTo(output);
       }
+    #endif
     }
+
+    #if !GOOGLE_PROTOBUF_REFSTRUCT_COMPATIBILITY_MODE
+    [global::System.Diagnostics.DebuggerNonUserCodeAttribute]
+    void pb::IBufferMessage.InternalWriteTo(ref pb::WriteContext output) {
+      if (Name.Length != 0) {
+        output.WriteRawTag(10);
+        output.WriteString(Name);
+      }
+      if (ShortDescription.Length != 0) {
+        output.WriteRawTag(18);
+        output.WriteString(ShortDescription);
+      }
+      if (LongDescription.Length != 0) {
+        output.WriteRawTag(26);
+        output.WriteString(LongDescription);
+      }
+      if (Kind != global::Grafeas.V1.NoteKind.Unspecified) {
+        output.WriteRawTag(32);
+        output.WriteEnum((int) Kind);
+      }
+      relatedUrl_.WriteTo(ref output, _repeated_relatedUrl_codec);
+      if (expirationTime_ != null) {
+        output.WriteRawTag(50);
+        output.WriteMessage(ExpirationTime);
+      }
+      if (createTime_ != null) {
+        output.WriteRawTag(58);
+        output.WriteMessage(CreateTime);
+      }
+      if (updateTime_ != null) {
+        output.WriteRawTag(66);
+        output.WriteMessage(UpdateTime);
+      }
+      relatedNoteNames_.WriteTo(ref output, _repeated_relatedNoteNames_codec);
+      if (typeCase_ == TypeOneofCase.Vulnerability) {
+        output.WriteRawTag(82);
+        output.WriteMessage(Vulnerability);
+      }
+      if (typeCase_ == TypeOneofCase.Build) {
+        output.WriteRawTag(90);
+        output.WriteMessage(Build);
+      }
+      if (typeCase_ == TypeOneofCase.Image) {
+        output.WriteRawTag(98);
+        output.WriteMessage(Image);
+      }
+      if (typeCase_ == TypeOneofCase.Package) {
+        output.WriteRawTag(106);
+        output.WriteMessage(Package);
+      }
+      if (typeCase_ == TypeOneofCase.Deployment) {
+        output.WriteRawTag(114);
+        output.WriteMessage(Deployment);
+      }
+      if (typeCase_ == TypeOneofCase.Discovery) {
+        output.WriteRawTag(122);
+        output.WriteMessage(Discovery);
+      }
+      if (typeCase_ == TypeOneofCase.Attestation) {
+        output.WriteRawTag(130, 1);
+        output.WriteMessage(Attestation);
+      }
+      if (typeCase_ == TypeOneofCase.Upgrade) {
+        output.WriteRawTag(138, 1);
+        output.WriteMessage(Upgrade);
+      }
+      if (_unknownFields != null) {
+        _unknownFields.WriteTo(ref output);
+      }
+    }
+    #endif
 
     [global::System.Diagnostics.DebuggerNonUserCodeAttribute]
     public int CalculateSize() {
@@ -1289,7 +1657,7 @@ namespace Grafeas.V1 {
       if (LongDescription.Length != 0) {
         size += 1 + pb::CodedOutputStream.ComputeStringSize(LongDescription);
       }
-      if (Kind != 0) {
+      if (Kind != global::Grafeas.V1.NoteKind.Unspecified) {
         size += 1 + pb::CodedOutputStream.ComputeEnumSize((int) Kind);
       }
       size += relatedUrl_.CalculateSize(_repeated_relatedUrl_codec);
@@ -1324,6 +1692,9 @@ namespace Grafeas.V1 {
       if (typeCase_ == TypeOneofCase.Attestation) {
         size += 2 + pb::CodedOutputStream.ComputeMessageSize(Attestation);
       }
+      if (typeCase_ == TypeOneofCase.Upgrade) {
+        size += 2 + pb::CodedOutputStream.ComputeMessageSize(Upgrade);
+      }
       if (_unknownFields != null) {
         size += _unknownFields.CalculateSize();
       }
@@ -1344,7 +1715,7 @@ namespace Grafeas.V1 {
       if (other.LongDescription.Length != 0) {
         LongDescription = other.LongDescription;
       }
-      if (other.Kind != 0) {
+      if (other.Kind != global::Grafeas.V1.NoteKind.Unspecified) {
         Kind = other.Kind;
       }
       relatedUrl_.Add(other.relatedUrl_);
@@ -1410,6 +1781,12 @@ namespace Grafeas.V1 {
           }
           Attestation.MergeFrom(other.Attestation);
           break;
+        case TypeOneofCase.Upgrade:
+          if (Upgrade == null) {
+            Upgrade = new global::Grafeas.V1.UpgradeNote();
+          }
+          Upgrade.MergeFrom(other.Upgrade);
+          break;
       }
 
       _unknownFields = pb::UnknownFieldSet.MergeFrom(_unknownFields, other._unknownFields);
@@ -1417,6 +1794,9 @@ namespace Grafeas.V1 {
 
     [global::System.Diagnostics.DebuggerNonUserCodeAttribute]
     public void MergeFrom(pb::CodedInputStream input) {
+    #if !GOOGLE_PROTOBUF_REFSTRUCT_COMPATIBILITY_MODE
+      input.ReadRawMessage(this);
+    #else
       uint tag;
       while ((tag = input.ReadTag()) != 0) {
         switch(tag) {
@@ -1531,16 +1911,161 @@ namespace Grafeas.V1 {
             Attestation = subBuilder;
             break;
           }
+          case 138: {
+            global::Grafeas.V1.UpgradeNote subBuilder = new global::Grafeas.V1.UpgradeNote();
+            if (typeCase_ == TypeOneofCase.Upgrade) {
+              subBuilder.MergeFrom(Upgrade);
+            }
+            input.ReadMessage(subBuilder);
+            Upgrade = subBuilder;
+            break;
+          }
+        }
+      }
+    #endif
+    }
+
+    #if !GOOGLE_PROTOBUF_REFSTRUCT_COMPATIBILITY_MODE
+    [global::System.Diagnostics.DebuggerNonUserCodeAttribute]
+    void pb::IBufferMessage.InternalMergeFrom(ref pb::ParseContext input) {
+      uint tag;
+      while ((tag = input.ReadTag()) != 0) {
+        switch(tag) {
+          default:
+            _unknownFields = pb::UnknownFieldSet.MergeFieldFrom(_unknownFields, ref input);
+            break;
+          case 10: {
+            Name = input.ReadString();
+            break;
+          }
+          case 18: {
+            ShortDescription = input.ReadString();
+            break;
+          }
+          case 26: {
+            LongDescription = input.ReadString();
+            break;
+          }
+          case 32: {
+            Kind = (global::Grafeas.V1.NoteKind) input.ReadEnum();
+            break;
+          }
+          case 42: {
+            relatedUrl_.AddEntriesFrom(ref input, _repeated_relatedUrl_codec);
+            break;
+          }
+          case 50: {
+            if (expirationTime_ == null) {
+              ExpirationTime = new global::Google.Protobuf.WellKnownTypes.Timestamp();
+            }
+            input.ReadMessage(ExpirationTime);
+            break;
+          }
+          case 58: {
+            if (createTime_ == null) {
+              CreateTime = new global::Google.Protobuf.WellKnownTypes.Timestamp();
+            }
+            input.ReadMessage(CreateTime);
+            break;
+          }
+          case 66: {
+            if (updateTime_ == null) {
+              UpdateTime = new global::Google.Protobuf.WellKnownTypes.Timestamp();
+            }
+            input.ReadMessage(UpdateTime);
+            break;
+          }
+          case 74: {
+            relatedNoteNames_.AddEntriesFrom(ref input, _repeated_relatedNoteNames_codec);
+            break;
+          }
+          case 82: {
+            global::Grafeas.V1.VulnerabilityNote subBuilder = new global::Grafeas.V1.VulnerabilityNote();
+            if (typeCase_ == TypeOneofCase.Vulnerability) {
+              subBuilder.MergeFrom(Vulnerability);
+            }
+            input.ReadMessage(subBuilder);
+            Vulnerability = subBuilder;
+            break;
+          }
+          case 90: {
+            global::Grafeas.V1.BuildNote subBuilder = new global::Grafeas.V1.BuildNote();
+            if (typeCase_ == TypeOneofCase.Build) {
+              subBuilder.MergeFrom(Build);
+            }
+            input.ReadMessage(subBuilder);
+            Build = subBuilder;
+            break;
+          }
+          case 98: {
+            global::Grafeas.V1.ImageNote subBuilder = new global::Grafeas.V1.ImageNote();
+            if (typeCase_ == TypeOneofCase.Image) {
+              subBuilder.MergeFrom(Image);
+            }
+            input.ReadMessage(subBuilder);
+            Image = subBuilder;
+            break;
+          }
+          case 106: {
+            global::Grafeas.V1.PackageNote subBuilder = new global::Grafeas.V1.PackageNote();
+            if (typeCase_ == TypeOneofCase.Package) {
+              subBuilder.MergeFrom(Package);
+            }
+            input.ReadMessage(subBuilder);
+            Package = subBuilder;
+            break;
+          }
+          case 114: {
+            global::Grafeas.V1.DeploymentNote subBuilder = new global::Grafeas.V1.DeploymentNote();
+            if (typeCase_ == TypeOneofCase.Deployment) {
+              subBuilder.MergeFrom(Deployment);
+            }
+            input.ReadMessage(subBuilder);
+            Deployment = subBuilder;
+            break;
+          }
+          case 122: {
+            global::Grafeas.V1.DiscoveryNote subBuilder = new global::Grafeas.V1.DiscoveryNote();
+            if (typeCase_ == TypeOneofCase.Discovery) {
+              subBuilder.MergeFrom(Discovery);
+            }
+            input.ReadMessage(subBuilder);
+            Discovery = subBuilder;
+            break;
+          }
+          case 130: {
+            global::Grafeas.V1.AttestationNote subBuilder = new global::Grafeas.V1.AttestationNote();
+            if (typeCase_ == TypeOneofCase.Attestation) {
+              subBuilder.MergeFrom(Attestation);
+            }
+            input.ReadMessage(subBuilder);
+            Attestation = subBuilder;
+            break;
+          }
+          case 138: {
+            global::Grafeas.V1.UpgradeNote subBuilder = new global::Grafeas.V1.UpgradeNote();
+            if (typeCase_ == TypeOneofCase.Upgrade) {
+              subBuilder.MergeFrom(Upgrade);
+            }
+            input.ReadMessage(subBuilder);
+            Upgrade = subBuilder;
+            break;
+          }
         }
       }
     }
+    #endif
 
   }
 
   /// <summary>
   /// Request to get an occurrence.
   /// </summary>
-  public sealed partial class GetOccurrenceRequest : pb::IMessage<GetOccurrenceRequest> {
+  public sealed partial class GetOccurrenceRequest : pb::IMessage<GetOccurrenceRequest>
+  #if !GOOGLE_PROTOBUF_REFSTRUCT_COMPATIBILITY_MODE
+      , pb::IBufferMessage
+  #endif
+  {
     private static readonly pb::MessageParser<GetOccurrenceRequest> _parser = new pb::MessageParser<GetOccurrenceRequest>(() => new GetOccurrenceRequest());
     private pb::UnknownFieldSet _unknownFields;
     [global::System.Diagnostics.DebuggerNonUserCodeAttribute]
@@ -1623,6 +2148,9 @@ namespace Grafeas.V1 {
 
     [global::System.Diagnostics.DebuggerNonUserCodeAttribute]
     public void WriteTo(pb::CodedOutputStream output) {
+    #if !GOOGLE_PROTOBUF_REFSTRUCT_COMPATIBILITY_MODE
+      output.WriteRawMessage(this);
+    #else
       if (Name.Length != 0) {
         output.WriteRawTag(10);
         output.WriteString(Name);
@@ -1630,7 +2158,21 @@ namespace Grafeas.V1 {
       if (_unknownFields != null) {
         _unknownFields.WriteTo(output);
       }
+    #endif
     }
+
+    #if !GOOGLE_PROTOBUF_REFSTRUCT_COMPATIBILITY_MODE
+    [global::System.Diagnostics.DebuggerNonUserCodeAttribute]
+    void pb::IBufferMessage.InternalWriteTo(ref pb::WriteContext output) {
+      if (Name.Length != 0) {
+        output.WriteRawTag(10);
+        output.WriteString(Name);
+      }
+      if (_unknownFields != null) {
+        _unknownFields.WriteTo(ref output);
+      }
+    }
+    #endif
 
     [global::System.Diagnostics.DebuggerNonUserCodeAttribute]
     public int CalculateSize() {
@@ -1657,6 +2199,9 @@ namespace Grafeas.V1 {
 
     [global::System.Diagnostics.DebuggerNonUserCodeAttribute]
     public void MergeFrom(pb::CodedInputStream input) {
+    #if !GOOGLE_PROTOBUF_REFSTRUCT_COMPATIBILITY_MODE
+      input.ReadRawMessage(this);
+    #else
       uint tag;
       while ((tag = input.ReadTag()) != 0) {
         switch(tag) {
@@ -1669,14 +2214,37 @@ namespace Grafeas.V1 {
           }
         }
       }
+    #endif
     }
+
+    #if !GOOGLE_PROTOBUF_REFSTRUCT_COMPATIBILITY_MODE
+    [global::System.Diagnostics.DebuggerNonUserCodeAttribute]
+    void pb::IBufferMessage.InternalMergeFrom(ref pb::ParseContext input) {
+      uint tag;
+      while ((tag = input.ReadTag()) != 0) {
+        switch(tag) {
+          default:
+            _unknownFields = pb::UnknownFieldSet.MergeFieldFrom(_unknownFields, ref input);
+            break;
+          case 10: {
+            Name = input.ReadString();
+            break;
+          }
+        }
+      }
+    }
+    #endif
 
   }
 
   /// <summary>
   /// Request to list occurrences.
   /// </summary>
-  public sealed partial class ListOccurrencesRequest : pb::IMessage<ListOccurrencesRequest> {
+  public sealed partial class ListOccurrencesRequest : pb::IMessage<ListOccurrencesRequest>
+  #if !GOOGLE_PROTOBUF_REFSTRUCT_COMPATIBILITY_MODE
+      , pb::IBufferMessage
+  #endif
+  {
     private static readonly pb::MessageParser<ListOccurrencesRequest> _parser = new pb::MessageParser<ListOccurrencesRequest>(() => new ListOccurrencesRequest());
     private pb::UnknownFieldSet _unknownFields;
     [global::System.Diagnostics.DebuggerNonUserCodeAttribute]
@@ -1811,6 +2379,9 @@ namespace Grafeas.V1 {
 
     [global::System.Diagnostics.DebuggerNonUserCodeAttribute]
     public void WriteTo(pb::CodedOutputStream output) {
+    #if !GOOGLE_PROTOBUF_REFSTRUCT_COMPATIBILITY_MODE
+      output.WriteRawMessage(this);
+    #else
       if (Parent.Length != 0) {
         output.WriteRawTag(10);
         output.WriteString(Parent);
@@ -1830,7 +2401,33 @@ namespace Grafeas.V1 {
       if (_unknownFields != null) {
         _unknownFields.WriteTo(output);
       }
+    #endif
     }
+
+    #if !GOOGLE_PROTOBUF_REFSTRUCT_COMPATIBILITY_MODE
+    [global::System.Diagnostics.DebuggerNonUserCodeAttribute]
+    void pb::IBufferMessage.InternalWriteTo(ref pb::WriteContext output) {
+      if (Parent.Length != 0) {
+        output.WriteRawTag(10);
+        output.WriteString(Parent);
+      }
+      if (Filter.Length != 0) {
+        output.WriteRawTag(18);
+        output.WriteString(Filter);
+      }
+      if (PageSize != 0) {
+        output.WriteRawTag(24);
+        output.WriteInt32(PageSize);
+      }
+      if (PageToken.Length != 0) {
+        output.WriteRawTag(34);
+        output.WriteString(PageToken);
+      }
+      if (_unknownFields != null) {
+        _unknownFields.WriteTo(ref output);
+      }
+    }
+    #endif
 
     [global::System.Diagnostics.DebuggerNonUserCodeAttribute]
     public int CalculateSize() {
@@ -1875,6 +2472,9 @@ namespace Grafeas.V1 {
 
     [global::System.Diagnostics.DebuggerNonUserCodeAttribute]
     public void MergeFrom(pb::CodedInputStream input) {
+    #if !GOOGLE_PROTOBUF_REFSTRUCT_COMPATIBILITY_MODE
+      input.ReadRawMessage(this);
+    #else
       uint tag;
       while ((tag = input.ReadTag()) != 0) {
         switch(tag) {
@@ -1899,14 +2499,49 @@ namespace Grafeas.V1 {
           }
         }
       }
+    #endif
     }
+
+    #if !GOOGLE_PROTOBUF_REFSTRUCT_COMPATIBILITY_MODE
+    [global::System.Diagnostics.DebuggerNonUserCodeAttribute]
+    void pb::IBufferMessage.InternalMergeFrom(ref pb::ParseContext input) {
+      uint tag;
+      while ((tag = input.ReadTag()) != 0) {
+        switch(tag) {
+          default:
+            _unknownFields = pb::UnknownFieldSet.MergeFieldFrom(_unknownFields, ref input);
+            break;
+          case 10: {
+            Parent = input.ReadString();
+            break;
+          }
+          case 18: {
+            Filter = input.ReadString();
+            break;
+          }
+          case 24: {
+            PageSize = input.ReadInt32();
+            break;
+          }
+          case 34: {
+            PageToken = input.ReadString();
+            break;
+          }
+        }
+      }
+    }
+    #endif
 
   }
 
   /// <summary>
   /// Response for listing occurrences.
   /// </summary>
-  public sealed partial class ListOccurrencesResponse : pb::IMessage<ListOccurrencesResponse> {
+  public sealed partial class ListOccurrencesResponse : pb::IMessage<ListOccurrencesResponse>
+  #if !GOOGLE_PROTOBUF_REFSTRUCT_COMPATIBILITY_MODE
+      , pb::IBufferMessage
+  #endif
+  {
     private static readonly pb::MessageParser<ListOccurrencesResponse> _parser = new pb::MessageParser<ListOccurrencesResponse>(() => new ListOccurrencesResponse());
     private pb::UnknownFieldSet _unknownFields;
     [global::System.Diagnostics.DebuggerNonUserCodeAttribute]
@@ -2006,6 +2641,9 @@ namespace Grafeas.V1 {
 
     [global::System.Diagnostics.DebuggerNonUserCodeAttribute]
     public void WriteTo(pb::CodedOutputStream output) {
+    #if !GOOGLE_PROTOBUF_REFSTRUCT_COMPATIBILITY_MODE
+      output.WriteRawMessage(this);
+    #else
       occurrences_.WriteTo(output, _repeated_occurrences_codec);
       if (NextPageToken.Length != 0) {
         output.WriteRawTag(18);
@@ -2014,7 +2652,22 @@ namespace Grafeas.V1 {
       if (_unknownFields != null) {
         _unknownFields.WriteTo(output);
       }
+    #endif
     }
+
+    #if !GOOGLE_PROTOBUF_REFSTRUCT_COMPATIBILITY_MODE
+    [global::System.Diagnostics.DebuggerNonUserCodeAttribute]
+    void pb::IBufferMessage.InternalWriteTo(ref pb::WriteContext output) {
+      occurrences_.WriteTo(ref output, _repeated_occurrences_codec);
+      if (NextPageToken.Length != 0) {
+        output.WriteRawTag(18);
+        output.WriteString(NextPageToken);
+      }
+      if (_unknownFields != null) {
+        _unknownFields.WriteTo(ref output);
+      }
+    }
+    #endif
 
     [global::System.Diagnostics.DebuggerNonUserCodeAttribute]
     public int CalculateSize() {
@@ -2043,6 +2696,9 @@ namespace Grafeas.V1 {
 
     [global::System.Diagnostics.DebuggerNonUserCodeAttribute]
     public void MergeFrom(pb::CodedInputStream input) {
+    #if !GOOGLE_PROTOBUF_REFSTRUCT_COMPATIBILITY_MODE
+      input.ReadRawMessage(this);
+    #else
       uint tag;
       while ((tag = input.ReadTag()) != 0) {
         switch(tag) {
@@ -2059,14 +2715,41 @@ namespace Grafeas.V1 {
           }
         }
       }
+    #endif
     }
+
+    #if !GOOGLE_PROTOBUF_REFSTRUCT_COMPATIBILITY_MODE
+    [global::System.Diagnostics.DebuggerNonUserCodeAttribute]
+    void pb::IBufferMessage.InternalMergeFrom(ref pb::ParseContext input) {
+      uint tag;
+      while ((tag = input.ReadTag()) != 0) {
+        switch(tag) {
+          default:
+            _unknownFields = pb::UnknownFieldSet.MergeFieldFrom(_unknownFields, ref input);
+            break;
+          case 10: {
+            occurrences_.AddEntriesFrom(ref input, _repeated_occurrences_codec);
+            break;
+          }
+          case 18: {
+            NextPageToken = input.ReadString();
+            break;
+          }
+        }
+      }
+    }
+    #endif
 
   }
 
   /// <summary>
-  /// Request to delete a occurrence.
+  /// Request to delete an occurrence.
   /// </summary>
-  public sealed partial class DeleteOccurrenceRequest : pb::IMessage<DeleteOccurrenceRequest> {
+  public sealed partial class DeleteOccurrenceRequest : pb::IMessage<DeleteOccurrenceRequest>
+  #if !GOOGLE_PROTOBUF_REFSTRUCT_COMPATIBILITY_MODE
+      , pb::IBufferMessage
+  #endif
+  {
     private static readonly pb::MessageParser<DeleteOccurrenceRequest> _parser = new pb::MessageParser<DeleteOccurrenceRequest>(() => new DeleteOccurrenceRequest());
     private pb::UnknownFieldSet _unknownFields;
     [global::System.Diagnostics.DebuggerNonUserCodeAttribute]
@@ -2149,6 +2832,9 @@ namespace Grafeas.V1 {
 
     [global::System.Diagnostics.DebuggerNonUserCodeAttribute]
     public void WriteTo(pb::CodedOutputStream output) {
+    #if !GOOGLE_PROTOBUF_REFSTRUCT_COMPATIBILITY_MODE
+      output.WriteRawMessage(this);
+    #else
       if (Name.Length != 0) {
         output.WriteRawTag(10);
         output.WriteString(Name);
@@ -2156,7 +2842,21 @@ namespace Grafeas.V1 {
       if (_unknownFields != null) {
         _unknownFields.WriteTo(output);
       }
+    #endif
     }
+
+    #if !GOOGLE_PROTOBUF_REFSTRUCT_COMPATIBILITY_MODE
+    [global::System.Diagnostics.DebuggerNonUserCodeAttribute]
+    void pb::IBufferMessage.InternalWriteTo(ref pb::WriteContext output) {
+      if (Name.Length != 0) {
+        output.WriteRawTag(10);
+        output.WriteString(Name);
+      }
+      if (_unknownFields != null) {
+        _unknownFields.WriteTo(ref output);
+      }
+    }
+    #endif
 
     [global::System.Diagnostics.DebuggerNonUserCodeAttribute]
     public int CalculateSize() {
@@ -2183,6 +2883,9 @@ namespace Grafeas.V1 {
 
     [global::System.Diagnostics.DebuggerNonUserCodeAttribute]
     public void MergeFrom(pb::CodedInputStream input) {
+    #if !GOOGLE_PROTOBUF_REFSTRUCT_COMPATIBILITY_MODE
+      input.ReadRawMessage(this);
+    #else
       uint tag;
       while ((tag = input.ReadTag()) != 0) {
         switch(tag) {
@@ -2195,14 +2898,37 @@ namespace Grafeas.V1 {
           }
         }
       }
+    #endif
     }
+
+    #if !GOOGLE_PROTOBUF_REFSTRUCT_COMPATIBILITY_MODE
+    [global::System.Diagnostics.DebuggerNonUserCodeAttribute]
+    void pb::IBufferMessage.InternalMergeFrom(ref pb::ParseContext input) {
+      uint tag;
+      while ((tag = input.ReadTag()) != 0) {
+        switch(tag) {
+          default:
+            _unknownFields = pb::UnknownFieldSet.MergeFieldFrom(_unknownFields, ref input);
+            break;
+          case 10: {
+            Name = input.ReadString();
+            break;
+          }
+        }
+      }
+    }
+    #endif
 
   }
 
   /// <summary>
   /// Request to create a new occurrence.
   /// </summary>
-  public sealed partial class CreateOccurrenceRequest : pb::IMessage<CreateOccurrenceRequest> {
+  public sealed partial class CreateOccurrenceRequest : pb::IMessage<CreateOccurrenceRequest>
+  #if !GOOGLE_PROTOBUF_REFSTRUCT_COMPATIBILITY_MODE
+      , pb::IBufferMessage
+  #endif
+  {
     private static readonly pb::MessageParser<CreateOccurrenceRequest> _parser = new pb::MessageParser<CreateOccurrenceRequest>(() => new CreateOccurrenceRequest());
     private pb::UnknownFieldSet _unknownFields;
     [global::System.Diagnostics.DebuggerNonUserCodeAttribute]
@@ -2302,6 +3028,9 @@ namespace Grafeas.V1 {
 
     [global::System.Diagnostics.DebuggerNonUserCodeAttribute]
     public void WriteTo(pb::CodedOutputStream output) {
+    #if !GOOGLE_PROTOBUF_REFSTRUCT_COMPATIBILITY_MODE
+      output.WriteRawMessage(this);
+    #else
       if (Parent.Length != 0) {
         output.WriteRawTag(10);
         output.WriteString(Parent);
@@ -2313,7 +3042,25 @@ namespace Grafeas.V1 {
       if (_unknownFields != null) {
         _unknownFields.WriteTo(output);
       }
+    #endif
     }
+
+    #if !GOOGLE_PROTOBUF_REFSTRUCT_COMPATIBILITY_MODE
+    [global::System.Diagnostics.DebuggerNonUserCodeAttribute]
+    void pb::IBufferMessage.InternalWriteTo(ref pb::WriteContext output) {
+      if (Parent.Length != 0) {
+        output.WriteRawTag(10);
+        output.WriteString(Parent);
+      }
+      if (occurrence_ != null) {
+        output.WriteRawTag(18);
+        output.WriteMessage(Occurrence);
+      }
+      if (_unknownFields != null) {
+        _unknownFields.WriteTo(ref output);
+      }
+    }
+    #endif
 
     [global::System.Diagnostics.DebuggerNonUserCodeAttribute]
     public int CalculateSize() {
@@ -2349,6 +3096,9 @@ namespace Grafeas.V1 {
 
     [global::System.Diagnostics.DebuggerNonUserCodeAttribute]
     public void MergeFrom(pb::CodedInputStream input) {
+    #if !GOOGLE_PROTOBUF_REFSTRUCT_COMPATIBILITY_MODE
+      input.ReadRawMessage(this);
+    #else
       uint tag;
       while ((tag = input.ReadTag()) != 0) {
         switch(tag) {
@@ -2368,14 +3118,44 @@ namespace Grafeas.V1 {
           }
         }
       }
+    #endif
     }
+
+    #if !GOOGLE_PROTOBUF_REFSTRUCT_COMPATIBILITY_MODE
+    [global::System.Diagnostics.DebuggerNonUserCodeAttribute]
+    void pb::IBufferMessage.InternalMergeFrom(ref pb::ParseContext input) {
+      uint tag;
+      while ((tag = input.ReadTag()) != 0) {
+        switch(tag) {
+          default:
+            _unknownFields = pb::UnknownFieldSet.MergeFieldFrom(_unknownFields, ref input);
+            break;
+          case 10: {
+            Parent = input.ReadString();
+            break;
+          }
+          case 18: {
+            if (occurrence_ == null) {
+              Occurrence = new global::Grafeas.V1.Occurrence();
+            }
+            input.ReadMessage(Occurrence);
+            break;
+          }
+        }
+      }
+    }
+    #endif
 
   }
 
   /// <summary>
   /// Request to update an occurrence.
   /// </summary>
-  public sealed partial class UpdateOccurrenceRequest : pb::IMessage<UpdateOccurrenceRequest> {
+  public sealed partial class UpdateOccurrenceRequest : pb::IMessage<UpdateOccurrenceRequest>
+  #if !GOOGLE_PROTOBUF_REFSTRUCT_COMPATIBILITY_MODE
+      , pb::IBufferMessage
+  #endif
+  {
     private static readonly pb::MessageParser<UpdateOccurrenceRequest> _parser = new pb::MessageParser<UpdateOccurrenceRequest>(() => new UpdateOccurrenceRequest());
     private pb::UnknownFieldSet _unknownFields;
     [global::System.Diagnostics.DebuggerNonUserCodeAttribute]
@@ -2492,6 +3272,9 @@ namespace Grafeas.V1 {
 
     [global::System.Diagnostics.DebuggerNonUserCodeAttribute]
     public void WriteTo(pb::CodedOutputStream output) {
+    #if !GOOGLE_PROTOBUF_REFSTRUCT_COMPATIBILITY_MODE
+      output.WriteRawMessage(this);
+    #else
       if (Name.Length != 0) {
         output.WriteRawTag(10);
         output.WriteString(Name);
@@ -2507,7 +3290,29 @@ namespace Grafeas.V1 {
       if (_unknownFields != null) {
         _unknownFields.WriteTo(output);
       }
+    #endif
     }
+
+    #if !GOOGLE_PROTOBUF_REFSTRUCT_COMPATIBILITY_MODE
+    [global::System.Diagnostics.DebuggerNonUserCodeAttribute]
+    void pb::IBufferMessage.InternalWriteTo(ref pb::WriteContext output) {
+      if (Name.Length != 0) {
+        output.WriteRawTag(10);
+        output.WriteString(Name);
+      }
+      if (occurrence_ != null) {
+        output.WriteRawTag(18);
+        output.WriteMessage(Occurrence);
+      }
+      if (updateMask_ != null) {
+        output.WriteRawTag(26);
+        output.WriteMessage(UpdateMask);
+      }
+      if (_unknownFields != null) {
+        _unknownFields.WriteTo(ref output);
+      }
+    }
+    #endif
 
     [global::System.Diagnostics.DebuggerNonUserCodeAttribute]
     public int CalculateSize() {
@@ -2552,6 +3357,9 @@ namespace Grafeas.V1 {
 
     [global::System.Diagnostics.DebuggerNonUserCodeAttribute]
     public void MergeFrom(pb::CodedInputStream input) {
+    #if !GOOGLE_PROTOBUF_REFSTRUCT_COMPATIBILITY_MODE
+      input.ReadRawMessage(this);
+    #else
       uint tag;
       while ((tag = input.ReadTag()) != 0) {
         switch(tag) {
@@ -2578,14 +3386,51 @@ namespace Grafeas.V1 {
           }
         }
       }
+    #endif
     }
+
+    #if !GOOGLE_PROTOBUF_REFSTRUCT_COMPATIBILITY_MODE
+    [global::System.Diagnostics.DebuggerNonUserCodeAttribute]
+    void pb::IBufferMessage.InternalMergeFrom(ref pb::ParseContext input) {
+      uint tag;
+      while ((tag = input.ReadTag()) != 0) {
+        switch(tag) {
+          default:
+            _unknownFields = pb::UnknownFieldSet.MergeFieldFrom(_unknownFields, ref input);
+            break;
+          case 10: {
+            Name = input.ReadString();
+            break;
+          }
+          case 18: {
+            if (occurrence_ == null) {
+              Occurrence = new global::Grafeas.V1.Occurrence();
+            }
+            input.ReadMessage(Occurrence);
+            break;
+          }
+          case 26: {
+            if (updateMask_ == null) {
+              UpdateMask = new global::Google.Protobuf.WellKnownTypes.FieldMask();
+            }
+            input.ReadMessage(UpdateMask);
+            break;
+          }
+        }
+      }
+    }
+    #endif
 
   }
 
   /// <summary>
   /// Request to get a note.
   /// </summary>
-  public sealed partial class GetNoteRequest : pb::IMessage<GetNoteRequest> {
+  public sealed partial class GetNoteRequest : pb::IMessage<GetNoteRequest>
+  #if !GOOGLE_PROTOBUF_REFSTRUCT_COMPATIBILITY_MODE
+      , pb::IBufferMessage
+  #endif
+  {
     private static readonly pb::MessageParser<GetNoteRequest> _parser = new pb::MessageParser<GetNoteRequest>(() => new GetNoteRequest());
     private pb::UnknownFieldSet _unknownFields;
     [global::System.Diagnostics.DebuggerNonUserCodeAttribute]
@@ -2668,6 +3513,9 @@ namespace Grafeas.V1 {
 
     [global::System.Diagnostics.DebuggerNonUserCodeAttribute]
     public void WriteTo(pb::CodedOutputStream output) {
+    #if !GOOGLE_PROTOBUF_REFSTRUCT_COMPATIBILITY_MODE
+      output.WriteRawMessage(this);
+    #else
       if (Name.Length != 0) {
         output.WriteRawTag(10);
         output.WriteString(Name);
@@ -2675,7 +3523,21 @@ namespace Grafeas.V1 {
       if (_unknownFields != null) {
         _unknownFields.WriteTo(output);
       }
+    #endif
     }
+
+    #if !GOOGLE_PROTOBUF_REFSTRUCT_COMPATIBILITY_MODE
+    [global::System.Diagnostics.DebuggerNonUserCodeAttribute]
+    void pb::IBufferMessage.InternalWriteTo(ref pb::WriteContext output) {
+      if (Name.Length != 0) {
+        output.WriteRawTag(10);
+        output.WriteString(Name);
+      }
+      if (_unknownFields != null) {
+        _unknownFields.WriteTo(ref output);
+      }
+    }
+    #endif
 
     [global::System.Diagnostics.DebuggerNonUserCodeAttribute]
     public int CalculateSize() {
@@ -2702,6 +3564,9 @@ namespace Grafeas.V1 {
 
     [global::System.Diagnostics.DebuggerNonUserCodeAttribute]
     public void MergeFrom(pb::CodedInputStream input) {
+    #if !GOOGLE_PROTOBUF_REFSTRUCT_COMPATIBILITY_MODE
+      input.ReadRawMessage(this);
+    #else
       uint tag;
       while ((tag = input.ReadTag()) != 0) {
         switch(tag) {
@@ -2714,14 +3579,37 @@ namespace Grafeas.V1 {
           }
         }
       }
+    #endif
     }
+
+    #if !GOOGLE_PROTOBUF_REFSTRUCT_COMPATIBILITY_MODE
+    [global::System.Diagnostics.DebuggerNonUserCodeAttribute]
+    void pb::IBufferMessage.InternalMergeFrom(ref pb::ParseContext input) {
+      uint tag;
+      while ((tag = input.ReadTag()) != 0) {
+        switch(tag) {
+          default:
+            _unknownFields = pb::UnknownFieldSet.MergeFieldFrom(_unknownFields, ref input);
+            break;
+          case 10: {
+            Name = input.ReadString();
+            break;
+          }
+        }
+      }
+    }
+    #endif
 
   }
 
   /// <summary>
   /// Request to get the note to which the specified occurrence is attached.
   /// </summary>
-  public sealed partial class GetOccurrenceNoteRequest : pb::IMessage<GetOccurrenceNoteRequest> {
+  public sealed partial class GetOccurrenceNoteRequest : pb::IMessage<GetOccurrenceNoteRequest>
+  #if !GOOGLE_PROTOBUF_REFSTRUCT_COMPATIBILITY_MODE
+      , pb::IBufferMessage
+  #endif
+  {
     private static readonly pb::MessageParser<GetOccurrenceNoteRequest> _parser = new pb::MessageParser<GetOccurrenceNoteRequest>(() => new GetOccurrenceNoteRequest());
     private pb::UnknownFieldSet _unknownFields;
     [global::System.Diagnostics.DebuggerNonUserCodeAttribute]
@@ -2804,6 +3692,9 @@ namespace Grafeas.V1 {
 
     [global::System.Diagnostics.DebuggerNonUserCodeAttribute]
     public void WriteTo(pb::CodedOutputStream output) {
+    #if !GOOGLE_PROTOBUF_REFSTRUCT_COMPATIBILITY_MODE
+      output.WriteRawMessage(this);
+    #else
       if (Name.Length != 0) {
         output.WriteRawTag(10);
         output.WriteString(Name);
@@ -2811,7 +3702,21 @@ namespace Grafeas.V1 {
       if (_unknownFields != null) {
         _unknownFields.WriteTo(output);
       }
+    #endif
     }
+
+    #if !GOOGLE_PROTOBUF_REFSTRUCT_COMPATIBILITY_MODE
+    [global::System.Diagnostics.DebuggerNonUserCodeAttribute]
+    void pb::IBufferMessage.InternalWriteTo(ref pb::WriteContext output) {
+      if (Name.Length != 0) {
+        output.WriteRawTag(10);
+        output.WriteString(Name);
+      }
+      if (_unknownFields != null) {
+        _unknownFields.WriteTo(ref output);
+      }
+    }
+    #endif
 
     [global::System.Diagnostics.DebuggerNonUserCodeAttribute]
     public int CalculateSize() {
@@ -2838,6 +3743,9 @@ namespace Grafeas.V1 {
 
     [global::System.Diagnostics.DebuggerNonUserCodeAttribute]
     public void MergeFrom(pb::CodedInputStream input) {
+    #if !GOOGLE_PROTOBUF_REFSTRUCT_COMPATIBILITY_MODE
+      input.ReadRawMessage(this);
+    #else
       uint tag;
       while ((tag = input.ReadTag()) != 0) {
         switch(tag) {
@@ -2850,14 +3758,37 @@ namespace Grafeas.V1 {
           }
         }
       }
+    #endif
     }
+
+    #if !GOOGLE_PROTOBUF_REFSTRUCT_COMPATIBILITY_MODE
+    [global::System.Diagnostics.DebuggerNonUserCodeAttribute]
+    void pb::IBufferMessage.InternalMergeFrom(ref pb::ParseContext input) {
+      uint tag;
+      while ((tag = input.ReadTag()) != 0) {
+        switch(tag) {
+          default:
+            _unknownFields = pb::UnknownFieldSet.MergeFieldFrom(_unknownFields, ref input);
+            break;
+          case 10: {
+            Name = input.ReadString();
+            break;
+          }
+        }
+      }
+    }
+    #endif
 
   }
 
   /// <summary>
   /// Request to list notes.
   /// </summary>
-  public sealed partial class ListNotesRequest : pb::IMessage<ListNotesRequest> {
+  public sealed partial class ListNotesRequest : pb::IMessage<ListNotesRequest>
+  #if !GOOGLE_PROTOBUF_REFSTRUCT_COMPATIBILITY_MODE
+      , pb::IBufferMessage
+  #endif
+  {
     private static readonly pb::MessageParser<ListNotesRequest> _parser = new pb::MessageParser<ListNotesRequest>(() => new ListNotesRequest());
     private pb::UnknownFieldSet _unknownFields;
     [global::System.Diagnostics.DebuggerNonUserCodeAttribute]
@@ -2992,6 +3923,9 @@ namespace Grafeas.V1 {
 
     [global::System.Diagnostics.DebuggerNonUserCodeAttribute]
     public void WriteTo(pb::CodedOutputStream output) {
+    #if !GOOGLE_PROTOBUF_REFSTRUCT_COMPATIBILITY_MODE
+      output.WriteRawMessage(this);
+    #else
       if (Parent.Length != 0) {
         output.WriteRawTag(10);
         output.WriteString(Parent);
@@ -3011,7 +3945,33 @@ namespace Grafeas.V1 {
       if (_unknownFields != null) {
         _unknownFields.WriteTo(output);
       }
+    #endif
     }
+
+    #if !GOOGLE_PROTOBUF_REFSTRUCT_COMPATIBILITY_MODE
+    [global::System.Diagnostics.DebuggerNonUserCodeAttribute]
+    void pb::IBufferMessage.InternalWriteTo(ref pb::WriteContext output) {
+      if (Parent.Length != 0) {
+        output.WriteRawTag(10);
+        output.WriteString(Parent);
+      }
+      if (Filter.Length != 0) {
+        output.WriteRawTag(18);
+        output.WriteString(Filter);
+      }
+      if (PageSize != 0) {
+        output.WriteRawTag(24);
+        output.WriteInt32(PageSize);
+      }
+      if (PageToken.Length != 0) {
+        output.WriteRawTag(34);
+        output.WriteString(PageToken);
+      }
+      if (_unknownFields != null) {
+        _unknownFields.WriteTo(ref output);
+      }
+    }
+    #endif
 
     [global::System.Diagnostics.DebuggerNonUserCodeAttribute]
     public int CalculateSize() {
@@ -3056,6 +4016,9 @@ namespace Grafeas.V1 {
 
     [global::System.Diagnostics.DebuggerNonUserCodeAttribute]
     public void MergeFrom(pb::CodedInputStream input) {
+    #if !GOOGLE_PROTOBUF_REFSTRUCT_COMPATIBILITY_MODE
+      input.ReadRawMessage(this);
+    #else
       uint tag;
       while ((tag = input.ReadTag()) != 0) {
         switch(tag) {
@@ -3080,14 +4043,49 @@ namespace Grafeas.V1 {
           }
         }
       }
+    #endif
     }
+
+    #if !GOOGLE_PROTOBUF_REFSTRUCT_COMPATIBILITY_MODE
+    [global::System.Diagnostics.DebuggerNonUserCodeAttribute]
+    void pb::IBufferMessage.InternalMergeFrom(ref pb::ParseContext input) {
+      uint tag;
+      while ((tag = input.ReadTag()) != 0) {
+        switch(tag) {
+          default:
+            _unknownFields = pb::UnknownFieldSet.MergeFieldFrom(_unknownFields, ref input);
+            break;
+          case 10: {
+            Parent = input.ReadString();
+            break;
+          }
+          case 18: {
+            Filter = input.ReadString();
+            break;
+          }
+          case 24: {
+            PageSize = input.ReadInt32();
+            break;
+          }
+          case 34: {
+            PageToken = input.ReadString();
+            break;
+          }
+        }
+      }
+    }
+    #endif
 
   }
 
   /// <summary>
   /// Response for listing notes.
   /// </summary>
-  public sealed partial class ListNotesResponse : pb::IMessage<ListNotesResponse> {
+  public sealed partial class ListNotesResponse : pb::IMessage<ListNotesResponse>
+  #if !GOOGLE_PROTOBUF_REFSTRUCT_COMPATIBILITY_MODE
+      , pb::IBufferMessage
+  #endif
+  {
     private static readonly pb::MessageParser<ListNotesResponse> _parser = new pb::MessageParser<ListNotesResponse>(() => new ListNotesResponse());
     private pb::UnknownFieldSet _unknownFields;
     [global::System.Diagnostics.DebuggerNonUserCodeAttribute]
@@ -3187,6 +4185,9 @@ namespace Grafeas.V1 {
 
     [global::System.Diagnostics.DebuggerNonUserCodeAttribute]
     public void WriteTo(pb::CodedOutputStream output) {
+    #if !GOOGLE_PROTOBUF_REFSTRUCT_COMPATIBILITY_MODE
+      output.WriteRawMessage(this);
+    #else
       notes_.WriteTo(output, _repeated_notes_codec);
       if (NextPageToken.Length != 0) {
         output.WriteRawTag(18);
@@ -3195,7 +4196,22 @@ namespace Grafeas.V1 {
       if (_unknownFields != null) {
         _unknownFields.WriteTo(output);
       }
+    #endif
     }
+
+    #if !GOOGLE_PROTOBUF_REFSTRUCT_COMPATIBILITY_MODE
+    [global::System.Diagnostics.DebuggerNonUserCodeAttribute]
+    void pb::IBufferMessage.InternalWriteTo(ref pb::WriteContext output) {
+      notes_.WriteTo(ref output, _repeated_notes_codec);
+      if (NextPageToken.Length != 0) {
+        output.WriteRawTag(18);
+        output.WriteString(NextPageToken);
+      }
+      if (_unknownFields != null) {
+        _unknownFields.WriteTo(ref output);
+      }
+    }
+    #endif
 
     [global::System.Diagnostics.DebuggerNonUserCodeAttribute]
     public int CalculateSize() {
@@ -3224,6 +4240,9 @@ namespace Grafeas.V1 {
 
     [global::System.Diagnostics.DebuggerNonUserCodeAttribute]
     public void MergeFrom(pb::CodedInputStream input) {
+    #if !GOOGLE_PROTOBUF_REFSTRUCT_COMPATIBILITY_MODE
+      input.ReadRawMessage(this);
+    #else
       uint tag;
       while ((tag = input.ReadTag()) != 0) {
         switch(tag) {
@@ -3240,14 +4259,41 @@ namespace Grafeas.V1 {
           }
         }
       }
+    #endif
     }
+
+    #if !GOOGLE_PROTOBUF_REFSTRUCT_COMPATIBILITY_MODE
+    [global::System.Diagnostics.DebuggerNonUserCodeAttribute]
+    void pb::IBufferMessage.InternalMergeFrom(ref pb::ParseContext input) {
+      uint tag;
+      while ((tag = input.ReadTag()) != 0) {
+        switch(tag) {
+          default:
+            _unknownFields = pb::UnknownFieldSet.MergeFieldFrom(_unknownFields, ref input);
+            break;
+          case 10: {
+            notes_.AddEntriesFrom(ref input, _repeated_notes_codec);
+            break;
+          }
+          case 18: {
+            NextPageToken = input.ReadString();
+            break;
+          }
+        }
+      }
+    }
+    #endif
 
   }
 
   /// <summary>
   /// Request to delete a note.
   /// </summary>
-  public sealed partial class DeleteNoteRequest : pb::IMessage<DeleteNoteRequest> {
+  public sealed partial class DeleteNoteRequest : pb::IMessage<DeleteNoteRequest>
+  #if !GOOGLE_PROTOBUF_REFSTRUCT_COMPATIBILITY_MODE
+      , pb::IBufferMessage
+  #endif
+  {
     private static readonly pb::MessageParser<DeleteNoteRequest> _parser = new pb::MessageParser<DeleteNoteRequest>(() => new DeleteNoteRequest());
     private pb::UnknownFieldSet _unknownFields;
     [global::System.Diagnostics.DebuggerNonUserCodeAttribute]
@@ -3330,6 +4376,9 @@ namespace Grafeas.V1 {
 
     [global::System.Diagnostics.DebuggerNonUserCodeAttribute]
     public void WriteTo(pb::CodedOutputStream output) {
+    #if !GOOGLE_PROTOBUF_REFSTRUCT_COMPATIBILITY_MODE
+      output.WriteRawMessage(this);
+    #else
       if (Name.Length != 0) {
         output.WriteRawTag(10);
         output.WriteString(Name);
@@ -3337,7 +4386,21 @@ namespace Grafeas.V1 {
       if (_unknownFields != null) {
         _unknownFields.WriteTo(output);
       }
+    #endif
     }
+
+    #if !GOOGLE_PROTOBUF_REFSTRUCT_COMPATIBILITY_MODE
+    [global::System.Diagnostics.DebuggerNonUserCodeAttribute]
+    void pb::IBufferMessage.InternalWriteTo(ref pb::WriteContext output) {
+      if (Name.Length != 0) {
+        output.WriteRawTag(10);
+        output.WriteString(Name);
+      }
+      if (_unknownFields != null) {
+        _unknownFields.WriteTo(ref output);
+      }
+    }
+    #endif
 
     [global::System.Diagnostics.DebuggerNonUserCodeAttribute]
     public int CalculateSize() {
@@ -3364,6 +4427,9 @@ namespace Grafeas.V1 {
 
     [global::System.Diagnostics.DebuggerNonUserCodeAttribute]
     public void MergeFrom(pb::CodedInputStream input) {
+    #if !GOOGLE_PROTOBUF_REFSTRUCT_COMPATIBILITY_MODE
+      input.ReadRawMessage(this);
+    #else
       uint tag;
       while ((tag = input.ReadTag()) != 0) {
         switch(tag) {
@@ -3376,14 +4442,37 @@ namespace Grafeas.V1 {
           }
         }
       }
+    #endif
     }
+
+    #if !GOOGLE_PROTOBUF_REFSTRUCT_COMPATIBILITY_MODE
+    [global::System.Diagnostics.DebuggerNonUserCodeAttribute]
+    void pb::IBufferMessage.InternalMergeFrom(ref pb::ParseContext input) {
+      uint tag;
+      while ((tag = input.ReadTag()) != 0) {
+        switch(tag) {
+          default:
+            _unknownFields = pb::UnknownFieldSet.MergeFieldFrom(_unknownFields, ref input);
+            break;
+          case 10: {
+            Name = input.ReadString();
+            break;
+          }
+        }
+      }
+    }
+    #endif
 
   }
 
   /// <summary>
   /// Request to create a new note.
   /// </summary>
-  public sealed partial class CreateNoteRequest : pb::IMessage<CreateNoteRequest> {
+  public sealed partial class CreateNoteRequest : pb::IMessage<CreateNoteRequest>
+  #if !GOOGLE_PROTOBUF_REFSTRUCT_COMPATIBILITY_MODE
+      , pb::IBufferMessage
+  #endif
+  {
     private static readonly pb::MessageParser<CreateNoteRequest> _parser = new pb::MessageParser<CreateNoteRequest>(() => new CreateNoteRequest());
     private pb::UnknownFieldSet _unknownFields;
     [global::System.Diagnostics.DebuggerNonUserCodeAttribute]
@@ -3500,6 +4589,9 @@ namespace Grafeas.V1 {
 
     [global::System.Diagnostics.DebuggerNonUserCodeAttribute]
     public void WriteTo(pb::CodedOutputStream output) {
+    #if !GOOGLE_PROTOBUF_REFSTRUCT_COMPATIBILITY_MODE
+      output.WriteRawMessage(this);
+    #else
       if (Parent.Length != 0) {
         output.WriteRawTag(10);
         output.WriteString(Parent);
@@ -3515,7 +4607,29 @@ namespace Grafeas.V1 {
       if (_unknownFields != null) {
         _unknownFields.WriteTo(output);
       }
+    #endif
     }
+
+    #if !GOOGLE_PROTOBUF_REFSTRUCT_COMPATIBILITY_MODE
+    [global::System.Diagnostics.DebuggerNonUserCodeAttribute]
+    void pb::IBufferMessage.InternalWriteTo(ref pb::WriteContext output) {
+      if (Parent.Length != 0) {
+        output.WriteRawTag(10);
+        output.WriteString(Parent);
+      }
+      if (NoteId.Length != 0) {
+        output.WriteRawTag(18);
+        output.WriteString(NoteId);
+      }
+      if (note_ != null) {
+        output.WriteRawTag(26);
+        output.WriteMessage(Note);
+      }
+      if (_unknownFields != null) {
+        _unknownFields.WriteTo(ref output);
+      }
+    }
+    #endif
 
     [global::System.Diagnostics.DebuggerNonUserCodeAttribute]
     public int CalculateSize() {
@@ -3557,6 +4671,9 @@ namespace Grafeas.V1 {
 
     [global::System.Diagnostics.DebuggerNonUserCodeAttribute]
     public void MergeFrom(pb::CodedInputStream input) {
+    #if !GOOGLE_PROTOBUF_REFSTRUCT_COMPATIBILITY_MODE
+      input.ReadRawMessage(this);
+    #else
       uint tag;
       while ((tag = input.ReadTag()) != 0) {
         switch(tag) {
@@ -3580,14 +4697,48 @@ namespace Grafeas.V1 {
           }
         }
       }
+    #endif
     }
+
+    #if !GOOGLE_PROTOBUF_REFSTRUCT_COMPATIBILITY_MODE
+    [global::System.Diagnostics.DebuggerNonUserCodeAttribute]
+    void pb::IBufferMessage.InternalMergeFrom(ref pb::ParseContext input) {
+      uint tag;
+      while ((tag = input.ReadTag()) != 0) {
+        switch(tag) {
+          default:
+            _unknownFields = pb::UnknownFieldSet.MergeFieldFrom(_unknownFields, ref input);
+            break;
+          case 10: {
+            Parent = input.ReadString();
+            break;
+          }
+          case 18: {
+            NoteId = input.ReadString();
+            break;
+          }
+          case 26: {
+            if (note_ == null) {
+              Note = new global::Grafeas.V1.Note();
+            }
+            input.ReadMessage(Note);
+            break;
+          }
+        }
+      }
+    }
+    #endif
 
   }
 
   /// <summary>
   /// Request to update a note.
   /// </summary>
-  public sealed partial class UpdateNoteRequest : pb::IMessage<UpdateNoteRequest> {
+  public sealed partial class UpdateNoteRequest : pb::IMessage<UpdateNoteRequest>
+  #if !GOOGLE_PROTOBUF_REFSTRUCT_COMPATIBILITY_MODE
+      , pb::IBufferMessage
+  #endif
+  {
     private static readonly pb::MessageParser<UpdateNoteRequest> _parser = new pb::MessageParser<UpdateNoteRequest>(() => new UpdateNoteRequest());
     private pb::UnknownFieldSet _unknownFields;
     [global::System.Diagnostics.DebuggerNonUserCodeAttribute]
@@ -3704,6 +4855,9 @@ namespace Grafeas.V1 {
 
     [global::System.Diagnostics.DebuggerNonUserCodeAttribute]
     public void WriteTo(pb::CodedOutputStream output) {
+    #if !GOOGLE_PROTOBUF_REFSTRUCT_COMPATIBILITY_MODE
+      output.WriteRawMessage(this);
+    #else
       if (Name.Length != 0) {
         output.WriteRawTag(10);
         output.WriteString(Name);
@@ -3719,7 +4873,29 @@ namespace Grafeas.V1 {
       if (_unknownFields != null) {
         _unknownFields.WriteTo(output);
       }
+    #endif
     }
+
+    #if !GOOGLE_PROTOBUF_REFSTRUCT_COMPATIBILITY_MODE
+    [global::System.Diagnostics.DebuggerNonUserCodeAttribute]
+    void pb::IBufferMessage.InternalWriteTo(ref pb::WriteContext output) {
+      if (Name.Length != 0) {
+        output.WriteRawTag(10);
+        output.WriteString(Name);
+      }
+      if (note_ != null) {
+        output.WriteRawTag(18);
+        output.WriteMessage(Note);
+      }
+      if (updateMask_ != null) {
+        output.WriteRawTag(26);
+        output.WriteMessage(UpdateMask);
+      }
+      if (_unknownFields != null) {
+        _unknownFields.WriteTo(ref output);
+      }
+    }
+    #endif
 
     [global::System.Diagnostics.DebuggerNonUserCodeAttribute]
     public int CalculateSize() {
@@ -3764,6 +4940,9 @@ namespace Grafeas.V1 {
 
     [global::System.Diagnostics.DebuggerNonUserCodeAttribute]
     public void MergeFrom(pb::CodedInputStream input) {
+    #if !GOOGLE_PROTOBUF_REFSTRUCT_COMPATIBILITY_MODE
+      input.ReadRawMessage(this);
+    #else
       uint tag;
       while ((tag = input.ReadTag()) != 0) {
         switch(tag) {
@@ -3790,14 +4969,51 @@ namespace Grafeas.V1 {
           }
         }
       }
+    #endif
     }
+
+    #if !GOOGLE_PROTOBUF_REFSTRUCT_COMPATIBILITY_MODE
+    [global::System.Diagnostics.DebuggerNonUserCodeAttribute]
+    void pb::IBufferMessage.InternalMergeFrom(ref pb::ParseContext input) {
+      uint tag;
+      while ((tag = input.ReadTag()) != 0) {
+        switch(tag) {
+          default:
+            _unknownFields = pb::UnknownFieldSet.MergeFieldFrom(_unknownFields, ref input);
+            break;
+          case 10: {
+            Name = input.ReadString();
+            break;
+          }
+          case 18: {
+            if (note_ == null) {
+              Note = new global::Grafeas.V1.Note();
+            }
+            input.ReadMessage(Note);
+            break;
+          }
+          case 26: {
+            if (updateMask_ == null) {
+              UpdateMask = new global::Google.Protobuf.WellKnownTypes.FieldMask();
+            }
+            input.ReadMessage(UpdateMask);
+            break;
+          }
+        }
+      }
+    }
+    #endif
 
   }
 
   /// <summary>
   /// Request to list occurrences for a note.
   /// </summary>
-  public sealed partial class ListNoteOccurrencesRequest : pb::IMessage<ListNoteOccurrencesRequest> {
+  public sealed partial class ListNoteOccurrencesRequest : pb::IMessage<ListNoteOccurrencesRequest>
+  #if !GOOGLE_PROTOBUF_REFSTRUCT_COMPATIBILITY_MODE
+      , pb::IBufferMessage
+  #endif
+  {
     private static readonly pb::MessageParser<ListNoteOccurrencesRequest> _parser = new pb::MessageParser<ListNoteOccurrencesRequest>(() => new ListNoteOccurrencesRequest());
     private pb::UnknownFieldSet _unknownFields;
     [global::System.Diagnostics.DebuggerNonUserCodeAttribute]
@@ -3931,6 +5147,9 @@ namespace Grafeas.V1 {
 
     [global::System.Diagnostics.DebuggerNonUserCodeAttribute]
     public void WriteTo(pb::CodedOutputStream output) {
+    #if !GOOGLE_PROTOBUF_REFSTRUCT_COMPATIBILITY_MODE
+      output.WriteRawMessage(this);
+    #else
       if (Name.Length != 0) {
         output.WriteRawTag(10);
         output.WriteString(Name);
@@ -3950,7 +5169,33 @@ namespace Grafeas.V1 {
       if (_unknownFields != null) {
         _unknownFields.WriteTo(output);
       }
+    #endif
     }
+
+    #if !GOOGLE_PROTOBUF_REFSTRUCT_COMPATIBILITY_MODE
+    [global::System.Diagnostics.DebuggerNonUserCodeAttribute]
+    void pb::IBufferMessage.InternalWriteTo(ref pb::WriteContext output) {
+      if (Name.Length != 0) {
+        output.WriteRawTag(10);
+        output.WriteString(Name);
+      }
+      if (Filter.Length != 0) {
+        output.WriteRawTag(18);
+        output.WriteString(Filter);
+      }
+      if (PageSize != 0) {
+        output.WriteRawTag(24);
+        output.WriteInt32(PageSize);
+      }
+      if (PageToken.Length != 0) {
+        output.WriteRawTag(34);
+        output.WriteString(PageToken);
+      }
+      if (_unknownFields != null) {
+        _unknownFields.WriteTo(ref output);
+      }
+    }
+    #endif
 
     [global::System.Diagnostics.DebuggerNonUserCodeAttribute]
     public int CalculateSize() {
@@ -3995,6 +5240,9 @@ namespace Grafeas.V1 {
 
     [global::System.Diagnostics.DebuggerNonUserCodeAttribute]
     public void MergeFrom(pb::CodedInputStream input) {
+    #if !GOOGLE_PROTOBUF_REFSTRUCT_COMPATIBILITY_MODE
+      input.ReadRawMessage(this);
+    #else
       uint tag;
       while ((tag = input.ReadTag()) != 0) {
         switch(tag) {
@@ -4019,14 +5267,49 @@ namespace Grafeas.V1 {
           }
         }
       }
+    #endif
     }
+
+    #if !GOOGLE_PROTOBUF_REFSTRUCT_COMPATIBILITY_MODE
+    [global::System.Diagnostics.DebuggerNonUserCodeAttribute]
+    void pb::IBufferMessage.InternalMergeFrom(ref pb::ParseContext input) {
+      uint tag;
+      while ((tag = input.ReadTag()) != 0) {
+        switch(tag) {
+          default:
+            _unknownFields = pb::UnknownFieldSet.MergeFieldFrom(_unknownFields, ref input);
+            break;
+          case 10: {
+            Name = input.ReadString();
+            break;
+          }
+          case 18: {
+            Filter = input.ReadString();
+            break;
+          }
+          case 24: {
+            PageSize = input.ReadInt32();
+            break;
+          }
+          case 34: {
+            PageToken = input.ReadString();
+            break;
+          }
+        }
+      }
+    }
+    #endif
 
   }
 
   /// <summary>
   /// Response for listing occurrences for a note.
   /// </summary>
-  public sealed partial class ListNoteOccurrencesResponse : pb::IMessage<ListNoteOccurrencesResponse> {
+  public sealed partial class ListNoteOccurrencesResponse : pb::IMessage<ListNoteOccurrencesResponse>
+  #if !GOOGLE_PROTOBUF_REFSTRUCT_COMPATIBILITY_MODE
+      , pb::IBufferMessage
+  #endif
+  {
     private static readonly pb::MessageParser<ListNoteOccurrencesResponse> _parser = new pb::MessageParser<ListNoteOccurrencesResponse>(() => new ListNoteOccurrencesResponse());
     private pb::UnknownFieldSet _unknownFields;
     [global::System.Diagnostics.DebuggerNonUserCodeAttribute]
@@ -4124,6 +5407,9 @@ namespace Grafeas.V1 {
 
     [global::System.Diagnostics.DebuggerNonUserCodeAttribute]
     public void WriteTo(pb::CodedOutputStream output) {
+    #if !GOOGLE_PROTOBUF_REFSTRUCT_COMPATIBILITY_MODE
+      output.WriteRawMessage(this);
+    #else
       occurrences_.WriteTo(output, _repeated_occurrences_codec);
       if (NextPageToken.Length != 0) {
         output.WriteRawTag(18);
@@ -4132,7 +5418,22 @@ namespace Grafeas.V1 {
       if (_unknownFields != null) {
         _unknownFields.WriteTo(output);
       }
+    #endif
     }
+
+    #if !GOOGLE_PROTOBUF_REFSTRUCT_COMPATIBILITY_MODE
+    [global::System.Diagnostics.DebuggerNonUserCodeAttribute]
+    void pb::IBufferMessage.InternalWriteTo(ref pb::WriteContext output) {
+      occurrences_.WriteTo(ref output, _repeated_occurrences_codec);
+      if (NextPageToken.Length != 0) {
+        output.WriteRawTag(18);
+        output.WriteString(NextPageToken);
+      }
+      if (_unknownFields != null) {
+        _unknownFields.WriteTo(ref output);
+      }
+    }
+    #endif
 
     [global::System.Diagnostics.DebuggerNonUserCodeAttribute]
     public int CalculateSize() {
@@ -4161,6 +5462,9 @@ namespace Grafeas.V1 {
 
     [global::System.Diagnostics.DebuggerNonUserCodeAttribute]
     public void MergeFrom(pb::CodedInputStream input) {
+    #if !GOOGLE_PROTOBUF_REFSTRUCT_COMPATIBILITY_MODE
+      input.ReadRawMessage(this);
+    #else
       uint tag;
       while ((tag = input.ReadTag()) != 0) {
         switch(tag) {
@@ -4177,14 +5481,41 @@ namespace Grafeas.V1 {
           }
         }
       }
+    #endif
     }
+
+    #if !GOOGLE_PROTOBUF_REFSTRUCT_COMPATIBILITY_MODE
+    [global::System.Diagnostics.DebuggerNonUserCodeAttribute]
+    void pb::IBufferMessage.InternalMergeFrom(ref pb::ParseContext input) {
+      uint tag;
+      while ((tag = input.ReadTag()) != 0) {
+        switch(tag) {
+          default:
+            _unknownFields = pb::UnknownFieldSet.MergeFieldFrom(_unknownFields, ref input);
+            break;
+          case 10: {
+            occurrences_.AddEntriesFrom(ref input, _repeated_occurrences_codec);
+            break;
+          }
+          case 18: {
+            NextPageToken = input.ReadString();
+            break;
+          }
+        }
+      }
+    }
+    #endif
 
   }
 
   /// <summary>
   /// Request to create notes in batch.
   /// </summary>
-  public sealed partial class BatchCreateNotesRequest : pb::IMessage<BatchCreateNotesRequest> {
+  public sealed partial class BatchCreateNotesRequest : pb::IMessage<BatchCreateNotesRequest>
+  #if !GOOGLE_PROTOBUF_REFSTRUCT_COMPATIBILITY_MODE
+      , pb::IBufferMessage
+  #endif
+  {
     private static readonly pb::MessageParser<BatchCreateNotesRequest> _parser = new pb::MessageParser<BatchCreateNotesRequest>(() => new BatchCreateNotesRequest());
     private pb::UnknownFieldSet _unknownFields;
     [global::System.Diagnostics.DebuggerNonUserCodeAttribute]
@@ -4237,7 +5568,7 @@ namespace Grafeas.V1 {
     /// <summary>Field number for the "notes" field.</summary>
     public const int NotesFieldNumber = 2;
     private static readonly pbc::MapField<string, global::Grafeas.V1.Note>.Codec _map_notes_codec
-        = new pbc::MapField<string, global::Grafeas.V1.Note>.Codec(pb::FieldCodec.ForString(10), pb::FieldCodec.ForMessage(18, global::Grafeas.V1.Note.Parser), 18);
+        = new pbc::MapField<string, global::Grafeas.V1.Note>.Codec(pb::FieldCodec.ForString(10, ""), pb::FieldCodec.ForMessage(18, global::Grafeas.V1.Note.Parser), 18);
     private readonly pbc::MapField<string, global::Grafeas.V1.Note> notes_ = new pbc::MapField<string, global::Grafeas.V1.Note>();
     /// <summary>
     /// The notes to create. Max allowed length is 1000.
@@ -4283,6 +5614,9 @@ namespace Grafeas.V1 {
 
     [global::System.Diagnostics.DebuggerNonUserCodeAttribute]
     public void WriteTo(pb::CodedOutputStream output) {
+    #if !GOOGLE_PROTOBUF_REFSTRUCT_COMPATIBILITY_MODE
+      output.WriteRawMessage(this);
+    #else
       if (Parent.Length != 0) {
         output.WriteRawTag(10);
         output.WriteString(Parent);
@@ -4291,7 +5625,22 @@ namespace Grafeas.V1 {
       if (_unknownFields != null) {
         _unknownFields.WriteTo(output);
       }
+    #endif
     }
+
+    #if !GOOGLE_PROTOBUF_REFSTRUCT_COMPATIBILITY_MODE
+    [global::System.Diagnostics.DebuggerNonUserCodeAttribute]
+    void pb::IBufferMessage.InternalWriteTo(ref pb::WriteContext output) {
+      if (Parent.Length != 0) {
+        output.WriteRawTag(10);
+        output.WriteString(Parent);
+      }
+      notes_.WriteTo(ref output, _map_notes_codec);
+      if (_unknownFields != null) {
+        _unknownFields.WriteTo(ref output);
+      }
+    }
+    #endif
 
     [global::System.Diagnostics.DebuggerNonUserCodeAttribute]
     public int CalculateSize() {
@@ -4320,6 +5669,9 @@ namespace Grafeas.V1 {
 
     [global::System.Diagnostics.DebuggerNonUserCodeAttribute]
     public void MergeFrom(pb::CodedInputStream input) {
+    #if !GOOGLE_PROTOBUF_REFSTRUCT_COMPATIBILITY_MODE
+      input.ReadRawMessage(this);
+    #else
       uint tag;
       while ((tag = input.ReadTag()) != 0) {
         switch(tag) {
@@ -4336,14 +5688,41 @@ namespace Grafeas.V1 {
           }
         }
       }
+    #endif
     }
+
+    #if !GOOGLE_PROTOBUF_REFSTRUCT_COMPATIBILITY_MODE
+    [global::System.Diagnostics.DebuggerNonUserCodeAttribute]
+    void pb::IBufferMessage.InternalMergeFrom(ref pb::ParseContext input) {
+      uint tag;
+      while ((tag = input.ReadTag()) != 0) {
+        switch(tag) {
+          default:
+            _unknownFields = pb::UnknownFieldSet.MergeFieldFrom(_unknownFields, ref input);
+            break;
+          case 10: {
+            Parent = input.ReadString();
+            break;
+          }
+          case 18: {
+            notes_.AddEntriesFrom(ref input, _map_notes_codec);
+            break;
+          }
+        }
+      }
+    }
+    #endif
 
   }
 
   /// <summary>
   /// Response for creating notes in batch.
   /// </summary>
-  public sealed partial class BatchCreateNotesResponse : pb::IMessage<BatchCreateNotesResponse> {
+  public sealed partial class BatchCreateNotesResponse : pb::IMessage<BatchCreateNotesResponse>
+  #if !GOOGLE_PROTOBUF_REFSTRUCT_COMPATIBILITY_MODE
+      , pb::IBufferMessage
+  #endif
+  {
     private static readonly pb::MessageParser<BatchCreateNotesResponse> _parser = new pb::MessageParser<BatchCreateNotesResponse>(() => new BatchCreateNotesResponse());
     private pb::UnknownFieldSet _unknownFields;
     [global::System.Diagnostics.DebuggerNonUserCodeAttribute]
@@ -4424,11 +5803,25 @@ namespace Grafeas.V1 {
 
     [global::System.Diagnostics.DebuggerNonUserCodeAttribute]
     public void WriteTo(pb::CodedOutputStream output) {
+    #if !GOOGLE_PROTOBUF_REFSTRUCT_COMPATIBILITY_MODE
+      output.WriteRawMessage(this);
+    #else
       notes_.WriteTo(output, _repeated_notes_codec);
       if (_unknownFields != null) {
         _unknownFields.WriteTo(output);
       }
+    #endif
     }
+
+    #if !GOOGLE_PROTOBUF_REFSTRUCT_COMPATIBILITY_MODE
+    [global::System.Diagnostics.DebuggerNonUserCodeAttribute]
+    void pb::IBufferMessage.InternalWriteTo(ref pb::WriteContext output) {
+      notes_.WriteTo(ref output, _repeated_notes_codec);
+      if (_unknownFields != null) {
+        _unknownFields.WriteTo(ref output);
+      }
+    }
+    #endif
 
     [global::System.Diagnostics.DebuggerNonUserCodeAttribute]
     public int CalculateSize() {
@@ -4451,6 +5844,9 @@ namespace Grafeas.V1 {
 
     [global::System.Diagnostics.DebuggerNonUserCodeAttribute]
     public void MergeFrom(pb::CodedInputStream input) {
+    #if !GOOGLE_PROTOBUF_REFSTRUCT_COMPATIBILITY_MODE
+      input.ReadRawMessage(this);
+    #else
       uint tag;
       while ((tag = input.ReadTag()) != 0) {
         switch(tag) {
@@ -4463,14 +5859,37 @@ namespace Grafeas.V1 {
           }
         }
       }
+    #endif
     }
+
+    #if !GOOGLE_PROTOBUF_REFSTRUCT_COMPATIBILITY_MODE
+    [global::System.Diagnostics.DebuggerNonUserCodeAttribute]
+    void pb::IBufferMessage.InternalMergeFrom(ref pb::ParseContext input) {
+      uint tag;
+      while ((tag = input.ReadTag()) != 0) {
+        switch(tag) {
+          default:
+            _unknownFields = pb::UnknownFieldSet.MergeFieldFrom(_unknownFields, ref input);
+            break;
+          case 10: {
+            notes_.AddEntriesFrom(ref input, _repeated_notes_codec);
+            break;
+          }
+        }
+      }
+    }
+    #endif
 
   }
 
   /// <summary>
   /// Request to create occurrences in batch.
   /// </summary>
-  public sealed partial class BatchCreateOccurrencesRequest : pb::IMessage<BatchCreateOccurrencesRequest> {
+  public sealed partial class BatchCreateOccurrencesRequest : pb::IMessage<BatchCreateOccurrencesRequest>
+  #if !GOOGLE_PROTOBUF_REFSTRUCT_COMPATIBILITY_MODE
+      , pb::IBufferMessage
+  #endif
+  {
     private static readonly pb::MessageParser<BatchCreateOccurrencesRequest> _parser = new pb::MessageParser<BatchCreateOccurrencesRequest>(() => new BatchCreateOccurrencesRequest());
     private pb::UnknownFieldSet _unknownFields;
     [global::System.Diagnostics.DebuggerNonUserCodeAttribute]
@@ -4569,6 +5988,9 @@ namespace Grafeas.V1 {
 
     [global::System.Diagnostics.DebuggerNonUserCodeAttribute]
     public void WriteTo(pb::CodedOutputStream output) {
+    #if !GOOGLE_PROTOBUF_REFSTRUCT_COMPATIBILITY_MODE
+      output.WriteRawMessage(this);
+    #else
       if (Parent.Length != 0) {
         output.WriteRawTag(10);
         output.WriteString(Parent);
@@ -4577,7 +5999,22 @@ namespace Grafeas.V1 {
       if (_unknownFields != null) {
         _unknownFields.WriteTo(output);
       }
+    #endif
     }
+
+    #if !GOOGLE_PROTOBUF_REFSTRUCT_COMPATIBILITY_MODE
+    [global::System.Diagnostics.DebuggerNonUserCodeAttribute]
+    void pb::IBufferMessage.InternalWriteTo(ref pb::WriteContext output) {
+      if (Parent.Length != 0) {
+        output.WriteRawTag(10);
+        output.WriteString(Parent);
+      }
+      occurrences_.WriteTo(ref output, _repeated_occurrences_codec);
+      if (_unknownFields != null) {
+        _unknownFields.WriteTo(ref output);
+      }
+    }
+    #endif
 
     [global::System.Diagnostics.DebuggerNonUserCodeAttribute]
     public int CalculateSize() {
@@ -4606,6 +6043,9 @@ namespace Grafeas.V1 {
 
     [global::System.Diagnostics.DebuggerNonUserCodeAttribute]
     public void MergeFrom(pb::CodedInputStream input) {
+    #if !GOOGLE_PROTOBUF_REFSTRUCT_COMPATIBILITY_MODE
+      input.ReadRawMessage(this);
+    #else
       uint tag;
       while ((tag = input.ReadTag()) != 0) {
         switch(tag) {
@@ -4622,14 +6062,41 @@ namespace Grafeas.V1 {
           }
         }
       }
+    #endif
     }
+
+    #if !GOOGLE_PROTOBUF_REFSTRUCT_COMPATIBILITY_MODE
+    [global::System.Diagnostics.DebuggerNonUserCodeAttribute]
+    void pb::IBufferMessage.InternalMergeFrom(ref pb::ParseContext input) {
+      uint tag;
+      while ((tag = input.ReadTag()) != 0) {
+        switch(tag) {
+          default:
+            _unknownFields = pb::UnknownFieldSet.MergeFieldFrom(_unknownFields, ref input);
+            break;
+          case 10: {
+            Parent = input.ReadString();
+            break;
+          }
+          case 18: {
+            occurrences_.AddEntriesFrom(ref input, _repeated_occurrences_codec);
+            break;
+          }
+        }
+      }
+    }
+    #endif
 
   }
 
   /// <summary>
   /// Response for creating occurrences in batch.
   /// </summary>
-  public sealed partial class BatchCreateOccurrencesResponse : pb::IMessage<BatchCreateOccurrencesResponse> {
+  public sealed partial class BatchCreateOccurrencesResponse : pb::IMessage<BatchCreateOccurrencesResponse>
+  #if !GOOGLE_PROTOBUF_REFSTRUCT_COMPATIBILITY_MODE
+      , pb::IBufferMessage
+  #endif
+  {
     private static readonly pb::MessageParser<BatchCreateOccurrencesResponse> _parser = new pb::MessageParser<BatchCreateOccurrencesResponse>(() => new BatchCreateOccurrencesResponse());
     private pb::UnknownFieldSet _unknownFields;
     [global::System.Diagnostics.DebuggerNonUserCodeAttribute]
@@ -4710,11 +6177,25 @@ namespace Grafeas.V1 {
 
     [global::System.Diagnostics.DebuggerNonUserCodeAttribute]
     public void WriteTo(pb::CodedOutputStream output) {
+    #if !GOOGLE_PROTOBUF_REFSTRUCT_COMPATIBILITY_MODE
+      output.WriteRawMessage(this);
+    #else
       occurrences_.WriteTo(output, _repeated_occurrences_codec);
       if (_unknownFields != null) {
         _unknownFields.WriteTo(output);
       }
+    #endif
     }
+
+    #if !GOOGLE_PROTOBUF_REFSTRUCT_COMPATIBILITY_MODE
+    [global::System.Diagnostics.DebuggerNonUserCodeAttribute]
+    void pb::IBufferMessage.InternalWriteTo(ref pb::WriteContext output) {
+      occurrences_.WriteTo(ref output, _repeated_occurrences_codec);
+      if (_unknownFields != null) {
+        _unknownFields.WriteTo(ref output);
+      }
+    }
+    #endif
 
     [global::System.Diagnostics.DebuggerNonUserCodeAttribute]
     public int CalculateSize() {
@@ -4737,6 +6218,9 @@ namespace Grafeas.V1 {
 
     [global::System.Diagnostics.DebuggerNonUserCodeAttribute]
     public void MergeFrom(pb::CodedInputStream input) {
+    #if !GOOGLE_PROTOBUF_REFSTRUCT_COMPATIBILITY_MODE
+      input.ReadRawMessage(this);
+    #else
       uint tag;
       while ((tag = input.ReadTag()) != 0) {
         switch(tag) {
@@ -4749,7 +6233,26 @@ namespace Grafeas.V1 {
           }
         }
       }
+    #endif
     }
+
+    #if !GOOGLE_PROTOBUF_REFSTRUCT_COMPATIBILITY_MODE
+    [global::System.Diagnostics.DebuggerNonUserCodeAttribute]
+    void pb::IBufferMessage.InternalMergeFrom(ref pb::ParseContext input) {
+      uint tag;
+      while ((tag = input.ReadTag()) != 0) {
+        switch(tag) {
+          default:
+            _unknownFields = pb::UnknownFieldSet.MergeFieldFrom(_unknownFields, ref input);
+            break;
+          case 10: {
+            occurrences_.AddEntriesFrom(ref input, _repeated_occurrences_codec);
+            break;
+          }
+        }
+      }
+    }
+    #endif
 
   }
 

@@ -26,35 +26,50 @@ namespace Google.Cloud.Monitoring.V3 {
           string.Concat(
             "Cidnb29nbGUvbW9uaXRvcmluZy92My9ub3RpZmljYXRpb24ucHJvdG8SFGdv",
             "b2dsZS5tb25pdG9yaW5nLnYzGhZnb29nbGUvYXBpL2xhYmVsLnByb3RvGh1n",
-            "b29nbGUvYXBpL2xhdW5jaF9zdGFnZS5wcm90bxohZ29vZ2xlL21vbml0b3Jp",
-            "bmcvdjMvY29tbW9uLnByb3RvGh5nb29nbGUvcHJvdG9idWYvd3JhcHBlcnMu",
-            "cHJvdG8i0wEKHU5vdGlmaWNhdGlvbkNoYW5uZWxEZXNjcmlwdG9yEgwKBG5h",
-            "bWUYBiABKAkSDAoEdHlwZRgBIAEoCRIUCgxkaXNwbGF5X25hbWUYAiABKAkS",
-            "EwoLZGVzY3JpcHRpb24YAyABKAkSKwoGbGFiZWxzGAQgAygLMhsuZ29vZ2xl",
-            "LmFwaS5MYWJlbERlc2NyaXB0b3ISPgoPc3VwcG9ydGVkX3RpZXJzGAUgAygO",
-            "MiEuZ29vZ2xlLm1vbml0b3JpbmcudjMuU2VydmljZVRpZXJCAhgBIrYEChNO",
-            "b3RpZmljYXRpb25DaGFubmVsEgwKBHR5cGUYASABKAkSDAoEbmFtZRgGIAEo",
-            "CRIUCgxkaXNwbGF5X25hbWUYAyABKAkSEwoLZGVzY3JpcHRpb24YBCABKAkS",
-            "RQoGbGFiZWxzGAUgAygLMjUuZ29vZ2xlLm1vbml0b3JpbmcudjMuTm90aWZp",
-            "Y2F0aW9uQ2hhbm5lbC5MYWJlbHNFbnRyeRJOCgt1c2VyX2xhYmVscxgIIAMo",
-            "CzI5Lmdvb2dsZS5tb25pdG9yaW5nLnYzLk5vdGlmaWNhdGlvbkNoYW5uZWwu",
-            "VXNlckxhYmVsc0VudHJ5ElkKE3ZlcmlmaWNhdGlvbl9zdGF0dXMYCSABKA4y",
-            "PC5nb29nbGUubW9uaXRvcmluZy52My5Ob3RpZmljYXRpb25DaGFubmVsLlZl",
-            "cmlmaWNhdGlvblN0YXR1cxIrCgdlbmFibGVkGAsgASgLMhouZ29vZ2xlLnBy",
-            "b3RvYnVmLkJvb2xWYWx1ZRotCgtMYWJlbHNFbnRyeRILCgNrZXkYASABKAkS",
-            "DQoFdmFsdWUYAiABKAk6AjgBGjEKD1VzZXJMYWJlbHNFbnRyeRILCgNrZXkY",
-            "ASABKAkSDQoFdmFsdWUYAiABKAk6AjgBIlcKElZlcmlmaWNhdGlvblN0YXR1",
-            "cxIjCh9WRVJJRklDQVRJT05fU1RBVFVTX1VOU1BFQ0lGSUVEEAASDgoKVU5W",
-            "RVJJRklFRBABEgwKCFZFUklGSUVEEAJCqQEKGGNvbS5nb29nbGUubW9uaXRv",
-            "cmluZy52M0IRTm90aWZpY2F0aW9uUHJvdG9QAVo+Z29vZ2xlLmdvbGFuZy5v",
-            "cmcvZ2VucHJvdG8vZ29vZ2xlYXBpcy9tb25pdG9yaW5nL3YzO21vbml0b3Jp",
-            "bmeqAhpHb29nbGUuQ2xvdWQuTW9uaXRvcmluZy5WM8oCGkdvb2dsZVxDbG91",
-            "ZFxNb25pdG9yaW5nXFYzYgZwcm90bzM="));
+            "b29nbGUvYXBpL2xhdW5jaF9zdGFnZS5wcm90bxoZZ29vZ2xlL2FwaS9yZXNv",
+            "dXJjZS5wcm90bxohZ29vZ2xlL21vbml0b3JpbmcvdjMvY29tbW9uLnByb3Rv",
+            "Gh5nb29nbGUvcHJvdG9idWYvd3JhcHBlcnMucHJvdG8ipQQKHU5vdGlmaWNh",
+            "dGlvbkNoYW5uZWxEZXNjcmlwdG9yEgwKBG5hbWUYBiABKAkSDAoEdHlwZRgB",
+            "IAEoCRIUCgxkaXNwbGF5X25hbWUYAiABKAkSEwoLZGVzY3JpcHRpb24YAyAB",
+            "KAkSKwoGbGFiZWxzGAQgAygLMhsuZ29vZ2xlLmFwaS5MYWJlbERlc2NyaXB0",
+            "b3ISPgoPc3VwcG9ydGVkX3RpZXJzGAUgAygOMiEuZ29vZ2xlLm1vbml0b3Jp",
+            "bmcudjMuU2VydmljZVRpZXJCAhgBEi0KDGxhdW5jaF9zdGFnZRgHIAEoDjIX",
+            "Lmdvb2dsZS5hcGkuTGF1bmNoU3RhZ2U6oALqQZwCCjdtb25pdG9yaW5nLmdv",
+            "b2dsZWFwaXMuY29tL05vdGlmaWNhdGlvbkNoYW5uZWxEZXNjcmlwdG9yEkZw",
+            "cm9qZWN0cy97cHJvamVjdH0vbm90aWZpY2F0aW9uQ2hhbm5lbERlc2NyaXB0",
+            "b3JzL3tjaGFubmVsX2Rlc2NyaXB0b3J9ElBvcmdhbml6YXRpb25zL3tvcmdh",
+            "bml6YXRpb259L25vdGlmaWNhdGlvbkNoYW5uZWxEZXNjcmlwdG9ycy97Y2hh",
+            "bm5lbF9kZXNjcmlwdG9yfRJEZm9sZGVycy97Zm9sZGVyfS9ub3RpZmljYXRp",
+            "b25DaGFubmVsRGVzY3JpcHRvcnMve2NoYW5uZWxfZGVzY3JpcHRvcn0SASoi",
+            "twYKE05vdGlmaWNhdGlvbkNoYW5uZWwSDAoEdHlwZRgBIAEoCRIMCgRuYW1l",
+            "GAYgASgJEhQKDGRpc3BsYXlfbmFtZRgDIAEoCRITCgtkZXNjcmlwdGlvbhgE",
+            "IAEoCRJFCgZsYWJlbHMYBSADKAsyNS5nb29nbGUubW9uaXRvcmluZy52My5O",
+            "b3RpZmljYXRpb25DaGFubmVsLkxhYmVsc0VudHJ5Ek4KC3VzZXJfbGFiZWxz",
+            "GAggAygLMjkuZ29vZ2xlLm1vbml0b3JpbmcudjMuTm90aWZpY2F0aW9uQ2hh",
+            "bm5lbC5Vc2VyTGFiZWxzRW50cnkSWQoTdmVyaWZpY2F0aW9uX3N0YXR1cxgJ",
+            "IAEoDjI8Lmdvb2dsZS5tb25pdG9yaW5nLnYzLk5vdGlmaWNhdGlvbkNoYW5u",
+            "ZWwuVmVyaWZpY2F0aW9uU3RhdHVzEisKB2VuYWJsZWQYCyABKAsyGi5nb29n",
+            "bGUucHJvdG9idWYuQm9vbFZhbHVlGi0KC0xhYmVsc0VudHJ5EgsKA2tleRgB",
+            "IAEoCRINCgV2YWx1ZRgCIAEoCToCOAEaMQoPVXNlckxhYmVsc0VudHJ5EgsK",
+            "A2tleRgBIAEoCRINCgV2YWx1ZRgCIAEoCToCOAEiVwoSVmVyaWZpY2F0aW9u",
+            "U3RhdHVzEiMKH1ZFUklGSUNBVElPTl9TVEFUVVNfVU5TUEVDSUZJRUQQABIO",
+            "CgpVTlZFUklGSUVEEAESDAoIVkVSSUZJRUQQAjr+AepB+gEKLW1vbml0b3Jp",
+            "bmcuZ29vZ2xlYXBpcy5jb20vTm90aWZpY2F0aW9uQ2hhbm5lbBI+cHJvamVj",
+            "dHMve3Byb2plY3R9L25vdGlmaWNhdGlvbkNoYW5uZWxzL3tub3RpZmljYXRp",
+            "b25fY2hhbm5lbH0SSG9yZ2FuaXphdGlvbnMve29yZ2FuaXphdGlvbn0vbm90",
+            "aWZpY2F0aW9uQ2hhbm5lbHMve25vdGlmaWNhdGlvbl9jaGFubmVsfRI8Zm9s",
+            "ZGVycy97Zm9sZGVyfS9ub3RpZmljYXRpb25DaGFubmVscy97bm90aWZpY2F0",
+            "aW9uX2NoYW5uZWx9EgEqQskBChhjb20uZ29vZ2xlLm1vbml0b3JpbmcudjNC",
+            "EU5vdGlmaWNhdGlvblByb3RvUAFaPmdvb2dsZS5nb2xhbmcub3JnL2dlbnBy",
+            "b3RvL2dvb2dsZWFwaXMvbW9uaXRvcmluZy92Mzttb25pdG9yaW5nqgIaR29v",
+            "Z2xlLkNsb3VkLk1vbml0b3JpbmcuVjPKAhpHb29nbGVcQ2xvdWRcTW9uaXRv",
+            "cmluZ1xWM+oCHUdvb2dsZTo6Q2xvdWQ6Ok1vbml0b3Jpbmc6OlYzYgZwcm90",
+            "bzM="));
       descriptor = pbr::FileDescriptor.FromGeneratedCode(descriptorData,
-          new pbr::FileDescriptor[] { global::Google.Api.LabelReflection.Descriptor, global::Google.Api.LaunchStageReflection.Descriptor, global::Google.Cloud.Monitoring.V3.CommonReflection.Descriptor, global::Google.Protobuf.WellKnownTypes.WrappersReflection.Descriptor, },
-          new pbr::GeneratedClrTypeInfo(null, new pbr::GeneratedClrTypeInfo[] {
-            new pbr::GeneratedClrTypeInfo(typeof(global::Google.Cloud.Monitoring.V3.NotificationChannelDescriptor), global::Google.Cloud.Monitoring.V3.NotificationChannelDescriptor.Parser, new[]{ "Name", "Type", "DisplayName", "Description", "Labels", "SupportedTiers" }, null, null, null),
-            new pbr::GeneratedClrTypeInfo(typeof(global::Google.Cloud.Monitoring.V3.NotificationChannel), global::Google.Cloud.Monitoring.V3.NotificationChannel.Parser, new[]{ "Type", "Name", "DisplayName", "Description", "Labels", "UserLabels", "VerificationStatus", "Enabled" }, null, new[]{ typeof(global::Google.Cloud.Monitoring.V3.NotificationChannel.Types.VerificationStatus) }, new pbr::GeneratedClrTypeInfo[] { null, null, })
+          new pbr::FileDescriptor[] { global::Google.Api.LabelReflection.Descriptor, global::Google.Api.LaunchStageReflection.Descriptor, global::Google.Api.ResourceReflection.Descriptor, global::Google.Cloud.Monitoring.V3.CommonReflection.Descriptor, global::Google.Protobuf.WellKnownTypes.WrappersReflection.Descriptor, },
+          new pbr::GeneratedClrTypeInfo(null, null, new pbr::GeneratedClrTypeInfo[] {
+            new pbr::GeneratedClrTypeInfo(typeof(global::Google.Cloud.Monitoring.V3.NotificationChannelDescriptor), global::Google.Cloud.Monitoring.V3.NotificationChannelDescriptor.Parser, new[]{ "Name", "Type", "DisplayName", "Description", "Labels", "SupportedTiers", "LaunchStage" }, null, null, null, null),
+            new pbr::GeneratedClrTypeInfo(typeof(global::Google.Cloud.Monitoring.V3.NotificationChannel), global::Google.Cloud.Monitoring.V3.NotificationChannel.Parser, new[]{ "Type", "Name", "DisplayName", "Description", "Labels", "UserLabels", "VerificationStatus", "Enabled" }, null, new[]{ typeof(global::Google.Cloud.Monitoring.V3.NotificationChannel.Types.VerificationStatus) }, null, new pbr::GeneratedClrTypeInfo[] { null, null, })
           }));
     }
     #endregion
@@ -66,7 +81,11 @@ namespace Google.Cloud.Monitoring.V3 {
   /// the properties of the channel and the set of labels or fields that
   /// must be specified to configure channels of a given type.
   /// </summary>
-  public sealed partial class NotificationChannelDescriptor : pb::IMessage<NotificationChannelDescriptor> {
+  public sealed partial class NotificationChannelDescriptor : pb::IMessage<NotificationChannelDescriptor>
+  #if !GOOGLE_PROTOBUF_REFSTRUCT_COMPATIBILITY_MODE
+      , pb::IBufferMessage
+  #endif
+  {
     private static readonly pb::MessageParser<NotificationChannelDescriptor> _parser = new pb::MessageParser<NotificationChannelDescriptor>(() => new NotificationChannelDescriptor());
     private pb::UnknownFieldSet _unknownFields;
     [global::System.Diagnostics.DebuggerNonUserCodeAttribute]
@@ -97,6 +116,7 @@ namespace Google.Cloud.Monitoring.V3 {
       description_ = other.description_;
       labels_ = other.labels_.Clone();
       supportedTiers_ = other.supportedTiers_.Clone();
+      launchStage_ = other.launchStage_;
       _unknownFields = pb::UnknownFieldSet.Clone(other._unknownFields);
     }
 
@@ -109,9 +129,9 @@ namespace Google.Cloud.Monitoring.V3 {
     public const int NameFieldNumber = 6;
     private string name_ = "";
     /// <summary>
-    /// The full REST resource name for this descriptor. The syntax is:
+    /// The full REST resource name for this descriptor. The format is:
     ///
-    ///     projects/[PROJECT_ID]/notificationChannelDescriptors/[TYPE]
+    ///     projects/[PROJECT_ID_OR_NUMBER]/notificationChannelDescriptors/[TYPE]
     ///
     /// In the above, `[TYPE]` is the value of the `type` field.
     /// </summary>
@@ -199,6 +219,20 @@ namespace Google.Cloud.Monitoring.V3 {
       get { return supportedTiers_; }
     }
 
+    /// <summary>Field number for the "launch_stage" field.</summary>
+    public const int LaunchStageFieldNumber = 7;
+    private global::Google.Api.LaunchStage launchStage_ = global::Google.Api.LaunchStage.Unspecified;
+    /// <summary>
+    /// The product launch stage for channels of this type.
+    /// </summary>
+    [global::System.Diagnostics.DebuggerNonUserCodeAttribute]
+    public global::Google.Api.LaunchStage LaunchStage {
+      get { return launchStage_; }
+      set {
+        launchStage_ = value;
+      }
+    }
+
     [global::System.Diagnostics.DebuggerNonUserCodeAttribute]
     public override bool Equals(object other) {
       return Equals(other as NotificationChannelDescriptor);
@@ -218,6 +252,7 @@ namespace Google.Cloud.Monitoring.V3 {
       if (Description != other.Description) return false;
       if(!labels_.Equals(other.labels_)) return false;
       if(!supportedTiers_.Equals(other.supportedTiers_)) return false;
+      if (LaunchStage != other.LaunchStage) return false;
       return Equals(_unknownFields, other._unknownFields);
     }
 
@@ -230,6 +265,7 @@ namespace Google.Cloud.Monitoring.V3 {
       if (Description.Length != 0) hash ^= Description.GetHashCode();
       hash ^= labels_.GetHashCode();
       hash ^= supportedTiers_.GetHashCode();
+      if (LaunchStage != global::Google.Api.LaunchStage.Unspecified) hash ^= LaunchStage.GetHashCode();
       if (_unknownFields != null) {
         hash ^= _unknownFields.GetHashCode();
       }
@@ -243,6 +279,9 @@ namespace Google.Cloud.Monitoring.V3 {
 
     [global::System.Diagnostics.DebuggerNonUserCodeAttribute]
     public void WriteTo(pb::CodedOutputStream output) {
+    #if !GOOGLE_PROTOBUF_REFSTRUCT_COMPATIBILITY_MODE
+      output.WriteRawMessage(this);
+    #else
       if (Type.Length != 0) {
         output.WriteRawTag(10);
         output.WriteString(Type);
@@ -261,10 +300,46 @@ namespace Google.Cloud.Monitoring.V3 {
         output.WriteRawTag(50);
         output.WriteString(Name);
       }
+      if (LaunchStage != global::Google.Api.LaunchStage.Unspecified) {
+        output.WriteRawTag(56);
+        output.WriteEnum((int) LaunchStage);
+      }
       if (_unknownFields != null) {
         _unknownFields.WriteTo(output);
       }
+    #endif
     }
+
+    #if !GOOGLE_PROTOBUF_REFSTRUCT_COMPATIBILITY_MODE
+    [global::System.Diagnostics.DebuggerNonUserCodeAttribute]
+    void pb::IBufferMessage.InternalWriteTo(ref pb::WriteContext output) {
+      if (Type.Length != 0) {
+        output.WriteRawTag(10);
+        output.WriteString(Type);
+      }
+      if (DisplayName.Length != 0) {
+        output.WriteRawTag(18);
+        output.WriteString(DisplayName);
+      }
+      if (Description.Length != 0) {
+        output.WriteRawTag(26);
+        output.WriteString(Description);
+      }
+      labels_.WriteTo(ref output, _repeated_labels_codec);
+      supportedTiers_.WriteTo(ref output, _repeated_supportedTiers_codec);
+      if (Name.Length != 0) {
+        output.WriteRawTag(50);
+        output.WriteString(Name);
+      }
+      if (LaunchStage != global::Google.Api.LaunchStage.Unspecified) {
+        output.WriteRawTag(56);
+        output.WriteEnum((int) LaunchStage);
+      }
+      if (_unknownFields != null) {
+        _unknownFields.WriteTo(ref output);
+      }
+    }
+    #endif
 
     [global::System.Diagnostics.DebuggerNonUserCodeAttribute]
     public int CalculateSize() {
@@ -283,6 +358,9 @@ namespace Google.Cloud.Monitoring.V3 {
       }
       size += labels_.CalculateSize(_repeated_labels_codec);
       size += supportedTiers_.CalculateSize(_repeated_supportedTiers_codec);
+      if (LaunchStage != global::Google.Api.LaunchStage.Unspecified) {
+        size += 1 + pb::CodedOutputStream.ComputeEnumSize((int) LaunchStage);
+      }
       if (_unknownFields != null) {
         size += _unknownFields.CalculateSize();
       }
@@ -308,11 +386,17 @@ namespace Google.Cloud.Monitoring.V3 {
       }
       labels_.Add(other.labels_);
       supportedTiers_.Add(other.supportedTiers_);
+      if (other.LaunchStage != global::Google.Api.LaunchStage.Unspecified) {
+        LaunchStage = other.LaunchStage;
+      }
       _unknownFields = pb::UnknownFieldSet.MergeFrom(_unknownFields, other._unknownFields);
     }
 
     [global::System.Diagnostics.DebuggerNonUserCodeAttribute]
     public void MergeFrom(pb::CodedInputStream input) {
+    #if !GOOGLE_PROTOBUF_REFSTRUCT_COMPATIBILITY_MODE
+      input.ReadRawMessage(this);
+    #else
       uint tag;
       while ((tag = input.ReadTag()) != 0) {
         switch(tag) {
@@ -344,9 +428,57 @@ namespace Google.Cloud.Monitoring.V3 {
             Name = input.ReadString();
             break;
           }
+          case 56: {
+            LaunchStage = (global::Google.Api.LaunchStage) input.ReadEnum();
+            break;
+          }
+        }
+      }
+    #endif
+    }
+
+    #if !GOOGLE_PROTOBUF_REFSTRUCT_COMPATIBILITY_MODE
+    [global::System.Diagnostics.DebuggerNonUserCodeAttribute]
+    void pb::IBufferMessage.InternalMergeFrom(ref pb::ParseContext input) {
+      uint tag;
+      while ((tag = input.ReadTag()) != 0) {
+        switch(tag) {
+          default:
+            _unknownFields = pb::UnknownFieldSet.MergeFieldFrom(_unknownFields, ref input);
+            break;
+          case 10: {
+            Type = input.ReadString();
+            break;
+          }
+          case 18: {
+            DisplayName = input.ReadString();
+            break;
+          }
+          case 26: {
+            Description = input.ReadString();
+            break;
+          }
+          case 34: {
+            labels_.AddEntriesFrom(ref input, _repeated_labels_codec);
+            break;
+          }
+          case 42:
+          case 40: {
+            supportedTiers_.AddEntriesFrom(ref input, _repeated_supportedTiers_codec);
+            break;
+          }
+          case 50: {
+            Name = input.ReadString();
+            break;
+          }
+          case 56: {
+            LaunchStage = (global::Google.Api.LaunchStage) input.ReadEnum();
+            break;
+          }
         }
       }
     }
+    #endif
 
   }
 
@@ -357,7 +489,11 @@ namespace Google.Cloud.Monitoring.V3 {
   /// containing sensitive information like authentication tokens or
   /// contact info are only partially populated on retrieval.
   /// </summary>
-  public sealed partial class NotificationChannel : pb::IMessage<NotificationChannel> {
+  public sealed partial class NotificationChannel : pb::IMessage<NotificationChannel>
+  #if !GOOGLE_PROTOBUF_REFSTRUCT_COMPATIBILITY_MODE
+      , pb::IBufferMessage
+  #endif
+  {
     private static readonly pb::MessageParser<NotificationChannel> _parser = new pb::MessageParser<NotificationChannel>(() => new NotificationChannel());
     private pb::UnknownFieldSet _unknownFields;
     [global::System.Diagnostics.DebuggerNonUserCodeAttribute]
@@ -417,9 +553,9 @@ namespace Google.Cloud.Monitoring.V3 {
     public const int NameFieldNumber = 6;
     private string name_ = "";
     /// <summary>
-    /// The full REST resource name for this channel. The syntax is:
+    /// The full REST resource name for this channel. The format is:
     ///
-    ///     projects/[PROJECT_ID]/notificationChannels/[CHANNEL_ID]
+    ///     projects/[PROJECT_ID_OR_NUMBER]/notificationChannels/[CHANNEL_ID]
     ///
     /// The `[CHANNEL_ID]` is automatically assigned by the server on creation.
     /// </summary>
@@ -467,7 +603,7 @@ namespace Google.Cloud.Monitoring.V3 {
     /// <summary>Field number for the "labels" field.</summary>
     public const int LabelsFieldNumber = 5;
     private static readonly pbc::MapField<string, string>.Codec _map_labels_codec
-        = new pbc::MapField<string, string>.Codec(pb::FieldCodec.ForString(10), pb::FieldCodec.ForString(18), 42);
+        = new pbc::MapField<string, string>.Codec(pb::FieldCodec.ForString(10, ""), pb::FieldCodec.ForString(18, ""), 42);
     private readonly pbc::MapField<string, string> labels_ = new pbc::MapField<string, string>();
     /// <summary>
     /// Configuration fields that define the channel and its behavior. The
@@ -483,7 +619,7 @@ namespace Google.Cloud.Monitoring.V3 {
     /// <summary>Field number for the "user_labels" field.</summary>
     public const int UserLabelsFieldNumber = 8;
     private static readonly pbc::MapField<string, string>.Codec _map_userLabels_codec
-        = new pbc::MapField<string, string>.Codec(pb::FieldCodec.ForString(10), pb::FieldCodec.ForString(18), 66);
+        = new pbc::MapField<string, string>.Codec(pb::FieldCodec.ForString(10, ""), pb::FieldCodec.ForString(18, ""), 66);
     private readonly pbc::MapField<string, string> userLabels_ = new pbc::MapField<string, string>();
     /// <summary>
     /// User-supplied key/value data that does not need to conform to
@@ -503,7 +639,7 @@ namespace Google.Cloud.Monitoring.V3 {
 
     /// <summary>Field number for the "verification_status" field.</summary>
     public const int VerificationStatusFieldNumber = 9;
-    private global::Google.Cloud.Monitoring.V3.NotificationChannel.Types.VerificationStatus verificationStatus_ = 0;
+    private global::Google.Cloud.Monitoring.V3.NotificationChannel.Types.VerificationStatus verificationStatus_ = global::Google.Cloud.Monitoring.V3.NotificationChannel.Types.VerificationStatus.Unspecified;
     /// <summary>
     /// Indicates whether this channel has been verified or not. On a
     /// [`ListNotificationChannels`][google.monitoring.v3.NotificationChannelService.ListNotificationChannels]
@@ -587,7 +723,7 @@ namespace Google.Cloud.Monitoring.V3 {
       if (Description.Length != 0) hash ^= Description.GetHashCode();
       hash ^= Labels.GetHashCode();
       hash ^= UserLabels.GetHashCode();
-      if (VerificationStatus != 0) hash ^= VerificationStatus.GetHashCode();
+      if (VerificationStatus != global::Google.Cloud.Monitoring.V3.NotificationChannel.Types.VerificationStatus.Unspecified) hash ^= VerificationStatus.GetHashCode();
       if (enabled_ != null) hash ^= Enabled.GetHashCode();
       if (_unknownFields != null) {
         hash ^= _unknownFields.GetHashCode();
@@ -602,6 +738,9 @@ namespace Google.Cloud.Monitoring.V3 {
 
     [global::System.Diagnostics.DebuggerNonUserCodeAttribute]
     public void WriteTo(pb::CodedOutputStream output) {
+    #if !GOOGLE_PROTOBUF_REFSTRUCT_COMPATIBILITY_MODE
+      output.WriteRawMessage(this);
+    #else
       if (Type.Length != 0) {
         output.WriteRawTag(10);
         output.WriteString(Type);
@@ -620,7 +759,7 @@ namespace Google.Cloud.Monitoring.V3 {
         output.WriteString(Name);
       }
       userLabels_.WriteTo(output, _map_userLabels_codec);
-      if (VerificationStatus != 0) {
+      if (VerificationStatus != global::Google.Cloud.Monitoring.V3.NotificationChannel.Types.VerificationStatus.Unspecified) {
         output.WriteRawTag(72);
         output.WriteEnum((int) VerificationStatus);
       }
@@ -630,7 +769,42 @@ namespace Google.Cloud.Monitoring.V3 {
       if (_unknownFields != null) {
         _unknownFields.WriteTo(output);
       }
+    #endif
     }
+
+    #if !GOOGLE_PROTOBUF_REFSTRUCT_COMPATIBILITY_MODE
+    [global::System.Diagnostics.DebuggerNonUserCodeAttribute]
+    void pb::IBufferMessage.InternalWriteTo(ref pb::WriteContext output) {
+      if (Type.Length != 0) {
+        output.WriteRawTag(10);
+        output.WriteString(Type);
+      }
+      if (DisplayName.Length != 0) {
+        output.WriteRawTag(26);
+        output.WriteString(DisplayName);
+      }
+      if (Description.Length != 0) {
+        output.WriteRawTag(34);
+        output.WriteString(Description);
+      }
+      labels_.WriteTo(ref output, _map_labels_codec);
+      if (Name.Length != 0) {
+        output.WriteRawTag(50);
+        output.WriteString(Name);
+      }
+      userLabels_.WriteTo(ref output, _map_userLabels_codec);
+      if (VerificationStatus != global::Google.Cloud.Monitoring.V3.NotificationChannel.Types.VerificationStatus.Unspecified) {
+        output.WriteRawTag(72);
+        output.WriteEnum((int) VerificationStatus);
+      }
+      if (enabled_ != null) {
+        _single_enabled_codec.WriteTagAndValue(ref output, Enabled);
+      }
+      if (_unknownFields != null) {
+        _unknownFields.WriteTo(ref output);
+      }
+    }
+    #endif
 
     [global::System.Diagnostics.DebuggerNonUserCodeAttribute]
     public int CalculateSize() {
@@ -649,7 +823,7 @@ namespace Google.Cloud.Monitoring.V3 {
       }
       size += labels_.CalculateSize(_map_labels_codec);
       size += userLabels_.CalculateSize(_map_userLabels_codec);
-      if (VerificationStatus != 0) {
+      if (VerificationStatus != global::Google.Cloud.Monitoring.V3.NotificationChannel.Types.VerificationStatus.Unspecified) {
         size += 1 + pb::CodedOutputStream.ComputeEnumSize((int) VerificationStatus);
       }
       if (enabled_ != null) {
@@ -680,7 +854,7 @@ namespace Google.Cloud.Monitoring.V3 {
       }
       labels_.Add(other.labels_);
       userLabels_.Add(other.userLabels_);
-      if (other.VerificationStatus != 0) {
+      if (other.VerificationStatus != global::Google.Cloud.Monitoring.V3.NotificationChannel.Types.VerificationStatus.Unspecified) {
         VerificationStatus = other.VerificationStatus;
       }
       if (other.enabled_ != null) {
@@ -693,6 +867,9 @@ namespace Google.Cloud.Monitoring.V3 {
 
     [global::System.Diagnostics.DebuggerNonUserCodeAttribute]
     public void MergeFrom(pb::CodedInputStream input) {
+    #if !GOOGLE_PROTOBUF_REFSTRUCT_COMPATIBILITY_MODE
+      input.ReadRawMessage(this);
+    #else
       uint tag;
       while ((tag = input.ReadTag()) != 0) {
         switch(tag) {
@@ -736,7 +913,57 @@ namespace Google.Cloud.Monitoring.V3 {
           }
         }
       }
+    #endif
     }
+
+    #if !GOOGLE_PROTOBUF_REFSTRUCT_COMPATIBILITY_MODE
+    [global::System.Diagnostics.DebuggerNonUserCodeAttribute]
+    void pb::IBufferMessage.InternalMergeFrom(ref pb::ParseContext input) {
+      uint tag;
+      while ((tag = input.ReadTag()) != 0) {
+        switch(tag) {
+          default:
+            _unknownFields = pb::UnknownFieldSet.MergeFieldFrom(_unknownFields, ref input);
+            break;
+          case 10: {
+            Type = input.ReadString();
+            break;
+          }
+          case 26: {
+            DisplayName = input.ReadString();
+            break;
+          }
+          case 34: {
+            Description = input.ReadString();
+            break;
+          }
+          case 42: {
+            labels_.AddEntriesFrom(ref input, _map_labels_codec);
+            break;
+          }
+          case 50: {
+            Name = input.ReadString();
+            break;
+          }
+          case 66: {
+            userLabels_.AddEntriesFrom(ref input, _map_userLabels_codec);
+            break;
+          }
+          case 72: {
+            VerificationStatus = (global::Google.Cloud.Monitoring.V3.NotificationChannel.Types.VerificationStatus) input.ReadEnum();
+            break;
+          }
+          case 90: {
+            bool? value = _single_enabled_codec.Read(ref input);
+            if (enabled_ == null || value != false) {
+              Enabled = value;
+            }
+            break;
+          }
+        }
+      }
+    }
+    #endif
 
     #region Nested types
     /// <summary>Container for nested types declared in the NotificationChannel message type.</summary>

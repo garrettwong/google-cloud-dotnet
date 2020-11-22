@@ -28,8 +28,14 @@ namespace Google.Cloud.Spanner.Data.CommonTesting
     public static class RetryHelpers
     {
         // Allow up to 10 seconds each time.
-        private static readonly BackoffSettings s_backoffSettings =
-            new BackoffSettings(delay: TimeSpan.FromMilliseconds(50), maxDelay: TimeSpan.FromSeconds(1), delayMultiplier: 2);
+        private static readonly RetrySettings s_retrySettings =
+            RetrySettings.FromExponentialBackoff(
+                maxAttempts: int.MaxValue,
+                initialBackoff: TimeSpan.FromMilliseconds(50),
+                maxBackoff: TimeSpan.FromSeconds(1),
+                backoffMultiplier: 2,
+                retryFilter: ex => ex is SpannerException se && se.IsRetryable,
+                RetrySettings.RandomJitter);
         private static readonly TimeSpan s_timeout = TimeSpan.FromSeconds(10);
 
         /// <summary>
@@ -60,31 +66,22 @@ namespace Google.Cloud.Spanner.Data.CommonTesting
             // Make it easy to move this into production code later on by using IClock/IScheduler/IJitter
             var clock = SystemClock.Instance;
             var scheduler = SystemScheduler.Instance;
-            var jitter = RetrySettings.RandomJitter;
 
             DateTime start = DateTime.UtcNow;
             DateTime end = start + s_timeout;
             // Immediate initial retry, before the exponential delay starts.
-            TimeSpan retryDelay = TimeSpan.Zero;
-            while (true)
+            foreach (var attempt in RetryAttempt.CreateRetrySequence(s_retrySettings, scheduler, end, clock, initialBackoffOverride: TimeSpan.Zero))
             {
                 try
                 {
                     return func();
                 }
-                catch (SpannerException e) when (e.IsRetryable)
+                catch (SpannerException e) when (attempt.ShouldRetry(e))
                 {
-                    TimeSpan actualDelay = jitter.GetDelay(retryDelay);
-                    DateTime expectedRetryTime = clock.GetCurrentDateTimeUtc() + actualDelay;
-                    if (expectedRetryTime > end)
-                    {
-                        throw;
-                    }
-                    scheduler.Sleep(actualDelay, CancellationToken.None);
-                    retryDelay = s_backoffSettings.NextDelay(retryDelay);
-                    Interlocked.Increment(ref _retries);
+                    attempt.Backoff(default);
                 }
             }
+            throw new InvalidOperationException("Bug in GAX retry handling: finished sequence of attempts");
         }
 
         private static async Task<T> ExecuteWithRetryAsyncImpl<T>(Func<Task<T>> func)
@@ -94,31 +91,22 @@ namespace Google.Cloud.Spanner.Data.CommonTesting
             // Make it easy to move this into production code later on by using IClock/IScheduler/IJitter
             var clock = SystemClock.Instance;
             var scheduler = SystemScheduler.Instance;
-            var jitter = RetrySettings.RandomJitter;
 
             DateTime start = DateTime.UtcNow;
             DateTime end = start + s_timeout;
-            // Immediate initial retry, before the exponential delay starts.
-            TimeSpan retryDelay = TimeSpan.Zero;
-            while (true)
+
+            foreach (var attempt in RetryAttempt.CreateRetrySequence(s_retrySettings, scheduler, end, clock, initialBackoffOverride: TimeSpan.Zero))
             {
                 try
                 {
                     return await func();
                 }
-                catch (SpannerException e) when (e.IsRetryable)
+                catch (SpannerException e) when (attempt.ShouldRetry(e))
                 {
-                    TimeSpan actualDelay = jitter.GetDelay(retryDelay);
-                    DateTime expectedRetryTime = clock.GetCurrentDateTimeUtc() + actualDelay;
-                    if (expectedRetryTime > end)
-                    {
-                        throw;
-                    }
-                    await scheduler.Delay(actualDelay, CancellationToken.None).ConfigureAwait(false);
-                    retryDelay = s_backoffSettings.NextDelay(retryDelay);
-                    Interlocked.Increment(ref _retries);
+                    await attempt.BackoffAsync(default);
                 }
             }
+            throw new InvalidOperationException("Bug in GAX retry handling: finished sequence of attempts");
         }
 
         public static void MaybeLogStats(string description)

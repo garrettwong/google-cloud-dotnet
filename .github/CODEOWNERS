@@ -1,0 +1,17 @@
+# Code owners file.
+# This file controls who is tagged for review for any given pull request.
+#
+# For syntax help see:
+# https://help.github.com/en/github/creating-cloning-and-archiving-repositories/about-code-owners#codeowners-syntax
+
+
+# The yoshi-dotnet team is the default owner for anything not
+# explicitly taken by someone else.
+*                                   @googleapis/yoshi-dotnet
+
+/apis/Google.Cloud.Bigtable*/       @googleapis/api-bigtable @googleapis/yoshi-dotnet
+/apis/Google.Cloud.Datastore*/      @googleapis/firestore-dpe @googleapis/yoshi-dotnet
+/apis/Google.Cloud.Firestore*/      @googleapis/firestore-dpe @googleapis/yoshi-dotnet
+/apis/Google.Cloud.Storage*/        @googleapis/storage-dpe @googleapis/yoshi-dotnet
+/apis/Google.Cloud.BigQuery*/.      @googleapis/api-bigquery @googleapis/yoshi-dotnet
+/apis/Google.Cloud.PubSub*/.        @googleapis/api-pubsub @googleapis/yoshi-dotnet

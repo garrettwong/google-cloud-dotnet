@@ -85,7 +85,9 @@ namespace Google.Cloud.BigQuery.V2
             DateTime start = Clock.GetCurrentDateTimeUtc();
             while (true)
             {
-                // This will throw if the query has timed out.
+                // This will throw if the query has timed out. Otherwise, the RPC will have a timeout,
+                // and the server won't return an incomplete job before that timeout. So although this
+                // looks like a tight loop without any delay, the delay is on the server side.
                 var response = GetRawQueryResults(jobReference, options, start);
                 if (response.JobComplete == true)
                 {
@@ -115,7 +117,9 @@ namespace Google.Cloud.BigQuery.V2
             DateTime start = Clock.GetCurrentDateTimeUtc();
             while (true)
             {
-                // This will throw if the query has timed out.
+                // This will throw if the query has timed out. Otherwise, the RPC will have a timeout,
+                // and the server won't return an incomplete job before that timeout. So although this
+                // looks like a tight loop without any delay, the delay is on the server side.
                 var response = await GetRawQueryResultsAsync(jobReference, options, start, cancellationToken).ConfigureAwait(false);
                 if (response.JobComplete == true)
                 {
@@ -128,11 +132,15 @@ namespace Google.Cloud.BigQuery.V2
         public override PagedEnumerable<TableDataList, BigQueryRow> ListRows(TableReference tableReference, TableSchema schema = null, ListRowsOptions options = null)
         {
             GaxPreconditions.CheckNotNull(tableReference, nameof(tableReference));
-            schema = schema ?? GetSchema(tableReference);
+            // There's no way to specify fetching rows with no fields (that looks more like a dry run anyways).
+            // So, if the schema is empty, the whole rows will be fetch, so we need to get the whole schema.
+            var resultSchema = schema?.Fields?.Count > 0 ? schema : GetSchema(tableReference);
 
-            var pageManager = new TableRowPageManager(schema);
+            var pageManager = new TableRowPageManager(resultSchema);
             return new RestPagedEnumerable<TabledataResource.ListRequest, TableDataList, BigQueryRow>(
-                () => CreateListRequest(tableReference, options), pageManager);
+                // Pass the original schema, if it was null then the whole table will be fetch and we don't need to
+                // specify selected fields.
+                () => CreateListRequest(tableReference, options, schema), pageManager);
         }
 
         /// <inheritdoc />
@@ -141,11 +149,15 @@ namespace Google.Cloud.BigQuery.V2
             GaxPreconditions.CheckNotNull(tableReference, nameof(tableReference));
             // TODO: This is a synchronous call. We can't easily make this part asynchronous - we don't have a cancellation token, and we're returning
             // a non-task value. We could defer until the first MoveNext call, but that's tricky.
-            schema = schema ?? GetSchema(tableReference);
+            // There's no way to specify fetching rows with no fields (that looks more like a dry run anyways).
+            // So, if the schema is empty, the whole rows will be fetch, so we need to get the whole schema.
+            var resultSchema = schema?.Fields?.Count > 0 ? schema : GetSchema(tableReference);
 
-            var pageManager = new TableRowPageManager(schema);
+            var pageManager = new TableRowPageManager(resultSchema);
             return new RestPagedAsyncEnumerable<TabledataResource.ListRequest, TableDataList, BigQueryRow>(
-                () => CreateListRequest(tableReference, options), pageManager);
+                // Pass the original schema, if it was null then the whole table will be fetch and we don't need to
+                // specify selected fields.
+                () => CreateListRequest(tableReference, options, schema), pageManager);
         }
 
         // Request creation
@@ -180,11 +192,15 @@ namespace Google.Cloud.BigQuery.V2
             return CreateInsertJobRequest(new JobConfiguration { Query = jobConfigurationQuery, DryRun = options?.DryRun }, options);
         }
 
-        private TabledataResource.ListRequest CreateListRequest(TableReference tableReference, ListRowsOptions options)
+        private TabledataResource.ListRequest CreateListRequest(TableReference tableReference, ListRowsOptions options, TableSchema schema)
         {
             var request = Service.Tabledata.List(tableReference.ProjectId, tableReference.DatasetId, tableReference.TableId);
             options?.ModifyRequest(request);
+            // null and empty schemas are handled by BuildSelectedFields,
+            // but both values mean the same, and that is to return whole rows.
+            request.SelectedFields = schema.BuildSelectedFields();
             RetryHandler.MarkAsRetriable(request);
+            request.PrettyPrint = PrettyPrint;
             return request;
         }
 
@@ -205,6 +221,7 @@ namespace Google.Cloud.BigQuery.V2
             request.TimeoutMs = requestTimeoutMs;
             options?.ModifyRequest(request);
             RetryHandler.MarkAsRetriable(request);
+            request.PrettyPrint = PrettyPrint;
             return request;
         }
     }

@@ -1,0 +1,31 @@
+<Project>
+
+  <!-- 
+    - When we want to specialize which target frameworks are
+    - used to run (rather than build) tests, we specify
+    - the TestTargetFrameworks property. This target copies
+    - that to TargetFrameworks just before running the VSTest target.
+    -->
+  <Target Name="_CopyTestTargetFrameworksToTargetFrameworks" BeforeTargets="VSTest" Condition="'$(TestTargetFrameworks)'!=''">
+    <PropertyGroup>
+      <TargetFrameworks>$(TestTargetFrameworks)</TargetFrameworks>
+    </PropertyGroup>
+  </Target>
+
+  <!-- See https://github.com/dotnet/sourcelink/issues/572 -->
+  <PropertyGroup>
+    <TargetFrameworkMonikerAssemblyAttributesPath>$([System.IO.Path]::Combine('$(IntermediateOutputPath)','$(TargetFrameworkMoniker).AssemblyAttributes$(DefaultLanguageSourceExtension)'))</TargetFrameworkMonikerAssemblyAttributesPath>
+  </PropertyGroup>
+  <ItemGroup>
+    <EmbeddedFiles Include="$(GeneratedAssemblyInfoFile)"/>
+  </ItemGroup>
+  
+  <!-- Common references and items that are fine to include in all API projects -->
+  <ItemGroup>
+    <PackageReference Include="Microsoft.SourceLink.GitHub" Version="1.0.0" PrivateAssets="All"/>
+    <PackageReference Include="Microsoft.DotNet.Analyzers.Compatibility" Version="0.2.12-alpha" PrivateAssets="All" />
+    <PackageReference Include="Microsoft.NETFramework.ReferenceAssemblies" Version="1.0.0" PrivateAssets="All" />
+    <None Include="$(RepoRoot)/LICENSE" Pack="true" PackagePath="" />
+    <None Include="$(RepoRoot)/NuGetIcon.png" Pack="true" PackagePath="" />
+  </ItemGroup>
+</Project>

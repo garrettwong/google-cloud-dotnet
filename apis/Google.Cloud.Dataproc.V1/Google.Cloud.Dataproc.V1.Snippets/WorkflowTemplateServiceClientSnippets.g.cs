@@ -1,4 +1,4 @@
-// Copyright 2019 Google LLC
+// Copyright 2020 Google LLC
 //
 // Licensed under the Apache License, Version 2.0 (the "License");
 // you may not use this file except in compliance with the License.
@@ -17,63 +17,45 @@
 namespace Google.Cloud.Dataproc.V1.Snippets
 {
     using Google.Api.Gax;
-    using Google.Api.Gax.Grpc;
-    using apis = Google.Cloud.Dataproc.V1;
+    using Google.Api.Gax.ResourceNames;
     using Google.LongRunning;
-    using Google.Protobuf;
     using Google.Protobuf.WellKnownTypes;
-    using Grpc.Core;
     using System;
-    using System.Collections;
     using System.Collections.Generic;
-    using System.Collections.ObjectModel;
     using System.Linq;
-    using System.Threading;
     using System.Threading.Tasks;
 
-    /// <summary>Generated snippets</summary>
-    public class GeneratedWorkflowTemplateServiceClientSnippets
+    /// <summary>Generated snippets.</summary>
+    public sealed class GeneratedWorkflowTemplateServiceClientSnippets
     {
-        /// <summary>Snippet for CreateWorkflowTemplateAsync</summary>
-        public async Task CreateWorkflowTemplateAsync()
-        {
-            // Snippet: CreateWorkflowTemplateAsync(RegionName,WorkflowTemplate,CallSettings)
-            // Additional: CreateWorkflowTemplateAsync(RegionName,WorkflowTemplate,CancellationToken)
-            // Create client
-            WorkflowTemplateServiceClient workflowTemplateServiceClient = await WorkflowTemplateServiceClient.CreateAsync();
-            // Initialize request argument(s)
-            RegionName parent = new RegionName("[PROJECT]", "[REGION]");
-            WorkflowTemplate template = new WorkflowTemplate();
-            // Make the request
-            WorkflowTemplate response = await workflowTemplateServiceClient.CreateWorkflowTemplateAsync(parent, template);
-            // End snippet
-        }
-
         /// <summary>Snippet for CreateWorkflowTemplate</summary>
-        public void CreateWorkflowTemplate()
+        public void CreateWorkflowTemplateRequestObject()
         {
-            // Snippet: CreateWorkflowTemplate(RegionName,WorkflowTemplate,CallSettings)
+            // Snippet: CreateWorkflowTemplate(CreateWorkflowTemplateRequest, CallSettings)
             // Create client
             WorkflowTemplateServiceClient workflowTemplateServiceClient = WorkflowTemplateServiceClient.Create();
             // Initialize request argument(s)
-            RegionName parent = new RegionName("[PROJECT]", "[REGION]");
-            WorkflowTemplate template = new WorkflowTemplate();
+            CreateWorkflowTemplateRequest request = new CreateWorkflowTemplateRequest
+            {
+                ParentAsRegionName = RegionName.FromProjectRegion("[PROJECT]", "[REGION]"),
+                Template = new WorkflowTemplate(),
+            };
             // Make the request
-            WorkflowTemplate response = workflowTemplateServiceClient.CreateWorkflowTemplate(parent, template);
+            WorkflowTemplate response = workflowTemplateServiceClient.CreateWorkflowTemplate(request);
             // End snippet
         }
 
         /// <summary>Snippet for CreateWorkflowTemplateAsync</summary>
-        public async Task CreateWorkflowTemplateAsync_RequestObject()
+        public async Task CreateWorkflowTemplateRequestObjectAsync()
         {
-            // Snippet: CreateWorkflowTemplateAsync(CreateWorkflowTemplateRequest,CallSettings)
-            // Additional: CreateWorkflowTemplateAsync(CreateWorkflowTemplateRequest,CancellationToken)
+            // Snippet: CreateWorkflowTemplateAsync(CreateWorkflowTemplateRequest, CallSettings)
+            // Additional: CreateWorkflowTemplateAsync(CreateWorkflowTemplateRequest, CancellationToken)
             // Create client
             WorkflowTemplateServiceClient workflowTemplateServiceClient = await WorkflowTemplateServiceClient.CreateAsync();
             // Initialize request argument(s)
             CreateWorkflowTemplateRequest request = new CreateWorkflowTemplateRequest
             {
-                ParentAsRegionName = new RegionName("[PROJECT]", "[REGION]"),
+                ParentAsRegionName = RegionName.FromProjectRegion("[PROJECT]", "[REGION]"),
                 Template = new WorkflowTemplate(),
             };
             // Make the request
@@ -82,60 +64,121 @@ namespace Google.Cloud.Dataproc.V1.Snippets
         }
 
         /// <summary>Snippet for CreateWorkflowTemplate</summary>
-        public void CreateWorkflowTemplate_RequestObject()
+        public void CreateWorkflowTemplate()
         {
-            // Snippet: CreateWorkflowTemplate(CreateWorkflowTemplateRequest,CallSettings)
+            // Snippet: CreateWorkflowTemplate(string, WorkflowTemplate, CallSettings)
             // Create client
             WorkflowTemplateServiceClient workflowTemplateServiceClient = WorkflowTemplateServiceClient.Create();
             // Initialize request argument(s)
-            CreateWorkflowTemplateRequest request = new CreateWorkflowTemplateRequest
-            {
-                ParentAsRegionName = new RegionName("[PROJECT]", "[REGION]"),
-                Template = new WorkflowTemplate(),
-            };
+            string parent = "projects/[PROJECT]/regions/[REGION]";
+            WorkflowTemplate template = new WorkflowTemplate();
             // Make the request
-            WorkflowTemplate response = workflowTemplateServiceClient.CreateWorkflowTemplate(request);
+            WorkflowTemplate response = workflowTemplateServiceClient.CreateWorkflowTemplate(parent, template);
             // End snippet
         }
 
-        /// <summary>Snippet for GetWorkflowTemplateAsync</summary>
-        public async Task GetWorkflowTemplateAsync()
+        /// <summary>Snippet for CreateWorkflowTemplateAsync</summary>
+        public async Task CreateWorkflowTemplateAsync()
         {
-            // Snippet: GetWorkflowTemplateAsync(WorkflowTemplateName,CallSettings)
-            // Additional: GetWorkflowTemplateAsync(WorkflowTemplateName,CancellationToken)
+            // Snippet: CreateWorkflowTemplateAsync(string, WorkflowTemplate, CallSettings)
+            // Additional: CreateWorkflowTemplateAsync(string, WorkflowTemplate, CancellationToken)
             // Create client
             WorkflowTemplateServiceClient workflowTemplateServiceClient = await WorkflowTemplateServiceClient.CreateAsync();
             // Initialize request argument(s)
-            WorkflowTemplateName name = new WorkflowTemplateName("[PROJECT]", "[REGION]", "[WORKFLOW_TEMPLATE]");
+            string parent = "projects/[PROJECT]/regions/[REGION]";
+            WorkflowTemplate template = new WorkflowTemplate();
             // Make the request
-            WorkflowTemplate response = await workflowTemplateServiceClient.GetWorkflowTemplateAsync(name);
+            WorkflowTemplate response = await workflowTemplateServiceClient.CreateWorkflowTemplateAsync(parent, template);
+            // End snippet
+        }
+
+        /// <summary>Snippet for CreateWorkflowTemplate</summary>
+        public void CreateWorkflowTemplateResourceNames1()
+        {
+            // Snippet: CreateWorkflowTemplate(RegionName, WorkflowTemplate, CallSettings)
+            // Create client
+            WorkflowTemplateServiceClient workflowTemplateServiceClient = WorkflowTemplateServiceClient.Create();
+            // Initialize request argument(s)
+            RegionName parent = RegionName.FromProjectRegion("[PROJECT]", "[REGION]");
+            WorkflowTemplate template = new WorkflowTemplate();
+            // Make the request
+            WorkflowTemplate response = workflowTemplateServiceClient.CreateWorkflowTemplate(parent, template);
+            // End snippet
+        }
+
+        /// <summary>Snippet for CreateWorkflowTemplateAsync</summary>
+        public async Task CreateWorkflowTemplateResourceNames1Async()
+        {
+            // Snippet: CreateWorkflowTemplateAsync(RegionName, WorkflowTemplate, CallSettings)
+            // Additional: CreateWorkflowTemplateAsync(RegionName, WorkflowTemplate, CancellationToken)
+            // Create client
+            WorkflowTemplateServiceClient workflowTemplateServiceClient = await WorkflowTemplateServiceClient.CreateAsync();
+            // Initialize request argument(s)
+            RegionName parent = RegionName.FromProjectRegion("[PROJECT]", "[REGION]");
+            WorkflowTemplate template = new WorkflowTemplate();
+            // Make the request
+            WorkflowTemplate response = await workflowTemplateServiceClient.CreateWorkflowTemplateAsync(parent, template);
+            // End snippet
+        }
+
+        /// <summary>Snippet for CreateWorkflowTemplate</summary>
+        public void CreateWorkflowTemplateResourceNames2()
+        {
+            // Snippet: CreateWorkflowTemplate(LocationName, WorkflowTemplate, CallSettings)
+            // Create client
+            WorkflowTemplateServiceClient workflowTemplateServiceClient = WorkflowTemplateServiceClient.Create();
+            // Initialize request argument(s)
+            LocationName parent = LocationName.FromProjectLocation("[PROJECT]", "[LOCATION]");
+            WorkflowTemplate template = new WorkflowTemplate();
+            // Make the request
+            WorkflowTemplate response = workflowTemplateServiceClient.CreateWorkflowTemplate(parent, template);
+            // End snippet
+        }
+
+        /// <summary>Snippet for CreateWorkflowTemplateAsync</summary>
+        public async Task CreateWorkflowTemplateResourceNames2Async()
+        {
+            // Snippet: CreateWorkflowTemplateAsync(LocationName, WorkflowTemplate, CallSettings)
+            // Additional: CreateWorkflowTemplateAsync(LocationName, WorkflowTemplate, CancellationToken)
+            // Create client
+            WorkflowTemplateServiceClient workflowTemplateServiceClient = await WorkflowTemplateServiceClient.CreateAsync();
+            // Initialize request argument(s)
+            LocationName parent = LocationName.FromProjectLocation("[PROJECT]", "[LOCATION]");
+            WorkflowTemplate template = new WorkflowTemplate();
+            // Make the request
+            WorkflowTemplate response = await workflowTemplateServiceClient.CreateWorkflowTemplateAsync(parent, template);
             // End snippet
         }
 
         /// <summary>Snippet for GetWorkflowTemplate</summary>
-        public void GetWorkflowTemplate()
+        public void GetWorkflowTemplateRequestObject()
         {
-            // Snippet: GetWorkflowTemplate(WorkflowTemplateName,CallSettings)
+            // Snippet: GetWorkflowTemplate(GetWorkflowTemplateRequest, CallSettings)
             // Create client
             WorkflowTemplateServiceClient workflowTemplateServiceClient = WorkflowTemplateServiceClient.Create();
             // Initialize request argument(s)
-            WorkflowTemplateName name = new WorkflowTemplateName("[PROJECT]", "[REGION]", "[WORKFLOW_TEMPLATE]");
+            GetWorkflowTemplateRequest request = new GetWorkflowTemplateRequest
+            {
+                WorkflowTemplateName = WorkflowTemplateName.FromProjectRegionWorkflowTemplate("[PROJECT]", "[REGION]", "[WORKFLOW_TEMPLATE]"),
+                Version = 0,
+            };
             // Make the request
-            WorkflowTemplate response = workflowTemplateServiceClient.GetWorkflowTemplate(name);
+            WorkflowTemplate response = workflowTemplateServiceClient.GetWorkflowTemplate(request);
             // End snippet
         }
 
         /// <summary>Snippet for GetWorkflowTemplateAsync</summary>
-        public async Task GetWorkflowTemplateAsync_RequestObject()
+        public async Task GetWorkflowTemplateRequestObjectAsync()
         {
-            // Snippet: GetWorkflowTemplateAsync(GetWorkflowTemplateRequest,CallSettings)
-            // Additional: GetWorkflowTemplateAsync(GetWorkflowTemplateRequest,CancellationToken)
+            // Snippet: GetWorkflowTemplateAsync(GetWorkflowTemplateRequest, CallSettings)
+            // Additional: GetWorkflowTemplateAsync(GetWorkflowTemplateRequest, CancellationToken)
             // Create client
             WorkflowTemplateServiceClient workflowTemplateServiceClient = await WorkflowTemplateServiceClient.CreateAsync();
             // Initialize request argument(s)
             GetWorkflowTemplateRequest request = new GetWorkflowTemplateRequest
             {
-                WorkflowTemplateName = new WorkflowTemplateName("[PROJECT]", "[REGION]", "[WORKFLOW_TEMPLATE]"),
+                WorkflowTemplateName = WorkflowTemplateName.FromProjectRegionWorkflowTemplate("[PROJECT]", "[REGION]", "[WORKFLOW_TEMPLATE]"),
+                Version = 0,
             };
             // Make the request
             WorkflowTemplate response = await workflowTemplateServiceClient.GetWorkflowTemplateAsync(request);
@@ -143,48 +186,126 @@ namespace Google.Cloud.Dataproc.V1.Snippets
         }
 
         /// <summary>Snippet for GetWorkflowTemplate</summary>
-        public void GetWorkflowTemplate_RequestObject()
+        public void GetWorkflowTemplate()
         {
-            // Snippet: GetWorkflowTemplate(GetWorkflowTemplateRequest,CallSettings)
+            // Snippet: GetWorkflowTemplate(string, CallSettings)
             // Create client
             WorkflowTemplateServiceClient workflowTemplateServiceClient = WorkflowTemplateServiceClient.Create();
             // Initialize request argument(s)
-            GetWorkflowTemplateRequest request = new GetWorkflowTemplateRequest
-            {
-                WorkflowTemplateName = new WorkflowTemplateName("[PROJECT]", "[REGION]", "[WORKFLOW_TEMPLATE]"),
-            };
+            string name = "projects/[PROJECT]/regions/[REGION]/workflowTemplates/[WORKFLOW_TEMPLATE]";
             // Make the request
-            WorkflowTemplate response = workflowTemplateServiceClient.GetWorkflowTemplate(request);
+            WorkflowTemplate response = workflowTemplateServiceClient.GetWorkflowTemplate(name);
             // End snippet
         }
 
-        /// <summary>Snippet for InstantiateWorkflowTemplateAsync</summary>
-        public async Task InstantiateWorkflowTemplateAsync1()
+        /// <summary>Snippet for GetWorkflowTemplateAsync</summary>
+        public async Task GetWorkflowTemplateAsync()
         {
-            // Snippet: InstantiateWorkflowTemplateAsync(WorkflowTemplateName,CallSettings)
-            // Additional: InstantiateWorkflowTemplateAsync(WorkflowTemplateName,CancellationToken)
+            // Snippet: GetWorkflowTemplateAsync(string, CallSettings)
+            // Additional: GetWorkflowTemplateAsync(string, CancellationToken)
             // Create client
             WorkflowTemplateServiceClient workflowTemplateServiceClient = await WorkflowTemplateServiceClient.CreateAsync();
             // Initialize request argument(s)
-            WorkflowTemplateName name = new WorkflowTemplateName("[PROJECT]", "[REGION]", "[WORKFLOW_TEMPLATE]");
+            string name = "projects/[PROJECT]/regions/[REGION]/workflowTemplates/[WORKFLOW_TEMPLATE]";
             // Make the request
-            Operation<Empty, WorkflowMetadata> response =
-                await workflowTemplateServiceClient.InstantiateWorkflowTemplateAsync(name);
+            WorkflowTemplate response = await workflowTemplateServiceClient.GetWorkflowTemplateAsync(name);
+            // End snippet
+        }
+
+        /// <summary>Snippet for GetWorkflowTemplate</summary>
+        public void GetWorkflowTemplateResourceNames()
+        {
+            // Snippet: GetWorkflowTemplate(WorkflowTemplateName, CallSettings)
+            // Create client
+            WorkflowTemplateServiceClient workflowTemplateServiceClient = WorkflowTemplateServiceClient.Create();
+            // Initialize request argument(s)
+            WorkflowTemplateName name = WorkflowTemplateName.FromProjectRegionWorkflowTemplate("[PROJECT]", "[REGION]", "[WORKFLOW_TEMPLATE]");
+            // Make the request
+            WorkflowTemplate response = workflowTemplateServiceClient.GetWorkflowTemplate(name);
+            // End snippet
+        }
+
+        /// <summary>Snippet for GetWorkflowTemplateAsync</summary>
+        public async Task GetWorkflowTemplateResourceNamesAsync()
+        {
+            // Snippet: GetWorkflowTemplateAsync(WorkflowTemplateName, CallSettings)
+            // Additional: GetWorkflowTemplateAsync(WorkflowTemplateName, CancellationToken)
+            // Create client
+            WorkflowTemplateServiceClient workflowTemplateServiceClient = await WorkflowTemplateServiceClient.CreateAsync();
+            // Initialize request argument(s)
+            WorkflowTemplateName name = WorkflowTemplateName.FromProjectRegionWorkflowTemplate("[PROJECT]", "[REGION]", "[WORKFLOW_TEMPLATE]");
+            // Make the request
+            WorkflowTemplate response = await workflowTemplateServiceClient.GetWorkflowTemplateAsync(name);
+            // End snippet
+        }
+
+        /// <summary>Snippet for InstantiateWorkflowTemplate</summary>
+        public void InstantiateWorkflowTemplateRequestObject()
+        {
+            // Snippet: InstantiateWorkflowTemplate(InstantiateWorkflowTemplateRequest, CallSettings)
+            // Create client
+            WorkflowTemplateServiceClient workflowTemplateServiceClient = WorkflowTemplateServiceClient.Create();
+            // Initialize request argument(s)
+            InstantiateWorkflowTemplateRequest request = new InstantiateWorkflowTemplateRequest
+            {
+                WorkflowTemplateName = WorkflowTemplateName.FromProjectRegionWorkflowTemplate("[PROJECT]", "[REGION]", "[WORKFLOW_TEMPLATE]"),
+                Version = 0,
+                RequestId = "",
+                Parameters = { { "", "" }, },
+            };
+            // Make the request
+            Operation<Empty, WorkflowMetadata> response = workflowTemplateServiceClient.InstantiateWorkflowTemplate(request);
 
             // Poll until the returned long-running operation is complete
-            Operation<Empty, WorkflowMetadata> completedResponse =
-                await response.PollUntilCompletedAsync();
-            // The long-running operation is now complete.
+            Operation<Empty, WorkflowMetadata> completedResponse = response.PollUntilCompleted();
+            // Retrieve the operation result
+            Empty result = completedResponse.Result;
 
             // Or get the name of the operation
             string operationName = response.Name;
             // This name can be stored, then the long-running operation retrieved later by name
-            Operation<Empty, WorkflowMetadata> retrievedResponse =
-                await workflowTemplateServiceClient.PollOnceInstantiateWorkflowTemplateAsync(operationName);
+            Operation<Empty, WorkflowMetadata> retrievedResponse = workflowTemplateServiceClient.PollOnceInstantiateWorkflowTemplate(operationName);
             // Check if the retrieved long-running operation has completed
             if (retrievedResponse.IsCompleted)
             {
-                // The long-running operation is now complete.
+                // If it has completed, then access the result
+                Empty retrievedResult = retrievedResponse.Result;
+            }
+            // End snippet
+        }
+
+        /// <summary>Snippet for InstantiateWorkflowTemplateAsync</summary>
+        public async Task InstantiateWorkflowTemplateRequestObjectAsync()
+        {
+            // Snippet: InstantiateWorkflowTemplateAsync(InstantiateWorkflowTemplateRequest, CallSettings)
+            // Additional: InstantiateWorkflowTemplateAsync(InstantiateWorkflowTemplateRequest, CancellationToken)
+            // Create client
+            WorkflowTemplateServiceClient workflowTemplateServiceClient = await WorkflowTemplateServiceClient.CreateAsync();
+            // Initialize request argument(s)
+            InstantiateWorkflowTemplateRequest request = new InstantiateWorkflowTemplateRequest
+            {
+                WorkflowTemplateName = WorkflowTemplateName.FromProjectRegionWorkflowTemplate("[PROJECT]", "[REGION]", "[WORKFLOW_TEMPLATE]"),
+                Version = 0,
+                RequestId = "",
+                Parameters = { { "", "" }, },
+            };
+            // Make the request
+            Operation<Empty, WorkflowMetadata> response = await workflowTemplateServiceClient.InstantiateWorkflowTemplateAsync(request);
+
+            // Poll until the returned long-running operation is complete
+            Operation<Empty, WorkflowMetadata> completedResponse = await response.PollUntilCompletedAsync();
+            // Retrieve the operation result
+            Empty result = completedResponse.Result;
+
+            // Or get the name of the operation
+            string operationName = response.Name;
+            // This name can be stored, then the long-running operation retrieved later by name
+            Operation<Empty, WorkflowMetadata> retrievedResponse = await workflowTemplateServiceClient.PollOnceInstantiateWorkflowTemplateAsync(operationName);
+            // Check if the retrieved long-running operation has completed
+            if (retrievedResponse.IsCompleted)
+            {
+                // If it has completed, then access the result
+                Empty retrievedResult = retrievedResponse.Result;
             }
             // End snippet
         }
@@ -192,61 +313,117 @@ namespace Google.Cloud.Dataproc.V1.Snippets
         /// <summary>Snippet for InstantiateWorkflowTemplate</summary>
         public void InstantiateWorkflowTemplate1()
         {
-            // Snippet: InstantiateWorkflowTemplate(WorkflowTemplateName,CallSettings)
+            // Snippet: InstantiateWorkflowTemplate(string, CallSettings)
             // Create client
             WorkflowTemplateServiceClient workflowTemplateServiceClient = WorkflowTemplateServiceClient.Create();
             // Initialize request argument(s)
-            WorkflowTemplateName name = new WorkflowTemplateName("[PROJECT]", "[REGION]", "[WORKFLOW_TEMPLATE]");
+            string name = "projects/[PROJECT]/regions/[REGION]/workflowTemplates/[WORKFLOW_TEMPLATE]";
             // Make the request
-            Operation<Empty, WorkflowMetadata> response =
-                workflowTemplateServiceClient.InstantiateWorkflowTemplate(name);
+            Operation<Empty, WorkflowMetadata> response = workflowTemplateServiceClient.InstantiateWorkflowTemplate(name);
 
             // Poll until the returned long-running operation is complete
-            Operation<Empty, WorkflowMetadata> completedResponse =
-                response.PollUntilCompleted();
-            // The long-running operation is now complete.
+            Operation<Empty, WorkflowMetadata> completedResponse = response.PollUntilCompleted();
+            // Retrieve the operation result
+            Empty result = completedResponse.Result;
 
             // Or get the name of the operation
             string operationName = response.Name;
             // This name can be stored, then the long-running operation retrieved later by name
-            Operation<Empty, WorkflowMetadata> retrievedResponse =
-                workflowTemplateServiceClient.PollOnceInstantiateWorkflowTemplate(operationName);
+            Operation<Empty, WorkflowMetadata> retrievedResponse = workflowTemplateServiceClient.PollOnceInstantiateWorkflowTemplate(operationName);
             // Check if the retrieved long-running operation has completed
             if (retrievedResponse.IsCompleted)
             {
-                // The long-running operation is now complete.
+                // If it has completed, then access the result
+                Empty retrievedResult = retrievedResponse.Result;
             }
             // End snippet
         }
 
         /// <summary>Snippet for InstantiateWorkflowTemplateAsync</summary>
-        public async Task InstantiateWorkflowTemplateAsync2()
+        public async Task InstantiateWorkflowTemplate1Async()
         {
-            // Snippet: InstantiateWorkflowTemplateAsync(WorkflowTemplateName,IDictionary<string, string>,CallSettings)
-            // Additional: InstantiateWorkflowTemplateAsync(WorkflowTemplateName,IDictionary<string, string>,CancellationToken)
+            // Snippet: InstantiateWorkflowTemplateAsync(string, CallSettings)
+            // Additional: InstantiateWorkflowTemplateAsync(string, CancellationToken)
             // Create client
             WorkflowTemplateServiceClient workflowTemplateServiceClient = await WorkflowTemplateServiceClient.CreateAsync();
             // Initialize request argument(s)
-            WorkflowTemplateName name = new WorkflowTemplateName("[PROJECT]", "[REGION]", "[WORKFLOW_TEMPLATE]");
-            IDictionary<string, string> parameters = new Dictionary<string, string>();
+            string name = "projects/[PROJECT]/regions/[REGION]/workflowTemplates/[WORKFLOW_TEMPLATE]";
             // Make the request
-            Operation<Empty, WorkflowMetadata> response =
-                await workflowTemplateServiceClient.InstantiateWorkflowTemplateAsync(name, parameters);
+            Operation<Empty, WorkflowMetadata> response = await workflowTemplateServiceClient.InstantiateWorkflowTemplateAsync(name);
 
             // Poll until the returned long-running operation is complete
-            Operation<Empty, WorkflowMetadata> completedResponse =
-                await response.PollUntilCompletedAsync();
-            // The long-running operation is now complete.
+            Operation<Empty, WorkflowMetadata> completedResponse = await response.PollUntilCompletedAsync();
+            // Retrieve the operation result
+            Empty result = completedResponse.Result;
 
             // Or get the name of the operation
             string operationName = response.Name;
             // This name can be stored, then the long-running operation retrieved later by name
-            Operation<Empty, WorkflowMetadata> retrievedResponse =
-                await workflowTemplateServiceClient.PollOnceInstantiateWorkflowTemplateAsync(operationName);
+            Operation<Empty, WorkflowMetadata> retrievedResponse = await workflowTemplateServiceClient.PollOnceInstantiateWorkflowTemplateAsync(operationName);
             // Check if the retrieved long-running operation has completed
             if (retrievedResponse.IsCompleted)
             {
-                // The long-running operation is now complete.
+                // If it has completed, then access the result
+                Empty retrievedResult = retrievedResponse.Result;
+            }
+            // End snippet
+        }
+
+        /// <summary>Snippet for InstantiateWorkflowTemplate</summary>
+        public void InstantiateWorkflowTemplate1ResourceNames()
+        {
+            // Snippet: InstantiateWorkflowTemplate(WorkflowTemplateName, CallSettings)
+            // Create client
+            WorkflowTemplateServiceClient workflowTemplateServiceClient = WorkflowTemplateServiceClient.Create();
+            // Initialize request argument(s)
+            WorkflowTemplateName name = WorkflowTemplateName.FromProjectRegionWorkflowTemplate("[PROJECT]", "[REGION]", "[WORKFLOW_TEMPLATE]");
+            // Make the request
+            Operation<Empty, WorkflowMetadata> response = workflowTemplateServiceClient.InstantiateWorkflowTemplate(name);
+
+            // Poll until the returned long-running operation is complete
+            Operation<Empty, WorkflowMetadata> completedResponse = response.PollUntilCompleted();
+            // Retrieve the operation result
+            Empty result = completedResponse.Result;
+
+            // Or get the name of the operation
+            string operationName = response.Name;
+            // This name can be stored, then the long-running operation retrieved later by name
+            Operation<Empty, WorkflowMetadata> retrievedResponse = workflowTemplateServiceClient.PollOnceInstantiateWorkflowTemplate(operationName);
+            // Check if the retrieved long-running operation has completed
+            if (retrievedResponse.IsCompleted)
+            {
+                // If it has completed, then access the result
+                Empty retrievedResult = retrievedResponse.Result;
+            }
+            // End snippet
+        }
+
+        /// <summary>Snippet for InstantiateWorkflowTemplateAsync</summary>
+        public async Task InstantiateWorkflowTemplate1ResourceNamesAsync()
+        {
+            // Snippet: InstantiateWorkflowTemplateAsync(WorkflowTemplateName, CallSettings)
+            // Additional: InstantiateWorkflowTemplateAsync(WorkflowTemplateName, CancellationToken)
+            // Create client
+            WorkflowTemplateServiceClient workflowTemplateServiceClient = await WorkflowTemplateServiceClient.CreateAsync();
+            // Initialize request argument(s)
+            WorkflowTemplateName name = WorkflowTemplateName.FromProjectRegionWorkflowTemplate("[PROJECT]", "[REGION]", "[WORKFLOW_TEMPLATE]");
+            // Make the request
+            Operation<Empty, WorkflowMetadata> response = await workflowTemplateServiceClient.InstantiateWorkflowTemplateAsync(name);
+
+            // Poll until the returned long-running operation is complete
+            Operation<Empty, WorkflowMetadata> completedResponse = await response.PollUntilCompletedAsync();
+            // Retrieve the operation result
+            Empty result = completedResponse.Result;
+
+            // Or get the name of the operation
+            string operationName = response.Name;
+            // This name can be stored, then the long-running operation retrieved later by name
+            Operation<Empty, WorkflowMetadata> retrievedResponse = await workflowTemplateServiceClient.PollOnceInstantiateWorkflowTemplateAsync(operationName);
+            // Check if the retrieved long-running operation has completed
+            if (retrievedResponse.IsCompleted)
+            {
+                // If it has completed, then access the result
+                Empty retrievedResult = retrievedResponse.Result;
             }
             // End snippet
         }
@@ -254,128 +431,190 @@ namespace Google.Cloud.Dataproc.V1.Snippets
         /// <summary>Snippet for InstantiateWorkflowTemplate</summary>
         public void InstantiateWorkflowTemplate2()
         {
-            // Snippet: InstantiateWorkflowTemplate(WorkflowTemplateName,IDictionary<string, string>,CallSettings)
+            // Snippet: InstantiateWorkflowTemplate(string, IDictionary<string,string>, CallSettings)
             // Create client
             WorkflowTemplateServiceClient workflowTemplateServiceClient = WorkflowTemplateServiceClient.Create();
             // Initialize request argument(s)
-            WorkflowTemplateName name = new WorkflowTemplateName("[PROJECT]", "[REGION]", "[WORKFLOW_TEMPLATE]");
-            IDictionary<string, string> parameters = new Dictionary<string, string>();
+            string name = "projects/[PROJECT]/regions/[REGION]/workflowTemplates/[WORKFLOW_TEMPLATE]";
+            IDictionary<string, string> parameters = new Dictionary<string, string> { { "", "" }, };
             // Make the request
-            Operation<Empty, WorkflowMetadata> response =
-                workflowTemplateServiceClient.InstantiateWorkflowTemplate(name, parameters);
+            Operation<Empty, WorkflowMetadata> response = workflowTemplateServiceClient.InstantiateWorkflowTemplate(name, parameters);
 
             // Poll until the returned long-running operation is complete
-            Operation<Empty, WorkflowMetadata> completedResponse =
-                response.PollUntilCompleted();
-            // The long-running operation is now complete.
+            Operation<Empty, WorkflowMetadata> completedResponse = response.PollUntilCompleted();
+            // Retrieve the operation result
+            Empty result = completedResponse.Result;
 
             // Or get the name of the operation
             string operationName = response.Name;
             // This name can be stored, then the long-running operation retrieved later by name
-            Operation<Empty, WorkflowMetadata> retrievedResponse =
-                workflowTemplateServiceClient.PollOnceInstantiateWorkflowTemplate(operationName);
+            Operation<Empty, WorkflowMetadata> retrievedResponse = workflowTemplateServiceClient.PollOnceInstantiateWorkflowTemplate(operationName);
             // Check if the retrieved long-running operation has completed
             if (retrievedResponse.IsCompleted)
             {
-                // The long-running operation is now complete.
+                // If it has completed, then access the result
+                Empty retrievedResult = retrievedResponse.Result;
             }
             // End snippet
         }
 
         /// <summary>Snippet for InstantiateWorkflowTemplateAsync</summary>
-        public async Task InstantiateWorkflowTemplateAsync_RequestObject()
+        public async Task InstantiateWorkflowTemplate2Async()
         {
-            // Snippet: InstantiateWorkflowTemplateAsync(InstantiateWorkflowTemplateRequest,CallSettings)
+            // Snippet: InstantiateWorkflowTemplateAsync(string, IDictionary<string,string>, CallSettings)
+            // Additional: InstantiateWorkflowTemplateAsync(string, IDictionary<string,string>, CancellationToken)
             // Create client
             WorkflowTemplateServiceClient workflowTemplateServiceClient = await WorkflowTemplateServiceClient.CreateAsync();
             // Initialize request argument(s)
-            InstantiateWorkflowTemplateRequest request = new InstantiateWorkflowTemplateRequest
-            {
-                WorkflowTemplateName = new WorkflowTemplateName("[PROJECT]", "[REGION]", "[WORKFLOW_TEMPLATE]"),
-            };
+            string name = "projects/[PROJECT]/regions/[REGION]/workflowTemplates/[WORKFLOW_TEMPLATE]";
+            IDictionary<string, string> parameters = new Dictionary<string, string> { { "", "" }, };
             // Make the request
-            Operation<Empty, WorkflowMetadata> response =
-                await workflowTemplateServiceClient.InstantiateWorkflowTemplateAsync(request);
+            Operation<Empty, WorkflowMetadata> response = await workflowTemplateServiceClient.InstantiateWorkflowTemplateAsync(name, parameters);
 
             // Poll until the returned long-running operation is complete
-            Operation<Empty, WorkflowMetadata> completedResponse =
-                await response.PollUntilCompletedAsync();
-            // The long-running operation is now complete.
+            Operation<Empty, WorkflowMetadata> completedResponse = await response.PollUntilCompletedAsync();
+            // Retrieve the operation result
+            Empty result = completedResponse.Result;
 
             // Or get the name of the operation
             string operationName = response.Name;
             // This name can be stored, then the long-running operation retrieved later by name
-            Operation<Empty, WorkflowMetadata> retrievedResponse =
-                await workflowTemplateServiceClient.PollOnceInstantiateWorkflowTemplateAsync(operationName);
+            Operation<Empty, WorkflowMetadata> retrievedResponse = await workflowTemplateServiceClient.PollOnceInstantiateWorkflowTemplateAsync(operationName);
             // Check if the retrieved long-running operation has completed
             if (retrievedResponse.IsCompleted)
             {
-                // The long-running operation is now complete.
+                // If it has completed, then access the result
+                Empty retrievedResult = retrievedResponse.Result;
             }
             // End snippet
         }
 
         /// <summary>Snippet for InstantiateWorkflowTemplate</summary>
-        public void InstantiateWorkflowTemplate_RequestObject()
+        public void InstantiateWorkflowTemplate2ResourceNames()
         {
-            // Snippet: InstantiateWorkflowTemplate(InstantiateWorkflowTemplateRequest,CallSettings)
+            // Snippet: InstantiateWorkflowTemplate(WorkflowTemplateName, IDictionary<string,string>, CallSettings)
             // Create client
             WorkflowTemplateServiceClient workflowTemplateServiceClient = WorkflowTemplateServiceClient.Create();
             // Initialize request argument(s)
-            InstantiateWorkflowTemplateRequest request = new InstantiateWorkflowTemplateRequest
-            {
-                WorkflowTemplateName = new WorkflowTemplateName("[PROJECT]", "[REGION]", "[WORKFLOW_TEMPLATE]"),
-            };
+            WorkflowTemplateName name = WorkflowTemplateName.FromProjectRegionWorkflowTemplate("[PROJECT]", "[REGION]", "[WORKFLOW_TEMPLATE]");
+            IDictionary<string, string> parameters = new Dictionary<string, string> { { "", "" }, };
             // Make the request
-            Operation<Empty, WorkflowMetadata> response =
-                workflowTemplateServiceClient.InstantiateWorkflowTemplate(request);
+            Operation<Empty, WorkflowMetadata> response = workflowTemplateServiceClient.InstantiateWorkflowTemplate(name, parameters);
 
             // Poll until the returned long-running operation is complete
-            Operation<Empty, WorkflowMetadata> completedResponse =
-                response.PollUntilCompleted();
-            // The long-running operation is now complete.
+            Operation<Empty, WorkflowMetadata> completedResponse = response.PollUntilCompleted();
+            // Retrieve the operation result
+            Empty result = completedResponse.Result;
 
             // Or get the name of the operation
             string operationName = response.Name;
             // This name can be stored, then the long-running operation retrieved later by name
-            Operation<Empty, WorkflowMetadata> retrievedResponse =
-                workflowTemplateServiceClient.PollOnceInstantiateWorkflowTemplate(operationName);
+            Operation<Empty, WorkflowMetadata> retrievedResponse = workflowTemplateServiceClient.PollOnceInstantiateWorkflowTemplate(operationName);
             // Check if the retrieved long-running operation has completed
             if (retrievedResponse.IsCompleted)
             {
-                // The long-running operation is now complete.
+                // If it has completed, then access the result
+                Empty retrievedResult = retrievedResponse.Result;
+            }
+            // End snippet
+        }
+
+        /// <summary>Snippet for InstantiateWorkflowTemplateAsync</summary>
+        public async Task InstantiateWorkflowTemplate2ResourceNamesAsync()
+        {
+            // Snippet: InstantiateWorkflowTemplateAsync(WorkflowTemplateName, IDictionary<string,string>, CallSettings)
+            // Additional: InstantiateWorkflowTemplateAsync(WorkflowTemplateName, IDictionary<string,string>, CancellationToken)
+            // Create client
+            WorkflowTemplateServiceClient workflowTemplateServiceClient = await WorkflowTemplateServiceClient.CreateAsync();
+            // Initialize request argument(s)
+            WorkflowTemplateName name = WorkflowTemplateName.FromProjectRegionWorkflowTemplate("[PROJECT]", "[REGION]", "[WORKFLOW_TEMPLATE]");
+            IDictionary<string, string> parameters = new Dictionary<string, string> { { "", "" }, };
+            // Make the request
+            Operation<Empty, WorkflowMetadata> response = await workflowTemplateServiceClient.InstantiateWorkflowTemplateAsync(name, parameters);
+
+            // Poll until the returned long-running operation is complete
+            Operation<Empty, WorkflowMetadata> completedResponse = await response.PollUntilCompletedAsync();
+            // Retrieve the operation result
+            Empty result = completedResponse.Result;
+
+            // Or get the name of the operation
+            string operationName = response.Name;
+            // This name can be stored, then the long-running operation retrieved later by name
+            Operation<Empty, WorkflowMetadata> retrievedResponse = await workflowTemplateServiceClient.PollOnceInstantiateWorkflowTemplateAsync(operationName);
+            // Check if the retrieved long-running operation has completed
+            if (retrievedResponse.IsCompleted)
+            {
+                // If it has completed, then access the result
+                Empty retrievedResult = retrievedResponse.Result;
+            }
+            // End snippet
+        }
+
+        /// <summary>Snippet for InstantiateInlineWorkflowTemplate</summary>
+        public void InstantiateInlineWorkflowTemplateRequestObject()
+        {
+            // Snippet: InstantiateInlineWorkflowTemplate(InstantiateInlineWorkflowTemplateRequest, CallSettings)
+            // Create client
+            WorkflowTemplateServiceClient workflowTemplateServiceClient = WorkflowTemplateServiceClient.Create();
+            // Initialize request argument(s)
+            InstantiateInlineWorkflowTemplateRequest request = new InstantiateInlineWorkflowTemplateRequest
+            {
+                ParentAsRegionName = RegionName.FromProjectRegion("[PROJECT]", "[REGION]"),
+                Template = new WorkflowTemplate(),
+                RequestId = "",
+            };
+            // Make the request
+            Operation<Empty, WorkflowMetadata> response = workflowTemplateServiceClient.InstantiateInlineWorkflowTemplate(request);
+
+            // Poll until the returned long-running operation is complete
+            Operation<Empty, WorkflowMetadata> completedResponse = response.PollUntilCompleted();
+            // Retrieve the operation result
+            Empty result = completedResponse.Result;
+
+            // Or get the name of the operation
+            string operationName = response.Name;
+            // This name can be stored, then the long-running operation retrieved later by name
+            Operation<Empty, WorkflowMetadata> retrievedResponse = workflowTemplateServiceClient.PollOnceInstantiateInlineWorkflowTemplate(operationName);
+            // Check if the retrieved long-running operation has completed
+            if (retrievedResponse.IsCompleted)
+            {
+                // If it has completed, then access the result
+                Empty retrievedResult = retrievedResponse.Result;
             }
             // End snippet
         }
 
         /// <summary>Snippet for InstantiateInlineWorkflowTemplateAsync</summary>
-        public async Task InstantiateInlineWorkflowTemplateAsync()
+        public async Task InstantiateInlineWorkflowTemplateRequestObjectAsync()
         {
-            // Snippet: InstantiateInlineWorkflowTemplateAsync(RegionName,WorkflowTemplate,CallSettings)
-            // Additional: InstantiateInlineWorkflowTemplateAsync(RegionName,WorkflowTemplate,CancellationToken)
+            // Snippet: InstantiateInlineWorkflowTemplateAsync(InstantiateInlineWorkflowTemplateRequest, CallSettings)
+            // Additional: InstantiateInlineWorkflowTemplateAsync(InstantiateInlineWorkflowTemplateRequest, CancellationToken)
             // Create client
             WorkflowTemplateServiceClient workflowTemplateServiceClient = await WorkflowTemplateServiceClient.CreateAsync();
             // Initialize request argument(s)
-            RegionName parent = new RegionName("[PROJECT]", "[REGION]");
-            WorkflowTemplate template = new WorkflowTemplate();
+            InstantiateInlineWorkflowTemplateRequest request = new InstantiateInlineWorkflowTemplateRequest
+            {
+                ParentAsRegionName = RegionName.FromProjectRegion("[PROJECT]", "[REGION]"),
+                Template = new WorkflowTemplate(),
+                RequestId = "",
+            };
             // Make the request
-            Operation<Empty, WorkflowMetadata> response =
-                await workflowTemplateServiceClient.InstantiateInlineWorkflowTemplateAsync(parent, template);
+            Operation<Empty, WorkflowMetadata> response = await workflowTemplateServiceClient.InstantiateInlineWorkflowTemplateAsync(request);
 
             // Poll until the returned long-running operation is complete
-            Operation<Empty, WorkflowMetadata> completedResponse =
-                await response.PollUntilCompletedAsync();
-            // The long-running operation is now complete.
+            Operation<Empty, WorkflowMetadata> completedResponse = await response.PollUntilCompletedAsync();
+            // Retrieve the operation result
+            Empty result = completedResponse.Result;
 
             // Or get the name of the operation
             string operationName = response.Name;
             // This name can be stored, then the long-running operation retrieved later by name
-            Operation<Empty, WorkflowMetadata> retrievedResponse =
-                await workflowTemplateServiceClient.PollOnceInstantiateInlineWorkflowTemplateAsync(operationName);
+            Operation<Empty, WorkflowMetadata> retrievedResponse = await workflowTemplateServiceClient.PollOnceInstantiateInlineWorkflowTemplateAsync(operationName);
             // Check if the retrieved long-running operation has completed
             if (retrievedResponse.IsCompleted)
             {
-                // The long-running operation is now complete.
+                // If it has completed, then access the result
+                Empty retrievedResult = retrievedResponse.Result;
             }
             // End snippet
         }
@@ -383,134 +622,207 @@ namespace Google.Cloud.Dataproc.V1.Snippets
         /// <summary>Snippet for InstantiateInlineWorkflowTemplate</summary>
         public void InstantiateInlineWorkflowTemplate()
         {
-            // Snippet: InstantiateInlineWorkflowTemplate(RegionName,WorkflowTemplate,CallSettings)
+            // Snippet: InstantiateInlineWorkflowTemplate(string, WorkflowTemplate, CallSettings)
             // Create client
             WorkflowTemplateServiceClient workflowTemplateServiceClient = WorkflowTemplateServiceClient.Create();
             // Initialize request argument(s)
-            RegionName parent = new RegionName("[PROJECT]", "[REGION]");
+            string parent = "projects/[PROJECT]/regions/[REGION]";
             WorkflowTemplate template = new WorkflowTemplate();
             // Make the request
-            Operation<Empty, WorkflowMetadata> response =
-                workflowTemplateServiceClient.InstantiateInlineWorkflowTemplate(parent, template);
+            Operation<Empty, WorkflowMetadata> response = workflowTemplateServiceClient.InstantiateInlineWorkflowTemplate(parent, template);
 
             // Poll until the returned long-running operation is complete
-            Operation<Empty, WorkflowMetadata> completedResponse =
-                response.PollUntilCompleted();
-            // The long-running operation is now complete.
+            Operation<Empty, WorkflowMetadata> completedResponse = response.PollUntilCompleted();
+            // Retrieve the operation result
+            Empty result = completedResponse.Result;
 
             // Or get the name of the operation
             string operationName = response.Name;
             // This name can be stored, then the long-running operation retrieved later by name
-            Operation<Empty, WorkflowMetadata> retrievedResponse =
-                workflowTemplateServiceClient.PollOnceInstantiateInlineWorkflowTemplate(operationName);
+            Operation<Empty, WorkflowMetadata> retrievedResponse = workflowTemplateServiceClient.PollOnceInstantiateInlineWorkflowTemplate(operationName);
             // Check if the retrieved long-running operation has completed
             if (retrievedResponse.IsCompleted)
             {
-                // The long-running operation is now complete.
+                // If it has completed, then access the result
+                Empty retrievedResult = retrievedResponse.Result;
             }
             // End snippet
         }
 
         /// <summary>Snippet for InstantiateInlineWorkflowTemplateAsync</summary>
-        public async Task InstantiateInlineWorkflowTemplateAsync_RequestObject()
+        public async Task InstantiateInlineWorkflowTemplateAsync()
         {
-            // Snippet: InstantiateInlineWorkflowTemplateAsync(InstantiateInlineWorkflowTemplateRequest,CallSettings)
+            // Snippet: InstantiateInlineWorkflowTemplateAsync(string, WorkflowTemplate, CallSettings)
+            // Additional: InstantiateInlineWorkflowTemplateAsync(string, WorkflowTemplate, CancellationToken)
             // Create client
             WorkflowTemplateServiceClient workflowTemplateServiceClient = await WorkflowTemplateServiceClient.CreateAsync();
             // Initialize request argument(s)
-            InstantiateInlineWorkflowTemplateRequest request = new InstantiateInlineWorkflowTemplateRequest
-            {
-                ParentAsRegionName = new RegionName("[PROJECT]", "[REGION]"),
-                Template = new WorkflowTemplate(),
-            };
+            string parent = "projects/[PROJECT]/regions/[REGION]";
+            WorkflowTemplate template = new WorkflowTemplate();
             // Make the request
-            Operation<Empty, WorkflowMetadata> response =
-                await workflowTemplateServiceClient.InstantiateInlineWorkflowTemplateAsync(request);
+            Operation<Empty, WorkflowMetadata> response = await workflowTemplateServiceClient.InstantiateInlineWorkflowTemplateAsync(parent, template);
 
             // Poll until the returned long-running operation is complete
-            Operation<Empty, WorkflowMetadata> completedResponse =
-                await response.PollUntilCompletedAsync();
-            // The long-running operation is now complete.
+            Operation<Empty, WorkflowMetadata> completedResponse = await response.PollUntilCompletedAsync();
+            // Retrieve the operation result
+            Empty result = completedResponse.Result;
 
             // Or get the name of the operation
             string operationName = response.Name;
             // This name can be stored, then the long-running operation retrieved later by name
-            Operation<Empty, WorkflowMetadata> retrievedResponse =
-                await workflowTemplateServiceClient.PollOnceInstantiateInlineWorkflowTemplateAsync(operationName);
+            Operation<Empty, WorkflowMetadata> retrievedResponse = await workflowTemplateServiceClient.PollOnceInstantiateInlineWorkflowTemplateAsync(operationName);
             // Check if the retrieved long-running operation has completed
             if (retrievedResponse.IsCompleted)
             {
-                // The long-running operation is now complete.
+                // If it has completed, then access the result
+                Empty retrievedResult = retrievedResponse.Result;
             }
             // End snippet
         }
 
         /// <summary>Snippet for InstantiateInlineWorkflowTemplate</summary>
-        public void InstantiateInlineWorkflowTemplate_RequestObject()
+        public void InstantiateInlineWorkflowTemplateResourceNames1()
         {
-            // Snippet: InstantiateInlineWorkflowTemplate(InstantiateInlineWorkflowTemplateRequest,CallSettings)
+            // Snippet: InstantiateInlineWorkflowTemplate(RegionName, WorkflowTemplate, CallSettings)
             // Create client
             WorkflowTemplateServiceClient workflowTemplateServiceClient = WorkflowTemplateServiceClient.Create();
             // Initialize request argument(s)
-            InstantiateInlineWorkflowTemplateRequest request = new InstantiateInlineWorkflowTemplateRequest
-            {
-                ParentAsRegionName = new RegionName("[PROJECT]", "[REGION]"),
-                Template = new WorkflowTemplate(),
-            };
+            RegionName parent = RegionName.FromProjectRegion("[PROJECT]", "[REGION]");
+            WorkflowTemplate template = new WorkflowTemplate();
             // Make the request
-            Operation<Empty, WorkflowMetadata> response =
-                workflowTemplateServiceClient.InstantiateInlineWorkflowTemplate(request);
+            Operation<Empty, WorkflowMetadata> response = workflowTemplateServiceClient.InstantiateInlineWorkflowTemplate(parent, template);
 
             // Poll until the returned long-running operation is complete
-            Operation<Empty, WorkflowMetadata> completedResponse =
-                response.PollUntilCompleted();
-            // The long-running operation is now complete.
+            Operation<Empty, WorkflowMetadata> completedResponse = response.PollUntilCompleted();
+            // Retrieve the operation result
+            Empty result = completedResponse.Result;
 
             // Or get the name of the operation
             string operationName = response.Name;
             // This name can be stored, then the long-running operation retrieved later by name
-            Operation<Empty, WorkflowMetadata> retrievedResponse =
-                workflowTemplateServiceClient.PollOnceInstantiateInlineWorkflowTemplate(operationName);
+            Operation<Empty, WorkflowMetadata> retrievedResponse = workflowTemplateServiceClient.PollOnceInstantiateInlineWorkflowTemplate(operationName);
             // Check if the retrieved long-running operation has completed
             if (retrievedResponse.IsCompleted)
             {
-                // The long-running operation is now complete.
+                // If it has completed, then access the result
+                Empty retrievedResult = retrievedResponse.Result;
             }
             // End snippet
         }
 
-        /// <summary>Snippet for UpdateWorkflowTemplateAsync</summary>
-        public async Task UpdateWorkflowTemplateAsync()
+        /// <summary>Snippet for InstantiateInlineWorkflowTemplateAsync</summary>
+        public async Task InstantiateInlineWorkflowTemplateResourceNames1Async()
         {
-            // Snippet: UpdateWorkflowTemplateAsync(WorkflowTemplate,CallSettings)
-            // Additional: UpdateWorkflowTemplateAsync(WorkflowTemplate,CancellationToken)
+            // Snippet: InstantiateInlineWorkflowTemplateAsync(RegionName, WorkflowTemplate, CallSettings)
+            // Additional: InstantiateInlineWorkflowTemplateAsync(RegionName, WorkflowTemplate, CancellationToken)
             // Create client
             WorkflowTemplateServiceClient workflowTemplateServiceClient = await WorkflowTemplateServiceClient.CreateAsync();
             // Initialize request argument(s)
+            RegionName parent = RegionName.FromProjectRegion("[PROJECT]", "[REGION]");
             WorkflowTemplate template = new WorkflowTemplate();
             // Make the request
-            WorkflowTemplate response = await workflowTemplateServiceClient.UpdateWorkflowTemplateAsync(template);
+            Operation<Empty, WorkflowMetadata> response = await workflowTemplateServiceClient.InstantiateInlineWorkflowTemplateAsync(parent, template);
+
+            // Poll until the returned long-running operation is complete
+            Operation<Empty, WorkflowMetadata> completedResponse = await response.PollUntilCompletedAsync();
+            // Retrieve the operation result
+            Empty result = completedResponse.Result;
+
+            // Or get the name of the operation
+            string operationName = response.Name;
+            // This name can be stored, then the long-running operation retrieved later by name
+            Operation<Empty, WorkflowMetadata> retrievedResponse = await workflowTemplateServiceClient.PollOnceInstantiateInlineWorkflowTemplateAsync(operationName);
+            // Check if the retrieved long-running operation has completed
+            if (retrievedResponse.IsCompleted)
+            {
+                // If it has completed, then access the result
+                Empty retrievedResult = retrievedResponse.Result;
+            }
+            // End snippet
+        }
+
+        /// <summary>Snippet for InstantiateInlineWorkflowTemplate</summary>
+        public void InstantiateInlineWorkflowTemplateResourceNames2()
+        {
+            // Snippet: InstantiateInlineWorkflowTemplate(LocationName, WorkflowTemplate, CallSettings)
+            // Create client
+            WorkflowTemplateServiceClient workflowTemplateServiceClient = WorkflowTemplateServiceClient.Create();
+            // Initialize request argument(s)
+            LocationName parent = LocationName.FromProjectLocation("[PROJECT]", "[LOCATION]");
+            WorkflowTemplate template = new WorkflowTemplate();
+            // Make the request
+            Operation<Empty, WorkflowMetadata> response = workflowTemplateServiceClient.InstantiateInlineWorkflowTemplate(parent, template);
+
+            // Poll until the returned long-running operation is complete
+            Operation<Empty, WorkflowMetadata> completedResponse = response.PollUntilCompleted();
+            // Retrieve the operation result
+            Empty result = completedResponse.Result;
+
+            // Or get the name of the operation
+            string operationName = response.Name;
+            // This name can be stored, then the long-running operation retrieved later by name
+            Operation<Empty, WorkflowMetadata> retrievedResponse = workflowTemplateServiceClient.PollOnceInstantiateInlineWorkflowTemplate(operationName);
+            // Check if the retrieved long-running operation has completed
+            if (retrievedResponse.IsCompleted)
+            {
+                // If it has completed, then access the result
+                Empty retrievedResult = retrievedResponse.Result;
+            }
+            // End snippet
+        }
+
+        /// <summary>Snippet for InstantiateInlineWorkflowTemplateAsync</summary>
+        public async Task InstantiateInlineWorkflowTemplateResourceNames2Async()
+        {
+            // Snippet: InstantiateInlineWorkflowTemplateAsync(LocationName, WorkflowTemplate, CallSettings)
+            // Additional: InstantiateInlineWorkflowTemplateAsync(LocationName, WorkflowTemplate, CancellationToken)
+            // Create client
+            WorkflowTemplateServiceClient workflowTemplateServiceClient = await WorkflowTemplateServiceClient.CreateAsync();
+            // Initialize request argument(s)
+            LocationName parent = LocationName.FromProjectLocation("[PROJECT]", "[LOCATION]");
+            WorkflowTemplate template = new WorkflowTemplate();
+            // Make the request
+            Operation<Empty, WorkflowMetadata> response = await workflowTemplateServiceClient.InstantiateInlineWorkflowTemplateAsync(parent, template);
+
+            // Poll until the returned long-running operation is complete
+            Operation<Empty, WorkflowMetadata> completedResponse = await response.PollUntilCompletedAsync();
+            // Retrieve the operation result
+            Empty result = completedResponse.Result;
+
+            // Or get the name of the operation
+            string operationName = response.Name;
+            // This name can be stored, then the long-running operation retrieved later by name
+            Operation<Empty, WorkflowMetadata> retrievedResponse = await workflowTemplateServiceClient.PollOnceInstantiateInlineWorkflowTemplateAsync(operationName);
+            // Check if the retrieved long-running operation has completed
+            if (retrievedResponse.IsCompleted)
+            {
+                // If it has completed, then access the result
+                Empty retrievedResult = retrievedResponse.Result;
+            }
             // End snippet
         }
 
         /// <summary>Snippet for UpdateWorkflowTemplate</summary>
-        public void UpdateWorkflowTemplate()
+        public void UpdateWorkflowTemplateRequestObject()
         {
-            // Snippet: UpdateWorkflowTemplate(WorkflowTemplate,CallSettings)
+            // Snippet: UpdateWorkflowTemplate(UpdateWorkflowTemplateRequest, CallSettings)
             // Create client
             WorkflowTemplateServiceClient workflowTemplateServiceClient = WorkflowTemplateServiceClient.Create();
             // Initialize request argument(s)
-            WorkflowTemplate template = new WorkflowTemplate();
+            UpdateWorkflowTemplateRequest request = new UpdateWorkflowTemplateRequest
+            {
+                Template = new WorkflowTemplate(),
+            };
             // Make the request
-            WorkflowTemplate response = workflowTemplateServiceClient.UpdateWorkflowTemplate(template);
+            WorkflowTemplate response = workflowTemplateServiceClient.UpdateWorkflowTemplate(request);
             // End snippet
         }
 
         /// <summary>Snippet for UpdateWorkflowTemplateAsync</summary>
-        public async Task UpdateWorkflowTemplateAsync_RequestObject()
+        public async Task UpdateWorkflowTemplateRequestObjectAsync()
         {
-            // Snippet: UpdateWorkflowTemplateAsync(UpdateWorkflowTemplateRequest,CallSettings)
-            // Additional: UpdateWorkflowTemplateAsync(UpdateWorkflowTemplateRequest,CancellationToken)
+            // Snippet: UpdateWorkflowTemplateAsync(UpdateWorkflowTemplateRequest, CallSettings)
+            // Additional: UpdateWorkflowTemplateAsync(UpdateWorkflowTemplateRequest, CancellationToken)
             // Create client
             WorkflowTemplateServiceClient workflowTemplateServiceClient = await WorkflowTemplateServiceClient.CreateAsync();
             // Initialize request argument(s)
@@ -524,32 +836,93 @@ namespace Google.Cloud.Dataproc.V1.Snippets
         }
 
         /// <summary>Snippet for UpdateWorkflowTemplate</summary>
-        public void UpdateWorkflowTemplate_RequestObject()
+        public void UpdateWorkflowTemplate()
         {
-            // Snippet: UpdateWorkflowTemplate(UpdateWorkflowTemplateRequest,CallSettings)
+            // Snippet: UpdateWorkflowTemplate(WorkflowTemplate, CallSettings)
             // Create client
             WorkflowTemplateServiceClient workflowTemplateServiceClient = WorkflowTemplateServiceClient.Create();
             // Initialize request argument(s)
-            UpdateWorkflowTemplateRequest request = new UpdateWorkflowTemplateRequest
-            {
-                Template = new WorkflowTemplate(),
-            };
+            WorkflowTemplate template = new WorkflowTemplate();
             // Make the request
-            WorkflowTemplate response = workflowTemplateServiceClient.UpdateWorkflowTemplate(request);
+            WorkflowTemplate response = workflowTemplateServiceClient.UpdateWorkflowTemplate(template);
             // End snippet
         }
 
-        /// <summary>Snippet for ListWorkflowTemplatesAsync</summary>
-        public async Task ListWorkflowTemplatesAsync()
+        /// <summary>Snippet for UpdateWorkflowTemplateAsync</summary>
+        public async Task UpdateWorkflowTemplateAsync()
         {
-            // Snippet: ListWorkflowTemplatesAsync(RegionName,string,int?,CallSettings)
+            // Snippet: UpdateWorkflowTemplateAsync(WorkflowTemplate, CallSettings)
+            // Additional: UpdateWorkflowTemplateAsync(WorkflowTemplate, CancellationToken)
             // Create client
             WorkflowTemplateServiceClient workflowTemplateServiceClient = await WorkflowTemplateServiceClient.CreateAsync();
             // Initialize request argument(s)
-            RegionName parent = new RegionName("[PROJECT]", "[REGION]");
+            WorkflowTemplate template = new WorkflowTemplate();
             // Make the request
-            PagedAsyncEnumerable<ListWorkflowTemplatesResponse, WorkflowTemplate> response =
-                workflowTemplateServiceClient.ListWorkflowTemplatesAsync(parent);
+            WorkflowTemplate response = await workflowTemplateServiceClient.UpdateWorkflowTemplateAsync(template);
+            // End snippet
+        }
+
+        /// <summary>Snippet for ListWorkflowTemplates</summary>
+        public void ListWorkflowTemplatesRequestObject()
+        {
+            // Snippet: ListWorkflowTemplates(ListWorkflowTemplatesRequest, CallSettings)
+            // Create client
+            WorkflowTemplateServiceClient workflowTemplateServiceClient = WorkflowTemplateServiceClient.Create();
+            // Initialize request argument(s)
+            ListWorkflowTemplatesRequest request = new ListWorkflowTemplatesRequest
+            {
+                ParentAsRegionName = RegionName.FromProjectRegion("[PROJECT]", "[REGION]"),
+            };
+            // Make the request
+            PagedEnumerable<ListWorkflowTemplatesResponse, WorkflowTemplate> response = workflowTemplateServiceClient.ListWorkflowTemplates(request);
+
+            // Iterate over all response items, lazily performing RPCs as required
+            foreach (WorkflowTemplate item in response)
+            {
+                // Do something with each item
+                Console.WriteLine(item);
+            }
+
+            // Or iterate over pages (of server-defined size), performing one RPC per page
+            foreach (ListWorkflowTemplatesResponse page in response.AsRawResponses())
+            {
+                // Do something with each page of items
+                Console.WriteLine("A page of results:");
+                foreach (WorkflowTemplate item in page)
+                {
+                    // Do something with each item
+                    Console.WriteLine(item);
+                }
+            }
+
+            // Or retrieve a single page of known size (unless it's the final page), performing as many RPCs as required
+            int pageSize = 10;
+            Page<WorkflowTemplate> singlePage = response.ReadPage(pageSize);
+            // Do something with the page of items
+            Console.WriteLine($"A page of {pageSize} results (unless it's the final page):");
+            foreach (WorkflowTemplate item in singlePage)
+            {
+                // Do something with each item
+                Console.WriteLine(item);
+            }
+            // Store the pageToken, for when the next page is required.
+            string nextPageToken = singlePage.NextPageToken;
+            // End snippet
+        }
+
+        /// <summary>Snippet for ListWorkflowTemplates</summary>
+        public async Task ListWorkflowTemplatesRequestObjectAsync()
+        {
+            // Snippet: ListWorkflowTemplatesAsync(ListWorkflowTemplatesRequest, CallSettings)
+            // Create client
+            WorkflowTemplateServiceClient workflowTemplateServiceClient = await WorkflowTemplateServiceClient.CreateAsync();
+            // Initialize request argument(s)
+            ListWorkflowTemplatesRequest request = new ListWorkflowTemplatesRequest
+            {
+                ParentAsRegionName = RegionName.FromProjectRegion("[PROJECT]", "[REGION]"),
+            };
+            // Make the request
+            PagedAsyncEnumerable<ListWorkflowTemplatesResponse, WorkflowTemplate> response = workflowTemplateServiceClient.ListWorkflowTemplatesAsync(request);
 
             // Iterate over all response items, lazily performing RPCs as required
             await response.ForEachAsync((WorkflowTemplate item) =>
@@ -565,6 +938,7 @@ namespace Google.Cloud.Dataproc.V1.Snippets
                 Console.WriteLine("A page of results:");
                 foreach (WorkflowTemplate item in page)
                 {
+                    // Do something with each item
                     Console.WriteLine(item);
                 }
             });
@@ -576,6 +950,7 @@ namespace Google.Cloud.Dataproc.V1.Snippets
             Console.WriteLine($"A page of {pageSize} results (unless it's the final page):");
             foreach (WorkflowTemplate item in singlePage)
             {
+                // Do something with each item
                 Console.WriteLine(item);
             }
             // Store the pageToken, for when the next page is required.
@@ -586,14 +961,13 @@ namespace Google.Cloud.Dataproc.V1.Snippets
         /// <summary>Snippet for ListWorkflowTemplates</summary>
         public void ListWorkflowTemplates()
         {
-            // Snippet: ListWorkflowTemplates(RegionName,string,int?,CallSettings)
+            // Snippet: ListWorkflowTemplates(string, string, int?, CallSettings)
             // Create client
             WorkflowTemplateServiceClient workflowTemplateServiceClient = WorkflowTemplateServiceClient.Create();
             // Initialize request argument(s)
-            RegionName parent = new RegionName("[PROJECT]", "[REGION]");
+            string parent = "projects/[PROJECT]/regions/[REGION]";
             // Make the request
-            PagedEnumerable<ListWorkflowTemplatesResponse, WorkflowTemplate> response =
-                workflowTemplateServiceClient.ListWorkflowTemplates(parent);
+            PagedEnumerable<ListWorkflowTemplatesResponse, WorkflowTemplate> response = workflowTemplateServiceClient.ListWorkflowTemplates(parent);
 
             // Iterate over all response items, lazily performing RPCs as required
             foreach (WorkflowTemplate item in response)
@@ -609,6 +983,7 @@ namespace Google.Cloud.Dataproc.V1.Snippets
                 Console.WriteLine("A page of results:");
                 foreach (WorkflowTemplate item in page)
                 {
+                    // Do something with each item
                     Console.WriteLine(item);
                 }
             }
@@ -620,6 +995,7 @@ namespace Google.Cloud.Dataproc.V1.Snippets
             Console.WriteLine($"A page of {pageSize} results (unless it's the final page):");
             foreach (WorkflowTemplate item in singlePage)
             {
+                // Do something with each item
                 Console.WriteLine(item);
             }
             // Store the pageToken, for when the next page is required.
@@ -627,20 +1003,16 @@ namespace Google.Cloud.Dataproc.V1.Snippets
             // End snippet
         }
 
-        /// <summary>Snippet for ListWorkflowTemplatesAsync</summary>
-        public async Task ListWorkflowTemplatesAsync_RequestObject()
+        /// <summary>Snippet for ListWorkflowTemplates</summary>
+        public async Task ListWorkflowTemplatesAsync()
         {
-            // Snippet: ListWorkflowTemplatesAsync(ListWorkflowTemplatesRequest,CallSettings)
+            // Snippet: ListWorkflowTemplatesAsync(string, string, int?, CallSettings)
             // Create client
             WorkflowTemplateServiceClient workflowTemplateServiceClient = await WorkflowTemplateServiceClient.CreateAsync();
             // Initialize request argument(s)
-            ListWorkflowTemplatesRequest request = new ListWorkflowTemplatesRequest
-            {
-                ParentAsRegionName = new RegionName("[PROJECT]", "[REGION]"),
-            };
+            string parent = "projects/[PROJECT]/regions/[REGION]";
             // Make the request
-            PagedAsyncEnumerable<ListWorkflowTemplatesResponse, WorkflowTemplate> response =
-                workflowTemplateServiceClient.ListWorkflowTemplatesAsync(request);
+            PagedAsyncEnumerable<ListWorkflowTemplatesResponse, WorkflowTemplate> response = workflowTemplateServiceClient.ListWorkflowTemplatesAsync(parent);
 
             // Iterate over all response items, lazily performing RPCs as required
             await response.ForEachAsync((WorkflowTemplate item) =>
@@ -656,6 +1028,7 @@ namespace Google.Cloud.Dataproc.V1.Snippets
                 Console.WriteLine("A page of results:");
                 foreach (WorkflowTemplate item in page)
                 {
+                    // Do something with each item
                     Console.WriteLine(item);
                 }
             });
@@ -667,6 +1040,7 @@ namespace Google.Cloud.Dataproc.V1.Snippets
             Console.WriteLine($"A page of {pageSize} results (unless it's the final page):");
             foreach (WorkflowTemplate item in singlePage)
             {
+                // Do something with each item
                 Console.WriteLine(item);
             }
             // Store the pageToken, for when the next page is required.
@@ -675,19 +1049,15 @@ namespace Google.Cloud.Dataproc.V1.Snippets
         }
 
         /// <summary>Snippet for ListWorkflowTemplates</summary>
-        public void ListWorkflowTemplates_RequestObject()
+        public void ListWorkflowTemplatesResourceNames1()
         {
-            // Snippet: ListWorkflowTemplates(ListWorkflowTemplatesRequest,CallSettings)
+            // Snippet: ListWorkflowTemplates(RegionName, string, int?, CallSettings)
             // Create client
             WorkflowTemplateServiceClient workflowTemplateServiceClient = WorkflowTemplateServiceClient.Create();
             // Initialize request argument(s)
-            ListWorkflowTemplatesRequest request = new ListWorkflowTemplatesRequest
-            {
-                ParentAsRegionName = new RegionName("[PROJECT]", "[REGION]"),
-            };
+            RegionName parent = RegionName.FromProjectRegion("[PROJECT]", "[REGION]");
             // Make the request
-            PagedEnumerable<ListWorkflowTemplatesResponse, WorkflowTemplate> response =
-                workflowTemplateServiceClient.ListWorkflowTemplates(request);
+            PagedEnumerable<ListWorkflowTemplatesResponse, WorkflowTemplate> response = workflowTemplateServiceClient.ListWorkflowTemplates(parent);
 
             // Iterate over all response items, lazily performing RPCs as required
             foreach (WorkflowTemplate item in response)
@@ -703,6 +1073,7 @@ namespace Google.Cloud.Dataproc.V1.Snippets
                 Console.WriteLine("A page of results:");
                 foreach (WorkflowTemplate item in page)
                 {
+                    // Do something with each item
                     Console.WriteLine(item);
                 }
             }
@@ -714,6 +1085,7 @@ namespace Google.Cloud.Dataproc.V1.Snippets
             Console.WriteLine($"A page of {pageSize} results (unless it's the final page):");
             foreach (WorkflowTemplate item in singlePage)
             {
+                // Do something with each item
                 Console.WriteLine(item);
             }
             // Store the pageToken, for when the next page is required.
@@ -721,44 +1093,170 @@ namespace Google.Cloud.Dataproc.V1.Snippets
             // End snippet
         }
 
-        /// <summary>Snippet for DeleteWorkflowTemplateAsync</summary>
-        public async Task DeleteWorkflowTemplateAsync()
+        /// <summary>Snippet for ListWorkflowTemplates</summary>
+        public async Task ListWorkflowTemplatesResourceNames1Async()
         {
-            // Snippet: DeleteWorkflowTemplateAsync(WorkflowTemplateName,CallSettings)
-            // Additional: DeleteWorkflowTemplateAsync(WorkflowTemplateName,CancellationToken)
+            // Snippet: ListWorkflowTemplatesAsync(RegionName, string, int?, CallSettings)
             // Create client
             WorkflowTemplateServiceClient workflowTemplateServiceClient = await WorkflowTemplateServiceClient.CreateAsync();
             // Initialize request argument(s)
-            WorkflowTemplateName name = new WorkflowTemplateName("[PROJECT]", "[REGION]", "[WORKFLOW_TEMPLATE]");
+            RegionName parent = RegionName.FromProjectRegion("[PROJECT]", "[REGION]");
             // Make the request
-            await workflowTemplateServiceClient.DeleteWorkflowTemplateAsync(name);
+            PagedAsyncEnumerable<ListWorkflowTemplatesResponse, WorkflowTemplate> response = workflowTemplateServiceClient.ListWorkflowTemplatesAsync(parent);
+
+            // Iterate over all response items, lazily performing RPCs as required
+            await response.ForEachAsync((WorkflowTemplate item) =>
+            {
+                // Do something with each item
+                Console.WriteLine(item);
+            });
+
+            // Or iterate over pages (of server-defined size), performing one RPC per page
+            await response.AsRawResponses().ForEachAsync((ListWorkflowTemplatesResponse page) =>
+            {
+                // Do something with each page of items
+                Console.WriteLine("A page of results:");
+                foreach (WorkflowTemplate item in page)
+                {
+                    // Do something with each item
+                    Console.WriteLine(item);
+                }
+            });
+
+            // Or retrieve a single page of known size (unless it's the final page), performing as many RPCs as required
+            int pageSize = 10;
+            Page<WorkflowTemplate> singlePage = await response.ReadPageAsync(pageSize);
+            // Do something with the page of items
+            Console.WriteLine($"A page of {pageSize} results (unless it's the final page):");
+            foreach (WorkflowTemplate item in singlePage)
+            {
+                // Do something with each item
+                Console.WriteLine(item);
+            }
+            // Store the pageToken, for when the next page is required.
+            string nextPageToken = singlePage.NextPageToken;
+            // End snippet
+        }
+
+        /// <summary>Snippet for ListWorkflowTemplates</summary>
+        public void ListWorkflowTemplatesResourceNames2()
+        {
+            // Snippet: ListWorkflowTemplates(LocationName, string, int?, CallSettings)
+            // Create client
+            WorkflowTemplateServiceClient workflowTemplateServiceClient = WorkflowTemplateServiceClient.Create();
+            // Initialize request argument(s)
+            LocationName parent = LocationName.FromProjectLocation("[PROJECT]", "[LOCATION]");
+            // Make the request
+            PagedEnumerable<ListWorkflowTemplatesResponse, WorkflowTemplate> response = workflowTemplateServiceClient.ListWorkflowTemplates(parent);
+
+            // Iterate over all response items, lazily performing RPCs as required
+            foreach (WorkflowTemplate item in response)
+            {
+                // Do something with each item
+                Console.WriteLine(item);
+            }
+
+            // Or iterate over pages (of server-defined size), performing one RPC per page
+            foreach (ListWorkflowTemplatesResponse page in response.AsRawResponses())
+            {
+                // Do something with each page of items
+                Console.WriteLine("A page of results:");
+                foreach (WorkflowTemplate item in page)
+                {
+                    // Do something with each item
+                    Console.WriteLine(item);
+                }
+            }
+
+            // Or retrieve a single page of known size (unless it's the final page), performing as many RPCs as required
+            int pageSize = 10;
+            Page<WorkflowTemplate> singlePage = response.ReadPage(pageSize);
+            // Do something with the page of items
+            Console.WriteLine($"A page of {pageSize} results (unless it's the final page):");
+            foreach (WorkflowTemplate item in singlePage)
+            {
+                // Do something with each item
+                Console.WriteLine(item);
+            }
+            // Store the pageToken, for when the next page is required.
+            string nextPageToken = singlePage.NextPageToken;
+            // End snippet
+        }
+
+        /// <summary>Snippet for ListWorkflowTemplates</summary>
+        public async Task ListWorkflowTemplatesResourceNames2Async()
+        {
+            // Snippet: ListWorkflowTemplatesAsync(LocationName, string, int?, CallSettings)
+            // Create client
+            WorkflowTemplateServiceClient workflowTemplateServiceClient = await WorkflowTemplateServiceClient.CreateAsync();
+            // Initialize request argument(s)
+            LocationName parent = LocationName.FromProjectLocation("[PROJECT]", "[LOCATION]");
+            // Make the request
+            PagedAsyncEnumerable<ListWorkflowTemplatesResponse, WorkflowTemplate> response = workflowTemplateServiceClient.ListWorkflowTemplatesAsync(parent);
+
+            // Iterate over all response items, lazily performing RPCs as required
+            await response.ForEachAsync((WorkflowTemplate item) =>
+            {
+                // Do something with each item
+                Console.WriteLine(item);
+            });
+
+            // Or iterate over pages (of server-defined size), performing one RPC per page
+            await response.AsRawResponses().ForEachAsync((ListWorkflowTemplatesResponse page) =>
+            {
+                // Do something with each page of items
+                Console.WriteLine("A page of results:");
+                foreach (WorkflowTemplate item in page)
+                {
+                    // Do something with each item
+                    Console.WriteLine(item);
+                }
+            });
+
+            // Or retrieve a single page of known size (unless it's the final page), performing as many RPCs as required
+            int pageSize = 10;
+            Page<WorkflowTemplate> singlePage = await response.ReadPageAsync(pageSize);
+            // Do something with the page of items
+            Console.WriteLine($"A page of {pageSize} results (unless it's the final page):");
+            foreach (WorkflowTemplate item in singlePage)
+            {
+                // Do something with each item
+                Console.WriteLine(item);
+            }
+            // Store the pageToken, for when the next page is required.
+            string nextPageToken = singlePage.NextPageToken;
             // End snippet
         }
 
         /// <summary>Snippet for DeleteWorkflowTemplate</summary>
-        public void DeleteWorkflowTemplate()
+        public void DeleteWorkflowTemplateRequestObject()
         {
-            // Snippet: DeleteWorkflowTemplate(WorkflowTemplateName,CallSettings)
+            // Snippet: DeleteWorkflowTemplate(DeleteWorkflowTemplateRequest, CallSettings)
             // Create client
             WorkflowTemplateServiceClient workflowTemplateServiceClient = WorkflowTemplateServiceClient.Create();
             // Initialize request argument(s)
-            WorkflowTemplateName name = new WorkflowTemplateName("[PROJECT]", "[REGION]", "[WORKFLOW_TEMPLATE]");
+            DeleteWorkflowTemplateRequest request = new DeleteWorkflowTemplateRequest
+            {
+                WorkflowTemplateName = WorkflowTemplateName.FromProjectRegionWorkflowTemplate("[PROJECT]", "[REGION]", "[WORKFLOW_TEMPLATE]"),
+                Version = 0,
+            };
             // Make the request
-            workflowTemplateServiceClient.DeleteWorkflowTemplate(name);
+            workflowTemplateServiceClient.DeleteWorkflowTemplate(request);
             // End snippet
         }
 
         /// <summary>Snippet for DeleteWorkflowTemplateAsync</summary>
-        public async Task DeleteWorkflowTemplateAsync_RequestObject()
+        public async Task DeleteWorkflowTemplateRequestObjectAsync()
         {
-            // Snippet: DeleteWorkflowTemplateAsync(DeleteWorkflowTemplateRequest,CallSettings)
-            // Additional: DeleteWorkflowTemplateAsync(DeleteWorkflowTemplateRequest,CancellationToken)
+            // Snippet: DeleteWorkflowTemplateAsync(DeleteWorkflowTemplateRequest, CallSettings)
+            // Additional: DeleteWorkflowTemplateAsync(DeleteWorkflowTemplateRequest, CancellationToken)
             // Create client
             WorkflowTemplateServiceClient workflowTemplateServiceClient = await WorkflowTemplateServiceClient.CreateAsync();
             // Initialize request argument(s)
             DeleteWorkflowTemplateRequest request = new DeleteWorkflowTemplateRequest
             {
-                WorkflowTemplateName = new WorkflowTemplateName("[PROJECT]", "[REGION]", "[WORKFLOW_TEMPLATE]"),
+                WorkflowTemplateName = WorkflowTemplateName.FromProjectRegionWorkflowTemplate("[PROJECT]", "[REGION]", "[WORKFLOW_TEMPLATE]"),
+                Version = 0,
             };
             // Make the request
             await workflowTemplateServiceClient.DeleteWorkflowTemplateAsync(request);
@@ -766,20 +1264,57 @@ namespace Google.Cloud.Dataproc.V1.Snippets
         }
 
         /// <summary>Snippet for DeleteWorkflowTemplate</summary>
-        public void DeleteWorkflowTemplate_RequestObject()
+        public void DeleteWorkflowTemplate()
         {
-            // Snippet: DeleteWorkflowTemplate(DeleteWorkflowTemplateRequest,CallSettings)
+            // Snippet: DeleteWorkflowTemplate(string, CallSettings)
             // Create client
             WorkflowTemplateServiceClient workflowTemplateServiceClient = WorkflowTemplateServiceClient.Create();
             // Initialize request argument(s)
-            DeleteWorkflowTemplateRequest request = new DeleteWorkflowTemplateRequest
-            {
-                WorkflowTemplateName = new WorkflowTemplateName("[PROJECT]", "[REGION]", "[WORKFLOW_TEMPLATE]"),
-            };
+            string name = "projects/[PROJECT]/regions/[REGION]/workflowTemplates/[WORKFLOW_TEMPLATE]";
             // Make the request
-            workflowTemplateServiceClient.DeleteWorkflowTemplate(request);
+            workflowTemplateServiceClient.DeleteWorkflowTemplate(name);
             // End snippet
         }
 
+        /// <summary>Snippet for DeleteWorkflowTemplateAsync</summary>
+        public async Task DeleteWorkflowTemplateAsync()
+        {
+            // Snippet: DeleteWorkflowTemplateAsync(string, CallSettings)
+            // Additional: DeleteWorkflowTemplateAsync(string, CancellationToken)
+            // Create client
+            WorkflowTemplateServiceClient workflowTemplateServiceClient = await WorkflowTemplateServiceClient.CreateAsync();
+            // Initialize request argument(s)
+            string name = "projects/[PROJECT]/regions/[REGION]/workflowTemplates/[WORKFLOW_TEMPLATE]";
+            // Make the request
+            await workflowTemplateServiceClient.DeleteWorkflowTemplateAsync(name);
+            // End snippet
+        }
+
+        /// <summary>Snippet for DeleteWorkflowTemplate</summary>
+        public void DeleteWorkflowTemplateResourceNames()
+        {
+            // Snippet: DeleteWorkflowTemplate(WorkflowTemplateName, CallSettings)
+            // Create client
+            WorkflowTemplateServiceClient workflowTemplateServiceClient = WorkflowTemplateServiceClient.Create();
+            // Initialize request argument(s)
+            WorkflowTemplateName name = WorkflowTemplateName.FromProjectRegionWorkflowTemplate("[PROJECT]", "[REGION]", "[WORKFLOW_TEMPLATE]");
+            // Make the request
+            workflowTemplateServiceClient.DeleteWorkflowTemplate(name);
+            // End snippet
+        }
+
+        /// <summary>Snippet for DeleteWorkflowTemplateAsync</summary>
+        public async Task DeleteWorkflowTemplateResourceNamesAsync()
+        {
+            // Snippet: DeleteWorkflowTemplateAsync(WorkflowTemplateName, CallSettings)
+            // Additional: DeleteWorkflowTemplateAsync(WorkflowTemplateName, CancellationToken)
+            // Create client
+            WorkflowTemplateServiceClient workflowTemplateServiceClient = await WorkflowTemplateServiceClient.CreateAsync();
+            // Initialize request argument(s)
+            WorkflowTemplateName name = WorkflowTemplateName.FromProjectRegionWorkflowTemplate("[PROJECT]", "[REGION]", "[WORKFLOW_TEMPLATE]");
+            // Make the request
+            await workflowTemplateServiceClient.DeleteWorkflowTemplateAsync(name);
+            // End snippet
+        }
     }
 }

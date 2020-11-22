@@ -1,4 +1,4 @@
-// Copyright 2019 Google LLC
+// Copyright 2020 Google LLC
 //
 // Licensed under the Apache License, Version 2.0 (the "License");
 // you may not use this file except in compliance with the License.
@@ -17,63 +17,44 @@
 namespace Grafeas.V1.Snippets
 {
     using Google.Api.Gax;
-    using Google.Api.Gax.Grpc;
-    using Google.Protobuf;
     using Google.Protobuf.WellKnownTypes;
-    using apis = global::Grafeas.V1;
-    using Grpc.Core;
     using System;
-    using System.Collections;
     using System.Collections.Generic;
-    using System.Collections.ObjectModel;
     using System.Linq;
-    using System.Threading;
     using System.Threading.Tasks;
 
-    /// <summary>Generated snippets</summary>
-    public class GeneratedGrafeasClientSnippets
+    /// <summary>Generated snippets.</summary>
+    public sealed class GeneratedGrafeasClientSnippets
     {
-        /// <summary>Snippet for GetOccurrenceAsync</summary>
-        public async Task GetOccurrenceAsync()
-        {
-            Channel channel = null;
-            // Snippet: GetOccurrenceAsync(OccurrenceName,CallSettings)
-            // Additional: GetOccurrenceAsync(OccurrenceName,CancellationToken)
-            // Create client
-            GrafeasClient grafeasClient = GrafeasClient.Create(channel);
-            // Initialize request argument(s)
-            OccurrenceName name = new OccurrenceName("[PROJECT]", "[OCCURRENCE]");
-            // Make the request
-            Occurrence response = await grafeasClient.GetOccurrenceAsync(name);
-            // End snippet
-        }
-
         /// <summary>Snippet for GetOccurrence</summary>
-        public void GetOccurrence()
+        public void GetOccurrenceRequestObject()
         {
-            Channel channel = null;
-            // Snippet: GetOccurrence(OccurrenceName,CallSettings)
+            string endpoint = "";
+            // Snippet: GetOccurrence(GetOccurrenceRequest, CallSettings)
             // Create client
-            GrafeasClient grafeasClient = GrafeasClient.Create(channel);
-            // Initialize request argument(s)
-            OccurrenceName name = new OccurrenceName("[PROJECT]", "[OCCURRENCE]");
-            // Make the request
-            Occurrence response = grafeasClient.GetOccurrence(name);
-            // End snippet
-        }
-
-        /// <summary>Snippet for GetOccurrenceAsync</summary>
-        public async Task GetOccurrenceAsync_RequestObject()
-        {
-            Channel channel = null;
-            // Snippet: GetOccurrenceAsync(GetOccurrenceRequest,CallSettings)
-            // Additional: GetOccurrenceAsync(GetOccurrenceRequest,CancellationToken)
-            // Create client
-            GrafeasClient grafeasClient = GrafeasClient.Create(channel);
+            GrafeasClient grafeasClient = new GrafeasClientBuilder { Endpoint = endpoint }.Build();
             // Initialize request argument(s)
             GetOccurrenceRequest request = new GetOccurrenceRequest
             {
-                OccurrenceName = new OccurrenceName("[PROJECT]", "[OCCURRENCE]"),
+                OccurrenceName = OccurrenceName.FromProjectOccurrence("[PROJECT]", "[OCCURRENCE]"),
+            };
+            // Make the request
+            Occurrence response = grafeasClient.GetOccurrence(request);
+            // End snippet
+        }
+
+        /// <summary>Snippet for GetOccurrenceAsync</summary>
+        public async Task GetOccurrenceRequestObjectAsync()
+        {
+            string endpoint = "";
+            // Snippet: GetOccurrenceAsync(GetOccurrenceRequest, CallSettings)
+            // Additional: GetOccurrenceAsync(GetOccurrenceRequest, CancellationToken)
+            // Create client
+            GrafeasClient grafeasClient = new GrafeasClientBuilder { Endpoint = endpoint }.Build();
+            // Initialize request argument(s)
+            GetOccurrenceRequest request = new GetOccurrenceRequest
+            {
+                OccurrenceName = OccurrenceName.FromProjectOccurrence("[PROJECT]", "[OCCURRENCE]"),
             };
             // Make the request
             Occurrence response = await grafeasClient.GetOccurrenceAsync(request);
@@ -81,35 +62,128 @@ namespace Grafeas.V1.Snippets
         }
 
         /// <summary>Snippet for GetOccurrence</summary>
-        public void GetOccurrence_RequestObject()
+        public void GetOccurrence()
         {
-            Channel channel = null;
-            // Snippet: GetOccurrence(GetOccurrenceRequest,CallSettings)
+            string endpoint = "";
+            // Snippet: GetOccurrence(string, CallSettings)
             // Create client
-            GrafeasClient grafeasClient = GrafeasClient.Create(channel);
+            GrafeasClient grafeasClient = new GrafeasClientBuilder { Endpoint = endpoint }.Build();
             // Initialize request argument(s)
-            GetOccurrenceRequest request = new GetOccurrenceRequest
-            {
-                OccurrenceName = new OccurrenceName("[PROJECT]", "[OCCURRENCE]"),
-            };
+            string name = "projects/[PROJECT]/occurrences/[OCCURRENCE]";
             // Make the request
-            Occurrence response = grafeasClient.GetOccurrence(request);
+            Occurrence response = grafeasClient.GetOccurrence(name);
             // End snippet
         }
 
-        /// <summary>Snippet for ListOccurrencesAsync</summary>
-        public async Task ListOccurrencesAsync()
+        /// <summary>Snippet for GetOccurrenceAsync</summary>
+        public async Task GetOccurrenceAsync()
         {
-            Channel channel = null;
-            // Snippet: ListOccurrencesAsync(ProjectName,string,string,int?,CallSettings)
+            string endpoint = "";
+            // Snippet: GetOccurrenceAsync(string, CallSettings)
+            // Additional: GetOccurrenceAsync(string, CancellationToken)
             // Create client
-            GrafeasClient grafeasClient = GrafeasClient.Create(channel);
+            GrafeasClient grafeasClient = new GrafeasClientBuilder { Endpoint = endpoint }.Build();
             // Initialize request argument(s)
-            ProjectName parent = new ProjectName("[PROJECT]");
-            string filter = "";
+            string name = "projects/[PROJECT]/occurrences/[OCCURRENCE]";
             // Make the request
-            PagedAsyncEnumerable<ListOccurrencesResponse, Occurrence> response =
-                grafeasClient.ListOccurrencesAsync(parent, filter);
+            Occurrence response = await grafeasClient.GetOccurrenceAsync(name);
+            // End snippet
+        }
+
+        /// <summary>Snippet for GetOccurrence</summary>
+        public void GetOccurrenceResourceNames()
+        {
+            string endpoint = "";
+            // Snippet: GetOccurrence(OccurrenceName, CallSettings)
+            // Create client
+            GrafeasClient grafeasClient = new GrafeasClientBuilder { Endpoint = endpoint }.Build();
+            // Initialize request argument(s)
+            OccurrenceName name = OccurrenceName.FromProjectOccurrence("[PROJECT]", "[OCCURRENCE]");
+            // Make the request
+            Occurrence response = grafeasClient.GetOccurrence(name);
+            // End snippet
+        }
+
+        /// <summary>Snippet for GetOccurrenceAsync</summary>
+        public async Task GetOccurrenceResourceNamesAsync()
+        {
+            string endpoint = "";
+            // Snippet: GetOccurrenceAsync(OccurrenceName, CallSettings)
+            // Additional: GetOccurrenceAsync(OccurrenceName, CancellationToken)
+            // Create client
+            GrafeasClient grafeasClient = new GrafeasClientBuilder { Endpoint = endpoint }.Build();
+            // Initialize request argument(s)
+            OccurrenceName name = OccurrenceName.FromProjectOccurrence("[PROJECT]", "[OCCURRENCE]");
+            // Make the request
+            Occurrence response = await grafeasClient.GetOccurrenceAsync(name);
+            // End snippet
+        }
+
+        /// <summary>Snippet for ListOccurrences</summary>
+        public void ListOccurrencesRequestObject()
+        {
+            string endpoint = "";
+            // Snippet: ListOccurrences(ListOccurrencesRequest, CallSettings)
+            // Create client
+            GrafeasClient grafeasClient = new GrafeasClientBuilder { Endpoint = endpoint }.Build();
+            // Initialize request argument(s)
+            ListOccurrencesRequest request = new ListOccurrencesRequest
+            {
+                ParentAsProjectName = ProjectName.FromProject("[PROJECT]"),
+                Filter = "",
+            };
+            // Make the request
+            PagedEnumerable<ListOccurrencesResponse, Occurrence> response = grafeasClient.ListOccurrences(request);
+
+            // Iterate over all response items, lazily performing RPCs as required
+            foreach (Occurrence item in response)
+            {
+                // Do something with each item
+                Console.WriteLine(item);
+            }
+
+            // Or iterate over pages (of server-defined size), performing one RPC per page
+            foreach (ListOccurrencesResponse page in response.AsRawResponses())
+            {
+                // Do something with each page of items
+                Console.WriteLine("A page of results:");
+                foreach (Occurrence item in page)
+                {
+                    // Do something with each item
+                    Console.WriteLine(item);
+                }
+            }
+
+            // Or retrieve a single page of known size (unless it's the final page), performing as many RPCs as required
+            int pageSize = 10;
+            Page<Occurrence> singlePage = response.ReadPage(pageSize);
+            // Do something with the page of items
+            Console.WriteLine($"A page of {pageSize} results (unless it's the final page):");
+            foreach (Occurrence item in singlePage)
+            {
+                // Do something with each item
+                Console.WriteLine(item);
+            }
+            // Store the pageToken, for when the next page is required.
+            string nextPageToken = singlePage.NextPageToken;
+            // End snippet
+        }
+
+        /// <summary>Snippet for ListOccurrences</summary>
+        public async Task ListOccurrencesRequestObjectAsync()
+        {
+            string endpoint = "";
+            // Snippet: ListOccurrencesAsync(ListOccurrencesRequest, CallSettings)
+            // Create client
+            GrafeasClient grafeasClient = new GrafeasClientBuilder { Endpoint = endpoint }.Build();
+            // Initialize request argument(s)
+            ListOccurrencesRequest request = new ListOccurrencesRequest
+            {
+                ParentAsProjectName = ProjectName.FromProject("[PROJECT]"),
+                Filter = "",
+            };
+            // Make the request
+            PagedAsyncEnumerable<ListOccurrencesResponse, Occurrence> response = grafeasClient.ListOccurrencesAsync(request);
 
             // Iterate over all response items, lazily performing RPCs as required
             await response.ForEachAsync((Occurrence item) =>
@@ -125,6 +199,7 @@ namespace Grafeas.V1.Snippets
                 Console.WriteLine("A page of results:");
                 foreach (Occurrence item in page)
                 {
+                    // Do something with each item
                     Console.WriteLine(item);
                 }
             });
@@ -136,6 +211,7 @@ namespace Grafeas.V1.Snippets
             Console.WriteLine($"A page of {pageSize} results (unless it's the final page):");
             foreach (Occurrence item in singlePage)
             {
+                // Do something with each item
                 Console.WriteLine(item);
             }
             // Store the pageToken, for when the next page is required.
@@ -146,16 +222,15 @@ namespace Grafeas.V1.Snippets
         /// <summary>Snippet for ListOccurrences</summary>
         public void ListOccurrences()
         {
-            Channel channel = null;
-            // Snippet: ListOccurrences(ProjectName,string,string,int?,CallSettings)
+            string endpoint = "";
+            // Snippet: ListOccurrences(string, string, string, int?, CallSettings)
             // Create client
-            GrafeasClient grafeasClient = GrafeasClient.Create(channel);
+            GrafeasClient grafeasClient = new GrafeasClientBuilder { Endpoint = endpoint }.Build();
             // Initialize request argument(s)
-            ProjectName parent = new ProjectName("[PROJECT]");
+            string parent = "projects/[PROJECT]";
             string filter = "";
             // Make the request
-            PagedEnumerable<ListOccurrencesResponse, Occurrence> response =
-                grafeasClient.ListOccurrences(parent, filter);
+            PagedEnumerable<ListOccurrencesResponse, Occurrence> response = grafeasClient.ListOccurrences(parent, filter);
 
             // Iterate over all response items, lazily performing RPCs as required
             foreach (Occurrence item in response)
@@ -171,6 +246,7 @@ namespace Grafeas.V1.Snippets
                 Console.WriteLine("A page of results:");
                 foreach (Occurrence item in page)
                 {
+                    // Do something with each item
                     Console.WriteLine(item);
                 }
             }
@@ -182,6 +258,7 @@ namespace Grafeas.V1.Snippets
             Console.WriteLine($"A page of {pageSize} results (unless it's the final page):");
             foreach (Occurrence item in singlePage)
             {
+                // Do something with each item
                 Console.WriteLine(item);
             }
             // Store the pageToken, for when the next page is required.
@@ -189,21 +266,18 @@ namespace Grafeas.V1.Snippets
             // End snippet
         }
 
-        /// <summary>Snippet for ListOccurrencesAsync</summary>
-        public async Task ListOccurrencesAsync_RequestObject()
+        /// <summary>Snippet for ListOccurrences</summary>
+        public async Task ListOccurrencesAsync()
         {
-            Channel channel = null;
-            // Snippet: ListOccurrencesAsync(ListOccurrencesRequest,CallSettings)
+            string endpoint = "";
+            // Snippet: ListOccurrencesAsync(string, string, string, int?, CallSettings)
             // Create client
-            GrafeasClient grafeasClient = GrafeasClient.Create(channel);
+            GrafeasClient grafeasClient = new GrafeasClientBuilder { Endpoint = endpoint }.Build();
             // Initialize request argument(s)
-            ListOccurrencesRequest request = new ListOccurrencesRequest
-            {
-                ParentAsProjectName = new ProjectName("[PROJECT]"),
-            };
+            string parent = "projects/[PROJECT]";
+            string filter = "";
             // Make the request
-            PagedAsyncEnumerable<ListOccurrencesResponse, Occurrence> response =
-                grafeasClient.ListOccurrencesAsync(request);
+            PagedAsyncEnumerable<ListOccurrencesResponse, Occurrence> response = grafeasClient.ListOccurrencesAsync(parent, filter);
 
             // Iterate over all response items, lazily performing RPCs as required
             await response.ForEachAsync((Occurrence item) =>
@@ -219,6 +293,7 @@ namespace Grafeas.V1.Snippets
                 Console.WriteLine("A page of results:");
                 foreach (Occurrence item in page)
                 {
+                    // Do something with each item
                     Console.WriteLine(item);
                 }
             });
@@ -230,6 +305,7 @@ namespace Grafeas.V1.Snippets
             Console.WriteLine($"A page of {pageSize} results (unless it's the final page):");
             foreach (Occurrence item in singlePage)
             {
+                // Do something with each item
                 Console.WriteLine(item);
             }
             // Store the pageToken, for when the next page is required.
@@ -238,20 +314,17 @@ namespace Grafeas.V1.Snippets
         }
 
         /// <summary>Snippet for ListOccurrences</summary>
-        public void ListOccurrences_RequestObject()
+        public void ListOccurrencesResourceNames()
         {
-            Channel channel = null;
-            // Snippet: ListOccurrences(ListOccurrencesRequest,CallSettings)
+            string endpoint = "";
+            // Snippet: ListOccurrences(ProjectName, string, string, int?, CallSettings)
             // Create client
-            GrafeasClient grafeasClient = GrafeasClient.Create(channel);
+            GrafeasClient grafeasClient = new GrafeasClientBuilder { Endpoint = endpoint }.Build();
             // Initialize request argument(s)
-            ListOccurrencesRequest request = new ListOccurrencesRequest
-            {
-                ParentAsProjectName = new ProjectName("[PROJECT]"),
-            };
+            ProjectName parent = ProjectName.FromProject("[PROJECT]");
+            string filter = "";
             // Make the request
-            PagedEnumerable<ListOccurrencesResponse, Occurrence> response =
-                grafeasClient.ListOccurrences(request);
+            PagedEnumerable<ListOccurrencesResponse, Occurrence> response = grafeasClient.ListOccurrences(parent, filter);
 
             // Iterate over all response items, lazily performing RPCs as required
             foreach (Occurrence item in response)
@@ -267,6 +340,7 @@ namespace Grafeas.V1.Snippets
                 Console.WriteLine("A page of results:");
                 foreach (Occurrence item in page)
                 {
+                    // Do something with each item
                     Console.WriteLine(item);
                 }
             }
@@ -278,6 +352,7 @@ namespace Grafeas.V1.Snippets
             Console.WriteLine($"A page of {pageSize} results (unless it's the final page):");
             foreach (Occurrence item in singlePage)
             {
+                // Do something with each item
                 Console.WriteLine(item);
             }
             // Store the pageToken, for when the next page is required.
@@ -285,47 +360,82 @@ namespace Grafeas.V1.Snippets
             // End snippet
         }
 
-        /// <summary>Snippet for DeleteOccurrenceAsync</summary>
-        public async Task DeleteOccurrenceAsync()
+        /// <summary>Snippet for ListOccurrences</summary>
+        public async Task ListOccurrencesResourceNamesAsync()
         {
-            Channel channel = null;
-            // Snippet: DeleteOccurrenceAsync(OccurrenceName,CallSettings)
-            // Additional: DeleteOccurrenceAsync(OccurrenceName,CancellationToken)
+            string endpoint = "";
+            // Snippet: ListOccurrencesAsync(ProjectName, string, string, int?, CallSettings)
             // Create client
-            GrafeasClient grafeasClient = GrafeasClient.Create(channel);
+            GrafeasClient grafeasClient = new GrafeasClientBuilder { Endpoint = endpoint }.Build();
             // Initialize request argument(s)
-            OccurrenceName name = new OccurrenceName("[PROJECT]", "[OCCURRENCE]");
+            ProjectName parent = ProjectName.FromProject("[PROJECT]");
+            string filter = "";
             // Make the request
-            await grafeasClient.DeleteOccurrenceAsync(name);
+            PagedAsyncEnumerable<ListOccurrencesResponse, Occurrence> response = grafeasClient.ListOccurrencesAsync(parent, filter);
+
+            // Iterate over all response items, lazily performing RPCs as required
+            await response.ForEachAsync((Occurrence item) =>
+            {
+                // Do something with each item
+                Console.WriteLine(item);
+            });
+
+            // Or iterate over pages (of server-defined size), performing one RPC per page
+            await response.AsRawResponses().ForEachAsync((ListOccurrencesResponse page) =>
+            {
+                // Do something with each page of items
+                Console.WriteLine("A page of results:");
+                foreach (Occurrence item in page)
+                {
+                    // Do something with each item
+                    Console.WriteLine(item);
+                }
+            });
+
+            // Or retrieve a single page of known size (unless it's the final page), performing as many RPCs as required
+            int pageSize = 10;
+            Page<Occurrence> singlePage = await response.ReadPageAsync(pageSize);
+            // Do something with the page of items
+            Console.WriteLine($"A page of {pageSize} results (unless it's the final page):");
+            foreach (Occurrence item in singlePage)
+            {
+                // Do something with each item
+                Console.WriteLine(item);
+            }
+            // Store the pageToken, for when the next page is required.
+            string nextPageToken = singlePage.NextPageToken;
             // End snippet
         }
 
         /// <summary>Snippet for DeleteOccurrence</summary>
-        public void DeleteOccurrence()
+        public void DeleteOccurrenceRequestObject()
         {
-            Channel channel = null;
-            // Snippet: DeleteOccurrence(OccurrenceName,CallSettings)
+            string endpoint = "";
+            // Snippet: DeleteOccurrence(DeleteOccurrenceRequest, CallSettings)
             // Create client
-            GrafeasClient grafeasClient = GrafeasClient.Create(channel);
+            GrafeasClient grafeasClient = new GrafeasClientBuilder { Endpoint = endpoint }.Build();
             // Initialize request argument(s)
-            OccurrenceName name = new OccurrenceName("[PROJECT]", "[OCCURRENCE]");
+            DeleteOccurrenceRequest request = new DeleteOccurrenceRequest
+            {
+                OccurrenceName = OccurrenceName.FromProjectOccurrence("[PROJECT]", "[OCCURRENCE]"),
+            };
             // Make the request
-            grafeasClient.DeleteOccurrence(name);
+            grafeasClient.DeleteOccurrence(request);
             // End snippet
         }
 
         /// <summary>Snippet for DeleteOccurrenceAsync</summary>
-        public async Task DeleteOccurrenceAsync_RequestObject()
+        public async Task DeleteOccurrenceRequestObjectAsync()
         {
-            Channel channel = null;
-            // Snippet: DeleteOccurrenceAsync(DeleteOccurrenceRequest,CallSettings)
-            // Additional: DeleteOccurrenceAsync(DeleteOccurrenceRequest,CancellationToken)
+            string endpoint = "";
+            // Snippet: DeleteOccurrenceAsync(DeleteOccurrenceRequest, CallSettings)
+            // Additional: DeleteOccurrenceAsync(DeleteOccurrenceRequest, CancellationToken)
             // Create client
-            GrafeasClient grafeasClient = GrafeasClient.Create(channel);
+            GrafeasClient grafeasClient = new GrafeasClientBuilder { Endpoint = endpoint }.Build();
             // Initialize request argument(s)
             DeleteOccurrenceRequest request = new DeleteOccurrenceRequest
             {
-                OccurrenceName = new OccurrenceName("[PROJECT]", "[OCCURRENCE]"),
+                OccurrenceName = OccurrenceName.FromProjectOccurrence("[PROJECT]", "[OCCURRENCE]"),
             };
             // Make the request
             await grafeasClient.DeleteOccurrenceAsync(request);
@@ -333,65 +443,93 @@ namespace Grafeas.V1.Snippets
         }
 
         /// <summary>Snippet for DeleteOccurrence</summary>
-        public void DeleteOccurrence_RequestObject()
+        public void DeleteOccurrence()
         {
-            Channel channel = null;
-            // Snippet: DeleteOccurrence(DeleteOccurrenceRequest,CallSettings)
+            string endpoint = "";
+            // Snippet: DeleteOccurrence(string, CallSettings)
             // Create client
-            GrafeasClient grafeasClient = GrafeasClient.Create(channel);
+            GrafeasClient grafeasClient = new GrafeasClientBuilder { Endpoint = endpoint }.Build();
             // Initialize request argument(s)
-            DeleteOccurrenceRequest request = new DeleteOccurrenceRequest
-            {
-                OccurrenceName = new OccurrenceName("[PROJECT]", "[OCCURRENCE]"),
-            };
+            string name = "projects/[PROJECT]/occurrences/[OCCURRENCE]";
             // Make the request
-            grafeasClient.DeleteOccurrence(request);
+            grafeasClient.DeleteOccurrence(name);
             // End snippet
         }
 
-        /// <summary>Snippet for CreateOccurrenceAsync</summary>
-        public async Task CreateOccurrenceAsync()
+        /// <summary>Snippet for DeleteOccurrenceAsync</summary>
+        public async Task DeleteOccurrenceAsync()
         {
-            Channel channel = null;
-            // Snippet: CreateOccurrenceAsync(ProjectName,Occurrence,CallSettings)
-            // Additional: CreateOccurrenceAsync(ProjectName,Occurrence,CancellationToken)
+            string endpoint = "";
+            // Snippet: DeleteOccurrenceAsync(string, CallSettings)
+            // Additional: DeleteOccurrenceAsync(string, CancellationToken)
             // Create client
-            GrafeasClient grafeasClient = GrafeasClient.Create(channel);
+            GrafeasClient grafeasClient = new GrafeasClientBuilder { Endpoint = endpoint }.Build();
             // Initialize request argument(s)
-            ProjectName parent = new ProjectName("[PROJECT]");
-            Occurrence occurrence = new Occurrence();
+            string name = "projects/[PROJECT]/occurrences/[OCCURRENCE]";
             // Make the request
-            Occurrence response = await grafeasClient.CreateOccurrenceAsync(parent, occurrence);
+            await grafeasClient.DeleteOccurrenceAsync(name);
+            // End snippet
+        }
+
+        /// <summary>Snippet for DeleteOccurrence</summary>
+        public void DeleteOccurrenceResourceNames()
+        {
+            string endpoint = "";
+            // Snippet: DeleteOccurrence(OccurrenceName, CallSettings)
+            // Create client
+            GrafeasClient grafeasClient = new GrafeasClientBuilder { Endpoint = endpoint }.Build();
+            // Initialize request argument(s)
+            OccurrenceName name = OccurrenceName.FromProjectOccurrence("[PROJECT]", "[OCCURRENCE]");
+            // Make the request
+            grafeasClient.DeleteOccurrence(name);
+            // End snippet
+        }
+
+        /// <summary>Snippet for DeleteOccurrenceAsync</summary>
+        public async Task DeleteOccurrenceResourceNamesAsync()
+        {
+            string endpoint = "";
+            // Snippet: DeleteOccurrenceAsync(OccurrenceName, CallSettings)
+            // Additional: DeleteOccurrenceAsync(OccurrenceName, CancellationToken)
+            // Create client
+            GrafeasClient grafeasClient = new GrafeasClientBuilder { Endpoint = endpoint }.Build();
+            // Initialize request argument(s)
+            OccurrenceName name = OccurrenceName.FromProjectOccurrence("[PROJECT]", "[OCCURRENCE]");
+            // Make the request
+            await grafeasClient.DeleteOccurrenceAsync(name);
             // End snippet
         }
 
         /// <summary>Snippet for CreateOccurrence</summary>
-        public void CreateOccurrence()
+        public void CreateOccurrenceRequestObject()
         {
-            Channel channel = null;
-            // Snippet: CreateOccurrence(ProjectName,Occurrence,CallSettings)
+            string endpoint = "";
+            // Snippet: CreateOccurrence(CreateOccurrenceRequest, CallSettings)
             // Create client
-            GrafeasClient grafeasClient = GrafeasClient.Create(channel);
+            GrafeasClient grafeasClient = new GrafeasClientBuilder { Endpoint = endpoint }.Build();
             // Initialize request argument(s)
-            ProjectName parent = new ProjectName("[PROJECT]");
-            Occurrence occurrence = new Occurrence();
+            CreateOccurrenceRequest request = new CreateOccurrenceRequest
+            {
+                ParentAsProjectName = ProjectName.FromProject("[PROJECT]"),
+                Occurrence = new Occurrence(),
+            };
             // Make the request
-            Occurrence response = grafeasClient.CreateOccurrence(parent, occurrence);
+            Occurrence response = grafeasClient.CreateOccurrence(request);
             // End snippet
         }
 
         /// <summary>Snippet for CreateOccurrenceAsync</summary>
-        public async Task CreateOccurrenceAsync_RequestObject()
+        public async Task CreateOccurrenceRequestObjectAsync()
         {
-            Channel channel = null;
-            // Snippet: CreateOccurrenceAsync(CreateOccurrenceRequest,CallSettings)
-            // Additional: CreateOccurrenceAsync(CreateOccurrenceRequest,CancellationToken)
+            string endpoint = "";
+            // Snippet: CreateOccurrenceAsync(CreateOccurrenceRequest, CallSettings)
+            // Additional: CreateOccurrenceAsync(CreateOccurrenceRequest, CancellationToken)
             // Create client
-            GrafeasClient grafeasClient = GrafeasClient.Create(channel);
+            GrafeasClient grafeasClient = new GrafeasClientBuilder { Endpoint = endpoint }.Build();
             // Initialize request argument(s)
             CreateOccurrenceRequest request = new CreateOccurrenceRequest
             {
-                ParentAsProjectName = new ProjectName("[PROJECT]"),
+                ParentAsProjectName = ProjectName.FromProject("[PROJECT]"),
                 Occurrence = new Occurrence(),
             };
             // Make the request
@@ -400,67 +538,98 @@ namespace Grafeas.V1.Snippets
         }
 
         /// <summary>Snippet for CreateOccurrence</summary>
-        public void CreateOccurrence_RequestObject()
+        public void CreateOccurrence()
         {
-            Channel channel = null;
-            // Snippet: CreateOccurrence(CreateOccurrenceRequest,CallSettings)
+            string endpoint = "";
+            // Snippet: CreateOccurrence(string, Occurrence, CallSettings)
             // Create client
-            GrafeasClient grafeasClient = GrafeasClient.Create(channel);
+            GrafeasClient grafeasClient = new GrafeasClientBuilder { Endpoint = endpoint }.Build();
             // Initialize request argument(s)
-            CreateOccurrenceRequest request = new CreateOccurrenceRequest
-            {
-                ParentAsProjectName = new ProjectName("[PROJECT]"),
-                Occurrence = new Occurrence(),
-            };
+            string parent = "projects/[PROJECT]";
+            Occurrence occurrence = new Occurrence();
             // Make the request
-            Occurrence response = grafeasClient.CreateOccurrence(request);
+            Occurrence response = grafeasClient.CreateOccurrence(parent, occurrence);
             // End snippet
         }
 
-        /// <summary>Snippet for BatchCreateOccurrencesAsync</summary>
-        public async Task BatchCreateOccurrencesAsync()
+        /// <summary>Snippet for CreateOccurrenceAsync</summary>
+        public async Task CreateOccurrenceAsync()
         {
-            Channel channel = null;
-            // Snippet: BatchCreateOccurrencesAsync(ProjectName,IEnumerable<Occurrence>,CallSettings)
-            // Additional: BatchCreateOccurrencesAsync(ProjectName,IEnumerable<Occurrence>,CancellationToken)
+            string endpoint = "";
+            // Snippet: CreateOccurrenceAsync(string, Occurrence, CallSettings)
+            // Additional: CreateOccurrenceAsync(string, Occurrence, CancellationToken)
             // Create client
-            GrafeasClient grafeasClient = GrafeasClient.Create(channel);
+            GrafeasClient grafeasClient = new GrafeasClientBuilder { Endpoint = endpoint }.Build();
             // Initialize request argument(s)
-            ProjectName parent = new ProjectName("[PROJECT]");
-            IEnumerable<Occurrence> occurrences = new List<Occurrence>();
+            string parent = "projects/[PROJECT]";
+            Occurrence occurrence = new Occurrence();
             // Make the request
-            BatchCreateOccurrencesResponse response = await grafeasClient.BatchCreateOccurrencesAsync(parent, occurrences);
+            Occurrence response = await grafeasClient.CreateOccurrenceAsync(parent, occurrence);
+            // End snippet
+        }
+
+        /// <summary>Snippet for CreateOccurrence</summary>
+        public void CreateOccurrenceResourceNames()
+        {
+            string endpoint = "";
+            // Snippet: CreateOccurrence(ProjectName, Occurrence, CallSettings)
+            // Create client
+            GrafeasClient grafeasClient = new GrafeasClientBuilder { Endpoint = endpoint }.Build();
+            // Initialize request argument(s)
+            ProjectName parent = ProjectName.FromProject("[PROJECT]");
+            Occurrence occurrence = new Occurrence();
+            // Make the request
+            Occurrence response = grafeasClient.CreateOccurrence(parent, occurrence);
+            // End snippet
+        }
+
+        /// <summary>Snippet for CreateOccurrenceAsync</summary>
+        public async Task CreateOccurrenceResourceNamesAsync()
+        {
+            string endpoint = "";
+            // Snippet: CreateOccurrenceAsync(ProjectName, Occurrence, CallSettings)
+            // Additional: CreateOccurrenceAsync(ProjectName, Occurrence, CancellationToken)
+            // Create client
+            GrafeasClient grafeasClient = new GrafeasClientBuilder { Endpoint = endpoint }.Build();
+            // Initialize request argument(s)
+            ProjectName parent = ProjectName.FromProject("[PROJECT]");
+            Occurrence occurrence = new Occurrence();
+            // Make the request
+            Occurrence response = await grafeasClient.CreateOccurrenceAsync(parent, occurrence);
             // End snippet
         }
 
         /// <summary>Snippet for BatchCreateOccurrences</summary>
-        public void BatchCreateOccurrences()
+        public void BatchCreateOccurrencesRequestObject()
         {
-            Channel channel = null;
-            // Snippet: BatchCreateOccurrences(ProjectName,IEnumerable<Occurrence>,CallSettings)
+            string endpoint = "";
+            // Snippet: BatchCreateOccurrences(BatchCreateOccurrencesRequest, CallSettings)
             // Create client
-            GrafeasClient grafeasClient = GrafeasClient.Create(channel);
+            GrafeasClient grafeasClient = new GrafeasClientBuilder { Endpoint = endpoint }.Build();
             // Initialize request argument(s)
-            ProjectName parent = new ProjectName("[PROJECT]");
-            IEnumerable<Occurrence> occurrences = new List<Occurrence>();
+            BatchCreateOccurrencesRequest request = new BatchCreateOccurrencesRequest
+            {
+                ParentAsProjectName = ProjectName.FromProject("[PROJECT]"),
+                Occurrences = { new Occurrence(), },
+            };
             // Make the request
-            BatchCreateOccurrencesResponse response = grafeasClient.BatchCreateOccurrences(parent, occurrences);
+            BatchCreateOccurrencesResponse response = grafeasClient.BatchCreateOccurrences(request);
             // End snippet
         }
 
         /// <summary>Snippet for BatchCreateOccurrencesAsync</summary>
-        public async Task BatchCreateOccurrencesAsync_RequestObject()
+        public async Task BatchCreateOccurrencesRequestObjectAsync()
         {
-            Channel channel = null;
-            // Snippet: BatchCreateOccurrencesAsync(BatchCreateOccurrencesRequest,CallSettings)
-            // Additional: BatchCreateOccurrencesAsync(BatchCreateOccurrencesRequest,CancellationToken)
+            string endpoint = "";
+            // Snippet: BatchCreateOccurrencesAsync(BatchCreateOccurrencesRequest, CallSettings)
+            // Additional: BatchCreateOccurrencesAsync(BatchCreateOccurrencesRequest, CancellationToken)
             // Create client
-            GrafeasClient grafeasClient = GrafeasClient.Create(channel);
+            GrafeasClient grafeasClient = new GrafeasClientBuilder { Endpoint = endpoint }.Build();
             // Initialize request argument(s)
             BatchCreateOccurrencesRequest request = new BatchCreateOccurrencesRequest
             {
-                ParentAsProjectName = new ProjectName("[PROJECT]"),
-                Occurrences = { },
+                ParentAsProjectName = ProjectName.FromProject("[PROJECT]"),
+                Occurrences = { new Occurrence(), },
             };
             // Make the request
             BatchCreateOccurrencesResponse response = await grafeasClient.BatchCreateOccurrencesAsync(request);
@@ -468,49 +637,115 @@ namespace Grafeas.V1.Snippets
         }
 
         /// <summary>Snippet for BatchCreateOccurrences</summary>
-        public void BatchCreateOccurrences_RequestObject()
+        public void BatchCreateOccurrences()
         {
-            Channel channel = null;
-            // Snippet: BatchCreateOccurrences(BatchCreateOccurrencesRequest,CallSettings)
+            string endpoint = "";
+            // Snippet: BatchCreateOccurrences(string, IEnumerable<Occurrence>, CallSettings)
             // Create client
-            GrafeasClient grafeasClient = GrafeasClient.Create(channel);
+            GrafeasClient grafeasClient = new GrafeasClientBuilder { Endpoint = endpoint }.Build();
             // Initialize request argument(s)
-            BatchCreateOccurrencesRequest request = new BatchCreateOccurrencesRequest
+            string parent = "projects/[PROJECT]";
+            IEnumerable<Occurrence> occurrences = new Occurrence[] { new Occurrence(), };
+            // Make the request
+            BatchCreateOccurrencesResponse response = grafeasClient.BatchCreateOccurrences(parent, occurrences);
+            // End snippet
+        }
+
+        /// <summary>Snippet for BatchCreateOccurrencesAsync</summary>
+        public async Task BatchCreateOccurrencesAsync()
+        {
+            string endpoint = "";
+            // Snippet: BatchCreateOccurrencesAsync(string, IEnumerable<Occurrence>, CallSettings)
+            // Additional: BatchCreateOccurrencesAsync(string, IEnumerable<Occurrence>, CancellationToken)
+            // Create client
+            GrafeasClient grafeasClient = new GrafeasClientBuilder { Endpoint = endpoint }.Build();
+            // Initialize request argument(s)
+            string parent = "projects/[PROJECT]";
+            IEnumerable<Occurrence> occurrences = new Occurrence[] { new Occurrence(), };
+            // Make the request
+            BatchCreateOccurrencesResponse response = await grafeasClient.BatchCreateOccurrencesAsync(parent, occurrences);
+            // End snippet
+        }
+
+        /// <summary>Snippet for BatchCreateOccurrences</summary>
+        public void BatchCreateOccurrencesResourceNames()
+        {
+            string endpoint = "";
+            // Snippet: BatchCreateOccurrences(ProjectName, IEnumerable<Occurrence>, CallSettings)
+            // Create client
+            GrafeasClient grafeasClient = new GrafeasClientBuilder { Endpoint = endpoint }.Build();
+            // Initialize request argument(s)
+            ProjectName parent = ProjectName.FromProject("[PROJECT]");
+            IEnumerable<Occurrence> occurrences = new Occurrence[] { new Occurrence(), };
+            // Make the request
+            BatchCreateOccurrencesResponse response = grafeasClient.BatchCreateOccurrences(parent, occurrences);
+            // End snippet
+        }
+
+        /// <summary>Snippet for BatchCreateOccurrencesAsync</summary>
+        public async Task BatchCreateOccurrencesResourceNamesAsync()
+        {
+            string endpoint = "";
+            // Snippet: BatchCreateOccurrencesAsync(ProjectName, IEnumerable<Occurrence>, CallSettings)
+            // Additional: BatchCreateOccurrencesAsync(ProjectName, IEnumerable<Occurrence>, CancellationToken)
+            // Create client
+            GrafeasClient grafeasClient = new GrafeasClientBuilder { Endpoint = endpoint }.Build();
+            // Initialize request argument(s)
+            ProjectName parent = ProjectName.FromProject("[PROJECT]");
+            IEnumerable<Occurrence> occurrences = new Occurrence[] { new Occurrence(), };
+            // Make the request
+            BatchCreateOccurrencesResponse response = await grafeasClient.BatchCreateOccurrencesAsync(parent, occurrences);
+            // End snippet
+        }
+
+        /// <summary>Snippet for UpdateOccurrence</summary>
+        public void UpdateOccurrenceRequestObject()
+        {
+            string endpoint = "";
+            // Snippet: UpdateOccurrence(UpdateOccurrenceRequest, CallSettings)
+            // Create client
+            GrafeasClient grafeasClient = new GrafeasClientBuilder { Endpoint = endpoint }.Build();
+            // Initialize request argument(s)
+            UpdateOccurrenceRequest request = new UpdateOccurrenceRequest
             {
-                ParentAsProjectName = new ProjectName("[PROJECT]"),
-                Occurrences = { },
+                OccurrenceName = OccurrenceName.FromProjectOccurrence("[PROJECT]", "[OCCURRENCE]"),
+                Occurrence = new Occurrence(),
+                UpdateMask = new FieldMask(),
             };
             // Make the request
-            BatchCreateOccurrencesResponse response = grafeasClient.BatchCreateOccurrences(request);
+            Occurrence response = grafeasClient.UpdateOccurrence(request);
             // End snippet
         }
 
         /// <summary>Snippet for UpdateOccurrenceAsync</summary>
-        public async Task UpdateOccurrenceAsync()
+        public async Task UpdateOccurrenceRequestObjectAsync()
         {
-            Channel channel = null;
-            // Snippet: UpdateOccurrenceAsync(OccurrenceName,Occurrence,FieldMask,CallSettings)
-            // Additional: UpdateOccurrenceAsync(OccurrenceName,Occurrence,FieldMask,CancellationToken)
+            string endpoint = "";
+            // Snippet: UpdateOccurrenceAsync(UpdateOccurrenceRequest, CallSettings)
+            // Additional: UpdateOccurrenceAsync(UpdateOccurrenceRequest, CancellationToken)
             // Create client
-            GrafeasClient grafeasClient = GrafeasClient.Create(channel);
+            GrafeasClient grafeasClient = new GrafeasClientBuilder { Endpoint = endpoint }.Build();
             // Initialize request argument(s)
-            OccurrenceName name = new OccurrenceName("[PROJECT]", "[OCCURRENCE]");
-            Occurrence occurrence = new Occurrence();
-            FieldMask updateMask = new FieldMask();
+            UpdateOccurrenceRequest request = new UpdateOccurrenceRequest
+            {
+                OccurrenceName = OccurrenceName.FromProjectOccurrence("[PROJECT]", "[OCCURRENCE]"),
+                Occurrence = new Occurrence(),
+                UpdateMask = new FieldMask(),
+            };
             // Make the request
-            Occurrence response = await grafeasClient.UpdateOccurrenceAsync(name, occurrence, updateMask);
+            Occurrence response = await grafeasClient.UpdateOccurrenceAsync(request);
             // End snippet
         }
 
         /// <summary>Snippet for UpdateOccurrence</summary>
         public void UpdateOccurrence()
         {
-            Channel channel = null;
-            // Snippet: UpdateOccurrence(OccurrenceName,Occurrence,FieldMask,CallSettings)
+            string endpoint = "";
+            // Snippet: UpdateOccurrence(string, Occurrence, FieldMask, CallSettings)
             // Create client
-            GrafeasClient grafeasClient = GrafeasClient.Create(channel);
+            GrafeasClient grafeasClient = new GrafeasClientBuilder { Endpoint = endpoint }.Build();
             // Initialize request argument(s)
-            OccurrenceName name = new OccurrenceName("[PROJECT]", "[OCCURRENCE]");
+            string name = "projects/[PROJECT]/occurrences/[OCCURRENCE]";
             Occurrence occurrence = new Occurrence();
             FieldMask updateMask = new FieldMask();
             // Make the request
@@ -519,83 +754,84 @@ namespace Grafeas.V1.Snippets
         }
 
         /// <summary>Snippet for UpdateOccurrenceAsync</summary>
-        public async Task UpdateOccurrenceAsync_RequestObject()
+        public async Task UpdateOccurrenceAsync()
         {
-            Channel channel = null;
-            // Snippet: UpdateOccurrenceAsync(UpdateOccurrenceRequest,CallSettings)
-            // Additional: UpdateOccurrenceAsync(UpdateOccurrenceRequest,CancellationToken)
+            string endpoint = "";
+            // Snippet: UpdateOccurrenceAsync(string, Occurrence, FieldMask, CallSettings)
+            // Additional: UpdateOccurrenceAsync(string, Occurrence, FieldMask, CancellationToken)
             // Create client
-            GrafeasClient grafeasClient = GrafeasClient.Create(channel);
+            GrafeasClient grafeasClient = new GrafeasClientBuilder { Endpoint = endpoint }.Build();
             // Initialize request argument(s)
-            UpdateOccurrenceRequest request = new UpdateOccurrenceRequest
-            {
-                OccurrenceName = new OccurrenceName("[PROJECT]", "[OCCURRENCE]"),
-                Occurrence = new Occurrence(),
-            };
+            string name = "projects/[PROJECT]/occurrences/[OCCURRENCE]";
+            Occurrence occurrence = new Occurrence();
+            FieldMask updateMask = new FieldMask();
             // Make the request
-            Occurrence response = await grafeasClient.UpdateOccurrenceAsync(request);
+            Occurrence response = await grafeasClient.UpdateOccurrenceAsync(name, occurrence, updateMask);
             // End snippet
         }
 
         /// <summary>Snippet for UpdateOccurrence</summary>
-        public void UpdateOccurrence_RequestObject()
+        public void UpdateOccurrenceResourceNames()
         {
-            Channel channel = null;
-            // Snippet: UpdateOccurrence(UpdateOccurrenceRequest,CallSettings)
+            string endpoint = "";
+            // Snippet: UpdateOccurrence(OccurrenceName, Occurrence, FieldMask, CallSettings)
             // Create client
-            GrafeasClient grafeasClient = GrafeasClient.Create(channel);
+            GrafeasClient grafeasClient = new GrafeasClientBuilder { Endpoint = endpoint }.Build();
             // Initialize request argument(s)
-            UpdateOccurrenceRequest request = new UpdateOccurrenceRequest
-            {
-                OccurrenceName = new OccurrenceName("[PROJECT]", "[OCCURRENCE]"),
-                Occurrence = new Occurrence(),
-            };
+            OccurrenceName name = OccurrenceName.FromProjectOccurrence("[PROJECT]", "[OCCURRENCE]");
+            Occurrence occurrence = new Occurrence();
+            FieldMask updateMask = new FieldMask();
             // Make the request
-            Occurrence response = grafeasClient.UpdateOccurrence(request);
+            Occurrence response = grafeasClient.UpdateOccurrence(name, occurrence, updateMask);
             // End snippet
         }
 
-        /// <summary>Snippet for GetOccurrenceNoteAsync</summary>
-        public async Task GetOccurrenceNoteAsync()
+        /// <summary>Snippet for UpdateOccurrenceAsync</summary>
+        public async Task UpdateOccurrenceResourceNamesAsync()
         {
-            Channel channel = null;
-            // Snippet: GetOccurrenceNoteAsync(OccurrenceName,CallSettings)
-            // Additional: GetOccurrenceNoteAsync(OccurrenceName,CancellationToken)
+            string endpoint = "";
+            // Snippet: UpdateOccurrenceAsync(OccurrenceName, Occurrence, FieldMask, CallSettings)
+            // Additional: UpdateOccurrenceAsync(OccurrenceName, Occurrence, FieldMask, CancellationToken)
             // Create client
-            GrafeasClient grafeasClient = GrafeasClient.Create(channel);
+            GrafeasClient grafeasClient = new GrafeasClientBuilder { Endpoint = endpoint }.Build();
             // Initialize request argument(s)
-            OccurrenceName name = new OccurrenceName("[PROJECT]", "[OCCURRENCE]");
+            OccurrenceName name = OccurrenceName.FromProjectOccurrence("[PROJECT]", "[OCCURRENCE]");
+            Occurrence occurrence = new Occurrence();
+            FieldMask updateMask = new FieldMask();
             // Make the request
-            Note response = await grafeasClient.GetOccurrenceNoteAsync(name);
+            Occurrence response = await grafeasClient.UpdateOccurrenceAsync(name, occurrence, updateMask);
             // End snippet
         }
 
         /// <summary>Snippet for GetOccurrenceNote</summary>
-        public void GetOccurrenceNote()
+        public void GetOccurrenceNoteRequestObject()
         {
-            Channel channel = null;
-            // Snippet: GetOccurrenceNote(OccurrenceName,CallSettings)
+            string endpoint = "";
+            // Snippet: GetOccurrenceNote(GetOccurrenceNoteRequest, CallSettings)
             // Create client
-            GrafeasClient grafeasClient = GrafeasClient.Create(channel);
+            GrafeasClient grafeasClient = new GrafeasClientBuilder { Endpoint = endpoint }.Build();
             // Initialize request argument(s)
-            OccurrenceName name = new OccurrenceName("[PROJECT]", "[OCCURRENCE]");
+            GetOccurrenceNoteRequest request = new GetOccurrenceNoteRequest
+            {
+                OccurrenceName = OccurrenceName.FromProjectOccurrence("[PROJECT]", "[OCCURRENCE]"),
+            };
             // Make the request
-            Note response = grafeasClient.GetOccurrenceNote(name);
+            Note response = grafeasClient.GetOccurrenceNote(request);
             // End snippet
         }
 
         /// <summary>Snippet for GetOccurrenceNoteAsync</summary>
-        public async Task GetOccurrenceNoteAsync_RequestObject()
+        public async Task GetOccurrenceNoteRequestObjectAsync()
         {
-            Channel channel = null;
-            // Snippet: GetOccurrenceNoteAsync(GetOccurrenceNoteRequest,CallSettings)
-            // Additional: GetOccurrenceNoteAsync(GetOccurrenceNoteRequest,CancellationToken)
+            string endpoint = "";
+            // Snippet: GetOccurrenceNoteAsync(GetOccurrenceNoteRequest, CallSettings)
+            // Additional: GetOccurrenceNoteAsync(GetOccurrenceNoteRequest, CancellationToken)
             // Create client
-            GrafeasClient grafeasClient = GrafeasClient.Create(channel);
+            GrafeasClient grafeasClient = new GrafeasClientBuilder { Endpoint = endpoint }.Build();
             // Initialize request argument(s)
             GetOccurrenceNoteRequest request = new GetOccurrenceNoteRequest
             {
-                OccurrenceName = new OccurrenceName("[PROJECT]", "[OCCURRENCE]"),
+                OccurrenceName = OccurrenceName.FromProjectOccurrence("[PROJECT]", "[OCCURRENCE]"),
             };
             // Make the request
             Note response = await grafeasClient.GetOccurrenceNoteAsync(request);
@@ -603,63 +839,92 @@ namespace Grafeas.V1.Snippets
         }
 
         /// <summary>Snippet for GetOccurrenceNote</summary>
-        public void GetOccurrenceNote_RequestObject()
+        public void GetOccurrenceNote()
         {
-            Channel channel = null;
-            // Snippet: GetOccurrenceNote(GetOccurrenceNoteRequest,CallSettings)
+            string endpoint = "";
+            // Snippet: GetOccurrenceNote(string, CallSettings)
             // Create client
-            GrafeasClient grafeasClient = GrafeasClient.Create(channel);
+            GrafeasClient grafeasClient = new GrafeasClientBuilder { Endpoint = endpoint }.Build();
             // Initialize request argument(s)
-            GetOccurrenceNoteRequest request = new GetOccurrenceNoteRequest
-            {
-                OccurrenceName = new OccurrenceName("[PROJECT]", "[OCCURRENCE]"),
-            };
+            string name = "projects/[PROJECT]/occurrences/[OCCURRENCE]";
             // Make the request
-            Note response = grafeasClient.GetOccurrenceNote(request);
+            Note response = grafeasClient.GetOccurrenceNote(name);
             // End snippet
         }
 
-        /// <summary>Snippet for GetNoteAsync</summary>
-        public async Task GetNoteAsync()
+        /// <summary>Snippet for GetOccurrenceNoteAsync</summary>
+        public async Task GetOccurrenceNoteAsync()
         {
-            Channel channel = null;
-            // Snippet: GetNoteAsync(NoteName,CallSettings)
-            // Additional: GetNoteAsync(NoteName,CancellationToken)
+            string endpoint = "";
+            // Snippet: GetOccurrenceNoteAsync(string, CallSettings)
+            // Additional: GetOccurrenceNoteAsync(string, CancellationToken)
             // Create client
-            GrafeasClient grafeasClient = GrafeasClient.Create(channel);
+            GrafeasClient grafeasClient = new GrafeasClientBuilder { Endpoint = endpoint }.Build();
             // Initialize request argument(s)
-            NoteName name = new NoteName("[PROJECT]", "[NOTE]");
+            string name = "projects/[PROJECT]/occurrences/[OCCURRENCE]";
             // Make the request
-            Note response = await grafeasClient.GetNoteAsync(name);
+            Note response = await grafeasClient.GetOccurrenceNoteAsync(name);
+            // End snippet
+        }
+
+        /// <summary>Snippet for GetOccurrenceNote</summary>
+        public void GetOccurrenceNoteResourceNames()
+        {
+            string endpoint = "";
+            // Snippet: GetOccurrenceNote(OccurrenceName, CallSettings)
+            // Create client
+            GrafeasClient grafeasClient = new GrafeasClientBuilder { Endpoint = endpoint }.Build();
+            // Initialize request argument(s)
+            OccurrenceName name = OccurrenceName.FromProjectOccurrence("[PROJECT]", "[OCCURRENCE]");
+            // Make the request
+            Note response = grafeasClient.GetOccurrenceNote(name);
+            // End snippet
+        }
+
+        /// <summary>Snippet for GetOccurrenceNoteAsync</summary>
+        public async Task GetOccurrenceNoteResourceNamesAsync()
+        {
+            string endpoint = "";
+            // Snippet: GetOccurrenceNoteAsync(OccurrenceName, CallSettings)
+            // Additional: GetOccurrenceNoteAsync(OccurrenceName, CancellationToken)
+            // Create client
+            GrafeasClient grafeasClient = new GrafeasClientBuilder { Endpoint = endpoint }.Build();
+            // Initialize request argument(s)
+            OccurrenceName name = OccurrenceName.FromProjectOccurrence("[PROJECT]", "[OCCURRENCE]");
+            // Make the request
+            Note response = await grafeasClient.GetOccurrenceNoteAsync(name);
             // End snippet
         }
 
         /// <summary>Snippet for GetNote</summary>
-        public void GetNote()
+        public void GetNoteRequestObject()
         {
-            Channel channel = null;
-            // Snippet: GetNote(NoteName,CallSettings)
+            string endpoint = "";
+            // Snippet: GetNote(GetNoteRequest, CallSettings)
             // Create client
-            GrafeasClient grafeasClient = GrafeasClient.Create(channel);
+            GrafeasClient grafeasClient = new GrafeasClientBuilder { Endpoint = endpoint }.Build();
             // Initialize request argument(s)
-            NoteName name = new NoteName("[PROJECT]", "[NOTE]");
+            GetNoteRequest request = new GetNoteRequest
+            {
+                NoteName = NoteName.FromProjectNote("[PROJECT]", "[NOTE]"),
+            };
             // Make the request
-            Note response = grafeasClient.GetNote(name);
+            Note response = grafeasClient.GetNote(request);
             // End snippet
         }
 
         /// <summary>Snippet for GetNoteAsync</summary>
-        public async Task GetNoteAsync_RequestObject()
+        public async Task GetNoteRequestObjectAsync()
         {
-            Channel channel = null;
-            // Snippet: GetNoteAsync(GetNoteRequest,CallSettings)
-            // Additional: GetNoteAsync(GetNoteRequest,CancellationToken)
+            string endpoint = "";
+            // Snippet: GetNoteAsync(GetNoteRequest, CallSettings)
+            // Additional: GetNoteAsync(GetNoteRequest, CancellationToken)
             // Create client
-            GrafeasClient grafeasClient = GrafeasClient.Create(channel);
+            GrafeasClient grafeasClient = new GrafeasClientBuilder { Endpoint = endpoint }.Build();
             // Initialize request argument(s)
             GetNoteRequest request = new GetNoteRequest
             {
-                NoteName = new NoteName("[PROJECT]", "[NOTE]"),
+                NoteName = NoteName.FromProjectNote("[PROJECT]", "[NOTE]"),
             };
             // Make the request
             Note response = await grafeasClient.GetNoteAsync(request);
@@ -667,35 +932,128 @@ namespace Grafeas.V1.Snippets
         }
 
         /// <summary>Snippet for GetNote</summary>
-        public void GetNote_RequestObject()
+        public void GetNote()
         {
-            Channel channel = null;
-            // Snippet: GetNote(GetNoteRequest,CallSettings)
+            string endpoint = "";
+            // Snippet: GetNote(string, CallSettings)
             // Create client
-            GrafeasClient grafeasClient = GrafeasClient.Create(channel);
+            GrafeasClient grafeasClient = new GrafeasClientBuilder { Endpoint = endpoint }.Build();
             // Initialize request argument(s)
-            GetNoteRequest request = new GetNoteRequest
-            {
-                NoteName = new NoteName("[PROJECT]", "[NOTE]"),
-            };
+            string name = "projects/[PROJECT]/notes/[NOTE]";
             // Make the request
-            Note response = grafeasClient.GetNote(request);
+            Note response = grafeasClient.GetNote(name);
             // End snippet
         }
 
-        /// <summary>Snippet for ListNotesAsync</summary>
-        public async Task ListNotesAsync()
+        /// <summary>Snippet for GetNoteAsync</summary>
+        public async Task GetNoteAsync()
         {
-            Channel channel = null;
-            // Snippet: ListNotesAsync(ProjectName,string,string,int?,CallSettings)
+            string endpoint = "";
+            // Snippet: GetNoteAsync(string, CallSettings)
+            // Additional: GetNoteAsync(string, CancellationToken)
             // Create client
-            GrafeasClient grafeasClient = GrafeasClient.Create(channel);
+            GrafeasClient grafeasClient = new GrafeasClientBuilder { Endpoint = endpoint }.Build();
             // Initialize request argument(s)
-            ProjectName parent = new ProjectName("[PROJECT]");
-            string filter = "";
+            string name = "projects/[PROJECT]/notes/[NOTE]";
             // Make the request
-            PagedAsyncEnumerable<ListNotesResponse, Note> response =
-                grafeasClient.ListNotesAsync(parent, filter);
+            Note response = await grafeasClient.GetNoteAsync(name);
+            // End snippet
+        }
+
+        /// <summary>Snippet for GetNote</summary>
+        public void GetNoteResourceNames()
+        {
+            string endpoint = "";
+            // Snippet: GetNote(NoteName, CallSettings)
+            // Create client
+            GrafeasClient grafeasClient = new GrafeasClientBuilder { Endpoint = endpoint }.Build();
+            // Initialize request argument(s)
+            NoteName name = NoteName.FromProjectNote("[PROJECT]", "[NOTE]");
+            // Make the request
+            Note response = grafeasClient.GetNote(name);
+            // End snippet
+        }
+
+        /// <summary>Snippet for GetNoteAsync</summary>
+        public async Task GetNoteResourceNamesAsync()
+        {
+            string endpoint = "";
+            // Snippet: GetNoteAsync(NoteName, CallSettings)
+            // Additional: GetNoteAsync(NoteName, CancellationToken)
+            // Create client
+            GrafeasClient grafeasClient = new GrafeasClientBuilder { Endpoint = endpoint }.Build();
+            // Initialize request argument(s)
+            NoteName name = NoteName.FromProjectNote("[PROJECT]", "[NOTE]");
+            // Make the request
+            Note response = await grafeasClient.GetNoteAsync(name);
+            // End snippet
+        }
+
+        /// <summary>Snippet for ListNotes</summary>
+        public void ListNotesRequestObject()
+        {
+            string endpoint = "";
+            // Snippet: ListNotes(ListNotesRequest, CallSettings)
+            // Create client
+            GrafeasClient grafeasClient = new GrafeasClientBuilder { Endpoint = endpoint }.Build();
+            // Initialize request argument(s)
+            ListNotesRequest request = new ListNotesRequest
+            {
+                ParentAsProjectName = ProjectName.FromProject("[PROJECT]"),
+                Filter = "",
+            };
+            // Make the request
+            PagedEnumerable<ListNotesResponse, Note> response = grafeasClient.ListNotes(request);
+
+            // Iterate over all response items, lazily performing RPCs as required
+            foreach (Note item in response)
+            {
+                // Do something with each item
+                Console.WriteLine(item);
+            }
+
+            // Or iterate over pages (of server-defined size), performing one RPC per page
+            foreach (ListNotesResponse page in response.AsRawResponses())
+            {
+                // Do something with each page of items
+                Console.WriteLine("A page of results:");
+                foreach (Note item in page)
+                {
+                    // Do something with each item
+                    Console.WriteLine(item);
+                }
+            }
+
+            // Or retrieve a single page of known size (unless it's the final page), performing as many RPCs as required
+            int pageSize = 10;
+            Page<Note> singlePage = response.ReadPage(pageSize);
+            // Do something with the page of items
+            Console.WriteLine($"A page of {pageSize} results (unless it's the final page):");
+            foreach (Note item in singlePage)
+            {
+                // Do something with each item
+                Console.WriteLine(item);
+            }
+            // Store the pageToken, for when the next page is required.
+            string nextPageToken = singlePage.NextPageToken;
+            // End snippet
+        }
+
+        /// <summary>Snippet for ListNotes</summary>
+        public async Task ListNotesRequestObjectAsync()
+        {
+            string endpoint = "";
+            // Snippet: ListNotesAsync(ListNotesRequest, CallSettings)
+            // Create client
+            GrafeasClient grafeasClient = new GrafeasClientBuilder { Endpoint = endpoint }.Build();
+            // Initialize request argument(s)
+            ListNotesRequest request = new ListNotesRequest
+            {
+                ParentAsProjectName = ProjectName.FromProject("[PROJECT]"),
+                Filter = "",
+            };
+            // Make the request
+            PagedAsyncEnumerable<ListNotesResponse, Note> response = grafeasClient.ListNotesAsync(request);
 
             // Iterate over all response items, lazily performing RPCs as required
             await response.ForEachAsync((Note item) =>
@@ -711,6 +1069,7 @@ namespace Grafeas.V1.Snippets
                 Console.WriteLine("A page of results:");
                 foreach (Note item in page)
                 {
+                    // Do something with each item
                     Console.WriteLine(item);
                 }
             });
@@ -722,6 +1081,7 @@ namespace Grafeas.V1.Snippets
             Console.WriteLine($"A page of {pageSize} results (unless it's the final page):");
             foreach (Note item in singlePage)
             {
+                // Do something with each item
                 Console.WriteLine(item);
             }
             // Store the pageToken, for when the next page is required.
@@ -732,16 +1092,15 @@ namespace Grafeas.V1.Snippets
         /// <summary>Snippet for ListNotes</summary>
         public void ListNotes()
         {
-            Channel channel = null;
-            // Snippet: ListNotes(ProjectName,string,string,int?,CallSettings)
+            string endpoint = "";
+            // Snippet: ListNotes(string, string, string, int?, CallSettings)
             // Create client
-            GrafeasClient grafeasClient = GrafeasClient.Create(channel);
+            GrafeasClient grafeasClient = new GrafeasClientBuilder { Endpoint = endpoint }.Build();
             // Initialize request argument(s)
-            ProjectName parent = new ProjectName("[PROJECT]");
+            string parent = "projects/[PROJECT]";
             string filter = "";
             // Make the request
-            PagedEnumerable<ListNotesResponse, Note> response =
-                grafeasClient.ListNotes(parent, filter);
+            PagedEnumerable<ListNotesResponse, Note> response = grafeasClient.ListNotes(parent, filter);
 
             // Iterate over all response items, lazily performing RPCs as required
             foreach (Note item in response)
@@ -757,6 +1116,7 @@ namespace Grafeas.V1.Snippets
                 Console.WriteLine("A page of results:");
                 foreach (Note item in page)
                 {
+                    // Do something with each item
                     Console.WriteLine(item);
                 }
             }
@@ -768,6 +1128,7 @@ namespace Grafeas.V1.Snippets
             Console.WriteLine($"A page of {pageSize} results (unless it's the final page):");
             foreach (Note item in singlePage)
             {
+                // Do something with each item
                 Console.WriteLine(item);
             }
             // Store the pageToken, for when the next page is required.
@@ -775,21 +1136,18 @@ namespace Grafeas.V1.Snippets
             // End snippet
         }
 
-        /// <summary>Snippet for ListNotesAsync</summary>
-        public async Task ListNotesAsync_RequestObject()
+        /// <summary>Snippet for ListNotes</summary>
+        public async Task ListNotesAsync()
         {
-            Channel channel = null;
-            // Snippet: ListNotesAsync(ListNotesRequest,CallSettings)
+            string endpoint = "";
+            // Snippet: ListNotesAsync(string, string, string, int?, CallSettings)
             // Create client
-            GrafeasClient grafeasClient = GrafeasClient.Create(channel);
+            GrafeasClient grafeasClient = new GrafeasClientBuilder { Endpoint = endpoint }.Build();
             // Initialize request argument(s)
-            ListNotesRequest request = new ListNotesRequest
-            {
-                ParentAsProjectName = new ProjectName("[PROJECT]"),
-            };
+            string parent = "projects/[PROJECT]";
+            string filter = "";
             // Make the request
-            PagedAsyncEnumerable<ListNotesResponse, Note> response =
-                grafeasClient.ListNotesAsync(request);
+            PagedAsyncEnumerable<ListNotesResponse, Note> response = grafeasClient.ListNotesAsync(parent, filter);
 
             // Iterate over all response items, lazily performing RPCs as required
             await response.ForEachAsync((Note item) =>
@@ -805,6 +1163,7 @@ namespace Grafeas.V1.Snippets
                 Console.WriteLine("A page of results:");
                 foreach (Note item in page)
                 {
+                    // Do something with each item
                     Console.WriteLine(item);
                 }
             });
@@ -816,6 +1175,7 @@ namespace Grafeas.V1.Snippets
             Console.WriteLine($"A page of {pageSize} results (unless it's the final page):");
             foreach (Note item in singlePage)
             {
+                // Do something with each item
                 Console.WriteLine(item);
             }
             // Store the pageToken, for when the next page is required.
@@ -824,20 +1184,17 @@ namespace Grafeas.V1.Snippets
         }
 
         /// <summary>Snippet for ListNotes</summary>
-        public void ListNotes_RequestObject()
+        public void ListNotesResourceNames()
         {
-            Channel channel = null;
-            // Snippet: ListNotes(ListNotesRequest,CallSettings)
+            string endpoint = "";
+            // Snippet: ListNotes(ProjectName, string, string, int?, CallSettings)
             // Create client
-            GrafeasClient grafeasClient = GrafeasClient.Create(channel);
+            GrafeasClient grafeasClient = new GrafeasClientBuilder { Endpoint = endpoint }.Build();
             // Initialize request argument(s)
-            ListNotesRequest request = new ListNotesRequest
-            {
-                ParentAsProjectName = new ProjectName("[PROJECT]"),
-            };
+            ProjectName parent = ProjectName.FromProject("[PROJECT]");
+            string filter = "";
             // Make the request
-            PagedEnumerable<ListNotesResponse, Note> response =
-                grafeasClient.ListNotes(request);
+            PagedEnumerable<ListNotesResponse, Note> response = grafeasClient.ListNotes(parent, filter);
 
             // Iterate over all response items, lazily performing RPCs as required
             foreach (Note item in response)
@@ -853,6 +1210,7 @@ namespace Grafeas.V1.Snippets
                 Console.WriteLine("A page of results:");
                 foreach (Note item in page)
                 {
+                    // Do something with each item
                     Console.WriteLine(item);
                 }
             }
@@ -864,6 +1222,7 @@ namespace Grafeas.V1.Snippets
             Console.WriteLine($"A page of {pageSize} results (unless it's the final page):");
             foreach (Note item in singlePage)
             {
+                // Do something with each item
                 Console.WriteLine(item);
             }
             // Store the pageToken, for when the next page is required.
@@ -871,47 +1230,82 @@ namespace Grafeas.V1.Snippets
             // End snippet
         }
 
-        /// <summary>Snippet for DeleteNoteAsync</summary>
-        public async Task DeleteNoteAsync()
+        /// <summary>Snippet for ListNotes</summary>
+        public async Task ListNotesResourceNamesAsync()
         {
-            Channel channel = null;
-            // Snippet: DeleteNoteAsync(NoteName,CallSettings)
-            // Additional: DeleteNoteAsync(NoteName,CancellationToken)
+            string endpoint = "";
+            // Snippet: ListNotesAsync(ProjectName, string, string, int?, CallSettings)
             // Create client
-            GrafeasClient grafeasClient = GrafeasClient.Create(channel);
+            GrafeasClient grafeasClient = new GrafeasClientBuilder { Endpoint = endpoint }.Build();
             // Initialize request argument(s)
-            NoteName name = new NoteName("[PROJECT]", "[NOTE]");
+            ProjectName parent = ProjectName.FromProject("[PROJECT]");
+            string filter = "";
             // Make the request
-            await grafeasClient.DeleteNoteAsync(name);
+            PagedAsyncEnumerable<ListNotesResponse, Note> response = grafeasClient.ListNotesAsync(parent, filter);
+
+            // Iterate over all response items, lazily performing RPCs as required
+            await response.ForEachAsync((Note item) =>
+            {
+                // Do something with each item
+                Console.WriteLine(item);
+            });
+
+            // Or iterate over pages (of server-defined size), performing one RPC per page
+            await response.AsRawResponses().ForEachAsync((ListNotesResponse page) =>
+            {
+                // Do something with each page of items
+                Console.WriteLine("A page of results:");
+                foreach (Note item in page)
+                {
+                    // Do something with each item
+                    Console.WriteLine(item);
+                }
+            });
+
+            // Or retrieve a single page of known size (unless it's the final page), performing as many RPCs as required
+            int pageSize = 10;
+            Page<Note> singlePage = await response.ReadPageAsync(pageSize);
+            // Do something with the page of items
+            Console.WriteLine($"A page of {pageSize} results (unless it's the final page):");
+            foreach (Note item in singlePage)
+            {
+                // Do something with each item
+                Console.WriteLine(item);
+            }
+            // Store the pageToken, for when the next page is required.
+            string nextPageToken = singlePage.NextPageToken;
             // End snippet
         }
 
         /// <summary>Snippet for DeleteNote</summary>
-        public void DeleteNote()
+        public void DeleteNoteRequestObject()
         {
-            Channel channel = null;
-            // Snippet: DeleteNote(NoteName,CallSettings)
+            string endpoint = "";
+            // Snippet: DeleteNote(DeleteNoteRequest, CallSettings)
             // Create client
-            GrafeasClient grafeasClient = GrafeasClient.Create(channel);
+            GrafeasClient grafeasClient = new GrafeasClientBuilder { Endpoint = endpoint }.Build();
             // Initialize request argument(s)
-            NoteName name = new NoteName("[PROJECT]", "[NOTE]");
+            DeleteNoteRequest request = new DeleteNoteRequest
+            {
+                NoteName = NoteName.FromProjectNote("[PROJECT]", "[NOTE]"),
+            };
             // Make the request
-            grafeasClient.DeleteNote(name);
+            grafeasClient.DeleteNote(request);
             // End snippet
         }
 
         /// <summary>Snippet for DeleteNoteAsync</summary>
-        public async Task DeleteNoteAsync_RequestObject()
+        public async Task DeleteNoteRequestObjectAsync()
         {
-            Channel channel = null;
-            // Snippet: DeleteNoteAsync(DeleteNoteRequest,CallSettings)
-            // Additional: DeleteNoteAsync(DeleteNoteRequest,CancellationToken)
+            string endpoint = "";
+            // Snippet: DeleteNoteAsync(DeleteNoteRequest, CallSettings)
+            // Additional: DeleteNoteAsync(DeleteNoteRequest, CancellationToken)
             // Create client
-            GrafeasClient grafeasClient = GrafeasClient.Create(channel);
+            GrafeasClient grafeasClient = new GrafeasClientBuilder { Endpoint = endpoint }.Build();
             // Initialize request argument(s)
             DeleteNoteRequest request = new DeleteNoteRequest
             {
-                NoteName = new NoteName("[PROJECT]", "[NOTE]"),
+                NoteName = NoteName.FromProjectNote("[PROJECT]", "[NOTE]"),
             };
             // Make the request
             await grafeasClient.DeleteNoteAsync(request);
@@ -919,67 +1313,94 @@ namespace Grafeas.V1.Snippets
         }
 
         /// <summary>Snippet for DeleteNote</summary>
-        public void DeleteNote_RequestObject()
+        public void DeleteNote()
         {
-            Channel channel = null;
-            // Snippet: DeleteNote(DeleteNoteRequest,CallSettings)
+            string endpoint = "";
+            // Snippet: DeleteNote(string, CallSettings)
             // Create client
-            GrafeasClient grafeasClient = GrafeasClient.Create(channel);
+            GrafeasClient grafeasClient = new GrafeasClientBuilder { Endpoint = endpoint }.Build();
             // Initialize request argument(s)
-            DeleteNoteRequest request = new DeleteNoteRequest
-            {
-                NoteName = new NoteName("[PROJECT]", "[NOTE]"),
-            };
+            string name = "projects/[PROJECT]/notes/[NOTE]";
             // Make the request
-            grafeasClient.DeleteNote(request);
+            grafeasClient.DeleteNote(name);
             // End snippet
         }
 
-        /// <summary>Snippet for CreateNoteAsync</summary>
-        public async Task CreateNoteAsync()
+        /// <summary>Snippet for DeleteNoteAsync</summary>
+        public async Task DeleteNoteAsync()
         {
-            Channel channel = null;
-            // Snippet: CreateNoteAsync(ProjectName,string,Note,CallSettings)
-            // Additional: CreateNoteAsync(ProjectName,string,Note,CancellationToken)
+            string endpoint = "";
+            // Snippet: DeleteNoteAsync(string, CallSettings)
+            // Additional: DeleteNoteAsync(string, CancellationToken)
             // Create client
-            GrafeasClient grafeasClient = GrafeasClient.Create(channel);
+            GrafeasClient grafeasClient = new GrafeasClientBuilder { Endpoint = endpoint }.Build();
             // Initialize request argument(s)
-            ProjectName parent = new ProjectName("[PROJECT]");
-            string noteId = "";
-            Note note = new Note();
+            string name = "projects/[PROJECT]/notes/[NOTE]";
             // Make the request
-            Note response = await grafeasClient.CreateNoteAsync(parent, noteId, note);
+            await grafeasClient.DeleteNoteAsync(name);
+            // End snippet
+        }
+
+        /// <summary>Snippet for DeleteNote</summary>
+        public void DeleteNoteResourceNames()
+        {
+            string endpoint = "";
+            // Snippet: DeleteNote(NoteName, CallSettings)
+            // Create client
+            GrafeasClient grafeasClient = new GrafeasClientBuilder { Endpoint = endpoint }.Build();
+            // Initialize request argument(s)
+            NoteName name = NoteName.FromProjectNote("[PROJECT]", "[NOTE]");
+            // Make the request
+            grafeasClient.DeleteNote(name);
+            // End snippet
+        }
+
+        /// <summary>Snippet for DeleteNoteAsync</summary>
+        public async Task DeleteNoteResourceNamesAsync()
+        {
+            string endpoint = "";
+            // Snippet: DeleteNoteAsync(NoteName, CallSettings)
+            // Additional: DeleteNoteAsync(NoteName, CancellationToken)
+            // Create client
+            GrafeasClient grafeasClient = new GrafeasClientBuilder { Endpoint = endpoint }.Build();
+            // Initialize request argument(s)
+            NoteName name = NoteName.FromProjectNote("[PROJECT]", "[NOTE]");
+            // Make the request
+            await grafeasClient.DeleteNoteAsync(name);
             // End snippet
         }
 
         /// <summary>Snippet for CreateNote</summary>
-        public void CreateNote()
+        public void CreateNoteRequestObject()
         {
-            Channel channel = null;
-            // Snippet: CreateNote(ProjectName,string,Note,CallSettings)
+            string endpoint = "";
+            // Snippet: CreateNote(CreateNoteRequest, CallSettings)
             // Create client
-            GrafeasClient grafeasClient = GrafeasClient.Create(channel);
+            GrafeasClient grafeasClient = new GrafeasClientBuilder { Endpoint = endpoint }.Build();
             // Initialize request argument(s)
-            ProjectName parent = new ProjectName("[PROJECT]");
-            string noteId = "";
-            Note note = new Note();
+            CreateNoteRequest request = new CreateNoteRequest
+            {
+                ParentAsProjectName = ProjectName.FromProject("[PROJECT]"),
+                NoteId = "",
+                Note = new Note(),
+            };
             // Make the request
-            Note response = grafeasClient.CreateNote(parent, noteId, note);
+            Note response = grafeasClient.CreateNote(request);
             // End snippet
         }
 
         /// <summary>Snippet for CreateNoteAsync</summary>
-        public async Task CreateNoteAsync_RequestObject()
+        public async Task CreateNoteRequestObjectAsync()
         {
-            Channel channel = null;
-            // Snippet: CreateNoteAsync(CreateNoteRequest,CallSettings)
-            // Additional: CreateNoteAsync(CreateNoteRequest,CancellationToken)
+            string endpoint = "";
+            // Snippet: CreateNoteAsync(CreateNoteRequest, CallSettings)
+            // Additional: CreateNoteAsync(CreateNoteRequest, CancellationToken)
             // Create client
-            GrafeasClient grafeasClient = GrafeasClient.Create(channel);
+            GrafeasClient grafeasClient = new GrafeasClientBuilder { Endpoint = endpoint }.Build();
             // Initialize request argument(s)
             CreateNoteRequest request = new CreateNoteRequest
             {
-                ParentAsProjectName = new ProjectName("[PROJECT]"),
+                ParentAsProjectName = ProjectName.FromProject("[PROJECT]"),
                 NoteId = "",
                 Note = new Note(),
             };
@@ -989,68 +1410,102 @@ namespace Grafeas.V1.Snippets
         }
 
         /// <summary>Snippet for CreateNote</summary>
-        public void CreateNote_RequestObject()
+        public void CreateNote()
         {
-            Channel channel = null;
-            // Snippet: CreateNote(CreateNoteRequest,CallSettings)
+            string endpoint = "";
+            // Snippet: CreateNote(string, string, Note, CallSettings)
             // Create client
-            GrafeasClient grafeasClient = GrafeasClient.Create(channel);
+            GrafeasClient grafeasClient = new GrafeasClientBuilder { Endpoint = endpoint }.Build();
             // Initialize request argument(s)
-            CreateNoteRequest request = new CreateNoteRequest
-            {
-                ParentAsProjectName = new ProjectName("[PROJECT]"),
-                NoteId = "",
-                Note = new Note(),
-            };
+            string parent = "projects/[PROJECT]";
+            string noteId = "";
+            Note note = new Note();
             // Make the request
-            Note response = grafeasClient.CreateNote(request);
+            Note response = grafeasClient.CreateNote(parent, noteId, note);
             // End snippet
         }
 
-        /// <summary>Snippet for BatchCreateNotesAsync</summary>
-        public async Task BatchCreateNotesAsync()
+        /// <summary>Snippet for CreateNoteAsync</summary>
+        public async Task CreateNoteAsync()
         {
-            Channel channel = null;
-            // Snippet: BatchCreateNotesAsync(ProjectName,IDictionary<string, Note>,CallSettings)
-            // Additional: BatchCreateNotesAsync(ProjectName,IDictionary<string, Note>,CancellationToken)
+            string endpoint = "";
+            // Snippet: CreateNoteAsync(string, string, Note, CallSettings)
+            // Additional: CreateNoteAsync(string, string, Note, CancellationToken)
             // Create client
-            GrafeasClient grafeasClient = GrafeasClient.Create(channel);
+            GrafeasClient grafeasClient = new GrafeasClientBuilder { Endpoint = endpoint }.Build();
             // Initialize request argument(s)
-            ProjectName parent = new ProjectName("[PROJECT]");
-            IDictionary<string, Note> notes = new Dictionary<string, Note>();
+            string parent = "projects/[PROJECT]";
+            string noteId = "";
+            Note note = new Note();
             // Make the request
-            BatchCreateNotesResponse response = await grafeasClient.BatchCreateNotesAsync(parent, notes);
+            Note response = await grafeasClient.CreateNoteAsync(parent, noteId, note);
+            // End snippet
+        }
+
+        /// <summary>Snippet for CreateNote</summary>
+        public void CreateNoteResourceNames()
+        {
+            string endpoint = "";
+            // Snippet: CreateNote(ProjectName, string, Note, CallSettings)
+            // Create client
+            GrafeasClient grafeasClient = new GrafeasClientBuilder { Endpoint = endpoint }.Build();
+            // Initialize request argument(s)
+            ProjectName parent = ProjectName.FromProject("[PROJECT]");
+            string noteId = "";
+            Note note = new Note();
+            // Make the request
+            Note response = grafeasClient.CreateNote(parent, noteId, note);
+            // End snippet
+        }
+
+        /// <summary>Snippet for CreateNoteAsync</summary>
+        public async Task CreateNoteResourceNamesAsync()
+        {
+            string endpoint = "";
+            // Snippet: CreateNoteAsync(ProjectName, string, Note, CallSettings)
+            // Additional: CreateNoteAsync(ProjectName, string, Note, CancellationToken)
+            // Create client
+            GrafeasClient grafeasClient = new GrafeasClientBuilder { Endpoint = endpoint }.Build();
+            // Initialize request argument(s)
+            ProjectName parent = ProjectName.FromProject("[PROJECT]");
+            string noteId = "";
+            Note note = new Note();
+            // Make the request
+            Note response = await grafeasClient.CreateNoteAsync(parent, noteId, note);
             // End snippet
         }
 
         /// <summary>Snippet for BatchCreateNotes</summary>
-        public void BatchCreateNotes()
+        public void BatchCreateNotesRequestObject()
         {
-            Channel channel = null;
-            // Snippet: BatchCreateNotes(ProjectName,IDictionary<string, Note>,CallSettings)
+            string endpoint = "";
+            // Snippet: BatchCreateNotes(BatchCreateNotesRequest, CallSettings)
             // Create client
-            GrafeasClient grafeasClient = GrafeasClient.Create(channel);
+            GrafeasClient grafeasClient = new GrafeasClientBuilder { Endpoint = endpoint }.Build();
             // Initialize request argument(s)
-            ProjectName parent = new ProjectName("[PROJECT]");
-            IDictionary<string, Note> notes = new Dictionary<string, Note>();
+            BatchCreateNotesRequest request = new BatchCreateNotesRequest
+            {
+                ParentAsProjectName = ProjectName.FromProject("[PROJECT]"),
+                Notes = { { "", new Note() }, },
+            };
             // Make the request
-            BatchCreateNotesResponse response = grafeasClient.BatchCreateNotes(parent, notes);
+            BatchCreateNotesResponse response = grafeasClient.BatchCreateNotes(request);
             // End snippet
         }
 
         /// <summary>Snippet for BatchCreateNotesAsync</summary>
-        public async Task BatchCreateNotesAsync_RequestObject()
+        public async Task BatchCreateNotesRequestObjectAsync()
         {
-            Channel channel = null;
-            // Snippet: BatchCreateNotesAsync(BatchCreateNotesRequest,CallSettings)
-            // Additional: BatchCreateNotesAsync(BatchCreateNotesRequest,CancellationToken)
+            string endpoint = "";
+            // Snippet: BatchCreateNotesAsync(BatchCreateNotesRequest, CallSettings)
+            // Additional: BatchCreateNotesAsync(BatchCreateNotesRequest, CancellationToken)
             // Create client
-            GrafeasClient grafeasClient = GrafeasClient.Create(channel);
+            GrafeasClient grafeasClient = new GrafeasClientBuilder { Endpoint = endpoint }.Build();
             // Initialize request argument(s)
             BatchCreateNotesRequest request = new BatchCreateNotesRequest
             {
-                ParentAsProjectName = new ProjectName("[PROJECT]"),
-                Notes = { },
+                ParentAsProjectName = ProjectName.FromProject("[PROJECT]"),
+                Notes = { { "", new Note() }, },
             };
             // Make the request
             BatchCreateNotesResponse response = await grafeasClient.BatchCreateNotesAsync(request);
@@ -1058,49 +1513,115 @@ namespace Grafeas.V1.Snippets
         }
 
         /// <summary>Snippet for BatchCreateNotes</summary>
-        public void BatchCreateNotes_RequestObject()
+        public void BatchCreateNotes()
         {
-            Channel channel = null;
-            // Snippet: BatchCreateNotes(BatchCreateNotesRequest,CallSettings)
+            string endpoint = "";
+            // Snippet: BatchCreateNotes(string, IDictionary<string,Note>, CallSettings)
             // Create client
-            GrafeasClient grafeasClient = GrafeasClient.Create(channel);
+            GrafeasClient grafeasClient = new GrafeasClientBuilder { Endpoint = endpoint }.Build();
             // Initialize request argument(s)
-            BatchCreateNotesRequest request = new BatchCreateNotesRequest
+            string parent = "projects/[PROJECT]";
+            IDictionary<string, Note> notes = new Dictionary<string, Note> { { "", new Note() }, };
+            // Make the request
+            BatchCreateNotesResponse response = grafeasClient.BatchCreateNotes(parent, notes);
+            // End snippet
+        }
+
+        /// <summary>Snippet for BatchCreateNotesAsync</summary>
+        public async Task BatchCreateNotesAsync()
+        {
+            string endpoint = "";
+            // Snippet: BatchCreateNotesAsync(string, IDictionary<string,Note>, CallSettings)
+            // Additional: BatchCreateNotesAsync(string, IDictionary<string,Note>, CancellationToken)
+            // Create client
+            GrafeasClient grafeasClient = new GrafeasClientBuilder { Endpoint = endpoint }.Build();
+            // Initialize request argument(s)
+            string parent = "projects/[PROJECT]";
+            IDictionary<string, Note> notes = new Dictionary<string, Note> { { "", new Note() }, };
+            // Make the request
+            BatchCreateNotesResponse response = await grafeasClient.BatchCreateNotesAsync(parent, notes);
+            // End snippet
+        }
+
+        /// <summary>Snippet for BatchCreateNotes</summary>
+        public void BatchCreateNotesResourceNames()
+        {
+            string endpoint = "";
+            // Snippet: BatchCreateNotes(ProjectName, IDictionary<string,Note>, CallSettings)
+            // Create client
+            GrafeasClient grafeasClient = new GrafeasClientBuilder { Endpoint = endpoint }.Build();
+            // Initialize request argument(s)
+            ProjectName parent = ProjectName.FromProject("[PROJECT]");
+            IDictionary<string, Note> notes = new Dictionary<string, Note> { { "", new Note() }, };
+            // Make the request
+            BatchCreateNotesResponse response = grafeasClient.BatchCreateNotes(parent, notes);
+            // End snippet
+        }
+
+        /// <summary>Snippet for BatchCreateNotesAsync</summary>
+        public async Task BatchCreateNotesResourceNamesAsync()
+        {
+            string endpoint = "";
+            // Snippet: BatchCreateNotesAsync(ProjectName, IDictionary<string,Note>, CallSettings)
+            // Additional: BatchCreateNotesAsync(ProjectName, IDictionary<string,Note>, CancellationToken)
+            // Create client
+            GrafeasClient grafeasClient = new GrafeasClientBuilder { Endpoint = endpoint }.Build();
+            // Initialize request argument(s)
+            ProjectName parent = ProjectName.FromProject("[PROJECT]");
+            IDictionary<string, Note> notes = new Dictionary<string, Note> { { "", new Note() }, };
+            // Make the request
+            BatchCreateNotesResponse response = await grafeasClient.BatchCreateNotesAsync(parent, notes);
+            // End snippet
+        }
+
+        /// <summary>Snippet for UpdateNote</summary>
+        public void UpdateNoteRequestObject()
+        {
+            string endpoint = "";
+            // Snippet: UpdateNote(UpdateNoteRequest, CallSettings)
+            // Create client
+            GrafeasClient grafeasClient = new GrafeasClientBuilder { Endpoint = endpoint }.Build();
+            // Initialize request argument(s)
+            UpdateNoteRequest request = new UpdateNoteRequest
             {
-                ParentAsProjectName = new ProjectName("[PROJECT]"),
-                Notes = { },
+                NoteName = NoteName.FromProjectNote("[PROJECT]", "[NOTE]"),
+                Note = new Note(),
+                UpdateMask = new FieldMask(),
             };
             // Make the request
-            BatchCreateNotesResponse response = grafeasClient.BatchCreateNotes(request);
+            Note response = grafeasClient.UpdateNote(request);
             // End snippet
         }
 
         /// <summary>Snippet for UpdateNoteAsync</summary>
-        public async Task UpdateNoteAsync()
+        public async Task UpdateNoteRequestObjectAsync()
         {
-            Channel channel = null;
-            // Snippet: UpdateNoteAsync(NoteName,Note,FieldMask,CallSettings)
-            // Additional: UpdateNoteAsync(NoteName,Note,FieldMask,CancellationToken)
+            string endpoint = "";
+            // Snippet: UpdateNoteAsync(UpdateNoteRequest, CallSettings)
+            // Additional: UpdateNoteAsync(UpdateNoteRequest, CancellationToken)
             // Create client
-            GrafeasClient grafeasClient = GrafeasClient.Create(channel);
+            GrafeasClient grafeasClient = new GrafeasClientBuilder { Endpoint = endpoint }.Build();
             // Initialize request argument(s)
-            NoteName name = new NoteName("[PROJECT]", "[NOTE]");
-            Note note = new Note();
-            FieldMask updateMask = new FieldMask();
+            UpdateNoteRequest request = new UpdateNoteRequest
+            {
+                NoteName = NoteName.FromProjectNote("[PROJECT]", "[NOTE]"),
+                Note = new Note(),
+                UpdateMask = new FieldMask(),
+            };
             // Make the request
-            Note response = await grafeasClient.UpdateNoteAsync(name, note, updateMask);
+            Note response = await grafeasClient.UpdateNoteAsync(request);
             // End snippet
         }
 
         /// <summary>Snippet for UpdateNote</summary>
         public void UpdateNote()
         {
-            Channel channel = null;
-            // Snippet: UpdateNote(NoteName,Note,FieldMask,CallSettings)
+            string endpoint = "";
+            // Snippet: UpdateNote(string, Note, FieldMask, CallSettings)
             // Create client
-            GrafeasClient grafeasClient = GrafeasClient.Create(channel);
+            GrafeasClient grafeasClient = new GrafeasClientBuilder { Endpoint = endpoint }.Build();
             // Initialize request argument(s)
-            NoteName name = new NoteName("[PROJECT]", "[NOTE]");
+            string name = "projects/[PROJECT]/notes/[NOTE]";
             Note note = new Note();
             FieldMask updateMask = new FieldMask();
             // Make the request
@@ -1109,55 +1630,120 @@ namespace Grafeas.V1.Snippets
         }
 
         /// <summary>Snippet for UpdateNoteAsync</summary>
-        public async Task UpdateNoteAsync_RequestObject()
+        public async Task UpdateNoteAsync()
         {
-            Channel channel = null;
-            // Snippet: UpdateNoteAsync(UpdateNoteRequest,CallSettings)
-            // Additional: UpdateNoteAsync(UpdateNoteRequest,CancellationToken)
+            string endpoint = "";
+            // Snippet: UpdateNoteAsync(string, Note, FieldMask, CallSettings)
+            // Additional: UpdateNoteAsync(string, Note, FieldMask, CancellationToken)
             // Create client
-            GrafeasClient grafeasClient = GrafeasClient.Create(channel);
+            GrafeasClient grafeasClient = new GrafeasClientBuilder { Endpoint = endpoint }.Build();
             // Initialize request argument(s)
-            UpdateNoteRequest request = new UpdateNoteRequest
-            {
-                NoteName = new NoteName("[PROJECT]", "[NOTE]"),
-                Note = new Note(),
-            };
+            string name = "projects/[PROJECT]/notes/[NOTE]";
+            Note note = new Note();
+            FieldMask updateMask = new FieldMask();
             // Make the request
-            Note response = await grafeasClient.UpdateNoteAsync(request);
+            Note response = await grafeasClient.UpdateNoteAsync(name, note, updateMask);
             // End snippet
         }
 
         /// <summary>Snippet for UpdateNote</summary>
-        public void UpdateNote_RequestObject()
+        public void UpdateNoteResourceNames()
         {
-            Channel channel = null;
-            // Snippet: UpdateNote(UpdateNoteRequest,CallSettings)
+            string endpoint = "";
+            // Snippet: UpdateNote(NoteName, Note, FieldMask, CallSettings)
             // Create client
-            GrafeasClient grafeasClient = GrafeasClient.Create(channel);
+            GrafeasClient grafeasClient = new GrafeasClientBuilder { Endpoint = endpoint }.Build();
             // Initialize request argument(s)
-            UpdateNoteRequest request = new UpdateNoteRequest
-            {
-                NoteName = new NoteName("[PROJECT]", "[NOTE]"),
-                Note = new Note(),
-            };
+            NoteName name = NoteName.FromProjectNote("[PROJECT]", "[NOTE]");
+            Note note = new Note();
+            FieldMask updateMask = new FieldMask();
             // Make the request
-            Note response = grafeasClient.UpdateNote(request);
+            Note response = grafeasClient.UpdateNote(name, note, updateMask);
             // End snippet
         }
 
-        /// <summary>Snippet for ListNoteOccurrencesAsync</summary>
-        public async Task ListNoteOccurrencesAsync()
+        /// <summary>Snippet for UpdateNoteAsync</summary>
+        public async Task UpdateNoteResourceNamesAsync()
         {
-            Channel channel = null;
-            // Snippet: ListNoteOccurrencesAsync(NoteName,string,string,int?,CallSettings)
+            string endpoint = "";
+            // Snippet: UpdateNoteAsync(NoteName, Note, FieldMask, CallSettings)
+            // Additional: UpdateNoteAsync(NoteName, Note, FieldMask, CancellationToken)
             // Create client
-            GrafeasClient grafeasClient = GrafeasClient.Create(channel);
+            GrafeasClient grafeasClient = new GrafeasClientBuilder { Endpoint = endpoint }.Build();
             // Initialize request argument(s)
-            NoteName name = new NoteName("[PROJECT]", "[NOTE]");
-            string filter = "";
+            NoteName name = NoteName.FromProjectNote("[PROJECT]", "[NOTE]");
+            Note note = new Note();
+            FieldMask updateMask = new FieldMask();
             // Make the request
-            PagedAsyncEnumerable<ListNoteOccurrencesResponse, Occurrence> response =
-                grafeasClient.ListNoteOccurrencesAsync(name, filter);
+            Note response = await grafeasClient.UpdateNoteAsync(name, note, updateMask);
+            // End snippet
+        }
+
+        /// <summary>Snippet for ListNoteOccurrences</summary>
+        public void ListNoteOccurrencesRequestObject()
+        {
+            string endpoint = "";
+            // Snippet: ListNoteOccurrences(ListNoteOccurrencesRequest, CallSettings)
+            // Create client
+            GrafeasClient grafeasClient = new GrafeasClientBuilder { Endpoint = endpoint }.Build();
+            // Initialize request argument(s)
+            ListNoteOccurrencesRequest request = new ListNoteOccurrencesRequest
+            {
+                NoteName = NoteName.FromProjectNote("[PROJECT]", "[NOTE]"),
+                Filter = "",
+            };
+            // Make the request
+            PagedEnumerable<ListNoteOccurrencesResponse, Occurrence> response = grafeasClient.ListNoteOccurrences(request);
+
+            // Iterate over all response items, lazily performing RPCs as required
+            foreach (Occurrence item in response)
+            {
+                // Do something with each item
+                Console.WriteLine(item);
+            }
+
+            // Or iterate over pages (of server-defined size), performing one RPC per page
+            foreach (ListNoteOccurrencesResponse page in response.AsRawResponses())
+            {
+                // Do something with each page of items
+                Console.WriteLine("A page of results:");
+                foreach (Occurrence item in page)
+                {
+                    // Do something with each item
+                    Console.WriteLine(item);
+                }
+            }
+
+            // Or retrieve a single page of known size (unless it's the final page), performing as many RPCs as required
+            int pageSize = 10;
+            Page<Occurrence> singlePage = response.ReadPage(pageSize);
+            // Do something with the page of items
+            Console.WriteLine($"A page of {pageSize} results (unless it's the final page):");
+            foreach (Occurrence item in singlePage)
+            {
+                // Do something with each item
+                Console.WriteLine(item);
+            }
+            // Store the pageToken, for when the next page is required.
+            string nextPageToken = singlePage.NextPageToken;
+            // End snippet
+        }
+
+        /// <summary>Snippet for ListNoteOccurrences</summary>
+        public async Task ListNoteOccurrencesRequestObjectAsync()
+        {
+            string endpoint = "";
+            // Snippet: ListNoteOccurrencesAsync(ListNoteOccurrencesRequest, CallSettings)
+            // Create client
+            GrafeasClient grafeasClient = new GrafeasClientBuilder { Endpoint = endpoint }.Build();
+            // Initialize request argument(s)
+            ListNoteOccurrencesRequest request = new ListNoteOccurrencesRequest
+            {
+                NoteName = NoteName.FromProjectNote("[PROJECT]", "[NOTE]"),
+                Filter = "",
+            };
+            // Make the request
+            PagedAsyncEnumerable<ListNoteOccurrencesResponse, Occurrence> response = grafeasClient.ListNoteOccurrencesAsync(request);
 
             // Iterate over all response items, lazily performing RPCs as required
             await response.ForEachAsync((Occurrence item) =>
@@ -1173,6 +1759,7 @@ namespace Grafeas.V1.Snippets
                 Console.WriteLine("A page of results:");
                 foreach (Occurrence item in page)
                 {
+                    // Do something with each item
                     Console.WriteLine(item);
                 }
             });
@@ -1184,6 +1771,7 @@ namespace Grafeas.V1.Snippets
             Console.WriteLine($"A page of {pageSize} results (unless it's the final page):");
             foreach (Occurrence item in singlePage)
             {
+                // Do something with each item
                 Console.WriteLine(item);
             }
             // Store the pageToken, for when the next page is required.
@@ -1194,16 +1782,15 @@ namespace Grafeas.V1.Snippets
         /// <summary>Snippet for ListNoteOccurrences</summary>
         public void ListNoteOccurrences()
         {
-            Channel channel = null;
-            // Snippet: ListNoteOccurrences(NoteName,string,string,int?,CallSettings)
+            string endpoint = "";
+            // Snippet: ListNoteOccurrences(string, string, string, int?, CallSettings)
             // Create client
-            GrafeasClient grafeasClient = GrafeasClient.Create(channel);
+            GrafeasClient grafeasClient = new GrafeasClientBuilder { Endpoint = endpoint }.Build();
             // Initialize request argument(s)
-            NoteName name = new NoteName("[PROJECT]", "[NOTE]");
+            string name = "projects/[PROJECT]/notes/[NOTE]";
             string filter = "";
             // Make the request
-            PagedEnumerable<ListNoteOccurrencesResponse, Occurrence> response =
-                grafeasClient.ListNoteOccurrences(name, filter);
+            PagedEnumerable<ListNoteOccurrencesResponse, Occurrence> response = grafeasClient.ListNoteOccurrences(name, filter);
 
             // Iterate over all response items, lazily performing RPCs as required
             foreach (Occurrence item in response)
@@ -1219,6 +1806,7 @@ namespace Grafeas.V1.Snippets
                 Console.WriteLine("A page of results:");
                 foreach (Occurrence item in page)
                 {
+                    // Do something with each item
                     Console.WriteLine(item);
                 }
             }
@@ -1230,6 +1818,7 @@ namespace Grafeas.V1.Snippets
             Console.WriteLine($"A page of {pageSize} results (unless it's the final page):");
             foreach (Occurrence item in singlePage)
             {
+                // Do something with each item
                 Console.WriteLine(item);
             }
             // Store the pageToken, for when the next page is required.
@@ -1237,21 +1826,18 @@ namespace Grafeas.V1.Snippets
             // End snippet
         }
 
-        /// <summary>Snippet for ListNoteOccurrencesAsync</summary>
-        public async Task ListNoteOccurrencesAsync_RequestObject()
+        /// <summary>Snippet for ListNoteOccurrences</summary>
+        public async Task ListNoteOccurrencesAsync()
         {
-            Channel channel = null;
-            // Snippet: ListNoteOccurrencesAsync(ListNoteOccurrencesRequest,CallSettings)
+            string endpoint = "";
+            // Snippet: ListNoteOccurrencesAsync(string, string, string, int?, CallSettings)
             // Create client
-            GrafeasClient grafeasClient = GrafeasClient.Create(channel);
+            GrafeasClient grafeasClient = new GrafeasClientBuilder { Endpoint = endpoint }.Build();
             // Initialize request argument(s)
-            ListNoteOccurrencesRequest request = new ListNoteOccurrencesRequest
-            {
-                NoteName = new NoteName("[PROJECT]", "[NOTE]"),
-            };
+            string name = "projects/[PROJECT]/notes/[NOTE]";
+            string filter = "";
             // Make the request
-            PagedAsyncEnumerable<ListNoteOccurrencesResponse, Occurrence> response =
-                grafeasClient.ListNoteOccurrencesAsync(request);
+            PagedAsyncEnumerable<ListNoteOccurrencesResponse, Occurrence> response = grafeasClient.ListNoteOccurrencesAsync(name, filter);
 
             // Iterate over all response items, lazily performing RPCs as required
             await response.ForEachAsync((Occurrence item) =>
@@ -1267,6 +1853,7 @@ namespace Grafeas.V1.Snippets
                 Console.WriteLine("A page of results:");
                 foreach (Occurrence item in page)
                 {
+                    // Do something with each item
                     Console.WriteLine(item);
                 }
             });
@@ -1278,6 +1865,7 @@ namespace Grafeas.V1.Snippets
             Console.WriteLine($"A page of {pageSize} results (unless it's the final page):");
             foreach (Occurrence item in singlePage)
             {
+                // Do something with each item
                 Console.WriteLine(item);
             }
             // Store the pageToken, for when the next page is required.
@@ -1286,20 +1874,17 @@ namespace Grafeas.V1.Snippets
         }
 
         /// <summary>Snippet for ListNoteOccurrences</summary>
-        public void ListNoteOccurrences_RequestObject()
+        public void ListNoteOccurrencesResourceNames()
         {
-            Channel channel = null;
-            // Snippet: ListNoteOccurrences(ListNoteOccurrencesRequest,CallSettings)
+            string endpoint = "";
+            // Snippet: ListNoteOccurrences(NoteName, string, string, int?, CallSettings)
             // Create client
-            GrafeasClient grafeasClient = GrafeasClient.Create(channel);
+            GrafeasClient grafeasClient = new GrafeasClientBuilder { Endpoint = endpoint }.Build();
             // Initialize request argument(s)
-            ListNoteOccurrencesRequest request = new ListNoteOccurrencesRequest
-            {
-                NoteName = new NoteName("[PROJECT]", "[NOTE]"),
-            };
+            NoteName name = NoteName.FromProjectNote("[PROJECT]", "[NOTE]");
+            string filter = "";
             // Make the request
-            PagedEnumerable<ListNoteOccurrencesResponse, Occurrence> response =
-                grafeasClient.ListNoteOccurrences(request);
+            PagedEnumerable<ListNoteOccurrencesResponse, Occurrence> response = grafeasClient.ListNoteOccurrences(name, filter);
 
             // Iterate over all response items, lazily performing RPCs as required
             foreach (Occurrence item in response)
@@ -1315,6 +1900,7 @@ namespace Grafeas.V1.Snippets
                 Console.WriteLine("A page of results:");
                 foreach (Occurrence item in page)
                 {
+                    // Do something with each item
                     Console.WriteLine(item);
                 }
             }
@@ -1326,6 +1912,7 @@ namespace Grafeas.V1.Snippets
             Console.WriteLine($"A page of {pageSize} results (unless it's the final page):");
             foreach (Occurrence item in singlePage)
             {
+                // Do something with each item
                 Console.WriteLine(item);
             }
             // Store the pageToken, for when the next page is required.
@@ -1333,5 +1920,51 @@ namespace Grafeas.V1.Snippets
             // End snippet
         }
 
+        /// <summary>Snippet for ListNoteOccurrences</summary>
+        public async Task ListNoteOccurrencesResourceNamesAsync()
+        {
+            string endpoint = "";
+            // Snippet: ListNoteOccurrencesAsync(NoteName, string, string, int?, CallSettings)
+            // Create client
+            GrafeasClient grafeasClient = new GrafeasClientBuilder { Endpoint = endpoint }.Build();
+            // Initialize request argument(s)
+            NoteName name = NoteName.FromProjectNote("[PROJECT]", "[NOTE]");
+            string filter = "";
+            // Make the request
+            PagedAsyncEnumerable<ListNoteOccurrencesResponse, Occurrence> response = grafeasClient.ListNoteOccurrencesAsync(name, filter);
+
+            // Iterate over all response items, lazily performing RPCs as required
+            await response.ForEachAsync((Occurrence item) =>
+            {
+                // Do something with each item
+                Console.WriteLine(item);
+            });
+
+            // Or iterate over pages (of server-defined size), performing one RPC per page
+            await response.AsRawResponses().ForEachAsync((ListNoteOccurrencesResponse page) =>
+            {
+                // Do something with each page of items
+                Console.WriteLine("A page of results:");
+                foreach (Occurrence item in page)
+                {
+                    // Do something with each item
+                    Console.WriteLine(item);
+                }
+            });
+
+            // Or retrieve a single page of known size (unless it's the final page), performing as many RPCs as required
+            int pageSize = 10;
+            Page<Occurrence> singlePage = await response.ReadPageAsync(pageSize);
+            // Do something with the page of items
+            Console.WriteLine($"A page of {pageSize} results (unless it's the final page):");
+            foreach (Occurrence item in singlePage)
+            {
+                // Do something with each item
+                Console.WriteLine(item);
+            }
+            // Store the pageToken, for when the next page is required.
+            string nextPageToken = singlePage.NextPageToken;
+            // End snippet
+        }
     }
 }

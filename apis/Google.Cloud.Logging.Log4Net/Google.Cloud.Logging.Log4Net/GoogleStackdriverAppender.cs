@@ -208,15 +208,15 @@ namespace Google.Cloud.Logging.Log4Net
                 // This is acceptable as most patterns will be irrelevant in this context.
                 Labels = { _customLabels.ToDictionary(x => x.Key, x => x.Value) },
             };
-            var serverErrorBackoffSettings = new BackoffSettings(
-                delay: TimeSpan.FromSeconds(ServerErrorBackoffDelaySeconds),
-                delayMultiplier: ServerErrorBackoffMultiplier,
-                maxDelay: TimeSpan.FromSeconds(ServerErrorBackoffMaxDelaySeconds)
-            );
+            var serverErrorRetrySettings = RetrySettings.FromExponentialBackoff(maxAttempts: int.MaxValue,
+                initialBackoff: TimeSpan.FromSeconds(ServerErrorBackoffDelaySeconds),
+                maxBackoff: TimeSpan.FromSeconds(ServerErrorBackoffMaxDelaySeconds),
+                backoffMultiplier: ServerErrorBackoffMultiplier,
+                retryFilter: _ => true); // Ignored                
             _logUploader = new LogUploader(
                 _client, _scheduler, _clock,
                 _logQ, logsLostWarningEntry, MaxUploadBatchSize,
-                serverErrorBackoffSettings);
+                serverErrorRetrySettings);
             if (_usePatternWithinCustomLabels)
             {
                 // Initialize a pattern layout for each custom label.
@@ -225,22 +225,11 @@ namespace Google.Cloud.Logging.Log4Net
             _isActivated = true;
         }
 
-        private LoggingServiceV2Client BuildLoggingServiceClient()
-        {
-            GoogleCredential credential = GetCredentialFromConfiguration();
-            if(credential == null)
-            {
-                return LoggingServiceV2Client.Create();
-            }
-
-            Grpc.Core.Channel channel = new Grpc.Core.Channel(
-                LoggingServiceV2Client.DefaultEndpoint.Host, 
-                LoggingServiceV2Client.DefaultEndpoint.Port, 
-                credential.ToChannelCredential()
-            );
-
-            return LoggingServiceV2Client.Create(channel);
-        }
+        private LoggingServiceV2Client BuildLoggingServiceClient() =>
+            new LoggingServiceV2ClientBuilder
+            { 
+                ChannelCredentials = GetCredentialFromConfiguration()?.ToChannelCredential()
+            }.Build();
 
         private GoogleCredential GetCredentialFromConfiguration()
         {
@@ -349,13 +338,22 @@ namespace Google.Cloud.Logging.Log4Net
             }
             var logEntry = new LogEntry
             {
-                TextPayload = RenderLoggingEvent(loggingEvent),
                 Severity = s_levelMap[loggingEvent.Level],
                 Timestamp = loggingEvent.TimeStamp.ToTimestamp(),
                 LogName = _logName,
                 Resource = _resource,
                 Labels = { labels },
             };
+            // Note that we can't just unconditionally set both TextPayload and JsonPayload, as they're items in a oneof in the proto.
+            var jsonPayload = JsonLayout?.Format(loggingEvent);
+            if (jsonPayload is null)
+            {
+                logEntry.TextPayload = RenderLoggingEvent(loggingEvent);
+            }
+            else
+            {
+                logEntry.JsonPayload = jsonPayload;
+            }
             if (sourceLocation != null)
             {
                 logEntry.SourceLocation = sourceLocation;
@@ -409,16 +407,9 @@ namespace Google.Cloud.Logging.Log4Net
                 {
                     try
                     {
-#if NET45 || NETSTANDARD2_0
-                            return AppDomain.CurrentDomain.GetAssemblies()
-                                .SelectMany(a => a.GetTypes())
-                                .FirstOrDefault(t => t.FullName == fullTypeName);
-#elif NETSTANDARD1_5
-                            // TODO: Support type lookup in netstandard
-                            return null;
-#else
-#error Unsupported platform.
-#endif
+                        return AppDomain.CurrentDomain.GetAssemblies()
+                            .SelectMany(a => a.GetTypes())
+                            .FirstOrDefault(t => t.FullName == fullTypeName);
                     }
                     catch
                     {

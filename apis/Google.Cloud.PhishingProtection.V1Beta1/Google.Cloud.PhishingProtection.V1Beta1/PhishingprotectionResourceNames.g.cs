@@ -1,4 +1,4 @@
-// Copyright 2019 Google LLC
+// Copyright 2020 Google LLC
 //
 // Licensed under the Apache License, Version 2.0 (the "License");
 // you may not use this file except in compliance with the License.
@@ -25,7 +25,7 @@ namespace Google.Cloud.PhishingProtection.V1Beta1
         /// </summary>
         public gagr::ProjectName ParentAsProjectName
         {
-            get => string.IsNullOrEmpty(Parent) ? null : gagr::ProjectName.Parse(Parent);
+            get => string.IsNullOrEmpty(Parent) ? null : gagr::ProjectName.Parse(Parent, allowUnparsed: true);
             set => Parent = value?.ToString() ?? "";
         }
     }

@@ -15,7 +15,6 @@
 using Google.Api.Gax;
 using Google.Apis.Bigquery.v2.Data;
 using Google.Apis.Requests;
-using System;
 using System.Collections;
 using System.Collections.Generic;
 using System.Linq;
@@ -51,21 +50,9 @@ namespace Google.Cloud.BigQuery.V2
         public TableReference TableReference { get; }
 
         /// <summary>
-        /// The total number of rows in the results.
-        /// </summary>
-        /// <remarks>
-        /// In certain cases, the query results do not provide a row count. In these cases, accessing this property
-        /// will throw an <see cref="InvalidOperationException"/>. The <see cref="SafeTotalRows"/> property provides
-        /// a way of accessing the same value, but with a nullable value which will be null if the query results do not
-        /// provide a row count.
-        /// </remarks>
-        /// <exception cref="InvalidOperationException">The query results do not provide a row count.</exception>
-        public ulong TotalRows => _response.TotalRows.Value;
-
-        /// <summary>
         /// The total number of rows in the results, or <c>null</c> if the query results do not provide a row count.
         /// </summary>
-        public ulong? SafeTotalRows => _response.TotalRows;
+        public ulong? TotalRows => _response.TotalRows;
 
         /// <summary>
         /// The total number of rows affected by a DML statement, or <c>null</c> for non-DML results.
@@ -92,24 +79,6 @@ namespace Google.Cloud.BigQuery.V2
         /// </summary>
         /// <returns>An iterator over the query results.</returns>
         IEnumerator IEnumerable.GetEnumerator() => GetEnumerator();
-
-        /// <summary>
-        /// Constructs a new set of results.
-        /// </summary>
-        /// <remarks>
-        /// This is public to allow tests to construct instances for production code to consume;
-        /// production code should not normally construct instances itself.
-        /// </remarks>
-        /// <param name="client">The client to use for further operations. Must not be null.</param>
-        /// <param name="response">The response to a GetQueryResults API call. Must not be null.</param>
-        /// <param name="tableReference">A reference to the table containing the results.
-        /// May be null. (For example, script queries don't store results in tables.)</param>
-        /// <param name="options">Options to use when listing rows. May be null.</param>
-        [Obsolete("Please use the constructor accepting a GetQueryResultsOptions instead")]
-        public BigQueryResults(BigQueryClient client, GetQueryResultsResponse response, TableReference tableReference, ListRowsOptions options)
-            : this(client, response, tableReference, options?.ToGetQueryResultsOptions())
-        {
-        }
 
         /// <summary>
         /// Constructs a new set of results.
@@ -171,7 +140,7 @@ namespace Google.Cloud.BigQuery.V2
 
             // Work out whether to use the response we've already got, or create a new one.
             GetQueryResultsResponse response = _response;
-            if (_response.Rows?.Count > pageSize)
+            if (response.Rows?.Count > pageSize)
             {
                 // Oops. Do it again from scratch, with a useful page size.
                 clonedOptions.PageSize = pageSize;
@@ -179,7 +148,7 @@ namespace Google.Cloud.BigQuery.V2
             }
             // First add the rows from the existing response.
             rows.AddRange(ConvertResponseRows(response));
-            string pageToken = _response.PageToken;
+            string pageToken = response.PageToken;
             clonedOptions.StartIndex = null;
 
             // Now keep going until we've filled the result set or know there's no more data.
@@ -211,7 +180,7 @@ namespace Google.Cloud.BigQuery.V2
 
             // Work out whether to use the response we've already got, or create a new one.
             GetQueryResultsResponse response = _response;
-            if (_response.Rows?.Count > pageSize)
+            if (response.Rows?.Count > pageSize)
             {
                 // Oops. Do it again from scratch, with a useful page size.
                 clonedOptions.PageSize = pageSize;
@@ -219,7 +188,7 @@ namespace Google.Cloud.BigQuery.V2
             }
             // First add the rows from the existing response.
             rows.AddRange(ConvertResponseRows(response));
-            string pageToken = _response.PageToken;
+            string pageToken = response.PageToken;
             clonedOptions.StartIndex = null;
 
             // Now keep going until we've filled the result set or know there's no more data.
@@ -270,18 +239,21 @@ namespace Google.Cloud.BigQuery.V2
 
             public AsyncRowEnumerable(BigQueryResults parent) => _parent = parent;
 
-            public IAsyncEnumerator<BigQueryRow> GetEnumerator() => new AsyncRowEnumerator(_parent);
+            public IAsyncEnumerator<BigQueryRow> GetAsyncEnumerator(CancellationToken cancellationToken) =>
+                new AsyncRowEnumerator(_parent, cancellationToken);
         }
 
         private sealed class AsyncRowEnumerator : IAsyncEnumerator<BigQueryRow>
         {
             private readonly GetQueryResultsOptions _options;
             private readonly BigQueryResults _parent;
+            private readonly CancellationToken _cancellationToken;
             private IEnumerator<BigQueryRow> _underlyingEnumerator;
 
-            public AsyncRowEnumerator(BigQueryResults parent)
+            public AsyncRowEnumerator(BigQueryResults parent, CancellationToken cancellationToken)
             {
                 _parent = parent;
+                _cancellationToken = cancellationToken;
                 _options = parent._options?.Clone() ?? new GetQueryResultsOptions();
                 _options.StartIndex = null;
                 _options.PageToken = parent._response.PageToken;
@@ -290,9 +262,9 @@ namespace Google.Cloud.BigQuery.V2
 
             public BigQueryRow Current => _underlyingEnumerator.Current;
 
-            public async Task<bool> MoveNext(CancellationToken cancellationToken)
+            public async ValueTask<bool> MoveNextAsync()
             {
-                cancellationToken.ThrowIfCancellationRequested();
+                _cancellationToken.ThrowIfCancellationRequested();
                 // Keep asking for rows until we've got one, or we've run out of pages.
                 while (!_underlyingEnumerator.MoveNext())
                 {
@@ -300,7 +272,7 @@ namespace Google.Cloud.BigQuery.V2
                     {
                         return false;
                     }
-                    var nextResponse = await _parent._client.GetRawQueryResultsAsync(_parent.JobReference, _options, timeoutBase: null, cancellationToken).ConfigureAwait(false);
+                    var nextResponse = await _parent._client.GetRawQueryResultsAsync(_parent.JobReference, _options, timeoutBase: null, _cancellationToken).ConfigureAwait(false);
                     // Set the page token for the next time we need to fetch
                     _options.PageToken = nextResponse.PageToken;
                     _underlyingEnumerator = _parent.ConvertResponseRows(nextResponse).GetEnumerator();
@@ -308,10 +280,7 @@ namespace Google.Cloud.BigQuery.V2
                 return true;
             }
 
-            public void Dispose()
-            {
-                // No-op
-            }
+            public ValueTask DisposeAsync() => default;
         }
 
         private IEnumerable<BigQueryRow> ConvertResponseRows(GetQueryResultsResponse response) =>

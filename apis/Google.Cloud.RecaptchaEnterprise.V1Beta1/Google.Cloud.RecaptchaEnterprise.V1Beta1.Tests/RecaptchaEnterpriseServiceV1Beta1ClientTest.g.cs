@@ -1,4 +1,4 @@
-// Copyright 2019 Google LLC
+// Copyright 2020 Google LLC
 //
 // Licensed under the Apache License, Version 2.0 (the "License");
 // you may not use this file except in compliance with the License.
@@ -34,12 +34,12 @@ namespace Google.Cloud.RecaptchaEnterprise.V1Beta1.Tests
             moq::Mock<RecaptchaEnterpriseServiceV1Beta1.RecaptchaEnterpriseServiceV1Beta1Client> mockGrpcClient = new moq::Mock<RecaptchaEnterpriseServiceV1Beta1.RecaptchaEnterpriseServiceV1Beta1Client>(moq::MockBehavior.Strict);
             CreateAssessmentRequest request = new CreateAssessmentRequest
             {
-                ParentAsProjectName = new gagr::ProjectName("[PROJECT]"),
+                ParentAsProjectName = gagr::ProjectName.FromProject("[PROJECT]"),
                 Assessment = new Assessment(),
             };
             Assessment expectedResponse = new Assessment
             {
-                AssessmentName = new AssessmentName("[PROJECT]", "[ASSESSMENT]"),
+                AssessmentName = AssessmentName.FromProjectAssessment("[PROJECT]", "[ASSESSMENT]"),
                 Event = new Event(),
                 Score = -5.80354E+17F,
                 TokenProperties = new TokenProperties(),
@@ -61,12 +61,12 @@ namespace Google.Cloud.RecaptchaEnterprise.V1Beta1.Tests
             moq::Mock<RecaptchaEnterpriseServiceV1Beta1.RecaptchaEnterpriseServiceV1Beta1Client> mockGrpcClient = new moq::Mock<RecaptchaEnterpriseServiceV1Beta1.RecaptchaEnterpriseServiceV1Beta1Client>(moq::MockBehavior.Strict);
             CreateAssessmentRequest request = new CreateAssessmentRequest
             {
-                ParentAsProjectName = new gagr::ProjectName("[PROJECT]"),
+                ParentAsProjectName = gagr::ProjectName.FromProject("[PROJECT]"),
                 Assessment = new Assessment(),
             };
             Assessment expectedResponse = new Assessment
             {
-                AssessmentName = new AssessmentName("[PROJECT]", "[ASSESSMENT]"),
+                AssessmentName = AssessmentName.FromProjectAssessment("[PROJECT]", "[ASSESSMENT]"),
                 Event = new Event(),
                 Score = -5.80354E+17F,
                 TokenProperties = new TokenProperties(),
@@ -90,12 +90,12 @@ namespace Google.Cloud.RecaptchaEnterprise.V1Beta1.Tests
             moq::Mock<RecaptchaEnterpriseServiceV1Beta1.RecaptchaEnterpriseServiceV1Beta1Client> mockGrpcClient = new moq::Mock<RecaptchaEnterpriseServiceV1Beta1.RecaptchaEnterpriseServiceV1Beta1Client>(moq::MockBehavior.Strict);
             CreateAssessmentRequest request = new CreateAssessmentRequest
             {
-                ParentAsProjectName = new gagr::ProjectName("[PROJECT]"),
+                ParentAsProjectName = gagr::ProjectName.FromProject("[PROJECT]"),
                 Assessment = new Assessment(),
             };
             Assessment expectedResponse = new Assessment
             {
-                AssessmentName = new AssessmentName("[PROJECT]", "[ASSESSMENT]"),
+                AssessmentName = AssessmentName.FromProjectAssessment("[PROJECT]", "[ASSESSMENT]"),
                 Event = new Event(),
                 Score = -5.80354E+17F,
                 TokenProperties = new TokenProperties(),
@@ -117,12 +117,12 @@ namespace Google.Cloud.RecaptchaEnterprise.V1Beta1.Tests
             moq::Mock<RecaptchaEnterpriseServiceV1Beta1.RecaptchaEnterpriseServiceV1Beta1Client> mockGrpcClient = new moq::Mock<RecaptchaEnterpriseServiceV1Beta1.RecaptchaEnterpriseServiceV1Beta1Client>(moq::MockBehavior.Strict);
             CreateAssessmentRequest request = new CreateAssessmentRequest
             {
-                ParentAsProjectName = new gagr::ProjectName("[PROJECT]"),
+                ParentAsProjectName = gagr::ProjectName.FromProject("[PROJECT]"),
                 Assessment = new Assessment(),
             };
             Assessment expectedResponse = new Assessment
             {
-                AssessmentName = new AssessmentName("[PROJECT]", "[ASSESSMENT]"),
+                AssessmentName = AssessmentName.FromProjectAssessment("[PROJECT]", "[ASSESSMENT]"),
                 Event = new Event(),
                 Score = -5.80354E+17F,
                 TokenProperties = new TokenProperties(),
@@ -141,17 +141,17 @@ namespace Google.Cloud.RecaptchaEnterprise.V1Beta1.Tests
         }
 
         [xunit::FactAttribute]
-        public void CreateAssessment_ResourceNames()
+        public void CreateAssessmentResourceNames()
         {
             moq::Mock<RecaptchaEnterpriseServiceV1Beta1.RecaptchaEnterpriseServiceV1Beta1Client> mockGrpcClient = new moq::Mock<RecaptchaEnterpriseServiceV1Beta1.RecaptchaEnterpriseServiceV1Beta1Client>(moq::MockBehavior.Strict);
             CreateAssessmentRequest request = new CreateAssessmentRequest
             {
-                ParentAsProjectName = new gagr::ProjectName("[PROJECT]"),
+                ParentAsProjectName = gagr::ProjectName.FromProject("[PROJECT]"),
                 Assessment = new Assessment(),
             };
             Assessment expectedResponse = new Assessment
             {
-                AssessmentName = new AssessmentName("[PROJECT]", "[ASSESSMENT]"),
+                AssessmentName = AssessmentName.FromProjectAssessment("[PROJECT]", "[ASSESSMENT]"),
                 Event = new Event(),
                 Score = -5.80354E+17F,
                 TokenProperties = new TokenProperties(),
@@ -168,17 +168,17 @@ namespace Google.Cloud.RecaptchaEnterprise.V1Beta1.Tests
         }
 
         [xunit::FactAttribute]
-        public async stt::Task CreateAssessmentAsync_ResourceNames()
+        public async stt::Task CreateAssessmentResourceNamesAsync()
         {
             moq::Mock<RecaptchaEnterpriseServiceV1Beta1.RecaptchaEnterpriseServiceV1Beta1Client> mockGrpcClient = new moq::Mock<RecaptchaEnterpriseServiceV1Beta1.RecaptchaEnterpriseServiceV1Beta1Client>(moq::MockBehavior.Strict);
             CreateAssessmentRequest request = new CreateAssessmentRequest
             {
-                ParentAsProjectName = new gagr::ProjectName("[PROJECT]"),
+                ParentAsProjectName = gagr::ProjectName.FromProject("[PROJECT]"),
                 Assessment = new Assessment(),
             };
             Assessment expectedResponse = new Assessment
             {
-                AssessmentName = new AssessmentName("[PROJECT]", "[ASSESSMENT]"),
+                AssessmentName = AssessmentName.FromProjectAssessment("[PROJECT]", "[ASSESSMENT]"),
                 Event = new Event(),
                 Score = -5.80354E+17F,
                 TokenProperties = new TokenProperties(),
@@ -202,7 +202,7 @@ namespace Google.Cloud.RecaptchaEnterprise.V1Beta1.Tests
             moq::Mock<RecaptchaEnterpriseServiceV1Beta1.RecaptchaEnterpriseServiceV1Beta1Client> mockGrpcClient = new moq::Mock<RecaptchaEnterpriseServiceV1Beta1.RecaptchaEnterpriseServiceV1Beta1Client>(moq::MockBehavior.Strict);
             AnnotateAssessmentRequest request = new AnnotateAssessmentRequest
             {
-                AssessmentName = new AssessmentName("[PROJECT]", "[ASSESSMENT]"),
+                AssessmentName = AssessmentName.FromProjectAssessment("[PROJECT]", "[ASSESSMENT]"),
                 Annotation = AnnotateAssessmentRequest.Types.Annotation.Legitimate,
             };
             AnnotateAssessmentResponse expectedResponse = new AnnotateAssessmentResponse { };
@@ -219,7 +219,7 @@ namespace Google.Cloud.RecaptchaEnterprise.V1Beta1.Tests
             moq::Mock<RecaptchaEnterpriseServiceV1Beta1.RecaptchaEnterpriseServiceV1Beta1Client> mockGrpcClient = new moq::Mock<RecaptchaEnterpriseServiceV1Beta1.RecaptchaEnterpriseServiceV1Beta1Client>(moq::MockBehavior.Strict);
             AnnotateAssessmentRequest request = new AnnotateAssessmentRequest
             {
-                AssessmentName = new AssessmentName("[PROJECT]", "[ASSESSMENT]"),
+                AssessmentName = AssessmentName.FromProjectAssessment("[PROJECT]", "[ASSESSMENT]"),
                 Annotation = AnnotateAssessmentRequest.Types.Annotation.Legitimate,
             };
             AnnotateAssessmentResponse expectedResponse = new AnnotateAssessmentResponse { };
@@ -238,7 +238,7 @@ namespace Google.Cloud.RecaptchaEnterprise.V1Beta1.Tests
             moq::Mock<RecaptchaEnterpriseServiceV1Beta1.RecaptchaEnterpriseServiceV1Beta1Client> mockGrpcClient = new moq::Mock<RecaptchaEnterpriseServiceV1Beta1.RecaptchaEnterpriseServiceV1Beta1Client>(moq::MockBehavior.Strict);
             AnnotateAssessmentRequest request = new AnnotateAssessmentRequest
             {
-                AssessmentName = new AssessmentName("[PROJECT]", "[ASSESSMENT]"),
+                AssessmentName = AssessmentName.FromProjectAssessment("[PROJECT]", "[ASSESSMENT]"),
                 Annotation = AnnotateAssessmentRequest.Types.Annotation.Legitimate,
             };
             AnnotateAssessmentResponse expectedResponse = new AnnotateAssessmentResponse { };
@@ -255,7 +255,7 @@ namespace Google.Cloud.RecaptchaEnterprise.V1Beta1.Tests
             moq::Mock<RecaptchaEnterpriseServiceV1Beta1.RecaptchaEnterpriseServiceV1Beta1Client> mockGrpcClient = new moq::Mock<RecaptchaEnterpriseServiceV1Beta1.RecaptchaEnterpriseServiceV1Beta1Client>(moq::MockBehavior.Strict);
             AnnotateAssessmentRequest request = new AnnotateAssessmentRequest
             {
-                AssessmentName = new AssessmentName("[PROJECT]", "[ASSESSMENT]"),
+                AssessmentName = AssessmentName.FromProjectAssessment("[PROJECT]", "[ASSESSMENT]"),
                 Annotation = AnnotateAssessmentRequest.Types.Annotation.Legitimate,
             };
             AnnotateAssessmentResponse expectedResponse = new AnnotateAssessmentResponse { };
@@ -269,12 +269,12 @@ namespace Google.Cloud.RecaptchaEnterprise.V1Beta1.Tests
         }
 
         [xunit::FactAttribute]
-        public void AnnotateAssessment_ResourceNames()
+        public void AnnotateAssessmentResourceNames()
         {
             moq::Mock<RecaptchaEnterpriseServiceV1Beta1.RecaptchaEnterpriseServiceV1Beta1Client> mockGrpcClient = new moq::Mock<RecaptchaEnterpriseServiceV1Beta1.RecaptchaEnterpriseServiceV1Beta1Client>(moq::MockBehavior.Strict);
             AnnotateAssessmentRequest request = new AnnotateAssessmentRequest
             {
-                AssessmentName = new AssessmentName("[PROJECT]", "[ASSESSMENT]"),
+                AssessmentName = AssessmentName.FromProjectAssessment("[PROJECT]", "[ASSESSMENT]"),
                 Annotation = AnnotateAssessmentRequest.Types.Annotation.Legitimate,
             };
             AnnotateAssessmentResponse expectedResponse = new AnnotateAssessmentResponse { };
@@ -286,12 +286,12 @@ namespace Google.Cloud.RecaptchaEnterprise.V1Beta1.Tests
         }
 
         [xunit::FactAttribute]
-        public async stt::Task AnnotateAssessmentAsync_ResourceNames()
+        public async stt::Task AnnotateAssessmentResourceNamesAsync()
         {
             moq::Mock<RecaptchaEnterpriseServiceV1Beta1.RecaptchaEnterpriseServiceV1Beta1Client> mockGrpcClient = new moq::Mock<RecaptchaEnterpriseServiceV1Beta1.RecaptchaEnterpriseServiceV1Beta1Client>(moq::MockBehavior.Strict);
             AnnotateAssessmentRequest request = new AnnotateAssessmentRequest
             {
-                AssessmentName = new AssessmentName("[PROJECT]", "[ASSESSMENT]"),
+                AssessmentName = AssessmentName.FromProjectAssessment("[PROJECT]", "[ASSESSMENT]"),
                 Annotation = AnnotateAssessmentRequest.Types.Annotation.Legitimate,
             };
             AnnotateAssessmentResponse expectedResponse = new AnnotateAssessmentResponse { };
@@ -310,12 +310,12 @@ namespace Google.Cloud.RecaptchaEnterprise.V1Beta1.Tests
             moq::Mock<RecaptchaEnterpriseServiceV1Beta1.RecaptchaEnterpriseServiceV1Beta1Client> mockGrpcClient = new moq::Mock<RecaptchaEnterpriseServiceV1Beta1.RecaptchaEnterpriseServiceV1Beta1Client>(moq::MockBehavior.Strict);
             CreateKeyRequest request = new CreateKeyRequest
             {
-                ParentAsProjectName = new gagr::ProjectName("[PROJECT]"),
+                ParentAsProjectName = gagr::ProjectName.FromProject("[PROJECT]"),
                 Key = new Key(),
             };
             Key expectedResponse = new Key
             {
-                KeyName = new KeyName("[PROJECT]", "[KEY]"),
+                KeyName = KeyName.FromProjectKey("[PROJECT]", "[KEY]"),
                 DisplayName = "display_name137f65c2",
                 WebSettings = new WebKeySettings(),
                 AndroidSettings = new AndroidKeySettings(),
@@ -334,12 +334,12 @@ namespace Google.Cloud.RecaptchaEnterprise.V1Beta1.Tests
             moq::Mock<RecaptchaEnterpriseServiceV1Beta1.RecaptchaEnterpriseServiceV1Beta1Client> mockGrpcClient = new moq::Mock<RecaptchaEnterpriseServiceV1Beta1.RecaptchaEnterpriseServiceV1Beta1Client>(moq::MockBehavior.Strict);
             CreateKeyRequest request = new CreateKeyRequest
             {
-                ParentAsProjectName = new gagr::ProjectName("[PROJECT]"),
+                ParentAsProjectName = gagr::ProjectName.FromProject("[PROJECT]"),
                 Key = new Key(),
             };
             Key expectedResponse = new Key
             {
-                KeyName = new KeyName("[PROJECT]", "[KEY]"),
+                KeyName = KeyName.FromProjectKey("[PROJECT]", "[KEY]"),
                 DisplayName = "display_name137f65c2",
                 WebSettings = new WebKeySettings(),
                 AndroidSettings = new AndroidKeySettings(),
@@ -360,11 +360,11 @@ namespace Google.Cloud.RecaptchaEnterprise.V1Beta1.Tests
             moq::Mock<RecaptchaEnterpriseServiceV1Beta1.RecaptchaEnterpriseServiceV1Beta1Client> mockGrpcClient = new moq::Mock<RecaptchaEnterpriseServiceV1Beta1.RecaptchaEnterpriseServiceV1Beta1Client>(moq::MockBehavior.Strict);
             GetKeyRequest request = new GetKeyRequest
             {
-                KeyName = new KeyName("[PROJECT]", "[KEY]"),
+                KeyName = KeyName.FromProjectKey("[PROJECT]", "[KEY]"),
             };
             Key expectedResponse = new Key
             {
-                KeyName = new KeyName("[PROJECT]", "[KEY]"),
+                KeyName = KeyName.FromProjectKey("[PROJECT]", "[KEY]"),
                 DisplayName = "display_name137f65c2",
                 WebSettings = new WebKeySettings(),
                 AndroidSettings = new AndroidKeySettings(),
@@ -383,11 +383,11 @@ namespace Google.Cloud.RecaptchaEnterprise.V1Beta1.Tests
             moq::Mock<RecaptchaEnterpriseServiceV1Beta1.RecaptchaEnterpriseServiceV1Beta1Client> mockGrpcClient = new moq::Mock<RecaptchaEnterpriseServiceV1Beta1.RecaptchaEnterpriseServiceV1Beta1Client>(moq::MockBehavior.Strict);
             GetKeyRequest request = new GetKeyRequest
             {
-                KeyName = new KeyName("[PROJECT]", "[KEY]"),
+                KeyName = KeyName.FromProjectKey("[PROJECT]", "[KEY]"),
             };
             Key expectedResponse = new Key
             {
-                KeyName = new KeyName("[PROJECT]", "[KEY]"),
+                KeyName = KeyName.FromProjectKey("[PROJECT]", "[KEY]"),
                 DisplayName = "display_name137f65c2",
                 WebSettings = new WebKeySettings(),
                 AndroidSettings = new AndroidKeySettings(),
@@ -413,7 +413,7 @@ namespace Google.Cloud.RecaptchaEnterprise.V1Beta1.Tests
             };
             Key expectedResponse = new Key
             {
-                KeyName = new KeyName("[PROJECT]", "[KEY]"),
+                KeyName = KeyName.FromProjectKey("[PROJECT]", "[KEY]"),
                 DisplayName = "display_name137f65c2",
                 WebSettings = new WebKeySettings(),
                 AndroidSettings = new AndroidKeySettings(),
@@ -437,7 +437,7 @@ namespace Google.Cloud.RecaptchaEnterprise.V1Beta1.Tests
             };
             Key expectedResponse = new Key
             {
-                KeyName = new KeyName("[PROJECT]", "[KEY]"),
+                KeyName = KeyName.FromProjectKey("[PROJECT]", "[KEY]"),
                 DisplayName = "display_name137f65c2",
                 WebSettings = new WebKeySettings(),
                 AndroidSettings = new AndroidKeySettings(),
@@ -458,7 +458,7 @@ namespace Google.Cloud.RecaptchaEnterprise.V1Beta1.Tests
             moq::Mock<RecaptchaEnterpriseServiceV1Beta1.RecaptchaEnterpriseServiceV1Beta1Client> mockGrpcClient = new moq::Mock<RecaptchaEnterpriseServiceV1Beta1.RecaptchaEnterpriseServiceV1Beta1Client>(moq::MockBehavior.Strict);
             DeleteKeyRequest request = new DeleteKeyRequest
             {
-                KeyName = new KeyName("[PROJECT]", "[KEY]"),
+                KeyName = KeyName.FromProjectKey("[PROJECT]", "[KEY]"),
             };
             wkt::Empty expectedResponse = new wkt::Empty { };
             mockGrpcClient.Setup(x => x.DeleteKey(request, moq::It.IsAny<grpccore::CallOptions>())).Returns(expectedResponse);
@@ -473,7 +473,7 @@ namespace Google.Cloud.RecaptchaEnterprise.V1Beta1.Tests
             moq::Mock<RecaptchaEnterpriseServiceV1Beta1.RecaptchaEnterpriseServiceV1Beta1Client> mockGrpcClient = new moq::Mock<RecaptchaEnterpriseServiceV1Beta1.RecaptchaEnterpriseServiceV1Beta1Client>(moq::MockBehavior.Strict);
             DeleteKeyRequest request = new DeleteKeyRequest
             {
-                KeyName = new KeyName("[PROJECT]", "[KEY]"),
+                KeyName = KeyName.FromProjectKey("[PROJECT]", "[KEY]"),
             };
             wkt::Empty expectedResponse = new wkt::Empty { };
             mockGrpcClient.Setup(x => x.DeleteKeyAsync(request, moq::It.IsAny<grpccore::CallOptions>())).Returns(new grpccore::AsyncUnaryCall<wkt::Empty>(stt::Task.FromResult(expectedResponse), null, null, null, null));

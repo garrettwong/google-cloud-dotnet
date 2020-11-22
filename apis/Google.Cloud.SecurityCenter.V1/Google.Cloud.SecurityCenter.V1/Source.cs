@@ -25,8 +25,8 @@ namespace Google.Cloud.SecurityCenter.V1 {
       byte[] descriptorData = global::System.Convert.FromBase64String(
           string.Concat(
             "Citnb29nbGUvY2xvdWQvc2VjdXJpdHljZW50ZXIvdjEvc291cmNlLnByb3Rv",
-            "Eh5nb29nbGUuY2xvdWQuc2VjdXJpdHljZW50ZXIudjEaGWdvb2dsZS9hcGkv",
-            "cmVzb3VyY2UucHJvdG8aHGdvb2dsZS9hcGkvYW5ub3RhdGlvbnMucHJvdG8i",
+            "Eh5nb29nbGUuY2xvdWQuc2VjdXJpdHljZW50ZXIudjEaHGdvb2dsZS9hcGkv",
+            "YW5ub3RhdGlvbnMucHJvdG8aGWdvb2dsZS9hcGkvcmVzb3VyY2UucHJvdG8i",
             "mwEKBlNvdXJjZRIMCgRuYW1lGAEgASgJEhQKDGRpc3BsYXlfbmFtZRgCIAEo",
             "CRITCgtkZXNjcmlwdGlvbhgDIAEoCTpY6kFVCiRzZWN1cml0eWNlbnRlci5n",
             "b29nbGVhcGlzLmNvbS9Tb3VyY2USLW9yZ2FuaXphdGlvbnMve29yZ2FuaXph",
@@ -37,9 +37,9 @@ namespace Google.Cloud.SecurityCenter.V1 {
             "Z2xlXENsb3VkXFNlY3VyaXR5Q2VudGVyXFYx6gIhR29vZ2xlOjpDbG91ZDo6",
             "U2VjdXJpdHlDZW50ZXI6OlYxYgZwcm90bzM="));
       descriptor = pbr::FileDescriptor.FromGeneratedCode(descriptorData,
-          new pbr::FileDescriptor[] { global::Google.Api.ResourceReflection.Descriptor, global::Google.Api.AnnotationsReflection.Descriptor, },
-          new pbr::GeneratedClrTypeInfo(null, new pbr::GeneratedClrTypeInfo[] {
-            new pbr::GeneratedClrTypeInfo(typeof(global::Google.Cloud.SecurityCenter.V1.Source), global::Google.Cloud.SecurityCenter.V1.Source.Parser, new[]{ "Name", "DisplayName", "Description" }, null, null, null)
+          new pbr::FileDescriptor[] { global::Google.Api.AnnotationsReflection.Descriptor, global::Google.Api.ResourceReflection.Descriptor, },
+          new pbr::GeneratedClrTypeInfo(null, null, new pbr::GeneratedClrTypeInfo[] {
+            new pbr::GeneratedClrTypeInfo(typeof(global::Google.Cloud.SecurityCenter.V1.Source), global::Google.Cloud.SecurityCenter.V1.Source.Parser, new[]{ "Name", "DisplayName", "Description" }, null, null, null, null)
           }));
     }
     #endregion
@@ -47,12 +47,16 @@ namespace Google.Cloud.SecurityCenter.V1 {
   }
   #region Messages
   /// <summary>
-  /// Cloud Security Command Center's (Cloud SCC) finding source. A finding source
+  /// Security Command Center finding source. A finding source
   /// is an entity or a mechanism that can produce a finding. A source is like a
   /// container of findings that come from the same scanner, logger, monitor, and
   /// other tools.
   /// </summary>
-  public sealed partial class Source : pb::IMessage<Source> {
+  public sealed partial class Source : pb::IMessage<Source>
+  #if !GOOGLE_PROTOBUF_REFSTRUCT_COMPATIBILITY_MODE
+      , pb::IBufferMessage
+  #endif
+  {
     private static readonly pb::MessageParser<Source> _parser = new pb::MessageParser<Source>(() => new Source());
     private pb::UnknownFieldSet _unknownFields;
     [global::System.Diagnostics.DebuggerNonUserCodeAttribute]
@@ -181,6 +185,9 @@ namespace Google.Cloud.SecurityCenter.V1 {
 
     [global::System.Diagnostics.DebuggerNonUserCodeAttribute]
     public void WriteTo(pb::CodedOutputStream output) {
+    #if !GOOGLE_PROTOBUF_REFSTRUCT_COMPATIBILITY_MODE
+      output.WriteRawMessage(this);
+    #else
       if (Name.Length != 0) {
         output.WriteRawTag(10);
         output.WriteString(Name);
@@ -196,7 +203,29 @@ namespace Google.Cloud.SecurityCenter.V1 {
       if (_unknownFields != null) {
         _unknownFields.WriteTo(output);
       }
+    #endif
     }
+
+    #if !GOOGLE_PROTOBUF_REFSTRUCT_COMPATIBILITY_MODE
+    [global::System.Diagnostics.DebuggerNonUserCodeAttribute]
+    void pb::IBufferMessage.InternalWriteTo(ref pb::WriteContext output) {
+      if (Name.Length != 0) {
+        output.WriteRawTag(10);
+        output.WriteString(Name);
+      }
+      if (DisplayName.Length != 0) {
+        output.WriteRawTag(18);
+        output.WriteString(DisplayName);
+      }
+      if (Description.Length != 0) {
+        output.WriteRawTag(26);
+        output.WriteString(Description);
+      }
+      if (_unknownFields != null) {
+        _unknownFields.WriteTo(ref output);
+      }
+    }
+    #endif
 
     [global::System.Diagnostics.DebuggerNonUserCodeAttribute]
     public int CalculateSize() {
@@ -235,6 +264,9 @@ namespace Google.Cloud.SecurityCenter.V1 {
 
     [global::System.Diagnostics.DebuggerNonUserCodeAttribute]
     public void MergeFrom(pb::CodedInputStream input) {
+    #if !GOOGLE_PROTOBUF_REFSTRUCT_COMPATIBILITY_MODE
+      input.ReadRawMessage(this);
+    #else
       uint tag;
       while ((tag = input.ReadTag()) != 0) {
         switch(tag) {
@@ -255,7 +287,34 @@ namespace Google.Cloud.SecurityCenter.V1 {
           }
         }
       }
+    #endif
     }
+
+    #if !GOOGLE_PROTOBUF_REFSTRUCT_COMPATIBILITY_MODE
+    [global::System.Diagnostics.DebuggerNonUserCodeAttribute]
+    void pb::IBufferMessage.InternalMergeFrom(ref pb::ParseContext input) {
+      uint tag;
+      while ((tag = input.ReadTag()) != 0) {
+        switch(tag) {
+          default:
+            _unknownFields = pb::UnknownFieldSet.MergeFieldFrom(_unknownFields, ref input);
+            break;
+          case 10: {
+            Name = input.ReadString();
+            break;
+          }
+          case 18: {
+            DisplayName = input.ReadString();
+            break;
+          }
+          case 26: {
+            Description = input.ReadString();
+            break;
+          }
+        }
+      }
+    }
+    #endif
 
   }
 

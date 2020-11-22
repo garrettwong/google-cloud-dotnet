@@ -37,9 +37,9 @@ namespace Google.Cloud.Talent.V4Beta1 {
             "bnSiAgNDVFNiBnByb3RvMw=="));
       descriptor = pbr::FileDescriptor.FromGeneratedCode(descriptorData,
           new pbr::FileDescriptor[] { global::Google.Api.AnnotationsReflection.Descriptor, },
-          new pbr::GeneratedClrTypeInfo(null, new pbr::GeneratedClrTypeInfo[] {
-            new pbr::GeneratedClrTypeInfo(typeof(global::Google.Cloud.Talent.V4Beta1.HistogramQuery), global::Google.Cloud.Talent.V4Beta1.HistogramQuery.Parser, new[]{ "HistogramQuery_" }, null, null, null),
-            new pbr::GeneratedClrTypeInfo(typeof(global::Google.Cloud.Talent.V4Beta1.HistogramQueryResult), global::Google.Cloud.Talent.V4Beta1.HistogramQueryResult.Parser, new[]{ "HistogramQuery", "Histogram" }, null, null, new pbr::GeneratedClrTypeInfo[] { null, })
+          new pbr::GeneratedClrTypeInfo(null, null, new pbr::GeneratedClrTypeInfo[] {
+            new pbr::GeneratedClrTypeInfo(typeof(global::Google.Cloud.Talent.V4Beta1.HistogramQuery), global::Google.Cloud.Talent.V4Beta1.HistogramQuery.Parser, new[]{ "HistogramQuery_" }, null, null, null, null),
+            new pbr::GeneratedClrTypeInfo(typeof(global::Google.Cloud.Talent.V4Beta1.HistogramQueryResult), global::Google.Cloud.Talent.V4Beta1.HistogramQueryResult.Parser, new[]{ "HistogramQuery", "Histogram" }, null, null, null, new pbr::GeneratedClrTypeInfo[] { null, })
           }));
     }
     #endregion
@@ -49,7 +49,11 @@ namespace Google.Cloud.Talent.V4Beta1 {
   /// <summary>
   /// The histogram request.
   /// </summary>
-  public sealed partial class HistogramQuery : pb::IMessage<HistogramQuery> {
+  public sealed partial class HistogramQuery : pb::IMessage<HistogramQuery>
+  #if !GOOGLE_PROTOBUF_REFSTRUCT_COMPATIBILITY_MODE
+      , pb::IBufferMessage
+  #endif
+  {
     private static readonly pb::MessageParser<HistogramQuery> _parser = new pb::MessageParser<HistogramQuery>(() => new HistogramQuery());
     private pb::UnknownFieldSet _unknownFields;
     [global::System.Diagnostics.DebuggerNonUserCodeAttribute]
@@ -90,11 +94,8 @@ namespace Google.Cloud.Talent.V4Beta1 {
     /// An expression specifies a histogram request against matching resources
     /// (for example, jobs, profiles) for searches.
     ///
-    /// See
-    /// [SearchJobsRequest.histogram_queries][google.cloud.talent.v4beta1.SearchJobsRequest.histogram_queries]
-    /// and
-    /// [SearchProfilesRequest.histogram_queries][google.cloud.talent.v4beta1.SearchProfilesRequest.histogram_queries]
-    /// for details about syntax.
+    /// See [SearchJobsRequest.histogram_queries][google.cloud.talent.v4beta1.SearchJobsRequest.histogram_queries] and
+    /// [SearchProfilesRequest.histogram_queries][google.cloud.talent.v4beta1.SearchProfilesRequest.histogram_queries] for details about syntax.
     /// </summary>
     [global::System.Diagnostics.DebuggerNonUserCodeAttribute]
     public string HistogramQuery_ {
@@ -138,6 +139,9 @@ namespace Google.Cloud.Talent.V4Beta1 {
 
     [global::System.Diagnostics.DebuggerNonUserCodeAttribute]
     public void WriteTo(pb::CodedOutputStream output) {
+    #if !GOOGLE_PROTOBUF_REFSTRUCT_COMPATIBILITY_MODE
+      output.WriteRawMessage(this);
+    #else
       if (HistogramQuery_.Length != 0) {
         output.WriteRawTag(10);
         output.WriteString(HistogramQuery_);
@@ -145,7 +149,21 @@ namespace Google.Cloud.Talent.V4Beta1 {
       if (_unknownFields != null) {
         _unknownFields.WriteTo(output);
       }
+    #endif
     }
+
+    #if !GOOGLE_PROTOBUF_REFSTRUCT_COMPATIBILITY_MODE
+    [global::System.Diagnostics.DebuggerNonUserCodeAttribute]
+    void pb::IBufferMessage.InternalWriteTo(ref pb::WriteContext output) {
+      if (HistogramQuery_.Length != 0) {
+        output.WriteRawTag(10);
+        output.WriteString(HistogramQuery_);
+      }
+      if (_unknownFields != null) {
+        _unknownFields.WriteTo(ref output);
+      }
+    }
+    #endif
 
     [global::System.Diagnostics.DebuggerNonUserCodeAttribute]
     public int CalculateSize() {
@@ -172,6 +190,9 @@ namespace Google.Cloud.Talent.V4Beta1 {
 
     [global::System.Diagnostics.DebuggerNonUserCodeAttribute]
     public void MergeFrom(pb::CodedInputStream input) {
+    #if !GOOGLE_PROTOBUF_REFSTRUCT_COMPATIBILITY_MODE
+      input.ReadRawMessage(this);
+    #else
       uint tag;
       while ((tag = input.ReadTag()) != 0) {
         switch(tag) {
@@ -184,16 +205,37 @@ namespace Google.Cloud.Talent.V4Beta1 {
           }
         }
       }
+    #endif
     }
+
+    #if !GOOGLE_PROTOBUF_REFSTRUCT_COMPATIBILITY_MODE
+    [global::System.Diagnostics.DebuggerNonUserCodeAttribute]
+    void pb::IBufferMessage.InternalMergeFrom(ref pb::ParseContext input) {
+      uint tag;
+      while ((tag = input.ReadTag()) != 0) {
+        switch(tag) {
+          default:
+            _unknownFields = pb::UnknownFieldSet.MergeFieldFrom(_unknownFields, ref input);
+            break;
+          case 10: {
+            HistogramQuery_ = input.ReadString();
+            break;
+          }
+        }
+      }
+    }
+    #endif
 
   }
 
   /// <summary>
-  /// Histogram result that matches
-  /// [HistogramQuery][google.cloud.talent.v4beta1.HistogramQuery] specified in
-  /// searches.
+  /// Histogram result that matches [HistogramQuery][google.cloud.talent.v4beta1.HistogramQuery] specified in searches.
   /// </summary>
-  public sealed partial class HistogramQueryResult : pb::IMessage<HistogramQueryResult> {
+  public sealed partial class HistogramQueryResult : pb::IMessage<HistogramQueryResult>
+  #if !GOOGLE_PROTOBUF_REFSTRUCT_COMPATIBILITY_MODE
+      , pb::IBufferMessage
+  #endif
+  {
     private static readonly pb::MessageParser<HistogramQueryResult> _parser = new pb::MessageParser<HistogramQueryResult>(() => new HistogramQueryResult());
     private pb::UnknownFieldSet _unknownFields;
     [global::System.Diagnostics.DebuggerNonUserCodeAttribute]
@@ -245,7 +287,7 @@ namespace Google.Cloud.Talent.V4Beta1 {
     /// <summary>Field number for the "histogram" field.</summary>
     public const int HistogramFieldNumber = 2;
     private static readonly pbc::MapField<string, long>.Codec _map_histogram_codec
-        = new pbc::MapField<string, long>.Codec(pb::FieldCodec.ForString(10), pb::FieldCodec.ForInt64(16), 18);
+        = new pbc::MapField<string, long>.Codec(pb::FieldCodec.ForString(10, ""), pb::FieldCodec.ForInt64(16, 0L), 18);
     private readonly pbc::MapField<string, long> histogram_ = new pbc::MapField<string, long>();
     /// <summary>
     /// A map from the values of the facet associated with distinct values to the
@@ -300,6 +342,9 @@ namespace Google.Cloud.Talent.V4Beta1 {
 
     [global::System.Diagnostics.DebuggerNonUserCodeAttribute]
     public void WriteTo(pb::CodedOutputStream output) {
+    #if !GOOGLE_PROTOBUF_REFSTRUCT_COMPATIBILITY_MODE
+      output.WriteRawMessage(this);
+    #else
       if (HistogramQuery.Length != 0) {
         output.WriteRawTag(10);
         output.WriteString(HistogramQuery);
@@ -308,7 +353,22 @@ namespace Google.Cloud.Talent.V4Beta1 {
       if (_unknownFields != null) {
         _unknownFields.WriteTo(output);
       }
+    #endif
     }
+
+    #if !GOOGLE_PROTOBUF_REFSTRUCT_COMPATIBILITY_MODE
+    [global::System.Diagnostics.DebuggerNonUserCodeAttribute]
+    void pb::IBufferMessage.InternalWriteTo(ref pb::WriteContext output) {
+      if (HistogramQuery.Length != 0) {
+        output.WriteRawTag(10);
+        output.WriteString(HistogramQuery);
+      }
+      histogram_.WriteTo(ref output, _map_histogram_codec);
+      if (_unknownFields != null) {
+        _unknownFields.WriteTo(ref output);
+      }
+    }
+    #endif
 
     [global::System.Diagnostics.DebuggerNonUserCodeAttribute]
     public int CalculateSize() {
@@ -337,6 +397,9 @@ namespace Google.Cloud.Talent.V4Beta1 {
 
     [global::System.Diagnostics.DebuggerNonUserCodeAttribute]
     public void MergeFrom(pb::CodedInputStream input) {
+    #if !GOOGLE_PROTOBUF_REFSTRUCT_COMPATIBILITY_MODE
+      input.ReadRawMessage(this);
+    #else
       uint tag;
       while ((tag = input.ReadTag()) != 0) {
         switch(tag) {
@@ -353,7 +416,30 @@ namespace Google.Cloud.Talent.V4Beta1 {
           }
         }
       }
+    #endif
     }
+
+    #if !GOOGLE_PROTOBUF_REFSTRUCT_COMPATIBILITY_MODE
+    [global::System.Diagnostics.DebuggerNonUserCodeAttribute]
+    void pb::IBufferMessage.InternalMergeFrom(ref pb::ParseContext input) {
+      uint tag;
+      while ((tag = input.ReadTag()) != 0) {
+        switch(tag) {
+          default:
+            _unknownFields = pb::UnknownFieldSet.MergeFieldFrom(_unknownFields, ref input);
+            break;
+          case 10: {
+            HistogramQuery = input.ReadString();
+            break;
+          }
+          case 18: {
+            histogram_.AddEntriesFrom(ref input, _map_histogram_codec);
+            break;
+          }
+        }
+      }
+    }
+    #endif
 
   }
 

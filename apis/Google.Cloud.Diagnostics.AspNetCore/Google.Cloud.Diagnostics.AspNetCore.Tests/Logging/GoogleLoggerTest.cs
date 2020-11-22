@@ -27,7 +27,13 @@ using System.Collections.Generic;
 using System.Linq;
 using Xunit;
 
+#if NETCOREAPP3_1
+namespace Google.Cloud.Diagnostics.AspNetCore3.Tests
+#elif NETCOREAPP2_1 || NET461
 namespace Google.Cloud.Diagnostics.AspNetCore.Tests
+#else
+#error unknown target framework
+#endif
 {
     public class GoogleLoggerTest
     {
@@ -52,12 +58,15 @@ namespace Google.Cloud.Diagnostics.AspNetCore.Tests
             Dictionary<string, string> labels = null, IServiceProvider serviceProvider = null,
             string logName = null,
             MonitoredResource monitoredResource = null, LogTarget logTarget = null,
-            RetryOptions retryOptions = null)
+            RetryOptions retryOptions = null,
+            string serviceName = null,
+            string version = null)
         {
-            consumer = consumer ?? new Mock<IConsumer<LogEntry>>(MockBehavior.Strict).Object;
-            monitoredResource = monitoredResource ?? MonitoredResourceBuilder.GlobalResource;
-            logTarget = logTarget ?? s_defaultLogTarget;
-            LoggerOptions options = LoggerOptions.Create(logLevel, logName, labels, monitoredResource, retryOptions: retryOptions);
+            consumer ??= new Mock<IConsumer<LogEntry>>(MockBehavior.Strict).Object;
+            monitoredResource ??= MonitoredResourceBuilder.GlobalResource;
+            logTarget ??= s_defaultLogTarget;
+            LoggerOptions options = LoggerOptions.CreateWithServiceContext(
+                logLevel, logName, labels, monitoredResource, retryOptions: retryOptions, serviceName: serviceName, version: version);
             return new GoogleLogger(consumer, logTarget, options, LogName, s_clock, serviceProvider);
         }
 
@@ -430,28 +439,24 @@ namespace Google.Cloud.Diagnostics.AspNetCore.Tests
         [Fact]
         public void Log_Trace()
         {
-            string traceId = "105445aa7843bc8bf206b12000100f00";
+            string traceId = "external_trace_id";
+            string spanId = "external_span_id";
             string fullTraceName = TraceTarget.ForProject(ProjectId).GetFullTraceName(traceId);
 
             Predicate<IEnumerable<LogEntry>> matcher = logEntries =>
             {
                 LogEntry entry = logEntries.Single();
                 return entry.LogName == new LogName(ProjectId, BaseLogName).ToString() &&
-                    entry.Trace == fullTraceName;
+                    entry.Trace == fullTraceName &&
+                    entry.SpanId == spanId;
             };
 
-            var tracerContext = TraceHeaderContext.Create(traceId, 81237123, null);
-            HeaderDictionary dict = new HeaderDictionary();
-            dict[TraceHeaderContext.TraceHeader] = tracerContext.ToString();
-
             var mockServiceProvider = new Mock<IServiceProvider>();
-            var mockAccessor = new Mock<IHttpContextAccessor>();
-            var mockContext = new Mock<HttpContext>();
-            var mockRequest = new Mock<HttpRequest>();
-            mockServiceProvider.Setup(sp => sp.GetService(typeof(IHttpContextAccessor))).Returns(mockAccessor.Object);
-            mockAccessor.Setup(a => a.HttpContext).Returns(mockContext.Object);
-            mockContext.Setup(c => c.Request).Returns(mockRequest.Object);
-            mockRequest.Setup(r => r.Headers).Returns(dict);
+            var mockExternalTraceProvider = new Mock<IExternalTraceProvider>();
+            mockServiceProvider.Setup(sp => sp.GetService(typeof(IExternalTraceProvider))).Returns(mockExternalTraceProvider.Object);
+            mockExternalTraceProvider.Setup(
+                sp => sp.GetCurrentTraceContext(It.IsAny<IServiceProvider>()))
+                .Returns(new TraceContextForLogEntry(traceId, spanId));
 
             var mockConsumer = new Mock<IConsumer<LogEntry>>();
             mockConsumer.Setup(c => c.Receive(Match.Create(matcher)));
@@ -567,6 +572,97 @@ namespace Google.Cloud.Diagnostics.AspNetCore.Tests
             mockConsumer.Setup(c => c.Receive(Match.Create(matcher)));
             var logger = GetLogger(mockConsumer.Object, LogLevel.Information, labels: labels, serviceProvider: mockServiceProvider.Object, logName: BaseLogName);
             logger.LogInformation(LogMessage);
+            mockConsumer.VerifyAll();
+        }
+
+        [Fact]
+        public void Log_ServiceContext()
+        {
+            var message = "a message with stuff";
+            var logStr = "log";
+
+            Predicate<IEnumerable<LogEntry>> matcher = logEntries =>
+            {
+                LogEntry entry = logEntries.Single();
+                var json = entry.JsonPayload.Fields;
+                return json["message"].StringValue == "a message with stuff" &&
+                    json["serviceContext"].StructValue.Fields["service"].StringValue == "dummyService" &&
+                    json["serviceContext"].StructValue.Fields["version"].StringValue == "v1.0.0-alpha01";
+            };
+
+            var mockConsumer = new Mock<IConsumer<LogEntry>>();
+            mockConsumer.Setup(c => c.Receive(Match.Create(matcher)));
+            var logger = GetLogger(
+                mockConsumer.Object, LogLevel.Information, null, null, BaseLogName, serviceName: "dummyService", version: "v1.0.0-alpha01");
+            logger.LogError(28, s_exception, message, logStr);
+            mockConsumer.VerifyAll();
+        }
+
+        [Fact]
+        public void Log_ServiceContext_OnlyServiceName()
+        {
+            var message = "a message with stuff";
+            var logStr = "log";
+
+            Predicate<IEnumerable<LogEntry>> matcher = logEntries =>
+            {
+                LogEntry entry = logEntries.Single();
+                var json = entry.JsonPayload.Fields;
+                return json["message"].StringValue == "a message with stuff" &&
+                    json["serviceContext"].StructValue.Fields["service"].StringValue == "dummyService" &&
+                    !json["serviceContext"].StructValue.Fields.ContainsKey("version");
+            };
+
+            var mockConsumer = new Mock<IConsumer<LogEntry>>();
+            mockConsumer.Setup(c => c.Receive(Match.Create(matcher)));
+            var logger = GetLogger(
+                mockConsumer.Object, LogLevel.Information, null, null, BaseLogName, serviceName: "dummyService");
+            logger.LogError(28, s_exception, message, logStr);
+            mockConsumer.VerifyAll();
+        }
+
+        [Fact]
+        public void Log_ServiceContext_OnlyVersion()
+        {
+            var message = "a message with stuff";
+            var logStr = "log";
+
+            Predicate<IEnumerable<LogEntry>> matcher = logEntries =>
+            {
+                LogEntry entry = logEntries.Single();
+                var json = entry.JsonPayload.Fields;
+                return json["message"].StringValue == "a message with stuff" &&
+                    !json["serviceContext"].StructValue.Fields.ContainsKey("service") &&
+                    json["serviceContext"].StructValue.Fields["version"].StringValue == "v1.0.0-alpha01";
+            };
+
+            var mockConsumer = new Mock<IConsumer<LogEntry>>();
+            mockConsumer.Setup(c => c.Receive(Match.Create(matcher)));
+            var logger = GetLogger(
+                mockConsumer.Object, LogLevel.Information, null, null, BaseLogName, version: "v1.0.0-alpha01");
+            logger.LogError(28, s_exception, message, logStr);
+            mockConsumer.VerifyAll();
+        }
+
+        [Fact]
+        public void Log_NoServiceContext()
+        {
+            var message = "a message with stuff";
+            var logStr = "log";
+
+            Predicate<IEnumerable<LogEntry>> matcher = logEntries =>
+            {
+                LogEntry entry = logEntries.Single();
+                var json = entry.JsonPayload.Fields;
+                return json["message"].StringValue == "a message with stuff" &&
+                    !json.ContainsKey("serviceContext");
+            };
+
+            var mockConsumer = new Mock<IConsumer<LogEntry>>();
+            mockConsumer.Setup(c => c.Receive(Match.Create(matcher)));
+            var logger = GetLogger(
+                mockConsumer.Object, LogLevel.Information, null, null, BaseLogName);
+            logger.LogError(28, s_exception, message, logStr);
             mockConsumer.VerifyAll();
         }
     }

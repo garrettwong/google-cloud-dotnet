@@ -45,19 +45,20 @@ namespace Google.Cloud.Spanner.V1 {
             "bXAipAEKE1RyYW5zYWN0aW9uU2VsZWN0b3ISOwoKc2luZ2xlX3VzZRgBIAEo",
             "CzIlLmdvb2dsZS5zcGFubmVyLnYxLlRyYW5zYWN0aW9uT3B0aW9uc0gAEgwK",
             "AmlkGAIgASgMSAASNgoFYmVnaW4YAyABKAsyJS5nb29nbGUuc3Bhbm5lci52",
-            "MS5UcmFuc2FjdGlvbk9wdGlvbnNIAEIKCghzZWxlY3RvckKZAQoVY29tLmdv",
+            "MS5UcmFuc2FjdGlvbk9wdGlvbnNIAEIKCghzZWxlY3RvckK2AQoVY29tLmdv",
             "b2dsZS5zcGFubmVyLnYxQhBUcmFuc2FjdGlvblByb3RvUAFaOGdvb2dsZS5n",
             "b2xhbmcub3JnL2dlbnByb3RvL2dvb2dsZWFwaXMvc3Bhbm5lci92MTtzcGFu",
             "bmVyqgIXR29vZ2xlLkNsb3VkLlNwYW5uZXIuVjHKAhdHb29nbGVcQ2xvdWRc",
-            "U3Bhbm5lclxWMWIGcHJvdG8z"));
+            "U3Bhbm5lclxWMeoCGkdvb2dsZTo6Q2xvdWQ6OlNwYW5uZXI6OlYxYgZwcm90",
+            "bzM="));
       descriptor = pbr::FileDescriptor.FromGeneratedCode(descriptorData,
           new pbr::FileDescriptor[] { global::Google.Protobuf.WellKnownTypes.DurationReflection.Descriptor, global::Google.Protobuf.WellKnownTypes.TimestampReflection.Descriptor, global::Google.Api.AnnotationsReflection.Descriptor, },
-          new pbr::GeneratedClrTypeInfo(null, new pbr::GeneratedClrTypeInfo[] {
-            new pbr::GeneratedClrTypeInfo(typeof(global::Google.Cloud.Spanner.V1.TransactionOptions), global::Google.Cloud.Spanner.V1.TransactionOptions.Parser, new[]{ "ReadWrite", "PartitionedDml", "ReadOnly" }, new[]{ "Mode" }, null, new pbr::GeneratedClrTypeInfo[] { new pbr::GeneratedClrTypeInfo(typeof(global::Google.Cloud.Spanner.V1.TransactionOptions.Types.ReadWrite), global::Google.Cloud.Spanner.V1.TransactionOptions.Types.ReadWrite.Parser, null, null, null, null),
-            new pbr::GeneratedClrTypeInfo(typeof(global::Google.Cloud.Spanner.V1.TransactionOptions.Types.PartitionedDml), global::Google.Cloud.Spanner.V1.TransactionOptions.Types.PartitionedDml.Parser, null, null, null, null),
-            new pbr::GeneratedClrTypeInfo(typeof(global::Google.Cloud.Spanner.V1.TransactionOptions.Types.ReadOnly), global::Google.Cloud.Spanner.V1.TransactionOptions.Types.ReadOnly.Parser, new[]{ "Strong", "MinReadTimestamp", "MaxStaleness", "ReadTimestamp", "ExactStaleness", "ReturnReadTimestamp" }, new[]{ "TimestampBound" }, null, null)}),
-            new pbr::GeneratedClrTypeInfo(typeof(global::Google.Cloud.Spanner.V1.Transaction), global::Google.Cloud.Spanner.V1.Transaction.Parser, new[]{ "Id", "ReadTimestamp" }, null, null, null),
-            new pbr::GeneratedClrTypeInfo(typeof(global::Google.Cloud.Spanner.V1.TransactionSelector), global::Google.Cloud.Spanner.V1.TransactionSelector.Parser, new[]{ "SingleUse", "Id", "Begin" }, new[]{ "Selector" }, null, null)
+          new pbr::GeneratedClrTypeInfo(null, null, new pbr::GeneratedClrTypeInfo[] {
+            new pbr::GeneratedClrTypeInfo(typeof(global::Google.Cloud.Spanner.V1.TransactionOptions), global::Google.Cloud.Spanner.V1.TransactionOptions.Parser, new[]{ "ReadWrite", "PartitionedDml", "ReadOnly" }, new[]{ "Mode" }, null, null, new pbr::GeneratedClrTypeInfo[] { new pbr::GeneratedClrTypeInfo(typeof(global::Google.Cloud.Spanner.V1.TransactionOptions.Types.ReadWrite), global::Google.Cloud.Spanner.V1.TransactionOptions.Types.ReadWrite.Parser, null, null, null, null, null),
+            new pbr::GeneratedClrTypeInfo(typeof(global::Google.Cloud.Spanner.V1.TransactionOptions.Types.PartitionedDml), global::Google.Cloud.Spanner.V1.TransactionOptions.Types.PartitionedDml.Parser, null, null, null, null, null),
+            new pbr::GeneratedClrTypeInfo(typeof(global::Google.Cloud.Spanner.V1.TransactionOptions.Types.ReadOnly), global::Google.Cloud.Spanner.V1.TransactionOptions.Types.ReadOnly.Parser, new[]{ "Strong", "MinReadTimestamp", "MaxStaleness", "ReadTimestamp", "ExactStaleness", "ReturnReadTimestamp" }, new[]{ "TimestampBound" }, null, null, null)}),
+            new pbr::GeneratedClrTypeInfo(typeof(global::Google.Cloud.Spanner.V1.Transaction), global::Google.Cloud.Spanner.V1.Transaction.Parser, new[]{ "Id", "ReadTimestamp" }, null, null, null, null),
+            new pbr::GeneratedClrTypeInfo(typeof(global::Google.Cloud.Spanner.V1.TransactionSelector), global::Google.Cloud.Spanner.V1.TransactionSelector.Parser, new[]{ "SingleUse", "Id", "Begin" }, new[]{ "Selector" }, null, null, null)
           }));
     }
     #endregion
@@ -342,7 +343,11 @@ namespace Google.Cloud.Spanner.V1 {
   /// operations that are idempotent, such as deleting old rows from a very large
   /// table.
   /// </summary>
-  public sealed partial class TransactionOptions : pb::IMessage<TransactionOptions> {
+  public sealed partial class TransactionOptions : pb::IMessage<TransactionOptions>
+  #if !GOOGLE_PROTOBUF_REFSTRUCT_COMPATIBILITY_MODE
+      , pb::IBufferMessage
+  #endif
+  {
     private static readonly pb::MessageParser<TransactionOptions> _parser = new pb::MessageParser<TransactionOptions>(() => new TransactionOptions());
     private pb::UnknownFieldSet _unknownFields;
     [global::System.Diagnostics.DebuggerNonUserCodeAttribute]
@@ -501,6 +506,9 @@ namespace Google.Cloud.Spanner.V1 {
 
     [global::System.Diagnostics.DebuggerNonUserCodeAttribute]
     public void WriteTo(pb::CodedOutputStream output) {
+    #if !GOOGLE_PROTOBUF_REFSTRUCT_COMPATIBILITY_MODE
+      output.WriteRawMessage(this);
+    #else
       if (modeCase_ == ModeOneofCase.ReadWrite) {
         output.WriteRawTag(10);
         output.WriteMessage(ReadWrite);
@@ -516,7 +524,29 @@ namespace Google.Cloud.Spanner.V1 {
       if (_unknownFields != null) {
         _unknownFields.WriteTo(output);
       }
+    #endif
     }
+
+    #if !GOOGLE_PROTOBUF_REFSTRUCT_COMPATIBILITY_MODE
+    [global::System.Diagnostics.DebuggerNonUserCodeAttribute]
+    void pb::IBufferMessage.InternalWriteTo(ref pb::WriteContext output) {
+      if (modeCase_ == ModeOneofCase.ReadWrite) {
+        output.WriteRawTag(10);
+        output.WriteMessage(ReadWrite);
+      }
+      if (modeCase_ == ModeOneofCase.ReadOnly) {
+        output.WriteRawTag(18);
+        output.WriteMessage(ReadOnly);
+      }
+      if (modeCase_ == ModeOneofCase.PartitionedDml) {
+        output.WriteRawTag(26);
+        output.WriteMessage(PartitionedDml);
+      }
+      if (_unknownFields != null) {
+        _unknownFields.WriteTo(ref output);
+      }
+    }
+    #endif
 
     [global::System.Diagnostics.DebuggerNonUserCodeAttribute]
     public int CalculateSize() {
@@ -567,6 +597,9 @@ namespace Google.Cloud.Spanner.V1 {
 
     [global::System.Diagnostics.DebuggerNonUserCodeAttribute]
     public void MergeFrom(pb::CodedInputStream input) {
+    #if !GOOGLE_PROTOBUF_REFSTRUCT_COMPATIBILITY_MODE
+      input.ReadRawMessage(this);
+    #else
       uint tag;
       while ((tag = input.ReadTag()) != 0) {
         switch(tag) {
@@ -602,7 +635,49 @@ namespace Google.Cloud.Spanner.V1 {
           }
         }
       }
+    #endif
     }
+
+    #if !GOOGLE_PROTOBUF_REFSTRUCT_COMPATIBILITY_MODE
+    [global::System.Diagnostics.DebuggerNonUserCodeAttribute]
+    void pb::IBufferMessage.InternalMergeFrom(ref pb::ParseContext input) {
+      uint tag;
+      while ((tag = input.ReadTag()) != 0) {
+        switch(tag) {
+          default:
+            _unknownFields = pb::UnknownFieldSet.MergeFieldFrom(_unknownFields, ref input);
+            break;
+          case 10: {
+            global::Google.Cloud.Spanner.V1.TransactionOptions.Types.ReadWrite subBuilder = new global::Google.Cloud.Spanner.V1.TransactionOptions.Types.ReadWrite();
+            if (modeCase_ == ModeOneofCase.ReadWrite) {
+              subBuilder.MergeFrom(ReadWrite);
+            }
+            input.ReadMessage(subBuilder);
+            ReadWrite = subBuilder;
+            break;
+          }
+          case 18: {
+            global::Google.Cloud.Spanner.V1.TransactionOptions.Types.ReadOnly subBuilder = new global::Google.Cloud.Spanner.V1.TransactionOptions.Types.ReadOnly();
+            if (modeCase_ == ModeOneofCase.ReadOnly) {
+              subBuilder.MergeFrom(ReadOnly);
+            }
+            input.ReadMessage(subBuilder);
+            ReadOnly = subBuilder;
+            break;
+          }
+          case 26: {
+            global::Google.Cloud.Spanner.V1.TransactionOptions.Types.PartitionedDml subBuilder = new global::Google.Cloud.Spanner.V1.TransactionOptions.Types.PartitionedDml();
+            if (modeCase_ == ModeOneofCase.PartitionedDml) {
+              subBuilder.MergeFrom(PartitionedDml);
+            }
+            input.ReadMessage(subBuilder);
+            PartitionedDml = subBuilder;
+            break;
+          }
+        }
+      }
+    }
+    #endif
 
     #region Nested types
     /// <summary>Container for nested types declared in the TransactionOptions message type.</summary>
@@ -612,7 +687,11 @@ namespace Google.Cloud.Spanner.V1 {
       /// Message type to initiate a read-write transaction. Currently this
       /// transaction type has no options.
       /// </summary>
-      public sealed partial class ReadWrite : pb::IMessage<ReadWrite> {
+      public sealed partial class ReadWrite : pb::IMessage<ReadWrite>
+      #if !GOOGLE_PROTOBUF_REFSTRUCT_COMPATIBILITY_MODE
+          , pb::IBufferMessage
+      #endif
+      {
         private static readonly pb::MessageParser<ReadWrite> _parser = new pb::MessageParser<ReadWrite>(() => new ReadWrite());
         private pb::UnknownFieldSet _unknownFields;
         [global::System.Diagnostics.DebuggerNonUserCodeAttribute]
@@ -677,10 +756,23 @@ namespace Google.Cloud.Spanner.V1 {
 
         [global::System.Diagnostics.DebuggerNonUserCodeAttribute]
         public void WriteTo(pb::CodedOutputStream output) {
+        #if !GOOGLE_PROTOBUF_REFSTRUCT_COMPATIBILITY_MODE
+          output.WriteRawMessage(this);
+        #else
           if (_unknownFields != null) {
             _unknownFields.WriteTo(output);
           }
+        #endif
         }
+
+        #if !GOOGLE_PROTOBUF_REFSTRUCT_COMPATIBILITY_MODE
+        [global::System.Diagnostics.DebuggerNonUserCodeAttribute]
+        void pb::IBufferMessage.InternalWriteTo(ref pb::WriteContext output) {
+          if (_unknownFields != null) {
+            _unknownFields.WriteTo(ref output);
+          }
+        }
+        #endif
 
         [global::System.Diagnostics.DebuggerNonUserCodeAttribute]
         public int CalculateSize() {
@@ -701,6 +793,9 @@ namespace Google.Cloud.Spanner.V1 {
 
         [global::System.Diagnostics.DebuggerNonUserCodeAttribute]
         public void MergeFrom(pb::CodedInputStream input) {
+        #if !GOOGLE_PROTOBUF_REFSTRUCT_COMPATIBILITY_MODE
+          input.ReadRawMessage(this);
+        #else
           uint tag;
           while ((tag = input.ReadTag()) != 0) {
             switch(tag) {
@@ -709,14 +804,33 @@ namespace Google.Cloud.Spanner.V1 {
                 break;
             }
           }
+        #endif
         }
+
+        #if !GOOGLE_PROTOBUF_REFSTRUCT_COMPATIBILITY_MODE
+        [global::System.Diagnostics.DebuggerNonUserCodeAttribute]
+        void pb::IBufferMessage.InternalMergeFrom(ref pb::ParseContext input) {
+          uint tag;
+          while ((tag = input.ReadTag()) != 0) {
+            switch(tag) {
+              default:
+                _unknownFields = pb::UnknownFieldSet.MergeFieldFrom(_unknownFields, ref input);
+                break;
+            }
+          }
+        }
+        #endif
 
       }
 
       /// <summary>
       /// Message type to initiate a Partitioned DML transaction.
       /// </summary>
-      public sealed partial class PartitionedDml : pb::IMessage<PartitionedDml> {
+      public sealed partial class PartitionedDml : pb::IMessage<PartitionedDml>
+      #if !GOOGLE_PROTOBUF_REFSTRUCT_COMPATIBILITY_MODE
+          , pb::IBufferMessage
+      #endif
+      {
         private static readonly pb::MessageParser<PartitionedDml> _parser = new pb::MessageParser<PartitionedDml>(() => new PartitionedDml());
         private pb::UnknownFieldSet _unknownFields;
         [global::System.Diagnostics.DebuggerNonUserCodeAttribute]
@@ -781,10 +895,23 @@ namespace Google.Cloud.Spanner.V1 {
 
         [global::System.Diagnostics.DebuggerNonUserCodeAttribute]
         public void WriteTo(pb::CodedOutputStream output) {
+        #if !GOOGLE_PROTOBUF_REFSTRUCT_COMPATIBILITY_MODE
+          output.WriteRawMessage(this);
+        #else
           if (_unknownFields != null) {
             _unknownFields.WriteTo(output);
           }
+        #endif
         }
+
+        #if !GOOGLE_PROTOBUF_REFSTRUCT_COMPATIBILITY_MODE
+        [global::System.Diagnostics.DebuggerNonUserCodeAttribute]
+        void pb::IBufferMessage.InternalWriteTo(ref pb::WriteContext output) {
+          if (_unknownFields != null) {
+            _unknownFields.WriteTo(ref output);
+          }
+        }
+        #endif
 
         [global::System.Diagnostics.DebuggerNonUserCodeAttribute]
         public int CalculateSize() {
@@ -805,6 +932,9 @@ namespace Google.Cloud.Spanner.V1 {
 
         [global::System.Diagnostics.DebuggerNonUserCodeAttribute]
         public void MergeFrom(pb::CodedInputStream input) {
+        #if !GOOGLE_PROTOBUF_REFSTRUCT_COMPATIBILITY_MODE
+          input.ReadRawMessage(this);
+        #else
           uint tag;
           while ((tag = input.ReadTag()) != 0) {
             switch(tag) {
@@ -813,14 +943,33 @@ namespace Google.Cloud.Spanner.V1 {
                 break;
             }
           }
+        #endif
         }
+
+        #if !GOOGLE_PROTOBUF_REFSTRUCT_COMPATIBILITY_MODE
+        [global::System.Diagnostics.DebuggerNonUserCodeAttribute]
+        void pb::IBufferMessage.InternalMergeFrom(ref pb::ParseContext input) {
+          uint tag;
+          while ((tag = input.ReadTag()) != 0) {
+            switch(tag) {
+              default:
+                _unknownFields = pb::UnknownFieldSet.MergeFieldFrom(_unknownFields, ref input);
+                break;
+            }
+          }
+        }
+        #endif
 
       }
 
       /// <summary>
       /// Message type to initiate a read-only transaction.
       /// </summary>
-      public sealed partial class ReadOnly : pb::IMessage<ReadOnly> {
+      public sealed partial class ReadOnly : pb::IMessage<ReadOnly>
+      #if !GOOGLE_PROTOBUF_REFSTRUCT_COMPATIBILITY_MODE
+          , pb::IBufferMessage
+      #endif
+      {
         private static readonly pb::MessageParser<ReadOnly> _parser = new pb::MessageParser<ReadOnly>(() => new ReadOnly());
         private pb::UnknownFieldSet _unknownFields;
         [global::System.Diagnostics.DebuggerNonUserCodeAttribute]
@@ -1068,6 +1217,9 @@ namespace Google.Cloud.Spanner.V1 {
 
         [global::System.Diagnostics.DebuggerNonUserCodeAttribute]
         public void WriteTo(pb::CodedOutputStream output) {
+        #if !GOOGLE_PROTOBUF_REFSTRUCT_COMPATIBILITY_MODE
+          output.WriteRawMessage(this);
+        #else
           if (timestampBoundCase_ == TimestampBoundOneofCase.Strong) {
             output.WriteRawTag(8);
             output.WriteBool(Strong);
@@ -1095,7 +1247,41 @@ namespace Google.Cloud.Spanner.V1 {
           if (_unknownFields != null) {
             _unknownFields.WriteTo(output);
           }
+        #endif
         }
+
+        #if !GOOGLE_PROTOBUF_REFSTRUCT_COMPATIBILITY_MODE
+        [global::System.Diagnostics.DebuggerNonUserCodeAttribute]
+        void pb::IBufferMessage.InternalWriteTo(ref pb::WriteContext output) {
+          if (timestampBoundCase_ == TimestampBoundOneofCase.Strong) {
+            output.WriteRawTag(8);
+            output.WriteBool(Strong);
+          }
+          if (timestampBoundCase_ == TimestampBoundOneofCase.MinReadTimestamp) {
+            output.WriteRawTag(18);
+            output.WriteMessage(MinReadTimestamp);
+          }
+          if (timestampBoundCase_ == TimestampBoundOneofCase.MaxStaleness) {
+            output.WriteRawTag(26);
+            output.WriteMessage(MaxStaleness);
+          }
+          if (timestampBoundCase_ == TimestampBoundOneofCase.ReadTimestamp) {
+            output.WriteRawTag(34);
+            output.WriteMessage(ReadTimestamp);
+          }
+          if (timestampBoundCase_ == TimestampBoundOneofCase.ExactStaleness) {
+            output.WriteRawTag(42);
+            output.WriteMessage(ExactStaleness);
+          }
+          if (ReturnReadTimestamp != false) {
+            output.WriteRawTag(48);
+            output.WriteBool(ReturnReadTimestamp);
+          }
+          if (_unknownFields != null) {
+            _unknownFields.WriteTo(ref output);
+          }
+        }
+        #endif
 
         [global::System.Diagnostics.DebuggerNonUserCodeAttribute]
         public int CalculateSize() {
@@ -1167,6 +1353,9 @@ namespace Google.Cloud.Spanner.V1 {
 
         [global::System.Diagnostics.DebuggerNonUserCodeAttribute]
         public void MergeFrom(pb::CodedInputStream input) {
+        #if !GOOGLE_PROTOBUF_REFSTRUCT_COMPATIBILITY_MODE
+          input.ReadRawMessage(this);
+        #else
           uint tag;
           while ((tag = input.ReadTag()) != 0) {
             switch(tag) {
@@ -1219,7 +1408,66 @@ namespace Google.Cloud.Spanner.V1 {
               }
             }
           }
+        #endif
         }
+
+        #if !GOOGLE_PROTOBUF_REFSTRUCT_COMPATIBILITY_MODE
+        [global::System.Diagnostics.DebuggerNonUserCodeAttribute]
+        void pb::IBufferMessage.InternalMergeFrom(ref pb::ParseContext input) {
+          uint tag;
+          while ((tag = input.ReadTag()) != 0) {
+            switch(tag) {
+              default:
+                _unknownFields = pb::UnknownFieldSet.MergeFieldFrom(_unknownFields, ref input);
+                break;
+              case 8: {
+                Strong = input.ReadBool();
+                break;
+              }
+              case 18: {
+                global::Google.Protobuf.WellKnownTypes.Timestamp subBuilder = new global::Google.Protobuf.WellKnownTypes.Timestamp();
+                if (timestampBoundCase_ == TimestampBoundOneofCase.MinReadTimestamp) {
+                  subBuilder.MergeFrom(MinReadTimestamp);
+                }
+                input.ReadMessage(subBuilder);
+                MinReadTimestamp = subBuilder;
+                break;
+              }
+              case 26: {
+                global::Google.Protobuf.WellKnownTypes.Duration subBuilder = new global::Google.Protobuf.WellKnownTypes.Duration();
+                if (timestampBoundCase_ == TimestampBoundOneofCase.MaxStaleness) {
+                  subBuilder.MergeFrom(MaxStaleness);
+                }
+                input.ReadMessage(subBuilder);
+                MaxStaleness = subBuilder;
+                break;
+              }
+              case 34: {
+                global::Google.Protobuf.WellKnownTypes.Timestamp subBuilder = new global::Google.Protobuf.WellKnownTypes.Timestamp();
+                if (timestampBoundCase_ == TimestampBoundOneofCase.ReadTimestamp) {
+                  subBuilder.MergeFrom(ReadTimestamp);
+                }
+                input.ReadMessage(subBuilder);
+                ReadTimestamp = subBuilder;
+                break;
+              }
+              case 42: {
+                global::Google.Protobuf.WellKnownTypes.Duration subBuilder = new global::Google.Protobuf.WellKnownTypes.Duration();
+                if (timestampBoundCase_ == TimestampBoundOneofCase.ExactStaleness) {
+                  subBuilder.MergeFrom(ExactStaleness);
+                }
+                input.ReadMessage(subBuilder);
+                ExactStaleness = subBuilder;
+                break;
+              }
+              case 48: {
+                ReturnReadTimestamp = input.ReadBool();
+                break;
+              }
+            }
+          }
+        }
+        #endif
 
       }
 
@@ -1231,7 +1479,11 @@ namespace Google.Cloud.Spanner.V1 {
   /// <summary>
   /// A transaction.
   /// </summary>
-  public sealed partial class Transaction : pb::IMessage<Transaction> {
+  public sealed partial class Transaction : pb::IMessage<Transaction>
+  #if !GOOGLE_PROTOBUF_REFSTRUCT_COMPATIBILITY_MODE
+      , pb::IBufferMessage
+  #endif
+  {
     private static readonly pb::MessageParser<Transaction> _parser = new pb::MessageParser<Transaction>(() => new Transaction());
     private pb::UnknownFieldSet _unknownFields;
     [global::System.Diagnostics.DebuggerNonUserCodeAttribute]
@@ -1342,6 +1594,9 @@ namespace Google.Cloud.Spanner.V1 {
 
     [global::System.Diagnostics.DebuggerNonUserCodeAttribute]
     public void WriteTo(pb::CodedOutputStream output) {
+    #if !GOOGLE_PROTOBUF_REFSTRUCT_COMPATIBILITY_MODE
+      output.WriteRawMessage(this);
+    #else
       if (Id.Length != 0) {
         output.WriteRawTag(10);
         output.WriteBytes(Id);
@@ -1353,7 +1608,25 @@ namespace Google.Cloud.Spanner.V1 {
       if (_unknownFields != null) {
         _unknownFields.WriteTo(output);
       }
+    #endif
     }
+
+    #if !GOOGLE_PROTOBUF_REFSTRUCT_COMPATIBILITY_MODE
+    [global::System.Diagnostics.DebuggerNonUserCodeAttribute]
+    void pb::IBufferMessage.InternalWriteTo(ref pb::WriteContext output) {
+      if (Id.Length != 0) {
+        output.WriteRawTag(10);
+        output.WriteBytes(Id);
+      }
+      if (readTimestamp_ != null) {
+        output.WriteRawTag(18);
+        output.WriteMessage(ReadTimestamp);
+      }
+      if (_unknownFields != null) {
+        _unknownFields.WriteTo(ref output);
+      }
+    }
+    #endif
 
     [global::System.Diagnostics.DebuggerNonUserCodeAttribute]
     public int CalculateSize() {
@@ -1389,6 +1662,9 @@ namespace Google.Cloud.Spanner.V1 {
 
     [global::System.Diagnostics.DebuggerNonUserCodeAttribute]
     public void MergeFrom(pb::CodedInputStream input) {
+    #if !GOOGLE_PROTOBUF_REFSTRUCT_COMPATIBILITY_MODE
+      input.ReadRawMessage(this);
+    #else
       uint tag;
       while ((tag = input.ReadTag()) != 0) {
         switch(tag) {
@@ -1408,7 +1684,33 @@ namespace Google.Cloud.Spanner.V1 {
           }
         }
       }
+    #endif
     }
+
+    #if !GOOGLE_PROTOBUF_REFSTRUCT_COMPATIBILITY_MODE
+    [global::System.Diagnostics.DebuggerNonUserCodeAttribute]
+    void pb::IBufferMessage.InternalMergeFrom(ref pb::ParseContext input) {
+      uint tag;
+      while ((tag = input.ReadTag()) != 0) {
+        switch(tag) {
+          default:
+            _unknownFields = pb::UnknownFieldSet.MergeFieldFrom(_unknownFields, ref input);
+            break;
+          case 10: {
+            Id = input.ReadBytes();
+            break;
+          }
+          case 18: {
+            if (readTimestamp_ == null) {
+              ReadTimestamp = new global::Google.Protobuf.WellKnownTypes.Timestamp();
+            }
+            input.ReadMessage(ReadTimestamp);
+            break;
+          }
+        }
+      }
+    }
+    #endif
 
   }
 
@@ -1419,7 +1721,11 @@ namespace Google.Cloud.Spanner.V1 {
   ///
   /// See [TransactionOptions][google.spanner.v1.TransactionOptions] for more information about transactions.
   /// </summary>
-  public sealed partial class TransactionSelector : pb::IMessage<TransactionSelector> {
+  public sealed partial class TransactionSelector : pb::IMessage<TransactionSelector>
+  #if !GOOGLE_PROTOBUF_REFSTRUCT_COMPATIBILITY_MODE
+      , pb::IBufferMessage
+  #endif
+  {
     private static readonly pb::MessageParser<TransactionSelector> _parser = new pb::MessageParser<TransactionSelector>(() => new TransactionSelector());
     private pb::UnknownFieldSet _unknownFields;
     [global::System.Diagnostics.DebuggerNonUserCodeAttribute]
@@ -1570,6 +1876,9 @@ namespace Google.Cloud.Spanner.V1 {
 
     [global::System.Diagnostics.DebuggerNonUserCodeAttribute]
     public void WriteTo(pb::CodedOutputStream output) {
+    #if !GOOGLE_PROTOBUF_REFSTRUCT_COMPATIBILITY_MODE
+      output.WriteRawMessage(this);
+    #else
       if (selectorCase_ == SelectorOneofCase.SingleUse) {
         output.WriteRawTag(10);
         output.WriteMessage(SingleUse);
@@ -1585,7 +1894,29 @@ namespace Google.Cloud.Spanner.V1 {
       if (_unknownFields != null) {
         _unknownFields.WriteTo(output);
       }
+    #endif
     }
+
+    #if !GOOGLE_PROTOBUF_REFSTRUCT_COMPATIBILITY_MODE
+    [global::System.Diagnostics.DebuggerNonUserCodeAttribute]
+    void pb::IBufferMessage.InternalWriteTo(ref pb::WriteContext output) {
+      if (selectorCase_ == SelectorOneofCase.SingleUse) {
+        output.WriteRawTag(10);
+        output.WriteMessage(SingleUse);
+      }
+      if (selectorCase_ == SelectorOneofCase.Id) {
+        output.WriteRawTag(18);
+        output.WriteBytes(Id);
+      }
+      if (selectorCase_ == SelectorOneofCase.Begin) {
+        output.WriteRawTag(26);
+        output.WriteMessage(Begin);
+      }
+      if (_unknownFields != null) {
+        _unknownFields.WriteTo(ref output);
+      }
+    }
+    #endif
 
     [global::System.Diagnostics.DebuggerNonUserCodeAttribute]
     public int CalculateSize() {
@@ -1633,6 +1964,9 @@ namespace Google.Cloud.Spanner.V1 {
 
     [global::System.Diagnostics.DebuggerNonUserCodeAttribute]
     public void MergeFrom(pb::CodedInputStream input) {
+    #if !GOOGLE_PROTOBUF_REFSTRUCT_COMPATIBILITY_MODE
+      input.ReadRawMessage(this);
+    #else
       uint tag;
       while ((tag = input.ReadTag()) != 0) {
         switch(tag) {
@@ -1663,7 +1997,44 @@ namespace Google.Cloud.Spanner.V1 {
           }
         }
       }
+    #endif
     }
+
+    #if !GOOGLE_PROTOBUF_REFSTRUCT_COMPATIBILITY_MODE
+    [global::System.Diagnostics.DebuggerNonUserCodeAttribute]
+    void pb::IBufferMessage.InternalMergeFrom(ref pb::ParseContext input) {
+      uint tag;
+      while ((tag = input.ReadTag()) != 0) {
+        switch(tag) {
+          default:
+            _unknownFields = pb::UnknownFieldSet.MergeFieldFrom(_unknownFields, ref input);
+            break;
+          case 10: {
+            global::Google.Cloud.Spanner.V1.TransactionOptions subBuilder = new global::Google.Cloud.Spanner.V1.TransactionOptions();
+            if (selectorCase_ == SelectorOneofCase.SingleUse) {
+              subBuilder.MergeFrom(SingleUse);
+            }
+            input.ReadMessage(subBuilder);
+            SingleUse = subBuilder;
+            break;
+          }
+          case 18: {
+            Id = input.ReadBytes();
+            break;
+          }
+          case 26: {
+            global::Google.Cloud.Spanner.V1.TransactionOptions subBuilder = new global::Google.Cloud.Spanner.V1.TransactionOptions();
+            if (selectorCase_ == SelectorOneofCase.Begin) {
+              subBuilder.MergeFrom(Begin);
+            }
+            input.ReadMessage(subBuilder);
+            Begin = subBuilder;
+            break;
+          }
+        }
+      }
+    }
+    #endif
 
   }
 

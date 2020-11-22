@@ -1,4 +1,4 @@
-// Copyright 2019 Google LLC
+// Copyright 2020 Google LLC
 //
 // Licensed under the Apache License, Version 2.0 (the "License");
 // you may not use this file except in compliance with the License.
@@ -25,7 +25,7 @@ namespace Google.Cloud.Bigtable.V2
         /// </summary>
         public gcbcv::TableName TableNameAsTableName
         {
-            get => string.IsNullOrEmpty(TableName) ? null : gcbcv::TableName.Parse(TableName);
+            get => string.IsNullOrEmpty(TableName) ? null : gcbcv::TableName.Parse(TableName, allowUnparsed: true);
             set => TableName = value?.ToString() ?? "";
         }
     }
@@ -37,7 +37,7 @@ namespace Google.Cloud.Bigtable.V2
         /// </summary>
         public gcbcv::TableName TableNameAsTableName
         {
-            get => string.IsNullOrEmpty(TableName) ? null : gcbcv::TableName.Parse(TableName);
+            get => string.IsNullOrEmpty(TableName) ? null : gcbcv::TableName.Parse(TableName, allowUnparsed: true);
             set => TableName = value?.ToString() ?? "";
         }
     }
@@ -49,7 +49,7 @@ namespace Google.Cloud.Bigtable.V2
         /// </summary>
         public gcbcv::TableName TableNameAsTableName
         {
-            get => string.IsNullOrEmpty(TableName) ? null : gcbcv::TableName.Parse(TableName);
+            get => string.IsNullOrEmpty(TableName) ? null : gcbcv::TableName.Parse(TableName, allowUnparsed: true);
             set => TableName = value?.ToString() ?? "";
         }
     }
@@ -61,7 +61,7 @@ namespace Google.Cloud.Bigtable.V2
         /// </summary>
         public gcbcv::TableName TableNameAsTableName
         {
-            get => string.IsNullOrEmpty(TableName) ? null : gcbcv::TableName.Parse(TableName);
+            get => string.IsNullOrEmpty(TableName) ? null : gcbcv::TableName.Parse(TableName, allowUnparsed: true);
             set => TableName = value?.ToString() ?? "";
         }
     }
@@ -73,7 +73,7 @@ namespace Google.Cloud.Bigtable.V2
         /// </summary>
         public gcbcv::TableName TableNameAsTableName
         {
-            get => string.IsNullOrEmpty(TableName) ? null : gcbcv::TableName.Parse(TableName);
+            get => string.IsNullOrEmpty(TableName) ? null : gcbcv::TableName.Parse(TableName, allowUnparsed: true);
             set => TableName = value?.ToString() ?? "";
         }
     }
@@ -85,7 +85,7 @@ namespace Google.Cloud.Bigtable.V2
         /// </summary>
         public gcbcv::TableName TableNameAsTableName
         {
-            get => string.IsNullOrEmpty(TableName) ? null : gcbcv::TableName.Parse(TableName);
+            get => string.IsNullOrEmpty(TableName) ? null : gcbcv::TableName.Parse(TableName, allowUnparsed: true);
             set => TableName = value?.ToString() ?? "";
         }
     }

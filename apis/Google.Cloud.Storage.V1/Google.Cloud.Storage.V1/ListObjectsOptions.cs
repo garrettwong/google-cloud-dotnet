@@ -70,6 +70,29 @@ namespace Google.Cloud.Storage.V1
         public string PageToken { get; set; }
 
         /// <summary>
+        /// If set, this specifies the fields to fetch in the result to obtain partial responses,
+        /// usually to improve performance.
+        /// For example, to fetch just the name and content type of each object, set this property to
+        /// "items(name,contentType),nextPageToken". The "nextPageToken" field is required in order to
+        /// fetch multiple pages; the library does not add this automatically.
+        /// See https://cloud.google.com/storage/docs/json_api/v1/how-tos/performance#partial for more details
+        /// on specifying fields for partial responses.
+        /// </summary>
+        public string Fields { get; set; }
+
+        /// <summary>
+        /// If set, filters results to objects whose names are lexicographically equal to or after
+        /// this value. (Objects whose names are exactly the start offset are included.)
+        /// </summary>
+        public string StartOffset { get; set; }
+
+        /// <summary>
+        /// If set, filters results to objects whose names are lexicographically before
+        /// this value. (Objects whose names are exactly the end offset are excluded.)
+        /// </summary>
+        public string EndOffset { get; set; }
+
+        /// <summary>
         /// Modifies the specified request for all non-null properties of this options object.
         /// </summary>
         /// <param name="request">The request to modify</param>
@@ -102,6 +125,18 @@ namespace Google.Cloud.Storage.V1
             if (PageToken != null)
             {
                 request.PageToken = PageToken;
+            }
+            if (Fields != null)
+            {
+                request.Fields = Fields;
+            }
+            if (StartOffset != null)
+            {
+                request.StartOffset = StartOffset;
+            }
+            if (EndOffset != null)
+            {
+                request.EndOffset = EndOffset;
             }
         }
     }

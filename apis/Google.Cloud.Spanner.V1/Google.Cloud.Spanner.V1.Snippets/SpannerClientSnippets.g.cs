@@ -1,4 +1,4 @@
-// Copyright 2019 Google LLC
+// Copyright 2020 Google LLC
 //
 // Licensed under the Apache License, Version 2.0 (the "License");
 // you may not use this file except in compliance with the License.
@@ -17,6 +17,7 @@
 namespace Google.Cloud.Spanner.V1.Snippets
 {
     using Google.Api.Gax;
+    using Google.Api.Gax.Grpc;
     using Google.Cloud.Spanner.Common.V1;
     using Google.Protobuf;
     using Google.Protobuf.WellKnownTypes;
@@ -30,7 +31,7 @@ namespace Google.Cloud.Spanner.V1.Snippets
     public sealed class GeneratedSpannerClientSnippets
     {
         /// <summary>Snippet for CreateSession</summary>
-        public void CreateSession_RequestObject()
+        public void CreateSessionRequestObject()
         {
             // Snippet: CreateSession(CreateSessionRequest, CallSettings)
             // Create client
@@ -38,7 +39,7 @@ namespace Google.Cloud.Spanner.V1.Snippets
             // Initialize request argument(s)
             CreateSessionRequest request = new CreateSessionRequest
             {
-                DatabaseAsDatabaseName = new DatabaseName("[PROJECT]", "[INSTANCE]", "[DATABASE]"),
+                DatabaseAsDatabaseName = DatabaseName.FromProjectInstanceDatabase("[PROJECT]", "[INSTANCE]", "[DATABASE]"),
                 Session = new Session(),
             };
             // Make the request
@@ -47,7 +48,7 @@ namespace Google.Cloud.Spanner.V1.Snippets
         }
 
         /// <summary>Snippet for CreateSessionAsync</summary>
-        public async Task CreateSessionAsync_RequestObject()
+        public async Task CreateSessionRequestObjectAsync()
         {
             // Snippet: CreateSessionAsync(CreateSessionRequest, CallSettings)
             // Additional: CreateSessionAsync(CreateSessionRequest, CancellationToken)
@@ -56,7 +57,7 @@ namespace Google.Cloud.Spanner.V1.Snippets
             // Initialize request argument(s)
             CreateSessionRequest request = new CreateSessionRequest
             {
-                DatabaseAsDatabaseName = new DatabaseName("[PROJECT]", "[INSTANCE]", "[DATABASE]"),
+                DatabaseAsDatabaseName = DatabaseName.FromProjectInstanceDatabase("[PROJECT]", "[INSTANCE]", "[DATABASE]"),
                 Session = new Session(),
             };
             // Make the request
@@ -92,34 +93,34 @@ namespace Google.Cloud.Spanner.V1.Snippets
         }
 
         /// <summary>Snippet for CreateSession</summary>
-        public void CreateSession_ResourceNames()
+        public void CreateSessionResourceNames()
         {
             // Snippet: CreateSession(DatabaseName, CallSettings)
             // Create client
             SpannerClient spannerClient = SpannerClient.Create();
             // Initialize request argument(s)
-            DatabaseName database = new DatabaseName("[PROJECT]", "[INSTANCE]", "[DATABASE]");
+            DatabaseName database = DatabaseName.FromProjectInstanceDatabase("[PROJECT]", "[INSTANCE]", "[DATABASE]");
             // Make the request
             Session response = spannerClient.CreateSession(database);
             // End snippet
         }
 
         /// <summary>Snippet for CreateSessionAsync</summary>
-        public async Task CreateSessionAsync_ResourceNames()
+        public async Task CreateSessionResourceNamesAsync()
         {
             // Snippet: CreateSessionAsync(DatabaseName, CallSettings)
             // Additional: CreateSessionAsync(DatabaseName, CancellationToken)
             // Create client
             SpannerClient spannerClient = await SpannerClient.CreateAsync();
             // Initialize request argument(s)
-            DatabaseName database = new DatabaseName("[PROJECT]", "[INSTANCE]", "[DATABASE]");
+            DatabaseName database = DatabaseName.FromProjectInstanceDatabase("[PROJECT]", "[INSTANCE]", "[DATABASE]");
             // Make the request
             Session response = await spannerClient.CreateSessionAsync(database);
             // End snippet
         }
 
         /// <summary>Snippet for BatchCreateSessions</summary>
-        public void BatchCreateSessions_RequestObject()
+        public void BatchCreateSessionsRequestObject()
         {
             // Snippet: BatchCreateSessions(BatchCreateSessionsRequest, CallSettings)
             // Create client
@@ -127,7 +128,7 @@ namespace Google.Cloud.Spanner.V1.Snippets
             // Initialize request argument(s)
             BatchCreateSessionsRequest request = new BatchCreateSessionsRequest
             {
-                DatabaseAsDatabaseName = new DatabaseName("[PROJECT]", "[INSTANCE]", "[DATABASE]"),
+                DatabaseAsDatabaseName = DatabaseName.FromProjectInstanceDatabase("[PROJECT]", "[INSTANCE]", "[DATABASE]"),
                 SessionTemplate = new Session(),
                 SessionCount = 0,
             };
@@ -137,7 +138,7 @@ namespace Google.Cloud.Spanner.V1.Snippets
         }
 
         /// <summary>Snippet for BatchCreateSessionsAsync</summary>
-        public async Task BatchCreateSessionsAsync_RequestObject()
+        public async Task BatchCreateSessionsRequestObjectAsync()
         {
             // Snippet: BatchCreateSessionsAsync(BatchCreateSessionsRequest, CallSettings)
             // Additional: BatchCreateSessionsAsync(BatchCreateSessionsRequest, CancellationToken)
@@ -146,7 +147,7 @@ namespace Google.Cloud.Spanner.V1.Snippets
             // Initialize request argument(s)
             BatchCreateSessionsRequest request = new BatchCreateSessionsRequest
             {
-                DatabaseAsDatabaseName = new DatabaseName("[PROJECT]", "[INSTANCE]", "[DATABASE]"),
+                DatabaseAsDatabaseName = DatabaseName.FromProjectInstanceDatabase("[PROJECT]", "[INSTANCE]", "[DATABASE]"),
                 SessionTemplate = new Session(),
                 SessionCount = 0,
             };
@@ -185,13 +186,13 @@ namespace Google.Cloud.Spanner.V1.Snippets
         }
 
         /// <summary>Snippet for BatchCreateSessions</summary>
-        public void BatchCreateSessions_ResourceNames()
+        public void BatchCreateSessionsResourceNames()
         {
             // Snippet: BatchCreateSessions(DatabaseName, int, CallSettings)
             // Create client
             SpannerClient spannerClient = SpannerClient.Create();
             // Initialize request argument(s)
-            DatabaseName database = new DatabaseName("[PROJECT]", "[INSTANCE]", "[DATABASE]");
+            DatabaseName database = DatabaseName.FromProjectInstanceDatabase("[PROJECT]", "[INSTANCE]", "[DATABASE]");
             int sessionCount = 0;
             // Make the request
             BatchCreateSessionsResponse response = spannerClient.BatchCreateSessions(database, sessionCount);
@@ -199,14 +200,14 @@ namespace Google.Cloud.Spanner.V1.Snippets
         }
 
         /// <summary>Snippet for BatchCreateSessionsAsync</summary>
-        public async Task BatchCreateSessionsAsync_ResourceNames()
+        public async Task BatchCreateSessionsResourceNamesAsync()
         {
             // Snippet: BatchCreateSessionsAsync(DatabaseName, int, CallSettings)
             // Additional: BatchCreateSessionsAsync(DatabaseName, int, CancellationToken)
             // Create client
             SpannerClient spannerClient = await SpannerClient.CreateAsync();
             // Initialize request argument(s)
-            DatabaseName database = new DatabaseName("[PROJECT]", "[INSTANCE]", "[DATABASE]");
+            DatabaseName database = DatabaseName.FromProjectInstanceDatabase("[PROJECT]", "[INSTANCE]", "[DATABASE]");
             int sessionCount = 0;
             // Make the request
             BatchCreateSessionsResponse response = await spannerClient.BatchCreateSessionsAsync(database, sessionCount);
@@ -214,7 +215,7 @@ namespace Google.Cloud.Spanner.V1.Snippets
         }
 
         /// <summary>Snippet for GetSession</summary>
-        public void GetSession_RequestObject()
+        public void GetSessionRequestObject()
         {
             // Snippet: GetSession(GetSessionRequest, CallSettings)
             // Create client
@@ -222,7 +223,7 @@ namespace Google.Cloud.Spanner.V1.Snippets
             // Initialize request argument(s)
             GetSessionRequest request = new GetSessionRequest
             {
-                SessionName = new SessionName("[PROJECT]", "[INSTANCE]", "[DATABASE]", "[SESSION]"),
+                SessionName = SessionName.FromProjectInstanceDatabaseSession("[PROJECT]", "[INSTANCE]", "[DATABASE]", "[SESSION]"),
             };
             // Make the request
             Session response = spannerClient.GetSession(request);
@@ -230,7 +231,7 @@ namespace Google.Cloud.Spanner.V1.Snippets
         }
 
         /// <summary>Snippet for GetSessionAsync</summary>
-        public async Task GetSessionAsync_RequestObject()
+        public async Task GetSessionRequestObjectAsync()
         {
             // Snippet: GetSessionAsync(GetSessionRequest, CallSettings)
             // Additional: GetSessionAsync(GetSessionRequest, CancellationToken)
@@ -239,7 +240,7 @@ namespace Google.Cloud.Spanner.V1.Snippets
             // Initialize request argument(s)
             GetSessionRequest request = new GetSessionRequest
             {
-                SessionName = new SessionName("[PROJECT]", "[INSTANCE]", "[DATABASE]", "[SESSION]"),
+                SessionName = SessionName.FromProjectInstanceDatabaseSession("[PROJECT]", "[INSTANCE]", "[DATABASE]", "[SESSION]"),
             };
             // Make the request
             Session response = await spannerClient.GetSessionAsync(request);
@@ -274,34 +275,34 @@ namespace Google.Cloud.Spanner.V1.Snippets
         }
 
         /// <summary>Snippet for GetSession</summary>
-        public void GetSession_ResourceNames()
+        public void GetSessionResourceNames()
         {
             // Snippet: GetSession(SessionName, CallSettings)
             // Create client
             SpannerClient spannerClient = SpannerClient.Create();
             // Initialize request argument(s)
-            SessionName name = new SessionName("[PROJECT]", "[INSTANCE]", "[DATABASE]", "[SESSION]");
+            SessionName name = SessionName.FromProjectInstanceDatabaseSession("[PROJECT]", "[INSTANCE]", "[DATABASE]", "[SESSION]");
             // Make the request
             Session response = spannerClient.GetSession(name);
             // End snippet
         }
 
         /// <summary>Snippet for GetSessionAsync</summary>
-        public async Task GetSessionAsync_ResourceNames()
+        public async Task GetSessionResourceNamesAsync()
         {
             // Snippet: GetSessionAsync(SessionName, CallSettings)
             // Additional: GetSessionAsync(SessionName, CancellationToken)
             // Create client
             SpannerClient spannerClient = await SpannerClient.CreateAsync();
             // Initialize request argument(s)
-            SessionName name = new SessionName("[PROJECT]", "[INSTANCE]", "[DATABASE]", "[SESSION]");
+            SessionName name = SessionName.FromProjectInstanceDatabaseSession("[PROJECT]", "[INSTANCE]", "[DATABASE]", "[SESSION]");
             // Make the request
             Session response = await spannerClient.GetSessionAsync(name);
             // End snippet
         }
 
         /// <summary>Snippet for ListSessions</summary>
-        public void ListSessions_RequestObject()
+        public void ListSessionsRequestObject()
         {
             // Snippet: ListSessions(ListSessionsRequest, CallSettings)
             // Create client
@@ -309,7 +310,7 @@ namespace Google.Cloud.Spanner.V1.Snippets
             // Initialize request argument(s)
             ListSessionsRequest request = new ListSessionsRequest
             {
-                DatabaseAsDatabaseName = new DatabaseName("[PROJECT]", "[INSTANCE]", "[DATABASE]"),
+                DatabaseAsDatabaseName = DatabaseName.FromProjectInstanceDatabase("[PROJECT]", "[INSTANCE]", "[DATABASE]"),
                 Filter = "",
             };
             // Make the request
@@ -350,7 +351,7 @@ namespace Google.Cloud.Spanner.V1.Snippets
         }
 
         /// <summary>Snippet for ListSessions</summary>
-        public async Task ListSessionsAsync_RequestObject()
+        public async Task ListSessionsRequestObjectAsync()
         {
             // Snippet: ListSessionsAsync(ListSessionsRequest, CallSettings)
             // Create client
@@ -358,7 +359,7 @@ namespace Google.Cloud.Spanner.V1.Snippets
             // Initialize request argument(s)
             ListSessionsRequest request = new ListSessionsRequest
             {
-                DatabaseAsDatabaseName = new DatabaseName("[PROJECT]", "[INSTANCE]", "[DATABASE]"),
+                DatabaseAsDatabaseName = DatabaseName.FromProjectInstanceDatabase("[PROJECT]", "[INSTANCE]", "[DATABASE]"),
                 Filter = "",
             };
             // Make the request
@@ -489,13 +490,13 @@ namespace Google.Cloud.Spanner.V1.Snippets
         }
 
         /// <summary>Snippet for ListSessions</summary>
-        public void ListSessions_ResourceNames()
+        public void ListSessionsResourceNames()
         {
             // Snippet: ListSessions(DatabaseName, string, int?, CallSettings)
             // Create client
             SpannerClient spannerClient = SpannerClient.Create();
             // Initialize request argument(s)
-            DatabaseName database = new DatabaseName("[PROJECT]", "[INSTANCE]", "[DATABASE]");
+            DatabaseName database = DatabaseName.FromProjectInstanceDatabase("[PROJECT]", "[INSTANCE]", "[DATABASE]");
             // Make the request
             PagedEnumerable<ListSessionsResponse, Session> response = spannerClient.ListSessions(database);
 
@@ -534,13 +535,13 @@ namespace Google.Cloud.Spanner.V1.Snippets
         }
 
         /// <summary>Snippet for ListSessions</summary>
-        public async Task ListSessionsAsync_ResourceNames()
+        public async Task ListSessionsResourceNamesAsync()
         {
             // Snippet: ListSessionsAsync(DatabaseName, string, int?, CallSettings)
             // Create client
             SpannerClient spannerClient = await SpannerClient.CreateAsync();
             // Initialize request argument(s)
-            DatabaseName database = new DatabaseName("[PROJECT]", "[INSTANCE]", "[DATABASE]");
+            DatabaseName database = DatabaseName.FromProjectInstanceDatabase("[PROJECT]", "[INSTANCE]", "[DATABASE]");
             // Make the request
             PagedAsyncEnumerable<ListSessionsResponse, Session> response = spannerClient.ListSessionsAsync(database);
 
@@ -579,7 +580,7 @@ namespace Google.Cloud.Spanner.V1.Snippets
         }
 
         /// <summary>Snippet for DeleteSession</summary>
-        public void DeleteSession_RequestObject()
+        public void DeleteSessionRequestObject()
         {
             // Snippet: DeleteSession(DeleteSessionRequest, CallSettings)
             // Create client
@@ -587,7 +588,7 @@ namespace Google.Cloud.Spanner.V1.Snippets
             // Initialize request argument(s)
             DeleteSessionRequest request = new DeleteSessionRequest
             {
-                SessionName = new SessionName("[PROJECT]", "[INSTANCE]", "[DATABASE]", "[SESSION]"),
+                SessionName = SessionName.FromProjectInstanceDatabaseSession("[PROJECT]", "[INSTANCE]", "[DATABASE]", "[SESSION]"),
             };
             // Make the request
             spannerClient.DeleteSession(request);
@@ -595,7 +596,7 @@ namespace Google.Cloud.Spanner.V1.Snippets
         }
 
         /// <summary>Snippet for DeleteSessionAsync</summary>
-        public async Task DeleteSessionAsync_RequestObject()
+        public async Task DeleteSessionRequestObjectAsync()
         {
             // Snippet: DeleteSessionAsync(DeleteSessionRequest, CallSettings)
             // Additional: DeleteSessionAsync(DeleteSessionRequest, CancellationToken)
@@ -604,7 +605,7 @@ namespace Google.Cloud.Spanner.V1.Snippets
             // Initialize request argument(s)
             DeleteSessionRequest request = new DeleteSessionRequest
             {
-                SessionName = new SessionName("[PROJECT]", "[INSTANCE]", "[DATABASE]", "[SESSION]"),
+                SessionName = SessionName.FromProjectInstanceDatabaseSession("[PROJECT]", "[INSTANCE]", "[DATABASE]", "[SESSION]"),
             };
             // Make the request
             await spannerClient.DeleteSessionAsync(request);
@@ -639,34 +640,34 @@ namespace Google.Cloud.Spanner.V1.Snippets
         }
 
         /// <summary>Snippet for DeleteSession</summary>
-        public void DeleteSession_ResourceNames()
+        public void DeleteSessionResourceNames()
         {
             // Snippet: DeleteSession(SessionName, CallSettings)
             // Create client
             SpannerClient spannerClient = SpannerClient.Create();
             // Initialize request argument(s)
-            SessionName name = new SessionName("[PROJECT]", "[INSTANCE]", "[DATABASE]", "[SESSION]");
+            SessionName name = SessionName.FromProjectInstanceDatabaseSession("[PROJECT]", "[INSTANCE]", "[DATABASE]", "[SESSION]");
             // Make the request
             spannerClient.DeleteSession(name);
             // End snippet
         }
 
         /// <summary>Snippet for DeleteSessionAsync</summary>
-        public async Task DeleteSessionAsync_ResourceNames()
+        public async Task DeleteSessionResourceNamesAsync()
         {
             // Snippet: DeleteSessionAsync(SessionName, CallSettings)
             // Additional: DeleteSessionAsync(SessionName, CancellationToken)
             // Create client
             SpannerClient spannerClient = await SpannerClient.CreateAsync();
             // Initialize request argument(s)
-            SessionName name = new SessionName("[PROJECT]", "[INSTANCE]", "[DATABASE]", "[SESSION]");
+            SessionName name = SessionName.FromProjectInstanceDatabaseSession("[PROJECT]", "[INSTANCE]", "[DATABASE]", "[SESSION]");
             // Make the request
             await spannerClient.DeleteSessionAsync(name);
             // End snippet
         }
 
         /// <summary>Snippet for ExecuteSql</summary>
-        public void ExecuteSql_RequestObject()
+        public void ExecuteSqlRequestObject()
         {
             // Snippet: ExecuteSql(ExecuteSqlRequest, CallSettings)
             // Create client
@@ -674,7 +675,7 @@ namespace Google.Cloud.Spanner.V1.Snippets
             // Initialize request argument(s)
             ExecuteSqlRequest request = new ExecuteSqlRequest
             {
-                SessionAsSessionName = new SessionName("[PROJECT]", "[INSTANCE]", "[DATABASE]", "[SESSION]"),
+                SessionAsSessionName = SessionName.FromProjectInstanceDatabaseSession("[PROJECT]", "[INSTANCE]", "[DATABASE]", "[SESSION]"),
                 Transaction = new TransactionSelector(),
                 Sql = "",
                 Params = new Struct(),
@@ -689,6 +690,7 @@ namespace Google.Cloud.Spanner.V1.Snippets
                 QueryMode = ExecuteSqlRequest.Types.QueryMode.Normal,
                 PartitionToken = ByteString.Empty,
                 Seqno = 0L,
+                QueryOptions = new ExecuteSqlRequest.Types.QueryOptions(),
             };
             // Make the request
             ResultSet response = spannerClient.ExecuteSql(request);
@@ -696,7 +698,7 @@ namespace Google.Cloud.Spanner.V1.Snippets
         }
 
         /// <summary>Snippet for ExecuteSqlAsync</summary>
-        public async Task ExecuteSqlAsync_RequestObject()
+        public async Task ExecuteSqlRequestObjectAsync()
         {
             // Snippet: ExecuteSqlAsync(ExecuteSqlRequest, CallSettings)
             // Additional: ExecuteSqlAsync(ExecuteSqlRequest, CancellationToken)
@@ -705,7 +707,7 @@ namespace Google.Cloud.Spanner.V1.Snippets
             // Initialize request argument(s)
             ExecuteSqlRequest request = new ExecuteSqlRequest
             {
-                SessionAsSessionName = new SessionName("[PROJECT]", "[INSTANCE]", "[DATABASE]", "[SESSION]"),
+                SessionAsSessionName = SessionName.FromProjectInstanceDatabaseSession("[PROJECT]", "[INSTANCE]", "[DATABASE]", "[SESSION]"),
                 Transaction = new TransactionSelector(),
                 Sql = "",
                 Params = new Struct(),
@@ -720,6 +722,7 @@ namespace Google.Cloud.Spanner.V1.Snippets
                 QueryMode = ExecuteSqlRequest.Types.QueryMode.Normal,
                 PartitionToken = ByteString.Empty,
                 Seqno = 0L,
+                QueryOptions = new ExecuteSqlRequest.Types.QueryOptions(),
             };
             // Make the request
             ResultSet response = await spannerClient.ExecuteSqlAsync(request);
@@ -727,7 +730,7 @@ namespace Google.Cloud.Spanner.V1.Snippets
         }
 
         /// <summary>Snippet for ExecuteStreamingSql</summary>
-        public async Task ExecuteStreamingSql_RequestObject()
+        public async Task ExecuteStreamingSqlRequestObject()
         {
             // Snippet: ExecuteStreamingSql(ExecuteSqlRequest, CallSettings)
             // Create client
@@ -735,7 +738,7 @@ namespace Google.Cloud.Spanner.V1.Snippets
             // Initialize request argument(s)
             ExecuteSqlRequest request = new ExecuteSqlRequest
             {
-                SessionAsSessionName = new SessionName("[PROJECT]", "[INSTANCE]", "[DATABASE]", "[SESSION]"),
+                SessionAsSessionName = SessionName.FromProjectInstanceDatabaseSession("[PROJECT]", "[INSTANCE]", "[DATABASE]", "[SESSION]"),
                 Transaction = new TransactionSelector(),
                 Sql = "",
                 Params = new Struct(),
@@ -750,13 +753,15 @@ namespace Google.Cloud.Spanner.V1.Snippets
                 QueryMode = ExecuteSqlRequest.Types.QueryMode.Normal,
                 PartitionToken = ByteString.Empty,
                 Seqno = 0L,
+                QueryOptions = new ExecuteSqlRequest.Types.QueryOptions(),
             };
             // Make the request, returning a streaming response
             SpannerClient.ExecuteStreamingSqlStream response = spannerClient.ExecuteStreamingSql(request);
 
             // Read streaming responses from server until complete
-            IAsyncEnumerator<PartialResultSet> responseStream = response.ResponseStream;
-            while (await responseStream.MoveNext())
+            // Note that C# 8 code can use await foreach
+            AsyncResponseStream<PartialResultSet> responseStream = response.GetResponseStream();
+            while (await responseStream.MoveNextAsync())
             {
                 PartialResultSet responseItem = responseStream.Current;
                 // Do something with streamed response
@@ -766,7 +771,7 @@ namespace Google.Cloud.Spanner.V1.Snippets
         }
 
         /// <summary>Snippet for ExecuteBatchDml</summary>
-        public void ExecuteBatchDml_RequestObject()
+        public void ExecuteBatchDmlRequestObject()
         {
             // Snippet: ExecuteBatchDml(ExecuteBatchDmlRequest, CallSettings)
             // Create client
@@ -774,7 +779,7 @@ namespace Google.Cloud.Spanner.V1.Snippets
             // Initialize request argument(s)
             ExecuteBatchDmlRequest request = new ExecuteBatchDmlRequest
             {
-                SessionAsSessionName = new SessionName("[PROJECT]", "[INSTANCE]", "[DATABASE]", "[SESSION]"),
+                SessionAsSessionName = SessionName.FromProjectInstanceDatabaseSession("[PROJECT]", "[INSTANCE]", "[DATABASE]", "[SESSION]"),
                 Transaction = new TransactionSelector(),
                 Statements =
                 {
@@ -788,7 +793,7 @@ namespace Google.Cloud.Spanner.V1.Snippets
         }
 
         /// <summary>Snippet for ExecuteBatchDmlAsync</summary>
-        public async Task ExecuteBatchDmlAsync_RequestObject()
+        public async Task ExecuteBatchDmlRequestObjectAsync()
         {
             // Snippet: ExecuteBatchDmlAsync(ExecuteBatchDmlRequest, CallSettings)
             // Additional: ExecuteBatchDmlAsync(ExecuteBatchDmlRequest, CancellationToken)
@@ -797,7 +802,7 @@ namespace Google.Cloud.Spanner.V1.Snippets
             // Initialize request argument(s)
             ExecuteBatchDmlRequest request = new ExecuteBatchDmlRequest
             {
-                SessionAsSessionName = new SessionName("[PROJECT]", "[INSTANCE]", "[DATABASE]", "[SESSION]"),
+                SessionAsSessionName = SessionName.FromProjectInstanceDatabaseSession("[PROJECT]", "[INSTANCE]", "[DATABASE]", "[SESSION]"),
                 Transaction = new TransactionSelector(),
                 Statements =
                 {
@@ -811,7 +816,7 @@ namespace Google.Cloud.Spanner.V1.Snippets
         }
 
         /// <summary>Snippet for Read</summary>
-        public void Read_RequestObject()
+        public void ReadRequestObject()
         {
             // Snippet: Read(ReadRequest, CallSettings)
             // Create client
@@ -819,7 +824,7 @@ namespace Google.Cloud.Spanner.V1.Snippets
             // Initialize request argument(s)
             ReadRequest request = new ReadRequest
             {
-                SessionAsSessionName = new SessionName("[PROJECT]", "[INSTANCE]", "[DATABASE]", "[SESSION]"),
+                SessionAsSessionName = SessionName.FromProjectInstanceDatabaseSession("[PROJECT]", "[INSTANCE]", "[DATABASE]", "[SESSION]"),
                 Transaction = new TransactionSelector(),
                 Table = "",
                 Index = "",
@@ -835,7 +840,7 @@ namespace Google.Cloud.Spanner.V1.Snippets
         }
 
         /// <summary>Snippet for ReadAsync</summary>
-        public async Task ReadAsync_RequestObject()
+        public async Task ReadRequestObjectAsync()
         {
             // Snippet: ReadAsync(ReadRequest, CallSettings)
             // Additional: ReadAsync(ReadRequest, CancellationToken)
@@ -844,7 +849,7 @@ namespace Google.Cloud.Spanner.V1.Snippets
             // Initialize request argument(s)
             ReadRequest request = new ReadRequest
             {
-                SessionAsSessionName = new SessionName("[PROJECT]", "[INSTANCE]", "[DATABASE]", "[SESSION]"),
+                SessionAsSessionName = SessionName.FromProjectInstanceDatabaseSession("[PROJECT]", "[INSTANCE]", "[DATABASE]", "[SESSION]"),
                 Transaction = new TransactionSelector(),
                 Table = "",
                 Index = "",
@@ -860,7 +865,7 @@ namespace Google.Cloud.Spanner.V1.Snippets
         }
 
         /// <summary>Snippet for StreamingRead</summary>
-        public async Task StreamingRead_RequestObject()
+        public async Task StreamingReadRequestObject()
         {
             // Snippet: StreamingRead(ReadRequest, CallSettings)
             // Create client
@@ -868,7 +873,7 @@ namespace Google.Cloud.Spanner.V1.Snippets
             // Initialize request argument(s)
             ReadRequest request = new ReadRequest
             {
-                SessionAsSessionName = new SessionName("[PROJECT]", "[INSTANCE]", "[DATABASE]", "[SESSION]"),
+                SessionAsSessionName = SessionName.FromProjectInstanceDatabaseSession("[PROJECT]", "[INSTANCE]", "[DATABASE]", "[SESSION]"),
                 Transaction = new TransactionSelector(),
                 Table = "",
                 Index = "",
@@ -882,8 +887,9 @@ namespace Google.Cloud.Spanner.V1.Snippets
             SpannerClient.StreamingReadStream response = spannerClient.StreamingRead(request);
 
             // Read streaming responses from server until complete
-            IAsyncEnumerator<PartialResultSet> responseStream = response.ResponseStream;
-            while (await responseStream.MoveNext())
+            // Note that C# 8 code can use await foreach
+            AsyncResponseStream<PartialResultSet> responseStream = response.GetResponseStream();
+            while (await responseStream.MoveNextAsync())
             {
                 PartialResultSet responseItem = responseStream.Current;
                 // Do something with streamed response
@@ -893,7 +899,7 @@ namespace Google.Cloud.Spanner.V1.Snippets
         }
 
         /// <summary>Snippet for BeginTransaction</summary>
-        public void BeginTransaction_RequestObject()
+        public void BeginTransactionRequestObject()
         {
             // Snippet: BeginTransaction(BeginTransactionRequest, CallSettings)
             // Create client
@@ -901,7 +907,7 @@ namespace Google.Cloud.Spanner.V1.Snippets
             // Initialize request argument(s)
             BeginTransactionRequest request = new BeginTransactionRequest
             {
-                SessionAsSessionName = new SessionName("[PROJECT]", "[INSTANCE]", "[DATABASE]", "[SESSION]"),
+                SessionAsSessionName = SessionName.FromProjectInstanceDatabaseSession("[PROJECT]", "[INSTANCE]", "[DATABASE]", "[SESSION]"),
                 Options = new TransactionOptions(),
             };
             // Make the request
@@ -910,7 +916,7 @@ namespace Google.Cloud.Spanner.V1.Snippets
         }
 
         /// <summary>Snippet for BeginTransactionAsync</summary>
-        public async Task BeginTransactionAsync_RequestObject()
+        public async Task BeginTransactionRequestObjectAsync()
         {
             // Snippet: BeginTransactionAsync(BeginTransactionRequest, CallSettings)
             // Additional: BeginTransactionAsync(BeginTransactionRequest, CancellationToken)
@@ -919,7 +925,7 @@ namespace Google.Cloud.Spanner.V1.Snippets
             // Initialize request argument(s)
             BeginTransactionRequest request = new BeginTransactionRequest
             {
-                SessionAsSessionName = new SessionName("[PROJECT]", "[INSTANCE]", "[DATABASE]", "[SESSION]"),
+                SessionAsSessionName = SessionName.FromProjectInstanceDatabaseSession("[PROJECT]", "[INSTANCE]", "[DATABASE]", "[SESSION]"),
                 Options = new TransactionOptions(),
             };
             // Make the request
@@ -957,13 +963,13 @@ namespace Google.Cloud.Spanner.V1.Snippets
         }
 
         /// <summary>Snippet for BeginTransaction</summary>
-        public void BeginTransaction_ResourceNames()
+        public void BeginTransactionResourceNames()
         {
             // Snippet: BeginTransaction(SessionName, TransactionOptions, CallSettings)
             // Create client
             SpannerClient spannerClient = SpannerClient.Create();
             // Initialize request argument(s)
-            SessionName session = new SessionName("[PROJECT]", "[INSTANCE]", "[DATABASE]", "[SESSION]");
+            SessionName session = SessionName.FromProjectInstanceDatabaseSession("[PROJECT]", "[INSTANCE]", "[DATABASE]", "[SESSION]");
             TransactionOptions options = new TransactionOptions();
             // Make the request
             Transaction response = spannerClient.BeginTransaction(session, options);
@@ -971,14 +977,14 @@ namespace Google.Cloud.Spanner.V1.Snippets
         }
 
         /// <summary>Snippet for BeginTransactionAsync</summary>
-        public async Task BeginTransactionAsync_ResourceNames()
+        public async Task BeginTransactionResourceNamesAsync()
         {
             // Snippet: BeginTransactionAsync(SessionName, TransactionOptions, CallSettings)
             // Additional: BeginTransactionAsync(SessionName, TransactionOptions, CancellationToken)
             // Create client
             SpannerClient spannerClient = await SpannerClient.CreateAsync();
             // Initialize request argument(s)
-            SessionName session = new SessionName("[PROJECT]", "[INSTANCE]", "[DATABASE]", "[SESSION]");
+            SessionName session = SessionName.FromProjectInstanceDatabaseSession("[PROJECT]", "[INSTANCE]", "[DATABASE]", "[SESSION]");
             TransactionOptions options = new TransactionOptions();
             // Make the request
             Transaction response = await spannerClient.BeginTransactionAsync(session, options);
@@ -986,7 +992,7 @@ namespace Google.Cloud.Spanner.V1.Snippets
         }
 
         /// <summary>Snippet for Commit</summary>
-        public void Commit_RequestObject()
+        public void CommitRequestObject()
         {
             // Snippet: Commit(CommitRequest, CallSettings)
             // Create client
@@ -994,7 +1000,7 @@ namespace Google.Cloud.Spanner.V1.Snippets
             // Initialize request argument(s)
             CommitRequest request = new CommitRequest
             {
-                SessionAsSessionName = new SessionName("[PROJECT]", "[INSTANCE]", "[DATABASE]", "[SESSION]"),
+                SessionAsSessionName = SessionName.FromProjectInstanceDatabaseSession("[PROJECT]", "[INSTANCE]", "[DATABASE]", "[SESSION]"),
                 TransactionId = ByteString.Empty,
                 SingleUseTransaction = new TransactionOptions(),
                 Mutations = { new Mutation(), },
@@ -1005,7 +1011,7 @@ namespace Google.Cloud.Spanner.V1.Snippets
         }
 
         /// <summary>Snippet for CommitAsync</summary>
-        public async Task CommitAsync_RequestObject()
+        public async Task CommitRequestObjectAsync()
         {
             // Snippet: CommitAsync(CommitRequest, CallSettings)
             // Additional: CommitAsync(CommitRequest, CancellationToken)
@@ -1014,7 +1020,7 @@ namespace Google.Cloud.Spanner.V1.Snippets
             // Initialize request argument(s)
             CommitRequest request = new CommitRequest
             {
-                SessionAsSessionName = new SessionName("[PROJECT]", "[INSTANCE]", "[DATABASE]", "[SESSION]"),
+                SessionAsSessionName = SessionName.FromProjectInstanceDatabaseSession("[PROJECT]", "[INSTANCE]", "[DATABASE]", "[SESSION]"),
                 TransactionId = ByteString.Empty,
                 SingleUseTransaction = new TransactionOptions(),
                 Mutations = { new Mutation(), },
@@ -1056,13 +1062,13 @@ namespace Google.Cloud.Spanner.V1.Snippets
         }
 
         /// <summary>Snippet for Commit</summary>
-        public void Commit1_ResourceNames()
+        public void Commit1ResourceNames()
         {
             // Snippet: Commit(SessionName, ByteString, IEnumerable<Mutation>, CallSettings)
             // Create client
             SpannerClient spannerClient = SpannerClient.Create();
             // Initialize request argument(s)
-            SessionName session = new SessionName("[PROJECT]", "[INSTANCE]", "[DATABASE]", "[SESSION]");
+            SessionName session = SessionName.FromProjectInstanceDatabaseSession("[PROJECT]", "[INSTANCE]", "[DATABASE]", "[SESSION]");
             ByteString transactionId = ByteString.Empty;
             IEnumerable<Mutation> mutations = new Mutation[] { new Mutation(), };
             // Make the request
@@ -1071,14 +1077,14 @@ namespace Google.Cloud.Spanner.V1.Snippets
         }
 
         /// <summary>Snippet for CommitAsync</summary>
-        public async Task Commit1Async_ResourceNames()
+        public async Task Commit1ResourceNamesAsync()
         {
             // Snippet: CommitAsync(SessionName, ByteString, IEnumerable<Mutation>, CallSettings)
             // Additional: CommitAsync(SessionName, ByteString, IEnumerable<Mutation>, CancellationToken)
             // Create client
             SpannerClient spannerClient = await SpannerClient.CreateAsync();
             // Initialize request argument(s)
-            SessionName session = new SessionName("[PROJECT]", "[INSTANCE]", "[DATABASE]", "[SESSION]");
+            SessionName session = SessionName.FromProjectInstanceDatabaseSession("[PROJECT]", "[INSTANCE]", "[DATABASE]", "[SESSION]");
             ByteString transactionId = ByteString.Empty;
             IEnumerable<Mutation> mutations = new Mutation[] { new Mutation(), };
             // Make the request
@@ -1118,13 +1124,13 @@ namespace Google.Cloud.Spanner.V1.Snippets
         }
 
         /// <summary>Snippet for Commit</summary>
-        public void Commit2_ResourceNames()
+        public void Commit2ResourceNames()
         {
             // Snippet: Commit(SessionName, TransactionOptions, IEnumerable<Mutation>, CallSettings)
             // Create client
             SpannerClient spannerClient = SpannerClient.Create();
             // Initialize request argument(s)
-            SessionName session = new SessionName("[PROJECT]", "[INSTANCE]", "[DATABASE]", "[SESSION]");
+            SessionName session = SessionName.FromProjectInstanceDatabaseSession("[PROJECT]", "[INSTANCE]", "[DATABASE]", "[SESSION]");
             TransactionOptions singleUseTransaction = new TransactionOptions();
             IEnumerable<Mutation> mutations = new Mutation[] { new Mutation(), };
             // Make the request
@@ -1133,14 +1139,14 @@ namespace Google.Cloud.Spanner.V1.Snippets
         }
 
         /// <summary>Snippet for CommitAsync</summary>
-        public async Task Commit2Async_ResourceNames()
+        public async Task Commit2ResourceNamesAsync()
         {
             // Snippet: CommitAsync(SessionName, TransactionOptions, IEnumerable<Mutation>, CallSettings)
             // Additional: CommitAsync(SessionName, TransactionOptions, IEnumerable<Mutation>, CancellationToken)
             // Create client
             SpannerClient spannerClient = await SpannerClient.CreateAsync();
             // Initialize request argument(s)
-            SessionName session = new SessionName("[PROJECT]", "[INSTANCE]", "[DATABASE]", "[SESSION]");
+            SessionName session = SessionName.FromProjectInstanceDatabaseSession("[PROJECT]", "[INSTANCE]", "[DATABASE]", "[SESSION]");
             TransactionOptions singleUseTransaction = new TransactionOptions();
             IEnumerable<Mutation> mutations = new Mutation[] { new Mutation(), };
             // Make the request
@@ -1149,7 +1155,7 @@ namespace Google.Cloud.Spanner.V1.Snippets
         }
 
         /// <summary>Snippet for Rollback</summary>
-        public void Rollback_RequestObject()
+        public void RollbackRequestObject()
         {
             // Snippet: Rollback(RollbackRequest, CallSettings)
             // Create client
@@ -1157,7 +1163,7 @@ namespace Google.Cloud.Spanner.V1.Snippets
             // Initialize request argument(s)
             RollbackRequest request = new RollbackRequest
             {
-                SessionAsSessionName = new SessionName("[PROJECT]", "[INSTANCE]", "[DATABASE]", "[SESSION]"),
+                SessionAsSessionName = SessionName.FromProjectInstanceDatabaseSession("[PROJECT]", "[INSTANCE]", "[DATABASE]", "[SESSION]"),
                 TransactionId = ByteString.Empty,
             };
             // Make the request
@@ -1166,7 +1172,7 @@ namespace Google.Cloud.Spanner.V1.Snippets
         }
 
         /// <summary>Snippet for RollbackAsync</summary>
-        public async Task RollbackAsync_RequestObject()
+        public async Task RollbackRequestObjectAsync()
         {
             // Snippet: RollbackAsync(RollbackRequest, CallSettings)
             // Additional: RollbackAsync(RollbackRequest, CancellationToken)
@@ -1175,7 +1181,7 @@ namespace Google.Cloud.Spanner.V1.Snippets
             // Initialize request argument(s)
             RollbackRequest request = new RollbackRequest
             {
-                SessionAsSessionName = new SessionName("[PROJECT]", "[INSTANCE]", "[DATABASE]", "[SESSION]"),
+                SessionAsSessionName = SessionName.FromProjectInstanceDatabaseSession("[PROJECT]", "[INSTANCE]", "[DATABASE]", "[SESSION]"),
                 TransactionId = ByteString.Empty,
             };
             // Make the request
@@ -1213,13 +1219,13 @@ namespace Google.Cloud.Spanner.V1.Snippets
         }
 
         /// <summary>Snippet for Rollback</summary>
-        public void Rollback_ResourceNames()
+        public void RollbackResourceNames()
         {
             // Snippet: Rollback(SessionName, ByteString, CallSettings)
             // Create client
             SpannerClient spannerClient = SpannerClient.Create();
             // Initialize request argument(s)
-            SessionName session = new SessionName("[PROJECT]", "[INSTANCE]", "[DATABASE]", "[SESSION]");
+            SessionName session = SessionName.FromProjectInstanceDatabaseSession("[PROJECT]", "[INSTANCE]", "[DATABASE]", "[SESSION]");
             ByteString transactionId = ByteString.Empty;
             // Make the request
             spannerClient.Rollback(session, transactionId);
@@ -1227,14 +1233,14 @@ namespace Google.Cloud.Spanner.V1.Snippets
         }
 
         /// <summary>Snippet for RollbackAsync</summary>
-        public async Task RollbackAsync_ResourceNames()
+        public async Task RollbackResourceNamesAsync()
         {
             // Snippet: RollbackAsync(SessionName, ByteString, CallSettings)
             // Additional: RollbackAsync(SessionName, ByteString, CancellationToken)
             // Create client
             SpannerClient spannerClient = await SpannerClient.CreateAsync();
             // Initialize request argument(s)
-            SessionName session = new SessionName("[PROJECT]", "[INSTANCE]", "[DATABASE]", "[SESSION]");
+            SessionName session = SessionName.FromProjectInstanceDatabaseSession("[PROJECT]", "[INSTANCE]", "[DATABASE]", "[SESSION]");
             ByteString transactionId = ByteString.Empty;
             // Make the request
             await spannerClient.RollbackAsync(session, transactionId);
@@ -1242,7 +1248,7 @@ namespace Google.Cloud.Spanner.V1.Snippets
         }
 
         /// <summary>Snippet for PartitionQuery</summary>
-        public void PartitionQuery_RequestObject()
+        public void PartitionQueryRequestObject()
         {
             // Snippet: PartitionQuery(PartitionQueryRequest, CallSettings)
             // Create client
@@ -1250,7 +1256,7 @@ namespace Google.Cloud.Spanner.V1.Snippets
             // Initialize request argument(s)
             PartitionQueryRequest request = new PartitionQueryRequest
             {
-                SessionAsSessionName = new SessionName("[PROJECT]", "[INSTANCE]", "[DATABASE]", "[SESSION]"),
+                SessionAsSessionName = SessionName.FromProjectInstanceDatabaseSession("[PROJECT]", "[INSTANCE]", "[DATABASE]", "[SESSION]"),
                 Transaction = new TransactionSelector(),
                 Sql = "",
                 Params = new Struct(),
@@ -1269,7 +1275,7 @@ namespace Google.Cloud.Spanner.V1.Snippets
         }
 
         /// <summary>Snippet for PartitionQueryAsync</summary>
-        public async Task PartitionQueryAsync_RequestObject()
+        public async Task PartitionQueryRequestObjectAsync()
         {
             // Snippet: PartitionQueryAsync(PartitionQueryRequest, CallSettings)
             // Additional: PartitionQueryAsync(PartitionQueryRequest, CancellationToken)
@@ -1278,7 +1284,7 @@ namespace Google.Cloud.Spanner.V1.Snippets
             // Initialize request argument(s)
             PartitionQueryRequest request = new PartitionQueryRequest
             {
-                SessionAsSessionName = new SessionName("[PROJECT]", "[INSTANCE]", "[DATABASE]", "[SESSION]"),
+                SessionAsSessionName = SessionName.FromProjectInstanceDatabaseSession("[PROJECT]", "[INSTANCE]", "[DATABASE]", "[SESSION]"),
                 Transaction = new TransactionSelector(),
                 Sql = "",
                 Params = new Struct(),
@@ -1297,7 +1303,7 @@ namespace Google.Cloud.Spanner.V1.Snippets
         }
 
         /// <summary>Snippet for PartitionRead</summary>
-        public void PartitionRead_RequestObject()
+        public void PartitionReadRequestObject()
         {
             // Snippet: PartitionRead(PartitionReadRequest, CallSettings)
             // Create client
@@ -1305,7 +1311,7 @@ namespace Google.Cloud.Spanner.V1.Snippets
             // Initialize request argument(s)
             PartitionReadRequest request = new PartitionReadRequest
             {
-                SessionAsSessionName = new SessionName("[PROJECT]", "[INSTANCE]", "[DATABASE]", "[SESSION]"),
+                SessionAsSessionName = SessionName.FromProjectInstanceDatabaseSession("[PROJECT]", "[INSTANCE]", "[DATABASE]", "[SESSION]"),
                 Transaction = new TransactionSelector(),
                 Table = "",
                 Index = "",
@@ -1319,7 +1325,7 @@ namespace Google.Cloud.Spanner.V1.Snippets
         }
 
         /// <summary>Snippet for PartitionReadAsync</summary>
-        public async Task PartitionReadAsync_RequestObject()
+        public async Task PartitionReadRequestObjectAsync()
         {
             // Snippet: PartitionReadAsync(PartitionReadRequest, CallSettings)
             // Additional: PartitionReadAsync(PartitionReadRequest, CancellationToken)
@@ -1328,7 +1334,7 @@ namespace Google.Cloud.Spanner.V1.Snippets
             // Initialize request argument(s)
             PartitionReadRequest request = new PartitionReadRequest
             {
-                SessionAsSessionName = new SessionName("[PROJECT]", "[INSTANCE]", "[DATABASE]", "[SESSION]"),
+                SessionAsSessionName = SessionName.FromProjectInstanceDatabaseSession("[PROJECT]", "[INSTANCE]", "[DATABASE]", "[SESSION]"),
                 Transaction = new TransactionSelector(),
                 Table = "",
                 Index = "",

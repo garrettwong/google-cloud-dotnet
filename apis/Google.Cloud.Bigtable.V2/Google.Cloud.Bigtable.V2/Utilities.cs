@@ -115,50 +115,41 @@ namespace Google.Cloud.Bigtable.V2
         }
 
         internal static async Task RetryOperationUntilCompleted(
-            Func<Task<bool>> fn,
+            Func<CallSettings, Task<bool>> fn,
             IClock clock,
             IScheduler scheduler,
             CallSettings callSettings,
             RetrySettings retrySettings)
         {
-            DateTime? overallDeadline = retrySettings.TotalExpiration.CalculateDeadline(clock);
-            TimeSpan retryDelay = retrySettings.RetryBackoff.Delay;
-            TimeSpan callTimeout = retrySettings.TimeoutBackoff.Delay;
-            while (true)
+            DateTime? overallDeadline = callSettings.Expiration.CalculateDeadline(clock);
+            // Every attempt should use the same deadline, calculated from the start of the call.
+            if (callSettings.Expiration?.Type == ExpirationType.Timeout)
             {
-                DateTime attemptDeadline = clock.GetCurrentDateTimeUtc() + callTimeout;
-                // Note: this handles a null total deadline due to "<" returning false if overallDeadline is null.
-                DateTime combinedDeadline = overallDeadline < attemptDeadline ? overallDeadline.Value : attemptDeadline;
-                CallSettings attemptCallSettings = callSettings.WithCallTiming(CallTiming.FromDeadline(combinedDeadline));
-                TimeSpan actualDelay = retrySettings.DelayJitter.GetDelay(retryDelay);
-                DateTime expectedRetryTime;
+                callSettings = callSettings.WithDeadline(overallDeadline.Value);
+            }
+
+            var deadlineException = new RpcException(new Status(StatusCode.DeadlineExceeded, "Deadline Exceeded"));
+            foreach (var attempt in RetryAttempt.CreateRetrySequence(retrySettings, scheduler, overallDeadline, clock))
+            {
                 try
                 {
-                    bool isResponseOk = await fn().ConfigureAwait(false);
+                    bool isResponseOk = await fn(callSettings).ConfigureAwait(false);
                     if (isResponseOk)
                     {
                         return;
                     }
-
-                    expectedRetryTime = clock.GetCurrentDateTimeUtc() + actualDelay;
-                    if (expectedRetryTime > overallDeadline)
+                    if (!attempt.ShouldRetry(deadlineException))
                     {
-                        // TODO: Can we get this string from somewhere?
-                        throw new RpcException(new Status(StatusCode.DeadlineExceeded, "Deadline Exceeded"));
+                        throw deadlineException;
                     }
                 }
-                catch (RpcException e) when (retrySettings.RetryFilter(e))
+                catch (RpcException e) when (attempt.ShouldRetry(e))
                 {
-                    expectedRetryTime = clock.GetCurrentDateTimeUtc() + actualDelay;
-                    if (expectedRetryTime > overallDeadline)
-                    {
-                        throw;
-                    }
+                    // We back off below...
                 }
-                await scheduler.Delay(actualDelay, callSettings.CancellationToken.GetValueOrDefault()).ConfigureAwait(false);
-                retryDelay = retrySettings.RetryBackoff.NextDelay(retryDelay);
-                callTimeout = retrySettings.TimeoutBackoff.NextDelay(callTimeout);
+                await attempt.BackoffAsync(callSettings.CancellationToken.GetValueOrDefault()).ConfigureAwait(false);
             }
+            throw new InvalidOperationException("Bug in GAX retry handling: finished sequence of attempts");
         }
 
         internal static IEnumerable<T> ValidateCollection<T>(

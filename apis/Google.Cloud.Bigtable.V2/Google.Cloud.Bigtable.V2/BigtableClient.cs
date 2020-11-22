@@ -1,4 +1,4 @@
-// Copyright 2019 Google LLC
+// Copyright 2020 Google LLC
 //
 // Licensed under the Apache License, Version 2.0 (the "License");
 // you may not use this file except in compliance with the License.
@@ -17,6 +17,7 @@
 using gax = Google.Api.Gax;
 using gaxgrpc = Google.Api.Gax.Grpc;
 using gaxgrpcgcp = Google.Api.Gax.Grpc.Gcp;
+using gaxgrpccore = Google.Api.Gax.Grpc.GrpcCore;
 using gcbcv = Google.Cloud.Bigtable.Common.V2;
 using proto = Google.Protobuf;
 using grpccore = Grpc.Core;
@@ -25,7 +26,6 @@ using sys = System;
 using scg = System.Collections.Generic;
 using sco = System.Collections.ObjectModel;
 using linq = System.Linq;
-using sysnet = System.Net;
 using st = System.Threading;
 using stt = System.Threading.Tasks;
 using Google.Api.Gax;
@@ -33,6 +33,9 @@ using Google.Api.Gax;
 namespace Google.Cloud.Bigtable.V2
 {
     /// <summary>BigtableServiceApi client wrapper, for convenient use.</summary>
+    /// <remarks>
+    /// Service for reading from and writing to existing Bigtable tables.
+    /// </remarks>
     public partial class BigtableClient
     {
         /// <summary>Streams back the contents of all requested rows in key order, optionally applying the same Reader filter to each.</summary>
@@ -270,6 +273,9 @@ namespace Google.Cloud.Bigtable.V2
     }
 
     /// <summary>BigtableServiceApi client wrapper, for convenient use.</summary>
+    /// <remarks>
+    /// Service for reading from and writing to existing Bigtable tables.
+    /// </remarks>
     public sealed partial class BigtableClientImpl : BigtableClient
     {
         /// <inheritdoc/>

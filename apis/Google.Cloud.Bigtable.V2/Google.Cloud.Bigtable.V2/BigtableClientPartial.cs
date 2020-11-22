@@ -36,29 +36,18 @@ namespace Google.Cloud.Bigtable.V2
         // TODO: Auto-generate these if possible/easy after multi-channel support is added.
 
         /// <summary>
-        /// Asynchronously creates a <see cref="BigtableClient"/>, applying defaults for all unspecified settings,
-        /// and creating channels connecting to the given endpoint with application default credentials where
-        /// necessary.
+        /// Asynchronously creates a <see cref="BigtableClient"/> using the default credentials, endpoint and
+        /// settings. To specify custom credentials or other settings, use <see cref="BigtableClientBuilder"/>.
         /// </summary>
-        /// <param name="endpoint">Optional <see cref="ServiceEndpoint"/> to use when connecting to Bigtable.</param>
-        /// <param name="settings">Optional <see cref="BigtableServiceApiSettings"/> to control API requests.</param>
-        /// <returns>The task representing the created <see cref="BigtableClient"/>.</returns>
-        public static async Task<BigtableClient> CreateAsync(ServiceEndpoint endpoint = null, BigtableServiceApiSettings settings = null)
-        {
-            var client = await BigtableServiceApiClient.CreateAsync(endpoint, settings).ConfigureAwait(false);
-            return new BigtableClientImpl(client);
-        }
+        /// <returns>The created <see cref="BigtableServiceApiClient"/>.</returns>
+        public static Task<BigtableClient> CreateAsync() => new BigtableClientBuilder().BuildAsync();
 
         /// <summary>
-        /// Synchronously creates a <see cref="BigtableClient"/>, applying defaults for all unspecified settings,
-        /// and creating channels connecting to the given endpoint with application default credentials where
-        /// necessary.
+        /// Synchronously creates a <see cref="BigtableClient"/> using the default credentials, endpoint and
+        /// settings. To specify custom credentials or other settings, use <see cref="BigtableClientBuilder"/>.
         /// </summary>
-        /// <param name="endpoint">Optional <see cref="ServiceEndpoint"/> to use when connecting to Bigtable.</param>
-        /// <param name="settings">Optional <see cref="BigtableServiceApiSettings"/> to control API requests.</param>
-        /// <returns>The created <see cref="BigtableClient"/>.</returns>
-        public static BigtableClient Create(ServiceEndpoint endpoint = null, BigtableServiceApiSettings settings = null) =>
-            Task.Run(() => CreateAsync(endpoint, settings)).ResultWithUnwrappedExceptions();
+        /// <returns>The created <see cref="BigtableServiceApiClient"/>.</returns>
+        public static BigtableClient Create() => new BigtableClientBuilder().Build();
 
         /// <summary>
         /// Synchronously creates a <see cref="BigtableClient"/> from a pre-existing API client.
@@ -69,16 +58,6 @@ namespace Google.Cloud.Bigtable.V2
         /// <returns>The created <see cref="BigtableClient"/>.</returns>
         public static BigtableClient Create(BigtableServiceApiClient client) => 
             new BigtableClientImpl(GaxPreconditions.CheckNotNull(client, nameof(client)));
-
-        /// <summary>
-        /// Synchronously creates a <see cref="BigtableClient"/>, applying defaults for all unspecified settings,
-        /// using the specified <see cref="CallInvoker"/> for API requests.
-        /// </summary>
-        /// <param name="callInvoker">The <see cref="CallInvoker"/> which performs API requests. Must not be null.</param>
-        /// <param name="settings">Optional <see cref="BigtableServiceApiSettings"/> to control API requests.</param>
-        /// <returns>The created <see cref="BigtableClient"/>.</returns>
-        public static BigtableClient Create(CallInvoker callInvoker, BigtableServiceApiSettings settings = null) =>
-            Create(BigtableServiceApiClient.Create(GaxPreconditions.CheckNotNull(callInvoker, nameof(callInvoker)), settings));
 
         /// <summary>
         /// Gets the value which specifies routing for replication.
@@ -899,7 +878,25 @@ namespace Google.Cloud.Bigtable.V2
                 filter,
                 callSettings: callSettings);
 
-            return await response.SingleOrDefault().ConfigureAwait(false);
+            // Equivalent to using SingleOrDefaultAsync, but avoids a System.Linq.Async dependency.
+            var enumerator = response.GetAsyncEnumerator(default);
+            try
+            {
+                if (!await enumerator.MoveNextAsync().ConfigureAwait(false))
+                {
+                    return default;
+                }
+                var row = enumerator.Current;
+                if (await enumerator.MoveNextAsync().ConfigureAwait(false))
+                {
+                    throw new InvalidOperationException("Expected only a single row.");
+                }
+                return row;
+            }
+            finally
+            {
+                await enumerator.DisposeAsync().ConfigureAwait(false);
+            }
         }
 
         /// <summary>
@@ -994,9 +991,9 @@ namespace Google.Cloud.Bigtable.V2
             var requestManager = new BigtableMutateRowsRequestManager(retryStatuses, request);
 
             await Utilities.RetryOperationUntilCompleted(
-                async () =>
+                async thisCallSettings =>
                 {
-                    var currentStream = _client.MutateRows(requestManager.NextRequest, callSettings);
+                    var currentStream = _client.MutateRows(requestManager.NextRequest, thisCallSettings);
                     return await ProcessCurrentStream(currentStream).ConfigureAwait(false) != ProcessingStatus.Retryable;
                 },
                 Clock,
@@ -1008,7 +1005,7 @@ namespace Google.Cloud.Bigtable.V2
             async Task<ProcessingStatus> ProcessCurrentStream(BigtableServiceApiClient.MutateRowsStream stream)
             {
                 var cancellationToken = effectiveCallSettings.CancellationToken ?? default;
-                var responseStream = stream.ResponseStream;
+                var responseStream = stream.GrpcCall.ResponseStream;
                 while (await responseStream.MoveNext(cancellationToken).ConfigureAwait(false))
                 {
                     requestManager.SetStatus(responseStream.Current);

@@ -1,4 +1,4 @@
-// Copyright 2019 Google LLC
+// Copyright 2020 Google LLC
 //
 // Licensed under the Apache License, Version 2.0 (the "License");
 // you may not use this file except in compliance with the License.
@@ -16,6 +16,7 @@
 
 using gax = Google.Api.Gax;
 using gaxgrpc = Google.Api.Gax.Grpc;
+using gaxgrpccore = Google.Api.Gax.Grpc.GrpcCore;
 using gagr = Google.Api.Gax.ResourceNames;
 using proto = Google.Protobuf;
 using wkt = Google.Protobuf.WellKnownTypes;
@@ -25,7 +26,6 @@ using sys = System;
 using sc = System.Collections;
 using scg = System.Collections.Generic;
 using sco = System.Collections.ObjectModel;
-using sysnet = System.Net;
 using st = System.Threading;
 using stt = System.Threading.Tasks;
 
@@ -68,56 +68,91 @@ namespace Google.Cloud.RecaptchaEnterprise.V1Beta1
         /// <c>RecaptchaEnterpriseServiceV1Beta1Client.CreateAssessment</c> and
         /// <c>RecaptchaEnterpriseServiceV1Beta1Client.CreateAssessmentAsync</c>.
         /// </summary>
-        /// <remarks>By default, retry will not be attempted.</remarks>
-        public gaxgrpc::CallSettings CreateAssessmentSettings { get; set; }
+        /// <remarks>
+        /// <list type="bullet">
+        /// <item><description>This call will not be retried.</description></item>
+        /// <item><description>Timeout: 600 seconds.</description></item>
+        /// </list>
+        /// </remarks>
+        public gaxgrpc::CallSettings CreateAssessmentSettings { get; set; } = gaxgrpc::CallSettings.FromExpiration(gax::Expiration.FromTimeout(sys::TimeSpan.FromMilliseconds(600000)));
 
         /// <summary>
         /// <see cref="gaxgrpc::CallSettings"/> for synchronous and asynchronous calls to
         /// <c>RecaptchaEnterpriseServiceV1Beta1Client.AnnotateAssessment</c> and
         /// <c>RecaptchaEnterpriseServiceV1Beta1Client.AnnotateAssessmentAsync</c>.
         /// </summary>
-        /// <remarks>By default, retry will not be attempted.</remarks>
-        public gaxgrpc::CallSettings AnnotateAssessmentSettings { get; set; }
+        /// <remarks>
+        /// <list type="bullet">
+        /// <item><description>This call will not be retried.</description></item>
+        /// <item><description>Timeout: 600 seconds.</description></item>
+        /// </list>
+        /// </remarks>
+        public gaxgrpc::CallSettings AnnotateAssessmentSettings { get; set; } = gaxgrpc::CallSettings.FromExpiration(gax::Expiration.FromTimeout(sys::TimeSpan.FromMilliseconds(600000)));
 
         /// <summary>
         /// <see cref="gaxgrpc::CallSettings"/> for synchronous and asynchronous calls to
         /// <c>RecaptchaEnterpriseServiceV1Beta1Client.CreateKey</c> and
         /// <c>RecaptchaEnterpriseServiceV1Beta1Client.CreateKeyAsync</c>.
         /// </summary>
-        /// <remarks>By default, retry will not be attempted.</remarks>
-        public gaxgrpc::CallSettings CreateKeySettings { get; set; }
+        /// <remarks>
+        /// <list type="bullet">
+        /// <item><description>This call will not be retried.</description></item>
+        /// <item><description>Timeout: 600 seconds.</description></item>
+        /// </list>
+        /// </remarks>
+        public gaxgrpc::CallSettings CreateKeySettings { get; set; } = gaxgrpc::CallSettings.FromExpiration(gax::Expiration.FromTimeout(sys::TimeSpan.FromMilliseconds(600000)));
 
         /// <summary>
         /// <see cref="gaxgrpc::CallSettings"/> for synchronous and asynchronous calls to
         /// <c>RecaptchaEnterpriseServiceV1Beta1Client.ListKeys</c> and
         /// <c>RecaptchaEnterpriseServiceV1Beta1Client.ListKeysAsync</c>.
         /// </summary>
-        /// <remarks>By default, retry will not be attempted.</remarks>
-        public gaxgrpc::CallSettings ListKeysSettings { get; set; }
+        /// <remarks>
+        /// <list type="bullet">
+        /// <item><description>This call will not be retried.</description></item>
+        /// <item><description>Timeout: 600 seconds.</description></item>
+        /// </list>
+        /// </remarks>
+        public gaxgrpc::CallSettings ListKeysSettings { get; set; } = gaxgrpc::CallSettings.FromExpiration(gax::Expiration.FromTimeout(sys::TimeSpan.FromMilliseconds(600000)));
 
         /// <summary>
         /// <see cref="gaxgrpc::CallSettings"/> for synchronous and asynchronous calls to
         /// <c>RecaptchaEnterpriseServiceV1Beta1Client.GetKey</c> and
         /// <c>RecaptchaEnterpriseServiceV1Beta1Client.GetKeyAsync</c>.
         /// </summary>
-        /// <remarks>By default, retry will not be attempted.</remarks>
-        public gaxgrpc::CallSettings GetKeySettings { get; set; }
+        /// <remarks>
+        /// <list type="bullet">
+        /// <item><description>This call will not be retried.</description></item>
+        /// <item><description>Timeout: 600 seconds.</description></item>
+        /// </list>
+        /// </remarks>
+        public gaxgrpc::CallSettings GetKeySettings { get; set; } = gaxgrpc::CallSettings.FromExpiration(gax::Expiration.FromTimeout(sys::TimeSpan.FromMilliseconds(600000)));
 
         /// <summary>
         /// <see cref="gaxgrpc::CallSettings"/> for synchronous and asynchronous calls to
         /// <c>RecaptchaEnterpriseServiceV1Beta1Client.UpdateKey</c> and
         /// <c>RecaptchaEnterpriseServiceV1Beta1Client.UpdateKeyAsync</c>.
         /// </summary>
-        /// <remarks>By default, retry will not be attempted.</remarks>
-        public gaxgrpc::CallSettings UpdateKeySettings { get; set; }
+        /// <remarks>
+        /// <list type="bullet">
+        /// <item><description>This call will not be retried.</description></item>
+        /// <item><description>Timeout: 600 seconds.</description></item>
+        /// </list>
+        /// </remarks>
+        public gaxgrpc::CallSettings UpdateKeySettings { get; set; } = gaxgrpc::CallSettings.FromExpiration(gax::Expiration.FromTimeout(sys::TimeSpan.FromMilliseconds(600000)));
 
         /// <summary>
         /// <see cref="gaxgrpc::CallSettings"/> for synchronous and asynchronous calls to
         /// <c>RecaptchaEnterpriseServiceV1Beta1Client.DeleteKey</c> and
         /// <c>RecaptchaEnterpriseServiceV1Beta1Client.DeleteKeyAsync</c>.
         /// </summary>
-        /// <remarks>By default, retry will not be attempted.</remarks>
-        public gaxgrpc::CallSettings DeleteKeySettings { get; set; }
+        /// <remarks>
+        /// <list type="bullet">
+        /// <item><description>This call will not be retried.</description></item>
+        /// <item><description>Timeout: 600 seconds.</description></item>
+        /// </list>
+        /// </remarks>
+        public gaxgrpc::CallSettings DeleteKeySettings { get; set; } = gaxgrpc::CallSettings.FromExpiration(gax::Expiration.FromTimeout(sys::TimeSpan.FromMilliseconds(600000)));
 
         /// <summary>Creates a deep clone of this object, with all the same property values.</summary>
         /// <returns>A deep clone of this <see cref="RecaptchaEnterpriseServiceV1Beta1Settings"/> object.</returns>
@@ -133,42 +168,67 @@ namespace Google.Cloud.RecaptchaEnterprise.V1Beta1
         /// <summary>The settings to use for RPCs, or <c>null</c> for the default settings.</summary>
         public RecaptchaEnterpriseServiceV1Beta1Settings Settings { get; set; }
 
-        /// <inheritdoc/>
+        partial void InterceptBuild(ref RecaptchaEnterpriseServiceV1Beta1Client client);
+
+        partial void InterceptBuildAsync(st::CancellationToken cancellationToken, ref stt::Task<RecaptchaEnterpriseServiceV1Beta1Client> task);
+
+        /// <summary>Builds the resulting client.</summary>
         public override RecaptchaEnterpriseServiceV1Beta1Client Build()
+        {
+            RecaptchaEnterpriseServiceV1Beta1Client client = null;
+            InterceptBuild(ref client);
+            return client ?? BuildImpl();
+        }
+
+        /// <summary>Builds the resulting client asynchronously.</summary>
+        public override stt::Task<RecaptchaEnterpriseServiceV1Beta1Client> BuildAsync(st::CancellationToken cancellationToken = default)
+        {
+            stt::Task<RecaptchaEnterpriseServiceV1Beta1Client> task = null;
+            InterceptBuildAsync(cancellationToken, ref task);
+            return task ?? BuildAsyncImpl(cancellationToken);
+        }
+
+        private RecaptchaEnterpriseServiceV1Beta1Client BuildImpl()
         {
             Validate();
             grpccore::CallInvoker callInvoker = CreateCallInvoker();
             return RecaptchaEnterpriseServiceV1Beta1Client.Create(callInvoker, Settings);
         }
 
-        /// <inheritdoc/>
-        public override async stt::Task<RecaptchaEnterpriseServiceV1Beta1Client> BuildAsync(st::CancellationToken cancellationToken = default)
+        private async stt::Task<RecaptchaEnterpriseServiceV1Beta1Client> BuildAsyncImpl(st::CancellationToken cancellationToken)
         {
             Validate();
             grpccore::CallInvoker callInvoker = await CreateCallInvokerAsync(cancellationToken).ConfigureAwait(false);
             return RecaptchaEnterpriseServiceV1Beta1Client.Create(callInvoker, Settings);
         }
 
-        /// <inheritdoc/>
-        protected override gaxgrpc::ServiceEndpoint GetDefaultEndpoint() =>
-            RecaptchaEnterpriseServiceV1Beta1Client.DefaultEndpoint;
+        /// <summary>Returns the endpoint for this builder type, used if no endpoint is otherwise specified.</summary>
+        protected override string GetDefaultEndpoint() => RecaptchaEnterpriseServiceV1Beta1Client.DefaultEndpoint;
 
-        /// <inheritdoc/>
+        /// <summary>
+        /// Returns the default scopes for this builder type, used if no scopes are otherwise specified.
+        /// </summary>
         protected override scg::IReadOnlyList<string> GetDefaultScopes() =>
             RecaptchaEnterpriseServiceV1Beta1Client.DefaultScopes;
 
-        /// <inheritdoc/>
+        /// <summary>Returns the channel pool to use when no other options are specified.</summary>
         protected override gaxgrpc::ChannelPool GetChannelPool() => RecaptchaEnterpriseServiceV1Beta1Client.ChannelPool;
+
+        /// <summary>Returns the default <see cref="gaxgrpc::GrpcAdapter"/>to use if not otherwise specified.</summary>
+        protected override gaxgrpc::GrpcAdapter DefaultGrpcAdapter => gaxgrpccore::GrpcCoreAdapter.Instance;
     }
 
     /// <summary>RecaptchaEnterpriseServiceV1Beta1 client wrapper, for convenient use.</summary>
+    /// <remarks>
+    /// Service to determine the likelihood an event is legitimate.
+    /// </remarks>
     public abstract partial class RecaptchaEnterpriseServiceV1Beta1Client
     {
         /// <summary>
         /// The default endpoint for the RecaptchaEnterpriseServiceV1Beta1 service, which is a host of
         /// "recaptchaenterprise.googleapis.com" and a port of 443.
         /// </summary>
-        public static gaxgrpc::ServiceEndpoint DefaultEndpoint { get; } = new gaxgrpc::ServiceEndpoint("recaptchaenterprise.googleapis.com", 443);
+        public static string DefaultEndpoint { get; } = "recaptchaenterprise.googleapis.com:443";
 
         /// <summary>The default RecaptchaEnterpriseServiceV1Beta1 scopes.</summary>
         /// <remarks>
@@ -185,97 +245,25 @@ namespace Google.Cloud.RecaptchaEnterprise.V1Beta1
         internal static gaxgrpc::ChannelPool ChannelPool { get; } = new gaxgrpc::ChannelPool(DefaultScopes);
 
         /// <summary>
-        /// Asynchronously creates a <see cref="RecaptchaEnterpriseServiceV1Beta1Client"/>, applying defaults for all
-        /// unspecified settings, and creating a channel connecting to the given endpoint with application default
-        /// credentials where necessary. See the example for how to use custom credentials.
+        /// Asynchronously creates a <see cref="RecaptchaEnterpriseServiceV1Beta1Client"/> using the default
+        /// credentials, endpoint and settings. To specify custom credentials or other settings, use
+        /// <see cref="RecaptchaEnterpriseServiceV1Beta1ClientBuilder"/>.
         /// </summary>
-        /// <example>
-        /// This sample shows how to create a client using default credentials:
-        /// <code>
-        /// using Google.Cloud.Vision.V1;
-        /// ...
-        /// // When running on Google Cloud Platform this will use the project Compute Credential.
-        /// // Or set the GOOGLE_APPLICATION_CREDENTIALS environment variable to the path of a JSON
-        /// // credential file to use that credential.
-        /// ImageAnnotatorClient client = await ImageAnnotatorClient.CreateAsync();
-        /// </code>
-        /// This sample shows how to create a client using credentials loaded from a JSON file:
-        /// <code>
-        /// using Google.Cloud.Vision.V1;
-        /// using Google.Apis.Auth.OAuth2;
-        /// using Grpc.Auth;
-        /// using Grpc.Core;
-        /// ...
-        /// GoogleCredential cred = GoogleCredential.FromFile("/path/to/credentials.json");
-        /// Channel channel = new Channel(
-        ///     ImageAnnotatorClient.DefaultEndpoint.Host, ImageAnnotatorClient.DefaultEndpoint.Port, cred.ToChannelCredentials());
-        /// ImageAnnotatorClient client = ImageAnnotatorClient.Create(channel);
-        /// ...
-        /// // Shutdown the channel when it is no longer required.
-        /// await channel.ShutdownAsync();
-        /// </code>
-        /// </example>
-        /// <param name="endpoint">Optional <see cref="gaxgrpc::ServiceEndpoint"/>.</param>
-        /// <param name="settings">Optional <see cref="RecaptchaEnterpriseServiceV1Beta1Settings"/>.</param>
+        /// <param name="cancellationToken">
+        /// The <see cref="st::CancellationToken"/> to use while creating the client.
+        /// </param>
         /// <returns>The task representing the created <see cref="RecaptchaEnterpriseServiceV1Beta1Client"/>.</returns>
-        public static async stt::Task<RecaptchaEnterpriseServiceV1Beta1Client> CreateAsync(gaxgrpc::ServiceEndpoint endpoint = null, RecaptchaEnterpriseServiceV1Beta1Settings settings = null)
-        {
-            grpccore::Channel channel = await ChannelPool.GetChannelAsync(endpoint ?? DefaultEndpoint).ConfigureAwait(false);
-            return Create(channel, settings);
-        }
+        public static stt::Task<RecaptchaEnterpriseServiceV1Beta1Client> CreateAsync(st::CancellationToken cancellationToken = default) =>
+            new RecaptchaEnterpriseServiceV1Beta1ClientBuilder().BuildAsync(cancellationToken);
 
         /// <summary>
-        /// Synchronously creates a <see cref="RecaptchaEnterpriseServiceV1Beta1Client"/>, applying defaults for all
-        /// unspecified settings, and creating a channel connecting to the given endpoint with application default
-        /// credentials where necessary. See the example for how to use custom credentials.
+        /// Synchronously creates a <see cref="RecaptchaEnterpriseServiceV1Beta1Client"/> using the default credentials,
+        /// endpoint and settings. To specify custom credentials or other settings, use
+        /// <see cref="RecaptchaEnterpriseServiceV1Beta1ClientBuilder"/>.
         /// </summary>
-        /// <example>
-        /// This sample shows how to create a client using default credentials:
-        /// <code>
-        /// using Google.Cloud.Vision.V1;
-        /// ...
-        /// // When running on Google Cloud Platform this will use the project Compute Credential.
-        /// // Or set the GOOGLE_APPLICATION_CREDENTIALS environment variable to the path of a JSON
-        /// // credential file to use that credential.
-        /// ImageAnnotatorClient client = ImageAnnotatorClient.Create();
-        /// </code>
-        /// This sample shows how to create a client using credentials loaded from a JSON file:
-        /// <code>
-        /// using Google.Cloud.Vision.V1;
-        /// using Google.Apis.Auth.OAuth2;
-        /// using Grpc.Auth;
-        /// using Grpc.Core;
-        /// ...
-        /// GoogleCredential cred = GoogleCredential.FromFile("/path/to/credentials.json");
-        /// Channel channel = new Channel(
-        ///     ImageAnnotatorClient.DefaultEndpoint.Host, ImageAnnotatorClient.DefaultEndpoint.Port, cred.ToChannelCredentials());
-        /// ImageAnnotatorClient client = ImageAnnotatorClient.Create(channel);
-        /// ...
-        /// // Shutdown the channel when it is no longer required.
-        /// channel.ShutdownAsync().Wait();
-        /// </code>
-        /// </example>
-        /// <param name="endpoint">Optional <see cref="gaxgrpc::ServiceEndpoint"/>.</param>
-        /// <param name="settings">Optional <see cref="RecaptchaEnterpriseServiceV1Beta1Settings"/>.</param>
         /// <returns>The created <see cref="RecaptchaEnterpriseServiceV1Beta1Client"/>.</returns>
-        public static RecaptchaEnterpriseServiceV1Beta1Client Create(gaxgrpc::ServiceEndpoint endpoint = null, RecaptchaEnterpriseServiceV1Beta1Settings settings = null)
-        {
-            grpccore::Channel channel = ChannelPool.GetChannel(endpoint ?? DefaultEndpoint);
-            return Create(channel, settings);
-        }
-
-        /// <summary>
-        /// Creates a <see cref="RecaptchaEnterpriseServiceV1Beta1Client"/> which uses the specified channel for remote
-        /// operations.
-        /// </summary>
-        /// <param name="channel">The <see cref="grpccore::Channel"/> for remote operations. Must not be null.</param>
-        /// <param name="settings">Optional <see cref="RecaptchaEnterpriseServiceV1Beta1Settings"/>.</param>
-        /// <returns>The created <see cref="RecaptchaEnterpriseServiceV1Beta1Client"/>.</returns>
-        public static RecaptchaEnterpriseServiceV1Beta1Client Create(grpccore::Channel channel, RecaptchaEnterpriseServiceV1Beta1Settings settings = null)
-        {
-            gax::GaxPreconditions.CheckNotNull(channel, nameof(channel));
-            return Create(new grpccore::DefaultCallInvoker(channel), settings);
-        }
+        public static RecaptchaEnterpriseServiceV1Beta1Client Create() =>
+            new RecaptchaEnterpriseServiceV1Beta1ClientBuilder().Build();
 
         /// <summary>
         /// Creates a <see cref="RecaptchaEnterpriseServiceV1Beta1Client"/> which uses the specified call invoker for
@@ -286,7 +274,7 @@ namespace Google.Cloud.RecaptchaEnterprise.V1Beta1
         /// </param>
         /// <param name="settings">Optional <see cref="RecaptchaEnterpriseServiceV1Beta1Settings"/>.</param>
         /// <returns>The created <see cref="RecaptchaEnterpriseServiceV1Beta1Client"/>.</returns>
-        public static RecaptchaEnterpriseServiceV1Beta1Client Create(grpccore::CallInvoker callInvoker, RecaptchaEnterpriseServiceV1Beta1Settings settings = null)
+        internal static RecaptchaEnterpriseServiceV1Beta1Client Create(grpccore::CallInvoker callInvoker, RecaptchaEnterpriseServiceV1Beta1Settings settings = null)
         {
             gax::GaxPreconditions.CheckNotNull(callInvoker, nameof(callInvoker));
             grpcinter::Interceptor interceptor = settings?.Interceptor;
@@ -299,16 +287,14 @@ namespace Google.Cloud.RecaptchaEnterprise.V1Beta1
         }
 
         /// <summary>
-        /// Shuts down any channels automatically created by
-        /// <see cref="Create(grpccore::CallInvoker,RecaptchaEnterpriseServiceV1Beta1Settings)"/> and
-        /// <see cref="CreateAsync(gaxgrpc::ServiceEndpoint,RecaptchaEnterpriseServiceV1Beta1Settings)"/>. Channels
-        /// which weren't automatically created are not affected.
+        /// Shuts down any channels automatically created by <see cref="Create()"/> and
+        /// <see cref="CreateAsync(st::CancellationToken)"/>. Channels which weren't automatically created are not
+        /// affected.
         /// </summary>
         /// <remarks>
-        /// After calling this method, further calls to
-        /// <see cref="Create(grpccore::CallInvoker,RecaptchaEnterpriseServiceV1Beta1Settings)"/> and
-        /// <see cref="CreateAsync(gaxgrpc::ServiceEndpoint,RecaptchaEnterpriseServiceV1Beta1Settings)"/> will create
-        /// new channels, which could in turn be shut down by another call to this method.
+        /// After calling this method, further calls to <see cref="Create()"/> and
+        /// <see cref="CreateAsync(st::CancellationToken)"/> will create new channels, which could in turn be shut down
+        /// by another call to this method.
         /// </remarks>
         /// <returns>A task representing the asynchronous shutdown operation.</returns>
         public static stt::Task ShutdownDefaultChannelsAsync() => ChannelPool.ShutdownChannelsAsync();
@@ -719,6 +705,9 @@ namespace Google.Cloud.RecaptchaEnterprise.V1Beta1
     }
 
     /// <summary>RecaptchaEnterpriseServiceV1Beta1 client wrapper implementation, for convenient use.</summary>
+    /// <remarks>
+    /// Service to determine the likelihood an event is legitimate.
+    /// </remarks>
     public sealed partial class RecaptchaEnterpriseServiceV1Beta1ClientImpl : RecaptchaEnterpriseServiceV1Beta1Client
     {
         private readonly gaxgrpc::ApiCall<CreateAssessmentRequest, Assessment> _callCreateAssessment;
@@ -748,25 +737,25 @@ namespace Google.Cloud.RecaptchaEnterprise.V1Beta1
             GrpcClient = grpcClient;
             RecaptchaEnterpriseServiceV1Beta1Settings effectiveSettings = settings ?? RecaptchaEnterpriseServiceV1Beta1Settings.GetDefault();
             gaxgrpc::ClientHelper clientHelper = new gaxgrpc::ClientHelper(effectiveSettings);
-            _callCreateAssessment = clientHelper.BuildApiCall<CreateAssessmentRequest, Assessment>(grpcClient.CreateAssessmentAsync, grpcClient.CreateAssessment, effectiveSettings.CreateAssessmentSettings).WithCallSettingsOverlay(request => gaxgrpc::CallSettings.FromHeader("x-goog-request-params", $"parent={(sysnet::WebUtility.UrlEncode(request.Parent))}"));
+            _callCreateAssessment = clientHelper.BuildApiCall<CreateAssessmentRequest, Assessment>(grpcClient.CreateAssessmentAsync, grpcClient.CreateAssessment, effectiveSettings.CreateAssessmentSettings).WithGoogleRequestParam("parent", request => request.Parent);
             Modify_ApiCall(ref _callCreateAssessment);
             Modify_CreateAssessmentApiCall(ref _callCreateAssessment);
-            _callAnnotateAssessment = clientHelper.BuildApiCall<AnnotateAssessmentRequest, AnnotateAssessmentResponse>(grpcClient.AnnotateAssessmentAsync, grpcClient.AnnotateAssessment, effectiveSettings.AnnotateAssessmentSettings).WithCallSettingsOverlay(request => gaxgrpc::CallSettings.FromHeader("x-goog-request-params", $"name={(sysnet::WebUtility.UrlEncode(request.Name))}"));
+            _callAnnotateAssessment = clientHelper.BuildApiCall<AnnotateAssessmentRequest, AnnotateAssessmentResponse>(grpcClient.AnnotateAssessmentAsync, grpcClient.AnnotateAssessment, effectiveSettings.AnnotateAssessmentSettings).WithGoogleRequestParam("name", request => request.Name);
             Modify_ApiCall(ref _callAnnotateAssessment);
             Modify_AnnotateAssessmentApiCall(ref _callAnnotateAssessment);
-            _callCreateKey = clientHelper.BuildApiCall<CreateKeyRequest, Key>(grpcClient.CreateKeyAsync, grpcClient.CreateKey, effectiveSettings.CreateKeySettings).WithCallSettingsOverlay(request => gaxgrpc::CallSettings.FromHeader("x-goog-request-params", $"parent={(sysnet::WebUtility.UrlEncode(request.Parent))}"));
+            _callCreateKey = clientHelper.BuildApiCall<CreateKeyRequest, Key>(grpcClient.CreateKeyAsync, grpcClient.CreateKey, effectiveSettings.CreateKeySettings).WithGoogleRequestParam("parent", request => request.Parent);
             Modify_ApiCall(ref _callCreateKey);
             Modify_CreateKeyApiCall(ref _callCreateKey);
-            _callListKeys = clientHelper.BuildApiCall<ListKeysRequest, ListKeysResponse>(grpcClient.ListKeysAsync, grpcClient.ListKeys, effectiveSettings.ListKeysSettings).WithCallSettingsOverlay(request => gaxgrpc::CallSettings.FromHeader("x-goog-request-params", $"parent={(sysnet::WebUtility.UrlEncode(request.Parent))}"));
+            _callListKeys = clientHelper.BuildApiCall<ListKeysRequest, ListKeysResponse>(grpcClient.ListKeysAsync, grpcClient.ListKeys, effectiveSettings.ListKeysSettings).WithGoogleRequestParam("parent", request => request.Parent);
             Modify_ApiCall(ref _callListKeys);
             Modify_ListKeysApiCall(ref _callListKeys);
-            _callGetKey = clientHelper.BuildApiCall<GetKeyRequest, Key>(grpcClient.GetKeyAsync, grpcClient.GetKey, effectiveSettings.GetKeySettings).WithCallSettingsOverlay(request => gaxgrpc::CallSettings.FromHeader("x-goog-request-params", $"name={(sysnet::WebUtility.UrlEncode(request.Name))}"));
+            _callGetKey = clientHelper.BuildApiCall<GetKeyRequest, Key>(grpcClient.GetKeyAsync, grpcClient.GetKey, effectiveSettings.GetKeySettings).WithGoogleRequestParam("name", request => request.Name);
             Modify_ApiCall(ref _callGetKey);
             Modify_GetKeyApiCall(ref _callGetKey);
-            _callUpdateKey = clientHelper.BuildApiCall<UpdateKeyRequest, Key>(grpcClient.UpdateKeyAsync, grpcClient.UpdateKey, effectiveSettings.UpdateKeySettings).WithCallSettingsOverlay(request => gaxgrpc::CallSettings.FromHeader("x-goog-request-params", $"key.name={(sysnet::WebUtility.UrlEncode(request.Key.Name))}"));
+            _callUpdateKey = clientHelper.BuildApiCall<UpdateKeyRequest, Key>(grpcClient.UpdateKeyAsync, grpcClient.UpdateKey, effectiveSettings.UpdateKeySettings).WithGoogleRequestParam("key.name", request => request.Key?.Name);
             Modify_ApiCall(ref _callUpdateKey);
             Modify_UpdateKeyApiCall(ref _callUpdateKey);
-            _callDeleteKey = clientHelper.BuildApiCall<DeleteKeyRequest, wkt::Empty>(grpcClient.DeleteKeyAsync, grpcClient.DeleteKey, effectiveSettings.DeleteKeySettings).WithCallSettingsOverlay(request => gaxgrpc::CallSettings.FromHeader("x-goog-request-params", $"name={(sysnet::WebUtility.UrlEncode(request.Name))}"));
+            _callDeleteKey = clientHelper.BuildApiCall<DeleteKeyRequest, wkt::Empty>(grpcClient.DeleteKeyAsync, grpcClient.DeleteKey, effectiveSettings.DeleteKeySettings).WithGoogleRequestParam("name", request => request.Name);
             Modify_ApiCall(ref _callDeleteKey);
             Modify_DeleteKeyApiCall(ref _callDeleteKey);
             OnConstruction(grpcClient, effectiveSettings, clientHelper);

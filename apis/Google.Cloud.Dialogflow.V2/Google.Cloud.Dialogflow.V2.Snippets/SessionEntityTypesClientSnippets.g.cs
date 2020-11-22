@@ -1,4 +1,4 @@
-// Copyright 2019 Google LLC
+// Copyright 2020 Google LLC
 //
 // Licensed under the Apache License, Version 2.0 (the "License");
 // you may not use this file except in compliance with the License.
@@ -17,33 +17,75 @@
 namespace Google.Cloud.Dialogflow.V2.Snippets
 {
     using Google.Api.Gax;
-    using Google.Api.Gax.Grpc;
-    using apis = Google.Cloud.Dialogflow.V2;
-    using Google.Protobuf;
     using Google.Protobuf.WellKnownTypes;
-    using Grpc.Core;
     using System;
-    using System.Collections;
-    using System.Collections.Generic;
-    using System.Collections.ObjectModel;
     using System.Linq;
-    using System.Threading;
     using System.Threading.Tasks;
 
-    /// <summary>Generated snippets</summary>
-    public class GeneratedSessionEntityTypesClientSnippets
+    /// <summary>Generated snippets.</summary>
+    public sealed class GeneratedSessionEntityTypesClientSnippets
     {
-        /// <summary>Snippet for ListSessionEntityTypesAsync</summary>
-        public async Task ListSessionEntityTypesAsync()
+        /// <summary>Snippet for ListSessionEntityTypes</summary>
+        public void ListSessionEntityTypesRequestObject()
         {
-            // Snippet: ListSessionEntityTypesAsync(SessionName,string,int?,CallSettings)
+            // Snippet: ListSessionEntityTypes(ListSessionEntityTypesRequest, CallSettings)
+            // Create client
+            SessionEntityTypesClient sessionEntityTypesClient = SessionEntityTypesClient.Create();
+            // Initialize request argument(s)
+            ListSessionEntityTypesRequest request = new ListSessionEntityTypesRequest
+            {
+                ParentAsSessionName = SessionName.FromProjectSession("[PROJECT]", "[SESSION]"),
+            };
+            // Make the request
+            PagedEnumerable<ListSessionEntityTypesResponse, SessionEntityType> response = sessionEntityTypesClient.ListSessionEntityTypes(request);
+
+            // Iterate over all response items, lazily performing RPCs as required
+            foreach (SessionEntityType item in response)
+            {
+                // Do something with each item
+                Console.WriteLine(item);
+            }
+
+            // Or iterate over pages (of server-defined size), performing one RPC per page
+            foreach (ListSessionEntityTypesResponse page in response.AsRawResponses())
+            {
+                // Do something with each page of items
+                Console.WriteLine("A page of results:");
+                foreach (SessionEntityType item in page)
+                {
+                    // Do something with each item
+                    Console.WriteLine(item);
+                }
+            }
+
+            // Or retrieve a single page of known size (unless it's the final page), performing as many RPCs as required
+            int pageSize = 10;
+            Page<SessionEntityType> singlePage = response.ReadPage(pageSize);
+            // Do something with the page of items
+            Console.WriteLine($"A page of {pageSize} results (unless it's the final page):");
+            foreach (SessionEntityType item in singlePage)
+            {
+                // Do something with each item
+                Console.WriteLine(item);
+            }
+            // Store the pageToken, for when the next page is required.
+            string nextPageToken = singlePage.NextPageToken;
+            // End snippet
+        }
+
+        /// <summary>Snippet for ListSessionEntityTypes</summary>
+        public async Task ListSessionEntityTypesRequestObjectAsync()
+        {
+            // Snippet: ListSessionEntityTypesAsync(ListSessionEntityTypesRequest, CallSettings)
             // Create client
             SessionEntityTypesClient sessionEntityTypesClient = await SessionEntityTypesClient.CreateAsync();
             // Initialize request argument(s)
-            SessionName parent = new SessionName("[PROJECT]", "[SESSION]");
+            ListSessionEntityTypesRequest request = new ListSessionEntityTypesRequest
+            {
+                ParentAsSessionName = SessionName.FromProjectSession("[PROJECT]", "[SESSION]"),
+            };
             // Make the request
-            PagedAsyncEnumerable<ListSessionEntityTypesResponse, SessionEntityType> response =
-                sessionEntityTypesClient.ListSessionEntityTypesAsync(parent);
+            PagedAsyncEnumerable<ListSessionEntityTypesResponse, SessionEntityType> response = sessionEntityTypesClient.ListSessionEntityTypesAsync(request);
 
             // Iterate over all response items, lazily performing RPCs as required
             await response.ForEachAsync((SessionEntityType item) =>
@@ -59,6 +101,7 @@ namespace Google.Cloud.Dialogflow.V2.Snippets
                 Console.WriteLine("A page of results:");
                 foreach (SessionEntityType item in page)
                 {
+                    // Do something with each item
                     Console.WriteLine(item);
                 }
             });
@@ -70,6 +113,7 @@ namespace Google.Cloud.Dialogflow.V2.Snippets
             Console.WriteLine($"A page of {pageSize} results (unless it's the final page):");
             foreach (SessionEntityType item in singlePage)
             {
+                // Do something with each item
                 Console.WriteLine(item);
             }
             // Store the pageToken, for when the next page is required.
@@ -80,14 +124,13 @@ namespace Google.Cloud.Dialogflow.V2.Snippets
         /// <summary>Snippet for ListSessionEntityTypes</summary>
         public void ListSessionEntityTypes()
         {
-            // Snippet: ListSessionEntityTypes(SessionName,string,int?,CallSettings)
+            // Snippet: ListSessionEntityTypes(string, string, int?, CallSettings)
             // Create client
             SessionEntityTypesClient sessionEntityTypesClient = SessionEntityTypesClient.Create();
             // Initialize request argument(s)
-            SessionName parent = new SessionName("[PROJECT]", "[SESSION]");
+            string parent = "projects/[PROJECT]/agent/sessions/[SESSION]";
             // Make the request
-            PagedEnumerable<ListSessionEntityTypesResponse, SessionEntityType> response =
-                sessionEntityTypesClient.ListSessionEntityTypes(parent);
+            PagedEnumerable<ListSessionEntityTypesResponse, SessionEntityType> response = sessionEntityTypesClient.ListSessionEntityTypes(parent);
 
             // Iterate over all response items, lazily performing RPCs as required
             foreach (SessionEntityType item in response)
@@ -103,6 +146,7 @@ namespace Google.Cloud.Dialogflow.V2.Snippets
                 Console.WriteLine("A page of results:");
                 foreach (SessionEntityType item in page)
                 {
+                    // Do something with each item
                     Console.WriteLine(item);
                 }
             }
@@ -114,6 +158,7 @@ namespace Google.Cloud.Dialogflow.V2.Snippets
             Console.WriteLine($"A page of {pageSize} results (unless it's the final page):");
             foreach (SessionEntityType item in singlePage)
             {
+                // Do something with each item
                 Console.WriteLine(item);
             }
             // Store the pageToken, for when the next page is required.
@@ -121,20 +166,16 @@ namespace Google.Cloud.Dialogflow.V2.Snippets
             // End snippet
         }
 
-        /// <summary>Snippet for ListSessionEntityTypesAsync</summary>
-        public async Task ListSessionEntityTypesAsync_RequestObject()
+        /// <summary>Snippet for ListSessionEntityTypes</summary>
+        public async Task ListSessionEntityTypesAsync()
         {
-            // Snippet: ListSessionEntityTypesAsync(ListSessionEntityTypesRequest,CallSettings)
+            // Snippet: ListSessionEntityTypesAsync(string, string, int?, CallSettings)
             // Create client
             SessionEntityTypesClient sessionEntityTypesClient = await SessionEntityTypesClient.CreateAsync();
             // Initialize request argument(s)
-            ListSessionEntityTypesRequest request = new ListSessionEntityTypesRequest
-            {
-                ParentAsSessionName = new SessionName("[PROJECT]", "[SESSION]"),
-            };
+            string parent = "projects/[PROJECT]/agent/sessions/[SESSION]";
             // Make the request
-            PagedAsyncEnumerable<ListSessionEntityTypesResponse, SessionEntityType> response =
-                sessionEntityTypesClient.ListSessionEntityTypesAsync(request);
+            PagedAsyncEnumerable<ListSessionEntityTypesResponse, SessionEntityType> response = sessionEntityTypesClient.ListSessionEntityTypesAsync(parent);
 
             // Iterate over all response items, lazily performing RPCs as required
             await response.ForEachAsync((SessionEntityType item) =>
@@ -150,6 +191,7 @@ namespace Google.Cloud.Dialogflow.V2.Snippets
                 Console.WriteLine("A page of results:");
                 foreach (SessionEntityType item in page)
                 {
+                    // Do something with each item
                     Console.WriteLine(item);
                 }
             });
@@ -161,6 +203,7 @@ namespace Google.Cloud.Dialogflow.V2.Snippets
             Console.WriteLine($"A page of {pageSize} results (unless it's the final page):");
             foreach (SessionEntityType item in singlePage)
             {
+                // Do something with each item
                 Console.WriteLine(item);
             }
             // Store the pageToken, for when the next page is required.
@@ -169,19 +212,15 @@ namespace Google.Cloud.Dialogflow.V2.Snippets
         }
 
         /// <summary>Snippet for ListSessionEntityTypes</summary>
-        public void ListSessionEntityTypes_RequestObject()
+        public void ListSessionEntityTypesResourceNames()
         {
-            // Snippet: ListSessionEntityTypes(ListSessionEntityTypesRequest,CallSettings)
+            // Snippet: ListSessionEntityTypes(SessionName, string, int?, CallSettings)
             // Create client
             SessionEntityTypesClient sessionEntityTypesClient = SessionEntityTypesClient.Create();
             // Initialize request argument(s)
-            ListSessionEntityTypesRequest request = new ListSessionEntityTypesRequest
-            {
-                ParentAsSessionName = new SessionName("[PROJECT]", "[SESSION]"),
-            };
+            SessionName parent = SessionName.FromProjectSession("[PROJECT]", "[SESSION]");
             // Make the request
-            PagedEnumerable<ListSessionEntityTypesResponse, SessionEntityType> response =
-                sessionEntityTypesClient.ListSessionEntityTypes(request);
+            PagedEnumerable<ListSessionEntityTypesResponse, SessionEntityType> response = sessionEntityTypesClient.ListSessionEntityTypes(parent);
 
             // Iterate over all response items, lazily performing RPCs as required
             foreach (SessionEntityType item in response)
@@ -197,6 +236,7 @@ namespace Google.Cloud.Dialogflow.V2.Snippets
                 Console.WriteLine("A page of results:");
                 foreach (SessionEntityType item in page)
                 {
+                    // Do something with each item
                     Console.WriteLine(item);
                 }
             }
@@ -208,6 +248,7 @@ namespace Google.Cloud.Dialogflow.V2.Snippets
             Console.WriteLine($"A page of {pageSize} results (unless it's the final page):");
             foreach (SessionEntityType item in singlePage)
             {
+                // Do something with each item
                 Console.WriteLine(item);
             }
             // Store the pageToken, for when the next page is required.
@@ -215,44 +256,78 @@ namespace Google.Cloud.Dialogflow.V2.Snippets
             // End snippet
         }
 
-        /// <summary>Snippet for GetSessionEntityTypeAsync</summary>
-        public async Task GetSessionEntityTypeAsync()
+        /// <summary>Snippet for ListSessionEntityTypes</summary>
+        public async Task ListSessionEntityTypesResourceNamesAsync()
         {
-            // Snippet: GetSessionEntityTypeAsync(SessionEntityTypeName,CallSettings)
-            // Additional: GetSessionEntityTypeAsync(SessionEntityTypeName,CancellationToken)
+            // Snippet: ListSessionEntityTypesAsync(SessionName, string, int?, CallSettings)
             // Create client
             SessionEntityTypesClient sessionEntityTypesClient = await SessionEntityTypesClient.CreateAsync();
             // Initialize request argument(s)
-            SessionEntityTypeName name = new SessionEntityTypeName("[PROJECT]", "[SESSION]", "[ENTITY_TYPE]");
+            SessionName parent = SessionName.FromProjectSession("[PROJECT]", "[SESSION]");
             // Make the request
-            SessionEntityType response = await sessionEntityTypesClient.GetSessionEntityTypeAsync(name);
+            PagedAsyncEnumerable<ListSessionEntityTypesResponse, SessionEntityType> response = sessionEntityTypesClient.ListSessionEntityTypesAsync(parent);
+
+            // Iterate over all response items, lazily performing RPCs as required
+            await response.ForEachAsync((SessionEntityType item) =>
+            {
+                // Do something with each item
+                Console.WriteLine(item);
+            });
+
+            // Or iterate over pages (of server-defined size), performing one RPC per page
+            await response.AsRawResponses().ForEachAsync((ListSessionEntityTypesResponse page) =>
+            {
+                // Do something with each page of items
+                Console.WriteLine("A page of results:");
+                foreach (SessionEntityType item in page)
+                {
+                    // Do something with each item
+                    Console.WriteLine(item);
+                }
+            });
+
+            // Or retrieve a single page of known size (unless it's the final page), performing as many RPCs as required
+            int pageSize = 10;
+            Page<SessionEntityType> singlePage = await response.ReadPageAsync(pageSize);
+            // Do something with the page of items
+            Console.WriteLine($"A page of {pageSize} results (unless it's the final page):");
+            foreach (SessionEntityType item in singlePage)
+            {
+                // Do something with each item
+                Console.WriteLine(item);
+            }
+            // Store the pageToken, for when the next page is required.
+            string nextPageToken = singlePage.NextPageToken;
             // End snippet
         }
 
         /// <summary>Snippet for GetSessionEntityType</summary>
-        public void GetSessionEntityType()
+        public void GetSessionEntityTypeRequestObject()
         {
-            // Snippet: GetSessionEntityType(SessionEntityTypeName,CallSettings)
+            // Snippet: GetSessionEntityType(GetSessionEntityTypeRequest, CallSettings)
             // Create client
             SessionEntityTypesClient sessionEntityTypesClient = SessionEntityTypesClient.Create();
             // Initialize request argument(s)
-            SessionEntityTypeName name = new SessionEntityTypeName("[PROJECT]", "[SESSION]", "[ENTITY_TYPE]");
+            GetSessionEntityTypeRequest request = new GetSessionEntityTypeRequest
+            {
+                SessionEntityTypeName = SessionEntityTypeName.FromProjectSessionEntityType("[PROJECT]", "[SESSION]", "[ENTITY_TYPE]"),
+            };
             // Make the request
-            SessionEntityType response = sessionEntityTypesClient.GetSessionEntityType(name);
+            SessionEntityType response = sessionEntityTypesClient.GetSessionEntityType(request);
             // End snippet
         }
 
         /// <summary>Snippet for GetSessionEntityTypeAsync</summary>
-        public async Task GetSessionEntityTypeAsync_RequestObject()
+        public async Task GetSessionEntityTypeRequestObjectAsync()
         {
-            // Snippet: GetSessionEntityTypeAsync(GetSessionEntityTypeRequest,CallSettings)
-            // Additional: GetSessionEntityTypeAsync(GetSessionEntityTypeRequest,CancellationToken)
+            // Snippet: GetSessionEntityTypeAsync(GetSessionEntityTypeRequest, CallSettings)
+            // Additional: GetSessionEntityTypeAsync(GetSessionEntityTypeRequest, CancellationToken)
             // Create client
             SessionEntityTypesClient sessionEntityTypesClient = await SessionEntityTypesClient.CreateAsync();
             // Initialize request argument(s)
             GetSessionEntityTypeRequest request = new GetSessionEntityTypeRequest
             {
-                SessionEntityTypeName = new SessionEntityTypeName("[PROJECT]", "[SESSION]", "[ENTITY_TYPE]"),
+                SessionEntityTypeName = SessionEntityTypeName.FromProjectSessionEntityType("[PROJECT]", "[SESSION]", "[ENTITY_TYPE]"),
             };
             // Make the request
             SessionEntityType response = await sessionEntityTypesClient.GetSessionEntityTypeAsync(request);
@@ -260,61 +335,87 @@ namespace Google.Cloud.Dialogflow.V2.Snippets
         }
 
         /// <summary>Snippet for GetSessionEntityType</summary>
-        public void GetSessionEntityType_RequestObject()
+        public void GetSessionEntityType()
         {
-            // Snippet: GetSessionEntityType(GetSessionEntityTypeRequest,CallSettings)
+            // Snippet: GetSessionEntityType(string, CallSettings)
             // Create client
             SessionEntityTypesClient sessionEntityTypesClient = SessionEntityTypesClient.Create();
             // Initialize request argument(s)
-            GetSessionEntityTypeRequest request = new GetSessionEntityTypeRequest
-            {
-                SessionEntityTypeName = new SessionEntityTypeName("[PROJECT]", "[SESSION]", "[ENTITY_TYPE]"),
-            };
+            string name = "projects/[PROJECT]/agent/sessions/[SESSION]/entityTypes/[ENTITY_TYPE]";
             // Make the request
-            SessionEntityType response = sessionEntityTypesClient.GetSessionEntityType(request);
+            SessionEntityType response = sessionEntityTypesClient.GetSessionEntityType(name);
             // End snippet
         }
 
-        /// <summary>Snippet for CreateSessionEntityTypeAsync</summary>
-        public async Task CreateSessionEntityTypeAsync()
+        /// <summary>Snippet for GetSessionEntityTypeAsync</summary>
+        public async Task GetSessionEntityTypeAsync()
         {
-            // Snippet: CreateSessionEntityTypeAsync(SessionName,SessionEntityType,CallSettings)
-            // Additional: CreateSessionEntityTypeAsync(SessionName,SessionEntityType,CancellationToken)
+            // Snippet: GetSessionEntityTypeAsync(string, CallSettings)
+            // Additional: GetSessionEntityTypeAsync(string, CancellationToken)
             // Create client
             SessionEntityTypesClient sessionEntityTypesClient = await SessionEntityTypesClient.CreateAsync();
             // Initialize request argument(s)
-            SessionName parent = new SessionName("[PROJECT]", "[SESSION]");
-            SessionEntityType sessionEntityType = new SessionEntityType();
+            string name = "projects/[PROJECT]/agent/sessions/[SESSION]/entityTypes/[ENTITY_TYPE]";
             // Make the request
-            SessionEntityType response = await sessionEntityTypesClient.CreateSessionEntityTypeAsync(parent, sessionEntityType);
+            SessionEntityType response = await sessionEntityTypesClient.GetSessionEntityTypeAsync(name);
+            // End snippet
+        }
+
+        /// <summary>Snippet for GetSessionEntityType</summary>
+        public void GetSessionEntityTypeResourceNames()
+        {
+            // Snippet: GetSessionEntityType(SessionEntityTypeName, CallSettings)
+            // Create client
+            SessionEntityTypesClient sessionEntityTypesClient = SessionEntityTypesClient.Create();
+            // Initialize request argument(s)
+            SessionEntityTypeName name = SessionEntityTypeName.FromProjectSessionEntityType("[PROJECT]", "[SESSION]", "[ENTITY_TYPE]");
+            // Make the request
+            SessionEntityType response = sessionEntityTypesClient.GetSessionEntityType(name);
+            // End snippet
+        }
+
+        /// <summary>Snippet for GetSessionEntityTypeAsync</summary>
+        public async Task GetSessionEntityTypeResourceNamesAsync()
+        {
+            // Snippet: GetSessionEntityTypeAsync(SessionEntityTypeName, CallSettings)
+            // Additional: GetSessionEntityTypeAsync(SessionEntityTypeName, CancellationToken)
+            // Create client
+            SessionEntityTypesClient sessionEntityTypesClient = await SessionEntityTypesClient.CreateAsync();
+            // Initialize request argument(s)
+            SessionEntityTypeName name = SessionEntityTypeName.FromProjectSessionEntityType("[PROJECT]", "[SESSION]", "[ENTITY_TYPE]");
+            // Make the request
+            SessionEntityType response = await sessionEntityTypesClient.GetSessionEntityTypeAsync(name);
             // End snippet
         }
 
         /// <summary>Snippet for CreateSessionEntityType</summary>
-        public void CreateSessionEntityType()
+        public void CreateSessionEntityTypeRequestObject()
         {
-            // Snippet: CreateSessionEntityType(SessionName,SessionEntityType,CallSettings)
+            // Snippet: CreateSessionEntityType(CreateSessionEntityTypeRequest, CallSettings)
             // Create client
             SessionEntityTypesClient sessionEntityTypesClient = SessionEntityTypesClient.Create();
             // Initialize request argument(s)
-            SessionName parent = new SessionName("[PROJECT]", "[SESSION]");
-            SessionEntityType sessionEntityType = new SessionEntityType();
+            CreateSessionEntityTypeRequest request = new CreateSessionEntityTypeRequest
+            {
+                ParentAsSessionName = SessionName.FromProjectSession("[PROJECT]", "[SESSION]"),
+                SessionEntityType = new SessionEntityType(),
+            };
             // Make the request
-            SessionEntityType response = sessionEntityTypesClient.CreateSessionEntityType(parent, sessionEntityType);
+            SessionEntityType response = sessionEntityTypesClient.CreateSessionEntityType(request);
             // End snippet
         }
 
         /// <summary>Snippet for CreateSessionEntityTypeAsync</summary>
-        public async Task CreateSessionEntityTypeAsync_RequestObject()
+        public async Task CreateSessionEntityTypeRequestObjectAsync()
         {
-            // Snippet: CreateSessionEntityTypeAsync(CreateSessionEntityTypeRequest,CallSettings)
-            // Additional: CreateSessionEntityTypeAsync(CreateSessionEntityTypeRequest,CancellationToken)
+            // Snippet: CreateSessionEntityTypeAsync(CreateSessionEntityTypeRequest, CallSettings)
+            // Additional: CreateSessionEntityTypeAsync(CreateSessionEntityTypeRequest, CancellationToken)
             // Create client
             SessionEntityTypesClient sessionEntityTypesClient = await SessionEntityTypesClient.CreateAsync();
             // Initialize request argument(s)
             CreateSessionEntityTypeRequest request = new CreateSessionEntityTypeRequest
             {
-                ParentAsSessionName = new SessionName("[PROJECT]", "[SESSION]"),
+                ParentAsSessionName = SessionName.FromProjectSession("[PROJECT]", "[SESSION]"),
                 SessionEntityType = new SessionEntityType(),
             };
             // Make the request
@@ -323,40 +424,102 @@ namespace Google.Cloud.Dialogflow.V2.Snippets
         }
 
         /// <summary>Snippet for CreateSessionEntityType</summary>
-        public void CreateSessionEntityType_RequestObject()
+        public void CreateSessionEntityType()
         {
-            // Snippet: CreateSessionEntityType(CreateSessionEntityTypeRequest,CallSettings)
+            // Snippet: CreateSessionEntityType(string, SessionEntityType, CallSettings)
             // Create client
             SessionEntityTypesClient sessionEntityTypesClient = SessionEntityTypesClient.Create();
             // Initialize request argument(s)
-            CreateSessionEntityTypeRequest request = new CreateSessionEntityTypeRequest
-            {
-                ParentAsSessionName = new SessionName("[PROJECT]", "[SESSION]"),
-                SessionEntityType = new SessionEntityType(),
-            };
+            string parent = "projects/[PROJECT]/agent/sessions/[SESSION]";
+            SessionEntityType sessionEntityType = new SessionEntityType();
             // Make the request
-            SessionEntityType response = sessionEntityTypesClient.CreateSessionEntityType(request);
+            SessionEntityType response = sessionEntityTypesClient.CreateSessionEntityType(parent, sessionEntityType);
             // End snippet
         }
 
-        /// <summary>Snippet for UpdateSessionEntityTypeAsync</summary>
-        public async Task UpdateSessionEntityTypeAsync()
+        /// <summary>Snippet for CreateSessionEntityTypeAsync</summary>
+        public async Task CreateSessionEntityTypeAsync()
         {
-            // Snippet: UpdateSessionEntityTypeAsync(SessionEntityType,CallSettings)
-            // Additional: UpdateSessionEntityTypeAsync(SessionEntityType,CancellationToken)
+            // Snippet: CreateSessionEntityTypeAsync(string, SessionEntityType, CallSettings)
+            // Additional: CreateSessionEntityTypeAsync(string, SessionEntityType, CancellationToken)
             // Create client
             SessionEntityTypesClient sessionEntityTypesClient = await SessionEntityTypesClient.CreateAsync();
             // Initialize request argument(s)
+            string parent = "projects/[PROJECT]/agent/sessions/[SESSION]";
             SessionEntityType sessionEntityType = new SessionEntityType();
             // Make the request
-            SessionEntityType response = await sessionEntityTypesClient.UpdateSessionEntityTypeAsync(sessionEntityType);
+            SessionEntityType response = await sessionEntityTypesClient.CreateSessionEntityTypeAsync(parent, sessionEntityType);
+            // End snippet
+        }
+
+        /// <summary>Snippet for CreateSessionEntityType</summary>
+        public void CreateSessionEntityTypeResourceNames()
+        {
+            // Snippet: CreateSessionEntityType(SessionName, SessionEntityType, CallSettings)
+            // Create client
+            SessionEntityTypesClient sessionEntityTypesClient = SessionEntityTypesClient.Create();
+            // Initialize request argument(s)
+            SessionName parent = SessionName.FromProjectSession("[PROJECT]", "[SESSION]");
+            SessionEntityType sessionEntityType = new SessionEntityType();
+            // Make the request
+            SessionEntityType response = sessionEntityTypesClient.CreateSessionEntityType(parent, sessionEntityType);
+            // End snippet
+        }
+
+        /// <summary>Snippet for CreateSessionEntityTypeAsync</summary>
+        public async Task CreateSessionEntityTypeResourceNamesAsync()
+        {
+            // Snippet: CreateSessionEntityTypeAsync(SessionName, SessionEntityType, CallSettings)
+            // Additional: CreateSessionEntityTypeAsync(SessionName, SessionEntityType, CancellationToken)
+            // Create client
+            SessionEntityTypesClient sessionEntityTypesClient = await SessionEntityTypesClient.CreateAsync();
+            // Initialize request argument(s)
+            SessionName parent = SessionName.FromProjectSession("[PROJECT]", "[SESSION]");
+            SessionEntityType sessionEntityType = new SessionEntityType();
+            // Make the request
+            SessionEntityType response = await sessionEntityTypesClient.CreateSessionEntityTypeAsync(parent, sessionEntityType);
             // End snippet
         }
 
         /// <summary>Snippet for UpdateSessionEntityType</summary>
-        public void UpdateSessionEntityType()
+        public void UpdateSessionEntityTypeRequestObject()
         {
-            // Snippet: UpdateSessionEntityType(SessionEntityType,CallSettings)
+            // Snippet: UpdateSessionEntityType(UpdateSessionEntityTypeRequest, CallSettings)
+            // Create client
+            SessionEntityTypesClient sessionEntityTypesClient = SessionEntityTypesClient.Create();
+            // Initialize request argument(s)
+            UpdateSessionEntityTypeRequest request = new UpdateSessionEntityTypeRequest
+            {
+                SessionEntityType = new SessionEntityType(),
+                UpdateMask = new FieldMask(),
+            };
+            // Make the request
+            SessionEntityType response = sessionEntityTypesClient.UpdateSessionEntityType(request);
+            // End snippet
+        }
+
+        /// <summary>Snippet for UpdateSessionEntityTypeAsync</summary>
+        public async Task UpdateSessionEntityTypeRequestObjectAsync()
+        {
+            // Snippet: UpdateSessionEntityTypeAsync(UpdateSessionEntityTypeRequest, CallSettings)
+            // Additional: UpdateSessionEntityTypeAsync(UpdateSessionEntityTypeRequest, CancellationToken)
+            // Create client
+            SessionEntityTypesClient sessionEntityTypesClient = await SessionEntityTypesClient.CreateAsync();
+            // Initialize request argument(s)
+            UpdateSessionEntityTypeRequest request = new UpdateSessionEntityTypeRequest
+            {
+                SessionEntityType = new SessionEntityType(),
+                UpdateMask = new FieldMask(),
+            };
+            // Make the request
+            SessionEntityType response = await sessionEntityTypesClient.UpdateSessionEntityTypeAsync(request);
+            // End snippet
+        }
+
+        /// <summary>Snippet for UpdateSessionEntityType</summary>
+        public void UpdateSessionEntityType1()
+        {
+            // Snippet: UpdateSessionEntityType(SessionEntityType, CallSettings)
             // Create client
             SessionEntityTypesClient sessionEntityTypesClient = SessionEntityTypesClient.Create();
             // Initialize request argument(s)
@@ -367,76 +530,75 @@ namespace Google.Cloud.Dialogflow.V2.Snippets
         }
 
         /// <summary>Snippet for UpdateSessionEntityTypeAsync</summary>
-        public async Task UpdateSessionEntityTypeAsync_RequestObject()
+        public async Task UpdateSessionEntityType1Async()
         {
-            // Snippet: UpdateSessionEntityTypeAsync(UpdateSessionEntityTypeRequest,CallSettings)
-            // Additional: UpdateSessionEntityTypeAsync(UpdateSessionEntityTypeRequest,CancellationToken)
+            // Snippet: UpdateSessionEntityTypeAsync(SessionEntityType, CallSettings)
+            // Additional: UpdateSessionEntityTypeAsync(SessionEntityType, CancellationToken)
             // Create client
             SessionEntityTypesClient sessionEntityTypesClient = await SessionEntityTypesClient.CreateAsync();
             // Initialize request argument(s)
-            UpdateSessionEntityTypeRequest request = new UpdateSessionEntityTypeRequest
-            {
-                SessionEntityType = new SessionEntityType(),
-            };
+            SessionEntityType sessionEntityType = new SessionEntityType();
             // Make the request
-            SessionEntityType response = await sessionEntityTypesClient.UpdateSessionEntityTypeAsync(request);
+            SessionEntityType response = await sessionEntityTypesClient.UpdateSessionEntityTypeAsync(sessionEntityType);
             // End snippet
         }
 
         /// <summary>Snippet for UpdateSessionEntityType</summary>
-        public void UpdateSessionEntityType_RequestObject()
+        public void UpdateSessionEntityType2()
         {
-            // Snippet: UpdateSessionEntityType(UpdateSessionEntityTypeRequest,CallSettings)
+            // Snippet: UpdateSessionEntityType(SessionEntityType, FieldMask, CallSettings)
             // Create client
             SessionEntityTypesClient sessionEntityTypesClient = SessionEntityTypesClient.Create();
             // Initialize request argument(s)
-            UpdateSessionEntityTypeRequest request = new UpdateSessionEntityTypeRequest
-            {
-                SessionEntityType = new SessionEntityType(),
-            };
+            SessionEntityType sessionEntityType = new SessionEntityType();
+            FieldMask updateMask = new FieldMask();
             // Make the request
-            SessionEntityType response = sessionEntityTypesClient.UpdateSessionEntityType(request);
+            SessionEntityType response = sessionEntityTypesClient.UpdateSessionEntityType(sessionEntityType, updateMask);
             // End snippet
         }
 
-        /// <summary>Snippet for DeleteSessionEntityTypeAsync</summary>
-        public async Task DeleteSessionEntityTypeAsync()
+        /// <summary>Snippet for UpdateSessionEntityTypeAsync</summary>
+        public async Task UpdateSessionEntityType2Async()
         {
-            // Snippet: DeleteSessionEntityTypeAsync(SessionEntityTypeName,CallSettings)
-            // Additional: DeleteSessionEntityTypeAsync(SessionEntityTypeName,CancellationToken)
+            // Snippet: UpdateSessionEntityTypeAsync(SessionEntityType, FieldMask, CallSettings)
+            // Additional: UpdateSessionEntityTypeAsync(SessionEntityType, FieldMask, CancellationToken)
             // Create client
             SessionEntityTypesClient sessionEntityTypesClient = await SessionEntityTypesClient.CreateAsync();
             // Initialize request argument(s)
-            SessionEntityTypeName name = new SessionEntityTypeName("[PROJECT]", "[SESSION]", "[ENTITY_TYPE]");
+            SessionEntityType sessionEntityType = new SessionEntityType();
+            FieldMask updateMask = new FieldMask();
             // Make the request
-            await sessionEntityTypesClient.DeleteSessionEntityTypeAsync(name);
+            SessionEntityType response = await sessionEntityTypesClient.UpdateSessionEntityTypeAsync(sessionEntityType, updateMask);
             // End snippet
         }
 
         /// <summary>Snippet for DeleteSessionEntityType</summary>
-        public void DeleteSessionEntityType()
+        public void DeleteSessionEntityTypeRequestObject()
         {
-            // Snippet: DeleteSessionEntityType(SessionEntityTypeName,CallSettings)
+            // Snippet: DeleteSessionEntityType(DeleteSessionEntityTypeRequest, CallSettings)
             // Create client
             SessionEntityTypesClient sessionEntityTypesClient = SessionEntityTypesClient.Create();
             // Initialize request argument(s)
-            SessionEntityTypeName name = new SessionEntityTypeName("[PROJECT]", "[SESSION]", "[ENTITY_TYPE]");
+            DeleteSessionEntityTypeRequest request = new DeleteSessionEntityTypeRequest
+            {
+                SessionEntityTypeName = SessionEntityTypeName.FromProjectSessionEntityType("[PROJECT]", "[SESSION]", "[ENTITY_TYPE]"),
+            };
             // Make the request
-            sessionEntityTypesClient.DeleteSessionEntityType(name);
+            sessionEntityTypesClient.DeleteSessionEntityType(request);
             // End snippet
         }
 
         /// <summary>Snippet for DeleteSessionEntityTypeAsync</summary>
-        public async Task DeleteSessionEntityTypeAsync_RequestObject()
+        public async Task DeleteSessionEntityTypeRequestObjectAsync()
         {
-            // Snippet: DeleteSessionEntityTypeAsync(DeleteSessionEntityTypeRequest,CallSettings)
-            // Additional: DeleteSessionEntityTypeAsync(DeleteSessionEntityTypeRequest,CancellationToken)
+            // Snippet: DeleteSessionEntityTypeAsync(DeleteSessionEntityTypeRequest, CallSettings)
+            // Additional: DeleteSessionEntityTypeAsync(DeleteSessionEntityTypeRequest, CancellationToken)
             // Create client
             SessionEntityTypesClient sessionEntityTypesClient = await SessionEntityTypesClient.CreateAsync();
             // Initialize request argument(s)
             DeleteSessionEntityTypeRequest request = new DeleteSessionEntityTypeRequest
             {
-                SessionEntityTypeName = new SessionEntityTypeName("[PROJECT]", "[SESSION]", "[ENTITY_TYPE]"),
+                SessionEntityTypeName = SessionEntityTypeName.FromProjectSessionEntityType("[PROJECT]", "[SESSION]", "[ENTITY_TYPE]"),
             };
             // Make the request
             await sessionEntityTypesClient.DeleteSessionEntityTypeAsync(request);
@@ -444,20 +606,57 @@ namespace Google.Cloud.Dialogflow.V2.Snippets
         }
 
         /// <summary>Snippet for DeleteSessionEntityType</summary>
-        public void DeleteSessionEntityType_RequestObject()
+        public void DeleteSessionEntityType()
         {
-            // Snippet: DeleteSessionEntityType(DeleteSessionEntityTypeRequest,CallSettings)
+            // Snippet: DeleteSessionEntityType(string, CallSettings)
             // Create client
             SessionEntityTypesClient sessionEntityTypesClient = SessionEntityTypesClient.Create();
             // Initialize request argument(s)
-            DeleteSessionEntityTypeRequest request = new DeleteSessionEntityTypeRequest
-            {
-                SessionEntityTypeName = new SessionEntityTypeName("[PROJECT]", "[SESSION]", "[ENTITY_TYPE]"),
-            };
+            string name = "projects/[PROJECT]/agent/sessions/[SESSION]/entityTypes/[ENTITY_TYPE]";
             // Make the request
-            sessionEntityTypesClient.DeleteSessionEntityType(request);
+            sessionEntityTypesClient.DeleteSessionEntityType(name);
             // End snippet
         }
 
+        /// <summary>Snippet for DeleteSessionEntityTypeAsync</summary>
+        public async Task DeleteSessionEntityTypeAsync()
+        {
+            // Snippet: DeleteSessionEntityTypeAsync(string, CallSettings)
+            // Additional: DeleteSessionEntityTypeAsync(string, CancellationToken)
+            // Create client
+            SessionEntityTypesClient sessionEntityTypesClient = await SessionEntityTypesClient.CreateAsync();
+            // Initialize request argument(s)
+            string name = "projects/[PROJECT]/agent/sessions/[SESSION]/entityTypes/[ENTITY_TYPE]";
+            // Make the request
+            await sessionEntityTypesClient.DeleteSessionEntityTypeAsync(name);
+            // End snippet
+        }
+
+        /// <summary>Snippet for DeleteSessionEntityType</summary>
+        public void DeleteSessionEntityTypeResourceNames()
+        {
+            // Snippet: DeleteSessionEntityType(SessionEntityTypeName, CallSettings)
+            // Create client
+            SessionEntityTypesClient sessionEntityTypesClient = SessionEntityTypesClient.Create();
+            // Initialize request argument(s)
+            SessionEntityTypeName name = SessionEntityTypeName.FromProjectSessionEntityType("[PROJECT]", "[SESSION]", "[ENTITY_TYPE]");
+            // Make the request
+            sessionEntityTypesClient.DeleteSessionEntityType(name);
+            // End snippet
+        }
+
+        /// <summary>Snippet for DeleteSessionEntityTypeAsync</summary>
+        public async Task DeleteSessionEntityTypeResourceNamesAsync()
+        {
+            // Snippet: DeleteSessionEntityTypeAsync(SessionEntityTypeName, CallSettings)
+            // Additional: DeleteSessionEntityTypeAsync(SessionEntityTypeName, CancellationToken)
+            // Create client
+            SessionEntityTypesClient sessionEntityTypesClient = await SessionEntityTypesClient.CreateAsync();
+            // Initialize request argument(s)
+            SessionEntityTypeName name = SessionEntityTypeName.FromProjectSessionEntityType("[PROJECT]", "[SESSION]", "[ENTITY_TYPE]");
+            // Make the request
+            await sessionEntityTypesClient.DeleteSessionEntityTypeAsync(name);
+            // End snippet
+        }
     }
 }

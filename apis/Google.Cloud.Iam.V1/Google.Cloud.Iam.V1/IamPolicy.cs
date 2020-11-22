@@ -52,11 +52,11 @@ namespace Google.Cloud.Iam.V1 {
             "XFYxYgZwcm90bzM="));
       descriptor = pbr::FileDescriptor.FromGeneratedCode(descriptorData,
           new pbr::FileDescriptor[] { global::Google.Cloud.Iam.V1.OptionsReflection.Descriptor, global::Google.Cloud.Iam.V1.PolicyReflection.Descriptor, global::Google.Api.AnnotationsReflection.Descriptor, global::Google.Api.ClientReflection.Descriptor, global::Google.Api.FieldBehaviorReflection.Descriptor, global::Google.Api.ResourceReflection.Descriptor, },
-          new pbr::GeneratedClrTypeInfo(null, new pbr::GeneratedClrTypeInfo[] {
-            new pbr::GeneratedClrTypeInfo(typeof(global::Google.Cloud.Iam.V1.SetIamPolicyRequest), global::Google.Cloud.Iam.V1.SetIamPolicyRequest.Parser, new[]{ "Resource", "Policy" }, null, null, null),
-            new pbr::GeneratedClrTypeInfo(typeof(global::Google.Cloud.Iam.V1.GetIamPolicyRequest), global::Google.Cloud.Iam.V1.GetIamPolicyRequest.Parser, new[]{ "Resource", "Options" }, null, null, null),
-            new pbr::GeneratedClrTypeInfo(typeof(global::Google.Cloud.Iam.V1.TestIamPermissionsRequest), global::Google.Cloud.Iam.V1.TestIamPermissionsRequest.Parser, new[]{ "Resource", "Permissions" }, null, null, null),
-            new pbr::GeneratedClrTypeInfo(typeof(global::Google.Cloud.Iam.V1.TestIamPermissionsResponse), global::Google.Cloud.Iam.V1.TestIamPermissionsResponse.Parser, new[]{ "Permissions" }, null, null, null)
+          new pbr::GeneratedClrTypeInfo(null, null, new pbr::GeneratedClrTypeInfo[] {
+            new pbr::GeneratedClrTypeInfo(typeof(global::Google.Cloud.Iam.V1.SetIamPolicyRequest), global::Google.Cloud.Iam.V1.SetIamPolicyRequest.Parser, new[]{ "Resource", "Policy" }, null, null, null, null),
+            new pbr::GeneratedClrTypeInfo(typeof(global::Google.Cloud.Iam.V1.GetIamPolicyRequest), global::Google.Cloud.Iam.V1.GetIamPolicyRequest.Parser, new[]{ "Resource", "Options" }, null, null, null, null),
+            new pbr::GeneratedClrTypeInfo(typeof(global::Google.Cloud.Iam.V1.TestIamPermissionsRequest), global::Google.Cloud.Iam.V1.TestIamPermissionsRequest.Parser, new[]{ "Resource", "Permissions" }, null, null, null, null),
+            new pbr::GeneratedClrTypeInfo(typeof(global::Google.Cloud.Iam.V1.TestIamPermissionsResponse), global::Google.Cloud.Iam.V1.TestIamPermissionsResponse.Parser, new[]{ "Permissions" }, null, null, null, null)
           }));
     }
     #endregion
@@ -66,7 +66,11 @@ namespace Google.Cloud.Iam.V1 {
   /// <summary>
   /// Request message for `SetIamPolicy` method.
   /// </summary>
-  public sealed partial class SetIamPolicyRequest : pb::IMessage<SetIamPolicyRequest> {
+  public sealed partial class SetIamPolicyRequest : pb::IMessage<SetIamPolicyRequest>
+  #if !GOOGLE_PROTOBUF_REFSTRUCT_COMPATIBILITY_MODE
+      , pb::IBufferMessage
+  #endif
+  {
     private static readonly pb::MessageParser<SetIamPolicyRequest> _parser = new pb::MessageParser<SetIamPolicyRequest>(() => new SetIamPolicyRequest());
     private pb::UnknownFieldSet _unknownFields;
     [global::System.Diagnostics.DebuggerNonUserCodeAttribute]
@@ -169,6 +173,9 @@ namespace Google.Cloud.Iam.V1 {
 
     [global::System.Diagnostics.DebuggerNonUserCodeAttribute]
     public void WriteTo(pb::CodedOutputStream output) {
+    #if !GOOGLE_PROTOBUF_REFSTRUCT_COMPATIBILITY_MODE
+      output.WriteRawMessage(this);
+    #else
       if (Resource.Length != 0) {
         output.WriteRawTag(10);
         output.WriteString(Resource);
@@ -180,7 +187,25 @@ namespace Google.Cloud.Iam.V1 {
       if (_unknownFields != null) {
         _unknownFields.WriteTo(output);
       }
+    #endif
     }
+
+    #if !GOOGLE_PROTOBUF_REFSTRUCT_COMPATIBILITY_MODE
+    [global::System.Diagnostics.DebuggerNonUserCodeAttribute]
+    void pb::IBufferMessage.InternalWriteTo(ref pb::WriteContext output) {
+      if (Resource.Length != 0) {
+        output.WriteRawTag(10);
+        output.WriteString(Resource);
+      }
+      if (policy_ != null) {
+        output.WriteRawTag(18);
+        output.WriteMessage(Policy);
+      }
+      if (_unknownFields != null) {
+        _unknownFields.WriteTo(ref output);
+      }
+    }
+    #endif
 
     [global::System.Diagnostics.DebuggerNonUserCodeAttribute]
     public int CalculateSize() {
@@ -216,6 +241,9 @@ namespace Google.Cloud.Iam.V1 {
 
     [global::System.Diagnostics.DebuggerNonUserCodeAttribute]
     public void MergeFrom(pb::CodedInputStream input) {
+    #if !GOOGLE_PROTOBUF_REFSTRUCT_COMPATIBILITY_MODE
+      input.ReadRawMessage(this);
+    #else
       uint tag;
       while ((tag = input.ReadTag()) != 0) {
         switch(tag) {
@@ -235,14 +263,44 @@ namespace Google.Cloud.Iam.V1 {
           }
         }
       }
+    #endif
     }
+
+    #if !GOOGLE_PROTOBUF_REFSTRUCT_COMPATIBILITY_MODE
+    [global::System.Diagnostics.DebuggerNonUserCodeAttribute]
+    void pb::IBufferMessage.InternalMergeFrom(ref pb::ParseContext input) {
+      uint tag;
+      while ((tag = input.ReadTag()) != 0) {
+        switch(tag) {
+          default:
+            _unknownFields = pb::UnknownFieldSet.MergeFieldFrom(_unknownFields, ref input);
+            break;
+          case 10: {
+            Resource = input.ReadString();
+            break;
+          }
+          case 18: {
+            if (policy_ == null) {
+              Policy = new global::Google.Cloud.Iam.V1.Policy();
+            }
+            input.ReadMessage(Policy);
+            break;
+          }
+        }
+      }
+    }
+    #endif
 
   }
 
   /// <summary>
   /// Request message for `GetIamPolicy` method.
   /// </summary>
-  public sealed partial class GetIamPolicyRequest : pb::IMessage<GetIamPolicyRequest> {
+  public sealed partial class GetIamPolicyRequest : pb::IMessage<GetIamPolicyRequest>
+  #if !GOOGLE_PROTOBUF_REFSTRUCT_COMPATIBILITY_MODE
+      , pb::IBufferMessage
+  #endif
+  {
     private static readonly pb::MessageParser<GetIamPolicyRequest> _parser = new pb::MessageParser<GetIamPolicyRequest>(() => new GetIamPolicyRequest());
     private pb::UnknownFieldSet _unknownFields;
     [global::System.Diagnostics.DebuggerNonUserCodeAttribute]
@@ -343,6 +401,9 @@ namespace Google.Cloud.Iam.V1 {
 
     [global::System.Diagnostics.DebuggerNonUserCodeAttribute]
     public void WriteTo(pb::CodedOutputStream output) {
+    #if !GOOGLE_PROTOBUF_REFSTRUCT_COMPATIBILITY_MODE
+      output.WriteRawMessage(this);
+    #else
       if (Resource.Length != 0) {
         output.WriteRawTag(10);
         output.WriteString(Resource);
@@ -354,7 +415,25 @@ namespace Google.Cloud.Iam.V1 {
       if (_unknownFields != null) {
         _unknownFields.WriteTo(output);
       }
+    #endif
     }
+
+    #if !GOOGLE_PROTOBUF_REFSTRUCT_COMPATIBILITY_MODE
+    [global::System.Diagnostics.DebuggerNonUserCodeAttribute]
+    void pb::IBufferMessage.InternalWriteTo(ref pb::WriteContext output) {
+      if (Resource.Length != 0) {
+        output.WriteRawTag(10);
+        output.WriteString(Resource);
+      }
+      if (options_ != null) {
+        output.WriteRawTag(18);
+        output.WriteMessage(Options);
+      }
+      if (_unknownFields != null) {
+        _unknownFields.WriteTo(ref output);
+      }
+    }
+    #endif
 
     [global::System.Diagnostics.DebuggerNonUserCodeAttribute]
     public int CalculateSize() {
@@ -390,6 +469,9 @@ namespace Google.Cloud.Iam.V1 {
 
     [global::System.Diagnostics.DebuggerNonUserCodeAttribute]
     public void MergeFrom(pb::CodedInputStream input) {
+    #if !GOOGLE_PROTOBUF_REFSTRUCT_COMPATIBILITY_MODE
+      input.ReadRawMessage(this);
+    #else
       uint tag;
       while ((tag = input.ReadTag()) != 0) {
         switch(tag) {
@@ -409,14 +491,44 @@ namespace Google.Cloud.Iam.V1 {
           }
         }
       }
+    #endif
     }
+
+    #if !GOOGLE_PROTOBUF_REFSTRUCT_COMPATIBILITY_MODE
+    [global::System.Diagnostics.DebuggerNonUserCodeAttribute]
+    void pb::IBufferMessage.InternalMergeFrom(ref pb::ParseContext input) {
+      uint tag;
+      while ((tag = input.ReadTag()) != 0) {
+        switch(tag) {
+          default:
+            _unknownFields = pb::UnknownFieldSet.MergeFieldFrom(_unknownFields, ref input);
+            break;
+          case 10: {
+            Resource = input.ReadString();
+            break;
+          }
+          case 18: {
+            if (options_ == null) {
+              Options = new global::Google.Cloud.Iam.V1.GetPolicyOptions();
+            }
+            input.ReadMessage(Options);
+            break;
+          }
+        }
+      }
+    }
+    #endif
 
   }
 
   /// <summary>
   /// Request message for `TestIamPermissions` method.
   /// </summary>
-  public sealed partial class TestIamPermissionsRequest : pb::IMessage<TestIamPermissionsRequest> {
+  public sealed partial class TestIamPermissionsRequest : pb::IMessage<TestIamPermissionsRequest>
+  #if !GOOGLE_PROTOBUF_REFSTRUCT_COMPATIBILITY_MODE
+      , pb::IBufferMessage
+  #endif
+  {
     private static readonly pb::MessageParser<TestIamPermissionsRequest> _parser = new pb::MessageParser<TestIamPermissionsRequest>(() => new TestIamPermissionsRequest());
     private pb::UnknownFieldSet _unknownFields;
     [global::System.Diagnostics.DebuggerNonUserCodeAttribute]
@@ -518,6 +630,9 @@ namespace Google.Cloud.Iam.V1 {
 
     [global::System.Diagnostics.DebuggerNonUserCodeAttribute]
     public void WriteTo(pb::CodedOutputStream output) {
+    #if !GOOGLE_PROTOBUF_REFSTRUCT_COMPATIBILITY_MODE
+      output.WriteRawMessage(this);
+    #else
       if (Resource.Length != 0) {
         output.WriteRawTag(10);
         output.WriteString(Resource);
@@ -526,7 +641,22 @@ namespace Google.Cloud.Iam.V1 {
       if (_unknownFields != null) {
         _unknownFields.WriteTo(output);
       }
+    #endif
     }
+
+    #if !GOOGLE_PROTOBUF_REFSTRUCT_COMPATIBILITY_MODE
+    [global::System.Diagnostics.DebuggerNonUserCodeAttribute]
+    void pb::IBufferMessage.InternalWriteTo(ref pb::WriteContext output) {
+      if (Resource.Length != 0) {
+        output.WriteRawTag(10);
+        output.WriteString(Resource);
+      }
+      permissions_.WriteTo(ref output, _repeated_permissions_codec);
+      if (_unknownFields != null) {
+        _unknownFields.WriteTo(ref output);
+      }
+    }
+    #endif
 
     [global::System.Diagnostics.DebuggerNonUserCodeAttribute]
     public int CalculateSize() {
@@ -555,6 +685,9 @@ namespace Google.Cloud.Iam.V1 {
 
     [global::System.Diagnostics.DebuggerNonUserCodeAttribute]
     public void MergeFrom(pb::CodedInputStream input) {
+    #if !GOOGLE_PROTOBUF_REFSTRUCT_COMPATIBILITY_MODE
+      input.ReadRawMessage(this);
+    #else
       uint tag;
       while ((tag = input.ReadTag()) != 0) {
         switch(tag) {
@@ -571,14 +704,41 @@ namespace Google.Cloud.Iam.V1 {
           }
         }
       }
+    #endif
     }
+
+    #if !GOOGLE_PROTOBUF_REFSTRUCT_COMPATIBILITY_MODE
+    [global::System.Diagnostics.DebuggerNonUserCodeAttribute]
+    void pb::IBufferMessage.InternalMergeFrom(ref pb::ParseContext input) {
+      uint tag;
+      while ((tag = input.ReadTag()) != 0) {
+        switch(tag) {
+          default:
+            _unknownFields = pb::UnknownFieldSet.MergeFieldFrom(_unknownFields, ref input);
+            break;
+          case 10: {
+            Resource = input.ReadString();
+            break;
+          }
+          case 18: {
+            permissions_.AddEntriesFrom(ref input, _repeated_permissions_codec);
+            break;
+          }
+        }
+      }
+    }
+    #endif
 
   }
 
   /// <summary>
   /// Response message for `TestIamPermissions` method.
   /// </summary>
-  public sealed partial class TestIamPermissionsResponse : pb::IMessage<TestIamPermissionsResponse> {
+  public sealed partial class TestIamPermissionsResponse : pb::IMessage<TestIamPermissionsResponse>
+  #if !GOOGLE_PROTOBUF_REFSTRUCT_COMPATIBILITY_MODE
+      , pb::IBufferMessage
+  #endif
+  {
     private static readonly pb::MessageParser<TestIamPermissionsResponse> _parser = new pb::MessageParser<TestIamPermissionsResponse>(() => new TestIamPermissionsResponse());
     private pb::UnknownFieldSet _unknownFields;
     [global::System.Diagnostics.DebuggerNonUserCodeAttribute]
@@ -660,11 +820,25 @@ namespace Google.Cloud.Iam.V1 {
 
     [global::System.Diagnostics.DebuggerNonUserCodeAttribute]
     public void WriteTo(pb::CodedOutputStream output) {
+    #if !GOOGLE_PROTOBUF_REFSTRUCT_COMPATIBILITY_MODE
+      output.WriteRawMessage(this);
+    #else
       permissions_.WriteTo(output, _repeated_permissions_codec);
       if (_unknownFields != null) {
         _unknownFields.WriteTo(output);
       }
+    #endif
     }
+
+    #if !GOOGLE_PROTOBUF_REFSTRUCT_COMPATIBILITY_MODE
+    [global::System.Diagnostics.DebuggerNonUserCodeAttribute]
+    void pb::IBufferMessage.InternalWriteTo(ref pb::WriteContext output) {
+      permissions_.WriteTo(ref output, _repeated_permissions_codec);
+      if (_unknownFields != null) {
+        _unknownFields.WriteTo(ref output);
+      }
+    }
+    #endif
 
     [global::System.Diagnostics.DebuggerNonUserCodeAttribute]
     public int CalculateSize() {
@@ -687,6 +861,9 @@ namespace Google.Cloud.Iam.V1 {
 
     [global::System.Diagnostics.DebuggerNonUserCodeAttribute]
     public void MergeFrom(pb::CodedInputStream input) {
+    #if !GOOGLE_PROTOBUF_REFSTRUCT_COMPATIBILITY_MODE
+      input.ReadRawMessage(this);
+    #else
       uint tag;
       while ((tag = input.ReadTag()) != 0) {
         switch(tag) {
@@ -699,7 +876,26 @@ namespace Google.Cloud.Iam.V1 {
           }
         }
       }
+    #endif
     }
+
+    #if !GOOGLE_PROTOBUF_REFSTRUCT_COMPATIBILITY_MODE
+    [global::System.Diagnostics.DebuggerNonUserCodeAttribute]
+    void pb::IBufferMessage.InternalMergeFrom(ref pb::ParseContext input) {
+      uint tag;
+      while ((tag = input.ReadTag()) != 0) {
+        switch(tag) {
+          default:
+            _unknownFields = pb::UnknownFieldSet.MergeFieldFrom(_unknownFields, ref input);
+            break;
+          case 10: {
+            permissions_.AddEntriesFrom(ref input, _repeated_permissions_codec);
+            break;
+          }
+        }
+      }
+    }
+    #endif
 
   }
 

@@ -31,6 +31,7 @@ using System.Threading.Tasks;
 using System.Threading;
 using System.Reflection;
 using Newtonsoft.Json.Linq;
+using Grpc.Auth;
 
 namespace Google.Cloud.Logging.NLog
 {
@@ -57,7 +58,7 @@ namespace Google.Cloud.Logging.NLog
         private Platform _platform;
         private MonitoredResource _resource;
         private string _logName;
-        private LogNameOneof _logNameToWrite;
+        private LogName _logNameToWrite;
         private Task _prevTask;
         private long _pendingTaskCount;
         private CancellationTokenSource _cancelTokenSource;
@@ -135,10 +136,17 @@ namespace Google.Cloud.Logging.NLog
                 ReferenceLoopHandling = Newtonsoft.Json.ReferenceLoopHandling.Ignore
             };
             jsonSettings.Converters.Add(new Newtonsoft.Json.Converters.StringEnumConverter());
+            // The default serialization of these reflection types really isn't useful, so
+            // just call ToString on them instead.
+            jsonSettings.Converters.Add(new ToStringJsonConverter(typeof(MemberInfo)));
+            jsonSettings.Converters.Add(new ToStringJsonConverter(typeof(Assembly)));
+            jsonSettings.Converters.Add(new ToStringJsonConverter(typeof(Module)));
+            jsonSettings.Converters.Add(new ToStringJsonConverter(typeof(System.IO.Stream)));
+
             jsonSettings.Error = (sender, args) =>
             {
                 // Serialization of properties that throws exceptions should not break everything
-                InternalLogger.Warn(args.ErrorContext.Error, "GoogleStackdriver(Name={0}): Error serializing exception property: {1}", Name, args.ErrorContext.Member);
+                InternalLogger.Debug(args.ErrorContext.Error, "GoogleStackdriver(Name={0}): Error serializing exception property: {1}", Name, args.ErrorContext.Member);
                 args.ErrorContext.Handled = true;
             };
             var jsonSerializer = Newtonsoft.Json.JsonSerializer.CreateDefault(jsonSettings);
@@ -260,13 +268,7 @@ namespace Google.Cloud.Logging.NLog
                 credential = credential.CreateScoped(s_oAuthScopes);
             }
 
-            Grpc.Core.Channel channel = new Grpc.Core.Channel(
-                LoggingServiceV2Client.DefaultEndpoint.Host,
-                LoggingServiceV2Client.DefaultEndpoint.Port,
-                Grpc.Auth.GoogleGrpcCredentials.ToChannelCredentials(credential)
-            );
-
-            return LoggingServiceV2Client.Create(channel);
+            return new LoggingServiceV2ClientBuilder { ChannelCredentials = credential.ToChannelCredentials() }.Build();
         }
 
         private GoogleCredential GetCredentialFromConfiguration()
@@ -293,22 +295,27 @@ namespace Google.Cloud.Logging.NLog
 
         private void ActivateLogIdAndResource(string logId)
         {
-            string projectId = null;
+            // Project ID of the project where the resource that is being monitored lives.
+            string monitoredProjectId = null;
+            // Project ID of the project where the entries are to be written.
+            string targetProjectId = null;
             MonitoredResource resource = null;
+
             if (!DisableResourceTypeDetection)
             {
                 resource = MonitoredResourceBuilder.FromPlatform(_platform);
-                resource.Labels.TryGetValue("project_id", out projectId);
+                resource.Labels.TryGetValue("project_id", out monitoredProjectId);
             }
+            targetProjectId = ProjectId?.Render(LogEventInfo.CreateNullEvent());
 
-            if (projectId == null)
+            if (monitoredProjectId == null)
             {
                 // Either platform detection is disabled, or it detected an unknown platform.
                 // So use the manually configured projectId and override the resource.
-                projectId = GaxPreconditions.CheckNotNull(ProjectId?.Render(LogEventInfo.CreateNullEvent()), nameof(ProjectId));
+                monitoredProjectId = GaxPreconditions.CheckNotNull(targetProjectId, nameof(ProjectId));
                 if (ResourceType == null)
                 {
-                    resource = new MonitoredResource { Type = "global", Labels = { { "project_id", projectId } } };
+                    resource = new MonitoredResource { Type = "global", Labels = { { "project_id", monitoredProjectId } } };
                 }
                 else
                 {
@@ -317,10 +324,16 @@ namespace Google.Cloud.Logging.NLog
                 }
             }
 
+            if (targetProjectId == null)
+            {
+                // If there was no configured projectId, then use the same as the monitored resoure.
+                targetProjectId = monitoredProjectId;
+            }
+
             _resource = resource;
-            var logName = new LogName(projectId, logId);
+            var logName = new LogName(targetProjectId, logId);
             _logName = logName.ToString();
-            _logNameToWrite = LogNameOneof.From(logName);
+            _logNameToWrite = logName;
         }
 
         /// <summary>
@@ -487,7 +500,9 @@ namespace Google.Cloud.Logging.NLog
                         // Include ServiceContext to allow errors to be automatically forwarded
                         var serviceVersion = RenderLogEvent(ServiceContextVersion, loggingEvent);
                         if (string.IsNullOrEmpty(serviceVersion))
+                        {
                             serviceVersion = "0.0.0.0";
+                        }
 
                         var serviceContext = new Struct();
                         jsonStruct.Fields.Add("serviceContext", Value.ForStruct(serviceContext));

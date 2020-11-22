@@ -27,17 +27,17 @@ namespace Grafeas.V1 {
             "ChdncmFmZWFzL3YxL2NvbW1vbi5wcm90bxIKZ3JhZmVhcy52MSIoCgpSZWxh",
             "dGVkVXJsEgsKA3VybBgBIAEoCRINCgVsYWJlbBgCIAEoCSI1CglTaWduYXR1",
             "cmUSEQoJc2lnbmF0dXJlGAEgASgMEhUKDXB1YmxpY19rZXlfaWQYAiABKAkq",
-            "iwEKCE5vdGVLaW5kEhkKFU5PVEVfS0lORF9VTlNQRUNJRklFRBAAEhEKDVZV",
+            "mAEKCE5vdGVLaW5kEhkKFU5PVEVfS0lORF9VTlNQRUNJRklFRBAAEhEKDVZV",
             "TE5FUkFCSUxJVFkQARIJCgVCVUlMRBACEgkKBUlNQUdFEAMSCwoHUEFDS0FH",
             "RRAEEg4KCkRFUExPWU1FTlQQBRINCglESVNDT1ZFUlkQBhIPCgtBVFRFU1RB",
-            "VElPThAHQlEKDWlvLmdyYWZlYXMudjFQAVo4Z29vZ2xlLmdvbGFuZy5vcmcv",
-            "Z2VucHJvdG8vZ29vZ2xlYXBpcy9ncmFmZWFzL3YxO2dyYWZlYXOiAgNHUkFi",
-            "BnByb3RvMw=="));
+            "VElPThAHEgsKB1VQR1JBREUQCEJRCg1pby5ncmFmZWFzLnYxUAFaOGdvb2ds",
+            "ZS5nb2xhbmcub3JnL2dlbnByb3RvL2dvb2dsZWFwaXMvZ3JhZmVhcy92MTtn",
+            "cmFmZWFzogIDR1JBYgZwcm90bzM="));
       descriptor = pbr::FileDescriptor.FromGeneratedCode(descriptorData,
           new pbr::FileDescriptor[] { },
-          new pbr::GeneratedClrTypeInfo(new[] {typeof(global::Grafeas.V1.NoteKind), }, new pbr::GeneratedClrTypeInfo[] {
-            new pbr::GeneratedClrTypeInfo(typeof(global::Grafeas.V1.RelatedUrl), global::Grafeas.V1.RelatedUrl.Parser, new[]{ "Url", "Label" }, null, null, null),
-            new pbr::GeneratedClrTypeInfo(typeof(global::Grafeas.V1.Signature), global::Grafeas.V1.Signature.Parser, new[]{ "Signature_", "PublicKeyId" }, null, null, null)
+          new pbr::GeneratedClrTypeInfo(new[] {typeof(global::Grafeas.V1.NoteKind), }, null, new pbr::GeneratedClrTypeInfo[] {
+            new pbr::GeneratedClrTypeInfo(typeof(global::Grafeas.V1.RelatedUrl), global::Grafeas.V1.RelatedUrl.Parser, new[]{ "Url", "Label" }, null, null, null, null),
+            new pbr::GeneratedClrTypeInfo(typeof(global::Grafeas.V1.Signature), global::Grafeas.V1.Signature.Parser, new[]{ "Signature_", "PublicKeyId" }, null, null, null, null)
           }));
     }
     #endregion
@@ -80,6 +80,10 @@ namespace Grafeas.V1 {
     /// This represents a logical "role" that can attest to artifacts.
     /// </summary>
     [pbr::OriginalName("ATTESTATION")] Attestation = 7,
+    /// <summary>
+    /// This represents an available package upgrade.
+    /// </summary>
+    [pbr::OriginalName("UPGRADE")] Upgrade = 8,
   }
 
   #endregion
@@ -88,7 +92,11 @@ namespace Grafeas.V1 {
   /// <summary>
   /// Metadata for any related URL information.
   /// </summary>
-  public sealed partial class RelatedUrl : pb::IMessage<RelatedUrl> {
+  public sealed partial class RelatedUrl : pb::IMessage<RelatedUrl>
+  #if !GOOGLE_PROTOBUF_REFSTRUCT_COMPATIBILITY_MODE
+      , pb::IBufferMessage
+  #endif
+  {
     private static readonly pb::MessageParser<RelatedUrl> _parser = new pb::MessageParser<RelatedUrl>(() => new RelatedUrl());
     private pb::UnknownFieldSet _unknownFields;
     [global::System.Diagnostics.DebuggerNonUserCodeAttribute]
@@ -187,6 +195,9 @@ namespace Grafeas.V1 {
 
     [global::System.Diagnostics.DebuggerNonUserCodeAttribute]
     public void WriteTo(pb::CodedOutputStream output) {
+    #if !GOOGLE_PROTOBUF_REFSTRUCT_COMPATIBILITY_MODE
+      output.WriteRawMessage(this);
+    #else
       if (Url.Length != 0) {
         output.WriteRawTag(10);
         output.WriteString(Url);
@@ -198,7 +209,25 @@ namespace Grafeas.V1 {
       if (_unknownFields != null) {
         _unknownFields.WriteTo(output);
       }
+    #endif
     }
+
+    #if !GOOGLE_PROTOBUF_REFSTRUCT_COMPATIBILITY_MODE
+    [global::System.Diagnostics.DebuggerNonUserCodeAttribute]
+    void pb::IBufferMessage.InternalWriteTo(ref pb::WriteContext output) {
+      if (Url.Length != 0) {
+        output.WriteRawTag(10);
+        output.WriteString(Url);
+      }
+      if (Label.Length != 0) {
+        output.WriteRawTag(18);
+        output.WriteString(Label);
+      }
+      if (_unknownFields != null) {
+        _unknownFields.WriteTo(ref output);
+      }
+    }
+    #endif
 
     [global::System.Diagnostics.DebuggerNonUserCodeAttribute]
     public int CalculateSize() {
@@ -231,6 +260,9 @@ namespace Grafeas.V1 {
 
     [global::System.Diagnostics.DebuggerNonUserCodeAttribute]
     public void MergeFrom(pb::CodedInputStream input) {
+    #if !GOOGLE_PROTOBUF_REFSTRUCT_COMPATIBILITY_MODE
+      input.ReadRawMessage(this);
+    #else
       uint tag;
       while ((tag = input.ReadTag()) != 0) {
         switch(tag) {
@@ -247,7 +279,30 @@ namespace Grafeas.V1 {
           }
         }
       }
+    #endif
     }
+
+    #if !GOOGLE_PROTOBUF_REFSTRUCT_COMPATIBILITY_MODE
+    [global::System.Diagnostics.DebuggerNonUserCodeAttribute]
+    void pb::IBufferMessage.InternalMergeFrom(ref pb::ParseContext input) {
+      uint tag;
+      while ((tag = input.ReadTag()) != 0) {
+        switch(tag) {
+          default:
+            _unknownFields = pb::UnknownFieldSet.MergeFieldFrom(_unknownFields, ref input);
+            break;
+          case 10: {
+            Url = input.ReadString();
+            break;
+          }
+          case 18: {
+            Label = input.ReadString();
+            break;
+          }
+        }
+      }
+    }
+    #endif
 
   }
 
@@ -275,7 +330,11 @@ namespace Grafeas.V1 {
   /// this Signature, or the canonical serialization of the proto message that
   /// holds this signature).
   /// </summary>
-  public sealed partial class Signature : pb::IMessage<Signature> {
+  public sealed partial class Signature : pb::IMessage<Signature>
+  #if !GOOGLE_PROTOBUF_REFSTRUCT_COMPATIBILITY_MODE
+      , pb::IBufferMessage
+  #endif
+  {
     private static readonly pb::MessageParser<Signature> _parser = new pb::MessageParser<Signature>(() => new Signature());
     private pb::UnknownFieldSet _unknownFields;
     [global::System.Diagnostics.DebuggerNonUserCodeAttribute]
@@ -395,6 +454,9 @@ namespace Grafeas.V1 {
 
     [global::System.Diagnostics.DebuggerNonUserCodeAttribute]
     public void WriteTo(pb::CodedOutputStream output) {
+    #if !GOOGLE_PROTOBUF_REFSTRUCT_COMPATIBILITY_MODE
+      output.WriteRawMessage(this);
+    #else
       if (Signature_.Length != 0) {
         output.WriteRawTag(10);
         output.WriteBytes(Signature_);
@@ -406,7 +468,25 @@ namespace Grafeas.V1 {
       if (_unknownFields != null) {
         _unknownFields.WriteTo(output);
       }
+    #endif
     }
+
+    #if !GOOGLE_PROTOBUF_REFSTRUCT_COMPATIBILITY_MODE
+    [global::System.Diagnostics.DebuggerNonUserCodeAttribute]
+    void pb::IBufferMessage.InternalWriteTo(ref pb::WriteContext output) {
+      if (Signature_.Length != 0) {
+        output.WriteRawTag(10);
+        output.WriteBytes(Signature_);
+      }
+      if (PublicKeyId.Length != 0) {
+        output.WriteRawTag(18);
+        output.WriteString(PublicKeyId);
+      }
+      if (_unknownFields != null) {
+        _unknownFields.WriteTo(ref output);
+      }
+    }
+    #endif
 
     [global::System.Diagnostics.DebuggerNonUserCodeAttribute]
     public int CalculateSize() {
@@ -439,6 +519,9 @@ namespace Grafeas.V1 {
 
     [global::System.Diagnostics.DebuggerNonUserCodeAttribute]
     public void MergeFrom(pb::CodedInputStream input) {
+    #if !GOOGLE_PROTOBUF_REFSTRUCT_COMPATIBILITY_MODE
+      input.ReadRawMessage(this);
+    #else
       uint tag;
       while ((tag = input.ReadTag()) != 0) {
         switch(tag) {
@@ -455,7 +538,30 @@ namespace Grafeas.V1 {
           }
         }
       }
+    #endif
     }
+
+    #if !GOOGLE_PROTOBUF_REFSTRUCT_COMPATIBILITY_MODE
+    [global::System.Diagnostics.DebuggerNonUserCodeAttribute]
+    void pb::IBufferMessage.InternalMergeFrom(ref pb::ParseContext input) {
+      uint tag;
+      while ((tag = input.ReadTag()) != 0) {
+        switch(tag) {
+          default:
+            _unknownFields = pb::UnknownFieldSet.MergeFieldFrom(_unknownFields, ref input);
+            break;
+          case 10: {
+            Signature_ = input.ReadBytes();
+            break;
+          }
+          case 18: {
+            PublicKeyId = input.ReadString();
+            break;
+          }
+        }
+      }
+    }
+    #endif
 
   }
 

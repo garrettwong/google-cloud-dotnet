@@ -100,9 +100,10 @@ namespace Google.Cloud.Spanner.Data.IntegrationTests
         // [END spanner_test_read_invalid_table_name]
 
         // [START spanner_test_cancel_read_fails]
-        [Fact]
+        [SkippableFact]
         public async Task CancelRead()
         {
+            Skip.If(_fixture.RunningOnEmulator, "The emulator can return before query is cancelled");
             using (var connection = _fixture.GetConnection())
             {
                 var cmd = connection.CreateSelectCommand($"SELECT * FROM {_fixture.TableName}");
@@ -412,9 +413,10 @@ namespace Google.Cloud.Spanner.Data.IntegrationTests
             }
         }
 
-        [Fact]
+        [SkippableFact]
         public async Task CommandTimeout()
         {
+            Skip.If(_fixture.RunningOnEmulator, "The emulator returns too quickly to trigger timeout");
             using (var connection =
                 new SpannerConnection($"{_fixture.ConnectionString};{nameof(SpannerConnectionStringBuilder.AllowImmediateTimeouts)}=true"))
             {
@@ -426,9 +428,10 @@ namespace Google.Cloud.Spanner.Data.IntegrationTests
         }
 
         // [START spanner_test_deadline_exceeded_fails]
-        [Fact]
+        [SkippableFact]
         public async Task TimeoutFromOptions()
         {
+            Skip.If(_fixture.RunningOnEmulator, "The emulator returns too quickly to trigger timeout");
             var connectionStringBuilder = new SpannerConnectionStringBuilder(_fixture.ConnectionString)
             {
                 Timeout = 0,
@@ -557,6 +560,34 @@ namespace Google.Cloud.Spanner.Data.IntegrationTests
                     // But after a call to NextResult, there are no more rows.
                     Assert.False(reader.NextResult());
                     Assert.False(reader.HasRows);
+                }
+            }
+        }
+
+        [Fact]
+        public void GetOrdinal()
+        {
+            using (var connection = _fixture.GetConnection())
+            {
+                var cmd = connection.CreateSelectCommand($"SELECT StringValue, Key FROM {_fixture.TableName} LIMIT 1");
+                using (var reader = cmd.ExecuteReader())
+                {
+                    Assert.Equal(0, reader.GetOrdinal("StringValue"));
+                    Assert.Equal(1, reader.GetOrdinal("Key"));
+                }
+            }
+        }
+
+        [Fact]
+        public async Task GetOrdinalAsync()
+        {
+            using (var connection = _fixture.GetConnection())
+            {
+                var cmd = connection.CreateSelectCommand($"SELECT StringValue, Key FROM {_fixture.TableName} LIMIT 1");
+                using (var reader = await cmd.ExecuteReaderAsync())
+                {
+                    Assert.Equal(0, await reader.GetOrdinalAsync("StringValue"));
+                    Assert.Equal(1, await reader.GetOrdinalAsync("Key"));
                 }
             }
         }

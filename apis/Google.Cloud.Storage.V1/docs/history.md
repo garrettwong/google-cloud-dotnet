@@ -1,5 +1,69 @@
 # Version history
 
+# Version 3.4.0-beta01, released 2020-09-30
+
+- [Commit 572976f](https://github.com/googleapis/google-cloud-dotnet/commit/572976f): Update Google.Apis.Storage.v1 dependency.
+- [Commit 7b6edc0](https://github.com/googleapis/google-cloud-dotnet/commit/7b6edc0): fix: Makes V4 signature include x-goog-resumable header. Fixes [issue 5361](https://github.com/googleapis/google-cloud-dotnet/issues/5361)
+
+# Version 3.3.0, released 2020-09-01
+
+No API surface changes; just updated dependencies. In particular,
+this uses Google.Apis.Storage.v1 version 1.49.0.2044, which includes
+OLM support.
+
+# Version 3.2.0, released 2020-07-01
+
+- [Commit 482a8b0](https://github.com/googleapis/google-cloud-dotnet/commit/482a8b0): Update Google.Apis.Storage.v1 dependency. Fixes [issue 5115](https://github.com/googleapis/google-cloud-dotnet/issues/5115).
+
+# Version 3.1.0, released 2020-05-28
+
+- [Commit db4f9a9](https://github.com/googleapis/google-cloud-dotnet/commit/db4f9a9): Update Google.Apis.Storage.v1 dependency. Fixes [issue 4984](https://github.com/googleapis/google-cloud-dotnet/issues/4984).
+- [Commit fbcca00](https://github.com/googleapis/google-cloud-dotnet/commit/fbcca00): Implement StartOffset and EndOffset in ListObjectsOptions. Fixes [issue 4993](https://github.com/googleapis/google-cloud-dotnet/issues/4993).
+
+# Version 3.0.0, released 2020-05-12
+
+- [Commit c0dfc6f](https://github.com/googleapis/google-cloud-dotnet/commit/c0dfc6f): feat: POST policy V4 signing support.
+
+This is the first GA release of this package depending on GAX v3.
+
+# Version 3.0.0-beta03, released 2020-04-02
+
+No API surface changes; just updated dependencies. In particular,
+this uses Google.Apis version 1.45.0, which uses a more
+memory-efficient approach to uploads.
+
+# Version 3.0.0-beta02, released 2020-03-19
+
+- [Commit cdc1f03](https://github.com/googleapis/google-cloud-dotnet/commit/cdc1f03):
+  - Fixes and new features for URL signing:
+  -   * V4 is now the default signing mechanism.
+  -   * V4: collapses tabs in header's values.
+  -   * V4: uses payload hash if provided. V2 ignores payload hash if provided (as it does with almost every other header).
+  -   * V4: supports signing of custom query parameters. V2 will throw if custom query parameters are set.
+  -   * V2 and V4: supports setting URL scheme (http or htpps only).
+  -   * V2 and V4: supports Virtual-hosted style URLs.
+  -   * V4: supports bucket bound domain URLs. V2 will throw if bucket bound domain is set.
+- [Commit 71ca7e8](https://github.com/googleapis/google-cloud-dotnet/commit/71ca7e8): Removes obsolete methods.
+
+There are breaking changes around `UrlSigner`; code that still
+compiles should be fine - otherwise, use the
+`UrlSigner.RequestTemplate` and `UrlSigner.Options` classes to
+specify options that were previously in method parameters.
+
+# Version 3.0.0-beta01, released 2020-02-20
+
+Upgrade dependencies to GAX v3. Currently there are no direct
+surface changes, but breaking changes in GAX may affect users, for
+example in terms of async pagination.
+
+More direct breaking changes are expected in this package before
+3.0.0 is released, specifically around signed URLs.
+
+# Version 2.5.0, released 2020-01-06
+
+- [Commit f556739](https://github.com/googleapis/google-cloud-dotnet/commit/f556739): Add Fields parameters to ListObjectsOptions and ListBucketsOptions
+- [Commit 32f8a22](https://github.com/googleapis/google-cloud-dotnet/commit/32f8a22): Add support for Archive storage class.
+
 # Version 2.4.0, released 2019-12-10
 
 New features since 2.3.0:

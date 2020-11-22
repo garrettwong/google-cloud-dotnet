@@ -1,5 +1,63 @@
 # Version history
 
+# Version 3.1.0, released 2020-10-16
+
+- [Commit 079e919](https://github.com/googleapis/google-cloud-dotnet/commit/079e919): docs: fixed link from SentimentAnalysisResult
+- [Commit 0790924](https://github.com/googleapis/google-cloud-dotnet/commit/0790924): fix: Add gRPC compatibility constructors
+- [Commit 0ca05f5](https://github.com/googleapis/google-cloud-dotnet/commit/0ca05f5): chore: Regenerate all APIs using protoc 3.13 and Grpc.Tools 2.31
+- [Commit 0cdabf1](https://github.com/googleapis/google-cloud-dotnet/commit/0cdabf1): docs: wording updates for tiers.
+- [Commit ebd848c](https://github.com/googleapis/google-cloud-dotnet/commit/ebd848c): docs: more detailed docs on APIs such as Environment, Intents, Sessions.
+- [Commit c552537](https://github.com/googleapis/google-cloud-dotnet/commit/c552537): docs: Regenerate Dialogflow V2 with cleaner docs
+- [Commit 6bde7a3](https://github.com/googleapis/google-cloud-dotnet/commit/6bde7a3): docs: Regenerate all APIs with service comments in client documentation
+- [Commit 34c92e6](https://github.com/googleapis/google-cloud-dotnet/commit/34c92e6):
+  - fix: Update grpc config for retry mechanism.
+  - docs: Update ImportAgent/ExportAgent external documentation.
+- [Commit f83bdf1](https://github.com/googleapis/google-cloud-dotnet/commit/f83bdf1): fix: Apply timeouts to RPCs without retry
+- [Commit 2bac8ab](https://github.com/googleapis/google-cloud-dotnet/commit/2bac8ab): docs: cleaned docs for the Agents service and resource.
+
+# Version 3.0.0, released 2020-06-03
+
+Documentation changes only since 3.0.0-beta02:
+
+- [Commit 4181b4f](https://github.com/googleapis/google-cloud-dotnet/commit/4181b4f): docs: Comment updates only
+- [Commit 947a573](https://github.com/googleapis/google-cloud-dotnet/commit/947a573): docs: Regenerate all clients with more explicit documentation
+- [Commit b3e7794](https://github.com/googleapis/google-cloud-dotnet/commit/b3e7794): docs: minor comments change.
+
+As noted in the 3.0.0-beta01 history, 3.0.0 is a breaking change compared with 2.0.0 due to resource names being corrected.
+
+# Version 3.0.0-beta02, released 2020-05-05
+
+- [Commit 610cf69](https://github.com/googleapis/google-cloud-dotnet/commit/610cf69):
+  - feat: Publish ListEnvironments
+  - docs: Clarify WebhookResponse fields
+- [Commit f2f7630](https://github.com/googleapis/google-cloud-dotnet/commit/f2f7630): docs: Update comments on Contexts and Sessions resources.
+
+# Version 3.0.0-beta01, released 2020-04-06
+
+- [Commit 5a41fb5](https://github.com/googleapis/google-cloud-dotnet/commit/5a41fb5):
+  - Change `parent` field's resource_reference to specify child_type instead of type per client library generation requirement;
+  - Change Session with its child resource pattern to support both projects/{project}/agent/sessions/{session} and projects/{project}/agent/environments/{environment}/users/{user}/sessions/{session};
+    - Additionally, the location-based pattern has been removed
+  - Fix `method_signature`
+  - Regular documentation update
+
+This is a breaking change in terms of resource names, which weren't
+correctly defined in the API before. We will release a new GA
+version once we're satisfied that no further breaking changes will
+be required.
+
+# Version 2.0.0, released 2020-03-18
+
+- [Commit a19ee13](https://github.com/googleapis/google-cloud-dotnet/commit/a19ee13):
+  - Adds AgentsClient.GetValidationResult RPC with associated types
+  - Adds DetectIntentRequest.OutputAudioConfigMask
+
+# Version 2.0.0-beta01, released 2020-02-18
+
+This is the first prerelease targeting GAX v3. Please see the [breaking changes
+guide](https://googleapis.github.io/google-cloud-dotnet/docs/guides/breaking-gax2.html)
+for details of changes to both GAX and code generation.
+
 # Version 1.2.0, released 2019-12-10
 
 - [Commit 532f28b](https://github.com/googleapis/google-cloud-dotnet/commit/532f28b): Multiple new features:

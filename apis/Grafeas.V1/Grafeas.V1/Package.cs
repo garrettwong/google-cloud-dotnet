@@ -45,12 +45,12 @@ namespace Grafeas.V1 {
             "cm90bzM="));
       descriptor = pbr::FileDescriptor.FromGeneratedCode(descriptorData,
           new pbr::FileDescriptor[] { },
-          new pbr::GeneratedClrTypeInfo(new[] {typeof(global::Grafeas.V1.Architecture), }, new pbr::GeneratedClrTypeInfo[] {
-            new pbr::GeneratedClrTypeInfo(typeof(global::Grafeas.V1.Distribution), global::Grafeas.V1.Distribution.Parser, new[]{ "CpeUri", "Architecture", "LatestVersion", "Maintainer", "Url", "Description" }, null, null, null),
-            new pbr::GeneratedClrTypeInfo(typeof(global::Grafeas.V1.Location), global::Grafeas.V1.Location.Parser, new[]{ "CpeUri", "Version", "Path" }, null, null, null),
-            new pbr::GeneratedClrTypeInfo(typeof(global::Grafeas.V1.PackageNote), global::Grafeas.V1.PackageNote.Parser, new[]{ "Name", "Distribution" }, null, null, null),
-            new pbr::GeneratedClrTypeInfo(typeof(global::Grafeas.V1.PackageOccurrence), global::Grafeas.V1.PackageOccurrence.Parser, new[]{ "Name", "Location" }, null, null, null),
-            new pbr::GeneratedClrTypeInfo(typeof(global::Grafeas.V1.Version), global::Grafeas.V1.Version.Parser, new[]{ "Epoch", "Name", "Revision", "Kind", "FullName" }, null, new[]{ typeof(global::Grafeas.V1.Version.Types.VersionKind) }, null)
+          new pbr::GeneratedClrTypeInfo(new[] {typeof(global::Grafeas.V1.Architecture), }, null, new pbr::GeneratedClrTypeInfo[] {
+            new pbr::GeneratedClrTypeInfo(typeof(global::Grafeas.V1.Distribution), global::Grafeas.V1.Distribution.Parser, new[]{ "CpeUri", "Architecture", "LatestVersion", "Maintainer", "Url", "Description" }, null, null, null, null),
+            new pbr::GeneratedClrTypeInfo(typeof(global::Grafeas.V1.Location), global::Grafeas.V1.Location.Parser, new[]{ "CpeUri", "Version", "Path" }, null, null, null, null),
+            new pbr::GeneratedClrTypeInfo(typeof(global::Grafeas.V1.PackageNote), global::Grafeas.V1.PackageNote.Parser, new[]{ "Name", "Distribution" }, null, null, null, null),
+            new pbr::GeneratedClrTypeInfo(typeof(global::Grafeas.V1.PackageOccurrence), global::Grafeas.V1.PackageOccurrence.Parser, new[]{ "Name", "Location" }, null, null, null, null),
+            new pbr::GeneratedClrTypeInfo(typeof(global::Grafeas.V1.Version), global::Grafeas.V1.Version.Parser, new[]{ "Epoch", "Name", "Revision", "Kind", "FullName" }, null, new[]{ typeof(global::Grafeas.V1.Version.Types.VersionKind) }, null, null)
           }));
     }
     #endregion
@@ -82,7 +82,11 @@ namespace Grafeas.V1 {
   /// This represents a particular channel of distribution for a given package.
   /// E.g., Debian's jessie-backports dpkg mirror.
   /// </summary>
-  public sealed partial class Distribution : pb::IMessage<Distribution> {
+  public sealed partial class Distribution : pb::IMessage<Distribution>
+  #if !GOOGLE_PROTOBUF_REFSTRUCT_COMPATIBILITY_MODE
+      , pb::IBufferMessage
+  #endif
+  {
     private static readonly pb::MessageParser<Distribution> _parser = new pb::MessageParser<Distribution>(() => new Distribution());
     private pb::UnknownFieldSet _unknownFields;
     [global::System.Diagnostics.DebuggerNonUserCodeAttribute]
@@ -138,7 +142,7 @@ namespace Grafeas.V1 {
 
     /// <summary>Field number for the "architecture" field.</summary>
     public const int ArchitectureFieldNumber = 2;
-    private global::Grafeas.V1.Architecture architecture_ = 0;
+    private global::Grafeas.V1.Architecture architecture_ = global::Grafeas.V1.Architecture.Unspecified;
     /// <summary>
     /// The CPU architecture for which packages in this distribution channel were
     /// built.
@@ -233,7 +237,7 @@ namespace Grafeas.V1 {
     public override int GetHashCode() {
       int hash = 1;
       if (CpeUri.Length != 0) hash ^= CpeUri.GetHashCode();
-      if (Architecture != 0) hash ^= Architecture.GetHashCode();
+      if (Architecture != global::Grafeas.V1.Architecture.Unspecified) hash ^= Architecture.GetHashCode();
       if (latestVersion_ != null) hash ^= LatestVersion.GetHashCode();
       if (Maintainer.Length != 0) hash ^= Maintainer.GetHashCode();
       if (Url.Length != 0) hash ^= Url.GetHashCode();
@@ -251,11 +255,14 @@ namespace Grafeas.V1 {
 
     [global::System.Diagnostics.DebuggerNonUserCodeAttribute]
     public void WriteTo(pb::CodedOutputStream output) {
+    #if !GOOGLE_PROTOBUF_REFSTRUCT_COMPATIBILITY_MODE
+      output.WriteRawMessage(this);
+    #else
       if (CpeUri.Length != 0) {
         output.WriteRawTag(10);
         output.WriteString(CpeUri);
       }
-      if (Architecture != 0) {
+      if (Architecture != global::Grafeas.V1.Architecture.Unspecified) {
         output.WriteRawTag(16);
         output.WriteEnum((int) Architecture);
       }
@@ -278,7 +285,41 @@ namespace Grafeas.V1 {
       if (_unknownFields != null) {
         _unknownFields.WriteTo(output);
       }
+    #endif
     }
+
+    #if !GOOGLE_PROTOBUF_REFSTRUCT_COMPATIBILITY_MODE
+    [global::System.Diagnostics.DebuggerNonUserCodeAttribute]
+    void pb::IBufferMessage.InternalWriteTo(ref pb::WriteContext output) {
+      if (CpeUri.Length != 0) {
+        output.WriteRawTag(10);
+        output.WriteString(CpeUri);
+      }
+      if (Architecture != global::Grafeas.V1.Architecture.Unspecified) {
+        output.WriteRawTag(16);
+        output.WriteEnum((int) Architecture);
+      }
+      if (latestVersion_ != null) {
+        output.WriteRawTag(26);
+        output.WriteMessage(LatestVersion);
+      }
+      if (Maintainer.Length != 0) {
+        output.WriteRawTag(34);
+        output.WriteString(Maintainer);
+      }
+      if (Url.Length != 0) {
+        output.WriteRawTag(42);
+        output.WriteString(Url);
+      }
+      if (Description.Length != 0) {
+        output.WriteRawTag(50);
+        output.WriteString(Description);
+      }
+      if (_unknownFields != null) {
+        _unknownFields.WriteTo(ref output);
+      }
+    }
+    #endif
 
     [global::System.Diagnostics.DebuggerNonUserCodeAttribute]
     public int CalculateSize() {
@@ -286,7 +327,7 @@ namespace Grafeas.V1 {
       if (CpeUri.Length != 0) {
         size += 1 + pb::CodedOutputStream.ComputeStringSize(CpeUri);
       }
-      if (Architecture != 0) {
+      if (Architecture != global::Grafeas.V1.Architecture.Unspecified) {
         size += 1 + pb::CodedOutputStream.ComputeEnumSize((int) Architecture);
       }
       if (latestVersion_ != null) {
@@ -315,7 +356,7 @@ namespace Grafeas.V1 {
       if (other.CpeUri.Length != 0) {
         CpeUri = other.CpeUri;
       }
-      if (other.Architecture != 0) {
+      if (other.Architecture != global::Grafeas.V1.Architecture.Unspecified) {
         Architecture = other.Architecture;
       }
       if (other.latestVersion_ != null) {
@@ -338,6 +379,9 @@ namespace Grafeas.V1 {
 
     [global::System.Diagnostics.DebuggerNonUserCodeAttribute]
     public void MergeFrom(pb::CodedInputStream input) {
+    #if !GOOGLE_PROTOBUF_REFSTRUCT_COMPATIBILITY_MODE
+      input.ReadRawMessage(this);
+    #else
       uint tag;
       while ((tag = input.ReadTag()) != 0) {
         switch(tag) {
@@ -373,7 +417,49 @@ namespace Grafeas.V1 {
           }
         }
       }
+    #endif
     }
+
+    #if !GOOGLE_PROTOBUF_REFSTRUCT_COMPATIBILITY_MODE
+    [global::System.Diagnostics.DebuggerNonUserCodeAttribute]
+    void pb::IBufferMessage.InternalMergeFrom(ref pb::ParseContext input) {
+      uint tag;
+      while ((tag = input.ReadTag()) != 0) {
+        switch(tag) {
+          default:
+            _unknownFields = pb::UnknownFieldSet.MergeFieldFrom(_unknownFields, ref input);
+            break;
+          case 10: {
+            CpeUri = input.ReadString();
+            break;
+          }
+          case 16: {
+            Architecture = (global::Grafeas.V1.Architecture) input.ReadEnum();
+            break;
+          }
+          case 26: {
+            if (latestVersion_ == null) {
+              LatestVersion = new global::Grafeas.V1.Version();
+            }
+            input.ReadMessage(LatestVersion);
+            break;
+          }
+          case 34: {
+            Maintainer = input.ReadString();
+            break;
+          }
+          case 42: {
+            Url = input.ReadString();
+            break;
+          }
+          case 50: {
+            Description = input.ReadString();
+            break;
+          }
+        }
+      }
+    }
+    #endif
 
   }
 
@@ -381,7 +467,11 @@ namespace Grafeas.V1 {
   /// An occurrence of a particular package installation found within a system's
   /// filesystem. E.g., glibc was found in `/var/lib/dpkg/status`.
   /// </summary>
-  public sealed partial class Location : pb::IMessage<Location> {
+  public sealed partial class Location : pb::IMessage<Location>
+  #if !GOOGLE_PROTOBUF_REFSTRUCT_COMPATIBILITY_MODE
+      , pb::IBufferMessage
+  #endif
+  {
     private static readonly pb::MessageParser<Location> _parser = new pb::MessageParser<Location>(() => new Location());
     private pb::UnknownFieldSet _unknownFields;
     [global::System.Diagnostics.DebuggerNonUserCodeAttribute]
@@ -498,6 +588,9 @@ namespace Grafeas.V1 {
 
     [global::System.Diagnostics.DebuggerNonUserCodeAttribute]
     public void WriteTo(pb::CodedOutputStream output) {
+    #if !GOOGLE_PROTOBUF_REFSTRUCT_COMPATIBILITY_MODE
+      output.WriteRawMessage(this);
+    #else
       if (CpeUri.Length != 0) {
         output.WriteRawTag(10);
         output.WriteString(CpeUri);
@@ -513,7 +606,29 @@ namespace Grafeas.V1 {
       if (_unknownFields != null) {
         _unknownFields.WriteTo(output);
       }
+    #endif
     }
+
+    #if !GOOGLE_PROTOBUF_REFSTRUCT_COMPATIBILITY_MODE
+    [global::System.Diagnostics.DebuggerNonUserCodeAttribute]
+    void pb::IBufferMessage.InternalWriteTo(ref pb::WriteContext output) {
+      if (CpeUri.Length != 0) {
+        output.WriteRawTag(10);
+        output.WriteString(CpeUri);
+      }
+      if (version_ != null) {
+        output.WriteRawTag(18);
+        output.WriteMessage(Version);
+      }
+      if (Path.Length != 0) {
+        output.WriteRawTag(26);
+        output.WriteString(Path);
+      }
+      if (_unknownFields != null) {
+        _unknownFields.WriteTo(ref output);
+      }
+    }
+    #endif
 
     [global::System.Diagnostics.DebuggerNonUserCodeAttribute]
     public int CalculateSize() {
@@ -555,6 +670,9 @@ namespace Grafeas.V1 {
 
     [global::System.Diagnostics.DebuggerNonUserCodeAttribute]
     public void MergeFrom(pb::CodedInputStream input) {
+    #if !GOOGLE_PROTOBUF_REFSTRUCT_COMPATIBILITY_MODE
+      input.ReadRawMessage(this);
+    #else
       uint tag;
       while ((tag = input.ReadTag()) != 0) {
         switch(tag) {
@@ -578,7 +696,37 @@ namespace Grafeas.V1 {
           }
         }
       }
+    #endif
     }
+
+    #if !GOOGLE_PROTOBUF_REFSTRUCT_COMPATIBILITY_MODE
+    [global::System.Diagnostics.DebuggerNonUserCodeAttribute]
+    void pb::IBufferMessage.InternalMergeFrom(ref pb::ParseContext input) {
+      uint tag;
+      while ((tag = input.ReadTag()) != 0) {
+        switch(tag) {
+          default:
+            _unknownFields = pb::UnknownFieldSet.MergeFieldFrom(_unknownFields, ref input);
+            break;
+          case 10: {
+            CpeUri = input.ReadString();
+            break;
+          }
+          case 18: {
+            if (version_ == null) {
+              Version = new global::Grafeas.V1.Version();
+            }
+            input.ReadMessage(Version);
+            break;
+          }
+          case 26: {
+            Path = input.ReadString();
+            break;
+          }
+        }
+      }
+    }
+    #endif
 
   }
 
@@ -587,7 +735,11 @@ namespace Grafeas.V1 {
   /// channels. E.g., glibc (aka libc6) is distributed by many, at various
   /// versions.
   /// </summary>
-  public sealed partial class PackageNote : pb::IMessage<PackageNote> {
+  public sealed partial class PackageNote : pb::IMessage<PackageNote>
+  #if !GOOGLE_PROTOBUF_REFSTRUCT_COMPATIBILITY_MODE
+      , pb::IBufferMessage
+  #endif
+  {
     private static readonly pb::MessageParser<PackageNote> _parser = new pb::MessageParser<PackageNote>(() => new PackageNote());
     private pb::UnknownFieldSet _unknownFields;
     [global::System.Diagnostics.DebuggerNonUserCodeAttribute]
@@ -685,6 +837,9 @@ namespace Grafeas.V1 {
 
     [global::System.Diagnostics.DebuggerNonUserCodeAttribute]
     public void WriteTo(pb::CodedOutputStream output) {
+    #if !GOOGLE_PROTOBUF_REFSTRUCT_COMPATIBILITY_MODE
+      output.WriteRawMessage(this);
+    #else
       if (Name.Length != 0) {
         output.WriteRawTag(10);
         output.WriteString(Name);
@@ -693,7 +848,22 @@ namespace Grafeas.V1 {
       if (_unknownFields != null) {
         _unknownFields.WriteTo(output);
       }
+    #endif
     }
+
+    #if !GOOGLE_PROTOBUF_REFSTRUCT_COMPATIBILITY_MODE
+    [global::System.Diagnostics.DebuggerNonUserCodeAttribute]
+    void pb::IBufferMessage.InternalWriteTo(ref pb::WriteContext output) {
+      if (Name.Length != 0) {
+        output.WriteRawTag(10);
+        output.WriteString(Name);
+      }
+      distribution_.WriteTo(ref output, _repeated_distribution_codec);
+      if (_unknownFields != null) {
+        _unknownFields.WriteTo(ref output);
+      }
+    }
+    #endif
 
     [global::System.Diagnostics.DebuggerNonUserCodeAttribute]
     public int CalculateSize() {
@@ -722,6 +892,9 @@ namespace Grafeas.V1 {
 
     [global::System.Diagnostics.DebuggerNonUserCodeAttribute]
     public void MergeFrom(pb::CodedInputStream input) {
+    #if !GOOGLE_PROTOBUF_REFSTRUCT_COMPATIBILITY_MODE
+      input.ReadRawMessage(this);
+    #else
       uint tag;
       while ((tag = input.ReadTag()) != 0) {
         switch(tag) {
@@ -738,14 +911,41 @@ namespace Grafeas.V1 {
           }
         }
       }
+    #endif
     }
+
+    #if !GOOGLE_PROTOBUF_REFSTRUCT_COMPATIBILITY_MODE
+    [global::System.Diagnostics.DebuggerNonUserCodeAttribute]
+    void pb::IBufferMessage.InternalMergeFrom(ref pb::ParseContext input) {
+      uint tag;
+      while ((tag = input.ReadTag()) != 0) {
+        switch(tag) {
+          default:
+            _unknownFields = pb::UnknownFieldSet.MergeFieldFrom(_unknownFields, ref input);
+            break;
+          case 10: {
+            Name = input.ReadString();
+            break;
+          }
+          case 82: {
+            distribution_.AddEntriesFrom(ref input, _repeated_distribution_codec);
+            break;
+          }
+        }
+      }
+    }
+    #endif
 
   }
 
   /// <summary>
   /// Details on how a particular software package was installed on a system.
   /// </summary>
-  public sealed partial class PackageOccurrence : pb::IMessage<PackageOccurrence> {
+  public sealed partial class PackageOccurrence : pb::IMessage<PackageOccurrence>
+  #if !GOOGLE_PROTOBUF_REFSTRUCT_COMPATIBILITY_MODE
+      , pb::IBufferMessage
+  #endif
+  {
     private static readonly pb::MessageParser<PackageOccurrence> _parser = new pb::MessageParser<PackageOccurrence>(() => new PackageOccurrence());
     private pb::UnknownFieldSet _unknownFields;
     [global::System.Diagnostics.DebuggerNonUserCodeAttribute]
@@ -844,6 +1044,9 @@ namespace Grafeas.V1 {
 
     [global::System.Diagnostics.DebuggerNonUserCodeAttribute]
     public void WriteTo(pb::CodedOutputStream output) {
+    #if !GOOGLE_PROTOBUF_REFSTRUCT_COMPATIBILITY_MODE
+      output.WriteRawMessage(this);
+    #else
       if (Name.Length != 0) {
         output.WriteRawTag(10);
         output.WriteString(Name);
@@ -852,7 +1055,22 @@ namespace Grafeas.V1 {
       if (_unknownFields != null) {
         _unknownFields.WriteTo(output);
       }
+    #endif
     }
+
+    #if !GOOGLE_PROTOBUF_REFSTRUCT_COMPATIBILITY_MODE
+    [global::System.Diagnostics.DebuggerNonUserCodeAttribute]
+    void pb::IBufferMessage.InternalWriteTo(ref pb::WriteContext output) {
+      if (Name.Length != 0) {
+        output.WriteRawTag(10);
+        output.WriteString(Name);
+      }
+      location_.WriteTo(ref output, _repeated_location_codec);
+      if (_unknownFields != null) {
+        _unknownFields.WriteTo(ref output);
+      }
+    }
+    #endif
 
     [global::System.Diagnostics.DebuggerNonUserCodeAttribute]
     public int CalculateSize() {
@@ -881,6 +1099,9 @@ namespace Grafeas.V1 {
 
     [global::System.Diagnostics.DebuggerNonUserCodeAttribute]
     public void MergeFrom(pb::CodedInputStream input) {
+    #if !GOOGLE_PROTOBUF_REFSTRUCT_COMPATIBILITY_MODE
+      input.ReadRawMessage(this);
+    #else
       uint tag;
       while ((tag = input.ReadTag()) != 0) {
         switch(tag) {
@@ -897,14 +1118,41 @@ namespace Grafeas.V1 {
           }
         }
       }
+    #endif
     }
+
+    #if !GOOGLE_PROTOBUF_REFSTRUCT_COMPATIBILITY_MODE
+    [global::System.Diagnostics.DebuggerNonUserCodeAttribute]
+    void pb::IBufferMessage.InternalMergeFrom(ref pb::ParseContext input) {
+      uint tag;
+      while ((tag = input.ReadTag()) != 0) {
+        switch(tag) {
+          default:
+            _unknownFields = pb::UnknownFieldSet.MergeFieldFrom(_unknownFields, ref input);
+            break;
+          case 10: {
+            Name = input.ReadString();
+            break;
+          }
+          case 18: {
+            location_.AddEntriesFrom(ref input, _repeated_location_codec);
+            break;
+          }
+        }
+      }
+    }
+    #endif
 
   }
 
   /// <summary>
   /// Version contains structured information about the version of a package.
   /// </summary>
-  public sealed partial class Version : pb::IMessage<Version> {
+  public sealed partial class Version : pb::IMessage<Version>
+  #if !GOOGLE_PROTOBUF_REFSTRUCT_COMPATIBILITY_MODE
+      , pb::IBufferMessage
+  #endif
+  {
     private static readonly pb::MessageParser<Version> _parser = new pb::MessageParser<Version>(() => new Version());
     private pb::UnknownFieldSet _unknownFields;
     [global::System.Diagnostics.DebuggerNonUserCodeAttribute]
@@ -987,7 +1235,7 @@ namespace Grafeas.V1 {
 
     /// <summary>Field number for the "kind" field.</summary>
     public const int KindFieldNumber = 4;
-    private global::Grafeas.V1.Version.Types.VersionKind kind_ = 0;
+    private global::Grafeas.V1.Version.Types.VersionKind kind_ = global::Grafeas.V1.Version.Types.VersionKind.Unspecified;
     /// <summary>
     /// Required. Distinguishes between sentinel MIN/MAX versions and normal
     /// versions.
@@ -1042,7 +1290,7 @@ namespace Grafeas.V1 {
       if (Epoch != 0) hash ^= Epoch.GetHashCode();
       if (Name.Length != 0) hash ^= Name.GetHashCode();
       if (Revision.Length != 0) hash ^= Revision.GetHashCode();
-      if (Kind != 0) hash ^= Kind.GetHashCode();
+      if (Kind != global::Grafeas.V1.Version.Types.VersionKind.Unspecified) hash ^= Kind.GetHashCode();
       if (FullName.Length != 0) hash ^= FullName.GetHashCode();
       if (_unknownFields != null) {
         hash ^= _unknownFields.GetHashCode();
@@ -1057,6 +1305,9 @@ namespace Grafeas.V1 {
 
     [global::System.Diagnostics.DebuggerNonUserCodeAttribute]
     public void WriteTo(pb::CodedOutputStream output) {
+    #if !GOOGLE_PROTOBUF_REFSTRUCT_COMPATIBILITY_MODE
+      output.WriteRawMessage(this);
+    #else
       if (Epoch != 0) {
         output.WriteRawTag(8);
         output.WriteInt32(Epoch);
@@ -1069,7 +1320,7 @@ namespace Grafeas.V1 {
         output.WriteRawTag(26);
         output.WriteString(Revision);
       }
-      if (Kind != 0) {
+      if (Kind != global::Grafeas.V1.Version.Types.VersionKind.Unspecified) {
         output.WriteRawTag(32);
         output.WriteEnum((int) Kind);
       }
@@ -1080,7 +1331,37 @@ namespace Grafeas.V1 {
       if (_unknownFields != null) {
         _unknownFields.WriteTo(output);
       }
+    #endif
     }
+
+    #if !GOOGLE_PROTOBUF_REFSTRUCT_COMPATIBILITY_MODE
+    [global::System.Diagnostics.DebuggerNonUserCodeAttribute]
+    void pb::IBufferMessage.InternalWriteTo(ref pb::WriteContext output) {
+      if (Epoch != 0) {
+        output.WriteRawTag(8);
+        output.WriteInt32(Epoch);
+      }
+      if (Name.Length != 0) {
+        output.WriteRawTag(18);
+        output.WriteString(Name);
+      }
+      if (Revision.Length != 0) {
+        output.WriteRawTag(26);
+        output.WriteString(Revision);
+      }
+      if (Kind != global::Grafeas.V1.Version.Types.VersionKind.Unspecified) {
+        output.WriteRawTag(32);
+        output.WriteEnum((int) Kind);
+      }
+      if (FullName.Length != 0) {
+        output.WriteRawTag(42);
+        output.WriteString(FullName);
+      }
+      if (_unknownFields != null) {
+        _unknownFields.WriteTo(ref output);
+      }
+    }
+    #endif
 
     [global::System.Diagnostics.DebuggerNonUserCodeAttribute]
     public int CalculateSize() {
@@ -1094,7 +1375,7 @@ namespace Grafeas.V1 {
       if (Revision.Length != 0) {
         size += 1 + pb::CodedOutputStream.ComputeStringSize(Revision);
       }
-      if (Kind != 0) {
+      if (Kind != global::Grafeas.V1.Version.Types.VersionKind.Unspecified) {
         size += 1 + pb::CodedOutputStream.ComputeEnumSize((int) Kind);
       }
       if (FullName.Length != 0) {
@@ -1120,7 +1401,7 @@ namespace Grafeas.V1 {
       if (other.Revision.Length != 0) {
         Revision = other.Revision;
       }
-      if (other.Kind != 0) {
+      if (other.Kind != global::Grafeas.V1.Version.Types.VersionKind.Unspecified) {
         Kind = other.Kind;
       }
       if (other.FullName.Length != 0) {
@@ -1131,6 +1412,9 @@ namespace Grafeas.V1 {
 
     [global::System.Diagnostics.DebuggerNonUserCodeAttribute]
     public void MergeFrom(pb::CodedInputStream input) {
+    #if !GOOGLE_PROTOBUF_REFSTRUCT_COMPATIBILITY_MODE
+      input.ReadRawMessage(this);
+    #else
       uint tag;
       while ((tag = input.ReadTag()) != 0) {
         switch(tag) {
@@ -1159,7 +1443,42 @@ namespace Grafeas.V1 {
           }
         }
       }
+    #endif
     }
+
+    #if !GOOGLE_PROTOBUF_REFSTRUCT_COMPATIBILITY_MODE
+    [global::System.Diagnostics.DebuggerNonUserCodeAttribute]
+    void pb::IBufferMessage.InternalMergeFrom(ref pb::ParseContext input) {
+      uint tag;
+      while ((tag = input.ReadTag()) != 0) {
+        switch(tag) {
+          default:
+            _unknownFields = pb::UnknownFieldSet.MergeFieldFrom(_unknownFields, ref input);
+            break;
+          case 8: {
+            Epoch = input.ReadInt32();
+            break;
+          }
+          case 18: {
+            Name = input.ReadString();
+            break;
+          }
+          case 26: {
+            Revision = input.ReadString();
+            break;
+          }
+          case 32: {
+            Kind = (global::Grafeas.V1.Version.Types.VersionKind) input.ReadEnum();
+            break;
+          }
+          case 42: {
+            FullName = input.ReadString();
+            break;
+          }
+        }
+      }
+    }
+    #endif
 
     #region Nested types
     /// <summary>Container for nested types declared in the Version message type.</summary>

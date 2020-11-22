@@ -1,4 +1,4 @@
-// Copyright 2019 Google LLC
+// Copyright 2020 Google LLC
 //
 // Licensed under the Apache License, Version 2.0 (the "License");
 // you may not use this file except in compliance with the License.
@@ -25,7 +25,7 @@ namespace Google.Cloud.VideoIntelligence.V1.Snippets
     public sealed class GeneratedVideoIntelligenceServiceClientSnippets
     {
         /// <summary>Snippet for AnnotateVideo</summary>
-        public void AnnotateVideo_RequestObject()
+        public void AnnotateVideoRequestObject()
         {
             // Snippet: AnnotateVideo(AnnotateVideoRequest, CallSettings)
             // Create client
@@ -65,7 +65,7 @@ namespace Google.Cloud.VideoIntelligence.V1.Snippets
         }
 
         /// <summary>Snippet for AnnotateVideoAsync</summary>
-        public async Task AnnotateVideoAsync_RequestObject()
+        public async Task AnnotateVideoRequestObjectAsync()
         {
             // Snippet: AnnotateVideoAsync(AnnotateVideoRequest, CallSettings)
             // Additional: AnnotateVideoAsync(AnnotateVideoRequest, CancellationToken)

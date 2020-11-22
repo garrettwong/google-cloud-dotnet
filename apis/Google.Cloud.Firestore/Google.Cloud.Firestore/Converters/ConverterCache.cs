@@ -23,6 +23,7 @@ using System.Linq;
 using System.Reflection;
 using System.Runtime.CompilerServices;
 using BclType = System.Type;
+using DateTime = System.DateTime;
 using wkt = Google.Protobuf.WellKnownTypes;
 
 namespace Google.Cloud.Firestore.Converters
@@ -83,7 +84,11 @@ namespace Google.Cloud.Firestore.Converters
                 return AttributedTypeConverter.ForType(targetType);
             }
             // Simple way of checking for an anonymous type. Far from foolproof, but a reasonable start.
-            if (targetTypeInfo.IsDefined(typeof(CompilerGeneratedAttribute)))
+            // If the target type implements IEnumerable, it's probably an iterator method result.
+            // If the target type implements IAsyncStateMachine, it's probably an async method state machine.
+            if (targetTypeInfo.IsDefined(typeof(CompilerGeneratedAttribute)) &&
+                !typeof(IEnumerable).IsAssignableFrom(targetType) &&
+                !typeof(IAsyncStateMachine).IsAssignableFrom(targetType))
             {
                 return new AnonymousTypeConverter(targetType);
             }
@@ -92,7 +97,7 @@ namespace Google.Cloud.Firestore.Converters
             {
                 return new EnumConverter(targetType);
             }
-            if (TryGetStringDictionaryValueType(targetType, out var dictionaryElementType))
+            if (TryGetStringDictionaryValueType(targetType) is BclType dictionaryElementType)
             {
                 var method = s_createDictionaryConverter.MakeGenericMethod(dictionaryElementType);
                 try
@@ -105,9 +110,24 @@ namespace Google.Cloud.Firestore.Converters
                 }
             }
 
+            // This will only return true if the target type can be assigned
+            // from List<T>, and the target type implements IEnumerable<T>. That's
+            // enough to make ListConverter work: when serializing, it will just use
+            // IEnumerable, and when deserializing it will construct a List<T>.
+            if (TryGetListType(targetType) is BclType listType)
+            {
+                return new ListConverter(listType);
+            }
+
             if (typeof(IList).IsAssignableFrom(targetType))
             {
                 return new ListConverter(targetType);
+            }
+
+            // The best we can do is a "serialize-only" converter. That's better than nothing though.
+            if (typeof(IEnumerable).IsAssignableFrom(targetType))
+            {
+                return new SequenceConverter(targetType);
             }
 
             throw new ArgumentException($"Unable to create converter for type {targetType.GetTypeInfo().FullName}");
@@ -116,16 +136,15 @@ namespace Google.Cloud.Firestore.Converters
         // Internal for testing
 
         /// <summary>
-        /// If <paramref name="type"/> implements (or is) <see cref="IDictionary{TKey, TValue}"/> with TKey equal to string, returns true and sets
-        /// <paramref name="elementType"/> to TValue. Otherwise, returns false and sets <paramref name="elementType"/> to null.
+        /// If <paramref name="type"/> implements (or is) <see cref="IDictionary{TKey, TValue}"/> with TKey equal to string, returns TValue.
+        /// Otherwise, returns null.
         /// </summary>
-        internal static bool TryGetStringDictionaryValueType(BclType type, out BclType elementType)
+        internal static BclType TryGetStringDictionaryValueType(BclType type)
         {
-            elementType = type.GetTypeInfo()
+            return type.GetTypeInfo()
                 .GetInterfaces()
                 .Concat(new[] { type }) // Make this method handle IDictionary<,> as an input; GetInterfaces doesn't return the type you call it on
                 .Select(MapInterfaceToDictionaryValueTypeArgument).FirstOrDefault(t => t != null);
-            return elementType != null;
 
             BclType MapInterfaceToDictionaryValueTypeArgument(BclType iface)
             {
@@ -141,6 +160,41 @@ namespace Google.Cloud.Firestore.Converters
                 }
                 var typeArguments = ifaceInfo.GenericTypeArguments;
                 return typeArguments[0] == typeof(string) ? typeArguments[1] : null;
+            }
+        }
+
+        /// <summary>
+        /// If <paramref name="targetType"/> is a type that implements <see cref="IEnumerable{T}"/>, we check to see if <see cref="List{T}"/> is
+        /// compatible with the target type. 
+        /// </summary>
+        /// <param name="targetType"></param>
+        /// <returns>null if <paramref name="targetType"/> cannot be implemented via <see cref="List{T}"/>; the list type otherwise.</returns>
+        internal static BclType TryGetListType(BclType targetType)
+        {
+            var elementType = targetType.GetTypeInfo()
+                .GetInterfaces()
+                .Concat(new[] { targetType }) // Make this method handle IDictionary<,> as an input; GetInterfaces doesn't return the type you call it on
+                .Select(MapInterfaceToTypeArgument).FirstOrDefault(t => t != null);
+            if (elementType is null)
+            {
+                return null;
+            }
+            var candidateType = typeof(List<>).MakeGenericType(elementType);
+            return targetType.IsAssignableFrom(candidateType) ? candidateType : null;
+
+            BclType MapInterfaceToTypeArgument(BclType iface)
+            {
+                var ifaceInfo = iface.GetTypeInfo();
+                if (!ifaceInfo.IsGenericType || ifaceInfo.IsGenericTypeDefinition)
+                {
+                    return null;
+                }
+                var generic = ifaceInfo.GetGenericTypeDefinition();
+                if (generic != typeof(IEnumerable<>))
+                {
+                    return null;
+                }
+                return ifaceInfo.GenericTypeArguments[0];
             }
         }
     }

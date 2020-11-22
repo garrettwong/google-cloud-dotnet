@@ -1,4 +1,4 @@
-// Copyright 2019 Google LLC
+// Copyright 2020 Google LLC
 //
 // Licensed under the Apache License, Version 2.0 (the "License");
 // you may not use this file except in compliance with the License.
@@ -25,7 +25,7 @@ namespace Google.Cloud.Spanner.Admin.Database.V1
         /// </summary>
         public gcscv::DatabaseName DatabaseName
         {
-            get => string.IsNullOrEmpty(Name) ? null : gcscv::DatabaseName.Parse(Name);
+            get => string.IsNullOrEmpty(Name) ? null : gcscv::DatabaseName.Parse(Name, allowUnparsed: true);
             set => Name = value?.ToString() ?? "";
         }
     }
@@ -37,7 +37,7 @@ namespace Google.Cloud.Spanner.Admin.Database.V1
         /// </summary>
         public gcscv::InstanceName ParentAsInstanceName
         {
-            get => string.IsNullOrEmpty(Parent) ? null : gcscv::InstanceName.Parse(Parent);
+            get => string.IsNullOrEmpty(Parent) ? null : gcscv::InstanceName.Parse(Parent, allowUnparsed: true);
             set => Parent = value?.ToString() ?? "";
         }
     }
@@ -49,7 +49,7 @@ namespace Google.Cloud.Spanner.Admin.Database.V1
         /// </summary>
         public gcscv::InstanceName ParentAsInstanceName
         {
-            get => string.IsNullOrEmpty(Parent) ? null : gcscv::InstanceName.Parse(Parent);
+            get => string.IsNullOrEmpty(Parent) ? null : gcscv::InstanceName.Parse(Parent, allowUnparsed: true);
             set => Parent = value?.ToString() ?? "";
         }
     }
@@ -61,7 +61,7 @@ namespace Google.Cloud.Spanner.Admin.Database.V1
         /// </summary>
         public gcscv::DatabaseName DatabaseAsDatabaseName
         {
-            get => string.IsNullOrEmpty(Database) ? null : gcscv::DatabaseName.Parse(Database);
+            get => string.IsNullOrEmpty(Database) ? null : gcscv::DatabaseName.Parse(Database, allowUnparsed: true);
             set => Database = value?.ToString() ?? "";
         }
     }
@@ -73,7 +73,7 @@ namespace Google.Cloud.Spanner.Admin.Database.V1
         /// </summary>
         public gcscv::DatabaseName DatabaseName
         {
-            get => string.IsNullOrEmpty(Name) ? null : gcscv::DatabaseName.Parse(Name);
+            get => string.IsNullOrEmpty(Name) ? null : gcscv::DatabaseName.Parse(Name, allowUnparsed: true);
             set => Name = value?.ToString() ?? "";
         }
     }
@@ -85,7 +85,7 @@ namespace Google.Cloud.Spanner.Admin.Database.V1
         /// </summary>
         public gcscv::DatabaseName DatabaseAsDatabaseName
         {
-            get => string.IsNullOrEmpty(Database) ? null : gcscv::DatabaseName.Parse(Database);
+            get => string.IsNullOrEmpty(Database) ? null : gcscv::DatabaseName.Parse(Database, allowUnparsed: true);
             set => Database = value?.ToString() ?? "";
         }
     }
@@ -97,7 +97,7 @@ namespace Google.Cloud.Spanner.Admin.Database.V1
         /// </summary>
         public gcscv::DatabaseName DatabaseAsDatabaseName
         {
-            get => string.IsNullOrEmpty(Database) ? null : gcscv::DatabaseName.Parse(Database);
+            get => string.IsNullOrEmpty(Database) ? null : gcscv::DatabaseName.Parse(Database, allowUnparsed: true);
             set => Database = value?.ToString() ?? "";
         }
     }
@@ -109,7 +109,7 @@ namespace Google.Cloud.Spanner.Admin.Database.V1
         /// </summary>
         public gcscv::DatabaseName DatabaseAsDatabaseName
         {
-            get => string.IsNullOrEmpty(Database) ? null : gcscv::DatabaseName.Parse(Database);
+            get => string.IsNullOrEmpty(Database) ? null : gcscv::DatabaseName.Parse(Database, allowUnparsed: true);
             set => Database = value?.ToString() ?? "";
         }
     }
@@ -121,8 +121,39 @@ namespace Google.Cloud.Spanner.Admin.Database.V1
         /// </summary>
         public gcscv::DatabaseName DatabaseAsDatabaseName
         {
-            get => string.IsNullOrEmpty(Database) ? null : gcscv::DatabaseName.Parse(Database);
+            get => string.IsNullOrEmpty(Database) ? null : gcscv::DatabaseName.Parse(Database, allowUnparsed: true);
             set => Database = value?.ToString() ?? "";
+        }
+    }
+
+    public partial class ListDatabaseOperationsRequest
+    {
+        /// <summary>
+        /// <see cref="gcscv::InstanceName"/>-typed view over the <see cref="Parent"/> resource name property.
+        /// </summary>
+        public gcscv::InstanceName ParentAsInstanceName
+        {
+            get => string.IsNullOrEmpty(Parent) ? null : gcscv::InstanceName.Parse(Parent, allowUnparsed: true);
+            set => Parent = value?.ToString() ?? "";
+        }
+    }
+
+    public partial class RestoreDatabaseRequest
+    {
+        /// <summary>
+        /// <see cref="gcscv::InstanceName"/>-typed view over the <see cref="Parent"/> resource name property.
+        /// </summary>
+        public gcscv::InstanceName ParentAsInstanceName
+        {
+            get => string.IsNullOrEmpty(Parent) ? null : gcscv::InstanceName.Parse(Parent, allowUnparsed: true);
+            set => Parent = value?.ToString() ?? "";
+        }
+
+        /// <summary><see cref="BackupName"/>-typed view over the <see cref="Backup"/> resource name property.</summary>
+        public BackupName BackupAsBackupName
+        {
+            get => string.IsNullOrEmpty(Backup) ? null : BackupName.Parse(Backup, allowUnparsed: true);
+            set => Backup = value?.ToString() ?? "";
         }
     }
 }

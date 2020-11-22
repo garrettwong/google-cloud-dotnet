@@ -26,66 +26,80 @@ namespace Google.Cloud.Monitoring.V3 {
           string.Concat(
             "CiFnb29nbGUvbW9uaXRvcmluZy92My91cHRpbWUucHJvdG8SFGdvb2dsZS5t",
             "b25pdG9yaW5nLnYzGiNnb29nbGUvYXBpL21vbml0b3JlZF9yZXNvdXJjZS5w",
-            "cm90bxoeZ29vZ2xlL3Byb3RvYnVmL2R1cmF0aW9uLnByb3RvIuYBCg9JbnRl",
-            "cm5hbENoZWNrZXISDAoEbmFtZRgBIAEoCRIUCgxkaXNwbGF5X25hbWUYAiAB",
-            "KAkSDwoHbmV0d29yaxgDIAEoCRIQCghnY3Bfem9uZRgEIAEoCRIXCg9wZWVy",
-            "X3Byb2plY3RfaWQYBiABKAkSOgoFc3RhdGUYByABKA4yKy5nb29nbGUubW9u",
-            "aXRvcmluZy52My5JbnRlcm5hbENoZWNrZXIuU3RhdGUiMwoFU3RhdGUSDwoL",
-            "VU5TUEVDSUZJRUQQABIMCghDUkVBVElORxABEgsKB1JVTk5JTkcQAjoCGAEi",
-            "1wsKEVVwdGltZUNoZWNrQ29uZmlnEgwKBG5hbWUYASABKAkSFAoMZGlzcGxh",
-            "eV9uYW1lGAIgASgJEjsKEm1vbml0b3JlZF9yZXNvdXJjZRgDIAEoCzIdLmdv",
-            "b2dsZS5hcGkuTW9uaXRvcmVkUmVzb3VyY2VIABJPCg5yZXNvdXJjZV9ncm91",
-            "cBgEIAEoCzI1Lmdvb2dsZS5tb25pdG9yaW5nLnYzLlVwdGltZUNoZWNrQ29u",
-            "ZmlnLlJlc291cmNlR3JvdXBIABJHCgpodHRwX2NoZWNrGAUgASgLMjEuZ29v",
-            "Z2xlLm1vbml0b3JpbmcudjMuVXB0aW1lQ2hlY2tDb25maWcuSHR0cENoZWNr",
-            "SAESRQoJdGNwX2NoZWNrGAYgASgLMjAuZ29vZ2xlLm1vbml0b3JpbmcudjMu",
-            "VXB0aW1lQ2hlY2tDb25maWcuVGNwQ2hlY2tIARIpCgZwZXJpb2QYByABKAsy",
-            "GS5nb29nbGUucHJvdG9idWYuRHVyYXRpb24SKgoHdGltZW91dBgIIAEoCzIZ",
-            "Lmdvb2dsZS5wcm90b2J1Zi5EdXJhdGlvbhJQChBjb250ZW50X21hdGNoZXJz",
-            "GAkgAygLMjYuZ29vZ2xlLm1vbml0b3JpbmcudjMuVXB0aW1lQ2hlY2tDb25m",
-            "aWcuQ29udGVudE1hdGNoZXISQQoQc2VsZWN0ZWRfcmVnaW9ucxgKIAMoDjIn",
-            "Lmdvb2dsZS5tb25pdG9yaW5nLnYzLlVwdGltZUNoZWNrUmVnaW9uEhcKC2lz",
-            "X2ludGVybmFsGA8gASgIQgIYARJEChFpbnRlcm5hbF9jaGVja2VycxgOIAMo",
-            "CzIlLmdvb2dsZS5tb25pdG9yaW5nLnYzLkludGVybmFsQ2hlY2tlckICGAEa",
-            "YQoNUmVzb3VyY2VHcm91cBIQCghncm91cF9pZBgBIAEoCRI+Cg1yZXNvdXJj",
-            "ZV90eXBlGAIgASgOMicuZ29vZ2xlLm1vbml0b3JpbmcudjMuR3JvdXBSZXNv",
-            "dXJjZVR5cGUa+gIKCUh0dHBDaGVjaxIPCgd1c2Vfc3NsGAEgASgIEgwKBHBh",
-            "dGgYAiABKAkSDAoEcG9ydBgDIAEoBRJYCglhdXRoX2luZm8YBCABKAsyRS5n",
-            "b29nbGUubW9uaXRvcmluZy52My5VcHRpbWVDaGVja0NvbmZpZy5IdHRwQ2hl",
-            "Y2suQmFzaWNBdXRoZW50aWNhdGlvbhIUCgxtYXNrX2hlYWRlcnMYBSABKAgS",
-            "TwoHaGVhZGVycxgGIAMoCzI+Lmdvb2dsZS5tb25pdG9yaW5nLnYzLlVwdGlt",
-            "ZUNoZWNrQ29uZmlnLkh0dHBDaGVjay5IZWFkZXJzRW50cnkSFAoMdmFsaWRh",
-            "dGVfc3NsGAcgASgIGjkKE0Jhc2ljQXV0aGVudGljYXRpb24SEAoIdXNlcm5h",
-            "bWUYASABKAkSEAoIcGFzc3dvcmQYAiABKAkaLgoMSGVhZGVyc0VudHJ5EgsK",
-            "A2tleRgBIAEoCRINCgV2YWx1ZRgCIAEoCToCOAEaGAoIVGNwQ2hlY2sSDAoE",
-            "cG9ydBgBIAEoBRqYAgoOQ29udGVudE1hdGNoZXISDwoHY29udGVudBgBIAEo",
-            "CRJcCgdtYXRjaGVyGAIgASgOMksuZ29vZ2xlLm1vbml0b3JpbmcudjMuVXB0",
-            "aW1lQ2hlY2tDb25maWcuQ29udGVudE1hdGNoZXIuQ29udGVudE1hdGNoZXJP",
-            "cHRpb24ilgEKFENvbnRlbnRNYXRjaGVyT3B0aW9uEiYKIkNPTlRFTlRfTUFU",
-            "Q0hFUl9PUFRJT05fVU5TUEVDSUZJRUQQABITCg9DT05UQUlOU19TVFJJTkcQ",
-            "ARIXChNOT1RfQ09OVEFJTlNfU1RSSU5HEAISEQoNTUFUQ0hFU19SRUdFWBAD",
-            "EhUKEU5PVF9NQVRDSEVTX1JFR0VYEARCCgoIcmVzb3VyY2VCFAoSY2hlY2tf",
-            "cmVxdWVzdF90eXBlIm4KDVVwdGltZUNoZWNrSXASNwoGcmVnaW9uGAEgASgO",
-            "MicuZ29vZ2xlLm1vbml0b3JpbmcudjMuVXB0aW1lQ2hlY2tSZWdpb24SEAoI",
-            "bG9jYXRpb24YAiABKAkSEgoKaXBfYWRkcmVzcxgDIAEoCSplChFVcHRpbWVD",
-            "aGVja1JlZ2lvbhIWChJSRUdJT05fVU5TUEVDSUZJRUQQABIHCgNVU0EQARIK",
-            "CgZFVVJPUEUQAhIRCg1TT1VUSF9BTUVSSUNBEAMSEAoMQVNJQV9QQUNJRklD",
-            "EAQqWwoRR3JvdXBSZXNvdXJjZVR5cGUSHQoZUkVTT1VSQ0VfVFlQRV9VTlNQ",
-            "RUNJRklFRBAAEgwKCElOU1RBTkNFEAESGQoVQVdTX0VMQl9MT0FEX0JBTEFO",
-            "Q0VSEAJCowEKGGNvbS5nb29nbGUubW9uaXRvcmluZy52M0ILVXB0aW1lUHJv",
-            "dG9QAVo+Z29vZ2xlLmdvbGFuZy5vcmcvZ2VucHJvdG8vZ29vZ2xlYXBpcy9t",
-            "b25pdG9yaW5nL3YzO21vbml0b3JpbmeqAhpHb29nbGUuQ2xvdWQuTW9uaXRv",
-            "cmluZy5WM8oCGkdvb2dsZVxDbG91ZFxNb25pdG9yaW5nXFYzYgZwcm90bzM="));
+            "cm90bxoZZ29vZ2xlL2FwaS9yZXNvdXJjZS5wcm90bxoeZ29vZ2xlL3Byb3Rv",
+            "YnVmL2R1cmF0aW9uLnByb3RvIuYBCg9JbnRlcm5hbENoZWNrZXISDAoEbmFt",
+            "ZRgBIAEoCRIUCgxkaXNwbGF5X25hbWUYAiABKAkSDwoHbmV0d29yaxgDIAEo",
+            "CRIQCghnY3Bfem9uZRgEIAEoCRIXCg9wZWVyX3Byb2plY3RfaWQYBiABKAkS",
+            "OgoFc3RhdGUYByABKA4yKy5nb29nbGUubW9uaXRvcmluZy52My5JbnRlcm5h",
+            "bENoZWNrZXIuU3RhdGUiMwoFU3RhdGUSDwoLVU5TUEVDSUZJRUQQABIMCghD",
+            "UkVBVElORxABEgsKB1JVTk5JTkcQAjoCGAEi+w8KEVVwdGltZUNoZWNrQ29u",
+            "ZmlnEgwKBG5hbWUYASABKAkSFAoMZGlzcGxheV9uYW1lGAIgASgJEjsKEm1v",
+            "bml0b3JlZF9yZXNvdXJjZRgDIAEoCzIdLmdvb2dsZS5hcGkuTW9uaXRvcmVk",
+            "UmVzb3VyY2VIABJPCg5yZXNvdXJjZV9ncm91cBgEIAEoCzI1Lmdvb2dsZS5t",
+            "b25pdG9yaW5nLnYzLlVwdGltZUNoZWNrQ29uZmlnLlJlc291cmNlR3JvdXBI",
+            "ABJHCgpodHRwX2NoZWNrGAUgASgLMjEuZ29vZ2xlLm1vbml0b3JpbmcudjMu",
+            "VXB0aW1lQ2hlY2tDb25maWcuSHR0cENoZWNrSAESRQoJdGNwX2NoZWNrGAYg",
+            "ASgLMjAuZ29vZ2xlLm1vbml0b3JpbmcudjMuVXB0aW1lQ2hlY2tDb25maWcu",
+            "VGNwQ2hlY2tIARIpCgZwZXJpb2QYByABKAsyGS5nb29nbGUucHJvdG9idWYu",
+            "RHVyYXRpb24SKgoHdGltZW91dBgIIAEoCzIZLmdvb2dsZS5wcm90b2J1Zi5E",
+            "dXJhdGlvbhJQChBjb250ZW50X21hdGNoZXJzGAkgAygLMjYuZ29vZ2xlLm1v",
+            "bml0b3JpbmcudjMuVXB0aW1lQ2hlY2tDb25maWcuQ29udGVudE1hdGNoZXIS",
+            "QQoQc2VsZWN0ZWRfcmVnaW9ucxgKIAMoDjInLmdvb2dsZS5tb25pdG9yaW5n",
+            "LnYzLlVwdGltZUNoZWNrUmVnaW9uEhcKC2lzX2ludGVybmFsGA8gASgIQgIY",
+            "ARJEChFpbnRlcm5hbF9jaGVja2VycxgOIAMoCzIlLmdvb2dsZS5tb25pdG9y",
+            "aW5nLnYzLkludGVybmFsQ2hlY2tlckICGAEaYQoNUmVzb3VyY2VHcm91cBIQ",
+            "Cghncm91cF9pZBgBIAEoCRI+Cg1yZXNvdXJjZV90eXBlGAIgASgOMicuZ29v",
+            "Z2xlLm1vbml0b3JpbmcudjMuR3JvdXBSZXNvdXJjZVR5cGUaqAUKCUh0dHBD",
+            "aGVjaxJXCg5yZXF1ZXN0X21ldGhvZBgIIAEoDjI/Lmdvb2dsZS5tb25pdG9y",
+            "aW5nLnYzLlVwdGltZUNoZWNrQ29uZmlnLkh0dHBDaGVjay5SZXF1ZXN0TWV0",
+            "aG9kEg8KB3VzZV9zc2wYASABKAgSDAoEcGF0aBgCIAEoCRIMCgRwb3J0GAMg",
+            "ASgFElgKCWF1dGhfaW5mbxgEIAEoCzJFLmdvb2dsZS5tb25pdG9yaW5nLnYz",
+            "LlVwdGltZUNoZWNrQ29uZmlnLkh0dHBDaGVjay5CYXNpY0F1dGhlbnRpY2F0",
+            "aW9uEhQKDG1hc2tfaGVhZGVycxgFIAEoCBJPCgdoZWFkZXJzGAYgAygLMj4u",
+            "Z29vZ2xlLm1vbml0b3JpbmcudjMuVXB0aW1lQ2hlY2tDb25maWcuSHR0cENo",
+            "ZWNrLkhlYWRlcnNFbnRyeRJTCgxjb250ZW50X3R5cGUYCSABKA4yPS5nb29n",
+            "bGUubW9uaXRvcmluZy52My5VcHRpbWVDaGVja0NvbmZpZy5IdHRwQ2hlY2su",
+            "Q29udGVudFR5cGUSFAoMdmFsaWRhdGVfc3NsGAcgASgIEgwKBGJvZHkYCiAB",
+            "KAwaOQoTQmFzaWNBdXRoZW50aWNhdGlvbhIQCgh1c2VybmFtZRgBIAEoCRIQ",
+            "CghwYXNzd29yZBgCIAEoCRouCgxIZWFkZXJzRW50cnkSCwoDa2V5GAEgASgJ",
+            "Eg0KBXZhbHVlGAIgASgJOgI4ASI6Cg1SZXF1ZXN0TWV0aG9kEhYKEk1FVEhP",
+            "RF9VTlNQRUNJRklFRBAAEgcKA0dFVBABEggKBFBPU1QQAiI0CgtDb250ZW50",
+            "VHlwZRIUChBUWVBFX1VOU1BFQ0lGSUVEEAASDwoLVVJMX0VOQ09ERUQQARoY",
+            "CghUY3BDaGVjaxIMCgRwb3J0GAEgASgFGpgCCg5Db250ZW50TWF0Y2hlchIP",
+            "Cgdjb250ZW50GAEgASgJElwKB21hdGNoZXIYAiABKA4ySy5nb29nbGUubW9u",
+            "aXRvcmluZy52My5VcHRpbWVDaGVja0NvbmZpZy5Db250ZW50TWF0Y2hlci5D",
+            "b250ZW50TWF0Y2hlck9wdGlvbiKWAQoUQ29udGVudE1hdGNoZXJPcHRpb24S",
+            "JgoiQ09OVEVOVF9NQVRDSEVSX09QVElPTl9VTlNQRUNJRklFRBAAEhMKD0NP",
+            "TlRBSU5TX1NUUklORxABEhcKE05PVF9DT05UQUlOU19TVFJJTkcQAhIRCg1N",
+            "QVRDSEVTX1JFR0VYEAMSFQoRTk9UX01BVENIRVNfUkVHRVgQBDrzAepB7wEK",
+            "K21vbml0b3JpbmcuZ29vZ2xlYXBpcy5jb20vVXB0aW1lQ2hlY2tDb25maWcS",
+            "O3Byb2plY3RzL3twcm9qZWN0fS91cHRpbWVDaGVja0NvbmZpZ3Mve3VwdGlt",
+            "ZV9jaGVja19jb25maWd9EkVvcmdhbml6YXRpb25zL3tvcmdhbml6YXRpb259",
+            "L3VwdGltZUNoZWNrQ29uZmlncy97dXB0aW1lX2NoZWNrX2NvbmZpZ30SOWZv",
+            "bGRlcnMve2ZvbGRlcn0vdXB0aW1lQ2hlY2tDb25maWdzL3t1cHRpbWVfY2hl",
+            "Y2tfY29uZmlnfRIBKkIKCghyZXNvdXJjZUIUChJjaGVja19yZXF1ZXN0X3R5",
+            "cGUibgoNVXB0aW1lQ2hlY2tJcBI3CgZyZWdpb24YASABKA4yJy5nb29nbGUu",
+            "bW9uaXRvcmluZy52My5VcHRpbWVDaGVja1JlZ2lvbhIQCghsb2NhdGlvbhgC",
+            "IAEoCRISCgppcF9hZGRyZXNzGAMgASgJKmUKEVVwdGltZUNoZWNrUmVnaW9u",
+            "EhYKElJFR0lPTl9VTlNQRUNJRklFRBAAEgcKA1VTQRABEgoKBkVVUk9QRRAC",
+            "EhEKDVNPVVRIX0FNRVJJQ0EQAxIQCgxBU0lBX1BBQ0lGSUMQBCpbChFHcm91",
+            "cFJlc291cmNlVHlwZRIdChlSRVNPVVJDRV9UWVBFX1VOU1BFQ0lGSUVEEAAS",
+            "DAoISU5TVEFOQ0UQARIZChVBV1NfRUxCX0xPQURfQkFMQU5DRVIQAkLDAQoY",
+            "Y29tLmdvb2dsZS5tb25pdG9yaW5nLnYzQgtVcHRpbWVQcm90b1ABWj5nb29n",
+            "bGUuZ29sYW5nLm9yZy9nZW5wcm90by9nb29nbGVhcGlzL21vbml0b3Jpbmcv",
+            "djM7bW9uaXRvcmluZ6oCGkdvb2dsZS5DbG91ZC5Nb25pdG9yaW5nLlYzygIa",
+            "R29vZ2xlXENsb3VkXE1vbml0b3JpbmdcVjPqAh1Hb29nbGU6OkNsb3VkOjpN",
+            "b25pdG9yaW5nOjpWM2IGcHJvdG8z"));
       descriptor = pbr::FileDescriptor.FromGeneratedCode(descriptorData,
-          new pbr::FileDescriptor[] { global::Google.Api.MonitoredResourceReflection.Descriptor, global::Google.Protobuf.WellKnownTypes.DurationReflection.Descriptor, },
-          new pbr::GeneratedClrTypeInfo(new[] {typeof(global::Google.Cloud.Monitoring.V3.UptimeCheckRegion), typeof(global::Google.Cloud.Monitoring.V3.GroupResourceType), }, new pbr::GeneratedClrTypeInfo[] {
-            new pbr::GeneratedClrTypeInfo(typeof(global::Google.Cloud.Monitoring.V3.InternalChecker), global::Google.Cloud.Monitoring.V3.InternalChecker.Parser, new[]{ "Name", "DisplayName", "Network", "GcpZone", "PeerProjectId", "State" }, null, new[]{ typeof(global::Google.Cloud.Monitoring.V3.InternalChecker.Types.State) }, null),
-            new pbr::GeneratedClrTypeInfo(typeof(global::Google.Cloud.Monitoring.V3.UptimeCheckConfig), global::Google.Cloud.Monitoring.V3.UptimeCheckConfig.Parser, new[]{ "Name", "DisplayName", "MonitoredResource", "ResourceGroup", "HttpCheck", "TcpCheck", "Period", "Timeout", "ContentMatchers", "SelectedRegions", "IsInternal", "InternalCheckers" }, new[]{ "Resource", "CheckRequestType" }, null, new pbr::GeneratedClrTypeInfo[] { new pbr::GeneratedClrTypeInfo(typeof(global::Google.Cloud.Monitoring.V3.UptimeCheckConfig.Types.ResourceGroup), global::Google.Cloud.Monitoring.V3.UptimeCheckConfig.Types.ResourceGroup.Parser, new[]{ "GroupId", "ResourceType" }, null, null, null),
-            new pbr::GeneratedClrTypeInfo(typeof(global::Google.Cloud.Monitoring.V3.UptimeCheckConfig.Types.HttpCheck), global::Google.Cloud.Monitoring.V3.UptimeCheckConfig.Types.HttpCheck.Parser, new[]{ "UseSsl", "Path", "Port", "AuthInfo", "MaskHeaders", "Headers", "ValidateSsl" }, null, null, new pbr::GeneratedClrTypeInfo[] { new pbr::GeneratedClrTypeInfo(typeof(global::Google.Cloud.Monitoring.V3.UptimeCheckConfig.Types.HttpCheck.Types.BasicAuthentication), global::Google.Cloud.Monitoring.V3.UptimeCheckConfig.Types.HttpCheck.Types.BasicAuthentication.Parser, new[]{ "Username", "Password" }, null, null, null),
+          new pbr::FileDescriptor[] { global::Google.Api.MonitoredResourceReflection.Descriptor, global::Google.Api.ResourceReflection.Descriptor, global::Google.Protobuf.WellKnownTypes.DurationReflection.Descriptor, },
+          new pbr::GeneratedClrTypeInfo(new[] {typeof(global::Google.Cloud.Monitoring.V3.UptimeCheckRegion), typeof(global::Google.Cloud.Monitoring.V3.GroupResourceType), }, null, new pbr::GeneratedClrTypeInfo[] {
+            new pbr::GeneratedClrTypeInfo(typeof(global::Google.Cloud.Monitoring.V3.InternalChecker), global::Google.Cloud.Monitoring.V3.InternalChecker.Parser, new[]{ "Name", "DisplayName", "Network", "GcpZone", "PeerProjectId", "State" }, null, new[]{ typeof(global::Google.Cloud.Monitoring.V3.InternalChecker.Types.State) }, null, null),
+            new pbr::GeneratedClrTypeInfo(typeof(global::Google.Cloud.Monitoring.V3.UptimeCheckConfig), global::Google.Cloud.Monitoring.V3.UptimeCheckConfig.Parser, new[]{ "Name", "DisplayName", "MonitoredResource", "ResourceGroup", "HttpCheck", "TcpCheck", "Period", "Timeout", "ContentMatchers", "SelectedRegions", "IsInternal", "InternalCheckers" }, new[]{ "Resource", "CheckRequestType" }, null, null, new pbr::GeneratedClrTypeInfo[] { new pbr::GeneratedClrTypeInfo(typeof(global::Google.Cloud.Monitoring.V3.UptimeCheckConfig.Types.ResourceGroup), global::Google.Cloud.Monitoring.V3.UptimeCheckConfig.Types.ResourceGroup.Parser, new[]{ "GroupId", "ResourceType" }, null, null, null, null),
+            new pbr::GeneratedClrTypeInfo(typeof(global::Google.Cloud.Monitoring.V3.UptimeCheckConfig.Types.HttpCheck), global::Google.Cloud.Monitoring.V3.UptimeCheckConfig.Types.HttpCheck.Parser, new[]{ "RequestMethod", "UseSsl", "Path", "Port", "AuthInfo", "MaskHeaders", "Headers", "ContentType", "ValidateSsl", "Body" }, null, new[]{ typeof(global::Google.Cloud.Monitoring.V3.UptimeCheckConfig.Types.HttpCheck.Types.RequestMethod), typeof(global::Google.Cloud.Monitoring.V3.UptimeCheckConfig.Types.HttpCheck.Types.ContentType) }, null, new pbr::GeneratedClrTypeInfo[] { new pbr::GeneratedClrTypeInfo(typeof(global::Google.Cloud.Monitoring.V3.UptimeCheckConfig.Types.HttpCheck.Types.BasicAuthentication), global::Google.Cloud.Monitoring.V3.UptimeCheckConfig.Types.HttpCheck.Types.BasicAuthentication.Parser, new[]{ "Username", "Password" }, null, null, null, null),
             null, }),
-            new pbr::GeneratedClrTypeInfo(typeof(global::Google.Cloud.Monitoring.V3.UptimeCheckConfig.Types.TcpCheck), global::Google.Cloud.Monitoring.V3.UptimeCheckConfig.Types.TcpCheck.Parser, new[]{ "Port" }, null, null, null),
-            new pbr::GeneratedClrTypeInfo(typeof(global::Google.Cloud.Monitoring.V3.UptimeCheckConfig.Types.ContentMatcher), global::Google.Cloud.Monitoring.V3.UptimeCheckConfig.Types.ContentMatcher.Parser, new[]{ "Content", "Matcher" }, null, new[]{ typeof(global::Google.Cloud.Monitoring.V3.UptimeCheckConfig.Types.ContentMatcher.Types.ContentMatcherOption) }, null)}),
-            new pbr::GeneratedClrTypeInfo(typeof(global::Google.Cloud.Monitoring.V3.UptimeCheckIp), global::Google.Cloud.Monitoring.V3.UptimeCheckIp.Parser, new[]{ "Region", "Location", "IpAddress" }, null, null, null)
+            new pbr::GeneratedClrTypeInfo(typeof(global::Google.Cloud.Monitoring.V3.UptimeCheckConfig.Types.TcpCheck), global::Google.Cloud.Monitoring.V3.UptimeCheckConfig.Types.TcpCheck.Parser, new[]{ "Port" }, null, null, null, null),
+            new pbr::GeneratedClrTypeInfo(typeof(global::Google.Cloud.Monitoring.V3.UptimeCheckConfig.Types.ContentMatcher), global::Google.Cloud.Monitoring.V3.UptimeCheckConfig.Types.ContentMatcher.Parser, new[]{ "Content", "Matcher" }, null, new[]{ typeof(global::Google.Cloud.Monitoring.V3.UptimeCheckConfig.Types.ContentMatcher.Types.ContentMatcherOption) }, null, null)}),
+            new pbr::GeneratedClrTypeInfo(typeof(global::Google.Cloud.Monitoring.V3.UptimeCheckIp), global::Google.Cloud.Monitoring.V3.UptimeCheckIp.Parser, new[]{ "Region", "Location", "IpAddress" }, null, null, null, null)
           }));
     }
     #endregion
@@ -152,7 +166,11 @@ namespace Google.Cloud.Monitoring.V3 {
   /// resources.
   /// </summary>
   [global::System.ObsoleteAttribute]
-  public sealed partial class InternalChecker : pb::IMessage<InternalChecker> {
+  public sealed partial class InternalChecker : pb::IMessage<InternalChecker>
+  #if !GOOGLE_PROTOBUF_REFSTRUCT_COMPATIBILITY_MODE
+      , pb::IBufferMessage
+  #endif
+  {
     private static readonly pb::MessageParser<InternalChecker> _parser = new pb::MessageParser<InternalChecker>(() => new InternalChecker());
     private pb::UnknownFieldSet _unknownFields;
     [global::System.Diagnostics.DebuggerNonUserCodeAttribute]
@@ -197,9 +215,9 @@ namespace Google.Cloud.Monitoring.V3 {
     /// <summary>
     /// A unique resource name for this InternalChecker. The format is:
     ///
-    ///   `projects/[PROJECT_ID]/internalCheckers/[INTERNAL_CHECKER_ID]`.
+    ///     projects/[PROJECT_ID_OR_NUMBER]/internalCheckers/[INTERNAL_CHECKER_ID]
     ///
-    /// `[PROJECT_ID]` is the Stackdriver Workspace project for the
+    /// `[PROJECT_ID_OR_NUMBER]` is the Stackdriver Workspace project for the
     /// Uptime check config associated with the internal checker.
     /// </summary>
     [global::System.Diagnostics.DebuggerNonUserCodeAttribute]
@@ -273,7 +291,7 @@ namespace Google.Cloud.Monitoring.V3 {
 
     /// <summary>Field number for the "state" field.</summary>
     public const int StateFieldNumber = 7;
-    private global::Google.Cloud.Monitoring.V3.InternalChecker.Types.State state_ = 0;
+    private global::Google.Cloud.Monitoring.V3.InternalChecker.Types.State state_ = global::Google.Cloud.Monitoring.V3.InternalChecker.Types.State.Unspecified;
     /// <summary>
     /// The current operational state of the internal checker.
     /// </summary>
@@ -315,7 +333,7 @@ namespace Google.Cloud.Monitoring.V3 {
       if (Network.Length != 0) hash ^= Network.GetHashCode();
       if (GcpZone.Length != 0) hash ^= GcpZone.GetHashCode();
       if (PeerProjectId.Length != 0) hash ^= PeerProjectId.GetHashCode();
-      if (State != 0) hash ^= State.GetHashCode();
+      if (State != global::Google.Cloud.Monitoring.V3.InternalChecker.Types.State.Unspecified) hash ^= State.GetHashCode();
       if (_unknownFields != null) {
         hash ^= _unknownFields.GetHashCode();
       }
@@ -329,6 +347,9 @@ namespace Google.Cloud.Monitoring.V3 {
 
     [global::System.Diagnostics.DebuggerNonUserCodeAttribute]
     public void WriteTo(pb::CodedOutputStream output) {
+    #if !GOOGLE_PROTOBUF_REFSTRUCT_COMPATIBILITY_MODE
+      output.WriteRawMessage(this);
+    #else
       if (Name.Length != 0) {
         output.WriteRawTag(10);
         output.WriteString(Name);
@@ -349,14 +370,48 @@ namespace Google.Cloud.Monitoring.V3 {
         output.WriteRawTag(50);
         output.WriteString(PeerProjectId);
       }
-      if (State != 0) {
+      if (State != global::Google.Cloud.Monitoring.V3.InternalChecker.Types.State.Unspecified) {
         output.WriteRawTag(56);
         output.WriteEnum((int) State);
       }
       if (_unknownFields != null) {
         _unknownFields.WriteTo(output);
       }
+    #endif
     }
+
+    #if !GOOGLE_PROTOBUF_REFSTRUCT_COMPATIBILITY_MODE
+    [global::System.Diagnostics.DebuggerNonUserCodeAttribute]
+    void pb::IBufferMessage.InternalWriteTo(ref pb::WriteContext output) {
+      if (Name.Length != 0) {
+        output.WriteRawTag(10);
+        output.WriteString(Name);
+      }
+      if (DisplayName.Length != 0) {
+        output.WriteRawTag(18);
+        output.WriteString(DisplayName);
+      }
+      if (Network.Length != 0) {
+        output.WriteRawTag(26);
+        output.WriteString(Network);
+      }
+      if (GcpZone.Length != 0) {
+        output.WriteRawTag(34);
+        output.WriteString(GcpZone);
+      }
+      if (PeerProjectId.Length != 0) {
+        output.WriteRawTag(50);
+        output.WriteString(PeerProjectId);
+      }
+      if (State != global::Google.Cloud.Monitoring.V3.InternalChecker.Types.State.Unspecified) {
+        output.WriteRawTag(56);
+        output.WriteEnum((int) State);
+      }
+      if (_unknownFields != null) {
+        _unknownFields.WriteTo(ref output);
+      }
+    }
+    #endif
 
     [global::System.Diagnostics.DebuggerNonUserCodeAttribute]
     public int CalculateSize() {
@@ -376,7 +431,7 @@ namespace Google.Cloud.Monitoring.V3 {
       if (PeerProjectId.Length != 0) {
         size += 1 + pb::CodedOutputStream.ComputeStringSize(PeerProjectId);
       }
-      if (State != 0) {
+      if (State != global::Google.Cloud.Monitoring.V3.InternalChecker.Types.State.Unspecified) {
         size += 1 + pb::CodedOutputStream.ComputeEnumSize((int) State);
       }
       if (_unknownFields != null) {
@@ -405,7 +460,7 @@ namespace Google.Cloud.Monitoring.V3 {
       if (other.PeerProjectId.Length != 0) {
         PeerProjectId = other.PeerProjectId;
       }
-      if (other.State != 0) {
+      if (other.State != global::Google.Cloud.Monitoring.V3.InternalChecker.Types.State.Unspecified) {
         State = other.State;
       }
       _unknownFields = pb::UnknownFieldSet.MergeFrom(_unknownFields, other._unknownFields);
@@ -413,6 +468,9 @@ namespace Google.Cloud.Monitoring.V3 {
 
     [global::System.Diagnostics.DebuggerNonUserCodeAttribute]
     public void MergeFrom(pb::CodedInputStream input) {
+    #if !GOOGLE_PROTOBUF_REFSTRUCT_COMPATIBILITY_MODE
+      input.ReadRawMessage(this);
+    #else
       uint tag;
       while ((tag = input.ReadTag()) != 0) {
         switch(tag) {
@@ -445,7 +503,46 @@ namespace Google.Cloud.Monitoring.V3 {
           }
         }
       }
+    #endif
     }
+
+    #if !GOOGLE_PROTOBUF_REFSTRUCT_COMPATIBILITY_MODE
+    [global::System.Diagnostics.DebuggerNonUserCodeAttribute]
+    void pb::IBufferMessage.InternalMergeFrom(ref pb::ParseContext input) {
+      uint tag;
+      while ((tag = input.ReadTag()) != 0) {
+        switch(tag) {
+          default:
+            _unknownFields = pb::UnknownFieldSet.MergeFieldFrom(_unknownFields, ref input);
+            break;
+          case 10: {
+            Name = input.ReadString();
+            break;
+          }
+          case 18: {
+            DisplayName = input.ReadString();
+            break;
+          }
+          case 26: {
+            Network = input.ReadString();
+            break;
+          }
+          case 34: {
+            GcpZone = input.ReadString();
+            break;
+          }
+          case 50: {
+            PeerProjectId = input.ReadString();
+            break;
+          }
+          case 56: {
+            State = (global::Google.Cloud.Monitoring.V3.InternalChecker.Types.State) input.ReadEnum();
+            break;
+          }
+        }
+      }
+    }
+    #endif
 
     #region Nested types
     /// <summary>Container for nested types declared in the InternalChecker message type.</summary>
@@ -488,7 +585,11 @@ namespace Google.Cloud.Monitoring.V3 {
   /// This message configures which resources and services to monitor for
   /// availability.
   /// </summary>
-  public sealed partial class UptimeCheckConfig : pb::IMessage<UptimeCheckConfig> {
+  public sealed partial class UptimeCheckConfig : pb::IMessage<UptimeCheckConfig>
+  #if !GOOGLE_PROTOBUF_REFSTRUCT_COMPATIBILITY_MODE
+      , pb::IBufferMessage
+  #endif
+  {
     private static readonly pb::MessageParser<UptimeCheckConfig> _parser = new pb::MessageParser<UptimeCheckConfig>(() => new UptimeCheckConfig());
     private pb::UnknownFieldSet _unknownFields;
     [global::System.Diagnostics.DebuggerNonUserCodeAttribute]
@@ -553,7 +654,7 @@ namespace Google.Cloud.Monitoring.V3 {
     /// <summary>
     /// A unique resource name for this Uptime check configuration. The format is:
     ///
-    ///   `projects/[PROJECT_ID]/uptimeCheckConfigs/[UPTIME_CHECK_ID]`.
+    ///      projects/[PROJECT_ID_OR_NUMBER]/uptimeCheckConfigs/[UPTIME_CHECK_ID]
     ///
     /// This field should be omitted when creating the Uptime check configuration;
     /// on create, the resource name is assigned by the server and included in the
@@ -846,6 +947,9 @@ namespace Google.Cloud.Monitoring.V3 {
 
     [global::System.Diagnostics.DebuggerNonUserCodeAttribute]
     public void WriteTo(pb::CodedOutputStream output) {
+    #if !GOOGLE_PROTOBUF_REFSTRUCT_COMPATIBILITY_MODE
+      output.WriteRawMessage(this);
+    #else
       if (Name.Length != 0) {
         output.WriteRawTag(10);
         output.WriteString(Name);
@@ -888,7 +992,56 @@ namespace Google.Cloud.Monitoring.V3 {
       if (_unknownFields != null) {
         _unknownFields.WriteTo(output);
       }
+    #endif
     }
+
+    #if !GOOGLE_PROTOBUF_REFSTRUCT_COMPATIBILITY_MODE
+    [global::System.Diagnostics.DebuggerNonUserCodeAttribute]
+    void pb::IBufferMessage.InternalWriteTo(ref pb::WriteContext output) {
+      if (Name.Length != 0) {
+        output.WriteRawTag(10);
+        output.WriteString(Name);
+      }
+      if (DisplayName.Length != 0) {
+        output.WriteRawTag(18);
+        output.WriteString(DisplayName);
+      }
+      if (resourceCase_ == ResourceOneofCase.MonitoredResource) {
+        output.WriteRawTag(26);
+        output.WriteMessage(MonitoredResource);
+      }
+      if (resourceCase_ == ResourceOneofCase.ResourceGroup) {
+        output.WriteRawTag(34);
+        output.WriteMessage(ResourceGroup);
+      }
+      if (checkRequestTypeCase_ == CheckRequestTypeOneofCase.HttpCheck) {
+        output.WriteRawTag(42);
+        output.WriteMessage(HttpCheck);
+      }
+      if (checkRequestTypeCase_ == CheckRequestTypeOneofCase.TcpCheck) {
+        output.WriteRawTag(50);
+        output.WriteMessage(TcpCheck);
+      }
+      if (period_ != null) {
+        output.WriteRawTag(58);
+        output.WriteMessage(Period);
+      }
+      if (timeout_ != null) {
+        output.WriteRawTag(66);
+        output.WriteMessage(Timeout);
+      }
+      contentMatchers_.WriteTo(ref output, _repeated_contentMatchers_codec);
+      selectedRegions_.WriteTo(ref output, _repeated_selectedRegions_codec);
+      internalCheckers_.WriteTo(ref output, _repeated_internalCheckers_codec);
+      if (IsInternal != false) {
+        output.WriteRawTag(120);
+        output.WriteBool(IsInternal);
+      }
+      if (_unknownFields != null) {
+        _unknownFields.WriteTo(ref output);
+      }
+    }
+    #endif
 
     [global::System.Diagnostics.DebuggerNonUserCodeAttribute]
     public int CalculateSize() {
@@ -993,6 +1146,9 @@ namespace Google.Cloud.Monitoring.V3 {
 
     [global::System.Diagnostics.DebuggerNonUserCodeAttribute]
     public void MergeFrom(pb::CodedInputStream input) {
+    #if !GOOGLE_PROTOBUF_REFSTRUCT_COMPATIBILITY_MODE
+      input.ReadRawMessage(this);
+    #else
       uint tag;
       while ((tag = input.ReadTag()) != 0) {
         switch(tag) {
@@ -1076,7 +1232,97 @@ namespace Google.Cloud.Monitoring.V3 {
           }
         }
       }
+    #endif
     }
+
+    #if !GOOGLE_PROTOBUF_REFSTRUCT_COMPATIBILITY_MODE
+    [global::System.Diagnostics.DebuggerNonUserCodeAttribute]
+    void pb::IBufferMessage.InternalMergeFrom(ref pb::ParseContext input) {
+      uint tag;
+      while ((tag = input.ReadTag()) != 0) {
+        switch(tag) {
+          default:
+            _unknownFields = pb::UnknownFieldSet.MergeFieldFrom(_unknownFields, ref input);
+            break;
+          case 10: {
+            Name = input.ReadString();
+            break;
+          }
+          case 18: {
+            DisplayName = input.ReadString();
+            break;
+          }
+          case 26: {
+            global::Google.Api.MonitoredResource subBuilder = new global::Google.Api.MonitoredResource();
+            if (resourceCase_ == ResourceOneofCase.MonitoredResource) {
+              subBuilder.MergeFrom(MonitoredResource);
+            }
+            input.ReadMessage(subBuilder);
+            MonitoredResource = subBuilder;
+            break;
+          }
+          case 34: {
+            global::Google.Cloud.Monitoring.V3.UptimeCheckConfig.Types.ResourceGroup subBuilder = new global::Google.Cloud.Monitoring.V3.UptimeCheckConfig.Types.ResourceGroup();
+            if (resourceCase_ == ResourceOneofCase.ResourceGroup) {
+              subBuilder.MergeFrom(ResourceGroup);
+            }
+            input.ReadMessage(subBuilder);
+            ResourceGroup = subBuilder;
+            break;
+          }
+          case 42: {
+            global::Google.Cloud.Monitoring.V3.UptimeCheckConfig.Types.HttpCheck subBuilder = new global::Google.Cloud.Monitoring.V3.UptimeCheckConfig.Types.HttpCheck();
+            if (checkRequestTypeCase_ == CheckRequestTypeOneofCase.HttpCheck) {
+              subBuilder.MergeFrom(HttpCheck);
+            }
+            input.ReadMessage(subBuilder);
+            HttpCheck = subBuilder;
+            break;
+          }
+          case 50: {
+            global::Google.Cloud.Monitoring.V3.UptimeCheckConfig.Types.TcpCheck subBuilder = new global::Google.Cloud.Monitoring.V3.UptimeCheckConfig.Types.TcpCheck();
+            if (checkRequestTypeCase_ == CheckRequestTypeOneofCase.TcpCheck) {
+              subBuilder.MergeFrom(TcpCheck);
+            }
+            input.ReadMessage(subBuilder);
+            TcpCheck = subBuilder;
+            break;
+          }
+          case 58: {
+            if (period_ == null) {
+              Period = new global::Google.Protobuf.WellKnownTypes.Duration();
+            }
+            input.ReadMessage(Period);
+            break;
+          }
+          case 66: {
+            if (timeout_ == null) {
+              Timeout = new global::Google.Protobuf.WellKnownTypes.Duration();
+            }
+            input.ReadMessage(Timeout);
+            break;
+          }
+          case 74: {
+            contentMatchers_.AddEntriesFrom(ref input, _repeated_contentMatchers_codec);
+            break;
+          }
+          case 82:
+          case 80: {
+            selectedRegions_.AddEntriesFrom(ref input, _repeated_selectedRegions_codec);
+            break;
+          }
+          case 114: {
+            internalCheckers_.AddEntriesFrom(ref input, _repeated_internalCheckers_codec);
+            break;
+          }
+          case 120: {
+            IsInternal = input.ReadBool();
+            break;
+          }
+        }
+      }
+    }
+    #endif
 
     #region Nested types
     /// <summary>Container for nested types declared in the UptimeCheckConfig message type.</summary>
@@ -1086,7 +1332,11 @@ namespace Google.Cloud.Monitoring.V3 {
       /// The resource submessage for group checks. It can be used instead of a
       /// monitored resource, when multiple resources are being monitored.
       /// </summary>
-      public sealed partial class ResourceGroup : pb::IMessage<ResourceGroup> {
+      public sealed partial class ResourceGroup : pb::IMessage<ResourceGroup>
+      #if !GOOGLE_PROTOBUF_REFSTRUCT_COMPATIBILITY_MODE
+          , pb::IBufferMessage
+      #endif
+      {
         private static readonly pb::MessageParser<ResourceGroup> _parser = new pb::MessageParser<ResourceGroup>(() => new ResourceGroup());
         private pb::UnknownFieldSet _unknownFields;
         [global::System.Diagnostics.DebuggerNonUserCodeAttribute]
@@ -1126,7 +1376,8 @@ namespace Google.Cloud.Monitoring.V3 {
         private string groupId_ = "";
         /// <summary>
         /// The group of resources being monitored. Should be only the `[GROUP_ID]`,
-        /// and not the full-path `projects/[PROJECT_ID]/groups/[GROUP_ID]`.
+        /// and not the full-path
+        /// `projects/[PROJECT_ID_OR_NUMBER]/groups/[GROUP_ID]`.
         /// </summary>
         [global::System.Diagnostics.DebuggerNonUserCodeAttribute]
         public string GroupId {
@@ -1138,7 +1389,7 @@ namespace Google.Cloud.Monitoring.V3 {
 
         /// <summary>Field number for the "resource_type" field.</summary>
         public const int ResourceTypeFieldNumber = 2;
-        private global::Google.Cloud.Monitoring.V3.GroupResourceType resourceType_ = 0;
+        private global::Google.Cloud.Monitoring.V3.GroupResourceType resourceType_ = global::Google.Cloud.Monitoring.V3.GroupResourceType.ResourceTypeUnspecified;
         /// <summary>
         /// The resource type of the group members.
         /// </summary>
@@ -1172,7 +1423,7 @@ namespace Google.Cloud.Monitoring.V3 {
         public override int GetHashCode() {
           int hash = 1;
           if (GroupId.Length != 0) hash ^= GroupId.GetHashCode();
-          if (ResourceType != 0) hash ^= ResourceType.GetHashCode();
+          if (ResourceType != global::Google.Cloud.Monitoring.V3.GroupResourceType.ResourceTypeUnspecified) hash ^= ResourceType.GetHashCode();
           if (_unknownFields != null) {
             hash ^= _unknownFields.GetHashCode();
           }
@@ -1186,18 +1437,39 @@ namespace Google.Cloud.Monitoring.V3 {
 
         [global::System.Diagnostics.DebuggerNonUserCodeAttribute]
         public void WriteTo(pb::CodedOutputStream output) {
+        #if !GOOGLE_PROTOBUF_REFSTRUCT_COMPATIBILITY_MODE
+          output.WriteRawMessage(this);
+        #else
           if (GroupId.Length != 0) {
             output.WriteRawTag(10);
             output.WriteString(GroupId);
           }
-          if (ResourceType != 0) {
+          if (ResourceType != global::Google.Cloud.Monitoring.V3.GroupResourceType.ResourceTypeUnspecified) {
             output.WriteRawTag(16);
             output.WriteEnum((int) ResourceType);
           }
           if (_unknownFields != null) {
             _unknownFields.WriteTo(output);
           }
+        #endif
         }
+
+        #if !GOOGLE_PROTOBUF_REFSTRUCT_COMPATIBILITY_MODE
+        [global::System.Diagnostics.DebuggerNonUserCodeAttribute]
+        void pb::IBufferMessage.InternalWriteTo(ref pb::WriteContext output) {
+          if (GroupId.Length != 0) {
+            output.WriteRawTag(10);
+            output.WriteString(GroupId);
+          }
+          if (ResourceType != global::Google.Cloud.Monitoring.V3.GroupResourceType.ResourceTypeUnspecified) {
+            output.WriteRawTag(16);
+            output.WriteEnum((int) ResourceType);
+          }
+          if (_unknownFields != null) {
+            _unknownFields.WriteTo(ref output);
+          }
+        }
+        #endif
 
         [global::System.Diagnostics.DebuggerNonUserCodeAttribute]
         public int CalculateSize() {
@@ -1205,7 +1477,7 @@ namespace Google.Cloud.Monitoring.V3 {
           if (GroupId.Length != 0) {
             size += 1 + pb::CodedOutputStream.ComputeStringSize(GroupId);
           }
-          if (ResourceType != 0) {
+          if (ResourceType != global::Google.Cloud.Monitoring.V3.GroupResourceType.ResourceTypeUnspecified) {
             size += 1 + pb::CodedOutputStream.ComputeEnumSize((int) ResourceType);
           }
           if (_unknownFields != null) {
@@ -1222,7 +1494,7 @@ namespace Google.Cloud.Monitoring.V3 {
           if (other.GroupId.Length != 0) {
             GroupId = other.GroupId;
           }
-          if (other.ResourceType != 0) {
+          if (other.ResourceType != global::Google.Cloud.Monitoring.V3.GroupResourceType.ResourceTypeUnspecified) {
             ResourceType = other.ResourceType;
           }
           _unknownFields = pb::UnknownFieldSet.MergeFrom(_unknownFields, other._unknownFields);
@@ -1230,6 +1502,9 @@ namespace Google.Cloud.Monitoring.V3 {
 
         [global::System.Diagnostics.DebuggerNonUserCodeAttribute]
         public void MergeFrom(pb::CodedInputStream input) {
+        #if !GOOGLE_PROTOBUF_REFSTRUCT_COMPATIBILITY_MODE
+          input.ReadRawMessage(this);
+        #else
           uint tag;
           while ((tag = input.ReadTag()) != 0) {
             switch(tag) {
@@ -1246,14 +1521,41 @@ namespace Google.Cloud.Monitoring.V3 {
               }
             }
           }
+        #endif
         }
+
+        #if !GOOGLE_PROTOBUF_REFSTRUCT_COMPATIBILITY_MODE
+        [global::System.Diagnostics.DebuggerNonUserCodeAttribute]
+        void pb::IBufferMessage.InternalMergeFrom(ref pb::ParseContext input) {
+          uint tag;
+          while ((tag = input.ReadTag()) != 0) {
+            switch(tag) {
+              default:
+                _unknownFields = pb::UnknownFieldSet.MergeFieldFrom(_unknownFields, ref input);
+                break;
+              case 10: {
+                GroupId = input.ReadString();
+                break;
+              }
+              case 16: {
+                ResourceType = (global::Google.Cloud.Monitoring.V3.GroupResourceType) input.ReadEnum();
+                break;
+              }
+            }
+          }
+        }
+        #endif
 
       }
 
       /// <summary>
       /// Information involved in an HTTP/HTTPS Uptime check request.
       /// </summary>
-      public sealed partial class HttpCheck : pb::IMessage<HttpCheck> {
+      public sealed partial class HttpCheck : pb::IMessage<HttpCheck>
+      #if !GOOGLE_PROTOBUF_REFSTRUCT_COMPATIBILITY_MODE
+          , pb::IBufferMessage
+      #endif
+      {
         private static readonly pb::MessageParser<HttpCheck> _parser = new pb::MessageParser<HttpCheck>(() => new HttpCheck());
         private pb::UnknownFieldSet _unknownFields;
         [global::System.Diagnostics.DebuggerNonUserCodeAttribute]
@@ -1278,19 +1580,36 @@ namespace Google.Cloud.Monitoring.V3 {
 
         [global::System.Diagnostics.DebuggerNonUserCodeAttribute]
         public HttpCheck(HttpCheck other) : this() {
+          requestMethod_ = other.requestMethod_;
           useSsl_ = other.useSsl_;
           path_ = other.path_;
           port_ = other.port_;
           authInfo_ = other.authInfo_ != null ? other.authInfo_.Clone() : null;
           maskHeaders_ = other.maskHeaders_;
           headers_ = other.headers_.Clone();
+          contentType_ = other.contentType_;
           validateSsl_ = other.validateSsl_;
+          body_ = other.body_;
           _unknownFields = pb::UnknownFieldSet.Clone(other._unknownFields);
         }
 
         [global::System.Diagnostics.DebuggerNonUserCodeAttribute]
         public HttpCheck Clone() {
           return new HttpCheck(this);
+        }
+
+        /// <summary>Field number for the "request_method" field.</summary>
+        public const int RequestMethodFieldNumber = 8;
+        private global::Google.Cloud.Monitoring.V3.UptimeCheckConfig.Types.HttpCheck.Types.RequestMethod requestMethod_ = global::Google.Cloud.Monitoring.V3.UptimeCheckConfig.Types.HttpCheck.Types.RequestMethod.MethodUnspecified;
+        /// <summary>
+        /// The HTTP request method to use for the check.
+        /// </summary>
+        [global::System.Diagnostics.DebuggerNonUserCodeAttribute]
+        public global::Google.Cloud.Monitoring.V3.UptimeCheckConfig.Types.HttpCheck.Types.RequestMethod RequestMethod {
+          get { return requestMethod_; }
+          set {
+            requestMethod_ = value;
+          }
         }
 
         /// <summary>Field number for the "use_ssl" field.</summary>
@@ -1379,7 +1698,7 @@ namespace Google.Cloud.Monitoring.V3 {
         /// <summary>Field number for the "headers" field.</summary>
         public const int HeadersFieldNumber = 6;
         private static readonly pbc::MapField<string, string>.Codec _map_headers_codec
-            = new pbc::MapField<string, string>.Codec(pb::FieldCodec.ForString(10), pb::FieldCodec.ForString(18), 50);
+            = new pbc::MapField<string, string>.Codec(pb::FieldCodec.ForString(10, ""), pb::FieldCodec.ForString(18, ""), 50);
         private readonly pbc::MapField<string, string> headers_ = new pbc::MapField<string, string>();
         /// <summary>
         /// The list of headers to send as part of the Uptime check request.
@@ -1394,6 +1713,20 @@ namespace Google.Cloud.Monitoring.V3 {
         [global::System.Diagnostics.DebuggerNonUserCodeAttribute]
         public pbc::MapField<string, string> Headers {
           get { return headers_; }
+        }
+
+        /// <summary>Field number for the "content_type" field.</summary>
+        public const int ContentTypeFieldNumber = 9;
+        private global::Google.Cloud.Monitoring.V3.UptimeCheckConfig.Types.HttpCheck.Types.ContentType contentType_ = global::Google.Cloud.Monitoring.V3.UptimeCheckConfig.Types.HttpCheck.Types.ContentType.TypeUnspecified;
+        /// <summary>
+        /// The content type to use for the check.
+        /// </summary>
+        [global::System.Diagnostics.DebuggerNonUserCodeAttribute]
+        public global::Google.Cloud.Monitoring.V3.UptimeCheckConfig.Types.HttpCheck.Types.ContentType ContentType {
+          get { return contentType_; }
+          set {
+            contentType_ = value;
+          }
         }
 
         /// <summary>Field number for the "validate_ssl" field.</summary>
@@ -1413,6 +1746,24 @@ namespace Google.Cloud.Monitoring.V3 {
           }
         }
 
+        /// <summary>Field number for the "body" field.</summary>
+        public const int BodyFieldNumber = 10;
+        private pb::ByteString body_ = pb::ByteString.Empty;
+        /// <summary>
+        /// The request body associated with the HTTP request. If `content_type` is
+        /// `URL_ENCODED`, the body passed in must be URL-encoded. Users can provide
+        /// a `Content-Length` header via the `headers` field or the API will do
+        /// so. The maximum byte size is 1 megabyte. Note: As with all `bytes` fields
+        /// JSON representations are base64 encoded.
+        /// </summary>
+        [global::System.Diagnostics.DebuggerNonUserCodeAttribute]
+        public pb::ByteString Body {
+          get { return body_; }
+          set {
+            body_ = pb::ProtoPreconditions.CheckNotNull(value, "value");
+          }
+        }
+
         [global::System.Diagnostics.DebuggerNonUserCodeAttribute]
         public override bool Equals(object other) {
           return Equals(other as HttpCheck);
@@ -1426,26 +1777,32 @@ namespace Google.Cloud.Monitoring.V3 {
           if (ReferenceEquals(other, this)) {
             return true;
           }
+          if (RequestMethod != other.RequestMethod) return false;
           if (UseSsl != other.UseSsl) return false;
           if (Path != other.Path) return false;
           if (Port != other.Port) return false;
           if (!object.Equals(AuthInfo, other.AuthInfo)) return false;
           if (MaskHeaders != other.MaskHeaders) return false;
           if (!Headers.Equals(other.Headers)) return false;
+          if (ContentType != other.ContentType) return false;
           if (ValidateSsl != other.ValidateSsl) return false;
+          if (Body != other.Body) return false;
           return Equals(_unknownFields, other._unknownFields);
         }
 
         [global::System.Diagnostics.DebuggerNonUserCodeAttribute]
         public override int GetHashCode() {
           int hash = 1;
+          if (RequestMethod != global::Google.Cloud.Monitoring.V3.UptimeCheckConfig.Types.HttpCheck.Types.RequestMethod.MethodUnspecified) hash ^= RequestMethod.GetHashCode();
           if (UseSsl != false) hash ^= UseSsl.GetHashCode();
           if (Path.Length != 0) hash ^= Path.GetHashCode();
           if (Port != 0) hash ^= Port.GetHashCode();
           if (authInfo_ != null) hash ^= AuthInfo.GetHashCode();
           if (MaskHeaders != false) hash ^= MaskHeaders.GetHashCode();
           hash ^= Headers.GetHashCode();
+          if (ContentType != global::Google.Cloud.Monitoring.V3.UptimeCheckConfig.Types.HttpCheck.Types.ContentType.TypeUnspecified) hash ^= ContentType.GetHashCode();
           if (ValidateSsl != false) hash ^= ValidateSsl.GetHashCode();
+          if (Body.Length != 0) hash ^= Body.GetHashCode();
           if (_unknownFields != null) {
             hash ^= _unknownFields.GetHashCode();
           }
@@ -1459,6 +1816,9 @@ namespace Google.Cloud.Monitoring.V3 {
 
         [global::System.Diagnostics.DebuggerNonUserCodeAttribute]
         public void WriteTo(pb::CodedOutputStream output) {
+        #if !GOOGLE_PROTOBUF_REFSTRUCT_COMPATIBILITY_MODE
+          output.WriteRawMessage(this);
+        #else
           if (UseSsl != false) {
             output.WriteRawTag(8);
             output.WriteBool(UseSsl);
@@ -1484,14 +1844,76 @@ namespace Google.Cloud.Monitoring.V3 {
             output.WriteRawTag(56);
             output.WriteBool(ValidateSsl);
           }
+          if (RequestMethod != global::Google.Cloud.Monitoring.V3.UptimeCheckConfig.Types.HttpCheck.Types.RequestMethod.MethodUnspecified) {
+            output.WriteRawTag(64);
+            output.WriteEnum((int) RequestMethod);
+          }
+          if (ContentType != global::Google.Cloud.Monitoring.V3.UptimeCheckConfig.Types.HttpCheck.Types.ContentType.TypeUnspecified) {
+            output.WriteRawTag(72);
+            output.WriteEnum((int) ContentType);
+          }
+          if (Body.Length != 0) {
+            output.WriteRawTag(82);
+            output.WriteBytes(Body);
+          }
           if (_unknownFields != null) {
             _unknownFields.WriteTo(output);
           }
+        #endif
         }
+
+        #if !GOOGLE_PROTOBUF_REFSTRUCT_COMPATIBILITY_MODE
+        [global::System.Diagnostics.DebuggerNonUserCodeAttribute]
+        void pb::IBufferMessage.InternalWriteTo(ref pb::WriteContext output) {
+          if (UseSsl != false) {
+            output.WriteRawTag(8);
+            output.WriteBool(UseSsl);
+          }
+          if (Path.Length != 0) {
+            output.WriteRawTag(18);
+            output.WriteString(Path);
+          }
+          if (Port != 0) {
+            output.WriteRawTag(24);
+            output.WriteInt32(Port);
+          }
+          if (authInfo_ != null) {
+            output.WriteRawTag(34);
+            output.WriteMessage(AuthInfo);
+          }
+          if (MaskHeaders != false) {
+            output.WriteRawTag(40);
+            output.WriteBool(MaskHeaders);
+          }
+          headers_.WriteTo(ref output, _map_headers_codec);
+          if (ValidateSsl != false) {
+            output.WriteRawTag(56);
+            output.WriteBool(ValidateSsl);
+          }
+          if (RequestMethod != global::Google.Cloud.Monitoring.V3.UptimeCheckConfig.Types.HttpCheck.Types.RequestMethod.MethodUnspecified) {
+            output.WriteRawTag(64);
+            output.WriteEnum((int) RequestMethod);
+          }
+          if (ContentType != global::Google.Cloud.Monitoring.V3.UptimeCheckConfig.Types.HttpCheck.Types.ContentType.TypeUnspecified) {
+            output.WriteRawTag(72);
+            output.WriteEnum((int) ContentType);
+          }
+          if (Body.Length != 0) {
+            output.WriteRawTag(82);
+            output.WriteBytes(Body);
+          }
+          if (_unknownFields != null) {
+            _unknownFields.WriteTo(ref output);
+          }
+        }
+        #endif
 
         [global::System.Diagnostics.DebuggerNonUserCodeAttribute]
         public int CalculateSize() {
           int size = 0;
+          if (RequestMethod != global::Google.Cloud.Monitoring.V3.UptimeCheckConfig.Types.HttpCheck.Types.RequestMethod.MethodUnspecified) {
+            size += 1 + pb::CodedOutputStream.ComputeEnumSize((int) RequestMethod);
+          }
           if (UseSsl != false) {
             size += 1 + 1;
           }
@@ -1508,8 +1930,14 @@ namespace Google.Cloud.Monitoring.V3 {
             size += 1 + 1;
           }
           size += headers_.CalculateSize(_map_headers_codec);
+          if (ContentType != global::Google.Cloud.Monitoring.V3.UptimeCheckConfig.Types.HttpCheck.Types.ContentType.TypeUnspecified) {
+            size += 1 + pb::CodedOutputStream.ComputeEnumSize((int) ContentType);
+          }
           if (ValidateSsl != false) {
             size += 1 + 1;
+          }
+          if (Body.Length != 0) {
+            size += 1 + pb::CodedOutputStream.ComputeBytesSize(Body);
           }
           if (_unknownFields != null) {
             size += _unknownFields.CalculateSize();
@@ -1521,6 +1949,9 @@ namespace Google.Cloud.Monitoring.V3 {
         public void MergeFrom(HttpCheck other) {
           if (other == null) {
             return;
+          }
+          if (other.RequestMethod != global::Google.Cloud.Monitoring.V3.UptimeCheckConfig.Types.HttpCheck.Types.RequestMethod.MethodUnspecified) {
+            RequestMethod = other.RequestMethod;
           }
           if (other.UseSsl != false) {
             UseSsl = other.UseSsl;
@@ -1541,14 +1972,23 @@ namespace Google.Cloud.Monitoring.V3 {
             MaskHeaders = other.MaskHeaders;
           }
           headers_.Add(other.headers_);
+          if (other.ContentType != global::Google.Cloud.Monitoring.V3.UptimeCheckConfig.Types.HttpCheck.Types.ContentType.TypeUnspecified) {
+            ContentType = other.ContentType;
+          }
           if (other.ValidateSsl != false) {
             ValidateSsl = other.ValidateSsl;
+          }
+          if (other.Body.Length != 0) {
+            Body = other.Body;
           }
           _unknownFields = pb::UnknownFieldSet.MergeFrom(_unknownFields, other._unknownFields);
         }
 
         [global::System.Diagnostics.DebuggerNonUserCodeAttribute]
         public void MergeFrom(pb::CodedInputStream input) {
+        #if !GOOGLE_PROTOBUF_REFSTRUCT_COMPATIBILITY_MODE
+          input.ReadRawMessage(this);
+        #else
           uint tag;
           while ((tag = input.ReadTag()) != 0) {
             switch(tag) {
@@ -1586,21 +2026,131 @@ namespace Google.Cloud.Monitoring.V3 {
                 ValidateSsl = input.ReadBool();
                 break;
               }
+              case 64: {
+                RequestMethod = (global::Google.Cloud.Monitoring.V3.UptimeCheckConfig.Types.HttpCheck.Types.RequestMethod) input.ReadEnum();
+                break;
+              }
+              case 72: {
+                ContentType = (global::Google.Cloud.Monitoring.V3.UptimeCheckConfig.Types.HttpCheck.Types.ContentType) input.ReadEnum();
+                break;
+              }
+              case 82: {
+                Body = input.ReadBytes();
+                break;
+              }
+            }
+          }
+        #endif
+        }
+
+        #if !GOOGLE_PROTOBUF_REFSTRUCT_COMPATIBILITY_MODE
+        [global::System.Diagnostics.DebuggerNonUserCodeAttribute]
+        void pb::IBufferMessage.InternalMergeFrom(ref pb::ParseContext input) {
+          uint tag;
+          while ((tag = input.ReadTag()) != 0) {
+            switch(tag) {
+              default:
+                _unknownFields = pb::UnknownFieldSet.MergeFieldFrom(_unknownFields, ref input);
+                break;
+              case 8: {
+                UseSsl = input.ReadBool();
+                break;
+              }
+              case 18: {
+                Path = input.ReadString();
+                break;
+              }
+              case 24: {
+                Port = input.ReadInt32();
+                break;
+              }
+              case 34: {
+                if (authInfo_ == null) {
+                  AuthInfo = new global::Google.Cloud.Monitoring.V3.UptimeCheckConfig.Types.HttpCheck.Types.BasicAuthentication();
+                }
+                input.ReadMessage(AuthInfo);
+                break;
+              }
+              case 40: {
+                MaskHeaders = input.ReadBool();
+                break;
+              }
+              case 50: {
+                headers_.AddEntriesFrom(ref input, _map_headers_codec);
+                break;
+              }
+              case 56: {
+                ValidateSsl = input.ReadBool();
+                break;
+              }
+              case 64: {
+                RequestMethod = (global::Google.Cloud.Monitoring.V3.UptimeCheckConfig.Types.HttpCheck.Types.RequestMethod) input.ReadEnum();
+                break;
+              }
+              case 72: {
+                ContentType = (global::Google.Cloud.Monitoring.V3.UptimeCheckConfig.Types.HttpCheck.Types.ContentType) input.ReadEnum();
+                break;
+              }
+              case 82: {
+                Body = input.ReadBytes();
+                break;
+              }
             }
           }
         }
+        #endif
 
         #region Nested types
         /// <summary>Container for nested types declared in the HttpCheck message type.</summary>
         [global::System.Diagnostics.DebuggerNonUserCodeAttribute]
         public static partial class Types {
           /// <summary>
+          /// The HTTP request method options.
+          /// </summary>
+          public enum RequestMethod {
+            /// <summary>
+            /// No request method specified.
+            /// </summary>
+            [pbr::OriginalName("METHOD_UNSPECIFIED")] MethodUnspecified = 0,
+            /// <summary>
+            /// GET request.
+            /// </summary>
+            [pbr::OriginalName("GET")] Get = 1,
+            /// <summary>
+            /// POST request.
+            /// </summary>
+            [pbr::OriginalName("POST")] Post = 2,
+          }
+
+          /// <summary>
+          /// Header options corresponding to the Content-Type of the body in HTTP
+          /// requests. Note that a `Content-Type` header cannot be present in the
+          /// `headers` field if this field is specified.
+          /// </summary>
+          public enum ContentType {
+            /// <summary>
+            /// No content type specified. If the request method is POST, an
+            /// unspecified content type results in a check creation rejection.
+            /// </summary>
+            [pbr::OriginalName("TYPE_UNSPECIFIED")] TypeUnspecified = 0,
+            /// <summary>
+            /// `body` is in URL-encoded form. Equivalent to setting the `Content-Type`
+            /// to `application/x-www-form-urlencoded` in the HTTP request.
+            /// </summary>
+            [pbr::OriginalName("URL_ENCODED")] UrlEncoded = 1,
+          }
+
+          /// <summary>
           /// The authentication parameters to provide to the specified resource or
           /// URL that requires a username and password. Currently, only
           /// [Basic HTTP authentication](https://tools.ietf.org/html/rfc7617) is
           /// supported in Uptime checks.
           /// </summary>
-          public sealed partial class BasicAuthentication : pb::IMessage<BasicAuthentication> {
+          public sealed partial class BasicAuthentication : pb::IMessage<BasicAuthentication>
+          #if !GOOGLE_PROTOBUF_REFSTRUCT_COMPATIBILITY_MODE
+              , pb::IBufferMessage
+          #endif
+          {
             private static readonly pb::MessageParser<BasicAuthentication> _parser = new pb::MessageParser<BasicAuthentication>(() => new BasicAuthentication());
             private pb::UnknownFieldSet _unknownFields;
             [global::System.Diagnostics.DebuggerNonUserCodeAttribute]
@@ -1699,6 +2249,9 @@ namespace Google.Cloud.Monitoring.V3 {
 
             [global::System.Diagnostics.DebuggerNonUserCodeAttribute]
             public void WriteTo(pb::CodedOutputStream output) {
+            #if !GOOGLE_PROTOBUF_REFSTRUCT_COMPATIBILITY_MODE
+              output.WriteRawMessage(this);
+            #else
               if (Username.Length != 0) {
                 output.WriteRawTag(10);
                 output.WriteString(Username);
@@ -1710,7 +2263,25 @@ namespace Google.Cloud.Monitoring.V3 {
               if (_unknownFields != null) {
                 _unknownFields.WriteTo(output);
               }
+            #endif
             }
+
+            #if !GOOGLE_PROTOBUF_REFSTRUCT_COMPATIBILITY_MODE
+            [global::System.Diagnostics.DebuggerNonUserCodeAttribute]
+            void pb::IBufferMessage.InternalWriteTo(ref pb::WriteContext output) {
+              if (Username.Length != 0) {
+                output.WriteRawTag(10);
+                output.WriteString(Username);
+              }
+              if (Password.Length != 0) {
+                output.WriteRawTag(18);
+                output.WriteString(Password);
+              }
+              if (_unknownFields != null) {
+                _unknownFields.WriteTo(ref output);
+              }
+            }
+            #endif
 
             [global::System.Diagnostics.DebuggerNonUserCodeAttribute]
             public int CalculateSize() {
@@ -1743,6 +2314,9 @@ namespace Google.Cloud.Monitoring.V3 {
 
             [global::System.Diagnostics.DebuggerNonUserCodeAttribute]
             public void MergeFrom(pb::CodedInputStream input) {
+            #if !GOOGLE_PROTOBUF_REFSTRUCT_COMPATIBILITY_MODE
+              input.ReadRawMessage(this);
+            #else
               uint tag;
               while ((tag = input.ReadTag()) != 0) {
                 switch(tag) {
@@ -1759,7 +2333,30 @@ namespace Google.Cloud.Monitoring.V3 {
                   }
                 }
               }
+            #endif
             }
+
+            #if !GOOGLE_PROTOBUF_REFSTRUCT_COMPATIBILITY_MODE
+            [global::System.Diagnostics.DebuggerNonUserCodeAttribute]
+            void pb::IBufferMessage.InternalMergeFrom(ref pb::ParseContext input) {
+              uint tag;
+              while ((tag = input.ReadTag()) != 0) {
+                switch(tag) {
+                  default:
+                    _unknownFields = pb::UnknownFieldSet.MergeFieldFrom(_unknownFields, ref input);
+                    break;
+                  case 10: {
+                    Username = input.ReadString();
+                    break;
+                  }
+                  case 18: {
+                    Password = input.ReadString();
+                    break;
+                  }
+                }
+              }
+            }
+            #endif
 
           }
 
@@ -1771,7 +2368,11 @@ namespace Google.Cloud.Monitoring.V3 {
       /// <summary>
       /// Information required for a TCP Uptime check request.
       /// </summary>
-      public sealed partial class TcpCheck : pb::IMessage<TcpCheck> {
+      public sealed partial class TcpCheck : pb::IMessage<TcpCheck>
+      #if !GOOGLE_PROTOBUF_REFSTRUCT_COMPATIBILITY_MODE
+          , pb::IBufferMessage
+      #endif
+      {
         private static readonly pb::MessageParser<TcpCheck> _parser = new pb::MessageParser<TcpCheck>(() => new TcpCheck());
         private pb::UnknownFieldSet _unknownFields;
         [global::System.Diagnostics.DebuggerNonUserCodeAttribute]
@@ -1855,6 +2456,9 @@ namespace Google.Cloud.Monitoring.V3 {
 
         [global::System.Diagnostics.DebuggerNonUserCodeAttribute]
         public void WriteTo(pb::CodedOutputStream output) {
+        #if !GOOGLE_PROTOBUF_REFSTRUCT_COMPATIBILITY_MODE
+          output.WriteRawMessage(this);
+        #else
           if (Port != 0) {
             output.WriteRawTag(8);
             output.WriteInt32(Port);
@@ -1862,7 +2466,21 @@ namespace Google.Cloud.Monitoring.V3 {
           if (_unknownFields != null) {
             _unknownFields.WriteTo(output);
           }
+        #endif
         }
+
+        #if !GOOGLE_PROTOBUF_REFSTRUCT_COMPATIBILITY_MODE
+        [global::System.Diagnostics.DebuggerNonUserCodeAttribute]
+        void pb::IBufferMessage.InternalWriteTo(ref pb::WriteContext output) {
+          if (Port != 0) {
+            output.WriteRawTag(8);
+            output.WriteInt32(Port);
+          }
+          if (_unknownFields != null) {
+            _unknownFields.WriteTo(ref output);
+          }
+        }
+        #endif
 
         [global::System.Diagnostics.DebuggerNonUserCodeAttribute]
         public int CalculateSize() {
@@ -1889,6 +2507,9 @@ namespace Google.Cloud.Monitoring.V3 {
 
         [global::System.Diagnostics.DebuggerNonUserCodeAttribute]
         public void MergeFrom(pb::CodedInputStream input) {
+        #if !GOOGLE_PROTOBUF_REFSTRUCT_COMPATIBILITY_MODE
+          input.ReadRawMessage(this);
+        #else
           uint tag;
           while ((tag = input.ReadTag()) != 0) {
             switch(tag) {
@@ -1901,7 +2522,26 @@ namespace Google.Cloud.Monitoring.V3 {
               }
             }
           }
+        #endif
         }
+
+        #if !GOOGLE_PROTOBUF_REFSTRUCT_COMPATIBILITY_MODE
+        [global::System.Diagnostics.DebuggerNonUserCodeAttribute]
+        void pb::IBufferMessage.InternalMergeFrom(ref pb::ParseContext input) {
+          uint tag;
+          while ((tag = input.ReadTag()) != 0) {
+            switch(tag) {
+              default:
+                _unknownFields = pb::UnknownFieldSet.MergeFieldFrom(_unknownFields, ref input);
+                break;
+              case 8: {
+                Port = input.ReadInt32();
+                break;
+              }
+            }
+          }
+        }
+        #endif
 
       }
 
@@ -1912,7 +2552,11 @@ namespace Google.Cloud.Monitoring.V3 {
       /// 1&amp;nbsp;MB of a TCP check's response) are examined for purposes of content
       /// matching.
       /// </summary>
-      public sealed partial class ContentMatcher : pb::IMessage<ContentMatcher> {
+      public sealed partial class ContentMatcher : pb::IMessage<ContentMatcher>
+      #if !GOOGLE_PROTOBUF_REFSTRUCT_COMPATIBILITY_MODE
+          , pb::IBufferMessage
+      #endif
+      {
         private static readonly pb::MessageParser<ContentMatcher> _parser = new pb::MessageParser<ContentMatcher>(() => new ContentMatcher());
         private pb::UnknownFieldSet _unknownFields;
         [global::System.Diagnostics.DebuggerNonUserCodeAttribute]
@@ -1964,7 +2608,7 @@ namespace Google.Cloud.Monitoring.V3 {
 
         /// <summary>Field number for the "matcher" field.</summary>
         public const int MatcherFieldNumber = 2;
-        private global::Google.Cloud.Monitoring.V3.UptimeCheckConfig.Types.ContentMatcher.Types.ContentMatcherOption matcher_ = 0;
+        private global::Google.Cloud.Monitoring.V3.UptimeCheckConfig.Types.ContentMatcher.Types.ContentMatcherOption matcher_ = global::Google.Cloud.Monitoring.V3.UptimeCheckConfig.Types.ContentMatcher.Types.ContentMatcherOption.Unspecified;
         /// <summary>
         /// The type of content matcher that will be applied to the server output,
         /// compared to the `content` string when the check is run.
@@ -1999,7 +2643,7 @@ namespace Google.Cloud.Monitoring.V3 {
         public override int GetHashCode() {
           int hash = 1;
           if (Content.Length != 0) hash ^= Content.GetHashCode();
-          if (Matcher != 0) hash ^= Matcher.GetHashCode();
+          if (Matcher != global::Google.Cloud.Monitoring.V3.UptimeCheckConfig.Types.ContentMatcher.Types.ContentMatcherOption.Unspecified) hash ^= Matcher.GetHashCode();
           if (_unknownFields != null) {
             hash ^= _unknownFields.GetHashCode();
           }
@@ -2013,18 +2657,39 @@ namespace Google.Cloud.Monitoring.V3 {
 
         [global::System.Diagnostics.DebuggerNonUserCodeAttribute]
         public void WriteTo(pb::CodedOutputStream output) {
+        #if !GOOGLE_PROTOBUF_REFSTRUCT_COMPATIBILITY_MODE
+          output.WriteRawMessage(this);
+        #else
           if (Content.Length != 0) {
             output.WriteRawTag(10);
             output.WriteString(Content);
           }
-          if (Matcher != 0) {
+          if (Matcher != global::Google.Cloud.Monitoring.V3.UptimeCheckConfig.Types.ContentMatcher.Types.ContentMatcherOption.Unspecified) {
             output.WriteRawTag(16);
             output.WriteEnum((int) Matcher);
           }
           if (_unknownFields != null) {
             _unknownFields.WriteTo(output);
           }
+        #endif
         }
+
+        #if !GOOGLE_PROTOBUF_REFSTRUCT_COMPATIBILITY_MODE
+        [global::System.Diagnostics.DebuggerNonUserCodeAttribute]
+        void pb::IBufferMessage.InternalWriteTo(ref pb::WriteContext output) {
+          if (Content.Length != 0) {
+            output.WriteRawTag(10);
+            output.WriteString(Content);
+          }
+          if (Matcher != global::Google.Cloud.Monitoring.V3.UptimeCheckConfig.Types.ContentMatcher.Types.ContentMatcherOption.Unspecified) {
+            output.WriteRawTag(16);
+            output.WriteEnum((int) Matcher);
+          }
+          if (_unknownFields != null) {
+            _unknownFields.WriteTo(ref output);
+          }
+        }
+        #endif
 
         [global::System.Diagnostics.DebuggerNonUserCodeAttribute]
         public int CalculateSize() {
@@ -2032,7 +2697,7 @@ namespace Google.Cloud.Monitoring.V3 {
           if (Content.Length != 0) {
             size += 1 + pb::CodedOutputStream.ComputeStringSize(Content);
           }
-          if (Matcher != 0) {
+          if (Matcher != global::Google.Cloud.Monitoring.V3.UptimeCheckConfig.Types.ContentMatcher.Types.ContentMatcherOption.Unspecified) {
             size += 1 + pb::CodedOutputStream.ComputeEnumSize((int) Matcher);
           }
           if (_unknownFields != null) {
@@ -2049,7 +2714,7 @@ namespace Google.Cloud.Monitoring.V3 {
           if (other.Content.Length != 0) {
             Content = other.Content;
           }
-          if (other.Matcher != 0) {
+          if (other.Matcher != global::Google.Cloud.Monitoring.V3.UptimeCheckConfig.Types.ContentMatcher.Types.ContentMatcherOption.Unspecified) {
             Matcher = other.Matcher;
           }
           _unknownFields = pb::UnknownFieldSet.MergeFrom(_unknownFields, other._unknownFields);
@@ -2057,6 +2722,9 @@ namespace Google.Cloud.Monitoring.V3 {
 
         [global::System.Diagnostics.DebuggerNonUserCodeAttribute]
         public void MergeFrom(pb::CodedInputStream input) {
+        #if !GOOGLE_PROTOBUF_REFSTRUCT_COMPATIBILITY_MODE
+          input.ReadRawMessage(this);
+        #else
           uint tag;
           while ((tag = input.ReadTag()) != 0) {
             switch(tag) {
@@ -2073,7 +2741,30 @@ namespace Google.Cloud.Monitoring.V3 {
               }
             }
           }
+        #endif
         }
+
+        #if !GOOGLE_PROTOBUF_REFSTRUCT_COMPATIBILITY_MODE
+        [global::System.Diagnostics.DebuggerNonUserCodeAttribute]
+        void pb::IBufferMessage.InternalMergeFrom(ref pb::ParseContext input) {
+          uint tag;
+          while ((tag = input.ReadTag()) != 0) {
+            switch(tag) {
+              default:
+                _unknownFields = pb::UnknownFieldSet.MergeFieldFrom(_unknownFields, ref input);
+                break;
+              case 10: {
+                Content = input.ReadString();
+                break;
+              }
+              case 16: {
+                Matcher = (global::Google.Cloud.Monitoring.V3.UptimeCheckConfig.Types.ContentMatcher.Types.ContentMatcherOption) input.ReadEnum();
+                break;
+              }
+            }
+          }
+        }
+        #endif
 
         #region Nested types
         /// <summary>Container for nested types declared in the ContentMatcher message type.</summary>
@@ -2128,7 +2819,11 @@ namespace Google.Cloud.Monitoring.V3 {
   /// Contains the region, location, and list of IP
   /// addresses where checkers in the location run from.
   /// </summary>
-  public sealed partial class UptimeCheckIp : pb::IMessage<UptimeCheckIp> {
+  public sealed partial class UptimeCheckIp : pb::IMessage<UptimeCheckIp>
+  #if !GOOGLE_PROTOBUF_REFSTRUCT_COMPATIBILITY_MODE
+      , pb::IBufferMessage
+  #endif
+  {
     private static readonly pb::MessageParser<UptimeCheckIp> _parser = new pb::MessageParser<UptimeCheckIp>(() => new UptimeCheckIp());
     private pb::UnknownFieldSet _unknownFields;
     [global::System.Diagnostics.DebuggerNonUserCodeAttribute]
@@ -2166,7 +2861,7 @@ namespace Google.Cloud.Monitoring.V3 {
 
     /// <summary>Field number for the "region" field.</summary>
     public const int RegionFieldNumber = 1;
-    private global::Google.Cloud.Monitoring.V3.UptimeCheckRegion region_ = 0;
+    private global::Google.Cloud.Monitoring.V3.UptimeCheckRegion region_ = global::Google.Cloud.Monitoring.V3.UptimeCheckRegion.RegionUnspecified;
     /// <summary>
     /// A broad region category in which the IP address is located.
     /// </summary>
@@ -2234,7 +2929,7 @@ namespace Google.Cloud.Monitoring.V3 {
     [global::System.Diagnostics.DebuggerNonUserCodeAttribute]
     public override int GetHashCode() {
       int hash = 1;
-      if (Region != 0) hash ^= Region.GetHashCode();
+      if (Region != global::Google.Cloud.Monitoring.V3.UptimeCheckRegion.RegionUnspecified) hash ^= Region.GetHashCode();
       if (Location.Length != 0) hash ^= Location.GetHashCode();
       if (IpAddress.Length != 0) hash ^= IpAddress.GetHashCode();
       if (_unknownFields != null) {
@@ -2250,7 +2945,10 @@ namespace Google.Cloud.Monitoring.V3 {
 
     [global::System.Diagnostics.DebuggerNonUserCodeAttribute]
     public void WriteTo(pb::CodedOutputStream output) {
-      if (Region != 0) {
+    #if !GOOGLE_PROTOBUF_REFSTRUCT_COMPATIBILITY_MODE
+      output.WriteRawMessage(this);
+    #else
+      if (Region != global::Google.Cloud.Monitoring.V3.UptimeCheckRegion.RegionUnspecified) {
         output.WriteRawTag(8);
         output.WriteEnum((int) Region);
       }
@@ -2265,12 +2963,34 @@ namespace Google.Cloud.Monitoring.V3 {
       if (_unknownFields != null) {
         _unknownFields.WriteTo(output);
       }
+    #endif
     }
+
+    #if !GOOGLE_PROTOBUF_REFSTRUCT_COMPATIBILITY_MODE
+    [global::System.Diagnostics.DebuggerNonUserCodeAttribute]
+    void pb::IBufferMessage.InternalWriteTo(ref pb::WriteContext output) {
+      if (Region != global::Google.Cloud.Monitoring.V3.UptimeCheckRegion.RegionUnspecified) {
+        output.WriteRawTag(8);
+        output.WriteEnum((int) Region);
+      }
+      if (Location.Length != 0) {
+        output.WriteRawTag(18);
+        output.WriteString(Location);
+      }
+      if (IpAddress.Length != 0) {
+        output.WriteRawTag(26);
+        output.WriteString(IpAddress);
+      }
+      if (_unknownFields != null) {
+        _unknownFields.WriteTo(ref output);
+      }
+    }
+    #endif
 
     [global::System.Diagnostics.DebuggerNonUserCodeAttribute]
     public int CalculateSize() {
       int size = 0;
-      if (Region != 0) {
+      if (Region != global::Google.Cloud.Monitoring.V3.UptimeCheckRegion.RegionUnspecified) {
         size += 1 + pb::CodedOutputStream.ComputeEnumSize((int) Region);
       }
       if (Location.Length != 0) {
@@ -2290,7 +3010,7 @@ namespace Google.Cloud.Monitoring.V3 {
       if (other == null) {
         return;
       }
-      if (other.Region != 0) {
+      if (other.Region != global::Google.Cloud.Monitoring.V3.UptimeCheckRegion.RegionUnspecified) {
         Region = other.Region;
       }
       if (other.Location.Length != 0) {
@@ -2304,6 +3024,9 @@ namespace Google.Cloud.Monitoring.V3 {
 
     [global::System.Diagnostics.DebuggerNonUserCodeAttribute]
     public void MergeFrom(pb::CodedInputStream input) {
+    #if !GOOGLE_PROTOBUF_REFSTRUCT_COMPATIBILITY_MODE
+      input.ReadRawMessage(this);
+    #else
       uint tag;
       while ((tag = input.ReadTag()) != 0) {
         switch(tag) {
@@ -2324,7 +3047,34 @@ namespace Google.Cloud.Monitoring.V3 {
           }
         }
       }
+    #endif
     }
+
+    #if !GOOGLE_PROTOBUF_REFSTRUCT_COMPATIBILITY_MODE
+    [global::System.Diagnostics.DebuggerNonUserCodeAttribute]
+    void pb::IBufferMessage.InternalMergeFrom(ref pb::ParseContext input) {
+      uint tag;
+      while ((tag = input.ReadTag()) != 0) {
+        switch(tag) {
+          default:
+            _unknownFields = pb::UnknownFieldSet.MergeFieldFrom(_unknownFields, ref input);
+            break;
+          case 8: {
+            Region = (global::Google.Cloud.Monitoring.V3.UptimeCheckRegion) input.ReadEnum();
+            break;
+          }
+          case 18: {
+            Location = input.ReadString();
+            break;
+          }
+          case 26: {
+            IpAddress = input.ReadString();
+            break;
+          }
+        }
+      }
+    }
+    #endif
 
   }
 

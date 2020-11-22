@@ -1,11 +1,9 @@
 {{title}}
 
-`Google.Cloud.Diagnostics.AspNetCore` is an ASP.NET Core instrumentation library for Google Stackdriver.
-It allows for simple integration of Stackdriver into ASP.NET applications with minimal code changes.
+`Google.Cloud.Diagnostics.AspNetCore` is an ASP.NET Core instrumentation library for Google Logging, Error Reporting and Tracing.
+It allows for simple integration of Google observability components into ASP.NET Core 2.1+ applications with minimal code changes.
 
-This package supports Stackdriver Error Reporting, Stackdriver
-Logging and Stackdriver Trace, and integrates with ASP.NET Core 2.1
-(which is the long-term support release of ASP.NET Core 2.x) and above.
+Note: ASP.NET Core 2.1 is the long-term support release of ASP.NET Core 2.x.
 
 {{version}}
 
@@ -13,10 +11,25 @@ Logging and Stackdriver Trace, and integrates with ASP.NET Core 2.1
 
 {{auth}}
 
+See [API Permissions for `entries.write`](https://cloud.google.com/logging/docs/access-control#api-permissions)
+for the permissions needed for Logging and Error Reporting.
+
+See [API Permissions for PatchTraces](https://cloud.google.com/trace/docs/iam#api_permissions)
+for the permissions needed for Tracing.
+
 # Note
 The Google.Cloud.Diagnostics.AspNetCore package attempts to collect the filename and line number when
 entries are collected. However, to be able to collect this information PDBs must be included with
 the deployed code.
+
+# Note
+When running on environments that limit or disable CPU usage for background activities, for instance
+[Google Cloud Run](https://cloud.google.com/run/docs/tips/general#avoiding_background_activities), take care
+not to use the timed buffer options for any of Logging, Tracing or Error Reporting. Take into account
+that the timed buffer is used for all of these components by default so you will need to explicitly
+configure the buffers by using the `Google.Cloud.Diagnostics.AspNetCore.LoggerOptions`,
+`Google.Cloud.Diagnostics.Common.TraceOptions` and `Google.Cloud.Diagnostics.Common.ErrorReportingOptions` classes.
+Below you'll find examples of how to configure the buffers.
 
 # Getting started
 
@@ -28,14 +41,14 @@ This configures Logging, Tracing and Error Reporting middleware.
 
 If your application is runnng on Google App Engine, Google
 Kubernetes Engine, Google Cloud Run or Google Compute Engine, you
-don't need to provide a value for `ProjectID`, `Service` and
+don't need to provide a value for `ProjectId`, `Service` and
 `Version` since they can be automatically obtained by the
 `UseGoogleDiagnostics` method as far as they make sense for the
 environment. (Not every environment has the concept of a "service"
 or "version".) The values used will be the ones associated with the running application.
 
 If your application is running outside of GCP, including when it
-runs locally, then you'll need to provide the `ProjectID` of the
+runs locally, then you'll need to provide the `ProjectId` of the
 Google Cloud Project in which to store the diagnostic information as
 well as the `Service` and `Version` with which to identify your
 application.
@@ -44,14 +57,12 @@ application.
 
 You can still initialize the separate components using the extension
 methods below. This can be useful if you only need to use some of
-the components or, for instance, if you need to access the
-`Configuration` property on the `Startup` class to obtain values for
-`ProjectID`, `Service` or `Version`.
+the observability components.
 
 Optional parameters on `UseGoogleDiagnostics` are also available to
 specify options for each of the components (logging, tracing and
 error reporting). This is typically useful for diagnosing problems,
-as described below
+as described below.
 
 # Error Reporting
 
@@ -67,12 +78,14 @@ as described below
 
 ## Initializing Logging
 
-Logging can be initialized using `ConfigureServices` when
-constructing a `WebHostBuilder()`:
+When configuring an `IWebHostBuilder` Logging can be initialized in
+two different ways:
+
+Using `ConfigureServices`:
 
 {{sample:Logging.RegisterGoogleLogger2}}
 
-Or using `ConfigureLogging` when constructing a `WebHostBuilder()`:
+Or using `ConfigureLogging`:
 
 {{sample:Logging.RegisterGoogleLogger3}}
 
@@ -81,7 +94,7 @@ log entry label providers) being used as the service provider is
 not available within `ConfigureLogging`.
 
 Alternatively, logging can be configured within the application's
-`ConfigureServices` method:
+`Startup.Configure` method:
 
 {{sample:Logging.RegisterGoogleLogger}}
 
@@ -147,11 +160,11 @@ buffering and propagating exceptions immediately.
 
 The options can be specified wherever you are configuring tracing.
 
-## Tracing in MVC Controllers
+## Tracing in Controllers
 
-To use the `IManagedTracer` in MVC controllers you can either inject the singleton instance of 
+To use the `IManagedTracer` in controllers you can either inject the singleton instance of 
 `IManagedTracer` into the controller's constructor (see `TraceSamplesConstructorController`) or you
-can in inject the `IManagedTracer` into the action method using the `[FromServices]` attribute
+can inject the `IManagedTracer` into the action method using the `[FromServices]` attribute
 (see `TraceSamplesMethodController`).
 
 {{sample:Trace.TraceMVCConstructor}}

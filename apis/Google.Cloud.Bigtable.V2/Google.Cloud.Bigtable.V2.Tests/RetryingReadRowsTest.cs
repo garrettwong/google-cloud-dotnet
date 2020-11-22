@@ -13,6 +13,7 @@
 // limitations under the License.
 
 using Google.Api.Gax;
+using Google.Api.Gax.Grpc;
 using Google.Cloud.Bigtable.Common.V2;
 using Google.Protobuf;
 using Grpc.Core;
@@ -58,7 +59,7 @@ namespace Google.Cloud.Bigtable.V2.Tests
                     }
                 });
 
-            var rows = await client.ReadRows(request).ToList();
+            var rows = await client.ReadRows(request).ToListAsync();
             Assert.Equal(2, rows.Count);
 
             var row = rows[0];
@@ -107,7 +108,7 @@ namespace Google.Cloud.Bigtable.V2.Tests
                     }
                 });
 
-            var rows = await client.ReadRows(request).ToList();
+            var rows = await client.ReadRows(request).ToListAsync();
             Assert.Equal(2, rows.Count);
 
             var row = rows[0];
@@ -160,7 +161,7 @@ namespace Google.Cloud.Bigtable.V2.Tests
                     }
                 });
 
-            var rows = await client.ReadRows(request).ToList();
+            var rows = await client.ReadRows(request).ToListAsync();
             Assert.Equal(2, rows.Count);
 
             var row = rows[0];
@@ -257,7 +258,7 @@ namespace Google.Cloud.Bigtable.V2.Tests
                     }
                 });
 
-            var rows = await client.ReadRows(request).ToList();
+            var rows = await client.ReadRows(request).ToListAsync();
             Assert.Equal(1, rows.Count);
 
             var row = rows[0];
@@ -303,7 +304,7 @@ namespace Google.Cloud.Bigtable.V2.Tests
                     }
                 });
 
-            var rows = await client.ReadRows(request).ToList();
+            var rows = await client.ReadRows(request).ToListAsync();
             Assert.Equal(1, rows.Count);
 
             var row = rows[0];
@@ -350,7 +351,7 @@ namespace Google.Cloud.Bigtable.V2.Tests
                     }
                 });
 
-            var rows = await client.ReadRows(request).ToList();
+            var rows = await client.ReadRows(request).ToListAsync();
             Assert.Equal(2, rows.Count);
 
             var row = rows[0];
@@ -402,7 +403,7 @@ namespace Google.Cloud.Bigtable.V2.Tests
                     }
                 });
 
-            var rows = await client.ReadRows(request).ToList();
+            var rows = await client.ReadRows(request).ToListAsync();
             Assert.Equal(1, rows.Count);
 
             var row = rows[0];
@@ -433,7 +434,7 @@ namespace Google.Cloud.Bigtable.V2.Tests
                 },
                 errorAtEndOfLastStream: true);
 
-            var rows = await client.ReadRows(request).ToList();
+            var rows = await client.ReadRows(request).ToListAsync();
             Assert.Equal(1, rows.Count);
 
             var row = rows[0];
@@ -448,9 +449,7 @@ namespace Google.Cloud.Bigtable.V2.Tests
         {
             var settings = new BigtableServiceApiSettings();
             // Don't allow for any time to retry.
-            settings.ReadRowsRetrySettings =
-                settings.ReadRowsRetrySettings.WithTotalExpiration(
-                    Expiration.FromTimeout(TimeSpan.Zero));
+            settings.ReadRowsSettings = CallSettings.FromExpiration(Expiration.FromTimeout(TimeSpan.Zero));
 
             var request = new ReadRowsRequest
             {
@@ -484,7 +483,7 @@ namespace Google.Cloud.Bigtable.V2.Tests
                 },
                 settings: settings);
 
-            var exception = await Assert.ThrowsAsync<RpcException>(() => client.ReadRows(request).ToList());
+            var exception = await Assert.ThrowsAsync<RpcException>(() => client.ReadRows(request).ToListAsync().AsTask());
             Assert.Equal(StatusCode.Unavailable, exception.StatusCode);
         }
 
@@ -522,7 +521,7 @@ namespace Google.Cloud.Bigtable.V2.Tests
                     }
                 });
 
-            await client.ReadRows(request).ToList();
+            await client.ReadRows(request).ToListAsync();
         }
 
         private static ReadRowsResponse.Types.CellChunk CreateChunk(

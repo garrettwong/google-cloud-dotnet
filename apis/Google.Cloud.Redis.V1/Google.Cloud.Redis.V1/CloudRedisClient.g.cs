@@ -1,4 +1,4 @@
-// Copyright 2019 Google LLC
+// Copyright 2020 Google LLC
 //
 // Licensed under the Apache License, Version 2.0 (the "License");
 // you may not use this file except in compliance with the License.
@@ -16,6 +16,8 @@
 
 using gax = Google.Api.Gax;
 using gaxgrpc = Google.Api.Gax.Grpc;
+using gaxgrpccore = Google.Api.Gax.Grpc.GrpcCore;
+using gagr = Google.Api.Gax.ResourceNames;
 using lro = Google.LongRunning;
 using proto = Google.Protobuf;
 using wkt = Google.Protobuf.WellKnownTypes;
@@ -25,7 +27,6 @@ using sys = System;
 using sc = System.Collections;
 using scg = System.Collections.Generic;
 using sco = System.Collections.ObjectModel;
-using sysnet = System.Net;
 using st = System.Threading;
 using stt = System.Threading.Tasks;
 
@@ -52,6 +53,8 @@ namespace Google.Cloud.Redis.V1
             CreateInstanceOperationsSettings = existing.CreateInstanceOperationsSettings.Clone();
             UpdateInstanceSettings = existing.UpdateInstanceSettings;
             UpdateInstanceOperationsSettings = existing.UpdateInstanceOperationsSettings.Clone();
+            UpgradeInstanceSettings = existing.UpgradeInstanceSettings;
+            UpgradeInstanceOperationsSettings = existing.UpgradeInstanceOperationsSettings.Clone();
             ImportInstanceSettings = existing.ImportInstanceSettings;
             ImportInstanceOperationsSettings = existing.ImportInstanceOperationsSettings.Clone();
             ExportInstanceSettings = existing.ExportInstanceSettings;
@@ -69,22 +72,37 @@ namespace Google.Cloud.Redis.V1
         /// <see cref="gaxgrpc::CallSettings"/> for synchronous and asynchronous calls to
         /// <c>CloudRedisClient.ListInstances</c> and <c>CloudRedisClient.ListInstancesAsync</c>.
         /// </summary>
-        /// <remarks>By default, retry will not be attempted.</remarks>
-        public gaxgrpc::CallSettings ListInstancesSettings { get; set; }
+        /// <remarks>
+        /// <list type="bullet">
+        /// <item><description>This call will not be retried.</description></item>
+        /// <item><description>Timeout: 600 seconds.</description></item>
+        /// </list>
+        /// </remarks>
+        public gaxgrpc::CallSettings ListInstancesSettings { get; set; } = gaxgrpc::CallSettings.FromExpiration(gax::Expiration.FromTimeout(sys::TimeSpan.FromMilliseconds(600000)));
 
         /// <summary>
         /// <see cref="gaxgrpc::CallSettings"/> for synchronous and asynchronous calls to
         /// <c>CloudRedisClient.GetInstance</c> and <c>CloudRedisClient.GetInstanceAsync</c>.
         /// </summary>
-        /// <remarks>By default, retry will not be attempted.</remarks>
-        public gaxgrpc::CallSettings GetInstanceSettings { get; set; }
+        /// <remarks>
+        /// <list type="bullet">
+        /// <item><description>This call will not be retried.</description></item>
+        /// <item><description>Timeout: 600 seconds.</description></item>
+        /// </list>
+        /// </remarks>
+        public gaxgrpc::CallSettings GetInstanceSettings { get; set; } = gaxgrpc::CallSettings.FromExpiration(gax::Expiration.FromTimeout(sys::TimeSpan.FromMilliseconds(600000)));
 
         /// <summary>
         /// <see cref="gaxgrpc::CallSettings"/> for synchronous and asynchronous calls to
         /// <c>CloudRedisClient.CreateInstance</c> and <c>CloudRedisClient.CreateInstanceAsync</c>.
         /// </summary>
-        /// <remarks>By default, retry will not be attempted.</remarks>
-        public gaxgrpc::CallSettings CreateInstanceSettings { get; set; }
+        /// <remarks>
+        /// <list type="bullet">
+        /// <item><description>This call will not be retried.</description></item>
+        /// <item><description>Timeout: 600 seconds.</description></item>
+        /// </list>
+        /// </remarks>
+        public gaxgrpc::CallSettings CreateInstanceSettings { get; set; } = gaxgrpc::CallSettings.FromExpiration(gax::Expiration.FromTimeout(sys::TimeSpan.FromMilliseconds(600000)));
 
         /// <summary>
         /// Long Running Operation settings for calls to <c>CloudRedisClient.CreateInstance</c> and
@@ -108,8 +126,13 @@ namespace Google.Cloud.Redis.V1
         /// <see cref="gaxgrpc::CallSettings"/> for synchronous and asynchronous calls to
         /// <c>CloudRedisClient.UpdateInstance</c> and <c>CloudRedisClient.UpdateInstanceAsync</c>.
         /// </summary>
-        /// <remarks>By default, retry will not be attempted.</remarks>
-        public gaxgrpc::CallSettings UpdateInstanceSettings { get; set; }
+        /// <remarks>
+        /// <list type="bullet">
+        /// <item><description>This call will not be retried.</description></item>
+        /// <item><description>Timeout: 600 seconds.</description></item>
+        /// </list>
+        /// </remarks>
+        public gaxgrpc::CallSettings UpdateInstanceSettings { get; set; } = gaxgrpc::CallSettings.FromExpiration(gax::Expiration.FromTimeout(sys::TimeSpan.FromMilliseconds(600000)));
 
         /// <summary>
         /// Long Running Operation settings for calls to <c>CloudRedisClient.UpdateInstance</c> and
@@ -131,10 +154,45 @@ namespace Google.Cloud.Redis.V1
 
         /// <summary>
         /// <see cref="gaxgrpc::CallSettings"/> for synchronous and asynchronous calls to
+        /// <c>CloudRedisClient.UpgradeInstance</c> and <c>CloudRedisClient.UpgradeInstanceAsync</c>.
+        /// </summary>
+        /// <remarks>
+        /// <list type="bullet">
+        /// <item><description>This call will not be retried.</description></item>
+        /// <item><description>Timeout: 600 seconds.</description></item>
+        /// </list>
+        /// </remarks>
+        public gaxgrpc::CallSettings UpgradeInstanceSettings { get; set; } = gaxgrpc::CallSettings.FromExpiration(gax::Expiration.FromTimeout(sys::TimeSpan.FromMilliseconds(600000)));
+
+        /// <summary>
+        /// Long Running Operation settings for calls to <c>CloudRedisClient.UpgradeInstance</c> and
+        /// <c>CloudRedisClient.UpgradeInstanceAsync</c>.
+        /// </summary>
+        /// <remarks>
+        /// Uses default <see cref="gax::PollSettings"/> of:
+        /// <list type="bullet">
+        /// <item><description>Initial delay: 20 seconds.</description></item>
+        /// <item><description>Delay multiplier: 1.5</description></item>
+        /// <item><description>Maximum delay: 45 seconds.</description></item>
+        /// <item><description>Total timeout: 24 hours.</description></item>
+        /// </list>
+        /// </remarks>
+        public lro::OperationsSettings UpgradeInstanceOperationsSettings { get; set; } = new lro::OperationsSettings
+        {
+            DefaultPollSettings = new gax::PollSettings(gax::Expiration.FromTimeout(sys::TimeSpan.FromHours(24)), sys::TimeSpan.FromSeconds(20), 1.5, sys::TimeSpan.FromSeconds(45)),
+        };
+
+        /// <summary>
+        /// <see cref="gaxgrpc::CallSettings"/> for synchronous and asynchronous calls to
         /// <c>CloudRedisClient.ImportInstance</c> and <c>CloudRedisClient.ImportInstanceAsync</c>.
         /// </summary>
-        /// <remarks>By default, retry will not be attempted.</remarks>
-        public gaxgrpc::CallSettings ImportInstanceSettings { get; set; }
+        /// <remarks>
+        /// <list type="bullet">
+        /// <item><description>This call will not be retried.</description></item>
+        /// <item><description>Timeout: 600 seconds.</description></item>
+        /// </list>
+        /// </remarks>
+        public gaxgrpc::CallSettings ImportInstanceSettings { get; set; } = gaxgrpc::CallSettings.FromExpiration(gax::Expiration.FromTimeout(sys::TimeSpan.FromMilliseconds(600000)));
 
         /// <summary>
         /// Long Running Operation settings for calls to <c>CloudRedisClient.ImportInstance</c> and
@@ -158,8 +216,13 @@ namespace Google.Cloud.Redis.V1
         /// <see cref="gaxgrpc::CallSettings"/> for synchronous and asynchronous calls to
         /// <c>CloudRedisClient.ExportInstance</c> and <c>CloudRedisClient.ExportInstanceAsync</c>.
         /// </summary>
-        /// <remarks>By default, retry will not be attempted.</remarks>
-        public gaxgrpc::CallSettings ExportInstanceSettings { get; set; }
+        /// <remarks>
+        /// <list type="bullet">
+        /// <item><description>This call will not be retried.</description></item>
+        /// <item><description>Timeout: 600 seconds.</description></item>
+        /// </list>
+        /// </remarks>
+        public gaxgrpc::CallSettings ExportInstanceSettings { get; set; } = gaxgrpc::CallSettings.FromExpiration(gax::Expiration.FromTimeout(sys::TimeSpan.FromMilliseconds(600000)));
 
         /// <summary>
         /// Long Running Operation settings for calls to <c>CloudRedisClient.ExportInstance</c> and
@@ -183,8 +246,13 @@ namespace Google.Cloud.Redis.V1
         /// <see cref="gaxgrpc::CallSettings"/> for synchronous and asynchronous calls to
         /// <c>CloudRedisClient.FailoverInstance</c> and <c>CloudRedisClient.FailoverInstanceAsync</c>.
         /// </summary>
-        /// <remarks>By default, retry will not be attempted.</remarks>
-        public gaxgrpc::CallSettings FailoverInstanceSettings { get; set; }
+        /// <remarks>
+        /// <list type="bullet">
+        /// <item><description>This call will not be retried.</description></item>
+        /// <item><description>Timeout: 600 seconds.</description></item>
+        /// </list>
+        /// </remarks>
+        public gaxgrpc::CallSettings FailoverInstanceSettings { get; set; } = gaxgrpc::CallSettings.FromExpiration(gax::Expiration.FromTimeout(sys::TimeSpan.FromMilliseconds(600000)));
 
         /// <summary>
         /// Long Running Operation settings for calls to <c>CloudRedisClient.FailoverInstance</c> and
@@ -208,8 +276,13 @@ namespace Google.Cloud.Redis.V1
         /// <see cref="gaxgrpc::CallSettings"/> for synchronous and asynchronous calls to
         /// <c>CloudRedisClient.DeleteInstance</c> and <c>CloudRedisClient.DeleteInstanceAsync</c>.
         /// </summary>
-        /// <remarks>By default, retry will not be attempted.</remarks>
-        public gaxgrpc::CallSettings DeleteInstanceSettings { get; set; }
+        /// <remarks>
+        /// <list type="bullet">
+        /// <item><description>This call will not be retried.</description></item>
+        /// <item><description>Timeout: 600 seconds.</description></item>
+        /// </list>
+        /// </remarks>
+        public gaxgrpc::CallSettings DeleteInstanceSettings { get; set; } = gaxgrpc::CallSettings.FromExpiration(gax::Expiration.FromTimeout(sys::TimeSpan.FromMilliseconds(600000)));
 
         /// <summary>
         /// Long Running Operation settings for calls to <c>CloudRedisClient.DeleteInstance</c> and
@@ -242,40 +315,80 @@ namespace Google.Cloud.Redis.V1
         /// <summary>The settings to use for RPCs, or <c>null</c> for the default settings.</summary>
         public CloudRedisSettings Settings { get; set; }
 
-        /// <inheritdoc/>
+        partial void InterceptBuild(ref CloudRedisClient client);
+
+        partial void InterceptBuildAsync(st::CancellationToken cancellationToken, ref stt::Task<CloudRedisClient> task);
+
+        /// <summary>Builds the resulting client.</summary>
         public override CloudRedisClient Build()
+        {
+            CloudRedisClient client = null;
+            InterceptBuild(ref client);
+            return client ?? BuildImpl();
+        }
+
+        /// <summary>Builds the resulting client asynchronously.</summary>
+        public override stt::Task<CloudRedisClient> BuildAsync(st::CancellationToken cancellationToken = default)
+        {
+            stt::Task<CloudRedisClient> task = null;
+            InterceptBuildAsync(cancellationToken, ref task);
+            return task ?? BuildAsyncImpl(cancellationToken);
+        }
+
+        private CloudRedisClient BuildImpl()
         {
             Validate();
             grpccore::CallInvoker callInvoker = CreateCallInvoker();
             return CloudRedisClient.Create(callInvoker, Settings);
         }
 
-        /// <inheritdoc/>
-        public override async stt::Task<CloudRedisClient> BuildAsync(st::CancellationToken cancellationToken = default)
+        private async stt::Task<CloudRedisClient> BuildAsyncImpl(st::CancellationToken cancellationToken)
         {
             Validate();
             grpccore::CallInvoker callInvoker = await CreateCallInvokerAsync(cancellationToken).ConfigureAwait(false);
             return CloudRedisClient.Create(callInvoker, Settings);
         }
 
-        /// <inheritdoc/>
-        protected override gaxgrpc::ServiceEndpoint GetDefaultEndpoint() => CloudRedisClient.DefaultEndpoint;
+        /// <summary>Returns the endpoint for this builder type, used if no endpoint is otherwise specified.</summary>
+        protected override string GetDefaultEndpoint() => CloudRedisClient.DefaultEndpoint;
 
-        /// <inheritdoc/>
+        /// <summary>
+        /// Returns the default scopes for this builder type, used if no scopes are otherwise specified.
+        /// </summary>
         protected override scg::IReadOnlyList<string> GetDefaultScopes() => CloudRedisClient.DefaultScopes;
 
-        /// <inheritdoc/>
+        /// <summary>Returns the channel pool to use when no other options are specified.</summary>
         protected override gaxgrpc::ChannelPool GetChannelPool() => CloudRedisClient.ChannelPool;
+
+        /// <summary>Returns the default <see cref="gaxgrpc::GrpcAdapter"/>to use if not otherwise specified.</summary>
+        protected override gaxgrpc::GrpcAdapter DefaultGrpcAdapter => gaxgrpccore::GrpcCoreAdapter.Instance;
     }
 
     /// <summary>CloudRedis client wrapper, for convenient use.</summary>
+    /// <remarks>
+    /// Configures and manages Cloud Memorystore for Redis instances
+    /// 
+    /// Google Cloud Memorystore for Redis v1
+    /// 
+    /// The `redis.googleapis.com` service implements the Google Cloud Memorystore
+    /// for Redis API and defines the following resource model for managing Redis
+    /// instances:
+    /// * The service works with a collection of cloud projects, named: `/projects/*`
+    /// * Each project has a collection of available locations, named: `/locations/*`
+    /// * Each location has a collection of Redis instances, named: `/instances/*`
+    /// * As such, Redis instances are resources of the form:
+    /// `/projects/{project_id}/locations/{location_id}/instances/{instance_id}`
+    /// 
+    /// Note that location_id must be referring to a GCP `region`; for example:
+    /// * `projects/redpepper-1290/locations/us-central1/instances/my-redis`
+    /// </remarks>
     public abstract partial class CloudRedisClient
     {
         /// <summary>
         /// The default endpoint for the CloudRedis service, which is a host of "redis.googleapis.com" and a port of
         /// 443.
         /// </summary>
-        public static gaxgrpc::ServiceEndpoint DefaultEndpoint { get; } = new gaxgrpc::ServiceEndpoint("redis.googleapis.com", 443);
+        public static string DefaultEndpoint { get; } = "redis.googleapis.com:443";
 
         /// <summary>The default CloudRedis scopes.</summary>
         /// <remarks>
@@ -292,96 +405,22 @@ namespace Google.Cloud.Redis.V1
         internal static gaxgrpc::ChannelPool ChannelPool { get; } = new gaxgrpc::ChannelPool(DefaultScopes);
 
         /// <summary>
-        /// Asynchronously creates a <see cref="CloudRedisClient"/>, applying defaults for all unspecified settings, and
-        /// creating a channel connecting to the given endpoint with application default credentials where necessary.
-        /// See the example for how to use custom credentials.
+        /// Asynchronously creates a <see cref="CloudRedisClient"/> using the default credentials, endpoint and
+        /// settings. To specify custom credentials or other settings, use <see cref="CloudRedisClientBuilder"/>.
         /// </summary>
-        /// <example>
-        /// This sample shows how to create a client using default credentials:
-        /// <code>
-        /// using Google.Cloud.Vision.V1;
-        /// ...
-        /// // When running on Google Cloud Platform this will use the project Compute Credential.
-        /// // Or set the GOOGLE_APPLICATION_CREDENTIALS environment variable to the path of a JSON
-        /// // credential file to use that credential.
-        /// ImageAnnotatorClient client = await ImageAnnotatorClient.CreateAsync();
-        /// </code>
-        /// This sample shows how to create a client using credentials loaded from a JSON file:
-        /// <code>
-        /// using Google.Cloud.Vision.V1;
-        /// using Google.Apis.Auth.OAuth2;
-        /// using Grpc.Auth;
-        /// using Grpc.Core;
-        /// ...
-        /// GoogleCredential cred = GoogleCredential.FromFile("/path/to/credentials.json");
-        /// Channel channel = new Channel(
-        ///     ImageAnnotatorClient.DefaultEndpoint.Host, ImageAnnotatorClient.DefaultEndpoint.Port, cred.ToChannelCredentials());
-        /// ImageAnnotatorClient client = ImageAnnotatorClient.Create(channel);
-        /// ...
-        /// // Shutdown the channel when it is no longer required.
-        /// await channel.ShutdownAsync();
-        /// </code>
-        /// </example>
-        /// <param name="endpoint">Optional <see cref="gaxgrpc::ServiceEndpoint"/>.</param>
-        /// <param name="settings">Optional <see cref="CloudRedisSettings"/>.</param>
+        /// <param name="cancellationToken">
+        /// The <see cref="st::CancellationToken"/> to use while creating the client.
+        /// </param>
         /// <returns>The task representing the created <see cref="CloudRedisClient"/>.</returns>
-        public static async stt::Task<CloudRedisClient> CreateAsync(gaxgrpc::ServiceEndpoint endpoint = null, CloudRedisSettings settings = null)
-        {
-            grpccore::Channel channel = await ChannelPool.GetChannelAsync(endpoint ?? DefaultEndpoint).ConfigureAwait(false);
-            return Create(channel, settings);
-        }
+        public static stt::Task<CloudRedisClient> CreateAsync(st::CancellationToken cancellationToken = default) =>
+            new CloudRedisClientBuilder().BuildAsync(cancellationToken);
 
         /// <summary>
-        /// Synchronously creates a <see cref="CloudRedisClient"/>, applying defaults for all unspecified settings, and
-        /// creating a channel connecting to the given endpoint with application default credentials where necessary.
-        /// See the example for how to use custom credentials.
+        /// Synchronously creates a <see cref="CloudRedisClient"/> using the default credentials, endpoint and settings.
+        /// To specify custom credentials or other settings, use <see cref="CloudRedisClientBuilder"/>.
         /// </summary>
-        /// <example>
-        /// This sample shows how to create a client using default credentials:
-        /// <code>
-        /// using Google.Cloud.Vision.V1;
-        /// ...
-        /// // When running on Google Cloud Platform this will use the project Compute Credential.
-        /// // Or set the GOOGLE_APPLICATION_CREDENTIALS environment variable to the path of a JSON
-        /// // credential file to use that credential.
-        /// ImageAnnotatorClient client = ImageAnnotatorClient.Create();
-        /// </code>
-        /// This sample shows how to create a client using credentials loaded from a JSON file:
-        /// <code>
-        /// using Google.Cloud.Vision.V1;
-        /// using Google.Apis.Auth.OAuth2;
-        /// using Grpc.Auth;
-        /// using Grpc.Core;
-        /// ...
-        /// GoogleCredential cred = GoogleCredential.FromFile("/path/to/credentials.json");
-        /// Channel channel = new Channel(
-        ///     ImageAnnotatorClient.DefaultEndpoint.Host, ImageAnnotatorClient.DefaultEndpoint.Port, cred.ToChannelCredentials());
-        /// ImageAnnotatorClient client = ImageAnnotatorClient.Create(channel);
-        /// ...
-        /// // Shutdown the channel when it is no longer required.
-        /// channel.ShutdownAsync().Wait();
-        /// </code>
-        /// </example>
-        /// <param name="endpoint">Optional <see cref="gaxgrpc::ServiceEndpoint"/>.</param>
-        /// <param name="settings">Optional <see cref="CloudRedisSettings"/>.</param>
         /// <returns>The created <see cref="CloudRedisClient"/>.</returns>
-        public static CloudRedisClient Create(gaxgrpc::ServiceEndpoint endpoint = null, CloudRedisSettings settings = null)
-        {
-            grpccore::Channel channel = ChannelPool.GetChannel(endpoint ?? DefaultEndpoint);
-            return Create(channel, settings);
-        }
-
-        /// <summary>
-        /// Creates a <see cref="CloudRedisClient"/> which uses the specified channel for remote operations.
-        /// </summary>
-        /// <param name="channel">The <see cref="grpccore::Channel"/> for remote operations. Must not be null.</param>
-        /// <param name="settings">Optional <see cref="CloudRedisSettings"/>.</param>
-        /// <returns>The created <see cref="CloudRedisClient"/>.</returns>
-        public static CloudRedisClient Create(grpccore::Channel channel, CloudRedisSettings settings = null)
-        {
-            gax::GaxPreconditions.CheckNotNull(channel, nameof(channel));
-            return Create(new grpccore::DefaultCallInvoker(channel), settings);
-        }
+        public static CloudRedisClient Create() => new CloudRedisClientBuilder().Build();
 
         /// <summary>
         /// Creates a <see cref="CloudRedisClient"/> which uses the specified call invoker for remote operations.
@@ -391,7 +430,7 @@ namespace Google.Cloud.Redis.V1
         /// </param>
         /// <param name="settings">Optional <see cref="CloudRedisSettings"/>.</param>
         /// <returns>The created <see cref="CloudRedisClient"/>.</returns>
-        public static CloudRedisClient Create(grpccore::CallInvoker callInvoker, CloudRedisSettings settings = null)
+        internal static CloudRedisClient Create(grpccore::CallInvoker callInvoker, CloudRedisSettings settings = null)
         {
             gax::GaxPreconditions.CheckNotNull(callInvoker, nameof(callInvoker));
             grpcinter::Interceptor interceptor = settings?.Interceptor;
@@ -404,15 +443,14 @@ namespace Google.Cloud.Redis.V1
         }
 
         /// <summary>
-        /// Shuts down any channels automatically created by
-        /// <see cref="Create(grpccore::CallInvoker,CloudRedisSettings)"/> and
-        /// <see cref="CreateAsync(gaxgrpc::ServiceEndpoint,CloudRedisSettings)"/>. Channels which weren't automatically
-        /// created are not affected.
+        /// Shuts down any channels automatically created by <see cref="Create()"/> and
+        /// <see cref="CreateAsync(st::CancellationToken)"/>. Channels which weren't automatically created are not
+        /// affected.
         /// </summary>
         /// <remarks>
-        /// After calling this method, further calls to <see cref="Create(grpccore::CallInvoker,CloudRedisSettings)"/>
-        /// and <see cref="CreateAsync(gaxgrpc::ServiceEndpoint,CloudRedisSettings)"/> will create new channels, which
-        /// could in turn be shut down by another call to this method.
+        /// After calling this method, further calls to <see cref="Create()"/> and
+        /// <see cref="CreateAsync(st::CancellationToken)"/> will create new channels, which could in turn be shut down
+        /// by another call to this method.
         /// </remarks>
         /// <returns>A task representing the asynchronous shutdown operation.</returns>
         public static stt::Task ShutdownDefaultChannelsAsync() => ChannelPool.ShutdownChannelsAsync();
@@ -425,6 +463,7 @@ namespace Google.Cloud.Redis.V1
         /// location (region) or all locations.
         /// 
         /// The location should have the following format:
+        /// 
         /// * `projects/{project_id}/locations/{location_id}`
         /// 
         /// If `location_id` is specified as `-` (wildcard), then all regions
@@ -441,6 +480,7 @@ namespace Google.Cloud.Redis.V1
         /// location (region) or all locations.
         /// 
         /// The location should have the following format:
+        /// 
         /// * `projects/{project_id}/locations/{location_id}`
         /// 
         /// If `location_id` is specified as `-` (wildcard), then all regions
@@ -457,6 +497,7 @@ namespace Google.Cloud.Redis.V1
         /// location (region) or all locations.
         /// 
         /// The location should have the following format:
+        /// 
         /// * `projects/{project_id}/locations/{location_id}`
         /// 
         /// If `location_id` is specified as `-` (wildcard), then all regions
@@ -490,6 +531,7 @@ namespace Google.Cloud.Redis.V1
         /// location (region) or all locations.
         /// 
         /// The location should have the following format:
+        /// 
         /// * `projects/{project_id}/locations/{location_id}`
         /// 
         /// If `location_id` is specified as `-` (wildcard), then all regions
@@ -523,6 +565,7 @@ namespace Google.Cloud.Redis.V1
         /// location (region) or all locations.
         /// 
         /// The location should have the following format:
+        /// 
         /// * `projects/{project_id}/locations/{location_id}`
         /// 
         /// If `location_id` is specified as `-` (wildcard), then all regions
@@ -543,7 +586,7 @@ namespace Google.Cloud.Redis.V1
         /// </param>
         /// <param name="callSettings">If not null, applies overrides to this RPC call.</param>
         /// <returns>A pageable sequence of <see cref="Instance"/> resources.</returns>
-        public virtual gax::PagedEnumerable<ListInstancesResponse, Instance> ListInstances(LocationName parent, string pageToken = null, int? pageSize = null, gaxgrpc::CallSettings callSettings = null) =>
+        public virtual gax::PagedEnumerable<ListInstancesResponse, Instance> ListInstances(gagr::LocationName parent, string pageToken = null, int? pageSize = null, gaxgrpc::CallSettings callSettings = null) =>
             ListInstances(new ListInstancesRequest
             {
                 ParentAsLocationName = gax::GaxPreconditions.CheckNotNull(parent, nameof(parent)),
@@ -556,6 +599,7 @@ namespace Google.Cloud.Redis.V1
         /// location (region) or all locations.
         /// 
         /// The location should have the following format:
+        /// 
         /// * `projects/{project_id}/locations/{location_id}`
         /// 
         /// If `location_id` is specified as `-` (wildcard), then all regions
@@ -576,7 +620,7 @@ namespace Google.Cloud.Redis.V1
         /// </param>
         /// <param name="callSettings">If not null, applies overrides to this RPC call.</param>
         /// <returns>A pageable asynchronous sequence of <see cref="Instance"/> resources.</returns>
-        public virtual gax::PagedAsyncEnumerable<ListInstancesResponse, Instance> ListInstancesAsync(LocationName parent, string pageToken = null, int? pageSize = null, gaxgrpc::CallSettings callSettings = null) =>
+        public virtual gax::PagedAsyncEnumerable<ListInstancesResponse, Instance> ListInstancesAsync(gagr::LocationName parent, string pageToken = null, int? pageSize = null, gaxgrpc::CallSettings callSettings = null) =>
             ListInstancesAsync(new ListInstancesRequest
             {
                 ParentAsLocationName = gax::GaxPreconditions.CheckNotNull(parent, nameof(parent)),
@@ -705,7 +749,7 @@ namespace Google.Cloud.Redis.V1
         /// Creates a Redis instance based on the specified tier and memory size.
         /// 
         /// By default, the instance is accessible from the project's
-        /// [default network](/compute/docs/networks-and-firewalls#networks).
+        /// [default network](https://cloud.google.com/vpc/docs/vpc).
         /// 
         /// The creation is executed asynchronously and callers may check the returned
         /// operation to track its progress. Once the operation is completed the Redis
@@ -725,7 +769,7 @@ namespace Google.Cloud.Redis.V1
         /// Creates a Redis instance based on the specified tier and memory size.
         /// 
         /// By default, the instance is accessible from the project's
-        /// [default network](/compute/docs/networks-and-firewalls#networks).
+        /// [default network](https://cloud.google.com/vpc/docs/vpc).
         /// 
         /// The creation is executed asynchronously and callers may check the returned
         /// operation to track its progress. Once the operation is completed the Redis
@@ -745,7 +789,7 @@ namespace Google.Cloud.Redis.V1
         /// Creates a Redis instance based on the specified tier and memory size.
         /// 
         /// By default, the instance is accessible from the project's
-        /// [default network](/compute/docs/networks-and-firewalls#networks).
+        /// [default network](https://cloud.google.com/vpc/docs/vpc).
         /// 
         /// The creation is executed asynchronously and callers may check the returned
         /// operation to track its progress. Once the operation is completed the Redis
@@ -791,7 +835,7 @@ namespace Google.Cloud.Redis.V1
         /// Creates a Redis instance based on the specified tier and memory size.
         /// 
         /// By default, the instance is accessible from the project's
-        /// [default network](/compute/docs/networks-and-firewalls#networks).
+        /// [default network](https://cloud.google.com/vpc/docs/vpc).
         /// 
         /// The creation is executed asynchronously and callers may check the returned
         /// operation to track its progress. Once the operation is completed the Redis
@@ -833,7 +877,7 @@ namespace Google.Cloud.Redis.V1
         /// Creates a Redis instance based on the specified tier and memory size.
         /// 
         /// By default, the instance is accessible from the project's
-        /// [default network](/compute/docs/networks-and-firewalls#networks).
+        /// [default network](https://cloud.google.com/vpc/docs/vpc).
         /// 
         /// The creation is executed asynchronously and callers may check the returned
         /// operation to track its progress. Once the operation is completed the Redis
@@ -875,7 +919,7 @@ namespace Google.Cloud.Redis.V1
         /// Creates a Redis instance based on the specified tier and memory size.
         /// 
         /// By default, the instance is accessible from the project's
-        /// [default network](/compute/docs/networks-and-firewalls#networks).
+        /// [default network](https://cloud.google.com/vpc/docs/vpc).
         /// 
         /// The creation is executed asynchronously and callers may check the returned
         /// operation to track its progress. Once the operation is completed the Redis
@@ -912,7 +956,7 @@ namespace Google.Cloud.Redis.V1
         /// Creates a Redis instance based on the specified tier and memory size.
         /// 
         /// By default, the instance is accessible from the project's
-        /// [default network](/compute/docs/networks-and-firewalls#networks).
+        /// [default network](https://cloud.google.com/vpc/docs/vpc).
         /// 
         /// The creation is executed asynchronously and callers may check the returned
         /// operation to track its progress. Once the operation is completed the Redis
@@ -942,7 +986,7 @@ namespace Google.Cloud.Redis.V1
         /// </param>
         /// <param name="callSettings">If not null, applies overrides to this RPC call.</param>
         /// <returns>The RPC response.</returns>
-        public virtual lro::Operation<Instance, OperationMetadata> CreateInstance(LocationName parent, string instanceId, Instance instance, gaxgrpc::CallSettings callSettings = null) =>
+        public virtual lro::Operation<Instance, OperationMetadata> CreateInstance(gagr::LocationName parent, string instanceId, Instance instance, gaxgrpc::CallSettings callSettings = null) =>
             CreateInstance(new CreateInstanceRequest
             {
                 ParentAsLocationName = gax::GaxPreconditions.CheckNotNull(parent, nameof(parent)),
@@ -954,7 +998,7 @@ namespace Google.Cloud.Redis.V1
         /// Creates a Redis instance based on the specified tier and memory size.
         /// 
         /// By default, the instance is accessible from the project's
-        /// [default network](/compute/docs/networks-and-firewalls#networks).
+        /// [default network](https://cloud.google.com/vpc/docs/vpc).
         /// 
         /// The creation is executed asynchronously and callers may check the returned
         /// operation to track its progress. Once the operation is completed the Redis
@@ -984,7 +1028,7 @@ namespace Google.Cloud.Redis.V1
         /// </param>
         /// <param name="callSettings">If not null, applies overrides to this RPC call.</param>
         /// <returns>A Task containing the RPC response.</returns>
-        public virtual stt::Task<lro::Operation<Instance, OperationMetadata>> CreateInstanceAsync(LocationName parent, string instanceId, Instance instance, gaxgrpc::CallSettings callSettings = null) =>
+        public virtual stt::Task<lro::Operation<Instance, OperationMetadata>> CreateInstanceAsync(gagr::LocationName parent, string instanceId, Instance instance, gaxgrpc::CallSettings callSettings = null) =>
             CreateInstanceAsync(new CreateInstanceRequest
             {
                 ParentAsLocationName = gax::GaxPreconditions.CheckNotNull(parent, nameof(parent)),
@@ -996,7 +1040,7 @@ namespace Google.Cloud.Redis.V1
         /// Creates a Redis instance based on the specified tier and memory size.
         /// 
         /// By default, the instance is accessible from the project's
-        /// [default network](/compute/docs/networks-and-firewalls#networks).
+        /// [default network](https://cloud.google.com/vpc/docs/vpc).
         /// 
         /// The creation is executed asynchronously and callers may check the returned
         /// operation to track its progress. Once the operation is completed the Redis
@@ -1026,7 +1070,7 @@ namespace Google.Cloud.Redis.V1
         /// </param>
         /// <param name="cancellationToken">A <see cref="st::CancellationToken"/> to use for this RPC.</param>
         /// <returns>A Task containing the RPC response.</returns>
-        public virtual stt::Task<lro::Operation<Instance, OperationMetadata>> CreateInstanceAsync(LocationName parent, string instanceId, Instance instance, st::CancellationToken cancellationToken) =>
+        public virtual stt::Task<lro::Operation<Instance, OperationMetadata>> CreateInstanceAsync(gagr::LocationName parent, string instanceId, Instance instance, st::CancellationToken cancellationToken) =>
             CreateInstanceAsync(parent, instanceId, instance, gaxgrpc::CallSettings.FromCancellationToken(cancellationToken));
 
         /// <summary>
@@ -1104,7 +1148,7 @@ namespace Google.Cloud.Redis.V1
         /// <param name="updateMask">
         /// Required. Mask of fields to update. At least one path must be supplied in
         /// this field. The elements of the repeated paths field may only include these
-        /// fields from [Instance][CloudRedis.Instance]:
+        /// fields from [Instance][google.cloud.redis.v1.Instance]:
         /// 
         /// *   `displayName`
         /// *   `labels`
@@ -1134,7 +1178,7 @@ namespace Google.Cloud.Redis.V1
         /// <param name="updateMask">
         /// Required. Mask of fields to update. At least one path must be supplied in
         /// this field. The elements of the repeated paths field may only include these
-        /// fields from [Instance][CloudRedis.Instance]:
+        /// fields from [Instance][google.cloud.redis.v1.Instance]:
         /// 
         /// *   `displayName`
         /// *   `labels`
@@ -1164,7 +1208,7 @@ namespace Google.Cloud.Redis.V1
         /// <param name="updateMask">
         /// Required. Mask of fields to update. At least one path must be supplied in
         /// this field. The elements of the repeated paths field may only include these
-        /// fields from [Instance][CloudRedis.Instance]:
+        /// fields from [Instance][google.cloud.redis.v1.Instance]:
         /// 
         /// *   `displayName`
         /// *   `labels`
@@ -1179,6 +1223,180 @@ namespace Google.Cloud.Redis.V1
         /// <returns>A Task containing the RPC response.</returns>
         public virtual stt::Task<lro::Operation<Instance, OperationMetadata>> UpdateInstanceAsync(wkt::FieldMask updateMask, Instance instance, st::CancellationToken cancellationToken) =>
             UpdateInstanceAsync(updateMask, instance, gaxgrpc::CallSettings.FromCancellationToken(cancellationToken));
+
+        /// <summary>
+        /// Upgrades Redis instance to the newer Redis version specified in the
+        /// request.
+        /// </summary>
+        /// <param name="request">The request object containing all of the parameters for the API call.</param>
+        /// <param name="callSettings">If not null, applies overrides to this RPC call.</param>
+        /// <returns>The RPC response.</returns>
+        public virtual lro::Operation<Instance, OperationMetadata> UpgradeInstance(UpgradeInstanceRequest request, gaxgrpc::CallSettings callSettings = null) =>
+            throw new sys::NotImplementedException();
+
+        /// <summary>
+        /// Upgrades Redis instance to the newer Redis version specified in the
+        /// request.
+        /// </summary>
+        /// <param name="request">The request object containing all of the parameters for the API call.</param>
+        /// <param name="callSettings">If not null, applies overrides to this RPC call.</param>
+        /// <returns>A Task containing the RPC response.</returns>
+        public virtual stt::Task<lro::Operation<Instance, OperationMetadata>> UpgradeInstanceAsync(UpgradeInstanceRequest request, gaxgrpc::CallSettings callSettings = null) =>
+            throw new sys::NotImplementedException();
+
+        /// <summary>
+        /// Upgrades Redis instance to the newer Redis version specified in the
+        /// request.
+        /// </summary>
+        /// <param name="request">The request object containing all of the parameters for the API call.</param>
+        /// <param name="cancellationToken">A <see cref="st::CancellationToken"/> to use for this RPC.</param>
+        /// <returns>A Task containing the RPC response.</returns>
+        public virtual stt::Task<lro::Operation<Instance, OperationMetadata>> UpgradeInstanceAsync(UpgradeInstanceRequest request, st::CancellationToken cancellationToken) =>
+            UpgradeInstanceAsync(request, gaxgrpc::CallSettings.FromCancellationToken(cancellationToken));
+
+        /// <summary>The long-running operations client for <c>UpgradeInstance</c>.</summary>
+        public virtual lro::OperationsClient UpgradeInstanceOperationsClient => throw new sys::NotImplementedException();
+
+        /// <summary>
+        /// Poll an operation once, using an <c>operationName</c> from a previous invocation of <c>UpgradeInstance</c>.
+        /// </summary>
+        /// <param name="operationName">
+        /// The name of a previously invoked operation. Must not be <c>null</c> or empty.
+        /// </param>
+        /// <param name="callSettings">If not null, applies overrides to this RPC call.</param>
+        /// <returns>The result of polling the operation.</returns>
+        public virtual lro::Operation<Instance, OperationMetadata> PollOnceUpgradeInstance(string operationName, gaxgrpc::CallSettings callSettings = null) =>
+            lro::Operation<Instance, OperationMetadata>.PollOnceFromName(gax::GaxPreconditions.CheckNotNullOrEmpty(operationName, nameof(operationName)), UpgradeInstanceOperationsClient, callSettings);
+
+        /// <summary>
+        /// Asynchronously poll an operation once, using an <c>operationName</c> from a previous invocation of
+        /// <c>UpgradeInstance</c>.
+        /// </summary>
+        /// <param name="operationName">
+        /// The name of a previously invoked operation. Must not be <c>null</c> or empty.
+        /// </param>
+        /// <param name="callSettings">If not null, applies overrides to this RPC call.</param>
+        /// <returns>A task representing the result of polling the operation.</returns>
+        public virtual stt::Task<lro::Operation<Instance, OperationMetadata>> PollOnceUpgradeInstanceAsync(string operationName, gaxgrpc::CallSettings callSettings = null) =>
+            lro::Operation<Instance, OperationMetadata>.PollOnceFromNameAsync(gax::GaxPreconditions.CheckNotNullOrEmpty(operationName, nameof(operationName)), UpgradeInstanceOperationsClient, callSettings);
+
+        /// <summary>
+        /// Upgrades Redis instance to the newer Redis version specified in the
+        /// request.
+        /// </summary>
+        /// <param name="name">
+        /// Required. Redis instance resource name using the form:
+        /// `projects/{project_id}/locations/{location_id}/instances/{instance_id}`
+        /// where `location_id` refers to a GCP region.
+        /// </param>
+        /// <param name="redisVersion">
+        /// Required. Specifies the target version of Redis software to upgrade to.
+        /// </param>
+        /// <param name="callSettings">If not null, applies overrides to this RPC call.</param>
+        /// <returns>The RPC response.</returns>
+        public virtual lro::Operation<Instance, OperationMetadata> UpgradeInstance(string name, string redisVersion, gaxgrpc::CallSettings callSettings = null) =>
+            UpgradeInstance(new UpgradeInstanceRequest
+            {
+                Name = gax::GaxPreconditions.CheckNotNullOrEmpty(name, nameof(name)),
+                RedisVersion = gax::GaxPreconditions.CheckNotNullOrEmpty(redisVersion, nameof(redisVersion)),
+            }, callSettings);
+
+        /// <summary>
+        /// Upgrades Redis instance to the newer Redis version specified in the
+        /// request.
+        /// </summary>
+        /// <param name="name">
+        /// Required. Redis instance resource name using the form:
+        /// `projects/{project_id}/locations/{location_id}/instances/{instance_id}`
+        /// where `location_id` refers to a GCP region.
+        /// </param>
+        /// <param name="redisVersion">
+        /// Required. Specifies the target version of Redis software to upgrade to.
+        /// </param>
+        /// <param name="callSettings">If not null, applies overrides to this RPC call.</param>
+        /// <returns>A Task containing the RPC response.</returns>
+        public virtual stt::Task<lro::Operation<Instance, OperationMetadata>> UpgradeInstanceAsync(string name, string redisVersion, gaxgrpc::CallSettings callSettings = null) =>
+            UpgradeInstanceAsync(new UpgradeInstanceRequest
+            {
+                Name = gax::GaxPreconditions.CheckNotNullOrEmpty(name, nameof(name)),
+                RedisVersion = gax::GaxPreconditions.CheckNotNullOrEmpty(redisVersion, nameof(redisVersion)),
+            }, callSettings);
+
+        /// <summary>
+        /// Upgrades Redis instance to the newer Redis version specified in the
+        /// request.
+        /// </summary>
+        /// <param name="name">
+        /// Required. Redis instance resource name using the form:
+        /// `projects/{project_id}/locations/{location_id}/instances/{instance_id}`
+        /// where `location_id` refers to a GCP region.
+        /// </param>
+        /// <param name="redisVersion">
+        /// Required. Specifies the target version of Redis software to upgrade to.
+        /// </param>
+        /// <param name="cancellationToken">A <see cref="st::CancellationToken"/> to use for this RPC.</param>
+        /// <returns>A Task containing the RPC response.</returns>
+        public virtual stt::Task<lro::Operation<Instance, OperationMetadata>> UpgradeInstanceAsync(string name, string redisVersion, st::CancellationToken cancellationToken) =>
+            UpgradeInstanceAsync(name, redisVersion, gaxgrpc::CallSettings.FromCancellationToken(cancellationToken));
+
+        /// <summary>
+        /// Upgrades Redis instance to the newer Redis version specified in the
+        /// request.
+        /// </summary>
+        /// <param name="name">
+        /// Required. Redis instance resource name using the form:
+        /// `projects/{project_id}/locations/{location_id}/instances/{instance_id}`
+        /// where `location_id` refers to a GCP region.
+        /// </param>
+        /// <param name="redisVersion">
+        /// Required. Specifies the target version of Redis software to upgrade to.
+        /// </param>
+        /// <param name="callSettings">If not null, applies overrides to this RPC call.</param>
+        /// <returns>The RPC response.</returns>
+        public virtual lro::Operation<Instance, OperationMetadata> UpgradeInstance(InstanceName name, string redisVersion, gaxgrpc::CallSettings callSettings = null) =>
+            UpgradeInstance(new UpgradeInstanceRequest
+            {
+                InstanceName = gax::GaxPreconditions.CheckNotNull(name, nameof(name)),
+                RedisVersion = gax::GaxPreconditions.CheckNotNullOrEmpty(redisVersion, nameof(redisVersion)),
+            }, callSettings);
+
+        /// <summary>
+        /// Upgrades Redis instance to the newer Redis version specified in the
+        /// request.
+        /// </summary>
+        /// <param name="name">
+        /// Required. Redis instance resource name using the form:
+        /// `projects/{project_id}/locations/{location_id}/instances/{instance_id}`
+        /// where `location_id` refers to a GCP region.
+        /// </param>
+        /// <param name="redisVersion">
+        /// Required. Specifies the target version of Redis software to upgrade to.
+        /// </param>
+        /// <param name="callSettings">If not null, applies overrides to this RPC call.</param>
+        /// <returns>A Task containing the RPC response.</returns>
+        public virtual stt::Task<lro::Operation<Instance, OperationMetadata>> UpgradeInstanceAsync(InstanceName name, string redisVersion, gaxgrpc::CallSettings callSettings = null) =>
+            UpgradeInstanceAsync(new UpgradeInstanceRequest
+            {
+                InstanceName = gax::GaxPreconditions.CheckNotNull(name, nameof(name)),
+                RedisVersion = gax::GaxPreconditions.CheckNotNullOrEmpty(redisVersion, nameof(redisVersion)),
+            }, callSettings);
+
+        /// <summary>
+        /// Upgrades Redis instance to the newer Redis version specified in the
+        /// request.
+        /// </summary>
+        /// <param name="name">
+        /// Required. Redis instance resource name using the form:
+        /// `projects/{project_id}/locations/{location_id}/instances/{instance_id}`
+        /// where `location_id` refers to a GCP region.
+        /// </param>
+        /// <param name="redisVersion">
+        /// Required. Specifies the target version of Redis software to upgrade to.
+        /// </param>
+        /// <param name="cancellationToken">A <see cref="st::CancellationToken"/> to use for this RPC.</param>
+        /// <returns>A Task containing the RPC response.</returns>
+        public virtual stt::Task<lro::Operation<Instance, OperationMetadata>> UpgradeInstanceAsync(InstanceName name, string redisVersion, st::CancellationToken cancellationToken) =>
+            UpgradeInstanceAsync(name, redisVersion, gaxgrpc::CallSettings.FromCancellationToken(cancellationToken));
 
         /// <summary>
         /// Import a Redis RDB snapshot file from Cloud Storage into a Redis instance.
@@ -1804,6 +2022,23 @@ namespace Google.Cloud.Redis.V1
     }
 
     /// <summary>CloudRedis client wrapper implementation, for convenient use.</summary>
+    /// <remarks>
+    /// Configures and manages Cloud Memorystore for Redis instances
+    /// 
+    /// Google Cloud Memorystore for Redis v1
+    /// 
+    /// The `redis.googleapis.com` service implements the Google Cloud Memorystore
+    /// for Redis API and defines the following resource model for managing Redis
+    /// instances:
+    /// * The service works with a collection of cloud projects, named: `/projects/*`
+    /// * Each project has a collection of available locations, named: `/locations/*`
+    /// * Each location has a collection of Redis instances, named: `/instances/*`
+    /// * As such, Redis instances are resources of the form:
+    /// `/projects/{project_id}/locations/{location_id}/instances/{instance_id}`
+    /// 
+    /// Note that location_id must be referring to a GCP `region`; for example:
+    /// * `projects/redpepper-1290/locations/us-central1/instances/my-redis`
+    /// </remarks>
     public sealed partial class CloudRedisClientImpl : CloudRedisClient
     {
         private readonly gaxgrpc::ApiCall<ListInstancesRequest, ListInstancesResponse> _callListInstances;
@@ -1813,6 +2048,8 @@ namespace Google.Cloud.Redis.V1
         private readonly gaxgrpc::ApiCall<CreateInstanceRequest, lro::Operation> _callCreateInstance;
 
         private readonly gaxgrpc::ApiCall<UpdateInstanceRequest, lro::Operation> _callUpdateInstance;
+
+        private readonly gaxgrpc::ApiCall<UpgradeInstanceRequest, lro::Operation> _callUpgradeInstance;
 
         private readonly gaxgrpc::ApiCall<ImportInstanceRequest, lro::Operation> _callImportInstance;
 
@@ -1834,32 +2071,36 @@ namespace Google.Cloud.Redis.V1
             gaxgrpc::ClientHelper clientHelper = new gaxgrpc::ClientHelper(effectiveSettings);
             CreateInstanceOperationsClient = new lro::OperationsClientImpl(grpcClient.CreateOperationsClient(), effectiveSettings.CreateInstanceOperationsSettings);
             UpdateInstanceOperationsClient = new lro::OperationsClientImpl(grpcClient.CreateOperationsClient(), effectiveSettings.UpdateInstanceOperationsSettings);
+            UpgradeInstanceOperationsClient = new lro::OperationsClientImpl(grpcClient.CreateOperationsClient(), effectiveSettings.UpgradeInstanceOperationsSettings);
             ImportInstanceOperationsClient = new lro::OperationsClientImpl(grpcClient.CreateOperationsClient(), effectiveSettings.ImportInstanceOperationsSettings);
             ExportInstanceOperationsClient = new lro::OperationsClientImpl(grpcClient.CreateOperationsClient(), effectiveSettings.ExportInstanceOperationsSettings);
             FailoverInstanceOperationsClient = new lro::OperationsClientImpl(grpcClient.CreateOperationsClient(), effectiveSettings.FailoverInstanceOperationsSettings);
             DeleteInstanceOperationsClient = new lro::OperationsClientImpl(grpcClient.CreateOperationsClient(), effectiveSettings.DeleteInstanceOperationsSettings);
-            _callListInstances = clientHelper.BuildApiCall<ListInstancesRequest, ListInstancesResponse>(grpcClient.ListInstancesAsync, grpcClient.ListInstances, effectiveSettings.ListInstancesSettings).WithCallSettingsOverlay(request => gaxgrpc::CallSettings.FromHeader("x-goog-request-params", $"parent={(sysnet::WebUtility.UrlEncode(request.Parent))}"));
+            _callListInstances = clientHelper.BuildApiCall<ListInstancesRequest, ListInstancesResponse>(grpcClient.ListInstancesAsync, grpcClient.ListInstances, effectiveSettings.ListInstancesSettings).WithGoogleRequestParam("parent", request => request.Parent);
             Modify_ApiCall(ref _callListInstances);
             Modify_ListInstancesApiCall(ref _callListInstances);
-            _callGetInstance = clientHelper.BuildApiCall<GetInstanceRequest, Instance>(grpcClient.GetInstanceAsync, grpcClient.GetInstance, effectiveSettings.GetInstanceSettings).WithCallSettingsOverlay(request => gaxgrpc::CallSettings.FromHeader("x-goog-request-params", $"name={(sysnet::WebUtility.UrlEncode(request.Name))}"));
+            _callGetInstance = clientHelper.BuildApiCall<GetInstanceRequest, Instance>(grpcClient.GetInstanceAsync, grpcClient.GetInstance, effectiveSettings.GetInstanceSettings).WithGoogleRequestParam("name", request => request.Name);
             Modify_ApiCall(ref _callGetInstance);
             Modify_GetInstanceApiCall(ref _callGetInstance);
-            _callCreateInstance = clientHelper.BuildApiCall<CreateInstanceRequest, lro::Operation>(grpcClient.CreateInstanceAsync, grpcClient.CreateInstance, effectiveSettings.CreateInstanceSettings).WithCallSettingsOverlay(request => gaxgrpc::CallSettings.FromHeader("x-goog-request-params", $"parent={(sysnet::WebUtility.UrlEncode(request.Parent))}"));
+            _callCreateInstance = clientHelper.BuildApiCall<CreateInstanceRequest, lro::Operation>(grpcClient.CreateInstanceAsync, grpcClient.CreateInstance, effectiveSettings.CreateInstanceSettings).WithGoogleRequestParam("parent", request => request.Parent);
             Modify_ApiCall(ref _callCreateInstance);
             Modify_CreateInstanceApiCall(ref _callCreateInstance);
-            _callUpdateInstance = clientHelper.BuildApiCall<UpdateInstanceRequest, lro::Operation>(grpcClient.UpdateInstanceAsync, grpcClient.UpdateInstance, effectiveSettings.UpdateInstanceSettings).WithCallSettingsOverlay(request => gaxgrpc::CallSettings.FromHeader("x-goog-request-params", $"instance.name={(sysnet::WebUtility.UrlEncode(request.Instance.Name))}"));
+            _callUpdateInstance = clientHelper.BuildApiCall<UpdateInstanceRequest, lro::Operation>(grpcClient.UpdateInstanceAsync, grpcClient.UpdateInstance, effectiveSettings.UpdateInstanceSettings).WithGoogleRequestParam("instance.name", request => request.Instance?.Name);
             Modify_ApiCall(ref _callUpdateInstance);
             Modify_UpdateInstanceApiCall(ref _callUpdateInstance);
-            _callImportInstance = clientHelper.BuildApiCall<ImportInstanceRequest, lro::Operation>(grpcClient.ImportInstanceAsync, grpcClient.ImportInstance, effectiveSettings.ImportInstanceSettings).WithCallSettingsOverlay(request => gaxgrpc::CallSettings.FromHeader("x-goog-request-params", $"name={(sysnet::WebUtility.UrlEncode(request.Name))}"));
+            _callUpgradeInstance = clientHelper.BuildApiCall<UpgradeInstanceRequest, lro::Operation>(grpcClient.UpgradeInstanceAsync, grpcClient.UpgradeInstance, effectiveSettings.UpgradeInstanceSettings).WithGoogleRequestParam("name", request => request.Name);
+            Modify_ApiCall(ref _callUpgradeInstance);
+            Modify_UpgradeInstanceApiCall(ref _callUpgradeInstance);
+            _callImportInstance = clientHelper.BuildApiCall<ImportInstanceRequest, lro::Operation>(grpcClient.ImportInstanceAsync, grpcClient.ImportInstance, effectiveSettings.ImportInstanceSettings).WithGoogleRequestParam("name", request => request.Name);
             Modify_ApiCall(ref _callImportInstance);
             Modify_ImportInstanceApiCall(ref _callImportInstance);
-            _callExportInstance = clientHelper.BuildApiCall<ExportInstanceRequest, lro::Operation>(grpcClient.ExportInstanceAsync, grpcClient.ExportInstance, effectiveSettings.ExportInstanceSettings).WithCallSettingsOverlay(request => gaxgrpc::CallSettings.FromHeader("x-goog-request-params", $"name={(sysnet::WebUtility.UrlEncode(request.Name))}"));
+            _callExportInstance = clientHelper.BuildApiCall<ExportInstanceRequest, lro::Operation>(grpcClient.ExportInstanceAsync, grpcClient.ExportInstance, effectiveSettings.ExportInstanceSettings).WithGoogleRequestParam("name", request => request.Name);
             Modify_ApiCall(ref _callExportInstance);
             Modify_ExportInstanceApiCall(ref _callExportInstance);
-            _callFailoverInstance = clientHelper.BuildApiCall<FailoverInstanceRequest, lro::Operation>(grpcClient.FailoverInstanceAsync, grpcClient.FailoverInstance, effectiveSettings.FailoverInstanceSettings).WithCallSettingsOverlay(request => gaxgrpc::CallSettings.FromHeader("x-goog-request-params", $"name={(sysnet::WebUtility.UrlEncode(request.Name))}"));
+            _callFailoverInstance = clientHelper.BuildApiCall<FailoverInstanceRequest, lro::Operation>(grpcClient.FailoverInstanceAsync, grpcClient.FailoverInstance, effectiveSettings.FailoverInstanceSettings).WithGoogleRequestParam("name", request => request.Name);
             Modify_ApiCall(ref _callFailoverInstance);
             Modify_FailoverInstanceApiCall(ref _callFailoverInstance);
-            _callDeleteInstance = clientHelper.BuildApiCall<DeleteInstanceRequest, lro::Operation>(grpcClient.DeleteInstanceAsync, grpcClient.DeleteInstance, effectiveSettings.DeleteInstanceSettings).WithCallSettingsOverlay(request => gaxgrpc::CallSettings.FromHeader("x-goog-request-params", $"name={(sysnet::WebUtility.UrlEncode(request.Name))}"));
+            _callDeleteInstance = clientHelper.BuildApiCall<DeleteInstanceRequest, lro::Operation>(grpcClient.DeleteInstanceAsync, grpcClient.DeleteInstance, effectiveSettings.DeleteInstanceSettings).WithGoogleRequestParam("name", request => request.Name);
             Modify_ApiCall(ref _callDeleteInstance);
             Modify_DeleteInstanceApiCall(ref _callDeleteInstance);
             OnConstruction(grpcClient, effectiveSettings, clientHelper);
@@ -1874,6 +2115,8 @@ namespace Google.Cloud.Redis.V1
         partial void Modify_CreateInstanceApiCall(ref gaxgrpc::ApiCall<CreateInstanceRequest, lro::Operation> call);
 
         partial void Modify_UpdateInstanceApiCall(ref gaxgrpc::ApiCall<UpdateInstanceRequest, lro::Operation> call);
+
+        partial void Modify_UpgradeInstanceApiCall(ref gaxgrpc::ApiCall<UpgradeInstanceRequest, lro::Operation> call);
 
         partial void Modify_ImportInstanceApiCall(ref gaxgrpc::ApiCall<ImportInstanceRequest, lro::Operation> call);
 
@@ -1896,6 +2139,8 @@ namespace Google.Cloud.Redis.V1
 
         partial void Modify_UpdateInstanceRequest(ref UpdateInstanceRequest request, ref gaxgrpc::CallSettings settings);
 
+        partial void Modify_UpgradeInstanceRequest(ref UpgradeInstanceRequest request, ref gaxgrpc::CallSettings settings);
+
         partial void Modify_ImportInstanceRequest(ref ImportInstanceRequest request, ref gaxgrpc::CallSettings settings);
 
         partial void Modify_ExportInstanceRequest(ref ExportInstanceRequest request, ref gaxgrpc::CallSettings settings);
@@ -1909,6 +2154,7 @@ namespace Google.Cloud.Redis.V1
         /// location (region) or all locations.
         /// 
         /// The location should have the following format:
+        /// 
         /// * `projects/{project_id}/locations/{location_id}`
         /// 
         /// If `location_id` is specified as `-` (wildcard), then all regions
@@ -1928,6 +2174,7 @@ namespace Google.Cloud.Redis.V1
         /// location (region) or all locations.
         /// 
         /// The location should have the following format:
+        /// 
         /// * `projects/{project_id}/locations/{location_id}`
         /// 
         /// If `location_id` is specified as `-` (wildcard), then all regions
@@ -1973,7 +2220,7 @@ namespace Google.Cloud.Redis.V1
         /// Creates a Redis instance based on the specified tier and memory size.
         /// 
         /// By default, the instance is accessible from the project's
-        /// [default network](/compute/docs/networks-and-firewalls#networks).
+        /// [default network](https://cloud.google.com/vpc/docs/vpc).
         /// 
         /// The creation is executed asynchronously and callers may check the returned
         /// operation to track its progress. Once the operation is completed the Redis
@@ -1996,7 +2243,7 @@ namespace Google.Cloud.Redis.V1
         /// Creates a Redis instance based on the specified tier and memory size.
         /// 
         /// By default, the instance is accessible from the project's
-        /// [default network](/compute/docs/networks-and-firewalls#networks).
+        /// [default network](https://cloud.google.com/vpc/docs/vpc).
         /// 
         /// The creation is executed asynchronously and callers may check the returned
         /// operation to track its progress. Once the operation is completed the Redis
@@ -2048,6 +2295,35 @@ namespace Google.Cloud.Redis.V1
         {
             Modify_UpdateInstanceRequest(ref request, ref callSettings);
             return new lro::Operation<Instance, OperationMetadata>(await _callUpdateInstance.Async(request, callSettings).ConfigureAwait(false), UpdateInstanceOperationsClient);
+        }
+
+        /// <summary>The long-running operations client for <c>UpgradeInstance</c>.</summary>
+        public override lro::OperationsClient UpgradeInstanceOperationsClient { get; }
+
+        /// <summary>
+        /// Upgrades Redis instance to the newer Redis version specified in the
+        /// request.
+        /// </summary>
+        /// <param name="request">The request object containing all of the parameters for the API call.</param>
+        /// <param name="callSettings">If not null, applies overrides to this RPC call.</param>
+        /// <returns>The RPC response.</returns>
+        public override lro::Operation<Instance, OperationMetadata> UpgradeInstance(UpgradeInstanceRequest request, gaxgrpc::CallSettings callSettings = null)
+        {
+            Modify_UpgradeInstanceRequest(ref request, ref callSettings);
+            return new lro::Operation<Instance, OperationMetadata>(_callUpgradeInstance.Sync(request, callSettings), UpgradeInstanceOperationsClient);
+        }
+
+        /// <summary>
+        /// Upgrades Redis instance to the newer Redis version specified in the
+        /// request.
+        /// </summary>
+        /// <param name="request">The request object containing all of the parameters for the API call.</param>
+        /// <param name="callSettings">If not null, applies overrides to this RPC call.</param>
+        /// <returns>A Task containing the RPC response.</returns>
+        public override async stt::Task<lro::Operation<Instance, OperationMetadata>> UpgradeInstanceAsync(UpgradeInstanceRequest request, gaxgrpc::CallSettings callSettings = null)
+        {
+            Modify_UpgradeInstanceRequest(ref request, ref callSettings);
+            return new lro::Operation<Instance, OperationMetadata>(await _callUpgradeInstance.Async(request, callSettings).ConfigureAwait(false), UpgradeInstanceOperationsClient);
         }
 
         /// <summary>The long-running operations client for <c>ImportInstance</c>.</summary>

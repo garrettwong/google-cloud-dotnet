@@ -256,7 +256,7 @@ namespace Google.Cloud.Storage.V1.IntegrationTests
             Assert.Equal(expected, actual);
         }
 
-        [Fact]
+        [SkippableFact]
         public void DownloadGzippedFile()
         {
             TestEnvironment.SkipIfVpcSc();

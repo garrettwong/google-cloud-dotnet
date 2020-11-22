@@ -1,4 +1,4 @@
-// Copyright 2019 Google LLC
+// Copyright 2020 Google LLC
 //
 // Licensed under the Apache License, Version 2.0 (the "License");
 // you may not use this file except in compliance with the License.
@@ -24,7 +24,7 @@ namespace Google.Cloud.OsLogin.V1.Snippets
     public sealed class GeneratedOsLoginServiceClientSnippets
     {
         /// <summary>Snippet for DeletePosixAccount</summary>
-        public void DeletePosixAccount_RequestObject()
+        public void DeletePosixAccountRequestObject()
         {
             // Snippet: DeletePosixAccount(DeletePosixAccountRequest, CallSettings)
             // Create client
@@ -32,7 +32,7 @@ namespace Google.Cloud.OsLogin.V1.Snippets
             // Initialize request argument(s)
             DeletePosixAccountRequest request = new DeletePosixAccountRequest
             {
-                PosixAccountName = new PosixAccountName("[USER]", "[PROJECT]"),
+                PosixAccountName = PosixAccountName.FromUserProject("[USER]", "[PROJECT]"),
             };
             // Make the request
             osLoginServiceClient.DeletePosixAccount(request);
@@ -40,7 +40,7 @@ namespace Google.Cloud.OsLogin.V1.Snippets
         }
 
         /// <summary>Snippet for DeletePosixAccountAsync</summary>
-        public async Task DeletePosixAccountAsync_RequestObject()
+        public async Task DeletePosixAccountRequestObjectAsync()
         {
             // Snippet: DeletePosixAccountAsync(DeletePosixAccountRequest, CallSettings)
             // Additional: DeletePosixAccountAsync(DeletePosixAccountRequest, CancellationToken)
@@ -49,7 +49,7 @@ namespace Google.Cloud.OsLogin.V1.Snippets
             // Initialize request argument(s)
             DeletePosixAccountRequest request = new DeletePosixAccountRequest
             {
-                PosixAccountName = new PosixAccountName("[USER]", "[PROJECT]"),
+                PosixAccountName = PosixAccountName.FromUserProject("[USER]", "[PROJECT]"),
             };
             // Make the request
             await osLoginServiceClient.DeletePosixAccountAsync(request);
@@ -84,34 +84,34 @@ namespace Google.Cloud.OsLogin.V1.Snippets
         }
 
         /// <summary>Snippet for DeletePosixAccount</summary>
-        public void DeletePosixAccount_ResourceNames()
+        public void DeletePosixAccountResourceNames()
         {
             // Snippet: DeletePosixAccount(PosixAccountName, CallSettings)
             // Create client
             OsLoginServiceClient osLoginServiceClient = OsLoginServiceClient.Create();
             // Initialize request argument(s)
-            PosixAccountName name = new PosixAccountName("[USER]", "[PROJECT]");
+            PosixAccountName name = PosixAccountName.FromUserProject("[USER]", "[PROJECT]");
             // Make the request
             osLoginServiceClient.DeletePosixAccount(name);
             // End snippet
         }
 
         /// <summary>Snippet for DeletePosixAccountAsync</summary>
-        public async Task DeletePosixAccountAsync_ResourceNames()
+        public async Task DeletePosixAccountResourceNamesAsync()
         {
             // Snippet: DeletePosixAccountAsync(PosixAccountName, CallSettings)
             // Additional: DeletePosixAccountAsync(PosixAccountName, CancellationToken)
             // Create client
             OsLoginServiceClient osLoginServiceClient = await OsLoginServiceClient.CreateAsync();
             // Initialize request argument(s)
-            PosixAccountName name = new PosixAccountName("[USER]", "[PROJECT]");
+            PosixAccountName name = PosixAccountName.FromUserProject("[USER]", "[PROJECT]");
             // Make the request
             await osLoginServiceClient.DeletePosixAccountAsync(name);
             // End snippet
         }
 
         /// <summary>Snippet for DeleteSshPublicKey</summary>
-        public void DeleteSshPublicKey_RequestObject()
+        public void DeleteSshPublicKeyRequestObject()
         {
             // Snippet: DeleteSshPublicKey(DeleteSshPublicKeyRequest, CallSettings)
             // Create client
@@ -119,7 +119,7 @@ namespace Google.Cloud.OsLogin.V1.Snippets
             // Initialize request argument(s)
             DeleteSshPublicKeyRequest request = new DeleteSshPublicKeyRequest
             {
-                SshPublicKeyName = new SshPublicKeyName("[USER]", "[FINGERPRINT]"),
+                SshPublicKeyName = SshPublicKeyName.FromUserFingerprint("[USER]", "[FINGERPRINT]"),
             };
             // Make the request
             osLoginServiceClient.DeleteSshPublicKey(request);
@@ -127,7 +127,7 @@ namespace Google.Cloud.OsLogin.V1.Snippets
         }
 
         /// <summary>Snippet for DeleteSshPublicKeyAsync</summary>
-        public async Task DeleteSshPublicKeyAsync_RequestObject()
+        public async Task DeleteSshPublicKeyRequestObjectAsync()
         {
             // Snippet: DeleteSshPublicKeyAsync(DeleteSshPublicKeyRequest, CallSettings)
             // Additional: DeleteSshPublicKeyAsync(DeleteSshPublicKeyRequest, CancellationToken)
@@ -136,7 +136,7 @@ namespace Google.Cloud.OsLogin.V1.Snippets
             // Initialize request argument(s)
             DeleteSshPublicKeyRequest request = new DeleteSshPublicKeyRequest
             {
-                SshPublicKeyName = new SshPublicKeyName("[USER]", "[FINGERPRINT]"),
+                SshPublicKeyName = SshPublicKeyName.FromUserFingerprint("[USER]", "[FINGERPRINT]"),
             };
             // Make the request
             await osLoginServiceClient.DeleteSshPublicKeyAsync(request);
@@ -171,34 +171,34 @@ namespace Google.Cloud.OsLogin.V1.Snippets
         }
 
         /// <summary>Snippet for DeleteSshPublicKey</summary>
-        public void DeleteSshPublicKey_ResourceNames()
+        public void DeleteSshPublicKeyResourceNames()
         {
             // Snippet: DeleteSshPublicKey(SshPublicKeyName, CallSettings)
             // Create client
             OsLoginServiceClient osLoginServiceClient = OsLoginServiceClient.Create();
             // Initialize request argument(s)
-            SshPublicKeyName name = new SshPublicKeyName("[USER]", "[FINGERPRINT]");
+            SshPublicKeyName name = SshPublicKeyName.FromUserFingerprint("[USER]", "[FINGERPRINT]");
             // Make the request
             osLoginServiceClient.DeleteSshPublicKey(name);
             // End snippet
         }
 
         /// <summary>Snippet for DeleteSshPublicKeyAsync</summary>
-        public async Task DeleteSshPublicKeyAsync_ResourceNames()
+        public async Task DeleteSshPublicKeyResourceNamesAsync()
         {
             // Snippet: DeleteSshPublicKeyAsync(SshPublicKeyName, CallSettings)
             // Additional: DeleteSshPublicKeyAsync(SshPublicKeyName, CancellationToken)
             // Create client
             OsLoginServiceClient osLoginServiceClient = await OsLoginServiceClient.CreateAsync();
             // Initialize request argument(s)
-            SshPublicKeyName name = new SshPublicKeyName("[USER]", "[FINGERPRINT]");
+            SshPublicKeyName name = SshPublicKeyName.FromUserFingerprint("[USER]", "[FINGERPRINT]");
             // Make the request
             await osLoginServiceClient.DeleteSshPublicKeyAsync(name);
             // End snippet
         }
 
         /// <summary>Snippet for GetLoginProfile</summary>
-        public void GetLoginProfile_RequestObject()
+        public void GetLoginProfileRequestObject()
         {
             // Snippet: GetLoginProfile(GetLoginProfileRequest, CallSettings)
             // Create client
@@ -206,7 +206,7 @@ namespace Google.Cloud.OsLogin.V1.Snippets
             // Initialize request argument(s)
             GetLoginProfileRequest request = new GetLoginProfileRequest
             {
-                UserName = new UserName("[USER]"),
+                UserName = UserName.FromUser("[USER]"),
                 ProjectId = "",
                 SystemId = "",
             };
@@ -216,7 +216,7 @@ namespace Google.Cloud.OsLogin.V1.Snippets
         }
 
         /// <summary>Snippet for GetLoginProfileAsync</summary>
-        public async Task GetLoginProfileAsync_RequestObject()
+        public async Task GetLoginProfileRequestObjectAsync()
         {
             // Snippet: GetLoginProfileAsync(GetLoginProfileRequest, CallSettings)
             // Additional: GetLoginProfileAsync(GetLoginProfileRequest, CancellationToken)
@@ -225,7 +225,7 @@ namespace Google.Cloud.OsLogin.V1.Snippets
             // Initialize request argument(s)
             GetLoginProfileRequest request = new GetLoginProfileRequest
             {
-                UserName = new UserName("[USER]"),
+                UserName = UserName.FromUser("[USER]"),
                 ProjectId = "",
                 SystemId = "",
             };
@@ -262,34 +262,34 @@ namespace Google.Cloud.OsLogin.V1.Snippets
         }
 
         /// <summary>Snippet for GetLoginProfile</summary>
-        public void GetLoginProfile_ResourceNames()
+        public void GetLoginProfileResourceNames()
         {
             // Snippet: GetLoginProfile(UserName, CallSettings)
             // Create client
             OsLoginServiceClient osLoginServiceClient = OsLoginServiceClient.Create();
             // Initialize request argument(s)
-            UserName name = new UserName("[USER]");
+            UserName name = UserName.FromUser("[USER]");
             // Make the request
             LoginProfile response = osLoginServiceClient.GetLoginProfile(name);
             // End snippet
         }
 
         /// <summary>Snippet for GetLoginProfileAsync</summary>
-        public async Task GetLoginProfileAsync_ResourceNames()
+        public async Task GetLoginProfileResourceNamesAsync()
         {
             // Snippet: GetLoginProfileAsync(UserName, CallSettings)
             // Additional: GetLoginProfileAsync(UserName, CancellationToken)
             // Create client
             OsLoginServiceClient osLoginServiceClient = await OsLoginServiceClient.CreateAsync();
             // Initialize request argument(s)
-            UserName name = new UserName("[USER]");
+            UserName name = UserName.FromUser("[USER]");
             // Make the request
             LoginProfile response = await osLoginServiceClient.GetLoginProfileAsync(name);
             // End snippet
         }
 
         /// <summary>Snippet for GetSshPublicKey</summary>
-        public void GetSshPublicKey_RequestObject()
+        public void GetSshPublicKeyRequestObject()
         {
             // Snippet: GetSshPublicKey(GetSshPublicKeyRequest, CallSettings)
             // Create client
@@ -297,7 +297,7 @@ namespace Google.Cloud.OsLogin.V1.Snippets
             // Initialize request argument(s)
             GetSshPublicKeyRequest request = new GetSshPublicKeyRequest
             {
-                SshPublicKeyName = new SshPublicKeyName("[USER]", "[FINGERPRINT]"),
+                SshPublicKeyName = SshPublicKeyName.FromUserFingerprint("[USER]", "[FINGERPRINT]"),
             };
             // Make the request
             SshPublicKey response = osLoginServiceClient.GetSshPublicKey(request);
@@ -305,7 +305,7 @@ namespace Google.Cloud.OsLogin.V1.Snippets
         }
 
         /// <summary>Snippet for GetSshPublicKeyAsync</summary>
-        public async Task GetSshPublicKeyAsync_RequestObject()
+        public async Task GetSshPublicKeyRequestObjectAsync()
         {
             // Snippet: GetSshPublicKeyAsync(GetSshPublicKeyRequest, CallSettings)
             // Additional: GetSshPublicKeyAsync(GetSshPublicKeyRequest, CancellationToken)
@@ -314,7 +314,7 @@ namespace Google.Cloud.OsLogin.V1.Snippets
             // Initialize request argument(s)
             GetSshPublicKeyRequest request = new GetSshPublicKeyRequest
             {
-                SshPublicKeyName = new SshPublicKeyName("[USER]", "[FINGERPRINT]"),
+                SshPublicKeyName = SshPublicKeyName.FromUserFingerprint("[USER]", "[FINGERPRINT]"),
             };
             // Make the request
             SshPublicKey response = await osLoginServiceClient.GetSshPublicKeyAsync(request);
@@ -349,34 +349,34 @@ namespace Google.Cloud.OsLogin.V1.Snippets
         }
 
         /// <summary>Snippet for GetSshPublicKey</summary>
-        public void GetSshPublicKey_ResourceNames()
+        public void GetSshPublicKeyResourceNames()
         {
             // Snippet: GetSshPublicKey(SshPublicKeyName, CallSettings)
             // Create client
             OsLoginServiceClient osLoginServiceClient = OsLoginServiceClient.Create();
             // Initialize request argument(s)
-            SshPublicKeyName name = new SshPublicKeyName("[USER]", "[FINGERPRINT]");
+            SshPublicKeyName name = SshPublicKeyName.FromUserFingerprint("[USER]", "[FINGERPRINT]");
             // Make the request
             SshPublicKey response = osLoginServiceClient.GetSshPublicKey(name);
             // End snippet
         }
 
         /// <summary>Snippet for GetSshPublicKeyAsync</summary>
-        public async Task GetSshPublicKeyAsync_ResourceNames()
+        public async Task GetSshPublicKeyResourceNamesAsync()
         {
             // Snippet: GetSshPublicKeyAsync(SshPublicKeyName, CallSettings)
             // Additional: GetSshPublicKeyAsync(SshPublicKeyName, CancellationToken)
             // Create client
             OsLoginServiceClient osLoginServiceClient = await OsLoginServiceClient.CreateAsync();
             // Initialize request argument(s)
-            SshPublicKeyName name = new SshPublicKeyName("[USER]", "[FINGERPRINT]");
+            SshPublicKeyName name = SshPublicKeyName.FromUserFingerprint("[USER]", "[FINGERPRINT]");
             // Make the request
             SshPublicKey response = await osLoginServiceClient.GetSshPublicKeyAsync(name);
             // End snippet
         }
 
         /// <summary>Snippet for ImportSshPublicKey</summary>
-        public void ImportSshPublicKey_RequestObject()
+        public void ImportSshPublicKeyRequestObject()
         {
             // Snippet: ImportSshPublicKey(ImportSshPublicKeyRequest, CallSettings)
             // Create client
@@ -384,7 +384,7 @@ namespace Google.Cloud.OsLogin.V1.Snippets
             // Initialize request argument(s)
             ImportSshPublicKeyRequest request = new ImportSshPublicKeyRequest
             {
-                ParentAsUserName = new UserName("[USER]"),
+                ParentAsUserName = UserName.FromUser("[USER]"),
                 SshPublicKey = new SshPublicKey(),
                 ProjectId = "",
             };
@@ -394,7 +394,7 @@ namespace Google.Cloud.OsLogin.V1.Snippets
         }
 
         /// <summary>Snippet for ImportSshPublicKeyAsync</summary>
-        public async Task ImportSshPublicKeyAsync_RequestObject()
+        public async Task ImportSshPublicKeyRequestObjectAsync()
         {
             // Snippet: ImportSshPublicKeyAsync(ImportSshPublicKeyRequest, CallSettings)
             // Additional: ImportSshPublicKeyAsync(ImportSshPublicKeyRequest, CancellationToken)
@@ -403,7 +403,7 @@ namespace Google.Cloud.OsLogin.V1.Snippets
             // Initialize request argument(s)
             ImportSshPublicKeyRequest request = new ImportSshPublicKeyRequest
             {
-                ParentAsUserName = new UserName("[USER]"),
+                ParentAsUserName = UserName.FromUser("[USER]"),
                 SshPublicKey = new SshPublicKey(),
                 ProjectId = "",
             };
@@ -442,13 +442,13 @@ namespace Google.Cloud.OsLogin.V1.Snippets
         }
 
         /// <summary>Snippet for ImportSshPublicKey</summary>
-        public void ImportSshPublicKey1_ResourceNames()
+        public void ImportSshPublicKey1ResourceNames()
         {
             // Snippet: ImportSshPublicKey(UserName, SshPublicKey, CallSettings)
             // Create client
             OsLoginServiceClient osLoginServiceClient = OsLoginServiceClient.Create();
             // Initialize request argument(s)
-            UserName parent = new UserName("[USER]");
+            UserName parent = UserName.FromUser("[USER]");
             SshPublicKey sshPublicKey = new SshPublicKey();
             // Make the request
             ImportSshPublicKeyResponse response = osLoginServiceClient.ImportSshPublicKey(parent, sshPublicKey);
@@ -456,14 +456,14 @@ namespace Google.Cloud.OsLogin.V1.Snippets
         }
 
         /// <summary>Snippet for ImportSshPublicKeyAsync</summary>
-        public async Task ImportSshPublicKey1Async_ResourceNames()
+        public async Task ImportSshPublicKey1ResourceNamesAsync()
         {
             // Snippet: ImportSshPublicKeyAsync(UserName, SshPublicKey, CallSettings)
             // Additional: ImportSshPublicKeyAsync(UserName, SshPublicKey, CancellationToken)
             // Create client
             OsLoginServiceClient osLoginServiceClient = await OsLoginServiceClient.CreateAsync();
             // Initialize request argument(s)
-            UserName parent = new UserName("[USER]");
+            UserName parent = UserName.FromUser("[USER]");
             SshPublicKey sshPublicKey = new SshPublicKey();
             // Make the request
             ImportSshPublicKeyResponse response = await osLoginServiceClient.ImportSshPublicKeyAsync(parent, sshPublicKey);
@@ -502,13 +502,13 @@ namespace Google.Cloud.OsLogin.V1.Snippets
         }
 
         /// <summary>Snippet for ImportSshPublicKey</summary>
-        public void ImportSshPublicKey2_ResourceNames()
+        public void ImportSshPublicKey2ResourceNames()
         {
             // Snippet: ImportSshPublicKey(UserName, SshPublicKey, string, CallSettings)
             // Create client
             OsLoginServiceClient osLoginServiceClient = OsLoginServiceClient.Create();
             // Initialize request argument(s)
-            UserName parent = new UserName("[USER]");
+            UserName parent = UserName.FromUser("[USER]");
             SshPublicKey sshPublicKey = new SshPublicKey();
             string projectId = "";
             // Make the request
@@ -517,14 +517,14 @@ namespace Google.Cloud.OsLogin.V1.Snippets
         }
 
         /// <summary>Snippet for ImportSshPublicKeyAsync</summary>
-        public async Task ImportSshPublicKey2Async_ResourceNames()
+        public async Task ImportSshPublicKey2ResourceNamesAsync()
         {
             // Snippet: ImportSshPublicKeyAsync(UserName, SshPublicKey, string, CallSettings)
             // Additional: ImportSshPublicKeyAsync(UserName, SshPublicKey, string, CancellationToken)
             // Create client
             OsLoginServiceClient osLoginServiceClient = await OsLoginServiceClient.CreateAsync();
             // Initialize request argument(s)
-            UserName parent = new UserName("[USER]");
+            UserName parent = UserName.FromUser("[USER]");
             SshPublicKey sshPublicKey = new SshPublicKey();
             string projectId = "";
             // Make the request
@@ -533,7 +533,7 @@ namespace Google.Cloud.OsLogin.V1.Snippets
         }
 
         /// <summary>Snippet for UpdateSshPublicKey</summary>
-        public void UpdateSshPublicKey_RequestObject()
+        public void UpdateSshPublicKeyRequestObject()
         {
             // Snippet: UpdateSshPublicKey(UpdateSshPublicKeyRequest, CallSettings)
             // Create client
@@ -541,7 +541,7 @@ namespace Google.Cloud.OsLogin.V1.Snippets
             // Initialize request argument(s)
             UpdateSshPublicKeyRequest request = new UpdateSshPublicKeyRequest
             {
-                SshPublicKeyName = new SshPublicKeyName("[USER]", "[FINGERPRINT]"),
+                SshPublicKeyName = SshPublicKeyName.FromUserFingerprint("[USER]", "[FINGERPRINT]"),
                 SshPublicKey = new SshPublicKey(),
                 UpdateMask = new FieldMask(),
             };
@@ -551,7 +551,7 @@ namespace Google.Cloud.OsLogin.V1.Snippets
         }
 
         /// <summary>Snippet for UpdateSshPublicKeyAsync</summary>
-        public async Task UpdateSshPublicKeyAsync_RequestObject()
+        public async Task UpdateSshPublicKeyRequestObjectAsync()
         {
             // Snippet: UpdateSshPublicKeyAsync(UpdateSshPublicKeyRequest, CallSettings)
             // Additional: UpdateSshPublicKeyAsync(UpdateSshPublicKeyRequest, CancellationToken)
@@ -560,7 +560,7 @@ namespace Google.Cloud.OsLogin.V1.Snippets
             // Initialize request argument(s)
             UpdateSshPublicKeyRequest request = new UpdateSshPublicKeyRequest
             {
-                SshPublicKeyName = new SshPublicKeyName("[USER]", "[FINGERPRINT]"),
+                SshPublicKeyName = SshPublicKeyName.FromUserFingerprint("[USER]", "[FINGERPRINT]"),
                 SshPublicKey = new SshPublicKey(),
                 UpdateMask = new FieldMask(),
             };
@@ -599,13 +599,13 @@ namespace Google.Cloud.OsLogin.V1.Snippets
         }
 
         /// <summary>Snippet for UpdateSshPublicKey</summary>
-        public void UpdateSshPublicKey1_ResourceNames()
+        public void UpdateSshPublicKey1ResourceNames()
         {
             // Snippet: UpdateSshPublicKey(SshPublicKeyName, SshPublicKey, CallSettings)
             // Create client
             OsLoginServiceClient osLoginServiceClient = OsLoginServiceClient.Create();
             // Initialize request argument(s)
-            SshPublicKeyName name = new SshPublicKeyName("[USER]", "[FINGERPRINT]");
+            SshPublicKeyName name = SshPublicKeyName.FromUserFingerprint("[USER]", "[FINGERPRINT]");
             SshPublicKey sshPublicKey = new SshPublicKey();
             // Make the request
             SshPublicKey response = osLoginServiceClient.UpdateSshPublicKey(name, sshPublicKey);
@@ -613,14 +613,14 @@ namespace Google.Cloud.OsLogin.V1.Snippets
         }
 
         /// <summary>Snippet for UpdateSshPublicKeyAsync</summary>
-        public async Task UpdateSshPublicKey1Async_ResourceNames()
+        public async Task UpdateSshPublicKey1ResourceNamesAsync()
         {
             // Snippet: UpdateSshPublicKeyAsync(SshPublicKeyName, SshPublicKey, CallSettings)
             // Additional: UpdateSshPublicKeyAsync(SshPublicKeyName, SshPublicKey, CancellationToken)
             // Create client
             OsLoginServiceClient osLoginServiceClient = await OsLoginServiceClient.CreateAsync();
             // Initialize request argument(s)
-            SshPublicKeyName name = new SshPublicKeyName("[USER]", "[FINGERPRINT]");
+            SshPublicKeyName name = SshPublicKeyName.FromUserFingerprint("[USER]", "[FINGERPRINT]");
             SshPublicKey sshPublicKey = new SshPublicKey();
             // Make the request
             SshPublicKey response = await osLoginServiceClient.UpdateSshPublicKeyAsync(name, sshPublicKey);
@@ -659,13 +659,13 @@ namespace Google.Cloud.OsLogin.V1.Snippets
         }
 
         /// <summary>Snippet for UpdateSshPublicKey</summary>
-        public void UpdateSshPublicKey2_ResourceNames()
+        public void UpdateSshPublicKey2ResourceNames()
         {
             // Snippet: UpdateSshPublicKey(SshPublicKeyName, SshPublicKey, FieldMask, CallSettings)
             // Create client
             OsLoginServiceClient osLoginServiceClient = OsLoginServiceClient.Create();
             // Initialize request argument(s)
-            SshPublicKeyName name = new SshPublicKeyName("[USER]", "[FINGERPRINT]");
+            SshPublicKeyName name = SshPublicKeyName.FromUserFingerprint("[USER]", "[FINGERPRINT]");
             SshPublicKey sshPublicKey = new SshPublicKey();
             FieldMask updateMask = new FieldMask();
             // Make the request
@@ -674,14 +674,14 @@ namespace Google.Cloud.OsLogin.V1.Snippets
         }
 
         /// <summary>Snippet for UpdateSshPublicKeyAsync</summary>
-        public async Task UpdateSshPublicKey2Async_ResourceNames()
+        public async Task UpdateSshPublicKey2ResourceNamesAsync()
         {
             // Snippet: UpdateSshPublicKeyAsync(SshPublicKeyName, SshPublicKey, FieldMask, CallSettings)
             // Additional: UpdateSshPublicKeyAsync(SshPublicKeyName, SshPublicKey, FieldMask, CancellationToken)
             // Create client
             OsLoginServiceClient osLoginServiceClient = await OsLoginServiceClient.CreateAsync();
             // Initialize request argument(s)
-            SshPublicKeyName name = new SshPublicKeyName("[USER]", "[FINGERPRINT]");
+            SshPublicKeyName name = SshPublicKeyName.FromUserFingerprint("[USER]", "[FINGERPRINT]");
             SshPublicKey sshPublicKey = new SshPublicKey();
             FieldMask updateMask = new FieldMask();
             // Make the request
