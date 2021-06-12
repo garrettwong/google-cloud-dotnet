@@ -1,4 +1,4 @@
-// Copyright 2020 Google LLC
+// Copyright 2021 Google LLC
 //
 // Licensed under the Apache License, Version 2.0 (the "License");
 // you may not use this file except in compliance with the License.
@@ -77,7 +77,7 @@ namespace Google.Cloud.DataCatalog.V1.Snippets
             // End snippet
         }
 
-        /// <summary>Snippet for SearchCatalog</summary>
+        /// <summary>Snippet for SearchCatalogAsync</summary>
         public async Task SearchCatalogRequestObjectAsync()
         {
             // Snippet: SearchCatalogAsync(SearchCatalogRequest, CallSettings)
@@ -173,7 +173,7 @@ namespace Google.Cloud.DataCatalog.V1.Snippets
             // End snippet
         }
 
-        /// <summary>Snippet for SearchCatalog</summary>
+        /// <summary>Snippet for SearchCatalogAsync</summary>
         public async Task SearchCatalogAsync()
         {
             // Snippet: SearchCatalogAsync(SearchCatalogRequest.Types.Scope, string, string, int?, CallSettings)
@@ -693,7 +693,7 @@ namespace Google.Cloud.DataCatalog.V1.Snippets
             // End snippet
         }
 
-        /// <summary>Snippet for ListEntryGroups</summary>
+        /// <summary>Snippet for ListEntryGroupsAsync</summary>
         public async Task ListEntryGroupsRequestObjectAsync()
         {
             // Snippet: ListEntryGroupsAsync(ListEntryGroupsRequest, CallSettings)
@@ -786,7 +786,7 @@ namespace Google.Cloud.DataCatalog.V1.Snippets
             // End snippet
         }
 
-        /// <summary>Snippet for ListEntryGroups</summary>
+        /// <summary>Snippet for ListEntryGroupsAsync</summary>
         public async Task ListEntryGroupsAsync()
         {
             // Snippet: ListEntryGroupsAsync(string, string, int?, CallSettings)
@@ -876,7 +876,7 @@ namespace Google.Cloud.DataCatalog.V1.Snippets
             // End snippet
         }
 
-        /// <summary>Snippet for ListEntryGroups</summary>
+        /// <summary>Snippet for ListEntryGroupsAsync</summary>
         public async Task ListEntryGroupsResourceNamesAsync()
         {
             // Snippet: ListEntryGroupsAsync(EntryGroupName, string, int?, CallSettings)
@@ -1292,11 +1292,7 @@ namespace Google.Cloud.DataCatalog.V1.Snippets
             // Create client
             DataCatalogClient dataCatalogClient = DataCatalogClient.Create();
             // Initialize request argument(s)
-            LookupEntryRequest request = new LookupEntryRequest
-            {
-                LinkedResource = "",
-                SqlResource = "",
-            };
+            LookupEntryRequest request = new LookupEntryRequest { LinkedResource = "", };
             // Make the request
             Entry response = dataCatalogClient.LookupEntry(request);
             // End snippet
@@ -1310,11 +1306,7 @@ namespace Google.Cloud.DataCatalog.V1.Snippets
             // Create client
             DataCatalogClient dataCatalogClient = await DataCatalogClient.CreateAsync();
             // Initialize request argument(s)
-            LookupEntryRequest request = new LookupEntryRequest
-            {
-                LinkedResource = "",
-                SqlResource = "",
-            };
+            LookupEntryRequest request = new LookupEntryRequest { LinkedResource = "", };
             // Make the request
             Entry response = await dataCatalogClient.LookupEntryAsync(request);
             // End snippet
@@ -1369,7 +1361,7 @@ namespace Google.Cloud.DataCatalog.V1.Snippets
             // End snippet
         }
 
-        /// <summary>Snippet for ListEntries</summary>
+        /// <summary>Snippet for ListEntriesAsync</summary>
         public async Task ListEntriesRequestObjectAsync()
         {
             // Snippet: ListEntriesAsync(ListEntriesRequest, CallSettings)
@@ -1463,7 +1455,7 @@ namespace Google.Cloud.DataCatalog.V1.Snippets
             // End snippet
         }
 
-        /// <summary>Snippet for ListEntries</summary>
+        /// <summary>Snippet for ListEntriesAsync</summary>
         public async Task ListEntriesAsync()
         {
             // Snippet: ListEntriesAsync(string, string, int?, CallSettings)
@@ -1553,7 +1545,7 @@ namespace Google.Cloud.DataCatalog.V1.Snippets
             // End snippet
         }
 
-        /// <summary>Snippet for ListEntries</summary>
+        /// <summary>Snippet for ListEntriesAsync</summary>
         public async Task ListEntriesResourceNamesAsync()
         {
             // Snippet: ListEntriesAsync(EntryGroupName, string, int?, CallSettings)
@@ -2317,6 +2309,99 @@ namespace Google.Cloud.DataCatalog.V1.Snippets
             // End snippet
         }
 
+        /// <summary>Snippet for RenameTagTemplateFieldEnumValue</summary>
+        public void RenameTagTemplateFieldEnumValueRequestObject()
+        {
+            // Snippet: RenameTagTemplateFieldEnumValue(RenameTagTemplateFieldEnumValueRequest, CallSettings)
+            // Create client
+            DataCatalogClient dataCatalogClient = DataCatalogClient.Create();
+            // Initialize request argument(s)
+            RenameTagTemplateFieldEnumValueRequest request = new RenameTagTemplateFieldEnumValueRequest
+            {
+                TagTemplateFieldEnumValueName = TagTemplateFieldEnumValueName.FromProjectLocationTagTemplateTagTemplateFieldEnumValueDisplayName("[PROJECT]", "[LOCATION]", "[TAG_TEMPLATE]", "[TAG_TEMPLATE_FIELD_ID]", "[ENUM_VALUE_DISPLAY_NAME]"),
+                NewEnumValueDisplayName = "",
+            };
+            // Make the request
+            TagTemplateField response = dataCatalogClient.RenameTagTemplateFieldEnumValue(request);
+            // End snippet
+        }
+
+        /// <summary>Snippet for RenameTagTemplateFieldEnumValueAsync</summary>
+        public async Task RenameTagTemplateFieldEnumValueRequestObjectAsync()
+        {
+            // Snippet: RenameTagTemplateFieldEnumValueAsync(RenameTagTemplateFieldEnumValueRequest, CallSettings)
+            // Additional: RenameTagTemplateFieldEnumValueAsync(RenameTagTemplateFieldEnumValueRequest, CancellationToken)
+            // Create client
+            DataCatalogClient dataCatalogClient = await DataCatalogClient.CreateAsync();
+            // Initialize request argument(s)
+            RenameTagTemplateFieldEnumValueRequest request = new RenameTagTemplateFieldEnumValueRequest
+            {
+                TagTemplateFieldEnumValueName = TagTemplateFieldEnumValueName.FromProjectLocationTagTemplateTagTemplateFieldEnumValueDisplayName("[PROJECT]", "[LOCATION]", "[TAG_TEMPLATE]", "[TAG_TEMPLATE_FIELD_ID]", "[ENUM_VALUE_DISPLAY_NAME]"),
+                NewEnumValueDisplayName = "",
+            };
+            // Make the request
+            TagTemplateField response = await dataCatalogClient.RenameTagTemplateFieldEnumValueAsync(request);
+            // End snippet
+        }
+
+        /// <summary>Snippet for RenameTagTemplateFieldEnumValue</summary>
+        public void RenameTagTemplateFieldEnumValue()
+        {
+            // Snippet: RenameTagTemplateFieldEnumValue(string, string, CallSettings)
+            // Create client
+            DataCatalogClient dataCatalogClient = DataCatalogClient.Create();
+            // Initialize request argument(s)
+            string name = "projects/[PROJECT]/locations/[LOCATION]/tagTemplates/[TAG_TEMPLATE]/fields/[TAG_TEMPLATE_FIELD_ID]/enumValues/[ENUM_VALUE_DISPLAY_NAME]";
+            string newEnumValueDisplayName = "";
+            // Make the request
+            TagTemplateField response = dataCatalogClient.RenameTagTemplateFieldEnumValue(name, newEnumValueDisplayName);
+            // End snippet
+        }
+
+        /// <summary>Snippet for RenameTagTemplateFieldEnumValueAsync</summary>
+        public async Task RenameTagTemplateFieldEnumValueAsync()
+        {
+            // Snippet: RenameTagTemplateFieldEnumValueAsync(string, string, CallSettings)
+            // Additional: RenameTagTemplateFieldEnumValueAsync(string, string, CancellationToken)
+            // Create client
+            DataCatalogClient dataCatalogClient = await DataCatalogClient.CreateAsync();
+            // Initialize request argument(s)
+            string name = "projects/[PROJECT]/locations/[LOCATION]/tagTemplates/[TAG_TEMPLATE]/fields/[TAG_TEMPLATE_FIELD_ID]/enumValues/[ENUM_VALUE_DISPLAY_NAME]";
+            string newEnumValueDisplayName = "";
+            // Make the request
+            TagTemplateField response = await dataCatalogClient.RenameTagTemplateFieldEnumValueAsync(name, newEnumValueDisplayName);
+            // End snippet
+        }
+
+        /// <summary>Snippet for RenameTagTemplateFieldEnumValue</summary>
+        public void RenameTagTemplateFieldEnumValueResourceNames()
+        {
+            // Snippet: RenameTagTemplateFieldEnumValue(TagTemplateFieldEnumValueName, string, CallSettings)
+            // Create client
+            DataCatalogClient dataCatalogClient = DataCatalogClient.Create();
+            // Initialize request argument(s)
+            TagTemplateFieldEnumValueName name = TagTemplateFieldEnumValueName.FromProjectLocationTagTemplateTagTemplateFieldEnumValueDisplayName("[PROJECT]", "[LOCATION]", "[TAG_TEMPLATE]", "[TAG_TEMPLATE_FIELD_ID]", "[ENUM_VALUE_DISPLAY_NAME]");
+            string newEnumValueDisplayName = "";
+            // Make the request
+            TagTemplateField response = dataCatalogClient.RenameTagTemplateFieldEnumValue(name, newEnumValueDisplayName);
+            // End snippet
+        }
+
+        /// <summary>Snippet for RenameTagTemplateFieldEnumValueAsync</summary>
+        public async Task RenameTagTemplateFieldEnumValueResourceNamesAsync()
+        {
+            // Snippet: RenameTagTemplateFieldEnumValueAsync(TagTemplateFieldEnumValueName, string, CallSettings)
+            // Additional: RenameTagTemplateFieldEnumValueAsync(TagTemplateFieldEnumValueName, string, CancellationToken)
+            // Create client
+            DataCatalogClient dataCatalogClient = await DataCatalogClient.CreateAsync();
+            // Initialize request argument(s)
+            TagTemplateFieldEnumValueName name = TagTemplateFieldEnumValueName.FromProjectLocationTagTemplateTagTemplateFieldEnumValueDisplayName("[PROJECT]", "[LOCATION]", "[TAG_TEMPLATE]", "[TAG_TEMPLATE_FIELD_ID]", "[ENUM_VALUE_DISPLAY_NAME]");
+            string newEnumValueDisplayName = "";
+            // Make the request
+            TagTemplateField response = await dataCatalogClient.RenameTagTemplateFieldEnumValueAsync(name, newEnumValueDisplayName);
+            // End snippet
+        }
+
         /// <summary>Snippet for DeleteTagTemplateField</summary>
         public void DeleteTagTemplateFieldRequestObject()
         {
@@ -2729,7 +2814,7 @@ namespace Google.Cloud.DataCatalog.V1.Snippets
             // End snippet
         }
 
-        /// <summary>Snippet for ListTags</summary>
+        /// <summary>Snippet for ListTagsAsync</summary>
         public async Task ListTagsRequestObjectAsync()
         {
             // Snippet: ListTagsAsync(ListTagsRequest, CallSettings)
@@ -2822,7 +2907,7 @@ namespace Google.Cloud.DataCatalog.V1.Snippets
             // End snippet
         }
 
-        /// <summary>Snippet for ListTags</summary>
+        /// <summary>Snippet for ListTagsAsync</summary>
         public async Task ListTagsAsync()
         {
             // Snippet: ListTagsAsync(string, string, int?, CallSettings)
@@ -2912,7 +2997,7 @@ namespace Google.Cloud.DataCatalog.V1.Snippets
             // End snippet
         }
 
-        /// <summary>Snippet for ListTags</summary>
+        /// <summary>Snippet for ListTagsAsync</summary>
         public async Task ListTagsResourceNamesAsync()
         {
             // Snippet: ListTagsAsync(EntryName, string, int?, CallSettings)

@@ -1,4 +1,4 @@
-// Copyright 2020 Google LLC
+// Copyright 2021 Google LLC
 //
 // Licensed under the Apache License, Version 2.0 (the "License");
 // you may not use this file except in compliance with the License.
@@ -408,7 +408,7 @@ namespace Google.Cloud.Iot.V1.Snippets
             // End snippet
         }
 
-        /// <summary>Snippet for ListDeviceRegistries</summary>
+        /// <summary>Snippet for ListDeviceRegistriesAsync</summary>
         public async Task ListDeviceRegistriesRequestObjectAsync()
         {
             // Snippet: ListDeviceRegistriesAsync(ListDeviceRegistriesRequest, CallSettings)
@@ -501,7 +501,7 @@ namespace Google.Cloud.Iot.V1.Snippets
             // End snippet
         }
 
-        /// <summary>Snippet for ListDeviceRegistries</summary>
+        /// <summary>Snippet for ListDeviceRegistriesAsync</summary>
         public async Task ListDeviceRegistriesAsync()
         {
             // Snippet: ListDeviceRegistriesAsync(string, string, int?, CallSettings)
@@ -591,7 +591,7 @@ namespace Google.Cloud.Iot.V1.Snippets
             // End snippet
         }
 
-        /// <summary>Snippet for ListDeviceRegistries</summary>
+        /// <summary>Snippet for ListDeviceRegistriesAsync</summary>
         public async Task ListDeviceRegistriesResourceNamesAsync()
         {
             // Snippet: ListDeviceRegistriesAsync(LocationName, string, int?, CallSettings)
@@ -1021,7 +1021,7 @@ namespace Google.Cloud.Iot.V1.Snippets
             // End snippet
         }
 
-        /// <summary>Snippet for ListDevices</summary>
+        /// <summary>Snippet for ListDevicesAsync</summary>
         public async Task ListDevicesRequestObjectAsync()
         {
             // Snippet: ListDevicesAsync(ListDevicesRequest, CallSettings)
@@ -1118,7 +1118,7 @@ namespace Google.Cloud.Iot.V1.Snippets
             // End snippet
         }
 
-        /// <summary>Snippet for ListDevices</summary>
+        /// <summary>Snippet for ListDevicesAsync</summary>
         public async Task ListDevicesAsync()
         {
             // Snippet: ListDevicesAsync(string, string, int?, CallSettings)
@@ -1208,7 +1208,7 @@ namespace Google.Cloud.Iot.V1.Snippets
             // End snippet
         }
 
-        /// <summary>Snippet for ListDevices</summary>
+        /// <summary>Snippet for ListDevicesAsync</summary>
         public async Task ListDevicesResourceNamesAsync()
         {
             // Snippet: ListDevicesAsync(RegistryName, string, int?, CallSettings)

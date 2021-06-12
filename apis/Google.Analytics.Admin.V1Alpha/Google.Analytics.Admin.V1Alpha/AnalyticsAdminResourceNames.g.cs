@@ -1,4 +1,4 @@
-// Copyright 2020 Google LLC
+// Copyright 2021 Google LLC
 //
 // Licensed under the Apache License, Version 2.0 (the "License");
 // you may not use this file except in compliance with the License.
@@ -486,18 +486,6 @@ namespace Google.Analytics.Admin.V1Alpha
         }
     }
 
-    public partial class CreateIosAppDataStreamRequest
-    {
-        /// <summary>
-        /// <see cref="PropertyName"/>-typed view over the <see cref="Parent"/> resource name property.
-        /// </summary>
-        public PropertyName ParentAsPropertyName
-        {
-            get => string.IsNullOrEmpty(Parent) ? null : PropertyName.Parse(Parent, allowUnparsed: true);
-            set => Parent = value?.ToString() ?? "";
-        }
-    }
-
     public partial class ListIosAppDataStreamsRequest
     {
         /// <summary>
@@ -531,18 +519,6 @@ namespace Google.Analytics.Admin.V1Alpha
         {
             get => string.IsNullOrEmpty(Name) ? null : gaav::AndroidAppDataStreamName.Parse(Name, allowUnparsed: true);
             set => Name = value?.ToString() ?? "";
-        }
-    }
-
-    public partial class CreateAndroidAppDataStreamRequest
-    {
-        /// <summary>
-        /// <see cref="PropertyName"/>-typed view over the <see cref="Parent"/> resource name property.
-        /// </summary>
-        public PropertyName ParentAsPropertyName
-        {
-            get => string.IsNullOrEmpty(Parent) ? null : PropertyName.Parse(Parent, allowUnparsed: true);
-            set => Parent = value?.ToString() ?? "";
         }
     }
 
@@ -663,6 +639,233 @@ namespace Google.Analytics.Admin.V1Alpha
         public gaav::DataSharingSettingsName DataSharingSettingsName
         {
             get => string.IsNullOrEmpty(Name) ? null : gaav::DataSharingSettingsName.Parse(Name, allowUnparsed: true);
+            set => Name = value?.ToString() ?? "";
+        }
+    }
+
+    public partial class SearchChangeHistoryEventsRequest
+    {
+        /// <summary>
+        /// <see cref="AccountName"/>-typed view over the <see cref="Account"/> resource name property.
+        /// </summary>
+        public AccountName AccountAsAccountName
+        {
+            get => string.IsNullOrEmpty(Account) ? null : AccountName.Parse(Account, allowUnparsed: true);
+            set => Account = value?.ToString() ?? "";
+        }
+
+        /// <summary>
+        /// <see cref="PropertyName"/>-typed view over the <see cref="Property"/> resource name property.
+        /// </summary>
+        public PropertyName PropertyAsPropertyName
+        {
+            get => string.IsNullOrEmpty(Property) ? null : PropertyName.Parse(Property, allowUnparsed: true);
+            set => Property = value?.ToString() ?? "";
+        }
+    }
+
+    public partial class GetMeasurementProtocolSecretRequest
+    {
+        /// <summary>
+        /// <see cref="gaav::MeasurementProtocolSecretName"/>-typed view over the <see cref="Name"/> resource name
+        /// property.
+        /// </summary>
+        public gaav::MeasurementProtocolSecretName MeasurementProtocolSecretName
+        {
+            get => string.IsNullOrEmpty(Name) ? null : gaav::MeasurementProtocolSecretName.Parse(Name, allowUnparsed: true);
+            set => Name = value?.ToString() ?? "";
+        }
+    }
+
+    public partial class CreateMeasurementProtocolSecretRequest
+    {
+        /// <summary>
+        /// <see cref="WebDataStreamName"/>-typed view over the <see cref="Parent"/> resource name property.
+        /// </summary>
+        public WebDataStreamName ParentAsWebDataStreamName
+        {
+            get => string.IsNullOrEmpty(Parent) ? null : WebDataStreamName.Parse(Parent, allowUnparsed: true);
+            set => Parent = value?.ToString() ?? "";
+        }
+    }
+
+    public partial class DeleteMeasurementProtocolSecretRequest
+    {
+        /// <summary>
+        /// <see cref="gaav::MeasurementProtocolSecretName"/>-typed view over the <see cref="Name"/> resource name
+        /// property.
+        /// </summary>
+        public gaav::MeasurementProtocolSecretName MeasurementProtocolSecretName
+        {
+            get => string.IsNullOrEmpty(Name) ? null : gaav::MeasurementProtocolSecretName.Parse(Name, allowUnparsed: true);
+            set => Name = value?.ToString() ?? "";
+        }
+    }
+
+    public partial class ListMeasurementProtocolSecretsRequest
+    {
+        /// <summary>
+        /// <see cref="WebDataStreamName"/>-typed view over the <see cref="Parent"/> resource name property.
+        /// </summary>
+        public WebDataStreamName ParentAsWebDataStreamName
+        {
+            get => string.IsNullOrEmpty(Parent) ? null : WebDataStreamName.Parse(Parent, allowUnparsed: true);
+            set => Parent = value?.ToString() ?? "";
+        }
+    }
+
+    public partial class GetGoogleSignalsSettingsRequest
+    {
+        /// <summary>
+        /// <see cref="gaav::GoogleSignalsSettingsName"/>-typed view over the <see cref="Name"/> resource name property.
+        /// </summary>
+        public gaav::GoogleSignalsSettingsName GoogleSignalsSettingsName
+        {
+            get => string.IsNullOrEmpty(Name) ? null : gaav::GoogleSignalsSettingsName.Parse(Name, allowUnparsed: true);
+            set => Name = value?.ToString() ?? "";
+        }
+    }
+
+    public partial class CreateConversionEventRequest
+    {
+        /// <summary>
+        /// <see cref="PropertyName"/>-typed view over the <see cref="Parent"/> resource name property.
+        /// </summary>
+        public PropertyName ParentAsPropertyName
+        {
+            get => string.IsNullOrEmpty(Parent) ? null : PropertyName.Parse(Parent, allowUnparsed: true);
+            set => Parent = value?.ToString() ?? "";
+        }
+    }
+
+    public partial class GetConversionEventRequest
+    {
+        /// <summary>
+        /// <see cref="gaav::ConversionEventName"/>-typed view over the <see cref="Name"/> resource name property.
+        /// </summary>
+        public gaav::ConversionEventName ConversionEventName
+        {
+            get => string.IsNullOrEmpty(Name) ? null : gaav::ConversionEventName.Parse(Name, allowUnparsed: true);
+            set => Name = value?.ToString() ?? "";
+        }
+    }
+
+    public partial class DeleteConversionEventRequest
+    {
+        /// <summary>
+        /// <see cref="gaav::ConversionEventName"/>-typed view over the <see cref="Name"/> resource name property.
+        /// </summary>
+        public gaav::ConversionEventName ConversionEventName
+        {
+            get => string.IsNullOrEmpty(Name) ? null : gaav::ConversionEventName.Parse(Name, allowUnparsed: true);
+            set => Name = value?.ToString() ?? "";
+        }
+    }
+
+    public partial class ListConversionEventsRequest
+    {
+        /// <summary>
+        /// <see cref="PropertyName"/>-typed view over the <see cref="Parent"/> resource name property.
+        /// </summary>
+        public PropertyName ParentAsPropertyName
+        {
+            get => string.IsNullOrEmpty(Parent) ? null : PropertyName.Parse(Parent, allowUnparsed: true);
+            set => Parent = value?.ToString() ?? "";
+        }
+    }
+
+    public partial class CreateCustomDimensionRequest
+    {
+        /// <summary>
+        /// <see cref="PropertyName"/>-typed view over the <see cref="Parent"/> resource name property.
+        /// </summary>
+        public PropertyName ParentAsPropertyName
+        {
+            get => string.IsNullOrEmpty(Parent) ? null : PropertyName.Parse(Parent, allowUnparsed: true);
+            set => Parent = value?.ToString() ?? "";
+        }
+    }
+
+    public partial class ListCustomDimensionsRequest
+    {
+        /// <summary>
+        /// <see cref="PropertyName"/>-typed view over the <see cref="Parent"/> resource name property.
+        /// </summary>
+        public PropertyName ParentAsPropertyName
+        {
+            get => string.IsNullOrEmpty(Parent) ? null : PropertyName.Parse(Parent, allowUnparsed: true);
+            set => Parent = value?.ToString() ?? "";
+        }
+    }
+
+    public partial class ArchiveCustomDimensionRequest
+    {
+        /// <summary>
+        /// <see cref="gaav::CustomDimensionName"/>-typed view over the <see cref="Name"/> resource name property.
+        /// </summary>
+        public gaav::CustomDimensionName CustomDimensionName
+        {
+            get => string.IsNullOrEmpty(Name) ? null : gaav::CustomDimensionName.Parse(Name, allowUnparsed: true);
+            set => Name = value?.ToString() ?? "";
+        }
+    }
+
+    public partial class GetCustomDimensionRequest
+    {
+        /// <summary>
+        /// <see cref="gaav::CustomDimensionName"/>-typed view over the <see cref="Name"/> resource name property.
+        /// </summary>
+        public gaav::CustomDimensionName CustomDimensionName
+        {
+            get => string.IsNullOrEmpty(Name) ? null : gaav::CustomDimensionName.Parse(Name, allowUnparsed: true);
+            set => Name = value?.ToString() ?? "";
+        }
+    }
+
+    public partial class CreateCustomMetricRequest
+    {
+        /// <summary>
+        /// <see cref="PropertyName"/>-typed view over the <see cref="Parent"/> resource name property.
+        /// </summary>
+        public PropertyName ParentAsPropertyName
+        {
+            get => string.IsNullOrEmpty(Parent) ? null : PropertyName.Parse(Parent, allowUnparsed: true);
+            set => Parent = value?.ToString() ?? "";
+        }
+    }
+
+    public partial class ListCustomMetricsRequest
+    {
+        /// <summary>
+        /// <see cref="PropertyName"/>-typed view over the <see cref="Parent"/> resource name property.
+        /// </summary>
+        public PropertyName ParentAsPropertyName
+        {
+            get => string.IsNullOrEmpty(Parent) ? null : PropertyName.Parse(Parent, allowUnparsed: true);
+            set => Parent = value?.ToString() ?? "";
+        }
+    }
+
+    public partial class ArchiveCustomMetricRequest
+    {
+        /// <summary>
+        /// <see cref="gaav::CustomMetricName"/>-typed view over the <see cref="Name"/> resource name property.
+        /// </summary>
+        public gaav::CustomMetricName CustomMetricName
+        {
+            get => string.IsNullOrEmpty(Name) ? null : gaav::CustomMetricName.Parse(Name, allowUnparsed: true);
+            set => Name = value?.ToString() ?? "";
+        }
+    }
+
+    public partial class GetCustomMetricRequest
+    {
+        /// <summary>
+        /// <see cref="gaav::CustomMetricName"/>-typed view over the <see cref="Name"/> resource name property.
+        /// </summary>
+        public gaav::CustomMetricName CustomMetricName
+        {
+            get => string.IsNullOrEmpty(Name) ? null : gaav::CustomMetricName.Parse(Name, allowUnparsed: true);
             set => Name = value?.ToString() ?? "";
         }
     }

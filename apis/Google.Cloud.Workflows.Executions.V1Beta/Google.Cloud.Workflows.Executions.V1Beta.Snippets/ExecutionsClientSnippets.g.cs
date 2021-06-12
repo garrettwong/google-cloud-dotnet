@@ -1,4 +1,4 @@
-// Copyright 2020 Google LLC
+// Copyright 2021 Google LLC
 //
 // Licensed under the Apache License, Version 2.0 (the "License");
 // you may not use this file except in compliance with the License.
@@ -74,7 +74,7 @@ namespace Google.Cloud.Workflows.Executions.V1Beta.Snippets
             // End snippet
         }
 
-        /// <summary>Snippet for ListExecutions</summary>
+        /// <summary>Snippet for ListExecutionsAsync</summary>
         public async Task ListExecutionsRequestObjectAsync()
         {
             // Snippet: ListExecutionsAsync(ListExecutionsRequest, CallSettings)
@@ -168,7 +168,7 @@ namespace Google.Cloud.Workflows.Executions.V1Beta.Snippets
             // End snippet
         }
 
-        /// <summary>Snippet for ListExecutions</summary>
+        /// <summary>Snippet for ListExecutionsAsync</summary>
         public async Task ListExecutionsAsync()
         {
             // Snippet: ListExecutionsAsync(string, string, int?, CallSettings)
@@ -258,7 +258,7 @@ namespace Google.Cloud.Workflows.Executions.V1Beta.Snippets
             // End snippet
         }
 
-        /// <summary>Snippet for ListExecutions</summary>
+        /// <summary>Snippet for ListExecutionsAsync</summary>
         public async Task ListExecutionsResourceNamesAsync()
         {
             // Snippet: ListExecutionsAsync(WorkflowName, string, int?, CallSettings)

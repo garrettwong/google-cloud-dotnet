@@ -14,6 +14,7 @@
 
 using Google.Cloud.Diagnostics.Common;
 using Microsoft.AspNetCore.Http;
+using Microsoft.Extensions.DependencyInjection;
 using Moq;
 using System;
 using Xunit;
@@ -44,8 +45,7 @@ namespace Google.Cloud.Diagnostics.AspNetCore.Tests
             var request = context.Request;
             request.Headers[TraceHeaderContext.TraceHeader] = traceHeader;
 
-            var accessor = new HttpContextAccessor();
-            accessor.HttpContext = context;
+            var accessor = new HttpContextAccessor { HttpContext = context };
 
             var traceIdFactory = TraceIdFactory.Create();
 
@@ -62,31 +62,17 @@ namespace Google.Cloud.Diagnostics.AspNetCore.Tests
         {
             var header = $"{_traceId}/{_spanId};o=1";
             var provider = CreateProviderForTraceHeaderContext(header);
-            var headerContext = CloudTraceExtension.CreateTraceHeaderContext(provider);
+            var headerContext = CloudTraceExtension.ProvideGoogleTraceHeaderContext(provider);
             Assert.Equal(TraceHeaderContext.FromHeader(header).ToString(), headerContext.ToString());
         }
 
         [Fact]
-        public void CreateTraceHeaderContext_UseBackUpFunc()
+        public void CreateTraceHeaderContext_UseShouldTraceFallback()
         {
             var header = $"{_traceId}/{_spanId};";
             var provider = CreateProviderForTraceHeaderContext(header);
-            var headerContext = CloudTraceExtension.CreateTraceHeaderContext(provider);
+            var headerContext = CloudTraceExtension.ProvideGoogleTraceHeaderContext(provider);
             Assert.Equal(TraceHeaderContext.FromHeader(header).ToString(), headerContext.ToString());
-        }
-
-        [Fact]
-        public void CreateManagedTracer()
-        {
-            var mockProvider = new Mock<IServiceProvider>();
-            var mockTracer = new Mock<IManagedTracer>();
-            string traceId = Guid.NewGuid().ToString("N");
-            mockTracer.Setup(p => p.GetCurrentTraceId()).Returns(traceId);
-            ContextTracerManager.SetCurrentTracer(mockTracer.Object);
-            var tracer = ManagedTracer.CreateDelegatingTracer(() => ContextTracerManager.GetCurrentTracer());
-            Assert.IsType<DelegatingTracer>(tracer);
-            Assert.Equal(traceId, tracer.GetCurrentTraceId());
-            mockTracer.Verify();
         }
 
         [Fact]
@@ -95,7 +81,7 @@ namespace Google.Cloud.Diagnostics.AspNetCore.Tests
             var accessor = new HttpContextAccessor();
             var mockProvider = new Mock<IServiceProvider>();
             mockProvider.Setup(p => p.GetService(typeof(IHttpContextAccessor))).Returns(accessor);
-            var service = mockProvider.Object.GetServiceCheckNotNull<IHttpContextAccessor>();
+            var service = mockProvider.Object.GetRequiredService<IHttpContextAccessor>();
             Assert.Equal(accessor, service);
         }
 
@@ -104,7 +90,7 @@ namespace Google.Cloud.Diagnostics.AspNetCore.Tests
         {
             var mockProvider = new Mock<IServiceProvider>();
             Assert.Throws<InvalidOperationException>(
-                () => mockProvider.Object.GetServiceCheckNotNull<IHttpContextAccessor>());
+                () => mockProvider.Object.GetRequiredService<IHttpContextAccessor>());
         }
     }
 }

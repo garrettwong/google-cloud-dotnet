@@ -1,4 +1,4 @@
-// Copyright 2020 Google LLC
+// Copyright 2021 Google LLC
 //
 // Licensed under the Apache License, Version 2.0 (the "License");
 // you may not use this file except in compliance with the License.
@@ -692,7 +692,7 @@ namespace Google.Cloud.Dlp.V2.Snippets
             // End snippet
         }
 
-        /// <summary>Snippet for ListInspectTemplates</summary>
+        /// <summary>Snippet for ListInspectTemplatesAsync</summary>
         public async Task ListInspectTemplatesRequestObjectAsync()
         {
             // Snippet: ListInspectTemplatesAsync(ListInspectTemplatesRequest, CallSettings)
@@ -787,7 +787,7 @@ namespace Google.Cloud.Dlp.V2.Snippets
             // End snippet
         }
 
-        /// <summary>Snippet for ListInspectTemplates</summary>
+        /// <summary>Snippet for ListInspectTemplatesAsync</summary>
         public async Task ListInspectTemplatesAsync()
         {
             // Snippet: ListInspectTemplatesAsync(string, string, int?, CallSettings)
@@ -877,7 +877,7 @@ namespace Google.Cloud.Dlp.V2.Snippets
             // End snippet
         }
 
-        /// <summary>Snippet for ListInspectTemplates</summary>
+        /// <summary>Snippet for ListInspectTemplatesAsync</summary>
         public async Task ListInspectTemplatesResourceNames1Async()
         {
             // Snippet: ListInspectTemplatesAsync(OrganizationName, string, int?, CallSettings)
@@ -967,7 +967,7 @@ namespace Google.Cloud.Dlp.V2.Snippets
             // End snippet
         }
 
-        /// <summary>Snippet for ListInspectTemplates</summary>
+        /// <summary>Snippet for ListInspectTemplatesAsync</summary>
         public async Task ListInspectTemplatesResourceNames2Async()
         {
             // Snippet: ListInspectTemplatesAsync(ProjectName, string, int?, CallSettings)
@@ -1057,7 +1057,7 @@ namespace Google.Cloud.Dlp.V2.Snippets
             // End snippet
         }
 
-        /// <summary>Snippet for ListInspectTemplates</summary>
+        /// <summary>Snippet for ListInspectTemplatesAsync</summary>
         public async Task ListInspectTemplatesResourceNames3Async()
         {
             // Snippet: ListInspectTemplatesAsync(OrganizationLocationName, string, int?, CallSettings)
@@ -1147,7 +1147,7 @@ namespace Google.Cloud.Dlp.V2.Snippets
             // End snippet
         }
 
-        /// <summary>Snippet for ListInspectTemplates</summary>
+        /// <summary>Snippet for ListInspectTemplatesAsync</summary>
         public async Task ListInspectTemplatesResourceNames4Async()
         {
             // Snippet: ListInspectTemplatesAsync(LocationName, string, int?, CallSettings)
@@ -1699,7 +1699,7 @@ namespace Google.Cloud.Dlp.V2.Snippets
             // End snippet
         }
 
-        /// <summary>Snippet for ListDeidentifyTemplates</summary>
+        /// <summary>Snippet for ListDeidentifyTemplatesAsync</summary>
         public async Task ListDeidentifyTemplatesRequestObjectAsync()
         {
             // Snippet: ListDeidentifyTemplatesAsync(ListDeidentifyTemplatesRequest, CallSettings)
@@ -1794,7 +1794,7 @@ namespace Google.Cloud.Dlp.V2.Snippets
             // End snippet
         }
 
-        /// <summary>Snippet for ListDeidentifyTemplates</summary>
+        /// <summary>Snippet for ListDeidentifyTemplatesAsync</summary>
         public async Task ListDeidentifyTemplatesAsync()
         {
             // Snippet: ListDeidentifyTemplatesAsync(string, string, int?, CallSettings)
@@ -1884,7 +1884,7 @@ namespace Google.Cloud.Dlp.V2.Snippets
             // End snippet
         }
 
-        /// <summary>Snippet for ListDeidentifyTemplates</summary>
+        /// <summary>Snippet for ListDeidentifyTemplatesAsync</summary>
         public async Task ListDeidentifyTemplatesResourceNames1Async()
         {
             // Snippet: ListDeidentifyTemplatesAsync(OrganizationName, string, int?, CallSettings)
@@ -1974,7 +1974,7 @@ namespace Google.Cloud.Dlp.V2.Snippets
             // End snippet
         }
 
-        /// <summary>Snippet for ListDeidentifyTemplates</summary>
+        /// <summary>Snippet for ListDeidentifyTemplatesAsync</summary>
         public async Task ListDeidentifyTemplatesResourceNames2Async()
         {
             // Snippet: ListDeidentifyTemplatesAsync(ProjectName, string, int?, CallSettings)
@@ -2064,7 +2064,7 @@ namespace Google.Cloud.Dlp.V2.Snippets
             // End snippet
         }
 
-        /// <summary>Snippet for ListDeidentifyTemplates</summary>
+        /// <summary>Snippet for ListDeidentifyTemplatesAsync</summary>
         public async Task ListDeidentifyTemplatesResourceNames3Async()
         {
             // Snippet: ListDeidentifyTemplatesAsync(OrganizationLocationName, string, int?, CallSettings)
@@ -2154,7 +2154,7 @@ namespace Google.Cloud.Dlp.V2.Snippets
             // End snippet
         }
 
-        /// <summary>Snippet for ListDeidentifyTemplates</summary>
+        /// <summary>Snippet for ListDeidentifyTemplatesAsync</summary>
         public async Task ListDeidentifyTemplatesResourceNames4Async()
         {
             // Snippet: ListDeidentifyTemplatesAsync(LocationName, string, int?, CallSettings)
@@ -2738,7 +2738,7 @@ namespace Google.Cloud.Dlp.V2.Snippets
             // End snippet
         }
 
-        /// <summary>Snippet for ListJobTriggers</summary>
+        /// <summary>Snippet for ListJobTriggersAsync</summary>
         public async Task ListJobTriggersRequestObjectAsync()
         {
             // Snippet: ListJobTriggersAsync(ListJobTriggersRequest, CallSettings)
@@ -2834,7 +2834,7 @@ namespace Google.Cloud.Dlp.V2.Snippets
             // End snippet
         }
 
-        /// <summary>Snippet for ListJobTriggers</summary>
+        /// <summary>Snippet for ListJobTriggersAsync</summary>
         public async Task ListJobTriggersAsync()
         {
             // Snippet: ListJobTriggersAsync(string, string, int?, CallSettings)
@@ -2924,7 +2924,7 @@ namespace Google.Cloud.Dlp.V2.Snippets
             // End snippet
         }
 
-        /// <summary>Snippet for ListJobTriggers</summary>
+        /// <summary>Snippet for ListJobTriggersAsync</summary>
         public async Task ListJobTriggersResourceNames1Async()
         {
             // Snippet: ListJobTriggersAsync(ProjectName, string, int?, CallSettings)
@@ -3014,7 +3014,7 @@ namespace Google.Cloud.Dlp.V2.Snippets
             // End snippet
         }
 
-        /// <summary>Snippet for ListJobTriggers</summary>
+        /// <summary>Snippet for ListJobTriggersAsync</summary>
         public async Task ListJobTriggersResourceNames2Async()
         {
             // Snippet: ListJobTriggersAsync(LocationName, string, int?, CallSettings)
@@ -3190,7 +3190,6 @@ namespace Google.Cloud.Dlp.V2.Snippets
             {
                 ParentAsProjectName = ProjectName.FromProject("[PROJECT]"),
                 InspectJob = new InspectJobConfig(),
-                RiskJob = new RiskAnalysisJobConfig(),
                 JobId = "",
                 LocationId = "",
             };
@@ -3211,7 +3210,6 @@ namespace Google.Cloud.Dlp.V2.Snippets
             {
                 ParentAsProjectName = ProjectName.FromProject("[PROJECT]"),
                 InspectJob = new InspectJobConfig(),
-                RiskJob = new RiskAnalysisJobConfig(),
                 JobId = "",
                 LocationId = "",
             };
@@ -3446,7 +3444,7 @@ namespace Google.Cloud.Dlp.V2.Snippets
             // End snippet
         }
 
-        /// <summary>Snippet for ListDlpJobs</summary>
+        /// <summary>Snippet for ListDlpJobsAsync</summary>
         public async Task ListDlpJobsRequestObjectAsync()
         {
             // Snippet: ListDlpJobsAsync(ListDlpJobsRequest, CallSettings)
@@ -3543,7 +3541,7 @@ namespace Google.Cloud.Dlp.V2.Snippets
             // End snippet
         }
 
-        /// <summary>Snippet for ListDlpJobs</summary>
+        /// <summary>Snippet for ListDlpJobsAsync</summary>
         public async Task ListDlpJobsAsync()
         {
             // Snippet: ListDlpJobsAsync(string, string, int?, CallSettings)
@@ -3633,7 +3631,7 @@ namespace Google.Cloud.Dlp.V2.Snippets
             // End snippet
         }
 
-        /// <summary>Snippet for ListDlpJobs</summary>
+        /// <summary>Snippet for ListDlpJobsAsync</summary>
         public async Task ListDlpJobsResourceNames1Async()
         {
             // Snippet: ListDlpJobsAsync(ProjectName, string, int?, CallSettings)
@@ -3723,7 +3721,7 @@ namespace Google.Cloud.Dlp.V2.Snippets
             // End snippet
         }
 
-        /// <summary>Snippet for ListDlpJobs</summary>
+        /// <summary>Snippet for ListDlpJobsAsync</summary>
         public async Task ListDlpJobsResourceNames2Async()
         {
             // Snippet: ListDlpJobsAsync(LocationName, string, int?, CallSettings)
@@ -4395,7 +4393,7 @@ namespace Google.Cloud.Dlp.V2.Snippets
             // End snippet
         }
 
-        /// <summary>Snippet for ListStoredInfoTypes</summary>
+        /// <summary>Snippet for ListStoredInfoTypesAsync</summary>
         public async Task ListStoredInfoTypesRequestObjectAsync()
         {
             // Snippet: ListStoredInfoTypesAsync(ListStoredInfoTypesRequest, CallSettings)
@@ -4490,7 +4488,7 @@ namespace Google.Cloud.Dlp.V2.Snippets
             // End snippet
         }
 
-        /// <summary>Snippet for ListStoredInfoTypes</summary>
+        /// <summary>Snippet for ListStoredInfoTypesAsync</summary>
         public async Task ListStoredInfoTypesAsync()
         {
             // Snippet: ListStoredInfoTypesAsync(string, string, int?, CallSettings)
@@ -4580,7 +4578,7 @@ namespace Google.Cloud.Dlp.V2.Snippets
             // End snippet
         }
 
-        /// <summary>Snippet for ListStoredInfoTypes</summary>
+        /// <summary>Snippet for ListStoredInfoTypesAsync</summary>
         public async Task ListStoredInfoTypesResourceNames1Async()
         {
             // Snippet: ListStoredInfoTypesAsync(OrganizationName, string, int?, CallSettings)
@@ -4670,7 +4668,7 @@ namespace Google.Cloud.Dlp.V2.Snippets
             // End snippet
         }
 
-        /// <summary>Snippet for ListStoredInfoTypes</summary>
+        /// <summary>Snippet for ListStoredInfoTypesAsync</summary>
         public async Task ListStoredInfoTypesResourceNames2Async()
         {
             // Snippet: ListStoredInfoTypesAsync(ProjectName, string, int?, CallSettings)
@@ -4760,7 +4758,7 @@ namespace Google.Cloud.Dlp.V2.Snippets
             // End snippet
         }
 
-        /// <summary>Snippet for ListStoredInfoTypes</summary>
+        /// <summary>Snippet for ListStoredInfoTypesAsync</summary>
         public async Task ListStoredInfoTypesResourceNames3Async()
         {
             // Snippet: ListStoredInfoTypesAsync(OrganizationLocationName, string, int?, CallSettings)
@@ -4850,7 +4848,7 @@ namespace Google.Cloud.Dlp.V2.Snippets
             // End snippet
         }
 
-        /// <summary>Snippet for ListStoredInfoTypes</summary>
+        /// <summary>Snippet for ListStoredInfoTypesAsync</summary>
         public async Task ListStoredInfoTypesResourceNames4Async()
         {
             // Snippet: ListStoredInfoTypesAsync(LocationName, string, int?, CallSettings)

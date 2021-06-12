@@ -1,4 +1,4 @@
-// Copyright 2020 Google LLC
+// Copyright 2021 Google LLC
 //
 // Licensed under the Apache License, Version 2.0 (the "License");
 // you may not use this file except in compliance with the License.
@@ -40,6 +40,7 @@ namespace Google.Cloud.Tasks.V2Beta3.Snippets
             {
                 ParentAsLocationName = LocationName.FromProjectLocation("[PROJECT]", "[LOCATION]"),
                 Filter = "",
+                ReadMask = new FieldMask(),
             };
             // Make the request
             PagedEnumerable<ListQueuesResponse, Queue> response = cloudTasksClient.ListQueues(request);
@@ -78,7 +79,7 @@ namespace Google.Cloud.Tasks.V2Beta3.Snippets
             // End snippet
         }
 
-        /// <summary>Snippet for ListQueues</summary>
+        /// <summary>Snippet for ListQueuesAsync</summary>
         public async Task ListQueuesRequestObjectAsync()
         {
             // Snippet: ListQueuesAsync(ListQueuesRequest, CallSettings)
@@ -89,6 +90,7 @@ namespace Google.Cloud.Tasks.V2Beta3.Snippets
             {
                 ParentAsLocationName = LocationName.FromProjectLocation("[PROJECT]", "[LOCATION]"),
                 Filter = "",
+                ReadMask = new FieldMask(),
             };
             // Make the request
             PagedAsyncEnumerable<ListQueuesResponse, Queue> response = cloudTasksClient.ListQueuesAsync(request);
@@ -172,7 +174,7 @@ namespace Google.Cloud.Tasks.V2Beta3.Snippets
             // End snippet
         }
 
-        /// <summary>Snippet for ListQueues</summary>
+        /// <summary>Snippet for ListQueuesAsync</summary>
         public async Task ListQueuesAsync()
         {
             // Snippet: ListQueuesAsync(string, string, int?, CallSettings)
@@ -262,7 +264,7 @@ namespace Google.Cloud.Tasks.V2Beta3.Snippets
             // End snippet
         }
 
-        /// <summary>Snippet for ListQueues</summary>
+        /// <summary>Snippet for ListQueuesAsync</summary>
         public async Task ListQueuesResourceNamesAsync()
         {
             // Snippet: ListQueuesAsync(LocationName, string, int?, CallSettings)
@@ -317,6 +319,7 @@ namespace Google.Cloud.Tasks.V2Beta3.Snippets
             GetQueueRequest request = new GetQueueRequest
             {
                 QueueName = QueueName.FromProjectLocationQueue("[PROJECT]", "[LOCATION]", "[QUEUE]"),
+                ReadMask = new FieldMask(),
             };
             // Make the request
             Queue response = cloudTasksClient.GetQueue(request);
@@ -334,6 +337,7 @@ namespace Google.Cloud.Tasks.V2Beta3.Snippets
             GetQueueRequest request = new GetQueueRequest
             {
                 QueueName = QueueName.FromProjectLocationQueue("[PROJECT]", "[LOCATION]", "[QUEUE]"),
+                ReadMask = new FieldMask(),
             };
             // Make the request
             Queue response = await cloudTasksClient.GetQueueAsync(request);
@@ -1223,7 +1227,7 @@ namespace Google.Cloud.Tasks.V2Beta3.Snippets
             // End snippet
         }
 
-        /// <summary>Snippet for ListTasks</summary>
+        /// <summary>Snippet for ListTasksAsync</summary>
         public async Task ListTasksRequestObjectAsync()
         {
             // Snippet: ListTasksAsync(ListTasksRequest, CallSettings)
@@ -1317,7 +1321,7 @@ namespace Google.Cloud.Tasks.V2Beta3.Snippets
             // End snippet
         }
 
-        /// <summary>Snippet for ListTasks</summary>
+        /// <summary>Snippet for ListTasksAsync</summary>
         public async Task ListTasksAsync()
         {
             // Snippet: ListTasksAsync(string, string, int?, CallSettings)
@@ -1407,7 +1411,7 @@ namespace Google.Cloud.Tasks.V2Beta3.Snippets
             // End snippet
         }
 
-        /// <summary>Snippet for ListTasks</summary>
+        /// <summary>Snippet for ListTasksAsync</summary>
         public async Task ListTasksResourceNamesAsync()
         {
             // Snippet: ListTasksAsync(QueueName, string, int?, CallSettings)

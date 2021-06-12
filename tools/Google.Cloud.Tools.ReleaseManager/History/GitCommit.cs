@@ -13,10 +13,8 @@
 // limitations under the License.
 
 using LibGit2Sharp;
-using Newtonsoft.Json;
 using System;
 using System.Collections.Generic;
-using System.IO;
 using System.Linq;
 using System.Text.RegularExpressions;
 
@@ -29,15 +27,12 @@ namespace Google.Cloud.Tools.ReleaseManager.History
     internal class GitCommit
     {
         private const string AutosynthEmail = "yoshi-automation@google.com";
+
         /// <summary>
         /// A commit line consisting of just "Version history:" indicates that all the lines
         /// following that should be treated as the version history entries.
         /// </summary>
         private const string VersionHistoryOverride = "Version history:";
-        /// <summary>
-        /// Message to use in order to skip a commit entirely.
-        /// </summary>
-        private const string SkipMessage = "skip";
 
         private readonly Commit _libGit2Commit;
 
@@ -71,10 +66,13 @@ namespace Google.Cloud.Tools.ReleaseManager.History
                 .ToList();
 
             // Autosynth includes helpful metadata about the original internal and googleapis commit.
-            // We don't need that in release notes though.
+            // We don't need that in release notes though. Likewise any "Committer" lines can be skipped.
             if (_libGit2Commit.Author.Email == AutosynthEmail)
             {
-                messageLines = messageLines.TakeWhile(line => !line.StartsWith("PiperOrigin-RevId")).ToList();
+                messageLines = messageLines
+                    .Where(line => !line.StartsWith("Committer: @"))
+                    .TakeWhile(line => !line.StartsWith("PiperOrigin-RevId"))
+                    .ToList();
             }
 
             // Allow the version history to be overridden by a line on its own of "Version history:"

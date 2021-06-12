@@ -26,19 +26,6 @@
       "CSharpNamespaceFromProtos": "Google.Actions.Sdk.V2"
     },
     {
-      "ServiceDirectory": "google/ads/googleads/v3",
-      "Name": "googleads.googleapis.com",
-      "Title": "Google Ads API",
-      "Description": "Manage your Google Ads accounts, campaigns, and reports with this API.",
-      "ServiceConfigFile": "google/ads/googleads/v3/googleads_v3.yaml",
-      "Version": "v3",
-      "PackageFromDirectory": "google.ads.googleads.v3",
-      "PackageFromProtos": "<UNKNOWN - NO PROTOS WITH PACKAGES>",
-      "ImportDirectories": [],
-      "Stable": true,
-      "CSharpNamespaceFromProtos": "<UNKNOWN - NO PROTOS WITH NAMESPACES/PACKAGES>"
-    },
-    {
       "ServiceDirectory": "google/ads/googleads/v4",
       "Name": "googleads.googleapis.com",
       "Title": "Google Ads API",
@@ -78,6 +65,32 @@
       "CSharpNamespaceFromProtos": "<UNKNOWN - NO PROTOS WITH NAMESPACES/PACKAGES>"
     },
     {
+      "ServiceDirectory": "google/ads/googleads/v7",
+      "Name": "googleads.googleapis.com",
+      "Title": "Google Ads API",
+      "Description": "Manage your Google Ads accounts, campaigns, and reports with this API.",
+      "ServiceConfigFile": "google/ads/googleads/v7/googleads_v7.yaml",
+      "Version": "v7",
+      "PackageFromDirectory": "google.ads.googleads.v7",
+      "PackageFromProtos": "<UNKNOWN - NO PROTOS WITH PACKAGES>",
+      "ImportDirectories": [],
+      "Stable": true,
+      "CSharpNamespaceFromProtos": "<UNKNOWN - NO PROTOS WITH NAMESPACES/PACKAGES>"
+    },
+    {
+      "ServiceDirectory": "google/ads/googleads/v8",
+      "Name": "googleads.googleapis.com",
+      "Title": "Google Ads API",
+      "Description": "Manage your Google Ads accounts, campaigns, and reports with this API.",
+      "ServiceConfigFile": "google/ads/googleads/v8/googleads_v8.yaml",
+      "Version": "v8",
+      "PackageFromDirectory": "google.ads.googleads.v8",
+      "PackageFromProtos": "<UNKNOWN - NO PROTOS WITH PACKAGES>",
+      "ImportDirectories": [],
+      "Stable": true,
+      "CSharpNamespaceFromProtos": "<UNKNOWN - NO PROTOS WITH NAMESPACES/PACKAGES>"
+    },
+    {
       "ServiceDirectory": "google/analytics/admin/v1alpha",
       "Name": "analyticsadmin.googleapis.com",
       "Title": "Google Analytics Admin API",
@@ -109,6 +122,22 @@
       ],
       "Stable": false,
       "CSharpNamespaceFromProtos": "Google.Analytics.Data.V1Alpha"
+    },
+    {
+      "ServiceDirectory": "google/analytics/data/v1beta",
+      "Name": "analyticsdata.googleapis.com",
+      "Title": "Google Analytics Data API",
+      "Description": "Accesses report data in Google Analytics.",
+      "ServiceConfigFile": "google/analytics/data/v1beta/analyticsdata_v1beta.yaml",
+      "Version": "v1beta",
+      "PackageFromDirectory": "google.analytics.data.v1beta",
+      "PackageFromProtos": "google.analytics.data.v1beta",
+      "ImportDirectories": [
+        "google/analytics/data/v1beta",
+        "google/api"
+      ],
+      "Stable": false,
+      "CSharpNamespaceFromProtos": "Google.Analytics.Data.V1Beta"
     },
     {
       "ServiceDirectory": "google/api/servicecontrol/v1",
@@ -149,11 +178,47 @@
       "CSharpNamespaceFromProtos": "Google.Cloud.ServiceManagement.V1"
     },
     {
+      "ServiceDirectory": "google/api/serviceusage/v1",
+      "Name": "serviceusage.googleapis.com",
+      "Title": "Service Usage API",
+      "Description": "Enables services that service consumers want to use on Google Cloud Platform, lists the available or enabled services, or disables services that service consumers no longer use.",
+      "ServiceConfigFile": "google/api/serviceusage/v1/serviceusage_v1.yaml",
+      "Version": "v1",
+      "PackageFromDirectory": "google.api.serviceusage.v1",
+      "PackageFromProtos": "google.api.serviceusage.v1",
+      "ImportDirectories": [
+        "google/api",
+        "google/api/serviceusage/v1",
+        "google/longrunning",
+        "google/protobuf"
+      ],
+      "Stable": true,
+      "CSharpNamespaceFromProtos": "Google.Cloud.ServiceUsage.V1"
+    },
+    {
+      "ServiceDirectory": "google/api/serviceusage/v1beta1",
+      "Name": "serviceusage.googleapis.com",
+      "Title": "Service Usage API",
+      "Description": "Enables services that service consumers want to use on Google Cloud Platform, lists the available or enabled services, or disables services that service consumers no longer use.",
+      "ServiceConfigFile": "google/api/serviceusage/v1beta1/serviceusage_v1beta1.yaml",
+      "Version": "v1beta1",
+      "PackageFromDirectory": "google.api.serviceusage.v1beta1",
+      "PackageFromProtos": "google.api.serviceusage.v1beta1",
+      "ImportDirectories": [
+        "google/api",
+        "google/api/serviceusage/v1beta1",
+        "google/longrunning",
+        "google/protobuf"
+      ],
+      "Stable": false,
+      "CSharpNamespaceFromProtos": "Google.Api.ServiceUsage.V1Beta1"
+    },
+    {
       "ServiceDirectory": "google/appengine/v1",
       "Name": "appengine.googleapis.com",
-      "Title": "App Engine Audit Data",
+      "Title": "App Engine Admin API",
       "Description": "Provisions and manages developers' App Engine applications.",
-      "ServiceConfigFile": "google/appengine/v1/appengine.yaml",
+      "ServiceConfigFile": "google/appengine/v1/appengine_v1.yaml",
       "Version": "v1",
       "PackageFromDirectory": "google.appengine.v1",
       "PackageFromProtos": "google.appengine.v1",
@@ -164,7 +229,57 @@
         "google/protobuf"
       ],
       "Stable": true,
-      "CSharpNamespaceFromProtos": "Google.Appengine.V1"
+      "CSharpNamespaceFromProtos": "Google.Cloud.AppEngine.V1"
+    },
+    {
+      "ServiceDirectory": "google/apps/alertcenter/v1beta1",
+      "Name": "alertcenter.googleapis.com",
+      "Title": "Google Workspace Alert Center API",
+      "Description": "Manages alerts on issues affecting your domain.",
+      "ServiceConfigFile": "google/apps/alertcenter/v1beta1/alertcenter.yaml",
+      "Version": "v1beta1",
+      "PackageFromDirectory": "google.apps.alertcenter.v1beta1",
+      "PackageFromProtos": "google.apps.alertcenter.v1beta1",
+      "ImportDirectories": [
+        "google/api",
+        "google/protobuf",
+        "google/rpc"
+      ],
+      "Stable": false,
+      "CSharpNamespaceFromProtos": "Google.Apps.AlertCenter.V1Beta1"
+    },
+    {
+      "ServiceDirectory": "google/apps/drive/activity/v2",
+      "Name": "driveactivity.googleapis.com",
+      "Title": "Drive Activity API",
+      "Description": "Provides a historical view of activity in Google Drive.",
+      "ServiceConfigFile": "google/apps/drive/activity/v2/driveactivity_v2.yaml",
+      "Version": "v2",
+      "PackageFromDirectory": "google.apps.drive.activity.v2",
+      "PackageFromProtos": "google.apps.drive.activity.v2",
+      "ImportDirectories": [
+        "google/api",
+        "google/apps/drive/activity/v2",
+        "google/protobuf"
+      ],
+      "Stable": true,
+      "CSharpNamespaceFromProtos": "Google.Apps.Drive.Activity.V2"
+    },
+    {
+      "ServiceDirectory": "google/apps/market/v2",
+      "Name": "appsmarket.googleapis.com",
+      "Title": "Google Workspace Marketplace API",
+      "Description": "Lets your Google Workspace Marketplace applications integrate with Google's licensing and billing services.",
+      "ServiceConfigFile": "google/apps/market/v2/appsmarket_v2.yaml",
+      "Version": "v2",
+      "PackageFromDirectory": "google.apps.market.v2",
+      "PackageFromProtos": "ccc.hosted.marketplace.v2",
+      "ImportDirectories": [
+        "google/api",
+        "google/apps/market/v2"
+      ],
+      "Stable": true,
+      "CSharpNamespaceFromProtos": "Ccc.Hosted.Marketplace.V2"
     },
     {
       "ServiceDirectory": "google/area120/tables/v1alpha1",
@@ -196,7 +311,8 @@
         "google/bigtable/admin/v2",
         "google/iam/v1",
         "google/longrunning",
-        "google/protobuf"
+        "google/protobuf",
+        "google/rpc"
       ],
       "Stable": true,
       "CSharpNamespaceFromProtos": "Google.Cloud.Bigtable.Admin.V2"
@@ -251,13 +367,33 @@
         "google/protobuf"
       ],
       "Stable": true,
-      "CSharpNamespaceFromProtos": "Google.Cloud.Accessapproval.V1"
+      "CSharpNamespaceFromProtos": "Google.Cloud.AccessApproval.V1"
+    },
+    {
+      "ServiceDirectory": "google/cloud/aiplatform/v1",
+      "Name": "aiplatform.googleapis.com",
+      "Title": "Vertex AI API",
+      "Description": "Train high-quality custom machine learning models with minimal machine learning expertise and effort.",
+      "ServiceConfigFile": "google/cloud/aiplatform/v1/aiplatform_v1.yaml",
+      "Version": "v1",
+      "PackageFromDirectory": "google.cloud.aiplatform.v1",
+      "PackageFromProtos": "google.cloud.aiplatform.v1",
+      "ImportDirectories": [
+        "google/api",
+        "google/cloud/aiplatform/v1",
+        "google/longrunning",
+        "google/protobuf",
+        "google/rpc",
+        "google/type"
+      ],
+      "Stable": true,
+      "CSharpNamespaceFromProtos": "Google.Cloud.Aiplatform.V1"
     },
     {
       "ServiceDirectory": "google/cloud/aiplatform/v1beta1",
       "Name": "aiplatform.googleapis.com",
-      "Title": "Cloud AI Platform API",
-      "Description": "Train high-quality custom machine learning models with minimum effort and machine learning expertise.",
+      "Title": "Vertex AI API",
+      "Description": "Train high-quality custom machine learning models with minimal machine learning expertise and effort.",
       "ServiceConfigFile": "google/cloud/aiplatform/v1beta1/aiplatform_v1beta1.yaml",
       "Version": "v1beta1",
       "PackageFromDirectory": "google.cloud.aiplatform.v1beta1",
@@ -272,6 +408,41 @@
       ],
       "Stable": false,
       "CSharpNamespaceFromProtos": "Google.Cloud.Aiplatform.V1Beta1"
+    },
+    {
+      "ServiceDirectory": "google/cloud/apigateway/v1",
+      "Name": "apigateway.googleapis.com",
+      "Title": "API Gateway API",
+      "Description": "<UNKNOWN - NO SERVICE CONFIG DOCUMENTATION SUMMARY>",
+      "ServiceConfigFile": "google/cloud/apigateway/v1/apigateway_v1.yaml",
+      "Version": "v1",
+      "PackageFromDirectory": "google.cloud.apigateway.v1",
+      "PackageFromProtos": "google.cloud.apigateway.v1",
+      "ImportDirectories": [
+        "google/api",
+        "google/cloud/apigateway/v1",
+        "google/longrunning",
+        "google/protobuf"
+      ],
+      "Stable": true,
+      "CSharpNamespaceFromProtos": "Google.Cloud.ApiGateway.V1"
+    },
+    {
+      "ServiceDirectory": "google/cloud/apigeeconnect/v1",
+      "Name": "apigeeconnect.googleapis.com",
+      "Title": "Apigee Connect API",
+      "Description": "<UNKNOWN - NO SERVICE CONFIG DOCUMENTATION SUMMARY>",
+      "ServiceConfigFile": "google/cloud/apigeeconnect/v1/apigeeconnect_v1.yaml",
+      "Version": "v1",
+      "PackageFromDirectory": "google.cloud.apigeeconnect.v1",
+      "PackageFromProtos": "google.cloud.apigeeconnect.v1",
+      "ImportDirectories": [
+        "google/api",
+        "google/protobuf",
+        "google/rpc"
+      ],
+      "Stable": true,
+      "CSharpNamespaceFromProtos": "Google.Cloud.ApigeeConnect.V1"
     },
     {
       "ServiceDirectory": "google/cloud/asset/v1",
@@ -296,25 +467,6 @@
       ],
       "Stable": true,
       "CSharpNamespaceFromProtos": "Google.Cloud.Asset.V1"
-    },
-    {
-      "ServiceDirectory": "google/cloud/asset/v1beta1",
-      "Name": "cloudasset.googleapis.com",
-      "Title": "Cloud Asset API",
-      "Description": "The cloud asset API manages the history and inventory of cloud resources.",
-      "ServiceConfigFile": "google/cloud/asset/v1beta1/cloudasset_v1beta1.yaml",
-      "Version": "v1beta1",
-      "PackageFromDirectory": "google.cloud.asset.v1beta1",
-      "PackageFromProtos": "google.cloud.asset.v1beta1",
-      "ImportDirectories": [
-        "google/api",
-        "google/cloud/asset/v1beta1",
-        "google/iam/v1",
-        "google/longrunning",
-        "google/protobuf"
-      ],
-      "Stable": false,
-      "CSharpNamespaceFromProtos": "Google.Cloud.Asset.V1Beta1"
     },
     {
       "ServiceDirectory": "google/cloud/asset/v1p1beta1",
@@ -391,6 +543,28 @@
       ],
       "Stable": false,
       "CSharpNamespaceFromProtos": "<AMBIGUOUS: Google.Cloud.Asset.V1P5Beta1, Google.Cloud.Asset.V1p5Beta1>"
+    },
+    {
+      "ServiceDirectory": "google/cloud/asset/v1p7beta1",
+      "Name": "cloudasset.googleapis.com",
+      "Title": "Cloud Asset API",
+      "Description": "The cloud asset API manages the history and inventory of cloud resources.",
+      "ServiceConfigFile": "google/cloud/asset/v1p7beta1/cloudasset_v1p7beta1.yaml",
+      "Version": "v1p7beta1",
+      "PackageFromDirectory": "google.cloud.asset.v1p7beta1",
+      "PackageFromProtos": "google.cloud.asset.v1p7beta1",
+      "ImportDirectories": [
+        "google/api",
+        "google/cloud/asset/v1p7beta1",
+        "google/cloud/orgpolicy/v1",
+        "google/cloud/osconfig/v1",
+        "google/iam/v1",
+        "google/identity/accesscontextmanager/v1",
+        "google/longrunning",
+        "google/protobuf"
+      ],
+      "Stable": false,
+      "CSharpNamespaceFromProtos": "Google.Cloud.Asset.V1P7Beta1"
     },
     {
       "ServiceDirectory": "google/cloud/assuredworkloads/v1beta1",
@@ -500,6 +674,24 @@
       "CSharpNamespaceFromProtos": "Google.Cloud.BigQuery.DataTransfer.V1"
     },
     {
+      "ServiceDirectory": "google/cloud/bigquery/migration/v2alpha",
+      "Name": "bigquerymigration.googleapis.com",
+      "Title": "BigQuery Migration API",
+      "Description": "The BigQuery migration service, exposing apis for migration jobs operations, and agent management.",
+      "ServiceConfigFile": "google/cloud/bigquery/migration/v2alpha/bigquerymigration_v2alpha.yaml",
+      "Version": "v2alpha",
+      "PackageFromDirectory": "google.cloud.bigquery.migration.v2alpha",
+      "PackageFromProtos": "google.cloud.bigquery.migration.v2alpha",
+      "ImportDirectories": [
+        "google/api",
+        "google/cloud/bigquery/migration/v2alpha",
+        "google/protobuf",
+        "google/rpc"
+      ],
+      "Stable": false,
+      "CSharpNamespaceFromProtos": "Google.Cloud.Bigquery.Migration.V2Alpha"
+    },
+    {
       "ServiceDirectory": "google/cloud/bigquery/reservation/v1",
       "Name": "bigqueryreservation.googleapis.com",
       "Title": "BigQuery Reservation API",
@@ -549,24 +741,6 @@
       ],
       "Stable": true,
       "CSharpNamespaceFromProtos": "Google.Cloud.BigQuery.Storage.V1"
-    },
-    {
-      "ServiceDirectory": "google/cloud/bigquery/storage/v1alpha2",
-      "Name": "bigquerystorage.googleapis.com",
-      "Title": "BigQuery Storage API",
-      "Description": "<UNKNOWN - NO SERVICE CONFIG DOCUMENTATION SUMMARY>",
-      "ServiceConfigFile": "google/cloud/bigquery/storage/v1alpha2/bigquerystorage_v1alpha2.yaml",
-      "Version": "v1alpha2",
-      "PackageFromDirectory": "google.cloud.bigquery.storage.v1alpha2",
-      "PackageFromProtos": "google.cloud.bigquery.storage.v1alpha2",
-      "ImportDirectories": [
-        "google/api",
-        "google/cloud/bigquery/storage/v1alpha2",
-        "google/protobuf",
-        "google/rpc"
-      ],
-      "Stable": false,
-      "CSharpNamespaceFromProtos": "Google.Cloud.Bigquery.Storage.V1Alpha2"
     },
     {
       "ServiceDirectory": "google/cloud/bigquery/storage/v1beta1",
@@ -639,24 +813,6 @@
       "CSharpNamespaceFromProtos": "Google.Cloud.Billing.Budgets.V1"
     },
     {
-      "ServiceDirectory": "google/cloud/billing/budgets/v1alpha1",
-      "Name": "billingbudgets.googleapis.com",
-      "Title": "Cloud Billing Budget API",
-      "Description": "The Cloud Billing Budget API stores Cloud Billing budgets, which define a budget plan and the rules to execute as spend is tracked against that plan.",
-      "ServiceConfigFile": "google/cloud/billing/budgets/v1alpha1/billingbudgets.yaml",
-      "Version": "v1alpha1",
-      "PackageFromDirectory": "google.cloud.billing.budgets.v1alpha1",
-      "PackageFromProtos": "google.cloud.billing.budgets.v1alpha1",
-      "ImportDirectories": [
-        "google/api",
-        "google/cloud/billing/budgets/v1alpha1",
-        "google/protobuf",
-        "google/type"
-      ],
-      "Stable": false,
-      "CSharpNamespaceFromProtos": "Google.Cloud.Billing.Budgets.V1Alpha1"
-    },
-    {
       "ServiceDirectory": "google/cloud/billing/budgets/v1beta1",
       "Name": "billingbudgets.googleapis.com",
       "Title": "Cloud Billing Budget API",
@@ -708,6 +864,63 @@
       ],
       "Stable": false,
       "CSharpNamespaceFromProtos": "Google.Cloud.BinaryAuthorization.V1Beta1"
+    },
+    {
+      "ServiceDirectory": "google/cloud/channel/v1",
+      "Name": "cloudchannel.googleapis.com",
+      "Title": "Cloud Channel API",
+      "Description": "<UNKNOWN - NO SERVICE CONFIG DOCUMENTATION SUMMARY>",
+      "ServiceConfigFile": "google/cloud/channel/v1/cloudchannel_v1.yaml",
+      "Version": "v1",
+      "PackageFromDirectory": "google.cloud.channel.v1",
+      "PackageFromProtos": "google.cloud.channel.v1",
+      "ImportDirectories": [
+        "google/api",
+        "google/cloud/channel/v1",
+        "google/longrunning",
+        "google/protobuf",
+        "google/type"
+      ],
+      "Stable": true,
+      "CSharpNamespaceFromProtos": "Google.Cloud.Channel.V1"
+    },
+    {
+      "ServiceDirectory": "google/cloud/clouddms/v1",
+      "Name": "datamigration.googleapis.com",
+      "Title": "Database Migration API",
+      "Description": "Manage Cloud Database Migration Service resources on Google Cloud Platform.",
+      "ServiceConfigFile": "google/cloud/clouddms/v1/datamigration_v1.yaml",
+      "Version": "v1",
+      "PackageFromDirectory": "google.cloud.clouddms.v1",
+      "PackageFromProtos": "google.cloud.clouddms.v1",
+      "ImportDirectories": [
+        "google/api",
+        "google/cloud/clouddms/v1",
+        "google/longrunning",
+        "google/protobuf",
+        "google/rpc"
+      ],
+      "Stable": true,
+      "CSharpNamespaceFromProtos": "Google.Cloud.CloudDms.V1"
+    },
+    {
+      "ServiceDirectory": "google/cloud/contactcenterinsights/v1",
+      "Name": "contactcenterinsights.googleapis.com",
+      "Title": "Contact Center AI Insights API",
+      "Description": "<UNKNOWN - NO SERVICE CONFIG DOCUMENTATION SUMMARY>",
+      "ServiceConfigFile": "google/cloud/contactcenterinsights/v1/contactcenterinsights_v1.yaml",
+      "Version": "v1",
+      "PackageFromDirectory": "google.cloud.contactcenterinsights.v1",
+      "PackageFromProtos": "google.cloud.contactcenterinsights.v1",
+      "ImportDirectories": [
+        "google/api",
+        "google/cloud/contactcenterinsights/v1",
+        "google/longrunning",
+        "google/protobuf",
+        "google/rpc"
+      ],
+      "Stable": true,
+      "CSharpNamespaceFromProtos": "Google.Cloud.ContactCenterInsights.V1"
     },
     {
       "ServiceDirectory": "google/cloud/datacatalog/v1",
@@ -819,6 +1032,24 @@
       "CSharpNamespaceFromProtos": "Google.Cloud.DataQnA.V1Alpha"
     },
     {
+      "ServiceDirectory": "google/cloud/datastream/v1alpha1",
+      "Name": "datastream.googleapis.com",
+      "Title": "DataStream API",
+      "Description": "<UNKNOWN - NO SERVICE CONFIG DOCUMENTATION SUMMARY>",
+      "ServiceConfigFile": "google/cloud/datastream/v1alpha1/datastream_v1alpha1.yaml",
+      "Version": "v1alpha1",
+      "PackageFromDirectory": "google.cloud.datastream.v1alpha1",
+      "PackageFromProtos": "google.cloud.datastream.v1alpha1",
+      "ImportDirectories": [
+        "google/api",
+        "google/cloud/datastream/v1alpha1",
+        "google/longrunning",
+        "google/protobuf"
+      ],
+      "Stable": false,
+      "CSharpNamespaceFromProtos": "Google.Cloud.Datastream.V1Alpha1"
+    },
+    {
       "ServiceDirectory": "google/cloud/dialogflow/cx/v3",
       "Name": "dialogflow.googleapis.com",
       "Title": "Dialogflow API",
@@ -899,6 +1130,26 @@
       "CSharpNamespaceFromProtos": "Google.Cloud.Dialogflow.V2beta1"
     },
     {
+      "ServiceDirectory": "google/cloud/documentai/v1",
+      "Name": "documentai.googleapis.com",
+      "Title": "Cloud Document AI API",
+      "Description": "Service to parse structured information from unstructured or semi-structured documents using state-of-the-art Google AI such as natural language, computer vision, translation, and AutoML.",
+      "ServiceConfigFile": "google/cloud/documentai/v1/documentai_v1.yaml",
+      "Version": "v1",
+      "PackageFromDirectory": "google.cloud.documentai.v1",
+      "PackageFromProtos": "google.cloud.documentai.v1",
+      "ImportDirectories": [
+        "google/api",
+        "google/cloud/documentai/v1",
+        "google/longrunning",
+        "google/protobuf",
+        "google/rpc",
+        "google/type"
+      ],
+      "Stable": true,
+      "CSharpNamespaceFromProtos": "Google.Cloud.DocumentAI.V1"
+    },
+    {
       "ServiceDirectory": "google/cloud/documentai/v1beta2",
       "Name": "documentai.googleapis.com",
       "Title": "Cloud Document AI API",
@@ -975,6 +1226,23 @@
       "CSharpNamespaceFromProtos": "Google.Cloud.Domains.V1Beta1"
     },
     {
+      "ServiceDirectory": "google/cloud/essentialcontacts/v1",
+      "Name": "essentialcontacts.googleapis.com",
+      "Title": "Essential Contacts API",
+      "Description": "<UNKNOWN - NO SERVICE CONFIG DOCUMENTATION SUMMARY>",
+      "ServiceConfigFile": "google/cloud/essentialcontacts/v1/essentialcontacts_v1.yaml",
+      "Version": "v1",
+      "PackageFromDirectory": "google.cloud.essentialcontacts.v1",
+      "PackageFromProtos": "google.cloud.essentialcontacts.v1",
+      "ImportDirectories": [
+        "google/api",
+        "google/cloud/essentialcontacts/v1",
+        "google/protobuf"
+      ],
+      "Stable": true,
+      "CSharpNamespaceFromProtos": "Google.Cloud.EssentialContacts.V1"
+    },
+    {
       "ServiceDirectory": "google/cloud/functions/v1",
       "Name": "cloudfunctions.googleapis.com",
       "Title": "Cloud Functions API",
@@ -1029,6 +1297,109 @@
       "CSharpNamespaceFromProtos": "Google.Cloud.Gaming.V1Beta"
     },
     {
+      "ServiceDirectory": "google/cloud/gkeconnect/gateway/v1",
+      "Name": "connectgateway.googleapis.com",
+      "Title": "Connect Gateway API",
+      "Description": "The Connect Gateway service allows connectivity from external parties to connected Kubernetes clusters.",
+      "ServiceConfigFile": "google/cloud/gkeconnect/gateway/v1/connectgateway_v1.yaml",
+      "Version": "v1",
+      "PackageFromDirectory": "google.cloud.gkeconnect.gateway.v1",
+      "PackageFromProtos": "google.cloud.gkeconnect.gateway.v1",
+      "ImportDirectories": [
+        "google/api"
+      ],
+      "Stable": true,
+      "CSharpNamespaceFromProtos": "Google.Cloud.GkeConnect.Gateway.V1"
+    },
+    {
+      "ServiceDirectory": "google/cloud/gkeconnect/gateway/v1alpha1",
+      "Name": "connectgateway.googleapis.com",
+      "Title": "Connect Gateway API",
+      "Description": "The Connect Gateway service allows connectivity from external parties to connected Kubernetes clusters.",
+      "ServiceConfigFile": "google/cloud/gkeconnect/gateway/v1alpha1/connectgateway_v1alpha1.yaml",
+      "Version": "v1alpha1",
+      "PackageFromDirectory": "google.cloud.gkeconnect.gateway.v1alpha1",
+      "PackageFromProtos": "google.cloud.gkeconnect.gateway.v1alpha1",
+      "ImportDirectories": [
+        "google/api"
+      ],
+      "Stable": false,
+      "CSharpNamespaceFromProtos": "Google.Cloud.GkeConnect.Gateway.V1Alpha1"
+    },
+    {
+      "ServiceDirectory": "google/cloud/gkeconnect/gateway/v1beta1",
+      "Name": "connectgateway.googleapis.com",
+      "Title": "Connect Gateway API",
+      "Description": "The Connect Gateway service allows connectivity from external parties to connected Kubernetes clusters.",
+      "ServiceConfigFile": "google/cloud/gkeconnect/gateway/v1beta1/connectgateway_v1beta1.yaml",
+      "Version": "v1beta1",
+      "PackageFromDirectory": "google.cloud.gkeconnect.gateway.v1beta1",
+      "PackageFromProtos": "google.cloud.gkeconnect.gateway.v1beta1",
+      "ImportDirectories": [
+        "google/api"
+      ],
+      "Stable": false,
+      "CSharpNamespaceFromProtos": "Google.Cloud.GkeConnect.Gateway.V1Beta1"
+    },
+    {
+      "ServiceDirectory": "google/cloud/gkehub/v1alpha2",
+      "Name": "gkehub.googleapis.com",
+      "Title": "GKE Hub",
+      "Description": "<UNKNOWN - NO SERVICE CONFIG DOCUMENTATION SUMMARY>",
+      "ServiceConfigFile": "google/cloud/gkehub/v1alpha2/gkehub_v1alpha2.yaml",
+      "Version": "v1alpha2",
+      "PackageFromDirectory": "google.cloud.gkehub.v1alpha2",
+      "PackageFromProtos": "google.cloud.gkehub.v1alpha2",
+      "ImportDirectories": [
+        "google/api",
+        "google/longrunning",
+        "google/protobuf"
+      ],
+      "Stable": false,
+      "CSharpNamespaceFromProtos": "Google.Cloud.GkeHub.V1Alpha2"
+    },
+    {
+      "ServiceDirectory": "google/cloud/gkehub/v1beta1",
+      "Name": "gkehub.googleapis.com",
+      "Title": "GKE Hub",
+      "Description": "<UNKNOWN - NO SERVICE CONFIG DOCUMENTATION SUMMARY>",
+      "ServiceConfigFile": "google/cloud/gkehub/v1beta1/gkehub_v1beta1.yaml",
+      "Version": "v1beta1",
+      "PackageFromDirectory": "google.cloud.gkehub.v1beta1",
+      "PackageFromProtos": "google.cloud.gkehub.v1beta1",
+      "ImportDirectories": [
+        "google/api",
+        "google/longrunning",
+        "google/protobuf",
+        "google/rpc"
+      ],
+      "Stable": false,
+      "CSharpNamespaceFromProtos": "Google.Cloud.GkeHub.V1Beta1"
+    },
+    {
+      "ServiceDirectory": "google/cloud/gsuiteaddons/v1",
+      "Name": "gsuiteaddons.googleapis.com",
+      "Title": "Google Workspace Add-ons API",
+      "Description": "<UNKNOWN - NO SERVICE CONFIG DOCUMENTATION SUMMARY>",
+      "ServiceConfigFile": "google/cloud/gsuiteaddons/v1/gsuiteaddons_v1.yaml",
+      "Version": "v1",
+      "PackageFromDirectory": "google.cloud.gsuiteaddons.v1",
+      "PackageFromProtos": "google.cloud.gsuiteaddons.v1",
+      "ImportDirectories": [
+        "google/api",
+        "google/apps/script/type",
+        "google/apps/script/type/calendar",
+        "google/apps/script/type/docs",
+        "google/apps/script/type/drive",
+        "google/apps/script/type/gmail",
+        "google/apps/script/type/sheets",
+        "google/apps/script/type/slides",
+        "google/protobuf"
+      ],
+      "Stable": true,
+      "CSharpNamespaceFromProtos": "Google.Cloud.GSuiteAddOns.V1"
+    },
+    {
       "ServiceDirectory": "google/cloud/iot/v1",
       "Name": "cloudiot.googleapis.com",
       "Title": "Cloud IoT API",
@@ -1065,10 +1436,25 @@
       "CSharpNamespaceFromProtos": "Google.Cloud.Kms.V1"
     },
     {
-      "ServiceDirectory": "google/cloud/language/v1beta2",
+      "ServiceDirectory": "google/cloud/language/v1",
       "Name": "language.googleapis.com",
       "Title": "Cloud Natural Language API",
       "Description": "Provides natural language understanding technologies, such as sentiment analysis, entity recognition, entity sentiment analysis, and other text annotations, to developers.",
+      "ServiceConfigFile": "google/cloud/language/v1/language_v1.yaml",
+      "Version": "v1",
+      "PackageFromDirectory": "google.cloud.language.v1",
+      "PackageFromProtos": "google.cloud.language.v1",
+      "ImportDirectories": [
+        "google/api"
+      ],
+      "Stable": true,
+      "CSharpNamespaceFromProtos": "Google.Cloud.Language.V1"
+    },
+    {
+      "ServiceDirectory": "google/cloud/language/v1beta2",
+      "Name": "language.googleapis.com",
+      "Title": "Google Cloud Natural Language API",
+      "Description": "Google Cloud Natural Language API provides natural language understanding technologies to developers. Examples include sentiment analysis, entity recognition, and text annotations.",
       "ServiceConfigFile": "google/cloud/language/v1beta2/language_v1beta2.yaml",
       "Version": "v1beta2",
       "PackageFromDirectory": "google.cloud.language.v1beta2",
@@ -1079,6 +1465,24 @@
       ],
       "Stable": false,
       "CSharpNamespaceFromProtos": "Google.Cloud.Language.V1Beta2"
+    },
+    {
+      "ServiceDirectory": "google/cloud/lifesciences/v2beta",
+      "Name": "lifesciences.googleapis.com",
+      "Title": "Cloud Life Sciences API",
+      "Description": "Cloud Life Sciences is a suite of services and tools for managing, processing, and transforming life sciences data.",
+      "ServiceConfigFile": "google/cloud/lifesciences/v2beta/lifesciences_v2beta.yaml",
+      "Version": "v2beta",
+      "PackageFromDirectory": "google.cloud.lifesciences.v2beta",
+      "PackageFromProtos": "google.cloud.lifesciences.v2beta",
+      "ImportDirectories": [
+        "google/api",
+        "google/longrunning",
+        "google/protobuf",
+        "google/rpc"
+      ],
+      "Stable": false,
+      "CSharpNamespaceFromProtos": "Google.Cloud.LifeSciences.V2Beta"
     },
     {
       "ServiceDirectory": "google/cloud/managedidentities/v1",
@@ -1149,6 +1553,23 @@
       "CSharpNamespaceFromProtos": "Google.Cloud.MediaTranslation.V1Beta1"
     },
     {
+      "ServiceDirectory": "google/cloud/memcache/v1",
+      "Name": "memcache.googleapis.com",
+      "Title": "Cloud Memorystore for Memcached API",
+      "Description": "Google Cloud Memorystore for Memcached API is used for creating and managing Memcached instances in GCP.",
+      "ServiceConfigFile": "google/cloud/memcache/v1/memcache_v1.yaml",
+      "Version": "v1",
+      "PackageFromDirectory": "google.cloud.memcache.v1",
+      "PackageFromProtos": "google.cloud.memcache.v1",
+      "ImportDirectories": [
+        "google/api",
+        "google/longrunning",
+        "google/protobuf"
+      ],
+      "Stable": true,
+      "CSharpNamespaceFromProtos": "Google.Cloud.Memcache.V1"
+    },
+    {
       "ServiceDirectory": "google/cloud/memcache/v1beta2",
       "Name": "memcache.googleapis.com",
       "Title": "Cloud Memorystore for Memcached API",
@@ -1166,6 +1587,24 @@
       "CSharpNamespaceFromProtos": "Google.Cloud.Memcache.V1Beta2"
     },
     {
+      "ServiceDirectory": "google/cloud/metastore/v1",
+      "Name": "metastore.googleapis.com",
+      "Title": "Dataproc Metastore API",
+      "Description": "The Dataproc Metastore API is used to manage the lifecycle and configuration of metastore services.",
+      "ServiceConfigFile": "google/cloud/metastore/v1/metastore_v1.yaml",
+      "Version": "v1",
+      "PackageFromDirectory": "google.cloud.metastore.v1",
+      "PackageFromProtos": "google.cloud.metastore.v1",
+      "ImportDirectories": [
+        "google/api",
+        "google/longrunning",
+        "google/protobuf",
+        "google/type"
+      ],
+      "Stable": true,
+      "CSharpNamespaceFromProtos": "Google.Cloud.Metastore.V1"
+    },
+    {
       "ServiceDirectory": "google/cloud/metastore/v1alpha",
       "Name": "metastore.googleapis.com",
       "Title": "Dataproc Metastore API",
@@ -1177,10 +1616,46 @@
       "ImportDirectories": [
         "google/api",
         "google/longrunning",
-        "google/protobuf"
+        "google/protobuf",
+        "google/type"
       ],
       "Stable": false,
       "CSharpNamespaceFromProtos": "Google.Cloud.Metastore.V1Alpha"
+    },
+    {
+      "ServiceDirectory": "google/cloud/metastore/v1beta",
+      "Name": "metastore.googleapis.com",
+      "Title": "Dataproc Metastore API",
+      "Description": "The Dataproc Metastore API is used to manage the lifecycle and configuration of metastore services.",
+      "ServiceConfigFile": "google/cloud/metastore/v1beta/metastore_v1beta.yaml",
+      "Version": "v1beta",
+      "PackageFromDirectory": "google.cloud.metastore.v1beta",
+      "PackageFromProtos": "google.cloud.metastore.v1beta",
+      "ImportDirectories": [
+        "google/api",
+        "google/longrunning",
+        "google/protobuf",
+        "google/type"
+      ],
+      "Stable": false,
+      "CSharpNamespaceFromProtos": "Google.Cloud.Metastore.V1Beta"
+    },
+    {
+      "ServiceDirectory": "google/cloud/networkconnectivity/v1alpha1",
+      "Name": "networkconnectivity.googleapis.com",
+      "Title": "Network Connectivity API",
+      "Description": "The Network Connectivity API will be home to various services which provide information pertaining to network connectivity.",
+      "ServiceConfigFile": "google/cloud/networkconnectivity/v1alpha1/networkconnectivity_v1alpha1.yaml",
+      "Version": "v1alpha1",
+      "PackageFromDirectory": "google.cloud.networkconnectivity.v1alpha1",
+      "PackageFromProtos": "google.cloud.networkconnectivity.v1alpha1",
+      "ImportDirectories": [
+        "google/api",
+        "google/longrunning",
+        "google/protobuf"
+      ],
+      "Stable": false,
+      "CSharpNamespaceFromProtos": "Google.Cloud.NetworkConnectivity.V1Alpha1"
     },
     {
       "ServiceDirectory": "google/cloud/notebooks/v1beta1",
@@ -1201,9 +1676,65 @@
       "CSharpNamespaceFromProtos": "Google.Cloud.Notebooks.V1Beta1"
     },
     {
+      "ServiceDirectory": "google/cloud/ondemandscanning/v1",
+      "Name": "ondemandscanning.googleapis.com",
+      "Title": "On-Demand Scanning API",
+      "Description": "A service to scan container images for vulnerabilities.",
+      "ServiceConfigFile": "google/cloud/ondemandscanning/v1/ondemandscanning_v1.yaml",
+      "Version": "v1",
+      "PackageFromDirectory": "google.cloud.ondemandscanning.v1",
+      "PackageFromProtos": "google.cloud.ondemandscanning.v1",
+      "ImportDirectories": [
+        "cloud/containers/workflow/vulnerability/proto",
+        "google/api",
+        "google/longrunning",
+        "google/protobuf",
+        "grafeas/v1"
+      ],
+      "Stable": true,
+      "CSharpNamespaceFromProtos": "Google.Cloud.OnDemandScanning.V1"
+    },
+    {
+      "ServiceDirectory": "google/cloud/ondemandscanning/v1beta1",
+      "Name": "ondemandscanning.googleapis.com",
+      "Title": "On-Demand Scanning API",
+      "Description": "A service to scan container images for vulnerabilities.",
+      "ServiceConfigFile": "google/cloud/ondemandscanning/v1beta1/ondemandscanning_v1beta1.yaml",
+      "Version": "v1beta1",
+      "PackageFromDirectory": "google.cloud.ondemandscanning.v1beta1",
+      "PackageFromProtos": "google.cloud.ondemandscanning.v1beta1",
+      "ImportDirectories": [
+        "cloud/containers/workflow/vulnerability/proto",
+        "google/api",
+        "google/longrunning",
+        "google/protobuf",
+        "grafeas/v1"
+      ],
+      "Stable": false,
+      "CSharpNamespaceFromProtos": "Google.Cloud.OnDemandScanning.V1Beta1"
+    },
+    {
+      "ServiceDirectory": "google/cloud/orgpolicy/v2",
+      "Name": "orgpolicy.googleapis.com",
+      "Title": "Organization Policy API",
+      "Description": "The Org Policy API allows users to configure governance rules on their GCP resources across the Cloud Resource Hierarchy.",
+      "ServiceConfigFile": "google/cloud/orgpolicy/v2/orgpolicy_v2.yaml",
+      "Version": "v2",
+      "PackageFromDirectory": "google.cloud.orgpolicy.v2",
+      "PackageFromProtos": "google.cloud.orgpolicy.v2",
+      "ImportDirectories": [
+        "google/api",
+        "google/cloud/orgpolicy/v2",
+        "google/protobuf",
+        "google/type"
+      ],
+      "Stable": true,
+      "CSharpNamespaceFromProtos": "Google.Cloud.OrgPolicy.V2"
+    },
+    {
       "ServiceDirectory": "google/cloud/osconfig/agentendpoint/v1",
       "Name": "osconfig.googleapis.com",
-      "Title": "Cloud OS Config API",
+      "Title": "OS Config API",
       "Description": "OS management tools that can be used for patch management, patch compliance, and configuration management on VM instances.",
       "ServiceConfigFile": "google/cloud/osconfig/agentendpoint/v1/osconfig_v1.yaml",
       "Version": "v1",
@@ -1250,6 +1781,24 @@
       ],
       "Stable": true,
       "CSharpNamespaceFromProtos": "Google.Cloud.OsConfig.V1"
+    },
+    {
+      "ServiceDirectory": "google/cloud/osconfig/v1alpha",
+      "Name": "osconfig.googleapis.com",
+      "Title": "OS Config API",
+      "Description": "OS management tools that can be used for patch management, patch compliance, and configuration management on VM instances.",
+      "ServiceConfigFile": "google/cloud/osconfig/v1alpha/osconfig_v1alpha.yaml",
+      "Version": "v1alpha",
+      "PackageFromDirectory": "google.cloud.osconfig.v1alpha",
+      "PackageFromProtos": "google.cloud.osconfig.v1alpha",
+      "ImportDirectories": [
+        "google/api",
+        "google/cloud/osconfig/v1alpha",
+        "google/longrunning",
+        "google/protobuf"
+      ],
+      "Stable": false,
+      "CSharpNamespaceFromProtos": "Google.Cloud.OsConfig.V1Alpha"
     },
     {
       "ServiceDirectory": "google/cloud/osconfig/v1beta",
@@ -1329,12 +1878,29 @@
       "PackageFromProtos": "google.cloud.policytroubleshooter.v1",
       "ImportDirectories": [
         "google/api",
+        "google/cloud/policytroubleshooter/v1",
         "google/iam/v1",
-        "google/type",
-        "public \"google/cloud/policytroubleshooter/v1"
+        "google/type"
       ],
       "Stable": true,
       "CSharpNamespaceFromProtos": "Google.Cloud.PolicyTroubleshooter.V1"
+    },
+    {
+      "ServiceDirectory": "google/cloud/privatecatalog/v1beta1",
+      "Name": "cloudprivatecatalog.googleapis.com",
+      "Title": "Cloud Private Catalog API",
+      "Description": "Enable cloud users to discover private catalogs and products in their organizations.",
+      "ServiceConfigFile": "google/cloud/privatecatalog/v1beta1/cloudprivatecatalog_v1beta1.yaml",
+      "Version": "v1beta1",
+      "PackageFromDirectory": "google.cloud.privatecatalog.v1beta1",
+      "PackageFromProtos": "google.cloud.privatecatalog.v1beta1",
+      "ImportDirectories": [
+        "google/api",
+        "google/longrunning",
+        "google/protobuf"
+      ],
+      "Stable": false,
+      "CSharpNamespaceFromProtos": "Google.Cloud.PrivateCatalog.V1Beta1"
     },
     {
       "ServiceDirectory": "google/cloud/pubsublite/v1",
@@ -1526,9 +2092,42 @@
       "CSharpNamespaceFromProtos": "Google.Cloud.ResourceManager.V2"
     },
     {
+      "ServiceDirectory": "google/cloud/resourcemanager/v3",
+      "Name": "cloudresourcemanager.googleapis.com",
+      "Title": "Cloud Resource Manager API",
+      "Description": "Creates, reads, and updates metadata for Google Cloud Platform resource containers.",
+      "ServiceConfigFile": "google/cloud/resourcemanager/v3/cloudresourcemanager_v3.yaml",
+      "Version": "v3",
+      "PackageFromDirectory": "google.cloud.resourcemanager.v3",
+      "PackageFromProtos": "google.cloud.resourcemanager.v3",
+      "ImportDirectories": [
+        "google/api",
+        "google/iam/v1",
+        "google/longrunning",
+        "google/protobuf"
+      ],
+      "Stable": true,
+      "CSharpNamespaceFromProtos": "Google.Cloud.ResourceManager.V3"
+    },
+    {
+      "ServiceDirectory": "google/cloud/resourcesettings/v1",
+      "Name": "resourcesettings.googleapis.com",
+      "Title": "Resource Settings API",
+      "Description": "The Resource Settings API allows users to control and modify the behavior of their GCP resources (e.g., VM, firewall, Project, etc.) across the Cloud Resource Hierarchy.",
+      "ServiceConfigFile": "google/cloud/resourcesettings/v1/resourcesettings_v1.yaml",
+      "Version": "v1",
+      "PackageFromDirectory": "google.cloud.resourcesettings.v1",
+      "PackageFromProtos": "google.cloud.resourcesettings.v1",
+      "ImportDirectories": [
+        "google/api"
+      ],
+      "Stable": true,
+      "CSharpNamespaceFromProtos": "Google.Cloud.ResourceSettings.V1"
+    },
+    {
       "ServiceDirectory": "google/cloud/retail/v2",
       "Name": "retail.googleapis.com",
-      "Title": "Cloud Retail",
+      "Title": "Retail API",
       "Description": "Cloud Retail service enables customers to build end-to-end personalized recommendation systems without requiring a high level of expertise in machine learning, recommendation system, or Google Cloud.",
       "ServiceConfigFile": "google/cloud/retail/v2/retail_v2.yaml",
       "Version": "v2",
@@ -1655,6 +2254,25 @@
       "CSharpNamespaceFromProtos": "Google.Cloud.SecretManager.V1Beta1"
     },
     {
+      "ServiceDirectory": "google/cloud/security/privateca/v1",
+      "Name": "privateca.googleapis.com",
+      "Title": "Certificate Authority API",
+      "Description": "The Certificate Authority Service API is a highly-available, scalable service that enables you to simplify and automate the management of private certificate authorities (CAs) while staying in control of your private keys.\"",
+      "ServiceConfigFile": "google/cloud/security/privateca/v1/privateca_v1.yaml",
+      "Version": "v1",
+      "PackageFromDirectory": "google.cloud.security.privateca.v1",
+      "PackageFromProtos": "google.cloud.security.privateca.v1",
+      "ImportDirectories": [
+        "google/api",
+        "google/cloud/security/privateca/v1",
+        "google/longrunning",
+        "google/protobuf",
+        "google/type"
+      ],
+      "Stable": true,
+      "CSharpNamespaceFromProtos": "Google.Cloud.Security.PrivateCA.V1"
+    },
+    {
       "ServiceDirectory": "google/cloud/security/privateca/v1beta1",
       "Name": "privateca.googleapis.com",
       "Title": "Certificate Authority API",
@@ -1703,8 +2321,7 @@
         "google/cloud/securitycenter/v1",
         "google/iam/v1",
         "google/longrunning",
-        "google/protobuf",
-        "public \"google/cloud/securitycenter/v1"
+        "google/protobuf"
       ],
       "Stable": true,
       "CSharpNamespaceFromProtos": "Google.Cloud.SecurityCenter.V1"
@@ -1742,8 +2359,7 @@
         "google/cloud/securitycenter/v1p1beta1",
         "google/iam/v1",
         "google/longrunning",
-        "google/protobuf",
-        "public \"google/cloud/securitycenter/v1p1beta1"
+        "google/protobuf"
       ],
       "Stable": false,
       "CSharpNamespaceFromProtos": "Google.Cloud.SecurityCenter.V1P1Beta1"
@@ -1785,6 +2401,23 @@
       "CSharpNamespaceFromProtos": "Google.Cloud.ServiceDirectory.V1Beta1"
     },
     {
+      "ServiceDirectory": "google/cloud/shell/v1",
+      "Name": "cloudshell.googleapis.com",
+      "Title": "Cloud Shell API",
+      "Description": "Allows users to start, configure, and connect to interactive shell sessions running in the cloud.",
+      "ServiceConfigFile": "google/cloud/shell/v1/cloudshell_v1.yaml",
+      "Version": "v1",
+      "PackageFromDirectory": "google.cloud.shell.v1",
+      "PackageFromProtos": "google.cloud.shell.v1",
+      "ImportDirectories": [
+        "google/api",
+        "google/longrunning",
+        "google/protobuf"
+      ],
+      "Stable": true,
+      "CSharpNamespaceFromProtos": "Google.Cloud.Shell.V1"
+    },
+    {
       "ServiceDirectory": "google/cloud/speech/v1",
       "Name": "speech.googleapis.com",
       "Title": "Cloud Speech-to-Text API",
@@ -1820,6 +2453,23 @@
       ],
       "Stable": false,
       "CSharpNamespaceFromProtos": "Google.Cloud.Speech.V1P1Beta1"
+    },
+    {
+      "ServiceDirectory": "google/cloud/sql/v1beta4",
+      "Name": "sqladmin.googleapis.com",
+      "Title": "Cloud SQL Admin API",
+      "Description": "API for Cloud SQL database instance management",
+      "ServiceConfigFile": "google/cloud/sql/v1beta4/sqladmin_v1beta4.yaml",
+      "Version": "v1beta4",
+      "PackageFromDirectory": "google.cloud.sql.v1beta4",
+      "PackageFromProtos": "google.cloud.sql.v1beta4",
+      "ImportDirectories": [
+        "google/api",
+        "google/cloud/sql/v1beta4",
+        "google/protobuf"
+      ],
+      "Stable": false,
+      "CSharpNamespaceFromProtos": "Google.Cloud.Sql.V1Beta4"
     },
     {
       "ServiceDirectory": "google/cloud/talent/v4",
@@ -1946,7 +2596,24 @@
         "google/api"
       ],
       "Stable": false,
-      "CSharpNamespaceFromProtos": "Google.Cloud.TextToSpeech.V1beta1"
+      "CSharpNamespaceFromProtos": "Google.Cloud.TextToSpeech.V1Beta1"
+    },
+    {
+      "ServiceDirectory": "google/cloud/tpu/v1",
+      "Name": "tpu.googleapis.com",
+      "Title": "Cloud TPU API",
+      "Description": "TPU API provides customers with access to Google TPU technology.",
+      "ServiceConfigFile": "google/cloud/tpu/v1/tpu_v1.yaml",
+      "Version": "v1",
+      "PackageFromDirectory": "google.cloud.tpu.v1",
+      "PackageFromProtos": "google.cloud.tpu.v1",
+      "ImportDirectories": [
+        "google/api",
+        "google/longrunning",
+        "google/protobuf"
+      ],
+      "Stable": true,
+      "CSharpNamespaceFromProtos": "Google.Cloud.Tpu.V1"
     },
     {
       "ServiceDirectory": "google/cloud/translate/v3",
@@ -2134,6 +2801,23 @@
       "CSharpNamespaceFromProtos": "Google.Cloud.Vision.V1P4Beta1"
     },
     {
+      "ServiceDirectory": "google/cloud/vpcaccess/v1",
+      "Name": "vpcaccess.googleapis.com",
+      "Title": "Serverless VPC Access API",
+      "Description": "API for managing VPC access connectors.",
+      "ServiceConfigFile": "google/cloud/vpcaccess/v1/vpcaccess_v1.yaml",
+      "Version": "v1",
+      "PackageFromDirectory": "google.cloud.vpcaccess.v1",
+      "PackageFromProtos": "google.cloud.vpcaccess.v1",
+      "ImportDirectories": [
+        "google/api",
+        "google/longrunning",
+        "google/protobuf"
+      ],
+      "Stable": true,
+      "CSharpNamespaceFromProtos": "Google.Cloud.VpcAccess.V1"
+    },
+    {
       "ServiceDirectory": "google/cloud/webrisk/v1",
       "Name": "webrisk.googleapis.com",
       "Title": "Web Risk API",
@@ -2217,6 +2901,22 @@
       "CSharpNamespaceFromProtos": "Google.Cloud.WebSecurityScanner.V1Beta"
     },
     {
+      "ServiceDirectory": "google/cloud/workflows/executions/v1",
+      "Name": "workflowexecutions.googleapis.com",
+      "Title": "Workflow Executions API",
+      "Description": "Execute workflows created with Workflows API.",
+      "ServiceConfigFile": "google/cloud/workflows/executions/v1/workflowexecutions_v1.yaml",
+      "Version": "v1",
+      "PackageFromDirectory": "google.cloud.workflows.executions.v1",
+      "PackageFromProtos": "google.cloud.workflows.executions.v1",
+      "ImportDirectories": [
+        "google/api",
+        "google/protobuf"
+      ],
+      "Stable": true,
+      "CSharpNamespaceFromProtos": "Google.Cloud.Workflows.Executions.V1"
+    },
+    {
       "ServiceDirectory": "google/cloud/workflows/executions/v1beta",
       "Name": "workflowexecutions.googleapis.com",
       "Title": "Workflow Executions API",
@@ -2231,6 +2931,23 @@
       ],
       "Stable": false,
       "CSharpNamespaceFromProtos": "Google.Cloud.Workflows.Executions.V1Beta"
+    },
+    {
+      "ServiceDirectory": "google/cloud/workflows/v1",
+      "Name": "workflows.googleapis.com",
+      "Title": "Workflows API",
+      "Description": "Orchestrate Workflows that invoke Google Cloud APIs, SaaS APIs or private API endpoints.",
+      "ServiceConfigFile": "google/cloud/workflows/v1/workflows_v1.yaml",
+      "Version": "v1",
+      "PackageFromDirectory": "google.cloud.workflows.v1",
+      "PackageFromProtos": "google.cloud.workflows.v1",
+      "ImportDirectories": [
+        "google/api",
+        "google/longrunning",
+        "google/protobuf"
+      ],
+      "Stable": true,
+      "CSharpNamespaceFromProtos": "Google.Cloud.Workflows.V1"
     },
     {
       "ServiceDirectory": "google/cloud/workflows/v1beta",
@@ -2276,10 +2993,29 @@
       "PackageFromProtos": "google.container.v1beta1",
       "ImportDirectories": [
         "google/api",
-        "google/protobuf"
+        "google/protobuf",
+        "google/rpc"
       ],
       "Stable": false,
       "CSharpNamespaceFromProtos": "Google.Cloud.Container.V1Beta1"
+    },
+    {
+      "ServiceDirectory": "google/datastore/admin/v1",
+      "Name": "datastore.googleapis.com",
+      "Title": "Cloud Datastore API",
+      "Description": "Accesses the schemaless NoSQL database to provide fully managed, robust, scalable storage for your application.",
+      "ServiceConfigFile": "google/datastore/admin/v1/datastore_v1.yaml",
+      "Version": "v1",
+      "PackageFromDirectory": "google.datastore.admin.v1",
+      "PackageFromProtos": "google.datastore.admin.v1",
+      "ImportDirectories": [
+        "google/api",
+        "google/datastore/admin/v1",
+        "google/longrunning",
+        "google/protobuf"
+      ],
+      "Stable": true,
+      "CSharpNamespaceFromProtos": "Google.Cloud.Datastore.Admin.V1"
     },
     {
       "ServiceDirectory": "google/datastore/admin/v1",
@@ -2368,7 +3104,7 @@
         "google/protobuf"
       ],
       "Stable": true,
-      "CSharpNamespaceFromProtos": "Google.Devtools.Cloudbuild.V1"
+      "CSharpNamespaceFromProtos": "Google.Cloud.CloudBuild.V1"
     },
     {
       "ServiceDirectory": "google/devtools/clouddebugger/v2",
@@ -2391,7 +3127,7 @@
     {
       "ServiceDirectory": "google/devtools/clouderrorreporting/v1beta1",
       "Name": "clouderrorreporting.googleapis.com",
-      "Title": "Cloud Error Reporting API",
+      "Title": "Error Reporting API",
       "Description": "Groups and counts similar errors from cloud services and applications, reports new errors, and provides access to error groups and their associated errors.",
       "ServiceConfigFile": "google/devtools/clouderrorreporting/v1beta1/clouderrorreporting_v1beta1.yaml",
       "Version": "v1beta1",
@@ -2404,6 +3140,22 @@
       ],
       "Stable": false,
       "CSharpNamespaceFromProtos": "Google.Cloud.ErrorReporting.V1Beta1"
+    },
+    {
+      "ServiceDirectory": "google/devtools/cloudprofiler/v2",
+      "Name": "cloudprofiler.googleapis.com",
+      "Title": "Cloud Profiler API",
+      "Description": "Manages continuous profiling information.",
+      "ServiceConfigFile": "google/devtools/cloudprofiler/v2/cloudprofiler_v2.yaml",
+      "Version": "v2",
+      "PackageFromDirectory": "google.devtools.cloudprofiler.v2",
+      "PackageFromProtos": "google.devtools.cloudprofiler.v2",
+      "ImportDirectories": [
+        "google/api",
+        "google/protobuf"
+      ],
+      "Stable": true,
+      "CSharpNamespaceFromProtos": "Google.Cloud.Profiler.V2"
     },
     {
       "ServiceDirectory": "google/devtools/cloudtrace/v1",
@@ -2479,7 +3231,7 @@
       "Name": "remoteworkers.googleapis.com",
       "Title": "Remote Workers API",
       "Description": "<UNKNOWN - NO SERVICE CONFIG DOCUMENTATION SUMMARY>",
-      "ServiceConfigFile": "google/devtools/remoteworkers/v1test2/remote_workers.yaml",
+      "ServiceConfigFile": "google/devtools/remoteworkers/v1test2/remoteworkers_v1beta2.yaml",
       "Version": "v1test2",
       "PackageFromDirectory": "google.devtools.remoteworkers.v1test2",
       "PackageFromProtos": "google.devtools.remoteworkers.v1test2",
@@ -2612,10 +3364,11 @@
       "ImportDirectories": [
         "google/api",
         "google/iam/v1",
-        "google/protobuf"
+        "google/protobuf",
+        "google/type"
       ],
       "Stable": true,
-      "CSharpNamespaceFromProtos": "Google.Iam.Admin.V1"
+      "CSharpNamespaceFromProtos": "Google.Cloud.Iam.Admin.V1"
     },
     {
       "ServiceDirectory": "google/iam/credentials/v1",
@@ -2632,7 +3385,7 @@
         "google/protobuf"
       ],
       "Stable": true,
-      "CSharpNamespaceFromProtos": "Google.Iam.Credentials.V1"
+      "CSharpNamespaceFromProtos": "Google.Cloud.Iam.Credentials.V1"
     },
     {
       "ServiceDirectory": "google/iam/v1",
@@ -2794,7 +3547,7 @@
       "ServiceDirectory": "google/monitoring/v3",
       "Name": "monitoring.googleapis.com",
       "Title": "Cloud Monitoring API",
-      "Description": "Manages your Cloud Monitoring data and configurations. Most projects must be associated with a Workspace, with a few exceptions as noted on the individual method pages. The table entries below are presented in alphabetical order, not in order of common use. For explanations of the concepts found in the table entries, read the [Cloud Monitoring documentation](https://cloud.google.com/monitoring/docs).",
+      "Description": "Manages your Cloud Monitoring data and configurations. Most projects must be associated with a Workspace, with a few exceptions as noted on the individual method pages. The table entries below are presented in alphabetical order, not in order of common use. For explanations of the concepts found in the table entries, read the [Cloud Monitoring documentation](/monitoring/docs).",
       "ServiceConfigFile": "google/monitoring/v3/monitoring.yaml",
       "Version": "v3",
       "PackageFromDirectory": "google.monitoring.v3",
@@ -2856,7 +3609,8 @@
       "PackageFromProtos": "google.pubsub.v1",
       "ImportDirectories": [
         "google/api",
-        "google/protobuf"
+        "google/protobuf",
+        "google/pubsub/v1"
       ],
       "Stable": true,
       "CSharpNamespaceFromProtos": "Google.Cloud.PubSub.V1"
@@ -2875,6 +3629,7 @@
         "google/iam/v1",
         "google/longrunning",
         "google/protobuf",
+        "google/rpc",
         "google/spanner/admin/database/v1"
       ],
       "Stable": true,
@@ -2933,6 +3688,25 @@
       ],
       "Stable": true,
       "CSharpNamespaceFromProtos": "Google.Storage.V1"
+    },
+    {
+      "ServiceDirectory": "google/streetview/publish/v1",
+      "Name": "streetviewpublish.googleapis.com",
+      "Title": "Street View Publish API",
+      "Description": "The Street View Publish API allows your application to publish 360 photos to Google Maps, along with image metadata that specifies the position, orientation, and connectivity of each photo. With this API, any app can offer an interface for positioning, connecting, and uploading user-generated Street View images.",
+      "ServiceConfigFile": "google/streetview/publish/v1/streetview_publish.yaml",
+      "Version": "v1",
+      "PackageFromDirectory": "google.streetview.publish.v1",
+      "PackageFromProtos": "google.streetview.publish.v1",
+      "ImportDirectories": [
+        "google/api",
+        "google/protobuf",
+        "google/rpc",
+        "google/streetview/publish/v1",
+        "google/type"
+      ],
+      "Stable": true,
+      "CSharpNamespaceFromProtos": "Google.Streetview.Publish.V1"
     },
     {
       "ServiceDirectory": "google/watcher/v1",

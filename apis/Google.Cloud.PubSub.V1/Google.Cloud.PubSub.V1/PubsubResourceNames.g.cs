@@ -1,4 +1,4 @@
-// Copyright 2020 Google LLC
+// Copyright 2021 Google LLC
 //
 // Licensed under the Apache License, Version 2.0 (the "License");
 // you may not use this file except in compliance with the License.
@@ -698,6 +698,16 @@ namespace Google.Cloud.PubSub.V1
 
         /// <inheritdoc/>
         public static bool operator !=(SnapshotName a, SnapshotName b) => !(a == b);
+    }
+
+    public partial class SchemaSettings
+    {
+        /// <summary><see cref="SchemaName"/>-typed view over the <see cref="Schema"/> resource name property.</summary>
+        public SchemaName SchemaAsSchemaName
+        {
+            get => string.IsNullOrEmpty(Schema) ? null : SchemaName.Parse(Schema, allowUnparsed: true);
+            set => Schema = value?.ToString() ?? "";
+        }
     }
 
     public partial class Topic

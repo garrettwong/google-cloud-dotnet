@@ -1,4 +1,4 @@
-// Copyright 2020 Google LLC
+// Copyright 2021 Google LLC
 //
 // Licensed under the Apache License, Version 2.0 (the "License");
 // you may not use this file except in compliance with the License.
@@ -77,7 +77,7 @@ namespace Google.Cloud.Gaming.V1.Snippets
             // End snippet
         }
 
-        /// <summary>Snippet for ListGameServerDeployments</summary>
+        /// <summary>Snippet for ListGameServerDeploymentsAsync</summary>
         public async Task ListGameServerDeploymentsRequestObjectAsync()
         {
             // Snippet: ListGameServerDeploymentsAsync(ListGameServerDeploymentsRequest, CallSettings)
@@ -172,7 +172,7 @@ namespace Google.Cloud.Gaming.V1.Snippets
             // End snippet
         }
 
-        /// <summary>Snippet for ListGameServerDeployments</summary>
+        /// <summary>Snippet for ListGameServerDeploymentsAsync</summary>
         public async Task ListGameServerDeploymentsAsync()
         {
             // Snippet: ListGameServerDeploymentsAsync(string, string, int?, CallSettings)
@@ -262,7 +262,7 @@ namespace Google.Cloud.Gaming.V1.Snippets
             // End snippet
         }
 
-        /// <summary>Snippet for ListGameServerDeployments</summary>
+        /// <summary>Snippet for ListGameServerDeploymentsAsync</summary>
         public async Task ListGameServerDeploymentsResourceNamesAsync()
         {
             // Snippet: ListGameServerDeploymentsAsync(LocationName, string, int?, CallSettings)

@@ -41,9 +41,21 @@ namespace Google.Cloud.Tools.ReleaseManager
             { "Google.Cloud.SampleUtil", @"..\..\..\tools\Google.Cloud.SampleUtil\Google.Cloud.SampleUtil.csproj"}
         };
 
-        private const string DefaultRestTargetFrameworks = "netstandard2.0;net461";
-        private const string DefaultGrpcTargetFrameworks = "netstandard2.0;net461";
+        private static readonly Dictionary<ApiType, string> PackageTypeToDefaultTargetFrameworks = new Dictionary<ApiType, string>
+        {
+            { ApiType.Rest, "netstandard2.0;net461" },
+            { ApiType.Grpc, "netstandard2.0;net461" },
+            { ApiType.Regapic, "netstandard2.0;net461" }
+        };
+
         private const string DefaultTestTargetFrameworks = "netcoreapp2.1;net461";
+
+        private static Dictionary<ApiType, string[]> PackageTypeToImplicitDependencies = new Dictionary<ApiType, string[]>
+        {
+            {  ApiType.Rest, new[] { "Google.Api.Gax.Rest" } },
+            {  ApiType.Grpc, new[] { "Grpc.Core", "Google.Api.Gax.Grpc.GrpcCore" } },
+            {  ApiType.Regapic, new[] { "Google.Api.Gax.Grpc" } },
+        };
 
         private const string AnalyzersTargetFramework = "netstandard1.3";
         private const string AnalyzersTestTargetFramework = "netcoreapp2.0";
@@ -51,8 +63,8 @@ namespace Google.Cloud.Tools.ReleaseManager
         private const string ProjectVersionValue = "project";
         private const string DefaultVersionValue = "default";
         private const string GrpcPackage = "Grpc.Core";
-        private const string DefaultGaxVersion = "3.2.0";
-        private const string GrpcVersion = "2.31.0";
+        private const string DefaultGaxVersion = "3.3.0";
+        private const string GrpcVersion = "2.36.4";
         private static readonly Dictionary<string, string> DefaultPackageVersions = new Dictionary<string, string>
         {
             { "Google.Api.Gax", DefaultGaxVersion },
@@ -65,8 +77,8 @@ namespace Google.Cloud.Tools.ReleaseManager
             { GrpcPackage, GrpcVersion },
             { "Grpc.Core.Testing", GrpcVersion },
             { "Grpc.Core.Api", GrpcVersion },
-            { "Google.Api.CommonProtos", "2.2.0" },
-            { "Google.Protobuf", "3.13.0" }
+            { "Google.Api.CommonProtos", "2.3.0" },
+            { "Google.Protobuf", "3.15.8" }
         };
 
         // Hard-coded versions for all analyzer projects.
@@ -184,6 +196,21 @@ namespace Google.Cloud.Tools.ReleaseManager
         /// </summary>
         public static void UpdateDependencies(ApiCatalog catalog, ApiMetadata api)
         {
+            // Update any previously-defaulted versions to be explicit, if the new version is GA.
+            // (This only affects production dependencies, so is not performed in UpdateDependencyDictionary.)
+            // Implicit dependencies are always present in DefaultPackageVersions, so we don't need to worry about
+            // "internal" dependencies.
+            if (api.IsReleaseVersion && PackageTypeToImplicitDependencies.TryGetValue(api.Type, out var implicitDependencies))
+            {
+                foreach (var implicitDependency in implicitDependencies)
+                {
+                    if (!api.Dependencies.ContainsKey(implicitDependency))
+                    {
+                        api.Dependencies[implicitDependency] = DefaultPackageVersions[implicitDependency];
+                    }
+                }
+            }
+
             UpdateDependencyDictionary(api.Dependencies, "dependencies");
             UpdateDependencyDictionary(api.TestDependencies, "testDependencies");
 
@@ -220,6 +247,7 @@ namespace Google.Cloud.Tools.ReleaseManager
                         }
                     }
                 }
+
                 if (api.Json is object)
                 {
                     api.Json[jsonName] = new JObject(dependencies.Select(pair => new JProperty(pair.Key, pair.Value)));
@@ -432,7 +460,9 @@ namespace Google.Cloud.Tools.ReleaseManager
 
         private static void GenerateSynthConfiguration(string apiRoot, ApiMetadata api)
         {
-            if (api.Generator == GeneratorType.None)
+            // Note: we don't currently support autosynth for regapic.
+            // (We'll get there over time.)
+            if (api.Generator == GeneratorType.None || api.Generator == GeneratorType.Regapic)
             {
                 return;
             }
@@ -499,6 +529,7 @@ shell.run(
                 distribution_name = api.Id,
                 release_level = releaseLevel,
                 client_documentation = $"https://googleapis.dev/dotnet/{api.Id}/latest",
+                library_type = api.EffectiveMetadataType
             };
             string json = JsonConvert.SerializeObject(metadata, Formatting.Indented);
             File.WriteAllText(metadataPath, json);
@@ -510,7 +541,7 @@ shell.run(
             {
                 throw new UserErrorException($"No version specified for {api.Id}");
             }
-            string targetFrameworks = api.TargetFrameworks;
+            string targetFrameworks = api.TargetFrameworks ?? PackageTypeToDefaultTargetFrameworks.GetValueOrDefault(api.Type);
 
             SortedList<string, string> dependencies;
             if (api.Type == ApiType.Analyzers)
@@ -531,17 +562,13 @@ shell.run(
 
                 dependencies = new SortedList<string, string>(CommonHiddenProductionDependencies, StringComparer.Ordinal);
 
-                switch (api.Type)
+                // Default dependencies by package type
+                if (PackageTypeToImplicitDependencies.TryGetValue(api.Type, out var implicitDependencies))
                 {
-                    case ApiType.Rest:
-                        dependencies.Add("Google.Api.Gax.Rest", DefaultVersionValue);
-                        targetFrameworks = targetFrameworks ?? DefaultRestTargetFrameworks;
-                        break;
-                    case ApiType.Grpc:
-                        dependencies.Add("Google.Api.Gax.Grpc.GrpcCore", DefaultVersionValue);
-                        dependencies.Add("Grpc.Core", DefaultVersionValue);
-                        targetFrameworks = targetFrameworks ?? DefaultGrpcTargetFrameworks;
-                        break;
+                    foreach (var dependency in implicitDependencies)
+                    {
+                        dependencies[dependency] = DefaultVersionValue;
+                    }
                 }
 
                 // Deliberately not using Add, so that a project can override the defaults.

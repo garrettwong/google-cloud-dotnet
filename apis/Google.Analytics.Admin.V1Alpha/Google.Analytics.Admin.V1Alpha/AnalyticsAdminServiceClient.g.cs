@@ -1,4 +1,4 @@
-// Copyright 2020 Google LLC
+// Copyright 2021 Google LLC
 //
 // Licensed under the Apache License, Version 2.0 (the "License");
 // you may not use this file except in compliance with the License.
@@ -76,12 +76,10 @@ namespace Google.Analytics.Admin.V1Alpha
             GetIosAppDataStreamSettings = existing.GetIosAppDataStreamSettings;
             DeleteIosAppDataStreamSettings = existing.DeleteIosAppDataStreamSettings;
             UpdateIosAppDataStreamSettings = existing.UpdateIosAppDataStreamSettings;
-            CreateIosAppDataStreamSettings = existing.CreateIosAppDataStreamSettings;
             ListIosAppDataStreamsSettings = existing.ListIosAppDataStreamsSettings;
             GetAndroidAppDataStreamSettings = existing.GetAndroidAppDataStreamSettings;
             DeleteAndroidAppDataStreamSettings = existing.DeleteAndroidAppDataStreamSettings;
             UpdateAndroidAppDataStreamSettings = existing.UpdateAndroidAppDataStreamSettings;
-            CreateAndroidAppDataStreamSettings = existing.CreateAndroidAppDataStreamSettings;
             ListAndroidAppDataStreamsSettings = existing.ListAndroidAppDataStreamsSettings;
             GetEnhancedMeasurementSettingsSettings = existing.GetEnhancedMeasurementSettingsSettings;
             UpdateEnhancedMeasurementSettingsSettings = existing.UpdateEnhancedMeasurementSettingsSettings;
@@ -95,6 +93,28 @@ namespace Google.Analytics.Admin.V1Alpha
             DeleteGoogleAdsLinkSettings = existing.DeleteGoogleAdsLinkSettings;
             ListGoogleAdsLinksSettings = existing.ListGoogleAdsLinksSettings;
             GetDataSharingSettingsSettings = existing.GetDataSharingSettingsSettings;
+            GetMeasurementProtocolSecretSettings = existing.GetMeasurementProtocolSecretSettings;
+            ListMeasurementProtocolSecretsSettings = existing.ListMeasurementProtocolSecretsSettings;
+            CreateMeasurementProtocolSecretSettings = existing.CreateMeasurementProtocolSecretSettings;
+            DeleteMeasurementProtocolSecretSettings = existing.DeleteMeasurementProtocolSecretSettings;
+            UpdateMeasurementProtocolSecretSettings = existing.UpdateMeasurementProtocolSecretSettings;
+            SearchChangeHistoryEventsSettings = existing.SearchChangeHistoryEventsSettings;
+            GetGoogleSignalsSettingsSettings = existing.GetGoogleSignalsSettingsSettings;
+            UpdateGoogleSignalsSettingsSettings = existing.UpdateGoogleSignalsSettingsSettings;
+            CreateConversionEventSettings = existing.CreateConversionEventSettings;
+            GetConversionEventSettings = existing.GetConversionEventSettings;
+            DeleteConversionEventSettings = existing.DeleteConversionEventSettings;
+            ListConversionEventsSettings = existing.ListConversionEventsSettings;
+            CreateCustomDimensionSettings = existing.CreateCustomDimensionSettings;
+            UpdateCustomDimensionSettings = existing.UpdateCustomDimensionSettings;
+            ListCustomDimensionsSettings = existing.ListCustomDimensionsSettings;
+            ArchiveCustomDimensionSettings = existing.ArchiveCustomDimensionSettings;
+            GetCustomDimensionSettings = existing.GetCustomDimensionSettings;
+            CreateCustomMetricSettings = existing.CreateCustomMetricSettings;
+            UpdateCustomMetricSettings = existing.UpdateCustomMetricSettings;
+            ListCustomMetricsSettings = existing.ListCustomMetricsSettings;
+            ArchiveCustomMetricSettings = existing.ArchiveCustomMetricSettings;
+            GetCustomMetricSettings = existing.GetCustomMetricSettings;
             OnCopy(existing);
         }
 
@@ -478,19 +498,6 @@ namespace Google.Analytics.Admin.V1Alpha
 
         /// <summary>
         /// <see cref="gaxgrpc::CallSettings"/> for synchronous and asynchronous calls to
-        /// <c>AnalyticsAdminServiceClient.CreateIosAppDataStream</c> and
-        /// <c>AnalyticsAdminServiceClient.CreateIosAppDataStreamAsync</c>.
-        /// </summary>
-        /// <remarks>
-        /// <list type="bullet">
-        /// <item><description>This call will not be retried.</description></item>
-        /// <item><description>Timeout: 60 seconds.</description></item>
-        /// </list>
-        /// </remarks>
-        public gaxgrpc::CallSettings CreateIosAppDataStreamSettings { get; set; } = gaxgrpc::CallSettings.FromExpiration(gax::Expiration.FromTimeout(sys::TimeSpan.FromMilliseconds(60000)));
-
-        /// <summary>
-        /// <see cref="gaxgrpc::CallSettings"/> for synchronous and asynchronous calls to
         /// <c>AnalyticsAdminServiceClient.ListIosAppDataStreams</c> and
         /// <c>AnalyticsAdminServiceClient.ListIosAppDataStreamsAsync</c>.
         /// </summary>
@@ -540,19 +547,6 @@ namespace Google.Analytics.Admin.V1Alpha
         /// </list>
         /// </remarks>
         public gaxgrpc::CallSettings UpdateAndroidAppDataStreamSettings { get; set; } = gaxgrpc::CallSettings.FromExpiration(gax::Expiration.FromTimeout(sys::TimeSpan.FromMilliseconds(60000)));
-
-        /// <summary>
-        /// <see cref="gaxgrpc::CallSettings"/> for synchronous and asynchronous calls to
-        /// <c>AnalyticsAdminServiceClient.CreateAndroidAppDataStream</c> and
-        /// <c>AnalyticsAdminServiceClient.CreateAndroidAppDataStreamAsync</c>.
-        /// </summary>
-        /// <remarks>
-        /// <list type="bullet">
-        /// <item><description>This call will not be retried.</description></item>
-        /// <item><description>Timeout: 60 seconds.</description></item>
-        /// </list>
-        /// </remarks>
-        public gaxgrpc::CallSettings CreateAndroidAppDataStreamSettings { get; set; } = gaxgrpc::CallSettings.FromExpiration(gax::Expiration.FromTimeout(sys::TimeSpan.FromMilliseconds(60000)));
 
         /// <summary>
         /// <see cref="gaxgrpc::CallSettings"/> for synchronous and asynchronous calls to
@@ -726,6 +720,358 @@ namespace Google.Analytics.Admin.V1Alpha
         /// </remarks>
         public gaxgrpc::CallSettings GetDataSharingSettingsSettings { get; set; } = gaxgrpc::CallSettingsExtensions.WithRetry(gaxgrpc::CallSettings.FromExpiration(gax::Expiration.FromTimeout(sys::TimeSpan.FromMilliseconds(60000))), gaxgrpc::RetrySettings.FromExponentialBackoff(maxAttempts: 5, initialBackoff: sys::TimeSpan.FromMilliseconds(1000), maxBackoff: sys::TimeSpan.FromMilliseconds(60000), backoffMultiplier: 1.3, retryFilter: gaxgrpc::RetrySettings.FilterForStatusCodes(grpccore::StatusCode.Unavailable, grpccore::StatusCode.Unknown)));
 
+        /// <summary>
+        /// <see cref="gaxgrpc::CallSettings"/> for synchronous and asynchronous calls to
+        /// <c>AnalyticsAdminServiceClient.GetMeasurementProtocolSecret</c> and
+        /// <c>AnalyticsAdminServiceClient.GetMeasurementProtocolSecretAsync</c>.
+        /// </summary>
+        /// <remarks>
+        /// <list type="bullet">
+        /// <item><description>Initial retry delay: 1000 milliseconds.</description></item>
+        /// <item><description>Retry delay multiplier: 1.3</description></item>
+        /// <item><description>Retry maximum delay: 60000 milliseconds.</description></item>
+        /// <item><description>Maximum attempts: 5</description></item>
+        /// <item><description>Timeout: 60 seconds.</description></item>
+        /// </list>
+        /// </remarks>
+        public gaxgrpc::CallSettings GetMeasurementProtocolSecretSettings { get; set; } = gaxgrpc::CallSettingsExtensions.WithRetry(gaxgrpc::CallSettings.FromExpiration(gax::Expiration.FromTimeout(sys::TimeSpan.FromMilliseconds(60000))), gaxgrpc::RetrySettings.FromExponentialBackoff(maxAttempts: 5, initialBackoff: sys::TimeSpan.FromMilliseconds(1000), maxBackoff: sys::TimeSpan.FromMilliseconds(60000), backoffMultiplier: 1.3, retryFilter: gaxgrpc::RetrySettings.FilterForStatusCodes(grpccore::StatusCode.Unavailable, grpccore::StatusCode.Unknown)));
+
+        /// <summary>
+        /// <see cref="gaxgrpc::CallSettings"/> for synchronous and asynchronous calls to
+        /// <c>AnalyticsAdminServiceClient.ListMeasurementProtocolSecrets</c> and
+        /// <c>AnalyticsAdminServiceClient.ListMeasurementProtocolSecretsAsync</c>.
+        /// </summary>
+        /// <remarks>
+        /// <list type="bullet">
+        /// <item><description>Initial retry delay: 1000 milliseconds.</description></item>
+        /// <item><description>Retry delay multiplier: 1.3</description></item>
+        /// <item><description>Retry maximum delay: 60000 milliseconds.</description></item>
+        /// <item><description>Maximum attempts: 5</description></item>
+        /// <item><description>Timeout: 60 seconds.</description></item>
+        /// </list>
+        /// </remarks>
+        public gaxgrpc::CallSettings ListMeasurementProtocolSecretsSettings { get; set; } = gaxgrpc::CallSettingsExtensions.WithRetry(gaxgrpc::CallSettings.FromExpiration(gax::Expiration.FromTimeout(sys::TimeSpan.FromMilliseconds(60000))), gaxgrpc::RetrySettings.FromExponentialBackoff(maxAttempts: 5, initialBackoff: sys::TimeSpan.FromMilliseconds(1000), maxBackoff: sys::TimeSpan.FromMilliseconds(60000), backoffMultiplier: 1.3, retryFilter: gaxgrpc::RetrySettings.FilterForStatusCodes(grpccore::StatusCode.Unavailable, grpccore::StatusCode.Unknown)));
+
+        /// <summary>
+        /// <see cref="gaxgrpc::CallSettings"/> for synchronous and asynchronous calls to
+        /// <c>AnalyticsAdminServiceClient.CreateMeasurementProtocolSecret</c> and
+        /// <c>AnalyticsAdminServiceClient.CreateMeasurementProtocolSecretAsync</c>.
+        /// </summary>
+        /// <remarks>
+        /// <list type="bullet">
+        /// <item><description>Initial retry delay: 1000 milliseconds.</description></item>
+        /// <item><description>Retry delay multiplier: 1.3</description></item>
+        /// <item><description>Retry maximum delay: 60000 milliseconds.</description></item>
+        /// <item><description>Maximum attempts: 5</description></item>
+        /// <item><description>Timeout: 60 seconds.</description></item>
+        /// </list>
+        /// </remarks>
+        public gaxgrpc::CallSettings CreateMeasurementProtocolSecretSettings { get; set; } = gaxgrpc::CallSettingsExtensions.WithRetry(gaxgrpc::CallSettings.FromExpiration(gax::Expiration.FromTimeout(sys::TimeSpan.FromMilliseconds(60000))), gaxgrpc::RetrySettings.FromExponentialBackoff(maxAttempts: 5, initialBackoff: sys::TimeSpan.FromMilliseconds(1000), maxBackoff: sys::TimeSpan.FromMilliseconds(60000), backoffMultiplier: 1.3, retryFilter: gaxgrpc::RetrySettings.FilterForStatusCodes(grpccore::StatusCode.Unavailable, grpccore::StatusCode.Unknown)));
+
+        /// <summary>
+        /// <see cref="gaxgrpc::CallSettings"/> for synchronous and asynchronous calls to
+        /// <c>AnalyticsAdminServiceClient.DeleteMeasurementProtocolSecret</c> and
+        /// <c>AnalyticsAdminServiceClient.DeleteMeasurementProtocolSecretAsync</c>.
+        /// </summary>
+        /// <remarks>
+        /// <list type="bullet">
+        /// <item><description>Initial retry delay: 1000 milliseconds.</description></item>
+        /// <item><description>Retry delay multiplier: 1.3</description></item>
+        /// <item><description>Retry maximum delay: 60000 milliseconds.</description></item>
+        /// <item><description>Maximum attempts: 5</description></item>
+        /// <item><description>Timeout: 60 seconds.</description></item>
+        /// </list>
+        /// </remarks>
+        public gaxgrpc::CallSettings DeleteMeasurementProtocolSecretSettings { get; set; } = gaxgrpc::CallSettingsExtensions.WithRetry(gaxgrpc::CallSettings.FromExpiration(gax::Expiration.FromTimeout(sys::TimeSpan.FromMilliseconds(60000))), gaxgrpc::RetrySettings.FromExponentialBackoff(maxAttempts: 5, initialBackoff: sys::TimeSpan.FromMilliseconds(1000), maxBackoff: sys::TimeSpan.FromMilliseconds(60000), backoffMultiplier: 1.3, retryFilter: gaxgrpc::RetrySettings.FilterForStatusCodes(grpccore::StatusCode.Unavailable, grpccore::StatusCode.Unknown)));
+
+        /// <summary>
+        /// <see cref="gaxgrpc::CallSettings"/> for synchronous and asynchronous calls to
+        /// <c>AnalyticsAdminServiceClient.UpdateMeasurementProtocolSecret</c> and
+        /// <c>AnalyticsAdminServiceClient.UpdateMeasurementProtocolSecretAsync</c>.
+        /// </summary>
+        /// <remarks>
+        /// <list type="bullet">
+        /// <item><description>Initial retry delay: 1000 milliseconds.</description></item>
+        /// <item><description>Retry delay multiplier: 1.3</description></item>
+        /// <item><description>Retry maximum delay: 60000 milliseconds.</description></item>
+        /// <item><description>Maximum attempts: 5</description></item>
+        /// <item><description>Timeout: 60 seconds.</description></item>
+        /// </list>
+        /// </remarks>
+        public gaxgrpc::CallSettings UpdateMeasurementProtocolSecretSettings { get; set; } = gaxgrpc::CallSettingsExtensions.WithRetry(gaxgrpc::CallSettings.FromExpiration(gax::Expiration.FromTimeout(sys::TimeSpan.FromMilliseconds(60000))), gaxgrpc::RetrySettings.FromExponentialBackoff(maxAttempts: 5, initialBackoff: sys::TimeSpan.FromMilliseconds(1000), maxBackoff: sys::TimeSpan.FromMilliseconds(60000), backoffMultiplier: 1.3, retryFilter: gaxgrpc::RetrySettings.FilterForStatusCodes(grpccore::StatusCode.Unavailable, grpccore::StatusCode.Unknown)));
+
+        /// <summary>
+        /// <see cref="gaxgrpc::CallSettings"/> for synchronous and asynchronous calls to
+        /// <c>AnalyticsAdminServiceClient.SearchChangeHistoryEvents</c> and
+        /// <c>AnalyticsAdminServiceClient.SearchChangeHistoryEventsAsync</c>.
+        /// </summary>
+        /// <remarks>
+        /// <list type="bullet">
+        /// <item><description>Initial retry delay: 1000 milliseconds.</description></item>
+        /// <item><description>Retry delay multiplier: 1.3</description></item>
+        /// <item><description>Retry maximum delay: 60000 milliseconds.</description></item>
+        /// <item><description>Maximum attempts: 5</description></item>
+        /// <item><description>Timeout: 60 seconds.</description></item>
+        /// </list>
+        /// </remarks>
+        public gaxgrpc::CallSettings SearchChangeHistoryEventsSettings { get; set; } = gaxgrpc::CallSettingsExtensions.WithRetry(gaxgrpc::CallSettings.FromExpiration(gax::Expiration.FromTimeout(sys::TimeSpan.FromMilliseconds(60000))), gaxgrpc::RetrySettings.FromExponentialBackoff(maxAttempts: 5, initialBackoff: sys::TimeSpan.FromMilliseconds(1000), maxBackoff: sys::TimeSpan.FromMilliseconds(60000), backoffMultiplier: 1.3, retryFilter: gaxgrpc::RetrySettings.FilterForStatusCodes(grpccore::StatusCode.Unavailable, grpccore::StatusCode.Unknown)));
+
+        /// <summary>
+        /// <see cref="gaxgrpc::CallSettings"/> for synchronous and asynchronous calls to
+        /// <c>AnalyticsAdminServiceClient.GetGoogleSignalsSettings</c> and
+        /// <c>AnalyticsAdminServiceClient.GetGoogleSignalsSettingsAsync</c>.
+        /// </summary>
+        /// <remarks>
+        /// <list type="bullet">
+        /// <item><description>Initial retry delay: 1000 milliseconds.</description></item>
+        /// <item><description>Retry delay multiplier: 1.3</description></item>
+        /// <item><description>Retry maximum delay: 60000 milliseconds.</description></item>
+        /// <item><description>Maximum attempts: 5</description></item>
+        /// <item><description>Timeout: 60 seconds.</description></item>
+        /// </list>
+        /// </remarks>
+        public gaxgrpc::CallSettings GetGoogleSignalsSettingsSettings { get; set; } = gaxgrpc::CallSettingsExtensions.WithRetry(gaxgrpc::CallSettings.FromExpiration(gax::Expiration.FromTimeout(sys::TimeSpan.FromMilliseconds(60000))), gaxgrpc::RetrySettings.FromExponentialBackoff(maxAttempts: 5, initialBackoff: sys::TimeSpan.FromMilliseconds(1000), maxBackoff: sys::TimeSpan.FromMilliseconds(60000), backoffMultiplier: 1.3, retryFilter: gaxgrpc::RetrySettings.FilterForStatusCodes(grpccore::StatusCode.Unavailable, grpccore::StatusCode.Unknown)));
+
+        /// <summary>
+        /// <see cref="gaxgrpc::CallSettings"/> for synchronous and asynchronous calls to
+        /// <c>AnalyticsAdminServiceClient.UpdateGoogleSignalsSettings</c> and
+        /// <c>AnalyticsAdminServiceClient.UpdateGoogleSignalsSettingsAsync</c>.
+        /// </summary>
+        /// <remarks>
+        /// <list type="bullet">
+        /// <item><description>Initial retry delay: 1000 milliseconds.</description></item>
+        /// <item><description>Retry delay multiplier: 1.3</description></item>
+        /// <item><description>Retry maximum delay: 60000 milliseconds.</description></item>
+        /// <item><description>Maximum attempts: 5</description></item>
+        /// <item><description>Timeout: 60 seconds.</description></item>
+        /// </list>
+        /// </remarks>
+        public gaxgrpc::CallSettings UpdateGoogleSignalsSettingsSettings { get; set; } = gaxgrpc::CallSettingsExtensions.WithRetry(gaxgrpc::CallSettings.FromExpiration(gax::Expiration.FromTimeout(sys::TimeSpan.FromMilliseconds(60000))), gaxgrpc::RetrySettings.FromExponentialBackoff(maxAttempts: 5, initialBackoff: sys::TimeSpan.FromMilliseconds(1000), maxBackoff: sys::TimeSpan.FromMilliseconds(60000), backoffMultiplier: 1.3, retryFilter: gaxgrpc::RetrySettings.FilterForStatusCodes(grpccore::StatusCode.Unavailable, grpccore::StatusCode.Unknown)));
+
+        /// <summary>
+        /// <see cref="gaxgrpc::CallSettings"/> for synchronous and asynchronous calls to
+        /// <c>AnalyticsAdminServiceClient.CreateConversionEvent</c> and
+        /// <c>AnalyticsAdminServiceClient.CreateConversionEventAsync</c>.
+        /// </summary>
+        /// <remarks>
+        /// <list type="bullet">
+        /// <item><description>Initial retry delay: 1000 milliseconds.</description></item>
+        /// <item><description>Retry delay multiplier: 1.3</description></item>
+        /// <item><description>Retry maximum delay: 60000 milliseconds.</description></item>
+        /// <item><description>Maximum attempts: 5</description></item>
+        /// <item><description>Timeout: 60 seconds.</description></item>
+        /// </list>
+        /// </remarks>
+        public gaxgrpc::CallSettings CreateConversionEventSettings { get; set; } = gaxgrpc::CallSettingsExtensions.WithRetry(gaxgrpc::CallSettings.FromExpiration(gax::Expiration.FromTimeout(sys::TimeSpan.FromMilliseconds(60000))), gaxgrpc::RetrySettings.FromExponentialBackoff(maxAttempts: 5, initialBackoff: sys::TimeSpan.FromMilliseconds(1000), maxBackoff: sys::TimeSpan.FromMilliseconds(60000), backoffMultiplier: 1.3, retryFilter: gaxgrpc::RetrySettings.FilterForStatusCodes(grpccore::StatusCode.Unavailable, grpccore::StatusCode.Unknown)));
+
+        /// <summary>
+        /// <see cref="gaxgrpc::CallSettings"/> for synchronous and asynchronous calls to
+        /// <c>AnalyticsAdminServiceClient.GetConversionEvent</c> and
+        /// <c>AnalyticsAdminServiceClient.GetConversionEventAsync</c>.
+        /// </summary>
+        /// <remarks>
+        /// <list type="bullet">
+        /// <item><description>Initial retry delay: 1000 milliseconds.</description></item>
+        /// <item><description>Retry delay multiplier: 1.3</description></item>
+        /// <item><description>Retry maximum delay: 60000 milliseconds.</description></item>
+        /// <item><description>Maximum attempts: 5</description></item>
+        /// <item><description>Timeout: 60 seconds.</description></item>
+        /// </list>
+        /// </remarks>
+        public gaxgrpc::CallSettings GetConversionEventSettings { get; set; } = gaxgrpc::CallSettingsExtensions.WithRetry(gaxgrpc::CallSettings.FromExpiration(gax::Expiration.FromTimeout(sys::TimeSpan.FromMilliseconds(60000))), gaxgrpc::RetrySettings.FromExponentialBackoff(maxAttempts: 5, initialBackoff: sys::TimeSpan.FromMilliseconds(1000), maxBackoff: sys::TimeSpan.FromMilliseconds(60000), backoffMultiplier: 1.3, retryFilter: gaxgrpc::RetrySettings.FilterForStatusCodes(grpccore::StatusCode.Unavailable, grpccore::StatusCode.Unknown)));
+
+        /// <summary>
+        /// <see cref="gaxgrpc::CallSettings"/> for synchronous and asynchronous calls to
+        /// <c>AnalyticsAdminServiceClient.DeleteConversionEvent</c> and
+        /// <c>AnalyticsAdminServiceClient.DeleteConversionEventAsync</c>.
+        /// </summary>
+        /// <remarks>
+        /// <list type="bullet">
+        /// <item><description>Initial retry delay: 1000 milliseconds.</description></item>
+        /// <item><description>Retry delay multiplier: 1.3</description></item>
+        /// <item><description>Retry maximum delay: 60000 milliseconds.</description></item>
+        /// <item><description>Maximum attempts: 5</description></item>
+        /// <item><description>Timeout: 60 seconds.</description></item>
+        /// </list>
+        /// </remarks>
+        public gaxgrpc::CallSettings DeleteConversionEventSettings { get; set; } = gaxgrpc::CallSettingsExtensions.WithRetry(gaxgrpc::CallSettings.FromExpiration(gax::Expiration.FromTimeout(sys::TimeSpan.FromMilliseconds(60000))), gaxgrpc::RetrySettings.FromExponentialBackoff(maxAttempts: 5, initialBackoff: sys::TimeSpan.FromMilliseconds(1000), maxBackoff: sys::TimeSpan.FromMilliseconds(60000), backoffMultiplier: 1.3, retryFilter: gaxgrpc::RetrySettings.FilterForStatusCodes(grpccore::StatusCode.Unavailable, grpccore::StatusCode.Unknown)));
+
+        /// <summary>
+        /// <see cref="gaxgrpc::CallSettings"/> for synchronous and asynchronous calls to
+        /// <c>AnalyticsAdminServiceClient.ListConversionEvents</c> and
+        /// <c>AnalyticsAdminServiceClient.ListConversionEventsAsync</c>.
+        /// </summary>
+        /// <remarks>
+        /// <list type="bullet">
+        /// <item><description>Initial retry delay: 1000 milliseconds.</description></item>
+        /// <item><description>Retry delay multiplier: 1.3</description></item>
+        /// <item><description>Retry maximum delay: 60000 milliseconds.</description></item>
+        /// <item><description>Maximum attempts: 5</description></item>
+        /// <item><description>Timeout: 60 seconds.</description></item>
+        /// </list>
+        /// </remarks>
+        public gaxgrpc::CallSettings ListConversionEventsSettings { get; set; } = gaxgrpc::CallSettingsExtensions.WithRetry(gaxgrpc::CallSettings.FromExpiration(gax::Expiration.FromTimeout(sys::TimeSpan.FromMilliseconds(60000))), gaxgrpc::RetrySettings.FromExponentialBackoff(maxAttempts: 5, initialBackoff: sys::TimeSpan.FromMilliseconds(1000), maxBackoff: sys::TimeSpan.FromMilliseconds(60000), backoffMultiplier: 1.3, retryFilter: gaxgrpc::RetrySettings.FilterForStatusCodes(grpccore::StatusCode.Unavailable, grpccore::StatusCode.Unknown)));
+
+        /// <summary>
+        /// <see cref="gaxgrpc::CallSettings"/> for synchronous and asynchronous calls to
+        /// <c>AnalyticsAdminServiceClient.CreateCustomDimension</c> and
+        /// <c>AnalyticsAdminServiceClient.CreateCustomDimensionAsync</c>.
+        /// </summary>
+        /// <remarks>
+        /// <list type="bullet">
+        /// <item><description>Initial retry delay: 1000 milliseconds.</description></item>
+        /// <item><description>Retry delay multiplier: 1.3</description></item>
+        /// <item><description>Retry maximum delay: 60000 milliseconds.</description></item>
+        /// <item><description>Maximum attempts: 5</description></item>
+        /// <item><description>Timeout: 60 seconds.</description></item>
+        /// </list>
+        /// </remarks>
+        public gaxgrpc::CallSettings CreateCustomDimensionSettings { get; set; } = gaxgrpc::CallSettingsExtensions.WithRetry(gaxgrpc::CallSettings.FromExpiration(gax::Expiration.FromTimeout(sys::TimeSpan.FromMilliseconds(60000))), gaxgrpc::RetrySettings.FromExponentialBackoff(maxAttempts: 5, initialBackoff: sys::TimeSpan.FromMilliseconds(1000), maxBackoff: sys::TimeSpan.FromMilliseconds(60000), backoffMultiplier: 1.3, retryFilter: gaxgrpc::RetrySettings.FilterForStatusCodes(grpccore::StatusCode.Unavailable, grpccore::StatusCode.Unknown)));
+
+        /// <summary>
+        /// <see cref="gaxgrpc::CallSettings"/> for synchronous and asynchronous calls to
+        /// <c>AnalyticsAdminServiceClient.UpdateCustomDimension</c> and
+        /// <c>AnalyticsAdminServiceClient.UpdateCustomDimensionAsync</c>.
+        /// </summary>
+        /// <remarks>
+        /// <list type="bullet">
+        /// <item><description>Initial retry delay: 1000 milliseconds.</description></item>
+        /// <item><description>Retry delay multiplier: 1.3</description></item>
+        /// <item><description>Retry maximum delay: 60000 milliseconds.</description></item>
+        /// <item><description>Maximum attempts: 5</description></item>
+        /// <item><description>Timeout: 60 seconds.</description></item>
+        /// </list>
+        /// </remarks>
+        public gaxgrpc::CallSettings UpdateCustomDimensionSettings { get; set; } = gaxgrpc::CallSettingsExtensions.WithRetry(gaxgrpc::CallSettings.FromExpiration(gax::Expiration.FromTimeout(sys::TimeSpan.FromMilliseconds(60000))), gaxgrpc::RetrySettings.FromExponentialBackoff(maxAttempts: 5, initialBackoff: sys::TimeSpan.FromMilliseconds(1000), maxBackoff: sys::TimeSpan.FromMilliseconds(60000), backoffMultiplier: 1.3, retryFilter: gaxgrpc::RetrySettings.FilterForStatusCodes(grpccore::StatusCode.Unavailable, grpccore::StatusCode.Unknown)));
+
+        /// <summary>
+        /// <see cref="gaxgrpc::CallSettings"/> for synchronous and asynchronous calls to
+        /// <c>AnalyticsAdminServiceClient.ListCustomDimensions</c> and
+        /// <c>AnalyticsAdminServiceClient.ListCustomDimensionsAsync</c>.
+        /// </summary>
+        /// <remarks>
+        /// <list type="bullet">
+        /// <item><description>Initial retry delay: 1000 milliseconds.</description></item>
+        /// <item><description>Retry delay multiplier: 1.3</description></item>
+        /// <item><description>Retry maximum delay: 60000 milliseconds.</description></item>
+        /// <item><description>Maximum attempts: 5</description></item>
+        /// <item><description>Timeout: 60 seconds.</description></item>
+        /// </list>
+        /// </remarks>
+        public gaxgrpc::CallSettings ListCustomDimensionsSettings { get; set; } = gaxgrpc::CallSettingsExtensions.WithRetry(gaxgrpc::CallSettings.FromExpiration(gax::Expiration.FromTimeout(sys::TimeSpan.FromMilliseconds(60000))), gaxgrpc::RetrySettings.FromExponentialBackoff(maxAttempts: 5, initialBackoff: sys::TimeSpan.FromMilliseconds(1000), maxBackoff: sys::TimeSpan.FromMilliseconds(60000), backoffMultiplier: 1.3, retryFilter: gaxgrpc::RetrySettings.FilterForStatusCodes(grpccore::StatusCode.Unavailable, grpccore::StatusCode.Unknown)));
+
+        /// <summary>
+        /// <see cref="gaxgrpc::CallSettings"/> for synchronous and asynchronous calls to
+        /// <c>AnalyticsAdminServiceClient.ArchiveCustomDimension</c> and
+        /// <c>AnalyticsAdminServiceClient.ArchiveCustomDimensionAsync</c>.
+        /// </summary>
+        /// <remarks>
+        /// <list type="bullet">
+        /// <item><description>Initial retry delay: 1000 milliseconds.</description></item>
+        /// <item><description>Retry delay multiplier: 1.3</description></item>
+        /// <item><description>Retry maximum delay: 60000 milliseconds.</description></item>
+        /// <item><description>Maximum attempts: 5</description></item>
+        /// <item><description>Timeout: 60 seconds.</description></item>
+        /// </list>
+        /// </remarks>
+        public gaxgrpc::CallSettings ArchiveCustomDimensionSettings { get; set; } = gaxgrpc::CallSettingsExtensions.WithRetry(gaxgrpc::CallSettings.FromExpiration(gax::Expiration.FromTimeout(sys::TimeSpan.FromMilliseconds(60000))), gaxgrpc::RetrySettings.FromExponentialBackoff(maxAttempts: 5, initialBackoff: sys::TimeSpan.FromMilliseconds(1000), maxBackoff: sys::TimeSpan.FromMilliseconds(60000), backoffMultiplier: 1.3, retryFilter: gaxgrpc::RetrySettings.FilterForStatusCodes(grpccore::StatusCode.Unavailable, grpccore::StatusCode.Unknown)));
+
+        /// <summary>
+        /// <see cref="gaxgrpc::CallSettings"/> for synchronous and asynchronous calls to
+        /// <c>AnalyticsAdminServiceClient.GetCustomDimension</c> and
+        /// <c>AnalyticsAdminServiceClient.GetCustomDimensionAsync</c>.
+        /// </summary>
+        /// <remarks>
+        /// <list type="bullet">
+        /// <item><description>Initial retry delay: 1000 milliseconds.</description></item>
+        /// <item><description>Retry delay multiplier: 1.3</description></item>
+        /// <item><description>Retry maximum delay: 60000 milliseconds.</description></item>
+        /// <item><description>Maximum attempts: 5</description></item>
+        /// <item><description>Timeout: 60 seconds.</description></item>
+        /// </list>
+        /// </remarks>
+        public gaxgrpc::CallSettings GetCustomDimensionSettings { get; set; } = gaxgrpc::CallSettingsExtensions.WithRetry(gaxgrpc::CallSettings.FromExpiration(gax::Expiration.FromTimeout(sys::TimeSpan.FromMilliseconds(60000))), gaxgrpc::RetrySettings.FromExponentialBackoff(maxAttempts: 5, initialBackoff: sys::TimeSpan.FromMilliseconds(1000), maxBackoff: sys::TimeSpan.FromMilliseconds(60000), backoffMultiplier: 1.3, retryFilter: gaxgrpc::RetrySettings.FilterForStatusCodes(grpccore::StatusCode.Unavailable, grpccore::StatusCode.Unknown)));
+
+        /// <summary>
+        /// <see cref="gaxgrpc::CallSettings"/> for synchronous and asynchronous calls to
+        /// <c>AnalyticsAdminServiceClient.CreateCustomMetric</c> and
+        /// <c>AnalyticsAdminServiceClient.CreateCustomMetricAsync</c>.
+        /// </summary>
+        /// <remarks>
+        /// <list type="bullet">
+        /// <item><description>Initial retry delay: 1000 milliseconds.</description></item>
+        /// <item><description>Retry delay multiplier: 1.3</description></item>
+        /// <item><description>Retry maximum delay: 60000 milliseconds.</description></item>
+        /// <item><description>Maximum attempts: 5</description></item>
+        /// <item><description>Timeout: 60 seconds.</description></item>
+        /// </list>
+        /// </remarks>
+        public gaxgrpc::CallSettings CreateCustomMetricSettings { get; set; } = gaxgrpc::CallSettingsExtensions.WithRetry(gaxgrpc::CallSettings.FromExpiration(gax::Expiration.FromTimeout(sys::TimeSpan.FromMilliseconds(60000))), gaxgrpc::RetrySettings.FromExponentialBackoff(maxAttempts: 5, initialBackoff: sys::TimeSpan.FromMilliseconds(1000), maxBackoff: sys::TimeSpan.FromMilliseconds(60000), backoffMultiplier: 1.3, retryFilter: gaxgrpc::RetrySettings.FilterForStatusCodes(grpccore::StatusCode.Unavailable, grpccore::StatusCode.Unknown)));
+
+        /// <summary>
+        /// <see cref="gaxgrpc::CallSettings"/> for synchronous and asynchronous calls to
+        /// <c>AnalyticsAdminServiceClient.UpdateCustomMetric</c> and
+        /// <c>AnalyticsAdminServiceClient.UpdateCustomMetricAsync</c>.
+        /// </summary>
+        /// <remarks>
+        /// <list type="bullet">
+        /// <item><description>Initial retry delay: 1000 milliseconds.</description></item>
+        /// <item><description>Retry delay multiplier: 1.3</description></item>
+        /// <item><description>Retry maximum delay: 60000 milliseconds.</description></item>
+        /// <item><description>Maximum attempts: 5</description></item>
+        /// <item><description>Timeout: 60 seconds.</description></item>
+        /// </list>
+        /// </remarks>
+        public gaxgrpc::CallSettings UpdateCustomMetricSettings { get; set; } = gaxgrpc::CallSettingsExtensions.WithRetry(gaxgrpc::CallSettings.FromExpiration(gax::Expiration.FromTimeout(sys::TimeSpan.FromMilliseconds(60000))), gaxgrpc::RetrySettings.FromExponentialBackoff(maxAttempts: 5, initialBackoff: sys::TimeSpan.FromMilliseconds(1000), maxBackoff: sys::TimeSpan.FromMilliseconds(60000), backoffMultiplier: 1.3, retryFilter: gaxgrpc::RetrySettings.FilterForStatusCodes(grpccore::StatusCode.Unavailable, grpccore::StatusCode.Unknown)));
+
+        /// <summary>
+        /// <see cref="gaxgrpc::CallSettings"/> for synchronous and asynchronous calls to
+        /// <c>AnalyticsAdminServiceClient.ListCustomMetrics</c> and
+        /// <c>AnalyticsAdminServiceClient.ListCustomMetricsAsync</c>.
+        /// </summary>
+        /// <remarks>
+        /// <list type="bullet">
+        /// <item><description>Initial retry delay: 1000 milliseconds.</description></item>
+        /// <item><description>Retry delay multiplier: 1.3</description></item>
+        /// <item><description>Retry maximum delay: 60000 milliseconds.</description></item>
+        /// <item><description>Maximum attempts: 5</description></item>
+        /// <item><description>Timeout: 60 seconds.</description></item>
+        /// </list>
+        /// </remarks>
+        public gaxgrpc::CallSettings ListCustomMetricsSettings { get; set; } = gaxgrpc::CallSettingsExtensions.WithRetry(gaxgrpc::CallSettings.FromExpiration(gax::Expiration.FromTimeout(sys::TimeSpan.FromMilliseconds(60000))), gaxgrpc::RetrySettings.FromExponentialBackoff(maxAttempts: 5, initialBackoff: sys::TimeSpan.FromMilliseconds(1000), maxBackoff: sys::TimeSpan.FromMilliseconds(60000), backoffMultiplier: 1.3, retryFilter: gaxgrpc::RetrySettings.FilterForStatusCodes(grpccore::StatusCode.Unavailable, grpccore::StatusCode.Unknown)));
+
+        /// <summary>
+        /// <see cref="gaxgrpc::CallSettings"/> for synchronous and asynchronous calls to
+        /// <c>AnalyticsAdminServiceClient.ArchiveCustomMetric</c> and
+        /// <c>AnalyticsAdminServiceClient.ArchiveCustomMetricAsync</c>.
+        /// </summary>
+        /// <remarks>
+        /// <list type="bullet">
+        /// <item><description>Initial retry delay: 1000 milliseconds.</description></item>
+        /// <item><description>Retry delay multiplier: 1.3</description></item>
+        /// <item><description>Retry maximum delay: 60000 milliseconds.</description></item>
+        /// <item><description>Maximum attempts: 5</description></item>
+        /// <item><description>Timeout: 60 seconds.</description></item>
+        /// </list>
+        /// </remarks>
+        public gaxgrpc::CallSettings ArchiveCustomMetricSettings { get; set; } = gaxgrpc::CallSettingsExtensions.WithRetry(gaxgrpc::CallSettings.FromExpiration(gax::Expiration.FromTimeout(sys::TimeSpan.FromMilliseconds(60000))), gaxgrpc::RetrySettings.FromExponentialBackoff(maxAttempts: 5, initialBackoff: sys::TimeSpan.FromMilliseconds(1000), maxBackoff: sys::TimeSpan.FromMilliseconds(60000), backoffMultiplier: 1.3, retryFilter: gaxgrpc::RetrySettings.FilterForStatusCodes(grpccore::StatusCode.Unavailable, grpccore::StatusCode.Unknown)));
+
+        /// <summary>
+        /// <see cref="gaxgrpc::CallSettings"/> for synchronous and asynchronous calls to
+        /// <c>AnalyticsAdminServiceClient.GetCustomMetric</c> and <c>AnalyticsAdminServiceClient.GetCustomMetricAsync</c>
+        /// .
+        /// </summary>
+        /// <remarks>
+        /// <list type="bullet">
+        /// <item><description>Initial retry delay: 1000 milliseconds.</description></item>
+        /// <item><description>Retry delay multiplier: 1.3</description></item>
+        /// <item><description>Retry maximum delay: 60000 milliseconds.</description></item>
+        /// <item><description>Maximum attempts: 5</description></item>
+        /// <item><description>Timeout: 60 seconds.</description></item>
+        /// </list>
+        /// </remarks>
+        public gaxgrpc::CallSettings GetCustomMetricSettings { get; set; } = gaxgrpc::CallSettingsExtensions.WithRetry(gaxgrpc::CallSettings.FromExpiration(gax::Expiration.FromTimeout(sys::TimeSpan.FromMilliseconds(60000))), gaxgrpc::RetrySettings.FromExponentialBackoff(maxAttempts: 5, initialBackoff: sys::TimeSpan.FromMilliseconds(1000), maxBackoff: sys::TimeSpan.FromMilliseconds(60000), backoffMultiplier: 1.3, retryFilter: gaxgrpc::RetrySettings.FilterForStatusCodes(grpccore::StatusCode.Unavailable, grpccore::StatusCode.Unknown)));
+
         /// <summary>Creates a deep clone of this object, with all the same property values.</summary>
         /// <returns>A deep clone of this <see cref="AnalyticsAdminServiceSettings"/> object.</returns>
         public AnalyticsAdminServiceSettings Clone() => new AnalyticsAdminServiceSettings(this);
@@ -880,8 +1226,6 @@ namespace Google.Analytics.Admin.V1Alpha
 
         /// <summary>
         /// Lookup for a single Account.
-        /// Throws "Target not found" if no such account found, or if caller does not
-        /// have permissions to access it.
         /// </summary>
         /// <param name="request">The request object containing all of the parameters for the API call.</param>
         /// <param name="callSettings">If not null, applies overrides to this RPC call.</param>
@@ -891,8 +1235,6 @@ namespace Google.Analytics.Admin.V1Alpha
 
         /// <summary>
         /// Lookup for a single Account.
-        /// Throws "Target not found" if no such account found, or if caller does not
-        /// have permissions to access it.
         /// </summary>
         /// <param name="request">The request object containing all of the parameters for the API call.</param>
         /// <param name="callSettings">If not null, applies overrides to this RPC call.</param>
@@ -902,8 +1244,6 @@ namespace Google.Analytics.Admin.V1Alpha
 
         /// <summary>
         /// Lookup for a single Account.
-        /// Throws "Target not found" if no such account found, or if caller does not
-        /// have permissions to access it.
         /// </summary>
         /// <param name="request">The request object containing all of the parameters for the API call.</param>
         /// <param name="cancellationToken">A <see cref="st::CancellationToken"/> to use for this RPC.</param>
@@ -913,8 +1253,6 @@ namespace Google.Analytics.Admin.V1Alpha
 
         /// <summary>
         /// Lookup for a single Account.
-        /// Throws "Target not found" if no such account found, or if caller does not
-        /// have permissions to access it.
         /// </summary>
         /// <param name="name">
         /// Required. The name of the account to lookup.
@@ -931,8 +1269,6 @@ namespace Google.Analytics.Admin.V1Alpha
 
         /// <summary>
         /// Lookup for a single Account.
-        /// Throws "Target not found" if no such account found, or if caller does not
-        /// have permissions to access it.
         /// </summary>
         /// <param name="name">
         /// Required. The name of the account to lookup.
@@ -949,8 +1285,6 @@ namespace Google.Analytics.Admin.V1Alpha
 
         /// <summary>
         /// Lookup for a single Account.
-        /// Throws "Target not found" if no such account found, or if caller does not
-        /// have permissions to access it.
         /// </summary>
         /// <param name="name">
         /// Required. The name of the account to lookup.
@@ -964,8 +1298,6 @@ namespace Google.Analytics.Admin.V1Alpha
 
         /// <summary>
         /// Lookup for a single Account.
-        /// Throws "Target not found" if no such account found, or if caller does not
-        /// have permissions to access it.
         /// </summary>
         /// <param name="name">
         /// Required. The name of the account to lookup.
@@ -982,8 +1314,6 @@ namespace Google.Analytics.Admin.V1Alpha
 
         /// <summary>
         /// Lookup for a single Account.
-        /// Throws "Target not found" if no such account found, or if caller does not
-        /// have permissions to access it.
         /// </summary>
         /// <param name="name">
         /// Required. The name of the account to lookup.
@@ -1000,8 +1330,6 @@ namespace Google.Analytics.Admin.V1Alpha
 
         /// <summary>
         /// Lookup for a single Account.
-        /// Throws "Target not found" if no such account found, or if caller does not
-        /// have permissions to access it.
         /// </summary>
         /// <param name="name">
         /// Required. The name of the account to lookup.
@@ -1281,7 +1609,9 @@ namespace Google.Analytics.Admin.V1Alpha
         /// The account's `name` field is used to identify the account.
         /// </param>
         /// <param name="updateMask">
-        /// The list of fields to be updated. Omitted fields will not be updated.
+        /// Required. The list of fields to be updated. Field names must be in snake case
+        /// (e.g., "field_to_update"). Omitted fields will not be updated. To replace
+        /// the entire entity, use one path with the string "*" to match all fields.
         /// </param>
         /// <param name="callSettings">If not null, applies overrides to this RPC call.</param>
         /// <returns>The RPC response.</returns>
@@ -1289,7 +1619,7 @@ namespace Google.Analytics.Admin.V1Alpha
             UpdateAccount(new UpdateAccountRequest
             {
                 Account = gax::GaxPreconditions.CheckNotNull(account, nameof(account)),
-                UpdateMask = updateMask,
+                UpdateMask = gax::GaxPreconditions.CheckNotNull(updateMask, nameof(updateMask)),
             }, callSettings);
 
         /// <summary>
@@ -1300,7 +1630,9 @@ namespace Google.Analytics.Admin.V1Alpha
         /// The account's `name` field is used to identify the account.
         /// </param>
         /// <param name="updateMask">
-        /// The list of fields to be updated. Omitted fields will not be updated.
+        /// Required. The list of fields to be updated. Field names must be in snake case
+        /// (e.g., "field_to_update"). Omitted fields will not be updated. To replace
+        /// the entire entity, use one path with the string "*" to match all fields.
         /// </param>
         /// <param name="callSettings">If not null, applies overrides to this RPC call.</param>
         /// <returns>A Task containing the RPC response.</returns>
@@ -1308,7 +1640,7 @@ namespace Google.Analytics.Admin.V1Alpha
             UpdateAccountAsync(new UpdateAccountRequest
             {
                 Account = gax::GaxPreconditions.CheckNotNull(account, nameof(account)),
-                UpdateMask = updateMask,
+                UpdateMask = gax::GaxPreconditions.CheckNotNull(updateMask, nameof(updateMask)),
             }, callSettings);
 
         /// <summary>
@@ -1319,7 +1651,9 @@ namespace Google.Analytics.Admin.V1Alpha
         /// The account's `name` field is used to identify the account.
         /// </param>
         /// <param name="updateMask">
-        /// The list of fields to be updated. Omitted fields will not be updated.
+        /// Required. The list of fields to be updated. Field names must be in snake case
+        /// (e.g., "field_to_update"). Omitted fields will not be updated. To replace
+        /// the entire entity, use one path with the string "*" to match all fields.
         /// </param>
         /// <param name="cancellationToken">A <see cref="st::CancellationToken"/> to use for this RPC.</param>
         /// <returns>A Task containing the RPC response.</returns>
@@ -1373,9 +1707,6 @@ namespace Google.Analytics.Admin.V1Alpha
 
         /// <summary>
         /// Lookup for a single "GA4" Property.
-        /// 
-        /// Throws "Target not found" if no such property found, if property is not
-        /// of the type "GA4", or if caller does not have permissions to access it.
         /// </summary>
         /// <param name="request">The request object containing all of the parameters for the API call.</param>
         /// <param name="callSettings">If not null, applies overrides to this RPC call.</param>
@@ -1385,9 +1716,6 @@ namespace Google.Analytics.Admin.V1Alpha
 
         /// <summary>
         /// Lookup for a single "GA4" Property.
-        /// 
-        /// Throws "Target not found" if no such property found, if property is not
-        /// of the type "GA4", or if caller does not have permissions to access it.
         /// </summary>
         /// <param name="request">The request object containing all of the parameters for the API call.</param>
         /// <param name="callSettings">If not null, applies overrides to this RPC call.</param>
@@ -1397,9 +1725,6 @@ namespace Google.Analytics.Admin.V1Alpha
 
         /// <summary>
         /// Lookup for a single "GA4" Property.
-        /// 
-        /// Throws "Target not found" if no such property found, if property is not
-        /// of the type "GA4", or if caller does not have permissions to access it.
         /// </summary>
         /// <param name="request">The request object containing all of the parameters for the API call.</param>
         /// <param name="cancellationToken">A <see cref="st::CancellationToken"/> to use for this RPC.</param>
@@ -1409,9 +1734,6 @@ namespace Google.Analytics.Admin.V1Alpha
 
         /// <summary>
         /// Lookup for a single "GA4" Property.
-        /// 
-        /// Throws "Target not found" if no such property found, if property is not
-        /// of the type "GA4", or if caller does not have permissions to access it.
         /// </summary>
         /// <param name="name">
         /// Required. The name of the property to lookup.
@@ -1428,9 +1750,6 @@ namespace Google.Analytics.Admin.V1Alpha
 
         /// <summary>
         /// Lookup for a single "GA4" Property.
-        /// 
-        /// Throws "Target not found" if no such property found, if property is not
-        /// of the type "GA4", or if caller does not have permissions to access it.
         /// </summary>
         /// <param name="name">
         /// Required. The name of the property to lookup.
@@ -1447,9 +1766,6 @@ namespace Google.Analytics.Admin.V1Alpha
 
         /// <summary>
         /// Lookup for a single "GA4" Property.
-        /// 
-        /// Throws "Target not found" if no such property found, if property is not
-        /// of the type "GA4", or if caller does not have permissions to access it.
         /// </summary>
         /// <param name="name">
         /// Required. The name of the property to lookup.
@@ -1463,9 +1779,6 @@ namespace Google.Analytics.Admin.V1Alpha
 
         /// <summary>
         /// Lookup for a single "GA4" Property.
-        /// 
-        /// Throws "Target not found" if no such property found, if property is not
-        /// of the type "GA4", or if caller does not have permissions to access it.
         /// </summary>
         /// <param name="name">
         /// Required. The name of the property to lookup.
@@ -1482,9 +1795,6 @@ namespace Google.Analytics.Admin.V1Alpha
 
         /// <summary>
         /// Lookup for a single "GA4" Property.
-        /// 
-        /// Throws "Target not found" if no such property found, if property is not
-        /// of the type "GA4", or if caller does not have permissions to access it.
         /// </summary>
         /// <param name="name">
         /// Required. The name of the property to lookup.
@@ -1501,9 +1811,6 @@ namespace Google.Analytics.Admin.V1Alpha
 
         /// <summary>
         /// Lookup for a single "GA4" Property.
-        /// 
-        /// Throws "Target not found" if no such property found, if property is not
-        /// of the type "GA4", or if caller does not have permissions to access it.
         /// </summary>
         /// <param name="name">
         /// Required. The name of the property to lookup.
@@ -1628,7 +1935,7 @@ namespace Google.Analytics.Admin.V1Alpha
         /// <param name="request">The request object containing all of the parameters for the API call.</param>
         /// <param name="callSettings">If not null, applies overrides to this RPC call.</param>
         /// <returns>The RPC response.</returns>
-        public virtual void DeleteProperty(DeletePropertyRequest request, gaxgrpc::CallSettings callSettings = null) =>
+        public virtual Property DeleteProperty(DeletePropertyRequest request, gaxgrpc::CallSettings callSettings = null) =>
             throw new sys::NotImplementedException();
 
         /// <summary>
@@ -1647,7 +1954,7 @@ namespace Google.Analytics.Admin.V1Alpha
         /// <param name="request">The request object containing all of the parameters for the API call.</param>
         /// <param name="callSettings">If not null, applies overrides to this RPC call.</param>
         /// <returns>A Task containing the RPC response.</returns>
-        public virtual stt::Task DeletePropertyAsync(DeletePropertyRequest request, gaxgrpc::CallSettings callSettings = null) =>
+        public virtual stt::Task<Property> DeletePropertyAsync(DeletePropertyRequest request, gaxgrpc::CallSettings callSettings = null) =>
             throw new sys::NotImplementedException();
 
         /// <summary>
@@ -1666,7 +1973,7 @@ namespace Google.Analytics.Admin.V1Alpha
         /// <param name="request">The request object containing all of the parameters for the API call.</param>
         /// <param name="cancellationToken">A <see cref="st::CancellationToken"/> to use for this RPC.</param>
         /// <returns>A Task containing the RPC response.</returns>
-        public virtual stt::Task DeletePropertyAsync(DeletePropertyRequest request, st::CancellationToken cancellationToken) =>
+        public virtual stt::Task<Property> DeletePropertyAsync(DeletePropertyRequest request, st::CancellationToken cancellationToken) =>
             DeletePropertyAsync(request, gaxgrpc::CallSettings.FromCancellationToken(cancellationToken));
 
         /// <summary>
@@ -1689,7 +1996,7 @@ namespace Google.Analytics.Admin.V1Alpha
         /// </param>
         /// <param name="callSettings">If not null, applies overrides to this RPC call.</param>
         /// <returns>The RPC response.</returns>
-        public virtual void DeleteProperty(string name, gaxgrpc::CallSettings callSettings = null) =>
+        public virtual Property DeleteProperty(string name, gaxgrpc::CallSettings callSettings = null) =>
             DeleteProperty(new DeletePropertyRequest
             {
                 Name = gax::GaxPreconditions.CheckNotNullOrEmpty(name, nameof(name)),
@@ -1715,7 +2022,7 @@ namespace Google.Analytics.Admin.V1Alpha
         /// </param>
         /// <param name="callSettings">If not null, applies overrides to this RPC call.</param>
         /// <returns>A Task containing the RPC response.</returns>
-        public virtual stt::Task DeletePropertyAsync(string name, gaxgrpc::CallSettings callSettings = null) =>
+        public virtual stt::Task<Property> DeletePropertyAsync(string name, gaxgrpc::CallSettings callSettings = null) =>
             DeletePropertyAsync(new DeletePropertyRequest
             {
                 Name = gax::GaxPreconditions.CheckNotNullOrEmpty(name, nameof(name)),
@@ -1741,7 +2048,7 @@ namespace Google.Analytics.Admin.V1Alpha
         /// </param>
         /// <param name="cancellationToken">A <see cref="st::CancellationToken"/> to use for this RPC.</param>
         /// <returns>A Task containing the RPC response.</returns>
-        public virtual stt::Task DeletePropertyAsync(string name, st::CancellationToken cancellationToken) =>
+        public virtual stt::Task<Property> DeletePropertyAsync(string name, st::CancellationToken cancellationToken) =>
             DeletePropertyAsync(name, gaxgrpc::CallSettings.FromCancellationToken(cancellationToken));
 
         /// <summary>
@@ -1764,7 +2071,7 @@ namespace Google.Analytics.Admin.V1Alpha
         /// </param>
         /// <param name="callSettings">If not null, applies overrides to this RPC call.</param>
         /// <returns>The RPC response.</returns>
-        public virtual void DeleteProperty(PropertyName name, gaxgrpc::CallSettings callSettings = null) =>
+        public virtual Property DeleteProperty(PropertyName name, gaxgrpc::CallSettings callSettings = null) =>
             DeleteProperty(new DeletePropertyRequest
             {
                 PropertyName = gax::GaxPreconditions.CheckNotNull(name, nameof(name)),
@@ -1790,7 +2097,7 @@ namespace Google.Analytics.Admin.V1Alpha
         /// </param>
         /// <param name="callSettings">If not null, applies overrides to this RPC call.</param>
         /// <returns>A Task containing the RPC response.</returns>
-        public virtual stt::Task DeletePropertyAsync(PropertyName name, gaxgrpc::CallSettings callSettings = null) =>
+        public virtual stt::Task<Property> DeletePropertyAsync(PropertyName name, gaxgrpc::CallSettings callSettings = null) =>
             DeletePropertyAsync(new DeletePropertyRequest
             {
                 PropertyName = gax::GaxPreconditions.CheckNotNull(name, nameof(name)),
@@ -1816,7 +2123,7 @@ namespace Google.Analytics.Admin.V1Alpha
         /// </param>
         /// <param name="cancellationToken">A <see cref="st::CancellationToken"/> to use for this RPC.</param>
         /// <returns>A Task containing the RPC response.</returns>
-        public virtual stt::Task DeletePropertyAsync(PropertyName name, st::CancellationToken cancellationToken) =>
+        public virtual stt::Task<Property> DeletePropertyAsync(PropertyName name, st::CancellationToken cancellationToken) =>
             DeletePropertyAsync(name, gaxgrpc::CallSettings.FromCancellationToken(cancellationToken));
 
         /// <summary>
@@ -1855,7 +2162,9 @@ namespace Google.Analytics.Admin.V1Alpha
         /// updated.
         /// </param>
         /// <param name="updateMask">
-        /// The list of fields to be updated. Omitted fields will not be updated.
+        /// Required. The list of fields to be updated. Field names must be in snake case
+        /// (e.g., "field_to_update"). Omitted fields will not be updated. To replace
+        /// the entire entity, use one path with the string "*" to match all fields.
         /// </param>
         /// <param name="callSettings">If not null, applies overrides to this RPC call.</param>
         /// <returns>The RPC response.</returns>
@@ -1863,7 +2172,7 @@ namespace Google.Analytics.Admin.V1Alpha
             UpdateProperty(new UpdatePropertyRequest
             {
                 Property = gax::GaxPreconditions.CheckNotNull(property, nameof(property)),
-                UpdateMask = updateMask,
+                UpdateMask = gax::GaxPreconditions.CheckNotNull(updateMask, nameof(updateMask)),
             }, callSettings);
 
         /// <summary>
@@ -1875,7 +2184,9 @@ namespace Google.Analytics.Admin.V1Alpha
         /// updated.
         /// </param>
         /// <param name="updateMask">
-        /// The list of fields to be updated. Omitted fields will not be updated.
+        /// Required. The list of fields to be updated. Field names must be in snake case
+        /// (e.g., "field_to_update"). Omitted fields will not be updated. To replace
+        /// the entire entity, use one path with the string "*" to match all fields.
         /// </param>
         /// <param name="callSettings">If not null, applies overrides to this RPC call.</param>
         /// <returns>A Task containing the RPC response.</returns>
@@ -1883,7 +2194,7 @@ namespace Google.Analytics.Admin.V1Alpha
             UpdatePropertyAsync(new UpdatePropertyRequest
             {
                 Property = gax::GaxPreconditions.CheckNotNull(property, nameof(property)),
-                UpdateMask = updateMask,
+                UpdateMask = gax::GaxPreconditions.CheckNotNull(updateMask, nameof(updateMask)),
             }, callSettings);
 
         /// <summary>
@@ -1895,7 +2206,9 @@ namespace Google.Analytics.Admin.V1Alpha
         /// updated.
         /// </param>
         /// <param name="updateMask">
-        /// The list of fields to be updated. Omitted fields will not be updated.
+        /// Required. The list of fields to be updated. Field names must be in snake case
+        /// (e.g., "field_to_update"). Omitted fields will not be updated. To replace
+        /// the entire entity, use one path with the string "*" to match all fields.
         /// </param>
         /// <param name="cancellationToken">A <see cref="st::CancellationToken"/> to use for this RPC.</param>
         /// <returns>A Task containing the RPC response.</returns>
@@ -2718,9 +3031,6 @@ namespace Google.Analytics.Admin.V1Alpha
 
         /// <summary>
         /// Lookup for a single WebDataStream
-        /// 
-        /// Throws "Target not found" if no such web data stream found, or if the
-        /// caller does not have permissions to access it.
         /// </summary>
         /// <param name="request">The request object containing all of the parameters for the API call.</param>
         /// <param name="callSettings">If not null, applies overrides to this RPC call.</param>
@@ -2730,9 +3040,6 @@ namespace Google.Analytics.Admin.V1Alpha
 
         /// <summary>
         /// Lookup for a single WebDataStream
-        /// 
-        /// Throws "Target not found" if no such web data stream found, or if the
-        /// caller does not have permissions to access it.
         /// </summary>
         /// <param name="request">The request object containing all of the parameters for the API call.</param>
         /// <param name="callSettings">If not null, applies overrides to this RPC call.</param>
@@ -2742,9 +3049,6 @@ namespace Google.Analytics.Admin.V1Alpha
 
         /// <summary>
         /// Lookup for a single WebDataStream
-        /// 
-        /// Throws "Target not found" if no such web data stream found, or if the
-        /// caller does not have permissions to access it.
         /// </summary>
         /// <param name="request">The request object containing all of the parameters for the API call.</param>
         /// <param name="cancellationToken">A <see cref="st::CancellationToken"/> to use for this RPC.</param>
@@ -2754,9 +3058,6 @@ namespace Google.Analytics.Admin.V1Alpha
 
         /// <summary>
         /// Lookup for a single WebDataStream
-        /// 
-        /// Throws "Target not found" if no such web data stream found, or if the
-        /// caller does not have permissions to access it.
         /// </summary>
         /// <param name="name">
         /// Required. The name of the web data stream to lookup.
@@ -2773,9 +3074,6 @@ namespace Google.Analytics.Admin.V1Alpha
 
         /// <summary>
         /// Lookup for a single WebDataStream
-        /// 
-        /// Throws "Target not found" if no such web data stream found, or if the
-        /// caller does not have permissions to access it.
         /// </summary>
         /// <param name="name">
         /// Required. The name of the web data stream to lookup.
@@ -2792,9 +3090,6 @@ namespace Google.Analytics.Admin.V1Alpha
 
         /// <summary>
         /// Lookup for a single WebDataStream
-        /// 
-        /// Throws "Target not found" if no such web data stream found, or if the
-        /// caller does not have permissions to access it.
         /// </summary>
         /// <param name="name">
         /// Required. The name of the web data stream to lookup.
@@ -2808,9 +3103,6 @@ namespace Google.Analytics.Admin.V1Alpha
 
         /// <summary>
         /// Lookup for a single WebDataStream
-        /// 
-        /// Throws "Target not found" if no such web data stream found, or if the
-        /// caller does not have permissions to access it.
         /// </summary>
         /// <param name="name">
         /// Required. The name of the web data stream to lookup.
@@ -2827,9 +3119,6 @@ namespace Google.Analytics.Admin.V1Alpha
 
         /// <summary>
         /// Lookup for a single WebDataStream
-        /// 
-        /// Throws "Target not found" if no such web data stream found, or if the
-        /// caller does not have permissions to access it.
         /// </summary>
         /// <param name="name">
         /// Required. The name of the web data stream to lookup.
@@ -2846,9 +3135,6 @@ namespace Google.Analytics.Admin.V1Alpha
 
         /// <summary>
         /// Lookup for a single WebDataStream
-        /// 
-        /// Throws "Target not found" if no such web data stream found, or if the
-        /// caller does not have permissions to access it.
         /// </summary>
         /// <param name="name">
         /// Required. The name of the web data stream to lookup.
@@ -3012,7 +3298,9 @@ namespace Google.Analytics.Admin.V1Alpha
         /// The `name` field is used to identify the web stream to be updated.
         /// </param>
         /// <param name="updateMask">
-        /// The list of fields to be updated. Omitted fields will not be updated.
+        /// Required. The list of fields to be updated. Field names must be in snake case
+        /// (e.g., "field_to_update"). Omitted fields will not be updated. To replace
+        /// the entire entity, use one path with the string "*" to match all fields.
         /// </param>
         /// <param name="callSettings">If not null, applies overrides to this RPC call.</param>
         /// <returns>The RPC response.</returns>
@@ -3020,7 +3308,7 @@ namespace Google.Analytics.Admin.V1Alpha
             UpdateWebDataStream(new UpdateWebDataStreamRequest
             {
                 WebDataStream = gax::GaxPreconditions.CheckNotNull(webDataStream, nameof(webDataStream)),
-                UpdateMask = updateMask,
+                UpdateMask = gax::GaxPreconditions.CheckNotNull(updateMask, nameof(updateMask)),
             }, callSettings);
 
         /// <summary>
@@ -3031,7 +3319,9 @@ namespace Google.Analytics.Admin.V1Alpha
         /// The `name` field is used to identify the web stream to be updated.
         /// </param>
         /// <param name="updateMask">
-        /// The list of fields to be updated. Omitted fields will not be updated.
+        /// Required. The list of fields to be updated. Field names must be in snake case
+        /// (e.g., "field_to_update"). Omitted fields will not be updated. To replace
+        /// the entire entity, use one path with the string "*" to match all fields.
         /// </param>
         /// <param name="callSettings">If not null, applies overrides to this RPC call.</param>
         /// <returns>A Task containing the RPC response.</returns>
@@ -3039,7 +3329,7 @@ namespace Google.Analytics.Admin.V1Alpha
             UpdateWebDataStreamAsync(new UpdateWebDataStreamRequest
             {
                 WebDataStream = gax::GaxPreconditions.CheckNotNull(webDataStream, nameof(webDataStream)),
-                UpdateMask = updateMask,
+                UpdateMask = gax::GaxPreconditions.CheckNotNull(updateMask, nameof(updateMask)),
             }, callSettings);
 
         /// <summary>
@@ -3050,7 +3340,9 @@ namespace Google.Analytics.Admin.V1Alpha
         /// The `name` field is used to identify the web stream to be updated.
         /// </param>
         /// <param name="updateMask">
-        /// The list of fields to be updated. Omitted fields will not be updated.
+        /// Required. The list of fields to be updated. Field names must be in snake case
+        /// (e.g., "field_to_update"). Omitted fields will not be updated. To replace
+        /// the entire entity, use one path with the string "*" to match all fields.
         /// </param>
         /// <param name="cancellationToken">A <see cref="st::CancellationToken"/> to use for this RPC.</param>
         /// <returns>A Task containing the RPC response.</returns>
@@ -3332,9 +3624,6 @@ namespace Google.Analytics.Admin.V1Alpha
 
         /// <summary>
         /// Lookup for a single IosAppDataStream
-        /// 
-        /// Throws "Target not found" if no such iOS app data stream found, or if the
-        /// caller does not have permissions to access it.
         /// </summary>
         /// <param name="request">The request object containing all of the parameters for the API call.</param>
         /// <param name="callSettings">If not null, applies overrides to this RPC call.</param>
@@ -3344,9 +3633,6 @@ namespace Google.Analytics.Admin.V1Alpha
 
         /// <summary>
         /// Lookup for a single IosAppDataStream
-        /// 
-        /// Throws "Target not found" if no such iOS app data stream found, or if the
-        /// caller does not have permissions to access it.
         /// </summary>
         /// <param name="request">The request object containing all of the parameters for the API call.</param>
         /// <param name="callSettings">If not null, applies overrides to this RPC call.</param>
@@ -3356,9 +3642,6 @@ namespace Google.Analytics.Admin.V1Alpha
 
         /// <summary>
         /// Lookup for a single IosAppDataStream
-        /// 
-        /// Throws "Target not found" if no such iOS app data stream found, or if the
-        /// caller does not have permissions to access it.
         /// </summary>
         /// <param name="request">The request object containing all of the parameters for the API call.</param>
         /// <param name="cancellationToken">A <see cref="st::CancellationToken"/> to use for this RPC.</param>
@@ -3368,9 +3651,6 @@ namespace Google.Analytics.Admin.V1Alpha
 
         /// <summary>
         /// Lookup for a single IosAppDataStream
-        /// 
-        /// Throws "Target not found" if no such iOS app data stream found, or if the
-        /// caller does not have permissions to access it.
         /// </summary>
         /// <param name="name">
         /// Required. The name of the iOS app data stream to lookup.
@@ -3387,9 +3667,6 @@ namespace Google.Analytics.Admin.V1Alpha
 
         /// <summary>
         /// Lookup for a single IosAppDataStream
-        /// 
-        /// Throws "Target not found" if no such iOS app data stream found, or if the
-        /// caller does not have permissions to access it.
         /// </summary>
         /// <param name="name">
         /// Required. The name of the iOS app data stream to lookup.
@@ -3406,9 +3683,6 @@ namespace Google.Analytics.Admin.V1Alpha
 
         /// <summary>
         /// Lookup for a single IosAppDataStream
-        /// 
-        /// Throws "Target not found" if no such iOS app data stream found, or if the
-        /// caller does not have permissions to access it.
         /// </summary>
         /// <param name="name">
         /// Required. The name of the iOS app data stream to lookup.
@@ -3422,9 +3696,6 @@ namespace Google.Analytics.Admin.V1Alpha
 
         /// <summary>
         /// Lookup for a single IosAppDataStream
-        /// 
-        /// Throws "Target not found" if no such iOS app data stream found, or if the
-        /// caller does not have permissions to access it.
         /// </summary>
         /// <param name="name">
         /// Required. The name of the iOS app data stream to lookup.
@@ -3441,9 +3712,6 @@ namespace Google.Analytics.Admin.V1Alpha
 
         /// <summary>
         /// Lookup for a single IosAppDataStream
-        /// 
-        /// Throws "Target not found" if no such iOS app data stream found, or if the
-        /// caller does not have permissions to access it.
         /// </summary>
         /// <param name="name">
         /// Required. The name of the iOS app data stream to lookup.
@@ -3460,9 +3728,6 @@ namespace Google.Analytics.Admin.V1Alpha
 
         /// <summary>
         /// Lookup for a single IosAppDataStream
-        /// 
-        /// Throws "Target not found" if no such iOS app data stream found, or if the
-        /// caller does not have permissions to access it.
         /// </summary>
         /// <param name="name">
         /// Required. The name of the iOS app data stream to lookup.
@@ -3626,7 +3891,9 @@ namespace Google.Analytics.Admin.V1Alpha
         /// The `name` field is used to identify the iOS app stream to be updated.
         /// </param>
         /// <param name="updateMask">
-        /// The list of fields to be updated. Omitted fields will not be updated.
+        /// Required. The list of fields to be updated. Field names must be in snake case
+        /// (e.g., "field_to_update"). Omitted fields will not be updated. To replace
+        /// the entire entity, use one path with the string "*" to match all fields.
         /// </param>
         /// <param name="callSettings">If not null, applies overrides to this RPC call.</param>
         /// <returns>The RPC response.</returns>
@@ -3634,7 +3901,7 @@ namespace Google.Analytics.Admin.V1Alpha
             UpdateIosAppDataStream(new UpdateIosAppDataStreamRequest
             {
                 IosAppDataStream = gax::GaxPreconditions.CheckNotNull(iosAppDataStream, nameof(iosAppDataStream)),
-                UpdateMask = updateMask,
+                UpdateMask = gax::GaxPreconditions.CheckNotNull(updateMask, nameof(updateMask)),
             }, callSettings);
 
         /// <summary>
@@ -3645,7 +3912,9 @@ namespace Google.Analytics.Admin.V1Alpha
         /// The `name` field is used to identify the iOS app stream to be updated.
         /// </param>
         /// <param name="updateMask">
-        /// The list of fields to be updated. Omitted fields will not be updated.
+        /// Required. The list of fields to be updated. Field names must be in snake case
+        /// (e.g., "field_to_update"). Omitted fields will not be updated. To replace
+        /// the entire entity, use one path with the string "*" to match all fields.
         /// </param>
         /// <param name="callSettings">If not null, applies overrides to this RPC call.</param>
         /// <returns>A Task containing the RPC response.</returns>
@@ -3653,7 +3922,7 @@ namespace Google.Analytics.Admin.V1Alpha
             UpdateIosAppDataStreamAsync(new UpdateIosAppDataStreamRequest
             {
                 IosAppDataStream = gax::GaxPreconditions.CheckNotNull(iosAppDataStream, nameof(iosAppDataStream)),
-                UpdateMask = updateMask,
+                UpdateMask = gax::GaxPreconditions.CheckNotNull(updateMask, nameof(updateMask)),
             }, callSettings);
 
         /// <summary>
@@ -3664,145 +3933,14 @@ namespace Google.Analytics.Admin.V1Alpha
         /// The `name` field is used to identify the iOS app stream to be updated.
         /// </param>
         /// <param name="updateMask">
-        /// The list of fields to be updated. Omitted fields will not be updated.
+        /// Required. The list of fields to be updated. Field names must be in snake case
+        /// (e.g., "field_to_update"). Omitted fields will not be updated. To replace
+        /// the entire entity, use one path with the string "*" to match all fields.
         /// </param>
         /// <param name="cancellationToken">A <see cref="st::CancellationToken"/> to use for this RPC.</param>
         /// <returns>A Task containing the RPC response.</returns>
         public virtual stt::Task<IosAppDataStream> UpdateIosAppDataStreamAsync(IosAppDataStream iosAppDataStream, wkt::FieldMask updateMask, st::CancellationToken cancellationToken) =>
             UpdateIosAppDataStreamAsync(iosAppDataStream, updateMask, gaxgrpc::CallSettings.FromCancellationToken(cancellationToken));
-
-        /// <summary>
-        /// Creates an iOS app data stream with the specified location and attributes.
-        /// </summary>
-        /// <param name="request">The request object containing all of the parameters for the API call.</param>
-        /// <param name="callSettings">If not null, applies overrides to this RPC call.</param>
-        /// <returns>The RPC response.</returns>
-        public virtual IosAppDataStream CreateIosAppDataStream(CreateIosAppDataStreamRequest request, gaxgrpc::CallSettings callSettings = null) =>
-            throw new sys::NotImplementedException();
-
-        /// <summary>
-        /// Creates an iOS app data stream with the specified location and attributes.
-        /// </summary>
-        /// <param name="request">The request object containing all of the parameters for the API call.</param>
-        /// <param name="callSettings">If not null, applies overrides to this RPC call.</param>
-        /// <returns>A Task containing the RPC response.</returns>
-        public virtual stt::Task<IosAppDataStream> CreateIosAppDataStreamAsync(CreateIosAppDataStreamRequest request, gaxgrpc::CallSettings callSettings = null) =>
-            throw new sys::NotImplementedException();
-
-        /// <summary>
-        /// Creates an iOS app data stream with the specified location and attributes.
-        /// </summary>
-        /// <param name="request">The request object containing all of the parameters for the API call.</param>
-        /// <param name="cancellationToken">A <see cref="st::CancellationToken"/> to use for this RPC.</param>
-        /// <returns>A Task containing the RPC response.</returns>
-        public virtual stt::Task<IosAppDataStream> CreateIosAppDataStreamAsync(CreateIosAppDataStreamRequest request, st::CancellationToken cancellationToken) =>
-            CreateIosAppDataStreamAsync(request, gaxgrpc::CallSettings.FromCancellationToken(cancellationToken));
-
-        /// <summary>
-        /// Creates an iOS app data stream with the specified location and attributes.
-        /// </summary>
-        /// <param name="parent">
-        /// Required. The parent resource where this ios app data stream will be created.
-        /// Format: properties/123
-        /// </param>
-        /// <param name="iosAppDataStream">
-        /// Required. The iOS app data stream to create.
-        /// </param>
-        /// <param name="callSettings">If not null, applies overrides to this RPC call.</param>
-        /// <returns>The RPC response.</returns>
-        public virtual IosAppDataStream CreateIosAppDataStream(string parent, IosAppDataStream iosAppDataStream, gaxgrpc::CallSettings callSettings = null) =>
-            CreateIosAppDataStream(new CreateIosAppDataStreamRequest
-            {
-                IosAppDataStream = gax::GaxPreconditions.CheckNotNull(iosAppDataStream, nameof(iosAppDataStream)),
-                Parent = gax::GaxPreconditions.CheckNotNullOrEmpty(parent, nameof(parent)),
-            }, callSettings);
-
-        /// <summary>
-        /// Creates an iOS app data stream with the specified location and attributes.
-        /// </summary>
-        /// <param name="parent">
-        /// Required. The parent resource where this ios app data stream will be created.
-        /// Format: properties/123
-        /// </param>
-        /// <param name="iosAppDataStream">
-        /// Required. The iOS app data stream to create.
-        /// </param>
-        /// <param name="callSettings">If not null, applies overrides to this RPC call.</param>
-        /// <returns>A Task containing the RPC response.</returns>
-        public virtual stt::Task<IosAppDataStream> CreateIosAppDataStreamAsync(string parent, IosAppDataStream iosAppDataStream, gaxgrpc::CallSettings callSettings = null) =>
-            CreateIosAppDataStreamAsync(new CreateIosAppDataStreamRequest
-            {
-                IosAppDataStream = gax::GaxPreconditions.CheckNotNull(iosAppDataStream, nameof(iosAppDataStream)),
-                Parent = gax::GaxPreconditions.CheckNotNullOrEmpty(parent, nameof(parent)),
-            }, callSettings);
-
-        /// <summary>
-        /// Creates an iOS app data stream with the specified location and attributes.
-        /// </summary>
-        /// <param name="parent">
-        /// Required. The parent resource where this ios app data stream will be created.
-        /// Format: properties/123
-        /// </param>
-        /// <param name="iosAppDataStream">
-        /// Required. The iOS app data stream to create.
-        /// </param>
-        /// <param name="cancellationToken">A <see cref="st::CancellationToken"/> to use for this RPC.</param>
-        /// <returns>A Task containing the RPC response.</returns>
-        public virtual stt::Task<IosAppDataStream> CreateIosAppDataStreamAsync(string parent, IosAppDataStream iosAppDataStream, st::CancellationToken cancellationToken) =>
-            CreateIosAppDataStreamAsync(parent, iosAppDataStream, gaxgrpc::CallSettings.FromCancellationToken(cancellationToken));
-
-        /// <summary>
-        /// Creates an iOS app data stream with the specified location and attributes.
-        /// </summary>
-        /// <param name="parent">
-        /// Required. The parent resource where this ios app data stream will be created.
-        /// Format: properties/123
-        /// </param>
-        /// <param name="iosAppDataStream">
-        /// Required. The iOS app data stream to create.
-        /// </param>
-        /// <param name="callSettings">If not null, applies overrides to this RPC call.</param>
-        /// <returns>The RPC response.</returns>
-        public virtual IosAppDataStream CreateIosAppDataStream(PropertyName parent, IosAppDataStream iosAppDataStream, gaxgrpc::CallSettings callSettings = null) =>
-            CreateIosAppDataStream(new CreateIosAppDataStreamRequest
-            {
-                IosAppDataStream = gax::GaxPreconditions.CheckNotNull(iosAppDataStream, nameof(iosAppDataStream)),
-                ParentAsPropertyName = gax::GaxPreconditions.CheckNotNull(parent, nameof(parent)),
-            }, callSettings);
-
-        /// <summary>
-        /// Creates an iOS app data stream with the specified location and attributes.
-        /// </summary>
-        /// <param name="parent">
-        /// Required. The parent resource where this ios app data stream will be created.
-        /// Format: properties/123
-        /// </param>
-        /// <param name="iosAppDataStream">
-        /// Required. The iOS app data stream to create.
-        /// </param>
-        /// <param name="callSettings">If not null, applies overrides to this RPC call.</param>
-        /// <returns>A Task containing the RPC response.</returns>
-        public virtual stt::Task<IosAppDataStream> CreateIosAppDataStreamAsync(PropertyName parent, IosAppDataStream iosAppDataStream, gaxgrpc::CallSettings callSettings = null) =>
-            CreateIosAppDataStreamAsync(new CreateIosAppDataStreamRequest
-            {
-                IosAppDataStream = gax::GaxPreconditions.CheckNotNull(iosAppDataStream, nameof(iosAppDataStream)),
-                ParentAsPropertyName = gax::GaxPreconditions.CheckNotNull(parent, nameof(parent)),
-            }, callSettings);
-
-        /// <summary>
-        /// Creates an iOS app data stream with the specified location and attributes.
-        /// </summary>
-        /// <param name="parent">
-        /// Required. The parent resource where this ios app data stream will be created.
-        /// Format: properties/123
-        /// </param>
-        /// <param name="iosAppDataStream">
-        /// Required. The iOS app data stream to create.
-        /// </param>
-        /// <param name="cancellationToken">A <see cref="st::CancellationToken"/> to use for this RPC.</param>
-        /// <returns>A Task containing the RPC response.</returns>
-        public virtual stt::Task<IosAppDataStream> CreateIosAppDataStreamAsync(PropertyName parent, IosAppDataStream iosAppDataStream, st::CancellationToken cancellationToken) =>
-            CreateIosAppDataStreamAsync(parent, iosAppDataStream, gaxgrpc::CallSettings.FromCancellationToken(cancellationToken));
 
         /// <summary>
         /// Returns child iOS app data streams under the specified parent property.
@@ -3946,9 +4084,6 @@ namespace Google.Analytics.Admin.V1Alpha
 
         /// <summary>
         /// Lookup for a single AndroidAppDataStream
-        /// 
-        /// Throws "Target not found" if no such android app data stream found, or if
-        /// the caller does not have permissions to access it.
         /// </summary>
         /// <param name="request">The request object containing all of the parameters for the API call.</param>
         /// <param name="callSettings">If not null, applies overrides to this RPC call.</param>
@@ -3958,9 +4093,6 @@ namespace Google.Analytics.Admin.V1Alpha
 
         /// <summary>
         /// Lookup for a single AndroidAppDataStream
-        /// 
-        /// Throws "Target not found" if no such android app data stream found, or if
-        /// the caller does not have permissions to access it.
         /// </summary>
         /// <param name="request">The request object containing all of the parameters for the API call.</param>
         /// <param name="callSettings">If not null, applies overrides to this RPC call.</param>
@@ -3970,9 +4102,6 @@ namespace Google.Analytics.Admin.V1Alpha
 
         /// <summary>
         /// Lookup for a single AndroidAppDataStream
-        /// 
-        /// Throws "Target not found" if no such android app data stream found, or if
-        /// the caller does not have permissions to access it.
         /// </summary>
         /// <param name="request">The request object containing all of the parameters for the API call.</param>
         /// <param name="cancellationToken">A <see cref="st::CancellationToken"/> to use for this RPC.</param>
@@ -3982,9 +4111,6 @@ namespace Google.Analytics.Admin.V1Alpha
 
         /// <summary>
         /// Lookup for a single AndroidAppDataStream
-        /// 
-        /// Throws "Target not found" if no such android app data stream found, or if
-        /// the caller does not have permissions to access it.
         /// </summary>
         /// <param name="name">
         /// Required. The name of the android app data stream to lookup.
@@ -4001,9 +4127,6 @@ namespace Google.Analytics.Admin.V1Alpha
 
         /// <summary>
         /// Lookup for a single AndroidAppDataStream
-        /// 
-        /// Throws "Target not found" if no such android app data stream found, or if
-        /// the caller does not have permissions to access it.
         /// </summary>
         /// <param name="name">
         /// Required. The name of the android app data stream to lookup.
@@ -4020,9 +4143,6 @@ namespace Google.Analytics.Admin.V1Alpha
 
         /// <summary>
         /// Lookup for a single AndroidAppDataStream
-        /// 
-        /// Throws "Target not found" if no such android app data stream found, or if
-        /// the caller does not have permissions to access it.
         /// </summary>
         /// <param name="name">
         /// Required. The name of the android app data stream to lookup.
@@ -4036,9 +4156,6 @@ namespace Google.Analytics.Admin.V1Alpha
 
         /// <summary>
         /// Lookup for a single AndroidAppDataStream
-        /// 
-        /// Throws "Target not found" if no such android app data stream found, or if
-        /// the caller does not have permissions to access it.
         /// </summary>
         /// <param name="name">
         /// Required. The name of the android app data stream to lookup.
@@ -4055,9 +4172,6 @@ namespace Google.Analytics.Admin.V1Alpha
 
         /// <summary>
         /// Lookup for a single AndroidAppDataStream
-        /// 
-        /// Throws "Target not found" if no such android app data stream found, or if
-        /// the caller does not have permissions to access it.
         /// </summary>
         /// <param name="name">
         /// Required. The name of the android app data stream to lookup.
@@ -4074,9 +4188,6 @@ namespace Google.Analytics.Admin.V1Alpha
 
         /// <summary>
         /// Lookup for a single AndroidAppDataStream
-        /// 
-        /// Throws "Target not found" if no such android app data stream found, or if
-        /// the caller does not have permissions to access it.
         /// </summary>
         /// <param name="name">
         /// Required. The name of the android app data stream to lookup.
@@ -4240,7 +4351,9 @@ namespace Google.Analytics.Admin.V1Alpha
         /// The `name` field is used to identify the android app stream to be updated.
         /// </param>
         /// <param name="updateMask">
-        /// The list of fields to be updated. Omitted fields will not be updated.
+        /// Required. The list of fields to be updated. Field names must be in snake case
+        /// (e.g., "field_to_update"). Omitted fields will not be updated. To replace
+        /// the entire entity, use one path with the string "*" to match all fields.
         /// </param>
         /// <param name="callSettings">If not null, applies overrides to this RPC call.</param>
         /// <returns>The RPC response.</returns>
@@ -4248,7 +4361,7 @@ namespace Google.Analytics.Admin.V1Alpha
             UpdateAndroidAppDataStream(new UpdateAndroidAppDataStreamRequest
             {
                 AndroidAppDataStream = gax::GaxPreconditions.CheckNotNull(androidAppDataStream, nameof(androidAppDataStream)),
-                UpdateMask = updateMask,
+                UpdateMask = gax::GaxPreconditions.CheckNotNull(updateMask, nameof(updateMask)),
             }, callSettings);
 
         /// <summary>
@@ -4259,7 +4372,9 @@ namespace Google.Analytics.Admin.V1Alpha
         /// The `name` field is used to identify the android app stream to be updated.
         /// </param>
         /// <param name="updateMask">
-        /// The list of fields to be updated. Omitted fields will not be updated.
+        /// Required. The list of fields to be updated. Field names must be in snake case
+        /// (e.g., "field_to_update"). Omitted fields will not be updated. To replace
+        /// the entire entity, use one path with the string "*" to match all fields.
         /// </param>
         /// <param name="callSettings">If not null, applies overrides to this RPC call.</param>
         /// <returns>A Task containing the RPC response.</returns>
@@ -4267,7 +4382,7 @@ namespace Google.Analytics.Admin.V1Alpha
             UpdateAndroidAppDataStreamAsync(new UpdateAndroidAppDataStreamRequest
             {
                 AndroidAppDataStream = gax::GaxPreconditions.CheckNotNull(androidAppDataStream, nameof(androidAppDataStream)),
-                UpdateMask = updateMask,
+                UpdateMask = gax::GaxPreconditions.CheckNotNull(updateMask, nameof(updateMask)),
             }, callSettings);
 
         /// <summary>
@@ -4278,145 +4393,14 @@ namespace Google.Analytics.Admin.V1Alpha
         /// The `name` field is used to identify the android app stream to be updated.
         /// </param>
         /// <param name="updateMask">
-        /// The list of fields to be updated. Omitted fields will not be updated.
+        /// Required. The list of fields to be updated. Field names must be in snake case
+        /// (e.g., "field_to_update"). Omitted fields will not be updated. To replace
+        /// the entire entity, use one path with the string "*" to match all fields.
         /// </param>
         /// <param name="cancellationToken">A <see cref="st::CancellationToken"/> to use for this RPC.</param>
         /// <returns>A Task containing the RPC response.</returns>
         public virtual stt::Task<AndroidAppDataStream> UpdateAndroidAppDataStreamAsync(AndroidAppDataStream androidAppDataStream, wkt::FieldMask updateMask, st::CancellationToken cancellationToken) =>
             UpdateAndroidAppDataStreamAsync(androidAppDataStream, updateMask, gaxgrpc::CallSettings.FromCancellationToken(cancellationToken));
-
-        /// <summary>
-        /// Creates an android app stream with the specified location and attributes.
-        /// </summary>
-        /// <param name="request">The request object containing all of the parameters for the API call.</param>
-        /// <param name="callSettings">If not null, applies overrides to this RPC call.</param>
-        /// <returns>The RPC response.</returns>
-        public virtual AndroidAppDataStream CreateAndroidAppDataStream(CreateAndroidAppDataStreamRequest request, gaxgrpc::CallSettings callSettings = null) =>
-            throw new sys::NotImplementedException();
-
-        /// <summary>
-        /// Creates an android app stream with the specified location and attributes.
-        /// </summary>
-        /// <param name="request">The request object containing all of the parameters for the API call.</param>
-        /// <param name="callSettings">If not null, applies overrides to this RPC call.</param>
-        /// <returns>A Task containing the RPC response.</returns>
-        public virtual stt::Task<AndroidAppDataStream> CreateAndroidAppDataStreamAsync(CreateAndroidAppDataStreamRequest request, gaxgrpc::CallSettings callSettings = null) =>
-            throw new sys::NotImplementedException();
-
-        /// <summary>
-        /// Creates an android app stream with the specified location and attributes.
-        /// </summary>
-        /// <param name="request">The request object containing all of the parameters for the API call.</param>
-        /// <param name="cancellationToken">A <see cref="st::CancellationToken"/> to use for this RPC.</param>
-        /// <returns>A Task containing the RPC response.</returns>
-        public virtual stt::Task<AndroidAppDataStream> CreateAndroidAppDataStreamAsync(CreateAndroidAppDataStreamRequest request, st::CancellationToken cancellationToken) =>
-            CreateAndroidAppDataStreamAsync(request, gaxgrpc::CallSettings.FromCancellationToken(cancellationToken));
-
-        /// <summary>
-        /// Creates an android app stream with the specified location and attributes.
-        /// </summary>
-        /// <param name="parent">
-        /// Required. The parent resource where this android app data stream will be created.
-        /// Format: properties/123
-        /// </param>
-        /// <param name="androidAppDataStream">
-        /// Required. The android app stream to create.
-        /// </param>
-        /// <param name="callSettings">If not null, applies overrides to this RPC call.</param>
-        /// <returns>The RPC response.</returns>
-        public virtual AndroidAppDataStream CreateAndroidAppDataStream(string parent, AndroidAppDataStream androidAppDataStream, gaxgrpc::CallSettings callSettings = null) =>
-            CreateAndroidAppDataStream(new CreateAndroidAppDataStreamRequest
-            {
-                AndroidAppDataStream = gax::GaxPreconditions.CheckNotNull(androidAppDataStream, nameof(androidAppDataStream)),
-                Parent = gax::GaxPreconditions.CheckNotNullOrEmpty(parent, nameof(parent)),
-            }, callSettings);
-
-        /// <summary>
-        /// Creates an android app stream with the specified location and attributes.
-        /// </summary>
-        /// <param name="parent">
-        /// Required. The parent resource where this android app data stream will be created.
-        /// Format: properties/123
-        /// </param>
-        /// <param name="androidAppDataStream">
-        /// Required. The android app stream to create.
-        /// </param>
-        /// <param name="callSettings">If not null, applies overrides to this RPC call.</param>
-        /// <returns>A Task containing the RPC response.</returns>
-        public virtual stt::Task<AndroidAppDataStream> CreateAndroidAppDataStreamAsync(string parent, AndroidAppDataStream androidAppDataStream, gaxgrpc::CallSettings callSettings = null) =>
-            CreateAndroidAppDataStreamAsync(new CreateAndroidAppDataStreamRequest
-            {
-                AndroidAppDataStream = gax::GaxPreconditions.CheckNotNull(androidAppDataStream, nameof(androidAppDataStream)),
-                Parent = gax::GaxPreconditions.CheckNotNullOrEmpty(parent, nameof(parent)),
-            }, callSettings);
-
-        /// <summary>
-        /// Creates an android app stream with the specified location and attributes.
-        /// </summary>
-        /// <param name="parent">
-        /// Required. The parent resource where this android app data stream will be created.
-        /// Format: properties/123
-        /// </param>
-        /// <param name="androidAppDataStream">
-        /// Required. The android app stream to create.
-        /// </param>
-        /// <param name="cancellationToken">A <see cref="st::CancellationToken"/> to use for this RPC.</param>
-        /// <returns>A Task containing the RPC response.</returns>
-        public virtual stt::Task<AndroidAppDataStream> CreateAndroidAppDataStreamAsync(string parent, AndroidAppDataStream androidAppDataStream, st::CancellationToken cancellationToken) =>
-            CreateAndroidAppDataStreamAsync(parent, androidAppDataStream, gaxgrpc::CallSettings.FromCancellationToken(cancellationToken));
-
-        /// <summary>
-        /// Creates an android app stream with the specified location and attributes.
-        /// </summary>
-        /// <param name="parent">
-        /// Required. The parent resource where this android app data stream will be created.
-        /// Format: properties/123
-        /// </param>
-        /// <param name="androidAppDataStream">
-        /// Required. The android app stream to create.
-        /// </param>
-        /// <param name="callSettings">If not null, applies overrides to this RPC call.</param>
-        /// <returns>The RPC response.</returns>
-        public virtual AndroidAppDataStream CreateAndroidAppDataStream(PropertyName parent, AndroidAppDataStream androidAppDataStream, gaxgrpc::CallSettings callSettings = null) =>
-            CreateAndroidAppDataStream(new CreateAndroidAppDataStreamRequest
-            {
-                AndroidAppDataStream = gax::GaxPreconditions.CheckNotNull(androidAppDataStream, nameof(androidAppDataStream)),
-                ParentAsPropertyName = gax::GaxPreconditions.CheckNotNull(parent, nameof(parent)),
-            }, callSettings);
-
-        /// <summary>
-        /// Creates an android app stream with the specified location and attributes.
-        /// </summary>
-        /// <param name="parent">
-        /// Required. The parent resource where this android app data stream will be created.
-        /// Format: properties/123
-        /// </param>
-        /// <param name="androidAppDataStream">
-        /// Required. The android app stream to create.
-        /// </param>
-        /// <param name="callSettings">If not null, applies overrides to this RPC call.</param>
-        /// <returns>A Task containing the RPC response.</returns>
-        public virtual stt::Task<AndroidAppDataStream> CreateAndroidAppDataStreamAsync(PropertyName parent, AndroidAppDataStream androidAppDataStream, gaxgrpc::CallSettings callSettings = null) =>
-            CreateAndroidAppDataStreamAsync(new CreateAndroidAppDataStreamRequest
-            {
-                AndroidAppDataStream = gax::GaxPreconditions.CheckNotNull(androidAppDataStream, nameof(androidAppDataStream)),
-                ParentAsPropertyName = gax::GaxPreconditions.CheckNotNull(parent, nameof(parent)),
-            }, callSettings);
-
-        /// <summary>
-        /// Creates an android app stream with the specified location and attributes.
-        /// </summary>
-        /// <param name="parent">
-        /// Required. The parent resource where this android app data stream will be created.
-        /// Format: properties/123
-        /// </param>
-        /// <param name="androidAppDataStream">
-        /// Required. The android app stream to create.
-        /// </param>
-        /// <param name="cancellationToken">A <see cref="st::CancellationToken"/> to use for this RPC.</param>
-        /// <returns>A Task containing the RPC response.</returns>
-        public virtual stt::Task<AndroidAppDataStream> CreateAndroidAppDataStreamAsync(PropertyName parent, AndroidAppDataStream androidAppDataStream, st::CancellationToken cancellationToken) =>
-            CreateAndroidAppDataStreamAsync(parent, androidAppDataStream, gaxgrpc::CallSettings.FromCancellationToken(cancellationToken));
 
         /// <summary>
         /// Returns child android app streams under the specified parent property.
@@ -4599,7 +4583,6 @@ namespace Google.Analytics.Admin.V1Alpha
         /// <param name="name">
         /// Required. The name of the settings to lookup.
         /// Format:
-        /// 
         /// properties/{property_id}/webDataStreams/{stream_id}/enhancedMeasurementSettings
         /// Example: "properties/1000/webDataStreams/2000/enhancedMeasurementSettings"
         /// </param>
@@ -4619,7 +4602,6 @@ namespace Google.Analytics.Admin.V1Alpha
         /// <param name="name">
         /// Required. The name of the settings to lookup.
         /// Format:
-        /// 
         /// properties/{property_id}/webDataStreams/{stream_id}/enhancedMeasurementSettings
         /// Example: "properties/1000/webDataStreams/2000/enhancedMeasurementSettings"
         /// </param>
@@ -4639,7 +4621,6 @@ namespace Google.Analytics.Admin.V1Alpha
         /// <param name="name">
         /// Required. The name of the settings to lookup.
         /// Format:
-        /// 
         /// properties/{property_id}/webDataStreams/{stream_id}/enhancedMeasurementSettings
         /// Example: "properties/1000/webDataStreams/2000/enhancedMeasurementSettings"
         /// </param>
@@ -4656,7 +4637,6 @@ namespace Google.Analytics.Admin.V1Alpha
         /// <param name="name">
         /// Required. The name of the settings to lookup.
         /// Format:
-        /// 
         /// properties/{property_id}/webDataStreams/{stream_id}/enhancedMeasurementSettings
         /// Example: "properties/1000/webDataStreams/2000/enhancedMeasurementSettings"
         /// </param>
@@ -4676,7 +4656,6 @@ namespace Google.Analytics.Admin.V1Alpha
         /// <param name="name">
         /// Required. The name of the settings to lookup.
         /// Format:
-        /// 
         /// properties/{property_id}/webDataStreams/{stream_id}/enhancedMeasurementSettings
         /// Example: "properties/1000/webDataStreams/2000/enhancedMeasurementSettings"
         /// </param>
@@ -4696,7 +4675,6 @@ namespace Google.Analytics.Admin.V1Alpha
         /// <param name="name">
         /// Required. The name of the settings to lookup.
         /// Format:
-        /// 
         /// properties/{property_id}/webDataStreams/{stream_id}/enhancedMeasurementSettings
         /// Example: "properties/1000/webDataStreams/2000/enhancedMeasurementSettings"
         /// </param>
@@ -4748,7 +4726,9 @@ namespace Google.Analytics.Admin.V1Alpha
         /// The `name` field is used to identify the settings to be updated.
         /// </param>
         /// <param name="updateMask">
-        /// The list of fields to be updated. Omitted fields will not be updated.
+        /// Required. The list of fields to be updated. Field names must be in snake case
+        /// (e.g., "field_to_update"). Omitted fields will not be updated. To replace
+        /// the entire entity, use one path with the string "*" to match all fields.
         /// </param>
         /// <param name="callSettings">If not null, applies overrides to this RPC call.</param>
         /// <returns>The RPC response.</returns>
@@ -4756,7 +4736,7 @@ namespace Google.Analytics.Admin.V1Alpha
             UpdateEnhancedMeasurementSettings(new UpdateEnhancedMeasurementSettingsRequest
             {
                 EnhancedMeasurementSettings = gax::GaxPreconditions.CheckNotNull(enhancedMeasurementSettings, nameof(enhancedMeasurementSettings)),
-                UpdateMask = updateMask,
+                UpdateMask = gax::GaxPreconditions.CheckNotNull(updateMask, nameof(updateMask)),
             }, callSettings);
 
         /// <summary>
@@ -4769,7 +4749,9 @@ namespace Google.Analytics.Admin.V1Alpha
         /// The `name` field is used to identify the settings to be updated.
         /// </param>
         /// <param name="updateMask">
-        /// The list of fields to be updated. Omitted fields will not be updated.
+        /// Required. The list of fields to be updated. Field names must be in snake case
+        /// (e.g., "field_to_update"). Omitted fields will not be updated. To replace
+        /// the entire entity, use one path with the string "*" to match all fields.
         /// </param>
         /// <param name="callSettings">If not null, applies overrides to this RPC call.</param>
         /// <returns>A Task containing the RPC response.</returns>
@@ -4777,7 +4759,7 @@ namespace Google.Analytics.Admin.V1Alpha
             UpdateEnhancedMeasurementSettingsAsync(new UpdateEnhancedMeasurementSettingsRequest
             {
                 EnhancedMeasurementSettings = gax::GaxPreconditions.CheckNotNull(enhancedMeasurementSettings, nameof(enhancedMeasurementSettings)),
-                UpdateMask = updateMask,
+                UpdateMask = gax::GaxPreconditions.CheckNotNull(updateMask, nameof(updateMask)),
             }, callSettings);
 
         /// <summary>
@@ -4790,7 +4772,9 @@ namespace Google.Analytics.Admin.V1Alpha
         /// The `name` field is used to identify the settings to be updated.
         /// </param>
         /// <param name="updateMask">
-        /// The list of fields to be updated. Omitted fields will not be updated.
+        /// Required. The list of fields to be updated. Field names must be in snake case
+        /// (e.g., "field_to_update"). Omitted fields will not be updated. To replace
+        /// the entire entity, use one path with the string "*" to match all fields.
         /// </param>
         /// <param name="cancellationToken">A <see cref="st::CancellationToken"/> to use for this RPC.</param>
         /// <returns>A Task containing the RPC response.</returns>
@@ -4982,7 +4966,9 @@ namespace Google.Analytics.Admin.V1Alpha
         /// Required. The Firebase link to update.
         /// </param>
         /// <param name="updateMask">
-        /// The list of fields to be updated. Omitted fields will not be updated.
+        /// Required. The list of fields to be updated. Field names must be in snake case
+        /// (e.g., "field_to_update"). Omitted fields will not be updated. To replace
+        /// the entire entity, use one path with the string "*" to match all fields.
         /// </param>
         /// <param name="callSettings">If not null, applies overrides to this RPC call.</param>
         /// <returns>The RPC response.</returns>
@@ -4990,7 +4976,7 @@ namespace Google.Analytics.Admin.V1Alpha
             UpdateFirebaseLink(new UpdateFirebaseLinkRequest
             {
                 FirebaseLink = gax::GaxPreconditions.CheckNotNull(firebaseLink, nameof(firebaseLink)),
-                UpdateMask = updateMask,
+                UpdateMask = gax::GaxPreconditions.CheckNotNull(updateMask, nameof(updateMask)),
             }, callSettings);
 
         /// <summary>
@@ -5000,7 +4986,9 @@ namespace Google.Analytics.Admin.V1Alpha
         /// Required. The Firebase link to update.
         /// </param>
         /// <param name="updateMask">
-        /// The list of fields to be updated. Omitted fields will not be updated.
+        /// Required. The list of fields to be updated. Field names must be in snake case
+        /// (e.g., "field_to_update"). Omitted fields will not be updated. To replace
+        /// the entire entity, use one path with the string "*" to match all fields.
         /// </param>
         /// <param name="callSettings">If not null, applies overrides to this RPC call.</param>
         /// <returns>A Task containing the RPC response.</returns>
@@ -5008,7 +4996,7 @@ namespace Google.Analytics.Admin.V1Alpha
             UpdateFirebaseLinkAsync(new UpdateFirebaseLinkRequest
             {
                 FirebaseLink = gax::GaxPreconditions.CheckNotNull(firebaseLink, nameof(firebaseLink)),
-                UpdateMask = updateMask,
+                UpdateMask = gax::GaxPreconditions.CheckNotNull(updateMask, nameof(updateMask)),
             }, callSettings);
 
         /// <summary>
@@ -5018,7 +5006,9 @@ namespace Google.Analytics.Admin.V1Alpha
         /// Required. The Firebase link to update.
         /// </param>
         /// <param name="updateMask">
-        /// The list of fields to be updated. Omitted fields will not be updated.
+        /// Required. The list of fields to be updated. Field names must be in snake case
+        /// (e.g., "field_to_update"). Omitted fields will not be updated. To replace
+        /// the entire entity, use one path with the string "*" to match all fields.
         /// </param>
         /// <param name="cancellationToken">A <see cref="st::CancellationToken"/> to use for this RPC.</param>
         /// <returns>A Task containing the RPC response.</returns>
@@ -5142,8 +5132,8 @@ namespace Google.Analytics.Admin.V1Alpha
         /// </summary>
         /// <param name="request">The request object containing all of the parameters for the API call.</param>
         /// <param name="callSettings">If not null, applies overrides to this RPC call.</param>
-        /// <returns>The RPC response.</returns>
-        public virtual ListFirebaseLinksResponse ListFirebaseLinks(ListFirebaseLinksRequest request, gaxgrpc::CallSettings callSettings = null) =>
+        /// <returns>A pageable sequence of <see cref="FirebaseLink"/> resources.</returns>
+        public virtual gax::PagedEnumerable<ListFirebaseLinksResponse, FirebaseLink> ListFirebaseLinks(ListFirebaseLinksRequest request, gaxgrpc::CallSettings callSettings = null) =>
             throw new sys::NotImplementedException();
 
         /// <summary>
@@ -5152,34 +5142,34 @@ namespace Google.Analytics.Admin.V1Alpha
         /// </summary>
         /// <param name="request">The request object containing all of the parameters for the API call.</param>
         /// <param name="callSettings">If not null, applies overrides to this RPC call.</param>
-        /// <returns>A Task containing the RPC response.</returns>
-        public virtual stt::Task<ListFirebaseLinksResponse> ListFirebaseLinksAsync(ListFirebaseLinksRequest request, gaxgrpc::CallSettings callSettings = null) =>
+        /// <returns>A pageable asynchronous sequence of <see cref="FirebaseLink"/> resources.</returns>
+        public virtual gax::PagedAsyncEnumerable<ListFirebaseLinksResponse, FirebaseLink> ListFirebaseLinksAsync(ListFirebaseLinksRequest request, gaxgrpc::CallSettings callSettings = null) =>
             throw new sys::NotImplementedException();
 
         /// <summary>
         /// Lists FirebaseLinks on a property.
         /// Properties can have at most one FirebaseLink.
         /// </summary>
-        /// <param name="request">The request object containing all of the parameters for the API call.</param>
-        /// <param name="cancellationToken">A <see cref="st::CancellationToken"/> to use for this RPC.</param>
-        /// <returns>A Task containing the RPC response.</returns>
-        public virtual stt::Task<ListFirebaseLinksResponse> ListFirebaseLinksAsync(ListFirebaseLinksRequest request, st::CancellationToken cancellationToken) =>
-            ListFirebaseLinksAsync(request, gaxgrpc::CallSettings.FromCancellationToken(cancellationToken));
-
-        /// <summary>
-        /// Lists FirebaseLinks on a property.
-        /// Properties can have at most one FirebaseLink.
-        /// </summary>
         /// <param name="parent">
         /// Required. Format: properties/{property_id}
         /// Example: properties/1234
         /// </param>
+        /// <param name="pageToken">
+        /// The token returned from the previous request. A value of <c>null</c> or an empty string retrieves the first
+        /// page.
+        /// </param>
+        /// <param name="pageSize">
+        /// The size of page to request. The response will not be larger than this, but may be smaller. A value of
+        /// <c>null</c> or <c>0</c> uses a server-defined page size.
+        /// </param>
         /// <param name="callSettings">If not null, applies overrides to this RPC call.</param>
-        /// <returns>The RPC response.</returns>
-        public virtual ListFirebaseLinksResponse ListFirebaseLinks(string parent, gaxgrpc::CallSettings callSettings = null) =>
+        /// <returns>A pageable sequence of <see cref="FirebaseLink"/> resources.</returns>
+        public virtual gax::PagedEnumerable<ListFirebaseLinksResponse, FirebaseLink> ListFirebaseLinks(string parent, string pageToken = null, int? pageSize = null, gaxgrpc::CallSettings callSettings = null) =>
             ListFirebaseLinks(new ListFirebaseLinksRequest
             {
                 Parent = gax::GaxPreconditions.CheckNotNullOrEmpty(parent, nameof(parent)),
+                PageToken = pageToken ?? "",
+                PageSize = pageSize ?? 0,
             }, callSettings);
 
         /// <summary>
@@ -5190,12 +5180,22 @@ namespace Google.Analytics.Admin.V1Alpha
         /// Required. Format: properties/{property_id}
         /// Example: properties/1234
         /// </param>
+        /// <param name="pageToken">
+        /// The token returned from the previous request. A value of <c>null</c> or an empty string retrieves the first
+        /// page.
+        /// </param>
+        /// <param name="pageSize">
+        /// The size of page to request. The response will not be larger than this, but may be smaller. A value of
+        /// <c>null</c> or <c>0</c> uses a server-defined page size.
+        /// </param>
         /// <param name="callSettings">If not null, applies overrides to this RPC call.</param>
-        /// <returns>A Task containing the RPC response.</returns>
-        public virtual stt::Task<ListFirebaseLinksResponse> ListFirebaseLinksAsync(string parent, gaxgrpc::CallSettings callSettings = null) =>
+        /// <returns>A pageable asynchronous sequence of <see cref="FirebaseLink"/> resources.</returns>
+        public virtual gax::PagedAsyncEnumerable<ListFirebaseLinksResponse, FirebaseLink> ListFirebaseLinksAsync(string parent, string pageToken = null, int? pageSize = null, gaxgrpc::CallSettings callSettings = null) =>
             ListFirebaseLinksAsync(new ListFirebaseLinksRequest
             {
                 Parent = gax::GaxPreconditions.CheckNotNullOrEmpty(parent, nameof(parent)),
+                PageToken = pageToken ?? "",
+                PageSize = pageSize ?? 0,
             }, callSettings);
 
         /// <summary>
@@ -5206,25 +5206,22 @@ namespace Google.Analytics.Admin.V1Alpha
         /// Required. Format: properties/{property_id}
         /// Example: properties/1234
         /// </param>
-        /// <param name="cancellationToken">A <see cref="st::CancellationToken"/> to use for this RPC.</param>
-        /// <returns>A Task containing the RPC response.</returns>
-        public virtual stt::Task<ListFirebaseLinksResponse> ListFirebaseLinksAsync(string parent, st::CancellationToken cancellationToken) =>
-            ListFirebaseLinksAsync(parent, gaxgrpc::CallSettings.FromCancellationToken(cancellationToken));
-
-        /// <summary>
-        /// Lists FirebaseLinks on a property.
-        /// Properties can have at most one FirebaseLink.
-        /// </summary>
-        /// <param name="parent">
-        /// Required. Format: properties/{property_id}
-        /// Example: properties/1234
+        /// <param name="pageToken">
+        /// The token returned from the previous request. A value of <c>null</c> or an empty string retrieves the first
+        /// page.
+        /// </param>
+        /// <param name="pageSize">
+        /// The size of page to request. The response will not be larger than this, but may be smaller. A value of
+        /// <c>null</c> or <c>0</c> uses a server-defined page size.
         /// </param>
         /// <param name="callSettings">If not null, applies overrides to this RPC call.</param>
-        /// <returns>The RPC response.</returns>
-        public virtual ListFirebaseLinksResponse ListFirebaseLinks(PropertyName parent, gaxgrpc::CallSettings callSettings = null) =>
+        /// <returns>A pageable sequence of <see cref="FirebaseLink"/> resources.</returns>
+        public virtual gax::PagedEnumerable<ListFirebaseLinksResponse, FirebaseLink> ListFirebaseLinks(PropertyName parent, string pageToken = null, int? pageSize = null, gaxgrpc::CallSettings callSettings = null) =>
             ListFirebaseLinks(new ListFirebaseLinksRequest
             {
                 ParentAsPropertyName = gax::GaxPreconditions.CheckNotNull(parent, nameof(parent)),
+                PageToken = pageToken ?? "",
+                PageSize = pageSize ?? 0,
             }, callSettings);
 
         /// <summary>
@@ -5235,26 +5232,23 @@ namespace Google.Analytics.Admin.V1Alpha
         /// Required. Format: properties/{property_id}
         /// Example: properties/1234
         /// </param>
+        /// <param name="pageToken">
+        /// The token returned from the previous request. A value of <c>null</c> or an empty string retrieves the first
+        /// page.
+        /// </param>
+        /// <param name="pageSize">
+        /// The size of page to request. The response will not be larger than this, but may be smaller. A value of
+        /// <c>null</c> or <c>0</c> uses a server-defined page size.
+        /// </param>
         /// <param name="callSettings">If not null, applies overrides to this RPC call.</param>
-        /// <returns>A Task containing the RPC response.</returns>
-        public virtual stt::Task<ListFirebaseLinksResponse> ListFirebaseLinksAsync(PropertyName parent, gaxgrpc::CallSettings callSettings = null) =>
+        /// <returns>A pageable asynchronous sequence of <see cref="FirebaseLink"/> resources.</returns>
+        public virtual gax::PagedAsyncEnumerable<ListFirebaseLinksResponse, FirebaseLink> ListFirebaseLinksAsync(PropertyName parent, string pageToken = null, int? pageSize = null, gaxgrpc::CallSettings callSettings = null) =>
             ListFirebaseLinksAsync(new ListFirebaseLinksRequest
             {
                 ParentAsPropertyName = gax::GaxPreconditions.CheckNotNull(parent, nameof(parent)),
+                PageToken = pageToken ?? "",
+                PageSize = pageSize ?? 0,
             }, callSettings);
-
-        /// <summary>
-        /// Lists FirebaseLinks on a property.
-        /// Properties can have at most one FirebaseLink.
-        /// </summary>
-        /// <param name="parent">
-        /// Required. Format: properties/{property_id}
-        /// Example: properties/1234
-        /// </param>
-        /// <param name="cancellationToken">A <see cref="st::CancellationToken"/> to use for this RPC.</param>
-        /// <returns>A Task containing the RPC response.</returns>
-        public virtual stt::Task<ListFirebaseLinksResponse> ListFirebaseLinksAsync(PropertyName parent, st::CancellationToken cancellationToken) =>
-            ListFirebaseLinksAsync(parent, gaxgrpc::CallSettings.FromCancellationToken(cancellationToken));
 
         /// <summary>
         /// Returns the Site Tag for the specified web stream.
@@ -5549,7 +5543,9 @@ namespace Google.Analytics.Admin.V1Alpha
         /// The GoogleAdsLink to update
         /// </param>
         /// <param name="updateMask">
-        /// The list of fields to be updated. Omitted fields will not be updated.
+        /// Required. The list of fields to be updated. Field names must be in snake case
+        /// (e.g., "field_to_update"). Omitted fields will not be updated. To replace
+        /// the entire entity, use one path with the string "*" to match all fields.
         /// </param>
         /// <param name="callSettings">If not null, applies overrides to this RPC call.</param>
         /// <returns>The RPC response.</returns>
@@ -5557,7 +5553,7 @@ namespace Google.Analytics.Admin.V1Alpha
             UpdateGoogleAdsLink(new UpdateGoogleAdsLinkRequest
             {
                 GoogleAdsLink = googleAdsLink,
-                UpdateMask = updateMask,
+                UpdateMask = gax::GaxPreconditions.CheckNotNull(updateMask, nameof(updateMask)),
             }, callSettings);
 
         /// <summary>
@@ -5567,7 +5563,9 @@ namespace Google.Analytics.Admin.V1Alpha
         /// The GoogleAdsLink to update
         /// </param>
         /// <param name="updateMask">
-        /// The list of fields to be updated. Omitted fields will not be updated.
+        /// Required. The list of fields to be updated. Field names must be in snake case
+        /// (e.g., "field_to_update"). Omitted fields will not be updated. To replace
+        /// the entire entity, use one path with the string "*" to match all fields.
         /// </param>
         /// <param name="callSettings">If not null, applies overrides to this RPC call.</param>
         /// <returns>A Task containing the RPC response.</returns>
@@ -5575,7 +5573,7 @@ namespace Google.Analytics.Admin.V1Alpha
             UpdateGoogleAdsLinkAsync(new UpdateGoogleAdsLinkRequest
             {
                 GoogleAdsLink = googleAdsLink,
-                UpdateMask = updateMask,
+                UpdateMask = gax::GaxPreconditions.CheckNotNull(updateMask, nameof(updateMask)),
             }, callSettings);
 
         /// <summary>
@@ -5585,7 +5583,9 @@ namespace Google.Analytics.Admin.V1Alpha
         /// The GoogleAdsLink to update
         /// </param>
         /// <param name="updateMask">
-        /// The list of fields to be updated. Omitted fields will not be updated.
+        /// Required. The list of fields to be updated. Field names must be in snake case
+        /// (e.g., "field_to_update"). Omitted fields will not be updated. To replace
+        /// the entire entity, use one path with the string "*" to match all fields.
         /// </param>
         /// <param name="cancellationToken">A <see cref="st::CancellationToken"/> to use for this RPC.</param>
         /// <returns>A Task containing the RPC response.</returns>
@@ -5936,6 +5936,2428 @@ namespace Google.Analytics.Admin.V1Alpha
         /// <returns>A Task containing the RPC response.</returns>
         public virtual stt::Task<DataSharingSettings> GetDataSharingSettingsAsync(DataSharingSettingsName name, st::CancellationToken cancellationToken) =>
             GetDataSharingSettingsAsync(name, gaxgrpc::CallSettings.FromCancellationToken(cancellationToken));
+
+        /// <summary>
+        /// Lookup for a single "GA4" MeasurementProtocolSecret.
+        /// </summary>
+        /// <param name="request">The request object containing all of the parameters for the API call.</param>
+        /// <param name="callSettings">If not null, applies overrides to this RPC call.</param>
+        /// <returns>The RPC response.</returns>
+        public virtual MeasurementProtocolSecret GetMeasurementProtocolSecret(GetMeasurementProtocolSecretRequest request, gaxgrpc::CallSettings callSettings = null) =>
+            throw new sys::NotImplementedException();
+
+        /// <summary>
+        /// Lookup for a single "GA4" MeasurementProtocolSecret.
+        /// </summary>
+        /// <param name="request">The request object containing all of the parameters for the API call.</param>
+        /// <param name="callSettings">If not null, applies overrides to this RPC call.</param>
+        /// <returns>A Task containing the RPC response.</returns>
+        public virtual stt::Task<MeasurementProtocolSecret> GetMeasurementProtocolSecretAsync(GetMeasurementProtocolSecretRequest request, gaxgrpc::CallSettings callSettings = null) =>
+            throw new sys::NotImplementedException();
+
+        /// <summary>
+        /// Lookup for a single "GA4" MeasurementProtocolSecret.
+        /// </summary>
+        /// <param name="request">The request object containing all of the parameters for the API call.</param>
+        /// <param name="cancellationToken">A <see cref="st::CancellationToken"/> to use for this RPC.</param>
+        /// <returns>A Task containing the RPC response.</returns>
+        public virtual stt::Task<MeasurementProtocolSecret> GetMeasurementProtocolSecretAsync(GetMeasurementProtocolSecretRequest request, st::CancellationToken cancellationToken) =>
+            GetMeasurementProtocolSecretAsync(request, gaxgrpc::CallSettings.FromCancellationToken(cancellationToken));
+
+        /// <summary>
+        /// Lookup for a single "GA4" MeasurementProtocolSecret.
+        /// </summary>
+        /// <param name="name">
+        /// Required. The name of the measurement protocol secret to lookup.
+        /// Format:
+        /// properties/{property}/webDataStreams/{webDataStream}/measurementProtocolSecrets/{measurementProtocolSecret}
+        /// Note: Any type of stream (WebDataStream, IosAppDataStream,
+        /// AndroidAppDataStream) may be a parent.
+        /// </param>
+        /// <param name="callSettings">If not null, applies overrides to this RPC call.</param>
+        /// <returns>The RPC response.</returns>
+        public virtual MeasurementProtocolSecret GetMeasurementProtocolSecret(string name, gaxgrpc::CallSettings callSettings = null) =>
+            GetMeasurementProtocolSecret(new GetMeasurementProtocolSecretRequest
+            {
+                Name = gax::GaxPreconditions.CheckNotNullOrEmpty(name, nameof(name)),
+            }, callSettings);
+
+        /// <summary>
+        /// Lookup for a single "GA4" MeasurementProtocolSecret.
+        /// </summary>
+        /// <param name="name">
+        /// Required. The name of the measurement protocol secret to lookup.
+        /// Format:
+        /// properties/{property}/webDataStreams/{webDataStream}/measurementProtocolSecrets/{measurementProtocolSecret}
+        /// Note: Any type of stream (WebDataStream, IosAppDataStream,
+        /// AndroidAppDataStream) may be a parent.
+        /// </param>
+        /// <param name="callSettings">If not null, applies overrides to this RPC call.</param>
+        /// <returns>A Task containing the RPC response.</returns>
+        public virtual stt::Task<MeasurementProtocolSecret> GetMeasurementProtocolSecretAsync(string name, gaxgrpc::CallSettings callSettings = null) =>
+            GetMeasurementProtocolSecretAsync(new GetMeasurementProtocolSecretRequest
+            {
+                Name = gax::GaxPreconditions.CheckNotNullOrEmpty(name, nameof(name)),
+            }, callSettings);
+
+        /// <summary>
+        /// Lookup for a single "GA4" MeasurementProtocolSecret.
+        /// </summary>
+        /// <param name="name">
+        /// Required. The name of the measurement protocol secret to lookup.
+        /// Format:
+        /// properties/{property}/webDataStreams/{webDataStream}/measurementProtocolSecrets/{measurementProtocolSecret}
+        /// Note: Any type of stream (WebDataStream, IosAppDataStream,
+        /// AndroidAppDataStream) may be a parent.
+        /// </param>
+        /// <param name="cancellationToken">A <see cref="st::CancellationToken"/> to use for this RPC.</param>
+        /// <returns>A Task containing the RPC response.</returns>
+        public virtual stt::Task<MeasurementProtocolSecret> GetMeasurementProtocolSecretAsync(string name, st::CancellationToken cancellationToken) =>
+            GetMeasurementProtocolSecretAsync(name, gaxgrpc::CallSettings.FromCancellationToken(cancellationToken));
+
+        /// <summary>
+        /// Lookup for a single "GA4" MeasurementProtocolSecret.
+        /// </summary>
+        /// <param name="name">
+        /// Required. The name of the measurement protocol secret to lookup.
+        /// Format:
+        /// properties/{property}/webDataStreams/{webDataStream}/measurementProtocolSecrets/{measurementProtocolSecret}
+        /// Note: Any type of stream (WebDataStream, IosAppDataStream,
+        /// AndroidAppDataStream) may be a parent.
+        /// </param>
+        /// <param name="callSettings">If not null, applies overrides to this RPC call.</param>
+        /// <returns>The RPC response.</returns>
+        public virtual MeasurementProtocolSecret GetMeasurementProtocolSecret(MeasurementProtocolSecretName name, gaxgrpc::CallSettings callSettings = null) =>
+            GetMeasurementProtocolSecret(new GetMeasurementProtocolSecretRequest
+            {
+                MeasurementProtocolSecretName = gax::GaxPreconditions.CheckNotNull(name, nameof(name)),
+            }, callSettings);
+
+        /// <summary>
+        /// Lookup for a single "GA4" MeasurementProtocolSecret.
+        /// </summary>
+        /// <param name="name">
+        /// Required. The name of the measurement protocol secret to lookup.
+        /// Format:
+        /// properties/{property}/webDataStreams/{webDataStream}/measurementProtocolSecrets/{measurementProtocolSecret}
+        /// Note: Any type of stream (WebDataStream, IosAppDataStream,
+        /// AndroidAppDataStream) may be a parent.
+        /// </param>
+        /// <param name="callSettings">If not null, applies overrides to this RPC call.</param>
+        /// <returns>A Task containing the RPC response.</returns>
+        public virtual stt::Task<MeasurementProtocolSecret> GetMeasurementProtocolSecretAsync(MeasurementProtocolSecretName name, gaxgrpc::CallSettings callSettings = null) =>
+            GetMeasurementProtocolSecretAsync(new GetMeasurementProtocolSecretRequest
+            {
+                MeasurementProtocolSecretName = gax::GaxPreconditions.CheckNotNull(name, nameof(name)),
+            }, callSettings);
+
+        /// <summary>
+        /// Lookup for a single "GA4" MeasurementProtocolSecret.
+        /// </summary>
+        /// <param name="name">
+        /// Required. The name of the measurement protocol secret to lookup.
+        /// Format:
+        /// properties/{property}/webDataStreams/{webDataStream}/measurementProtocolSecrets/{measurementProtocolSecret}
+        /// Note: Any type of stream (WebDataStream, IosAppDataStream,
+        /// AndroidAppDataStream) may be a parent.
+        /// </param>
+        /// <param name="cancellationToken">A <see cref="st::CancellationToken"/> to use for this RPC.</param>
+        /// <returns>A Task containing the RPC response.</returns>
+        public virtual stt::Task<MeasurementProtocolSecret> GetMeasurementProtocolSecretAsync(MeasurementProtocolSecretName name, st::CancellationToken cancellationToken) =>
+            GetMeasurementProtocolSecretAsync(name, gaxgrpc::CallSettings.FromCancellationToken(cancellationToken));
+
+        /// <summary>
+        /// Returns child MeasurementProtocolSecrets under the specified parent
+        /// Property.
+        /// </summary>
+        /// <param name="request">The request object containing all of the parameters for the API call.</param>
+        /// <param name="callSettings">If not null, applies overrides to this RPC call.</param>
+        /// <returns>A pageable sequence of <see cref="MeasurementProtocolSecret"/> resources.</returns>
+        public virtual gax::PagedEnumerable<ListMeasurementProtocolSecretsResponse, MeasurementProtocolSecret> ListMeasurementProtocolSecrets(ListMeasurementProtocolSecretsRequest request, gaxgrpc::CallSettings callSettings = null) =>
+            throw new sys::NotImplementedException();
+
+        /// <summary>
+        /// Returns child MeasurementProtocolSecrets under the specified parent
+        /// Property.
+        /// </summary>
+        /// <param name="request">The request object containing all of the parameters for the API call.</param>
+        /// <param name="callSettings">If not null, applies overrides to this RPC call.</param>
+        /// <returns>A pageable asynchronous sequence of <see cref="MeasurementProtocolSecret"/> resources.</returns>
+        public virtual gax::PagedAsyncEnumerable<ListMeasurementProtocolSecretsResponse, MeasurementProtocolSecret> ListMeasurementProtocolSecretsAsync(ListMeasurementProtocolSecretsRequest request, gaxgrpc::CallSettings callSettings = null) =>
+            throw new sys::NotImplementedException();
+
+        /// <summary>
+        /// Returns child MeasurementProtocolSecrets under the specified parent
+        /// Property.
+        /// </summary>
+        /// <param name="parent">
+        /// Required. The resource name of the parent stream.
+        /// Any type of stream (WebDataStream, IosAppDataStream, AndroidAppDataStream)
+        /// may be a parent.
+        /// Format:
+        /// properties/{property}/webDataStreams/{webDataStream}/measurementProtocolSecrets
+        /// </param>
+        /// <param name="pageToken">
+        /// The token returned from the previous request. A value of <c>null</c> or an empty string retrieves the first
+        /// page.
+        /// </param>
+        /// <param name="pageSize">
+        /// The size of page to request. The response will not be larger than this, but may be smaller. A value of
+        /// <c>null</c> or <c>0</c> uses a server-defined page size.
+        /// </param>
+        /// <param name="callSettings">If not null, applies overrides to this RPC call.</param>
+        /// <returns>A pageable sequence of <see cref="MeasurementProtocolSecret"/> resources.</returns>
+        public virtual gax::PagedEnumerable<ListMeasurementProtocolSecretsResponse, MeasurementProtocolSecret> ListMeasurementProtocolSecrets(string parent, string pageToken = null, int? pageSize = null, gaxgrpc::CallSettings callSettings = null) =>
+            ListMeasurementProtocolSecrets(new ListMeasurementProtocolSecretsRequest
+            {
+                Parent = gax::GaxPreconditions.CheckNotNullOrEmpty(parent, nameof(parent)),
+                PageToken = pageToken ?? "",
+                PageSize = pageSize ?? 0,
+            }, callSettings);
+
+        /// <summary>
+        /// Returns child MeasurementProtocolSecrets under the specified parent
+        /// Property.
+        /// </summary>
+        /// <param name="parent">
+        /// Required. The resource name of the parent stream.
+        /// Any type of stream (WebDataStream, IosAppDataStream, AndroidAppDataStream)
+        /// may be a parent.
+        /// Format:
+        /// properties/{property}/webDataStreams/{webDataStream}/measurementProtocolSecrets
+        /// </param>
+        /// <param name="pageToken">
+        /// The token returned from the previous request. A value of <c>null</c> or an empty string retrieves the first
+        /// page.
+        /// </param>
+        /// <param name="pageSize">
+        /// The size of page to request. The response will not be larger than this, but may be smaller. A value of
+        /// <c>null</c> or <c>0</c> uses a server-defined page size.
+        /// </param>
+        /// <param name="callSettings">If not null, applies overrides to this RPC call.</param>
+        /// <returns>A pageable asynchronous sequence of <see cref="MeasurementProtocolSecret"/> resources.</returns>
+        public virtual gax::PagedAsyncEnumerable<ListMeasurementProtocolSecretsResponse, MeasurementProtocolSecret> ListMeasurementProtocolSecretsAsync(string parent, string pageToken = null, int? pageSize = null, gaxgrpc::CallSettings callSettings = null) =>
+            ListMeasurementProtocolSecretsAsync(new ListMeasurementProtocolSecretsRequest
+            {
+                Parent = gax::GaxPreconditions.CheckNotNullOrEmpty(parent, nameof(parent)),
+                PageToken = pageToken ?? "",
+                PageSize = pageSize ?? 0,
+            }, callSettings);
+
+        /// <summary>
+        /// Returns child MeasurementProtocolSecrets under the specified parent
+        /// Property.
+        /// </summary>
+        /// <param name="parent">
+        /// Required. The resource name of the parent stream.
+        /// Any type of stream (WebDataStream, IosAppDataStream, AndroidAppDataStream)
+        /// may be a parent.
+        /// Format:
+        /// properties/{property}/webDataStreams/{webDataStream}/measurementProtocolSecrets
+        /// </param>
+        /// <param name="pageToken">
+        /// The token returned from the previous request. A value of <c>null</c> or an empty string retrieves the first
+        /// page.
+        /// </param>
+        /// <param name="pageSize">
+        /// The size of page to request. The response will not be larger than this, but may be smaller. A value of
+        /// <c>null</c> or <c>0</c> uses a server-defined page size.
+        /// </param>
+        /// <param name="callSettings">If not null, applies overrides to this RPC call.</param>
+        /// <returns>A pageable sequence of <see cref="MeasurementProtocolSecret"/> resources.</returns>
+        public virtual gax::PagedEnumerable<ListMeasurementProtocolSecretsResponse, MeasurementProtocolSecret> ListMeasurementProtocolSecrets(WebDataStreamName parent, string pageToken = null, int? pageSize = null, gaxgrpc::CallSettings callSettings = null) =>
+            ListMeasurementProtocolSecrets(new ListMeasurementProtocolSecretsRequest
+            {
+                ParentAsWebDataStreamName = gax::GaxPreconditions.CheckNotNull(parent, nameof(parent)),
+                PageToken = pageToken ?? "",
+                PageSize = pageSize ?? 0,
+            }, callSettings);
+
+        /// <summary>
+        /// Returns child MeasurementProtocolSecrets under the specified parent
+        /// Property.
+        /// </summary>
+        /// <param name="parent">
+        /// Required. The resource name of the parent stream.
+        /// Any type of stream (WebDataStream, IosAppDataStream, AndroidAppDataStream)
+        /// may be a parent.
+        /// Format:
+        /// properties/{property}/webDataStreams/{webDataStream}/measurementProtocolSecrets
+        /// </param>
+        /// <param name="pageToken">
+        /// The token returned from the previous request. A value of <c>null</c> or an empty string retrieves the first
+        /// page.
+        /// </param>
+        /// <param name="pageSize">
+        /// The size of page to request. The response will not be larger than this, but may be smaller. A value of
+        /// <c>null</c> or <c>0</c> uses a server-defined page size.
+        /// </param>
+        /// <param name="callSettings">If not null, applies overrides to this RPC call.</param>
+        /// <returns>A pageable asynchronous sequence of <see cref="MeasurementProtocolSecret"/> resources.</returns>
+        public virtual gax::PagedAsyncEnumerable<ListMeasurementProtocolSecretsResponse, MeasurementProtocolSecret> ListMeasurementProtocolSecretsAsync(WebDataStreamName parent, string pageToken = null, int? pageSize = null, gaxgrpc::CallSettings callSettings = null) =>
+            ListMeasurementProtocolSecretsAsync(new ListMeasurementProtocolSecretsRequest
+            {
+                ParentAsWebDataStreamName = gax::GaxPreconditions.CheckNotNull(parent, nameof(parent)),
+                PageToken = pageToken ?? "",
+                PageSize = pageSize ?? 0,
+            }, callSettings);
+
+        /// <summary>
+        /// Creates a measurement protocol secret.
+        /// </summary>
+        /// <param name="request">The request object containing all of the parameters for the API call.</param>
+        /// <param name="callSettings">If not null, applies overrides to this RPC call.</param>
+        /// <returns>The RPC response.</returns>
+        public virtual MeasurementProtocolSecret CreateMeasurementProtocolSecret(CreateMeasurementProtocolSecretRequest request, gaxgrpc::CallSettings callSettings = null) =>
+            throw new sys::NotImplementedException();
+
+        /// <summary>
+        /// Creates a measurement protocol secret.
+        /// </summary>
+        /// <param name="request">The request object containing all of the parameters for the API call.</param>
+        /// <param name="callSettings">If not null, applies overrides to this RPC call.</param>
+        /// <returns>A Task containing the RPC response.</returns>
+        public virtual stt::Task<MeasurementProtocolSecret> CreateMeasurementProtocolSecretAsync(CreateMeasurementProtocolSecretRequest request, gaxgrpc::CallSettings callSettings = null) =>
+            throw new sys::NotImplementedException();
+
+        /// <summary>
+        /// Creates a measurement protocol secret.
+        /// </summary>
+        /// <param name="request">The request object containing all of the parameters for the API call.</param>
+        /// <param name="cancellationToken">A <see cref="st::CancellationToken"/> to use for this RPC.</param>
+        /// <returns>A Task containing the RPC response.</returns>
+        public virtual stt::Task<MeasurementProtocolSecret> CreateMeasurementProtocolSecretAsync(CreateMeasurementProtocolSecretRequest request, st::CancellationToken cancellationToken) =>
+            CreateMeasurementProtocolSecretAsync(request, gaxgrpc::CallSettings.FromCancellationToken(cancellationToken));
+
+        /// <summary>
+        /// Creates a measurement protocol secret.
+        /// </summary>
+        /// <param name="parent">
+        /// Required. The parent resource where this secret will be created.
+        /// Any type of stream (WebDataStream, IosAppDataStream, AndroidAppDataStream)
+        /// may be a parent.
+        /// Format: properties/{property}/webDataStreams/{webDataStream}
+        /// </param>
+        /// <param name="measurementProtocolSecret">
+        /// Required. The measurement protocol secret to create.
+        /// </param>
+        /// <param name="callSettings">If not null, applies overrides to this RPC call.</param>
+        /// <returns>The RPC response.</returns>
+        public virtual MeasurementProtocolSecret CreateMeasurementProtocolSecret(string parent, MeasurementProtocolSecret measurementProtocolSecret, gaxgrpc::CallSettings callSettings = null) =>
+            CreateMeasurementProtocolSecret(new CreateMeasurementProtocolSecretRequest
+            {
+                Parent = gax::GaxPreconditions.CheckNotNullOrEmpty(parent, nameof(parent)),
+                MeasurementProtocolSecret = gax::GaxPreconditions.CheckNotNull(measurementProtocolSecret, nameof(measurementProtocolSecret)),
+            }, callSettings);
+
+        /// <summary>
+        /// Creates a measurement protocol secret.
+        /// </summary>
+        /// <param name="parent">
+        /// Required. The parent resource where this secret will be created.
+        /// Any type of stream (WebDataStream, IosAppDataStream, AndroidAppDataStream)
+        /// may be a parent.
+        /// Format: properties/{property}/webDataStreams/{webDataStream}
+        /// </param>
+        /// <param name="measurementProtocolSecret">
+        /// Required. The measurement protocol secret to create.
+        /// </param>
+        /// <param name="callSettings">If not null, applies overrides to this RPC call.</param>
+        /// <returns>A Task containing the RPC response.</returns>
+        public virtual stt::Task<MeasurementProtocolSecret> CreateMeasurementProtocolSecretAsync(string parent, MeasurementProtocolSecret measurementProtocolSecret, gaxgrpc::CallSettings callSettings = null) =>
+            CreateMeasurementProtocolSecretAsync(new CreateMeasurementProtocolSecretRequest
+            {
+                Parent = gax::GaxPreconditions.CheckNotNullOrEmpty(parent, nameof(parent)),
+                MeasurementProtocolSecret = gax::GaxPreconditions.CheckNotNull(measurementProtocolSecret, nameof(measurementProtocolSecret)),
+            }, callSettings);
+
+        /// <summary>
+        /// Creates a measurement protocol secret.
+        /// </summary>
+        /// <param name="parent">
+        /// Required. The parent resource where this secret will be created.
+        /// Any type of stream (WebDataStream, IosAppDataStream, AndroidAppDataStream)
+        /// may be a parent.
+        /// Format: properties/{property}/webDataStreams/{webDataStream}
+        /// </param>
+        /// <param name="measurementProtocolSecret">
+        /// Required. The measurement protocol secret to create.
+        /// </param>
+        /// <param name="cancellationToken">A <see cref="st::CancellationToken"/> to use for this RPC.</param>
+        /// <returns>A Task containing the RPC response.</returns>
+        public virtual stt::Task<MeasurementProtocolSecret> CreateMeasurementProtocolSecretAsync(string parent, MeasurementProtocolSecret measurementProtocolSecret, st::CancellationToken cancellationToken) =>
+            CreateMeasurementProtocolSecretAsync(parent, measurementProtocolSecret, gaxgrpc::CallSettings.FromCancellationToken(cancellationToken));
+
+        /// <summary>
+        /// Creates a measurement protocol secret.
+        /// </summary>
+        /// <param name="parent">
+        /// Required. The parent resource where this secret will be created.
+        /// Any type of stream (WebDataStream, IosAppDataStream, AndroidAppDataStream)
+        /// may be a parent.
+        /// Format: properties/{property}/webDataStreams/{webDataStream}
+        /// </param>
+        /// <param name="measurementProtocolSecret">
+        /// Required. The measurement protocol secret to create.
+        /// </param>
+        /// <param name="callSettings">If not null, applies overrides to this RPC call.</param>
+        /// <returns>The RPC response.</returns>
+        public virtual MeasurementProtocolSecret CreateMeasurementProtocolSecret(WebDataStreamName parent, MeasurementProtocolSecret measurementProtocolSecret, gaxgrpc::CallSettings callSettings = null) =>
+            CreateMeasurementProtocolSecret(new CreateMeasurementProtocolSecretRequest
+            {
+                ParentAsWebDataStreamName = gax::GaxPreconditions.CheckNotNull(parent, nameof(parent)),
+                MeasurementProtocolSecret = gax::GaxPreconditions.CheckNotNull(measurementProtocolSecret, nameof(measurementProtocolSecret)),
+            }, callSettings);
+
+        /// <summary>
+        /// Creates a measurement protocol secret.
+        /// </summary>
+        /// <param name="parent">
+        /// Required. The parent resource where this secret will be created.
+        /// Any type of stream (WebDataStream, IosAppDataStream, AndroidAppDataStream)
+        /// may be a parent.
+        /// Format: properties/{property}/webDataStreams/{webDataStream}
+        /// </param>
+        /// <param name="measurementProtocolSecret">
+        /// Required. The measurement protocol secret to create.
+        /// </param>
+        /// <param name="callSettings">If not null, applies overrides to this RPC call.</param>
+        /// <returns>A Task containing the RPC response.</returns>
+        public virtual stt::Task<MeasurementProtocolSecret> CreateMeasurementProtocolSecretAsync(WebDataStreamName parent, MeasurementProtocolSecret measurementProtocolSecret, gaxgrpc::CallSettings callSettings = null) =>
+            CreateMeasurementProtocolSecretAsync(new CreateMeasurementProtocolSecretRequest
+            {
+                ParentAsWebDataStreamName = gax::GaxPreconditions.CheckNotNull(parent, nameof(parent)),
+                MeasurementProtocolSecret = gax::GaxPreconditions.CheckNotNull(measurementProtocolSecret, nameof(measurementProtocolSecret)),
+            }, callSettings);
+
+        /// <summary>
+        /// Creates a measurement protocol secret.
+        /// </summary>
+        /// <param name="parent">
+        /// Required. The parent resource where this secret will be created.
+        /// Any type of stream (WebDataStream, IosAppDataStream, AndroidAppDataStream)
+        /// may be a parent.
+        /// Format: properties/{property}/webDataStreams/{webDataStream}
+        /// </param>
+        /// <param name="measurementProtocolSecret">
+        /// Required. The measurement protocol secret to create.
+        /// </param>
+        /// <param name="cancellationToken">A <see cref="st::CancellationToken"/> to use for this RPC.</param>
+        /// <returns>A Task containing the RPC response.</returns>
+        public virtual stt::Task<MeasurementProtocolSecret> CreateMeasurementProtocolSecretAsync(WebDataStreamName parent, MeasurementProtocolSecret measurementProtocolSecret, st::CancellationToken cancellationToken) =>
+            CreateMeasurementProtocolSecretAsync(parent, measurementProtocolSecret, gaxgrpc::CallSettings.FromCancellationToken(cancellationToken));
+
+        /// <summary>
+        /// Deletes target MeasurementProtocolSecret.
+        /// </summary>
+        /// <param name="request">The request object containing all of the parameters for the API call.</param>
+        /// <param name="callSettings">If not null, applies overrides to this RPC call.</param>
+        /// <returns>The RPC response.</returns>
+        public virtual void DeleteMeasurementProtocolSecret(DeleteMeasurementProtocolSecretRequest request, gaxgrpc::CallSettings callSettings = null) =>
+            throw new sys::NotImplementedException();
+
+        /// <summary>
+        /// Deletes target MeasurementProtocolSecret.
+        /// </summary>
+        /// <param name="request">The request object containing all of the parameters for the API call.</param>
+        /// <param name="callSettings">If not null, applies overrides to this RPC call.</param>
+        /// <returns>A Task containing the RPC response.</returns>
+        public virtual stt::Task DeleteMeasurementProtocolSecretAsync(DeleteMeasurementProtocolSecretRequest request, gaxgrpc::CallSettings callSettings = null) =>
+            throw new sys::NotImplementedException();
+
+        /// <summary>
+        /// Deletes target MeasurementProtocolSecret.
+        /// </summary>
+        /// <param name="request">The request object containing all of the parameters for the API call.</param>
+        /// <param name="cancellationToken">A <see cref="st::CancellationToken"/> to use for this RPC.</param>
+        /// <returns>A Task containing the RPC response.</returns>
+        public virtual stt::Task DeleteMeasurementProtocolSecretAsync(DeleteMeasurementProtocolSecretRequest request, st::CancellationToken cancellationToken) =>
+            DeleteMeasurementProtocolSecretAsync(request, gaxgrpc::CallSettings.FromCancellationToken(cancellationToken));
+
+        /// <summary>
+        /// Deletes target MeasurementProtocolSecret.
+        /// </summary>
+        /// <param name="name">
+        /// Required. The name of the MeasurementProtocolSecret to delete.
+        /// Format:
+        /// properties/{property}/webDataStreams/{webDataStream}/measurementProtocolSecrets/{measurementProtocolSecret}
+        /// Note: Any type of stream (WebDataStream, IosAppDataStream,
+        /// AndroidAppDataStream) may be a parent.
+        /// </param>
+        /// <param name="callSettings">If not null, applies overrides to this RPC call.</param>
+        /// <returns>The RPC response.</returns>
+        public virtual void DeleteMeasurementProtocolSecret(string name, gaxgrpc::CallSettings callSettings = null) =>
+            DeleteMeasurementProtocolSecret(new DeleteMeasurementProtocolSecretRequest
+            {
+                Name = gax::GaxPreconditions.CheckNotNullOrEmpty(name, nameof(name)),
+            }, callSettings);
+
+        /// <summary>
+        /// Deletes target MeasurementProtocolSecret.
+        /// </summary>
+        /// <param name="name">
+        /// Required. The name of the MeasurementProtocolSecret to delete.
+        /// Format:
+        /// properties/{property}/webDataStreams/{webDataStream}/measurementProtocolSecrets/{measurementProtocolSecret}
+        /// Note: Any type of stream (WebDataStream, IosAppDataStream,
+        /// AndroidAppDataStream) may be a parent.
+        /// </param>
+        /// <param name="callSettings">If not null, applies overrides to this RPC call.</param>
+        /// <returns>A Task containing the RPC response.</returns>
+        public virtual stt::Task DeleteMeasurementProtocolSecretAsync(string name, gaxgrpc::CallSettings callSettings = null) =>
+            DeleteMeasurementProtocolSecretAsync(new DeleteMeasurementProtocolSecretRequest
+            {
+                Name = gax::GaxPreconditions.CheckNotNullOrEmpty(name, nameof(name)),
+            }, callSettings);
+
+        /// <summary>
+        /// Deletes target MeasurementProtocolSecret.
+        /// </summary>
+        /// <param name="name">
+        /// Required. The name of the MeasurementProtocolSecret to delete.
+        /// Format:
+        /// properties/{property}/webDataStreams/{webDataStream}/measurementProtocolSecrets/{measurementProtocolSecret}
+        /// Note: Any type of stream (WebDataStream, IosAppDataStream,
+        /// AndroidAppDataStream) may be a parent.
+        /// </param>
+        /// <param name="cancellationToken">A <see cref="st::CancellationToken"/> to use for this RPC.</param>
+        /// <returns>A Task containing the RPC response.</returns>
+        public virtual stt::Task DeleteMeasurementProtocolSecretAsync(string name, st::CancellationToken cancellationToken) =>
+            DeleteMeasurementProtocolSecretAsync(name, gaxgrpc::CallSettings.FromCancellationToken(cancellationToken));
+
+        /// <summary>
+        /// Deletes target MeasurementProtocolSecret.
+        /// </summary>
+        /// <param name="name">
+        /// Required. The name of the MeasurementProtocolSecret to delete.
+        /// Format:
+        /// properties/{property}/webDataStreams/{webDataStream}/measurementProtocolSecrets/{measurementProtocolSecret}
+        /// Note: Any type of stream (WebDataStream, IosAppDataStream,
+        /// AndroidAppDataStream) may be a parent.
+        /// </param>
+        /// <param name="callSettings">If not null, applies overrides to this RPC call.</param>
+        /// <returns>The RPC response.</returns>
+        public virtual void DeleteMeasurementProtocolSecret(MeasurementProtocolSecretName name, gaxgrpc::CallSettings callSettings = null) =>
+            DeleteMeasurementProtocolSecret(new DeleteMeasurementProtocolSecretRequest
+            {
+                MeasurementProtocolSecretName = gax::GaxPreconditions.CheckNotNull(name, nameof(name)),
+            }, callSettings);
+
+        /// <summary>
+        /// Deletes target MeasurementProtocolSecret.
+        /// </summary>
+        /// <param name="name">
+        /// Required. The name of the MeasurementProtocolSecret to delete.
+        /// Format:
+        /// properties/{property}/webDataStreams/{webDataStream}/measurementProtocolSecrets/{measurementProtocolSecret}
+        /// Note: Any type of stream (WebDataStream, IosAppDataStream,
+        /// AndroidAppDataStream) may be a parent.
+        /// </param>
+        /// <param name="callSettings">If not null, applies overrides to this RPC call.</param>
+        /// <returns>A Task containing the RPC response.</returns>
+        public virtual stt::Task DeleteMeasurementProtocolSecretAsync(MeasurementProtocolSecretName name, gaxgrpc::CallSettings callSettings = null) =>
+            DeleteMeasurementProtocolSecretAsync(new DeleteMeasurementProtocolSecretRequest
+            {
+                MeasurementProtocolSecretName = gax::GaxPreconditions.CheckNotNull(name, nameof(name)),
+            }, callSettings);
+
+        /// <summary>
+        /// Deletes target MeasurementProtocolSecret.
+        /// </summary>
+        /// <param name="name">
+        /// Required. The name of the MeasurementProtocolSecret to delete.
+        /// Format:
+        /// properties/{property}/webDataStreams/{webDataStream}/measurementProtocolSecrets/{measurementProtocolSecret}
+        /// Note: Any type of stream (WebDataStream, IosAppDataStream,
+        /// AndroidAppDataStream) may be a parent.
+        /// </param>
+        /// <param name="cancellationToken">A <see cref="st::CancellationToken"/> to use for this RPC.</param>
+        /// <returns>A Task containing the RPC response.</returns>
+        public virtual stt::Task DeleteMeasurementProtocolSecretAsync(MeasurementProtocolSecretName name, st::CancellationToken cancellationToken) =>
+            DeleteMeasurementProtocolSecretAsync(name, gaxgrpc::CallSettings.FromCancellationToken(cancellationToken));
+
+        /// <summary>
+        /// Updates a measurement protocol secret.
+        /// </summary>
+        /// <param name="request">The request object containing all of the parameters for the API call.</param>
+        /// <param name="callSettings">If not null, applies overrides to this RPC call.</param>
+        /// <returns>The RPC response.</returns>
+        public virtual MeasurementProtocolSecret UpdateMeasurementProtocolSecret(UpdateMeasurementProtocolSecretRequest request, gaxgrpc::CallSettings callSettings = null) =>
+            throw new sys::NotImplementedException();
+
+        /// <summary>
+        /// Updates a measurement protocol secret.
+        /// </summary>
+        /// <param name="request">The request object containing all of the parameters for the API call.</param>
+        /// <param name="callSettings">If not null, applies overrides to this RPC call.</param>
+        /// <returns>A Task containing the RPC response.</returns>
+        public virtual stt::Task<MeasurementProtocolSecret> UpdateMeasurementProtocolSecretAsync(UpdateMeasurementProtocolSecretRequest request, gaxgrpc::CallSettings callSettings = null) =>
+            throw new sys::NotImplementedException();
+
+        /// <summary>
+        /// Updates a measurement protocol secret.
+        /// </summary>
+        /// <param name="request">The request object containing all of the parameters for the API call.</param>
+        /// <param name="cancellationToken">A <see cref="st::CancellationToken"/> to use for this RPC.</param>
+        /// <returns>A Task containing the RPC response.</returns>
+        public virtual stt::Task<MeasurementProtocolSecret> UpdateMeasurementProtocolSecretAsync(UpdateMeasurementProtocolSecretRequest request, st::CancellationToken cancellationToken) =>
+            UpdateMeasurementProtocolSecretAsync(request, gaxgrpc::CallSettings.FromCancellationToken(cancellationToken));
+
+        /// <summary>
+        /// Updates a measurement protocol secret.
+        /// </summary>
+        /// <param name="measurementProtocolSecret">
+        /// Required. The measurement protocol secret to update.
+        /// </param>
+        /// <param name="updateMask">
+        /// The list of fields to be updated. Omitted fields will not be updated.
+        /// </param>
+        /// <param name="callSettings">If not null, applies overrides to this RPC call.</param>
+        /// <returns>The RPC response.</returns>
+        public virtual MeasurementProtocolSecret UpdateMeasurementProtocolSecret(MeasurementProtocolSecret measurementProtocolSecret, wkt::FieldMask updateMask, gaxgrpc::CallSettings callSettings = null) =>
+            UpdateMeasurementProtocolSecret(new UpdateMeasurementProtocolSecretRequest
+            {
+                MeasurementProtocolSecret = gax::GaxPreconditions.CheckNotNull(measurementProtocolSecret, nameof(measurementProtocolSecret)),
+                UpdateMask = updateMask,
+            }, callSettings);
+
+        /// <summary>
+        /// Updates a measurement protocol secret.
+        /// </summary>
+        /// <param name="measurementProtocolSecret">
+        /// Required. The measurement protocol secret to update.
+        /// </param>
+        /// <param name="updateMask">
+        /// The list of fields to be updated. Omitted fields will not be updated.
+        /// </param>
+        /// <param name="callSettings">If not null, applies overrides to this RPC call.</param>
+        /// <returns>A Task containing the RPC response.</returns>
+        public virtual stt::Task<MeasurementProtocolSecret> UpdateMeasurementProtocolSecretAsync(MeasurementProtocolSecret measurementProtocolSecret, wkt::FieldMask updateMask, gaxgrpc::CallSettings callSettings = null) =>
+            UpdateMeasurementProtocolSecretAsync(new UpdateMeasurementProtocolSecretRequest
+            {
+                MeasurementProtocolSecret = gax::GaxPreconditions.CheckNotNull(measurementProtocolSecret, nameof(measurementProtocolSecret)),
+                UpdateMask = updateMask,
+            }, callSettings);
+
+        /// <summary>
+        /// Updates a measurement protocol secret.
+        /// </summary>
+        /// <param name="measurementProtocolSecret">
+        /// Required. The measurement protocol secret to update.
+        /// </param>
+        /// <param name="updateMask">
+        /// The list of fields to be updated. Omitted fields will not be updated.
+        /// </param>
+        /// <param name="cancellationToken">A <see cref="st::CancellationToken"/> to use for this RPC.</param>
+        /// <returns>A Task containing the RPC response.</returns>
+        public virtual stt::Task<MeasurementProtocolSecret> UpdateMeasurementProtocolSecretAsync(MeasurementProtocolSecret measurementProtocolSecret, wkt::FieldMask updateMask, st::CancellationToken cancellationToken) =>
+            UpdateMeasurementProtocolSecretAsync(measurementProtocolSecret, updateMask, gaxgrpc::CallSettings.FromCancellationToken(cancellationToken));
+
+        /// <summary>
+        /// Searches through all changes to an account or its children given the
+        /// specified set of filters.
+        /// </summary>
+        /// <param name="request">The request object containing all of the parameters for the API call.</param>
+        /// <param name="callSettings">If not null, applies overrides to this RPC call.</param>
+        /// <returns>A pageable sequence of <see cref="ChangeHistoryEvent"/> resources.</returns>
+        public virtual gax::PagedEnumerable<SearchChangeHistoryEventsResponse, ChangeHistoryEvent> SearchChangeHistoryEvents(SearchChangeHistoryEventsRequest request, gaxgrpc::CallSettings callSettings = null) =>
+            throw new sys::NotImplementedException();
+
+        /// <summary>
+        /// Searches through all changes to an account or its children given the
+        /// specified set of filters.
+        /// </summary>
+        /// <param name="request">The request object containing all of the parameters for the API call.</param>
+        /// <param name="callSettings">If not null, applies overrides to this RPC call.</param>
+        /// <returns>A pageable asynchronous sequence of <see cref="ChangeHistoryEvent"/> resources.</returns>
+        public virtual gax::PagedAsyncEnumerable<SearchChangeHistoryEventsResponse, ChangeHistoryEvent> SearchChangeHistoryEventsAsync(SearchChangeHistoryEventsRequest request, gaxgrpc::CallSettings callSettings = null) =>
+            throw new sys::NotImplementedException();
+
+        /// <summary>
+        /// Lookup for Google Signals settings for a property.
+        /// </summary>
+        /// <param name="request">The request object containing all of the parameters for the API call.</param>
+        /// <param name="callSettings">If not null, applies overrides to this RPC call.</param>
+        /// <returns>The RPC response.</returns>
+        public virtual GoogleSignalsSettings GetGoogleSignalsSettings(GetGoogleSignalsSettingsRequest request, gaxgrpc::CallSettings callSettings = null) =>
+            throw new sys::NotImplementedException();
+
+        /// <summary>
+        /// Lookup for Google Signals settings for a property.
+        /// </summary>
+        /// <param name="request">The request object containing all of the parameters for the API call.</param>
+        /// <param name="callSettings">If not null, applies overrides to this RPC call.</param>
+        /// <returns>A Task containing the RPC response.</returns>
+        public virtual stt::Task<GoogleSignalsSettings> GetGoogleSignalsSettingsAsync(GetGoogleSignalsSettingsRequest request, gaxgrpc::CallSettings callSettings = null) =>
+            throw new sys::NotImplementedException();
+
+        /// <summary>
+        /// Lookup for Google Signals settings for a property.
+        /// </summary>
+        /// <param name="request">The request object containing all of the parameters for the API call.</param>
+        /// <param name="cancellationToken">A <see cref="st::CancellationToken"/> to use for this RPC.</param>
+        /// <returns>A Task containing the RPC response.</returns>
+        public virtual stt::Task<GoogleSignalsSettings> GetGoogleSignalsSettingsAsync(GetGoogleSignalsSettingsRequest request, st::CancellationToken cancellationToken) =>
+            GetGoogleSignalsSettingsAsync(request, gaxgrpc::CallSettings.FromCancellationToken(cancellationToken));
+
+        /// <summary>
+        /// Lookup for Google Signals settings for a property.
+        /// </summary>
+        /// <param name="name">
+        /// Required. The name of the google signals settings to retrieve.
+        /// Format: properties/{property}/googleSignalsSettings
+        /// </param>
+        /// <param name="callSettings">If not null, applies overrides to this RPC call.</param>
+        /// <returns>The RPC response.</returns>
+        public virtual GoogleSignalsSettings GetGoogleSignalsSettings(string name, gaxgrpc::CallSettings callSettings = null) =>
+            GetGoogleSignalsSettings(new GetGoogleSignalsSettingsRequest
+            {
+                Name = gax::GaxPreconditions.CheckNotNullOrEmpty(name, nameof(name)),
+            }, callSettings);
+
+        /// <summary>
+        /// Lookup for Google Signals settings for a property.
+        /// </summary>
+        /// <param name="name">
+        /// Required. The name of the google signals settings to retrieve.
+        /// Format: properties/{property}/googleSignalsSettings
+        /// </param>
+        /// <param name="callSettings">If not null, applies overrides to this RPC call.</param>
+        /// <returns>A Task containing the RPC response.</returns>
+        public virtual stt::Task<GoogleSignalsSettings> GetGoogleSignalsSettingsAsync(string name, gaxgrpc::CallSettings callSettings = null) =>
+            GetGoogleSignalsSettingsAsync(new GetGoogleSignalsSettingsRequest
+            {
+                Name = gax::GaxPreconditions.CheckNotNullOrEmpty(name, nameof(name)),
+            }, callSettings);
+
+        /// <summary>
+        /// Lookup for Google Signals settings for a property.
+        /// </summary>
+        /// <param name="name">
+        /// Required. The name of the google signals settings to retrieve.
+        /// Format: properties/{property}/googleSignalsSettings
+        /// </param>
+        /// <param name="cancellationToken">A <see cref="st::CancellationToken"/> to use for this RPC.</param>
+        /// <returns>A Task containing the RPC response.</returns>
+        public virtual stt::Task<GoogleSignalsSettings> GetGoogleSignalsSettingsAsync(string name, st::CancellationToken cancellationToken) =>
+            GetGoogleSignalsSettingsAsync(name, gaxgrpc::CallSettings.FromCancellationToken(cancellationToken));
+
+        /// <summary>
+        /// Lookup for Google Signals settings for a property.
+        /// </summary>
+        /// <param name="name">
+        /// Required. The name of the google signals settings to retrieve.
+        /// Format: properties/{property}/googleSignalsSettings
+        /// </param>
+        /// <param name="callSettings">If not null, applies overrides to this RPC call.</param>
+        /// <returns>The RPC response.</returns>
+        public virtual GoogleSignalsSettings GetGoogleSignalsSettings(GoogleSignalsSettingsName name, gaxgrpc::CallSettings callSettings = null) =>
+            GetGoogleSignalsSettings(new GetGoogleSignalsSettingsRequest
+            {
+                GoogleSignalsSettingsName = gax::GaxPreconditions.CheckNotNull(name, nameof(name)),
+            }, callSettings);
+
+        /// <summary>
+        /// Lookup for Google Signals settings for a property.
+        /// </summary>
+        /// <param name="name">
+        /// Required. The name of the google signals settings to retrieve.
+        /// Format: properties/{property}/googleSignalsSettings
+        /// </param>
+        /// <param name="callSettings">If not null, applies overrides to this RPC call.</param>
+        /// <returns>A Task containing the RPC response.</returns>
+        public virtual stt::Task<GoogleSignalsSettings> GetGoogleSignalsSettingsAsync(GoogleSignalsSettingsName name, gaxgrpc::CallSettings callSettings = null) =>
+            GetGoogleSignalsSettingsAsync(new GetGoogleSignalsSettingsRequest
+            {
+                GoogleSignalsSettingsName = gax::GaxPreconditions.CheckNotNull(name, nameof(name)),
+            }, callSettings);
+
+        /// <summary>
+        /// Lookup for Google Signals settings for a property.
+        /// </summary>
+        /// <param name="name">
+        /// Required. The name of the google signals settings to retrieve.
+        /// Format: properties/{property}/googleSignalsSettings
+        /// </param>
+        /// <param name="cancellationToken">A <see cref="st::CancellationToken"/> to use for this RPC.</param>
+        /// <returns>A Task containing the RPC response.</returns>
+        public virtual stt::Task<GoogleSignalsSettings> GetGoogleSignalsSettingsAsync(GoogleSignalsSettingsName name, st::CancellationToken cancellationToken) =>
+            GetGoogleSignalsSettingsAsync(name, gaxgrpc::CallSettings.FromCancellationToken(cancellationToken));
+
+        /// <summary>
+        /// Updates Google Signals settings for a property.
+        /// </summary>
+        /// <param name="request">The request object containing all of the parameters for the API call.</param>
+        /// <param name="callSettings">If not null, applies overrides to this RPC call.</param>
+        /// <returns>The RPC response.</returns>
+        public virtual GoogleSignalsSettings UpdateGoogleSignalsSettings(UpdateGoogleSignalsSettingsRequest request, gaxgrpc::CallSettings callSettings = null) =>
+            throw new sys::NotImplementedException();
+
+        /// <summary>
+        /// Updates Google Signals settings for a property.
+        /// </summary>
+        /// <param name="request">The request object containing all of the parameters for the API call.</param>
+        /// <param name="callSettings">If not null, applies overrides to this RPC call.</param>
+        /// <returns>A Task containing the RPC response.</returns>
+        public virtual stt::Task<GoogleSignalsSettings> UpdateGoogleSignalsSettingsAsync(UpdateGoogleSignalsSettingsRequest request, gaxgrpc::CallSettings callSettings = null) =>
+            throw new sys::NotImplementedException();
+
+        /// <summary>
+        /// Updates Google Signals settings for a property.
+        /// </summary>
+        /// <param name="request">The request object containing all of the parameters for the API call.</param>
+        /// <param name="cancellationToken">A <see cref="st::CancellationToken"/> to use for this RPC.</param>
+        /// <returns>A Task containing the RPC response.</returns>
+        public virtual stt::Task<GoogleSignalsSettings> UpdateGoogleSignalsSettingsAsync(UpdateGoogleSignalsSettingsRequest request, st::CancellationToken cancellationToken) =>
+            UpdateGoogleSignalsSettingsAsync(request, gaxgrpc::CallSettings.FromCancellationToken(cancellationToken));
+
+        /// <summary>
+        /// Updates Google Signals settings for a property.
+        /// </summary>
+        /// <param name="googleSignalsSettings">
+        /// Required. The settings to update.
+        /// The `name` field is used to identify the settings to be updated.
+        /// </param>
+        /// <param name="updateMask">
+        /// Required. The list of fields to be updated. Field names must be in snake case
+        /// (e.g., "field_to_update"). Omitted fields will not be updated. To replace
+        /// the entire entity, use one path with the string "*" to match all fields.
+        /// </param>
+        /// <param name="callSettings">If not null, applies overrides to this RPC call.</param>
+        /// <returns>The RPC response.</returns>
+        public virtual GoogleSignalsSettings UpdateGoogleSignalsSettings(GoogleSignalsSettings googleSignalsSettings, wkt::FieldMask updateMask, gaxgrpc::CallSettings callSettings = null) =>
+            UpdateGoogleSignalsSettings(new UpdateGoogleSignalsSettingsRequest
+            {
+                GoogleSignalsSettings = gax::GaxPreconditions.CheckNotNull(googleSignalsSettings, nameof(googleSignalsSettings)),
+                UpdateMask = gax::GaxPreconditions.CheckNotNull(updateMask, nameof(updateMask)),
+            }, callSettings);
+
+        /// <summary>
+        /// Updates Google Signals settings for a property.
+        /// </summary>
+        /// <param name="googleSignalsSettings">
+        /// Required. The settings to update.
+        /// The `name` field is used to identify the settings to be updated.
+        /// </param>
+        /// <param name="updateMask">
+        /// Required. The list of fields to be updated. Field names must be in snake case
+        /// (e.g., "field_to_update"). Omitted fields will not be updated. To replace
+        /// the entire entity, use one path with the string "*" to match all fields.
+        /// </param>
+        /// <param name="callSettings">If not null, applies overrides to this RPC call.</param>
+        /// <returns>A Task containing the RPC response.</returns>
+        public virtual stt::Task<GoogleSignalsSettings> UpdateGoogleSignalsSettingsAsync(GoogleSignalsSettings googleSignalsSettings, wkt::FieldMask updateMask, gaxgrpc::CallSettings callSettings = null) =>
+            UpdateGoogleSignalsSettingsAsync(new UpdateGoogleSignalsSettingsRequest
+            {
+                GoogleSignalsSettings = gax::GaxPreconditions.CheckNotNull(googleSignalsSettings, nameof(googleSignalsSettings)),
+                UpdateMask = gax::GaxPreconditions.CheckNotNull(updateMask, nameof(updateMask)),
+            }, callSettings);
+
+        /// <summary>
+        /// Updates Google Signals settings for a property.
+        /// </summary>
+        /// <param name="googleSignalsSettings">
+        /// Required. The settings to update.
+        /// The `name` field is used to identify the settings to be updated.
+        /// </param>
+        /// <param name="updateMask">
+        /// Required. The list of fields to be updated. Field names must be in snake case
+        /// (e.g., "field_to_update"). Omitted fields will not be updated. To replace
+        /// the entire entity, use one path with the string "*" to match all fields.
+        /// </param>
+        /// <param name="cancellationToken">A <see cref="st::CancellationToken"/> to use for this RPC.</param>
+        /// <returns>A Task containing the RPC response.</returns>
+        public virtual stt::Task<GoogleSignalsSettings> UpdateGoogleSignalsSettingsAsync(GoogleSignalsSettings googleSignalsSettings, wkt::FieldMask updateMask, st::CancellationToken cancellationToken) =>
+            UpdateGoogleSignalsSettingsAsync(googleSignalsSettings, updateMask, gaxgrpc::CallSettings.FromCancellationToken(cancellationToken));
+
+        /// <summary>
+        /// Creates a conversion event with the specified attributes.
+        /// </summary>
+        /// <param name="request">The request object containing all of the parameters for the API call.</param>
+        /// <param name="callSettings">If not null, applies overrides to this RPC call.</param>
+        /// <returns>The RPC response.</returns>
+        public virtual ConversionEvent CreateConversionEvent(CreateConversionEventRequest request, gaxgrpc::CallSettings callSettings = null) =>
+            throw new sys::NotImplementedException();
+
+        /// <summary>
+        /// Creates a conversion event with the specified attributes.
+        /// </summary>
+        /// <param name="request">The request object containing all of the parameters for the API call.</param>
+        /// <param name="callSettings">If not null, applies overrides to this RPC call.</param>
+        /// <returns>A Task containing the RPC response.</returns>
+        public virtual stt::Task<ConversionEvent> CreateConversionEventAsync(CreateConversionEventRequest request, gaxgrpc::CallSettings callSettings = null) =>
+            throw new sys::NotImplementedException();
+
+        /// <summary>
+        /// Creates a conversion event with the specified attributes.
+        /// </summary>
+        /// <param name="request">The request object containing all of the parameters for the API call.</param>
+        /// <param name="cancellationToken">A <see cref="st::CancellationToken"/> to use for this RPC.</param>
+        /// <returns>A Task containing the RPC response.</returns>
+        public virtual stt::Task<ConversionEvent> CreateConversionEventAsync(CreateConversionEventRequest request, st::CancellationToken cancellationToken) =>
+            CreateConversionEventAsync(request, gaxgrpc::CallSettings.FromCancellationToken(cancellationToken));
+
+        /// <summary>
+        /// Creates a conversion event with the specified attributes.
+        /// </summary>
+        /// <param name="parent">
+        /// Required. The resource name of the parent property where this conversion event will
+        /// be created. Format: properties/123
+        /// </param>
+        /// <param name="conversionEvent">
+        /// Required. The conversion event to create.
+        /// </param>
+        /// <param name="callSettings">If not null, applies overrides to this RPC call.</param>
+        /// <returns>The RPC response.</returns>
+        public virtual ConversionEvent CreateConversionEvent(string parent, ConversionEvent conversionEvent, gaxgrpc::CallSettings callSettings = null) =>
+            CreateConversionEvent(new CreateConversionEventRequest
+            {
+                ConversionEvent = gax::GaxPreconditions.CheckNotNull(conversionEvent, nameof(conversionEvent)),
+                Parent = gax::GaxPreconditions.CheckNotNullOrEmpty(parent, nameof(parent)),
+            }, callSettings);
+
+        /// <summary>
+        /// Creates a conversion event with the specified attributes.
+        /// </summary>
+        /// <param name="parent">
+        /// Required. The resource name of the parent property where this conversion event will
+        /// be created. Format: properties/123
+        /// </param>
+        /// <param name="conversionEvent">
+        /// Required. The conversion event to create.
+        /// </param>
+        /// <param name="callSettings">If not null, applies overrides to this RPC call.</param>
+        /// <returns>A Task containing the RPC response.</returns>
+        public virtual stt::Task<ConversionEvent> CreateConversionEventAsync(string parent, ConversionEvent conversionEvent, gaxgrpc::CallSettings callSettings = null) =>
+            CreateConversionEventAsync(new CreateConversionEventRequest
+            {
+                ConversionEvent = gax::GaxPreconditions.CheckNotNull(conversionEvent, nameof(conversionEvent)),
+                Parent = gax::GaxPreconditions.CheckNotNullOrEmpty(parent, nameof(parent)),
+            }, callSettings);
+
+        /// <summary>
+        /// Creates a conversion event with the specified attributes.
+        /// </summary>
+        /// <param name="parent">
+        /// Required. The resource name of the parent property where this conversion event will
+        /// be created. Format: properties/123
+        /// </param>
+        /// <param name="conversionEvent">
+        /// Required. The conversion event to create.
+        /// </param>
+        /// <param name="cancellationToken">A <see cref="st::CancellationToken"/> to use for this RPC.</param>
+        /// <returns>A Task containing the RPC response.</returns>
+        public virtual stt::Task<ConversionEvent> CreateConversionEventAsync(string parent, ConversionEvent conversionEvent, st::CancellationToken cancellationToken) =>
+            CreateConversionEventAsync(parent, conversionEvent, gaxgrpc::CallSettings.FromCancellationToken(cancellationToken));
+
+        /// <summary>
+        /// Creates a conversion event with the specified attributes.
+        /// </summary>
+        /// <param name="parent">
+        /// Required. The resource name of the parent property where this conversion event will
+        /// be created. Format: properties/123
+        /// </param>
+        /// <param name="conversionEvent">
+        /// Required. The conversion event to create.
+        /// </param>
+        /// <param name="callSettings">If not null, applies overrides to this RPC call.</param>
+        /// <returns>The RPC response.</returns>
+        public virtual ConversionEvent CreateConversionEvent(PropertyName parent, ConversionEvent conversionEvent, gaxgrpc::CallSettings callSettings = null) =>
+            CreateConversionEvent(new CreateConversionEventRequest
+            {
+                ConversionEvent = gax::GaxPreconditions.CheckNotNull(conversionEvent, nameof(conversionEvent)),
+                ParentAsPropertyName = gax::GaxPreconditions.CheckNotNull(parent, nameof(parent)),
+            }, callSettings);
+
+        /// <summary>
+        /// Creates a conversion event with the specified attributes.
+        /// </summary>
+        /// <param name="parent">
+        /// Required. The resource name of the parent property where this conversion event will
+        /// be created. Format: properties/123
+        /// </param>
+        /// <param name="conversionEvent">
+        /// Required. The conversion event to create.
+        /// </param>
+        /// <param name="callSettings">If not null, applies overrides to this RPC call.</param>
+        /// <returns>A Task containing the RPC response.</returns>
+        public virtual stt::Task<ConversionEvent> CreateConversionEventAsync(PropertyName parent, ConversionEvent conversionEvent, gaxgrpc::CallSettings callSettings = null) =>
+            CreateConversionEventAsync(new CreateConversionEventRequest
+            {
+                ConversionEvent = gax::GaxPreconditions.CheckNotNull(conversionEvent, nameof(conversionEvent)),
+                ParentAsPropertyName = gax::GaxPreconditions.CheckNotNull(parent, nameof(parent)),
+            }, callSettings);
+
+        /// <summary>
+        /// Creates a conversion event with the specified attributes.
+        /// </summary>
+        /// <param name="parent">
+        /// Required. The resource name of the parent property where this conversion event will
+        /// be created. Format: properties/123
+        /// </param>
+        /// <param name="conversionEvent">
+        /// Required. The conversion event to create.
+        /// </param>
+        /// <param name="cancellationToken">A <see cref="st::CancellationToken"/> to use for this RPC.</param>
+        /// <returns>A Task containing the RPC response.</returns>
+        public virtual stt::Task<ConversionEvent> CreateConversionEventAsync(PropertyName parent, ConversionEvent conversionEvent, st::CancellationToken cancellationToken) =>
+            CreateConversionEventAsync(parent, conversionEvent, gaxgrpc::CallSettings.FromCancellationToken(cancellationToken));
+
+        /// <summary>
+        /// Retrieve a single conversion event.
+        /// </summary>
+        /// <param name="request">The request object containing all of the parameters for the API call.</param>
+        /// <param name="callSettings">If not null, applies overrides to this RPC call.</param>
+        /// <returns>The RPC response.</returns>
+        public virtual ConversionEvent GetConversionEvent(GetConversionEventRequest request, gaxgrpc::CallSettings callSettings = null) =>
+            throw new sys::NotImplementedException();
+
+        /// <summary>
+        /// Retrieve a single conversion event.
+        /// </summary>
+        /// <param name="request">The request object containing all of the parameters for the API call.</param>
+        /// <param name="callSettings">If not null, applies overrides to this RPC call.</param>
+        /// <returns>A Task containing the RPC response.</returns>
+        public virtual stt::Task<ConversionEvent> GetConversionEventAsync(GetConversionEventRequest request, gaxgrpc::CallSettings callSettings = null) =>
+            throw new sys::NotImplementedException();
+
+        /// <summary>
+        /// Retrieve a single conversion event.
+        /// </summary>
+        /// <param name="request">The request object containing all of the parameters for the API call.</param>
+        /// <param name="cancellationToken">A <see cref="st::CancellationToken"/> to use for this RPC.</param>
+        /// <returns>A Task containing the RPC response.</returns>
+        public virtual stt::Task<ConversionEvent> GetConversionEventAsync(GetConversionEventRequest request, st::CancellationToken cancellationToken) =>
+            GetConversionEventAsync(request, gaxgrpc::CallSettings.FromCancellationToken(cancellationToken));
+
+        /// <summary>
+        /// Retrieve a single conversion event.
+        /// </summary>
+        /// <param name="name">
+        /// Required. The resource name of the conversion event to retrieve.
+        /// Format: properties/{property}/conversionEvents/{conversion_event}
+        /// Example: "properties/123/conversionEvents/456"
+        /// </param>
+        /// <param name="callSettings">If not null, applies overrides to this RPC call.</param>
+        /// <returns>The RPC response.</returns>
+        public virtual ConversionEvent GetConversionEvent(string name, gaxgrpc::CallSettings callSettings = null) =>
+            GetConversionEvent(new GetConversionEventRequest
+            {
+                Name = gax::GaxPreconditions.CheckNotNullOrEmpty(name, nameof(name)),
+            }, callSettings);
+
+        /// <summary>
+        /// Retrieve a single conversion event.
+        /// </summary>
+        /// <param name="name">
+        /// Required. The resource name of the conversion event to retrieve.
+        /// Format: properties/{property}/conversionEvents/{conversion_event}
+        /// Example: "properties/123/conversionEvents/456"
+        /// </param>
+        /// <param name="callSettings">If not null, applies overrides to this RPC call.</param>
+        /// <returns>A Task containing the RPC response.</returns>
+        public virtual stt::Task<ConversionEvent> GetConversionEventAsync(string name, gaxgrpc::CallSettings callSettings = null) =>
+            GetConversionEventAsync(new GetConversionEventRequest
+            {
+                Name = gax::GaxPreconditions.CheckNotNullOrEmpty(name, nameof(name)),
+            }, callSettings);
+
+        /// <summary>
+        /// Retrieve a single conversion event.
+        /// </summary>
+        /// <param name="name">
+        /// Required. The resource name of the conversion event to retrieve.
+        /// Format: properties/{property}/conversionEvents/{conversion_event}
+        /// Example: "properties/123/conversionEvents/456"
+        /// </param>
+        /// <param name="cancellationToken">A <see cref="st::CancellationToken"/> to use for this RPC.</param>
+        /// <returns>A Task containing the RPC response.</returns>
+        public virtual stt::Task<ConversionEvent> GetConversionEventAsync(string name, st::CancellationToken cancellationToken) =>
+            GetConversionEventAsync(name, gaxgrpc::CallSettings.FromCancellationToken(cancellationToken));
+
+        /// <summary>
+        /// Retrieve a single conversion event.
+        /// </summary>
+        /// <param name="name">
+        /// Required. The resource name of the conversion event to retrieve.
+        /// Format: properties/{property}/conversionEvents/{conversion_event}
+        /// Example: "properties/123/conversionEvents/456"
+        /// </param>
+        /// <param name="callSettings">If not null, applies overrides to this RPC call.</param>
+        /// <returns>The RPC response.</returns>
+        public virtual ConversionEvent GetConversionEvent(ConversionEventName name, gaxgrpc::CallSettings callSettings = null) =>
+            GetConversionEvent(new GetConversionEventRequest
+            {
+                ConversionEventName = gax::GaxPreconditions.CheckNotNull(name, nameof(name)),
+            }, callSettings);
+
+        /// <summary>
+        /// Retrieve a single conversion event.
+        /// </summary>
+        /// <param name="name">
+        /// Required. The resource name of the conversion event to retrieve.
+        /// Format: properties/{property}/conversionEvents/{conversion_event}
+        /// Example: "properties/123/conversionEvents/456"
+        /// </param>
+        /// <param name="callSettings">If not null, applies overrides to this RPC call.</param>
+        /// <returns>A Task containing the RPC response.</returns>
+        public virtual stt::Task<ConversionEvent> GetConversionEventAsync(ConversionEventName name, gaxgrpc::CallSettings callSettings = null) =>
+            GetConversionEventAsync(new GetConversionEventRequest
+            {
+                ConversionEventName = gax::GaxPreconditions.CheckNotNull(name, nameof(name)),
+            }, callSettings);
+
+        /// <summary>
+        /// Retrieve a single conversion event.
+        /// </summary>
+        /// <param name="name">
+        /// Required. The resource name of the conversion event to retrieve.
+        /// Format: properties/{property}/conversionEvents/{conversion_event}
+        /// Example: "properties/123/conversionEvents/456"
+        /// </param>
+        /// <param name="cancellationToken">A <see cref="st::CancellationToken"/> to use for this RPC.</param>
+        /// <returns>A Task containing the RPC response.</returns>
+        public virtual stt::Task<ConversionEvent> GetConversionEventAsync(ConversionEventName name, st::CancellationToken cancellationToken) =>
+            GetConversionEventAsync(name, gaxgrpc::CallSettings.FromCancellationToken(cancellationToken));
+
+        /// <summary>
+        /// Deletes a conversion event in a property.
+        /// </summary>
+        /// <param name="request">The request object containing all of the parameters for the API call.</param>
+        /// <param name="callSettings">If not null, applies overrides to this RPC call.</param>
+        /// <returns>The RPC response.</returns>
+        public virtual void DeleteConversionEvent(DeleteConversionEventRequest request, gaxgrpc::CallSettings callSettings = null) =>
+            throw new sys::NotImplementedException();
+
+        /// <summary>
+        /// Deletes a conversion event in a property.
+        /// </summary>
+        /// <param name="request">The request object containing all of the parameters for the API call.</param>
+        /// <param name="callSettings">If not null, applies overrides to this RPC call.</param>
+        /// <returns>A Task containing the RPC response.</returns>
+        public virtual stt::Task DeleteConversionEventAsync(DeleteConversionEventRequest request, gaxgrpc::CallSettings callSettings = null) =>
+            throw new sys::NotImplementedException();
+
+        /// <summary>
+        /// Deletes a conversion event in a property.
+        /// </summary>
+        /// <param name="request">The request object containing all of the parameters for the API call.</param>
+        /// <param name="cancellationToken">A <see cref="st::CancellationToken"/> to use for this RPC.</param>
+        /// <returns>A Task containing the RPC response.</returns>
+        public virtual stt::Task DeleteConversionEventAsync(DeleteConversionEventRequest request, st::CancellationToken cancellationToken) =>
+            DeleteConversionEventAsync(request, gaxgrpc::CallSettings.FromCancellationToken(cancellationToken));
+
+        /// <summary>
+        /// Deletes a conversion event in a property.
+        /// </summary>
+        /// <param name="name">
+        /// Required. The resource name of the conversion event to delete.
+        /// Format: properties/{property}/conversionEvents/{conversion_event}
+        /// Example: "properties/123/conversionEvents/456"
+        /// </param>
+        /// <param name="callSettings">If not null, applies overrides to this RPC call.</param>
+        /// <returns>The RPC response.</returns>
+        public virtual void DeleteConversionEvent(string name, gaxgrpc::CallSettings callSettings = null) =>
+            DeleteConversionEvent(new DeleteConversionEventRequest
+            {
+                Name = gax::GaxPreconditions.CheckNotNullOrEmpty(name, nameof(name)),
+            }, callSettings);
+
+        /// <summary>
+        /// Deletes a conversion event in a property.
+        /// </summary>
+        /// <param name="name">
+        /// Required. The resource name of the conversion event to delete.
+        /// Format: properties/{property}/conversionEvents/{conversion_event}
+        /// Example: "properties/123/conversionEvents/456"
+        /// </param>
+        /// <param name="callSettings">If not null, applies overrides to this RPC call.</param>
+        /// <returns>A Task containing the RPC response.</returns>
+        public virtual stt::Task DeleteConversionEventAsync(string name, gaxgrpc::CallSettings callSettings = null) =>
+            DeleteConversionEventAsync(new DeleteConversionEventRequest
+            {
+                Name = gax::GaxPreconditions.CheckNotNullOrEmpty(name, nameof(name)),
+            }, callSettings);
+
+        /// <summary>
+        /// Deletes a conversion event in a property.
+        /// </summary>
+        /// <param name="name">
+        /// Required. The resource name of the conversion event to delete.
+        /// Format: properties/{property}/conversionEvents/{conversion_event}
+        /// Example: "properties/123/conversionEvents/456"
+        /// </param>
+        /// <param name="cancellationToken">A <see cref="st::CancellationToken"/> to use for this RPC.</param>
+        /// <returns>A Task containing the RPC response.</returns>
+        public virtual stt::Task DeleteConversionEventAsync(string name, st::CancellationToken cancellationToken) =>
+            DeleteConversionEventAsync(name, gaxgrpc::CallSettings.FromCancellationToken(cancellationToken));
+
+        /// <summary>
+        /// Deletes a conversion event in a property.
+        /// </summary>
+        /// <param name="name">
+        /// Required. The resource name of the conversion event to delete.
+        /// Format: properties/{property}/conversionEvents/{conversion_event}
+        /// Example: "properties/123/conversionEvents/456"
+        /// </param>
+        /// <param name="callSettings">If not null, applies overrides to this RPC call.</param>
+        /// <returns>The RPC response.</returns>
+        public virtual void DeleteConversionEvent(ConversionEventName name, gaxgrpc::CallSettings callSettings = null) =>
+            DeleteConversionEvent(new DeleteConversionEventRequest
+            {
+                ConversionEventName = gax::GaxPreconditions.CheckNotNull(name, nameof(name)),
+            }, callSettings);
+
+        /// <summary>
+        /// Deletes a conversion event in a property.
+        /// </summary>
+        /// <param name="name">
+        /// Required. The resource name of the conversion event to delete.
+        /// Format: properties/{property}/conversionEvents/{conversion_event}
+        /// Example: "properties/123/conversionEvents/456"
+        /// </param>
+        /// <param name="callSettings">If not null, applies overrides to this RPC call.</param>
+        /// <returns>A Task containing the RPC response.</returns>
+        public virtual stt::Task DeleteConversionEventAsync(ConversionEventName name, gaxgrpc::CallSettings callSettings = null) =>
+            DeleteConversionEventAsync(new DeleteConversionEventRequest
+            {
+                ConversionEventName = gax::GaxPreconditions.CheckNotNull(name, nameof(name)),
+            }, callSettings);
+
+        /// <summary>
+        /// Deletes a conversion event in a property.
+        /// </summary>
+        /// <param name="name">
+        /// Required. The resource name of the conversion event to delete.
+        /// Format: properties/{property}/conversionEvents/{conversion_event}
+        /// Example: "properties/123/conversionEvents/456"
+        /// </param>
+        /// <param name="cancellationToken">A <see cref="st::CancellationToken"/> to use for this RPC.</param>
+        /// <returns>A Task containing the RPC response.</returns>
+        public virtual stt::Task DeleteConversionEventAsync(ConversionEventName name, st::CancellationToken cancellationToken) =>
+            DeleteConversionEventAsync(name, gaxgrpc::CallSettings.FromCancellationToken(cancellationToken));
+
+        /// <summary>
+        /// Returns a list of conversion events in the specified parent property.
+        /// 
+        /// Returns an empty list if no conversion events are found.
+        /// </summary>
+        /// <param name="request">The request object containing all of the parameters for the API call.</param>
+        /// <param name="callSettings">If not null, applies overrides to this RPC call.</param>
+        /// <returns>A pageable sequence of <see cref="ConversionEvent"/> resources.</returns>
+        public virtual gax::PagedEnumerable<ListConversionEventsResponse, ConversionEvent> ListConversionEvents(ListConversionEventsRequest request, gaxgrpc::CallSettings callSettings = null) =>
+            throw new sys::NotImplementedException();
+
+        /// <summary>
+        /// Returns a list of conversion events in the specified parent property.
+        /// 
+        /// Returns an empty list if no conversion events are found.
+        /// </summary>
+        /// <param name="request">The request object containing all of the parameters for the API call.</param>
+        /// <param name="callSettings">If not null, applies overrides to this RPC call.</param>
+        /// <returns>A pageable asynchronous sequence of <see cref="ConversionEvent"/> resources.</returns>
+        public virtual gax::PagedAsyncEnumerable<ListConversionEventsResponse, ConversionEvent> ListConversionEventsAsync(ListConversionEventsRequest request, gaxgrpc::CallSettings callSettings = null) =>
+            throw new sys::NotImplementedException();
+
+        /// <summary>
+        /// Returns a list of conversion events in the specified parent property.
+        /// 
+        /// Returns an empty list if no conversion events are found.
+        /// </summary>
+        /// <param name="parent">
+        /// Required. The resource name of the parent property.
+        /// Example: 'properties/123'
+        /// </param>
+        /// <param name="pageToken">
+        /// The token returned from the previous request. A value of <c>null</c> or an empty string retrieves the first
+        /// page.
+        /// </param>
+        /// <param name="pageSize">
+        /// The size of page to request. The response will not be larger than this, but may be smaller. A value of
+        /// <c>null</c> or <c>0</c> uses a server-defined page size.
+        /// </param>
+        /// <param name="callSettings">If not null, applies overrides to this RPC call.</param>
+        /// <returns>A pageable sequence of <see cref="ConversionEvent"/> resources.</returns>
+        public virtual gax::PagedEnumerable<ListConversionEventsResponse, ConversionEvent> ListConversionEvents(string parent, string pageToken = null, int? pageSize = null, gaxgrpc::CallSettings callSettings = null) =>
+            ListConversionEvents(new ListConversionEventsRequest
+            {
+                Parent = gax::GaxPreconditions.CheckNotNullOrEmpty(parent, nameof(parent)),
+                PageToken = pageToken ?? "",
+                PageSize = pageSize ?? 0,
+            }, callSettings);
+
+        /// <summary>
+        /// Returns a list of conversion events in the specified parent property.
+        /// 
+        /// Returns an empty list if no conversion events are found.
+        /// </summary>
+        /// <param name="parent">
+        /// Required. The resource name of the parent property.
+        /// Example: 'properties/123'
+        /// </param>
+        /// <param name="pageToken">
+        /// The token returned from the previous request. A value of <c>null</c> or an empty string retrieves the first
+        /// page.
+        /// </param>
+        /// <param name="pageSize">
+        /// The size of page to request. The response will not be larger than this, but may be smaller. A value of
+        /// <c>null</c> or <c>0</c> uses a server-defined page size.
+        /// </param>
+        /// <param name="callSettings">If not null, applies overrides to this RPC call.</param>
+        /// <returns>A pageable asynchronous sequence of <see cref="ConversionEvent"/> resources.</returns>
+        public virtual gax::PagedAsyncEnumerable<ListConversionEventsResponse, ConversionEvent> ListConversionEventsAsync(string parent, string pageToken = null, int? pageSize = null, gaxgrpc::CallSettings callSettings = null) =>
+            ListConversionEventsAsync(new ListConversionEventsRequest
+            {
+                Parent = gax::GaxPreconditions.CheckNotNullOrEmpty(parent, nameof(parent)),
+                PageToken = pageToken ?? "",
+                PageSize = pageSize ?? 0,
+            }, callSettings);
+
+        /// <summary>
+        /// Returns a list of conversion events in the specified parent property.
+        /// 
+        /// Returns an empty list if no conversion events are found.
+        /// </summary>
+        /// <param name="parent">
+        /// Required. The resource name of the parent property.
+        /// Example: 'properties/123'
+        /// </param>
+        /// <param name="pageToken">
+        /// The token returned from the previous request. A value of <c>null</c> or an empty string retrieves the first
+        /// page.
+        /// </param>
+        /// <param name="pageSize">
+        /// The size of page to request. The response will not be larger than this, but may be smaller. A value of
+        /// <c>null</c> or <c>0</c> uses a server-defined page size.
+        /// </param>
+        /// <param name="callSettings">If not null, applies overrides to this RPC call.</param>
+        /// <returns>A pageable sequence of <see cref="ConversionEvent"/> resources.</returns>
+        public virtual gax::PagedEnumerable<ListConversionEventsResponse, ConversionEvent> ListConversionEvents(PropertyName parent, string pageToken = null, int? pageSize = null, gaxgrpc::CallSettings callSettings = null) =>
+            ListConversionEvents(new ListConversionEventsRequest
+            {
+                ParentAsPropertyName = gax::GaxPreconditions.CheckNotNull(parent, nameof(parent)),
+                PageToken = pageToken ?? "",
+                PageSize = pageSize ?? 0,
+            }, callSettings);
+
+        /// <summary>
+        /// Returns a list of conversion events in the specified parent property.
+        /// 
+        /// Returns an empty list if no conversion events are found.
+        /// </summary>
+        /// <param name="parent">
+        /// Required. The resource name of the parent property.
+        /// Example: 'properties/123'
+        /// </param>
+        /// <param name="pageToken">
+        /// The token returned from the previous request. A value of <c>null</c> or an empty string retrieves the first
+        /// page.
+        /// </param>
+        /// <param name="pageSize">
+        /// The size of page to request. The response will not be larger than this, but may be smaller. A value of
+        /// <c>null</c> or <c>0</c> uses a server-defined page size.
+        /// </param>
+        /// <param name="callSettings">If not null, applies overrides to this RPC call.</param>
+        /// <returns>A pageable asynchronous sequence of <see cref="ConversionEvent"/> resources.</returns>
+        public virtual gax::PagedAsyncEnumerable<ListConversionEventsResponse, ConversionEvent> ListConversionEventsAsync(PropertyName parent, string pageToken = null, int? pageSize = null, gaxgrpc::CallSettings callSettings = null) =>
+            ListConversionEventsAsync(new ListConversionEventsRequest
+            {
+                ParentAsPropertyName = gax::GaxPreconditions.CheckNotNull(parent, nameof(parent)),
+                PageToken = pageToken ?? "",
+                PageSize = pageSize ?? 0,
+            }, callSettings);
+
+        /// <summary>
+        /// Creates a CustomDimension.
+        /// </summary>
+        /// <param name="request">The request object containing all of the parameters for the API call.</param>
+        /// <param name="callSettings">If not null, applies overrides to this RPC call.</param>
+        /// <returns>The RPC response.</returns>
+        public virtual CustomDimension CreateCustomDimension(CreateCustomDimensionRequest request, gaxgrpc::CallSettings callSettings = null) =>
+            throw new sys::NotImplementedException();
+
+        /// <summary>
+        /// Creates a CustomDimension.
+        /// </summary>
+        /// <param name="request">The request object containing all of the parameters for the API call.</param>
+        /// <param name="callSettings">If not null, applies overrides to this RPC call.</param>
+        /// <returns>A Task containing the RPC response.</returns>
+        public virtual stt::Task<CustomDimension> CreateCustomDimensionAsync(CreateCustomDimensionRequest request, gaxgrpc::CallSettings callSettings = null) =>
+            throw new sys::NotImplementedException();
+
+        /// <summary>
+        /// Creates a CustomDimension.
+        /// </summary>
+        /// <param name="request">The request object containing all of the parameters for the API call.</param>
+        /// <param name="cancellationToken">A <see cref="st::CancellationToken"/> to use for this RPC.</param>
+        /// <returns>A Task containing the RPC response.</returns>
+        public virtual stt::Task<CustomDimension> CreateCustomDimensionAsync(CreateCustomDimensionRequest request, st::CancellationToken cancellationToken) =>
+            CreateCustomDimensionAsync(request, gaxgrpc::CallSettings.FromCancellationToken(cancellationToken));
+
+        /// <summary>
+        /// Creates a CustomDimension.
+        /// </summary>
+        /// <param name="parent">
+        /// Required. Example format: properties/1234
+        /// </param>
+        /// <param name="customDimension">
+        /// Required. The CustomDimension to create.
+        /// </param>
+        /// <param name="callSettings">If not null, applies overrides to this RPC call.</param>
+        /// <returns>The RPC response.</returns>
+        public virtual CustomDimension CreateCustomDimension(string parent, CustomDimension customDimension, gaxgrpc::CallSettings callSettings = null) =>
+            CreateCustomDimension(new CreateCustomDimensionRequest
+            {
+                Parent = gax::GaxPreconditions.CheckNotNullOrEmpty(parent, nameof(parent)),
+                CustomDimension = gax::GaxPreconditions.CheckNotNull(customDimension, nameof(customDimension)),
+            }, callSettings);
+
+        /// <summary>
+        /// Creates a CustomDimension.
+        /// </summary>
+        /// <param name="parent">
+        /// Required. Example format: properties/1234
+        /// </param>
+        /// <param name="customDimension">
+        /// Required. The CustomDimension to create.
+        /// </param>
+        /// <param name="callSettings">If not null, applies overrides to this RPC call.</param>
+        /// <returns>A Task containing the RPC response.</returns>
+        public virtual stt::Task<CustomDimension> CreateCustomDimensionAsync(string parent, CustomDimension customDimension, gaxgrpc::CallSettings callSettings = null) =>
+            CreateCustomDimensionAsync(new CreateCustomDimensionRequest
+            {
+                Parent = gax::GaxPreconditions.CheckNotNullOrEmpty(parent, nameof(parent)),
+                CustomDimension = gax::GaxPreconditions.CheckNotNull(customDimension, nameof(customDimension)),
+            }, callSettings);
+
+        /// <summary>
+        /// Creates a CustomDimension.
+        /// </summary>
+        /// <param name="parent">
+        /// Required. Example format: properties/1234
+        /// </param>
+        /// <param name="customDimension">
+        /// Required. The CustomDimension to create.
+        /// </param>
+        /// <param name="cancellationToken">A <see cref="st::CancellationToken"/> to use for this RPC.</param>
+        /// <returns>A Task containing the RPC response.</returns>
+        public virtual stt::Task<CustomDimension> CreateCustomDimensionAsync(string parent, CustomDimension customDimension, st::CancellationToken cancellationToken) =>
+            CreateCustomDimensionAsync(parent, customDimension, gaxgrpc::CallSettings.FromCancellationToken(cancellationToken));
+
+        /// <summary>
+        /// Creates a CustomDimension.
+        /// </summary>
+        /// <param name="parent">
+        /// Required. Example format: properties/1234
+        /// </param>
+        /// <param name="customDimension">
+        /// Required. The CustomDimension to create.
+        /// </param>
+        /// <param name="callSettings">If not null, applies overrides to this RPC call.</param>
+        /// <returns>The RPC response.</returns>
+        public virtual CustomDimension CreateCustomDimension(PropertyName parent, CustomDimension customDimension, gaxgrpc::CallSettings callSettings = null) =>
+            CreateCustomDimension(new CreateCustomDimensionRequest
+            {
+                ParentAsPropertyName = gax::GaxPreconditions.CheckNotNull(parent, nameof(parent)),
+                CustomDimension = gax::GaxPreconditions.CheckNotNull(customDimension, nameof(customDimension)),
+            }, callSettings);
+
+        /// <summary>
+        /// Creates a CustomDimension.
+        /// </summary>
+        /// <param name="parent">
+        /// Required. Example format: properties/1234
+        /// </param>
+        /// <param name="customDimension">
+        /// Required. The CustomDimension to create.
+        /// </param>
+        /// <param name="callSettings">If not null, applies overrides to this RPC call.</param>
+        /// <returns>A Task containing the RPC response.</returns>
+        public virtual stt::Task<CustomDimension> CreateCustomDimensionAsync(PropertyName parent, CustomDimension customDimension, gaxgrpc::CallSettings callSettings = null) =>
+            CreateCustomDimensionAsync(new CreateCustomDimensionRequest
+            {
+                ParentAsPropertyName = gax::GaxPreconditions.CheckNotNull(parent, nameof(parent)),
+                CustomDimension = gax::GaxPreconditions.CheckNotNull(customDimension, nameof(customDimension)),
+            }, callSettings);
+
+        /// <summary>
+        /// Creates a CustomDimension.
+        /// </summary>
+        /// <param name="parent">
+        /// Required. Example format: properties/1234
+        /// </param>
+        /// <param name="customDimension">
+        /// Required. The CustomDimension to create.
+        /// </param>
+        /// <param name="cancellationToken">A <see cref="st::CancellationToken"/> to use for this RPC.</param>
+        /// <returns>A Task containing the RPC response.</returns>
+        public virtual stt::Task<CustomDimension> CreateCustomDimensionAsync(PropertyName parent, CustomDimension customDimension, st::CancellationToken cancellationToken) =>
+            CreateCustomDimensionAsync(parent, customDimension, gaxgrpc::CallSettings.FromCancellationToken(cancellationToken));
+
+        /// <summary>
+        /// Updates a CustomDimension on a property.
+        /// </summary>
+        /// <param name="request">The request object containing all of the parameters for the API call.</param>
+        /// <param name="callSettings">If not null, applies overrides to this RPC call.</param>
+        /// <returns>The RPC response.</returns>
+        public virtual CustomDimension UpdateCustomDimension(UpdateCustomDimensionRequest request, gaxgrpc::CallSettings callSettings = null) =>
+            throw new sys::NotImplementedException();
+
+        /// <summary>
+        /// Updates a CustomDimension on a property.
+        /// </summary>
+        /// <param name="request">The request object containing all of the parameters for the API call.</param>
+        /// <param name="callSettings">If not null, applies overrides to this RPC call.</param>
+        /// <returns>A Task containing the RPC response.</returns>
+        public virtual stt::Task<CustomDimension> UpdateCustomDimensionAsync(UpdateCustomDimensionRequest request, gaxgrpc::CallSettings callSettings = null) =>
+            throw new sys::NotImplementedException();
+
+        /// <summary>
+        /// Updates a CustomDimension on a property.
+        /// </summary>
+        /// <param name="request">The request object containing all of the parameters for the API call.</param>
+        /// <param name="cancellationToken">A <see cref="st::CancellationToken"/> to use for this RPC.</param>
+        /// <returns>A Task containing the RPC response.</returns>
+        public virtual stt::Task<CustomDimension> UpdateCustomDimensionAsync(UpdateCustomDimensionRequest request, st::CancellationToken cancellationToken) =>
+            UpdateCustomDimensionAsync(request, gaxgrpc::CallSettings.FromCancellationToken(cancellationToken));
+
+        /// <summary>
+        /// Updates a CustomDimension on a property.
+        /// </summary>
+        /// <param name="customDimension">
+        /// The CustomDimension to update
+        /// </param>
+        /// <param name="updateMask">
+        /// Required. The list of fields to be updated. Omitted fields will not be updated.
+        /// To replace the entire entity, use one path with the string "*" to match
+        /// all fields.
+        /// </param>
+        /// <param name="callSettings">If not null, applies overrides to this RPC call.</param>
+        /// <returns>The RPC response.</returns>
+        public virtual CustomDimension UpdateCustomDimension(CustomDimension customDimension, wkt::FieldMask updateMask, gaxgrpc::CallSettings callSettings = null) =>
+            UpdateCustomDimension(new UpdateCustomDimensionRequest
+            {
+                CustomDimension = customDimension,
+                UpdateMask = gax::GaxPreconditions.CheckNotNull(updateMask, nameof(updateMask)),
+            }, callSettings);
+
+        /// <summary>
+        /// Updates a CustomDimension on a property.
+        /// </summary>
+        /// <param name="customDimension">
+        /// The CustomDimension to update
+        /// </param>
+        /// <param name="updateMask">
+        /// Required. The list of fields to be updated. Omitted fields will not be updated.
+        /// To replace the entire entity, use one path with the string "*" to match
+        /// all fields.
+        /// </param>
+        /// <param name="callSettings">If not null, applies overrides to this RPC call.</param>
+        /// <returns>A Task containing the RPC response.</returns>
+        public virtual stt::Task<CustomDimension> UpdateCustomDimensionAsync(CustomDimension customDimension, wkt::FieldMask updateMask, gaxgrpc::CallSettings callSettings = null) =>
+            UpdateCustomDimensionAsync(new UpdateCustomDimensionRequest
+            {
+                CustomDimension = customDimension,
+                UpdateMask = gax::GaxPreconditions.CheckNotNull(updateMask, nameof(updateMask)),
+            }, callSettings);
+
+        /// <summary>
+        /// Updates a CustomDimension on a property.
+        /// </summary>
+        /// <param name="customDimension">
+        /// The CustomDimension to update
+        /// </param>
+        /// <param name="updateMask">
+        /// Required. The list of fields to be updated. Omitted fields will not be updated.
+        /// To replace the entire entity, use one path with the string "*" to match
+        /// all fields.
+        /// </param>
+        /// <param name="cancellationToken">A <see cref="st::CancellationToken"/> to use for this RPC.</param>
+        /// <returns>A Task containing the RPC response.</returns>
+        public virtual stt::Task<CustomDimension> UpdateCustomDimensionAsync(CustomDimension customDimension, wkt::FieldMask updateMask, st::CancellationToken cancellationToken) =>
+            UpdateCustomDimensionAsync(customDimension, updateMask, gaxgrpc::CallSettings.FromCancellationToken(cancellationToken));
+
+        /// <summary>
+        /// Lists CustomDimensions on a property.
+        /// </summary>
+        /// <param name="request">The request object containing all of the parameters for the API call.</param>
+        /// <param name="callSettings">If not null, applies overrides to this RPC call.</param>
+        /// <returns>A pageable sequence of <see cref="CustomDimension"/> resources.</returns>
+        public virtual gax::PagedEnumerable<ListCustomDimensionsResponse, CustomDimension> ListCustomDimensions(ListCustomDimensionsRequest request, gaxgrpc::CallSettings callSettings = null) =>
+            throw new sys::NotImplementedException();
+
+        /// <summary>
+        /// Lists CustomDimensions on a property.
+        /// </summary>
+        /// <param name="request">The request object containing all of the parameters for the API call.</param>
+        /// <param name="callSettings">If not null, applies overrides to this RPC call.</param>
+        /// <returns>A pageable asynchronous sequence of <see cref="CustomDimension"/> resources.</returns>
+        public virtual gax::PagedAsyncEnumerable<ListCustomDimensionsResponse, CustomDimension> ListCustomDimensionsAsync(ListCustomDimensionsRequest request, gaxgrpc::CallSettings callSettings = null) =>
+            throw new sys::NotImplementedException();
+
+        /// <summary>
+        /// Lists CustomDimensions on a property.
+        /// </summary>
+        /// <param name="parent">
+        /// Required. Example format: properties/1234
+        /// </param>
+        /// <param name="pageToken">
+        /// The token returned from the previous request. A value of <c>null</c> or an empty string retrieves the first
+        /// page.
+        /// </param>
+        /// <param name="pageSize">
+        /// The size of page to request. The response will not be larger than this, but may be smaller. A value of
+        /// <c>null</c> or <c>0</c> uses a server-defined page size.
+        /// </param>
+        /// <param name="callSettings">If not null, applies overrides to this RPC call.</param>
+        /// <returns>A pageable sequence of <see cref="CustomDimension"/> resources.</returns>
+        public virtual gax::PagedEnumerable<ListCustomDimensionsResponse, CustomDimension> ListCustomDimensions(string parent, string pageToken = null, int? pageSize = null, gaxgrpc::CallSettings callSettings = null) =>
+            ListCustomDimensions(new ListCustomDimensionsRequest
+            {
+                Parent = gax::GaxPreconditions.CheckNotNullOrEmpty(parent, nameof(parent)),
+                PageToken = pageToken ?? "",
+                PageSize = pageSize ?? 0,
+            }, callSettings);
+
+        /// <summary>
+        /// Lists CustomDimensions on a property.
+        /// </summary>
+        /// <param name="parent">
+        /// Required. Example format: properties/1234
+        /// </param>
+        /// <param name="pageToken">
+        /// The token returned from the previous request. A value of <c>null</c> or an empty string retrieves the first
+        /// page.
+        /// </param>
+        /// <param name="pageSize">
+        /// The size of page to request. The response will not be larger than this, but may be smaller. A value of
+        /// <c>null</c> or <c>0</c> uses a server-defined page size.
+        /// </param>
+        /// <param name="callSettings">If not null, applies overrides to this RPC call.</param>
+        /// <returns>A pageable asynchronous sequence of <see cref="CustomDimension"/> resources.</returns>
+        public virtual gax::PagedAsyncEnumerable<ListCustomDimensionsResponse, CustomDimension> ListCustomDimensionsAsync(string parent, string pageToken = null, int? pageSize = null, gaxgrpc::CallSettings callSettings = null) =>
+            ListCustomDimensionsAsync(new ListCustomDimensionsRequest
+            {
+                Parent = gax::GaxPreconditions.CheckNotNullOrEmpty(parent, nameof(parent)),
+                PageToken = pageToken ?? "",
+                PageSize = pageSize ?? 0,
+            }, callSettings);
+
+        /// <summary>
+        /// Lists CustomDimensions on a property.
+        /// </summary>
+        /// <param name="parent">
+        /// Required. Example format: properties/1234
+        /// </param>
+        /// <param name="pageToken">
+        /// The token returned from the previous request. A value of <c>null</c> or an empty string retrieves the first
+        /// page.
+        /// </param>
+        /// <param name="pageSize">
+        /// The size of page to request. The response will not be larger than this, but may be smaller. A value of
+        /// <c>null</c> or <c>0</c> uses a server-defined page size.
+        /// </param>
+        /// <param name="callSettings">If not null, applies overrides to this RPC call.</param>
+        /// <returns>A pageable sequence of <see cref="CustomDimension"/> resources.</returns>
+        public virtual gax::PagedEnumerable<ListCustomDimensionsResponse, CustomDimension> ListCustomDimensions(PropertyName parent, string pageToken = null, int? pageSize = null, gaxgrpc::CallSettings callSettings = null) =>
+            ListCustomDimensions(new ListCustomDimensionsRequest
+            {
+                ParentAsPropertyName = gax::GaxPreconditions.CheckNotNull(parent, nameof(parent)),
+                PageToken = pageToken ?? "",
+                PageSize = pageSize ?? 0,
+            }, callSettings);
+
+        /// <summary>
+        /// Lists CustomDimensions on a property.
+        /// </summary>
+        /// <param name="parent">
+        /// Required. Example format: properties/1234
+        /// </param>
+        /// <param name="pageToken">
+        /// The token returned from the previous request. A value of <c>null</c> or an empty string retrieves the first
+        /// page.
+        /// </param>
+        /// <param name="pageSize">
+        /// The size of page to request. The response will not be larger than this, but may be smaller. A value of
+        /// <c>null</c> or <c>0</c> uses a server-defined page size.
+        /// </param>
+        /// <param name="callSettings">If not null, applies overrides to this RPC call.</param>
+        /// <returns>A pageable asynchronous sequence of <see cref="CustomDimension"/> resources.</returns>
+        public virtual gax::PagedAsyncEnumerable<ListCustomDimensionsResponse, CustomDimension> ListCustomDimensionsAsync(PropertyName parent, string pageToken = null, int? pageSize = null, gaxgrpc::CallSettings callSettings = null) =>
+            ListCustomDimensionsAsync(new ListCustomDimensionsRequest
+            {
+                ParentAsPropertyName = gax::GaxPreconditions.CheckNotNull(parent, nameof(parent)),
+                PageToken = pageToken ?? "",
+                PageSize = pageSize ?? 0,
+            }, callSettings);
+
+        /// <summary>
+        /// Archives a CustomDimension on a property.
+        /// </summary>
+        /// <param name="request">The request object containing all of the parameters for the API call.</param>
+        /// <param name="callSettings">If not null, applies overrides to this RPC call.</param>
+        /// <returns>The RPC response.</returns>
+        public virtual void ArchiveCustomDimension(ArchiveCustomDimensionRequest request, gaxgrpc::CallSettings callSettings = null) =>
+            throw new sys::NotImplementedException();
+
+        /// <summary>
+        /// Archives a CustomDimension on a property.
+        /// </summary>
+        /// <param name="request">The request object containing all of the parameters for the API call.</param>
+        /// <param name="callSettings">If not null, applies overrides to this RPC call.</param>
+        /// <returns>A Task containing the RPC response.</returns>
+        public virtual stt::Task ArchiveCustomDimensionAsync(ArchiveCustomDimensionRequest request, gaxgrpc::CallSettings callSettings = null) =>
+            throw new sys::NotImplementedException();
+
+        /// <summary>
+        /// Archives a CustomDimension on a property.
+        /// </summary>
+        /// <param name="request">The request object containing all of the parameters for the API call.</param>
+        /// <param name="cancellationToken">A <see cref="st::CancellationToken"/> to use for this RPC.</param>
+        /// <returns>A Task containing the RPC response.</returns>
+        public virtual stt::Task ArchiveCustomDimensionAsync(ArchiveCustomDimensionRequest request, st::CancellationToken cancellationToken) =>
+            ArchiveCustomDimensionAsync(request, gaxgrpc::CallSettings.FromCancellationToken(cancellationToken));
+
+        /// <summary>
+        /// Archives a CustomDimension on a property.
+        /// </summary>
+        /// <param name="name">
+        /// Required. The name of the CustomDimension to archive.
+        /// Example format: properties/1234/customDimensions/5678
+        /// </param>
+        /// <param name="callSettings">If not null, applies overrides to this RPC call.</param>
+        /// <returns>The RPC response.</returns>
+        public virtual void ArchiveCustomDimension(string name, gaxgrpc::CallSettings callSettings = null) =>
+            ArchiveCustomDimension(new ArchiveCustomDimensionRequest
+            {
+                Name = gax::GaxPreconditions.CheckNotNullOrEmpty(name, nameof(name)),
+            }, callSettings);
+
+        /// <summary>
+        /// Archives a CustomDimension on a property.
+        /// </summary>
+        /// <param name="name">
+        /// Required. The name of the CustomDimension to archive.
+        /// Example format: properties/1234/customDimensions/5678
+        /// </param>
+        /// <param name="callSettings">If not null, applies overrides to this RPC call.</param>
+        /// <returns>A Task containing the RPC response.</returns>
+        public virtual stt::Task ArchiveCustomDimensionAsync(string name, gaxgrpc::CallSettings callSettings = null) =>
+            ArchiveCustomDimensionAsync(new ArchiveCustomDimensionRequest
+            {
+                Name = gax::GaxPreconditions.CheckNotNullOrEmpty(name, nameof(name)),
+            }, callSettings);
+
+        /// <summary>
+        /// Archives a CustomDimension on a property.
+        /// </summary>
+        /// <param name="name">
+        /// Required. The name of the CustomDimension to archive.
+        /// Example format: properties/1234/customDimensions/5678
+        /// </param>
+        /// <param name="cancellationToken">A <see cref="st::CancellationToken"/> to use for this RPC.</param>
+        /// <returns>A Task containing the RPC response.</returns>
+        public virtual stt::Task ArchiveCustomDimensionAsync(string name, st::CancellationToken cancellationToken) =>
+            ArchiveCustomDimensionAsync(name, gaxgrpc::CallSettings.FromCancellationToken(cancellationToken));
+
+        /// <summary>
+        /// Archives a CustomDimension on a property.
+        /// </summary>
+        /// <param name="name">
+        /// Required. The name of the CustomDimension to archive.
+        /// Example format: properties/1234/customDimensions/5678
+        /// </param>
+        /// <param name="callSettings">If not null, applies overrides to this RPC call.</param>
+        /// <returns>The RPC response.</returns>
+        public virtual void ArchiveCustomDimension(CustomDimensionName name, gaxgrpc::CallSettings callSettings = null) =>
+            ArchiveCustomDimension(new ArchiveCustomDimensionRequest
+            {
+                CustomDimensionName = gax::GaxPreconditions.CheckNotNull(name, nameof(name)),
+            }, callSettings);
+
+        /// <summary>
+        /// Archives a CustomDimension on a property.
+        /// </summary>
+        /// <param name="name">
+        /// Required. The name of the CustomDimension to archive.
+        /// Example format: properties/1234/customDimensions/5678
+        /// </param>
+        /// <param name="callSettings">If not null, applies overrides to this RPC call.</param>
+        /// <returns>A Task containing the RPC response.</returns>
+        public virtual stt::Task ArchiveCustomDimensionAsync(CustomDimensionName name, gaxgrpc::CallSettings callSettings = null) =>
+            ArchiveCustomDimensionAsync(new ArchiveCustomDimensionRequest
+            {
+                CustomDimensionName = gax::GaxPreconditions.CheckNotNull(name, nameof(name)),
+            }, callSettings);
+
+        /// <summary>
+        /// Archives a CustomDimension on a property.
+        /// </summary>
+        /// <param name="name">
+        /// Required. The name of the CustomDimension to archive.
+        /// Example format: properties/1234/customDimensions/5678
+        /// </param>
+        /// <param name="cancellationToken">A <see cref="st::CancellationToken"/> to use for this RPC.</param>
+        /// <returns>A Task containing the RPC response.</returns>
+        public virtual stt::Task ArchiveCustomDimensionAsync(CustomDimensionName name, st::CancellationToken cancellationToken) =>
+            ArchiveCustomDimensionAsync(name, gaxgrpc::CallSettings.FromCancellationToken(cancellationToken));
+
+        /// <summary>
+        /// Lookup for a single CustomDimension.
+        /// </summary>
+        /// <param name="request">The request object containing all of the parameters for the API call.</param>
+        /// <param name="callSettings">If not null, applies overrides to this RPC call.</param>
+        /// <returns>The RPC response.</returns>
+        public virtual CustomDimension GetCustomDimension(GetCustomDimensionRequest request, gaxgrpc::CallSettings callSettings = null) =>
+            throw new sys::NotImplementedException();
+
+        /// <summary>
+        /// Lookup for a single CustomDimension.
+        /// </summary>
+        /// <param name="request">The request object containing all of the parameters for the API call.</param>
+        /// <param name="callSettings">If not null, applies overrides to this RPC call.</param>
+        /// <returns>A Task containing the RPC response.</returns>
+        public virtual stt::Task<CustomDimension> GetCustomDimensionAsync(GetCustomDimensionRequest request, gaxgrpc::CallSettings callSettings = null) =>
+            throw new sys::NotImplementedException();
+
+        /// <summary>
+        /// Lookup for a single CustomDimension.
+        /// </summary>
+        /// <param name="request">The request object containing all of the parameters for the API call.</param>
+        /// <param name="cancellationToken">A <see cref="st::CancellationToken"/> to use for this RPC.</param>
+        /// <returns>A Task containing the RPC response.</returns>
+        public virtual stt::Task<CustomDimension> GetCustomDimensionAsync(GetCustomDimensionRequest request, st::CancellationToken cancellationToken) =>
+            GetCustomDimensionAsync(request, gaxgrpc::CallSettings.FromCancellationToken(cancellationToken));
+
+        /// <summary>
+        /// Lookup for a single CustomDimension.
+        /// </summary>
+        /// <param name="name">
+        /// Required. The name of the CustomDimension to get.
+        /// Example format: properties/1234/customDimensions/5678
+        /// </param>
+        /// <param name="callSettings">If not null, applies overrides to this RPC call.</param>
+        /// <returns>The RPC response.</returns>
+        public virtual CustomDimension GetCustomDimension(string name, gaxgrpc::CallSettings callSettings = null) =>
+            GetCustomDimension(new GetCustomDimensionRequest
+            {
+                Name = gax::GaxPreconditions.CheckNotNullOrEmpty(name, nameof(name)),
+            }, callSettings);
+
+        /// <summary>
+        /// Lookup for a single CustomDimension.
+        /// </summary>
+        /// <param name="name">
+        /// Required. The name of the CustomDimension to get.
+        /// Example format: properties/1234/customDimensions/5678
+        /// </param>
+        /// <param name="callSettings">If not null, applies overrides to this RPC call.</param>
+        /// <returns>A Task containing the RPC response.</returns>
+        public virtual stt::Task<CustomDimension> GetCustomDimensionAsync(string name, gaxgrpc::CallSettings callSettings = null) =>
+            GetCustomDimensionAsync(new GetCustomDimensionRequest
+            {
+                Name = gax::GaxPreconditions.CheckNotNullOrEmpty(name, nameof(name)),
+            }, callSettings);
+
+        /// <summary>
+        /// Lookup for a single CustomDimension.
+        /// </summary>
+        /// <param name="name">
+        /// Required. The name of the CustomDimension to get.
+        /// Example format: properties/1234/customDimensions/5678
+        /// </param>
+        /// <param name="cancellationToken">A <see cref="st::CancellationToken"/> to use for this RPC.</param>
+        /// <returns>A Task containing the RPC response.</returns>
+        public virtual stt::Task<CustomDimension> GetCustomDimensionAsync(string name, st::CancellationToken cancellationToken) =>
+            GetCustomDimensionAsync(name, gaxgrpc::CallSettings.FromCancellationToken(cancellationToken));
+
+        /// <summary>
+        /// Lookup for a single CustomDimension.
+        /// </summary>
+        /// <param name="name">
+        /// Required. The name of the CustomDimension to get.
+        /// Example format: properties/1234/customDimensions/5678
+        /// </param>
+        /// <param name="callSettings">If not null, applies overrides to this RPC call.</param>
+        /// <returns>The RPC response.</returns>
+        public virtual CustomDimension GetCustomDimension(CustomDimensionName name, gaxgrpc::CallSettings callSettings = null) =>
+            GetCustomDimension(new GetCustomDimensionRequest
+            {
+                CustomDimensionName = gax::GaxPreconditions.CheckNotNull(name, nameof(name)),
+            }, callSettings);
+
+        /// <summary>
+        /// Lookup for a single CustomDimension.
+        /// </summary>
+        /// <param name="name">
+        /// Required. The name of the CustomDimension to get.
+        /// Example format: properties/1234/customDimensions/5678
+        /// </param>
+        /// <param name="callSettings">If not null, applies overrides to this RPC call.</param>
+        /// <returns>A Task containing the RPC response.</returns>
+        public virtual stt::Task<CustomDimension> GetCustomDimensionAsync(CustomDimensionName name, gaxgrpc::CallSettings callSettings = null) =>
+            GetCustomDimensionAsync(new GetCustomDimensionRequest
+            {
+                CustomDimensionName = gax::GaxPreconditions.CheckNotNull(name, nameof(name)),
+            }, callSettings);
+
+        /// <summary>
+        /// Lookup for a single CustomDimension.
+        /// </summary>
+        /// <param name="name">
+        /// Required. The name of the CustomDimension to get.
+        /// Example format: properties/1234/customDimensions/5678
+        /// </param>
+        /// <param name="cancellationToken">A <see cref="st::CancellationToken"/> to use for this RPC.</param>
+        /// <returns>A Task containing the RPC response.</returns>
+        public virtual stt::Task<CustomDimension> GetCustomDimensionAsync(CustomDimensionName name, st::CancellationToken cancellationToken) =>
+            GetCustomDimensionAsync(name, gaxgrpc::CallSettings.FromCancellationToken(cancellationToken));
+
+        /// <summary>
+        /// Creates a CustomMetric.
+        /// </summary>
+        /// <param name="request">The request object containing all of the parameters for the API call.</param>
+        /// <param name="callSettings">If not null, applies overrides to this RPC call.</param>
+        /// <returns>The RPC response.</returns>
+        public virtual CustomMetric CreateCustomMetric(CreateCustomMetricRequest request, gaxgrpc::CallSettings callSettings = null) =>
+            throw new sys::NotImplementedException();
+
+        /// <summary>
+        /// Creates a CustomMetric.
+        /// </summary>
+        /// <param name="request">The request object containing all of the parameters for the API call.</param>
+        /// <param name="callSettings">If not null, applies overrides to this RPC call.</param>
+        /// <returns>A Task containing the RPC response.</returns>
+        public virtual stt::Task<CustomMetric> CreateCustomMetricAsync(CreateCustomMetricRequest request, gaxgrpc::CallSettings callSettings = null) =>
+            throw new sys::NotImplementedException();
+
+        /// <summary>
+        /// Creates a CustomMetric.
+        /// </summary>
+        /// <param name="request">The request object containing all of the parameters for the API call.</param>
+        /// <param name="cancellationToken">A <see cref="st::CancellationToken"/> to use for this RPC.</param>
+        /// <returns>A Task containing the RPC response.</returns>
+        public virtual stt::Task<CustomMetric> CreateCustomMetricAsync(CreateCustomMetricRequest request, st::CancellationToken cancellationToken) =>
+            CreateCustomMetricAsync(request, gaxgrpc::CallSettings.FromCancellationToken(cancellationToken));
+
+        /// <summary>
+        /// Creates a CustomMetric.
+        /// </summary>
+        /// <param name="parent">
+        /// Required. Example format: properties/1234
+        /// </param>
+        /// <param name="customMetric">
+        /// Required. The CustomMetric to create.
+        /// </param>
+        /// <param name="callSettings">If not null, applies overrides to this RPC call.</param>
+        /// <returns>The RPC response.</returns>
+        public virtual CustomMetric CreateCustomMetric(string parent, CustomMetric customMetric, gaxgrpc::CallSettings callSettings = null) =>
+            CreateCustomMetric(new CreateCustomMetricRequest
+            {
+                Parent = gax::GaxPreconditions.CheckNotNullOrEmpty(parent, nameof(parent)),
+                CustomMetric = gax::GaxPreconditions.CheckNotNull(customMetric, nameof(customMetric)),
+            }, callSettings);
+
+        /// <summary>
+        /// Creates a CustomMetric.
+        /// </summary>
+        /// <param name="parent">
+        /// Required. Example format: properties/1234
+        /// </param>
+        /// <param name="customMetric">
+        /// Required. The CustomMetric to create.
+        /// </param>
+        /// <param name="callSettings">If not null, applies overrides to this RPC call.</param>
+        /// <returns>A Task containing the RPC response.</returns>
+        public virtual stt::Task<CustomMetric> CreateCustomMetricAsync(string parent, CustomMetric customMetric, gaxgrpc::CallSettings callSettings = null) =>
+            CreateCustomMetricAsync(new CreateCustomMetricRequest
+            {
+                Parent = gax::GaxPreconditions.CheckNotNullOrEmpty(parent, nameof(parent)),
+                CustomMetric = gax::GaxPreconditions.CheckNotNull(customMetric, nameof(customMetric)),
+            }, callSettings);
+
+        /// <summary>
+        /// Creates a CustomMetric.
+        /// </summary>
+        /// <param name="parent">
+        /// Required. Example format: properties/1234
+        /// </param>
+        /// <param name="customMetric">
+        /// Required. The CustomMetric to create.
+        /// </param>
+        /// <param name="cancellationToken">A <see cref="st::CancellationToken"/> to use for this RPC.</param>
+        /// <returns>A Task containing the RPC response.</returns>
+        public virtual stt::Task<CustomMetric> CreateCustomMetricAsync(string parent, CustomMetric customMetric, st::CancellationToken cancellationToken) =>
+            CreateCustomMetricAsync(parent, customMetric, gaxgrpc::CallSettings.FromCancellationToken(cancellationToken));
+
+        /// <summary>
+        /// Creates a CustomMetric.
+        /// </summary>
+        /// <param name="parent">
+        /// Required. Example format: properties/1234
+        /// </param>
+        /// <param name="customMetric">
+        /// Required. The CustomMetric to create.
+        /// </param>
+        /// <param name="callSettings">If not null, applies overrides to this RPC call.</param>
+        /// <returns>The RPC response.</returns>
+        public virtual CustomMetric CreateCustomMetric(PropertyName parent, CustomMetric customMetric, gaxgrpc::CallSettings callSettings = null) =>
+            CreateCustomMetric(new CreateCustomMetricRequest
+            {
+                ParentAsPropertyName = gax::GaxPreconditions.CheckNotNull(parent, nameof(parent)),
+                CustomMetric = gax::GaxPreconditions.CheckNotNull(customMetric, nameof(customMetric)),
+            }, callSettings);
+
+        /// <summary>
+        /// Creates a CustomMetric.
+        /// </summary>
+        /// <param name="parent">
+        /// Required. Example format: properties/1234
+        /// </param>
+        /// <param name="customMetric">
+        /// Required. The CustomMetric to create.
+        /// </param>
+        /// <param name="callSettings">If not null, applies overrides to this RPC call.</param>
+        /// <returns>A Task containing the RPC response.</returns>
+        public virtual stt::Task<CustomMetric> CreateCustomMetricAsync(PropertyName parent, CustomMetric customMetric, gaxgrpc::CallSettings callSettings = null) =>
+            CreateCustomMetricAsync(new CreateCustomMetricRequest
+            {
+                ParentAsPropertyName = gax::GaxPreconditions.CheckNotNull(parent, nameof(parent)),
+                CustomMetric = gax::GaxPreconditions.CheckNotNull(customMetric, nameof(customMetric)),
+            }, callSettings);
+
+        /// <summary>
+        /// Creates a CustomMetric.
+        /// </summary>
+        /// <param name="parent">
+        /// Required. Example format: properties/1234
+        /// </param>
+        /// <param name="customMetric">
+        /// Required. The CustomMetric to create.
+        /// </param>
+        /// <param name="cancellationToken">A <see cref="st::CancellationToken"/> to use for this RPC.</param>
+        /// <returns>A Task containing the RPC response.</returns>
+        public virtual stt::Task<CustomMetric> CreateCustomMetricAsync(PropertyName parent, CustomMetric customMetric, st::CancellationToken cancellationToken) =>
+            CreateCustomMetricAsync(parent, customMetric, gaxgrpc::CallSettings.FromCancellationToken(cancellationToken));
+
+        /// <summary>
+        /// Updates a CustomMetric on a property.
+        /// </summary>
+        /// <param name="request">The request object containing all of the parameters for the API call.</param>
+        /// <param name="callSettings">If not null, applies overrides to this RPC call.</param>
+        /// <returns>The RPC response.</returns>
+        public virtual CustomMetric UpdateCustomMetric(UpdateCustomMetricRequest request, gaxgrpc::CallSettings callSettings = null) =>
+            throw new sys::NotImplementedException();
+
+        /// <summary>
+        /// Updates a CustomMetric on a property.
+        /// </summary>
+        /// <param name="request">The request object containing all of the parameters for the API call.</param>
+        /// <param name="callSettings">If not null, applies overrides to this RPC call.</param>
+        /// <returns>A Task containing the RPC response.</returns>
+        public virtual stt::Task<CustomMetric> UpdateCustomMetricAsync(UpdateCustomMetricRequest request, gaxgrpc::CallSettings callSettings = null) =>
+            throw new sys::NotImplementedException();
+
+        /// <summary>
+        /// Updates a CustomMetric on a property.
+        /// </summary>
+        /// <param name="request">The request object containing all of the parameters for the API call.</param>
+        /// <param name="cancellationToken">A <see cref="st::CancellationToken"/> to use for this RPC.</param>
+        /// <returns>A Task containing the RPC response.</returns>
+        public virtual stt::Task<CustomMetric> UpdateCustomMetricAsync(UpdateCustomMetricRequest request, st::CancellationToken cancellationToken) =>
+            UpdateCustomMetricAsync(request, gaxgrpc::CallSettings.FromCancellationToken(cancellationToken));
+
+        /// <summary>
+        /// Updates a CustomMetric on a property.
+        /// </summary>
+        /// <param name="customMetric">
+        /// The CustomMetric to update
+        /// </param>
+        /// <param name="updateMask">
+        /// Required. The list of fields to be updated. Omitted fields will not be updated.
+        /// To replace the entire entity, use one path with the string "*" to match
+        /// all fields.
+        /// </param>
+        /// <param name="callSettings">If not null, applies overrides to this RPC call.</param>
+        /// <returns>The RPC response.</returns>
+        public virtual CustomMetric UpdateCustomMetric(CustomMetric customMetric, wkt::FieldMask updateMask, gaxgrpc::CallSettings callSettings = null) =>
+            UpdateCustomMetric(new UpdateCustomMetricRequest
+            {
+                CustomMetric = customMetric,
+                UpdateMask = gax::GaxPreconditions.CheckNotNull(updateMask, nameof(updateMask)),
+            }, callSettings);
+
+        /// <summary>
+        /// Updates a CustomMetric on a property.
+        /// </summary>
+        /// <param name="customMetric">
+        /// The CustomMetric to update
+        /// </param>
+        /// <param name="updateMask">
+        /// Required. The list of fields to be updated. Omitted fields will not be updated.
+        /// To replace the entire entity, use one path with the string "*" to match
+        /// all fields.
+        /// </param>
+        /// <param name="callSettings">If not null, applies overrides to this RPC call.</param>
+        /// <returns>A Task containing the RPC response.</returns>
+        public virtual stt::Task<CustomMetric> UpdateCustomMetricAsync(CustomMetric customMetric, wkt::FieldMask updateMask, gaxgrpc::CallSettings callSettings = null) =>
+            UpdateCustomMetricAsync(new UpdateCustomMetricRequest
+            {
+                CustomMetric = customMetric,
+                UpdateMask = gax::GaxPreconditions.CheckNotNull(updateMask, nameof(updateMask)),
+            }, callSettings);
+
+        /// <summary>
+        /// Updates a CustomMetric on a property.
+        /// </summary>
+        /// <param name="customMetric">
+        /// The CustomMetric to update
+        /// </param>
+        /// <param name="updateMask">
+        /// Required. The list of fields to be updated. Omitted fields will not be updated.
+        /// To replace the entire entity, use one path with the string "*" to match
+        /// all fields.
+        /// </param>
+        /// <param name="cancellationToken">A <see cref="st::CancellationToken"/> to use for this RPC.</param>
+        /// <returns>A Task containing the RPC response.</returns>
+        public virtual stt::Task<CustomMetric> UpdateCustomMetricAsync(CustomMetric customMetric, wkt::FieldMask updateMask, st::CancellationToken cancellationToken) =>
+            UpdateCustomMetricAsync(customMetric, updateMask, gaxgrpc::CallSettings.FromCancellationToken(cancellationToken));
+
+        /// <summary>
+        /// Lists CustomMetrics on a property.
+        /// </summary>
+        /// <param name="request">The request object containing all of the parameters for the API call.</param>
+        /// <param name="callSettings">If not null, applies overrides to this RPC call.</param>
+        /// <returns>A pageable sequence of <see cref="CustomMetric"/> resources.</returns>
+        public virtual gax::PagedEnumerable<ListCustomMetricsResponse, CustomMetric> ListCustomMetrics(ListCustomMetricsRequest request, gaxgrpc::CallSettings callSettings = null) =>
+            throw new sys::NotImplementedException();
+
+        /// <summary>
+        /// Lists CustomMetrics on a property.
+        /// </summary>
+        /// <param name="request">The request object containing all of the parameters for the API call.</param>
+        /// <param name="callSettings">If not null, applies overrides to this RPC call.</param>
+        /// <returns>A pageable asynchronous sequence of <see cref="CustomMetric"/> resources.</returns>
+        public virtual gax::PagedAsyncEnumerable<ListCustomMetricsResponse, CustomMetric> ListCustomMetricsAsync(ListCustomMetricsRequest request, gaxgrpc::CallSettings callSettings = null) =>
+            throw new sys::NotImplementedException();
+
+        /// <summary>
+        /// Lists CustomMetrics on a property.
+        /// </summary>
+        /// <param name="parent">
+        /// Required. Example format: properties/1234
+        /// </param>
+        /// <param name="pageToken">
+        /// The token returned from the previous request. A value of <c>null</c> or an empty string retrieves the first
+        /// page.
+        /// </param>
+        /// <param name="pageSize">
+        /// The size of page to request. The response will not be larger than this, but may be smaller. A value of
+        /// <c>null</c> or <c>0</c> uses a server-defined page size.
+        /// </param>
+        /// <param name="callSettings">If not null, applies overrides to this RPC call.</param>
+        /// <returns>A pageable sequence of <see cref="CustomMetric"/> resources.</returns>
+        public virtual gax::PagedEnumerable<ListCustomMetricsResponse, CustomMetric> ListCustomMetrics(string parent, string pageToken = null, int? pageSize = null, gaxgrpc::CallSettings callSettings = null) =>
+            ListCustomMetrics(new ListCustomMetricsRequest
+            {
+                Parent = gax::GaxPreconditions.CheckNotNullOrEmpty(parent, nameof(parent)),
+                PageToken = pageToken ?? "",
+                PageSize = pageSize ?? 0,
+            }, callSettings);
+
+        /// <summary>
+        /// Lists CustomMetrics on a property.
+        /// </summary>
+        /// <param name="parent">
+        /// Required. Example format: properties/1234
+        /// </param>
+        /// <param name="pageToken">
+        /// The token returned from the previous request. A value of <c>null</c> or an empty string retrieves the first
+        /// page.
+        /// </param>
+        /// <param name="pageSize">
+        /// The size of page to request. The response will not be larger than this, but may be smaller. A value of
+        /// <c>null</c> or <c>0</c> uses a server-defined page size.
+        /// </param>
+        /// <param name="callSettings">If not null, applies overrides to this RPC call.</param>
+        /// <returns>A pageable asynchronous sequence of <see cref="CustomMetric"/> resources.</returns>
+        public virtual gax::PagedAsyncEnumerable<ListCustomMetricsResponse, CustomMetric> ListCustomMetricsAsync(string parent, string pageToken = null, int? pageSize = null, gaxgrpc::CallSettings callSettings = null) =>
+            ListCustomMetricsAsync(new ListCustomMetricsRequest
+            {
+                Parent = gax::GaxPreconditions.CheckNotNullOrEmpty(parent, nameof(parent)),
+                PageToken = pageToken ?? "",
+                PageSize = pageSize ?? 0,
+            }, callSettings);
+
+        /// <summary>
+        /// Lists CustomMetrics on a property.
+        /// </summary>
+        /// <param name="parent">
+        /// Required. Example format: properties/1234
+        /// </param>
+        /// <param name="pageToken">
+        /// The token returned from the previous request. A value of <c>null</c> or an empty string retrieves the first
+        /// page.
+        /// </param>
+        /// <param name="pageSize">
+        /// The size of page to request. The response will not be larger than this, but may be smaller. A value of
+        /// <c>null</c> or <c>0</c> uses a server-defined page size.
+        /// </param>
+        /// <param name="callSettings">If not null, applies overrides to this RPC call.</param>
+        /// <returns>A pageable sequence of <see cref="CustomMetric"/> resources.</returns>
+        public virtual gax::PagedEnumerable<ListCustomMetricsResponse, CustomMetric> ListCustomMetrics(PropertyName parent, string pageToken = null, int? pageSize = null, gaxgrpc::CallSettings callSettings = null) =>
+            ListCustomMetrics(new ListCustomMetricsRequest
+            {
+                ParentAsPropertyName = gax::GaxPreconditions.CheckNotNull(parent, nameof(parent)),
+                PageToken = pageToken ?? "",
+                PageSize = pageSize ?? 0,
+            }, callSettings);
+
+        /// <summary>
+        /// Lists CustomMetrics on a property.
+        /// </summary>
+        /// <param name="parent">
+        /// Required. Example format: properties/1234
+        /// </param>
+        /// <param name="pageToken">
+        /// The token returned from the previous request. A value of <c>null</c> or an empty string retrieves the first
+        /// page.
+        /// </param>
+        /// <param name="pageSize">
+        /// The size of page to request. The response will not be larger than this, but may be smaller. A value of
+        /// <c>null</c> or <c>0</c> uses a server-defined page size.
+        /// </param>
+        /// <param name="callSettings">If not null, applies overrides to this RPC call.</param>
+        /// <returns>A pageable asynchronous sequence of <see cref="CustomMetric"/> resources.</returns>
+        public virtual gax::PagedAsyncEnumerable<ListCustomMetricsResponse, CustomMetric> ListCustomMetricsAsync(PropertyName parent, string pageToken = null, int? pageSize = null, gaxgrpc::CallSettings callSettings = null) =>
+            ListCustomMetricsAsync(new ListCustomMetricsRequest
+            {
+                ParentAsPropertyName = gax::GaxPreconditions.CheckNotNull(parent, nameof(parent)),
+                PageToken = pageToken ?? "",
+                PageSize = pageSize ?? 0,
+            }, callSettings);
+
+        /// <summary>
+        /// Archives a CustomMetric on a property.
+        /// </summary>
+        /// <param name="request">The request object containing all of the parameters for the API call.</param>
+        /// <param name="callSettings">If not null, applies overrides to this RPC call.</param>
+        /// <returns>The RPC response.</returns>
+        public virtual void ArchiveCustomMetric(ArchiveCustomMetricRequest request, gaxgrpc::CallSettings callSettings = null) =>
+            throw new sys::NotImplementedException();
+
+        /// <summary>
+        /// Archives a CustomMetric on a property.
+        /// </summary>
+        /// <param name="request">The request object containing all of the parameters for the API call.</param>
+        /// <param name="callSettings">If not null, applies overrides to this RPC call.</param>
+        /// <returns>A Task containing the RPC response.</returns>
+        public virtual stt::Task ArchiveCustomMetricAsync(ArchiveCustomMetricRequest request, gaxgrpc::CallSettings callSettings = null) =>
+            throw new sys::NotImplementedException();
+
+        /// <summary>
+        /// Archives a CustomMetric on a property.
+        /// </summary>
+        /// <param name="request">The request object containing all of the parameters for the API call.</param>
+        /// <param name="cancellationToken">A <see cref="st::CancellationToken"/> to use for this RPC.</param>
+        /// <returns>A Task containing the RPC response.</returns>
+        public virtual stt::Task ArchiveCustomMetricAsync(ArchiveCustomMetricRequest request, st::CancellationToken cancellationToken) =>
+            ArchiveCustomMetricAsync(request, gaxgrpc::CallSettings.FromCancellationToken(cancellationToken));
+
+        /// <summary>
+        /// Archives a CustomMetric on a property.
+        /// </summary>
+        /// <param name="name">
+        /// Required. The name of the CustomMetric to archive.
+        /// Example format: properties/1234/customMetrics/5678
+        /// </param>
+        /// <param name="callSettings">If not null, applies overrides to this RPC call.</param>
+        /// <returns>The RPC response.</returns>
+        public virtual void ArchiveCustomMetric(string name, gaxgrpc::CallSettings callSettings = null) =>
+            ArchiveCustomMetric(new ArchiveCustomMetricRequest
+            {
+                Name = gax::GaxPreconditions.CheckNotNullOrEmpty(name, nameof(name)),
+            }, callSettings);
+
+        /// <summary>
+        /// Archives a CustomMetric on a property.
+        /// </summary>
+        /// <param name="name">
+        /// Required. The name of the CustomMetric to archive.
+        /// Example format: properties/1234/customMetrics/5678
+        /// </param>
+        /// <param name="callSettings">If not null, applies overrides to this RPC call.</param>
+        /// <returns>A Task containing the RPC response.</returns>
+        public virtual stt::Task ArchiveCustomMetricAsync(string name, gaxgrpc::CallSettings callSettings = null) =>
+            ArchiveCustomMetricAsync(new ArchiveCustomMetricRequest
+            {
+                Name = gax::GaxPreconditions.CheckNotNullOrEmpty(name, nameof(name)),
+            }, callSettings);
+
+        /// <summary>
+        /// Archives a CustomMetric on a property.
+        /// </summary>
+        /// <param name="name">
+        /// Required. The name of the CustomMetric to archive.
+        /// Example format: properties/1234/customMetrics/5678
+        /// </param>
+        /// <param name="cancellationToken">A <see cref="st::CancellationToken"/> to use for this RPC.</param>
+        /// <returns>A Task containing the RPC response.</returns>
+        public virtual stt::Task ArchiveCustomMetricAsync(string name, st::CancellationToken cancellationToken) =>
+            ArchiveCustomMetricAsync(name, gaxgrpc::CallSettings.FromCancellationToken(cancellationToken));
+
+        /// <summary>
+        /// Archives a CustomMetric on a property.
+        /// </summary>
+        /// <param name="name">
+        /// Required. The name of the CustomMetric to archive.
+        /// Example format: properties/1234/customMetrics/5678
+        /// </param>
+        /// <param name="callSettings">If not null, applies overrides to this RPC call.</param>
+        /// <returns>The RPC response.</returns>
+        public virtual void ArchiveCustomMetric(CustomMetricName name, gaxgrpc::CallSettings callSettings = null) =>
+            ArchiveCustomMetric(new ArchiveCustomMetricRequest
+            {
+                CustomMetricName = gax::GaxPreconditions.CheckNotNull(name, nameof(name)),
+            }, callSettings);
+
+        /// <summary>
+        /// Archives a CustomMetric on a property.
+        /// </summary>
+        /// <param name="name">
+        /// Required. The name of the CustomMetric to archive.
+        /// Example format: properties/1234/customMetrics/5678
+        /// </param>
+        /// <param name="callSettings">If not null, applies overrides to this RPC call.</param>
+        /// <returns>A Task containing the RPC response.</returns>
+        public virtual stt::Task ArchiveCustomMetricAsync(CustomMetricName name, gaxgrpc::CallSettings callSettings = null) =>
+            ArchiveCustomMetricAsync(new ArchiveCustomMetricRequest
+            {
+                CustomMetricName = gax::GaxPreconditions.CheckNotNull(name, nameof(name)),
+            }, callSettings);
+
+        /// <summary>
+        /// Archives a CustomMetric on a property.
+        /// </summary>
+        /// <param name="name">
+        /// Required. The name of the CustomMetric to archive.
+        /// Example format: properties/1234/customMetrics/5678
+        /// </param>
+        /// <param name="cancellationToken">A <see cref="st::CancellationToken"/> to use for this RPC.</param>
+        /// <returns>A Task containing the RPC response.</returns>
+        public virtual stt::Task ArchiveCustomMetricAsync(CustomMetricName name, st::CancellationToken cancellationToken) =>
+            ArchiveCustomMetricAsync(name, gaxgrpc::CallSettings.FromCancellationToken(cancellationToken));
+
+        /// <summary>
+        /// Lookup for a single CustomMetric.
+        /// </summary>
+        /// <param name="request">The request object containing all of the parameters for the API call.</param>
+        /// <param name="callSettings">If not null, applies overrides to this RPC call.</param>
+        /// <returns>The RPC response.</returns>
+        public virtual CustomMetric GetCustomMetric(GetCustomMetricRequest request, gaxgrpc::CallSettings callSettings = null) =>
+            throw new sys::NotImplementedException();
+
+        /// <summary>
+        /// Lookup for a single CustomMetric.
+        /// </summary>
+        /// <param name="request">The request object containing all of the parameters for the API call.</param>
+        /// <param name="callSettings">If not null, applies overrides to this RPC call.</param>
+        /// <returns>A Task containing the RPC response.</returns>
+        public virtual stt::Task<CustomMetric> GetCustomMetricAsync(GetCustomMetricRequest request, gaxgrpc::CallSettings callSettings = null) =>
+            throw new sys::NotImplementedException();
+
+        /// <summary>
+        /// Lookup for a single CustomMetric.
+        /// </summary>
+        /// <param name="request">The request object containing all of the parameters for the API call.</param>
+        /// <param name="cancellationToken">A <see cref="st::CancellationToken"/> to use for this RPC.</param>
+        /// <returns>A Task containing the RPC response.</returns>
+        public virtual stt::Task<CustomMetric> GetCustomMetricAsync(GetCustomMetricRequest request, st::CancellationToken cancellationToken) =>
+            GetCustomMetricAsync(request, gaxgrpc::CallSettings.FromCancellationToken(cancellationToken));
+
+        /// <summary>
+        /// Lookup for a single CustomMetric.
+        /// </summary>
+        /// <param name="name">
+        /// Required. The name of the CustomMetric to get.
+        /// Example format: properties/1234/customMetrics/5678
+        /// </param>
+        /// <param name="callSettings">If not null, applies overrides to this RPC call.</param>
+        /// <returns>The RPC response.</returns>
+        public virtual CustomMetric GetCustomMetric(string name, gaxgrpc::CallSettings callSettings = null) =>
+            GetCustomMetric(new GetCustomMetricRequest
+            {
+                Name = gax::GaxPreconditions.CheckNotNullOrEmpty(name, nameof(name)),
+            }, callSettings);
+
+        /// <summary>
+        /// Lookup for a single CustomMetric.
+        /// </summary>
+        /// <param name="name">
+        /// Required. The name of the CustomMetric to get.
+        /// Example format: properties/1234/customMetrics/5678
+        /// </param>
+        /// <param name="callSettings">If not null, applies overrides to this RPC call.</param>
+        /// <returns>A Task containing the RPC response.</returns>
+        public virtual stt::Task<CustomMetric> GetCustomMetricAsync(string name, gaxgrpc::CallSettings callSettings = null) =>
+            GetCustomMetricAsync(new GetCustomMetricRequest
+            {
+                Name = gax::GaxPreconditions.CheckNotNullOrEmpty(name, nameof(name)),
+            }, callSettings);
+
+        /// <summary>
+        /// Lookup for a single CustomMetric.
+        /// </summary>
+        /// <param name="name">
+        /// Required. The name of the CustomMetric to get.
+        /// Example format: properties/1234/customMetrics/5678
+        /// </param>
+        /// <param name="cancellationToken">A <see cref="st::CancellationToken"/> to use for this RPC.</param>
+        /// <returns>A Task containing the RPC response.</returns>
+        public virtual stt::Task<CustomMetric> GetCustomMetricAsync(string name, st::CancellationToken cancellationToken) =>
+            GetCustomMetricAsync(name, gaxgrpc::CallSettings.FromCancellationToken(cancellationToken));
+
+        /// <summary>
+        /// Lookup for a single CustomMetric.
+        /// </summary>
+        /// <param name="name">
+        /// Required. The name of the CustomMetric to get.
+        /// Example format: properties/1234/customMetrics/5678
+        /// </param>
+        /// <param name="callSettings">If not null, applies overrides to this RPC call.</param>
+        /// <returns>The RPC response.</returns>
+        public virtual CustomMetric GetCustomMetric(CustomMetricName name, gaxgrpc::CallSettings callSettings = null) =>
+            GetCustomMetric(new GetCustomMetricRequest
+            {
+                CustomMetricName = gax::GaxPreconditions.CheckNotNull(name, nameof(name)),
+            }, callSettings);
+
+        /// <summary>
+        /// Lookup for a single CustomMetric.
+        /// </summary>
+        /// <param name="name">
+        /// Required. The name of the CustomMetric to get.
+        /// Example format: properties/1234/customMetrics/5678
+        /// </param>
+        /// <param name="callSettings">If not null, applies overrides to this RPC call.</param>
+        /// <returns>A Task containing the RPC response.</returns>
+        public virtual stt::Task<CustomMetric> GetCustomMetricAsync(CustomMetricName name, gaxgrpc::CallSettings callSettings = null) =>
+            GetCustomMetricAsync(new GetCustomMetricRequest
+            {
+                CustomMetricName = gax::GaxPreconditions.CheckNotNull(name, nameof(name)),
+            }, callSettings);
+
+        /// <summary>
+        /// Lookup for a single CustomMetric.
+        /// </summary>
+        /// <param name="name">
+        /// Required. The name of the CustomMetric to get.
+        /// Example format: properties/1234/customMetrics/5678
+        /// </param>
+        /// <param name="cancellationToken">A <see cref="st::CancellationToken"/> to use for this RPC.</param>
+        /// <returns>A Task containing the RPC response.</returns>
+        public virtual stt::Task<CustomMetric> GetCustomMetricAsync(CustomMetricName name, st::CancellationToken cancellationToken) =>
+            GetCustomMetricAsync(name, gaxgrpc::CallSettings.FromCancellationToken(cancellationToken));
     }
 
     /// <summary>AnalyticsAdminService client wrapper implementation, for convenient use.</summary>
@@ -5962,7 +8384,7 @@ namespace Google.Analytics.Admin.V1Alpha
 
         private readonly gaxgrpc::ApiCall<CreatePropertyRequest, Property> _callCreateProperty;
 
-        private readonly gaxgrpc::ApiCall<DeletePropertyRequest, wkt::Empty> _callDeleteProperty;
+        private readonly gaxgrpc::ApiCall<DeletePropertyRequest, Property> _callDeleteProperty;
 
         private readonly gaxgrpc::ApiCall<UpdatePropertyRequest, Property> _callUpdateProperty;
 
@@ -6002,8 +8424,6 @@ namespace Google.Analytics.Admin.V1Alpha
 
         private readonly gaxgrpc::ApiCall<UpdateIosAppDataStreamRequest, IosAppDataStream> _callUpdateIosAppDataStream;
 
-        private readonly gaxgrpc::ApiCall<CreateIosAppDataStreamRequest, IosAppDataStream> _callCreateIosAppDataStream;
-
         private readonly gaxgrpc::ApiCall<ListIosAppDataStreamsRequest, ListIosAppDataStreamsResponse> _callListIosAppDataStreams;
 
         private readonly gaxgrpc::ApiCall<GetAndroidAppDataStreamRequest, AndroidAppDataStream> _callGetAndroidAppDataStream;
@@ -6011,8 +8431,6 @@ namespace Google.Analytics.Admin.V1Alpha
         private readonly gaxgrpc::ApiCall<DeleteAndroidAppDataStreamRequest, wkt::Empty> _callDeleteAndroidAppDataStream;
 
         private readonly gaxgrpc::ApiCall<UpdateAndroidAppDataStreamRequest, AndroidAppDataStream> _callUpdateAndroidAppDataStream;
-
-        private readonly gaxgrpc::ApiCall<CreateAndroidAppDataStreamRequest, AndroidAppDataStream> _callCreateAndroidAppDataStream;
 
         private readonly gaxgrpc::ApiCall<ListAndroidAppDataStreamsRequest, ListAndroidAppDataStreamsResponse> _callListAndroidAppDataStreams;
 
@@ -6039,6 +8457,50 @@ namespace Google.Analytics.Admin.V1Alpha
         private readonly gaxgrpc::ApiCall<ListGoogleAdsLinksRequest, ListGoogleAdsLinksResponse> _callListGoogleAdsLinks;
 
         private readonly gaxgrpc::ApiCall<GetDataSharingSettingsRequest, DataSharingSettings> _callGetDataSharingSettings;
+
+        private readonly gaxgrpc::ApiCall<GetMeasurementProtocolSecretRequest, MeasurementProtocolSecret> _callGetMeasurementProtocolSecret;
+
+        private readonly gaxgrpc::ApiCall<ListMeasurementProtocolSecretsRequest, ListMeasurementProtocolSecretsResponse> _callListMeasurementProtocolSecrets;
+
+        private readonly gaxgrpc::ApiCall<CreateMeasurementProtocolSecretRequest, MeasurementProtocolSecret> _callCreateMeasurementProtocolSecret;
+
+        private readonly gaxgrpc::ApiCall<DeleteMeasurementProtocolSecretRequest, wkt::Empty> _callDeleteMeasurementProtocolSecret;
+
+        private readonly gaxgrpc::ApiCall<UpdateMeasurementProtocolSecretRequest, MeasurementProtocolSecret> _callUpdateMeasurementProtocolSecret;
+
+        private readonly gaxgrpc::ApiCall<SearchChangeHistoryEventsRequest, SearchChangeHistoryEventsResponse> _callSearchChangeHistoryEvents;
+
+        private readonly gaxgrpc::ApiCall<GetGoogleSignalsSettingsRequest, GoogleSignalsSettings> _callGetGoogleSignalsSettings;
+
+        private readonly gaxgrpc::ApiCall<UpdateGoogleSignalsSettingsRequest, GoogleSignalsSettings> _callUpdateGoogleSignalsSettings;
+
+        private readonly gaxgrpc::ApiCall<CreateConversionEventRequest, ConversionEvent> _callCreateConversionEvent;
+
+        private readonly gaxgrpc::ApiCall<GetConversionEventRequest, ConversionEvent> _callGetConversionEvent;
+
+        private readonly gaxgrpc::ApiCall<DeleteConversionEventRequest, wkt::Empty> _callDeleteConversionEvent;
+
+        private readonly gaxgrpc::ApiCall<ListConversionEventsRequest, ListConversionEventsResponse> _callListConversionEvents;
+
+        private readonly gaxgrpc::ApiCall<CreateCustomDimensionRequest, CustomDimension> _callCreateCustomDimension;
+
+        private readonly gaxgrpc::ApiCall<UpdateCustomDimensionRequest, CustomDimension> _callUpdateCustomDimension;
+
+        private readonly gaxgrpc::ApiCall<ListCustomDimensionsRequest, ListCustomDimensionsResponse> _callListCustomDimensions;
+
+        private readonly gaxgrpc::ApiCall<ArchiveCustomDimensionRequest, wkt::Empty> _callArchiveCustomDimension;
+
+        private readonly gaxgrpc::ApiCall<GetCustomDimensionRequest, CustomDimension> _callGetCustomDimension;
+
+        private readonly gaxgrpc::ApiCall<CreateCustomMetricRequest, CustomMetric> _callCreateCustomMetric;
+
+        private readonly gaxgrpc::ApiCall<UpdateCustomMetricRequest, CustomMetric> _callUpdateCustomMetric;
+
+        private readonly gaxgrpc::ApiCall<ListCustomMetricsRequest, ListCustomMetricsResponse> _callListCustomMetrics;
+
+        private readonly gaxgrpc::ApiCall<ArchiveCustomMetricRequest, wkt::Empty> _callArchiveCustomMetric;
+
+        private readonly gaxgrpc::ApiCall<GetCustomMetricRequest, CustomMetric> _callGetCustomMetric;
 
         /// <summary>
         /// Constructs a client wrapper for the AnalyticsAdminService service, with the specified gRPC client and
@@ -6078,7 +8540,7 @@ namespace Google.Analytics.Admin.V1Alpha
             _callCreateProperty = clientHelper.BuildApiCall<CreatePropertyRequest, Property>(grpcClient.CreatePropertyAsync, grpcClient.CreateProperty, effectiveSettings.CreatePropertySettings);
             Modify_ApiCall(ref _callCreateProperty);
             Modify_CreatePropertyApiCall(ref _callCreateProperty);
-            _callDeleteProperty = clientHelper.BuildApiCall<DeletePropertyRequest, wkt::Empty>(grpcClient.DeletePropertyAsync, grpcClient.DeleteProperty, effectiveSettings.DeletePropertySettings).WithGoogleRequestParam("name", request => request.Name);
+            _callDeleteProperty = clientHelper.BuildApiCall<DeletePropertyRequest, Property>(grpcClient.DeletePropertyAsync, grpcClient.DeleteProperty, effectiveSettings.DeletePropertySettings).WithGoogleRequestParam("name", request => request.Name);
             Modify_ApiCall(ref _callDeleteProperty);
             Modify_DeletePropertyApiCall(ref _callDeleteProperty);
             _callUpdateProperty = clientHelper.BuildApiCall<UpdatePropertyRequest, Property>(grpcClient.UpdatePropertyAsync, grpcClient.UpdateProperty, effectiveSettings.UpdatePropertySettings).WithGoogleRequestParam("property.name", request => request.Property?.Name);
@@ -6138,9 +8600,6 @@ namespace Google.Analytics.Admin.V1Alpha
             _callUpdateIosAppDataStream = clientHelper.BuildApiCall<UpdateIosAppDataStreamRequest, IosAppDataStream>(grpcClient.UpdateIosAppDataStreamAsync, grpcClient.UpdateIosAppDataStream, effectiveSettings.UpdateIosAppDataStreamSettings).WithGoogleRequestParam("ios_app_data_stream.name", request => request.IosAppDataStream?.Name);
             Modify_ApiCall(ref _callUpdateIosAppDataStream);
             Modify_UpdateIosAppDataStreamApiCall(ref _callUpdateIosAppDataStream);
-            _callCreateIosAppDataStream = clientHelper.BuildApiCall<CreateIosAppDataStreamRequest, IosAppDataStream>(grpcClient.CreateIosAppDataStreamAsync, grpcClient.CreateIosAppDataStream, effectiveSettings.CreateIosAppDataStreamSettings).WithGoogleRequestParam("parent", request => request.Parent);
-            Modify_ApiCall(ref _callCreateIosAppDataStream);
-            Modify_CreateIosAppDataStreamApiCall(ref _callCreateIosAppDataStream);
             _callListIosAppDataStreams = clientHelper.BuildApiCall<ListIosAppDataStreamsRequest, ListIosAppDataStreamsResponse>(grpcClient.ListIosAppDataStreamsAsync, grpcClient.ListIosAppDataStreams, effectiveSettings.ListIosAppDataStreamsSettings).WithGoogleRequestParam("parent", request => request.Parent);
             Modify_ApiCall(ref _callListIosAppDataStreams);
             Modify_ListIosAppDataStreamsApiCall(ref _callListIosAppDataStreams);
@@ -6153,9 +8612,6 @@ namespace Google.Analytics.Admin.V1Alpha
             _callUpdateAndroidAppDataStream = clientHelper.BuildApiCall<UpdateAndroidAppDataStreamRequest, AndroidAppDataStream>(grpcClient.UpdateAndroidAppDataStreamAsync, grpcClient.UpdateAndroidAppDataStream, effectiveSettings.UpdateAndroidAppDataStreamSettings).WithGoogleRequestParam("android_app_data_stream.name", request => request.AndroidAppDataStream?.Name);
             Modify_ApiCall(ref _callUpdateAndroidAppDataStream);
             Modify_UpdateAndroidAppDataStreamApiCall(ref _callUpdateAndroidAppDataStream);
-            _callCreateAndroidAppDataStream = clientHelper.BuildApiCall<CreateAndroidAppDataStreamRequest, AndroidAppDataStream>(grpcClient.CreateAndroidAppDataStreamAsync, grpcClient.CreateAndroidAppDataStream, effectiveSettings.CreateAndroidAppDataStreamSettings).WithGoogleRequestParam("parent", request => request.Parent);
-            Modify_ApiCall(ref _callCreateAndroidAppDataStream);
-            Modify_CreateAndroidAppDataStreamApiCall(ref _callCreateAndroidAppDataStream);
             _callListAndroidAppDataStreams = clientHelper.BuildApiCall<ListAndroidAppDataStreamsRequest, ListAndroidAppDataStreamsResponse>(grpcClient.ListAndroidAppDataStreamsAsync, grpcClient.ListAndroidAppDataStreams, effectiveSettings.ListAndroidAppDataStreamsSettings).WithGoogleRequestParam("parent", request => request.Parent);
             Modify_ApiCall(ref _callListAndroidAppDataStreams);
             Modify_ListAndroidAppDataStreamsApiCall(ref _callListAndroidAppDataStreams);
@@ -6195,6 +8651,72 @@ namespace Google.Analytics.Admin.V1Alpha
             _callGetDataSharingSettings = clientHelper.BuildApiCall<GetDataSharingSettingsRequest, DataSharingSettings>(grpcClient.GetDataSharingSettingsAsync, grpcClient.GetDataSharingSettings, effectiveSettings.GetDataSharingSettingsSettings).WithGoogleRequestParam("name", request => request.Name);
             Modify_ApiCall(ref _callGetDataSharingSettings);
             Modify_GetDataSharingSettingsApiCall(ref _callGetDataSharingSettings);
+            _callGetMeasurementProtocolSecret = clientHelper.BuildApiCall<GetMeasurementProtocolSecretRequest, MeasurementProtocolSecret>(grpcClient.GetMeasurementProtocolSecretAsync, grpcClient.GetMeasurementProtocolSecret, effectiveSettings.GetMeasurementProtocolSecretSettings).WithGoogleRequestParam("name", request => request.Name);
+            Modify_ApiCall(ref _callGetMeasurementProtocolSecret);
+            Modify_GetMeasurementProtocolSecretApiCall(ref _callGetMeasurementProtocolSecret);
+            _callListMeasurementProtocolSecrets = clientHelper.BuildApiCall<ListMeasurementProtocolSecretsRequest, ListMeasurementProtocolSecretsResponse>(grpcClient.ListMeasurementProtocolSecretsAsync, grpcClient.ListMeasurementProtocolSecrets, effectiveSettings.ListMeasurementProtocolSecretsSettings).WithGoogleRequestParam("parent", request => request.Parent);
+            Modify_ApiCall(ref _callListMeasurementProtocolSecrets);
+            Modify_ListMeasurementProtocolSecretsApiCall(ref _callListMeasurementProtocolSecrets);
+            _callCreateMeasurementProtocolSecret = clientHelper.BuildApiCall<CreateMeasurementProtocolSecretRequest, MeasurementProtocolSecret>(grpcClient.CreateMeasurementProtocolSecretAsync, grpcClient.CreateMeasurementProtocolSecret, effectiveSettings.CreateMeasurementProtocolSecretSettings).WithGoogleRequestParam("parent", request => request.Parent);
+            Modify_ApiCall(ref _callCreateMeasurementProtocolSecret);
+            Modify_CreateMeasurementProtocolSecretApiCall(ref _callCreateMeasurementProtocolSecret);
+            _callDeleteMeasurementProtocolSecret = clientHelper.BuildApiCall<DeleteMeasurementProtocolSecretRequest, wkt::Empty>(grpcClient.DeleteMeasurementProtocolSecretAsync, grpcClient.DeleteMeasurementProtocolSecret, effectiveSettings.DeleteMeasurementProtocolSecretSettings).WithGoogleRequestParam("name", request => request.Name);
+            Modify_ApiCall(ref _callDeleteMeasurementProtocolSecret);
+            Modify_DeleteMeasurementProtocolSecretApiCall(ref _callDeleteMeasurementProtocolSecret);
+            _callUpdateMeasurementProtocolSecret = clientHelper.BuildApiCall<UpdateMeasurementProtocolSecretRequest, MeasurementProtocolSecret>(grpcClient.UpdateMeasurementProtocolSecretAsync, grpcClient.UpdateMeasurementProtocolSecret, effectiveSettings.UpdateMeasurementProtocolSecretSettings).WithGoogleRequestParam("measurement_protocol_secret.name", request => request.MeasurementProtocolSecret?.Name);
+            Modify_ApiCall(ref _callUpdateMeasurementProtocolSecret);
+            Modify_UpdateMeasurementProtocolSecretApiCall(ref _callUpdateMeasurementProtocolSecret);
+            _callSearchChangeHistoryEvents = clientHelper.BuildApiCall<SearchChangeHistoryEventsRequest, SearchChangeHistoryEventsResponse>(grpcClient.SearchChangeHistoryEventsAsync, grpcClient.SearchChangeHistoryEvents, effectiveSettings.SearchChangeHistoryEventsSettings).WithGoogleRequestParam("account", request => request.Account);
+            Modify_ApiCall(ref _callSearchChangeHistoryEvents);
+            Modify_SearchChangeHistoryEventsApiCall(ref _callSearchChangeHistoryEvents);
+            _callGetGoogleSignalsSettings = clientHelper.BuildApiCall<GetGoogleSignalsSettingsRequest, GoogleSignalsSettings>(grpcClient.GetGoogleSignalsSettingsAsync, grpcClient.GetGoogleSignalsSettings, effectiveSettings.GetGoogleSignalsSettingsSettings).WithGoogleRequestParam("name", request => request.Name);
+            Modify_ApiCall(ref _callGetGoogleSignalsSettings);
+            Modify_GetGoogleSignalsSettingsApiCall(ref _callGetGoogleSignalsSettings);
+            _callUpdateGoogleSignalsSettings = clientHelper.BuildApiCall<UpdateGoogleSignalsSettingsRequest, GoogleSignalsSettings>(grpcClient.UpdateGoogleSignalsSettingsAsync, grpcClient.UpdateGoogleSignalsSettings, effectiveSettings.UpdateGoogleSignalsSettingsSettings).WithGoogleRequestParam("google_signals_settings.name", request => request.GoogleSignalsSettings?.Name);
+            Modify_ApiCall(ref _callUpdateGoogleSignalsSettings);
+            Modify_UpdateGoogleSignalsSettingsApiCall(ref _callUpdateGoogleSignalsSettings);
+            _callCreateConversionEvent = clientHelper.BuildApiCall<CreateConversionEventRequest, ConversionEvent>(grpcClient.CreateConversionEventAsync, grpcClient.CreateConversionEvent, effectiveSettings.CreateConversionEventSettings).WithGoogleRequestParam("parent", request => request.Parent);
+            Modify_ApiCall(ref _callCreateConversionEvent);
+            Modify_CreateConversionEventApiCall(ref _callCreateConversionEvent);
+            _callGetConversionEvent = clientHelper.BuildApiCall<GetConversionEventRequest, ConversionEvent>(grpcClient.GetConversionEventAsync, grpcClient.GetConversionEvent, effectiveSettings.GetConversionEventSettings).WithGoogleRequestParam("name", request => request.Name);
+            Modify_ApiCall(ref _callGetConversionEvent);
+            Modify_GetConversionEventApiCall(ref _callGetConversionEvent);
+            _callDeleteConversionEvent = clientHelper.BuildApiCall<DeleteConversionEventRequest, wkt::Empty>(grpcClient.DeleteConversionEventAsync, grpcClient.DeleteConversionEvent, effectiveSettings.DeleteConversionEventSettings).WithGoogleRequestParam("name", request => request.Name);
+            Modify_ApiCall(ref _callDeleteConversionEvent);
+            Modify_DeleteConversionEventApiCall(ref _callDeleteConversionEvent);
+            _callListConversionEvents = clientHelper.BuildApiCall<ListConversionEventsRequest, ListConversionEventsResponse>(grpcClient.ListConversionEventsAsync, grpcClient.ListConversionEvents, effectiveSettings.ListConversionEventsSettings).WithGoogleRequestParam("parent", request => request.Parent);
+            Modify_ApiCall(ref _callListConversionEvents);
+            Modify_ListConversionEventsApiCall(ref _callListConversionEvents);
+            _callCreateCustomDimension = clientHelper.BuildApiCall<CreateCustomDimensionRequest, CustomDimension>(grpcClient.CreateCustomDimensionAsync, grpcClient.CreateCustomDimension, effectiveSettings.CreateCustomDimensionSettings).WithGoogleRequestParam("parent", request => request.Parent);
+            Modify_ApiCall(ref _callCreateCustomDimension);
+            Modify_CreateCustomDimensionApiCall(ref _callCreateCustomDimension);
+            _callUpdateCustomDimension = clientHelper.BuildApiCall<UpdateCustomDimensionRequest, CustomDimension>(grpcClient.UpdateCustomDimensionAsync, grpcClient.UpdateCustomDimension, effectiveSettings.UpdateCustomDimensionSettings).WithGoogleRequestParam("custom_dimension.name", request => request.CustomDimension?.Name);
+            Modify_ApiCall(ref _callUpdateCustomDimension);
+            Modify_UpdateCustomDimensionApiCall(ref _callUpdateCustomDimension);
+            _callListCustomDimensions = clientHelper.BuildApiCall<ListCustomDimensionsRequest, ListCustomDimensionsResponse>(grpcClient.ListCustomDimensionsAsync, grpcClient.ListCustomDimensions, effectiveSettings.ListCustomDimensionsSettings).WithGoogleRequestParam("parent", request => request.Parent);
+            Modify_ApiCall(ref _callListCustomDimensions);
+            Modify_ListCustomDimensionsApiCall(ref _callListCustomDimensions);
+            _callArchiveCustomDimension = clientHelper.BuildApiCall<ArchiveCustomDimensionRequest, wkt::Empty>(grpcClient.ArchiveCustomDimensionAsync, grpcClient.ArchiveCustomDimension, effectiveSettings.ArchiveCustomDimensionSettings).WithGoogleRequestParam("name", request => request.Name);
+            Modify_ApiCall(ref _callArchiveCustomDimension);
+            Modify_ArchiveCustomDimensionApiCall(ref _callArchiveCustomDimension);
+            _callGetCustomDimension = clientHelper.BuildApiCall<GetCustomDimensionRequest, CustomDimension>(grpcClient.GetCustomDimensionAsync, grpcClient.GetCustomDimension, effectiveSettings.GetCustomDimensionSettings).WithGoogleRequestParam("name", request => request.Name);
+            Modify_ApiCall(ref _callGetCustomDimension);
+            Modify_GetCustomDimensionApiCall(ref _callGetCustomDimension);
+            _callCreateCustomMetric = clientHelper.BuildApiCall<CreateCustomMetricRequest, CustomMetric>(grpcClient.CreateCustomMetricAsync, grpcClient.CreateCustomMetric, effectiveSettings.CreateCustomMetricSettings).WithGoogleRequestParam("parent", request => request.Parent);
+            Modify_ApiCall(ref _callCreateCustomMetric);
+            Modify_CreateCustomMetricApiCall(ref _callCreateCustomMetric);
+            _callUpdateCustomMetric = clientHelper.BuildApiCall<UpdateCustomMetricRequest, CustomMetric>(grpcClient.UpdateCustomMetricAsync, grpcClient.UpdateCustomMetric, effectiveSettings.UpdateCustomMetricSettings).WithGoogleRequestParam("custom_metric.name", request => request.CustomMetric?.Name);
+            Modify_ApiCall(ref _callUpdateCustomMetric);
+            Modify_UpdateCustomMetricApiCall(ref _callUpdateCustomMetric);
+            _callListCustomMetrics = clientHelper.BuildApiCall<ListCustomMetricsRequest, ListCustomMetricsResponse>(grpcClient.ListCustomMetricsAsync, grpcClient.ListCustomMetrics, effectiveSettings.ListCustomMetricsSettings).WithGoogleRequestParam("parent", request => request.Parent);
+            Modify_ApiCall(ref _callListCustomMetrics);
+            Modify_ListCustomMetricsApiCall(ref _callListCustomMetrics);
+            _callArchiveCustomMetric = clientHelper.BuildApiCall<ArchiveCustomMetricRequest, wkt::Empty>(grpcClient.ArchiveCustomMetricAsync, grpcClient.ArchiveCustomMetric, effectiveSettings.ArchiveCustomMetricSettings).WithGoogleRequestParam("name", request => request.Name);
+            Modify_ApiCall(ref _callArchiveCustomMetric);
+            Modify_ArchiveCustomMetricApiCall(ref _callArchiveCustomMetric);
+            _callGetCustomMetric = clientHelper.BuildApiCall<GetCustomMetricRequest, CustomMetric>(grpcClient.GetCustomMetricAsync, grpcClient.GetCustomMetric, effectiveSettings.GetCustomMetricSettings).WithGoogleRequestParam("name", request => request.Name);
+            Modify_ApiCall(ref _callGetCustomMetric);
+            Modify_GetCustomMetricApiCall(ref _callGetCustomMetric);
             OnConstruction(grpcClient, effectiveSettings, clientHelper);
         }
 
@@ -6218,7 +8740,7 @@ namespace Google.Analytics.Admin.V1Alpha
 
         partial void Modify_CreatePropertyApiCall(ref gaxgrpc::ApiCall<CreatePropertyRequest, Property> call);
 
-        partial void Modify_DeletePropertyApiCall(ref gaxgrpc::ApiCall<DeletePropertyRequest, wkt::Empty> call);
+        partial void Modify_DeletePropertyApiCall(ref gaxgrpc::ApiCall<DeletePropertyRequest, Property> call);
 
         partial void Modify_UpdatePropertyApiCall(ref gaxgrpc::ApiCall<UpdatePropertyRequest, Property> call);
 
@@ -6258,8 +8780,6 @@ namespace Google.Analytics.Admin.V1Alpha
 
         partial void Modify_UpdateIosAppDataStreamApiCall(ref gaxgrpc::ApiCall<UpdateIosAppDataStreamRequest, IosAppDataStream> call);
 
-        partial void Modify_CreateIosAppDataStreamApiCall(ref gaxgrpc::ApiCall<CreateIosAppDataStreamRequest, IosAppDataStream> call);
-
         partial void Modify_ListIosAppDataStreamsApiCall(ref gaxgrpc::ApiCall<ListIosAppDataStreamsRequest, ListIosAppDataStreamsResponse> call);
 
         partial void Modify_GetAndroidAppDataStreamApiCall(ref gaxgrpc::ApiCall<GetAndroidAppDataStreamRequest, AndroidAppDataStream> call);
@@ -6267,8 +8787,6 @@ namespace Google.Analytics.Admin.V1Alpha
         partial void Modify_DeleteAndroidAppDataStreamApiCall(ref gaxgrpc::ApiCall<DeleteAndroidAppDataStreamRequest, wkt::Empty> call);
 
         partial void Modify_UpdateAndroidAppDataStreamApiCall(ref gaxgrpc::ApiCall<UpdateAndroidAppDataStreamRequest, AndroidAppDataStream> call);
-
-        partial void Modify_CreateAndroidAppDataStreamApiCall(ref gaxgrpc::ApiCall<CreateAndroidAppDataStreamRequest, AndroidAppDataStream> call);
 
         partial void Modify_ListAndroidAppDataStreamsApiCall(ref gaxgrpc::ApiCall<ListAndroidAppDataStreamsRequest, ListAndroidAppDataStreamsResponse> call);
 
@@ -6295,6 +8813,50 @@ namespace Google.Analytics.Admin.V1Alpha
         partial void Modify_ListGoogleAdsLinksApiCall(ref gaxgrpc::ApiCall<ListGoogleAdsLinksRequest, ListGoogleAdsLinksResponse> call);
 
         partial void Modify_GetDataSharingSettingsApiCall(ref gaxgrpc::ApiCall<GetDataSharingSettingsRequest, DataSharingSettings> call);
+
+        partial void Modify_GetMeasurementProtocolSecretApiCall(ref gaxgrpc::ApiCall<GetMeasurementProtocolSecretRequest, MeasurementProtocolSecret> call);
+
+        partial void Modify_ListMeasurementProtocolSecretsApiCall(ref gaxgrpc::ApiCall<ListMeasurementProtocolSecretsRequest, ListMeasurementProtocolSecretsResponse> call);
+
+        partial void Modify_CreateMeasurementProtocolSecretApiCall(ref gaxgrpc::ApiCall<CreateMeasurementProtocolSecretRequest, MeasurementProtocolSecret> call);
+
+        partial void Modify_DeleteMeasurementProtocolSecretApiCall(ref gaxgrpc::ApiCall<DeleteMeasurementProtocolSecretRequest, wkt::Empty> call);
+
+        partial void Modify_UpdateMeasurementProtocolSecretApiCall(ref gaxgrpc::ApiCall<UpdateMeasurementProtocolSecretRequest, MeasurementProtocolSecret> call);
+
+        partial void Modify_SearchChangeHistoryEventsApiCall(ref gaxgrpc::ApiCall<SearchChangeHistoryEventsRequest, SearchChangeHistoryEventsResponse> call);
+
+        partial void Modify_GetGoogleSignalsSettingsApiCall(ref gaxgrpc::ApiCall<GetGoogleSignalsSettingsRequest, GoogleSignalsSettings> call);
+
+        partial void Modify_UpdateGoogleSignalsSettingsApiCall(ref gaxgrpc::ApiCall<UpdateGoogleSignalsSettingsRequest, GoogleSignalsSettings> call);
+
+        partial void Modify_CreateConversionEventApiCall(ref gaxgrpc::ApiCall<CreateConversionEventRequest, ConversionEvent> call);
+
+        partial void Modify_GetConversionEventApiCall(ref gaxgrpc::ApiCall<GetConversionEventRequest, ConversionEvent> call);
+
+        partial void Modify_DeleteConversionEventApiCall(ref gaxgrpc::ApiCall<DeleteConversionEventRequest, wkt::Empty> call);
+
+        partial void Modify_ListConversionEventsApiCall(ref gaxgrpc::ApiCall<ListConversionEventsRequest, ListConversionEventsResponse> call);
+
+        partial void Modify_CreateCustomDimensionApiCall(ref gaxgrpc::ApiCall<CreateCustomDimensionRequest, CustomDimension> call);
+
+        partial void Modify_UpdateCustomDimensionApiCall(ref gaxgrpc::ApiCall<UpdateCustomDimensionRequest, CustomDimension> call);
+
+        partial void Modify_ListCustomDimensionsApiCall(ref gaxgrpc::ApiCall<ListCustomDimensionsRequest, ListCustomDimensionsResponse> call);
+
+        partial void Modify_ArchiveCustomDimensionApiCall(ref gaxgrpc::ApiCall<ArchiveCustomDimensionRequest, wkt::Empty> call);
+
+        partial void Modify_GetCustomDimensionApiCall(ref gaxgrpc::ApiCall<GetCustomDimensionRequest, CustomDimension> call);
+
+        partial void Modify_CreateCustomMetricApiCall(ref gaxgrpc::ApiCall<CreateCustomMetricRequest, CustomMetric> call);
+
+        partial void Modify_UpdateCustomMetricApiCall(ref gaxgrpc::ApiCall<UpdateCustomMetricRequest, CustomMetric> call);
+
+        partial void Modify_ListCustomMetricsApiCall(ref gaxgrpc::ApiCall<ListCustomMetricsRequest, ListCustomMetricsResponse> call);
+
+        partial void Modify_ArchiveCustomMetricApiCall(ref gaxgrpc::ApiCall<ArchiveCustomMetricRequest, wkt::Empty> call);
+
+        partial void Modify_GetCustomMetricApiCall(ref gaxgrpc::ApiCall<GetCustomMetricRequest, CustomMetric> call);
 
         partial void OnConstruction(AnalyticsAdminService.AnalyticsAdminServiceClient grpcClient, AnalyticsAdminServiceSettings effectiveSettings, gaxgrpc::ClientHelper clientHelper);
 
@@ -6359,8 +8921,6 @@ namespace Google.Analytics.Admin.V1Alpha
 
         partial void Modify_UpdateIosAppDataStreamRequest(ref UpdateIosAppDataStreamRequest request, ref gaxgrpc::CallSettings settings);
 
-        partial void Modify_CreateIosAppDataStreamRequest(ref CreateIosAppDataStreamRequest request, ref gaxgrpc::CallSettings settings);
-
         partial void Modify_ListIosAppDataStreamsRequest(ref ListIosAppDataStreamsRequest request, ref gaxgrpc::CallSettings settings);
 
         partial void Modify_GetAndroidAppDataStreamRequest(ref GetAndroidAppDataStreamRequest request, ref gaxgrpc::CallSettings settings);
@@ -6368,8 +8928,6 @@ namespace Google.Analytics.Admin.V1Alpha
         partial void Modify_DeleteAndroidAppDataStreamRequest(ref DeleteAndroidAppDataStreamRequest request, ref gaxgrpc::CallSettings settings);
 
         partial void Modify_UpdateAndroidAppDataStreamRequest(ref UpdateAndroidAppDataStreamRequest request, ref gaxgrpc::CallSettings settings);
-
-        partial void Modify_CreateAndroidAppDataStreamRequest(ref CreateAndroidAppDataStreamRequest request, ref gaxgrpc::CallSettings settings);
 
         partial void Modify_ListAndroidAppDataStreamsRequest(ref ListAndroidAppDataStreamsRequest request, ref gaxgrpc::CallSettings settings);
 
@@ -6397,10 +8955,52 @@ namespace Google.Analytics.Admin.V1Alpha
 
         partial void Modify_GetDataSharingSettingsRequest(ref GetDataSharingSettingsRequest request, ref gaxgrpc::CallSettings settings);
 
+        partial void Modify_GetMeasurementProtocolSecretRequest(ref GetMeasurementProtocolSecretRequest request, ref gaxgrpc::CallSettings settings);
+
+        partial void Modify_ListMeasurementProtocolSecretsRequest(ref ListMeasurementProtocolSecretsRequest request, ref gaxgrpc::CallSettings settings);
+
+        partial void Modify_CreateMeasurementProtocolSecretRequest(ref CreateMeasurementProtocolSecretRequest request, ref gaxgrpc::CallSettings settings);
+
+        partial void Modify_DeleteMeasurementProtocolSecretRequest(ref DeleteMeasurementProtocolSecretRequest request, ref gaxgrpc::CallSettings settings);
+
+        partial void Modify_UpdateMeasurementProtocolSecretRequest(ref UpdateMeasurementProtocolSecretRequest request, ref gaxgrpc::CallSettings settings);
+
+        partial void Modify_SearchChangeHistoryEventsRequest(ref SearchChangeHistoryEventsRequest request, ref gaxgrpc::CallSettings settings);
+
+        partial void Modify_GetGoogleSignalsSettingsRequest(ref GetGoogleSignalsSettingsRequest request, ref gaxgrpc::CallSettings settings);
+
+        partial void Modify_UpdateGoogleSignalsSettingsRequest(ref UpdateGoogleSignalsSettingsRequest request, ref gaxgrpc::CallSettings settings);
+
+        partial void Modify_CreateConversionEventRequest(ref CreateConversionEventRequest request, ref gaxgrpc::CallSettings settings);
+
+        partial void Modify_GetConversionEventRequest(ref GetConversionEventRequest request, ref gaxgrpc::CallSettings settings);
+
+        partial void Modify_DeleteConversionEventRequest(ref DeleteConversionEventRequest request, ref gaxgrpc::CallSettings settings);
+
+        partial void Modify_ListConversionEventsRequest(ref ListConversionEventsRequest request, ref gaxgrpc::CallSettings settings);
+
+        partial void Modify_CreateCustomDimensionRequest(ref CreateCustomDimensionRequest request, ref gaxgrpc::CallSettings settings);
+
+        partial void Modify_UpdateCustomDimensionRequest(ref UpdateCustomDimensionRequest request, ref gaxgrpc::CallSettings settings);
+
+        partial void Modify_ListCustomDimensionsRequest(ref ListCustomDimensionsRequest request, ref gaxgrpc::CallSettings settings);
+
+        partial void Modify_ArchiveCustomDimensionRequest(ref ArchiveCustomDimensionRequest request, ref gaxgrpc::CallSettings settings);
+
+        partial void Modify_GetCustomDimensionRequest(ref GetCustomDimensionRequest request, ref gaxgrpc::CallSettings settings);
+
+        partial void Modify_CreateCustomMetricRequest(ref CreateCustomMetricRequest request, ref gaxgrpc::CallSettings settings);
+
+        partial void Modify_UpdateCustomMetricRequest(ref UpdateCustomMetricRequest request, ref gaxgrpc::CallSettings settings);
+
+        partial void Modify_ListCustomMetricsRequest(ref ListCustomMetricsRequest request, ref gaxgrpc::CallSettings settings);
+
+        partial void Modify_ArchiveCustomMetricRequest(ref ArchiveCustomMetricRequest request, ref gaxgrpc::CallSettings settings);
+
+        partial void Modify_GetCustomMetricRequest(ref GetCustomMetricRequest request, ref gaxgrpc::CallSettings settings);
+
         /// <summary>
         /// Lookup for a single Account.
-        /// Throws "Target not found" if no such account found, or if caller does not
-        /// have permissions to access it.
         /// </summary>
         /// <param name="request">The request object containing all of the parameters for the API call.</param>
         /// <param name="callSettings">If not null, applies overrides to this RPC call.</param>
@@ -6413,8 +9013,6 @@ namespace Google.Analytics.Admin.V1Alpha
 
         /// <summary>
         /// Lookup for a single Account.
-        /// Throws "Target not found" if no such account found, or if caller does not
-        /// have permissions to access it.
         /// </summary>
         /// <param name="request">The request object containing all of the parameters for the API call.</param>
         /// <param name="callSettings">If not null, applies overrides to this RPC call.</param>
@@ -6575,9 +9173,6 @@ namespace Google.Analytics.Admin.V1Alpha
 
         /// <summary>
         /// Lookup for a single "GA4" Property.
-        /// 
-        /// Throws "Target not found" if no such property found, if property is not
-        /// of the type "GA4", or if caller does not have permissions to access it.
         /// </summary>
         /// <param name="request">The request object containing all of the parameters for the API call.</param>
         /// <param name="callSettings">If not null, applies overrides to this RPC call.</param>
@@ -6590,9 +9185,6 @@ namespace Google.Analytics.Admin.V1Alpha
 
         /// <summary>
         /// Lookup for a single "GA4" Property.
-        /// 
-        /// Throws "Target not found" if no such property found, if property is not
-        /// of the type "GA4", or if caller does not have permissions to access it.
         /// </summary>
         /// <param name="request">The request object containing all of the parameters for the API call.</param>
         /// <param name="callSettings">If not null, applies overrides to this RPC call.</param>
@@ -6677,10 +9269,10 @@ namespace Google.Analytics.Admin.V1Alpha
         /// <param name="request">The request object containing all of the parameters for the API call.</param>
         /// <param name="callSettings">If not null, applies overrides to this RPC call.</param>
         /// <returns>The RPC response.</returns>
-        public override void DeleteProperty(DeletePropertyRequest request, gaxgrpc::CallSettings callSettings = null)
+        public override Property DeleteProperty(DeletePropertyRequest request, gaxgrpc::CallSettings callSettings = null)
         {
             Modify_DeletePropertyRequest(ref request, ref callSettings);
-            _callDeleteProperty.Sync(request, callSettings);
+            return _callDeleteProperty.Sync(request, callSettings);
         }
 
         /// <summary>
@@ -6699,7 +9291,7 @@ namespace Google.Analytics.Admin.V1Alpha
         /// <param name="request">The request object containing all of the parameters for the API call.</param>
         /// <param name="callSettings">If not null, applies overrides to this RPC call.</param>
         /// <returns>A Task containing the RPC response.</returns>
-        public override stt::Task DeletePropertyAsync(DeletePropertyRequest request, gaxgrpc::CallSettings callSettings = null)
+        public override stt::Task<Property> DeletePropertyAsync(DeletePropertyRequest request, gaxgrpc::CallSettings callSettings = null)
         {
             Modify_DeletePropertyRequest(ref request, ref callSettings);
             return _callDeleteProperty.Async(request, callSettings);
@@ -7001,9 +9593,6 @@ namespace Google.Analytics.Admin.V1Alpha
 
         /// <summary>
         /// Lookup for a single WebDataStream
-        /// 
-        /// Throws "Target not found" if no such web data stream found, or if the
-        /// caller does not have permissions to access it.
         /// </summary>
         /// <param name="request">The request object containing all of the parameters for the API call.</param>
         /// <param name="callSettings">If not null, applies overrides to this RPC call.</param>
@@ -7016,9 +9605,6 @@ namespace Google.Analytics.Admin.V1Alpha
 
         /// <summary>
         /// Lookup for a single WebDataStream
-        /// 
-        /// Throws "Target not found" if no such web data stream found, or if the
-        /// caller does not have permissions to access it.
         /// </summary>
         /// <param name="request">The request object containing all of the parameters for the API call.</param>
         /// <param name="callSettings">If not null, applies overrides to this RPC call.</param>
@@ -7133,9 +9719,6 @@ namespace Google.Analytics.Admin.V1Alpha
 
         /// <summary>
         /// Lookup for a single IosAppDataStream
-        /// 
-        /// Throws "Target not found" if no such iOS app data stream found, or if the
-        /// caller does not have permissions to access it.
         /// </summary>
         /// <param name="request">The request object containing all of the parameters for the API call.</param>
         /// <param name="callSettings">If not null, applies overrides to this RPC call.</param>
@@ -7148,9 +9731,6 @@ namespace Google.Analytics.Admin.V1Alpha
 
         /// <summary>
         /// Lookup for a single IosAppDataStream
-        /// 
-        /// Throws "Target not found" if no such iOS app data stream found, or if the
-        /// caller does not have permissions to access it.
         /// </summary>
         /// <param name="request">The request object containing all of the parameters for the API call.</param>
         /// <param name="callSettings">If not null, applies overrides to this RPC call.</param>
@@ -7210,30 +9790,6 @@ namespace Google.Analytics.Admin.V1Alpha
         }
 
         /// <summary>
-        /// Creates an iOS app data stream with the specified location and attributes.
-        /// </summary>
-        /// <param name="request">The request object containing all of the parameters for the API call.</param>
-        /// <param name="callSettings">If not null, applies overrides to this RPC call.</param>
-        /// <returns>The RPC response.</returns>
-        public override IosAppDataStream CreateIosAppDataStream(CreateIosAppDataStreamRequest request, gaxgrpc::CallSettings callSettings = null)
-        {
-            Modify_CreateIosAppDataStreamRequest(ref request, ref callSettings);
-            return _callCreateIosAppDataStream.Sync(request, callSettings);
-        }
-
-        /// <summary>
-        /// Creates an iOS app data stream with the specified location and attributes.
-        /// </summary>
-        /// <param name="request">The request object containing all of the parameters for the API call.</param>
-        /// <param name="callSettings">If not null, applies overrides to this RPC call.</param>
-        /// <returns>A Task containing the RPC response.</returns>
-        public override stt::Task<IosAppDataStream> CreateIosAppDataStreamAsync(CreateIosAppDataStreamRequest request, gaxgrpc::CallSettings callSettings = null)
-        {
-            Modify_CreateIosAppDataStreamRequest(ref request, ref callSettings);
-            return _callCreateIosAppDataStream.Async(request, callSettings);
-        }
-
-        /// <summary>
         /// Returns child iOS app data streams under the specified parent property.
         /// 
         /// iOS app data streams will be excluded if the caller does not have access.
@@ -7265,9 +9821,6 @@ namespace Google.Analytics.Admin.V1Alpha
 
         /// <summary>
         /// Lookup for a single AndroidAppDataStream
-        /// 
-        /// Throws "Target not found" if no such android app data stream found, or if
-        /// the caller does not have permissions to access it.
         /// </summary>
         /// <param name="request">The request object containing all of the parameters for the API call.</param>
         /// <param name="callSettings">If not null, applies overrides to this RPC call.</param>
@@ -7280,9 +9833,6 @@ namespace Google.Analytics.Admin.V1Alpha
 
         /// <summary>
         /// Lookup for a single AndroidAppDataStream
-        /// 
-        /// Throws "Target not found" if no such android app data stream found, or if
-        /// the caller does not have permissions to access it.
         /// </summary>
         /// <param name="request">The request object containing all of the parameters for the API call.</param>
         /// <param name="callSettings">If not null, applies overrides to this RPC call.</param>
@@ -7339,30 +9889,6 @@ namespace Google.Analytics.Admin.V1Alpha
         {
             Modify_UpdateAndroidAppDataStreamRequest(ref request, ref callSettings);
             return _callUpdateAndroidAppDataStream.Async(request, callSettings);
-        }
-
-        /// <summary>
-        /// Creates an android app stream with the specified location and attributes.
-        /// </summary>
-        /// <param name="request">The request object containing all of the parameters for the API call.</param>
-        /// <param name="callSettings">If not null, applies overrides to this RPC call.</param>
-        /// <returns>The RPC response.</returns>
-        public override AndroidAppDataStream CreateAndroidAppDataStream(CreateAndroidAppDataStreamRequest request, gaxgrpc::CallSettings callSettings = null)
-        {
-            Modify_CreateAndroidAppDataStreamRequest(ref request, ref callSettings);
-            return _callCreateAndroidAppDataStream.Sync(request, callSettings);
-        }
-
-        /// <summary>
-        /// Creates an android app stream with the specified location and attributes.
-        /// </summary>
-        /// <param name="request">The request object containing all of the parameters for the API call.</param>
-        /// <param name="callSettings">If not null, applies overrides to this RPC call.</param>
-        /// <returns>A Task containing the RPC response.</returns>
-        public override stt::Task<AndroidAppDataStream> CreateAndroidAppDataStreamAsync(CreateAndroidAppDataStreamRequest request, gaxgrpc::CallSettings callSettings = null)
-        {
-            Modify_CreateAndroidAppDataStreamRequest(ref request, ref callSettings);
-            return _callCreateAndroidAppDataStream.Async(request, callSettings);
         }
 
         /// <summary>
@@ -7533,11 +10059,11 @@ namespace Google.Analytics.Admin.V1Alpha
         /// </summary>
         /// <param name="request">The request object containing all of the parameters for the API call.</param>
         /// <param name="callSettings">If not null, applies overrides to this RPC call.</param>
-        /// <returns>The RPC response.</returns>
-        public override ListFirebaseLinksResponse ListFirebaseLinks(ListFirebaseLinksRequest request, gaxgrpc::CallSettings callSettings = null)
+        /// <returns>A pageable sequence of <see cref="FirebaseLink"/> resources.</returns>
+        public override gax::PagedEnumerable<ListFirebaseLinksResponse, FirebaseLink> ListFirebaseLinks(ListFirebaseLinksRequest request, gaxgrpc::CallSettings callSettings = null)
         {
             Modify_ListFirebaseLinksRequest(ref request, ref callSettings);
-            return _callListFirebaseLinks.Sync(request, callSettings);
+            return new gaxgrpc::GrpcPagedEnumerable<ListFirebaseLinksRequest, ListFirebaseLinksResponse, FirebaseLink>(_callListFirebaseLinks, request, callSettings);
         }
 
         /// <summary>
@@ -7546,11 +10072,11 @@ namespace Google.Analytics.Admin.V1Alpha
         /// </summary>
         /// <param name="request">The request object containing all of the parameters for the API call.</param>
         /// <param name="callSettings">If not null, applies overrides to this RPC call.</param>
-        /// <returns>A Task containing the RPC response.</returns>
-        public override stt::Task<ListFirebaseLinksResponse> ListFirebaseLinksAsync(ListFirebaseLinksRequest request, gaxgrpc::CallSettings callSettings = null)
+        /// <returns>A pageable asynchronous sequence of <see cref="FirebaseLink"/> resources.</returns>
+        public override gax::PagedAsyncEnumerable<ListFirebaseLinksResponse, FirebaseLink> ListFirebaseLinksAsync(ListFirebaseLinksRequest request, gaxgrpc::CallSettings callSettings = null)
         {
             Modify_ListFirebaseLinksRequest(ref request, ref callSettings);
-            return _callListFirebaseLinks.Async(request, callSettings);
+            return new gaxgrpc::GrpcPagedAsyncEnumerable<ListFirebaseLinksRequest, ListFirebaseLinksResponse, FirebaseLink>(_callListFirebaseLinks, request, callSettings);
         }
 
         /// <summary>
@@ -7700,6 +10226,542 @@ namespace Google.Analytics.Admin.V1Alpha
             Modify_GetDataSharingSettingsRequest(ref request, ref callSettings);
             return _callGetDataSharingSettings.Async(request, callSettings);
         }
+
+        /// <summary>
+        /// Lookup for a single "GA4" MeasurementProtocolSecret.
+        /// </summary>
+        /// <param name="request">The request object containing all of the parameters for the API call.</param>
+        /// <param name="callSettings">If not null, applies overrides to this RPC call.</param>
+        /// <returns>The RPC response.</returns>
+        public override MeasurementProtocolSecret GetMeasurementProtocolSecret(GetMeasurementProtocolSecretRequest request, gaxgrpc::CallSettings callSettings = null)
+        {
+            Modify_GetMeasurementProtocolSecretRequest(ref request, ref callSettings);
+            return _callGetMeasurementProtocolSecret.Sync(request, callSettings);
+        }
+
+        /// <summary>
+        /// Lookup for a single "GA4" MeasurementProtocolSecret.
+        /// </summary>
+        /// <param name="request">The request object containing all of the parameters for the API call.</param>
+        /// <param name="callSettings">If not null, applies overrides to this RPC call.</param>
+        /// <returns>A Task containing the RPC response.</returns>
+        public override stt::Task<MeasurementProtocolSecret> GetMeasurementProtocolSecretAsync(GetMeasurementProtocolSecretRequest request, gaxgrpc::CallSettings callSettings = null)
+        {
+            Modify_GetMeasurementProtocolSecretRequest(ref request, ref callSettings);
+            return _callGetMeasurementProtocolSecret.Async(request, callSettings);
+        }
+
+        /// <summary>
+        /// Returns child MeasurementProtocolSecrets under the specified parent
+        /// Property.
+        /// </summary>
+        /// <param name="request">The request object containing all of the parameters for the API call.</param>
+        /// <param name="callSettings">If not null, applies overrides to this RPC call.</param>
+        /// <returns>A pageable sequence of <see cref="MeasurementProtocolSecret"/> resources.</returns>
+        public override gax::PagedEnumerable<ListMeasurementProtocolSecretsResponse, MeasurementProtocolSecret> ListMeasurementProtocolSecrets(ListMeasurementProtocolSecretsRequest request, gaxgrpc::CallSettings callSettings = null)
+        {
+            Modify_ListMeasurementProtocolSecretsRequest(ref request, ref callSettings);
+            return new gaxgrpc::GrpcPagedEnumerable<ListMeasurementProtocolSecretsRequest, ListMeasurementProtocolSecretsResponse, MeasurementProtocolSecret>(_callListMeasurementProtocolSecrets, request, callSettings);
+        }
+
+        /// <summary>
+        /// Returns child MeasurementProtocolSecrets under the specified parent
+        /// Property.
+        /// </summary>
+        /// <param name="request">The request object containing all of the parameters for the API call.</param>
+        /// <param name="callSettings">If not null, applies overrides to this RPC call.</param>
+        /// <returns>A pageable asynchronous sequence of <see cref="MeasurementProtocolSecret"/> resources.</returns>
+        public override gax::PagedAsyncEnumerable<ListMeasurementProtocolSecretsResponse, MeasurementProtocolSecret> ListMeasurementProtocolSecretsAsync(ListMeasurementProtocolSecretsRequest request, gaxgrpc::CallSettings callSettings = null)
+        {
+            Modify_ListMeasurementProtocolSecretsRequest(ref request, ref callSettings);
+            return new gaxgrpc::GrpcPagedAsyncEnumerable<ListMeasurementProtocolSecretsRequest, ListMeasurementProtocolSecretsResponse, MeasurementProtocolSecret>(_callListMeasurementProtocolSecrets, request, callSettings);
+        }
+
+        /// <summary>
+        /// Creates a measurement protocol secret.
+        /// </summary>
+        /// <param name="request">The request object containing all of the parameters for the API call.</param>
+        /// <param name="callSettings">If not null, applies overrides to this RPC call.</param>
+        /// <returns>The RPC response.</returns>
+        public override MeasurementProtocolSecret CreateMeasurementProtocolSecret(CreateMeasurementProtocolSecretRequest request, gaxgrpc::CallSettings callSettings = null)
+        {
+            Modify_CreateMeasurementProtocolSecretRequest(ref request, ref callSettings);
+            return _callCreateMeasurementProtocolSecret.Sync(request, callSettings);
+        }
+
+        /// <summary>
+        /// Creates a measurement protocol secret.
+        /// </summary>
+        /// <param name="request">The request object containing all of the parameters for the API call.</param>
+        /// <param name="callSettings">If not null, applies overrides to this RPC call.</param>
+        /// <returns>A Task containing the RPC response.</returns>
+        public override stt::Task<MeasurementProtocolSecret> CreateMeasurementProtocolSecretAsync(CreateMeasurementProtocolSecretRequest request, gaxgrpc::CallSettings callSettings = null)
+        {
+            Modify_CreateMeasurementProtocolSecretRequest(ref request, ref callSettings);
+            return _callCreateMeasurementProtocolSecret.Async(request, callSettings);
+        }
+
+        /// <summary>
+        /// Deletes target MeasurementProtocolSecret.
+        /// </summary>
+        /// <param name="request">The request object containing all of the parameters for the API call.</param>
+        /// <param name="callSettings">If not null, applies overrides to this RPC call.</param>
+        /// <returns>The RPC response.</returns>
+        public override void DeleteMeasurementProtocolSecret(DeleteMeasurementProtocolSecretRequest request, gaxgrpc::CallSettings callSettings = null)
+        {
+            Modify_DeleteMeasurementProtocolSecretRequest(ref request, ref callSettings);
+            _callDeleteMeasurementProtocolSecret.Sync(request, callSettings);
+        }
+
+        /// <summary>
+        /// Deletes target MeasurementProtocolSecret.
+        /// </summary>
+        /// <param name="request">The request object containing all of the parameters for the API call.</param>
+        /// <param name="callSettings">If not null, applies overrides to this RPC call.</param>
+        /// <returns>A Task containing the RPC response.</returns>
+        public override stt::Task DeleteMeasurementProtocolSecretAsync(DeleteMeasurementProtocolSecretRequest request, gaxgrpc::CallSettings callSettings = null)
+        {
+            Modify_DeleteMeasurementProtocolSecretRequest(ref request, ref callSettings);
+            return _callDeleteMeasurementProtocolSecret.Async(request, callSettings);
+        }
+
+        /// <summary>
+        /// Updates a measurement protocol secret.
+        /// </summary>
+        /// <param name="request">The request object containing all of the parameters for the API call.</param>
+        /// <param name="callSettings">If not null, applies overrides to this RPC call.</param>
+        /// <returns>The RPC response.</returns>
+        public override MeasurementProtocolSecret UpdateMeasurementProtocolSecret(UpdateMeasurementProtocolSecretRequest request, gaxgrpc::CallSettings callSettings = null)
+        {
+            Modify_UpdateMeasurementProtocolSecretRequest(ref request, ref callSettings);
+            return _callUpdateMeasurementProtocolSecret.Sync(request, callSettings);
+        }
+
+        /// <summary>
+        /// Updates a measurement protocol secret.
+        /// </summary>
+        /// <param name="request">The request object containing all of the parameters for the API call.</param>
+        /// <param name="callSettings">If not null, applies overrides to this RPC call.</param>
+        /// <returns>A Task containing the RPC response.</returns>
+        public override stt::Task<MeasurementProtocolSecret> UpdateMeasurementProtocolSecretAsync(UpdateMeasurementProtocolSecretRequest request, gaxgrpc::CallSettings callSettings = null)
+        {
+            Modify_UpdateMeasurementProtocolSecretRequest(ref request, ref callSettings);
+            return _callUpdateMeasurementProtocolSecret.Async(request, callSettings);
+        }
+
+        /// <summary>
+        /// Searches through all changes to an account or its children given the
+        /// specified set of filters.
+        /// </summary>
+        /// <param name="request">The request object containing all of the parameters for the API call.</param>
+        /// <param name="callSettings">If not null, applies overrides to this RPC call.</param>
+        /// <returns>A pageable sequence of <see cref="ChangeHistoryEvent"/> resources.</returns>
+        public override gax::PagedEnumerable<SearchChangeHistoryEventsResponse, ChangeHistoryEvent> SearchChangeHistoryEvents(SearchChangeHistoryEventsRequest request, gaxgrpc::CallSettings callSettings = null)
+        {
+            Modify_SearchChangeHistoryEventsRequest(ref request, ref callSettings);
+            return new gaxgrpc::GrpcPagedEnumerable<SearchChangeHistoryEventsRequest, SearchChangeHistoryEventsResponse, ChangeHistoryEvent>(_callSearchChangeHistoryEvents, request, callSettings);
+        }
+
+        /// <summary>
+        /// Searches through all changes to an account or its children given the
+        /// specified set of filters.
+        /// </summary>
+        /// <param name="request">The request object containing all of the parameters for the API call.</param>
+        /// <param name="callSettings">If not null, applies overrides to this RPC call.</param>
+        /// <returns>A pageable asynchronous sequence of <see cref="ChangeHistoryEvent"/> resources.</returns>
+        public override gax::PagedAsyncEnumerable<SearchChangeHistoryEventsResponse, ChangeHistoryEvent> SearchChangeHistoryEventsAsync(SearchChangeHistoryEventsRequest request, gaxgrpc::CallSettings callSettings = null)
+        {
+            Modify_SearchChangeHistoryEventsRequest(ref request, ref callSettings);
+            return new gaxgrpc::GrpcPagedAsyncEnumerable<SearchChangeHistoryEventsRequest, SearchChangeHistoryEventsResponse, ChangeHistoryEvent>(_callSearchChangeHistoryEvents, request, callSettings);
+        }
+
+        /// <summary>
+        /// Lookup for Google Signals settings for a property.
+        /// </summary>
+        /// <param name="request">The request object containing all of the parameters for the API call.</param>
+        /// <param name="callSettings">If not null, applies overrides to this RPC call.</param>
+        /// <returns>The RPC response.</returns>
+        public override GoogleSignalsSettings GetGoogleSignalsSettings(GetGoogleSignalsSettingsRequest request, gaxgrpc::CallSettings callSettings = null)
+        {
+            Modify_GetGoogleSignalsSettingsRequest(ref request, ref callSettings);
+            return _callGetGoogleSignalsSettings.Sync(request, callSettings);
+        }
+
+        /// <summary>
+        /// Lookup for Google Signals settings for a property.
+        /// </summary>
+        /// <param name="request">The request object containing all of the parameters for the API call.</param>
+        /// <param name="callSettings">If not null, applies overrides to this RPC call.</param>
+        /// <returns>A Task containing the RPC response.</returns>
+        public override stt::Task<GoogleSignalsSettings> GetGoogleSignalsSettingsAsync(GetGoogleSignalsSettingsRequest request, gaxgrpc::CallSettings callSettings = null)
+        {
+            Modify_GetGoogleSignalsSettingsRequest(ref request, ref callSettings);
+            return _callGetGoogleSignalsSettings.Async(request, callSettings);
+        }
+
+        /// <summary>
+        /// Updates Google Signals settings for a property.
+        /// </summary>
+        /// <param name="request">The request object containing all of the parameters for the API call.</param>
+        /// <param name="callSettings">If not null, applies overrides to this RPC call.</param>
+        /// <returns>The RPC response.</returns>
+        public override GoogleSignalsSettings UpdateGoogleSignalsSettings(UpdateGoogleSignalsSettingsRequest request, gaxgrpc::CallSettings callSettings = null)
+        {
+            Modify_UpdateGoogleSignalsSettingsRequest(ref request, ref callSettings);
+            return _callUpdateGoogleSignalsSettings.Sync(request, callSettings);
+        }
+
+        /// <summary>
+        /// Updates Google Signals settings for a property.
+        /// </summary>
+        /// <param name="request">The request object containing all of the parameters for the API call.</param>
+        /// <param name="callSettings">If not null, applies overrides to this RPC call.</param>
+        /// <returns>A Task containing the RPC response.</returns>
+        public override stt::Task<GoogleSignalsSettings> UpdateGoogleSignalsSettingsAsync(UpdateGoogleSignalsSettingsRequest request, gaxgrpc::CallSettings callSettings = null)
+        {
+            Modify_UpdateGoogleSignalsSettingsRequest(ref request, ref callSettings);
+            return _callUpdateGoogleSignalsSettings.Async(request, callSettings);
+        }
+
+        /// <summary>
+        /// Creates a conversion event with the specified attributes.
+        /// </summary>
+        /// <param name="request">The request object containing all of the parameters for the API call.</param>
+        /// <param name="callSettings">If not null, applies overrides to this RPC call.</param>
+        /// <returns>The RPC response.</returns>
+        public override ConversionEvent CreateConversionEvent(CreateConversionEventRequest request, gaxgrpc::CallSettings callSettings = null)
+        {
+            Modify_CreateConversionEventRequest(ref request, ref callSettings);
+            return _callCreateConversionEvent.Sync(request, callSettings);
+        }
+
+        /// <summary>
+        /// Creates a conversion event with the specified attributes.
+        /// </summary>
+        /// <param name="request">The request object containing all of the parameters for the API call.</param>
+        /// <param name="callSettings">If not null, applies overrides to this RPC call.</param>
+        /// <returns>A Task containing the RPC response.</returns>
+        public override stt::Task<ConversionEvent> CreateConversionEventAsync(CreateConversionEventRequest request, gaxgrpc::CallSettings callSettings = null)
+        {
+            Modify_CreateConversionEventRequest(ref request, ref callSettings);
+            return _callCreateConversionEvent.Async(request, callSettings);
+        }
+
+        /// <summary>
+        /// Retrieve a single conversion event.
+        /// </summary>
+        /// <param name="request">The request object containing all of the parameters for the API call.</param>
+        /// <param name="callSettings">If not null, applies overrides to this RPC call.</param>
+        /// <returns>The RPC response.</returns>
+        public override ConversionEvent GetConversionEvent(GetConversionEventRequest request, gaxgrpc::CallSettings callSettings = null)
+        {
+            Modify_GetConversionEventRequest(ref request, ref callSettings);
+            return _callGetConversionEvent.Sync(request, callSettings);
+        }
+
+        /// <summary>
+        /// Retrieve a single conversion event.
+        /// </summary>
+        /// <param name="request">The request object containing all of the parameters for the API call.</param>
+        /// <param name="callSettings">If not null, applies overrides to this RPC call.</param>
+        /// <returns>A Task containing the RPC response.</returns>
+        public override stt::Task<ConversionEvent> GetConversionEventAsync(GetConversionEventRequest request, gaxgrpc::CallSettings callSettings = null)
+        {
+            Modify_GetConversionEventRequest(ref request, ref callSettings);
+            return _callGetConversionEvent.Async(request, callSettings);
+        }
+
+        /// <summary>
+        /// Deletes a conversion event in a property.
+        /// </summary>
+        /// <param name="request">The request object containing all of the parameters for the API call.</param>
+        /// <param name="callSettings">If not null, applies overrides to this RPC call.</param>
+        /// <returns>The RPC response.</returns>
+        public override void DeleteConversionEvent(DeleteConversionEventRequest request, gaxgrpc::CallSettings callSettings = null)
+        {
+            Modify_DeleteConversionEventRequest(ref request, ref callSettings);
+            _callDeleteConversionEvent.Sync(request, callSettings);
+        }
+
+        /// <summary>
+        /// Deletes a conversion event in a property.
+        /// </summary>
+        /// <param name="request">The request object containing all of the parameters for the API call.</param>
+        /// <param name="callSettings">If not null, applies overrides to this RPC call.</param>
+        /// <returns>A Task containing the RPC response.</returns>
+        public override stt::Task DeleteConversionEventAsync(DeleteConversionEventRequest request, gaxgrpc::CallSettings callSettings = null)
+        {
+            Modify_DeleteConversionEventRequest(ref request, ref callSettings);
+            return _callDeleteConversionEvent.Async(request, callSettings);
+        }
+
+        /// <summary>
+        /// Returns a list of conversion events in the specified parent property.
+        /// 
+        /// Returns an empty list if no conversion events are found.
+        /// </summary>
+        /// <param name="request">The request object containing all of the parameters for the API call.</param>
+        /// <param name="callSettings">If not null, applies overrides to this RPC call.</param>
+        /// <returns>A pageable sequence of <see cref="ConversionEvent"/> resources.</returns>
+        public override gax::PagedEnumerable<ListConversionEventsResponse, ConversionEvent> ListConversionEvents(ListConversionEventsRequest request, gaxgrpc::CallSettings callSettings = null)
+        {
+            Modify_ListConversionEventsRequest(ref request, ref callSettings);
+            return new gaxgrpc::GrpcPagedEnumerable<ListConversionEventsRequest, ListConversionEventsResponse, ConversionEvent>(_callListConversionEvents, request, callSettings);
+        }
+
+        /// <summary>
+        /// Returns a list of conversion events in the specified parent property.
+        /// 
+        /// Returns an empty list if no conversion events are found.
+        /// </summary>
+        /// <param name="request">The request object containing all of the parameters for the API call.</param>
+        /// <param name="callSettings">If not null, applies overrides to this RPC call.</param>
+        /// <returns>A pageable asynchronous sequence of <see cref="ConversionEvent"/> resources.</returns>
+        public override gax::PagedAsyncEnumerable<ListConversionEventsResponse, ConversionEvent> ListConversionEventsAsync(ListConversionEventsRequest request, gaxgrpc::CallSettings callSettings = null)
+        {
+            Modify_ListConversionEventsRequest(ref request, ref callSettings);
+            return new gaxgrpc::GrpcPagedAsyncEnumerable<ListConversionEventsRequest, ListConversionEventsResponse, ConversionEvent>(_callListConversionEvents, request, callSettings);
+        }
+
+        /// <summary>
+        /// Creates a CustomDimension.
+        /// </summary>
+        /// <param name="request">The request object containing all of the parameters for the API call.</param>
+        /// <param name="callSettings">If not null, applies overrides to this RPC call.</param>
+        /// <returns>The RPC response.</returns>
+        public override CustomDimension CreateCustomDimension(CreateCustomDimensionRequest request, gaxgrpc::CallSettings callSettings = null)
+        {
+            Modify_CreateCustomDimensionRequest(ref request, ref callSettings);
+            return _callCreateCustomDimension.Sync(request, callSettings);
+        }
+
+        /// <summary>
+        /// Creates a CustomDimension.
+        /// </summary>
+        /// <param name="request">The request object containing all of the parameters for the API call.</param>
+        /// <param name="callSettings">If not null, applies overrides to this RPC call.</param>
+        /// <returns>A Task containing the RPC response.</returns>
+        public override stt::Task<CustomDimension> CreateCustomDimensionAsync(CreateCustomDimensionRequest request, gaxgrpc::CallSettings callSettings = null)
+        {
+            Modify_CreateCustomDimensionRequest(ref request, ref callSettings);
+            return _callCreateCustomDimension.Async(request, callSettings);
+        }
+
+        /// <summary>
+        /// Updates a CustomDimension on a property.
+        /// </summary>
+        /// <param name="request">The request object containing all of the parameters for the API call.</param>
+        /// <param name="callSettings">If not null, applies overrides to this RPC call.</param>
+        /// <returns>The RPC response.</returns>
+        public override CustomDimension UpdateCustomDimension(UpdateCustomDimensionRequest request, gaxgrpc::CallSettings callSettings = null)
+        {
+            Modify_UpdateCustomDimensionRequest(ref request, ref callSettings);
+            return _callUpdateCustomDimension.Sync(request, callSettings);
+        }
+
+        /// <summary>
+        /// Updates a CustomDimension on a property.
+        /// </summary>
+        /// <param name="request">The request object containing all of the parameters for the API call.</param>
+        /// <param name="callSettings">If not null, applies overrides to this RPC call.</param>
+        /// <returns>A Task containing the RPC response.</returns>
+        public override stt::Task<CustomDimension> UpdateCustomDimensionAsync(UpdateCustomDimensionRequest request, gaxgrpc::CallSettings callSettings = null)
+        {
+            Modify_UpdateCustomDimensionRequest(ref request, ref callSettings);
+            return _callUpdateCustomDimension.Async(request, callSettings);
+        }
+
+        /// <summary>
+        /// Lists CustomDimensions on a property.
+        /// </summary>
+        /// <param name="request">The request object containing all of the parameters for the API call.</param>
+        /// <param name="callSettings">If not null, applies overrides to this RPC call.</param>
+        /// <returns>A pageable sequence of <see cref="CustomDimension"/> resources.</returns>
+        public override gax::PagedEnumerable<ListCustomDimensionsResponse, CustomDimension> ListCustomDimensions(ListCustomDimensionsRequest request, gaxgrpc::CallSettings callSettings = null)
+        {
+            Modify_ListCustomDimensionsRequest(ref request, ref callSettings);
+            return new gaxgrpc::GrpcPagedEnumerable<ListCustomDimensionsRequest, ListCustomDimensionsResponse, CustomDimension>(_callListCustomDimensions, request, callSettings);
+        }
+
+        /// <summary>
+        /// Lists CustomDimensions on a property.
+        /// </summary>
+        /// <param name="request">The request object containing all of the parameters for the API call.</param>
+        /// <param name="callSettings">If not null, applies overrides to this RPC call.</param>
+        /// <returns>A pageable asynchronous sequence of <see cref="CustomDimension"/> resources.</returns>
+        public override gax::PagedAsyncEnumerable<ListCustomDimensionsResponse, CustomDimension> ListCustomDimensionsAsync(ListCustomDimensionsRequest request, gaxgrpc::CallSettings callSettings = null)
+        {
+            Modify_ListCustomDimensionsRequest(ref request, ref callSettings);
+            return new gaxgrpc::GrpcPagedAsyncEnumerable<ListCustomDimensionsRequest, ListCustomDimensionsResponse, CustomDimension>(_callListCustomDimensions, request, callSettings);
+        }
+
+        /// <summary>
+        /// Archives a CustomDimension on a property.
+        /// </summary>
+        /// <param name="request">The request object containing all of the parameters for the API call.</param>
+        /// <param name="callSettings">If not null, applies overrides to this RPC call.</param>
+        /// <returns>The RPC response.</returns>
+        public override void ArchiveCustomDimension(ArchiveCustomDimensionRequest request, gaxgrpc::CallSettings callSettings = null)
+        {
+            Modify_ArchiveCustomDimensionRequest(ref request, ref callSettings);
+            _callArchiveCustomDimension.Sync(request, callSettings);
+        }
+
+        /// <summary>
+        /// Archives a CustomDimension on a property.
+        /// </summary>
+        /// <param name="request">The request object containing all of the parameters for the API call.</param>
+        /// <param name="callSettings">If not null, applies overrides to this RPC call.</param>
+        /// <returns>A Task containing the RPC response.</returns>
+        public override stt::Task ArchiveCustomDimensionAsync(ArchiveCustomDimensionRequest request, gaxgrpc::CallSettings callSettings = null)
+        {
+            Modify_ArchiveCustomDimensionRequest(ref request, ref callSettings);
+            return _callArchiveCustomDimension.Async(request, callSettings);
+        }
+
+        /// <summary>
+        /// Lookup for a single CustomDimension.
+        /// </summary>
+        /// <param name="request">The request object containing all of the parameters for the API call.</param>
+        /// <param name="callSettings">If not null, applies overrides to this RPC call.</param>
+        /// <returns>The RPC response.</returns>
+        public override CustomDimension GetCustomDimension(GetCustomDimensionRequest request, gaxgrpc::CallSettings callSettings = null)
+        {
+            Modify_GetCustomDimensionRequest(ref request, ref callSettings);
+            return _callGetCustomDimension.Sync(request, callSettings);
+        }
+
+        /// <summary>
+        /// Lookup for a single CustomDimension.
+        /// </summary>
+        /// <param name="request">The request object containing all of the parameters for the API call.</param>
+        /// <param name="callSettings">If not null, applies overrides to this RPC call.</param>
+        /// <returns>A Task containing the RPC response.</returns>
+        public override stt::Task<CustomDimension> GetCustomDimensionAsync(GetCustomDimensionRequest request, gaxgrpc::CallSettings callSettings = null)
+        {
+            Modify_GetCustomDimensionRequest(ref request, ref callSettings);
+            return _callGetCustomDimension.Async(request, callSettings);
+        }
+
+        /// <summary>
+        /// Creates a CustomMetric.
+        /// </summary>
+        /// <param name="request">The request object containing all of the parameters for the API call.</param>
+        /// <param name="callSettings">If not null, applies overrides to this RPC call.</param>
+        /// <returns>The RPC response.</returns>
+        public override CustomMetric CreateCustomMetric(CreateCustomMetricRequest request, gaxgrpc::CallSettings callSettings = null)
+        {
+            Modify_CreateCustomMetricRequest(ref request, ref callSettings);
+            return _callCreateCustomMetric.Sync(request, callSettings);
+        }
+
+        /// <summary>
+        /// Creates a CustomMetric.
+        /// </summary>
+        /// <param name="request">The request object containing all of the parameters for the API call.</param>
+        /// <param name="callSettings">If not null, applies overrides to this RPC call.</param>
+        /// <returns>A Task containing the RPC response.</returns>
+        public override stt::Task<CustomMetric> CreateCustomMetricAsync(CreateCustomMetricRequest request, gaxgrpc::CallSettings callSettings = null)
+        {
+            Modify_CreateCustomMetricRequest(ref request, ref callSettings);
+            return _callCreateCustomMetric.Async(request, callSettings);
+        }
+
+        /// <summary>
+        /// Updates a CustomMetric on a property.
+        /// </summary>
+        /// <param name="request">The request object containing all of the parameters for the API call.</param>
+        /// <param name="callSettings">If not null, applies overrides to this RPC call.</param>
+        /// <returns>The RPC response.</returns>
+        public override CustomMetric UpdateCustomMetric(UpdateCustomMetricRequest request, gaxgrpc::CallSettings callSettings = null)
+        {
+            Modify_UpdateCustomMetricRequest(ref request, ref callSettings);
+            return _callUpdateCustomMetric.Sync(request, callSettings);
+        }
+
+        /// <summary>
+        /// Updates a CustomMetric on a property.
+        /// </summary>
+        /// <param name="request">The request object containing all of the parameters for the API call.</param>
+        /// <param name="callSettings">If not null, applies overrides to this RPC call.</param>
+        /// <returns>A Task containing the RPC response.</returns>
+        public override stt::Task<CustomMetric> UpdateCustomMetricAsync(UpdateCustomMetricRequest request, gaxgrpc::CallSettings callSettings = null)
+        {
+            Modify_UpdateCustomMetricRequest(ref request, ref callSettings);
+            return _callUpdateCustomMetric.Async(request, callSettings);
+        }
+
+        /// <summary>
+        /// Lists CustomMetrics on a property.
+        /// </summary>
+        /// <param name="request">The request object containing all of the parameters for the API call.</param>
+        /// <param name="callSettings">If not null, applies overrides to this RPC call.</param>
+        /// <returns>A pageable sequence of <see cref="CustomMetric"/> resources.</returns>
+        public override gax::PagedEnumerable<ListCustomMetricsResponse, CustomMetric> ListCustomMetrics(ListCustomMetricsRequest request, gaxgrpc::CallSettings callSettings = null)
+        {
+            Modify_ListCustomMetricsRequest(ref request, ref callSettings);
+            return new gaxgrpc::GrpcPagedEnumerable<ListCustomMetricsRequest, ListCustomMetricsResponse, CustomMetric>(_callListCustomMetrics, request, callSettings);
+        }
+
+        /// <summary>
+        /// Lists CustomMetrics on a property.
+        /// </summary>
+        /// <param name="request">The request object containing all of the parameters for the API call.</param>
+        /// <param name="callSettings">If not null, applies overrides to this RPC call.</param>
+        /// <returns>A pageable asynchronous sequence of <see cref="CustomMetric"/> resources.</returns>
+        public override gax::PagedAsyncEnumerable<ListCustomMetricsResponse, CustomMetric> ListCustomMetricsAsync(ListCustomMetricsRequest request, gaxgrpc::CallSettings callSettings = null)
+        {
+            Modify_ListCustomMetricsRequest(ref request, ref callSettings);
+            return new gaxgrpc::GrpcPagedAsyncEnumerable<ListCustomMetricsRequest, ListCustomMetricsResponse, CustomMetric>(_callListCustomMetrics, request, callSettings);
+        }
+
+        /// <summary>
+        /// Archives a CustomMetric on a property.
+        /// </summary>
+        /// <param name="request">The request object containing all of the parameters for the API call.</param>
+        /// <param name="callSettings">If not null, applies overrides to this RPC call.</param>
+        /// <returns>The RPC response.</returns>
+        public override void ArchiveCustomMetric(ArchiveCustomMetricRequest request, gaxgrpc::CallSettings callSettings = null)
+        {
+            Modify_ArchiveCustomMetricRequest(ref request, ref callSettings);
+            _callArchiveCustomMetric.Sync(request, callSettings);
+        }
+
+        /// <summary>
+        /// Archives a CustomMetric on a property.
+        /// </summary>
+        /// <param name="request">The request object containing all of the parameters for the API call.</param>
+        /// <param name="callSettings">If not null, applies overrides to this RPC call.</param>
+        /// <returns>A Task containing the RPC response.</returns>
+        public override stt::Task ArchiveCustomMetricAsync(ArchiveCustomMetricRequest request, gaxgrpc::CallSettings callSettings = null)
+        {
+            Modify_ArchiveCustomMetricRequest(ref request, ref callSettings);
+            return _callArchiveCustomMetric.Async(request, callSettings);
+        }
+
+        /// <summary>
+        /// Lookup for a single CustomMetric.
+        /// </summary>
+        /// <param name="request">The request object containing all of the parameters for the API call.</param>
+        /// <param name="callSettings">If not null, applies overrides to this RPC call.</param>
+        /// <returns>The RPC response.</returns>
+        public override CustomMetric GetCustomMetric(GetCustomMetricRequest request, gaxgrpc::CallSettings callSettings = null)
+        {
+            Modify_GetCustomMetricRequest(ref request, ref callSettings);
+            return _callGetCustomMetric.Sync(request, callSettings);
+        }
+
+        /// <summary>
+        /// Lookup for a single CustomMetric.
+        /// </summary>
+        /// <param name="request">The request object containing all of the parameters for the API call.</param>
+        /// <param name="callSettings">If not null, applies overrides to this RPC call.</param>
+        /// <returns>A Task containing the RPC response.</returns>
+        public override stt::Task<CustomMetric> GetCustomMetricAsync(GetCustomMetricRequest request, gaxgrpc::CallSettings callSettings = null)
+        {
+            Modify_GetCustomMetricRequest(ref request, ref callSettings);
+            return _callGetCustomMetric.Async(request, callSettings);
+        }
     }
 
     public partial class ListAccountsRequest : gaxgrpc::IPageRequest
@@ -7734,7 +10796,31 @@ namespace Google.Analytics.Admin.V1Alpha
     {
     }
 
+    public partial class ListFirebaseLinksRequest : gaxgrpc::IPageRequest
+    {
+    }
+
     public partial class ListGoogleAdsLinksRequest : gaxgrpc::IPageRequest
+    {
+    }
+
+    public partial class ListMeasurementProtocolSecretsRequest : gaxgrpc::IPageRequest
+    {
+    }
+
+    public partial class SearchChangeHistoryEventsRequest : gaxgrpc::IPageRequest
+    {
+    }
+
+    public partial class ListConversionEventsRequest : gaxgrpc::IPageRequest
+    {
+    }
+
+    public partial class ListCustomDimensionsRequest : gaxgrpc::IPageRequest
+    {
+    }
+
+    public partial class ListCustomMetricsRequest : gaxgrpc::IPageRequest
     {
     }
 
@@ -7802,10 +10888,58 @@ namespace Google.Analytics.Admin.V1Alpha
         sc::IEnumerator sc::IEnumerable.GetEnumerator() => GetEnumerator();
     }
 
+    public partial class ListFirebaseLinksResponse : gaxgrpc::IPageResponse<FirebaseLink>
+    {
+        /// <summary>Returns an enumerator that iterates through the resources in this response.</summary>
+        public scg::IEnumerator<FirebaseLink> GetEnumerator() => FirebaseLinks.GetEnumerator();
+
+        sc::IEnumerator sc::IEnumerable.GetEnumerator() => GetEnumerator();
+    }
+
     public partial class ListGoogleAdsLinksResponse : gaxgrpc::IPageResponse<GoogleAdsLink>
     {
         /// <summary>Returns an enumerator that iterates through the resources in this response.</summary>
         public scg::IEnumerator<GoogleAdsLink> GetEnumerator() => GoogleAdsLinks.GetEnumerator();
+
+        sc::IEnumerator sc::IEnumerable.GetEnumerator() => GetEnumerator();
+    }
+
+    public partial class ListMeasurementProtocolSecretsResponse : gaxgrpc::IPageResponse<MeasurementProtocolSecret>
+    {
+        /// <summary>Returns an enumerator that iterates through the resources in this response.</summary>
+        public scg::IEnumerator<MeasurementProtocolSecret> GetEnumerator() => MeasurementProtocolSecrets.GetEnumerator();
+
+        sc::IEnumerator sc::IEnumerable.GetEnumerator() => GetEnumerator();
+    }
+
+    public partial class SearchChangeHistoryEventsResponse : gaxgrpc::IPageResponse<ChangeHistoryEvent>
+    {
+        /// <summary>Returns an enumerator that iterates through the resources in this response.</summary>
+        public scg::IEnumerator<ChangeHistoryEvent> GetEnumerator() => ChangeHistoryEvents.GetEnumerator();
+
+        sc::IEnumerator sc::IEnumerable.GetEnumerator() => GetEnumerator();
+    }
+
+    public partial class ListConversionEventsResponse : gaxgrpc::IPageResponse<ConversionEvent>
+    {
+        /// <summary>Returns an enumerator that iterates through the resources in this response.</summary>
+        public scg::IEnumerator<ConversionEvent> GetEnumerator() => ConversionEvents.GetEnumerator();
+
+        sc::IEnumerator sc::IEnumerable.GetEnumerator() => GetEnumerator();
+    }
+
+    public partial class ListCustomDimensionsResponse : gaxgrpc::IPageResponse<CustomDimension>
+    {
+        /// <summary>Returns an enumerator that iterates through the resources in this response.</summary>
+        public scg::IEnumerator<CustomDimension> GetEnumerator() => CustomDimensions.GetEnumerator();
+
+        sc::IEnumerator sc::IEnumerable.GetEnumerator() => GetEnumerator();
+    }
+
+    public partial class ListCustomMetricsResponse : gaxgrpc::IPageResponse<CustomMetric>
+    {
+        /// <summary>Returns an enumerator that iterates through the resources in this response.</summary>
+        public scg::IEnumerator<CustomMetric> GetEnumerator() => CustomMetrics.GetEnumerator();
 
         sc::IEnumerator sc::IEnumerable.GetEnumerator() => GetEnumerator();
     }

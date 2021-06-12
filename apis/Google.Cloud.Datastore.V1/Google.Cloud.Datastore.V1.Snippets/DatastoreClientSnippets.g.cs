@@ -1,4 +1,4 @@
-// Copyright 2020 Google LLC
+// Copyright 2021 Google LLC
 //
 // Licensed under the Apache License, Version 2.0 (the "License");
 // you may not use this file except in compliance with the License.
@@ -103,7 +103,6 @@ namespace Google.Cloud.Datastore.V1.Snippets
                 ReadOptions = new ReadOptions(),
                 PartitionId = new PartitionId(),
                 Query = new Query(),
-                GqlQuery = new GqlQuery(),
                 ProjectId = "",
             };
             // Make the request
@@ -124,7 +123,6 @@ namespace Google.Cloud.Datastore.V1.Snippets
                 ReadOptions = new ReadOptions(),
                 PartitionId = new PartitionId(),
                 Query = new Query(),
-                GqlQuery = new GqlQuery(),
                 ProjectId = "",
             };
             // Make the request

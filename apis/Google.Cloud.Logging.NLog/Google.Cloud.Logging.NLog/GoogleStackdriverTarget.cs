@@ -58,6 +58,7 @@ namespace Google.Cloud.Logging.NLog
         private Platform _platform;
         private MonitoredResource _resource;
         private string _logName;
+        private string _traceResourcePath;
         private LogName _logNameToWrite;
         private Task _prevTask;
         private long _pendingTaskCount;
@@ -155,7 +156,7 @@ namespace Google.Cloud.Logging.NLog
                 {
                     switch (Convert.GetTypeCode(o))
                     {
-                        case TypeCode.Empty: 
+                        case TypeCode.Empty:
                             return Value.ForNull();
                         case TypeCode.Boolean:
                             return Value.ForBool(Convert.ToBoolean(o));
@@ -306,6 +307,7 @@ namespace Google.Cloud.Logging.NLog
                 resource = MonitoredResourceBuilder.FromPlatform(_platform);
                 resource.Labels.TryGetValue("project_id", out monitoredProjectId);
             }
+
             targetProjectId = ProjectId?.Render(LogEventInfo.CreateNullEvent());
 
             if (monitoredProjectId == null)
@@ -319,8 +321,11 @@ namespace Google.Cloud.Logging.NLog
                 }
                 else
                 {
-                    resource = new MonitoredResource { Type = ResourceType,
-                        Labels = { ResourceLabels.ToDictionary(x => x.Name, x => x.Layout.Render(LogEventInfo.CreateNullEvent())) } };
+                    resource = new MonitoredResource
+                    {
+                        Type = ResourceType,
+                        Labels = { ResourceLabels.ToDictionary(x => x.Name, x => x.Layout.Render(LogEventInfo.CreateNullEvent())) }
+                    };
                 }
             }
 
@@ -334,6 +339,7 @@ namespace Google.Cloud.Logging.NLog
             var logName = new LogName(targetProjectId, logId);
             _logName = logName.ToString();
             _logNameToWrite = logName;
+            _traceResourcePath = !string.IsNullOrEmpty(targetProjectId) ? $"projects/{targetProjectId}/traces/" : null;
         }
 
         /// <summary>
@@ -488,55 +494,42 @@ namespace Google.Cloud.Logging.NLog
                 Resource = _resource,
             };
 
+            if (!string.IsNullOrEmpty(_traceResourcePath))
+            {
+                var traceId = RenderLogEvent(TraceId, loggingEvent);
+                if (!string.IsNullOrEmpty(traceId))
+                {
+                    logEntry.Trace = _traceResourcePath + traceId;
+
+                    var spanId = RenderLogEvent(SpanId, loggingEvent);
+                    if (!string.IsNullOrEmpty(spanId))
+                    {
+                        logEntry.SpanId = spanId;
+                    }
+
+                    var traceSampled = RenderLogEvent(TraceSampled, loggingEvent);
+                    if (!string.IsNullOrEmpty(traceSampled))
+                    {
+                        logEntry.TraceSampled = bool.TrueString.Equals(traceSampled, StringComparison.OrdinalIgnoreCase) || traceSampled == "1";
+                    }
+                }
+            }
+
             if (SendJsonPayload)
             {
-                var jsonStruct = new Struct();
-                jsonStruct.Fields.Add("message", Value.ForString(RenderLogEvent(Layout, loggingEvent)));
-                if (ServiceContextName != null)
-                {
-                    var serviceName = RenderLogEvent(ServiceContextName, loggingEvent);
-                    if (!string.IsNullOrEmpty(serviceName))
-                    {
-                        // Include ServiceContext to allow errors to be automatically forwarded
-                        var serviceVersion = RenderLogEvent(ServiceContextVersion, loggingEvent);
-                        if (string.IsNullOrEmpty(serviceVersion))
-                        {
-                            serviceVersion = "0.0.0.0";
-                        }
-
-                        var serviceContext = new Struct();
-                        jsonStruct.Fields.Add("serviceContext", Value.ForStruct(serviceContext));
-                        serviceContext.Fields.Add("service", Value.ForString(serviceName));
-                        serviceContext.Fields.Add("version", Value.ForString(serviceVersion));
-                    }
-                }
-
-                var propertiesStruct = new Struct();
-                jsonStruct.Fields.Add("properties", Value.ForStruct(propertiesStruct));
-
-                foreach (var combinedProperty in GetAllProperties(loggingEvent).Where(x => !string.IsNullOrEmpty(x.Key)))
-                {
-                    Value jsonValue;
-                    try
-                    {
-                        jsonValue = _jsonConvertFunction(combinedProperty.Value);
-                    }
-                    catch (Exception ex)
-                    {
-                        InternalLogger.Warn(ex,
-                            "GoogleStackdriver(Name={0}): Exception at BuildLogEntry with Key={1}", Name, combinedProperty.Key);
-                        jsonValue = Value.ForString($"<Exception: '{ex.Message}'>");
-                    }
-                    propertiesStruct.Fields.Add(combinedProperty.Key, jsonValue);
-                }
-                logEntry.JsonPayload = jsonStruct;
+                logEntry.JsonPayload = RenderJsonPayload(loggingEvent);
             }
             else
             {
                 logEntry.TextPayload = RenderLogEvent(Layout, loggingEvent);
 
-                foreach (var combinedProperty in GetAllProperties(loggingEvent).Where(x => !string.IsNullOrEmpty(x.Key)))
+                foreach (var combinedProperty in GetAllProperties(loggingEvent))
                 {
+                    if (string.IsNullOrEmpty(combinedProperty.Key))
+                    {
+                        continue;
+                    }
+
                     try
                     {
                         logEntry.Labels[combinedProperty.Key] = combinedProperty.Value?.ToString() ?? "null";
@@ -561,8 +554,70 @@ namespace Google.Cloud.Logging.NLog
                     Line = loggingEvent.CallerLineNumber,
                 };
             }
-     
+
             return logEntry;
+        }
+
+        private Struct RenderJsonPayload(LogEventInfo loggingEvent)
+        {
+            var jsonStruct = new Struct();
+            if (EnableJsonLayout)
+            {
+                foreach (var jToken in JObject.Parse(RenderLogEvent(Layout, loggingEvent)))
+                {
+                    jsonStruct.Fields.Add(jToken.Key, _jsonConvertFunction(jToken.Value));
+                }
+            }
+            else
+            {
+                jsonStruct.Fields.Add("message", Value.ForString(RenderLogEvent(Layout, loggingEvent)));
+
+                if (ServiceContextName != null)
+                {
+                    var serviceName = RenderLogEvent(ServiceContextName, loggingEvent);
+                    if (!string.IsNullOrEmpty(serviceName))
+                    {
+                        // Include ServiceContext to allow errors to be automatically forwarded
+                        var serviceVersion = RenderLogEvent(ServiceContextVersion, loggingEvent);
+                        if (string.IsNullOrEmpty(serviceVersion))
+                        {
+                            serviceVersion = "0.0.0.0";
+                        }
+
+                        var serviceContext = new Struct();
+                        jsonStruct.Fields.Add("serviceContext", Value.ForStruct(serviceContext));
+                        serviceContext.Fields.Add("service", Value.ForString(serviceName));
+                        serviceContext.Fields.Add("version", Value.ForString(serviceVersion));
+                    }
+                }
+
+                var propertiesStruct = new Struct();
+                jsonStruct.Fields.Add("properties", Value.ForStruct(propertiesStruct));
+
+                foreach (var combinedProperty in GetAllProperties(loggingEvent))
+                {
+                    if (string.IsNullOrEmpty(combinedProperty.Key))
+                    {
+                        continue;
+                    }
+
+                    Value jsonValue;
+                    try
+                    {
+                        jsonValue = _jsonConvertFunction(combinedProperty.Value);
+                    }
+                    catch (Exception ex)
+                    {
+                        InternalLogger.Warn(ex,
+                            "GoogleStackdriver(Name={0}): Exception at RenderJsonPayload with Key={1}", Name, combinedProperty.Key);
+                        jsonValue = Value.ForString($"<Exception: '{ex.Message}'>");
+                    }
+
+                    propertiesStruct.Fields.Add(combinedProperty.Key, jsonValue);
+                }
+            }
+
+            return jsonStruct;
         }
 
         private static Timestamp ConvertToTimestamp(DateTime dt)

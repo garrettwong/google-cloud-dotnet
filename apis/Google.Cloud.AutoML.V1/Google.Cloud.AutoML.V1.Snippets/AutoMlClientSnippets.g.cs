@@ -1,4 +1,4 @@
-// Copyright 2020 Google LLC
+// Copyright 2021 Google LLC
 //
 // Licensed under the Apache License, Version 2.0 (the "License");
 // you may not use this file except in compliance with the License.
@@ -352,7 +352,7 @@ namespace Google.Cloud.AutoML.V1.Snippets
             // End snippet
         }
 
-        /// <summary>Snippet for ListDatasets</summary>
+        /// <summary>Snippet for ListDatasetsAsync</summary>
         public async Task ListDatasetsRequestObjectAsync()
         {
             // Snippet: ListDatasetsAsync(ListDatasetsRequest, CallSettings)
@@ -446,7 +446,7 @@ namespace Google.Cloud.AutoML.V1.Snippets
             // End snippet
         }
 
-        /// <summary>Snippet for ListDatasets</summary>
+        /// <summary>Snippet for ListDatasetsAsync</summary>
         public async Task ListDatasetsAsync()
         {
             // Snippet: ListDatasetsAsync(string, string, int?, CallSettings)
@@ -536,7 +536,7 @@ namespace Google.Cloud.AutoML.V1.Snippets
             // End snippet
         }
 
-        /// <summary>Snippet for ListDatasets</summary>
+        /// <summary>Snippet for ListDatasetsAsync</summary>
         public async Task ListDatasetsResourceNamesAsync()
         {
             // Snippet: ListDatasetsAsync(LocationName, string, int?, CallSettings)
@@ -1618,7 +1618,7 @@ namespace Google.Cloud.AutoML.V1.Snippets
             // End snippet
         }
 
-        /// <summary>Snippet for ListModels</summary>
+        /// <summary>Snippet for ListModelsAsync</summary>
         public async Task ListModelsRequestObjectAsync()
         {
             // Snippet: ListModelsAsync(ListModelsRequest, CallSettings)
@@ -1712,7 +1712,7 @@ namespace Google.Cloud.AutoML.V1.Snippets
             // End snippet
         }
 
-        /// <summary>Snippet for ListModels</summary>
+        /// <summary>Snippet for ListModelsAsync</summary>
         public async Task ListModelsAsync()
         {
             // Snippet: ListModelsAsync(string, string, int?, CallSettings)
@@ -1802,7 +1802,7 @@ namespace Google.Cloud.AutoML.V1.Snippets
             // End snippet
         }
 
-        /// <summary>Snippet for ListModels</summary>
+        /// <summary>Snippet for ListModelsAsync</summary>
         public async Task ListModelsResourceNamesAsync()
         {
             // Snippet: ListModelsAsync(LocationName, string, int?, CallSettings)
@@ -2105,7 +2105,6 @@ namespace Google.Cloud.AutoML.V1.Snippets
             {
                 ModelName = ModelName.FromProjectLocationModel("[PROJECT]", "[LOCATION]", "[MODEL]"),
                 ImageObjectDetectionModelDeploymentMetadata = new ImageObjectDetectionModelDeploymentMetadata(),
-                ImageClassificationModelDeploymentMetadata = new ImageClassificationModelDeploymentMetadata(),
             };
             // Make the request
             Operation<Empty, OperationMetadata> response = autoMlClient.DeployModel(request);
@@ -2140,7 +2139,6 @@ namespace Google.Cloud.AutoML.V1.Snippets
             {
                 ModelName = ModelName.FromProjectLocationModel("[PROJECT]", "[LOCATION]", "[MODEL]"),
                 ImageObjectDetectionModelDeploymentMetadata = new ImageObjectDetectionModelDeploymentMetadata(),
-                ImageClassificationModelDeploymentMetadata = new ImageClassificationModelDeploymentMetadata(),
             };
             // Make the request
             Operation<Empty, OperationMetadata> response = await autoMlClient.DeployModelAsync(request);
@@ -2789,7 +2787,7 @@ namespace Google.Cloud.AutoML.V1.Snippets
             // End snippet
         }
 
-        /// <summary>Snippet for ListModelEvaluations</summary>
+        /// <summary>Snippet for ListModelEvaluationsAsync</summary>
         public async Task ListModelEvaluationsRequestObjectAsync()
         {
             // Snippet: ListModelEvaluationsAsync(ListModelEvaluationsRequest, CallSettings)
@@ -2884,7 +2882,7 @@ namespace Google.Cloud.AutoML.V1.Snippets
             // End snippet
         }
 
-        /// <summary>Snippet for ListModelEvaluations</summary>
+        /// <summary>Snippet for ListModelEvaluationsAsync</summary>
         public async Task ListModelEvaluationsAsync()
         {
             // Snippet: ListModelEvaluationsAsync(string, string, string, int?, CallSettings)
@@ -2976,7 +2974,7 @@ namespace Google.Cloud.AutoML.V1.Snippets
             // End snippet
         }
 
-        /// <summary>Snippet for ListModelEvaluations</summary>
+        /// <summary>Snippet for ListModelEvaluationsAsync</summary>
         public async Task ListModelEvaluationsResourceNamesAsync()
         {
             // Snippet: ListModelEvaluationsAsync(ModelName, string, string, int?, CallSettings)

@@ -1,4 +1,4 @@
-// Copyright 2020 Google LLC
+// Copyright 2021 Google LLC
 //
 // Licensed under the Apache License, Version 2.0 (the "License");
 // you may not use this file except in compliance with the License.
@@ -165,7 +165,7 @@ namespace Google.Cloud.RecommendationEngine.V1Beta1.Snippets
             // End snippet
         }
 
-        /// <summary>Snippet for ListPredictionApiKeyRegistrations</summary>
+        /// <summary>Snippet for ListPredictionApiKeyRegistrationsAsync</summary>
         public async Task ListPredictionApiKeyRegistrationsRequestObjectAsync()
         {
             // Snippet: ListPredictionApiKeyRegistrationsAsync(ListPredictionApiKeyRegistrationsRequest, CallSettings)
@@ -258,7 +258,7 @@ namespace Google.Cloud.RecommendationEngine.V1Beta1.Snippets
             // End snippet
         }
 
-        /// <summary>Snippet for ListPredictionApiKeyRegistrations</summary>
+        /// <summary>Snippet for ListPredictionApiKeyRegistrationsAsync</summary>
         public async Task ListPredictionApiKeyRegistrationsAsync()
         {
             // Snippet: ListPredictionApiKeyRegistrationsAsync(string, string, int?, CallSettings)
@@ -348,7 +348,7 @@ namespace Google.Cloud.RecommendationEngine.V1Beta1.Snippets
             // End snippet
         }
 
-        /// <summary>Snippet for ListPredictionApiKeyRegistrations</summary>
+        /// <summary>Snippet for ListPredictionApiKeyRegistrationsAsync</summary>
         public async Task ListPredictionApiKeyRegistrationsResourceNamesAsync()
         {
             // Snippet: ListPredictionApiKeyRegistrationsAsync(EventStoreName, string, int?, CallSettings)

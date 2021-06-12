@@ -23,6 +23,23 @@ namespace Google.Cloud.Tools.Common
 {
     public class ApiMetadata
     {
+        /// <summary>
+        /// Packages that should be treated as Cloud packages even though they don't start with Google.Cloud
+        /// </summary>
+        private static readonly HashSet<string> PseudoCloudPackages = new HashSet<string>
+        {
+            // Long-running operations API. Not strictly GCP-specific, but reasonable to host on DevSite.
+            // (A little like GAX.)
+            "Google.LongRunning",
+            // The "interface" for Google.Cloud.DevTools.ContainerAnalysis.V1
+            "Grafeas.V1",
+            // Common types used by Google.Cloud.GSuiteAddOns.V1
+            "Google.Apps.Script.Type",
+            // Actually GCP-specific; should probably have a Google.Cloud prefix, but it's too late now.
+            "Google.Identity.AccessContextManager.V1",
+            "Google.Identity.AccessContextManager.Type"
+        };
+
         // Pattern to extract the underlying API version from the package name.
         private static readonly Regex PackageIdVersionPattern = new Regex(@"\.V[1-9]\d*[-A-Za-z0-9]*$");
         private static readonly Regex PrereleaseApiPattern = new Regex(@"^V[1-9]\d*[^\d]+.*$");
@@ -34,6 +51,24 @@ namespace Google.Cloud.Tools.Common
         public ApiType Type { get; set; }
         public string TargetFrameworks { get; set; }
         public string TestTargetFrameworks { get; set; }
+
+        /// <summary>
+        /// The type to include as library_type in the .repo-metadata.json file, when the defaulting
+        /// in <see cref="EffectiveMetadataType"/> is inappropriate.
+        /// </summary>
+        public string MetadataType { get; set; }
+
+        [JsonIgnore]
+        public string EffectiveMetadataType => MetadataType ?? Type switch
+        {
+            ApiType.None => "OTHER",
+            ApiType.Grpc => "GAPIC_AUTO",
+            ApiType.Regapic => "GAPIC_AUTO",
+            ApiType.Rest => "GAPIC_MANUAL", // These aren't the REST generated clients, they're the augmented wrappers.
+            ApiType.Analyzers => "OTHER",
+            ApiType.Other => "OTHER",
+            _ => throw new InvalidOperationException($"Unknown ApiType value {Type}")
+        };
 
         /// <summary>
         /// The version of the underlying API, taken from the last segment of the package ID,
@@ -113,6 +148,7 @@ namespace Google.Cloud.Tools.Common
 
         /// <summary>
         /// When set to <c>true</c>, this API is skipped by the update-history command in ReleaseManager.
+        /// Instead, projects that depend on this API will include commits in their history.
         /// </summary>
         [JsonProperty(DefaultValueHandling = DefaultValueHandling.Ignore)]
         public bool NoVersionHistory { get; set; }
@@ -135,6 +171,21 @@ namespace Google.Cloud.Tools.Common
         /// have a 1.0.0.)
         /// </summary>
         public string ReleaseLevelOverride { get; set; }
+
+        /// <summary>
+        /// Path to an API-specific JSON configuration file for resources.
+        /// This augments the default CommonResourcesConfig.json file in the repo root directory.
+        /// Typically a group of APIs (e.g. Bigtable.Admin.V2 and Bigtable.V2) will all have this configuration
+        /// option set to refer to a single file in a common package containing common resource names.
+        /// </summary>
+        public string CommonResourcesConfig { get; set; }
+
+        /// <summary>
+        /// Indicates whether the given package name denotes a Cloud API, documented on cloud.google.com.
+        /// Note that this is only expected to "know" about API libraries, not support libraries (GAX, protobuf etc).
+        /// </summary>
+        /// <param name="package">The name of the package, e.g. Google.Cloud.Storage.V1</param>
+        public static bool IsCloudPackage(string package) => package.StartsWith("Google.Cloud.") || PseudoCloudPackages.Contains(package);
 
         // TODO: Optimize to do this lazily if it's ever an issue
         [JsonIgnore]

@@ -1,4 +1,4 @@
-// Copyright 2020 Google LLC
+// Copyright 2021 Google LLC
 //
 // Licensed under the Apache License, Version 2.0 (the "License");
 // you may not use this file except in compliance with the License.
@@ -237,6 +237,10 @@ namespace Google.Cloud.Dialogflow.V2
         /// as a result. This method is not idempotent, because it may cause contexts
         /// and session entity types to be updated, which in turn might affect
         /// results of future queries.
+        /// 
+        /// Note: Always use agent versions for production traffic.
+        /// See [Versions and
+        /// environments](https://cloud.google.com/dialogflow/es/docs/agents-versions).
         /// </summary>
         /// <param name="request">The request object containing all of the parameters for the API call.</param>
         /// <param name="callSettings">If not null, applies overrides to this RPC call.</param>
@@ -249,6 +253,10 @@ namespace Google.Cloud.Dialogflow.V2
         /// as a result. This method is not idempotent, because it may cause contexts
         /// and session entity types to be updated, which in turn might affect
         /// results of future queries.
+        /// 
+        /// Note: Always use agent versions for production traffic.
+        /// See [Versions and
+        /// environments](https://cloud.google.com/dialogflow/es/docs/agents-versions).
         /// </summary>
         /// <param name="request">The request object containing all of the parameters for the API call.</param>
         /// <param name="callSettings">If not null, applies overrides to this RPC call.</param>
@@ -261,6 +269,10 @@ namespace Google.Cloud.Dialogflow.V2
         /// as a result. This method is not idempotent, because it may cause contexts
         /// and session entity types to be updated, which in turn might affect
         /// results of future queries.
+        /// 
+        /// Note: Always use agent versions for production traffic.
+        /// See [Versions and
+        /// environments](https://cloud.google.com/dialogflow/es/docs/agents-versions).
         /// </summary>
         /// <param name="request">The request object containing all of the parameters for the API call.</param>
         /// <param name="cancellationToken">A <see cref="st::CancellationToken"/> to use for this RPC.</param>
@@ -273,20 +285,29 @@ namespace Google.Cloud.Dialogflow.V2
         /// as a result. This method is not idempotent, because it may cause contexts
         /// and session entity types to be updated, which in turn might affect
         /// results of future queries.
+        /// 
+        /// Note: Always use agent versions for production traffic.
+        /// See [Versions and
+        /// environments](https://cloud.google.com/dialogflow/es/docs/agents-versions).
         /// </summary>
         /// <param name="session">
         /// Required. The name of the session this query is sent to. Format:
         /// `projects/{Project ID}/agent/sessions/{Session ID}`, or
         /// `projects/{Project ID}/agent/environments/{Environment ID}/users/{User
         /// ID&amp;gt;/sessions/&amp;lt;Session ID&amp;gt;`. If `Environment ID` is not specified, we assume
-        /// default 'draft' environment. If `User ID` is not specified, we are using
-        /// "-". It's up to the API caller to choose an appropriate `Session ID` and
-        /// `User Id`. They can be a random number or some type of user and session
+        /// default 'draft' environment (`Environment ID` might be referred to as
+        /// environment name at some places). If `User ID` is not specified, we are
+        /// using "-". It's up to the API caller to choose an appropriate `Session ID`
+        /// and `User Id`. They can be a random number or some type of user and session
         /// identifiers (preferably hashed). The length of the `Session ID` and
         /// `User ID` must not exceed 36 characters.
         /// 
         /// For more information, see the [API interactions
         /// guide](https://cloud.google.com/dialogflow/docs/api-overview).
+        /// 
+        /// Note: Always use agent versions for production traffic.
+        /// See [Versions and
+        /// environments](https://cloud.google.com/dialogflow/es/docs/agents-versions).
         /// </param>
         /// <param name="queryInput">
         /// Required. The input specification. It can be set to:
@@ -312,20 +333,29 @@ namespace Google.Cloud.Dialogflow.V2
         /// as a result. This method is not idempotent, because it may cause contexts
         /// and session entity types to be updated, which in turn might affect
         /// results of future queries.
+        /// 
+        /// Note: Always use agent versions for production traffic.
+        /// See [Versions and
+        /// environments](https://cloud.google.com/dialogflow/es/docs/agents-versions).
         /// </summary>
         /// <param name="session">
         /// Required. The name of the session this query is sent to. Format:
         /// `projects/{Project ID}/agent/sessions/{Session ID}`, or
         /// `projects/{Project ID}/agent/environments/{Environment ID}/users/{User
         /// ID&amp;gt;/sessions/&amp;lt;Session ID&amp;gt;`. If `Environment ID` is not specified, we assume
-        /// default 'draft' environment. If `User ID` is not specified, we are using
-        /// "-". It's up to the API caller to choose an appropriate `Session ID` and
-        /// `User Id`. They can be a random number or some type of user and session
+        /// default 'draft' environment (`Environment ID` might be referred to as
+        /// environment name at some places). If `User ID` is not specified, we are
+        /// using "-". It's up to the API caller to choose an appropriate `Session ID`
+        /// and `User Id`. They can be a random number or some type of user and session
         /// identifiers (preferably hashed). The length of the `Session ID` and
         /// `User ID` must not exceed 36 characters.
         /// 
         /// For more information, see the [API interactions
         /// guide](https://cloud.google.com/dialogflow/docs/api-overview).
+        /// 
+        /// Note: Always use agent versions for production traffic.
+        /// See [Versions and
+        /// environments](https://cloud.google.com/dialogflow/es/docs/agents-versions).
         /// </param>
         /// <param name="queryInput">
         /// Required. The input specification. It can be set to:
@@ -351,20 +381,29 @@ namespace Google.Cloud.Dialogflow.V2
         /// as a result. This method is not idempotent, because it may cause contexts
         /// and session entity types to be updated, which in turn might affect
         /// results of future queries.
+        /// 
+        /// Note: Always use agent versions for production traffic.
+        /// See [Versions and
+        /// environments](https://cloud.google.com/dialogflow/es/docs/agents-versions).
         /// </summary>
         /// <param name="session">
         /// Required. The name of the session this query is sent to. Format:
         /// `projects/{Project ID}/agent/sessions/{Session ID}`, or
         /// `projects/{Project ID}/agent/environments/{Environment ID}/users/{User
         /// ID&amp;gt;/sessions/&amp;lt;Session ID&amp;gt;`. If `Environment ID` is not specified, we assume
-        /// default 'draft' environment. If `User ID` is not specified, we are using
-        /// "-". It's up to the API caller to choose an appropriate `Session ID` and
-        /// `User Id`. They can be a random number or some type of user and session
+        /// default 'draft' environment (`Environment ID` might be referred to as
+        /// environment name at some places). If `User ID` is not specified, we are
+        /// using "-". It's up to the API caller to choose an appropriate `Session ID`
+        /// and `User Id`. They can be a random number or some type of user and session
         /// identifiers (preferably hashed). The length of the `Session ID` and
         /// `User ID` must not exceed 36 characters.
         /// 
         /// For more information, see the [API interactions
         /// guide](https://cloud.google.com/dialogflow/docs/api-overview).
+        /// 
+        /// Note: Always use agent versions for production traffic.
+        /// See [Versions and
+        /// environments](https://cloud.google.com/dialogflow/es/docs/agents-versions).
         /// </param>
         /// <param name="queryInput">
         /// Required. The input specification. It can be set to:
@@ -386,20 +425,29 @@ namespace Google.Cloud.Dialogflow.V2
         /// as a result. This method is not idempotent, because it may cause contexts
         /// and session entity types to be updated, which in turn might affect
         /// results of future queries.
+        /// 
+        /// Note: Always use agent versions for production traffic.
+        /// See [Versions and
+        /// environments](https://cloud.google.com/dialogflow/es/docs/agents-versions).
         /// </summary>
         /// <param name="session">
         /// Required. The name of the session this query is sent to. Format:
         /// `projects/{Project ID}/agent/sessions/{Session ID}`, or
         /// `projects/{Project ID}/agent/environments/{Environment ID}/users/{User
         /// ID&amp;gt;/sessions/&amp;lt;Session ID&amp;gt;`. If `Environment ID` is not specified, we assume
-        /// default 'draft' environment. If `User ID` is not specified, we are using
-        /// "-". It's up to the API caller to choose an appropriate `Session ID` and
-        /// `User Id`. They can be a random number or some type of user and session
+        /// default 'draft' environment (`Environment ID` might be referred to as
+        /// environment name at some places). If `User ID` is not specified, we are
+        /// using "-". It's up to the API caller to choose an appropriate `Session ID`
+        /// and `User Id`. They can be a random number or some type of user and session
         /// identifiers (preferably hashed). The length of the `Session ID` and
         /// `User ID` must not exceed 36 characters.
         /// 
         /// For more information, see the [API interactions
         /// guide](https://cloud.google.com/dialogflow/docs/api-overview).
+        /// 
+        /// Note: Always use agent versions for production traffic.
+        /// See [Versions and
+        /// environments](https://cloud.google.com/dialogflow/es/docs/agents-versions).
         /// </param>
         /// <param name="queryInput">
         /// Required. The input specification. It can be set to:
@@ -425,20 +473,29 @@ namespace Google.Cloud.Dialogflow.V2
         /// as a result. This method is not idempotent, because it may cause contexts
         /// and session entity types to be updated, which in turn might affect
         /// results of future queries.
+        /// 
+        /// Note: Always use agent versions for production traffic.
+        /// See [Versions and
+        /// environments](https://cloud.google.com/dialogflow/es/docs/agents-versions).
         /// </summary>
         /// <param name="session">
         /// Required. The name of the session this query is sent to. Format:
         /// `projects/{Project ID}/agent/sessions/{Session ID}`, or
         /// `projects/{Project ID}/agent/environments/{Environment ID}/users/{User
         /// ID&amp;gt;/sessions/&amp;lt;Session ID&amp;gt;`. If `Environment ID` is not specified, we assume
-        /// default 'draft' environment. If `User ID` is not specified, we are using
-        /// "-". It's up to the API caller to choose an appropriate `Session ID` and
-        /// `User Id`. They can be a random number or some type of user and session
+        /// default 'draft' environment (`Environment ID` might be referred to as
+        /// environment name at some places). If `User ID` is not specified, we are
+        /// using "-". It's up to the API caller to choose an appropriate `Session ID`
+        /// and `User Id`. They can be a random number or some type of user and session
         /// identifiers (preferably hashed). The length of the `Session ID` and
         /// `User ID` must not exceed 36 characters.
         /// 
         /// For more information, see the [API interactions
         /// guide](https://cloud.google.com/dialogflow/docs/api-overview).
+        /// 
+        /// Note: Always use agent versions for production traffic.
+        /// See [Versions and
+        /// environments](https://cloud.google.com/dialogflow/es/docs/agents-versions).
         /// </param>
         /// <param name="queryInput">
         /// Required. The input specification. It can be set to:
@@ -464,20 +521,29 @@ namespace Google.Cloud.Dialogflow.V2
         /// as a result. This method is not idempotent, because it may cause contexts
         /// and session entity types to be updated, which in turn might affect
         /// results of future queries.
+        /// 
+        /// Note: Always use agent versions for production traffic.
+        /// See [Versions and
+        /// environments](https://cloud.google.com/dialogflow/es/docs/agents-versions).
         /// </summary>
         /// <param name="session">
         /// Required. The name of the session this query is sent to. Format:
         /// `projects/{Project ID}/agent/sessions/{Session ID}`, or
         /// `projects/{Project ID}/agent/environments/{Environment ID}/users/{User
         /// ID&amp;gt;/sessions/&amp;lt;Session ID&amp;gt;`. If `Environment ID` is not specified, we assume
-        /// default 'draft' environment. If `User ID` is not specified, we are using
-        /// "-". It's up to the API caller to choose an appropriate `Session ID` and
-        /// `User Id`. They can be a random number or some type of user and session
+        /// default 'draft' environment (`Environment ID` might be referred to as
+        /// environment name at some places). If `User ID` is not specified, we are
+        /// using "-". It's up to the API caller to choose an appropriate `Session ID`
+        /// and `User Id`. They can be a random number or some type of user and session
         /// identifiers (preferably hashed). The length of the `Session ID` and
         /// `User ID` must not exceed 36 characters.
         /// 
         /// For more information, see the [API interactions
         /// guide](https://cloud.google.com/dialogflow/docs/api-overview).
+        /// 
+        /// Note: Always use agent versions for production traffic.
+        /// See [Versions and
+        /// environments](https://cloud.google.com/dialogflow/es/docs/agents-versions).
         /// </param>
         /// <param name="queryInput">
         /// Required. The input specification. It can be set to:
@@ -506,6 +572,10 @@ namespace Google.Cloud.Dialogflow.V2
         /// Processes a natural language query in audio format in a streaming fashion
         /// and returns structured, actionable data as a result. This method is only
         /// available via the gRPC API (not REST).
+        /// 
+        /// Note: Always use agent versions for production traffic.
+        /// See [Versions and
+        /// environments](https://cloud.google.com/dialogflow/es/docs/agents-versions).
         /// </summary>
         /// <param name="callSettings">If not null, applies overrides to this RPC call.</param>
         /// <param name="streamingSettings">If not null, applies streaming overrides to this RPC call.</param>
@@ -570,6 +640,10 @@ namespace Google.Cloud.Dialogflow.V2
         /// as a result. This method is not idempotent, because it may cause contexts
         /// and session entity types to be updated, which in turn might affect
         /// results of future queries.
+        /// 
+        /// Note: Always use agent versions for production traffic.
+        /// See [Versions and
+        /// environments](https://cloud.google.com/dialogflow/es/docs/agents-versions).
         /// </summary>
         /// <param name="request">The request object containing all of the parameters for the API call.</param>
         /// <param name="callSettings">If not null, applies overrides to this RPC call.</param>
@@ -585,6 +659,10 @@ namespace Google.Cloud.Dialogflow.V2
         /// as a result. This method is not idempotent, because it may cause contexts
         /// and session entity types to be updated, which in turn might affect
         /// results of future queries.
+        /// 
+        /// Note: Always use agent versions for production traffic.
+        /// See [Versions and
+        /// environments](https://cloud.google.com/dialogflow/es/docs/agents-versions).
         /// </summary>
         /// <param name="request">The request object containing all of the parameters for the API call.</param>
         /// <param name="callSettings">If not null, applies overrides to this RPC call.</param>
@@ -644,6 +722,10 @@ namespace Google.Cloud.Dialogflow.V2
         /// Processes a natural language query in audio format in a streaming fashion
         /// and returns structured, actionable data as a result. This method is only
         /// available via the gRPC API (not REST).
+        /// 
+        /// Note: Always use agent versions for production traffic.
+        /// See [Versions and
+        /// environments](https://cloud.google.com/dialogflow/es/docs/agents-versions).
         /// </summary>
         /// <param name="callSettings">If not null, applies overrides to this RPC call.</param>
         /// <param name="streamingSettings">If not null, applies streaming overrides to this RPC call.</param>

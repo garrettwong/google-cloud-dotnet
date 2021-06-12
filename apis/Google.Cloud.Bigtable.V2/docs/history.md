@@ -1,5 +1,16 @@
 # Version history
 
+# Version 2.2.0, released 2021-05-05
+
+- [Commit 9f5f0aa](https://github.com/googleapis/google-cloud-dotnet/commit/9f5f0aa): fix: Regenerate server-streaming calls with Google request params. Fixes [issue 6310](https://github.com/googleapis/google-cloud-dotnet/issues/6310).
+- [Commit 1b91d27](https://github.com/googleapis/google-cloud-dotnet/commit/1b91d27): feat: migrate bigtable retry/timeout settings to gRPC's service configs
+
+# Version 2.1.1, released 2020-12-02
+
+- [Commit ef17912](https://github.com/googleapis/google-cloud-dotnet/commit/ef17912): feat: Reduce the gRPC keepalive time from 1 minute to 30 seconds
+
+This change may improve reliability (and makes this library consistent with other languages) but does not affect the API surface.
+
 # Version 2.1.0, released 2020-10-12
 
 - [Commit 0790924](https://github.com/googleapis/google-cloud-dotnet/commit/0790924): fix: Add gRPC compatibility constructors

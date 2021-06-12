@@ -1,4 +1,4 @@
-// Copyright 2020 Google LLC
+// Copyright 2021 Google LLC
 //
 // Licensed under the Apache License, Version 2.0 (the "License");
 // you may not use this file except in compliance with the License.
@@ -75,7 +75,7 @@ namespace Google.Cloud.SecretManager.V1.Snippets
             // End snippet
         }
 
-        /// <summary>Snippet for ListSecrets</summary>
+        /// <summary>Snippet for ListSecretsAsync</summary>
         public async Task ListSecretsRequestObjectAsync()
         {
             // Snippet: ListSecretsAsync(ListSecretsRequest, CallSettings)
@@ -168,7 +168,7 @@ namespace Google.Cloud.SecretManager.V1.Snippets
             // End snippet
         }
 
-        /// <summary>Snippet for ListSecrets</summary>
+        /// <summary>Snippet for ListSecretsAsync</summary>
         public async Task ListSecretsAsync()
         {
             // Snippet: ListSecretsAsync(string, string, int?, CallSettings)
@@ -258,7 +258,7 @@ namespace Google.Cloud.SecretManager.V1.Snippets
             // End snippet
         }
 
-        /// <summary>Snippet for ListSecrets</summary>
+        /// <summary>Snippet for ListSecretsAsync</summary>
         public async Task ListSecretsResourceNamesAsync()
         {
             // Snippet: ListSecretsAsync(ProjectName, string, int?, CallSettings)
@@ -656,6 +656,7 @@ namespace Google.Cloud.SecretManager.V1.Snippets
             DeleteSecretRequest request = new DeleteSecretRequest
             {
                 SecretName = SecretName.FromProjectSecret("[PROJECT]", "[SECRET]"),
+                Etag = "",
             };
             // Make the request
             secretManagerServiceClient.DeleteSecret(request);
@@ -673,6 +674,7 @@ namespace Google.Cloud.SecretManager.V1.Snippets
             DeleteSecretRequest request = new DeleteSecretRequest
             {
                 SecretName = SecretName.FromProjectSecret("[PROJECT]", "[SECRET]"),
+                Etag = "",
             };
             // Make the request
             await secretManagerServiceClient.DeleteSecretAsync(request);
@@ -781,7 +783,7 @@ namespace Google.Cloud.SecretManager.V1.Snippets
             // End snippet
         }
 
-        /// <summary>Snippet for ListSecretVersions</summary>
+        /// <summary>Snippet for ListSecretVersionsAsync</summary>
         public async Task ListSecretVersionsRequestObjectAsync()
         {
             // Snippet: ListSecretVersionsAsync(ListSecretVersionsRequest, CallSettings)
@@ -874,7 +876,7 @@ namespace Google.Cloud.SecretManager.V1.Snippets
             // End snippet
         }
 
-        /// <summary>Snippet for ListSecretVersions</summary>
+        /// <summary>Snippet for ListSecretVersionsAsync</summary>
         public async Task ListSecretVersionsAsync()
         {
             // Snippet: ListSecretVersionsAsync(string, string, int?, CallSettings)
@@ -964,7 +966,7 @@ namespace Google.Cloud.SecretManager.V1.Snippets
             // End snippet
         }
 
-        /// <summary>Snippet for ListSecretVersions</summary>
+        /// <summary>Snippet for ListSecretVersionsAsync</summary>
         public async Task ListSecretVersionsResourceNamesAsync()
         {
             // Snippet: ListSecretVersionsAsync(SecretName, string, int?, CallSettings)
@@ -1193,6 +1195,7 @@ namespace Google.Cloud.SecretManager.V1.Snippets
             DisableSecretVersionRequest request = new DisableSecretVersionRequest
             {
                 SecretVersionName = SecretVersionName.FromProjectSecretSecretVersion("[PROJECT]", "[SECRET]", "[SECRET_VERSION]"),
+                Etag = "",
             };
             // Make the request
             SecretVersion response = secretManagerServiceClient.DisableSecretVersion(request);
@@ -1210,6 +1213,7 @@ namespace Google.Cloud.SecretManager.V1.Snippets
             DisableSecretVersionRequest request = new DisableSecretVersionRequest
             {
                 SecretVersionName = SecretVersionName.FromProjectSecretSecretVersion("[PROJECT]", "[SECRET]", "[SECRET_VERSION]"),
+                Etag = "",
             };
             // Make the request
             SecretVersion response = await secretManagerServiceClient.DisableSecretVersionAsync(request);
@@ -1280,6 +1284,7 @@ namespace Google.Cloud.SecretManager.V1.Snippets
             EnableSecretVersionRequest request = new EnableSecretVersionRequest
             {
                 SecretVersionName = SecretVersionName.FromProjectSecretSecretVersion("[PROJECT]", "[SECRET]", "[SECRET_VERSION]"),
+                Etag = "",
             };
             // Make the request
             SecretVersion response = secretManagerServiceClient.EnableSecretVersion(request);
@@ -1297,6 +1302,7 @@ namespace Google.Cloud.SecretManager.V1.Snippets
             EnableSecretVersionRequest request = new EnableSecretVersionRequest
             {
                 SecretVersionName = SecretVersionName.FromProjectSecretSecretVersion("[PROJECT]", "[SECRET]", "[SECRET_VERSION]"),
+                Etag = "",
             };
             // Make the request
             SecretVersion response = await secretManagerServiceClient.EnableSecretVersionAsync(request);
@@ -1367,6 +1373,7 @@ namespace Google.Cloud.SecretManager.V1.Snippets
             DestroySecretVersionRequest request = new DestroySecretVersionRequest
             {
                 SecretVersionName = SecretVersionName.FromProjectSecretSecretVersion("[PROJECT]", "[SECRET]", "[SECRET_VERSION]"),
+                Etag = "",
             };
             // Make the request
             SecretVersion response = secretManagerServiceClient.DestroySecretVersion(request);
@@ -1384,6 +1391,7 @@ namespace Google.Cloud.SecretManager.V1.Snippets
             DestroySecretVersionRequest request = new DestroySecretVersionRequest
             {
                 SecretVersionName = SecretVersionName.FromProjectSecretSecretVersion("[PROJECT]", "[SECRET]", "[SECRET_VERSION]"),
+                Etag = "",
             };
             // Make the request
             SecretVersion response = await secretManagerServiceClient.DestroySecretVersionAsync(request);

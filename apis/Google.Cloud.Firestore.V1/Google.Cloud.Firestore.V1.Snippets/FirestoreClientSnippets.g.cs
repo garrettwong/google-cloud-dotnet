@@ -1,4 +1,4 @@
-// Copyright 2020 Google LLC
+// Copyright 2021 Google LLC
 //
 // Licensed under the Apache License, Version 2.0 (the "License");
 // you may not use this file except in compliance with the License.
@@ -19,7 +19,6 @@ namespace Google.Cloud.Firestore.V1.Snippets
     using Google.Api.Gax;
     using Google.Api.Gax.Grpc;
     using Google.Protobuf;
-    using Google.Protobuf.WellKnownTypes;
     using System;
     using System.Collections.Generic;
     using System.Linq;
@@ -40,7 +39,6 @@ namespace Google.Cloud.Firestore.V1.Snippets
                 Name = "",
                 Mask = new DocumentMask(),
                 Transaction = ByteString.Empty,
-                ReadTime = new Timestamp(),
             };
             // Make the request
             Document response = firestoreClient.GetDocument(request);
@@ -60,7 +58,6 @@ namespace Google.Cloud.Firestore.V1.Snippets
                 Name = "",
                 Mask = new DocumentMask(),
                 Transaction = ByteString.Empty,
-                ReadTime = new Timestamp(),
             };
             // Make the request
             Document response = await firestoreClient.GetDocumentAsync(request);
@@ -81,7 +78,6 @@ namespace Google.Cloud.Firestore.V1.Snippets
                 OrderBy = "",
                 Mask = new DocumentMask(),
                 Transaction = ByteString.Empty,
-                ReadTime = new Timestamp(),
                 ShowMissing = false,
             };
             // Make the request
@@ -121,7 +117,7 @@ namespace Google.Cloud.Firestore.V1.Snippets
             // End snippet
         }
 
-        /// <summary>Snippet for ListDocuments</summary>
+        /// <summary>Snippet for ListDocumentsAsync</summary>
         public async Task ListDocumentsRequestObjectAsync()
         {
             // Snippet: ListDocumentsAsync(ListDocumentsRequest, CallSettings)
@@ -135,7 +131,6 @@ namespace Google.Cloud.Firestore.V1.Snippets
                 OrderBy = "",
                 Mask = new DocumentMask(),
                 Transaction = ByteString.Empty,
-                ReadTime = new Timestamp(),
                 ShowMissing = false,
             };
             // Make the request
@@ -318,8 +313,6 @@ namespace Google.Cloud.Firestore.V1.Snippets
                 Documents = { "", },
                 Mask = new DocumentMask(),
                 Transaction = ByteString.Empty,
-                NewTransaction = new TransactionOptions(),
-                ReadTime = new Timestamp(),
             };
             // Make the request, returning a streaming response
             FirestoreClient.BatchGetDocumentsStream response = firestoreClient.BatchGetDocuments(request);
@@ -540,8 +533,6 @@ namespace Google.Cloud.Firestore.V1.Snippets
                 Parent = "",
                 StructuredQuery = new StructuredQuery(),
                 Transaction = ByteString.Empty,
-                NewTransaction = new TransactionOptions(),
-                ReadTime = new Timestamp(),
             };
             // Make the request, returning a streaming response
             FirestoreClient.RunQueryStream response = firestoreClient.RunQuery(request);
@@ -608,7 +599,7 @@ namespace Google.Cloud.Firestore.V1.Snippets
             // End snippet
         }
 
-        /// <summary>Snippet for PartitionQuery</summary>
+        /// <summary>Snippet for PartitionQueryAsync</summary>
         public async Task PartitionQueryRequestObjectAsync()
         {
             // Snippet: PartitionQueryAsync(PartitionQueryRequest, CallSettings)
@@ -743,7 +734,6 @@ namespace Google.Cloud.Firestore.V1.Snippets
                 {
                     Database = "",
                     AddTarget = new Target(),
-                    RemoveTarget = 0,
                     Labels = { { "", "" }, },
                 };
                 // Stream a request to the server
@@ -804,7 +794,7 @@ namespace Google.Cloud.Firestore.V1.Snippets
             // End snippet
         }
 
-        /// <summary>Snippet for ListCollectionIds</summary>
+        /// <summary>Snippet for ListCollectionIdsAsync</summary>
         public async Task ListCollectionIdsRequestObjectAsync()
         {
             // Snippet: ListCollectionIdsAsync(ListCollectionIdsRequest, CallSettings)
@@ -894,7 +884,7 @@ namespace Google.Cloud.Firestore.V1.Snippets
             // End snippet
         }
 
-        /// <summary>Snippet for ListCollectionIds</summary>
+        /// <summary>Snippet for ListCollectionIdsAsync</summary>
         public async Task ListCollectionIdsAsync()
         {
             // Snippet: ListCollectionIdsAsync(string, string, int?, CallSettings)

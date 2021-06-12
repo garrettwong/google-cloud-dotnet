@@ -1,4 +1,4 @@
-// Copyright 2020 Google LLC
+// Copyright 2021 Google LLC
 //
 // Licensed under the Apache License, Version 2.0 (the "License");
 // you may not use this file except in compliance with the License.
@@ -256,7 +256,7 @@ namespace Google.Cloud.DataLabeling.V1Beta1.Snippets
             // End snippet
         }
 
-        /// <summary>Snippet for ListDatasets</summary>
+        /// <summary>Snippet for ListDatasetsAsync</summary>
         public async Task ListDatasetsRequestObjectAsync()
         {
             // Snippet: ListDatasetsAsync(ListDatasetsRequest, CallSettings)
@@ -351,7 +351,7 @@ namespace Google.Cloud.DataLabeling.V1Beta1.Snippets
             // End snippet
         }
 
-        /// <summary>Snippet for ListDatasets</summary>
+        /// <summary>Snippet for ListDatasetsAsync</summary>
         public async Task ListDatasetsAsync()
         {
             // Snippet: ListDatasetsAsync(string, string, string, int?, CallSettings)
@@ -443,7 +443,7 @@ namespace Google.Cloud.DataLabeling.V1Beta1.Snippets
             // End snippet
         }
 
-        /// <summary>Snippet for ListDatasets</summary>
+        /// <summary>Snippet for ListDatasetsAsync</summary>
         public async Task ListDatasetsResourceNamesAsync()
         {
             // Snippet: ListDatasetsAsync(ProjectName, string, string, int?, CallSettings)
@@ -1106,7 +1106,7 @@ namespace Google.Cloud.DataLabeling.V1Beta1.Snippets
             // End snippet
         }
 
-        /// <summary>Snippet for ListDataItems</summary>
+        /// <summary>Snippet for ListDataItemsAsync</summary>
         public async Task ListDataItemsRequestObjectAsync()
         {
             // Snippet: ListDataItemsAsync(ListDataItemsRequest, CallSettings)
@@ -1201,7 +1201,7 @@ namespace Google.Cloud.DataLabeling.V1Beta1.Snippets
             // End snippet
         }
 
-        /// <summary>Snippet for ListDataItems</summary>
+        /// <summary>Snippet for ListDataItemsAsync</summary>
         public async Task ListDataItemsAsync()
         {
             // Snippet: ListDataItemsAsync(string, string, string, int?, CallSettings)
@@ -1293,7 +1293,7 @@ namespace Google.Cloud.DataLabeling.V1Beta1.Snippets
             // End snippet
         }
 
-        /// <summary>Snippet for ListDataItems</summary>
+        /// <summary>Snippet for ListDataItemsAsync</summary>
         public async Task ListDataItemsResourceNamesAsync()
         {
             // Snippet: ListDataItemsAsync(DatasetName, string, string, int?, CallSettings)
@@ -1475,7 +1475,7 @@ namespace Google.Cloud.DataLabeling.V1Beta1.Snippets
             // End snippet
         }
 
-        /// <summary>Snippet for ListAnnotatedDatasets</summary>
+        /// <summary>Snippet for ListAnnotatedDatasetsAsync</summary>
         public async Task ListAnnotatedDatasetsRequestObjectAsync()
         {
             // Snippet: ListAnnotatedDatasetsAsync(ListAnnotatedDatasetsRequest, CallSettings)
@@ -1570,7 +1570,7 @@ namespace Google.Cloud.DataLabeling.V1Beta1.Snippets
             // End snippet
         }
 
-        /// <summary>Snippet for ListAnnotatedDatasets</summary>
+        /// <summary>Snippet for ListAnnotatedDatasetsAsync</summary>
         public async Task ListAnnotatedDatasetsAsync()
         {
             // Snippet: ListAnnotatedDatasetsAsync(string, string, string, int?, CallSettings)
@@ -1662,7 +1662,7 @@ namespace Google.Cloud.DataLabeling.V1Beta1.Snippets
             // End snippet
         }
 
-        /// <summary>Snippet for ListAnnotatedDatasets</summary>
+        /// <summary>Snippet for ListAnnotatedDatasetsAsync</summary>
         public async Task ListAnnotatedDatasetsResourceNamesAsync()
         {
             // Snippet: ListAnnotatedDatasetsAsync(DatasetName, string, string, int?, CallSettings)
@@ -1754,9 +1754,6 @@ namespace Google.Cloud.DataLabeling.V1Beta1.Snippets
                 BasicConfig = new HumanAnnotationConfig(),
                 Feature = LabelImageRequest.Types.Feature.Unspecified,
                 ImageClassificationConfig = new ImageClassificationConfig(),
-                BoundingPolyConfig = new BoundingPolyConfig(),
-                PolylineConfig = new PolylineConfig(),
-                SegmentationConfig = new SegmentationConfig(),
             };
             // Make the request
             Operation<AnnotatedDataset, LabelOperationMetadata> response = dataLabelingServiceClient.LabelImage(request);
@@ -1793,9 +1790,6 @@ namespace Google.Cloud.DataLabeling.V1Beta1.Snippets
                 BasicConfig = new HumanAnnotationConfig(),
                 Feature = LabelImageRequest.Types.Feature.Unspecified,
                 ImageClassificationConfig = new ImageClassificationConfig(),
-                BoundingPolyConfig = new BoundingPolyConfig(),
-                PolylineConfig = new PolylineConfig(),
-                SegmentationConfig = new SegmentationConfig(),
             };
             // Make the request
             Operation<AnnotatedDataset, LabelOperationMetadata> response = await dataLabelingServiceClient.LabelImageAsync(request);
@@ -1957,9 +1951,6 @@ namespace Google.Cloud.DataLabeling.V1Beta1.Snippets
                 BasicConfig = new HumanAnnotationConfig(),
                 Feature = LabelVideoRequest.Types.Feature.Unspecified,
                 VideoClassificationConfig = new VideoClassificationConfig(),
-                ObjectDetectionConfig = new ObjectDetectionConfig(),
-                ObjectTrackingConfig = new ObjectTrackingConfig(),
-                EventConfig = new EventConfig(),
             };
             // Make the request
             Operation<AnnotatedDataset, LabelOperationMetadata> response = dataLabelingServiceClient.LabelVideo(request);
@@ -1996,9 +1987,6 @@ namespace Google.Cloud.DataLabeling.V1Beta1.Snippets
                 BasicConfig = new HumanAnnotationConfig(),
                 Feature = LabelVideoRequest.Types.Feature.Unspecified,
                 VideoClassificationConfig = new VideoClassificationConfig(),
-                ObjectDetectionConfig = new ObjectDetectionConfig(),
-                ObjectTrackingConfig = new ObjectTrackingConfig(),
-                EventConfig = new EventConfig(),
             };
             // Make the request
             Operation<AnnotatedDataset, LabelOperationMetadata> response = await dataLabelingServiceClient.LabelVideoAsync(request);
@@ -2159,7 +2147,6 @@ namespace Google.Cloud.DataLabeling.V1Beta1.Snippets
                 ParentAsDatasetName = DatasetName.FromProjectDataset("[PROJECT]", "[DATASET]"),
                 BasicConfig = new HumanAnnotationConfig(),
                 TextClassificationConfig = new TextClassificationConfig(),
-                TextEntityExtractionConfig = new TextEntityExtractionConfig(),
                 Feature = LabelTextRequest.Types.Feature.Unspecified,
             };
             // Make the request
@@ -2196,7 +2183,6 @@ namespace Google.Cloud.DataLabeling.V1Beta1.Snippets
                 ParentAsDatasetName = DatasetName.FromProjectDataset("[PROJECT]", "[DATASET]"),
                 BasicConfig = new HumanAnnotationConfig(),
                 TextClassificationConfig = new TextClassificationConfig(),
-                TextEntityExtractionConfig = new TextEntityExtractionConfig(),
                 Feature = LabelTextRequest.Types.Feature.Unspecified,
             };
             // Make the request
@@ -2488,7 +2474,7 @@ namespace Google.Cloud.DataLabeling.V1Beta1.Snippets
             // End snippet
         }
 
-        /// <summary>Snippet for ListExamples</summary>
+        /// <summary>Snippet for ListExamplesAsync</summary>
         public async Task ListExamplesRequestObjectAsync()
         {
             // Snippet: ListExamplesAsync(ListExamplesRequest, CallSettings)
@@ -2583,7 +2569,7 @@ namespace Google.Cloud.DataLabeling.V1Beta1.Snippets
             // End snippet
         }
 
-        /// <summary>Snippet for ListExamples</summary>
+        /// <summary>Snippet for ListExamplesAsync</summary>
         public async Task ListExamplesAsync()
         {
             // Snippet: ListExamplesAsync(string, string, string, int?, CallSettings)
@@ -2675,7 +2661,7 @@ namespace Google.Cloud.DataLabeling.V1Beta1.Snippets
             // End snippet
         }
 
-        /// <summary>Snippet for ListExamples</summary>
+        /// <summary>Snippet for ListExamplesAsync</summary>
         public async Task ListExamplesResourceNamesAsync()
         {
             // Snippet: ListExamplesAsync(AnnotatedDatasetName, string, string, int?, CallSettings)
@@ -2950,7 +2936,7 @@ namespace Google.Cloud.DataLabeling.V1Beta1.Snippets
             // End snippet
         }
 
-        /// <summary>Snippet for ListAnnotationSpecSets</summary>
+        /// <summary>Snippet for ListAnnotationSpecSetsAsync</summary>
         public async Task ListAnnotationSpecSetsRequestObjectAsync()
         {
             // Snippet: ListAnnotationSpecSetsAsync(ListAnnotationSpecSetsRequest, CallSettings)
@@ -3045,7 +3031,7 @@ namespace Google.Cloud.DataLabeling.V1Beta1.Snippets
             // End snippet
         }
 
-        /// <summary>Snippet for ListAnnotationSpecSets</summary>
+        /// <summary>Snippet for ListAnnotationSpecSetsAsync</summary>
         public async Task ListAnnotationSpecSetsAsync()
         {
             // Snippet: ListAnnotationSpecSetsAsync(string, string, string, int?, CallSettings)
@@ -3137,7 +3123,7 @@ namespace Google.Cloud.DataLabeling.V1Beta1.Snippets
             // End snippet
         }
 
-        /// <summary>Snippet for ListAnnotationSpecSets</summary>
+        /// <summary>Snippet for ListAnnotationSpecSetsAsync</summary>
         public async Task ListAnnotationSpecSetsResourceNamesAsync()
         {
             // Snippet: ListAnnotationSpecSetsAsync(ProjectName, string, string, int?, CallSettings)
@@ -3595,7 +3581,7 @@ namespace Google.Cloud.DataLabeling.V1Beta1.Snippets
             // End snippet
         }
 
-        /// <summary>Snippet for ListInstructions</summary>
+        /// <summary>Snippet for ListInstructionsAsync</summary>
         public async Task ListInstructionsRequestObjectAsync()
         {
             // Snippet: ListInstructionsAsync(ListInstructionsRequest, CallSettings)
@@ -3690,7 +3676,7 @@ namespace Google.Cloud.DataLabeling.V1Beta1.Snippets
             // End snippet
         }
 
-        /// <summary>Snippet for ListInstructions</summary>
+        /// <summary>Snippet for ListInstructionsAsync</summary>
         public async Task ListInstructionsAsync()
         {
             // Snippet: ListInstructionsAsync(string, string, string, int?, CallSettings)
@@ -3782,7 +3768,7 @@ namespace Google.Cloud.DataLabeling.V1Beta1.Snippets
             // End snippet
         }
 
-        /// <summary>Snippet for ListInstructions</summary>
+        /// <summary>Snippet for ListInstructionsAsync</summary>
         public async Task ListInstructionsResourceNamesAsync()
         {
             // Snippet: ListInstructionsAsync(ProjectName, string, string, int?, CallSettings)
@@ -4051,7 +4037,7 @@ namespace Google.Cloud.DataLabeling.V1Beta1.Snippets
             // End snippet
         }
 
-        /// <summary>Snippet for SearchEvaluations</summary>
+        /// <summary>Snippet for SearchEvaluationsAsync</summary>
         public async Task SearchEvaluationsRequestObjectAsync()
         {
             // Snippet: SearchEvaluationsAsync(SearchEvaluationsRequest, CallSettings)
@@ -4146,7 +4132,7 @@ namespace Google.Cloud.DataLabeling.V1Beta1.Snippets
             // End snippet
         }
 
-        /// <summary>Snippet for SearchEvaluations</summary>
+        /// <summary>Snippet for SearchEvaluationsAsync</summary>
         public async Task SearchEvaluationsAsync()
         {
             // Snippet: SearchEvaluationsAsync(string, string, string, int?, CallSettings)
@@ -4238,7 +4224,7 @@ namespace Google.Cloud.DataLabeling.V1Beta1.Snippets
             // End snippet
         }
 
-        /// <summary>Snippet for SearchEvaluations</summary>
+        /// <summary>Snippet for SearchEvaluationsAsync</summary>
         public async Task SearchEvaluationsResourceNamesAsync()
         {
             // Snippet: SearchEvaluationsAsync(EvaluationName, string, string, int?, CallSettings)
@@ -4332,7 +4318,7 @@ namespace Google.Cloud.DataLabeling.V1Beta1.Snippets
             // End snippet
         }
 
-        /// <summary>Snippet for SearchExampleComparisons</summary>
+        /// <summary>Snippet for SearchExampleComparisonsAsync</summary>
         public async Task SearchExampleComparisonsRequestObjectAsync()
         {
             // Snippet: SearchExampleComparisonsAsync(SearchExampleComparisonsRequest, CallSettings)
@@ -4425,7 +4411,7 @@ namespace Google.Cloud.DataLabeling.V1Beta1.Snippets
             // End snippet
         }
 
-        /// <summary>Snippet for SearchExampleComparisons</summary>
+        /// <summary>Snippet for SearchExampleComparisonsAsync</summary>
         public async Task SearchExampleComparisonsAsync()
         {
             // Snippet: SearchExampleComparisonsAsync(string, string, int?, CallSettings)
@@ -4515,7 +4501,7 @@ namespace Google.Cloud.DataLabeling.V1Beta1.Snippets
             // End snippet
         }
 
-        /// <summary>Snippet for SearchExampleComparisons</summary>
+        /// <summary>Snippet for SearchExampleComparisonsAsync</summary>
         public async Task SearchExampleComparisonsResourceNamesAsync()
         {
             // Snippet: SearchExampleComparisonsAsync(EvaluationName, string, int?, CallSettings)
@@ -5114,7 +5100,7 @@ namespace Google.Cloud.DataLabeling.V1Beta1.Snippets
             // End snippet
         }
 
-        /// <summary>Snippet for ListEvaluationJobs</summary>
+        /// <summary>Snippet for ListEvaluationJobsAsync</summary>
         public async Task ListEvaluationJobsRequestObjectAsync()
         {
             // Snippet: ListEvaluationJobsAsync(ListEvaluationJobsRequest, CallSettings)
@@ -5209,7 +5195,7 @@ namespace Google.Cloud.DataLabeling.V1Beta1.Snippets
             // End snippet
         }
 
-        /// <summary>Snippet for ListEvaluationJobs</summary>
+        /// <summary>Snippet for ListEvaluationJobsAsync</summary>
         public async Task ListEvaluationJobsAsync()
         {
             // Snippet: ListEvaluationJobsAsync(string, string, string, int?, CallSettings)
@@ -5301,7 +5287,7 @@ namespace Google.Cloud.DataLabeling.V1Beta1.Snippets
             // End snippet
         }
 
-        /// <summary>Snippet for ListEvaluationJobs</summary>
+        /// <summary>Snippet for ListEvaluationJobsAsync</summary>
         public async Task ListEvaluationJobsResourceNamesAsync()
         {
             // Snippet: ListEvaluationJobsAsync(ProjectName, string, string, int?, CallSettings)

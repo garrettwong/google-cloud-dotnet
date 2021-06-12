@@ -1,4 +1,4 @@
-// Copyright 2020 Google LLC
+// Copyright 2021 Google LLC
 //
 // Licensed under the Apache License, Version 2.0 (the "License");
 // you may not use this file except in compliance with the License.
@@ -76,7 +76,7 @@ namespace Google.Cloud.Dialogflow.V2.Snippets
             // End snippet
         }
 
-        /// <summary>Snippet for ListEntityTypes</summary>
+        /// <summary>Snippet for ListEntityTypesAsync</summary>
         public async Task ListEntityTypesRequestObjectAsync()
         {
             // Snippet: ListEntityTypesAsync(ListEntityTypesRequest, CallSettings)
@@ -170,7 +170,7 @@ namespace Google.Cloud.Dialogflow.V2.Snippets
             // End snippet
         }
 
-        /// <summary>Snippet for ListEntityTypes</summary>
+        /// <summary>Snippet for ListEntityTypesAsync</summary>
         public async Task ListEntityTypes1Async()
         {
             // Snippet: ListEntityTypesAsync(string, string, int?, CallSettings)
@@ -260,7 +260,7 @@ namespace Google.Cloud.Dialogflow.V2.Snippets
             // End snippet
         }
 
-        /// <summary>Snippet for ListEntityTypes</summary>
+        /// <summary>Snippet for ListEntityTypesAsync</summary>
         public async Task ListEntityTypes1ResourceNamesAsync()
         {
             // Snippet: ListEntityTypesAsync(AgentName, string, int?, CallSettings)
@@ -351,7 +351,7 @@ namespace Google.Cloud.Dialogflow.V2.Snippets
             // End snippet
         }
 
-        /// <summary>Snippet for ListEntityTypes</summary>
+        /// <summary>Snippet for ListEntityTypesAsync</summary>
         public async Task ListEntityTypes2Async()
         {
             // Snippet: ListEntityTypesAsync(string, string, string, int?, CallSettings)
@@ -443,7 +443,7 @@ namespace Google.Cloud.Dialogflow.V2.Snippets
             // End snippet
         }
 
-        /// <summary>Snippet for ListEntityTypes</summary>
+        /// <summary>Snippet for ListEntityTypesAsync</summary>
         public async Task ListEntityTypes2ResourceNamesAsync()
         {
             // Snippet: ListEntityTypesAsync(AgentName, string, string, int?, CallSettings)
@@ -984,7 +984,6 @@ namespace Google.Cloud.Dialogflow.V2.Snippets
             {
                 ParentAsAgentName = AgentName.FromProject("[PROJECT]"),
                 EntityTypeBatchUri = "",
-                EntityTypeBatchInline = new EntityTypeBatch(),
                 LanguageCode = "",
                 UpdateMask = new FieldMask(),
             };
@@ -1021,7 +1020,6 @@ namespace Google.Cloud.Dialogflow.V2.Snippets
             {
                 ParentAsAgentName = AgentName.FromProject("[PROJECT]"),
                 EntityTypeBatchUri = "",
-                EntityTypeBatchInline = new EntityTypeBatch(),
                 LanguageCode = "",
                 UpdateMask = new FieldMask(),
             };

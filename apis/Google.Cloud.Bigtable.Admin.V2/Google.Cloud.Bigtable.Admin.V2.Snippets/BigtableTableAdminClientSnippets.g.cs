@@ -1,4 +1,4 @@
-// Copyright 2020 Google LLC
+// Copyright 2021 Google LLC
 //
 // Licensed under the Apache License, Version 2.0 (the "License");
 // you may not use this file except in compliance with the License.
@@ -381,7 +381,7 @@ namespace Google.Cloud.Bigtable.Admin.V2.Snippets
             // End snippet
         }
 
-        /// <summary>Snippet for ListTables</summary>
+        /// <summary>Snippet for ListTablesAsync</summary>
         public async Task ListTablesRequestObjectAsync()
         {
             // Snippet: ListTablesAsync(ListTablesRequest, CallSettings)
@@ -475,7 +475,7 @@ namespace Google.Cloud.Bigtable.Admin.V2.Snippets
             // End snippet
         }
 
-        /// <summary>Snippet for ListTables</summary>
+        /// <summary>Snippet for ListTablesAsync</summary>
         public async Task ListTablesAsync()
         {
             // Snippet: ListTablesAsync(string, string, int?, CallSettings)
@@ -565,7 +565,7 @@ namespace Google.Cloud.Bigtable.Admin.V2.Snippets
             // End snippet
         }
 
-        /// <summary>Snippet for ListTables</summary>
+        /// <summary>Snippet for ListTablesAsync</summary>
         public async Task ListTablesResourceNamesAsync()
         {
             // Snippet: ListTablesAsync(InstanceName, string, int?, CallSettings)
@@ -908,7 +908,6 @@ namespace Google.Cloud.Bigtable.Admin.V2.Snippets
             {
                 TableName = TableName.FromProjectInstanceTable("[PROJECT]", "[INSTANCE]", "[TABLE]"),
                 RowKeyPrefix = ByteString.Empty,
-                DeleteAllDataFromTable = false,
             };
             // Make the request
             bigtableTableAdminClient.DropRowRange(request);
@@ -927,7 +926,6 @@ namespace Google.Cloud.Bigtable.Admin.V2.Snippets
             {
                 TableName = TableName.FromProjectInstanceTable("[PROJECT]", "[INSTANCE]", "[TABLE]"),
                 RowKeyPrefix = ByteString.Empty,
-                DeleteAllDataFromTable = false,
             };
             // Make the request
             await bigtableTableAdminClient.DropRowRangeAsync(request);
@@ -1452,7 +1450,7 @@ namespace Google.Cloud.Bigtable.Admin.V2.Snippets
             // End snippet
         }
 
-        /// <summary>Snippet for ListSnapshots</summary>
+        /// <summary>Snippet for ListSnapshotsAsync</summary>
         public async Task ListSnapshotsRequestObjectAsync()
         {
             // Snippet: ListSnapshotsAsync(ListSnapshotsRequest, CallSettings)
@@ -1545,7 +1543,7 @@ namespace Google.Cloud.Bigtable.Admin.V2.Snippets
             // End snippet
         }
 
-        /// <summary>Snippet for ListSnapshots</summary>
+        /// <summary>Snippet for ListSnapshotsAsync</summary>
         public async Task ListSnapshotsAsync()
         {
             // Snippet: ListSnapshotsAsync(string, string, int?, CallSettings)
@@ -1635,7 +1633,7 @@ namespace Google.Cloud.Bigtable.Admin.V2.Snippets
             // End snippet
         }
 
-        /// <summary>Snippet for ListSnapshots</summary>
+        /// <summary>Snippet for ListSnapshotsAsync</summary>
         public async Task ListSnapshotsResourceNamesAsync()
         {
             // Snippet: ListSnapshotsAsync(ClusterName, string, int?, CallSettings)
@@ -2250,7 +2248,7 @@ namespace Google.Cloud.Bigtable.Admin.V2.Snippets
             // End snippet
         }
 
-        /// <summary>Snippet for ListBackups</summary>
+        /// <summary>Snippet for ListBackupsAsync</summary>
         public async Task ListBackupsRequestObjectAsync()
         {
             // Snippet: ListBackupsAsync(ListBackupsRequest, CallSettings)
@@ -2345,7 +2343,7 @@ namespace Google.Cloud.Bigtable.Admin.V2.Snippets
             // End snippet
         }
 
-        /// <summary>Snippet for ListBackups</summary>
+        /// <summary>Snippet for ListBackupsAsync</summary>
         public async Task ListBackupsAsync()
         {
             // Snippet: ListBackupsAsync(string, string, int?, CallSettings)
@@ -2435,7 +2433,7 @@ namespace Google.Cloud.Bigtable.Admin.V2.Snippets
             // End snippet
         }
 
-        /// <summary>Snippet for ListBackups</summary>
+        /// <summary>Snippet for ListBackupsAsync</summary>
         public async Task ListBackupsResourceNamesAsync()
         {
             // Snippet: ListBackupsAsync(ClusterName, string, int?, CallSettings)

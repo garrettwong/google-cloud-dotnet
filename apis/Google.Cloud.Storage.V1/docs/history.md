@@ -1,5 +1,15 @@
 # Version history
 
+# Version 3.5.0, released 2021-05-26
+
+No API surface changes; just dependency updates.
+
+# Version 3.4.0, released 2021-01-18
+
+- [Commit 421ad3f](https://github.com/googleapis/google-cloud-dotnet/commit/421ad3f): Update Google.Apis.Storage.v1 dependency.
+
+(No API changes from 3.4.0-beta01.)
+
 # Version 3.4.0-beta01, released 2020-09-30
 
 - [Commit 572976f](https://github.com/googleapis/google-cloud-dotnet/commit/572976f): Update Google.Apis.Storage.v1 dependency.

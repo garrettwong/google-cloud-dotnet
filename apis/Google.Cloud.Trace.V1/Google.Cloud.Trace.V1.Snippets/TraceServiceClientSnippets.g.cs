@@ -1,4 +1,4 @@
-// Copyright 2020 Google LLC
+// Copyright 2021 Google LLC
 //
 // Licensed under the Apache License, Version 2.0 (the "License");
 // you may not use this file except in compliance with the License.
@@ -78,7 +78,7 @@ namespace Google.Cloud.Trace.V1.Snippets
             // End snippet
         }
 
-        /// <summary>Snippet for ListTraces</summary>
+        /// <summary>Snippet for ListTracesAsync</summary>
         public async Task ListTracesRequestObjectAsync()
         {
             // Snippet: ListTracesAsync(ListTracesRequest, CallSettings)
@@ -176,7 +176,7 @@ namespace Google.Cloud.Trace.V1.Snippets
             // End snippet
         }
 
-        /// <summary>Snippet for ListTraces</summary>
+        /// <summary>Snippet for ListTracesAsync</summary>
         public async Task ListTracesAsync()
         {
             // Snippet: ListTracesAsync(string, string, int?, CallSettings)

@@ -99,6 +99,40 @@ namespace Google.Cloud.Logging.NLog
         public Layout LogId { get; set; } = "Default";
 
         /// <summary>
+        /// Trace ID of the trace associated to the Log Entry.
+        /// </summary>
+        /// <remarks>
+        /// See https://cloud.google.com/logging/docs/reference/v2/rpc/google.logging.v2#logentry
+        /// for more information. Note that this property, when rendered, should only return the
+        /// actual trace ID, not including the resource path, ex: '06796866738c859f2f19b7cfb3214824'.
+        /// </remarks>
+        public Layout TraceId { get; set; }
+
+        /// <summary>
+        /// The span ID within the trace associated with the log entry.
+        /// </summary>
+        /// <remarks>
+        /// See https://cloud.google.com/logging/docs/reference/v2/rpc/google.logging.v2#logentry
+        /// for more information. Note that the Trace API v2 uses a 16-character hexadecimal
+        /// encoding of an 8-byte array, ex: `000000000000004a`
+        /// </remarks>
+        public Layout SpanId { get; set; }
+
+        /// <summary>
+        /// The sampling decision of the trace associated with the log entry.
+        /// true means that the trace identified by <see cref="TraceId"/> was sampled for storage in a trace backend.
+        /// false means that the trace was not sampled for storage when this log entry was written,
+        /// or the sampling decision was unknown at the time.
+        /// A non-sampled trace value is still useful as a request correlation identifier. The default is false.
+        /// </summary>
+        /// <remarks>
+        /// See https://cloud.google.com/logging/docs/reference/v2/rpc/google.logging.v2#logentry
+        /// for more information. Note that, when rendered, this may return "true" (case insentive) or 1 to
+        /// indicate a true value for <see cref="LogEntry.TraceSampled"/>. Else, false will be set.
+        /// </remarks>
+        public Layout TraceSampled { get; set; }
+
+        /// <summary>
         /// Specify labels for the resource type;
         /// only used if platform detection is disabled or detects an unknown platform.
         /// </summary>
@@ -117,10 +151,17 @@ namespace Google.Cloud.Logging.NLog
 
         /// <summary>
         /// Fills <see cref="LogEntry.JsonPayload"/> instead of <see cref="LogEntry.TextPayload"/>.
-        /// JSON serialization can be customed using <see cref="JsonConverterTypeName"/> and <see cref="JsonConverterMethodName"/>,
+        /// JSON values serialization can be customized using <see cref="JsonConverterTypeName"/> and <see cref="JsonConverterMethodName"/>,
         /// or <see cref="JsonConverter"/>.
         /// </summary>
         public bool SendJsonPayload { get; set; }
+
+        /// <summary>
+        /// Fills <see cref="LogEntry.JsonPayload"/> in specified by user way with <see cref="T:NLog.Layouts.JsonLayout"/> layout type.
+        /// JSON values serialization can be customized using <see cref="JsonConverterTypeName"/> and <see cref="JsonConverterMethodName"/>,
+        /// or <see cref="JsonConverter"/>.
+        /// </summary>
+        public bool EnableJsonLayout { get; set; }
 
         /// <summary>
         /// When <see cref="SendJsonPayload"/> is <c>true</c>, a custom JSON serialization method may be specified by

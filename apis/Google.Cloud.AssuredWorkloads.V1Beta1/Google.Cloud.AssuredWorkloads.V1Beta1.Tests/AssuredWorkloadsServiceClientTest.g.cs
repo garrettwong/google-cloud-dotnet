@@ -1,4 +1,4 @@
-// Copyright 2020 Google LLC
+// Copyright 2021 Google LLC
 //
 // Licensed under the Apache License, Version 2.0 (the "License");
 // you may not use this file except in compliance with the License.
@@ -46,7 +46,7 @@ namespace Google.Cloud.AssuredWorkloads.V1Beta1.Tests
                 {
                     new Workload.Types.ResourceInfo(),
                 },
-                ComplianceRegime = Workload.Types.ComplianceRegime.FedrampHigh,
+                ComplianceRegime = Workload.Types.ComplianceRegime.Il4,
                 CreateTime = new wkt::Timestamp(),
                 BillingAccount = "billing_account2062abb6",
 #pragma warning disable CS0612
@@ -67,6 +67,10 @@ namespace Google.Cloud.AssuredWorkloads.V1Beta1.Tests
 #pragma warning restore CS0612
                 ProvisionedResourcesParent = "provisioned_resources_parent4d000dc9",
                 KmsSettings = new Workload.Types.KMSSettings(),
+                ResourceSettings =
+                {
+                    new Workload.Types.ResourceSettings(),
+                },
             };
             mockGrpcClient.Setup(x => x.UpdateWorkload(request, moq::It.IsAny<grpccore::CallOptions>())).Returns(expectedResponse);
             AssuredWorkloadsServiceClient client = new AssuredWorkloadsServiceClientImpl(mockGrpcClient.Object, null);
@@ -93,7 +97,7 @@ namespace Google.Cloud.AssuredWorkloads.V1Beta1.Tests
                 {
                     new Workload.Types.ResourceInfo(),
                 },
-                ComplianceRegime = Workload.Types.ComplianceRegime.FedrampHigh,
+                ComplianceRegime = Workload.Types.ComplianceRegime.Il4,
                 CreateTime = new wkt::Timestamp(),
                 BillingAccount = "billing_account2062abb6",
 #pragma warning disable CS0612
@@ -114,6 +118,10 @@ namespace Google.Cloud.AssuredWorkloads.V1Beta1.Tests
 #pragma warning restore CS0612
                 ProvisionedResourcesParent = "provisioned_resources_parent4d000dc9",
                 KmsSettings = new Workload.Types.KMSSettings(),
+                ResourceSettings =
+                {
+                    new Workload.Types.ResourceSettings(),
+                },
             };
             mockGrpcClient.Setup(x => x.UpdateWorkloadAsync(request, moq::It.IsAny<grpccore::CallOptions>())).Returns(new grpccore::AsyncUnaryCall<Workload>(stt::Task.FromResult(expectedResponse), null, null, null, null));
             AssuredWorkloadsServiceClient client = new AssuredWorkloadsServiceClientImpl(mockGrpcClient.Object, null);
@@ -142,7 +150,7 @@ namespace Google.Cloud.AssuredWorkloads.V1Beta1.Tests
                 {
                     new Workload.Types.ResourceInfo(),
                 },
-                ComplianceRegime = Workload.Types.ComplianceRegime.FedrampHigh,
+                ComplianceRegime = Workload.Types.ComplianceRegime.Il4,
                 CreateTime = new wkt::Timestamp(),
                 BillingAccount = "billing_account2062abb6",
 #pragma warning disable CS0612
@@ -163,6 +171,10 @@ namespace Google.Cloud.AssuredWorkloads.V1Beta1.Tests
 #pragma warning restore CS0612
                 ProvisionedResourcesParent = "provisioned_resources_parent4d000dc9",
                 KmsSettings = new Workload.Types.KMSSettings(),
+                ResourceSettings =
+                {
+                    new Workload.Types.ResourceSettings(),
+                },
             };
             mockGrpcClient.Setup(x => x.UpdateWorkload(request, moq::It.IsAny<grpccore::CallOptions>())).Returns(expectedResponse);
             AssuredWorkloadsServiceClient client = new AssuredWorkloadsServiceClientImpl(mockGrpcClient.Object, null);
@@ -189,7 +201,7 @@ namespace Google.Cloud.AssuredWorkloads.V1Beta1.Tests
                 {
                     new Workload.Types.ResourceInfo(),
                 },
-                ComplianceRegime = Workload.Types.ComplianceRegime.FedrampHigh,
+                ComplianceRegime = Workload.Types.ComplianceRegime.Il4,
                 CreateTime = new wkt::Timestamp(),
                 BillingAccount = "billing_account2062abb6",
 #pragma warning disable CS0612
@@ -210,6 +222,10 @@ namespace Google.Cloud.AssuredWorkloads.V1Beta1.Tests
 #pragma warning restore CS0612
                 ProvisionedResourcesParent = "provisioned_resources_parent4d000dc9",
                 KmsSettings = new Workload.Types.KMSSettings(),
+                ResourceSettings =
+                {
+                    new Workload.Types.ResourceSettings(),
+                },
             };
             mockGrpcClient.Setup(x => x.UpdateWorkloadAsync(request, moq::It.IsAny<grpccore::CallOptions>())).Returns(new grpccore::AsyncUnaryCall<Workload>(stt::Task.FromResult(expectedResponse), null, null, null, null));
             AssuredWorkloadsServiceClient client = new AssuredWorkloadsServiceClientImpl(mockGrpcClient.Object, null);
@@ -338,7 +354,7 @@ namespace Google.Cloud.AssuredWorkloads.V1Beta1.Tests
                 {
                     new Workload.Types.ResourceInfo(),
                 },
-                ComplianceRegime = Workload.Types.ComplianceRegime.FedrampHigh,
+                ComplianceRegime = Workload.Types.ComplianceRegime.Il4,
                 CreateTime = new wkt::Timestamp(),
                 BillingAccount = "billing_account2062abb6",
 #pragma warning disable CS0612
@@ -359,6 +375,10 @@ namespace Google.Cloud.AssuredWorkloads.V1Beta1.Tests
 #pragma warning restore CS0612
                 ProvisionedResourcesParent = "provisioned_resources_parent4d000dc9",
                 KmsSettings = new Workload.Types.KMSSettings(),
+                ResourceSettings =
+                {
+                    new Workload.Types.ResourceSettings(),
+                },
             };
             mockGrpcClient.Setup(x => x.GetWorkload(request, moq::It.IsAny<grpccore::CallOptions>())).Returns(expectedResponse);
             AssuredWorkloadsServiceClient client = new AssuredWorkloadsServiceClientImpl(mockGrpcClient.Object, null);
@@ -384,7 +404,7 @@ namespace Google.Cloud.AssuredWorkloads.V1Beta1.Tests
                 {
                     new Workload.Types.ResourceInfo(),
                 },
-                ComplianceRegime = Workload.Types.ComplianceRegime.FedrampHigh,
+                ComplianceRegime = Workload.Types.ComplianceRegime.Il4,
                 CreateTime = new wkt::Timestamp(),
                 BillingAccount = "billing_account2062abb6",
 #pragma warning disable CS0612
@@ -405,6 +425,10 @@ namespace Google.Cloud.AssuredWorkloads.V1Beta1.Tests
 #pragma warning restore CS0612
                 ProvisionedResourcesParent = "provisioned_resources_parent4d000dc9",
                 KmsSettings = new Workload.Types.KMSSettings(),
+                ResourceSettings =
+                {
+                    new Workload.Types.ResourceSettings(),
+                },
             };
             mockGrpcClient.Setup(x => x.GetWorkloadAsync(request, moq::It.IsAny<grpccore::CallOptions>())).Returns(new grpccore::AsyncUnaryCall<Workload>(stt::Task.FromResult(expectedResponse), null, null, null, null));
             AssuredWorkloadsServiceClient client = new AssuredWorkloadsServiceClientImpl(mockGrpcClient.Object, null);
@@ -432,7 +456,7 @@ namespace Google.Cloud.AssuredWorkloads.V1Beta1.Tests
                 {
                     new Workload.Types.ResourceInfo(),
                 },
-                ComplianceRegime = Workload.Types.ComplianceRegime.FedrampHigh,
+                ComplianceRegime = Workload.Types.ComplianceRegime.Il4,
                 CreateTime = new wkt::Timestamp(),
                 BillingAccount = "billing_account2062abb6",
 #pragma warning disable CS0612
@@ -453,6 +477,10 @@ namespace Google.Cloud.AssuredWorkloads.V1Beta1.Tests
 #pragma warning restore CS0612
                 ProvisionedResourcesParent = "provisioned_resources_parent4d000dc9",
                 KmsSettings = new Workload.Types.KMSSettings(),
+                ResourceSettings =
+                {
+                    new Workload.Types.ResourceSettings(),
+                },
             };
             mockGrpcClient.Setup(x => x.GetWorkload(request, moq::It.IsAny<grpccore::CallOptions>())).Returns(expectedResponse);
             AssuredWorkloadsServiceClient client = new AssuredWorkloadsServiceClientImpl(mockGrpcClient.Object, null);
@@ -478,7 +506,7 @@ namespace Google.Cloud.AssuredWorkloads.V1Beta1.Tests
                 {
                     new Workload.Types.ResourceInfo(),
                 },
-                ComplianceRegime = Workload.Types.ComplianceRegime.FedrampHigh,
+                ComplianceRegime = Workload.Types.ComplianceRegime.Il4,
                 CreateTime = new wkt::Timestamp(),
                 BillingAccount = "billing_account2062abb6",
 #pragma warning disable CS0612
@@ -499,6 +527,10 @@ namespace Google.Cloud.AssuredWorkloads.V1Beta1.Tests
 #pragma warning restore CS0612
                 ProvisionedResourcesParent = "provisioned_resources_parent4d000dc9",
                 KmsSettings = new Workload.Types.KMSSettings(),
+                ResourceSettings =
+                {
+                    new Workload.Types.ResourceSettings(),
+                },
             };
             mockGrpcClient.Setup(x => x.GetWorkloadAsync(request, moq::It.IsAny<grpccore::CallOptions>())).Returns(new grpccore::AsyncUnaryCall<Workload>(stt::Task.FromResult(expectedResponse), null, null, null, null));
             AssuredWorkloadsServiceClient client = new AssuredWorkloadsServiceClientImpl(mockGrpcClient.Object, null);
@@ -526,7 +558,7 @@ namespace Google.Cloud.AssuredWorkloads.V1Beta1.Tests
                 {
                     new Workload.Types.ResourceInfo(),
                 },
-                ComplianceRegime = Workload.Types.ComplianceRegime.FedrampHigh,
+                ComplianceRegime = Workload.Types.ComplianceRegime.Il4,
                 CreateTime = new wkt::Timestamp(),
                 BillingAccount = "billing_account2062abb6",
 #pragma warning disable CS0612
@@ -547,6 +579,10 @@ namespace Google.Cloud.AssuredWorkloads.V1Beta1.Tests
 #pragma warning restore CS0612
                 ProvisionedResourcesParent = "provisioned_resources_parent4d000dc9",
                 KmsSettings = new Workload.Types.KMSSettings(),
+                ResourceSettings =
+                {
+                    new Workload.Types.ResourceSettings(),
+                },
             };
             mockGrpcClient.Setup(x => x.GetWorkload(request, moq::It.IsAny<grpccore::CallOptions>())).Returns(expectedResponse);
             AssuredWorkloadsServiceClient client = new AssuredWorkloadsServiceClientImpl(mockGrpcClient.Object, null);
@@ -572,7 +608,7 @@ namespace Google.Cloud.AssuredWorkloads.V1Beta1.Tests
                 {
                     new Workload.Types.ResourceInfo(),
                 },
-                ComplianceRegime = Workload.Types.ComplianceRegime.FedrampHigh,
+                ComplianceRegime = Workload.Types.ComplianceRegime.Il4,
                 CreateTime = new wkt::Timestamp(),
                 BillingAccount = "billing_account2062abb6",
 #pragma warning disable CS0612
@@ -593,6 +629,10 @@ namespace Google.Cloud.AssuredWorkloads.V1Beta1.Tests
 #pragma warning restore CS0612
                 ProvisionedResourcesParent = "provisioned_resources_parent4d000dc9",
                 KmsSettings = new Workload.Types.KMSSettings(),
+                ResourceSettings =
+                {
+                    new Workload.Types.ResourceSettings(),
+                },
             };
             mockGrpcClient.Setup(x => x.GetWorkloadAsync(request, moq::It.IsAny<grpccore::CallOptions>())).Returns(new grpccore::AsyncUnaryCall<Workload>(stt::Task.FromResult(expectedResponse), null, null, null, null));
             AssuredWorkloadsServiceClient client = new AssuredWorkloadsServiceClientImpl(mockGrpcClient.Object, null);

@@ -1,4 +1,4 @@
-// Copyright 2020 Google LLC
+// Copyright 2021 Google LLC
 //
 // Licensed under the Apache License, Version 2.0 (the "License");
 // you may not use this file except in compliance with the License.
@@ -154,6 +154,42 @@ namespace Google.Cloud.Spanner.Admin.Database.V1
         {
             get => string.IsNullOrEmpty(Backup) ? null : BackupName.Parse(Backup, allowUnparsed: true);
             set => Backup = value?.ToString() ?? "";
+        }
+    }
+
+    public partial class RestoreDatabaseEncryptionConfig
+    {
+        /// <summary>
+        /// <see cref="CryptoKeyName"/>-typed view over the <see cref="KmsKeyName"/> resource name property.
+        /// </summary>
+        public CryptoKeyName KmsKeyNameAsCryptoKeyName
+        {
+            get => string.IsNullOrEmpty(KmsKeyName) ? null : CryptoKeyName.Parse(KmsKeyName, allowUnparsed: true);
+            set => KmsKeyName = value?.ToString() ?? "";
+        }
+    }
+
+    public partial class RestoreDatabaseMetadata
+    {
+        /// <summary>
+        /// <see cref="gcscv::DatabaseName"/>-typed view over the <see cref="Name"/> resource name property.
+        /// </summary>
+        public gcscv::DatabaseName DatabaseName
+        {
+            get => string.IsNullOrEmpty(Name) ? null : gcscv::DatabaseName.Parse(Name, allowUnparsed: true);
+            set => Name = value?.ToString() ?? "";
+        }
+    }
+
+    public partial class OptimizeRestoredDatabaseMetadata
+    {
+        /// <summary>
+        /// <see cref="gcscv::DatabaseName"/>-typed view over the <see cref="Name"/> resource name property.
+        /// </summary>
+        public gcscv::DatabaseName DatabaseName
+        {
+            get => string.IsNullOrEmpty(Name) ? null : gcscv::DatabaseName.Parse(Name, allowUnparsed: true);
+            set => Name = value?.ToString() ?? "";
         }
     }
 }

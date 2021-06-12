@@ -1,4 +1,4 @@
-// Copyright 2020 Google LLC
+// Copyright 2021 Google LLC
 //
 // Licensed under the Apache License, Version 2.0 (the "License");
 // you may not use this file except in compliance with the License.
@@ -867,7 +867,7 @@ namespace Google.Cloud.SecurityCenter.V1.Snippets
             // End snippet
         }
 
-        /// <summary>Snippet for GroupAssets</summary>
+        /// <summary>Snippet for GroupAssetsAsync</summary>
         public async Task GroupAssetsRequestObjectAsync()
         {
             // Snippet: GroupAssetsAsync(GroupAssetsRequest, CallSettings)
@@ -971,7 +971,7 @@ namespace Google.Cloud.SecurityCenter.V1.Snippets
             // End snippet
         }
 
-        /// <summary>Snippet for GroupFindings</summary>
+        /// <summary>Snippet for GroupFindingsAsync</summary>
         public async Task GroupFindingsRequestObjectAsync()
         {
             // Snippet: GroupFindingsAsync(GroupFindingsRequest, CallSettings)
@@ -1069,7 +1069,7 @@ namespace Google.Cloud.SecurityCenter.V1.Snippets
             // End snippet
         }
 
-        /// <summary>Snippet for GroupFindings</summary>
+        /// <summary>Snippet for GroupFindingsAsync</summary>
         public async Task GroupFindingsAsync()
         {
             // Snippet: GroupFindingsAsync(string, string, string, int?, CallSettings)
@@ -1161,7 +1161,7 @@ namespace Google.Cloud.SecurityCenter.V1.Snippets
             // End snippet
         }
 
-        /// <summary>Snippet for GroupFindings</summary>
+        /// <summary>Snippet for GroupFindingsAsync</summary>
         public async Task GroupFindingsResourceNamesAsync()
         {
             // Snippet: GroupFindingsAsync(SourceName, string, string, int?, CallSettings)
@@ -1260,7 +1260,7 @@ namespace Google.Cloud.SecurityCenter.V1.Snippets
             // End snippet
         }
 
-        /// <summary>Snippet for ListAssets</summary>
+        /// <summary>Snippet for ListAssetsAsync</summary>
         public async Task ListAssetsRequestObjectAsync()
         {
             // Snippet: ListAssetsAsync(ListAssetsRequest, CallSettings)
@@ -1366,7 +1366,7 @@ namespace Google.Cloud.SecurityCenter.V1.Snippets
             // End snippet
         }
 
-        /// <summary>Snippet for ListFindings</summary>
+        /// <summary>Snippet for ListFindingsAsync</summary>
         public async Task ListFindingsRequestObjectAsync()
         {
             // Snippet: ListFindingsAsync(ListFindingsRequest, CallSettings)
@@ -1467,7 +1467,7 @@ namespace Google.Cloud.SecurityCenter.V1.Snippets
             // End snippet
         }
 
-        /// <summary>Snippet for ListNotificationConfigs</summary>
+        /// <summary>Snippet for ListNotificationConfigsAsync</summary>
         public async Task ListNotificationConfigsRequestObjectAsync()
         {
             // Snippet: ListNotificationConfigsAsync(ListNotificationConfigsRequest, CallSettings)
@@ -1560,7 +1560,7 @@ namespace Google.Cloud.SecurityCenter.V1.Snippets
             // End snippet
         }
 
-        /// <summary>Snippet for ListNotificationConfigs</summary>
+        /// <summary>Snippet for ListNotificationConfigsAsync</summary>
         public async Task ListNotificationConfigsAsync()
         {
             // Snippet: ListNotificationConfigsAsync(string, string, int?, CallSettings)
@@ -1650,7 +1650,7 @@ namespace Google.Cloud.SecurityCenter.V1.Snippets
             // End snippet
         }
 
-        /// <summary>Snippet for ListNotificationConfigs</summary>
+        /// <summary>Snippet for ListNotificationConfigsAsync</summary>
         public async Task ListNotificationConfigsResourceNamesAsync()
         {
             // Snippet: ListNotificationConfigsAsync(OrganizationName, string, int?, CallSettings)
@@ -1743,7 +1743,7 @@ namespace Google.Cloud.SecurityCenter.V1.Snippets
             // End snippet
         }
 
-        /// <summary>Snippet for ListSources</summary>
+        /// <summary>Snippet for ListSourcesAsync</summary>
         public async Task ListSourcesRequestObjectAsync()
         {
             // Snippet: ListSourcesAsync(ListSourcesRequest, CallSettings)
@@ -1836,7 +1836,7 @@ namespace Google.Cloud.SecurityCenter.V1.Snippets
             // End snippet
         }
 
-        /// <summary>Snippet for ListSources</summary>
+        /// <summary>Snippet for ListSourcesAsync</summary>
         public async Task ListSourcesAsync()
         {
             // Snippet: ListSourcesAsync(string, string, int?, CallSettings)
@@ -1882,7 +1882,7 @@ namespace Google.Cloud.SecurityCenter.V1.Snippets
         }
 
         /// <summary>Snippet for ListSources</summary>
-        public void ListSourcesResourceNames()
+        public void ListSourcesResourceNames1()
         {
             // Snippet: ListSources(OrganizationName, string, int?, CallSettings)
             // Create client
@@ -1926,14 +1926,194 @@ namespace Google.Cloud.SecurityCenter.V1.Snippets
             // End snippet
         }
 
-        /// <summary>Snippet for ListSources</summary>
-        public async Task ListSourcesResourceNamesAsync()
+        /// <summary>Snippet for ListSourcesAsync</summary>
+        public async Task ListSourcesResourceNames1Async()
         {
             // Snippet: ListSourcesAsync(OrganizationName, string, int?, CallSettings)
             // Create client
             SecurityCenterClient securityCenterClient = await SecurityCenterClient.CreateAsync();
             // Initialize request argument(s)
             OrganizationName parent = OrganizationName.FromOrganization("[ORGANIZATION]");
+            // Make the request
+            PagedAsyncEnumerable<ListSourcesResponse, Source> response = securityCenterClient.ListSourcesAsync(parent);
+
+            // Iterate over all response items, lazily performing RPCs as required
+            await response.ForEachAsync((Source item) =>
+            {
+                // Do something with each item
+                Console.WriteLine(item);
+            });
+
+            // Or iterate over pages (of server-defined size), performing one RPC per page
+            await response.AsRawResponses().ForEachAsync((ListSourcesResponse page) =>
+            {
+                // Do something with each page of items
+                Console.WriteLine("A page of results:");
+                foreach (Source item in page)
+                {
+                    // Do something with each item
+                    Console.WriteLine(item);
+                }
+            });
+
+            // Or retrieve a single page of known size (unless it's the final page), performing as many RPCs as required
+            int pageSize = 10;
+            Page<Source> singlePage = await response.ReadPageAsync(pageSize);
+            // Do something with the page of items
+            Console.WriteLine($"A page of {pageSize} results (unless it's the final page):");
+            foreach (Source item in singlePage)
+            {
+                // Do something with each item
+                Console.WriteLine(item);
+            }
+            // Store the pageToken, for when the next page is required.
+            string nextPageToken = singlePage.NextPageToken;
+            // End snippet
+        }
+
+        /// <summary>Snippet for ListSources</summary>
+        public void ListSourcesResourceNames2()
+        {
+            // Snippet: ListSources(FolderName, string, int?, CallSettings)
+            // Create client
+            SecurityCenterClient securityCenterClient = SecurityCenterClient.Create();
+            // Initialize request argument(s)
+            FolderName parent = FolderName.FromFolder("[FOLDER]");
+            // Make the request
+            PagedEnumerable<ListSourcesResponse, Source> response = securityCenterClient.ListSources(parent);
+
+            // Iterate over all response items, lazily performing RPCs as required
+            foreach (Source item in response)
+            {
+                // Do something with each item
+                Console.WriteLine(item);
+            }
+
+            // Or iterate over pages (of server-defined size), performing one RPC per page
+            foreach (ListSourcesResponse page in response.AsRawResponses())
+            {
+                // Do something with each page of items
+                Console.WriteLine("A page of results:");
+                foreach (Source item in page)
+                {
+                    // Do something with each item
+                    Console.WriteLine(item);
+                }
+            }
+
+            // Or retrieve a single page of known size (unless it's the final page), performing as many RPCs as required
+            int pageSize = 10;
+            Page<Source> singlePage = response.ReadPage(pageSize);
+            // Do something with the page of items
+            Console.WriteLine($"A page of {pageSize} results (unless it's the final page):");
+            foreach (Source item in singlePage)
+            {
+                // Do something with each item
+                Console.WriteLine(item);
+            }
+            // Store the pageToken, for when the next page is required.
+            string nextPageToken = singlePage.NextPageToken;
+            // End snippet
+        }
+
+        /// <summary>Snippet for ListSourcesAsync</summary>
+        public async Task ListSourcesResourceNames2Async()
+        {
+            // Snippet: ListSourcesAsync(FolderName, string, int?, CallSettings)
+            // Create client
+            SecurityCenterClient securityCenterClient = await SecurityCenterClient.CreateAsync();
+            // Initialize request argument(s)
+            FolderName parent = FolderName.FromFolder("[FOLDER]");
+            // Make the request
+            PagedAsyncEnumerable<ListSourcesResponse, Source> response = securityCenterClient.ListSourcesAsync(parent);
+
+            // Iterate over all response items, lazily performing RPCs as required
+            await response.ForEachAsync((Source item) =>
+            {
+                // Do something with each item
+                Console.WriteLine(item);
+            });
+
+            // Or iterate over pages (of server-defined size), performing one RPC per page
+            await response.AsRawResponses().ForEachAsync((ListSourcesResponse page) =>
+            {
+                // Do something with each page of items
+                Console.WriteLine("A page of results:");
+                foreach (Source item in page)
+                {
+                    // Do something with each item
+                    Console.WriteLine(item);
+                }
+            });
+
+            // Or retrieve a single page of known size (unless it's the final page), performing as many RPCs as required
+            int pageSize = 10;
+            Page<Source> singlePage = await response.ReadPageAsync(pageSize);
+            // Do something with the page of items
+            Console.WriteLine($"A page of {pageSize} results (unless it's the final page):");
+            foreach (Source item in singlePage)
+            {
+                // Do something with each item
+                Console.WriteLine(item);
+            }
+            // Store the pageToken, for when the next page is required.
+            string nextPageToken = singlePage.NextPageToken;
+            // End snippet
+        }
+
+        /// <summary>Snippet for ListSources</summary>
+        public void ListSourcesResourceNames3()
+        {
+            // Snippet: ListSources(ProjectName, string, int?, CallSettings)
+            // Create client
+            SecurityCenterClient securityCenterClient = SecurityCenterClient.Create();
+            // Initialize request argument(s)
+            ProjectName parent = ProjectName.FromProject("[PROJECT]");
+            // Make the request
+            PagedEnumerable<ListSourcesResponse, Source> response = securityCenterClient.ListSources(parent);
+
+            // Iterate over all response items, lazily performing RPCs as required
+            foreach (Source item in response)
+            {
+                // Do something with each item
+                Console.WriteLine(item);
+            }
+
+            // Or iterate over pages (of server-defined size), performing one RPC per page
+            foreach (ListSourcesResponse page in response.AsRawResponses())
+            {
+                // Do something with each page of items
+                Console.WriteLine("A page of results:");
+                foreach (Source item in page)
+                {
+                    // Do something with each item
+                    Console.WriteLine(item);
+                }
+            }
+
+            // Or retrieve a single page of known size (unless it's the final page), performing as many RPCs as required
+            int pageSize = 10;
+            Page<Source> singlePage = response.ReadPage(pageSize);
+            // Do something with the page of items
+            Console.WriteLine($"A page of {pageSize} results (unless it's the final page):");
+            foreach (Source item in singlePage)
+            {
+                // Do something with each item
+                Console.WriteLine(item);
+            }
+            // Store the pageToken, for when the next page is required.
+            string nextPageToken = singlePage.NextPageToken;
+            // End snippet
+        }
+
+        /// <summary>Snippet for ListSourcesAsync</summary>
+        public async Task ListSourcesResourceNames3Async()
+        {
+            // Snippet: ListSourcesAsync(ProjectName, string, int?, CallSettings)
+            // Create client
+            SecurityCenterClient securityCenterClient = await SecurityCenterClient.CreateAsync();
+            // Initialize request argument(s)
+            ProjectName parent = ProjectName.FromProject("[PROJECT]");
             // Make the request
             PagedAsyncEnumerable<ListSourcesResponse, Source> response = securityCenterClient.ListSourcesAsync(parent);
 

@@ -1,4 +1,4 @@
-// Copyright 2020 Google LLC
+// Copyright 2021 Google LLC
 //
 // Licensed under the Apache License, Version 2.0 (the "License");
 // you may not use this file except in compliance with the License.
@@ -402,7 +402,7 @@ namespace Google.Cloud.Talent.V4Beta1.Snippets
             // End snippet
         }
 
-        /// <summary>Snippet for ListApplications</summary>
+        /// <summary>Snippet for ListApplicationsAsync</summary>
         public async Task ListApplicationsRequestObjectAsync()
         {
             // Snippet: ListApplicationsAsync(ListApplicationsRequest, CallSettings)
@@ -495,7 +495,7 @@ namespace Google.Cloud.Talent.V4Beta1.Snippets
             // End snippet
         }
 
-        /// <summary>Snippet for ListApplications</summary>
+        /// <summary>Snippet for ListApplicationsAsync</summary>
         public async Task ListApplicationsAsync()
         {
             // Snippet: ListApplicationsAsync(string, string, int?, CallSettings)
@@ -585,7 +585,7 @@ namespace Google.Cloud.Talent.V4Beta1.Snippets
             // End snippet
         }
 
-        /// <summary>Snippet for ListApplications</summary>
+        /// <summary>Snippet for ListApplicationsAsync</summary>
         public async Task ListApplicationsResourceNamesAsync()
         {
             // Snippet: ListApplicationsAsync(ProfileName, string, int?, CallSettings)

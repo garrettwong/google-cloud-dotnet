@@ -1,4 +1,4 @@
-// Copyright 2020 Google LLC
+// Copyright 2021 Google LLC
 //
 // Licensed under the Apache License, Version 2.0 (the "License");
 // you may not use this file except in compliance with the License.
@@ -76,7 +76,7 @@ namespace Google.Cloud.Gaming.V1.Snippets
             // End snippet
         }
 
-        /// <summary>Snippet for ListGameServerClusters</summary>
+        /// <summary>Snippet for ListGameServerClustersAsync</summary>
         public async Task ListGameServerClustersRequestObjectAsync()
         {
             // Snippet: ListGameServerClustersAsync(ListGameServerClustersRequest, CallSettings)
@@ -171,7 +171,7 @@ namespace Google.Cloud.Gaming.V1.Snippets
             // End snippet
         }
 
-        /// <summary>Snippet for ListGameServerClusters</summary>
+        /// <summary>Snippet for ListGameServerClustersAsync</summary>
         public async Task ListGameServerClustersAsync()
         {
             // Snippet: ListGameServerClustersAsync(string, string, int?, CallSettings)
@@ -261,7 +261,7 @@ namespace Google.Cloud.Gaming.V1.Snippets
             // End snippet
         }
 
-        /// <summary>Snippet for ListGameServerClusters</summary>
+        /// <summary>Snippet for ListGameServerClustersAsync</summary>
         public async Task ListGameServerClustersResourceNamesAsync()
         {
             // Snippet: ListGameServerClustersAsync(RealmName, string, int?, CallSettings)

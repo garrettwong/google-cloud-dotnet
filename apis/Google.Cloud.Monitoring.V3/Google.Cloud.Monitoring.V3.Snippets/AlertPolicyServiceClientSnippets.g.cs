@@ -1,4 +1,4 @@
-// Copyright 2020 Google LLC
+// Copyright 2021 Google LLC
 //
 // Licensed under the Apache License, Version 2.0 (the "License");
 // you may not use this file except in compliance with the License.
@@ -76,7 +76,7 @@ namespace Google.Cloud.Monitoring.V3.Snippets
             // End snippet
         }
 
-        /// <summary>Snippet for ListAlertPolicies</summary>
+        /// <summary>Snippet for ListAlertPoliciesAsync</summary>
         public async Task ListAlertPoliciesRequestObjectAsync()
         {
             // Snippet: ListAlertPoliciesAsync(ListAlertPoliciesRequest, CallSettings)
@@ -171,7 +171,7 @@ namespace Google.Cloud.Monitoring.V3.Snippets
             // End snippet
         }
 
-        /// <summary>Snippet for ListAlertPolicies</summary>
+        /// <summary>Snippet for ListAlertPoliciesAsync</summary>
         public async Task ListAlertPoliciesAsync()
         {
             // Snippet: ListAlertPoliciesAsync(string, string, int?, CallSettings)
@@ -261,7 +261,7 @@ namespace Google.Cloud.Monitoring.V3.Snippets
             // End snippet
         }
 
-        /// <summary>Snippet for ListAlertPolicies</summary>
+        /// <summary>Snippet for ListAlertPoliciesAsync</summary>
         public async Task ListAlertPoliciesResourceNames1Async()
         {
             // Snippet: ListAlertPoliciesAsync(ProjectName, string, int?, CallSettings)
@@ -351,7 +351,7 @@ namespace Google.Cloud.Monitoring.V3.Snippets
             // End snippet
         }
 
-        /// <summary>Snippet for ListAlertPolicies</summary>
+        /// <summary>Snippet for ListAlertPoliciesAsync</summary>
         public async Task ListAlertPoliciesResourceNames2Async()
         {
             // Snippet: ListAlertPoliciesAsync(OrganizationName, string, int?, CallSettings)
@@ -441,7 +441,7 @@ namespace Google.Cloud.Monitoring.V3.Snippets
             // End snippet
         }
 
-        /// <summary>Snippet for ListAlertPolicies</summary>
+        /// <summary>Snippet for ListAlertPoliciesAsync</summary>
         public async Task ListAlertPoliciesResourceNames3Async()
         {
             // Snippet: ListAlertPoliciesAsync(FolderName, string, int?, CallSettings)
@@ -531,7 +531,7 @@ namespace Google.Cloud.Monitoring.V3.Snippets
             // End snippet
         }
 
-        /// <summary>Snippet for ListAlertPolicies</summary>
+        /// <summary>Snippet for ListAlertPoliciesAsync</summary>
         public async Task ListAlertPoliciesResourceNames4Async()
         {
             // Snippet: ListAlertPoliciesAsync(IResourceName, string, int?, CallSettings)

@@ -18,15 +18,14 @@ using System.Text.RegularExpressions;
 namespace Google.Cloud.Diagnostics.Common
 {
     /// <summary>
-    /// Context from the Cloud Trace Header.
+    /// Context from the Google Cloud Trace Header.
     /// </summary>
-    /// 
     /// <remarks>
     /// A trace can be forced by passing information along in the trace header ("X-Cloud-Trace-Context").
     /// The trace id, parent span id and whether or not to trace can be set.
     /// See: https://cloud.google.com/trace/docs/faq#how_do_i_force_a_request_to_be_traced
     /// </remarks>
-    public sealed class TraceHeaderContext
+    public sealed class TraceHeaderContext : ITraceContext
     {
         private static readonly TraceIdFactory _traceIdFactory = TraceIdFactory.Create();
 
@@ -41,21 +40,19 @@ namespace Google.Cloud.Diagnostics.Common
         /// A regex to match the trace header. 
         /// - ([A-Fa-f0-9]{32}): The trace id, a 32 character hex value.
         /// - ([0-9]+): The span id, a 64 bit integer.
-        /// - (?:;o=([0-3])): The trace mask, 1-3 denote it should be traced. (The ?: makes the outer group non-capturing.)
+        /// - (?:;o=([0-1])): The trace mask, 1 denotes it should be traced. (The ?: makes the outer group non-capturing.)
         /// </summary>
+        /// <remarks>See here for format information: https://cloud.google.com/trace/docs/setup#force-trace. </remarks>
         internal static readonly Regex TraceHeaderRegex =
-            new Regex(@"^([A-Fa-f0-9]{32})/([0-9]+)(?:;o=([0-3]))?$", RegexOptions.Compiled);
+            new Regex(@"^([A-Fa-f0-9]{32})/([0-9]+)(?:;o=([0-1]))?$", RegexOptions.Compiled);
 
-        /// <summary>Gets the trace id or null if none is available.</summary>
+        /// <inheritdoc/>
         public string TraceId { get; }
 
-        /// <summary>Gets the span id or null if none is available.</summary>
+        /// <inheritdoc/>
         public ulong? SpanId { get; }
 
-        /// <summary>
-        /// True if the request should be traced, false if it should not be.
-        /// Null if the trace header does not indicate whether or not it should be traced.
-        /// </summary>
+        /// <inheritdoc/>
         public bool? ShouldTrace { get; }
 
         /// <summary>
@@ -89,7 +86,7 @@ namespace Google.Cloud.Diagnostics.Common
                 return InvalidTraceHeaderContext;
             }
             bool hasMask = match.Groups.Count > 3 && match.Groups[3].Success;
-            bool? shouldTrace = hasMask ? Convert.ToInt32(match.Groups[3].Value) > 0 : (bool?) null;
+            bool? shouldTrace = hasMask ? match.Groups[3].Value == "1" : (bool?) null;
             return new TraceHeaderContext(traceId, spanId, shouldTrace);
         }
 

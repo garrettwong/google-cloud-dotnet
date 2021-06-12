@@ -1,4 +1,4 @@
-// Copyright 2020 Google LLC
+// Copyright 2021 Google LLC
 //
 // Licensed under the Apache License, Version 2.0 (the "License");
 // you may not use this file except in compliance with the License.
@@ -75,7 +75,7 @@ namespace Google.Cloud.ServiceManagement.V1.Snippets
             // End snippet
         }
 
-        /// <summary>Snippet for ListServices</summary>
+        /// <summary>Snippet for ListServicesAsync</summary>
         public async Task ListServicesRequestObjectAsync()
         {
             // Snippet: ListServicesAsync(ListServicesRequest, CallSettings)
@@ -133,7 +133,9 @@ namespace Google.Cloud.ServiceManagement.V1.Snippets
             string producerProjectId = "";
             string consumerId = "";
             // Make the request
+#pragma warning disable CS0612
             PagedEnumerable<ListServicesResponse, ManagedService> response = serviceManagerClient.ListServices(producerProjectId, consumerId);
+#pragma warning restore CS0612
 
             // Iterate over all response items, lazily performing RPCs as required
             foreach (ManagedService item in response)
@@ -169,7 +171,7 @@ namespace Google.Cloud.ServiceManagement.V1.Snippets
             // End snippet
         }
 
-        /// <summary>Snippet for ListServices</summary>
+        /// <summary>Snippet for ListServicesAsync</summary>
         public async Task ListServicesAsync()
         {
             // Snippet: ListServicesAsync(string, string, string, int?, CallSettings)
@@ -179,7 +181,9 @@ namespace Google.Cloud.ServiceManagement.V1.Snippets
             string producerProjectId = "";
             string consumerId = "";
             // Make the request
+#pragma warning disable CS0612
             PagedAsyncEnumerable<ListServicesResponse, ManagedService> response = serviceManagerClient.ListServicesAsync(producerProjectId, consumerId);
+#pragma warning restore CS0612
 
             // Iterate over all response items, lazily performing RPCs as required
             await response.ForEachAsync((ManagedService item) =>
@@ -674,7 +678,7 @@ namespace Google.Cloud.ServiceManagement.V1.Snippets
             // End snippet
         }
 
-        /// <summary>Snippet for ListServiceConfigs</summary>
+        /// <summary>Snippet for ListServiceConfigsAsync</summary>
         public async Task ListServiceConfigsRequestObjectAsync()
         {
             // Snippet: ListServiceConfigsAsync(ListServiceConfigsRequest, CallSettings)
@@ -764,7 +768,7 @@ namespace Google.Cloud.ServiceManagement.V1.Snippets
             // End snippet
         }
 
-        /// <summary>Snippet for ListServiceConfigs</summary>
+        /// <summary>Snippet for ListServiceConfigsAsync</summary>
         public async Task ListServiceConfigsAsync()
         {
             // Snippet: ListServiceConfigsAsync(string, string, int?, CallSettings)
@@ -1122,7 +1126,7 @@ namespace Google.Cloud.ServiceManagement.V1.Snippets
             // End snippet
         }
 
-        /// <summary>Snippet for ListServiceRollouts</summary>
+        /// <summary>Snippet for ListServiceRolloutsAsync</summary>
         public async Task ListServiceRolloutsRequestObjectAsync()
         {
             // Snippet: ListServiceRolloutsAsync(ListServiceRolloutsRequest, CallSettings)
@@ -1217,7 +1221,7 @@ namespace Google.Cloud.ServiceManagement.V1.Snippets
             // End snippet
         }
 
-        /// <summary>Snippet for ListServiceRollouts</summary>
+        /// <summary>Snippet for ListServiceRolloutsAsync</summary>
         public async Task ListServiceRolloutsAsync()
         {
             // Snippet: ListServiceRolloutsAsync(string, string, string, int?, CallSettings)
@@ -1532,7 +1536,9 @@ namespace Google.Cloud.ServiceManagement.V1.Snippets
                 ConsumerId = "",
             };
             // Make the request
+#pragma warning disable CS0612
             Operation<EnableServiceResponse, OperationMetadata> response = serviceManagerClient.EnableService(request);
+#pragma warning restore CS0612
 
             // Poll until the returned long-running operation is complete
             Operation<EnableServiceResponse, OperationMetadata> completedResponse = response.PollUntilCompleted();
@@ -1542,7 +1548,9 @@ namespace Google.Cloud.ServiceManagement.V1.Snippets
             // Or get the name of the operation
             string operationName = response.Name;
             // This name can be stored, then the long-running operation retrieved later by name
+#pragma warning disable CS0612
             Operation<EnableServiceResponse, OperationMetadata> retrievedResponse = serviceManagerClient.PollOnceEnableService(operationName);
+#pragma warning restore CS0612
             // Check if the retrieved long-running operation has completed
             if (retrievedResponse.IsCompleted)
             {
@@ -1566,7 +1574,9 @@ namespace Google.Cloud.ServiceManagement.V1.Snippets
                 ConsumerId = "",
             };
             // Make the request
+#pragma warning disable CS0612
             Operation<EnableServiceResponse, OperationMetadata> response = await serviceManagerClient.EnableServiceAsync(request);
+#pragma warning restore CS0612
 
             // Poll until the returned long-running operation is complete
             Operation<EnableServiceResponse, OperationMetadata> completedResponse = await response.PollUntilCompletedAsync();
@@ -1576,7 +1586,9 @@ namespace Google.Cloud.ServiceManagement.V1.Snippets
             // Or get the name of the operation
             string operationName = response.Name;
             // This name can be stored, then the long-running operation retrieved later by name
+#pragma warning disable CS0612
             Operation<EnableServiceResponse, OperationMetadata> retrievedResponse = await serviceManagerClient.PollOnceEnableServiceAsync(operationName);
+#pragma warning restore CS0612
             // Check if the retrieved long-running operation has completed
             if (retrievedResponse.IsCompleted)
             {
@@ -1596,7 +1608,9 @@ namespace Google.Cloud.ServiceManagement.V1.Snippets
             string serviceName = "";
             string consumerId = "";
             // Make the request
+#pragma warning disable CS0612
             Operation<EnableServiceResponse, OperationMetadata> response = serviceManagerClient.EnableService(serviceName, consumerId);
+#pragma warning restore CS0612
 
             // Poll until the returned long-running operation is complete
             Operation<EnableServiceResponse, OperationMetadata> completedResponse = response.PollUntilCompleted();
@@ -1606,7 +1620,9 @@ namespace Google.Cloud.ServiceManagement.V1.Snippets
             // Or get the name of the operation
             string operationName = response.Name;
             // This name can be stored, then the long-running operation retrieved later by name
+#pragma warning disable CS0612
             Operation<EnableServiceResponse, OperationMetadata> retrievedResponse = serviceManagerClient.PollOnceEnableService(operationName);
+#pragma warning restore CS0612
             // Check if the retrieved long-running operation has completed
             if (retrievedResponse.IsCompleted)
             {
@@ -1627,7 +1643,9 @@ namespace Google.Cloud.ServiceManagement.V1.Snippets
             string serviceName = "";
             string consumerId = "";
             // Make the request
+#pragma warning disable CS0612
             Operation<EnableServiceResponse, OperationMetadata> response = await serviceManagerClient.EnableServiceAsync(serviceName, consumerId);
+#pragma warning restore CS0612
 
             // Poll until the returned long-running operation is complete
             Operation<EnableServiceResponse, OperationMetadata> completedResponse = await response.PollUntilCompletedAsync();
@@ -1637,7 +1655,9 @@ namespace Google.Cloud.ServiceManagement.V1.Snippets
             // Or get the name of the operation
             string operationName = response.Name;
             // This name can be stored, then the long-running operation retrieved later by name
+#pragma warning disable CS0612
             Operation<EnableServiceResponse, OperationMetadata> retrievedResponse = await serviceManagerClient.PollOnceEnableServiceAsync(operationName);
+#pragma warning restore CS0612
             // Check if the retrieved long-running operation has completed
             if (retrievedResponse.IsCompleted)
             {
@@ -1660,7 +1680,9 @@ namespace Google.Cloud.ServiceManagement.V1.Snippets
                 ConsumerId = "",
             };
             // Make the request
+#pragma warning disable CS0612
             Operation<DisableServiceResponse, OperationMetadata> response = serviceManagerClient.DisableService(request);
+#pragma warning restore CS0612
 
             // Poll until the returned long-running operation is complete
             Operation<DisableServiceResponse, OperationMetadata> completedResponse = response.PollUntilCompleted();
@@ -1670,7 +1692,9 @@ namespace Google.Cloud.ServiceManagement.V1.Snippets
             // Or get the name of the operation
             string operationName = response.Name;
             // This name can be stored, then the long-running operation retrieved later by name
+#pragma warning disable CS0612
             Operation<DisableServiceResponse, OperationMetadata> retrievedResponse = serviceManagerClient.PollOnceDisableService(operationName);
+#pragma warning restore CS0612
             // Check if the retrieved long-running operation has completed
             if (retrievedResponse.IsCompleted)
             {
@@ -1694,7 +1718,9 @@ namespace Google.Cloud.ServiceManagement.V1.Snippets
                 ConsumerId = "",
             };
             // Make the request
+#pragma warning disable CS0612
             Operation<DisableServiceResponse, OperationMetadata> response = await serviceManagerClient.DisableServiceAsync(request);
+#pragma warning restore CS0612
 
             // Poll until the returned long-running operation is complete
             Operation<DisableServiceResponse, OperationMetadata> completedResponse = await response.PollUntilCompletedAsync();
@@ -1704,7 +1730,9 @@ namespace Google.Cloud.ServiceManagement.V1.Snippets
             // Or get the name of the operation
             string operationName = response.Name;
             // This name can be stored, then the long-running operation retrieved later by name
+#pragma warning disable CS0612
             Operation<DisableServiceResponse, OperationMetadata> retrievedResponse = await serviceManagerClient.PollOnceDisableServiceAsync(operationName);
+#pragma warning restore CS0612
             // Check if the retrieved long-running operation has completed
             if (retrievedResponse.IsCompleted)
             {
@@ -1724,7 +1752,9 @@ namespace Google.Cloud.ServiceManagement.V1.Snippets
             string serviceName = "";
             string consumerId = "";
             // Make the request
+#pragma warning disable CS0612
             Operation<DisableServiceResponse, OperationMetadata> response = serviceManagerClient.DisableService(serviceName, consumerId);
+#pragma warning restore CS0612
 
             // Poll until the returned long-running operation is complete
             Operation<DisableServiceResponse, OperationMetadata> completedResponse = response.PollUntilCompleted();
@@ -1734,7 +1764,9 @@ namespace Google.Cloud.ServiceManagement.V1.Snippets
             // Or get the name of the operation
             string operationName = response.Name;
             // This name can be stored, then the long-running operation retrieved later by name
+#pragma warning disable CS0612
             Operation<DisableServiceResponse, OperationMetadata> retrievedResponse = serviceManagerClient.PollOnceDisableService(operationName);
+#pragma warning restore CS0612
             // Check if the retrieved long-running operation has completed
             if (retrievedResponse.IsCompleted)
             {
@@ -1755,7 +1787,9 @@ namespace Google.Cloud.ServiceManagement.V1.Snippets
             string serviceName = "";
             string consumerId = "";
             // Make the request
+#pragma warning disable CS0612
             Operation<DisableServiceResponse, OperationMetadata> response = await serviceManagerClient.DisableServiceAsync(serviceName, consumerId);
+#pragma warning restore CS0612
 
             // Poll until the returned long-running operation is complete
             Operation<DisableServiceResponse, OperationMetadata> completedResponse = await response.PollUntilCompletedAsync();
@@ -1765,7 +1799,9 @@ namespace Google.Cloud.ServiceManagement.V1.Snippets
             // Or get the name of the operation
             string operationName = response.Name;
             // This name can be stored, then the long-running operation retrieved later by name
+#pragma warning disable CS0612
             Operation<DisableServiceResponse, OperationMetadata> retrievedResponse = await serviceManagerClient.PollOnceDisableServiceAsync(operationName);
+#pragma warning restore CS0612
             // Check if the retrieved long-running operation has completed
             if (retrievedResponse.IsCompleted)
             {

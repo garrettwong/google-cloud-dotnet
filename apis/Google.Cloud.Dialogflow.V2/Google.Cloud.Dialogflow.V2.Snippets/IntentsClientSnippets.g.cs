@@ -1,4 +1,4 @@
-// Copyright 2020 Google LLC
+// Copyright 2021 Google LLC
 //
 // Licensed under the Apache License, Version 2.0 (the "License");
 // you may not use this file except in compliance with the License.
@@ -77,7 +77,7 @@ namespace Google.Cloud.Dialogflow.V2.Snippets
             // End snippet
         }
 
-        /// <summary>Snippet for ListIntents</summary>
+        /// <summary>Snippet for ListIntentsAsync</summary>
         public async Task ListIntentsRequestObjectAsync()
         {
             // Snippet: ListIntentsAsync(ListIntentsRequest, CallSettings)
@@ -172,7 +172,7 @@ namespace Google.Cloud.Dialogflow.V2.Snippets
             // End snippet
         }
 
-        /// <summary>Snippet for ListIntents</summary>
+        /// <summary>Snippet for ListIntentsAsync</summary>
         public async Task ListIntents1Async()
         {
             // Snippet: ListIntentsAsync(string, string, int?, CallSettings)
@@ -262,7 +262,7 @@ namespace Google.Cloud.Dialogflow.V2.Snippets
             // End snippet
         }
 
-        /// <summary>Snippet for ListIntents</summary>
+        /// <summary>Snippet for ListIntentsAsync</summary>
         public async Task ListIntents1ResourceNamesAsync()
         {
             // Snippet: ListIntentsAsync(AgentName, string, int?, CallSettings)
@@ -353,7 +353,7 @@ namespace Google.Cloud.Dialogflow.V2.Snippets
             // End snippet
         }
 
-        /// <summary>Snippet for ListIntents</summary>
+        /// <summary>Snippet for ListIntentsAsync</summary>
         public async Task ListIntents2Async()
         {
             // Snippet: ListIntentsAsync(string, string, string, int?, CallSettings)
@@ -445,7 +445,7 @@ namespace Google.Cloud.Dialogflow.V2.Snippets
             // End snippet
         }
 
-        /// <summary>Snippet for ListIntents</summary>
+        /// <summary>Snippet for ListIntentsAsync</summary>
         public async Task ListIntents2ResourceNamesAsync()
         {
             // Snippet: ListIntentsAsync(AgentName, string, string, int?, CallSettings)
@@ -996,7 +996,6 @@ namespace Google.Cloud.Dialogflow.V2.Snippets
             {
                 ParentAsAgentName = AgentName.FromProject("[PROJECT]"),
                 IntentBatchUri = "",
-                IntentBatchInline = new IntentBatch(),
                 LanguageCode = "",
                 UpdateMask = new FieldMask(),
                 IntentView = IntentView.Unspecified,
@@ -1034,7 +1033,6 @@ namespace Google.Cloud.Dialogflow.V2.Snippets
             {
                 ParentAsAgentName = AgentName.FromProject("[PROJECT]"),
                 IntentBatchUri = "",
-                IntentBatchInline = new IntentBatch(),
                 LanguageCode = "",
                 UpdateMask = new FieldMask(),
                 IntentView = IntentView.Unspecified,

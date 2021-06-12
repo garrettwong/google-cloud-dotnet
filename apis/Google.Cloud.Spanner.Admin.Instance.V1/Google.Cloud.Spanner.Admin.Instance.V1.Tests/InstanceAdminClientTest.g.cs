@@ -1,4 +1,4 @@
-// Copyright 2020 Google LLC
+// Copyright 2021 Google LLC
 //
 // Licensed under the Apache License, Version 2.0 (the "License");
 // you may not use this file except in compliance with the License.
@@ -198,6 +198,7 @@ namespace Google.Cloud.Spanner.Admin.Instance.V1.Tests
                 {
                     "endpoint_uris93f83605",
                 },
+                ProcessingUnits = 759326966,
             };
             mockGrpcClient.Setup(x => x.GetInstance(request, moq::It.IsAny<grpccore::CallOptions>())).Returns(expectedResponse);
             InstanceAdminClient client = new InstanceAdminClientImpl(mockGrpcClient.Object, null);
@@ -234,6 +235,7 @@ namespace Google.Cloud.Spanner.Admin.Instance.V1.Tests
                 {
                     "endpoint_uris93f83605",
                 },
+                ProcessingUnits = 759326966,
             };
             mockGrpcClient.Setup(x => x.GetInstanceAsync(request, moq::It.IsAny<grpccore::CallOptions>())).Returns(new grpccore::AsyncUnaryCall<Instance>(stt::Task.FromResult(expectedResponse), null, null, null, null));
             InstanceAdminClient client = new InstanceAdminClientImpl(mockGrpcClient.Object, null);
@@ -271,6 +273,7 @@ namespace Google.Cloud.Spanner.Admin.Instance.V1.Tests
                 {
                     "endpoint_uris93f83605",
                 },
+                ProcessingUnits = 759326966,
             };
             mockGrpcClient.Setup(x => x.GetInstance(request, moq::It.IsAny<grpccore::CallOptions>())).Returns(expectedResponse);
             InstanceAdminClient client = new InstanceAdminClientImpl(mockGrpcClient.Object, null);
@@ -306,6 +309,7 @@ namespace Google.Cloud.Spanner.Admin.Instance.V1.Tests
                 {
                     "endpoint_uris93f83605",
                 },
+                ProcessingUnits = 759326966,
             };
             mockGrpcClient.Setup(x => x.GetInstanceAsync(request, moq::It.IsAny<grpccore::CallOptions>())).Returns(new grpccore::AsyncUnaryCall<Instance>(stt::Task.FromResult(expectedResponse), null, null, null, null));
             InstanceAdminClient client = new InstanceAdminClientImpl(mockGrpcClient.Object, null);
@@ -343,6 +347,7 @@ namespace Google.Cloud.Spanner.Admin.Instance.V1.Tests
                 {
                     "endpoint_uris93f83605",
                 },
+                ProcessingUnits = 759326966,
             };
             mockGrpcClient.Setup(x => x.GetInstance(request, moq::It.IsAny<grpccore::CallOptions>())).Returns(expectedResponse);
             InstanceAdminClient client = new InstanceAdminClientImpl(mockGrpcClient.Object, null);
@@ -378,6 +383,7 @@ namespace Google.Cloud.Spanner.Admin.Instance.V1.Tests
                 {
                     "endpoint_uris93f83605",
                 },
+                ProcessingUnits = 759326966,
             };
             mockGrpcClient.Setup(x => x.GetInstanceAsync(request, moq::It.IsAny<grpccore::CallOptions>())).Returns(new grpccore::AsyncUnaryCall<Instance>(stt::Task.FromResult(expectedResponse), null, null, null, null));
             InstanceAdminClient client = new InstanceAdminClientImpl(mockGrpcClient.Object, null);

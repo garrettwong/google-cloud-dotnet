@@ -181,15 +181,23 @@ namespace Google.Cloud.Firestore
 
             var settings = Settings?.Clone() ?? new FirestoreSettings();
             settings.CallSettings = settings.CallSettings.MergedWith(BearerOwnerSettings);
+
             // Note: we don't set EmulatorDetection here, so it defaults to None - if we
             // copied our existing value in here, we'd recurse infinitely (until we overflowed the stack).
-            return new FirestoreDbBuilder
+            var builder = new FirestoreDbBuilder
             {
+                // Properties used to build the FirestoreClient
                 Endpoint = hostAndPort,
                 Settings = settings,
+                ChannelCredentials = ChannelCredentials.Insecure,
+                // FirestoreDb-specific properties
                 ProjectId = ProjectId,
-                ChannelCredentials = ChannelCredentials.Insecure
+                DatabaseId = DatabaseId,
+                ConverterRegistry = ConverterRegistry,
+                WarningLogger = WarningLogger
             };
+            builder.CopySettingsForEmulator(this);
+            return builder;
         }
     }
 }

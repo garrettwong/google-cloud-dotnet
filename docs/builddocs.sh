@@ -40,6 +40,14 @@ build_api_docs() {
   cp filterConfig.yml output/$api
   $DOCFX metadata --logLevel Warning -f output/$api/docfx.json | tee errors.txt | grep -v "Invalid file link"
   (! grep --quiet 'Build failed.' errors.txt)
+
+  # Only build metadata for devsite where we have a "real" API (not root)
+  if [[ -f output/$api/docfx-devsite.json ]]
+  then
+    $DOCFX metadata --logLevel Warning -f output/$api/docfx-devsite.json | tee errors.txt | grep -v "Invalid file link"
+    (! grep --quiet 'Build failed.' errors.txt)
+  fi
+
   dotnet run --no-build --no-restore -p ../tools/Google.Cloud.Tools.GenerateSnippetMarkdown -- $api
   
   # Copy external dependency yml files into the API and concatenate toc.yml
@@ -53,6 +61,10 @@ build_api_docs() {
   # Note that the devsite build will happen elsewhere.
   $DOCFX build --logLevel Warning --disableGitFeatures output/$api/docfx.json | tee errors.txt | grep -v "Invalid file link"
   (! grep --quiet 'Build failed.' errors.txt)
+  
+  # Add canonical links where appropriate
+  # (Uncomment this when the canonical links are actually published.)
+  # dotnet run --no-build --no-restore -p ../tools/Google.Cloud.Tools.GenerateCanonicalLinks -- $api
 
   # Special case root: that should end up in the root of the assembled
   # site.
@@ -64,6 +76,8 @@ build_api_docs() {
     cp -r -t output/assembled output/$api/site/*
   else
     cp -r output/$api/site output/assembled/$api
+    # We need to make some changes to meet DevSite build expectations.
+    dotnet run --no-build --no-restore -p ../tools/Google.Cloud.Tools.PostProcessDevSite -- $api
   fi
   echo Finished building docs for $api
 }
@@ -79,8 +93,7 @@ mkdir output
 mkdir output/assembled
 
 # Build the tools once, then we can run them without restoring/building each time
-dotnet build ../tools/Google.Cloud.Tools.GenerateDocfxSources -v quiet -nologo -clp:NoSummary
-dotnet build ../tools/Google.Cloud.Tools.GenerateSnippetMarkdown -v quiet -nologo -clp:NoSummary
+dotnet build Google.Cloud.DocTools.sln -v quiet -nologo -clp:NoSummary
 
 apis=$@
 if [ -z "$apis" ]

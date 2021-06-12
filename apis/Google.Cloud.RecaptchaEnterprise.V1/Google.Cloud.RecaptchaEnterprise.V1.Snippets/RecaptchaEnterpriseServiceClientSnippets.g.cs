@@ -1,4 +1,4 @@
-// Copyright 2020 Google LLC
+// Copyright 2021 Google LLC
 //
 // Licensed under the Apache License, Version 2.0 (the "License");
 // you may not use this file except in compliance with the License.
@@ -295,7 +295,7 @@ namespace Google.Cloud.RecaptchaEnterprise.V1.Snippets
             // End snippet
         }
 
-        /// <summary>Snippet for ListKeys</summary>
+        /// <summary>Snippet for ListKeysAsync</summary>
         public async Task ListKeysRequestObjectAsync()
         {
             // Snippet: ListKeysAsync(ListKeysRequest, CallSettings)

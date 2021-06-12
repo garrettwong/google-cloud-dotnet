@@ -76,13 +76,17 @@ namespace Google.Cloud.Tools.GenerateDocfxSources
             }
             Directory.CreateDirectory(output);
 
-            CreateDocfxJson(apiCatalog, apiMetadata, output);
+            CreateGoogleApisDevDocfxJson(apiCatalog, apiMetadata, output);
+            CreateDevsiteDocfxJson(apiCatalog, apiMetadata, output);
             CopyAndGenerateArticles(apiMetadata, layout.DocsSourceDirectory, output);
             CreateToc(api, output);
             return 0;
         }
 
-        private static void CreateDocfxJson(ApiCatalog catalog, ApiMetadata rootApi, string outputDirectory)
+        /// <summary>
+        /// Generates the docfx.json file used to build googleapis.dev and GitHub pages sites.
+        /// </summary>
+        private static void CreateGoogleApisDevDocfxJson(ApiCatalog catalog, ApiMetadata rootApi, string outputDirectory)
         {
             var src = new JArray();
 
@@ -96,6 +100,11 @@ namespace Google.Cloud.Tools.GenerateDocfxSources
                 });
             }
 
+            // Pick whichever framework is listed first. (This could cause problems if a dependency
+            // doesn't target the given framework, but that seems unlikely.)
+            // Default to netstandard2.0 if nothing is listed.
+            string targetFramework = rootApi.TargetFrameworks?.Split(';').First() ?? "netstandard2.0";
+
             var json = new JObject
             {
                 ["metadata"] = new JArray {
@@ -104,8 +113,8 @@ namespace Google.Cloud.Tools.GenerateDocfxSources
                         ["src"] = src,
                         ["dest"] = "obj/api",
                         ["filter"] = "filterConfig.yml",
-                        ["properties"] = new JObject { ["TargetFramework"] = "net461" }
-                    },
+                        ["properties"] = new JObject { ["TargetFramework"] = targetFramework }
+                    }
                 },
                 ["build"] = new JObject {
                     ["content"] = new JArray {
@@ -151,6 +160,35 @@ namespace Google.Cloud.Tools.GenerateDocfxSources
                 // but that can come in a later step.
                 .Where(d => Directory.Exists(Path.Combine(outputDirectory, $"../../dependencies/api/{d}")));
             File.WriteAllText(Path.Combine(outputDirectory, "dependencies"), string.Join(" ", externalDependencies));
+        }
+
+        /// <summary>
+        /// Generates the docfx-devsite.json file used to generate just the metadata for DevSite.
+        /// </summary>
+        private static void CreateDevsiteDocfxJson(ApiCatalog catalog, ApiMetadata rootApi, string outputDirectory)
+        {
+            // Pick whichever framework is listed first. (This could cause problems if a dependency
+            // doesn't target the given framework, but that seems unlikely.)
+            // Default to netstandard2.0 if nothing is listed.
+            string targetFramework = rootApi.TargetFrameworks?.Split(';').First() ?? "netstandard2.0";
+
+            var json = new JObject
+            {
+                ["metadata"] = new JArray {
+                    new JObject
+                    {
+                        ["src"] = new JObject
+                        {
+                            ["files"] = new JArray { $"{rootApi.Id}/{rootApi.Id}.csproj" },
+                            ["cwd"] = $"../../../apis/{rootApi.Id}"
+                        },
+                        ["dest"] = "obj/bareapi",
+                        ["filter"] = "filterConfig.yml",
+                        ["properties"] = new JObject { ["TargetFramework"] = targetFramework }
+                    },
+                }
+            };
+            File.WriteAllText(Path.Combine(outputDirectory, "docfx-devsite.json"), json.ToString());
         }
 
         /// <summary>
@@ -281,13 +319,15 @@ Authentication](https://cloud.google.com/docs/authentication/getting-started) gu
 
             var exampleClient = clients.FirstOrDefault();
             string clientConstruction =
-$@"Create a client instance by calling the static `Create` method. Alternatively,
+$@"Create a client instance by calling the static `Create` or `CreateAsync` methods. Alternatively,
 use the builder class associated with each client class (e.g. {exampleClient}Builder for {exampleClient})
 as an easy way of specifying custom credentials, settings, or a custom endpoint. Clients are thread-safe,
 and we recommend using a single instance across your entire application unless you have a particular need
 to configure multiple client objects separately.";
 
-            string nonProductStub = $@"This package is not a product in its own right; this page is
+            string nonProductStub = $@"# {api.Id}
+
+This package is not a product in its own right; this page is
 present as a root for the [API reference documentation](obj/api/{api.Id}.yml)";
 
             text = text
@@ -319,7 +359,7 @@ present as a root for the [API reference documentation](obj/api/{api.Id}.yml)";
         // TODO: Find a more robust way of detecting the clients.
         private static List<string> GetClientClasses(ApiMetadata api)
         {
-            if (api.Type != ApiType.Grpc)
+            if (api.Type != ApiType.Grpc && api.Type != ApiType.Regapic)
             {
                 return new List<string>();
             }

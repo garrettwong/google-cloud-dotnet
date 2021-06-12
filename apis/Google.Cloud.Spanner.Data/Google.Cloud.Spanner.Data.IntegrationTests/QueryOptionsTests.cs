@@ -33,13 +33,14 @@ namespace Google.Cloud.Spanner.Data.IntegrationTests
         public QueryOptionsTests(ReadTableFixture fixture) =>
             _fixture = fixture;
 
-        // [START spanner_test_single_key_read_with_conn_level_query_options]
         [Fact]
         public async Task PointReadWithConnectionLevelQueryOptions()
         {
             using (var connection = _fixture.GetConnection())
             {
-                connection.QueryOptions = QueryOptions.Empty.WithOptimizerVersion("1");
+                connection.QueryOptions = QueryOptions.Empty
+                    .WithOptimizerVersion("1")
+                    .WithOptimizerStatisticsPackage("auto_20191128_14_47_22UTC");
                 var cmd = connection.CreateSelectCommand($"SELECT * FROM {_fixture.TableName} WHERE Key = 'k1'");
                 using (var reader = await cmd.ExecuteReaderAsync())
                 {
@@ -51,16 +52,16 @@ namespace Google.Cloud.Spanner.Data.IntegrationTests
                 }
             }
         }
-        // [END spanner_test_single_key_read_with_conn_level_query_options]
 
-        // [START spanner_test_single_key_read_with_cmd_level_query_options]
         [Fact]
         public async Task PointReadWithQueryLevelOptions()
         {
             using (var connection = _fixture.GetConnection())
             {
                 var cmd = connection.CreateSelectCommand($"SELECT * FROM {_fixture.TableName} WHERE Key = 'k1'");
-                cmd.QueryOptions = QueryOptions.Empty.WithOptimizerVersion("1");
+                cmd.QueryOptions = QueryOptions.Empty
+                    .WithOptimizerVersion("1")
+                    .WithOptimizerStatisticsPackage("auto_20191128_14_47_22UTC");
                 using (var reader = await cmd.ExecuteReaderAsync())
                 {
                     Assert.True(await reader.ReadAsync());
@@ -71,9 +72,7 @@ namespace Google.Cloud.Spanner.Data.IntegrationTests
                 }
             }
         }
-        // [END spanner_test_single_key_read_with_cmd_level_query_options]
 
-        // [START spanner_test_single_key_read_with_invalid_query_options]
         [SkippableFact]
         public async Task PointReadWithInvalidConnectionLevelQueryOptions()
         {
@@ -90,6 +89,5 @@ namespace Google.Cloud.Spanner.Data.IntegrationTests
                 }
             }
         }
-        // [END spanner_test_single_key_read_with_invalid_query_options]
     }
 }

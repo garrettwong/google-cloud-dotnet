@@ -1,4 +1,4 @@
-// Copyright 2020 Google LLC
+// Copyright 2021 Google LLC
 //
 // Licensed under the Apache License, Version 2.0 (the "License");
 // you may not use this file except in compliance with the License.
@@ -17,7 +17,6 @@
 namespace Google.Cloud.MediaTranslation.V1Beta1.Snippets
 {
     using Google.Api.Gax.Grpc;
-    using Google.Protobuf;
     using System.Threading.Tasks;
 
     /// <summary>Generated snippets.</summary>
@@ -56,7 +55,6 @@ namespace Google.Cloud.MediaTranslation.V1Beta1.Snippets
                 StreamingTranslateSpeechRequest request = new StreamingTranslateSpeechRequest
                 {
                     StreamingConfig = new StreamingTranslateSpeechConfig(),
-                    AudioContent = ByteString.Empty,
                 };
                 // Stream a request to the server
                 await response.WriteAsync(request);

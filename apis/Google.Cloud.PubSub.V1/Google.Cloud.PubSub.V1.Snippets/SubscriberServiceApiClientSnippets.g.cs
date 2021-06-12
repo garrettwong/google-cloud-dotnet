@@ -1,4 +1,4 @@
-// Copyright 2020 Google LLC
+// Copyright 2021 Google LLC
 //
 // Licensed under the Apache License, Version 2.0 (the "License");
 // you may not use this file except in compliance with the License.
@@ -321,7 +321,7 @@ namespace Google.Cloud.PubSub.V1.Snippets
             // End snippet
         }
 
-        /// <summary>Snippet for ListSubscriptions</summary>
+        /// <summary>Snippet for ListSubscriptionsAsync</summary>
         public async Task ListSubscriptionsRequestObjectAsync()
         {
             // Snippet: ListSubscriptionsAsync(ListSubscriptionsRequest, CallSettings)
@@ -414,7 +414,7 @@ namespace Google.Cloud.PubSub.V1.Snippets
             // End snippet
         }
 
-        /// <summary>Snippet for ListSubscriptions</summary>
+        /// <summary>Snippet for ListSubscriptionsAsync</summary>
         public async Task ListSubscriptionsAsync()
         {
             // Snippet: ListSubscriptionsAsync(string, string, int?, CallSettings)
@@ -504,7 +504,7 @@ namespace Google.Cloud.PubSub.V1.Snippets
             // End snippet
         }
 
-        /// <summary>Snippet for ListSubscriptions</summary>
+        /// <summary>Snippet for ListSubscriptionsAsync</summary>
         public async Task ListSubscriptionsResourceNamesAsync()
         {
             // Snippet: ListSubscriptionsAsync(ProjectName, string, int?, CallSettings)
@@ -874,7 +874,9 @@ namespace Google.Cloud.PubSub.V1.Snippets
             bool returnImmediately = false;
             int maxMessages = 0;
             // Make the request
+#pragma warning disable CS0612
             PullResponse response = subscriberServiceApiClient.Pull(subscription, returnImmediately, maxMessages);
+#pragma warning restore CS0612
             // End snippet
         }
 
@@ -890,7 +892,9 @@ namespace Google.Cloud.PubSub.V1.Snippets
             bool returnImmediately = false;
             int maxMessages = 0;
             // Make the request
+#pragma warning disable CS0612
             PullResponse response = await subscriberServiceApiClient.PullAsync(subscription, returnImmediately, maxMessages);
+#pragma warning restore CS0612
             // End snippet
         }
 
@@ -905,7 +909,9 @@ namespace Google.Cloud.PubSub.V1.Snippets
             bool returnImmediately = false;
             int maxMessages = 0;
             // Make the request
+#pragma warning disable CS0612
             PullResponse response = subscriberServiceApiClient.Pull(subscription, returnImmediately, maxMessages);
+#pragma warning restore CS0612
             // End snippet
         }
 
@@ -921,7 +927,9 @@ namespace Google.Cloud.PubSub.V1.Snippets
             bool returnImmediately = false;
             int maxMessages = 0;
             // Make the request
+#pragma warning disable CS0612
             PullResponse response = await subscriberServiceApiClient.PullAsync(subscription, returnImmediately, maxMessages);
+#pragma warning restore CS0612
             // End snippet
         }
 
@@ -1207,7 +1215,7 @@ namespace Google.Cloud.PubSub.V1.Snippets
             // End snippet
         }
 
-        /// <summary>Snippet for ListSnapshots</summary>
+        /// <summary>Snippet for ListSnapshotsAsync</summary>
         public async Task ListSnapshotsRequestObjectAsync()
         {
             // Snippet: ListSnapshotsAsync(ListSnapshotsRequest, CallSettings)
@@ -1300,7 +1308,7 @@ namespace Google.Cloud.PubSub.V1.Snippets
             // End snippet
         }
 
-        /// <summary>Snippet for ListSnapshots</summary>
+        /// <summary>Snippet for ListSnapshotsAsync</summary>
         public async Task ListSnapshotsAsync()
         {
             // Snippet: ListSnapshotsAsync(string, string, int?, CallSettings)
@@ -1390,7 +1398,7 @@ namespace Google.Cloud.PubSub.V1.Snippets
             // End snippet
         }
 
-        /// <summary>Snippet for ListSnapshots</summary>
+        /// <summary>Snippet for ListSnapshotsAsync</summary>
         public async Task ListSnapshotsResourceNamesAsync()
         {
             // Snippet: ListSnapshotsAsync(ProjectName, string, int?, CallSettings)
@@ -1663,7 +1671,6 @@ namespace Google.Cloud.PubSub.V1.Snippets
             {
                 SubscriptionAsSubscriptionName = SubscriptionName.FromProjectSubscription("[PROJECT]", "[SUBSCRIPTION]"),
                 Time = new Timestamp(),
-                SnapshotAsSnapshotName = SnapshotName.FromProjectSnapshot("[PROJECT]", "[SNAPSHOT]"),
             };
             // Make the request
             SeekResponse response = subscriberServiceApiClient.Seek(request);
@@ -1682,7 +1689,6 @@ namespace Google.Cloud.PubSub.V1.Snippets
             {
                 SubscriptionAsSubscriptionName = SubscriptionName.FromProjectSubscription("[PROJECT]", "[SUBSCRIPTION]"),
                 Time = new Timestamp(),
-                SnapshotAsSnapshotName = SnapshotName.FromProjectSnapshot("[PROJECT]", "[SNAPSHOT]"),
             };
             // Make the request
             SeekResponse response = await subscriberServiceApiClient.SeekAsync(request);

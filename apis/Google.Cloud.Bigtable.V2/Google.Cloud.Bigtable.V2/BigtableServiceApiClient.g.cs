@@ -1,4 +1,4 @@
-// Copyright 2020 Google LLC
+// Copyright 2021 Google LLC
 //
 // Licensed under the Apache License, Version 2.0 (the "License");
 // you may not use this file except in compliance with the License.
@@ -61,24 +61,14 @@ namespace Google.Cloud.Bigtable.V2
         /// <see cref="gaxgrpc::CallSettings"/> for synchronous and asynchronous calls to
         /// <c>BigtableServiceApiClient.ReadRows</c> and <c>BigtableServiceApiClient.ReadRowsAsync</c>.
         /// </summary>
-        /// <remarks>
-        /// <list type="bullet">
-        /// <item><description>This call will not be retried.</description></item>
-        /// <item><description>Timeout: 43200 seconds.</description></item>
-        /// </list>
-        /// </remarks>
+        /// <remarks>Timeout: 43200 seconds.</remarks>
         public gaxgrpc::CallSettings ReadRowsSettings { get; set; } = gaxgrpc::CallSettings.FromExpiration(gax::Expiration.FromTimeout(sys::TimeSpan.FromMilliseconds(43200000)));
 
         /// <summary>
         /// <see cref="gaxgrpc::CallSettings"/> for synchronous and asynchronous calls to
         /// <c>BigtableServiceApiClient.SampleRowKeys</c> and <c>BigtableServiceApiClient.SampleRowKeysAsync</c>.
         /// </summary>
-        /// <remarks>
-        /// <list type="bullet">
-        /// <item><description>This call will not be retried.</description></item>
-        /// <item><description>Timeout: 60 seconds.</description></item>
-        /// </list>
-        /// </remarks>
+        /// <remarks>Timeout: 60 seconds.</remarks>
         public gaxgrpc::CallSettings SampleRowKeysSettings { get; set; } = gaxgrpc::CallSettings.FromExpiration(gax::Expiration.FromTimeout(sys::TimeSpan.FromMilliseconds(60000)));
 
         /// <summary>
@@ -100,12 +90,7 @@ namespace Google.Cloud.Bigtable.V2
         /// <see cref="gaxgrpc::CallSettings"/> for synchronous and asynchronous calls to
         /// <c>BigtableServiceApiClient.MutateRows</c> and <c>BigtableServiceApiClient.MutateRowsAsync</c>.
         /// </summary>
-        /// <remarks>
-        /// <list type="bullet">
-        /// <item><description>This call will not be retried.</description></item>
-        /// <item><description>Timeout: 600 seconds.</description></item>
-        /// </list>
-        /// </remarks>
+        /// <remarks>Timeout: 600 seconds.</remarks>
         public gaxgrpc::CallSettings MutateRowsSettings { get; set; } = gaxgrpc::CallSettings.FromExpiration(gax::Expiration.FromTimeout(sys::TimeSpan.FromMilliseconds(600000)));
 
         /// <summary>
@@ -115,11 +100,14 @@ namespace Google.Cloud.Bigtable.V2
         /// </summary>
         /// <remarks>
         /// <list type="bullet">
-        /// <item><description>This call will not be retried.</description></item>
+        /// <item><description>Initial retry delay: 10 milliseconds.</description></item>
+        /// <item><description>Retry delay multiplier: 2</description></item>
+        /// <item><description>Retry maximum delay: 60000 milliseconds.</description></item>
+        /// <item><description>Maximum attempts: Unlimited</description></item>
         /// <item><description>Timeout: 20 seconds.</description></item>
         /// </list>
         /// </remarks>
-        public gaxgrpc::CallSettings CheckAndMutateRowSettings { get; set; } = gaxgrpc::CallSettings.FromExpiration(gax::Expiration.FromTimeout(sys::TimeSpan.FromMilliseconds(20000)));
+        public gaxgrpc::CallSettings CheckAndMutateRowSettings { get; set; } = gaxgrpc::CallSettingsExtensions.WithRetry(gaxgrpc::CallSettings.FromExpiration(gax::Expiration.FromTimeout(sys::TimeSpan.FromMilliseconds(20000))), gaxgrpc::RetrySettings.FromExponentialBackoff(maxAttempts: 2147483647, initialBackoff: sys::TimeSpan.FromMilliseconds(10), maxBackoff: sys::TimeSpan.FromMilliseconds(60000), backoffMultiplier: 2, retryFilter: gaxgrpc::RetrySettings.FilterForStatusCodes()));
 
         /// <summary>
         /// <see cref="gaxgrpc::CallSettings"/> for synchronous and asynchronous calls to
@@ -128,11 +116,14 @@ namespace Google.Cloud.Bigtable.V2
         /// </summary>
         /// <remarks>
         /// <list type="bullet">
-        /// <item><description>This call will not be retried.</description></item>
+        /// <item><description>Initial retry delay: 10 milliseconds.</description></item>
+        /// <item><description>Retry delay multiplier: 2</description></item>
+        /// <item><description>Retry maximum delay: 60000 milliseconds.</description></item>
+        /// <item><description>Maximum attempts: Unlimited</description></item>
         /// <item><description>Timeout: 20 seconds.</description></item>
         /// </list>
         /// </remarks>
-        public gaxgrpc::CallSettings ReadModifyWriteRowSettings { get; set; } = gaxgrpc::CallSettings.FromExpiration(gax::Expiration.FromTimeout(sys::TimeSpan.FromMilliseconds(20000)));
+        public gaxgrpc::CallSettings ReadModifyWriteRowSettings { get; set; } = gaxgrpc::CallSettingsExtensions.WithRetry(gaxgrpc::CallSettings.FromExpiration(gax::Expiration.FromTimeout(sys::TimeSpan.FromMilliseconds(20000))), gaxgrpc::RetrySettings.FromExponentialBackoff(maxAttempts: 2147483647, initialBackoff: sys::TimeSpan.FromMilliseconds(10), maxBackoff: sys::TimeSpan.FromMilliseconds(60000), backoffMultiplier: 2, retryFilter: gaxgrpc::RetrySettings.FilterForStatusCodes()));
 
         /// <summary>Creates a deep clone of this object, with all the same property values.</summary>
         /// <returns>A deep clone of this <see cref="BigtableServiceApiSettings"/> object.</returns>
@@ -2099,16 +2090,16 @@ namespace Google.Cloud.Bigtable.V2
             GrpcClient = grpcClient;
             BigtableServiceApiSettings effectiveSettings = settings ?? BigtableServiceApiSettings.GetDefault();
             gaxgrpc::ClientHelper clientHelper = new gaxgrpc::ClientHelper(effectiveSettings);
-            _callReadRows = clientHelper.BuildApiCall<ReadRowsRequest, ReadRowsResponse>(grpcClient.ReadRows, effectiveSettings.ReadRowsSettings);
+            _callReadRows = clientHelper.BuildApiCall<ReadRowsRequest, ReadRowsResponse>(grpcClient.ReadRows, effectiveSettings.ReadRowsSettings).WithGoogleRequestParam("table_name", request => request.TableName);
             Modify_ApiCall(ref _callReadRows);
             Modify_ReadRowsApiCall(ref _callReadRows);
-            _callSampleRowKeys = clientHelper.BuildApiCall<SampleRowKeysRequest, SampleRowKeysResponse>(grpcClient.SampleRowKeys, effectiveSettings.SampleRowKeysSettings);
+            _callSampleRowKeys = clientHelper.BuildApiCall<SampleRowKeysRequest, SampleRowKeysResponse>(grpcClient.SampleRowKeys, effectiveSettings.SampleRowKeysSettings).WithGoogleRequestParam("table_name", request => request.TableName);
             Modify_ApiCall(ref _callSampleRowKeys);
             Modify_SampleRowKeysApiCall(ref _callSampleRowKeys);
             _callMutateRow = clientHelper.BuildApiCall<MutateRowRequest, MutateRowResponse>(grpcClient.MutateRowAsync, grpcClient.MutateRow, effectiveSettings.MutateRowSettings).WithGoogleRequestParam("table_name", request => request.TableName);
             Modify_ApiCall(ref _callMutateRow);
             Modify_MutateRowApiCall(ref _callMutateRow);
-            _callMutateRows = clientHelper.BuildApiCall<MutateRowsRequest, MutateRowsResponse>(grpcClient.MutateRows, effectiveSettings.MutateRowsSettings);
+            _callMutateRows = clientHelper.BuildApiCall<MutateRowsRequest, MutateRowsResponse>(grpcClient.MutateRows, effectiveSettings.MutateRowsSettings).WithGoogleRequestParam("table_name", request => request.TableName);
             Modify_ApiCall(ref _callMutateRows);
             Modify_MutateRowsApiCall(ref _callMutateRows);
             _callCheckAndMutateRow = clientHelper.BuildApiCall<CheckAndMutateRowRequest, CheckAndMutateRowResponse>(grpcClient.CheckAndMutateRowAsync, grpcClient.CheckAndMutateRow, effectiveSettings.CheckAndMutateRowSettings).WithGoogleRequestParam("table_name", request => request.TableName);

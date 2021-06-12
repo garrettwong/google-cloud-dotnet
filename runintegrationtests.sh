@@ -13,6 +13,8 @@ APIS=()
 RETRY_ARG=
 COVERAGE_ARG=
 SMOKE_ARG=
+EXCLUDED_APIS=()
+DRY_RUN_ARG=
 
 while (( "$#" )); do
   if [[ "$1" == "--retry" ]]
@@ -26,6 +28,21 @@ while (( "$#" )); do
   elif [[ "$1" == "--smoke" ]]
   then
     SMOKE_ARG=yes
+  elif [[ "$1" == "--dry-run" ]]
+  then
+    DRY_RUN_ARG=yes
+  elif [[ "$1" == "--exclude" ]]
+  then
+    shift
+    if [[ "$#" == 0 ]]
+    then
+      echo "Error: specify the file containing excluded API names"
+      exit 1
+    fi
+    for exclusion in $(cat $1 | sed 's/\r//g')
+    do
+      EXCLUDED_APIS+=($exclusion)
+    done
   else 
     APIS+=($1)
   fi
@@ -94,14 +111,33 @@ fi
 log_build_action "(Start) Integration tests"
 for testdir in $testdirs
 do
+  # Skip excluded APIs
+  api=$(echo $testdir | cut -d/ -f1)
+  for exclusion in ${EXCLUDED_APIS[*]}
+  do
+    if [[ $api == $exclusion ]]
+    then
+      log_build_action "Skipping $testdir for excluded API $api"
+      continue 2
+    fi
+  done
+
+  # If we just want to see what we would test, log it and continue
+  if [[ "$DRY_RUN_ARG" == "yes" ]]
+  then
+    log_build_action "Dry-run; would test $testdir"
+    continue
+  fi
+  
   log_build_action "Testing $testdir"
+  
   if [[ "$testdir" =~ smoketests.json ]]
   then
     # If we've found a smoketests.json file (which really isn't a "test directory" of course),
     # run it via ReleaseManager
     echo "Running $testdir"
     dotnet run -p ../tools/Google.Cloud.Tools.ReleaseManager -- \
-    smoke-test $(dirname $testdir) $TEST_PROJECT \
+      smoke-test $(dirname $testdir) \
       || echo "$testdir" >> $FAILURE_TEMP_FILE
   elif [[ "$testdir" =~ SmokeTests ]]
   then

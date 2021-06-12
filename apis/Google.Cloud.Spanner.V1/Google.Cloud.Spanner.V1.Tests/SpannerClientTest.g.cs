@@ -1,4 +1,4 @@
-// Copyright 2020 Google LLC
+// Copyright 2021 Google LLC
 //
 // Licensed under the Apache License, Version 2.0 (the "License");
 // you may not use this file except in compliance with the License.
@@ -623,6 +623,7 @@ namespace Google.Cloud.Spanner.V1.Tests
                 PartitionToken = proto::ByteString.CopyFromUtf8("partition_token1309778b"),
                 Seqno = 4367695630312265944L,
                 QueryOptions = new ExecuteSqlRequest.Types.QueryOptions(),
+                RequestOptions = new RequestOptions(),
             };
             ResultSet expectedResponse = new ResultSet
             {
@@ -662,6 +663,7 @@ namespace Google.Cloud.Spanner.V1.Tests
                 PartitionToken = proto::ByteString.CopyFromUtf8("partition_token1309778b"),
                 Seqno = 4367695630312265944L,
                 QueryOptions = new ExecuteSqlRequest.Types.QueryOptions(),
+                RequestOptions = new RequestOptions(),
             };
             ResultSet expectedResponse = new ResultSet
             {
@@ -694,6 +696,7 @@ namespace Google.Cloud.Spanner.V1.Tests
                     new ExecuteBatchDmlRequest.Types.Statement(),
                 },
                 Seqno = 4367695630312265944L,
+                RequestOptions = new RequestOptions(),
             };
             ExecuteBatchDmlResponse expectedResponse = new ExecuteBatchDmlResponse
             {
@@ -720,6 +723,7 @@ namespace Google.Cloud.Spanner.V1.Tests
                     new ExecuteBatchDmlRequest.Types.Statement(),
                 },
                 Seqno = 4367695630312265944L,
+                RequestOptions = new RequestOptions(),
             };
             ExecuteBatchDmlResponse expectedResponse = new ExecuteBatchDmlResponse
             {
@@ -750,6 +754,7 @@ namespace Google.Cloud.Spanner.V1.Tests
                 Limit = 7494001492025909162L,
                 ResumeToken = proto::ByteString.CopyFromUtf8("resume_tokena048d43b"),
                 PartitionToken = proto::ByteString.CopyFromUtf8("partition_token1309778b"),
+                RequestOptions = new RequestOptions(),
             };
             ResultSet expectedResponse = new ResultSet
             {
@@ -782,6 +787,7 @@ namespace Google.Cloud.Spanner.V1.Tests
                 Limit = 7494001492025909162L,
                 ResumeToken = proto::ByteString.CopyFromUtf8("resume_tokena048d43b"),
                 PartitionToken = proto::ByteString.CopyFromUtf8("partition_token1309778b"),
+                RequestOptions = new RequestOptions(),
             };
             ResultSet expectedResponse = new ResultSet
             {
@@ -809,6 +815,7 @@ namespace Google.Cloud.Spanner.V1.Tests
             {
                 SessionAsSessionName = SessionName.FromProjectInstanceDatabaseSession("[PROJECT]", "[INSTANCE]", "[DATABASE]", "[SESSION]"),
                 Options = new TransactionOptions(),
+                RequestOptions = new RequestOptions(),
             };
             Transaction expectedResponse = new Transaction
             {
@@ -830,6 +837,7 @@ namespace Google.Cloud.Spanner.V1.Tests
             {
                 SessionAsSessionName = SessionName.FromProjectInstanceDatabaseSession("[PROJECT]", "[INSTANCE]", "[DATABASE]", "[SESSION]"),
                 Options = new TransactionOptions(),
+                RequestOptions = new RequestOptions(),
             };
             Transaction expectedResponse = new Transaction
             {
@@ -943,10 +951,13 @@ namespace Google.Cloud.Spanner.V1.Tests
                 TransactionId = proto::ByteString.CopyFromUtf8("transaction_id52de47f8"),
                 SingleUseTransaction = new TransactionOptions(),
                 Mutations = { new Mutation(), },
+                ReturnCommitStats = false,
+                RequestOptions = new RequestOptions(),
             };
             CommitResponse expectedResponse = new CommitResponse
             {
                 CommitTimestamp = new wkt::Timestamp(),
+                CommitStats = new CommitResponse.Types.CommitStats(),
             };
             mockGrpcClient.Setup(x => x.Commit(request, moq::It.IsAny<grpccore::CallOptions>())).Returns(expectedResponse);
             SpannerClient client = new SpannerClientImpl(mockGrpcClient.Object, null);
@@ -965,10 +976,13 @@ namespace Google.Cloud.Spanner.V1.Tests
                 TransactionId = proto::ByteString.CopyFromUtf8("transaction_id52de47f8"),
                 SingleUseTransaction = new TransactionOptions(),
                 Mutations = { new Mutation(), },
+                ReturnCommitStats = false,
+                RequestOptions = new RequestOptions(),
             };
             CommitResponse expectedResponse = new CommitResponse
             {
                 CommitTimestamp = new wkt::Timestamp(),
+                CommitStats = new CommitResponse.Types.CommitStats(),
             };
             mockGrpcClient.Setup(x => x.CommitAsync(request, moq::It.IsAny<grpccore::CallOptions>())).Returns(new grpccore::AsyncUnaryCall<CommitResponse>(stt::Task.FromResult(expectedResponse), null, null, null, null));
             SpannerClient client = new SpannerClientImpl(mockGrpcClient.Object, null);
@@ -992,6 +1006,7 @@ namespace Google.Cloud.Spanner.V1.Tests
             CommitResponse expectedResponse = new CommitResponse
             {
                 CommitTimestamp = new wkt::Timestamp(),
+                CommitStats = new CommitResponse.Types.CommitStats(),
             };
             mockGrpcClient.Setup(x => x.Commit(request, moq::It.IsAny<grpccore::CallOptions>())).Returns(expectedResponse);
             SpannerClient client = new SpannerClientImpl(mockGrpcClient.Object, null);
@@ -1013,6 +1028,7 @@ namespace Google.Cloud.Spanner.V1.Tests
             CommitResponse expectedResponse = new CommitResponse
             {
                 CommitTimestamp = new wkt::Timestamp(),
+                CommitStats = new CommitResponse.Types.CommitStats(),
             };
             mockGrpcClient.Setup(x => x.CommitAsync(request, moq::It.IsAny<grpccore::CallOptions>())).Returns(new grpccore::AsyncUnaryCall<CommitResponse>(stt::Task.FromResult(expectedResponse), null, null, null, null));
             SpannerClient client = new SpannerClientImpl(mockGrpcClient.Object, null);
@@ -1036,6 +1052,7 @@ namespace Google.Cloud.Spanner.V1.Tests
             CommitResponse expectedResponse = new CommitResponse
             {
                 CommitTimestamp = new wkt::Timestamp(),
+                CommitStats = new CommitResponse.Types.CommitStats(),
             };
             mockGrpcClient.Setup(x => x.Commit(request, moq::It.IsAny<grpccore::CallOptions>())).Returns(expectedResponse);
             SpannerClient client = new SpannerClientImpl(mockGrpcClient.Object, null);
@@ -1057,6 +1074,7 @@ namespace Google.Cloud.Spanner.V1.Tests
             CommitResponse expectedResponse = new CommitResponse
             {
                 CommitTimestamp = new wkt::Timestamp(),
+                CommitStats = new CommitResponse.Types.CommitStats(),
             };
             mockGrpcClient.Setup(x => x.CommitAsync(request, moq::It.IsAny<grpccore::CallOptions>())).Returns(new grpccore::AsyncUnaryCall<CommitResponse>(stt::Task.FromResult(expectedResponse), null, null, null, null));
             SpannerClient client = new SpannerClientImpl(mockGrpcClient.Object, null);
@@ -1080,6 +1098,7 @@ namespace Google.Cloud.Spanner.V1.Tests
             CommitResponse expectedResponse = new CommitResponse
             {
                 CommitTimestamp = new wkt::Timestamp(),
+                CommitStats = new CommitResponse.Types.CommitStats(),
             };
             mockGrpcClient.Setup(x => x.Commit(request, moq::It.IsAny<grpccore::CallOptions>())).Returns(expectedResponse);
             SpannerClient client = new SpannerClientImpl(mockGrpcClient.Object, null);
@@ -1101,6 +1120,7 @@ namespace Google.Cloud.Spanner.V1.Tests
             CommitResponse expectedResponse = new CommitResponse
             {
                 CommitTimestamp = new wkt::Timestamp(),
+                CommitStats = new CommitResponse.Types.CommitStats(),
             };
             mockGrpcClient.Setup(x => x.CommitAsync(request, moq::It.IsAny<grpccore::CallOptions>())).Returns(new grpccore::AsyncUnaryCall<CommitResponse>(stt::Task.FromResult(expectedResponse), null, null, null, null));
             SpannerClient client = new SpannerClientImpl(mockGrpcClient.Object, null);
@@ -1124,6 +1144,7 @@ namespace Google.Cloud.Spanner.V1.Tests
             CommitResponse expectedResponse = new CommitResponse
             {
                 CommitTimestamp = new wkt::Timestamp(),
+                CommitStats = new CommitResponse.Types.CommitStats(),
             };
             mockGrpcClient.Setup(x => x.Commit(request, moq::It.IsAny<grpccore::CallOptions>())).Returns(expectedResponse);
             SpannerClient client = new SpannerClientImpl(mockGrpcClient.Object, null);
@@ -1145,6 +1166,7 @@ namespace Google.Cloud.Spanner.V1.Tests
             CommitResponse expectedResponse = new CommitResponse
             {
                 CommitTimestamp = new wkt::Timestamp(),
+                CommitStats = new CommitResponse.Types.CommitStats(),
             };
             mockGrpcClient.Setup(x => x.CommitAsync(request, moq::It.IsAny<grpccore::CallOptions>())).Returns(new grpccore::AsyncUnaryCall<CommitResponse>(stt::Task.FromResult(expectedResponse), null, null, null, null));
             SpannerClient client = new SpannerClientImpl(mockGrpcClient.Object, null);

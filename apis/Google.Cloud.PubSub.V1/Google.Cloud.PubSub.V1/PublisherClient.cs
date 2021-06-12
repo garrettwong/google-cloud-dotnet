@@ -22,7 +22,6 @@ using Grpc.Core;
 using System;
 using System.Collections.Generic;
 using System.Linq;
-using System.Text;
 using System.Threading;
 using System.Threading.Tasks;
 
@@ -38,6 +37,10 @@ namespace Google.Cloud.PubSub.V1
     /// </summary>
     public abstract class PublisherClient
     {
+        private static readonly GrpcChannelOptions s_unlimitedSendReceiveChannelOptions = GrpcChannelOptions.Empty
+            .WithMaxReceiveMessageSize(-1)
+            .WithMaxSendMessageSize(-1);
+
         // TODO: Logging
 
         /// <summary>
@@ -114,12 +117,43 @@ namespace Google.Cloud.PubSub.V1
                 PublisherServiceApiSettings publisherServiceApiSettings = null,
                 ChannelCredentials credentials = null,
                 string serviceEndpoint = null)
+                : this(clientCount, publisherServiceApiSettings, credentials, serviceEndpoint, EmulatorDetection.None)
+            {
+            }
+
+            private ClientCreationSettings(
+                int? clientCount,
+                PublisherServiceApiSettings publisherServiceApiSettings,
+                ChannelCredentials credentials,
+                string serviceEndpoint,
+                EmulatorDetection emulatorDetection)
             {
                 ClientCount = clientCount;
                 PublisherServiceApiSettings = publisherServiceApiSettings;
                 Credentials = credentials;
                 ServiceEndpoint = serviceEndpoint;
+                EmulatorDetection = emulatorDetection;
             }
+
+            /// <summary>
+            /// Creates a new instance of this type with the specified emulator detection value.
+            /// </summary>
+            /// <param name="emulatorDetection">Determines how and whether to detect the emulator.</param>
+            /// <returns>The new instance</returns>
+            public ClientCreationSettings WithEmulatorDetection(EmulatorDetection emulatorDetection)
+            {
+                GaxPreconditions.CheckEnumValue(emulatorDetection, nameof(emulatorDetection));
+                return new ClientCreationSettings(ClientCount, PublisherServiceApiSettings, Credentials, ServiceEndpoint, emulatorDetection);
+            }
+
+            /// <summary>
+            /// Specifies how to respond to the presence of emulator environment variables.
+            /// </summary>
+            /// <remarks>
+            /// This property defaults to <see cref="EmulatorDetection.None"/>, meaning that
+            /// environment variables are ignored.
+            /// </remarks>
+            public EmulatorDetection EmulatorDetection { get; }
 
             /// <summary>
             /// The number of <see cref="PublisherServiceApiClient"/>s to create and use within a <see cref="PublisherClient"/> instance.
@@ -175,44 +209,73 @@ namespace Google.Cloud.PubSub.V1
         /// high network bandwidth (e.g. Google Compute Engine instances). If running with more limited network bandwidth, some
         /// settings may need changing; especially
         /// <see cref="ClientCreationSettings.PublisherServiceApiSettings"/>.<see cref="PublisherServiceApiSettings.PublishSettings"/>.<see cref="CallSettings.Retry"/>.
+        /// By default this method generates a gRPC channel per CPU core; if using a high-core-count machine and using many
+        /// clients concurrently then this may need reducing; use the setting <see cref="ClientCreationSettings.ClientCount"/>.
         /// </summary>
         /// <param name="topicName">The <see cref="TopicName"/> to publish messages to.</param>
         /// <param name="clientCreationSettings">Optional. <see cref="ClientCreationSettings"/> specifying how to create
         /// <see cref="PublisherServiceApiClient"/>s.</param>
         /// <param name="settings">Optional. <see cref="Settings"/> for creating a <see cref="PublisherClient"/>.</param>
         /// <returns>A <see cref="PublisherClient"/> instance associated with the specified <see cref="TopicName"/>.</returns>
-        public static async Task<PublisherClient> CreateAsync(TopicName topicName, ClientCreationSettings clientCreationSettings = null, Settings settings = null)
+        public static PublisherClient Create(TopicName topicName, ClientCreationSettings clientCreationSettings = null, Settings settings = null) =>
+            // With isAsync set to false, the returned task will already be completed (either successfully or faulted),
+            // so .ResultWithUnwrappedExceptions() will always return immediately.
+            CreateMaybeAsync(topicName, clientCreationSettings, settings, isAsync: false).ResultWithUnwrappedExceptions();
+
+        /// <summary>
+        /// Create a <see cref="PublisherClient"/> instance associated with the specified <see cref="TopicName"/>.
+        /// The default <paramref name="settings"/> and <paramref name="clientCreationSettings"/> are suitable for machines with
+        /// high network bandwidth (e.g. Google Compute Engine instances). If running with more limited network bandwidth, some
+        /// settings may need changing; especially
+        /// <see cref="ClientCreationSettings.PublisherServiceApiSettings"/>.<see cref="PublisherServiceApiSettings.PublishSettings"/>.<see cref="CallSettings.Retry"/>.
+        /// By default this method generates a gRPC channel per CPU core; if using a high-core-count machine and using many
+        /// clients concurrently then this may need reducing; use the setting <see cref="ClientCreationSettings.ClientCount"/>.
+        /// </summary>
+        /// <param name="topicName">The <see cref="TopicName"/> to publish messages to.</param>
+        /// <param name="clientCreationSettings">Optional. <see cref="ClientCreationSettings"/> specifying how to create
+        /// <see cref="PublisherServiceApiClient"/>s.</param>
+        /// <param name="settings">Optional. <see cref="Settings"/> for creating a <see cref="PublisherClient"/>.</param>
+        /// <returns>A <see cref="PublisherClient"/> instance associated with the specified <see cref="TopicName"/>.</returns>
+        public static Task<PublisherClient> CreateAsync(TopicName topicName, ClientCreationSettings clientCreationSettings = null, Settings settings = null) =>
+            // With isAsync set to true, the returned task will complete asynchronously (if required) as expected.
+            CreateMaybeAsync(topicName, clientCreationSettings, settings, isAsync: true);
+
+        /// <summary>
+        /// Creates a <see cref="PublisherClient"/>.
+        /// <paramref name="isAsync"/> controls whether the returned task will complete synchronously or asynchronously, allowing this
+        /// method to be used by both <see cref="Create"/> and <see cref="CreateAsync"/>.
+        /// </summary>
+        private static async Task<PublisherClient> CreateMaybeAsync(TopicName topicName, ClientCreationSettings clientCreationSettings, Settings settings, bool isAsync)
         {
             clientCreationSettings?.Validate();
             // Clone settings, just in case user modifies them and an await happens in this method
             settings = settings?.Clone() ?? new Settings();
             var clientCount = clientCreationSettings?.ClientCount ?? Environment.ProcessorCount;
-            var channelCredentials = clientCreationSettings?.Credentials;
-            // Use default credentials if none given.
-            if (channelCredentials == null)
-            {
-                var credentials = await GoogleCredential.GetApplicationDefaultAsync().ConfigureAwait(false);
-                if (credentials.IsCreateScopedRequired)
-                {
-                    credentials = credentials.CreateScoped(PublisherServiceApiClient.DefaultScopes);
-                }
-                channelCredentials = credentials.ToChannelCredentials();
-            }
+
             // Create the channels and clients, and register shutdown functions for each channel
-            var endpoint = clientCreationSettings?.ServiceEndpoint ?? PublisherServiceApiClient.DefaultEndpoint;
             var clients = new PublisherServiceApiClient[clientCount];
             var shutdowns = new Func<Task>[clientCount];
             for (int i = 0; i < clientCount; i++)
             {
-                var channelOptions = new[]
+                // Use a random arg to prevent sub-channel re-use in gRPC, so each channel uses its own connection.
+                var grpcChannelOptions = s_unlimitedSendReceiveChannelOptions
+                    .WithCustomOption("sub-channel-separator", Guid.NewGuid().ToString());
+
+                // First builder to handle any endpoint detection etc. We build a gRPC channel
+                // with this.
+                var builder = new PublisherServiceApiClientBuilder
                 {
-                    // Set channel send/recv message size to unlimited. It defaults to ~4Mb which causes failures.
-                    new ChannelOption(ChannelOptions.MaxSendMessageLength, -1),
-                    new ChannelOption(ChannelOptions.MaxReceiveMessageLength, -1),
-                    // Use a random arg to prevent sub-channel re-use in gRPC, so each channel uses its own connection.
-                    new ChannelOption("sub-channel-separator", Guid.NewGuid().ToString())
+                    EmulatorDetection = clientCreationSettings?.EmulatorDetection ?? EmulatorDetection.None,
+                    Endpoint = clientCreationSettings?.ServiceEndpoint,
+                    ChannelCredentials = clientCreationSettings?.Credentials,
+                    Settings = clientCreationSettings?.PublisherServiceApiSettings,
+                    ChannelOptions = grpcChannelOptions
                 };
-                var channel = new Channel(endpoint, channelCredentials, channelOptions);
+                var channel = isAsync ?
+                    await builder.CreateChannelAsync(cancellationToken: default).ConfigureAwait(false) :
+                    builder.CreateChannel();
+
+                // Second builder doesn't need to do much, as we can build a call invoker from the channel.
                 clients[i] = new PublisherServiceApiClientBuilder
                 {
                     CallInvoker = channel.CreateCallInvoker(),
@@ -223,24 +286,6 @@ namespace Google.Cloud.PubSub.V1
             Func<Task> shutdown = () => Task.WhenAll(shutdowns.Select(x => x()));
             return new PublisherClientImpl(topicName, clients, settings, shutdown);
         }
-
-        /// <summary>
-        /// Create a <see cref="PublisherClient"/> instance associated with the specified <see cref="TopicName"/>.
-        /// The gRPC <see cref="Channel"/>s underlying the provided <see cref="PublisherServiceApiClient"/>s must have their
-        /// maximum send and maximum receive sizes set to unlimited, otherwise performance will be severly affected,
-        /// possibly causing a deadlock.
-        /// The default <paramref name="settings"/> are suitable for machines with high network bandwidth
-        /// (e.g. Google Compute Engine instances). If running with more limited network bandwidth, some
-        /// settings may need changing.
-        /// </summary>
-        /// <param name="topicName">The <see cref="TopicName"/> to publish messages to.</param>
-        /// <param name="clients">The <see cref="PublisherServiceApiClient"/>s to use in a <see cref="PublisherClient"/>.
-        /// For high performance, these should all use distinct <see cref="Channel"/>s.</param>
-        /// <param name="settings">Optional. <see cref="Settings"/> for creating a <see cref="PublisherClient"/>.</param>
-        /// <returns>A <see cref="PublisherClient"/> instance associated with the specified <see cref="TopicName"/>.</returns>
-        internal static PublisherClient Create(TopicName topicName, IEnumerable<PublisherServiceApiClient> clients, Settings settings = null) =>
-            // No need to clone clients, it's synchronously used to initialise a Queue<T> in the constructor
-            new PublisherClientImpl(topicName, clients, settings?.Clone() ?? new Settings(), null);
 
         /// <summary>
         /// The associated <see cref="TopicName"/>. 
@@ -261,10 +306,10 @@ namespace Google.Cloud.PubSub.V1
         /// <param name="orderingKey">The ordering key to use for this message.</param>
         /// <param name="message">The string to publish.</param>
         /// <param name="encoding">The encoding for string to byte conversion.
-        /// If <c>null</c>, defaults to <see cref="Encoding.UTF8"/>.</param>
+        /// If <c>null</c>, defaults to <see cref="System.Text.Encoding.UTF8"/>.</param>
         /// <returns>A task which completes once the message has been published.
         /// The task <see cref="Task{String}.Result"/> contains the message ID.</returns>
-        public virtual Task<string> PublishAsync(string orderingKey, string message, Encoding encoding = null) =>
+        public virtual Task<string> PublishAsync(string orderingKey, string message, System.Text.Encoding encoding = null) =>
             PublishAsync(new PubsubMessage
             {
                 OrderingKey = orderingKey ?? "",
@@ -276,10 +321,10 @@ namespace Google.Cloud.PubSub.V1
         /// </summary>
         /// <param name="message">The string to publish.</param>
         /// <param name="encoding">The encoding for string to byte conversion.
-        /// If <c>null</c>, defaults to <see cref="Encoding.UTF8"/>.</param>
+        /// If <c>null</c>, defaults to <see cref="System.Text.Encoding.UTF8"/>.</param>
         /// <returns>A task which completes once the message has been published.
         /// The task <see cref="Task{String}.Result"/> contains the message ID.</returns>
-        public virtual Task<string> PublishAsync(string message, Encoding encoding = null) => PublishAsync("", message, encoding);
+        public virtual Task<string> PublishAsync(string message, System.Text.Encoding encoding = null) => PublishAsync("", message, encoding);
 
         /// <summary>
         /// Publish a message to the topic specified in <see cref="TopicName"/>.

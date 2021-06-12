@@ -17,7 +17,6 @@ using Google.Cloud.Diagnostics.Common;
 using Microsoft.AspNetCore.Builder;
 using Microsoft.AspNetCore.Http;
 using Microsoft.Extensions.DependencyInjection;
-using Microsoft.Extensions.DependencyInjection.Extensions;
 using System;
 
 #if NETCOREAPP3_1
@@ -65,7 +64,7 @@ namespace Google.Cloud.Diagnostics.AspNetCore
     public static class ErrorReportingExceptionLoggerExtension
     {
         /// <summary>
-        /// Uses middleware that will report all uncaught exceptions to the Stackdriver
+        /// Uses middleware that will report all uncaught exceptions to the Google Cloud
         /// Error Reporting API.
         /// </summary>
         /// <param name="app">The application builder. Must not be null.</param>
@@ -77,7 +76,7 @@ namespace Google.Cloud.Diagnostics.AspNetCore
 
         /// <summary>
         /// Adds services for middleware that will report all uncaught exceptions to the
-        /// Stackdriver Error Reporting API.
+        /// Google Cloud Error Reporting API.
         /// <para>
         /// Can be used when running on Google App Engine or Google Compute Engine.
         /// The Google Cloud Platform project to report errors to will detected from the
@@ -113,8 +112,8 @@ namespace Google.Cloud.Diagnostics.AspNetCore
         /// </summary>
         private static IExceptionLogger CreateExceptionLogger(IServiceProvider provider)
         {
-            var accessor = provider.GetServiceCheckNotNull<IHttpContextAccessor>();
-            var contextLogger = provider.GetServiceCheckNotNull<IContextExceptionLogger>();
+            var accessor = provider.GetRequiredService<IHttpContextAccessor>();
+            var contextLogger = provider.GetRequiredService<IContextExceptionLogger>();
             return new GoogleExceptionLogger(contextLogger, accessor);
         }
     }

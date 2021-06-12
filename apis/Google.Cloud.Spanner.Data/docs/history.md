@@ -1,5 +1,64 @@
 # Version history
 
+# Version 3.9.0, released 2021-06-09
+
+- [Commit 0fb438e](https://github.com/googleapis/google-cloud-dotnet/commit/0fb438e): feat(spanner): add `query_optimizer_statistics_package` support (see below)
+
+The optimizer statistics package can be set through `QueryOptions`, which can be configured through the following mechanisms:
+
+- At the `SpannerConnection` level.
+- Through the `SPANNER_OPTIMIZER_STATISTICS_PACKAGE` environment variable.
+- At a query level.
+
+If the options are configured through multiple mechanisms then:
+
+- Options set at an environment variable level will override options configured at the `SpannerConnection` level.
+- Options set at a query-level will override options set at either the `SpannerConnection` or environment variable level.
+
+If no options are set, the optimizer statistics package will default
+to the package the database is pinned to. If the database is not
+pinned to a specific package, then the Cloud Spanner backend will
+use the "latest" version.
+
+# Version 3.8.0, released 2021-05-18
+
+- [Commit a334723](https://github.com/googleapis/google-cloud-dotnet/commit/a334723): feat: add option to return read timestamp
+- [Commit fbcacf0](https://github.com/googleapis/google-cloud-dotnet/commit/fbcacf0): fix: Use CopySettingsForEmulator in Spanner clients
+- [Commit 4371842](https://github.com/googleapis/google-cloud-dotnet/commit/4371842): feat: add `progress` field to `UpdateDatabaseDdlMetadata`
+- [Commit 5eef4b4](https://github.com/googleapis/google-cloud-dotnet/commit/5eef4b4): feat: add `progress` field to `UpdateDatabaseDdlMetadata`
+- [Commit 9f5f0aa](https://github.com/googleapis/google-cloud-dotnet/commit/9f5f0aa): fix: Regenerate server-streaming calls with Google request params
+
+# Version 3.7.0, released 2021-04-01
+
+- [Commit 63f54b5](https://github.com/googleapis/google-cloud-dotnet/commit/63f54b5): feat: add support for request and transaction tagging
+- [Commit a7d1b22](https://github.com/googleapis/google-cloud-dotnet/commit/a7d1b22): feat: add support for RPC priority
+- [Commit b40ca4e](https://github.com/googleapis/google-cloud-dotnet/commit/b40ca4e): feat: add tagging request options (proto)
+- [Commit ec9fd53](https://github.com/googleapis/google-cloud-dotnet/commit/ec9fd53): feat: add RPC Priority request options (proto)
+
+# Version 3.6.0, released 2021-03-17
+
+- [Commit 69c83e4](https://github.com/googleapis/google-cloud-dotnet/commit/69c83e4):
+  - fix: retry errors in stream until timeout ([issue 6013](https://github.com/googleapis/google-cloud-dotnet/issues/6013))
+  - Also fixes [issue 5977](https://github.com/googleapis/google-cloud-dotnet/issues/5977)
+- [Commit fa5641d](https://github.com/googleapis/google-cloud-dotnet/commit/fa5641d): fix: retry consecutive retryable errors in sql stream. Fixes [issue 5977](https://github.com/googleapis/google-cloud-dotnet/issues/5977)
+- [Commit a86b6ea](https://github.com/googleapis/google-cloud-dotnet/commit/a86b6ea): feat: add `optimizer_statistics_package` field in `QueryOptions`
+- [Commit ef02e74](https://github.com/googleapis/google-cloud-dotnet/commit/ef02e74): feat: add CMEK fields to backup and database
+
+# Version 3.5.0, released 2021-02-08
+
+- [Commit d5abc62](https://github.com/googleapis/google-cloud-dotnet/commit/d5abc62): feat: add Point In Time Recovery (PITR) support
+- [Commit 65f6e7b](https://github.com/googleapis/google-cloud-dotnet/commit/65f6e7b):
+  - feat: log CommitStats if requested by the client application ([issue 5506](https://github.com/googleapis/google-cloud-dotnet/issues/5506))
+- [Commit 8562ced](https://github.com/googleapis/google-cloud-dotnet/commit/8562ced): fix: use null instead of empty array + integration test
+- [Commit 0343ff8](https://github.com/googleapis/google-cloud-dotnet/commit/0343ff8):
+  - fix: parse WITH command as SELECT. Fixes [issue 5857](https://github.com/googleapis/google-cloud-dotnet/issues/5857)
+- [Commit 4866adf](https://github.com/googleapis/google-cloud-dotnet/commit/4866adf): fix: NUMERIC is missing default mapping
+- [Commit a223bd0](https://github.com/googleapis/google-cloud-dotnet/commit/a223bd0): fix: local date could lead to wrong date in database
+
+# Version 3.4.0, released 2020-12-14
+
+- [Commit 9fb3e43](https://github.com/googleapis/google-cloud-dotnet/commit/9fb3e43): feat: Database Admin: Adds UpdateDatabaseDdlMetadata.Throttled to indicate when a DDL operation is throttled due to resource constraints.
+
 # Version 3.3.0, released 2020-10-01
 
 - [Commit 9d984c8](https://github.com/googleapis/google-cloud-dotnet/commit/9d984c8): fix: Trust SpannerClientCreationOptions to connect to the emulator. Fixes [issue 5362](https://github.com/googleapis/google-cloud-dotnet/issues/5362).

@@ -1,4 +1,4 @@
-// Copyright 2020 Google LLC
+// Copyright 2021 Google LLC
 //
 // Licensed under the Apache License, Version 2.0 (the "License");
 // you may not use this file except in compliance with the License.
@@ -1047,6 +1047,7 @@ namespace Google.Cloud.Bigtable.Admin.V2.Snippets
                 State = Cluster.Types.State.NotKnown,
                 ServeNodes = 0,
                 DefaultStorageType = StorageType.Unspecified,
+                EncryptionConfig = new Cluster.Types.EncryptionConfig(),
             };
             // Make the request
             Operation<Cluster, UpdateClusterMetadata> response = bigtableInstanceAdminClient.UpdateCluster(request);
@@ -1084,6 +1085,7 @@ namespace Google.Cloud.Bigtable.Admin.V2.Snippets
                 State = Cluster.Types.State.NotKnown,
                 ServeNodes = 0,
                 DefaultStorageType = StorageType.Unspecified,
+                EncryptionConfig = new Cluster.Types.EncryptionConfig(),
             };
             // Make the request
             Operation<Cluster, UpdateClusterMetadata> response = await bigtableInstanceAdminClient.UpdateClusterAsync(request);
@@ -1429,7 +1431,7 @@ namespace Google.Cloud.Bigtable.Admin.V2.Snippets
             // End snippet
         }
 
-        /// <summary>Snippet for ListAppProfiles</summary>
+        /// <summary>Snippet for ListAppProfilesAsync</summary>
         public async Task ListAppProfilesRequestObjectAsync()
         {
             // Snippet: ListAppProfilesAsync(ListAppProfilesRequest, CallSettings)
@@ -1522,7 +1524,7 @@ namespace Google.Cloud.Bigtable.Admin.V2.Snippets
             // End snippet
         }
 
-        /// <summary>Snippet for ListAppProfiles</summary>
+        /// <summary>Snippet for ListAppProfilesAsync</summary>
         public async Task ListAppProfilesAsync()
         {
             // Snippet: ListAppProfilesAsync(string, string, int?, CallSettings)
@@ -1612,7 +1614,7 @@ namespace Google.Cloud.Bigtable.Admin.V2.Snippets
             // End snippet
         }
 
-        /// <summary>Snippet for ListAppProfiles</summary>
+        /// <summary>Snippet for ListAppProfilesAsync</summary>
         public async Task ListAppProfilesResourceNamesAsync()
         {
             // Snippet: ListAppProfilesAsync(InstanceName, string, int?, CallSettings)

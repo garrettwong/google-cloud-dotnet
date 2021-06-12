@@ -54,6 +54,7 @@ namespace Google.Cloud.Spanner.Data
             }
 
             private const string SpannerOptimizerVersionVariable = "SPANNER_OPTIMIZER_VERSION";
+            private const string SpannerOptimizerStatisticsPackageVariable = "SPANNER_OPTIMIZER_STATISTICS_PACKAGE";
 
             internal SpannerConnection Connection { get; }
             internal SpannerCommandTextBuilder CommandTextBuilder { get; }
@@ -62,6 +63,8 @@ namespace Google.Cloud.Spanner.Data
             internal CommandPartition Partition { get; }
             internal SpannerParameterCollection Parameters { get; }
             internal QueryOptions QueryOptions { get; }
+            internal Priority Priority { get; }
+            internal string Tag { get; }
 
             public ExecutableCommand(SpannerCommand command)
             {
@@ -72,6 +75,8 @@ namespace Google.Cloud.Spanner.Data
                 Parameters = command.Parameters;
                 Transaction = command._transaction;
                 QueryOptions = command.QueryOptions;
+                Priority = command.Priority;
+                Tag = command.Tag;
             }
 
             // ExecuteScalar is simply implemented in terms of ExecuteReader.
@@ -117,7 +122,7 @@ namespace Google.Cloud.Spanner.Data
                 {
                     throw new InvalidOperationException("singleUseReadSettings cannot be used within another transaction.");
                 }
-                effectiveTransaction = effectiveTransaction ?? new EphemeralTransaction(Connection, null);
+                effectiveTransaction = effectiveTransaction ?? new EphemeralTransaction(Connection, null, Priority);
 
                 ExecuteSqlRequest request = GetExecuteSqlRequest();
 
@@ -136,7 +141,7 @@ namespace Google.Cloud.Spanner.Data
                 // When the data reader is closed, we may need to dispose of the connection.
                 IDisposable resourceToClose = (behavior & CommandBehavior.CloseConnection) == CommandBehavior.CloseConnection ? Connection : null;
 
-                return new SpannerDataReader(Connection.Logger, resultSet, resourceToClose, conversionOptions, enableGetSchemaTable, CommandTimeout);
+                return new SpannerDataReader(Connection.Logger, resultSet, Transaction?.ReadTimestamp, resourceToClose, conversionOptions, enableGetSchemaTable, CommandTimeout);
             }
 
             internal async Task<IReadOnlyList<CommandPartition>> GetReaderPartitionsAsync(long? partitionSizeBytes, long? maxPartitions, CancellationToken cancellationToken)
@@ -186,7 +191,7 @@ namespace Google.Cloud.Spanner.Data
                 await Connection.EnsureIsOpenAsync(cancellationToken).ConfigureAwait(false);
                 ExecuteSqlRequest request = GetExecuteSqlRequest();
 
-                var transaction = new EphemeralTransaction(Connection, s_partitionedDmlTransactionOptions);
+                var transaction = new EphemeralTransaction(Connection, s_partitionedDmlTransactionOptions, Priority);
                 // Note: no commit here. PDML transactions are implicitly committed as they go along.
                 return await transaction.ExecuteDmlAsync(request, cancellationToken, CommandTimeout).ConfigureAwait(false);
             }
@@ -200,7 +205,7 @@ namespace Google.Cloud.Spanner.Data
             private async Task<int> ExecuteDmlAsync(CancellationToken cancellationToken)
             {
                 await Connection.EnsureIsOpenAsync(cancellationToken).ConfigureAwait(false);
-                var transaction = Transaction ?? Connection.AmbientTransaction ?? new EphemeralTransaction(Connection, s_readWriteOptions);
+                var transaction = Transaction ?? Connection.AmbientTransaction ?? new EphemeralTransaction(Connection, s_readWriteOptions, Priority);
                 ExecuteSqlRequest request = GetExecuteSqlRequest();
                 long count = await transaction.ExecuteDmlAsync(request, cancellationToken, CommandTimeout).ConfigureAwait(false);
                 // This cannot currently exceed int.MaxValue due to Spanner commit limitations anyway.
@@ -287,7 +292,7 @@ namespace Google.Cloud.Spanner.Data
             {
                 await Connection.EnsureIsOpenAsync(cancellationToken).ConfigureAwait(false);
                 var mutations = GetMutations();
-                var transaction = Transaction ?? Connection.AmbientTransaction ?? new EphemeralTransaction(Connection, s_readWriteOptions);
+                var transaction = Transaction ?? Connection.AmbientTransaction ?? new EphemeralTransaction(Connection, s_readWriteOptions, Priority);
                 // Make the request. This will commit immediately or not depending on whether a transaction was explicitly created.
                 await transaction.ExecuteMutationsAsync(mutations, cancellationToken, CommandTimeout).ConfigureAwait(false);
                 // Return the number of records affected.
@@ -358,7 +363,8 @@ namespace Google.Cloud.Spanner.Data
                 // Query options set through an environment variable have the next highest precedence.
                 var envQueryOptionsProto = new V1.ExecuteSqlRequest.Types.QueryOptions
                 {
-                    OptimizerVersion = Environment.GetEnvironmentVariable(SpannerOptimizerVersionVariable)?.Trim() ?? ""
+                    OptimizerVersion = Environment.GetEnvironmentVariable(SpannerOptimizerVersionVariable)?.Trim() ?? "",
+                    OptimizerStatisticsPackage = Environment.GetEnvironmentVariable(SpannerOptimizerStatisticsPackageVariable)?.Trim() ?? ""
                 };
                 queryOptionsProto.MergeFrom(envQueryOptionsProto);
 
@@ -371,6 +377,9 @@ namespace Google.Cloud.Spanner.Data
                 return queryOptionsProto;
             }
 
+            private RequestOptions BuildRequestOptions() =>
+                new RequestOptions { Priority = PriorityConverter.ToProto(Priority) , RequestTag = Tag ?? "", TransactionTag = Transaction?.Tag ?? "" };
+
             private ExecuteSqlRequest GetExecuteSqlRequest()
             {
                 if (Partition != null)
@@ -381,7 +390,8 @@ namespace Google.Cloud.Spanner.Data
                 var request = new ExecuteSqlRequest
                 {
                     Sql = CommandTextBuilder.ToString(),
-                    QueryOptions = GetEffectiveQueryOptions()
+                    QueryOptions = GetEffectiveQueryOptions(),
+                    RequestOptions = BuildRequestOptions()
                 };
 
                 // See comment at the start of GetMutations.

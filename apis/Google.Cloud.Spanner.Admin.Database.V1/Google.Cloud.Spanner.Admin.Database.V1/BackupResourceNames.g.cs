@@ -1,4 +1,4 @@
-// Copyright 2020 Google LLC
+// Copyright 2021 Google LLC
 //
 // Licensed under the Apache License, Version 2.0 (the "License");
 // you may not use this file except in compliance with the License.
@@ -269,6 +269,15 @@ namespace Google.Cloud.Spanner.Admin.Database.V1
             get => string.IsNullOrEmpty(Database) ? null : gcscv::DatabaseName.Parse(Database, allowUnparsed: true);
             set => Database = value?.ToString() ?? "";
         }
+
+        /// <summary>
+        /// <see cref="gcscv::DatabaseName"/>-typed view over the <see cref="ReferencingDatabases"/> resource name
+        /// property.
+        /// </summary>
+        public gax::ResourceNameList<gcscv::DatabaseName> ReferencingDatabasesAsDatabaseNames
+        {
+            get => new gax::ResourceNameList<gcscv::DatabaseName>(ReferencingDatabases, s => string.IsNullOrEmpty(s) ? null : gcscv::DatabaseName.Parse(s, allowUnparsed: true));
+        }
     }
 
     public partial class CreateBackupRequest
@@ -280,6 +289,27 @@ namespace Google.Cloud.Spanner.Admin.Database.V1
         {
             get => string.IsNullOrEmpty(Parent) ? null : gcscv::InstanceName.Parse(Parent, allowUnparsed: true);
             set => Parent = value?.ToString() ?? "";
+        }
+    }
+
+    public partial class CreateBackupMetadata
+    {
+        /// <summary>
+        /// <see cref="gcsadv::BackupName"/>-typed view over the <see cref="Name"/> resource name property.
+        /// </summary>
+        public gcsadv::BackupName BackupName
+        {
+            get => string.IsNullOrEmpty(Name) ? null : gcsadv::BackupName.Parse(Name, allowUnparsed: true);
+            set => Name = value?.ToString() ?? "";
+        }
+
+        /// <summary>
+        /// <see cref="gcscv::DatabaseName"/>-typed view over the <see cref="Database"/> resource name property.
+        /// </summary>
+        public gcscv::DatabaseName DatabaseAsDatabaseName
+        {
+            get => string.IsNullOrEmpty(Database) ? null : gcscv::DatabaseName.Parse(Database, allowUnparsed: true);
+            set => Database = value?.ToString() ?? "";
         }
     }
 
@@ -328,6 +358,37 @@ namespace Google.Cloud.Spanner.Admin.Database.V1
         {
             get => string.IsNullOrEmpty(Parent) ? null : gcscv::InstanceName.Parse(Parent, allowUnparsed: true);
             set => Parent = value?.ToString() ?? "";
+        }
+    }
+
+    public partial class BackupInfo
+    {
+        /// <summary><see cref="BackupName"/>-typed view over the <see cref="Backup"/> resource name property.</summary>
+        public BackupName BackupAsBackupName
+        {
+            get => string.IsNullOrEmpty(Backup) ? null : BackupName.Parse(Backup, allowUnparsed: true);
+            set => Backup = value?.ToString() ?? "";
+        }
+
+        /// <summary>
+        /// <see cref="gcscv::DatabaseName"/>-typed view over the <see cref="SourceDatabase"/> resource name property.
+        /// </summary>
+        public gcscv::DatabaseName SourceDatabaseAsDatabaseName
+        {
+            get => string.IsNullOrEmpty(SourceDatabase) ? null : gcscv::DatabaseName.Parse(SourceDatabase, allowUnparsed: true);
+            set => SourceDatabase = value?.ToString() ?? "";
+        }
+    }
+
+    public partial class CreateBackupEncryptionConfig
+    {
+        /// <summary>
+        /// <see cref="CryptoKeyName"/>-typed view over the <see cref="KmsKeyName"/> resource name property.
+        /// </summary>
+        public CryptoKeyName KmsKeyNameAsCryptoKeyName
+        {
+            get => string.IsNullOrEmpty(KmsKeyName) ? null : CryptoKeyName.Parse(KmsKeyName, allowUnparsed: true);
+            set => KmsKeyName = value?.ToString() ?? "";
         }
     }
 }

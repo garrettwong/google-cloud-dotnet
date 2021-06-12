@@ -2,10 +2,11 @@
   "apis": [
     {
       "id": "Google.Analytics.Admin.V1Alpha",
-      "version": "1.0.0-alpha03",
+      "version": "1.0.0-alpha06",
       "type": "grpc",
       "productName": "Analytics Admin",
-      "description": "Recommended Google client library to access the Analytics Admin API",
+      "productUrl": "https://developers.google.com/analytics",
+      "description": "Recommended Google client library to access the Analytics Admin API (v1alpha)",
       "tags": [
         "analytics"
       ],
@@ -15,10 +16,11 @@
     },
     {
       "id": "Google.Analytics.Data.V1Alpha",
-      "version": "1.0.0-alpha03",
+      "version": "1.0.0-alpha05",
       "type": "grpc",
       "productName": "Google Analytics Data",
-      "description": "Recommended Google client library to access the Analytics Data API",
+      "productUrl": "https://developers.google.com/analytics",
+      "description": "Recommended Google client library to access the Analytics Data API (v1alpha)",
       "tags": [
         "analytics"
       ],
@@ -27,8 +29,37 @@
       "protoPath": "google/analytics/data/v1alpha"
     },
     {
+      "id": "Google.Analytics.Data.V1Beta",
+      "version": "1.0.0-beta03",
+      "type": "grpc",
+      "productName": "Google Analytics Data",
+      "productUrl": "https://developers.google.com/analytics",
+      "description": "Recommended Google client library to access the Analytics Data API (v1beta)",
+      "tags": [
+        "analytics"
+      ],
+      "dependencies": {},
+      "generator": "micro",
+      "protoPath": "google/analytics/data/v1beta"
+    },
+    {
+      "id": "Google.Apps.Script.Type",
+      "version": "1.0.0",
+      "targetFrameworks": "netstandard2.0;net461",
+      "type": "other",
+      "description": "Version-agnostic types for Apps Script APIs.",
+      "tags": [
+        "gsuite"
+      ],
+      "dependencies": {
+        "Google.Api.CommonProtos": "2.3.0"
+      },
+      "generator": "proto",
+      "protoPath": "google/apps/script/type"
+    },
+    {
       "id": "Google.Area120.Tables.V1Alpha1",
-      "version": "1.0.0-alpha02",
+      "version": "1.0.0-alpha03",
       "type": "grpc",
       "productName": "Google Area 120 Tables",
       "description": "Recommended Google client library to access the Area 120 Tables API",
@@ -40,8 +71,81 @@
       "protoPath": "google/area120/tables/v1alpha1"
     },
     {
-      "id": "Google.Cloud.ArtifactRegistry.V1Beta2",
+      "id": "Google.Cloud.AccessApproval.V1",
+      "version": "1.1.0",
+      "type": "grpc",
+      "productName": "Access Approval",
+      "productUrl": "https://cloud.google.com/access-approval/docs/",
+      "description": "An API for controlling access to data by Google personnel.",
+      "tags": [
+        "access",
+        "approval"
+      ],
+      "dependencies": {
+        "Google.Api.Gax.Grpc.GrpcCore": "3.3.0",
+        "Grpc.Core": "2.36.4"
+      },
+      "generator": "micro",
+      "protoPath": "google/cloud/accessapproval/v1"
+    },
+    {
+      "id": "Google.Cloud.ApiGateway.V1",
+      "version": "1.0.0",
+      "type": "grpc",
+      "productName": "API Gateway",
+      "productUrl": "https://cloud.google.com/api-gateway/docs",
+      "description": "Recommended Google client library to access the API Gateway API, which enables you to provide secure access to your backend services with an API that is consistent across all of your services, regardless of the service implementation",
+      "tags": [
+        "api",
+        "gateway"
+      ],
+      "dependencies": {
+        "Google.Api.Gax.Grpc.GrpcCore": "3.3.0",
+        "Google.LongRunning": "2.1.0",
+        "Grpc.Core": "2.36.4"
+      },
+      "generator": "micro",
+      "protoPath": "google/cloud/apigateway/v1"
+    },
+    {
+      "id": "Google.Cloud.ApigeeConnect.V1",
       "version": "1.0.0-beta01",
+      "type": "grpc",
+      "productName": "Apigee Connect",
+      "productUrl": "https://cloud.google.com/apigee/docs/hybrid/v1.4/apigee-connect",
+      "description": "Recommended Google client library to access the Apigee Connect API which allows the Apigee hybrid management plane to connect securely to the MART service in the runtime plane.",
+      "tags": [
+        "apigee",
+        "mart",
+        "hybrid"
+      ],
+      "dependencies": {},
+      "generator": "micro",
+      "protoPath": "google/cloud/apigeeconnect/v1"
+    },
+    {
+      "id": "Google.Cloud.AppEngine.V1",
+      "version": "1.1.0",
+      "type": "grpc",
+      "productName": "App Engine Audit Data",
+      "productUrl": "https://cloud.google.com/appengine",
+      "description": "Recommended Google client library to access the App Engine API, which provisions and manages developers' App Engine applications.",
+      "tags": [
+        "app",
+        "engine",
+        "appengine"
+      ],
+      "dependencies": {
+        "Google.Api.Gax.Grpc.GrpcCore": "3.3.0",
+        "Google.LongRunning": "2.1.0",
+        "Grpc.Core": "2.36.4"
+      },
+      "generator": "micro",
+      "protoPath": "google/appengine/v1"
+    },
+    {
+      "id": "Google.Cloud.ArtifactRegistry.V1Beta2",
+      "version": "1.0.0-beta02",
       "type": "grpc",
       "productName": "Artifact Registry",
       "productUrl": "https://cloud.google.com/artifact-registry",
@@ -53,7 +157,7 @@
       ],
       "dependencies": {
         "Google.Cloud.Iam.V1": "2.1.0",
-        "Google.LongRunning": "2.1.0"
+        "Google.LongRunning": "2.2.0"
       },
       "generator": "micro",
       "protoPath": "google/devtools/artifactregistry/v1beta2"
@@ -64,18 +168,18 @@
       "protoPath": "google/cloud/asset/v1",
       "productName": "Google Cloud Asset Inventory",
       "productUrl": "https://cloud.google.com/resource-manager/docs/cloud-asset-inventory/overview",
-      "version": "2.6.0",
+      "version": "2.8.0",
       "type": "grpc",
       "description": "Recommended Google client library to access the Google Cloud Asset Inventory API (v1).",
       "dependencies": {
-        "Google.Api.Gax.Grpc.GrpcCore": "3.2.0",
-        "Google.Cloud.Iam.V1": "2.1.0",
-        "Google.Cloud.OrgPolicy.V1": "2.0.0",
-        "Google.Cloud.OsConfig.V1": "1.2.0",
-        "Google.Identity.AccessContextManager.Type": "1.0.0",
-        "Google.Identity.AccessContextManager.V1": "1.0.0",
-        "Google.LongRunning": "2.1.0",
-        "Grpc.Core": "2.31.0"
+        "Google.Api.Gax.Grpc.GrpcCore": "3.3.0",
+        "Google.Cloud.Iam.V1": "2.2.0",
+        "Google.Cloud.OrgPolicy.V1": "2.2.0",
+        "Google.Cloud.OsConfig.V1": "1.3.0",
+        "Google.Identity.AccessContextManager.Type": "1.1.0",
+        "Google.Identity.AccessContextManager.V1": "1.2.0",
+        "Google.LongRunning": "2.2.0",
+        "Grpc.Core": "2.36.4"
       },
       "tags": [
         "asset",
@@ -85,7 +189,7 @@
     },
     {
       "id": "Google.Cloud.AssuredWorkloads.V1Beta1",
-      "version": "1.0.0-beta02",
+      "version": "1.0.0-beta04",
       "type": "grpc",
       "productName": "Assured Workloads",
       "productUrl": "https://cloud.google.com/assured-workloads/docs",
@@ -106,13 +210,13 @@
       "protoPath": "google/cloud/automl/v1",
       "productName": "Google AutoML",
       "productUrl": "https://cloud.google.com/automl/",
-      "version": "2.1.0",
+      "version": "2.2.0",
       "type": "grpc",
       "description": "Recommended Google client library to access the AutoML API, which allows you to train high-quality custom machine learning models with minimal effort and machine learning expertise.",
       "dependencies": {
-        "Google.Api.Gax.Grpc.GrpcCore": "3.2.0",
-        "Google.LongRunning": "2.0.0",
-        "Grpc.Core": "2.31.0"
+        "Google.Api.Gax.Grpc.GrpcCore": "3.3.0",
+        "Google.LongRunning": "2.2.0",
+        "Grpc.Core": "2.36.4"
       },
       "tags": [
         "automl",
@@ -121,7 +225,7 @@
     },
     {
       "id": "Google.Cloud.BigQuery.Connection.V1",
-      "version": "1.1.0",
+      "version": "1.2.0",
       "type": "grpc",
       "productName": "BigQuery Connection",
       "productUrl": "https://cloud.google.com/bigquery/docs/reference/bigqueryconnection",
@@ -131,9 +235,9 @@
         "connection"
       ],
       "dependencies": {
-        "Google.Api.Gax.Grpc.GrpcCore": "3.2.0",
-        "Google.Cloud.Iam.V1": "2.0.0",
-        "Grpc.Core": "2.31.0"
+        "Google.Api.Gax.Grpc.GrpcCore": "3.3.0",
+        "Google.Cloud.Iam.V1": "2.1.0",
+        "Grpc.Core": "2.36.4"
       },
       "generator": "micro",
       "protoPath": "google/cloud/bigquery/connection/v1"
@@ -144,12 +248,12 @@
       "protoPath": "google/cloud/bigquery/datatransfer/v1",
       "productName": "Google BigQuery Data Transfer",
       "productUrl": "https://cloud.google.com/bigquery/transfer/",
-      "version": "3.0.0",
+      "version": "3.1.0",
       "type": "grpc",
       "description": "Recommended Google client library to access the BigQuery Data Transfer API, which transfers data from partner SaaS applications to Google BigQuery on a scheduled, managed basis.",
       "dependencies": {
-        "Google.Api.Gax.Grpc.GrpcCore": "3.2.0",
-        "Grpc.Core": "2.31.0"
+        "Google.Api.Gax.Grpc.GrpcCore": "3.3.0",
+        "Grpc.Core": "2.36.4"
       },
       "tags": [
         "BigQuery",
@@ -158,7 +262,7 @@
     },
     {
       "id": "Google.Cloud.BigQuery.Reservation.V1",
-      "version": "1.1.0",
+      "version": "1.2.0",
       "type": "grpc",
       "productName": "BigQuery Reservation",
       "productUrl": "https://cloud.google.com/bigquery/docs/reference/reservations",
@@ -168,8 +272,8 @@
         "Reservation"
       ],
       "dependencies": {
-        "Google.Api.Gax.Grpc.GrpcCore": "3.2.0",
-        "Grpc.Core": "2.31.0"
+        "Google.Api.Gax.Grpc.GrpcCore": "3.3.0",
+        "Grpc.Core": "2.36.4"
       },
       "generator": "micro",
       "protoPath": "google/cloud/bigquery/reservation/v1"
@@ -178,12 +282,12 @@
       "id": "Google.Cloud.BigQuery.V2",
       "productName": "Google BigQuery",
       "productUrl": "https://cloud.google.com/bigquery/",
-      "version": "2.1.0",
+      "version": "2.2.0",
       "type": "rest",
       "description": "Recommended Google client library to access the BigQuery API. It wraps the Google.Apis.Bigquery.v2 client library, making common operations simpler in client code. BigQuery is a data platform for customers to create, manage, share and query data.",
       "dependencies": {
-        "Google.Apis.Bigquery.v2": "1.49.0.2077",
-        "Google.Api.Gax.Rest": "3.2.0"
+        "Google.Api.Gax.Rest": "3.3.0",
+        "Google.Apis.Bigquery.v2": "1.50.0.2209"
       },
       "testDependencies": {
         "Google.Cloud.Storage.V1": "project"
@@ -198,12 +302,12 @@
       "protoPath": "google/cloud/bigquery/storage/v1",
       "productName": "Google BigQuery Storage",
       "productUrl": "https://cloud.google.com/bigquery/docs/reference/storage/",
-      "version": "2.1.0",
+      "version": "2.2.0",
       "type": "grpc",
       "description": "Recommended Google client library to access the BigQuery Storage API.",
       "dependencies": {
         "Google.Api.Gax.Grpc.GrpcCore": "3.2.0",
-        "Grpc.Core": "2.31.0"
+        "Grpc.Core": "2.36.4"
       },
       "tags": [
         "BigQuery"
@@ -215,35 +319,36 @@
       "protoPath": "google/bigtable/admin/v2",
       "productName": "Google Cloud Bigtable Administration",
       "productUrl": "https://cloud.google.com/bigtable/",
-      "version": "2.3.0",
+      "version": "2.4.0",
+      "commonResourcesConfig": "apis/Google.Cloud.Bigtable.Common.V2/CommonResourcesConfig.json",
       "type": "grpc",
       "description": "Recommended Google client library to access the Google Cloud Bigtable Instance and Table Admin APIs.",
       "tags": [
         "Bigtable"
       ],
       "dependencies": {
-        "Google.Api.Gax.Grpc.GrpcCore": "3.2.0",
+        "Google.Api.Gax.Grpc.GrpcCore": "3.3.0",
         "Google.Cloud.Bigtable.Common.V2": "2.0.0",
         "Google.Cloud.Iam.V1": "2.1.0",
         "Google.LongRunning": "2.1.0",
-        "Grpc.Core": "2.31.0"
+        "Grpc.Core": "2.36.4"
       },
       "testDependencies": {
-        "Google.Api.Gax.Grpc.Testing": "3.2.0"
+        "Google.Api.Gax.Grpc.Testing": "3.3.0"
       }
     },
     {
       "id": "Google.Cloud.Bigtable.Common.V2",
       "type": "other",
       "targetFrameworks": "netstandard2.0;net461",
-      "version": "2.0.0",
+      "version": "2.1.0",
       "description": "Common code used by Bigtable V2 APIs",
       "tags": [
         "Bigtable"
       ],
       "dependencies": {
-        "Google.Api.Gax": "3.2.0",
-        "Google.Protobuf": "3.13.0"
+        "Google.Api.Gax": "3.3.0",
+        "Google.Protobuf": "3.15.8"
       }
     },
     {
@@ -252,26 +357,28 @@
       "protoPath": "google/bigtable/v2",
       "productName": "Google Bigtable",
       "productUrl": "https://cloud.google.com/bigtable/",
-      "version": "2.1.0",
+      "version": "2.2.0",
+      "commonResourcesConfig": "apis/Google.Cloud.Bigtable.Common.V2/CommonResourcesConfig.json",
       "type": "grpc",
+      "metadataType": "GAPIC_COMBO",
       "description": "Recommended Google client library to access the Google Cloud Bigtable API.",
       "tags": [
         "Bigtable"
       ],
       "dependencies": {
-        "Google.Api.Gax.Grpc.Gcp": "3.2.0",
-        "Google.Api.Gax.Grpc.GrpcCore": "3.2.0",
+        "Google.Api.Gax.Grpc.Gcp": "3.3.0",
+        "Google.Api.Gax.Grpc.GrpcCore": "3.3.0",
         "Google.Cloud.Bigtable.Common.V2": "2.0.0",
-        "Grpc.Core": "2.31.0"
+        "Grpc.Core": "2.36.4"
       },
       "testDependencies": {
-        "Google.Api.Gax.Grpc.Testing": "3.2.0",
+        "Google.Api.Gax.Grpc.Testing": "3.3.0",
         "Google.Cloud.Bigtable.Admin.V2": "project"
       }
     },
     {
       "id": "Google.Cloud.Billing.Budgets.V1",
-      "version": "1.0.0",
+      "version": "1.1.0",
       "type": "grpc",
       "productName": "Cloud Billing Budget",
       "productUrl": "https://cloud.google.com/billing/docs/how-to/budget-api-overview",
@@ -282,15 +389,15 @@
         "budget"
       ],
       "dependencies": {
-        "Google.Api.Gax.Grpc.GrpcCore": "3.2.0",
-        "Grpc.Core": "2.31.0"
+        "Google.Api.Gax.Grpc.GrpcCore": "3.3.0",
+        "Grpc.Core": "2.36.4"
       },
       "generator": "micro",
       "protoPath": "google/cloud/billing/budgets/v1"
     },
     {
       "id": "Google.Cloud.Billing.Budgets.V1Beta1",
-      "version": "1.0.0-beta02",
+      "version": "1.0.0-beta03",
       "type": "grpc",
       "productName": "Cloud Billing Budget",
       "productUrl": "https://cloud.google.com/billing/docs/how-to/budget-api-overview",
@@ -310,13 +417,13 @@
       "protoPath": "google/cloud/billing/v1",
       "productName": "Google Cloud Billing",
       "productUrl": "https://cloud.google.com/billing/docs/",
-      "version": "2.1.0",
+      "version": "2.2.0",
       "type": "grpc",
       "description": "Recommended Google client library to access the Google Cloud Billing API, which allows you to define a budget plan and the rules to execute as spend is tracked against that plan.",
       "dependencies": {
-        "Google.Api.Gax.Grpc.GrpcCore": "3.2.0",
-        "Google.Cloud.Iam.V1": "2.0.0",
-        "Grpc.Core": "2.31.0"
+        "Google.Api.Gax.Grpc.GrpcCore": "3.3.0",
+        "Google.Cloud.Iam.V1": "2.1.0",
+        "Grpc.Core": "2.36.4"
       },
       "tags": [
         "Billing"
@@ -324,7 +431,7 @@
     },
     {
       "id": "Google.Cloud.BinaryAuthorization.V1Beta1",
-      "version": "1.0.0-beta01",
+      "version": "1.0.0-beta02",
       "type": "grpc",
       "productName": "Binary Authorization",
       "productUrl": "https://cloud.google.com/binary-authorization/docs/reference/rpc",
@@ -341,17 +448,88 @@
       "protoPath": "google/cloud/binaryauthorization/v1beta1"
     },
     {
+      "id": "Google.Cloud.Channel.V1",
+      "version": "1.1.0",
+      "type": "grpc",
+      "productName": "Cloud Channel",
+      "productUrl": "https://cloud.google.com/channel/docs/",
+      "description": "Recommended Google client library to access the Google Cloud Channel API, which enables Google Cloud resellers and distributors to manage their customers, channel partners, entitlements and reports.",
+      "tags": [
+        "channel",
+        "reseller"
+      ],
+      "dependencies": {
+        "Google.Api.Gax.Grpc.GrpcCore": "3.3.0",
+        "Google.LongRunning": "2.1.0",
+        "Grpc.Core": "2.36.4"
+      },
+      "generator": "micro",
+      "protoPath": "google/cloud/channel/v1"
+    },
+    {
+      "id": "Google.Cloud.CloudBuild.V1",
+      "version": "1.1.0",
+      "type": "grpc",
+      "productName": "Cloud Build",
+      "productUrl": "https://cloud.google.com/cloud-build",
+      "description": "Recommended Google client library to access the Google Cloud Build API, which creates and manages builds on Google Cloud Platform.",
+      "tags": [
+        "build",
+        "cloudbuild"
+      ],
+      "dependencies": {
+        "Google.Api.Gax.Grpc.GrpcCore": "3.3.0",
+        "Google.LongRunning": "2.1.0",
+        "Grpc.Core": "2.36.4"
+      },
+      "generator": "micro",
+      "protoPath": "google/devtools/cloudbuild/v1"
+    },
+    {
+      "id": "Google.Cloud.CloudDms.V1",
+      "version": "1.0.0-beta01",
+      "type": "grpc",
+      "productName": "Database Migration",
+      "productUrl": "https://cloud.google.com/database-migration",
+      "description": "Recommended Google client library to access the Google Cloud Database Migration API, which manages Cloud Database Migration Service resources on Google Cloud Platform.",
+      "tags": [
+        "database",
+        "migration"
+      ],
+      "dependencies": {
+        "Google.LongRunning": "2.1.0"
+      },
+      "generator": "micro",
+      "protoPath": "google/cloud/clouddms/v1"
+    },
+    {
+      "id": "Google.Cloud.Compute.V1",
+      "version": "1.0.0-alpha01",
+      "type": "regapic",
+      "productName": "Compute Engine",
+      "productUrl": "https://cloud.google.com/compute",
+      "description": "Recommended Google client library to access the Google Cloud Compute Engine API.",
+      "tags": [
+        "compute"
+      ],
+      "dependencies": {
+        "Google.Api.Gax.Grpc": "3.4.0-alpha01"
+      },
+      "generator": "regapic",
+      "protoPath": "google/cloud/compute/v1"
+    },
+    {
       "id": "Google.Cloud.Container.V1",
       "generator": "micro",
       "protoPath": "google/container/v1",
       "productName": "Google Kubernetes Engine",
       "productUrl": "https://cloud.google.com/kubernetes-engine/docs/reference/rest/",
-      "version": "2.2.0",
+      "version": "2.3.0",
       "type": "grpc",
       "description": "Recommended Google client library to access the Google Kubernetes Engine API, used for building and managing container based applications, powered by the open source Kubernetes technology.",
       "dependencies": {
-        "Google.Api.Gax.Grpc.GrpcCore": "3.2.0",
-        "Grpc.Core": "2.31.0"
+        "Google.Api.Gax.Grpc.GrpcCore": "3.3.0",
+        "Grpc.Core": "2.36.4"
       },
       "tags": [
         "Kubernetes"
@@ -363,7 +541,7 @@
       "protoPath": "google/cloud/datacatalog/v1",
       "productName": "Data Catalog",
       "productUrl": "https://cloud.google.com/data-catalog/docs",
-      "version": "1.1.0",
+      "version": "1.2.0",
       "type": "grpc",
       "description": "Recommended Google client library to access the Data Catalog API. Data Catalog is a fully managed and highly scalable data discovery and metadata management service.",
       "tags": [
@@ -371,14 +549,14 @@
         "metadata"
       ],
       "dependencies": {
-        "Google.Api.Gax.Grpc.GrpcCore": "3.2.0",
-        "Google.Cloud.Iam.V1": "2.0.0",
-        "Grpc.Core": "2.31.0"
+        "Google.Api.Gax.Grpc.GrpcCore": "3.3.0",
+        "Google.Cloud.Iam.V1": "2.1.0",
+        "Grpc.Core": "2.36.4"
       }
     },
     {
       "id": "Google.Cloud.DataLabeling.V1Beta1",
-      "version": "1.0.0-beta01",
+      "version": "1.0.0-beta02",
       "type": "grpc",
       "productName": "Data Labeling",
       "productUrl": "https://cloud.google.com/ai-platform/data-labeling/docs",
@@ -388,10 +566,25 @@
         "labeling"
       ],
       "dependencies": {
-        "Google.LongRunning": "2.1.0"
+        "Google.LongRunning": "2.2.0"
       },
       "generator": "micro",
       "protoPath": "google/cloud/datalabeling/v1beta1"
+    },
+    {
+      "id": "Google.Cloud.DataQnA.V1Alpha",
+      "version": "1.0.0-alpha02",
+      "type": "grpc",
+      "productName": "Data QnA",
+      "productUrl": "https://cloud.google.com/bigquery/docs/dataqna",
+      "description": "Recommended Google client library to access the Google Cloud Data QnA API (v1alpha) which is a natural language question and answer service for BigQuery data.",
+      "tags": [
+        "language",
+        "bigquery"
+      ],
+      "dependencies": {},
+      "generator": "micro",
+      "protoPath": "google/cloud/dataqna/v1alpha"
     },
     {
       "id": "Google.Cloud.Dataproc.V1",
@@ -399,7 +592,7 @@
       "protoPath": "google/cloud/dataproc/v1",
       "productName": "Google Cloud Dataproc",
       "productUrl": "https://cloud.google.com/dataproc/docs/concepts/overview",
-      "version": "3.0.0",
+      "version": "3.1.0",
       "type": "grpc",
       "description": "Recommended Google client library to access the Google Cloud Dataproc API, which manages Hadoop-based clusters and jobs on Google Cloud Platform.",
       "tags": [
@@ -407,14 +600,14 @@
         "Hadoop"
       ],
       "dependencies": {
-        "Google.Api.Gax.Grpc.GrpcCore": "3.2.0",
+        "Google.Api.Gax.Grpc.GrpcCore": "3.3.0",
         "Google.LongRunning": "2.1.0",
-        "Grpc.Core": "2.31.0"
+        "Grpc.Core": "2.36.4"
       }
     },
     {
       "id": "Google.Cloud.Datastore.Admin.V1",
-      "version": "1.0.0",
+      "version": "1.1.0",
       "type": "grpc",
       "productName": "Cloud Datastore",
       "description": "Recommended Google client library to access the Google Cloud Datastore Admin API. This accesses the schemaless NoSQL database to provide fully managed, robust, scalable storage for your application.",
@@ -423,9 +616,9 @@
         "admin"
       ],
       "dependencies": {
-        "Google.Api.Gax.Grpc.GrpcCore": "3.2.0",
+        "Google.Api.Gax.Grpc.GrpcCore": "3.3.0",
         "Google.LongRunning": "2.1.0",
-        "Grpc.Core": "2.31.0"
+        "Grpc.Core": "2.36.4"
       },
       "generator": "micro",
       "protoPath": "google/datastore/admin/v1"
@@ -436,19 +629,20 @@
       "protoPath": "google/datastore/v1",
       "productName": "Google Cloud Datastore",
       "productUrl": "https://cloud.google.com/datastore/docs/concepts/overview",
-      "version": "3.1.0",
+      "version": "3.2.0",
       "type": "grpc",
+      "metadataType": "GAPIC_COMBO",
       "description": "Recommended Google client library to access the Google Cloud Datastore API, which accesses the schemaless NoSQL database to provide fully managed, robust, scalable storage for your application.",
       "tags": [
         "Datastore"
       ],
       "dependencies": {
-        "Google.Api.Gax.Grpc.GrpcCore": "3.2.0",
-        "Grpc.Core": "2.31.0",
+        "Google.Api.Gax.Grpc.GrpcCore": "3.3.0",
+        "Grpc.Core": "2.36.4",
         "System.Linq.Async": "4.0.0"
       },
       "testDependencies": {
-        "Google.Api.Gax.Grpc.Testing": "3.2.0"
+        "Google.Api.Gax.Grpc.Testing": "3.3.0"
       }
     },
     {
@@ -457,7 +651,7 @@
       "protoPath": "google/devtools/clouddebugger/v2",
       "productName": "Google Cloud Debugger",
       "productUrl": "https://cloud.google.com/debugger/",
-      "version": "2.1.0",
+      "version": "2.3.0",
       "type": "grpc",
       "description": "Recommended Google client library to access the Google Cloud Debugger API.",
       "tags": [
@@ -467,14 +661,14 @@
         "Stackdriver"
       ],
       "dependencies": {
-        "Google.Api.Gax.Grpc.GrpcCore": "3.2.0",
-        "Google.Cloud.DevTools.Common": "2.0.0",
-        "Grpc.Core": "2.31.0"
+        "Google.Api.Gax.Grpc.GrpcCore": "3.3.0",
+        "Google.Cloud.DevTools.Common": "2.1.0",
+        "Grpc.Core": "2.36.4"
       }
     },
     {
       "id": "Google.Cloud.DevTools.Common",
-      "version": "2.0.0",
+      "version": "2.1.0",
       "type": "other",
       "targetFrameworks": "netstandard2.0;net461",
       "testTargetFrameworks": "netcoreapp2.1;net461",
@@ -483,7 +677,7 @@
         "Tools"
       ],
       "dependencies": {
-        "Google.Api.CommonProtos": "2.2.0"
+        "Google.Api.CommonProtos": "2.3.0"
       }
     },
     {
@@ -492,7 +686,7 @@
       "protoPath": "google/devtools/containeranalysis/v1",
       "productName": "Google Container Analysis",
       "productUrl": "https://cloud.google.com/container-registry/docs/container-analysis/",
-      "version": "2.1.0",
+      "version": "2.2.0",
       "type": "grpc",
       "description": "Recommended Google client library to access the Google Cloud Container Analysis API.",
       "tags": [
@@ -502,16 +696,17 @@
         "grafeas"
       ],
       "dependencies": {
-        "Google.Api.Gax.Grpc.GrpcCore": "3.2.0",
+        "Google.Api.Gax.Grpc.GrpcCore": "3.3.0",
         "Google.Cloud.Iam.V1": "2.1.0",
         "Grafeas.V1": "project",
-        "Grpc.Core": "2.31.0"
+        "Grpc.Core": "2.36.4"
       }
     },
     {
       "id": "Google.Cloud.Diagnostics.AspNetCore",
-      "version": "4.2.0-beta02",
+      "version": "4.2.0",
       "type": "other",
+      "metadataType": "INTEGRATION",
       "targetFrameworks": "netstandard2.0",
       "testTargetFrameworks": "netcoreapp2.1;net461",
       "description": "Google Cloud Logging, Trace and Error Reporting Instrumentation Libraries for ASP.NET Core.",
@@ -535,7 +730,8 @@
         "Google.Cloud.Diagnostics.Common.IntegrationTests": "project",
         "Google.Cloud.Diagnostics.Common.Tests": "project",
         "Microsoft.AspNetCore.Mvc": "2.1.3",
-        "Microsoft.AspNetCore.TestHost": "2.1.1"
+        "Microsoft.AspNetCore.TestHost": "2.1.1",
+        "Microsoft.Extensions.Hosting": "3.0.0"
       },
       "additionalAnalyzerTestDependencies": {
         "Microsoft.AspNetCore.Mvc.Core": "1.0.4",
@@ -544,8 +740,9 @@
     },
     {
       "id": "Google.Cloud.Diagnostics.AspNetCore3",
-      "version": "4.0.0-beta01",
+      "version": "4.2.0",
       "type": "other",
+      "metadataType": "INTEGRATION",
       "targetFrameworks": "netcoreapp3.1",
       "testTargetFrameworks": "netcoreapp3.1",
       "description": "Google Cloud Logging, Trace and Error Reporting Instrumentation Libraries for ASP.NET Core 3.",
@@ -570,7 +767,7 @@
     },
     {
       "id": "Google.Cloud.Diagnostics.Common",
-      "version": "4.2.0-beta02",
+      "version": "4.2.0",
       "type": "other",
       "targetFrameworks": "netstandard2.0",
       "testTargetFrameworks": "netcoreapp2.1;netcoreapp3.1;net461",
@@ -585,15 +782,35 @@
       ],
       "dependencies": {
         "Google.Api.Gax.Grpc.GrpcCore": "3.2.0",
-        "Google.Cloud.Logging.V2": "3.0.0",
-        "Google.Cloud.Trace.V1": "2.0.0",
+        "Google.Cloud.Logging.V2": "3.2.0",
+        "Google.Cloud.Trace.V1": "2.1.0",
         "Microsoft.Extensions.Http": "2.1.1",
         "System.Diagnostics.StackTrace": "4.3.0"
       },
       "testDependencies": {
-        "Google.Cloud.ErrorReporting.V1Beta1": "2.0.0-beta02"
+        "Google.Cloud.ErrorReporting.V1Beta1": "2.0.0-beta03"
       },
       "noVersionHistory": true
+    },
+    {
+      "id": "Google.Cloud.Dialogflow.Cx.V3",
+      "version": "1.1.0",
+      "type": "grpc",
+      "productName": "Dialogflow",
+      "productUrl": "https://cloud.google.com/dialogflow/cx/docs",
+      "description": "Builds conversational interfaces (for example, chatbots, and voice-powered apps and devices).",
+      "tags": [
+        "dialogflow",
+        "conversation",
+        "agents"
+      ],
+      "dependencies": {
+        "Google.Api.Gax.Grpc.GrpcCore": "3.3.0",
+        "Google.LongRunning": "2.1.0",
+        "Grpc.Core": "2.36.4"
+      },
+      "generator": "micro",
+      "protoPath": "google/cloud/dialogflow/cx/v3"
     },
     {
       "id": "Google.Cloud.Dialogflow.V2",
@@ -601,7 +818,7 @@
       "protoPath": "google/cloud/dialogflow/v2",
       "productName": "Google Cloud Dialogflow",
       "productUrl": "https://cloud.google.com/dialogflow-enterprise/",
-      "version": "3.1.0",
+      "version": "3.2.0",
       "type": "grpc",
       "description": "Recommended Google client library to access the Google Dialogflow API.",
       "tags": [
@@ -609,9 +826,9 @@
         "iot"
       ],
       "dependencies": {
-        "Google.Api.Gax.Grpc.GrpcCore": "3.2.0",
-        "Google.LongRunning": "2.0.0",
-        "Grpc.Core": "2.31.0"
+        "Google.Api.Gax.Grpc.GrpcCore": "3.3.0",
+        "Google.LongRunning": "2.1.0",
+        "Grpc.Core": "2.36.4"
       },
       "testDependencies": {
         "Microsoft.AspNetCore.Mvc.Core": "1.0.4"
@@ -623,12 +840,12 @@
       "protoPath": "google/privacy/dlp/v2",
       "productName": "Google Cloud Data Loss Prevention",
       "productUrl": "https://cloud.google.com/dlp/",
-      "version": "3.1.0",
+      "version": "3.2.0",
       "type": "grpc",
       "description": "Recommended Google client library to access the Google Data Loss Prevention API, which provides methods for detection of privacy-sensitive fragments in text, images, and Google Cloud Platform storage repositories.",
       "dependencies": {
-        "Google.Api.Gax.Grpc.GrpcCore": "3.2.0",
-        "Grpc.Core": "2.31.0"
+        "Google.Api.Gax.Grpc.GrpcCore": "3.3.0",
+        "Grpc.Core": "2.36.4"
       },
       "tags": [
         "DLP",
@@ -638,12 +855,35 @@
       ]
     },
     {
+      "id": "Google.Cloud.DocumentAI.V1",
+      "version": "1.0.0",
+      "type": "grpc",
+      "productName": "Cloud Document AI",
+      "productUrl": "https://cloud.google.com/solutions/document-ai",
+      "description": "Recommended Google client library to access the Google Document AI API (v1), which is a service to parse structured information from unstructured or semi-structured documents using state-of-the-art Google AI such as natural language, computer vision, translation, and AutoML.",
+      "tags": [
+        "ai",
+        "language",
+        "documents",
+        "vision",
+        "translation",
+        "automl"
+      ],
+      "dependencies": {
+        "Google.Api.Gax.Grpc.GrpcCore": "3.3.0",
+        "Google.LongRunning": "2.2.0",
+        "Grpc.Core": "2.36.4"
+      },
+      "generator": "micro",
+      "protoPath": "google/cloud/documentai/v1"
+    },
+    {
       "id": "Google.Cloud.DocumentAI.V1Beta2",
-      "version": "1.0.0-beta02",
+      "version": "1.0.0-beta03",
       "generator": "micro",
       "productName": "Cloud Document AI",
       "productUrl": "https://cloud.google.com/solutions/document-ai",
-      "description": "Recommended Google client library to access the Google Document AI API, which is a service to parse structured information from unstructured or semi-structured documents using state-of-the-art Google AI such as natural language, computer vision, translation, and AutoML.",
+      "description": "Recommended Google client library to access the Google Document AI API (v1beta2), which is a service to parse structured information from unstructured or semi-structured documents using state-of-the-art Google AI such as natural language, computer vision, translation, and AutoML.",
       "protoPath": "google/cloud/documentai/v1beta2",
       "type": "grpc",
       "tags": [
@@ -655,8 +895,24 @@
         "automl"
       ],
       "dependencies": {
-        "Google.LongRunning": "2.1.0"
+        "Google.LongRunning": "2.2.0"
       }
+    },
+    {
+      "id": "Google.Cloud.Domains.V1Beta1",
+      "version": "1.0.0-beta02",
+      "type": "grpc",
+      "productName": "Cloud Domains",
+      "productUrl": "https://cloud.google.com/domains/",
+      "description": "Enables management and configuration of domain names.",
+      "tags": [
+        "domains"
+      ],
+      "dependencies": {
+        "Google.LongRunning": "2.2.0"
+      },
+      "generator": "micro",
+      "protoPath": "google/cloud/domains/v1beta1"
     },
     {
       "id": "Google.Cloud.ErrorReporting.V1Beta1",
@@ -664,7 +920,7 @@
       "protoPath": "google/devtools/clouderrorreporting/v1beta1",
       "productName": "Google Cloud Error Reporting",
       "productUrl": "https://cloud.google.com/error-reporting/",
-      "version": "2.0.0-beta03",
+      "version": "2.0.0-beta04",
       "releaseLevelOverride": "beta",
       "type": "grpc",
       "description": "Recommended Google client library to access the Google Cloud Error Reporting API, which groups and counts similar errors from cloud services. The Googe Cloud Error Reporting API provides a way to report new errors and read access to error groups and their associated errors.",
@@ -672,6 +928,25 @@
         "ErrorReporting",
         "Stackdriver"
       ]
+    },
+    {
+      "id": "Google.Cloud.EssentialContacts.V1",
+      "version": "1.0.0",
+      "type": "grpc",
+      "productName": "Essential Contacts",
+      "productUrl": "https://cloud.google.com/resource-manager/docs/reference/essentialcontacts/rest",
+      "description": "Recommended Google client library to access the Google Cloud Essential Contacts API",
+      "tags": [
+        "resources",
+        "notification",
+        "contacts"
+      ],
+      "dependencies": {
+        "Google.Api.Gax.Grpc.GrpcCore": "3.3.0",
+        "Grpc.Core": "2.36.4"
+      },
+      "generator": "micro",
+      "protoPath": "google/cloud/essentialcontacts/v1"
     },
     {
       "id": "Google.Cloud.Firestore.Admin.V1",
@@ -682,7 +957,7 @@
       "productUrl": "https://firebase.google.com",
       "targetFrameworks": "netstandard2.0;net461",
       "testTargetFrameworks": "netcoreapp2.1;net461",
-      "version": "2.1.0",
+      "version": "2.2.0",
       "type": "grpc",
       "description": "Recommended Google client library to access the Firestore Admin API.",
       "tags": [
@@ -691,9 +966,9 @@
         "admin"
       ],
       "dependencies": {
-        "Google.Api.Gax.Grpc.GrpcCore": "3.2.0",
-        "Google.LongRunning": "2.1.0",
-        "Grpc.Core": "2.31.0"
+        "Google.Api.Gax.Grpc.GrpcCore": "3.3.0",
+        "Google.LongRunning": "2.2.0",
+        "Grpc.Core": "2.36.4"
       }
     },
     {
@@ -701,8 +976,9 @@
       "productName": "Firestore",
       "productUrl": "https://firebase.google.com/docs/firestore/",
       "listingDescription": "Firestore high-level library",
-      "version": "2.3.0",
+      "version": "2.4.0",
       "type": "other",
+      "metadataType": "VENEER_GRPC",
       "targetFrameworks": "netstandard2.0;net461",
       "testTargetFrameworks": "netcoreapp2.1;net461",
       "description": "Recommended Google client library to access the Firestore API.",
@@ -711,15 +987,15 @@
         "firebase"
       ],
       "dependencies": {
-        "Google.Cloud.Firestore.V1": "2.2.0",
-        "Grpc.Core": "2.31.0",
+        "Google.Cloud.Firestore.V1": "project",
+        "Grpc.Core": "2.36.4",
         "System.Collections.Immutable": "1.4.0",
         "System.Linq.Async": "4.0.0"
       },
       "testDependencies": {
-        "Google.Api.Gax.Grpc.Testing": "3.2.0",
-        "Google.Api.Gax.Testing": "3.2.0",
-        "Grpc.Core.Testing": "2.31.0",
+        "Google.Api.Gax.Grpc.Testing": "3.3.0",
+        "Google.Api.Gax.Testing": "3.3.0",
+        "Grpc.Core.Testing": "2.36.4",
         "System.ValueTuple": "4.5.0",
         "Xunit.Combinatorial": "1.2.7"
       }
@@ -731,7 +1007,7 @@
       "productName": "Firestore",
       "productUrl": "https://firebase.google.com",
       "listingDescription": "Firestore low-level API access",
-      "version": "2.2.0",
+      "version": "2.3.0",
       "type": "grpc",
       "targetFrameworks": "netstandard2.0;net461",
       "testTargetFrameworks": "netcoreapp2.1;net461",
@@ -741,14 +1017,14 @@
         "firebase"
       ],
       "dependencies": {
-        "Google.Api.Gax.Grpc.GrpcCore": "3.2.0",
+        "Google.Api.Gax.Grpc.GrpcCore": "3.3.0",
         "Google.LongRunning": "2.1.0",
-        "Grpc.Core": "2.31.0"
+        "Grpc.Core": "2.36.4"
       }
     },
     {
       "id": "Google.Cloud.Functions.V1",
-      "version": "1.0.0",
+      "version": "1.1.0",
       "type": "grpc",
       "productName": "Cloud Functions",
       "productUrl": "https://cloud.google.com/functions",
@@ -757,17 +1033,37 @@
         "functions"
       ],
       "dependencies": {
-        "Google.Api.Gax.Grpc.GrpcCore": "3.2.0",
-        "Google.Cloud.Iam.V1": "2.0.0",
-        "Google.LongRunning": "2.0.0",
-        "Grpc.Core": "2.31.0"
+        "Google.Api.Gax.Grpc.GrpcCore": "3.3.0",
+        "Google.Cloud.Iam.V1": "2.1.0",
+        "Google.LongRunning": "2.1.0",
+        "Grpc.Core": "2.36.4"
       },
       "generator": "micro",
       "protoPath": "google/cloud/functions/v1"
     },
     {
-      "id": "Google.Cloud.Gaming.V1",
+      "id": "Google.Cloud.GSuiteAddOns.V1",
       "version": "1.0.0",
+      "type": "grpc",
+      "productName": "Google Workspace Add-ons",
+      "productUrl": "https://developers.google.com/gsuite/add-ons/overview",
+      "description": "Recommended Google client library to access the Google Workspace Add-ons API",
+      "tags": [
+        "gsuite",
+        "workspace",
+        "add-ons"
+      ],
+      "dependencies": {
+        "Google.Api.Gax.Grpc.GrpcCore": "3.3.0",
+        "Google.Apps.Script.Type": "project",
+        "Grpc.Core": "2.36.4"
+      },
+      "generator": "micro",
+      "protoPath": "google/cloud/gsuiteaddons/v1"
+    },
+    {
+      "id": "Google.Cloud.Gaming.V1",
+      "version": "1.1.0",
       "type": "grpc",
       "productName": "Game Services",
       "productUrl": "https://cloud.google.com/solutions/gaming",
@@ -777,9 +1073,9 @@
         "games"
       ],
       "dependencies": {
-        "Google.Api.Gax.Grpc.GrpcCore": "3.2.0",
-        "Google.LongRunning": "2.1.0",
-        "Grpc.Core": "2.31.0"
+        "Google.Api.Gax.Grpc.GrpcCore": "3.3.0",
+        "Google.LongRunning": "2.2.0",
+        "Grpc.Core": "2.36.4"
       },
       "generator": "micro",
       "protoPath": "google/cloud/gaming/v1"
@@ -788,7 +1084,7 @@
       "id": "Google.Cloud.Gaming.V1Beta",
       "generator": "micro",
       "protoPath": "google/cloud/gaming/v1beta",
-      "version": "1.0.0-beta06",
+      "version": "1.0.0-beta07",
       "type": "grpc",
       "productName": "Google Cloud for Games",
       "productUrl": "https://cloud.google.com/solutions/gaming",
@@ -798,8 +1094,85 @@
         "games"
       ],
       "dependencies": {
-        "Google.LongRunning": "2.1.0"
+        "Google.LongRunning": "2.2.0"
       }
+    },
+    {
+      "id": "Google.Cloud.GkeConnect.Gateway.V1Beta1",
+      "version": "1.0.0-beta01",
+      "type": "grpc",
+      "productName": "Connect Gateway",
+      "productUrl": "https://cloud.google.com/anthos/multicluster-management/gateway/",
+      "description": "Recommended Google client library to access the GKE Connect Gateway API, which allows connectivity from external parties to connected Kubernetes clusters.",
+      "tags": [
+        "gke",
+        "connect",
+        "anthos",
+        "clusters",
+        "kubernetes",
+        "gateway"
+      ],
+      "dependencies": {},
+      "generator": "micro",
+      "protoPath": "google/cloud/gkeconnect/gateway/v1beta1"
+    },
+    {
+      "id": "Google.Cloud.GkeHub.V1Beta1",
+      "version": "1.0.0-beta02",
+      "type": "grpc",
+      "productName": "GKE Hub",
+      "productUrl": "https://cloud.google.com/anthos/multicluster-management/connect/registering-a-cluster",
+      "description": "Recommended Google client library to access the GKE Hub API, version v1beta1.",
+      "tags": [
+        "gke",
+        "cluster",
+        "anthos"
+      ],
+      "dependencies": {
+        "Google.LongRunning": "2.1.0"
+      },
+      "generator": "micro",
+      "protoPath": "google/cloud/gkehub/v1beta1"
+    },
+    {
+      "id": "Google.Cloud.Iam.Admin.V1",
+      "version": "1.0.0-beta01",
+      "type": "grpc",
+      "productName": "Identity and Access Management (IAM)",
+      "productUrl": "https://cloud.google.com/iam/docs",
+      "description": "Recommended Google client library to access the Google Cloud IAM Admin API, which manages identity and access control for Google Cloud Platform resources, including the creation of service accounts, which you can use to authenticate to Google and make API calls.",
+      "tags": [
+        "iam",
+        "identity",
+        "access",
+        "management",
+        "admin"
+      ],
+      "dependencies": {
+        "Google.Cloud.Iam.V1": "2.2.0"
+      },
+      "generator": "micro",
+      "protoPath": "google/iam/admin/v1"
+    },
+    {
+      "id": "Google.Cloud.Iam.Credentials.V1",
+      "version": "1.1.0",
+      "type": "grpc",
+      "productName": "IAM Service Account Credentials",
+      "productUrl": "https://cloud.google.com/iam/docs/reference/credentials/rest",
+      "description": "Recommended Google client library to access the Google IAM Service Account Credentials API, which creates short-lived, limited-privilege credentials for IAM service accounts.",
+      "tags": [
+        "iam",
+        "credentials",
+        "access",
+        "account"
+      ],
+      "dependencies": {
+        "Google.Api.Gax.Grpc.GrpcCore": "3.3.0",
+        "Grpc.Core": "2.36.4"
+      },
+      "generator": "micro",
+      "protoPath": "google/iam/credentials/v1"
     },
     {
       "id": "Google.Cloud.Iam.V1",
@@ -807,8 +1180,9 @@
       "protoPath": "google/iam/v1",
       "productName": "Google Cloud Identity and Access Management (IAM)",
       "productUrl": "https://cloud.google.com/iam/",
-      "version": "2.1.0",
+      "version": "2.2.0",
       "type": "grpc",
+      "metadataType": "CORE",
       "description": "gRPC services for the Google Identity and Access Management API. This library is typically used as a dependency for other API client libraries.",
       "tags": [
         "IAM",
@@ -816,13 +1190,13 @@
         "Access"
       ],
       "dependencies": {
-        "Google.Api.Gax.Grpc.GrpcCore": "3.2.0",
-        "Grpc.Core": "2.31.0"
+        "Google.Api.Gax.Grpc.GrpcCore": "3.3.0",
+        "Grpc.Core": "2.36.4"
       }
     },
     {
       "id": "Google.Cloud.Iot.V1",
-      "version": "1.0.0-beta01",
+      "version": "1.1.0",
       "type": "grpc",
       "productName": "Cloud IoT",
       "productUrl": "https://cloud.google.com/iot/docs/reference/cloudiot/rest",
@@ -831,7 +1205,9 @@
         "iot"
       ],
       "dependencies": {
-        "Google.Cloud.Iam.V1": "2.0.0"
+        "Google.Api.Gax.Grpc.GrpcCore": "3.3.0",
+        "Google.Cloud.Iam.V1": "2.1.0",
+        "Grpc.Core": "2.36.4"
       },
       "generator": "micro",
       "protoPath": "google/cloud/iot/v1"
@@ -842,7 +1218,7 @@
       "protoPath": "google/cloud/kms/v1",
       "productName": "Google Cloud Key Management Service",
       "productUrl": "https://cloud.google.com/kms/",
-      "version": "2.1.0",
+      "version": "2.2.0",
       "type": "grpc",
       "description": "Recommended Google client library to access the Google Key Management Service API, which manages encryption for your cloud services the same way you do on-premises. You can generate, use, rotate, and destroy AES256 encryption keys.",
       "tags": [
@@ -852,9 +1228,9 @@
         "encryption"
       ],
       "dependencies": {
-        "Google.Api.Gax.Grpc.GrpcCore": "3.2.0",
+        "Google.Api.Gax.Grpc.GrpcCore": "3.3.0",
         "Google.Cloud.Iam.V1": "2.1.0",
-        "Grpc.Core": "2.31.0"
+        "Grpc.Core": "2.36.4"
       }
     },
     {
@@ -863,21 +1239,39 @@
       "protoPath": "google/cloud/language/v1",
       "productName": "Google Cloud Natural Language",
       "productUrl": "https://cloud.google.com/natural-language",
-      "version": "2.1.0",
+      "version": "2.2.0",
       "type": "grpc",
       "description": "Recommended Google client library to access the Google Cloud Natural Language API, which provides natural language understanding technologies to developers. Examples include sentiment analysis, entity recognition, and text annotations.",
       "dependencies": {
-        "Google.Api.Gax.Grpc.GrpcCore": "3.2.0",
-        "Grpc.Core": "2.31.0"
+        "Google.Api.Gax.Grpc.GrpcCore": "3.3.0",
+        "Grpc.Core": "2.36.4"
       },
       "tags": [
         "Language"
       ]
     },
     {
+      "id": "Google.Cloud.LifeSciences.V2Beta",
+      "version": "1.0.0-beta01",
+      "type": "grpc",
+      "productName": "Cloud Life Sciences",
+      "productUrl": "https://cloud.google.com/life-sciences/docs/",
+      "description": "Recommended Google client library to access the Google Cloud Life Sciences API, which is a suite of services and tools for managing, processing, and transforming life sciences data.",
+      "tags": [
+        "genomics",
+        "life sciences"
+      ],
+      "dependencies": {
+        "Google.LongRunning": "2.2.0"
+      },
+      "generator": "micro",
+      "protoPath": "google/cloud/lifesciences/v2beta"
+    },
+    {
       "id": "Google.Cloud.Logging.Log4Net",
-      "version": "3.2.0",
+      "version": "3.3.0",
       "type": "other",
+      "metadataType": "INTEGRATION",
       "targetFrameworks": "netstandard2.0;net461",
       "testTargetFrameworks": "netcoreapp2.1;net461",
       "description": "Log4Net client library for the Google Cloud Logging API.",
@@ -887,20 +1281,21 @@
         "Stackdriver"
       ],
       "dependencies": {
-        "Google.Api.Gax.Grpc.GrpcCore": "3.2.0",
-        "Google.Cloud.DevTools.Common": "2.0.0",
-        "Google.Cloud.Logging.V2": "3.2.0",
-        "Grpc.Core": "2.31.0",
-        "log4net": "2.0.8"
+        "Google.Api.Gax.Grpc.GrpcCore": "3.3.0",
+        "Google.Cloud.DevTools.Common": "2.1.0",
+        "Google.Cloud.Logging.V2": "3.3.0",
+        "Grpc.Core": "2.36.4",
+        "log4net": "2.0.12"
       },
       "testDependencies": {
-        "Google.Api.Gax.Testing": "3.2.0"
+        "Google.Api.Gax.Testing": "3.3.0"
       }
     },
     {
       "id": "Google.Cloud.Logging.Console",
       "version": "1.0.0-alpha00",
       "type": "other",
+      "metadataType": "INTEGRATION",
       "targetFrameworks": "netstandard2.0",
       "testTargetFrameworks": "netcoreapp2.1",
       "description": "ConsoleFormatter for Google Cloud Logging.",
@@ -911,13 +1306,14 @@
         "Console"
       ],
       "dependencies": {
-        "Microsoft.Extensions.Logging.Console": "5.0.0-preview.8.20365.13"
+        "Microsoft.Extensions.Logging.Console": "5.0.0"
       }
     },
     {
       "id": "Google.Cloud.Logging.NLog",
-      "version": "3.1.0",
+      "version": "3.3.0",
       "type": "other",
+      "metadataType": "INTEGRATION",
       "targetFrameworks": "netstandard2.0;net461",
       "testTargetFrameworks": "netcoreapp2.1;net461",
       "description": "NLog target for the Google Cloud Logging API.",
@@ -941,7 +1337,7 @@
       "id": "Google.Cloud.Logging.Type",
       "generator": "proto",
       "protoPath": "google/logging/type",
-      "version": "3.2.0",
+      "version": "3.3.0",
       "type": "other",
       "targetFrameworks": "netstandard2.0;net461",
       "description": "Version-agnostic types for the Google Cloud Logging API.",
@@ -950,7 +1346,7 @@
         "Stackdriver"
       ],
       "dependencies": {
-        "Google.Api.CommonProtos": "2.2.0"
+        "Google.Api.CommonProtos": "2.3.0"
       }
     },
     {
@@ -959,7 +1355,7 @@
       "protoPath": "google/logging/v2",
       "productName": "Google Cloud Logging",
       "productUrl": "https://cloud.google.com/logging/",
-      "version": "3.2.0",
+      "version": "3.3.0",
       "type": "grpc",
       "description": "Recommended Google client library to access the Google Cloud Logging API, which writes log entries and manages your logs, log sinks, and logs-based metrics.",
       "tags": [
@@ -967,9 +1363,9 @@
         "Stackdriver"
       ],
       "dependencies": {
-        "Google.Api.Gax.Grpc.GrpcCore": "3.2.0",
+        "Google.Api.Gax.Grpc.GrpcCore": "3.3.0",
         "Google.Cloud.Logging.Type": "3.2.0",
-        "Grpc.Core": "2.31.0"
+        "Grpc.Core": "2.36.4"
       }
     },
     {
@@ -978,7 +1374,7 @@
       "protoPath": "google/cloud/managedidentities/v1",
       "productName": "Managed Service for Microsoft Active Directory",
       "productUrl": "https://cloud.google.com/managed-microsoft-ad/",
-      "version": "2.1.0",
+      "version": "2.2.0",
       "type": "grpc",
       "description": "Recommended Google client library to access the Google Managed Identities API.",
       "tags": [
@@ -987,14 +1383,14 @@
         "Active Directory"
       ],
       "dependencies": {
-        "Google.Api.Gax.Grpc.GrpcCore": "3.2.0",
+        "Google.Api.Gax.Grpc.GrpcCore": "3.3.0",
         "Google.LongRunning": "2.1.0",
-        "Grpc.Core": "2.31.0"
+        "Grpc.Core": "2.36.4"
       }
     },
     {
       "id": "Google.Cloud.MediaTranslation.V1Beta1",
-      "version": "1.0.0-beta01",
+      "version": "1.0.0-beta02",
       "type": "grpc",
       "productName": "Media Translation",
       "productUrl": "https://cloud.google.com/media-translation",
@@ -1009,18 +1405,37 @@
       "protoPath": "google/cloud/mediatranslation/v1beta1"
     },
     {
+      "id": "Google.Cloud.Memcache.V1",
+      "version": "1.1.0",
+      "type": "grpc",
+      "productName": "Cloud Memorystore for Memcached",
+      "productUrl": "https://cloud.google.com/memorystore/",
+      "description": "Recommended Google client library at access the Google Cloud Memorystore for Memcached API (v1), which is used for creating and managing Memcached instances in GCP.",
+      "tags": [
+        "Redis",
+        "Memorystore"
+      ],
+      "dependencies": {
+        "Google.Api.Gax.Grpc.GrpcCore": "3.3.0",
+        "Google.LongRunning": "2.2.0",
+        "Grpc.Core": "2.36.4"
+      },
+      "generator": "micro",
+      "protoPath": "google/cloud/memcache/v1"
+    },
+    {
       "id": "Google.Cloud.Memcache.V1Beta2",
       "generator": "micro",
       "protoPath": "google/cloud/memcache/v1beta2",
       "productName": "Google Cloud Memorystore for Memcache",
       "productUrl": "https://cloud.google.com/memorystore/",
-      "version": "1.0.0-beta03",
+      "version": "1.0.0-beta04",
       "type": "grpc",
       "description": "Recommended Google client library to administer Cloud Memorystore for Memcache (v1beta2).",
       "dependencies": {
-        "Google.Api.Gax.Grpc.GrpcCore": "3.2.0",
+        "Google.Api.Gax.Grpc.GrpcCore": "3.3.0",
         "Google.LongRunning": "2.1.0",
-        "Grpc.Core": "2.31.0"
+        "Grpc.Core": "2.36.4"
       },
       "tags": [
         "Redis",
@@ -1028,12 +1443,65 @@
       ]
     },
     {
+      "id": "Google.Cloud.Metastore.V1",
+      "version": "1.0.0",
+      "type": "grpc",
+      "productName": "Dataproc Metastore",
+      "productUrl": "https://cloud.google.com/dataproc-metastore/docs",
+      "description": "Recommended Google client library to access the Dataproc Metastore API which is used to manage the lifecycle and configuration of metastore services.",
+      "tags": [
+        "dataproc",
+        "metastore"
+      ],
+      "dependencies": {
+        "Google.Api.Gax.Grpc.GrpcCore": "3.3.0",
+        "Google.LongRunning": "2.2.0",
+        "Grpc.Core": "2.36.4"
+      },
+      "generator": "micro",
+      "protoPath": "google/cloud/metastore/v1"
+    },
+    {
+      "id": "Google.Cloud.Metastore.V1Alpha",
+      "version": "1.0.0-alpha02",
+      "type": "grpc",
+      "productName": "Dataproc Metastore",
+      "productUrl": "https://cloud.google.com/dataproc-metastore/docs",
+      "description": "Recommended Google client library to access the Dataproc Metastore API (v1alpha) which is used to manage the lifecycle and configuration of metastore services.",
+      "tags": [
+        "dataproc",
+        "metastore"
+      ],
+      "dependencies": {
+        "Google.LongRunning": "2.1.0"
+      },
+      "generator": "micro",
+      "protoPath": "google/cloud/metastore/v1alpha"
+    },
+    {
+      "id": "Google.Cloud.Metastore.V1Beta",
+      "version": "1.0.0-beta01",
+      "type": "grpc",
+      "productName": "Dataproc Metastore",
+      "productUrl": "https://cloud.google.com/dataproc-metastore/docs",
+      "description": "Recommended Google client library to access the Dataproc Metastore API (v1beta) which is used to manage the lifecycle and configuration of metastore services.",
+      "tags": [
+        "dataproc",
+        "metastore"
+      ],
+      "dependencies": {
+        "Google.LongRunning": "2.1.0"
+      },
+      "generator": "micro",
+      "protoPath": "google/cloud/metastore/v1beta"
+    },
+    {
       "id": "Google.Cloud.Monitoring.V3",
       "generator": "micro",
       "protoPath": "google/monitoring/v3",
       "productName": "Google Cloud Monitoring",
       "productUrl": "https://cloud.google.com/monitoring/api/v3/",
-      "version": "2.2.0",
+      "version": "2.3.0",
       "type": "grpc",
       "description": "Recommended Google client library to access the Google Cloud Monitoring API, which manages your Google Cloud Monitoring data and configurations.",
       "tags": [
@@ -1041,14 +1509,31 @@
         "Stackdriver"
       ],
       "dependencies": {
-        "Google.Api.CommonProtos": "2.2.0",
-        "Google.Api.Gax.Grpc.GrpcCore": "3.2.0",
-        "Grpc.Core": "2.31.0"
+        "Google.Api.CommonProtos": "2.3.0",
+        "Google.Api.Gax.Grpc.GrpcCore": "3.3.0",
+        "Grpc.Core": "2.36.4"
       }
     },
     {
+      "id": "Google.Cloud.NetworkConnectivity.V1Alpha1",
+      "version": "1.0.0-alpha02",
+      "type": "grpc",
+      "productName": "Network Connectivity",
+      "productUrl": "https://cloud.google.com/network-connectivity/docs/apis",
+      "description": "Recommended Google client library to access the Google Cloud Network Connectivity API (v1alpha1), which provides information pertaining to network connectivity.",
+      "tags": [
+        "network",
+        "connectivity"
+      ],
+      "dependencies": {
+        "Google.LongRunning": "2.2.0"
+      },
+      "generator": "micro",
+      "protoPath": "google/cloud/networkconnectivity/v1alpha1"
+    },
+    {
       "id": "Google.Cloud.Notebooks.V1Beta1",
-      "version": "1.0.0-beta02",
+      "version": "1.0.0-beta03",
       "type": "grpc",
       "productName": "AI Platform Notebooks",
       "productUrl": "https://cloud.google.com/ai-platform-notebooks",
@@ -1058,7 +1543,7 @@
         "notebooks"
       ],
       "dependencies": {
-        "Google.LongRunning": "2.1.0"
+        "Google.LongRunning": "2.2.0"
       },
       "generator": "micro",
       "protoPath": "google/cloud/notebooks/v1beta1"
@@ -1067,14 +1552,33 @@
       "id": "Google.Cloud.OrgPolicy.V1",
       "generator": "proto",
       "protoPath": "google/cloud/orgpolicy/v1",
-      "version": "2.1.0",
+      "version": "2.2.0",
       "type": "other",
       "targetFrameworks": "netstandard2.0;net461",
       "description": "OrgPolicy API messages.",
       "tags": [],
       "dependencies": {
-        "Google.Api.CommonProtos": "2.2.0"
+        "Google.Api.CommonProtos": "2.3.0"
       }
+    },
+    {
+      "id": "Google.Cloud.OrgPolicy.V2",
+      "version": "1.0.0",
+      "type": "grpc",
+      "productName": "Organization Policy",
+      "productUrl": "https://cloud.google.com/resource-manager/docs/organization-policy/overview",
+      "description": "Recommended Google client library to access the Organization Policy API (v2), which allows users to configure governance rules on their GCP resources across the Cloud Resource Hierarchy.",
+      "tags": [
+        "organization",
+        "policy",
+        "governance"
+      ],
+      "dependencies": {
+        "Google.Api.Gax.Grpc.GrpcCore": "3.2.0",
+        "Grpc.Core": "2.31.0"
+      },
+      "generator": "micro",
+      "protoPath": "google/cloud/orgpolicy/v2"
     },
     {
       "id": "Google.Cloud.OsConfig.V1",
@@ -1082,9 +1586,9 @@
       "protoPath": "google/cloud/osconfig/v1",
       "productName": "Google Cloud OS Config",
       "productUrl": "https://cloud.google.com/compute/docs/osconfig/rest",
-      "version": "1.2.0",
+      "version": "1.3.0",
       "type": "grpc",
-      "description": "Recommended Google client library for the Cloud OS Config API. These are OS management tools that can be used for patch management, patch compliance, and configuration management on VM instances.",
+      "description": "Recommended Google client library for the Cloud OS Config API (v1). These are OS management tools that can be used for patch management, patch compliance, and configuration management on VM instances.",
       "tags": [
         "OsConfig",
         "Management",
@@ -1093,16 +1597,36 @@
         "Configuration"
       ],
       "dependencies": {
-        "Google.Api.CommonProtos": "2.2.0",
-        "Google.Api.Gax.Grpc.GrpcCore": "3.2.0",
-        "Grpc.Core": "2.31.0"
+        "Google.Api.CommonProtos": "2.3.0",
+        "Google.Api.Gax.Grpc.GrpcCore": "3.3.0",
+        "Grpc.Core": "2.36.4"
       }
+    },
+    {
+      "id": "Google.Cloud.OsConfig.V1Alpha",
+      "version": "1.0.0-alpha01",
+      "type": "grpc",
+      "productName": "Google Cloud OS Config",
+      "productUrl": "https://cloud.google.com/compute/docs/osconfig/rest",
+      "description": "Recommended Google client library for the Cloud OS Config API (v1 alpha). These are OS management tools that can be used for patch management, patch compliance, and configuration management on VM instances.",
+      "tags": [
+        "OsConfig",
+        "Management",
+        "Patch",
+        "Compliance",
+        "Configuration"
+      ],
+      "dependencies": {
+        "Google.LongRunning": "2.1.0"
+      },
+      "generator": "micro",
+      "protoPath": "google/cloud/osconfig/v1alpha"
     },
     {
       "id": "Google.Cloud.OsLogin.Common",
       "generator": "micro",
       "protoPath": "google/cloud/oslogin/common",
-      "version": "2.1.0",
+      "version": "2.2.0",
       "type": "other",
       "targetFrameworks": "netstandard2.0;net461",
       "description": "Version-agnostic types for the Google OS Login API.",
@@ -1111,8 +1635,8 @@
         "Login"
       ],
       "dependencies": {
-        "Google.Api.CommonProtos": "2.2.0",
-        "Google.Api.Gax": "3.2.0"
+        "Google.Api.CommonProtos": "2.3.0",
+        "Google.Api.Gax": "3.3.0"
       },
       "noVersionHistory": true
     },
@@ -1122,7 +1646,7 @@
       "protoPath": "google/cloud/oslogin/v1",
       "productName": "Google Cloud OS Login",
       "productUrl": "https://cloud.google.com/compute/docs/instances/managing-instance-access",
-      "version": "2.1.0",
+      "version": "2.2.0",
       "type": "grpc",
       "description": "Recommended Google client library to manage OS login configuration for Google account users.",
       "tags": [
@@ -1130,9 +1654,9 @@
         "Login"
       ],
       "dependencies": {
-        "Google.Api.Gax.Grpc.GrpcCore": "3.2.0",
+        "Google.Api.Gax.Grpc.GrpcCore": "3.3.0",
         "Google.Cloud.OsLogin.Common": "project",
-        "Grpc.Core": "2.31.0"
+        "Grpc.Core": "2.36.4"
       }
     },
     {
@@ -1141,7 +1665,7 @@
       "protoPath": "google/cloud/oslogin/v1beta",
       "productName": "Google Cloud OS Login",
       "productUrl": "https://cloud.google.com/compute/docs/instances/managing-instance-access",
-      "version": "2.0.0-beta03",
+      "version": "2.0.0-beta04",
       "releaseLevelOverride": "beta",
       "type": "grpc",
       "description": "Recommended Google client library to manages OS login configuration for Google account users.",
@@ -1150,9 +1674,9 @@
         "Login"
       ],
       "dependencies": {
-        "Google.Api.Gax.Grpc.GrpcCore": "3.2.0",
+        "Google.Api.Gax.Grpc.GrpcCore": "3.3.0",
         "Google.Cloud.OsLogin.Common": "project",
-        "Grpc.Core": "2.31.0"
+        "Grpc.Core": "2.36.4"
       }
     },
     {
@@ -1161,7 +1685,7 @@
       "protoPath": "google/cloud/phishingprotection/v1beta1",
       "productName": "Cloud Phishing Protection",
       "productUrl": "https://cloud.google.com/phishing-protection/",
-      "version": "1.0.0-beta03",
+      "version": "1.0.0-beta04",
       "type": "grpc",
       "description": "Recommended Google client library to access the Google Cloud Phishing Protection API.",
       "tags": [
@@ -1171,7 +1695,7 @@
     },
     {
       "id": "Google.Cloud.PolicyTroubleshooter.V1",
-      "version": "1.0.0",
+      "version": "1.1.0",
       "type": "grpc",
       "productName": "Policy Troubleshooter",
       "productUrl": "https://cloud.google.com/iam/docs/reference/policytroubleshooter/rest",
@@ -1181,12 +1705,47 @@
         "diagnostics"
       ],
       "dependencies": {
-        "Google.Api.Gax.Grpc.GrpcCore": "3.2.0",
-        "Google.Cloud.Iam.V1": "2.1.0",
-        "Grpc.Core": "2.31.0"
+        "Google.Api.Gax.Grpc.GrpcCore": "3.3.0",
+        "Google.Cloud.Iam.V1": "2.2.0",
+        "Grpc.Core": "2.36.4"
       },
       "generator": "micro",
       "protoPath": "google/cloud/policytroubleshooter/v1"
+    },
+    {
+      "id": "Google.Cloud.PrivateCatalog.V1Beta1",
+      "version": "1.0.0-beta01",
+      "type": "grpc",
+      "productName": "Cloud Private Catalog",
+      "productUrl": "https://cloud.google.com/private-catalog/docs/",
+      "description": "Recommended Google client library to access the Google Cloud Private Catalog API, which enables Cloud users to discover private catalogs and products in their organizations.",
+      "tags": [
+        "catalog",
+        "solutions"
+      ],
+      "dependencies": {
+        "Google.LongRunning": "2.2.0"
+      },
+      "generator": "micro",
+      "protoPath": "google/cloud/privatecatalog/v1beta1"
+    },
+    {
+      "id": "Google.Cloud.Profiler.V2",
+      "version": "1.1.0",
+      "type": "grpc",
+      "productName": "Cloud Profiler",
+      "productUrl": "https://cloud.google.com/profiler/",
+      "description": "Recommended Google client library to access the Google Cloud Profiler API, which manages continuous profiling information.",
+      "tags": [
+        "profiling",
+        "profiler"
+      ],
+      "dependencies": {
+        "Google.Api.Gax.Grpc.GrpcCore": "3.3.0",
+        "Grpc.Core": "2.36.4"
+      },
+      "generator": "micro",
+      "protoPath": "google/devtools/cloudprofiler/v2"
     },
     {
       "id": "Google.Cloud.PubSub.V1",
@@ -1194,13 +1753,14 @@
       "protoPath": "google/pubsub/v1",
       "productName": "Cloud Pub/Sub",
       "productUrl": "https://cloud.google.com/pubsub/",
-      "version": "2.1.0",
+      "version": "2.5.0",
       "type": "grpc",
+      "metadataType": "GAPIC_COMBO",
       "description": "Recommended Google client library to access the Google Cloud Pub/Sub API, which provides reliable, many-to-many, asynchronous messaging between applications.",
       "dependencies": {
-        "Google.Api.Gax.Grpc.GrpcCore": "3.2.0",
-        "Google.Cloud.Iam.V1": "2.0.0",
-        "Grpc.Core": "2.31.0"
+        "Google.Api.Gax.Grpc.GrpcCore": "3.3.0",
+        "Google.Cloud.Iam.V1": "2.2.0",
+        "Grpc.Core": "2.36.4"
       },
       "testDependencies": {
         "Google.Apis.CloudResourceManager.v1": "1.43.0.1847",
@@ -1216,15 +1776,15 @@
       "protoPath": "google/cloud/recaptchaenterprise/v1",
       "productName": "Google Cloud reCAPTCHA Enterprise",
       "productUrl": "https://cloud.google.com/recaptcha-enterprise/",
-      "version": "1.1.0",
+      "version": "1.2.0",
       "type": "grpc",
       "description": "Recommended Google client library to access the Google Cloud reCAPTCHA for Enterprise API v1.",
       "tags": [
         "reCAPTCHA"
       ],
       "dependencies": {
-        "Google.Api.Gax.Grpc.GrpcCore": "3.2.0",
-        "Grpc.Core": "2.31.0"
+        "Google.Api.Gax.Grpc.GrpcCore": "3.3.0",
+        "Grpc.Core": "2.36.4"
       }
     },
     {
@@ -1233,7 +1793,7 @@
       "protoPath": "google/cloud/recaptchaenterprise/v1beta1",
       "productName": "Google Cloud reCAPTCHA Enterprise",
       "productUrl": "https://cloud.google.com/recaptcha-enterprise/",
-      "version": "1.0.0-beta03",
+      "version": "1.0.0-beta04",
       "type": "grpc",
       "description": "Recommended Google client library to access the Google Cloud reCAPTCHA for Enterprise API v1beta1.",
       "tags": [
@@ -1242,7 +1802,7 @@
     },
     {
       "id": "Google.Cloud.RecommendationEngine.V1Beta1",
-      "version": "1.0.0-beta01",
+      "version": "1.0.0-beta02",
       "type": "grpc",
       "productName": "Recommendations AI",
       "productUrl": "https://cloud.google.com/recommendations",
@@ -1263,12 +1823,12 @@
       "protoPath": "google/cloud/recommender/v1",
       "productName": "Google Cloud Recommender",
       "productUrl": "https://cloud.google.com/recommender/",
-      "version": "2.3.0",
+      "version": "2.5.0",
       "type": "grpc",
       "description": "Recommended Google client library for the Recommender API, which provides usage recommendations for Cloud products and services.",
       "dependencies": {
-        "Google.Api.Gax.Grpc.GrpcCore": "3.2.0",
-        "Grpc.Core": "2.31.0"
+        "Google.Api.Gax.Grpc.GrpcCore": "3.3.0",
+        "Grpc.Core": "2.36.4"
       },
       "tags": [
         "Recommender"
@@ -1280,13 +1840,13 @@
       "protoPath": "google/cloud/redis/v1",
       "productName": "Google Cloud Memorystore for Redis",
       "productUrl": "https://cloud.google.com/memorystore/",
-      "version": "2.1.0",
+      "version": "2.2.0",
       "type": "grpc",
       "description": "Recommended Google client library to administer Cloud Memorystore for Redis.",
       "dependencies": {
-        "Google.Api.Gax.Grpc.GrpcCore": "3.2.0",
-        "Google.LongRunning": "2.1.0",
-        "Grpc.Core": "2.31.0"
+        "Google.Api.Gax.Grpc.GrpcCore": "3.3.0",
+        "Google.LongRunning": "2.2.0",
+        "Grpc.Core": "2.36.4"
       },
       "tags": [
         "Redis",
@@ -1299,12 +1859,12 @@
       "protoPath": "google/cloud/redis/v1beta1",
       "productName": "Google Cloud Memorystore for Redis",
       "productUrl": "https://cloud.google.com/memorystore/",
-      "version": "2.0.0-beta03",
+      "version": "2.0.0-beta04",
       "releaseLevelOverride": "beta",
       "type": "grpc",
       "description": "Recommended Google client library to administer Cloud Memorystore for Redis (V1 Beta 1 API).",
       "dependencies": {
-        "Google.LongRunning": "2.1.0"
+        "Google.LongRunning": "2.2.0"
       },
       "tags": [
         "Redis",
@@ -1312,12 +1872,62 @@
       ]
     },
     {
+      "id": "Google.Cloud.ResourceManager.V3",
+      "version": "1.0.0-beta00",
+      "type": "grpc",
+      "productName": "Cloud Resource Manager",
+      "productUrl": "https://cloud.google.com/resource-manager/docs",
+      "description": "Recommended Google client library to access the Google Cloud Resource Manager API (v3), which creates, reads, and updates metadata for Google Cloud Platform resource containers.",
+      "tags": [
+        "resources"
+      ],
+      "dependencies": {
+        "Google.Cloud.Iam.V1": "2.1.0",
+        "Google.LongRunning": "2.1.0"
+      },
+      "generator": "micro",
+      "protoPath": "google/cloud/resourcemanager/v3"
+    },
+    {
+      "id": "Google.Cloud.ResourceSettings.V1",
+      "version": "1.0.0-beta01",
+      "type": "grpc",
+      "productName": "Resource Settings",
+      "productUrl": "https://cloud.google.com/resource-settings/docs",
+      "description": "Recommended Google client library to access the Google Cloud Resource Settings API, which allows users to control and modify the behavior of their GCP resources (e.g., VM, firewall, Project, etc.) across the Cloud Resource Hierarchy.",
+      "tags": [
+        "resources",
+        "settings"
+      ],
+      "dependencies": {},
+      "generator": "micro",
+      "protoPath": "google/cloud/resourcesettings/v1"
+    },
+    {
+      "id": "Google.Cloud.Retail.V2",
+      "version": "1.1.0",
+      "type": "grpc",
+      "productName": "Retail",
+      "productUrl": "https://cloud.google.com/retail/docs",
+      "description": "Cloud Retail service enables customers to build end-to-end personalized recommendation systems without requiring a high level of expertise in machine learning, recommendation system, or Google Cloud.",
+      "tags": [
+        "retail"
+      ],
+      "dependencies": {
+        "Google.Api.Gax.Grpc.GrpcCore": "3.3.0",
+        "Google.LongRunning": "2.1.0",
+        "Grpc.Core": "2.36.4"
+      },
+      "generator": "micro",
+      "protoPath": "google/cloud/retail/v2"
+    },
+    {
       "id": "Google.Cloud.Scheduler.V1",
       "generator": "micro",
       "protoPath": "google/cloud/scheduler/v1",
       "productName": "Google Cloud Scheduler",
       "productUrl": "https://cloud.google.com/scheduler/",
-      "version": "2.1.0",
+      "version": "2.2.0",
       "type": "grpc",
       "description": "Recommended Google client library to access the Google Cloud Scheduler API (v1), which creates and manages jobs run on a regular recurring schedule.",
       "tags": [
@@ -1325,8 +1935,8 @@
         "cron"
       ],
       "dependencies": {
-        "Google.Api.Gax.Grpc.GrpcCore": "3.2.0",
-        "Grpc.Core": "2.31.0"
+        "Google.Api.Gax.Grpc.GrpcCore": "3.3.0",
+        "Grpc.Core": "2.36.4"
       }
     },
     {
@@ -1335,13 +1945,13 @@
       "protoPath": "google/cloud/secretmanager/v1",
       "productName": "Secret Manager",
       "productUrl": "https://cloud.google.com/secret-manager",
-      "version": "1.2.0",
+      "version": "1.4.0",
       "type": "grpc",
       "description": "Recommended Google client library to access the Secret Manager API.",
       "dependencies": {
-        "Google.Api.Gax.Grpc.GrpcCore": "3.2.0",
+        "Google.Api.Gax.Grpc.GrpcCore": "3.3.0",
         "Google.Cloud.Iam.V1": "2.1.0",
-        "Grpc.Core": "2.31.0"
+        "Grpc.Core": "2.36.4"
       },
       "tags": [
         "secret",
@@ -1355,12 +1965,12 @@
       "protoPath": "google/cloud/secrets/v1beta1",
       "productName": "Secret Manager",
       "productUrl": "https://cloud.google.com/secret-manager",
-      "version": "2.0.0-beta03",
+      "version": "2.0.0-beta04",
       "releaseLevelOverride": "beta",
       "type": "grpc",
       "description": "Recommended Google client library to access the Secret Manager API version v1beta1.",
       "dependencies": {
-        "Google.Cloud.Iam.V1": "2.1.0"
+        "Google.Cloud.Iam.V1": "2.2.0"
       },
       "tags": [
         "secret",
@@ -1369,8 +1979,26 @@
       ]
     },
     {
-      "id": "Google.Cloud.Security.PrivateCA.V1Beta1",
+      "id": "Google.Cloud.Security.PrivateCA.V1",
       "version": "1.0.0-beta01",
+      "type": "grpc",
+      "productName": "Certificate Authority",
+      "productUrl": "https://cloud.google.com/certificate-authority-service/",
+      "description": "Recommended Google client library to access the Certificate Authority Service API version v1. The Certificate Authority Service API is a highly-available, scalable service that enables you to simplify and automate the management of private certificate authorities (CAs) while staying in control of your private keys.",
+      "tags": [
+        "security",
+        "certificates",
+        "private-ca"
+      ],
+      "dependencies": {
+        "Google.LongRunning": "2.2.0"
+      },
+      "generator": "micro",
+      "protoPath": "google/cloud/security/privateca/v1"
+    },
+    {
+      "id": "Google.Cloud.Security.PrivateCA.V1Beta1",
+      "version": "1.0.0-beta02",
       "type": "grpc",
       "productName": "Certificate Authority",
       "productUrl": "https://cloud.google.com/certificate-authority-service/",
@@ -1381,7 +2009,7 @@
         "private-ca"
       ],
       "dependencies": {
-        "Google.LongRunning": "2.0.0"
+        "Google.LongRunning": "2.2.0"
       },
       "generator": "micro",
       "protoPath": "google/cloud/security/privateca/v1beta1"
@@ -1392,14 +2020,14 @@
       "protoPath": "google/cloud/securitycenter/settings/v1beta1",
       "productName": "Google Cloud Security Command Center Settings",
       "productUrl": "https://cloud.google.com/security-command-center/",
-      "version": "1.0.0-beta02",
+      "version": "1.0.0-beta03",
       "type": "grpc",
       "description": "Recommended Google client library to access the Google Cloud Security Command Center Settings API.",
       "dependencies": {
-        "Google.Api.Gax.Grpc.GrpcCore": "3.2.0",
-        "Google.Cloud.Iam.V1": "2.1.0",
-        "Google.LongRunning": "2.1.0",
-        "Grpc.Core": "2.31.0"
+        "Google.Api.Gax.Grpc.GrpcCore": "3.3.0",
+        "Google.Cloud.Iam.V1": "2.2.0",
+        "Google.LongRunning": "2.2.0",
+        "Grpc.Core": "2.36.4"
       },
       "tags": [
         "security",
@@ -1413,14 +2041,14 @@
       "protoPath": "google/cloud/securitycenter/v1",
       "productName": "Google Cloud Security Command Center",
       "productUrl": "https://cloud.google.com/security-command-center/",
-      "version": "2.1.0",
+      "version": "2.3.0",
       "type": "grpc",
       "description": "Recommended Google client library to access the Google Cloud Security Command Center API, which helps security teams gather data, identify threats, and act on them before they result in business damage or loss.",
       "dependencies": {
-        "Google.Api.Gax.Grpc.GrpcCore": "3.2.0",
-        "Google.Cloud.Iam.V1": "2.1.0",
-        "Google.LongRunning": "2.1.0",
-        "Grpc.Core": "2.31.0"
+        "Google.Api.Gax.Grpc.GrpcCore": "3.3.0",
+        "Google.Cloud.Iam.V1": "2.2.0",
+        "Google.LongRunning": "2.2.0",
+        "Grpc.Core": "2.36.4"
       },
       "tags": [
         "security",
@@ -1433,14 +2061,14 @@
       "protoPath": "google/cloud/securitycenter/v1p1beta1",
       "productName": "Google Cloud Security Command Center",
       "productUrl": "https://cloud.google.com/security-command-center/",
-      "version": "2.0.0-beta04",
+      "version": "2.0.0-beta05",
       "type": "grpc",
       "description": "Recommended Google client library to access the Google Cloud Security Command Center API version v1p1beta1, which helps security teams gather data, identify threats, and act on them before they result in business damage or loss.",
       "dependencies": {
-        "Google.Api.Gax.Grpc.GrpcCore": "3.2.0",
-        "Google.Cloud.Iam.V1": "2.1.0",
-        "Google.LongRunning": "2.1.0",
-        "Grpc.Core": "2.31.0"
+        "Google.Api.Gax.Grpc.GrpcCore": "3.3.0",
+        "Google.Cloud.Iam.V1": "2.2.0",
+        "Google.LongRunning": "2.2.0",
+        "Grpc.Core": "2.36.4"
       },
       "tags": [
         "security",
@@ -1449,7 +2077,7 @@
     },
     {
       "id": "Google.Cloud.ServiceControl.V1",
-      "version": "1.0.0-beta01",
+      "version": "1.1.0",
       "type": "grpc",
       "productName": "Service Control",
       "productUrl": "https://cloud.google.com/service-infrastructure/docs/service-control/reference/rpc",
@@ -1459,14 +2087,16 @@
         "services"
       ],
       "dependencies": {
-        "Google.Cloud.Logging.Type": "3.1.0"
+        "Google.Api.Gax.Grpc.GrpcCore": "3.3.0",
+        "Google.Cloud.Logging.Type": "3.2.0",
+        "Grpc.Core": "2.36.4"
       },
       "generator": "micro",
       "protoPath": "google/api/servicecontrol/v1"
     },
     {
       "id": "Google.Cloud.ServiceDirectory.V1",
-      "version": "1.0.0-beta01",
+      "version": "1.1.0",
       "type": "grpc",
       "productName": "Service Directory",
       "productUrl": "https://cloud.google.com/service-directory/",
@@ -1475,7 +2105,9 @@
         "services"
       ],
       "dependencies": {
-        "Google.Cloud.Iam.V1": "2.1.0"
+        "Google.Api.Gax.Grpc.GrpcCore": "3.3.0",
+        "Google.Cloud.Iam.V1": "2.2.0",
+        "Grpc.Core": "2.36.4"
       },
       "generator": "micro",
       "protoPath": "google/cloud/servicedirectory/v1"
@@ -1486,11 +2118,11 @@
       "protoPath": "google/cloud/servicedirectory/v1beta1",
       "productName": "Service Directory",
       "productUrl": "https://cloud.google.com/service-directory/",
-      "version": "1.0.0-beta03",
+      "version": "1.0.0-beta04",
       "type": "grpc",
       "description": "Recommended Google client library to access the Service Directory API version v1beta1.",
       "dependencies": {
-        "Google.Cloud.Iam.V1": "2.1.0"
+        "Google.Cloud.Iam.V1": "2.2.0"
       },
       "tags": [
         "services"
@@ -1498,7 +2130,7 @@
     },
     {
       "id": "Google.Cloud.ServiceManagement.V1",
-      "version": "1.0.0",
+      "version": "1.1.0",
       "type": "grpc",
       "productName": "Service Management",
       "productUrl": "https://cloud.google.com/service-infrastructure/docs/service-management/reference/rpc",
@@ -1509,12 +2141,47 @@
         "management"
       ],
       "dependencies": {
-        "Google.Api.Gax.Grpc.GrpcCore": "3.2.0",
+        "Google.Api.Gax.Grpc.GrpcCore": "3.3.0",
         "Google.LongRunning": "2.1.0",
-        "Grpc.Core": "2.31.0"
+        "Grpc.Core": "2.36.4"
       },
       "generator": "micro",
       "protoPath": "google/api/servicemanagement/v1"
+    },
+    {
+      "id": "Google.Cloud.ServiceUsage.V1",
+      "version": "1.0.0-beta01",
+      "type": "grpc",
+      "productName": "Service Usage",
+      "productUrl": "https://cloud.google.com/service-usage/docs/",
+      "description": "Recommended Google client library to access the Service Usage API, which enables services that service consumers want to use on Google Cloud Platform, lists the available or enabled services, or disables services that service consumers no longer use.",
+      "tags": [
+        "services",
+        "apis"
+      ],
+      "dependencies": {
+        "Google.LongRunning": "2.2.0"
+      },
+      "generator": "micro",
+      "protoPath": "google/api/serviceusage/v1"
+    },
+    {
+      "id": "Google.Cloud.Shell.V1",
+      "version": "1.0.0",
+      "type": "grpc",
+      "productName": "Cloud Shell",
+      "productUrl": "https://cloud.google.com/shell/",
+      "description": "Recommended Google client library to access the Cloud Shell API, which allows users to start, configure, and connect to interactive shell sessions running in the cloud.",
+      "tags": [
+        "shell"
+      ],
+      "dependencies": {
+        "Google.Api.Gax.Grpc.GrpcCore": "3.3.0",
+        "Google.LongRunning": "2.2.0",
+        "Grpc.Core": "2.36.4"
+      },
+      "generator": "micro",
+      "protoPath": "google/cloud/shell/v1"
     },
     {
       "id": "Google.Cloud.Spanner.Admin.Database.V1",
@@ -1524,18 +2191,19 @@
       "testTargetFrameworks": "netcoreapp2.0;net461",
       "productName": "Google Cloud Spanner Database Administration",
       "productUrl": "https://cloud.google.com/spanner/",
-      "version": "3.3.0",
+      "version": "3.9.0",
+      "commonResourcesConfig": "apis/Google.Cloud.Spanner.Common.V1/CommonResourcesConfig.json",
       "type": "grpc",
       "description": "Recommended Google client library to access the Google Cloud Spanner Database Admin API.",
       "tags": [
         "Spanner"
       ],
       "dependencies": {
-        "Google.Api.Gax.Grpc.GrpcCore": "3.2.0",
-        "Google.Cloud.Iam.V1": "2.0.0",
+        "Google.Api.Gax.Grpc.GrpcCore": "3.3.0",
+        "Google.Cloud.Iam.V1": "2.2.0",
         "Google.Cloud.Spanner.Common.V1": "project",
-        "Google.LongRunning": "2.0.0",
-        "Grpc.Core": "2.31.0"
+        "Google.LongRunning": "2.2.0",
+        "Grpc.Core": "2.36.4"
       },
       "noVersionHistory": true
     },
@@ -1547,18 +2215,19 @@
       "testTargetFrameworks": "netcoreapp2.0;net461",
       "productName": "Google Cloud Spanner Instance Administration",
       "productUrl": "https://cloud.google.com/spanner/",
-      "version": "3.3.0",
+      "version": "3.9.0",
+      "commonResourcesConfig": "apis/Google.Cloud.Spanner.Common.V1/CommonResourcesConfig.json",
       "type": "grpc",
       "description": "Recommended Google client library to access the Google Cloud Spanner Instance Admin API.",
       "tags": [
         "Spanner"
       ],
       "dependencies": {
-        "Google.Api.Gax.Grpc.GrpcCore": "3.2.0",
-        "Google.Cloud.Iam.V1": "2.0.0",
+        "Google.Api.Gax.Grpc.GrpcCore": "3.3.0",
+        "Google.Cloud.Iam.V1": "2.2.0",
         "Google.Cloud.Spanner.Common.V1": "project",
-        "Google.LongRunning": "2.0.0",
-        "Grpc.Core": "2.31.0"
+        "Google.LongRunning": "2.2.0",
+        "Grpc.Core": "2.36.4"
       },
       "noVersionHistory": true
     },
@@ -1566,38 +2235,39 @@
       "id": "Google.Cloud.Spanner.Data",
       "targetFrameworks": "netstandard2.0;net461",
       "testTargetFrameworks": "netcoreapp2.1;net461",
-      "version": "3.3.0",
+      "version": "3.9.0",
       "type": "other",
+      "metadataType": "INTEGRATION",
       "description": "Google ADO.NET Provider for Google Cloud Spanner.",
       "tags": [
         "Spanner",
         "ADO"
       ],
       "dependencies": {
-        "Google.Api.Gax.Grpc.GrpcCore": "3.2.0",
+        "Google.Api.Gax.Grpc.GrpcCore": "3.3.0",
         "Google.Cloud.Spanner.Admin.Database.V1": "project",
         "Google.Cloud.Spanner.Admin.Instance.V1": "project",
         "Google.Cloud.Spanner.V1": "project",
-        "Grpc.Core": "2.31.0",
+        "Grpc.Core": "2.36.4",
         "Grpc.Gcp": "2.0.0"
       },
       "testDependencies": {
         "CoreCompat.EnterpriseLibrary.TransientFaultHandling": "6.0.1304-r3",
-        "Google.Api.Gax.Grpc.Testing": "3.2.0",
-        "Google.Api.Gax.Testing": "3.2.0"
+        "Google.Api.Gax.Grpc.Testing": "3.3.0",
+        "Google.Api.Gax.Testing": "3.3.0"
       }
     },
     {
       "id": "Google.Cloud.Spanner.Common.V1",
       "type": "other",
       "targetFrameworks": "netstandard2.0;net461",
-      "version": "3.3.0",
+      "version": "3.9.0",
       "description": "Common resource names used by all Spanner V1 APIs",
       "tags": [
         "Spanner"
       ],
       "dependencies": {
-        "Google.Api.Gax": "3.2.0"
+        "Google.Api.Gax": "3.3.0"
       },
       "noVersionHistory": true
     },
@@ -1609,16 +2279,18 @@
       "testTargetFrameworks": "netcoreapp2.0;net461",
       "productName": "Google Cloud Spanner",
       "productUrl": "https://cloud.google.com/spanner/",
-      "version": "3.3.0",
+      "version": "3.9.0",
+      "commonResourcesConfig": "apis/Google.Cloud.Spanner.Common.V1/CommonResourcesConfig.json",
       "type": "grpc",
+      "metadataType": "GAPIC_COMBO",
       "description": "Low-level Google client library to access the Google Cloud Spanner API. The ADO.NET provider (Google.Cloud.Spanner.Data) which depends on this package is generally preferred for Spanner access.",
       "tags": [
         "Spanner"
       ],
       "dependencies": {
-        "Google.Api.Gax.Grpc.GrpcCore": "3.2.0",
+        "Google.Api.Gax.Grpc.GrpcCore": "3.3.0",
         "Google.Cloud.Spanner.Common.V1": "project",
-        "Grpc.Core": "2.31.0"
+        "Grpc.Core": "2.36.4"
       },
       "noVersionHistory": true
     },
@@ -1628,16 +2300,17 @@
       "protoPath": "google/cloud/speech/v1",
       "productName": "Google Cloud Speech",
       "productUrl": "https://cloud.google.com/speech",
-      "version": "2.1.0",
+      "version": "2.2.0",
       "type": "grpc",
+      "metadataType": "GAPIC_COMBO",
       "description": "Recommended Google client library to access the Google Cloud Speech API, which performs speech recognition.",
       "tags": [
         "Speech"
       ],
       "dependencies": {
-        "Google.Api.Gax.Grpc.GrpcCore": "3.2.0",
-        "Google.LongRunning": "2.1.0",
-        "Grpc.Core": "2.31.0"
+        "Google.Api.Gax.Grpc.GrpcCore": "3.3.0",
+        "Google.LongRunning": "2.2.0",
+        "Grpc.Core": "2.36.4"
       }
     },
     {
@@ -1646,9 +2319,10 @@
       "protoPath": "google/cloud/speech/v1p1beta1",
       "productName": "Google Cloud Speech",
       "productUrl": "https://cloud.google.com/speech",
-      "version": "2.0.0-beta03",
+      "version": "2.0.0-beta04",
       "releaseLevelOverride": "beta",
       "type": "grpc",
+      "metadataType": "GAPIC_COMBO",
       "description": "Google client library to access the Google Cloud Speech API version v1p1beta1 with upcoming features.",
       "tags": [
         "Speech"
@@ -1661,17 +2335,17 @@
       "id": "Google.Cloud.Storage.V1",
       "productName": "Google Cloud Storage",
       "productUrl": "https://cloud.google.com/storage/",
-      "version": "3.4.0-beta01",
+      "version": "3.5.0",
       "type": "rest",
       "description": "Recommended Google client library to access the Google Cloud Storage API. It wraps the Google.Apis.Storage.v1 client library, making common operations simpler in client code. Google Cloud Storage stores and retrieves potentially large, immutable data objects.",
       "dependencies": {
-        "Google.Apis.Storage.v1": "1.49.0.2084",
-        "Google.Api.Gax.Rest": "3.2.0"
+        "Google.Api.Gax.Rest": "3.3.0",
+        "Google.Apis.Storage.v1": "1.51.0.2234"
       },
       "testDependencies": {
-        "Google.Cloud.PubSub.V1": "project",
-        "Google.Api.Gax.Testing": "3.2.0",
-        "Google.Apis.Iam.v1": "1.49.0.2079"
+        "Google.Api.Gax.Testing": "3.3.0",
+        "Google.Apis.Iam.v1": "1.51.0.2330",
+        "Google.Cloud.PubSub.V1": "project"
       },
       "tags": [
         "Storage"
@@ -1679,7 +2353,7 @@
     },
     {
       "id": "Google.Cloud.Talent.V4",
-      "version": "1.0.0-beta02",
+      "version": "1.1.0",
       "type": "grpc",
       "productName": "Google Cloud Talent Solution",
       "productUrl": "https://cloud.google.com/talent-solution/",
@@ -1689,9 +2363,9 @@
         "Jobs"
       ],
       "dependencies": {
-        "Google.Api.Gax.Grpc.GrpcCore": "3.2.0",
-        "Google.LongRunning": "2.0.0",
-        "Grpc.Core": "2.31.0"
+        "Google.Api.Gax.Grpc.GrpcCore": "3.3.0",
+        "Google.LongRunning": "2.2.0",
+        "Grpc.Core": "2.36.4"
       },
       "generator": "micro",
       "protoPath": "google/cloud/talent/v4"
@@ -1702,7 +2376,7 @@
       "protoPath": "google/cloud/talent/v4beta1",
       "productName": "Google Cloud Talent Solution",
       "productUrl": "https://cloud.google.com/talent-solution/",
-      "version": "2.0.0-beta04",
+      "version": "2.0.0-beta05",
       "releaseLevelOverride": "beta",
       "type": "grpc",
       "description": "Recommended Google client library to access the Google Cloud Talent solution API (v4 beta1) which provides the capability to create, read, update, and delete job postings, as well as search jobs based on keywords and filters.",
@@ -1711,7 +2385,7 @@
         "Jobs"
       ],
       "dependencies": {
-        "Google.LongRunning": "2.1.0"
+        "Google.LongRunning": "2.2.0"
       }
     },
     {
@@ -1720,16 +2394,16 @@
       "protoPath": "google/cloud/tasks/v2",
       "productName": "Google Cloud Tasks",
       "productUrl": "https://cloud.google.com/tasks/",
-      "version": "2.1.0",
+      "version": "2.2.0",
       "type": "grpc",
       "description": "Recommended Google client library to access the Google Cloud Tasks API (v2), which manages the execution of large numbers of distributed requests.",
       "tags": [
         "Tasks"
       ],
       "dependencies": {
-        "Google.Api.Gax.Grpc.GrpcCore": "3.2.0",
-        "Google.Cloud.Iam.V1": "2.1.0",
-        "Grpc.Core": "2.31.0"
+        "Google.Api.Gax.Grpc.GrpcCore": "3.3.0",
+        "Google.Cloud.Iam.V1": "2.2.0",
+        "Grpc.Core": "2.36.4"
       }
     },
     {
@@ -1738,7 +2412,7 @@
       "protoPath": "google/cloud/tasks/v2beta3",
       "productName": "Google Cloud Tasks",
       "productUrl": "https://cloud.google.com/tasks/",
-      "version": "2.0.0-beta03",
+      "version": "2.0.0-beta05",
       "releaseLevelOverride": "beta",
       "type": "grpc",
       "description": "Recommended Google client library to access the Google Cloud Tasks API (v2beta3), which manages the execution of large numbers of distributed requests.",
@@ -1746,7 +2420,7 @@
         "Tasks"
       ],
       "dependencies": {
-        "Google.Cloud.Iam.V1": "2.1.0"
+        "Google.Cloud.Iam.V1": "2.2.0"
       }
     },
     {
@@ -1755,12 +2429,12 @@
       "protoPath": "google/cloud/texttospeech/v1",
       "productName": "Google Cloud Text-to-Speech",
       "productUrl": "https://cloud.google.com/text-to-speech",
-      "version": "2.1.0",
+      "version": "2.2.0",
       "type": "grpc",
-      "description": "Recommended Google client library to access the Google Cloud Text-to-Speech API, synthesizes natural-sounding speech by applying powerful neural network models.",
+      "description": "Recommended Google client library to access the Google Cloud Text-to-Speech API v1, synthesizes natural-sounding speech by applying powerful neural network models.",
       "dependencies": {
-        "Google.Api.Gax.Grpc.GrpcCore": "3.2.0",
-        "Grpc.Core": "2.31.0"
+        "Google.Api.Gax.Grpc.GrpcCore": "3.3.0",
+        "Grpc.Core": "2.36.4"
       },
       "tags": [
         "Speech",
@@ -1768,17 +2442,48 @@
       ]
     },
     {
+      "id": "Google.Cloud.TextToSpeech.V1Beta1",
+      "version": "1.0.0-beta01",
+      "type": "grpc",
+      "productName": "Google Cloud Text-to-Speech",
+      "productUrl": "https://cloud.google.com/text-to-speech",
+      "description": "Recommended Google client library to access the Google Cloud Text-to-Speech API v1beta1, synthesizes natural-sounding speech by applying powerful neural network models.",
+      "tags": [
+        "Speech",
+        "Text-to-speech"
+      ],
+      "dependencies": {},
+      "generator": "micro",
+      "protoPath": "google/cloud/texttospeech/v1beta1"
+    },
+    {
+      "id": "Google.Cloud.Tpu.V1",
+      "version": "1.0.0-beta01",
+      "type": "grpc",
+      "productName": "Cloud TPU",
+      "productUrl": "https://cloud.google.com/tpu/",
+      "description": "Recommended Google client library to access the Google Cloud TPU API, which provides customers with access to Google TPU technology.",
+      "tags": [
+        "tpu"
+      ],
+      "dependencies": {
+        "Google.LongRunning": "2.2.0"
+      },
+      "generator": "micro",
+      "protoPath": "google/cloud/tpu/v1"
+    },
+    {
       "id": "Google.Cloud.Trace.V1",
       "generator": "micro",
       "protoPath": "google/devtools/cloudtrace/v1",
       "productName": "Google Cloud Trace",
       "productUrl": "https://cloud.google.com/trace/",
-      "version": "2.1.0",
+      "version": "2.2.0",
       "type": "grpc",
       "description": "Recommended Google client library to access the Google Cloud Trace API, which sends and retrieves trace data from Google Cloud Trace. Data is generated and available by default for all App Engine applications. Data from other applications can be written to Cloud Trace for display, reporting, and analysis.",
       "dependencies": {
-        "Google.Api.Gax.Grpc.GrpcCore": "3.2.0",
-        "Grpc.Core": "2.31.0"
+        "Google.Api.Gax.Grpc.GrpcCore": "3.3.0",
+        "Grpc.Core": "2.36.4"
       },
       "tags": [
         "Tracing",
@@ -1791,12 +2496,12 @@
       "protoPath": "google/devtools/cloudtrace/v2",
       "productName": "Google Cloud Trace",
       "productUrl": "https://cloud.google.com/trace/",
-      "version": "2.1.0",
+      "version": "2.2.0",
       "type": "grpc",
       "description": "Recommended Google client library to access the Google Cloud Trace V2 API, which sends and retrieves trace data from Google Cloud Trace. Data is generated and available by default for all App Engine applications. Data from other applications can be written to Cloud Trace for display, reporting, and analysis.",
       "dependencies": {
-        "Google.Api.Gax.Grpc.GrpcCore": "3.2.0",
-        "Grpc.Core": "2.31.0"
+        "Google.Api.Gax.Grpc.GrpcCore": "3.3.0",
+        "Grpc.Core": "2.36.4"
       },
       "tags": [
         "Tracing",
@@ -1809,13 +2514,13 @@
       "productUrl": "https://cloud.google.com/translate/",
       "generator": "micro",
       "protoPath": "google/cloud/translate/v3",
-      "version": "2.1.0",
+      "version": "2.2.0",
       "type": "grpc",
       "description": "Recommended Google client library to access the Translate v3 API. The Translate API translates text from one language to another.",
       "dependencies": {
-        "Google.Api.Gax.Grpc.GrpcCore": "3.2.0",
-        "Google.LongRunning": "2.1.0",
-        "Grpc.Core": "2.31.0"
+        "Google.Api.Gax.Grpc.GrpcCore": "3.3.0",
+        "Google.LongRunning": "2.2.0",
+        "Grpc.Core": "2.36.4"
       },
       "tags": [
         "Translate",
@@ -1826,12 +2531,12 @@
       "id": "Google.Cloud.Translation.V2",
       "productName": "Google Cloud Translation",
       "productUrl": "https://cloud.google.com/translate/",
-      "version": "2.0.0",
+      "version": "2.1.0",
       "type": "rest",
       "description": "Recommended Google client library to access the Translate v2 API. It wraps the Google.Apis.Translate.v2 client library, making common operations simpler in client code. The Translate API translates text from one language to another.",
       "dependencies": {
-        "Google.Apis.Translate.v2": "1.42.0.875",
-        "Google.Api.Gax.Rest": "3.2.0"
+        "Google.Api.Gax.Rest": "3.3.0",
+        "Google.Apis.Translate.v2": "1.51.0.875"
       },
       "tags": [
         "Translate",
@@ -1839,21 +2544,38 @@
       ]
     },
     {
+      "id": "Google.Cloud.Video.Transcoder.V1Beta1",
+      "version": "1.0.0-beta02",
+      "type": "grpc",
+      "productName": "Transcoder",
+      "productUrl": "https://cloud.google.com/transcoder/docs",
+      "description": "Recommended Google client library to access the Transcoder API version v1beta1, which converts video files into formats suitable for consumer distribution.",
+      "tags": [
+        "video",
+        "transcoder",
+        "transcoding"
+      ],
+      "dependencies": {},
+      "generator": "micro",
+      "protoPath": "google/cloud/video/transcoder/v1beta1"
+    },
+    {
       "id": "Google.Cloud.VideoIntelligence.V1",
       "generator": "micro",
       "protoPath": "google/cloud/videointelligence/v1",
       "productName": "Google Cloud Video Intelligence",
       "productUrl": "https://cloud.google.com/video-intelligence",
-      "version": "2.1.0",
+      "version": "2.2.0",
       "type": "grpc",
+      "metadataType": "GAPIC_COMBO",
       "description": "Recommended Google client library to access the Google Cloud Video Intelligence API.",
       "tags": [
         "VideoIntelligence"
       ],
       "dependencies": {
-        "Google.Api.Gax.Grpc.GrpcCore": "3.2.0",
-        "Google.LongRunning": "2.0.0",
-        "Grpc.Core": "2.31.0"
+        "Google.Api.Gax.Grpc.GrpcCore": "3.3.0",
+        "Google.LongRunning": "2.1.0",
+        "Grpc.Core": "2.36.4"
       }
     },
     {
@@ -1862,17 +2584,34 @@
       "protoPath": "google/cloud/vision/v1",
       "productName": "Google Cloud Vision",
       "productUrl": "https://cloud.google.com/vision",
-      "version": "2.1.0",
+      "version": "2.3.0",
       "type": "grpc",
+      "metadataType": "GAPIC_COMBO",
       "description": "Recommended Google client library to access the Google Cloud Vision API, which integrates Google Vision features, including image labeling, face, logo, and landmark detection, optical character recognition (OCR), and detection of explicit content, into applications.",
       "tags": [
         "Vision"
       ],
       "dependencies": {
-        "Google.Api.Gax.Grpc.GrpcCore": "3.2.0",
+        "Google.Api.Gax.Grpc.GrpcCore": "3.3.0",
         "Google.LongRunning": "2.1.0",
-        "Grpc.Core": "2.31.0"
+        "Grpc.Core": "2.36.4"
       }
+    },
+    {
+      "id": "Google.Cloud.VpcAccess.V1",
+      "version": "1.0.0-beta01",
+      "type": "grpc",
+      "productName": "Serverless VPC Access",
+      "productUrl": "https://cloud.google.com/vpc/docs/",
+      "description": "API for managing VPC access connectors.",
+      "tags": [
+        "vpc"
+      ],
+      "dependencies": {
+        "Google.LongRunning": "2.2.0"
+      },
+      "generator": "micro",
+      "protoPath": "google/cloud/vpcaccess/v1"
     },
     {
       "id": "Google.Cloud.WebRisk.V1",
@@ -1880,7 +2619,7 @@
       "protoPath": "google/cloud/webrisk/v1",
       "productName": "Google Cloud Web Risk",
       "productUrl": "https://cloud.google.com/web-risk/",
-      "version": "1.1.0",
+      "version": "1.2.0",
       "type": "grpc",
       "description": "Recommended Google client library to access the Google Cloud Web Risk API v1, which lets client applications check URLs against Google's constantly updated lists of unsafe web resources.",
       "tags": [
@@ -1892,8 +2631,8 @@
         "url"
       ],
       "dependencies": {
-        "Google.Api.Gax.Grpc.GrpcCore": "3.2.0",
-        "Grpc.Core": "2.31.0"
+        "Google.Api.Gax.Grpc.GrpcCore": "3.3.0",
+        "Grpc.Core": "2.36.4"
       }
     },
     {
@@ -1902,7 +2641,7 @@
       "protoPath": "google/cloud/webrisk/v1beta1",
       "productName": "Google Cloud Web Risk",
       "productUrl": "https://cloud.google.com/web-risk/",
-      "version": "2.0.0-beta03",
+      "version": "2.0.0-beta04",
       "releaseLevelOverride": "beta",
       "type": "grpc",
       "description": "Recommended Google client library to access the Google Cloud Web Risk API v1beta1.",
@@ -1917,7 +2656,7 @@
     },
     {
       "id": "Google.Cloud.WebSecurityScanner.V1",
-      "version": "1.0.0-beta01",
+      "version": "1.1.0",
       "type": "grpc",
       "productName": "Web Security Scanner",
       "productUrl": "https://cloud.google.com/security-command-center/docs/concepts-web-security-scanner-overview",
@@ -1926,27 +2665,64 @@
         "security",
         "scanner"
       ],
-      "dependencies": {},
+      "dependencies": {
+        "Google.Api.Gax.Grpc.GrpcCore": "3.3.0",
+        "Grpc.Core": "2.36.4"
+      },
       "generator": "micro",
       "protoPath": "google/cloud/websecurityscanner/v1"
+    },
+    {
+      "id": "Google.Cloud.Workflows.Common.V1",
+      "type": "other",
+      "targetFrameworks": "netstandard2.0;net461",
+      "version": "1.0.0",
+      "description": "Common resource names used by all Workflows V1 APIs",
+      "tags": [
+        "Spanner"
+      ],
+      "dependencies": {
+        "Google.Api.Gax": "3.3.0"
+      },
+      "noVersionHistory": true
     },
     {
       "id": "Google.Cloud.Workflows.Common.V1Beta",
       "type": "other",
       "targetFrameworks": "netstandard2.0;net461",
-      "version": "1.0.0-beta01",
+      "version": "1.0.0-beta02",
       "description": "Common resource names used by all Workflows V1Beta APIs",
       "tags": [
         "Spanner"
       ],
       "dependencies": {
-        "Google.Api.Gax": "3.2.0"
+        "Google.Api.Gax": "3.3.0"
       },
       "noVersionHistory": true
     },
     {
+      "id": "Google.Cloud.Workflows.Executions.V1",
+      "version": "1.0.0",
+      "commonResourcesConfig": "apis/Google.Cloud.Workflows.Common.V1/CommonResourcesConfig.json",
+      "type": "grpc",
+      "productName": "Workflow Executions",
+      "productUrl": "https://cloud.google.com/workflows/docs/apis",
+      "description": "Recommended Google client library to access the Google Cloud Workflow Executions API v1, used to manage user-provided workflows.",
+      "tags": [
+        "workflows"
+      ],
+      "dependencies": {
+        "Google.Api.Gax.Grpc.GrpcCore": "3.3.0",
+        "Google.Cloud.Workflows.Common.V1": "project",
+        "Grpc.Core": "2.36.4"
+      },
+      "generator": "micro",
+      "protoPath": "google/cloud/workflows/executions/v1"
+    },
+    {
       "id": "Google.Cloud.Workflows.Executions.V1Beta",
-      "version": "1.0.0-beta01",
+      "version": "1.0.0-beta02",
+      "commonResourcesConfig": "apis/Google.Cloud.Workflows.Common.V1Beta/CommonResourcesConfig.json",
       "type": "grpc",
       "productName": "Workflow Executions",
       "productUrl": "https://cloud.google.com/workflows/docs/apis",
@@ -1961,8 +2737,29 @@
       "protoPath": "google/cloud/workflows/executions/v1beta"
     },
     {
+      "id": "Google.Cloud.Workflows.V1",
+      "version": "1.0.0",
+      "commonResourcesConfig": "apis/Google.Cloud.Workflows.Common.V1/CommonResourcesConfig.json",
+      "type": "grpc",
+      "productName": "Workflows",
+      "productUrl": "https://cloud.google.com/workflows/docs/apis",
+      "description": "Recommended Google client library to access the Google Cloud Workflows API v1.",
+      "tags": [
+        "workflows"
+      ],
+      "dependencies": {
+        "Google.Api.Gax.Grpc.GrpcCore": "3.3.0",
+        "Google.Cloud.Workflows.Common.V1": "project",
+        "Google.LongRunning": "2.1.0",
+        "Grpc.Core": "2.36.4"
+      },
+      "generator": "micro",
+      "protoPath": "google/cloud/workflows/v1"
+    },
+    {
       "id": "Google.Cloud.Workflows.V1Beta",
-      "version": "1.0.0-beta01",
+      "version": "1.0.0-beta02",
+      "commonResourcesConfig": "apis/Google.Cloud.Workflows.Common.V1Beta/CommonResourcesConfig.json",
       "type": "grpc",
       "productName": "Workflows",
       "productUrl": "https://cloud.google.com/workflows/docs/apis",
@@ -1972,7 +2769,7 @@
       ],
       "dependencies": {
         "Google.Cloud.Workflows.Common.V1Beta": "project",
-        "Google.LongRunning": "2.0.0"
+        "Google.LongRunning": "2.2.0"
       },
       "generator": "micro",
       "protoPath": "google/cloud/workflows/v1beta"
@@ -1982,7 +2779,7 @@
       "packageOwner": "google-cloud",
       "generator": "proto",
       "protoPath": "google/identity/accesscontextmanager/type",
-      "version": "1.0.0",
+      "version": "1.1.0",
       "type": "other",
       "targetFrameworks": "netstandard2.0;net461",
       "description": "Version-agnostic types for the Google Identity Access Context Manager API.",
@@ -1990,7 +2787,7 @@
         "identity"
       ],
       "dependencies": {
-        "Google.Api.CommonProtos": "2.2.0"
+        "Google.Api.CommonProtos": "2.3.0"
       }
     },
     {
@@ -1998,15 +2795,15 @@
       "packageOwner": "google-cloud",
       "generator": "proto",
       "protoPath": "google/identity/accesscontextmanager/v1",
-      "version": "1.1.0",
+      "version": "1.2.0",
       "targetFrameworks": "netstandard2.0;net461",
       "description": "Protocol buffer types for the Google Identity Access Context Manager API V1.",
       "tags": [
         "identity"
       ],
       "dependencies": {
-        "Google.Api.CommonProtos": "2.2.0",
-        "Google.Identity.AccessContextManager.Type": "1.0.0"
+        "Google.Api.CommonProtos": "2.3.0",
+        "Google.Identity.AccessContextManager.Type": "1.1.0"
       }
     },
     {
@@ -2015,18 +2812,19 @@
       "generator": "micro",
       "protoPath": "google/longrunning",
       "listingDescription": "Support for the Long-Running Operations API pattern",
-      "version": "2.1.0",
+      "version": "2.2.0",
       "type": "grpc",
+      "metadataType": "CORE",
       "description": "gRPC services for the Google Long Running Operations API. This library is typically used as a dependency for other API client libraries.",
       "tags": [
         "LongRunning"
       ],
       "dependencies": {
-        "Google.Api.Gax.Grpc.GrpcCore": "3.2.0",
-        "Grpc.Core": "2.31.0"
+        "Google.Api.Gax.Grpc.GrpcCore": "3.3.0",
+        "Grpc.Core": "2.36.4"
       },
       "testDependencies": {
-        "Google.Api.Gax.Testing": "3.2.0"
+        "Google.Api.Gax.Testing": "3.3.0"
       }
     },
     {
@@ -2036,7 +2834,7 @@
       "protoPath": "grafeas/v1",
       "productName": "Grafeas",
       "productUrl": "https://grafeas.io/",
-      "version": "2.1.0",
+      "version": "2.2.0",
       "type": "grpc",
       "description": "Recommended client library to access Grafeas, an open artifact metadata API to audit and govern your software supply chain.",
       "tags": [
@@ -2046,8 +2844,8 @@
         "grafeas"
       ],
       "dependencies": {
-        "Google.Api.Gax.Grpc.GrpcCore": "3.2.0",
-        "Grpc.Core": "2.31.0"
+        "Google.Api.Gax.Grpc.GrpcCore": "3.3.0",
+        "Grpc.Core": "2.36.4"
       }
     }
   ],

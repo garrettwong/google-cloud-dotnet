@@ -1,4 +1,4 @@
-// Copyright 2020 Google LLC
+// Copyright 2021 Google LLC
 //
 // Licensed under the Apache License, Version 2.0 (the "License");
 // you may not use this file except in compliance with the License.
@@ -143,7 +143,9 @@ namespace Google.Cloud.ServiceManagement.V1.Tests
                 Context = new ga::Context(),
                 Usage = new ga::Usage(),
                 Endpoints = { new ga::Endpoint(), },
+#pragma warning disable CS0612
                 ConfigVersion = 2430367190U,
+#pragma warning restore CS0612
                 Control = new ga::Control(),
                 ProducerProjectId = "producer_project_id18d0012a",
                 Logs =
@@ -198,7 +200,9 @@ namespace Google.Cloud.ServiceManagement.V1.Tests
                 Context = new ga::Context(),
                 Usage = new ga::Usage(),
                 Endpoints = { new ga::Endpoint(), },
+#pragma warning disable CS0612
                 ConfigVersion = 2430367190U,
+#pragma warning restore CS0612
                 Control = new ga::Control(),
                 ProducerProjectId = "producer_project_id18d0012a",
                 Logs =
@@ -255,7 +259,9 @@ namespace Google.Cloud.ServiceManagement.V1.Tests
                 Context = new ga::Context(),
                 Usage = new ga::Usage(),
                 Endpoints = { new ga::Endpoint(), },
+#pragma warning disable CS0612
                 ConfigVersion = 2430367190U,
+#pragma warning restore CS0612
                 Control = new ga::Control(),
                 ProducerProjectId = "producer_project_id18d0012a",
                 Logs =
@@ -310,7 +316,9 @@ namespace Google.Cloud.ServiceManagement.V1.Tests
                 Context = new ga::Context(),
                 Usage = new ga::Usage(),
                 Endpoints = { new ga::Endpoint(), },
+#pragma warning disable CS0612
                 ConfigVersion = 2430367190U,
+#pragma warning restore CS0612
                 Control = new ga::Control(),
                 ProducerProjectId = "producer_project_id18d0012a",
                 Logs =
@@ -366,7 +374,9 @@ namespace Google.Cloud.ServiceManagement.V1.Tests
                 Context = new ga::Context(),
                 Usage = new ga::Usage(),
                 Endpoints = { new ga::Endpoint(), },
+#pragma warning disable CS0612
                 ConfigVersion = 2430367190U,
+#pragma warning restore CS0612
                 Control = new ga::Control(),
                 ProducerProjectId = "producer_project_id18d0012a",
                 Logs =
@@ -420,7 +430,9 @@ namespace Google.Cloud.ServiceManagement.V1.Tests
                 Context = new ga::Context(),
                 Usage = new ga::Usage(),
                 Endpoints = { new ga::Endpoint(), },
+#pragma warning disable CS0612
                 ConfigVersion = 2430367190U,
+#pragma warning restore CS0612
                 Control = new ga::Control(),
                 ProducerProjectId = "producer_project_id18d0012a",
                 Logs =
@@ -476,7 +488,9 @@ namespace Google.Cloud.ServiceManagement.V1.Tests
                 Context = new ga::Context(),
                 Usage = new ga::Usage(),
                 Endpoints = { new ga::Endpoint(), },
+#pragma warning disable CS0612
                 ConfigVersion = 2430367190U,
+#pragma warning restore CS0612
                 Control = new ga::Control(),
                 ProducerProjectId = "producer_project_id18d0012a",
                 Logs =
@@ -530,7 +544,9 @@ namespace Google.Cloud.ServiceManagement.V1.Tests
                 Context = new ga::Context(),
                 Usage = new ga::Usage(),
                 Endpoints = { new ga::Endpoint(), },
+#pragma warning disable CS0612
                 ConfigVersion = 2430367190U,
+#pragma warning restore CS0612
                 Control = new ga::Control(),
                 ProducerProjectId = "producer_project_id18d0012a",
                 Logs =

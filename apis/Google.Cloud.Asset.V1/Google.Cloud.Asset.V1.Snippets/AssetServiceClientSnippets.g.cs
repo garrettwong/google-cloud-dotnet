@@ -1,4 +1,4 @@
-// Copyright 2020 Google LLC
+// Copyright 2021 Google LLC
 //
 // Licensed under the Apache License, Version 2.0 (the "License");
 // you may not use this file except in compliance with the License.
@@ -97,6 +97,288 @@ namespace Google.Cloud.Asset.V1.Snippets
                 // If it has completed, then access the result
                 ExportAssetsResponse retrievedResult = retrievedResponse.Result;
             }
+            // End snippet
+        }
+
+        /// <summary>Snippet for ListAssets</summary>
+        public void ListAssetsRequestObject()
+        {
+            // Snippet: ListAssets(ListAssetsRequest, CallSettings)
+            // Create client
+            AssetServiceClient assetServiceClient = AssetServiceClient.Create();
+            // Initialize request argument(s)
+            ListAssetsRequest request = new ListAssetsRequest
+            {
+                ParentAsResourceName = new UnparsedResourceName("a/wildcard/resource"),
+                ReadTime = new Timestamp(),
+                AssetTypes = { "", },
+                ContentType = ContentType.Unspecified,
+            };
+            // Make the request
+            PagedEnumerable<ListAssetsResponse, Asset> response = assetServiceClient.ListAssets(request);
+
+            // Iterate over all response items, lazily performing RPCs as required
+            foreach (Asset item in response)
+            {
+                // Do something with each item
+                Console.WriteLine(item);
+            }
+
+            // Or iterate over pages (of server-defined size), performing one RPC per page
+            foreach (ListAssetsResponse page in response.AsRawResponses())
+            {
+                // Do something with each page of items
+                Console.WriteLine("A page of results:");
+                foreach (Asset item in page)
+                {
+                    // Do something with each item
+                    Console.WriteLine(item);
+                }
+            }
+
+            // Or retrieve a single page of known size (unless it's the final page), performing as many RPCs as required
+            int pageSize = 10;
+            Page<Asset> singlePage = response.ReadPage(pageSize);
+            // Do something with the page of items
+            Console.WriteLine($"A page of {pageSize} results (unless it's the final page):");
+            foreach (Asset item in singlePage)
+            {
+                // Do something with each item
+                Console.WriteLine(item);
+            }
+            // Store the pageToken, for when the next page is required.
+            string nextPageToken = singlePage.NextPageToken;
+            // End snippet
+        }
+
+        /// <summary>Snippet for ListAssetsAsync</summary>
+        public async Task ListAssetsRequestObjectAsync()
+        {
+            // Snippet: ListAssetsAsync(ListAssetsRequest, CallSettings)
+            // Create client
+            AssetServiceClient assetServiceClient = await AssetServiceClient.CreateAsync();
+            // Initialize request argument(s)
+            ListAssetsRequest request = new ListAssetsRequest
+            {
+                ParentAsResourceName = new UnparsedResourceName("a/wildcard/resource"),
+                ReadTime = new Timestamp(),
+                AssetTypes = { "", },
+                ContentType = ContentType.Unspecified,
+            };
+            // Make the request
+            PagedAsyncEnumerable<ListAssetsResponse, Asset> response = assetServiceClient.ListAssetsAsync(request);
+
+            // Iterate over all response items, lazily performing RPCs as required
+            await response.ForEachAsync((Asset item) =>
+            {
+                // Do something with each item
+                Console.WriteLine(item);
+            });
+
+            // Or iterate over pages (of server-defined size), performing one RPC per page
+            await response.AsRawResponses().ForEachAsync((ListAssetsResponse page) =>
+            {
+                // Do something with each page of items
+                Console.WriteLine("A page of results:");
+                foreach (Asset item in page)
+                {
+                    // Do something with each item
+                    Console.WriteLine(item);
+                }
+            });
+
+            // Or retrieve a single page of known size (unless it's the final page), performing as many RPCs as required
+            int pageSize = 10;
+            Page<Asset> singlePage = await response.ReadPageAsync(pageSize);
+            // Do something with the page of items
+            Console.WriteLine($"A page of {pageSize} results (unless it's the final page):");
+            foreach (Asset item in singlePage)
+            {
+                // Do something with each item
+                Console.WriteLine(item);
+            }
+            // Store the pageToken, for when the next page is required.
+            string nextPageToken = singlePage.NextPageToken;
+            // End snippet
+        }
+
+        /// <summary>Snippet for ListAssets</summary>
+        public void ListAssets()
+        {
+            // Snippet: ListAssets(string, string, int?, CallSettings)
+            // Create client
+            AssetServiceClient assetServiceClient = AssetServiceClient.Create();
+            // Initialize request argument(s)
+            string parent = "a/wildcard/resource";
+            // Make the request
+            PagedEnumerable<ListAssetsResponse, Asset> response = assetServiceClient.ListAssets(parent);
+
+            // Iterate over all response items, lazily performing RPCs as required
+            foreach (Asset item in response)
+            {
+                // Do something with each item
+                Console.WriteLine(item);
+            }
+
+            // Or iterate over pages (of server-defined size), performing one RPC per page
+            foreach (ListAssetsResponse page in response.AsRawResponses())
+            {
+                // Do something with each page of items
+                Console.WriteLine("A page of results:");
+                foreach (Asset item in page)
+                {
+                    // Do something with each item
+                    Console.WriteLine(item);
+                }
+            }
+
+            // Or retrieve a single page of known size (unless it's the final page), performing as many RPCs as required
+            int pageSize = 10;
+            Page<Asset> singlePage = response.ReadPage(pageSize);
+            // Do something with the page of items
+            Console.WriteLine($"A page of {pageSize} results (unless it's the final page):");
+            foreach (Asset item in singlePage)
+            {
+                // Do something with each item
+                Console.WriteLine(item);
+            }
+            // Store the pageToken, for when the next page is required.
+            string nextPageToken = singlePage.NextPageToken;
+            // End snippet
+        }
+
+        /// <summary>Snippet for ListAssetsAsync</summary>
+        public async Task ListAssetsAsync()
+        {
+            // Snippet: ListAssetsAsync(string, string, int?, CallSettings)
+            // Create client
+            AssetServiceClient assetServiceClient = await AssetServiceClient.CreateAsync();
+            // Initialize request argument(s)
+            string parent = "a/wildcard/resource";
+            // Make the request
+            PagedAsyncEnumerable<ListAssetsResponse, Asset> response = assetServiceClient.ListAssetsAsync(parent);
+
+            // Iterate over all response items, lazily performing RPCs as required
+            await response.ForEachAsync((Asset item) =>
+            {
+                // Do something with each item
+                Console.WriteLine(item);
+            });
+
+            // Or iterate over pages (of server-defined size), performing one RPC per page
+            await response.AsRawResponses().ForEachAsync((ListAssetsResponse page) =>
+            {
+                // Do something with each page of items
+                Console.WriteLine("A page of results:");
+                foreach (Asset item in page)
+                {
+                    // Do something with each item
+                    Console.WriteLine(item);
+                }
+            });
+
+            // Or retrieve a single page of known size (unless it's the final page), performing as many RPCs as required
+            int pageSize = 10;
+            Page<Asset> singlePage = await response.ReadPageAsync(pageSize);
+            // Do something with the page of items
+            Console.WriteLine($"A page of {pageSize} results (unless it's the final page):");
+            foreach (Asset item in singlePage)
+            {
+                // Do something with each item
+                Console.WriteLine(item);
+            }
+            // Store the pageToken, for when the next page is required.
+            string nextPageToken = singlePage.NextPageToken;
+            // End snippet
+        }
+
+        /// <summary>Snippet for ListAssets</summary>
+        public void ListAssetsResourceNames()
+        {
+            // Snippet: ListAssets(IResourceName, string, int?, CallSettings)
+            // Create client
+            AssetServiceClient assetServiceClient = AssetServiceClient.Create();
+            // Initialize request argument(s)
+            IResourceName parent = new UnparsedResourceName("a/wildcard/resource");
+            // Make the request
+            PagedEnumerable<ListAssetsResponse, Asset> response = assetServiceClient.ListAssets(parent);
+
+            // Iterate over all response items, lazily performing RPCs as required
+            foreach (Asset item in response)
+            {
+                // Do something with each item
+                Console.WriteLine(item);
+            }
+
+            // Or iterate over pages (of server-defined size), performing one RPC per page
+            foreach (ListAssetsResponse page in response.AsRawResponses())
+            {
+                // Do something with each page of items
+                Console.WriteLine("A page of results:");
+                foreach (Asset item in page)
+                {
+                    // Do something with each item
+                    Console.WriteLine(item);
+                }
+            }
+
+            // Or retrieve a single page of known size (unless it's the final page), performing as many RPCs as required
+            int pageSize = 10;
+            Page<Asset> singlePage = response.ReadPage(pageSize);
+            // Do something with the page of items
+            Console.WriteLine($"A page of {pageSize} results (unless it's the final page):");
+            foreach (Asset item in singlePage)
+            {
+                // Do something with each item
+                Console.WriteLine(item);
+            }
+            // Store the pageToken, for when the next page is required.
+            string nextPageToken = singlePage.NextPageToken;
+            // End snippet
+        }
+
+        /// <summary>Snippet for ListAssetsAsync</summary>
+        public async Task ListAssetsResourceNamesAsync()
+        {
+            // Snippet: ListAssetsAsync(IResourceName, string, int?, CallSettings)
+            // Create client
+            AssetServiceClient assetServiceClient = await AssetServiceClient.CreateAsync();
+            // Initialize request argument(s)
+            IResourceName parent = new UnparsedResourceName("a/wildcard/resource");
+            // Make the request
+            PagedAsyncEnumerable<ListAssetsResponse, Asset> response = assetServiceClient.ListAssetsAsync(parent);
+
+            // Iterate over all response items, lazily performing RPCs as required
+            await response.ForEachAsync((Asset item) =>
+            {
+                // Do something with each item
+                Console.WriteLine(item);
+            });
+
+            // Or iterate over pages (of server-defined size), performing one RPC per page
+            await response.AsRawResponses().ForEachAsync((ListAssetsResponse page) =>
+            {
+                // Do something with each page of items
+                Console.WriteLine("A page of results:");
+                foreach (Asset item in page)
+                {
+                    // Do something with each item
+                    Console.WriteLine(item);
+                }
+            });
+
+            // Or retrieve a single page of known size (unless it's the final page), performing as many RPCs as required
+            int pageSize = 10;
+            Page<Asset> singlePage = await response.ReadPageAsync(pageSize);
+            // Do something with the page of items
+            Console.WriteLine($"A page of {pageSize} results (unless it's the final page):");
+            foreach (Asset item in singlePage)
+            {
+                // Do something with each item
+                Console.WriteLine(item);
+            }
+            // Store the pageToken, for when the next page is required.
+            string nextPageToken = singlePage.NextPageToken;
             // End snippet
         }
 
@@ -544,7 +826,7 @@ namespace Google.Cloud.Asset.V1.Snippets
             // End snippet
         }
 
-        /// <summary>Snippet for SearchAllResources</summary>
+        /// <summary>Snippet for SearchAllResourcesAsync</summary>
         public async Task SearchAllResourcesRequestObjectAsync()
         {
             // Snippet: SearchAllResourcesAsync(SearchAllResourcesRequest, CallSettings)
@@ -642,7 +924,7 @@ namespace Google.Cloud.Asset.V1.Snippets
             // End snippet
         }
 
-        /// <summary>Snippet for SearchAllResources</summary>
+        /// <summary>Snippet for SearchAllResourcesAsync</summary>
         public async Task SearchAllResourcesAsync()
         {
             // Snippet: SearchAllResourcesAsync(string, string, IEnumerable<string>, string, int?, CallSettings)
@@ -734,7 +1016,7 @@ namespace Google.Cloud.Asset.V1.Snippets
             // End snippet
         }
 
-        /// <summary>Snippet for SearchAllIamPolicies</summary>
+        /// <summary>Snippet for SearchAllIamPoliciesAsync</summary>
         public async Task SearchAllIamPoliciesRequestObjectAsync()
         {
             // Snippet: SearchAllIamPoliciesAsync(SearchAllIamPoliciesRequest, CallSettings)
@@ -825,7 +1107,7 @@ namespace Google.Cloud.Asset.V1.Snippets
             // End snippet
         }
 
-        /// <summary>Snippet for SearchAllIamPolicies</summary>
+        /// <summary>Snippet for SearchAllIamPoliciesAsync</summary>
         public async Task SearchAllIamPoliciesAsync()
         {
             // Snippet: SearchAllIamPoliciesAsync(string, string, string, int?, CallSettings)

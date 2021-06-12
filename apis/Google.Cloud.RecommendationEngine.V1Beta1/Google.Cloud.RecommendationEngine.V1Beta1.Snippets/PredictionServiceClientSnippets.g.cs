@@ -1,4 +1,4 @@
-// Copyright 2020 Google LLC
+// Copyright 2021 Google LLC
 //
 // Licensed under the Apache License, Version 2.0 (the "License");
 // you may not use this file except in compliance with the License.
@@ -78,7 +78,7 @@ namespace Google.Cloud.RecommendationEngine.V1Beta1.Snippets
             // End snippet
         }
 
-        /// <summary>Snippet for Predict</summary>
+        /// <summary>Snippet for PredictAsync</summary>
         public async Task PredictRequestObjectAsync()
         {
             // Snippet: PredictAsync(PredictRequest, CallSettings)
@@ -177,7 +177,7 @@ namespace Google.Cloud.RecommendationEngine.V1Beta1.Snippets
             // End snippet
         }
 
-        /// <summary>Snippet for Predict</summary>
+        /// <summary>Snippet for PredictAsync</summary>
         public async Task PredictAsync()
         {
             // Snippet: PredictAsync(string, UserEvent, string, int?, CallSettings)
@@ -269,7 +269,7 @@ namespace Google.Cloud.RecommendationEngine.V1Beta1.Snippets
             // End snippet
         }
 
-        /// <summary>Snippet for Predict</summary>
+        /// <summary>Snippet for PredictAsync</summary>
         public async Task PredictResourceNamesAsync()
         {
             // Snippet: PredictAsync(PlacementName, UserEvent, string, int?, CallSettings)

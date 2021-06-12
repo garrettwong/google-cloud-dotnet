@@ -19,6 +19,7 @@ Fields:
 - `type`: "rest", "grpc" or "other":
   - rest = REST-based API; implicitly depends on Google.Api.Gax.Rest
   - grpc = GRPC-based API; implicitly depends on Google.Api.Gax.Grpc
+- `metadataType`: an optional override for the `library_type` field in `.repo-metadata.json` (can usually be omitted)
 - `targetFrameworks`: the frameworks to target in the production code; defaulted for rest and grpc projects
 - `dependencies`: Dependencies in addition to defaults, for the production code
 - `testDependencies`: Dependencies for all test projects. (This can lead to redundant dependencies, but it's simple.)
@@ -32,3 +33,6 @@ Fields:
 - `noVersionHistory`: When set to `true`, the update-history release manager command skips the API.
   This is primarily used for libraries which are part of a bigger ecosystem, where
   another library typically has the version history (e.g. Spanner.Data for all Spanner libraries).
+- `commonResourceConfig`: Path to a file providing additional common
+  resource configuration, augmenting the root `CommonResourcesConfig.json` file. Typically multiple APIs (e.g. all of
+  the Spanner APIs) will refer to the same file in a common package, containing the resource names described in the config file.

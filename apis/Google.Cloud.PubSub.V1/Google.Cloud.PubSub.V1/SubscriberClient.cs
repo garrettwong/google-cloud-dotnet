@@ -45,6 +45,10 @@ namespace Google.Cloud.PubSub.V1
     /// </remarks>
     public abstract class SubscriberClient
     {
+        private static readonly GrpcChannelOptions s_unlimitedSendReceiveChannelOptions = GrpcChannelOptions.Empty
+            .WithMaxReceiveMessageSize(-1)
+            .WithMaxSendMessageSize(-1);
+
         /// <summary>
         /// Reply from a message handler; whether to <see cref="Ack"/>
         /// or <see cref="Nack"/> the message to the server. 
@@ -158,11 +162,42 @@ namespace Google.Cloud.PubSub.V1
                 SubscriberServiceApiSettings subscriberServiceApiSettings = null,
                 ChannelCredentials credentials = null,
                 string serviceEndpoint = null)
+                : this(clientCount, subscriberServiceApiSettings, credentials, serviceEndpoint, EmulatorDetection.None)
+            {
+            }
+
+            private ClientCreationSettings(
+                int? clientCount,
+                SubscriberServiceApiSettings subscriberServiceApiSettings,
+                ChannelCredentials credentials,
+                string serviceEndpoint,
+                EmulatorDetection emulatorDetection)
             {
                 ClientCount = clientCount;
                 SubscriberServiceApiSettings = subscriberServiceApiSettings;
                 Credentials = credentials;
                 ServiceEndpoint = serviceEndpoint;
+                EmulatorDetection = emulatorDetection;
+            }
+
+            /// <summary>
+            /// Specifies how to respond to the presence of emulator environment variables.
+            /// </summary>
+            /// <remarks>
+            /// This property defaults to <see cref="EmulatorDetection.None"/>, meaning that
+            /// environment variables are ignored.
+            /// </remarks>
+            public EmulatorDetection EmulatorDetection { get; }
+
+            /// <summary>
+            /// Creates a new instance of this type with the specified emulator detection value.
+            /// </summary>
+            /// <param name="emulatorDetection">Determines how and whether to detect the emulator.</param>
+            /// <returns>The new instance</returns>
+            public ClientCreationSettings WithEmulatorDetection(EmulatorDetection emulatorDetection)
+            {
+                GaxPreconditions.CheckEnumValue(emulatorDetection, nameof(emulatorDetection));
+                return new ClientCreationSettings(ClientCount, SubscriberServiceApiSettings, Credentials, ServiceEndpoint, emulatorDetection);
             }
 
             /// <summary>
@@ -230,6 +265,11 @@ namespace Google.Cloud.PubSub.V1
         public static TimeSpan DefaultAckExtensionWindow { get; } = TimeSpan.FromSeconds(15);
 
         /// <summary>
+        /// The enforced 5 second minimum duration between obtaining a lease on a message and when a lease extension can be requested.
+        /// </summary>
+        public static TimeSpan MinimumLeaseExtensionDelay { get; } = TimeSpan.FromSeconds(5);
+
+        /// <summary>
         /// The default maximum total ACKnowledgement extension of 60 minutes.
         /// </summary>
         public static TimeSpan DefaultMaxTotalAckExtension { get; } = TimeSpan.FromMinutes(60);
@@ -239,46 +279,65 @@ namespace Google.Cloud.PubSub.V1
         /// The default <paramref name="settings"/> and <paramref name="clientCreationSettings"/> are suitable for machines with
         /// high network bandwidth (e.g. Google Compute Engine instances). If running with more limited network bandwidth, some
         /// settings may need changing; especially <see cref="Settings.AckDeadline"/>.
+        /// By default this method generates a gRPC channel per CPU core; if using a high-core-count machine and using many
+        /// clients concurrently then this may need reducing; use the setting <see cref="ClientCreationSettings.ClientCount"/>.
         /// </summary>
         /// <param name="subscriptionName">The <see cref="SubscriptionName"/> to receive messages from.</param>
         /// <param name="clientCreationSettings">Optional. <see cref="ClientCreationSettings"/> specifying how to create
         /// <see cref="SubscriberClient"/>s.</param>
         /// <param name="settings">Optional. <see cref="Settings"/> for creating a <see cref="SubscriberClient"/>.</param>
         /// <returns>A <see cref="SubscriberClient"/> instance associated with the specified <see cref="SubscriptionName"/>.</returns>
-        public static async Task<SubscriberClient> CreateAsync(SubscriptionName subscriptionName, ClientCreationSettings clientCreationSettings = null, Settings settings = null)
+        public static SubscriberClient Create(SubscriptionName subscriptionName, ClientCreationSettings clientCreationSettings = null, Settings settings = null) =>
+            CreateMaybeAsync(subscriptionName, clientCreationSettings, settings, isAsync: false).ResultWithUnwrappedExceptions();
+
+        /// <summary>
+        /// Create a <see cref="SubscriberClient"/> instance associated with the specified <see cref="SubscriptionName"/>.
+        /// The default <paramref name="settings"/> and <paramref name="clientCreationSettings"/> are suitable for machines with
+        /// high network bandwidth (e.g. Google Compute Engine instances). If running with more limited network bandwidth, some
+        /// settings may need changing; especially <see cref="Settings.AckDeadline"/>.
+        /// By default this method generates a gRPC channel per CPU core; if using a high-core-count machine and using many
+        /// clients concurrently then this may need reducing; use the setting <see cref="ClientCreationSettings.ClientCount"/>.
+        /// </summary>
+        /// <param name="subscriptionName">The <see cref="SubscriptionName"/> to receive messages from.</param>
+        /// <param name="clientCreationSettings">Optional. <see cref="ClientCreationSettings"/> specifying how to create
+        /// <see cref="SubscriberClient"/>s.</param>
+        /// <param name="settings">Optional. <see cref="Settings"/> for creating a <see cref="SubscriberClient"/>.</param>
+        /// <returns>A <see cref="SubscriberClient"/> instance associated with the specified <see cref="SubscriptionName"/>.</returns>
+        public static Task<SubscriberClient> CreateAsync(SubscriptionName subscriptionName, ClientCreationSettings clientCreationSettings = null, Settings settings = null) =>
+            CreateMaybeAsync(subscriptionName, clientCreationSettings, settings, isAsync: true);
+
+        private static async Task<SubscriberClient> CreateMaybeAsync(SubscriptionName subscriptionName, ClientCreationSettings clientCreationSettings, Settings settings, bool isAsync)
         {
             GaxPreconditions.CheckNotNull(subscriptionName, nameof(subscriptionName));
             clientCreationSettings?.Validate();
             // Clone settings, just in case user modifies them and an await happens in this method
             settings = settings?.Clone() ?? new Settings();
             var clientCount = clientCreationSettings?.ClientCount ?? Environment.ProcessorCount;
-            var channelCredentials = clientCreationSettings?.Credentials;
-            // Use default credentials if none given.
-            if (channelCredentials == null)
-            {
-                var credentials = await GoogleCredential.GetApplicationDefaultAsync().ConfigureAwait(false);
-                if (credentials.IsCreateScopedRequired)
-                {
-                    credentials = credentials.CreateScoped(SubscriberServiceApiClient.DefaultScopes);
-                }
-                channelCredentials = credentials.ToChannelCredentials();
-            }
+
             // Create the channels and clients, and register shutdown functions for each channel
-            var endpoint = clientCreationSettings?.ServiceEndpoint ?? SubscriberServiceApiClient.DefaultEndpoint;
             var clients = new SubscriberServiceApiClient[clientCount];
             var shutdowns = new Func<Task>[clientCount];
             for (int i = 0; i < clientCount; i++)
             {
-                // TODO: Use GrpcChannelOptions, and expose a way of setting custom options in the client builder.
-                var channelOptions = new[]
+                // Use a random arg to prevent sub-channel re-use in gRPC, so each channel uses its own connection.
+                var grpcChannelOptions = s_unlimitedSendReceiveChannelOptions
+                    .WithCustomOption("sub-channel-separator", Guid.NewGuid().ToString());
+
+                // First builder to handle any endpoint detection etc. We build a gRPC channel
+                // with this.
+                var builder = new SubscriberServiceApiClientBuilder
                 {
-                    // Set channel send/recv message size to unlimited. It defaults to ~4Mb which causes failures.
-                    new ChannelOption(ChannelOptions.MaxSendMessageLength, -1),
-                    new ChannelOption(ChannelOptions.MaxReceiveMessageLength, -1),
-                    // Use a random arg to prevent sub-channel re-use in gRPC, so each channel uses its own connection.
-                    new ChannelOption("sub-channel-separator", Guid.NewGuid().ToString())
+                    EmulatorDetection = clientCreationSettings?.EmulatorDetection ?? EmulatorDetection.None,
+                    Endpoint = clientCreationSettings?.ServiceEndpoint,
+                    ChannelCredentials = clientCreationSettings?.Credentials,
+                    Settings = clientCreationSettings?.SubscriberServiceApiSettings,
+                    ChannelOptions = grpcChannelOptions
                 };
-                var channel = new Channel(endpoint, channelCredentials, channelOptions);
+                var channel = isAsync ?
+                    (await builder.CreateChannelAsync(cancellationToken: default).ConfigureAwait(false)) :
+                    builder.CreateChannel();
+
+                // Second builder doesn't need to do much, as we can build a call invoker from the channel.
                 clients[i] = new SubscriberServiceApiClientBuilder
                 {
                     CallInvoker = channel.CreateCallInvoker(),
@@ -289,23 +348,6 @@ namespace Google.Cloud.PubSub.V1
             Task Shutdown() => Task.WhenAll(shutdowns.Select(x => x()));
             return new SubscriberClientImpl(subscriptionName, clients, settings, Shutdown);
         }
-
-        /// <summary>
-        /// Create a <see cref="SubscriberClient"/> instance associated with the specified <see cref="SubscriptionName"/>.
-        /// The gRPC <see cref="Channel"/>s underlying the provided <see cref="SubscriberServiceApiClient"/>s must have their
-        /// maximum send and maximum receive sizes set to unlimited, otherwise performance will be severly affected,
-        /// possibly causing a deadlock.
-        /// The default <paramref name="settings"/> are suitable for machines with high network bandwidth (e.g. Google
-        /// Compute Engine instances). If running with more limited network bandwidth, some settings may need changing;
-        /// especially <see cref="Settings.AckDeadline"/>.
-        /// </summary>
-        /// <param name="subscriptionName">The <see cref="SubscriptionName"/> to receive messages from.</param>
-        /// <param name="clients">The <see cref="SubscriberServiceApiClient"/>s to use in a <see cref="SubscriberClient"/>.
-        /// For high performance, these should all use distinct <see cref="Channel"/>s.</param>
-        /// <param name="settings">Optional. <see cref="Settings"/> for creating a <see cref="SubscriberClient"/>.</param>
-        /// <returns>A <see cref="SubscriberClient"/> instance associated with the specified <see cref="SubscriptionName"/>.</returns>
-        internal static SubscriberClient Create(SubscriptionName subscriptionName, IEnumerable<SubscriberServiceApiClient> clients, Settings settings = null) =>
-            new SubscriberClientImpl(subscriptionName, clients, settings?.Clone() ?? new Settings(), null);
 
         /// <summary>
         /// The associated <see cref="SubscriptionName"/>.
@@ -381,7 +423,10 @@ namespace Google.Cloud.PubSub.V1
             settings.Validate();
             // These values are validated in Settings.Validate() above, so no need to re-validate here.
             _modifyDeadlineSeconds = (int)((settings.AckDeadline ?? DefaultAckDeadline).TotalSeconds);
-            _autoExtendInterval = TimeSpan.FromSeconds(_modifyDeadlineSeconds) - (settings.AckExtensionWindow ?? DefaultAckExtensionWindow);
+            var autoExtendInterval = TimeSpan.FromSeconds(_modifyDeadlineSeconds) - (settings.AckExtensionWindow ?? DefaultAckExtensionWindow);
+            // Ensure the duration between lease extensions is at least MinimumLeaseExtensionDelay (5 seconds).
+            // The minimum allowable lease duration is 10 seconds, so this will always be reasonable.
+            _autoExtendInterval = TimeSpan.FromTicks(Math.Max(autoExtendInterval.Ticks, MinimumLeaseExtensionDelay.Ticks));
             _maxExtensionDuration = settings.MaxTotalAckExtension ?? DefaultMaxTotalAckExtension;
             _shutdown = shutdown;
             _scheduler = settings.Scheduler ?? SystemScheduler.Instance;
@@ -406,6 +451,12 @@ namespace Google.Cloud.PubSub.V1
         private TaskCompletionSource<int> _mainTcs;
         private CancellationTokenSource _globalSoftStopCts; // soft-stop is guarenteed to occur before hard-stop.
         private CancellationTokenSource _globalHardStopCts;
+
+        // This property only exists for testing.
+        // This is the interval between obtaining a lease on a message and then further extending the lease on that message
+        // (assuming it hasn't been handled).
+        // This is calculated from the AckDeadline, AckExtensionWindow, and MinimumLeaseExtensionDelay
+        internal TimeSpan AutoExtendInterval => _autoExtendInterval;
 
         /// <inheritdoc />
         public override SubscriptionName SubscriptionName { get; }

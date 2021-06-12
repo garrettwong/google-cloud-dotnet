@@ -1,4 +1,4 @@
-// Copyright 2020 Google LLC
+// Copyright 2021 Google LLC
 //
 // Licensed under the Apache License, Version 2.0 (the "License");
 // you may not use this file except in compliance with the License.
@@ -73,7 +73,7 @@ namespace Google.Cloud.Dialogflow.V2.Snippets
             // End snippet
         }
 
-        /// <summary>Snippet for ListContexts</summary>
+        /// <summary>Snippet for ListContextsAsync</summary>
         public async Task ListContextsRequestObjectAsync()
         {
             // Snippet: ListContextsAsync(ListContextsRequest, CallSettings)
@@ -166,7 +166,7 @@ namespace Google.Cloud.Dialogflow.V2.Snippets
             // End snippet
         }
 
-        /// <summary>Snippet for ListContexts</summary>
+        /// <summary>Snippet for ListContextsAsync</summary>
         public async Task ListContextsAsync()
         {
             // Snippet: ListContextsAsync(string, string, int?, CallSettings)
@@ -256,7 +256,7 @@ namespace Google.Cloud.Dialogflow.V2.Snippets
             // End snippet
         }
 
-        /// <summary>Snippet for ListContexts</summary>
+        /// <summary>Snippet for ListContextsAsync</summary>
         public async Task ListContextsResourceNamesAsync()
         {
             // Snippet: ListContextsAsync(SessionName, string, int?, CallSettings)

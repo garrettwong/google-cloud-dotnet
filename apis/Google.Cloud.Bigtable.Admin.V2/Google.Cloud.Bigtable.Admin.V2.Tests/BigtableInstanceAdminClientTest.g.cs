@@ -1,4 +1,4 @@
-// Copyright 2020 Google LLC
+// Copyright 2021 Google LLC
 //
 // Licensed under the Apache License, Version 2.0 (the "License");
 // you may not use this file except in compliance with the License.
@@ -573,6 +573,7 @@ namespace Google.Cloud.Bigtable.Admin.V2.Tests
                 State = Cluster.Types.State.Resizing,
                 ServeNodes = -1708916177,
                 DefaultStorageType = StorageType.Ssd,
+                EncryptionConfig = new Cluster.Types.EncryptionConfig(),
             };
             mockGrpcClient.Setup(x => x.GetCluster(request, moq::It.IsAny<grpccore::CallOptions>())).Returns(expectedResponse);
             BigtableInstanceAdminClient client = new BigtableInstanceAdminClientImpl(mockGrpcClient.Object, null);
@@ -597,6 +598,7 @@ namespace Google.Cloud.Bigtable.Admin.V2.Tests
                 State = Cluster.Types.State.Resizing,
                 ServeNodes = -1708916177,
                 DefaultStorageType = StorageType.Ssd,
+                EncryptionConfig = new Cluster.Types.EncryptionConfig(),
             };
             mockGrpcClient.Setup(x => x.GetClusterAsync(request, moq::It.IsAny<grpccore::CallOptions>())).Returns(new grpccore::AsyncUnaryCall<Cluster>(stt::Task.FromResult(expectedResponse), null, null, null, null));
             BigtableInstanceAdminClient client = new BigtableInstanceAdminClientImpl(mockGrpcClient.Object, null);
@@ -623,6 +625,7 @@ namespace Google.Cloud.Bigtable.Admin.V2.Tests
                 State = Cluster.Types.State.Resizing,
                 ServeNodes = -1708916177,
                 DefaultStorageType = StorageType.Ssd,
+                EncryptionConfig = new Cluster.Types.EncryptionConfig(),
             };
             mockGrpcClient.Setup(x => x.GetCluster(request, moq::It.IsAny<grpccore::CallOptions>())).Returns(expectedResponse);
             BigtableInstanceAdminClient client = new BigtableInstanceAdminClientImpl(mockGrpcClient.Object, null);
@@ -647,6 +650,7 @@ namespace Google.Cloud.Bigtable.Admin.V2.Tests
                 State = Cluster.Types.State.Resizing,
                 ServeNodes = -1708916177,
                 DefaultStorageType = StorageType.Ssd,
+                EncryptionConfig = new Cluster.Types.EncryptionConfig(),
             };
             mockGrpcClient.Setup(x => x.GetClusterAsync(request, moq::It.IsAny<grpccore::CallOptions>())).Returns(new grpccore::AsyncUnaryCall<Cluster>(stt::Task.FromResult(expectedResponse), null, null, null, null));
             BigtableInstanceAdminClient client = new BigtableInstanceAdminClientImpl(mockGrpcClient.Object, null);
@@ -673,6 +677,7 @@ namespace Google.Cloud.Bigtable.Admin.V2.Tests
                 State = Cluster.Types.State.Resizing,
                 ServeNodes = -1708916177,
                 DefaultStorageType = StorageType.Ssd,
+                EncryptionConfig = new Cluster.Types.EncryptionConfig(),
             };
             mockGrpcClient.Setup(x => x.GetCluster(request, moq::It.IsAny<grpccore::CallOptions>())).Returns(expectedResponse);
             BigtableInstanceAdminClient client = new BigtableInstanceAdminClientImpl(mockGrpcClient.Object, null);
@@ -697,6 +702,7 @@ namespace Google.Cloud.Bigtable.Admin.V2.Tests
                 State = Cluster.Types.State.Resizing,
                 ServeNodes = -1708916177,
                 DefaultStorageType = StorageType.Ssd,
+                EncryptionConfig = new Cluster.Types.EncryptionConfig(),
             };
             mockGrpcClient.Setup(x => x.GetClusterAsync(request, moq::It.IsAny<grpccore::CallOptions>())).Returns(new grpccore::AsyncUnaryCall<Cluster>(stt::Task.FromResult(expectedResponse), null, null, null, null));
             BigtableInstanceAdminClient client = new BigtableInstanceAdminClientImpl(mockGrpcClient.Object, null);

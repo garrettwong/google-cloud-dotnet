@@ -1,5 +1,36 @@
 # Version history
 
+# Version 2.5.0, released 2021-05-26
+
+- [Commit 3717e0d](https://github.com/googleapis/google-cloud-dotnet/commit/3717e0d): Regenerate all APIs with generator change for deprecation
+- [Commit 5022a1e](https://github.com/googleapis/google-cloud-dotnet/commit/5022a1e): Use CopySettingsForEmulator in PubSub clients
+- [Commit 8e6076e](https://github.com/googleapis/google-cloud-dotnet/commit/8e6076e): docs: Remove experimental note for schema APIs
+
+# Version 2.4.0, released 2021-02-24
+
+- [Commit a43730c](https://github.com/googleapis/google-cloud-dotnet/commit/a43730c): fix: PublisherClient required credentials even when using the emulator. Fixes [issue 5973](https://github.com/googleapis/google-cloud-dotnet/issues/5973)
+- [Commit 071ea6f](https://github.com/googleapis/google-cloud-dotnet/commit/071ea6f): Add sync Create() method to PublisherClient and SubscriberClient ([issue 5895](https://github.com/googleapis/google-cloud-dotnet/issues/5895))
+
+# Version 2.3.0, released 2021-01-25
+
+- [Commit 68db70f](https://github.com/googleapis/google-cloud-dotnet/commit/68db70f): fix: Fix error where the lease-extension-delay could be negative. Fixes [issue 5866](https://github.com/googleapis/google-cloud-dotnet/issues/5866)
+- [Commit d856a51](https://github.com/googleapis/google-cloud-dotnet/commit/d856a51): feat: add schema service
+- [Commit 66574a8](https://github.com/googleapis/google-cloud-dotnet/commit/66574a8): feat: Provide emulator detection in PublisherClient/SubscriberClient
+
+# Version 2.2.0, released 2020-12-02
+
+- [Commit 0ce91bb](https://github.com/googleapis/google-cloud-dotnet/commit/0ce91bb): feat: Enable server side flow control by default with the option to turn it off (see below)
+- [Commit 0790924](https://github.com/googleapis/google-cloud-dotnet/commit/0790924): fix: Add gRPC compatibility constructors
+- [Commit 0ca05f5](https://github.com/googleapis/google-cloud-dotnet/commit/0ca05f5): chore: Regenerate all APIs using protoc 3.13 and Grpc.Tools 2.31
+
+As of this release, flow control settings are enforced at the client
+and are also sent to the Cloud Pub/Sub server but not enforced on
+the server side yet. Server side flow control is on track to be
+enabled by the 2nd week of December 2020. Users that face issues
+with server side flow control can disable it by setting
+`SubscriberClient.Settings.UseLegacyFlowControl`# to `true` which
+will result in the enforcement of client side flow control only.
+
 # Version 2.1.0, released 2020-08-03
 
 - [Commit 330b04e](https://github.com/googleapis/google-cloud-dotnet/commit/330b04e): Fix: PubSub methods will now be retried appropriately. Fixes [issue 5225](https://github.com/googleapis/google-cloud-dotnet/issues/5225)

@@ -1,4 +1,4 @@
-// Copyright 2020 Google LLC
+// Copyright 2021 Google LLC
 //
 // Licensed under the Apache License, Version 2.0 (the "License");
 // you may not use this file except in compliance with the License.
@@ -159,7 +159,7 @@ namespace Google.Cloud.WebSecurityScanner.V1.Snippets
             // End snippet
         }
 
-        /// <summary>Snippet for ListScanConfigs</summary>
+        /// <summary>Snippet for ListScanConfigsAsync</summary>
         public async Task ListScanConfigsRequestObjectAsync()
         {
             // Snippet: ListScanConfigsAsync(ListScanConfigsRequest, CallSettings)
@@ -338,7 +338,7 @@ namespace Google.Cloud.WebSecurityScanner.V1.Snippets
             // End snippet
         }
 
-        /// <summary>Snippet for ListScanRuns</summary>
+        /// <summary>Snippet for ListScanRunsAsync</summary>
         public async Task ListScanRunsRequestObjectAsync()
         {
             // Snippet: ListScanRunsAsync(ListScanRunsRequest, CallSettings)
@@ -455,7 +455,7 @@ namespace Google.Cloud.WebSecurityScanner.V1.Snippets
             // End snippet
         }
 
-        /// <summary>Snippet for ListCrawledUrls</summary>
+        /// <summary>Snippet for ListCrawledUrlsAsync</summary>
         public async Task ListCrawledUrlsRequestObjectAsync()
         {
             // Snippet: ListCrawledUrlsAsync(ListCrawledUrlsRequest, CallSettings)
@@ -576,7 +576,7 @@ namespace Google.Cloud.WebSecurityScanner.V1.Snippets
             // End snippet
         }
 
-        /// <summary>Snippet for ListFindings</summary>
+        /// <summary>Snippet for ListFindingsAsync</summary>
         public async Task ListFindingsRequestObjectAsync()
         {
             // Snippet: ListFindingsAsync(ListFindingsRequest, CallSettings)

@@ -1,4 +1,4 @@
-// Copyright 2020 Google LLC
+// Copyright 2021 Google LLC
 //
 // Licensed under the Apache License, Version 2.0 (the "License");
 // you may not use this file except in compliance with the License.
@@ -78,7 +78,7 @@ namespace Google.Cloud.Spanner.Admin.Instance.V1.Snippets
             // End snippet
         }
 
-        /// <summary>Snippet for ListInstanceConfigs</summary>
+        /// <summary>Snippet for ListInstanceConfigsAsync</summary>
         public async Task ListInstanceConfigsRequestObjectAsync()
         {
             // Snippet: ListInstanceConfigsAsync(ListInstanceConfigsRequest, CallSettings)
@@ -171,7 +171,7 @@ namespace Google.Cloud.Spanner.Admin.Instance.V1.Snippets
             // End snippet
         }
 
-        /// <summary>Snippet for ListInstanceConfigs</summary>
+        /// <summary>Snippet for ListInstanceConfigsAsync</summary>
         public async Task ListInstanceConfigsAsync()
         {
             // Snippet: ListInstanceConfigsAsync(string, string, int?, CallSettings)
@@ -261,7 +261,7 @@ namespace Google.Cloud.Spanner.Admin.Instance.V1.Snippets
             // End snippet
         }
 
-        /// <summary>Snippet for ListInstanceConfigs</summary>
+        /// <summary>Snippet for ListInstanceConfigsAsync</summary>
         public async Task ListInstanceConfigsResourceNamesAsync()
         {
             // Snippet: ListInstanceConfigsAsync(ProjectName, string, int?, CallSettings)
@@ -442,7 +442,7 @@ namespace Google.Cloud.Spanner.Admin.Instance.V1.Snippets
             // End snippet
         }
 
-        /// <summary>Snippet for ListInstances</summary>
+        /// <summary>Snippet for ListInstancesAsync</summary>
         public async Task ListInstancesRequestObjectAsync()
         {
             // Snippet: ListInstancesAsync(ListInstancesRequest, CallSettings)
@@ -536,7 +536,7 @@ namespace Google.Cloud.Spanner.Admin.Instance.V1.Snippets
             // End snippet
         }
 
-        /// <summary>Snippet for ListInstances</summary>
+        /// <summary>Snippet for ListInstancesAsync</summary>
         public async Task ListInstancesAsync()
         {
             // Snippet: ListInstancesAsync(string, string, int?, CallSettings)
@@ -626,7 +626,7 @@ namespace Google.Cloud.Spanner.Admin.Instance.V1.Snippets
             // End snippet
         }
 
-        /// <summary>Snippet for ListInstances</summary>
+        /// <summary>Snippet for ListInstancesAsync</summary>
         public async Task ListInstancesResourceNamesAsync()
         {
             // Snippet: ListInstancesAsync(ProjectName, string, int?, CallSettings)

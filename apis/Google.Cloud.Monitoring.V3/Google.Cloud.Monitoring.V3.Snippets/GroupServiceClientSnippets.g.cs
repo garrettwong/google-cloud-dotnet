@@ -1,4 +1,4 @@
-// Copyright 2020 Google LLC
+// Copyright 2021 Google LLC
 //
 // Licensed under the Apache License, Version 2.0 (the "License");
 // you may not use this file except in compliance with the License.
@@ -36,8 +36,6 @@ namespace Google.Cloud.Monitoring.V3.Snippets
             ListGroupsRequest request = new ListGroupsRequest
             {
                 ChildrenOfGroupAsGroupName = GroupName.FromProjectGroup("[PROJECT]", "[GROUP]"),
-                AncestorsOfGroupAsGroupName = GroupName.FromProjectGroup("[PROJECT]", "[GROUP]"),
-                DescendantsOfGroupAsGroupName = GroupName.FromProjectGroup("[PROJECT]", "[GROUP]"),
                 ProjectName = ProjectName.FromProject("[PROJECT]"),
             };
             // Make the request
@@ -77,7 +75,7 @@ namespace Google.Cloud.Monitoring.V3.Snippets
             // End snippet
         }
 
-        /// <summary>Snippet for ListGroups</summary>
+        /// <summary>Snippet for ListGroupsAsync</summary>
         public async Task ListGroupsRequestObjectAsync()
         {
             // Snippet: ListGroupsAsync(ListGroupsRequest, CallSettings)
@@ -87,8 +85,6 @@ namespace Google.Cloud.Monitoring.V3.Snippets
             ListGroupsRequest request = new ListGroupsRequest
             {
                 ChildrenOfGroupAsGroupName = GroupName.FromProjectGroup("[PROJECT]", "[GROUP]"),
-                AncestorsOfGroupAsGroupName = GroupName.FromProjectGroup("[PROJECT]", "[GROUP]"),
-                DescendantsOfGroupAsGroupName = GroupName.FromProjectGroup("[PROJECT]", "[GROUP]"),
                 ProjectName = ProjectName.FromProject("[PROJECT]"),
             };
             // Make the request
@@ -173,7 +169,7 @@ namespace Google.Cloud.Monitoring.V3.Snippets
             // End snippet
         }
 
-        /// <summary>Snippet for ListGroups</summary>
+        /// <summary>Snippet for ListGroupsAsync</summary>
         public async Task ListGroupsAsync()
         {
             // Snippet: ListGroupsAsync(string, string, int?, CallSettings)
@@ -263,7 +259,7 @@ namespace Google.Cloud.Monitoring.V3.Snippets
             // End snippet
         }
 
-        /// <summary>Snippet for ListGroups</summary>
+        /// <summary>Snippet for ListGroupsAsync</summary>
         public async Task ListGroupsResourceNames1Async()
         {
             // Snippet: ListGroupsAsync(ProjectName, string, int?, CallSettings)
@@ -353,7 +349,7 @@ namespace Google.Cloud.Monitoring.V3.Snippets
             // End snippet
         }
 
-        /// <summary>Snippet for ListGroups</summary>
+        /// <summary>Snippet for ListGroupsAsync</summary>
         public async Task ListGroupsResourceNames2Async()
         {
             // Snippet: ListGroupsAsync(OrganizationName, string, int?, CallSettings)
@@ -443,7 +439,7 @@ namespace Google.Cloud.Monitoring.V3.Snippets
             // End snippet
         }
 
-        /// <summary>Snippet for ListGroups</summary>
+        /// <summary>Snippet for ListGroupsAsync</summary>
         public async Task ListGroupsResourceNames3Async()
         {
             // Snippet: ListGroupsAsync(FolderName, string, int?, CallSettings)
@@ -533,7 +529,7 @@ namespace Google.Cloud.Monitoring.V3.Snippets
             // End snippet
         }
 
-        /// <summary>Snippet for ListGroups</summary>
+        /// <summary>Snippet for ListGroupsAsync</summary>
         public async Task ListGroupsResourceNames4Async()
         {
             // Snippet: ListGroupsAsync(IResourceName, string, int?, CallSettings)
@@ -1102,7 +1098,7 @@ namespace Google.Cloud.Monitoring.V3.Snippets
             // End snippet
         }
 
-        /// <summary>Snippet for ListGroupMembers</summary>
+        /// <summary>Snippet for ListGroupMembersAsync</summary>
         public async Task ListGroupMembersRequestObjectAsync()
         {
             // Snippet: ListGroupMembersAsync(ListGroupMembersRequest, CallSettings)
@@ -1197,7 +1193,7 @@ namespace Google.Cloud.Monitoring.V3.Snippets
             // End snippet
         }
 
-        /// <summary>Snippet for ListGroupMembers</summary>
+        /// <summary>Snippet for ListGroupMembersAsync</summary>
         public async Task ListGroupMembersAsync()
         {
             // Snippet: ListGroupMembersAsync(string, string, int?, CallSettings)
@@ -1287,7 +1283,7 @@ namespace Google.Cloud.Monitoring.V3.Snippets
             // End snippet
         }
 
-        /// <summary>Snippet for ListGroupMembers</summary>
+        /// <summary>Snippet for ListGroupMembersAsync</summary>
         public async Task ListGroupMembersResourceNames1Async()
         {
             // Snippet: ListGroupMembersAsync(GroupName, string, int?, CallSettings)
@@ -1377,7 +1373,7 @@ namespace Google.Cloud.Monitoring.V3.Snippets
             // End snippet
         }
 
-        /// <summary>Snippet for ListGroupMembers</summary>
+        /// <summary>Snippet for ListGroupMembersAsync</summary>
         public async Task ListGroupMembersResourceNames2Async()
         {
             // Snippet: ListGroupMembersAsync(IResourceName, string, int?, CallSettings)

@@ -15,9 +15,11 @@
 using Google.Api.Gax.Grpc;
 using Google.Cloud.ClientTesting;
 using Google.Cloud.Spanner.Data.CommonTesting;
+using Google.Cloud.Spanner.V1.Internal.Logging;
 using System;
 using System.Threading.Tasks;
 using Xunit;
+using wkt = Google.Protobuf.WellKnownTypes;
 
 namespace Google.Cloud.Spanner.Data.IntegrationTests
 {
@@ -118,7 +120,6 @@ namespace Google.Cloud.Spanner.Data.IntegrationTests
             }
         }
 
-        // [START spanner_test_transaction_retry_on_aborted]
         [SkippableFact]
         public async Task AbortedThrownCorrectly()
         {
@@ -190,9 +191,7 @@ namespace Google.Cloud.Spanner.Data.IntegrationTests
                 }
             }
         }
-        // [END spanner_test_transaction_retry_on_aborted]
 
-        // [START spanner_test_transaction_query_increment]
         [Fact]
         public async Task MultiWrite()
         {
@@ -226,7 +225,6 @@ namespace Google.Cloud.Spanner.Data.IntegrationTests
                 connections[i].Dispose();
             }
         }
-        // [END spanner_test_transaction_query_increment]
 
         [Fact]
         public void MultiTableWrite()
@@ -289,7 +287,6 @@ namespace Google.Cloud.Spanner.Data.IntegrationTests
             }
         }
 
-        // [START spanner_test_read_exact]
         [Fact]
         public async Task ReadExact()
         {
@@ -315,9 +312,7 @@ namespace Google.Cloud.Spanner.Data.IntegrationTests
                 }
             }
         }
-        // [END spanner_test_read_exact]
 
-        // [START spanner_test_exact_read_concurrent_updates]
         [Fact]
         public async Task ReadExactSingle()
         {
@@ -334,11 +329,7 @@ namespace Google.Cloud.Spanner.Data.IntegrationTests
                 }
             }
         }
-        // [END spanner_test_exact_read_concurrent_updates]
 
-        // [START spanner_test_read_min_single_use]
-        // [END spanner_test_read_min_single_use]
-        // [START spanner_test_read_min]
         [Fact]
         public async Task ReadMin()
         {
@@ -360,9 +351,7 @@ namespace Google.Cloud.Spanner.Data.IntegrationTests
                 }
             }
         }
-        // [END spanner_test_read_min]
 
-        // [START spanner_test_read_exact_staleness]
         [Fact]
         public async Task ReadStaleExact()
         {
@@ -384,9 +373,7 @@ namespace Google.Cloud.Spanner.Data.IntegrationTests
                 }
             }
         }
-        // [END spanner_test_read_exact_staleness]
 
-        // [START spanner_test_read_exact_staleness_concurrent_updates]
         [Fact]
         public async Task ReadStaleExactSingle()
         {
@@ -401,11 +388,7 @@ namespace Google.Cloud.Spanner.Data.IntegrationTests
                 }
             }
         }
-        // [END spanner_test_read_exact_staleness_concurrent_updates]
 
-        // [START spanner_test_read_max_staleness_single_use]
-        // [END spanner_test_read_max_staleness_single_use]
-        // [START spanner_test_read_max_staleness]
         [Fact]
         public async Task ReadStaleMax()
         {
@@ -428,9 +411,7 @@ namespace Google.Cloud.Spanner.Data.IntegrationTests
                 }
             }
         }
-        // [END spanner_test_read_max_staleness]
 
-        // [START spanner_test_strong_read]
         [Fact]
         public async Task ReadStrong()
         {
@@ -453,9 +434,7 @@ namespace Google.Cloud.Spanner.Data.IntegrationTests
                 }
             }
         }
-        // [END spanner_test_strong_read]
 
-        // [START spanner_test_strong_read_concurrent_updates]
         [Fact]
         public async Task ReadStrongSingle()
         {
@@ -472,6 +451,149 @@ namespace Google.Cloud.Spanner.Data.IntegrationTests
                 }
             }
         }
-        // [END spanner_test_strong_read_concurrent_updates]
+
+        [Fact]
+        public async Task ExactReadSinglueUseWithoutReturnReadTimestamp()
+        {
+            using (var connection = _fixture.GetConnection())
+            {
+                await connection.OpenAsync();
+                var cmd = CreateSelectAllCommandForKey(connection);
+                var bound = TimestampBound.OfReadTimestamp(_oldestEntry.Timestamp);
+                using (var reader = (SpannerDataReader)(await cmd.ExecuteReaderAsync(bound)))
+                {
+                    Assert.Null(reader.GetReadTimestamp());
+                    if (await reader.ReadAsync())
+                    {
+                        Assert.Equal(_oldestEntry.Value, reader.GetFieldValue<string>(reader.GetOrdinal("StringValue")));
+                    }
+                }
+            }
+        }
+
+        [Fact]
+        public async Task ExactReadSinglueUseWithReturnReadTimestamp()
+        {
+            using (var connection = _fixture.GetConnection())
+            {
+                await connection.OpenAsync();
+                var cmd = CreateSelectAllCommandForKey(connection);
+                var bound = TimestampBound.OfReadTimestamp(_oldestEntry.Timestamp).WithReturnReadTimestamp(true);
+                using (var reader = (SpannerDataReader)(await cmd.ExecuteReaderAsync(bound)))
+                {
+                    Assert.Equal(wkt::Timestamp.FromDateTime(_oldestEntry.Timestamp), reader.GetReadTimestamp());
+                    if (await reader.ReadAsync())
+                    {
+                        Assert.Equal(_oldestEntry.Value, reader.GetFieldValue<string>(reader.GetOrdinal("StringValue")));
+                    }
+                }
+            }
+        }
+
+        [Fact]
+        public async Task ExactReadMultiUseWithoutReturnReadTimestamp()
+        {
+            using (var connection = _fixture.GetConnection())
+            {
+                await connection.OpenAsync();
+                var targetReadTimestamp = _fixture.TimestampBeforeEntries;
+                var bound = TimestampBound.OfReadTimestamp(targetReadTimestamp);
+                using (var tx = await connection.BeginReadOnlyTransactionAsync(bound))
+                {
+                    Assert.Equal(TransactionMode.ReadOnly, tx.Mode);
+                    Assert.Equal(targetReadTimestamp, tx.TimestampBound.Timestamp);
+                    Assert.False(tx.TimestampBound.ReturnReadTimestamp);
+
+                    var cmd = CreateSelectAllCommandForKey(connection);
+                    cmd.Transaction = tx;
+                    using (var reader = await cmd.ExecuteReaderAsync())
+                    {
+                        Assert.Null(reader.GetReadTimestamp());
+                        Assert.False(
+                            await reader.ReadAsync(),
+                            "no data should be here from yesterday!");
+                    }
+                }
+            }
+        }
+
+        [Fact]
+        public async Task ExactReadMultiUseWithReturnReadTimestamp()
+        {
+            using (var connection = _fixture.GetConnection())
+            {
+                await connection.OpenAsync();
+                var targetReadTimestamp = _fixture.TimestampBeforeEntries;
+                var bound = TimestampBound.OfReadTimestamp(targetReadTimestamp).WithReturnReadTimestamp(true);
+                using (var tx = await connection.BeginReadOnlyTransactionAsync(bound))
+                {
+                    Assert.Equal(TransactionMode.ReadOnly, tx.Mode);
+                    Assert.Equal(targetReadTimestamp, tx.TimestampBound.Timestamp);
+                    Assert.True(tx.TimestampBound.ReturnReadTimestamp);
+
+                    var cmd = CreateSelectAllCommandForKey(connection);
+                    cmd.Transaction = tx;
+                    using (var reader = await cmd.ExecuteReaderAsync())
+                    {
+                        Assert.Equal(wkt::Timestamp.FromDateTime(targetReadTimestamp), reader.GetReadTimestamp());
+                        Assert.False(
+                            await reader.ReadAsync(),
+                            "no data should be here from yesterday!");
+                    }
+                }
+            }
+        }
+
+        /// <summary>
+        /// Simple extension of DefaultLogger that also keeps a reference to the last logged CommitResponse.
+        /// </summary>
+        internal class CommitStatsCapturerLogger : DefaultLogger
+        {
+            internal V1.CommitResponse LastCommitResponse { get; private set; }
+
+            public override void LogCommitStats(V1.CommitRequest request, V1.CommitResponse response)
+            {
+                LastCommitResponse = response;
+                base.LogCommitStats(request, response);
+            }
+        }
+
+        [SkippableFact]
+        public async Task ReturnCommitStats()
+        {
+            Skip.If(_fixture.RunningOnEmulator, "Emulator does not yet support CommitStats");
+            CommitStatsCapturerLogger logger = new CommitStatsCapturerLogger();
+            string key = IdGenerator.FromGuid();
+            await RetryHelpers.ExecuteWithRetryAsync(async () =>
+            {
+                using (var connection = _fixture.GetConnection(logger))
+                {
+                    await connection.OpenAsync();
+                    using (var transaction = connection.BeginTransaction())
+                    {
+                        transaction.LogCommitStats = true;
+                        using (var cmd1 = connection.CreateInsertCommand(_fixture.TableName))
+                        {
+                            cmd1.Transaction = transaction;
+                            cmd1.Parameters.Add("K", SpannerDbType.String).Value = key;
+                            cmd1.Parameters.Add("StringValue", SpannerDbType.String).Value = "text";
+                            await cmd1.ExecuteNonQueryAsync();
+                        }
+                
+                        using (var cmd2 = connection.CreateInsertCommand(_fixture.TableName2))
+                        {
+                            cmd2.Transaction = transaction;
+                            cmd2.Parameters.Add("K", SpannerDbType.String).Value = key;
+                            cmd2.Parameters.Add("Int64Value", SpannerDbType.Int64).Value = 50;
+                            await cmd2.ExecuteNonQueryAsync();
+                        }
+                
+                        await transaction.CommitAsync();
+                        // MutationCount == 4, as we inserted 2 rows with 2 columns each.
+                        Assert.Equal(4, logger.LastCommitResponse?.CommitStats?.MutationCount);
+                    }
+                }
+            });
+        }
     }
 }

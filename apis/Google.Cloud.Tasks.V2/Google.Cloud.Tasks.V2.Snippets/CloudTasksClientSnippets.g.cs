@@ -1,4 +1,4 @@
-// Copyright 2020 Google LLC
+// Copyright 2021 Google LLC
 //
 // Licensed under the Apache License, Version 2.0 (the "License");
 // you may not use this file except in compliance with the License.
@@ -78,7 +78,7 @@ namespace Google.Cloud.Tasks.V2.Snippets
             // End snippet
         }
 
-        /// <summary>Snippet for ListQueues</summary>
+        /// <summary>Snippet for ListQueuesAsync</summary>
         public async Task ListQueuesRequestObjectAsync()
         {
             // Snippet: ListQueuesAsync(ListQueuesRequest, CallSettings)
@@ -172,7 +172,7 @@ namespace Google.Cloud.Tasks.V2.Snippets
             // End snippet
         }
 
-        /// <summary>Snippet for ListQueues</summary>
+        /// <summary>Snippet for ListQueuesAsync</summary>
         public async Task ListQueuesAsync()
         {
             // Snippet: ListQueuesAsync(string, string, int?, CallSettings)
@@ -262,7 +262,7 @@ namespace Google.Cloud.Tasks.V2.Snippets
             // End snippet
         }
 
-        /// <summary>Snippet for ListQueues</summary>
+        /// <summary>Snippet for ListQueuesAsync</summary>
         public async Task ListQueuesResourceNamesAsync()
         {
             // Snippet: ListQueuesAsync(LocationName, string, int?, CallSettings)
@@ -1223,7 +1223,7 @@ namespace Google.Cloud.Tasks.V2.Snippets
             // End snippet
         }
 
-        /// <summary>Snippet for ListTasks</summary>
+        /// <summary>Snippet for ListTasksAsync</summary>
         public async Task ListTasksRequestObjectAsync()
         {
             // Snippet: ListTasksAsync(ListTasksRequest, CallSettings)
@@ -1317,7 +1317,7 @@ namespace Google.Cloud.Tasks.V2.Snippets
             // End snippet
         }
 
-        /// <summary>Snippet for ListTasks</summary>
+        /// <summary>Snippet for ListTasksAsync</summary>
         public async Task ListTasksAsync()
         {
             // Snippet: ListTasksAsync(string, string, int?, CallSettings)
@@ -1407,7 +1407,7 @@ namespace Google.Cloud.Tasks.V2.Snippets
             // End snippet
         }
 
-        /// <summary>Snippet for ListTasks</summary>
+        /// <summary>Snippet for ListTasksAsync</summary>
         public async Task ListTasksResourceNamesAsync()
         {
             // Snippet: ListTasksAsync(QueueName, string, int?, CallSettings)

@@ -6,11 +6,11 @@
 declare -r REPO_ROOT=$(readlink -f $(dirname ${BASH_SOURCE}))
 declare -r TOOL_PACKAGES=$REPO_ROOT/packages
 
-declare -r DOCFX_VERSION=2.50
+declare -r DOCFX_VERSION=2.57.2
 declare -r DOTCOVER_VERSION=2019.3.4
 declare -r REPORTGENERATOR_VERSION=2.4.5.0
-declare -r PROTOC_VERSION=3.13.0
-declare -r GRPC_VERSION=2.31.0
+declare -r PROTOC_VERSION=3.15.8
+declare -r GRPC_VERSION=2.36.4
 
 # Tools that only run under Windows (at the moment)
 declare -r DOCFX=$TOOL_PACKAGES/docfx.$DOCFX_VERSION/docfx.exe
@@ -114,7 +114,12 @@ install_microgenerator() {
       exit 1
   esac
   
-  if [[ "$SYNTHTOOL_CACHE" != "" ]]
+  # If the CSHARP_GENERATOR_DIR env variable is set
+  # we use that as the generator root dir.
+  if [[ "$CSHARP_GENERATOR_DIR" != "" ]]
+  then
+    declare -r GENERATOR_ROOT=$CSHARP_GENERATOR_DIR
+  elif [[ "$SYNTHTOOL_CACHE" != "" ]]
   then
     declare -r GENERATOR_ROOT=$SYNTHTOOL_CACHE/gapic-generator-csharp
   else
@@ -127,8 +132,11 @@ install_microgenerator() {
   then
     echo "Skipping microgenerator fetch/build: already built, and running on Kokoro"
   else
+    if [[ "$CSHARP_GENERATOR_DIR" != "" ]]
+    then
+      echo "Skipping microgenerator fetch: an existing directory for the generator has been specified"
     # TODO: Use a specific tag, or even a NuGet package eventually
-    if [ -d $GENERATOR_ROOT ]
+    elif [ -d $GENERATOR_ROOT ]
     then
       git -C $GENERATOR_ROOT pull -q
     else

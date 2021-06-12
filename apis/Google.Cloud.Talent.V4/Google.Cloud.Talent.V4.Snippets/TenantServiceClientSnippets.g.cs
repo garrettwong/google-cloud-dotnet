@@ -1,4 +1,4 @@
-// Copyright 2020 Google LLC
+// Copyright 2021 Google LLC
 //
 // Licensed under the Apache License, Version 2.0 (the "License");
 // you may not use this file except in compliance with the License.
@@ -405,7 +405,7 @@ namespace Google.Cloud.Talent.V4.Snippets
             // End snippet
         }
 
-        /// <summary>Snippet for ListTenants</summary>
+        /// <summary>Snippet for ListTenantsAsync</summary>
         public async Task ListTenantsRequestObjectAsync()
         {
             // Snippet: ListTenantsAsync(ListTenantsRequest, CallSettings)
@@ -498,7 +498,7 @@ namespace Google.Cloud.Talent.V4.Snippets
             // End snippet
         }
 
-        /// <summary>Snippet for ListTenants</summary>
+        /// <summary>Snippet for ListTenantsAsync</summary>
         public async Task ListTenantsAsync()
         {
             // Snippet: ListTenantsAsync(string, string, int?, CallSettings)
@@ -588,7 +588,7 @@ namespace Google.Cloud.Talent.V4.Snippets
             // End snippet
         }
 
-        /// <summary>Snippet for ListTenants</summary>
+        /// <summary>Snippet for ListTenantsAsync</summary>
         public async Task ListTenantsResourceNamesAsync()
         {
             // Snippet: ListTenantsAsync(ProjectName, string, int?, CallSettings)

@@ -1,4 +1,4 @@
-// Copyright 2020 Google LLC
+// Copyright 2021 Google LLC
 //
 // Licensed under the Apache License, Version 2.0 (the "License");
 // you may not use this file except in compliance with the License.
@@ -74,7 +74,7 @@ namespace Google.Cloud.Scheduler.V1.Snippets
             // End snippet
         }
 
-        /// <summary>Snippet for ListJobs</summary>
+        /// <summary>Snippet for ListJobsAsync</summary>
         public async Task ListJobsRequestObjectAsync()
         {
             // Snippet: ListJobsAsync(ListJobsRequest, CallSettings)
@@ -167,7 +167,7 @@ namespace Google.Cloud.Scheduler.V1.Snippets
             // End snippet
         }
 
-        /// <summary>Snippet for ListJobs</summary>
+        /// <summary>Snippet for ListJobsAsync</summary>
         public async Task ListJobsAsync()
         {
             // Snippet: ListJobsAsync(string, string, int?, CallSettings)
@@ -257,7 +257,7 @@ namespace Google.Cloud.Scheduler.V1.Snippets
             // End snippet
         }
 
-        /// <summary>Snippet for ListJobs</summary>
+        /// <summary>Snippet for ListJobsAsync</summary>
         public async Task ListJobsResourceNamesAsync()
         {
             // Snippet: ListJobsAsync(LocationName, string, int?, CallSettings)

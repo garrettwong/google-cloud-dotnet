@@ -13,20 +13,17 @@
 // limitations under the License.
 
 using Google.Cloud.ClientTesting;
-using System;
-using System.Collections.Generic;
-using System.Text;
 using Xunit;
 
 namespace Google.Cloud.BigQuery.V2.IntegrationTests
 {
     [CollectionDefinition(nameof(BigQueryMLFixture))]
-    public class BigQueryMLFixture : CloudProjectFixtureBase, ICollectionFixture<BigQueryMLFixture>
+    public class BigQueryMLFixture : BigQueryFixtureBase, ICollectionFixture<BigQueryMLFixture>
     {
         public string DatasetId { get; }
         public string ModelId { get; }
 
-        public BigQueryMLFixture()
+        public BigQueryMLFixture() : base("bigquerytestsml-")
         {
             DatasetId = IdGenerator.FromDateTime(prefix: "testml_");
             ModelId = CreateModelId();

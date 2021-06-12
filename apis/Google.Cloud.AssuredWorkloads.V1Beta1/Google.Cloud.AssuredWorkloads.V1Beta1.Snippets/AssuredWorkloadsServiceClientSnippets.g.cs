@@ -1,4 +1,4 @@
-// Copyright 2020 Google LLC
+// Copyright 2021 Google LLC
 //
 // Licensed under the Apache License, Version 2.0 (the "License");
 // you may not use this file except in compliance with the License.
@@ -506,7 +506,7 @@ namespace Google.Cloud.AssuredWorkloads.V1Beta1.Snippets
             // End snippet
         }
 
-        /// <summary>Snippet for ListWorkloads</summary>
+        /// <summary>Snippet for ListWorkloadsAsync</summary>
         public async Task ListWorkloadsRequestObjectAsync()
         {
             // Snippet: ListWorkloadsAsync(ListWorkloadsRequest, CallSettings)
@@ -600,7 +600,7 @@ namespace Google.Cloud.AssuredWorkloads.V1Beta1.Snippets
             // End snippet
         }
 
-        /// <summary>Snippet for ListWorkloads</summary>
+        /// <summary>Snippet for ListWorkloadsAsync</summary>
         public async Task ListWorkloadsAsync()
         {
             // Snippet: ListWorkloadsAsync(string, string, int?, CallSettings)
@@ -690,7 +690,7 @@ namespace Google.Cloud.AssuredWorkloads.V1Beta1.Snippets
             // End snippet
         }
 
-        /// <summary>Snippet for ListWorkloads</summary>
+        /// <summary>Snippet for ListWorkloadsAsync</summary>
         public async Task ListWorkloadsResourceNamesAsync()
         {
             // Snippet: ListWorkloadsAsync(LocationName, string, int?, CallSettings)

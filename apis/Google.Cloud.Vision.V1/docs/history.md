@@ -1,5 +1,14 @@
 # Version history
 
+# Version 2.3.0, released 2021-04-29
+
+- [Commit c94c761](https://github.com/googleapis/google-cloud-dotnet/commit/c94c761): fix: sync vision v1 protos to get extra FaceAnnotation Landmark Types
+
+# Version 2.2.0, released 2020-12-01
+
+- [Commit 12811f6](https://github.com/googleapis/google-cloud-dotnet/commit/12811f6):
+  - feat: Add TextDetectionParams.enable_text_detection_confidence_score
+
 # Version 2.1.0, released 2020-11-11
 
 - [Commit 0790924](https://github.com/googleapis/google-cloud-dotnet/commit/0790924): fix: Add gRPC compatibility constructors
